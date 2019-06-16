@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209535"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Przewodnik Szybki Start — Konfigurowanie środowiska chmury prywatnej
@@ -104,7 +104,7 @@ Klient sieci VPN jest wymagana do łączenia się z CloudSimple z komputera.  Po
 4. Wybierz **użytkowników**.
 5. Kliknij pozycję **Pobierz mój konfigurację sieci VPN**
 
-    ![Pobierz konfigurację sieci VPN](media/download-p2s-vpn-configuration.png)
+    ![Pobieranie konfiguracji sieci VPN](media/download-p2s-vpn-configuration.png)
 
 6. Importowanie konfiguracji klienta sieci VPN
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 5/21/2019
 ms.author: cherylmc
 ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157320"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure native: Azure Portal
@@ -35,7 +35,7 @@ Natywne połączenia uwierzytelniania certyfikatów platformy Azure typu punkt-l
 
 Następujących wartości możesz użyć do tworzenia środowiska testowego lub odwoływać się do tych wartości, aby lepiej zrozumieć przykłady w niniejszym artykule:
 
-* **Nazwa sieci wirtualnej:** Sieć wirtualna 1
+* **Nazwa sieci wirtualnej:** VNet1
 * **Przestrzeń adresowa:** 192.168.0.0/16<br>W tym przykładzie zostanie wykorzystana tylko jedna przestrzeń adresowa. Istnieje możliwość użycia więcej niż jednej przestrzeni adresowej dla sieci wirtualnej.
 * **Nazwa podsieci:** FrontEnd
 * **Zakres adresów podsieci:** 192.168.1.0/24
@@ -45,8 +45,8 @@ Następujących wartości możesz użyć do tworzenia środowiska testowego lub 
 * **GatewaySubnet:** 192.168.200.0/24<br>
 * **Serwer DNS:** (opcjonalny) adres IP serwera DNS, który ma być używany do rozpoznawania nazw.
 * **Nazwa bramy sieci wirtualnej:** VNet1GW
-* **Typ bramy:** VPN
-* **Typ sieci VPN:** Oparte na trasie
+* **Typ bramy:** Sieć VPN
+* **Typ sieci VPN:** Oparte na trasach
 * **Nazwa publicznego adresu IP:** VNet1GWpip
 * **Typ połączenia:** Punkt-lokacja
 * **Pula adresów klienta:** 172.16.201.0/24<br>Klienci sieci VPN połączeni z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z puli adresów klientów.
@@ -132,7 +132,7 @@ Możesz przekazać łącznie do 20 zaufanych certyfikatów głównych. Po przeka
    ![Przekazywanie certyfikatu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
 5. Kliknij przycisk **Zapisz** znajdujący się u góry strony, aby zapisać wszystkie ustawienia konfiguracji.
 
-   ![Zapisz](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
+   ![Zapisanie](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
 ## <a name="installclientcert"></a>10. Instalowanie wyeksportowanego certyfikatu klienta
 

@@ -13,10 +13,10 @@ ms.reviewer: jrasnick, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 96d55da713b8591b20f95ba36f332a340999181e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242754"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku dla pojedynczych i puli baz danych w usłudze Azure SQL Database
@@ -26,7 +26,7 @@ W tym artykule opisano różne rodzaje miejsca w magazynie dla pojedynczego i pu
 > [!NOTE]
 > W tym artykule nie ma zastosowania do opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

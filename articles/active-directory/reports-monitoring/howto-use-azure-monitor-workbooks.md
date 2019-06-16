@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 6d461725d0d4c86ee7aa5b450d42c01ca77ffb16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406593"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107677"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak używać usługi Azure Monitor skoroszyty dla raportów usługi Azure Active Directory
 
@@ -74,15 +74,15 @@ Ten skoroszyt przedstawiono trendy dotyczące następujących logowania:
 
 - Wszystkie logowania
 
-- Sukces
+- Powodzenie
 
-- Oczekuje akcja użytkownika
+- Akcja użytkownika oczekujące
 
 - Niepowodzenie
 
 Każdy trendu można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 
@@ -111,12 +111,12 @@ Ten skoroszyt przedstawiono trendy dotyczące następujących logowania:
 
 - Wszystkie logowania
 
-- Sukces
+- Powodzenie
 
 
 Każdy trendu można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 
@@ -140,7 +140,7 @@ Można uzyskać dostępu do skoroszytu do logowania przez [zasady dostępu warun
 
 Ten skoroszyt zawiera trendy dotyczące wyłączonego logowania. Każdy trendu można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 
@@ -168,16 +168,16 @@ Ten skoroszyt pokazuje następujących wyłączonych logowania trendów:
 
 - Wymaganie usługi MFA
  
-- Wymagane warunki użytkowania
+- Wymaganie warunków użytkowania
 
 - Wymagane zasady zachowania poufności informacji
 
-- Inny
+- Inne
 
 
 Każdy trendu można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 
@@ -208,16 +208,16 @@ Ten skoroszyt przedstawiono trendy dotyczące następujących logowania:
 
 - Wszystkie logowania
 
-- Sukces
+- Powodzenie
 
-- Oczekująca akcja
+- Oczekująca Akcja
 
 - Niepowodzenie
 
 
 Każdy trendu można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 

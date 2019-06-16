@@ -11,17 +11,17 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66126799"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Konsorcjum dowód uwierzytelniania Ethereum
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [To rozwiązanie](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) zaprojektowano, aby ułatwić wdrażanie, konfigurowanie i zarządzanie sieci konsorcjum zawierającym wiele elementów członkowskich dowód uwierzytelniania Ethereum przy minimalnej znajomości platformy Azure i Ethereum.
 
 Za pomocą kliku dane wejściowe użytkownika i wdrożenia jednym kliknięciem w witrynie Azure portal każdy element członkowski można udostępnić zużycie sieci, za pomocą programu Microsoft Azure Compute, sieci i usługi storage na całym świecie. Każdy element członkowski sieciowych zużycia składa się z zestawu węzłów modułu sprawdzania poprawności z równoważeniem obciążenia za pomocą której aplikacji lub użytkownika mogą wchodzić w interakcje przesłać Ethereum transakcji.
@@ -202,7 +202,7 @@ Gdy subskrypcja jest zabezpieczony, przejdź do witryny Azure portal. Wybierz po
 
 Poniższa sekcja przeprowadzi Konfigurowanie zużycie pierwszego elementu członkowskiego w sieci. Przepływ wdrożenia jest podzielona na pięć kroków: Podstawy, wdrożenia regiony, Network Activity block size i wydajności, ustawień Ethereum usługi Azure Monitor.
 
-#### <a name="basics"></a>Ustawienia podstawowe
+#### <a name="basics"></a>Podstawy
 
 W obszarze **podstawy**, określ wartości dla parametrów standardowe dla wszystkich wdrożeń, takich jak subskrypcji, grupy zasobów i właściwości podstawowe maszyny wirtualnej.
 
@@ -210,7 +210,7 @@ Szczegółowy opis każdego parametru następująco:
 
 Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
 ---|---|---|---
-Utwórz nową sieć lub dołączanie do istniejącej sieci?|Utwórz nową sieć lub przyłącz istniejące sieci konsorcjum|Utwórz nowy istniejące sprzężenia|Utwórz nowe
+Utwórz nową sieć lub dołączanie do istniejącej sieci?|Utwórz nową sieć lub przyłącz istniejące sieci konsorcjum|Utwórz nowy istniejące sprzężenia|Create New (Utwórz nowe)
 Adres e-mail (opcjonalnie)|Otrzymasz wiadomość e-mail z powiadomieniem po zakończeniu wdrożenia, informacje o wdrożeniu.|Prawidłowy adres e-mail|Nie dotyczy
 Nazwa użytkownika maszyny Wirtualnej|Nazwa użytkownika administratora w każdej wdrożonej maszyny wirtualnej (tylko znaki alfanumeryczne)|1 – 64 znaków|Nie dotyczy
 Typ uwierzytelniania|Metoda uwierzytelniania do maszyny wirtualnej.|Klucz publiczny hasła lub protokołu SSH|Hasło
@@ -249,7 +249,7 @@ Szczegółowy opis każdego parametru następująco:
   Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
   ---|---|---|---
   Liczba węzłów modułu weryfikacji o zrównoważonym obciążeniu|Liczba węzłów modułu sprawdzania poprawności do aprowizowania w ramach sieci|2-15|2
-  Moduł sprawdzania poprawności dla wydajności przechowywania danych węzła|Typ dysku zarządzanego kopii każdego z węzłów wdrożonego modułu sprawdzania poprawności.|SSD w warstwie standardowa lub Premium|SSD w warstwie Standardowa
+  Moduł sprawdzania poprawności dla wydajności przechowywania danych węzła|Typ dysku zarządzanego kopii każdego z węzłów wdrożonego modułu sprawdzania poprawności.|SSD w warstwie standardowa lub Premium|Standardowa, SSD
   Rozmiar maszyny wirtualnej węzła modułu sprawdzania poprawności|Rozmiar maszyny wirtualnej, używany dla węzłów modułu sprawdzania poprawności.|Standardowa A, standardową wartość d., standardowa D-v2, standardowa F serii, Standard DS i FS standardowe|Standardowa D1, wersja 2
 
 [Szczegóły cennika usługi Storage](https://azure.microsoft.com/pricing/details/managed-disks/)
@@ -260,9 +260,9 @@ Maszyna wirtualna i warstwy magazynowania będzie wpływają na wydajność siec
 
   Numer SKU maszyny wirtualnej|Warstwy magazynowania|Cena|Przepływność|Opóźnienie
   ---|---|---|---|---
-  F1|SSD w warstwie Standardowa|niska|niska|Wysoka
-  D2_v3|SSD w warstwie Standardowa|średnie|średnie|średnie
-  F16s|SSD w warstwie Premium|Wysoka|Wysoka|niska
+  F1|Standardowa, SSD|Niska|Niska|Wysoka
+  D2_v3|Standardowa, SSD|Średni|Średni|Średni
+  F16s|Premium, SSD|Wysoka|Wysoka|Niska
 
 Poniżej przedstawiono przykładowe wdrożenie: ![rozmiaru i wydajności sieci](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -277,7 +277,7 @@ Szczegółowy opis każdego parametru następująco:
 Identyfikator elementu członkowskiego konsorcjum|Identyfikator skojarzony z każdym elementem członkowskim należących do sieci konsorcjum używane do konfigurowania przestrzeni adresów IP w celu uniknięcia kolizji. W przypadku sieci prywatnej przez różne organizacje w tej samej sieci powinien być unikatowy identyfikator elementu członkowskiego.  Identyfikator unikatowy elementu członkowskiego jest potrzebny, nawet wtedy, gdy w tej samej organizacji wdraża do wielu regionów. Zanotuj wartość tego parametru, ponieważ musisz udostępnić go innym członkom przyłączany do upewnij się, że nie ma żadnych kolizji.|0-255|Nie dotyczy
 Identyfikator sieci|Identyfikator sieci konsorcjum sieci Ethereum wdrażane.  Każda sieć Ethereum ma swój własny identyfikator sieci 1 oznacza identyfikator sieci publicznej.|5 - 999,999,999|10101010
 Adres Ethereum administratora|Adres konta Ethereum służy do uczestnictwa w PoA nadzoru.  Zalecamy używanie MetaMask podczas generowania adresu Ethereum.|42 znaki alfanumeryczne, począwszy od 0 x|Nie dotyczy
-Opcje zaawansowane|Opcje zaawansowane ustawienia Ethereum|Włączanie lub wyłączanie|Wyłącz
+Opcje zaawansowane|Opcje zaawansowane ustawienia Ethereum|Włączanie lub wyłączanie|Wyłączanie
 Publiczny adres IP (Zaawansowane opcje = włączone)|Wdraża sieci za bramą sieci wirtualnej, a następnie usuwa dostęp komunikacji równorzędnej. Jeśli ta opcja jest zaznaczona, wszystkie elementy Członkowskie musi być bramy sieci wirtualnej dla połączenia być zgodne.|Prywatne publicznego adresu IP w sieci wirtualnej|Publiczny adres IP
 Blokuj gaz Limit (Zaawansowane opcje = włączone)|Limit gaz bloku od sieci|Wszelkie wartości numeryczne|50000000
 Okres Reseal bloku (s)|Częstotliwość, z jaką zostaną utworzone bloki pusty, gdy nie ma żadnych transakcji w sieci. Wyższa częstotliwość będzie miał ustanawianych szybsze, ale koszty zasobów pamięci masowej.|Wszelkie wartości numeryczne|15
@@ -293,8 +293,8 @@ Blok monitorowanie umożliwia skonfigurowanie zasobów dzienniki usługi Azure M
 
   Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
   ---|---|---|---
-Monitorowanie|Opcja włączania monitorowania|Włączanie lub wyłączanie|Włącz
-Nawiązać połączenie z istniejących dzienników usługi Azure Monitor|Utwórz nowe wystąpienie dzienniki usługi Azure Monitor, lub Dołącz do istniejącego wystąpienia|Tworzenie nowego elementu lub Dołącz istniejące|Utwórz nowy
+Monitorowanie|Opcja włączania monitorowania|Włączanie lub wyłączanie|Włączenie
+Nawiązać połączenie z istniejących dzienników usługi Azure Monitor|Utwórz nowe wystąpienie dzienniki usługi Azure Monitor, lub Dołącz do istniejącego wystąpienia|Tworzenie nowego elementu lub Dołącz istniejące|Tworzenie nowego elementu
 Monitorowanie lokalizacji (Nawiązywanie połączenia z istniejących dzienników usługi Azure Monitor = Utwórz nowy)|Region, w którym nowe usługi Azure Monitor rejestruje wystąpienie zostanie wdrożony.|Wszystkie usługi Azure Monitor rejestruje regionów|Nie dotyczy
 Identyfikator obszaru roboczego analizy dzienników istniejące (Nawiązywanie połączenia z istniejących dzienników usługi Azure Monitor = Dołącz istniejące)|Identyfikator obszaru roboczego z istniejącej usługi Azure Monitor rejestruje wystąpienie||Nie dotyczy
 Klucz podstawowy istniejące log analytics (łączenie z istniejących dzienników usługi Azure Monitor = Dołącz istniejące)|Klucz podstawowy używany do łączenia z istniejącego wystąpienia dzienniki usługi Azure Monitor||Nie dotyczy
@@ -758,7 +758,7 @@ Format WebAssembly obsługi jest już włączony dla Ciebie w nowo wdrożonym Po
 
 -   Samouczek z parzystością Tech- <https://github.com/paritytech/pwasm-tutorial>
 
-## <a name="reference"></a>Odwołanie
+## <a name="reference"></a>Tematy pomocy
 
 ### <a name="faq"></a>Często zadawane pytania
 

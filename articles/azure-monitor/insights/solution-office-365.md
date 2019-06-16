@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: bwren
 ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66357573"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
@@ -25,7 +25,7 @@ ms.locfileid: "66357573"
 
 
 > [!NOTE]
-> Zalecaną metodą, aby zainstalować i skonfigurować rozwiązanie usługi Office 365 jest zapewnienie [łącznik usługi Office 365](../../sentinel/connect-office-365.md) w [Azure przez wartownika](../../sentinel/overview.md) zamiast przy użyciu kroków w tym artykule. Jest to zaktualizowaną wersję rozwiązania usługi Office 365 ze środowiskiem ulepszone konfiguracji. Aby połączyć dzienniki usługi Azure AD, należy użyć [wartownik Azure usługi Azure AD connector](../../sentinel/connect-azure-active-directory.md), który zapewnia dokładniejsze dane dziennika niż dzienniki zarządzania usługi Office 365. 
+> Zalecaną metodą, aby zainstalować i skonfigurować rozwiązanie usługi Office 365 jest zapewnienie [łącznik usługi Office 365](../../sentinel/connect-office-365.md) w [Azure przez wartownika](../../sentinel/overview.md) zamiast przy użyciu kroków w tym artykule. Jest to zaktualizowaną wersję rozwiązania usługi Office 365 ze środowiskiem ulepszone konfiguracji. Aby połączyć dzienniki usługi Azure AD, należy użyć [łącznika usługi Azure AD z usługą Azure Sentinel](../../sentinel/connect-azure-active-directory.md), który dostarcza dokładniejsze dane dziennika, niż dzienniki zarządzania usługi Office 365. 
 >
 > Gdy możesz [dołączanie przez wartownika Azure](../../sentinel/quickstart-onboard.md), określ obszar roboczy usługi Log Analytics, odpowiedniego rozwiązania usługi Office 365 instalowane w. Po włączeniu łącznik rozwiązania będą dostępne w obszarze roboczym i używać dokładnie tak samo jako żadnych innych rozwiązań do monitorowania, zainstalowane.
 >
@@ -541,7 +541,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Type | *OfficeActivity* |
+| Typ | *OfficeActivity* |
 | ClientIP | Adres IP urządzenia, które było używane podczas zarejestrowania działania. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
 | OfficeWorkload | Usługa Office 365, która rekord, który odwołuje się do.<br><br>AzureActiveDirectory<br>Exchange<br>Sharepoint|
 | Operacja | Nazwa działania użytkownika lub administratora.  |

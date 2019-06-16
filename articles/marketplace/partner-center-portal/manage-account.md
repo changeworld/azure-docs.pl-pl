@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
 ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752827"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnych portalu Marketplace w Centrum partnerskim 
@@ -84,7 +84,7 @@ Aby skonfigurować informacje dotyczące wypłat konta, musisz **skojarzyć Acco
 
 Teraz, gdy Account Microsoft jest skojarzony, aby dodać konto informacje dotyczące wypłat należy:
 - **Wybierz formę płatności**: Konta bankowego lub PayPal
-- **Dodaj informacje o płatności**: Może to obejmować Wybieranie typu konta (sprawdzanie oszczędności "lub"), wprowadź nazwę właściciela konta, numer konta i routing numer, nazwisko, adres, numer telefonu lub adres e-mail PayPal. * Aby uzyskać więcej informacji o używaniu PayPal, jako metody płatności konta i Dowiedz się, czy jest obsługiwany w Twoim regionie na rynku, zobacz [informacje o płatności PayPal](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+- **Dodaj informacje o płatności**: Może to obejmować Wybieranie typu konta (sprawdzanie oszczędności "lub"), wprowadź nazwę właściciela konta, numer konta i routing numer, nazwisko, adres, numer telefonu lub adres e-mail PayPal. \* Aby uzyskać więcej informacji o używaniu PayPal, jako metody płatności konta i Dowiedz się, czy jest obsługiwany w Twoim regionie na rynku, zobacz [informacje o płatności PayPal](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > Zmiana typu konta informacje dotyczące wypłat można opóźnić płatności za do jednego cyklu płatności. To opóźnienie występuje, ponieważ będziemy musieli zweryfikować zmiany konta, tak jak podczas pierwszej konfiguracji konta informacje dotyczące wypłat. Będziesz nadal opłacania cała kwota po zweryfikowaniu konta; płatności powodu dla bieżącej płatności cykl zostanie dodany do następnej.  
@@ -174,7 +174,7 @@ Aby dodać użytkowników do Twojego konta w Centrum partnerskim, który już is
 
 1. Przejdź do **użytkowników** (w obszarze **ustawienia konta**) i wybierz **dodawania użytkowników**.
 2. Wybierz co najmniej jednego użytkownika z wyświetlonej listy. Pole wyszukiwania umożliwia wyszukiwanie określonych użytkowników.
-* Jeśli wybierzesz więcej niż jednego użytkownika, aby dodać do konta w Centrum partnerskim, należy im przypisać tego samego rolę lub zestaw uprawnień niestandardowych. Aby dodać wielu użytkowników z różnych ról lub wymagane uprawnienia, powtórz te kroki dla poszczególnych ról lub ustaw uprawnienia niestandardowe.
+\* Jeśli wybierzesz więcej niż jednego użytkownika, aby dodać do konta w Centrum partnerskim, należy im przypisać tego samego rolę lub zestaw uprawnień niestandardowych. Aby dodać wielu użytkowników z różnych ról lub wymagane uprawnienia, powtórz te kroki dla poszczególnych ról lub ustaw uprawnienia niestandardowe.
 3.  Po wybraniu użytkowników, kliknij przycisk **Dodaj wybrane**.
 5.  W **role** sekcji, określ ról lub uprawnień niestandardowych dla wybranych użytkowników.
 6.  Wybierz pozycję **Zapisz**.

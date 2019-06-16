@@ -9,10 +9,10 @@ ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66121160"
 ---
 Sieć wirtualna-sieć wirtualna — często zadawane pytania dotyczą połączeń bramy sieci VPN. Aby dowiedzieć się, jak komunikacja równorzędna sieci wirtualnych, zobacz [komunikacja równorzędna sieci wirtualnych](../articles/virtual-network/virtual-network-peering-overview.md).

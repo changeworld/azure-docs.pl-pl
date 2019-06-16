@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128294"
 ---
 # <a name="azure-signalr-service-authentication"></a>Uwierzytelnianie w usłudze Azure SignalR Service
@@ -61,7 +61,7 @@ Do ukończenia tego samouczka niezbędne są:
     | Nazwa ustawienia | Sugerowana wartość | Opis |
     | ------------ | --------------- | ----------- |
     | Nazwa aplikacji | *Azure SignalR Chat* | Użytkownik usługi GitHub powinien mieć możliwość rozpoznania i zaufania aplikacji, za pomocą której następuje uwierzytelnienie.   |
-    | Adres URL strony głównej | `http://localhost:5000/home` | |
+    | Homepage URL (Adres URL strony głównej) | `http://localhost:5000/home` | |
     | Application description (Opis aplikacji) | *Przykład pokoju rozmów z użyciem usługi Azure SignalR Service z uwierzytelnianiem usługi GitHub* | Przydatny opis aplikacji, który pomoże użytkownikom Twojej aplikacji zrozumieć kontekst używanego uwierzytelniania. |
     | Authorization callback URL (Adres URL wywołania zwrotnego autoryzacji) | `http://localhost:5000/signin-github` | To ustawienie jest najważniejszym ustawieniem Twojej aplikacji OAuth. To jest adres URL wywołania zwrotnego, który usługa GitHub zwraca użytkownikowi po pomyślnym uwierzytelnieniu. W tym samouczku musisz użyć domyślnego adresu URL wywołania zwrotnego dla pakietu *AspNet.Security.OAuth.GitHub*, czyli */signin-github*.  |
 
@@ -545,7 +545,7 @@ Ostatnim zadaniem, które należy wykonać, jest aktualizacja **adresu URL stron
 
     | Ustawienie | Przykład |
     | ------- | ------- |
-    | Adres URL strony głównej | https://signalrtestwebapp22665120.azurewebsites.net/home |
+    | Homepage URL (Adres URL strony głównej) | https://signalrtestwebapp22665120.azurewebsites.net/home |
     | Authorization callback URL (Adres URL wywołania zwrotnego autoryzacji) | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
 
 3. Przejdź do adresu URL swojej aplikacji internetowej i przetestuj aplikację.
@@ -563,7 +563,7 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *SignalRTestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *SignalRTestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 ![Usuwanie](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 

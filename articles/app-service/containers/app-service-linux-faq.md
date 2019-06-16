@@ -17,10 +17,10 @@ ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
 ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65594283"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
@@ -95,7 +95,7 @@ W przypadku niepowodzenia wdrożenia narzędzia Git do aplikacji sieci web w sys
 
    Jeśli wystąpi błąd, który `curl` polecenia nie zostanie znaleziony, upewnij się, zainstaluj narzędzie curl, używając `apt-get install curl` przed uruchomieniem poprzedniego `curl` polecenia.
 
-## <a name="language-support"></a>Obsługa języka
+## <a name="language-support"></a>Obsługa języków
 
 **Chcę użyć gniazda sieci web w mojej aplikacji Node.js, wszystkie ustawienia specjalne lub konfiguracje, aby ustawić?**
 

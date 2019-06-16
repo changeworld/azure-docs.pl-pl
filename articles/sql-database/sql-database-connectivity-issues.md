@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
 ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66019820"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z problemów z połączeniami bazy danych SQL i błędom przejściowym
@@ -30,7 +30,7 @@ W tym artykule opisano sposób zapobiec, rozwiązywanie problemów, diagnozowani
 
 Błąd przejściowy, znany także jako błędów przejściowych, ma podstawowych przyczyn, rozpoznającej wkrótce się. Przyczyny okazjonalne błędy przejściowe jest, gdy Azure system szybko przenosi zasoby sprzętowe do lepszego równoważenia obciążenia różnych obciążeń. Większość z tych zdarzeń zmiany konfiguracji zakończyć w mniej niż 60 sekund. W tym okresie czasu ponownej konfiguracji może mieć problemy z łącznością z bazą danych SQL. Można oczekiwać, te błędy przejściowe, powinny zostać skompilowane aplikacji łączących się z bazą danych SQL. Aby obsługiwać je, implementować logikę ponawiania próby w kodzie zamiast udostępniając je do użytkowników jako błędy aplikacji.
 
-Jeśli program kliencki korzysta z programu ADO.NET, program jest powiadamiany o błąd przejściowy, throw z **sqlexception —**. Porównaj **numer** właściwości z listą błędów przejściowych, które znajdują się w górnej części tego artykułu [kody błędów SQL dla aplikacji klienckich bazy danych SQL](sql-database-develop-error-messages.md).
+Jeśli program kliencki korzysta z programu ADO.NET, program jest powiadamiany o błąd przejściowy, throw z **sqlexception —** . Porównaj **numer** właściwości z listą błędów przejściowych, które znajdują się w górnej części tego artykułu [kody błędów SQL dla aplikacji klienckich bazy danych SQL](sql-database-develop-error-messages.md).
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -91,7 +91,7 @@ Aby przetestować logikę ponawiania, możesz zasymulować lub powodują wystąp
 Jednym ze sposobów, które można przetestować logikę ponawiania jest odłączyć od sieci na komputerze klienckim, gdy program jest uruchomiony. Błąd to:
 
 - **SqlException.Number** = 11001
-- Wiadomość: "Nieznany host nie"
+- Komunikat: "Nieznany host nie"
 
 Jako część pierwszej ponowienia próby program może poprawić podana przez Ciebie, a następnie spróbuj połączyć.
 
@@ -109,7 +109,7 @@ Aby ten test praktyczny, odłącz komputer od sieci, przed rozpoczęciem korzyst
 Program może celowo błędnego wpisania nazwy użytkownika przed pierwszą próbę połączenia. Błąd to:
 
 - **SqlException.Number** = 18456
-- Wiadomość: "Nie można zalogować użytkownika"WRONG_MyUserName"."
+- Komunikat: "Nie można zalogować użytkownika"WRONG_MyUserName"."
 
 Jako część pierwszej ponowienia próby program może poprawić podana przez Ciebie, a następnie spróbuj połączyć.
 

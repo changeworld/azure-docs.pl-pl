@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 25ff618045c65371b1bddd8aeb32166b3e168a93
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 7fc634b064a2b5ac844e60341fedb94c14a62749
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497214"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061071"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie wtyczki Azure CNI sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ W tym artykule dowiesz się, jak używać *wtyczki Azure CNI* sieci w celu tworz
 
 * Sieć wirtualną dla klastra usługi AKS muszą zezwalać na łączność z Internetem ruchu wychodzącego.
 * Nie należy tworzyć więcej niż jednego klastra AKS w tej samej podsieci.
-* Nie wolno korzystać z klastrów AKS `169.254.0.0/16`, `172.30.0.0/16`, lub `172.31.0.0/16` dla rozwiązania Kubernetes usługi zakresu adresów.
+* Nie wolno korzystać z klastrów AKS `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`, lub `192.0.2.0/24` dla rozwiązania Kubernetes usługi zakresu adresów.
 * Jednostki usługi używany przez klaster AKS musi mieć co najmniej [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor) uprawnień w podsieci w ramach sieci wirtualnej. Jeśli chcesz zdefiniować [roli niestandardowej](../role-based-access-control/custom-roles.md) zamiast wbudowana rola Współautor sieci, wymagane są następujące uprawnienia:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -100,7 +100,7 @@ Podczas tworzenia klastra usługi AKS, można skonfigurować dla wtyczki Azure C
 * Nie może być w zakresie adresów IP sieci wirtualnej klastra
 * Nie może pokrywać z innymi sieciami wirtualnymi, z którymi łączy równorzędnie sieć wirtualna klastra
 * Nie nakładać się na wszystkie adresy IP w środowisku lokalnym
-* Nie może być z zakresu `169.254.0.0/16`, `172.30.0.0/16`, lub `172.31.0.0/16`
+* Nie może być z zakresu `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`, lub `192.0.2.0/24`
 
 Chociaż jest technicznie możliwe określić zakres adresów usługi, w ramach tej samej sieci wirtualnej co klaster, to nie jest to zalecane. Jeśli nakładających się zakresów adresów IP są używane, może spowodować nieprzewidywalne zachowanie. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](#frequently-asked-questions) dalszej części tego artykułu. Aby uzyskać więcej informacji na temat usługi Kubernetes, zobacz [usług] [ services] w dokumentacji platformy Kubernetes.
 

@@ -8,10 +8,10 @@ ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
 ms.openlocfilehash: 7b9503b2db14d4de6c4c8cf983c42bccd6f9f8fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157432"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Usuwanie bramy sieci wirtualnej przy użyciu programu PowerShell
@@ -60,7 +60,7 @@ Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
 Aby usunąć bramę sieci wirtualnej dla konfiguracji S2S, musisz najpierw usunąć wszystkie zasoby, które odnoszą się do bramy sieci wirtualnej. Zasoby muszą zostać usunięte w określonej kolejności z powodu zależności. Podczas pracy z przykładami poniżej niektóre wartości należy określić, podczas gdy inne wartości są wynikiem danych wyjściowych. Stosujemy następujące wartości określonej w przykładach w celach demonstracyjnych:
 
-Nazwa sieci wirtualnej: Sieć wirtualna 1<br>
+Nazwa sieci wirtualnej: VNet1<br>
 Nazwa grupy zasobów: RG1<br>
 Nazwa bramy sieci wirtualnej: GW1<br>
 
@@ -143,7 +143,7 @@ Set-AzVirtualNetwork -VirtualNetwork $GWSub
 
 Aby usunąć bramę sieci wirtualnej dla konfiguracji V2V, musisz najpierw usunąć wszystkie zasoby, które odnoszą się do bramy sieci wirtualnej. Zasoby muszą zostać usunięte w określonej kolejności z powodu zależności. Podczas pracy z przykładami poniżej niektóre wartości należy określić, podczas gdy inne wartości są wynikiem danych wyjściowych. Stosujemy następujące wartości określonej w przykładach w celach demonstracyjnych:
 
-Nazwa sieci wirtualnej: Sieć wirtualna 1<br>
+Nazwa sieci wirtualnej: VNet1<br>
 Nazwa grupy zasobów: RG1<br>
 Nazwa bramy sieci wirtualnej: GW1<br>
 
@@ -231,7 +231,7 @@ Set-AzVirtualNetwork -VirtualNetwork $GWSub
 
 Aby usunąć bramę sieci wirtualnej dla konfiguracji P2S, musisz najpierw usunąć wszystkie zasoby, które odnoszą się do bramy sieci wirtualnej. Zasoby muszą zostać usunięte w określonej kolejności z powodu zależności. Podczas pracy z przykładami poniżej niektóre wartości należy określić, podczas gdy inne wartości są wynikiem danych wyjściowych. Stosujemy następujące wartości określonej w przykładach w celach demonstracyjnych:
 
-Nazwa sieci wirtualnej: Sieć wirtualna 1<br>
+Nazwa sieci wirtualnej: VNet1<br>
 Nazwa grupy zasobów: RG1<br>
 Nazwa bramy sieci wirtualnej: GW1<br>
 

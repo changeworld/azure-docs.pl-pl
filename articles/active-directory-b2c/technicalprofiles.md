@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512280"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
@@ -76,7 +76,7 @@ A **profili Technicalprofile** element zawiera zbiór profilów Technical Previe
 
 | Atrybut | Wymagane | Opis |
 |---------|---------|---------|
-| Identyfikator | Tak | Unikatowy identyfikator profilu technicznego. Profil techniczny można się odwoływać przy użyciu tego identyfikatora, od innych elementów w pliku zasad. Na przykład **OrchestrationSteps** i **ValidationTechnicalProfile**. |
+| Identyfikator | Yes | Unikatowy identyfikator profilu technicznego. Profil techniczny można się odwoływać przy użyciu tego identyfikatora, od innych elementów w pliku zasad. Na przykład **OrchestrationSteps** i **ValidationTechnicalProfile**. |
 
 **Profilu technicznego** zawiera następujące elementy:
 
@@ -158,7 +158,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Tak | Identyfikator już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad przekształcania oświadczeń. |
+| Identyfikator odwołania | Yes | Identyfikator już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad przekształcania oświadczeń. |
 
 ### <a name="inputclaims"></a>InputClaims
 
@@ -192,7 +192,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Yes | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
+| ClaimTypeReferenceId | Tak | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
 | defaultValue | Nie | Wartość domyślną, służące do tworzenia oświadczeń, jeśli oświadczenie wskazywanym przez ClaimTypeReferenceId nie istnieje, tak aby wynikowe oświadczenia mogą być używane jako oświadczenie InputClaim przez profil techniczny. |
 | PartnerClaimType | Nie | Identyfikator typu oświadczenia partnera zewnętrznych zasad określony typ oświadczenia mapuje. Jeśli nie określono atrybutu PartnerClaimType zasad określony typ oświadczenia jest mapowany na typ roszczenia partnera o takiej samej nazwie. Tej właściwości należy użyć, gdy Twoja nazwa typ oświadczenia różni się od innych firm. Na przykład imię oświadczeń jest "imię" oświadczenie o nazwie "imię" jest używana przez partnera. |
 
@@ -229,7 +229,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Yes | Identyfikator już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad przekształcania oświadczeń. |
+| Identyfikator odwołania | Tak | Identyfikator już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad przekształcania oświadczeń. |
 
 ### <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -261,7 +261,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Yes | Identyfikator profilu technicznego już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad. |
+| Identyfikator odwołania | Tak | Identyfikator profilu technicznego już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad. |
 
 ### <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 

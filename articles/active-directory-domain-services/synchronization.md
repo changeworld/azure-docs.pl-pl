@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mstephen
 ms.openlocfilehash: 295a991e610e76971413a2abdba1e2fcc5f9eba6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246692"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizacja w domenie zarządzanej usług domenowych Azure AD
@@ -60,7 +60,7 @@ Następujących obiektów i atrybutów nie są zsynchronizowane z dzierżawą us
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>W jaki sposób określone atrybuty są synchronizowane z domeną zarządzaną
 Poniższej tabeli wymieniono niektóre typowe atrybuty i w tym artykule opisano, jak są one zsynchronizowane z domeną zarządzaną.
 
-| Atrybut w Twojej domeny zarządzanej | Source | Uwagi |
+| Atrybut w Twojej domeny zarządzanej | source | Uwagi |
 |:--- |:--- |:--- |
 | UPN |Atrybutu nazwy UPN użytkownika w dzierżawie usługi Azure AD |Atrybutu nazwy UPN z dzierżawą usługi Azure AD są synchronizowane, ponieważ ma domeny zarządzanej. W związku z tym najbardziej niezawodnym sposobem, aby zalogować się do domeny zarządzanej używa nazwy UPN. |
 | SAMAccountName |MailNickname użytkownika atrybutu w dzierżawie usługi Azure AD lub wygenerowany automatycznie |Atrybutu SAMAccountName pochodzi z atrybut mailNickname w dzierżawie usługi Azure AD. Jeśli wiele kont użytkowników mają ten sam atrybut mailNickname, SAMAccountName został wygenerowany automatycznie. Jeśli mailNickname lub prefiks nazwy UPN użytkownika jest dłuższa niż 20 znaków, SAMAccountName jest generowane automatycznie do zaspokojenia limit 20 znaków atrybuty SAMAccountName. |

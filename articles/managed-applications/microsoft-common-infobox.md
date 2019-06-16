@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
 ms.openlocfilehash: 2330197b4512dfdd72de3529145103b644594e25
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252089"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64711213"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Element Microsoft.Common.InfoBox interfejsu użytkownika
 Formant, który dodaje pole informacyjne. Pole zawiera tekst ważne lub ostrzeżenia, które pomagają użytkownikom zrozumienie wartości, które zwracają się. Można go także połączyć z identyfikatora URI, aby uzyskać więcej informacji.

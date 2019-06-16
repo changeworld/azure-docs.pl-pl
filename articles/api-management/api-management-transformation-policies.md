@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243237"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
@@ -116,14 +116,14 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|xml-to-json|Element główny.|Yes|
+|xml-to-json|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
 |rodzaj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> javascript — przyjaznego - przekonwertowany za pomocą pliku JSON ma postać przyjazne dla deweloperów języka JavaScript.<br />-direct - przekonwertowanego JSON odzwierciedla strukturę oryginalnego dokumentu XML.|Tak|ND|
-|Zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Konwertuj zawsze.<br />Konwersja zawartości — typ xml — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność kodu XML.|Yes|ND|
+|Zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Konwertuj zawsze.<br />Konwersja zawartości — typ xml — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność kodu XML.|Tak|ND|
 |consider-accept-header|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — wartość true — zastosowania konwersji, jeśli w żądaniu nagłówka Accept żądania XML.<br />— wartość false — Zawsze stosuj konwersji.|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
@@ -158,7 +158,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|from|Ciąg do wyszukania.|Yes|ND|
+|from|Ciąg do wyszukania.|Tak|ND|
 |na|Ciąg zastępujący. Określ zero długość ciąg zastępujący usunąć ciąg wyszukiwania.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
@@ -506,15 +506,15 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|set-header|Element główny.|Yes|
-|value|Określa wartość nagłówka do ustawienia. Dla wiele nagłówków o takiej samej nazwie, Dodaj dodatkowe `value` elementów.|Tak|
+|set-header|Element główny.|Tak|
+|value|Określa wartość nagłówka do ustawienia. Dla wiele nagłówków o takiej samej nazwie, Dodaj dodatkowe `value` elementów.|Yes|
 
 ### <a name="properties"></a>Właściwości
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
 |istnieje akcja|Określa, jakie działania podejmowane w momencie nagłówek jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override - zastępuje wartość istniejący nagłówek.<br />-skip — nie zastępuje istniejącą wartość nagłówka.<br />-dołączania - dołącza wartość do istniejącej wartości nagłówka.<br />-delete - Usuwa nagłówek z żądania.<br /><br /> Po ustawieniu `override` rejestrowanie wiele wpisów z tej samej nazwie wyników w nagłówku ustawiania zgodnie ze wszystkich wpisów, (które zostaną wyświetlone wiele razy); tylko wymienioną wartość zostanie ustawiona w wyniku.|Nie|zastąpienie|
-|name|Określa nazwę nagłówka do ustawienia.|Tak|ND|
+|name|Określa nazwę nagłówka do ustawienia.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -574,7 +574,7 @@ OriginalUrl.
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
 |istnieje akcja|Określa, jaką akcję należy podjąć, gdy parametr zapytania jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override - zastępuje wartość parametru istniejących.<br />-skip — nie zastępuje istniejącą wartość parametru zapytania.<br />-dołączania - dołącza wartość do istniejącej wartości parametrów zapytania.<br />-delete - Usuwa parametr zapytania z żądania.<br /><br /> Po ustawieniu `override` rejestrowanie wiele wpisów z taką samą nazwę wyniki w parametrze zapytania zostanie ustawiony zgodnie ze wszystkich wpisów, (które zostaną wyświetlone wiele razy); tylko wymienioną wartość zostanie ustawiona w wyniku.|Nie|zastąpienie|
-|name|Określa nazwę parametru zapytania do ustawienia.|Tak|ND|
+|name|Określa nazwę parametru zapytania do ustawienia.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -645,7 +645,7 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|rewrite-uri|Element główny.|Tak|
+|rewrite-uri|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -716,7 +716,7 @@ OriginalUrl.
 |----------|-----------------|--------------|
 |xsl-transform|Element główny.|Tak|
 |Parametr|Używane do definiowania zmiennych używanych w transformacji|Nie|
-|xsl:stylesheet|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Yes|
+|xsl:stylesheet|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Tak|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).

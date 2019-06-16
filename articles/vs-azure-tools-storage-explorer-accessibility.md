@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60457270"
 ---
 # <a name="storage-explorer-accessibility"></a>Ułatwienia dostępu Eksploratora usługi Storage
@@ -58,7 +58,7 @@ Ustawienie motywu zmienia kolor większości elementów interfejsu użytkownika.
 Polecenie       | Skrót klawiaturowy
 --------------|--------------------
 Nowe okno    | **Control+Shift+N**
-Zamknij edytor  | **Control+F4**
+Zamknij Edytor  | **Control+F4**
 Zamknij          | **Control+Shift+W**
 
 ### <a name="navigation-commands"></a>Polecenia nawigacji
@@ -88,17 +88,17 @@ Pomniejsz | **Control +-**
 Polecenie | Skrót klawiaturowy
 --------|--------------------
 Wstecz    | **Alt + Strzałka w lewo**
-Prześlij dalej | **Alt + Strzałka w prawo**
+do przodu | **Alt + Strzałka w prawo**
 W górę      | **Alt + Strzałka w górę**
 
 ### <a name="editor-commands"></a>Poleceń edytora
 
 Polecenie | Skrót klawiaturowy
 --------|------------------
-Copy    | **Control+C**
+Kopiuj    | **Control+C**
 Wytnij     | **Control + X**
 Wklej   | **Control+V**
-Odświeżanie  | **Control+R**
+Odśwież  | **Control+R**
 
 ### <a name="other-commands"></a>Inne polecenia
 

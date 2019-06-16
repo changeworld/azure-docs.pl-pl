@@ -9,10 +9,10 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66164643"
 ---
 Azure Virtual Machines (VMs) przechodzą przez różne stany, które można podzielić na *aprowizacji* i *power* stanów. Celem tego artykułu jest do opisywania tych stanów i specjalnie Podświetl, gdy klienci są rozliczane na przykład użycia. 

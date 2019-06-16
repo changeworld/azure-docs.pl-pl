@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602731"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Agregacje w zapytaniach dzienników usługi Azure Monitor
@@ -29,9 +29,9 @@ ms.locfileid: "65602731"
 
 W tym artykule opisano funkcje agregacji w zapytaniach dzienników usługi Azure Monitor, które oferują przydatna do analizowania danych. Te wszystkie funkcje współdziałają z `summarize` operator, który tworzy tabelę z zagregowanych wyników w tabeli wejściowej.
 
-## <a name="counts"></a>Liczniki
+## <a name="counts"></a>Zlicza
 
-### <a name="count"></a>liczba
+### <a name="count"></a>count
 Liczbę wierszy w zestawie, po zastosowaniu wszystkie filtry wyników. Poniższy przykład zwraca łączną liczbę wierszy w _wydajności_ tabelę z ostatnich 30 minut. Wynik jest zwracany w kolumnie o nazwie *count_* , chyba że przypisać określonej nazwy:
 
 
@@ -89,7 +89,7 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|Stany Zjednoczone Ameryki    | 19                  |
+|Stany Zjednoczone    | 19                  |
 |Kanada           | 3                   |
 |Irlandia          | 0                   |
 |Zjednoczone Królestwo   | 0                   |

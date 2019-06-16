@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 993fc8b2e318b59775f61de391ac75fa765485f0
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66513115"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OAuth1 w zasadach niestandardowych usługi Azure Active Directory B2C
@@ -69,9 +69,9 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
+| client_id | Tak | Identyfikator aplikacji dostawcy tożsamości. |
 | ProviderName | Nie | Nazwa dostawcy tożsamości. |
-| request_token_endpoint | Yes | Adres URL punktu końcowego tokenu żądania zgodnie z RFC 5849. |
+| request_token_endpoint | Tak | Adres URL punktu końcowego tokenu żądania zgodnie z RFC 5849. |
 | authorization_endpoint | Tak | Adres URL punktu końcowego autoryzacji, zgodnie z RFC 5849. |
 | access_token_endpoint | Tak | Adres URL punktu końcowego tokenu zgodnie z RFC 5849. |
 | ClaimsEndpoint | Nie | Adres URL punktu końcowego informacji użytkownika. | 
@@ -83,7 +83,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Klucz tajny klienta aplikacji dostawcy tożsamości.   | 
+| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości.   | 
 
 ## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 

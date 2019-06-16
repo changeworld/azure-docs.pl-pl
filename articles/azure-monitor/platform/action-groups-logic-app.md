@@ -9,17 +9,17 @@ ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: a33c6f6621e7fc7944bc116b27e5f26de88f77d9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389574"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor
 
 W tym artykule przedstawiono sposób konfigurowania i wyzwalacza aplikacji logiki, aby utworzyć konwersacji w Microsoft Teams, gdy zostanie wyzwolony alert.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Po wyzwoleniu alertu danych usługi Azure Monitor, wywołuje [grupy akcji](../../azure-monitor/platform/action-groups.md). Grupy akcji umożliwiają wyzwalanie co najmniej jedną akcję, aby powiadomić inne osoby o alercie, a także jego rozwiązania.
 
 Ogólny proces jest:

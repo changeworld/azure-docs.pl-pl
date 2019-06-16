@@ -9,10 +9,10 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 19ad4e39ca4e402c37b2cfa69c7c306b6e5a2766
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66170059"
 ---
 1. Przejdź do strony dla bramy sieci wirtualnej i otwórz ją. Istnieje wiele metod nawigacji. Aby przejść do bramy „VNet1GW”, wybierz pozycję **TestVNet1 -> Przegląd -> Połączone urządzenia -> VNet1GW**.
@@ -22,7 +22,7 @@ ms.locfileid: "66170059"
 3. Na stronie **Dodawanie połączenia** skonfiguruj wartości dla swojego połączenia.
 
    - **Nazwa:** Nazwij połączenie.
-   - **Typ połączenia:** Wybierz **lokacja-lokacja(IPSec)**.
+   - **Typ połączenia:** Wybierz **lokacja-lokacja(IPSec)** .
    - **Brama sieci wirtualnej:** Wartość jest ustalona, ponieważ połączenie jest nawiązywane z tej bramy.
    - **Brama sieci lokalnej:** Kliknij przycisk **wybierz bramę sieci lokalnej** i wybierz bramę sieci lokalnej, do którego chcesz używać.
    - **Klucz wspólny:** wartość musi być zgodna z wartością używaną dla lokalnego urządzenia sieci VPN. W przykładzie użyto wartości „abc123”, ale można (i należy) użyć bardziej złożonej wartości. Pamiętaj o tym, że wartość podana w tym miejscu musi być taka sama, jak wartość podana podczas konfigurowania urządzenia sieci VPN.

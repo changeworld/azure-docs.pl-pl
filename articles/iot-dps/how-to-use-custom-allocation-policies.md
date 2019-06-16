@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65916992"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Jak używać zasad niestandardowych alokacji
@@ -102,7 +102,7 @@ W tej sekcji utworzysz nową grupę rejestracji, która używa zasady niestandar
 
     **Automatycznie generuj klucze**: Już to pole wyboru powinno być zaznaczone.
 
-    **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **niestandardowe (Użyj funkcji platformy Azure)**.
+    **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **niestandardowe (Użyj funkcji platformy Azure)** .
 
     ![Dodaj niestandardowe alokacji grupę rejestracji dla zaświadczenia klucza symetrycznego](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
@@ -404,7 +404,7 @@ W tej sekcji spowoduje zaktualizowanie przykładu aprowizacji o nazwie **prov\_d
 
 Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysłanie żądania aprowizacji wystąpienia usługi Device Provisioning Service. Sekwencji rozruchu spowoduje, że urządzenie tostera do rozpoznawania i przypisane do usługi IoT hub za pomocą zasad niestandardowych alokacji.
 
-1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_**.
+1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_** .
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi Device Provisioning Service z bloku portalu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -509,11 +509,11 @@ W poniższej tabeli przedstawiono oczekiwane scenariusze i kody błędów wyniki
 | Scenariusz | Wynik rejestracji z usługi Provisioning Service | Inicjowanie obsługi administracyjnej wyniki zestawu SDK |
 | -------- | --------------------------------------------- | ------------------------ |
 | Element webhook zwraca 200 OK "iotHubHostName" Ustaw prawidłową nazwę hosta Centrum IoT | Stan wyniku: Przypisany  | Zestaw SDK zwraca PROV_DEVICE_RESULT_OK wraz z informacjami Centrum |
-| Zwraca element webhook, 200 OK "iotHubHostName" obecne w odpowiedzi, ale ustawiony na pusty ciąg lub wartość null | Stan wyniku: Błąd<br><br> Kod błędu: CustomAllocationIotHubNotSpecified (400208) | Zestaw SDK zwraca PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| Element webhook zwraca 401 Brak autoryzacji | Stan wyniku: Błąd<br><br>Kod błędu: CustomAllocationUnauthorizedAccess (400209) | Zestaw SDK zwraca PROV_DEVICE_RESULT_UNAUTHORIZED |
-| Rejestracja indywidualna została utworzona w celu Wyłącz urządzenie | Stan wyniku: Wyłączono | Zestaw SDK zwraca PROV_DEVICE_RESULT_DISABLED |
+| Zwraca element webhook, 200 OK "iotHubHostName" obecne w odpowiedzi, ale ustawiony na pusty ciąg lub wartość null | Stan wyniku: Niepowodzenie<br><br> Kod błędu: CustomAllocationIotHubNotSpecified (400208) | Zestaw SDK zwraca PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Element webhook zwraca 401 Brak autoryzacji | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationUnauthorizedAccess (400209) | Zestaw SDK zwraca PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Rejestracja indywidualna została utworzona w celu Wyłącz urządzenie | Stan wyniku: Wyłączone | Zestaw SDK zwraca PROV_DEVICE_RESULT_DISABLED |
 | Element webhook zwraca kod błędu: > = 429 | Organizowanie DPS ponowi próbę wiele razy. Zasady ponawiania jest obecnie:<br><br>&nbsp;&nbsp;-Liczba ponownych prób: 10<br>&nbsp;&nbsp;— Interwał początkowa: 1s<br>&nbsp;&nbsp;-Przyrostu: 9S | Zestaw SDK będzie zignorować błąd i przesłać inny komunikat o stanie get w określonym czasie |
-| Element webhook zwraca każdy inny kod stanu | Stan wyniku: Błąd<br><br>Kod błędu: CustomAllocationFailed (400207) | Zestaw SDK zwraca PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| Element webhook zwraca każdy inny kod stanu | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationFailed (400207) | Zestaw SDK zwraca PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -532,7 +532,7 @@ Aby usunąć grupę zasobów o nazwie:
 
 2. W **Filtruj według nazwy...**  polu tekstowym wpisz nazwę zasobu, grupy, zawierający zasoby, **contoso-us-resource-group**. 
 
-3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 

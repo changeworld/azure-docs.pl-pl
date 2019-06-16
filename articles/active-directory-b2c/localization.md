@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510581"
 ---
 # <a name="localization"></a>Lokalizacja
@@ -73,7 +73,7 @@ ms.locfileid: "66510581"
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany do jednoznacznego identyfikowania zlokalizowanych zasobów. |
+| Identyfikator | Tak | Identyfikator, który jest używany do jednoznacznego identyfikowania zlokalizowanych zasobów. |
 
 **LocalizedResources** element zawiera następujące elementy:
 
@@ -96,7 +96,7 @@ ms.locfileid: "66510581"
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ElementType | Tak | Odwołuje się do elementu typu oświadczenia lub element interfejsu użytkownika w pliku zasad. |
+| ElementType | Yes | Odwołuje się do elementu typu oświadczenia lub element interfejsu użytkownika w pliku zasad. |
 | ElementId | Tak | Ciąg, który zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema, która jest używana, gdy **ElementType** jest ustawiona na typ oświadczenia. |
 | TargetCollection | Yes | Kolekcji docelowej. |
 
@@ -147,7 +147,7 @@ Poniższy przykład pokazuje użycie **LocalizedCollections** elementu. Zawiera 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | ElementType | Tak | Odwołanie do elementu typu oświadczenia lub element interfejsu użytkownika w ramach zasad. Możliwe wartości: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, lub. `ClaimType` Wartość jest używana do lokalizowania jeden z atrybutów oświadczenia, jak to określono w identyfikator ciągu. `UxElement` Wartość jest używana do lokalizowania jeden z elementów interfejsu użytkownika, jak to określono w identyfikator ciągu. `ErrorMessage` Wartość jest używana do lokalizowania komunikat o błędzie systemu, jak to określono w identyfikator ciągu. `Predicate` Wartość jest używana do lokalizowania jednego z [predykatu](predicates.md) komunikaty o błędach, jak to określono w identyfikator ciągu. `InputValidation` Wartość jest używana do lokalizowania jednego z [PredicateValidation](predicates.md) grupie komunikaty o błędach, jak to określono w identyfikator ciągu. |
-| ElementId | Tak | Jeśli **ElementType** ustawiono `ClaimType`, `Predicate`, lub `InputValidation`, ten element zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema. | 
+| ElementId | Yes | Jeśli **ElementType** ustawiono `ClaimType`, `Predicate`, lub `InputValidation`, ten element zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema. | 
 | StringId | Yes | Jeśli **ElementType** ustawiono `ClaimType`, ten element zawiera odwołanie do atrybutu typu oświadczenia. Możliwe wartości: `DisplayName`, `AdminHelpText`, lub `PatternHelpText`. `DisplayName` Wartość jest używana do ustawiania oświadczenia nazwy wyświetlanej. `AdminHelpText` Wartość jest używana do ustawiania Nazwa tekstu pomocy oświadczenia użytkownika. `PatternHelpText` Wartość jest używana do ustawiania tekst pomocy wzorzec oświadczenia. Jeśli **ElementType** ustawiono `UxElement`, ten element zawiera odwołanie do atrybutu elementu interfejsu użytkownika. Jeśli **ElementType** ustawiono `ErrorMessage`, ten element Określa identyfikator komunikatu o błędzie. Zobacz [ciągu lokalizacji identyfikatorów](localization-string-ids.md) szczegółowy wykaz `UxElement` identyfikatorów.|
 
 

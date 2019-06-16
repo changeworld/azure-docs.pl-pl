@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
 ms.openlocfilehash: cf414cf08771090990775d124e27222e51f786e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122015"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Tworzenie, wirtualne sieci równorzędne — różne subskrypcje usługa Resource Manager
@@ -57,11 +57,11 @@ Poniższe kroki używanie różnych kont, dla każdej subskrypcji. Jeśli używa
     - **Lokalizacja**: *Wschodnie stany USA*
 4. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetA*. Wybierz **myVnetA** , gdy pojawia się w wynikach wyszukiwania. 
 5. Wybierz **kontrola dostępu (IAM)** z pionowy listy opcji po lewej stronie.
-6. W obszarze **myVnetA — kontrola dostępu (IAM)**, wybierz opcję **+ Dodaj przypisanie roli**.
+6. W obszarze **myVnetA — kontrola dostępu (IAM)** , wybierz opcję **+ Dodaj przypisanie roli**.
 7. Wybierz **Współautor sieci** w **roli** pole.
 8. W **wybierz** wybierz *Użytkownik_b*, lub wpisz adres e-mail firmy Użytkownik_b ją wyszukać.
 9. Wybierz pozycję **Zapisz**.
-10. W obszarze **myVnetA — kontrola dostępu (IAM)**, wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`.
+10. W obszarze **myVnetA — kontrola dostępu (IAM)** , wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`.
 11. Wyloguj się z portalu jako użytkownik a, a następnie zaloguj się jako Użytkownik_b.
 12. Wykonaj kroki 2 – 3, wprowadź lub wybierz następujące wartości w kroku 3:
 

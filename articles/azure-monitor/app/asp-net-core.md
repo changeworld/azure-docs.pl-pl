@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
 ms.openlocfilehash: cb7ace20fd0a59dafff3d7f8240f54c3c8e12492
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66226397"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Usługa Application Insights dla aplikacji platformy ASP.NET Core
@@ -130,7 +130,7 @@ W tym artykule opisano sposób włączania usługi Application Insights dla [pla
 Obsługa [liczniki wydajności](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/) w programie ASP.NET Core jest ograniczone do następujących
 
    * Zestaw SDK w wersji 2.4.1 powyżej zbiera liczników wydajności, jeśli aplikacja jest uruchomiona w usłudze Azure Web App (Windows)
-   * 2.7.0-beta3 wersji zestawu SDK i powyżej zbiera liczników wydajności, jeśli aplikacja jest uruchomiona w Windows i określanie wartości docelowej `NETSTANDARD2.0` lub nowszej.
+   * 2\.7.0-beta3 wersji zestawu SDK i powyżej zbiera liczników wydajności, jeśli aplikacja jest uruchomiona w Windows i określanie wartości docelowej `NETSTANDARD2.0` lub nowszej.
    * Dla aplikacji przeznaczonych dla platformy .NET Framework liczniki wydajności są obsługiwane we wszystkich wersjach zestawu SDK.
    * Ten artykuł będzie aktualizowany, gdy zostanie dodana jego obsługa licznika wydajności w systemie Linux.
 

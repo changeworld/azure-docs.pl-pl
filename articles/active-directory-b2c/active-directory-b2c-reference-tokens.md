@@ -11,10 +11,10 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: b0a5eca4823bd6ec7d1197adb205f7fb98f8d67e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66509078"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Przegląd tokenów w usłudze Azure Active Directory B2C
@@ -57,7 +57,7 @@ Poniższa tabela zawiera listę oświadczeń można oczekiwać w tokenach identy
 | Wydane w | `iat` | `1438535543` | Czas, w którym token został wystawiony, jest reprezentowana w czasie uniksowym. |
 | Czas wygaśnięcia | `exp` | `1438539443` | Czas, w której token staje się nieprawidłowy, jest reprezentowana w czasie uniksowym. Twoja aplikacja powinna używać tego oświadczenia próba sprawdzania prawidłowości okres istnienia tokenu. |
 | Nie wcześniej niż | `nbf` | `1438535543` | Czas, w którym token staje się nieprawidłowy, jest reprezentowana w czasie uniksowym. Tym razem jest zwykle taka sama jak czas, który został wystawiony token. Twoja aplikacja powinna używać tego oświadczenia próba sprawdzania prawidłowości okres istnienia tokenu. |
-| Wersja | `ver` | `1.0` | Wersja tokenu Identyfikacyjnego, zgodnie z definicją w usłudze Azure AD B2C. |
+| Version | `ver` | `1.0` | Wersja tokenu Identyfikacyjnego, zgodnie z definicją w usłudze Azure AD B2C. |
 | Kod skrótu | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Skrót kodu zawarte w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z kodu autoryzacji OAuth 2.0. Skrót kod może służyć do weryfikowania autentyczności kodu autoryzacji. Aby uzyskać więcej informacji na temat przeprowadzania tej weryfikacji, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Skrót tokenu dostępu | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Dostęp do tokenu skrót zawarte w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z tokenu dostępu OAuth 2.0. Skrót tokenu dostępu może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać więcej informacji na temat przeprowadzania tej weryfikacji, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Identyfikator jednorazowy | `nonce` | `12345` | Identyfikator jednorazowy jest strategii umożliwia ograniczenie liczby ataków powtarzania tokenu. Aplikację można określić identyfikatora jednorazowego w żądaniu autoryzacji przy użyciu `nonce` parametr zapytania. Wartość Podaj w żądaniu jest emitowane w niezmienionej postaci w `nonce` oświadczenia tylko tokenu Identyfikatora. To oświadczenie umożliwia aplikacji można zweryfikować wartości względem wartości określonej w żądaniu. Aplikacja powinna przeprowadzić tej weryfikacji w procesie weryfikacji tokenu Identyfikatora. |

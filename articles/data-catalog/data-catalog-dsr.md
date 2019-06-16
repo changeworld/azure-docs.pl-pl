@@ -8,10 +8,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 5ffbee1b4fdfc08b111e199e73baae19341b1022
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65775680"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Obsługiwane źródła danych w usłudze Azure Data Catalog
@@ -72,7 +72,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       </td>
     </tr>
     <tr>
-      <td>Katalog HDFS</td>
+      <td>HDFS directory</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -392,7 +392,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td></td>
     </tr>
     <tr>
-      <td>Tabela Cassandra</td>
+      <td>Tabela bazy danych Cassandra</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

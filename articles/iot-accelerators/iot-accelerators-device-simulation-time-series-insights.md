@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 5d20adc11e0d679e12fd060e719593a50180db8e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65834875"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Użyj usługi Time Series Insights, aby wizualizować dane telemetryczne wysyłane z akceleratora rozwiązań symulacji urządzenia
@@ -69,7 +69,7 @@ Następujące kroki umożliwiają wiersza polecenia platformy Azure w usłudze A
     | Subskrypcja | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
     | Grupa zasobów | **Symulacja contoso**. Użyj nazwy Twój akcelerator rozwiązań. |
     | Lokalizacja | W tym przykładzie użyto **wschodnie stany USA**. Utwórz swoje środowisko, w tym samym regionie, co akceleratorze symulacji urządzenia. |
-    | Numer SKU |**S1** |
+    | SKU |**S1** |
     | Pojemność | **1** |
 
     ![Create Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
@@ -98,13 +98,13 @@ Utwórz nowe źródło zdarzeń, aby nawiązać połączenie z Centrum IoT hub. 
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Źródło zdarzenia nazwy | Poniższy zrzut ekranu używa nazwy **contoso-iot-hub**. Po wykonaniu tego kroku, należy użyć swoją własną unikatową nazwę. |
-    | Source | **IoT Hub** |
+    | source | **IoT Hub** |
     | Opcja importu | **Użyj usługi IoT Hub z dostępnych subskrypcji** |
     | Identyfikator subskrypcji | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
-    | Nazwa centrum IoT | **Contoso simulation7d894**. Użyj nazwy Centrum IoT hub z Twój akcelerator rozwiązań symulacji urządzenia. |
-    | Nazwa zasad centrum IoT | **iothubowner** |
-    | Klucz zasad centrum IoT | To pole jest wypełniane automatycznie. |
-    | Grupa odbiorców centrum IoT | **devicesimulationtsi** |
+    | Nazwa centrum iot | **Contoso simulation7d894**. Użyj nazwy Centrum IoT hub z Twój akcelerator rozwiązań symulacji urządzenia. |
+    | Nazwa zasad Centrum iot | **iothubowner** |
+    | Klucz zasad Centrum iot | To pole jest wypełniane automatycznie. |
+    | Grupa konsumentów Centrum iot | **devicesimulationtsi** |
     | Format serializacji zdarzeń | **JSON** |
     | Nazwa właściwości sygnatury czasowej | Pozostaw puste |
 

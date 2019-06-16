@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/05/2019
 ms.author: v-mohabe
 ms.openlocfilehash: 7f738350743b0b80bf39a322043c514081721def
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967856"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
@@ -228,19 +228,19 @@ W tym przykładzie pokazano, jak usunąć przypisanie:
 
 |Nazwa zasad w usłudze Security Center|Nazwa zasad wyświetlana w usługi Azure Policy |Nazwa parametru efekt zasad|
 |----|----|----|
-|Szyfrowanie danych SQL |Monitoruj nieszyfrowaną bazę danych SQL w usłudze Azure Security Center |sqlEncryptionMonitoringEffect| 
+|Szyfrowanie SQL |Monitoruj nieszyfrowaną bazę danych SQL w usłudze Azure Security Center |sqlEncryptionMonitoringEffect| 
 |Inspekcja SQL |Monitorowanie bazy danych SQL bez inspekcji w usłudze Azure Security Center |sqlAuditingMonitoringEffect|
 |Aktualizacje systemu |Monitoruj brakujące aktualizacje systemu w usłudze Azure Security Center |systemUpdatesMonitoringEffect|
-|Szyfrowanie w usłudze Storage |Inspekcja braku szyfrowania obiektów blob dla kont magazynu |storageEncryptionMonitoringEffect|
-|Dostęp do sieci JIT |Monitoruj ewentualny dostęp just in time w usłudze Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptacyjne kontrole aplikacji |Monitoruj ewentualną listę dozwolonych aplikacji w usłudze Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
-|Sieciowe grupy zabezpieczeń |Monitoruj liberalny dostęp do sieci w usłudze Azure Security Center |networkSecurityGroupsMonitoringEffect| 
-|Konfiguracje zabezpieczeń |Monitoruj luki w zabezpieczeniach systemu operacyjnego w usłudze Azure Security Center |systemConfigurationsMonitoringEffect| 
-|Ochrona punktu końcowego |Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center |endpointProtectionMonitoringEffect |
-|Szyfrowanie dysków |Monitoruj niezaszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center |diskEncryptionMonitoringEffect|
-|Ocena luk w zabezpieczeniach |Monitoruj luki w zabezpieczeniach maszyn wirtualnych w usłudze Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
+|Szyfrowanie w usłudze Storage |Przeprowadź inspekcję brakującego szyfrowania elementu blob dla kont magazynu |storageEncryptionMonitoringEffect|
+|Dostęp do sieci JIT |Monitoruj ewentualny dostęp tylko w czas (JIT) w usłudze Azure Security Center |jitNetworkAccessMonitoringEffect |
+|Funkcje adaptacyjnego sterowania aplikacjami |Monitor możliwe listę dozwolonych aplikacji w usłudze Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Grupy zabezpieczeń sieci |Monitoruj liberalny dostęp do sieci w Centrum zabezpieczeń Azure |networkSecurityGroupsMonitoringEffect| 
+|Konfiguracje zabezpieczeń |Monitorowanie luk w zabezpieczeniach systemu operacyjnego, w usłudze Azure Security Center |systemConfigurationsMonitoringEffect| 
+|Ochrona punktów końcowych |Monitorowanie brakującej ochrony punktów końcowych w usłudze Azure Security Center |endpointProtectionMonitoringEffect |
+|Szyfrowanie dysków |Monitoruj nieszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center |diskEncryptionMonitoringEffect|
+|Ocena luk w zabezpieczeniach |Monitorowanie maszyn wirtualnych luk w zabezpieczeniach w usłudze Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
 |Zapora aplikacji internetowej |Monitoruj niechronione aplikacje internetowe w usłudze Azure Security Center |webApplicationFirewallMonitoringEffect |
-|Zapora nowej generacji |Monitoruj niechronione punkty końcowe sieci w usłudze Azure Security Center| |
+|Zapora nowej generacji |Monitoruj niechronione punkty końcowe sieci w Centrum zabezpieczeń Azure| |
 
 
 ### <a name="who-can-edit-security-policies"></a>Kto może edytować zasady zabezpieczeń?

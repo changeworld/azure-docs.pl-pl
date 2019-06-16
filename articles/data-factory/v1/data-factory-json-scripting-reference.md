@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 25cf9c3b7968be16dcc22f4140725efc22d785f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156534"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Usługi Azure Data Factory — Dokumentacja skryptów JSON
@@ -288,7 +288,7 @@ W poniższej tabeli opisano właściwości w powyższy kod JSON:
 | --- | --- | --- | --- |
 | name | Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](data-factory-naming-rules.md) reguły nazewnictwa. |Tak |Nie dotyczy |
 | type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Azure Data Factory (na przykład: AzureBlob, AzureSqlTable). Zobacz [MAGAZYNY danych](#data-stores) sekcji dla wszystkich magazynów danych i typy zestawów danych obsługiwane przez usługę Data Factory. |
-| Struktura | Schemat zestawu danych. Zawiera on kolumny, jak ich typy, itp. | Nie |Nie dotyczy |
+| structure | Schemat zestawu danych. Zawiera on kolumny, jak ich typy, itp. | Nie |Nie dotyczy |
 | typeProperties | Właściwości odpowiadający wybranego typu. Zobacz [MAGAZYNY danych](#data-stores) dotyczącej obsługiwanych typów i ich właściwości. |Tak |Nie dotyczy |
 | external | Flagę logiczną, aby określić, czy zestaw danych jest jawnie generowany przez potok usługi data factory, czy nie. |Nie |false |
 | availability | Definiuje okno przetwarzania lub model tworzenia wycinków w środowisku produkcyjnym zestaw danych. Szczegółowe informacje na temat zestawu danych model tworzenia wycinków, [planowanie i wykonywanie](data-factory-scheduling-and-execution.md) artykułu. |Tak |Nie dotyczy |
@@ -320,7 +320,7 @@ W poniższej tabeli opisano właściwości można używać w **dostępności** s
 | --- | --- | --- | --- |
 | frequency |Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuty, godziny, dnia, tygodnia, miesiąca |Tak |Nie dotyczy |
 | interval |Określa mnożnik częstotliwości<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany.<br/><br/>Zestaw danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/><b>Uwaga</b>: Jeśli określisz częstotliwość co minutę, zaleca się ustawić interwał wynoszący nie mniej niż 15 |Tak |Nie dotyczy |
-| Styl |Określa, czy wycinek powinny być tworzone na początku/końca zakresu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli parametr Frequency ma wartość miesiąca i styl jest równa EndOfInterval, wycinek jest generowany na ostatni dzień miesiąca. Jeśli styl StartOfInterval wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli parametr Frequency ma wartość dnia i styl jest równa EndOfInterval, wycinek jest generowany w ciągu ostatniej godziny, dnia.<br/><br/>Jeśli ustawiono styl EndOfInterval Frequency ma wartość Hour, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 – 2 PM, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
+| style |Określa, czy wycinek powinny być tworzone na początku/końca zakresu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli parametr Frequency ma wartość miesiąca i styl jest równa EndOfInterval, wycinek jest generowany na ostatni dzień miesiąca. Jeśli styl StartOfInterval wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli parametr Frequency ma wartość dnia i styl jest równa EndOfInterval, wycinek jest generowany w ciągu ostatniej godziny, dnia.<br/><br/>Jeśli ustawiono styl EndOfInterval Frequency ma wartość Hour, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 – 2 PM, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
 | anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli AnchorDateTime części daty, które są bardziej szczegółowe niż częstotliwość bardziej szczegółowego części są ignorowane. <br/><br/>Na przykład jeśli <b>interwał</b> jest <b>co godzinę</b> (frequency: hour, interval: (1) i <b>AnchorDateTime</b> zawiera <b>minuty i sekundy</b> , a następnie <b>minuty i sekundy</b> części AnchorDateTime są ignorowane. |Nie |01/01/0001 |
 | offset |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli określono zarówno anchorDateTime, jak i przesunięcie, wynik jest połączone shift. |Nie |Nie dotyczy |
 
@@ -599,7 +599,7 @@ Do usługi Azure Data Lake Store definiowania połączonej usługi, należy usta
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak (w przypadku uwierzytelniania jednostki usługi) |
 | servicePrincipalKey | Określ klucz aplikacji. | Tak (w przypadku uwierzytelniania jednostki usługi) |
 | tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure Portal. | Tak (w przypadku uwierzytelniania jednostki usługi) |
-| Autoryzacja | Kliknij przycisk **Autoryzuj** znajdujący się w **edytora fabryki danych** i wprowadź swoje poświadczenia, które przypisuje adres URL autoryzacji wygenerowany automatycznie do tej właściwości. | Tak (w przypadku uwierzytelniania poświadczeń użytkownika)|
+| authorization | Kliknij przycisk **Autoryzuj** znajdujący się w **edytora fabryki danych** i wprowadź swoje poświadczenia, które przypisuje adres URL autoryzacji wygenerowany automatycznie do tej właściwości. | Tak (w przypadku uwierzytelniania poświadczeń użytkownika)|
 | sessionId | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i może być używana tylko raz. To ustawienie jest generowany automatycznie, korzystając z edytora fabryki danych. | Tak (w przypadku uwierzytelniania poświadczeń użytkownika) |
 
 #### <a name="example-using-service-principal-authentication"></a>Przykład: przy użyciu uwierzytelniania jednostki usługi
@@ -1708,9 +1708,9 @@ Aby zdefiniować IBM DB2 połączoną usługę, należy ustawić **typu** połą
 | --- | --- | --- |
 | server |Nazwa serwera bazy danych DB2. |Tak |
 | database |Nazwa bazy danych DB2. |Tak |
-| Schemat |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych DB2. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Tak |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| schema |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych DB2. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Yes |
+| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych DB2 w środowisku lokalnym. |Tak |
 
@@ -1822,12 +1822,12 @@ Aby zdefiniować MySQL połączoną usługę, należy ustawić **typu** połącz
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| server |Nazwa serwera MySQL. |Tak |
-| database |Nazwa bazy danych MySQL. |Tak |
-| Schemat |Nazwa schematu w bazie danych. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Tak |
-| username |Określ nazwę użytkownika do łączenia z bazą danych MySQL. |Tak |
-| password |Określ hasło dla konta użytkownika, który określiłeś. |Tak |
+| server |Nazwa serwera MySQL. |Yes |
+| database |Nazwa bazy danych MySQL. |Yes |
+| schema |Nazwa schematu w bazie danych. |Nie |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Yes |
+| userName |Określ nazwę użytkownika do łączenia z bazą danych MySQL. |Yes |
+| password |Określ hasło dla konta użytkownika, który określiłeś. |Yes |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych MySQL w środowisku lokalnym. |Tak |
 
 #### <a name="example"></a>Przykład
@@ -2113,11 +2113,11 @@ Aby zdefiniować PostgreSQL połączoną usługę, należy ustawić **typu** po�
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| server |Nazwa serwera PostgreSQL. |Tak |
-| database |Nazwa bazy danych PostgreSQL. |Tak |
-| Schemat |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Tak |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| server |Nazwa serwera PostgreSQL. |Yes |
+| baza danych |Nazwa bazy danych PostgreSQL. |Yes |
+| schema |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
+| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
+| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych postgresql w warstwie lokalnej. |Tak |
 
@@ -2672,10 +2672,10 @@ Aby zdefiniować Sybase połączoną usługę, należy ustawić **typu** połąc
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | server |Nazwa serwera bazy danych Sybase. |Yes |
-| database |Nazwa bazy danych programu Sybase. |Tak |
-| Schemat |Nazwa schematu w bazie danych. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Sybase. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Tak |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| database |Nazwa bazy danych programu Sybase. |Yes |
+| schema |Nazwa schematu w bazie danych. |Nie |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Sybase. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
+| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalną bazą danych programu Sybase. |Tak |
 
@@ -2792,8 +2792,8 @@ Aby zdefiniować Teradata połączoną usługę, należy ustawić **typu** poł�
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | server |Nazwa serwera programu Teradata. |Yes |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Tak |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
+| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych Teradata w środowisku lokalnym. |Tak |
 
@@ -3034,12 +3034,12 @@ Aby określić bazę danych MongoDB połączoną usługę, należy ustawić **ty
 | --- | --- | --- |
 | server |Adres IP lub hosta nazwę serwera bazy danych MongoDB. |Yes |
 | port |Port TCP używany przez serwer bazy danych MongoDB do nasłuchiwania połączeń klientów. |Opcjonalne, wartość domyślna: 27017 |
-| authenticationType |Podstawowe, lub anonimowe. |Tak |
+| authenticationType |Podstawowe, lub anonimowe. |Yes |
 | username |Konto użytkownika, aby dostęp do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | password |Hasło użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, który chcesz użyć, aby sprawdzić swoje poświadczenia dla uwierzytelniania. |Opcjonalnie (Jeśli używane jest uwierzytelnianie podstawowe). domyślne: korzysta z konta administratora i baza danych określona za pomocą właściwości databaseName. |
-| databaseName |Nazwa bazy danych MongoDB, który chcesz uzyskać dostęp. |Tak |
-| gatewayName |Nazwa bramy, który uzyskuje dostęp do magazynu danych. |Tak |
+| databaseName |Nazwa bazy danych MongoDB, który chcesz uzyskać dostęp. |Yes |
+| gatewayName |Nazwa bramy, który uzyskuje dostęp do magazynu danych. |Yes |
 | encryptedCredential |Poświadczenie szyfrowane przez bramę. |Opcjonalne |
 
 #### <a name="example"></a>Przykład
@@ -3372,7 +3372,7 @@ Aby zdefiniować zestaw danych systemu plików, ustaw **typu** zestawu danych na
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Określa podrzędna ścieżka do folderu. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Tak |
+| folderPath |Określa podrzędna ścieżka do folderu. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
 | fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku jest w następującym formacie: <br/><br/>`Data.<Guid>.txt` (Przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
 | fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików. <br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: "obiektu fileFilter": "* .log"<br/>Przykład 2: "obiektu fileFilter": 2016 - 1-?. txt"<br/><br/>Należy zauważyć, że tego obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. |Nie |
 | partitionedBy |PartitionedBy służy do określania dynamiczne folderPath/nazwę pliku do danych szeregów czasowych. Przykładem jest folderPath sparametryzowane za każdą godzinę danych. |Nie |
@@ -3638,7 +3638,7 @@ Aby zdefiniować zestaw danych usługi FTP, ustaw **typu** zestawu danych na **u
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Tak
+| folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes
 | fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>`Data.<Guid>.txt` (Przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
 | fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwa_pliku danych szeregów czasowych. Na przykład folderPath sparametryzowane za każdą godzinę danych. |Nie |
@@ -3780,7 +3780,7 @@ Aby zdefiniować zestaw danych systemu plików HDFS, ustaw **typu** zestawu dany
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Ścieżka do folderu. Przykład: `myfolder`<br/><br/>Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Na przykład: w przypadku folder\subfolder, należy określić folder\\\\podfolder i d:\samplefolder, określ d:\\\\folder_przykładowy.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Tak |
+| folderPath |Ścieżka do folderu. Przykład: `myfolder`<br/><br/>Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Na przykład: w przypadku folder\subfolder, należy określić folder\\\\podfolder i d:\samplefolder, określ d:\\\\folder_przykładowy.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
 | fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>`Data.<Guid>.txt` (na przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwa_pliku danych szeregów czasowych. Przykład: folderPath, sparametryzowane za każdą godzinę danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
@@ -3866,7 +3866,7 @@ Aby zdefiniować SFTP połączoną usługę, należy ustawić **typu** połączo
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| host | Nazwa lub adres IP serwera SFTP. |Tak |
+| host | Nazwa lub adres IP serwera SFTP. |Yes |
 | port |Port, na którym nasłuchuje serwer SFTP. Wartość domyślna to: 21 |Nie |
 | authenticationType |Określ typ uwierzytelniania. Dozwolone wartości: **Podstawowe**, **SshPublicKey**. <br><br> Odnoszą się do uwierzytelniania podstawowego Using i [przy użyciu protokołu SSH uwierzytelnianie klucza publicznego](#using-ssh-public-key-authentication) odpowiednio sekcje więcej właściwości i przykłady kodu JSON. |Tak |
 | skipHostKeyValidation | Określ, czy pominąć sprawdzanie poprawności klucza hosta. | Nie. Wartość domyślna: false |
@@ -3880,8 +3880,8 @@ Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `Basic
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| username | Użytkownik, który ma dostęp do serwera SFTP. |Tak |
-| password | Hasło dla użytkownika (nazwa użytkownika). | Tak |
+| username | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
+| password | Hasło dla użytkownika (nazwa użytkownika). | Yes |
 
 ```json
 {
@@ -3929,7 +3929,7 @@ Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `SshPu
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| username |Użytkownik, który ma dostęp do serwera SFTP |Tak |
+| username |Użytkownik, który ma dostęp do serwera SFTP |Yes |
 | privateKeyPath | Określ ścieżkę bezwzględną do pliku klucza prywatnego może dostęp do tej bramy. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. <br><br> Mają zastosowanie tylko wtedy, gdy kopiowanie danych z lokalnego serwera SFTP. |
 | privateKeyContent | Ciąg serializacji treści klucza prywatnego. Kreator kopiowania można odczytać pliku klucza prywatnego i automatycznie wyodrębnić zawartość klucza prywatnego. Jeśli używane są wszystkie inne narzędzia/zestawu SDK, należy użyć właściwości privateKeyPath. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. |
 | passPhrase | Określ — dostęp próbny frazy/hasło do odszyfrowania klucza prywatnego, jeśli plik klucza, który jest chroniony przez frazę. | Tak, czy plik klucza prywatnego jest chroniony przez frazę. |
@@ -3980,7 +3980,7 @@ Aby zdefiniować zestaw SFTP, ustaw **typu** zestawu danych na **udział plików
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Tak |
+| folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
 | fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>`Data.<Guid>.txt` (Przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
 | fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwa_pliku danych szeregów czasowych. Na przykład folderPath sparametryzowane za każdą godzinę danych. |Nie |
@@ -4085,7 +4085,7 @@ Ustaw `authenticationType` jako `Basic`, `Digest`, lub `Windows`i określ nastę
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | username | Nazwa użytkownika do dostępu do punktu końcowego HTTP. | Tak |
-| password | Hasło dla użytkownika (nazwa użytkownika). | Tak |
+| password | Hasło dla użytkownika (nazwa użytkownika). | Yes |
 
 ```json
 {
@@ -4271,8 +4271,8 @@ Aby zdefiniować ze źródłem danych OData połączoną usługę, należy ustaw
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| url |Adres URL usługi OData. |Tak |
-| authenticationType |Typ uwierzytelniania używany do łączenia z źródła OData. <br/><br/> W chmurze OData możliwe wartości to anonimowe, podstawowe i OAuth (Uwaga obsługują obecnie tylko usługę Azure Data Factory usługi Azure Active Directory na podstawie OAuth). <br/><br/> Dla protokołu OData w środowisku lokalnym możliwe wartości to anonimowe, podstawowe i Windows. |Tak |
+| url |Adres URL usługi OData. |Yes |
+| authenticationType |Typ uwierzytelniania używany do łączenia z źródła OData. <br/><br/> W chmurze OData możliwe wartości to anonimowe, podstawowe i OAuth (Uwaga obsługują obecnie tylko usługę Azure Data Factory usługi Azure Active Directory na podstawie OAuth). <br/><br/> Dla protokołu OData w środowisku lokalnym możliwe wartości to anonimowe, podstawowe i Windows. |Yes |
 | username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Tak (tylko wtedy, gdy używasz uwierzytelniania podstawowego) |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Tak (tylko wtedy, gdy używasz uwierzytelniania podstawowego) |
 | authorizedCredential |Jeśli używasz uwierzytelniania OAuth, kliknij przycisk **Autoryzuj** znajdujący się w kreatora kopiowania usługi Data Factory lub edytorze, a następnie wprowadź swoje poświadczenia, wartość tej właściwości zostanie wygenerowany automatycznie. |Tak (tylko w przypadku korzystania z uwierzytelniania OAuth) |
@@ -4442,7 +4442,7 @@ Aby zdefiniować ODBC połączoną usługę, należy ustawić **typu** połączo
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | connectionString |Poświadczenia dostępu swobodnego część ciąg połączenia i opcjonalnie zaszyfrowane poświadczenia. Zobacz przykłady w poniższych sekcjach. |Tak |
-| poświadczenia |Dostęp do poświadczeń część parametrów połączenia określonych w formacie wartości właściwości specyficzne dla sterownika. Przykład: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Nie |
+| credential |Dostęp do poświadczeń część parametrów połączenia określonych w formacie wartości właściwości specyficzne dla sterownika. Przykład: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Nie |
 | authenticationType |Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC. Możliwe wartości to: Anonimowy i podstawowa. |Tak |
 | username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
@@ -4597,7 +4597,7 @@ Do usługi Salesforce do definiowania połączonej usługi, ustaw **typu** poł�
 | --- | --- | --- |
 | environmentUrl | Określ wystąpienie adres URL usługi Salesforce. <br><br> -Wartością domyślną jest "https:\//login.salesforce.com". <br> -Aby skopiować dane z piaskownicy, należy określić "https://test.salesforce.com". <br> — Aby skopiować dane z domeny niestandardowej, określić, na przykład "https://[domain].my.salesforce.com". |Nie |
 | username |Określ nazwę użytkownika dla konta użytkownika. |Yes |
-| password |Określ hasło dla konta użytkownika. |Tak |
+| password |Określ hasło dla konta użytkownika. |Yes |
 | securityToken |Określ token zabezpieczeń dla konta użytkownika. Zobacz [uzyskać token zabezpieczający](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) instrukcje na temat sposobu resetowania/get tokenu zabezpieczającego. Aby dowiedzieć się więcej o tokenów zabezpieczających ogólnie rzecz biorąc, zobacz [zabezpieczeń i interfejsu API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Tak |
 
 #### <a name="example"></a>Przykład
@@ -4972,7 +4972,7 @@ Poniższa tabela zawiera opis właściwości używane w definicji JSON usługi p
 | Type |Właściwość type powinna być równa: **AzureDataLakeAnalytics**. |Tak |
 | accountName |Nazwa konta usługi Azure Data Lake Analytics. |Tak |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI. |Nie |
-| Autoryzacja |Kod autoryzacji jest automatycznie pobierany po kliknięciu przycisku **Autoryzuj** znajdujący się w edytorze fabryki danych i kończenie logowania OAuth. |Tak |
+| authorization |Kod autoryzacji jest automatycznie pobierany po kliknięciu przycisku **Autoryzuj** znajdujący się w edytorze fabryki danych i kończenie logowania OAuth. |Tak |
 | subscriptionId |Identyfikator subskrypcji platformy Azure |Nie (Jeśli nie zostanie określony, używany subskrypcji usługi data factory). |
 | resourceGroupName |Nazwa grupy zasobów platformy Azure |Nie (Jeśli nie zostanie określony, używany grupy zasobów usługi data factory). |
 | sessionId |Identyfikator sesji z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i może być używana tylko raz. Korzystając z edytora fabryki danych, ten identyfikator jest generowany automatycznie. |Tak |
@@ -5130,8 +5130,8 @@ Można określić następujące właściwości w definicji JSON działania progr
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | skrypt |Określ wbudowany skrypt programu Hive |Nie |
-| Ścieżka skryptu |Store skryptu programu Hive w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
-| Definiuje |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive przy użyciu "hiveconf" |Nie |
+| script path |Store skryptu programu Hive w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| defines |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive przy użyciu "hiveconf" |Nie |
 
 Te właściwości typu są specyficzne dla działania programu Hive. Inne właściwości (poza sekcji typeProperties) są obsługiwane dla wszystkich działań.
 
@@ -5176,8 +5176,8 @@ Można określić następujące właściwości w definicji JSON działania techn
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | skrypt |Określ wbudowany skrypt Pig |Nie |
-| Ścieżka skryptu |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
-| Definiuje |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu języka Pig |Nie |
+| script path |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| defines |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu języka Pig |Nie |
 
 Te właściwości typu są specyficzne dla działania technologii Pig. Inne właściwości (poza sekcji typeProperties) są obsługiwane dla wszystkich działań.
 
@@ -5230,7 +5230,7 @@ Można określić następujące właściwości w definicji JSON działania MapRe
 | jarLinkedService | Nazwa połączonej usługi dla usługi Azure Storage, który zawiera plik JAR. | Tak |
 | jarFilePath | Ścieżka do pliku JAR w usłudze Azure Storage. | Tak |
 | className | Nazwa główna klasa w pliku JAR. | Tak |
-| argumenty | Lista rozdzielonych przecinkami argumenty programu MapReduce. W czasie wykonywania, widzisz kilka dodatkowych argumentów (na przykład: mapreduce.job.tags) z platformy MapReduce. Aby odróżnić argumenty z argumentami MapReduce, należy wziąć pod uwagę przy użyciu opcji i wartości jako argumenty, jak pokazano w poniższym przykładzie (- s, — dane wejściowe, — itp., dane wyjściowe są opcje bezpośrednio następuje ich wartości) | Nie |
+| arguments | Lista rozdzielonych przecinkami argumenty programu MapReduce. W czasie wykonywania, widzisz kilka dodatkowych argumentów (na przykład: mapreduce.job.tags) z platformy MapReduce. Aby odróżnić argumenty z argumentami MapReduce, należy wziąć pod uwagę przy użyciu opcji i wartości jako argumenty, jak pokazano w poniższym przykładzie (- s, — dane wejściowe, — itp., dane wyjściowe są opcje bezpośrednio następuje ich wartości) | Nie |
 
 ### <a name="json-example"></a>Przykład kodu JSON
 
@@ -5291,7 +5291,7 @@ Można określić następujące właściwości w definicji JSON działania przes
 | wyjście | Plik wyjściowy (w tym miejscu) dla reduktor. Dane wyjściowe zadania przesyłania strumieniowego usługi Hadoop jest zapisywany w lokalizacji określonej dla tej właściwości. |
 | filePaths | Ścieżki dla plików wykonywalnych mapowania i reduktor. W przykładzie: "adfsample/example/apps/wc.exe" adfsample jest kontener obiektów blob, przykładowe/aplikacje jest folder i wc.exe jest plik wykonywalny. |
 | fileLinkedService | Połączona usługa Azure Storage reprezentujący magazynu platformy Azure, który zawiera pliki określone w sekcji filePaths. |
-| argumenty | Lista rozdzielonych przecinkami argumenty programu MapReduce. W czasie wykonywania, widzisz kilka dodatkowych argumentów (na przykład: mapreduce.job.tags) z platformy MapReduce. Aby odróżnić argumenty z argumentami MapReduce, należy wziąć pod uwagę przy użyciu opcji i wartości jako argumenty, jak pokazano w poniższym przykładzie (- s, — dane wejściowe, — itp., dane wyjściowe są opcje bezpośrednio następuje ich wartości) |
+| arguments | Lista rozdzielonych przecinkami argumenty programu MapReduce. W czasie wykonywania, widzisz kilka dodatkowych argumentów (na przykład: mapreduce.job.tags) z platformy MapReduce. Aby odróżnić argumenty z argumentami MapReduce, należy wziąć pod uwagę przy użyciu opcji i wartości jako argumenty, jak pokazano w poniższym przykładzie (- s, — dane wejściowe, — itp., dane wyjściowe są opcje bezpośrednio następuje ich wartości) |
 | getDebugInfo | Opcjonalny element. Jeśli ustawiono błędów, dzienniki są pobierane tylko w przypadku niepowodzenia. Po jego ustawieniu wszystkich dzienników będą pobierane zawsze niezależnie od stanu wykonywania. |
 
 > [!NOTE]
@@ -5350,9 +5350,9 @@ Można określić następujące właściwości w definicji JSON działania platf
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
 | rootPath | Kontener obiektów Blob platformy Azure i folder zawierający plik platformy Spark. Nazwa pliku jest rozróżniana wielkość liter. | Tak |
-| entryFilePath | Względna ścieżka do folderu głównego kodu lub pakietu platformy Spark. | Tak |
+| entryFilePath | Względna ścieżka do folderu głównego kodu lub pakietu platformy Spark. | Yes |
 | className | Główna klasa platformy Java lub Spark aplikacji | Nie |
-| argumenty | Lista argumentów wiersza polecenia do programu platformy Spark. | Nie |
+| arguments | Lista argumentów wiersza polecenia do programu platformy Spark. | Nie |
 | proxyUser | Konto użytkownika do personifikacji, aby wykonać program platformy Spark | Nie |
 | sparkConfig | Właściwości konfiguracji aparatu Spark. | Nie |
 | getDebugInfo | Określa, kiedy Spark pliki dziennika są kopiowane do usługi Azure storage używany przez klaster HDInsight (lub) określony przez sparkJobLinkedService. Dozwolone wartości: Brak zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie |

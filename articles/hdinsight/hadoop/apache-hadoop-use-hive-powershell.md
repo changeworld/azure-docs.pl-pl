@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 108a3e7d899eef4ca78ae7507bf4852b861e74d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 243713d7961c911cdda93d3d680a952d424da22b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722170"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078374"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu programu PowerShell
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -28,9 +28,6 @@ Ten dokument zawiera przykład przy użyciu programu Azure PowerShell w trybie g
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Linux Apache Hadoop oparte na wersji klastra HDInsight 3.4 lub nowszą.
-
-  > [!IMPORTANT]  
-  > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * Klient z programem Azure PowerShell.
 
@@ -60,7 +57,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
 
         .\hivejob.ps1
 
-    Po uruchomieniu skryptu monit wprowadź nazwę klastra oraz poświadczenia konta administratora HTTPS i klastra. Użytkownik może również monit Zaloguj się do subskrypcji platformy Azure.
+    Po uruchomieniu skryptu monit wprowadź nazwę klastra oraz poświadczenia konta administratora HTTPS i klastra. Może również być wyświetlony monit logować się do subskrypcji platformy Azure.
 
 3. Po zakończeniu zadania, zwraca informacje podobne do następującego tekstu:
 

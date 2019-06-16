@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119524"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Praca z zestawem SDK serwera zaplecza platformy .NET na potrzeby usługi Azure Mobile Apps
@@ -53,7 +53,7 @@ Zainstaluj obciążenie platformy Azure za pomocą Instalatora programu Visual S
 
 1. Otwórz **nowy projekt** okna dialogowego (z **pliku** > **New** > **projektu...** ).
 2. Rozwiń **Visual C#** i wybierz **Web**.
-3. Wybierz **aplikacji sieci Web ASP.NET (.NET Framework)**.
+3. Wybierz **aplikacji sieci Web ASP.NET (.NET Framework)** .
 4. Wprowadź nazwę projektu. Następnie kliknij przycisk **OK**.
 5. Wybierz **usługi Azure Mobile App** z listy szablonów.
 6. Kliknij przycisk **OK** do utworzenia rozwiązania.
@@ -104,7 +104,7 @@ Aby włączać poszczególne funkcje, należy wywołać metody rozszerzenia na *
         .MapApiControllers()
         .ApplyTo(config);
 
-Szybki Start serwera z usługi Azure portal wywołań **UseDefaultConfiguration()**. To odpowiednik następujące ustawienia:
+Szybki Start serwera z usługi Azure portal wywołań **UseDefaultConfiguration()** . To odpowiednik następujące ustawienia:
 
         new MobileAppConfiguration()
             .AddMobileAppHomeController()             // from the Home package

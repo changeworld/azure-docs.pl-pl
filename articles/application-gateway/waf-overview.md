@@ -8,10 +8,10 @@ ms.date: 5/22/2019
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 9c2759222198f5df682d9e7a5363c0d9679e0fad
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991401"
 ---
 # <a name="web-application-firewall-for-azure-application-gateway"></a>Zapora aplikacji sieci Web dla usługi Azure Application Gateway
@@ -130,7 +130,7 @@ W trybie oceniania anomalii ruchu, który pasuje do dowolnej reguły nie jest od
 
 |Severity  |Wartość  |
 |---------|---------|
-|Krytyczne     |5|
+|Krytyczny     |5|
 |Błąd        |4|
 |Ostrzeżenie      |3|
 |Powiadomienie       |2|

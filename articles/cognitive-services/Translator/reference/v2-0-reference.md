@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-pawal
 ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389848"
 ---
 # <a name="translator-text-api-v20"></a>Interfejs API tekstu usługi Translator w wersji 2.0
@@ -85,11 +85,11 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis    |Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji  |(pusty)    |Wymagany. Jeśli nagłówek autoryzacji lub Ocp-Apim-Subscription-Key jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający "Bearer" + "" + "access_token".|query|string|
-|text|(pusty)   |Wymagany. Ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
+|appid  |(pusty)    |Wymagany. Jeśli nagłówek autoryzacji lub Ocp-Apim-Subscription-Key jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający "Bearer" + "" + "access_token".|query|string|
+|tekst|(pusty)   |Wymagany. Ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
 |from|(pusty)   |Opcjonalny. Ciąg reprezentujący kod języka tekstu tłumaczenia. Na przykład en w języku angielskim.|query|string|
 |na|(pusty) |Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
-|Typ zawartości|(pusty)    |Opcjonalny. Format tekst tłumaczony. Obsługiwane formaty to text/plain (ustawienie domyślne) i text/html. Kod HTML musi być elementem pełną, poprawnie sformułowany.|query|string|
+|contentType|(pusty)    |Opcjonalny. Format tekst tłumaczony. Obsługiwane formaty to text/plain (ustawienie domyślne) i text/html. Kod HTML musi być elementem pełną, poprawnie sformułowany.|query|string|
 |category|(pusty)   |Opcjonalny. Ciąg zawierający kategoria tłumaczenia (domena). Wartość domyślna to "general".|query|string|
 |Autoryzacja|(pusty)  |Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".|nagłówek|string|
 |OCP-Apim-Subscription-Key|(pusty)  |Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
@@ -231,7 +231,7 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
 |Ustawienia regionalne|(pusty) |Wymagany. Ciąg reprezentujący kombinacji ISO 639 kultury małe dwuliterowych kod skojarzony z języka i kod ISO 3166 przeszczepiania wielkie dwuliterowych można lokalizować nazwy języka lub ISO 639 małych liter, kultura kod samodzielnie.|query|string|
 |Autoryzacja|(pusty)  |Jeśli wymagane pole appid lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
 |OCP-Apim-Subscription-Key|(pusty)  |Jeśli wymagane pole appid lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
@@ -265,7 +265,7 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
 |Autoryzacja|(pusty)  |Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
 |OCP-Apim-Subscription-Key|(pusty)|Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
@@ -298,7 +298,7 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
 |Autoryzacja|(pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
 |OCP-Apim-Subscription-Key|(pusty)|Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
  
@@ -330,11 +330,11 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|text|(pusty)   |Wymagany. Ciąg zawierający zdania lub zdania określony język wymawiane dla strumienia wave. Rozmiar tekstu, aby porozmawiać nie może przekraczać 2000 znaków.|query|string|
+|appid|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|tekst|(pusty)   |Wymagany. Ciąg zawierający zdania lub zdania określony język wymawiane dla strumienia wave. Rozmiar tekstu, aby porozmawiać nie może przekraczać 2000 znaków.|query|string|
 |language|(pusty)   |Wymagany. Ciąg reprezentujący kod obsługiwanego języka, aby porozmawiać z tekstem w. Kod musi być obecne na liście kodów zwrócona przez metodę `GetLanguagesForSpeak`.|query|string|
 |format|(pusty)|Opcjonalny. Ciąg określający identyfikator typu zawartości. Obecnie `audio/wav` i `audio/mp3` są dostępne. Wartość domyślna to `audio/wav`.|query|string|
-|Opcje|(pusty)    |<ul><li>Opcjonalny. Ciąg określający właściwości syntezatora mowy:<li>`MaxQuality` i `MinSize` są dostępne określić jakość sygnałów audio. Za pomocą `MaxQuality`, możesz uzyskać głosów z najwyższą jakość i `MinSize`, możesz uzyskać głosów z najmniejszego możliwego rozmiaru. Wartość domyślna to `MinSize`.</li><li>`female` i `male` są dostępne określić żądaną płeć głosu. Wartość domyślna to `female`. Użyj pionowy pasek <code>\|</code> obejmujący wiele opcji. Na przykład `MaxQuality|Male`.</li></li></ul> |query|string|
+|options|(pusty)    |<ul><li>Opcjonalny. Ciąg określający właściwości syntezatora mowy:<li>`MaxQuality` i `MinSize` są dostępne określić jakość sygnałów audio. Za pomocą `MaxQuality`, możesz uzyskać głosów z najwyższą jakość i `MinSize`, możesz uzyskać głosów z najmniejszego możliwego rozmiaru. Wartość domyślna to `MinSize`.</li><li>`female` i `male` są dostępne określić żądaną płeć głosu. Wartość domyślna to `female`. Użyj pionowy pasek <code>\|</code> obejmujący wiele opcji. Na przykład `MaxQuality|Male`.</li></li></ul> |query|string|
 |Autoryzacja|(pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
 |OCP-Apim-Subscription-Key|(pusty)  |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
@@ -366,8 +366,8 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)  |Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|text|(pusty)|Wymagany. Ciąg zawierający tekst, którego język jest zidentyfikowanie. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query| string|
+|appid|(pusty)  |Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|tekst|(pusty)|Wymagany. Ciąg zawierający tekst, którego język jest zidentyfikowanie. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query| string|
 |Autoryzacja|(pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
 |OCP-Apim-Subscription-Key  |(pusty)    |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
@@ -421,7 +421,7 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
 |Autoryzacja|(pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
 |OCP-Apim-Subscription-Key|(pusty)|Jeśli wymagane `appid` nie określono pola lub nagłówka autoryzacji.|nagłówek|string|
 
@@ -455,13 +455,13 @@ Typ zawartości odpowiedzi: aplikacja: xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych   |
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
 |OriginalText|(pusty)|Wymagany. Ciąg zawierający tekst do tłumaczenia z. Ciąg może się składać maksymalnie 1000 znaków.|query|string|
 |translatedText|(pusty) |Wymagany. Ciąg zawierający przetłumaczonego tekstu w języku docelowym. Ciąg może się składać maksymalnie 2000 znaków.|query|string|
 |from|(pusty)   |Wymagany. Ciąg reprezentujący kod języka tekstu tłumaczenia. EN = wersja angielska, de = niemieckiego itp...|query|string|
 |na|(pusty)|Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
 |rating|(pusty) |Opcjonalny. Liczba całkowita reprezentująca oceny jakości dla tych parametrów. Wartość od -10 do 10. Wartość domyślna to 1.|query|liczba całkowita|
-|Typ zawartości|(pusty)    |Opcjonalny. Format tekst tłumaczony. Obsługiwane formaty to "text/plain" i "text/html". Kod HTML musi być elementem pełną, poprawnie sformułowany.   |query|string|
+|contentType|(pusty)    |Opcjonalny. Format tekst tłumaczony. Obsługiwane formaty to "text/plain" i "text/html". Kod HTML musi być elementem pełną, poprawnie sformułowany.   |query|string|
 |category|(pusty)|Opcjonalny. Ciąg zawierający kategoria tłumaczenia (domena). Wartość domyślna to "general".|query|string|
 |Użytkownik|(pusty)|Wymagany. Ciąg używany do śledzenia inicjatorem przesyłania.|query|string|
 |Identyfikator URI|(pusty)|Opcjonalny. Ciąg zawierający lokalizację zawartości to tłumaczenie.|query|string|
@@ -565,8 +565,8 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)  |Wymagany. Jeśli nagłówek autoryzacji lub Ocp-Apim-Subscription-Key jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający "Bearer" + "" + "access_token".|query| string|
-|text|(pusty)   |Wymagany. Ciąg reprezentujący tekst, który ma podzielić na zdania. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
+|appid|(pusty)  |Wymagany. Jeśli nagłówek autoryzacji lub Ocp-Apim-Subscription-Key jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający "Bearer" + "" + "access_token".|query| string|
+|tekst|(pusty)   |Wymagany. Ciąg reprezentujący tekst, który ma podzielić na zdania. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
 |language   |(pusty)    |Wymagany. Ciąg reprezentujący kod języka tekstu wejściowego.|query|string|
 |Autoryzacja|(pusty)|Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".    |nagłówek|string|
 |OCP-Apim-Subscription-Key|(pusty)|Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
@@ -659,8 +659,8 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|text|(pusty)|Wymagany. Ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
+|appid|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|tekst|(pusty)|Wymagany. Ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
 |from|(pusty)|Wymagany. Ciąg reprezentujący kod języka tekstu tłumaczenia.|query|string|
 |na |(pusty)    |Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
 |maxTranslations|(pusty)|Wymagany. Liczba całkowita reprezentująca maksymalną liczbę tłumaczeń do zwrócenia.|query|liczba całkowita|

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
 ms.openlocfilehash: 9694c682f171ab715812b05fed2064c9bbcd36b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60600369"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Zarządzaj serwerem VMware vCenter
@@ -33,7 +33,7 @@ Trwa około 15 minut, aby uzyskać informacje o koncie, które można synchroniz
 
 ### <a name="account-permissions"></a>Uprawnień konta
 
-|**Zadanie podrzędne** | **Konto** | **Uprawnienia** | **Szczegóły**|
+|**Zadanie** | **Konto** | **Uprawnienia** | **Szczegóły**|
 |--- | --- | --- | ---|
 |**Automatyczne odnajdowanie/migracji (bez powrotu po awarii)** | Potrzebujesz co najmniej użytkownik tylko do odczytu | Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, Przypisz **bez dostępu** roli **Propagacja do obiektu podrzędnego** obiektu do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyny wirtualne i sieci).|
 |**Replikacji i pracy awaryjnej** | Potrzebujesz co najmniej użytkownik tylko do odczytu| Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, Przypisz **bez dostępu** roli **Propagacja do obiektu podrzędnego** obiektu do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyny wirtualne i sieci).<br/><br/> Przydatne do celów migracji, ale nie Pełna replikacja, tryb failover i powrotu po awarii.|
@@ -98,7 +98,7 @@ Jak adres IP zostanie zaktualizowany, składniki usługi Site Recovery rozpoczni
 ## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>Migrowanie kilka chronionych maszyn wirtualnych do nowego vCenter
 
 > [!NOTE]
-> Ta sekcja ma zastosowanie tylko podczas migrowania kilka chronionych maszyn wirtualnych do nowego vCenter. Jeśli chcesz, aby chronić nowy zestaw maszyn wirtualnych z programu vCenter nowe, [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault) i rozpoczynać  **[Włącz ochronę](vmware-azure-tutorial.md#enable-replication)**.
+> Ta sekcja ma zastosowanie tylko podczas migrowania kilka chronionych maszyn wirtualnych do nowego vCenter. Jeśli chcesz, aby chronić nowy zestaw maszyn wirtualnych z programu vCenter nowe, [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault) i rozpoczynać  **[Włącz ochronę](vmware-azure-tutorial.md#enable-replication)** .
 
 Aby przenieść kilku maszyn wirtualnych do nowego vCenter:
 
@@ -108,7 +108,7 @@ Aby przenieść kilku maszyn wirtualnych do nowego vCenter:
 4. Teraz, ochrona migrowanych maszyn wirtualnych za pomocą [wybierając nowy serwer vCenter, po włączeniu ochrony](vmware-azure-tutorial.md#enable-replication).
 
 > [!TIP]
-> Jeśli liczba migrowanych maszyn wirtualnych jest **wyższe** , liczby maszyn wirtualnych, przechowywane w starym vCenter zaktualizowanie adresu IP nowego vcenter, wykonując instrukcje podane w tym miejscu. Kilka maszyn wirtualnych, które mają zostać zachowane podczas stary serwer vCenter [Wyłącz replikację](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault)i Rozpocznij  **[Włącz ochronę](vmware-azure-tutorial.md#enable-replication)**.
+> Jeśli liczba migrowanych maszyn wirtualnych jest **wyższe** , liczby maszyn wirtualnych, przechowywane w starym vCenter zaktualizowanie adresu IP nowego vcenter, wykonując instrukcje podane w tym miejscu. Kilka maszyn wirtualnych, które mają zostać zachowane podczas stary serwer vCenter [Wyłącz replikację](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault)i Rozpocznij  **[Włącz ochronę](vmware-azure-tutorial.md#enable-replication)** .
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

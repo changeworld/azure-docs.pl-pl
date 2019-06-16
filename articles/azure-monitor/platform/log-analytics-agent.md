@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: magoedte
 ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66751982"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Azure Log Analytics
@@ -98,7 +98,7 @@ Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych inform
 |Zasób agenta|Porty |Kierunek |Obejście inspekcji HTTPS|
 |------|---------|--------|--------|   
 |*.ods.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
-|*.oms.opinsights.azure.com |Port 443 |Wychodzące|Yes |  
+|*.oms.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
 |*.blob.core.windows.net |Port 443 |Wychodzące|Tak |  
 |*.azure-automation.net |Port 443 |Wychodzące|Tak |  
 

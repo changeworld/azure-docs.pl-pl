@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244960"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Alerty dzienników aktywności są alerty, które aktywować po wystąpieniu nowego zdarzenia dziennika aktywności, który spełnia warunki określone w alercie.
 
 Te alerty są dla zasobów platformy Azure, można utworzyć przy użyciu szablonu usługi Azure Resource Manager. One również mogą być tworzone, zaktualizował lub usunął w witrynie Azure portal. Zazwyczaj można Tworzenie alertów dziennika aktywności, aby otrzymywać powiadomienia o zmianach określonych zasobów w subskrypcji platformy Azure, często są ograniczone do określonych grupach zasobów lub zasobu. Na przykład możesz chcieć otrzymasz powiadomienie, gdy dowolne maszyny wirtualnej (Przykładowe grupy zasobów) **myProductionResourceGroup** zostanie usunięty lub możesz chcieć uzyskać powiadomienia, gdy wszystkie nowe role są przypisane do użytkownika w ramach subskrypcji.

@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 21fbfe22901de677209b55639cd8871ab408375b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719022"
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary usług Cloud Services
@@ -86,9 +86,9 @@ W poniższych tabelach przedstawiono rozmiary maszyn wirtualnych i możliwości,
 | Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / niska |
-| Small           | 1         | 1,75         | 225                  | 1 / średnia |
-| Medium          | 2         | 3,5          | 490                  | 1 / średnia |
-| Large           | 4         | 7            | 1000                 | 2 / wysoka |
+| Małe           | 1         | 1,75         | 225                  | 1 / średnia |
+| Średni          | 2         | 3,5          | 490                  | 1 / średnia |
+| Duże           | 4         | 7            | 1000                 | 2 / wysoka |
 | ExtraLarge      | 8         | 14           | 2040                 | 4 / wysoka |
 | A5              | 2         | 14           | 490                  | 1 / średnia |
 | A6              | 4         | 28           | 1000                 | 2 / wysoka |

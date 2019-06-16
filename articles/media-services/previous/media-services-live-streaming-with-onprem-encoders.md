@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463812"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Praca z kanałami odbierającymi strumień na żywo o różnych szybkościach transmisji bitów z koderów lokalnych
@@ -198,7 +198,7 @@ Poniższa tabela przedstawia obsługiwane standardy dla zamkniętej podpisy i ad
 | --- | --- |
 | Napisy kodowane CEA-708 i EIA 608 (708/608) |Napisy kodowane CEA-708 EIA 608 są i napisów standardy dotyczące Stanów Zjednoczonych i Kanady.<p><p>Obecnie podpisy jest obsługiwana tylko wtedy, gdy w zakodowany strumień wejściowy. Należy używać kodera multimedialnych na żywo, który może wstawić 608 lub 708 podpisów w zakodowany strumień, który jest wysyłany do usługi Media Services. Media Services dostarcza zawartość z podpisami wstawiony do swojej przeglądarki. |
 | TTML wewnątrz .ismt (Smooth Streaming ścieżki tekstowe) |Funkcję dynamicznego tworzenia pakietów usługi Media Services umożliwia klientom przesyłanie strumieniowe zawartości w jednym z następujących formatów: DASH, HLS i Smooth Streaming. Jednak jeśli użytkownik pozyskiwania pofragmentowany plik MP4 (Smooth Streaming) z podpisami wewnątrz .ismt (Smooth Streaming ścieżki tekstowe), można dostarczać klientom tylko Smooth Streaming strumienia. |
-| SCTE-35 |SCTE 35 jest systemem sygnalizowanie cyfrowego, który służy do wstawiania reklam podpowiedzi. Odbiorniki podrzędne umożliwiają sygnał splice reklamy w strumieniu wyznaczonym czasie. SCTE 35 muszą być wysyłane jako rozrzedzony śledzenia w strumieniu wejściowym.<p><p>Obecnie obsługiwane tylko strumień wejściowy formatowania tego wykonuje sygnały ad jest pofragmentowana. w formacie MP4 (Smooth Streaming). Obsługiwana jest tylko dane wyjściowe format jest także Smooth Streaming. |
+| SCTE 35 |SCTE 35 jest systemem sygnalizowanie cyfrowego, który służy do wstawiania reklam podpowiedzi. Odbiorniki podrzędne umożliwiają sygnał splice reklamy w strumieniu wyznaczonym czasie. SCTE 35 muszą być wysyłane jako rozrzedzony śledzenia w strumieniu wejściowym.<p><p>Obecnie obsługiwane tylko strumień wejściowy formatowania tego wykonuje sygnały ad jest pofragmentowana. w formacie MP4 (Smooth Streaming). Obsługiwana jest tylko dane wyjściowe format jest także Smooth Streaming. |
 
 ## <a id="considerations"></a>Zagadnienia dotyczące
 Podczas korzystania z lokalny koder na żywo do wysyłania strumienia o różnych szybkościach transmisji bitów do kanału, obowiązują następujące ograniczenia:
@@ -228,7 +228,7 @@ Poniżej przedstawiono inne zagadnienia związane z pracy, korzystając z kanał
 ## <a name="feedback"></a>Opinia
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 [Zalecane w kodery lokalne](media-services-recommended-encoders.md)
 
 [Specyfikacja odbierania Azure Media Services pofragmentowane życie w formacie MP4](media-services-fmp4-live-ingest-overview.md)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001459"
 ---
 # <a name="security-attributes-for-azure-storage"></a>Atrybuty zabezpieczeń dla usługi Azure Storage
@@ -26,8 +26,8 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowane w usłudze Azure Storage
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak |  |
-| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | Obsługa standardowych mechanizmów HTTPS/TLS.  Użytkownicy mogą także szyfrować dane przed ich wysłaniem do usługi. |
+| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Yes |  |
+| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Yes | Obsługa standardowych mechanizmów HTTPS/TLS.  Użytkownicy mogą także szyfrować dane przed ich wysłaniem do usługi. |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND |  |
 | Wywołania interfejsu API szyfrowane| Tak |  |
@@ -60,7 +60,7 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowane w usłudze Azure Storage
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
 | Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji | Tak | Dziennik aktywności platformy Azure Resource Manager |
-| Rejestrowanie płaszczyzny danych i inspekcji| Tak | Dzienniki diagnostyczne usługi i rejestrowanie usługi Azure Monitor począwszy od wersji zapoznawczej  |
+| Rejestrowanie płaszczyzny danych i inspekcji| Yes | Dzienniki diagnostyczne usługi i rejestrowanie usługi Azure Monitor począwszy od wersji zapoznawczej  |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 

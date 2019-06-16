@@ -19,10 +19,10 @@ ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540263"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak uzyskać certyfikatu AppSource dla usługi Azure Active Directory
@@ -40,7 +40,7 @@ Jeśli chcesz dowiedzieć się więcej o integrowaniu aplikacji z usługą Azure
 A *aplikację wielodostępną* to aplikacja, która akceptuje logowania użytkowników z firmy lub organizacji, które mają usługę Azure AD bez konieczności osobnego wystąpienia, konfiguracji lub wdrożenia. Usługa AppSource zaleca się, że aplikacje implementują wielodostępność, aby włączyć *jednym kliknięciem* bezpłatna wersja próbna.
 
 Aby włączyć wielu dzierżawców w swojej aplikacji, wykonaj następujące kroki:
-1. Ustaw `Multi-Tenanted` właściwości `Yes` informacjami rejestrację aplikacji w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Domyślnie aplikacje utworzone w witrynie Azure portal są skonfigurowane jako  *[pojedynczej dzierżawy](#single-tenant-applications)*.
+1. Ustaw `Multi-Tenanted` właściwości `Yes` informacjami rejestrację aplikacji w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Domyślnie aplikacje utworzone w witrynie Azure portal są skonfigurowane jako  *[pojedynczej dzierżawy](#single-tenant-applications)* .
 1. Zaktualizuj kod w celu wysyłania żądań do `common` punktu końcowego. Aby to zrobić, należy zaktualizować punkt końcowy z `https://login.microsoftonline.com/{yourtenant}` do `https://login.microsoftonline.com/common*`.
 1. W przypadku niektórych platform, takich jak ASP .NET należy również zaktualizować swój kod, aby zaakceptować wielu wystawców.
 
