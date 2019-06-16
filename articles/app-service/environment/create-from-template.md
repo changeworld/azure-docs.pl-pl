@@ -15,15 +15,15 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66137083"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Tworzenie środowiska ASE przy użyciu szablonu usługi Azure Resource Manager
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -69,12 +69,12 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 Trwa około godziny na środowisko ASE ma zostać utworzony. Następnie ASE wyświetlana w portalu na liście dla subskrypcji, która wyzwoliła wdrażania środowiska ASE.
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>Przekazać i skonfigurować certyfikat SSL "default"
-Certyfikat SSL musi być skojarzony z ASE jako certyfikat SSL "domyślna", który jest używany do ustanawiania połączeń SSL do aplikacji. Jeśli środowisko ASE, domyślny sufiks DNS jest *wewnętrznego contoso.com*, połączenie https://some-random-app.internal-contoso.com wymaga certyfikatu SSL, który jest prawidłowy dla **.internal contoso.com*. 
+Certyfikat SSL musi być skojarzony z ASE jako certyfikat SSL "domyślna", który jest używany do ustanawiania połączeń SSL do aplikacji. Jeśli środowisko ASE, domyślny sufiks DNS jest *wewnętrznego contoso.com*, połączenie https://some-random-app.internal-contoso.com wymaga certyfikatu SSL, który jest prawidłowy dla * *.internal contoso.com*. 
 
 Uzyskaj certyfikat protokołu SSL za pomocą wewnętrznych urzędów certyfikacji, zakup certyfikat od wystawcy zewnętrznego lub przy użyciu certyfikatu z podpisem własnym. Niezależnie od źródła certyfikatu SSL musi być prawidłowo skonfigurowane następujące atrybuty certyfikatu:
 
 * **Podmiot**: Ten atrybut musi być równa **lokalizacji głównego domain-here.com*.
-* **Alternatywna nazwa podmiotu**: Ten atrybut musi zawierać zarówno **lokalizacji głównego domain-here.com* i **.SCM.domena-głównego-domeny — here.com*. Połączenia SSL z witryną SCM/Kudu skojarzonych z poszczególnymi aplikacjami, użyj adresu w postaci *your-app-name.scm.your-root-domain-here.com*.
+* **Alternatywna nazwa podmiotu**: Ten atrybut musi zawierać zarówno **lokalizacji głównego domain-here.com* i * *.SCM.domena-głównego-domeny — here.com*. Połączenia SSL z witryną SCM/Kudu skojarzonych z poszczególnymi aplikacjami, użyj adresu w postaci *your-app-name.scm.your-root-domain-here.com*.
 
 Za pomocą ważnego certyfikatu SSL w kasie potrzebne są dwa dodatkowe kroki przygotowawcze. Przekonwertuj lub zapisz certyfikat SSL jako plik pfx. Należy pamiętać, że plik PFX musi obejmować wszystkie pośrednie i certyfikaty główne. Zabezpiecz go przy użyciu hasła.
 
@@ -154,7 +154,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Trwa około 40 minut na środowisko ASE frontonu do zastosowania zmiany. Na przykład ASE o rozmiarze domyślnym wykorzystuje dwa Frontony, szablon trwa około jednej godziny i 20 minut. Gdy szablon jest uruchomiona, nie można skalować środowiska ASE.  
 
-Po zakończeniu działania tego szablonu, dostęp do aplikacji w środowisku ASE wewnętrznego modułu równoważenia obciążenia są dostępne za pośrednictwem protokołu HTTPS. Połączenia są chronione przy użyciu domyślnego certyfikatu SSL. Domyślny certyfikat SSL jest używany, gdy aplikacje w środowisku ASE wewnętrznego modułu równoważenia obciążenia są rozwiązywane przez przy użyciu kombinacji nazwy aplikacji, a także domyślna nazwa hosta. Na przykład https://mycustomapp.internal-contoso.com korzysta z domyślnego certyfikatu SSL dla **.internal contoso.com*.
+Po zakończeniu działania tego szablonu, dostęp do aplikacji w środowisku ASE wewnętrznego modułu równoważenia obciążenia są dostępne za pośrednictwem protokołu HTTPS. Połączenia są chronione przy użyciu domyślnego certyfikatu SSL. Domyślny certyfikat SSL jest używany, gdy aplikacje w środowisku ASE wewnętrznego modułu równoważenia obciążenia są rozwiązywane przez przy użyciu kombinacji nazwy aplikacji, a także domyślna nazwa hosta. Na przykład https://mycustomapp.internal-contoso.com korzysta z domyślnego certyfikatu SSL dla * *.internal contoso.com*.
 
 Jednak podobnie jak aplikacje uruchamiane w usłudze wielodostępnych publicznych, deweloperzy mogą konfigurować nazwy niestandardowego hosta dla poszczególnych aplikacji. Mogą również skonfigurować unikatowych powiązań certyfikatów SNI SSL dla poszczególnych aplikacji.
 

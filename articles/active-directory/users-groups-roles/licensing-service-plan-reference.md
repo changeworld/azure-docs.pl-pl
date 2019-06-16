@@ -17,10 +17,10 @@ ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f96a7ad1c67fab9354daaafa129d15dfbff12064
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64729380"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Nazw produktów i usługa identyfikuje planu licencjonowania
@@ -31,7 +31,7 @@ Gdy zarządzanie licencjami w [witryny Azure portal](https://portal.azure.com/#b
 - **Identyfikator ciągu**: Używany przez polecenia cmdlet programu PowerShell w wersji 1.0, podczas wykonywania operacji na licencji
 - **GUID**: Identyfikator GUID używany przez usługi Azure AD Graph i programu Microsoft Graph
 - **Usługa plany uwzględnione**: Lista planów usług w ramach produktu, które odpowiadają identyfikator ciągu i identyfikator GUID
-- **Usługa plany uwzględnione (przyjaznych nazw)**: Lista planów usług (przyjazne nazwy) w ramach produktu, które odpowiadają identyfikator ciągu i identyfikator GUID
+- **Usługa plany uwzględnione (przyjaznych nazw)** : Lista planów usług (przyjazne nazwy) w ramach produktu, które odpowiadają identyfikator ciągu i identyfikator GUID
 
 >[!NOTE]
 >Te informacje są dokładne w dniu 15 kwietnia 2019 r.

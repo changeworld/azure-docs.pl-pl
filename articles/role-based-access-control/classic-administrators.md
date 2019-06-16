@@ -15,10 +15,10 @@ ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9c3bd2480853f5c4134cd560c20a6007b044e138
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924649"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Administratorzy subskrypcji klasycznej platformy Azure
@@ -38,7 +38,7 @@ W tym artykule opisano, jak dodać lub zmienić role administratora współpracu
 
     Współadministratorzy można przypisać tylko w zakresie subskrypcji.
 
-1. Kliknij pozycję **Kontrola dostępu (IAM)**.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 
 1. Kliknij przycisk **Administratorzy Classic** kartę.
 
@@ -71,7 +71,7 @@ Należy pamiętać, że [wbudowane role zasobów platformy Azure](../role-based-
 
 1. Otwórz [subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i wybierz subskrypcję.
 
-1. Kliknij pozycję **Kontrola dostępu (IAM)**.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 
 1. Kliknij przycisk **Administratorzy Classic** kartę.
 
@@ -133,7 +133,7 @@ Jeśli zalogujesz się za pomocą konta służbowego lub szkolnego, możesz doda
 
   | Metoda logowania | Dodawanie użytkownika do konta Microsoft jako administratora usługi? | W tej samej organizacji jako Administrator usługi, należy dodać konto służbowe lub szkolne? | Dodaj konto służbowe lub szkolne w innej organizacji jako Administrator usługi? |
   | --- | --- | --- | --- |
-  |  Konto Microsoft |Yes |Nie |Nie |
+  |  Konto Microsoft |Tak |Nie |Nie |
   |  Konto służbowe |Yes |Yes |Nie |
 
 ## <a name="view-the-account-administrator"></a>Widok administratora konta

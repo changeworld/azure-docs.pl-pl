@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 65e5b5502b7d63d89845781487443f539a708816
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866969"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurowanie zasad ochrony zawartości przy użyciu witryny Azure portal
 
 > [!NOTE]
-> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadnych nowych funkcji lub funkcje są dodawane do usługi Media Services v2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadnych nowych funkcji lub funkcje są dodawane do usługi Media Services v2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
 >
 
  Usługa Azure Media Services można zabezpieczyć multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES) przy użyciu kluczy szyfrowania 128-bitowego. Ponadto można korzystania z szyfrowania common encryption (CENC) przy użyciu technologii PlayReady i Widevine zarządzania prawami cyfrowymi (DRM) i technologii FairPlay firmy Apple. 
@@ -65,7 +65,7 @@ Jeśli skonfigurujesz licencję jako nietrwałych tylko wtedy, gdy gracz korzyst
 
 ![Ochrona zawartości nietrwałych](./media/media-services-portal-content-protection/media-services-content-protection003.png)
 
-### <a name="persistent"></a>Trwała
+### <a name="persistent"></a>Trwałe
 Jeśli skonfigurujesz licencję jako trwałe jest zapisywane w trwałym magazynie na komputerze klienckim.
 
 ![Stałej ochrony zawartości](./media/media-services-portal-content-protection/media-services-content-protection004.png)

@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: 490ac613adac968cc323c2d8351b59aece181b68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153891"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Tworzenie bazy danych Oracle na Maszynie wirtualnej platformy Azure
@@ -41,7 +41,7 @@ Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup*
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
-## <a name="create-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 Aby utworzyć maszynę wirtualną (VM), użyj [tworzenie az vm](/cli/azure/vm) polecenia. 
 

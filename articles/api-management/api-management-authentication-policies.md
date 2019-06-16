@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708791"
 ---
 # <a name="api-management-authentication-policies"></a>Zasady uwierzytelniania usługi API Management
@@ -57,8 +57,8 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
   
 |Name (Nazwa)|Opis|Wymagane|Domyślne|  
 |----------|-----------------|--------------|-------------|  
-|nazwa użytkownika|Określa atrybut username podstawowych poświadczeń.|Yes|ND|  
-|password|Określa hasło podstawowych poświadczeń.|Yes|ND|  
+|username|Określa atrybut username podstawowych poświadczeń.|Yes|ND|  
+|password|Określa hasło podstawowych poświadczeń.|Tak|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -91,7 +91,7 @@ W tym przykładzie certyfikat klienta jest identyfikowane przez nazwę zasobu.
   
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
-|authentication-certificate|Element główny.|Yes|  
+|authentication-certificate|Element główny.|Tak|  
   
 ### <a name="attributes"></a>Atrybuty  
   
@@ -126,13 +126,13 @@ W tym przykładzie certyfikat klienta jest identyfikowane przez nazwę zasobu.
   
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
-|Uwierzytelnianie zarządzane identity |Element główny.|Yes|  
+|Uwierzytelnianie zarządzane identity |Element główny.|Tak|  
   
 ### <a name="attributes"></a>Atrybuty  
   
 |Name (Nazwa)|Opis|Wymagane|Domyślne|  
 |----------|-----------------|--------------|-------------|  
-|zasób|ciąg. Identyfikator URI Identyfikatora aplikacji docelowej sieci Web interfejsu API (zabezpieczono zasób) w usłudze Azure Active Directory.|Yes|ND|  
+|resource|ciąg. Identyfikator URI Identyfikatora aplikacji docelowej sieci Web interfejsu API (zabezpieczono zasób) w usłudze Azure Active Directory.|Tak|ND|  
 |dane wyjściowe — token-— nazwa zmiennej|ciąg. Nazwa zmiennej kontekstu, który otrzyma wartość tokenu jako typ obiektu `string`.|Nie|ND|  
 |ignore-error|Wartość logiczna. Jeśli ustawiono `true`, potok zasady będą w dalszym ciągu wykonują nawet wtedy, gdy token dostępu nie zostanie uzyskana.|Nie|false|  
   

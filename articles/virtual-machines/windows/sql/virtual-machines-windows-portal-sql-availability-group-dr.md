@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: f9e31ac7685d597c741033bc165c6a51280e3d72
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571730"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure w różnych regionach
@@ -167,14 +167,14 @@ Po zakończeniu testowania łączności przenieść podstawową replikę z powro
 
 | Lokalizacja | Wystąpienie serwera | Rola | Tryb dostępności | Tryb pracy awaryjnej
 | ----- | ----- | ----- | ----- | -----
-| Podstawowe centrum danych | SQL-1 | Podstawowy | Synchroniczne | Automatyczny
-| Podstawowe centrum danych | SQL-2 | Pomocniczy | Synchroniczne | Automatyczny
+| Podstawowe centrum danych | SQL-1 | Podstawowy | Synchroniczne | Automatyczne
+| Podstawowe centrum danych | SQL-2 | Pomocniczy | Synchroniczne | Automatyczne
 | Centrum danych w dodatkowej lub zdalnym | SQL-3 | Pomocniczy | Asynchroniczne | Ręcznie
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Więcej informacji na temat planowanych i wymuszonego ręcznego przełączania trybu failover
 
-Aby uzyskać więcej informacji, zobacz następujące tematy:
+Więcej informacji znajduje się w następujących tematach:
 
 - [Wykonaj planowane ręczna praca awaryjna grupy dostępności (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Wykonać wymuszone ręczna praca awaryjna grupy dostępności (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
@@ -182,6 +182,6 @@ Aby uzyskać więcej informacji, zobacz następujące tematy:
 ## <a name="additional-links"></a>Dodatkowe linki
 
 * [Zawsze włączone grupy dostępności](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Usługa Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Moduły równoważenia obciążenia platformy Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Zestawy dostępności platformy Azure](../manage-availability.md)

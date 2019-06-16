@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955965"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Skalowanie automatyczne i środowisko App Service Environment w wersji 1
@@ -93,7 +93,7 @@ Frank jest bardzo podobnie do funkcji z aplikacją. Wiedzą, że godzinach szczy
 |  | |
 | **Reguły skalowania automatycznego (skalowanie w górę)** |**Reguły skalowania automatycznego (skalowanie w górę)** |
 | **Zasób:** (Usługa App Service Environment) w środowisku produkcyjnym |**Zasób:** (Usługa App Service Environment) w środowisku produkcyjnym |
-| **Metryka:** % procesora CPU |**Metryka:** % procesora CPU |
+| **Metryka:** PROCENT UŻYCIA PROCESORA CPU |**Metryka:** PROCENT UŻYCIA PROCESORA CPU |
 | **Operacja:** Przekracza 60% |**Operacja:** Większe niż 80% |
 | **Czas trwania:** 5 minut |**Czas trwania:** 10 minut |
 | **Agregacja czasu:** Średnia |**Agregacja czasu:** Średnia |
@@ -102,7 +102,7 @@ Frank jest bardzo podobnie do funkcji z aplikacją. Wiedzą, że godzinach szczy
 |  | |
 | **Reguły skalowania automatycznego (skalowanie w dół)** |**Reguły skalowania automatycznego (skalowanie w dół)** |
 | **Zasób:** (Usługa App Service Environment) w środowisku produkcyjnym |**Zasób:** (Usługa App Service Environment) w środowisku produkcyjnym |
-| **Metryka:** % procesora CPU |**Metryka:** % procesora CPU |
+| **Metryka:** PROCENT UŻYCIA PROCESORA CPU |**Metryka:** PROCENT UŻYCIA PROCESORA CPU |
 | **Operacja:** Mniej niż 30% |**Operacja:** Mniej niż 20% |
 | **Czas trwania:** 10 minut |**Czas trwania:** 15 minut |
 | **Agregacja czasu:** Średnia |**Agregacja czasu:** Średnia |
@@ -209,7 +209,7 @@ W tym scenariuszu Frank wie, że współczynnik błędów wzrasta, gdy Frontony 
 |  |
 | **Reguły skalowania automatycznego (skalowanie w górę)** |
 | **Zasób:** Pula frontonu |
-| **Metryka:** % procesora CPU |
+| **Metryka:** PROCENT UŻYCIA PROCESORA CPU |
 | **Operacja:** Przekracza 60% |
 | **Czas trwania:** 20 minut |
 | **Agregacja czasu:** Średnia |
@@ -218,7 +218,7 @@ W tym scenariuszu Frank wie, że współczynnik błędów wzrasta, gdy Frontony 
 |  |
 | **Reguły skalowania automatycznego (skalowanie w dół)** |
 | **Zasób:** Pula procesów roboczych 1 |
-| **Metryka:** % procesora CPU |
+| **Metryka:** PROCENT UŻYCIA PROCESORA CPU |
 | **Operacja:** Mniej niż 30% |
 | **Czas trwania:** 20 minut |
 | **Agregacja czasu:** Średnia |

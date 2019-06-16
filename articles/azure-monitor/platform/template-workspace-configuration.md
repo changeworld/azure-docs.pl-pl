@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
 ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129431"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszaru roboczego usługi Log Analytics przy użyciu szablonów usługi Azure Resource Manager
@@ -27,7 +27,7 @@ ms.locfileid: "66129431"
 Możesz użyć [szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) do tworzenia i konfigurowania obszarów roboczych usługi Log Analytics w usłudze Azure Monitor. Przykłady zadań, które można wykonać za pomocą szablonów:
 
 * Tworzenie obszaru roboczego w tym ustawienia warstwy cenowej 
-* Dodaj rozwiązanie
+* Dodawanie rozwiązania
 * Tworzenie zapisanych wyszukiwań
 * Utwórz grupę komputerów
 * Włącz zbieranie dzienników usług IIS na komputerach z zainstalowanym agentem Windows
@@ -44,8 +44,8 @@ Poniższa tabela zawiera listę wersji interfejsu API dla zasobów używanych w 
 
 | Resource | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|
-| Obszar roboczy   | obszary robocze    | 2017-03-15-preview |
-| wyszukaj      | savedSearches | 2015-03-20 |
+| Obszar roboczy   | Obszary robocze    | 2017-03-15-preview |
+| Wyszukiwanie      | savedSearches | 2015-03-20 |
 | Źródło danych | źródła danych   | 2015-11-01-preview |
 | Rozwiązanie    | rozwiązania     | 2015-11-01-preview |
 

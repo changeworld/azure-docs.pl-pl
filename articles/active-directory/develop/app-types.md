@@ -18,10 +18,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540659"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikacji w wersji 1.0
@@ -34,11 +34,11 @@ Na poniższym diagramie przedstawiono scenariusze i typy aplikacji, oraz w jaki 
 
 Poniżej przedstawiono pięciu scenariuszy głównej aplikacji obsługiwanych przez usługę Azure AD:
 
-- **[Aplikacja jednostronicowa (SPA)](single-page-application.md)**: Użytkownik musi zalogować się do aplikacji jednostronicowej, która jest zabezpieczony przez usługę Azure AD.
-- **[Przeglądarki sieci Web do aplikacji sieci web](web-app.md)**: Użytkownik musi zalogować się do aplikacji sieci web, która jest zabezpieczony przez usługę Azure AD.
-- **[Aplikacja natywna do internetowego interfejsu API](native-app.md)**: Natywnych aplikacji, która działa na telefonie, tablecie lub komputerze wymaga uwierzytelnienia użytkownika można pobrać zasobów z internetowego interfejsu API, która jest zabezpieczony przez usługę Azure AD.
-- **[Aplikacja do internetowego interfejsu API sieci Web](web-api.md)**: Aplikacja sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
-- **[Demon lub serwera aplikacji do internetowego interfejsu API](service-to-service.md)**: Aplikacji demona albo aplikacja serwera bez interfejsu użytkownika sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
+- **[Aplikacja jednostronicowa (SPA)](single-page-application.md)** : Użytkownik musi zalogować się do aplikacji jednostronicowej, która jest zabezpieczony przez usługę Azure AD.
+- **[Przeglądarki sieci Web do aplikacji sieci web](web-app.md)** : Użytkownik musi zalogować się do aplikacji sieci web, która jest zabezpieczony przez usługę Azure AD.
+- **[Aplikacja natywna do internetowego interfejsu API](native-app.md)** : Natywnych aplikacji, która działa na telefonie, tablecie lub komputerze wymaga uwierzytelnienia użytkownika można pobrać zasobów z internetowego interfejsu API, która jest zabezpieczony przez usługę Azure AD.
+- **[Aplikacja do internetowego interfejsu API sieci Web](web-api.md)** : Aplikacja sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
+- **[Demon lub serwera aplikacji do internetowego interfejsu API](service-to-service.md)** : Aplikacji demona albo aplikacja serwera bez interfejsu użytkownika sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
 
 Skorzystaj z linków, aby dowiedzieć się więcej na temat każdego rodzaju aplikacji i zrozumienie ogólnych scenariuszy przed rozpoczęciem pracy z kodem. Można także Poznaj różnice, które należy znać podczas zapisywania danej aplikacji, która współdziała z punktu końcowego w wersji 1.0 lub punktu końcowego v2.0.
 

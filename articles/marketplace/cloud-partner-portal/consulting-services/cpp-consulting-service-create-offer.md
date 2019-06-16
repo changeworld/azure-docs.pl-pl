@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
 ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942831"
 ---
 # <a name="create-a-consulting-offer"></a>Tworzenie oferty usługi doradcze
@@ -22,7 +22,7 @@ W tym artykule opisano, jak utworzyć i opublikować ofertę usługi doradcze.
 
 Zdefiniuj spakowanych doradcze oferty usługi. Skupić się na zakres stały, ustalony czas trwania, szacowany stała cena (lub zwolnij) i głównie zorientowane na przedsprzedażna ofert dla jednego klienta. Wybierz powtarzalne spakowanych engagements, które są popularne i efektywne, prowadzenie nową działalność dla Ciebie.
 
-## <a name="create-a-new-offer"></a>Utwórz nową ofertę
+## <a name="create-a-new-offer"></a>Tworzenie nowej oferty
 
 Aby utworzyć nową ofertę, wykonaj następujące kroki.
 1. W menu głównym portalu Cloud Partner, wybierz **nową ofertę**.

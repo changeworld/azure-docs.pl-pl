@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522361"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Interfejsu API v1 na v2 Przewodnik migracji dla aplikacji usługi LUIS
@@ -153,7 +153,7 @@ Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](
 |/ luis/api/v2.0/apps/customprebuiltdomains/{culture}  |Pobierz|
 
 ## <a name="importing-1x-app-into-2x"></a>Importowanie aplikacji 1.x do 2.x
-1.x wyeksportowany plik JSON aplikacji ma kilka obszarów, które należy zmienić przed zaimportowaniem do [LUIS] [ LUIS] w wersji 2.0. 
+1\.x wyeksportowany plik JSON aplikacji ma kilka obszarów, które należy zmienić przed zaimportowaniem do [LUIS] [ LUIS] w wersji 2.0. 
 
 ### <a name="prebuilt-entities"></a>Wstępnie utworzonych jednostek 
 [Ze wstępnie utworzonych jednostek](luis-prebuilt-entities.md) uległy zmianie. Upewnij się, że używasz wersji 2 ze wstępnie utworzonych jednostek. W tym za pomocą [datetimeV2](luis-reference-prebuilt-datetimev2.md), zamiast daty/godziny. 

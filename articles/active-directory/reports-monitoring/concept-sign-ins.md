@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 81b7030d0f45222a1641e34b341885d2ecc051e3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864464"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107665"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -118,15 +118,15 @@ Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
 
 - Wszyscy
 - Nie zastosowano
-- Sukces
+- Powodzenie
 - Niepowodzenie
 
 Filtr **Data** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
-Możliwe wartości to:
+Możliwe wartości:
 
 - 1 miesiąc
 - 7 dni
-- 24 godz.
+- 24 godziny
 - Niestandardowy zakres czasu
 
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
@@ -199,7 +199,7 @@ Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat 
 - Lokalizacja
 - Adres IP
 - Date
-- Wymagana usługa MFA
+- Wymagane uwierzytelnianie wieloskładnikowe
 - Stan logowania
 
 > [!NOTE]

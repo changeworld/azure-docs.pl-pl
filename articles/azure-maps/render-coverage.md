@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869992"
 ---
 # <a name="azure-maps-render-coverage"></a>Pokrycie renderowaniem usługi Azure Maps
@@ -34,7 +34,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 
 | Kraj/region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
 | ------ | :------------------: | :------------------: |
-| Algieria                          | ✓ | ✓ |
+| Algeria                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
 | Benin                            | ✓ | ✓ |
 | Botswana                         | ✓ | ✓ |
@@ -57,22 +57,22 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Ghana                            | ✓ | ✓ |
 | Gwinea                           | ✓ | Ø |
 | Gwinea Bissau                    | ✓ | Ø |
-| Kenia                            | ✓ | ✓ |
+| Kenya                            | ✓ | ✓ |
 | Lesotho                          | ✓ | ✓ |
 | Liberia                          | ✓ | Ø |
-| Libia                            | ✓ | Ø |
+| Libya                            | ✓ | Ø |
 | Madagaskar                       | ✓ | Ø |
 | Malawi                           | ✓ | ✓ |
 | Mali                             | ✓ | ✓ |
 | Mauretania                       | ✓ | ✓ |
 | Mauritius                        | ✓ | ✓ |
-| Wyspa Majotta                          | ✓ | ✓ |
+| Majotta                          | ✓ | ✓ |
 | Maroko                          | ✓ | ✓ |
 | Mozambik                       | ✓ | ✓ |
 | Namibia                          | ✓ | ✓ |
 | Niger                            | ✓ | ✓ |
 | Nigeria                          | ✓ | ✓ |
-| Réunion                          | ✓ | ✓ |
+| Reunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
 | Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha | ✓ | Ø |
 | Wyspy Świętego Tomasza i Książęca            | ✓ | Ø |
@@ -80,7 +80,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Sierra Leone                     | ✓ | ✓ |
 | Somalia                          | ✓ | ✓ |
 | Republika Południowej Afryki                     | ✓ | ✓ |
-| Sudan Południowy                      | ✓ | ✓ |
+| Sudan południowy                      | ✓ | ✓ |
 | Sudan                            | ✓ | ✓ |
 | Suazi                        | ✓ | ✓ |
 | Zjednoczona Republika Tanzanii      | ✓ | ✓ |
@@ -124,7 +124,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Gujana                    | ✓ | ✓ |
 | Haiti                     | ✓ | ✓ |
 | Honduras                  | ✓ | ✓ |
-| Jamajka                   | ✓ | ✓ |
+| Jamaica                   | ✓ | ✓ |
 | Martynika                | ✓ | ✓ |
 | Meksyk                    | ✓ | ✓ |
 | Montserrat                | ✓ | ✓ |
@@ -135,7 +135,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Peru                      | ✓ | ✓ |
 | Portoryko               | ✓ | ✓ |
 | Quebec (Kanada)           | ✓ | ✓ |
-| Saint Barthélemy          | ✓ | ✓ |
+| Saint-Barthélemy          | ✓ | ✓ |
 | Saint Kitts i Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
 | Saint-Martin (francuski)     | ✓ | ✓ |
@@ -175,9 +175,9 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Izrael                    |   | ✓ |
 | Japonia                     |   | Ø |
 | Jordania                    | ✓ | ✓ |
-| Kazachstan                |   | ✓ |
+| Kazakhstan                |   | ✓ |
 | Kuwejt                    | ✓ | ✓ |
-| Kirgistan                |   | Ø |
+| Kyrgyzstan                |   | Ø |
 | Laotańska Republika Ludowo-Demokratyczna |   | Ø |
 | Liban                   | ✓ | ✓ |
 | SRA Makau                 | ✓ | ✓ |
@@ -204,7 +204,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Zjednoczone Emiraty Arabskie      | ✓ | ✓ |
 | Odległe Mniejsze Wyspy Stanów Zjednoczonych |   | Ø |
 | Uzbekistan                |   | Ø |
-| Wietnam                   | ✓ | ✓ |
+| Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
 ## <a name="oceania"></a>Oceania
@@ -226,8 +226,8 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Niue                      |   | Ø |
 | Wyspa Norfolk            |   | Ø |
 | Palau                     |   | Ø |
-| Papua Nowa Gwinea          |   | Ø |
-| Pitcairn                  |   | Ø |
+| Papua-Nowa Gwinea          |   | Ø |
+| Wyspy Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
 | Wyspy Salomona           |   | Ø|
 | Tokelau                   |   | Ø |
@@ -277,7 +277,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Macedonia Północna           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Mołdawia                   | ✓ | ✓ |
-| Monako                    | ✓ | ✓ |
+| Monaco                    | ✓ | ✓ |
 | Czarnogóra                | ✓ | ✓ |
 | Holandia               | ✓ | ✓ |
 | Norwegia                    | ✓ | ✓ |

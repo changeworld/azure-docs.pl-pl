@@ -9,10 +9,10 @@ ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66137321"
 ---
 Dzienniki konsoli z on wygenerowany wewnątrz kontenera możesz uzyskać dostęp. Najpierw należy włączyć rejestrowanie kontenerów przez uruchomienie następującego polecenia w usłudze Cloud Shell:

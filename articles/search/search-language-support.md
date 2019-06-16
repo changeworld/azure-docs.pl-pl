@@ -10,10 +10,10 @@ ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
 ms.openlocfilehash: cc9f271c1c79f34ba62fa22d6ce4fd6bf16738f1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65025265"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Tworzenie indeksu dla dokumentów w wielu językach w usłudze Azure Search

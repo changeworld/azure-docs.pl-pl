@@ -13,10 +13,10 @@ ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b9d6569504b5352c6187afe12d903c986019c517
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646816"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja bazy danych SQL pojedynczych i puli baz danych
@@ -107,7 +107,7 @@ Następujące opcje nie są obsługiwane w przypadku subskrypcji usługi Azure S
 Tworzenie publikacji i subskrypcji wypychanej. Aby uzyskać więcej informacji, zobacz:
   
 - [Tworzenie publikacji](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Tworzenie subskrypcji wypychanych](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład **N'azuresqldbdns.database.windows.net "**) i nazwę bazy danych Azure SQL jako docelowej bazy danych (w przypadku przykład **AdventureWorks**).  
+- [Tworzenie subskrypcji wypychanych](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład **N'azuresqldbdns.database.windows.net "** ) i nazwę bazy danych Azure SQL jako docelowej bazy danych (w przypadku przykład **AdventureWorks**).  
 
 ## <a name="see-also"></a>Zobacz też  
 

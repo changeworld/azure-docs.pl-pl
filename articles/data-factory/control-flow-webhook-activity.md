@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764309"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Działania elementu Webhook w usłudze Azure Data Factory
@@ -56,12 +56,12 @@ Działanie punktu zaczepienia sieci web umożliwia kontrolować wykonywanie poto
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania punktu zaczepienia sieci web | String | Yes |
-type | Musi być równa **elementu WebHook**. | String | Yes |
-method | Metoda interfejsu API REST dla docelowego punktu końcowego. | ciąg. Obsługiwane typy: 'POST' | Yes |
-url | Docelowy punkt końcowy i ścieżki | Ciąg lub wyrażenie obiektu resultType ciągu. | Yes |
+name | Nazwa działania punktu zaczepienia sieci web | String | Tak |
+type | Musi być równa **elementu WebHook**. | String | Tak |
+method | Metoda interfejsu API REST dla docelowego punktu końcowego. | ciąg. Obsługiwane typy: 'POST' | Tak |
+url | Docelowy punkt końcowy i ścieżki | Ciąg lub wyrażenie obiektu resultType ciągu. | Tak |
 Nagłówki | Nagłówki, które są wysyłane do żądania. Na przykład, aby ustawić język i typ żądania: "nagłówki": {"Accept-Language": "en-us", "Content-Type": "application/json"}. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Tak, wymagany jest nagłówek Content-type. "headers":{ "Content-Type":"application/json"} |
-treść | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | Treść przekazywany z powrotem do wywołania zwrotne URI powinien być prawidłowym kodem JSON. Wyświetlić schemat ładunek żądania w [schematu ładunku żądania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) sekcji. | Yes |
+Treść | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | Treść przekazywany z powrotem do wywołania zwrotne URI powinien być prawidłowym kodem JSON. Wyświetlić schemat ładunek żądania w [schematu ładunku żądania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) sekcji. | Tak |
 uwierzytelnianie | Metoda uwierzytelniania do wywoływania punktu końcowego. Obsługiwane typy to "Basic" lub "ClientCertificate." Aby uzyskać więcej informacji, zobacz [uwierzytelniania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) sekcji. Jeśli uwierzytelnianie nie jest wymagane, należy wykluczyć tej właściwości. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Nie |
 timeout | Jak długo będzie czekać działania &#39;element callBackUri&#39; do wywołania. Jak długo działanie będzie czekać "element callBackUri" do wywołania. Wartość domyślna to 10mins ("00: 10:00"). Format jest przedział czasu, czyli d.hh:mm:ss | String | Nie |
 

@@ -2,35 +2,60 @@
 title: Wdrażanie wielu wystąpień zasobów platformy Azure | Dokumentacja firmy Microsoft
 description: Użyj operacji kopiowania i tablic w szablonie usługi Azure Resource Manager do iteracji wielokrotnie podczas wdrażania zasobów.
 services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-editor: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/01/2019
+ms.date: 06/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 05b68fde30587967f65ee362344eea9a258f89a7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 99fd4215de4dd118558acc008fcfa6490ea0093d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205968"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807366"
 ---
-# <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Wdrażanie więcej niż jedno wystąpienie zasobu lub właściwości w szablonach usługi Resource Manager platformy Azure
+# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Zasób, właściwości lub zmiennej iteracji w szablonach usługi Azure Resource Manager
 
-W tym artykule pokazano, jak przejść do szablonu usługi Azure Resource Manager, aby utworzyć więcej niż jedno wystąpienie zasobu. Jeśli musisz określić, czy zasób został wdrożony na wszystkich, zobacz [element warunek](resource-group-authoring-templates.md#condition).
+W tym artykule pokazano, jak utworzyć więcej niż jedno wystąpienie zasobu, zmiennej lub właściwości w szablonie usługi Azure Resource Manager. Aby utworzyć wiele wystąpień, Dodaj `copy` obiektu do szablonu.
 
-Aby zapoznać się z samouczkiem, zobacz [samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager](./resource-manager-tutorial-create-multiple-instances.md).
+W przypadku użycia z zasobem, Kopiuj obiekt ma następujący format:
 
+```json
+"copy": {
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "mode": "serial" <or> "parallel",
+    "batchSize": <number-to-deploy-serially>
+}
+```
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+W przypadku użycia za pomocą zmiennej lub właściwości, Kopiuj obiekt ma następujący format:
+
+```json
+"copy": [
+  {
+      "name": "<name-of-loop>",
+      "count": <number-of-iterations>,
+      "input": <values-for-the-property-or-variable>
+  }
+]
+```
+
+Oba te zastosowania są opisane bardziej szczegółowo w tym artykule. Aby zapoznać się z samouczkiem, zobacz [samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager](./resource-manager-tutorial-create-multiple-instances.md).
+
+Jeśli musisz określić, czy zasób został wdrożony na wszystkich, zobacz [element warunek](resource-group-authoring-templates.md#condition).
+
+## <a name="copy-limits"></a>Limity kopiowania
+
+Aby określić liczbę iteracji, podaj wartość dla właściwości. Liczba nie może przekraczać 800.
+
+Liczba nie może być liczbą ujemną. Jeśli wdrażanie szablonu przy użyciu wersji interfejsu API REST **2019-05-10** lub później, możesz ustawić liczbę zero. Wcześniejszych wersjach interfejsu API REST nie obsługują wartości zero dla liczby. Obecnie wiersza polecenia platformy Azure lub programu PowerShell nie obsługują zero, Count, ale ta obsługa zostanie dodana w przyszłej wersji.
+
+Limity dotyczące liczby są takie same, czy używane z zasobów, zmiennej lub właściwości.
 
 ## <a name="resource-iteration"></a>Iteracja zasobów
 
-Jeśli podczas wdrażania należy zdecydować, aby utworzyć jeden lub więcej wystąpień zasobu, dodać `copy` elementu z typem zasobu. W elemencie copy określ liczbę iteracji i nazwę tej pętli. Wartość licznika musi być dodatnią liczbą całkowitą i nie może mieć więcej niż 800. 
+Jeśli podczas wdrażania należy zdecydować, aby utworzyć jeden lub więcej wystąpień zasobu, dodać `copy` elementu z typem zasobu. W elemencie kopiowania Określ liczbę iteracji i nazwę dla tej pętli.
 
 Zasób, aby utworzyć kilka razy ma następujący format:
 
@@ -71,7 +96,7 @@ Tworzy następujące nazwy:
 * storage1
 * storage2.
 
-Aby przesunąć wartość indeksu, możesz przekazać wartość do funkcji copyIndex(). Liczba iteracji, aby wykonać nadal jest określony w elemencie kopii, ale wartość copyIndex jest przesunięty przez określoną wartość. Dlatego następująco:
+Aby przesunąć wartość indeksu, możesz przekazać wartość do funkcji copyIndex(). Liczba iteracji jest nadal określony w elemencie kopii, ale wartość copyIndex jest przesunięty przez określoną wartość. Dlatego następująco:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -156,7 +181,7 @@ Aby dowiedzieć się, jak przy użyciu kopiowania przy użyciu zagnieżdżonych 
 Aby utworzyć więcej niż jedną wartość dla właściwości do zasobu, należy dodać `copy` tablicy w elemencie właściwości. Ta tablica zawiera obiekty, a każdy obiekt ma następujące właściwości:
 
 * Nazwa — Nazwa właściwości do utworzenia wielu wartości
-* Liczba — liczba wartości do utworzenia. Wartość licznika musi być dodatnią liczbą całkowitą i nie może mieć więcej niż 800.
+* Liczba — liczba wartości do utworzenia.
 * dane wejściowe — obiekt zawierający wartości do przypisania do właściwości  
 
 Poniższy przykład pokazuje, jak zastosować `copy` właściwości dataDisks na maszynie wirtualnej:

@@ -10,10 +10,10 @@ ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60500041"
 ---
 # <a name="runbook-input-parameters"></a>Parametry wejściowe elementu Runbook
@@ -28,7 +28,7 @@ Parametry wejściowe można skonfigurować w programie PowerShell, przepływ pra
 
 Runbook programu PowerShell i przepływie pracy programu PowerShell w usłudze Azure Automation obsługują parametrów wejściowych, które są definiowane za pomocą następujących atrybutów:  
 
-| **Właściwość** | **Opis** |
+| **Property** | **Opis** |
 |:--- |:--- |
 | `Type` |Wymagany. Typ danych, oczekiwano wartości parametru. Przydaje się dowolnego typu platformy .NET. |
 | `Name` |Wymagany. Nazwa parametru. To musi być unikatowa w obrębie elementu runbook i mogą zawierać tylko litery, cyfry lub znaki podkreślenia. Musi ona zaczynać się literą. |
@@ -92,7 +92,7 @@ Możesz użyć [ **Write-Output** ](/powershell/module/microsoft.powershell.util
 
 3. **Dane wejściowe i wyjściowe** blok zawiera listę parametrów wejściowych, które są zdefiniowane dla elementu runbook. W tym bloku możesz dodać nowego parametru wejściowego lub edytować konfiguracji istniejącego parametru wejściowego. Aby dodać nowego parametru dla elementu runbook, kliknij **Dodaj dane wejściowe** otworzyć **parametr wejściowy elementu Runbook** bloku. Można skonfigurować następujące parametry:
 
-   | **Właściwość** | **Opis** |
+   | **Property** | **Opis** |
    |:--- |:--- |
    | `Name` |Wymagany. Nazwa parametru. To musi być unikatowa w obrębie elementu runbook i mogą zawierać tylko litery, cyfry lub znaki podkreślenia. Musi ona zaczynać się literą. |
    | `Description` |Opcjonalny. Opis dotyczące przeznaczenia parametru wejściowego. |

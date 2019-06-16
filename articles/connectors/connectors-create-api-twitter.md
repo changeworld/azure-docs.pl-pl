@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104990"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Monitorowanie i zarządzanie nimi Twitter przy użyciu usługi Azure Logic Apps
@@ -50,16 +50,16 @@ Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z kontem w usłudze Twitte
    * Puste logic apps, w polu wyszukiwania wprowadź "twitter" jako filtr. 
    W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
 
-     — lub —
+     —lub—
 
    * W przypadku istniejących aplikacji logiki: 
    
      * W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
 
-       — lub —
+       —lub—
 
      * Między krokami, które chcesz dodać akcję wskaźnik myszy nad strzałką znajdującą się między krokami. 
-     Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+     Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
      
        W polu wyszukiwania wprowadź "twitter" jako filtr. 
        W obszarze listy akcji wybierz akcję, którą chcesz.
@@ -78,7 +78,7 @@ Można opcjonalnie dodać warunek, który kwalifikujących się tweetów muszą 
 
 **Przykład Enterprise**: Ten wyzwalacz umożliwia monitorowanie tweetów o Twojej firmie i przekaż zawartość tweetów do usługi SQL database.
 
-### <a name="twitter-action-post-a-tweet"></a>Akcja Twitter: Wyślij tweet
+### <a name="twitter-action-post-a-tweet"></a>Akcja Twitter: Opublikuj tweet
 
 Ta akcja publikuje tweet, ale można skonfigurować akcję, dzięki czemu tweet zawiera zawartość z tweetów znaleziono wyzwalaczu opisany wcześniej. 
 

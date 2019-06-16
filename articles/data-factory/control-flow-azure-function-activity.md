@@ -12,10 +12,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727061"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktywności funkcji platformy Azure w usłudze Azure Data Factory
@@ -30,7 +30,7 @@ Wprowadzenie minutę 8 i pokaz działania tej funkcji Obejrzyj poniższy film wi
 
 Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy pamiętać, że [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) jest *nie* `JObject`.) Dowolny zwracany typ inny niż `JObject` kończy się niepowodzeniem i zgłasza błąd użytkownika *zawartość odpowiedzi nie jest prawidłową jobject zostanie opróżniony*.
 
-| **Właściwość** | **Opis** | **Wymagane** |
+| **Property** | **Opis** | **Wymagane** |
 | --- | --- | --- |
 | type   | Właściwość type musi być równa: **AzureFunction** | tak |
 | adres url aplikacji funkcji | Adres URL dla aplikacji funkcji platformy Azure. Format jest `https://<accountname>.azurewebsites.net`. Ten adres URL jest wartością w **adresu URL** sekcji podczas przeglądania aplikacji funkcji w witrynie Azure portal  | tak |
@@ -39,7 +39,7 @@ Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy 
 
 ## <a name="azure-function-activity"></a>Działanie funkcji platformy Azure
 
-| **Właściwość**  | **Opis** | **Dozwolone wartości** | **Wymagane** |
+| **Property**  | **Opis** | **Dozwolone wartości** | **Wymagane** |
 | --- | --- | --- | --- |
 | name  | Nazwa działania w potoku  | String | tak |
 | type  | Typ działania jest "AzureFunctionActivity" | String | tak |
@@ -47,7 +47,7 @@ Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy 
 | Nazwa funkcji  | Nazwa funkcji w aplikacji funkcji platformy Azure, który wywołuje działanie | String | tak |
 | method  | Metoda interfejsu API REST na wywołanie funkcji | Ciąg obsługiwane typy: POBIERZ "PUBLIKUJ", "PUT"   | tak |
 | nagłówek  | Nagłówki, które są wysyłane do żądania. Na przykład, aby ustawić język i typ żądania: "nagłówki": {"Accept-Language": "en-us", "Content-Type": "application/json"} | Ciąg (lub wyrażenie obiektu resultType ciągu) | Nie |
-| treść  | treść, która jest wysyłany wraz z żądania do metody interfejsu api — funkcja  | Ciąg (lub wyrażenie obiektu resultType ciągu) lub obiekt.   | Wymagane dla metod PUT/POST |
+| Treść  | treść, która jest wysyłany wraz z żądania do metody interfejsu api — funkcja  | Ciąg (lub wyrażenie obiektu resultType ciągu) lub obiekt.   | Wymagane dla metod PUT/POST |
 |   |   |   | |
 
 Wyświetlić schemat ładunek żądania w [schematu ładunku żądania](control-flow-web-activity.md#request-payload-schema) sekcji.

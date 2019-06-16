@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
 ms.openlocfilehash: 10bc4e4c440e5495afd820f588270b7990108b68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66135311"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Tworzenie bramy aplikacji przy użyciu opartego na ścieżkach reguł routingu, za pomocą witryny Azure portal
@@ -61,7 +61,7 @@ Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W ty
    - *myAGSubnet* — jako nazwę podsieci.
    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
 
-     ![Utwórz sieć wirtualną](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
+     ![Tworzenie sieci wirtualnej](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
 
 6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
 7. Kliknij przycisk **wybierz publiczny adres IP**, kliknij przycisk **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.

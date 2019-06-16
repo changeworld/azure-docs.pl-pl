@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: ghogen
 ms.openlocfilehash: 154eaa577ea66056c301db9516b425931b81d24d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64730432"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Dodawanie usługi Key Vault do aplikacji sieci web za pomocą programu Visual Studio podłączone usługi
@@ -151,7 +151,7 @@ W tej sekcji wymieniono dokładne zmiany wprowadzone do projektu programu ASP.NE
 
 Wpływa na odwołania do .NET plików projektu i odwołania do pakietu NuGet.
 
-| Type | Informacje ogólne |
+| Typ | Tematy pomocy |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -187,7 +187,7 @@ W tej sekcji wymieniono dokładne zmiany wprowadzone do projektu programu ASP.NE
 
 Wpływa na odwołania do platformy .NET w pliku projektu i `packages.config` (odwołań NuGet).
 
-| Type | Informacje ogólne |
+| Typ | Tematy pomocy |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

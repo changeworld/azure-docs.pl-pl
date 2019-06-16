@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60321624"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693235"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Usługa StorSimple Manager umożliwia zarządzanie rekordy kontroli dostępu
 
@@ -59,7 +59,7 @@ Wykonaj poniższe kroki, aby dodać rekord ACR.
 
     1. Podaj nazwę dla rekordu ACR.
     
-    2. Podaj nazwę IQN hosta Windows Server w ramach **iSCSI Nazwa inicjatora (IQN)**.
+    2. Podaj nazwę IQN hosta Windows Server w ramach **iSCSI Nazwa inicjatora (IQN)** .
 
     3. Kliknij przycisk **Dodaj** do tworzenia usługi ACR.
 

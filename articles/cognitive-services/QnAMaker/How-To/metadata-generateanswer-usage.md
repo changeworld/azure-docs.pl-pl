@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: tulasim
 ms.openlocfilehash: b18d47b4b09c6fa9c4d5f0ef87d7ebe73f151c60
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66693229"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedzi za pomocą interfejsu API GenerateAnswer i metadane
@@ -67,7 +67,7 @@ Możesz wywołać GenerateAnswer za pomocą żądania HTTP POST. Przykładowy ko
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|Właściwości żądania HTTP|Name (Nazwa)|Type|Przeznaczenie|
+|Właściwości żądania HTTP|Name (Nazwa)|Typ|Przeznaczenie|
 |--|--|--|--|
 |Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
 |Parametr trasy adresu URL|Host punktu końcowego interfejsu QnAMaker|string|Nazwa hosta punktu końcowego, wdrożonych w ramach subskrypcji platformy Azure. Ta opcja jest dostępna na **ustawienia** strony po opublikowaniu w bazie wiedzy knowledge base. |
@@ -78,7 +78,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 Treść kodu JSON ma kilka ustawień:
 
-|Właściwość treść JSON|Wymagane|Type|Przeznaczenie|
+|Właściwość treść JSON|Wymagane|Typ|Przeznaczenie|
 |--|--|--|--|
 |`question`|Wymagane|string|Pytanie użytkownika mają być wysyłane do bazy wiedzy.|
 |`top`|Opcjonalne|liczba całkowita|Liczba wyników w rankingu do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.|

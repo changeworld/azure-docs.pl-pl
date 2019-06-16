@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113088"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Omówienie łączników serwera Proxy aplikacji usługi Azure AD
@@ -85,7 +85,7 @@ Grupy łączników ułatwiają zarządzanie dużych wdrożeń. Mogą również z
 
 Aby dowiedzieć się więcej na temat grupy łączników, zobacz [Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników](application-proxy-connector-groups.md).
 
-## <a name="capacity-planning"></a>Planowanie wydajnośći 
+## <a name="capacity-planning"></a>Planowanie pojemności 
 
 Należy się upewnić, że zaplanowano wystarczająca ilość miejsca między łączników, aby obsłużyć oczekiwanego natężenia ruchu. Zaleca się, że każda grupa łączników nie ma co najmniej dwa łączniki w celu zapewnienia wysokiej dostępności i skalowalności. Masz trzy łączniki jest optymalne, w przypadku, gdy może być konieczne do obsługi maszyny w dowolnym momencie. 
 

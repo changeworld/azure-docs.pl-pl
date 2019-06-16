@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/29/2019
 ms.author: rkarlin
 ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875607"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Dostosowywanie SQL zasad usługi information protection w usłudze Azure Security Center (wersja zapoznawcza)
@@ -53,7 +53,7 @@ Aby dostosować zasad usługi information protection dla Twojej dzierżawy platf
 2. W **etykieta poufności Konfiguruj** ekranu, można utworzyć lub zmienić nazwę etykiety i opis. Można również ustawić czy etykieta jest aktywna lub wyłączona, przełączając **włączone** włączać i wyłączać. Na koniec można dodawać lub usuwać typy informacji skojarzony z etykietą. Wszelkie dane odnalezione, który odpowiada, że typ informacji automatycznie włączy etykieta poufności skojarzone zaleceń klasyfikacji.
 3. Kliknij przycisk **OK**.
  
-   ![Konfigurowanie etykiety czułości](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Konfigurowanie etykiety ważności](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Etykiety są wymienione w kolejności rosnącej ważność. Aby zmienić klasyfikację między etykiety, przeciągnij etykiety, aby zmienić ich kolejność, w tabeli lub użyj **Przenieś w górę** i **Przenieś w dół** przycisków, aby zmienić kolejność. 
  

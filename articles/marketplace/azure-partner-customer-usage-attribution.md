@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 45d575488db8d740069fba961203842899024747
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296826"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807184"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Udział partnera w zakresie użycia platformy Azure przez klienta
 
@@ -267,11 +267,13 @@ Podczas wdrażania \<partnera > oprogramowania firmy Microsoft jest w stanie zid
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-Jeśli napotkasz jakiekolwiek problemy dotyczące raportu lub zaloguj się do Centrum partnerskiego, Utwórz żądanie obsługi z zespołem pomocy technicznej Centrum partnerskie w tym miejscu: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+Istnieją dwa kanały pomocy technicznej, w zależności od problemów, które występują.
+
+Jeśli napotkasz jakiekolwiek problemy, w Centrum partnerskim, takie jak oglądanie autorstwa raportu użycia klientów lub logowania, należy utworzyć żądanie pomocy technicznej z zespołem pomocy technicznej Centrum partnerskie w tym miejscu: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
-Jeśli potrzebujesz pomocy dla dołączania do witryny Marketplace i/lub autorstwa użycia klienta, wykonaj następujące kroki.
+Jeśli potrzebujesz pomocy dla autorstwa użycia przechodzenia do portalu Marketplace i/lub klienta z ogólnie rzecz biorąc, takie jak Konfigurowanie użycia klienta: uznanie autorstwa, wykonaj następujące czynności:
 
 1. Przejdź do [stronę pomocy technicznej](https://go.microsoft.com/fwlink/?linkid=844975).
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.openlocfilehash: 7f9100686eaab8c4c75e3d862026b18b6c46ed09
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65203703"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów HDInsight za pomocą narzędzia Bootstrap
@@ -94,7 +94,7 @@ Zakończenie pracy skryptu programu PowerShell można znaleźć w [dodatku](#app
 6. Kliknij przycisk **serwera HiveServer2** z **Podsumowanie**.
 7. Kliknij przycisk **Configs** kartę.
 8. Kliknij przycisk **Hive** menu po lewej stronie.
-9. Kliknij kartę **Zaawansowane**.
+9. Kliknij przycisk **zaawansowane** kartę.
 10. Przewiń w dół, a następnie rozwiń węzeł **zaawansowane witryny hive**.
 11. Wyszukaj **hive.metastore.client.socket.timeout** w sekcji.
 

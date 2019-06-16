@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: b1ad5aa074a7719dbe6000301c8cd04e6e1ad632
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ee2fe91d915faf7e09dee004891edfc6bef38d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984549"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685416"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Przekazywanie uogólnionego wirtualnego dysku twardego i użyć go do utworzenia nowych maszyn wirtualnych na platformie Azure
 
@@ -33,7 +33,7 @@ Aby uzyskać przykładowy skrypt, zobacz [przykładowy skrypt w celu przekazania
 - Przed przekazaniem jakiegokolwiek dysku VHD na platformie Azure, należy przestrzegać [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Przegląd [zaplanować migrację do usługi Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) przed rozpoczęciem migracji do [Managed Disks](managed-disks-overview.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Uogólnianie źródłowej maszyny Wirtualnej przy użyciu narzędzia Sysprep

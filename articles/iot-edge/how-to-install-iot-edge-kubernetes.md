@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 66aca7be9a2df93d846d7e78bc64c93279afc2d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160698"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Jak zainstalować usługi IoT Edge w systemie Kubernetes (wersja zapoznawcza)
@@ -78,7 +78,7 @@ Każdy składnik wdrożenie edge jest ograniczony do przestrzeni nazw Kubernetes
     minikube dashboard
     ```
 
-    W obszarze obszary nazw klastra, zostanie wyświetlony jeden dla urządzenia usługi IoT Edge, zgodnie z Konwencją *msiot —\<iothub-name >-\<edgedevice-name >*. Zasobników iotedged i agent usługi IoT Edge należy działa w tej przestrzeni nazw.
+    W obszarze obszary nazw klastra, zostanie wyświetlony jeden dla urządzenia usługi IoT Edge, zgodnie z Konwencją *msiot —\<iothub-name >-\<edgedevice-name >* . Zasobników iotedged i agent usługi IoT Edge należy działa w tej przestrzeni nazw.
 
 1. Dodaj moduł czujnika temperatury symulowane przy użyciu kroków w [wdrażanie modułu](quickstart-linux.md#deploy-a-module) części tego przewodnika Szybki Start. Zarządzanie moduł usługi IoT Edge odbywa się w portalu usługi IoT Hub, podobnie jak inne urządzenie usługi IoT Edge. Wprowadzanie zmian lokalnych do konfiguracji modułu za pomocą narzędzia Kubernetes nie jest zalecane, ponieważ mogą one zostać zastąpione.
 

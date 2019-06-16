@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867963"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metryki w usłudze Azure Monitor
@@ -34,11 +34,11 @@ W poniższej tabeli wymieniono różne sposoby, można użyć danych metryk w us
 |  |  |
 |:---|:---|
 | Analiza | Użyj [Eksploratora metryk](metrics-charts.md) do analizowania zebranych metryk na wykresie i porównywania metryk z różnych zasobów. |
-| Wizualizacja | Przypinanie wykresu z Eksploratora metryk, aby [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md).<br>Tworzenie [skoroszytu](../app/usage-workbooks.md) połączyć z wieloma zestawami danych w interaktywnych raportów. Eksportowanie wyników kwerendy, aby [Grafana](grafana-plugin.md) wykorzystać jej dashboarding i łączyć z innymi źródłami danych. |
+| Wizualizuj | Przypinanie wykresu z Eksploratora metryk, aby [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md).<br>Tworzenie [skoroszytu](../app/usage-workbooks.md) połączyć z wieloma zestawami danych w interaktywnych raportów. Eksportowanie wyników kwerendy, aby [Grafana](grafana-plugin.md) wykorzystać jej dashboarding i łączyć z innymi źródłami danych. |
 | Alerty | Konfigurowanie [regułę alertu metryki](alerts-metric.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) kiedy wartość metryki przekracza próg. |
 | Automatyzacja |  Użyj [skalowania automatycznego](autoscale-overview.md) na zwiększanie lub zmniejszanie zasobów opartych na przekroczenia progu przez wartość metryki. |
 | Eksportowanie | [Kierowanie metryk z dziennikami](diagnostic-logs-stream-log-store.md) do analizowania danych metryk usługi Azure Monitor, wraz z danymi w usłudze Azure Monitor dziennikach i do przechowywania wartości metryk przez okres dłuższy niż 93 dni.<br>Stream metryki, aby [Centrum zdarzeń](stream-monitoring-data-event-hubs.md) je rozesłać z systemami zewnętrznymi. |
-| Pobierz | Dostęp do wartości metryk z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Dostęp do wartości metryk z niestandardowych aplikacji przy użyciu [interfejsu API REST](rest-api-walkthrough.md).<br>Dostęp do wartości metryk z wiersza polecenia przy użyciu [interfejsu wiersza polecenia](/cli/azure/monitor/metrics). |
+| Pobieranie | Dostęp do wartości metryk z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Dostęp do wartości metryk z niestandardowych aplikacji przy użyciu [interfejsu API REST](rest-api-walkthrough.md).<br>Dostęp do wartości metryk z wiersza polecenia przy użyciu [interfejsu wiersza polecenia](/cli/azure/monitor/metrics). |
 | Archiwum | [Archiwum](..//learn/tutorial-archive-data.md) historii wydajności i kondycji zasobu pod kątem zgodności, inspekcji lub w trybie offline do celów raportowania. |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>W jaki sposób dane ze strukturą metryk usługi Azure Monitor?
@@ -52,7 +52,7 @@ Dane zbierane przez metryk usługi Azure Monitor jest przechowywane w bazie dany
 * Niektóre metryki mogą mieć wiele wymiarów, zgodnie z opisem w [metryk wielowymiarowych](#multi-dimensional-metrics). Metryki niestandardowe mogą mieć maksymalnie 10 wymiarów.
 
 ## <a name="multi-dimensional-metrics"></a>Metryk wielowymiarowych
-Jest jednym z wyzwań do danych metryk, że często ma mniej informacji, aby zapewnić kontekst dla zebranych wartości. Usługa Azure Monitor sprostać temu wyzwaniu przy użyciu metryk wielowymiarowych. Wymiary metryki są pary nazwa wartość, zawierających dodatkowe dane do opisania wartość metryki. Na przykład metryka _dostępnego miejsca na dysku_ może mieć wymiar o nazwie _dysku_ wartościami _C:_, _D:_, co umożliwiłoby wyświetlania wartość dostępnego miejsca na dysku na wszystkich dyskach lub dla każdego dysku indywidualnie.
+Jest jednym z wyzwań do danych metryk, że często ma mniej informacji, aby zapewnić kontekst dla zebranych wartości. Usługa Azure Monitor sprostać temu wyzwaniu przy użyciu metryk wielowymiarowych. Wymiary metryki są pary nazwa wartość, zawierających dodatkowe dane do opisania wartość metryki. Na przykład metryka _dostępnego miejsca na dysku_ może mieć wymiar o nazwie _dysku_ wartościami _C:_ , _D:_ , co umożliwiłoby wyświetlania wartość dostępnego miejsca na dysku na wszystkich dyskach lub dla każdego dysku indywidualnie.
 
 W poniższym przykładzie przedstawiono dwa zestawy danych dla hipotetycznego metrykę zwaną _przepływność sieci_. Pierwszy zestaw danych nie ma żadnych wymiarów. Drugi zestaw danych zawiera wartości, z dwoma wymiarami _adresu IP_ i _kierunek_:
 

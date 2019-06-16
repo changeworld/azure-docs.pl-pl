@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: d28244d75da540948093c775ffc525a80e362526
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66115423"
 ---
 FedEx, UPS lub przez firmę DHL może służyć do wysłania pakietu do centrum danych platformy Azure. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, skontaktuj się z zespołem operacje pole danych platformy Azure w `adbops@microsoft.com`

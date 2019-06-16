@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90dbb33fa516d3a831d4e60969ac6b6c8312d539
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332606"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574145"
 ---
 # <a name="azure-security-center-search"></a>Wyszukiwanie w usłudze Azure Security Center
+
+> [!NOTE]
+> Security Center wyszukiwanie z pulpitu nawigacyjnego zostaną wycofane z dniem 31 lipca 2019 r. Aby uzyskać więcej informacji i alternatywne usług zobacz [wycofywania Centrum zabezpieczeń funkcji (2019 lipca)](security-center-features-retirement-july2019.md#menu_search).
+
 Usługa Azure Security Center używa [usługi Azure Monitor dzienniki wyszukiwania](../log-analytics/log-analytics-log-searches.md) pobieranie i analizowanie danych zabezpieczeń. Dzienniki platformy Azure Monitor obejmuje język zapytań, można szybko pobierać i konsolidować dane. W usłudze Security Center możesz korzystać z wyszukiwania dzienników usługi Azure Monitor do tworzenia zapytań i analizowania zebranych danych.
 
 Wyszukiwanie jest dostępne w warstwie bezpłatnej i warstwie standardowa usługi Security Center.  Dostępne w Twojej wyszukiwań w dziennikach danych jest zależny od poziomów warstw zastosowane do Twojego obszaru roboczego.  Odwiedź Centrum zabezpieczeń [stronę z cennikiem](../security-center/security-center-pricing.md) Aby uzyskać więcej informacji.
@@ -45,7 +49,7 @@ Wyszukiwanie jest dostępne w warstwie bezpłatnej i warstwie standardowa usług
 
    SecurityEvent | gdzie EventID == 4625 | Podsumowanie count() by TargetAccount
 
-   Wynik zawiera wszystkie konta, które nie powiodło się zalogowanie (zdarzenie 4625).
+   Wynik zawiera wszystkie konta, których nie udało się zalogować (zdarzenie 4625).
 
    ![Wyniki wyszukiwania][3]
 

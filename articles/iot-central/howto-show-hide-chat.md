@@ -9,13 +9,13 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: a8d2b71899cdd6b7f9c8cb803732b760f3009811
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/25/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64513326"
 ---
-# <a name="toggle-live-chat"></a>Przełącz Czat na żywo
+# <a name="toggle-live-chat"></a>Przełączanie czatu na żywo
 
 W tym artykule pokazano, jak przełączać Czat na żywo w aplikacji IoT Central. Czat na żywo umożliwia dostęp do pomocy technicznej.
 
@@ -32,17 +32,17 @@ Możesz wpisać pytanie, jak pokazano na poniższym zrzucie ekranu:
 
 !["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](media/howto-show-hide-chat/sample-chat.png)
 
-## <a name="hide-chat"></a>Ukryj czat
+## <a name="hide-chat"></a>Ukryj rozmowy
 
 Aby ukryć czatu, wybierz opcję **Ukryj rozmowy** w **pomocy** panelu:
 
- ![Ukryj czat](media/howto-show-hide-chat/hide-chat.png)
+ ![Ukryj rozmowy](media/howto-show-hide-chat/hide-chat.png)
 
 ## <a name="enable-chat"></a>Włącz rozmowy
 
 Aby wyświetlić czatu, wybierz polecenie **Pokaż rozmowy** w **pomocy** panelu:
 
- ![Pokaż czat](media/howto-show-hide-chat/show-chat.png)
+ ![Pokaż rozmowę](media/howto-show-hide-chat/show-chat.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64569607"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor
@@ -159,14 +159,14 @@ Istnieją cztery typy parametrów, które są obecnie obsługiwane:
 
   |         |          |
    | ---------------- |:-----|
-   | **Tekst**    | użytkownik będzie edytować pole tekstowe, a opcjonalnie można podać zapytanie, aby podać wartość domyślną. |
+   | **Text**    | użytkownik będzie edytować pole tekstowe, a opcjonalnie można podać zapytanie, aby podać wartość domyślną. |
    | **Lista rozwijana** | Użytkownik wybierze z zestawu wartości. |
    | **Selektor zakresu czasu**| Użytkownik wybierać zestaw wstępnie zdefiniowanych wartości zakresu czasu lub masz do wyboru niestandardowego zakresu czasu.|
    | **Wybór zasobów** | Użytkownik wybierze z zasobów wybranych do skoroszytu.|
 
 ### <a name="using-a-text-parameter"></a>Za pomocą parametru tekstu
 
-Wartość użytkownik wpisze w polu tekstowym jest zastępowany bezpośrednio w zapytaniu bez anulowania zapewnianego element i cytowanie. Jeśli wartość potrzebne jest ciągiem, zapytanie powinien mieć parametru w cudzysłowie (takich jak **'{parameter}'**).
+Wartość użytkownik wpisze w polu tekstowym jest zastępowany bezpośrednio w zapytaniu bez anulowania zapewnianego element i cytowanie. Jeśli wartość potrzebne jest ciągiem, zapytanie powinien mieć parametru w cudzysłowie (takich jak **'{parameter}'** ).
 
 Dzięki temu wartość w polu tekstowym, aby używać w dowolnym miejscu. Może być nazwa tabeli, nazwa kolumny, nazwa funkcji, operatora, itp.
 
@@ -229,7 +229,7 @@ Można tworzyć własne parametr zakres czasu niestandardowych za pomocą listy 
 
 Typy parametrów zakresu czasu ma 15 zakresów dla domyślnych, które bardziej szczegółowo w ciągu pięciu minut do ostatnich 90 dni. Istnieje również opcję, aby umożliwić wybranie niestandardowego zakresu czasu, który umożliwia operatorowi raportu wybierz przycisk start jawnego i Zatrzymaj wartości zakresu czasu.
 
-### <a name="resource-picker"></a>Selektor zasobów
+### <a name="resource-picker"></a>Wybór zasobów
 
 Typ parametru selektor zasobów daje możliwość zakres raportu do określonych typów zasobów. Na przykład wstępnie skoroszytu, który korzysta z zasobów typu selektora **Insights błąd** skoroszytu.
 

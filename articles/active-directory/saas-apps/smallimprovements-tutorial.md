@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 19d9624c5bb60f47ef4bfa1b0629327780c2a9c7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901870"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090374"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Samouczek: Integracja usługi Azure Active Directory z ulepszeniami małych
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację małych ulepszeń w usłudze Azure AD, należy do
 
 **Aby dodać małych ulepszenia z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -229,7 +229,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ulepszenia mały
 
     b. Wprowadź **nazwisko** użytkownika, takich jak **Simon**.
 
-    c. Wprowadź **E-mail** użytkownika, takich jak **brittasimon@contoso.com**.
+    c. Wprowadź **E-mail** użytkownika, takich jak **brittasimon@contoso.com** .
 
     d. Możesz również wprowadzić osobistą wiadomość w **Wyślij wiadomość e-mail z powiadomieniem** pole. Jeśli nie chcesz wysłać powiadomienie, usuń zaznaczenie tego pola wyboru.
 
@@ -241,7 +241,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka małych ulepszenia w panelu dostępu, możesz powinny być automatycznie zalogowany do ulepszenia małe, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686786"
 ---
 # <a name="localization-support-in-azure-maps"></a>Obsługa lokalizacji w usługi Azure Maps
@@ -70,7 +70,7 @@ Usługi Azure Maps zostały zlokalizowane w różnych językach dla usługi. W p
 | pt-PT      | Portugalski (Portugalia)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | RO RO      | Rumuński               |       |    ✓    |         |         ✓         |                |     ✓     |
 | ru-RU      | Rosyjski                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| sr-Cyrl-RS | Serbski (cyrylica)     |       |    Serbski, Cyrylica (sr r)   |         |                   |                |     ✓     |
+| sr-Cyrl-RS | Serbski (Cyrylica)     |       |    Serbski, Cyrylica (sr r)   |         |                   |                |     ✓     |
 | Funkcja SR-Latn-RS | Serbski (łaciński)        |       |        |         |                   |                |     ✓     |
 | sk-SK      | Słowacki              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | sl-SL      | Słoweński              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
@@ -85,7 +85,7 @@ Usługi Azure Maps zostały zlokalizowane w różnych językach dla usługi. W p
 
 ## <a name="azure-maps-supported-views"></a>Usługi Azure Maps obsługiwane widoki
 
-Azure parametru widoku mapy (nazywane również "parametr regionu użytkownika") jest litera 2 ISO 3166 kod kraju, w które ukazują poprawne mapowań dla tego kraju/regionu, określając, który zestaw kwestie geopolityczne sporna obramowania i etykiety są wyświetlane na mapie.  Domyślnie widok parametr ma wartość **"Unified"**.  Kraje/regiony, które nie znajdują się na liście Widok jest domyślnie do widoku "Unified". Jest odpowiedzialny za określenie lokalizacji użytkowników, a następnie ustaw parametr widoku poprawnie dla tej lokalizacji. Należy użyć parametru widoku w usługi Azure Maps zgodne z obowiązującym prawem, łącznie z tymi jest udostępniana dotyczących mapowania kraju, w którym mapy, obrazy i inną zawartością danych i innych firm, która jest autoryzowany dostęp za pośrednictwem usługi Azure Maps.
+Azure parametru widoku mapy (nazywane również "parametr regionu użytkownika") jest litera 2 ISO 3166 kod kraju, w które ukazują poprawne mapowań dla tego kraju/regionu, określając, który zestaw kwestie geopolityczne sporna obramowania i etykiety są wyświetlane na mapie.  Domyślnie widok parametr ma wartość **"Unified"** .  Kraje/regiony, które nie znajdują się na liście Widok jest domyślnie do widoku "Unified". Jest odpowiedzialny za określenie lokalizacji użytkowników, a następnie ustaw parametr widoku poprawnie dla tej lokalizacji. Należy użyć parametru widoku w usługi Azure Maps zgodne z obowiązującym prawem, łącznie z tymi jest udostępniana dotyczących mapowania kraju, w którym mapy, obrazy i inną zawartością danych i innych firm, która jest autoryzowany dostęp za pośrednictwem usługi Azure Maps.
 
 W poniższej tabeli przedstawiono obsługiwane widoki.
 
@@ -107,4 +107,4 @@ W poniższej tabeli przedstawiono obsługiwane widoki.
 | SA           | Arabia Saudyjska (arabski widok)            |   ✓   |        |     ✓          |
 | SY           | Syria (arabski widok)                   |   ✓   |        |     ✓          |
 | YE           | Jemen (arabski widok)                   |   ✓   |        |     ✓          |
-| Ujednolicone      | Ujednolicony widok (inne)                  |   ✓   |   ✓     |     ✓          |
+| Unifikacja      | Ujednolicony widok (inne)                  |   ✓   |   ✓     |     ✓          |

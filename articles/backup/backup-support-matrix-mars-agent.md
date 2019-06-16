@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922999"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta usługi Microsoft Azure Recovery Services (MARS)
@@ -76,15 +76,15 @@ Aby utworzyć kopię zapasową bezpośrednio na platformie Azure w niektórych s
 **System operacyjny** | **Pliki i foldery** | **Stan systemu**
 --- | --- | ---
 System Windows 10 (Enterprise, Pro, strona główna) | Yes | Nie
-Windows 8.1 (Enterprise, Pro)| Yes |Nie
-System Windows 8 (Enterprise, Pro) | Yes | Nie
-Windows 7 (Ultimate i Enterprise, Pro, Home Premium/Basic, początkowy) | Yes | Nie
-System Windows Server 2016 (wersje Standard i Datacenter, podstawowe elementy) | Yes | Yes
-Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Yes | Yes
-Windows Server 2012 (wersje Standard i Datacenter, Foundation) | Yes | Yes
-Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Yes | Yes
+Windows 8.1 (Enterprise, Pro)| Tak |Nie
+System Windows 8 (Enterprise, Pro) | Tak | Nie
+Windows 7 (Ultimate i Enterprise, Pro, Home Premium/Basic, początkowy) | Tak | Nie
+System Windows Server 2016 (wersje Standard i Datacenter, podstawowe elementy) | Tak | Tak
+Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Tak | Yes
+Windows Server 2012 (wersje Standard i Datacenter, Foundation) | Tak | Tak
+Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Tak | Yes
 Windows Server 2008 z dodatkiem SP2 (wersje Standard i Datacenter, Foundation) | Yes | Nie
-Windows Storage Server 2016/2012 R2/2012 (wersje Standard i grupy roboczej) | Yes | Nie
+Windows Storage Server 2016/2012 R2/2012 (wersje Standard i grupy roboczej) | Tak | Nie
 
 Aby uzyskać więcej informacji, zobacz [systemy operacyjne obsługiwane serwera usługi Mab i program DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 

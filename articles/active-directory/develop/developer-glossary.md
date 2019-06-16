@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235355"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Słownik deweloperów platforma tożsamości firmy Microsoft
@@ -54,7 +54,7 @@ Po użytkownik rejestru/Zaktualizuj aplikację w [witryny Azure portal][AZURE-po
 
 Aby uzyskać więcej informacji, zobacz [aplikacji i obiekty nazwę głównej usługi][AAD-App-SP-Objects].
 
-## <a name="application-registration"></a>Rejestracja aplikacji
+## <a name="application-registration"></a>rejestracja aplikacji
 
 Aby umożliwić aplikacji Integracja z usługą i delegować funkcje zarządzania tożsamościami i dostępem do usługi Azure AD, musi być zarejestrowana przy użyciu usługi Azure AD [dzierżawy](#tenant). Po zarejestrowaniu aplikacji z usługą Azure AD, udostępniasz Konfiguracja tożsamości dla aplikacji, co pozwala na integrację z usługą Azure AD i używać funkcji takich jak:
 
@@ -64,11 +64,11 @@ Aby umożliwić aplikacji Integracja z usługą i delegować funkcje zarządzani
 
 Zobacz [Integrowanie aplikacji z usługą Azure Active Directory] [ AAD-Integrating-Apps] Aby uzyskać więcej informacji.
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>uwierzytelnianie
 
 Czynność wyzwaniem strona legalnych poświadczeń, zapewniając podstawą do utworzenia podmiotu zabezpieczeń ma być używany dla tożsamości i kontroli dostępu. Podczas [przydziału autoryzacji OAuth2](#authorization-grant) na przykład strona uwierzytelniania jest wypełnianie roli albo [właściciel zasobu](#resource-owner) lub [aplikacja kliencka](#client-application), w zależności od Przydział używany.
 
-## <a name="authorization"></a>Autoryzacja
+## <a name="authorization"></a>authorization
 
 Czynność przyznania uprawnienia podmiotu zabezpieczeń uwierzytelnionego zabezpieczeń, na coś zrobić. Istnieją dwa główne przypadki użycia w modelu programowania w usłudze Azure AD:
 

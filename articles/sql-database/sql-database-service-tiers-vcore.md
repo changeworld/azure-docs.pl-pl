@@ -13,10 +13,10 @@ ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 05/06/2019
 ms.openlocfilehash: 520dba611e6791fca990e21173424a914c3d8e14
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66693337"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Można wybrać jedną z warstwy usługi (rdzeń wirtualny), a następnie przeprowadzenie migracji z warstwy usługi jednostki DTU
@@ -26,7 +26,7 @@ Rdzeń wirtualny (rdzeń wirtualny) — model zakupu w oparciu o pozwala niezale
 - **4. generacji**: Maksymalnie 24 logiczne procesory CPU oparte na Intel E5-2673 v3 2,4 GHz (Haswell), procesory, — rdzeń wirtualny = 1 PP (rdzeni fizycznych), 7 GB na rdzeń procesora, dołączonych dysków SSD
 - **5. generacji**: Maksymalnie 80 logiczne procesory CPU oparte na Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów, pamięci rdzeń wirtualny = LP 1 (funkcja hyper wątek), 5.1 GB na rdzeń procesora, szybkie eNVM dysków SSD
 
-4. generacji sprzętu oferuje znacznie więcej pamięci na rdzeń wirtualny. 5. generacji sprzętu pozwala jednak skalować zasoby obliczeniowe, które znacznie wyższa.
+4\. generacji sprzętu oferuje znacznie więcej pamięci na rdzeń wirtualny. 5\. generacji sprzętu pozwala jednak skalować zasoby obliczeniowe, które znacznie wyższa.
 
 > [!NOTE]
 > Aby uzyskać informacji na temat warstwy usług oparte na jednostkach DTU, zobacz [warstwy modelu zakupu opartego na jednostkach DTU usług](sql-database-service-tiers-dtu.md). Aby uzyskać informacje o różnicach między warstwy usług dla opartego na jednostkach DTU, jak i w modelu zakupu opartego na rdzeniach wirtualnych, zobacz [usługi Azure SQL Database, zakup modeli](sql-database-purchase-models.md).
@@ -42,8 +42,8 @@ W poniższej tabeli przedstawiono różnice w trzech warstwach:
 ||**Zastosowania ogólne**|**Krytyczne dla działania**|**Na dużą skalę**|
 |---|---|---|---|
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty ograniczonym budżetem, zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe za pomocą wysokie wymagania dotyczące operacji We/Wy. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|Większości obciążeń biznesowych za pomocą wysoce skalowalny magazyn i wymagań skali odczytu.|
-|Wystąpienia obliczeniowe|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5. generacji: 2-80 rdzeni wirtualnych<br/>**Bezserwerowe środowisko obliczeniowe**:<br/>5. generacji: 0.5 — 4 rdzenie wirtualne|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5. generacji: 2-80 rdzeni wirtualnych|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5. generacji: 2-80 rdzeni wirtualnych|
-|Memory (Pamięć)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5. generacji: 5.1 GB na rdzeń wirtualny<br/>**Bezserwerowe środowisko obliczeniowe**:<br/>5. generacji: 3 GB na rdzeń wirtualny|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5. generacji: 5.1 GB na rdzeń wirtualny |**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5. generacji: 5.1 GB na rdzeń wirtualny|
+|Wystąpienia obliczeniowe|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5\. generacji: 2-80 rdzeni wirtualnych<br/>**Bezserwerowe środowisko obliczeniowe**:<br/>5\. generacji: 0.5 — 4 rdzenie wirtualne|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5\. generacji: 2-80 rdzeni wirtualnych|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5\. generacji: 2-80 rdzeni wirtualnych|
+|Memory (Pamięć)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5\. generacji: 5.1 GB na rdzeń wirtualny<br/>**Bezserwerowe środowisko obliczeniowe**:<br/>5\. generacji: 3 GB na rdzeń wirtualny|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5\. generacji: 5.1 GB na rdzeń wirtualny |**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5\. generacji: 5.1 GB na rdzeń wirtualny|
 |Magazyn|Używa zdalnego magazynu.<br/>**Pojedynczą bazę danych aprowizowane obliczeń**:<br/>5 GB – 4 TB<br/>**Pojedynczą bazę danych bezserwerowe środowisko obliczeniowe**:<br/>5 GB - 1 TB<br/>**Wystąpienie zarządzane**: 32 GB - 8 TB |Używa lokalny magazyn SSD.<br/>**Pojedynczą bazę danych aprowizowane obliczeń**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB - 4 TB |Elastyczne automatyczne zwiększanie magazynu zgodnie z potrzebami. Obsługuje maksymalnie 100 TB pamięci. Używa lokalny magazyn SSD w puli buforów w lokalnej pamięci podręcznej i lokalne przechowywanie danych. Używa usługi Azure storage zdalnego końcowego długoterminowego przechowywania danych. |
 |Przepustowość operacji We/Wy (w przybliżeniu)|**Pojedynczą bazę danych**: 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS.<br/>**Wystąpienie zarządzane**: Zależy od [rozmiar pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji We/Wy na rdzeń z 200 000 maksymalna liczba IOPS|W Hiperskali to architektura wielowarstwowa z buforowaniem na różnych poziomach. Skuteczne operacje We/Wy zależy od obciążenia.|
 |Dostępność|1 repliki, nie skali odczytu replik|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>strefowo nadmiarowe wysokiej dostępności (HA)|1 repliki do odczytu i zapisu oraz 0 – 4 [skali odczytu replik](sql-database-read-scale-out.md)|

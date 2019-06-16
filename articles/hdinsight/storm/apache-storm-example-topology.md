@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.openlocfilehash: b2407200b995ad956f233248f6cdd58488b583d6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64688788"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Przykład topologii Apache Storm i składniki dla Storm Apache na HDInsight
@@ -24,7 +24,7 @@ Poniżej przedstawiono listę przykładów tworzone i konserwowane przez firmę 
 | [Zapis do usługi Azure Data Lake Storage z systemu Apache Storm](apache-storm-write-data-lake-store.md) |Zapisywanie do usługi Azure Data Lake Storage |Java |
 | [Źródło elementów Spout Centrum zdarzeń i elementu Bolt](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Źródło zdarzeń Centrum Spout i Bolt |Java |
 | [Opracowywanie topologii opartych na języku Java dla usługi Storm Apache na HDInsight][5797064f] |Maven |Java |
-| [Opracowywanie topologii języka C# dla Storm Apache na HDInsight przy użyciu programu Visual Studio][16fce2d1] |HDInsight Tools for Visual Studio |C#, Java |
+| [Opracowywanie topologii języka C# dla Storm Apache na HDInsight przy użyciu programu Visual Studio][16fce2d1] |Narzędzia HDInsight Tools for Visual Studio |C#, Java |
 | [Przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (C#)][844d1d81] |Event Hubs |C# i Java |
 | [Process events from Azure Event Hubs with Storm on HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/) (Przetwarzanie zdarzeń usługi Azure Event Hubs przy użyciu systemu Storm w usłudze HDInsight — Java) |Event Hubs |Java |
 | [Przetwarzanie danych czujnika pojazdu z usługi Event Hubs przy użyciu systemu Storm Apache na HDInsight][246ee964] |Zdarzenia obiektu Blob magazynu Azure Cosmos DB koncentratorów (WASB) |C#, Java |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-pawal
 ms.openlocfilehash: 27138fc82515983bb07df845e1204fe04dff915a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389670"
 ---
 # <a name="how-to-return-n-best-translations"></a>Sposób zwracania N najlepszych tłumaczenia
@@ -38,11 +38,11 @@ Podpis jest:
 | Parametr | Opis |
 |:---|:---|
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
-| text | **Wymagane** ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|
+| tekst | **Wymagane** ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|
 | from | **Wymagane** ciąg reprezentujący kod języka tekstu do przetłumaczenia. |
 | na | **Wymagane** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w. |
 | maxTranslations | **Wymagane** wartość int reprezentująca maksymalną liczbę tłumaczeń do zwrócenia. |
-| Opcje | **Opcjonalnie** obiekt TranslateOptions, który zawiera wartości wymienione poniżej. Są wszystkie opcjonalny i domyślnie najczęściej używane ustawienia.
+| options | **Opcjonalnie** obiekt TranslateOptions, który zawiera wartości wymienione poniżej. Są wszystkie opcjonalny i domyślnie najczęściej używane ustawienia.
 
 * Kategoria: Obsługiwana jest tylko, a wartość domyślna opcja to "general".
 * Typ zawartości: Obsługiwana jest tylko, a wartość domyślna opcja to "text/plain".

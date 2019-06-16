@@ -14,10 +14,10 @@ ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
 ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60884983"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Tworzenie usługi Azure podstawowego modułu równoważenia obciążenia przy użyciu interfejsu API REST

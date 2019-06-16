@@ -9,10 +9,10 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: cd686e1bf62bbd7f37f61ced767e92918edf919c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116910"
 ---
 ## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>Jak utworzyć klasyczną sieć wirtualną przy użyciu wiersza polecenia platformy Azure
@@ -32,12 +32,12 @@ Interfejsu wiersza polecenia platformy Azure można użyć do zarządzania zasob
             info:    network vnet create command OK
    
    * **--vnet**. Nazwa sieci wirtualnej, która zostanie utworzona. W scenariuszu *TestVNet*
-   * **-e (lub--przestrzeni adresowej)**. Przestrzeń adresowa sieci wirtualnej. W scenariuszu *192.168.0.0*
-   * **-i (lub - cidr)**. Maska sieci w formacie CIDR. W scenariuszu *16*.
+   * **-e (lub--przestrzeni adresowej)** . Przestrzeń adresowa sieci wirtualnej. W scenariuszu *192.168.0.0*
+   * **-i (lub - cidr)** . Maska sieci w formacie CIDR. W scenariuszu *16*.
    * **-n (lub--subnet-name**). Nazwa pierwszej podsieci. W scenariuszu *frontonu*.
-   * **-p (lub--podsieci start-ip)**. Początkowy adres IP dla podsieci lub przestrzeń adresową podsieci. W scenariuszu *192.168.1.0*.
-   * **-r (lub--podsieci cidr)**. Maska sieci w formacie CIDR podsieci. W scenariuszu *24*.
-   * **-l (lub --location)**. Region platformy Azure, w którym zostanie utworzona sieć wirtualna. W scenariuszu *środkowe stany USA*.
+   * **-p (lub--podsieci start-ip)** . Początkowy adres IP dla podsieci lub przestrzeń adresową podsieci. W scenariuszu *192.168.1.0*.
+   * **-r (lub--podsieci cidr)** . Maska sieci w formacie CIDR podsieci. W scenariuszu *24*.
+   * **-l (lub --location)** . Region platformy Azure, w którym zostanie utworzona sieć wirtualna. W scenariuszu *środkowe stany USA*.
 3. Aby utworzyć podsieć, uruchom **podsieci sieci wirtualnej sieci platformy azure utworzyć** polecenia:
    
             azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
@@ -55,8 +55,8 @@ Interfejsu wiersza polecenia platformy Azure można użyć do zarządzania zasob
             info:    network vnet subnet create command OK
    
    * **-t (lub--vnet-name**. Nazwa sieci wirtualnej, w której zostanie utworzona podsieć. W scenariuszu *TestVNet*.
-   * **-n (lub --name)**. Nazwa nowej podsieci. W scenariuszu *zaplecza*.
-   * **-a (lub --address-prefix)**. Blok CIDR podsieci. W scenariuszu *192.168.2.0/24*.
+   * **-n (lub --name)** . Nazwa nowej podsieci. W scenariuszu *zaplecza*.
+   * **-a (lub --address-prefix)** . Blok CIDR podsieci. W scenariuszu *192.168.2.0/24*.
 4. Aby wyświetlić właściwości nowej sieci wirtualnej, należy uruchomić **usługa azure network vnet show** polecenia:
    
             azure network vnet show

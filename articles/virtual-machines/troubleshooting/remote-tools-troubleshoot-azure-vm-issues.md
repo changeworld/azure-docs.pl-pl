@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: 513ce98703e67053ab0bcac3e6fc7a3e959f6870
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307433"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717269"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Użyj narzędzia zdalnej rozwiązywać problemy z maszyny Wirtualnej platformy Azure
 
@@ -43,7 +43,7 @@ psexec \\<computer>-u user -s cmd
 >* Parametr -s zapewnia, że wywoływania polecenia przy użyciu konta systemowego (uprawnienia administratora).
 >* Narzędzie PsExec korzysta z portów TCP 135 i 445. W związku z tym dwa porty muszą być otwarte na zaporze.
 
-## <a name="run-commands"></a>Polecenia uruchamiania
+## <a name="run-commands"></a>Uruchamianie poleceń
 
 Zobacz [uruchamiania skryptów programu PowerShell na maszynie Wirtualnej Windows za pomocą polecenia Uruchom](../windows/run-command.md) Aby uzyskać więcej informacji o sposobie używania funkcji uruchamiania poleceń na uruchamianie skryptów na maszynie Wirtualnej.
 
@@ -236,7 +236,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. Z innej maszyny Wirtualnej w tej samej sieci Wirtualnej, otwórz wystąpienie **Services.msc**.
 
-2. Kliknij prawym przyciskiem myszy **usługi (lokalne)**.
+2. Kliknij prawym przyciskiem myszy **usługi (lokalne)** .
 
 3. Wybierz **Podłącz do innego komputera**.
 

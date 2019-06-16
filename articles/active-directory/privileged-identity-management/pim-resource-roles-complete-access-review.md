@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aee8ac3c2638ede559f8a1f9c51f2d6e62604998
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602303"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>Kończenie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM
@@ -41,16 +41,16 @@ W bloku szczegółów przeglądu dostępu istnieje kilka opcji związanych z zar
 
 ![Opcje zarządzania przeglądu](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
 
-### <a name="stop"></a>Zatrzymaj
+### <a name="stop"></a>Stop
 Wszystkie przeglądy dostępu mają datę końcową, ale można użyć **zatrzymać** przycisk, aby zakończyć jej początku. Wszyscy użytkownicy, którzy nie została jeszcze swojego przeglądu po tym czasie nie będzie mógł zakończyć ją po zakończeniu przeglądu. Nie można ponownie uruchomić przeglądu, po jest zatrzymana.
 
-### <a name="reset"></a>Resetowanie
+### <a name="reset"></a>Reset
 Możesz zresetować przeglądu dostępu, aby usunąć wszystkie decyzje, które składają się na nim. Po zresetowaniu Przegląd dostępu wszystkich użytkowników, są oznaczone jako wykonany ponownie. 
 
 ### <a name="apply"></a>Zastosuj
 Po zakończeniu przeglądu dostępu za pomocą **Zastosuj** przycisku, zaimplementować wyniku przeglądu. Jeśli w przeglądzie nastąpiła odmowa dostępu użytkownika, ten krok powoduje usunięcie przypisania roli.  
 
-### <a name="delete"></a>Usuń
+### <a name="delete"></a>Usuwanie
 Jeśli nie chcesz w przeglądzie więcej, należy go usunąć. **Usuń** przycisk usuwa przeglądu z poziomu aplikacji PIM.
 
 ## <a name="results"></a>Wyniki

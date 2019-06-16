@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
 ms.openlocfilehash: edadb369461bb3865dd6894c3329e7079fa9d13f
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752557"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
@@ -374,8 +374,8 @@ Integracja dzienników obecnie obsługuje integrację Dzienniki aktywności plat
 | Typ dziennika | Usługa Azure Monitor rejestruje pomocnicze JSON (Splunk ArcSight i IBM QRadar) |
 | :------- | :-------------------------------------------------------- |
 |Dzienniki inspekcji usługi Azure AD|   Tak|
-|Dzienniki aktywności| Tak|
-|Alertów usługi Security Center |Yes|
+|Dzienniki aktywności| Yes|
+|Alertów usługi Security Center |Tak|
 |Dzienniki diagnostyczne (Dzienniki zasobów)|  Yes|
 |Dzienniki maszyny Wirtualnej|   Tak, za pomocą zdarzenia przesyłane dalej, a nie za pomocą pliku JSON|
 

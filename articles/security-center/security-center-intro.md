@@ -3,7 +3,7 @@ title: Co to jest Azure Security Center? | Microsoft Docs
 description: Uzyskaj informacje na temat Centrum zabezpieczeń Azure, jego kluczowych możliwości i sposobu działania.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 6/06/2019
+ms.author: v-mohabe
+ms.openlocfilehash: 28e85f2e9caacc0cc30dcc1a073414c34bc2ab0e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910204"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064329"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
@@ -125,6 +125,10 @@ Usługa Security Center pomaga ograniczyć narażenie na ataki siłowe. Ogranicz
 ### <a name="protect-data-services"></a>Ochrona usług danych
 
 Usługa Security Center obejmuje funkcje, które ułatwiają wykonywanie automatycznej klasyfikacji danych w Azure SQL. Możesz także uzyskać oceny potencjalnych luk w zabezpieczeniach w usługach Azure SQL i Storage oraz zalecenia dotyczące sposobu rozwiązania tych problemów.
+
+### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>Ochrona obciążeń chmury hybrydowej i IoT (wersja zapoznawcza)
+
+Centrum zabezpieczeń Azure dla IoT (Internet of Things) ułatwia ochronę obciążeń hybrydowych, zapewniając ujednoliconego widoczności i kontroli, zapobiegania adaptacyjne zagrożeń i Inteligentne wykrywanie zagrożeń i odpowiedzi w różnych obciążeń działających na urządzeniach brzegowych, w środowisku lokalnym, Azure i w innych chmurach. Aby uzyskać więcej informacji, zobacz [Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza)](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Szybsze osiągnięcie bezpieczeństwa
 

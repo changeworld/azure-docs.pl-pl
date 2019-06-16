@@ -19,10 +19,10 @@ ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec615e1c6229539958f66d0dca15cf7eb788e597
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546091"
 ---
 # <a name="app-registration-reference"></a>Dokumentacja rejestracji aplikacji
@@ -49,7 +49,7 @@ W tej chwili w portalu rejestracji aplikacji dozwolone są tylko dwa typy wpisó
 Musisz przekazać certyfikat, który zawiera klucz publiczny.
 
 ## <a name="profile"></a>Profil
-Sekcji profilu w portalu rejestracji aplikacji może służyć do dostosowania strony logowania w aplikacji. W tej chwili można zmieniać logowania strony aplikacji logo, warunków użytkowania adres URL usługi i adres URL zasad zachowania poufności informacji. Logo musi być przezroczystym obrazem o wymiarach 48 x 48 lub 50 x 50 pikseli w formacie pliku GIF, PNG lub JPEG o maksymalnym rozmiarze 15 KB. Spróbuj zmianę wartości i wyświetlanie wynikowych strony logowania!
+Sekcji profilu w portalu rejestracji aplikacji może służyć do dostosowania strony logowania w aplikacji. W tej chwili można zmieniać logowania strony aplikacji logo, warunków użytkowania adres URL usługi i adres URL zasad zachowania poufności informacji. Logo musi być przezroczystym 48 x 48 lub 50 x 50 pikseli obraz w pliku GIF, PNG lub JPEG, który wynosi 15 KB lub mniejszy. Spróbuj zmianę wartości i wyświetlanie wynikowych strony logowania!
 
 ## <a name="live-sdk-support"></a>Zestaw Live SDK pomocy technicznej
 Po włączeniu "Zestaw SDK pomocy technicznej na żywo" do usługi Azure AD będą udostępniane żadnych wpisów tajnych aplikacji, możesz utworzyć i magazynów danych Account firmy Microsoft. Dzięki temu aplikację, aby łączyć bezpośrednio z usługi Microsoft Account (login.live.com). Jeśli chcesz tworzyć aplikacje przy użyciu Account Microsoft bezpośrednio (zamiast przy użyciu punktu końcowego v2.0 usługi Azure AD), należy upewnić się, czy włączona jest obsługa zestawu SDK na żywo.

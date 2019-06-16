@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002820"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
@@ -39,7 +39,7 @@ Poniższa tabela zawiera krótkie omówienie zakres trwałości i dostępności,
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Niedostępność węzła w centrum danych                                                                 | Tak                             | Yes                              | Yes                                  | Tak                                  |
 | Całego centrum danych (strefowych lub strefowych) staje się niedostępny                                           | Nie                              | Yes                              | Yes                                  | Tak                                  |
-| Awaria obejmujących cały region                                                                                     | Nie                              | Nie                               | Yes                                  | Tak                                  |
+| Awaria obejmujących cały region                                                                                     | Nie                              | Nie                               | Yes                                  | Yes                                  |
 | Dostęp do odczytu do danych (w zdalnym, replikowany geograficznie region) w przypadku niedostępności obejmujących cały region | Nie                              | Nie                               | Nie                                   | Tak                                  |
 | Zaprojektowana w celu zapewnienia \_ \_ trwałości obiektów w danym roku                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99,99999999999999% (16 9) | co najmniej 99,99999999999999% (16 9) |
 | Typy kont magazynu obsługiwanych                                                                   | Konta GPv1, GPv2 obiektów Blob                | GPv2                             | Konta GPv1, GPv2 obiektów Blob                     | Konta GPv1, GPv2 obiektów Blob                     |

@@ -17,10 +17,10 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 18d10afc9132c81c2dcfbb1aa17ded81a21336ca
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780046"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux
@@ -51,7 +51,7 @@ Za pomocą protokołu TCP tunelowania, możesz utworzyć połączenie sieciowe m
 
 Aby rozpocząć pracę, musisz zainstalować [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Aby zobaczyć, jak to działa bez konieczności instalowania interfejsu wiersza polecenia platformy Azure, otwórz [usługi Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Otwórz połączenie zdalne z usługą aplikacji przy użyciu [Utwórz połączenie zdalne az webapp](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) polecenia. Określ  _\<identyfikator subskrypcji >_,  _\<nazwa_grupy >_ i \__ < nazwa aplikacji > dla aplikacji.
+Otwórz połączenie zdalne z usługą aplikacji przy użyciu [Utwórz połączenie zdalne az webapp](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) polecenia. Określ  _\<identyfikator subskrypcji >_ ,  _\<nazwa_grupy >_ i \__ < nazwa aplikacji > dla aplikacji.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

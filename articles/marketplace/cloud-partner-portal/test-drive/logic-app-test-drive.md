@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 3dc5642541f411acc93301f6bb9828e901aba449
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64940004"
 ---
 <a name="logic-app-test-drive"></a>Wersja testowa aplikacji logiki
@@ -61,11 +61,11 @@ Jest następnej sekcji, aby wypełnić, którym można skonfigurować aplikację
 
 ![Konfiguracja techniczne dysku testu](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **Region** - *[wymagane pole]* regionu, możesz wybrać to, gdzie wybierz wdrożonym zasobów aplikacji logiki dysku testu w.
+- **Region** -  *[wymagane pole]* regionu, możesz wybrać to, gdzie wybierz wdrożonym zasobów aplikacji logiki dysku testu w.
 
     *Uwaga:* Jeśli Twoja aplikacja logiki ma zasoby niestandardowe, które są przechowywane w regionie, upewnij się, że ten region wybrany w tym miejscu. Najlepszym sposobem, w tym celu jest **pełni wdrażanie aplikacji logiki lokalnie w Twojej subskrypcji platformy Azure w portalu i sprawdź, czy działa** przed napisaniem go tutaj.
 
-- **Maksymalna współbieżnych wersji testowych** - *[wymagane pole]* wystąpień z numer dysku testów, które są już wdrożone i Oczekiwanie na dostęp do wybranego regionu. Klienci mogą uzyskać dostęp natychmiast wersji testowych, a nie musisz czekać, aż do wdrożenia.
+- **Maksymalna współbieżnych wersji testowych** -  *[wymagane pole]* wystąpień z numer dysku testów, które są już wdrożone i Oczekiwanie na dostęp do wybranego regionu. Klienci mogą uzyskać dostęp natychmiast wersji testowych, a nie musisz czekać, aż do wdrożenia.
 
     *Uwaga:* Jeśli używasz seminarium w sieci Web/class, którego wszystkich uczniów, aby wypróbować wersję testową liczbę N, zaleca się publikowanie N liczby wystąpień w warstwie gorąca, a następnie drugi raz klasy jest ponad ponownie opublikować do Twojej normalną liczbę wystąpień w warstwie gorąca.
 
@@ -77,7 +77,7 @@ Jest następnej sekcji, aby wypełnić, którym można skonfigurować aplikację
 
 - **Anulowanie aprowizacji Nazwa aplikacji logiki —** *[wymagane pole]* zapisu w nazwie aplikacji logiki anulować wszystkie zasoby utworzone w wersji testowej. Upewnij się, że plik został zapisany w grupie zasobów powyżej.
 
-- **Dostęp do informacji -** *[wymagane pole]* po klient pobiera ich wersji testowej, uzyskiwanie dostępu do informacji są prezentowane do nich. Te instrukcje są przeznaczone do udostępniania parametry wyjściowe przydatne szablonu Menedżera zasobów testowych z dysku. Aby uwzględnić parametry wyjściowe, należy użyć podwójnego nawiasów klamrowych (na przykład **{{outputname}}**), a ich zostanie wstawiony poprawnie w lokalizacji. (Formatowanie ciągu HTML zaleca się tutaj do renderowania frontonu).
+- **Dostęp do informacji -** *[wymagane pole]* po klient pobiera ich wersji testowej, uzyskiwanie dostępu do informacji są prezentowane do nich. Te instrukcje są przeznaczone do udostępniania parametry wyjściowe przydatne szablonu Menedżera zasobów testowych z dysku. Aby uwzględnić parametry wyjściowe, należy użyć podwójnego nawiasów klamrowych (na przykład **{{outputname}}** ), a ich zostanie wstawiony poprawnie w lokalizacji. (Formatowanie ciągu HTML zaleca się tutaj do renderowania frontonu).
 
 ### <a name="test-drive-deployment-subscription-details"></a>Szczegóły subskrypcji wdrożenia dysku testu
 
@@ -119,7 +119,7 @@ Kliknij pozycję Zapisz. Ostatnim krokiem jest identyfikator aplikacji dla tej a
 Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy dodać aplikację jako współautora w subskrypcji. Instrukcje te są jak poniżej:
 
 1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, którego używasz do testowej.
-1. Kliknij przycisk **kontrola dostępu (IAM)**.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 1. Kliknij przycisk **przypisań ról** kartę.  ![Usługa Azure Active Directory, dodając nową jednostkę kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Kliknij przycisk **Dodaj przypisanie roli**.
 1. Ustaw rolę **Współautor**.

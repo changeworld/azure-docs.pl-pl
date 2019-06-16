@@ -14,10 +14,10 @@ ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
 ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964038"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacji rozproszonych
@@ -74,7 +74,7 @@ Wybierz **przejdź do szczegółów** Eksplorowanie środowiska transakcji end-t
 
 ![Zrzut ekranu przedstawiający szczegóły transakcji end-to-end](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Wyświetl w usłudze Analytics
+### <a name="view-in-analytics"></a>Wyświetl w obszarze analiza
 
 Kliknij, aby zapytania i danych aplikacji dalsze badanie **Wyświetl w obszarze analiza**.
 

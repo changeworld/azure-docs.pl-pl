@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafa3974eb01b36015254307ba1a52a9bc221da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f970e9d43bc6dd67fe55ca9cdcfcae716c9f166a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249979"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110620"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Szybki start: Tworzenie nowej dzierżawy w usłudze Azure Active Directory
 Wszystkie zadania administracyjne, w tym tworzenie nowej dzierżawy dla swojej organizacji, możesz wykonywać przy użyciu portalu usługi Azure Active Directory (Azure AD). 
@@ -69,6 +69,6 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, możesz usunąć dzierż
 
 - Dodawanie grup i członków — zobacz [Tworzenie podstawowej grupy i dodawanie członków](active-directory-groups-create-azure-portal.md)
 
-- Dowiedz się więcej na temat [dostępu na podstawie ról przy użyciu usługi Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) oraz [dostępu warunkowego](../../role-based-access-control/conditional-access-azure-management.md), aby ułatwić zarządzanie dostępem do aplikacji i zasobów w organizacji.
+- Dowiedz się więcej o [opartej na rolach dostęp przy użyciu Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) i [dostępu warunkowego](../../role-based-access-control/conditional-access-azure-management.md) ułatwiające zarządzanie dostępem do aplikacji i zasobów w organizacji.
 
 - Uzyskaj informacje o usłudze Azure AD, w tym [podstawowe informacje o licencjonowaniu oraz informacje o terminologii i skojarzonych funkcjach](active-directory-whatis.md).

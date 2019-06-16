@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66248756"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133681"
 ---
 ## <a name="premium-ssd"></a>Premium, SSD
 
@@ -45,7 +45,7 @@ Standardowe dyski SSD każdej operacji We/Wy mniejszą niż lub równy 256 KiB p
 
 ## <a name="standard-hdd"></a>Standardowa, dysk twardy
 
-Azure standardowych dysków twardych dostarczanie obsługi niezawodne, niedrogie dysków dla maszyn wirtualnych obciążeń niewrażliwego na opóźnienia. Dzięki usłudze standard storage dane są przechowywane dyski twarde (HDD). Opóźnienia, operacje We/Wy i przepływność HDD standardowe dyski mogą się różnić szerzej w porównaniu do dysków na dyskach SSD. Podczas pracy z maszynami wirtualnymi, można użyć dysków w warstwie standardowa dysku twardego dla scenariuszy deweloperskich lub testowych oraz mniej krytycznych obciążeń. Standardowych dysków twardych są dostępne we wszystkich regionach platformy Azure i mogą być używane z wszystkich maszyn wirtualnych platformy Azure.
+Azure standardowych dysków twardych dostarczanie obsługi niezawodne, niedrogie dysków dla maszyn wirtualnych obciążeń niewrażliwego na opóźnienia. Dzięki usłudze standard storage dane są przechowywane dyski twarde (HDD). Opóźnienia, operacje We/Wy i przepływność HDD standardowe dyski mogą się różnić szerzej w porównaniu do dysków na dyskach SSD. Dyski standardowe dyski TWARDE są przeznaczone do dostarczania opóźnienia zapisu, w obszarze 10 MS i opóźnienia w ramach 20 MS w przypadku większości operacji We/Wy odczytu, jednak Rzeczywista wydajność będzie zależeć od rozmiaru i obciążeń wzorzec operacji We/Wy. Podczas pracy z maszynami wirtualnymi, można użyć dysków w warstwie standardowa dysku twardego dla scenariuszy deweloperskich lub testowych oraz mniej krytycznych obciążeń. Standardowych dysków twardych są dostępne we wszystkich regionach platformy Azure i mogą być używane z wszystkich maszyn wirtualnych platformy Azure.
 
 ### <a name="disk-size"></a>Rozmiar dysku
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
 ms.openlocfilehash: a7fcd4deb0446577af310ff5380ffddf05ba87be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719825"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z funkcją Hyper-V do platformy Azure replikacji i trybu failover
@@ -35,7 +35,7 @@ Jeśli występują problemy podczas włączania ochrony dla maszyn wirtualnych f
     - [Sprawdź](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) czy masz najnowszą wersję.
     - [Zachowaj](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) usługi integracji są aktualne.
     
-## <a name="replication-issues"></a>Problemy z replikacją
+## <a name="replication-issues"></a>Problemy dotyczące replikacji
 
 Rozwiązywanie problemów z replikacją wstępnych i bieżących w następujący sposób:
 
@@ -145,7 +145,7 @@ Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątr
 
 Wszystkie zdarzenia replikacji funkcji Hyper-V są rejestrowane w dzienniku funkcji Hyper-V-VMMS\Admin znajduje się w **Dzienniki aplikacji i usług** > **Microsoft** > **Windows**. Ponadto można włączyć dziennik analityczny dla Usługa zarządzania maszynami wirtualnymi funkcji Hyper-V, w następujący sposób:
 
-1. Należy dzienniki analityczne i debugowania można wyświetlić w Podglądzie zdarzeń. Aby udostępnić dzienniki, w Podglądzie zdarzeń, kliknij przycisk **widoku** > **Pokaż analityczne i debugowania dzienniki.**. Dziennik analityczny, który pojawia się w obszarze **funkcji Hyper-V-VMMS**.
+1. Należy dzienniki analityczne i debugowania można wyświetlić w Podglądzie zdarzeń. Aby udostępnić dzienniki, w Podglądzie zdarzeń, kliknij przycisk **widoku** > **Pokaż analityczne i debugowania dzienniki.** . Dziennik analityczny, który pojawia się w obszarze **funkcji Hyper-V-VMMS**.
 2. W **akcje** okienku kliknij **Włącz dziennik**. 
 
     ![Włącz dziennik](media/hyper-v-azure-troubleshoot/enable-log.png)

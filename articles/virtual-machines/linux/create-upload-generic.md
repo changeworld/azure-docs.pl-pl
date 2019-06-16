@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1ef273b65bb3a8b8536d27c70e8ba05e74faa39b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327970"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64702481"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informacje dotyczące niezatwierdzonych dystrybucji
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -74,7 +74,7 @@ Ponowne tworzenie obrazu initrd lub initramfs przy użyciu mechanizmu mogą się
 ### <a name="resizing-vhds"></a>Zmiany rozmiaru wirtualnych dysków twardych
 Obrazy VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1 MB.  Zwykle wirtualne dyski twarde utworzone za pomocą funkcji Hyper-V są prawidłowo wyrównane.  Jeśli wirtualny dysk twardy nie jest prawidłowo wyrównana, podczas próby utworzenia obrazu z wirtualnego dysku twardego może wystąpić komunikat o błędzie podobny do następującego.
 
-* Http:// wirtualnego dysku twardego<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd ma nieobsługiwany rozmiar wirtualny 21475270656 bajtów. Rozmiar musi być liczbą całkowitą (w MB).
+* Http wirtualnego dysku twardego:\//\<mystorageaccount >.blob.core.windows.net/vhds/MyLinuxVM.vhd ma nieobsługiwany rozmiar wirtualny 21475270656 bajtów. Rozmiar musi być liczbą całkowitą (w MB).
 
 W takim przypadku Zmień rozmiar maszyny Wirtualnej przy użyciu konsoli Menedżera funkcji Hyper-V lub [dysku VHD zmiany rozmiaru](https://technet.microsoft.com/library/hh848535.aspx) polecenia cmdlet programu PowerShell.  Jeśli w środowisku Windows nie jest uruchomiony, zalecamy użycie `qemu-img` konwersji (jeśli jest to konieczne), i zmienianie rozmiaru wirtualnego dysku twardego.
 

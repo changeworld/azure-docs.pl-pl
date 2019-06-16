@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: f96171e1c75676a185edf4a1901ef65b7181135a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64721000"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Analizowanie dzienników usługi Apache Hadoop
@@ -32,7 +32,7 @@ Podczas tworzenia klastra usługi HDInsight sześciu tabel są tworzone automaty
 * ambariserverlog
 * ambariagentlog
 
-Nazwy plików w tabeli są **u\<Nazwa_klastra > DDMonYYYYatHHMMSSsss\<Nazwa_tabeli >**.
+Nazwy plików w tabeli są **u\<Nazwa_klastra > DDMonYYYYatHHMMSSsss\<Nazwa_tabeli >** .
 
 Te tabele zawierają następujące pola:
 
@@ -41,13 +41,13 @@ Te tabele zawierają następujące pola:
 * eventTimestamp
 * Host
 * MALoggingHash
-* Komunikat
+* Message
 * Nie
 * PreciseTimeStamp
 * Rola
 * RowIndex
 * Dzierżawa
-* SYGNATURA CZASOWA
+* TIMESTAMP
 * TraceLevel
 
 ### <a name="tools-for-accessing-the-logs"></a>Narzędzia do uzyskiwania dostępu do dzienników
@@ -142,7 +142,7 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
 * **Opis**: Serwer nie można odnaleźć rekordu żądany klaster.  
-* **Środki zaradcze**: Ponów operację.
+* **Środki zaradcze**: Spróbuj ponownie wykonać operację.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
 * **Opis**: Nazwy DNS klastra *yourDnsName* jest nieprawidłowy. Sprawdź, czy nazwa rozpoczyna się i kończy się ciągiem alfanumerycznym i może zawierać tylko "-" znaków specjalnych  
@@ -170,7 +170,7 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
 * **Opis**: Konfiguracja klastra nieprawidłowy. Nie można odnaleźć żadnych definicji węzła danych w rozmiar węzła.  
-* **Środki zaradcze**: Ponów operację.
+* **Środki zaradcze**: Spróbuj ponownie wykonać operację.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
 * **Opis**: Usunięcie wdrożenia nie powiodło się dla klastra  
@@ -190,7 +190,7 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
 * **Opis**: Serwer nie może zaktualizować stan wdrożenia klastra.  
-* **Środki zaradcze**: Ponów operację. Jeśli występuje on wiele razy, skontaktuj się z działem CSS.
+* **Środki zaradcze**: Spróbuj ponownie wykonać operację. Jeśli występuje on wiele razy, skontaktuj się z działem CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
 * **Opis**: Klaster *yourClusterName* została usunięta w ramach konserwacji. Utwórz ponownie klaster.
@@ -198,7 +198,7 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
 * **Opis**: Konfiguracja klastra nieprawidłowy. Nie można odnaleźć w rozmiary węzłów Konfiguracja wymagana węzła głównego.
-* **Środki zaradcze**: Ponów operację.
+* **Środki zaradcze**: Spróbuj ponownie wykonać operację.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
 * **Opis**: Nie można utworzyć usługi hostowanej *nameOfYourHostedService*. Ponów próbę żądania.  

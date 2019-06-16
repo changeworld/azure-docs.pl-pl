@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 06/11/2019
 ms.author: tulasim
-ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b3bae01d65685aa9ea7bfc95d1f1454741d37b5e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599037"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053221"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Samouczek: Utwórz Bota pytań i odpowiedzi z usługi Azure Bot Service w wersji 4
 
@@ -55,9 +55,9 @@ Utwórz bota jako aplikację kliencką na bazie wiedzy knowledge base.
     |Lokalizacja|`west us`|Lokalizacja zasobów platformy Azure bot.|
     |Warstwa cenowa|`F0`|Warstwy bezpłatna usługa Azure bot service.|
     |Nazwa aplikacji|`my-tutorial-kb-bot-app`|Jest to aplikacji sieci web do obsługi tylko Twój bot. To nie powinna być taką samą nazwę aplikacji, ponieważ używa już usługi QnA Maker. Udostępnianie aplikacji sieci web usługi QnA Maker z innych zasobów nie jest obsługiwane.|
-    |Zestaw SDK języka|C#|Jest to podstawowy język programowania używany przez zestaw SDK platformy bot framework. Dopuszczalne są C# lub programie Node.js.|
+    |Zestaw SDK języka|C#|Jest to podstawowy język programowania używany przez zestaw SDK platformy bot framework. Dopuszczalne są [ C# ](https://github.com/Microsoft/botbuilder-dotnet) lub [Node.js](https://github.com/Microsoft/botbuilder-js).|
     |Klucz uwierzytelniania pytań i odpowiedzi|**Nie zmieniaj**|Ta wartość jest wypełniane automatycznie.|
-    |Plan usługi App Service/lokalizacja|**Nie zmieniaj**|W tym samouczku lokalizacji nie jest ważna.|
+    |App service plan/lokalizacja|**Nie zmieniaj**|W tym samouczku lokalizacji nie jest ważna.|
     |Azure Storage|**Nie zmieniaj**|Konwersacja dane są przechowywane w tabelach usługi Azure Storage.|
     |Application Insights|**Nie zmieniaj**|Rejestrowanie są wysyłane do usługi Application Insights.|
     |Identyfikator aplikacji firmy Microsoft|**Nie zmieniaj**|Usługi Active directory użytkownika i hasło są wymagane.|

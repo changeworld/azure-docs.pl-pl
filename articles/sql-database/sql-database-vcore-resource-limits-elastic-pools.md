@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 05/23/2019
 ms.openlocfilehash: 98bd70d9f6eb70cb7848dfa74e19c78e55a34991
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240353"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity zasobów dla pul elastycznych za pomocą ograniczeń oparty na rdzeniach wirtualnych model zakupu
@@ -45,7 +45,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |rdzenie wirtualne|1|2|3|4|5|6|
 |Pamięć (GB)|7|14|21|28|35|42|
 |Maksymalna liczba baz danych na pulę|100|200|500|500|500|500|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|512|756|756|1536|1536|1536|
 |Maksymalny rozmiar dziennika|154|227|227|461|461|461|
@@ -73,7 +73,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
 |Maksymalna liczba baz danych na pulę|500|500|500|500|500|500|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|1536|2048|2048|2048|3584|4096|
 |Maksymalny rozmiar dziennika (GB)|461|614|614|614|1075|1229|
@@ -101,7 +101,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Maksymalna liczba baz danych na pulę|100|200|500|500|500|500|500|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|512|756|756|1536|1536|1536|
 |Maksymalny rozmiar dziennika (GB)|154|227|227|461|461|461|461|
@@ -158,7 +158,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |rdzenie wirtualne|1|2|3|4|5|6|
 |Pamięć (GB)|7|14|21|28|35|42|
 |Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Tak|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|1|2|3|4|5|6|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|650|650|650|650|650|650|
@@ -173,7 +173,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Tak|Yes|Yes|Yes|Yes|Tak|
-|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Tak|
+|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 \* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
@@ -201,7 +201,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|Tak|
-|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
+|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 \* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
@@ -214,7 +214,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|100|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|922|922|
@@ -228,8 +228,8 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Liczba replik|4|4|4|4|4|4|4|
-|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Yes|
-|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Yes|
+|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 \* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
@@ -242,7 +242,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |rdzenie wirtualne|16|18|20|24|32|40|80|
 |Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
 |Maksymalna liczba baz danych na pulę|100|100|100|100|100|100|100|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|15.768|18.139|20.51|25.252|37.936|52.22|131.64|
 |Maksymalny rozmiar danych (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maksymalny rozmiar dziennika (GB)|922|922|922|1229|1229|1229|1229|
@@ -256,7 +256,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...20, 24, 32, 40|0, 0.25, 0.5, 1...20, 24, 32, 40, 80|
 |Liczba replik|4|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 

@@ -11,17 +11,17 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
 ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64699439"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning Studio
 ## <a name="overview"></a>Omówienie
 Ten artykuł przedstawia informacje o referencyjnej implementacji projektu analizy zmienności klientów, która powstała przy użyciu usługi Azure Machine Learning Studio. W tym artykule omówiono powiązanych modelach ogólny na potrzeby całościowe rozwiązanie problemu odpływu klientów przemysłowe. Możemy również mierzenia dokładności modeli, które są tworzone przy użyciu uczenia maszynowego i ocenić używany na potrzeby dalszego rozwoju.  
 
-### <a name="acknowledgements"></a>Potwierdzenia
+### <a name="acknowledgements"></a>Potwierdzanie
 Ten eksperyment został opracowany i przetestowane przez Serge Berger, badacz danych jednostki w firmie Microsoft i Rogera Barga, wcześniej menedżerem produktu Microsoft Azure Machine Learning Studio. Zespół dokumentacji platformy Azure gratefully potwierdza swoją wiedzę i Dziękujemy udostępnianie ten oficjalny dokument.
 
 > [!NOTE]
@@ -188,7 +188,7 @@ Modele hostowanej w usłudze Machine Learning Studio pokonał usługę sygnatury
 W branży telekomunikacyjnych pojawiło się kilka rozwiązań do analizowania współczynnika zmian, w tym:  
 
 * Pochodzi metryki dotyczące cztery podstawowe kategorie:
-  * **Jednostka (na przykład subskrypcja)**. Aprowizuj podstawowe informacje o subskrypcji i/lub klienta, który jest przedmiotem współczynnika zmian.
+  * **Jednostka (na przykład subskrypcja)** . Aprowizuj podstawowe informacje o subskrypcji i/lub klienta, który jest przedmiotem współczynnika zmian.
   * **Działanie**. Uzyskaj wszystkie informacje możliwości użycia, które jest związane z jednostką, na przykład liczba logowań.
   * **Dział obsługi klienta**. Zebrać informacje z dzienników pomocy technicznej klientów, aby wskazać, czy subskrypcja ma problemy lub interakcji z obsługą klienta.
   * **Dane konkurencyjnym i biznesowych**. Uzyskaj możliwe informacje dotyczące klienta (na przykład może być niedostępny lub trudne do śledzenia).

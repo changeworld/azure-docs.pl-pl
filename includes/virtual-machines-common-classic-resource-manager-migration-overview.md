@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
 ms.openlocfilehash: 289912e1519a68ae607ace7766e35731af0016b9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158267"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager
@@ -127,7 +127,7 @@ Następujące konfiguracje nie są obecnie obsługiwane.
 | Wystąpienia obliczeniowe | Maszyna wirtualna ma rozszerzenie kopii zapasowej lub migawki | Te rozszerzenia są zainstalowane na maszynie wirtualnej skonfigurowanej przy użyciu usługi Azure Backup. Podczas migracji te maszyny wirtualne nie jest obsługiwane, zgodnie z wytycznymi [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) można przechowywać kopie zapasowe, które zostały pobrane przed migracją.  |
 | Sieć |Sieci wirtualne, które zawierają maszyny wirtualne oraz role sieci web/procesu roboczego |To nie jest obecnie obsługiwane. Przed migracją Przenieś role sieć Web/proces roboczy do ich własnych sieci wirtualnej. Po zmigrowaniu klasycznej sieci wirtualnej, zmigrowanych Azure Resource Manager Virtual Network można vnetb klasycznej sieci wirtualnej w celu osiągnięcia podobnej konfiguracji, tak jak poprzednio.|
 | Sieć | Klasyczne obwodów Expressroute |To nie jest obecnie obsługiwane. Te obwodów należy migrować do usługi Azure Resource Manager przed rozpoczęciem migracji IaaS. Aby dowiedzieć się więcej, zobacz [obwodów przenoszenia usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager](../articles/expressroute/expressroute-move.md).|
-| Azure App Service |Sieci wirtualne, które zawierają środowisk usługi App Service |To nie jest obecnie obsługiwane. |
+| Usługa Azure App Service |Sieci wirtualne, które zawierają środowisk usługi App Service |To nie jest obecnie obsługiwane. |
 | Azure HDInsight |Sieci wirtualne, które zawierają usługi HDInsight |To nie jest obecnie obsługiwane. |
 | Microsoft Dynamics Lifecycle Services |Sieci wirtualne, które zawierają maszyny wirtualne, które są zarządzane przez program Dynamics Lifecycle Services |To nie jest obecnie obsługiwane. |
 | Azure AD Domain Services |Sieci wirtualne, które zawierają usług domenowych Azure AD |To nie jest obecnie obsługiwane. |

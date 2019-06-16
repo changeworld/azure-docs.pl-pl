@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
 ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64710412"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Użyj rozszerzenia diagnostycznego systemu Linux do monitorowania metryk i dzienników
@@ -104,7 +104,7 @@ Najnowsza wersja rozszerzenia jest **3.0**. **Wszystkie starsze wersje (2.x) są
 >
 > Aby przeprowadzić migrację 2.x, aby nowa wersja rozszerzenia, należy odinstalować stare rozszerzenia (w obszarze starej nazwy wydawcy), a następnie zainstalować rozszerzenia w wersji 3.
 
-Rekomendacje:
+Zalecenia:
 
 * Uaktualnianie automatyczne podverze włączone, należy zainstalować rozszerzenie.
   * W klasycznym modelu wdrażania maszyn wirtualnych należy określić "3.*" jako wersję w przypadku instalowania rozszerzeń przy użyciu wiersza polecenia XPLAT platformy Azure lub programu Powershell.
@@ -312,16 +312,16 @@ Ta opcjonalna sekcja kontrolę nad zbieraniem metryki. Przykłady pierwotne są 
 Element | Wartość
 ------- | -----
 Wychwytywanie | (opcjonalnie) Rozdzielana przecinkami lista nazw ujścia, które LAD wysyła zagregowaną metryki wyników. Wszystkie zagregowane metryki są publikowane w każdej z wymienionych ujścia. Zobacz [sinksConfig](#sinksconfig). Przykład: `"EHsink1, myjsonsink"`.
-type | Określa dostawcę rzeczywiste metryki.
-klasa | Wraz z "counter" identyfikuje określone metryki w przestrzeni nazw dostawcy.
+— typ | Określa dostawcę rzeczywiste metryki.
+class | Wraz z "counter" identyfikuje określone metryki w przestrzeni nazw dostawcy.
 counter | Wraz z "class" identyfikuje określone metryki w przestrzeni nazw dostawcy.
 counterSpecifier | Identyfikuje określone metryki w obszarze nazw metryk usługi Azure.
-warunek | (opcjonalnie) Wybiera konkretne wystąpienie obiektu do którego stosuje metrykę, lub wybiera agregacji ze wszystkich wystąpień tego obiektu. Aby uzyskać więcej informacji, zobacz `builtin` definicje metryk.
+condition | (opcjonalnie) Wybiera konkretne wystąpienie obiektu do którego stosuje metrykę, lub wybiera agregacji ze wszystkich wystąpień tego obiektu. Aby uzyskać więcej informacji, zobacz `builtin` definicje metryk.
 sampleRate | JEST interwałem 8601, który ustawia szybkość jaką pierwotne próbki dla tej metryki są pobierane. Jeśli nie został ustawiony, interwał zbierania jest ustawiony przez wartość [sampleRateInSeconds](#ladcfg). Najkrótszy częstotliwość próbkowania obsługiwanych wynosi 15 sekund (PT15S).
-jednostka | Powinna być jedną z tych ciągów: "Liczba", "B", "S", "Procent", "CountPerSecond", "BytesPerSecond", "Milisekund". Definiuje jednostkę metryki. Osoby korzystające z danych zebranych oczekiwać, że wartości zebranych danych do potrzeb tej jednostki. LAD ignoruje tego pola.
+Jednostki | Powinna być jedną z tych ciągów: "Liczba", "B", "S", "Procent", "CountPerSecond", "BytesPerSecond", "Milisekund". Definiuje jednostkę metryki. Osoby korzystające z danych zebranych oczekiwać, że wartości zebranych danych do potrzeb tej jednostki. LAD ignoruje tego pola.
 displayName | Etykieta (w języku określonym przez ustawienie regionalne skojarzone) do podłączenia do tych danych w metryk usługi Azure. LAD ignoruje tego pola.
 
-CounterSpecifier jest umownym identyfikatorem. Konsumentów metryk, takich jak Azure portal wykresów i alertów funkcji, użyj counterSpecifier jako "key" identyfikująca metrykę lub wystąpienie metryki. Aby uzyskać `builtin` metryki, zalecane jest użycie counterSpecifier wartości, które zaczynają się od `/builtin/`. Jeśli zbierasz konkretnego wystąpienia metrykę, zalecamy Dołącz identyfikator wystąpienia wartości counterSpecifier. Oto niektóre przykłady:
+CounterSpecifier jest umownym identyfikatorem. Konsumentów metryk, takich jak Azure portal wykresów i alertów funkcji, użyj counterSpecifier jako "key" identyfikująca metrykę lub wystąpienie metryki. Aby uzyskać `builtin` metryki, zalecane jest użycie counterSpecifier wartości, które zaczynają się od `/builtin/`. Jeśli zbierasz konkretnego wystąpienia metrykę, zalecamy Dołącz identyfikator wystąpienia wartości counterSpecifier. Kilka przykładów:
 
 * `/builtin/Processor/PercentIdleTime` -Bezczynności we wszystkich procesorów wirtualnych Vcpu
 * `/builtin/Disk/FreeSpace(/mnt)` — Wolne miejsce do katalogu/mnt systemu plików
@@ -386,9 +386,9 @@ Ta opcjonalna sekcja kontroluje wykonywanie dowolnego [OMI](https://github.com/M
 
 Element | Wartość
 ------- | -----
-przestrzeń nazw | (opcjonalnie) Przestrzeń nazw OMI, w którym mają zostać wykonane zapytanie. Jeśli nie zostanie podany, wartość domyślna to "główny/scx", implementowany przez [programu System Center dla wielu platform dostawców](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
+— przestrzeń nazw | (opcjonalnie) Przestrzeń nazw OMI, w którym mają zostać wykonane zapytanie. Jeśli nie zostanie podany, wartość domyślna to "główny/scx", implementowany przez [programu System Center dla wielu platform dostawców](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
 query | Zapytanie OMI do wykonania.
-tabela | (opcjonalnie) W tabeli usługi Azure storage w ramach konta magazynu wyznaczonego (zobacz [ustawieniach chronionego](#protected-settings)).
+table | (opcjonalnie) W tabeli usługi Azure storage w ramach konta magazynu wyznaczonego (zobacz [ustawieniach chronionego](#protected-settings)).
 frequency | (opcjonalnie) Liczba sekund między wykonanie zapytania. Wartość domyślna to 300 (5 minut); wartość minimalna wynosi 15 sekund.
 Wychwytywanie | (opcjonalnie) Rozdzielana przecinkami lista nazw dodatkowe ujścia, do których przykładowe nieprzetworzone wyniki metryki powinny być publikowane. Brak agregacji nieprzetworzonych przykładów jest obliczana przez rozszerzenie lub metryk usługi Azure.
 
@@ -410,8 +410,8 @@ Steruje przechwytywania plików dziennika. LAD przechwytuje nowych wierszy tekst
 
 Element | Wartość
 ------- | -----
-plik | Pełna nazwa ścieżki pliku dziennika, aby być obserwowane i przechwycone. Nazwa ścieżki należy nazywać pojedynczego pliku; Nie można jej nazwa katalogu lub zawierać symbole wieloznaczne.
-tabela | (opcjonalnie) Tabela magazynu platformy Azure w ramach konta magazynu wyznaczonego (określone w konfiguracji chronionych), w którym są zapisywane nowe wiersze z pliku "ogona".
+file | Pełna nazwa ścieżki pliku dziennika, aby być obserwowane i przechwycone. Nazwa ścieżki należy nazywać pojedynczego pliku; Nie można jej nazwa katalogu lub zawierać symbole wieloznaczne.
+table | (opcjonalnie) Tabela magazynu platformy Azure w ramach konta magazynu wyznaczonego (określone w konfiguracji chronionych), w którym są zapisywane nowe wiersze z pliku "ogona".
 Wychwytywanie | (opcjonalnie) Rozdzielana przecinkami lista nazw ujść dodatkowych wierszy dziennika, które wysłane.
 
 "Tabela" lub "sink" albo obu, należy określić.
@@ -495,7 +495,7 @@ PercentFreeInodes | Procent węzłów i nieużywanych
 PercentUsedInodes | Procent przydzielonych (w użyciu) węzłów i sumowane w wszystkie systemy plików
 BytesReadPerSecond | Odczytano bajtów na sekundę
 BytesWrittenPerSecond | Bajty zapisane na sekundę
-Bajty na sekundę | Bajty odczytu lub zapisu na sekundę
+BytesPerSecond | Bajty odczytu lub zapisu na sekundę
 ReadsPerSecond | Operacje odczytu na sekundę
 WritesPerSecond | Zapisu na sekundę
 TransfersPerSecond | Operacje odczytu lub zapisu na sekundę
@@ -519,7 +519,7 @@ AverageTransferTime | Średnia liczba sekund na operację
 AverageDiskQueueLength | Średnia liczba operacji w kolejce dysku
 ReadBytesPerSecond | Liczba odczytanych bajtów na sekundę
 WriteBytesPerSecond | Liczba bajtów zapisanych na sekundę
-Bajty na sekundę | Liczba bajtów odczytywanych lub zapisywanych na sekundę
+BytesPerSecond | Liczba bajtów odczytywanych lub zapisywanych na sekundę
 
 Zagregowane wartości dla wszystkich dysków można uzyskać przez ustawienie `"condition": "IsAggregate=True"`. Aby uzyskać informacje dotyczące określonego urządzenia (na przykład/dev/sdf1), należy ustawić `"condition": "Name=\\"/dev/sdf1\\""`.
 

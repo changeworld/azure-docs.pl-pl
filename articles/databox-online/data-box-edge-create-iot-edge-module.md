@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
 ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64680892"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Twórz C# moduł usługi IoT Edge, aby przenieść pliki na krawędzi pola danych
@@ -92,7 +92,7 @@ Poniższe kroki umożliwiają utworzenie usługi IoT Edge modułu projektu na po
 Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyciu własnego kodu.
 
 1. W programie Visual Studio Code wybierz **Widok > paletę poleceń** aby otworzyć paletę poleceń programu VS Code.
-2. W palecie poleceń wprowadź i uruchom polecenie **Azure: Sign in (Azure: zaloguj się)**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
+2. W palecie poleceń wprowadź i uruchom polecenie **Azure: Sign in (Azure: zaloguj się)** , a następnie postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
 3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie:
 
     1. Wybierz folder, w którym chcesz utworzyć rozwiązanie.

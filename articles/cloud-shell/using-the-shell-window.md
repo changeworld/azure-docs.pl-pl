@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60200704"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>W oknie usługi Azure Cloud Shell
@@ -30,9 +30,9 @@ W tym dokumencie wyjaśniono, jak używać okno usługi Cloud Shell.
 Użyj selektora środowiska na pasku narzędzi usługi Cloud Shell, przełączać się między środowiskami Bash, jak i programu PowerShell.  
 ![Wybierz środowisko](media/using-the-shell-window/env-selector.png)
 
-## <a name="restart-cloud-shell"></a>Ponowne uruchamianie usługi Cloud Shell
+## <a name="restart-cloud-shell"></a>Uruchom ponownie usługę Cloud Shell
 Kliknij ikonę ponowne uruchomienie w pasku narzędzi usługi Cloud Shell, aby zresetować stan maszyny.  
-![Ponowne uruchamianie usługi Cloud Shell](media/using-the-shell-window/restart.png)
+![Uruchom ponownie usługę Cloud Shell](media/using-the-shell-window/restart.png)
 > [!WARNING]
 > Ponowne uruchomienie usługi Cloud Shell spowoduje zresetowanie stanu maszyny i wszelkie pliki nie utrwalone przez platformę Azure udział pliku zostaną utracone.
 
@@ -61,7 +61,7 @@ Kliknij ikonę Otwórz nową sesję w górnym lewym rogu okna. Nowa karta zostan
 ## <a name="cloud-shell-editor"></a>Cloud Shell edytora
 * Zapoznaj się [przy użyciu edytora usługi Azure Cloud Shell](using-cloud-shell-editor.md) strony.
 
-## <a name="web-preview"></a>Podgląd internetowy
+## <a name="web-preview"></a>Podgląd w sieci Web
 Kliknij ikonę sieci web (wersja zapoznawcza) w górnym lewym rogu okna, wybierz pozycję "Konfiguruj", określ odpowiedni port, aby otworzyć.  Wybierz albo "otwartego portu" tylko do otwierania portu lub "Otwórz i Przeglądaj" Otwórz port i port na nowej karcie w wersji zapoznawczej.  
 ![Podgląd w sieci Web](media/using-the-shell-window/preview.png)  
 <br>

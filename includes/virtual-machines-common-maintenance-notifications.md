@@ -9,10 +9,10 @@ ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: 50a215175d7305834a64b7e0cfbc153431b10b7c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116964"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>View VMs zaplanowana do konserwacji w portalu
@@ -33,11 +33,11 @@ Można użyć witryny Azure portal i wyszukaj zaplanowana konserwacja maszyn wir
       
       | Wartość | Opis |
       |-------|-------------|
-      | Uruchom teraz | Maszyna wirtualna jest w oknie konserwacji samoobsługowej, które pozwala na zainicjowanie konserwacji, samodzielnie. Poniżej przedstawiono dotyczących sposobu rozpoczęcia konserwacji na maszynie Wirtualnej. | 
+      | Rozpocznij teraz | Maszyna wirtualna jest w oknie konserwacji samoobsługowej, które pozwala na zainicjowanie konserwacji, samodzielnie. Poniżej przedstawiono dotyczących sposobu rozpoczęcia konserwacji na maszynie Wirtualnej. | 
       | Zaplanowane | Maszyna wirtualna jest zaplanowana do konserwacji bez opcji umożliwiającej samodzielne zainicjowanie konserwacji. Okna obsługi można znaleźć, wybierając konserwacja — okno zaplanowane, w tym widoku lub klikając maszynę Wirtualną. | 
       | Już zaktualizowane | Maszyna wirtualna została już zaktualizowana, a w tym momencie są wymagane żadne dalsze działania. | 
       | Spróbuj ponownie później | Zainicjowano konserwacji bez powodzenia. Można korzystać z opcji konserwacji samoobsługowej w późniejszym czasie. | 
-      | Ponów próbę teraz | Możesz ponowić próbę się wcześniej niepowodzeniem konserwacji własnym zainicjowane. | 
+      | Spróbuj ponownie teraz | Możesz ponowić próbę się wcześniej niepowodzeniem konserwacji własnym zainicjowane. | 
       | - | Maszyna wirtualna nie jest częścią planowanej konserwacji. |
       
 

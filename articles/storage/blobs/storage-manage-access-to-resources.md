@@ -9,10 +9,10 @@ ms.date: 04/30/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: e0f93b0a95a228b26fae266129aea4b595b05e0f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148349"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob
@@ -143,7 +143,7 @@ Pokazano w poniższej tabeli operacje, może być wywołana anonimowo gdy konten
 | Get Blob | Dozwolone żądań anonimowych | Dozwolone żądań anonimowych |
 | Pobierz właściwości obiektu Blob | Dozwolone żądań anonimowych | Dozwolone żądań anonimowych |
 | Ustaw właściwości obiektu Blob | Tylko autoryzowanym żądania | Tylko autoryzowanym żądania |
-| Pobierz metadane obiektu blob | Dozwolone żądań anonimowych | Dozwolone żądań anonimowych |
+| Pobierz metadane obiektu Blob | Dozwolone żądań anonimowych | Dozwolone żądań anonimowych |
 | Ustaw metadane obiektu Blob | Tylko autoryzowanym żądania | Tylko autoryzowanym żądania |
 | Umieść bloku | Tylko autoryzowanym żądania | Tylko autoryzowanym żądania |
 | Pobierz listę zablokowanych (tylko zatwierdzone bloki) | Dozwolone żądań anonimowych | Dozwolone żądań anonimowych |
@@ -155,7 +155,7 @@ Pokazano w poniższej tabeli operacje, może być wywołana anonimowo gdy konten
 | Dzierżawienie obiektu Blob | Tylko autoryzowanym żądania | Tylko autoryzowanym żądania |
 | Umieść strony | Tylko autoryzowanym żądania | Tylko autoryzowanym żądania |
 | Pobieranie zakresów stron | Dozwolone żądań anonimowych | Dozwolone żądań anonimowych |
-| Dołącz obiekt blob | Tylko autoryzowanym żądania | Tylko autoryzowanym żądania |
+| Obiekt Blob dołączania | Tylko autoryzowanym żądania | Tylko autoryzowanym żądania |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

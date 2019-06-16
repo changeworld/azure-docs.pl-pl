@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 5/19/2019
 ms.author: monhaber
 ms.openlocfilehash: 25ed9cb624474d5da56d385f4e9c155918ec8eab
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428338"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Zasady zabezpieczeń platformy Azure, monitorowany przez usługę Security Center
@@ -79,7 +79,7 @@ Aby uzyskać informacje dotyczące wbudowanych zasad, które są monitorowane pr
 |\[Wersja zapoznawcza]: Przestarzałe konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji|Przestarzałe konta, które mają uprawnienia właściciela powinny być usunięte z subskrypcji. Przestarzałe konta zostały zablokowane z logowania.|
 |\[Wersja zapoznawcza]: Przestarzałe konta powinny zostać usunięte z subskrypcji|Przestarzałe konta powinny zostać usunięte z subskrypcji. Przestarzałe konta zostały zablokowane z logowania.|
 |\[Wersja zapoznawcza]: Zewnętrzne konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji|Zewnętrzne konta, które mają uprawnienia właściciela powinny zostać usunięte z subskrypcji, aby uniemożliwić dostęp do uprawnień.|
-|\[Wersja zapoznawcza]: Zewnętrzne konta z zapisu czy uprawnienia powinny zostać usunięte z subskrypcji|Konta zewnętrzne, które mają zapisu uprawnienia powinny zostać usunięte z subskrypcji, aby uniknąć niemonitorowanego dostępu.|
+|\[Wersja zapoznawcza]: Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji|Konta zewnętrzne, które mają zapisu uprawnienia powinny zostać usunięte z subskrypcji, aby uniknąć niemonitorowanego dostępu.|
 |\[Wersja zapoznawcza]: Zewnętrzne konta z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji|Zewnętrzne konta, które ma uprawnienia do odczytu powinny zostać usunięte ze swojej subskrypcji, aby uniknąć niemonitorowanego dostępu.|
 
 

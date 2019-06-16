@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
 ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64916758"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
@@ -37,7 +37,7 @@ Rozwiązanie Network Performance Monitor oferuje trzy szerokie możliwości:
 
     Ta funkcja umożliwia wykonywanie testu w zależności od protokołu HTTP, HTTPS, TCP i ICMP, do monitorowania w czasie rzeczywistym i historycznie dostępność i czas odpowiedzi usługi. Można również monitorować udziału sieci w utracie pakietów i opóźnienia. Za pomocą mapy topologii sieci można izolować spowolnienie sieci. Można zidentyfikować problem punkty, występujących na ścieżce sieciowej z węzła do usługi z danymi opóźnienie każdego przeskoku. Za pomocą wbudowanych testów możesz monitorować łączność sieciową do usługi Office 365 i Dynamics CRM, bez żadnych Konfiguracja wstępna. Dzięki tej możliwości możesz monitorować łączność sieciową do dowolnego punktu końcowego TCP możliwością, takich jak witryny sieci Web, aplikacji SaaS, PaaS aplikacji i baz danych SQL.
 
-* [ExpressRoute Monitor](network-performance-monitor-expressroute.md): Monitoruj łączność przez usługę Azure ExpressRoute między oddziałami firmy i platformą Azure oraz jej wydajność.  
+* [ExpressRoute Monitor](network-performance-monitor-expressroute.md): Monitoruj łączność end-to-end i wydajności między oddziałami i platformy Azure za pośrednictwem usługi Azure ExpressRoute.  
 
 Więcej informacji na temat różnych funkcji obsługiwanych przez [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) jest dostępna w trybie online.
  

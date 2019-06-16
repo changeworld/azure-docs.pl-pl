@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60314233"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Zarządzanie zasobami programu IBM DB2 za pomocą usługi Azure Logic Apps
@@ -29,7 +29,7 @@ W tym artykule pokazano, jak utworzyć aplikację logiki, która wykonuje różn
 
 Łącznik IBM DB2 obsługuje te IBM DB2 platformach i wersjach, oraz IBM DB2 zgodnych produktów, takich jak dashDB IBM Bluemix, które obsługują rozproszonej architektury bazy danych relacyjnych (DRDA) SQL Access Manager (SQLAM) w wersji 10 i 11:
 
-| Platforma | Wersja | 
+| Platforma | Version | 
 |----------|---------|
 | IBM DB2 w przypadku z/OS | 11.1, 10.1 |
 | IBM DB2 for mam | 7.3, 7.2, 7.1 |
@@ -87,9 +87,9 @@ Aby skonfigurować połączenie, podaj następujące szczegóły połączenia po
 |----------|----------|-------------|
 | **Nawiązywanie połączenia za pośrednictwem bramy lokalnej** | Nie | Ma zastosowanie tylko w przypadku połączeń lokalnych. |
 | **Nazwa połączenia** | Yes | Nazwę połączenia, na przykład "MyLogicApp — bazy danych DB2 — połączenie" |
-| **Serwer** | Yes | Numer portu dwukropek adres lub alias dla serwera bazy danych DB2, na przykład "myDB2server.cloudapp.net:50000" <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje adresu TCP/IP lub alias, albo w formacie IPv4 lub IPv6, po której następują dwukropek i numer portu TCP/IP. |
-| **Baza danych** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
-| **Nazwa użytkownika** | Yes | Swoją nazwę użytkownika dla bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość zależy od konkretnej bazy danych: <p><p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla i akceptuje ciąg 10 bajtów. <br>— Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla Windows akceptuje ciąg 30-bajtowy. |
+| **Serwer** | Tak | Numer portu dwukropek adres lub alias dla serwera bazy danych DB2, na przykład "myDB2server.cloudapp.net:50000" <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje adresu TCP/IP lub alias, albo w formacie IPv4 lub IPv6, po której następują dwukropek i numer portu TCP/IP. |
+| **Baza danych** | Tak | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
+| **Nazwa użytkownika** | Tak | Swoją nazwę użytkownika dla bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość zależy od konkretnej bazy danych: <p><p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla i akceptuje ciąg 10 bajtów. <br>— Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla Windows akceptuje ciąg 30-bajtowy. |
 | **Hasło** | Yes | Hasło dla bazy danych |
 ||||
 
@@ -105,14 +105,14 @@ Przed utworzeniem połączenia, musi już mieć zainstalowanej usługi bramy dan
 
 | Właściwość | Wymagane | Opis |
 |----------|----------|-------------|
-| **Nawiązywanie połączenia za pośrednictwem bramy lokalnej** | Yes | Ma zastosowanie, gdy chcesz, aby połączenie lokalne i pokazuje właściwości połączenia lokalnego. |
-| **Nazwa połączenia** | Yes | Nazwę połączenia, na przykład "MyLogicApp — bazy danych DB2 — połączenie" | 
-| **Serwer** | Yes | Numer portu dwukropek adres lub alias dla serwera bazy danych DB2, na przykład "myDB2server:50000" <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje adresu TCP/IP lub alias, albo w formacie IPv4 lub IPv6, po której następują dwukropek i numer portu TCP/IP. |
-| **Baza danych** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
-| **Uwierzytelnianie** | Yes | Typ uwierzytelniania dla połączenia, na przykład "Basic" <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera podstawowe lub Windows (Kerberos). |
-| **Nazwa użytkownika** | Yes | Swoją nazwę użytkownika dla bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość zależy od konkretnej bazy danych: <p><p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla i akceptuje ciąg 10 bajtów. <br>— Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla Windows akceptuje ciąg 30-bajtowy. |
-| **Hasło** | Yes | Hasło dla bazy danych |
-| **Brama** | Yes | Nazwa zainstalowane lokalne bramy danych <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera wszystkie bramy danych zainstalowanych w ramach subskrypcji platformy Azure i grupę zasobów. |
+| **Nawiązywanie połączenia za pośrednictwem bramy lokalnej** | Tak | Ma zastosowanie, gdy chcesz, aby połączenie lokalne i pokazuje właściwości połączenia lokalnego. |
+| **Nazwa połączenia** | Tak | Nazwę połączenia, na przykład "MyLogicApp — bazy danych DB2 — połączenie" | 
+| **Serwer** | Tak | Numer portu dwukropek adres lub alias dla serwera bazy danych DB2, na przykład "myDB2server:50000" <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje adresu TCP/IP lub alias, albo w formacie IPv4 lub IPv6, po której następują dwukropek i numer portu TCP/IP. |
+| **Baza danych** | Tak | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
+| **Uwierzytelnianie** | Tak | Typ uwierzytelniania dla połączenia, na przykład "Basic" <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera podstawowe lub Windows (Kerberos). |
+| **Nazwa użytkownika** | Tak | Swoją nazwę użytkownika dla bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość zależy od konkretnej bazy danych: <p><p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla i akceptuje ciąg 10 bajtów. <br>— Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla Windows akceptuje ciąg 30-bajtowy. |
+| **Hasło** | Tak | Hasło dla bazy danych |
+| **Brama** | Tak | Nazwa zainstalowane lokalne bramy danych <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera wszystkie bramy danych zainstalowanych w ramach subskrypcji platformy Azure i grupę zasobów. |
 ||||
 
 Na przykład:
@@ -236,9 +236,9 @@ Aby dodać pojedynczego rekordu do tabeli bazy danych DB2, użyj **Wstaw wiersz*
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Nazwa tabeli** | Yes | Tabela gdzie dodać rekord, takie jak "Obszar" |
+   | **Nazwa tabeli** | Tak | Tabela gdzie dodać rekord, takie jak "Obszar" |
    | **Identyfikator obszaru** | Yes | Identyfikator dla obszaru, aby dodać, takie jak "99999" |
-   | **Opis elementu obszaru** | Yes | Opis dla obszaru dodać, takie jak "Obszaru 99999" |
+   | **Opis elementu obszaru** | Tak | Opis dla obszaru dodać, takie jak "Obszaru 99999" |
    | **Identyfikator regionu** | Yes | Identyfikator w regionie, aby dodać, takie jak "102" |
    |||| 
 
@@ -284,10 +284,10 @@ Aby zaktualizować pojedynczy rekord w tabeli bazy danych DB2, użyj **Aktualizu
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
    | **Nazwa tabeli** | Yes | Tabela zaktualizować rekord, takie jak "Obszar" |
-   | **Identyfikator wiersza** | Yes | Identyfikator rekordu do zaktualizowania, takie jak "99999" |
-   | **Identyfikator obszaru** | Yes | Nowy identyfikator obszaru, takie jak "99999" |
+   | **Identyfikator wiersza** | Tak | Identyfikator rekordu do zaktualizowania, takie jak "99999" |
+   | **Identyfikator obszaru** | Tak | Nowy identyfikator obszaru, takie jak "99999" |
    | **Opis elementu obszaru** | Yes | Nowy opis obszaru, na przykład "Zaktualizowano 99999" |
-   | **Identyfikator regionu** | Yes | Nowy identyfikator regionu, takich jak "102" |
+   | **Identyfikator regionu** | Tak | Nowy identyfikator regionu, takich jak "102" |
    ||||
 
    Na przykład:
@@ -331,7 +331,7 @@ Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj **Usuń wiersz** 
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Nazwa tabeli** | Yes | Tabela miejsca usunąć rekord, takie jak "Obszar" |
+   | **Nazwa tabeli** | Tak | Tabela miejsca usunąć rekord, takie jak "Obszar" |
    | **Identyfikator wiersza** | Yes | Identyfikator rekordu do usunięcia, takie jak "99999" |
    ||||
 

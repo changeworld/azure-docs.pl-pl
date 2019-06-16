@@ -11,10 +11,10 @@ ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.openlocfilehash: f470670ae3d526f3b66badf219a01a471c24db0d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242239"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analizowanie obciążenia w usłudze Azure SQL Data Warehouse

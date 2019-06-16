@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/19/2019
 ms.author: robinsh
 ms.openlocfilehash: 26637468f44e12f7ad66f907e0f6be3d907e578f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126211"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719332"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Zdalne monitorowanie IoT i powiadomień za pomocą usługi Azure Logic Apps, łącząc usługę IoT hub i skrzynki pocztowej
 
@@ -78,7 +78,7 @@ Utwórz przestrzeń nazw i kolejkę usługi Service Bus. W dalszej części tego
 
    ![Dodawanie kolejki usługi service bus w witrynie Azure portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Po powrocie **usługi Service Bus Namespace** okienku w obszarze **jednostek**, wybierz opcję **kolejek**. Otwórz kolejki usługi Service Bus z listy, a następnie wybierz **zasady dostępu współdzielonego** > **+ Dodaj**.
+1. Po powrocie **usługi Service Bus Namespace** okienku w obszarze **jednostek**, wybierz opcję **kolejek**. Otwórz kolejki usługi Service Bus z listy, a następnie wybierz **zasady dostępu współdzielonego** >  **+ Dodaj**.
 
 1. Wprowadź nazwę zasady wyboru **Zarządzaj**, a następnie wybierz pozycję **Utwórz**.
 
@@ -158,7 +158,7 @@ W poprzedniej sekcji konfigurowania usługi IoT hub do przesyłania wiadomości,
 
    ![Wybierz usługi Service Bus, aby rozpocząć tworzenie aplikacji logiki w witrynie Azure portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
 
-1. W obszarze **wyzwalaczy**, wybierz opcję **kiedy co najmniej jeden komunikat dociera w kolejce (Automatyczne zakończenie)**.
+1. W obszarze **wyzwalaczy**, wybierz opcję **kiedy co najmniej jeden komunikat dociera w kolejce (Automatyczne zakończenie)** .
 
    ![Wybierz wyzwalacz aplikacji logiki w witrynie Azure portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
 
@@ -214,7 +214,7 @@ W poprzedniej sekcji konfigurowania usługi IoT hub do przesyłania wiadomości,
 
    1. Na **smtp połączenie z interfejsem API** okienku w obszarze **ogólne**, wybierz opcję **połączenia Edytuj interfejsu API**.
 
-   1. Na **Edytowanie połączenia interfejsu API** okienku wybierz **Włącz SSL?**, wprowadź ponownie hasło dla konta e-mail, a wybierz **Zapisz**.
+   1. Na **Edytowanie połączenia interfejsu API** okienku wybierz **Włącz SSL?** , wprowadź ponownie hasło dla konta e-mail, a wybierz **Zapisz**.
 
       ![Edytuj połączenie interfejsu API SMTP w aplikacji logiki w witrynie Azure portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/re-enable-smtp-connection-ssl.png)
 

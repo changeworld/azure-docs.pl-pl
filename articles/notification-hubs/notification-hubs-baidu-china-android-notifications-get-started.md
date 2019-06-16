@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61460813"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Rozpoczynanie pracy z usługą Azure Notification Hubs przy użyciu usługi Baidu
@@ -101,7 +101,7 @@ Podczas tworzenia projektu powiadomień wypychanych w chmurze Baidu otrzymasz id
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6. W centrum powiadomień wybierz pozycję **Usługi powiadomień**, a następnie wybierz pozycję **Baidu (Android China)**.
+&emsp;&emsp;6. W centrum powiadomień wybierz pozycję **Usługi powiadomień**, a następnie wybierz pozycję **Baidu (Android China)** .
 
 &emsp;&emsp;&emsp;&emsp;![Azure Notification Hubs — Baidu](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 

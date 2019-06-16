@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 03/12/2019
 ms.author: shvija
-ms.openlocfilehash: 7b5a62f81238d1ae2b627c395613066350b36efe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15912ce2e100a4317e775d72972ca6eacfac0d42
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343447"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080533"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Punkty końcowe usługi sieci wirtualnej za pomocą usługi Azure Event Hubs
 
@@ -71,13 +71,13 @@ Parametry szablonu:
 
 * **namespaceName**: Przestrzeń nazw usługi Event Hubs.
 * **vnetRuleName**: Nazwa reguły sieci wirtualnej, która ma zostać utworzony.
-* **virtualNetworkingSubnetId**: Pełną ścieżkę Menedżera zasobów w podsieci sieci wirtualnej; na przykład `subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
+* **virtualNetworkingSubnetId**: Pełną ścieżkę Menedżera zasobów w podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
 
 > [!NOTE]
 > Choć Brak reguł odmowy, możliwe, szablon usługi Azure Resource Manager jest domyślna akcja równa **"Zezwalaj"** która nie stanowi ograniczenia połączeń.
 > Podczas tworzenia reguł sieci wirtualnej lub zapory, możemy zmienić ***"defaultAction"***
 > 
-> z
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

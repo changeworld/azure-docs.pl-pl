@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/27/2019
 ms.author: anuragm
 ms.openlocfilehash: 8459bb451c4ff462ee816b986cafdbf776603917
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66306967"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
@@ -82,7 +82,7 @@ Można skonfigurować ochrony dla bazy danych programu SQL Server na maszynie wi
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-| Przywracanie nie powiodło się, ponieważ baza danych nie można przełączyć do trybu offline. | Podczas wykonywania przywracania, docelowa baza danych musi zostać przełączone do trybu offline. Usługa Azure Backup nie jest w stanie wyświetlić te dane w trybie offline. | Użyj dodatkowe szczegóły w menu błędzie portalu platformy Azure, aby zawęzić głównych przyczyn. Aby uzyskać więcej informacji, zobacz [dokumentacji programu SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
+| Przywracanie nie powiodło się, ponieważ bazy danych nie można było przełączyć w tryb offline. | Podczas wykonywania przywracania, docelowa baza danych musi zostać przełączone do trybu offline. Usługa Azure Backup nie jest w stanie wyświetlić te dane w trybie offline. | Użyj dodatkowe szczegóły w menu błędzie portalu platformy Azure, aby zawęzić głównych przyczyn. Aby uzyskać więcej informacji, zobacz [dokumentacji programu SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
 ##  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
@@ -94,14 +94,14 @@ Można skonfigurować ochrony dla bazy danych programu SQL Server na maszynie wi
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-| Dziennik kopii zapasowej używany przy odzyskiwaniu zawiera zmiany zarejestrowane zbiorczo. Nie można zatrzymać w umownym punkcie w czasie, zgodnie z wytycznymi SQL. | Gdy baza danych jest w trybie odzyskiwania zarejestrowane zbiorczo, nie można odzyskać danych między niepełnym dziennikiem transakcji i dalej dziennika transakcji. | Wybierz inny punkt w czasie do odzyskania. [Dowiedz się więcej](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+| Kopia zapasowa dziennika używana do odzyskiwania zawiera zmiany zarejestrowane zbiorczo. Nie można jej użyć do zatrzymania w dowolnym punkcie w czasie, zgodnie z wytycznymi SQL. | Gdy baza danych jest w trybie odzyskiwania zarejestrowane zbiorczo, nie można odzyskać danych między niepełnym dziennikiem transakcji i dalej dziennika transakcji. | Wybierz inny punkt w czasie do odzyskania. [Dowiedz się więcej](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
 
 
 ## <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-| Nie można spełnić preferencji kopii zapasowych dla zawsze włączonej grupy dostępności SQL, ponieważ niektóre węzły grupy dostępności nie zostały zarejestrowane. | Węzły wymagane do wykonywania kopii zapasowych nie są zarejestrowane lub są niedostępne. | <ul><li>Upewnij się, że wszystkie węzły, które są wymagane do wykonywania kopii zapasowych tej bazy danych są zarejestrowane i dobrej kondycji, a następnie spróbuj ponownie wykonać operację.</li><li>Zmiana zawsze włączonej grupy dostępności SQL preferencję tworzenia kopii zapasowych.</li></ul> |
+| Nie można działać zgodnie z preferencjami kopii zapasowych dla zawsze włączonej grupy dostępności SQL, ponieważ niektóre węzły grupy dostępności nie zostały zarejestrowane. | Węzły wymagane do wykonywania kopii zapasowych nie są zarejestrowane lub są niedostępne. | <ul><li>Upewnij się, że wszystkie węzły, które są wymagane do wykonywania kopii zapasowych tej bazy danych są zarejestrowane i dobrej kondycji, a następnie spróbuj ponownie wykonać operację.</li><li>Zmiana zawsze włączonej grupy dostępności SQL preferencję tworzenia kopii zapasowych.</li></ul> |
 
 ## <a name="vmnotinrunningstateusererror"></a>VMNotInRunningStateUserError
 

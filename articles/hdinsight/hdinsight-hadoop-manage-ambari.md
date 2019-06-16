@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
 ms.openlocfilehash: 49e8fbef7af16e109c1e9f1e0d8c9aab1a008e21
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257997"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari
@@ -159,7 +159,7 @@ Praca z użytkowników, grupy i uprawnienia są obsługiwane w przypadku korzyst
     |Włącz tryb konserwacji|Pomija alertów dla hosta. W tym trybie powinno być włączone, jeśli są wykonywane działania, które generują alerty. Na przykład zatrzymanie i uruchomienie usługi.|
     |Wyłącz tryb konserwacji|Zwraca hosta do normalnego alertów.|
     |Stop|Zatrzymuje DataNode lub NodeManagers na hoście.|
-    |Początek|Uruchamia DataNode lub NodeManagers na hoście.|
+    |Uruchamianie|Uruchamia DataNode lub NodeManagers na hoście.|
     |Ponowne uruchamianie|Zatrzymuje i uruchamia DataNode lub NodeManagers na hoście.|
     |Likwidowanie wdrożenia|Usuwa hosta z klastra. **Nie należy używać tej akcji w klastrach HDInsight.**|
     |Recommission|Dodaje wcześniej zlikwidowana hosta do klastra. **Nie należy używać tej akcji w klastrach HDInsight.**|

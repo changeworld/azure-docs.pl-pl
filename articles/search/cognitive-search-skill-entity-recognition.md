@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: f05161dbbfd9293cd7b1cbf447bb7ca1c313250c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65023443"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Umiejętności cognitive rozpoznawania jednostek
@@ -69,7 +69,7 @@ To są jednostki, które są dobrze znane, ale nie zostały sklasyfikowane jako 
 | adresy URL | Tablica ciągów, w którym każdy ciąg reprezentuje adres URL |
 | wiadomości e-mail | Tablica ciągów, w której każdy ciąg reprezentuje wiadomość e-mail |
 | namedEntities | Tablica typów złożonych zawiera następujące pola: <ul><li>category</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (nieużywane teraz. Zostanie ustawiona na wartość -1)</li></ul> |
-| jednostki | Tablica typów złożonych zawiera rozbudowane informacje dotyczące jednostek wyodrębnione z pliku tekstowego przy użyciu następujących pól <ul><li> Nazwa (nazwa rzeczywistego jednostki. Ta pozycja reprezentuje formularz "znormalizowanych")</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (link do strony Wikipedii dla jednostki)</li><li>bingId</li><li>Typ (kategoria jednostki rozpoznawane)</li><li>Podtyp (dostępne tylko dla niektórych kategorii, daje to bardziej szczegółowego widoku typ jednostki)</li><li> Dopasowuje (złożoną kolekcję zawierającą)<ul><li>tekst (nieprzetworzony tekst dla jednostki)</li><li>Przesunięcie (lokalizację, w którym został znaleziony)</li><li>długość (długość tekstu nieprzetworzona jednostki)</li></ul></li></ul> |
+| Jednostki | Tablica typów złożonych zawiera rozbudowane informacje dotyczące jednostek wyodrębnione z pliku tekstowego przy użyciu następujących pól <ul><li> Nazwa (nazwa rzeczywistego jednostki. Ta pozycja reprezentuje formularz "znormalizowanych")</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (link do strony Wikipedii dla jednostki)</li><li>bingId</li><li>Typ (kategoria jednostki rozpoznawane)</li><li>Podtyp (dostępne tylko dla niektórych kategorii, daje to bardziej szczegółowego widoku typ jednostki)</li><li> Dopasowuje (złożoną kolekcję zawierającą)<ul><li>tekst (nieprzetworzony tekst dla jednostki)</li><li>Przesunięcie (lokalizację, w którym został znaleziony)</li><li>długość (długość tekstu nieprzetworzona jednostki)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Przykładowa definicja
 

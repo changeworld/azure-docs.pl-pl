@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 8/10/2018
 ms.author: raynew
 ms.openlocfilehash: 924b36701ecf21f6bd84938aeefbf25e47fcbaa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60699254"
 ---
 # <a name="recovery-services-vaults-overview"></a>Omówienie magazynów usług odzyskiwania
@@ -31,7 +31,7 @@ Magazyny usługi Recovery Services są oparte na modelu usługi Azure Resource M
 
 - **Centralne monitorowanie hybrydowe środowiska IT**: Magazyny usługi Recovery Services, umożliwia monitorowanie nie tylko usługi [maszyn wirtualnych IaaS platformy Azure](backup-azure-manage-vms.md) , ale także usługi [zasobach lokalnych](backup-azure-manage-windows-server.md#manage-backup-items) centralnej portalu. [Dowiedz się więcej](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Kontrola dostępu oparta na rolach (RBAC)**: RBAC zapewnia szczegółowej kontroli dostępu do zarządzania na platformie Azure. [System Azure oferuje różne role wbudowane](../role-based-access-control/built-in-roles.md), a usługa Azure Backup ma trzy [role wbudowane, umożliwiające zarządzanie punktami odzyskiwania](backup-rbac-rs-vault.md). Magazyny usługi Recovery Services są zgodne z RBAC, który ogranicza możliwość użycia kopia zapasowa i przywrócenia dostępu do określonych ról użytkownika. [Dowiedz się więcej](backup-rbac-rs-vault.md)
+- **Kontrola dostępu oparta na rolach (RBAC)** : RBAC zapewnia szczegółowej kontroli dostępu do zarządzania na platformie Azure. [System Azure oferuje różne role wbudowane](../role-based-access-control/built-in-roles.md), a usługa Azure Backup ma trzy [role wbudowane, umożliwiające zarządzanie punktami odzyskiwania](backup-rbac-rs-vault.md). Magazyny usługi Recovery Services są zgodne z RBAC, który ogranicza możliwość użycia kopia zapasowa i przywrócenia dostępu do określonych ról użytkownika. [Dowiedz się więcej](backup-rbac-rs-vault.md)
 
 - **Chroń wszystkie konfiguracje maszyn wirtualnych platformy Azure**: Magazyny usług odzyskiwania chronią maszyn wirtualnych opartych na usłudze Resource Manager, m.in. dyski Premium Managed Disks i szyfrowanych maszyn wirtualnych. Uaktualnianie magazynu usługi Backup do magazynu usługi Recovery Services daje możliwość uaktualnienia maszyny wirtualne z opartych na programie Service Manager do maszyn wirtualnych opartych na programie Resource Manager. Podczas uaktualniania magazynu, można zachować punkty odzyskiwania maszyny Wirtualnej opartej na programie Service Manager i skonfigurować ochronę uaktualnionych maszyn wirtualnych (korzystających z Menedżera zasobów). [Dowiedz się więcej](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
