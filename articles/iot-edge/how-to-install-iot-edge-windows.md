@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 8907ae61fb03b417a74eb32e1fd09aece75d5e2c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f67f24cab907c3fe9998704e0a0a85d5b29f60a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151719"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808866"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows
 
@@ -86,7 +86,7 @@ W tym przykładzie przedstawiono ręcznej instalacji przy użyciu kontenerów Wi
 3. **IoTEdge Wdróż** polecenie sprawdza, czy komputer Windows jest w obsługiwanej wersji, włączenie funkcji kontenerów i pliki do pobrania moby środowiska uruchomieniowego i środowisko uruchomieniowe usługi IoT Edge. Domyślnie polecenia przy użyciu kontenerów Windows. 
 
    ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
@@ -95,7 +95,7 @@ W tym przykładzie przedstawiono ręcznej instalacji przy użyciu kontenerów Wi
 5. **IoTEdge zainicjować** polecenie konfiguruje środowisko uruchomieniowe usługi IoT Edge na urządzeniu. Polecenie domyślne z ręcznego inicjowania obsługi administracyjnej za pomocą kontenerów Windows. 
 
    ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge
    ```
 
@@ -135,7 +135,7 @@ W poniższym przykładzie pokazano automatycznej instalacji, za pomocą kontener
 3. **IoTEdge Wdróż** polecenie sprawdza, czy komputer Windows jest w obsługiwanej wersji, włączenie funkcji kontenerów i pliki do pobrania moby środowiska uruchomieniowego i środowisko uruchomieniowe usługi IoT Edge. Domyślnie polecenia przy użyciu kontenerów Windows. 
 
    ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
@@ -144,7 +144,7 @@ W poniższym przykładzie pokazano automatycznej instalacji, za pomocą kontener
 6. **IoTEdge zainicjować** polecenie konfiguruje środowisko uruchomieniowe usługi IoT Edge na urządzeniu. Polecenie domyślne z ręcznego inicjowania obsługi administracyjnej za pomocą kontenerów Windows. Użyj `-Dps` flagi do korzystania z usługi Device Provisioning zamiast ręcznego inicjowania obsługi administracyjnej.
 
    ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -Dps
    ```
 
@@ -172,7 +172,7 @@ Aby uzyskać najnowsze pliki instalacyjne usługi IoT Edge wraz z poprzednich we
 Aby zainstalować przy użyciu składników w trybie offline, należy użyć `-OfflineInstallationPath` parametru IoTEdge wdrażanie w ramach polecenia i podaj ścieżkę bezwzględną do katalogu plików. Na przykład:
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
@@ -189,7 +189,7 @@ Get-Service iotedge
 Sprawdź dzienniki usługi z ostatnich 5 minut. Jeśli użytkownik po prostu zakończył instalowanie środowiska uruchomieniowego usługi IoT Edge, może wyświetlić listę błędów od czasu między uruchomionymi **IoTEdge Wdróż** i **IoTEdge zainicjować**. Te błędy są oczekiwane zachowanie, ponieważ usługa próbuje uruchomić przed konfigurowany. 
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
 Utwórz listę uruchomionych modułów. Po zainstalowaniu nowego tylko moduł powinien zostać wyświetlony jest uruchomiona **edgeAgent**. Po zakończeniu [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md), widoczne będą inne. 
@@ -233,7 +233,7 @@ Aby uzyskać więcej informacji, zobacz [aktualizacji demona zabezpieczeń usłu
 W tym przykładzie przedstawiono instalację, który wskazuje istniejący plik konfiguracyjny i używa kontenerów Windows: 
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Update-IoTEdge
 ```
 
@@ -272,7 +272,7 @@ Polecenie Wdróż IoTEdge pliki do pobrania i wdraża demona zabezpieczeń IoT E
 | **Proxy** | Adres URL serwera proxy | Ten parametr należy uwzględnić, jeśli urządzenie musi przechodzić przez serwer proxy do uzyskiwania dostępu do Internetu. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Ścieżka katalogu | Jeśli ten parametr jest dołączony, program instalacyjny sprawdzi wymienionych katalog dla plików MSI środowiska uruchomieniowego VC wymaganych do instalacji i cab usługi IoT Edge. Pobierane są wszystkie pliki, które nie znajduje się w katalogu. Jeśli oba pliki znajdują się w katalogu, możesz zainstalować usługi IoT Edge, bez połączenia z Internetem. Ten parametr umożliwia również użyć określonej wersji. |
 | **InvokeWebRequestParameters** | Tablica skrótów parametrów i wartości | Podczas instalacji są wprowadzane kilka żądań sieci web. Użyj tego pola, aby ustawić parametry te żądania sieci web. Ten parametr jest przydatne skonfigurować poświadczenia dla serwerów proxy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
-| **RestartIfNeeded** | brak | Ta flaga umożliwia skryptu wdrażania, ponowne uruchomienie komputera bez wyświetlania monitu, jeśli to konieczne. |
+| **RestartIfNeeded** | Brak | Ta flaga umożliwia skryptu wdrażania, ponowne uruchomienie komputera bez wyświetlania monitu, jeśli to konieczne. |
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
@@ -299,15 +299,15 @@ Polecenie IoTEdge zainicjować konfiguruje usługi IoT Edge przy użyciu paramet
 | **Proxy** | Adres URL serwera proxy | Ten parametr należy uwzględnić, jeśli urządzenie musi przechodzić przez serwer proxy do uzyskiwania dostępu do Internetu. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
 | **InvokeWebRequestParameters** | Tablica skrótów parametrów i wartości | Podczas instalacji są wprowadzane kilka żądań sieci web. Użyj tego pola, aby ustawić parametry te żądania sieci web. Ten parametr jest przydatne skonfigurować poświadczenia dla serwerów proxy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Ścieżka katalogu | Jeśli ten parametr jest dołączony, program instalacyjny sprawdzi wymienionych katalog dla plików MSI środowiska uruchomieniowego VC wymaganych do instalacji i cab usługi IoT Edge. Pobierane są wszystkie pliki, które nie znajduje się w katalogu. Jeśli oba pliki znajdują się w katalogu, możesz zainstalować usługi IoT Edge, bez połączenia z Internetem. Ten parametr umożliwia również użyć określonej wersji. |
-| **RestartIfNeeded** | brak | Ta flaga umożliwia skryptu wdrażania, ponowne uruchomienie komputera bez wyświetlania monitu, jeśli to konieczne. |
+| **RestartIfNeeded** | Brak | Ta flaga umożliwia skryptu wdrażania, ponowne uruchomienie komputera bez wyświetlania monitu, jeśli to konieczne. |
 
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | Parametr | Dopuszczalne wartości | Komentarze |
 | --------- | --------------- | -------- |
-| **Force** | brak | Ta flaga wymusza dezinstalację, w przypadku, gdy poprzednia próba odinstalowania nie powiodło się. 
-| **RestartIfNeeded** | brak | Ta flaga umożliwia skryptu dezinstalacji, ponowne uruchomienie komputera bez wyświetlania monitu, jeśli to konieczne. |
+| **Force** | Brak | Ta flaga wymusza dezinstalację, w przypadku, gdy poprzednia próba odinstalowania nie powiodło się. 
+| **RestartIfNeeded** | Brak | Ta flaga umożliwia skryptu dezinstalacji, ponowne uruchomienie komputera bez wyświetlania monitu, jeśli to konieczne. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 2719b6b47225576f2eadeb5e5b40b3aa7b39444d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943095"
 ---
 <a name="seller-insights-faq"></a>Sprzedawcy Insights — często zadawane pytania
@@ -35,19 +35,19 @@ Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę 
 <a name="calculate-my-open-accounts-receivable"></a>Oblicz Moje Otwórz odbiorców
 -------------------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan informacje dotyczące wypłat**i Zastosuj filtr, aby wyświetlić tylko wartości "Nadchodzące informacje dotyczące wypłat" i "Nie jest gotowy do informacje dotyczące wypłat." Następnie Suma kolumnę z etykietą **kwoty wypłata (PC)**.
+Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan informacje dotyczące wypłat**i Zastosuj filtr, aby wyświetlić tylko wartości "Nadchodzące informacje dotyczące wypłat" i "Nie jest gotowy do informacje dotyczące wypłat." Następnie Suma kolumnę z etykietą **kwoty wypłata (PC)** .
 
 
 <a name="calculate-revenue-by-customer-usage-period"></a>Oblicz przychód według okresu użycia klienta
 ------------------------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan transakcji**i wartość "Płatne" filtru.   Dla każdej transakcji wymienionej kolumnę z etykietą **kwoty wypłata (PC)** reprezentuje zostały zapłaconej kwoty.  Aby oszacować okres użycia skojarzony z transakcją, można użyć kolumny **Data obciążenia**, który jest bliskie zbliżenia ostatni dzień użycia okres, do której stosują się transakcji.
+Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan transakcji**i wartość "Płatne" filtru.   Dla każdej transakcji wymienionej kolumnę z etykietą **kwoty wypłata (PC)**  reprezentuje zostały zapłaconej kwoty.  Aby oszacować okres użycia skojarzony z transakcją, można użyć kolumny **Data obciążenia**, który jest bliskie zbliżenia ostatni dzień użycia okres, do której stosują się transakcji.
 
 
 <a name="calculate-your-bad-debt"></a>Oblicz zadłużenia niewłaściwe
 ---------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **ostateczny stan kolekcji**i Zastosuj filtr tylko do wyświetlania wartości "Write wyłączone." Następnie Suma kolumnę z etykietą **kwoty wypłata (PC)**.
+Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **ostateczny stan kolekcji**i Zastosuj filtr tylko do wyświetlania wartości "Write wyłączone." Następnie Suma kolumnę z etykietą **kwoty wypłata (PC)** .
 
 
 <a name="view-payout-or-customer-contact-information"></a>Wyświetl informacje dotyczące wypłat lub klienta informacje kontaktowe

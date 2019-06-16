@@ -18,10 +18,10 @@ ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 30d153863a20dcdddc702ee5a37c34a2938d7446
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61473913"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
@@ -31,7 +31,7 @@ Tworzenia maszyny wirtualnej systemu Linux (VM) to łatwo zrobić z wiersza pole
 W tym temacie założono, masz już działającą subskrypcji platformy Azure ([bezpłatnej wersji próbnej rejestracji](https://azure.microsoft.com/pricing/free-trial/)) i już przeprowadzono aprowizację maszyny Wirtualnej w ramach subskrypcji platformy Azure. Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do subskrypcji platformy Azure za pomocą [az login](/cli/azure/reference-index) przed [Utwórz Maszynę wirtualną](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Azure OS Disk
-Po utworzeniu maszyny Wirtualnej z systemem Linux na platformie Azure ma dwa dyski skojarzone z nią. **/ dev/sda** jest dysk systemu operacyjnego, **/dev/sdb** jest dysku tymczasowego.  Nie używaj głównego dysku systemu operacyjnego (**/dev/sda**) dla wszystkich elementów, z wyjątkiem systemu operacyjnego jest zoptymalizowana pod kątem szybkiego czasu rozruchu maszyny Wirtualnej i nie zapewnia dobrą wydajność dla obciążeń. Aby dołączyć co najmniej jeden dysk do maszyny Wirtualnej, aby pobrać trwałe i zoptymalizowane pod kątem magazynowania danych. 
+Po utworzeniu maszyny Wirtualnej z systemem Linux na platformie Azure ma dwa dyski skojarzone z nią. **/ dev/sda** jest dysk systemu operacyjnego, **/dev/sdb** jest dysku tymczasowego.  Nie używaj głównego dysku systemu operacyjnego ( **/dev/sda**) dla wszystkich elementów, z wyjątkiem systemu operacyjnego jest zoptymalizowana pod kątem szybkiego czasu rozruchu maszyny Wirtualnej i nie zapewnia dobrą wydajność dla obciążeń. Aby dołączyć co najmniej jeden dysk do maszyny Wirtualnej, aby pobrać trwałe i zoptymalizowane pod kątem magazynowania danych. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Dodawanie dysków dla rozmiaru i wydajności obiektów docelowych
 Zależności od rozmiaru maszyny Wirtualnej, można dołączyć do 16 dodatkowe dyski na serii A, 32 dyski na serii D i komputera 64 dyski na serii G - każdy maksymalnie 1 TB. Możesz dodać dodatkowe dyski, zgodnie z potrzebami na obszarze i wymagania dotyczące operacji We/Wy. Każdy dysk ma element docelowy wydajności z 500 operacji We/Wy dla magazynu w warstwie standardowa i do 5000 operacji We/Wy na dysku dla usługi Premium Storage.
@@ -51,7 +51,7 @@ Zajmowanie się wysokie obciążenia operacji We/Wy i zostały wybrane magazynu 
  
 
 ## <a name="your-vm-temporary-drive"></a>Dysk tymczasowy maszyn wirtualnych
-Domyślnie podczas tworzenia maszyny Wirtualnej, platforma Azure udostępnia dysku systemu operacyjnego (**/dev/sda**) oraz dyski tymczasowe (**/dev/sdb**).  Wszystkie dodatkowe dyski show Dodaj się jako **/dev/sdc**, **/dev/sdd**, **/dev/sde** i tak dalej. Wszystkie dane na dysku tymczasowego (**/dev/sdb**) nie są trwałe i mogą zostać utracone, jeśli określone zdarzenia, takie jak rozmiar maszyny Wirtualnej, ponownego wdrożenia, lub konserwacji wymusza ponowne uruchomienie maszyny wirtualnej.  Rozmiar i typ dysku tymczasowego jest powiązana z rozmiar maszyny Wirtualnej, który został wybrany w czasie wdrażania. Wszystkie warstwa Premium — rozmiar maszyn wirtualnych (serii DS, G i DS_V2) dysku tymczasowego są wspierane przez lokalny dysk SSD dla dodatkowej wydajności 48k operacje We/Wy. 
+Domyślnie podczas tworzenia maszyny Wirtualnej, platforma Azure udostępnia dysku systemu operacyjnego ( **/dev/sda**) oraz dyski tymczasowe ( **/dev/sdb**).  Wszystkie dodatkowe dyski show Dodaj się jako **/dev/sdc**, **/dev/sdd**, **/dev/sde** i tak dalej. Wszystkie dane na dysku tymczasowego ( **/dev/sdb**) nie są trwałe i mogą zostać utracone, jeśli określone zdarzenia, takie jak rozmiar maszyny Wirtualnej, ponownego wdrożenia, lub konserwacji wymusza ponowne uruchomienie maszyny wirtualnej.  Rozmiar i typ dysku tymczasowego jest powiązana z rozmiar maszyny Wirtualnej, który został wybrany w czasie wdrażania. Wszystkie warstwa Premium — rozmiar maszyn wirtualnych (serii DS, G i DS_V2) dysku tymczasowego są wspierane przez lokalny dysk SSD dla dodatkowej wydajności 48k operacje We/Wy. 
 
 ## <a name="linux-swap-file"></a>Plik wymiany w systemie Linux
 W przypadku maszyny Wirtualnej platformy Azure z obrazu systemu Ubuntu lub CoreOS, można użyć funkcji CustomData wysyłać konfiguracji chmury pakietu cloud-init. Jeśli użytkownik [przekazany niestandardowych obrazów systemu Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , który używa pakietu cloud-init, możesz również skonfigurować partycji wymiany, za pomocą pakietu cloud-init.

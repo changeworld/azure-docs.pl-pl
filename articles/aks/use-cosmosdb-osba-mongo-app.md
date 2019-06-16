@@ -11,10 +11,10 @@ ms.author: zarhoads
 ms.custom: mvc
 keywords: Usługa cosmos DB, otwórz Service Broker, usługi Open Service Broker for Azure
 ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61028424"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrowanie istniejącej aplikacji MongoDB przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i usługi Open Service Broker for Azure (OSBA)
@@ -267,7 +267,7 @@ press Ctrl+C to detach
 ...
 ```
 
-Przejdź do adresu URL wyświetlany w dziennikach. W poprzednim przykładzie, należy użyć *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/*. 
+Przejdź do adresu URL wyświetlany w dziennikach. W poprzednim przykładzie, należy użyć *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* . 
 
 Sprawdź, czy aplikacja zostanie wyświetlony wraz z zmiany.
 

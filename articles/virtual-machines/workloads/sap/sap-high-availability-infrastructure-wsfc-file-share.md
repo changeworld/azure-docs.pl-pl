@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409610"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Przygotowywanie infrastruktury platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS
@@ -210,7 +210,7 @@ ms.locfileid: "65409610"
 
 W tym artykule opisano kroki przygotowania infrastruktury platformy Azure, które są potrzebne, aby zainstalować i skonfigurować wysoką dostępność systemów SAP w klastrze systemu Windows Server Failover Clustering (WSFC), przy użyciu udziału plików skalowalnego w poziomie jako opcja do klastrowania SAP ASCS/SCS wystąpienia.
 
-## <a name="prerequisite"></a>Wymaganie wstępne
+## <a name="prerequisite"></a>Wymagania wstępne
 
 Przed rozpoczęciem instalacji, przejrzyj następujący artykuł:
 
@@ -317,7 +317,7 @@ Możesz też zautomatyzować wdrażanie serwera plików skalowalnego w poziomie 
 > W szablonie Menedżera zasobów serwera plików skalowalnego w poziomie, interfejs użytkownika musisz określić liczbę maszyn wirtualnych.
 >
 
-### <a name="use-managed-disks"></a>Użyj dysków zarządzanych
+### <a name="use-managed-disks"></a>Użyj usługi managed disks
 
 Szablon usługi Azure Resource Manager do wdrażania serwera plików skalowalnego w poziomie z bezpośrednimi miejscami do magazynowania i usługi Azure Managed Disks jest dostępna na [GitHub][arm-sofs-s2d-managed-disks].
 

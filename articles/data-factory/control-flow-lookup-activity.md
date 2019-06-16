@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
 ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60768672"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działanie LOOKUP w usłudze Azure Data Factory
@@ -54,10 +54,10 @@ Następujące źródła danych są obsługiwane dla działania Lookup. Najwięks
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Name (Nazwa) | Opis | Type | Wymagana?
+Name (Nazwa) | Opis | Typ | Wymagana?
 ---- | ----------- | ---- | --------
-Zestaw danych | Zawiera odwołanie do zestawu danych do wyszukiwania. Uzyskiwanie szczegółowych informacji z **właściwości zestawu danych** sekcji w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Yes
-source | Zawiera właściwości specyficzne dla zestawu danych źródła, taka sama jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji z **właściwości działania kopiowania** sekcji w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Yes
+Zestaw danych | Zawiera odwołanie do zestawu danych do wyszukiwania. Uzyskiwanie szczegółowych informacji z **właściwości zestawu danych** sekcji w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Tak
+source | Zawiera właściwości specyficzne dla zestawu danych źródła, taka sama jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji z **właściwości działania kopiowania** sekcji w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Tak
 firstRowOnly | Wskazuje, czy zwracać tylko pierwszy wiersz lub wszystkie wiersze. | Boolean | Nie. Wartość domyślna to `true`.
 
 > [!NOTE]
@@ -70,7 +70,7 @@ firstRowOnly | Wskazuje, czy zwracać tylko pierwszy wiersz lub wszystkie wiersz
 
 Wynik wyszukiwania jest zwracany w `output` sekcji uruchomienia działania.
 
-* **Gdy `firstRowOnly` ustawiono `true` (ustawienie domyślne)**, jest format danych wyjściowych, jak pokazano w poniższym kodzie. Wynik wyszukiwania znajduje się w stałym `firstRow` klucza. Aby użyć wyniku kolejne działania, użyj wzorca `@{activity('MyLookupActivity').output.firstRow.TableName}`.
+* **Gdy `firstRowOnly` ustawiono `true` (ustawienie domyślne)** , jest format danych wyjściowych, jak pokazano w poniższym kodzie. Wynik wyszukiwania znajduje się w stałym `firstRow` klucza. Aby użyć wyniku kolejne działania, użyj wzorca `@{activity('MyLookupActivity').output.firstRow.TableName}`.
 
     ```json
     {

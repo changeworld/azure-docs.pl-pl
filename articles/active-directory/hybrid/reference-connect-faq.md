@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65137799"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
@@ -62,7 +62,7 @@ Tak, ten scenariusz jest obsługiwany. Zapoznaj się [wielu domen](how-to-connec
 **Pyt.: Można mieć wiele łączników w tej samej domeny usługi Active Directory w programie Azure AD Connect?**  
 Nie, wiele łączników dla tej samej domeny usługi AD nie są obsługiwane. 
 
-**Pyt.: Czy mogę przenieść bazę danych usługi Azure AD Connect z lokalnej bazy danych do zdalnego wystąpienia programu SQL Server?**   
+**Pyt.: Czy mogę przenieść bazę danych usługi Azure AD Connect z lokalnej bazy danych do zdalnego wystąpienia programu SQL Server?**    
 Tak, w poniższych krokach przedstawiono ogólne wskazówki, jak to zrobić. Obecnie pracujemy nad bardziej szczegółowym dokumencie.
 1. Utwórz kopię zapasową bazy danych LocalDB ADSync.
 Jest najprostszym sposobem, w tym celu można użyć programu SQL Server Management Studio zainstalowany na tym samym komputerze co program Azure AD Connect. Połączyć się z *(LocalDb). \ADSync*, a następnie tworzy kopię zapasową bazy danych ADSync.

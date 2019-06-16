@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/04/2019
 ms.author: twhitney
 ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66688639"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Połącz przy użyciu protokołu RDP do usługi Azure Kubernetes Service (AKS) węzłach systemu Windows Server z powodu konserwacji lub rozwiązywania problemów

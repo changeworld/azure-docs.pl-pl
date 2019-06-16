@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 05/13/2019
 ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596762"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołanie do schematu dla język definicji przepływów pracy w usłudze Azure Logic Apps
@@ -40,7 +40,7 @@ Poniżej przedstawiono ogólną strukturę dla definicji przepływu pracy:
 
 | Atrybut | Wymagane | Opis |
 |-----------|----------|-------------|
-| `definition` | Tak | Element początkowy dla swojej definicji przepływu pracy |
+| `definition` | Yes | Element początkowy dla swojej definicji przepływu pracy |
 | `$schema` | Tylko wtedy, gdy zewnętrznie odwołujące się do definicji przepływu pracy | Lokalizacja pliku schematu JSON, który opisuje wersję język definicji przepływów pracy, który można znaleźć tutaj: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | `actions` | Nie | Definicje dla co najmniej jedną akcję do wykonania w czasie wykonywania przepływu pracy. Aby uzyskać więcej informacji, zobacz [wyzwalacze i akcje](#triggers-actions). <p><p>Maksymalną liczbę akcji: 250 |
 | `contentVersion` | Nie | Numer wersji dla definicji przepływu pracy, czyli "1.0.0.0" domyślnie. Aby ułatwić identyfikowanie i Potwierdź poprawną definicję, wdrażając przepływu pracy, należy określić wartość do użycia. |
@@ -110,8 +110,8 @@ Poniżej przedstawiono ogólną strukturę dla definicji parametru:
 
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
-| <*parameter-type*> | Tak | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: W przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
-| <*default-parameter-values*> | Tak | Takie same jak `type` | Domyślna wartość parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy |
+| <*parameter-type*> | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: W przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
+| <*default-parameter-values*> | Yes | Takie same jak `type` | Domyślna wartość parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy |
 | <*array-with-permitted-parameter-values*> | Nie | Tablica | Tablica wartości akceptujące parametr |
 | `metadata` | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis dla aplikacji logiki lub przepływie lub danych czasu projektowania, używane przez program Visual Studio lub innych narzędzi |
 ||||
@@ -146,7 +146,7 @@ W `staticResults` atrybutu, definiowania akcji pozorny `outputs` i `status` akcj
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
 | <*static-result-definition-name*> | Tak | String | Nazwa definicji statyczny wynik, który definicji działania może odwoływać się za pośrednictwem `runtimeConfiguration.staticResult` obiektu. Aby uzyskać więcej informacji, zobacz [ustawień konfiguracji środowiska uruchomieniowego](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Można użyć unikatową nazwę, która ma. Domyślnie ta unikatowa nazwa jest dołączany wraz z liczbą, która jest zwiększany, gdy jest to konieczne. |
-| <*output-attributes-and-values-returned*> | Tak | Różna | Wymagania dotyczące tych atrybutów różnią się zależnie od różnych warunków. Na przykład, gdy `status` jest `Succeeded`, `outputs` atrybut zawiera atrybuty i wartości zwracane jako makiety danych wyjściowych przez akcję. Jeśli `status` jest `Failed`, `outputs` atrybut zawiera `errors` atrybut, który jest tablicą z co najmniej jeden błąd `message` obiektów, które mają informacje o błędzie. |
+| <*output-attributes-and-values-returned*> | Yes | Różna | Wymagania dotyczące tych atrybutów różnią się zależnie od różnych warunków. Na przykład, gdy `status` jest `Succeeded`, `outputs` atrybut zawiera atrybuty i wartości zwracane jako makiety danych wyjściowych przez akcję. Jeśli `status` jest `Failed`, `outputs` atrybut zawiera `errors` atrybut, który jest tablicą z co najmniej jeden błąd `message` obiektów, które mają informacje o błędzie. |
 | <*header-values*> | Nie | JSON | Wszystkie wartości nagłówka zwrócony przez akcję |
 | <*status-code-returned*> | Tak | String | Kod stanu zwrócony przez akcję |
 | <*Stan akcji*> | Tak | String | Stan akcji, na przykład `Succeeded` lub `Failed` |

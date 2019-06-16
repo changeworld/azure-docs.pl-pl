@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487286"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Tworzenie, monitorowanie i zarządzanie fabryki danych platformy Azure przy użyciu zestawu SDK .NET usługi Azure Data Factory
@@ -113,7 +113,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
 1. Za pomocą programu Visual Studio 2012/2013/2015 utwórz aplikację konsolową .NET C#.
    1. Uruchom program **Visual Studio** 2012/2013/2015.
    2. Kliknij pozycję **Plik**, wskaż polecenie **Nowy** i kliknij pozycję **Projekt**.
-   3. Rozwiń węzeł **Szablony** i wybierz opcję **Visual C#**. W tym przewodniku stosowany jest język C#, ale można użyć dowolnego języka platformy .NET.
+   3. Rozwiń węzeł **Szablony** i wybierz opcję **Visual C#** . W tym przewodniku stosowany jest język C#, ale można użyć dowolnego języka platformy .NET.
    4. Wybierz opcję **Aplikacja konsolowa** z listy typów projektów po prawej stronie.
    5. Wprowadź wartość **DataFactoryAPITestApp** jako nazwę.
    6. Wybierz ścieżkę **C:\ADFGetStarted** jako lokalizację.
@@ -139,7 +139,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
         </appSettings>
     </configuration>
     ```
-5. W pliku App.Config zaktualizuj wartości  **&lt;identyfikator aplikacji&gt;**,  **&lt;hasło&gt;**,  **&lt;subskrypcji Identyfikator&gt;**, i **&lt;identyfikator dzierżawy&gt;** własnymi wartościami.
+5. W pliku App.Config zaktualizuj wartości  **&lt;identyfikator aplikacji&gt;** ,  **&lt;hasło&gt;** ,  **&lt;subskrypcji Identyfikator&gt;** , i **&lt;identyfikator dzierżawy&gt;** własnymi wartościami.
 6. Dodaj następujący kod **przy użyciu** instrukcje **Program.cs** pliku w projekcie.
 
     ```csharp

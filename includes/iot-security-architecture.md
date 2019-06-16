@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166342"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy (IoT)
@@ -169,22 +169,22 @@ W tej sekcji przedstawiono architekturę opisanych zapewniający modelowanie zag
 
 W każdej kategorii, opisane w architekturze usługi Azure IoT, w tym przykładzie próbuje zmniejszyć liczbę różnych zagrożeń na różnych etapach/informacje o danych istnieje w: proces, komunikacji i magazynu. Poniżej przedstawiono omówienie najbardziej typowymi dla kategorii "procesu", następuje omówienie, jak te zagrożenia mogą najlepiej skorygowane:
 
-**Fałszowanie (S)**: Osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, albo w oprogramowania lub poziomie sprzętu, a następnie dostępu do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
+**Fałszowanie (S)** : Osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, albo w oprogramowania lub poziomie sprzętu, a następnie dostępu do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
 
-**Odmowa usługi (D)**: Urządzenie można pozbawić możliwości funkcjonowania lub komunikowania się przez zakłócenie częstotliwości radiowych lub przecięcie przewodów. Na przykład kamera nadzoru wizyjnego, którą celowo pozbawiono zasilania lub połączenia sieciowego, nie może w ogóle zgłaszać danych.
+**Odmowa usługi (D)** : Urządzenie można pozbawić możliwości funkcjonowania lub komunikowania się przez zakłócenie częstotliwości radiowych lub przecięcie przewodów. Na przykład kamera nadzoru wizyjnego, którą celowo pozbawiono zasilania lub połączenia sieciowego, nie może w ogóle zgłaszać danych.
 
-**Manipulowanie (T)**: Atakujący może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając temu oprogramowaniu wykorzystanie prawdziwej tożsamości urządzenia, jeśli dane dotyczące klucza lub urządzenia kryptograficzne przechowujące dane dotyczące klucza były dostępne dla takiego nielegalnego programu. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
+**Manipulowanie (T)** : Atakujący może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając temu oprogramowaniu wykorzystanie prawdziwej tożsamości urządzenia, jeśli dane dotyczące klucza lub urządzenia kryptograficzne przechowujące dane dotyczące klucza były dostępne dla takiego nielegalnego programu. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
 
-**Ujawnienie informacji, (I)**: Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować potencjalnie mogą spowodować przeciek tych danych nieautoryzowanym osobom. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza iniekcję się do ścieżki komunikacji między urządzenia i bramy kontrolera lub pola lub brama chmury do Lewarek poza informacji.
+**Ujawnienie informacji, (I)** : Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować potencjalnie mogą spowodować przeciek tych danych nieautoryzowanym osobom. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza iniekcję się do ścieżki komunikacji między urządzenia i bramy kontrolera lub pola lub brama chmury do Lewarek poza informacji.
 
-**Podniesienie poziomu uprawnień (E)**: Urządzenie realizujące określoną funkcję może zostać zmuszone do robienia czegoś innego. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
+**Podniesienie poziomu uprawnień (E)** : Urządzenie realizujące określoną funkcję może zostać zmuszone do robienia czegoś innego. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
 
 | **Składnik** | **Przed zagrożeniami** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
 | --- | --- | --- | --- | --- |
-| Urządzenie |N |Przypisywanie tożsamości na urządzeniu i uwierzytelniania urządzenia |Wymiana urządzenia lub częścią urządzenia za pomocą innego urządzenia. Skąd wiadomo, że mówienia na właściwym urządzeniu? |Uwierzytelniania urządzenia, za pomocą zabezpieczeń TLS (Transport Layer) lub protokołu IPSec. Infrastruktura powinien obsługiwać za pomocą klucz wstępny (PSK) na tych urządzeniach, które nie obsługują pełne asymetrycznego kryptografii. Korzystać z usługi Azure AD [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
+| Urządzenie |S |Przypisywanie tożsamości na urządzeniu i uwierzytelniania urządzenia |Wymiana urządzenia lub częścią urządzenia za pomocą innego urządzenia. Skąd wiadomo, że mówienia na właściwym urządzeniu? |Uwierzytelniania urządzenia, za pomocą zabezpieczeń TLS (Transport Layer) lub protokołu IPSec. Infrastruktura powinien obsługiwać za pomocą klucz wstępny (PSK) na tych urządzeniach, które nie obsługują pełne asymetrycznego kryptografii. Korzystać z usługi Azure AD [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
 || TRID |Zastosować tamperproof mechanizmy do urządzenia, na przykład, co utrudnia się niemożliwe do wyodrębnienia z urządzenia kluczy i innymi materiałami kryptograficznymi. |Ryzyko jest, jeśli ktoś jest manipulowanie nimi urządzeń (zakłócenia fizycznej). Jak na pewno, że urządzenie nie została naruszona. |Najbardziej efektywne środki zaradcze jest TPM możliwości module (TPM), która umożliwia przechowywanie kluczy w specjalnych obwody na układ, z którego nie można odczytać kluczy, ale można używać tylko dla operacji kryptograficznych, które używają klucza, ale nigdy nie ujawni klucz. Szyfrowanie pamięci urządzenia. Zarządzanie kluczami dla tego urządzenia. Podpisywanie kodu. |
 || E |Zapewniający kontrolę dostępu do urządzenia. Schemat autoryzacji. |Jeśli urządzenie umożliwia poszczególne akcje do wykonania zależnie od polecenia ze źródła zewnętrznego lub nawet ze złamanymi zabezpieczeniami czujniki, umożliwia ataku wykonywać operacje gdzie indziej dostępny. |Posiadanie schemat autoryzacji dla urządzenia |
-| Bramy w terenie |N |Uwierzytelnianie bramy w terenie bramy w chmurze (takie jak certyfikat na podstawie, klucza Wstępnego, lub oparta na oświadczeniach). |Jeśli ktoś podszywały się pod bramy w terenie, następnie go może być wyświetlany jako dowolnego urządzenia. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Te same Najważniejsze kwestie magazynu i zaświadczenie urządzeń znajdujących się w ogólne — Najlepszy przypadek jest używanie modułu TPM. Rozszerzenie 6LowPAN protokołu IPSec do obsługi bezprzewodowej sieci czujników (WSN). |
+| Bramy w terenie |S |Uwierzytelnianie bramy w terenie bramy w chmurze (takie jak certyfikat na podstawie, klucza Wstępnego, lub oparta na oświadczeniach). |Jeśli ktoś podszywały się pod bramy w terenie, następnie go może być wyświetlany jako dowolnego urządzenia. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Te same Najważniejsze kwestie magazynu i zaświadczenie urządzeń znajdujących się w ogólne — Najlepszy przypadek jest używanie modułu TPM. Rozszerzenie 6LowPAN protokołu IPSec do obsługi bezprzewodowej sieci czujników (WSN). |
 || TRID |Ochrona bramy w terenie przed naruszeniem (TPM)? |Fałszowanie atakami nakłonienia myśleć bramy chmury, które rozmawia bramy w terenie może spowodować ujawnienie informacji i nieuprawnionej modyfikacji danych |Pamięć szyfrowania, modułu TPM firmy, uwierzytelniania. |
 || E |Mechanizm kontroli dostępu dla bramy w terenie | | |
 

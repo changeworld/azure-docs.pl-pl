@@ -3,22 +3,21 @@ title: Zadanie ustawienie wstępne dla usługi Azure Media Indexer
 description: Ten temat zawiera omówienie zadań ustawienie wstępne dla usługi Azure Media Indexer.
 services: media-services
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: Asolanki
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 02/08/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 03/14/2019
+ms.author: adsolank;juliako;
 ms.openlocfilehash: 8ce3ea3847e4c8c022f17375676d8415372dec85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466310"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Zadanie ustawienie wstępne dla usługi Azure Media Indexer 

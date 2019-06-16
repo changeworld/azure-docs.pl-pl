@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60579972"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Rozpoczynanie pracy z wdrażaniem usługi Azure CDN
@@ -42,7 +42,7 @@ Potrzebujesz programu Visual Studio 2015 do ukończenia tego samouczka.  [Progra
 ## <a name="create-your-project-and-add-nuget-packages"></a>Tworzenie projektu i dodawanie pakietów Nuget
 Teraz, gdy opracowaliśmy grupę zasobów dla naszych profilów usługi CDN i naszych uprawnienia aplikacji usługi Azure AD do zarządzania profilami usługi CDN i punkty końcowe w ramach tej grupy, Zaczniemy tworzenie naszej aplikacji.
 
-W programie Visual Studio 2015, kliknij **pliku**, **New**, **projektu...**  aby otworzyć okno dialogowe nowego projektu.  Rozwiń **Visual C#**, a następnie wybierz **Windows** w okienku po lewej stronie.  Kliknij przycisk **aplikację Konsolową** w środkowym okienku.  Nazwij swój projekt, a następnie kliknij przycisk **OK**.  
+W programie Visual Studio 2015, kliknij **pliku**, **New**, **projektu...**  aby otworzyć okno dialogowe nowego projektu.  Rozwiń **Visual C#** , a następnie wybierz **Windows** w okienku po lewej stronie.  Kliknij przycisk **aplikację Konsolową** w środkowym okienku.  Nazwij swój projekt, a następnie kliknij przycisk **OK**.  
 
 ![Nowy projekt](./media/cdn-app-dev-net/cdn-new-project.png)
 
@@ -51,7 +51,7 @@ Nasz projekt będzie używać niektórych bibliotek platformy Azure zawartych w 
 1. Kliknij przycisk **narzędzia** menu **Menedżera pakietów Nuget**, następnie **Konsola Menedżera pakietów**.
    
     ![Zarządzaj pakietami Nuget](./media/cdn-app-dev-net/cdn-manage-nuget.png)
-2. W konsoli Menedżera pakietów, wykonaj następujące polecenie, aby zainstalować **Active Directory Authentication Library (ADAL)**:
+2. W konsoli Menedżera pakietów, wykonaj następujące polecenie, aby zainstalować **Active Directory Authentication Library (ADAL)** :
    
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. Wykonaj następujące czynności, aby zainstalować **biblioteki zarządzania usługi Azure CDN**:
@@ -73,7 +73,7 @@ Uzyskajmy podstawowa struktura nasz program napisany.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Należy zdefiniować kilka stałych, używanymi przez naszych metod.  W `Program` klasy, lecz przed `Main` metody, Dodaj następujący kod.  Koniecznie Zastąp symbole zastępcze, w tym  **&lt;nawiasy kątowe&gt;**, przy użyciu własnych wartości, zgodnie z potrzebami.
+2. Należy zdefiniować kilka stałych, używanymi przez naszych metod.  W `Program` klasy, lecz przed `Main` metody, Dodaj następujący kod.  Koniecznie Zastąp symbole zastępcze, w tym  **&lt;nawiasy kątowe&gt;** , przy użyciu własnych wartości, zgodnie z potrzebami.
    
     ```csharp
     //Tenant app constants

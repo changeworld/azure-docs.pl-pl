@@ -2,19 +2,17 @@
 title: Model danych do usługi Azure Backup
 description: Ten artykuł zawiera informacje o szczegóły modelu danych usługi Power BI dla raportów usługi Azure Backup.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-origin.date: 06/26/2017
-ms.date: 08/08/2018
-ms.author: v-junlch
-ms.custom: H1Hack27Feb2017
+ms.date: 06/26/2017
+ms.author: adigan
 ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337582"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Model danych dla raportów usługi Azure Backup
@@ -85,7 +83,7 @@ Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól z
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Liczba całkowita |Liczba zadań utworzonych w wybranym okresie |
 | %FailuresForJobsCreatedInPeriod |Wartość procentowa |Procent ogólnej zadaniami w wybranym okresie |
-| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Liczba dziesiętna |80. wartość percentylu danych przesyłanych w Megabajtach **kopii zapasowej** zadań utworzonych w wybranym okresie |
+| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Liczba dziesiętna |80\. wartość percentylu danych przesyłanych w Megabajtach **kopii zapasowej** zadań utworzonych w wybranym okresie |
 | AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |Liczba dziesiętna |Średni czas w minutach, aby **Zakończono tworzenie kopii zapasowej** zadań utworzonych w wybranym okresie |
 | AvgRestoreDurationInMinsForJobsCreatedInPeriod |Liczba dziesiętna |Średni czas w minutach, aby **ukończyć przywracania** zadań utworzonych w wybranym okresie |
@@ -191,8 +189,5 @@ Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól p
 ## <a name="next-steps"></a>Kolejne kroki
 Po przejrzeniu modelu danych do tworzenia raportów usługi Azure Backup, zapoznaj się następujące artykuły, aby uzyskać więcej informacji na temat tworzenia i wyświetlania raportów w usłudze Power BI.
 
-- [Tworzenie raportów w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
-- [Filtrowanie raportów usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
-
-
-<!-- Update_Description: update metedata properties -->
+* [Tworzenie raportów w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
+* [Filtrowanie raportów usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

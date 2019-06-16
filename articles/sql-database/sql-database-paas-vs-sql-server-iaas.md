@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/11/2019
 ms.openlocfilehash: d9cd5ba0b697cbf67f943eb49d66010745d8561e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584868"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>Wybieranie opcji programu SQL Server po prawej stronie na platformie Azure
@@ -25,7 +25,7 @@ ms.locfileid: "60584868"
 Na platformie Azure może mieć obciążeń programu SQL Server, działające w infrastrukturze hostowanej (IaaS) lub są uruchamiane jako usługa hostowana ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)). W ramach PaaS masz kilka opcji wdrażania i warstwy usług w ramach każdej opcji wdrażania. Najistotniejsze pytanie, które musisz poprosić przed podjęciem decyzji o PaaS lub IaaS jest chcesz Zarządzanie bazą danych, stosowanie poprawek, twórz kopie zapasowe lub chcesz przekazać te operacje na platformie Azure?
 W zależności od odpowiedzi dostępne są następujące opcje:
 
-- [Azure SQL Database](sql-database-technical-overview.md): W pełni zarządzanego aparatu bazy danych SQL, oparte na najnowszej stabilnej Enterprise programu SQL Server. Jest to relacyjnej bazy danych jako — usługa (DBaaS) hostowanych w chmurze platformy Azure, ją zaliczyć do kategorii branżowych *Platform-as-a-Service (PaaS)*. Usługa SQL database ma wiele dostępnych opcji wdrażania, z których każdy jest oparta na ustandaryzowanym sprzęcie i oprogramowaniu, będące własnością, hostowane i konserwowane przez firmę Microsoft. Usługa SQL Database można użyć wbudowanych funkcji i funkcjonalności, które wymagają konfiguracji rozbudowane, gdy jest używana w programie SQL Server (lokalnie lub w maszynie wirtualnej platformy Azure). Płatność za korzystanie z usługi SQL Database odbywa się zgodnie z rzeczywistym użyciem, a opcje pozwalają na skalowanie w górę lub w poziomie, dzięki czemu klienci mają do dyspozycji większe możliwości bez najmniejszych zakłóceń. Usługa SQL Database ma dodatkowe funkcje, które nie są dostępne w programie SQL Server, takie jak wbudowana wysoka dostępność, analizy i zarządzania. Usługa Azure SQL Database oferuje następujące opcje wdrażania:
+- [Azure SQL Database](sql-database-technical-overview.md): W pełni zarządzanego aparatu bazy danych SQL, oparte na najnowszej stabilnej Enterprise programu SQL Server. Jest to relacyjnej bazy danych jako — usługa (DBaaS) hostowanych w chmurze platformy Azure, ją zaliczyć do kategorii branżowych *Platform-as-a-Service (PaaS)* . Usługa SQL database ma wiele dostępnych opcji wdrażania, z których każdy jest oparta na ustandaryzowanym sprzęcie i oprogramowaniu, będące własnością, hostowane i konserwowane przez firmę Microsoft. Usługa SQL Database można użyć wbudowanych funkcji i funkcjonalności, które wymagają konfiguracji rozbudowane, gdy jest używana w programie SQL Server (lokalnie lub w maszynie wirtualnej platformy Azure). Płatność za korzystanie z usługi SQL Database odbywa się zgodnie z rzeczywistym użyciem, a opcje pozwalają na skalowanie w górę lub w poziomie, dzięki czemu klienci mają do dyspozycji większe możliwości bez najmniejszych zakłóceń. Usługa SQL Database ma dodatkowe funkcje, które nie są dostępne w programie SQL Server, takie jak wbudowana wysoka dostępność, analizy i zarządzania. Usługa Azure SQL Database oferuje następujące opcje wdrażania:
   
   - Jako [pojedynczej bazy danych](sql-database-single-database.md) swój własny zestaw zasobów zarządzanych za pomocą serwera usługi SQL Database. Pojedyncza baza danych jest podobny do [zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) w programie SQL Server. Ta opcja jest zoptymalizowany pod kątem tworzenia nowoczesnych aplikacji nowych aplikacji zaprojektowanych w chmurze.
   - [Puli elastycznej](sql-database-elastic-pool.md), który stanowi kolekcję baz danych z współdzielonym zestawem zasobów zarządzanych za pomocą serwera usługi SQL Database. Pojedyncze bazy danych mogą być przenoszone do i z puli elastycznej. Ta opcja jest zoptymalizowany pod kątem tworzenia nowoczesnych aplikacji nowych aplikacji zaprojektowanych w chmurze przy użyciu wielodostępnych aplikacji SaaS.
@@ -107,7 +107,7 @@ Obecnie **bazy danych SQL** jest oferowana jako usługa i jest dostępnych kilka
 
 - Za pomocą pojedynczej bazy danych SQL Database możesz wybrać warstwę usług, który spełnia Twoje potrzeby z szerokiej gamy ceny, zaczynając od 5$ / miesiąc dla warstwy podstawowa.
 - Możesz utworzyć [pul elastycznych](sql-database-elastic-pool.md) współużytkowanie zasobów między wystąpieniami bazy danych do zmniejszenia kosztów i obsłużyć obciążenie nagłego zapotrzebowania.
-- Wystąpienie zarządzane usługi SQL Database możesz także dostarczyć własną licencję. Aby uzyskać więcej informacji o licencjonowaniu bring your own, zobacz [przenośności licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/) lub użyj [Kalkulator korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) aby zobaczyć, jak **Zaoszczędź do 40%**.
+- Wystąpienie zarządzane usługi SQL Database możesz także dostarczyć własną licencję. Aby uzyskać więcej informacji o licencjonowaniu bring your own, zobacz [przenośności licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/) lub użyj [Kalkulator korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) aby zobaczyć, jak **Zaoszczędź do 40%** .
 
 Rozliczany jest również internetowy ruch wychodzący po zwykłych [stawkach transferu danych](https://azure.microsoft.com/pricing/details/data-transfers/). Możesz dynamicznie dostosować warstwy usług i obliczenia rozmiarów odpowiednio do potrzeb przepływności zależeć od Twojej aplikacji.
 

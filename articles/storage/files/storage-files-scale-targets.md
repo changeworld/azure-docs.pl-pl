@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c4928050f945ac88dd1f86e2a13b5d26d385e55a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: c765c3e29166358f3504949136a67d8d0db96be8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190037"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078161"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Usługa Azure cele skalowalności i wydajności plików
 
@@ -42,16 +42,18 @@ Na przykład: Pojedynczy udział może osiągnąć 100 000 operacji We/Wy i maks
 
 ### <a name="premium-filestorage-account-limits"></a>Limity konta FileStorage — wersja Premium
 
-Udziały plików w warstwie Premium są aprowizowane na koncie magazynu specjalne o nazwie **filestorage (wersja zapoznawcza)**. To konto ma cele skalowania nieco inne niż konto magazynu używane dla udziałów plików standardowych. Obiekty docelowe skalowania konta magazynu, można znaleźć w tabeli w [cele skalowanie konta usługi Azure storage](#azure-storage-account-scale-targets) sekcji.
+Udziały plików w warstwie Premium są aprowizowane na koncie magazynu specjalne o nazwie **filestorage (wersja zapoznawcza)** . To konto ma cele skalowania nieco inne niż konto magazynu używane dla udziałów plików standardowych. Obiekty docelowe skalowania konta magazynu, można znaleźć w tabeli w [cele skalowanie konta usługi Azure storage](#azure-storage-account-scale-targets) sekcji.
 
 > [!IMPORTANT]
 > Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont magazynu tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada na koncie magazynu.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
+
 ## <a name="azure-file-sync-scale-targets"></a>Cele skalowania usługi Azure File Sync
 
-Za pomocą usługi Azure File Sync mają próbowaliśmy jak najszerzej się projektowania pod kątem użycia nieograniczone, jednak nie zawsze jest to możliwe. Poniższa tabela wskazuje granice Nasze testy i które elementy docelowe są faktycznie stałych limitów:
+Usługa Azure File Sync został zaprojektowany w celu nieograniczonego użycia, ale nie nieograniczonego użycia zawsze jest możliwe. Poniższa tabela wskazuje granice badania firmy Microsoft oraz wskazuje, które elementy docelowe są limity stałe:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -82,7 +84,7 @@ Aby ułatwić planowanie wdrożenia dla każdego z etapów, poniżej wyniki prze
 | Przekaż przepływności | 20 obiektów na sekundę |
 | Namespace pobierania przepływności * | 400 obiektów na sekundę |
 
-* Po utworzeniu nowego punktu końcowego serwera agenta usługi Azure File Sync nie pobiera żadnej zawartości pliku. Najpierw synchronizuje pełną przestrzeni nazw i następnie wyzwalaczy w tle odwołania do pobierania plików, albo w całości lub, jeśli obsługa warstw w chmurze jest włączony, aby zasady obsługi warstw w chmurze ustawiony w punkcie końcowym serwera.
+\* Po utworzeniu nowego punktu końcowego serwera agenta usługi Azure File Sync nie pobiera żadnej zawartości pliku. Najpierw synchronizuje pełną przestrzeni nazw i następnie wyzwalaczy w tle odwołania do pobierania plików, albo w całości lub, jeśli obsługa warstw w chmurze jest włączony, aby zasady obsługi warstw w chmurze ustawiony w punkcie końcowym serwera.
 
 | Trwającą synchronizacji  |   |
 |-|--|
@@ -92,7 +94,7 @@ Aby ułatwić planowanie wdrożenia dla każdego z etapów, poniżej wyniki prze
 | Przekaż przepływności | obiekty 30 na sekundę |
 | Pobierz pełną przepływność * | obiekty 60 na sekundę |
 
-* Jeśli chmura warstw jest włączona, najprawdopodobniej będzie obserwować lepszą wydajność, jako część pliku danych zostanie pobrana. Usługa Azure File Sync pobiera tylko dane plików w pamięci podręcznej po zmianie na żadnym z punktów końcowych. Dla wszystkich plików warstwowych lub być nowo utworzoną agenta nie pobiera dane z pliku, a zamiast tego synchronizuje tylko przestrzeń nazw w celu wszystkie punkty końcowe serwera. Agent obsługuje również częściowe pobieranie plików warstwowych, ponieważ są one używane przez użytkownika. 
+\* Jeśli chmura warstw jest włączona, najprawdopodobniej będzie obserwować lepszą wydajność, jako część pliku danych zostanie pobrana. Usługa Azure File Sync pobiera tylko dane plików w pamięci podręcznej po zmianie na żadnym z punktów końcowych. Dla wszystkich plików warstwowych lub być nowo utworzoną agenta nie pobiera dane z pliku, a zamiast tego synchronizuje tylko przestrzeń nazw w celu wszystkie punkty końcowe serwera. Agent obsługuje również częściowe pobieranie plików warstwowych, ponieważ są one używane przez użytkownika. 
 
 > [!Note]  
 > Powyższe liczby nie są dane dotyczące wydajności, który wystąpi. Rzeczywista wydajność będzie zależeć od wielu czynników, tak jak pokazano na początku tej sekcji.

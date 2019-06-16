@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60547340"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Obsługa języka i regionu dla interfejsu API automatycznego sugerowania Bing
@@ -24,7 +24,7 @@ Poniższa lista zawiera języki obsługiwane przez interfejs API automatycznego 
 | Język    | Kod języka |
 |:----------- |:-------------:|
 | Arabski      | `ar`          |
-| Chiński (Chińska Republika Ludowa)     | `zh-CN`          |
+| Chiński (Chińskiej Republiki Ludowej)     | `zh-CN`          |
 | Chiński (SRA Hongkong)    | `zh-HK`          |
 | Chiński (Tajwan)     | `zh-TW`          |
 | Duński      | `da`          |
@@ -37,7 +37,7 @@ Poniższa lista zawiera języki obsługiwane przez interfejs API automatycznego 
 | Angielski (Malezja)     | `en-MY`          |
 | Angielski (Nowa Zelandia)    | `en-NZ`          |
 | Angielski (Filipiny)     | `en-PH`          |
-| Angielski (Republika Południowej Afryki)    | `en-ZA`          |
+| Angielski (RPA)    | `en-ZA`          |
 | Angielski (Zjednoczone Królestwo)    | `en-GB`          |
 | Angielski (Stany Zjednoczone)    | `en-US`          |
 | Fiński     | `fi`          |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 7806599c1a2f1396ff4b07d6f0538057654029d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157128"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Integrowanie usługi Azure DevTest Labs usługi Azure DevOps potok ciągłej integracji i dostarczania
@@ -179,7 +179,7 @@ Następny etap to aby utworzyć obraz maszyny wirtualnej w nowo wdrożonym w wys
 
    d. (Opcjonalnie) Aby uzyskać **opis**, podaj opis, aby ułatwić później wybrać prawidłowy obraz.
 
-   e. Aby uzyskać **źródłowej maszyny Wirtualnej laboratorium — identyfikator maszyny Wirtualnej laboratorium źródła**, jeśli zmienisz domyślną nazwę zmiennej środowiskowej, która została automatycznie wypełniona o identyfikatorze maszynę Wirtualną laboratorium przez wcześniejsze zadanie tutaj edytować. Wartość domyślna to **$(labVMId)**.
+   e. Aby uzyskać **źródłowej maszyny Wirtualnej laboratorium — identyfikator maszyny Wirtualnej laboratorium źródła**, jeśli zmienisz domyślną nazwę zmiennej środowiskowej, która została automatycznie wypełniona o identyfikatorze maszynę Wirtualną laboratorium przez wcześniejsze zadanie tutaj edytować. Wartość domyślna to **$(labVMId)** .
 
    f. Aby uzyskać **zmienne wyjściowe — identyfikator obrazu niestandardowego**, potrzebny jest identyfikator nowo utworzonego obrazu zarządzać lub usuń go. Ustawiono domyślną nazwę zmiennej środowiskowej, która jest automatycznie wypełniane przy użyciu tego Identyfikatora **zmienne wyjściowe** sekcji. Zmienną można edytować, jeśli to konieczne.
 
@@ -194,7 +194,7 @@ Końcowy etap polega na usunięciu maszyny Wirtualnej, która została wdrożona
 
    a. Dla **subskrypcji Menedżera zasobów platformy Azure**, wybierając pozycję Podłączanie w **dostępne połączenia usługi Azure Service** listy lub utworzyć połączenie bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [punktu końcowego usługi Azure Resource Manager](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
  
-   b. Aby uzyskać **identyfikator maszyny Wirtualnej w laboratorium**, jeśli zmienisz domyślną nazwę zmiennej środowiskowej, która została automatycznie wypełniona o identyfikatorze maszynę Wirtualną laboratorium przez wcześniejsze zadanie tutaj edytować. Wartość domyślna to **$(labVMId)**.
+   b. Aby uzyskać **identyfikator maszyny Wirtualnej w laboratorium**, jeśli zmienisz domyślną nazwę zmiennej środowiskowej, która została automatycznie wypełniona o identyfikatorze maszynę Wirtualną laboratorium przez wcześniejsze zadanie tutaj edytować. Wartość domyślna to **$(labVMId)** .
 
 1. Wprowadź nazwę dla potoku tworzenia wersji, a następnie zapisz go.
 1. Tworzenie nowej wersji, wybierz najnowszą kompilację i wdrożyć ją na jednym środowisku w potoku.

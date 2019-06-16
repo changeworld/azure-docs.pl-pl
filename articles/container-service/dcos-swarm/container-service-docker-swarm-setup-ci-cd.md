@@ -10,10 +10,10 @@ ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
 ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60643770"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(PRZESTARZAŁE) Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu rozwiązania Docker Swarm przy użyciu usługi DevOps platformy Azure
@@ -180,7 +180,7 @@ Usługi Azure DevOps umożliwia [zarządzania wersjami w środowiskach](https://
 
 ### <a name="initial-release-setup"></a>Początkowa wersja Instalatora
 
-1. Aby utworzyć potok tworzenia wersji, kliknij przycisk **wersji** > **+ wydanie**
+1. Aby utworzyć potok tworzenia wersji, kliknij przycisk **wersji** >  **+ wydanie**
 
 1. Aby skonfigurować źródła artefaktu, kliknij **artefaktów** > **połączenia źródła artefaktu**. W tym miejscu połączyć tego nowego potoku tworzenia wersji kompilacji, który został zdefiniowany w poprzednim kroku. Dzięki temu pliku docker-compose.yml jest dostępna w procesie tworzenia wersji.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
 ms.openlocfilehash: 122a1585abf43d1aedc7f329cd7e41a6228f8c3e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200666"
 ---
 # <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
@@ -35,19 +35,19 @@ W tym artykule znajdziesz listę zaleceń, które mogą być wyzwalane na usług
 
 Zalecenia dotyczące urządzenia zapewniają szczegółowe informacje i sugestie w celu zwiększenia poziomu bezpieczeństwa urządzenia. 
 
-| Ważność | Name (Nazwa)                                                      | Źródło danych | Opis                                                                                                                                                                                           |
+| Severity | Name (Nazwa)                                                      | Źródło danych | Opis                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Medium   | Otwieranie portów na urządzeniu                                      | Agent       | Znaleziono punkt końcowy nasłuchiwania na urządzeniu                                                                                                                                                          |
-| Medium   | Zasady zapory ograniczające w jednej z łańcuchów. | Agent       | Dozwolone zasady zapory znaleziono (wejście/wyjście). Zasady zapory należy odmówić cały ruch domyślnie i zdefiniować reguły zezwalające na potrzeby komunikacji z urządzenia.                               |
-| Medium   | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych     | Agent       | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP lub porty.                                                                                    |
-| Medium   | Znaleziono reguły zapory ograniczające w łańcuchu danych wyjściowych    | Agent       | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP lub porty.                                                                                   |
-| Medium   | Weryfikacja linii bazowej systemu operacja nie powiodła się           | Agent       | Urządzenie nie jest zgodne z [wzorców w konfiguracji (ci) w systemie Linux](https://www.cisecurity.org/cis-benchmarks/)                                                                                                         |
+| Średni   | Otwieranie portów na urządzeniu                                      | Agent       | Znaleziono nasłuchiwania punkt końcowy na urządzeniu                                                                                                                                                          |
+| Średni   | Zasady zapory ograniczające w jednej z łańcuchów. | Agent       | Dozwolone zasady zapory znaleziono (wejście/wyjście). Zasady zapory należy odmówić cały ruch domyślnie i zdefiniować reguły zezwalające na potrzeby komunikacji z urządzenia.                               |
+| Średni   | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych     | Agent       | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP lub porty.                                                                                    |
+| Średni   | Znaleziono reguły zapory ograniczające w łańcuchu danych wyjściowych    | Agent       | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP lub porty.                                                                                   |
+| Średni   | Weryfikacja linii bazowej systemu operacja nie powiodła się           | Agent       | Urządzenie nie jest zgodne z [wzorców w konfiguracji (ci) w systemie Linux](https://www.cisecurity.org/cis-benchmarks/)                                                                                                         |
 
 ### <a name="operational-recommendations-for-iot-devices"></a>Operational zaleceń dotyczących urządzeń IoT
 
 Zalecenia operacyjnej zapewniają szczegółowe informacje i sugestie zwiększające konfiguracji agenta zabezpieczeń.
 
-| Ważność | Name (Nazwa)                                    | Źródło danych | Opis                                                                       |
+| Severity | Name (Nazwa)                                    | Źródło danych | Opis                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
 | Małe      | Agent wysyła komunikaty unutilized          | Agent       | 10% lub więcej komunikatów zabezpieczeń były mniejsze niż 4kb w ciągu ostatnich 24 godzin.  |
 | Małe      | Nie optymalną konfigurację zabezpieczeń bliźniaczych reprezentacji | Agent       | Konfiguracja bliźniaczej reprezentacji zabezpieczeń nie jest optymalna.                                        |
@@ -58,10 +58,10 @@ Zalecenia operacyjnej zapewniają szczegółowe informacje i sugestie zwiększaj
 
 Zalecenia, alerty zapewniają szczegółowe informacje i sugestie dotyczące działań w celu zwiększenia poziomu bezpieczeństwa środowiska.  
 
-| Ważność | Name (Nazwa)                                                     | Źródło danych | Opis                                                                                                                                                                                                             |
+| Severity | Name (Nazwa)                                                     | Źródło danych | Opis                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Wysoka     | Poświadczenia uwierzytelniania identyczne używane przez wiele urządzeń | Usługa IoT Hub     | Poświadczenia uwierzytelniania usługi IoT Hub są używane przez wiele urządzeń. Może to oznaczać, że urządzenia z systemem nielegalne personifikacji autoryzowanych urządzeń. Użyj poświadczeń zduplikowane zwiększa ryzyko personifikacji urządzenia przez złośliwych aktora. |
-| Medium   | Domyślne zasady filtru IP powinien Odmów                  | Usługa IoT Hub     | Konfiguracja filtru IP mieć reguły zdefiniowane dla dopuszczonego ruchu, a powinien domyślnie, zezwalają na ruch wszystkie inne domyślnie.                                                                                                     |
-| Medium   | Reguły filtru adresu IP zawiera duży zakres adresów IP                   | Usługa IoT Hub     | Zakres IP dozwolonych adresów IP filtr reguły źródła jest zbyt duży. Zbyt liberalnych regułach może narazić Centrum IoT hub do uczestników złośliwych działań.                                                                                       |
-| Małe      | Włącz dzienniki diagnostyczne w usłudze IoT Hub                       | Usługa IoT Hub     | Włączanie dzienników i Zachowaj ich do jednego roku. Zachowywanie dzienników można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci.                                       |
+| Średni   | Domyślne zasady filtru IP powinien Odmów                  | Usługa IoT Hub     | Konfiguracja filtru IP mieć reguły zdefiniowane dla dopuszczonego ruchu, a powinien domyślnie, zezwalają na ruch wszystkie inne domyślnie.                                                                                                     |
+| Średni   | Reguły filtru adresu IP zawiera duży zakres adresów IP                   | Usługa IoT Hub     | Zakres IP dozwolonych adresów IP filtr reguły źródła jest zbyt duży. Zbyt liberalnych regułach może narazić Centrum IoT hub do uczestników złośliwych działań.                                                                                       |
+| Małe      | Włącz dzienniki diagnostyki w usłudze IoT Hub                       | Usługa IoT Hub     | Włączanie dzienników i Zachowaj ich do jednego roku. Zachowywanie dzienników można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci.                                       |
 |

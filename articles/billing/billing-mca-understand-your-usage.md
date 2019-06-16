@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371312"
 ---
 # <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>Opis warunków na użycie platformy Azure i opłaty za CSV dla umowy klienta firmy Microsoft
@@ -42,26 +42,26 @@ Jeśli jesteś klientem z umową EA, zauważysz, które warunki profil rozliczen
 | Miesiąc| date |
 | Dzień | date |
 | Rok | date |
-| Product (Produkt) | produkt |
-| Identyfikator miernika | meterID |
-| Kategoria miernika | meterCategory |
-| Podkategoria miernika | meterSubCategory |
-| Region miernika | meterRegion |
-| Nazwa miernika | lmeterName |
-| Użyta ilość | quantity |
-| Współczynnik zasobów | effectivePrice | <!-- this was highlighted -->
-| Koszt rozszerzony | cost |
-| Lokalizacja zasobu | resourceLocation |
-| Użyta usługa | consumedService |
-| Identyfikator wystąpienia | instanceId |
-| Informacje o usłudze 1 | serviceInfo1 |
-| Informacje o usłudze 2 | serviceInfo2 |
-| Informacje dodatkowe | additionalInfo |
-| Tagi | tags |
-| Identyfikator usługi magazynu | ND |
+| Product (Produkt) | Produkt |
+| MeterId | meterID |
+| MeterCategory | MeterCategory |
+| MeterSubCategory | meterSubCategory |
+| MeterRegion | meterRegion |
+| MeterName | meterName |
+| ConsumedQuantity | Ilość |
+| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ExtendedCost | cost |
+| resourceLocation | resourceLocation |
+| ConsumedService | consumedService |
+| InstanceId | instanceId |
+| ServiceInfo1 | ServiceInfo1 |
+| ServiceInfo2 | serviceInfo2 |
+| AdditionalInfo | AdditionalInfo |
+| `Tags` | tags |
+| StoreServiceIdentifier | ND |
 | Nazwa działu | invoiceSection | <!-- this was highlighted -->
-| Centrum kosztów | costCenter |
-| Jednostka miary | unitofMeasure |
+| CostCenter | costCenter |
+| UnitOfMeasure | unitofMeasure |
 | ResourceGroup | resourceGroup |
 | ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
 
@@ -92,13 +92,13 @@ productOrderId | Unikatowy identyfikator zamówienia produktu
 productOrderName | Unikatową nazwę dla zamówienia produktu
 consumedService | Nazwa użyta usługa
 meterId | Unikatowy identyfikator miernika
-lmeterName | Nazwa licznika
-meterCategory | Nazwa kategorii klasyfikacji dla licznika. Na przykład *usług w chmurze*, *sieć*itp.
+meterName | Nazwa licznika
+MeterCategory | Nazwa kategorii klasyfikacji dla licznika. Na przykład *usług w chmurze*, *sieć*itp.
 meterSubCategory | Nazwa kategorii klasyfikacji podrzędnych miernika
 meterRegion | Nazwa regionu, w których mierniku usługi jest dostępny. Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych.
 oferty | Nazwa oferty zakupu
 productId | Unikatowy identyfikator produktu opłaty
-produkt | Nazwa produktu, opłaty
+Produkt | Nazwa produktu, opłaty
 Identyfikator subskrypcji | Unikatowy identyfikator subskrypcji opłaty
 subscriptionName | Nazwa subskrypcji opłaty
 reservationId | Unikatowy identyfikator wystąpienia zakupionej rezerwacji
@@ -111,13 +111,13 @@ resourceId | Unikatowy identyfikator wystąpienia zasobu
 Typ zasobu | Typ wystąpienia zasobu
 resourceLocation | Określa lokalizację centrum danych, w którym jest uruchamiany zasób.
 location | Znormalizowana lokalizację zasobu, jeśli inny zasób lokalizacje są skonfigurowane dla tych samych regionach
-quantity | Liczbę jednostek zakupionych lub wykorzystali
+Ilość | Liczbę jednostek zakupionych lub wykorzystali
 unitOfMeasure | Jednostka miary dla rozliczeń dla usługi. Na przykład usługi obliczeniowe są rozliczane godzinowo.
 chargeType | Typ opłaty. Wartości: <ul><li>AsCharged-Usage: Opłaty naliczane na podstawie użycia usługi platformy Azure. W tym użycie względem maszyn wirtualnych, które nie są naliczane z powodu wystąpienia zarezerwowane.</li><li>AsCharged-PurchaseMarketplace: Jednorazowe lub stałej opłaty cykliczne z zakupów w portalu Marketplace</li><li>AsCharged-UsageMarketplace: Opłaty za usługi w portalu Marketplace, które są naliczane na podstawie jednostek zużycia</li></ul>
 isAzureCreditEligible | Flaga, która wskazuje, czy opłata za korzystająca z usługi jest uprawniona do zapłaty za pomocą środków platformy Azure (wartości: True, False)
-serviceInfo1 | Metadane właściwe dla usługi
+ServiceInfo1 | Metadane właściwe dla usługi
 serviceInfo2 | Starszego pole, które zawiera opcjonalne metadane właściwe dla usługi
-additionalInfo | Dodatkowe metadane specyficzne dla usługi.
+AdditionalInfo | Dodatkowe metadane specyficzne dla usługi.
 tags | Tagi, które można przypisać do zasobu
 
 ### <a name="how-do-i-make-sure-that-the-charges-in-my-azure-usage-and-charges-file-are-correct"></a>Jak upewnić się, że opłaty w pliku platformy Azure użycia i opłat są poprawne?

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: 1639b8066f3c9943bc42f5151fcb456585441baf
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866245"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania wizualnego Bing
@@ -36,7 +36,7 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 
 ## <a name="countriesregions"></a>Kraje/regiony
 
-|Kraj/region|Kod|
+|Country/region|Kod|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
@@ -78,7 +78,7 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 
 ## <a name="markets"></a>Rynki
 
-|Kraj/region|Język|Rynek kodu|
+|Country/region|Język|Rynek kodu|
 |-------|--------|-----------|
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|

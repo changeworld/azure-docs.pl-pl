@@ -16,10 +16,10 @@ ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31cf1f6da515aa9b453987383e78f466c5ba4fb9
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827288"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
@@ -311,9 +311,9 @@ W tym kroku będziesz udzielić "zabezpieczenia domeny" uprawnienia zasad dla da
    | ---------- | ---------- |
    | Operacje GET i Put | Dane procesu roboczego: Raporty publicznych procesu roboczego |
    | Operacje GET i Put | Danych osobowych: Informacje kontaktowe pracy |
-   | Pobierz | Dane procesu roboczego: Wszystkie stanowiska |
-   | Pobierz | Dane procesu roboczego: Bieżące informacje kadrowe |
-   | Pobierz | Dane procesu roboczego: Tytuł biznesowych na profil pracownika |
+   | Get | Dane procesu roboczego: Wszystkie stanowiska |
+   | Get | Dane procesu roboczego: Bieżące informacje kadrowe |
+   | Get | Dane procesu roboczego: Tytuł biznesowych na profil pracownika |
    | Operacje GET i Put | WORKDAY kont |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurowanie uprawnień zasad zabezpieczeń procesów biznesowych
@@ -545,7 +545,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 | **Firmy**         | Firmy   |     |  Tworzenie i aktualizowanie |
 | **SupervisoryOrganization**  | Dział  |     |  Tworzenie i aktualizowanie |
 | **ManagerReference**   | menedżer  |     |  Tworzenie i aktualizowanie |
-| **BusinessTitle**   |  tytuł     |     |  Tworzenie i aktualizowanie | 
+| **BusinessTitle**   |  title     |     |  Tworzenie i aktualizowanie | 
 | **AddressLineData**    |  Adres  |     |   Tworzenie i aktualizowanie |
 | **Jednostki administracyjnej**   |   l   |     | Tworzenie i aktualizowanie |
 | **CountryReferenceTwoLetter**      |   co |     |   Tworzenie i aktualizowanie |
@@ -931,7 +931,7 @@ Zobacz też:
 
 Tę konfigurację można osiągnąć przez ustawienie **Akcje obiektu docelowego** w **mapowania atrybutów** bloku, jak pokazano poniżej:
 
-![Aktualizuj akcję](./media/workday-inbound-tutorial/wd_target_update_only.png)
+![Akcja aktualizacji](./media/workday-inbound-tutorial/wd_target_update_only.png)
 
 Zaznacz pole wyboru "Aktualizuj" dla tylko operacje aktualizacji mogą przepływać z produktu Workday do usługi AD. 
 
@@ -959,7 +959,7 @@ Rozwiązanie nie jest obecnie obsługiwane ustawienie atrybutów binarnych, taki
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>Jak sformatować nazw wyświetlanych w AD zgodnie z atrybutów Dział/kraj/miasta i odchylenia regionalnych dojście?
 
-Jest typowym wymogiem do skonfigurowania *displayName* atrybutu w AD tak, że zawiera on również informacje dotyczące działu i kraju/regionu użytkownika. Dla np. Jeśli Jan Kowalski pracuje w dziale marketingu, w Stanach Zjednoczonych, możesz zechcieć jego *displayName* pojawienie się jako *Smith, John (Marketing-pl)*.
+Jest typowym wymogiem do skonfigurowania *displayName* atrybutu w AD tak, że zawiera on również informacje dotyczące działu i kraju/regionu użytkownika. Dla np. Jeśli Jan Kowalski pracuje w dziale marketingu, w Stanach Zjednoczonych, możesz zechcieć jego *displayName* pojawienie się jako *Smith, John (Marketing-pl)* .
 
 Oto jak można obsługiwać takie wymagania do konstruowania *CN* lub *displayName* obejmujący atrybuty, takie jak firmy, jednostki biznesowe, miasta lub kraju/regionu.
 
@@ -988,14 +988,14 @@ Oto jak można obsługiwać takie wymagania do konstruowania *CN* lub *displayNa
 
   Upewnij się z zespołem produktu Workday, że powyższe wyrażeń interfejsu API są prawidłowe dla danej konfiguracji dzierżawy produktu Workday. Jeśli to konieczne, można je edytować zgodnie z opisem w sekcji [Dostosowywanie listy atrybutów użytkownika w produkcie Workday](#customizing-the-list-of-workday-user-attributes).
 
-* Aby skompilować wyrażenia mapowanie atrybutu prawo, zidentyfikuj atrybut, którego produktu Workday "autorytatywnie" reprezentuje użytkownika imię, ostatnia nazwa, kraj/region i działu. Załóżmy, że atrybuty są *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* i *SupervisoryOrganization* odpowiednio. Umożliwia to tworzenie wyrażenia dla usług AD *displayName* atrybutu w następujący sposób, aby ustalić nazwę wyświetlaną, takich jak *Smith, John (Marketing-pl)*.
+* Aby skompilować wyrażenia mapowanie atrybutu prawo, zidentyfikuj atrybut, którego produktu Workday "autorytatywnie" reprezentuje użytkownika imię, ostatnia nazwa, kraj/region i działu. Załóżmy, że atrybuty są *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* i *SupervisoryOrganization* odpowiednio. Umożliwia to tworzenie wyrażenia dla usług AD *displayName* atrybutu w następujący sposób, aby ustalić nazwę wyświetlaną, takich jak *Smith, John (Marketing-pl)* .
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
     Po utworzeniu wyrażenie prawej krawędzi, Edytuj tabelę mapowań atrybutów i modyfikować *displayName* Mapowanie atrybutów, jak pokazano poniżej:   ![Mapowanie DisplayName](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
-* Rozszerzanie w powyższym przykładzie, możemy powiedzieć, które chcesz przekonwertować nazwy miast przychodzących z produktu Workday do wartości skrótu, a następnie użyć go do tworzenia nazw wyświetlanych takich jak *Smith, John (CHI)* lub *Doe, Magdalena (NYC)*, następnie ten wynik można osiągnąć przy użyciu wyrażenie Switch z aplikacją Workday *gmina* atrybutu jako decydującym zmiennej.
+* Rozszerzanie w powyższym przykładzie, możemy powiedzieć, które chcesz przekonwertować nazwy miast przychodzących z produktu Workday do wartości skrótu, a następnie użyć go do tworzenia nazw wyświetlanych takich jak *Smith, John (CHI)* lub *Doe, Magdalena (NYC)* , następnie ten wynik można osiągnąć przy użyciu wyrażenie Switch z aplikacją Workday *gmina* atrybutu jako decydującym zmiennej.
 
      ```
     Switch
@@ -1099,7 +1099,7 @@ Po kliknięciu poszczególnych rekordów dziennika inspekcji, **Szczeg** otwarci
 
   Aby znaleźć rekordy dziennika agenta inicjowania obsługi administracyjnej odpowiadający tej operacji importowania AD, otwórz dzienniki Podglądu zdarzeń Windows i użyj **Znajdź...** opcję menu, aby znaleźć wpisy dziennika, zawierający wartość atrybutu dopasowania właściwości Identyfikatora/przyłączanie (w tym przypadku *21023*).
 
-  ![Znajdź](media/workday-inbound-tutorial/wd_event_viewer_02.png)
+  ![Znajdowanie](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
   Wyszukaj wpis o *zdarzenie o identyfikatorze = 9*, który zapewni LDAP wyszukiwania filtra używanego przez agenta można pobrać konta usługi AD. Aby sprawdzić, czy filtr wyszukiwania prawo do pobierania wpisów unikatowych użytkowników.
 
@@ -1146,7 +1146,7 @@ Atrybut menedżera jest atrybut odwołania w AD. Usługa aprowizowania nie atryb
 
   [![Menedżer aktualizacji](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
-4 pierwsze rekordy są, takie jak te, które rozważyliśmy użytkownika w ramach operacji tworzenia. 5. rekord jest eksportu skojarzone z Menedżera atrybutu aktualizacji. Rekord dziennika wyświetla wynik operacji aktualizacji Menedżera konta usługi AD, która jest wykonywane przy użyciu Menedżera *objectGuid* atrybutu.
+4 pierwsze rekordy są, takie jak te, które rozważyliśmy użytkownika w ramach operacji tworzenia. 5\. rekord jest eksportu skojarzone z Menedżera atrybutu aktualizacji. Rekord dziennika wyświetla wynik operacji aktualizacji Menedżera konta usługi AD, która jest wykonywane przy użyciu Menedżera *objectGuid* atrybutu.
 
   ```JSON
   // Modified Properties

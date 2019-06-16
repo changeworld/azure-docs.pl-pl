@@ -10,10 +10,10 @@ custom: jenkins
 ms.date: 07/31/2018
 ms.subservice: common
 ms.openlocfilehash: d9ef6f5056fdbd7187c92c98d1c884a5314c29a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153670"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Za pomocą usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
@@ -118,7 +118,7 @@ Poniższe kroki ilustrują skonfigurować krok kompilacji, można pobrać elemen
 1. W **kompilacji** sekcji konfiguracji zadania, wybierz opcję **Dodaj krok kompilacji** i wybierz **pobierać z usługi Azure Blob storage**.
 2. Aby uzyskać **nazwa konta magazynu**, wybierz konto magazynu do użycia.
 3. Aby uzyskać **nazwa kontenera**, określ nazwę kontenera, który zawiera obiekty BLOB, którą chcesz pobrać. Można używać zmiennych środowiskowych.
-4. Aby uzyskać **nazwa obiektu Blob**, określ nazwę obiektu blob. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu znakami nazwy obiektu blob. Na przykład **projektu\\*** należałoby określić wszystkie obiekty BLOB, których nazwy rozpoczynają się od **projektu**.
+4. Aby uzyskać **nazwa obiektu Blob**, określ nazwę obiektu blob. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu znakami nazwy obiektu blob. Na przykład **projektu\\** * należałoby określić wszystkie obiekty BLOB, których nazwy rozpoczynają się od **projektu**.
 5. [Opcjonalnie] Aby uzyskać **ścieżkę pobierania**, określ ścieżkę na maszynie Jenkins, której chcesz pobierać pliki z usługi Azure blob storage. Można także zmienne środowiskowe. (Jeśli nie zostanie określona wartość **ścieżkę pobierania**, pliki z magazynu obiektów blob platformy Azure zostaną pobrane z obszarem roboczym zadania.)
 
 Jeśli masz dodatkowe elementy, które chcesz pobrać z magazynu obiektów blob platformy Azure, możesz utworzyć dodatkowych kroków kompilacji.
@@ -137,7 +137,7 @@ Ta sekcja zawiera omówienie składników usługi obiektów Blob.
   
     (Format powyżej ma zastosowanie do globalnego chmury platformy Azure. Jeśli używasz innej chmurze platformy Azure, użyj punktu końcowego w ramach [witryny Azure Portal](https://portal.azure.com) Aby określić adres URL punktu końcowego.)
   
-    W powyższym formacie `storageaccount` reprezentuje nazwę konta magazynu `container_name` reprezentuje nazwę kontenera, i `blob_name` reprezentuje nazwę obiektu blob, odpowiednio. W ramach nazwa kontenera może mieć wiele ścieżek oddzielonych ukośnikiem, **/**. Przykładowa nazwa kontenera używany na potrzeby tego samouczka został **MyJob**, i **${kompilacji\_identyfikator} / ${kompilacji\_numer}** został użyty podczas wspólnej ścieżki wirtualnej skutkuje o adres URL obiektu blob o następującej postaci:
+    W powyższym formacie `storageaccount` reprezentuje nazwę konta magazynu `container_name` reprezentuje nazwę kontenera, i `blob_name` reprezentuje nazwę obiektu blob, odpowiednio. W ramach nazwa kontenera może mieć wiele ścieżek oddzielonych ukośnikiem, **/** . Przykładowa nazwa kontenera używany na potrzeby tego samouczka został **MyJob**, i **${kompilacji\_identyfikator} / ${kompilacji\_numer}** został użyty podczas wspólnej ścieżki wirtualnej skutkuje o adres URL obiektu blob o następującej postaci:
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/25/2019
 ms.author: cshoe
 ms.openlocfilehash: 53eb5fc9389d913ecacec3729a06e47a1c2bf56b
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864543"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązania usługi Azure Functions
@@ -29,10 +29,10 @@ Należy wziąć pod uwagę następujące elementy związane z powiązań rozszer
 
 Poniższa tabela wskazuje, kiedy i jak należy zarejestrować powiązania.
 
-| Środowisko deweloperskie |Rejestrowanie<br/> w przypadku funkcji 1.x  |Rejestrowanie<br/> w przypadku funkcji 2.x  |
+| Środowisko deweloperskie |Rejestracja<br/> w przypadku funkcji 1.x  |Rejestracja<br/> w przypadku funkcji 2.x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure Portal|Automatyczny|Automatyczny|
-|Języki inne niż .NET lub lokalny rozwój podstawowych narzędzi usługi Azure|Automatyczny|[Podstawowe narzędzia usługi Azure Functions i pakietów rozszerzeń](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
+|Azure Portal|Automatyczne|Automatyczne|
+|Języki inne niż .NET lub lokalny rozwój podstawowych narzędzi usługi Azure|Automatyczne|[Podstawowe narzędzia usługi Azure Functions i pakietów rozszerzeń](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
 |C#Biblioteka klas przy użyciu programu Visual Studio 2019 r.|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2019)|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2019)|
 |Biblioteki klas C# za pomocą programu Visual Studio Code|ND|[Korzystanie z platformy .NET Core interfejsu wiersza polecenia](#c-class-library-with-visual-studio-code)|
 

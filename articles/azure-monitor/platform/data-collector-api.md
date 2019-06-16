@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
 ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922781"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
@@ -45,7 +45,7 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Atrybut | Właściwość |
 |:--- |:--- |
 | Metoda |POST |
-| URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| Identyfikator URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Typ zawartości |application/json |
 
 ### <a name="request-uri-parameters"></a>Parametry identyfikatora URI żądania
@@ -56,7 +56,7 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Wersja interfejsu API |Wersja interfejsu API do użycia z tym żądaniem. Obecnie jest 2016-04-01. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
-| Nagłówek | Opis |
+| nagłówek | Opis |
 |:--- |:--- |
 | Autoryzacja |Podpis autoryzacji. W dalszej części tego artykułu możesz przeczytać o tym, jak utworzyć nagłówek HMAC SHA256. |
 | Typ dziennika |Określ typ rekordu jest przesyłane dane. Limit rozmiaru dla tego parametru to 100 znaków. |
@@ -139,7 +139,7 @@ Każde żądanie do interfejsu API modułu zbierającego dane mogą zawierać **
 
 Aby określić typ danych właściwości, usługi Azure Monitor dodaje sufiks nazwy właściwości. Jeśli jakaś właściwość zawiera wartość null, właściwość nie ma tego rekordu. Poniższa tabela zawiera listę właściwości typu danych i odpowiedniego sufiksu:
 
-| Typ danych właściwości | Sufiks |
+| Typ danych właściwości | Suffix |
 |:--- |:--- |
 | String |_s |
 | Boolean |_b |
@@ -200,10 +200,10 @@ Poniższa tabela zawiera listę pełnego zestawu kodów stanu, które mogą zwra
 | 400 |Nieprawidłowe żądanie |MissingLogType |Nie określono wymaganej wartości typu dziennika. |
 | 400 |Nieprawidłowe żądanie |UnsupportedContentType |Typ zawartości nie został ustawiony na **application/json**. |
 | 403 |Zabroniony |InvalidAuthorization |Nie można uwierzytelnić żądania usługi. Sprawdź, czy klucz połączenia i identyfikator obszaru roboczego są prawidłowe. |
-| 404 |Nie znaleziono | | Podany adres URL jest nieprawidłowy albo żądania jest zbyt duży. |
+| 404 |Nie można odnaleźć | | Podany adres URL jest nieprawidłowy albo żądania jest zbyt duży. |
 | 429 |Zbyt wiele żądań | | Usługa występuje duże ilości danych z Twojego konta. Ponów próbę żądania później. |
-| 500 |Wewnętrzny błąd serwera |UnspecifiedError |W usłudze wystąpił wewnętrzny błąd. Ponów próbę żądania. |
-| 503 |Usługa niedostępna |ServiceUnavailable |Usługa jest obecnie odbierać żądań. Prześlij żądanie ponownie. |
+| 500 |Wewnętrzny błąd serwera |UnspecifiedError |Usługa napotkała błąd wewnętrzny. Ponów próbę żądania. |
+| 503 |Usługa jest niedostępna |ServiceUnavailable |Usługa jest obecnie odbierać żądań. Prześlij żądanie ponownie. |
 
 ## <a name="query-data"></a>Zapytania o dane
 Przesyłać zapytania dotyczące danych przesyłanych przez usługi Azure Monitor HTTP danych interfejsu API modułu zbierającego, wyszukiwać rekordy z **typu** jest równa **LogType** wartości, który określiłeś, jest dołączany wraz z **_CL**. Na przykład, jeśli użyto **MyCustomLog**, a następnie zwróci wszystkie rekordy z `MyCustomLog_CL`.

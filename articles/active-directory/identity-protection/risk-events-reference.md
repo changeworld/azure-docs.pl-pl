@@ -17,10 +17,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65191521"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Dokumentacja zdarzeń o podwyższonym ryzyku w usłudze Azure Active Directory Identity Protection
@@ -28,9 +28,9 @@ ms.locfileid: "65191521"
 Większość naruszenia zabezpieczeń ma miejsce, gdy osoby atakujące uzyskują dostęp do środowiska, kradzież tożsamości użytkownika. Wykrywanie tożsamości ze złamanymi zabezpieczeniami jest nie łatwym zadaniem. Usługa Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjne i algorytmy heurystyczne wykryć podejrzane akcje, które są powiązane z kontami użytkowników. Każdy wykryty podejrzanych działań są przechowywane w zdarzeniu wywoływanej ryzyko rekordu.
 
 
-## <a name="anonymous-ip-address"></a>Anonimowy adres IP
+## <a name="anonymous-ip-address"></a>Anonimowego adresu IP
 
-**Typ wykrywania:** Czas rzeczywisty  
+**Typ wykrywania:** W czasie rzeczywistym  
 **Stara nazwa:** Logowania z anonimowych adresów IP
 
 
@@ -38,7 +38,7 @@ Ten typ zdarzenia o podwyższonym ryzyku wskazuje logowania z anonimowego adresu
 Te adresy IP są zwykle używane przez uczestników, którzy chcą ukryć ich telemetria logowania (adres IP, lokalizacji, urządzeń itp.) dla potencjalnie złośliwego działania.
 
 
-## <a name="atypical-travel"></a>Nietypowa podróż
+## <a name="atypical-travel"></a>Nietypowa podróży
 
 **Typ wykrywania:** Offline  
 **Stara nazwa:** Niemożliwa podróż do nietypowych lokalizacji
@@ -69,7 +69,7 @@ Przestępców przestępcami cybernetycznymi naruszenia zabezpieczeń prawidłowe
 Gdy usługa uzyskuje poświadczenia użytkownika z Internet, Wklej witryn lub powyżej źródeł, są porównywane użytkowników usługi Azure AD bieżącego prawidłowe poświadczenia, aby znaleźć dopasowania prawidłowe.
 
 
-## <a name="malware-linked-ip-address"></a>Adres IP połączony ze złośliwym oprogramowaniem
+## <a name="malware-linked-ip-address"></a>Złośliwe oprogramowanie połączone adresu IP
 
 **Typ wykrywania:** Offline  
 **Stara nazwa:** Logowania z zainfekowanych urządzeń
@@ -80,7 +80,7 @@ Ten typ zdarzenia o podwyższonym ryzyku wskazuje logowania z adresów IP zainfe
 
 ## <a name="unfamiliar-sign-in-properties"></a>Nieznane właściwości logowania
 
-**Typ wykrywania:** Czas rzeczywisty  
+**Typ wykrywania:** W czasie rzeczywistym  
 **Stara nazwa:** Logowania z nieznanych lokalizacji
 
 

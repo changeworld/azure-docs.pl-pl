@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
 ms.openlocfilehash: 5e384520c1b8d6cf5e3b182bbddf41a5f4f7f8f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707829"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debugowanie zadania platformy Apache Spark działające w usłudze Azure HDInsight
@@ -24,7 +24,7 @@ Należy dysponować następującymi elementami:
 
 * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Należy rozpocząłeś uruchamiania notesu  **[usługi Machine learning: Analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Aby uzyskać instrukcje na temat uruchamiania ten notes Użyj linku.  
+* Należy rozpocząłeś uruchamiania notesu  **[usługi Machine learning: Analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib](apache-spark-machine-learning-mllib-ipython.md)** . Aby uzyskać instrukcje na temat uruchamiania ten notes Użyj linku.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Śledzenie aplikacji w interfejsie użytkownika YARN
 1. Uruchom interfejs użytkownika usługi YARN. Kliknij przycisk **Yarn** w obszarze **pulpity nawigacyjne klastra**.
@@ -80,7 +80,7 @@ W Interfejsie użytkownika platformy Spark można przejść do szczegółów do 
      * Wersja języka scala
      * Katalog dziennika zdarzeń, skojarzonego z klastrem
      * Liczba rdzeni wykonywania dla aplikacji
-     * Itp.
+     * Etc.
 
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Informacje o zakończonych zadań przy użyciu serwer historii platformy Spark
 Po zakończeniu zadania, informacje o zadaniu są utrwalane w serwer historii platformy Spark.

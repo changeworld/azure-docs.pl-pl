@@ -1,6 +1,6 @@
 ---
-title: 'Jak: Wymagaj zarządzanego urządzenia do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego usługi Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory (Azure AD), które wymagają zarządzanych urządzeń do uzyskania dostępu do aplikacji w chmurze.
+title: 'Jak: Wymagaj zarządzanego urządzenia do uzyskania dostępu do aplikacji w chmurze przy użyciu usługi Azure Active Directory dostępu warunkowego | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować usługi Azure Active Directory (Azure AD) opartego na urządzeniach zasady dostępu warunkowego, które wymagają zarządzanych urządzeń, aby uzyskać dostęp do aplikacji w chmurze.
 services: active-directory
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -17,12 +17,12 @@ ms.date: 06/14/2018
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f55f1058537da255a2611f544239f693615678
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 459dd981b73ae840b3fc61bd0cc83ecefb1cf393
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60354795"
+ms.locfileid: "67112143"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj urządzenia zarządzanego do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 

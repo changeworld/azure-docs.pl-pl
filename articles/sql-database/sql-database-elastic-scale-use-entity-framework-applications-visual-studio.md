@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/04/2019
 ms.openlocfilehash: 54890aef8dabfa019a5181c155b6668b1c07cf2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331936"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Biblioteka kliencka elastic Database przy użyciu platformy Entity Framework
@@ -45,8 +45,8 @@ Po utworzeniu tych baz danych, wypełnij posiadaczy miejsce w **Program.cs** prz
 
 Entity Framework deweloperzy opierają się na jednym z następujących czterech przepływy pracy umożliwiające tworzenie aplikacji i zapewnienie trwałości obiektów w aplikacji:
 
-* **Kod pierwszy (Nowa baza danych)**: Dla deweloperów platformy EF tworzy modelu w kodzie aplikacji, a następnie EF generuje bazy danych z niego. 
-* **Kod pierwszy (istniejącej bazy danych)**: Projektant umożliwia EF, generowanie kodu aplikacji, dla modelu na podstawie istniejącej bazy danych.
+* **Kod pierwszy (Nowa baza danych)** : Dla deweloperów platformy EF tworzy modelu w kodzie aplikacji, a następnie EF generuje bazy danych z niego. 
+* **Kod pierwszy (istniejącej bazy danych)** : Projektant umożliwia EF, generowanie kodu aplikacji, dla modelu na podstawie istniejącej bazy danych.
 * **Pierwszy model**: Deweloper tworzy model w Projektancie platformy EF, a następnie EF tworzy bazę danych z modelu.
 * **Baza danych pierwszy**: Programistka używa EF narzędzia na potrzeby wnioskowania dotyczącego modelu z istniejącej bazy danych. 
 

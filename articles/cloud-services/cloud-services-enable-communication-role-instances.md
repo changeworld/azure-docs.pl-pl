@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fa3885f9c273cf6aaf9173ebd3fee3d4499be34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60519438"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808097"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Włącz komunikację dla wystąpień ról na platformie azure
 Role usługi w chmurze komunikują się za pośrednictwem połączeń wewnętrznych i zewnętrznych. Połączenia zewnętrzne są nazywane **wejściowych punktów końcowych** podczas połączenia wewnętrzne są nazywane **wewnętrznych punktów końcowych**. W tym temacie opisano sposób modyfikowania [definicji usługi](cloud-services-model-and-package.md#csdef) do tworzenia punktów końcowych.
 
 ## <a name="input-endpoint"></a>Wejściowy punkt końcowy
-Wejściowy punkt końcowy jest używany, gdy chcesz uwidocznić port na zewnątrz. Należy określić typ protokół i port punktu końcowego, który następnie stosuje dla obu portów wewnętrznych i zewnętrznych dla punktu końcowego. Jeśli chcesz, można określić inny port wewnętrzny dla punktu końcowego o [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) atrybutu.
+Wejściowy punkt końcowy jest używany, gdy chcesz uwidocznić port na zewnątrz. Należy określić typ protokół i port punktu końcowego, który następnie stosuje dla obu portów wewnętrznych i zewnętrznych dla punktu końcowego. Jeśli chcesz, można określić inny port wewnętrzny dla punktu końcowego o [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) atrybutu.
 
 Wejściowy punkt końcowy, można użyć następujących protokołów: **http, https, tcp, udp**.
 

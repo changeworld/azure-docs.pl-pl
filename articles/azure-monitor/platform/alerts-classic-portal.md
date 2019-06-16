@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129759"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie metryki alertów klasycznych przy użyciu usługi Azure Monitor
@@ -21,13 +21,13 @@ Klasyczne alertów dotyczących metryk w usłudze Azure Monitor zapewnia sposób
 
 1. W [portal](https://portal.azure.com/), Znajdź zasób, który chcesz monitorować, a następnie wybierz ją.
 
-2. W **monitorowanie** zaznacz **alerty (klasyczne)**. Tekst i ikona może się nieco różnić dla różnych zasobów. Jeśli nie możesz znaleźć **alerty (klasyczne)** w tym miejscu może okazać się w **alerty** lub **reguł alertów**.
+2. W **monitorowanie** zaznacz **alerty (klasyczne)** . Tekst i ikona może się nieco różnić dla różnych zasobów. Jeśli nie możesz znaleźć **alerty (klasyczne)** w tym miejscu może okazać się w **alerty** lub **reguł alertów**.
 
     ![Monitorowanie](media/alerts-classic-portal/AlertRulesButton.png)
 
 3. Wybierz **Dodaj alert dotyczący metryki (wersja klasyczna)** polecenia, a następnie wypełnij pola.
 
-    ![Dodaj alert](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
+    ![Dodaj Alert](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
 4. **Nazwa** regułę alertu. Następnie wybierz **opis**, który pojawia się również w wiadomości e-mail z powiadomieniem.
 

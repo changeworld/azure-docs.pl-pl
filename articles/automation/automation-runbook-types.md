@@ -10,17 +10,17 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 7a3990366814beda83852fc7c07c896445388c23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60737163"
 ---
 # <a name="azure-automation-runbook-types"></a>Typy elementów runbook w usłudze Azure Automation
 
 Usługa Azure Automation obsługuje kilka typów elementów runbook, krótko opisanych w poniższej tabeli.  Poniższe sekcje zawierają dodatkowe informacje o każdym typie, łącznie z uwagi na tym, kiedy należy używać każdego.
 
-| Type | Opis |
+| Typ | Opis |
 |:--- |:--- |
 | [Element graficzny](#graphical-runbooks)|Oparte na programie Windows PowerShell i tworzone oraz edytowane całkowicie w edytorze graficznym w witrynie Azure portal. |
 | [Graficzny przepływ pracy programu PowerShell](#graphical-runbooks)|Oparte na przepływie pracy programu Windows PowerShell i tworzone oraz edytowane całkowicie za edytor graficzny, w witrynie Azure portal. |

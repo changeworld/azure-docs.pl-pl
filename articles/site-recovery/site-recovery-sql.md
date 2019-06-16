@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 7725563a80182be8f8c02d94ef1e6cfa382c04d3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924850"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Konfigurowanie odzyskiwania po awarii dla programu SQL Server
@@ -27,7 +27,7 @@ Przed rozpoczęciem upewnij się, że rozumiesz możliwości odzyskiwania po awa
 Wiele obciążeń używania programu SQL Server jako podstawa i można zintegrować z aplikacji, takich jak SharePoint, Dynamics i SAP, wdrożenie usług danych.  Program SQL Server można wdrożyć na wiele sposobów:
 
 * **Autonomiczny program SQL Server**: Program SQL Server i wszystkimi bazami danych są hostowane na jednym komputerze (fizyczny lub wirtualny). Podczas wirtualizacji, hostów klastra jest używany dla lokalnej wysokiej dostępności. Poziomie gościa o wysokiej dostępności nie jest zaimplementowana.
-* **SQL Server awaryjnej wystąpienia (zawsze włączone FCI)**: Dwa lub więcej węzłów z uruchomionym programem SQL Server wystąpienia z dyskami udostępnionymi są skonfigurowane w klastrze pracy awaryjnej Windows. Jeśli węzeł jest wyłączony, klaster może pracy awaryjnej programu SQL Server do innego wystąpienia. Aby zaimplementować wysoką dostępność w lokacjach głównych, zazwyczaj służy tej konfiguracji. To wdrożenie nie chroni przed awarią lub awaria w warstwie magazynu udostępnionego. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel lub udostępnionego dysku vhdx.
+* **SQL Server awaryjnej wystąpienia (zawsze włączone FCI)** : Dwa lub więcej węzłów z uruchomionym programem SQL Server wystąpienia z dyskami udostępnionymi są skonfigurowane w klastrze pracy awaryjnej Windows. Jeśli węzeł jest wyłączony, klaster może pracy awaryjnej programu SQL Server do innego wystąpienia. Aby zaimplementować wysoką dostępność w lokacjach głównych, zazwyczaj służy tej konfiguracji. To wdrożenie nie chroni przed awarią lub awaria w warstwie magazynu udostępnionego. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel lub udostępnionego dysku vhdx.
 * **Zawsze włączone grupy dostępności programu SQL Server**: Co najmniej dwa węzły są konfigurowane w udostępnionym klastra nic za pomocą programu SQL Server baz danych skonfigurowanych w grupie dostępności, przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej.
 
   W tym artykule wykorzystuje następujące natywnych SQL awaryjnego odzyskiwania technologie do odzyskiwania baz danych do lokacji zdalnej:
@@ -42,9 +42,9 @@ Usługa Site Recovery chroni program SQL Server zgodnie z opisem w tabeli.
 
 **Scenariusz** | **Lokacja dodatkowa** | **Platforma Azure**
 --- | --- | ---
-**Funkcja Hyper-V** | Yes | Yes
-**VMware** | Yes | Yes
-**Serwer fizyczny** | Yes | Yes
+**Funkcja Hyper-V** | Tak | Yes
+**VMware** | Tak | Yes
+**Serwer fizyczny** | Tak | Tak
 **Azure** |Nie dotyczy| Yes
 
 ### <a name="supported-sql-server-versions"></a>Obsługiwane wersje programu SQL Server
@@ -80,7 +80,7 @@ Ta tabela zawiera podsumowanie Nasze zalecenia dotyczące integracji technologia
 || Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery |
 | Program SQL Server (dowolna wersja) |Enterprise lub Standard |Wystąpienia klastra trybu failover — aplikacja usługi DTC |Replikacja usługi Site Recovery |Nieobsługiwane |
 
-## <a name="deployment-prerequisites"></a>Wymagania wstępne dotyczące wdrożenia
+## <a name="deployment-prerequisites"></a>Wymagania wstępne dotyczące wdrażania
 
 * Lokalne wdrożenie programu SQL Server, z obsługiwaną wersją programu SQL Server. Zazwyczaj należy również usługi Active Directory dla programu SQL server.
 * Wymagania dotyczące tego scenariusza, którą chcesz wdrożyć. Dowiedz się więcej na temat pomocy technicznej dotyczące [replikacji do platformy Azure](site-recovery-support-matrix-to-azure.md) i [lokalnych](site-recovery-support-matrix.md), i [wymagania wstępne dotyczące wdrażania](site-recovery-prereq.md).
@@ -179,7 +179,7 @@ W przypadku klastra z programem SQL Server Standard edition lub SQL Server 2008 
 * Jeśli aplikacja korzysta z transakcji rozproszonych firma Microsoft zaleca wdrożeniem [Site Recovery dzięki replikacji sieci SAN](site-recovery-vmm-san.md) środowisku funkcji Hyper-V lub [serwer fizyczny/VMware do programu VMware](site-recovery-vmware-to-vmware.md) w środowisku VMware.
 * W przypadku aplikacji niewymagające usługi DTC powyżej metody należy użyć do odzyskania klastra jako autonomiczny serwer przy użyciu lokalnego wysokie bezpieczeństwo dublowania bazy danych.
 
-### <a name="on-premises-to-azure"></a>Z serwera lokalnego do platformy Azure
+### <a name="on-premises-to-azure"></a>W środowisku lokalnym na platformie Azure
 
 Usługa Site Recovery nie zapewnia gościa Obsługa klastrów, podczas replikacji do platformy Azure. Dla wersji Standard programu SQL Server także nie zapewnia rozwiązanie odzyskiwania po awarii niskie koszty. W tym scenariuszu firma Microsoft zaleca ochrony klastra programu SQL Server w środowisku lokalnym, do autonomicznego programu SQL Server i odzyskać ją na platformie Azure.
 

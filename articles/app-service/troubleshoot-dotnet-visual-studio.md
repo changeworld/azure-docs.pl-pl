@@ -16,10 +16,10 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: cbf6a44f1a3210906ec7ab0d04eecb997bc2c470
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65412815"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją w usłudze Azure App Service przy użyciu programu Visual Studio
@@ -684,7 +684,7 @@ Ponadto, nie musisz za pomocą programu ASP.NET lub `System.Diagnostics` śledze
 Aby uzyskać więcej informacji na temat analizowania dzienników serwera internetowego Zobacz następujące zasoby:
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
-  Narzędzie do wyświetlania danych w dzienniki serwera sieci web (*.log* plików).
+  Narzędzie do wyświetlania danych w dzienniki serwera sieci web ( *.log* plików).
 * [Rozwiązywanie problemów z wydajnością usług IIS lub błędy aplikacji przy użyciu LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Wprowadzenie do narzędzia Analizator dzienników, które służy do analizowania dzienników serwera internetowego.
 * [Wpisy na blogu, Robert McMurray przy użyciu LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>

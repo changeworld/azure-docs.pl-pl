@@ -11,10 +11,10 @@ ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596111"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
@@ -22,7 +22,7 @@ ms.locfileid: "65596111"
 Firma Microsoft pomaga zwiększania kosztów klasy podstawowej obsługi magazynu danych.  Obliczeniowe niższych warstw mogą obsłużyć wymagających zapytań są teraz dostępne dla usługi Azure SQL Data Warehouse. Przeczytaj pełne ogłoszenie [małe obliczeniowych warstwy obsługi Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nowa oferta jest dostępna w regionach wymienionych w poniższej tabeli. Obsługiwane regiony można uaktualnić istniejących magazynów danych Gen1 do Gen2 przy użyciu jednej:
 
 - **Proces automatycznego uaktualniania:** Nie uruchamiaj automatycznych uaktualnień, jak usługa jest dostępna w regionie.  Po uruchomieniu automatycznych uaktualnień w określonym regionie, poszczególne uaktualnienia magazynu danych ma miejsce podczas harmonogramu konserwacji wybrane.
-- [**Samodzielnie uaktualnienie do Gen2:**](#self-upgrade-to-gen2) Można kontrolować, kiedy aktualizować, wykonując uaktualnienie własnym do Gen2. Jeśli w Twoim regionie nie jest jeszcze obsługiwana, można przywrócić z punktu przywracania, który jest bezpośrednio do wystąpienia Gen2 w obsługiwanym regionie.
+- [**Samodzielnie uaktualnienie do Gen2:** ](#self-upgrade-to-gen2) Można kontrolować, kiedy aktualizować, wykonując uaktualnienie własnym do Gen2. Jeśli w Twoim regionie nie jest jeszcze obsługiwana, można przywrócić z punktu przywracania, który jest bezpośrednio do wystąpienia Gen2 w obsługiwanym regionie.
 
 ## <a name="automated-schedule-and-region-availability-table"></a>Harmonogram automatycznego i regionu w tabeli Dostępność
 
@@ -54,13 +54,13 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Japonia Zachodnia |Dostępne |1 maja 2019 r. |
 | Korea Środkowa |Dostępne |1 czerwca 2019 r. |
 | Korea Południowa |Dostępne |1 maja 2019 r. |
-| Północno-środkowe stany USA |Dostępne |1 maja 2019 r. |
+| Środkowo-północne stany USA |Dostępne |1 maja 2019 r. |
 | Europa Północna |Dostępne |1 czerwca 2019 r. |
-| Południowo-środkowe stany USA |Dostępne |1 czerwca 2019 r. |
+| Środkowo-południowe stany USA |Dostępne |1 czerwca 2019 r. |
 | Azja Południowo-Wschodnia |Dostępne |1 czerwca 2019 r. |
-| Zjednoczone Królestwo (południe) |Dostępne, 2019 r |1 czerwca 2019 r. |
-| Zjednoczone Królestwo (zachód) |\*|\* |
-| Zachodnio-środkowe stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
+| Południowe Zjednoczone Królestwo |Dostępne, 2019 r |1 czerwca 2019 r. |
+| Zachodnie Zjednoczone Królestwo |\*|\* |
+| Środkowo-zachodnie stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
 | Europa Zachodnia |Dostępne |1 czerwca 2019 r. |
 | Zachodnie stany USA |Dostępne |1 czerwca 2019 r. |
 | Zachodnie stany USA 2 |Dostępne |1 czerwca 2019 r. |

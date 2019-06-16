@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 70ffd13be4ba934b423e3bb5344eea0a9c36886c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935561"
 ---
 # <a name="cancel-operation"></a>Anuluj operację 
@@ -29,11 +29,11 @@ Możesz podać rozdzielana przecinkami lista adresów e-mail z żądaniem, a int
 | ------------ |     ----------------                                  |     -----------   |
 | publisherId  |  Identyfikator wydawcy, na przykład `contoso`         |   String          |
 | offerId      |  Identyfikator oferty                                     |   String          |
-| wersja interfejsu API  |  Bieżąca wersja interfejsu API                               |    Date           |
+| api-version  |  Bieżąca wersja interfejsu API                               |    Date           |
 |  |  |  |
 
 
-<a name="header"></a>Nagłówek
+<a name="header"></a>nagłówek
 ------
 
 |  **Nazwa**              |  **Wartość**         |
@@ -85,5 +85,5 @@ Możesz podać rozdzielana przecinkami lista adresów e-mail z żądaniem, a int
 |  202      | Zaakceptowane. Żądanie zostało pomyślnie przetworzone i operacji jest w trakcie anulowania. Lokalizacja operacja anulowania jest zwracany w nagłówku odpowiedzi. |
 |  400      | Żądanie nieprawidłowego/Malformed. Treść odpowiedzi błędu może dostarczyć dodatkowych informacji.  |
 |  403      | Dostęp zabroniony. Klient nie ma dostępu do przestrzeni nazw określonej w żądaniu. |
-|  404      | Nie znaleziono. Określonej jednostki nie istnieje. |
+|  404      | Nie można odnaleźć. Określonej jednostki nie istnieje. |
 |  |  |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 6fdab26bb5a4da5402a3a0a895a7c8835ef22c2f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935794"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurowanie — Zarządzanie potencjalnymi klientami dla usługi Dynamics CRM online
@@ -141,5 +141,5 @@ Ostatnim krokiem jest włączanie użytkownika został utworzony do zapisu poten
 
 Zakończ konfigurowanie programu Dynamics CRM na potrzeby zarządzania potencjalnymi klientami, dodając informacje o koncie wygenerowane do portalu Cloud Partner. Na przykład:
 
--   **Usługa Azure Active Directory** - **identyfikator aplikacji** (przykład: *23456052-AAAA-bbbb-8662-1234df56788f*), **identyfikator katalogu** (przykład: *12345678-8af1-4asf-1234-12234d01db47*), a **klucz aplikacji** (przykład: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
--   **Usługi Office 365** - **adresu Url** (przykład: *https://contoso.crm4.dynamics.com*), **nazwa_użytkownika** (przykład: *contoso\@ contoso.onmicrosoft.com*), a **hasło** (przykład: *P\@ssw0rd*).
+-   **Usługa Azure Active Directory** - **identyfikator aplikacji** (przykład: *23456052-AAAA-bbbb-8662-1234df56788f*), **identyfikator katalogu** (przykład: *12345678-8af1-4asf-1234-12234d01db47*), a **klucz aplikacji** (przykład: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* ).
+-   **Usługi Office 365** - **adresu Url** (przykład: *https://contoso.crm4.dynamics.com* ), **nazwa_użytkownika** (przykład: *contoso\@ contoso.onmicrosoft.com*), a **hasło** (przykład: *P\@ ssw0rd*).

@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410123"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Instalowanie TmaxSoft OpenFrame na platformie Azure
@@ -199,7 +199,7 @@ Podczas wyświetlania nowych osobom dostęp do maszyny Wirtualnej:
 
 9. Kliknij przycisk **Otwórz** Aby uruchomić okno programu PuTTY. Jeśli to się powiedzie, są połączone do nowej maszyny Wirtualnej CentOS na platformie Azure.
 
-10. Aby zalogować się jako użytkownik root, wpisz **bash "sudo"**.
+10. Aby zalogować się jako użytkownik root, wpisz **bash "sudo"** .
 
     ![Logowanie użytkownika głównego w oknie polecenia](media/putty-03.png)
 
@@ -565,7 +565,7 @@ Serwer podstawowy aplikacji została zainstalowana przed poszczególnych usług,
      [oframe7@ofdemo ~]$ ps -ef|grep tbsvr
      ```
 
-    ![Baza](media/base-01.png)
+    ![Podstawowa](media/base-01.png)
 
      > [!IMPORTANT]
      > Upewnij się, że uruchomieniu Tibero przed rozpoczęciem instalacji.

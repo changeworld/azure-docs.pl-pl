@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: alkaplan
 ms.openlocfilehash: c94d589875195207ec6f71c35ad077cac281fda5
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65555830"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Monitorowanie zero instrumentacji aplikacji dla rozwiązania Kubernetes obsługiwanych aplikacji
@@ -78,7 +78,7 @@ Nie wpływa na aplikacje działające poza siatki usługi.
 3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
     - Edytuj wartość *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* zmienna środowiskowa zawiera klucz Instrumentacji zasobu usługi Application Insights w witrynie Azure portal, aby zawierała dane telemetryczne.
     - Jeśli to konieczne, należy edytować wartość *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* zmiennej środowiskowej, aby zawierać rozdzielaną przecinkami listę przestrzeni nazw, dla którego chcesz włączyć monitorowanie. Pozostaw pustą wartość, aby monitorować wszystkie obszary nazw.
-4. Zastosuj *co* znajdującym się plik YAML *src/kubernetes/* , uruchamiając następujące (użytkownik musi być wewnątrz */src/kubernetes/*):
+4. Zastosuj *co* znajdującym się plik YAML *src/kubernetes/* , uruchamiając następujące (użytkownik musi być wewnątrz */src/kubernetes/* ):
 
    ```console
    kubectl apply -f .
@@ -134,7 +134,7 @@ Poniżej rozwiązywania problemów z przepływem do użycia podczas telemetrii n
 
 Aby uzyskać najnowsze informacje dla postępu w ramach tego projektu, odwiedź stronę [adapter usługi Application Insights dla usługi Mixer Istio projektu GitHub](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 
-## <a name="uninstall"></a>Odinstaluj
+## <a name="uninstall"></a>Dezinstalacja
 
 Do odinstalowania produktu, aby uzyskać *co* znajdującym się plik YAML *src/kubernetes/* Uruchom:
 

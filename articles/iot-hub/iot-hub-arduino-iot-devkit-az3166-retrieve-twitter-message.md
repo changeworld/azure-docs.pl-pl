@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60779839"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Potrząśnij, wstrząsnąć dla Tweet — pobieranie wiadomości z usługi Twitter za pomocą usługi Azure Functions
@@ -92,7 +92,7 @@ Następnie Skompiluj i przekazania kodu urządzenia.
 
 1. Użyj `Ctrl+P` do uruchomienia `task device-upload`.
 
-2. Naciśnij w terminalu wyświetli monit o wprowadzenie tryb konfiguracji. W tym celu:
+2. Naciśnij w terminalu wyświetli monit o wprowadzenie tryb konfiguracji. Aby to zrobić:
 
    * Naciśnij i przytrzymaj przycisk A
 

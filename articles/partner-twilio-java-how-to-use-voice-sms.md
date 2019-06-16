@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 386b4b8440c74f6599e7147996b5843ea0f67e68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60623956"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Jak za pomocą usługi Twilio dla połączeń głosowych i SMS funkcji w języku Java
@@ -42,17 +42,17 @@ Interfejs API korzysta z usługi Twilio zleceń; na przykład **&lt;Say&gt;** Tw
 
 Oto lista poleceń usługi Twilio.
 
-* **&lt;Wybierania&gt;**: Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
-* **&lt;Gather&gt;**: Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
-* **&lt;Rozłączanie&gt;**: Kończy wywołanie.
-* **&lt;Play&gt;**: Odtwarza plik audio.
-* **&lt;Queue&gt;**: Dodaj do kolejki obiekty wywołujące.
-* **&lt;Pause&gt;**: Dyskretnie czeka określoną liczbę sekund.
-* **&lt;Rekord&gt;**: Rejestruje głosu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
-* **&lt;Redirect&gt;**: Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
-* **&lt;Reject&gt;**: Odrzuca połączenie na numer Twilio bez możesz rozliczeń.
-* **&lt;Powiedz&gt;**: Konwertuje tekst na mowę, który składa się na wywołanie.
-* **&lt;Sms&gt;**: Wysyła wiadomość SMS.
+* **&lt;Wybierania&gt;** : Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
+* **&lt;Gather&gt;** : Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
+* **&lt;Rozłączanie&gt;** : Kończy wywołanie.
+* **&lt;Play&gt;** : Odtwarza plik audio.
+* **&lt;Queue&gt;** : Dodaj do kolejki obiekty wywołujące.
+* **&lt;Pause&gt;** : Dyskretnie czeka określoną liczbę sekund.
+* **&lt;Rekord&gt;** : Rejestruje głosu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
+* **&lt;Redirect&gt;** : Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
+* **&lt;Reject&gt;** : Odrzuca połączenie na numer Twilio bez możesz rozliczeń.
+* **&lt;Powiedz&gt;** : Konwertuje tekst na mowę, który składa się na wywołanie.
+* **&lt;Sms&gt;** : Wysyła wiadomość SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML to zbiór opartych na języku XML instrukcje zleceń Twilio, które informują Twilio sposób przetwarzania wywołania lub wysyłać wiadomości SMS.
@@ -158,7 +158,7 @@ Poniżej pokazano, jak wysyłać wiadomość SMS przy użyciu **komunikat** klas
 Aby uzyskać więcej informacji na temat parametrów przekazanych do **Message.creator** metody, zobacz [ https://www.twilio.com/docs/api/rest/sending-sms ] [ twilio_rest_sending_sms].
 
 ## <a id="howto_provide_twiml_responses"></a>Jak: Zapewnienie TwiML odpowiedzi z własną witrynę sieci Web
-Gdy aplikacja inicjuje wywołanie interfejsu API usługi Twilio, na przykład za pośrednictwem **CallCreator.create** metody, Twilio wyśle żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. W powyższym przykładzie używa adresu URL dostarczone do usługi Twilio [ https://twimlets.com/message ] [ twimlet_message_url]. (Choć TwiML jest przeznaczony do użytku przez usługi sieci Web, można wyświetlić TwiML w przeglądarce. Na przykład kliknij pozycję [ https://twimlets.com/message ] [ twimlet_message_url] będzie pusta **&lt;odpowiedzi&gt;** element; inny przykład kliknij [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] się **&lt;odpowiedzi&gt;** element, który zawiera **&lt;Say&gt;** elementu.)
+Gdy aplikacja inicjuje wywołanie interfejsu API usługi Twilio, na przykład za pośrednictwem **CallCreator.create** metody, Twilio wyśle żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. W powyższym przykładzie używa adresu URL dostarczone do usługi Twilio [ https://twimlets.com/message ] [ twimlet_message_url]. (Choć TwiML jest przeznaczony do użytku przez usługi sieci Web, można wyświetlić TwiML w przeglądarce. Na przykład kliknij pozycję [ https://twimlets.com/message ] [ twimlet_message_url] będzie pusta **&lt; odpowiedzi&gt;** element; inny przykład kliknij [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] się **&lt; odpowiedzi&gt;** element, który zawiera **&lt; Say&gt;** elementu.)
 
 Zamiast polegania na adres URL podany do usługi Twilio, można utworzyć własny adres URL w witrynie odpowiedzi HTTP. Witryny można utworzyć w dowolnym języku, który zwraca odpowiedzi HTTP; w tym temacie założono, że będziesz hostingu adres URL strony JSP.
 

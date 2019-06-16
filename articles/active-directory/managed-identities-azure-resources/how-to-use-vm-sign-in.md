@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112967"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure dotyczące logowania 
@@ -39,7 +39,7 @@ Jeśli planujesz użyć przykłady programu Azure PowerShell lub wiersza polecen
 > - Wszystkie przykładowy skrypt w tym artykule przyjęto założenie, że klient wiersza polecenia jest uruchomiona na maszynie Wirtualnej z zarządzanych tożsamości dla zasobów platformy Azure są włączone. Funkcja VM "Połącz" w witrynie Azure portal na połączenie zdalne z maszyną wirtualną. Aby uzyskać więcej informacji na temat włączania zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md), lub jeden z tych artykułów variant (przy użyciu programu PowerShell, interfejsu wiersza polecenia, szablonu lub platformy Azure ZESTAW SDK). 
 > - Aby uniknąć błędów podczas uzyskiwania dostępu do zasobów, tożsamości zarządzanej maszyny Wirtualnej należy podać co najmniej "Czytelnik" na uzyskiwanie dostępu do wybranego zakresu (maszyna wirtualna lub nowszej) umożliwia operacje usługi Azure Resource Manager na maszynie Wirtualnej. Zobacz [przypisywanie zarządzanych tożsamości dla zasobów platformy Azure dostęp do zasobów przy użyciu witryny Azure portal](howto-assign-access-portal.md) Aby uzyskać szczegółowe informacje.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Zarządzanych tożsamości dla zasobów platformy Azure zapewnia [obiektu jednostki usługi](../develop/developer-glossary.md#service-principal-object) , czyli [utworzone podczas włączania zarządzanych tożsamości dla zasobów platformy Azure](overview.md#how-does-it-work) na maszynie Wirtualnej. Nazwy głównej usługi można nadać dostęp do zasobów platformy Azure i używany jako tożsamość przez skrypt/wiersza polecenia klientów do logowania i dostępu do zasobów. Tradycyjnie Aby uzyskać dostęp do zabezpieczonych zasobów w ramach własnej tożsamości, klient skryptu musi:  
 

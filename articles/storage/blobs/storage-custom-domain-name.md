@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: blobs
 ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148927"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure storage
@@ -36,8 +36,8 @@ W poniższej tabeli przedstawiono kilka przykładowych adresy URL danych obiekt�
 | --- | --- | --- |
 | Konto magazynu | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
 | Obiekt blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| Nadrzędny kontener | http://mystorageaccount.blob.core.windows.net/myblob lub http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob lub http://www.contoso.com/$root/myblob |
-| Sieć Web |  http://mystorageaccount. [zone].web.core.windows.net/$web/[indexdoc] lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/[indexdoc] lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/ | http://www.contoso.com/$web lub http://www.contoso.com/ lub http://www.contoso.com/$web / [indexdoc] lub http://www.contoso.com/[indexdoc] |
+| Nadrzędny kontener | http://mystorageaccount.blob.core.windows.net/myblob lub http://mystorageaccount.blob.core.windows.net/ $root/myblob| http://www.contoso.com/myblob lub http://www.contoso.com/ $root/myblob |
+| sieć Web |  http://mystorageaccount. [zone].web.core.windows.net/$web/[indexdoc] lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/[indexdoc] lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/ | http://www.contoso.com/ $web lub http://www.contoso.com/ lub http://www.contoso.com/ $web / [indexdoc] lub http://www.contoso.com/ [indexdoc] |
 
 > [!NOTE]  
 > Jak pokazano w poniższych sekcjach, wszystkie przykłady dla punktu końcowego usługi blob dotyczą również punkt końcowy usługi sieci web.

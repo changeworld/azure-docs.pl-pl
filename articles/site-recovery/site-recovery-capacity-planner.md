@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
 ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61036747"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planowanie pojemności na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V 
@@ -54,7 +54,7 @@ Narzędzie można uruchomić w dwóch trybach:
 
    a. W **wybierz scenariusz**, wybierz **funkcji Hyper-V na platformę Azure** lub **serwer fizyczny/VMware do platformy Azure**.
 
-   b. W **średni dzienny współczynnik zmian danych (%)**, wprowadź informacje zostały zebrane za pomocą [narzędzia do planowania pojemności na potrzeby funkcji Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) lub [planista wdrażania usługi Site Recovery](./site-recovery-deployment-planner.md).
+   b. W **średni dzienny współczynnik zmian danych (%)** , wprowadź informacje zostały zebrane za pomocą [narzędzia do planowania pojemności na potrzeby funkcji Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) lub [planista wdrażania usługi Site Recovery](./site-recovery-deployment-planner.md).
 
    c. **Kompresji** ustawienie nie jest używany podczas replikowania maszyn wirtualnych funkcji Hyper-V do platformy Azure. Dla kompresji należy użyć urządzenia innych firm, takimi jak Riverbed.
 
@@ -66,9 +66,9 @@ Narzędzie można uruchomić w dwóch trybach:
 
 4. Po wprowadzeniu wartości dla środowiska źródłowego, wyświetlone dane wyjściowe obejmują:
 
-   * **Przepustowość wymagana na potrzeby replikacji różnicowej (w megabitach na sekundę)**: Przepustowość sieci na potrzeby replikacji przyrostowej jest obliczany średni dzienny współczynnik zmian danych.
-   * **Przepustowość wymagana na potrzeby replikacji początkowej (w megabitach na sekundę)**: Przepustowość sieci na potrzeby replikacji początkowej jest obliczany na wartości początkowej replikacji, które należy wprowadzić.
-   * **Magazyn wymagany (w GB)**: Całkowita ilość miejsca Azure wymagana.
+   * **Przepustowość wymagana na potrzeby replikacji różnicowej (w megabitach na sekundę)** : Przepustowość sieci na potrzeby replikacji przyrostowej jest obliczany średni dzienny współczynnik zmian danych.
+   * **Przepustowość wymagana na potrzeby replikacji początkowej (w megabitach na sekundę)** : Przepustowość sieci na potrzeby replikacji początkowej jest obliczany na wartości początkowej replikacji, które należy wprowadzić.
+   * **Magazyn wymagany (w GB)** : Całkowita ilość miejsca Azure wymagana.
    * **Łączna liczba operacji We/Wy w magazynie Standard Storage**: Liczba jest obliczany na podstawie rozmiar jednostki operacje We/Wy 8K na kontach magazynu w warstwie standardowa całkowitej. Dla szybkiego Planner liczba jest obliczany na podstawie wszystkich dysków maszyny Wirtualnej źródłowego i dzienny współczynnik zmian danych. Dla szczegółowe Planner liczba jest obliczany na podstawie łączna liczba maszyn wirtualnych, które są mapowane do standardowych maszyn wirtualnych platformy Azure i je zmienić częstotliwość na tych maszynach wirtualnych.
    * **Liczba kont magazynu w warstwie standardowa wymagane**: Całkowita liczba kont magazynu w warstwie standardowa niezbędne do ochrony maszyn wirtualnych. Standardowe konto magazynu może zawierać maksymalnie 20 000 operacji We/Wy na wszystkich maszynach wirtualnych w magazynie standard storage. Maksymalnie 500 operacji We/Wy jest obsługiwana na dysk.
    * **Liczba obiektów Blob dysków wymagana**: Liczba dysków, które zostały utworzone w usłudze Azure storage.
@@ -92,11 +92,11 @@ Narzędzie można uruchomić w dwóch trybach:
 
    a. W **rdzeni procesora**, określ łączna liczba rdzeni na serwerze źródłowym.
 
-   b. W **Alokacja pamięci (w MB)**, określ rozmiar pamięci RAM na serwerze źródłowym.
+   b. W **Alokacja pamięci (w MB)** , określ rozmiar pamięci RAM na serwerze źródłowym.
 
    c. W **liczba kart sieciowych**, określ liczbę kart sieciowych na serwerze źródłowym.
 
-   d. W **całkowita ilość miejsca (w GB)**, określ łączny rozmiar magazynu maszyny Wirtualnej. Na przykład jeśli serwer źródłowy ma trzy dyski z 500 GB, łączny rozmiar magazynu jest 1500 GB.
+   d. W **całkowita ilość miejsca (w GB)** , określ łączny rozmiar magazynu maszyny Wirtualnej. Na przykład jeśli serwer źródłowy ma trzy dyski z 500 GB, łączny rozmiar magazynu jest 1500 GB.
 
    e. W **liczby dysków dołączonych**, określ łączna liczba dysków z serwera źródłowego.
 
@@ -145,7 +145,7 @@ Po wprowadzeniu wszystkich informacji wybierz **przesyłania danych do narzędzi
 
 2. Jeśli chcesz wprowadzić zmiany, należy zmodyfikować **kwalifikacji obciążenia** arkusza. Następnie wybierz pozycję **przesyłania danych do narzędzia planisty** ponownie.
 
-   ![Planista pojemności](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![Planista wydajności](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się, jak uruchomić](site-recovery-capacity-planning-for-hyper-v-replication.md) pojemności, narzędzia do planowania.

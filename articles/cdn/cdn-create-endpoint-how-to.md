@@ -15,10 +15,10 @@ ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 296f1df9175f4595274a57ed936282abb73da18b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60679580"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Tworzenie punktu końcowego usługi Azure CDN
@@ -44,7 +44,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu ko
    
     ![Dodaj stronę punktu końcowego](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. W polu **Nazwa** wprowadź unikatową nazwę nowego punktu końcowego CDN. Ta nazwa jest używana do dostępu do buforowanych zasobów w domenie  _\<nazwapunktukoncowego >_. azureedge.net.
+3. W polu **Nazwa** wprowadź unikatową nazwę nowego punktu końcowego CDN. Ta nazwa jest używana do dostępu do buforowanych zasobów w domenie  _\<nazwapunktukoncowego >_ . azureedge.net.
 
 4. Aby uzyskać **typ źródła**, wybierz jedną z następujących typów źródła: 
    - **Magazyn** dla usługi Azure Storage
@@ -62,7 +62,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu ko
    > Niektóre typy źródeł, takie jak usługi Azure Storage i Web Apps, wymagają, aby nagłówek hosta był zgodny z domeną źródła. Pozostaw wartość domyślną, chyba że masz źródło, które wymaga nagłówka hosta innego niż jego domena.
    > 
     
-8. Aby uzyskać **protokołu** i **port źródła**, Określ protokoły i porty na potrzeby dostępu do zasobów na serwerze źródłowym. Należy wybrać co najmniej jeden protokół (HTTP lub HTTPS). Użyj domeny udostępnionej do sieci CDN (_\<nazwapunktukoncowego >_. azureedge.net) Aby uzyskać dostęp do zawartości HTTPS. 
+8. Aby uzyskać **protokołu** i **port źródła**, Określ protokoły i porty na potrzeby dostępu do zasobów na serwerze źródłowym. Należy wybrać co najmniej jeden protokół (HTTP lub HTTPS). Użyj domeny udostępnionej do sieci CDN ( _\<nazwapunktukoncowego >_ . azureedge.net) Aby uzyskać dostęp do zawartości HTTPS. 
    
    > [!NOTE]
    > **Port źródła** wartość określa tylko port punktu końcowego używa w celu pobrania informacji z serwera pochodzenia. Sam punkt końcowy jest dostępny dla klientów końcowych tylko na domyślnych portach HTTP i HTTPS (80 i 443), niezależnie od wartości **Port źródła**.  

@@ -9,10 +9,10 @@ ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603109"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co to jest usługa Azure Import/Export?
@@ -112,7 +112,7 @@ Na wysokim poziomie zadania eksportu obejmuje następujące czynności:
 
 Aby uzyskać instrukcje krok po kroku na eksport danych, przejdź do [eksportowanie danych z obiektów blob platformy Azure](storage-import-export-data-from-blobs.md).
 
-## <a name="region-availability"></a>Dostępność regionalna 
+## <a name="region-availability"></a>Dostępność w danym regionie 
 
 Usługa Azure Import/Export obsługuje kopiowanie danych do i z wszystkich kont usługi Azure storage. Możesz przesłać dysków do jednego z wymienionych lokalizacjach. W przypadku konta magazynu w lokalizacji platformy Azure, która nie jest określona w tym miejscu, lokalizacji wysyłki alternatywne znajduje się po utworzeniu zadania.
 
@@ -122,13 +122,13 @@ Usługa Azure Import/Export obsługuje kopiowanie danych do i z wszystkich kont 
 |Kraj/region  |Kraj/region  |Kraj/region  |Kraj/region  |
 |---------|---------|---------|---------|
 |Wschodnie stany USA    | Europa Północna        | Indie Środkowe        |US Gov Iowa         |
-|Zachodnie stany USA     |Europa Zachodnia         | Indie Południowe        | Wschodnie stany USA — DoD        |
-|Wschodnie stany USA 2    | Azja Wschodnia        |  Indie Zachodnie        | Środkowe stany USA — DoD        |
+|Zachodnie stany USA     |Europa Zachodnia         | Indie Południowe        | US DoD — wschodnie stany        |
+|Wschodnie stany USA 2    | Azja Wschodnia        |  Indie Zachodnie        | US DoD — środkowe stany        |
 |Zachodnie stany USA 2     | Azja Południowo-Wschodnia        | Kanada Środkowa        | Chiny Wschodnie         |
 |Środkowe stany USA     | Australia Wschodnia        | Kanada Wschodnia        | Chiny Północne        |
-|Północno-środkowe stany USA     |  Australia Południowo-Wschodnia       | Brazylia Południowa        | Zjednoczone Królestwo (południe)        |
-|Południowo-środkowe stany USA     | Japonia Zachodnia        |Korea Środkowa         | Niemcy Środkowe        |
-|Zachodnio-środkowe stany USA     |  Japonia Wschodnia       | US Gov Wirginia        | Niemcy Północno-Wschodnie        |
+|Środkowo-północne stany USA     |  Australia Południowo-Wschodnia       | Brazylia Południowa        | Południowe Zjednoczone Królestwo        |
+|Środkowo-południowe stany USA     | Japonia Zachodnia        |Korea Środkowa         | Niemcy Środkowe        |
+|Środkowo-zachodnie stany USA     |  Japonia Wschodnia       | Administracja USA — Wirginia        | Niemcy Północno-Wschodnie        |
 
 
 ## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa

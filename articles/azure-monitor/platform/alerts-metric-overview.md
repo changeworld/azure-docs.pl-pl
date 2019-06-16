@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244907"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071626"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Zrozumienie, jak metryki, alerty pracy w usłudze Azure Monitor
 
@@ -36,6 +36,8 @@ Załóżmy, że utworzono regułę alertu metryki prosty próg statyczne w nast�
 - Wartość progowa: 70
 
 Od chwili, gdy zostanie utworzona reguła alertu monitor jest uruchamiane co 1 min i szuka w wartości metryk z ostatnich 5 minut i sprawdza się, jeśli średnia tych wartości przekracza 70. Jeśli warunek jest spełniony, oznacza to, średnie użycie procesora CPU procent dla ostatnich 5 minut przekracza 70, reguła alertu wyzwala powiadomienie aktywowane. Jeśli wiadomość e-mail lub Akcja punktu zaczepienia sieci web skonfigurowano grupy akcji skojarzonych z regułą alertu, otrzymasz powiadomienie aktywowanego zarówno.
+
+Kiedy używasz wiele warunków w ramach jednej reguły, "ands" warunki reguły ze sobą.  Oznacza to alertu, gdy wszystkie warunki alertu są interpretowane jako wartość true i rozwiązania, gdy jeden z warunków nie jest już wartość true. I będzie przykład tego typu alertu alert "CPU wyższa niż 90%" i "długość kolejki wynosi ponad 300 elementów". 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Reguła alertu o typie warunek dynamiczny
 
@@ -152,27 +154,27 @@ Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i ch
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nie|
 |Microsoft.CognitiveServices/accounts | Nie |
 |Microsoft.Compute/virtualMachines | Tak|
-|Microsoft.Compute/virtualMachineScaleSets| Tak|
+|Microsoft.Compute/virtualMachineScaleSets| Yes|
 |Microsoft.ClassicStorage/storageAccounts| Nie |
-|Microsoft.DataFactory/datafactories | Tak|
+|Microsoft.DataFactory/datafactories | Yes|
 |Microsoft.DBforMySQL/servers| Tak|
-|Microsoft.DBforPostgreSQL/servers| Tak|
+|Microsoft.DBforPostgreSQL/servers| Yes|
 |Microsoft.Devices/IotHubs | Nie|
-|Microsoft.DocumentDB/databaseAccounts| Tak|
-|Microsoft.EventHub/namespaces | Tak|
+|Microsoft.DocumentDB/databaseAccounts| Yes|
+|Microsoft.EventHub/namespaces | Yes|
 |Microsoft.Logic/workflows | Tak|
-|Microsoft.Network/loadBalancers |Tak|
-|Microsoft.Network/publicIPAddresses| Yes|
-|Microsoft.Network/applicationGateways| Yes|
-|Microsoft.Network/expressRouteCircuits| Yes|
-|Microsoft.Network/trafficManagerProfiles | Yes|
+|Microsoft.Network/loadBalancers |Yes|
+|Microsoft.Network/publicIPAddresses| Tak|
+|Microsoft.Network/applicationGateways| Tak|
+|Microsoft.Network/expressRouteCircuits| Tak|
+|Microsoft.Network/trafficManagerProfiles | Tak|
 |Microsoft.Search/searchServices | Tak|
 |Microsoft.ServiceBus/namespaces| Tak |
-|Microsoft.Storage/storageAccounts | Tak|
-|Microsoft.StreamAnalytics/streamingjobs| Yes|
+|Microsoft.Storage/storageAccounts | Yes|
+|Microsoft.StreamAnalytics/streamingjobs| Tak|
 |Microsoft.TimeSeriesInsights/environments | Yes|
 |Microsoft W sieci Web/farm serwerów | Tak |
-|Microsoft / Witryn (z wyjątkiem funkcji) | Yes|
+|Microsoft / Witryn (z wyjątkiem funkcji) | Tak|
 |Microsoft HostingEnvironments/Web/multiRolePools | Nie|
 |Microsoft HostingEnvironments/Web/workerPools| Nie |
 |Microsoft.SQL/Servers | Nie |

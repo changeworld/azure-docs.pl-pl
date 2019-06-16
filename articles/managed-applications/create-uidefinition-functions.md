@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587924"
 ---
 # <a name="createuidefinition-functions"></a>Funkcje CreateUiDefinition
@@ -164,7 +164,7 @@ Poniższy przykład zwraca `true`:
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>Długość
+### <a name="length"></a>length
 Zwraca liczbę znaków w ciąg, liczba wartości w tablicy lub liczba kluczy w obiekcie.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
@@ -335,7 +335,7 @@ Poniższy przykład zwraca `{"key1": "foobar"}`:
 "[take(steps('foo').element1, 1)]"
 ```
 
-### <a name="skip"></a>pomiń
+### <a name="skip"></a>Pomiń
 Pomija określoną liczbę elementów w kolekcji, a następnie zwraca pozostałe elementy.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
@@ -391,7 +391,7 @@ Poniższy przykład zwraca `false`:
 "[equals('abc', ['a', 'b', 'c'])]"
 ```
 
-### <a name="less"></a>mniej
+### <a name="less"></a>less
 Zwraca `true` , jeśli pierwszy parametr jest mniejsza niż drugi parametr. Ta funkcja obsługuje tylko parametry typu number i ciąg.
 
 Poniższy przykład zwraca `true`:
@@ -653,7 +653,7 @@ Poniższy przykład zwraca `3`:
 "[add(1, 2)]"
 ```
 
-### <a name="sub"></a>Sub
+### <a name="sub"></a>sub
 Odejmuje drugą liczbę od pierwszej liczby i zwraca wynik.
 
 Poniższy przykład zwraca `1`:
@@ -704,7 +704,7 @@ Poniższy przykład zwraca `1`:
 "[min(1, 2)]"
 ```
 
-### <a name="max"></a>maks.
+### <a name="max"></a>Maksymalna
 Zwraca większy z dwóch liczb.
 
 Poniższy przykład zwraca `2`:

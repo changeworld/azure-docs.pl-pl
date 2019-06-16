@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: ashishth
 ms.openlocfilehash: a152b815daeefa4c199af9b159eee8e5783971e2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143318"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrowanie klastra Apache HBase do nowszej wersji
@@ -31,7 +31,7 @@ Przed rozpoczęciem uaktualniania bazy danych Apache HBase, upewnij się, że we
 
 Oto przykład wersji zgodności zestawów. Y oznacza zgodność, a N oznacza potencjalne niezgodności:
 
-| Typ zgodności | Wersja główna| Wersja pomocnicza | Poprawka |
+| Typ zgodności | Wersja główna| Wersja pomocnicza | Poprawki |
 | --- | --- | --- | --- |
 | Zgodność przewodowy klient-serwer | Nie | Tak | Tak |
 | Zgodność z serwerami | Nie | Tak | Tak |

@@ -12,15 +12,15 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 5762e934d7735dd9617cefc1f56105823d74312f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61342974"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511829"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB powiązania usługi Azure Functions 2.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Wybierz wersję środowiska uruchomieniowego usługi Azure Functions, którego używasz: "]
 > * [Wersja 1](functions-bindings-cosmosdb.md)
 > * [Wersja 2](functions-bindings-cosmosdb-v2.md)
 
@@ -2345,7 +2345,7 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |GatewayMode|Brama|Tryb połączenia używane przez funkcję, podczas nawiązywania połączenia z usługą Azure Cosmos DB. Dostępne są opcje `Direct` i `Gateway`|
-|Protocol|HTTPS|Protokół połączenia używane przez funkcję podczas połączenia z usługą Azure Cosmos DB.  Odczyt [tutaj objaśnienia dotyczące oba tryby](../cosmos-db/performance-tips.md#networking)| 
+|Protocol|Https|Protokół połączenia używane przez funkcję podczas połączenia z usługą Azure Cosmos DB.  Odczyt [tutaj objaśnienia dotyczące oba tryby](../cosmos-db/performance-tips.md#networking)| 
 |leasePrefix|Nie dotyczy|Prefiks dzierżawy do użycia we wszystkich funkcji w aplikacji.| 
 
 ## <a name="next-steps"></a>Kolejne kroki

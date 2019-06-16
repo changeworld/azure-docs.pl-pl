@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b2d07638f6c6f153ee3640273fbee5e56df0ab2
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541528"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Zatwierdź lub Odrzuć żądania dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
@@ -36,7 +36,7 @@ Za pomocą funkcji zarządzania uprawnień usługi Azure AD możesz skonfigurowa
 
 Pierwszym krokiem, akceptują lub odrzucają żądania dostępu jest znaleźć i otworzyć żądanie dostępu oczekuje na zatwierdzenie. Istnieją dwa sposoby, aby otworzyć żądanie dostępu.
 
-**Rola wymagań wstępnych:** Osoba zatwierdzająca
+**Rola wymagań wstępnych:** Osoby zatwierdzającej
 
 1. Wyszukaj wiadomości e-mail z programu Microsoft Azure z prośbą o zatwierdzenie lub odrzucenie żądania. Poniżej przedstawiono przykładową wiadomość e-mail:
 
@@ -58,7 +58,7 @@ Jeśli nie masz wiadomości e-mail można znaleźć żądań dostępu oczekując
 
 Po otwarciu żądanie dostępu oczekuje na zatwierdzenie, zobaczysz szczegółowe informacje, które pomogą Ci wprowadzić Zatwierdź lub odmówić decyzji.
 
-**Rola wymagań wstępnych:** Osoba zatwierdzająca
+**Rola wymagań wstępnych:** Osoby zatwierdzającej
 
 1. Kliknij przycisk **widoku** link, aby otworzyć okienko żądania dostępu.
 

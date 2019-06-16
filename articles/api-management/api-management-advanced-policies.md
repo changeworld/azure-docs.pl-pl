@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60795876"
 ---
 # <a name="api-management-advanced-policies"></a>Usługa API Management zaawansowane zasady
@@ -129,15 +129,15 @@ Ten przykład pokazuje, jak przeprowadzić filtrowanie zawartości przez usunię
 
 | Element   | Opis                                                                                                                                                                                                                                                               | Wymagane |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| Wybierz opcję    | Element główny.                                                                                                                                                                                                                                                             | Yes      |
-| kiedy      | Warunek, którego chcesz użyć dla `if` lub `ifelse` części `choose` zasad. Jeśli `choose` zasad ma wiele `when` sekcje są obliczane po kolei. Gdy `condition` z o tym, kiedy element daje w wyniku `true`, żadnych dalszych `when` oceny warunków. | Yes      |
+| Wybierz opcję    | Element główny.                                                                                                                                                                                                                                                             | Tak      |
+| Kiedy      | Warunek, którego chcesz użyć dla `if` lub `ifelse` części `choose` zasad. Jeśli `choose` zasad ma wiele `when` sekcje są obliczane po kolei. Gdy `condition` z o tym, kiedy element daje w wyniku `true`, żadnych dalszych `when` oceny warunków. | Tak      |
 | W przeciwnym razie | Zawiera fragment zasad do użycia, jeśli żaden z `when` warunki zostaną obliczone na `true`.                                                                                                                                                                               | Nie       |
 
 ### <a name="attributes"></a>Atrybuty
 
 | Atrybut                                              | Opis                                                                                               | Wymagane |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| warunek = "wyrażenie logiczne &#124; logiczna stała" | Wyrażenia logicznego lub stałą oceniane podczas zawierający `when` deklaracja zasad jest oceniany. | Yes      |
+| warunek = "wyrażenie logiczne &#124; logiczna stała" | Wyrażenia logicznego lub stałą oceniane podczas zawierający `when` deklaracja zasad jest oceniany. | Tak      |
 
 ### <a name="ChooseUsage"></a> Sposób użycia
 
@@ -247,7 +247,7 @@ Ta operacja poziomu zasad nie przekazuje żądania do usługi zaplecza.
 
 | Element         | Opis   | Wymagane |
 | --------------- | ------------- | -------- |
-| forward-request | Element główny. | Yes      |
+| forward-request | Element główny. | Tak      |
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -298,7 +298,7 @@ Poniższy przykład pokazuje, jak ograniczyć liczbę żądań, przekazywane do 
 
 | Element           | Opis   | Wymagane |
 | ----------------- | ------------- | -------- |
-| limit-concurrency | Element główny. | Yes      |
+| limit-concurrency | Element główny. | Tak      |
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -351,13 +351,13 @@ Dowolny ciąg może służyć jako wartość ma zostać zarejestrowany w usłudz
 
 | Element         | Opis                                                                     | Wymagane |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
-| dziennik do Centrum zdarzeń | Element główny. Wartość tego elementu jest ciąg do logowania się do Centrum zdarzeń. | Yes      |
+| dziennik do Centrum zdarzeń | Element główny. Wartość tego elementu jest ciąg do logowania się do Centrum zdarzeń. | Tak      |
 
 ### <a name="attributes"></a>Atrybuty
 
 | Atrybut     | Opis                                                               | Wymagane                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| logger-id     | Identyfikator rejestratora rejestrowania przy użyciu usługi API Management.         | Yes                                                                  |
+| logger-id     | Identyfikator rejestratora rejestrowania przy użyciu usługi API Management.         | Tak                                                                  |
 | partition-id  | Określa indeks partycji, w której są wysyłane wiadomości.             | Opcjonalny. Ten atrybut nie mogą być używane, jeśli `partition-key` jest używany. |
 | partition-key | Określa wartość do przypisania partycji podczas wysyłania wiadomości. | Opcjonalny. Ten atrybut nie mogą być używane, jeśli `partition-id` jest używany.  |
 
@@ -396,7 +396,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 | Element       | Opis   | Wymagane |
 | ------------- | ------------- | -------- |
-| mock-response | Element główny. | Yes      |
+| mock-response | Element główny. | Tak      |
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -455,15 +455,15 @@ W poniższym przykładzie przekazywania żądanie zostanie ponowiony maksymalnie
 
 | Element | Opis                                                         | Wymagane |
 | ------- | ------------------------------------------------------------------- | -------- |
-| retry   | Element główny. Może zawierać innych zasad jako jego elementy podrzędne. | Yes      |
+| retry   | Element główny. Może zawierać innych zasad jako jego elementy podrzędne. | Tak      |
 
 ### <a name="attributes"></a>Atrybuty
 
 | Atrybut        | Opis                                                                                                                                           | Wymagane | Domyślne |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| warunek        | Literału wartości logicznej lub [wyrażenie](api-management-policy-expressions.md) Określanie ponownych prób powinna zostać zatrzymana (`false`) lub ciąg dalszy (`true`).      | Yes      | ND     |
-| count            | Liczba dodatnia określająca maksymalną liczbę ponowień próby.                                                                                | Yes      | ND     |
-| interval         | Wartość dodatnią w ciągu kilku sekund określania interwału oczekiwania między ponowienie próby.                                                                 | Yes      | ND     |
+| condition        | Literału wartości logicznej lub [wyrażenie](api-management-policy-expressions.md) Określanie ponownych prób powinna zostać zatrzymana (`false`) lub ciąg dalszy (`true`).      | Yes      | ND     |
+| count            | Liczba dodatnia określająca maksymalną liczbę ponowień próby.                                                                                | Tak      | ND     |
+| interval         | Wartość dodatnią w ciągu kilku sekund określania interwału oczekiwania między ponowienie próby.                                                                 | Tak      | ND     |
 | max-interval     | W ciągu kilku sekund określający maksymalną liczbę dodatnią poczekaj interwał między ponownymi próbami. Służy do implementowania algorytm ponawiania wykładniczego. | Nie       | ND     |
 | delta            | Liczba dodatnia, w ciągu kilku sekund, określając przyrost interwał oczekiwania. Służy do implementowania algorytmy ponawiania liniowego i wykładniczą.             | Nie       | ND     |
 | pierwsze szybkie ponownej próby | Jeśli ustawiono `true` , pierwszym ponowieniem próby odbywa się natychmiast.                                                                                  | Nie       | `false` |
@@ -512,7 +512,7 @@ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.micr
 
 | Element         | Opis                                                                               | Wymagane |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
-| Return odpowiedzi | Element główny.                                                                             | Yes      |
+| Return odpowiedzi | Element główny.                                                                             | Tak      |
 | set-header      | A [set-header](api-management-transformation-policies.md#SetHTTPheader) deklaracji zasad. | Nie       |
 | Ustaw treść        | A [Ustaw treść](api-management-transformation-policies.md#SetBody) deklaracji zasad.         | Nie       |
 | set-status      | A [Ustaw stan](api-management-advanced-policies.md#SetStatus) deklaracji zasad.           | Nie       |
@@ -582,11 +582,11 @@ Ta zasada przykładowych pokazano przykład za pomocą `send-one-way-request` za
 
 | Element                    | Opis                                                                                                 | Wymagane                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| send-one-way-request       | Element główny.                                                                                               | Yes                             |
+| send-one-way-request       | Element główny.                                                                                               | Tak                             |
 | url                        | Adres URL żądania.                                                                                     | Jeśli nie tryb = kopiowania; w przeciwnym razie jest to tak. |
 | method                     | Metoda HTTP dla żądania.                                                                            | Jeśli nie tryb = kopiowania; w przeciwnym razie jest to tak. |
 | nagłówek                     | Nagłówek żądania. Wiele elementów nagłówka na użytek wielu nagłówki żądania.                                  | Nie                              |
-| treść                       | Treść żądania.                                                                                           | Nie                              |
+| Treść                       | Treść żądania.                                                                                           | Nie                              |
 | authentication-certificate | [Certyfikat do użycia na potrzeby uwierzytelniania klienta](api-management-authentication-policies.md#ClientCertificate) | Nie                              |
 
 ### <a name="attributes"></a>Atrybuty
@@ -666,11 +666,11 @@ Ten przykład pokazuje, jak można zweryfikować odwołania do tokenu za pomocą
 
 | Element                    | Opis                                                                                                 | Wymagane                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| send-request               | Element główny.                                                                                               | Yes                             |
+| send-request               | Element główny.                                                                                               | Tak                             |
 | url                        | Adres URL żądania.                                                                                     | Jeśli nie tryb = kopiowania; w przeciwnym razie jest to tak. |
 | method                     | Metoda HTTP dla żądania.                                                                            | Jeśli nie tryb = kopiowania; w przeciwnym razie jest to tak. |
 | nagłówek                     | Nagłówek żądania. Wiele elementów nagłówka na użytek wielu nagłówki żądania.                                  | Nie                              |
-| treść                       | Treść żądania.                                                                                           | Nie                              |
+| Treść                       | Treść żądania.                                                                                           | Nie                              |
 | authentication-certificate | [Certyfikat do użycia na potrzeby uwierzytelniania klienta](api-management-authentication-policies.md#ClientCertificate) | Nie                              |
 
 ### <a name="attributes"></a>Atrybuty
@@ -678,7 +678,7 @@ Ten przykład pokazuje, jak można zweryfikować odwołania do tokenu za pomocą
 | Atrybut                       | Opis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Wymagane | Domyślne  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string"                   | Określa, czy jest to nowe wezwanie lub kopię bieżącego żądania. W trybie ruchu wychodzącego tryb = kopiowania nie inicjuje treści żądania.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nie       | Nowa      |
-| response-variable-name="string" | Nazwa zmiennej kontekstowej, który będzie otrzymywać obiekt odpowiedzi. Jeśli zmienna nie istnieje, zostanie utworzony po pomyślnym wykonaniu zasad i staną się dostępne za pośrednictwem [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) kolekcji.                                                                                                                                                                                                                                                                                                                          | Yes      | ND      |
+| response-variable-name="string" | Nazwa zmiennej kontekstowej, który będzie otrzymywać obiekt odpowiedzi. Jeśli zmienna nie istnieje, zostanie utworzony po pomyślnym wykonaniu zasad i staną się dostępne za pośrednictwem [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) kolekcji.                                                                                                                                                                                                                                                                                                                          | Tak      | ND      |
 | timeout="integer"               | Interwał limitu czasu w sekundach przed wywołaniem do adresu URL zakończy się niepowodzeniem.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nie       | 60       |
 | ignore-error                    | Jeśli wartość PRAWDA, a żądanie będzie skutkowało błędem:<br /><br /> — Jeśli odpowiedź zmienna nazwa została określona, będzie zawierać wartości null.<br />— Jeśli nie określono odpowiedzi zmienna nazwy, kontekstu. Żądanie nie zostanie zaktualizowany.                                                                                                                                                                                                                                                                                                                                                                                   | Nie       | false    |
 | name                            | Określa nazwę nagłówka do ustawienia.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | ND      |
@@ -779,7 +779,7 @@ Te zasady przykładowy, który używa `set-method` zasad pokazano przykład wysy
 
 | Element    | Opis                                                       | Wymagane |
 | ---------- | ----------------------------------------------------------------- | -------- |
-| set-method | Element główny. Wartość elementu określa metodę HTTP. | Yes      |
+| set-method | Element główny. Wartość elementu określa metodę HTTP. | Tak      |
 
 ### <a name="usage"></a>Sposób użycia
 
@@ -829,7 +829,7 @@ Ten przykład przedstawia sposób zwracania odpowiedzi 401, jeśli token autoryz
 | Atrybut       | Opis                                                | Wymagane | Domyślne |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
 | code="integer"  | Kod stanu HTTP do zwrócenia.                            | Yes      | ND     |
-| reason="string" | Opis powodu zwróciło kod stanu. | Yes      | ND     |
+| reason="string" | Opis powodu zwróciło kod stanu. | Tak      | ND     |
 
 ### <a name="usage"></a>Sposób użycia
 
@@ -866,8 +866,8 @@ W poniższym przykładzie pokazano zestaw zasad zmiennej w sekcji dla ruchu przy
 
 | Atrybut | Opis                                                              | Wymagane |
 | --------- | ------------------------------------------------------------------------ | -------- |
-| name      | Nazwa zmiennej.                                                | Yes      |
-| value     | Wartość zmiennej. Może to być wyrażenie lub wartość literału. | Yes      |
+| name      | Nazwa zmiennej.                                                | Tak      |
+| value     | Wartość zmiennej. Może to być wyrażenie lub wartość literału. | Tak      |
 
 ### <a name="usage"></a>Sposób użycia
 
@@ -936,7 +936,7 @@ Wyrażenia używane w `set-variable` zasad musi zwracać jedną z następującyc
 
 | Atrybut | Opis                                                                             | Wymagane | Domyślne |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
-| source    | Literał ciągu jest zrozumiały dla przeglądarki danych śledzenia i Określanie źródła wiadomości. | Yes      | ND     |
+| source    | Literał ciągu jest zrozumiały dla przeglądarki danych śledzenia i Określanie źródła wiadomości. | Tak      | ND     |
 
 ### <a name="usage"></a>Sposób użycia
 
@@ -1006,7 +1006,7 @@ W poniższym przykładzie występują dwa `choose` zasady zgodnie z zasadami bez
 
 | Atrybut | Opis                                                                                                                                                                                                                                                                                                                                                                                                            | Wymagane | Domyślne |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | Określa, czy `wait` zasad oczekiwania dla wszystkich zasad bezpośrednie podrzędne na ukończone lub po prostu jednego. Dozwolone wartości to:<br /><br /> - `all` -Poczekaj, aż wszystkie zasady bezpośrednie podrzędne w celu ukończenia<br />-wszelkie - poczekaj, aż wszystkie zasady bezpośrednie podrzędne zakończyć. Po zakończeniu pierwszej zasady bezpośrednie podrzędne `wait` kończy zasad i wykonywania innych zasad bezpośrednie podrzędne zostanie zakończony. | Nie       | all     |
+| dla       | Określa, czy `wait` zasad oczekiwania dla wszystkich zasad bezpośrednie podrzędne na ukończone lub po prostu jednego. Dozwolone wartości to:<br /><br /> - `all` -Poczekaj, aż wszystkie zasady bezpośrednie podrzędne w celu ukończenia<br />-wszelkie - poczekaj, aż wszystkie zasady bezpośrednie podrzędne zakończyć. Po zakończeniu pierwszej zasady bezpośrednie podrzędne `wait` kończy zasad i wykonywania innych zasad bezpośrednie podrzędne zostanie zakończony. | Nie       | all     |
 
 ### <a name="usage"></a>Sposób użycia
 

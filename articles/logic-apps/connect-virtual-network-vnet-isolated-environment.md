@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65961454"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
@@ -73,23 +73,23 @@ Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobi
 
 | Przeznaczenie | Direction | Porty | Tag usługi źródłowej | Docelowy tag usługi | Uwagi |
 |---------|-----------|-------|--------------------|-------------------------|-------|
-| Komunikacja z usługi Azure Logic Apps | Wychodzący | 80 & 443 | VirtualNetwork | Internet | Numer portu jest zależna od usługi zewnętrznej, z którym komunikuje się usługi Logic Apps |
-| Usługa Azure Active Directory | Wychodzący | 80 & 443 | VirtualNetwork | AzureActiveDirectory | |
-| Zależności usługi Azure Storage | Wychodzący | 80 & 443 | VirtualNetwork | Magazyn | |
+| Komunikacja z usługi Azure Logic Apps | Wychodzące | 80 & 443 | VirtualNetwork | Internet | Numer portu jest zależna od usługi zewnętrznej, z którym komunikuje się usługi Logic Apps |
+| Usługa Azure Active Directory | Wychodzące | 80 & 443 | VirtualNetwork | AzureActiveDirectory | |
+| Zależności usługi Azure Storage | Wychodzące | 80 & 443 | VirtualNetwork | Magazyn | |
 | Intersubnet komunikacji | Dla ruchu przychodzącego i wychodzącego | 80 & 443 | VirtualNetwork | VirtualNetwork | Do komunikacji między podsieciami |
 | Komunikacja z usługi Azure Logic Apps | Przychodzący | 443 | Internet  | VirtualNetwork | Adres IP komputera lub usługi, która wywołuje ani wyzwalacza żądania elementu webhook, który znajduje się w aplikacji logiki. Zamykanie lub blokuje ten port zapobiega połączeń HTTP z aplikacji logiki z wyzwalaniem na żądanie.  |
 | Historia przebiegu aplikacji logiki | Przychodzący | 443 | Internet  | VirtualNetwork | Adres IP komputera, na której możesz wyświetlić aplikację logiki przebiegu historii. Mimo że zamknięcie lub blokuje ten port nie uniemożliwia wyświetlanie historii uruchamiania, nie można wyświetlić dane wejściowe i wyjściowe dla każdego kroku w tym historii uruchamiania. |
-| Zarządzanie połączeniami | Wychodzący | 443 | VirtualNetwork  | Internet | |
-| Publikowanie dzienniki diagnostyczne i metryki | Wychodzący | 443 | VirtualNetwork  | AzureMonitor | |
+| Zarządzanie połączeniami | Wychodzące | 443 | VirtualNetwork  | Internet | |
+| Publikowanie dzienniki diagnostyczne i metryki | Wychodzące | 443 | VirtualNetwork  | AzureMonitor | |
 | Komunikacja z usługi Azure Traffic Manager | Przychodzący | 443 | AzureTrafficManager | VirtualNetwork | |
 | Projektant aplikacji logiki — właściwości dynamiczne | Przychodzący | 454 | Internet  | VirtualNetwork | Żądania pochodzą z aplikacji logiki [dostęp do punktu końcowego dla ruchu przychodzącego adresów IP w danym regionie](../logic-apps/logic-apps-limits-and-config.md#inbound). |
 | App Service Management zależności | Przychodzący | 454 & 455 | AppServiceManagement | VirtualNetwork | |
 | Wdrażanie łącznika | Przychodzący | 454 & 3443 | Internet  | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamykanie lub blokuje ten port powoduje wdrożeń ISE, aby zakończyć się niepowodzeniem i zapobiega łącznika aktualizacji lub poprawki. |
-| Zależność SQL platformy Azure | Wychodzący | 1433 | VirtualNetwork | SQL |
-| Azure Resource Health | Wychodzący | 1886 | VirtualNetwork | Internet | Do publikowania stan kondycji Resource Health |
+| Zależność SQL platformy Azure | Wychodzące | 1433 | VirtualNetwork | SQL |
+| Azure Resource Health | Wychodzące | 1886 | VirtualNetwork | Internet | Do publikowania stan kondycji Resource Health |
 | API Management — punkt końcowy zarządzania | Przychodzący | 3443 | APIManagement  | VirtualNetwork | |
-| Zależność od dziennika do zasad Centrum zdarzeń i agenta monitorowania | Wychodzący | 5672 | VirtualNetwork  | EventHub | |
-| Uzyskiwanie dostępu do usługi Azure Cache dla wystąpienia usługi Redis między wystąpieniami roli | Przychodzący <br>Wychodzący | 6379-6383 | VirtualNetwork  | VirtualNetwork | Ponadto dla środowiska ISE do pracy z usługą Azure Cache dla pamięci podręcznej Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej Azure dla usługi Redis — często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
+| Zależność od dziennika do zasad Centrum zdarzeń i agenta monitorowania | Wychodzące | 5672 | VirtualNetwork  | EventHub | |
+| Uzyskiwanie dostępu do usługi Azure Cache dla wystąpienia usługi Redis między wystąpieniami roli | Przychodzący <br>Wychodzące | 6379-6383 | VirtualNetwork  | VirtualNetwork | Ponadto dla środowiska ISE do pracy z usługą Azure Cache dla pamięci podręcznej Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej Azure dla usługi Redis — często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 | Azure Load Balancer | Przychodzący | * | AzureLoadBalancer | VirtualNetwork |  |
 ||||||
 
@@ -117,9 +117,9 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
    | **Subskrypcja** | Tak | <*Azure-subscription-name*> | Subskrypcji platformy Azure do użycia w danym środowisku |
    | **Grupa zasobów** | Tak | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
    | **Nazwa środowiska usługi integracji** | Tak | <*Nazwa środowiska*> | Nazwa do nadania środowiska |
-   | **Lokalizacja** | Tak | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
-   | **Dodatkowe możliwości obliczeniowe** | Tak | 0 do 10 | Liczba jednostek dodatkowego przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [pojemności Dodaj ISE](#add-capacity). |
-   | **Sieć wirtualna** | Tak | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. |
+   | **Lokalizacja** | Yes | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
+   | **Dodatkowe możliwości obliczeniowe** | Yes | 0 do 10 | Liczba jednostek dodatkowego przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [pojemności Dodaj ISE](#add-capacity). |
+   | **Sieć wirtualna** | Yes | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. |
    | **Podsieci** | Tak | <*subnet-resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet).  |
    |||||
 
@@ -152,7 +152,7 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
    1. W obszarze **podsieci** wybierz **konfigurację podsieci Zarządzaj**.
 
-      ![Zarządzaj konfiguracją podsieci](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+      ![Zarządzanie konfiguracją podsieci](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
 
    1. Na **podsieci** okienku wybierz **podsieci**.
 
@@ -161,7 +161,7 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
    1. Na **Dodaj podsieć** okienku, podaj te informacje.
 
       * **Nazwa**: Nazwa podsieci
-      * **Zakres adresów (blok CIDR)**: Zakres swoje podsieci w sieci wirtualnej i w formacie CIDR
+      * **Zakres adresów (blok CIDR)** : Zakres swoje podsieci w sieci wirtualnej i w formacie CIDR
 
       ![Dodaj szczegóły podsieci](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 2cfd5a99144af1120afbf06fe6222228a9332bb6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787423"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorować pamięć podręczna systemu Azure dla usługi Redis
@@ -30,7 +30,7 @@ Metryki dla usługi Azure Cache dla wystąpienia usługi Redis są zbierane przy
 
 Aby wyświetlić metryki pamięci podręcznej [Przeglądaj](cache-configure.md#configure-azure-cache-for-redis-settings) do wystąpienia pamięci podręcznej w [witryny Azure portal](https://portal.azure.com).  Pamięć podręczna systemu Azure dla usługi Redis zawiera kilka wbudowanych wykresy dotyczące **Przegląd** bloku i **metryki pamięci podręcznej Redis** bloku. Każdego wykresu można dostosować, dodając lub usuwając metryki i zmieniając interwał raportowania.
 
-![Metryki pamięci podręcznej Redis](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
+![Metryki pamięci podręcznej redis](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
 ## <a name="view-pre-configured-metrics-charts"></a>Wyświetlanie wykresów wstępnie skonfigurowanych metryk
 
@@ -54,7 +54,7 @@ Aby wyświetlić metryki pamięci podręcznej [Przeglądaj](cache-configure.md#c
 ## <a name="view-metrics-with-azure-monitor"></a>Wyświetlanie metryk z usługą Azure monitor
 Kliknij, aby wyświetlić metryki pamięci podręcznej Redis i tworzenie wykresów niestandardowych, przy użyciu usługi Azure Monitor **metryki** z **menu zasobów**i dostosowywanie wykresu za pomocą żądanego metryk, raportowanie, interwału i typ wykresu.
 
-![Metryki pamięci podręcznej Redis](./media/cache-how-to-monitor/redis-cache-monitor.png)
+![Metryki pamięci podręcznej redis](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
 Aby uzyskać więcej informacji na temat pracy z metrykami przy użyciu usługi Azure Monitor, zobacz [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
@@ -104,17 +104,17 @@ Wszystkie metryki. zawiera dwie wersje. Jedna Metryka mierzy wydajność całą 
 | Odczyt pamięci podręcznej |Ilość danych odczytanych z pamięci podręcznej w MB na sekundę (MB/s) w określonym interwale raportowania. Ta wartość jest tworzony na podstawie kart interfejsu sieciowego, które obsługują maszyny wirtualnej, który hostuje pamięci podręcznej i nie jest określone usługi Redis. **Ta wartość odpowiada przepustowości sieci używanej przez tę pamięć podręczną. Jeśli chcesz skonfigurować alerty dotyczące limity przepustowości sieci po stronie serwera, utwórz ją za pomocą tego `Cache Read` licznika. Zobacz [tej tabeli](cache-faq.md#cache-performance) limitów obserwowanych przepustowości dla różnych pamięci podręcznej ceny warstwy i rozmiarów.** |
 | Zapis w pamięci podręcznej |Ilość danych zapisanych w pamięci podręcznej wyrażony w megabajtach, na sekundę (MB/s) podczas określonego raportowania interwału. Ta wartość jest tworzony na podstawie kart interfejsu sieciowego, które obsługują maszyny wirtualnej, który hostuje pamięci podręcznej i nie jest określone usługi Redis. Ta wartość odpowiada przepustowości sieci, danych wysyłanych do pamięci podręcznej klienta. |
 | Podłączeni klienci |Liczba połączeń klienta pamięci podręcznej w określonym interwale raportowania. To jest mapowany `connected_clients` polecenia Redis informacje. Gdy [limit połączeń](cache-configure.md#default-redis-server-configuration) jest niepowodzenie osiągnął kolejnych próbach połączenia do zostanie pamięci podręcznej. Należy pamiętać, że nawet jeśli nie istnieją żadne aplikacje aktywnego klienta, nadal może występować kilka wystąpień podłączonych klientów z powodu połączenia i procesów wewnętrznych. |
-| CPU |Użycie procesora CPU serwera Redis w pamięci podręcznej Azure jako wartość procentowa w określonym interwale raportowania. Ta wartość jest mapowany na system operacyjny `\Processor(_Total)\% Processor Time` licznika wydajności. |
+| Procesor CPU |Użycie procesora CPU serwera Redis w pamięci podręcznej Azure jako wartość procentowa w określonym interwale raportowania. Ta wartość jest mapowany na system operacyjny `\Processor(_Total)\% Processor Time` licznika wydajności. |
 | Błędy | Konkretnych błędów i problemów z wydajnością, które pamięć podręczna może występować w określonym interwale raportowania. Ta metryka ma osiem wymiarów reprezentujący błąd różnych typów, ale można mieć więcej dodane w przyszłości. Typy błędów, teraz reprezentowane są następujące: <br/><ul><li>**Tryb failover** — w przypadku pamięci podręcznej w trybie Failover (podrzędny promuje do gałęzi głównej)</li><li>**Awarii** — w przypadku pamięci podręcznej nieoczekiwanie ulega awarii na jednym z węzłów</li><li>**Dataloss** — w przypadku dataloss w pamięci podręcznej</li><li>**UnresponsiveClients** — w przypadku klientów nie odczytują dane z serwera wystarczająco szybko</li><li>**AOF** — w przypadku problemów związanych z trwałości AOF</li><li>**RDB** — w przypadku problemów związanych z pliku RDB trwałości</li><li>**Importuj** — w przypadku problemów związanych z pliku RDB importu</li><li>**Eksportuj** — gdy ma obecnie problemów związanych z eksportu pliku RDB</li></ul> |
 | Wykluczone klucze |Liczba elementów wykluczona z pamięci podręcznej w określonym interwale raportowania ze względu na `maxmemory` limit. To jest mapowany `evicted_keys` polecenia Redis informacje. |
 | Wygasłe klucze |Liczba elementów wygasł z pamięci podręcznej w określonym interwale raportowania. Ta wartość jest mapowany na `expired_keys` polecenia Redis informacje.|
-| Pobrania |Liczba operacji get z pamięci podręcznej w określonym interwale raportowania. Ta wartość jest sumą następujące wartości z kolekcji informacji Redis wszystkie polecenia: `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit`, i `cmdstat_getrange`i jest odpowiednikiem suma pamięci podręcznej trafienia i Chybienia w interwale raportowania. |
+| Pobiera |Liczba operacji get z pamięci podręcznej w określonym interwale raportowania. Ta wartość jest sumą następujące wartości z kolekcji informacji Redis wszystkie polecenia: `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit`, i `cmdstat_getrange`i jest odpowiednikiem suma pamięci podręcznej trafienia i Chybienia w interwale raportowania. |
 | Operacje na sekundę | Całkowita liczba przetworzonych na sekundę przez serwer pamięci podręcznej w określonym interwale raportowania poleceń.  Ta wartość jest mapowany na "instantaneous_ops_per_sec" polecenia Redis informacje. |
-| Obciążenie serwera Redis |Procent cykle, w których jest zajęty przetwarzaniem i nie oczekuje bezczynności dla wiadomości z serwerem Redis. Jeśli licznik osiągnie wartość 100 oznacza, że serwer Redis osiągnie limit wydajności i procesora CPU nie może przetworzyć działają dowolne szybciej. Jeśli widzisz wysokie obciążenie serwera Redis, a następnie zostanie wyświetlony wyjątków przekroczenia limitu czasu w obiekcie klienta. W takim przypadku należy rozważyć skalowanie w górę lub partycjonowania danych w wielu pamięciach podręcznych. |
+| Obciążenie serwera redis |Procent cykle, w których jest zajęty przetwarzaniem i nie oczekuje bezczynności dla wiadomości z serwerem Redis. Jeśli licznik osiągnie wartość 100 oznacza, że serwer Redis osiągnie limit wydajności i procesora CPU nie może przetworzyć działają dowolne szybciej. Jeśli widzisz wysokie obciążenie serwera Redis, a następnie zostanie wyświetlony wyjątków przekroczenia limitu czasu w obiekcie klienta. W takim przypadku należy rozważyć skalowanie w górę lub partycjonowania danych w wielu pamięciach podręcznych. |
 | Zestawy |Liczba operacji zestawu w pamięci podręcznej w określonym interwale raportowania. Ta wartość jest sumą następujące wartości z kolekcji informacji Redis wszystkie polecenia: `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange` , a `cmdstat_setnx`. |
 | Całkowita liczba kluczy  | Maksymalna liczba kluczy w pamięci podręcznej w ostatnim okresie raportowania. To jest mapowany `keyspace` polecenia Redis informacje. Ze względu na ograniczenie bazowego systemu metryki, pod kątem pamięci podręcznych z klastrowaniem włączone wszystkie klucze zwraca maksymalną liczbę kluczy fragmentu, który ma maksymalną liczbę kluczy w interwale raportowania.  |
 | Łączna liczba operacji |Całkowita liczba przetworzonych przez serwer pamięci podręcznej w określonym interwale raportowania poleceń. Ta wartość jest mapowany na `total_commands_processed` polecenia Redis informacje. Należy pamiętać, gdy pamięci podręcznej Azure redis Cache jest używana wyłącznie w celu publikowania/subskrybowania będzie brak metryk dla `Cache Hits`, `Cache Misses`, `Gets`, lub `Sets`, ale będzie `Total Operations` metryki odzwierciedlają wykorzystanie pamięci podręcznej dla operacji publikowania/subskrybowania. |
-| Użyta pamięć |Ilość pamięci podręcznej używane dla pary klucz/wartość w pamięci podręcznej w MB w określonym interwale raportowania. Ta wartość jest mapowany na `used_memory` polecenia Redis informacje. Nie zawiera metadanych lub fragmentacji. |
+| Używana pamięć |Ilość pamięci podręcznej używane dla pary klucz/wartość w pamięci podręcznej w MB w określonym interwale raportowania. Ta wartość jest mapowany na `used_memory` polecenia Redis informacje. Nie zawiera metadanych lub fragmentacji. |
 | Procent używanej pamięci | Procent całkowitej ilości pamięci, który jest używany w określonym interwale raportowania.  Wartość "used_memory" odwołuje się polecenie Redis informacje do obliczania wartości procentowej. |
 | Używana pamięć RSS |Ilość pamięci podręcznej używane w MB w określonym interwale raportowania, łącznie z fragmentacją i metadanych. Ta wartość jest mapowany na `used_memory_rss` polecenia Redis informacje. |
 

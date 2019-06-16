@@ -18,10 +18,10 @@ ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1b27ea761d19eb494895daceff699b2b604eccea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153863"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Utwórz konfigurację adresu oprogramowanie SAP NetWeaver — wiele identyfikatorów SID
@@ -507,7 +507,7 @@ Można zainstalować dodatkowe wystąpienia SAP ASCS/SCS w istniejącym klastrze
 
 | Roli maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Statyczny adres IP |
 | --- | --- | --- |
-| 1. węzła klastra ASCS/SCS wystąpienia |pr1-ascs-0 |10.0.0.10 |
+| 1\. węzła klastra ASCS/SCS wystąpienia |pr1-ascs-0 |10.0.0.10 |
 | 2nd węźle klastra w przypadku wystąpienia ASCS/SCS |pr1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS na serwerze DNS

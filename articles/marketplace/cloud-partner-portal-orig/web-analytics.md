@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 4b75b2cbd629204e7edbf1196eec9b03cb7a6736
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943153"
 ---
 <a name="web-analytics"></a>Analiza sieci Web
@@ -71,7 +71,7 @@ Oto przykład:
     2.  Adres URL strony = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
 3. Użytkownik klika polecenie \"spróbuj dany produkt\" połączyć, a następnie przechodzi do usługi AppSource.
     1. Adres odwołania URL =  <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Adres URL strony (**upewnij się, że ten adres URL ma utm\_kampanii i utm\_źródło dodane do tego adresu URL**) = [ https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername? **utm\_kampanii = MyCampaignAdName & utm\_źródła = MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2. Adres URL strony (**upewnij się, że ten adres URL ma utm\_kampanii i utm\_źródło dodane do tego adresu URL**) = [ https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername? **utm\_ kampanii = MyCampaignAdName & utm\_ źródła = MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Jak ocenić Powodzenie kampanii
 -----------------------------------------

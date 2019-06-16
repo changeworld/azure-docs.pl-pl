@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 04/22/2018
 ms.author: yegu
 ms.openlocfilehash: a93d21b07dc486f743694ee99f60018ed4ef517c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943870"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Dostawca pamięci podręcznej danych wyjściowych platformy ASP.NET dla usługi Azure Cache dla usługi Redis
@@ -59,7 +59,7 @@ Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu i dodanie sekcji po
 
 Konfigurowanie atrybutów przy użyciu wartości z bloku usługi pamięci podręcznej w portalu Microsoft Azure i innych wartości zostaną skonfigurowane zgodnie z potrzebami. Aby uzyskać instrukcje dotyczące uzyskiwania dostępu do właściwości pamięci podręcznej, zobacz [Konfigurowanie usługi Azure Cache ustawień pamięci podręcznej Redis](cache-configure.md#configure-azure-cache-for-redis-settings).
 
-| Atrybut | Type | Domyślne | Opis |
+| Atrybut | Typ | Domyślne | Opis |
 | --------- | ---- | ------- | ----------- |
 | *host* | string | "localhost" | Usługa Redis server nazwę lub adres IP hosta |
 | *port* | dodatnia liczba całkowita | 6379 (non-SSL)<br/>6380 (SSL) | Port serwera redis |

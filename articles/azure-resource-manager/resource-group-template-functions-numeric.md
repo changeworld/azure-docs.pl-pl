@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
 ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128649"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Funkcje numeryczne dla szablonów usługi Azure Resource Manager
@@ -40,7 +40,7 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z liczb całkow
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>dodaj
+## <a name="add"></a>add
 `add(operand1, operand2)`
 
 Zwraca sumę dwóch podanych liczb całkowitych.
@@ -166,8 +166,8 @@ Zwraca dzielenia dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Tak |int |Liczba jest dzielona. |
-| Operand2 |Tak |int |Numer który jest używany do dzielenia. Nie może wynosić 0. |
+| Operand1 |Yes |int |Liczba jest dzielona. |
+| Operand2 |Yes |int |Numer który jest używany do dzielenia. Nie może wynosić 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -228,7 +228,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="float" />
 
-## <a name="float"></a>liczba zmiennoprzecinkowa
+## <a name="float"></a>float
 `float(arg1)`
 
 Konwertuje wartość na zmiennoprzecinkowy numer punktu. Podczas przekazywania parametrów niestandardowych do aplikacji, takie jak aplikacja logiki tylko użyć tej funkcji.
@@ -322,7 +322,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>maks.
+## <a name="max"></a>Maksymalna
 `max (arg1)`
 
 Zwraca maksymalną wartość w tablicy liczb całkowitych lub na liście liczb całkowitych rozdzielonych przecinkami.
@@ -386,7 +386,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min
+## <a name="min"></a>min.
 `min (arg1)`
 
 Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb całkowitych rozdzielonych przecinkami.
@@ -395,7 +395,7 @@ Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb ca
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
+| arg1 |Yes |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -530,7 +530,7 @@ Zwraca iloczyn dwóch podanych liczb całkowitych.
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | Operand1 |Tak |int |Pierwszy numer do pomnożenia. |
-| Operand2 |Tak |int |Druga liczba do pomnożenia. |
+| Operand2 |Yes |int |Druga liczba do pomnożenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -591,7 +591,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="sub" />
 
-## <a name="sub"></a>Sub
+## <a name="sub"></a>sub
 `sub(operand1, operand2)`
 
 Zwraca odejmowania dwóch podanych liczb całkowitych.
@@ -600,8 +600,8 @@ Zwraca odejmowania dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Tak |int |Numer który jest odejmowany od. |
-| Operand2 |Tak |int |Liczba, która jest odejmowana. |
+| Operand1 |Yes |int |Numer który jest odejmowany od. |
+| Operand2 |Yes |int |Liczba, która jest odejmowana. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Liczba całkowita reprezentująca odejmowania.

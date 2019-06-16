@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66124771"
 ---
 Bing obsługuje wyróżnianie, która oznacza terminów zapytania trafień (lub inne warunki tego Bing znajduje odpowiednich) ciągów wyświetlania niektórych odpowiedzi. Na przykład strony sieci Web firmy `name`, `displayUrl`, i `snippet` pola może oznaczyć terminów zapytania.

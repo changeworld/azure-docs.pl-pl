@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
 ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65797484"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search
@@ -270,11 +270,11 @@ Aby uzyskać **opis** pola, indeksu jest następująca:
 | Termin | Lista dokumentów |
 |------|---------------|
 | AIR | 3
-| oraz | 4
+| i | 4
 | Beach | 1
 | należy przygotować | 3
 | comfortable | 3
-| odległość | 1
+| distance | 1
 | Wyspa | 2
 | kauaʻi | 2
 | znajduje się | 2
@@ -287,11 +287,11 @@ Aby uzyskać **opis** pola, indeksu jest następująca:
 | secluded | 4
 | lądzie | 2
 | obszerne | 1
-| W | 1, 2
-| do | 1
+| względem zasobu | 1, 2
+| na | 1
 | wyświetl | 1, 2, 3
 | zalet | 1
-| z | 3
+| with | 3
 
 
 **Pasujące terminy zapytania względem indeksowanych warunki**

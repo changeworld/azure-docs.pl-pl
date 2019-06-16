@@ -10,10 +10,10 @@ ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61305024"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie elementu runbook usługi Azure Automation za pomocą elementu webhook
@@ -34,7 +34,7 @@ W poniższej tabeli opisano właściwości, które należy skonfigurować dla el
 |:--- |:--- |
 | Name (Nazwa) |Możesz podać dowolną nazwę, wymagany dla elementu webhook, ponieważ to nie jest widoczne dla klienta. Jest ono używane wyłącznie dla Ciebie do identyfikowania elementów runbook w usłudze Azure Automation. <br> Najlepszym rozwiązaniem należy nadać elementu webhook nazwę związane z klienta, który korzysta z niego. |
 | Adres URL |Adres URL elementu webhook jest unikatowy adres, który klient wywołań za pomocą metody POST protokołu HTTP, aby uruchomić element runbook połączone z elementu webhook. Są one generowane automatycznie podczas tworzenia elementu webhook. Nie można określić niestandardowy adres URL. <br> <br> Adres URL zawiera token zabezpieczający, który umożliwia elementu runbook do wywołania przez system innej firmy, bez dalszego uwierzytelniania. Z tego powodu powinny być traktowane jak hasło. Ze względów bezpieczeństwa możesz tylko wyświetlić adres URL w witrynie Azure portal w czasie, zostanie utworzony element webhook. Zanotuj adres URL w bezpiecznej lokalizacji, do użytku w przyszłości. |
-| Data ważności |Podobnie jak certyfikat każdy element webhook ma datę wygaśnięcia, co może już służyć. Ta data wygaśnięcia można zmodyfikować po utworzeniu elementu webhook, tak długo, jak element webhook nie wygasł. |
+| Data wygaśnięcia |Podobnie jak certyfikat każdy element webhook ma datę wygaśnięcia, co może już służyć. Ta data wygaśnięcia można zmodyfikować po utworzeniu elementu webhook, tak długo, jak element webhook nie wygasł. |
 | Enabled (Włączony) |Element webhook jest domyślnie włączona, podczas jego tworzenia. Jeśli zostanie ustawiona na wyłączone, a następnie klienta nie będzie można jej używać. Możesz ustawić **włączone** podczas tworzenia elementu webhook lub dowolnym momencie po jej utworzeniu. |
 
 ### <a name="parameters"></a>Parametry
@@ -95,7 +95,7 @@ Poniższa procedura umożliwia utworzenie nowego elementu webhook, połączone z
 4. Określ **nazwa**, **datę wygaśnięcia** dla elementu webhook i czy powinno ono zostać włączone. Zobacz [szczegóły elementu webhook](#details-of-a-webhook) Aby uzyskać więcej informacji tych właściwości.
 5. Kliknij ikonę kopiowania, a następnie naciśnij klawisze Ctrl + C, aby skopiować adres URL elementu webhook. Następnie zapisz go w bezpiecznym miejscu. **Po utworzeniu elementu webhook, adres URL nie może pobrać ponownie.**
 
-   ![Adres URL elementu webhook](media/automation-webhooks/copy-webhook-url.png)
+   ![Adres URL elementu Webhook](media/automation-webhooks/copy-webhook-url.png)
 
 1. Kliknij przycisk **parametry** podać wartości parametrów elementu runbook. Jeśli element runbook ma parametry obowiązkowe, następnie nie jest możliwe do utworzenia elementu webhook, chyba że wartości są podane.
 1. Kliknij przycisk **Utwórz** tworzenia elementu webhook.
@@ -112,9 +112,9 @@ Klient odbiera jedną z następujących kody powrotne z żądania POST.
 
 | Kod | Text | Opis |
 |:--- |:--- |:--- |
-| 202 |Zaakceptowany |Żądanie zostało zaakceptowane, a element runbook został pomyślnie w kolejce. |
+| 202 |Zaakceptowane |Żądanie zostało zaakceptowane, a element runbook został pomyślnie w kolejce. |
 | 400 |Nieprawidłowe żądanie |Żądanie nie zostało zaakceptowane dla jednego z następujących powodów: <ul> <li>Element webhook wygasł.</li> <li>Element webhook jest wyłączona.</li> <li>Token w adresie URL jest nieprawidłowy.</li>  </ul> |
-| 404 |Nie znaleziono |Żądanie nie zostało zaakceptowane dla jednego z następujących powodów: <ul> <li>Nie znaleziono elementu webhook.</li> <li>Nie znaleziono elementu runbook.</li> <li>Nie znaleziono konta.</li>  </ul> |
+| 404 |Nie można odnaleźć |Żądanie nie zostało zaakceptowane dla jednego z następujących powodów: <ul> <li>Nie znaleziono elementu webhook.</li> <li>Nie znaleziono elementu runbook.</li> <li>Nie znaleziono konta.</li>  </ul> |
 | 500 |Wewnętrzny błąd serwera |Adres URL był prawidłowy, ale wystąpił błąd. Prześlij żądanie. |
 
 Przy założeniu, że żądanie zakończy się pomyślnie, odpowiedź elementu webhook zawiera identyfikator zadania w formacie JSON w następujący sposób. Będzie ona zawierać identyfikator pojedynczego zadania, ale umożliwia potencjalne przyszłe rozszerzenia będą miały JSON format.

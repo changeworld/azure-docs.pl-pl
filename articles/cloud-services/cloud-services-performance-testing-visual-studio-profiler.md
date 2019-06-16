@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128570"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testowanie wydajności usługi w chmurze lokalnie w emulatorze obliczeń platformy Azure przy użyciu programu Visual Studio Profiler
@@ -30,7 +30,7 @@ Możesz również chcieć Profiluj aplikację lokalnie w emulatorze obliczeń pr
 
 W tym artykule opisano profilowanie metodą próbkowania procesora, które można przeprowadzić lokalnie w emulatorze. Próbkowanie Procesora jest metodą profilowania, która nie jest bardzo bez wprowadzania niepożądanych. Interwałem próbkowania wyznaczonym program profilujący tworzy migawkę stosu wywołań. Dane są zbierane w przedziale czasu i wyświetlane w raporcie. Ta metoda profilowania zwykle wskazuje, gdzie w aplikacji wymaga dużej mocy obliczeniowej większość pracy procesora CPU jest wykonywana.  To umożliwia skoncentrowanie się na "ścieżki aktywnej" gdzie aplikacja jest wydatków najwięcej czasu.
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1. Konfigurowanie programu Visual Studio do profilowania
+## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurowanie programu Visual Studio do profilowania
 Po pierwsze istnieje kilka opcji konfiguracji programu Visual Studio, które mogą być pomocne w przypadku profilowania. Aby poznać raporty profilowania, konieczne będzie symboli (pliki .pdb) dla swojej aplikacji, a także symbole dla bibliotek systemowych. Należy się upewnić, że odwoływać się z serwerów symboli dostępne. Aby to zrobić, na **narzędzia** menu w programie Visual Studio, wybierz opcję **opcje**, następnie wybierz **debugowanie**, następnie **symbole**. Upewnij się, że serwery symboli firmy Microsoft znajduje się w obszarze **symboli (.pdb) lokalizacji**.  Możesz też przywołać https://referencesource.microsoft.com/symbols, które mogą mieć dodatkowe symboli plików.
 
 ![Opcje symboli][4]
@@ -77,7 +77,7 @@ private async Task RunAsync(CancellationToken cancellationToken)
 
 Skompilować i uruchomić usługi w chmurze lokalnie bez debugowania (klawisze Ctrl + F5), za pomocą konfiguracji rozwiązania, ustaw **wersji**. Zapewnia to, że wszystkie pliki i foldery są tworzone dla aplikacji uruchomionej na komputerze lokalnym i gwarantuje, że są uruchomione wszystkie emulatorów. Uruchom interfejs użytkownika emulatora obliczeń z paska zadań, aby sprawdzić, czy działa swojej roli procesu roboczego.
 
-## <a name="2-attach-to-a-process"></a>2. Dołącz do procesu
+## <a name="2-attach-to-a-process"></a>2: Dołącz do procesu
 Zamiast sprofilować aplikację, uruchamiając go za pomocą programu Visual Studio 2010 IDE, należy dołączyć profiler do uruchomionego procesu. 
 
 Aby dołączyć profiler do procesu, na **analizy** menu, wybierz **Profiler** i **Attach/Detach**.
@@ -113,7 +113,7 @@ Jeśli chcesz zatrzymać profilowanie, wybierz **Zatrzymaj profilowanie** łącz
 
 ![Zatrzymaj profilowanie opcji][10]
 
-## <a name="3-view-performance-reports"></a>3. Wyświetl raporty dotyczące wydajności
+## <a name="3-view-performance-reports"></a>3: Wyświetl raporty dotyczące wydajności
 Raport o wydajności dla aplikacji jest wyświetlany.
 
 W tym momencie program profilujący zatrzymuje wykonywanie, zapisuje dane w pliku Vsp i wyświetla raport zawiera analizę tych danych.
@@ -130,7 +130,7 @@ Jeśli dodano kod konkatenacji ciągów w tym artykule, powinny pojawić się os
 
 ![Ostrzeżeń dotyczących wydajności][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4. Wprowadź zmiany i porównanie wydajności
+## <a name="4-make-changes-and-compare-performance"></a>4\. Wprowadź zmiany i porównanie wydajności
 Można również porównać wydajność przed i po zmianie kodu.  Zatrzymaj uruchomionego procesu, a następnie edytować kod i Zastąp ciąg operacji łączenia z użyciem klasy StringBuilder:
 
 ```csharp

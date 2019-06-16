@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61342138"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Azure Monitor
@@ -57,7 +57,7 @@ W poniższej tabeli opisano opcje:
 
 | Opcja | Opis |
 |:--|:--|
-| Odświeżanie   | Odświeża widok przy użyciu najnowszych danych. | 
+| Odśwież   | Odświeża widok przy użyciu najnowszych danych. | 
 | Dzienniki      | Otwiera [usługi Log Analytics](../log-query/portals.md) do analizowania danych za pomocą zapytań log. |
 | Edytuj       | Otwiera widok w Projektancie widoku do edycji jej zawartość i konfigurację.  |
 | Klonowanie      | Tworzy nowy widok, a zostanie on otwarty w Projektancie widoku. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale z *kopiowania* dołączone do niego. |
@@ -79,7 +79,7 @@ Projektant widoków ma trzy okienka:
 * **Formanty**: Zawiera Kafelki i części, które dodajesz do **projektowania** okienka. 
 * **Właściwości**: Wyświetla właściwości kafelków lub zaznaczonych części.
 
-![Projektant widoków](media/view-designer/view-designer-screenshot.png)
+![Pokaż projektanta](media/view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-the-view-tile"></a>Konfiguruj Kafelek widoku
 Widok niestandardowy może mieć tylko pojedynczego kafelka. Aby wyświetlić bieżący Kafelek, lub wybierz jeden z alternatywnych, wybierz **Kafelek** karcie **kontroli** okienka. **Właściwości** okienko wyświetla właściwości bieżącego fragmentu. 
@@ -103,7 +103,7 @@ Praca z widokami w trybie edycji opcje są opisane w poniższej tabeli.
 
 | Opcja | Opis |
 |:--|:--|
-| Zapisz        | Zapisuje zmiany i zamyka widoku. |
+| Zapisanie        | Zapisuje zmiany i zamyka widoku. |
 | Cancel      | Odrzuca wszystkie zmiany i zamyka widoku. |
 | Usuń widok | Usuwa widok. |
 | Eksportowanie      | Eksportuje widoku na potrzeby [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) który można zaimportować do innego obszaru roboczego. Nazwa pliku jest nazwa widoku i ma *omsview* rozszerzenia. |

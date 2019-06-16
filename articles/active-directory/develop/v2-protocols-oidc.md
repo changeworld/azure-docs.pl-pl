@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23a8eaaf095be1d59944791bd793047886dda40c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544813"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Platforma tożsamości firmy Microsoft i protokołu OpenID Connect
@@ -120,15 +120,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | Wymagane | Wartości zawarte w żądaniu wygenerowane przez aplikację, która zostanie uwzględniona w wynikowej wartości id_token jako oświadczenia. Aplikację można sprawdzić tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
 | `response_mode` | Zalecane | Określa metodę, które mają być używane do odesłania wynikowy kod autoryzacji do aplikacji. Możliwe wartości to `form_post` i `fragment`. Dla aplikacji sieci web, zaleca się używanie `response_mode=form_post`, aby zapewnić najbardziej bezpieczny transfer tokenów do aplikacji. |
 | `state` | Zalecane | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, którą chcesz. Losowo generowany unikatową wartość jest zazwyczaj używany do [fałszerstwo żądania międzywitrynowego atakami](https://tools.ietf.org/html/rfc6749#section-10.12). Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widok, który użytkownik był na. |
-| `prompt` | Opcjonalne | Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są `login`, `none`, i `consent`. `prompt=login` Oświadczenia wymusza użytkownika o wprowadzenie poświadczeń na żądanie i neguje logowania jednokrotnego. `prompt=none` Oświadczeń jest przeciwieństwem. To oświadczenie gwarantuje, że użytkownik nie jest wyświetlone wszystkie interaktywne monity o. Jeśli żądanie nie można ukończyć w trybie dyskretnym za pomocą logowania jednokrotnego, Microsoft platformy tożsamości z punktu końcowego zwraca błąd. `prompt=consent` Oświadczenia wyzwala okno dialogowe ze zgodą OAuth po użytkownik loguje się. Okno dialogowe z monitem o przyznanie uprawnień do aplikacji. |
-| `login_hint` | Opcjonalne | Ten parametr umożliwia wstępnie wypełnić pole nazwy użytkownika i adres e-mail adres strony logowania dla użytkownika, jeśli znasz nazwę użytkownika, wcześniej. Często aplikacje tego parametru należy użyć podczas ponownego uwierzytelniania po już wyodrębniania nazwy użytkownika z wcześniejszych logowania za pomocą `preferred_username` oświadczenia. |
-| `domain_hint` | Opcjonalne | Obszar użytkownika w katalogu federacyjnego.  Pomija to proces odnajdywania bazujące na poczcie e-mail, który użytkownik przechodzi na stronę logowania w nieco bardziej usprawnione środowisko użytkownika. Dla dzierżawy, które są Sfederowane za pośrednictwem katalogu lokalnego, takich jak usługi AD FS często skutkuje to bezproblemowe logowania z powodu istniejących sesji logowania. |
+| `prompt` | Optional (Opcjonalność) | Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są `login`, `none`, i `consent`. `prompt=login` Oświadczenia wymusza użytkownika o wprowadzenie poświadczeń na żądanie i neguje logowania jednokrotnego. `prompt=none` Oświadczeń jest przeciwieństwem. To oświadczenie gwarantuje, że użytkownik nie jest wyświetlone wszystkie interaktywne monity o. Jeśli żądanie nie można ukończyć w trybie dyskretnym za pomocą logowania jednokrotnego, Microsoft platformy tożsamości z punktu końcowego zwraca błąd. `prompt=consent` Oświadczenia wyzwala okno dialogowe ze zgodą OAuth po użytkownik loguje się. Okno dialogowe z monitem o przyznanie uprawnień do aplikacji. |
+| `login_hint` | Optional (Opcjonalność) | Ten parametr umożliwia wstępnie wypełnić pole nazwy użytkownika i adres e-mail adres strony logowania dla użytkownika, jeśli znasz nazwę użytkownika, wcześniej. Często aplikacje tego parametru należy użyć podczas ponownego uwierzytelniania po już wyodrębniania nazwy użytkownika z wcześniejszych logowania za pomocą `preferred_username` oświadczenia. |
+| `domain_hint` | Optional (Opcjonalność) | Obszar użytkownika w katalogu federacyjnego.  Pomija to proces odnajdywania bazujące na poczcie e-mail, który użytkownik przechodzi na stronę logowania w nieco bardziej usprawnione środowisko użytkownika. Dla dzierżawy, które są Sfederowane za pośrednictwem katalogu lokalnego, takich jak usługi AD FS często skutkuje to bezproblemowe logowania z powodu istniejących sesji logowania. |
 
 W tym momencie użytkownik jest monitowany, aby wprowadzić swoje poświadczenia i wykonania uwierzytelnienia. Punkt końcowy platforma tożsamości firmy Microsoft sprawdza, czy użytkownik wyraził zgodę na uprawnienia czcionką `scope` parametr zapytania. Jeśli użytkownik nie wyraził zgodę, do dowolnego z tych uprawnień, Microsoft platformy tożsamości z punktu końcowego monituje użytkownika o zgodę na uprawnienia wymagane. Przeczytaj więcej o [uprawnienia, wyrażania zgody i aplikacje z wieloma dzierżawami](v2-permissions-and-consent.md).
 
 Po użytkownik jest uwierzytelniany i przyznaje zgody, Microsoft platformy tożsamości z punktu końcowego zwraca odpowiedź do aplikacji, na wskazany identyfikator URI przekierowania za pomocą metody podanej w `response_mode` parametru.
 
-### <a name="successful-response"></a>Pomyślna odpowiedź
+### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
 
 Odpowiedź oznaczająca Powodzenie, gdy używasz `response_mode=form_post` wygląda podobnie do następującego:
 
@@ -241,7 +241,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 
 Przy tym zakresy uprawnień w żądaniu oraz przy użyciu `response_type=id_token code`, punkt końcowy platforma tożsamości firmy Microsoft zapewnia, że użytkownik wyraził zgodę na uprawnienia czcionką `scope` parametr zapytania. Zwraca kod autoryzacji do aplikacji do wymiany dla tokenu dostępu.
 
-### <a name="successful-response"></a>Pomyślna odpowiedź
+### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
 
 Odpowiedź oznaczająca Powodzenie korzystania z `response_mode=form_post` wygląda podobnie do następującego:
 

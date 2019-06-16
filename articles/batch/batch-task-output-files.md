@@ -14,10 +14,10 @@ ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 982fe5cea633d9fd1bbbe7dc862b69d89f5f1c1c
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595279"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalanie danych zadań do usługi Azure Storage za pomocą interfejsu API usługi Batch
@@ -72,7 +72,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 Aby określić pliki wyjściowe dla zadania, należy utworzyć kolekcję [Plik_wyjściowy](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) obiektów i przypisz ją do [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) właściwości po utworzeniu zadania.
 
-Następujące C# przykładowy kod tworzy zadanie, które zapisuje liczb losowych do pliku o nazwie `output.txt`. W przykładzie jest tworzony plik wyjściowy dla `output.txt` są zapisywane w kontenerze. W przykładzie jest tworzony również pliki wyjściowe dla wszystkich plików dziennika, pasujących do wzorca plik `std*.txt` (_np._, `stdout.txt` i `stderr.txt`). Adres URL kontenera wymaga sygnatury dostępu Współdzielonego, który został utworzony wcześniej w kontenerze. Usługa Batch używa sygnatury dostępu Współdzielonego w celu uwierzytelnienia dostępu do kontenera:
+Następujące C# przykładowy kod tworzy zadanie, które zapisuje liczb losowych do pliku o nazwie `output.txt`. W przykładzie jest tworzony plik wyjściowy dla `output.txt` są zapisywane w kontenerze. W przykładzie jest tworzony również pliki wyjściowe dla wszystkich plików dziennika, pasujących do wzorca plik `std*.txt` (_np._ , `stdout.txt` i `stderr.txt`). Adres URL kontenera wymaga sygnatury dostępu Współdzielonego, który został utworzony wcześniej w kontenerze. Usługa Batch używa sygnatury dostępu Współdzielonego w celu uwierzytelnienia dostępu do kontenera:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")

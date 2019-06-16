@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942787"
 ---
 # <a name="offer-settings-tab"></a>Karta ustawień oferty
@@ -36,7 +36,7 @@ Jak pokazano w przykładzie **identyfikatora oferty Offer ID** jest dołączany 
 Ten identyfikator jest związane z Twoim kontem. Po zalogowaniu się przy użyciu konta organizacyjnego usługi **Identyfikatora wydawcy** pojawia się w menu rozwijanym.
 
 
-### <a name="name"></a>Nazwa*
+### <a name="name"></a>Nazwa *
 
 Ten ciąg wyświetla się jako nazwa oferty w usłudze AppSource lub w witrynie Azure Marketplace. **Nazwa** pole jest ograniczona do 50 znaków. Recenzent może być konieczne edytowanie tytułu Dołącz czas trwania i oferować typu na nazwę swojej oferty.
 

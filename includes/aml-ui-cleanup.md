@@ -9,10 +9,10 @@ author: sgilley
 ms.author: sgilley
 ms.date: 05/06/2019
 ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123159"
 ---
 >[!IMPORTANT]
@@ -29,7 +29,7 @@ Jeśli nie planujesz cokolwiek, który został utworzony, należy usunąć cał�
 
 1. Na liście wybierz grupę zasobów, który został utworzony.
 
-1. Po prawej stronie okna wybierz przycisk wielokropka (**...** ).
+1. Po prawej stronie okna wybierz przycisk wielokropka ( **...** ).
 
 1. Wybierz pozycję **Usuń grupę zasobów**.
 

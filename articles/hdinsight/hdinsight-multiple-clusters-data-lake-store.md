@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: b580890b1663aa6ce742443e927e4d760585d4ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700286"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Wiele klastrów HDInsight za pomocą konta usługi Azure Data Lake Storage
@@ -36,9 +36,9 @@ Aby umożliwić tej struktury folderów do efektywnego użycia przez klastry HDI
 
 |Folder  |Uprawnienia  |Użytkownik będący właścicielem  |Grupa będąca właścicielem  | Użytkownik nazwany | Uprawnienia użytkownika o nazwie | Nazwanej grupy | Uprawnienia grupy nazwane |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |admin |admin  |Jednostka usługi |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |admin |admin |Jednostka usługi |--x  |FINGRP |r-x         |
-|/ klastrów/Finanse | rwxr-x--t |admin |FINGRP  |Jednostka usługi |rwx  |-  |-     |
+|/ | rwxr-x--x  |admin |admin  |Nazwa główna usługi |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |admin |admin |Nazwa główna usługi |--x  |FINGRP |r-x         |
+|/ klastrów/Finanse | rwxr-x--t |admin |FINGRP  |Nazwa główna usługi |rwx  |-  |-     |
 
 W tabeli
 
@@ -50,14 +50,14 @@ Aby uzyskać instrukcje dotyczące sposobu tworzenia aplikacji usługi AAD (któ
 
 Niektóre kluczowe kwestie do rozważenia.
 
-- Dwa na poziomie struktury folderów (**/klastrów/Finanse/**) muszą być tworzone i udostępniane z odpowiednimi uprawnieniami przez administratora usługi Data Lake Storage **przed** przy użyciu konta magazynu dla klastrów. Ta struktura nie jest tworzony automatycznie podczas tworzenia klastrów.
+- Dwa na poziomie struktury folderów ( **/klastrów/Finanse/** ) muszą być tworzone i udostępniane z odpowiednimi uprawnieniami przez administratora usługi Data Lake Storage **przed** przy użyciu konta magazynu dla klastrów. Ta struktura nie jest tworzony automatycznie podczas tworzenia klastrów.
 - W powyższym przykładzie zaleca się ustawienie grupa będąca właścicielem **/klastrów/Finanse** jako **FINGRP** i akceptując **r-x** dostęp do FINGRP do całego folderu hierarchii od w katalogu głównym. Dzięki temu członkowie FINGRP przejść strukturę folderów, począwszy od katalogu głównego.
 - W przypadku, gdy różne jednostki usługi AAD, można utworzyć klastrów w ramach **/klastrów/Finanse**, atrybut sticky bit (po ustawieniu na **finance** folder) zapewnia, że foldery utworzone przez jedną jednostkę usługi Nie można usunąć przez innych.
-- Po strukturę folderów i uprawnień w miejscu, procesu tworzenia klastra HDInsight tworzy miejsce przechowywania specyficzne dla klastra, w obszarze **/klastrów/Finanse/**. Na przykład może być magazyn dla klastra przy użyciu fincluster01 nazwa **/clusters/finance/fincluster01**. Prawo własności i uprawnienia do folderów utworzoną przez klaster HDInsight jest wyświetlane w tabeli, w tym miejscu.
+- Po strukturę folderów i uprawnień w miejscu, procesu tworzenia klastra HDInsight tworzy miejsce przechowywania specyficzne dla klastra, w obszarze **/klastrów/Finanse/** . Na przykład może być magazyn dla klastra przy użyciu fincluster01 nazwa **/clusters/finance/fincluster01**. Prawo własności i uprawnienia do folderów utworzoną przez klaster HDInsight jest wyświetlane w tabeli, w tym miejscu.
 
     |Folder  |Uprawnienia  |Użytkownik będący właścicielem  |Grupa będąca właścicielem  | Użytkownik nazwany | Uprawnienia użytkownika o nazwie | Nazwanej grupy | Uprawnienia grupy nazwane |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/Clusters/finanace/fincluster01 | rwxr-x---  |Nazwa główna usługi |FINGRP  |- |-  |-   |-  | 
+    |/Clusters/finanace/fincluster01 | rwxr-x---  |Jednostka usługi |FINGRP  |- |-  |-   |-  | 
    
 
 
@@ -88,7 +88,7 @@ Wiadomo, że te ustawienia mają wpływ na jednym określonym HDInsight związan
 Zgodnie z zapisem w usłudze JIRA YARN, wcześniej połączona podczas lokalizowania zasobów publicznych lokalizatorowi weryfikuje, że żądanych zasobów są rzeczywiście publicznych, sprawdzając ich uprawnień w zdalnym systemie plików. Wszelkie LocalResource, który nie mieści się tego warunku jest odrzucana dla lokalizacji. Sprawdź uprawnienia, obejmuje dostęp do odczytu do pliku dla "inne". Ten scenariusz nie działa poza pole w przypadku hostowania klastrów HDInsight w usłudze Azure Data Lake, ponieważ usługa Azure Data Lake nie zezwala na dostęp do "inne" na poziomie folderu głównego.
 
 #### <a name="workaround"></a>Obejście
-Zestaw odczytu — uprawnienia do uruchamiania **innych** za pośrednictwem hierarchii, na przykład **/**, **/klastrów** i   **/klastrów/Finanse** jak pokazano w powyższej tabeli.
+Zestaw odczytu — uprawnienia do uruchamiania **innych** za pośrednictwem hierarchii, na przykład **/** , **/klastrów** i   **/klastrów/Finanse** jak pokazano w powyższej tabeli.
 
 ## <a name="see-also"></a>Zobacz także
 

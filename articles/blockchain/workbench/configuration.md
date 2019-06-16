@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60578984"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Informacje o konfiguracji platformy Azure Blockchain Workbench
@@ -41,15 +41,15 @@ Aplikacji łańcucha bloków zawiera konfiguracji metadanych, przepływy pracy i
 
 | Pole | Opis | Wymagane |
 |-------|-------------|:--------:|
-| ApplicationName | Unikatowa nazwa aplikacji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **ApplicationName** dla klasy stosownej umowy.  | Yes |
+| ApplicationName | Unikatowa nazwa aplikacji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **ApplicationName** dla klasy stosownej umowy.  | Tak |
 | Nazwa wyświetlana | Przyjazną nazwę wyświetlaną aplikacji. | Yes |
 | Opis | Opis aplikacji. | Nie |
 | ApplicationRoles | Kolekcja [ApplicationRoles](#application-roles). Role użytkowników, którzy mogą działać lub wziąć udział w aplikacji.  | Yes |
-| Przepływy | Kolekcja [przepływy pracy](#workflows). Każdy przepływ pracy działa jako automatu stanów, aby sterować przepływem logiki biznesowej. | Yes |
+| Przepływy pracy | Kolekcja [przepływy pracy](#workflows). Każdy przepływ pracy działa jako automatu stanów, aby sterować przepływem logiki biznesowej. | Tak |
 
 Aby uzyskać przykład, zobacz [przykładowy plik konfiguracji](#configuration-file-example).
 
-## <a name="workflows"></a>Przepływy
+## <a name="workflows"></a>Przepływy pracy
 
 Logika biznesowa aplikacji może być modelowane jako automatu stanów, których podjęcie działania powoduje, że przepływ logikę biznesową, aby przenieść z jednego stanu do drugiego. Przepływ pracy jest kolekcją tych stanów i akcje. Każdy przepływ pracy składa się z co najmniej jeden kontraktów inteligentnych, które reprezentują logikę biznesową w plikach kodu. Kontrakt pliku wykonywalnego jest wystąpieniem przepływu pracy.
 
@@ -58,22 +58,22 @@ Logika biznesowa aplikacji może być modelowane jako automatu stanów, których
 | Name (Nazwa) | Nazwa unikatowa przepływu pracy. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla klasy stosownej umowy. | Yes | 50 |
 | Nazwa wyświetlana | Przyjazną nazwę wyświetlaną przepływu pracy. | Yes | 255 |
 | Opis | Opis przepływu pracy. | Nie | 255 |
-| Inicjatory | Kolekcja [ApplicationRoles](#application-roles). Role, które są przypisane do użytkowników autoryzowanych do utworzenia kontraktów w przepływie pracy. | Yes | |
-| StartState | Nazwa stanu początkowego przepływu pracy. | Yes | |
+| Inicjatory | Kolekcja [ApplicationRoles](#application-roles). Role, które są przypisane do użytkowników autoryzowanych do utworzenia kontraktów w przepływie pracy. | Tak | |
+| StartState | Nazwa stanu początkowego przepływu pracy. | Tak | |
 | Właściwości | Kolekcja [identyfikatory](#identifiers). Reprezentuje dane mogą być odczytywane poza łańcuchem i wizualizowany w użytkownika środowiska narzędzi. | Yes | |
-| Konstruktor | Definiuje parametry wejściowe w celu utworzenia wystąpienia przepływu pracy. | Yes | |
+| Konstruktor | Definiuje parametry wejściowe w celu utworzenia wystąpienia przepływu pracy. | Tak | |
 | Funkcje | Kolekcja [funkcje](#functions) mogą być wykonywane w przepływie pracy. | Yes | |
-| Stany | Kolekcja przepływu pracy [stany](#states). | Yes | |
+| Stany | Kolekcja przepływu pracy [stany](#states). | Tak | |
 
 Aby uzyskać przykład, zobacz [przykładowy plik konfiguracji](#configuration-file-example).
 
-## <a name="type"></a>Type
+## <a name="type"></a>Typ
 
 Obsługiwane typy danych.
 
-| Type | Opis |
+| Typ | Opis |
 |-------|-------------|
-| adres  | Łańcuch bloków adresów typu, takie jak *umów* lub *użytkowników*. |
+| address  | Łańcuch bloków adresów typu, takie jak *umów* lub *użytkowników*. |
 | tablica    | Pojedynczą tablicę poziomu typu integer, bool, pieniędzy i czasu. Tablice mogą być statyczne lub dynamiczne. Użyj **ElementType** na określony typ danych elementów w tablicy. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-array). |
 | bool     | Typ danych logicznych. |
 | kontrakt | Adres typ kontraktu. |
@@ -209,10 +209,10 @@ Definiuje funkcje, które mogą być wykonywane w przepływie pracy.
 
 | Pole | Opis | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa funkcji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich funkcji. | Yes | 50 |
+| Name (Nazwa) | Unikatowa nazwa funkcji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich funkcji. | Tak | 50 |
 | Nazwa wyświetlana | Przyjazną nazwę wyświetlaną funkcji. | Yes | 255 |
 | Opis | Opis funkcji | Nie | 255 |
-| Parametry | Kolekcja [identyfikatory](#identifiers) odpowiadający parametrów funkcji. | Yes | |
+| Parametry | Kolekcja [identyfikatory](#identifiers) odpowiadający parametrów funkcji. | Tak | |
 
 ### <a name="functions-example"></a>Przykład funkcji
 
@@ -258,9 +258,9 @@ Kolekcja unikatowych stanów w przepływie pracy. Każdy stan przechwytuje krok 
 | Pole | Opis | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
 | Name (Nazwa) | Unikatowa nazwa stanu. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dotyczy stanu. | Yes | 50 |
-| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną stanu. | Yes | 255 |
+| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną stanu. | Tak | 255 |
 | Opis | Opis stanu. | Nie | 255 |
-| ProcentWykonania | Wartość całkowitą, wyświetlana w interfejsie użytkownika aplikacji Blockchain Workbench, aby wyświetlić postęp na przepływ sterowania logiki biznesowej. | Yes | |
+| ProcentWykonania | Wartość całkowitą, wyświetlana w interfejsie użytkownika aplikacji Blockchain Workbench, aby wyświetlić postęp na przepływ sterowania logiki biznesowej. | Tak | |
 | Styl | Wskazówka Visual wskazująca, czy stan reprezentuje stan powodzenia lub niepowodzenia. Istnieją dwa prawidłowe wartości: `Success` lub `Failure`. | Yes | |
 | Przejścia | Kolekcja dostępnych [przejścia](#transitions) od bieżącego stanu do następnego zestawu stanów. | Nie | |
 
@@ -328,10 +328,10 @@ Dostępne akcje do następnego stanu. Co najmniej jedna rola użytkownika może 
 |-------|-------------|:--------:|
 | AllowedRoles | Lista ról aplikacji dzienniki może inicjować przejścia. Wszyscy użytkownicy w określonej roli może być możliwe do wykonania akcji. | Nie |
 | AllowedInstanceRoles | Lista ról użytkownika, udział lub określone w umowie inteligentne mogą inicjować przejścia. Wystąpienia roli są zdefiniowane w **właściwości** w ramach przepływów pracy. AllowedInstanceRoles reprezentuje użytkownika z uczestnictwa w wystąpieniu inteligentne kontraktu. AllowedInstanceRoles zapewniają możliwość ograniczenia podjęcie działania do roli użytkownika w wystąpieniu kontraktu.  Na przykład może być tylko chcesz zezwolić użytkownika, który utworzył kontraktu (InstanceOwner), aby można było zakończyć zamiast wszystkich użytkowników w Typ roli (właściciela), jeśli określona rola w AllowedRoles. | Nie |
-| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną przejścia. | Yes |
+| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną przejścia. | Tak |
 | Opis | Opis przejścia. | Nie |
-| Funkcja | Nazwa funkcji do inicjowania przejścia. | Yes |
-| NextStates | Kolekcja potencjalnych stanów dalej po pomyślnym przejściu. | Yes |
+| Funkcja | Nazwa funkcji do inicjowania przejścia. | Tak |
+| NextStates | Kolekcja potencjalnych stanów dalej po pomyślnym przejściu. | Tak |
 
 ### <a name="transitions-example"></a>Przykład przejść
 
@@ -394,8 +394,8 @@ Identyfikatory reprezentują kolekcję informacje używane do opisywania właśc
 
 | Pole | Opis | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa właściwości lub parametru. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich właściwości lub parametru. | Yes | 50 |
-| Nazwa wyświetlana | Przyjazna nazwa wyświetlana dla właściwości lub parametru. | Yes | 255 |
+| Name (Nazwa) | Unikatowa nazwa właściwości lub parametru. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich właściwości lub parametru. | Tak | 50 |
+| Nazwa wyświetlana | Przyjazna nazwa wyświetlana dla właściwości lub parametru. | Tak | 255 |
 | Opis | Opis właściwości lub parametru. | Nie | 255 |
 
 ### <a name="identifiers-example"></a>Przykład identyfikatorów

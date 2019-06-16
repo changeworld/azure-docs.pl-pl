@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
 ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522331"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database
@@ -97,18 +97,18 @@ Wdrażanie wystąpienia zarządzanego w dedykowanej podsieci w sieci wirtualnej.
 
 ### <a name="mandatory-inbound-security-rules"></a>Reguły zabezpieczeń ruchu przychodzącego obowiązkowe
 
-| Name (Nazwa)       |Port                        |Protocol|Obiekt źródłowy           |Lokalizacja docelowa|action|
+| Name (Nazwa)       |Port                        |Protocol|Obiekt źródłowy           |Miejsce docelowe|Akcja|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwól |
-|mi_subnet   |Dowolne                         |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwól |
-|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwól |
+|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
+|mi_subnet   |Dowolne                         |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
+|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
 
 ### <a name="mandatory-outbound-security-rules"></a>Reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe
 
-| Name (Nazwa)       |Port          |Protocol|Obiekt źródłowy           |Lokalizacja docelowa|action|
+| Name (Nazwa)       |Port          |Protocol|Obiekt źródłowy           |Miejsce docelowe|Akcja|
 |------------|--------------|--------|-----------------|-----------|------|
-|zarządzanie  |80, 443, 12000|TCP     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |AzureCloud |Zezwól |
-|mi_subnet   |Dowolne           |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwól |
+|zarządzanie  |80, 443, 12000|TCP     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |AzureCloud |Zezwalaj |
+|mi_subnet   |Dowolne           |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
 
 > [!IMPORTANT]
 > Upewnij się, istnieje tylko jedna reguła ruchu przychodzącego dla portów 9000, 9003, 1438 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Zarządzane wystąpienia inicjowania obsługi administracyjnej za pomocą usługi Azure Resource Manager wdrożenie zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są skonfigurowane osobno dla poszczególnych portów. Jeśli te porty są oddzielne zasady, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`

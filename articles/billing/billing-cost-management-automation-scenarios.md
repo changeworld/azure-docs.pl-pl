@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
 ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232480"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scenariuszach automatyzacji do rozliczeń i kosztów zarządzania
@@ -63,7 +63,7 @@ Można użyć rozliczenia i kosztów w kilku scenariuszach odpowiedzi na pytania
 
 ## <a name="api-summaries"></a>Interfejs API podsumowania
 
-### <a name="consumption"></a>Użycie
+### <a name="consumption"></a>Zużycie
 Bezpośrednio w sieci Web i Enterprise klienci mogą używać wszystkich następujące interfejsy API, z wyjątkiem wskazanych wyjątków:
 
 -   [Budżetów API](https://docs.microsoft.com/rest/api/consumption/budgets) (*tylko klienci korporacyjni*): Tworzenie budżetów kosztów lub użycia zasobów, grup zasobów lub liczników rozliczeń. Po utworzeniu budżetów można skonfigurować alerty powiadamiające o po po przekroczeniu zdefiniowanych progów budżetu. Można również skonfigurować akcje występują, gdy został osiągnięty kwoty budżetu.
@@ -84,7 +84,7 @@ Bezpośrednio w sieci Web i Enterprise klienci mogą używać wszystkich następ
 
 -   [Niesklasyfikowaną zawartość interfejs API użycia](/previous-versions/azure/reference/mt219003(v=azure.100)): Uzyskać informacje o użyciu raw, aby platforma Azure zrobi, wszelkie pomiaru/ładowania.
 
-### <a name="billing"></a>Informacje billingowe
+### <a name="billing"></a>Rozliczenia
 -   [Okresy fakturowania API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Określ okresu rozliczeniowego do przeanalizowania wraz z faktury identyfikatory dla tego okresu. Za pomocą faktury identyfikatory interfejsu API faktur.
 
 -   [Faktury API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): Pobierz adres URL pobierania faktur dla okresu rozliczeniowego w postaci pliku PDF.

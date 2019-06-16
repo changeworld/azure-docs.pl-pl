@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596080"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Trwałe funkcje w wersji 2.0 (wersja zapoznawcza) (usługi Azure Functions)
@@ -154,8 +154,8 @@ Obsługa jednostki obejmuje kilka interfejsów API. Dla, istnieje nowy interfejs
 Wykonywanie operacji na jednostce może wywołać te elementy członkowskie obiektu context (`IDurableEntityContext` na platformie .NET):
 
 * **OperationName**: pobiera nazwę operacji.
-* **GetInput\<T >**: pobiera dane wejściowe dla operacji.
-* **GetState\<T >**: pobiera bieżący stan jednostki.
+* **GetInput\<T >** : pobiera dane wejściowe dla operacji.
+* **GetState\<T >** : pobiera bieżący stan jednostki.
 * **SetState**: aktualizuje stan jednostki.
 * **SignalEntity**: wysyła komunikat jednokierunkowy do jednostki.
 * **Funkcja samoobsługowego**: pobiera identyfikator obiektu.
@@ -172,7 +172,7 @@ Operacje są mniej ograniczone niż mechanizmów:
 
 Trwałe jednostki mogą być wywoływane z zwykłe funkcje za pośrednictwem `orchestrationClient` powiązania (`IDurableOrchestrationClient` na platformie .NET). Obsługiwane są następujące metody:
 
-* **ReadEntityStateAsync\<T >**: odczytuje stan obiektu.
+* **ReadEntityStateAsync\<T >** : odczytuje stan obiektu.
 * **SignalEntityAsync**: wysyła komunikat jednokierunkowy do jednostki, a następnie czeka na jego można umieścić w kolejce.
 
 Te metody priorytety wydajności za pośrednictwem spójności: `ReadEntityStateAsync` może zwrócić wartość starych i `SignalEntityAsync` może zwrócić, zanim operacja zostanie zakończona. Z kolei wywołanie jednostki z mechanizmów (zgodnie z opisem) jest silnie spójne.
@@ -183,7 +183,7 @@ Aranżacji można uzyskać dostęp do jednostki przy użyciu obiektu kontekstu. 
 
 * **SignalEntity**: wysyła komunikat jednokierunkowy do jednostki.
 * **CallEntityAsync**: wysyła komunikat do jednostki, a następnie czeka na odpowiedź wskazującą, czy operacja zostanie ukończona.
-* **CallEntityAsync\<T >**: wysyła komunikat do jednostki, a następnie czeka na odpowiedź zawierającą wynik o typie T.
+* **CallEntityAsync\<T >** : wysyła komunikat do jednostki, a następnie czeka na odpowiedź zawierającą wynik o typie T.
 
 Korzystając z komunikacja dwukierunkowa, wyjątki zgłaszane podczas wykonywania operacji również są przesyłane z powrotem do wywołującego aranżacji i zgłaszany ponownie. Z kolei korzystając z pożarem i zapominać, wyjątki nie są przestrzegane.
 

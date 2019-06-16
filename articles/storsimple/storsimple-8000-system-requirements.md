@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: f05e3e85d36ffc23a193a6771a0271c71b2f8544
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60631910"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Oprogramowanie serii StorSimple 8000, wysoką dostępność i wymagania sieciowe
@@ -63,14 +63,14 @@ Urządzenie StorSimple to urządzenie w trybie blokady. Jednak porty muszą być
 
 | Nr portu<sup>1,2</sup> | Wewnątrz lub na zewnątrz | Zakres portów | Wymagane | Uwagi |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Wyjście |Sieć WAN |Nie |<ul><li>Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji.</li><li>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika.</li><li>Aby zezwolić na aktualizacje systemu, ten port musi być również otwarte na potrzeby stałe adresy IP kontrolera.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Wyjście |Sieć WAN |Yes |<ul><li>Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze.</li><li>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika.</li><li>Aby zezwolić na aktualizacje systemu, ten port musi być również otwarte na potrzeby stałe adresy IP kontrolera.</li><li>Port ten jest również używany na obu kontrolerach do wyrzucania elementów bezużytecznych.</li></ul> |
-| UDP 53 (DNS) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. |
-| UDP 123 (NTP) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie. |
-| TCP 9354 |Wyjście |Sieć WAN |Yes |Port ruchu wychodzącego jest używany przez urządzenia StorSimple do komunikowania się z usługą Menedżera urządzeń StorSimple. |
-| 3260 (iSCSI) |W |Sieć LAN |Nie |Port ten jest używany do dostępu do danych za pośrednictwem interfejsu iSCSI. |
-| 5985 |W |Sieć LAN |Nie |Przychodzący port jest używany przez programu StorSimple Snapshot Manager do komunikowania się z urządzeniem StorSimple.<br>Port ten jest również używany podczas zdalnego nawiązywania połączenia programu Windows PowerShell dla usługi StorSimple przy użyciu protokołu HTTP. |
-| 5986 |W |Sieć LAN |Nie |Port ten jest używany podczas zdalnego nawiązywania połączenia programu Windows PowerShell dla usługi StorSimple przy użyciu protokołu HTTPS. |
+| TCP 80 (HTTP)<sup>3</sup> |limit |WAN |Nie |<ul><li>Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji.</li><li>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika.</li><li>Aby zezwolić na aktualizacje systemu, ten port musi być również otwarte na potrzeby stałe adresy IP kontrolera.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |limit |WAN |Tak |<ul><li>Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze.</li><li>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika.</li><li>Aby zezwolić na aktualizacje systemu, ten port musi być również otwarte na potrzeby stałe adresy IP kontrolera.</li><li>Port ten jest również używany na obu kontrolerach do wyrzucania elementów bezużytecznych.</li></ul> |
+| UDP 53 (DNS) |limit |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. |
+| UDP 123 (NTP) |limit |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie. |
+| TCP 9354 |limit |WAN |Tak |Port ruchu wychodzącego jest używany przez urządzenia StorSimple do komunikowania się z usługą Menedżera urządzeń StorSimple. |
+| 3260 (iSCSI) |W |LAN |Nie |Port ten jest używany do dostępu do danych za pośrednictwem interfejsu iSCSI. |
+| 5985 |W |LAN |Nie |Przychodzący port jest używany przez programu StorSimple Snapshot Manager do komunikowania się z urządzeniem StorSimple.<br>Port ten jest również używany podczas zdalnego nawiązywania połączenia programu Windows PowerShell dla usługi StorSimple przy użyciu protokołu HTTP. |
+| 5986 |W |LAN |Nie |Port ten jest używany podczas zdalnego nawiązywania połączenia programu Windows PowerShell dla usługi StorSimple przy użyciu protokołu HTTPS. |
 
 <sup>1</sup> nie portów przychodzących, które muszą być otwarte w publicznym Internecie.
 

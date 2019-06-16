@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
 ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61436605"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Używanie schematu CloudEvents za pomocą usługi Event Grid
@@ -62,18 +62,18 @@ Oto przykład zdarzenia usługi Azure Blob Storage w formacie CloudEvents:
 
 CloudEvents v0.1 ma następujące właściwości dostępne:
 
-| CloudEvents        | Type     | Przykład wartości JSON             | Opis                                                        | Mapowanie siatki zdarzeń
+| CloudEvents        | Typ     | Przykład wartości JSON             | Opis                                                        | Mapowanie siatki zdarzeń
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | Typ wystąpienia, które wystąpiły w                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | Wersja typu zdarzenia (opcjonalnie)                            | dataVersion
 | cloudEventsVersion | String   | "0.1"                            | Wersja specyfikacji CloudEvents, który używa zdarzenia        | *przekazany przez*
-| source             | URI      | "/ mycontext"                     | W tym artykule opisano producenta zdarzeń                                       | temat #subject
+| source             | Identyfikator URI      | "/ mycontext"                     | W tym artykule opisano producenta zdarzeń                                       | temat #subject
 | Identyfikator zdarzenia            | String   | "1234-1234-1234"                 | Identyfikator zdarzenia                                                    | id
 | eventTime          | Znacznik czasu| "2018-04-05T17:31:00Z"           | Sygnatura czasowa gdy zdarzenie wystąpiło (opcjonalnie)                    | eventTime
-| schemaURL          | URI      | "https:\//myschema.com"           | Link do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
+| schemaURL          | Identyfikator URI      | "https:\//myschema.com"           | Link do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
 | contentType        | String   | "application/json"               | Opisz format kodowania danych (opcjonalnie)                       | *nie jest używany*
 | Rozszerzenia         | Mapa      | { "extA": "vA", "extB", "vB" }  | Wszelkie dodatkowe metadane (opcjonalnie)                                 | *nie jest używany*
-| dane               | Object   | {"objA": "oceny luk w zabezpieczeniach", "objB", "vB"}  | Ładunek zdarzenia (opcjonalnie)                                       | dane
+| data               | Object   | {"objA": "oceny luk w zabezpieczeniach", "objB", "vB"}  | Ładunek zdarzenia (opcjonalnie)                                       | data
 
 Aby uzyskać więcej informacji, zobacz [Specyfikacja CloudEvents](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 

@@ -14,10 +14,10 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: ea373c7b35ef82496690f213b92cc97f3536c57a
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66356147"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schemat definicji usług Azure Cloud Services (plik csdef)
@@ -70,6 +70,6 @@ W poniższej tabeli opisano atrybuty `ServiceDefinition` elementu.
 | Atrybut               | Opis |
 | ----------------------- | ----------- |
 | name                    |Wymagany. Nazwa usługi. Nazwa musi być unikatowa w ramach konta usługi.|
-| topologyChangeDiscovery | Opcjonalny. Określa typ powiadomienia o zmianie topologii. Możliwe wartości to:<br /><br /> -   `Blast` -Wysyła aktualizacji tak szybko, jak to możliwe do wszystkich wystąpień roli. Jeśli opcja jest wybrana, roli powinno być możliwe do obsługi aktualizacji topologii bez ponownego uruchamiania.<br />-   `UpgradeDomainWalk` — Wysyła je do każdego wystąpienia roli w sposób sekwencyjny poprzednie wystąpienie pomyślnie zatwierdzenia aktualizacji.|
+| topologyChangeDiscovery | Opcjonalny. Określa typ powiadomienia o zmianie topologii. Możliwe wartości:<br /><br /> -   `Blast` -Wysyła aktualizacji tak szybko, jak to możliwe do wszystkich wystąpień roli. Jeśli opcja jest wybrana, roli powinno być możliwe do obsługi aktualizacji topologii bez ponownego uruchamiania.<br />-   `UpgradeDomainWalk` — Wysyła je do każdego wystąpienia roli w sposób sekwencyjny poprzednie wystąpienie pomyślnie zatwierdzenia aktualizacji.|
 | schemaVersion           | Opcjonalny. Określa wersję ze schematem definicji usługi. Wersja schematu umożliwia programowi Visual Studio wybierz odpowiednie narzędzia zestawu SDK na potrzeby sprawdzania poprawności schematu, jeśli jest zainstalowana więcej niż jedna wersja zestawu SDK side-by-side.|
 | upgradeDomainCount      | Opcjonalny. Określa liczbę domen uaktualnienia, w których są przydzielane ról w tej usłudze. Wystąpienia roli są przydzielane do domeny uaktualnienia, gdy wdrażana jest usługa. Aby uzyskać więcej informacji, zobacz [zaktualizować rola usługi w chmurze lub wdrożenia](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment), [Zarządzanie dostępności maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) i [co to jest modelem usługi chmury](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package).<br /><br /> Można określić maksymalnie 20 domen uaktualnienia. Jeśli nie zostanie określony, domyślna liczba domen uaktualnienia wynosi 5.|

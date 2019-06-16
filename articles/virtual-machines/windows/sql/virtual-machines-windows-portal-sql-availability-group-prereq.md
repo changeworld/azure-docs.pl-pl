@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60592245"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Należy spełnić wymagania wstępne dotyczące tworzenia zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure
@@ -206,7 +206,7 @@ W poniższych krokach skonfigurować **kontrolera domeny podstawowej usługi ad*
 1. Otwórz w portalu, **SQL-HA-RG** zasobu, grupy i wybierz **kontrolera domeny podstawowej usługi ad** maszyny. Na **kontrolera domeny podstawowej usługi ad**, kliknij przycisk **Connect** do otwarcia pliku RDP, aby uzyskać dostęp do pulpitu zdalnego.
 
     ![Nawiązywanie połączenia z maszyną wirtualną](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
-2. Zaloguj się przy użyciu konta administratora skonfigurowane (**\DomainAdmin**) i hasło (**Contoso! 0000**).
+2. Zaloguj się przy użyciu konta administratora skonfigurowane ( **\DomainAdmin**) i hasło (**Contoso! 0000**).
 3. Domyślnie **Menedżera serwera** powinien zostać wyświetlony pulpit nawigacyjny.
 4. Kliknij przycisk **Dodaj role i funkcje** łącze na pulpicie nawigacyjnym.
 

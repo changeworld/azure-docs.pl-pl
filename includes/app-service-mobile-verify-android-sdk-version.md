@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141250"
 ---
 Ze względu na trwające prace programistyczne wersji zestawu SDK systemu Android zainstalowane w programie Android Studio może być niezgodna z wersją w kodzie. Zestaw SDK systemu Android, do którego odwołuje się ten samouczek jest wersja 26, najnowsze informacje w czasie pisania. Numer wersji może zwiększyć, są wyświetlane nowe wersje zestawu SDK, a firma Microsoft zaleca używanie najnowsza dostępna wersja.
@@ -22,7 +22,7 @@ Jeśli któraś z tych pojawi się wersja zestawu SDK systemu Android zainstalow
 
 1. W programie Android Studio, kliknij przycisk **narzędzia** > **Android** > **menedżera zestawów SDK**. Jeśli nie zainstalowano najnowszej wersji platformy zestawu SDK, następnie kliknij, aby go zainstalować. Zanotuj numer wersji.
 
-2. Na **Eksplorator projektów** , w obszarze **skryptów narzędzia Gradle**, otwórz plik **build.gradle (moduł: aplikacja)**. Upewnij się, że **compileSdkVersion** i **targetSdkVersion** są ustawione na zainstalowaną najnowszą wersję zestawu SDK. `build.gradle` Może wyglądać następująco:
+2. Na **Eksplorator projektów** , w obszarze **skryptów narzędzia Gradle**, otwórz plik **build.gradle (moduł: aplikacja)** . Upewnij się, że **compileSdkVersion** i **targetSdkVersion** są ustawione na zainstalowaną najnowszą wersję zestawu SDK. `build.gradle` Może wyglądać następująco:
 
     ```gradle
     android {

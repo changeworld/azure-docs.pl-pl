@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713043"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Informacje o wersji dla usługi Azure HDInsight
@@ -28,7 +28,7 @@ Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klient
 
 Nowe aktualizacje i możliwości dzielą się następujących kategoriach:
 
-*  ***Aktualizowanie usługi Hadoop i innych projektów typu open-source*** — oprócz ponad 1000 poprawki różnych projektów typu open source, ta aktualizacja zawiera nową wersję 20 + **Spark (2.3)** i **Kafka (1.0)**.
+*  ***Aktualizowanie usługi Hadoop i innych projektów typu open-source*** — oprócz ponad 1000 poprawki różnych projektów typu open source, ta aktualizacja zawiera nową wersję 20 + **Spark (2.3)** i **Kafka (1.0)** .
 
     a.  [**Nowe funkcje programu Apache Spark 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
@@ -822,73 +822,73 @@ Ta sekcja obejmuje wszystkie powszechnych luk w zabezpieczeniach i zagrożeń CV
 
 ### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
-| **Podsumowanie:** oceny zasad struktury Apache Ranger ignoruje znaków po "\*" wieloznaczny |
+| **Podsumowanie:**  oceny zasad struktury Apache Ranger ignoruje znaków po "\*" wieloznaczny |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Ważność:** krytyczne                                                                           |
-| **Dostawca:** Hortonworks                                                                          |
-| **Dotyczy wersji:** wersji HDInsight 3.6, w tym 0.5.x/0.6.x/0.7.0 wersji struktury Apache Ranger     |
-| **Użytkownicy, których to dotyczy:** środowisk, w których zasady platformy Ranger za pomocą znaków po "\*" znak symbolu wieloznacznego — takie jak Moje\*test, test\*txt |
-| **Wpływ:** zasad zasobów dopasowywania ignoruje znaków po "\*" wieloznacznym, który może spowodować niezamierzone zachowanie.      |
-| **Napraw szczegółów:** dopasowywania zasobów zasady platformy Ranger został zaktualizowany do poprawnej obsługi symboli wieloznacznych dopasowań.           |
-| **Zalecana akcja:** uaktualnienie do usługi HDI 3.6 (przy użyciu Apache Ranger 0.7.1+).                                |
+| **Ważność:**  krytyczne                                                                           |
+| **Dostawca:**  Hortonworks                                                                          |
+| **Dotyczy wersji:**  wersji HDInsight 3.6, w tym 0.5.x/0.6.x/0.7.0 wersji struktury Apache Ranger     |
+| **Użytkownicy, których to dotyczy:**  środowisk, w których zasady platformy Ranger za pomocą znaków po "\*" znak symbolu wieloznacznego — takie jak Moje\*test, test\*txt |
+| **Wpływ:**  zasad zasobów dopasowywania ignoruje znaków po "\*" wieloznacznym, który może spowodować niezamierzone zachowanie.      |
+| **Napraw szczegółów:**  dopasowywania zasobów zasady platformy Ranger został zaktualizowany do poprawnej obsługi symboli wieloznacznych dopasowań.           |
+| **Zalecana akcja:**  uaktualnienie do usługi HDI 3.6 (przy użyciu Apache Ranger 0.7.1+).                                |
 
 ### <a name="cve-2017-7677"></a>**CVE-2017-7677**
 
-| **Podsumowanie:** Apache Ranger Hive autoryzujący ma sprawdzać dostępność RWX uprawnienie, jeśli nie określono lokalizacji zewnętrznej |
+| **Podsumowanie:**  Apache Ranger Hive autoryzujący ma sprawdzać dostępność RWX uprawnienie, jeśli nie określono lokalizacji zewnętrznej |
 |--------------------------------------------------------------------------------------------------|
-| **Ważność:** krytyczne                                                                           |
-| **Dostawca:** Hortonworks                                                                          |
-| **Dotyczy wersji:** wersji HDInsight 3.6, w tym 0.5.x/0.6.x/0.7.0 wersji struktury Apache Ranger |
-| **Użytkownicy, których to dotyczy:** środowiskach korzystających z lokalizacji zewnętrznej dla tabel programu hive |
-| **Wpływ:** w środowiskach korzystających z lokalizacji zewnętrznej dla tabel programu hive, Apache Ranger Hive autoryzujący powinna sprawdzać, czy uprawnienia RWX do lokalizacji zewnętrznej, określony dla Tworzenie tabeli. |
-| **Napraw szczegółów:** zasad Ranger Hive autoryzujący został zaktualizowany do poprawnej obsługi sprawdzenie uprawnień z lokalizacji zewnętrznej. |
-| **Zalecana akcja:** użytkownicy powinni wykonać uaktualnienie do klastra HDI 3.6 (przy użyciu struktury Apache Ranger 0.7.1+). |
+| **Ważność:**  krytyczne                                                                           |
+| **Dostawca:**  Hortonworks                                                                          |
+| **Dotyczy wersji:**  wersji HDInsight 3.6, w tym 0.5.x/0.6.x/0.7.0 wersji struktury Apache Ranger |
+| **Użytkownicy, których to dotyczy:**  środowiskach korzystających z lokalizacji zewnętrznej dla tabel programu hive |
+| **Wpływ:**  w środowiskach korzystających z lokalizacji zewnętrznej dla tabel programu hive, Apache Ranger Hive autoryzujący powinna sprawdzać, czy uprawnienia RWX do lokalizacji zewnętrznej, określony dla Tworzenie tabeli. |
+| **Napraw szczegółów:**  zasad Ranger Hive autoryzujący został zaktualizowany do poprawnej obsługi sprawdzenie uprawnień z lokalizacji zewnętrznej. |
+| **Zalecana akcja:**  użytkownicy powinni wykonać uaktualnienie do klastra HDI 3.6 (przy użyciu struktury Apache Ranger 0.7.1+). |
 
 ### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
-| **Podsumowanie:** potencjalnych wykonywanie kodu jako nieprawidłowy użytkownik w Apache Storm |
+| **Podsumowanie:**  potencjalnych wykonywanie kodu jako nieprawidłowy użytkownik w Apache Storm |
 |--------------------------------------------------------------------------------------------------|
-|**Ważność:** ważne |
-| **Dostawca:** Hortonworks |
-| **Wersje, których to dotyczy:** HDP 2.4.0 HDP 2.5.0, HDP 2.6.0 |
-| **Użytkownicy, których to dotyczy:** użytkowników, którzy używać systemu Storm w trybie bezpiecznym i przy użyciu elementu blobstore dystrybucję topologii na podstawie artefaktów lub przy użyciu elementu blobstore dystrybucję wszelkie zasoby topologii. |
-| **Wpływ:** w niektórych sytuacjach i konfiguracji systemu STORM teoretycznie możliwe dla właściciela topologii w celu nakłonienia nadzorcy, aby uruchomić proces roboczy jako użytkownik inny, inny niż główny, jest. W najgorszym przypadku może to prowadzić do zabezpieczenia poświadczeń użytkownika, naruszenia zabezpieczeń. Tę lukę w zabezpieczeniach dotyczy tylko urządzeń systemu Apache Storm z włączonymi zabezpieczeniami. |
-| **Ograniczenie:** uaktualnienie do HDP 2.6.2.1, ponieważ nie ma obecnie żadnych obejść.  |
+|**Ważność:**  ważne |
+| **Dostawca:**  Hortonworks |
+| **Wersje, których to dotyczy:**  HDP 2.4.0 HDP 2.5.0, HDP 2.6.0 |
+| **Użytkownicy, których to dotyczy:**  użytkowników, którzy używać systemu Storm w trybie bezpiecznym i przy użyciu elementu blobstore dystrybucję topologii na podstawie artefaktów lub przy użyciu elementu blobstore dystrybucję wszelkie zasoby topologii. |
+| **Wpływ:**  w niektórych sytuacjach i konfiguracji systemu STORM teoretycznie możliwe dla właściciela topologii w celu nakłonienia nadzorcy, aby uruchomić proces roboczy jako użytkownik inny, inny niż główny, jest. W najgorszym przypadku może to prowadzić do zabezpieczenia poświadczeń użytkownika, naruszenia zabezpieczeń. Tę lukę w zabezpieczeniach dotyczy tylko urządzeń systemu Apache Storm z włączonymi zabezpieczeniami. |
+| **Ograniczenie:**  uaktualnienie do HDP 2.6.2.1, ponieważ nie ma obecnie żadnych obejść.  |
 
 ### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
-| **Podsumowanie:** handler/ssl/OpenSslEngine.java w Netty 4.0.x przed 4.0.37.Final i 4.1.x przed 4.1.1.Final pozwala zdalnym osobom atakującym prowadzić do odmowy usługi (Pętla nieskończona) |
+| **Podsumowanie:**  handler/ssl/OpenSslEngine.java w Netty 4.0.x przed 4.0.37.Final i 4.1.x przed 4.1.1.Final pozwala zdalnym osobom atakującym prowadzić do odmowy usługi (Pętla nieskończona) |
 |--------------------------------------------------------------------------------------------------|
 | **Ważność:** Średnia  |
-| **Dostawca:** Hortonworks  |
-| **Wersje, których to dotyczy:** 2.x.x HDP od 2.3.x  |
-| **Dotyczy użytkowników:** wszystkich użytkowników korzystających z systemu plików HDFS. |
-| **Wpływ:** wpływ jest niska, jak Hortonworks nie mogą używać OpenSslEngine.java bezpośrednio w bazie kodu usługi Hadoop.     |
-| **Zalecana akcja:** uaktualnienie do HDP 2.6.3.   |
+| **Dostawca:**  Hortonworks  |
+| **Wersje, których to dotyczy:**  2.x.x HDP od 2.3.x  |
+| **Dotyczy użytkowników:**  wszystkich użytkowników korzystających z systemu plików HDFS. |
+| **Wpływ:**  wpływ jest niska, jak Hortonworks nie mogą używać OpenSslEngine.java bezpośrednio w bazie kodu usługi Hadoop.     |
+| **Zalecana akcja:**  uaktualnienie do HDP 2.6.3.   |
 
 ### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
-| **Podsumowanie:** dopasowywania problem w oceny zasad ścieżek struktury Apache Ranger                                                                    |
+| **Podsumowanie:**  dopasowywania problem w oceny zasad ścieżek struktury Apache Ranger                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
-| **Ważność:** normalny                                                                                                                   |
+| **Ważność:**  normalny                                                                                                                   |
 | **Dostawcy:** Hortonworks                                                                                                                |
-| **Dotyczy wersji:** wszystkich wersji HDP 2.5, w tym 0.6.0/0.6.1/0.6.2 wersji struktury Apache Ranger                                         |
-| **Użytkownicy, których to dotyczy:** wszystkich użytkowników narzędzia administratora zasady platformy ranger.                                                                         |
-| **Wpływ:** aparatu zasad Ranger niepoprawnie pasuje ścieżek w niektórych sytuacjach, gdy zasady zawiera symbole wieloznaczne i cyklicznego flagi. |
+| **Dotyczy wersji:**  wszystkich wersji HDP 2.5, w tym 0.6.0/0.6.1/0.6.2 wersji struktury Apache Ranger                                         |
+| **Użytkownicy, których to dotyczy:**  wszystkich użytkowników narzędzia administratora zasady platformy ranger.                                                                         |
+| **Wpływ:**  aparatu zasad Ranger niepoprawnie pasuje ścieżek w niektórych sytuacjach, gdy zasady zawiera symbole wieloznaczne i cyklicznego flagi. |
 | **Napraw szczegółów:** Logika oceny zasad stałej                                                                                          |
-| **Zalecana akcja:** użytkownicy powinni wykonać uaktualnienie do 2.5.4+ HDP (przy użyciu struktury Apache Ranger 0.6.3+) lub HDP 2.6 (przy użyciu struktury Apache Ranger 0.7.0+)         |
+| **Zalecana akcja:**  użytkownicy powinni wykonać uaktualnienie do 2.5.4+ HDP (przy użyciu struktury Apache Ranger 0.6.3+) lub HDP 2.6 (przy użyciu struktury Apache Ranger 0.7.0+)         |
 
 ### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
-| **Podsumowanie:** struktury Apache Ranger przechowywane problem skryptów cross-site  |
+| **Podsumowanie:**  struktury Apache Ranger przechowywane problem skryptów cross-site  |
 |--------------------------------------------------------------------------------------------------|
-| **Ważność:** normalny |
-| **Dostawca:** Hortonworks |
-| **Dotyczy wersji:** wszystkie wersje 2.3/2.4/2.5 HDP, w tym 0.5.x/0.6.0/0.6.1/0.6.2 wersji struktury Apache Ranger  |
-| **Użytkownicy, których to dotyczy:** wszystkich użytkowników narzędzia administratora zasady platformy ranger. |
-| **Wpływ:** struktury Apache Ranger jest narażony na przechowywane Cross-Site Scripting, wprowadzając warunki zasady niestandardowe. Administratorzy mogą przechowywać fragmentów dowolnego kodu javascript wykonanie kodu, gdy normalni użytkownicy Zaloguj się i zasad dostępu. |
-| **Napraw szczegółów:** dodać logikę do oczyszczają danych wejściowych użytkownika.  |
-| **Zalecana akcja:** użytkownicy powinni wykonać uaktualnienie do 2.5.4+ HDP (przy użyciu struktury Apache Ranger 0.6.3+) lub HDP 2.6 (przy użyciu struktury Apache Ranger 0.7.0+)  |
+| **Ważność:**  normalny |
+| **Dostawca:**  Hortonworks |
+| **Dotyczy wersji:**  wszystkie wersje 2.3/2.4/2.5 HDP, w tym 0.5.x/0.6.0/0.6.1/0.6.2 wersji struktury Apache Ranger  |
+| **Użytkownicy, których to dotyczy:**  wszystkich użytkowników narzędzia administratora zasady platformy ranger. |
+| **Wpływ:**  struktury Apache Ranger jest narażony na przechowywane Cross-Site Scripting, wprowadzając warunki zasady niestandardowe. Administratorzy mogą przechowywać fragmentów dowolnego kodu javascript wykonanie kodu, gdy normalni użytkownicy Zaloguj się i zasad dostępu. |
+| **Napraw szczegółów:**  dodać logikę do oczyszczają danych wejściowych użytkownika.  |
+| **Zalecana akcja:**  użytkownicy powinni wykonać uaktualnienie do 2.5.4+ HDP (przy użyciu struktury Apache Ranger 0.6.3+) lub HDP 2.6 (przy użyciu struktury Apache Ranger 0.7.0+)  |
 
 ## <a name="fixed-issues-for-support"></a>Rozwiązano problemy dla pomocy technicznej
 
@@ -1001,7 +1001,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | BUG-98082              | [HIVE-18597](https://issues.apache.org/jira/browse/HIVE-18597)                                                                         | LLAP: Zawsze pakiet jar API log4j2 dla org.apache.log4j                                           |
 | BUG-99849              | ND                                                                                                                                    | Utwórz nową tabelę z poziomu kreatora plik próbuje użyć domyślnej bazy danych                                    |
 
-**Bezpieczeństwo**
+**Zabezpieczenia**
 
 | **Identyfikator usterki Hortonworks** | **Apache JIRA**                                                                                                                                                                                            | **Podsumowanie**                                                                                                           |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|

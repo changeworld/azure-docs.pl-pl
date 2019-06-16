@@ -1,8 +1,8 @@
 ---
-title: Co to jest co jeśli narzędzie dostępu warunkowego usługi Azure Active Directory?
+title: Co to jest co jeśli narzędzie jest dostępne w usłudze Azure Active Directory dostępu warunkowego?
 description: Dowiedz się, jak może zrozumieć wpływ zasad dostępu warunkowego w swoim środowisku.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
+keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 11/20/2018
 ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6271c7a99e82fb1fff2815167b0149c74212f260
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a0f1fa0630a58054a138b730141b982af427475
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111916"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co to jest co jeśli narzędzie dostępu warunkowego usługi Azure Active Directory?
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co to jest co jeśli narzędzie jest dostępne w usłudze Azure Active Directory dostępu warunkowego?
 
 [Dostęp warunkowy](../active-directory-conditional-access-azure-portal.md) jest to funkcja usługi Azure Active Directory (Azure AD), która umożliwia kontrolowanie sposobu autoryzowany dostęp użytkowników aplikacji w chmurze. Skąd wiadomo, czego można oczekiwać, formularz zasady dostępu warunkowego w danym środowisku? Aby odpowiedzieć na to pytanie, można użyć **dostępu warunkowego narzędzie analizy warunkowej**.
 
@@ -33,7 +33,7 @@ W tym artykule wyjaśniono, jak można użyć tego narzędzia do testowania zasa
 
 ## <a name="what-it-is"></a>Co to jest
 
-**Warunkowego dostępu, co, jeśli narzędzie zasad** umożliwia zrozumienie wpływu zasad dostępu warunkowego w swoim środowisku. Zamiast testować zasady, przeprowadzając wiele logowań w sposób ręczny, to narzędzie umożliwia ocenianie symulowanego logowania użytkownika. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji. Raport nie zawiera tylko warunkowe zastosowane zasady dostępu, ale także [zasady klasyczne](policy-migration.md#classic-policies) jeśli takie istnieją.    
+**Warunkowego dostępu, co, jeśli narzędzie zasad** umożliwia zrozumienie wpływu zasad dostępu warunkowego w swoim środowisku. Zamiast testować zasady, przeprowadzając wiele logowań w sposób ręczny, to narzędzie umożliwia ocenianie symulowanego logowania użytkownika. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji. Raport nie zawiera tylko zastosowane zasady dostępu warunkowego, ale także [zasady klasyczne](policy-migration.md#classic-policies) jeśli takie istnieją.    
 
 Co jeśli narzędzia również pozwala szybko określić zasady, które są stosowane do określonego użytkownika. Informacje, można użyć na przykład, jeśli trzeba rozwiązać problem.  
 
@@ -86,11 +86,11 @@ Adres IP jest jeden adres IPv4, aby mógł naśladować [warunek lokalizacji](lo
 
 ### <a name="device-platforms"></a>Platformy urządzeń
 
-To ustawienie naśladuje [warunek platform urządzeń](conditions.md#device-platforms) i stanowi odpowiednik **wszystkich platform (w tym nieobsługiwane)**. 
+To ustawienie naśladuje [warunek platform urządzeń](conditions.md#device-platforms) i stanowi odpowiednik **wszystkich platform (w tym nieobsługiwane)** . 
 ### <a name="client-apps"></a>Aplikacje klienckie
 
 To ustawienie naśladuje [warunek aplikacje klienckie](conditions.md#client-apps).
-Domyślnie to ustawienie powoduje, że ocena wszystkich zasad mających **przeglądarki** lub **aplikacje mobilne i klienci stacjonarni** albo indywidualnie lub oba wybrane. Ta funkcja wykrywa także zasady, które wymuszają **programu Exchange ActiveSync (EAS)**. To ustawienie można zawęzić, wybierając:
+Domyślnie to ustawienie powoduje, że ocena wszystkich zasad mających **przeglądarki** lub **aplikacje mobilne i klienci stacjonarni** albo indywidualnie lub oba wybrane. Ta funkcja wykrywa także zasady, które wymuszają **programu Exchange ActiveSync (EAS)** . To ustawienie można zawęzić, wybierając:
 
 - **Przeglądarka** do oceny, wszystkie zasady, o co najmniej **przeglądarki** wybrane. 
 
@@ -123,8 +123,8 @@ Na liście zasad, które nie mają zastosowania do użytkownika można, a także
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
 
-- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md). 
+- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
 
 - Jeśli chcesz przeprowadzić migrację zasady klasyczne, zobacz [Migrowanie zasad klasycznych w witrynie Azure portal](policy-migration.md)  

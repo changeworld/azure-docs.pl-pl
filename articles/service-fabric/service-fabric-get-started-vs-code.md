@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60946576"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
@@ -59,7 +59,7 @@ Należy zainstalować następujące wymagania wstępne dla platformy .NET Core /
 * [.NET core](https://www.microsoft.com/net/learn/get-started) (w wersji 2.0.0 lub nowszy)
 * [C#rozszerzenia programu Visual Studio Code (obsługiwane przez technologię OmniSharp) programu VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) potrzebnych do debugowania C# usług. Można to zrobić, klikając ikonę rozszerzenia w **pasku działań** programu VS Code i rozszerzenia lub z programu VS Code Marketplace.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 1. Open VS Code.
 2. Kliknij ikonę rozszerzenia **pasku działań** po lewej stronie programu VS Code. Wyszukaj frazę "Service Fabric". Kliknij przycisk **zainstalować** rozszerzenia usług Reliable Services usługi Service Fabric.

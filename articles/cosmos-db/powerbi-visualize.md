@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: 76531de279dfe6e9b73b3895f0ef63c4c88b63cd
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65979007"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Wizualizuj dane z usługi Azure Cosmos DB przy użyciu łącznika usługi Power BI
 
-[Usługa Power BI](https://powerbi.microsoft.com/) to usługa online, na którym można tworzyć i udostępniać pulpity nawigacyjne i raporty. Power BI Desktop jest narzędziu, która umożliwia pobieranie danych z różnych źródeł danych raportu. Usługa Azure Cosmos DB jest jednym z źródła danych, które można użyć w programie Power BI Desktop. Power BI Desktop możesz połączyć konto usługi Azure Cosmos DB za pomocą łącznika usługi Azure Cosmos DB dla usługi Power BI.  Po zaimportowaniu danych usługa Azure Cosmos DB do usługi Power BI, można przekształcić je, tworzenie raportów i publikowania raportów usługi Power BI.   
+[Usługa Power BI](https://powerbi.microsoft.com/) to usługa online, na którym można tworzyć i udostępniać pulpity nawigacyjne i raporty. Power BI Desktop to narzędzie do tworzenia raportów, które umożliwia pobieranie danych z różnych źródeł danych. Usługa Azure Cosmos DB jest jednym ze źródeł danych, którego możesz użyć w aplikacji Power BI Desktop. Możesz połączyć aplikację Power BI Desktop z kontem usługi Azure Cosmos DB przy użyciu łącznika usługi Azure Cosmos DB dla usługi Power BI.  Po zaimportowaniu danych usługi Azure Cosmos DB do usługi Power BI możesz przekształcić je, utworzyć raporty i opublikować te raporty w usłudze Power BI.   
 
-W tym artykule opisano kroki wymagane do połączenia z kontem usługi Azure Cosmos DB Power BI Desktop. Po nawiązaniu połączenia możesz przejść do kolekcji, wyodrębniania danych, przekształcanie danych JSON w formacie tabelarycznym i opublikowania raportu usługi Power BI.
+W tym artykule opisano kroki wymagane do połączenia konta usługi Azure Cosmos DB z aplikacją Power BI Desktop. Po nawiązaniu połączenia możesz przejść do dowolnej kolekcji, wyodrębnić dane, przekształcić dane JSON na format tabelaryczny i opublikować raport w usłudze Power BI.
 
 > [!NOTE]
 > Łącznik usługi Power BI dla usługi Azure Cosmos DB łączy w programie Power BI Desktop. Raporty utworzone w programie Power BI Desktop mogą być publikowane w witrynie PowerBI.com. Nie można przeprowadzić bezpośredniego wyodrębniania danych z usługi Azure Cosmos DB z witryny PowerBI.com. 
@@ -48,7 +48,7 @@ Przed wykonaniem instrukcji zawartych w tym samouczku usługa Power BI, upewnij 
 
 Udostępnianie raportów w witrynie PowerBI.com, musisz mieć konto w witrynie PowerBI.com.  Aby dowiedzieć się więcej na temat usługi Power BI i programie Power BI Pro, zobacz [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).
 
-## <a name="lets-get-started"></a>Zaczynajmy
+## <a name="lets-get-started"></a>Zacznijmy
 W tym samouczku Wyobraźmy sobie czy geologist, bada wulkany na całym świecie. Dane swe dzieła są przechowywane na koncie usługi Azure Cosmos DB i format dokumentu JSON jest następujący:
 
     {
@@ -78,7 +78,7 @@ Spowoduje pobranie danych swe dzieła z konta usługi Azure Cosmos DB i wizualiz
 
 3. Wybierz **Home** wstążki, a następnie kliknij pozycję **Pobierz dane**.  **Pobierz dane** powinno pojawić się okno.
 
-4. Kliknij pozycję **Azure**, wybierz opcję **usługi Azure Cosmos DB (Beta)**, a następnie kliknij przycisk **Connect**. 
+4. Kliknij pozycję **Azure**, wybierz opcję **usługi Azure Cosmos DB (Beta)** , a następnie kliknij przycisk **Connect**. 
 
     ![Usługa Power BI Desktop, Pobierz dane - łącznik usługi Power BI](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
 

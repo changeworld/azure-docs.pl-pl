@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595985"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
@@ -51,7 +51,7 @@ Przykładami są przydatne w przypadku wprowadzenia nowych pojęć. Zgodnie z j�
 
 + **`queryType`** Ustawia analizator, co w usłudze Azure Search może być [domyślny prosty analizator zapytań](search-query-simple-examples.md) (optymalne w celu wyszukiwania pełnotekstowego) lub [pełnego analizatora zapytań Lucene](search-query-lucene-examples.md) używane dla zapytań zaawansowanych konstrukcji, takich jak wyrażeń regularnych , wyszukiwanie w sąsiedztwie, rozmyte i wyszukiwanie symboli wieloznacznych, kilka.
 
-+ **`search`** zawiera dopasowanie kryteria, zwykle tekstu, ale często wraz z operatorami logicznymi. Postanowienia pojedynczą autonomiczną są *termin* zapytania. Są ujęte w cudzysłów wieloczęściowy kwerendy *kluczowych* zapytania. Wyszukiwanie może być Niezdefiniowany, podobnie jak w **`search=*`**, ale najprawdopodobniej składa się z warunków, wyrażenia i operatory, podobny do wyświetlanych w przykładzie.
++ **`search`** zawiera dopasowanie kryteria, zwykle tekstu, ale często wraz z operatorami logicznymi. Postanowienia pojedynczą autonomiczną są *termin* zapytania. Są ujęte w cudzysłów wieloczęściowy kwerendy *kluczowych* zapytania. Wyszukiwanie może być Niezdefiniowany, podobnie jak w **`search=*`** , ale najprawdopodobniej składa się z warunków, wyrażenia i operatory, podobny do wyświetlanych w przykładzie.
 
 + **`searchFields`** jest opcjonalny, używany do ograniczenia wykonywania zapytania w określonych polach.
 
@@ -86,8 +86,8 @@ Wymagane elementy na żądania zapytania obejmują następujące składniki:
 
 + Usługa punktu końcowego i indeks kolekcję documents wyrażone jako adres URL zawierający składniki stałych i zdefiniowanych przez użytkownika: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Tylko REST) jest niezbędne, ponieważ więcej niż jedna wersja interfejsu API jest dostępny przez cały czas. 
-+ **`api-key`**, zapytania lub administratora klucz api-key, uwierzytelnia żądanie do usługi.
-+ **`queryType`**, prostej lub pełnej, który można pominąć, jeśli używasz domyślnych wbudowanych prostą składnię.
++ **`api-key`** , zapytania lub administratora klucz api-key, uwierzytelnia żądanie do usługi.
++ **`queryType`** , prostej lub pełnej, który można pominąć, jeśli używasz domyślnych wbudowanych prostą składnię.
 + **`search`** lub **`filter`** zapewnia dopasowanie kryteria, które mogą być nieokreślony, jeśli chcesz wykonać to puste wyszukiwanie. Oba typy zapytań są rozważane w kontekście prosty analizator, ale nawet zaawansowane zapytania wymaga parametru wyszukiwania do przekazywania wyrażeń złożonych zapytań.
 
 Wszystkie inne parametry wyszukiwania są opcjonalne. Aby uzyskać pełną listę atrybutów, zobacz [Tworzenie indeksu (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). Aby dokładniej poznać sposób parametry są używane podczas przetwarzania, zobacz [jak wyszukiwanie pełnotekstowe działa w usłudze Azure Search](search-lucene-query-architecture.md).
@@ -160,7 +160,7 @@ Jeśli chcesz, aby usługa Azure Search zwracała wyniki uporządkowane według 
 
 
 ### <a name="hit-highlighting"></a>Wyróżnianie trafień
-W usłudze Azure Search, podkreślając części, w wynikach wyszukiwania, zgodne z zapytaniem wyszukiwania umożliwiają łatwe za pomocą **`highlight`**, **`highlightPreTag`**, i **`highlightPostTag`** parametrów. Można wskazać, w których polach *z możliwością wyszukiwania* ma zostać wyróżniony dopasowany tekst, a także dokładnie określić tagi ciągów, które mają zostać dodane na początku i na końcu dopasowanego tekstu zwracanego przez usługę Azure Search.
+W usłudze Azure Search, podkreślając części, w wynikach wyszukiwania, zgodne z zapytaniem wyszukiwania umożliwiają łatwe za pomocą **`highlight`** , **`highlightPreTag`** , i **`highlightPostTag`** parametrów. Można wskazać, w których polach *z możliwością wyszukiwania* ma zostać wyróżniony dopasowany tekst, a także dokładnie określić tagi ciągów, które mają zostać dodane na początku i na końcu dopasowanego tekstu zwracanego przez usługę Azure Search.
 
 ## <a name="see-also"></a>Zobacz także
 

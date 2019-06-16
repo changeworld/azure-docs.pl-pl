@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b6f0d25f621768f79e8262f38617152e91692a23
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129858"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Odzyskiwanie po awarii dla aplikacji SaaS z wieloma dzierżawami przy użyciu replikacji geograficznej bazy danych
@@ -52,7 +52,7 @@ Plan odzyskiwania po awarii A oparty na replikację geograficzną składa się z
 
 Wszystkie elementy powinny być traktowane dokładnie, zwłaszcza, jeśli działających na dużą skalę. Ogólnie plan musi osiągnąć cele kilka:
 
-* Konfigurowanie
+* Konfiguracja
     * Utworzyć i utrzymywać w środowisku lustrzane odbicie w regionie odzyskiwania. Tworzenie pul elastycznych i wszelkimi bazami danych, w tym środowisku odzyskiwania replikacji rezerwy pojemności w regionie odzyskiwania. Obsługa tego środowiska obejmują replikowanie nowych baz danych dzierżawy, ponieważ są one udostępnione.  
 * Odzyskiwanie
     * W przypadku, gdy środowisko odzyskiwania skalowane w dół jest używany do zminimalizowania kosztów codziennych, pul i baz danych należy przeskalować w górę do uzyskania pełnej przepustowości w regionie odzyskiwania
@@ -90,7 +90,7 @@ Później w kroku oddzielne repatriacji przejścia w tryb failover bazy danych w
 ## <a name="review-the-healthy-state-of-the-application"></a>Przegląd stanu dobrej kondycji aplikacji
 
 Przed rozpoczęciem procesu odzyskiwania należy przejrzeć normalnego stanu dobrej kondycji aplikacji.
-1. W przeglądarce sieci web Otwórz Centrum zdarzeń o nazwie Wingtip Tickets (http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net - Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia).
+1. W przeglądarce sieci web Otwórz Centrum zdarzeń o nazwie Wingtip Tickets (http://events.wingtip-dpt.&lt ; użytkownika&gt;. trafficmanager.net - Zastąp &lt; użytkownika&gt; wartością użytkownika wdrożenia).
     * Przewiń do dołu strony i zwróć uwagę, nazwę serwera wykazu i lokalizację w stopce. Lokalizacja jest region, w którym aplikacja została wdrożona.
     *PORADA: Umieść kursor myszy nad lokalizacją, aby powiększyć wyświetlania. * 
      ![Dobrej kondycji Centrum zdarzeń w regionie oryginalny](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
@@ -207,7 +207,7 @@ Gdy punkt końcowy aplikacji jest wyłączone w usłudze Traffic Manager, aplika
  
      ![Centrum zdarzeń w trybie offline](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * Jeśli strona zdarzenia w trybie offline dzierżawy możesz otworzyć bezpośrednio, wyświetla powiadomienie dzierżawy w trybie offline. Na przykład, jeśli firmy Contoso Concert Hall jest w trybie offline, próby otwarcia http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/contosoconcerthall ![strona firmy Contoso w trybie Offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * Jeśli strona zdarzenia w trybie offline dzierżawy możesz otworzyć bezpośrednio, wyświetla powiadomienie dzierżawy w trybie offline. Na przykład, jeśli firmy Contoso Concert Hall jest w trybie offline, próby otwarcia http://events.wingtip-dpt.&lt ; użytkownika&gt;.trafficmanager.net/contosoconcerthall ![ strona firmy Contoso w trybie Offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Aprowizacja nowej dzierżawy w regionie odzyskiwania
 Nawet w przypadku, zanim wszystkie istniejące bazy danych dzierżaw zostały przełączone w tryb failover, można udostępnić nowych dzierżaw w regionie odzyskiwania.  
@@ -256,7 +256,7 @@ W tym zadaniu należy zaktualizować jednej z baz danych dzierżawy.
 2. W *PowerShell ISE*, w ...\Learning skryptu Modules\Business ciągłość działalności biznesowej i Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 po awarii, należy ustawić następującą wartość:
     * **$DemoScenario = 5** Usuń zdarzenie z dzierżawy w regionie odzyskiwania
 3. Naciśnij klawisz **F5** można wykonać skryptu
-4. Odśwież stronę zdarzenia firmy Contoso Concert Hall (http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/contosoconcerthall — zastępuje &lt;użytkownika&gt; wartością użytkownika wdrożenia) i zwróć uwagę, że ostatnie zdarzenie został usunięty.
+4. Odśwież stronę zdarzenia firmy Contoso Concert Hall (http://events.wingtip-dpt.&lt ; użytkownika&gt;.trafficmanager.net/contosoconcerthall — zastępuje &lt; użytkownika&gt; wartością użytkownika wdrożenia) i zwróć uwagę, że ostatnie zdarzenie został usunięty.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>Wycofywania aplikacji, do jego oryginalnej regionu produkcji
 
@@ -289,7 +289,7 @@ Teraz załóżmy awarii jest rozwiązany i uruchom skrypt repatriacji.
     * Naciśnij klawisz **F5** do uruchomienia skryptu odzyskiwania w nowym oknie programu PowerShell.  Może potrwać kilka minut i mogą być monitorowane w oknie programu PowerShell.
     ![Proces repatriacji](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. Po uruchomieniu skryptu, Odśwież stronę Centrum zdarzeń (http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net)
+4. Po uruchomieniu skryptu, Odśwież stronę Centrum zdarzeń (http://events.wingtip-dpt.&lt ; użytkownika&gt;. trafficmanager.net)
     * Należy zauważyć, że wszystkie dzierżawy są online i jest dostępny w trakcie tego procesu.
 
 5. Po zakończeniu repatriacji Odśwież Centrum zdarzeń, a następnie otwórz stronę zdarzenia Hawthorn Hall. Należy zauważyć, że ta baza danych ma został zwrócony do kraju macierzystego do oryginalnego regionu.

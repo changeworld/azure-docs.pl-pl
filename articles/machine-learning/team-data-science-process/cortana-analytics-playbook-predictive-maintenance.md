@@ -12,10 +12,10 @@ ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64573771"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
@@ -291,7 +291,7 @@ To pytanie, w tym miejscu: "Co to jest prawdopodobieństwo, że zasób usługi z
 
 ![Rysunek 5. Błąd czasu prognoz etykiety klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) rysunek 5. Etykiety klasyfikacji wieloklasowej dla błędu czasu prognoz
 
-To pytanie, w tym miejscu: "Co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu z powodu problemu z/głównej przyczyny _P<sub>i</sub>_?" gdzie _i_ jest liczba możliwych przyczyn. Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "wkrótce się niepowodzeniem z powodu przyczyny _P<sub>i</sub>_" (etykieta = _P<sub>i</sub>_). Etykieta wszystkie rekordy jako "normal" (Etykieta = 0). W przypadku tej metody etykiety są również podzielone na kategorie (zobacz rysunek 6).
+To pytanie, w tym miejscu: "Co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu z powodu problemu z/głównej przyczyny _P<sub>i</sub>_ ?" gdzie _i_ jest liczba możliwych przyczyn. Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "wkrótce się niepowodzeniem z powodu przyczyny _P<sub>i</sub>_ " (etykieta = _P<sub>i</sub>_ ). Etykieta wszystkie rekordy jako "normal" (Etykieta = 0). W przypadku tej metody etykiety są również podzielone na kategorie (zobacz rysunek 6).
 
 ![Rysunek 6. Główna przyczyna prognozowania etykiety klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) rysunek 6. Etykiety klasyfikacji wieloklasowej dla głównej przyczyny prognoz
 

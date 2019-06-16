@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: b8142551d9c20c18d83c256b3f07a0deb291577c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66147654"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 Ułatwiają Azure bieżących i przyszłych klientów zrozumieć i korzystanie z różnych funkcji zabezpieczeń dostępnych w i związanych z platformą Azure, firma Microsoft opracowała szereg oficjalne dokumenty, przeglądy zabezpieczeń, najlepsze rozwiązania i Listy kontrolne.
 Tematy zakresu pod względem szczegółowo i są okresowo aktualizowane. Ten dokument jest częścią tej serii, zgodnie z opisem w następującej sekcji abstrakcyjne.
 
@@ -247,7 +247,7 @@ W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://docs.m
 
 -   [Usługa Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS.
 
-#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
 [Usługa Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) dla maszyn wirtualnych (VM) ułatwia zaspakajanie organizacyjnych bezpieczeństwa i zgodności z przepisami dzięki możliwości szyfrowania dysków maszyny Wirtualnej (w tym dysków rozruchowych i danych) przy użyciu kluczy i zasad w kontrolce [klucz usługi Azure Vault](https://azure.microsoft.com/services/key-vault/).
 
 Rozwiązanie Disk Encryption for Windows opiera się na [szyfrowania dysków Microsoft BitLocker](https://technet.microsoft.com/library/cc732774.aspx), a rozwiązanie dla systemu Linux opiera się na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
@@ -304,7 +304,7 @@ Serwerów logicznych i baz danych są specyficzne dla SQL platformy Azure pojęc
 
 Serwery SQL Azure nie są fizycznej lub wystąpień maszyn wirtualnych, zamiast tego są one kolekcji baz danych, udostępnianie zasady zarządzania i zabezpieczeń, które są przechowywane w tak zwany "wzorca logicznego" bazy danych.
 
-![SQL Azure](./media/azure-isolation/azure-isolation-fig11.png)
+![Usługi SQL Azure](./media/azure-isolation/azure-isolation-fig11.png)
 
 Logicznej głównej bazy danych obejmują:
 

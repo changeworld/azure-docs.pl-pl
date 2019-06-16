@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409283"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Chmury i regionów, w których usługa Azure Media Services v3 istnieje
@@ -26,9 +26,9 @@ Azure Media Services v3 jest dostępny za pośrednictwem usługi Azure Resource 
 
 | Cecha|Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Usługa Azure EventGrid](reacting-to-media-services-events.md) | Dostępne | Niedostępny | Niedostępny | Niedostępny |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Dostępne | Niedostępny | Niedostępny | Niedostępny |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Dostępne | Niedostępny | Niedostępny | Niedostępny |
+| [Usługa Azure EventGrid](reacting-to-media-services-events.md) | Dostępne | Niedostępne | Niedostępne | Niedostępne |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Dostępne | Niedostępne | Niedostępne | Niedostępne |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Dostępne | Niedostępne | Niedostępne | Niedostępne |
 | [StandardEncoderPreset](encoding-concept.md) | Dostępne | Dostępne | Dostępne | Dostępne |
 | [LiveEvents](live-streaming-overview.md) | Dostępne | Dostępne | Dostępne | Dostępne |
 | [Punkty](streaming-endpoint-concept.md) | Dostępne | Dostępne | Dostępne | Dostępne |
@@ -64,7 +64,7 @@ Na przykład dla regionu platformy Azure zachodnie stany USA 2 (wyświetlane pon
 
 Następujące punkty końcowe są pamiętać podczas nawiązywania połączenia konta usługi Media Services z różnych krajowych chmur platformy Azure.
 
-### <a name="global-azure"></a>Globalna platforma Azure
+### <a name="global-azure"></a>Global Azure
 
 |Punkty końcowe ||
 | --- | --- | 

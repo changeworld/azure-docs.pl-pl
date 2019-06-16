@@ -14,25 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bc0fd83bd45e7c5c671b387d124cdddc75244ade
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60705177"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573509"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Monitorowanie i przetwarzania zdarzeń zabezpieczeń w usłudze Azure Security Center
 Pulpit nawigacyjny zdarzeń zawiera omówienie liczby zdarzeń związanych z zabezpieczeniami, zbierane wraz z upływem czasu i listę istotnych zdarzeń, które mogą wymagać Twojej uwagi.  
 
 > [!NOTE]
-> Aby użyć tej funkcji, obszar roboczy musi być uruchomiona usługa Log Analytics w wersji 2 i na warstwy standardowa usługi Security Center. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](security-center-pricing.md) Aby uzyskać więcej informacji na temat warstwy standardowa.
->
->
+> Pulpit nawigacyjny zdarzeń zabezpieczeń zostaną wycofane z dniem 31 lipca 2019 r. Aby uzyskać więcej informacji i alternatywne usług zobacz [wycofywania Centrum zabezpieczeń funkcji (2019 lipca)](security-center-features-retirement-july2019.md#menu_events).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>Co to jest zdarzenie związane z zabezpieczeniami?
 Usługa Security Center używa programu Microsoft Monitoring Agent do gromadzenia zabezpieczeń różnych konfiguracji związanych z i zdarzeń z maszyn i przechowuje te zdarzenia w obszarach roboczych usługi. Przykłady takich danych to: operacyjne dzienniki systemu (Windows dzienniki zdarzeń), uruchomione procesy i zdarzeń z rozwiązania w zakresie zabezpieczeń zintegrowanych z usługą Security Center. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do obszarów roboczych.
+
+## <a name="requirements"></a>Wymagania
+Aby użyć tej funkcji, obszar roboczy musi być uruchomiona usługa Log Analytics w wersji 2 i na warstwy standardowa usługi Security Center. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](security-center-pricing.md) Aby uzyskać więcej informacji na temat warstwy standardowa.
 
 ## <a name="events-processed-dashboard"></a>Pulpit nawigacyjny zdarzeń przetworzone
 Możesz uzyskać dostęp do **zdarzenia** pulpitu nawigacyjnego z poziomu menu głównego usługi Security Center lub usługa Security Center **Przegląd** bloku.  

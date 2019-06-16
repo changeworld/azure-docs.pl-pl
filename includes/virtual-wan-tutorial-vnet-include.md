@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 40c8cb41ad3bcd46e9973a5f96134ff1bfd02fd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 40ae634897361219c39e60d2161d3576cc44a400
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150808"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077519"
 ---
-Aby szybko utworzyć sieć wirtualną, możesz kliknąć "Try It" w tym artykule, aby otworzyć konsolę programu PowerShell. Dopasuj wartości, a następnie skopiuj polecenia i wklej je do okna konsoli. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](/powershell/azure/new-azureps-module-az). Aby uzyskać instrukcje instalacji modułu Az, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-az-ps).
+Aby szybko utworzyć sieć wirtualną, możesz kliknąć "Try It" w tym artykule, aby otworzyć konsolę programu PowerShell w usłudze Azure Cloud Shell. Dopasuj wartości, a następnie skopiuj polecenia i wklej je do okna konsoli. 
 
 Sprawdź, czy przestrzeń adresowa utworzona dla sieci wirtualnej nie pokrywa się z żadnymi zakresami adresów innych sieci wirtualnych, z którymi chcesz się połączyć, ani z przestrzeniami adresowymi sieci lokalnej.
 

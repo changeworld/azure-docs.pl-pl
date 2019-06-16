@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736291"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Jak drzwiami frontowymi dopasowuje się do żądania do reguły routingu
@@ -78,7 +78,7 @@ Po określająca hosta określonego serwera sieci Web i filtrowanie możliwych r
 
 Aby wyjaśnić, dodatkowo, Spójrzmy na inny zestaw przykładów:
 
-| Reguła routingu | Host frontonu    | Ścieżka     |
+| Reguła routingu | Hosta serwera sieci Web    | Ścieżka     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |

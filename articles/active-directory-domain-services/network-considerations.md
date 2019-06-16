@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2010
 ms.author: mstephen
 ms.openlocfilehash: 1f21d71bba01eb4bec24dbb558a126ecbbd78bbf
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246947"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Informacje dotyczące sieci usługi Azure AD Domain Services
@@ -69,7 +69,7 @@ Następujące porty są wymagane dla usług domenowych Azure AD do usługi i obs
 | 443 | Obowiązkowy |Synchronizacja z dzierżawą usługi Azure AD |
 | 5986 | Obowiązkowy | Zarządzanie domeny |
 | 3389 | Obowiązkowy | Zarządzanie domeny |
-| 636 | Opcjonalne | Bezpieczny dostęp protokołu LDAP (LDAPS) do domeny zarządzanej |
+| 636 | Optional (Opcjonalność) | Bezpieczny dostęp protokołu LDAP (LDAPS) do domeny zarządzanej |
 
 **Port 443 (synchronizacji z usługą Azure AD)**
 * Służy do synchronizacji katalogu usługi Azure AD z domeny zarządzanej.

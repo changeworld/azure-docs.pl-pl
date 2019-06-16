@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: 15babefda36ba37cf6df7820ac888668e4a502be
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65509920"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Zarządzanie użytkownikami w aplikacji Azure Blockchain Workbench
@@ -104,7 +104,7 @@ Do zarządzania użytkownikami i organizacji, które są częścią sieci konsor
 1. Wybierz Kafelek elementu członkowskiego, aby wyświetlić listę bieżących członków.
 2. Dla użytkownika, aby usunąć, wybierz **Usuń** z roli listy rozwijanej.
 
-    ![Usuń członka](./media/manage-users/application-remove-member.png)
+    ![Usuwanie elementu członkowskiego](./media/manage-users/application-remove-member.png)
 
 #### <a name="change-or-add-role"></a>Zmiana lub dodanie roli
 

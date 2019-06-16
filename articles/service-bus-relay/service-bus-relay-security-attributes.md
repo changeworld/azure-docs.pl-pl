@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d8ce3c995e8e0f20ed6d694f481cc5fc9fde4fa7
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000150"
 ---
 # <a name="security-attributes-for-azure-service-bus-relay"></a>Atrybuty zabezpieczeń dla usługi Azure Service Bus Relay
@@ -30,7 +30,7 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowane w usłudze Azure Service
 | Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | Usługa wymaga protokołu TLS. |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Nie | Używa tylko certyfikaty TLS firmy Microsoft.  |
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND | |
-| Wywołania interfejsu API szyfrowane| Tak | HTTPS. |
+| Wywołania interfejsu API szyfrowane| Yes | HTTPS. |
 
 ## <a name="network-segmentation"></a>Segmentacji sieci
 

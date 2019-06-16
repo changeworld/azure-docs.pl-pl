@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708691"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
@@ -84,8 +84,8 @@ Gdzie:
 
 Klucze szyfrowania w usłudze Key Vault jest reprezentowane przez obiekty klucza internetowego JSON [JWK]. Podstawowej specyfikacji JWK/JWA również zostały rozszerzone umożliwiające typy kluczy, które są unikatowe dla implementacji usługi Key Vault. Umożliwia importowanie kluczy przy użyciu pakietu specyficzne dla dostawcy sprzętowego modułu zabezpieczeń, na przykład bezpiecznego transportu kluczy, które mogą być używane tylko w sprzętowych modułach zabezpieczeń klucza magazynu.  
 
-- **Klucze "Elastyczne"**: Klucz przetwarzane w oprogramowania za pomocą usługi Key Vault, ale są szyfrowane w stanie spoczynku przy użyciu klucza system, który znajduje się w module HSM. Klienci mogą Importuj istniejący klucz RSA lub WE (krzywej eliptycznej) lub żądania usługi Key Vault wygenerowanie takiego.
-- **Klucze "Twarde"**: Klucz przetwarzane w sprzętowym module zabezpieczeń (sprzętowy moduł zabezpieczeń). Te klucze są chronione w jednym z środowiska klucza magazynu przez sprzętowy moduł zabezpieczeń Security World (Brak jednego środowiska zabezpieczeń Security World dla lokalizacji geograficznej w celu zachowania izolacji). Klientów można zaimportować klucza RSA lub WE, w postaci nietrwałego lub eksportowanie z zgodnego urządzenia sprzętowego modułu zabezpieczeń. Klienci mogą również poprosić o usłudze Key Vault, aby wygenerować klucz. Ten typ klucza dodaje atrybut T JWK pobrać do przenoszenia materiału klucza sprzętowego modułu zabezpieczeń.
+- **Klucze "Elastyczne"** : Klucz przetwarzane w oprogramowania za pomocą usługi Key Vault, ale są szyfrowane w stanie spoczynku przy użyciu klucza system, który znajduje się w module HSM. Klienci mogą Importuj istniejący klucz RSA lub WE (krzywej eliptycznej) lub żądania usługi Key Vault wygenerowanie takiego.
+- **Klucze "Twarde"** : Klucz przetwarzane w sprzętowym module zabezpieczeń (sprzętowy moduł zabezpieczeń). Te klucze są chronione w jednym z środowiska klucza magazynu przez sprzętowy moduł zabezpieczeń Security World (Brak jednego środowiska zabezpieczeń Security World dla lokalizacji geograficznej w celu zachowania izolacji). Klientów można zaimportować klucza RSA lub WE, w postaci nietrwałego lub eksportowanie z zgodnego urządzenia sprzętowego modułu zabezpieczeń. Klienci mogą również poprosić o usłudze Key Vault, aby wygenerować klucz. Ten typ klucza dodaje atrybut T JWK pobrać do przenoszenia materiału klucza sprzętowego modułu zabezpieczeń.
 
      Aby uzyskać więcej informacji o granicach geograficznych, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
 
@@ -330,7 +330,7 @@ Istnieją dodatkowe atrybuty tylko do odczytu, które znajdują się w odpowiedz
 > [!Note] 
 > Jeśli upłynie certyfikatem usługi Key Vault, jest adresowalnych klucza i wpisu tajnego przestać działać w.  
 
-#### <a name="tags"></a>Tagi
+#### <a name="tags"></a>`Tags`
 
  Klient określonego słownika par kluczy i wartości, podobnie jak tagów w kluczy i wpisów tajnych.  
 

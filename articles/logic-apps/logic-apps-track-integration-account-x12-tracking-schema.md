@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
 ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845770"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Tworzenie schematów do śledzenia X12 wiadomości w kont integracji dla usługi Azure Logic Apps
@@ -337,7 +337,7 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | receiverPartnerName | String | X12 komunikatu nazwę partnera odbierającego firmy. (Opcjonalnie) |
 | senderQualifier | String | Wyślij kwalifikator partnera. (Obowiązkowe) |
 | senderIdentifier | String | Wyślij identyfikator partnera. (Obowiązkowe) |
-| Element receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
+| receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
 | receiverIdentifier | String | Otrzymać identyfikator partnera. (Obowiązkowe) |
 | agreementName | String | Nazwa X12 umowy, do której wiadomości są rozwiązane. (Opcjonalnie) |
 | direction | Enum | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
@@ -348,8 +348,8 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | respondingfunctionalGroupControlNumber | String | Numer kontrolny grupy oryginalnego funkcjonalnej. (Opcjonalnie) |
 | respondingFunctionalGroupId | String | Mapuje do AK101 w grupie funkcjonalnej potwierdzania identyfikatora. (Opcjonalnie) |
 | isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
-| statusCode | Wyliczenia | Kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
-| processingStatus | Wyliczenia | Stan przetwarzania potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
+| statusCode | Enum | Kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
+| processingStatus | Enum | Stan przetwarzania potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | ak903 | String | Liczba zestawów transakcji odebrane. (Opcjonalnie) |
 | ak904 | String | Akceptowane liczby zestawów transakcji w grupie funkcjonalnej zidentyfikowane. (Opcjonalnie) |
 | ak9Segment | String | Czy grupy funkcjonalnej identyfikowane w segmencie AK1 jest zaakceptowane lub odrzucone i dlaczego. (Opcjonalnie) |

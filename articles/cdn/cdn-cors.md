@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 337f2a31d60d54b47c692b06b5d63c28c0964061
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 5092872433529f11f699aa8a0c5e87d110cb59f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876218"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077426"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Usługa Azure CDN przy użyciu mechanizmu CORS
 ## <a name="what-is-cors"></a>Co to jest mechanizm CORS?
@@ -85,7 +85,7 @@ Jeśli wyrażenie regularne dopasowuje, zastępuje reguły **Access-Control-Allo
 ![Przykład reguły z wyrażeniem regularnym](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Reguła nagłówka żądania dla każdego źródła.
-Zamiast wyrażeń regularnych, zamiast tego można utworzyć regułę osobne dla każdego źródła mają być dozwolone, za pomocą **wieloznaczny nagłówka żądania** [dopasować stan](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1). Podobnie jak w przypadku metoda wyrażenia regularnego, aparat reguł samodzielnie ustawia nagłówków CORS. 
+Zamiast wyrażeń regularnych, zamiast tego można utworzyć regułę osobne dla każdego źródła mają być dozwolone, za pomocą **wieloznaczny nagłówka żądania** [dopasować stan](/previous-versions/azure/mt757336(v=azure.100)#match-conditions). Podobnie jak w przypadku metoda wyrażenia regularnego, aparat reguł samodzielnie ustawia nagłówków CORS. 
 
 ![Przykład reguły bez wyrażeń regularnych](./media/cdn-cors/cdn-cors-no-regex.png)
 

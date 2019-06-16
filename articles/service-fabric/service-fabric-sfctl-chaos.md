@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: b584ec301f0f4841c8df8fbbafb410abf645c373
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837355"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
@@ -34,7 +34,7 @@ Uruchamianie, zatrzymywanie i sporządzić raport na temat usługi testu chaos.
 | --- | --- |
 | zdarzenia | Pobiera następny segment zdarzenia Chaos na podstawie token kontynuacji lub zakresu czasu. |
 | Pobierz | Pobierz stan Chaos. |
-| rozpoczynanie | Uruchamia Chaos w klastrze. |
+| start | Uruchamia Chaos w klastrze. |
 | Zatrzymaj | Zatrzymuje chaosu, jeśli jest uruchomiony w klastrze i umieścić harmonogram Chaos w stanie zatrzymania. |
 
 ## <a name="sfctl-chaos-events"></a>Interfejs sfctl chaos zdarzenia

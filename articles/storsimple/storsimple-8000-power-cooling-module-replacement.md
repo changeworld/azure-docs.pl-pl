@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60632505"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Zastąp zasilania i chłodzenia modułu na urządzeniu StorSimple
@@ -90,10 +90,10 @@ Wykonaj te instrukcje, gdy jesteś gotowy do usunięcia zasilania i chłodzenia 
    
    | Label | Opis |
    |:--- |:--- |
-   | 1 |MODULE PCM 0 |
+   | 1 |PCM 0 |
    | 2 |PCM 1 |
-   | 3 |Kontrolera 0 |
-   | 4 |Kontrolera 1 |
+   | 3 |Kontroler 0 |
+   | 4 |Kontroler 1 |
 5. Wyłącz uszkodzony PCM i Odłącz zasilający dostaw. Możesz teraz usunąć modułu PCM.
 6. Zapoznanie się z nim zatrzaśnięcia i stronie uchwytu modułu PCM między thumb i palec i zmieścić je ze sobą, aby otworzyć uchwytu.
    

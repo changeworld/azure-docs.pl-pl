@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61482874"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Zastąp moduł kontrolera na urządzeniu StorSimple
@@ -36,7 +36,7 @@ W tym samouczku wyjaśniono, jak usunąć i Zastąp jeden lub oba moduły kontro
 
 W poniższej tabeli przedstawiono scenariusze zastąpienie obsługiwanych kontrolera.
 
-| Przypadek | Scenariusza wymiany | Odpowiednie procedury |
+| przypadek | Scenariusza wymiany | Odpowiednie procedury |
 |:--- |:--- |:--- |
 | 1 |Jeden kontroler jest w stanie niepowodzenia, inny kontroler jest w dobrej kondycji i aktywne. |[Pojedynczy kontroler zastąpienie](#replace-a-single-controller), która opisuje [logiki stojącej za zastępuje pojedynczy kontroler](#single-controller-replacement-logic), jak również [zamienne](#single-controller-replacement-steps). |
 | 2 |Oba kontrolery nie powiodło się i wymaga zastąpienia. Podstawa montażowa, dyski i obudowy dysku są w dobrej kondycji. |[Zastąpienie podwójną kontrolera](#replace-both-controllers), opisano [logiki stojącej za zastępczego kontrolera podwójną](#dual-controller-replacement-logic), jak również [zamienne](#dual-controller-replacement-steps). |
@@ -92,10 +92,10 @@ Wykonaj poniższe kroki, jeśli jeden z kontrolerów w urządzeniu StorSimple sy
    
    | Label | Opis |
    |:--- |:--- |
-   | 1 |MODULE PCM 0 |
+   | 1 |PCM 0 |
    | 2 |PCM 1 |
-   | 3 |Kontrolera 0 |
-   | 4 |Kontrolera 1 |
+   | 3 |Kontroler 0 |
+   | 4 |Kontroler 1 |
 4. Na kontrolerze nie powiodło się Usuń wszystkie kable sieciowe połączone z portów danych. Jeśli jest używany model 8600, należy także usunąć kabli SAS, łączących się kontrolera EBOD z kontrolerem.
 5. Postępuj zgodnie z instrukcjami w [usunąć kontroler](#remove-a-controller) Aby usunąć kontroler nie powiodło się.
 6. W tym samym miejsce, z którego usunięto kontrolera nie powiodło się, należy zainstalować zastępczy fabryki. Spowoduje to wyzwolenie logiki zastąpienie jednego kontrolera. Aby uzyskać więcej informacji, zobacz [pojedynczy kontroler zastąpienie logiki](#single-controller-replacement-logic).

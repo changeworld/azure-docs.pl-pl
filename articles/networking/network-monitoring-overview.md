@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
 ms.openlocfilehash: b112771e8c0f08e6b9a02c2fc5b7e1887b3f2588
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620420"
 ---
 # <a name="network-monitoring-solutions"></a>Rozwiązania do monitorowania sieci 
@@ -37,7 +37,7 @@ Network Performance Monitor (NPM) to zestaw funkcji, z których każdy jest skie
 
 Monitor wydajności, Monitor usługi ExpressRoute i Monitor łączności usługi monitorowanymi możliwości w ramach NPM i są opisane poniżej.
 
-## <a name="performance-monitor"></a>Monitor wydajności
+## <a name="performance-monitor"></a>Monitorowanie wydajności
 
 Monitor wydajności jest częścią NPM i jest monitorowania sieci w chmurze, hybrydowych i dla środowisk lokalnych. Można monitorować łączność sieciową w oddziałach zdalnych i biurach terenowych, lokalizacji magazynu, centrach danych i chmury. Można wykrywać problemy z siecią, zanim użytkownicy zaczną zgłaszać skargi. Dostępne są następujące kluczowe korzyści:
 
@@ -45,7 +45,7 @@ Monitor wydajności jest częścią NPM i jest monitorowania sieci w chmurze, hy
 * Monitorowanie wszystkich ścieżek (w tym nadmiarowe ścieżki) w sieci
 * Rozwiązywanie problemów przejściowych i w momencie problemów z siecią, które są trudne do replikacji
 * Ustalanie konkretnych segmentów w sieci, który jest odpowiedzialny za pogorszenie wydajności
-* Monitorowanie kondycji sieci bez potrzeby korzystania z protokołu SNMP
+* Monitorowanie kondycji sieci bez potrzeby używania protokołu SNMP
 
 ![Mapy topologii NPM](./media/network-monitoring-overview/npm-topology-map.png) 
 
@@ -57,7 +57,7 @@ Aby uzyskać więcej informacji Wyświetl następujące artykuły:
   * [Lutego 2017 r.](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
   * [Sierpnia 2017 r.](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
-## <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
+## <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
 NPM dla usługi ExpressRoute oferuje kompleksowe usługi ExpressRoute monitorowania platformy Azure — prywatna komunikacja równorzędna i połączenia komunikacji równorzędnej firmy Microsoft. Możesz monitorować łączność E2E i wydajności między oddziałami i Azure za pośrednictwem usługi ExpressRoute. Do najważniejszych możliwości należą:
 

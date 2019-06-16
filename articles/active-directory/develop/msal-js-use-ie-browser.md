@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8cf8c84120f4c90d3943cfc31ffbf9aafcec0ba3
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873918"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Znane problemy w przeglądarkach Internet Explorer i Microsoft Edge z MSAL.js
@@ -43,7 +43,7 @@ Jest to spowodowane programu Internet Explorer nie obsługuje natywnie obietnic 
 Wdrażanie aplikacji do środowiska produkcyjnego (na przykład w usłudze Azure Web apps) zwykle działa prawidłowo, pod warunkiem, że użytkownik końcowy zaakceptował okna podręczne. Możemy przetestowane za pomocą programu Internet Explorer 11.
 
 ### <a name="running-locally"></a>Uruchomiony lokalnie
-Jeśli chcesz uruchamiać i debugować lokalnie aplikację w programie Internet Explorer, należy pamiętać o następujących kwestiach (przyjęto założenie, chcesz uruchomić aplikację jako *http://localhost:1234*):
+Jeśli chcesz uruchamiać i debugować lokalnie aplikację w programie Internet Explorer, należy pamiętać o następujących kwestiach (przyjęto założenie, chcesz uruchomić aplikację jako *http://localhost:1234* ):
 
 - Program Internet Explorer jest mechanizm zabezpieczeń o nazwie "Tryb chroniony", co zapobiega MSAL.js działa prawidłowo. Wśród objawy, po zalogowaniu, strona może zostać przekierowany do http://localhost:1234/null.
 
@@ -51,7 +51,7 @@ Jeśli chcesz uruchamiać i debugować lokalnie aplikację w programie Internet 
 
     1. Program Internet Explorer kliknij **narzędzia** (ikonę koła zębatego).
     1. Wybierz **Opcje internetowe** i następnie **zabezpieczeń** kartę.
-    1. Kliknij pozycję **Internet** strefy i usuń zaznaczenie pola wyboru **Włącz tryb chroniony (wymaga ponownego uruchomienia programu Internet Explorer)**. Program Internet Explorer ostrzega o tym, że komputer nie jest już chronione. Kliknij przycisk **OK**.
+    1. Kliknij pozycję **Internet** strefy i usuń zaznaczenie pola wyboru **Włącz tryb chroniony (wymaga ponownego uruchomienia programu Internet Explorer)** . Program Internet Explorer ostrzega o tym, że komputer nie jest już chronione. Kliknij przycisk **OK**.
     1. Ponownie uruchom program Internet Explorer.
     1. Uruchamianie i debugowanie aplikacji.
 

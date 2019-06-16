@@ -15,10 +15,10 @@ ms.date: 05/15/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2df72d03bae8987de4998276a0be0f3ce1ec0333
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65230039"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej
@@ -26,7 +26,7 @@ Weryfikacja dwuetapowa była kroku dodatkowe zabezpieczenia, która pomaga chron
 
 Ten artykuł pomoże Ci skonfigurować Twoje **konto służbowe**. Jeśli chcesz włączyć weryfikację dwuetapową własne, osobiste konto Microsoft, zobacz [o weryfikacji dwuetapowej](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 
-## <a name="set-up-your-account"></a>Skonfiguruj konto
+## <a name="set-up-your-account"></a>Konfigurowanie konta
 
 Przy pomocy technicznej Twojej firmy wymaga rozpocząć korzystanie z weryfikacji dwuetapowej, zobaczysz ekran informujący **administrator wymaga skonfigurowania tego konta w dodatkowej weryfikacji zabezpieczeń**:
 

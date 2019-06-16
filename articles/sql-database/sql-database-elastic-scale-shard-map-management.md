@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60332317"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Skalowanie w poziomie bazy danych z Menedżera map fragmentów
@@ -55,11 +55,11 @@ Elastyczne skalowanie obsługuje następujące typy jako klucze dzielenia na fra
 | .NET | Java |
 | --- | --- |
 | liczba całkowita |liczba całkowita |
-| długi |długi |
+| long |long |
 | Identyfikator GUID |uuid |
 | byte[]  |byte[] |
 | datetime | timestamp |
-| TimeSpan | czas trwania|
+| TimeSpan | Czas trwania|
 | Datetimeoffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Mapowań fragmentów w postaci listy i zakresu
@@ -98,8 +98,8 @@ Każdej z tabel przedstawionych powyżej jest koncepcyjny przykładem **ShardMap
 
 W bibliotece klienta Menedżera mapowań fragmentów jest kolekcją mapowań fragmentów. Danych zarządzanych przez **ShardMapManager** wystąpienia są przechowywane w trzech miejscach:
 
-1. **Mapowanie fragmentów w postaci globalnych (GSM)**: Należy określić bazę danych jako repozytorium dla wszystkich mapowań fragmentów i mapowania. Specjalne tabel i procedur składowanych są tworzone automatycznie do zarządzania informacjami. Zazwyczaj jest małej bazy danych, a niezbyt często używane i nie należy jej używać do innych potrzeb aplikacji. Tabele są w schemacie specjalne o nazwie **__ShardManagement**.
-2. **Mapowanie fragmentów w postaci lokalnej (LSM) tak,**: Każda baza danych, wskazanym jako fragment zostanie zmodyfikowany na potrzeby zawiera kilka małe tabele i szczególnych procedur przechowywanych, które zawierają i zarządzanie nimi specyficzne dla tego fragmentu informacji mapowania fragmentów. Niniejsze informacje mają charakter nadmiarowe informacje w usłudze GSM i umożliwia aplikacji weryfikowanie informacji mapowania fragmentów w pamięci podręcznej bez wprowadzania żadnych obciążenia na GSM; Aplikacja używa LSM, aby ustalić, czy mapowanie pamięci podręcznej jest nadal prawidłowa. Tabele odpowiadający LSM w poszczególnych fragmentach znajdują się również w schemacie **__ShardManagement**.
+1. **Mapowanie fragmentów w postaci globalnych (GSM)** : Należy określić bazę danych jako repozytorium dla wszystkich mapowań fragmentów i mapowania. Specjalne tabel i procedur składowanych są tworzone automatycznie do zarządzania informacjami. Zazwyczaj jest małej bazy danych, a niezbyt często używane i nie należy jej używać do innych potrzeb aplikacji. Tabele są w schemacie specjalne o nazwie **__ShardManagement**.
+2. **Mapowanie fragmentów w postaci lokalnej (LSM) tak,** : Każda baza danych, wskazanym jako fragment zostanie zmodyfikowany na potrzeby zawiera kilka małe tabele i szczególnych procedur przechowywanych, które zawierają i zarządzanie nimi specyficzne dla tego fragmentu informacji mapowania fragmentów. Niniejsze informacje mają charakter nadmiarowe informacje w usłudze GSM i umożliwia aplikacji weryfikowanie informacji mapowania fragmentów w pamięci podręcznej bez wprowadzania żadnych obciążenia na GSM; Aplikacja używa LSM, aby ustalić, czy mapowanie pamięci podręcznej jest nadal prawidłowa. Tabele odpowiadający LSM w poszczególnych fragmentach znajdują się również w schemacie **__ShardManagement**.
 3. **Pamięć podręczną aplikacji**: Każda aplikacja wystąpienia dostęp do **ShardMapManager** obiekt zachowuje lokalnej pamięci podręcznej w pamięci jego mapowań. Przechowuje informacje routingu, który niedawno został pobrany.
 
 ## <a name="constructing-a-shardmapmanager"></a>Konstruowanie ShardMapManager

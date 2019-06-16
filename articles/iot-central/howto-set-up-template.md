@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: d1704220a13b6d6b5a48b7167d7912a38057127d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65466512"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
@@ -70,7 +70,7 @@ Aby dodać nowe miary telemetrii, wybierz **+ nowej miary**, wybierz **Telemetri
 > Nazwy pól w szablonie urządzenia muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia w kolejności do pomiaru dane telemetryczne, mają być wyświetlane w aplikacji, jeśli rzeczywiste urządzenie jest połączone. Tak samo, podczas konfigurowania ustawień i właściwości urządzenia, poleceń, w miarę postępu definiowania szablonu urządzenia w poniższych sekcjach.
 .PNG na przykład można dodać nowej miary telemetrii temperatury:
 
-| Nazwa wyświetlana        | Nazwa pola    |  Jednostki    | Min.   |Maksimum|
+| Nazwa wyświetlana        | Nazwa pola    |  Jednostki    | Min.   |Maks.|
 | --------------------| ------------- |-----------|-------|---|
 | Temperatura         | Temp          |  degC     |  0    |100|
 
@@ -213,7 +213,7 @@ Właściwość lokalizacji można utworzyć jako właściwość urządzenia zgł
 
     | Nazwa wyświetlana  | Nazwa pola | Typ danych |
     | --------------| -----------|-----------|
-    | Lokalizacja urządzenia | deviceLocation | lokalizacja  |
+    | Lokalizacja urządzenia | deviceLocation | location  |
 
    > [!NOTE]
    > Nazwy pól muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia

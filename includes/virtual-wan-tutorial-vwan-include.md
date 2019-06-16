@@ -9,10 +9,10 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66150847"
 ---
 1. Przejdź do strony wirtualne sieci WAN. Jest jednym ze sposobów, aby przejść do strony, aby przejść do **wszystkich usług**, a następnie wyszukaj wirtualne sieci WAN.

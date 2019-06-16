@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6547a640f6e56865d44b6848cf37078161faa538
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: cf40686adcee757db065fa6f68f990ea122b9747
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904843"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem OfficeSpace
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację OfficeSpace oprogramowania w usłudze Azure AD, n
 
 **Aby dodać OfficeSpace oprogramowania z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu oprogr
 
     c. Wklej **odcisk palca** wartości, który skopiowano z witryny Azure portal, w **odcisk palca certyfikatu tożsamości klienta** pola tekstowego. 
 
-    d. Kliknij pozycję **Save Settings (Zapisz ustawienia)**.
+    d. Kliknij pozycję **Save Settings (Zapisz ustawienia)** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -251,7 +251,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka OfficeSpace oprogramowania w panelu dostępu, możesz powinny być automatycznie zalogowany do oprogramowania OfficeSpace, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

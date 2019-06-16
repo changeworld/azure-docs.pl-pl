@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 56a25c95d9bc01078b3eff3729a8a693ee3cf510
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65520252"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
@@ -229,7 +229,7 @@ Podaj internet dozwolonych zakresów adresów, za pomocą [notacji CIDR](https:/
    > [!NOTE]
    > Zakresy adresów małe, za pomocą "/ 31" lub "/ 32" prefiks rozmiary nie są obsługiwane. Tych zakresów powinny być skonfigurowane przy użyciu reguły dotyczące poszczególnych adresów IP.
 
-Reguły sieciowych adresów IP są dozwolone tylko dla **publicznej sieci internet** adresów IP. Zakresy adresów zarezerwowanych dla sieci prywatnych adresów IP (zgodnie z definicją w [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nie są dozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się _zapis 10.*_, _172.16. *_ - _172.31. *_, i _192.168. *_.
+Reguły sieciowych adresów IP są dozwolone tylko dla **publicznej sieci internet** adresów IP. Zakresy adresów zarezerwowanych dla sieci prywatnych adresów IP (zgodnie z definicją w [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nie są dozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się _zapis 10.*_ , _172.16. *_  - _172.31. *_ , i _192.168. *_ .
 
    > [!NOTE]
    > Reguły sieciowych adresów IP nie mają wpływu na żądania pochodzące z tym samym regionie platformy Azure jako konto magazynu. Użyj [reguł sieci wirtualnej](#grant-access-from-a-virtual-network) Aby zezwolić na żądania z tego samego regionu.

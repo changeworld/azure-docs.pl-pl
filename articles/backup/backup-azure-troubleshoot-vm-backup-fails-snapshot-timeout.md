@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
 ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64914952"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
@@ -26,19 +26,19 @@ Ten artykuł zawiera kroki rozwiązywania problemów, które mogą pomóc Ci roz
 
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable — nie można nawiązać komunikacji z usługą Azure Backup agent maszyny Wirtualnej
 
-**Kod błędu:**: UserErrorGuestAgentStatusUnavailable <br>
+**Kod błędu:** : UserErrorGuestAgentStatusUnavailable <br>
 **Komunikat o błędzie**: Nie można nawiązać komunikacji z usługą Azure Backup Agent maszyny Wirtualnej<br>
 
 Po zarejestrowaniu się i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa, Backup Inicjuje zadania, komunikując się z agentem maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Migawka nie zostanie wyzwolony, tworzenie kopii zapasowej może zakończyć się niepowodzeniem. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:<br>
-**Przyczyny 1: [Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Przyczyny 1: [Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **Przyczyny 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyny 3: [Nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
+**Przyczyny 3: [Nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
 **Przyczyna 4: [Rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
 **Przyczyna 5: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError — nie można nawiązać komunikacji z agentem maszyny Wirtualnej w celu uzyskania stanu migawki
 
-**Kod błędu:**: GuestAgentSnapshotTaskStatusError<br>
+**Kod błędu:** : GuestAgentSnapshotTaskStatusError<br>
 **Komunikat o błędzie**: Nie można nawiązać komunikacji z agentem maszyny wirtualnej w celu uzyskania stanu migawki <br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:  
@@ -48,7 +48,7 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - osiągnęła maksymalny limit kolekcji punktów przywracania
 
-**Kod błędu:**: UserErrorRpCollectionLimitReached <br>
+**Kod błędu:** : UserErrorRpCollectionLimitReached <br>
 **Komunikat o błędzie**: Osiągnięto maksymalny limit kolekcji punktów przywracania. <br>
 * Ten problem może wystąpić, jeśli jest zablokowana w grupie zasobów punktu odzyskiwania, zapobiegając automatycznego czyszczenia punktu odzyskiwania.
 * Ten problem może również się zdarzyć, jeśli wiele kopii zapasowych są wyzwalane na dzień. Obecnie firma Microsoft zaleca tylko jedna kopia zapasowa dziennie, jako punkty natychmiastowe Przywracanie są przechowywane przez 1 – 5 dni, zgodnie z migawki skonfigurowany okres przechowywania i tylko 18 błyskawiczny RPs może być skojarzony z maszyną Wirtualną, w dowolnym momencie. <br>
@@ -63,14 +63,14 @@ Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, 
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured — kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych
 
-**Kod błędu:**: UserErrorKeyvaultPermissionsNotConfigured <br>
+**Kod błędu:** : UserErrorKeyvaultPermissionsNotConfigured <br>
 **Komunikat o błędzie**: Kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych. <br>
 
 Dla operacji tworzenia kopii zapasowej zakończyło się sukcesem w zaszyfrowanych maszyn wirtualnych musi mieć uprawnienia do dostępu do magazynu kluczy. Można to zrobić za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) lub za pomocą [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork — operacja migawki nie powiodło się z powodu braku łączności z siecią na maszynie wirtualnej
 
-**Kod błędu:**: ExtensionSnapshotFailedNoNetwork<br>
+**Kod błędu:** : ExtensionSnapshotFailedNoNetwork<br>
 **Komunikat o błędzie**: Nie można wykonać operacji migawki z powodu braku łączności z siecią na maszynie wirtualnej<br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:    
@@ -80,7 +80,7 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 
 ## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - operacji rozszerzenia VMSnapshot nie powiodła się.
 
-**Kod błędu:**: ExtentionOperationFailedForManagedDisks <br>
+**Kod błędu:** : ExtentionOperationFailedForManagedDisks <br>
 **Komunikat o błędzie**: Operacja rozszerzenia VMSnapshot nie powiodła się<br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:  
@@ -91,7 +91,7 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed / BackUpOperationFailedV2 - kopii zapasowej nie powiedzie się, z powodu błędu wewnętrznego
 
-**Kod błędu:**: BackUpOperationFailed / BackUpOperationFailedV2 <br>
+**Kod błędu:** : BackUpOperationFailed / BackUpOperationFailedV2 <br>
 **Komunikat o błędzie**: Niepowodzenie wykonywania kopii zapasowej z powodu błędu wewnętrznego — ponów próbę operacji za kilka minut <br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:  
@@ -104,14 +104,14 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize — obecnie usługa Azure Backup nie obsługuje dysków o rozmiarach większych niż 4095GB
 
-**Kod błędu:**: UserErrorUnsupportedDiskSize <br>
+**Kod błędu:** : UserErrorUnsupportedDiskSize <br>
 **Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków o rozmiarach większych niż 4095GB <br>
 
 Operację tworzenia kopii zapasowej może zakończyć się niepowodzeniem, podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 4095GB. Obsługę dużych dysków będzie dostępna wkrótce.  
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress — nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej
 
-**Kod błędu:**: UserErrorBackupOperationInProgress <br>
+**Kod błędu:** : UserErrorBackupOperationInProgress <br>
 **Komunikat o błędzie**: Nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej<br>
 
 Ostatnie zadanie tworzenia kopii zapasowej nie powiodło się, ponieważ ma istniejące zadanie tworzenia kopii zapasowej w toku. Nie można uruchomić nowe zadanie tworzenia kopii zapasowej, aż do zakończenia bieżącego zadania. Upewnij się, że przed wyzwoleniem lub planowania innej operacji tworzenia kopii zapasowej zostanie przeprowadzona operacji tworzenia kopii zapasowej w toku. Aby sprawdzić stan zadania tworzenia kopii zapasowych, wykonaj następujące czynności:

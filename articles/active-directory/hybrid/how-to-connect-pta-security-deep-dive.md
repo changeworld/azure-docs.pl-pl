@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60348102"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Usługa Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe dane
@@ -186,7 +186,7 @@ Aby odnowić relacji zaufania agenta uwierzytelniania w usłudze Azure AD:
 
 Aplikacja aktualizatora automatycznie aktualizuje agenta uwierzytelniania, po wydaniu nowej wersji (za pomocą poprawki lub ulepszenia wydajności). Aplikacja aktualizatora nie obsługuje wszystkie żądania weryfikacji hasła dla Twojej dzierżawy.
 
-Usługa Azure AD obsługuje nową wersję oprogramowania jako zalogowany **pakietu Instalatora Windows (MSI)**. Plik MSI jest podpisany przy użyciu [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) z SHA256 algorytmu skrótu. 
+Usługa Azure AD obsługuje nową wersję oprogramowania jako zalogowany **pakietu Instalatora Windows (MSI)** . Plik MSI jest podpisany przy użyciu [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) z SHA256 algorytmu skrótu. 
 
 ![Automatyczna aktualizacja](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
