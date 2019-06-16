@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/26/2019
 ms.author: msfussell
 ms.openlocfilehash: 55f043effc7cdb102acea856e89c58f660d0cde5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237750"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Usługa Azure Service Fabric application najlepsze rozwiązania dotyczące projektowania
@@ -79,7 +79,7 @@ Elementy Reliable Actors umożliwia łatwe tworzenie stanowej, wirtualne aktoró
 - Jeśli podczas komunikowania się z innymi usługami przy użyciu [komunikacji zdalnej usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) , w przypadku tworzenia `ServiceProxyFactory`, następnie utwórz fabrykę na [usługa aktora](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) poziom i *nie*na poziomie aktora.
 
 
-## <a name="application-diagnostics"></a>Diagnostyka aplikacji
+## <a name="application-diagnostics"></a>Usługa Application diagnostics
 - Być dokładnym podczas dodawania [rejestrowanie aplikacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) w wywołaniach usług. Pomaga w diagnostyce scenariuszy, w którym usługi wywołują się wzajemnie. Na przykład, gdy element -> B -> C -> D wywołania może zakończyć się niepowodzeniem w dowolnym miejscu; Jeśli nie jest wystarczająco dużo rejestrowania, jest trudny do zdiagnozowania. Jeśli usługi logowania są zbyt dużo ze względu na liczbę połączeń, co najmniej należy rejestrować błędy i ostrzeżenia.
 
 ## <a name="iot-and-messaging-applications"></a>IoT i aplikacji do obsługi komunikatów

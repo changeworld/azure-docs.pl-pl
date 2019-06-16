@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
 ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60326154"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurowanie modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na platformie Azure
@@ -114,7 +114,7 @@ Sonda definiuje, jak platforma Azure sprawdzi, której wystąpienia programu SQL
    | **Nazwa** |Nazwa tekst reprezentujący sondy. Na przykład **SQLAlwaysOnEndPointProbe**. |
    | **Protokół** |**TCP** |
    | **Port** |Można użyć dowolnego dostępnego portu. Na przykład *59999*. |
-   | **Interwał** |*5* |
+   | **Interval** |*5* |
    | **Próg złej kondycji** |*2* |
 
 4.  Kliknij przycisk **OK**. 
@@ -140,7 +140,7 @@ Reguły równoważenia obciążenia skonfiguruj, jak moduł równoważenia obci�
    | **Nazwa** |Nazwa tekst reprezentujący reguły równoważenia obciążenia. Na przykład **SQLAlwaysOnEndPointListener**. |
    | **Protokół** |**TCP** |
    | **Port** |*1433* |
-   | **Port zaplecza** |*1433*. Ta wartość jest ignorowana, ponieważ ta reguła używa **pływającego adresu IP (bezpośredni zwrot serwera)**. |
+   | **Port zaplecza** |*1433*. Ta wartość jest ignorowana, ponieważ ta reguła używa **pływającego adresu IP (bezpośredni zwrot serwera)** . |
    | **Probe** |Użyj nazwy sondy, który został utworzony dla tego modułu równoważenia obciążenia. |
    | **Trwałość sesji** |**Brak** |
    | **Limit czasu bezczynności (minuty)** |*4* |
@@ -226,7 +226,7 @@ Aby dodać adres IP do modułu równoważenia obciążenia za pomocą witryny Az
    |**Nazwa** |Nazwa do identyfikacji sondy.
    |**Protokół** |TCP
    |**Port** |Nieużywany port TCP, które muszą być dostępne na wszystkich maszynach wirtualnych. Nie można używać do innych celów. Nie dwóch detektorów można użyć tego samego portu sondowania. 
-   |**Interwał** |Czas między próbami sondy. Użyj wartości domyślnej (5).
+   |**Interval** |Ilość czasu między próbami sondy. Użyj wartości domyślnej (5).
    |**Próg złej kondycji** |Liczba kolejnych progów, które powinna zakończyć się niepowodzeniem przed utworzeniem maszyny wirtualnej jest uznawana za złą.
 
 8. Kliknij przycisk **OK** można zapisać sondy. 

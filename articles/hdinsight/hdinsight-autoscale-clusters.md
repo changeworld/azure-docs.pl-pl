@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000102"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
@@ -26,10 +26,10 @@ Funkcja automatycznego skalowania klastra Azure HDInsight automatycznie skaluje 
 
 W poniższej tabeli opisano typy klastrów i wersje, które są zgodne z funkcją automatycznego skalowania.
 
-| Wersja | Spark | Hive | LLAP | Hbase | Kafka | Storm | ML |
+| Version | platforma Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3.6 bez ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
-| HDInsight 4.0 bez ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
+| HDInsight 4.0 bez ESP | Yes | Yes | Nie | Nie | Nie | Nie | Nie |
 | HDInsight 3.6 z ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
 | HDInsight 3.6 z ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
 
@@ -190,7 +190,7 @@ Aby włączyć automatyczne skalowanie na działającego klastra, zaznacz **rozm
 
 ![Włącz opcję Automatyczne skalowanie na podstawie harmonogramu węzła procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>Wybieranie skalowania obciążenia lub harmonogramu
 
@@ -221,9 +221,9 @@ Wszystkie komunikaty o stanie klastra, które można napotkać są szczegółowo
 
 | Stan klastra | Wyjaśnienie |
 |---|---|
-| Działa | Klaster działa normalnie. Wszystkie poprzednie działania automatycznego skalowania została ukończona pomyślnie. |
+| Działanie | Klaster działa normalnie. Wszystkie poprzednie działania automatycznego skalowania została ukończona pomyślnie. |
 | Aktualizowanie  | Trwa aktualizowanie konfiguracji automatycznego skalowania klastra.  |
-| Konfiguracja usługi HdInsight  | Skalowanie klastra w górę lub trwa operacja skalowania w dół.  |
+| HDInsight konfiguracji  | Skalowanie klastra w górę lub trwa operacja skalowania w dół.  |
 | Błąd podczas aktualizowania  | HDInsight napotkano problemy podczas aktualizowania konfiguracji skalowania automatycznego. Klienci mogą wybrać ponowić próbę aktualizacji lub wyłączyć automatyczne skalowanie.  |
 | Błąd  | Coś jest nie tak z klastrem, a nie jest używany. Usunąć ten klaster i Utwórz nowe.  |
 

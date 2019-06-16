@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
 ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153759"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrowanie do usługi Azure Premium Storage (dyski niezarządzane)
@@ -180,11 +180,11 @@ Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy
 
     Poniżej przedstawiono opisy parametrów polecenia narzędzia AzCopy:
 
-   * **/ Źródło:  *&lt;źródła&gt;:*** Lokalizacja folderu lub adres URL kontenera magazynu, który zawiera wirtualny dysk twardy.
-   * **/ SourceKey:  *&lt;klucza w przypadku konta źródłowego&gt;:*** Klucz konta magazynu źródłowego konta magazynu.
-   * **/ Dest:  *&lt;docelowy&gt;:*** Adres URL kontenera magazynu do wirtualnego dysku twardego do skopiowania.
-   * **/ DestKey:  *&lt;klucza w przypadku konta dest&gt;:*** Klucz konta magazynu docelowego konta magazynu.
-   * **/ Wzorzec:  *&lt;nazwa pliku&gt;:*** Określ nazwę pliku wirtualnego dysku twardego do skopiowania.
+   * **/ Źródło:  *&lt;źródła&gt;:* ** Lokalizacja folderu lub adres URL kontenera magazynu, który zawiera wirtualny dysk twardy.
+   * **/ SourceKey:  *&lt;klucza w przypadku konta źródłowego&gt;:* ** Klucz konta magazynu źródłowego konta magazynu.
+   * **/ Dest:  *&lt;docelowy&gt;:* ** Adres URL kontenera magazynu do wirtualnego dysku twardego do skopiowania.
+   * **/ DestKey:  *&lt;klucza w przypadku konta dest&gt;:* ** Klucz konta magazynu docelowego konta magazynu.
+   * **/ Wzorzec:  *&lt;nazwa pliku&gt;:* ** Określ nazwę pliku wirtualnego dysku twardego do skopiowania.
 
 Aby uzyskać szczegółowe informacje na temat korzystania z narzędzia AzCopy narzędzia, zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md).
 
@@ -277,12 +277,12 @@ Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy
 
     Poniżej przedstawiono opisy parametrów polecenia narzędzia AzCopy:
 
-   * **/ Źródło:  *&lt;źródła&gt;:*** Lokalizacja folderu lub adres URL kontenera magazynu, który zawiera wirtualny dysk twardy.
-   * **/ SourceKey:  *&lt;klucza w przypadku konta źródłowego&gt;:*** Klucz konta magazynu źródłowego konta magazynu.
-   * **/ Dest:  *&lt;docelowy&gt;:*** Adres URL kontenera magazynu do wirtualnego dysku twardego do skopiowania.
-   * **/ DestKey:  *&lt;klucza w przypadku konta dest&gt;:*** Klucz konta magazynu docelowego konta magazynu.
+   * **/ Źródło:  *&lt;źródła&gt;:* ** Lokalizacja folderu lub adres URL kontenera magazynu, który zawiera wirtualny dysk twardy.
+   * **/ SourceKey:  *&lt;klucza w przypadku konta źródłowego&gt;:* ** Klucz konta magazynu źródłowego konta magazynu.
+   * **/ Dest:  *&lt;docelowy&gt;:* ** Adres URL kontenera magazynu do wirtualnego dysku twardego do skopiowania.
+   * **/ DestKey:  *&lt;klucza w przypadku konta dest&gt;:* ** Klucz konta magazynu docelowego konta magazynu.
    * **/ BlobType: strony:** Określa, czy miejsce docelowe jest stronicowym obiektem blob.
-   * **/ Wzorzec:  *&lt;nazwa pliku&gt;:*** Określ nazwę pliku wirtualnego dysku twardego do skopiowania.
+   * **/ Wzorzec:  *&lt;nazwa pliku&gt;:* ** Określ nazwę pliku wirtualnego dysku twardego do skopiowania.
 
 Aby uzyskać szczegółowe informacje na temat korzystania z narzędzia AzCopy narzędzia, zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md).
 
@@ -765,7 +765,7 @@ Zobacz następujące zasoby dla konkretnych scenariuszy do migrowania maszyn wir
 Zobacz też następujące zasoby, aby dowiedzieć się więcej na temat usługi Azure Storage i Azure Virtual Machines:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Usługa Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Wybierz typ dysku dla maszyn wirtualnych IaaS](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc08fd5cc4abbf5d16f9d49874ec2c70cace165b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60867414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067966"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Ograniczanie dostępu do usługi Azure container registry przy użyciu sieci wirtualnej platformy Azure lub reguły zapory
 
@@ -216,7 +216,7 @@ W dalszym ciągu [zweryfikować dostępu do rejestru](#verify-access-to-the-regi
 
 ## <a name="allow-access-from-an-ip-address"></a>Zezwalaj na dostęp z adresu IP
 
-W tej sekcji należy skonfigurować usługi container registry, aby zezwolić na dostęp z podsieci w sieci wirtualnej platformy Azure. Podano równoważne kroki przy użyciu wiersza polecenia platformy Azure i witryny Azure portal.
+W tej sekcji należy skonfigurować usługi container registry, aby zezwolić na dostęp z określonego adresu IP lub zakresu. Podano równoważne kroki przy użyciu wiersza polecenia platformy Azure i witryny Azure portal.
 
 ### <a name="allow-access-from-an-ip-address---cli"></a>Zezwalaj na dostęp z adresu IP — interfejs wiersza polecenia
 
@@ -343,7 +343,7 @@ az acr network-rule remove \
   --ip-address 23.45.1.0/24
 ```
 
-#### <a name="allow-access"></a>Zezwól na dostęp
+#### <a name="allow-access"></a>Zezwalaj na dostęp
 
 Zastąp nazwą swojego rejestru w następującym [az acr update] [ az-acr-update] polecenia:
 ```azurecli

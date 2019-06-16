@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
 ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888439"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych przez uruchamianie skryptów U-SQL w usłudze Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-usql-activity.md)
 > * [Bieżąca wersja](transform-data-using-data-lake-analytics.md)
 
@@ -36,7 +36,7 @@ Poniższa tabela zawiera opisy ogólne właściwości używane w definicji JSON.
 
 | Właściwość                 | Opis                              | Wymagane                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | Właściwość type powinna być równa: **AzureDataLakeAnalytics**. | Yes                                      |
+| **type**                 | Właściwość type powinna być równa: **AzureDataLakeAnalytics**. | Tak                                      |
 | **accountName**          | Nazwa konta usługi Azure Data Lake Analytics.  | Yes                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI.           | Nie                                       |
 | **subscriptionId**       | Identyfikator subskrypcji platformy Azure                    | Nie                                       |
@@ -55,9 +55,9 @@ Użyj uwierzytelniania jednostki usługi, określając następujące właściwo�
 
 | Właściwość                | Opis                              | Wymagane |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | Określ identyfikator klienta aplikacji.     | Yes      |
-| **servicePrincipalKey** | Określ klucz aplikacji.           | Yes      |
-| **dzierżawy**              | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Yes      |
+| **servicePrincipalId**  | Określ identyfikator klienta aplikacji.     | Tak      |
+| **servicePrincipalKey** | Określ klucz aplikacji.           | Tak      |
+| **dzierżawy**              | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Tak      |
 
 **Przykład: Uwierzytelnianie jednostki usługi**
 ```json
@@ -119,14 +119,14 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 
 | Właściwość            | Opis                              | Wymagane |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | Nazwa działania w potoku     | Yes      |
+| name                | Nazwa działania w potoku     | Tak      |
 | description         | Tekst opisujący, co działanie robi.  | Nie       |
-| type                | Działanie U-SQL usługi Data Lake Analytics jest typ działania **DataLakeAnalyticsU SQL**. | Yes      |
-| linkedServiceName   | Połączoną usługę służącą do usługi Azure Data Lake Analytics. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.  |Yes       |
-| scriptPath          | Ścieżka do folderu zawierającego skrypt U-SQL. Nazwa pliku jest uwzględniana wielkość liter. | Yes      |
-| scriptLinkedService | Połączona usługa, która łączy **usługi Azure Data Lake Store** lub **usługi Azure Storage** zawierający skrypt w usłudze data factory | Yes      |
+| — typ                | Działanie U-SQL usługi Data Lake Analytics jest typ działania **DataLakeAnalyticsU SQL**. | Tak      |
+| linkedServiceName   | Połączoną usługę służącą do usługi Azure Data Lake Analytics. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.  |Tak       |
+| scriptPath          | Ścieżka do folderu zawierającego skrypt U-SQL. Nazwa pliku jest uwzględniana wielkość liter. | Tak      |
+| scriptLinkedService | Połączona usługa, która łączy **usługi Azure Data Lake Store** lub **usługi Azure Storage** zawierający skrypt w usłudze data factory | Tak      |
 | degreeOfParallelism | Maksymalna liczba węzłów równocześnie używane do uruchamiania zadania. | Nie       |
-| priority            | Określa, które spośród wszystkich, które są umieszczane w kolejce zadań, należy wybrać do uruchomienia jako pierwsza. Im mniejsza liczba, tym wyższy priorytet. | Nie       |
+| priorytet            | Określa, które spośród wszystkich, które są umieszczane w kolejce zadań, należy wybrać do uruchomienia jako pierwsza. Im mniejsza liczba, tym wyższy priorytet. | Nie       |
 | parameters          | Parametry do przekazania do skryptu U-SQL.    | Nie       |
 | runtimeVersion      | Wersja środowiska uruchomieniowego aparat języka U-SQL do użycia. | Nie       |
 | compilationMode     | <p>Tryb kompilacji języka U-SQL. Musi być jedną z następujących wartości: **Semantyczne:** Wykonywać tylko semantycznego testy i wykonuje niezbędne testów, **pełna:** Wykonania pełnej kompilacji, w tym sprawdzanie składni, optymalizacja, generowanie kodu itp., **SingleBox:** Wykonywanie pełnej kompilacji, za pomocą ustawienia TargetType SingleBox. Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb optymalne kompilacji. | Nie |

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1ba5b813843ce2f5d31f337ab4d3d94e521b0e0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586138"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web IaaS dla FedRAMP
@@ -46,7 +46,7 @@ Tego rozwiązania powoduje wdrożenie architektury referencyjnej dla aplikacji s
 
 To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegóły architektura wdrożenia znajdują się w [architektura wdrożenia](#deployment-architecture) sekcji.
 
-- Azure Virtual Machines
+- Usługa Azure Virtual Machines
     - (1) host bastionu (system Windows Server 2016 Datacenter)
     - (2) usługi active Directory kontrolera domeny (Windows Server 2016 Datacenter)
     - (2) węzeł klastra programu SQL Server (SQL Server 2017 w systemie Windows Server 2016)

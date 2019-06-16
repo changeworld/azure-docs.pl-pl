@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c922556417ac92cc3667927fc8f846ace960a14a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935880"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Ramka zabezpieczeń: Autoryzacja | Środki zaradcze 
@@ -43,7 +43,7 @@ ms.locfileid: "64935880"
 
 ## <a id="acl-restricted-access"></a>Upewnij się, że odpowiednie listy ACL są skonfigurowane do ograniczania nieautoryzowanego dostępu do danych na urządzeniu
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
@@ -54,7 +54,7 @@ ms.locfileid: "64935880"
 
 ## <a id="sensitive-directory"></a>Upewnij się, że zawartość poufnych aplikacji specyficzne dla użytkownika jest przechowywany w katalogu profilu użytkownika
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
@@ -65,7 +65,7 @@ ms.locfileid: "64935880"
 
 ## <a id="deployed-privileges"></a>Upewnij się, że wdrożone aplikacje są uruchamiane z najmniejszymi uprawnieniami
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
@@ -76,7 +76,7 @@ ms.locfileid: "64935880"
 
 ## <a id="sequential-logic"></a>Wymuszanie kolejny krok kolejności podczas przetwarzania przepływów logiki biznesowej
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -87,7 +87,7 @@ ms.locfileid: "64935880"
 
 ## <a id="rate-enumeration"></a>Implementuje mechanizm zapobiegania wyliczenie ograniczania szybkości
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -98,7 +98,7 @@ ms.locfileid: "64935880"
 
 ## <a id="principle-least-privilege"></a>Upewnij się, że odpowiednie zezwolenia są używane, i po niej reguły najniższych uprawnień
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -109,7 +109,7 @@ ms.locfileid: "64935880"
 
 ## <a id="logic-request-parameters"></a>Business Logic Apps i zasobów dostępu decyzji dotyczących autoryzacji, nie powinna być oparta na parametry żądania przychodzące
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -128,7 +128,7 @@ Teraz atakujący możliwe można manipulować i nie zmieniać operacji aplikacji
 
 ## <a id="enumerable-browsing"></a>Upewnij się, że zawartość i zasoby nie są wyliczalny ani dostępne za pośrednictwem wymuszone przeglądania
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -139,7 +139,7 @@ Teraz atakujący możliwe można manipulować i nie zmieniać operacji aplikacji
 
 ## <a id="privileged-server"></a>Upewnij się, że najmniej uprzywilejowane konta są używane do łączenia się z serwerem bazy danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -150,7 +150,7 @@ Teraz atakujący możliwe można manipulować i nie zmieniać operacji aplikacji
 
 ## <a id="rls-tenants"></a>Implementowanie wiersz zabezpieczeń na poziomie aby uniemożliwić dostęp do siebie nawzajem danych dzierżaw
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -163,7 +163,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="sysadmin-users"></a>Rola administratora systemu powinien mieć tylko prawidłowych użytkowników wymagane
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -174,7 +174,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="cloud-least-privileged"></a>Połączenia z bramą chmury przy użyciu najmniej uprzywilejowane tokenów
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | IoT Cloud Gateway | 
 | **Faza SDL**               | Wdrożenie |  
@@ -185,7 +185,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="sendonly-sas"></a>Użyj uprawnień tylko do wysyłania klucza sygnatury dostępu Współdzielonego do generowania tokenów urządzeń
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
@@ -196,7 +196,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="access-tokens-hub"></a>Nie używaj tokenów dostępu, które udostępniają bezpośredni dostęp do Centrum zdarzeń
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
@@ -207,7 +207,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="sas-minimum-permissions"></a>Łączenie z Centrum zdarzeń za pomocą kluczy sygnatury dostępu Współdzielonego, które ma minimalne uprawnienia wymagane
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
@@ -218,7 +218,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="resource-docdb"></a>Nawiązywanie połączenia z usługi Cosmos DB, jeśli to możliwe za pomocą tokenów zasobów
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Document DB | 
 | **Faza SDL**               | Kompilacja |  
@@ -229,7 +229,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="grained-rbac"></a>Włącz szczegółowe zarządzanie dostępem do subskrypcji platformy Azure przy użyciu funkcji RBAC
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania platformy Azure | 
 | **Faza SDL**               | Kompilacja |  
@@ -240,7 +240,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="cluster-rbac"></a>Ogranicz dostęp klienta do operacji klastra przy użyciu funkcji RBAC
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania usługi Service Fabric | 
 | **Faza SDL**               | Wdrożenie |  
@@ -251,7 +251,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="modeling-field"></a>Wykonaj bezpieczeństwa modelowania i użyć zabezpieczeń na poziomie pola w przypadku, gdy wymagane
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
@@ -262,7 +262,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="portal-security"></a>Wykonaj modelowania zabezpieczeń w portalu konta, pamiętając o tym, który model zabezpieczeń dla portalu różni się od reszty systemu CRM
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM Portal | 
 | **Faza SDL**               | Kompilacja |  
@@ -273,7 +273,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="permission-entities"></a>Udziel uprawnień szczegółowych dotyczących zakresu jednostek w usłudze Azure Table Storage
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -284,7 +284,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="rbac-azure-manager"></a>Włącz opartej na rolach kontrola dostępu (RBAC) do konta usługi Azure storage za pomocą usługi Azure Resource Manager
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -295,7 +295,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="rooting-detection"></a>Implementowanie niejawne zdjęcia zabezpieczeń systemu lub zakorzenienia wykrywania
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Mobile Client | 
 | **Faza SDL**               | Kompilacja |  
@@ -306,7 +306,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 ## <a id="weak-class-wcf"></a>Odwołania do klasy słabe w programie WCF
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -343,7 +343,7 @@ Przy użyciu w pełni kwalifikowane nazwy (silną) unikatowo identyfikuje typ i 
 
 ## <a id="wcf-authz"></a>Kontrolki programu WCF — Implementowanie autoryzacji
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -391,7 +391,7 @@ return result;
 
 ## <a id="authz-aspnet"></a>Implementuje mechanizm autoryzacji odpowiednie ASP.NET Web API
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -442,7 +442,7 @@ public class CustomController : ApiController
 
 ## <a id="device-permission"></a>Kontrole autoryzacji na urządzeniu, gdy obsługuje różne akcje, które wymagają różnych poziomów uprawnień
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -453,7 +453,7 @@ public class CustomController : ApiController
 
 ## <a id="field-permission"></a>Wykonaj sprawdzanie autoryzacji w bramy w terenie, jeśli obsługuje ona różne akcje, które wymagają różnych poziomów uprawnień
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Kompilacja |  

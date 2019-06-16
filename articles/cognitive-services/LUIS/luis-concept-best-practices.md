@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: diberry
 ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60812914"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji interpretacji języka, dzięki usługom Cognitive Services
@@ -59,7 +59,7 @@ Należy wziąć pod uwagę następujące wypowiedzi przykładu:
 
 "Zarezerwuj lot" i "Zarezerwuj hotel" Używanie tego samego słownictwa "book". Ten format jest taka sama, więc powinno być tego samego intencji z innych wyrazów lotów i hoteli jako wyodrębnione jednostki. 
 
-Więcej informacji:
+Informacje dodatkowe:
 * Pojęcia: [Pojęcia dotyczące intencje w aplikacją usługi LUIS](luis-concept-intent.md)
 * Samouczek: [Tworzenie aplikacji usługi LUIS Określanie zamiarach użytkownika](luis-quickstart-intents-only.md)
 * Instrukcje: [Dodawanie intencji, aby określić użytkownika zamiar wypowiedzi](luis-how-to-add-intents.md)
@@ -73,7 +73,7 @@ Zachowaj osobny zestaw nie jest używana jako wypowiedzi [wypowiedzi przykład](
 
 Deweloperzy powinni mieć trzy zestawów danych. Pierwsza to wypowiedzi przykład do tworzenia modelu. Druga jest przeznaczona dla testowania modelu w punkcie końcowym. Trzecia będzie niewidomych test dane używane w [testowania partii](luis-how-to-batch-test.md). Ten ostatni zestaw nie jest używany w szkolenia aplikacji ani wysyłane w punkcie końcowym.  
 
-Więcej informacji:
+Informacje dodatkowe:
 * Pojęcia: [Cykl tworzenia aplikacji usługi LUIS](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Dodawanie listy frazy i wzorców w późniejszej iteracji
@@ -93,7 +93,7 @@ Najlepszym rozwiązaniem jest przetestowanie za pośrednictwem [punktu końcoweg
 
 Nie dodawaj każdy wyraz słownictwa, ponieważ lista wyrażenie nie jest dokładne dopasowanie. 
 
-Więcej informacji:
+Informacje dodatkowe:
 * Pojęcia: [Wyrażenie funkcji listy aplikacją usługi LUIS](luis-concept-feature.md)
 * Porady: [Użyj frazy Wyświetla sygnału boost listy programu word](luis-how-to-add-features.md)
 
@@ -103,7 +103,7 @@ Wypowiedzi użytkowników z punktu końcowego, bardzo podobne do siebie nawzajem
 
 Użyj wzorca [opcjonalnych składni](luis-concept-patterns.md) znaki interpunkcyjne, dzięki czemu można zignorować znaki interpunkcyjne. Użyj [jawną listę](luis-concept-patterns.md#explicit-lists) celu kompensacji pattern.any składni problemów. 
 
-Więcej informacji:
+Informacje dodatkowe:
 * Pojęcia: [Wzorce zwiększenia dokładności prognozy](luis-concept-patterns.md)
 * Porady: [Jak dodać wzorców w celu zwiększenia dokładności prognozy](luis-how-to-model-intent-pattern.md)
 
@@ -117,14 +117,14 @@ Jeśli masz intencji ze 100 przykład wypowiedzi i przeznaczenie z 20 wypowiedzi
 
 Celem tego jest plan awaryjny celem wskazane wszystko poza aplikację. Dodaj jeden wypowiedź przykład intencji dla każdego wypowiedzi przykład 10 w pozostałej części aplikacją usługi LUIS None.
 
-Więcej informacji:
+Informacje dodatkowe:
 * Pojęcia: [Zrozumienie, co dobre wypowiedzi związanych z aplikacją usługi LUIS](luis-concept-utterance.md)
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Korzystać z funkcji sugerowanej aktywne uczenie
 
 Użyj [aktywne uczenie](luis-how-to-review-endpoint-utterances.md)firmy **Przejrzyj wypowiedzi punktu końcowego** na bieżąco, zamiast opcji dodawania więcej wypowiedzi przykład do intencji. Ponieważ aplikacja otrzymuje stale wypowiedzi punktu końcowego, ta lista jest rosnący i zmianę.
 
-Więcej informacji:
+Informacje dodatkowe:
 * Pojęcia: [Pojęcia dotyczące włączania aktywne uczenie, przeglądając wypowiedzi punktu końcowego](luis-concept-review-endpoint-utterances.md)
 * Samouczek: [Samouczek: Napraw prognozy nie wiesz, przeglądając wypowiedzi punktu końcowego](luis-tutorial-review-endpoint-utterances.md)
 * Porady: [Jak przeglądać wypowiedzi punktu końcowego w portalu usługi LUIS](luis-how-to-review-endpoint-utterances.md)
@@ -173,7 +173,7 @@ Dodawanie wypowiedzi 10 lub 15 przed szkolenia i publikowania. Pozwala wyświetl
 
 Każdy cykl tworzenia powinna mieścić się w nowej [wersji](luis-concept-version.md), sklonowany z istniejącą wersję. Usługa LUIS nie ma limitu dla wersji. Nazwa wersji jest używany jako część trasy interfejsu API, tak ważne jest, aby wybrać znaków dozwoloną w adresie URL, a także przechowywanie w ramach liczby 10 znaków dla wersji. Opracowanie strategii nazwy wersji o zachowaniu wersji zorganizowane. 
 
-Więcej informacji:
+Informacje dodatkowe:
 * Pojęcia: [Zrozumienie, jak i kiedy używać wersji usługi LUIS](luis-concept-version.md)
 * Porady: [Użyj wersji do edycji i przetestować bez wywierania wpływu na aplikacje przejściowych lub produkcyjnych](luis-how-to-manage-versions.md)
 

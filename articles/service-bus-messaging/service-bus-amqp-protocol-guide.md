@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60749448"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Protokołu AMQP 1.0 w przewodnik dotyczący protokołu usługi Azure Service Bus i Event Hubs
 
-1.0 protokołu zaawansowane kolejkowanie komunikatów jest standardowy protokół ramek i transferu dla asynchronicznie, bezpieczną i niezawodną transferu wiadomości między dwiema stronami. Jest to podstawowy protokół komunikatów usługi Azure Service Bus i usługi Azure Event Hubs. Obie te usługi obsługują także protokół HTTPS. Własności protokołu SBMP, który jest również obsługiwany jest wycofywane na rzecz protokołu AMQP.
+1\.0 protokołu zaawansowane kolejkowanie komunikatów jest standardowy protokół ramek i transferu dla asynchronicznie, bezpieczną i niezawodną transferu wiadomości między dwiema stronami. Jest to podstawowy protokół komunikatów usługi Azure Service Bus i usługi Azure Event Hubs. Obie te usługi obsługują także protokół HTTPS. Własności protokołu SBMP, który jest również obsługiwany jest wycofywane na rzecz protokołu AMQP.
 
 Protokołu AMQP 1.0 jest wynikiem współpracy szerokiego branży, który o nazwie vhacks dostawców oprogramowania pośredniczącego, takich jak Microsoft i Red Hat obejmującej wielu użytkowników oprogramowania pośredniczącego obsługi komunikatów, takie jak JP Morgan Chase reprezentujący branży usług finansowych. Forum techniczne normalizacji specyfikacje rozszerzenie i protokół AMQP jest OASIS i osiągnięcia formalne zatwierdzania międzynarodowego standardu jako 19494 ISO/IEC.
 
@@ -161,28 +161,28 @@ Strzałki w poniższej tabeli oznaczają kierunek przepływu performative.
 | Klient | Service Bus |
 | --- | --- |
 | --> Dołącz ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**nadawcy**,<br/>Źródło = {klienta łącza ID}<br/>docelowy = {nazwa jednostki}<br/>) |Brak akcji |
-| Brak akcji |< — dołączanie ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**odbiorcy**,<br/>Źródło = null,<br/>docelowy = null<br/>)<br/><br/><--odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>zamknięte =**true**,<br/>błąd = {informacje o błędzie}<br/>) |
+| Brak akcji |< — dołączanie ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**odbiorcy**,<br/>Źródło = null,<br/>target=null<br/>)<br/><br/><--odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>zamknięte =**true**,<br/>błąd = {informacje o błędzie}<br/>) |
 
 #### <a name="close-message-receiversender"></a>Zamknij komunikat odbiornik/nadawcy
 
 | Klient | Service Bus |
 | --- | --- |
-| --> odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>zamknięte =**true**<br/>) |Brak akcji |
-| Brak akcji |<--odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>zamknięte =**true**<br/>) |
+| --> odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>closed=**true**<br/>) |Brak akcji |
+| Brak akcji |<--odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>closed=**true**<br/>) |
 
 #### <a name="send-success"></a>Wyślij (Powodzenie)
 
 | Klient | Service Bus |
 | --- | --- |
 | --> () transferu<br/>dostarczanie id = {liczbowych uchwyt}<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,, bardziej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |Brak akcji |
-| Brak akcji |<--(dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>rozliczane =**true**,<br/>Stan =**zaakceptowane**<br/>) |
+| Brak akcji |<--(dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>settled=**true**,<br/>Stan =**zaakceptowane**<br/>) |
 
 #### <a name="send-error"></a>Wyślij (błąd)
 
 | Klient | Service Bus |
 | --- | --- |
 | --> () transferu<br/>dostarczanie id = {liczbowych uchwyt}<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,, bardziej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |Brak akcji |
-| Brak akcji |<--(dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>rozliczane =**true**,<br/>Stan =**odrzucone**()<br/>błąd = {informacje o błędzie}<br/>)<br/>) |
+| Brak akcji |<--(dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>settled=**true**,<br/>Stan =**odrzucone**()<br/>błąd = {informacje o błędzie}<br/>)<br/>) |
 
 #### <a name="receive"></a>Odbieranie
 
@@ -190,7 +190,7 @@ Strzałki w poniższej tabeli oznaczają kierunek przepływu performative.
 | --- | --- |
 | --> () przepływu<br/>link-credit=1<br/>) |Brak akcji |
 | Brak akcji |< transferu ()<br/>dostarczanie id = {liczbowych uchwyt}<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,<br/>więcej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |
-| --> () dyspozycji<br/>Rola =**odbiorcy**,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>rozliczane =**true**,<br/>Stan =**zaakceptowane**<br/>) |Brak akcji |
+| --> () dyspozycji<br/>Rola =**odbiorcy**,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>settled=**true**,<br/>Stan =**zaakceptowane**<br/>) |Brak akcji |
 
 #### <a name="multi-message-receive"></a>Odbierać wiele wiadomości
 
@@ -200,7 +200,7 @@ Strzałki w poniższej tabeli oznaczają kierunek przepływu performative.
 | Brak akcji |< transferu ()<br/>dostarczanie id = {liczbowych uchwyt}<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,<br/>więcej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |
 | Brak akcji |< transferu ()<br/>dostarczanie id = {liczbowych uchwyt + 1},<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,<br/>więcej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |
 | Brak akcji |< transferu ()<br/>dostarczanie id = {liczbowych uchwyt + 2},<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,<br/>więcej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |
-| --> () dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy + 2},<br/>rozliczane =**true**,<br/>Stan =**zaakceptowane**<br/>) |Brak akcji |
+| --> () dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy + 2},<br/>settled=**true**,<br/>Stan =**zaakceptowane**<br/>) |Brak akcji |
 
 ### <a name="messages"></a>Komunikaty
 
@@ -213,8 +213,8 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 | Nazwa pola | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
 | trwałe |- |- |
-| priority |- |- |
-| czas wygaśnięcia |Czas wygaśnięcia dla tego komunikatu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| priorytet |- |- |
+| ttl |Czas wygaśnięcia dla tego komunikatu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | pierwszy przejmująca |- |- |
 | Liczba prób dostarczenia |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
@@ -222,18 +222,18 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 
 | Nazwa pola | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
-| Identyfikator komunikatu |Zdefiniowane przez aplikację, dowolny identyfikator dla tego komunikatu. Używane do wykrywania duplikatów. |[Identyfikator komunikatu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Identyfikator użytkownika |Identyfikator użytkownika zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
+| message-id |Zdefiniowane przez aplikację, dowolny identyfikator dla tego komunikatu. Używane do wykrywania duplikatów. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| user-id |Identyfikator użytkownika zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
 | na |Identyfikator docelowego zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| temat |Identyfikator celu wiadomości zdefiniowanych przez aplikację, nie są interpretowane przez usługę Service Bus. |[Etykieta](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Odpowiedz do |Wskaźnik ścieżki odpowiedzi zdefiniowany przez aplikację nie są interpretowane przez usługę Service Bus. |[replyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Identyfikator korelacji |Identyfikator korelacji zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Identyfikator celu wiadomości zdefiniowanych przez aplikację, nie są interpretowane przez usługę Service Bus. |[Etykieta](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Odpowiedz do |Wskaźnik ścieżki odpowiedzi zdefiniowany przez aplikację nie są interpretowane przez usługę Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Identyfikator korelacji zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Typ zawartości |Zdefiniowane przez aplikację wskaźnik typu zawartości dla treści nie interpretowane przez usługę Service Bus. |[Typ zawartości](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Zdefiniowane przez aplikację kodowanie zawartości wskaźnik dla treści nie interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
 | czas w przypadku wygaśnięcia bezwzględne |Deklaruje, w których bezwzględną błyskawicznych komunikat wygasa. Ignorowane na dane wejściowe (nagłówek stwierdzamy TTL), autorytatywny w danych wyjściowych. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Godzina utworzenia |Deklaruje co wiadomość została utworzona. Nie są używane przez usługę Service Bus |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
 | Identyfikator grupy |Zdefiniowane przez aplikację identyfikator powiązany zestaw komunikatów. Używane dla sesji magistrali usług. |[Identyfikator sesji](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| grupy sekwencji |Licznik identyfikowanie numer sekwencji względne wiadomości wewnątrz sesji. Ignorowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
+| group-sequence |Licznik identyfikowanie numer sekwencji względne wiadomości wewnątrz sesji. Ignorowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
 | Odpowiedz na grupy identyfikator |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="message-annotations"></a>Adnotacje wiadomości
@@ -243,11 +243,11 @@ Istnieje kilka innych usługi Service bus komunikat właściwości, które nie s
 | Klucz mapy adnotacji | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
 | x-opt-scheduled-enqueue-time | Deklaruje co komunikat powinien pojawić się w jednostce |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x — zoptymalizowany pod kątem klucza partycji | Klucz zdefiniowanych przez aplikację, które określają, które partycji komunikat powinny znaleźć się w. | [właściwości partitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x — zoptymalizowany pod kątem — za pośrednictwem klucza partycji | Zdefiniowane przez aplikację klucza partycji wartość, gdy transakcja jest używany do wysyłania komunikatów za pośrednictwem kolejki transferu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x zoptymalizowany pod kątem umieszczonych w kolejce — w czasie | Zdefiniowane przez usługę czasu UTC reprezentujący rzeczywisty czas enqueuing wiadomości. Dane wejściowe są ignorowane na. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt-partition-key | Klucz zdefiniowanych przez aplikację, które określają, które partycji komunikat powinny znaleźć się w. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt-via-partition-key | Zdefiniowane przez aplikację klucza partycji wartość, gdy transakcja jest używany do wysyłania komunikatów za pośrednictwem kolejki transferu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-enqueued-time | Zdefiniowane przez usługę czasu UTC reprezentujący rzeczywisty czas enqueuing wiadomości. Dane wejściowe są ignorowane na. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
 | x-opt-sequence-number | Zdefiniowane przez usługę unikatowy numer przypisany do wiadomości. | [sequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| zoptymalizowany pod kątem Przesunięcie x | Numer sekwencji zdefiniowane przez usługę umieszczonych w kolejce wiadomości. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-opt-offset | Numer sekwencji zdefiniowane przez usługę umieszczonych w kolejce wiadomości. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
 | x-opt-locked-until | Zdefiniowane przez usługę. Data i godzina, do której zostanie zablokowane wiadomości w kolejce/subskrypcji. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
 | x-opt-deadletter-source | Zdefiniowane przez usługę. Odebranie komunikatu z kolejki utraconych wiadomości, źródło oryginalnej wiadomości. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
 
@@ -268,9 +268,9 @@ Aby rozpocząć transakcji pracy. Kontroler musi uzyskać `txn-id` z koordynator
 
 | Klient (kontroler) | | Usługa Service Bus (koordynator) |
 | --- | --- | --- |
-| Dołącz)<br/>Nazwa = {Nazwa linku}<br/>... ,<br/>Rola =**nadawcy**,<br/>docelowy =**koordynatora**<br/>) | ------> |  |
+| Dołącz)<br/>Nazwa = {Nazwa linku}<br/>... ,<br/>Rola =**nadawcy**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | Dołącz)<br/>Nazwa = {Nazwa linku}<br/>... ,<br/>target=Coordinator()<br/>) |
-| Transfer)<br/>dostarczanie id = 0,...)<br/>{AmqpValue (**Declare()**)}| ------> |  |
+| Transfer)<br/>dostarczanie id = 0,...)<br/>{AmqpValue (**Declare()** )}| ------> |  |
 |  | <------ | (dyspozycji <br/> najpierw = 0, ostatnia = 0, <br/>Stan =**Declared**()<br/>**Identyfikator transakcji**= {identyfikator transakcji}<br/>))|
 
 #### <a name="discharging-a-transaction"></a>Wykonującej transakcji
@@ -281,11 +281,11 @@ Kontroler stwierdza transakcji pracy, wysyłając `discharge` wiadomości z koor
 
 | Klient (kontroler) | | Usługa Service Bus (koordynator) |
 | --- | --- | --- |
-| Transfer)<br/>dostarczanie id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+| Transfer)<br/>dostarczanie id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | (dyspozycji <br/> najpierw = 0, ostatnia = 0, <br/>Stan = (zadeklarowanych<br/>transakcji id = {Identyfikator transakcji}<br/>))|
 | | . . . <br/>Transakcji pracy<br/>na inne linki<br/> . . . |
-| Transfer)<br/>dostarczanie id = 57,...)<br/>{AmqpValue)<br/>**Zwalnia (identyfikator transakcji = 0,<br/>się nie powieść = false)**)}| ------> |  |
-| | <------ | (dyspozycji <br/> najpierw = 57, ostatnia = 57, <br/>state=**Accepted()**)|
+| Transfer)<br/>dostarczanie id = 57,...)<br/>{AmqpValue)<br/>**Zwalnia (identyfikator transakcji = 0,<br/>się nie powieść = false)** )}| ------> |  |
+| | <------ | (dyspozycji <br/> najpierw = 57, ostatnia = 57, <br/>state=**Accepted()** )|
 
 #### <a name="sending-a-message-in-a-transaction"></a>Wysyłanie komunikatu w ramach transakcji
 
@@ -293,10 +293,10 @@ Wszystkie transakcyjnych zadań odbywa się ze stanem transakcyjnych dostarczani
 
 | Klient (kontroler) | | Usługa Service Bus (koordynator) |
 | --- | --- | --- |
-| Transfer)<br/>dostarczanie id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+| Transfer)<br/>dostarczanie id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | (dyspozycji <br/> najpierw = 0, ostatnia = 0, <br/>Stan = (zadeklarowanych<br/>transakcji id = {Identyfikator transakcji}<br/>))|
-| Transfer)<br/>Obsługa = 1,<br/>dostarczanie id = 1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{ładunek}| ------> |  |
-| | <------ | (dyspozycji <br/> najpierw = 1, ostatnia = 1, <br/>Stan =**TransactionalState (<br/>transakcji id = 0,<br/>outcome=Accepted()**))|
+| Transfer)<br/>Obsługa = 1,<br/>dostarczanie id = 1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{ładunek}| ------> |  |
+| | <------ | (dyspozycji <br/> najpierw = 1, ostatnia = 1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))|
 
 #### <a name="disposing-a-message-in-a-transaction"></a>Usuwanie wiadomości w ramach transakcji
 
@@ -307,7 +307,7 @@ Komunikat dyspozycji obejmuje operacje, takie jak `Complete`  /  `Abandon`  /  `
 | Transfer)<br/>dostarczanie id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | (dyspozycji <br/> najpierw = 0, ostatnia = 0, <br/>Stan = (zadeklarowanych<br/>transakcji id = {Identyfikator transakcji}<br/>))|
 | | <------ |Transfer)<br/>Obsługa = 2,<br/>dostarczanie id = 11 <br/>Stan = null)<br/>{ładunek}|  
-| (dyspozycji <br/> najpierw = 11, ostatnia = 11 <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
+| (dyspozycji <br/> najpierw = 11, ostatnia = 11 <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))| ------> |
 
 
 ## <a name="advanced-service-bus-capabilities"></a>Zaawansowane funkcje usługi Service Bus
@@ -361,10 +361,10 @@ Komunikat żądania ma następujące właściwości aplikacji:
 
 | Klucz | Optional (Opcjonalność) | Typ wartości | Wartość zawartości |
 | --- | --- | --- | --- |
-| operacja |Nie |string |**Umieść token** |
+| Operacja |Nie |string |**Umieść token** |
 | type |Nie |string |Typ tokenu dotyczy żądanie put. |
 | name |Nie |string |Do której stosują się token "audience". |
-| wygaśnięcie |Yes |timestamp |Czas wygaśnięcia tokenu. |
+| wygaśnięcie |Tak |timestamp |Czas wygaśnięcia tokenu. |
 
 *Nazwa* właściwość identyfikuje jednostki, z którym token jest włączona. W usłudze Service Bus jest ścieżka do kolejki lub tematu/subskrypcji. *Typu* właściwość identyfikuje typ tokenu:
 
@@ -380,8 +380,8 @@ Komunikat odpowiedzi zawiera następujące *właściwości aplikacji* wartości
 
 | Klucz | Optional (Opcjonalność) | Typ wartości | Wartość zawartości |
 | --- | --- | --- | --- |
-| Kod stanu: |Nie |int |Kod odpowiedzi HTTP **[specyfikacją RFC2616]**. |
-| status-description |Yes |string |Opis stanu. |
+| Kod stanu: |Nie |int |Kod odpowiedzi HTTP **[specyfikacją RFC2616]** . |
+| status-description |Tak |string |Opis stanu. |
 
 Klient może wywołać *put token* wielokrotnie i dla dowolnej jednostki w infrastrukturze obsługi wiadomości. Tokeny są ograniczone do bieżącego klienta i zakotwiczone w bieżącym połączeniu, co oznacza, że serwer porzuca wszystkie tokeny zachowane po spadku połączenia.
 
@@ -403,7 +403,7 @@ Dzięki tej funkcji, Utwórz nadawcy i ustanowić łącze do `via-entity`. Podcz
 
 | Klient | | Service Bus |
 | --- | --- | --- |
-| Dołącz)<br/>Nazwa = {Nazwa linku}<br/>Rola = nadawcy<br/>Źródło = {klienta łącza ID}<br/>docelowy =**{za pośrednictwem entity}**,<br/>**Właściwości mapy = [(<br/>com.microsoft:transfer adresu =<br/>{jednostki docelowej})]** ) | ------> | |
+| Dołącz)<br/>Nazwa = {Nazwa linku}<br/>Rola = nadawcy<br/>Źródło = {klienta łącza ID}<br/>docelowy = **{za pośrednictwem entity}** ,<br/>**Właściwości mapy = [(<br/>com.microsoft:transfer adresu =<br/>{jednostki docelowej})]** ) | ------> | |
 | | <------ | Dołącz)<br/>Nazwa = {Nazwa linku}<br/>Rola odbiornik,<br/>Źródło = {klienta łącza ID}<br/>target={via-entity},<br/>Właściwości mapy [() =<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>Kolejne kroki

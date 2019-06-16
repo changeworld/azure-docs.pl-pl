@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
 ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60779376"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Usługa IoT Hub o wysokiej dostępności i odzyskiwania po awarii
@@ -72,7 +72,7 @@ Zainicjowane przez Microsoft trybu failover jest wykonywane przez firmę Microso
 
 Duży cel czasu odzyskiwania jest, ponieważ firmy Microsoft należy wykonać operację trybu failover w imieniu wszystkich klientów, których to dotyczy, w tym regionie. Jeśli korzystasz z mniej ważnych rozwiązanie IoT, które może wytrzymać bez przestojów około dnia, jest ok umożliwiające zależni tę opcję, aby spełnić ogólną celów odzyskiwania po awarii dla swojego rozwiązania IoT. Łączny czas wykonywania operacji funkcjonować pełni po wyzwoleniu tego procesu jest opisane w sekcji "Czas odzyskiwania".
 
-### <a name="manual-failover-preview"></a>Ręczne przejście do trybu failover (wersja zapoznawcza)
+### <a name="manual-failover-preview"></a>Ręczna praca awaryjna (wersja zapoznawcza)
 
 Jeśli celów biznesowych czasu nie są spełnione przez wartość celu punktu odzyskiwania, który zainicjował firmy Microsoft zapewnia pracy awaryjnej, należy rozważyć użycie ręcznej pracy awaryjnej do wyzwalania procesu pracy awaryjnej, samodzielnie. Cel czasu odzyskiwania przy użyciu tej opcji może być w dowolnym miejscu od 10 minut do kilku godzin. Cel czasu odzyskiwania jest obecnie funkcję liczbę urządzeń zarejestrowanych przed wystąpieniem Centrum IoT, przełączone w tryb failover. Można oczekiwać, że cel czasu odzyskiwania dla koncentratora hostingu około 100 000 urządzeń w ballpark 15 minut. Łączny czas wykonywania operacji funkcjonować pełni po wyzwoleniu tego procesu jest opisane w sekcji "Czas odzyskiwania".
 
@@ -125,10 +125,10 @@ Aby uprościć ten krok, należy użyć operacje idempotentne. Operacje Idempote
 
 Oto podsumowanie opcji wysokiej dostępności i odzyskiwania po awarii, przedstawione w tym artykule, który może służyć jako odwołanie do ramki o wybranie odpowiedniej opcji dla rozwiązania.
 
-| Opcja wysokiej dostępności i odzyskiwania po awarii | CEL CZASU ODZYSKIWANIA | Cel punktu odzyskiwania | Wymaga ręcznej interwencji? | Złożoność wdrożenia | Wpływ dodatkowych kosztów|
+| Opcja wysokiej dostępności i odzyskiwania po awarii | CEL CZASU ODZYSKIWANIA | RPO | Wymaga ręcznej interwencji? | Złożoność wdrożenia | Wpływ dodatkowych kosztów|
 | --- | --- | --- | --- | --- | --- |
 | Zainicjowane przez Microsoft trybu failover |2 - 26 godzin|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Nie|Brak|Brak|
-| Ręczne przejście do trybu failover |10-minutowy materiał - 2 godziny|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Yes|Bardzo niskie. Wystarczy wyzwalać tę operację z portalu.|Brak|
+| Ręczna praca awaryjna |10-minutowy materiał - 2 godziny|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Tak|Bardzo niskie. Wystarczy wyzwalać tę operację z portalu.|Brak|
 | Obejmujące wiele regionów wysokiej dostępności |< 1 min|Zależy od częstotliwości replikacji, niestandardowego rozwiązania wysokiej dostępności|Nie|Wysoka|1 > x koszt 1 usługi IoT hub|
 
 ## <a name="next-steps"></a>Kolejne kroki

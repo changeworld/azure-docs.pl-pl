@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122828"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Użyj usługi Azure IoT Hub Device Provisioning Service automatycznej aprowizacji można zarejestrować zestawu deweloperskiego IoT Mxchip z usługą IoT Hub
@@ -60,7 +60,7 @@ Aby zapisać domenami aktualizacji na Mxchip:
 
 1. Na Mxchip, przytrzymaj wciśnięty **przycisk A**, wypychania i wersji **resetowania** przycisk, a następnie zwolnij **przycisk A**. Twoje Mxchip przechodzi w tryb konfiguracji.
 
-1. Kliknij przycisk `F1` , aby otworzyć paletę poleceń, wpisz i wybierz **Workbench urządzenia IoT platformy Azure: Konfigurowanie ustawień urządzenia... > Parametry unikatowe urządzenia konfiguracji (domenami aktualizacji)**.
+1. Kliknij przycisk `F1` , aby otworzyć paletę poleceń, wpisz i wybierz **Workbench urządzenia IoT platformy Azure: Konfigurowanie ustawień urządzenia... > Parametry unikatowe urządzenia konfiguracji (domenami aktualizacji)** .
   ![Konfigurowanie domenami aktualizacji](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
 1. Zanotuj wygenerowany ciąg domenami aktualizacji. Należy go w celu wygenerowania certyfikatu X.509. Następnie naciśnij klawisz `Enter`.

@@ -3,17 +3,16 @@ title: Dodać siatkę z rozwiązaniem monitorowania zdalnego interfejsu użytkow
 description: W tym artykule przedstawiono sposób dodawania nowych gid w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika strony.
 author: dominicbetts
 manager: timlt
-ms.author: v-yiso
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-origin.date: 10/04/2018
-ms.date: 11/26/2018
+ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61447101"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodaj niestandardowe siatki do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika
@@ -49,11 +48,11 @@ Aby rozpocząć pracę, **src/wskazówki/składniki/stron/pageWithGrid/exampleGr
 
 **exampleGrid.js**
 
-
+[!code-javascript[Example grid](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGrid.js?name=grid "Example grid")]
 
 **exampleGridConfig.js**
 
-
+[!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
 Kopiuj **src/wskazówki/składniki/stron/pageWithGrid/exampleGrid** folder do **src/składniki/stron/przykład** folderu.
 
@@ -240,7 +239,7 @@ Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj p
     ```js
     doSomething = () => {
       //Just for demo purposes. Don't console log in a real grid.
-      console.log('hard selected rows', this.gridApi.getSelectedRows());
+      console.log('Hard selected rows', this.gridApi.getSelectedRows());
     };
     ```
 
@@ -264,16 +263,16 @@ Jeśli użytkownik musi jedynie do działania w jednym wierszu, skonfiguruj soft
 1. Po kliknięciu łącza soft-select, wyzwala **onSoftSelectChange** zdarzeń. Wykonaj dowolną akcję jest pożądane dla tego wiersza, np. otwierając menu wysuwanego szczegółowe informacje. W tym przykładzie po prostu zapisuje do konsoli:
 
     ```js
-    onSoftSelectChange = (rowId, rowEvent) => {
+    onSoftSelectChange = (rowId, rowData) => {
+      //Note: only the Id is reliable, rowData may be out of date
       const { onSoftSelectChange } = this.props;
-      const obj = (this.gridApi.getDisplayedRowAtIndex(rowId) || {}).data;
-      if (obj) {
+      if (rowId) {
         //Just for demo purposes. Don't console log a real grid.
-        console.log('Soft selected', obj);
-        this.setState({ softSelectedObj: obj });
+        console.log('Soft selected', rowId);
+        this.setState({ softSelectedId: rowId });
       }
       if (isFunc(onSoftSelectChange)) {
-        onSoftSelectChange(obj, rowEvent);
+        onSoftSelectChange(rowId, rowData);
       }
     }
     ```

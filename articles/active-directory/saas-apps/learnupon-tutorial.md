@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574c21dc2713f10513ac296e7db538e20a94c9d6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406527"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą LearnUpon
 
@@ -58,7 +58,7 @@ Aby skonfigurować integrację LearnUpon w usłudze Azure AD, należy dodać Lea
 
 **Aby dodać LearnUpon z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -165,9 +165,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z LearnUpon, wykonaj 
 
      ![Konfigurowanie logowania jednokrotnego](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
-    a. W **Format identyfikatora nazwy pierwszej** pole tekstowe, wpisz wartość, która informuje NAS, gdzie znajdują się w Twojej potwierdzenie SAML firstname użytkowników znajduje się — na przykład: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    a. W **Format identyfikatora nazwy pierwszej** pole tekstowe, wpisz wartość, która informuje NAS, gdzie znajdują się w Twojej potwierdzenie SAML firstname użytkowników znajduje się — na przykład: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
   
-    b. W **ostatniego Format identyfikatora nazwy** pole tekstowe, wpisz wartość, która informuje NAS, gdzie znajdują się w Twojej potwierdzenie SAML lastname użytkowników znajduje się — na przykład: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    b. W **ostatniego Format identyfikatora nazwy** pole tekstowe, wpisz wartość, która informuje NAS, gdzie znajdują się w Twojej potwierdzenie SAML lastname użytkowników znajduje się — na przykład: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -229,7 +229,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka LearnUpon w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze LearnUpon, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

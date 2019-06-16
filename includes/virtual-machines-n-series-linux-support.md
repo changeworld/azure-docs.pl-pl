@@ -9,10 +9,10 @@ ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 9f0d694badaa6f4484a13364c6a56aee2ad1dcfb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161584"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Obsługiwane dystrybucje i sterowniki
@@ -34,7 +34,7 @@ Microsoft dystrybuuje instalatory sterownik technologii NVIDIA GRID NV i maszyny
 
 | Dystrybucja | Sterownik |
 | --- | -- |
-| Ubuntu 16.04 LTS, 18.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3, 7.4, 7.5, 7.6<br/><br/>7.4, 7.5, 7.6 w opartych na systemie centOS 7.3 | Procesory GPU NVIDIA GRID 8.0, gałąź sterownika R418|
+| Ubuntu 16.04 LTS, 18.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3, 7.4, 7.5, 7.6<br/><br/>7\.4, 7.5, 7.6 w opartych na systemie centOS 7.3 | Procesory GPU NVIDIA GRID 8.0, gałąź sterownika R418|
 
 > [!WARNING] 
 > Instalacja oprogramowania innych firm na produktach systemu Red Hat może wpłynąć na warunki wsparcia systemu Red Hat. Zobacz [artykuł bazy wiedzy systemu Red Hat](https://access.redhat.com/articles/1067).

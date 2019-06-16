@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: e1b8bb3544a08b60564ceb5bd7e1666214059e09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60743925"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Kontrolowanie, routingu i używaniu urządzeń wirtualnych (wersja klasyczna), przy użyciu wiersza polecenia platformy Azure
@@ -72,8 +72,8 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
    
     Parametry:
    
-   * **-l (lub --location)**. Region platformy Azure, w którym zostanie utworzona nowa sieciowa grupa zabezpieczeń. W naszym scenariuszu *westus*.
-   * **-n (lub --name)**. Nazwa nowej sieciowej grupy zabezpieczeń. W naszym scenariuszu *sieciowa grupa zabezpieczeń frontonu*.
+   * **-l (lub --location)** . Region platformy Azure, w którym zostanie utworzona nowa sieciowa grupa zabezpieczeń. W naszym scenariuszu *westus*.
+   * **-n (lub --name)** . Nazwa nowej sieciowej grupy zabezpieczeń. W naszym scenariuszu *sieciowa grupa zabezpieczeń frontonu*.
 3. Uruchom następujące polecenie, aby tworzyć trasy w tabeli tras, aby wysłać cały ruch kierowany do podsieci zaplecza (192.168.2.0/24), aby **FW1** maszyny Wirtualnej (192.168.0.4):
 
     ```azurecli
@@ -89,10 +89,10 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
    
     Parametry:
    
-   * **-r (lub--nazwa tabeli tras)**. Nazwa tabeli tras, w której zostaną dodane trasy. W naszym scenariuszu *trasy zdefiniowanej przez użytkownika frontonu*.
-   * **-a (lub --address-prefix)**. Prefiks adresu podsieci, w których pakietów są przeznaczone do. W naszym scenariuszu *192.168.2.0/24*.
-   * **-t (lub--następnego przeskoku typu)**. Typ ruchu obiektu będą wysyłane do. Możliwe wartości to *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, lub *Brak*.
-   * **-p (lub--ip adres, następnego przeskoku w-**). Adres IP następnego przeskoku. W naszym scenariuszu *192.168.0.4*.
+   * **-r (lub--nazwa tabeli tras)** . Nazwa tabeli tras, w której zostaną dodane trasy. W naszym scenariuszu *trasy zdefiniowanej przez użytkownika frontonu*.
+   * **-a (lub --address-prefix)** . Prefiks adresu podsieci, w których pakietów są przeznaczone do. W naszym scenariuszu *192.168.2.0/24*.
+   * **-t (lub--następnego przeskoku typu)** . Typ ruchu obiektu będą wysyłane do. Możliwe wartości to *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, lub *Brak*.
+   * **-p (lub--ip adres, następnego przeskoku w-** ). Adres IP następnego przeskoku. W naszym scenariuszu *192.168.0.4*.
 4. Uruchom następujące polecenie, aby skojarzyć utworzony za pomocą tabeli tras **frontonu** podsieci:
 
     ```azurecli
@@ -114,7 +114,7 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
    
     Parametry:
    
-   * **-t (lub--vnet-name)**. Nazwa sieci wirtualnej, w którym znajduje się podsieć. W naszym scenariuszu jest to *TestVNet*.
+   * **-t (lub--vnet-name)** . Nazwa sieci wirtualnej, w którym znajduje się podsieć. W naszym scenariuszu jest to *TestVNet*.
    * **-n (lub--subnet-name**. Nazwa tabeli tras podsieci zostanie dodany do. W naszym scenariuszu jest to *FrontEnd*.
 
 ## <a name="create-the-udr-for-the-back-end-subnet"></a>Utwórz trasę zdefiniowaną przez użytkownika dla podsieci zaplecza

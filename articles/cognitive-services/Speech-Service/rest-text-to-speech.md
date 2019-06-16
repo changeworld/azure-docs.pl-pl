@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8ebd871c314d3ecbc0c89e6c9081926558b181fd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 59155b41906ffd401b971bee1248a225d0c33657
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237087"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072450"
 ---
 # <a name="text-to-speech-rest-api"></a>Interfejs API REST zamiany tekstu na mowę
 
@@ -42,7 +42,7 @@ Przed użyciem tego interfejsu API, należy zrozumieć:
 
 ### <a name="regions-and-endpoints"></a>Regiony i punktów końcowych
 
-| Obszar | Endpoint |
+| Region | Endpoint |
 |--------|----------|
 | Australia Wschodnia | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Brazylia Południowa | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -55,11 +55,11 @@ Przed użyciem tego interfejsu API, należy zrozumieć:
 | Indie Środkowe | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Japonia Wschodnia | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Korea Środkowa | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Północno-środkowe stany USA | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Środkowo-północne stany USA | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa Północna | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Południowo-środkowe stany USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Środkowo-południowe stany USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Azja Południowo-Wschodnia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Zjednoczone Królestwo (południe) | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Południowe Zjednoczone Królestwo | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa Zachodnia | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Zachodnie stany USA | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Zachodnie stany USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -68,7 +68,7 @@ Przed użyciem tego interfejsu API, należy zrozumieć:
 
 Ta tabela zawiera wymagane i opcjonalne nagłówki dla żądania zamiany tekstu na mowę.
 
-| Nagłówek | Opis | Wymagane / opcjonalne |
+| nagłówek | Opis | Wymagane / opcjonalne |
 |--------|-------------|---------------------|
 | `Authorization` | Token autoryzacji poprzedzone wyrazem `Bearer`. Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie). | Wymagane |
 
@@ -159,7 +159,7 @@ Te regiony są obsługiwane w przypadku zamiany tekstu na mowę przy użyciu int
 
 Ta tabela zawiera wymagane i opcjonalne nagłówki dla żądania zamiany tekstu na mowę.
 
-| Nagłówek | Opis | Wymagane / opcjonalne |
+| nagłówek | Opis | Wymagane / opcjonalne |
 |--------|-------------|---------------------|
 | `Authorization` | Token autoryzacji poprzedzone wyrazem `Bearer`. Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie). | Wymagane |
 | `Content-Type` | Określa typ zawartości dla podanego tekstu. Akceptowane wartości: `application/ssml+xml`. | Wymagane |
@@ -168,7 +168,7 @@ Ta tabela zawiera wymagane i opcjonalne nagłówki dla żądania zamiany tekstu 
 
 ### <a name="audio-outputs"></a>Dane wyjściowe audio
 
-Jest to lista obsługiwanych formatów audio, które są wysyłane do wszystkich żądań jako `X-Microsoft-OutputFormat` nagłówka. Każdy łączy w sobie szybkość transmisji bitów i typ kodowania. Usługi mowy obsługują 24 KHz, 16 KHz, a następnie generuje 8 KHz audio.
+Jest to lista obsługiwanych formatów audio, które są wysyłane do wszystkich żądań jako `X-Microsoft-OutputFormat` nagłówka. Każdy łączy w sobie szybkość transmisji bitów i typ kodowania. Usługi mowy obsługują 24 kHz, 16 kHz, a następnie generuje 8 kHz audio.
 
 |||
 |-|-|
@@ -181,7 +181,7 @@ Jest to lista obsługiwanych formatów audio, które są wysyłane do wszystkich
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> Jeśli wybrany głosu i format danych wyjściowych inne szybkości transmisji bitów, audio jest próbkowany zgodnie z potrzebami. Jednak nie obsługują głosów 24khz `audio-16khz-16kbps-mono-siren` i `riff-16khz-16kbps-mono-siren` formaty danych wyjściowych.
+> Jeśli wybrany głosu i format danych wyjściowych inne szybkości transmisji bitów, audio jest próbkowany zgodnie z potrzebami. Jednak nie obsługują głosów 24 kHz `audio-16khz-16kbps-mono-siren` i `riff-16khz-16kbps-mono-siren` formaty danych wyjściowych.
 
 ### <a name="request-body"></a>Treść żądania
 

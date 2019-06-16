@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60724516"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą Backup Exec
@@ -313,8 +313,8 @@ Oto przykład planu obrotu GFS cztery tygodnie, miesięczne i roczne:
 | Typ częstotliwości/kopia zapasowa | Pełne | Przyrostowa (1 – 5 dni)  |   
 |---|---|---|
 | Co tydzień (1 – 4 tygodnie) | Sobota | Od poniedziałku do piątku |
-| Co miesiąc  | Sobota  |   |
-| Rocznie | Sobota  |   |
+| Miesięczne  | Sobota  |   |
+| Co rok | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Przypisać woluminy StorSimple do zadania tworzenia kopii zapasowych Backup Exec
@@ -387,8 +387,8 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 | Tydzień 2 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 3 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 4 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
-| Co miesiąc | Co miesiąc StorSimple |   |   |   |   |   |
-| Rocznie | Co rok StorSimple  |   |   |   |   |   |
+| Miesięczne | Co miesiąc StorSimple |   |   |   |   |   |
+| Co rok | Co rok StorSimple  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Przypisać woluminy StorSimple do archiwum Exec kopii zapasowej i deduplikacji zadania

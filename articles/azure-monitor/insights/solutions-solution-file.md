@@ -15,10 +15,10 @@ ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60595766"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania zarządzania na platformie Azure (wersja zapoznawcza)
@@ -83,7 +83,7 @@ W poniższej tabeli wymieniono standardowe parametry dla wszystkich rozwiązań 
 >
 >
 
-| Parametr | Type | Opis |
+| Parametr | Typ | Opis |
 |:--- |:--- |:--- |
 | accountName |string |Nazwa konta usługi Azure Automation. |
 | pricingTier |string |Warstwa cenowa obszaru roboczego usługi Log Analytics i konto usługi Azure Automation. |
@@ -129,7 +129,7 @@ Poniżej przedstawiono strukturę standardowe parametry, które można skopiowa�
     }
 
 
-Możesz odwołać się do wartości parametrów w innych elementach rozwiązania przy użyciu składni **parametry ("Nazwa parametru")**.  Na przykład, aby uzyskać dostęp do nazwy obszaru roboczego, należy użyć **parameters('workspaceName')**
+Możesz odwołać się do wartości parametrów w innych elementach rozwiązania przy użyciu składni **parametry ("Nazwa parametru")** .  Na przykład, aby uzyskać dostęp do nazwy obszaru roboczego, należy użyć **parameters('workspaceName')**
 
 ## <a name="variables"></a>Zmienne
 [Zmienne](../../azure-resource-manager/resource-group-authoring-templates.md#variables) są wartościami, które będą używane w pozostałej części rozwiązania do zarządzania.  Te wartości nie są widoczne dla użytkownika, instalowanie rozwiązania.  Są one przeznaczone do zapewnienia Autor z jednej lokalizacji, w którym można zarządzać wartości, które mogą być wielokrotnie używane w całym rozwiązaniu. Należy umieścić wszelkie wartości określonych do rozwiązania w zmiennych twardych kodowania, w przeciwieństwie do **zasobów** elementu.  To czytelność kodu i pozwala łatwo zmieniać te wartości w nowszych wersjach.
@@ -144,7 +144,7 @@ Poniżej przedstawiono przykład **zmienne** element z typowych parametrów uży
         "AutomationApiVersion": "2015-10-31"
     },
 
-Możesz odwołać się do wartości zmiennych za pośrednictwem rozwiązania przy użyciu składni **zmiennych ("Nazwa zmiennej")**.  Na przykład, aby uzyskać dostęp do zmiennej SolutionName, należy użyć **variables('SolutionName')**.
+Możesz odwołać się do wartości zmiennych za pośrednictwem rozwiązania przy użyciu składni **zmiennych ("Nazwa zmiennej")** .  Na przykład, aby uzyskać dostęp do zmiennej SolutionName, należy użyć **variables('SolutionName')** .
 
 Można również zdefiniować zmienne złożonych zestawów wiele wartości.  Są to szczególnie przydatne w rozwiązaniach do zarządzania której definiujesz wiele właściwości dla różnych typów zasobów.  Można na przykład restrukturyzacji roztwór zmiennych powyżej do następujących.
 
@@ -213,7 +213,7 @@ Zasób rozwiązanie ma właściwości w poniższej tabeli.  Obejmują one zasoby
 
 | Właściwość | Opis |
 |:--- |:--- |
-| workspaceResourceId |Identyfikator obszaru roboczego usługi Log Analytics w formie  *\<identyfikator grupy zasobów > /providers/Microsoft.OperationalInsights/workspaces/\<nazwa obszaru roboczego\>*. |
+| workspaceResourceId |Identyfikator obszaru roboczego usługi Log Analytics w formie  *\<identyfikator grupy zasobów > /providers/Microsoft.OperationalInsights/workspaces/\<nazwa obszaru roboczego\>* . |
 | referencedResources |Lista zasobów w rozwiązaniu, które nie powinny być usuwane, gdy rozwiązanie zostanie usunięty. |
 | containedResources |Lista zasobów w rozwiązaniu, które powinny zostać usunięte po usunięciu rozwiązania. |
 
@@ -226,8 +226,8 @@ W powyższym przykładzie jest rozwiązanie z elementu runbook, harmonogram i wi
 |:--- |:--- |
 | name |Nazwa rozwiązania. |
 | version |Wersja rozwiązania, zgodnie z ustaleniami autora. |
-| produkt |Unikatowy ciąg do identyfikowania rozwiązania. |
-| Wydawcy |Z wydawcą rozwiązania. |
+| Produkt |Unikatowy ciąg do identyfikowania rozwiązania. |
+| publisher |Z wydawcą rozwiązania. |
 
 
 

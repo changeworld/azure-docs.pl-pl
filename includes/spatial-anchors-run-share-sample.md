@@ -4,18 +4,16 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 397a8a9b07b4d7a88d0345399ac4abcc3e738a82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b46a2b18309851bbe2934980137a53d2de6f6efc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681388"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135346"
 ---
-## <a name="set-up-your-device"></a>Konfigurowanie urządzenia
+## <a name="set-up-your-device-in-unity"></a>Konfigurowanie urządzenia na platformie Unity
 
-Na platformie Unity, otwórz projekt w `Unity` folderu.
-
-![Okno aparatu Unity](./media/spatial-anchors-unity/unity-window.png)
+[!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
 ### <a name="set-up-an-android-device"></a>Konfigurowanie urządzenia z systemem Android
 
@@ -33,7 +31,7 @@ W okienku **Project (Projekt)** przejdź do katalogu `Assets/AzureSpatialAnchors
 
 W **Inspektor** okienku, wprowadź `Sharing Anchors Service url` (z poziomu aplikacji sieci web platformy ASP.NET wdrażania na platformie Azure) jako wartość pozycji `Base Sharing Url`, zastępując ciąg `index.html` z `api/anchors`. Powinien wyglądać następująco: `https://<app_name>.azurewebsites.net/api/anchors`.
 
-Zapisz scenę, wybierając pozycje **File (Plik)** > **Save (Zapisz)**.
+Zapisz scenę, wybierając pozycje **File (Plik)**  > **Save (Zapisz)** .
 
 ## <a name="deploy-to-your-device"></a>Wdrażanie na urządzeniu
 
@@ -41,22 +39,28 @@ Zapisz scenę, wybierając pozycje **File (Plik)** > **Save (Zapisz)**.
 
 Zaloguj się na urządzeniu z systemem Android i podłącz go do komputera za pomocą kabla USB.
 
-Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
+Otwórz obszar **Build Settings (Ustawienia kompilacji)** , wybierając pozycje **File (Plik)**  > **Build Settings (Ustawienia kompilacji)** .
 
-W obszarze **sceny w kompilacji**, zaznacz pole wyboru obok pozycji `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` scen i wyczyść wyboru oznacza od wszystkich innych sceny.
+W obszarze **sceny w kompilacji**, upewnij się, wszystkie sceny znacznik wyboru obok nich.
 
 Upewnij się, że **Eksportowanie projektu** nie ma znacznik wyboru. Wybierz **kompilowanie i uruchamianie**. Zostanie wyświetlony monit, aby zapisać swoje `.apk` pliku. Możesz wybrać dowolną nazwę.
 
-Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać **Utwórz i Udostępnij zakotwiczenia** lub **Znajdź udostępniony zakotwiczenia**. Pierwszy scenariusz umożliwia tworzenie kotwicę, która może znajdować się na później w tym samym urządzeniu lub na inną. Drugi scenariusz, jeśli została już uruchomiono aplikację, na tym samym urządzeniu lub na inną, umożliwia umieszczanie kotwic wcześniej udostępniony. Po pobraniu Twojemu scenariuszowi, aplikacja przeprowadzi Cię z dalszymi instrukcjami wokół co zrobić, aby. Na przykład użytkownik zostanie zapytany przenoszenie urządzenia do zbierania informacji o środowisku. W dalszej można będzie umieścić kotwicy na całym świecie, będzie Zaczekaj, aż przekazuje i tak dalej.
+Po uruchomieniu aplikacji, **wybierz pokaz** okno dialogowe, użyj strzałki w lewo lub w prawo, aby wybrać **LocalShare** opcji, a następnie naciśnij przycisk **Przejdź!** . Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać **Utwórz i Udostępnij zakotwiczenia** lub **Znajdź udostępniony zakotwiczenia**.
+
+Pierwszy scenariusz umożliwia tworzenie kotwicę, która może znajdować się na później w tym samym urządzeniu lub na inną.
+Drugi scenariusz, jeśli została już uruchomiono aplikację, na tym samym urządzeniu lub na inną, umożliwia umieszczanie kotwic wcześniej udostępniony. Po pobraniu Twojemu scenariuszowi, aplikacja przeprowadzi Cię z dalszymi instrukcjami wokół co należy zrobić. Na przykład użytkownik zostanie zapytany przenoszenie urządzenia do zbierania informacji o środowisku. W dalszej będzie umieścić kotwicy na całym świecie, poczekaj na zapisanie i tak dalej.
 
 ### <a name="deploy-to-an-ios-device"></a>Wdrażanie na urządzeniu z systemem iOS
 
-Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
+Otwórz obszar **Build Settings (Ustawienia kompilacji)** , wybierając pozycje **File (Plik)**  > **Build Settings (Ustawienia kompilacji)** .
 
-W obszarze **sceny w kompilacji**, zaznacz pole wyboru obok pozycji `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` scen i wyczyść wyboru oznacza od wszystkich innych sceny.
+W obszarze **sceny w kompilacji**, upewnij się, wszystkie sceny znacznik wyboru obok nich.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać **Utwórz i Udostępnij zakotwiczenia** lub **Znajdź udostępniony zakotwiczenia**. Pierwszy scenariusz umożliwia tworzenie kotwicę, która może znajdować się na później w tym samym urządzeniu lub na inną. Drugi scenariusz, jeśli została już uruchomiono aplikację, na tym samym urządzeniu lub na inną, umożliwia umieszczanie kotwic wcześniej udostępniony. Po pobraniu Twojemu scenariuszowi, aplikacja przeprowadzi Cię z dalszymi instrukcjami wokół co zrobić, aby. Na przykład użytkownik zostanie zapytany przenoszenie urządzenia do zbierania informacji o środowisku. W dalszej można będzie umieścić kotwicy na całym świecie, będzie Zaczekaj, aż przekazuje i tak dalej.
+Po uruchomieniu aplikacji, **wybierz pokaz** okno dialogowe, użyj strzałki w lewo lub w prawo, aby wybrać **LocalShare** opcji, a następnie naciśnij przycisk **Przejdź!** . Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać **Utwórz i Udostępnij zakotwiczenia** lub **Znajdź udostępniony zakotwiczenia**.
+
+Pierwszy scenariusz umożliwia tworzenie kotwicę, która może znajdować się na później w tym samym urządzeniu lub na inną.
+Drugi scenariusz, jeśli została już uruchomiono aplikację, na tym samym urządzeniu lub na inną, umożliwia umieszczanie kotwic wcześniej udostępniony. Po pobraniu Twojemu scenariuszowi, aplikacja przeprowadzi Cię z dalszymi instrukcjami wokół co należy zrobić. Na przykład użytkownik zostanie zapytany przenoszenie urządzenia do zbierania informacji o środowisku. W dalszej będzie umieścić kotwicy na całym świecie, poczekaj na zapisanie i tak dalej.
 
 W programie Xcode, Zatrzymaj aplikację, wybierając **zatrzymać**.

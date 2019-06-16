@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
 ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952888"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń, a następnie spróbuj ponownie
@@ -28,7 +28,7 @@ Usługa Event Grid czeka 30 sekund na odpowiedź od dostarczania wiadomości. Po
 
 - 10 sekund
 - 30 sekund
-- 1 minuta
+- 1 min
 - 5 minut
 - 10 minut
 - 30 minut
@@ -74,7 +74,7 @@ Następujące kody odpowiedzi HTTP wskazują, że próby dostarczenia zdarzeń n
 
 - 400 Niewłaściwe żądanie
 - 401 Brak autoryzacji
-- 404 Nie znaleziono
+- 404 — Nie odnaleziono
 - 408 Limit czasu żądania
 - Jednostka 413 żądania jest zbyt duża
 - Identyfikator URI 414 za długa

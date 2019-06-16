@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8252dea33ff5cde07e021421d9772a69ea9f143b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0b36d34babcbb0241118e895cfe0cc8e4c3bb363
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899949"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Collaborative Innovation
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację aplikacji Collaborative Innovation z usługą Azu
 
 **Aby dodać aplikację Collaborative Innovation z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 

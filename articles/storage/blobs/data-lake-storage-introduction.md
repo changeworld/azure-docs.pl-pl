@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: daa5efcf1be075e81e402edff56239a7cf21db18
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939223"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2
@@ -38,7 +38,7 @@ W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Najważniejsze funkcje Data Lake Storage Gen2
 
--   **Dostęp zgodny z usługi Hadoop**: Data Lake Storage Gen2 pozwala na zarządzanie i dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [sterownika ABFS](data-lake-storage-abfs-driver.md) jest dostępna w ramach wszystkich środowisk technologii Apache Hadoop, w tym [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [usługi Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), i [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) dostępu do danych przechowywanych w Data Lake Storage Gen2.
+-   **Dostęp zgodny z usługi Hadoop**: Data Lake Storage Gen2 pozwala na zarządzanie i dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [sterownika ABFS](data-lake-storage-abfs-driver.md) jest dostępna w ramach wszystkich środowisk technologii Apache Hadoop, w tym [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [usługi Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), i [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) dostępu do danych przechowywanych w Data Lake Storage Gen2.
 
 -   **Nadzbiór uprawnień POSIX**: Model zabezpieczeń Data Lake Gen2 obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą Eksploratora usługi Storage lub środowisk, takich jak Hive, jak i platformy Spark.
 

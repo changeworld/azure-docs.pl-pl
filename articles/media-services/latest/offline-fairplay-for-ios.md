@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 58315e639a54b67bdef6751004b7a768e4f92224
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937519"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>W trybie offline FairPlay Streaming dla systemu iOS 
@@ -48,7 +48,7 @@ Przed zaimplementowaniem DRM w trybie offline dla technologii FairPlay na urząd
 * Zapoznaj się z ochrony zawartości w trybie online dla technologii FairPlay: 
 
     - [Wymagania licencyjne i konfiguracja technologii FairPlay firmy Apple](fairplay-license-overview.md)
-    - [Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM](protect-with-drm.md)
+    - [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania](protect-with-drm.md)
     - Przykład .NET, obejmującą konfiguracji przesyłanych strumieniowo kl. / s w trybie online: [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * Uzyskaj zestaw SDK kl. / s z sieci dla deweloperów firmy Apple. Zestaw SDK kl. / s zawiera dwa składniki:
 

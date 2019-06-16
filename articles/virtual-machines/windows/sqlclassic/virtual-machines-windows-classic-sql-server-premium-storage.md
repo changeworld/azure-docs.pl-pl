@@ -17,10 +17,10 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 3b3bb206286629a68c14b6444f3f88ffa0af50dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60583272"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Korzystanie z usługi Azure Premium Storage z programem SQL Server na maszynach wirtualnych
@@ -294,7 +294,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmName |Get-AzureOSDisk
 
 Ten scenariusz pokazuje, w którym masz istniejących dostosowanych obrazów, które znajdują się na koncie magazynu w warstwie standardowa. Jak wspomniano wcześniej, jeśli chcesz umieścić wirtualny dysk twardy Zawarty w magazynie Premium Storage należy skopiować obraz, który istnieje w ramach konta magazynu w warstwie standardowa i przenieść je do usługi Premium Storage, zanim będzie można jej używać. W przypadku obrazu w środowisku lokalnym, możesz również użyć tej metody do skopiowania, bezpośrednio na koncie usługi Premium Storage.
 
-#### <a name="step-1-create-storage-account"></a>Krok 1: Utwórz konto magazynu
+#### <a name="step-1-create-storage-account"></a>Krok 1: Tworzenie konta magazynu
 
 ```powershell
 $mysubscription = "DansSubscription"

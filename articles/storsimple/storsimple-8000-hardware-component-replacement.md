@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60321831"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Wymienić składnik sprzętowy w urządzeniu StorSimple 8000 series
@@ -68,9 +68,9 @@ Składniki sprzętowe głównego na urządzeniu są podsumowane w poniższej tab
 | Składniki | # Obecna | Moduł wtyczki? | Procedura zastępowania |
 |:--- |:--- |:--- |:--- |
 | Podstawa montażowa |1 |Nie |[Wymiana obudowy na urządzeniu StorSimple](storsimple-8000-chassis-replacement.md) |
-| Podstawowy kontrolerów |2 |Yes |[Zastąp moduł kontrolera na urządzeniu StorSimple](storsimple-8000-controller-replacement.md) |
-| 764W zasilania i chłodzenia modułów (PCMs) |2 |Yes |[Wymiana modułu zasilania i chłodzenia w urządzeniu StorSimple](storsimple-8000-power-cooling-module-replacement.md) |
-| Baterii zapasowej |2 |Yes |[Wymiana modułu baterii zapasowej w urządzeniu StorSimple](storsimple-8000-battery-replacement.md) |
+| Podstawowy kontrolerów |2 |Tak |[Zastąp moduł kontrolera na urządzeniu StorSimple](storsimple-8000-controller-replacement.md) |
+| 764W zasilania i chłodzenia modułów (PCMs) |2 |Tak |[Wymiana modułu zasilania i chłodzenia w urządzeniu StorSimple](storsimple-8000-power-cooling-module-replacement.md) |
+| Baterii zapasowej |2 |Tak |[Wymiana modułu baterii zapasowej w urządzeniu StorSimple](storsimple-8000-battery-replacement.md) |
 | Stacje dysków |12 |Yes |[Wymiana dysku, na urządzeniu StorSimple](storsimple-8000-disk-drive-replacement.md) |
 
 **Tabela 1** składniki sprzętowe w obudowie podstawowego
@@ -80,8 +80,8 @@ Podstawowy obudowy i obudowy EBOD różnią się w ich modułów we/wy. Ponadto 
 | Składniki | # Obecna | Moduł wtyczki? | Procedura zastępowania |
 |:--- |:--- |:--- |:--- |
 | Podstawa montażowa |1 |Nie |[Wymiana obudowy na urządzeniu StorSimple](storsimple-8000-chassis-replacement.md) |
-| Kontrolery EBOD |2 |Yes |[Wymiana kontrolera EBOD na urządzeniu StorSimple](storsimple-8000-ebod-controller-replacement.md) |
-| 580W zasilania i chłodzenia modułów (PCMs) |2 |Yes |[Wymiana modułu zasilania i chłodzenia w urządzeniu StorSimple](storsimple-8000-power-cooling-module-replacement.md) |
+| Kontrolery EBOD |2 |Tak |[Wymiana kontrolera EBOD na urządzeniu StorSimple](storsimple-8000-ebod-controller-replacement.md) |
+| 580W zasilania i chłodzenia modułów (PCMs) |2 |Tak |[Wymiana modułu zasilania i chłodzenia w urządzeniu StorSimple](storsimple-8000-power-cooling-module-replacement.md) |
 | Stacje dysków |12 |Yes |[Wymiana dysku, na urządzeniu StorSimple](storsimple-8000-disk-drive-replacement.md) |
 
 **Tabela 2** składniki sprzętowe w obudowie EBOD
@@ -104,10 +104,10 @@ Podstawowy obudowy i obudowy EBOD mają modułów operatora dysku. Obudowa przec
 
 | Label | Opis |
 |:--- |:--- |
-| 1 |MODULE PCM 0 |
+| 1 |PCM 0 |
 | 2 |PCM 1 |
-| 3 |Kontrolera 0 |
-| 4 |Kontrolera 1 |
+| 3 |Kontroler 0 |
+| 4 |Kontroler 1 |
 
 ![Montażowa wtyczki urządzenia EBOD obudowy](./media/storsimple-hardware-component-replacement/IC769599.png)
 
@@ -115,7 +115,7 @@ Podstawowy obudowy i obudowy EBOD mają modułów operatora dysku. Obudowa przec
 
 | Label | Opis |
 |:--- |:--- |
-| 1 |MODULE PCM 0 |
+| 1 |PCM 0 |
 | 2 |PCM 1 |
 | 3 |Kontrolera EBOD 0 |
 | 4 |Kontrolera EBOD 1 |

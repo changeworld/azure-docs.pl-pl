@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
 ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60502255"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Języki obsługiwane na maszynie wirtualnej do nauki o danych 
@@ -234,12 +234,12 @@ Domyślna lokalizacja Julia jest środowisku globalnym do odczytu dla wszystkich
 
 ## <a name="other-languages"></a>Inne języki
 
-**C#**: Dostępne na Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `csc` polecenia. 
+**C#** : Dostępne na Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `csc` polecenia. 
 
 **Java**: OpenJDK jest dostępna w wersji systemu Linux i Windows maszyny wirtualnej DSVM i zestawu w ścieżce. Możesz wpisać `javac` lub `java` polecenia w wierszu polecenia w Windows lub w powłoce bash w systemie Linux, aby użyć platformy Java. 
 
 **node.js**: node.js jest dostępna w wersji systemu Linux i Windows maszyny wirtualnej DSVM i zestawu w ścieżce. Możesz wpisać `node` lub `npm` polecenia w wierszu polecenia w Windows lub w powłoce bash w systemie Linux do dostępu do środowiska node.js. Na Windows narzędzia Node.js dla rozszerzenia programu Visual Studio jest zainstalowany na zapewnienie graficznego środowiska IDE do tworzenia aplikacji node.js. 
 
-**F#**: Dostępne na Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `fsc` polecenia. 
+**F#** : Dostępne na Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `fsc` polecenia. 
 
 

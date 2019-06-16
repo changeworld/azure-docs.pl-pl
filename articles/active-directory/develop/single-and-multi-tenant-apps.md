@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8db590c8c79db9bc47edbbef69a11d3b0e4b51f6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111069"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Dzierżawy w usłudze Azure Active Directory
 
@@ -36,10 +36,10 @@ Jeśli chodzi o tworzenie aplikacji, deweloperom możliwość konfigurowania apl
 
 W witrynie Azure portal można skonfigurować aplikację na pojedynczej dzierżawy lub wielodostępne, ustawiając odbiorców w następujący sposób.
 
-| Odbiorcy | Jednym/wielu-tenant | Kto może się zarejestrować | 
+| Grupy odbiorców | Jednym/wielu-tenant | Kto może się zarejestrować | 
 |----------|--------| ---------|
-| Konta, w tym katalogu tylko | Pojedyncza dzierżawa | Wszystkie konta użytkowników i gości w tym katalogu mogą korzystać z aplikacji lub interfejsu API.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest wewnętrzną aplikacją organizacji.* |
-| Konta w dowolnym katalogu usługi Azure AD | Wiele dzierżaw | Wszyscy użytkownicy i gości za pomocą konta służbowego lub szkolnego, od firmy Microsoft, można użyć do aplikacji lub interfejsu API. Obejmuje to szkół i firm, które korzysta z usługi Office 365.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest firm i klientów edukacyjnych.* |
+| Konta, w tym katalogu tylko | Pojedyncza dzierżawa | Wszystkie konta użytkowników i gościa w katalogu, można użyć do aplikacji lub interfejsu API.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest wewnętrzną aplikacją organizacji.* |
+| Konta w każdym katalogiem usługi Azure AD | Wiele dzierżaw | Wszyscy użytkownicy i gości za pomocą konta służbowego lub szkolnego, od firmy Microsoft, można użyć do aplikacji lub interfejsu API. Obejmuje to szkół i firm, które korzysta z usługi Office 365.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest firm i klientów edukacyjnych.* |
 | Konta w dowolnym katalogu usługi Azure AD i osobistych kont Microsoft (np. Skype, Xbox, Outlook.com) | Wiele dzierżaw | Wszyscy użytkownicy z pracy lub szkoły lub osobiste konto Microsoft służy do aplikacji lub interfejsu API. Zawiera szkół i firm korzystających z usługi Office 365, a także konta osobiste, które są używane do logowania do usług, takich jak Xbox i Skype.<br>*Użyj tej opcji pod kątem możliwie najszerszej zbiór kont Microsoft.* | 
 
 ## <a name="best-practices-for-multi-tenant-apps"></a>Najlepsze rozwiązania dla aplikacji wielodostępnych

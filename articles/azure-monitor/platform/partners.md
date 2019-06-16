@@ -9,10 +9,10 @@ ms.date: 03/14/2019
 ms.author: robb
 ms.subservice: ''
 ms.openlocfilehash: fae8e80c6fa94c3581de3038399ef031506b2f55
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65774247"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integracje partnerów w usłudze Azure Monitor
@@ -96,7 +96,7 @@ Dynatrace OneAgent integruje się z usługą Azure Virtual Machines i usług apl
 
 [Przejdź do dokumentacji.][dynatrace-doc]
 
-## <a name="elastic"></a>Elastyczna
+## <a name="elastic"></a>Elastyczność
 
 ![Elastyczne Logo](./media/partners/elastic.png)
 

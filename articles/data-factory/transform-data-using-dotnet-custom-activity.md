@@ -11,16 +11,16 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8076ae81b111aa6b524b7e286ed15ca0661d748b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165969"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062114"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-use-custom-activities.md)
 > * [Bieżąca wersja](transform-data-using-dotnet-custom-activity.md)
 
@@ -104,8 +104,8 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | Nazwa działania w potoku     | Tak      |
 | description           | Tekst opisujący, co działanie robi.  | Nie       |
-| typ                  | Działania niestandardowe, typ działania jest **niestandardowe**. | Tak      |
-| linkedServiceName     | Połączoną usługę służącą do usługi Azure Batch. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.  | Tak      |
+| type                  | Działania niestandardowe, typ działania jest **niestandardowe**. | Yes      |
+| linkedServiceName     | Połączoną usługę służącą do usługi Azure Batch. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.  | Yes      |
 | Polecenie               | Polecenie niestandardowych aplikacji do wykonania. Jeśli aplikacja jest już dostępne w węźle puli Azure Batch, można pominąć resourceLinkedService i folderPath. Na przykład można określić polecenie, aby być `cmd /c dir`, które są natywnie obsługiwane przez węzeł Windows puli usługi Batch. | Tak      |
 | resourceLinkedService | Usługa Azure Storage połączoną usługę służącą do konta magazynu, w którym przechowywany jest niestandardowy aplikacji | Brak&#42;       |
 | folderPath            | Ścieżka do folderu niestandardowych aplikacji i wszystkich jego zależności<br/><br/>Jeśli występują zależności przechowywane w podfolderach — czyli w hierarchicznej struktury folderów w obszarze *folderPath* — struktura folderów jest spłaszczany obecnie, gdy pliki są kopiowane do usługi Azure Batch. Oznacza to, że wszystkie pliki są kopiowane do pojedynczego folderu z bez podfolderów. Aby obejść ten problem, należy wziąć pod uwagę kompresowanie plików, Kopiowanie skompresowanego pliku i rozpakowywania go przy użyciu niestandardowego kodu w dowolnym miejscu. | Brak&#42;       |
@@ -301,7 +301,7 @@ Activity Error section:
 Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędnego, możesz ją uzyskać ścieżkę do pliku stdout.txt w wyrażeniu "\@activity('MyCustomActivity').output.outputs [0]".
 
 > [!IMPORTANT]
-> - Activity.json linkedServices.json i datasets.json są przechowywane w folderze czasu wykonywania zadania wsadowego. W tym przykładzie activity.json linkedServices.json i datasets.json są przechowywane w "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" ścieżki. Jeśli to konieczne, należy wyczyścić oddzielnie.
+> - Activity.json linkedServices.json i datasets.json są przechowywane w folderze czasu wykonywania zadania wsadowego. W tym przykładzie activity.json linkedServices.json i datasets.json są przechowywane w `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` ścieżki. Jeśli to konieczne, należy wyczyścić oddzielnie.
 > - W przypadku połączonych usług, które korzystają z produktem Integration Runtime poufne informacje, takie jak klucze lub hasła są zaszyfrowane za środowiskiem Integration Runtime, aby upewnić się, pozostaje poświadczeń klientów definiowane prywatnym środowisku sieciowym. Niektóre pola poufnych może być brak w odwołuje się kod aplikacji niestandardowej w ten sposób. W extendedProperties zamiast odwołanie do połączonej usługi, jeśli to konieczne, należy użyć ciągu SecureString.
 
 ## <a name="pass-outputs-to-another-activity"></a>Przekaż dane wyjściowe do kolejnego działania
@@ -342,7 +342,7 @@ W poniższej tabeli opisano różnice między działań niestandardowych w wersj
 |Jak jest zdefiniowany w niestandardowej logiki      |Dostarczając plik wykonywalny      |Wdrażając biblioteki DLL platformy .NET      |
 |Środowisko wykonywania logiki niestandardowej      |Windows lub Linux      |Windows (.NET Framework 4.5.2)      |
 |Wykonywanie skryptów      |Obsługuje wykonywanie skryptów bezpośrednio (na przykład "cmd /c echo hello world" na maszynie Wirtualnej Windows)      |Wymaga wdrożenia w bibliotece DLL platformy .NET      |
-|Zestaw danych jest wymagana      |Opcjonalne      |Wymagane do działania połączyć w łańcuch informacjami i przekazują      |
+|Zestaw danych jest wymagana      |Optional (Opcjonalność)      |Wymagane do działania połączyć w łańcuch informacjami i przekazują      |
 |Przekazywanie informacji z działania do logiki niestandardowej      |Za pomocą ReferenceObjects (LinkedServices i zestawów danych) i ExtendedProperties (właściwości niestandardowych)      |Przy użyciu właściwości rozszerzone (właściwości niestandardowych), dane wejściowe i wyjściowe zestawy danych      |
 |Pobieranie informacji w niestandardowej logiki      |Analizuje activity.json linkedServices.json i datasets.json przechowywane w tym samym folderze plik wykonywalny      |Za pomocą zestawu .NET SDK (ramki .NET 4.5.2)      |
 |Rejestrowanie      |Zapisuje dane bezpośrednio na STDOUT      |Implementowanie rejestrowania biblioteki dll platformy .NET      |

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4893076da47528cb6765efc32f46e76819a915b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4f0d681c93ab7ac7fef941892a95282a2fd59b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793815"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075733"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatyczne stosowanie poprawek dla programu SQL Server w usłudze Azure Virtual Machines (Resource Manager)
 > [!div class="op_single_selector"]
@@ -81,20 +81,20 @@ Za pomocą witryny Azure portal skonfigurować automatyczne stosowanie poprawek,
 ### <a name="new-vms"></a>Nowe maszyny wirtualne
 Użyj witryny Azure portal, aby skonfigurować automatyczne stosowanie poprawek, podczas tworzenia nowej maszyny wirtualnej programu SQL Server w modelu wdrażania usługi Resource Manager.
 
-W **ustawień programu SQL Server** bloku wybierz **automatyczne stosowanie poprawek**. Ilustruje poniższy zrzut ekranu na portalu Azure **SQL automatyczne stosowanie poprawek** bloku.
+W **ustawień programu SQL Server** zaznacz **zmiana konfiguracji** w obszarze **automatyczne stosowanie poprawek**. Ilustruje poniższy zrzut ekranu na portalu Azure **SQL automatyczne stosowanie poprawek** bloku.
 
 ![Automatyczne stosowanie poprawek SQL w w witrynie Azure portal](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
 
 Kontekst, w temacie pełną na [obsługi maszyny wirtualnej programu SQL Server na platformie Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Istniejące maszyny wirtualne
-W przypadku istniejących maszyn wirtualnych programu SQL Server należy wybrać maszyny wirtualnej programu SQL Server. Następnie wybierz pozycję **konfiguracji programu SQL Server** części **ustawienia** bloku.
+
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Dla istniejących maszyn wirtualnych programu SQL Server, Otwórz swoje [zasobów maszyn wirtualnych SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) i wybierz **stosowanie poprawek** w obszarze **ustawienia**. 
 
 ![SQL automatyczne stosowanie poprawek dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
 
-W **konfiguracji programu SQL Server** bloku kliknij **Edytuj** przycisk Automatyczne stosowanie poprawek sekcji.
-
-![Konfigurowanie programu SQL automatyczne stosowanie poprawek dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-configuration.png)
 
 Po zakończeniu kliknij przycisk **OK** przycisk w dolnej części **konfiguracji programu SQL Server** bloku, aby zapisać zmiany.
 
@@ -108,8 +108,7 @@ W poniższym przykładzie programu PowerShell służy do konfigurowania automaty
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
     $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
-
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+s Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 
 > [!IMPORTANT]
 > Jeśli rozszerzenie nie jest już zainstalowany, instalowania rozszerzenia powoduje ponowne uruchomienie usługi programu SQL Server.

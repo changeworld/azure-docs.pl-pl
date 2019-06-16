@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: e8d4ab46c598580a3a87f4344202f2700926bf5c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510321"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central
@@ -88,7 +88,7 @@ Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawi
 
 ### <a name="telemetry-measurements"></a>Pomiary dotyczące prawdziwych danych telemetrycznych
 
-| Nazwa pola     | Jednostki  | Minimum | Maksimum | Miejsca dziesiętne |
+| Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
 | Temp           | °C     | -40     | 120     | 0              |
@@ -98,16 +98,16 @@ Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawi
 
 Ustawienia liczbowe
 
-| `Display name` | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimum | Maksimum | Początkowa |
+| `Display name` | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>Właściwości
 
-| Type            | `Display name` | Nazwa pola | Typ danych |
+| Typ            | `Display name` | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
-| Text            | Lokalizacja     | lokalizacja   | ND       |
+| Text            | Lokalizacja     | location   | ND       |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

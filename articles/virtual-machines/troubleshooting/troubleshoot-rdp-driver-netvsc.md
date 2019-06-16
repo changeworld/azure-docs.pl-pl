@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: e6685a5e77d92bb9e05ab9578e48c99e80a64b74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60362258"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nie można zdalnie połączyć się z systemem Windows 10 lub Windows Server 2016 VM in Azure z netvsc.sys
@@ -117,6 +117,6 @@ Połączyć się z [konsoli szeregowej, otwórz wystąpienie programu PowerShell
 
 16. [Odłączanie dysku systemowego i ponownie utworzyć maszynę Wirtualną](../windows/troubleshoot-recovery-disks-portal.md).
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli nadal potrzebujesz pomocy, [skontaktuj się z działem pomocy technicznej systemu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

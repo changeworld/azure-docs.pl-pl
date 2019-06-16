@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: mbullwin
 ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518839"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
@@ -240,9 +240,9 @@ Zestawy SDK różnią się między platformami, a jest wiele składników, któr
 
 | Twoja Akcja | Klasy danych zebranych (zobacz następną tabelę) |
 | --- | --- |
-| [Dodaj zestaw SDK usługi Application Insights do projektu sieci web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>Użytkownicy |
+| [Dodaj zestaw SDK usługi Application Insights do projektu sieci web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>użytkownicy |
 | [Zainstaluj Monitor stanu na serwerze IIS][redfield] |Zależności<br/>ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności |
-| [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |ServerContext<br/>Wywnioskowane<br/>Zażądaj<br/>Sesja<br/>Użytkownicy |
+| [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |ServerContext<br/>Wywnioskowane<br/>Żądanie<br/>Sesja<br/>użytkownicy |
 | [Dodaj zestaw SDK JavaScript do strony sieci web][client] |ClientContext <br/>Wywnioskowane<br/>Strona<br/>ClientPerf<br/>Ajax |
 | [Zdefiniuj właściwości domyślne][apiproperties] |**Właściwości** na wszystkich standardowych i niestandardowych zdarzeń |
 | [Wywołanie TrackMetric][api] |Wartości liczbowe<br/>**Właściwości** |
@@ -263,7 +263,7 @@ Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokument
 | ServerContext |Nazwa maszyny, ustawień regionalnych systemu operacyjnego, urządzenie, sesja użytkownika, kontekst użytkownika, operacji |
 | Wywnioskowane |Lokalizacja geograficzna z adresu IP, timestamp, systemu operacyjnego, przeglądarki |
 | Metryki |Nazwa metryki i wartości |
-| Zdarzenia |Nazwa zdarzenia i wartości |
+| Events |Nazwa zdarzenia i wartości |
 | PageViews |Nazwa adresu URL i strony lub ekranu |
 | Wydajności klienta |Nazwa adresu URL/strony, czas ładowania przez przeglądarkę |
 | Ajax |Wywołania HTTP ze strony sieci web serwera |

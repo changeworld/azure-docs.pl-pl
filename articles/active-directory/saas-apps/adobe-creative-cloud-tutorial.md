@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 9650389d8ec641af1db0652dd09fbd7f06223956
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899089"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem Adobe Creative Cloud
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację rozwiązania Adobe Creative Cloud z usługą Azur
 
 **Aby dodać rozwiązanie Adobe Creative Cloud z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -122,7 +122,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
     |----- | --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Poczta e-mail | user.mail
+    | Email | user.mail
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -179,7 +179,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
 
     f. Kliknij przycisk **Save** (Zapisz).
 
-3. Na pulpicie nawigacyjnym będzie teraz widoczny plik XML **„Pobierz metadane”**. Zawiera on adresy URL EntityDescriptor i AssertionConsumerService firmy Adobe. Otwórz ten plik i skonfiguruj te adresy w aplikacji usługi Azure AD.
+3. Na pulpicie nawigacyjnym będzie teraz widoczny plik XML **„Pobierz metadane”** . Zawiera on adresy URL EntityDescriptor i AssertionConsumerService firmy Adobe. Otwórz ten plik i skonfiguruj te adresy w aplikacji usługi Azure AD.
 
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
@@ -259,7 +259,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Adobe Creative Cloud w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania Adobe Creative Cloud, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

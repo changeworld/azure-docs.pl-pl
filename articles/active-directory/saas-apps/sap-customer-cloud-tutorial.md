@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba76692ec35ddfd0b6c8c49306d6056709d684e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 669dfaa40cfe1bc65618d8706910e19d72c233ad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>Samouczek: Integracja usługi Azure Active Directory z platformą SAP Cloud for Customer
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację platformy SAP Cloud for Customer z usługą Azure
 
 **Aby dodać platformę SAP Cloud for Customer z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -126,7 +126,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie SAP Clou
 
     b. Wybierz pozycję **Przekształcanie** dla pola **Źródło**.
 
-    c. Z listy **Przekształcenie** wybierz pozycję **ExtractMailPrefix()**.
+    c. Z listy **Przekształcenie** wybierz pozycję **ExtractMailPrefix()** .
 
     d. Z listy **Parametr 1** wybierz atrybut użytkownika, którego chcesz użyć na potrzeby implementacji.
     Na przykład jeśli chcesz użyć identyfikatora EmployeeID jako unikatowego identyfikatora użytkownika, a wartość atrybutu jest przechowywana w elemencie ExtensionAttribute2, wybierz pozycję user.extensionattribute2.
@@ -254,7 +254,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka SAP Cloud for Customer na panelu dostępu powinno nastąpić automatyczne zalogowanie do platformy SAP Cloud for Customer, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

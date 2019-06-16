@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 5197fdfe78b1b091de713754967f58157cc4a1b3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66481657"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Pasujące platformy Azure CDN from Verizon — Premium aparat reguł
@@ -804,7 +804,7 @@ Informacje o kluczu:
 - Krawędź CNAME adres URL jest przepisane, aby adres URL usługi CDN przed porównania adresu URL.
 
     Na przykład oba następujące adresy URL wskazują ten sam zasób i dlatego mają tę samą ścieżkę adresu URL:
-     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL: http://wpc.0001.&lt ;domain&gt; /800001/CustomerOrigin/path/asset.htm
      - Adres URL CNAME Edge: http:\//&lt;punktu końcowego&gt;.azureedge.net/path/asset.htm
     
     Aby uzyskać dodatkowe informacje:

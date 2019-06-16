@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60290808"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure w celu pobrania tokenu dostępu 
@@ -64,7 +64,7 @@ Aplikacja kliencka może żądać zarządzanych tożsamości dla zasobów platfo
 
 Podstawowe interfejs do uzyskiwania tokenu dostępu jest oparta na REST, udostępnianie w architekturze każda aplikacja kliencka uruchomione na maszynie Wirtualnej, który może wykonywać wywołania REST protokołu HTTP. Jest to podobne do modelu programowania usługi Azure AD, z wyjątkiem klient używa punktu końcowego na maszynie wirtualnej (vs usługi Azure AD punktu końcowego).
 
-Przykładowe żądanie przy użyciu punktu końcowego usługi Azure wystąpienie metadanych usługi (IMDS) *(zalecane)*:
+Przykładowe żądanie przy użyciu punktu końcowego usługi Azure wystąpienie metadanych usługi (IMDS) *(zalecane)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | (Opcjonalnie) Parametr ciągu zapytania, wskazujący client_id z tożsamości zarządzanej, które Twoim zdaniem tokenem. Wymagane, jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika.|
 | `mi_res_id` | (Opcjonalnie) Parametr ciągu zapytania, wskazujący mi_res_id (identyfikator zasobu platformy Azure) z tożsamości zarządzanej, które Twoim zdaniem tokenem. Wymagane, jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika. |
 
-Przykładowe żądanie przy użyciu zarządzanych tożsamości dla zasobów platformy Azure punktu końcowego maszyny Wirtualnej rozszerzenie *(zaplanowane do wycofania z użycia w styczniu 2019)*:
+Przykładowe żądanie przy użyciu zarządzanych tożsamości dla zasobów platformy Azure punktu końcowego maszyny Wirtualnej rozszerzenie *(zaplanowane do wycofania z użycia w styczniu 2019)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -352,7 +352,7 @@ Tylko wynik w locie wywołań do usługi Azure AD po:
 
 Zarządzanych tożsamości dla zasobów platformy Azure punktu końcowego sygnały błędów za pomocą pola Kod stanu elementu nagłówka komunikatu odpowiedzi HTTP jako błędy 4xx lub 5xx:
 
-| Kod stanu | Przyczyna błędu | Sposób obsługi |
+| Kod stanu: | Przyczyna błędu | Sposób obsługi |
 | ----------- | ------------ | ------------- |
 | 404 Nie znaleziono. | Trwa aktualizowanie IMDS punktu końcowego. | Spróbuj ponownie za pomocą Expontential wycofywania. Zobacz poniższe wskazówki. |
 | 429 zbyt wiele żądań. |  Osiągnięto limit ograniczania IMDS. | Spróbuj ponownie z wykorzystaniem wykładniczego wycofywania. Zobacz poniższe wskazówki. |
@@ -373,7 +373,7 @@ W tej sekcji omówiono możliwy błąd odpowiedzi. Element "200 OK" stan to pomy
 
 | Kod stanu | Błąd | Opis błędu | Rozwiązanie |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Niewłaściwe żądanie | invalid_resource | AADSTS50001: Aplikacja o nazwie *\<URI\>* nie został znaleziony w dzierżawie o nazwie  *\<TENANT-ID\>*. Może to nastąpić, jeśli nie została zainstalowana przez administratora dzierżawy lub wyraża zgodę na żaden użytkownik w dzierżawie usługi aplikacji. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy. \ | (Tylko system Linux) |
+| 400 Niewłaściwe żądanie | invalid_resource | AADSTS50001: Aplikacja o nazwie *\<URI\>* nie został znaleziony w dzierżawie o nazwie  *\<TENANT-ID\>* . Może to nastąpić, jeśli nie została zainstalowana przez administratora dzierżawy lub wyraża zgodę na żaden użytkownik w dzierżawie usługi aplikacji. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy. \ | (Tylko system Linux) |
 | 400 Niewłaściwe żądanie | bad_request_102 | Nie jest określony nagłówek wymagane metadane | Albo `Metadata` pola nagłówka żądania brakuje żądania lub jest niepoprawnie sformatowana. Wartość musi być określona jako `true`, małymi literami. Zobacz "przykładowe żądanie" w poprzedniej sekcji REST, na przykład.|
 | 401 Brak autoryzacji | unknown_source | Nieznane źródło  *\<identyfikatora URI\>* | Sprawdź, żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany. `scheme:host/resource-path` Część musi być określona jako `http://localhost:50342/oauth2/token`. Zobacz "przykładowe żądanie" w poprzedniej sekcji REST, na przykład.|
 |           | invalid_request | Żądania brakuje wymaganego parametru, obejmuje Nieprawidłowa wartość parametru, zawiera więcej niż jeden raz parametr lub w przeciwnym razie jest nieprawidłowo sformułowany. |  |
@@ -381,7 +381,7 @@ W tej sekcji omówiono możliwy błąd odpowiedzi. Element "200 OK" stan to pomy
 |           | access_denied | Właściciel zasobu lub autoryzacji serwer odrzucił żądanie. |  |
 |           | unsupported_response_type | Serwer autoryzacji nie obsługuje uzyskiwania tokenu dostępu przy użyciu tej metody. |  |
 |           | invalid_scope | Żądany zakres jest nieprawidłowy, nieznany lub źle skonstruowany. |  |
-| 500 Wewnętrzny błąd serwera | nieznane | Nie można pobrać token z usługi Active directory. Szczegółowe informacje można znaleźć w dziennikach w  *\<ścieżki pliku\>* | Sprawdź, czy zarządzanych tożsamości dla zasobów platformy Azure został włączony na maszynie Wirtualnej. Zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy przy użyciu konfiguracji maszyny Wirtualnej.<br><br>Sprawdź także, że Twoje żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany, szczególnie zasób, do którego identyfikatora URI określonego w ciągu zapytania. Zobacz "przykładowe żądanie" w poprzedniej sekcji REST, na przykład lub [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](services-support-msi.md) listę usług i ich odpowiednich identyfikatorów zasobów.
+| 500 Wewnętrzny błąd serwera | Nieznany | Nie można pobrać token z usługi Active directory. Szczegółowe informacje można znaleźć w dziennikach w  *\<ścieżki pliku\>* | Sprawdź, czy zarządzanych tożsamości dla zasobów platformy Azure został włączony na maszynie Wirtualnej. Zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy przy użyciu konfiguracji maszyny Wirtualnej.<br><br>Sprawdź także, że Twoje żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany, szczególnie zasób, do którego identyfikatora URI określonego w ciągu zapytania. Zobacz "przykładowe żądanie" w poprzedniej sekcji REST, na przykład lub [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](services-support-msi.md) listę usług i ich odpowiednich identyfikatorów zasobów.
 
 ## <a name="retry-guidance"></a>Wskazówki dotyczące ponawiania prób 
 

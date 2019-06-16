@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62106154"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Wyślij wiadomość e-mail z konta usługi SMTP z usługą Azure Logic Apps
@@ -47,7 +47,7 @@ Korzystając z usługi Azure Logic Apps i łącznik Simple Mail Transfer Protoco
 1. W ostatnim kroku, której chcesz dodać akcję SMTP, wybierz **nowy krok**. 
 
    Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
-   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 1. W polu wyszukiwania wprowadź "smtp" jako filtr. W obszarze listy akcji wybierz akcję, którą chcesz.
 
@@ -55,10 +55,10 @@ Korzystając z usługi Azure Logic Apps i łącznik Simple Mail Transfer Protoco
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Nazwa połączenia** | Yes | Nazwę połączenia z serwerem SMTP | 
+   | **Nazwa połączenia** | Tak | Nazwę połączenia z serwerem SMTP | 
    | **Adres serwera SMTP** | Yes | Adres serwera SMTP | 
-   | **Nazwa użytkownika** | Yes | Nazwa użytkownika dla konta usługi SMTP | 
-   | **Hasło** | Yes | Hasło dla konta usługi SMTP | 
+   | **Nazwa użytkownika** | Tak | Nazwa użytkownika dla konta usługi SMTP | 
+   | **Hasło** | Tak | Hasło dla konta usługi SMTP | 
    | **Port serwera SMTP** | Nie | Określonego portu na serwerze SMTP, którego chcesz użyć | 
    | **Włączyć SSL?** | Nie | Włącz lub wyłącz szyfrowanie SSL. | 
    |||| 

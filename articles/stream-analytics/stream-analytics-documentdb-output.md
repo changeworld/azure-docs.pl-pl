@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 734cf09869e5a2df5f9a505a3cb8ccc7bc2338d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60402311"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure Cosmos DB  
@@ -70,7 +70,7 @@ Szybkość odbierania zdarzeń w Centrum zdarzeń to 2 x większa niż kolekcje 
 
 ![cosmos db metryki porównania](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-1.2 Stream Analytics jest bardziej inteligentne i w użyciu 100% dostępne przepływności w usłudze Cosmos DB z małą liczbą ponownych przesłań z ograniczania/szybkości. Zapewnia to lepsze środowisko dla innych obciążeń, takich jak zapytania, uruchomiony w kolekcji, w tym samym czasie. W razie potrzeby możesz wypróbować jak ASA skalowania za pomocą usługi Cosmos DB jako obiekt sink dla 1 do 10 tys. obr komunikaty/sekundę w tym miejscu jest [projektu przykładów dla platformy azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) , która umożliwia to zrobić.
+1\.2 Stream Analytics jest bardziej inteligentne i w użyciu 100% dostępne przepływności w usłudze Cosmos DB z małą liczbą ponownych przesłań z ograniczania/szybkości. Zapewnia to lepsze środowisko dla innych obciążeń, takich jak zapytania, uruchomiony w kolekcji, w tym samym czasie. W razie potrzeby możesz wypróbować jak ASA skalowania za pomocą usługi Cosmos DB jako obiekt sink dla 1 do 10 tys. obr komunikaty/sekundę w tym miejscu jest [projektu przykładów dla platformy azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) , która umożliwia to zrobić.
 Należy pamiętać, że przepływności danych wyjściowych usługi Cosmos DB jest taka sama, jak 1.0 i 1.1. Ponieważ 1.2 nie jest obecnie domyślna, możesz [Ustaw poziom zgodności](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) dla zadania usługi Stream Analytics, za pomocą portalu lub przy użyciu [wywołanie interfejsu API REST zadania tworzenia](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Ma ona *zdecydowanie zaleca się* 1,2 poziom zgodności w ASA za pomocą usługi Cosmos DB. 
 
 

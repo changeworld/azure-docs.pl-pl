@@ -16,10 +16,10 @@ ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60766923"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Inicjowanie obsługi oraz wdrażanie mikrousług przewidywalny na platformie Azure
@@ -193,7 +193,7 @@ Ponownie zagnieżdżonych zasobów powinny mieć hierarchię bardzo podobne do t
 **Wdróż na platformie Azure** dobrze jest przycisk, ale pozwala na wdrożenie szablonu grupy zasobów w azuredeploy.json, tylko wtedy, gdy azuredeploy.json zostały już przekazane do usługi GitHub. Zestaw Azure .NET SDK udostępnia narzędzia do wdrażania wszystkich plików szablonu JSON bezpośrednio z komputera lokalnego. Aby to zrobić, wykonaj następujące czynności:
 
 1. W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
-2. Kliknij przycisk **Visual C#** > **chmury** > **grupy zasobów platformy Azure**, następnie kliknij przycisk **OK**.
+2. Kliknij przycisk **Visual C#**  > **chmury** > **grupy zasobów platformy Azure**, następnie kliknij przycisk **OK**.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. W **wybierz szablon Azure**, wybierz opcję **pustego szablonu** i kliknij przycisk **OK**.
@@ -238,7 +238,7 @@ Ponownie zagnieżdżonych zasobów powinny mieć hierarchię bardzo podobne do t
     > Skalowanie automatyczne to funkcja oferowana w **standardowa** warstwy lub nowszej i poziom planu alerty są funkcji oferowanych w ramach **podstawowe** warstwy lub nowszej, musisz ustawić **jednostki sku** parametru Aby **standardowa** lub **Premium** zobaczenie wszystkich nowych App Insights zasobów światła w górę.
     > 
     > 
-16. Kliknij przycisk **Deploy (Wdróż)**. W przypadku wybrania **zapisywać hasła**, hasło zostanie zapisane w pliku parametrów **w postaci zwykłego tekstu**. W przeciwnym razie użytkownik zostanie zapytany wprowadzanie hasła bazy danych w procesie wdrażania.
+16. Kliknij przycisk **wdrażanie**. W przypadku wybrania **zapisywać hasła**, hasło zostanie zapisane w pliku parametrów **w postaci zwykłego tekstu**. W przeciwnym razie użytkownik zostanie zapytany wprowadzanie hasła bazy danych w procesie wdrażania.
 
 Gotowe. Teraz po prostu musisz przejść do [witryny Azure Portal](https://portal.azure.com/) i [Eksploratora zasobów Azure](https://resources.azure.com) narzędzie, aby zobaczyć nowe alerty i ustawienia automatycznego skalowania, dodane do JSON wdrożono aplikację.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b0b3921640ebf6ed21860cfac75ffca195096db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e8b61bc01e729472c140253f8f936b6ec0dd1b0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863041"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Deputy
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Deputy z usługą Azure AD, należy dod
 
 **Aby dodać aplikację Deputy z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -173,7 +173,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Deputy, w
 
 ### <a name="configure-deputy-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Deputy
 
-1. Przejdź do następującego adresu URL:[https://(Twoja_poddomena).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config). Przejdź do pozycji **Security Settings (Ustawienia zabezpieczeń)** i kliknij przycisk **Edit (Edytuj)**.
+1. Przejdź do następującego adresu URL:[https://(Twoja_poddomena).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config). Przejdź do pozycji **Security Settings (Ustawienia zabezpieczeń)** i kliknij przycisk **Edit (Edytuj)** .
    
     ![Konfigurowanie logowania jednokrotnego](./media/deputy-tutorial/tutorial_deputy_004.png)
 
@@ -181,7 +181,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Deputy, w
 
     ![Konfigurowanie logowania jednokrotnego](./media/deputy-tutorial/tutorial_deputy_005.png)
     
-    a. Włącz pozycję **Social Login (Logowanie za pomocą danych z serwisów społecznościowych)**.
+    a. Włącz pozycję **Social Login (Logowanie za pomocą danych z serwisów społecznościowych)** .
    
     b. Otwórz w Notatniku certyfikat zakodowany w formacie Base64 pobrany z witryny Azure Portal, skopiuj zawartość do Schowka, a następnie wklej ją w polu tekstowym **OpenSSL Certificate** (Certyfikat OpenSSL).
    
@@ -191,7 +191,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Deputy, w
    
     e. W polu tekstowym adresu URL logowania jednokrotnego SAML zastąp `<saml sso url>` **adresem URL logowania** skopiowanym z witryny Azure Portal.
    
-    f. Kliknij pozycję **Save Settings (Zapisz ustawienia)**.
+    f. Kliknij pozycję **Save Settings (Zapisz ustawienia)** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -252,15 +252,15 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Deput
 
 1. Zaloguj się do swojej firmowej witryny aplikacji Deputy jako administrator.
 
-2. W górnym okienku nawigacji kliknij pozycję **People (Osoby)**.
+2. W górnym okienku nawigacji kliknij pozycję **People (Osoby)** .
    
     ![Osoby](./media/deputy-tutorial/tutorial_deputy_001.png "Osoby")
 
-3. Kliknij przycisk **Add People (Dodaj osoby)**, a następnie kliknij pozycję **Add a single person (Dodaj jedną osobę)**.
+3. Kliknij przycisk **Add People (Dodaj osoby)** , a następnie kliknij pozycję **Add a single person (Dodaj jedną osobę)** .
    
     ![Dodaj osoby](./media/deputy-tutorial/tutorial_deputy_002.png "Dodaj osoby")
 
-4. Wykonaj poniższe kroki, a następnie kliknij pozycję **Save & Invite (Zapisz i zaproś)**.
+4. Wykonaj poniższe kroki, a następnie kliknij pozycję **Save & Invite (Zapisz i zaproś)** .
    
     ![Nowy użytkownik](./media/deputy-tutorial/tutorial_deputy_003.png "Nowy użytkownik")
 
@@ -270,7 +270,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Deput
    
     c. W polu tekstowym **Work at (Pracuje w)** wpisz nazwę firmy.
    
-    d. Kliknij przycisk **Save & Invite (Zapisz i zaproś)**.
+    d. Kliknij przycisk **Save & Invite (Zapisz i zaproś)** .
 
 5. Właściciel konta usługi AAD otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne. Aby aprowizować konta użytkowników usługi AAD, możesz użyć jakichkolwiek innych narzędzi tworzenia konta użytkownika aplikacji Deputy lub interfejsów API udostępnianych przez aplikację Deputy.
 
@@ -280,7 +280,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Deputy w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Deputy, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: d2e6ad9aa9692efa4ea5633dff78b262bb1917be
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512025"
 ---
 # <a name="userjourneys"></a>UserJourneys
@@ -64,7 +64,7 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | `Order` | Tak | Kolejność etapów aranżacji. | 
-| `Type` | Tak | Typ kroku aranżacji. Możliwe wartości: <ul><li>**Elemencie ClaimsProviderSelection** — wskazuje, że kroku aranżacji przedstawia informacje o różnych dostawców oświadczeń użytkownikowi wybrać jeden z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że kroku aranżacji przedstawia połączone mediów społecznościowych strona rejestracji dla kont logowania i lokalnych.</li><li>**Elementu ClaimsExchange** — wskazuje, że kroku aranżacji wymienia oświadczenia, za pomocą dostawcy oświadczeń.</li><li>**SendClaims** — wskazuje, że kroku aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczenia.</li></ul> | 
+| `Type` | Yes | Typ kroku aranżacji. Możliwe wartości: <ul><li>**Elemencie ClaimsProviderSelection** — wskazuje, że kroku aranżacji przedstawia informacje o różnych dostawców oświadczeń użytkownikowi wybrać jeden z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że kroku aranżacji przedstawia połączone mediów społecznościowych strona rejestracji dla kont logowania i lokalnych.</li><li>**Elementu ClaimsExchange** — wskazuje, że kroku aranżacji wymienia oświadczenia, za pomocą dostawcy oświadczeń.</li><li>**SendClaims** — wskazuje, że kroku aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczenia.</li></ul> | 
 | ContentDefinitionReferenceId | Nie | Identyfikator [zawartości definicji](contentdefinitions.md) skojarzony z tym krokiem aranżacji. Zazwyczaj identyfikator odwołania definicji zawartości jest zdefiniowany w profilu technicznym samodzielnie. Gdy usługa Azure AD B2C musi wyświetlić coś bez profilu technicznego istnieją jednak przypadki. Istnieją dwa przykłady — Jeśli typ kroku aranżacji jest jednym z następujących czynności: `ClaimsProviderSelection` lub `CombinedSignInAndSignUp`, wymaganych usługi Azure AD B2C, aby wyświetlić wyboru dostawcy tożsamości bez profilu technicznego. | 
 | CpimIssuerTechnicalProfileReferenceId | Nie | Typ kroku aranżacji jest `SendClaims`. Ta właściwość określa identyfikator profilu technicznego dotyczącego dostawcy oświadczeń, który wystawia token dla jednostki uzależnionej.  Jeśli brak, jest tworzony token nie jednostki uzależnionej ze stron. |
 
@@ -92,7 +92,7 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| `Type` | Tak | Typ wyboru lub zapytanie w celu przeprowadzenia tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, czy działania powinny wykonane, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, która określa, że akcje należy wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa określonej wartości. |
+| `Type` | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, czy działania powinny wykonane, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, która określa, że akcje należy wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa określonej wartości. |
 | `ExecuteActionsIf` | Yes | Użyj testu prawda lub FAŁSZ, aby zdecydować, jeśli można wykonać akcje w warunku wstępnym. | 
 
 **Wstępnym** elementy zawierają następujące elementy:
@@ -224,5 +224,5 @@ W poniższym kroku aranżacji użytkownika można zalogować się przy użyciu u
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator kroku exchange oświadczeń. Identyfikator jest używana do odwołania, wymiana oświadczeń spośród dostawcy oświadczeń krok w ramach zasad. | 
+| Identyfikator | Tak | Identyfikator kroku exchange oświadczeń. Identyfikator jest używana do odwołania, wymiana oświadczeń spośród dostawcy oświadczeń krok w ramach zasad. | 
 | TechnicalProfileReferenceId | Tak | Identyfikator profilu technicznego, który ma zostać wykonana. |

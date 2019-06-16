@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60658334"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Pojemność wystąpienia usługi Azure API Management
@@ -69,7 +69,7 @@ Są bardziej złożonych operacji w odpowiedzi na żądania, tym wyżej **pojemn
 ![Metryka pojemności](./media/api-management-capacity/capacity-metric.png)  
 
 1. Przejdź do swojego wystąpienia usługi APIM w [witryny Azure portal](https://portal.azure.com/).
-2. Wybierz **metryki (wersja zapoznawcza)**.
+2. Wybierz **metryki (wersja zapoznawcza)** .
 3. W części fioletowym, wybierz **pojemności** metryk dostępnych metryk i pozostaw domyślny **Avg** agregacji.
 
     > [!TIP]

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 15cfa025bde3367c57255ce50f95c69293b63f92
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 59d61eda7002fe46cf99fac63822b2333b2d64b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905621"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087763"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą UserEcho
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację UserEcho w usłudze Azure AD, należy dodać User
 
 **Aby dodać UserEcho z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -138,7 +138,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z UserEcho, wykonaj n
    
     ![Konfigurowanie logowania jednokrotnego](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
-4. Kliknij przycisk **witryny sieci Web**, a następnie kliknij przycisk **logowanie jednokrotne (SAML2)**.
+4. Kliknij przycisk **witryny sieci Web**, a następnie kliknij przycisk **logowanie jednokrotne (SAML2)** .
    
     ![Konfigurowanie logowania jednokrotnego](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
@@ -246,7 +246,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka UserEcho w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze UserEcho, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

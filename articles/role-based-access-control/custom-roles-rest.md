@@ -16,10 +16,10 @@ ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60596693"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu interfejsu API REST
@@ -54,7 +54,7 @@ Aby wyświetlić listę ról niestandardowych w zakresie, należy użyć [defini
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -78,7 +78,7 @@ Aby uzyskać informacje o niestandardowych rolach według jego nazwy wyświetlan
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -104,7 +104,7 @@ Aby uzyskać informacje o niestandardowych rolach według unikatowego identyfika
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -152,7 +152,7 @@ Aby utworzyć rolę niestandardową, należy użyć [definicje ról — Utwórz 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z pierwszym `assignableScopes` roli niestandardowej.
 
-    | Zakres | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -217,7 +217,7 @@ Aby zaktualizować rolę niestandardową, użyj [definicje ról — Tworzenie lu
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z pierwszym `assignableScopes` roli niestandardowej.
 
-    | Zakres | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -301,7 +301,7 @@ Aby usunąć niestandardową rolę, użyj [Usuń definicje ról —](/rest/api/a
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, który chcesz usunąć rolę niestandardową.
 
-    | Zakres | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |

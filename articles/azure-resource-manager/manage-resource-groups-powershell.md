@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 8ae86d8bc7914a7a9c41eee93bb16b2f774993b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60550499"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Zarządzanie grupami zasobów usługi Azure Resource Manager przy użyciu programu Azure PowerShell
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 Get-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="list-resource-groups"></a>Wyświetl listę grup zasobów
+## <a name="list-resource-groups"></a>Listy grup zasobów
 
 Poniższy skrypt programu PowerShell Wyświetla listę grup zasobów w ramach Twojej subskrypcji.
 

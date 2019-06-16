@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 70f300d83d904537aab61b95de876f4ac2edb66c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60808981"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopiowanie danych z Zoho przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane w przypadku Zoho połączone usłu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Zoho** | Yes |
+| type | Właściwość type musi być równa: **Zoho** | Tak |
 | endpoint | Punkt końcowy serwera Zoho (`crm.zoho.com/crm/private`). | Yes |
 | accessToken | Token dostępu do uwierzytelniania Zoho. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
@@ -77,7 +77,7 @@ Aby skopiować dane z Zoho, należy ustawić właściwość typu zestawu danych 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **ZohoObject** | Yes |
+| type | Właściwość typu elementu dataset musi być równa: **ZohoObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**

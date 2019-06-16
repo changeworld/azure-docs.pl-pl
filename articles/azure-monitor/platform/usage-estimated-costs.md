@@ -10,10 +10,10 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60453830"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorowanie użycia i szacowanych kosztów w usłudze Azure Monitor
@@ -68,7 +68,7 @@ Na stronie znajdują się również inny zbiór liczników, które odnoszą się
 
 Nowy model cen nie ma alokacje oparte na węzłach uwzględnione dane. W związku z tym, te liczniki pozyskiwania danych są łączone w nowego licznika przyjmowanie wspólnych danych o nazwie **udostępnione pozyskiwania Services\Data**. 
 
-Istnieje inna zmiana na dane pozyskane do usługi Log Analytics lub usługi Application Insights w regionach z wyższych kosztów. Dane dotyczące tych regionów kosztu wysokiej będą wyświetlane przy użyciu nowego mierniki regionalne. Na przykład **pozyskiwanie danych (zachodnio-środkowe stany USA)**.
+Istnieje inna zmiana na dane pozyskane do usługi Log Analytics lub usługi Application Insights w regionach z wyższych kosztów. Dane dotyczące tych regionów kosztu wysokiej będą wyświetlane przy użyciu nowego mierniki regionalne. Na przykład **pozyskiwanie danych (zachodnio-środkowe stany USA)** .
 
 > [!NOTE]
 > Na subskrypcję szacowane koszty nie wziąć pod uwagę na poziomie konta na węźle uprawnień subskrypcji usługi Operations Management Suite (OMS). Zapoznaj się z przedstawicielem klienta dla bardziej szczegółowym omówieniem nowego modelu cen w tym przypadku.

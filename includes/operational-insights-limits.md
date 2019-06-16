@@ -5,37 +5,53 @@ services: log-analytics
 author: MGoedtel
 ms.service: log-analytics
 ms.topic: include
-ms.date: 05/16/2018
+ms.date: 06/10/2019
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 34f2ab8f7ccafb8b30e298cd71e09171ad8c87cb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c5fedc59c80c68fc222693a67664ef60ddd210a9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238261"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133784"
 ---
-Następujące limity dotyczą zasobów usługi Azure Log Analytics na subskrypcję.
+Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics, w bieżącym na podstawie użycia warstwy cenowej wprowadzonych w kwietniu 2018 r.:
 
-| Resource | Limit domyślny | Komentarze
-| --- | --- | --- |
-| Liczba wolnych obszarów roboczych na subskrypcję | 10 | Nie można zwiększyć ten limit. |
-| Liczba płatnych obszarów roboczych na subskrypcję | ND | Ograniczeniem liczby zasobów w grupie zasobów i liczba grup zasobów na subskrypcję. | 
+|     | Za GB 2018 r. |
+| --- | --- | 
+| Ilość danych zebranych na dzień | Brak |
+| Okres przechowywania danych | 30 do 730 dni<sup>1</sup> |
+
+Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics najnowszych starszej wersji warstwy cenowe:
+
+|  | Wolne | Autonomiczna (za GB) | Na węzeł (OMS) |
+| --- | --- | --- | --- | --- | --- |--- |
+| Ilość danych zebranych na dzień |500 MB<sup>2</sup> |Brak |Brak |
+| Okres przechowywania danych |7 dni | 30 do 730 dni<sup>1</sup> | 30 do 730 dni<sup>1</sup> |
+
+Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics najstarsze starszej wersji warstwy cenowe:
+
+|  | Standardowa (Standard) | Premium | 
+| --- | --- | --- | --- | --- | --- |--- |
+| Ilość danych zebranych na dzień | Brak | Brak | 
+| Okres przechowywania danych |30 dni | 365 dni |
+
+<sup>1</sup>przechowywanie danych dłużej niż 31 dni jest dostępna dla dodatkowych opłat. Dowiedz się więcej o [cennika usługi Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+
+<sup>2</sup>gdy obszar roboczy osiągnie 500 MB limit dziennego transferu danych, analiza danych zatrzymuje, a następnie wznowiona na początku następnego dnia. Dzień jest oparty na czasie UTC.
 
 >[!NOTE]
->Od 2 kwietnia 2018 r. automatycznie używać nowych obszarów roboczych w nowej subskrypcji *na GB* plan cenowy. W przypadku istniejących subskrypcji utworzony przed 2 kwietnia lub subskrypcji powiązanej z istniejącą rejestracją umowy Enterprise Agreement można nadal z trzech warstw cenowych dla nowych obszarów roboczych. 
+>W zależności od tego, jak długo używasz usługi Log Analytics mogą mieć dostęp do starszych warstw cenowych. Dowiedz się więcej o [starszej wersji usługi Log Analytics warstw cenowych](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 
 >
 
-Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics.
+Następujące limity dotyczą zasobów usługi Azure Log Analytics (obszary robocze) na subskrypcję.
 
-|  | Wolne | Standardowa (Standard) | Premium | Autonomiczna | OMS | Na GB |
-| --- | --- | --- | --- | --- | --- |--- |
-| Ilość danych zebranych na dzień |500 MB<sup>1</sup> |Brak |Brak | Brak | Brak | Brak
-| Okres przechowywania danych |7 dni |1 miesiąc |12 miesięcy | 1 miesiąc<sup>2</sup> | 1 miesiąc<sup>2</sup>| 1 miesiąc<sup>2</sup>|
+| Warstwa cenowa    | Liczba obszarów roboczych na subskrypcję | Komentarze
+| --- | --- | --- |
+| Warstwa bezpłatna  | 10 | Nie można zwiększyć ten limit. |
+| Wszystkie warstwy innych niż bezpłatna | ND | Ograniczeniem liczby zasobów w grupie zasobów i liczba grup zasobów na subskrypcję. | 
 
-<sup>1</sup>gdy klienci osiągną ich 500 MB limit dziennego transferu danych, analiza danych zatrzymuje się i zostanie wznowiona na początku następnego dnia. Dzień jest oparty na czasie UTC.
-
-<sup>2</sup>okres przechowywania danych dla autonomicznej, OMS i planów cen na GB, można zwiększyć do 730 dni.
+Poniższe limity mają zastosowanie do interfejsów API analizy dziennika:
 
 | Category | Limits | Komentarze
 | --- | --- | --- |

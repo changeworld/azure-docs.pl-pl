@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 195e7bf21fe1f6017705883f2ec692c182f15375
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 013e477b66d2772698ce5c9cc61a59f8a5a04a5a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560588"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu systemów Pega
 
@@ -95,7 +95,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z systemami Pega, wyk
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
 
 3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 
@@ -234,7 +234,7 @@ W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure
 
     a. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wprowadź **brittasimon @\<domenatwojejfirmy >.\< Rozszerzenia >**. (Na przykład BrittaSimon@contoso.com.)
+    b. W **nazwa_użytkownika** wprowadź **brittasimon @\<domenatwojejfirmy >.\< Rozszerzenia >** . (Na przykład BrittaSimon@contoso.com.)
 
     c. Wybierz **hasło Show**i zanotuj wartość, która znajduje się w **hasło** pole.
 

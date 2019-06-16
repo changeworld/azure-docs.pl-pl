@@ -1,21 +1,21 @@
 ---
 title: Wynik za wynagrodzeniem — Personalizer
 titleSuffix: Azure Cognitive Services
-description: Wynik za wynagrodzeniem wskazuje, jak dobrze personalizacji wybór, RewardActionID, w wyniku dla użytkownika. Wartość wyniku nagradzania jest określana przez logikę biznesową, na podstawie obserwacji zachowania użytkowników. Personalizer przygotowuje jego modeli uczenia maszynowego, oceniając korzyści.
+description: Wynik za wynagrodzeniem wskazuje, jak dobrze personalizacji wybór, RewardActionID, w wyniku dla użytkownika. Wartość wyniku nagradzania jest określana przez logikę biznesową, na podstawie obserwacji zachowania użytkowników. Personalizer szkolenie modeli uczenia modeli poprzez ocenę korzyści maszynowego.
 services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/13/2019
+ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c64d43301fd173203bd1625b8d37120b71c22805
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244249"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077413"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Nagrody wyniki wskazują sukces personalizacji
 
@@ -30,6 +30,18 @@ Korzyści są wysyłane do Personalizer przez [interfejsu API za wynagrodzeniem]
 Korzyści są wysyłane po zachowania użytkowników miało miejsce, co może być dni później. Maksymalna ilość czasu Personalizer zaczeka na zdarzenie została uznana za nie za wynagrodzeniem lub nagradzania domyślne jest skonfigurowany z [czas oczekiwania nagradzania](#reward-wait-time) w witrynie Azure portal.
 
 Jeśli wynik za wynagrodzeniem zdarzenia nie otrzymał w ciągu **czas oczekiwania nagradzania**, a następnie **domyślne nagradzania** zostaną zastosowane. Zazwyczaj **[domyślne nagradzania](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** jest skonfigurowany jako zero.
+
+
+## <a name="behaviors-and-data-to-consider-for-rewards"></a>Zachowania i danych należy wziąć pod uwagę, aby uzyskać korzyści
+
+Należy wziąć pod uwagę te sygnały i zachowania kontekstu wynik za wynagrodzeniem:
+
+* Bezpośrednie dane wejściowe użytkownika w przypadku sugestii, w przypadku opcji ("Czy chodziło Ci o X?").
+* Długość sesji.
+* Czas między sesjami.
+* Analiza tonacji interakcji użytkownika.
+* Bezpośrednie pytania i mini ankiet, gdzie bot prosi użytkownika o opinię o przydatności, dokładności.
+* Odpowiedzi na alerty lub opóźnienie do odpowiedzi na alerty.
 
 ## <a name="composing-reward-scores"></a>Tworzenie oceny nagrody
 

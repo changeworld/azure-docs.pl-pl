@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 34857108cf7f0580c380ffbd4bbcedb5cd5a807a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6fc00bf0dfb83f349da91989a579f31be2027ff0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245019"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071686"
 ---
 # <a name="overview-of-azure-activity-log"></a>Przegląd dziennika aktywności platformy Azure
 
@@ -30,10 +30,10 @@ Brak jednego dziennika aktywności dla każdej subskrypcji platformy Azure. Zawi
 
 
 > [!NOTE]
-> Dziennik aktywności platformy Azure jest przede wszystkim dla działań, które wystąpią w usłudze Azure Resource Manager. Żądania nie Śledź ugresources przy użyciu modelu klasyczną/frontonu REDDOG. Niektóre typy zasobów klasycznego mają dostawcy zasobów serwera proxy w usłudze Azure Resource Manager (na przykład Microsoft.ClassicCompute). Jeśli kontaktujesz się z typem zasobu klasycznym za pośrednictwem usługi Azure Resource Manager przy użyciu tych dostawców zasobów serwera proxy, operacje są wyświetlane w dzienniku aktywności. Gdy wchodzisz w interakcję z typem zasobu Classic poza serwery proxy usługi Azure Resource Manager, akcji tylko są rejestrowane w dzienniku operacji. Dziennik operacji można przeglądać w osobnej sekcji portalu.
+> Dziennik aktywności platformy Azure jest przede wszystkim dla działań, które wystąpią w usłudze Azure Resource Manager. Żądania nie Śledź zasobów przy użyciu modelu klasyczną/frontonu REDDOG. Niektóre typy zasobów klasycznego mają dostawcy zasobów serwera proxy w usłudze Azure Resource Manager (na przykład Microsoft.ClassicCompute). Jeśli kontaktujesz się z typem zasobu klasycznym za pośrednictwem usługi Azure Resource Manager przy użyciu tych dostawców zasobów serwera proxy, operacje są wyświetlane w dzienniku aktywności. Gdy wchodzisz w interakcję z typem zasobu Classic poza serwery proxy usługi Azure Resource Manager, akcji tylko są rejestrowane w dzienniku operacji. Dziennik operacji można przeglądać w osobnej sekcji portalu.
 
 ## <a name="activity-log-retention"></a>Przechowywanie dziennika aktywności
-Zdarzenia dziennika aktywności są przechowywane przez 90 dni. Do przechowywania danych przez dłuższy czas [zbieranie go w usłudze Azure Monitor](activity-log-collect.md) lub [wyeksportować je do magazynu lub centrów zdarzeń](activity-log-export.md).
+Po utworzeniu wpisy dziennika aktywności nie są zmodyfikowany lub usunięty przez system. Ponadto nie można zmienić je w interfejsie lub programowo. Zdarzenia dziennika aktywności są przechowywane przez 90 dni. Do przechowywania danych przez dłuższy czas [zbieranie go w usłudze Azure Monitor](activity-log-collect.md) lub [wyeksportować je do magazynu lub centrów zdarzeń](activity-log-export.md).
 
 ## <a name="view-the-activity-log"></a>Wyświetl dziennik aktywności
 Wyświetl dziennik aktywności, aby wszystkie zasoby z **Monitor** menu w witrynie Azure portal. Wyświetlanie dziennika aktywności dla danego zasobu z **dziennika aktywności** opcji w menu tego zasobu. Możesz również pobrać rekordów dziennika aktywności przy użyciu programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST.  Zobacz [wyświetlanie i pobieranie aktywności platformy Azure, rejestrowanie zdarzeń](activity-log-view.md).

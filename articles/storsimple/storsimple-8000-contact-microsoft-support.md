@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
 ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606869"
 ---
-# <a name="contact-microsoft-support"></a>Skontaktuj się z działem pomocy technicznej firmy Microsoft
+# <a name="contact-microsoft-support"></a>Kontakt z pomocą techniczną firmy Microsoft
 
 Menedżer urządzeń StorSimple zapewnia możliwość **rejestrować nowe żądanie pomocy technicznej** w bloku podsumowania usługi. Jeśli napotkasz jakiekolwiek problemy z rozwiązaniem StorSimple można utworzyć żądania obsługi, aby uzyskać pomoc techniczną. W ramach sesji online ze specjalistą pomocy technicznej może również należy rozpocząć sesję pomocy technicznej na urządzeniu StorSimple. Ten artykuł przeprowadzi Cię przez:
 
@@ -31,7 +31,7 @@ Menedżer urządzeń StorSimple zapewnia możliwość **rejestrować nowe żąda
 
 Przegląd [warunków umów SLA usługi StorSimple 8000 Series pomocy technicznej i informacje o](https://msdn.microsoft.com/library/mt433077.aspx) przed przystąpieniem do tworzenia żądania pomocy technicznej.
 
-## <a name="create-a-support-request"></a>Utwórz żądanie obsługi
+## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
 
 W zależności od Twojego [plan pomocy technicznej](https://azure.microsoft.com/support/plans/), tworzenia biletów pomocy technicznej dotyczącej problemu na urządzeniu StorSimple bezpośrednio z poziomu bloku podsumowania usługi Menedżer urządzeń StorSimple. Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 

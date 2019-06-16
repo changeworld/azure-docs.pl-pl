@@ -11,10 +11,10 @@ ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65539287"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
@@ -45,8 +45,8 @@ Poniższa tabela zawiera listę dostępnych warstw. Można znaleźć więcej inf
 
 |Warstwa | Pojemność |
 |-----|-------------|
-|Wolny | Współużytkowana z innymi subskrybentami. Nie jest skalowalna. Ograniczone do trzech indeksów i 50 MB miejsca. |
-|Podstawowy | Dedykowane zasoby obliczeniowe dla obciążeń produkcyjnych na mniejszą skalę. Jedna partycja 2 GB i maksymalnie trzech replik. |
+|Wolne | Współużytkowana z innymi subskrybentami. Nie jest skalowalna. Ograniczone do trzech indeksów i 50 MB miejsca. |
+|Podstawowa | Dedykowane zasoby obliczeniowe dla obciążeń produkcyjnych na mniejszą skalę. Jedna partycja 2 GB i maksymalnie trzech replik. |
 |1 standardowa (S1) | Warstwy S1 i nowszej, dedykowanych maszyn o większej pojemności magazynowania i przetwarzania na każdym poziomie. Warstwa S1 rozmiar partycji wynosi 25 GB na partycję (z maksymalnie 300 GB na usługę). |
 |Standardowy 2 (warstwa S2) | Podobny do S1, ale z partycji o pojemności 100 GB (i maksymalnie 1,2 TB na usługę). |
 |Standardowa 3 (S3) | Partycje 200 GB (dłuższą 2,4 TB na usługę). |

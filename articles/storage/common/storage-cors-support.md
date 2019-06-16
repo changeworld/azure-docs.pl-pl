@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147686"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Cross-Origin Resource Sharing (CORS) obsługę usług Azure Storage
@@ -130,7 +130,7 @@ Następnie należy wziąć pod uwagę następujące żądania CORS:
 
 | Żądanie |  |  | Odpowiedź |  |
 | --- | --- | --- | --- | --- |
-| **Metoda** |**Origin** |**Nagłówki żądań** |**Rule Match** |**wynik** |
+| **— Metoda** |**Origin** |**Nagłówki żądań** |**Rule Match** |**wynik** |
 | **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Pierwsza reguła |Powodzenie |
 | **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Druga reguła |Powodzenie |
 | **GET** |http:\//www.contoso.com |x-ms-client-request-id |Druga reguła |Niepowodzenie |
@@ -171,7 +171,7 @@ Poniższa tabela wskazuje, jak usługa Azure storage będą odpowiadać na żąd
 | Yes |Nie |Nie |Nie |Nie |Nie |Nie |
 | Yes |Yes |Nie |Yes |Yes |Nie |Yes |
 | Yes |Yes |Nie |Nie |Yes |Nie |Nie |
-| Yes |Yes |Yes |Nie |Nie |Yes |Yes |
+| Yes |Yes |Yes |Nie |Nie |Yes |Tak |
 
 ## <a name="billing-for-cors-requests"></a>Okres rozliczeniowy żądania CORS
 Inspekcja pomyślnych żądań, są naliczane, jeśli włączono mechanizm CORS dla dowolnej usługi magazynu dla konta usługi (przez wywołanie metody [ustawiania właściwości usługi obiektów Blob](https://msdn.microsoft.com/library/hh452235.aspx), [ustawiania właściwości usługi kolejki](https://msdn.microsoft.com/library/hh452232.aspx), lub [Ustawiać właściwości usługi tabeli](https://msdn.microsoft.com/library/hh452240.aspx)). Aby zminimalizować opłaty, rozważ ustawienie **atrybut MaxAgeInSeconds** element z własnym mechanizmem CORS reguł na dużą wartość tak, aby agent użytkownika buforuje żądania.

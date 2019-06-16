@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: article
 ms.date: 01/11/2019
 ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60780954"
 ---
 # <a name="version-release-history"></a>Historia wersji
@@ -39,4 +39,4 @@ Wersja 0.7.4 obejmuje obsługę akceptować tokeny sygnatur dostępu Współdzie
 Wersja 0.7.3 zawiera poprawki drobnych błędów.
 
 ### <a name="version-072"></a>Wersja 0.7.2
-0.7.2 jest początkowa wersja. Listopad 2017 1 został wydany.
+0\.7.2 jest początkowa wersja. Listopad 2017 1 został wydany.

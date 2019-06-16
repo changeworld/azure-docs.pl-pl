@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2cfb8f922819802834d9833ae614f5bc5b4ff886
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125444"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Role Sieć Web i Proces roboczy języka Python z programem Python Tools for Visual Studio
@@ -36,7 +36,7 @@ Ten artykuł zawiera omówienie sposobu użycia ról Sieć Web i Proces roboczy 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Co to są role Sieć Web i Proces roboczy języka Python?
-Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: [funkcja Web Apps w usłudze Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] i [Azure Cloud Services] [execution model-cloud services]. Wszystkie trzy modele obsługują język Python. Usługi Cloud Services, które obejmują role Sieć Web i Proces roboczy, udostępniają rozwiązanie typu *Platforma jako usługa (Platform as a Service, PaaS)*. W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer internetowy usług Internet Information Services (IIS), natomiast rola procesu roboczego może uruchamiać asynchroniczne, długotrwałe lub ciągłe zadania niezależne od działań użytkownika lub danych wejściowych.
+Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: [funkcja Web Apps w usłudze Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] i [Azure Cloud Services] [execution model-cloud services]. Wszystkie trzy modele obsługują język Python. Usługi Cloud Services, które obejmują role Sieć Web i Proces roboczy, udostępniają rozwiązanie typu *Platforma jako usługa (Platform as a Service, PaaS)* . W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer internetowy usług Internet Information Services (IIS), natomiast rola procesu roboczego może uruchamiać asynchroniczne, długotrwałe lub ciągłe zadania niezależne od działań użytkownika lub danych wejściowych.
 
 Aby uzyskać więcej informacji, zobacz [Co to jest usługa w chmurze?]
 

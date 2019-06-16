@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
 ms.openlocfilehash: c5043d99dd130bc7dc7b35eaa5ecadf11d7644db
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851540"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statystyki tabeli w usłudze Azure SQL Data Warehouse
@@ -469,7 +469,7 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS() pokazuje dane przechowywane w obiekcie statystyk. Te dane składa się z trzech części:
 
-- Nagłówek
+- nagłówek
 - Wektor gęstość
 - Histogram
 

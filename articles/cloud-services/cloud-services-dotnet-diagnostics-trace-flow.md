@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/20/2016
 ms.author: jeconnoc
 ms.openlocfilehash: f597bc760a3f3825416912642ee66a53dfb91696
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60336868"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Śledzenie przepływu aplikacji usługi w chmurze przy użyciu diagnostyki Azure
@@ -29,7 +29,7 @@ Implementowanie śledzenia w aplikacji usługi w chmurze, dodając [DiagnosticMo
 
 Aby uzyskać informacje na umieszczenie instrukcji śledzenia, zobacz [jak: Dodawanie instrukcji śledzenia do kodu aplikacji](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 
-Umieszczając [przełączniki śledzenia](/dotnet/framework/debug-trace-profile/trace-switches) w kodzie, kontrolowania tego, czy występuje śledzenia i jest jak bardzo rozbudowane. Dzięki temu można monitorować stan aplikacji w środowisku produkcyjnym. Jest to szczególnie ważne w aplikacji biznesowej, która korzysta z wielu składników, działające na wielu komputerach. Aby uzyskać więcej informacji, zobacz [Instrukcje: Konfigurowanie przełączników śledzenia](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
+Umieszczając [przełączniki śledzenia](/dotnet/framework/debug-trace-profile/trace-switches) w kodzie, kontrolowania tego, czy występuje śledzenia i jest jak bardzo rozbudowane. Dzięki temu można monitorować stan aplikacji w środowisku produkcyjnym. Jest to szczególnie ważne w aplikacji biznesowej, która korzysta z wielu składników, działające na wielu komputerach. Aby uzyskać więcej informacji, zobacz [jak: Konfigurowanie przełączników śledzenia](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
 
 ## <a name="configure-the-trace-listener-in-an-azure-application"></a>Skonfiguruj odbiornik śledzenia w aplikacji platformy Azure
 Śledzenie debugowania, jak i TraceSource, wymagają skonfigurowaniu "odbiorniki", aby zebrać i zapisać wiadomości, które są wysyłane. Odbiorniki zbierać, przechowywać i kierowanie komunikatów śledzenia. Mogą kierować dane wyjściowe śledzenia do odpowiedniego obiektu docelowego, takie jak dziennik, okno lub pliku tekstowego. Diagnostyka Azure używa [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) klasy.
@@ -74,6 +74,6 @@ Po wykonaniu kroków w celu dodania odbiornika należy dodawanie instrukcji śle
     ```
         using System.Diagnostics;
     ```
-3. Dodawanie instrukcji śledzenia, w którym mają być przechwytywane informacje o stanie aplikacji. Można użyć różnych metod formatowania danych wyjściowych instrukcji śledzenia. Aby uzyskać więcej informacji, zobacz [Instrukcje: Dodawanie instrukcji śledzenia do kodu aplikacji](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
+3. Dodawanie instrukcji śledzenia, w którym mają być przechwytywane informacje o stanie aplikacji. Można użyć różnych metod formatowania danych wyjściowych instrukcji śledzenia. Aby uzyskać więcej informacji, zobacz [jak: Dodawanie instrukcji śledzenia do kodu aplikacji](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 4. Zapisz plik źródłowy.
 

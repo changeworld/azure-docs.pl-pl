@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4efe7fabb503cbfdc855d46ffea24dda2cb9c05f
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 327111182a4ad8958f2d852a88ba0608d8510c51
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849937"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055911"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Przykłady kodu platformy tożsamości firmy Microsoft (punktu końcowego v2.0)
 
@@ -61,7 +61,7 @@ Poniższe przykłady ilustrują, aplikacje sieci web, które logują się użytk
 
 | Platforma | Użytkownikom zalogowanie się tylko | Użytkownikom zalogowanie się i wymaga programu Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [Samouczek logowania użytkowników podstawowych aplikacji sieci Web platformy ASP.NET](https://aka.ms/aspnetcore-webapp-sign-in) | Przykładowe takie same w [aplikację sieci Web platformy ASP.NET Core wymaga programu Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fazy |
+| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | [Samouczek logowania użytkowników podstawowych aplikacji sieci Web platformy ASP.NET](https://aka.ms/aspnetcore-webapp-sign-in) | Przykładowe takie same w [aplikację sieci Web platformy ASP.NET Core wymaga programu Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fazy |
 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Przewodnik Szybki Start platformy ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [Przewodnik Szybki Start platformy node.js](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs) |
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
@@ -98,11 +98,12 @@ Poniższy przykład pokazuje aplikacji publicznych klienta, na urządzeniu bez p
 
 ## <a name="web-apis"></a>Interfejsy API sieci Web
 
-Poniższy przykład pokazuje, jak chronić internetowy interfejs API z punktem końcowym platforma tożsamości firmy Microsoft. Ten interfejs API jest wykonywane przez aplikację WPF, ale może ona zostać wywołana przez dowolną aplikację. Internetowy interfejs API wymaga również programu Microsoft Graph.
+Poniższe przykłady pokazano, jak chronić internetowy interfejs API z punktem końcowym platforma tożsamości firmy Microsoft oraz jak wywoływanie podrzędnego interfejsu API z interfejsu API sieci Web.
 
 | Platforma | Sample |
 | -------- | ------------------- |
-| ![.NET/C#](media/sample-v2-code/logo_NET.png) | WebAPI (usługa) z [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) |
+| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core Web API (usługa) z [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
+| ![ASP.NET](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | Interfejs API (usługa) dla sieci Web [ms-identity-aspnet-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
 
 ## <a name="other-microsoft-graph-samples"></a>Inne przykłady z programu Microsoft Graph
 

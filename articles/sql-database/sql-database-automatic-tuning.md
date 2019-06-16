@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/06/2019
 ms.openlocfilehash: 6e818da29b7ee0d17ebe4f8e523648146973fa63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61415781"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w usłudze Azure SQL Database
@@ -69,8 +69,8 @@ Dostępne są następujące opcje dostrajania automatycznego dostępnych w usłu
 | Opcję dostrajania automatycznego | Pojedynczą bazę danych i obsługi technicznej baza danych w puli | Wystąpienie obsługi bazy danych |
 | :----------------------------- | ----- | ----- |
 | **CREATE INDEX** — identyfikuje indeksy, które może poprawić wydajność przetwarzania obciążenia, tworzy indeksy i automatycznie sprawdza, czy wydajność kwerend uległa poprawie. | Yes | Nie | 
-| **Instrukcja DROP INDEX** — identyfikuje indeksy nadmiarowy i zduplikowane raz dziennie, z wyjątkiem indeksy unikatowe i indeksy, które nie były używane przez długi czas (> 90 dni). Należy pamiętać, że w tej chwili opcja nie jest zgodne z aplikacji przy użyciu wskazówek przełączanie i indeksu partycji. | Yes | Nie |
-| **WYMUŚ OSTATNI dobry PLAN** (Automatyczna korekta planu) - zapytań SQL identyfikuje za pomocą planu wykonania, jest mniejsza niż poprzednie dobrego planu, która wysyła kwerendę za pomocą ostatni znany dobry plan zamiast pogorszonej planu. | Yes | Yes |
+| **Instrukcja DROP INDEX** — identyfikuje indeksy nadmiarowy i zduplikowane raz dziennie, z wyjątkiem indeksy unikatowe i indeksy, które nie były używane przez długi czas (> 90 dni). Należy pamiętać, że w tej chwili opcja nie jest zgodne z aplikacji przy użyciu wskazówek przełączanie i indeksu partycji. | Tak | Nie |
+| **WYMUŚ OSTATNI dobry PLAN** (Automatyczna korekta planu) - zapytań SQL identyfikuje za pomocą planu wykonania, jest mniejsza niż poprzednie dobrego planu, która wysyła kwerendę za pomocą ostatni znany dobry plan zamiast pogorszonej planu. | Yes | Tak |
 
 Automatyczne dostrajanie identyfikuje **CREATE INDEX**, **DROP INDEX**, i **WYMUŚ OSTATNI dobry PLAN** zaleceń, które można zoptymalizować wydajność bazy danych i przedstawia je w [Witryny azure portal](sql-database-advisor-portal.md)i udostępnia je za pośrednictwem [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) i [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Aby dowiedzieć się więcej o WYMUŚ OSTATNI dobry PLAN i konfigurowaniu opcje dostrajania automatycznego za pomocą języka T-SQL, zobacz [dostrajania automatycznego wprowadza automatyczna korekta planu](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 

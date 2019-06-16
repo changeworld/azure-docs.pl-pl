@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372262"
 ---
 # <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Śledź salda środków platformy Azure do umowy klienta firmy Microsoft
@@ -33,7 +33,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 1. Zaloguj się w witrynie [Azure Portal]( https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący wyszukiwania w portalu, aby zarządzanie kosztami i rozliczenia](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
@@ -47,7 +47,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
    | Termin               | Definicja                           |
    |--------------------|--------------------------------------------------------|
-   | Szacowane saldo  | Szacowana ilość środków masz po uwzględnieniu wszystkich rozliczane i oczekujące transakcje |
+   | Szacowany saldo  | Szacowana ilość środków masz po uwzględnieniu wszystkich rozliczane i oczekujące transakcje |
    | Bieżące saldo    | Kwota kredytów, począwszy od ostatniej faktury. Nie zawiera wszystkie oczekujące transakcje |
    | Transakcje       | Wszystkie transakcje rozliczeń, które wpływ Saldo środków platformy Azure |
 
@@ -59,9 +59,9 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
    | Termin                 | Definicja                           |
    |----------------------|--------------------------------------------------------|
-   | Element źródłowy               | Źródło nabycia środków |
+   | source               | Źródło nabycia środków |
    | Data rozpoczęcia           | Data, jeśli klient nabył środków |
-   | Data ważności      | Data wygaśnięcia środków |
+   | Data wygaśnięcia      | Data wygaśnięcia środków |
    | Saldo              | Saldo od ostatniej faktury |
    | Kwota      | Pierwotna ilość środków |
    | Stan               | Bieżący stan środków. Stan może być aktywny, używa, wygasł lub wygaśnie |
@@ -93,7 +93,7 @@ Kredytów systemu Azure są jedną z metod płatności. Otrzymasz środki przez 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
 

@@ -17,10 +17,10 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6d6de5186b1906d56b5a43317d9c36ad1cc6aad
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540409"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Instrukcje: Tworzenie jednostki usługi z certyfikatem przy użyciu programu Azure PowerShell
@@ -207,11 +207,11 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
   -StartDate $cert.NotBefore
 ```
 
-## <a name="debug"></a>Debug
+## <a name="debug"></a>Debugowanie
 
 Podczas tworzenia jednostki usługi mogą wystąpić następujące błędy:
 
-* **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”**. — Zostanie wyświetlony ten błąd, gdy Twoje konto nie ma [wymagane uprawnienia](#required-permissions) w usłudze Azure AD, aby zarejestrować aplikację. Zazwyczaj ten błąd zostanie wyświetlony tylko Administrator użytkowników w usłudze Azure Active Directory mogą rejestrować aplikacje, gdy Twoje konto nie jest administratorem. Poproś administratora o przypisanie Cię do roli administratora lub o umożliwienie użytkownikom rejestrowania aplikacji.
+* **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”** . — Zostanie wyświetlony ten błąd, gdy Twoje konto nie ma [wymagane uprawnienia](#required-permissions) w usłudze Azure AD, aby zarejestrować aplikację. Zazwyczaj ten błąd zostanie wyświetlony tylko Administrator użytkowników w usłudze Azure Active Directory mogą rejestrować aplikacje, gdy Twoje konto nie jest administratorem. Poproś administratora o przypisanie Cię do roli administratora lub o umożliwienie użytkownikom rejestrowania aplikacji.
 
 * Twoje konto **"nie ma autoryzacji do wykonania akcji"Microsoft.Authorization/roleAssignments/write"w zakresie"/ subscriptions / {guid}"."**  — Zostanie wyświetlony ten błąd, gdy Twoje konto nie ma wystarczających uprawnień, aby przypisać rolę do tożsamości usługi. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 51a812762659bcc67762b82e9c120772065aab53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60814417"
 ---
 # <a name="schema-format"></a>Format schematu
@@ -41,7 +41,7 @@ W nazwach atrybutów jest rozróżniana wielkość liter identyfikatorów, któr
 
 Poniżej przedstawiono listę typów danych obsługiwanych atrybutu:
 
-| Type | Opis | Operacje | Przykład |
+| Typ | Opis | Operacje | Przykład |
 |------|-------------|------------|---------|
 | `String` | Ciąg (1 – 1024 znaki) | Equals, starts_with | "hello world" |
 | `Int32` | 32-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 2016 |

@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
 ms.openlocfilehash: e4c4afefe7a4746f2d8138bde7fea152f228a8bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60648886"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Używanie rozwiązań SAP na maszynach wirtualnych systemu Linux na platformie Azure

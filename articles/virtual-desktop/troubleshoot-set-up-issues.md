@@ -8,17 +8,17 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: 88e843c410a750387ecf58497dec79586e2a59d8
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523328"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
 W tym artykule opisano problemy podczas początkowej konfiguracji dzierżawy pulpitu wirtualnego Windows i infrastruktury puli hosta sesji powiązanych.
 
-## <a name="provide-feedback"></a>Przesyłanie opinii
+## <a name="provide-feedback"></a>Przekazywanie opinii
 
 Firma Microsoft obecnie nie są zbyt przypadki pomocy technicznej Windows pulpitu wirtualnego jest dostępna w wersji zapoznawczej. Odwiedź stronę [społeczności technicznej pulpitu wirtualnego Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) w celu omówienia usługi Windows pulpitu wirtualnego przy użyciu zespół pracujący nad produktem i elementów członkowskich aktywnej społeczności użytkowników.
 
@@ -319,7 +319,7 @@ Przykład surowa wersja błędu:
 
 Jeśli korzystasz z oferty w portalu Azure Marketplace, podaj wartości następujących parametrów do prawidłowo uwierzytelniania Windows pulpitu wirtualnego:
 
-- Pulpit wirtualny Windows dzierżawy właściciela pulpitu zdalnego: Jednostka usługi
+- Pulpit wirtualny Windows dzierżawy właściciela pulpitu zdalnego: Nazwa główna usługi
 - Identyfikator aplikacji: Utworzony identyfikator aplikacji nową nazwę główną usługi
 - Hasło/Potwierdź hasło: Hasła, który został wygenerowany dla jednostki usługi
 - Identyfikator dzierżawy usługi Azure AD: Utworzony identyfikator dzierżawy usługi Azure AD jednostki usługi

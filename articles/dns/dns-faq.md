@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/21/2019
+ms.date: 6/15/2019
 ms.author: victorh
-ms.openlocfilehash: 4f0800dfd264059e1dc8aac32a54f216f777647f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bb5c4d508344f391d610aeaa7e0be54a93c997dc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62096182"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080020"
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -118,7 +118,7 @@ Zestawy rekordów aliasów są obsługiwane następujące typy rekordów w stref
 
 - **Wskaż publicznego zasobu adresu IP z usługi DNS A/AAAA zestawu rekordów.** Można utworzyć zestawu rekordów A/AAAA i ułatwiają zestawie aliasu rekordu, aby wskazywał publiczny zasób adresu IP.
 - **Wskaż profil usługi Traffic Manager z zestawu rekordów DNS A/AAAA/CNAME.** Możesz wskazać CNAME profilu usługi Traffic Manager, z zestawu rekordów CNAME w systemie DNS. Przykładem jest contoso.trafficmanager.net. Teraz możesz też wskazać profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe z rekordu A lub AAAA ustawiana w strefie DNS.
-- **Wskaż punktu końcowego usługi Azure Content Delivery Network (CDN)**. Jest to przydatne podczas tworzenia statycznych witryn internetowych przy użyciu usługi Azure storage i Azure CDN.
+- **Wskaż punktu końcowego usługi Azure Content Delivery Network (CDN)** . Jest to przydatne podczas tworzenia statycznych witryn internetowych przy użyciu usługi Azure storage i Azure CDN.
 - **Wskaż inny zestaw rekordów DNS w ramach tej samej strefie.** Alias rekordy mogą odwoływać się do innych zestawów rekordów tego samego typu. Na przykład zestaw rekordów DNS CNAME może być aliasem dla innego zestawu rekordów CNAME tego samego typu. To rozwiązanie jest przydatne w przypadku niektórych zestawów rekordów aliasów się i niektórych innych aliasów.
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Czy mogę tworzyć i aktualizować alias rekordów w witrynie Azure portal?
@@ -194,87 +194,6 @@ Tak. Serwery nazw w usłudze Azure DNS są podwójnego stosu. Podwójnego stosu 
 Międzynarodowe nazwy domen (IDN) kodowanie nazwy DNS przy użyciu [punycode](https://en.wikipedia.org/wiki/Punycode). Zapytania DNS są wykonywane za pomocą tych nazw zakodowane w formacie punycode.
 
 Aby skonfigurować międzynarodowych nazw domen w usłudze Azure DNS, należy przekonwertować nazwy strefy lub nazwa zestawu rekordów na ciąg punycode. Usługa Azure DNS nie obsługuje obecnie wbudowanej konwersji do i z punycode.
-
-## <a name="private-dns"></a>Prywatna strefa DNS
-
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
-
-### <a name="does-azure-dns-support-private-domains"></a>Usługa DNS platformy Azure obsługuje domen prywatnych?
-
-Obsługa domen prywatnych jest zaimplementowana za pomocą funkcji stref prywatnych. Ta funkcja jest obecnie dostępna w publicznej wersji zapoznawczej. Strefami prywatnymi odbywa się przy użyciu tych samych narzędzi jako strefy DNS platformy Azure dostępnego z Internetu. Są one możliwej do rozpoznania tylko z w ramach określonej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Przegląd](private-dns-overview.md).
-
-Obecnie stref prywatnych nie są obsługiwane w witrynie Azure portal.
-
-Aby uzyskać informacje na temat innych wewnętrznych DNS na platformie Azure, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-
-### <a name="whats-the-difference-between-registration-virtual-network-and-resolution-virtual-network-in-the-context-of-private-zones"></a>Jaka jest różnica między sieć wirtualną rejestracji i sieć wirtualną rozpoznawania w kontekście strefami prywatnymi?
-
-Możesz połączyć sieci wirtualne strefę prywatną DNS jako sieć wirtualną rejestracji lub sieć wirtualną rozpoznawania. W obu przypadkach maszyny wirtualne w sieci wirtualnej pomyślnie rozpoznawania rekordy w strefie prywatnych. Z siecią wirtualną rejestracji rekordy DNS są automatycznie rejestrowane do strefy dla maszyn wirtualnych w sieci wirtualnej. Jeśli maszynę wirtualną rejestracji z sieci wirtualnej zostanie usunięta w odpowiedni rekord DNS z połączonych strefy prywatnej zostanie automatycznie usunięty. 
-
-### <a name="will-azure-dns-private-zones-work-across-azure-regions"></a>Usługa Azure DNS Private Zones zadziała regionami platformy Azure?
-
-Tak. Private Zones jest obsługiwana dla rozpoznawania nazw DNS między sieciami wirtualnymi w różnych regionach platformy Azure. Strefy prywatne działa nawet bez jawnie komunikacji równorzędnej sieci wirtualnych. Wszystkie sieci wirtualne muszą być określone jako sieciami wirtualnymi rozpoznawania prywatnej strefy. Klienci, może być konieczne sieci wirtualne można równorzędne dla protokołu TCP/HTTP przepływ ruchu z jednego regionu do innego.
-
-### <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Jest łączność z Internetem z wymagane w przypadku stref prywatnych sieci wirtualnych?
-
-Nie. Prywatnych stref pracy wraz z sieciami wirtualnymi. Klienci ich używać do zarządzania domenami dla maszyn wirtualnych lub innych zasobów w ramach i między sieciami wirtualnymi. Łączność z Internetem nie jest wymagana do rozpoznawania nazw. 
-
-### <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Można użyć tej samej prywatnej strefy dla wielu sieci wirtualnych rozpoznawania?
-
-Tak. Klientów można skojarzyć maksymalnie 10 sieciami wirtualnymi rozpoznawania ze strefą prywatną jednego.
-
-### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Sieć wirtualną należącą do innej subskrypcji dodaniem jako sieć wirtualną rozpoznawania do prywatnej strefy?
-
-Tak. Musi mieć uprawnienia do operacji zapisu w sieci wirtualnych i prywatnej strefy DNS. Do wielu ról RBAC można udzielić uprawnienia do zapisu. Na przykład rola klasycznego RBAC Współautor sieci ma uprawnienia do zapisu w sieciach wirtualnych. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
-
-### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Rekordy DNS maszyny wirtualnej automatycznie zarejestrowane w prywatnej strefy automatycznie usunie usunięcie maszyn wirtualnych przez klienta?
-
-Tak. Jeśli usuniesz maszynę wirtualną w ramach sieci wirtualnych rejestracji, rekordy DNS, które zostały zarejestrowane do strefy są automatycznie usuwane. 
-
-### <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-registration-virtual-network-be-deleted-manually"></a>Rekord maszyny wirtualnej automatycznie zarejestrowane w prywatnej strefy z sieci wirtualnej rejestracji można usunąć ręcznie?
-
-Nie. Rekordy DNS maszyny wirtualnej, które są automatycznie rejestrowane w prywatnej strefy z sieci wirtualnej rejestracji nie są widoczne lub nie można edytować przez klientów. Może spowodować zastąpienie automatycznie zarejestrowanych rekordów DNS przy użyciu ręcznie utworzonego rekordu DNS w strefie. Poniższe pytania i odpowiedzi dotyczą w tym temacie.
-
-### <a name="what-happens-when-we-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>Co się stanie, gdy podejmowane są próby ręcznie utworzyć nowego rekordu DNS do strefy prywatnej, o tej samej nazwy hosta jako automatycznie zarejestrowane istniejącej maszyny wirtualnej w sieci wirtualnej rejestracji?
-
-Spróbuj ręcznie utworzyć nowego rekordu DNS do strefy prywatnej, o tej samej nazwy hosta jako maszyna wirtualna istniejących, automatycznie zarejestrowane w sieci wirtualnej rejestracji. Po wykonaniu nowego rekordu DNS zastępuje rekord automatycznie zarejestrowane maszyny wirtualnej. Jeśli spróbujesz ponownie usunąć to ręczne tworzenie rekordu DNS w strefie, Usuń zakończy się pomyślnie. Automatyczna rejestracja odbywa się ponownie, tak długo, jak maszyna wirtualna nadal istnieje i ma dołączoną prywatny adres IP. Rekord DNS jest ponownie tworzone automatycznie w strefie.
-
-### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone-will-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-too"></a>Co się stanie, gdy firma Microsoft Odłącz sieć wirtualną rejestracji z prywatnej strefy? Zostaną rekordy automatycznie zarejestrowane maszyny wirtualnej z sieci wirtualnej usunięte ze strefy zbyt?
-
-Tak. Aby odłączyć ze strefą prywatną sieć wirtualną rejestracji, należy zaktualizować strefę DNS, aby usunąć skojarzone sieć wirtualną rejestracji. W ramach tego procesu rekordy maszyn wirtualnych, które zostały automatycznie rejestrowane są usuwane ze strefy. 
-
-### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>Co się stanie, gdy usuwamy rejestracji lub rozpoznawania sieci wirtualnej, która jest połączona z prywatnej strefy? Czy mamy ręcznie zaktualizować prywatnej strefy można odłączyć sieci wirtualnej jako rejestracja lub sieć wirtualną rozpoznawania ze strefy?
-
-Tak. Po usunięciu sieć wirtualną rejestracji lub rozpoznawania bez najpierw odłączanie ze strefą prywatną operacja usuwania powiedzie się. Jednak sieci wirtualnej nie jest automatycznie odłączone z prywatnej strefy, jeśli istnieje. Należy ręcznie Odłącz sieć wirtualną z prywatnej strefy. Z tego powodu Odłącz sieć wirtualną z prywatnej strefy, zanim usuniesz je.
-
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Rozpoznawanie nazw DNS przy użyciu domyślnej nazwy FQDN (internal.cloudapp.net) wciąż działają nawet wtedy, gdy strefę prywatną (na przykład private.contoso.com) jest połączona z siecią wirtualną?
-
-Tak. Strefy prywatne w usłudze nie zastępuje domyślne rozwiązania DNS przy użyciu strefy internal.cloudapp.net platformy Azure. Jest dostępna jako dodatkową funkcję lub ulepszenie. Czy możesz polegać na internal.cloudapp.net platformy Azure lub w prywatnej strefy, użyj nazwy FQDN strefy, którą chcesz usunąć względem. 
-
-### <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Sufiks DNS na maszynach wirtualnych w ramach połączonych sieci wirtualnej zostanie zmieniona na z prywatnej strefy?
-
-Nie. Sufiks DNS na maszynach wirtualnych w sieci wirtualnej połączonej pozostaje jako domyślny sufiks platformy Azure ("*. internal.cloudapp.net"). Można ręcznie zmienić ten sufiks DNS na maszynach wirtualnych, na który strefa prywatna. 
-
-### <a name="are-there-any-limitations-for-private-zones-during-this-preview"></a>Czy istnieją jakiekolwiek ograniczenia w przypadku stref prywatnych w tej wersji zapoznawczej?
-
-Tak. W publicznej wersji zapoznawczej istnieją następujące ograniczenia.
-* Jedną sieć wirtualną rejestracji na strefę prywatną.
-* Maksymalnie 10 sieciami wirtualnymi rozpoznawania na strefę prywatną.
-* A udzielone tylko jedną strefę prywatnego jako sieć wirtualną rejestracji łączy sieci wirtualnej.
-* A podanych linków sieci wirtualnej do maksymalnie 10 stref prywatnych jako sieć wirtualną rozpoznawania.
-* Jeżeli określono sieć wirtualną rejestracji, rekordy DNS dla maszyn wirtualnych z tej sieci wirtualnej, które są zarejestrowane do prywatnej strefy nie można wyświetlić lub pobrać z programu PowerShell, interfejsu wiersza polecenia lub interfejsów API. Rekordy maszyny Wirtualnej są zarejestrowane i rozwiązać pomyślnie.
-* Odwrotnego DNS działa tylko w przypadku prywatnej przestrzeni adresów IP w sieci wirtualnej rejestracji.
-* Odwrotnym systemem DNS, aby uzyskać prywatny adres IP, który nie jest zarejestrowany w prywatnej strefy zwraca "internal.cloudapp.net" jako sufiks DNS. Ten sufiks nelze rozpoznat. Przykładem jest prywatny adres IP dla maszyny wirtualnej w sieci wirtualnej, która zostanie połączona jako sieć wirtualną rozpoznawania na strefę prywatną.
-* Sieć wirtualna musi być pusty, gdy łączy się on po raz pierwszy prywatnej strefy jako sieć wirtualną rejestracji lub rozpoznawania. Następnie sieci wirtualnej może być pusty dla przyszłych połączeń jako sieć wirtualną rejestracji lub rozpoznawania do innych stref prywatnych.
-* Warunkowego przesyłania dalej nie jest obsługiwane, na przykład, aby włączyć rozpoznawanie między sieciami Azure i lokalnie. Dowiedz się, jak klienci mogą weź pod uwagę, w tym scenariuszu za pośrednictwem innych mechanizmów. Zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
-
-### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Czy istnieją wszystkie przydziały i limity strefy lub rekordów w przypadku stref prywatnych?
-
-Nie ma ograniczeń liczby stref dozwolone na subskrypcję w przypadku stref prywatnych. Nie ma ograniczeń liczby zestawów rekordów dla strefy dla stref prywatnych. Stref prywatnych i publicznych wliczają się do ogólnej limity DNS. Aby uzyskać więcej informacji, zobacz [limity usług i subskrypcji platformy Azure](../azure-subscription-service-limits.md#azure-dns-limits)
-
-### <a name="is-there-portal-support-for-private-zones"></a>Czy istnieje portalu pomocy technicznej w przypadku stref prywatnych?
-
-Strefy prywatne, które zostały już utworzone za pomocą interfejsów API, PowerShell, interfejsu wiersza polecenia i zestawy SDK są widoczne w witrynie Azure portal. Jednak klienci nie można utworzyć nowych stref prywatnych ani zarządzać skojarzenia z sieciami wirtualnymi. Dla sieci wirtualnych skojarzone jako sieci wirtualne rejestracji automatycznie zarejestrowanych rekordów maszyny Wirtualnej nie są widoczne w portalu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

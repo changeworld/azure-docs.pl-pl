@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606924"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Przedstawiono dane techniczne i zgodności dla urządzenia StorSimple
@@ -43,8 +43,8 @@ Obudowa EBOD używa 580 W PCM i obudowy głównej używa 764 W PCM. W poniższej
 | Składowe harmoniczne |Spełnia EN61000-3-2 |Spełnia EN61000-3-2 |
 | Dane wyjściowe |Napięcie wstrzymania 5V \@ A w wersji 2.0 |Napięcie wstrzymania 5V \@ A w wersji 2.7 |
 | +5V \@ 42 A |+5V \@ 40 A | |
-| + 12 V \@ 38 A |+ 12 V \@ 38 A | |
-| Hot plug |Tak |Tak |
+| \+ 12 V \@ 38 A |\+ 12 V \@ 38 A | |
+| Hot plug |Yes |Tak |
 | Przełączniki i diody LED |Przełącznik/wyłączenie AC i stan czterech diod LED |Przełącznik/wyłączenie AC i stan sześć diod LED |
 | Obudowa chłodzenia |Osiowa chłodzenie fanów kontrolką szybkość wentylator zmiennej |Osiowa chłodzenie fanów kontrolką szybkość wentylator zmiennej |
 
@@ -117,7 +117,7 @@ Ta sekcja zawiera specyfikacje dotyczące środowiska obudowy. Temperatury, wilg
 
 | Obudowy | Zakres temperatury otoczenia | Wilgotność względna otoczenia | Maksymalna zbiornika mokrą |
 | --- | --- | --- | --- |
-| Działa |5°C - 35°C(41°F - 95°F) |20-80% non-skondensowanie trzech- |28°C (82°F) |
+| Operacyjne |5°C - 35°C(41°F - 95°F) |20-80% non-skondensowanie trzech- |28°C (82°F) |
 | Nie działa |-40°C - 70°C(40°F - 158°F) |5 – 100% bez kondensacji |29°C (84°F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Powietrza, wysokość, próbuj wstrząsnąć, wibracje, orientacji, bezpieczeństwa i EMC

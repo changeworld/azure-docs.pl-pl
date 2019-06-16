@@ -16,16 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c1f40c62fce61ba16dfdf289d54cd19c3739ce21
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 3fda34e46ddb7ea17c98795ad6632841b79764eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393762"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076911"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Wytyczne dotyczące wydajności dla programu SQL Server na maszynach wirtualnych platformy Azure
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ten artykuł zawiera wskazówki dotyczące optymalizacji wydajności programu SQL Server na maszynie wirtualnej platformy Azure firmy Microsoft. Podczas uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure, firma Microsoft zaleca, będziesz nadal korzystać z tej samej bazy danych opcje dostrajania wydajności, które mają zastosowanie do programu SQL Server w środowisku serwera w środowisku lokalnym. Jednak wydajność relacyjnej bazy danych w chmurze publicznej zależy od wielu czynników, takich jak rozmiar maszyny wirtualnej i konfiguracja dysków z danymi.
 
@@ -55,7 +55,7 @@ W przypadku aplikacji poufnych wydajności zalecane jest, należy używać nast�
 * **SQL Server Enterprise Edition**: DS3_v2 lub nowszej
 * **Wersje programu SQL Server Standard i Web**: DS2_v2 lub nowszej
 
-[Seria DSv2](../sizes-general.md#dsv2-series) maszyny wirtualne obsługuje usługi premium storage, co jest zalecane w celu uzyskania najlepszej wydajności. Rozmiary zalecane Oto linii bazowych, ale rozmiar rzeczywisty maszyny, którą wybierzesz zależy od wymagań obciążenia. Maszyny wirtualne z serii DSv2 są ogólnego przeznaczenia maszyn wirtualnych, które są odpowiednie dla różnych obciążeń, natomiast inne rozmiary maszyn są zoptymalizowane dla typów określonego obciążenia. Na przykład [serii M](../sizes-memory.md#m-series) oferuje największą liczbę procesorów wirtualnych i ilość pamięci w przypadku największych obciążeń programu SQL Server. [Serii GS](../sizes-memory.md#gs-series) i [DSv2 serii 11-15](../sizes-memory.md#dsv2-series-11-15) są zoptymalizowane pod kątem wymagań dużej ilości pamięci. Oba te serie są również dostępne w [ograniczone rozmiary core](../../windows/constrained-vcpu.md), co pozwala na zaoszczędzenie pieniędzy dla obciążeń o małych obliczenia zapotrzebowania. [Serii Ls](../sizes-storage.md) maszyn są zoptymalizowane dla Wysoka przepływność dysku i we/wy. Należy wziąć pod uwagę określonego obciążenia programu SQL Server i zastosować ją do wybranych serię maszyn wirtualnych i rozmiar.
+[Seria DSv2](../sizes-general.md#dsv2-series) maszyny wirtualne obsługuje usługi premium storage, co jest zalecane w celu uzyskania najlepszej wydajności. Rozmiary zalecane Oto linii bazowych, ale rozmiar rzeczywisty maszyny, którą wybierzesz zależy od wymagań obciążenia. Maszyny wirtualne z serii DSv2 są ogólnego przeznaczenia maszyn wirtualnych, które są odpowiednie dla różnych obciążeń, natomiast inne rozmiary maszyn są zoptymalizowane dla typów określonego obciążenia. Na przykład [serii M](../sizes-memory.md#m-series) oferuje największą liczbę procesorów wirtualnych i ilość pamięci w przypadku największych obciążeń programu SQL Server. [Serii GS](../sizes-previous-gen.md#gs-series) i [DSv2 serii 11-15](../sizes-memory.md#dsv2-series-11-15) są zoptymalizowane pod kątem wymagań dużej ilości pamięci. Oba te serie są również dostępne w [ograniczone rozmiary core](../../windows/constrained-vcpu.md), co pozwala na zaoszczędzenie pieniędzy dla obciążeń o małych obliczenia zapotrzebowania. [Serii Ls](../sizes-storage.md) maszyn są zoptymalizowane dla Wysoka przepływność dysku i we/wy. Należy wziąć pod uwagę określonego obciążenia programu SQL Server i zastosować ją do wybranych serię maszyn wirtualnych i rozmiar.
 
 ## <a name="storage-guidance"></a>Wskazówki dotyczące magazynu
 

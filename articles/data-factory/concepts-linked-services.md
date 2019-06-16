@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: shlo
 ms.openlocfilehash: ba2041495e1e3c63ee322a0b748753ad6cb68914
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64870135"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Połączone usługi w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-create-datasets.md)
 > * [Bieżąca wersja](concepts-datasets-linked-services.md)
 
@@ -64,9 +64,9 @@ W poniższej tabeli opisano właściwości w powyższy kod JSON:
 
 Właściwość | Opis | Wymagane |
 -------- | ----------- | -------- |
-name | Nazwa połączonej usługi. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Yes |
-type | Typ połączonej usługi. Na przykład: AzureStorage (magazynu danych) lub AzureBatch (składnik obliczeniowy). Zobacz opis typeProperties. | Yes |
-typeProperties | Właściwości typu są różne dla każdego magazynu danych lub obliczeń. <br/><br/> Obsługiwane dane można przechowywać w typów i ich właściwości typu, zobacz [typ zestawu danych](concepts-datasets-linked-services.md#dataset-type) tabeli, w tym artykule. Przejdź do artykułu łącznika magazynu danych, aby dowiedzieć się więcej o właściwościach typu specyficznych dla magazynu danych. <br/><br/> Typy obsługiwane obliczeniowych i ich właściwości typu, zobacz [usługi połączone usługi Compute](compute-linked-services.md). | Yes |
+name | Nazwa połączonej usługi. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Tak |
+type | Typ połączonej usługi. Na przykład: AzureStorage (magazynu danych) lub AzureBatch (składnik obliczeniowy). Zobacz opis typeProperties. | Tak |
+typeProperties | Właściwości typu są różne dla każdego magazynu danych lub obliczeń. <br/><br/> Obsługiwane dane można przechowywać w typów i ich właściwości typu, zobacz [typ zestawu danych](concepts-datasets-linked-services.md#dataset-type) tabeli, w tym artykule. Przejdź do artykułu łącznika magazynu danych, aby dowiedzieć się więcej o właściwościach typu specyficznych dla magazynu danych. <br/><br/> Typy obsługiwane obliczeniowych i ich właściwości typu, zobacz [usługi połączone usługi Compute](compute-linked-services.md). | Tak |
 connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie
 
 ## <a name="linked-service-example"></a>Przykład połączona usługa

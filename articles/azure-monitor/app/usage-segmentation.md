@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372303"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Użytkownicy, sesje i zdarzenia analizy w usłudze Application Insights
@@ -58,7 +58,7 @@ Aby udostępnić link do raportu użytkownicy, sesje lub zdarzenia; Kliknij przy
 
 Udostępnianie kopii danych w raporcie użytkownicy, sesje lub zdarzenia; Kliknij przycisk **udziału** na pasku narzędzi, następnie kliknij przycisk **ikona programu Word** utworzyć dokument programu Word z danymi. Ewentualnie kliknij przycisk **ikona programu Word** powyżej wykresu głównego.
 
-## <a name="meet-your-users"></a>Poznaj swoich użytkowników
+## <a name="meet-your-users"></a>Spełnia użytkowników
 
 **Spełniać użytkownicy** sekcja zawiera informacje o około pięciu przykładowych użytkowników dopasowane przez bieżącego zapytania. Biorąc pod uwagę i eksplorować zachowania użytkowników indywidualnych, oprócz wartości zagregowane, może zapewnić wgląd w sposób osoby faktycznie używają Twojej aplikacji.
 

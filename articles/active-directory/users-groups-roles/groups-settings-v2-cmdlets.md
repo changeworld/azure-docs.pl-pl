@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb48d37e1cf552f9ad375906d8cd05301ac2dd0c
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65407863"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Usługi Active Directory w wersji 2 poleceń cmdlet platformy Azure do zarządzania grupami
@@ -168,7 +168,7 @@ Można usunąć grup z katalogu, użyj polecenia cmdlet Remove-AzureADGroup w na
 
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 
-## <a name="manage-group-membership"></a>Zarządzaj członkostwem w grupach 
+## <a name="manage-group-membership"></a>Zarządzanie członkostwem w grupie 
 ### <a name="add-members"></a>Dodaj członków
 Aby dodać nowych członków do grupy, należy użyć polecenia cmdlet Add-AzureADGroupMember. To polecenie dodaje członka do grupy Administratorzy usługi Intune, która była używana w poprzednim przykładzie:
 
@@ -259,8 +259,8 @@ Po utworzeniu grupy pewność, że punkty końcowe umożliwiają użytkownikom k
 * majordomo 
 * Postmaster 
 * root 
-* Zabezpieczanie 
-* zabezpieczenia 
+* bezpieczeństwo 
+* security 
 * ssl-admin 
 * webmastera 
 

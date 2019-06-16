@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681374"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67135370"
 ---
 ### <a name="open-the-publish-wizard"></a>Otworzyć Kreatora publikacji
 
@@ -45,7 +45,7 @@ W **planie hostingu Konfiguruj** okna dialogowego pole, należy użyć tych usta
 |-|-|-|
 |Plan usługi App Service| MySharingServicePlan | Nazwa planu usługi App Service. |
 | Lokalizacja | Zachodnie stany USA | Centrum danych, w którym hostowana jest aplikacja internetowa. |
-| Rozmiar | Bezpłatna | [Warstwy cenowej](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Określa funkcje hostowania. |
+| Rozmiar | Wolne | [Warstwy cenowej](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Określa funkcje hostowania. |
 
 Kliknij przycisk **OK**.
 

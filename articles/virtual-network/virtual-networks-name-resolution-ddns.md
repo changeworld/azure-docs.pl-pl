@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
 ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60640382"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Używanie dynamicznej usługi DNS do rejestrowania nazw hostów na serwerze DNS
@@ -35,7 +35,7 @@ Klienci Windows przyłączone do domeny rejestrują swoje adresy IP z kontrolere
 ## <a name="linux-clients"></a>Klienci systemu Linux
 Klienci systemu Linux ogólnie nie rejestrują się za pomocą serwera DNS podczas uruchamiania, ich przyjęto założenie, że serwer DHCP jest. Serwery DHCP platformy Azure nie mają poświadczenia do zarejestrowania rekordów na serwerze DNS. Można użyć z narzędzia o nazwie `nsupdate`, który znajduje się w pakiecie Bind, aby wysłać DDNS aktualizacji. Ponieważ protokół DDNS ustandaryzowany, możesz użyć `nsupdate` nawet jeśli nie używasz Bind na serwerze DNS.
 
-Możesz użyć punkty zaczepienia, które są udostępniane przez klienta DHCP, aby tworzyć i obsługiwać wpis nazwy hosta na serwerze DNS. Podczas cyklu DHCP, klient wykonuje skrypty w */etc/dhcp/dhclient-exit-hooks.d/*. Punkty zaczepienia można użyć, aby zarejestrować nowy adres IP, korzystając `nsupdate`. Na przykład:
+Możesz użyć punkty zaczepienia, które są udostępniane przez klienta DHCP, aby tworzyć i obsługiwać wpis nazwy hosta na serwerze DNS. Podczas cyklu DHCP, klient wykonuje skrypty w */etc/dhcp/dhclient-exit-hooks.d/* . Punkty zaczepienia można użyć, aby zarejestrować nowy adres IP, korzystając `nsupdate`. Na przykład:
 
 ```bash
 #!/bin/sh

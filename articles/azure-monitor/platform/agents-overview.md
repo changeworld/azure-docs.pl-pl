@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
 ms.openlocfilehash: 12eea032c37c8d737ae004d622b72536195c4444
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65977583"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
@@ -37,7 +37,7 @@ Istnieje możliwość zbierania:
 * Wstępnie zdefiniowany zestaw liczników wydajności systemu operacyjnego i dzienniki zdarzeń lub można określić, których mają być gromadzone. 
 * Wszystkie żądania i/lub żądań zakończonych niepowodzeniem na serwerze sieci web usług IIS
 * Aplikacja platformy .NET, dzienniki danych wyjściowych śledzenia
-* Zdarzenia śledzenia zdarzeń systemu Windows (ETW) 
+* Śledzenie zdarzeń systemu Windows (ETW) zdarzenia 
 * Zbieranie zdarzeń dziennika z dziennika systemu  
 * Zrzuty awaryjne 
 

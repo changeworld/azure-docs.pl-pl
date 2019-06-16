@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22d24b62532190ebd4d119b4ced03ddbd9dde8f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b94d852ec5e0cba133fc1e141a5695e1c898f16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863210"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją CloudPassage
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji CloudPassage z usługą Azure AD, musis
 
 **Aby dodać aplikację CloudPassage z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -162,11 +162,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji CloudPassa
 
 1. W innym oknie przeglądarki zaloguj się do firmowej witryny aplikacji CloudPassage jako administrator.
 
-1. W menu u góry kliknij pozycję **Settings (Ustawienia)**, a następnie **Site Administration (Administrowanie witryną)**. 
+1. W menu u góry kliknij pozycję **Settings (Ustawienia)** , a następnie **Site Administration (Administrowanie witryną)** . 
    
     ![Konfigurowanie logowania jednokrotnego][12]
 
-1. Kliknij kartę **Authentication Settings (Ustawienia uwierzytelniania)**. 
+1. Kliknij kartę **Authentication Settings (Ustawienia uwierzytelniania)** . 
    
     ![Konfigurowanie logowania jednokrotnego][13]
 
@@ -174,15 +174,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji CloudPassa
    
     ![Konfigurowanie logowania jednokrotnego][14]
 
-    a. Zaznacz pole wyboru **Enable Single sign-on(SSO)(SSO Setup Documentation) (Włącz logowanie jednokrotne[SSO] [Dokumentacja dotycząca konfiguracji logowania jednokrotnego])**.
+    a. Zaznacz pole wyboru **Enable Single sign-on(SSO)(SSO Setup Documentation) (Włącz logowanie jednokrotne[SSO] [Dokumentacja dotycząca konfiguracji logowania jednokrotnego])** .
     
-    b. Wklej **identyfikator usługi Azure AD** w polu tekstowym **SAML issuer URL (Adres URL wystawcy SAML)**.
+    b. Wklej **identyfikator usługi Azure AD** w polu tekstowym **SAML issuer URL (Adres URL wystawcy SAML)** .
   
-    c. Wklej **adres URL logowania** w polu tekstowym **SAML endpoint URL (Adres URL punktu końcowego SAML)**.
+    c. Wklej **adres URL logowania** w polu tekstowym **SAML endpoint URL (Adres URL punktu końcowego SAML)** .
   
-    d. Wklej **adres URL wylogowywania** w polu tekstowym **Logout landing page (Strona docelowa wylogowywania)**.
+    d. Wklej **adres URL wylogowywania** w polu tekstowym **Logout landing page (Strona docelowa wylogowywania)** .
   
-    e. Otwórz pobrany plik certyfikatu w Notatniku, skopiuj zawartość pobranego certyfikatu do schowka, a następnie wklej ją w polu tekstowym **x 509 certificate (Certyfikat x 509)**.
+    e. Otwórz pobrany plik certyfikatu w Notatniku, skopiuj zawartość pobranego certyfikatu do schowka, a następnie wklej ją w polu tekstowym **x 509 certificate (Certyfikat x 509)** .
   
     f. Kliknij pozycję **Zapisz**.
 
@@ -245,11 +245,11 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji CloudPassa
 
 1. Zaloguj się do firmowej witryny aplikacji **CloudPassage** jako administrator. 
 
-1. Na pasku narzędzi u góry kliknij pozycję **Settings (Ustawienia)**, a następnie **Site Administration (Administrowanie witryną)**. 
+1. Na pasku narzędzi u góry kliknij pozycję **Settings (Ustawienia)** , a następnie **Site Administration (Administrowanie witryną)** . 
    
     ![Tworzenie użytkownika testowego aplikacji CloudPassage][22] 
 
-1. Kliknij kartę **Users (Użytkownicy)**, a następnie kliknij pozycję **Add New User (Dodaj nowego użytkownika)**. 
+1. Kliknij kartę **Users (Użytkownicy)** , a następnie kliknij pozycję **Add New User (Dodaj nowego użytkownika)** . 
    
     ![Tworzenie użytkownika testowego aplikacji CloudPassage][23]
 
@@ -261,9 +261,9 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji CloudPassa
   
     b. W polu tekstowym **Last Name (Nazwisko)** wpisz Simon.
   
-    c. W polu tekstowym **Username (Nazwa użytkownika)**, polu tekstowym **Email (Adres e-mail)** i polu tekstowym **Retype Email (Wpisz ponownie adres e-mail)** wpisz nazwę użytkownika Britta w usłudze Azure AD.
+    c. W polu tekstowym **Username (Nazwa użytkownika)** , polu tekstowym **Email (Adres e-mail)** i polu tekstowym **Retype Email (Wpisz ponownie adres e-mail)** wpisz nazwę użytkownika Britta w usłudze Azure AD.
   
-    d. Jako **typ dostępu** wybierz opcję **Enable Halo Portal Access (Włącz dostęp z poziomu portalu Halo)**.
+    d. Jako **typ dostępu** wybierz opcję **Enable Halo Portal Access (Włącz dostęp z poziomu portalu Halo)** .
   
     e. Kliknij pozycję **Add** (Dodaj).
 
@@ -273,7 +273,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka CloudPassage na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji CloudPassage, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

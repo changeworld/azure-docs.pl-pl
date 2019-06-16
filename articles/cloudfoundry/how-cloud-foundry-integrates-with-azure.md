@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
 ms.openlocfilehash: 7cbffdd40e574c7e906a9388b70ca9d32fd84649
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60198979"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integracja usługi Cloud Foundry z platformą Azure
@@ -72,7 +72,7 @@ Broker usług platformy Azure zapewnia spójny interfejs do zarządzania dostęp
 Dodatek usługi Azure Log Analytics Nozzle jest składnikiem usługi Cloud Foundry, która przesyła dalej metryki z [pilnym loggregator Cloud Foundry](https://docs.cloudfoundry.org/loggregator/architecture.html) do [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/). Za pomocą dodatku nozzle usługi CF można zbierać, wyświetlać i analizować metryki kondycji i wydajności systemu CF na wiele wdrożeń.
 Kliknij przycisk [tutaj](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) Aby dowiedzieć się, jak wdrożyć dodatek usługi Azure Log Analytics Nozzle typu Open Source i Pivotal Cloud Foundry środowiska, a następnie uzyskać dostęp do danych z platformy Azure Monitor dzienniki konsoli. 
 > [!NOTE]
-> 2.0 PCF BOSH metryk kondycji dla maszyn wirtualnych są przekazywane do pilnym Loggregator domyślnie i są zintegrowane w konsoli Dzienniki usługi Azure Monitor.
+> 2\.0 PCF BOSH metryk kondycji dla maszyn wirtualnych są przekazywane do pilnym Loggregator domyślnie i są zintegrowane w konsoli Dzienniki usługi Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

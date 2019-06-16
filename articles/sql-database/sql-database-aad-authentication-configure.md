@@ -13,10 +13,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: abb4a43176026fca5a80409ade13af1f8f96d9f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390582"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure Active Directory przy użyciu języka SQL
@@ -143,7 +143,7 @@ Wystąpienie zarządzane wymaga uprawnień do odczytu usługi Azure AD, aby pomy
 
 8. W górnej części strony administratora usługi Active Directory wybierz **Zapisz**.
 
-    ![zapisz](./media/sql-database-aad-authentication/save.png)
+    ![Zapisz](./media/sql-database-aad-authentication/save.png)
 
     Proces zmiany administratora może potrwać kilka minut. Nowy administrator pojawi się w polu administratora usługi Active Directory.
 
@@ -345,7 +345,7 @@ Użyj tej metody, jeśli użytkownik jest zalogowany do Windows przy użyciu po�
 
     ![Wybierz nazwę bazy danych][13]
 
-## <a name="active-directory-password-authentication"></a>Uwierzytelnianie za pomocą hasła w usłudze Active Directory
+## <a name="active-directory-password-authentication"></a>Uwierzytelnianie hasłem usługi Active Directory
 
 Ta metoda domeny zarządzanej przez połączenie przy użyciu nazwy głównej usługi Azure AD przy użyciu usługi Azure AD. Można również użyć w przypadku kont federacyjnych bez dostępu do domeny, na przykład podczas pracy zdalnej.
 
@@ -377,7 +377,7 @@ conn.Open();
 
 Słowo kluczowe parametrów połączenia ``Integrated Security=True`` nie jest obsługiwana dla łączenia z bazą danych SQL Azure. Podczas nawiązywania połączenia ODBC, należy usunąć spacje i ustaw uwierzytelnianie "ActiveDirectoryIntegrated".
 
-### <a name="active-directory-password-authentication"></a>Uwierzytelnianie za pomocą hasła w usłudze Active Directory
+### <a name="active-directory-password-authentication"></a>Uwierzytelnianie hasłem usługi Active Directory
 
 Aby połączyć się z bazą danych przy użyciu zintegrowanego uwierzytelniania i tożsamości usługi Azure AD, uwierzytelnianie — słowo kluczowe musi być równa Active Directory haseł. Ciąg połączenia może zawierać Identyfikatora użytkownika/identyfikatora UID i hasła/PWD słowa kluczowe i wartości. Poniższy przykładowy kod języka C# używa ADO .NET.
 

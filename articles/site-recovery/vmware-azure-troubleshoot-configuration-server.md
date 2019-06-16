@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60725571"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Rozwiązywanie problemów z konfiguracją serwera
@@ -191,7 +191,7 @@ Masz niewystarczające uprawnienia do tworzenia aplikacji w usłudze Azure Activ
 Aby rozwiązać ten problem, zaloguj się do witryny Azure portal, a następnie wykonaj jedną z następujących czynności:
 
 - Żądanie roli dewelopera aplikacji w usłudze AAD. Aby uzyskać więcej informacji na temat roli dewelopera aplikacji, zobacz [uprawnienia roli administratora w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Upewnij się, że **użytkownik może utworzyć aplikacji** flaga jest ustawiona na *true* w usłudze AAD. Aby uzyskać więcej informacji, zobacz [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Upewnij się, że **użytkownik może utworzyć aplikacji** flaga jest ustawiona na *true* w usłudze AAD. Aby uzyskać więcej informacji, zobacz [jak: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Serwer przetwarzania/główny docelowy są nie można nawiązać komunikacji z serwerem konfiguracji 
 

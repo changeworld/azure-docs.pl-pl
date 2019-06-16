@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60653917"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak zaktualizować usługę w chmurze
@@ -54,18 +54,18 @@ W poniższej tabeli przedstawiono dozwolone zmian z usługą podczas aktualizacj
 
 | Zmiany są dozwolone do hostingu, usług i ról | Aktualizacja "w miejscu" | Przygotowane (wymiany wirtualnych adresów IP) | Usunięcie i ponowne wdrażanie |
 | --- | --- | --- | --- |
-| Wersja systemu operacyjnego |Yes |Yes |Yes |
-| Poziom zaufania platformy .NET |Yes |Yes |Yes |
-| Rozmiar maszyny wirtualnej<sup>1</sup> |Tak<sup>2</sup> |Yes |Yes |
-| Ustawienia magazynu lokalnego |Zwiększ tylko<sup>2</sup> |Yes |Yes |
-| Dodawanie lub usuwanie ról w usłudze |Yes |Yes |Yes |
+| Wersja systemu operacyjnego |Tak |Yes |Tak |
+| Poziom zaufania platformy .NET |Tak |Yes |Tak |
+| Rozmiar maszyny wirtualnej<sup>1</sup> |Tak<sup>2</sup> |Tak |Tak |
+| Ustawienia magazynu lokalnego |Zwiększ tylko<sup>2</sup> |Yes |Tak |
+| Dodawanie lub usuwanie ról w usłudze |Tak |Yes |Yes |
 | Liczba wystąpień określonej roli |Yes |Yes |Yes |
-| Liczba lub typ punktów końcowych usługi |Tak<sup>2</sup> |Nie |Yes |
-| Nazwy i wartości ustawień konfiguracji |Yes |Yes |Yes |
-| Wartości (ale nie nadaje) ustawień konfiguracji |Yes |Yes |Yes |
-| Dodaj nowe certyfikaty |Yes |Yes |Yes |
-| Zmienianie istniejących certyfikatów |Yes |Yes |Yes |
-| Wdrażanie nowego kodu |Yes |Yes |Yes |
+| Liczba lub typ punktów końcowych usługi |Tak<sup>2</sup> |Nie |Tak |
+| Nazwy i wartości ustawień konfiguracji |Tak |Yes |Yes |
+| Wartości (ale nie nadaje) ustawień konfiguracji |Tak |Yes |Yes |
+| Dodaj nowe certyfikaty |Yes |Yes |Tak |
+| Zmienianie istniejących certyfikatów |Tak |Yes |Tak |
+| Wdrażanie nowego kodu |Tak |Yes |Yes |
 
 <sup>1</sup> ograniczony do podzbioru dostępnych dla usługi w chmurze rozmiarów zmiany rozmiaru.
 

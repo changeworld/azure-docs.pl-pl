@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a59dbd934ba1a449f7671d433529513b9f14c80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 251d3738cb5b18cfe98878b857b91a3689fb81a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60281502"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z chmurą firmy Cisco
 
@@ -29,7 +29,7 @@ Integrowanie Cisco chmury z usługą Azure AD zapewnia następujące korzyści:
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do chmury firmy Cisco.
 * Użytkownikom można automatycznie zalogowany do chmury firmy Cisco (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -53,7 +53,7 @@ Aby skonfigurować integrację Cisco chmury w usłudze Azure AD, należy dodać 
 
 **Aby dodać Cisco chmury z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,27 +61,27 @@ Aby skonfigurować integrację Cisco chmury w usłudze Azure AD, należy dodać 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Cisco, chmura**, wybierz opcję **Cisco, chmura** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
      ![Chmura firmy Cisco na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne z chmurą firmy Cisco w oparciu o nazwie użytkownika testowego **Britta Simon**.
 Dla logowania jednokrotnego do pracy musi można ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w chmurze firmy Cisco.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z chmurą firmy Cisco, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie Cisco chmury logowania jednokrotnego](#configure-cisco-cloud-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego Cisco, chmura](#create-cisco-cloud-test-user)**  — aby odpowiednikiem Britta Simon w chmurze Cisco, która jest połączona z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -91,7 +91,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z chmurą firmy Cisco
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **Cisco, chmura** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -127,7 +127,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z chmurą firmy Cisco
     | Name (Nazwa) | Atrybut źródłowy|
     | -----------| ------------|
     | Kraj    | user.country |
-    | company    | user.companyname |
+    | Firmy    | user.companyname |
     | | |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
@@ -150,11 +150,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z chmurą firmy Cisco
 
 8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
 
 ### <a name="configure-cisco-cloud-single-sign-on"></a>Konfigurowanie Cisco chmury logowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne na **Cisco, chmura** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej firmy Cisco, chmura](mailto:cpr-ops@cisco.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **Cisco, chmura** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej firmy Cisco, chmura](mailto:cpr-ops@cisco.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -209,7 +209,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-cisco-cloud-test-user"></a>Tworzenie użytkownika testowego chmury firmy Cisco
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w chmurze firmy Cisco. Praca z [zespołem pomocy technicznej firmy Cisco, chmura](mailto:cpr-ops@cisco.com) Aby dodać użytkowników na platformie chmury firmy Cisco. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w chmurze firmy Cisco. Praca z [zespołem pomocy technicznej firmy Cisco, chmura](mailto:cpr-ops@cisco.com) Aby dodać użytkowników na platformie chmury firmy Cisco. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

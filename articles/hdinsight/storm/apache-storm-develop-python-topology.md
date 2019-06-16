@@ -9,19 +9,19 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: a5cbd54dd07143688b676c063133bb1a73bed01a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3b808a12c7a669a272bf6a1bbb253ed6b4625288
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694386"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078211"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Opracowywanie topologii usługi Apache Storm na HDInsight przy użyciu języka Python
 
 Dowiedz się, jak utworzyć [Apache Storm](https://storm.apache.org/) topologię, która używa składników w języku Python. Apache Storm obsługuje wiele języków, nawet co pozwoli na łączenie składników w kilku językach, w jednym topologii. [Strumień](https://storm.apache.org/releases/current/flux.html) framework (wprowadzona w systemie Storm 0.10.0) pozwala na łatwe tworzenie rozwiązań korzystających z składników w języku Python.
 
 > [!IMPORTANT]  
-> Informacje przedstawione w tym dokumencie został przetestowany przy użyciu technologii Storm w HDInsight 3.6. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Informacje przedstawione w tym dokumencie został przetestowany przy użyciu technologii Storm w HDInsight 3.6. 
 
 Kod dla tego projektu znajduje się w temacie [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
 
@@ -73,7 +73,7 @@ Strumień oczekuje skryptów w języku Python w `/resources` katalog wewnątrz p
 
 Jak wspomniano wcześniej, ma `storm.py` pliku, który implementuje definicją Thrift dla usługi Storm. Struktura strumień obejmuje `storm.py` automatycznie podczas kompilowania projektu, więc nie trzeba już martwić się o tym go.
 
-## <a name="build-the-project"></a>Kompilowanie projektu
+## <a name="build-the-project"></a>Skompiluj projekt
 
 W folderze głównym projektu użyj następującego polecenia:
 

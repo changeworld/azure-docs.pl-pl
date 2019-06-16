@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.openlocfilehash: b00eb12092838746f4bfe16f00eac55df9224b09
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65607231"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Błędy danych w usłudze Azure Stream Analytics
@@ -72,7 +72,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="inputdeserializererrormissingcolumns"></a>InputDeserializerError.MissingColumns
 
 * Przyczyna: Kolumny wejściowe zdefiniowane za pomocą polecenia CREATE TABLE lub za pośrednictwem TIMESTAMP BY nie istnieje.
-* Podany powiadomieniu portalu: Tak
+* Podany powiadomieniu portalu: Yes
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. 
@@ -92,7 +92,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="inputdeserializererrortypeconversionerror"></a>InputDeserializerError.TypeConversionError
 
 * Przyczyna: Nie można skonwertować danych wejściowych do typu określonego w instrukcji CREATE TABLE.
-* Podany powiadomieniu portalu: Tak
+* Podany powiadomieniu portalu: Yes
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. 
@@ -111,7 +111,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="inputdeserializererrorinvaliddata"></a>InputDeserializerError.InvalidData
 
 * Przyczyna: Dane wejściowe nie jest w odpowiednim formacie. Na przykład wartość wejściowa nie jest prawidłowym plikiem JSON.
-* Podany powiadomieniu portalu: Tak
+* Podany powiadomieniu portalu: Yes
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. 
@@ -146,7 +146,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="invalidinputtimestampkey"></a>InvalidInputTimeStampKey
 
 * Przyczyna: Wartość timestampColumn TIMESTAMP BY OVER ma wartość NULL.
-* Podany powiadomieniu portalu: Tak
+* Podany powiadomieniu portalu: Yes
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
 * Szczegóły dziennika
    * Rzeczywiste obciążenie do kilku kilobajtów.
@@ -234,7 +234,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataConversionError.TypeConversionError
 
 * Przyczyna: Nie można przekonwertować kolumnę na prawidłowy typ w danych wyjściowych. Na przykład wartość kolumny jest niezgodna z ograniczenia lub typu zdefiniowanego w tabeli SQL.
-* Podany powiadomieniu portalu: Tak
+* Podany powiadomieniu portalu: Yes
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
 * Szczegóły dziennika
    * Nazwa kolumny.
@@ -249,7 +249,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversionError.RecordExceededSizeLimit
 
 * Przyczyna: Wartość komunikatu jest większy niż rozmiar obsługiwanych danych wyjściowych. Na przykład rekord jest większy niż 1 MB dla danych wyjściowych Centrum zdarzeń.
-* Podany powiadomieniu portalu: Tak
+* Podany powiadomieniu portalu: Yes
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
 * Szczegóły dziennika
    * Identyfikator rekordu lub częścią rekordu.

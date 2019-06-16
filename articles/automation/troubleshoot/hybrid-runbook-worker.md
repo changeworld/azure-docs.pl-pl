@@ -10,10 +10,10 @@ ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ea6599152d3cbf1f50132f5b207c19148401f798
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60564263"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Rozwiązywanie problemów z hybrydowych procesów roboczych Runbook
@@ -56,7 +56,7 @@ Komputery z systemem hybrydowego procesu roboczego Runbook powinny spełniać mi
 
 Upewnij się, że komputer, który będzie uruchamiany funkcji hybrydowego procesu roboczego Runbook spełnia minimalne wymagania sprzętowe. Jeśli tak jest, monitorowanie Procesora i pamięci umożliwia określenia wszelka korelacja między wydajności procesów hybrydowego procesu roboczego Runbook i Windows. Jeśli istnieje pamięci lub dużego wykorzystania procesora CPU, może to oznaczać konieczność uaktualnienia zasobów. Można również wybrać zasób obliczeniowej, który może obsługiwać minimalne wymagania i skalowania, gdy obciążenia wskazują, że niezbędne jest wzrost.
 
-Sprawdź **Microsoft SMA** dziennik zdarzeń pod kątem odpowiednie zdarzenie z opisem *Win32 proces został zakończony z kodem [4294967295]*. Przyczyną tego błędu jest nie jeszcze skonfigurowane uwierzytelnianie w elementach runbook lub podania poświadczeń Uruchom jako dla grupy hybrydowych procesów roboczych. Przegląd [uprawnienia elementu Runbook](../automation-hrw-run-runbooks.md#runbook-permissions) aby upewnić się, prawidłowo skonfigurowano uwierzytelniania dla elementów runbook.
+Sprawdź **Microsoft SMA** dziennik zdarzeń pod kątem odpowiednie zdarzenie z opisem *Win32 proces został zakończony z kodem [4294967295]* . Przyczyną tego błędu jest nie jeszcze skonfigurowane uwierzytelnianie w elementach runbook lub podania poświadczeń Uruchom jako dla grupy hybrydowych procesów roboczych. Przegląd [uprawnienia elementu Runbook](../automation-hrw-run-runbooks.md#runbook-permissions) aby upewnić się, prawidłowo skonfigurowano uwierzytelniania dla elementów runbook.
 
 ### <a name="no-cert-found"></a>Scenariusz: Nie znaleziono certyfikatu w magazynie certyfikatów na hybrydowego procesu roboczego Runbook
 

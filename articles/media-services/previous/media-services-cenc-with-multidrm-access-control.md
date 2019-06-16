@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
 ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466581"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Projekt systemu ochrony zawartości przy użyciu kontroli dostępu przy użyciu usługi Azure Media Services 
@@ -337,7 +337,7 @@ Aby zarejestrować i skonfigurować aplikację wskaźnika w usłudze Azure AD, w
 
 3. Aktualizacja pliku manifestu aplikacji, tak aby właściwość groupMembershipClaims ma wartość "groupMembershipClaims": "Wszystkie".
 
-4. W aplikacji usługi Azure AD, która wskazuje na odtwarzaczu aplikacji sieci web, w sekcji **uprawnień dotyczących innych aplikacji**, Dodaj aplikacji zasobu, który został dodany w kroku 1. W obszarze **delegowane uprawnienia**, wybierz opcję **dostępu [resource_name]**. Ta opcja zapewnia uprawnienia aplikacji sieci web do tworzenia tokenów dostępu, uzyskujących dostęp do aplikacji zasobu. W tym lokalnych i wdrożonych wersji aplikacji sieci web w przypadku tworzenia przy użyciu programu Visual Studio i aplikacji sieci web platformy Azure.
+4. W aplikacji usługi Azure AD, która wskazuje na odtwarzaczu aplikacji sieci web, w sekcji **uprawnień dotyczących innych aplikacji**, Dodaj aplikacji zasobu, który został dodany w kroku 1. W obszarze **delegowane uprawnienia**, wybierz opcję **dostępu [resource_name]** . Ta opcja zapewnia uprawnienia aplikacji sieci web do tworzenia tokenów dostępu, uzyskujących dostęp do aplikacji zasobu. W tym lokalnych i wdrożonych wersji aplikacji sieci web w przypadku tworzenia przy użyciu programu Visual Studio i aplikacji sieci web platformy Azure.
 
 Token JWT wystawione przez usługę Azure AD jest token dostępu, które umożliwiają dostęp do zasobów wskaźnika.
 

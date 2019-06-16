@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: 1cd70bee22e56e2580b322b93e0f121261d97a94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60699195"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>Eksportowanie lub usuwanie danych użytkownika w pakiecie Content Moderator
@@ -30,7 +30,7 @@ Aby uzyskać więcej informacji na temat sposobu eksportowania i usuwania danych
 | Informacje o koncie (klucze subskrypcji) | ND | Usuwanie w witrynie Azure portal (subskrypcje platformy Azure). Lub użyj **usuwanie zespołu** znajdujący się w [Przegląd interfejsu użytkownika](https://contentmoderator.cognitive.microsoft.com/) strony ustawień zespołu. |
 | Obrazy niestandardowe dopasowanie | Wywołaj [Get-image identyfikatory interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f676). Obrazy są przechowywane w formacie jednokierunkowego skrótu własności, a nie istnieje sposób wyodrębnić rzeczywistych obrazów. | Wywołaj [usunąć wszystkie obrazy interfejs API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f686). Lub usuwanie zasobu usługi Content Moderator, przy użyciu witryny Azure portal. |
 | Warunki niestandardowe dopasowanie | Licencja CAL [Pobierz wszystkie warunki interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67e) | Wywołaj [usunąć wszystkie terminy interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67d). Lub usuwanie zasobu usługi Content Moderator, przy użyciu witryny Azure portal. |
-| Tagi | ND | Użyj **Usuń** ikonę dostępne dla każdego tagu na stronie ustawień Przegląd interfejsu użytkownika tagu. Lub użyj **usuwanie zespołu** znajdujący się w [Przegląd interfejsu użytkownika](https://contentmoderator.cognitive.microsoft.com/) strony ustawień zespołu. |
+| `Tags` | ND | Użyj **Usuń** ikonę dostępne dla każdego tagu na stronie ustawień Przegląd interfejsu użytkownika tagu. Lub użyj **usuwanie zespołu** znajdujący się w [Przegląd interfejsu użytkownika](https://contentmoderator.cognitive.microsoft.com/) strony ustawień zespołu. |
 | Przeglądy | Wywołaj [API przeglądu Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) | Użyj **usuwanie zespołu** znajdujący się w [Przegląd interfejsu użytkownika](https://contentmoderator.cognitive.microsoft.com/) strony ustawień zespołu.
 | Użytkownicy | ND | Użyj **Usuń** ikonę dostępne dla każdego użytkownika w [Przegląd interfejsu użytkownika](https://contentmoderator.cognitive.microsoft.com/) strony ustawień zespołu. Lub użyj **usuwanie zespołu** znajdujący się w [Przegląd interfejsu użytkownika](https://contentmoderator.cognitive.microsoft.com/) strony ustawień zespołu. |
 

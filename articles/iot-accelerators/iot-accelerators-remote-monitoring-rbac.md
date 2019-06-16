@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61443137"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurowanie kontroli dostępu opartej na rolach w akceleratora rozwiązania monitorowania zdalnego
@@ -27,20 +27,20 @@ Przy pierwszym wdrożeniu rozwiązania do zdalnego monitorowania, dostępne są 
 
 | Uprawnienie            | Jednostka administracyjna | Tylko do odczytu |
 |----------------       |-------|-----------|
-| Wyświetl rozwiązania         | Yes   | Yes       |
-| Alarmy aktualizacji         | Yes   | Nie        |
-| Usuń alarmów         | Yes   | Nie        |
-| Tworzenie urządzenia        | Yes   | Nie        |
-| Aktualizowanie urządzenia        | Yes   | Nie        |
-| Usuwanie urządzeń        | Yes   | Nie        |
+| Wyświetl rozwiązania         | Tak   | Yes       |
+| Alarmy aktualizacji         | Tak   | Nie        |
+| Usuń alarmów         | Tak   | Nie        |
+| Tworzenie urządzenia        | Tak   | Nie        |
+| Aktualizowanie urządzenia        | Tak   | Nie        |
+| Usuwanie urządzeń        | Tak   | Nie        |
 | Tworzenie grup urządzeń  | Yes   | Nie        |
-| Aktualizowanie grup urządzeń  | Yes   | Nie        |
-| Usuwanie grupy urządzeń  | Yes   | Nie        |
+| Aktualizowanie grup urządzeń  | Tak   | Nie        |
+| Usuwanie grupy urządzeń  | Tak   | Nie        |
 | Tworzenie reguł          | Yes   | Nie        |
-| Reguły aktualizacji          | Yes   | Nie        |
-| Usuń reguły          | Yes   | Nie        |
-| Tworzenie zadań           | Yes   | Nie        |
-| Rozwiązanie Update SIM management | Yes   | Nie        |
+| Reguły aktualizacji          | Tak   | Nie        |
+| Usuń reguły          | Tak   | Nie        |
+| Tworzenie zadań           | Tak   | Nie        |
+| Rozwiązanie Update SIM management | Tak   | Nie        |
 
 Domyślnie użytkownik, który wdrożono rozwiązanie jest przypisywany **administratora** roli i właściciela aplikacji usługi Azure Active Directory. Jako właściciel aplikacji należy przypisać role do innych użytkowników za pośrednictwem witryny Azure portal. Jeśli chcesz, aby inny użytkownik, aby przypisać role w rozwiązaniu, również muszą zostać ustawione jako właściciel aplikacji w witrynie Azure portal.
 

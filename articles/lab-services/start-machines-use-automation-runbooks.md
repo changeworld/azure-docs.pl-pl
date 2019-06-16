@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61083622"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Uruchom maszyny wirtualne w laboratorium w kolejności przy użyciu elementów runbook usługi Azure Automation
 [Autostart](devtest-lab-set-lab-policy.md#set-autostart) funkcja DevTest Labs umożliwia konfigurowanie maszyn wirtualnych do automatycznego uruchamiania o określonej godzinie. Jednak ta funkcja nie obsługuje maszyn do uruchamiania w określonej kolejności. Istnieje kilka scenariuszy, w którym ten typ automatyzacji byłoby.  Jeden scenariusz polega na tym, gdzie serwer Przesiadkowy maszyny Wirtualnej w ramach laboratorium musi być uruchomiona najpierw przed innymi maszynami wirtualnymi, ponieważ serwer Przesiadkowy jest używany jako punkt dostępu do innych maszyn wirtualnych.  W tym artykule pokazano, jak skonfigurować konto usługi Azure Automation za pomocą elementu runbook programu PowerShell, który jest wykonywany skrypt. Skrypt używa tagów na maszynach wirtualnych w środowisku laboratoryjnym pozwala kontrolować kolejność uruchamiania bez konieczności zmiany skryptu.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 W tym przykładzie, musisz mieć tag maszyny wirtualne w laboratorium **StartupOrder** dodane z odpowiednią wartością (0,1,2, itp.). Wyznaczanie dowolnym komputerze, który nie musi zostać uruchomiona jako wartość -1.
 
 ## <a name="create-an-azure-automation-account"></a>Tworzenie konta usługi Azure Automation

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: magattus
 ms.openlocfilehash: 954d19fb557540e4fdc6b17f313127e01eba97a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636330"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optymalizacja usługi Azure CDN dla typu dostarczania zawartości
@@ -78,7 +78,7 @@ Po utworzeniu punktu końcowego usługi CDN wybierz typ optymalizacji, który na
 
 Można zoptymalizować punktu końcowego usługi CDN dla jednego z tych scenariuszy. 
 
-### <a name="general-web-delivery"></a>Ogólne dostarczanie w sieci Web
+### <a name="general-web-delivery"></a>Ogólne dostarczanie w Internecie
 
 Ogólne dostarczanie w Internecie jest najbardziej typowych opcji optymalizacji. Jest ona przeznaczona do optymalizacji zawartości ogólne sieci web, takich jak strony sieci Web i aplikacji sieci web. Tego rodzaju optymalizacji może również służyć dla pliku, i pobiera wideo.
 

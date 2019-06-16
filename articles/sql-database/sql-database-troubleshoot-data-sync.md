@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331200"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z usługą SQL Data Sync
@@ -197,7 +197,7 @@ Próba usunięcia grupy synchronizacji kończy się niepowodzeniem. Dowolne z po
   1. Przejdź do **Start** > **Panel sterowania** > **narzędzia administracyjne** > **zasady zabezpieczeń lokalnych**  >  **Zasady lokalne** > **użytkownika usługi Rights Management**.
   1. Wybierz **Zaloguj się jako usługa**.
   1. W **właściwości** okna dialogowego Dodaj konto użytkownika.
-  1. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
+  1. Wybierz **Zastosuj**, a następnie wybierz pozycję **OK**.
   1. Zamknij wszystkie okna.
 
 ### <a name="setup-date"></a> Bazy danych ma stan "Przestarzałe"

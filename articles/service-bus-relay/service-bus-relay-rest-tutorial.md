@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
 ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123403"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Samouczek dotyczący usługi Azure WCF Relay REST
@@ -56,7 +56,7 @@ Główną różnicą między kontraktu usługi WCF i kontraktu opartego na inter
 ### <a name="to-create-a-contract-with-an-interface"></a>Aby utworzyć kontrakt przy użyciu interfejsu
 
 1. Otwórz program Visual Studio jako administrator, klikając prawym przyciskiem myszy ikonę programu w menu **Start**, a następnie klikając polecenie **Uruchom jako administrator**.
-2. Utwórz nowy projekt aplikacji konsoli. Kliknij menu **Plik** i wybierz pozycję **Nowy**, a następnie wybierz pozycję **Projekt**. W oknie dialogowym **Nowy projekt** kliknij pozycję **Visual C#**, wybierz szablon **Aplikacja konsolowa** i nadaj mu nazwę **ImageListener**. Użyj domyślnej **lokalizacji**. Kliknij przycisk **OK**, aby utworzyć projekt.
+2. Utwórz nowy projekt aplikacji konsoli. Kliknij menu **Plik** i wybierz pozycję **Nowy**, a następnie wybierz pozycję **Projekt**. W oknie dialogowym **Nowy projekt** kliknij pozycję **Visual C#** , wybierz szablon **Aplikacja konsolowa** i nadaj mu nazwę **ImageListener**. Użyj domyślnej **lokalizacji**. Kliknij przycisk **OK**, aby utworzyć projekt.
 3. W przypadku projektu C# program Visual Studio utworzy plik `Program.cs`. Ta klasa zawiera pustą metodę `Main()` wymaganą do prawidłowej kompilacji projektu aplikacji konsolowej.
 4. Dodaj odwołania do usługi Service Bus i pliku **System.ServiceModel.dll** w projekcie, instalując pakiet NuGet usługi Service Bus. Ten pakiet automatycznie dodaje odwołania do bibliotek usługi Service Bus, jak również przestrzeń nazw **System.ServiceModel** usługi WCF. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **ImageListener**, a następnie kliknij pozycję **Zarządzaj pakietami NuGet**. Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg `Microsoft Azure Service Bus`. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
 5. Należy jawnie dodać odwołanie do pliku **System.ServiceModel.Web.dll** w projekcie:
@@ -180,7 +180,7 @@ Podobnie jak w poprzednich krokach jest bardzo mała różnica między implement
    
     Jest to obraz, który usługa wyświetla w przeglądarce będącej odbiorcą. Kliknij prawym przyciskiem myszy projekt i kliknij polecenie **Dodaj**. Następnie kliknij pozycję **Istniejący element**. Użyj okna dialogowego **Dodawanie istniejącego elementu**, aby przejść do odpowiedniego pliku jpg, a następnie kliknij przycisk **Dodaj**.
    
-    Podczas dodawania pliku upewnij się, że pozycja **Wszystkie pliki** jest zaznaczona na liście rozwijanej obok pola **Nazwa pliku:**. W pozostałej części tego samouczka przyjęto założenie, że nazwa obrazu to „image.jpg”. Inny plik należy zmienić nazwę obrazu, lub zmień swój kod w celu kompensacji.
+    Podczas dodawania pliku upewnij się, że pozycja **Wszystkie pliki** jest zaznaczona na liście rozwijanej obok pola **Nazwa pliku:** . W pozostałej części tego samouczka przyjęto założenie, że nazwa obrazu to „image.jpg”. Inny plik należy zmienić nazwę obrazu, lub zmień swój kod w celu kompensacji.
 4. Aby upewnić się, że uruchomiona usługa może odnaleźć plik obrazu, w **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy plik obrazu, a następnie kliknij pozycję **Właściwości**. W okienku **Właściwości** ustaw opcję **Kopiuj do katalogu wyjściowego** na wartość **Kopiuj, jeśli nowszy**.
 5. Dodaj do projektu odwołanie do zestawu **System.Drawing.dll** oraz następujące skojarzone instrukcje `using`.  
    

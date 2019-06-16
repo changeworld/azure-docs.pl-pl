@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61480812"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Przeprowadzanie analizy tonacji przy użyciu usługi Azure Stream Analytics i Azure Machine Learning
@@ -175,7 +175,7 @@ W tej części samouczka należy zdefiniować funkcję w zadaniu Stream analizy.
 
 1. Upewnij się, że masz adres sieci web usługi adresu URL i klucz API pobranego wcześniej w skoroszycie programu Excel.
 
-2. Przejdź do bloku zadania > **funkcje** > **+ Dodaj** > **usługi Azure ml**
+2. Przejdź do bloku zadania > **funkcje** >  **+ Dodaj** > **usługi Azure ml**
 
 3. Wypełnij **funkcji usługi Azure Machine Learning** bloku następującymi wartościami:
 

@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61256022"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Działanie procedury składowanej programu SQL Server
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="Działania przekształcania"]
 > * [Działanie technologii hive](data-factory-hive-activity.md)
 > * [Działania technologii pig](data-factory-pig-activity.md)
 > * [Działania technologii MapReduce](data-factory-map-reduce.md)
@@ -310,7 +310,7 @@ W poniższej tabeli opisano te właściwości kodu JSON:
 | description |Tekst opisujący przeznaczenie działania |Nie |
 | type | Musi być ustawione na: **SqlServerStoredProcedure** | Yes |
 | inputs | Opcjonalny. Jeśli określisz wejściowy zestaw danych musi być dostępny (w stanie "Gotowy") dla działania procedury składowanej do uruchomienia. Wejściowy zestaw danych nie mogą być używane w procedurze składowanej jako parametr. Tylko służy do sprawdzania zależności przed rozpoczęciem działania procedury składowanej. |Nie |
-| outputs | Należy określić wyjściowy zestaw danych działania procedura składowana. Wyjściowy zestaw danych określa **harmonogram** działania procedury składowanej (co godzinę, co tydzień, co miesiąc, itp.). <br/><br/>Wyjściowy zestaw danych należy użyć **połączoną usługę** odwołujący się do usługi Azure SQL Database, Azure SQL Data Warehouse lub bazy danych programu SQL Server ma procedurę przechowywaną, aby uruchomić. <br/><br/>Wyjściowy zestaw danych może służyć jako sposób przekazać wyników procedury składowanej do późniejszego przetwarzania przez innego działania ([tworzenie łańcuchów działań](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) w potoku. Jednak fabryka danych nie automatycznie zapisuje dane wyjściowe procedury składowanej do tego zestawu danych. Jest procedury przechowywanej, która zapisuje do tabeli SQL, która wskazuje wyjściowy zestaw danych. <br/><br/>W niektórych przypadkach może być wyjściowy zestaw danych **fikcyjnego dataset**, która jest używana tylko po to, aby określić harmonogram uruchamiania działania procedury składowanej. |Yes |
+| outputs | Należy określić wyjściowy zestaw danych działania procedura składowana. Wyjściowy zestaw danych określa **harmonogram** działania procedury składowanej (co godzinę, co tydzień, co miesiąc, itp.). <br/><br/>Wyjściowy zestaw danych należy użyć **połączoną usługę** odwołujący się do usługi Azure SQL Database, Azure SQL Data Warehouse lub bazy danych programu SQL Server ma procedurę przechowywaną, aby uruchomić. <br/><br/>Wyjściowy zestaw danych może służyć jako sposób przekazać wyników procedury składowanej do późniejszego przetwarzania przez innego działania ([tworzenie łańcuchów działań](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) w potoku. Jednak fabryka danych nie automatycznie zapisuje dane wyjściowe procedury składowanej do tego zestawu danych. Jest procedury przechowywanej, która zapisuje do tabeli SQL, która wskazuje wyjściowy zestaw danych. <br/><br/>W niektórych przypadkach może być wyjściowy zestaw danych **fikcyjnego dataset**, która jest używana tylko po to, aby określić harmonogram uruchamiania działania procedury składowanej. |Tak |
 | storedProcedureName |Określ nazwę procedury przechowywanej w bazie danych Azure SQL lub bazy danych Azure SQL Data Warehouse lub SQL Server, który jest reprezentowany przez połączoną usługę, która używa tabeli wyjściowej. |Yes |
 | storedProcedureParameters |Określ wartości dla parametrów procedury składowanej. Jeśli musisz przekazać wartości null dla parametru należy użyć składni: "param1": wartość null (wszystkie małe litery). Zobacz poniższy przykład, aby dowiedzieć się więcej o korzystaniu z tej właściwości. |Nie |
 

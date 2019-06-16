@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: rimman
-ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ce059e542ee7bfa67e899b4923e3410e13e4930e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389248"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067501"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -87,7 +87,7 @@ Można programowo pobrać minimalna przepływność w kontenerze lub bazy danych
 
 Korzystając z zestawu .NET SDK [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) metoda pozwala pobrać minimalna przepływność w kontenerze lub bazy danych. 
 
-Aprowizowana przepływność w kontenerze lub bazy danych można skalować w dowolnym momencie. 
+Aprowizowana przepływność w kontenerze lub bazy danych można skalować w dowolnym momencie. Podczas wykonywania operacji skalowania w celu zwiększenia przepływności, może potrwać dłuższy czas ze względu na system zadań w celu obsługi administracyjnej wymaganych zasobów. Można sprawdzić stan operacji skalowania w witrynie Azure portal lub programowo przy użyciu zestawów SDK. Korzystając z zestawu .net SDK, można uzyskać stanu operacji skalowania za pomocą `DocumentClient.ReadOfferAsync` metody.
 
 ## <a name="comparison-of-models"></a>Porównanie modeli
 

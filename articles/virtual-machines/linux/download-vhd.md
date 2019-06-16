@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61390233"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego systemu Linux na platformie Azure
@@ -34,7 +34,7 @@ Nie można pobrać wirtualnego dysku twardego z platformy Azure, jeśli jest on 
 
 Aby użyć wirtualnego dysku twardego jako obraz do tworzenia innych maszyn wirtualnych, wykonaj następujące kroki:
 
-1. Użyj protokołu SSH, nazwę konta i publiczny adres IP maszyny wirtualnej nawiązać z nim i jego deprovision. Można znaleźć publiczny adres IP z [az sieci public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). + Parametr użytkownika spowoduje również usunięcie ostatnie aprowizowane konto użytkownika. Jeśli są pieczenie poświadczenia konta w do maszyny Wirtualnej, należy pozostawić się z tą + parametru user. Poniższy przykład usuwa ostatnie aprowizowane konto użytkownika:
+1. Użyj protokołu SSH, nazwę konta i publiczny adres IP maszyny wirtualnej nawiązać z nim i jego deprovision. Można znaleźć publiczny adres IP z [az sieci public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). \+ Parametr użytkownika spowoduje również usunięcie ostatnie aprowizowane konto użytkownika. Jeśli są pieczenie poświadczenia konta w do maszyny Wirtualnej, należy pozostawić się z tą + parametru user. Poniższy przykład usuwa ostatnie aprowizowane konto użytkownika:
 
     ```bash
     ssh azureuser@<publicIpAddress>
@@ -72,7 +72,7 @@ Aby pobrać plik wirtualnego dysku twardego, należy wygenerować [sygnatury dos
 2.  Wybierz dysk systemu operacyjnego dla maszyny Wirtualnej, a następnie kliknij przycisk **wyeksportować**.
 3.  Kliknij przycisk **generowania adresu URL**.
 
-    ![Generuj adres URL](./media/download-vhd/export-generate.png)
+    ![Generowanie adresu URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Pobieranie wirtualnego dysku twardego
 

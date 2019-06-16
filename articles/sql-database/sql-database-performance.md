@@ -6,17 +6,16 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: danimir
+ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: digimobile
-origin.date: 01/25/2019
-ms.date: 02/25/2019
+manager: craigg
+ms.date: 01/25/2019
 ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584832"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorowania i poprawiania wydajności
@@ -41,10 +40,10 @@ Ten widok zawiera podsumowanie informacji o wydajności bazy danych i pomaga dos
 
 ![Wydajność](./media/sql-database-performance/performance.png)
 
-* **Zalecenia** Kafelek zawiera podział zaleceń dotyczących bazy danych dostosowywania (trzy pierwsze zalecenia są wyświetlane czy więcej). Kliknięcie tego kafelka spowoduje przejście do  **[zalecenia dotyczące wydajności](#performance-recommendations)**. 
+* **Zalecenia** Kafelek zawiera podział zaleceń dotyczących bazy danych dostosowywania (trzy pierwsze zalecenia są wyświetlane czy więcej). Kliknięcie tego kafelka spowoduje przejście do  **[zalecenia dotyczące wydajności](#performance-recommendations)** . 
 * **Działanie dostrajania** Kafelek zawiera podsumowanie informacji o bieżące i ukończone, dostrajanie akcje w przypadku bazy danych, zapewniając szybki wgląd w historię działanie dostrajania. Kliknięcie tego kafelka spowoduje przejście do pełnego widoku Historia dostrajania bazy danych.
 * **Automatycznego dostrajania** Kafelek pokazuje [automatycznego dostrajania konfiguracji](sql-database-automatic-tuning-enable.md) bazy danych (Dostosowywanie opcji, które są automatycznie stosowane do bazy danych). Kliknięcie tego kafelka spowoduje otwarcie okna dialogowego konfiguracji usługi automation.
-* **Zapytań bazy danych** Kafelek pokazuje, podsumowania wydajność zapytań dla bazy danych (Ogólne jednostek DTU użycia i od góry zasobu zapytań zużywających najwięcej zasobów). Kliknięcie tego kafelka spowoduje przejście do  **[Query Performance Insight](#query-performance-insight)**.
+* **Zapytań bazy danych** Kafelek pokazuje, podsumowania wydajność zapytań dla bazy danych (Ogólne jednostek DTU użycia i od góry zasobu zapytań zużywających najwięcej zasobów). Kliknięcie tego kafelka spowoduje przejście do  **[Query Performance Insight](#query-performance-insight)** .
 
 ## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
 
@@ -74,7 +73,7 @@ Bazy danych SQL platformy Azure może automatycznie dostrajania wydajności bazy
 
   ![pulpit nawigacyjny wydajności](./media/sql-database-query-performance/performance.png)
 
-Więcej informacji o tej stronie można znaleźć w artykule  **[sposób używania Query Performance Insight](sql-database-query-performance.md)**.
+Więcej informacji o tej stronie można znaleźć w artykule  **[sposób używania Query Performance Insight](sql-database-query-performance.md)** .
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

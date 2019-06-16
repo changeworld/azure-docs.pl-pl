@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65786076"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Wprowadzenie do platformy Azure pamięci podręcznej Redis w warstwie Premium
@@ -33,7 +33,7 @@ Nowa warstwa Premium jest warstwa przeznaczona dla przedsiębiorstw, która obej
 
 Aby uzyskać więcej informacji na temat rozmiaru, przepływności i przepustowości w pamięciach podręcznych premium, zobacz [pamięci podręcznej Azure redis Cache — często zadawane pytania](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
-## <a name="redis-data-persistence"></a>Stan trwały danych pamięci podręcznej Redis
+## <a name="redis-data-persistence"></a>Trwałość danych Redis
 Warstwa Premium umożliwia utrwalanie danych pamięci podręcznej na koncie usługi Azure Storage. W pamięci podręcznej Podstawowa/standardowa wszystkie dane są przechowywane tylko w pamięci. W przypadku podstawowej infrastruktury problemów może być możliwej utracie danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych. Pamięć podręczna systemu Azure dla usługi Redis zapewnia RDB i AOF (wkrótce), opcje w [trwałość Redis](https://redis.io/topics/persistence). 
 
 Aby uzyskać instrukcje na temat konfigurowania trwałości, zobacz [Konfigurowanie trwałości dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-persistence.md).
@@ -41,7 +41,7 @@ Aby uzyskać instrukcje na temat konfigurowania trwałości, zobacz [Konfigurowa
 ## <a name="redis-cluster"></a>Klaster Redis
 Jeśli chcesz Tworzenie pamięci podręcznych większych niż 53 GB lub mają współdzielenie danych między wieloma węzłami Redis, możesz magazynu Redis można używać klastra, który jest dostępny w warstwie Premium. Każdy węzeł składa się z pary pamięci podręcznej podstawowy i węzeł repliki, zarządzane przez platformę Azure w celu zapewnienia wysokiej dostępności. 
 
-**Klastrowanie redis zapewnia maksymalną skalowalność i przepływność.** Przepływność zwiększa liniowo, jak zwiększyć liczbę fragmentów (węzłów) w klastrze. Np. Jeśli tworzysz klaster P4 10 fragmentów, a następnie dostępna przepustowość jest 250 KB * 10 = 2,5 mln żądań na sekundę. Zobacz [pamięci podręcznej Azure redis Cache — często zadawane pytania](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) więcej szczegółowych informacji dotyczących rozmiaru, przepływności i przepustowości w pamięciach podręcznych premium.
+**Klastrowanie redis zapewnia maksymalną skalowalność i przepływność.** Przepływność zwiększa liniowo, jak zwiększyć liczbę fragmentów (węzłów) w klastrze. Na przykład: Jeśli tworzysz klaster P4 10 fragmentów, a następnie dostępna przepustowość jest 250 KB * 10 = 2,5 mln żądań na sekundę. Zobacz [pamięci podręcznej Azure redis Cache — często zadawane pytania](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) więcej szczegółowych informacji dotyczących rozmiaru, przepływności i przepustowości w pamięciach podręcznych premium.
 
 Aby rozpocząć pracę z usługą klastrowania, zobacz [Konfigurowanie klastrowania dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-clustering.md).
 
@@ -50,7 +50,7 @@ Pamięci podręczne utworzone w warstwie podstawowa lub standardowa są dostępn
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie obsługi sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-vnet.md).
 
-## <a name="importexport"></a>Importuj/eksportuj
+## <a name="importexport"></a>Import/Export
 Import/Export jest usługa Azure Cache dla operacji zarządzania danych Redis, która umożliwia importowanie danych do pamięci podręcznej Azure redis Cache lub eksportowanie danych z pamięci podręcznej Azure redis cache, importowanie i eksportowanie usługi Azure Cache dla migawki bazy danych Redis (RDB) z pamięci podręcznej — wersja premium, aby stronicowych obiektów blob na koncie usługi Azure Storage. Dzięki temu można dokonać migracji między różne usługi Azure Cache dla wystąpień pamięci podręcznej Redis ani wypełnienie pamięci podręcznej z danymi, przed użyciem.
 
 Import może służyć do dostosowania zgodne pliki RDB pamięci podręcznej Redis z dowolnego serwera Redis, działające w dowolnej chmurze lub środowisku, w tym Redis działających w systemie Linux, Windows lub wśród dostawców chmury, takich jak usługi Amazon Web Services i inne. Importowanie danych jest łatwe tworzenie pamięci podręcznej z wstępnie wypełniony danymi. Podczas procesu importowania pamięci podręcznej Redis Azure ładuje pliki RDB z usługi Azure storage do pamięci i wstawianie kluczy do pamięci podręcznej.
@@ -59,7 +59,7 @@ Eksport umożliwia eksportowanie danych przechowywanych w pamięci podręcznej A
 
 Aby uzyskać więcej informacji, zobacz [sposób importowania danych do i eksportować dane z usługi Azure Cache dla usługi Redis](cache-how-to-import-export-data.md).
 
-## <a name="reboot"></a>Uruchom ponownie
+## <a name="reboot"></a>Ponowne uruchamianie
 Warstwa premium umożliwia ponowne uruchomienie jednego lub więcej węzłów pamięci podręcznej na żądanie. Dzięki temu można testować swoją aplikację pod kątem odporności w przypadku awarii. Użytkownik może uruchomić następujących węzłów.
 
 * Węzeł główny pamięci podręcznej
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji, zobacz [ponowny rozruch](cache-administration.m
 >
 >
 
-## <a name="schedule-updates"></a>Zaplanuj aktualizacje
+## <a name="schedule-updates"></a>Aktualizacje harmonogramu
 Funkcja zaplanowanych aktualizacji służy do wyznaczenia okno obsługi pamięci podręcznej. Jeśli okna obsługi jest określony, wszystkie aktualizacje serwera Redis są wprowadzane podczas tego okna. Aby wyznaczyć oknem konserwacji, wybierz żądane dni i określ konserwacji okna Uruchom godzinę każdego dnia. Należy pamiętać, że czas okna obsługi jest w formacie UTC. 
 
 Aby uzyskać więcej informacji, zobacz [Lizacje](cache-administration.md#schedule-updates) i [Zaplanuj aktualizacje — często zadawane pytania](cache-administration.md#schedule-updates-faq).

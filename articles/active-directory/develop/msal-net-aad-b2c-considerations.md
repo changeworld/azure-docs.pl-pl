@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c26a5007c2dcaa5d41be46f685f0f259866ca2c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8240a487bdb01cdbe9017ddc7cb95ce4fc0e1503
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052365"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Umożliwia logowanie użytkowników mających tożsamości społecznościowych platformy MSAL.NET
 
@@ -177,7 +177,7 @@ Sugerowane obejście polega na użyciu [w pamięci podręcznej przez zasady](#ac
 Alternatywnie, można użyć `tid` oświadczenia, jeśli używasz [zasady niestandardowe B2C](https://aka.ms/ief), ponieważ zapewnia funkcje, aby zwrócić dodatkowe oświadczenia do aplikacji. Aby dowiedzieć się więcej na temat [przekształcania oświadczeń](/azure/active-directory-b2c/claims-transformation-technical-profile)
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Środki zaradcze dla "Brak z tokenu odpowiedzi"
-Jedną z opcji jest używany oświadczenia "name" jako preferowaną nazwy użytkownika. Ten proces jest wymieniony w tym [B2C doc](/azure/active-directory-b2c/active-directory-b2c-reference-policies#frequently-asked-questions) -> "w kolumnie zwracany oświadczenia wybierz oświadczenia, o których mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji po pomyślnym edytowaniu profilu. Na przykład wybierz nazwę wyświetlaną, kod pocztowy."
+Jedną z opcji jest używany oświadczenia "name" jako preferowaną nazwy użytkownika. Ten proces jest wymieniony w tym [B2C doc](../../active-directory-b2c/active-directory-b2c-reference-policies.md) -> "w kolumnie zwracany oświadczenia wybierz oświadczenia, o których mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji po pomyślnym edytowaniu profilu. Na przykład wybierz nazwę wyświetlaną, kod pocztowy."
 
 ## <a name="next-steps"></a>Kolejne kroki 
 

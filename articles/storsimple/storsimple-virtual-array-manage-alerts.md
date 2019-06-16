@@ -16,10 +16,10 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60302809"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Menedżer urządzeń StorSimple Użyj, aby zarządzać alertami dla rozwiązania StorSimple Virtual Array
@@ -130,7 +130,7 @@ W poniższej tabeli wymieniono niektóre alerty StorSimple, które można napotk
 
 | Tekst alertu | Wydarzenie | Więcej informacji / zalecane akcje |
 |:--- |:--- |:--- |
-| Urządzenia <*nazwy urządzenia*> nie jest połączone z chmurą. |Nazwanego urządzenia nie można połączyć z chmurą. |Nie można połączyć się z chmurą. Może to być spowodowane jedną z następujących przyczyn:<ul><li>Może to być problem z ustawieniami sieci na urządzeniu.</li><li>Może to być problem z poświadczeń konta magazynu.</li></ul>Aby uzyskać więcej informacji na temat rozwiązywania problemów z łącznością, przejdź do [lokalnego Interfejsu w przeglądarce](storsimple-ova-web-ui-admin.md) urządzenia. |
+| Urządzenia <*nazwy urządzenia*> nie jest połączone z chmurą. |Nazwanego urządzenia nie można połączyć z chmurą. |Nie można nawiązać połączenia z chmury. Może to być spowodowane jedną z następujących przyczyn:<ul><li>Może to być problem z ustawieniami sieci na urządzeniu.</li><li>Może to być problem z poświadczeń konta magazynu.</li></ul>Aby uzyskać więcej informacji na temat rozwiązywania problemów z łącznością, przejdź do [lokalnego Interfejsu w przeglądarce](storsimple-ova-web-ui-admin.md) urządzenia. |
 
 ### <a name="configuration-alerts"></a>Alerty konfiguracji
 

@@ -11,10 +11,10 @@ ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: be811d0dc2ce2eca0b20ca12165eaf0799bd6b5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61078107"
 ---
 # <a name="my-first-graphical-runbook"></a>Mój pierwszy graficzny element Runbook
@@ -209,13 +209,13 @@ Teraz zmodyfikujesz element runbook w taki sposób, aby podejmował próbę uruc
 
 1. Utwórz połączenie elementu **Pobieranie stanu** z poleceniem **Start-AzureRmVM**.<br> ![Element Runbook z modułem kodu](media/automation-first-runbook-graphical/runbook-startvm-get-status.png)  
 1. Wybierz połączenie, a następnie w okienku Konfiguracja zmień ustawienie pozycji **Zastosuj warunek** na **Tak**. Zauważ, że połączenie zmieni się w linię przerywaną, co oznacza, że działanie docelowe będzie uruchamiane tylko w sytuacji, gdy warunek będzie spełniony.  
-1. Dla **warunku wyrażenia** wpisz *$ActivityOutput [’Pobieranie stanu’] - eq "Zatrzymano"*. Polecenie **Start-AzureRmVM** będzie teraz uruchamiane tylko wtedy, gdy maszyna wirtualna jest zatrzymana.
+1. Dla **warunku wyrażenia** wpisz *$ActivityOutput [’Pobieranie stanu’] - eq "Zatrzymano"* . Polecenie **Start-AzureRmVM** będzie teraz uruchamiane tylko wtedy, gdy maszyna wirtualna jest zatrzymana.
 1. W kontrolce Biblioteka rozwiń pozycję **Polecenia cmdlet**, a następnie pozycję **Microsoft.PowerShell.Utility**.
 1. Dwukrotnie dodaj pozycję **Write-Output** do kanwy.
 1. W pierwszej kontrolce **Write-Output** kliknij pozycję **Parametry** i zmień wartość pola **Etykieta** na *Powiadamianie o uruchomieniu maszyny wirtualnej*.
-1. Dla pozycji **InputObject** zmień **źródło danych** na **Wyrażenie programu PowerShell** i wpisz wyrażenie *„Maszyna wirtualna $VMName została pomyślnie uruchomiona”*.
+1. Dla pozycji **InputObject** zmień **źródło danych** na **Wyrażenie programu PowerShell** i wpisz wyrażenie *„Maszyna wirtualna $VMName została pomyślnie uruchomiona”* .
 1. W drugiej kontrolce **Write-Output** kliknij pozycję **Parametry** i zmień wartość pola **Etykieta** na *Powiadamianie o błędzie uruchomienia maszyny wirtualnej*.
-1. Dla pozycji **InputObject** zmień **źródło danych** na **Wyrażenie programu PowerShell** i wpisz wyrażenie *„Nie można uruchomić maszyny wirtualnej $VMName”*.
+1. Dla pozycji **InputObject** zmień **źródło danych** na **Wyrażenie programu PowerShell** i wpisz wyrażenie *„Nie można uruchomić maszyny wirtualnej $VMName”* .
 1. Utwórz połączenie między poleceniem **Start-AzureRmVM** z wartościami **Powiadamianie o uruchomieniu maszyny wirtualnej** i **Powiadamianie o nieudanym uruchomieniu maszyny wirtualnej**.
 1. Wybierz połączenie z wartością **Powiadamianie o uruchomieniu maszyny wirtualnej** i zmień ustawienie pozycji **Zastosuj warunek** na **True**.
 1. W polu **Warunek wyrażenia** wpisz ciąg *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true*. Ta kontrolka Write-Output będzie teraz uruchamiana tylko w sytuacji, gdy maszyna wirtualna zostanie pomyślnie uruchomiona.

@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143298"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
@@ -319,7 +319,7 @@ Strona główna umożliwia wykonywanie następujących czynności:
 * **Zarejestruj** przy użyciu klucza z poziomu portalu.
 * **Zatrzymaj** i Rozpocznij **usługi danych zarządzania bramy hosta** na maszynie bramy.
 * **Zaplanuj aktualizacje** o określonej godzinie w dni.
-* Wyświetl datę bramy **Ostatnia aktualizacja:**.
+* Wyświetl datę bramy **Ostatnia aktualizacja:** .
 
 ### <a name="settings-page"></a>Strona Ustawienia
 Na stronie ustawień umożliwia wykonywanie następujących czynności:
@@ -367,7 +367,7 @@ Właściwość monitorowania | Opis
 :------------------ | :----------
 Name (Nazwa) | Nazwa logicznej bramy i węzłów skojarzone z tą bramą. Węzeł to maszyna Windows w środowisku lokalnym, która ma bramę na nim zainstalowany. Aby uzyskać informacji na temat mających więcej niż jeden węzeł (maksymalnie cztery węzły) w jednej logicznej bramy, zobacz [bramy zarządzania danymi — wysokiej dostępności i skalowalności](data-factory-data-management-gateway-high-availability-scalability.md).
 Stan | Stan logicznej bramy i węzłów bramy. Przykład: Online/Offline/Limited/itd. Aby uzyskać informacji na temat tych stanów, zobacz [stan bramy](#gateway-status) sekcji.
-Wersja | Wyświetla wersję logicznej bramy i każdy węzeł bramy. Wersja logicznej bramy jest określany na podstawie wersji Większość węzłów w grupie. W przypadku węzłów z różnymi wersjami w Instalatorze logicznej bramy tylko węzły numerem wersji funkcji logicznej bramy prawidłowo. Innym jest tryb ograniczony i należy ręcznie zaktualizować (tylko w przypadku, gdy aktualizacje automatyczne nie powiedzie się).
+Version | Wyświetla wersję logicznej bramy i każdy węzeł bramy. Wersja logicznej bramy jest określany na podstawie wersji Większość węzłów w grupie. W przypadku węzłów z różnymi wersjami w Instalatorze logicznej bramy tylko węzły numerem wersji funkcji logicznej bramy prawidłowo. Innym jest tryb ograniczony i należy ręcznie zaktualizować (tylko w przypadku, gdy aktualizacje automatyczne nie powiedzie się).
 Dostępna pamięć | Dostępna pamięć na węzeł bramy. Ta wartość jest niemal w czasie rzeczywistym migawki.
 Użycie procesora CPU | Użycie procesora CPU węzeł bramy. Ta wartość jest niemal w czasie rzeczywistym migawki.
 Sieć (We/Wy) | Wykorzystanie sieci węzła bramy. Ta wartość jest niemal w czasie rzeczywistym migawki.
@@ -511,7 +511,7 @@ W tej sekcji opisano, jak utworzyć i zarejestrować bramę przy użyciu polece�
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. W programie Azure PowerShell przejdź do folderu: *C:\\\\plików programu\\produktu Microsoft Integration Runtime\\3.0\\PowerShellScript\\*. Uruchom *RegisterGateway.ps1* skojarzone ze zmienną lokalnej **$Key** jak pokazano w poniższym poleceniu. Ten skrypt rejestruje agenta klienta, zainstalowane na komputerze z bramą logiczne, utworzonej wcześniej.
+1. W programie Azure PowerShell przejdź do folderu: *C:\\\\plików programu\\produktu Microsoft Integration Runtime\\3.0\\PowerShellScript\\* . Uruchom *RegisterGateway.ps1* skojarzone ze zmienną lokalnej **$Key** jak pokazano w poniższym poleceniu. Ten skrypt rejestruje agenta klienta, zainstalowane na komputerze z bramą logiczne, utworzonej wcześniej.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

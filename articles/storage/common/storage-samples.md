@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: c3bf695527db19513125d9190796c9b5df312aaa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153502"
 ---
 # <a name="azure-storage-samples"></a>Przykłady usługi Azure Storage
@@ -60,7 +60,7 @@ Aby poznać przykłady w języku C++, Pobierz [biblioteki klienta usługi Storag
 
 ## <a name="api-reference-and-source-code"></a>Interfejs API odwołania i kod źródłowy
 
-| Język | Dokumentacja interfejsu API | Kod źródłowy |
+| Język | Dokumentacja interfejsów API | Kod źródłowy |
 |----------|---------------|-------------|
 | .NET | [Dokumentacja biblioteki klienta platformy .NET](https://msdn.microsoft.com/library/azure/mt347887.aspx) | [Kod źródłowy biblioteki klienta .NET magazynu](https://github.com/Azure/azure-storage-net) |
 | Java | [Dokumentacja biblioteki klienta języka Java](https://docs.microsoft.com/java/api/overview/azure/storage) | [Kod źródłowy biblioteki klienta języka Java](https://github.com/azure/azure-storage-java) |

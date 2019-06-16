@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 5/10/2019
 ms.openlocfilehash: 5d769e2198b714d611b3004e11ccc624d4c6acdf
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546450"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Warstwy usług w modelu zakupu opartego na jednostkach DTU
@@ -36,7 +36,7 @@ Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, maga
 | :-- | --: |--:| --:|
 |Docelowego obciążenia|Rozwoju i produkcji|Rozwoju i produkcji|Rozwoju i produkcji|
 |Umowa SLA dotycząca czasu dostępności|99,99%|99,99%|99,99%|
-|Przechowywanie kopii zapasowej|7 dni|35 dni|35 dni|
+|Przechowywanie kopii zapasowych|7 dni|35 dni|35 dni|
 |Procesor CPU|Małe|Niska, średnia, wysoka|Średni i wysoki|
 |Przepustowość operacji We/Wy (w przybliżeniu) |2.5 operacje We/Wy na jednostkach DTU| 2.5 operacje We/Wy na jednostkach DTU | 48 operacje We/Wy na jednostkach DTU|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 ms (odczyt), 10 ms (zapis)|5 ms (odczyt), 10 ms (zapis)|2 ms (odczyt/zapis)|
@@ -165,9 +165,9 @@ Kluczowe metryki w uruchomionym teście są przepływności i czasu odpowiedzi.
 
 | Klasa usługi | Pomiar przepływności | Wymagania dotyczące czasu odpowiedzi |
 | --- | --- | --- |
-| Premium |Transakcje na sekundę |95. percentyl na 0,5 sekund |
-| Standardowa (Standard) |Transakcje na minutę |90. percentyla w wersji 1.0 w ciągu kilku sekund |
-| Podstawowa |Transakcje na godzinę |80. percentylu, w sekundach 2.0 |
+| Premium |Transakcje na sekundę |95\. percentyl na 0,5 sekund |
+| Standardowa (Standard) |Transakcje na minutę |90\. percentyla w wersji 1.0 w ciągu kilku sekund |
+| Podstawowa |Transakcje na godzinę |80\. percentylu, w sekundach 2.0 |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

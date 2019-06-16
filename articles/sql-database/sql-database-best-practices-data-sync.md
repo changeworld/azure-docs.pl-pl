@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: 0b1e3b98fe5b934b712db2a5549ebdc865523bfb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61412578"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
@@ -51,7 +51,7 @@ Usługa Azure SQL Database obsługuje tylko jeden zestaw poświadczeń. Aby wyko
 -   Zmienić poświadczenia dla różnych etapów (na przykład *credentials1* instalacji i *credentials2* dla trwających).  
 -   Zmiana uprawnień poświadczeń (oznacza to, Zmień uprawnienia po skonfigurowaniu synchronizacji).
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 ### <a name="database-considerations-and-constraints"></a> Kwestie i ograniczenia
 

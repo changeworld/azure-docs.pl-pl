@@ -1,6 +1,6 @@
 ---
 title: Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlić listę Odmów przydziały dla użytkowników, grup i aplikacji, za pomocą kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure oraz interfejsu API REST.
+description: Dowiedz się, jak wyświetlić listę Odmów przydziały dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure oraz interfejsu API REST.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,22 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 0bc49456f5965846a2de542b4a063bab2d1838bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194671"
+ms.locfileid: "67118282"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST
 
-[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. W tym artykule opisano sposób użycia interfejsu API REST do listy Odmów przypisania.
+[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. W tym artykule opisano sposób wyświetlenia listy Odmów przydziałów za pomocą interfejsu API REST.
 
 > [!NOTE]
-> W tej chwili jedynym sposobem, które można dodać własne odmówić przypisania polega na użyciu plany platformy Azure. Aby uzyskać więcej informacji, zobacz [chronić nowe zasoby za pomocą blokad zasobów platformy Azure, plany](../governance/blueprints/tutorials/protect-new-resources.md).
+> Nie można bezpośrednio utworzyć własne Odmów przypisania. Aby uzyskać informacje na temat nie zezwoli na przydziały są tworzone, zobacz [Odmów przypisania](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

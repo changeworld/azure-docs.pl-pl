@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
 ms.openlocfilehash: 09f80f69857ae17a0136229fe9bf13d4f63e7096
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65151088"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Utwórz wyzwalacz, który uruchamia potok zgodnie z harmonogramem
@@ -44,7 +44,7 @@ Możesz utworzyć **wyzwalacz harmonogramu** Aby zaplanować okresowe uruchamian
 3. W **nowy wyzwalacz** wykonaj następujące czynności: 
 
     1. Upewnij się, że **harmonogram** wybrano **typu**. 
-    2. Określ datę i godzinę rozpoczęcia wyzwalacza dla **Start Data (UTC)**. Jego jest domyślnie do bieżącej daty/godziny. 
+    2. Określ datę i godzinę rozpoczęcia wyzwalacza dla **Start Data (UTC)** . Jego jest domyślnie do bieżącej daty/godziny. 
     3. Określ **cyklu** wyzwalacza. Wybierz jedną z wartości z listy rozwijanej (co minutę, co godzinę, codziennie, co tydzień i co miesiąc). Mnożnik należy wprowadzić w polu tekstowym. Na przykład, jeśli chcesz, aby wyzwalacz, aby uruchomić jeden raz dla co 15 minut, wybrania **co minutę**, a następnie wprowadź **15** w polu tekstowym. 
     4. Dla **zakończenia** pola, jeśli nie chcesz określić daty/godziny zakończenia dla wyzwalacza, wybierz opcję **zakończenia nie**. Koniec Data i godzina, zaznacz **w dniu**i określ daty/godziny zakończenia i kliknij **Zastosuj**. Z każdym uruchomieniem potoku wiąże się koszt. Jeśli testujesz, warto upewnić się, że potok jest wyzwalane tylko kilka razy. Upewnij się również, że okres między czasem publikowania i czasem zakończenia będzie wystarczający do uruchomienia potoku. Wyzwalacz zaczyna obowiązywać dopiero po opublikowaniu rozwiązania w fabryce Data Factory, a nie po zapisaniu go w interfejsie użytkownika.
 
@@ -325,12 +325,12 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów schematu odnos
 
 ### <a name="schema-defaults-limits-and-examples"></a>Wartości domyślne, limity i przykłady harmonogramów
 
-| Właściwość JSON | Type | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
+| Właściwość JSON | Typ | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | String | Yes | Brak | Daty i godziny ISO-8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | String | Tak | Brak | Daty i godziny ISO-8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Object | Yes | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Liczba | Nie | 1 | Od 1 do 1000 | `"interval":10` |
-| **endTime** | String | Yes | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | String | Tak | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Object | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Właściwość startTime
@@ -361,8 +361,8 @@ W poniższej tabeli opisano szczegółowo elementy właściwości **schedule**:
 
 | Element JSON | Opis | Prawidłowe wartości |
 |:--- |:--- |:--- |
-| **minutes** | Minuty godziny, o których uruchamiany jest wyzwalacz. | <ul><li>Liczba całkowita</li><li>Tablica liczb całkowitych</li></ul>
-| **hours** | Godziny dnia, o których uruchamiany jest wyzwalacz. | <ul><li>Liczba całkowita</li><li>Tablica liczb całkowitych</li></ul> |
+| **minutes** | Minuty godziny, o których uruchamiany jest wyzwalacz. | <ul><li>Integer</li><li>Tablica liczb całkowitych</li></ul>
+| **hours** | Godziny dnia, o których uruchamiany jest wyzwalacz. | <ul><li>Integer</li><li>Tablica liczb całkowitych</li></ul> |
 | **weekDays** | Dni tygodnia, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością tygodniową. | <ul><li>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday lub Sunday</li><li>Tablica wartości dni (maksymalny rozmiar tablicy to 7)</li><li>W wartościach dni nie są uwzględniane wielkości liter</li></ul> |
 | **monthlyOccurrences** | Dni miesiąca, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. | <ul><li>Tablica **monthlyOccurrence** obiektów: `{ "day": day,  "occurrence": occurrence }`.</li><li>Atrybut **day** jest dniem tygodnia, w którym uruchamiany jest wyzwalacz. Na przykład właściwość **monthlyOccurrences** o wartości **day** wynoszącej `{Sunday}` oznacza każdą niedzielę miesiąca. Atrybut **day** jest wymagany.</li><li>Atrybut **occurence** jest wystąpieniem określonej wartości **day** w miesiącu. Na przykład właściwość **monthlyOccurrences** o wartościach **day** i **occurence** wynoszących `{Sunday, -1}` oznacza ostatnią niedzielę miesiąca. Atrybut **occurence** jest opcjonalny.</li></ul> |
 | **monthDays** | Dzień miesiąca, w którym uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. | <ul><li>Dowolna wartość <= -1 i >= -31</li><li>Dowolna wartość >= 1 i <= 31</li><li>Tablica wartości</li></ul> |

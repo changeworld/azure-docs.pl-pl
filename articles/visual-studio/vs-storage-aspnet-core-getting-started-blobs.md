@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
 ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110520"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (systemu Windows platformy ASP.NET Core)
@@ -51,7 +51,7 @@ W tej sekcji przedstawiono konfigurowanie środowiska deweloperskiego. Obejmuje 
 
     ![Zrzut ekranu programu Visual Studio okno dialogowe Nowy projekt](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. W **Nowa aplikacja internetowa ASP.NET Core** okno dialogowe, wybierz opcję **platformy .NET Core** > **ASP.NET Core 2.0** > **(aplikacja sieci Web Model-View-Controller)**. Następnie wybierz przycisk **OK**.
+1. W **Nowa aplikacja internetowa ASP.NET Core** okno dialogowe, wybierz opcję **platformy .NET Core** > **ASP.NET Core 2.0** >  **(aplikacja sieci Web Model-View-Controller)** . Następnie wybierz przycisk **OK**.
 
     ![Zrzut ekranu z nowej platformy ASP.NET Core aplikacji sieci Web, okno dialogowe](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 

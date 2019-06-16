@@ -9,10 +9,10 @@ ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
 ms.openlocfilehash: e29a1f5d1e258ab66540010dc12f9326b8fd57a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60775750"
 ---
 # <a name="common-alert-schema-definitions"></a>Definicje typowych schematów alertów
@@ -80,7 +80,7 @@ W tym artykule opisano wszystkie wystąpienia alertu **zasób, który będzie mi
 |:---|:---|
 | alertId | Identyfikator GUID, który unikatowo identyfikuje wystąpienia alertu. |
 | alertRule | Nazwa reguły alertu, który wygenerował wystąpienia alertu. |
-| Ważność | Ważność alertu. Możliwe wartości: Sev0, Sev1, Sev2, Sev3, Sev4 |
+| Severity | Ważność alertu. Możliwe wartości: Sev0, Sev1, Sev2, Sev3, Sev4 |
 | signalType | Określa sygnał, w którym zdefiniowano reguły alertu. Możliwe wartości: Metryki, Log, dziennika aktywności |
 | monitorCondition | Gdy zostanie wyzwolony alert warunek monitora ten alert jest równa "Fired". Podstawowy warunek, który spowodował alert, aby wyzwalać czyści, warunek monitora jest równa "Rozwiązany".   |
 | monitoringService | Monitorowanie usługi lub rozwiązania, który wygenerował alert. Pola kontekst alertu są definiowane przez usługę monitorowania. |

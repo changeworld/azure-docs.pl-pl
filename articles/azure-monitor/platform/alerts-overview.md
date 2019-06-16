@@ -9,10 +9,10 @@ ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
 ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347490"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów na platformie Microsoft Azure 
@@ -80,7 +80,7 @@ Obsługiwane są następujące stany alertów.
 | Stan | Opis |
 |:---|:---|
 | Nowa | Problem został wykryty i jeszcze nie została sprawdzona. |
-| Potwierdzono | Administrator przejrzał alertu i do pracy w niej. |
+| Potwierdzone | Administrator przejrzał alertu i do pracy w niej. |
 | Zamknięte | Problem został rozwiązany. Po zamknięciu alertu możesz otworzyć go ponownie, zmieniając go do innego stanu. |
 
 **Zgłoś alert, stan** jest różna i niezależne od **monitorować stan**. Stan alertu jest ustawiony przez użytkownika. Warunek monitora jest ustawiony przez system. Gdy zostanie wyzwolony alert warunek monitora ten alert jest ustawiona na *wyzwolone*. Jeśli podstawowy warunek, który spowodował alert, aby wyzwalać czyści, warunek monitora jest równa *rozwiązane*. Stan alertu nie jest zmieniany, dopóki użytkownik ją zmieni. Dowiedz się, [jak zmienić stan alertów i grup inteligentne](https://aka.ms/managing-alert-smart-group-states).
@@ -149,8 +149,8 @@ Widok można filtrować, wybierając następujące wartości w menu rozwijanych 
 | Grupa zasobów | Wybierz pojedynczą grupę zasobów. Tylko alerty z usługą obiektów docelowych w wybranej grupie zasobów znajdują się w widoku. |
 | Typ zasobu | Wybierz jeden lub więcej typów zasobów. Tylko alerty o celach wybranego typu znajdują się w widoku. W tej kolumnie jest dostępna tylko po określono grupę zasobów. |
 | Resource | Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. |
-| Ważność | Wybierz alert o ważności lub *wszystkich* obejmujący alerty wszystkie poziomy ważności. |
-| Stan monitora | Wybierz warunek monitora lub *wszystkich* obejmujący alerty warunków. |
+| Severity | Wybierz alert o ważności lub *wszystkich* obejmujący alerty wszystkie poziomy ważności. |
+| Warunek monitora | Wybierz warunek monitora lub *wszystkich* obejmujący alerty warunków. |
 | Stan alertu | Wybierz stan alertu lub *wszystkich* obejmujący alerty stanów. |
 | Monitorowanie usługi | Wybierz usługę, lub wybierz *wszystkich* obejmujący wszystkie usługi. Uwzględniane są tylko alerty tworzone przez reguły, które korzystają z usługi jako element docelowy. |
 | Przedział czasu | Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. |
@@ -164,7 +164,7 @@ Po wybraniu alertu, zostanie wyświetlona strona szczegółów alertu. Ona zawie
 
 Strona szczegółów alertu zawiera następujące sekcje.
 
-| Sekcja | Opis |
+| `Section` | Opis |
 |:---|:---|
 | Podstawy | Wyświetla właściwości i inne istotne informacje dotyczące alertu. |
 | Historia | Wyświetla listę każdej akcji podjętej przez alert i wszelkie zmiany wprowadzone do alertu. Obecnie są ograniczone do zmiany stanu. |

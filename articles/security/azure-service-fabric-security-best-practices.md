@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
 ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611520"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Usługa Azure Service Fabric najlepsze rozwiązania dotyczące zabezpieczeń
@@ -101,7 +101,7 @@ Jeśli klaster jest niezabezpieczony, każdy anonimowo połączyć się z klastr
 
 Aby dowiedzieć się więcej o korzystaniu z certyfikatów X.509, zobacz [apletu Dodaj lub Usuń certyfikaty dla klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-update-certs-azure).
 
-## <a name="configure-security-policies"></a>Konfiguruj zasady zabezpieczeń
+## <a name="configure-security-policies"></a>Podczas konfigurowania zasad zabezpieczeń
 Usługa Service Fabric zabezpiecza również zasoby, które są używane przez aplikacje. Zasoby, takie jak pliki i katalogi, i certyfikaty są przechowywane na kontach użytkowników, gdy aplikacja jest wdrażana. Ta funkcja umożliwia uruchamianie aplikacji w bardziej bezpieczne od siebie nawzajem, nawet w środowisku współdzielonym hostowanej.
 
 -   Użyj grupy domeny usługi Active Directory lub użytkownika: Uruchom usługę przy użyciu poświadczeń użytkownika usługi Active Directory lub konta grupy. Pamiętaj użyć usługi Active Directory w środowisku lokalnym w ramach domeny i nie usługi Azure Active Directory. Dostęp do innych zasobów w domenie, które ma odpowiednie uprawnienia za pomocą użytkownika domeny lub grupy. Na przykład zasoby, takie jak udziały plików.
@@ -139,10 +139,10 @@ Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów SSL 
 -   Nazwa podmiotu certyfikatu musi odpowiadać nazwie domeny, która umożliwia dostęp do usługi w chmurze.
 
     - Uzyskać niestandardową nazwę domeny na potrzeby uzyskiwania dostępu do usługi w chmurze.
-    - Żądanie certyfikatu od urzędu certyfikacji z nazwą podmiotu zgodną z usługą niestandardowej nazwy domeny. Na przykład, jeśli nazwa domeny niestandardowej jest __contoso__**.com**, certyfikat z urzędu certyfikacji powinien mieć nazwę podmiotu **. contoso.com** lub __www__ **. contoso.com**.
+    - Żądanie certyfikatu od urzędu certyfikacji z nazwą podmiotu zgodną z usługą niestandardowej nazwy domeny. Na przykład, jeśli nazwa domeny niestandardowej jest __contoso__ **.com**, certyfikat z urzędu certyfikacji powinien mieć nazwę podmiotu **. contoso.com** lub __www__ **. contoso.com**.
 
     >[!NOTE]
-    >Nie można uzyskać certyfikatu SSL z urzędu certyfikacji dla __cloudapp__**.net** domeny.
+    >Nie można uzyskać certyfikatu SSL z urzędu certyfikacji dla __cloudapp__ **.net** domeny.
 
 -   Certyfikat należy użyć co najmniej szyfrowanie 2048 bitowych.
 

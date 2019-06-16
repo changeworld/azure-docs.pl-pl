@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60614306"
 ---
 # <a name="embed-azure-cloud-shell"></a>Osadzanie usługi Azure Cloud Shell
@@ -33,7 +33,7 @@ Duży przycisk wielkości
 
 [![Uruchamianie dużych](https://shell.azure.com/images/launchcloudshell@2x.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
 
-## <a name="how-to"></a>Porady
+## <a name="how-to"></a>Instrukcje
 
 Integrowanie przycisk uruchamiania w usłudze Cloud Shell plików markdown, kopiując następujące czynności:
 

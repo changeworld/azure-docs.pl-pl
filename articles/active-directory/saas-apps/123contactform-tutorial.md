@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 768afe007141eacbcea1560d3ec1676d9a7d2867
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66e15d58f0c9d82d9ac73747cbd995d8de5cdf97
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859571"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją 123ContactForm
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację aplikacji 123ContactForm z usługą Azure AD, mus
 
 **Aby dodać aplikację 123ContactForm z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -143,7 +143,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji 123Contact
 
     b. Kliknij pozycję **Upload (Przekazywanie)** i przejdź do pobranego pliku XML metadanych, który został pobrany z witryny Azure Portal.
 
-    c. Kliknij pozycję **SUBMIT FORM (PRZEŚLIJ FORMULARZ)**.
+    c. Kliknij pozycję **SUBMIT FORM (PRZEŚLIJ FORMULARZ)** .
 
 2. Na stronie **Microsoft Azure AD - Single sign-on - Configure App Settings (Konfigurowanie ustawień aplikacji usługi Microsoft Azure AD — logowanie jednokrotne)** wykonaj następujące kroki:
 
@@ -216,7 +216,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka 123ContactForm w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji 123ContactForm, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

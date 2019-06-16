@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60203038"
 ---
 # <a name="detect-popular-brands-in-images"></a>Wykrywanie marek popularne obrazy
@@ -90,7 +90,7 @@ W niektórych przypadkach wykrywacz marki przejmą obraz logo i nazwę marki sty
 }
 ```
 
-## <a name="use-the-api"></a>Za pomocą interfejsu API
+## <a name="use-the-api"></a>Używanie interfejsu API
 
 Funkcja wykrywania marki jest częścią [analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API. Można wywołać tego interfejsu API za pomocą natywnego zestawu SDK lub wywołania REST. Obejmują `Brands` w **visualFeatures** parametr zapytania. Następnie, po otrzymaniu pełną odpowiedź JSON po prostu przeanalizować składni ciągu zawartości `"brands"` sekcji.
 

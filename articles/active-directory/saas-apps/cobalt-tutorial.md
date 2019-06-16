@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e2326a14c2f1215960d496dfab4c7f6832da2a3
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: d9fc2cb6e3aa23ffef03dc129f1f8cea520d1025
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473452"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cobalt"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą kobaltu
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację kobaltu w usłudze Azure AD, należy dodać kobal
 
 **Aby dodać kobaltu z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -218,7 +218,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka kobaltu w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze kobaltu, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

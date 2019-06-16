@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512964"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predykaty i PredicateValidations
@@ -41,7 +41,7 @@ Na poniższym diagramie przedstawiono relację między elementami:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany dla predykatu. Inne elementy, można użyć tego identyfikatora w zasadach. |
+| Identyfikator | Tak | Identyfikator, który jest używany dla predykatu. Inne elementy, można użyć tego identyfikatora w zasadach. |
 | Metoda | Tak | Typ metody do użycia w celu weryfikacji. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, lub **IsDateRange**. **IsLengthRange** wartość sprawdza, czy długość wartości oświadczeń ciągu w zakresie minimalnej i maksymalnej parametry określone. **MatchesRegex** wartość sprawdza, czy wartość oświadczenia ciąg pasuje do wyrażenia regularnego. **IncludesCharacters** wartość sprawdza, czy wartość oświadczenia ciąg zawiera zestaw znaków. **IsDateRange** wartość sprawdza, czy wartość oświadczenia daty z zakresu określono parametry minimalną i maksymalną. |
 
 **Predykatu** element zawiera następujące elementy:
@@ -158,7 +158,7 @@ Gdy predykaty zdefiniować weryfikacji sprawdzania typu oświadczenia **Predicat
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany dla predykatu grupy.  |
+| Identyfikator | Tak | Identyfikator, który jest używany dla predykatu grupy.  |
 
 **PredicateGroup** element zawiera następujące elementy:
 

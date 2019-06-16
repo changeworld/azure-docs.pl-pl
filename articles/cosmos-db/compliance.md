@@ -8,13 +8,13 @@ ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
 ms.openlocfilehash: af1b3dba0ac73ef30a4be20cab795ce6de595970
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66239706"
 ---
-# <a name="compliance-in-azure-cosmos-db"></a>Zgodności w usłudze Azure Cosmos DB 
+# <a name="compliance-in-azure-cosmos-db"></a>Zgodność w usłudze Azure Cosmos DB 
 
 Usługa Azure Cosmos DB jest dostępna we wszystkich regionach platformy Azure. Firma Microsoft udostępnia pięć środowisk różne chmury platformy Azure dla klientów:
 
@@ -32,7 +32,7 @@ Aby pomóc klientom w ich własnych zobowiązań zgodność w przypadku regulowa
 
 ## <a name="azure-cosmos-db-certifications"></a>Certyfikaty platformy Azure Cosmos DB  
 
-Usługa Azure Cosmos DB jest nieustannie rozszerza jego zakres certyfikatów. Obecnie usługa Azure Cosmos DB jest certyfikowany za pomocą następujących certyfikatów:
+Zakres certyfikatów usługi Azure Cosmos DB jest ciągle rozszerzany. Obecnie usługa Azure Cosmos DB jest certyfikowany za pomocą następujących certyfikatów:
 
 | **Stosowane globalnie** | **Administracja USA** | **Określonych w branży** | **Określone kraj lub region** |
 | --- | --- | --- | --- |

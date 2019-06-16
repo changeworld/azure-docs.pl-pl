@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tulasim
 ms.openlocfilehash: 8fcc3ea8340a8645a1983eebb4a619904f884a19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61379672"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
@@ -141,7 +141,7 @@ Poniżej znajduje się przykład ze strukturą QnA *xls* plik z zawartością HT
 
 Importowanie bazy wiedzy zastępuje zawartości istniejącej bazie wiedzy knowledge base. Importuj wymaga pliku tsv ze strukturą, który zawiera informacje o źródle danych. Informacje te pomagają usługi QnA Maker grupę pary pytań i odpowiedzi, a ich atrybutu z określonego źródła danych.
 
-| Pytanie  | Odpowiedź  | Element źródłowy| Metadane (klucz 1: wartość 1) |          
+| Pytanie  | Odpowiedź  | source| Metadane (klucz 1: wartość 1) |          
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Redakcyjna|    `Key:Value`       |

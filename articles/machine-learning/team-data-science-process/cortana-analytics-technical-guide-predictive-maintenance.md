@@ -12,10 +12,10 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60715662"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce
@@ -171,10 +171,10 @@ Poniższe kroki prowadzą na temat nawiązywania połączenia z bazą danych SQL
    
    Będziesz potrzebować **bazy danych, nazwę serwera, nazwę bazy danych, nazwę użytkownika i hasło** przed przejściem do następnych kroków. Poniżej przedstawiono kroki poprowadzą Cię, jak je znaleźć.
    
-   * Gdy **usługi Azure SQL Database** w szablonie rozwiązań diagram zmieni kolor na zielony, kliknij go, a następnie kliknij przycisk **"Otwórz"**.
+   * Gdy **usługi Azure SQL Database** w szablonie rozwiązań diagram zmieni kolor na zielony, kliknij go, a następnie kliknij przycisk **"Otwórz"** .
    * Zostaną wyświetlone nowe karty/okno przeglądarki zawierające stronę witryny Azure portal. Kliknij przycisk **"Grupy zasobów"** w panelu po lewej stronie.
-   * Wybierz subskrypcję, używany w przypadku wdrażania rozwiązania, a następnie wybierz **"YourSolutionName\_ResourceGroup"**.
-   * W nowych wyskakiwania panelu kliknij ![ikonę SQL](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonę, aby dostęp do bazy danych. Nazwa bazy danych znajduje się obok tej ikony (na przykład **"pmaintenancedb"**), a **nazwy serwera bazy danych** znajduje się w obszarze właściwości nazwy serwera i powinien wyglądać podobnie do  **YourSolutionName.database.windows.net**.
+   * Wybierz subskrypcję, używany w przypadku wdrażania rozwiązania, a następnie wybierz **"YourSolutionName\_ResourceGroup"** .
+   * W nowych wyskakiwania panelu kliknij ![ikonę SQL](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonę, aby dostęp do bazy danych. Nazwa bazy danych znajduje się obok tej ikony (na przykład **"pmaintenancedb"** ), a **nazwy serwera bazy danych** znajduje się w obszarze właściwości nazwy serwera i powinien wyglądać podobnie do  **YourSolutionName.database.windows.net**.
    * Baza danych **username** i **hasło** są takie same jak nazwa użytkownika i hasło nagrane wcześniej podczas wdrażania rozwiązania.
 2. Zaktualizuj źródło danych pliku raportu ścieżki nieaktywnej przy użyciu programu Power BI Desktop.
    
@@ -182,8 +182,8 @@ Poniższe kroki prowadzą na temat nawiązywania połączenia z bazą danych SQL
      
      ![Edytuj zapytania](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
    * Zostaną wyświetlone dwie tabele **RemainingUsefulLife** i **PMResult**. Wybierz pierwszą tabelę, a następnie kliknij przycisk ![ikonę ustawienia zapytania](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) obok **"Źródło"** w obszarze **ZASTOSOWANE KROKI** po prawej stronie **"Ustawienia zapytania"** Panel. Ignoruj wszystkie komunikaty ostrzegawcze, które są wyświetlane.
-   * W punkcie pop okna, Zastąp **"Server"** i **"Database"** przy użyciu własnych nazwy serwera i bazy danych, a następnie kliknij **"OK"**. Dla nazwy serwera, upewnij się, należy określić port 1433 (**YourSolutionName.database.windows.net, 1433**). Pozostaw pole bazy danych jako **pmaintenancedb**. Ignoruj ostrzeżenia, które są wyświetlane na ekranie.
-   * W następnym wyskakiwania okna, zobaczysz dwie opcje w okienku po lewej stronie (**Windows** i **bazy danych**). Kliknij przycisk **"Database"**, wypełnij swoje **'Username'** i **"Password"** (jest to nazwa użytkownika i hasło wprowadzone podczas najpierw wdrożono rozwiązanie i utworzone na platformie Azure Usługa SQL database). W ***wybierz poziom, które można zastosować te ustawienia***, zaznacz opcję poziomu bazy danych. Następnie kliknij przycisk **"Połącz z"**.
+   * W punkcie pop okna, Zastąp **"Server"** i **"Database"** przy użyciu własnych nazwy serwera i bazy danych, a następnie kliknij **"OK"** . Dla nazwy serwera, upewnij się, należy określić port 1433 (**YourSolutionName.database.windows.net, 1433**). Pozostaw pole bazy danych jako **pmaintenancedb**. Ignoruj ostrzeżenia, które są wyświetlane na ekranie.
+   * W następnym wyskakiwania okna, zobaczysz dwie opcje w okienku po lewej stronie (**Windows** i **bazy danych**). Kliknij przycisk **"Database"** , wypełnij swoje **'Username'** i **"Password"** (jest to nazwa użytkownika i hasło wprowadzone podczas najpierw wdrożono rozwiązanie i utworzone na platformie Azure Usługa SQL database). W ***wybierz poziom, które można zastosować te ustawienia***, zaznacz opcję poziomu bazy danych. Następnie kliknij przycisk **"Połącz z"** .
    * Kliknij drugą tabelę **PMResult** kliknięcie ![ikona Nawigacja](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) obok **"Źródło"** w obszarze **ZASTOSOWANE KROKI** po prawej stronie **"Ustawienia zapytania"** panelu i aktualizowanie nazwy serwera i bazy danych, tak jak w powyższych krokach i kliknij przycisk OK.
    * Gdy masz z przewodnikiem wróć do poprzedniej strony, zamknij okno. Zostanie wyświetlony komunikat — kliknij przycisk **Zastosuj**. Na koniec kliknij **Zapisz** przycisk, aby zapisać zmiany. Plik usługi Power BI ma teraz ustanowione połączenie z serwerem. Jeśli Twoje wizualizacje są puste, upewnij się, że wyczyść zaznaczenia na wizualizacji, aby wizualizować wszystkie dane, klikając ikonę gumki w prawym górnym rogu legendy. Użyj przycisku odświeżania, aby odzwierciedlać nowych danych na wizualizacji. Początkowo widoczne tylko danych inicjatora w wizualizacji jako usługi data factory jest zaplanowane na odświeżanie co 3 godziny. Po 3 godziny zostanie wyświetlony nowych przewidywań zostaną uwzględnione w wizualizacji, podczas odświeżania danych.
 3. (Opcjonalnie) Publikowanie pulpitu nawigacyjnego ścieżki nieaktywnej w celu [usługi Power BI online](https://www.powerbi.com/). Należy pamiętać, że ten krok wymaga konta usługi Power BI (lub konta usługi Office 365).

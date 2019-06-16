@@ -3,8 +3,8 @@ title: Omówienie konfiguracji o wysokiej dostępności przy użyciu bram Azure 
 description: Ten artykuł zawiera omówienie opcji konfiguracji o wysokiej dostępności przy użyciu bram Azure VPN Gateway.
 services: vpn-gateway
 documentationcenter: na
-author: WenJason
-manager: digimobile
+author: yushwang
+manager: rossort
 editor: ''
 tags: ''
 ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 09/24/2016
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 09/24/2016
+ms.author: yushwang
 ms.openlocfilehash: 623ed10e155012780f039bf7b9148be34143454d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60760325"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Połączenia obejmujące wiele lokalizacji i połączenia między sieciami wirtualnymi o wysokiej dostępności

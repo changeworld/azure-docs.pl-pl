@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b849e63b758dca777df2be682b28bc4e10e58330
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481131"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102840"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Samouczek: Integracja ExpenseIn za pomocą usługi Azure Active Directory
 
@@ -57,15 +57,15 @@ Aby skonfigurować integrację ExpenseIn w usłudze Azure AD, należy dodać Exp
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą ExpenseIn za pomocą użytkownika testu o nazwie **B. Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w ExpenseIn.
+Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą ExpenseIn za pomocą użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w ExpenseIn.
 
 Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą ExpenseIn, wykonaj poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie ExpenseIn](#configure-expensein)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego ExpenseIn](#create-expensein-test-user)**  mieć odpowiednikiem B. Simon ExpenseIn połączonego z usługi Azure AD reprezentacja użytkownika.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające B.Simon do użycia usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego ExpenseIn](#create-expensein-test-user)**  mieć odpowiednikiem B.Simon ExpenseIn połączonego z usługi Azure AD reprezentacja użytkownika.
 6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -101,41 +101,51 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
 ### <a name="configure-expensein"></a>Konfigurowanie ExpenseIn
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w ExpenseIn jako Administrator.
+1. Aby zautomatyzować konfigurację w ramach ExpenseIn, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
 
-2. Kliknij pozycję **administratora** górnej części strony a następnie przejdź do **logowania jednokrotnego** i kliknij przycisk **dostawcy Dodaj**.
+    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
+
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **ExpenseIn Instalatora** nastąpi bezpośrednie przekierowanie do aplikacji ExpenseIn. W tym miejscu należy podać poświadczenia administratora do logowania się do ExpenseIn. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki 3 – 5.
+
+    ![Konfiguracja instalacji](common/setup-sso.png)
+
+3. Jeśli chcesz ręcznie skonfigurować ExpenseIn, Otwórz nowe okno przeglądarki sieci web i logowania do witryny firmy ExpenseIn z uprawnieniami administratora i wykonaj następujące czynności:
+
+4. Kliknij pozycję **administratora** górnej części strony a następnie przejdź do **logowania jednokrotnego** i kliknij przycisk **dostawcy Dodaj**.
 
      ![Konfiguracja ExpenseIn](./media/expenseIn-tutorial/config01.png)
 
-3. Na **nowego dostawcę tożsamości** wyskakujące, wykonaj następujące czynności:
+5. Na **nowego dostawcę tożsamości** wyskakujące, wykonaj następujące czynności:
 
     ![Konfiguracja ExpenseIn](./media/expenseIn-tutorial/config02.png)
 
     a. W **Nazwa dostawcy** tekstu wpisz nazwę, takich jak na przykład: Azure.
 
-    b. W **docelowy adres Url** tekstu pole, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
+    b. Wybierz **tak** jako **Zezwalaj na logowanie na Intitated dostawcy**.
 
-    c. W **wystawcy** tekstu pole, Wklej wartość **usługi Azure AD identyfikator**, które zostały skopiowane z witryny Azure portal.
+    c. W **docelowy adres Url** tekstu pole, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
 
-    d. Otwórz certyfikat (Base64) w programie Notatnik, skopiuj jego zawartość i wklej ją w **certyfikatu** pola tekstowego.
+    d. W **wystawcy** tekstu pole, Wklej wartość **usługi Azure AD identyfikator**, które zostały skopiowane z witryny Azure portal.
 
-    e. Kliknij pozycję **Utwórz**.
+    e. Otwórz certyfikat (Base64) w programie Notatnik, skopiuj jego zawartość i wklej ją w **certyfikatu** pola tekstowego.
+
+    f. Kliknij pozycję **Utwórz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B. Simon.
+W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
 
 1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. W **użytkownika** właściwości, wykonaj następujące kroki:
-   1. W polu **Nazwa** wprowadź wartość `B. Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Simon B. do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do ExpenseIn.
+W tej sekcji można udostępnić B.Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do ExpenseIn.
 
 1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Na liście aplikacji wybierz **ExpenseIn**.
@@ -147,7 +157,7 @@ W tej sekcji można udostępnić Simon B. do używania usługi Azure logowanie j
 
     ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B. Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
@@ -171,7 +181,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ExpenseIn, musi 
 
     b. W polu tekstowym **Last name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
 
-    c. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak `B. Simon@contoso.com`.
+    c. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak `B.Simon@contoso.com`.
 
     d. Kliknij pozycję **Utwórz**.
 

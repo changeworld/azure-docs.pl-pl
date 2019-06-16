@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 06/11/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dae2d40650b9fdb8df2d3bdb74b2df78639dc11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766532"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058049"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Blokowanie środowiska usługi App Service
 
@@ -30,6 +30,21 @@ Istnieje kilka zależności dla ruchu przychodzącego, które ma środowisko ASE
 Wychodzące zależności środowiska ASE prawie całkowicie są definiowane przy użyciu nazw FQDN, które nie mają adresów statycznych spodem. Brak statycznych adresów oznacza, że sieciowe grupy zabezpieczeń (NSG) nie można zablokować ruch wychodzący ze środowiska ASE. Zmianie adresów wystarczająco często nie jeden skonfigurować reguły na podstawie bieżącego rozdzielczości i użycie w celu utworzenia grup zabezpieczeń sieci. 
 
 Rozwiązania do zabezpieczania wychodzące adresy zaletą korzystania z urządzenia zapory, które można kontrolować ruch wychodzący na podstawie nazw domen. Zaporę platformy Azure, można ograniczyć ruchu wychodzącego ruchu HTTP i HTTPS na podstawie nazwy FQDN miejsca docelowego.  
+
+## <a name="system-architecture"></a>Architektura systemu
+
+Wdrażania środowiska ASE z przechodzenia przez urządzenie zapory ruchu wychodzącego konieczna jest zmiana tras w podsieci środowiska ASE. Trasy działają na poziomie IP. Jeśli nie jesteś ostrożność podczas definiowania trasy, możesz wymusić TCP ruchu odpowiedzi do źródła spod innego adresu. Jest to nazywane routingiem asymetrycznym i spowoduje awarię, TCP.
+
+Musi to być trasy zdefiniowane tak, aby ruch przychodzący do środowiska ASE potrzebują pomocy eksperta ponownie czy materiał taki sam sposób ruch. Dotyczy to żądań przychodzących zarządzania i jest wartość true dla żądań przychodzących aplikacji.
+
+Ruch do i z ASE należy przestrzegać następujących konwencji
+
+* Ruch do usługi Azure SQL, magazynu i Centrum zdarzeń nie są obsługiwane przy użyciu urządzenia zapory. Musi zostać wysłany ten ruch bezpośrednio do tych usług. Jest to sposób należy to zrobić do skonfigurowania punktów końcowych usługi dla tych trzech usług. 
+* Reguły dotyczące tabeli tras muszą być zdefiniowane wysyłających ruch przychodzący zarządzania powrót po awarii, z której pochodzi.
+* Reguły dotyczące tabeli tras muszą być zdefiniowane wysyłających ruch przychodzący aplikacji powrót po awarii, z której pochodzi. 
+* Cały pozostały ruch, pozostawiając ASE mogą być wysyłane do urządzenia zapory przy użyciu reguły tabeli tras.
+
+![Środowisko ASE przy użyciu przepływu połączenia zapory usługi Azure][5]
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurowanie zapory platformy Azure za pomocą środowiska ASE 
 
@@ -68,8 +83,6 @@ Powyższych czynności umożliwi środowisku ASE działają bez problemów. Nada
 Twoje aplikacje są zależne, muszą zostać dodane do zapory usługi Azure. Tworzenie reguł aplikacji, które zezwalają na ruch HTTP/HTTPS i reguł sieciowych dla wszystkich innych. 
 
 Jeśli znasz zakresu adresów, który ruch związany z żądaniami aplikacji będą pochodzić z, można dodać, że do tabeli tras przypisany do podsieci środowiska ASE. W przypadku dużych lub nieokreślony zakres adresów można użyć urządzenia sieciowego, takich jak Application Gateway zapewniają jednego adresu do dodania do tabeli tras. Aby uzyskać więcej informacji na temat konfigurowania bramy aplikacji przy użyciu środowiska ASE wewnętrznego modułu równoważenia obciążenia, przeczytaj [integrowanie środowiska ASE wewnętrznego modułu równoważenia obciążenia przy użyciu bramy aplikacji](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
-
-![Środowisko ASE przy użyciu przepływu połączenia zapory usługi Azure][5]
 
 To zastosowanie usługi Application Gateway jest tylko jeden przykład sposobu konfiguracji systemu. W przypadku użycia tej ścieżki, czy musisz dodać trasę do tabeli tras podsieci środowiska ASE, więc ruchu odpowiedzi wysyłane do usługi Application Gateway będzie tam przejść bezpośrednio. 
 

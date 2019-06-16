@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c8833dc0db80dde96dda92c426c7840c44c1f1b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432640"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080756"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co to jest model usługi w chmurze i jak jest pakiet?
-Usługa w chmurze jest tworzona z trzech składników i definicji usługi *(csdef)*, konfiguracji usługi *(cscfg)*, a pakiet usługi *(cspkg)*. Zarówno **ServiceDefinition.csdef** i **ServiceConfig.cscfg** pliki są oparte na języku XML i opisz strukturę usługę w chmurze i sposobu jego konfiguracji; pod wspólną nazwą modelu. **ServicePackage.cspkg** plik zip, który jest generowany na podstawie **ServiceDefinition.csdef** i między innymi, zawiera wszystkie zależności wymagane na podstawie pliku binarnego. Platforma Azure tworzy usługi w chmurze z obu **ServicePackage.cspkg** i **ServiceConfig.cscfg**.
+Usługa w chmurze jest tworzona z trzech składników i definicji usługi *(csdef)* , konfiguracji usługi *(cscfg)* , a pakiet usługi *(cspkg)* . Zarówno **ServiceDefinition.csdef** i **ServiceConfig.cscfg** pliki są oparte na języku XML i opisz strukturę usługę w chmurze i sposobu jego konfiguracji; pod wspólną nazwą modelu. **ServicePackage.cspkg** plik zip, który jest generowany na podstawie **ServiceDefinition.csdef** i między innymi, zawiera wszystkie zależności wymagane na podstawie pliku binarnego. Platforma Azure tworzy usługi w chmurze z obu **ServicePackage.cspkg** i **ServiceConfig.cscfg**.
 
 Gdy usługa w chmurze zostanie uruchomiona na platformie Azure, można ponownie skonfigurować ją przy użyciu **ServiceConfig.cscfg** plik, ale nie można zmienić definicji.
 
@@ -186,7 +186,7 @@ Poniższy przykład pokazuje konfiguracji dla roli sieci web, aplikacji sieci we
   </Site>
   <Site name="MailSite" packageDir="MailSite">
     <Bindings>
-      <Binding name="mail" endpointName="HttpIn" hostheader="mail.mysite.cloudapp.net" />
+      <Binding name="mail" endpointName="HttpIn" hostHeader="mail.mysite.cloudapp.net" />
     </Bindings>
     <VirtualDirectory name="artifacts" />
     <VirtualApplication name="storageproxy">

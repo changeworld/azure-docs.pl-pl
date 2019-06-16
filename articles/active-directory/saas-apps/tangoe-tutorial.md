@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d60da0c2c421f7f783c4d59252b0df3c7be1a0b1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0448ae468e27fcdf1a0ee54ef6a3ed48ca3f6b11
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089273"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Samouczek: Integracja usługi Azure Active Directory z Tangoe polecenia Premium Mobile
 
@@ -30,7 +30,7 @@ Integrowanie Tangoe polecenia Premium Mobile z usługą Azure AD zapewnia nastę
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Tangoe polecenia Premium Mobile.
 * Użytkownikom można automatycznie zalogowany do Tangoe polecenia Premium Mobile (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -54,7 +54,7 @@ Aby skonfigurować integrację Tangoe polecenia Premium Mobile w usłudze Azure 
 
 **Aby dodać Mobile — wersja Premium polecenia Tangoe z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,27 +62,27 @@ Aby skonfigurować integrację Tangoe polecenia Premium Mobile w usłudze Azure 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Mobile — wersja Premium polecenia Tangoe**, wybierz opcję **Mobile — wersja Premium polecenia Tangoe** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tangoe polecenia Premium Mobile na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Tangoe Mobile — wersja Premium dla poleceń w oparciu o nazwie użytkownika testowego **Britta Simon**.
 Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Mobile — wersja Premium polecenia Tangoe musi zostać nawiązane.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z Tangoe polecenia Premium Mobile, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie Tangoe polecenia Premium mobilnej logowanie jednokrotne](#configure-tangoe-command-premium-mobile-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego Mobile — wersja Premium polecenia Tangoe](#create-tangoe-command-premium-mobile-test-user)**  — aby odpowiednikiem Britta Simon w Tangoe polecenia Premium Mobile, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -92,7 +92,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Mobile — wersja P
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **Mobile — wersja Premium polecenia Tangoe** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -115,7 +115,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Mobile — wersja P
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
 6. Na **Konfigurowanie Mobile — wersja Premium polecenia Tangoe** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
@@ -129,7 +129,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Mobile — wersja P
 
 ### <a name="configure-tangoe-command-premium-mobile-single-sign-on"></a>Konfigurowanie polecenia Tangoe Premium mobilnej logowanie jednokrotne
 
-Do konfigurowania logowania jednokrotnego na **Mobile — wersja Premium polecenia Tangoe** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure w celu [Tangoe Zespół pomocy technicznej Premium Mobile polecenia](https://www.tangoe.com/contact-us/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Do konfigurowania logowania jednokrotnego na **Mobile — wersja Premium polecenia Tangoe** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure w celu [Tangoe Zespół pomocy technicznej Premium Mobile polecenia](https://www.tangoe.com/contact-us/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -183,7 +183,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-tangoe-command-premium-mobile-test-user"></a>Tworzenie użytkownika testowego Tangoe polecenia Premium Mobile
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Tangoe polecenia Premium Mobile. Praca z [zespołem pomocy technicznej Mobile — wersja Premium polecenia Tangoe](https://www.tangoe.com/contact-us/) Aby dodać użytkowników na platformie Tangoe polecenia Premium Mobile. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Tangoe polecenia Premium Mobile. Praca z [zespołem pomocy technicznej Mobile — wersja Premium polecenia Tangoe](https://www.tangoe.com/contact-us/) Aby dodać użytkowników na platformie Tangoe polecenia Premium Mobile. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

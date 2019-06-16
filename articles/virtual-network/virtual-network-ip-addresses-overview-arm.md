@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236358"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
@@ -50,14 +50,14 @@ W usłudze Azure Resource Manager [publiczny adres IP](virtual-network-public-ip
 
 Publiczne adresy IP są tworzone przy użyciu adresu IPv4 lub IPv6. Publiczne adresy IPv6 można przypisywać tylko do modułów równoważenia obciążenia dostępnych z Internetu.
 
-### <a name="sku"></a>Jednostka SKU
+### <a name="sku"></a>SKU
 
 Publiczne adresy IP są tworzone przy użyciu jednej z następujących jednostek SKU:
 
 >[!IMPORTANT]
 > Dla zasobów modułu równoważenia obciążenia i publicznego adresu IP należy użyć zgodnych jednostek SKU. Nie można mieć kombinacji podstawowych i standardowych zasobów SKU. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.  W nowych projektach należy rozważyć użycie standardowych zasobów SKU.  Zapoznaj się z tematem [Usługa Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), aby uzyskać szczegółowe informacje.
 
-#### <a name="basic"></a>Podstawowy
+#### <a name="basic"></a>Podstawowa
 
 Wszystkie publiczne adresy IP utworzone przed wprowadzeniem jednostek SKU są publicznymi adresami IP opartymi na podstawowej jednostce SKU. Od momentu wprowadzenia jednostki SKU masz opcję określania, którą jednostką SKU ma być publiczny adres IP. Podstawowe adresy SKU:
 
@@ -133,10 +133,10 @@ Publiczny adres IP możesz skojarzyć z usługą [Application Gateway](../applic
 ### <a name="at-a-glance"></a>W skrócie
 W poniższej tabeli przedstawiono określone właściwości, za pomocą których publiczny adres IP można skojarzyć z zasobem najwyższego poziomu, oraz ewentualne metody alokacji (dynamicznej lub statycznej), których można użyć.
 
-| Zasób najwyższego poziomu | Skojarzenie adresu IP | Dynamiczne | Statyczny |
+| Zasób najwyższego poziomu | Skojarzenie adresu IP | Dynamiczne | Static |
 | --- | --- | --- | --- |
 | Maszyna wirtualna |Interfejs sieciowy |Tak |Tak |
-| Moduł równoważenia obciążenia dostępny z Internetu |Konfiguracja frontonu |Tak |Tak |
+| Moduł równoważenia obciążenia dostępny z Internetu |Konfiguracja frontonu |Tak |Yes |
 | Brama sieci VPN |Konfiguracja adresu IP bramy |Tak |Nie |
 | Brama aplikacji |Konfiguracja frontonu |Tak (tylko wersja 1) |Tak (tylko wersja 2) |
 
@@ -181,11 +181,11 @@ Prywatny adres IP możesz przypisać do konfiguracji **frontonu** [wewnętrznego
 ### <a name="at-a-glance"></a>W skrócie
 W poniższej tabeli przedstawiono określone właściwości, za pomocą których prywatny adres IP można skojarzyć z zasobem najwyższego poziomu, oraz ewentualne metody alokacji (dynamicznej lub statycznej), których można użyć.
 
-| Zasób najwyższego poziomu | Skojarzenie adresu IP | Dynamiczny | Statyczny |
+| Zasób najwyższego poziomu | Skojarzenie adresu IP | Dynamiczny | Static |
 | --- | --- | --- | --- |
-| Maszyna wirtualna |Interfejs sieciowy |Tak |Tak |
+| Maszyna wirtualna |Interfejs sieciowy |Yes |Tak |
 | Moduł równoważenia obciążenia |Konfiguracja frontonu |Tak |Tak |
-| Brama aplikacji |Konfiguracja frontonu |Tak |Tak |
+| Brama aplikacji |Konfiguracja frontonu |Tak |Yes |
 
 ## <a name="limits"></a>Limits
 Ograniczenia nakładane na adresowanie IP zostały wymienione w pełnym zestawieniu [ograniczeń dla sieci](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) na platformie Azure. Ograniczenia są podzielone według regionu i subskrypcji. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.

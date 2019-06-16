@@ -3,19 +3,19 @@ title: Uruchamianie usługi Kubernetes
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: To wdrożenie kontenera wykrywania języka, przy użyciu przykładu uruchomione, usługi Azure Kubernetes Service i przetestuj ją w przeglądarce sieci web.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/22/2019
-ms.author: diberry
-ms.openlocfilehash: 95ba3c905541d2168dcbbc1bb2c1bc1d05468cb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 1468b0a8a37ba1ec3455252b80139ae5db1e7af8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828702"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069198"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Wdrażanie kontenera wykrywanie języka w usłudze Azure Kubernetes Service
 

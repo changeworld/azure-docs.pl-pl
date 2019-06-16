@@ -10,10 +10,10 @@ ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615388"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debugowanie zdefiniowanych przez użytkownika kodu C#, w przypadku nieudanych zadań U-SQL
@@ -64,7 +64,7 @@ Istnieją dwa przypadki, że kod źródłowy języka C# są przechwytywane:
 
 Jeśli kod źródłowy jest importowany do rozwiązania, można użyć narzędzia debugowania programu Visual Studio (Czujka, zmienne itp.) do rozwiązania problemu:
 
-1. Naciśnij klawisz **F5**, aby uruchomić debugowanie. Kod działa, dopóki nie zostanie zatrzymana przez wyjątek.
+1. Naciśnij klawisz **F5** można rozpocząć debugowania. Kod działa, dopóki nie zostanie zatrzymana przez wyjątek.
 
 2. Otwórz plik kodu źródłowego i ustaw punkty przerwania, naciśnij klawisz **F5** do debugowania kodu krok po kroku.
 

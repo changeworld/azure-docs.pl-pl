@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
 ms.openlocfilehash: 1a0b6cf8ce272733c259283fdec9c215ac2b0fd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442566"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
@@ -216,7 +216,7 @@ Aby odbierać komunikaty z Centrum IoT Hub, urządzenia powinien uzyskać subskr
 
 Urządzenie nie odbiera komunikaty z usługi IoT Hub, aż pomyślnie przyłącza się do jej punkt końcowy specyficzny dla urządzenia, reprezentowane przez `devices/{device_id}/messages/devicebound/#` filtru tematu. Po ustaleniu subskrypcji otrzymaniem przez nie tych komunikatów z chmury do urządzeń, które zostały wysłane do niej po upływie czasu subskrypcji. Jeśli urządzenie łączy się z **CleanSession** flaga jest ustawiona na **0**, subskrypcji są utrwalane w różnych sesjach. W takim przypadku podczas następnego urządzenie łączy się z **CleanSession 0** otrzymuje żadnych oczekujących wiadomości wysyłane do niej przy braku połączenia. Jeśli urządzenie korzysta **CleanSession** flaga jest ustawiona na **1** , nie otrzyma jakiekolwiek komunikaty z usługi IoT Hub, dopóki nie subskrybuje punktu końcowego urządzenia.
 
-IoT Hub dostarczy komunikatów za pomocą **nazwy tematu** `devices/{device_id}/messages/devicebound/`, lub `devices/{device_id}/messages/devicebound/{property_bag}` przypadku właściwości komunikatu. `{property_bag}` zawiera pary klucz/wartość zakodowane w adresie url właściwości komunikatu. Tylko właściwości aplikacji i użytkownika można ustawić właściwości (takie jak **messageId** lub **correlationId**) są uwzględnione w zbiorze właściwości. System właściwości nazwy zawierają prefiks **$**, właściwości aplikacji za pomocą oryginalna nazwa właściwości żadnego prefiksu.
+IoT Hub dostarczy komunikatów za pomocą **nazwy tematu** `devices/{device_id}/messages/devicebound/`, lub `devices/{device_id}/messages/devicebound/{property_bag}` przypadku właściwości komunikatu. `{property_bag}` zawiera pary klucz/wartość zakodowane w adresie url właściwości komunikatu. Tylko właściwości aplikacji i użytkownika można ustawić właściwości (takie jak **messageId** lub **correlationId**) są uwzględnione w zbiorze właściwości. System właściwości nazwy zawierają prefiks **$** , właściwości aplikacji za pomocą oryginalna nazwa właściwości żadnego prefiksu.
 
 Gdy aplikacja urządzenia subskrybowanie tematu z **QoS 2**, usługi IoT Hub daje maksymalny poziom QoS 1 w **SUBACK** pakietów. Po utworzeniu tego Centrum IoT Hub dostarcza komunikaty do urządzenia przy użyciu QoS 1.
 

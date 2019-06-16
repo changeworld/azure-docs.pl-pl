@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
 ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61473743"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Tworzenie maszyny Wirtualnej systemu Linux przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
@@ -50,7 +50,7 @@ W następującym przewodniku krok po kroku wdrażana jest maszyna wirtualna z sy
 
 Szybkim sposobem wyboru dystrybucji jest użycie aliasów interfejsu wiersza polecenia (CLI) platformy Azure przypisanych najbardziej typowym dystrybucjom systemu operacyjnego. Poniższa tabela zawiera listę aliasów dystrybucji (stan dla interfejsu wiersza polecenia platformy Azure w wersji 0.10). Wszystkie wdrożenia, które używają polecenia `quick-create`, są domyślnie maszynami wirtualnymi na dyskach półprzewodnikowych (SSD), zapewniających szybszą aprowizację oraz wyższą wydajność dostępu do dysku. (Te aliasy stanowią niewielką część dystrybucji dostępnych na platformie Azure. Więcej obrazów można znaleźć w witrynie Azure Marketplace, [wyszukując obraz w programie PowerShell](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [w sieci Web](https://azure.microsoft.com/marketplace/virtual-machines/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) albo [przesyłając własny obraz niestandardowy](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)).
 
-| Alias | Wydawca | Oferta | SKU | Wersja |
+| Alias | Wydawca | Oferta | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
 | CentOS |OpenLogic |CentOS |7.2 |najnowsza |
 | CoreOS |CoreOS |CoreOS |Stable |najnowsza |
@@ -67,7 +67,7 @@ W poprzednim przykładzie polecenie `quick-create` wywoływało tylko flagę `-M
 * Nazwa maszyny wirtualnej
 * lokalizacja (dobre wartości domyślne to `westus` lub `westeurope`)
 * linux (wskazanie platformie Azure pożądanego systemu operacyjnego)
-* nazwa użytkownika
+* username
 
 W poniższym przykładzie określono wszystkie wartości, dzięki czemu żadne dalsze monity nie są wymagane. Plik klucza publicznego w formacie ssh-rsa `~/.ssh/id_rsa.pub` działa prawidłowo.
 

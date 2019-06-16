@@ -16,10 +16,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d41ad2518f885bbaa02dda3b01f0c02e9fc1d217
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074713"
 ---
 # <a name="web-app-that-signs-in-users---move-to-production"></a>Aplikacja sieci Web, który loguje się użytkownicy — przenoszenie do środowiska produkcyjnego
@@ -35,7 +35,7 @@ Teraz gdy wiesz, jak można uzyskać tokenu służącego do wywoływania interfe
 Jeden raz w sieci web logowania użytkownikom aplikacji, może wywołać interfejsy API sieci web w imieniu zalogowanych użytkowników. Wywołania interfejsów API sieci web z aplikacji sieci web jest obiektem następujący scenariusz:
 
 > [!div class="nextstepaction"]
-> [Aplikacja internetowa wywołuje interfejsy API sieci web](scenario-web-app-call-api-overview.md)
+> [Aplikacja internetowa wywołująca internetowe interfejsy API](scenario-web-app-call-api-overview.md)
 
 ### <a name="deep-dive---web-app-tutorial"></a>Szczegółowe informacje — samouczek aplikacji sieci web
 

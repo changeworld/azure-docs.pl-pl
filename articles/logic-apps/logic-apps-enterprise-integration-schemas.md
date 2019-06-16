@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 02/06/2019
 ms.openlocfilehash: 3cca995b353b88cc481cbda68df4211a724f7f09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60846373"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Walidacja danych XML przy użyciu schematów w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
@@ -118,7 +118,7 @@ Aby dodać większej schematów, możesz przekazać schematu do kontenera obiekt
 
 1. Wróć do witryny Azure portal gdzie **schemat Dodaj** okienko jest otwarte. 
    Wprowadź nazwę zestawu. 
-   Wybierz **duży plik (więcej niż 2 MB)**. 
+   Wybierz **duży plik (więcej niż 2 MB)** . 
 
    **Identyfikator URI zawartości** pojawi się pole, a nie **schematu** pole.
 

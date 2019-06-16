@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 02/25/2019
 ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61416530"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>Obsługa klientów niższych poziomów bazy danych SQL — i punktu końcowego adresu IP zmienia się w przypadku inspekcji tabel
@@ -60,11 +60,11 @@ Nowy punkt końcowy IP bazy danych zależy od regionu bazy danych:
 | Australia Południowo-Wschodnia |191.239.184.223, 40.127.85.81, 191.239.161.83, 40.127.81.130 |
 | Brazylia Południowa |104.41.44.161, 104.41.62.230, 23.97.99.54, 104.41.59.191 |
 | Środkowe stany USA |104.43.255.70, 40.83.14.7, 23.99.128.244, 40.83.15.176 |
-| Central US EUAP |52.180.178.16, 52.180.176.190 |
+| Środkowe stany USA — EUAP |52.180.178.16, 52.180.176.190 |
 | Azja Wschodnia |23.99.125.133, 13.75.40.42, 23.97.71.138, 13.94.43.245 |
 | Wschodnie stany USA 2 |104.209.141.31, 104.208.238.177, 191.237.131.51, 104.208.235.50 |
 | Wschodnie stany USA |23.96.107.223, 104.41.150.122, 23.96.38.170, 104.41.146.44 |
-| Wschodnie stany USA 2 — EUAP |52.225.190.86, 52.225.191.187 |
+| Wschodnie stany USA — EUAP |52.225.190.86, 52.225.191.187 |
 | Indie Środkowe |104.211.98.219, 104.211.103.71 |
 | Indie Południowe |104.211.227.102, 104.211.225.157 |
 | Indie Zachodnie |104.211.161.152, 104.211.162.21 |

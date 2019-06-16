@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62118691"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Możliwości renderowania w usłudze Azure Batch
@@ -30,7 +30,7 @@ Brak obrazu Windows 2016 i obrazu systemu CentOS.  W [portalu Azure Marketplace]
 
 Aby uzyskać przykładową konfigurację puli, zobacz [renderowania wiersza polecenia platformy Azure w ramach samouczka](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Witryna Azure portal i programu Batch Explorer zapewnia narzędzia graficznego interfejsu użytkownika do renderowania obrazu maszyny Wirtualnej należy wybrać podczas tworzenia puli.  Jeśli za pomocą interfejsu API usługi Batch, a następnie określ następujące wartości właściwości dla [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) podczas tworzenia puli:
 
-| Wydawca | Oferta | SKU | Wersja |
+| Wydawca | Oferta | SKU | Version |
 |---------|---------|---------|--------|
 | partia | rendering-centos73 | Renderowanie | najnowsza |
 | partia | rendering-windows2016 | Renderowanie | najnowsza |

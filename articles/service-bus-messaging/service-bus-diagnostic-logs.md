@@ -16,17 +16,17 @@ ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60714141"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Dzienniki diagnostyczne usługi Service Bus
 
 Możesz wyświetlić dwa typy dzienników dla usługi Azure Service Bus:
-* **[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md)**. Te dzienniki zawierają informacje dotyczące operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
-* **[Dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md)**. Można skonfigurować dzienniki diagnostyczne na potrzeby bardziej rozbudowane informacje o wszystko, co się stanie, w ramach danego zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
+* **[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md)** . Te dzienniki zawierają informacje dotyczące operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
+* **[Dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md)** . Można skonfigurować dzienniki diagnostyczne na potrzeby bardziej rozbudowane informacje o wszystko, co się stanie, w ramach danego zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
 
 ## <a name="turn-on-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 
@@ -73,7 +73,7 @@ SubscriptionId | Identyfikator subskrypcji
 EventTimeString | Czas operacji
 EventProperties | Właściwości operacji
 Stan | Stan operacji
-Obiekt wywołujący | Obiekt wywołujący operacji (klient usługi Azure portal lub zarządzania)
+Caller | Obiekt wywołujący operacji (klient usługi Azure portal lub zarządzania)
 category | OperationalLogs
 
 Poniżej przedstawiono przykładowy dziennik operacyjny ciągu JSON:

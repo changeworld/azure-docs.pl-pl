@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: f8c95b2981933764bc8d6dcf8bf57e9ab40ef53b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4f97f6925c482cb282324dcc1c97bbfe2a701643
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752063"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074204"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować Obsługa sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. Sieć wirtualna jest prywatna sieć w chmurze. Po skonfigurowaniu usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej nie jest adresowany publicznie i może zostać oceniony jedynie z maszyn wirtualnych i aplikacji w ramach sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej dla warstwy premium usługi Azure Cache dla wystąpienia usługi Redis.
@@ -131,7 +131,7 @@ Ma osiem wymagań zakresu portów przychodzących. Przychodzące żądania w tyc
 
 | Porty | Direction | Protokół transportowy | Przeznaczenie | Lokalny adres IP | Zdalny adres IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Przychodzący |TCP |Komunikacja klienta z pamięci podręcznej Redis, równoważenia obciążenia platformy Azure | (Redis podsieci) | (Redis podsieć), sieć wirtualną, usługa Azure Load Balancer |
+| 6379, 6380 |Przychodzący |TCP |Komunikacja klienta z pamięci podręcznej Redis, równoważenia obciążenia platformy Azure | (Redis podsieci) | (Redis podsieć), sieć wirtualną, usługa Azure Load Balancer <sup>2</sup> |
 | 8443 |Przychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
 | 8500 |Przychodzący |TCP/UDP |Równoważenie obciążenia Azure | (Redis podsieci) |Azure Load Balancer |
 | 10221-10231 |Przychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieć), usługa Azure Load Balancer |
@@ -139,6 +139,8 @@ Ma osiem wymagań zakresu portów przychodzących. Przychodzące żądania w tyc
 | 15000-15999 |Przychodzący |TCP |Komunikacja klienta z klastrów usługi redis cache, Azure obciążenia równoważenia | (Redis podsieci) |Sieć wirtualna, usługa Azure Load Balancer |
 | 16001 |Przychodzący |TCP/UDP |Równoważenie obciążenia Azure | (Redis podsieci) |Azure Load Balancer |
 | 20226 |Przychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
+
+<sup>2</sup> tagu usługi można użyć "AzureLoadBalancer" (Resource Manager) (lub "AZURE_LOADBALANCER" Model Klasyczny) na potrzeby tworzenia reguły sieciowej grupy zabezpieczeń.
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>Dodatkowe wymagania łączności sieci VNET
 

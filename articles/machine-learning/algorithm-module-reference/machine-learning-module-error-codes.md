@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 09a2b616e2bba93be86241c64d37daec7d6dea3b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65029763"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Wyjątki i kody błędów dla algorytmów i odwołania do modułu
@@ -1192,7 +1192,7 @@ Zobacz następujące artykuły, aby uzyskać pomoc przy użyciu zapytań program
   
  W przypadku wiadomości SQL generowane zgłosił wyjątek modułu podjąć działania, w oparciu o zgłoszonego błędu. Komunikaty o błędach obejmują czasami dokładne wskazówki dotyczące prawdopodobnie błąd:
 + *Brak kolumny lub Brak bazy danych*, wskazujący, że może być wpisana nazwa kolumny, która jest nieprawidłowy. Jeśli masz pewność, że nazwa kolumny jest poprawna, spróbuj użyć nawiasów ani znaków cudzysłowu należy ująć identyfikator kolumny.
-+ *Błąd logiczny SQL niemal \<SQL — słowo kluczowe\>*, wskazujący, że może być błąd składniowy przed określonym słowem kluczowym
++ *Błąd logiczny SQL niemal \<SQL — słowo kluczowe\>* , wskazujący, że może być błąd składniowy przed określonym słowem kluczowym
 
   
 |Komunikaty o wyjątkach|  
@@ -1879,7 +1879,7 @@ Ogólnie rzecz biorąc przekształcenie na podstawie liczby będzie stosowany ty
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Określony plik nie odnaleziono int pliku zip.|  
-|Nie znaleziono określonego pliku. Znaleziono następujące pliki: {0}|  
+|Nie można odnaleźć określonego pliku. Znaleziono następujące pliki: {0}|  
   
 
 ## <a name="error-0134"></a>Błąd 0134

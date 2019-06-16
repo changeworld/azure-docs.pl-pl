@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ae0b8bb6dec4b129a4965426789819e119a25c53
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 82097b075ab86c4de5ab45e3110c9bc192ac7edb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991502"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Meta Networks Connector
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację aplikacji Meta Networks Connector z usługą Azur
 
 **Aby dodać aplikację Meta Networks Connector z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -133,7 +133,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
     | lastname | user.surname | |
     | emailaddress| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | telefon | user.telephonenumber | |
+    | phone | user.telephonenumber | |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -174,7 +174,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
     > [!NOTE]
     > Aplikacja Meta Networks Connector to bezpieczny system. Dlatego przed uzyskaniem dostępu do ich portalu należy uzyskać swój publiczny adres IP, które są dodawane do listy dozwolonych na bok. Aby uzyskać swój publiczny adres IP, skorzystaj z [tego](https://whatismyipaddress.com/) linku. Wyślij swój adres IP, aby [zespołem pomocy technicznej klienta łącznika sieci Meta](mailto:support@metanetworks.com) można pobrać adresu IP, dodane do listy dozwolonych.
     
-2. Przejdź do obszaru **Administrator**, a następnie wybierz pozycję **Settings (Ustawienia)**.
+2. Przejdź do obszaru **Administrator**, a następnie wybierz pozycję **Settings (Ustawienia)** .
     
     ![Konfigurowanie logowania jednokrotnego](./media/metanetworksconnector-tutorial/configure3.png)
     
@@ -186,15 +186,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
     
     ![Konfigurowanie logowania jednokrotnego](./media/metanetworksconnector-tutorial/configure4.png)
     
-5. Wykonaj następujące kroki opisane na stronie **DETAILS (SZCZEGÓŁY)**:
+5. Wykonaj następujące kroki opisane na stronie **DETAILS (SZCZEGÓŁY)** :
     
     ![Konfigurowanie logowania jednokrotnego](./media/metanetworksconnector-tutorial/configure2.png)
     
-    a. Skopiuj wartość pola **SSO URL (Adres URL logowania jednokrotnego)** i wklej ją w polu tekstowym **Sign-In URL (Adres URL logowania)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)**.
+    a. Skopiuj wartość pola **SSO URL (Adres URL logowania jednokrotnego)** i wklej ją w polu tekstowym **Sign-In URL (Adres URL logowania)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)** .
     
-    b. Skopiuj wartość pola **Recipient URL (Adres URL adresata)** i wklej ją w polu tekstowym **Reply URL (Adres URL odpowiedzi)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)**.
+    b. Skopiuj wartość pola **Recipient URL (Adres URL adresata)** i wklej ją w polu tekstowym **Reply URL (Adres URL odpowiedzi)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)** .
     
-    c. Skopiuj wartość pola **Audience URI (SP Entity ID) (Identyfikator URI — identyfikator jednostki dostawcy usług)** i wklej ją w polu tekstowym **Identifier (Entity ID) (Identyfikator — identyfikator jednostki)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)**.
+    c. Skopiuj wartość pola **Audience URI (SP Entity ID) (Identyfikator URI — identyfikator jednostki dostawcy usług)** i wklej ją w polu tekstowym **Identifier (Entity ID) (Identyfikator — identyfikator jednostki)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)** .
     
     d. Włączanie protokołu SAML
     
@@ -206,7 +206,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
 
     b. W polu **Identity Provider Issuer (Wystawca dostawcy tożsamości)** wklej wartość pola **Identyfikator usługi Azure AD** skopiowaną z witryny Azure Portal.
 
-    c. Otwórz w Notatniku certyfikat pobrany z witryny Azure Portal, a następnie wklej go w polu tekstowym **X.509 Certificate (Certyfikat X.509)**.
+    c. Otwórz w Notatniku certyfikat pobrany z witryny Azure Portal, a następnie wklej go w polu tekstowym **X.509 Certificate (Certyfikat X.509)** .
 
     d. Włącz **aprowizację typu just in time**.
 
@@ -274,7 +274,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Meta Networks Connector na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Meta Networks Connector, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

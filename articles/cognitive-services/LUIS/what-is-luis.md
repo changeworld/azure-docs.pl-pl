@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/23/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062174"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co to jest usługa Language Understanding (LUIS)?
 
@@ -33,7 +33,7 @@ Po opublikowaniu aplikacji usługi LUIS aplikacja kliencka wysyła wypowiedzi (t
 
 ![Ilustracje przedstawiające współdziałanie usługi LUIS z czatbotem w celu przewidywania tekstu użytkownika z użyciem przetwarzania języka naturalnego](./media/luis-overview/luis-overview-process-2.png "Ilustracje przedstawiające współdziałanie usługi LUIS z czatbotem w celu przewidywania tekstu użytkownika z użyciem przetwarzania języka naturalnego")
 
-|Krok|action|
+|Krok|Akcja|
 |:--|:--|
 |1|Aplikacja kliencka wysyła _wypowiedź_ użytkownika (tekst wypowiadany własnymi słowami): „I want to call my HR rep” („Chcę zadzwonić do mojego przedstawiciela działu kadr”) do punktu końcowego usługi LUIS jako żądanie HTTP.|
 |2|Usługa LUIS stosuje model wyuczony do tekstu w języku naturalnym, aby umożliwić inteligentne zrozumienie danych wejściowych użytkownika. Usługa LUIS zwraca odpowiedź w formacie JSON z najwyżej ocenioną intencją: „HRContact”. Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapytania oraz najwyżej ocenioną intencję. Może również zawierać wyodrębnione dane, takie jak jednostka Typ kontaktu.|
@@ -55,7 +55,7 @@ Aplikacja usługi LUIS zawiera model języka naturalnego specyficzny dla domeny.
 ## <a name="build-the-luis-model"></a>Tworzenie modelu w usłudze LUIS
 Utwórz model za pomocą interfejsów API [tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087) lub portalu LUIS.
 
-Tworzenie modelu w usłudze LUIS rozpoczyna się od kategorii intencji użytkownika o nazwie **[Intencje](luis-concept-intent.md)**. Każda intencja musi zawierać przykłady **[wypowiedzi](luis-concept-utterance.md)** użytkownika. Każda wypowiedź może zawierać szereg danych do wyodrębnienia, określonych za pomocą **[jednostek](luis-concept-entity-types.md)**. 
+Tworzenie modelu w usłudze LUIS rozpoczyna się od kategorii intencji użytkownika o nazwie **[Intencje](luis-concept-intent.md)** . Każda intencja musi zawierać przykłady **[wypowiedzi](luis-concept-utterance.md)** użytkownika. Każda wypowiedź może zawierać szereg danych do wyodrębnienia, określonych za pomocą **[jednostek](luis-concept-entity-types.md)** . 
 
 |Przykładowa wypowiedź użytkownika|Intencja|Jednostki|
 |-----------|-----------|-----------|
@@ -101,7 +101,7 @@ Usługa LUIS zapewnia narzędzia, możliwość przechowywania wersji i współpr
 Usługa LUIS, tak jak interfejs API REST, może być używana z dowolnymi produktami, usługami lub strukturami wysyłającymi żądania HTTP. Poniższa lista zawiera główne produkty i usługi firmy Microsoft, których można używać z usługą LUIS.
 
 Najważniejszą aplikacją kliencką dla usługi LUIS jest:
-* [Bot usługi Web Apps](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0) szybko tworzy czatbota obsługującego usługę LUIS, który rozmawia z użytkownikiem za pośrednictwem tekstowych danych wejściowych. Wykorzystuje strukturę [Bot Framework][bot-framework] w wersji [3.x](https://github.com/Microsoft/BotBuilder) lub [4.x](https://github.com/Microsoft/botbuilder-dotnet), która obsługuje pełne środowisko użytkowania bota.
+* [Bot usługi Web Apps](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) szybko tworzy czatbota obsługującego usługę LUIS, który rozmawia z użytkownikiem za pośrednictwem tekstowych danych wejściowych. Używa [platformy Bot Framework] [ bot-framework] wersji [4.x](https://github.com/Microsoft/botbuilder-dotnet) bot pełne środowisko pracy.
 
 Narzędzia do szybkiego i łatwego korzystania z usługi LUIS z botem:
 * [Interfejs wiersza polecenia usługi LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) pakietu NPM oferuje do tworzenia i prognozowania z jako narzędzie wiersza polecenia autonomicznej lub importu. 

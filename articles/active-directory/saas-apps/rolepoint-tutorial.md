@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d2f854c869ead8016a5437a4e40339d9455c9ad7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0b6fd17d2f8577532778733866260f43e9ac7685
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092731"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RolePoint
 
@@ -94,7 +94,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z RolePoint, wykonaj 
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
 
 3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 

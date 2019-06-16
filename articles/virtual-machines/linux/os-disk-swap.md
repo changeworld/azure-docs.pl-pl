@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: b17647a09c88491e2486046b1ca99ee277f0cc28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61473896"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Zmień dysk systemu operacyjnego używany przez Maszynę wirtualną platformy Azure przy użyciu interfejsu wiersza polecenia

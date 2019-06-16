@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 3/14/2019
 ms.author: absha
 ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831728"
 ---
 # <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>Tworzenie certyfikatów umieszczania na białej liście zaplecza za pomocą usługi Azure Application Gateway
 
-Aby wykonać kompleksowej usługi SSL, usługa application gateway wymaga wystąpieniami zaplecza, do listy dozwolonych, przekazując uwierzytelniania/zaufanych certyfikatów głównych. W przypadku jednostki SKU w wersji 1 i wymagane są certyfikaty uwierzytelniania, natomiast w przypadku jednostki SKU w wersji 2 i zaufane certyfikaty główne są wymagane do listy dozwolonych certyfikatów
+Aby wykonać kompleksowej usługi SSL, usługa application gateway wymaga wystąpieniami zaplecza, do listy dozwolonych, przekazując uwierzytelniania/zaufanych certyfikatów głównych. W przypadku jednostek SKU w wersji 1 do umieszczenia certyfikatów na liście dozwolonych wymagane są certyfikaty uwierzytelniania, natomiast w przypadku jednostek SKU w wersji 2 wymagane są zaufane certyfikaty główne
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -47,7 +47,7 @@ Od certyfikatu protokołu SSL należy wyeksportować plik cer klucza publicznego
 
    ![Nie eksportuj klucza prywatnego](./media/certificates-for-backend-authentication/notprivatekey.png)
 
-4. Na stronie **Format pliku eksportu** wybierz pozycję **Certyfikat X.509 szyfrowany algorytmem Base-64 (.CER)**, a następnie kliknij pozycję **Dalej**.
+4. Na stronie **Format pliku eksportu** wybierz pozycję **Certyfikat X.509 szyfrowany algorytmem Base-64 (.CER)** , a następnie kliknij pozycję **Dalej**.
 
    ![Kodowanie Base-64](./media/certificates-for-backend-authentication/base64.png)
 
@@ -65,7 +65,7 @@ Od certyfikatu protokołu SSL należy wyeksportować plik cer klucza publicznego
 
    Wyeksportowany certyfikat wygląda podobnie do poniższego:
 
-   ![Wyeksportowano](./media/certificates-for-backend-authentication/exported.png)
+   ![Wyeksportowane](./media/certificates-for-backend-authentication/exported.png)
 
 8. Jeśli otworzysz wyeksportowany certyfikat za pomocą Notatnika, zostanie wyświetlony podobny do tego przykładu. Sekcja w kolorze niebieskim zawiera informacje, które zostanie przekazany do usługi application gateway. Jeśli Otwórz swój certyfikat przy użyciu programu Notepad, a nie wygląda podobnie do poniższego, zwykle oznacza, że nie wyeksportowano go przy użyciu Base-64 certyfikat x.509 szyfrowany algorytmem (. Format CER). Ponadto jeśli chcesz użyć w innym edytorze tekstu, Dowiedz się, że niektóre edytory może prowadzić do niezamierzonych formatowania w tle. To jest utworzenie problemy podczas przekazywania tekst z tego certyfikatu do platformy Azure.
 

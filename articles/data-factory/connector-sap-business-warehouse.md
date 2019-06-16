@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60309117"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Bieżąca wersja](connector-sap-business-warehouse.md)
 
@@ -61,7 +61,7 @@ Następujące właściwości są obsługiwane przez oprogramowanie SAP Business 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **SapBw** | Yes |
-| server | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | Yes |
+| serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | Yes |
 | systemNumber | Numer systemu systemu SAP BW.<br/>Dozwolone wartości: liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes |
 | clientId | Identyfikator klienta klienta w SAP W systemie.<br/>Dozwolone wartości: liczba dziesiętna trzy cyfry, reprezentowane jako ciąg. | Yes |
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |

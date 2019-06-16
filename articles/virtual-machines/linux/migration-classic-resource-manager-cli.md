@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60543161"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrację zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure
@@ -146,7 +146,7 @@ Dane wyjściowe będą wyglądać mniej więcej tak:
 
 ![Zrzut ekranu przedstawiający wiersza polecenia o nazwie całej sieci wirtualnej wyróżnione.](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
-W powyższym przykładzie **virtualNetworkName** jest cała nazwa **"Classicubuntu16 classicubuntu16 grupy"**.
+W powyższym przykładzie **virtualNetworkName** jest cała nazwa **"Classicubuntu16 classicubuntu16 grupy"** .
 
 Najpierw zweryfikuj, jeśli migrujesz sieć wirtualną przy użyciu następującego polecenia:
 

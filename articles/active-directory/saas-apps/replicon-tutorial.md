@@ -13,123 +13,95 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be006cd49041a33c13b5cc5c459a1d54c46c3b47
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b27615b0c76b5c23bbc79788431b0e909b8bf22a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092765"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Replicon
+# <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Samouczek: Integracja Replicon za pomocą usługi Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować Replicon w usłudze Azure Active Directory (Azure AD).
-Integrowanie Replicon z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować Replicon w usłudze Azure Active Directory (Azure AD). W ramach Replicon integracji z usługą Azure AD, możesz wykonywać następujące czynności:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Replicon.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Replicon (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Kontrolowanie w usłudze Azure AD, kto ma dostęp do Replicon.
+* Umożliwianie użytkownikom można automatycznie zalogowany do Replicon za pomocą kont usługi Azure AD.
+* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Replicon, potrzebne są następujące elementy:
+Aby rozpocząć pracę, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Replicon logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Replicon logowania jednokrotnego (SSO) włączone subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
-
-* Obsługuje replicon **SP** jednokrotne logowanie inicjowane przez
+W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje replicon **SP** jednokrotne logowanie inicjowane przez.
 
 ## <a name="adding-replicon-from-the-gallery"></a>Dodawanie Replicon z galerii
 
 Aby skonfigurować integrację Replicon w usłudze Azure AD, należy dodać Replicon z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Replicon z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
+1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz **nową aplikację**.
+1. W **Dodaj z galerii** sekcji, wpisz **Replicon** w polu wyszukiwania.
+1. Wybierz **Replicon** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą Replicon za pomocą użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Replicon.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą Replicon, wykonaj poniższe bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego Replicon](#configure-replicon-sso)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć B.Simon do użycia usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego Replicon](#create-replicon-test-user)**  — aby odpowiednikiem B.Simon w Replicon połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-sso)**  — Aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
 
-4. W polu wyszukiwania wpisz **Replicon**, wybierz opcję **Replicon** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W [witryny Azure portal](https://portal.azure.com/)na **Replicon** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
+1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
+1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
 
-    ![Replicon na liście wyników](common/search-new-app.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+1. Na **podstawową konfigurację protokołu SAML** strony, wprowadź wartości dla następujących pól:
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Replicon w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Replicon musi zostać ustanowione.
+    1. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Replicon, należy wykonać poniższe bloki konstrukcyjne:
+    1. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://global.replicon.com/!/saml2/<client name>`
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie Replicon logowania jednokrotnego](#configure-replicon-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego Replicon](#create-replicon-test-user)**  — aby odpowiednikiem Britta Simon w Replicon połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Replicon, wykonaj następujące czynności:
-
-1. W [witryny Azure portal](https://portal.azure.com/)na **Replicon** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
-
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
-
-    ![Replicon domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier-reply.png)
-
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
-
-    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://global.replicon.com/<companyname>`
-
-    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://global.replicon.com/!/saml2/<companyname>/sso/post`
+    1. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://global.replicon.com/!/saml2/<client name>/sso/post`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Replicon](https://www.replicon.com/customerzone/contact-support) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. Kliknij ikonę edycji/pióra **certyfikat podpisywania SAML** edytować ustawienia.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Algorytm podpisywania](common/signing-algorithm.png)
 
-6. Na **Konfigurowanie Replicon** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+    1. Wybierz **potwierdzenie SAML logowania** jako **opcja podpisywania**.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+    1. Wybierz **algorytmu SHA-256** jako **algorytm podpisywania**.
 
-    a. Adres URL logowania
+1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **XML metadanych Federacji** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
 
-    b. Identyfikator usługi Azure AD
+   ![Link pobierania certyfikatu](common/metadataxml.png)
 
-    c. Adres URL wylogowywania
-
-### <a name="configure-replicon-single-sign-on"></a>Konfigurowanie Replicon logowania jednokrotnego
+### <a name="configure-replicon-sso"></a>Konfigurowanie Replicon logowania jednokrotnego
 
 1. W oknie przeglądarki innej witryny sieci web należy zalogować się do witryny firmy Replicon jako administrator.
 
@@ -145,61 +117,43 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Replicon, wykonaj n
 
    c. Kliknij przycisk **+** rozszerzania **metaDataConfiguration** sekcji.
 
-   d. Kliknij przycisk **wybierz plik**, aby wybrać plik XML metadanych dostawcy tożsamości, a następnie kliknij przycisk **przesyłania**.
+   d. Wybierz **SHA256** dla xmlSignatureAlgorithm
+
+   e. Kliknij przycisk **wybierz plik**, aby wybrać plik XML metadanych dostawcy tożsamości, a następnie kliknij przycisk **przesyłania**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. W **użytkownika** właściwości, wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Replicon.
+W tej sekcji można udostępnić B.Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Replicon.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Replicon**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście aplikacji wybierz **Replicon**.
+1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **Replicon**.
+1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Link Replicon na liście aplikacji](common/all-applications.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ### <a name="create-replicon-test-user"></a>Tworzenie użytkownika testowego Replicon
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Replicon.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie B.Simon w Replicon.
 
 **Jeśli potrzebujesz utworzyć użytkownika ręcznie, wykonaj następujące czynności:**
 
@@ -217,24 +171,27 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Replic
 
     ![Profil użytkownika](./media/replicon-tutorial/ic777808.png "profilu użytkownika")
 
-    a. W **nazwa logowania** polu tekstowym wpisz usługi Azure AD adres e-mail użytkownika usługi Azure AD, w którym chcesz udostępnić, takich jak `BrittaSimon\@contoso.com`.
+    a. W **nazwa logowania** polu tekstowym wpisz usługi Azure AD adres e-mail użytkownika usługi Azure AD, w którym chcesz udostępnić, takich jak `B.Simon@contoso.com`.
+
+    > [!NOTE]
+    > Nazwa logowania musi być zgodna adres e-mail użytkownika w usłudze Azure AD
 
     b. Jako **typ uwierzytelniania**, wybierz opcję **logowania jednokrotnego**.
 
-    c. W **działu** polu tekstowym wpisz dział użytkownika.
+    c. Ustaw identyfikator uwierzytelniania taką samą wartość jak nazwa logowania (Azure AD adres e-mail użytkownika)
 
-    d. Jako **typu pracownika**, wybierz opcję **administratora**.
+    d. W **działu** polu tekstowym wpisz dział użytkownika.
 
-    e. Kliknij przycisk **Zapisz profil użytkownika**.
+    e. Jako **typu pracownika**, wybierz opcję **administratora**.
+
+    f. Kliknij przycisk **Zapisz profil użytkownika**.
 
 > [!NOTE]
 > Można użyć jakichkolwiek innych Replicon użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez Replicon można uaktywniać ich konta usługi Azure AD.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-sso"></a>Test SSO
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka Replicon w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Replicon, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Replicon w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Replicon, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

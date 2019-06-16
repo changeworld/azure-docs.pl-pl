@@ -15,15 +15,15 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
 ms.openlocfilehash: 9785a09a3ac3e119507b4ac28075d887c7edc619
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60774067"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakcje i blokady tryby w elementach Reliable Collections usługi Azure Service Fabric
 
-## <a name="transaction"></a>Transakcja
+## <a name="transaction"></a>Transakcji
 Transakcja jest sekwencją operacje wykonywane jako pojedyncza jednostka logiczna pracy.
 Transakcji musi mieć następujące właściwości ACID. (zobacz: https://technet.microsoft.com/library/ms190612)
 * **Niepodzielność**: Transakcji musi być pojedynczej Atomowej jednostki pracy. Innymi słowy wszystkie zmiany danych są wykonywane albo żadna z nich jest wykonywane.
@@ -75,9 +75,9 @@ Blokada aktualizacji to asymetryczny blokady używany w celu zapobiegania wspól
 
 Macierz zgodności blokady na ten temat można znaleźć w poniższej tabeli:
 
-| Żądanie \ przyznane | Brak | Udostępniona | Aktualizacja | Wyłączne |
+| Żądanie \ przyznane | Brak | Udostępnione | Aktualizacja | Wyłączne |
 | --- |:--- |:--- |:--- |:--- |
-| Udostępniona |Nie konfliktów |Nie konfliktów |Konflikt |Konflikt |
+| Udostępnione |Nie konfliktów |Nie konfliktów |Konflikt |Konflikt |
 | Aktualizacja |Nie konfliktów |Nie konfliktów |Konflikt |Konflikt |
 | Wyłączne |Nie konfliktów |Konflikt |Konflikt |Konflikt |
 

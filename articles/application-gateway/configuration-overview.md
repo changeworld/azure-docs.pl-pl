@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: c5cc39c2f2a7f2a79b8d6bc2bd95506ee5532a84
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431305"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073980"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -74,6 +74,9 @@ Dla obiektu SKU v1 trasy zdefiniowane przez użytkownika (Udr) są obsługiwane 
 Dla jednostki SKU w wersji 2 i tras zdefiniowanych przez użytkownika nie są obsługiwane w podsieci bramy aplikacji. Aby uzyskać więcej informacji, zobacz [jednostki SKU w wersji 2 usługi Azure Application Gateway](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
+> Tras zdefiniowanych przez użytkownika nie są obsługiwane dla jednostki SKU w wersji 2.  Jeśli potrzebujesz tras zdefiniowanych przez użytkownika, można nadal wdrażać jednostki SKU v1.
+
+> [!NOTE]
 > Przy użyciu tras zdefiniowanych przez użytkownika w podsieci bramy aplikacji powoduje, że stan kondycji w [widoku kondycji zaplecza](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) aby pojawiało się jako "Nieznane". Powoduje generowanie dzienniki bramy aplikacji i metryki, aby zakończyć się niepowodzeniem. Zaleca się, że nie używasz tras zdefiniowanych przez użytkownika w podsieci bramy aplikacji tak, aby wyświetlić kondycja zaplecza, dzienniki i metryki.
 
 ## <a name="front-end-ip"></a>Adres IP frontonu
@@ -84,7 +87,7 @@ Publiczny adres IP nie jest wymagana dla wewnętrznego punktu końcowego, który
 
 Tylko 1 publicznego adresu IP lub 1 prywatny adres IP jest obsługiwany. Podczas tworzenia bramy aplikacji możesz wybrać adres IP frontonu.
 
-- Dla publicznego adresu IP można utworzyć nowego publicznego adresu IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji co usługa application gateway. Jeśli tworzysz nowy publiczny adres IP, należy wybrać typ adresu IP (statyczne lub dynamiczne) nie można zmienić później. Aby uzyskać więcej informacji, zobacz [statycznego i dynamicznego publicznego adresu IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
+- Dla publicznego adresu IP można utworzyć nowego publicznego adresu IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji co usługa application gateway. Jeśli tworzysz nowy publiczny adres IP, należy wybrać typ adresu IP (statyczne lub dynamiczne) nie można zmienić później. Aby uzyskać więcej informacji, zobacz [statycznego i dynamicznego publicznego adresu IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
 - Aby uzyskać prywatny adres IP można określić prywatny adres IP z podsieci, w którym zostanie utworzona brama aplikacji. Jeśli nie zostanie określony, dowolnego adresu IP jest wybrany automatycznie z podsieci. Aby uzyskać więcej informacji, zobacz [Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
@@ -124,7 +127,7 @@ Wybierz protokołu HTTP lub HTTPS:
 
 - Jeśli wybierzesz HTTP, ruch między klientem a bramy application gateway jest niezaszyfrowany.
 
-- Wybierz protokół HTTPS, jeśli chcesz [kończenia żądań SSL](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl) lub [end-to-end szyfrowania SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ruch między klientem a bramy application gateway jest szyfrowany. I kończy się połączenia SSL na bramie aplikacji. Jeśli chcesz, aby end-to-end szyfrowania SSL, należy wybrać protokół HTTPS i skonfigurować **HTTP zaplecza** ustawienie. Daje to gwarancję, że ruch jest szyfrowany ponownie podczas przesyłania z bramy aplikacji z zapleczem.
+- Wybierz protokół HTTPS, jeśli chcesz [kończenia żądań SSL](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) lub [end-to-end szyfrowania SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ruch między klientem a bramy application gateway jest szyfrowany. I kończy się połączenia SSL na bramie aplikacji. Jeśli chcesz, aby end-to-end szyfrowania SSL, należy wybrać protokół HTTPS i skonfigurować **HTTP zaplecza** ustawienie. Daje to gwarancję, że ruch jest szyfrowany ponownie podczas przesyłania z bramy aplikacji z zapleczem.
 
 Do skonfigurowania, kończenie żądań SSL i end-to-end szyfrowania SSL, należy dodać certyfikat do odbiornika do włączenia bramy aplikacji do uzyskania klucza symetrycznego. To jest zależna od specyfikacji protokołu SSL. Klucz symetryczny jest używany do szyfrowania i odszyfrowywania ruchu, który jest wysyłany do bramy. Certyfikat bramy musi mieć format wymiany informacji osobistych (PFX). Ten format umożliwia eksportowanie klucza prywatnego odpowiadającego brama używa do szyfrowania i odszyfrowywania ruchu.
 
@@ -172,7 +175,7 @@ Podczas tworzenia bramy aplikacji przy użyciu witryny Azure portal, należy utw
 
 ### <a name="rule-type"></a>Typ reguły
 
-Podczas tworzenia reguły, możesz wybrać między [ *podstawowe* i *opartego na ścieżkach*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule).
+Podczas tworzenia reguły, możesz wybrać między [ *podstawowe* i *opartego na ścieżkach*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
 
 - Wybierz pozycję podstawowy, jeśli chcesz przekazać wszystkie żądania na skojarzony odbiornik (na przykład *blog<i></i>.contoso.com/\*)* do pojedynczej puli zaplecza.
 - Wybierz, oparty na ścieżkach aby kierować żądania z określonej ścieżki adresu URL do określonej puli zaplecza. Wzorzec ścieżki jest stosowane tylko do ścieżki adresu URL, z jego parametrów zapytania.
@@ -245,7 +248,7 @@ Aby uzyskać więcej informacji o przekierowywaniu zobacz:
 To ustawienie dodaje, usuwa lub aktualizuje nagłówki żądania i odpowiedzi HTTP podczas żądania i pakietów odpowiedzi, przenoszenie między klientem a pule zaplecza. Można skonfigurować tylko tej funkcji za pomocą programu PowerShell. Witryna Azure portal i interfejsu wiersza polecenia nie są jeszcze dostępne. Aby uzyskać więcej informacji, zobacz:
 
  - [Ponownie zapisuje nagłówki HTTP, omówienie](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Konfigurowanie ponownego napisania nagłówka HTTP](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
+ - [Konfigurowanie ponownego napisania nagłówka HTTP](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
 
 ## <a name="http-settings"></a>Ustawienia HTTP
 

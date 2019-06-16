@@ -16,10 +16,10 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62111459"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Printix
@@ -44,7 +44,7 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Printix, potrzebne s�
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
+Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
@@ -60,7 +60,7 @@ Aby skonfigurować integrację Printix w usłudze Azure AD, należy dodać Print
 
 **Aby dodać Printix z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -68,7 +68,7 @@ Aby skonfigurować integrację Printix w usłudze Azure AD, należy dodać Print
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -113,7 +113,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_url.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.printix.net`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.printix.net`
 
     > [!NOTE] 
     > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Printix](mailto:support@printix.net) można uzyskać wartość. 
@@ -122,7 +122,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_general_400.png)
 
@@ -156,7 +156,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -234,7 +234,7 @@ Po kliknięciu kafelka Printix w panelu dostępu, użytkownik powinien uzyskać 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

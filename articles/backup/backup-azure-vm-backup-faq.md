@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sogup
 ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966322"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowej maszyn wirtualnych platformy Azure
@@ -20,7 +20,7 @@ ms.locfileid: "65966322"
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowych maszyn wirtualnych platformy Azure za pomocą [kopia zapasowa Azure](backup-introduction-to-azure-backup.md) usługi.
 
 
-## <a name="backup"></a>Tworzenie kopii zapasowej
+## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Obrazy maszyn wirtualnych, które mogą być włączone dla kopii zapasowej, po ich utworzeniu?
 Podczas tworzenia maszyny Wirtualnej można włączyć kopii zapasowej dla maszyn wirtualnych uruchomionych [obsługiwane systemy operacyjne](backup-support-matrix-iaas.md#supported-backup-actions)
@@ -59,7 +59,7 @@ Udostępnić uprawnienia dla usługi Azure Backup na dostęp do usługi Key Vaul
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>Dyski maszyny Wirtualnej zostały zmigrowane do dysków zarządzanych. Czy operacje tworzenia kopii zapasowych będą nadal działać?
 Tak, kopie zapasowe działają bezproblemowo. Nie ma potrzeby ponowne skonfigurowanie niczego.
 
-### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Dlaczego nie widzę swojej maszyny Wirtualnej w Kreatorze konfigurowania kopii zapasowej?
+### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Dlaczego nie widzę mojej maszyny wirtualnej w kreatorze konfigurowania kopii zapasowych?
 Kreator wyszczególnia tylko maszyny wirtualne w tym samym regionie co magazyn, a które nie są już trwa wykonywanie kopii zapasowej.
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Moja maszyna wirtualna jest zamknięta. Będą na żądanie lub zaplanowanych zadań tworzenia kopii zapasowej?
@@ -91,7 +91,7 @@ Usługa Azure Backup nie można utworzyć kopii zapasowych dysków komputerów z
 Prywatna wersja zapoznawcza do tworzenia kopii zapasowych oprogramowania SAP HANA jest uruchomiony przy użyciu RPO o wartości 15 minut. Jest wbudowana w sposób podobny do kopii zapasowej bazy danych SQL i korzysta z interfejsu backInt rozwiązań innych firm, certyfikowanych przez oprogramowanie SAP HANA. Jeśli chcesz, Wyślij wiadomość e-mail `AskAzureBackupTeam@microsoft.com` z tematem **Zarejestruj się w prywatnej wersji zapoznawczej do utworzenia kopii zapasowej danych SAP HANA na maszynach wirtualnych platformy Azure**.
 
 
-## <a name="restore"></a>Przywróć
+## <a name="restore"></a>Przywracanie
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Jak zdecydować, czy można przywrócić tylko dysków lub pełnej maszyny Wirtualnej?
 Pomyśl o przywracanie maszyny Wirtualnej, jak opcję szybkiego tworzenia maszyny wirtualnej platformy Azure. Opcja ta umożliwia zmianę nazw dysków, kontenerów używanych przez dyski, publicznych adresów IP i nazw interfejsów sieciowych. Zmiana zachowuje unikatowy zasobów po utworzeniu maszyny Wirtualnej. Maszyna wirtualna nie została dodana do zestawu dostępności.
@@ -108,7 +108,7 @@ Tak, można użyć kopii zapasowych wykonanych przed dyski zostały zmigrowane z
 - Domyślnie zadanie przywracania maszyny Wirtualnej powoduje utworzenie niezarządzanej maszyny Wirtualnej.
 - Można jednak Przywróć dyski i używać ich do tworzenia zarządzanych maszyn wirtualnych.
 
-### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Jak przywrócić Maszynę wirtualną do punktu przywracania, zanim maszyna wirtualna została zmigrowana do usługi managed disks?
+### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Jak mogę przywrócić maszynę wirtualną do punktu przywracania, zanim maszyna wirtualna została zmigrowana do dysków zarządzanych?
 Domyślnie zadanie przywracania maszyn wirtualnych tworzy Maszynę wirtualną z dyskami niezarządzanymi. Aby utworzyć Maszynę wirtualną z dyskami zarządzanymi:
 1. [Przywracanie do dysków niezarządzanych](tutorial-restore-disk.md#restore-a-vm-disk).
 2. [Konwertuj przywróconych dysków do usługi managed disks](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).

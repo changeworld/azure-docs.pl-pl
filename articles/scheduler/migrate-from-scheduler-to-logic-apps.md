@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
 ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531687"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrowanie zadania usługi Azure Scheduler do usługi Azure Logic Apps
@@ -159,7 +159,7 @@ Poniżej przedstawiono inne sposoby, które można dostosować swoje zadania.
 
 Aby kontrolować sposób, który próbuje ponownie uruchomić aplikację logiki w przypadku sporadycznych błędów akcję, można ustawić [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies) w ustawieniach każdej akcji, na przykład:
 
-1. Otwórz akcję (**...** ) menu, a następnie wybierz **ustawienia**.
+1. Otwórz akcję ( **...** ) menu, a następnie wybierz **ustawienia**.
 
    ![Otwórz ustawienia akcji](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -179,9 +179,9 @@ W usłudze Azure Scheduler, jeśli domyślna akcja uruchomienie nie powiedzie si
 
    ![Dodawanie akcji równoległe](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. Alternatywne akcję, Otwórz (**...** ) menu, a następnie wybierz **konfigurowanie uruchamiania**.
+1. Alternatywne akcję, Otwórz ( **...** ) menu, a następnie wybierz **konfigurowanie uruchamiania**.
 
-   ![Konfigurowanie uruchamiania po danej akcji](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
+   ![Konfigurowanie uruchamiania po](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
 1. Wyczyść pole **zakończy się pomyślnie** właściwości. Wybierz następujące właściwości: **nie powiodło się**, **jest pomijana**, i **przekroczyło limit czasu**
 

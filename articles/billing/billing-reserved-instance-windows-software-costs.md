@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
 ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371176"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Koszty oprogramowania, które nie są dołączone Azure Reserved VM Instances
@@ -27,7 +27,7 @@ Jeśli nie masz korzyść użycia hybrydowego platformy Azure w swoich wystąpie
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Liczniki oprogramowania Windows nie są objęte kosztów rezerwacji
 
-| Identyfikator miernika | MeterName w pliku użycia | Używane przez maszynę Wirtualną |
+| MeterId | MeterName w pliku użycia | Używane przez maszynę Wirtualną |
 | ------- | ------------------------| --- |
 | e7e152ac-f29c-4cce-ad6e-026192c01ef2 | Maszyny rezerwacji Windows Server — seria (1 rdzeń) | Seria B |
 | cac255a2-9f0f-4c62-8bd6-f0fa449c5f76 | Maszyny rezerwacji Windows Server — seria (2 rdzenie) | Seria B |
@@ -52,7 +52,7 @@ Jeśli nie masz korzyść użycia hybrydowego platformy Azure w swoich wystąpie
 
 ## <a name="cloud-services-software-meters-not-included-in-reservation-cost"></a>Liczniki oprogramowania, które nie są objęte kosztów rezerwacji, bez usług cloud services
 
-| Identyfikator miernika | MeterName w pliku użycia |
+| MeterId | MeterName w pliku użycia |
 | ------- | ------------------------|
 |ac9d47ff-ff68-4afc-a145-0c321cf8d0d5|Cloud Services 1 Procesor wirtualny vCPU licencji|
 |e0434559-19ee-4132-9c46-05ad4044f3f7|Cloud Services 2 procesory vCPU licencji|

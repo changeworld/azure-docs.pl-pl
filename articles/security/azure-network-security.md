@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587467"
 ---
 # <a name="azure-network-security"></a>Zabezpieczenia sieci na platformie Azure
@@ -70,7 +70,7 @@ W tym dokumencie będzie cover następujące enterprise możliwości sieciowe pl
 
 -   Łączność hybrydowa
 
--   Kontrolki zabezpieczeń
+-   Opcje zabezpieczeń
 
 -   Weryfikacja sieci
 
@@ -284,9 +284,9 @@ Sieciowa grupa zabezpieczeń zawiera kilka wbudowanych zasad, które trzeba wied
 
 -   **Zezwalaj na cały ruch w ramach określonej sieci wirtualnej:** Wszystkie maszyny wirtualne w tej samej sieci wirtualnej platformy Azure mogą komunikować się ze sobą.
 
--   **Zezwalaj na przychodzący Równoważenie obciążenia platformy Azure:** ta reguła zezwala na ruch z dowolnego źródłowego adresu do dowolnego adresu docelowego dla modułu równoważenia obciążenia platformy Azure.
+-   **Zezwalaj na przychodzący Równoważenie obciążenia platformy Azure:**  ta reguła zezwala na ruch z dowolnego źródłowego adresu do dowolnego adresu docelowego dla modułu równoważenia obciążenia platformy Azure.
 
--   **Odmów wszystkich przychodzących:** ta reguła blokuje cały ruch, określania źródła z Internetu, który ma być jawnie dozwolone.
+-   **Odmów wszystkich przychodzących:**  ta reguła blokuje cały ruch, określania źródła z Internetu, który ma być jawnie dozwolone.
 
 -   **Zezwalaj na ruch wychodzący do Internetu cały ruch:** Ta zasada umożliwia maszyn wirtualnych do zainicjowania połączeń z Internetu. Jeśli użytkownik nie chce tych połączeń inicjowanych, należy utworzyć zasadę, aby zablokować te połączenia lub wymuszanie tunelowania.
 
@@ -509,7 +509,7 @@ Platforma Azure oferuje wiele narzędzi do monitorowania, zapobieganie, wykrywan
 
 -   Dzienniki usługi Azure Monitor
 
-### <a name="network-watcher"></a>Obserwator sieci
+### <a name="network-watcher"></a>Usługa Network watcher
 
 [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) — oparte na scenariuszach monitorowania jest dostarczana z funkcji usługi Network Watcher. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
 

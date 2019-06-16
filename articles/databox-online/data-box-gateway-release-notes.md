@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60754203"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Informacje o wersji platformy Azure dane pole Edge/Azure dane pole bramy ogólnodostępnej
@@ -44,7 +44,7 @@ Poniższa tabela zawiera podsumowanie znanych problemów występujących dla bra
 | --- | --- | --- | --- |
 | **1.** |Typy plików | Nie są obsługiwane następujące typy plików: znak plików bloku, gniazda, potoki, plików łącza symbolicznego.  |Kopiowanie tych plików wyników w plikach długość 0 tworzonych na systemu plików NFS jest udostępnianie. Te pliki pozostają w stanie błędu i są również zgłaszane w *error.xml*. <br> Linki symboliczne z katalogami spowodować katalogi, które nigdy nie wprowadzenie oznaczone w trybie offline. W rezultacie nie widać szarego między na katalogi, które wskazuje, że katalogi są w trybie offline i powiązanej zawartości całkowicie został przekazany na platformę Azure. |
 | **2.** |Usuwanie | Z powodu błędu w tej wersji usunięcie udziału NFS następnie udział mogą nie zostać usunięte. Będzie wyświetlany stan udziału *usuwanie*.  |Dzieje się tak, tylko wtedy, gdy udział jest przy użyciu nazwy pliku nieobsługiwany. |
-| **3.** |Copy | Kopiowanie danych kończy się niepowodzeniem z powodu błędu:  Nie można ukończyć żądanej operacji ze względu na ograniczenia systemu plików.  |Alternatywne Data Stream (ADS) skojarzony z plików większych niż 128 KB nie jest obsługiwane.   |
+| **3.** |Kopiuj | Kopiowanie danych kończy się niepowodzeniem z powodu błędu:  Nie można ukończyć żądanej operacji ze względu na ograniczenia systemu plików.  |Alternatywne Data Stream (ADS) skojarzony z plików większych niż 128 KB nie jest obsługiwane.   |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

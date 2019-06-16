@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337395"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Włączając diagnostykę platformy Azure w usługach Azure Cloud Services
@@ -140,7 +140,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Dodaj plik XML do Twojej **WorkerRole1** projektu, klikając prawym przyciskiem myszy **WorkerRole1** projektu, a następnie wybierz **Dodaj** -> **nowy element...** -> **Elementy Visual C#** -> **danych** -> **pliku XML**. Nadaj plikowi nazwę "WadExample.xml".
+2. Dodaj plik XML do Twojej **WorkerRole1** projektu, klikając prawym przyciskiem myszy **WorkerRole1** projektu, a następnie wybierz **Dodaj** -> **nowy element...** -> **Elementy Visual C#**  -> **danych** -> **pliku XML**. Nadaj plikowi nazwę "WadExample.xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Skojarz WadConfig.xsd z pliku konfiguracji. Upewnij się, że okno edytora WadExample.xml jest aktywnym oknem. Naciśnij klawisz **F4** otworzyć **właściwości** okna. Kliknij przycisk **schematów** właściwość **właściwości** okna. Kliknij przycisk **...** w **schematów** właściwości. Kliknij przycisk **Dodaj...** przycisk i przejdź do lokalizacji, w której zapisano plik XSD, a następnie wybierz plik WadConfig.xsd. Kliknij przycisk **OK**.

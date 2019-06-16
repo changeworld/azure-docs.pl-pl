@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 46232afcaf9504d4cfbd80160e2d7e7ea958d600
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61488188"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Projektowania dostępnej globalnie usługi przy użyciu usługi Azure SQL Database
@@ -153,7 +153,7 @@ Jednak istnieją pewne **wady i zalety**:
 
 Strategię odzyskiwania po awarii w chmurze można połączyć lub rozszerzać te wzorce projektowe, aby najlepiej zaspokoić potrzeb aplikacji.  Jak wspomniano wcześniej, strategii, którą wybierzesz opiera się na umowie SLA mają być oferowane do klientów i topologii wdrażania aplikacji. Pomoc na decyzję, w poniższej tabeli porównano opcje, w zależności od celu punktu odzyskiwania (RPO) i szacowany czas odzyskiwania (ERT).
 
-| Wzorce | Cel punktu odzyskiwania | ERT |
+| Wzorce | RPO | ERT |
 |:--- |:--- |:--- |
 | Aktywny / pasywny wdrożenia odzyskiwania po awarii przy użyciu dostępu do tej samej lokalizacji bazy danych |Dostęp do odczytu i zapisu < 5 s |Czas wykrycia awarii i czasu wygaśnięcia DNS |
 | Aktywne aktywne wdrożenie równoważenia obciążenia aplikacji |Dostęp do odczytu i zapisu < 5 s |Czas wykrycia awarii i czasu wygaśnięcia DNS |

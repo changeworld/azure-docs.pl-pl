@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60608130"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Uruchamianie zadań konteneryzowanych za pomocą zasady ponownego uruchamiania
@@ -26,7 +26,7 @@ Przykłady przedstawione w tym artykule wiersza polecenia platformy Azure. Konie
 
 Po utworzeniu [grupy kontenerów](container-instances-container-groups.md) w usłudze Azure Container Instances, możesz określić jedną z trzech ustawień zasady ponownego uruchamiania.
 
-| Zasada ponownego uruchamiania   | Opis |
+| Zasady ponownego uruchamiania   | Opis |
 | ---------------- | :---------- |
 | `Always` | Zawsze zostaną ponownie uruchomione kontenery w grupie kontenerów. Jest to **domyślne** ustawienia stosowane, gdy nie zasady ponownego uruchamiania jest określana podczas tworzenia kontenera. |
 | `Never` | Nigdy nie zostaną ponownie uruchomione kontenery w grupie kontenerów. Kontenery są uruchamiane co najwyżej raz. |

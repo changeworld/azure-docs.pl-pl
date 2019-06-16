@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;kumud
-ms.openlocfilehash: a4ae997398c85dc99af8711f1c6ce4e743592d73
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 07bff578b27df13c65eb912a64b6a44b97175d37
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939893"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051668"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -42,7 +42,7 @@ Sieci wirtualne platformy Azure mają dzienników przepływu sieciowej grupy zab
 
 ## <a name="key-components"></a>Główne składniki
 
-- **Sieciowa grupa zabezpieczeń (NSG)**: Zawiera listę reguł zabezpieczeń, które blokują lub zezwalają na ruch sieciowy do zasobów połączonych z siecią wirtualną platformy Azure. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [omówienie grupy zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Sieciowa grupa zabezpieczeń (NSG)** : Zawiera listę reguł zabezpieczeń, które blokują lub zezwalają na ruch sieciowy do zasobów połączonych z siecią wirtualną platformy Azure. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [omówienie grupy zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Dzienników przepływu Sieciowej grupy zabezpieczeń sieci**: Zezwalaj na wyświetlanie informacji o przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń. Przepływu sieciowej grupy zabezpieczeń, dzienniki są zapisywane w formacie json i Pokaż przepływy wychodzące i przychodzące na podstawie reguły w poszczególnych kart Sieciowych przepływ ma zastosowanie do 5-elementowe spójne kolekcje informacji o przepływie (źródłowego i docelowego adresu IP, źródłowy i docelowy port i protokół) i czy był dozwolony ruch lub zabronione. Aby uzyskać więcej informacji na temat dzienników przepływu sieciowych grup zabezpieczeń, zobacz [dzienników przepływu sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 - **Log Analytics**: Usługa Azure, która służy do zbierania danych monitorowania i przechowuje dane w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności i niestandardowe dane dostarczane za pośrednictwem interfejsu API usługi Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Monitorowanie aplikacji, takich jak analiza ruchu i monitora wydajności sieci są tworzone przy użyciu dzienników usługi Azure Monitor jako podstawa. Aby uzyskać więcej informacji, zobacz [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Zaloguj się obszar roboczy usługi Analytics**: Wystąpienie usługi Azure Monitor dzienników, w której są przechowywane dane odnoszących się do konta platformy Azure. Aby uzyskać więcej informacji na temat obszarów roboczych usługi Log Analytics, zobacz [Utwórz obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
@@ -87,12 +87,19 @@ Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następ
 Obszar roboczy usługi Log Analytics muszą znajdować się w następujących regionach:
 * Kanada Środkowa
 * Środkowo-zachodnie stany USA
-* Zachodnie stany USA 2
 * Wschodnie stany USA
+* Wschodnie stany USA 2
+* Środkowo-południowe stany USA
+* Zachodnie stany USA
+* Zachodnie stany USA 2
+* Środkowe stany USA
 * Francja Środkowa
+* Europa Północna
 * Europa Zachodnia
 * Południowe Zjednoczone Królestwo
+* Australia Wschodnia
 * Australia Południowo-Wschodnia
+* Azja Wschodnia
 * Azja Południowo-Wschodnia
 * Korea Środkowa
 * Indie Środkowe
@@ -188,7 +195,7 @@ Na stronie po lewej stronie portalu, wybierz **wszystkich usług**, wprowadź *M
 
 Pulpit nawigacyjny może potrwać do 30 minut pojawi się po raz pierwszy, ponieważ analiza ruchu musi najpierw agregacji wystarczającej ilości danych dla niego do uzyskania istotnych informacji, zanim może generować raportów.
 
-## <a name="usage-scenarios"></a>Scenariusze użycia
+## <a name="usage-scenarios"></a>Scenariusze użytkowania
 
 Niektóre szczegółowe informacje, które możesz chcieć uzyskać po w pełni jest skonfigurowana analiza ruchu, są następujące:
 

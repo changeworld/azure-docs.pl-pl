@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8d377db827a6548c380128624c21f4ae7896aff
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075328"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055754"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Demon aplikacji, że wywołania sieci web interfejsy API — Konfiguracja kodu
 
@@ -39,9 +39,11 @@ Biblioteki Microsoft Obsługa demonem aplikacje są:
 
 ## <a name="configuration-of-the-authority"></a>Konfiguracja urzędu
 
-Biorąc pod uwagę, że aplikacje demona nie należy używać uprawnień delegowanych, ale uprawnienia aplikacji ich *obsługiwany typ konta* nie może być *kont w dowolnym katalogu organizacji i Microsoft osobistych kont () na przykład, Skype, Xbox, Outlook.com)*. W rzeczywistości jest Brak administratora dzierżawy do udzielania zgody aplikacji demona dla osobistych kont Microsoft. Musisz wybrać *kont w mojej organizacji* lub *kont w dowolnej organizacji*.
+Biorąc pod uwagę, że aplikacje demona nie należy używać uprawnień delegowanych, ale uprawnienia aplikacji ich *obsługiwany typ konta* nie może być *kont w dowolnym katalogu organizacji i Microsoft osobistych kont () na przykład, Skype, Xbox, Outlook.com)* . W rzeczywistości jest Brak administratora dzierżawy do udzielania zgody aplikacji demona dla osobistych kont Microsoft. Musisz wybrać *kont w mojej organizacji* lub *kont w dowolnej organizacji*.
 
-W związku z tym urząd określony w konfiguracji aplikacji powinna być dzierżawy ed (określenia Identyfikatora dzierżawy lub nazwy domeny skojarzonego z Twoją organizacją). Jeśli jesteś niezależnym dostawcą oprogramowania i chcesz zapewniają narzędzie wielodostępnych, możesz użyć `organizations`. Jednak należy pamiętać o tym, należy również do wyjaśnienia dla klientów, jak udzielić zgody administratora. Zobacz [żądanie zgody na całej dzierżawie](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) Aby uzyskać szczegółowe informacje
+W związku z tym urząd określony w konfiguracji aplikacji powinna być dzierżawy ed (określenia Identyfikatora dzierżawy lub nazwy domeny skojarzonego z Twoją organizacją).
+
+Jeśli jesteś niezależnym dostawcą oprogramowania i chcesz zapewniają narzędzie wielodostępnych, możesz użyć `organizations`. Jednak należy pamiętać o tym, należy również do wyjaśnienia dla klientów, jak udzielić zgody administratora. Zobacz [żądanie zgody na całej dzierżawie](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) Aby uzyskać szczegółowe informacje. Również ma ograniczenia w MSAL, `organizations` jest dozwolona tylko w przypadku poświadczeń klienta klucz tajny aplikacji (nie certyfikat). Zobacz [usterkę platformy MSAL.NET #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
 ## <a name="application-configuration-and-instantiation"></a>Konfiguracja aplikacji i wystąpienia
 

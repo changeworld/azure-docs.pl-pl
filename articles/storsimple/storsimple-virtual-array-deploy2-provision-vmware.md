@@ -16,10 +16,10 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61419158"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Wdrażanie macierzy wirtualnej StorSimple — Aprowizacja w oprogramowaniu VMware
@@ -131,7 +131,7 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 18. Na **wersji maszyny wirtualnej** wybierz opcję **wersji maszyny wirtualnej: 8**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. Na **System operacyjny gościa** wybierz opcję **System operacyjny gościa** jako **Windows**. Aby uzyskać **wersji**, z listy rozwijanej wybierz **Microsoft Windows Server 2012 (64-bitowy)**.
+19. Na **System operacyjny gościa** wybierz opcję **System operacyjny gościa** jako **Windows**. Aby uzyskać **wersji**, z listy rozwijanej wybierz **Microsoft Windows Server 2012 (64-bitowy)** .
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. Na **procesorów** strony, dostosować **liczbę gniazd wirtualnego** i **liczbę rdzeni na gniazdo wirtualnego** tak, aby **łącznej liczby rdzeni** jest 4 (lub więcej). Kliknij przycisk **Dalej**.

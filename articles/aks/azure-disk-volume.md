@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072155"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i korzystać z woluminu z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
@@ -41,12 +41,12 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Teraz Utwórz dysk za pomocą [tworzenia dysku az] [ az-disk-create] polecenia. Określ nazwę grupy zasobów węzła, takich jak uzyskane w poprzednim poleceniu, a następnie nazwę zasobu dyskowego *myAKSDisk*. Poniższy przykład tworzy *20*GiB dysku i dane wyjściowe identyfikator dysku, po utworzeniu:
+Teraz Utwórz dysk za pomocą [tworzenia dysku az] [ az-disk-create] polecenia. Określ nazwę grupy zasobów węzła, takich jak uzyskane w poprzednim poleceniu, a następnie nazwę zasobu dyskowego *myAKSDisk*. Poniższy przykład tworzy *20*GiB dysku i dane wyjściowe identyfikator dysku, po utworzeniu. Jeśli musisz utworzyć dysku do użycia z kontenerami systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), należy dodać `--os-type windows` parametru, aby poprawnie sformatować dysk.
 
 ```azurecli-interactive
 az disk create \
   --resource-group MC_myResourceGroup_myAKSCluster_eastus \
-  --name myAKSDisk  \
+  --name myAKSDisk \
   --size-gb 20 \
   --query id --output tsv
 ```
@@ -62,7 +62,7 @@ Identyfikator zasobu dysku jest wyświetlany, gdy polecenie zostanie pomyślnie 
 
 ## <a name="mount-disk-as-volume"></a>Zainstaluj dysk jako wolumin
 
-Aby zainstalować dysku platformy Azure, w tym zasobniku, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-disk-pod.yaml` z następującą zawartością. Aktualizacja `diskName` o nazwie dysk utworzony w poprzednim kroku i `diskURI` o identyfikatorze dysku wyświetlany w danych wyjściowych dysku utworzyć polecenie. W razie potrzeby zaktualizuj `mountPath`, czyli ścieżkę, w którym dysku platformy Azure jest zainstalowany w zasobnik.
+Aby zainstalować dysku platformy Azure, w tym zasobniku, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-disk-pod.yaml` z następującą zawartością. Aktualizacja `diskName` o nazwie dysk utworzony w poprzednim kroku i `diskURI` o identyfikatorze dysku wyświetlany w danych wyjściowych dysku utworzyć polecenie. W razie potrzeby zaktualizuj `mountPath`, czyli ścieżkę, w którym dysku platformy Azure jest zainstalowany w zasobnik. W systemie Windows Server kontenerów (obecnie dostępna w wersji zapoznawczej w usłudze AKS), określ *mountPath* przy użyciu konwencji ścieżkę Windows, takich jak *"D:"* .
 
 ```yaml
 apiVersion: v1

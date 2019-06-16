@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: a73c7e381cb6001b773251a1812466b3c82373f2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65541728"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Umiejętności przestarzałe wyszukiwania kognitywnego
@@ -25,7 +25,7 @@ W tym dokumencie opisano umiejętności poznawcze, które są uznawane za przest
 * Nazwa umiejętności: Nazwa umiejętności, które zostaną wycofane, jest on mapowany @odata.type atrybutu.
 * Ostatnie dostępna wersja interfejsu api: Najnowszej wersji platformy Azure, wyszukaj publicznego interfejsu API za pomocą których dokładniejsze zawierającego odpowiednie umiejętności przestarzałe można utworzone/zaktualizowane.
 * Zakończenie pomocy technicznej: Ostatni dzień po upływie którego jest uznawany za odpowiednie umiejętności nieobsługiwany. Utworzone wcześniej dokładniejsze powinny nadal działać, ale zaleca się użytkownicy, aby uniknąć przestarzałe umiejętności.
-* Rekomendacje: Ścieżki migracji do przodu do użycia w obsługiwanych umiejętności. Aby postępować zgodnie z zaleceniami, aby kontynuować do otrzymania pomocy technicznej doradza się użytkownicy.
+* Zalecenia: Ścieżki migracji do przodu do użycia w obsługiwanych umiejętności. Aby postępować zgodnie z zaleceniami, aby kontynuować do otrzymania pomocy technicznej doradza się użytkownicy.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
@@ -37,7 +37,7 @@ W tym dokumencie opisano umiejętności poznawcze, które są uznawane za przest
 
 15 lutego 2019 r.
 
-### <a name="recommendations"></a>Rekomendacje 
+### <a name="recommendations"></a>Zalecenia 
 
 Use [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) instead. Zapewnia większość funkcjonalności NamedEntityRecognitionSkill wyższej jakości. Zawiera również bogatsze informacje w jej pola złożone dane wyjściowe.
 

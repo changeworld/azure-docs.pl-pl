@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837270"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
@@ -30,9 +30,9 @@ Tworzenie, usuwanie i zarządzać aplikacjami narzędzia Docker Compose.
 | --- | --- |
 | create | Tworzy usługi Service Fabric wdrożenia redagowania. |
 | list | Pobiera listę tworzą wdrożeń utworzonych w klastrze usługi Service Fabric. |
-| usuń | Usuwa istniejące usługi Service Fabric tworzą wdrożenia z klastra. |
+| Usuń | Usuwa istniejące usługi Service Fabric tworzą wdrożenia z klastra. |
 | status | Wdrożenie redagowania pobiera informacje o usłudze Service Fabric. |
-| uaktualnij | Rozpoczyna się uaktualnianie wdrożenia compose w klastrze usługi Service Fabric. |
+| upgrade | Rozpoczyna się uaktualnianie wdrożenia compose w klastrze usługi Service Fabric. |
 | upgrade-rollback | Wycofywanie wdrożenia compose rozpoczyna się uaktualnienie z klastra usługi Service Fabric. |
 | upgrade-status | Wdrożenie redagowania pobiera szczegóły najnowszą aktualizację, które są wykonywane w tej usłudze Service Fabric. |
 

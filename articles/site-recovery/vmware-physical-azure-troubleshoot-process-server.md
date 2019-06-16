@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.author: raynew
 ms.openlocfilehash: 6e31308800f72d60381f1e4ecd540482ba263851
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969365"
 ---
 # <a name="troubleshoot-the-process-server"></a>Rozwiązywanie problemów z serwera przetwarzania
@@ -20,7 +20,7 @@ ms.locfileid: "65969365"
 
 [Dowiedz się więcej](vmware-physical-azure-config-process-server-overview.md) o serwerze przetwarzania.
 
-## <a name="before-you-start"></a>Zanim rozpoczniesz
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
 Przed rozpoczęciem rozwiązywania problemów:
 
@@ -54,12 +54,12 @@ Serwer przetwarzania generuje liczbę alertów dotyczących kondycji. Te alerty 
 ![W dobrej kondycji][green] | Brak  | Serwer przetwarzania jest połączony i działa prawidłowo.
 ![Ostrzeżenie][yellow] | Określonych usług nie są uruchomione. | 1. Sprawdź, czy usługi są uruchomione.<br/> 2. Jeśli usługi są uruchomione zgodnie z oczekiwaniami, postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).
 ![Ostrzeżenie][yellow]  | Wykorzystanie procesora CPU > 80%, dla ostatnich 15 minut. | 1. Nie należy dodawać nowych maszyn.<br/>2. Upewnij się, że liczba maszyn wirtualnych używających serwera przetwarzania jest wyrównywany do [określone limity](site-recovery-plan-capacity-vmware.md#capacity-considerations)i warto rozważyć skonfigurowanie [dodatkowym serwerze przetwarzania](vmware-azure-set-up-process-server-scale.md).<br/>3. Postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).
-![Krytyczne][red] |  Wykorzystanie procesora CPU > 95%, dla ostatnich 15 minut. | 1. Nie należy dodawać nowych maszyn.<br/>2. Upewnij się, że liczba maszyn wirtualnych używających serwera przetwarzania jest wyrównywany do [określone limity](site-recovery-plan-capacity-vmware.md#capacity-considerations)i warto rozważyć skonfigurowanie [dodatkowym serwerze przetwarzania](vmware-azure-set-up-process-server-scale.md).<br/>3. Postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).<br/> 4. Jeśli problem będzie się powtarzać, uruchom [planista wdrażania](https://aka.ms/asr-v2a-deployment-planner) replikacji serwera fizycznego/VMware.
+![Krytyczny][red] |  Wykorzystanie procesora CPU > 95%, dla ostatnich 15 minut. | 1. Nie należy dodawać nowych maszyn.<br/>2. Upewnij się, że liczba maszyn wirtualnych używających serwera przetwarzania jest wyrównywany do [określone limity](site-recovery-plan-capacity-vmware.md#capacity-considerations)i warto rozważyć skonfigurowanie [dodatkowym serwerze przetwarzania](vmware-azure-set-up-process-server-scale.md).<br/>3. Postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).<br/> 4. Jeśli problem będzie się powtarzać, uruchom [planista wdrażania](https://aka.ms/asr-v2a-deployment-planner) replikacji serwera fizycznego/VMware.
 ![Ostrzeżenie][yellow] | Użycie pamięci > 80%, dla ostatnich 15 minut. |  1. Nie należy dodawać nowych maszyn.<br/>2. Upewnij się, że liczba maszyn wirtualnych używających serwera przetwarzania jest wyrównywany do [określone limity](site-recovery-plan-capacity-vmware.md#capacity-considerations)i warto rozważyć skonfigurowanie [dodatkowym serwerze przetwarzania](vmware-azure-set-up-process-server-scale.md).<br/>3. Postępuj zgodnie z instrukcjami skojarzone z ostrzeżeniem.<br/> 4. Jeśli problem będzie się powtarzać, postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).
-![Krytyczne][red] | Użycie pamięci > 95%, dla ostatnich 15 minut. | 1. Nie należy dodawać nowych maszyn i biorąc pod uwagę konfigurowania [dodatkowym serwerze przetwarzania](vmware-azure-set-up-process-server-scale.md).<br/> 2. Postępuj zgodnie z instrukcjami skojarzone z ostrzeżeniem.<br/> 3. 4. Jeśli problem będzie się powtarzać, postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).<br/> 4. Jeśli problem będzie się powtarzać, uruchom [planista wdrażania](https://aka.ms/asr-v2a-deployment-planner) dla problemów dotyczących replikacji serwera fizycznego/VMware.
+![Krytyczny][red] | Użycie pamięci > 95%, dla ostatnich 15 minut. | 1. Nie należy dodawać nowych maszyn i biorąc pod uwagę konfigurowania [dodatkowym serwerze przetwarzania](vmware-azure-set-up-process-server-scale.md).<br/> 2. Postępuj zgodnie z instrukcjami skojarzone z ostrzeżeniem.<br/> 3. 4. Jeśli problem będzie się powtarzać, postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).<br/> 4. Jeśli problem będzie się powtarzać, uruchom [planista wdrażania](https://aka.ms/asr-v2a-deployment-planner) dla problemów dotyczących replikacji serwera fizycznego/VMware.
 ![Ostrzeżenie][yellow] | Pamięć podręczna folderu wolnego miejsca < 30% w przypadku ostatnich 15 minut. | 1. Nie Dodawanie nowych maszyn i warto rozważyć skonfigurowanie [dodatkowym serwerze przetwarzania](vmware-azure-set-up-process-server-scale.md).<br/>2. Upewnij się, że liczba maszyn wirtualnych używających serwera przetwarzania jest wyrównywany do [wytycznych](site-recovery-plan-capacity-vmware.md#capacity-considerations).<br/> 3. Postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).
-![Krytyczne][red] |  Wolne miejsce < 25% w ciągu ostatnich 15 minut | 1. Wykonaj instrukcje związane z ostrzeżeniem tego problemu.<br/> 2. 3. Postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).<br/> 3. Jeśli problem będzie się powtarzać, uruchom [planista wdrażania](https://aka.ms/asr-v2a-deployment-planner) replikacji serwera fizycznego/VMware.
-![Krytyczne][red] | Brak pulsu z serwera przetwarzania, przez co najmniej 15 minut. Usługa tmansvs nie łączy się z serwerem konfiguracji. | (1) upewnij się, że serwer przetwarzania jest uruchomiona.<br/> 2. Upewnij się, że tmassvc jest uruchomiona na serwerze przetwarzania.<br/> 3. Postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).
+![Krytyczny][red] |  Wolne miejsce < 25% w ciągu ostatnich 15 minut | 1. Wykonaj instrukcje związane z ostrzeżeniem tego problemu.<br/> 2. 3. Postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).<br/> 3. Jeśli problem będzie się powtarzać, uruchom [planista wdrażania](https://aka.ms/asr-v2a-deployment-planner) replikacji serwera fizycznego/VMware.
+![Krytyczny][red] | Brak pulsu z serwera przetwarzania, przez co najmniej 15 minut. Usługa tmansvs nie łączy się z serwerem konfiguracji. | (1) upewnij się, że serwer przetwarzania jest uruchomiona.<br/> 2. Upewnij się, że tmassvc jest uruchomiona na serwerze przetwarzania.<br/> 3. Postępuj zgodnie z instrukcjami poniżej, aby [Rozwiązywanie problemów z łącznością i replikacji](#check-connectivity-and-replication).
 
 
 ![Klucz tabeli](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
@@ -69,7 +69,7 @@ Serwer przetwarzania generuje liczbę alertów dotyczących kondycji. Te alerty 
 
 Usługi, powinna być uruchomiona na serwerze przetwarzania, które są podsumowane w poniższej tabeli. Istnieją drobne różnice w usługach, w zależności od tego, jak serwer przetwarzania jest wdrażany. 
 
-Dla wszystkich usług z wyjątkiem agenta usług odzyskiwania Microsoft Azure (obengine), sprawdź, czy jest równa wartości StartType **automatyczne** lub **automatycznie (opóźnione uruchomienie)**.
+Dla wszystkich usług z wyjątkiem agenta usług odzyskiwania Microsoft Azure (obengine), sprawdź, czy jest równa wartości StartType **automatyczne** lub **automatycznie (opóźnione uruchomienie)** .
  
 **Wdrożenie** | **Uruchamianie usług**
 --- | ---

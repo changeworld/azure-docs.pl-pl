@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 10/30/2018
 ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485827"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Uruchamianie zapytań analitycznych ad-hoc w wielu bazach danych Azure SQL
@@ -96,7 +96,7 @@ To ćwiczenie dodaje schematu (zewnętrznego źródła danych i definicje tabeli
 
     ![Tworzenie zewnętrznego źródła danych](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
-   Tabele zewnętrzne, odwołujące się do tabel dzierżawy są zdefiniowane przy użyciu **dystrybucji = SHARDED(VenueId)**. Kierowane zapytania dla określonego *VenueId* z odpowiednią bazą danych i zwiększa wydajność w wielu scenariuszach, jak pokazano w następnej sekcji.
+   Tabele zewnętrzne, odwołujące się do tabel dzierżawy są zdefiniowane przy użyciu **dystrybucji = SHARDED(VenueId)** . Kierowane zapytania dla określonego *VenueId* z odpowiednią bazą danych i zwiększa wydajność w wielu scenariuszach, jak pokazano w następnej sekcji.
 
     ![Tworzenie tabel zewnętrznych](media/saas-multitenantdb-adhoc-reporting/external-tables.png)
 

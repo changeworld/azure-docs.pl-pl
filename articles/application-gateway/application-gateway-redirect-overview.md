@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 07/18/2017
-ms.date: 01/15/2019
-ms.author: v-junlch
+ms.date: 07/18/2017
+ms.author: amsriva
 ms.openlocfilehash: d05d509b67fd26c958e0e2fa2bbd877db26e6521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831765"
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway redirect — omówienie
@@ -37,5 +36,3 @@ Dzięki tej zmianie klienci muszą utworzyć nowy obiekt konfiguracji przekierow
 ### <a name="next-steps"></a>Kolejne kroki
 
 [Konfigurowanie protokołu HTTP do przekierowania protokołu HTTPS w bramie aplikacji](redirect-http-to-https-portal.md)
-
-<!-- Update_Description: wording update -->

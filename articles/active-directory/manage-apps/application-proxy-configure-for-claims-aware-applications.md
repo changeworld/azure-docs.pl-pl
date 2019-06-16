@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c97729cf7d88ebdeefb44c83eb571bb6d7ebd0ed
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825600"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Praca z aplikacji obsługujących oświadczenia na serwerze Proxy aplikacji
@@ -38,7 +38,7 @@ Upewnij się, że usługą STS, która przekierowuje obsługującej oświadczeni
 
 Usługi AD FS można skonfigurować dla aplikacji obsługujących oświadczenia w jeden z dwóch sposobów. Pierwsza to za pomocą domen niestandardowych. Drugim jest przy użyciu protokołu WS-Federation. 
 
-### <a name="option-1-custom-domains"></a>Opcja 1: Domeny niestandardowe
+### <a name="option-1-custom-domains"></a>Opcja 1: Niestandardowe domeny
 
 Jeśli wszystkie wewnętrzne adresy URL dla aplikacji są w pełni kwalifikowanej nazwy domeny (FQDN), a następnie można skonfigurować [domen niestandardowych](application-proxy-configure-custom-domain.md) dla aplikacji. Użyj domen niestandardowych, aby utworzyć zewnętrzne adresy URL, które są takie same jak wewnętrzne adresy URL. W przypadku usługi zewnętrzne adresy URL zgodne z wewnętrznych adresów URL, przekierowań STS działać, czy użytkownicy znajdują się w środowisku lokalnym lub zdalnym. 
 

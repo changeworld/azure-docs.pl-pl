@@ -4,16 +4,15 @@ description: W tym przewodniku Szybki start pokazano, jak rozpocząć pracę prz
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 12/20/2018
+ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.custom: mvc
-ms.openlocfilehash: 9f62cd132e9aa969a804cd48d552baf9719a0eb6
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: bd27495266918063c65bf4648b3453e25767e293
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303000"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076199"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio
 
@@ -113,7 +112,7 @@ Zwróć uwagę na elementy uwzględnione w projekcie usługi Azure Stream Analyt
    |---------|---------|---------|
    |Alias danych wejściowych  |  Dane wejściowe   |  Wprowadź nazwę identyfikującą dane wejściowe zadania.   |
    |Typ źródła   |  Strumień danych |  Wybierz odpowiednie źródło danych wejściowych: Strumień danych lub Dane referencyjne.   |
-   |Source  |  Usługa IoT Hub |  Wybierz odpowiednie źródło danych wejściowych.   |
+   |source  |  Usługa IoT Hub |  Wybierz odpowiednie źródło danych wejściowych.   |
    |Resource  | Wybierz źródło danych z bieżącego konta | Wybierz ręczne wprowadzenie danych lub wybierz istniejące konto.   |
    |Subskrypcja  |  \<Twoja subskrypcja\>   | Wybierz subskrypcję platformy Azure, która zawiera utworzone centrum IoT Hub.   |
    |Usługa IoT Hub  |  MyASAIoTHub   |  Wybierz lub wprowadź nazwę centrum IoT Hub. Nazwy centrów IoT Hub są wykrywane automatycznie, jeśli są one tworzone w tej samej subskrypcji.   |

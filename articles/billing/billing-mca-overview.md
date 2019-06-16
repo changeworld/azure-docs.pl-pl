@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371470"
 ---
 # <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>Rozpoczynanie korzystania z konta rozliczeniowego dla umowy klienta firmy Microsoft
@@ -56,10 +56,10 @@ Możesz wyświetlić faktury, pobierania dokumentów i zmienić ustawienie, aby 
 
 Każdy profil rozliczeniowy ma swoje własne metody płatności, które są używane do płacenia jego faktur. Obsługiwane są następujące formy płatności:
 
-| Type             | Definicja  |
+| Typ             | Definicja  |
 |------------------|-------------|
-|Środki na korzystanie z platformy Azure    |  Środki są automatycznie stosowane do łączna kwota rachunku na fakturze do obliczenia wartości, które trzeba płacić. Aby uzyskać więcej informacji, zobacz [śledzić salda środków platformy Azure dla swojego profilu rozliczeń](billing-mca-check-azure-credits-balance.md). |
-|Czek lub przelew bankowy | Możesz wykupić wynosi należna kwota fakturę za pośrednictwem wyboru lub okablowanie transferu. Instrukcje dotyczące płatności są podane na fakturze |
+|Kredytów systemu Azure    |  Środki są automatycznie stosowane do łączna kwota rachunku na fakturze do obliczenia wartości, które trzeba płacić. Aby uzyskać więcej informacji, zobacz [śledzić salda środków platformy Azure dla swojego profilu rozliczeń](billing-mca-check-azure-credits-balance.md). |
+|Sprawdzanie lub okablowanie transferu | Możesz wykupić wynosi należna kwota fakturę za pośrednictwem wyboru lub okablowanie transferu. Instrukcje dotyczące płatności są podane na fakturze |
 
 ### <a name="control-azure-marketplace-and-reservation-purchases-by-applying-policies"></a>Kontrola Azure Marketplace i rezerwacji zakupów za pomocą zasad
 
@@ -72,7 +72,7 @@ Plany platformy Azure są włączane automatycznie, gdy tworzysz profil rozlicze
 | Planowanie             | Definicja  |
 |------------------|-------------|
 |Plan platformy Microsoft Azure   | Zezwalaj użytkownikom na tworzenie subskrypcji, które można uruchomić żadnych obciążeń. Aby uzyskać więcej informacji, zobacz [Plan usługi Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|Plan platformy Microsoft Azure na potrzeby tworzenia i testowania | Zezwalaj na subskrybentów programu Visual Studio do utworzenia subskrypcji, które są ograniczone do tworzenia lub testowania obciążenia. Te subskrypcje korzyści takie jak niższe stawki oraz dostęp do obrazów maszyn wirtualnych wyłączności w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Microsoft Azure planowanie DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|Plan platformy Microsoft Azure — tworzenie i testowanie | Zezwalaj na subskrybentów programu Visual Studio do utworzenia subskrypcji, które są ograniczone do tworzenia lub testowania obciążenia. Te subskrypcje korzyści takie jak niższe stawki oraz dostęp do obrazów maszyn wirtualnych wyłączności w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Microsoft Azure planowanie DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)|
 
 ## <a name="understand-invoice-sections"></a>Zrozumienie faktury sekcje
 
@@ -85,7 +85,7 @@ Role w sekcji faktury mają uprawnienia do kontroli, który tworzy subskrypcji p
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
 

@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 2707081adafa74237e3fb7730837f581e0c8b790
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154218"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Rozwiązywanie problemów z end-to-end, przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów
@@ -220,7 +220,7 @@ Oprócz używania usługi Azure Storage układów widoku, można także definiow
 ### <a name="apply-color-rules-to-the-analysis-grid"></a>Zastosuj reguły koloru do siatki analizy
 Zasoby magazynu obejmują również reguły kolorów, które oferują wizualizacji oznacza, że do identyfikacji różnych typów błędów w siatce analizy. Zasady wstępnie zdefiniowany kolor zastosowanie błędy HTTP, aby były widoczne tylko w przypadku śledzenia dziennika i sieci serwera.
 
-Aby zastosować reguły koloru, wybierz **reguły koloru** na wstążce narzędzi. Zobaczysz reguły koloru usługi Azure Storage w menu. Samouczek, należy wybrać **błędy klientów (StatusCode od 400 do 499)**, jak pokazano na poniższej ilustracji.
+Aby zastosować reguły koloru, wybierz **reguły koloru** na wstążce narzędzi. Zobaczysz reguły koloru usługi Azure Storage w menu. Samouczek, należy wybrać **błędy klientów (StatusCode od 400 do 499)** , jak pokazano na poniższej ilustracji.
 
 ![Usługa Azure Storage widok układu](./media/storage-e2e-troubleshooting/color-rules-menu.png)
 
@@ -278,7 +278,7 @@ Na ilustracji poniżej pokazano konkretnego żądania, w którym operacji pobier
 
 Następnie firma Microsoft będzie skorelowania tego Identyfikatora żądania klienta z danymi dziennika klienta, aby zobaczyć, jakie akcje klienta miał w momencie wystąpienia błędu. Można wyświetlić nowego widoku siatki analizy dla tej sesji wyświetlić dane dziennika klienta, które zostaną otwarte w drugiej karcie:
 
-1. Po pierwsze, skopiuj wartość **ClientRequestId** pola do Schowka. Można to zrobić, wybierając albo wiersz, lokalizowanie **ClientRequestId** pola, klikając prawym przyciskiem myszy na wartość danych, a następnie wybierając **kopiowania "ClientRequestId"**.
+1. Po pierwsze, skopiuj wartość **ClientRequestId** pola do Schowka. Można to zrobić, wybierając albo wiersz, lokalizowanie **ClientRequestId** pola, klikając prawym przyciskiem myszy na wartość danych, a następnie wybierając **kopiowania "ClientRequestId"** .
 2. Na wstążce paska wybierz **nowy podgląd**, a następnie wybierz **siatki analizy** na otwarcie nowej karty. Nowa karta pokazuje wszystkie dane w plikach dziennika bez grupowanie, filtrowanie lub reguły koloru.
 3. Na wstążce paska wybierz **układ widoku**, a następnie wybierz **wszystkie kolumny klienta .NET** w obszarze **usługi Azure Storage** sekcji. Ten układ widoku zawiera dane odebrane od klienta, log, a także dzienniki śledzenia serwera i sieci. Domyślnie są sortowane według **MessageNumber** kolumny.
 4. Następnie wyszukaj dziennika klienta identyfikator żądania klienta. Na wstążce paska wybierz **komunikaty Znajdź**, następnie określić filtr niestandardowy identyfikator żądania klienta w **znaleźć** pola. Dla filtru, określając własny identyfikator żądania klienta, należy użyć następującej składni:
@@ -307,10 +307,10 @@ Teraz, po zapoznaniu się z używaniem analizatora komunikatów na potrzeby anal
 | Wzrost wartości PercentNetworkError |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Klient |
 | Komunikaty HTTP 403 (zabroniony) |HTTP.Response.StatusCode   == 403 |Sieć |
 | HTTP 404 (nie znaleziono) wiadomości |HTTP.Response.StatusCode   == 404 |Sieć |
-| 404 (wszystko) |* StatusCode == 404 |Wszyscy |
+| 404 (wszystko) |\* StatusCode == 404 |Wszyscy |
 | Udostępnione problem autoryzacji sygnatury dostępu Współdzielonego |AzureStorageLog.RequestStatus == "SASAuthorizationError" |Sieć |
 | HTTP 409 (konflikt) wiadomości |HTTP.Response.StatusCode   == 409 |Sieć |
-| 409 (wszystko) |* StatusCode == 409 |Wszyscy |
+| 409 (wszystko) |\* StatusCode == 409 |Wszyscy |
 | Wpisy dziennika PercentSuccess niski lub analizy mają operacji ze stanem transakcji ClientOtherErrors |AzureStorageLog.RequestStatus == "ClientOtherError" |Serwer |
 | Ostrzeżenie Nagle'a |((AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) i (AzureStorageLog.RequestPacketSize < 1460) i (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS > = 200) |Serwer |
 | Rejestruje przedział czasu w serwera i sieci |#Timestamp > = 2014-10-20T16:36:38 i #Timestamp < = 2014-10-20T16:36:39 |Server, Network |

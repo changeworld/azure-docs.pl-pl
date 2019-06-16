@@ -2,7 +2,7 @@
 title: Usługa Azure Batch pool Usuń zdarzenie ukończenia | Dokumentacja firmy Microsoft
 description: Dokumentacja dotycząca puli usługi Batch, Usuń zdarzenie ukończenia.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 04/20/2017
-ms.date: 05/14/2018
-ms.author: v-junlch
+ms.date: 04/20/2017
+ms.author: lahugh
 ms.openlocfilehash: e715ccd0f5e79f9c640a3c060b0252b798748b4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60775767"
 ---
 # <a name="pool-delete-complete-event"></a>Zdarzenie zakończenia usuwania puli
@@ -34,7 +33,7 @@ ms.locfileid: "60775767"
 }
 ```
 
-|Element|Type|Uwagi|
+|Element|Typ|Uwagi|
 |-------------|----------|-----------|
 |id|String|Identyfikator puli.|
 |startTime|DateTime|Czas usunięcia puli pracę.|
@@ -42,5 +41,3 @@ ms.locfileid: "60775767"
 
 ## <a name="remarks"></a>Uwagi
 Aby uzyskać więcej informacji na temat stanów i kody błędów dla operacji zmiany rozmiaru puli, zobacz [usunąć pulę z konta](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).
-
-<!-- Update_Description: update metedata properties -->

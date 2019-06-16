@@ -10,10 +10,10 @@ ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cc3307a4f32d77b9b8d259ac846c4db1c1ae4a99
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002510"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie Windows hybrydowego procesu roboczego Runbook
@@ -66,7 +66,7 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
    > Aby uzyskać listę par mapowania obsługiwanych, zobacz [mapowania Region dla obszaru roboczego z konta usługi Automation i Log Analytics](how-to/region-mappings.md).
 
 2. Na komputerze, należy otworzyć **programu Windows PowerShell** z **Start** ekranu w trybie administratora.
-3. Z powłoki wiersza polecenia programu PowerShell przejdź do folderu, który zawiera skrypt, który został pobrany. Zmienianie wartości parametrów *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, i *Nazwa_obszaru_roboczego -*. Następnie uruchom skrypt.
+3. Z powłoki wiersza polecenia programu PowerShell przejdź do folderu, który zawiera skrypt, który został pobrany. Zmienianie wartości parametrów *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, i *Nazwa_obszaru_roboczego -* . Następnie uruchom skrypt.
 
      > [!NOTE]
      > Zostanie wyświetlony monit uwierzytelnienia za pomocą platformy Azure po uruchomieniu skryptu. Możesz *musi* Zaloguj się przy użyciu konta będącego członkiem roli Administratorzy subskrypcji i współadministratorem subskrypcji.

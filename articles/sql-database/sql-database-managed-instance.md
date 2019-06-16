@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c09dd990bb377672cb34ebd73a5aa9e59bbc067f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098542"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070395"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -57,15 +57,15 @@ Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższe
 |Cecha | Opis|
 |---|---|
 | Wersja programu SQL Server / build | Aparat bazy danych programu SQL Server (Najnowsza wersja stabilna) |
-| Zarządzane automatycznych kopii zapasowych | Yes |
-| Wbudowane wystąpienia i bazy danych monitorowania i metryki | Yes |
+| Zarządzane automatycznych kopii zapasowych | Tak |
+| Wbudowane wystąpienia i bazy danych monitorowania i metryki | Tak |
 | Automatyczne stosowanie poprawek | Yes |
-| Najnowsze funkcje aparatu bazy danych | Yes |
+| Najnowsze funkcje aparatu bazy danych | Tak |
 | Liczba plików danych (wiersze) na bazę danych | Wiele |
 | Liczba plików dziennika (dziennik) na bazę danych | 1 |
 | Sieć wirtualna - wdrożenia usługi Azure Resource Manager | Yes |
 | Sieć wirtualna - klasycznego modelu wdrażania | Nie |
-| Portal pomocy technicznej | Yes|
+| Portal pomocy technicznej | Tak|
 | Wbudowana integracja Service (SSIS) | Nie — SSIS jest częścią [PaaS fabryki danych platformy Azure](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Wbudowane Analysis Services (SSAS) | Nie — usługi SSAS jest oddzielona [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Wbudowana usługa raportowania (SSRS) | Nie — przy użyciu usługi Power BI lub IaaS usług SSRS |
@@ -78,7 +78,7 @@ Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższe
 Model rdzenia wirtualnego można wybrać generacji sprzętu.
 
 - **4. generacji** procesorów logicznych są oparte na Intel E5-2673 v3 (Haswell) 2,4 GHz, procesory, dołączonych dysków SSD, fizyczne rdzenie, 7 GB pamięci RAM na rdzeń i rozmiarów wystąpień obliczeniowych od 8 do 24 rdzenie wirtualne.
-- **5. generacji** procesorów logicznych są oparte na Intel E5-2673 v4 (broadwell z zegarem) 2.3 — GHz, szybkie dyski SSD NVMe, funkcji hyper Threading rdzeń logiczny, a obliczenia rozmiarów, od 8 do 80 rdzeni.
+- **5. generacji** procesorów logicznych są oparte na Intel E5-2673 v4 (broadwell z zegarem) 2.3 — GHz, szybkie dyski SSD NVMe, funkcji hyper Threading rdzeń logiczny, a obliczenia rozmiarów między rdzenie 4 i 80.
 
 Znajdź więcej informacji na temat różnic między generacji sprzętu w [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
@@ -240,5 +240,5 @@ W poniższej tabeli przedstawiono kilka właściwości, za pośrednictwem język
 - Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md).
 - Aby uzyskać szybki Start, która tworzy wystąpienie zarządzane i przywraca bazę danych z pliku kopii zapasowej, zobacz [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
 - Samouczek dotyczący korzystania z usługi Azure Database Migration Service (DMS) do migracji, zobacz [zarządzane wystąpienia migracji przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).
-- Aby uzyskać informacje na temat zaawansowanego monitorowania wydajności bazy danych wystąpienia zarządzanego z wbudowaną analizą rozwiązywania problemów, zobacz [Monitor Azure SQL Database using Azure SQL Analytics (Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics)](../azure-monitor/insights/azure-sql.md)
+- Zaawansowane monitorowanie wydajności bazy danych wystąpienia zarządzanego dzięki wbudowanym funkcjom analizy dotyczące rozwiązywania problemów, zobacz [monitora usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).
 - Aby uzyskać informacje o cenach, zobacz [zarządzana ceny wystąpienia usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/managed/).

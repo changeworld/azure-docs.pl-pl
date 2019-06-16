@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/09/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d3e79b00545f76dff9442a11864701d6d61f057
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1688cc9317306e7f524536754854b6147ad3dd5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784568"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108765"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Szybki start: dodawanie aplikacji do dzierżawy usługi Azure Active Directory
 
@@ -24,7 +24,7 @@ Usługa Azure Active Directory (Azure AD) udostępnia galerię, która zawiera t
 
 Po dodaniu aplikacji do dzierżawy usługi Azure AD, można:
 
-- Zarządzać dostępem użytkowników do aplikacji za pomocą zasad dostępu warunkowego.
+- Zarządzanie dostępem użytkowników do aplikacji za pomocą zasad dostępu warunkowego.
 - Konfigurować konta użytkowników do logowania jednokrotnego do aplikacji za pomocą kont usługi Azure AD.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -72,7 +72,7 @@ Dodaniu aplikacji. Możesz zrobić sobie przerwę. W kolejnych sekcjach pokazano
 
 Załóżmy, że po przerwie wracasz do konfigurowania swojej aplikacji. Najpierw należy jest, Znajdź aplikację.
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W  **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
 
 1. W **usługi Azure Active Directory** okienku wybierz **aplikacje dla przedsiębiorstw**.
 
@@ -122,7 +122,7 @@ Aby edytować właściwości aplikacji:
 
        | Ustawienia właściwości aplikacji | | | Środowisko użytkowników nieprzypisanych | |
        |---|---|---|---|---|
-       | Włączone dla użytkownicy mogą logować się? | Trzeba przypisać użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
+       | Włączone dla użytkownicy mogą logować się? | Wymagane przypisanie użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
        | tak | tak | tak | nie  | nie   |
        | tak | tak | nie  | nie  | nie   |
        | tak | nie  | tak | tak | nie   |

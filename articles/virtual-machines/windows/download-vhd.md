@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 3d44a4a723c39bf9780475a2ac3088da94285f6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61076331"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Pobierz Windows wirtualnego dysku twardego z platformy Azure
@@ -56,7 +56,7 @@ Aby pobrać plik wirtualnego dysku twardego, należy wygenerować [sygnatury dos
 3.  Ustaw czas wygaśnięcia adresu URL, aby *36000*.
 4.  Kliknij przycisk **generowania adresu URL**.
 
-    ![Generuj adres URL](./media/download-vhd/export-generate.png)
+    ![Generowanie adresu URL](./media/download-vhd/export-generate.png)
 
 > [!NOTE]
 > Czas wygaśnięcia zwiększa się w domyślnej, aby zapewnić wystarczającą ilość czasu pobierania dużych plików wirtualnego dysku twardego systemu operacyjnego Windows Server. Można oczekiwać, że plik wirtualnego dysku twardego zawierającego system operacyjny Windows Server, aby zająć wiele godzin, aby pobrać w zależności od połączenia. Jeśli pobierasz wirtualnego dysku twardego dla dysku z danymi, domyślny czas jest wystarczająca. 

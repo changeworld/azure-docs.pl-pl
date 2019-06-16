@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
 ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764292"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Działanie internetowe w usłudze Azure Data Factory
@@ -63,14 +63,14 @@ Działanie WebActivity może być używane do wywoływania niestandardowego punk
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania w sieci web | String | Yes
-type | Musi być równa **WebActivity**. | String | Yes
+name | Nazwa działania w sieci web | String | Tak
+— typ | Musi być równa **WebActivity**. | String | Tak
 method | Metoda interfejsu API REST dla docelowego punktu końcowego. | ciąg. <br/><br/>Obsługiwane typy: POBIERZ "PUBLIKUJ", "PUT" | Yes
 url | Docelowy punkt końcowy i ścieżki | Ciąg lub wyrażenie obiektu resultType ciągu. Działanie przekroczy limit czasu na 1 minutę z powodu błędu, jeśli nie otrzymasz odpowiedzi z punktu końcowego. | Yes
 Nagłówki | Nagłówki, które są wysyłane do żądania. Na przykład, aby ustawić język i typ żądania: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Tak, wymagany jest nagłówek Content-type. `"headers":{ "Content-Type":"application/json"}`
-treść | Reprezentuje ładunek, które są wysyłane do punktu końcowego.  | Ciąg lub wyrażenie obiektu resultType ciągu. <br/><br/>Wyświetlić schemat ładunek żądania w [schematu ładunku żądania](#request-payload-schema) sekcji. | Wymagane dla metod POST/PUT.
+Treść | Reprezentuje ładunek, które są wysyłane do punktu końcowego.  | Ciąg lub wyrażenie obiektu resultType ciągu. <br/><br/>Wyświetlić schemat ładunek żądania w [schematu ładunku żądania](#request-payload-schema) sekcji. | Wymagane dla metod POST/PUT.
 uwierzytelnianie | Metoda uwierzytelniania do wywoływania punktu końcowego. Obsługiwane typy to "Basic lub ClientCertificate." Aby uzyskać więcej informacji, zobacz [uwierzytelniania](#authentication) sekcji. Jeśli uwierzytelnianie nie jest wymagane, należy wykluczyć tej właściwości. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Nie
-zestawy danych | Lista zestawów danych jest przekazywana do punktu końcowego. | Tablica odwołań do zestawu danych. Może być pustą tablicą. | Yes
+datasets | Lista zestawów danych jest przekazywana do punktu końcowego. | Tablica odwołań do zestawu danych. Może być pustą tablicą. | Tak
 linkedServices | Lista usług połączonych jest przekazywana do punktu końcowego. | Tablica odwołań do połączonej usługi. Może być pustą tablicą. | Yes
 
 > [!NOTE]
@@ -102,7 +102,7 @@ Określ nazwę użytkownika i hasło do użycia z uwierzytelnianiem podstawowym.
 }
 ```
 
-### <a name="client-certificate"></a>Certyfikat klienta
+### <a name="client-certificate"></a>certyfikat klienta
 Określ zawartość algorytmem Base64 pliku PFX i hasło.
 
 ```json

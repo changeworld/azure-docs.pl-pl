@@ -14,10 +14,10 @@ ms.date: 03/10/2019
 ms.author: cephalin;byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: b054e56afdec65ac000b0dc18a0c1a3fd845b4c3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955983"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrożenia dla usługi Azure App Service
@@ -33,7 +33,7 @@ Poświadczenia na poziomie użytkownika można skonfigurować w dowolnej aplikac
 
 Aby skonfigurować swoje poświadczenia na poziomie użytkownika:
 
-1. W [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie kliknij **App Services** > **&lt;any_app >** > **wdrożenia Centrum** > **poświadczenia wdrożenia**.
+1. W [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie kliknij **App Services** >  **&lt;any_app >**  > **wdrożenia Centrum** > **poświadczenia wdrożenia**.
 
     W portalu musi mieć co najmniej jedną aplikację, zanim dostęp do strony poświadczeń wdrożenia. Jednak w przypadku [wiersza polecenia platformy Azure](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set), można skonfigurować poświadczeń na poziomie użytkownika bez istniejącej aplikacji.
 
@@ -63,7 +63,7 @@ Ponieważ poświadczenia na poziomie użytkownika są połączone z kontem użyt
 ## <a name="appscope"></a>Pobierz i zresetować poświadczenia na poziomie aplikacji
 Aby uzyskać poświadczeń na poziomie aplikacji:
 
-1. W [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie kliknij **App Services** > **&lt;any_app >** > **wdrożenia Centrum** > **poświadczenia wdrożenia**.
+1. W [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie kliknij **App Services** >  **&lt;any_app >**  > **wdrożenia Centrum** > **poświadczenia wdrożenia**.
 
 2. Kliknij przycisk **poświadczenia aplikacji**i kliknij przycisk **kopiowania** link, aby skopiować nazwy użytkownika i hasła.
 

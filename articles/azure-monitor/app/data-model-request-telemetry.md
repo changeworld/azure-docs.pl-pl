@@ -13,10 +13,10 @@ ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900529"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Dane telemetryczne dotyczące żądań: Model danych usługi Application Insights
@@ -39,13 +39,13 @@ Identyfikator wystąpienia wywołania żądania. Używane na potrzeby korelacji 
 
 Maksymalna długość: 128 znaków
 
-## <a name="url"></a>Url
+## <a name="url"></a>Adres URL
 
 Adres URL żądania z wszystkie parametry ciągu zapytania.
 
 Maksymalna długość: 2048 znaków
 
-## <a name="source"></a>Element źródłowy
+## <a name="source"></a>source
 
 Źródło żądania. Przykłady to klucz Instrumentacji obiektu wywołującego lub adres ip obiektu wywołującego. Aby uzyskać więcej informacji, zobacz [korelacji](../../azure-monitor/app/correlation.md) strony.
 

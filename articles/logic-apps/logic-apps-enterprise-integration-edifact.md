@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.date: 07/26/2016
 ms.openlocfilehash: bbcdad7c5496cd08994a613b07e1bc7c611e4572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60684509"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wymienianie komunikatów EDIFACT integracji przedsiębiorstw B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
@@ -120,20 +120,20 @@ Teraz umowy jest gotowy do obsługi wiadomości przychodzących, które są zgod
 | Właściwość | Opis |
 | --- | --- |
 | Nie zezwalaj na duplikaty numeru kontrolnego wymiany |Aby zablokować wymian duplikatów, wybierz tę właściwość. Zaznaczenie tego pola wyboru oznacza, akcja dekodowania EDIFACT sprawdza, czy numer kontrolny wymiany (UNB5) odebranych wymiany jest niezgodny numer kontrolny wymiany wcześniej przetworzonych. Jeśli zostanie wykryte dopasowanie, wymiana nie został przetworzony. |
-| Sprawdź pod kątem zduplikowanych elementów UNB5 co (dni) |Jeśli została wybrana opcja zabrania numerów kontrolnych wymiany duplikatów, można określić liczbę dni, kiedy należy sprawdzić, zapewniając odpowiednią wartość dla tego ustawienia. |
+| Wyszukaj zduplikowanych elementów UNB5 co (dni) |Jeśli została wybrana opcja zabrania numerów kontrolnych wymiany duplikatów, można określić liczbę dni, kiedy należy sprawdzić, zapewniając odpowiednią wartość dla tego ustawienia. |
 | Nie zezwalaj na duplikaty numerów kontrolnych grupy |Aby zablokować wymian przy użyciu numerów kontrolnych grupy (UNG5), wybierz tę właściwość. |
 | Nie zezwalaj na duplikaty numerów kontrolnych zestawu transakcji |Aby zablokować wymian przy użyciu numerów kontrolnych zestawu transakcji zduplikowane (UNH1), wybierz tę właściwość. |
 | Numer kontrolny potwierdzenia EDIFACT |Aby wyznaczyć numerów odwołanie do zestawu transakcji do użycia w potwierdzenie, wprowadź wartość prefiksu, zakresu numerów odniesienia oraz sufiks. |
 
-### <a name="validations"></a>Walidacje
+### <a name="validations"></a>Liczba ocen
 
 Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany automatycznie. Jeśli nie określisz żadnych reguł sprawdzania poprawności używa wiersza "Default".
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ wiadomości |Wybierz typ komunikatu EDI. |
+| Typ komunikatu |Wybierz typ komunikatu EDI. |
 | Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu EDI właściwości, ograniczenia długości, elementy z pustymi danymi i separatory kończące. |
-| Rozszerzona walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
+| Rozszerzona Walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
 | Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
 | Przycinaj zera wiodące/kończące |Usuń wiodących ani końcowych zero i znaków spacji. |
 | Zasady dotyczące separatorów kończących |Generowanie separatory kończące. <p>Wybierz **niedozwolone** do Stanów Zjednoczonych zabraniają końcowe ograniczniki i separatorów w wymianie odebrane. Jeśli wymiana zawiera końcowe ograniczniki i separatory, wymiana zadeklarowano nie prawidłowy. <p>Wybierz **opcjonalnie** do akceptowania wymian z lub bez końcowe ograniczniki i separatorów. <p>Wybierz **obowiązkowe** podczas wymiany odebranych musi mieć końcowe ograniczniki i separatorów. |
@@ -143,10 +143,10 @@ Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany au
 | Właściwość | Opis |
 | --- | --- |
 | Utwórz puste tagi XML, jeśli dozwolone są separatory kończące |Zaznacz to pole wyboru, aby mieć nadawcy wymiany zawierają puste tagi XML dla końcowych separatorów. |
-| Rozdziel wymianę na zestawy transakcji — zawieś zestawy transakcji w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując koperty odpowiedni zestaw transakcji. Zawieś zestawy transakcji, które powodują Niepowodzenie weryfikacji. |
-| Rozdziel wymianę na zestawy transakcji — zawieś wymianę w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując odpowiednie koperty. Wstrzymaj wymiana całego, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. | 
+| Podziel wymiany na zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując koperty odpowiedni zestaw transakcji. Zawieś zestawy transakcji, które powodują Niepowodzenie weryfikacji. |
+| Rozdziel wymianę na zestawy transakcji — Zawieś wymianę w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując odpowiednie koperty. Wstrzymaj wymiana całego, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. | 
 | Zachowaj wymianę — Zawieś zestawy transakcji w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Zawieś zestawy transakcji, które powodują Niepowodzenie weryfikacji przerywając przetwarzania wszystkich innych zestawów transakcji. |
-| Zachowaj wymianę — zawieś wymianę w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Wstrzymaj wymiana całego, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. |
+| Zachowaj wymianę — Zawieś wymianę w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Wstrzymaj wymiana całego, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Skonfiguruj sposób umowie wysyłania wiadomości
 
@@ -172,14 +172,14 @@ Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne
 | UNB3.3 (adres routingu odwrotnego odbiorcy) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 14 znaków. |
 | UNB6.1 (hasło odwołania do odbiorcy) |Wprowadź wartość alfanumeryczne z co najmniej jedną i maksymalnie 14 znaków. |
 | UNB6.2 (kwalifikator odwołania do odbiorcy) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie dwóch znaków. |
-| UNB7 (identyfikator odwołania do aplikacji) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 14 znaków |
+| UNB7 (Identyfikator odwołania do aplikacji) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 14 znaków |
 
 ### <a name="acknowledgment"></a>Po potwierdzeniu
 | Właściwość | Opis |
 | --- | --- |
 | Potwierdzenie odbioru komunikatu (CONTRL) |Zaznacz to pole wyboru, jeśli partner hostowanej oczekuje otrzymać pomoc potwierdzenie (CONTRL). To ustawienie określa, że hostowanej partnera, który wysyła wiadomość, zażąda potwierdzenia od partnera gościa. |
 | Potwierdzenie (CONTRL) |Zaznacz to pole wyboru, jeśli partner hostowanej oczekuje otrzymać funkcjonalności potwierdzenie (CONTRL). To ustawienie określa, że hostowanej partnera, który wysyła wiadomość, zażąda potwierdzenia od partnera gościa. |
-| Generuj pętlę SG1/SG4 dla zaakceptowanych zestawów transakcji |Jeśli została wybrana opcja żądania potwierdzenia funkcjonalności, zaznacz to pole wyboru, aby wymusić Generowanie SG1/BL4 pętli w funkcjonalności potwierdzenia CONTRL dla zaakceptowanych zestawów transakcji. |
+| Generowanie SG1/sg4 dla zaakceptowanych zestawów transakcji |Jeśli została wybrana opcja żądania potwierdzenia funkcjonalności, zaznacz to pole wyboru, aby wymusić Generowanie SG1/BL4 pętli w funkcjonalności potwierdzenia CONTRL dla zaakceptowanych zestawów transakcji. |
 
 ### <a name="schemas"></a>Schematy
 | Właściwość | Opis |
@@ -189,13 +189,13 @@ Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne
 | UNH2.3 (ZWOLNIENIE) |Wprowadź numer wersji komunikatu. |
 | SCHEMA |Wybierz schemat używany. Schematy znajdują się na koncie integracji. Aby uzyskać dostęp do Twojego schematów, najpierw połączyć konta integracji aplikacji logiki. |
 
-### <a name="envelopes"></a>Koperty
+### <a name="envelopes"></a>Kopert
 | Właściwość | Opis |
 | --- | --- |
 | UNB8 (kod priorytetu przetwarzania) |Wprowadź wartość alfabetycznym, który nie jest więcej niż jeden znak. |
-| UNB10 (uzgodnienie komunikacji) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 40 znaków. |
+| UNB10 (Umowa komunikacji) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 40 znaków. |
 | UNB11 (wskaźnik testu) |Zaznacz to pole wyboru, aby wskazać, że wymiany generowane dane testowe |
-| Zastosuj segment UNA (porada ciągu usługi) |Zaznacz to pole wyboru, aby wygenerować segment UNA wymiany do wysłania. |
+| Zastosuj Segment UNA (porady ciągu usługi) |Zaznacz to pole wyboru, aby wygenerować segment UNA wymiany do wysłania. |
 | Zastosuj segmenty UNG (nagłówek grupy funkcji) |Zaznacz to pole wyboru, aby utworzyć grupowanie segmenty w nagłówku grupy funkcjonalnej komunikaty wysyłane do partnera gościa. Aby utworzyć segmenty UNG używane są następujące wartości: <p>Aby uzyskać **UNG1**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie sześciu znaków. <p>Aby uzyskać **UNG2.1**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 35 znaków. <p>Aby uzyskać **UNG2.2**, wprowadź wartość alfanumeryczne z maksymalnie cztery znaki. <p>Aby uzyskać **UNG3.1**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 35 znaków. <p>Aby uzyskać **UNG3.2**, wprowadź wartość alfanumeryczne z maksymalnie cztery znaki. <p>Aby uzyskać **UNG6**, wprowadź wartość alfanumeryczne z co najmniej jedną i maksymalnie trzy znaki. <p>Aby uzyskać **UNG7.1**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie trzy znaki. <p>Aby uzyskać **UNG7.2**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie trzy znaki. <p>Aby uzyskać **UNG7.3**, wprowadź wartość alfanumeryczne z co najmniej 1 znak i maksymalnie 6 znaków. <p>Aby uzyskać **UNG8**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 14 znaków. |
 
 ### <a name="character-sets-and-separators"></a>Zestawy znaków i separatory
@@ -209,25 +209,25 @@ Inne niż zestaw znaków, możesz wprowadzić innego zestawu ograniczników ma b
 | Typ danych wejściowych |Wybierz typ danych wejściowych z listy rozwijanej. |
 | Separator składników |Do oddzielania elementów danych złożonych, wprowadź jeden znak. |
 | Separator elementów danych |Do oddzielania elementów prostych danych w obrębie danych złożonych elementów, wprowadź jeden znak. |
-| Element końcowy segmentu |Aby wskazać koniec segmentu EDI, wprowadź jeden znak. |
-| Sufiks |Wybierz znak, który jest używany z identyfikatora segmentu. Po wyznaczeniu sufiksu, element danych terminator segmentu może być pusta. Terminator segmentu jest puste, należy określić sufiks. |
+| Terminator segmentu |Aby wskazać koniec segmentu EDI, wprowadź jeden znak. |
+| Suffix |Wybierz znak, który jest używany z identyfikatora segmentu. Po wyznaczeniu sufiksu, element danych terminator segmentu może być pusta. Terminator segmentu jest puste, należy określić sufiks. |
 
 ### <a name="control-numbers"></a>Numery kontrolne
 | Właściwość | Opis |
 | --- | --- |
 | UNB5 (numer kontrolny wymiany) |Wprowadź prefiks zakresu wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania wychodzących wymiany. Prefiksem i sufiksem są opcjonalne, gdy numer kontrolny jest wymagana. Numer kontrolny są zwiększane dla każdej nowej wiadomości; Prefiks i sufiks pozostają takie same. |
 | UNG5 (numer kontrolny grupy) |Wprowadź prefiks zakresu wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numer kontrolny grupy. Prefiksem i sufiksem są opcjonalne, gdy numer kontrolny jest wymagana. Numer kontrolny są zwiększane dla każdej nowej wiadomości, aż do osiągnięcia maksymalnej wartości; Prefiks i sufiks pozostają takie same. |
-| UNH1 (numer odwołania do nagłówka komunikatu) |Wprowadź prefiks zakresu wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numer odwołania do nagłówka komunikatu. Prefiks i sufiks są opcjonalne, gdy wymagany jest numer odwołania. Numer referencyjny są zwiększane dla każdej nowej wiadomości; Prefiks i sufiks pozostają takie same. |
+| UNH1 (numer odwołania nagłówka komunikatu) |Wprowadź prefiks zakresu wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numer odwołania do nagłówka komunikatu. Prefiks i sufiks są opcjonalne, gdy wymagany jest numer odwołania. Numer referencyjny są zwiększane dla każdej nowej wiadomości; Prefiks i sufiks pozostają takie same. |
 
-### <a name="validations"></a>Walidacje
+### <a name="validations"></a>Liczba ocen
 
 Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany automatycznie. Jeśli nie określisz żadnych reguł sprawdzania poprawności używa wiersza "Default".
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ wiadomości |Wybierz typ komunikatu EDI. |
+| Typ komunikatu |Wybierz typ komunikatu EDI. |
 | Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu, ograniczenia długości, elementy z pustymi danymi i separatory kończące właściwości EDI. |
-| Rozszerzona walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
+| Rozszerzona Walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
 | Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
 | Przycinaj zera wiodące/kończące |Usuń początkowe lub końcowe zero znaków. |
 | Zasady dotyczące separatorów kończących |Generowanie separatory kończące. <p>Wybierz **niedozwolone** do Stanów Zjednoczonych zabraniają końcowe ograniczniki i separatorów w wymianie wysłane. Jeśli wymiana zawiera końcowe ograniczniki i separatory, wymiana zadeklarowano nie prawidłowy. <p>Wybierz **opcjonalnie** wysyłać wymian z lub bez końcowe ograniczniki i separatorów. <p>Wybierz **obowiązkowe** Jeśli wysłane wymiany musi mieć końcowe ograniczniki i separatorów. |

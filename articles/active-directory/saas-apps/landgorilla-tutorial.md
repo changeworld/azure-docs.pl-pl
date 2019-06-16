@@ -16,10 +16,10 @@ ms.date: 03/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d12519a2bd0a5e3951d0ca9ae51a54bd728a782b
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65987891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą klienta Gorilla ziemi
@@ -65,9 +65,9 @@ Aby skonfigurować integrację ziemi Gorilla klienta w usłudze Azure AD, należ
 
 **Aby dodać klienta Gorilla ziemi z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu zarządzania systemu Azure](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W  **[portalu zarządzania systemu Azure](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
-    ![Active Directory][1]
+    ![Usługa Active Directory][1]
 
 1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 

@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60478572"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Aprowizowanie maszyny wirtualnej z programem SQL Server w witrynie Azure Portal
@@ -92,7 +92,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
    * **Nazwa użytkownika**: Wprowadź nazwę administratora maszyny wirtualnej.
    * **Klucz publiczny SSH**: Wprowadź klucz publiczny RSA.
-   * **Publiczne porty wejściowe**: Wybierz pozycję **Zezwalaj na wybrane porty**, a następnie na liście **Wybieranie publicznych portów wejściowych** wybierz port **SSH (22)**. W tym przewodniku Szybki start ten krok jest konieczny do połączenia z programem SQL Server i ukończenia jego konfiguracji. Jeśli chcesz łączyć się zdalnie z programem SQL Server, wybierz również pozycję **MS SQL (1433)**, aby otworzyć port 1433 na połączenia przez Internet.
+   * **Publiczne porty wejściowe**: Wybierz pozycję **Zezwalaj na wybrane porty**, a następnie na liście **Wybieranie publicznych portów wejściowych** wybierz port **SSH (22)** . W tym przewodniku Szybki start ten krok jest konieczny do połączenia z programem SQL Server i ukończenia jego konfiguracji. Jeśli chcesz łączyć się zdalnie z programem SQL Server, wybierz również pozycję **MS SQL (1433)** , aby otworzyć port 1433 na połączenia przez Internet.
 
    ![Porty wejściowe](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
@@ -171,7 +171,7 @@ Kilka [pakietów](sql-server-linux-virtual-machines-overview.md#packages) progra
 Jeśli potrzebujesz zdalnie połączyć się z programem SQL Server na maszynie wirtualnej platformy Azure, musisz skonfigurować regułę ruchu przychodzącego w sieciowej grupie zabezpieczeń. Reguła zezwala na ruch przez port, na którym nasłuchuje program SQL Server (domyślnie 1433). Poniższe kroki pokazują, jak korzystać z witryny Azure Portal w tym kroku.
 
 > [!TIP]
-> Jeśli podczas inicjowania obsługi w oknie Ustawienia wybrano port wejściowy **MS SQL (1433)**, te zmiany zostały wprowadzone automatycznie. Możesz przejść do kolejnej sekcji, która dotyczy konfigurowania zapory.
+> Jeśli podczas inicjowania obsługi w oknie Ustawienia wybrano port wejściowy **MS SQL (1433)** , te zmiany zostały wprowadzone automatycznie. Możesz przejść do kolejnej sekcji, która dotyczy konfigurowania zapory.
 
 1. W portalu wybierz pozycję **Maszyny wirtualne**, a następnie wybierz swoją maszynę wirtualną z programem SQL Server.
 1. W okienku nawigacji po lewej stronie w obszarze **Wstawienia** wybierz pozycję **Sieć**.

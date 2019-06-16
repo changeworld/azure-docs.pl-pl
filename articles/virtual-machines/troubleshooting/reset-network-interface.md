@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307310"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Jak zresetować interfejsu sieciowego dla maszyny Wirtualnej Windows Azure 
@@ -79,7 +79,7 @@ Aby zresetować interfejsu sieciowego, wykonaj następujące kroki:
 #### <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
 
 1.  Przejdź do witryny [Azure Portal]( https://ms.portal.azure.com).
-2.  Wybierz **maszyny wirtualne (klasyczne)**.
+2.  Wybierz **maszyny wirtualne (klasyczne)** .
 3.  Wybierz maszynę wirtualną, do których to dotyczy.
 4.  Wybierz **adresów IP**.
 5.  Jeśli **przypisanie prywatnego adresu IP** nie **statyczne**, zmień ją na **statyczne**.

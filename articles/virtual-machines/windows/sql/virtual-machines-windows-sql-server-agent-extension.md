@@ -17,10 +17,10 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2943a1501e1d81ff4884c21b5aa3861e16523bbb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827737"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Automatyzowanie zadań zarządzania na maszynach wirtualnych platformy Azure za pomocą rozszerzenia agenta programu SQL Server (Resource Manager)
@@ -114,7 +114,7 @@ Poprzednie polecenie potwierdza agent jest zainstalowany i zawiera informacje o 
     $sqlext.AutoPatchingSettings
     $sqlext.AutoBackupSettings
 
-## <a name="removal"></a>Usunięcie
+## <a name="removal"></a>Usuwanie
 W witrynie Azure portal, można odinstalować rozszerzenie, klikając przycisk wielokropka **rozszerzenia** okna właściwości maszyny wirtualnej. Następnie kliknij pozycję **Usuń**.
 
 ![Odinstaluj rozszerzenie agenta IaaS SQL Server w witrynie Azure portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)

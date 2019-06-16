@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 05/21/2019
+ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93eb0fba91ce5064d04a340e8b3e5b984ee73081
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 1dcdbbf0a2a71fa38b6eacd6a8d179cdad979937
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515564"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059294"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -62,6 +62,19 @@ Podczas konstruowania modelu jest zautomatyzowane, możesz również [Dowiedz si
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 <a name="preprocess"></a>
+
+## <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
+Tworzenie prognoz jest integralną częścią wszystkich firm, czy jest to żądanie przychodu, spisu, sprzedaży lub klienta. Automatyczne wykorzystuje uczenie maszynowe szereg technik połączone i podejścia do zaleca się prognozowania szeregów czasowych wysokiej jakości. Eksperymenty szeregów czasowych w ml automatyczne są traktowane jako problem wieloczynnikowa Regresja. Ostatnie szeregów czasowych wartościami są "przestawiać" aby stać się dodatkowe wymiary regresor wraz z innymi czynniki prognostyczne. 
+
+Takie podejście, w odróżnieniu od klasycznego czas serii metod, ma zalet naturalnie dołączanie wielu zmiennych kontekstowych i ich związek ze sobą podczas szkolenia. W rzeczywistych aplikacjach prognozowania wiele czynników może mieć wpływ na prognozę. Na przykład gdy prognozowania sprzedaży, interakcje trendów historycznych, kursu i ceny wszystkich wspólnie dysku wyniki sprzedaży. Dodatkowe korzyści to, że wszystkie najnowsze innowacje w modele regresji, natychmiast zastosowane do prognozowania.
+
+Jak daleko w przyszłości prognozy powinny rozszerzać (horizon prognozy) jest częścią specyfikacji podstawowych prognozy. Ustawienie parametru wymaganego `max_horizon` eksperyment definiuje liczbę okresów jednostki (oparte na przedział czasu danych szkoleniowych, np. co miesiąc, co tydzień warunkowy typu należy przewidzieć out. 
+
+Automatyczne ML uzyskuje informacje o pojedynczej, ale często wewnętrznie rozgałęziony modelu dla wszystkich elementów w horyzonty zestaw danych i prognozowania. Większej ilości danych związku z tym jest dostępny do oszacowania parametry modelu i Generalizacja niewidzianych serii staje się możliwe. 
+
+Funkcje wyodrębnione z danych szkoleniowych odgrywają kluczową rolę. Automatyczne ML przeprowadza standardowe wstępne kroki przygotowawcze i generuje dodatkowe funkcje szeregów czasowych (np. rok, miesiąc i dzień tygodnia itp.) sezonowych efektów przechwycić i zmaksymalizować predykcyjne dokładności. 
+
+Jeśli odpowiednie dla danego scenariusza, można kierować zautomatyzowane uczenia Maszynowego, aby utworzyć spowolnienia (`target_lags`) lub stopniowe okna agregacji danych (`target_rolling_window_size`) z obiektu docelowego (`y_value`) ostatnie wartości. 
 
 ## <a name="preprocessing"></a>Przetwarzanie wstępne
 
@@ -160,6 +173,7 @@ Automatyczne ML jest również dostępna w innych rozwiązaniach firmy Microsoft
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Wybór modelu automatyczne i szkolenia w aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code za pomocą platformy ML.NET zautomatyzowane ML (wersja zapoznawcza).|
 |[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Skalowanie w poziomie uczenie Maszynowe szkolenia zadaniami automatycznymi na platformie Spark w klastrach HDInsight równolegle.|
 |[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Wywoływanie modeli uczenia maszynowego bezpośrednio w usłudze Power BI (wersja zapoznawcza).|
+|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Utwórz nową maszynę uczenia modeli danych w klastrach danych big data 2019 r programu SQL Server.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

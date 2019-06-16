@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: bidishac
-ms.openlocfilehash: 83149a8422db25106a97b1711c0ae9ce3c6603eb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: b463e2bd3df0c38bf446745a2eade221b00324da
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465676"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072533"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Szybki start: Utwórz Asystenta ustawień wirtualnego pierwszy głosu przy użyciu zestawu SDK rozpoznawania mowy, języka Java
 
@@ -30,11 +30,11 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 * System operacyjny: Windows (64-bitowy), 16.04/18.04 Ubuntu Linux (64-bitowa) lub z systemem macOS 10.13 lub nowszy
 * [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [zestaw JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
+* Klucz subskrypcji platformy Azure dla usług mowy w **westus2** regionu. Tworzenie subskrypcji na [witryny Azure portal](https://portal.azure.com).
 * Wstępnie skonfigurowane robota utworzone przy użyciu platformy Bot Framework w wersji 4.2 lub nowszej. Bot musi subskrybować nowy kanał "Bezpośrednie wiersza mowa" do odbierania głosowych danych wejściowych.
 
     > [!NOTE]
-    > W wersji zapoznawczej, kanału Direct mowy wiersza obsługuje obecnie tylko **westus2** regionu.
+    > Bezpośrednie wiersza Speech (wersja zapoznawcza) jest obecnie dostępna tylko w **westus2** regionu.
 
     > [!NOTE]
     > 30-dniowej wersji próbnej dla warstwy standardowa, opisanego w warstwie cenowej [bezpłatnego wypróbowania usługi mowy](get-started.md) jest ograniczony do **westus** (nie **westus2**) i dlatego nie jest zgodny z bezpośrednich Wiersz mowy. Warstwy bezpłatna i standardowa **westus2** subskrypcje są zgodne.
@@ -67,7 +67,7 @@ Ponadto, aby włączyć rejestrowanie, należy zaktualizować **pom.xml** pliku,
     </dependency>
    ```
 
-## <a name="add-sample-code"></a>Dodaj kod przykładowy
+## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
 1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
 
@@ -156,8 +156,8 @@ Ponadto, aby włączyć rejestrowanie, należy zaktualizować **pom.xml** pliku,
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
-    final String subscriptionKey = "YourSubscriptionKey"; // your subscription key
-    final String region = "YourServiceRegion"; // Your service region. Currently assumed to be westus2
+    final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
+    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only 'westus2' is currently supported
     final BotConnectorConfig botConnectorConfig = BotConnectorConfig.fromSecretKey(channelSecret, subscriptionKey, region);
 
     // Configure audio input from microphone.

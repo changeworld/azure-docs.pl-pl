@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc8431e2c45cc3bfdfa08dd0078220ab2d290309
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 883620d6aa25f71a454c7add6d60e38b4974facf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Samouczek: Integracja usługi Azure Active Directory z Velpic SAML
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację Velpic protokołu SAML w usłudze Azure AD, nale�
 
 **Aby dodać Velpic SAML z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -249,7 +249,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 1. Kliknij pozycję **"Zaloguj się za pomocą usługi Azure AD"** przycisk, aby zalogować się do Velpic przy użyciu swojego konta usługi Azure AD.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

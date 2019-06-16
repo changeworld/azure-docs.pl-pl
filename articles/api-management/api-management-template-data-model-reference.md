@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
 ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61094526"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Dokumentacja modelu danych szablonu usługi Azure API Management
@@ -30,7 +30,7 @@ W tym temacie opisano reprezentacji jednostek i typów dla wspólne elementy uż
 
 Portalu dla deweloperów, nie jest dostępne w warstwie zużycia.
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Tematy pomocy
 
 -   [Interfejs API](#API)  
 -   [Podsumowanie interfejsu API](#APISummary)  
@@ -88,7 +88,7 @@ Portalu dla deweloperów, nie jest dostępne w warstwie zużycia.
 |`Id`|string|Unikatowy identyfikator aplikacji.|  
 |`Title`|string|Tytuł aplikacji.|  
 |`Description`|string|Opis aplikacji.|  
-|`Url`|URI|Identyfikator URI dla aplikacji.|  
+|`Url`|Identyfikator URI|Identyfikator URI dla aplikacji.|  
 |`Version`|string|Informacje o wersji dla aplikacji.|  
 |`Requirements`|string|Opis wymagań aplikacji.|  
 |`State`|numer|Bieżący stan aplikacji.<br /><br /> -0 - zarejestrowany<br /><br /> -1 - przesłane<br /><br /> -2 - opublikowane<br /><br /> -3 - odrzucone<br /><br /> -4 - nieopublikowane|  

@@ -1,5 +1,5 @@
 ---
-title: Ograniczenia w usłudze Azure Cosmos DB
+title: Limity w usłudze Azure Cosmos DB
 description: W tym artykule opisano limity w usłudze Azure Cosmos DB.
 author: arramac
 ms.author: arramac
@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
 ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969495"
 ---
-# <a name="limits-in-azure-cosmos-db"></a>Ograniczenia w usłudze Azure Cosmos DB
+# <a name="limits-in-azure-cosmos-db"></a>Limity w usłudze Azure Cosmos DB
 
 Ten artykuł zawiera omówienie limitów w usłudze Azure Cosmos DB.
 
@@ -27,9 +27,9 @@ Po utworzeniu konta usługi Azure Cosmos w ramach Twojej subskrypcji, możesz za
 | Maksymalna (RUS) dla bazy danych ([trybie aprowizowanej przepływności udostępnionego](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 domyślnie. Możesz zwiększyć jej [wypełniając bilet pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) lub skontaktować się z nami za pomocą [poproś Cosmos DB](mailto:askcosmosdb@microsoft.com) |
 | Maksymalne jednostek żądania na klucz partycji (logiczny) | 10 000 |
 | Maksymalna miejsca do magazynowania we wszystkich elementów na klucz partycji (logiczny)| 10 GB |
-| Maksymalna liczba kluczy w oddzielnej partycji (logiczny) | Nieograniczone |
-| Maksymalna pojemność jednej kontenera | Nieograniczone |
-| Maksymalna pojemność jednej bazy danych | Nieograniczone |
+| Maksymalna liczba kluczy w oddzielnej partycji (logiczny) | Nieograniczona liczba |
+| Maksymalna pojemność jednej kontenera | Nieograniczona liczba |
+| Maksymalna pojemność jednej bazy danych | Nieograniczona liczba |
 
 > [!NOTE]
 > Najlepsze rozwiązania dotyczące obciążeń, które mają klucze partycji, które wymagają wyższych limitów w celu przechowywania lub przepływność, zobacz [projektowanie pod kątem klawisze partycji](synthetic-partition-keys.md)

@@ -1,20 +1,19 @@
 ---
 title: Zakładka Optymalizuj przepływ danych mapowania fabryki danych platformy Azure
-description: Optymalizowanie mapowanie przepływów danych przy użyciu ustawień optymalizacji w partycji kartę w usłudze Azure Data Factory
+description: Optymalizacja Azure danych fabryki mapowanie przepływu danych przy użyciu karty Optymalizowanie przy użyciu ustawień partycji
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 3802a8475d8a39a2f275dbc7fcf21ce69892a117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 372922fff600aaa12fddfeeb86ff4522eca3e602
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262292"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075099"
 ---
-# <a name="mapping-data-flow-transformation-optimize-tab"></a>Przekształcanie przepływu danych mapowania zoptymalizować kartę
+# <a name="mapping-data-flow-transformation-optimize-tab"></a>Mapowanie danych przekształcania przepływ optymalizacji kartę
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -51,3 +50,8 @@ Należy utworzyć wyrażenie, które zapewnia szereg stałych wartości kolumny 
 ### <a name="key"></a>Klucz
 
 W przypadku dobrej znajomości sposobu Kardynalność dane klucza partycji może być strategii partycji. Partycjonowanie klucza spowoduje utworzenie partycji dla każdej unikatowej wartości w kolumnie. Nie można ustawić liczbę partycji, ponieważ liczba będzie zależeć od unikatowych wartości w danych.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+[Przewodnik dotyczący wydajności przepływ danych mapowania](concepts-data-flow-performance.md)
+[przepływ danych monitorowania](concepts-data-flow-monitoring.md)

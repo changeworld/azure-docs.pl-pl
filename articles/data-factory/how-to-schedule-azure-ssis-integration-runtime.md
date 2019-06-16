@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60521935"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchamiać i zatrzymywać środowisko Azure-SSIS Integration Runtime zgodnie z harmonogramem
@@ -109,7 +109,7 @@ Jeśli utworzysz trzeci wyzwalacz, który jest zaplanowane do uruchomienia codzi
 
    ![ADF działanie internetowe na żądanie środowisko SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
 
-5. Przypisz tożsamości zarządzanej dla usługi ADF **Współautor** roli do samego siebie, więc działania internetowe w jej potoki może wywołać interfejs API REST do uruchamiania/zatrzymywania środowisk IR Azure-SSIS aprowizowane w nim.  Na stronie usługi ADF w witrynie Azure portal, kliknij **kontrola dostępu (IAM)**, kliknij przycisk **+ Dodaj przypisanie roli**, a następnie na **Dodaj przypisanie roli** blok, wykonaj następujące czynności.
+5. Przypisz tożsamości zarządzanej dla usługi ADF **Współautor** roli do samego siebie, więc działania internetowe w jej potoki może wywołać interfejs API REST do uruchamiania/zatrzymywania środowisk IR Azure-SSIS aprowizowane w nim.  Na stronie usługi ADF w witrynie Azure portal, kliknij **kontrola dostępu (IAM)** , kliknij przycisk **+ Dodaj przypisanie roli**, a następnie na **Dodaj przypisanie roli** blok, wykonaj następujące czynności.
 
     1. Aby uzyskać **roli**, wybierz opcję **Współautor**. 
     2. Aby uzyskać **Przypisz dostęp do**, wybierz opcję **użytkownika, grupy lub jednostki usługi Azure AD**. 
@@ -131,7 +131,7 @@ Jeśli utworzysz trzeci wyzwalacz, który jest zaplanowane do uruchomienia codzi
 2. Aby przetestować potoku trzeci, uruchom program SQL Server Management Studio (SSMS). W **Połącz z serwerem** okna, wykonaj następujące czynności. 
 
     1. Aby uzyskać **nazwy serwera**, wprowadź  **&lt;nazwę serwera usługi Azure SQL Database&gt;. database.windows.net**.
-    2. Wybierz **Opcje >>**.
+    2. Wybierz **Opcje >>** .
     3. Aby uzyskać **Połącz z bazą danych**, wybierz opcję **SSISDB**.
     4. Wybierz przycisk **Połącz**. 
     5. Rozwiń **Integracja usług katalogów** -> **SSISDB** -> folder -> **projektów** -> Your SSIS Projekt -> **pakietów** . 
@@ -156,7 +156,7 @@ Teraz, gdy potoków działa zgodnie z oczekiwaniami, można utworzyć wyzwalaczy
 
     1. Aby uzyskać **nazwa**, wprowadź nazwę dla wyzwalacza. W poniższym przykładzie **Codzienne uruchamianie** jest nazwa wyzwalacza. 
     2. Aby uzyskać **typu**, wybierz opcję **harmonogram**. 
-    3. Aby uzyskać **Start Data (UTC)**, wprowadź datę i godzinę w formacie UTC. 
+    3. Aby uzyskać **Start Data (UTC)** , wprowadź datę i godzinę w formacie UTC. 
     4. Aby uzyskać **cyklu**, wprowadź tempa wyzwalacza. W poniższym przykładzie jest **codzienne** po. 
     5. Dla **zakończenia**, wybierz opcję **zakończenia nie** lub wprowadź Data i godzina zakończenia po wybraniu **w dniu**. 
     6. Wybierz **aktywowano** aktywacji natychmiast, po opublikowaniu całego ustawienia usługi ADF. 
@@ -340,11 +340,11 @@ Poniższa sekcja zawiera instrukcje tworzenia elementu runbook programu PowerShe
 
    ![Uruchom okno elementu runbook](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
    
-6. W oknie zadania wybierz **dane wyjściowe** kafelka. W oknie danych wyjściowych oczekiwania na wiadomość **### Ukończono ###** po stwierdzeniu **### uruchamianie ###**. Uruchamianie środowiska Azure-SSIS IR trwa około 20 minut. Zamknij **zadania** okna i get kopii do **Runbook** okna.
+6. W oknie zadania wybierz **dane wyjściowe** kafelka. W oknie danych wyjściowych oczekiwania na wiadomość **### Ukończono ###** po stwierdzeniu **### uruchamianie ###** . Uruchamianie środowiska Azure-SSIS IR trwa około 20 minut. Zamknij **zadania** okna i get kopii do **Runbook** okna.
 
    ![Środowisko IR Azure SSIS — pracę](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
-7. Powtórz dwa poprzednie kroki, za pomocą **ZATRZYMAĆ** jako wartość pozycji **operacji**. Uruchom element runbook ponownie, wybierając **Start** przycisk na pasku narzędzi. Wprowadź grupę zasobów, ADF i Azure-SSIS IR nazwy. Aby uzyskać **operacji**, wprowadź **ZATRZYMAĆ**. W oknie danych wyjściowych oczekiwania na wiadomość **### Ukończono ###** po stwierdzeniu **### zatrzymywanie ###**. Zatrzymywanie środowiska Azure-SSIS IR nie przyjmuje tak długo, jak ją uruchomić. Zamknij **zadania** okna i get kopii do **Runbook** okna.
+7. Powtórz dwa poprzednie kroki, za pomocą **ZATRZYMAĆ** jako wartość pozycji **operacji**. Uruchom element runbook ponownie, wybierając **Start** przycisk na pasku narzędzi. Wprowadź grupę zasobów, ADF i Azure-SSIS IR nazwy. Aby uzyskać **operacji**, wprowadź **ZATRZYMAĆ**. W oknie danych wyjściowych oczekiwania na wiadomość **### Ukończono ###** po stwierdzeniu **### zatrzymywanie ###** . Zatrzymywanie środowiska Azure-SSIS IR nie przyjmuje tak długo, jak ją uruchomić. Zamknij **zadania** okna i get kopii do **Runbook** okna.
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Tworzenie harmonogramów dla elementu runbook można uruchomić/zatrzymać środowisko Azure-SSIS IR
 

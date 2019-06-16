@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7a0e628eed861767d1eeb50b0ded7bb3d8807328
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3ea41a16f79f903b5ff7d2b93f74f7d3d2a0dd83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271565"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133689"
 ---
 Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji w całym zarządzanym obrazów. Podaj udostępnionego galerie obrazów:
 
 - Zarządzane globalnej replikacji obrazów.
 - Przechowywanie wersji i grupowania obrazów w celu ułatwienia zarządzania.
-- Obrazy o wysokiej dostępności przy użyciu kont magazyn Strefowo nadmiarowy (ZRS) w regionach, które obsługują strefy dostępności. Magazyn ZRS zapewnia lepszą odporność na awarie strefowych.
+- Obrazy o wysokiej dostępności przy użyciu kont magazyn Strefowo nadmiarowy (ZRS) w regionach, które obsługują strefy dostępności. Magazyn strefowo nadmiarowy oferuje lepszą odporność na awarie dotyczące jednej strefy.
 - Udostępnianie w subskrypcjach, a nawet między dzierżawami usługi Active Directory (AD), korzystając z modelu RBAC.
 - Skalowanie wdrożenia za pomocą obrazu repliki w każdym regionie.
 
@@ -78,15 +78,15 @@ W poniższej tabeli wymieniono regionów źródłowych. We wszystkich regionach 
 
 | Regionów źródłowych |
 |---------------------|-----------------|------------------|-----------------|
-| Australia Środkowa   | Środkowe stany USA — EUAP | Korea Środkowa    | Południowe Zjednoczone Królestwo 2      |
-| Australia Środkowa 2 | Azja Wschodnia       | Korea Południowa      | Zachodnie Zjednoczone Królestwo         |
-| Australia Wschodnia      | Wschodnie stany USA         | Środkowo-północne stany USA | Środkowo-zachodnie stany USA |
-| Australia Południowo-Wschodnia | Wschodnie stany USA 2       | Europa Północna     | Europa Zachodnia     |
-| Brazylia Południowa        | Wschodnie stany USA 2 — EUAP  | Środkowo-południowe stany USA | Indie Zachodnie      |
-| Kanada Środkowa      | Francja Środkowa  | Indie Południowe      | Zachodnie stany USA         |
-| Kanada Wschodnia         | Francja Południowa    | Azja Południowo-Wschodnia   | Zachodnie stany USA         |
-| Indie Środkowe       | Japonia Wschodnia      | Północne Zjednoczone Królestwo         | Zachodnie stany USA 2       |
-| Środkowe stany USA          | Japonia Zachodnia      | Południowe Zjednoczone Królestwo         |                 |
+| Australia Środkowa   | Środkowe stany USA — EUAP | Korea Środkowa    | Środkowo-zachodnie stany USA |
+| Australia Środkowa 2 | Azja Wschodnia       | Korea Południowa      | Europa Zachodnia     |
+| Australia Wschodnia      | Wschodnie stany USA         | Środkowo-północne stany USA | Indie Zachodnie      |
+| Australia Południowo-Wschodnia | Wschodnie stany USA 2       | Europa Północna     | Zachodnie stany USA         |
+| Brazylia Południowa        | Wschodnie stany USA 2 — EUAP  | Środkowo-południowe stany USA | Zachodnie stany USA 2       |
+| Kanada Środkowa      | Francja Środkowa  | Indie Południowe      |                 |
+| Kanada Wschodnia         | Francja Południowa    | Azja Południowo-Wschodnia   |                 |
+| Indie Środkowe       | Japonia Wschodnia      | Południowe Zjednoczone Królestwo         |                 |
+| Środkowe stany USA          | Japonia Zachodnia      | Zachodnie Zjednoczone Królestwo          |                 |
 
 
 
@@ -139,7 +139,7 @@ Galeria obrazów udostępnione, definicję obrazu i wersję obrazu są wszystkie
 
 | Udostępnione użytkownikowi     | Galeria obrazów udostępnionych | Definicja obrazu | Wersja obrazu |
 |----------------------|----------------------|--------------|----------------------|
-| Galeria obrazów udostępnionych | Yes                  | Yes          | Yes                  |
+| Galeria obrazów udostępnionych | Tak                  | Yes          | Tak                  |
 | Definicja obrazu     | Nie                   | Yes          | Tak                  |
 
 Zaleca się udostępniania na poziomie galerii, aby uzyskać najlepsze wyniki. Nie zaleca się udostępniania wersje poszczególnych obrazów. Aby uzyskać więcej informacji o ROLACH, zobacz [zarządzanie dostępem do zasobów platformy Azure przy użyciu funkcji RBAC](../articles/role-based-access-control/role-assignments-portal.md).

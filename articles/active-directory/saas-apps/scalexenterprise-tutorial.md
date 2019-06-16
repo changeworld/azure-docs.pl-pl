@@ -16,10 +16,10 @@ ms.date: 04/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64edf2aa47211c1d2a598417a7b2edc00f260075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60321387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą ScaleX Enterprise
@@ -44,7 +44,7 @@ Aby skonfigurować integrację usługi Azure AD z usługą ScaleX Enterprise, po
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
+Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
@@ -60,7 +60,7 @@ Aby skonfigurować integrację ScaleX przedsiębiorstwa w usłudze Azure AD, nal
 
 **Aby dodać ScaleX przedsiębiorstwa z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -115,7 +115,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     a. W **identyfikator** polu tekstowym wpisz wartość, przy użyciu następującego wzorca: `https://platform.rescale.com/saml2/<company id>/`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://platform.rescale.com/saml2/<company id>/acs/`
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://platform.rescale.com/saml2/<company id>/acs/`
 
 1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
@@ -142,7 +142,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_certificate.png) 
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/scalexenterprise-tutorial/tutorial_general_400.png)
     
@@ -188,7 +188,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -261,7 +261,7 @@ Kliknij Kafelek ScaleX przedsiębiorstwa, w panelu dostępu, można będzie pobr
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: amishu
-ms.openlocfilehash: 41a55eca321cbe1bfa23a889b8e3ce7c701ce769
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8717dad27786450e4275c9fd91523c0e9379f375
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468051"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073062"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Przy użyciu kodera-dekodera kompresji wejścia audio z zestawem SDK rozpoznawania mowy
 
@@ -23,6 +23,7 @@ Zestaw SDK rozpoznawania mowy **Stream dane wejściowe dźwięk Compressed** int
 
 > [!IMPORTANT]
 > Strumieniowe przesyłanie audio skompresowanym jest obsługiwana tylko w przypadku C++, C#i Java w systemie Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9).
+> Mowy zestawu SDK w wersji 1.4.0 lub nowszy jest wymagany.
 
 Liniowy format wav/PCM znajduje się w dokumentacji mowy linii głównej.  Poza wav PCM obsługiwane są następujące formaty danych wejściowych kodera-dekodera kompresji:
 

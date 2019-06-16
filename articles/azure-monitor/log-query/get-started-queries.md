@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
 ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65519017"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań
@@ -138,7 +138,7 @@ SecurityEvent
 ### <a name="time-picker"></a>Selektor godziny
 Selektor czasu jest obok przycisku Uruchom i wskazuje, że firma Microsoft zadajesz zapytanie tylko rekordy z ostatnich 24 godzin. Jest to domyślny zakres czasu stosowane do wszystkich zapytań. Aby uzyskać tylko rekordy z ostatniej godziny, wybierz pozycję _Ostatnia godzina_ i ponownie uruchom zapytanie.
 
-![Selektor godziny](media/get-started-queries/timepicker.png)
+![Selektor czasu](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>Filtr czasu w zapytaniu

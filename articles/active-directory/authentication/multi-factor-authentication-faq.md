@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65228169"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
@@ -61,7 +61,7 @@ W Kanadzie, firma Microsoft używa następujących krótkich kodów SMS:
 
 Microsoft nie gwarantuje spójne dostarczania monitu wiadomości SMS lub uwierzytelniania wieloskładnikowego opartego na głos przez ten sam numer. W celu poprawy naszych użytkowników firmy Microsoft można dodać lub usunąć krótkich kodów w dowolnym momencie, jak możemy dostosować trasy zwiększyć skuteczność programu SMS. Microsoft nie obsługuje krótkich kodów dla kraje/regiony poza USA i Kanady.
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Większość pytania dotyczące rozliczeń można uzyskać, odwołując się do jednej [stronie cennika usługi Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) lub dokumentacji dotyczącej [sposobu uzyskania usługi Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 

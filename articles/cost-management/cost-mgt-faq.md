@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002022"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
@@ -118,7 +118,7 @@ Aby dodać dodatkowe konta programu CSP do jednostki, wybierz **dostępu do plik
 
 Może mieć wielu kont platformy Azure przy użyciu różnych walutach. Jednak raportach kosztów w rozwiązaniu Cloudyn nie pokazuj więcej niż jeden typ waluty na raport.
 
-Jeśli masz wiele subskrypcji przy użyciu różnych walutach, jednostka nadrzędna i jego waluty jednostki podrzędne są wyświetlane w USD **$**. Nasze sugerowane najlepszym rozwiązaniem jest należy unikać używania różnych walutach są w tej samej hierarchii jednostki. Innymi słowy wszystkie swoje subskrypcje strukturę jednostki należy używać tej samej walucie.
+Jeśli masz wiele subskrypcji przy użyciu różnych walutach, jednostka nadrzędna i jego waluty jednostki podrzędne są wyświetlane w USD **$** . Nasze sugerowane najlepszym rozwiązaniem jest należy unikać używania różnych walutach są w tej samej hierarchii jednostki. Innymi słowy wszystkie swoje subskrypcje strukturę jednostki należy używać tej samej walucie.
 
 Cloudyn automatycznie wykrywa walucie subskrypcji Enterprise Agreement i prezentuje je poprawnie w raportach.  Jednak Cloudyn wyświetlane są tylko USD **$** dla dostawcy usług Kryptograficznych i kont platformy Azure bezpośrednio w sieci web.
 

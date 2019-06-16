@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8e7fed30a9b25b2960e3321eca5c4398911f35
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7e236d3142ba4410b6942f9e8069e1429aae5378
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236250"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108422"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Zagadnienia dotyczące topologii sieci przy użyciu serwera Proxy usługi Azure Active Directory Application
 
@@ -176,5 +176,5 @@ Można również rozważyć użycie jednego innych wariant w takiej sytuacji. W 
 
 - [Włącz serwer Proxy aplikacji](application-proxy-add-on-premises-application.md)
 - [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Włączanie dostępu warunkowego](application-proxy-integrate-with-sharepoint-server.md)
+- [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md)
 - [Rozwiązywanie problemów z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)

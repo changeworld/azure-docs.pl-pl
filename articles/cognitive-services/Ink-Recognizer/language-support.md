@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 98962182da86fceb0b6fcc8540422f93bc0058f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65026301"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Obsługa języka i regionu dla interfejsu API rozpoznawania pisma odręcznego
@@ -53,7 +53,7 @@ W tym artykule opisano, które języki są obsługiwane dla interfejsu API rozpo
 | Irlandzki                                      |     `ga-IE`     |
 | Włoski (Włochy)                            |     `it-IT`     |
 | Japoński                                   |     `ja-JP`     |
-| Kinjarwanda                                |     `rw-RW`     |
+| Kinyarwanda                                |     `rw-RW`     |
 | Suahili (Kenia)                          |     `sw-KE`     |
 | Koreański                                     |     `ko-KR`     |
 | Luksemburski                              |     `lb-LU`     |
@@ -65,11 +65,11 @@ W tym artykule opisano, które języki są obsługiwane dla interfejsu API rozpo
 | Polski                                     |     `pl-PL`     |
 | Portugalski (Brazylia)                        |     `pt-BR`     |
 | Portugalski (Portugalia)                      |     `pt-PT`     |
-| Romansz (retoromański)                                    |     `rm-CH`     |
+| Romansz — Retoromański                                    |     `rm-CH`     |
 | Rumuński                                   |     `ro-RO`     |
 | Rosyjski                                    |     `ru-RU`     |
 | Szkocki celtycki                            |     `gd-GB`     |
-| Sesotho północny                           |    `nso-ZA`     |
+| Sesotho sa Leboa                           |    `nso-ZA`     |
 | Serbski (cyrylica, Bośnia i Hercegowina) |  `sr-Cyrl-BA`   |
 | Serbski (cyrylica, Czarnogóra)             |  `sr-Cyrl-ME`   |
 | Serbski (cyrylica, Serbia)                 |  `sr-Cyrl-RS`   |

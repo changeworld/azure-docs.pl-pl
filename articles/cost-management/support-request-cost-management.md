@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: ''
 ms.openlocfilehash: 2553d08b55aff45e52b9d8c5a64db141a668eb62
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967118"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Utwórz żądanie pomocy technicznej dla platformy Cloudyn
@@ -34,7 +34,7 @@ Jeśli nie możesz znaleźć informacje, których szukasz, możesz otworzyć ż�
 9. W **typ problemu** wybierz **starszej wersji platformy Cloudyn**, a następnie wybierz pozycję **kategorii**.
 10. W **tytuł** wprowadź tytuł, który opisuje Twoje żądanie.
 11. W **szczegóły** polu dodatkowe informacje o typie.
-12. Aby uzyskać **kiedy problem zaczął występować?**, wybierz przybliżony datę i godzinę dla, a następnie kliknij przycisk **dalej**.  
+12. Aby uzyskać **kiedy problem zaczął występować?** , wybierz przybliżony datę i godzinę dla, a następnie kliknij przycisk **dalej**.  
 14. W **informacje kontaktowe** obszaru, wybierz preferowany metoda kontaktu i podaj swoje informacje kontaktowe, a następnie kliknij przycisk **Utwórz**.  
 
 Po utworzeniu biletu pomocy technicznej jest to dodane do kolejki pomocy technicznej. Czas odpowiedzi różni się w oparciu o Plan pomocy technicznej i ważności (wpływ na działalność) problem. Aby uzyskać więcej informacji, zobacz [zakres i szybkość reakcji pomocy technicznej](https://azure.microsoft.com/support/plans/response/).

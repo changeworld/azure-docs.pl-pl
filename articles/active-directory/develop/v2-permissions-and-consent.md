@@ -19,10 +19,10 @@ ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544879"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgody w punkcie końcowym platforma tożsamości firmy Microsoft
@@ -89,7 +89,7 @@ Jeśli aplikacja wykonuje logowania za pomocą [OpenID Connect](active-directory
 
 `email` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji, aby do adres podstawowy adres e-mail użytkownika w postaci `email` oświadczenia. `email` Tylko wtedy, gdy jest to adres e-mail jest skojarzony z konta użytkownika, który nie jest zawsze oświadczenia znajduje się w tokenie. Jeśli użyto `email` zakresu, aplikacja powinna być przygotowana do obsługi przypadek, w którym `email` oświadczenia nie istnieje w tokenie.
 
-### <a name="profile"></a>profil
+### <a name="profile"></a>Profil
 
 `profile` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji do znacznej ilości informacji o użytkowniku. Informacje, które mogą uzyskać dostęp, który zawiera, ale nie ogranicza się do użytkownika imię, nazwisko, preferowany nazwy użytkownika i identyfikatora obiektu. Aby uzyskać pełną listę dostępnych w parametrze id_tokens oświadczeń profilu określonego użytkownika, zobacz [ `id_tokens` odwołania](id-tokens.md).
 
@@ -206,7 +206,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 W tym momencie usługa Azure AD wymaga tylko administrator dzierżawy może zalogować się do realizacji żądania. Administrator jest monitowany o zatwierdzenie wszystkich uprawnień, które żądanej aplikacji w portalu rejestracji aplikacji.
 
-#### <a name="successful-response"></a>Pomyślna odpowiedź
+#### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
 
 Jeśli administrator zatwierdza uprawnień dla aplikacji, odpowiedź oznaczająca Powodzenie wygląda następująco:
 

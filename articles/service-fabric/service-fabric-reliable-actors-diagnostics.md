@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: 5f573db887b3acc2c4a668a8c19c7f8e3cb25019
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60726574"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostyka i monitorowanie wydajności struktury Reliable Actors
@@ -29,7 +29,7 @@ Nazwa dostawcy źródła zdarzeń dla środowiska uruchomieniowego elementów Re
 
 Narzędzia i technologie, które pomagają w zbieraniu i/lub wyświetlanie zdarzeń EventSource przykłady [narzędzia PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [diagnostyki Azure](../cloud-services/cloud-services-dotnet-diagnostics.md), [semantycznego rejestrowania](https://msdn.microsoft.com/library/dn774980.aspx)i [ Biblioteki TraceEvent Microsoft](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-### <a name="keywords"></a>Słowa kluczowe
+### <a name="keywords"></a>słowa kluczowe
 Wszystkie zdarzenia, które należą do wiarygodne źródło zdarzeń uczestników są skojarzone z jedną lub więcej słów kluczowych. Dzięki temu filtrowanie zdarzeń, które są zbierane. Zdefiniowano następujące bitów słowa kluczowego.
 
 | Bit | Opis |
@@ -45,7 +45,7 @@ Wszystkie zdarzenia, które należą do wiarygodne źródło zdarzeń uczestnik�
 | Category | Opis |
 | --- | --- |
 | Aktor usługi Service Fabric |Liczniki specyficzne dla usługi Azure Service Fabric aktorów, np. czas zapisania stanu aktora |
-| Metoda aktora usługi Service Fabric |Liczniki specyficzne dla metod zaimplementowanych przez aktorów usługi Service Fabric, np. częstotliwość aktora wywoływana jest metoda |
+| Usługa Service Fabric aktora metody |Liczniki specyficzne dla metod zaimplementowanych przez aktorów usługi Service Fabric, np. częstotliwość aktora wywoływana jest metoda |
 
 Każda z powyższych kategorii ma co najmniej jeden licznik.
 
@@ -94,47 +94,47 @@ W powyższym przykładzie `ivoicemailboxactor.leavemessageasync` jest nazwa meto
 
 | Nazwa zdarzenia | Identyfikator zdarzenia | Poziom | Słowo kluczowe | Opis |
 | --- | --- | --- | --- | --- |
-| ActorMethodStart |7 |Pełne |0x2 |Środowisko uruchomieniowe aktorów jest wywołać metodę aktora. |
-| ActorMethodStop |8 |Pełne |0x2 |Metoda aktora zakończenia. Oznacza to zwrócił w środowisku uruchomieniowym asynchroniczne wywołanie metody aktora i ukończeniu zadania zwracany przez metodę aktora. |
+| ActorMethodStart |7 |Pełny |0x2 |Środowisko uruchomieniowe aktorów jest wywołać metodę aktora. |
+| ActorMethodStop |8 |Pełny |0x2 |Metoda aktora zakończenia. Oznacza to zwrócił w środowisku uruchomieniowym asynchroniczne wywołanie metody aktora i ukończeniu zadania zwracany przez metodę aktora. |
 | ActorMethodThrewException |9 |Ostrzeżenie |0x3 |Wystąpił wyjątek podczas wykonywania metody aktora podczas wywołania asynchronicznego w środowisku uruchomieniowym do metody aktora lub podczas wykonywania zadania tego typu zwracanego przez metodę aktora. To zdarzenie oznacza pewnego rodzaju błędów w kodzie aktora, który wymaga zbadania. |
 
 Środowisko uruchomieniowe elementów Reliable Actors publikuje następujące liczniki wydajności, związane z uruchamianiem metody aktora.
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Metoda aktora usługi Service Fabric |Wywołania/s |Liczba prób wywołaniu metody usługi aktora na sekundę |
-| Metoda aktora usługi Service Fabric |Średnia liczba milisekund dla wywołania |Czas wykonania metody usługi aktora w milisekundach |
-| Metoda aktora usługi Service Fabric |Zgłoszone wyjątki/s |Ile razy metody usługi aktora zgłosił wyjątek na sekundę |
+| Usługa Service Fabric aktora metody |Wywołania na sekundę |Liczba prób wywołaniu metody usługi aktora na sekundę |
+| Usługa Service Fabric aktora metody |Średnia liczba milisekund dla wywołania |Czas wykonania metody usługi aktora w milisekundach |
+| Usługa Service Fabric aktora metody |Zgłoszone wyjątki/s |Ile razy metody usługi aktora zgłosił wyjątek na sekundę |
 
 ### <a name="concurrency-events-and-performance-counters"></a>Zdarzenia współbieżności i liczniki wydajności
 Środowisko uruchomieniowe elementów Reliable Actors emituje następujące zdarzenia związane z [współbieżności](service-fabric-reliable-actors-introduction.md#concurrency).
 
 | Nazwa zdarzenia | Identyfikator zdarzenia | Poziom | Słowo kluczowe | Opis |
 | --- | --- | --- | --- | --- |
-| ActorMethodCallsWaitingForLock |12 |Pełne |0x8 |To zdarzenie jest zapisywany na początku każdego nowego Włącz w aktora. Liczba oczekujących wywołań aktora, które oczekują na uzyskanie blokady dla aktora, który wymusza współbieżności opartej na włączanie go zawiera. |
+| ActorMethodCallsWaitingForLock |12 |Pełny |0x8 |To zdarzenie jest zapisywany na początku każdego nowego Włącz w aktora. Liczba oczekujących wywołań aktora, które oczekują na uzyskanie blokady dla aktora, który wymusza współbieżności opartej na włączanie go zawiera. |
 
 Środowisko uruchomieniowe elementów Reliable Actors publikuje następujące liczniki wydajności powiązane z współbieżności.
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
 | Aktor usługi Service Fabric |Liczba wywołań aktora czekających na blokadę aktora |Liczba oczekujących wywołań aktora czekających można uzyskać blokady dla aktora, który wymusza współbieżności opartej na Włącz |
-| Aktor usługi Service Fabric |Średni czas oczekiwania na blokadę (milisekundy) |Czas trwania (w milisekundach), można uzyskać blokady dla aktora, który wymusza współbieżności opartej na Włącz |
-| Aktor usługi Service Fabric |Średni czas utrzymania blokady aktora (milisekundy) |Czas (w milisekundach), dla którego jest czas utrzymania blokady dla aktora |
+| Aktor usługi Service Fabric |Średnia liczba milisekund dla blokady oczekiwania |Czas trwania (w milisekundach), można uzyskać blokady dla aktora, który wymusza współbieżności opartej na Włącz |
+| Aktor usługi Service Fabric |Czas utrzymania blokady aktora w milisekundach średni |Czas (w milisekundach), dla którego jest czas utrzymania blokady dla aktora |
 
 ### <a name="actor-state-management-events-and-performance-counters"></a>Liczniki wydajności i zdarzeń zarządzania stanu aktora
 Środowisko uruchomieniowe elementów Reliable Actors emituje następujące zdarzenia związane z [zarządzania stanem aktora](service-fabric-reliable-actors-state-management.md).
 
 | Nazwa zdarzenia | Identyfikator zdarzenia | Poziom | Słowo kluczowe | Opis |
 | --- | --- | --- | --- | --- |
-| ActorSaveStateStart |10 |Pełne |0x4 |Środowisko uruchomieniowe aktorów jest zapisania stanu aktora. |
-| ActorSaveStateStop |11 |Pełne |0x4 |Środowisko uruchomieniowe aktorów zostało zakończone, Zapisywanie stanu aktora. |
+| ActorSaveStateStart |10 |Pełny |0x4 |Środowisko uruchomieniowe aktorów jest zapisania stanu aktora. |
+| ActorSaveStateStop |11 |Pełny |0x4 |Środowisko uruchomieniowe aktorów zostało zakończone, Zapisywanie stanu aktora. |
 
 Środowisko uruchomieniowe elementów Reliable Actors publikuje następujące liczniki wydajności, związane z zarządzaniem stanu aktora.
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
 | Aktor usługi Service Fabric |Średnia liczba milisekund dla operacji zapisu stanu |Czas zapisania stanu aktora w milisekundach |
-| Aktor usługi Service Fabric |Średni czas operacji ładowania stanu (milisekundy) |Czas ładowania stanu aktora w milisekundach |
+| Aktor usługi Service Fabric |Średnia liczba milisekund dla operacji ładowania stanu |Czas ładowania stanu aktora w milisekundach |
 
 ### <a name="events-related-to-actor-replicas"></a>Zdarzenia związane z replik aktorów
 Środowisko uruchomieniowe elementów Reliable Actors emituje następujące zdarzenia związane z [replik aktorów](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
@@ -156,7 +156,7 @@ W powyższym przykładzie `ivoicemailboxactor.leavemessageasync` jest nazwa meto
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Aktor usługi Service Fabric |Średni czas dla metody OnActivateAsync (milisekundy) |Czas wykonania metody OnActivateAsync w milisekundach |
+| Aktor usługi Service Fabric |Średnia OnActivateAsync (milisekundy) |Czas wykonania metody OnActivateAsync w milisekundach |
 
 ### <a name="actor-request-processing-performance-counters"></a>Liczniki wydajności przetwarzania żądania aktora
 Gdy klient wywołuje metodę za pośrednictwem obiektu serwera proxy aktora, wynikiem komunikat żądania wysyłane za pośrednictwem sieci z usługą aktora. Usługa przetwarza komunikat żądania i wysyła odpowiedź z powrotem do klienta. Środowisko uruchomieniowe elementów Reliable Actors publikuje następujące liczniki wydajności powiązane z przetwarzania żądania aktora.
@@ -164,9 +164,9 @@ Gdy klient wywołuje metodę za pośrednictwem obiektu serwera proxy aktora, wyn
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
 | Aktor usługi Service Fabric |Liczba oczekujących żądań |Liczba żądań przetwarzanych w usłudze |
-| Aktor usługi Service Fabric |Średni czas na żądanie (milisekundy) |Czas (w milisekundach) przez usługę do przetwarzania żądań |
-| Aktor usługi Service Fabric |Średni czas deserializacji żądania (milisekundy) |Czas trwania (w milisekundach) do deserializacji komunikatu żądania aktora, po odebraniu na usługę |
-| Aktor usługi Service Fabric |Średni czas serializacji odpowiedzi (milisekundy) |Czas trwania (w milisekundach), można serializować komunikatu odpowiedzi aktora na usługę przed odpowiedź jest wysyłana do klienta |
+| Aktor usługi Service Fabric |Średnia liczba milisekund dla żądania |Czas (w milisekundach) przez usługę do przetwarzania żądań |
+| Aktor usługi Service Fabric |Średni czas deserializacji żądania |Czas trwania (w milisekundach) do deserializacji komunikatu żądania aktora, po odebraniu na usługę |
+| Aktor usługi Service Fabric |Średni czas serializacji odpowiedzi |Czas trwania (w milisekundach), można serializować komunikatu odpowiedzi aktora na usługę przed odpowiedź jest wysyłana do klienta |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Jak używać platformy usługi Service Fabric w elementach Reliable Actors](service-fabric-reliable-actors-platform.md)

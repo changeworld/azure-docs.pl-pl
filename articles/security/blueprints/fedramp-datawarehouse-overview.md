@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: 3c78aed2f30ea85f5bc16a8c0fb270bb1c761be8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586036"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Zabezpieczenia platformy Azure i zgodności planu: Magazyn danych w przypadku usługi Automation FedRAMP
@@ -43,7 +43,7 @@ Maszyna wirtualna służy jako zarządzania hostem bastionu, zapewnienia bezpiec
 
 To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegółowe informacje na temat architektury wdrożenia [architektura wdrożenia](#deployment-architecture) sekcji.
 
-Azure Virtual Machines
+Usługa Azure Virtual Machines
 -   (1) Host bastionu
 -   (2) kontrolera domeny active Directory
 -   (2) węzeł klastra serwera SQL
@@ -53,7 +53,7 @@ Zestawy dostępności
 -   (1) kontrolery domeny w usłudze active Directory
 -   (1) węzły klastra SQL i Monitor
 
-Virtual Network
+Sieć wirtualna
 -   (4) podsieci
 -   (4) grupy zabezpieczeń sieci
 

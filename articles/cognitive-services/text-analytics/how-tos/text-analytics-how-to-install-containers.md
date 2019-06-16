@@ -3,20 +3,20 @@ title: Instalowanie i uruchamianie kontenerów
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Jak pobrać, zainstalować i uruchamiaj kontenery analizy tekstu, w tym samouczku wskazówki.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: f9f68b74c09bf0122ba856680a60bdb14ffa868f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: fc9e2b6e5ab2d2103cab2681fe603c1ca9b725c8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306526"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069214"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalowanie i uruchamianie kontenerów analizy tekstu
 
@@ -159,7 +159,7 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](../text-analytics-resource-container-config.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Wyślij kontenery analizy tekstu, rozliczeń, informacje na platformie Azure, przy użyciu _usług Cognitive Services_ zasobów dla konta systemu Azure. 
 

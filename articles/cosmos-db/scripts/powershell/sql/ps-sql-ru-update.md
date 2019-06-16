@@ -7,10 +7,10 @@ ms.topic: samples
 ms.date: 05/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 9558579fbdbd2185f6de650547863361ff2b80a4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66247337"
 ---
 # <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Aktualizacja jednostek RU/s dla bazy danych lub kontenera usługi Azure Cosmos DB - SQL (rdzenie) interfejsu API

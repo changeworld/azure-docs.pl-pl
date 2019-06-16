@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62112654"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Włączanie synchronizacji w trybie offline za pomocą aplikacji mobilnych systemu iOS
@@ -147,7 +147,7 @@ Otwórz **QSDataModel.xcdatamodeld**. Cztery tabele są zdefiniowane — element
   * Czynność do wykonania: Przechowuje elementy zadań do wykonania. Kolumny systemowe **createdAt**, **updatedAt**, i **wersji** są właściwości opcjonalne systemu.
 
 > [!NOTE]
-> Zestaw SDK usługi Mobile Apps rezerwuje nazwy kolumn, które zaczynają się od "**``**". Nie należy używać tego prefiksu z coś innego niż system kolumn. W przeciwnym razie nazwy kolumn są modyfikowane, gdy używasz zdalnego zaplecza.
+> Zestaw SDK usługi Mobile Apps rezerwuje nazwy kolumn, które zaczynają się od " **``** ". Nie należy używać tego prefiksu z coś innego niż system kolumn. W przeciwnym razie nazwy kolumn są modyfikowane, gdy używasz zdalnego zaplecza.
 >
 >
 
@@ -159,12 +159,12 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 
 ![Atrybuty tabeli MS_TableOperations][defining-core-data-tableoperations-entity]
 
-| Atrybut | Type |
+| Atrybut | Typ |
 | --- | --- |
 | id | Liczba całkowita 64 |
 | itemId | String |
 | properties | Dane binarne |
-| tabela | String |
+| table | String |
 | tableKind | Liczba całkowita 16 |
 
 
@@ -172,7 +172,7 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 
  ![Atrybuty tabeli MS_TableOperationErrors][defining-core-data-tableoperationerrors-entity]
 
-| Atrybut | Type |
+| Atrybut | Typ |
 | --- | --- |
 | id |String |
 | operationId |Liczba całkowita 64 |
@@ -183,19 +183,19 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 
  ![][defining-core-data-tableconfig-entity]
 
-| Atrybut | Type |
+| Atrybut | Typ |
 | --- | --- |
 | id |String |
 | key |String |
 | keyType |Liczba całkowita 64 |
-| tabela |String |
+| table |String |
 | value |String |
 
 ### <a name="data-table"></a>Tabela danych
 
 **TodoItem**
 
-| Atrybut | Type | Uwaga |
+| Atrybut | Typ | Uwaga |
 | --- | --- | --- |
 | id | Ciąg, oznaczone jako wymagane |klucz podstawowy w magazynie zdalnym |
 | Wykonaj | Boolean | Pole elementu do wykonania |

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 70e478ac70b7ab53f1357394f3a3cb0d92f41f00
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130814"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075787"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Nawiązać połączenie z maszyną wirtualną programu SQL Server na platformie Azure
 
@@ -94,13 +94,15 @@ Server=mysqlvm;Integrated Security=true
 
 ## <a id="change"></a> Zmiana ustawień łączności SQL
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Możesz zmienić ustawienia łączności dla maszyny wirtualnej programu SQL Server w witrynie Azure portal.
 
-1. W witrynie Azure portal wybierz **maszyn wirtualnych**.
+1. W witrynie Azure portal wybierz **maszyn wirtualnych SQL**.
 
 2. Wybierz swój serwer SQL maszyny Wirtualnej.
 
-3. W obszarze **ustawienia**, kliknij przycisk **konfiguracji programu SQL Server**.
+3. W obszarze **ustawienia**, wybierz opcję **zabezpieczeń**.
 
 4. Zmiana **poziom łączności SQL** wymagane ustawienia. Zmienić port programu SQL Server lub ustawienia uwierzytelniania SQL, można opcjonalnie Użyj tego obszaru.
 

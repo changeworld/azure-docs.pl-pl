@@ -17,12 +17,12 @@ ms.date: 01/08/2019
 ms.author: joflore
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da55370df55bcd9122bf87c561b00f3106cc6c58
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: f19a9dfe683ab1c58d373cb8ba88b6523d43623e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60296774"
+ms.locfileid: "67110726"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Urządzenia przyłączone do sposobu zarządzania do lokalnej grupy administratorów w usłudze Azure AD
 
@@ -115,6 +115,6 @@ Jeśli usuniesz użytkowników z roli administratora urządzenia nadal ma on upr
 
 - Aby uzyskać omówienie sposobu zarządzania urządzeniami w witrynie Azure Portal, zobacz [zarządzanie urządzeniami przy użyciu witryny Azure Portal](device-management-azure-portal.md)
 
-- Aby dowiedzieć się więcej o dostępie warunkowym opartym na urządzeniach, zobacz [konfigurowanie zasad dostępu warunkowego opartego na urządzeniach w usłudze Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [skonfigurować zasady dostępu warunkowego opartego na urządzeniach w usłudze Azure Active Directory](../conditional-access/require-managed-devices.md).
 
 

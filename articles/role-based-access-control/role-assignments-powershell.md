@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 002ebcbe8ba14b9f15ddea6deb21f0f2bc201ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: deb7864c9f59427d6da9d27ede349c7532bf40d5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074023"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i programu Azure PowerShell
 
@@ -215,7 +215,7 @@ Aby wyświetlić listę przypisania roli dla klasyczny administrator subskrypcji
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
 
-## <a name="grant-access"></a>Przyznaj dostęp
+## <a name="grant-access"></a>Udzielanie dostępu
 
 Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli.
 
@@ -355,7 +355,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Usuń dostęp
+## <a name="remove-access"></a>Usuwanie dostępu
 
 RBAC, aby spowodować usunięcie dostępu, możesz usunąć przypisania roli używając [AzRoleAssignment Usuń](/powershell/module/az.resources/remove-azroleassignment).
 
@@ -366,6 +366,8 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
 ```
+
+Jeśli otrzymasz komunikat o błędzie: "Informacje podane nie jest mapowany do przypisania roli", upewnij się, że możesz również określić `-Scope` lub `-ResourceGroupName` parametrów. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z funkcji RBAC dla zasobów platformy Azure](troubleshooting.md#role-assignments-without-a-security-principal).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

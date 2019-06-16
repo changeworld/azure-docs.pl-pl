@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851379"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Skonfigurować aplikację App Service do używania logowania usługi Azure Active Directory
@@ -79,12 +79,12 @@ Możesz zarejestrować klientów natywnych, co zapewnia większą kontrolę nad 
 1. Przejdź do **usługi Azure Active Directory** w [Azure Portal].
 2. Na lewym pasku nawigacyjnym wybierz **rejestracje aplikacji**. Kliknij przycisk **Rejestracja nowej aplikacji** u góry.
 4. W **Utwórz** wpisz **nazwa** dla Twojej rejestracji aplikacji. Wybierz **natywnych** w **typ aplikacji**.
-5. W **identyfikator URI przekierowania** wprowadź witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done*. W przypadku tworzenia aplikacji Windows, zamiast tego użyj [identyfikator SID pakietu](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) jako identyfikator URI.
+5. W **identyfikator URI przekierowania** wprowadź witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done* . W przypadku tworzenia aplikacji Windows, zamiast tego użyj [identyfikator SID pakietu](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) jako identyfikator URI.
 5. Kliknij pozycję **Utwórz**.
 6. Po dodaniu rejestracji aplikacji, wybierz ją, aby go otworzyć. Znajdź **identyfikator aplikacji** i zanotuj tę wartość.
 7. Kliknij przycisk **wszystkie ustawienia** > **wymagane uprawnienia** > **Dodaj** > **wybierz interfejs API**.
 8. Wpisz nazwę aplikacji usługi App Service wcześniej zarejestrowany do wyszukiwania, a następnie wybierz ją i kliknij **wybierz**.
-9. Wybierz **dostępu \<nazwa_aplikacji >**. Następnie kliknij pozycję **Wybierz**. Następnie kliknij przycisk **Gotowe**.
+9. Wybierz **dostępu \<nazwa_aplikacji >** . Następnie kliknij pozycję **Wybierz**. Następnie kliknij przycisk **Gotowe**.
 
 Skonfigurowano natywnej aplikacji klienckiej, mogą uzyskiwać dostęp do aplikacji usługi app Service.
 

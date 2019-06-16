@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: dwgeo
 ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463229"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Dowiedz się, jak klienci przekazywanie tokenów usługi dostarczania kluczy usługi Azure Media Services
@@ -29,7 +29,7 @@ Klienci często pytają, jak Odtwarzacz można przekazać tokenów do usługi do
 
 - Za pomocą nagłówka autoryzacji HTTP.
     > [!NOTE]
-    > Prefiks "Bearer" oczekuje na specyfikacji protokołu OAuth 2.0. Odtwarzacz próbki, przy użyciu tokenu konfiguracji znajduje się na usługi Azure Media Player [strona pokazu](https://ampdemo.azureedge.net/). Aby ustawić źródło wideo, wybierz **AES (tokenu JWT)** lub **AES (SWT tokenu)**. Token jest przekazywany za pośrednictwem nagłówka autoryzacji.
+    > Prefiks "Bearer" oczekuje na specyfikacji protokołu OAuth 2.0. Odtwarzacz próbki, przy użyciu tokenu konfiguracji znajduje się na usługi Azure Media Player [strona pokazu](https://ampdemo.azureedge.net/). Aby ustawić źródło wideo, wybierz **AES (tokenu JWT)** lub **AES (SWT tokenu)** . Token jest przekazywany za pośrednictwem nagłówka autoryzacji.
 
 - Przez dodanie ich do adresu URL zapytania parametr "token = tokenvalue."  
     > [!NOTE]

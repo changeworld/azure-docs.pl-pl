@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 17fead25840e45f98478a6eb6c146bcc261dfe75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2907b5be7f8d5fda3d510484179e80b065ab64b0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322322"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074890"
 ---
 # <a name="live-event-states-and-billing"></a>Stany zdarzenia na żywo i rozliczeń
 
 W usłudze Azure Media Services na żywo zawodów rozliczeń zaraz po jego stan przechodzi do **systemem**. Aby zatrzymać wydarzenie na żywo z rozliczeniami, musisz zatrzymać wydarzenie na żywo.
 
-Podczas **LiveEventEncodingType** na Twoje [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) jest ustawiana na standardowa, Media Services automatycznego zamknięcia systemu operacyjnego dowolne zdarzenie na żywo, która nadal znajduje się w **systemem** stanu 12-godzinny źródło danych wejściowych zostaną utracone, a nie **na żywo dane wyjściowe**uruchomione. Jednakże, możesz nadal jest naliczana czas umieszczenia zdarzenia na żywo w **systemem** stanu.
+Podczas **LiveEventEncodingType** na Twoje [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) jest ustawiony na standardowy lub Premium1080p, Media Services automatycznego zamknięcia systemu operacyjnego dowolne zdarzenie na żywo, która nadal znajduje się w **systemem** stanu 12 godzinach od źródła danych wejściowych zostaną utracone, a nie **na żywo dane wyjściowe**uruchomione. Jednakże, możesz nadal jest naliczana czas umieszczenia zdarzenia na żywo w **systemem** stanu.
 
 ## <a name="states"></a>Stany
 

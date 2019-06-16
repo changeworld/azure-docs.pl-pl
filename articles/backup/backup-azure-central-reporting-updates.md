@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 87bc7ed3bb59266484858f534080fa87a7230981
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60641963"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizacja usługi Azure Backup centralnej raportowania pakietu zawartości 
@@ -57,9 +57,9 @@ Zmiany są wstępnie skonfigurowane raporty, które pochodzą z pakietem zawarto
 
 ![Alerty](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Alerts.png)
 
-### <a name="jobs"></a>Stanowiska
+### <a name="jobs"></a>Zadania
 
-![Stanowiska](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Jobs.png)
+![Zadania](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Jobs.png)
     
 
 ## <a name="next-steps"></a>Kolejne kroki

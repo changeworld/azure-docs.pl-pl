@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 10/05/2018
+ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0199d8f0c4a76a10fffcab7cf2819643d0ac2d68
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60902251"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075358"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Usługa Application Insights dla usługi Azure Functions obsługiwane funkcje
 
@@ -30,27 +30,27 @@ Platforma Azure oferuje funkcje [wbudowana integracja](https://docs.microsoft.co
 | **Usługa Application Insights SDK platformy .NET**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatyczne zbieranie**        |                 |                   |               
-| &bull; Żądania                     | Yes             | Yes               | 
-| &bull; Wyjątki                   | Yes             | Yes               | 
+| &bull; Żądania                     | Tak             | Tak               | 
+| &bull; Wyjątki                   | Tak             | Tak               | 
 | &bull; Liczniki wydajności         | Yes             | Yes               |
 | &bull; Zależności                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Tak               | 
 | &nbsp;&nbsp;&nbsp;&mdash; Centrum zdarzeń  |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Tak               | 
 | | | | 
 | **Obsługiwane funkcje**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | Yes             | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Bezpieczny kanał kontrolny|                 | Yes               | 
-| &bull; Próbkowania                     | Yes             | Yes               | 
-| &bull; Puls                   |                 | Yes               | 
+| &bull; QuickPulse/LiveMetrics       | Yes             | Tak               | 
+| &nbsp;&nbsp;&nbsp;&mdash; Bezpieczny kanał kontrolny|                 | Tak               | 
+| &bull; Próbkowania                     | Tak             | Yes               | 
+| &bull; Puls                   |                 | Tak               | 
 | | | | 
 | **Korelacja**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | Yes               | 
-| &bull; Centrum zdarzeń                       |                   | Yes               | 
+| &bull; Centrum zdarzeń                       |                   | Tak               | 
 | | | | 
 | **Można konfigurować**                      |                   |                   |           
-| &bull;W pełni konfigurowalne.<br/>Zobacz [usługi Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) instrukcje.<br/>Zobacz [platformy Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) dla wszystkich opcji.               |                   | Yes                   | 
+| &bull;W pełni konfigurowalne.<br/>Zobacz [usługi Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) instrukcje.<br/>Zobacz [platformy Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) dla wszystkich opcji.               |                   | Tak                   | 
 
 
 ## <a name="performance-counters"></a>Liczniki wydajności
