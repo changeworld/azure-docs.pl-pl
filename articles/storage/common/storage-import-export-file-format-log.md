@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478610"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format pliku dziennika usługi Azure Import/Export
@@ -101,7 +101,7 @@ properties-status ::=
 
 W poniższej tabeli opisano elementy w pliku dziennika.  
   
-|XML Element|Type|Opis|  
+|XML Element|Typ|Opis|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML Element|Reprezentuje dziennika dysku.|  
 |`Version`|Atrybut ciągu|Wersja format dziennika.|  
@@ -111,7 +111,7 @@ W poniższej tabeli opisano elementy w pliku dziennika.
 |`Blob/BlobPath`|String|Identyfikator URI obiektu blob.|  
 |`Blob/FilePath`|String|Ścieżka względna do pliku na dysku.|  
 |`Blob/Snapshot`|DateTime|Wersja migawki obiektu blob przez zadanie eksportu.|  
-|`Blob/Length`|Liczba całkowita|Łączna długość obiektu blob w bajtach.|  
+|`Blob/Length`|Integer|Łączna długość obiektu blob w bajtach.|  
 |`Blob/LastModified`|DateTime|Data/godzina ostatniej modyfikacji obiektu blob, przez zadanie eksportu.|  
 |`Blob/ImportDisposition`|String|Dyspozycja import obiektu blob do zadania importu tylko.|  
 |`Blob/ImportDisposition/@Status`|Atrybut ciągu|Stan dyspozycji importu.|  

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371963"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Pobierz rozliczeń własności subskrypcji platformy Azure od innych użytkowników
@@ -35,7 +35,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący Azure portal Wyszukaj Zarządzanie kosztami i rozliczenia](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -64,7 +64,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący Azure portal Wyszukaj Zarządzanie kosztami i rozliczenia](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -80,8 +80,8 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
    |Kolumna|Definicja|
    |---------|---------|
    |Data żądania|Data wysłania żądania przeniesienia|
-   |Adresat|Adres e-mail użytkownika, które zostały wysłane żądanie, aby przenieść własność rozliczeń|
-   |Data ważności|Data wygaśnięcia żądania|
+   |Odbiorcy|Adres e-mail użytkownika, które zostały wysłane żądanie, aby przenieść własność rozliczeń|
+   |Data wygaśnięcia|Data wygaśnięcia żądania|
    |Stan|Stan żądania przeniesienia|
 
     Żądanie przeniesienia może mieć jedną z następujących stanów:
@@ -90,11 +90,11 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
    |---------|---------|
    |W toku|Użytkownik nie zaakceptował żądania przeniesienia|
    |Przetwarzanie|Użytkownik zatwierdził żądanie przeniesienia. Rozliczeń dla subskrypcji, dla których użytkownik wybrał przesyłaną wprowadzenie do sekcji faktury|
-   |Zakończone| Naliczania opłat za subskrypcje wybrane przez użytkownika jest przekazywany do sekcji faktury|
+   |Ukończone| Naliczania opłat za subskrypcje wybrane przez użytkownika jest przekazywany do sekcji faktury|
    |Zakończone z błędami|Żądanie zostało ukończone, ale rozliczanie dla niektórych subskrypcji, że nie można przenosić wybranego użytkownika|
    |Wygaśnięcie|Użytkownik nie zaakceptował żądania na godzinę i wygasła.|
    |Anulowane|Dostęp do żądanie przeniesienia zostało anulowane żądania|
-   |Odrzucono|Użytkownik odrzucił żądanie przeniesienia|
+   |Odrzucone|Użytkownik odrzucił żądanie przeniesienia|
 
 6. Wybierz żądanie przeniesienia, aby wyświetlić szczegóły. Na stronie szczegółów transferu zawiera następujące informacje:
    <!-- Todo - Add a screenshot -->
@@ -105,7 +105,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
    |Przeniesienia zażądano w dniu|Data wysłania żądania przeniesienia|
    |Przeniesienia żądane przez|Adres e-mail użytkownika, który wysłał żądanie transferu|
    |Żądanie przeniesienia wygasa w dniu| Data wygaśnięcia żądania przeniesienia|
-   |Adres e-mail odbiorcy|Adres e-mail użytkownika, które zostały wysłane żądanie, aby przenieść własność rozliczeń|
+   |Adres e-mail adresata|Adres e-mail użytkownika, które zostały wysłane żądanie, aby przenieść własność rozliczeń|
    |Link do przenoszenia wysyłany do adresata|Adres url, do którego została wysłana do użytkownika, aby przejrzeć żądanie transferu|
 
 ## <a name="additional-information"></a>Dodatkowe informacje
@@ -159,7 +159,7 @@ Produkty SaaS nie są przenoszone z subskrypcjami. Poproś użytkownika o [Azure
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
 

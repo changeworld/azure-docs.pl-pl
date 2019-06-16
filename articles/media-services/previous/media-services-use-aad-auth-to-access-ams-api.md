@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60826141"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD  
@@ -141,7 +141,7 @@ Jeśli nie używasz zestawu SDK klienta platformy .NET usług Media Services, na
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Wyjątek: "Serwer zdalny zwrócił błąd: (401) nieautoryzowane."
+Wystąpił wyjątek: "Serwer zdalny zwrócił błąd: (401) nieautoryzowane."
 
 Rozwiązanie: Dla żądania REST usługi Media zakończyło się sukcesem użytkownika wywołującego musi być roli współautora lub właściciela w ramach konta usługi Media Services, który próbuje uzyskać dostęp. Aby uzyskać więcej informacji, zobacz [kontroli dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control) sekcji.
 

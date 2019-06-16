@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 6bb587de2f0f3ef9c4e8c4a856ee4b7430e9b9cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631556"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64715217"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia urządzenia StorSimple
 ## <a name="overview"></a>Omówienie
@@ -82,7 +82,7 @@ W poniższej tabeli wymieniono typowe błędy, mogą wystąpić po użytkownik:
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Błędy podczas web opcjonalne ustawienia serwera proxy
 | Nie. | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 | --- | --- | --- | --- |
-| 1 |Polecenie Invoke-HcsSetupWizard: Nieprawidłowy parametr (wyjątek od HRESULT: 0x80070057) |Jeden z parametrów podany dla ustawienia serwera proxy jest nieprawidłowy. |Nie podano identyfikatora URI w poprawnym formacie. Użyj następującego formatu: http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
+| 1 |Polecenie Invoke-HcsSetupWizard: Nieprawidłowy parametr (wyjątek od HRESULT: 0x80070057) |Jeden z parametrów podany dla ustawienia serwera proxy jest nieprawidłowy. |Nie podano identyfikatora URI w poprawnym formacie. Użyj następującego formatu: http:// *\<IP adres lub nazwę FQDN serwera proxy sieci web >* : *\<numer portu TCP >* |
 | 2 |Polecenie Invoke-HcsSetupWizard: Serwer RPC jest niedostępny (wyjątek od HRESULT: 0x800706ba) |Główną przyczyną jest jedną z następujących czynności:<ol><li>Klaster nie jest nawet.</li><li>Kontrolera pasywnego nie mogą komunikować się z aktywnym kontrolerem, a polecenie jest wykonywane z kontrolera pasywnego.</li></ol> |W zależności od przyczyny:<ol><li>[Skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) aby upewnić się, że klaster działa.</li><li>Uruchom polecenie z aktywnym kontrolerem. Jeśli chcesz uruchomić polecenie z kontrolera pasywnego, należy upewnić się, że kontrolera pasywnego może komunikować się z aktywnym kontrolerem. Konieczne będzie [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) Jeśli to połączenie zostanie przerwane.</li></ol> |
 | 3 |Polecenie Invoke-HcsSetupWizard: Wywołania RPC nie powiodło się (wyjątek od HRESULT: 0x800706be) |Klaster nie działa. |[Skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) aby upewnić się, że klaster działa. |
 | 4 |Polecenie Invoke-HcsSetupWizard: Nie można odnaleźć zasobu klastra (wyjątek od HRESULT: 0x8007138f) |Nie można odnaleźć zasobu klastra. Może to nastąpić, jeśli instalacja nie jest prawidłowy. |Może być konieczne zresetowanie urządzenia do domyślnych ustawień fabrycznych. [Skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) do utworzenia zasobu klastra. |

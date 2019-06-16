@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
 ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60809752"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure opartej na rolach kontrola dostępu (RBAC) na kontrolowanie praw dostępu do tworzenia i zarządzają żądaniami pomocy technicznej
@@ -79,7 +79,7 @@ Chcesz udzielić dostępu do sieci równorzędnej, Jan, możliwość tworzenia i
 
 4. Kliknij przycisk "Ok", aby kontynuować
 
-    ![Dodawanie uprawnień dostępu](./media/create-manage-support-requests-using-access-control/add-access.png)
+    ![Dodawanie dostępu](./media/create-manage-support-requests-using-access-control/add-access.png)
 
 5. Spowoduje to wyświetlenie użytkownikowi nowo dodanych rola niestandardowa "Obsługa Współautor żądania" w ramach subskrypcji, dla którego jesteś właścicielem
 

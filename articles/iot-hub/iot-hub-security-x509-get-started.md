@@ -9,15 +9,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.openlocfilehash: 0bfb66f54ec09e86b46a41499211e93a0083e8d1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65779926"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Konfigurowanie zabezpieczeń X.509 w usłudze Azure IoT hub
 
-Ten samouczek symuluje czynności, musisz zabezpieczyć usługi Azure IoT hub przy użyciu *uwierzytelnianie certyfikatu X.509*. Na potrzeby ilustracji firma Microsoft pokazują, jak tworzyć certyfikaty lokalnie na komputerze Windows przy użyciu narzędzia typu open source OpenSSL. Zalecamy użycie w tym samouczku wyłącznie do celów testowych. W środowisku produkcyjnym, musisz kupić certyfikaty z *główny urząd certyfikacji (CA)*.
+Ten samouczek symuluje czynności, musisz zabezpieczyć usługi Azure IoT hub przy użyciu *uwierzytelnianie certyfikatu X.509*. Na potrzeby ilustracji firma Microsoft pokazują, jak tworzyć certyfikaty lokalnie na komputerze Windows przy użyciu narzędzia typu open source OpenSSL. Zalecamy użycie w tym samouczku wyłącznie do celów testowych. W środowisku produkcyjnym, musisz kupić certyfikaty z *główny urząd certyfikacji (CA)* .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,7 +33,7 @@ Zabezpieczenia oparte na certyfikatach X.509 w usłudze IoT Hub, należy rozpocz
 
 Można wybrać jedną z następujących sposobów, aby uzyskać certyfikaty:
 
-* Zakup certyfikatu x.509 z *główny urząd certyfikacji (CA)*. Jest to zalecane w środowiskach produkcyjnych.
+* Zakup certyfikatu x.509 z *główny urząd certyfikacji (CA)* . Jest to zalecane w środowiskach produkcyjnych.
 
 * Tworzenie własnych certyfikatów X.509 przy użyciu narzędzia innych firm, takich jak [OpenSSL](https://www.openssl.org/). Będzie to wystarczające do celów projektowania i testowania. Zobacz [testu Zarządzanie urzędu certyfikacji certyfikatów, przykłady i samouczki](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) informacje na temat generowania testów certyfikatów urzędu certyfikacji przy użyciu programu PowerShell lub Bash. Certyfikaty testów urzędu certyfikacji zgodnie z instrukcjami w korzysta z pozostałej części tego samouczka [testu Zarządzanie urzędu certyfikacji certyfikatów, przykłady i samouczki](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
@@ -52,7 +52,7 @@ Te kroki pokazują, jak dodać nowego urzędu certyfikacji do Centrum IoT hub za
 
 4. Gdy otrzymasz powiadomienie, że Twój certyfikat została pomyślnie przekazana, kliknij przycisk **Zapisz**.
 
-    ![Przekaż certyfikat](./media/iot-hub-security-x509-get-started/add-new-cert.png)  
+    ![Przekazywanie certyfikatu](./media/iot-hub-security-x509-get-started/add-new-cert.png)  
 
    Spowoduje to wyświetlenie certyfikatu w **Eksplorator certyfikatów** listy. Uwaga **stan** tego certyfikatu jest *niezweryfikowane*.
 

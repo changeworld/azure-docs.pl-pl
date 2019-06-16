@@ -13,10 +13,10 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61390547"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie usługi Azure Monitor dzienniki wielodostępnych aplikacji SaaS usługi SQL Database
@@ -57,7 +57,7 @@ Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics
 
 1. Teraz uruchom generator obciążenia, aby uruchomić symulowane obciążenia na wszystkich dzierżaw.
 
-    a. Ustaw **$DemoScenario = 2**, _obciążenia o normalnym natężeniu Generuj (około 30 jednostek DTU)_.
+    a. Ustaw **$DemoScenario = 2**, _obciążenia o normalnym natężeniu Generuj (około 30 jednostek DTU)_ .
 
     b. Aby uruchomić skrypt, naciśnij klawisz F5.
 
@@ -83,7 +83,7 @@ W tym ćwiczeniu Otwórz obszar roboczy Log Analytics w witrynie Azure portal, a
 
    ![Otwórz obszar roboczy usługi Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. Wybierz obszar roboczy o nazwie _wtploganalytics -&lt;użytkownika&gt;_.
+1. Wybierz obszar roboczy o nazwie _wtploganalytics -&lt;użytkownika&gt;_ .
 
 1. Wybierz **Przegląd** można otworzyć rozwiązania log analytics w witrynie Azure portal.
 
@@ -129,7 +129,7 @@ W tym ćwiczeniu Otwórz obszar roboczy Log Analytics w witrynie Azure portal, a
 
 1. W obszarze roboczym usługi Log Analytics wybierz **portalu pakietu OMS** celu otwórz obszar roboczy istnieje.
 
-    ![Obszar roboczy usługi Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Obszar roboczy usługi log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
 W obszarze roboczym usługi Log Analytics możesz eksplorować dalsze dane dzienników i metryk. 
 

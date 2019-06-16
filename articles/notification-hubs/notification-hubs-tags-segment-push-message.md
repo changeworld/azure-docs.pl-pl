@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: jowargo
 ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457808"
 ---
 # <a name="routing-and-tag-expressions"></a>Wyrażenia routingu i znaczników
@@ -35,7 +35,7 @@ Jedynym sposobem na docelowym określonym powiadomień jest rejestracji, aby sko
 2. **Tag**: wszystkie rejestracje zawierające określony tag otrzymać powiadomienia.
 3. **Wyrażenia tagu**: powiadomienie wszystkich rejestracji, w których zestaw tagi pasują do określonego wyrażenia.
 
-## <a name="tags"></a>Tagi
+## <a name="tags"></a>`Tags`
 
 Znacznik może być dowolny ciąg, maksymalnie 120 znaków, zawierającą alfanumeryczne i następujące znaki inne niż alfanumeryczne: "_", "@", "#", ".",":", "-". Poniższy przykład pokazuje aplikację, z którego może odbierać powiadomienia wyskakującego powiadomienia dotyczące muzyka określonych grup. W tym scenariuszu jest to prosty sposób kierowane powiadomienia etykiety rejestracji przy użyciu tagów, które reprezentują różne pasma, tak jak na poniższej ilustracji:
 

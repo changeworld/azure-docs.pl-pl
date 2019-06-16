@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 5df666dc2bd574c168d6b5f65dd6a909564a921f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64868427"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Wprowadzenie do dostarczania zawartości na żądanie przy użyciu witryny Azure Portal
@@ -96,15 +96,15 @@ Aby zakodować zawartość przy użyciu procesora Media Encoder Standard w witry
 ### <a name="monitor-encoding-job-progress"></a>Monitorowanie postępu zadania kodowania
 Aby monitorować postęp zadania kodowania, kliknij u góry strony pozycję **Ustawienia**, a następnie wybierz pozycję **Zadania**.
 
-![Stanowiska](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![Zadania](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 ## <a name="publish-content"></a>Publikowanie zawartości
 Aby podać użytkownikowi adres URL, który może służyć do odtwarzania strumieniowego lub pobierania zawartości, najpierw musisz opublikować swój element zawartości przez utworzenie lokalizatora. Lokalizatory zapewniają dostęp do plików znajdujących się w elemencie zawartości. Usługa Azure Media Services obsługuje dwa typy lokalizatorów: 
 
-* **Lokalizatory przesyłania strumieniowego (OnDemandOrigin)**. Lokalizatory przesyłania strumieniowego służą do adaptacyjnego przesyłania strumieniowego. Przykłady adaptacyjnego przesyłania strumieniowego to HLS, Smooth Streaming i MPEG-DASH. Aby utworzyć lokalizator przesyłania strumieniowego, element zawartości musi zawierać plik ism. 
-* **Lokalizatory progresywne (sygnatura dostępu współdzielonego)**. Lokalizatory progresywne służą do dostarczania wideo przy użyciu pobierania progresywnego.
+* **Lokalizatory przesyłania strumieniowego (OnDemandOrigin)** . Lokalizatory przesyłania strumieniowego służą do adaptacyjnego przesyłania strumieniowego. Przykłady adaptacyjnego przesyłania strumieniowego to HLS, Smooth Streaming i MPEG-DASH. Aby utworzyć lokalizator przesyłania strumieniowego, element zawartości musi zawierać plik ism. 
+* **Lokalizatory progresywne (sygnatura dostępu współdzielonego)** . Lokalizatory progresywne służą do dostarczania wideo przy użyciu pobierania progresywnego.
 
-Aby utworzyć adres URL przesyłania strumieniowego w protokole HLS, dołącz do adresu URL ciąg *(format=m3u8-aapl)*:
+Aby utworzyć adres URL przesyłania strumieniowego w protokole HLS, dołącz do adresu URL ciąg *(format=m3u8-aapl)* :
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -112,7 +112,7 @@ Aby utworzyć adres URL przesyłania strumieniowego do odtwarzania elementu zawa
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
 
-Aby utworzyć adres URL przesyłania strumieniowego w protokole MPEG-DASH, dołącz do adresu URL ciąg *(format=mpd-time-csf)*:
+Aby utworzyć adres URL przesyłania strumieniowego w protokole MPEG-DASH, dołącz do adresu URL ciąg *(format=mpd-time-csf)* :
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 

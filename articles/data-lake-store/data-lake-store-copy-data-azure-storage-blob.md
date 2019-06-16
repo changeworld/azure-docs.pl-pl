@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878838"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopiowanie danych z obiektów blob usługi Azure Storage do usługi Azure Data Lake Storage Gen1
@@ -54,7 +54,7 @@ Poniżej opisano parametrów w składni:
 
 | Opcja | Opis |
 | --- | --- |
-| Element źródłowy |Określa lokalizację źródła danych w usłudze Azure storage blob. Źródło może być kontener obiektów blob, obiekt blob lub innego konta Data Lake Storage Gen1. |
+| source |Określa lokalizację źródła danych w usłudze Azure storage blob. Źródło może być kontener obiektów blob, obiekt blob lub innego konta Data Lake Storage Gen1. |
 | docelowy |Określa Data Lake Storage Gen1 miejsce docelowe kopiowania. |
 | SourceKey |Określa klucz dostępu do magazynu dla źródłowego obiektu blob magazynu platformy Azure. Jest to wymagane, tylko wtedy, gdy źródłem jest kontener obiektów blob lub obiektu blob. |
 | Konto |**Opcjonalnie**. Użyj, jeżeli chcesz użyć konta usługi Azure Data Lake Analytics, aby uruchomić zadanie kopiowania. Jeśli opcja/Account w składni, ale nie określaj na koncie usługi Data Lake Analytics, narzędzia AdlCopy używa domyślnego konta do uruchomienia zadania. Ponadto użycie tej opcji, należy dodać źródłowy (Azure Storage Blob) i docelowy (Azure Data Lake Storage Gen1) jako źródła danych dla konta usługi Data Lake Analytics. |

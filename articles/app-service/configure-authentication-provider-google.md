@@ -16,10 +16,10 @@ ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 50905b86924e0f564eaf4867c2906ad8740ddbaf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851194"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Jak skonfigurować aplikację App Service do używania logowania usługi Google
@@ -33,7 +33,7 @@ Aby ukończyć tę procedurę w tym temacie, musisz mieć konto Google ze zweryf
 1. Zaloguj się do [Azure Portal], a następnie przejdź do aplikacji. Kopiuj swoje **adresu URL**, której użyjesz później skonfigurować aplikację Google.
 2. Przejdź do [interfejsy API Google](https://go.microsoft.com/fwlink/p/?LinkId=268303) witryny sieci Web, zaloguj się przy użyciu poświadczeń konta Google, kliknij przycisk **Tworzenie projektu**, podaj **Nazwa projektu**, następnie kliknij przycisk  **Utwórz**.
 3. Po utworzeniu projektu, wybierz ją. Na pulpicie nawigacyjnym projektu kliknij **przejdź do przeglądu interfejsów API**.
-4. Wybierz **Włącz interfejsy API i usług**. Wyszukaj **interfejsu API Google +**, a następnie wybierz ją. Następnie kliknij przycisk **Włącz**.
+4. Wybierz **Włącz interfejsy API i usług**. Wyszukaj **interfejsu API Google +** , a następnie wybierz ją. Następnie kliknij przycisk **Włącz**.
 5. W obszarze nawigacji po lewej stronie **poświadczenia** > **ekran zgody OAuth**, a następnie wybierz swoje **adres E-mail**, wprowadź **nazwa produktu**i kliknij przycisk **Zapisz**.
 6. W **poświadczenia** kliknij pozycję **Utwórz poświadczenia** > **identyfikator klienta OAuth**.
 7. Na ekranie "Utwórz identyfikator klienta" Wybierz **aplikacji sieci Web**.

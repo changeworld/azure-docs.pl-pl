@@ -1,22 +1,20 @@
 ---
 title: Partycjonowanie danych w usłudze Azure Cosmos DB — interfejs API Gremlin
 description: Dowiedz się, jak można użyć partycjonowane programu graph w usłudze Azure Cosmos DB. W tym artykule opisano również wymagania i najlepsze rozwiązania dotyczące wykres podzielonym na partycje.
-author: rockboyfor
-ms.author: v-yeche
+author: luisbosquez
+ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 03/18/2019
+ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f1e486a302b440d819e15ef86f8d76ea5e50d201
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888418"
 ---
-<!--Verify sucessfully-->
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Przy użyciu wykresu podzielonym na partycje w usłudze Azure Cosmos DB
 
 Jedną z kluczowych funkcji interfejsu API języka Gremlin w usłudze Azure Cosmos DB jest zdolność do obsługi dużych wykresów za pomocą skalowanie w poziomie. Skalowanie w poziomie odbywa się za pośrednictwem [partycjonowanie możliwości w usłudze Azure Cosmos DB](partition-data.md). Kontenery można skalować niezależnie pod względem magazynu i przepływności. Możesz tworzyć kontenery w usłudze Azure Cosmos DB, która może być automatycznie skalowana do przechowywania danych programu graph. Danych jest automatycznie rozmieszczana w oparciu o określonym **klucza partycji**.
@@ -39,26 +37,27 @@ Poniżej przedstawiono szczegółowe informacje, które należy zrozumieć podcz
 
     - `/id` i `/label` nie są obsługiwane jako klucze partycji dla kontenera w interfejsie API języka Gremlin.
 
-    - Wybraniu wierzchołka według identyfikatorów, a następnie **przy użyciu `.has()` krok, aby określić właściwości klucza partycji**: 
 
+    - Wybraniu wierzchołka według identyfikatorów, a następnie **przy użyciu `.has()` krok, aby określić właściwości klucza partycji**: 
+    
         ```
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-
+    
     - Wybieranie wierzchołka przez **Określanie krotki wartości klucza partycji i Identyfikatora**: 
-
+    
         ```
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-
+        
     - Określanie **tablicy krotek identyfikatorów i wartości klucza partycji**:
-
+    
         ```
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-
+        
     - Wybierając zestaw wierzchołków i **określania listy wartości klucza partycji**: 
-
+    
         ```
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
@@ -82,6 +81,3 @@ Następnie możesz przejść do przeczytaj następujące artykuły:
 * Dowiedz się więcej o [partycji i skali w usłudze Azure Cosmos DB](partition-data.md).
 * Dowiedz się więcej o [Obsługa języka Gremlin w interfejsie API języka Gremlin](gremlin-support.md).
 * Dowiedz się więcej o [wprowadzenie do interfejsu API języka Gremlin](graph-introduction.md).
-
-<!--Update_Description: new articles on  -->
-<!--ms.date: 03/18/2019-->

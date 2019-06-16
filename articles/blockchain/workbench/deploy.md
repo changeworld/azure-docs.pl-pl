@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 4fffc54428b152a060594a5c107d3ac08457aaaa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154645"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie aplikacji Azure Blockchain Workbench
@@ -201,7 +201,7 @@ Wdrożenie aplikacji Blockchain Workbench wymaga rejestracji aplikacji usługi A
     |Ustawienie  | Wartość  |
     |---------|---------|
     |Name (Nazwa) | `Blockchain API` |
-    |Typ aplikacji |Interfejs API/aplikacja internetowa|
+    |Typ aplikacji |Aplikacja sieci Web / interfejsu API|
     |Adres URL logowania | `https://blockchainapi` |
 
 5. Wybierz **Utwórz** do rejestrowania aplikacji usługi Azure AD.
@@ -214,7 +214,7 @@ Następnie należy zmodyfikować manifest, użyj ról aplikacji w usłudze Azure
 2. Wygeneruj identyfikator GUID. Można wygenerować identyfikatora GUID za pomocą polecenia programu PowerShell [identyfikator guid]:: (NewGuid) lub identyfikator GUID nowego polecenia cmdlet. Innym rozwiązaniem jest użyć generator GUID witryny sieci Web.
 3. Zamierzasz zaktualizować **appRoles** sekcji manifestu. W okienku manifestu edycji wybierz **Edytuj** i Zastąp `"appRoles": []` przy użyciu podanego formatu JSON. Pamiętaj zastąpić wartość **identyfikator** pola o identyfikatorze GUID został wygenerowany. 
 
-    ![Edytowanie manifestu](media/deploy/edit-manifest.png)
+    ![Edytuj manifest](media/deploy/edit-manifest.png)
 
     ``` json
     "appRoles": [

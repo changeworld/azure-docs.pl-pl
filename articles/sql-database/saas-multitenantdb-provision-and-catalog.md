@@ -13,10 +13,10 @@ ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
 ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485980"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Aprowizacji i wykazu nowych dzierżaw w aplikacji SaaS, używa podzielonej na fragmenty bazy danych Azure SQL wielodostępnych
@@ -161,7 +161,7 @@ Aby dowiedzieć się, jak aplikacja Wingtip implementuje nową dzierżawę, apro
    - **$VenueType** = **blues**, jeden z wstępnie zdefiniowanych typów miejsca: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (małe, bez spacji).
    - **$DemoScenario** = **1**, aby aprowizować dzierżawy w udostępnionej bazy danych z innych dzierżaw.
 
-2. Dodaj punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu 38 wiersz, który jest wyświetlany komunikat: *Nowa dzierżawa "*, a następnie naciśnij klawisz **F9**.
+2. Dodaj punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu 38 wiersz, który jest wyświetlany komunikat: *Nowa dzierżawa "* , a następnie naciśnij klawisz **F9**.
 
    ![punkt przerwania](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -169,7 +169,7 @@ Aby dowiedzieć się, jak aplikacja Wingtip implementuje nową dzierżawę, apro
 
 4. Po zatrzymaniu w punkcie przerwania wykonywania skryptu naciśnij **F11** aby wejść do kodu.
 
-   ![debuguj](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Debugowanie](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Śledź wykonywanie skryptu za pomocą **debugowania** opcje menu **F10** i **F11**, aby wychodzisz nad lub do wywoływanej funkcji.
 

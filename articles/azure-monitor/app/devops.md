@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
 ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60899714"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji internetowych i usług dzięki usłudze Application Insights
@@ -104,7 +104,7 @@ W obu przypadkach ten alert nie tylko informuje objawy został odnaleziony, ale 
 
 Klient Samtec powiedział: "W ciągu ostatnich funkcją jednorazowej migracji, znaleźliśmy-scaled bazy danych, który osiągnięcia limitów zasobów, jego przyczyną przekroczenia limitu czasu. Alerty proaktywne wykrywanie dostarczone za pośrednictwem dosłownie anonsowanej możemy zostały sklasyfikowaniu problem, bardzo w czasie rzeczywistym. Ten alert, w połączeniu z alertów platformy Azure pomógł nam niemal natychmiast rozwiązać ten problem. Łączny czas przestoju < 10 minut."
 
-## <a name="live-metrics-stream"></a>Live Metrics Stream
+## <a name="live-metrics-stream"></a>Stream metryki na żywo
 Wdrażanie najnowszych kompilacji może być środowisko zaniepokojonym wyrazem. Jeśli wystąpią jakiekolwiek problemy, chcesz wiedzieć o nich natychmiast, tak aby kopi, jeśli to konieczne. Live Stream metryki zapewnia kluczowe metryki z czasem oczekiwania wynoszącym około 1 sekundy.
 
 ![Metryki na żywo](./media/devops/0040.png)
@@ -133,7 +133,7 @@ Na przykład jest łatwe:
 * Śledzenie sesji i najlepsze czasy odpowiedzi dla określonych użytkowników, zespoły pomocy technicznej i operacji do świadczenia błyskawicznej pomocy technicznej.
 * Ustal, często używanej aplikacji funkcji w odpowiedzi na pytania priorytetyzacji funkcji.
 
-Klient DNN powiedział: "Usługi application Insights podał Brak częścią równanie są możliwe do łączenia, sortowanie, zapytania i filtrowanie danych zgodnie z potrzebami. Co nasz zespół do znalezionych danych za pomocą zaawansowanego języka zapytań ma umożliwiło nam uzyskiwanie przydatnego wglądu i rozwiązywanie problemów za pomocą ich własnych ingenuity i środowisko nie zostało jeszcze wiemy, boss Said WE had. Wiele ciekawych odpowiedzi udzielane przez firmę pytania, począwszy od *"I wonder if...".*"
+Klient DNN powiedział: "Usługi application Insights podał Brak częścią równanie są możliwe do łączenia, sortowanie, zapytania i filtrowanie danych zgodnie z potrzebami. Co nasz zespół do znalezionych danych za pomocą zaawansowanego języka zapytań ma umożliwiło nam uzyskiwanie przydatnego wglądu i rozwiązywanie problemów za pomocą ich własnych ingenuity i środowisko nie zostało jeszcze wiemy, boss Said WE had. Wiele ciekawych odpowiedzi udzielane przez firmę pytania, począwszy od *"I wonder if...".* "
 
 ## <a name="development-tools-integration"></a>Integracja narzędzia tworzenia
 ### <a name="configuring-application-insights"></a>Konfigurowanie usługi Application Insights

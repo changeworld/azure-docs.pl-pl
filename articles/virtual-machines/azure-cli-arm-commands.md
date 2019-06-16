@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ac1a6136eae79700c427b27c8869bc9241c62abc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799823"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717781"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Poleceń interfejsu wiersza polecenia platformy Azure w trybie usługi Resource Manager
 Ten artykuł zawiera składnię i opcje dla poleceń interfejsu wiersza polecenia platformy Azure (CLI), które są często używane do tworzenia i zarządzania zasobami platformy Azure w modelu wdrażania usługi Azure Resource Manager. Możesz uzyskać dostęp do tych poleceń, uruchamiając interfejs wiersza polecenia w trybie usługi Resource Manager (arm). To nie jest pełną dokumentację i używanej wersji interfejsu wiersza polecenia mogą być wyświetlane nieco poleceń lub parametrów. Aby uzyskać ogólne omówienie zasobami i grupami zasobów platformy Azure, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
@@ -969,7 +969,8 @@ Opcje parametrów:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    Pula adresów sieciowych modułu równoważenia obciążenia Usuń [opcje] < grupa zasobów >< lb-name > <name>
+
+    network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 Usuwa zasób zakres puli adresów IP wewnętrznej bazy danych z modułu równoważenia obciążenia.
 
@@ -1333,7 +1334,9 @@ Opcje parametrów:
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    sieć public-ip list [opcje] < grupa zasobów > wyświetla wszystkie zasoby publicznych adresów IP w obrębie grupy zasobów.
+
+    network public-ip list [options] <resource-group>
+Wyświetla wszystkie zasoby publicznych adresów IP w obrębie grupy zasobów.
 
     azure network public-ip list -g myresourcegroup
 
@@ -1353,8 +1356,10 @@ Opcje parametrów:
     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
+
 <BR>
-    sieć public-ip show [opcje] < grupa zasobów > <name>
+
+    network public-ip show [options] <resource-group> <name>
 
 Wyświetla właściwości publicznego adresu ip zasobu publicznego adresu ip w obrębie grupy zasobów.
 

@@ -7,10 +7,10 @@ ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
 ms.openlocfilehash: 017a26d5672f666d4d8eaf629a0f53fe0cfe517f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963239"
 ---
 # <a name="secure-azure-computing-architecture"></a>Zabezpieczanie architektury obliczeniowej platformy Azure
@@ -126,7 +126,7 @@ Jak wspomniano wcześniej, możesz tworzyć odwołanie do tego algorytmu SACA pr
     - [Grupy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview)
     - [Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
     - [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview)
-- Zmiana rozmiaru
+- Zmiany rozmiaru
     - Wykonywanie zmiany rozmiaru, należy wykonać. Spójrz na liczbę jednoczesnych połączeń, może być za pośrednictwem wystąpienia algorytmu SACA i wymagania dotyczące przepustowości sieci. 
     - Ten krok ma kluczowe znaczenie. Pomaga ono rozmiar maszyn wirtualnych i zidentyfikować licencji, które są wymagane pochodzących od różnych dostawców, używanej w ramach wystąpienia algorytmu SACA. 
     - Nie można wykonać analizy kosztów dobre bez tego ćwiczenia zmiany rozmiaru. Aby uzyskać najlepszą wydajność umożliwia także poprawne zmiany rozmiaru. 
@@ -169,7 +169,7 @@ Firma Microsoft zaleca tej architektury, ponieważ spełnia on wymagania SCCA. J
     - Zastosowana podczas automatyzacji, te trasy tunelowania wymuszonego tabel cały ruch przez urządzenie wirtualne.
 - Moduły równoważenia obciążenia platformy Azure — standardowa jednostka SKU
     - Służą one do Równoważenie obciążenia ruchem do urządzeń.
-- Sieciowe grupy zabezpieczeń
+- Grupy zabezpieczeń sieci
     - Służą one do formantu, który typów ruchu mogą przechodzić do określonych punktów końcowych.
 
 

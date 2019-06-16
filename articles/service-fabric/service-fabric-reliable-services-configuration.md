@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
 ms.openlocfilehash: 8ddb5d0566c57dd1d507d543ac53c0975a83dd43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723566"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurowanie stanowych usług reliable services
@@ -30,11 +30,11 @@ Konfiguracja globalnej usługi reliable service została określona w manifeści
 ### <a name="configuration-names"></a>Nazwy konfiguracji
 | Name (Nazwa) | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |Kilobajty |8388608 |Minimalna liczba KB do przydzielenia w trybie jądra dla puli pamięci buforu zapisu rejestratora. Tej puli pamięci jest używana do buforowania informacji o stanie przed zapisywania na dysku. |
-| WriteBufferMemoryPoolMaximumInKB |Kilobajty |Bez ograniczeń |Maksymalny rozmiar, w której rejestratora zapisuje bufora pamięci puli można powiększać. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobytes |8388608 |Minimalna liczba KB do przydzielenia w trybie jądra dla puli pamięci buforu zapisu rejestratora. Tej puli pamięci jest używana do buforowania informacji o stanie przed zapisywania na dysku. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobytes |Bez ograniczeń |Maksymalny rozmiar, w której rejestratora zapisuje bufora pamięci puli można powiększać. |
 | SharedLogId |Identyfikator GUID |"" |Określa unikatowy identyfikator GUID służących do identyfikowania domyślny udostępniony plik dziennika używana przez wszystkich usług reliable services we wszystkich węzłach w klastrze, których nie należy określać SharedLogId w ich konfiguracji specyficznej dla usługi. Jeśli określono SharedLogId, następnie SharedLogPath musi być także określona. |
 | SharedLogPath |W pełni kwalifikowanej nazwy ścieżki |"" |Określa pełną ścieżkę, gdzie plik dziennika udostępnione używane przez wszystkich usług reliable services we wszystkich węzłach w klastrze, których nie należy określać SharedLogPath w ich konfiguracji specyficznej dla usługi. Jednak jeśli SharedLogPath jest określona, opcja SharedLogId musi być także określona. |
-| SharedLogSizeInMB |Megabajty |8192 |Określa liczbę MB miejsca na dysku statycznie przydzielić dla udostępnionego dziennika. Wartość musi być 2048 lub większą. |
+| SharedLogSizeInMB |(MB) |8192 |Określa liczbę MB miejsca na dysku statycznie przydzielić dla udostępnionego dziennika. Wartość musi być 2048 lub większą. |
 
 W Azure ARM lub szablon JSON w środowisku lokalnym w poniższym przykładzie pokazano, jak można zmienić dziennik transakcji udostępnione, utworzonej w taki sposób, aby utworzyć kopię żadnych elementów reliable collections usług stanowych.
 

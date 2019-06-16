@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780004"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Usługa Azure Monitor dla kontenerów — często zadawane pytania
@@ -71,7 +71,7 @@ Aby uzyskać szczegółowy widok ten problem, przejrzyj następujący kod [łąc
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Jak rozwiązać błędy usługi Azure AD, po włączeniu dzienniki na żywo? 
 
-Może zostać wyświetlony następujący błąd: **Odpowiedź adres url określony w żądaniu nie pasuje do adresów URL odpowiedzi skonfigurowane dla aplikacji: "< identyfikator aplikacji\>"**. Rozwiązanie, aby rozwiązać problem, można znaleźć w artykule [sposób wyświetlania kontenera czasie rzeczywistym dzienniki z usługą Azure Monitor dla kontenerów](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
+Może zostać wyświetlony następujący błąd: **Odpowiedź adres url określony w żądaniu nie pasuje do adresów URL odpowiedzi skonfigurowane dla aplikacji: "< identyfikator aplikacji\>"** . Rozwiązanie, aby rozwiązać problem, można znaleźć w artykule [sposób wyświetlania kontenera czasie rzeczywistym dzienniki z usługą Azure Monitor dla kontenerów](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Dlaczego nie można uaktualnić klastra po dołączeniu?
 

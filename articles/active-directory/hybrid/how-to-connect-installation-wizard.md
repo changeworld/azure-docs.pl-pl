@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60348454"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizacja programu Azure AD Connect: Uruchamianie kreatora instalacji po raz drugi
@@ -81,7 +81,7 @@ Opcja umożliwia pokazanie Jeśli przemieszczania jest aktualnie włączone lub 
 Aby zmienić stan, wybierz tę opcję i zaznacz lub usuń zaznaczenie pola wyboru.  
 ![Opcja, która również jest wyświetlany bieżący stan trybu przejściowego](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
-## <a name="change-user-sign-in"></a>Zmień dane logowania użytkownika
+## <a name="change-user-sign-in"></a>Zmiany logowania użytkownika
 Ta opcja umożliwia zmianę metody logowania użytkownika, do i z synchronizacji skrótów haseł i uwierzytelniania przekazywanego i federacji. Nie można zmienić **nie należy konfigurować**.
 
 Aby uzyskać więcej informacji na temat tej opcji, zobacz [logowania użytkownika](plan-connect-user-signin.md#changing-the-user-sign-in-method).

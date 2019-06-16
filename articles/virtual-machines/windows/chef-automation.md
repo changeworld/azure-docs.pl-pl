@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
 ms.openlocfilehash: 9cb7172fb529d8f0cd8650db7c06a78176ef342d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64729559"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatyzowanie wdrażania maszyny wirtualnej platformy Azure przy użyciu narzędzia Chef
@@ -302,7 +302,7 @@ W tym przykładzie użyto creative kodu HTML.
 
 Pamiętaj, że możesz również łączyć się za pośrednictwem sesji protokołu RDP w witrynie Azure portal za pośrednictwem portu 3389.
 
-Dziękujemy! Go i Rozpocznij infrastruktury jako kodu pracy na platformie Azure już dzisiaj!
+Dziękuję! Go i Rozpocznij infrastruktury jako kodu pracy na platformie Azure już dzisiaj!
 
 <!--Image references-->
 [2]: media/chef-automation/2.png

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60563432"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Tworzenie i przywracanie kopii zapasowych programu SQL Server na maszynach wirtualnych platformy Azure
@@ -69,7 +69,7 @@ Aby uzyskać więcej informacji o tym, jak skonfigurować automatyczne tworzenie
 - **Centralne zarządzanie i monitorowanie**: Można centralnie zarządzać wszystkie kopie zapasowe, w tym innych obciążeń, które obsługuje usługę Azure Backup, z poziomu jednego pulpitu nawigacyjnego na platformie Azure.
 - **Zasady na podstawie kopii zapasowej i przechowywania**: Utwórz standardowe zasady tworzenia kopii zapasowych regularnego wykonywania kopii zapasowych. Ustanów zasady przechowywania, do obsługi kopii zapasowych przez lata.
 - **Obsługa SQL zawsze na**: Wykrywanie i chronić konfiguracji programu SQL Server Always On przestrzegać preferencji tworzenia kopii zapasowej grupy dostępności kopii zapasowych.
-- **Cel punktu odzyskiwania 15-minutowy (RPO)**: Skonfiguruj kopie zapasowe dziennika transakcji SQL nawet co 15 minut.
+- **Cel punktu odzyskiwania 15-minutowy (RPO)** : Skonfiguruj kopie zapasowe dziennika transakcji SQL nawet co 15 minut.
 - **Punkt w czasie**: Korzystanie z portalu, aby odzyskać bazy danych do określonego punktu w czasie, bez konieczności ręcznego przywrócenia wielu pełnej, różnicowej i kopie zapasowe dzienników.
 - **Skonsolidowane alerty e-mail dotyczące błędów**: Skonfiguruj powiadomienia e-mail skonsolidowane pod kątem awarii.
 - **Kontrola dostępu oparta na rolach**: Określ, kto może Zarządzanie kopiami zapasowymi i przywracanie operacji za pośrednictwem portalu.
@@ -130,22 +130,22 @@ Poniższa tabela zawiera podsumowanie możliwości poszczególnych opcji tworzen
 
 || **Automatyczne kopie zapasowe** | **Usługa Azure Backup dla programu SQL** | **Ręczna kopia zapasowa** |
 |---|---|---|---|
-| Wymaga dodatkowych usług platformy Azure |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Konfigurowanie zasad tworzenia kopii zapasowych w witrynie Azure portal | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Wymaga dodatkowych usług platformy Azure |   | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Konfigurowanie zasad tworzenia kopii zapasowych w witrynie Azure portal | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Przywracanie baz danych w witrynie Azure portal |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Zarządzanie wieloma serwerami na jednym pulpicie nawigacyjnym |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Przywracanie do określonego momentu | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
-| Cel punktu odzyskiwania 15-minutowy (RPO) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Cel punktu odzyskiwania 15-minutowy (RPO) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Zasady przechowywania kopii zapasowych krótkoterminowych (dni) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Zasady długoterminowego przechowywania kopii zapasowych (miesiące, lata) |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Zasady długoterminowego przechowywania kopii zapasowych (miesiące, lata) |   | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Wbudowana obsługa programu SQL Server Always On |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Tworzenie kopii zapasowej na kontach magazynu Azure | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(automatyczny) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(automatyczny) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(zarządzaną przez klienta) |
-| Zarządzanie plikami magazynu i kopii zapasowych | | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |  |
-| Tworzenie kopii zapasowej na dołączonych dysków na maszynie Wirtualnej |   |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
-| Centralnej można dostosować raporty kopii zapasowych |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Skonsolidowane wiadomości e-mail dla alertów błędów |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Tworzenie kopii zapasowej na kontach magazynu Azure | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(automatyczny) | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(automatyczny) | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(zarządzaną przez klienta) |
+| Zarządzanie plikami magazynu i kopii zapasowych | | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |  |
+| Tworzenie kopii zapasowej na dołączonych dysków na maszynie Wirtualnej |   |   | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Centralnej można dostosować raporty kopii zapasowych |   | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Skonsolidowane wiadomości e-mail dla alertów błędów |   | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Dostosowywanie monitorowania, w oparciu o dzienniki usługi Azure Monitor |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Monitorowanie zadań tworzenia kopii zapasowej za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Monitorowanie zadań tworzenia kopii zapasowej za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Tak](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Przywracanie baz danych za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61230257"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Kodowanie zaawansowane, dostosowując ustawienia wstępne usługi MES 
@@ -244,7 +244,7 @@ Mają zastosowanie następujące kwestie:
     Możesz mieszać i dopasowywać notacji, jak należy.
 
     Ponadto Start obsługuje makro specjalne: {najlepsze}, który próbuje określić pierwszej ramki "interesujący" uwagi zawartości: (Krok i zakres są ignorowane, gdy rozpoczęcia jest ustawiona na {najlepiej})
-  * Domyślne: Start: {najlepsze}
+  * Wartość domyślna: Start: {najlepsze}
 * Format danych wyjściowych musi zostać podane jawnie dla każdego format obrazu: Jpg/Png/BmpFormat. Jeśli jest obecny, MES dopasowuje JpgVideo do JpgFormat i tak dalej. OutputFormat wprowadza nowe makro określonych koder-dekoder obrazu: {Index}, który musi być obecne (jeden raz i tylko jeden raz) dla formatów danych wyjściowych obrazu.
 
 ## <a id="trim_video"></a>Przycinanie wideo (wycinka)

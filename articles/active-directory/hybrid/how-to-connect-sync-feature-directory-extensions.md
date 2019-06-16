@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff0fd4d01eab739b79685c1de67cb8fe28873961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347993"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizacja programu Azure AD Connect: Rozszerzenia katalogów
@@ -62,7 +62,7 @@ Te atrybuty są teraz dostępne za pośrednictwem interfejsu API programu Graph 
 Lub można zbadać atrybutów za pośrednictwem interfejsu API Microsoft Graph, za pomocą [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> Musisz poprosić o atrybutów, które mają zostać zwrócone. Jawnie wybrać atrybuty następująco: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division. 
+> Musisz poprosić o atrybutów, które mają zostać zwrócone. Jawnie wybrać atrybuty następująco: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division. 
 >
 > Aby uzyskać więcej informacji, zobacz [programu Microsoft Graph: Korzystanie z parametrów zapytania](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

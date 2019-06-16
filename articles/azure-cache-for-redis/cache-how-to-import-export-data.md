@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
-origin.date: 07/31/2017
-ms.date: 02/27/2019
-ms.author: v-junlch
+ms.date: 07/31/2017
+ms.author: yegu
 ms.openlocfilehash: dfa8b47ced70386efa1daa44af318f1da55f49e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60542347"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Importowanie i eksportowanie danych w pamięci podręcznej Azure dla usługi Redis
@@ -100,16 +99,16 @@ Eksport umożliwia eksportowanie danych przechowywanych w pamięci podręcznej A
 ## <a name="importexport-faq"></a>Import/Export — często zadawane pytania
 Ta sekcja zawiera często zadawane pytania dotyczące funkcji importowania/eksportowania.
 
-- [Jakie ceny warstwy można użyć importu/eksportu?](#what-pricing-tiers-can-use-importexport)
-- [Można importować dane z dowolnego serwera Redis?](#can-i-import-data-from-any-redis-server)
-- [Jakie wersje RDB można importować?](#what-rdb-versions-can-i-import)
-- [Przepełnieniu pamięci podręcznej jest dostępna podczas operacji importu/eksportu?](#is-my-cache-available-during-an-importexport-operation)
-- [Za pomocą klastra pamięci podręcznej Redis można używać importu/eksportu?](#can-i-use-importexport-with-redis-cluster)
-- [Jak działa Import/Export za pomocą niestandardowych baz danych, ustawienie?](#how-does-importexport-work-with-a-custom-databases-setting)
-- [Jak importu/eksportu jest inny niż stan trwały pamięci podręcznej Redis](#how-is-importexport-different-from-redis-persistence)
-- [Czy można zautomatyzować przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych klientów zarządzania importu/eksportu?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
-- [Wystąpił błąd upływu limitu czasu podczas operacji mojego importu/eksportu. Co to oznacza?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
-- [Otrzymuję błąd podczas eksportowania danych do usługi Azure Blob Storage. Co się stało?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
+* [Jakie ceny warstwy można użyć importu/eksportu?](#what-pricing-tiers-can-use-importexport)
+* [Można importować dane z dowolnego serwera Redis?](#can-i-import-data-from-any-redis-server)
+* [Jakie wersje RDB można importować?](#what-rdb-versions-can-i-import)
+* [Przepełnieniu pamięci podręcznej jest dostępna podczas operacji importu/eksportu?](#is-my-cache-available-during-an-importexport-operation)
+* [Za pomocą klastra pamięci podręcznej Redis można używać importu/eksportu?](#can-i-use-importexport-with-redis-cluster)
+* [Jak działa Import/Export za pomocą niestandardowych baz danych, ustawienie?](#how-does-importexport-work-with-a-custom-databases-setting)
+* [Jak importu/eksportu jest inny niż stan trwały pamięci podręcznej Redis](#how-is-importexport-different-from-redis-persistence)
+* [Czy można zautomatyzować przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych klientów zarządzania importu/eksportu?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
+* [Wystąpił błąd upływu limitu czasu podczas operacji mojego importu/eksportu. Co to oznacza?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
+* [Otrzymuję błąd podczas eksportowania danych do usługi Azure Blob Storage. Co się stało?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
 
 ### <a name="what-pricing-tiers-can-use-importexport"></a>Jakie ceny warstwy można użyć importu/eksportu?
 Import/Export jest dostępna tylko w przypadku warstwy cenowej premium.
@@ -127,8 +126,8 @@ Tak, oprócz importowanie danych wyeksportowanych z usługi Azure Cache dla wyst
 Pamięć podręczna systemu Azure dla usługi Redis obsługuje importowanie pliku RDB się za pośrednictwem pliku RDB jest w wersji 7.
 
 ### <a name="is-my-cache-available-during-an-importexport-operation"></a>Przepełnieniu pamięci podręcznej jest dostępna podczas operacji importu/eksportu?
-- **Eksportuj** — pamięci podręcznych pozostaną dostępne, i będzie można kontynuować używanie pamięci podręcznej podczas operacji eksportu.
-- **Importowanie** — pamięci podręcznej staną się niedostępne po rozpoczęciu operacji importowania i stają się dostępne do użycia po zakończeniu operacji importu.
+* **Eksportuj** — pamięci podręcznych pozostaną dostępne, i będzie można kontynuować używanie pamięci podręcznej podczas operacji eksportu.
+* **Importowanie** — pamięci podręcznej staną się niedostępne po rozpoczęciu operacji importowania i stają się dostępne do użycia po zakończeniu operacji importu.
 
 ### <a name="can-i-use-importexport-with-redis-cluster"></a>Za pomocą klastra pamięci podręcznej Redis można używać importu/eksportu?
 Tak, a użytkownik może importu/eksportu między klastra pamięci podręcznej i nieklastrowanych pamięci podręcznej. Od klastra pamięci podręcznej Redis [tylko obsługuje bazy danych 0](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), zaimportowane nie ma żadnych danych w bazach danych innych niż 0. Podczas importowania danych z klastra pamięci podręcznej kluczy są redystrybuowane między fragmentami klastra.
@@ -136,10 +135,10 @@ Tak, a użytkownik może importu/eksportu między klastra pamięci podręcznej i
 ### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>Jak działa Import/Export za pomocą niestandardowych baz danych, ustawienie?
 Kilka warstw cenowych mają różne [baz danych limity](cache-configure.md#databases), więc istnieją pewne zagadnienia podczas importowania, jeśli skonfigurowano niestandardowej wartości dla `databases` ustawienie podczas tworzenia pamięci podręcznej.
 
-- Podczas importowania do warstwy cenowej o niższych `databases` limit niż warstwa, z którego został wyeksportowany:
-  - Jeśli używasz domyślną liczbę `databases`, czyli 16 dla wszystkich warstw cenowych, zostaną utracone żadne dane.
-  - Jeśli używasz niestandardowego szereg `databases` ten znajduje się w granicach, dla warstwy, do którego są importowane, zostaną utracone żadne dane.
-  - Wyeksportowane dane zawiera dane w bazie danych, która przekracza limit nową warstwę, dane z tych baz danych, wyższe, nie zostanie zaimportowany.
+* Podczas importowania do warstwy cenowej o niższych `databases` limit niż warstwa, z którego został wyeksportowany:
+  * Jeśli używasz domyślną liczbę `databases`, czyli 16 dla wszystkich warstw cenowych, zostaną utracone żadne dane.
+  * Jeśli używasz niestandardowego szereg `databases` ten znajduje się w granicach, dla warstwy, do którego są importowane, zostaną utracone żadne dane.
+  * Wyeksportowane dane zawiera dane w bazie danych, która przekracza limit nową warstwę, dane z tych baz danych, wyższe, nie zostanie zaimportowany.
 
 ### <a name="how-is-importexport-different-from-redis-persistence"></a>Jak importu/eksportu jest inny niż stan trwały pamięci podręcznej Redis
 Pamięć podręczna systemu Azure na potrzeby stanu trwałego pamięci podręcznej Redis umożliwia utrwalanie danych przechowywanych w pamięci podręcznej Redis do usługi Azure Storage. Po skonfigurowaniu stan trwały pamięci podręcznej Redis Azure będzie się powtarzać migawkę pamięci podręcznej Azure dla usługi Redis w formacie binarnym pamięci podręcznej Redis na dysku, na podstawie konfigurowalnych częstotliwości tworzenia kopii zapasowej. Sytuacji katastrofy wyłączającą podstawowej i replice pamięci podręcznej danych z pamięci podręcznej zostanie przywrócony automatycznie przy użyciu najnowszej migawki. Aby uzyskać więcej informacji, zobacz [Konfigurowanie trwałości danych dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-persistence.md).
@@ -162,7 +161,7 @@ Eksportu działa tylko w przypadku plików z pliku RDB jest przechowywane jako s
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się, jak korzystać z funkcji premium więcej w pamięci podręcznej.
 
-- [Wprowadzenie do platformy Azure pamięci podręcznej Redis w warstwie Premium](cache-premium-tier-intro.md)    
+* [Wprowadzenie do platformy Azure pamięci podręcznej Redis w warstwie Premium](cache-premium-tier-intro.md)    
 
 <!-- IMAGES -->
 [cache-settings-import-export-menu]: ./media/cache-how-to-import-export-data/cache-settings-import-export-menu.png
@@ -177,6 +176,3 @@ Dowiedz się, jak korzystać z funkcji premium więcej w pamięci podręcznej.
 [cache-import-choose-blobs]: ./media/cache-how-to-import-export-data/cache-import-choose-blobs.png
 [cache-import-blobs]: ./media/cache-how-to-import-export-data/cache-import-blobs.png
 [cache-import-data-import-complete]: ./media/cache-how-to-import-export-data/cache-import-data-import-complete.png
-
-
-<!-- Update_Description: update metedata properties -->

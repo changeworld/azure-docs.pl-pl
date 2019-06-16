@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: a5037c535737946a50d8af6fa60d0815120276d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837324"
 ---
 # <a name="sfctl-container"></a>sfctl container
@@ -29,7 +29,7 @@ Uruchom kontener związane z poleceń w węźle klastra.
 |Polecenie|Opis|
 | --- | --- |
 | invoke-api | Wywołania interfejsu API kontenera, do kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu. |
-| dzienniki | Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu. |
+| logs | Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu. |
 
 ## <a name="sfctl-container-invoke-api"></a>Interfejs sfctl kontenera wywołania interfejsów api
 Wywołania interfejsu API kontenera, do kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60458561"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Zarządzanie zasobami usługi Azure Blob Storage za pomocą Eksploratora usługi Storage
@@ -172,7 +172,7 @@ Poniższe kroki ilustrują Zarządzanie obiektów blob (i folderami) w kontenerz
      1. Na pasku narzędzi okienka głównego wybierz pozycję **Przekaż**, a następnie z menu rozwijanego wybierz pozycję **Przekaż pliki**.
 
         ![Menu Przekaż pliki][15]
-     2. W oknie dialogowym **Przekazywanie plików** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Pliki**, aby wybrać pliki do przekazania.
+     2. W oknie dialogowym **Przekazywanie plików** wybierz przycisk wielokropka ( **...** ) po prawej stronie pola tekstowego **Pliki**, aby wybrać pliki do przekazania.
 
         ![Opcje plików przekazywania][16]
      3. Określ typ **typu Blob**. Zobacz [Tworzenie kontenera i ustawianie uprawnień](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Aby uzyskać więcej informacji.
@@ -183,7 +183,7 @@ Poniższe kroki ilustrują Zarządzanie obiektów blob (i folderami) w kontenerz
      1. Na pasku narzędzi okienka głównego wybierz pozycję **Przekaż**, a następnie z menu rozwijanego wybierz pozycję **Przekaż folder**.
 
         ![Menu Przekaż folder][17]
-     2. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
+     2. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka ( **...** ) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
 
         ![Przekaż Opcje folderów][18]
      3. Określ typ **typu Blob**. Zobacz [Tworzenie kontenera i ustawianie uprawnień](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Aby uzyskać więcej informacji.

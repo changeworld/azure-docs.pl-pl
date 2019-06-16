@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.openlocfilehash: b9977965dc076ec36aa90680a1732b6640b1e41a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60325825"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Wprowadzenie do programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure #
@@ -34,7 +34,7 @@ Na diagramie przedstawiono części pełną grupy dostępności SQL Server na ma
 
 Główną różnicą grupy dostępności na maszynach wirtualnych platformy jest, że maszyn wirtualnych platformy Azure wymaga [moduł równoważenia obciążenia](../../../load-balancer/load-balancer-overview.md). Moduł równoważenia obciążenia zawiera adresy IP dla odbiornika grupy dostępności. Każda grupa wymaga odbiornik, jeśli masz więcej niż jednej grupy dostępności. Jeden moduł równoważenia obciążenia może obsługiwać wiele odbiorników.
 
-Ponadto w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, zalecamy jedną kartą Sieciową na serwer (węzeł klastra) i pojedynczej podsieci. Sieci platformy Azure ma fizyczny nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci niepotrzebne w klastrze gościa maszyny Wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie węzły tylko są dostępne w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny Wirtualnej IaaS platformy Azure. 
+Ponadto w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, zalecamy jedną kartą Sieciową na serwer (węzeł klastra) i pojedynczej podsieci. Sieć platformy Azure ma fizyczną nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci są niepotrzebne w klastrze gościa maszyny wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie, że węzły są dostępne tylko w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny wirtualnej IaaS platformy Azure. 
 
 |  | Wersja systemu Windows Server | Wersja programu SQL Server | Wersja programu SQL Server | Konfiguracja kworum WSFC | Odzyskiwanie po awarii przy użyciu wielu regionów | Obsługa wielu podsieci | Obsługa istniejącej AD | Odzyskiwanie po awarii przy użyciu tego samego regionu w wielu strefach | Obsługa dist AG nie ma domeny usługi AD | Obsługa dist AG z żadnego klastra |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|

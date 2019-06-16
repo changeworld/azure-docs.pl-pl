@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 652175e99c800b8e4aa69c639f0bdb9aba838987
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544654"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Błąd najlepsze praktyki dotyczące obsługi dla klientów interfejsów Azure Active Directory Authentication Library (ADAL)
@@ -52,7 +52,7 @@ Istnieje zestaw błędy generowane przez system operacyjny, który może wymaga�
 
 Zasadniczo istnieją dwa przypadki błędów AcquireTokenSilent:
 
-| Przypadek | Opis |
+| przypadek | Opis |
 |------|-------------|
 | **Przypadek 1**: Błąd jest rozpoznawalna za pomocą logowania interaktywnego | Błędy spowodowane brakiem prawidłowy tokenów interaktywne żądanie jest konieczne. W szczególności przeszukiwania pamięci podręcznej i token odświeżania nieprawidłowy/wygasły wymagają wywołanie AcquireToken w celu rozwiązania.<br><br>W takich przypadkach użytkownik końcowy musi zostać wyświetlony monit o zalogowanie. Aplikację można wybrać opcję wykonaj żądanie interaktywne natychmiast, po interakcje użytkownika końcowego (na przykład naciśnięcie przycisku logowania) lub nowszej. Wybór zależy od żądane zachowanie aplikacji.<br><br>Zobacz kod w poniższej sekcji, w tym konkretnym przypadku i błędów, które zdiagnozowaniu problemu.|
 | **Przypadek 2**: Błąd nie jest rozpoznawalna za pomocą logowania interaktywnego | Sieci i błędy przejściowe/tymczasowa lub inne błędy wykonywanie interaktywne żądania AcquireToken usuną problemu. Niepotrzebne interaktywne monity o logowanie można również frustrować użytkowników końcowych. Biblioteka ADAL automatycznie ponawia pojedynczego ponawiania prób dla większości błędów na AcquireTokenSilent błędów.<br><br>Aplikacja kliencka może również próbę ponowienia w pewnym momencie później, ale kiedy i jak to zrobić zależy sposób działania aplikacji i żądany przez użytkownika końcowego. Na przykład aplikacja może wykonać AcquireTokenSilent ponownych prób po upływie kilku minut lub w odpowiedzi na akcję użytkownika końcowego. Natychmiastowe ponowienie próby spowoduje aplikacji jest ograniczone i nie należy podjąć.<br><br>Kolejnym ponowieniem próby kończy się niepowodzeniem z powodu błędu w tym samym nie oznacza, że klient zrobić interaktywne żądanie przy użyciu AcquireToken, nie rozwiąże ten błąd.<br><br>Zobacz kod w poniższej sekcji, w tym konkretnym przypadku i błędów, które zdiagnozowaniu problemu. |

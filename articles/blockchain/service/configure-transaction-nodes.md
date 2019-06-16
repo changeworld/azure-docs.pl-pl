@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
 ms.openlocfilehash: dffeb81ae1eb244c38639a1241c0581e6fcdf94a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027963"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurowanie węzłów transakcji usługi Azure Service łańcucha bloków
@@ -85,7 +85,7 @@ Aby udzielić usłudze Azure AD dostęp kontroli do punktu końcowego usługi:
     |---------|-------------|
     | Rola | Wybierz **właściciela**, **Współautor**, lub **czytnika**.
     | Przypisz dostęp do | Wybierz **użytkownika, grupy lub jednostki usługi Azure AD**.
-    | Wybierz pozycję | Wyszukaj użytkownika, grupy lub jednostki usługi, które chcesz dodać.
+    | Wybierz | Wyszukaj użytkownika, grupy lub jednostki usługi, które chcesz dodać.
 
 1. Wybierz **Zapisz** można dodać przypisania roli.
 
@@ -105,7 +105,7 @@ Nazwa użytkownika jest nazwa węzła i nie można jej zmienić.
 
 Aby użyć adresu URL, Zastąp \<hasło\> hasłem ustawiana, jeśli węzeł został aprowizowany. Zaktualizuj hasło, wybierając **Resetuj hasło**.
 
-### <a name="access-keys"></a>Klawisze dostępu
+### <a name="access-keys"></a>Klucze dostępu
 
 Aby uzyskać dostęp do uwierzytelniania za pomocą klucza klucz dostępu znajduje się w adresu URL punktu końcowego. Podczas aprowizacji węzła transakcji są generowane dwa klucze dostępu. Klucz dostępu, albo może służyć do uwierzytelniania. Włącz dwa klucze, Zmień i wymiany kluczy.
 

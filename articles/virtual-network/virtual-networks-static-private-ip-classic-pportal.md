@@ -17,10 +17,10 @@ ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 72d1c4d2ea3adf7d8751adfbb013435f8f2530f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125750"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Skonfiguruj prywatne adresy IP dla maszyny wirtualnej (model klasyczny) przy użyciu witryny Azure portal
@@ -61,7 +61,7 @@ Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci w
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak pobrać statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej
 Aby wyświetlić statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej utworzone za pomocą powyższych kroków, należy wykonać poniższe kroki.
 
-1. W witrynie Azure portal, wybierz **PRZEGLĄDAJ wszystkie** > **maszyny wirtualne (klasyczne)** > **DNS01** > **wszystkie ustawienia** > **adresów IP** i zwróć uwagę przypisywania adresów IP i adres IP, jak pokazano poniżej.
+1. W witrynie Azure portal, wybierz **PRZEGLĄDAJ wszystkie** > **maszyny wirtualne (klasyczne)**  > **DNS01** > **wszystkie ustawienia** > **adresów IP** i zwróć uwagę przypisywania adresów IP i adres IP, jak pokazano poniżej.
    
     ![Tworzenie maszyny Wirtualnej w witrynie Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 

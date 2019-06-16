@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 64ea7c175b733f974eba6c081ee2c98814cbcda2
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873705"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Łączenie z usługą SQL Data Warehouse przy użyciu programu SQL Server Management Studio (SSMS)
@@ -67,7 +67,7 @@ Teraz, po nawiązaniu połączenia z bazą danych, napiszemy zapytanie.
     ```
 4. Uruchom zapytanie. Aby to zrobić, kliknij przycisk `Execute` lub użyj następującego skrótu: `F5`.
    
-    ![Uruchom zapytanie][5]
+    ![Uruchamianie zapytania][5]
 5. Przejrzyj wyniki zapytania. W tym przykładzie tabela FactInternetSales ma 60398 wierszy.
    
     ![Wyniki zapytania][6]

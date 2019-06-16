@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024429"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie podstawowego indeksu w usłudze Azure Search
@@ -146,7 +146,7 @@ Schematycznie indeksu usługi Azure Search składa się z następujących elemen
 W trakcie definiowania schematu musisz określić nazwę, typ i atrybuty każdego pola w indeksie. Typ pola klasyfikuje dane, które są w nim przechowywane. Atrybuty są ustawiane dla poszczególnych pól, aby określić sposób użycia pola. W poniższych tabelach zostały wyszczególnione typy i atrybuty, które możesz określić.
 
 ### <a name="data-types"></a>Typy danych
-| Type | Opis |
+| Typ | Opis |
 | --- | --- |
 | *Edm.String* |Tekst, który opcjonalnie można podzielić na tokeny dla wyszukiwania pełnotekstowego (dzielenie wyrazów, analiza słowotwórcza i tak dalej). |
 | *Collection(Edm.String)* |Lista ciągów, które opcjonalnie można podzielić na tokeny na potrzeby wyszukiwania pełnotekstowego. Nie ma teoretycznej górnej granicy liczby elementów w kolekcji, ale rozmiar ładunku w kolekcjach jest ograniczony do 16 MB. |

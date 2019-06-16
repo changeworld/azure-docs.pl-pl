@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60447878"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopiowanie danych do Eksploratora danych Azure przy użyciu usługi Azure Data Factory 
@@ -46,7 +46,7 @@ W tym artykule przedstawiono sposób użycia narzędzia do kopiowania danych w b
 
     **Ustawienie**  | **Opis pola**
     |---|---|
-    | **Nazwa** | Wprowadź unikatową w skali globalnej nazwę fabryki danych. Jeśli zostanie wyświetlony błąd *"Nazwa fabryki danych \"LoadADXDemo\" jest niedostępna"*, wprowadź inną nazwę dla fabryki danych. Reguły nazewnictwa artefaktów usługi Data Factory, zobacz [Data Factory — reguły nazewnictwa](/azure/data-factory/naming-rules).|
+    | **Nazwa** | Wprowadź unikatową w skali globalnej nazwę fabryki danych. Jeśli zostanie wyświetlony błąd *"Nazwa fabryki danych \"LoadADXDemo\" jest niedostępna"* , wprowadź inną nazwę dla fabryki danych. Reguły nazewnictwa artefaktów usługi Data Factory, zobacz [Data Factory — reguły nazewnictwa](/azure/data-factory/naming-rules).|
     | **Subskrypcja** | Wybieranie subskrypcji platformy Azure, w której chcesz utworzyć fabrykę danych. |
     | **Grupa zasobów** | Wybierz **Utwórz nową** i wprowadź nazwę nowej grupy zasobów. Wybierz **Użyj istniejącej**, jeśli masz istniejącą grupę zasobów. |
     | **Wersja** | Wybierz **V2** |
@@ -158,7 +158,7 @@ Azure Eksploratorze danych nowa połączona usługa jest tworzony do kopiowania 
     * Drugi mapowanie występuje, gdy dane tabelaryczne są pozyskiwane do Eksploratora danych usługi Azure. Mapowanie odbywa się zgodnie z opisem w [reguły mapowania CSV](/azure/kusto/management/mappings#csv-mapping). Należy pamiętać, że nawet wtedy, gdy źródło danych nie jest w formacie CSV, ADF ma przekształcone dane w formacie tabelarycznym w związku z tym, mapowanie CSV jest tylko odpowiednie mapowanie na tym etapie.
         * W obszarze **właściwości ujścia Azure Eksplorator danych (Kusto)** dodać odpowiedni **Nazwa mapowania pozyskiwania** (opcjonalnie) to mapowanie kolumny może służyć.
         * Jeśli **Nazwa mapowania pozyskiwania** nie jest określona, kolejność mapowania "by-name" zdefiniowana w **mapowania kolumn** sekcji zostanie przeprowadzona. W przypadku niepowodzenia "by-name" mapowanie Eksploratora danych usługi Azure podejmie próbę pozyskiwać dane w kolejności "według kolumny pozycji" (mapy według pozycji jako domyślną).
-    * Wybierz **dalej**
+    * Wybierz pozycję **Dalej**
 
     ![Mapowanie kolumny zestawu danych docelowego](media/data-factory-load-data/destination-dataset-column-mapping.png)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098730"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Forms
@@ -232,7 +232,7 @@ Pierwsze dwa kroki są wymagane tylko wtedy, gdy testujesz w emulatorze.
 2. Dodaj konto Google na urządzeniu z systemem Android, klikając **aplikacje** > **ustawienia** > **Dodaj konto**. Następnie postępuj zgodnie z instrukcjami, dodanie istniejącego konta Google na urządzeniu lub Utwórz nową.
 3. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy **Droid** projektu, a następnie kliknij przycisk **Ustaw jako projekt startowy**.
 4. Kliknij przycisk **Uruchom** Aby skompilować projekt i uruchomić aplikację na urządzeniu z systemem Android lub w emulatorze.
-5. W aplikacji wpisz zadania, a następnie kliknij znak plus (**+**) ikona.
+5. W aplikacji wpisz zadania, a następnie kliknij znak plus ( **+** ) ikona.
 6. Sprawdź, czy otrzyma powiadomienie po dodaniu elementu.
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurowanie i uruchamianie projektu systemu iOS (opcjonalnie)
@@ -326,7 +326,7 @@ Aplikacji został zaktualizowany do obsługi powiadomień wypychanych.
    > [!NOTE]
    > Należy jawnie zaakceptować powiadomień wypychanych z poziomu aplikacji. To żądanie występuje tylko przy pierwszym uruchomieniu aplikacji.
 
-3. W aplikacji wpisz zadania, a następnie kliknij znak plus (**+**) ikona.
+3. W aplikacji wpisz zadania, a następnie kliknij znak plus ( **+** ) ikona.
 4. Sprawdź, czy Odebrano powiadomienie, a następnie kliknij **OK** aby odrzucić powiadomienie.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Konfigurowanie i uruchamianie projektów Windows (opcjonalnie)
@@ -398,7 +398,7 @@ Ta sekcja dotyczy uruchamiania aplikacji platformy Xamarin.Forms i WinPhone81 pr
 
 1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt Windows, a następnie kliknij przycisk **Ustaw jako projekt startowy**.
 2. Kliknij przycisk **Uruchom**, aby skompilować projekt i uruchomić aplikację.
-3. W aplikacji wpisz nazwę nowego czynność do wykonania, a następnie kliknij znak plus (**+**) ikonę, aby ją dodać.
+3. W aplikacji wpisz nazwę nowego czynność do wykonania, a następnie kliknij znak plus ( **+** ) ikonę, aby ją dodać.
 4. Sprawdź, czy otrzyma powiadomienie po dodaniu elementu.
 
 ## <a name="next-steps"></a>Kolejne kroki

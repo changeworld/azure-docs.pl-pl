@@ -12,10 +12,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/31/2019
 ms.openlocfilehash: a078ac38cef5b395a19481188c474c7f908160d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61419566"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Zabezpieczenia zaawansowanych danych dla usługi Azure SQL Database
@@ -58,7 +58,7 @@ Kliknij przycisk **odnajdywanie i klasyfikacja danych** karty, aby zobaczyć zal
 
 Aby przeglądać i zarządzać ustawieniami REKLAM, przejdź do **zaawansowanych danych** w obszarze **zabezpieczeń** nagłówka dla serwera bazy danych SQL Database lub wystąpienia zarządzanego. Na tej stronie można włączyć lub wyłączyć REKLAM i zmodyfikować luk w zabezpieczeniach do oceny i ustawienia zaawansowanej ochrony przed zagrożeniami dla całego serwera bazy danych SQL Database lub wystąpienia zarządzanego.
 
-![Ustawienia serwera](./media/sql-advanced-protection/server_settings.png) 
+![ustawienia serwera](./media/sql-advanced-protection/server_settings.png) 
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Zarządzanie ustawieniami REKLAM dla bazy danych SQL
 

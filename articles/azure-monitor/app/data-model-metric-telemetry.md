@@ -13,10 +13,10 @@ ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900464"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Telemetria metryk: Model danych usługi Application Insights
@@ -49,7 +49,7 @@ Nazwa metryki, które mają być wyświetlane w portalu Application Insights i i
 
 Pojedynczą wartość dla miary. Suma poszczególnymi pomiarami podczas agregacji.
 
-## <a name="count"></a>Licznik
+## <a name="count"></a>Count
 
 Waga metryki zagregowane metryki. Nie powinna być ustawiona dla miary.
 

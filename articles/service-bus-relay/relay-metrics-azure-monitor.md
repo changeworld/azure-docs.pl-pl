@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: spelluru
 ms.openlocfilehash: bd62624406adb006fdcd7d59f72db3fb5e1848a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60421809"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Metryki usługi Azure Relay w usłudze Azure Monitor (wersja zapoznawcza)
@@ -41,7 +41,7 @@ Możesz monitorować metryki, wraz z upływem czasu w [witryny Azure portal](htt
 
 ![][1]
 
-Można również uzyskać dostęp do metryk bezpośrednio za pośrednictwem przestrzeni nazw. Aby to zrobić, wybierz przestrzeń nazw, a następnie kliknij przycisk **metryki (wersja zapoznawcza)**. 
+Można również uzyskać dostęp do metryk bezpośrednio za pośrednictwem przestrzeni nazw. Aby to zrobić, wybierz przestrzeń nazw, a następnie kliknij przycisk **metryki (wersja zapoznawcza)** . 
 
 Dla metryk, obsługa wymiarów możesz odfiltrować z żądaną wartością.
 
@@ -60,15 +60,15 @@ Wszystkie wartości metryk są wysyłane do usługi Azure Monitor na minutę. St
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| Połączeniach ListenerConnections — Powodzenie (wersja zapoznawcza) | Liczba połączeń odbiornika pomyślne wprowadzone do usługi Azure Relay w określonym czasie. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
-|Błąd ClientError na połączeniach ListenerConnections (wersja zapoznawcza)|Liczba błędów klienta dla połączeń odbiornika w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+| Połączeniach ListenerConnections — Powodzenie (wersja zapoznawcza) | Liczba połączeń odbiornika pomyślne wprowadzone do usługi Azure Relay w określonym czasie. <br/><br/> Jednostka: Count <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Błąd ClientError na połączeniach ListenerConnections (wersja zapoznawcza)|Liczba błędów klienta dla połączeń odbiornika w określonym czasie.<br/><br/> Jednostka: Count <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 |Błąd ServerError na połączeniach ListenerConnections (wersja zapoznawcza)|Liczba błędów serwera dla połączeń odbiornika w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
-|SenderConnections — Powodzenie (wersja zapoznawcza)|Liczba połączeń pomyślne nadawcy w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
-|Błąd ClientError na SenderConnections (wersja zapoznawcza)|Liczba błędów klienta dla połączeń nadawcy w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|SenderConnections — Powodzenie (wersja zapoznawcza)|Liczba połączeń pomyślne nadawcy w określonym czasie.<br/><br/> Jednostka: Count <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Błąd ClientError na SenderConnections (wersja zapoznawcza)|Liczba błędów klienta dla połączeń nadawcy w określonym czasie.<br/><br/> Jednostka: Count <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 |Błąd ServerError na SenderConnections (wersja zapoznawcza)|Liczba błędów serwera dla połączeń nadawcy w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 |Połączeniach ListenerConnections-TotalRequests (wersja zapoznawcza)|Całkowita liczba połączeń odbiornika w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 |SenderConnections-TotalRequests (wersja zapoznawcza)|Żądania połączenia wykonywane przez nadawców w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
-|Połączeń ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
+|Połączeń ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń w określonym czasie.<br/><br/> Jednostka: Count <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 |ActiveListeners (wersja zapoznawcza)|Liczba aktywne odbiorniki w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 |Rozłączeń ListenerDisconnects (wersja zapoznawcza)|Liczba odłączonego odbiorników w określonym czasie.<br/><br/> Jednostka: Bajty <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 |Rozłączeń SenderDisconnects (wersja zapoznawcza)|Liczba odłączonego nadawców w określonym czasie.<br/><br/> Jednostka: Bajty <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|

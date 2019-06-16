@@ -17,10 +17,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65075373"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Demon aplikacji, która wywołuje interfejsy API — w sieci web uzyskać token
@@ -65,7 +65,7 @@ Zakres używany dla poświadczeń klienta powinna zawsze być resourceId + "/ .d
 
 > [!IMPORTANT]
 > Biblioteka MSAL (punktu końcowego v2.0) pytaniem tokenu dostępu dla zasobu akceptowania tokenu dostępu w wersji 1.0 usługi Azure AD zostanie przetworzony przez pobranie wszystkiego wcześniej niż ostatni ukośnika i używać go jako identyfikator zasobu odbiorców w żądanym zakresie.
-> W związku z tym if, takich jak Azure SQL (**https://database.windows.net**) zasobu oczekuje odbiorcami kończącego się ukośnikiem (dla usługi Azure SQL: `https://database.windows.net/`), należy zażądać zakresu `https://database.windows.net//.default` (Uwaga podwójny ukośnik). Zobacz też platformy MSAL.NET problem [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Ukośnika url zasobu zostanie pominięty, który spowodował niepowodzenie uwierzytelniania sql.
+> W związku z tym if, takich jak Azure SQL ( **https://database.windows.net** ) zasobu oczekuje odbiorcami kończącego się ukośnikiem (dla usługi Azure SQL: `https://database.windows.net/` ), należy zażądać zakresu `https://database.windows.net//.default` (Uwaga podwójny ukośnik). Zobacz też platformy MSAL.NET problem [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Ukośnika url zasobu zostanie pominięty, który spowodował niepowodzenie uwierzytelniania sql.
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -128,7 +128,7 @@ CompletableFuture<AuthenticationResult> future = cca.acquireToken(parameters);
 AuthenticationResult result = future.get();
 ```
 
-### <a name="protocol"></a>Protokół
+### <a name="protocol"></a>Protocol
 
 Jeśli nie masz jeszcze bibliotekę wybranym języku, możesz chcieć użyć protokołu bezpośrednio:
 

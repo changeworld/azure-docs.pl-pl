@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 05/08/19
 ms.author: jgao
 ms.openlocfilehash: 41b16498fb79166b2c77c77a517ee5c443ebec75
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796256"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Wprowadzenie do usługi Azure Deployment Manager (publiczna wersja zapoznawcza) wdrożenia integracji kondycji
@@ -144,7 +144,7 @@ W tym momencie Azure Deployment Manager wie, jak utworzyć zapytanie dotyczące 
 
     1. Po zakończeniu operacji wdrażania, może być ponowne uruchamianie maszyn wirtualnych, ponownej konfiguracji na podstawie nowych danych lub nawet uruchamiany po raz pierwszy. Ponadto czas na uruchomienie emitowanie sygnałów kondycji będą agregowane przez monitorowania dostawcy w coś, co jest przydatne kondycji usług. W trakcie tego procesu tumultuous go może nie mieć sensu pod kątem kondycji usługi, ponieważ aktualizacja nie została jeszcze osiągają stanu stabilnego. W rzeczywistości usługi może Densytometr między Stanami zdrowe i niezdrowe, jak zasoby rozliczenia. 
     1. W fazie oczekiwania usługi kondycji nie będzie monitorowana. To jest stosowane do umożliwienia wdrożonych zasobów czasu na tworzenie przed rozpoczęciem procesu sprawdzania kondycji. 
-1. Elastyczna
+1. Elastyczność
 
     1. Ponieważ nie jest możliwe dowiedzieć się we wszystkich przypadkach, jak długo potrwa zasobów, wprowadzić, zanim staną się stabilne, elastyczne fazy umożliwia elastyczne okres między gdy wszystkie zasoby są potencjalnie niestabilny i kiedy są one wymagane do zachowania stabilności dobrej kondycji Stan.
     1. Po rozpoczęciu elastycznej fazy rozpoczyna się Azure Deployment Manager okresowo sondowanie podany punkt końcowy REST dla usługi kondycji. Interwał sondowania jest konfigurowalne. 

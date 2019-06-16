@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/15/2018
 ms.author: aljo
 ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60881488"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Wyświetl dzienniki dla kontenera usługi Service Fabric
@@ -29,7 +29,7 @@ Dzienniki kontenerów można uzyskać dostęp za pomocą [narzędzia Service Fab
 
 Dzienniki kontenera znajdują się w węźle klastra, który wystąpienie usługi kontenera. Na przykład pobrać dzienniki sieci web frontonu kontener [Linux głosowanie w przykładowej aplikacji](service-fabric-quickstart-containers-linux.md). W widoku drzewa rozwiń **klastra**>**aplikacje**>**VotingType**>**Service fabric: / Voting / azurevotefront**.  Następnie rozwiń węzeł partycji (d1aa737e-f22a-e347-be16-eec90be24bc1, w tym przykładzie) i zobacz, że kontener działa w węźle klastra *_lnxvm_0*.
 
-W widoku drzewa, Znajdź pakiet kodu na *_lnxvm_0* węzła, rozwijając **węzłów**>**_lnxvm_0**>**Service fabric: / Voting**  > **azurevotfrontPkg**>**pakiety kodu**>**kodu**.  Następnie wybierz pozycję **dzienniki kontenerów** opcję, aby wyświetlić dzienniki kontenerów.
+W widoku drzewa, Znajdź pakiet kodu na *_lnxvm_0* węzła, rozwijając **węzłów**> **_lnxvm_0**>**Service fabric: / Voting**  > **azurevotfrontPkg**>**pakiety kodu**>**kodu**.  Następnie wybierz pozycję **dzienniki kontenerów** opcję, aby wyświetlić dzienniki kontenerów.
 
 ![Platforma Service Fabric][Image1]
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
 ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64706078"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Usługa Azure protokół połączeń hybrydowych usługi Relay
 
@@ -146,8 +146,8 @@ Dostępne są następujące opcje parametru ciągu zapytania.
 
 | Parametr        | Wymagane | Opis
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | Yes      | Dla roli odbiornika parametr musi być **akcji w przypadku połączenia hybrydowego sb = nasłuchiwania**
-| `{path}`         | Yes      | Ścieżka zakodowane jako adres URL przestrzeni nazw wstępnie skonfigurowane połączenie hybrydowe, aby zarejestrować tego odbiornika na. To wyrażenie jest dołączany do stałej `$hc/` część ścieżki.
+| `sb-hc-action`   | Tak      | Dla roli odbiornika parametr musi być **akcji w przypadku połączenia hybrydowego sb = nasłuchiwania**
+| `{path}`         | Tak      | Ścieżka zakodowane jako adres URL przestrzeni nazw wstępnie skonfigurowane połączenie hybrydowe, aby zarejestrować tego odbiornika na. To wyrażenie jest dołączany do stałej `$hc/` część ścieżki.
 | `sb-hc-token`    | Tak\*    | Odbiornik, musisz podać prawidłową, zakodowane w adresie URL udostępnione dostęp do tokenu usługi Service Bus dla przestrzeni nazw lub połączenie hybrydowe, która przyznaje **nasłuchiwania** prawo.
 | `sb-hc-id`       | Nie       | Ten identyfikator opcjonalnie dostarczonych przez klienta umożliwia śledzenia diagnostycznego end-to-end.
 
@@ -155,7 +155,7 @@ Jeśli połączenie WebSocket zakończy się niepowodzeniem ze względu na ście
 
 | Kod | Błąd          | Opis
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Nie znaleziono      | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
+| 404  | Nie można odnaleźć      | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
 | 401  | Brak autoryzacji   | Token zabezpieczający jest brak lub źle sformułowany lub nieprawidłowy.
 | 403  | Zabroniony      | Token zabezpieczeń jest nieprawidłowy dla tej ścieżki dla tej akcji.
 | 500  | Błąd wewnętrzny | Wystąpił błąd w usłudze.
@@ -206,8 +206,8 @@ Adres URL musi być używany jako — jest możliwość ustanowienia gniazda acc
 
 | Parametr      | Wymagane | Opis
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Yes      | Do akceptowania gniazda, parametr musi być `sb-hc-action=accept`
-| `{path}`       | Yes      | (zobacz następujący akapit)
+| `sb-hc-action` | Tak      | Do akceptowania gniazda, parametr musi być `sb-hc-action=accept`
+| `{path}`       | Tak      | (zobacz następujący akapit)
 | `sb-hc-id`     | Nie       | Zobacz opis poprzedniego **identyfikator**.
 
 `{path}` jest to ścieżka zakodowane jako adres URL przestrzeni nazw, wstępnie skonfigurowane połączenia hybrydowego, w którym można zarejestrować tego odbiornika. To wyrażenie jest dołączany do stałej `$hc/` część ścieżki.
@@ -243,8 +243,8 @@ Jeśli wystąpi błąd, usługa potrzebują pomocy eksperta w następujący spos
 
 | Param                   | Wymagane | Opis                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| sb-hc-statusCode        | Yes      | Kod stanu HTTP.                |
-| sb-hc-statusDescription | Yes      | Ludzi czytelny Przyczyna odrzucenia. |
+| sb-hc-statusCode        | Tak      | Kod stanu HTTP.                |
+| sb-hc-statusDescription | Tak      | Ludzi czytelny Przyczyna odrzucenia. |
 
 Wynikowy identyfikatora URI jest następnie używany do ustanawiania połączenia protokołu WebSocket.
 
@@ -378,13 +378,13 @@ Odpowiedzi, które przekracza 64 kB, aby uzyskać odpowiedzi muszą być dostarc
 
 | Parametr      | Wymagane | Opis
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Yes      | Do akceptowania gniazda, parametr musi być `sb-hc-action=request`
+| `sb-hc-action` | Tak      | Do akceptowania gniazda, parametr musi być `sb-hc-action=request`
 
 Jeśli wystąpi błąd, usługa potrzebują pomocy eksperta w następujący sposób:
 
 | Kod | Błąd           | Opis
 | ---- | --------------- | -----------------------------------
-| 400  | Nieprawidłowe żądanie. | Akcja nierozpoznany lub nieprawidłowy adres URL.
+| 400  | Nieprawidłowe żądanie | Akcja nierozpoznany lub nieprawidłowy adres URL.
 | 403  | Zabroniony       | Adres URL wygasł.
 | 500  | Błąd wewnętrzny  | Wystąpił problem w usłudze
 
@@ -453,7 +453,7 @@ Jeśli połączenie WebSocket zakończy się niepowodzeniem z powodu ścieżki p
 
 | Kod | Błąd          | Opis
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Nie znaleziono      | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
+| 404  | Nie można odnaleźć      | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
 | 401  | Brak autoryzacji   | Token zabezpieczający jest brak lub źle sformułowany lub nieprawidłowy.
 | 403  | Zabroniony      | Token zabezpieczający nie jest prawidłowy dla tej ścieżki, a dla tej akcji.
 | 500  | Błąd wewnętrzny | Wystąpił błąd w usłudze.
@@ -491,21 +491,21 @@ Tokenu można wykonać w obu `ServiceBusAuthorization` lub `Authorization` nagł
 Ponieważ usługa skutecznie działa jako serwer proxy, nawet wtedy, gdy nie jako wartość true, serwer proxy HTTP albo dodaje `Via` nagłówek lub oznacza stosowanym istniejące `Via` nagłówka zgodne z [RFC7230, sekcja 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
 Usługa dodaje nazwę hosta przestrzeni nazw usługi Relay do `Via`.
 
-| Kod | Komunikat  | Opis                    |
+| Kod | Message  | Opis                    |
 | ---- | -------- | ------------------------------ |
 | 200  | OK       | Żądanie jest przetwarzane przez co najmniej jeden odbiornik.  |
-| 202  | Zaakceptowany | Żądanie zostało zaakceptowane przez co najmniej jednego odbiornika. |
+| 202  | Zaakceptowane | Żądanie zostało zaakceptowane przez co najmniej jednego odbiornika. |
 
 Jeśli wystąpi błąd, usługa potrzebują pomocy eksperta w następujący sposób. Czy odpowiedź pochodzi z usługi lub odbiornik mogą być identyfikowane przez obecność `Via` nagłówka. Jeśli występuje nagłówek odpowiedzi jest z odbiornika.
 
 | Kod | Błąd           | Opis
 | ---- | --------------- |--------- |
-| 404  | Nie znaleziono       | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
+| 404  | Nie można odnaleźć       | Ścieżka połączenia hybrydowego jest nieprawidłowa lub podstawowego adresu URL jest nieprawidłowo sformułowany.
 | 401  | Brak autoryzacji    | Token zabezpieczający jest brak lub źle sformułowany lub nieprawidłowy.
 | 403  | Zabroniony       | Token zabezpieczający nie jest prawidłowy dla tej ścieżki, a dla tej akcji.
 | 500  | Błąd wewnętrzny  | Wystąpił błąd w usłudze.
 | 503  | Zła brama     | Żądanie nie może być kierowany do dowolnego odbiornika.
-| 504  | Przekroczono limit czasu bramy | Żądanie zostało kierowane do odbiornika, ale odbiornik nie potwierdził przyjęcia w wymaganym czasie.
+| 504  | Limit czasu bramy | Żądanie zostało kierowane do odbiornika, ale odbiornik nie potwierdził przyjęcia w wymaganym czasie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61023911"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
@@ -38,7 +38,7 @@ Przed utworzeniem kopii zapasowej, należy skonfigurować ustawienia magazynu dl
 
 2.  Kliknij przycisk **włączone**, następnie kliknij przycisk **ustawienia magazynu**.
 
-    ![Włączanie](./media/analysis-services-backup/aas-backup-enable.png)
+    ![Włączenie](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. Wybierz konto magazynu lub Utwórz nową.
 

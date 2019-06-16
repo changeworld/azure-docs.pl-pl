@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
 ms.openlocfilehash: b3225d8d2f9eb7ccd0f4087d93cd9c1d940783d9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714682"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla grupy zabezpieczeń sieci
@@ -134,7 +134,7 @@ Dane diagnostyczne mogą być:
 - [Przesyłane strumieniowo do Centrum zdarzeń](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowe, takie jak usługi Power BI.
 - [Zapisywane do dzienników usługi Azure Monitor](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics).
 
-## <a name="log-categories"></a>Kategorie dzienników
+## <a name="log-categories"></a>Rejestruj kategorie
 
 Dane w formacie JSON jest przeznaczony dla następujących kategorii dziennika:
 

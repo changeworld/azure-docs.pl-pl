@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
 ms.openlocfilehash: 3c82a88ea15b52672f9bed428e2e7af40a65309c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610200"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web IaaS dla Australii chronione
@@ -58,7 +58,7 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Dalsze szczegół
 - Azure Security Center
 - Dzienniki usługi Azure Monitor
 - Azure Storage
-- Azure Virtual Machines
+- Usługa Azure Virtual Machines
     - (1) zarządzania/bastionu (Windows Server 2016 Datacenter)
     - (2) węzeł klastra programu SQL Server (SQL Server 2017 w systemie Windows Server 2016)
     - (2) w sieci web/IIS (system Windows Server 2016 Datacenter)
@@ -93,7 +93,7 @@ Każdej z tych podsieci ma dedykowany sieciowej grupy zabezpieczeń:
 - 1 sieciowej grupy zabezpieczeń dla serwerów SQL i monitor w chmurze (SQLNSG)
 - 1 sieciowej grupy zabezpieczeń dla warstwy internetowej (WEBNSG)
 
-### <a name="data-in-transit"></a>Przesyłane dane
+### <a name="data-in-transit"></a>Dane przesyłane
 Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. 
 
 Dane podlegające ochronie w drodze od klienta do sieci architektura używa Internet lub usługi ExpressRoute za pośrednictwem bramy sieci VPN skonfigurowane przy użyciu protokołu IPSEC.

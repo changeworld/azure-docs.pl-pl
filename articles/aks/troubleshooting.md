@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
 ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966377"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
@@ -78,8 +78,8 @@ Użytkownik może się pojawiać ten błąd ponieważ znaczniki węzły agenta w
 Ten błąd występuje, gdy klastry przejść w stan nie powiodło się kilka przyczyn. Wykonaj poniższe kroki, aby rozwiązać Nazwa stanu klastra nie powiodło się przed ponowieniem próby wykonania operacji wcześniej zakończonej niepowodzeniem:
 
 1. Dopóki nie jest klastrem `failed` stanu, `upgrade` i `scale` operacji nie powiodło się. Typowe problemy głównego i rozwiązania obejmują:
-    * Skalowanie za pomocą **przydział usługi compute niewystarczające (CRP)**. Aby rozwiązać problem, należy najpierw skalowania klastra do stanu stabilne cel w ramach limitu przydziału. Następnie postępuj zgodnie z tymi [zwiększyć kroki, aby żądać przydziału obliczeniowych](../azure-supportability/resource-manager-core-quotas-request.md) przed przystąpieniem do skalowania w górę ponownie limitów przydziału początkowej poza nim.
-    * Skalowanie klastra za pomocą zaawansowanych sieci i **zasoby podsieci niewystarczające (sieć)**. Aby rozwiązać problem, należy najpierw skalowania klastra do stanu stabilne cel w ramach limitu przydziału. Następnie postępuj zgodnie z [zwiększyć te kroki, aby żądać przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed przystąpieniem do skalowania w górę ponownie limitów przydziału początkowej poza nim.
+    * Skalowanie za pomocą **przydział usługi compute niewystarczające (CRP)** . Aby rozwiązać problem, należy najpierw skalowania klastra do stanu stabilne cel w ramach limitu przydziału. Następnie postępuj zgodnie z tymi [zwiększyć kroki, aby żądać przydziału obliczeniowych](../azure-supportability/resource-manager-core-quotas-request.md) przed przystąpieniem do skalowania w górę ponownie limitów przydziału początkowej poza nim.
+    * Skalowanie klastra za pomocą zaawansowanych sieci i **zasoby podsieci niewystarczające (sieć)** . Aby rozwiązać problem, należy najpierw skalowania klastra do stanu stabilne cel w ramach limitu przydziału. Następnie postępuj zgodnie z [zwiększyć te kroki, aby żądać przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed przystąpieniem do skalowania w górę ponownie limitów przydziału początkowej poza nim.
 2. Po usunięciu podstawowych przyczyn niepowodzenia uaktualniania klastra powinna być w stanie sukces. Po zweryfikowaniu stanie sukces, spróbuj ponownie wykonać operację.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Otrzymuję błędy podczas próby uaktualnienia lub skali, do stanu klastra jest aktualnie jest uaktualniony lub uaktualnienie nie powiodło się

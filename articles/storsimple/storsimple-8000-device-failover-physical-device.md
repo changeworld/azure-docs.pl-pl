@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 5fcf95a1a3033a5150945dbd841f12d50ebb023b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60577245"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Pracy awaryjnej na urządzeniu fizycznym StorSimple 8000 series

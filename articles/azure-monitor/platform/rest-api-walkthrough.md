@@ -9,10 +9,10 @@ ms.date: 03/19/2018
 ms.author: robb
 ms.subservice: ''
 ms.openlocfilehash: bbc5aaf02f4ab4388e816faaf8df536770f3302a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205629"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Monitorowanie interfejsu API REST Azure — przewodnik
@@ -98,7 +98,7 @@ Użyj [definicje usługi Azure Monitor metryki interfejsu API REST](https://docs
 
 **Metoda**: GET
 
-**Identyfikator URI żądania**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{zasobu resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{ apiVersion}*
+**Identyfikator URI żądania**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{zasobu resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{ apiVersion}*
 
 Na przykład aby pobierać definicje metryk dla konta usługi Azure Storage, żądanie będzie wyglądać następująco:
 
@@ -242,7 +242,7 @@ Nazwa metryki "value" (nie "localizedValue") na użytek filtrowania żądań. Je
 
 **Metoda**: GET
 
-**Identyfikator URI żądania**: https\://management.azure.com/subscriptions/*{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/*{ — przestrzeń nazw dostawcy zasobów}*/*{typ_zasobu}*/*{Nazwa zasobu}*/providers/microsoft.insights/metrics? metricnames =*{Metryka}*& timespan =*{starttime/endtime}*& $filter =*{filter}*& resultType = metadanych & parametru api-version = *{apiVersion}*
+**Identyfikator URI żądania**: https\://management.azure.com/subscriptions/ *{identyfikator subskrypcji}* /resourceGroups/ *{— Nazwa grupy zasobów —}* /providers/ *{ — przestrzeń nazw dostawcy zasobów}* / *{typ_zasobu}* / *{Nazwa zasobu}* /providers/microsoft.insights/metrics? metricnames = *{Metryka}* & timespan = *{starttime/endtime}* & $filter = *{filter}* & resultType = metadanych & parametru api-version = *{apiVersion}*
 
 Na przykład, można pobrać listy wartości wymiarów, które zostały emitowane na "dimension Nazwa interfejsu API" dla metryki "Transakcji", gdzie wymiaru GeoType = "Podstawowa" w określonym czasie, żądanie będzie wyglądało następująco:
 
@@ -315,7 +315,7 @@ Nazwa metryki "value" (nie "localizedValue") na użytek filtrowania żądań. Je
 
 **Metoda**: GET
 
-**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/*{— — przestrzeń nazw dostawcy zasobów}* / *{typ_zasobu}*/*{Nazwa zasobu}*/providers/microsoft.insights/metrics?metricnames=*{Metryka}*& timespan =*{starttime/endtime}*& $filter =*{filter}*& interwał =*{timeGrain}*& agregacji =*{ aggreation}*& parametru api-version =*{apiVersion}*
+**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{identyfikator subskrypcji}* /resourceGroups/ *{— Nazwa grupy zasobów —}* /providers/ *{— — przestrzeń nazw dostawcy zasobów}* / *{typ_zasobu}* / *{Nazwa zasobu}* /providers/microsoft.insights/metrics?metricnames= *{Metryka}* & timespan = *{starttime/endtime}* & $filter = *{filter}* & interwał = *{timeGrain}* & agregacji = *{ aggreation}* & parametru api-version = *{apiVersion}*
 
 Na przykład, można pobrać pierwsze 3 interfejsów API, malejąco wartość przez liczbę transakcji, w zakresie 5 min, tam, gdzie GeotType nie "Podstawowa", żądanie będzie wyglądało następująco:
 
@@ -394,7 +394,7 @@ Użyj [definicje usługi Azure Monitor metryki interfejsu API REST](https://msdn
 
 **Metoda**: GET
 
-**Identyfikator URI żądania**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{zasobu resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{ apiVersion}*
+**Identyfikator URI żądania**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{zasobu resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{ apiVersion}*
 
 Na przykład aby pobierać definicje metryk dla aplikacji logiki platformy Azure, żądanie będzie wyglądać następująco:
 
@@ -467,7 +467,7 @@ Po dostępne definicje metryki są znane, następnie jest możliwe do pobrania p
 
 **Metoda**: GET
 
-**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/*{— — przestrzeń nazw dostawcy zasobów}* / *{typ_zasobu}*/*{Nazwa zasobu}*/providers/microsoft.insights/metrics?$filter=*{filter}*& parametru api-version =*{apiVersion}*
+**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{identyfikator subskrypcji}* /resourceGroups/ *{— Nazwa grupy zasobów —}* /providers/ *{— — przestrzeń nazw dostawcy zasobów}* / *{typ_zasobu}* / *{Nazwa zasobu}* /providers/microsoft.insights/metrics?$filter= *{filter}* & parametru api-version = *{apiVersion}*
 
 Na przykład aby pobrać punktów danych metryk RunsSucceeded dla zakresu w danym momencie i ziarnem czasu godziny, żądanie będzie się następująco:
 
@@ -605,13 +605,13 @@ Dla poprzedniego kodu identyfikator zasobu do użycia jest pełna ścieżka do �
 
 Poniższa lista zawiera kilka przykładów formatów identyfikator zasobu dla różnych zasobów platformy Azure:
 
-* **IoT Hub** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
-* **Elastyczna pula SQL** -/subscriptions/*{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/Microsoft.Sql/servers/*{puli db}*/elasticpools/*{sql puli name}*
-* **SQL Database (v12)** -/subscriptions/*{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/Microsoft.Sql/servers/*{nazwa serwera}*/databases/*{Nazwa bazy danych}*
-* **Service Bus** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
-* **Zestawy skalowania maszyn wirtualnych** -/subscriptions/*{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/Microsoft.Compute/virtualMachineScaleSets/ *{nazwa_maszyny_wirtualnej}*
-* **VMs** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachines/*{vm-name}*
-* **Usługa Event Hubs** -/subscriptions/*{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/Microsoft.EventHub/namespaces/*{ przestrzeń nazw usługi Event Hub}*
+* **IoT Hub** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
+* **Elastyczna pula SQL** -/subscriptions/ *{identyfikator subskrypcji}* /resourceGroups/ *{— Nazwa grupy zasobów —}* /providers/Microsoft.Sql/servers/ *{puli db}* /elasticpools/ *{sql puli name}*
+* **SQL Database (v12)** -/subscriptions/ *{identyfikator subskrypcji}* /resourceGroups/ *{— Nazwa grupy zasobów —}* /providers/Microsoft.Sql/servers/ *{nazwa serwera}* /databases/ *{Nazwa bazy danych}*
+* **Service Bus** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.ServiceBus/ *{namespace}* / *{servicebus-name}*
+* **Zestawy skalowania maszyn wirtualnych** -/subscriptions/ *{identyfikator subskrypcji}* /resourceGroups/ *{— Nazwa grupy zasobów —}* /providers/Microsoft.Compute/virtualMachineScaleSets/ *{nazwa_maszyny_wirtualnej}*
+* **VMs** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{vm-name}*
+* **Usługa Event Hubs** -/subscriptions/ *{identyfikator subskrypcji}* /resourceGroups/ *{— Nazwa grupy zasobów —}* /providers/Microsoft.EventHub/namespaces/ *{ przestrzeń nazw usługi Event Hub}*
 
 Istnieją alternatywne sposoby pobierania identyfikator zasobu, w tym o korzystaniu z Eksploratora zasobów Azure, wyświetlając żądanego zasobu w witrynie Azure portal, a także za pośrednictwem programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 

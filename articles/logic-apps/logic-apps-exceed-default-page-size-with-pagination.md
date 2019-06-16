@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 04/11/2019
 ms.openlocfilehash: 2d1bcf2cf83fab106f79120c3caacc424f839836
-ms.sourcegitcommit: daf6538427ea6effef898f2ee3d857e5fa2dccbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/25/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64476544"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Uzyskaj więcej danych, elementy lub rekordy przy użyciu dzielenia na strony w usłudze Azure Logic Apps
@@ -51,7 +51,7 @@ Poniżej przedstawiono listę tylko niektórych łączników, których może prz
 
 Aby ustalić, czy akcja obsługuje podział na strony w Projektancie aplikacji logiki, sprawdź ustawienia akcji **dzielenia na strony** ustawienie. W tym przykładzie pokazano, jak włączyć funkcję podziału na strony w programie SQL Server **Pobierz wiersze** akcji.
 
-1. W akcji w prawym górnym rogu wybierz wielokropek (**...** ) i wybierz **ustawienia**.
+1. W akcji w prawym górnym rogu wybierz wielokropek ( **...** ) i wybierz **ustawienia**.
 
    ![Otwórz ustawienia akcji](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: af09ea39f373d518d5600e3fa46adc378fd9236d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442554"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązania do monitorowania zdalnego
@@ -102,7 +102,7 @@ Mikrousługi udostępnia punkt końcowy usługi RESTful do zarządzania urządze
 
 Wartości są uporządkowane w kolekcjach. Można pracować na osobne wartości lub pobrania całej kolekcji. Złożone struktury danych są serializowane przez klientów i zarządzane jako ładunek zwykłego tekstu.
 
-Usługa zapewnia punkt końcowy usługi RESTful dla operacji CRUD na parach klucz wartość. wartości
+Usługa zapewnia punkt końcowy usługi RESTful dla operacji CRUD na parach klucz wartość. Wartości
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 

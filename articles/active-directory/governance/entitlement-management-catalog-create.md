@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6d9220cd2162b4c8cb77c1e7abd0372052f5454
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541618"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Tworzenie i zarządzanie nimi wykazu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
@@ -98,7 +98,7 @@ Możesz usunąć zasoby z katalogu. Zasób tylko można usunąć z katalogu, je�
 
 1. Wybierz zasoby, które chcesz usunąć.
 
-1. Kliknij przycisk **Usuń** (lub kliknij przycisk wielokropka (**...** ) a następnie kliknij przycisk **Usuń zasób**).
+1. Kliknij przycisk **Usuń** (lub kliknij przycisk wielokropka ( **...** ) a następnie kliknij przycisk **Usuń zasób**).
 
 ## <a name="add-catalog-owners-or-access-package-managers"></a>Dodawanie właścicieli katalogu ani uzyskać dostępu do menedżerów pakietów
 

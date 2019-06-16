@@ -17,11 +17,11 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252415"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64708417"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Sposób tworzenia obrazu maszyny Wirtualnej niezarządzanej maszyny wirtualnej platformy Azure
 
@@ -89,7 +89,7 @@ Możesz również uogólnić maszyny Wirtualnej systemu Linux przy użyciu `sudo
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    *Stan* dla maszyny Wirtualnej w witrynie Azure portal zmieni się z **zatrzymane** do **zatrzymane (cofnięty przydział)**.
+    *Stan* dla maszyny Wirtualnej w witrynie Azure portal zmieni się z **zatrzymane** do **zatrzymane (cofnięty przydział)** .
 2. Ustaw stan maszyny wirtualnej do **Uogólniono**. 
    
     ```powershell

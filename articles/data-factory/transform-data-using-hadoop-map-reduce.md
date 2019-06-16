@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611499"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania technologii MapReduce usługi Hadoop w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-map-reduce.md)
 > * [Bieżąca wersja](transform-data-using-hadoop-map-reduce.md)
 
@@ -65,14 +65,14 @@ Zobacz [Pig](transform-data-using-hadoop-pig.md) i [Hive](transform-data-using-h
 | name              | Nazwa działania                     | Yes      |
 | description       | Tekst opisujący przeznaczenie działania | Nie       |
 | type              | Dla działania MapReduce typ działania jest HDinsightMapReduce | Yes      |
-| linkedServiceName | Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Yes      |
+| linkedServiceName | Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Tak      |
 | className         | Nazwa klasy do wykonania         | Yes      |
 | jarLinkedService  | Odwołanie do połączonej usługi magazynu platformy Azure używane do przechowywania plików Jar. Jeśli nie określisz ta połączona usługa połączona usługa Azure Storage zdefiniowane w połączonej usługi HDInsight jest używany. | Nie       |
-| jarFilePath       | Podaj ścieżkę do plików Jar, przechowywane w usłudze Azure Storage, odwołuje się element jarLinkedService. Nazwa pliku jest rozróżniana wielkość liter. | Yes      |
+| jarFilePath       | Podaj ścieżkę do plików Jar, przechowywane w usłudze Azure Storage, odwołuje się element jarLinkedService. Nazwa pliku jest rozróżniana wielkość liter. | Tak      |
 | jarlibs           | Ciąg tablicy ścieżki do plików biblioteki Jar, które są przywoływane przez zadanie w usłudze Azure Storage, zdefiniowane w jarLinkedService. Nazwa pliku jest rozróżniana wielkość liter. | Nie       |
 | getDebugInfo      | Określa, kiedy pliki dziennika są kopiowane do usługi Azure Storage używanego przez klaster HDInsight (lub) określony przez jarLinkedService. Dozwolone wartości: Brak zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
-| argumenty         | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia w odniesieniu do każdego zadania. | Nie       |
-| Definiuje           | Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive. | Nie       |
+| arguments         | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia w odniesieniu do każdego zadania. | Nie       |
+| defines           | Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive. | Nie       |
 
 
 

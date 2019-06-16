@@ -17,10 +17,10 @@ ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607697"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Zautomatyzowane tworzenie kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure (wersja klasyczna)
@@ -74,7 +74,7 @@ W poniższej tabeli opisano opcje, które można skonfigurować do automatyczneg
 | **Konto magazynu** |Konto usługi Azure storage (konto magazynu utworzone dla określonej maszyny Wirtualnej) |Konto magazynu platformy Azure do przechowywania automatycznych kopii zapasowych plików w magazynie obiektów blob. Kontener jest tworzony w tej lokalizacji, aby zapisać wszystkie pliki kopii zapasowej. Konwencja nazewnictwa pliku kopii zapasowej zawiera daty, godziny i nazwy komputera. |
 | **Szyfrowanie** |Włącz/Wyłącz (wyłączony) |Włącza lub wyłącza funkcję szyfrowania. Gdy jest włączone szyfrowanie, certyfikaty służące do przywrócenia kopii zapasowej znajdują się w podanego konta magazynu w tym samym kontenerze automaticbackup przy użyciu tej samej konwencji nazewnictwa. Zmiana hasła nowy certyfikat jest generowany przy użyciu tego hasła, ale stary certyfikat pozostanie do przywrócenia poprzednich kopii zapasowych. |
 | **Hasło** |Tekst hasła, (Brak) |Hasło kluczy szyfrowania. Jest to tylko wymagane, jeśli szyfrowanie jest włączone. Aby przywrócić szyfrowanej kopii zapasowej, musisz mieć prawidłowe hasło i powiązane certyfikat, który został użyty w tym czasie, na których wykonano kopię zapasową. |
-| **Bazy danych systemu tworzenia kopii zapasowych** | Włącz/Wyłącz (wyłączony) | Twórz pełne kopie zapasowe baz danych Master, Model i MSDB |
+| **Bazy danych systemu tworzenia kopii zapasowych** | Włącz/Wyłącz (wyłączony) | Twórz pełne kopie zapasowe Master, Model i MSDB |
 | **Konfigurowanie harmonogramu tworzenia kopii zapasowych** | Ręczne/automatyczne (automatyczne) | Wybierz **automatyczne** do automatycznie twórz pełne kopie zapasowe w oparciu o wzrost dziennika dzienników. Wybierz **ręczne** Aby określić harmonogram dla pełnej i kopie zapasowe dzienników. |
 
 ## <a name="configuration-with-powershell"></a>Konfiguracja przy użyciu programu PowerShell

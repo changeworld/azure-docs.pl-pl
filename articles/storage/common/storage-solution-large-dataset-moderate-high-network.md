@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60729238"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Transfer danych dla dużych zestawów danych przy użyciu umiarkowany Wysoka przepustowość sieci
@@ -68,13 +68,13 @@ Jeśli przy użyciu transferu danych w trybie offline, należy użyć poniższej
 |    Typ danych                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
 |    Współczynnik postaci                      |    5 dysków SSD na zamówienie zlecenie             |    1 x 50-modułów równoważenia obciążenia. rozmiar pulpitu urządzenia na zamówienie zlecenie    |    Kg — 1 X ~ 500. duże urządzenia na zamówienie zlecenie    |    Do 10 dysków twardych/SSD na zamówienie zlecenie        |
 |    Czas początkowej konfiguracji               |    Małe <br>(15 min)            |    Działania niskiej lub średniej <br> (< 30 minut)               |    Średnia<br>(1 – 2 godziny)               |    Moderowanie trudne do<br>(zmienna) |
-|    Wysyłanie danych do platformy Azure               |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
-|    Eksportowanie danych z platformy Azure           |    Nie                           |    Nie                                            |    Nie                                    |    Yes                                 |
+|    Wysyłanie danych do platformy Azure               |    Tak                          |    Yes                                           |    Yes                                   |    Yes                                 |
+|    Eksportowanie danych z platformy Azure           |    Nie                           |    Nie                                            |    Nie                                    |    Tak                                 |
 |    Szyfrowanie                       |    AES 128-bitowy                  |    AES 256-bitowy                                   |    AES 256-bitowy                           |    AES 128-bitowy                         |
 |    Sprzęt                         |     Podany firmy Microsoft          |    Podany firmy Microsoft                            |    Podany firmy Microsoft                    |    Dostarcza użytkownik                   |
 |    Interfejs sieciowy                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
 |    Integracja z partnerami              |    Niektóre                         |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Niektóre                                |
-|    Wysyłka                         |    Zarządzany przez firmę Microsoft            |    Zarządzany przez firmę Microsoft                             |    Zarządzany przez firmę Microsoft                     |    Zarządzaną przez klienta                    |
+|    Wysyłki                         |    Zarządzany przez firmę Microsoft            |    Zarządzany przez firmę Microsoft                             |    Zarządzany przez firmę Microsoft                     |    Zarządzaną przez klienta                    |
 | Stosowane, gdy dane są przenoszone         |W granicach handlowych|W granicach handlowych|W granicach handlowych|W granicach geograficznych, np. nam UE|
 |    Cennik                          |    [Cennik](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Cennik](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
@@ -88,8 +88,8 @@ Jeśli przy użyciu transferu danych w trybie online, na użytek tabeli w poniż
 |    Typ danych                  |    Obiekty BLOB platformy Azure, usługa Azure Files, tabele platformy Azure    |    Obiekty BLOB platformy Azure, usługa Azure Files, tabele platformy Azure    |    Obiekty BLOB platformy Azure, usługa Azure Files                           |   Obsługuje 70 łączników danych dla magazynów danych i formatów    |
 |    Współczynnik postaci                |    Narzędzia wiersza polecenia                        |    Interfejs programistyczny                    |    Firma Microsoft dostarcza wirtualnej <br>lub urządzenia fizycznego     |    Usługi w witrynie Azure portal                                            |
 |    Początkowa jednorazowej konfiguracji     |    Łatwość               |    Średnia                       |    Proste (< 30 minut) na Średni (1 – 2 godziny)            |    Rozbudowane                                                          |
-|    Przetwarzanie wstępne danych              |    Nie                                        |    Nie                                        |    Tak (składnik obliczeniowy za pomocą przeglądarki Edge)                               |    Yes                                                                |
-|    Transfer z innych chmur       |    Nie                                        |    Nie                                        |    Nie                                                    |    Yes                                                                |
+|    Przetwarzanie wstępne danych              |    Nie                                        |    Nie                                        |    Tak (składnik obliczeniowy za pomocą przeglądarki Edge)                               |    Tak                                                                |
+|    Transfer z innych chmur       |    Nie                                        |    Nie                                        |    Nie                                                    |    Tak                                                                |
 |    Typ użytkownika                        |    IT Pro lub deweloperów                                       |    Deweloperskie                                       |    Specjaliści IT                                                |    Specjaliści IT                                                             |
 |    Cennik                          |    Bezpłatne, danych opłaty za ruch wychodzący         |    Bezpłatne, danych opłaty za ruch wychodzący         |    [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Cennik](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 

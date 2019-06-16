@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: kumud
 ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957474"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Omówienie usługi Azure Load Balancer w warstwie standardowa
 
-Usługa Azure Load Balancer pozwala skalować aplikacje i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia może służyć do scenariuszy dla ruchu przychodzącego, a także ruchu wychodzącego i zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP. 
+Usługa Azure Load Balancer umożliwia skalowanie aplikacji i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia może służyć do scenariuszy dla ruchu przychodzącego, a także ruchu wychodzącego i zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP. 
 
 Ten artykuł koncentruje się na standardowych modułu równoważenia obciążenia.  Aby uzyskać bardziej ogólne omówienie modułu równoważenia obciążenia Azure, przejrzyj [Omówienie usługi Load Balancer](load-balancer-overview.md) także.
 
@@ -204,11 +204,11 @@ Jednostki SKU nie jest modyfikowalna. Wykonaj kroki opisane w tej sekcji, aby pr
 >
 >Dopasowywanie jednostki SKU musi być używany dla zasobów modułu równoważenia obciążenia i publicznego adresu IP. Nie może mieć kombinację zasobów podstawowej jednostki SKU i standardowej jednostki SKU. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.
 
-## <a name="region-availability"></a>Dostępność regionalna
+## <a name="region-availability"></a>Dostępność w danym regionie
 
 Load Balancer w warstwie standardowa jest obecnie dostępna we wszystkich regionach chmury publicznej.
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>Umowa SLA
 
 Standardowe moduły równoważenia obciążenia dostępnych z SLA na poziomie 99,99%.  Przegląd [standardowych umów SLA usługi równoważenia obciążenia](https://aka.ms/lbsla) Aby uzyskać szczegółowe informacje.
 

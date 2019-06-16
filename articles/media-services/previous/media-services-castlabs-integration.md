@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Mingfeiy;willzhan;Juliako
 ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61232588"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Korzystanie z castLabs w celu dostarczania licencji Widevine do usługi Azure Media Services 
@@ -58,7 +58,7 @@ W poniższej tabeli opisano tokenu JWT w usługi AMS.
 | Wystawca | Ciąg wystawcy z wybranego Secure Token Service (STS) |
 | --- | --- |
 | Grupy odbiorców |Ciąg odbiorców z używane usługi STS |
-| Oświadczenia |Zestaw oświadczeń |
+| oświadczenia |Zestaw oświadczeń |
 | nie wcześniej niż |Rozpocznij ważności tokenu |
 | Wygasa |Zakończenia ważności tokenu |
 | SigningCredentials |Klucz, który jest współużytkowana przez serwer licencji PlayReady, castLabs serwer licencji i usługi STS, możliwe, konfiguracji symetrycznej lub asymetrycznej klucza. |
@@ -71,7 +71,7 @@ W poniższej tabeli opisano tokenu JWT w castLabs.
 | --- | --- |
 | optData |Ciąg JSON zawierający informacje o Tobie. |
 | CRT |Ciąg JSON zawierający informacje o zawartości, jej informacji i odtwarzanie praw licencyjnych. |
-| IAT |Bieżąca data i godzina w epoki. |
+| iat |Bieżąca data i godzina w epoki. |
 | jti |Unikatowy identyfikator o ten token (każdy token może być użyte tylko raz w systemie castLabs). |
 
 ## <a name="sample-solution-setup"></a>Przykładowe rozwiązanie Instalatora

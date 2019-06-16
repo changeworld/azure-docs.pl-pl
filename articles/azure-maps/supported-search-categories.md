@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727148"
 ---
 # <a name="azure-maps-supported-categories"></a>Usługi Azure Maps obsługiwane kategorie
@@ -45,7 +45,7 @@ Podczas ustalania [wyszukiwanie według kategorii](https://docs.microsoft.com/re
 | COLLEGE\_UNIVERSITY | inny poziom uczelni/policealnej uczelni/university, uczelni, szkoły prep university, university |
 | KOMERCYJNE\_KOMPILOWANIE | Tworzenie pakietu Office Tworzenie centrali park komercyjnych |
 | SPOŁECZNOŚĆ\_CENTRUM | Centrum społeczności |
-| FIRMA | Electronics, produkcji i usług danych komputera, technologii zdrowia publicznego, Finanse, chroniły zwierząt, linii lotniczych, dzierżawa urządzenia, usługi, dostarczania poczty/pakietu/transport, linii magistrali, naprawy głównego urządzenia, czyszczenie usług, oem, opodatkowaniem usługi, olej gazowniczym, usług prawnych, konstrukcji, telekomunikacyjnych, transport, samochodów produkcji, chemiczne, mortuaries usługi pogrzebowe, operacje tunelu mostek, samochodów, mechaniczne, usług, doradców inwestycji reklamy/marketing, przenoszenie magazynu, instytucja oszczędności, branży ubezpieczeniowej, oprogramowanie komputerowe środków farmaceutycznych, świadcząc usługi wesele, rolnicze technologii, nieruchomości, taksówek, limousine shuttle usługi Service bus wynajem karty, wyszukiwania, publikowania technologie, kabel telefonu, firmy, brewery, osoby, estate(s), dystrybucji importu/eksportu, mine(s) węgla, gold mine(s) |
+| FIRMY | Electronics, produkcji i usług danych komputera, technologii zdrowia publicznego, Finanse, chroniły zwierząt, linii lotniczych, dzierżawa urządzenia, usługi, dostarczania poczty/pakietu/transport, linii magistrali, naprawy głównego urządzenia, czyszczenie usług, oem, opodatkowaniem usługi, olej gazowniczym, usług prawnych, konstrukcji, telekomunikacyjnych, transport, samochodów produkcji, chemiczne, mortuaries usługi pogrzebowe, operacje tunelu mostek, samochodów, mechaniczne, usług, doradców inwestycji reklamy/marketing, przenoszenie magazynu, instytucja oszczędności, branży ubezpieczeniowej, oprogramowanie komputerowe środków farmaceutycznych, świadcząc usługi wesele, rolnicze technologii, nieruchomości, taksówek, limousine shuttle usługi Service bus wynajem karty, wyszukiwania, publikowania technologie, kabel telefonu, firmy, brewery, osoby, estate(s), dystrybucji importu/eksportu, mine(s) węgla, gold mine(s) |
 | COURTHOUSE | courthouse |
 | KULTURY\_CENTRUM | Centrum kultury |
 | DENTIST | dentist |

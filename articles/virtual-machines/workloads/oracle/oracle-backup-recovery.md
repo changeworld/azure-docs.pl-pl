@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567083"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Tworzenie kopii zapasowych i odzyskiwanie bazy danych Oracle database 12c na maszynie wirtualnej z systemem Linux platformy Azure
@@ -303,7 +303,7 @@ Aby uzyskać więcej informacji, zobacz [spójnych z aplikacją kopii zapasowych
 
     ![Strona szczegółów myVault Magazyny usług odzyskiwania](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  Na **elementy kopii zapasowej (maszynie wirtualnej platformy Azure)** bloku w prawej części strony, kliknij przycisk wielokropka (**...** ) przycisk, a następnie kliknij przycisk **Utwórz teraz kopię zapasową**.
+9.  Na **elementy kopii zapasowej (maszynie wirtualnej platformy Azure)** bloku w prawej części strony, kliknij przycisk wielokropka ( **...** ) przycisk, a następnie kliknij przycisk **Utwórz teraz kopię zapasową**.
 
     ![Kopia zapasowa teraz polecenia Magazyny usługi Recovery Services](./media/oracle-backup-recovery/recovery_service_09.png)
 
@@ -351,7 +351,7 @@ Aby przywrócić usunięte pliki, wykonaj następujące czynności:
 
     ![Magazyny usługi Recovery Services liczba elementów kopii zapasowej maszyny wirtualnej platformy Azure](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. Na **myvm1** bloku kliknij **odzyskiwanie plików (wersja zapoznawcza)**.
+3. Na **myvm1** bloku kliknij **odzyskiwanie plików (wersja zapoznawcza)** .
 
     ![Zrzut ekranu przedstawiający usługi Recovery Services magazyny strona odzyskiwania plików](./media/oracle-backup-recovery/recovery_service_14.png)
 
@@ -472,7 +472,7 @@ Zamiast przywracanie usuniętych plików z magazynów usługi Recovery Services,
 
     ![Strona maszyny Wirtualnej odzyskiwania](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  Na **myvm1** bloku, kliknij przycisk wielokropka (**...** ) przycisk, a następnie kliknij przycisk **przywrócić maszynę Wirtualną**.
+4.  Na **myvm1** bloku, kliknij przycisk wielokropka ( **...** ) przycisk, a następnie kliknij przycisk **przywrócić maszynę Wirtualną**.
 
     ![Przywracanie maszyny Wirtualnej, polecenie](./media/oracle-backup-recovery/recover_vm_05.png)
 
@@ -503,7 +503,7 @@ Po przywróceniu maszyny Wirtualnej należy skonfigurować publiczny adres IP.
 
     ![Listę publicznych adresów IP](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  Na **publiczne adresy IP** bloku kliknij **Dodaj**. Na **tworzenie publicznego adresu IP** bloku dla **nazwa**, wybierz nazwę publicznego adresu IP. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**. Następnie kliknij pozycję **Utwórz**.
+2.  Na **publiczne adresy IP** bloku kliknij **Dodaj**. Na **tworzenie publicznego adresu IP** bloku dla **nazwa**, wybierz nazwę publicznego adresu IP. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**. Następnie kliknij przycisk **Utwórz**.
 
     ![Utwórz adres IP](./media/oracle-backup-recovery/create_ip_01.png)
 

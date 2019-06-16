@@ -18,10 +18,10 @@ ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60936275"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura wysokiej dostępności i scenariusze SAP NetWeaver
@@ -369,7 +369,7 @@ Liczba domen aktualizacji i błędów, które mogą być używane przez zestaw w
 Jeśli wdrożono kilka wystąpień serwera aplikacji SAP w ich dedykowanych maszyn wirtualnych, przy założeniu, że mamy pięcioma domenami aktualizacji, wynika poniższej ilustracji. Rzeczywiste maksymalną liczbę domen aktualizacji i błędów w zestawie dostępności mogą ulec zmianie w przyszłości:
 
 ![Rysunek 2: Wysoką dostępność serwerów aplikacji SAP w zestawie dostępności platformy Azure][planning-guide-figure-3000]
-_**rysunek 2:** Ustaw wysoką dostępność serwerów aplikacji SAP w dostępności platformy Azure_
+ _**rysunek 2:** Ustaw wysoką dostępność serwerów aplikacji SAP w dostępności platformy Azure_
 
 Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępnością maszyn wirtualnych Windows na platformie Azure][azure-virtual-machines-manage-availability].
 

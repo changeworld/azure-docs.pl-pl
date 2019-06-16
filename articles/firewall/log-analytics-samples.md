@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
 ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60461538"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Przykłady programu Azure analizy dziennika zapory
@@ -28,7 +28,7 @@ Wykonaj poniższe kroki, aby dodać widok do obszaru roboczego usługi Log Analy
 
 1. Otwórz obszar roboczy usługi Log Analytics w witrynie Azure Portal.
 2. Otwórz **wyświetlić projektanta** poniżej **ogólne**.
-3. Kliknij przycisk **Importuj**.
+3. Kliknij przycisk **importu**.
 4. Wyszukaj i wybierz **AzureFirewall.omsview** plik został pobrany przed.
 5. Kliknij pozycję **Zapisz**.
 

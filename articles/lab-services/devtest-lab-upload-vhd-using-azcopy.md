@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 8cd778762bebf4a9dda3688292ac0a3674e446e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60634990"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Przekazywanie pliku VHD do laboratorium konta magazynu przy użyciu narzędzia AzCopy
@@ -45,7 +45,7 @@ W poniższych krokach objaśniono proces przekazywania pliku VHD za pomocą usł
 
 1. W bloku laboratorium wybierz **konfiguracji**. 
 
-1. W środowisku laboratoryjnym **konfiguracji** bloku wybierz **obrazów niestandardowych (VHD)**.
+1. W środowisku laboratoryjnym **konfiguracji** bloku wybierz **obrazów niestandardowych (VHD)** .
 
 1. Na **niestandardowych obrazów** bloku wybierz **+ Dodaj**. 
 

@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 8f63c62cd23fef5565628793379afd8bcc9f447b
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510163"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Aplikacji Azure Blockchain Workbench komunikatów integracji
@@ -27,7 +27,7 @@ Jeśli chcesz zainicjować transakcje z systemami zewnętrznymi, aby utworzyć u
 
 Poniżej przedstawiono aktualnie dostępne interfejsy API danych wejściowych.
 
-### <a name="create-user"></a>Utwórz użytkownika
+### <a name="create-user"></a>Tworzenie użytkownika
 
 Tworzy nowego użytkownika.
 
@@ -70,7 +70,7 @@ Blockchain Workbench zwraca odpowiedź z następujących pól:
 | messageSchemaVersion  | Wersja schematu komunikatów |
 | messageName           | **CreateUserUpdate** |
 | status                | Stan żądania utworzenia użytkownika.  Jeśli operacja się powiedzie, wartość jest **Powodzenie**. W przypadku awarii, wartość jest **błąd**.     |
-| additionalInformation | Dodatkowe informacje podane na podstawie stanu |
+| AdditionalInformation | Dodatkowe informacje podane na podstawie stanu |
 
 Przykład pomyślnie **Utwórz użytkownika** odpowiedzi z aplikacji Blockchain Workbench:
 
@@ -158,7 +158,7 @@ Blockchain Workbench zwraca odpowiedź z następujących pól:
 | connectionId             | Unikatowy identyfikator połączenia łańcucha bloków                               |
 | messageSchemaVersion     | Wersja schematu komunikatów                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
-| stan                   | Stan żądania utworzenia kontraktu.  Możliwe wartości: **Przesłano**, **zatwierdzone**, **błąd**.  |
+| status                   | Stan żądania utworzenia kontraktu.  Możliwe wartości: **Przesłano**, **zatwierdzone**, **błąd**.  |
 | AdditionalInformation    | Dodatkowe informacje podane na podstawie stanu                              |
 
 Przykład przesłane **tworzenie kontraktu** odpowiedzi z aplikacji Blockchain Workbench:
@@ -261,7 +261,7 @@ Blockchain Workbench zwraca odpowiedź z następujących pól:
 | connectionId          | Unikatowy identyfikator połączenia łańcucha bloków |
 | messageSchemaVersion  | Wersja schematu komunikatów |
 | messageName           | **CreateContractActionUpdate** |
-| stan                | Stan żądania akcji kontraktu. Możliwe wartości: **Przesłano**, **zatwierdzone**, **błąd**.                         |
+| status                | Stan żądania akcji kontraktu. Możliwe wartości: **Przesłano**, **zatwierdzone**, **błąd**.                         |
 | AdditionalInformation | Dodatkowe informacje podane na podstawie stanu |
 
 Przykład przesłane **Utwórz akcję kontraktu** odpowiedzi z aplikacji Blockchain Workbench:
@@ -368,7 +368,7 @@ Tematy usługi Service Bus może służyć do powiadamiania użytkowników o zda
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Korzystanie z wiadomości usługi Service Bus z usługą Logic Apps
 
 1. Utwórz nową **aplikacji logiki platformy Azure** w witrynie Azure portal.
-2. Podczas otwierania aplikacji logiki platformy Azure w portalu, wyświetli się monit o wybierz wyzwalacz. Typ **usługi Service Bus** w polu wyszukiwania i wybierz odpowiednie dla typu interakcji wyzwalacza ma znajdować się z usługą Service Bus. Na przykład **usługi Service Bus — gdy wiadomość zostaje odebrana w subskrypcji tematu (Automatyczne zakończenie)**.
+2. Podczas otwierania aplikacji logiki platformy Azure w portalu, wyświetli się monit o wybierz wyzwalacz. Typ **usługi Service Bus** w polu wyszukiwania i wybierz odpowiednie dla typu interakcji wyzwalacza ma znajdować się z usługą Service Bus. Na przykład **usługi Service Bus — gdy wiadomość zostaje odebrana w subskrypcji tematu (Automatyczne zakończenie)** .
 3. Po wyświetleniu projektanta przepływów pracy, należy określić informacje o połączeniu usługi Service Bus.
 4. Wybierz subskrypcję, a następnie określ temat **zewnętrzne workbench**.
 5. Twórz logiki aplikacji korzystającej z typu komunikatów z tego wyzwalacza.
@@ -383,7 +383,7 @@ Zawiera informacje o poszczególnych bloków. *BlockMessage* zawiera sekcja o in
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| blokuj | Zawiera [block informacji](#block-information) |
+| Blok | Zawiera [block informacji](#block-information) |
 | transakcji | Zawiera kolekcję [informacji o transakcji](#transaction-information) bloku |
 | connectionId | Unikatowy identyfikator połączenia |
 | messageSchemaVersion | Wersja schematu komunikatów |
@@ -407,8 +407,8 @@ Zawiera informacje o poszczególnych bloków. *BlockMessage* zawiera sekcja o in
 | transactionId      | Unikatowy identyfikator transakcji w aplikacji Azure Blockchain Workbench |
 | transactionHash    | Skrót transakcji w księdze |
 | from               | Unikatowy identyfikator w księdze dla początkowy rekord transakcji |
-| do                 | Unikatowy identyfikator w księdze dla docelowego transakcji |
-| ProvisioningStatus | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla transakcji. Możliwe wartości to: </br>0 – transakcja została utworzona przez interfejs API w bazie danych</br>1 — transakcja została wysłana do rejestru</br>2 transakcja została pomyślnie zatwierdzona w księdze</br>3 lub 4 - transakcji nie można przesłać do rejestru</br>5 — transakcja została pomyślnie zatwierdzona w księdze |
+| na                 | Unikatowy identyfikator w księdze dla docelowego transakcji |
+| ProvisioningStatus | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla transakcji. Możliwe wartości: </br>0 – transakcja została utworzona przez interfejs API w bazie danych</br>1 — transakcja została wysłana do rejestru</br>2 transakcja została pomyślnie zatwierdzona w księdze</br>3 lub 4 - transakcji nie można przesłać do rejestru</br>5 — transakcja została pomyślnie zatwierdzona w księdze |
 
 Przykład *BlockMessage* z aplikacji Blockchain Workbench:
 
@@ -469,7 +469,7 @@ Zawiera informacje o kontraktu. Komunikat zawiera sekcja właściwości kontrakt
 | transactionId | Unikatowy identyfikator transakcji w aplikacji Azure Blockchain Workbench |
 | transactionHash | Skrót transakcji w księdze |
 | from | Unikatowy identyfikator w księdze dla początkowy rekord transakcji |
-| do | Unikatowy identyfikator w księdze dla docelowego transakcji |
+| na | Unikatowy identyfikator w księdze dla docelowego transakcji |
 
 #### <a name="contract-properties"></a>Właściwości kontraktu
 
@@ -563,7 +563,7 @@ Zawiera informacje, po wywołaniu funkcji kontraktu, takich jak nazwy funkcji, p
 | Name (Nazwa) | Opis |
 |------|-------------|
 | eventName                   | **ContractFunctionInvocation** |
-| element wywołujący                      | [Informacje o wywołującym](#caller-information) |
+| Obiekt wywołujący                      | [Informacje o wywołującym](#caller-information) |
 | contractId                  | Unikatowy identyfikator dla kontraktu w aplikacji Azure Blockchain Workbench |
 | contractLedgerIdentifier    | Unikatowy identyfikator dla kontraktu na rejestr |
 | functionName                | Nazwa funkcji |
@@ -579,8 +579,8 @@ Zawiera informacje, po wywołaniu funkcji kontraktu, takich jak nazwy funkcji, p
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| type | Typ obiektu wywołującego, takich jak kontraktu lub przez użytkownika |
-| identyfikator | Unikatowy identyfikator obiektu wywołującego w aplikacji Azure Blockchain Workbench |
+| — typ | Typ obiektu wywołującego, takich jak kontraktu lub przez użytkownika |
+| id | Unikatowy identyfikator obiektu wywołującego w aplikacji Azure Blockchain Workbench |
 | ledgerIdentifier | Unikatowy identyfikator wywołującego w księdze |
 
 #### <a name="parameter-information"></a>Informacje o parametrach
@@ -597,7 +597,7 @@ Zawiera informacje, po wywołaniu funkcji kontraktu, takich jak nazwy funkcji, p
 | transactionId      | Unikatowy identyfikator transakcji w aplikacji Azure Blockchain Workbench |
 | transactionHash    | Skrót transakcji w księdze |
 | from               | Unikatowy identyfikator w księdze dla początkowy rekord transakcji |
-| do                 | Unikatowy identyfikator w księdze dla docelowego transakcji |
+| na                 | Unikatowy identyfikator w księdze dla docelowego transakcji |
 
 Przykład *EventMessage ContractFunctionInvocation* z aplikacji Blockchain Workbench:
 
@@ -660,25 +660,25 @@ Zawiera informacje, gdy aplikacja zostanie przekazany do aplikacji Workbench, ta
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| identyfikator | Unikatowy identyfikator pliku kodu kontraktu w aplikacji Azure Blockchain Workbench |
+| id | Unikatowy identyfikator pliku kodu kontraktu w aplikacji Azure Blockchain Workbench |
 | ledgerId | Unikatowy identyfikator rejestru w aplikacji Azure Blockchain Workbench |
-| lokalizacja | Adres URL, w którym znajduje się plik kodu kontraktu |
+| location | Adres URL, w którym znajduje się plik kodu kontraktu |
 
 #### <a name="application-role-information"></a>Informacje o rolach aplikacji
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| identyfikator | Unikatowy identyfikator dla roli aplikacji w aplikacji Azure Blockchain Workbench |
+| id | Unikatowy identyfikator dla roli aplikacji w aplikacji Azure Blockchain Workbench |
 | name | Nazwa roli aplikacji |
 
 #### <a name="application-workflow-information"></a>Informacje o przepływie pracy aplikacji
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| identyfikator | Unikatowy identyfikator dla przepływu pracy aplikacji w aplikacji Azure Blockchain Workbench |
+| id | Unikatowy identyfikator dla przepływu pracy aplikacji w aplikacji Azure Blockchain Workbench |
 | name | Nazwa przepływu pracy aplikacji |
 | displayName | Nazwa wyświetlana przepływu pracy aplikacji |
-| funkcje | Kolekcja [funkcji przepływ pracy aplikacji](#workflow-function-information)|
+| — funkcje | Kolekcja [funkcji przepływ pracy aplikacji](#workflow-function-information)|
 | Stany | Kolekcja [stanów przepływu pracy aplikacji](#workflow-state-information) |
 | properties | Aplikacja [informacje o właściwościach przepływu pracy](#workflow-property-information) |
 
@@ -686,7 +686,7 @@ Zawiera informacje, gdy aplikacja zostanie przekazany do aplikacji Workbench, ta
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| identyfikator | Unikatowy identyfikator dla funkcji przepływu pracy aplikacji w aplikacji Azure Blockchain Workbench |
+| id | Unikatowy identyfikator dla funkcji przepływu pracy aplikacji w aplikacji Azure Blockchain Workbench |
 | name | Nazwa funkcji |
 | parameters | Parametry funkcji |
 
@@ -696,13 +696,13 @@ Zawiera informacje, gdy aplikacja zostanie przekazany do aplikacji Workbench, ta
 |------|-------------|
 | name | Nazwa województwa |
 | displayName | Nazwa wyświetlana stanu |
-| Styl | Styl stanu (powodzenie lub niepowodzenie) |
+| style | Styl stanu (powodzenie lub niepowodzenie) |
 
 ##### <a name="workflow-property-information"></a>Informacje o właściwości przepływu pracy
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| identyfikator | Unikatowy identyfikator właściwości przepływu pracy aplikacji w aplikacji Azure Blockchain Workbench |
+| id | Unikatowy identyfikator właściwości przepływu pracy aplikacji w aplikacji Azure Blockchain Workbench |
 | name | Nazwa właściwości |
 | type | Typ właściwości |
 
@@ -853,14 +853,14 @@ Zawiera informacje, gdy użytkownik ma przypisaną rolę w aplikacji Workbench, 
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| identyfikator | Unikatowy identyfikator dla roli aplikacji w aplikacji Azure Blockchain Workbench |
+| id | Unikatowy identyfikator dla roli aplikacji w aplikacji Azure Blockchain Workbench |
 | name | Nazwa roli aplikacji |
 
 #### <a name="roleassignment-assigner"></a>Przypisujący RoleAssignment
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| identyfikator | Unikatowy identyfikator użytkownika w aplikacji Azure Blockchain Workbench |
+| id | Unikatowy identyfikator użytkownika w aplikacji Azure Blockchain Workbench |
 | type | Typ użytkownika przypisującego |
 | ChainIdentifier | Unikatowy identyfikator użytkownika na rejestr |
 
@@ -868,8 +868,8 @@ Zawiera informacje, gdy użytkownik ma przypisaną rolę w aplikacji Workbench, 
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| identyfikator | Unikatowy identyfikator użytkownika w aplikacji Azure Blockchain Workbench |
-| type | Typ osoby przypisanej |
+| id | Unikatowy identyfikator użytkownika w aplikacji Azure Blockchain Workbench |
+| — typ | Typ osoby przypisanej |
 | ChainIdentifier | Unikatowy identyfikator użytkownika na rejestr |
 
 Przykład *EventMessage RoleAssignment* z aplikacji Blockchain Workbench:

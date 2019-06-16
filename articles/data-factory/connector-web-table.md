@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: e578b3a6b3905569567b568b0130c1ed1b90d915
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60557770"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli w sieci Web przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-web-table-connector.md)
 > * [Bieżąca wersja](connector-web-table.md)
 
@@ -55,8 +55,8 @@ Następujące właściwości są obsługiwane dla sieci Web tabeli połączonej 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Sieć Web** |Yes |
-| url | Adres URL źródła w sieci Web |Yes |
-| authenticationType | Dozwolone wartości to: **Anonimowe**. |Yes |
+| url | Adres URL źródła w sieci Web |Tak |
+| authenticationType | Dozwolone wartości to: **Anonimowe**. |Tak |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
@@ -88,7 +88,7 @@ Aby skopiować dane z tabeli w sieci Web, należy ustawić właściwość typu z
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **Usługa WebTable** | Yes |
 | path |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, używana jest tylko adres URL, które są określone w definicji połączonej usługi. |
-| index |Indeks tabeli w zasobie. Zobacz [Get indeksu tabeli na stronie HTML](#get-index-of-a-table-in-an-html-page) sekcji instrukcje pobierania indeksu tabeli na stronie HTML. |Yes |
+| index |Indeks tabeli w zasobie. Zobacz [Get indeksu tabeli na stronie HTML](#get-index-of-a-table-in-an-html-page) sekcji instrukcje pobierania indeksu tabeli na stronie HTML. |Tak |
 
 **Przykład:**
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60333864"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak skonfigurować potok CI/CD dla usługi Azure Data Lake Analytics  
@@ -83,7 +83,7 @@ Definicja argumentów i wartości są następujące:
 * **USQLTargetType = scalania lub SyntaxCheck**:
     * **Scal**. Tryb scalania kompiluje pliki związane z kodem. Należą do nich **.cs**, **.py**, i **.r** plików. Jego inlines wynikowej biblioteki zdefiniowanych przez użytkownika kodu do skryptu U-SQL. Przykłady to plik binarny biblioteki dll, Python lub R kodu.
     * **SyntaxCheck**. Tryb SyntaxCheck najpierw scala plików z kodem skryptu U-SQL. Następnie kompiluje skrypt U-SQL, aby zweryfikować swój kod.
-* **Ścieżka folderu DataRoot =\<ścieżka folderu DataRoot >**. Ścieżka folderu DataRoot jest wymagane tylko dla trybu SyntaxCheck. Podczas tworzenia skryptów w trybie SyntaxCheck, program MSBuild sprawdza, czy odwołania do obiektów bazy danych w skrypcie. Przed kompilacją, należy skonfigurować zgodne środowisko lokalne, które zawiera obiekty z bazy danych U-SQL w folderze DataRoot maszynie kompilacji. Można również zarządzać te zależności bazy danych przez [odwołanie do projektu bazy danych U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Program MSBuild sprawdza tylko odwołania do obiektu bazy danych, nie pliki.
+* **Ścieżka folderu DataRoot =\<ścieżka folderu DataRoot >** . Ścieżka folderu DataRoot jest wymagane tylko dla trybu SyntaxCheck. Podczas tworzenia skryptów w trybie SyntaxCheck, program MSBuild sprawdza, czy odwołania do obiektów bazy danych w skrypcie. Przed kompilacją, należy skonfigurować zgodne środowisko lokalne, które zawiera obiekty z bazy danych U-SQL w folderze DataRoot maszynie kompilacji. Można również zarządzać te zależności bazy danych przez [odwołanie do projektu bazy danych U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Program MSBuild sprawdza tylko odwołania do obiektu bazy danych, nie pliki.
 * **EnableDeployment = true** lub **false**. EnableDeployment wskazuje, czy zezwolił na Wdróż przywoływane bazy danych U-SQL podczas procesu kompilacji. Jeśli można odwoływać się do projektu bazy danych U-SQL i korzystać z obiektów bazy danych w skrypcie języka U-SQL, należy nadać parametrowi **true**.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Ciągła integracja za pośrednictwem potoków usługi Azure
@@ -456,31 +456,31 @@ Wykonaj poniższe kroki, aby skonfigurować zadania wdrożenia bazy danych w pot
 
 | Parametr | Opis | Wartość domyślna | Wymagane |
 |---------|-----------|-------------|--------|
-|Pakiet|Ścieżka pakietu wdrożeniowego bazy danych U-SQL do wdrożenia.|wartość null|true|
+|Pakiet|Ścieżka pakietu wdrożeniowego bazy danych U-SQL do wdrożenia.|Wartość null|true|
 |Database (Baza danych)|Nazwa bazy danych, które mają być wdrożone lub utworzony.|master|false|
-|LogFile|Ścieżka pliku do rejestrowania. Domyślnie standard out (Konsola).|wartość null|false|
-|LogLevel|Poziom rejestrowania: Pełne, normalny, Warning lub Error.|LogLevel.Normal|false|
+|LogFile|Ścieżka pliku do rejestrowania. Domyślnie standard out (Konsola).|Wartość null|false|
+|LogLevel|Poziom dziennika: Pełne, normalny, Warning lub Error.|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>Parametr dla wdrożenia lokalnego
 
 |Parametr|Opis|Wartość domyślna|Wymagane|
 |---------|-----------|-------------|--------|
-|DataRoot|Ścieżka folderu głównego danych lokalnych.|wartość null|true|
+|DataRoot|Ścieżka folderu głównego danych lokalnych.|Wartość null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Parametry w celu wdrożenia usługi Azure Data Lake Analytics
 
 |Parametr|Opis|Wartość domyślna|Wymagane|
 |---------|-----------|-------------|--------|
-|Konto|Określa, która konta Azure Data Lake Analytics, aby wdrożyć według nazwy konta.|wartość null|true|
-|ResourceGroup|Nazwa grupy zasobów platformy Azure dla konta usługi Azure Data Lake Analytics.|wartość null|true|
-|SubscriptionId|Identyfikator subskrypcji platformy Azure dla konta usługi Azure Data Lake Analytics.|wartość null|true|
-|Dzierżawa|Nazwa dzierżawy jest nazwą domeny usługi Azure Active Directory (Azure AD). Znaleźć go na stronie zarządzania subskrypcją w witrynie Azure portal.|wartość null|true|
-|AzureSDKPath|Ścieżki wyszukiwania zestawów zależnych w zestawie SDK platformy Azure.|wartość null|true|
+|Konto|Określa, która konta Azure Data Lake Analytics, aby wdrożyć według nazwy konta.|Wartość null|true|
+|ResourceGroup|Nazwa grupy zasobów platformy Azure dla konta usługi Azure Data Lake Analytics.|Wartość null|true|
+|SubscriptionId|Identyfikator subskrypcji platformy Azure dla konta usługi Azure Data Lake Analytics.|Wartość null|true|
+|Dzierżawa|Nazwa dzierżawy jest nazwą domeny usługi Azure Active Directory (Azure AD). Znaleźć go na stronie zarządzania subskrypcją w witrynie Azure portal.|Wartość null|true|
+|AzureSDKPath|Ścieżki wyszukiwania zestawów zależnych w zestawie SDK platformy Azure.|Wartość null|true|
 |Interaktywne|Czy należy użyć trybu interakcyjnego uwierzytelniania.|false|false|
-|ClientId|Identyfikator aplikacji usługi Azure AD jest wymagana dla nieinterakcyjnych authentication.|wartość null|Wymagane dla nieinterakcyjnych authentication.|
-|Secrete|Secrete lub hasła dla nieinterakcyjnych authentication. Należy używać tylko w środowisku zaufaną i bezpieczną.|wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj SecreteFile.|
-|SecreteFile|Plik jest zapisywany secrete lub hasła dla nieinterakcyjnych authentication. Upewnij się, że nadal można odczytać tylko przez bieżącego użytkownika.|wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj Secrete.|
-|CertFile|Plik jest zapisywany certyfikaty X.509 związane z uwierzytelnianiem nieinterakcyjnym. Wartość domyślna to korzystanie z klienta secrete uwierzytelniania.|wartość null|false|
+|ClientId|Identyfikator aplikacji usługi Azure AD jest wymagana dla nieinterakcyjnych authentication.|Wartość null|Wymagane dla nieinterakcyjnych authentication.|
+|Secrete|Secrete lub hasła dla nieinterakcyjnych authentication. Należy używać tylko w środowisku zaufaną i bezpieczną.|Wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj SecreteFile.|
+|SecreteFile|Plik jest zapisywany secrete lub hasła dla nieinterakcyjnych authentication. Upewnij się, że nadal można odczytać tylko przez bieżącego użytkownika.|Wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj Secrete.|
+|CertFile|Plik jest zapisywany certyfikaty X.509 związane z uwierzytelnianiem nieinterakcyjnym. Wartość domyślna to korzystanie z klienta secrete uwierzytelniania.|Wartość null|false|
 | JobPrefix | Prefiks do wdrożenia bazy danych zadania U-SQL DDL. | Deploy_ + DateTime.Now | false |
 
 ## <a name="next-steps"></a>Kolejne kroki

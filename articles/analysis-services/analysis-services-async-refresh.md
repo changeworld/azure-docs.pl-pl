@@ -9,10 +9,10 @@ ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506973"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne za pomocą interfejsu API REST
@@ -100,8 +100,8 @@ Określanie parametrów nie jest wymagana. Wartość domyślna jest stosowana.
 
 | Name (Nazwa)             | Typ  | Opis  |Domyślne  |
 |------------------|-------|--------------|---------|
-| `Type`           | Wyliczenia  | Typ przetwarzania do wykonania. Typy są wyrównane z TMSL [polecenia odświeżenia](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typów: pełne, clearValues, Oblicz dataOnly, automatyczne i defragmentacji. Dodaj typ nie jest obsługiwany.      |   Automatyczne      |
-| `CommitMode`     | Wyliczenia  | Określa, jeśli obiekty zostaną zatwierdzone, w plikach wsadowych lub tylko wtedy, gdy jest to pełny. Tryby obejmują: domyślnie partialBatch transakcyjnych.  |  transakcyjne       |
+| `Type`           | Enum  | Typ przetwarzania do wykonania. Typy są wyrównane z TMSL [polecenia odświeżenia](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typów: pełne, clearValues, Oblicz dataOnly, automatyczne i defragmentacji. Dodaj typ nie jest obsługiwany.      |   Automatyczne      |
+| `CommitMode`     | Enum  | Określa, jeśli obiekty zostaną zatwierdzone, w plikach wsadowych lub tylko wtedy, gdy jest to pełny. Tryby obejmują: domyślnie partialBatch transakcyjnych.  |  transakcyjne       |
 | `MaxParallelism` | Int   | Ta wartość określa maksymalną liczbę wątków, w którym można uruchomić polecenia przetwarzania równoległego. Ta wartość jest powiązana z właściwości MaxParallelism, które można ustawić w TMSL [sekwencji poleceń](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
 | `RetryCount`     | Int   | Wskazuje liczbę przypadków, gdy operacja zostanie ponowiona zakończy się niepowodzeniem.      |     0    |
 | `Objects`        | Tablica | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "table" podczas przetwarzania całą tabelę lub "table" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Proces cały model      |
@@ -188,9 +188,9 @@ Wartości `syncstate`:
 
 - 0: Replikacja. Pliki bazy danych są replikowane do folderu docelowego.
 - 1: Ponownego wypełniania. Baza danych jest wypełnienia w wystąpieniach serwera tylko do odczytu.
-- 2: Ukończono. Pomyślnie ukończono operację synchronizacji.
-- 3: Niepowodzenie. Operacja synchronizacji nie powiodło się.
-- 4. Finalizowanie. Operacja synchronizacji została ukończona, ale wykonuje czynności czyszczenia.
+- 2: Ukończone. Pomyślnie ukończono operację synchronizacji.
+- 3: Nie powiodło się. Operacja synchronizacji nie powiodło się.
+- 4\. Finalizowanie. Operacja synchronizacji została ukończona, ale wykonuje czynności czyszczenia.
 
 ## <a name="code-sample"></a>Przykład kodu
 
@@ -203,7 +203,7 @@ Poniżej przedstawiono przykładowy kod języka C#, w które ułatwią rozpoczę
 
 Przykładowy kod używa [nazwy głównej usługi](#service-principal) uwierzytelniania.
 
-### <a name="service-principal"></a>Jednostka usługi
+### <a name="service-principal"></a>Nazwa główna usługi
 
 Zobacz [Tworzenie jednostki usługi — witryna Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) i [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) Aby uzyskać więcej informacji na temat konfigurowania jednostki usługi i przypisanie niezbędnych uprawnień w jako platformy Azure . Po wykonaniu czynności należy wykonać następujące dodatkowe czynności:
 

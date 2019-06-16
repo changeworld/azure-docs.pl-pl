@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 673dcbeb630899eebc328cd4fae16f7fe8f47a55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60557889"
 ---
 # <a name="azure-api-management-template-resources"></a>Zasoby szablonu usługi Azure API Management
@@ -114,7 +114,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 |Name (Nazwa)|Text|  
 |----------|----------|  
-|PageTitleApis|Interfejsy API|  
+|PageTitleApis|interfejsy API|  
   
 ###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
@@ -136,10 +136,10 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebDevelopersAppTableNameHeader|Name (Nazwa)|  
 |WebDevelopersAppTableStateHeader|Stan|  
 |WebDevelopersEditLink|Edytuj|  
-|WebDevelopersRegisterAppLink|Zarejestruj aplikację|  
-|WebDevelopersRemoveLink|Remove|  
+|WebDevelopersRegisterAppLink|Rejestrowanie aplikacji|  
+|WebDevelopersRemoveLink|Usuń|  
 |WebDevelopersSubmitLink|Submit|  
-|WebDevelopersYourApplicationsHeader|Twoje aplikacje|  
+|WebDevelopersYourApplicationsHeader|Aplikacje|  
   
 ###  <a name="AppStrings"></a> AppStrings  
   
@@ -156,14 +156,14 @@ Obsługiwane są następujące opcje lokalizacji:
 |GeneralJsonExceptionMessage|Coś jest nie prawo. Może to być tymczasowy błąd lub usterka. Wykonaj ponownie załaduj stronę i spróbuj ponownie.|  
 |ConfirmationMessageUnsavedChanges|Istnieją pewne niezapisane zmiany. Czy na pewno chcesz anulować i odrzucić zmiany?|  
 |AzureActiveDirectory|Usługa Azure Active Directory|  
-|HttpLargeRequestMessage|Treść żądania HTTP jest za duża.|  
+|HttpLargeRequestMessage|Treść żądania HTTP jest za duży.|  
   
 ###  <a name="CommonStrings"></a> CommonStrings  
   
 |Name (Nazwa)|Text|  
 |----------|----------|  
 |ButtonLabelCancel|Cancel|  
-|ButtonLabelSave|Zapisz|  
+|ButtonLabelSave|Zapisanie|  
 |GeneralExceptionMessage|Coś jest nie prawo. Może to być tymczasowy błąd lub usterka. Spróbuj ponownie.|  
 |NoItemsToDisplay|Brak elementów do wyświetlenia.|  
 |PagerButtonLabelFirst|Pierwsze|  
@@ -172,13 +172,13 @@ Obsługiwane są następujące opcje lokalizacji:
 |PagerButtonLabelPrevious|Wstecz|  
 |PagerLabelPageNOfM|Strona {0} programu {1}|  
 |PasswordTooShort|Hasło jest za krótkie|  
-|EmailAsPassword|Nie używaj swojego adresu e-mail jako hasła|  
-|PasswordSameAsUserName|Hasło nie może zawierać Twojej nazwy użytkownika|  
+|EmailAsPassword|Nie należy używać swój adres e-mail jako hasła|  
+|PasswordSameAsUserName|Hasło nie może zawierać nazwy użytkownika|  
 |PasswordTwoCharacterClasses|Użyj innych klas znaków|  
 |PasswordTooManyRepetitions|Za dużo powtórzeń|  
 |PasswordSequenceFound|Twoje hasło zawiera sekwencje|  
 |PagerLabelPageSize|Rozmiar strony|  
-|CurtainLabelLoading|Ładowanie...|  
+|CurtainLabelLoading|Trwa ładowanie...|  
 |TablePlaceholderNothingToDisplay|Brak danych dla wybranego okresu i zakresu|  
 |ButtonLabelClose|Zamykanie|  
   
@@ -188,26 +188,26 @@ Obsługiwane są następujące opcje lokalizacji:
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Nieprawidłowy nagłówek "{0}"|  
 |WebDocumentationInvalidRequestErrorMessage|Nieprawidłowy adres URL żądania|  
-|TextboxLabelAccessToken|Access token *|  
+|TextboxLabelAccessToken|Token dostępu *|  
 |DropdownOptionPrimaryKeyFormat|Podstawowe-{0}|  
 |DropdownOptionSecondaryKeyFormat|Secondary-{0}|  
-|WebDocumentationSubscriptionKeyText|Twój klucz subskrypcji|  
+|WebDocumentationSubscriptionKeyText|Klucz subskrypcji|  
 |WebDocumentationTemplatesAddHeaders|Dodaj wymagane nagłówki HTTP|  
 |WebDocumentationTemplatesBasicAuthSample|Przykład uwierzytelniania Basic Authorization|  
-|WebDocumentationTemplatesCurlForBasicAuth|dla uwierzytelniania Basic Authorization użyj: --user {username}:{password}|  
-|WebDocumentationTemplatesCurlValuesForPath|Określ wartości dla parametrów ścieżki (pokazane jako {...}), swój klucz subskrypcji i wartości parametrów zapytania|  
+|WebDocumentationTemplatesCurlForBasicAuth|dla uwierzytelniania Basic Authorization Użyj:--użytkownika {username}: {password}|  
+|WebDocumentationTemplatesCurlValuesForPath|Określ wartości dla parametrów ścieżki (pokazanych jako {...}), klucz subskrypcji i wartości parametrów zapytania|  
 |WebDocumentationTemplatesDeveloperKey|Określ swój klucz subskrypcji|  
 |WebDocumentationTemplatesJavaApache|Ten przykład używa klienta Apache HTTP z projektu HTTP Components)http://hc.apache.org/httpcomponents-client-ga/)|  
-|WebDocumentationTemplatesOptionalParams|W razie potrzeby określ wartości dla parametrów opcjonalnych|  
+|WebDocumentationTemplatesOptionalParams|Określ wartości dla parametrów opcjonalnych, zgodnie z potrzebami|  
 |WebDocumentationTemplatesPhpPackage|Ten przykład używa pakietu HTTP_Request2. (Aby uzyskać więcej informacji: https://pear.php.net/package/HTTP_Request2)|  
-|WebDocumentationTemplatesPythonValuesForPath|W razie potrzeby określ wartości parametrów ścieżki (pokazanych jako {...}) i treść żądania|  
+|WebDocumentationTemplatesPythonValuesForPath|Określ wartości dla parametrów ścieżki (pokazanych jako {...}) i treści żądania, jeśli to konieczne|  
 |WebDocumentationTemplatesRequestBody|Określ treść żądania|  
 |WebDocumentationTemplatesRequiredParams|Określ wartości dla następujących wymaganych parametrów|  
 |WebDocumentationTemplatesValuesForPath|Określ wartości dla parametrów ścieżki (pokazanych jako {...})|  
 |OAuth2AuthorizationEndpointDescription|Punkt końcowy autoryzacji służy do interakcji z właścicielem zasobu i uzyskania przydziału autoryzacji.|  
-|OAuth2AuthorizationEndpointName|Punkt końcowy autoryzacji|  
+|OAuth2AuthorizationEndpointName|punkt końcowy autoryzacji|  
 |OAuth2TokenEndpointDescription|Punkt końcowy tokenu jest używany przez klienta do uzyskania tokenu dostępu poprzez przedstawienie przyznania autoryzacji lub tokenu odświeżenia.|  
-|OAuth2TokenEndpointName|Punkt końcowy tokenu|  
+|OAuth2TokenEndpointName|punkt końcowy tokenu|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|< p\> klienta inicjuje przepływ, kierując właściciel zasobu agenta użytkownika do punktu końcowego autoryzacji.  Klient dołącza identyfikator klienta, żądanym zakresie, stan lokalnego i identyfikator URI przekierowania, do którego serwer autoryzacji wyśle do agenta użytkownika, ponownie, gdy dostęp jest udzielany (lub odmowa).     < /p\> < p\> serwer autoryzacji uwierzytelnia właściciel zasobu (za pośrednictwem agenta użytkownika) i określa, czy właściciel zasobu lub go przydziela odrzuca żądanie dostępu klienta.     < /p\> < p\> zakładając, że właściciel zasobu przyzna dostęp, serwer autoryzacji przekieruje agenta użytkownika do klienta przy użyciu podanego identyfikatora URI przekierowania wcześniej (w żądaniu lub podczas registrati klienta Funkcja włączona).  Identyfikator URI przekierowania zawiera kod autoryzacji i dowolny stan lokalny podany przez klienta wcześniej.     </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|< p\> Jeśli użytkownik odrzuca żądanie dostępu lub, jeśli żądanie jest nieprawidłowe, klient zostanie poinformowany, korzystając z następujących parametrów dodanych do przekierowania: < /p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Żądanie autoryzacji|  
@@ -225,12 +225,12 @@ Obsługiwane są następujące opcje lokalizacji:
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|< p\> Jeśli właściciel zasobu odrzuca żądanie dostępu lub jeśli żądanie nie powiedzie się z powodów innych niż Brak lub nieprawidłowy identyfikator URI przekierowania, serwer autoryzacji informuje klienta, dodając następujące parametry do fragmentu o składnika f przy użyciu formatu "application/x--www-form-urlencoded" identyfikatora URI przekierowania. </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|< p\> aplikacja kliencka musi wysłać użytkownika do punktu końcowego autoryzacji w celu zainicjowania procesu uwierzytelniania OAuth.      W punkcie końcowym autoryzacji użytkownik uwierzytelnia i następnie przyznaje lub nie zezwala na dostęp do aplikacji. </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|< p\> Jeśli właściciel zasobu zaakceptuje żądanie dostępu, serwer autoryzacji wystawi token dostępu i dostarczy go do klienta, dodając następujące parametry do fragmentu składnika identyfikatora URI za pomocą "application/x-www przekierowania format — tworzą - urlencoded". </p\>|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Przepływ kodu autoryzacji jest zoptymalizowany dla klientów zdolnych do zachowania poufności ich poświadczeń (np. aplikacji serwera internetowego zaimplementowanych przy użyciu języka PHP, Java, Python, Ruby, ASP.NET itd.).|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Przyznano kod autoryzacji|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Przepływ kodu autoryzacji jest zoptymalizowany dla klientów zdolnych do zachowania poufności ich poświadczeń (np. aplikacji serwera internetowego zaimplementowanych przy użyciu języka PHP, Java, Python, Ruby, ASP.NET itp.).|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Przyznawanie kodu autoryzacji|  
 |OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|Przepływ poświadczeń klienta jest odpowiedni w przypadkach, gdy klient (Twoja aplikacja) żąda dostępu do chronionych zasobów pod jego kontrolą. Klient jest uważany za właściciela zasobu, więc żadna interakcja użytkownika końcowego jest wymagane.|  
 |OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|Przyznanie poświadczenia klienta|  
 |OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Niejawny przepływ jest optymalizowany dla klientów niezdolnych do zachowania poufności ich poświadczeń znane działanie określonego identyfikatora URI przekierowania. Ci klienci są zazwyczaj implementowani w przeglądarce za pomocą języka skryptów, takich jak JavaScript.|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Niejawne przyznanie|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Przyznawanie niejawne|  
 |OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|Przepływ poświadczeń hasła właściciela zasobu jest odpowiedni w przypadkach, gdy właściciel zasobu ma relację zaufania z klientem (Twoją aplikacją), takich jak system operacyjny urządzenia lub aplikacji o wysokim poziomie uprawnień. Ten przepływ jest odpowiedni dla klientów zdolnych do uzyskania poświadczeń właściciela (nazwa użytkownika i hasło, zwykle za pomocą formularza interaktywnego) zasobu.|  
 |OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Przyznanie poświadczeń hasła właściciela zasobu|  
 |OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|< p\> właściciel zasobu przekazuje temu klientowi swoją nazwę użytkownika i hasło. < /p\> < p\> klient żąda tokenu dostępu z serwera autoryzacji "punktu końcowego tokenu s, dołączając poświadczenia otrzymane od właściciela zasobu.  Podczas wykonywania żądania, klient uwierzytelnia się za pomocą serwera autoryzacji. < /p\> < p\> serwer autoryzacji uwierzytelnia klienta i weryfikuje poświadczenia właściciela zasobu, a jeśli są one prawidłowe, wystawia token dostępu. </p\>|  
@@ -272,7 +272,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Wartość musi być ustawiona na "password".|  
 |OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Hasło właściciela zasobu.|  
 |OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|OPCJONALNIE. Identyfikator URI punktu końcowego przekierowania musi być bezwzględnym identyfikatorem URI.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|WYMAGANE, jeśli parametr „redirect_uri” został uwzględniony w żądaniu autoryzacji i ich wartości MUSZĄ być identyczne.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|WYMAGANE, jeśli parametr "redirect_uri" został uwzględniony w żądaniu autoryzacji i ich wartości muszą być identyczne.|  
 |OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|OPCJONALNIE. Identyfikator URI punktu końcowego przekierowania musi być bezwzględnym identyfikatorem URI.|  
 |OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|OPCJONALNIE. Token odświeżania, który może służyć do uzyskania nowych tokenów dostępu.|  
 |OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|OPCJONALNIE. Token odświeżania, który może służyć do uzyskania nowych tokenów dostępu.|  
@@ -280,13 +280,13 @@ Obsługiwane są następujące opcje lokalizacji:
 |OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|WYMAGANE. Wartość musi być ustawiona na "code".|  
 |OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|WYMAGANE. Wartość musi być ustawiona na "token".|  
 |OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|OPCJONALNIE. Zakres żądania dostępu.|  
-|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|OPCJONALNY, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym razie WYMAGANY.|  
+|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|OPCJONALNIE, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym razie jest to wymagane.|  
 |OAuth2Scope_ClientCredentialsGrant_TokenRequest|OPCJONALNIE. Zakres żądania dostępu.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenResponse|OPCJONALNY, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym przypadku WYMAGANY.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenResponse|OPCJONALNIE, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym razie jest to wymagane.|  
 |OAuth2Scope_ImplicitGrant_AuthorizationRequest|OPCJONALNIE. Zakres żądania dostępu.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationResponse|OPCJONALNY, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym razie WYMAGANY.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationResponse|OPCJONALNIE, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym razie jest to wymagane.|  
 |OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|OPCJONALNIE. Zakres żądania dostępu.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPCJONALNY, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym przypadku WYMAGANY.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPCJONALNIE, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym razie jest to wymagane.|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|WYMAGANE, jeśli parametr "state" znajdował się w żądaniu autoryzacji klienta.  Dokładna wartość odebrana od klienta.|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|ZALECANE. Nieprzezroczysta wartość używana przez klienta w celu zachowania stanu między żądaniem i wywołania zwrotnego.  Serwer autoryzacji dołącza tę wartość podczas przekierowywania agent użytkownika klienta.  Parametr stosuje się w celu zapobiegania fałszerstwo żądania międzywitrynowego.|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|WYMAGANE, jeśli parametr "state" znajdował się w żądaniu autoryzacji klienta.  Dokładna wartość odebrana od klienta.|  
@@ -301,15 +301,15 @@ Obsługiwane są następujące opcje lokalizacji:
 |OAuth2UnsupportedTokenType|Typ tokenu "{0}" nie jest obsługiwane.|  
 |OAuth2InvalidState|Nieprawidłowa odpowiedź z serwera autoryzacji|  
 |OAuth2GrantType_AuthorizationCode|Kod autoryzacji|  
-|OAuth2GrantType_Implicit|Niejawny|  
+|OAuth2GrantType_Implicit|Niejawne|  
 |OAuth2GrantType_ClientCredentials|Poświadczenia klienta|  
 |OAuth2GrantType_ResourceOwnerPassword|Hasło właściciela zasobu|  
-|WebDocumentation302Code|302 — Znaleziono|  
-|WebDocumentation400Code|400 (Złe żądanie)|  
-|OAuth2SendingMethod_AuthHeader|Nagłówek uwierzytelnienia|  
+|WebDocumentation302Code|Znaleziono 302|  
+|WebDocumentation400Code|400 (złe żądanie)|  
+|OAuth2SendingMethod_AuthHeader|Nagłówek autoryzacji|  
 |OAuth2SendingMethod_QueryParam|Parametr zapytania|  
 |OAuth2AuthorizationServerGeneralException|Wystąpił błąd podczas autoryzacji dostępu za pośrednictwem {0}|  
-|OAuth2AuthorizationServerCommunicationException|Nie można nawiązać połączenia HTTP z serwerem autoryzacji lub zostało ono nieoczekiwanie zamknięte.|  
+|OAuth2AuthorizationServerCommunicationException|Nie można nawiązać połączenia HTTP z serwera autoryzacji lub zostało ono nieoczekiwanie zamknięte.|  
 |WebDocumentationOAuth2GeneralErrorMessage|Wystąpił nieoczekiwany błąd.|  
 |AuthorizationServerCommunicationException|Wyjątek komunikacji z serwerem autoryzacji się stało. Skontaktuj się z administratorem.|  
 |TextblockSubscriptionKeyHeaderDescription|Klucz subskrypcji, która zapewnia dostęp do tego interfejsu API. W Twojej < href = "/ dla deweloperów"\>profilu < /a\>.|  
@@ -318,15 +318,15 @@ Obsługiwane są następujące opcje lokalizacji:
 |ErrorMessageApiNotAccessible|Interfejs API, który próbujesz wywołać jest w tej chwili niedostępny. Skontaktuj się z wydawcą interfejsu API < href = "/ issues"\>tutaj < /a\>.|  
 |ErrorMessageApiTimedout|Interfejs API, który próbujesz wywołać trwa dłużej niż zwykle, aby wrócić odpowiedzi. Skontaktuj się z wydawcą interfejsu API < href = "/ issues"\>tutaj < /a\>.|  
 |BadRequestParameterExpected|""{0}"oczekuje parametru"|  
-|TooltipTextDoubleClickToSelectAll|Kliknij dwukrotnie, aby wybrać wszystko.|  
-|TooltipTextHideRevealSecret|Pokaż/ukryj|  
+|TooltipTextDoubleClickToSelectAll|Kliknij dwukrotnie, aby zaznaczyć wszystko.|  
+|TooltipTextHideRevealSecret|Pokaż/Ukryj|  
 |ButtonLinkOpenConsole|Wypróbuj|  
 |SectionHeadingRequestBody|Treść żądania|  
 |SectionHeadingRequestParameters|Parametry żądania|  
 |SectionHeadingRequestUrl|Adres URL żądania|  
 |SectionHeadingResponse|Odpowiedź|  
 |SectionHeadingRequestHeaders|Nagłówki żądań|  
-|FormLabelSubtextOptional|opcjonalne|  
+|FormLabelSubtextOptional|Opcjonalne|  
 |SectionHeadingCodeSamples|Przykłady kodu|  
 |TextblockOpenidConnectHeaderDescription|Token identyfikatora uwierzytelniania OpenID Connect uzyskany z < mogę\>{0}< /i\>. Obsługiwane typów przydziałów: < i\>{1}< /i\>.|  
   
@@ -334,10 +334,10 @@ Obsługiwane są następujące opcje lokalizacji:
   
 |Name (Nazwa)|Text|  
 |----------|----------|  
-|LinkLabelBack|wstecz|  
-|LinkLabelHomePage|stronę główną|  
+|LinkLabelBack|Wstecz|  
+|LinkLabelHomePage|Strona główna|  
 |LinkLabelSendUsEmail|Wyślij nam wiadomość e-mail|  
-|PageTitleError|Niestety, wystąpił problem z wyświetleniem żądanej strony|  
+|PageTitleError|Niestety wystąpił problem z wyświetleniem żądanej strony|  
 |TextblockPotentialCauseIntermittentIssue|Może to być problem z dostępem do danych tymczasowy, który został już usunięty.|  
 |TextblockPotentialCauseOldLink|Kliknięty link może być nieaktualny i nie wskazywać już na poprawną lokalizację.|  
 |TextblockPotentialCauseTechnicalProblem|Po naszej stronie mogą być problemy techniczne.|  
@@ -345,7 +345,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |TextblockPotentialSolutionStartOver|Rozpocznij ponownie od naszego {0}.|  
 |TextblockPotentialSolutionTryAgain|Przejdź {0} i spróbuj wykonać akcję ponownie wykonać.|  
 |TextReportProblem|{0} opisujący, co poszło źle i omówimy je tak szybko jak to możliwe.|  
-|TitlePotentialCause|Prawdopodobna przyczyna|  
+|TitlePotentialCause|Potencjalną przyczynę|  
 |TitlePotentialSolution|Prawdopodobnie jest to tylko tymczasowy problem i wystarczy wykonać kilka czynności|  
   
 ###  <a name="IssuesStrings"></a> IssuesStrings  
@@ -363,15 +363,15 @@ Obsługiwane są następujące opcje lokalizacji:
   
 |Name (Nazwa)|Text|  
 |----------|----------|  
-|LinkLabelHomePage|stronę główną|  
-|LinkLabelSendUsEmail|wyślij do nas wiadomość e-mail|  
+|LinkLabelHomePage|Strona główna|  
+|LinkLabelSendUsEmail|Wyślij nam wiadomość e-mail|  
 |PageTitleNotFound|Niestety nie można odnaleźć strony, której szukasz|  
 |TextblockPotentialCauseMisspelledUrl|Błędnie adres URL Jeśli został wpisany.|  
 |TextblockPotentialCauseOldLink|Kliknięty link może być nieaktualny i nie wskazywać już na poprawną lokalizację.|  
 |TextblockPotentialSolutionRetype|Spróbuj ponownie wpisać adres URL.|  
 |TextblockPotentialSolutionStartOver|Rozpocznij ponownie od naszego {0}.|  
 |TextReportProblem|{0} opisujący, co poszło źle i omówimy je tak szybko jak to możliwe.|  
-|TitlePotentialCause|Prawdopodobna przyczyna|  
+|TitlePotentialCause|Potencjalną przyczynę|  
 |TitlePotentialSolution|Potencjalne rozwiązanie|  
   
 ###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
@@ -384,9 +384,9 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebProductsUsageLimitsHeader|Limity użycia|  
 |WebProductsYouAreNotSubscribed|Subskrybujesz ten produkt.|  
 |WebProductsYouRequestedSubscription|Żądasz zasubskrybowania tego produktu.|  
-|ErrorYouNeedToAgreeWithLegalTerms|Musisz zgodzić się na Warunki użytkowania, zanim będzie można kontynuować.|  
+|ErrorYouNeedToAgreeWithLegalTerms|Zanim przejdziesz dalej, musisz wyrazić zgodę na warunki użytkowania.|  
 |ButtonLabelAddSubscription|Dodawanie subskrypcji|  
-|LinkLabelChangeSubscriptionName|zmień|  
+|LinkLabelChangeSubscriptionName|Zmiany|  
 |ButtonLabelConfirm|Potwierdź|  
 |TextblockMultipleSubscriptionsCount|Masz {0} subskrypcji do tego produktu:|  
 |TextblockSingleSubscriptionsCount|Masz {0} subskrypcję tego produktu:|  
@@ -406,17 +406,17 @@ Obsługiwane są następujące opcje lokalizacji:
   
 |Name (Nazwa)|Text|  
 |----------|----------|  
-|TextboxExternalIdentitiesDisabled|Logowanie się jest w tej chwili wyłączone przez administratorów.|  
-|TextboxExternalIdentitiesSigninInvitation|Możesz też zalogować się przy użyciu|  
-|TextboxExternalIdentitiesSigninInvitationPrimary|Zaloguj się przy użyciu|  
+|TextboxExternalIdentitiesDisabled|Logowanie jest wyłączone przez administratorów w tej chwili.|  
+|TextboxExternalIdentitiesSigninInvitation|Alternatywnie Zaloguj się przy użyciu|  
+|TextboxExternalIdentitiesSigninInvitationPrimary|Zaloguj się przy użyciu:|  
   
 ###  <a name="SigninResources"></a> SigninResources  
   
 |Name (Nazwa)|Text|  
 |----------|----------|  
 |PrincipalNotFound|Nie można odnaleźć podmiotu zabezpieczeń lub podpis jest nieprawidłowy|  
-|ErrorSsoAuthenticationFailed|Uwierzytelnianie logowania jednokrotnego nie powiodło się|  
-|ErrorSsoAuthenticationFailedDetailed|Podano nieprawidłowy token lub nie można zweryfikować podpisu.|  
+|ErrorSsoAuthenticationFailed|Usługa rejestracji Jednokrotnej uwierzytelnianie nie powiodło się|  
+|ErrorSsoAuthenticationFailedDetailed|Podano nieprawidłowy token lub podpis nie można zweryfikować.|  
 |ErrorSsoTokenInvalid|Token logowania jednokrotnego jest nieprawidłowy|  
 |ValidationErrorSpecificEmailAlreadyExists|Wiadomość e-mail "{0}" już zarejestrowany|  
 |ValidationErrorSpecificEmailInvalid|Wiadomość e-mail "{0}" jest nieprawidłowy|  
@@ -424,12 +424,12 @@ Obsługiwane są następujące opcje lokalizacji:
 |PropertyTooShort|{0} jest zbyt krótki|  
 |WebAuthenticationAddresserEmailInvalidErrorMessage|Nieprawidłowy adres e-mail.|  
 |ValidationMessageNewPasswordConfirmationRequired|Potwierdź nowe hasło|  
-|ValidationErrorPasswordConfirmationRequired|Potwierdzenie hasła jest puste|  
+|ValidationErrorPasswordConfirmationRequired|Upewnij się, że hasło jest puste|  
 |WebAuthenticationEmailChangeNotice|Wiadomość e-mail z potwierdzeniem zmiany została wysłana do {0}. Wykonaj poniższe instrukcje znajdujące się w nim, aby potwierdzić nowy adres e-mail. Jeśli wiadomość e-mail nie dotrze do Twojej skrzynki odbiorczej w ciągu najbliższych kilku minut, sprawdź folder wiadomości-śmieci.|  
-|WebAuthenticationEmailChangeNoticeHeader|Żądanie zmiany adresu e-mail zostało pomyślnie przetworzone|  
+|WebAuthenticationEmailChangeNoticeHeader|Twoje żądanie zmiany adresu e-mail zostało pomyślnie przetworzone|  
 |WebAuthenticationEmailChangeNoticeTitle|Zażądano zmiany adresu e-mail|  
 |WebAuthenticationEmailHasBeenRevertedNotice|Twój adres e-mail już istnieje. Żądanie zostało wycofane|  
-|ValidationErrorEmailAlreadyExists|Adres e-mail już istnieje|  
+|ValidationErrorEmailAlreadyExists|Adres e-mail już istnieje.|  
 |ValidationErrorEmailInvalid|Nieprawidłowy adres e-mail|  
 |TextboxLabelEmail|Email|  
 |ValidationErrorEmailRequired|Adres e-mail jest wymagany.|  
@@ -449,10 +449,10 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebAuthenticationLinkExpiredNoticeTitle|Link został wysłany|  
 |WebAuthenticationNewPasswordLabel|Nowe hasło|  
 |ValidationMessageNewPasswordRequired|Nowe hasło jest wymagane.|  
-|TextboxLabelNotificationsSenderEmail|Adres e-mail nadawcy dla powiadomień|  
+|TextboxLabelNotificationsSenderEmail|Adres e-mail nadawcy powiadomień|  
 |TextboxLabelOrganizationName|Nazwa organizacji|  
 |WebAuthenticationOrganizationRequiredErrorMessage|Nazwa organizacji jest pusta|  
-|WebAuthenticationPasswordChangedNotice|Twoje hasło zostało pomyślnie zaktualizowane|  
+|WebAuthenticationPasswordChangedNotice|Twoje hasło zostało pomyślnie zaktualizowane.|  
 |WebAuthenticationPasswordChangedNoticeTitle|Hasło zostało zaktualizowane|  
 |WebAuthenticationPasswordCompareErrorMessage|Hasła są niezgodne|  
 |WebAuthenticationPasswordConfirmLabel|Potwierdź hasło|  
@@ -500,11 +500,11 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebAuthenticationSignupConfirmationAlmostDone|Prawie gotowe|  
 |WebAuthenticationSignupConfirmationEmailSent|Wysłaliśmy wiadomość e-mail na adres {0}. Postępuj zgodnie z instrukcjami wewnątrz tej wiadomości, aby aktywować konto. Jeśli wiadomość e-mail nie dotrze w ciągu najbliższych kilku minut, sprawdź folder wiadomości-śmieci.|  
 |WebAuthenticationEmailSentNotificationMessage|Wiadomość e-mail została wysłana do {0}|  
-|WebAuthenticationNoAadTenantConfigured|Brak skonfigurowanej dzierżawy usługi Azure Active Directory dla usługi.|  
+|WebAuthenticationNoAadTenantConfigured|Nie dzierżawy usługi Azure Active Directory skonfigurowany dla usługi.|  
 |CheckboxLabelUserRegistrationTermsConsentRequired|Zgadzam się na `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`.|  
 |TextblockUserRegistrationTermsProvided|Przejrzyj `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
 |DialogHeadingTermsOfUse|Warunki użytkowania|  
-|ValidationMessageConsentNotAccepted|Musisz zgodzić się na Warunki użytkowania, zanim będzie można kontynuować.|  
+|ValidationMessageConsentNotAccepted|Zanim przejdziesz dalej, musisz wyrazić zgodę na warunki użytkowania.|  
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   
@@ -514,7 +514,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebAuthenticationIfAdministrator|Jeśli jesteś administratorem, musisz zalogować się `<a href="{0}"\>here</a\>`.|  
 |WebAuthenticationNotAMember|Nie jesteś jeszcze członkiem? `<a href="/signup"\>Sign up now</a\>`|  
 |WebAuthenticationRemember|Pamiętaj mnie na tym komputerze|  
-|WebAuthenticationSigininWithPassword|Zaloguj się za pomocą nazwy użytkownika i hasła|  
+|WebAuthenticationSigininWithPassword|Zaloguj się przy użyciu nazwy użytkownika i hasła|  
 |WebAuthenticationSigninTitle|Logowanie|  
 |WebAuthenticationSignUpNow|Utwórz konto teraz|  
   
@@ -525,7 +525,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |PageTitleSignup|Rejestrowanie|  
 |WebAuthenticationAlreadyAMember|Jesteś już członkiem?|  
 |WebAuthenticationCreateNewAccount|Utwórz nowe konto usługi API Management|  
-|WebAuthenticationSigninNow|Logowanie|  
+|WebAuthenticationSigninNow|Zarejestruj się teraz|  
 |ButtonLabelSignup|Rejestrowanie|  
   
 ###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
@@ -544,10 +544,10 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebDevelopersSubscriptionRequestedState|Żądane|  
 |WebDevelopersSubscriptionTableNameHeader|Name (Nazwa)|  
 |WebDevelopersSubscriptionTableStateHeader|Stan|  
-|WebDevelopersUsageStatisticsLink|Raporty analizy|  
+|WebDevelopersUsageStatisticsLink|Raport analityczny|  
 |WebDevelopersYourSubscriptions|Twoje subskrypcje|  
-|SubscriptionPropertyLabelRequestedDate|Żądanie zgłoszone w dniu|  
-|SubscriptionPropertyLabelStartedDate|Rozpoczęto|  
+|SubscriptionPropertyLabelRequestedDate|Żądana|  
+|SubscriptionPropertyLabelStartedDate|Data rozpoczęcia|  
 |PageTitleRenameSubscription|Zmień nazwę subskrypcji|  
 |SubscriptionPropertyLabelName|Nazwa subskrypcji|  
   
@@ -555,7 +555,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 |Name (Nazwa)|Text|  
 |----------|----------|  
-|SectionHeadingCloseAccount|Szukasz możliwości zamknięcia konta?|  
+|SectionHeadingCloseAccount|Czy chcesz zamknąć konto?|  
 |PageTitleDeveloperProfile|Profil|  
 |ButtonLabelHideKey|Ukryj|  
 |ButtonLabelRegenerateKey|Regenerate|  
@@ -566,7 +566,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 |Name (Nazwa)|Text|  
 |----------|----------|  
-|ButtonLabelUpdateProfile|Aktualizowanie profilu|  
+|ButtonLabelUpdateProfile|Aktualizuj profil|  
 |PageTitleUpdateProfile|Aktualizowanie informacji o koncie|  
   
 ###  <a name="UserProfile"></a> UserProfile  
@@ -579,14 +579,14 @@ Obsługiwane są następujące opcje lokalizacji:
 |TextboxLabelEmail|Email|  
 |TextboxLabelEmailFirstName|Imię|  
 |TextboxLabelEmailLastName|Nazwisko|  
-|TextboxLabelNotificationsSenderEmail|Adres e-mail nadawcy dla powiadomień|  
+|TextboxLabelNotificationsSenderEmail|Adres e-mail nadawcy powiadomień|  
 |TextboxLabelOrganizationName|Nazwa organizacji|  
 |SubscriptionStateActive|Aktywne|  
-|SubscriptionStateCancelled|Anulowana|  
+|SubscriptionStateCancelled|Anulowane|  
 |SubscriptionStateExpired|Wygaśnięcie|  
 |SubscriptionStateRejected|Odrzucone|  
 |SubscriptionStateRequested|Żądane|  
-|SubscriptionStateSuspended|Wstrzymane|  
+|SubscriptionStateSuspended|Suspended|  
 |DefaultSubscriptionNameTemplate|{0}  (ustawienie domyślne)|  
 |SubscriptionNameTemplate|Deweloper dostępu #{0}|  
 |TextboxLabelSubscriptionName|Nazwa subskrypcji|  

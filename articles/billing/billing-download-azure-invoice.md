@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60617951"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
@@ -55,7 +55,7 @@ Aby uzyskać więcej informacji na temat fakturze zobacz [opis zawartości rachu
 Faktury są generowane dla każdego [rozliczeń profilu](billing-mca-overview.md#understand-billing-profiles) w umowie klienta firmy Microsoft. Musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub faktury Menedżera uprawnień umożliwiających pobieranie faktur w witrynie Azure portal.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 1. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
 1. Wybierz pozycję **Faktury**.
 1. W siatce faktury Znajdź wiersz faktury, który chcesz pobrać.
@@ -98,7 +98,7 @@ Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty 
 Jeśli masz umowy klienta firmy Microsoft, możesz zrezygnować w można pobrać fakturę w wiadomości e-mail. Wszystkie rozliczeń profilu właściciele, współautorzy, czytelnicy i faktury menedżerów otrzyma fakturę za pośrednictwem poczty e-mail. Czytelnicy nie można zaktualizować preferencji faktury wiadomości e-mail.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 1. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
 1. W obszarze **ustawienia**, wybierz opcję **właściwości**.
 1. W obszarze **Wyślij fakturę pocztą E-mail**, wybierz opcję **preferencji faktury e-mail aktualizacji**.
@@ -106,7 +106,7 @@ Jeśli masz umowy klienta firmy Microsoft, możesz zrezygnować w można pobrać
     ![Zrzut ekranu pokazujący właściwości faktury poczty e-mail](./media/billing-download-azure-invoice/billingprofile-email.png)
 
 1. Wybierz **Zgadzaj**.
-1. Kliknij przycisk **Update** (Aktualizuj).
+1. Kliknij przycisk **Aktualizuj**.
 
 ### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Zrezygnować z wprowadzenie fakturach umowy klienta firmy Microsoft w wiadomości e-mail
 

@@ -3,8 +3,8 @@ title: Usługa Azure Service Fabric Docker Compose wdrożenia (wersja zapoznawcz
 description: Usługa Azure Service Fabric akceptuje format narzędzia Docker Compose, aby ułatwić organizowanie istniejących kontenerów za pomocą usługi Service Fabric. Ta funkcja jest obecnie w wersji zapoznawczej.
 services: service-fabric
 documentationcenter: .net
-author: rockboyfor
-manager: digimobile
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
@@ -12,14 +12,13 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-origin.date: 02/23/2018
-ms.date: 04/29/2019
-ms.author: v-yeche
+ms.date: 2/23/2018
+ms.author: aljo, subramar
 ms.openlocfilehash: da86ed9a3e6979bd1dc05aef6ef70c7b8533a8c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60948838"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania Compose platformy docker w usłudze Azure Service Fabric (wersja zapoznawcza)
@@ -139,8 +138,8 @@ Konfigurowanie klastra na potrzeby wymuszania limitów zasobów zgodnie z opisem
 ### <a name="ports-section"></a>Sekcji dotyczącej portów
 
 W sekcji dotyczącej portów, który będzie używany przez odbiornik usługi Service Fabric, należy określić protokół http lub https. Daje to pewność, że protokół punkt końcowy został poprawnie opublikowany za pomocą usługi nazewnictwa, aby zezwolić na zwrotny serwer proxy do przekazywania żądań:
-* Aby przekierowywanie do niezabezpieczonych usługi Service Fabric Compose, należy określić **/http**. Na przykład- **"80:80 / http"**.
-* Aby rozesłać do bezpiecznych usług usługi Service Fabric Compose, należy określić **/https**. Na przykład- **"443:443 / https"**.
+* Aby przekierowywanie do niezabezpieczonych usługi Service Fabric Compose, należy określić **/http**. Na przykład- **"80:80 / http"** .
+* Aby rozesłać do bezpiecznych usług usługi Service Fabric Compose, należy określić **/https**. Na przykład- **"443:443 / https"** .
 
 > [!NOTE]
 > Składnia sekcji /http i porty /https jest specyficzne dla usługi Service Fabric, aby zarejestrować poprawny adres URL odbiornik usługi Service Fabric.  Jeśli narzędzia Docker compose programowego sprawdzania poprawności składni pliku, może to spowodować błąd sprawdzania poprawności.
@@ -166,5 +165,3 @@ Mimo że ten model zapewnia elastyczność, planujemy również obsługiwać mod
 
 * Czytaj [modelu aplikacji usługi Service Fabric](service-fabric-application-model.md)
 * [Get started with Service Fabric CLI](service-fabric-cli.md) (Wprowadzenie do interfejsu wiersza polecenia usługi Service Fabric)
-
-<!-- Update_Description: wording update -->

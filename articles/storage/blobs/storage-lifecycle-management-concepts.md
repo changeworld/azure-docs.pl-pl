@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
 ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001753"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure
@@ -200,7 +200,7 @@ Każda reguła w ramach zasad ma kilka parametrów:
 | Nazwa parametru | Typ parametru | Uwagi | Wymagane |
 |----------------|----------------|-------|----------|
 | `name`         | String |Nazwa reguły może zawierać maksymalnie 256 znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter.  Musi być unikatowa w ramach zasad. | True |
-| `enabled`      | Boolean | Opcjonalna wartość logiczna, aby umożliwić reguły do zastosowania tymczasowego wyłączone. Wartość domyślna to true, jeśli nie jest ustawiona. | Fałsz | 
+| `enabled`      | Boolean | Opcjonalna wartość logiczna, aby umożliwić reguły do zastosowania tymczasowego wyłączone. Wartość domyślna to true, jeśli nie jest ustawiona. | False | 
 | `type`         | Wartość wyliczenia | Bieżącym typem prawidłowe jest `Lifecycle`. | True |
 | `definition`   | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. | True |
 
@@ -251,7 +251,7 @@ Filtry ograniczają akcji reguł do podzbioru obiektów blob na koncie magazynu.
 
 Dostępne są następujące filtry:
 
-| Nazwa filtru | Typ filtru | Uwagi | Wymagany |
+| Nazwa filtru | Typ filtru | Uwagi | Jest wymagany |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Tablica wartości wyliczenia wstępnie zdefiniowane. | Bieżąca wersja obsługuje `blockBlob`. | Tak |
 | prefixMatch | Tablica ciągów dla prefiksów dopasować się. Każda reguła można zdefiniować maksymalnie 10 prefiksy. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład, jeśli chcesz dopasować wszystkich obiektów blob w ramach `https://myaccount.blob.core.windows.net/container1/foo/...` dla danej zasady jest prefixMatch `container1/foo`. | Jeśli nie zdefiniowano prefixMatch, reguła ma zastosowanie do wszystkich obiektów blob na koncie magazynu.  | Nie |
@@ -262,11 +262,11 @@ Akcje są stosowane do filtrowanych obiektów blob, po spełnieniu warunku wykon
 
 Zarządzanie cyklem życia obsługuje warstw i usuwanie obiektów blob i usuwanie migawek obiektów blob. Dla obiektów blob lub migawki obiektów blob, należy zdefiniować co najmniej jedną akcję dla każdej reguły.
 
-| action        | Podstawowy obiekt Blob                                   | Migawka      |
+| Akcja        | Podstawowy obiekt Blob                                   | Snapshot      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Obsługuje obiekty BLOB, obecnie w warstwie gorąca         | Nieobsługiwane |
 | tierToArchive | Obsługuje obiekty BLOB, obecnie w warstwie gorącej lub chłodnej | Nieobsługiwane |
-| usuwanie        | Obsługiwane                                   | Obsługiwane     |
+| delete        | Obsługiwane                                   | Obsługiwane     |
 
 >[!NOTE]
 >Jeśli więcej niż jedna akcja jest zdefiniowana w tym samym obiekcie blob, Zarządzanie cyklem życia dotyczy najniższy akcję obiektu blob. Na przykład akcja `delete` jest tańsze niż akcja `tierToArchive`. Akcja `tierToArchive` jest tańsze niż akcja `tierToCool`.

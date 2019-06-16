@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60477099"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Sprawdź i rozwiązywanie problemów z instalacją w wysokiej dostępności skalowalnego w poziomie oprogramowania SAP HANA w systemie SLES 12 z dodatkiem SP3 
@@ -473,7 +473,7 @@ Po wszystko jest prawidłowo skonfigurowane, można uruchomić następujące pol
 systemctl status pacemaker
 </code></pre>
 
-Górnej części danych wyjściowych powinien wyglądać jak w następującym przykładzie. Ważne jest, stan po **Active** jest przedstawiana w postaci **załadowane** i **aktywny (uruchomione)**. Stan po **Loaded** musi zostać pokazany jako **włączone**.
+Górnej części danych wyjściowych powinien wyglądać jak w następującym przykładzie. Ważne jest, stan po **Active** jest przedstawiana w postaci **załadowane** i **aktywny (uruchomione)** . Stan po **Loaded** musi zostać pokazany jako **włączone**.
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -802,7 +802,7 @@ Polecenia **SAPHanaSR showAttr** i **stan crm** nie wskazują nic o ograniczenia
 crm configure show
 </code></pre>
 
-W konfiguracji klastra możesz znaleźć nowe ograniczenie lokalizacji spowodowane migracji przypisywane ręcznie zasobów. Ten przykładowy wpis, który rozpoczyna się od **lokalizacji interfejsu wiersza polecenia —**:
+W konfiguracji klastra możesz znaleźć nowe ograniczenie lokalizacji spowodowane migracji przypisywane ręcznie zasobów. Ten przykładowy wpis, który rozpoczyna się od **lokalizacji interfejsu wiersza polecenia —** :
 
 <pre><code>
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.openlocfilehash: 37c9a11b806ff49fce27120d03f67182037dc693
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726870"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie na żądanie klastry platformy Apache Hadoop w HDInsight przy użyciu usługi Azure Data Factory
@@ -192,7 +192,7 @@ W tym artykule możesz skonfigurować działanie programu Hive, aby utworzyć kl
     |Name (Nazwa) | Wprowadź nazwę dla fabryki danych. Ta nazwa musi być unikatowa w skali globalnej.|
     |Subskrypcja | Wybierz swoją subskrypcję platformy Azure. |
     |Grupa zasobów | Wybierz **Użyj istniejącej** a następnie wybierz grupę zasobów, które zostały utworzone za pomocą skryptu programu PowerShell. |
-    |Wersja | Pozostaw **V2**. |
+    |Version | Pozostaw **V2**. |
     |Lokalizacja | Lokalizacja jest automatycznie ustawiona do lokalizacji, w której określono podczas tworzenia grupy zasobów wcześniej. W tym samouczku lokalizacja jest ustawiana **wschodnie stany USA**. |
 
     ![Tworzenie fabryki danych Azure przy użyciu witryny Azure portal](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Tworzenie usługi Azure Data Factory przy użyciu witryny Azure portal")
@@ -253,7 +253,7 @@ W tej sekcji zredagujesz dwie połączone usługi w fabryce danych.
     | Właściwość | Wartość |
     | --- | --- |
     | Name (Nazwa) | Wprowadź polecenie `HDinisghtLinkedService`.|
-    | Type | Wybierz **HDInsight na żądanie**. |
+    | Typ | Wybierz **HDInsight na żądanie**. |
     | Połączona usługa Azure Storage | Wybierz pozycję `HDIStorageLinkedService`. |
     | Typ klastra | Wybierz **usługi hadoop** |
     | Czas wygaśnięcia | Podaj czas trwania, dla którego chcesz klastra HDInsight, które mają być dostępne, zanim zostaną automatycznie usunięte.|

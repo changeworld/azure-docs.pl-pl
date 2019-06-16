@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: bb6bbd457ff372ad46091f49cf4ae7e4b34b3d83
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935440"
 ---
 <a name="retrieve-a-specific-offer"></a>Pobieranie określonej oferty
@@ -42,13 +42,13 @@ Można również pobrać określoną wersję oferty lub pobrać oferty w widoku,
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId. Na przykład Contoso                                                        | String        |
 | offerId     | Identyfikator GUID, który unikatowo identyfikuje oferty.                                                 | String        |
-| version     | Wersja oferty, trwa pobieranie. Domyślnie są pobierane najnowszą ofertę. | Liczba całkowita       |
+| version     | Wersja oferty, trwa pobieranie. Domyślnie są pobierane najnowszą ofertę. | Integer       |
 | slotId      | Może to być jednym z miejsca, z którego ma zostać pobrane, oferty:      <br/>  - `Draft` (ustawienie domyślne) pobiera wersję oferty, obecnie w wersji roboczej.  <br/>  -  `Preview` Pobiera wersję oferty, obecnie w wersji zapoznawczej.     <br/>  -  `Production` Pobiera wersję oferty, obecnie w środowisku produkcyjnym.          |      Wyliczenia |
-| wersja interfejsu API | Najnowszą wersję interfejsu API                                                                    | Date          |
+| api-version | Najnowszą wersję interfejsu API                                                                    | Date          |
 |  |  |  |
 
 
-<a name="header"></a>Nagłówek
+<a name="header"></a>nagłówek
 ------
 
 |  **Nazwa**          |   **Wartość**            |
@@ -175,7 +175,7 @@ Można również pobrać określoną wersję oferty lub pobrać oferty w widoku,
 |  status         | Stan oferty. Aby uzyskać listę możliwych wartości, zobacz [status oferty](#offer-status) poniżej.                                  |
 |  Identyfikator             | Identyfikator GUID, który unikatowo identyfikuje oferty                                                                                         |
 |  version        | Bieżąca wersja oferty. Nie można zmodyfikować właściwości wersji przez klienta. Ten numer jest zwiększany po każdym opublikowaniu.    |
-|  definicja     | Rzeczywistą definicją obciążenia                                                                                               |
+|  Definicja     | Rzeczywistą definicją obciążenia                                                                                               |
 |  changedTime    | Daty/godziny UTC ostatniej modyfikacji tej oferty                                                                                   |
 |  |  |
 

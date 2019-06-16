@@ -4,17 +4,16 @@ description: Dowiedz się, jak dodać tabliczkę języka znaczników markdown do
 services: azure-portal
 keywords: ''
 author: kfollis
-ms.author: v-biyu
-origin.date: 01/25/2019
-ms.date: 03/04/2019
+ms.author: kfollis
+ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551586"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Użyj kafelka markdown na pulpitach nawigacyjnych platformy Azure, aby pokazać zawartości niestandardowej
@@ -29,7 +28,7 @@ Możesz dodać kafelka markdown do pulpitów nawigacyjnych platformy Azure do wy
 
 2. W **Galeria kafelków**, Znajdź Kafelek o nazwie **Markdown** i kliknij przycisk **Dodaj**. Kafelek zostanie dodany do pulpitu nawigacyjnego i **edytowania kodu Markdown** zostanie otwarte okienko.
 
-3. Edytuj **tytuł**, **podtytuł**, i **zawartości** pola, aby dostosować kafelka. W przykładzie poniżej pokazano kafelka markdown został zmodyfikowany do wyświetlania informacji działu pomocy niestandardowej.
+1. Edytuj **tytuł**, **podtytuł**, i **zawartości** pola, aby dostosować kafelka. W przykładzie poniżej pokazano kafelka markdown został zmodyfikowany do wyświetlania informacji działu pomocy niestandardowej.
 
    ![Zrzut ekranu przedstawiający widok edycji kafelka markdown](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 

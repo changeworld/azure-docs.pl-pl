@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
 ms.openlocfilehash: d7d76458601b2afecafc1313e334215bf08b6545
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713826"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Zarządzanie Key Vault przy użyciu wiersza polecenia platformy Azure 
@@ -147,7 +147,7 @@ Jeśli masz istniejący klucz w pliku PEM, można przesłać go do usługi Azure
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Teraz możesz odwoływać się klucz, który został utworzony lub przekazany do usługi Azure Key Vault za pomocą jego identyfikatora URI. Użyj **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** można zawsze uzyskać bieżącą wersję. Użyj https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] Aby uzyskać tę konkretną wersję. Na przykład **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+Teraz możesz odwoływać się klucz, który został utworzony lub przekazany do usługi Azure Key Vault za pomocą jego identyfikatora URI. Użyj **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** można zawsze uzyskać bieżącą wersję. Użyj https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] Aby uzyskać tę konkretną wersję. Na przykład **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** . 
 
 Dodawanie wpisu tajnego w magazynie, który jest hasłem o nazwie SQLPassword i ma wartość "hVFkk965BuUv" do usługi Azure Key Vault. 
 
@@ -155,7 +155,7 @@ Dodawanie wpisu tajnego w magazynie, który jest hasłem o nazwie SQLPassword i 
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Odwoływać się do hasła za pomocą jego identyfikatora URI. Użyj **https://ContosoVault.vault.azure.net/secrets/SQLPassword** zawsze uzyskać bieżącą wersję oraz https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] Aby uzyskać tę konkretną wersję. Na przykład **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
+Odwoływać się do hasła za pomocą jego identyfikatora URI. Użyj **https://ContosoVault.vault.azure.net/secrets/SQLPassword** zawsze uzyskać bieżącą wersję oraz https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] Aby uzyskać tę konkretną wersję. Na przykład **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
 
 Zaimportuj certyfikat do magazynu przy użyciu PEM lub pfx.
 

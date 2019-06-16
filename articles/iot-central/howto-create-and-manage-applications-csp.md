@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 43fe0047022173cc20f58688920fa95b95cc6c22
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65473539"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako dostawca CSP tworzenie i zarządzanie aplikację Central IoT platformy Azure w imieniu klienta 
@@ -69,7 +69,7 @@ Jeśli nie masz subskrypcji platformy Azure, możesz go utworzyć w programie Mi
 
 Aby dowiedzieć się więcej, zobacz [subskrypcji platformy Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
-## <a name="region"></a>Obszar
+## <a name="region"></a>Region
 
 Wybierz region, w którym chcesz utworzyć aplikację usługi Azure IoT centralnej. Zazwyczaj należy wybrać region znajdujący się najbliżej fizycznie urządzenia, aby uzyskać optymalną wydajność.
 
@@ -87,7 +87,7 @@ Można wybrać jedną z szablonów aplikacji dostępnych w nowej aplikacji usłu
 | Szablon aplikacji | Opis |
 | -------------------- | ----------- |
 | Aplikacja niestandardowa   | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń. |
-| Przykład Contoso       | Tworzy aplikację, która zawiera szablon urządzenia dla prostych podłączonego urządzenia. Użyj tego szablonu, aby rozpocząć eksplorowanie usługi Azure IoT Central. |
+| Przykład dotyczący firmy Contoso       | Tworzy aplikację, która zawiera szablon urządzenia dla prostych podłączonego urządzenia. Użyj tego szablonu, aby rozpocząć eksplorowanie usługi Azure IoT Central. |
 | Przykład dotyczący zestawów deweloperskich       | Tworzy aplikację z gotowymi szablonami urządzeń, które umożliwiają łączenie z urządzeniem MXChip lub Raspberry Pi. Użyj tego szablonu, jeśli jesteś deweloperem urządzenia, eksperymentowanie z kodem na jednym z tych urządzeń. |
 
 ## <a name="next-steps"></a>Kolejne kroki

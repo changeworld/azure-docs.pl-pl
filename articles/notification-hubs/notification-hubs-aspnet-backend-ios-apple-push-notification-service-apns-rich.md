@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: dd808a04dff77388248bf7309f5ff804e6dd065c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60873090"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs rozbudowane wypychanie
@@ -135,7 +135,7 @@ Na wysokim poziomie:
     }
     ```
 8. Teraz ponownie wdrożymy tę aplikację w witrynie sieci Web platformy Azure, aby go udostępnić wszystkim urządzeniom. Kliknij prawym przyciskiem myszy projekt **AppBackend** i wybierz polecenie **Publikuj**.
-9. Wybierz witryny internetowej platformy Azure jako swoje docelową lokalizację publikacji. Zaloguj się przy użyciu konta platformy Azure i wybrać istniejącą lub nową witrynę sieci Web i zanotuj **docelowy adres URL** właściwość **połączenia** kartę. W dalszej części tego samouczka będziemy nazywać ten adres URL *punktem końcowym zaplecza*. Kliknij przycisk **Opublikuj**.
+9. Wybierz witryny internetowej platformy Azure jako swoje docelową lokalizację publikacji. Zaloguj się przy użyciu konta platformy Azure i wybrać istniejącą lub nową witrynę sieci Web i zanotuj **docelowy adres URL** właściwość **połączenia** kartę. W dalszej części tego samouczka będziemy nazywać ten adres URL *punktem końcowym zaplecza*. Kliknij przycisk **publikowania**.
 
 ## <a name="modify-the-ios-project"></a>Modyfikowanie projektu systemu iOS
 

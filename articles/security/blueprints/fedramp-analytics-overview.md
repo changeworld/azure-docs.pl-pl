@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586291"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Zabezpieczenia platformy Azure i zgodności planu: Analytics for FedRAMP
@@ -90,7 +90,7 @@ Sieciowe grupy zabezpieczeń mają określonych portów i protokołów, otwórz 
 Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
 
 **Replikacja danych** Azure dla instytucji rządowych ma dwie opcje do [replikacji danych](https://docs.microsoft.com/azure/storage/common/storage-redundancy):
- - Domyślnym ustawieniem jest replikacja danych **magazyn geograficznie nadmiarowy (GRS)**, które asynchronicznie przechowuje dane klienta w centrum danych poza regionem podstawowym. Zapewnia to odzyskiwanie danych w zdarzeniu całkowitej utraty podstawowe centrum danych.
+ - Domyślnym ustawieniem jest replikacja danych **magazyn geograficznie nadmiarowy (GRS)** , które asynchronicznie przechowuje dane klienta w centrum danych poza regionem podstawowym. Zapewnia to odzyskiwanie danych w zdarzeniu całkowitej utraty podstawowe centrum danych.
  - **Magazyn lokalnie nadmiarowy (LRS)** można również skonfigurować za pomocą konta usługi Azure Storage. LRS replikuje dane w jednostce skalowania magazynu, który znajduje się w tym samym regionie, w której klient tworzy swojego konta. Wszystkie dane są replikowane w współbieżnie, zapewniając, że nie dane kopii zapasowej zostaną utracone błąd jednostki skali magazynu głównego.
 
 **Usługa Azure Storage** aby sprostać zaszyfrowanych danych na pozostałe wymagania, wszystkich usług wdrożonych w tej używają architektury odwołanie [usługi Azure Storage](https://azure.microsoft.com/services/storage/), która przechowuje dane za pomocą [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption).

@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 79ea9455fec7d31f800b2b5d36df6a2a53f502c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61438202"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Usługa Notification Hubs danych wyjściowych powiązania dla usługi Azure Functions
@@ -257,7 +257,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** |Nie dotyczy| Musi być równa "Centrum notificationHub". |
 |**direction** |Nie dotyczy| Musi być równa "out". | 
-|**Nazwa** |Nie dotyczy| Nazwa zmiennej, używane w kodzie funkcji komunikatów Centrum powiadomień. |
+|**name** |Nie dotyczy| Nazwa zmiennej, używane w kodzie funkcji komunikatów Centrum powiadomień. |
 |**tagExpression** |**TagExpression** | Wyrażenia tagu umożliwiają określenie, że powiadomienia dostarczone do zestawu urządzeń, które zostały zarejestrowane do otrzymywania powiadomień, które pasują do wyrażenia tagu.  Aby uzyskać więcej informacji, zobacz [routingu i znaczników wyrażeń](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Nazwa zasobu Centrum powiadomień w witrynie Azure portal. |
 |**połączenia** | **ConnectionStringSetting** | Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Notification Hubs.  Parametry połączenia musi być równa *DefaultFullSharedAccessSignature* wartość dla Centrum powiadomień. Zobacz [ustawienia parametrów połączenia](#connection-string-setup) w dalszej części tego artykułu.|
@@ -302,7 +302,7 @@ Nazwa tego ustawienia aplikacji to, co jest umieszczane w ustawieniach połącze
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Powiązanie | Informacje ogólne |
+| Powiązanie | Tematy pomocy |
 |---|---|
 | Centrum powiadomień | [Przewodnik obsługi](https://docs.microsoft.com/rest/api/notificationhubs/) |
 

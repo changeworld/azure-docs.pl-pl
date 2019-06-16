@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: c5dd0146fe59e7dc85787f146b10cfde7d6addb4
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867897"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Omówienie transmisji strumieniowej na żywo za pomocą usługi Media Services
@@ -74,16 +74,16 @@ Poniższa tabela zawiera przewodnik do porównywania dwóch typów kanałów obs
 
 | Cecha | Kanału przekazującego | Wzorzec kanał |
 | --- | --- | --- |
-| Pojedyncza szybkość transmisji bitów w danych wejściowych jest zakodowany do wielokrotnych w chmurze |Nie |Yes |
+| Pojedyncza szybkość transmisji bitów w danych wejściowych jest zakodowany do wielokrotnych w chmurze |Nie |Tak |
 | Maksymalna rozdzielczość, liczba warstw |1080p, 8 warstwy ponad 60 kl. / s |720p 6 warstwy 30 kl. / s |
 | Protokoły danych wejściowych |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Cena |Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "Wideo na żywo" |Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maksymalny czas działania |Całodobowo |8 godzin |
-| Obsługa wstawiania plansz |Nie |Yes |
-| Obsługa sygnalizowanie ad |Nie |Yes |
-| Podpisy napisy kodowane CEA 608/708 przekazywania |Yes |Yes |
-| Obsługa niejednolitego GOPs danych wejściowych |Yes |Nie — dane wejściowe zostały poprawione 2 s GOPs |
-| Obsługa dane wejściowe szybkość klatek zmiennej |Yes |Nie — dane wejściowe muszą zostać usunięte, szybkości klatek.<br/>Niewielkich zmian są dopuszczalne na przykład podczas sceny wysokiej ruchu. Ale kodera nie można porzucić do 10 ramek na sekundę. |
+| Obsługa wstawiania plansz |Nie |Tak |
+| Obsługa sygnalizowanie ad |Nie |Tak |
+| Podpisy napisy kodowane CEA 608/708 przekazywania |Tak |Yes |
+| Obsługa niejednolitego GOPs danych wejściowych |Tak |Nie — dane wejściowe zostały poprawione 2 s GOPs |
+| Obsługa dane wejściowe szybkość klatek zmiennej |Tak |Nie — dane wejściowe muszą zostać usunięte, szybkości klatek.<br/>Niewielkich zmian są dopuszczalne na przykład podczas sceny wysokiej ruchu. Ale kodera nie można porzucić do 10 ramek na sekundę. |
 | Auto bliskie kanały, gdy dane wejściowe źródła danych zostaną utracone |Nie |Po upływie 12 godzin, jeśli nie jest uruchomiony żaden Program |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Praca z kanałami odbierającymi strumień na żywo o różnych szybkościach transmisji bitów z koderów lokalnych (przekazujących)
@@ -161,7 +161,7 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 [Specyfikacja odbierania podzielonej zawartości w formacie MP4 na żywo w usłudze Azure Media Services](media-services-fmp4-live-ingest-overview.md)
 
 [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)

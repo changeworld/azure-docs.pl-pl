@@ -17,10 +17,10 @@ ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d71bfd5e560bb1509337ac371fbe101b4c6d63b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540644"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Opis środowisk zgody dla aplikacji usługi Azure AD
@@ -52,7 +52,7 @@ Poniższy diagram i tabeli, podaj informacje na temat bloków konstrukcyjnych mo
 | 4 | Nazwa aplikacji | Tę wartość należy poinformować użytkowników, która aplikacja żąda dostępu do swoich danych. Należy pamiętać, ta nazwa jest świadczona przez deweloperów i własności to nazwa aplikacji nie jest zweryfikowany. |
 | 5 | Domena wydawcy | Ta wartość powinna udostępniają użytkownikom domeny, które mogą być w stanie oceniająca wiarygodności. Ta domena jest świadczona przez deweloperów i zweryfikowaniu własności tej domeny wydawcy. |
 | 6 | Uprawnienia | Ta lista zawiera wymagane przez aplikację kliencką uprawnienia. Użytkownicy zawsze należy ocenić typy Aby zrozumieć, jakie dane, aplikacja kliencka będzie autoryzowana do dostępu w ich imieniu po ich zaakceptowaniu wymagane uprawnienia. Jako Deweloper aplikacji najlepiej jest żądanie dostępu do uprawnień za pomocą najniższych uprawnień. |
-| 7 | Opis uprawnienia | Ta wartość jest udostępniany przez usługę ujawnienia uprawnień. Aby wyświetlić opisy uprawnień, możesz przełączyć cudzysłów ostrokątny obok uprawnienia. |
+| 7 | Opis uprawnień | Ta wartość jest udostępniany przez usługę ujawnienia uprawnień. Aby wyświetlić opisy uprawnień, możesz przełączyć cudzysłów ostrokątny obok uprawnienia. |
 | 8 | Warunki aplikacji | Niniejsze postanowienia zawierają linki do warunków usługi i zasady zachowania poufności aplikacji. Wydawca jest odpowiedzialny za tworzenie konspektu ich zestawów reguł w jej warunkach użytkowania usługi. Ponadto wydawca jest odpowiedzialny za ujawnieniu sposób ich używania i udostępniania danych użytkowników w ich zachowania poufności informacji. Jeśli wydawca nie udostępnia łącza do tych wartości dla aplikacji wielodostępnych, będzie pogrubiony ostrzeżenia na monit o wyrażenie zgody. |
 | 9 | https://myapps.microsoft.com | Jest to link, w którym użytkownicy mogą przejrzeć i usunąć wszystkie aplikacje firm innych niż Microsoft, które aktualnie mają dostęp do swoich danych. |
 

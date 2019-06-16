@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 09b7e8961e59bd6fad49408c28e9ee9a4a209cae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515293"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Szybki start: Użyj interfejsu API rozpoznawania mowy Bing w języku Objective C w systemie iOS
@@ -141,7 +141,7 @@ Różne programy obsługi zdarzeń można dołączyć do klienta został utworzo
   * W `SpeechRecognitionMode_LongDictation` tryb, program obsługi zdarzeń jest wywoływana wiele razy, oparte na którym usługa identyfikuje wstrzymuje zdania.
   * **Dla każdej opcji n najlepszych**, zwracane są wartości zaufania i kilka różnych sposobów rozpoznany tekst. Aby uzyskać więcej informacji, zobacz [format danych wyjściowych](../Concepts.md#output-format).
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 
 * [Dokumentacja biblioteki klienta dla systemu iOS](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
 * [Rozpoczynanie pracy z usługą rozpoznawania mowy firmy Microsoft i/lub przeznaczenie w języku Java w systemie Android](GetStartedJavaAndroid.md)

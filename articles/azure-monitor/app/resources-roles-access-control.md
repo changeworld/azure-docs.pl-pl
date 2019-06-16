@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
 ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60373696"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Zasoby, role i kontrola dostępu w usłudze Application Insights
@@ -92,7 +92,7 @@ Gdy to stosowne, można przejść do skojarzonego dokumentacji oficjalnego.
 | [Purger danych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Specjalne rola przeczyszczania danych osobowych. Zobacz nasze [wskazówki dotyczące danych osobowych](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) Aby uzyskać więcej informacji.   |
 | Administrator usługi ExpressRoute | Można tworzyć delete i Zarządzaj trasami platformy express.|
 | [Współautor usługi log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Współautor usługi log Analytics może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia do maszyn wirtualnych; Odczytywanie kluczy kont magazynu, aby można było skonfigurować zbieranie dzienników z usługi Azure Storage; Tworzenie i konfigurowanie kont usługi Automation; Dodawanie rozwiązań. i konfigurowanie diagnostyki platformy Azure dla wszystkich zasobów platformy Azure.  |
-| [Czytelnik usługi log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Czytelnik usługi Log Analytics może wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, w tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
+| [Czytelnik usługi log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Czytelnik usługi log Analytics można wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
 | masterreader | Umożliwia użytkownikowi przeglądać wszystko, ale nie wprowadzać zmian. |
 | [Współautor monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Może odczytywać wszystkie dane monitorowania i aktualizować ustawienia monitorowania. |
 | [Monitorowanie metryk wydawcy](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Umożliwia publikowanie metryk dotyczących zasobów platformy Azure. |

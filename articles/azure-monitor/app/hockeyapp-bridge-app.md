@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
 ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60898756"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Eksplorowanie danych platformy HockeyApp w usłudze Application Insights
@@ -51,7 +51,7 @@ Należy pamiętać, że danych trwa to trochę czasu do uruchomienia przepływu.
 
 ![Oczekiwanie na dane zasób usługi Application Insights](./media/hockeyapp-bridge-app/04.png)
 
-Gotowe. Niestandardowe i śledzenia zbieranych danych w aplikacji Instrumentacji HockeyApp od tego momentu również jest teraz dostępny w funkcje analizy i eksportu ciągłego usługi Application Insights.
+To wszystko! Niestandardowe i śledzenia zbieranych danych w aplikacji Instrumentacji HockeyApp od tego momentu również jest teraz dostępny w funkcje analizy i eksportu ciągłego usługi Application Insights.
 
 Krótko Omówmy teraz każde z tych funkcji, które są teraz dostępne dla użytkownika.
 

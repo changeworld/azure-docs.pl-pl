@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
 ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073700"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Samouczek: Grupowanie i wyodrębnianie powiązanych danych
@@ -93,7 +93,7 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
     ![Zrzut ekranu przedstawiający wprowadzanie nazwy w liście rozwijanej okna dialogowego](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. W **jakiego typu jednostki, czy chcesz utworzyć?**, wszystkie pola wymagane znajdują się na liście: `personName` i `Department`. Wybierz pozycję **Done** (Gotowe). Zwróć uwagę, czy wstępnie utworzone jednostki, personName, został dodany do obiektu złożonego. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
+1. W **jakiego typu jednostki, czy chcesz utworzyć?** , wszystkie pola wymagane znajdują się na liście: `personName` i `Department`. Wybierz pozycję **Done** (Gotowe). Zwróć uwagę, czy wstępnie utworzone jednostki, personName, został dodany do obiektu złożonego. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
 
     ![Zrzut ekranu przedstawiający wprowadzanie nazwy w liście rozwijanej okna dialogowego](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 

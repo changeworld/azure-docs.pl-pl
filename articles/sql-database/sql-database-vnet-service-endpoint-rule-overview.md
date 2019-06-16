@@ -13,10 +13,10 @@ ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 8c33cd7fe702f46f9c88643895b96445a9aa6a78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331419"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Punkty końcowe usługi sieci wirtualnej i reguł na użytek serwerów baz danych
@@ -209,7 +209,7 @@ Program PolyBase jest najczęściej używany do ładowania danych do usługi Azu
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
     
-   1. Tworzenie poświadczeń o zakresie bazy danych przy użyciu **tożsamość = "Tożsamości usługi zarządzanej"**:
+   1. Tworzenie poświadczeń o zakresie bazy danych przy użyciu **tożsamość = "Tożsamości usługi zarządzanej"** :
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -248,7 +248,7 @@ Błąd połączenia 40914 odnosi się do *reguł sieci wirtualnej*, jak określo
 
 ### <a name="error-40914"></a>Błąd 40914
 
-*Tekst komunikatu:* Nie można otworzyć serwera "*[nazwa_serwera]*" żądanego podczas logowania. Klient nie może uzyskać dostęp do serwera.
+*Tekst komunikatu:* Nie można otworzyć serwera " *[nazwa_serwera]* " żądanego podczas logowania. Klient nie może uzyskać dostęp do serwera.
 
 *Opis błędu:* Klient znajduje się w podsieci, która ma punkty końcowe serwera w sieci wirtualnej. Ale serwera Azure SQL Database nie ma sieci wirtualnej reguły przyznająca podsieci prawo do komunikowania się z usługą SQL Database.
 

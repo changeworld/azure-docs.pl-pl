@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538912"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrowanie 3270 aplikacje oparte na ekranie, na komputery mainframe firmy IBM z platformą Azure za pomocą łącznika usługi Azure Logic Apps i IBM 3270
@@ -186,7 +186,7 @@ W tym trybie zdefiniuj przepływ lub kroki do przechodzenia między ekrany aplik
    | Typ planu | Opis |
    |-----------|-------------|
    | **Proces** | Autonomiczny lub połączone plany |
-   | **Połączenie** | W przypadku planów Connect |
+   | **Połącz** | W przypadku planów Connect |
    | **Rozłącz** | W przypadku planów rozłączenia |
    |||
 
@@ -355,15 +355,15 @@ Po zakończeniu wszystkie te kroki, można użyć akcji, którą utworzysz w apl
    ![Wybierz akcję 3270](./media/connectors-create-api-3270/select-3270-action.png)
 
    Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
-   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 1. Jeśli jeszcze nie istnieją żadne połączenia, podaj niezbędne informacje dotyczące połączenia i wybierz polecenie **Utwórz**.
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
    | **Nazwa połączenia** | Yes | <*connection-name*> | Nazwa połączenia |
-   | **Identyfikator konta integracji** | Yes | <*integration-account-name*> | Nazwa konta integracji |
-   | **Adres URL sygnatury dostępu Współdzielonego konta integracji** | Yes | <*integration-account-SAS-URL*> | Konta integracji sygnatury dostępu współdzielonego (SAS) adresu URL, który można wygenerować z ustawień konta integracji w witrynie Azure portal. <p>1. Na integracji usługi menu konta, w obszarze **ustawienia**, wybierz opcję **adresów URL wywołania zwrotnego**. <br>2. W okienku po prawej stronie Skopiuj **wygenerowany adres URL wywołania zwrotnego** wartość. |
+   | **Identyfikator konta integracji** | Tak | <*integration-account-name*> | Nazwa konta integracji |
+   | **Adres URL sygnatury dostępu Współdzielonego konta integracji** | Tak | <*integration-account-SAS-URL*> | Konta integracji sygnatury dostępu współdzielonego (SAS) adresu URL, który można wygenerować z ustawień konta integracji w witrynie Azure portal. <p>1. Na integracji usługi menu konta, w obszarze **ustawienia**, wybierz opcję **adresów URL wywołania zwrotnego**. <br>2. W okienku po prawej stronie Skopiuj **wygenerowany adres URL wywołania zwrotnego** wartość. |
    | **Serwer** | Yes | <*Nazwy serwera TN3270*> | Nazwa serwera usługi TN3270 |
    | **Port** | Nie | <*Port w przypadku serwera TN3270*> | Port używany przez serwer TN3270. Jeśli pole pozostanie puste, łącznik używa `23` jako wartość domyślną. |
    | **Typ urządzenia** | Nie | <*IBM-terminal-model*> | Nazwa modelu lub numer terminalu IBM do emulacji. Jeśli pole pozostanie puste, łącznik używa wartości domyślnych. |
@@ -381,7 +381,7 @@ Po zakończeniu wszystkie te kroki, można użyć akcji, którą utworzysz w apl
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa elementu Hidx** | Yes | <*HIDX-file-name*> | Wybierz plik elementu HIDX 3270, którego chcesz używać. |
+   | **Nazwa elementu Hidx** | Tak | <*HIDX-file-name*> | Wybierz plik elementu HIDX 3270, którego chcesz używać. |
    | **Nazwa metody** | Yes | <*method-name*> | Wybierz metodę w pliku elementu HIDX, którego chcesz użyć. Po wybraniu metody **dodano nowy parametr** zostanie wyświetlona lista, dzięki czemu można wybrać parametry używane przez tę metodę. |
    ||||
 

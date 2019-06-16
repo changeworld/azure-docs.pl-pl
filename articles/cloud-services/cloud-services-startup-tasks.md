@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 59bfa83ab3432adb7a4df5112367f87014a0b292
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60405991"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak skonfigurować i uruchomić zadania uruchamiania dla usługi w chmurze
@@ -30,7 +30,7 @@ Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. O
 > 
 
 ## <a name="how-startup-tasks-work"></a>Jak działają zadania uruchamiania
-Zadania uruchamiania to akcje, które są wykonywane przed role rozpoczynać się i są definiowane w [ServiceDefinition.csdef] plików przy użyciu [Zadanie podrzędne] elemencie [Uruchamianie] element. Często zadania uruchamiania to pliki wsadowe, ale można je również aplikacje konsoli lub pliki wsadowe, uruchamianych skryptów programu PowerShell.
+Zadania uruchamiania to akcje, które są wykonywane przed role rozpoczynać się i są definiowane w [ServiceDefinition.csdef] plików przy użyciu [Zadanie] elemencie [Uruchamianie] element. Często zadania uruchamiania to pliki wsadowe, ale można je również aplikacje konsoli lub pliki wsadowe, uruchamianych skryptów programu PowerShell.
 
 Zmienne środowiskowe przekazywania informacji do zadania uruchamiania, a Magazyn lokalny może służyć do przekazywania informacji z zadania uruchamiania. Na przykład zmiennej środowiskowej, można określić ścieżkę do programu, który chcesz zainstalować, a następnie można zapisywać pliki w magazynie lokalnym, który może następnie zostać odczytany później przez role.
 
@@ -161,7 +161,7 @@ Dowiedz się, jak wykonywać niektóre [popularne zadania uruchamiania](cloud-se
 [Pakiet](cloud-services-model-and-package.md) usługi w chmurze.  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Zadanie podrzędne]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Zadanie]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Uruchamianie]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Środowisko uruchomieniowe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Środowisko]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment

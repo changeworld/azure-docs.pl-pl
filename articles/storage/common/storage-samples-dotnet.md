@@ -10,10 +10,10 @@ ms.date: 05/03/2019
 ms.author: mhopkins
 ms.subservice: common
 ms.openlocfilehash: df7c14f1ee83015303657f9a0babde3d60c92292
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209685"
 ---
 # <a name="azure-storage-samples-using-net"></a>Przykłady usługi Azure Storage przy użyciu platformy .NET
@@ -25,11 +25,11 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Endpoint</th><th style="font-size:110%">Scenariusz</th><th style="font-size:110%">Przykładowy kod</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Obiekt blob</b></td>
-<td>Dołącz obiekt blob</td> 
+<td>Obiekt Blob dołączania</td> 
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144">Wprowadzenie do obiektów blob</a></td> 
 </tr> 
 <tr> 
-<td>Blokowy obiekt blob</td>
+<td>Blokowe obiekty Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Aplikacja sieci Web galerii fotografii systemu Azure Blob Storage</a></td>
 </tr> 
 <tr> 
@@ -73,7 +73,7 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Wprowadzenie do obiektów blob</a></td>
 </tr> 
 <tr> 
-<td>Stronicowy obiekt blob</td>
+<td>Obiekt blob typu Page</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Wprowadzenie do obiektów blob</a></td>
 </tr>
 <tr> 
@@ -160,7 +160,7 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 </tr> 
 <tr> 
 <td rowspan="7"><b>Tabela</b></td>
-<td>Utwórz tabelę</td> 
+<td>Tworzenie tabeli</td> 
 <td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Zarządzanie współbieżnością za pomocą usługi Azure Storage — Przykładowa aplikacja</a></td> 
 </tr> 
 <tr> 

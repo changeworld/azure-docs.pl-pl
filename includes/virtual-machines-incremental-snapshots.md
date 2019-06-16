@@ -9,14 +9,14 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111410"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Tworzenie kopii zapasowej Azure niezarządzanych dysków maszyn wirtualnych przy użyciu migawek przyrostowych
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługa Azure Storage zapewnia możliwość robienia migawek obiektów blob. Migawki przechwytują stan obiektu blob w danym momencie. W tym artykule opisano scenariusz, w którym można zachować kopii zapasowych dysków maszyny wirtualnej przy użyciu migawek. Możesz użyć tej metody, możesz zrezygnować z używania usługi Azure Backup i Recovery Service, gdy chcesz utworzyć niestandardowe strategii tworzenia kopii zapasowych dysków maszyny wirtualnej.
 
 Dyski maszyny wirtualnej platformy Azure są przechowywane jako stronicowe obiekty BLOB w usłudze Azure Storage. Ponieważ firma Microsoft zawierająca opis strategii tworzenia kopii zapasowej dla dysków maszyny wirtualnej, w tym artykule nazywamy migawki w kontekście stronicowych obiektów blob. Aby dowiedzieć się więcej na temat migawek, zobacz [Tworzenie migawki obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).

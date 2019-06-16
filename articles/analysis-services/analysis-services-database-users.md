@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61023635"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie rolami bazy danych i użytkowników
@@ -134,7 +134,7 @@ Filtry wierszy definiują, które wiersze w tabeli mogą być przeszukiwane prze
   
 Można zdefiniować filtry wierszy tylko do odczytu i odczytu ról i uprawnień procesu. Domyślnie jeśli Filtr wierszy nie jest zdefiniowany dla konkretnej tabeli elementy członkowskie można badać wszystkie wiersze w tabeli, chyba że filtrowanie krzyżowe stosuje z innej tabeli.
   
- Filtry wierszy wymagają formuły języka DAX musi zwrócić wartość PRAWDA/FAŁSZ do definiowania wierszy, które mogą być przeszukiwane przez członków tej określonej roli. Nie można zbadać wierszy nie jest uwzględniona w formule języka DAX. Na przykład tabeli Klienci z następującym wierszem filtry wyrażenie *= klienci [Kraj] = "USA"*, członkowie roli Sprzedaż może zobaczyć tylko klientom w Stanach Zjednoczonych.  
+ Filtry wierszy wymagają formuły języka DAX musi zwrócić wartość PRAWDA/FAŁSZ do definiowania wierszy, które mogą być przeszukiwane przez członków tej określonej roli. Nie można zbadać wierszy nie jest uwzględniona w formule języka DAX. Na przykład tabeli Klienci z następującym wierszem filtry wyrażenie *= klienci [Kraj] = "USA"* , członkowie roli Sprzedaż może zobaczyć tylko klientom w Stanach Zjednoczonych.  
   
 Filtry wierszy mają zastosowanie do określonych wierszy i powiązane wiersze. Jeśli tabela ma wiele relacji, filtry są stosowane zabezpieczenia dla relacji, który jest aktywny. Filtry wierszy są zakończone z innych filtrach wiersza zdefiniowane dla powiązanych tabel, na przykład:  
   
@@ -146,7 +146,7 @@ Filtry wierszy mają zastosowanie do określonych wierszy i powiązane wiersze. 
   
  Efektem sieciowym jest, że członkowie mogą wysyłać zapytania wiersze danych, w którym klient ma miejsce w USA, Kategoria produktu jest rowerów i rok jest 2016. Użytkownicy nie mogą badać transakcji poza USA, transakcje, które nie rowerów lub transakcje nie są w 2016, chyba że należą one do innej roli, która udziela te uprawnienia.
   
- Można użyć filtru, *=FALSE()*, aby odmówić dostępu do wszystkich wierszy dla całej tabeli.
+ Można użyć filtru, *=FALSE()* , aby odmówić dostępu do wszystkich wierszy dla całej tabeli.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

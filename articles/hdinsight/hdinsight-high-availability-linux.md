@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704925"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w HDInsight
@@ -33,7 +33,7 @@ Węzły w klastrze usługi HDInsight są implementowane za pomocą usługi Azure
 
 Aby zapewnić wysoką dostępność usług Hadoop, HDInsight udostępnia dwa węzły główne. Zarówno węzły główne są jednocześnie aktywności i działania w ramach klastra HDInsight. Niektórych usług, takich jak Apache system plików HDFS lub Apache Hadoop YARN, są aktywne, w jednym węźle głównym tylko w danym momencie. Innych usług, takich jak usługi HiveServer2 lub Hive magazynu metadanych są aktywne na obu węzłów głównych w tym samym czasie.
 
-Węzły główne (i innych węzłów w HDInsight) ma wartość numeryczną jako część nazwy hosta węzła. Na przykład: `hn0-CLUSTERNAME` lub `hn4-CLUSTERNAME`.
+Węzły główne (i innych węzłów w HDInsight) ma wartość numeryczną jako część nazwy hosta węzła. Na przykład `hn0-CLUSTERNAME` lub `hn4-CLUSTERNAME`.
 
 > [!IMPORTANT]  
 > Nie należy kojarzyć wartość liczbową z tego, czy węzeł jest podstawowy lub pomocniczy. Wartość liczbowa tylko jest obecna, aby podać unikatową nazwę dla każdego węzła.

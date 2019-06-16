@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 1cbf1514ac5eba4e288ecb78944878217fc5ba3e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954522"
 ---
 # <a name="basic-concepts"></a>Podstawowe pojęcia
@@ -162,7 +162,7 @@ Odpowiedzi transkrypcji Zwróć tekst skonwertowany audio do klientów. Tekst od
 
 | Stan | Opis |
 | ------------- | ---------------- |
-| Sukces | Rozpoznawanie zakończyło się pomyślnie i pola Wyświetlany_tekst jest obecny |
+| Powodzenie | Rozpoznawanie zakończyło się pomyślnie i pola Wyświetlany_tekst jest obecny |
 | NoMatch | Wykryto mowy strumienia audio, ale bez wyrazów z języka docelowego zostały dopasowane. Zobacz temat [NoMatch rozpoznawania Status(#nomatch-recognition-status) Aby uzyskać więcej informacji  |
 | InitialSilenceTimeout | Początek strumienia audio zawiera tylko wyciszenia, a usługa upłynął limit czasu oczekiwania podczas rozpoznawania mowy |
 | BabbleTimeout | Początek strumienia audio zawiera tylko hałasu i usługi, upłynął limit czasu oczekiwania podczas rozpoznawania mowy |
@@ -184,7 +184,7 @@ Zwraca odpowiedź transkrypcji `NoMatch` w `RecognitionStatus` podczas rozpoznaw
 
 Inny *NoMatch* stan występuje, gdy Algorytm rozpoznawania nie będzie mógł znalezione dokładne dopasowanie dźwięków zawarte w strumienia audio. Gdy ten stan występuje, może generować mowy usługi Microsoft *speech.hypothesis* komunikaty zawierające *średnich hipotetycznych. tekst* , ale będzie *speech.phrase*wiadomości, w którym *RecognitionStatus* jest *NoMatch*. Ten warunek występuje, normal; nie należy czynić żadnych założeń o dokładności lub wierności tekstu w *speech.hypothesis* wiadomości. Ponadto, użytkownik musi nie przyjęto założenie, że ponieważ Microsoft Speech Service daje *speech.hypothesis* wiadomości, które usługa jest możliwość generowania *speech.phrase* komunikatu o  *RecognitionStatus* *Powodzenie*.
 
-## <a name="output-format"></a>Format wyjściowy
+## <a name="output-format"></a>Format danych wyjściowych
 
 Usługa Microsoft Speech Service może zwracać różne formaty ładunków w odpowiedziach transkrypcji. Wszystkich ładunków są strukturami JSON.
 

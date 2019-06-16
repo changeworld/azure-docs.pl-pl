@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61462007"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Przenoszenie danych z PostgreSQL za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-onprem-postgresql-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-postgresql.md)
 
@@ -76,10 +76,10 @@ Poniższa tabela zawiera opis specyficzne dla usługi PostgreSQL, połączone el
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **OnPremisesPostgreSql** |Yes |
 | server |Nazwa serwera PostgreSQL. |Yes |
-| database |Nazwa bazy danych PostgreSQL. |Yes |
+| baza danych |Nazwa bazy danych PostgreSQL. |Yes |
 | schema |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
+| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych postgresql w warstwie lokalnej. |Yes |
 
@@ -336,7 +336,7 @@ Podczas przenoszenia danych postgresql w warstwie, następujące mapowania są u
 | money | |Decimal |
 | numeryczne [(p, s)] |decimal [(p, s)] |Decimal |
 | numrange | |String |
-| Identyfikator OID | |Int32 |
+| oid | |Int32 |
 | ścieżka | |Byte [] ciąg |
 | pg_lsn | |Int64 |
 | punkt | |Byte [] ciąg |

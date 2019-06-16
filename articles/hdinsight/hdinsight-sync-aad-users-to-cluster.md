@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64688546"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizowanie użytkowników usługi Azure Active Directory z klastrem usługi HDInsight
@@ -47,7 +47,7 @@ Następującą metodę używa WPIS, za pomocą interfejsu API REST Ambari. Aby u
 
 1. [Połącz z klastrem przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md). W okienku Przegląd klastra w witrynie Azure portal wybierz **Secure Shell (SSH)** przycisku.
 
-    ![Bezpieczna powłoka (SSH)](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
 
 2. Skopiuj wyświetlonych `ssh` polecenie i wklej go do klienta SSH. Wprowadź ssh hasło użytkownika po wyświetleniu monitu.
 
@@ -127,7 +127,7 @@ Następującą metodę używa WPIS, za pomocą interfejsu API REST Ambari. Aby u
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Sprawdź nowo dodanych użytkowników usługi Azure AD
 
-Otwórz [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) do sprawdzenia, czy nowy użytkownik usługi Azure AD został dodany. Dostęp do Interfejsu sieci Web Ambari, przechodząc do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Wprowadź nazwę użytkownika administratora klastra i hasło.
+Otwórz [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) do sprawdzenia, czy nowy użytkownik usługi Azure AD został dodany. Dostęp do Interfejsu sieci Web Ambari, przechodząc do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** . Wprowadź nazwę użytkownika administratora klastra i hasło.
 
 1. Na pulpicie nawigacyjnym Ambari wybierz **Zarządzanie Ambari** w obszarze **administratora** menu.
 

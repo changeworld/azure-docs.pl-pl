@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60735526"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Łączenie urządzeń IoT na platformie Azure: Usługa IoT Hub i Event Hubs
@@ -29,16 +29,16 @@ Poniższa tabela zawiera szczegółowe informacje o jak dwie warstwy usługi IoT
 
 | Możliwości IoT | W warstwie standardowa usługi IoT Hub | Warstwa podstawowa usługi IoT Hub | Event Hubs |
 | --- | --- | --- | --- |
-| Komunikaty z urządzenia do chmury | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |
-| Protokoły: Protokół HTTPS, AMQP, AMQP, przez protokół webSockets | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |
-| Protokoły: MQTT, MQTT przez protokół webSockets | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |  |
-| Tożsamość na urządzenie | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |  |
-| Przekazywanie plików z urządzeń | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |  |
-| Usługa Device Provisioning | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |  |
-| Obsługa komunikatów między chmurą a urządzeniem | ![Zaznacz][checkmark] |  |  |
-| Bliźniacza reprezentacja urządzenia i zarządzania urządzeniami | ![Zaznacz][checkmark] |  |  |
-| Strumienie urządzenia (wersja zapoznawcza) | ![Zaznacz][checkmark] |  |  |
-| IoT Edge | ![Zaznacz][checkmark] |  |  |
+| Komunikaty z urządzenia do chmury | ![Sprawdź][checkmark] | ![Sprawdź][checkmark] | ![Sprawdź][checkmark] |
+| Protokoły: Protokół HTTPS, AMQP, AMQP, przez protokół webSockets | ![Sprawdź][checkmark] | ![Sprawdź][checkmark] | ![Sprawdź][checkmark] |
+| Protokoły: MQTT, MQTT przez protokół webSockets | ![Sprawdź][checkmark] | ![Sprawdź][checkmark] |  |
+| Tożsamość na urządzenie | ![Sprawdź][checkmark] | ![Sprawdź][checkmark] |  |
+| Przekazywanie plików z urządzeń | ![Sprawdź][checkmark] | ![Sprawdź][checkmark] |  |
+| Usługa Device Provisioning | ![Sprawdź][checkmark] | ![Sprawdź][checkmark] |  |
+| Obsługa komunikatów między chmurą a urządzeniem | ![Sprawdź][checkmark] |  |  |
+| Bliźniacza reprezentacja urządzenia i zarządzania urządzeniami | ![Sprawdź][checkmark] |  |  |
+| Strumienie urządzenia (wersja zapoznawcza) | ![Sprawdź][checkmark] |  |  |
+| IoT Edge | ![Sprawdź][checkmark] |  |  |
 
 Nawet jeśli tylko przypadek użycia jest pozyskiwanie danych urządzenia do chmury, zdecydowanie zaleca się za pomocą usługi IoT Hub, ponieważ umożliwia to usługa, która jest przeznaczona dla łączności między urządzeniami IoT. 
 

@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0eb3e52dfd02bd7948f1b5ffd908ac1255118008
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65782916"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Utwórz skrypt instalacji nienadzorowanej dla łącznika serwera Proxy aplikacji usługi Azure AD
@@ -53,7 +53,7 @@ Istnieją dwie metody, których można użyć do zarejestrowania łącznika:
 * Rejestrowanie łącznika przy użyciu tokenu, który został utworzony w trybie offline
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Rejestrowanie łącznika przy użyciu obiektu poświadczeń programu Windows PowerShell
-1. Utwórz obiekt poświadczeń PowerShell Windows `$cred` zawiera administracyjnej nazwy użytkownika i hasła dla katalogu. Uruchom następujące polecenie, zastępując *\<username\>* i  *\<hasło\>*:
+1. Utwórz obiekt poświadczeń PowerShell Windows `$cred` zawiera administracyjnej nazwy użytkownika i hasła dla katalogu. Uruchom następujące polecenie, zastępując *\<username\>* i  *\<hasło\>* :
    
         $User = "<username>"
         $PlainPassword = '<password>'

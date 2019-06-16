@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4eb881992b7e40e0a9d67bd2cee94f1f09958e9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60825984"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
@@ -128,7 +128,7 @@ W tym kroku użyjesz witryny Azure portal, aby utworzyć wystąpienie usługi Az
    * **Zarejestruj** bramy za pomocą klucza w witrynie Azure portal, korzystając z przycisku Zarejestruj.
    * **Zatrzymaj** usługę hosta bramy zarządzania danymi uruchomiona na maszynie bramy.
    * **Zaplanuj aktualizacje** do zainstalowania w określonym czasie dnia.
-   * Wyświetl podczas bramy **Ostatnia aktualizacja:**.
+   * Wyświetl podczas bramy **Ostatnia aktualizacja:** .
    * Określ czas, w którym można zainstalować aktualizacji bramy.
 8. Przejdź do karty **Ustawienia**. Certyfikatu podanego w **certyfikatu** sekcja jest używana do szyfrowania/odszyfrowywania poświadczeń dla magazynu danych w środowisku lokalnym, który określisz w portalu. (opcjonalnie) Kliknij przycisk **zmiany** zamiast tego użyć własnego certyfikatu. Domyślnie brama używa certyfikatu, który został wygenerowany automatycznie przez usługę Data Factory.
 

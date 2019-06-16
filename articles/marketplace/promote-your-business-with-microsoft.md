@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
 ms.openlocfilehash: f21c5f94c595fe3718a0a59a80deff8f1c53b9fc
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937647"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Wypromuj swoją firmę z firmą Microsoft 
@@ -29,7 +29,7 @@ W poniższych tematach znajdują się wskazówki MPN.
 
 Aby promować oferty sieci Web lub aplikacji, skorzystaj z poniższej tabeli, dostęp do więcej korzyści i zasobów. 
 
-| Korzyści | zasoby |  
+| Korzyści | Zasoby |  
 |:--- |:--- |  
 | Zrealizujcie swoje korzyści Core | W ramach programu Microsoft Partner Network zyskujesz zestaw podstawowych korzyści, które mogą pomóc Ci zaoszczędzić czas i pieniądze. Korzyści może również ułatwić zwiększanie możliwości, lepiej obsługiwać klientów i tworzyć relacje, aby dotrzeć do firmy.<ul> <li>Aby uzyskać więcej informacji na temat głównych korzyści, odwiedź stronę głównych korzyści i stronę wymagań znajduje się w [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
 | Zdobądź również z kompetencją Cloud Platform | Zarabiać kompetencją pomaga odróżnić samodzielnie między innymi partnerami firmy Microsoft. Zarabiać kompetencją pomaga też prezentację wiedzy technicznej i sukces klientów na rynku. Kompetencja jest wymaganiem wstępnym dla wielu programów kluczowy partner, takich jak wspólnej sprzedaży.<ul> <li>Aby uzyskać więcej informacji na temat kompetencję Cloud Platform odwiedź stronę kompetencji Cloud Platform strony znajduje się w [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  

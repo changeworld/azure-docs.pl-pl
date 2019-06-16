@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
 ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60523282"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Przewodnik: Włączanie Telemetrii dla usługi Microsoft Dynamics CRM Online przy użyciu usługi Application Insights
@@ -133,6 +133,6 @@ Możesz wykonać nawet dokładniejszej analizy, gdy użytkownik [dane są ekspor
 [Poniżej przedstawiono przykładowe rozwiązanie zaimplementowany w Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-* [Co to jest Application Insights?](../../azure-monitor/app/app-insights-overview.md)
+* [Co to jest usługa Application Insights?](../../azure-monitor/app/app-insights-overview.md)
 * [Usługa Application Insights dla stron sieci web](../../azure-monitor/app/javascript.md)
 * [Więcej przykładów i przewodniki](../../azure-monitor/app/app-insights-overview.md)

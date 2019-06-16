@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60882201"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Ponowna konfiguracja w usłudze Azure Service Fabric
 A *konfiguracji* jest zdefiniowany jako repliki i ich ról dla partycji usługi stanowej.
 
-A *ponownej konfiguracji* to proces przenoszenia jednej konfiguracji do innej konfiguracji. Wprowadza zmiany do zestawu replik dla partycji usługi stanowej. Starej konfiguracji jest nazywany *poprzedniej konfiguracji (PC)*, a nowa konfiguracja jest nazywana *bieżącej konfiguracji (DW)*. Protokół ponownej konfiguracji w usłudze Azure Service Fabric zachowuje spójności i utrzymuje dostępności podczas zmiany do zestawu replik.
+A *ponownej konfiguracji* to proces przenoszenia jednej konfiguracji do innej konfiguracji. Wprowadza zmiany do zestawu replik dla partycji usługi stanowej. Starej konfiguracji jest nazywany *poprzedniej konfiguracji (PC)* , a nowa konfiguracja jest nazywana *bieżącej konfiguracji (DW)* . Protokół ponownej konfiguracji w usłudze Azure Service Fabric zachowuje spójności i utrzymuje dostępności podczas zmiany do zestawu replik.
 
 Menedżer trybu failover inicjuje reconfigurations w odpowiedzi na różne zdarzenia w systemie. Na przykład jeśli podstawowy nie powiedzie się następnie ponownej konfiguracji przez jest inicjowane podwyższenie poziomu aktywnej pomocniczej do podstawowego. Innym przykładem jest w odpowiedzi na uaktualnień aplikacji, gdy może być konieczne przeniesienie podstawowego do innego węzła w celu uaktualniania węzła.
 

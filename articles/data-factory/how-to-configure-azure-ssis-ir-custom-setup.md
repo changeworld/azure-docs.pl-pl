@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711558"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska Azure-SSIS integration Runtime
@@ -122,7 +122,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
 1. Aby zobaczyć inne przykłady Instalacja niestandardowa, należy połączyć się z kontenerem publicznej wersji zapoznawczej, za pomocą Eksploratora usługi Azure Storage.
 
-   a.  W obszarze **(lokalne i dołączone)**, kliknij prawym przyciskiem myszy **kont magazynu**, wybierz opcję **łączenie z usługą Azure storage**, wybierz opcję **za pomocą parametrów połączenia lub dostępu współdzielonego identyfikatora URI sygnatury**, a następnie wybierz pozycję **dalej**.
+   a.  W obszarze **(lokalne i dołączone)** , kliknij prawym przyciskiem myszy **kont magazynu**, wybierz opcję **łączenie z usługą Azure storage**, wybierz opcję **za pomocą parametrów połączenia lub dostępu współdzielonego identyfikatora URI sygnatury**, a następnie wybierz pozycję **dalej**.
 
       ![Łączenie się z magazynem platformy Azure przy użyciu sygnatura dostępu współdzielonego](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 

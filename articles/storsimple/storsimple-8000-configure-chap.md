@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60362857"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurowanie protokołu CHAP dla urządzenia StorSimple
@@ -59,7 +59,7 @@ W przypadku uwierzytelniania jednokierunkowe inicjator jest uwierzytelniany elem
    3. Potwierdź hasło.
 
        ![Inicjator protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat potwierdzenia. Kliknij przycisk **OK**, aby zapisać zmiany.
+3. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat potwierdzenia. Kliknij przycisk **OK** , aby zapisać zmiany.
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Aby skonfigurować jednokierunkowe uwierzytelnianie na serwerze hosta Windows
 1. Uruchom inicjator iSCSI na serwerze hosta Windows.
@@ -72,7 +72,7 @@ W przypadku uwierzytelniania jednokierunkowe inicjator jest uwierzytelniany elem
 3. W **odnajdowanie portalu obiektu docelowego** okno dialogowe:
    
    1. Określ adres IP urządzenia.
-   2. Kliknij pozycję **Advanced** (Zaawansowane).
+   2. Kliknij przycisk **zaawansowane**.
       
        ![Odnajdowanie portalu obiektu docelowego](./media/storsimple-configure-chap/IC740945.png)
 4. W **Zaawansowane ustawienia** okno dialogowe:
@@ -113,7 +113,7 @@ W przypadku uwierzytelniania dwukierunkowe inicjator jest uwierzytelniany elemen
    3. Potwierdź hasło.
 
        ![Inicjator protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat potwierdzenia. Kliknij przycisk **OK**, aby zapisać zmiany.
+4. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat potwierdzenia. Kliknij przycisk **OK** , aby zapisać zmiany.
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Aby skonfigurować uwierzytelnianie dwukierunkowe na serwerze hosta Windows
 

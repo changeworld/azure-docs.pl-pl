@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60952387"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Monitorowanie wydajności za pomocą dzienników usługi Azure Monitor
@@ -76,7 +76,7 @@ Możesz pobrać i zmodyfikować ten szablon służy do wdrażania klastra, któr
 
 Teraz, że dodano agenta usługi Log Analytics, head w tryb failover do portalu usługi Log Analytics, aby wybrać, liczniki wydajności, które chcesz zbierać.
 
-1. W witrynie Azure portal przejdź do grupy zasobów, w którym utworzono rozwiązania analiza usługi Service Fabric. Wybierz **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
+1. W witrynie Azure portal przejdź do grupy zasobów, w którym utworzono rozwiązania analiza usługi Service Fabric. Wybierz **ServiceFabric\<nameOfLog AnalyticsWorkspace\>** .
 
 2. Kliknij pozycję **Log Analytics**.
 

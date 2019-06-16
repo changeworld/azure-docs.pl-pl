@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: e290feb278a1cddf1cfecfcb66458d8290ec122a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943591"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostępne regiony dla usługi StorSimple
@@ -78,11 +78,11 @@ Jeśli używasz StorSimple 8100 lub 8600 urządzenie fizyczne, urządzenie jest 
 | 7  | Chile                 | 22 | Izrael             | 37 | Portugalia            | 52 | Tajwan                     |
 | 8  | Kolumbia              | 23 | Włochy              | 38 | Portoryko         | 53 | Tajlandia                   |
 | 9  | Czechy        | 24 | Japonia              | 39 | Katar               | 54 | Turcja                     |
-| 10 | Dania               | 25 | Kenia              | 40 | Rumunia             | 55 | Ukraina                    |
+| 10 | Dania               | 25 | Kenya              | 40 | Rumunia             | 55 | Ukraina                    |
 | 11 | Egipt                 | 26 | Kuwejt             | 41 | Rosja              | 56 | Zjednoczone Emiraty Arabskie       |
 | 12 | Finlandia               | 27 | SRA Makau          | 42 | Arabia Saudyjska        | 57 | Zjednoczone Królestwo             |
 | 13 | Francja                | 28 | Malezja           | 43 | Singapur           | 58 | Stany Zjednoczone              |
-| 14 | Niemcy               | 29 | Meksyk             | 44 | Słowacja            | 59 | Wietnam                    |
+| 14 | Niemcy               | 29 | Meksyk             | 44 | Słowacja            | 59 | Vietnam                    |
 | 15 | Grecja                | 30 | Holandia        | 45 | Słowenia            | 60 | Chorwacja                    |
 
 Ta lista zmienia się po dodaniu więcej krajów/regionów. Aby uzyskać najbardziej aktualną listę obszarów geograficznych, przejdź do dodatku warunki tablicy magazynu w [postanowieniach dotyczących produktu](https://www.microsoft.com/en-us/licensing/product-licensing/products).

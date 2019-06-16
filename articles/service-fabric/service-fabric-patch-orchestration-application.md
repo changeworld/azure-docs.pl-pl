@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
 ms.openlocfilehash: ccc0399b6ac886ec8d9ef7d207c3539f1d078070
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951932"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
@@ -150,7 +150,7 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 |**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
 |MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji Windows, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
-|TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
+|TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
 |LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
 | WUQuery               | string<br>(Domyślnie: "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji i Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Boolean <br> (domyślna: false)                 | Użyj tej flagi do kontroli, które aktualizacje powinny zostać pobrana i zainstalowana. Następujące wartości są dozwolone. <br>wartość true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>FALSE — instaluje wszystkie dostępne aktualizacje na komputerze.          |
@@ -293,7 +293,7 @@ Tworzy NodeAgentNTService [naprawy zadania](https://docs.microsoft.com/dotnet/ap
 
    Jeśli jest nadal można znaleźć następnie, zaloguj się do określonej maszyny Wirtualnej lub maszyny wirtualne, aby dowiedzieć się więcej na temat problemu przy użyciu dzienników zdarzeń Windows. Powyżej opisane zadania naprawy może mieć tylko te przetwarzania podstany:
 
-      ExecutorSubState | Szczegół
+      ExecutorSubState | Szczegóły
     -- | -- 
       Brak = 1 |  Wskazuje, czy nie było trwającą operację na węźle. Możliwe stany przejścia.
       DownloadCompleted=2 | Zakłada się, operacja pobierania została zakończona sukcesem częściowe niepowodzenie lub błąd.

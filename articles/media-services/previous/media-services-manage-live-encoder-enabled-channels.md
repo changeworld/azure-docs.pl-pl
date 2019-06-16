@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako;anilmur
 ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217267"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
@@ -258,7 +258,7 @@ Koder na żywo można skonfigurować tak, aby przejść do obrazu planszy i Ukry
 ### <a name="duration"></a>Czas trwania
 Czas trwania tablecie, w ciągu kilku sekund. Musi to być różna od zera dodatnia, aby uruchomić plansz. Jeśli istnieje plansz w toku, a czas trwania zero jest określony, że plansz w toku zostanie zakończona.
 
-### <a name="insert-slate-on-ad-marker"></a>Wstaw planszę w miejscu znacznika reklamy
+### <a name="insert-slate-on-ad-marker"></a>Wstaw planszę w znacznika reklamy miejscu
 Gdy wartość true, to ustawienie służy do konfigurowania koder na żywo, aby wstawić obrazu planszy podczas przerwy ad. Wartość domyślna to true. 
 
 ### <a id="default_slate"></a>Identyfikator elementu zawartości planszy domyślne
@@ -348,7 +348,7 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 [Dostarczanie wydarzeń transmisji strumieniowej na żywo, za pomocą usługi Azure Media Services](media-services-overview.md)
 
 [Tworzenie kanałów wykonujących kodowanie na żywo z wystąpieniu szybkości transmisji bitów do strumienia o adaptacyjnej szybkości transmisji bitów przy użyciu portalu](media-services-portal-creating-live-encoder-enabled-channel.md)

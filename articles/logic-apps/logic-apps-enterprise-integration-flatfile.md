@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
 ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61467313"
 ---
 # <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Kodowania i dekodowania plików prostych przy użyciu usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
@@ -43,7 +43,7 @@ Wykonaj następujące kroki, aby dodać plik prosty kodowanie łącznika aplikac
    ![Zrzut ekranu przedstawiający tagu treści](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
 1. Wybierz **Nazwa schematu** pola listy, a następnie wybierz schemat, którego chcesz użyć, aby zakodować zawartość danych wejściowych.    
    ![Pole listy zrzucie ekranu Nazwa schematu](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
-1. Zapisz pracę.   
+1. Zapisz swoją pracę.   
    ![Ikona Zapisz zrzut ekranu](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
 W tym momencie po zakończeniu konfigurowania łącznika kodowania pliku prostego. W przypadku aplikacji rzeczywistych można przechowywać dane zakodowane w aplikacji line-of-business, takich jak usługa Salesforce. Lub możesz wysłać, czy dane zakodowane do obrotu partnera. Można łatwo dodać akcję wysłania do usługi Salesforce lub z partnerem handlowym danych wyjściowych kodowania akcji przy użyciu dowolnego z łączników, pod warunkiem.
@@ -72,7 +72,7 @@ Teraz możesz przetestować łącznika zgłaszającą żądanie do punktu końco
 1. Wybierz nazwę schematu, który chcesz użyć do dekodowania zawartości. Poniższy zrzut ekranu pokazuje, że *OrderFile* jest nazwą wybranego schematu. Ta nazwa schematu miał wcześniej przekazane na koncie integracji.
    
    ![Zrzut ekranu z prostego dekodowanie pliku okno dialogowe](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
-1. Zapisz pracę.  
+1. Zapisz swoją pracę.  
    ![Ikona Zapisz zrzut ekranu](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
 W tym momencie po zakończeniu konfigurowania Twojego pliku prostego dekodowanie łącznika. W przypadku aplikacji rzeczywistych można przechowywać dekodowane dane w aplikacji line-of-business, takich jak usługa Salesforce. Możesz łatwo dodać akcję, aby wysłać dane wyjściowe akcji dekodowania do usługi Salesforce.

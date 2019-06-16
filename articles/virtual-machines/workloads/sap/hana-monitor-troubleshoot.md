@@ -15,10 +15,10 @@ ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 15b3fb4ae483e5b0e4f930d0dc08de6d198d0e5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61128971"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Monitorowanie i rozwiązywanie problemów ze strony oprogramowania HANA
@@ -94,10 +94,10 @@ Zapoznaj się [SAP HANA rozwiązywania problemów: Problemy z pamięcią](https:
 Zapoznaj się [2081065 # Uwaga SAP — Rozwiązywanie problemów z sieci programu SAP HANA](https://launchpad.support.sap.com/#/notes/2081065) i wykonać rozwiązywania problemów w ta uwaga SAP sieciowych.
 
 1. Analizowanie czas obustronnej konwersji między serwerem a klientem.
-  A. Uruchom skrypt SQL [ _HANA\_sieci\_klientów_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. Uruchom skrypt SQL [ _HANA\_sieci\_klientów_](https://launchpad.support.sap.com/#/notes/1969700) _._
   
 2. Analizuj komunikacji między węzłami.
-  A. Uruchom skrypt SQL [ _HANA\_sieci\_usług_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. Uruchom skrypt SQL [ _HANA\_sieci\_usług_](https://launchpad.support.sap.com/#/notes/1969700) _._
 
 3. Uruchom polecenie Linux **ifconfig** (dane wyjściowe pokazują, jeśli występują jakiekolwiek straty pakietów).
 4. Uruchom polecenie Linux **tcpdump**.

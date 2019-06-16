@@ -15,10 +15,10 @@ ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: bb23cbc275e01eab5361504c547c020b0a29f4c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60532976"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal
@@ -69,7 +69,7 @@ Pierwszą rzeczą, jaką należy zdecydować, to miejsce otworzyć blok sterowan
 
 1. Kliknij konkretny rodzaj zasobu.
 
-1. Kliknij pozycję **Kontrola dostępu (IAM)**.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 
     Poniżej przedstawiono przykład bloku sterowania (IAM) dostępu do subskrypcji. Jeśli wprowadzisz zmiany kontroli dostępu w tym miejscu, czy dotyczą całej subskrypcji.
 
@@ -127,7 +127,7 @@ Wykonaj następujące kroki, aby wyświetlić dostęp dla pojedynczego użytkown
 
    Na karcie przypisania roli można zobaczyć, kto ma dostęp w tym zakresie. Należy zauważyć, że niektóre role należą do zakresu **tego zasobu**, a inne są **dziedziczone** z innego zakresu. Dostęp jest przypisywany specjalnie do tego zasobu albo dziedziczony z przypisania do zakresu nadrzędnego.
 
-## <a name="add-a-role-assignment"></a>Dodawanie przypisania roli
+## <a name="add-a-role-assignment"></a>Dodaj przypisanie roli
 
 W funkcji RBAC Aby udzielić dostępu, możesz przypisać rolę do użytkownika, grupy, jednostkę usługi lub tożsamość zarządzaną. Wykonaj następujące kroki, aby udzielić dostępu w różnych zakresach.
 
@@ -161,7 +161,7 @@ Aby użytkownik jest administratorem subskrypcji platformy Azure, należy przypi
 
 1. Kliknij subskrypcję, w którym chcesz udzielić dostępu.
 
-1. Kliknij pozycję **Kontrola dostępu (IAM)**.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 
 1. Kliknij przycisk **przypisań ról** kartę, aby wyświetlić wszystkie przypisania roli dla tej subskrypcji.
 

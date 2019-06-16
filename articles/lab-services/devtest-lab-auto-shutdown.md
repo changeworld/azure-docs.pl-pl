@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9adf8dd4a5a3c469ed130b29308a0d828aee40bf
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873993"
 ---
 # <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Zarządzanie zasadami autoshutdown laboratorium Azure DevTest Labs
@@ -102,7 +102,7 @@ Aby rozpocząć pracę, należy utworzyć aplikację logiki w ramach subskrypcji
         ![Nowej aplikacji logiki — ustawienia](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
 3. W **powiadomienia**, wybierz opcję **przejdź do zasobu** powiadomienie. 
 
-    ![Przejdź do zasobu](./media/devtest-lab-auto-shutdown/go-to-resource.png)
+    ![Przechodzenie do zasobu](./media/devtest-lab-auto-shutdown/go-to-resource.png)
 4. Wybierz **Projektant aplikacji logiki** w obszarze **narzędzia wdrażania** kategorii.
 
     ![Zaznacz żądania/odpowiedzi HTTP](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)

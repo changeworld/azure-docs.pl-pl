@@ -17,10 +17,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
 ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098120"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Tworzenie sieci wirtualnej (klasycznej) z wieloma podsieciami
@@ -39,7 +39,7 @@ Można utworzyć sieci wirtualnej (model klasyczny) przy użyciu [witryny Azure 
 
 ## <a name="portal"></a>Portal
 
-1. W przeglądarce internetowej przejdź do [witryny Azure portal](https://portal.azure.com). Zaloguj się przy użyciu usługi [konta platformy Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Jeśli nie masz konta platformy Azure, możesz skorzystać z [bezpłatnej wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p).
+1. W przeglądarce internetowej przejdź do [witryny Azure portal](https://portal.azure.com). Zaloguj się przy użyciu usługi [konta platformy Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Jeśli nie masz konta platformy Azure, możesz zarejestrować się w celu [bezpłatna wersja próbna](https://azure.microsoft.com/offers/ms-azr-0044p).
 2. Kliknij przycisk **Utwórz zasób** w portalu.
 3. Wprowadź *sieć wirtualna* w **Przeszukaj witrynę Marketplace** polu w górnej części **New** wyświetlonym okienku. Kliknij przycisk **sieć wirtualna** , gdy pojawia się w wynikach wyszukiwania.
 4. Wybierz **klasycznego** w **wybierz model wdrożenia** pole w **sieci wirtualnej** okienko zostanie wyświetlone, następnie kliknij przycisk **Utwórz**. 

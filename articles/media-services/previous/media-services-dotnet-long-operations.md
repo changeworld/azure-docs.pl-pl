@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 752c502268ef53d3c0575d92e75ce6a965fccd9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61464984"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Dostarczanie transmisja strumieniowa na żywo za pomocą usługi Azure Media Services
@@ -30,7 +30,7 @@ Microsoft Azure Media Services oferuje interfejsy API, które wysyłają żądan
 Zestawu SDK .NET usługi Media Services udostępnia interfejsy API, który wysłać żądanie i poczekaj na zakończenie operacji (wewnętrznie, interfejsy API są sondowanie postęp operacji niektóre odstępach). Na przykład gdy wywołujesz kanału. Start(), metoda zwraca po uruchomieniu kanału. Można również użyć asynchroniczna wersja: await kanału. StartAsync() (Aby uzyskać informacji na temat wzorca asynchronicznego opartego na zadaniach, zobacz [NACIŚNIJ](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Interfejsy API, Wyślij żądanie operacji, a następnie wykonać sondowanie stanu, aż do zakończenia operacji, które są nazywane "sondowania metody". Te metody (szczególnie wersję Async) są zalecane w przypadku zaawansowanych aplikacji klienckich i/lub usług stanowych.
 
 Istnieją scenariusze, w których aplikacja nie może czekać na długo działające żądanie http i chce, aby sondować postęp operacji ręcznie. Typowym przykładem może być interakcji z bezstanowej usługi internetowej przeglądarki: gdy przeglądarka żąda próba utworzenia kanału, usługę sieci web inicjuje długotrwałej operacji i zwraca identyfikator operacji w przeglądarce. Przeglądarka może następnie poproś usługę sieci web, aby pobrać stan operacji na podstawie identyfikatora. Zestawu SDK .NET usługi Media Services udostępnia interfejsy API, które są przydatne w przypadku tego scenariusza. Te interfejsy API są nazywane "bez sondowania metody".
-"Metody bez sondowania" mają następującym wzorcem nazewnictwa: Wyślij*OperationName*operacji (na przykład SendCreateOperation). Wyślij*OperationName*operacji metody zwracają **IOperation** obiekt; zwrócony obiekt zawiera informacje, które mogą być używane do śledzenia operacji. Wyślij*OperationName*OperationAsync metody zwracają **zadań\<IOperation >**.
+"Metody bez sondowania" mają następującym wzorcem nazewnictwa: Wyślij*OperationName*operacji (na przykład SendCreateOperation). Wyślij*OperationName*operacji metody zwracają **IOperation** obiekt; zwrócony obiekt zawiera informacje, które mogą być używane do śledzenia operacji. Wyślij*OperationName*OperationAsync metody zwracają **zadań\<IOperation >** .
 
 Obecnie następujące klasy obsługuje metod innych niż sondowania:  **Kanał**, **StreamingEndpoint**, i **Program**.
 

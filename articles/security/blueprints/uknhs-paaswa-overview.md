@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
 ms.openlocfilehash: 8af6998c8e9fbfb230c00597600b3aa4f3991f03
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62112582"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-uk-nhs"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web PaaS dla NHS Zjednoczone Królestwo
@@ -81,7 +81,7 @@ Umożliwia użycie środowiska App Service Environment w przypadku tej architekt
 
 **Aplikacja sieci Web platformy Azure**: [Usługa Azure App Service](https://docs.microsoft.com/azure/app-service/) umożliwia klientom tworzenie i hostowanie wybranych przez nich aplikacji sieci web w języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje systemy Windows i Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Azure DevOps oraz dowolnych repozytoriów Git.
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Sieć wirtualna
 
 Architektura definiuje prywatnej sieci wirtualnej przy użyciu przestrzeni adresowej 10.200.0.0/16.
 
@@ -102,7 +102,7 @@ Każdej z grup zabezpieczeń sieci ma określone porty i protokoły Otwórz rozw
 
 **Usługa Azure Load Balancer**: [Usługa Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) pozwala klientom na skalowanie swoich aplikacji i zapewniać wysoką dostępność usług. Modułu równoważenia obciążenia obsługuje scenariusze dla ruchu przychodzącego, a także ruchu wychodzącego i zapewnia małe opóźnienia i wysoką przepływność oraz skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP.
 
-### <a name="data-in-transit"></a>Przesyłane dane
+### <a name="data-in-transit"></a>Dane przesyłane
 
 Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. Wszystkie transakcje w usłudze Azure Storage za pośrednictwem witryny Azure portal występują za pośrednictwem protokołu HTTPS.
 

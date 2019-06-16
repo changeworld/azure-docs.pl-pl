@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: de24b64ecd95eec79d7508f978acda9f0ae5a8d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097542"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.iOS
@@ -147,7 +147,7 @@ Aplikacji został zaktualizowany do obsługi powiadomień wypychanych.
    > [!NOTE]
    > Należy jawnie zaakceptować powiadomień wypychanych z poziomu aplikacji. To żądanie występuje tylko przy pierwszym uruchomieniu aplikacji.
 
-2. W aplikacji wpisz zadania, a następnie kliknij znak plus (**+**) ikona.
+2. W aplikacji wpisz zadania, a następnie kliknij znak plus ( **+** ) ikona.
 3. Sprawdź, czy powiadomienie zostanie odebrana, a następnie kliknij przycisk **OK** aby odrzucić powiadomienie.
 4. Powtórz krok 2 natychmiast zamknąć aplikację, a następnie sprawdź, czy zostaje wyświetlone powiadomienie.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65521757"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
@@ -71,7 +71,7 @@ Adres IP dla każdego interfejsu Sieciowego docelowej maszyny wirtualnej są sko
 - **Statyczny adres IP**: Jeśli karta sieciowa źródłowej maszyny Wirtualnej używa statycznego adresu IP, docelowej karty Sieciowej maszyny Wirtualnej również użyje statyczny adres IP.
 
 
-## <a name="ip-address-assignment-during-failover"></a>Przypisywanie adresów IP podczas trybu failover
+## <a name="ip-address-assignment-during-failover"></a>Przypisywanie adresów IP podczas przełączania do trybu failover
 
 **Źródłowe i docelowe podsieci** | **Szczegóły**
 --- | ---

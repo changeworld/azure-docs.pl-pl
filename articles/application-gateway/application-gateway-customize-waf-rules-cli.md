@@ -4,14 +4,13 @@ description: Ten artykuł zawiera informacje na temat sposobu Dostosowywanie reg
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-origin.date: 02/22/2019
-ms.date: 02/26/2019
-ms.author: v-junlch
+ms.date: 2/22/2019
+ms.author: victorh
 ms.openlocfilehash: 5e364c597b8c524e95297f279003462f2d16abe1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60832901"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Dostosowywanie reguł zapory aplikacji sieci web za pomocą wiersza polecenia platformy Azure
@@ -26,7 +25,7 @@ W poniższych przykładach kodu pokazano, jak wyświetlić reguły i grup reguł
 
 Poniższy przykład pokazuje sposób wyświetlania grup reguł:
 
-```azurecli
+```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --type OWASP
 ```
 
@@ -79,7 +78,7 @@ Poniższe dane wyjściowe są obcięte odpowiedzi z poprzedniego przykładu:
 
 Poniższy przykład pokazuje, jak wyświetlić zasady w grupie określoną regułą:
 
-```azurecli
+```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP-REPUTATION"
 ```
 
@@ -118,7 +117,7 @@ Poniższe dane wyjściowe są obcięte odpowiedzi z poprzedniego przykładu:
 
 Poniższy przykład powoduje wyłączenie reguł `910018` i `910017` na bramę aplikacji:
 
-```azurecli
+```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
 
@@ -126,14 +125,14 @@ az network application-gateway waf-config set --resource-group AdatumAppGatewayR
 
 Poniższa lista zawiera warunki powodujące zapory aplikacji sieci Web zablokować żądania w trybie zapobiegania (w trybie wykrywania, są rejestrowane jako wyjątki). Nie są skonfigurowane lub wyłączone:
 
-- Nie można przeanalizować treść żądania wyników w żądaniu blokowane, chyba że jednostka inspekcji jest wyłączona (XML, JSON, dane formularza)
-- Długość danych treści (nie plikami) żądania jest większy niż skonfigurowany limit
-- Żądanie jest większy niż limit treści (w tym pliki)
-- Wystąpił błąd wewnętrzny związany w aparacie zapory aplikacji sieci Web
+* Nie można przeanalizować treść żądania wyników w żądaniu blokowane, chyba że jednostka inspekcji jest wyłączona (XML, JSON, dane formularza)
+* Długość danych treści (nie plikami) żądania jest większy niż skonfigurowany limit
+* Żądanie jest większy niż limit treści (w tym pliki)
+* Wystąpił błąd wewnętrzny związany w aparacie zapory aplikacji sieci Web
 
 CRS 3.x określonych:
 
-- Liczba przychodzących anomalii wynik przekroczył próg
+* Liczba przychodzących anomalii wynik przekroczył próg
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -143,5 +142,3 @@ Po skonfigurowaniu reguł wyłączonych, możesz dowiedzieć się, jak wyświetl
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png
 [2]: ./media/application-gateway-customize-waf-rules-portal/figure2.png
 [3]: ./media/application-gateway-customize-waf-rules-portal/figure3.png
-
-<!-- Update_Description: wording update -->

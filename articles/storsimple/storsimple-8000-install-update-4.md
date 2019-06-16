@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60860512"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Instalowanie aktualizacji Update 4 na urządzeniu StorSimple
@@ -45,7 +45,7 @@ Wykonaj następujące kroki, aby zaktualizować urządzenie do [aktualizacji Upd
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update4-via-portal.md)]
 
-Sprawdź, czy urządzenie jest uruchomiona **StorSimple 8000 Series Update 4 (6.3.9600.17820)**. **Ostatnia aktualizacja: Data** również powinny być modyfikowane.
+Sprawdź, czy urządzenie jest uruchomiona **StorSimple 8000 Series Update 4 (6.3.9600.17820)** . **Ostatnia aktualizacja: Data** również powinny być modyfikowane.
 
 * Zobaczysz teraz, że są dostępne aktualizacje trybu konserwacji (ten komunikat może nadal wyświetlane przez maksymalnie 24 godziny po zainstalowaniu aktualizacji). Aktualizacje trybu konserwacji są aktualizacje wymagają zatrzymania pracy skutkować przestojem urządzenia, które mogą być stosowane tylko za pośrednictwem interfejsu programu Windows PowerShell urządzenia.
 
@@ -76,10 +76,10 @@ Należy pobrać i zainstalować następujące poprawki w zalecanej kolejności i
 
 | Zamówienie | KB | Opis | Typ aktualizacji | Godzina instalacji |Zainstaluj w folderze|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4011839 |Aktualizacja oprogramowania |Normalna <br></br>Bezproblemowa |~ 25 minut |FirstOrderUpdate|
-| 2A. |KB4011841 <br> KB4011842 |Sterownik LSI i aktualizacje oprogramowania układowego <br> Aktualizacja oprogramowania układowego USM (wersja 3.38) |Normalna <br></br>Bezproblemowa |~ 3 godzin <br> (w tym 2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2B. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Pakiet aktualizacji zabezpieczeń systemu operacyjnego <br> Pobierz system Windows Server 2012 R2 |Normalna <br></br>Bezproblemowa |- |SecondOrderUpdate|
-| 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Pakiet aktualizacji systemu operacyjnego <br> Pobierz system Windows Server 2012 R2 |Normalna <br></br>Bezproblemowa |- |SecondOrderUpdate|
+| 1. |KB4011839 |Aktualizacja oprogramowania |Regularne <br></br>Bezproblemowa |~ 25 minut |FirstOrderUpdate|
+| 2A. |KB4011841 <br> KB4011842 |Sterownik LSI i aktualizacje oprogramowania układowego <br> Aktualizacja oprogramowania układowego USM (wersja 3.38) |Regularne <br></br>Bezproblemowa |~ 3 godzin <br> (w tym 2A. + 2B. + 2C.)|SecondOrderUpdate|
+| 2B. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Pakiet aktualizacji zabezpieczeń systemu operacyjnego <br> Pobierz system Windows Server 2012 R2 |Regularne <br></br>Bezproblemowa |- |SecondOrderUpdate|
+| 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Pakiet aktualizacji systemu operacyjnego <br> Pobierz system Windows Server 2012 R2 |Regularne <br></br>Bezproblemowa |- |SecondOrderUpdate|
 
 Również może być konieczne zainstalowanie aktualizacji oprogramowania układowego dysku, na podstawie wszystkich aktualizacji, które są wyświetlane w poprzednich tabelach. Możesz sprawdzić, czy potrzebujesz aktualizacje oprogramowania układowego dysku, uruchamiając `Get-HcsFirmwareVersion` polecenia cmdlet. Jeśli używasz tych wersji oprogramowania układowego: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N002`, `0106`, nie musisz zainstalować te aktualizacje.
 

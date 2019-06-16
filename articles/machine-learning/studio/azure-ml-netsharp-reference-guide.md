@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60751678"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
@@ -460,6 +460,6 @@ output Digit [10] from Hid3 all;
 + Całkowita liczba węzłów można obliczyć przy użyciu zadeklarowane wymiarach warstwy [50, 5, 5], w następujący sposób: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + Ponieważ `Sharing[d]` ma wartość FAŁSZ tylko w przypadku `d == 0`, liczba jądra jest `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Potwierdzenia
+## <a name="acknowledgements"></a>Potwierdzanie
 
 Język Net # dostosowywania architektury sieci neuronowych został opracowany w firmie Microsoft przez Shon Katzenberger (Architekt, uczenie maszynowe) i Alexey Kamenev (inżynier oprogramowania, Microsoft Research). Jest ona używana wewnętrznie do uczenia maszynowego projektów i aplikacje, począwszy od wykrywania obrazu do analizy tekstu. Aby uzyskać więcej informacji, zobacz [neuronowe w usłudze Azure Machine Learning studio — wprowadzenie do Net #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

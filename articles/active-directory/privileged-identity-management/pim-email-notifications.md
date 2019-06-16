@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289189"
 ---
 # <a name="email-notifications-in-pim"></a>Powiadomienia e-mail w usłudze PIM
@@ -50,9 +50,9 @@ Kto otrzymuje te wiadomości e-mail, usługi ról usługi Azure AD zależy od Tw
 
 | Użytkownik | Aktywacja roli oczekuje na zatwierdzenie | Żądanie aktywacji roli zostało zakończone. | Włączono usługę PIM |
 | --- | --- | --- | --- |
-| Administrator uprawnionej roli</br>(Aktywowany/uprawnione) | Yes</br>(tylko wtedy, gdy określono nie jawnego osób zatwierdzających) | Tak* | Yes |
-| Administrator zabezpieczeń</br>(Aktywowany/uprawnione) | Nie | Tak* | Yes |
-| Administrator globalny</br>(Aktywowany/uprawnione) | Nie | Tak* | Yes |
+| Administrator ról uprzywilejowanych</br>(Aktywowany/uprawnione) | Yes</br>(tylko wtedy, gdy określono nie jawnego osób zatwierdzających) | Tak* | Tak |
+| Administrator zabezpieczeń</br>(Aktywowany/uprawnione) | Nie | Tak* | Tak |
+| Administrator globalny</br>(Aktywowany/uprawnione) | Nie | Tak* | Tak |
 
 \* Jeśli [ **powiadomienia** ustawienie](pim-how-to-change-default-settings.md#notifications) ustawiono **Włącz**.
 
@@ -68,7 +68,7 @@ Co tydzień e-mail podsumowania usługi PIM dla ról usługi Azure AD są wysył
 
 Wiadomość e-mail zawiera cztery Kafelki:
 
-| Sąsiadująco | Opis |
+| Kafelek | Opis |
 | --- | --- |
 | **Użytkownicy aktywowany** | Liczba użytkowników aktywacji ich kwalifikowania się do roli w ramach dzierżawy. |
 | **Trwałe użytkowników** | Liczba użytkowników z kwalifikującego się przypisania jest trwałe. |

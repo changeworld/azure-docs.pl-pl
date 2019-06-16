@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: cec8ab9d678ff559176580fa8eccc261f449f4c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60362003"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Wprowadzenie do usługi Azure table storage i Visual Studio połączonych usług (usługi w chmurze projektów)
@@ -25,7 +25,7 @@ ms.locfileid: "60362003"
 ## <a name="overview"></a>Omówienie
 W tym artykule opisano sposób rozpoczęcia pracy przy użyciu usługi Azure table storage w programie Visual Studio po użytkownik utworzył, lub odwołanie do konta usługi Azure storage w projekt usług w chmurze przy użyciu programu Visual Studio **Dodaj usługi połączone** okna dialogowego. **Dodaj usługi połączone** operacji instaluje odpowiednie pakiety NuGet dostępu do magazynu platformy Azure w swoim projekcie i dodaje parametry połączenia dla konta magazynu do plików konfiguracji projektu.
 
-Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.
+Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele platformy Azure są idealnym rozwiązaniem do przechowywania strukturalnych danych nierelacyjnych.
 
 Aby rozpocząć pracę, należy najpierw utworzyć tabelę w ramach konta magazynu. Pokażemy ci, jak utworzyć tabelę platformy Azure w kodzie, a także jak wykonać podstawowe tabeli i operacje jednostki, takie jak dodawanie, modyfikowanie, odczytywania i odczytywania jednostki z tabeli. Przykłady są napisane w języku C\# kod i użyć [biblioteki klienta usługi Microsoft Azure Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 

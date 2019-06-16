@@ -10,10 +10,10 @@ ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 4d11dfcb66a545cbecc80b6bdad558ca6d328ed2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60499260"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Zmigruj swoje wdrożenia aktualizacji pakietu OMS na platformę Azure
@@ -62,7 +62,7 @@ W przypadku maszyny do zaktualizowania wybrać zapisanego wyszukiwania, które s
 |Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Wybierz **Linux** lub **Windows**.|
 |Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md) |
-|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługuje to gotowe.|
+|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługuje to gotowe.|
 |Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. Windows, można wprowadzić w artykule KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
 |Ustawienia harmonogramu|Wybierz godzinę rozpoczęcia, a następnie wybierz opcję **raz** lub **cyklicznie** cyklu. | 
 | Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut lub więcej niż 6 godzin. |

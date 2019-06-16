@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: 3c0152726aba115e1b370838308a7bf0af08cab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708128"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetowanie hasła lokalnego Windows maszyny wirtualnej platformy Azure w trybie offline
@@ -69,7 +69,7 @@ Zawsze należy starać się zresetować hasło przy użyciu [witryny Azure porta
    
    * Wybierz maszyny Wirtualnej rozwiązywania problemów w witrynie Azure portal. Kliknij przycisk *dysków* | *Dołącz istniejące*:
      
-     ![Dołącz istniejący dysk](./media/reset-local-password-without-agent/disks_attach_existing.png)
+     ![Dołączanie istniejącego dysku](./media/reset-local-password-without-agent/disks_attach_existing.png)
      
      Wybierz *pliku wirtualnego dysku twardego* i następnie wybierz konto magazynu, który zawiera źródłowa maszyna wirtualna:
      

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
 ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544996"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Omówienie zaleceń dotyczących zasobów usługi Azure Security Center
@@ -50,7 +50,7 @@ Użyj poniższe tabele jako źródła, aby lepiej zrozumieć dostępne zasoby ob
 | Gniazda sieci Web powinny być wyłączone dla aplikacji sieci Web| Zaleca się dokładnie przejrzyj użycie gniazda sieci Web w aplikacjach sieci web.  Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |
 | Użyj domen niestandardowych dla aplikacji sieci Web | Zaleca się, użyj domen niestandardowych do ochrony aplikacji sieci web przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS. |
 | Konfiguruj ograniczenia adresów IP dla aplikacji sieci Web | Zaleca się, że definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji.  Użyj ograniczeń adresów IP chroni aplikację internetową przed typowymi atakami. |
-| Nie zezwalaj na wszystkie ("*") zasobów uzyskiwanie dostępu do aplikacji | Zaleca się, że nie należy ustawiać parametru WEBSITE_LOAD_CERTIFICATES na "*". Ustawienie dla parametru "*" oznacza, że wszystkie certyfikaty zostaną załadowane do magazynu certyfikatów osobiste aplikacje sieci web.  Może to prowadzić do naruszenia zasady najmniejszych uprawnień, ponieważ jest mało prawdopodobne, że witryna musi mieć dostęp do wszystkich certyfikatów w czasie wykonywania. |
+| Nie zezwalaj na wszystkie ("*") zasobów uzyskiwanie dostępu do aplikacji | Zaleca się, że nie należy ustawiać parametru WEBSITE_LOAD_CERTIFICATES na " *". Ustawienie dla parametru "* " oznacza, że wszystkie certyfikaty zostaną załadowane do magazynu certyfikatów osobiste aplikacje sieci web.  Może to prowadzić do naruszenia zasady najmniejszych uprawnień, ponieważ jest mało prawdopodobne, że witryna musi mieć dostęp do wszystkich certyfikatów w czasie wykonywania. |
 | Mechanizm CORS nie powinien zezwalać na każdy zasób, uzyskiwanie dostępu do aplikacji | Zaleca się, aby zezwolić tylko wymagane domen do interakcji z aplikacją sieci web. Krzyżowe pochodzenia zasobów między źródłami (cors) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do sieci web aplikacji. |
 | Użyj najnowszej obsługiwanej wersji systemu .NET Framework dla aplikacji sieci Web | Zaleca się, że używasz najnowszej wersji .NET Framework dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
 | Użyj najnowszej obsługiwanej wersji środowiska Java dla aplikacji sieci Web | Zaleca się, że używasz najnowszej wersji języka Java dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
@@ -60,7 +60,7 @@ Użyj poniższe tabele jako źródła, aby lepiej zrozumieć dostępne zasoby ob
 | Użyj najnowszej obsługiwanej wersji środowiska Node.js dla aplikacji sieci Web | Zaleca się, że używasz najnowszej wersji środowiska Node.js dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
 | Mechanizm CORS nie powinien zezwalać na każdy zasób, dostęp do aplikacji funkcji | Zaleca się, aby zezwolić tylko wymagane domen do interakcji z aplikacją sieci web. Krzyżowe origin resource sharing (CORS) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do funkcji aplikacji. |
 | Użyj domen niestandardowych dla aplikacji funkcji | Zaleca się, użyj domen niestandardowych do ochrony aplikacji funkcji przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS. |
-| Skonfiguruj ograniczenia adresów IP dla aplikacji funkcji | Zaleca się, że definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji. Użyj ograniczeń adresów IP chroni aplikację funkcji przed typowymi atakami. |
+| Konfiguruj ograniczenia adresów IP dla aplikacji funkcji | Zaleca się, że definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji. Użyj ograniczeń adresów IP chroni aplikację funkcji przed typowymi atakami. |
 | Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS | Zaleca się ograniczenie dostępu do aplikacji funkcji przy użyciu protokołu HTTPS tylko. |
 | Zdalne debugowanie powinno zostać wyłączone dla aplikacji funkcji | Zaleca się wyłączyć debugowania dla aplikacji funkcji, jeśli nie potrzebujesz już go używać. Zdalne debugowanie wymaga porty wejściowe były otwarte w aplikacji funkcji. |
 | Gniazda sieci Web powinny być wyłączone dla aplikacji funkcji | Zaleca się dokładnie przejrzyj użycie gniazda sieci Web w obrębie aplikacji funkcji. Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |

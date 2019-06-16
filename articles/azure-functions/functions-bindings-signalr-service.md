@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: f0d4a607676285ed4f0f91d8ce8c83ddf1313b89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511139"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Powiązania usługi SignalR Service dla usługi Azure Functions
 
@@ -601,7 +601,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type**|| Musi być równa `signalRConnectionInfo`.|
 |**direction**|| Musi być równa `in`.|
-|**Nazwa**|| Nazwa zmiennej użytą w kodzie funkcji dla obiektu informacje o połączeniu. |
+|**name**|| Nazwa zmiennej użytą w kodzie funkcji dla obiektu informacje o połączeniu. |
 |**hubName**|**HubName**| Ta wartość musi być równa nazwę Centrum SignalR, dla którego jest generowane informacje o połączeniu.|
 |**userId**|**UserId**| Opcjonalnie: Wartość identyfikatora użytkownika oświadczenia w tokenie klucza dostępu. |
 |**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi SignalR (wartość domyślna to "AzureSignalRConnectionString") |
@@ -614,7 +614,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type**|| Musi być równa `signalR`.|
 |**direction**|| Musi być równa `out`.|
-|**Nazwa**|| Nazwa zmiennej użytą w kodzie funkcji dla obiektu informacje o połączeniu. |
+|**name**|| Nazwa zmiennej użytą w kodzie funkcji dla obiektu informacje o połączeniu. |
 |**hubName**|**HubName**| Ta wartość musi być równa nazwę Centrum SignalR, dla którego jest generowane informacje o połączeniu.|
 |**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi SignalR (wartość domyślna to "AzureSignalRConnectionString") |
 
@@ -626,4 +626,4 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 > [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Azure Functions rozwoju i konfiguracji za pomocą usługi Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)
+> [Programowanie i konfigurowanie w usłudze Azure Functions za pomocą usługi Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)

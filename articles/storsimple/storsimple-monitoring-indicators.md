@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630613"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Umożliwia zarządzanie urządzeniem StorSimple wskaźniki monitorowania
@@ -219,7 +219,7 @@ Wycisz z alarmu, naciskając przycisk Wycisz na panelu ops. Automatyczne wycisza
 W poniższej tabeli opisano różne warunki alarmu.
 
 ### <a name="alarm-conditions"></a>Warunki alarmów
-| Stan | Ważność | Alarm | Platforma OPS panelu LED |
+| Stan | Severity | Alarm | Platforma OPS panelu LED |
 | --- | --- | --- | --- |
 | Alarm PCM — utrata zasilania kontrolera domeny z jednego modułu PCM |Błąd — nie utratę nadmiarowości |S1 |Błąd modułu |
 | Alarm PCM — utrata zasilania kontrolera domeny z jednego modułu PCM |Błąd — utratę nadmiarowości |S1 |Błąd modułu |
@@ -239,7 +239,7 @@ W poniższej tabeli opisano różne warunki alarmu.
 | Dysk power kontroli błędów |Ostrzeżenie — bez utraty zasilania dysku |S1 |Błąd modułu |
 | Dysk power kontroli błędów |Błąd — krytyczne; utrata zasilania dysku |S1 |Błąd modułu |
 | Usunięto dysk |Ostrzeżenie |Brak |Błąd modułu |
-| Zbyt niski poziom energii dostępne |Ostrzeżenie |brak |Błąd modułu |
+| Zbyt niski poziom energii dostępne |Ostrzeżenie |Brak |Błąd modułu |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o [StorSimple składniki sprzętowe i stan](storsimple-8000-monitor-hardware-status.md).

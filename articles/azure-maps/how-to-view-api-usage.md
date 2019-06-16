@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 31522436de97062432af2afe101f85d376243a38
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957255"
 ---
 # <a name="view-azure-maps-api-usage"></a>Wyświetl informacje o użyciu interfejsu API usługi Azure Maps
@@ -42,7 +42,7 @@ Przejdź do następnej sekcji Jeżeli trzeba dostosować te wykresy dla konkretn
 
       ![Okienko usługi Azure Maps metryki](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Następnie możesz wybrać *zakres czasu* , klikając **ostatnie 24 godziny (automatycznie)**. Zakres czasu jest domyślnie do 24 godzin. Po kliknięciu przycisku, widoczne będą wszystkie zakresy czasu można wybierać. Możesz wybrać *stopień szczegółowości czasu* i wybierz polecenie wyświetlić czas jako *lokalnego* lub *GMT* w tej samej listy rozwijanej. Kliknij przycisk **Zastosuj**.
+5. Następnie możesz wybrać *zakres czasu* , klikając **ostatnie 24 godziny (automatycznie)** . Zakres czasu jest domyślnie do 24 godzin. Po kliknięciu przycisku, widoczne będą wszystkie zakresy czasu można wybierać. Możesz wybrać *stopień szczegółowości czasu* i wybierz polecenie wyświetlić czas jako *lokalnego* lub *GMT* w tej samej listy rozwijanej. Kliknij przycisk **Zastosuj**.
 
     ![Usługi Azure Maps metryki okresie](media/how-to-view-api-usage/time-range.png)
 

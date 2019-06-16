@@ -9,10 +9,10 @@ ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597076"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
@@ -113,7 +113,7 @@ Aby wyświetlić wyniki w formacie CSV:
 ### <a name="system-requirements"></a>Wymagania systemowe
 - Serwer z systemem Windows Server 2012 R2, Windows Server 2016 lub Windows Server 2019:
 
-    | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
+    | Version | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
     |---------|----------------|------------------------------|
     | Windows Server 2019 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
     | Windows Server 2016 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
@@ -178,9 +178,9 @@ W przypadku woluminów, które nie mają obsługi warstw włączone w chmurze us
 ### <a name="distributed-file-system-dfs"></a>Rozproszony System plików (DFS)
 Usługa Azure File Sync obsługuje współdziałanie z przestrzeni nazw systemu plików DFS (DFS-N) i replikacja systemu plików DFS (DFS-R).
 
-**Przestrzenie nazw systemu plików DFS (DFS-N)**: Usługa Azure File Sync jest w pełni obsługiwany na serwerach z systemem plików DFS-N. Na co najmniej jednego członka systemu plików DFS-N, na synchronizowanie danych między punkty końcowe serwera i punkt końcowy w chmurze, można zainstalować agenta usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Przegląd przestrzeni nazw systemu plików DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**Przestrzenie nazw systemu plików DFS (DFS-N)** : Usługa Azure File Sync jest w pełni obsługiwany na serwerach z systemem plików DFS-N. Na co najmniej jednego członka systemu plików DFS-N, na synchronizowanie danych między punkty końcowe serwera i punkt końcowy w chmurze, można zainstalować agenta usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Przegląd przestrzeni nazw systemu plików DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Replikacja systemu plików DFS (DFS-R)**: Systemu plików DFS-R i usługi Azure File Sync są oba rozwiązania replikacji w większości przypadków zalecamy zastąpienie systemu plików DFS-R z usługi Azure File Sync. Istnieje jednak kilka scenariuszy, w których chcesz korzystać ze sobą systemu plików DFS-R i usługi Azure File Sync:
+**Replikacja systemu plików DFS (DFS-R)** : Systemu plików DFS-R i usługi Azure File Sync są oba rozwiązania replikacji w większości przypadków zalecamy zastąpienie systemu plików DFS-R z usługi Azure File Sync. Istnieje jednak kilka scenariuszy, w których chcesz korzystać ze sobą systemu plików DFS-R i usługi Azure File Sync:
 
 - W przypadku migracji z wdrożenia systemu plików DFS-R do wdrożenia usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [migracji wdrożenia replikacji systemu plików DFS (DFS-R) do usługi Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
 - Nie każdy na lokalnym serwerze, który potrzebuje kopii swoich danych z plików mogą być podłączone bezpośrednio do Internetu.
@@ -230,13 +230,13 @@ Ogólnie rzecz biorąc usługi Azure File Sync powinien obsługiwać współdzia
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania zarządzania magazynu hierarchicznych (HSM)
 Inne rozwiązania sprzętowego modułu zabezpieczeń należy używać usługi Azure File Sync.
 
-## <a name="region-availability"></a>Dostępność regionalna
+## <a name="region-availability"></a>Dostępność w danym regionie
 Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 
-| Obszar | Lokalizacja centrum danych |
+| Region | Lokalizacja centrum danych |
 |--------|---------------------|
-| Australia Wschodnia | Nowa Południowa Walia |
-| Australia Południowo-Wschodnia | Wiktoria |
+| Australia Wschodnia | Stan Nowa Południowa Walia |
+| Australia Południowo-Wschodnia | Stan Wiktoria |
 | Brazylia Południowa | Sao Paolo stanu |
 | Kanada Środkowa | Toronto |
 | Kanada Wschodnia | Miasto Quebec |
@@ -246,21 +246,21 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Korea Środkowa| Seul |
-| Korea Południowa| Busan |
+| Korea Południowa| Pusan |
 | Japonia Wschodnia | Tokyo, Saitama |
 | Japonia Zachodnia | Osaka |
-| Północno-środkowe stany USA | Illinois |
+| Środkowo-północne stany USA | Illinois |
 | Europa Północna | Irlandia |
-| Południowo-środkowe stany USA | Teksas |
+| Środkowo-południowe stany USA | Teksas |
 | Indie Południowe | Chennai |
 | Azja Południowo-Wschodnia | Singapur |
-| Zjednoczone Królestwo (południe) | Londyn |
-| Zjednoczone Królestwo (zachód) | Cardiff |
+| Południowe Zjednoczone Królestwo | Londyn |
+| Zachodnie Zjednoczone Królestwo | Cardiff |
 | Administracja USA — Arizona (wersja zapoznawcza) | Arizona |
 | Administracja USA — Teksas (wersja zapoznawcza) | Teksas |
 | Administracja USA — Wirginia (wersja zapoznawcza) | Wirginia |
 | Europa Zachodnia | Holandia |
-| Zachodnio-środkowe stany USA | Wyoming |
+| Środkowo-zachodnie stany USA | Wyoming |
 | Zachodnie stany USA | Kalifornia |
 | Zachodnie stany USA 2 | Waszyngton |
 
@@ -281,7 +281,7 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 |---------------------|--------------------|
 | Australia Wschodnia      | Australia Południowo-Wschodnia|
 | Australia Południowo-Wschodnia | Australia Wschodnia     |
-| Brazylia Południowa        | Południowo-środkowe stany USA   |
+| Brazylia Południowa        | Środkowo-południowe stany USA   |
 | Kanada Środkowa      | Kanada Wschodnia        |
 | Kanada Wschodnia         | Kanada Środkowa     |
 | Indie Środkowe       | Indie Południowe        |
@@ -294,19 +294,19 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Korea Środkowa       | Korea Południowa        |
 | Korea Południowa         | Korea Środkowa      |
 | Europa Północna        | Europa Zachodnia        |
-| Północno-środkowe stany USA    | Południowo-środkowe stany USA   |
-| Południowo-środkowe stany USA    | Północno-środkowe stany USA   |
+| Środkowo-północne stany USA    | Środkowo-południowe stany USA   |
+| Środkowo-południowe stany USA    | Środkowo-północne stany USA   |
 | Indie Południowe         | Indie Środkowe      |
 | Azja Południowo-Wschodnia      | Azja Wschodnia          |
-| Zjednoczone Królestwo (południe)            | Zjednoczone Królestwo (zachód)            |
-| Zjednoczone Królestwo (zachód)             | Zjednoczone Królestwo (południe)           |
-| US Gov Arizona      | US Gov Teksas       |
-| US Gov Iowa         | US Gov Wirginia    |
-| US Gov Virgini      | US Gov Teksas       |
+| Południowe Zjednoczone Królestwo            | Zachodnie Zjednoczone Królestwo            |
+| Zachodnie Zjednoczone Królestwo             | Południowe Zjednoczone Królestwo           |
+| Administracja USA — Arizona      | Administracja USA — Teksas       |
+| US Gov Iowa         | Administracja USA — Wirginia    |
+| US Gov Virgini      | Administracja USA — Teksas       |
 | Europa Zachodnia         | Europa Północna       |
-| Zachodnio-środkowe stany USA     | Zachodnie stany USA 2          |
+| Środkowo-zachodnie stany USA     | Zachodnie stany USA 2          |
 | Zachodnie stany USA             | Wschodnie stany USA            |
-| Zachodnie stany USA 2           | Zachodnio-środkowe stany USA    |
+| Zachodnie stany USA 2           | Środkowo-zachodnie stany USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

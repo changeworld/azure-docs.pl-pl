@@ -2,17 +2,16 @@
 title: Projekt za pomocą usługi AKS i Azure Container Registry
 description: Projekt za pomocą usługi AKS i Azure Container Registry
 services: container-service
-author: rockboyfor
+author: zr-msft
 ms.service: container-service
 ms.topic: article
-origin.date: 08/15/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
+ms.date: 08/15/2018
+ms.author: zarhoads
 ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60465161"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Projekt za pomocą usługi Azure Kubernetes Service (AKS)
@@ -77,7 +76,7 @@ Teraz, że ma relację zaufania między AKS i ACR, umożliwiają korzystanie z u
 1. Ustaw konfigurację projektu *rejestru* wartość. W poniższych poleceniach Zastąp `<acrName>` nazwą rejestru ACR:
 
     ```console
-    draft config set registry <acrName>.azurecr.cn
+    draft config set registry <acrName>.azurecr.io
     ```
 
 1. Zaloguj się do rejestru usługi ACR za pomocą [az acr login][az-acr-login]:
@@ -220,7 +219,7 @@ W tym przykładzie zaktualizuj przykładowej aplikacji Java w celu zmiany tekstu
 vi src/main/java/helloworld/Hello.java
 ```
 
-Aktualizowanie tekstu wyjściowego do wyświetlenia, *Witaj, świecie, jestem Java w usłudze AKS!*:
+Aktualizowanie tekstu wyjściowego do wyświetlenia, *Witaj, świecie, jestem Java w usłudze AKS!* :
 
 ```java
 package helloworld;
@@ -271,4 +270,4 @@ Aby uzyskać więcej informacji na temat za pomocą narzędzia Draft dokumentacj
 [aks-helm]: ./kubernetes-helm.md
 [kubernetes-ingress]: ./ingress-basic.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
-[az-acr-login]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest#az-acr-login
+[az-acr-login]: /cli/azure/acr#az-acr-login

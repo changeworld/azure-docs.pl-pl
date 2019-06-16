@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
 ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464643"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Eksportuj dane do usługi Azure Blob Storage
@@ -38,7 +38,7 @@ Jeśli nie masz istniejącego magazynu, aby wyeksportować do, wykonaj następuj
 
 1. Tworzenie [nowe konto magazynu w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Dowiedz się więcej w [dokumentacja usługi Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
 2. Dla typu konta, wybierz **ogólnego przeznaczenia** lub **magazynu obiektów Blob**.
-3. Wybierz subskrypcję. 
+3. wybierz subskrypcję. 
 
     > [!Note] 
     > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.

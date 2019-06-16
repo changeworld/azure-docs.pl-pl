@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60453617"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Rozpoczynanie pracy z łącznikiem usługi bazy danych Oracle
@@ -105,13 +105,13 @@ W tym artykule przedstawiono sposób korzystania z łącznika bazy danych Oracle
 
 **Przyczyna**: Nie zainstalowano zestawu SDK klienta Oracle na maszynie, na którym jest uruchomiona brama danych lokalnych.  
 
-**Rozwiązanie**: Pobierz i zainstaluj zestaw SDK klienta Oracle na tym samym komputerze co lokalna brama danych.
+**Rozpoznawanie**: Pobierz i zainstaluj zestaw SDK klienta Oracle na tym samym komputerze co lokalna brama danych.
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Błąd**: Tabela "[Tablename]" nie definiuje żadnych kolumn kluczy
 
 **Przyczyna**: Tabela nie ma żadnego klucza podstawowego.  
 
-**Rozwiązanie**: Łącznik bazy danych programu Oracle wymaga służyć tabelę z kolumną kluczy podstawowych.
+**Rozpoznawanie**: Łącznik bazy danych programu Oracle wymaga służyć tabelę z kolumną kluczy podstawowych.
 
 #### <a name="currently-not-supported"></a>Obecnie nieobsługiwane
 
