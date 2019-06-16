@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: 951178a82e0975f5f2af71bd48cf0f931246ae37
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002120"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Instalowanie i konfigurowanie usługi AWS kosztów i użycia integracji raportu
@@ -67,7 +67,7 @@ Użyj Kreatora nowej roli tworzenia:
 3. Wybierz **role** , a następnie wybierz **Utwórz rolę**.
 4. Na następnej stronie wybierz **konta usług AWS innego**.
 5. W **Accountid**, wprowadź **432263259397**.
-6. W **opcje**, wybierz opcję **wymagają Identyfikatora zewnętrznego (najlepsze rozwiązanie, gdy innej założy, ta rola)**.
+6. W **opcje**, wybierz opcję **wymagają Identyfikatora zewnętrznego (najlepsze rozwiązanie, gdy innej założy, ta rola)** .
 7. W **Identyfikatora zewnętrznego**, wprowadź identyfikatora zewnętrznego. Identyfikator zewnętrzny jest udostępniony kod dostępu między roli usług AWS i Azure Cost Management. Ten sam identyfikator zewnętrzny jest także używana w **nowy łącznik** strony w Cost Management. Na przykład Identyfikator zewnętrzny przypomina _Companyname1234567890123_.
 
     > [!NOTE]
@@ -100,7 +100,7 @@ Skonfiguruj uprawnienia dla Eksploratora kosztów:
 
 1. Wybierz **wybierz usługę**.
 2. Wprowadź **koszt Explorer z**.
-3. Wybierz **akcji w przypadku wszystkich koszt Eksploratora usługi (ce:\*)**. Ta akcja sprawdza, czy kolekcja jest poprawna.
+3. Wybierz **akcji w przypadku wszystkich koszt Eksploratora usługi (ce:\*)** . Ta akcja sprawdza, czy kolekcja jest poprawna.
 4. Wybierz **Dodaj dodatkowe uprawnienia**.
 
 Dodaj uprawnienia dla organizacji, AWS:

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956478"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i używanie trwały wolumin z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
@@ -88,7 +88,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Użyj trwały wolumin
 
-Po oświadczenia trwały wolumin został utworzony i dysku pomyślnie zainicjowano obsługę administracyjną, mogą być tworzone zasobnik za dostęp do dysku. Następujące manifest tworzy podstawowe zasobnika NGINX, używającej oświadczeń trwały wolumin o nazwie *-dysk zarządzany platformy azure —* do zainstalowania dysku platformy Azure w ścieżce `/mnt/azure`. W systemie Windows Server kontenerów (obecnie dostępna w wersji zapoznawczej w usłudze AKS), określ *mountPath* przy użyciu konwencji ścieżkę Windows, takich jak *"D:"*.
+Po oświadczenia trwały wolumin został utworzony i dysku pomyślnie zainicjowano obsługę administracyjną, mogą być tworzone zasobnik za dostęp do dysku. Następujące manifest tworzy podstawowe zasobnika NGINX, używającej oświadczeń trwały wolumin o nazwie *-dysk zarządzany platformy azure —* do zainstalowania dysku platformy Azure w ścieżce `/mnt/azure`. W systemie Windows Server kontenerów (obecnie dostępna w wersji zapoznawczej w usłudze AKS), określ *mountPath* przy użyciu konwencji ścieżkę Windows, takich jak *"D:"* .
 
 Utwórz plik o nazwie `azure-pvc-disk.yaml`i skopiuj następujące manifestu.
 
@@ -154,7 +154,7 @@ Events:
 
 Aby utworzyć kopię zapasową danych w woluminie trwałego, należy utworzyć migawkę dysku zarządzanego dla woluminu. Następnie służy tę migawkę służącą do tworzenia przywróconego dysku i dołączyć do zasobników jako sposób przywracania danych.
 
-Najpierw Uzyskaj nazwę woluminu za pomocą `kubectl get pvc` polecenia, takie jak PVC o nazwie *-dysk zarządzany platformy azure —*:
+Najpierw Uzyskaj nazwę woluminu za pomocą `kubectl get pvc` polecenia, takie jak PVC o nazwie *-dysk zarządzany platformy azure —* :
 
 ```console
 $ kubectl get pvc azure-managed-disk

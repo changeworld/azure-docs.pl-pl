@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: aschhab
 ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003131"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Omówienie usługi Service Bus, kolejki utraconych wiadomości
@@ -45,10 +45,10 @@ Aplikacje można zdefiniować własne kody `DeadLetterReason` właściwości, al
 
 | Warunek | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
-| Zawsze |HeaderSizeExceeded |Przekroczono limit przydziału rozmiaru tego strumienia. |
+| zawsze |HeaderSizeExceeded |Przekroczono limit przydziału rozmiaru dla tego strumienia. |
 | ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing i SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Komunikat wygasła i została dead lettered. |
-| SubscriptionDescription.RequiresSession |Identyfikator sesji ma wartość null. |Jednostki włączone sesji nie pozwala na komunikat, którego identyfikator sesji ma wartość null. |
+| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Komunikat wygasł i został uznany za utracony. |
+| SubscriptionDescription.RequiresSession |Identyfikator sesji ma wartość null. |Jednostka z obsługą sesji nie pozwala na komunikat, którego identyfikator sesji ma wartość null. |
 | ! kolejki utraconych wiadomości |MaxTransferHopCountExceeded |Null |
 | Jawne, dead czcionki w aplikacji |Określone przez aplikację |Określone przez aplikację |
 

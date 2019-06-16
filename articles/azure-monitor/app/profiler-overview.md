@@ -13,10 +13,10 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60306329"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil aplikacji produkcyjnych na platformie Azure za pomocą usługi Application Insights
@@ -26,7 +26,7 @@ Usługa Azure Application Insights Profiler zawiera ślady wydajności dla aplik
 
 Profiler działa z aplikacjami .NET, które są wdrażane na następujących usług platformy Azure. Szczegółowe instrukcje dotyczące włączania Profiler dla każdego typu usług są poniższe linki.
 
-* [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Usługa Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Zestawy skalowania maszyn wirtualnych i maszyn wirtualnych platformy Azure](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -75,7 +75,7 @@ Jeśli **clr! ThePreStub** zajmuje dużo czasu na żądanie, żądanie jest pier
 
 ### <a id="ngencold"></a>Trwa ładowanie kodu ([ZIMNEGO])
 
-Jeśli nazwa metody zawiera **[ZIMNYCH]**, takich jak **mscorlib.ni! [ COLD]system.Reflection.CustomAttribute.IsDefined**, środowisko uruchomieniowe programu .NET Framework jest wykonywanie kodu po raz pierwszy, nie jest zoptymalizowany pod kątem przez [optymalizacji sterowanej profilem](/cpp/build/profile-guided-optimizations). Dla każdej metody jej powinien zostać wyświetlony co najwyżej jeden raz w procesie.
+Jeśli nazwa metody zawiera **[ZIMNYCH]** , takich jak **mscorlib.ni! [ COLD]system.Reflection.CustomAttribute.IsDefined**, środowisko uruchomieniowe programu .NET Framework jest wykonywanie kodu po raz pierwszy, nie jest zoptymalizowany pod kątem przez [optymalizacji sterowanej profilem](/cpp/build/profile-guided-optimizations). Dla każdej metody jej powinien zostać wyświetlony co najwyżej jeden raz w procesie.
 
 Jeśli podczas ładowania kodu zajmuje znaczną ilość czasu dla żądania, żądanie jest pierwszy z nich można wykonać niezoptymalizowane część metody. Należy rozważyć użycie procesu rozgrzewania, który wykonuje część kodu, zanim do niego dostęp przez użytkowników.
 
@@ -95,7 +95,7 @@ Metody takie jak **SqlCommand.Execute** wskazują, że kod czeka na zakończenie
 
 **BLOCKED_TIME** wskazuje, że kod oczekuje na inny zasób, które mają być dostępne. Na przykład może być oczekiwanie obiektu synchronizacji, wątek ma być dostępny lub do zakończenia wniosku.
 
-### <a name="unmanaged-async"></a>Niezarządzany asynchroniczny
+### <a name="unmanaged-async"></a>Asynchroniczne niezarządzanych
 
 .NET framework emituje zdarzenia ETW i przekazuje identyfikatory aktywności między wątkami, tak aby wywołań asynchronicznych można śledzić w wątkach. Niezarządzany kod (natywnych) i niektóre starsze style kodu asynchronicznego brakuje tych zdarzeń i identyfikatory działania dzięki program profilujący nie może sprawdzić, jakie wątku i jakie funkcje są uruchamiane w wątku. To jest oznaczona etykietą "Async niezarządzanego" w stosie wywołań. Jeśli pobierzesz plik ETW, można użyć [narzędzia PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) można uzyskać lepszy wgląd w działania wykonywane.
 

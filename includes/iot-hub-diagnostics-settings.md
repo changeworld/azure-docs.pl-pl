@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 3893b79cee96c3928897f64f3601ebe4c490ebdd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146328"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>Włącz logowanie za pomocą ustawień diagnostycznych
@@ -25,15 +25,15 @@ ms.locfileid: "66146328"
 
 3. Wybierz **Włącz diagnostykę**.
 
-   ![Włącz diagnostykę](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
+   ![Włączanie diagnostyki](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
 
 4. Nazwij ustawień diagnostycznych.
 
 5. Wybierz gdzie chcesz wysłać dzienniki. Możesz wybrać dowolną kombinację trzech opcji:
 
-   * Zarchiwizuj na koncie magazynu
-   * Przesyłaj strumieniowo do centrum zdarzeń
-   * Wyślij do usługi Log Analytics
+   * Archiwizowanie na koncie magazynu
+   * Stream do Centrum zdarzeń
+   * Wysyłanie do usługi Log Analytics
 
 6. Wybierz operacje, które chcesz monitorować, a następnie włączyć dzienniki dla tych operacji. Dostępne są następujące operacje, które można raportować ustawień diagnostycznych:
 
@@ -42,7 +42,7 @@ ms.locfileid: "66146328"
    * Komunikaty z chmury do urządzenia
    * Operacje dotyczące tożsamości urządzenia
    * Operacje przekazywania plików
-   * Kierowanie komunikatów
+   * Routing wiadomości
    * Operacje bliźniaczej reprezentacji chmury do urządzenia
    * Operacje bliźniaczej reprezentacji urządzenia do chmury
    * Operacje bliźniaczych reprezentacji

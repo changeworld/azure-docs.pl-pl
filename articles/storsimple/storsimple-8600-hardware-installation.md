@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630941"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Je rozpakować, zamontować w stojaku i Podłączanie kabli do urządzenia StorSimple 8600
@@ -216,9 +216,9 @@ Aby zapewnić obsługę pracy w trybie failover nadmiarowe kontrolera, musisz ok
 | Label | Opis |
 | --- | --- |
 | A |Sieć LAN z dostępem do Internetu |
-| B |Kontrolera 0 |
-| C |MODULE PCM 0 |
-| D |Kontrolera 1 |
+| B |Kontroler 0 |
+| C |PCM 0 |
+| D |Kontroler 1 |
 | E |PCM 1 |
 | F |Kontrolera EBOD 0 |
 | G |Kontrolera EBOD 1 |

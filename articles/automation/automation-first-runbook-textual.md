@@ -11,10 +11,10 @@ ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1697f479cf013f2ef94dd5a8a2fc637d72e6e18a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60740011"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mój pierwszy element Runbook przepływu pracy programu PowerShell
@@ -117,7 +117,7 @@ Nowo utworzony element runbook nadal działa w trybie roboczym. Zanim będzie mo
 1. Zamknij stronę strumieni i strona zadania, aby wrócić do strony MyFirstRunbook.
 1. Kliknij przycisk **zadania** aby otworzyć stronę zadań dla tego elementu runbook. Ta strona zawiera listę wszystkich zadań utworzonych przez ten element runbook. Powinien być widoczny tylko jedno zadanie, ponieważ możesz uruchomiono zadanie tylko raz.
 
-   ![Stanowiska](media/automation-first-runbook-textual/runbook-control-job-tile.png)
+   ![Zadania](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
 1. Możesz kliknąć to zadanie, aby otworzyć stronę tego samego zadania wyświetlone wcześniej po uruchomieniu elementu runbook. Ta akcja umożliwia przechodzenie wstecz w czasie i wyświetlić szczegóły dowolnego zadania, które zostało utworzone dla określonego elementu runbook.
 

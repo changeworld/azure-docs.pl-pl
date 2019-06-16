@@ -10,10 +10,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 905100f8a1444f6f6ee18d3bf9e9eab2ede8c805
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60616234"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Korzystanie z przeglądarki zadań i widoku zadań usługi Azure Data Lake Analytics
@@ -50,7 +50,7 @@ Widok zadania zawiera:
     * Finalizowanie: Zadanie jest kończonych (np. Trwa kończenie pliku).
       
       Zadanie może zakończyć się niepowodzeniem na każdym etapie. Na przykład błędy kompilacji w fazie przygotowanie błędy przekroczenia limitu czasu w fazie znajdujących się kolejce, a błędy wykonania w fazie uruchamiania itp.
-  * Informacje podstawowe
+  * Podstawowe informacje
     
       Informacje podstawowe zadania wyświetlone w dolnej części panel Podsumowanie zadania.
     
@@ -69,7 +69,7 @@ Widok zadania zawiera:
     * Liczba bajtów odczytanych/zapisanych: Liczba bajtów, które zostały odczytanych/zapisanych od zadania został uruchomiony.
     * Całkowita liczba wierzchołków: Zadanie jest podzielony na wiele fragmentów zadań, każdy element pracy jest nazywany wierzchołka. Tę wartość w tym artykule opisano jak wiele fragmentów zadań składa się zadania. Wierzchołek można rozważyć jako jednostka podstawowy proces alias usługi Azure Data Lake Analytics jednostki (ADLAU), a wierzchołki mogą być uruchamiane w równoległości. 
     * Ukończone lub uruchomienie/nie powiodła się: Liczba wierzchołków ukończone lub uruchomienie/nie powiodła się. Wierzchołki może zakończyć się niepowodzeniem z powodu błędów kodu i systemie zarówno użytkowników, ale ponownych prób systemu nie powiodło się wierzchołki automatycznie kilka razy. Wierzchołek nadal nie powiodło się po ponowieniu próby, całą pracę zakończy się niepowodzeniem.
-* Graf zadania
+* Wykres zadania
   
     Skrypt U-SQL reprezentuje logiki przekształcania danych wejściowych w dane wyjściowe. Skrypt jest skompilowany i zoptymalizowane pod kątem do planu wykonania fizycznych w fazie przygotowanie. Wykres zadania jest pokazanie plan wykonania fizycznych.  Na poniższym diagramie przedstawiono proces:
   

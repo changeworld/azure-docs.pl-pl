@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334116"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics
@@ -21,7 +21,7 @@ Dowiedz się, jak i analizowanie dzienników witryn sieci Web przy użyciu usłu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Program Visual Studio 2015 lub Visual Studio 2013**.
-* **[Data Lake Tools dla Visual Studio](https://aka.ms/adltoolsvs)**.
+* **[Data Lake Tools dla Visual Studio](https://aka.ms/adltoolsvs)** .
 
     Po zainstalowaniu narzędzi Data Lake Tools for Visual Studio zobaczysz **usługi Data Lake** pozycja **narzędzia** menu w programie Visual Studio:
 

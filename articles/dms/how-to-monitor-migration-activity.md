@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60532806"
 ---
 # <a name="monitor-migration-activity"></a>Monitorowanie działań migracji
@@ -50,7 +50,7 @@ Poniższa tabela zawiera listę pól, w bloku bazy danych na poziomie i w tym ar
       <td>Działania migracji zakończyła się pomyślnie bez problemów.</td>
     </tr>
     <tr>
-      <td>Błąd</td>
+      <td>Wystąpił błąd</td>
       <td>Migracja nie powiodła się. Wybierz link "Patrz szczegóły błędu" w obszarze Szczegóły migracji pełną komunikatu o błędzie.</td>
     </tr>
     <tr>
@@ -64,7 +64,7 @@ Poniższa tabela zawiera listę pól, w bloku bazy danych na poziomie i w tym ar
     </tr>
     <tr>
       <td>Zakończ</td>
-      <td>Ukończono migrację.</td>
+      <td>Migracja została zakończona.</td>
     </tr>
     <tr>
       <td>Niepowodzenie</td>
@@ -84,7 +84,7 @@ Poniższa tabela zawiera listę pól, w bloku bazy danych na poziomie i w tym ar
       <td>Po zakończeniu ładowania początkowego DMS spowoduje oznaczenie bazy danych jako gotowe do uruchomienia produkcyjnego. Należy sprawdzić, jeśli dane złapał ciągłej synchronizacji.</td>
     </tr>
     <tr>
-      <td>Wszystkie zmiany zostały zastosowane</td>
+      <td>Wszystkie zmiany zastosowane</td>
       <td>Zakończeniu ładowania początkowego i ciągłej synchronizacji. Ten stan występuje także po pomyślnym baza danych jest uruchomienie produkcyjne.</td>
     </tr>
     <tr>

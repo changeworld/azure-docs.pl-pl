@@ -11,10 +11,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 396af2dfd9fc53c080163a27e376328c1369d5e1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991467"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
@@ -179,7 +179,7 @@ Obsługiwane:
 
 - Tworzenie i usuwanie kontenera
 - Pobierz kontener właściwości i metadanych
-- Wyświetl listę obiektów blob
+- Wyświetlanie listy obiektów blob
 - Pobieranie i ustawianie ACL kontenera
 - Metadane kontenera zestawu
 
@@ -214,7 +214,7 @@ Nieobsługiwane:
 
 - Umieść blok z adresu URL
 
-## <a name="feedback"></a>Opinie
+## <a name="feedback"></a>Opinia
 
 Twoja opinia jest ważna do nam tego modułu i jego funkcje przydatne i łatwych w użyciu. Podziel się swoją opinię i Daj nam znać, jak możemy ulepszyć.
 

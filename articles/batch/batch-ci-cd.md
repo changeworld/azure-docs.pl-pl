@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65541740"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Potoki usługi Azure umożliwia tworzenie i wdrażanie rozwiązań HPC
@@ -418,13 +418,13 @@ Istnieje szereg kroków związanych z wdrażaniem infrastruktury. Jak użyliśmy
     * **Akcja**: Utwórz lub zaktualizuj grupę zasobów
     * **Resource Group**: $(resourceGroupName)
     * **Lokalizacja**: $(location)
-    * **Szablon**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/storageAccount.json
+    * **Szablon**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
     * **Przesłanianie parametrów szablonu**: $(storageAccountName) - nazwa konta
 
 1. Przekaż artefakty z kontroli źródła do konta magazynu. Brak zadań potoku usługi Azure, które należy wykonać. W ramach tego zadania adres URL kontenera konta magazynu i tokenu sygnatury dostępu Współdzielonego może zostać zwrócone do zmiennej w potokach platformy Azure. Oznacza to, że może zostać użyte w tej fazie agenta.
 
     Dodaj **kopiowania plików na platformę Azure** zadań, a następnie ustaw następujące właściwości:
-    * **Źródło:** $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates /
+    * **Źródło:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates /
     * **Typ połączenia usługi Azure**: Azure Resource Manager
     * **Subskrypcja platformy Azure:** Wybierz odpowiednią subskrypcję platformy Azure
     * **Typ docelowy**: Obiekt blob platformy Azure
@@ -441,7 +441,7 @@ Istnieje szereg kroków związanych z wdrażaniem infrastruktury. Jak użyliśmy
     * **Akcja**: Utwórz lub zaktualizuj grupę zasobów
     * **Resource Group**: $(resourceGroupName)
     * **Lokalizacja**: $(location)
-    * **Template**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/deployment.json
+    * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
     * **Przesłanianie parametrów szablonu**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Powszechną praktyką jest używanie zadań usługi Azure Key Vault. Jeśli nazwa główna usługi (połączenie z subskrypcją platformy Azure) zawiera odpowiedni dostęp zasad zabezpieczeń ustawionych, można pobrać Wpisy tajne z usługi Azure Key Vault i być używane jako zmienne w potoku. Nazwa wpisu tajnego zostaną ustawione przy użyciu skojarzona wartość. Na przykład klucz tajny sshPassword może odwoływać się za pomocą $(sshPassword) w definicji wydania.

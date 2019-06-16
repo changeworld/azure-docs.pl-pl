@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
 ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66130984"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights przy użyciu programu PowerShell
@@ -106,19 +106,19 @@ Ta zasada może służyć do metryki zgłoszony za pomocą [parametr miary](../.
 | `clientPerformance.networkConnection.value` |Czas połączenia sieciowego podczas ładowania strony |Czas przyjmuje przeglądarki, aby nawiązać połączenie z siecią. Może być równa 0, jeśli w pamięci podręcznej. |
 | `clientPerformance.receiveRequest.value` |Czas odpowiedzi odbierania |Czas między przeglądarką, wysyłając żądanie do uruchamiania na odebranie odpowiedzi. |
 | `clientPerformance.sendRequest.value` |Czas żądania wysyłania |Czas poświęcony przez przeglądarkę, aby wysłać żądanie. |
-| `clientPerformance.total.value` |Czas ładowania strony przeglądarki |Czas od wysłania żądania użytkownika do załadowania modelu DOM, arkuszy stylów, skryptów i obrazów. |
+| `clientPerformance.total.value` |Czas ładowania strony przeglądarki |Czas od żądania użytkownika do modelu DOM, arkuszy stylów, skrypty i obrazy są ładowane. |
 | `performanceCounter.available_bytes.value` |Dostępna pamięć |Pamięć fizyczna dostępna natychmiast dla procesów lub do użycia przez system. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Liczba operacji we/wy procesu |Łączna liczba bajtów odczytanych i zapisanych w ciągu sekundy w plikach i sieci oraz na urządzeniach. |
+| `performanceCounter.io_data_bytes_per_sec.value` |Proces we/wy |Całkowita liczba bajtów na sekundę odczytywanych i zapisywanych na plikach i sieci oraz urządzenia. |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |częstotliwość występowania wyjątków |Wyjątki zgłoszone w ciągu sekundy. |
 | `performanceCounter.percentage_processor_time.value` |Procesy — procesor CPU |Wartość procentową czasu wszystkie wątki procesów używana przez procesor do wykonywania instrukcji w procesie aplikacji. |
-| `performanceCounter.percentage_processor_total.value` |Czas procesora |Procent czasu poświęconego przez procesor na aktywne wątki. |
+| `performanceCounter.percentage_processor_total.value` |Czas procesora |Procent czasu, jaki procesor zużywa wątki. |
 | `performanceCounter.process_private_bytes.value` |Prywatne bajty procesu |Pamięć przypisana wyłącznie do procesów monitorowanej aplikacji. |
-| `performanceCounter.request_execution_time.value` |Czas wykonywania żądania programu ASP.NET |Czas wykonywania najnowszego żądania. |
+| `performanceCounter.request_execution_time.value` |Czas wykonywania żądania programu ASP.NET |Godzina wykonania ostatniego żądania. |
 | `performanceCounter.requests_in_application_queue.value` |Żądania programu ASP.NET w kolejce do wykonania |Długość kolejki żądań aplikacji. |
-| `performanceCounter.requests_per_sec.value` |Liczba żądań programu ASP.NET |Liczba wszystkich żądań wysłanych do aplikacji z platformy ASP.NET na sekundę. |
+| `performanceCounter.requests_per_sec.value` |Liczba żądań programu ASP.NET |Liczba wszystkich żądań wysłanych do aplikacji na sekundę z platformy ASP.NET. |
 | `remoteDependencyFailed.durationMetric.count` |Błędy zależności |Liczba wywołań zakończonych niepowodzeniem wykonanych przez aplikację serwera z zasobami zewnętrznymi. |
 | `request.duration` |Czas odpowiedzi serwera |Czas między odebraniem żądania HTTP i zakończeniem wysyłania odpowiedzi. |
-| `request.rate` |Współczynnik żądań |Liczba wszystkich żądań do aplikacji na sekundę. |
+| `request.rate` |Liczba żądań |Liczba wszystkich żądań do aplikacji na sekundę. |
 | `requestFailed.count` |Żądania zakończone niepowodzeniem |Żądania liczba HTTP, które spowodowało kod odpowiedzi > = 400 |
 | `view.count` |Wyświetlenia strony |Liczba żądań użytkowników klientów dla strony sieci web. Odfiltrowane ruchu syntetycznego. |
 | {niestandardowe metryki nazwę} |{Nazwa metryki} |Wartość metryki zgłoszone przez [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) lub [pomiarów parametr wywołania śledzenia](../../azure-monitor/app/api-custom-events-metrics.md#properties). |

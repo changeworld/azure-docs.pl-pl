@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
 ms.openlocfilehash: 562ce8a4267370be9b049e3b56f213f82deb89c0
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734986"
 ---
 # <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig-v021-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Set-ApplicationInsightsMonitoringConfig (v0.2.1-alpha)

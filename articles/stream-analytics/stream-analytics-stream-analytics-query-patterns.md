@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761967"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady dla typowych wzorców użycia usługi Stream Analytics zapytania
@@ -238,7 +238,7 @@ GROUP BY
 ```
 
 
-**Objaśnienie:**
+**Objaśnienie:** 
 **COUNT (DISTINCT upewnij)** zwraca liczbę unikatowych wartości w **wprowadzić** kolumny w przedziale czasu.
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Przykład zapytania: Określić, jeśli wartość została zmieniona
@@ -422,10 +422,10 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
 
 **Dane wejściowe**:  
 
-| Użytkownik | Cecha | Zdarzenie | Time |
+| Użytkownik | Cecha | Wydarzenie | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Rozpocznij |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |Koniec |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Uruchamianie |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
 
 **Dane wyjściowe**:  
 
@@ -443,7 +443,7 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
         Event = 'end'
 ```
 
-**Explanation**: Użyj **ostatniego** funkcję, aby pobrać ostatniego **czasu** wartości w przypadku typu zdarzenia **Start**. **Ostatniego** używa funkcji **PARTITION BY [użytkownik]** do wskazania, że wynik jest obliczana na unikatowych użytkowników. Zapytanie ma 1-godzinnego próg Maksymalny odstęp czasu między **Start** i **zatrzymać** zdarzeń, ale można skonfigurować zgodnie z potrzebami **(LIMIT DURATION(hour, 1)**.
+**Explanation**: Użyj **ostatniego** funkcję, aby pobrać ostatniego **czasu** wartości w przypadku typu zdarzenia **Start**. **Ostatniego** używa funkcji **PARTITION BY [użytkownik]** do wskazania, że wynik jest obliczana na unikatowych użytkowników. Zapytanie ma 1-godzinnego próg Maksymalny odstęp czasu między **Start** i **zatrzymać** zdarzeń, ale można skonfigurować zgodnie z potrzebami **(LIMIT DURATION(hour, 1)** .
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Przykład zapytania: Wykrywanie warunku czas trwania
 **Opis**: Sprawdzanie, ile warunku wystąpił.
@@ -506,7 +506,7 @@ Na przykład załóżmy, że usterka spowodowała wszystkich samochodów niepopr
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**Dane wyjściowe (10 pierwszych wierszy)**:
+**Dane wyjściowe (10 pierwszych wierszy)** :
 
 | windowend | lastevent.t | lastevent.value |
 | --- | --- | --- |
@@ -696,7 +696,7 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 
 **Explanation**: [COUNT (DISTINCT czasu)](/stream-analytics-query/count-azure-stream-analytics) zwraca liczbę unikatowych wartości w kolumnie czas w przedziale czasu. Dane wyjściowe tego kroku można następnie użyć do obliczenia średniej na urządzeniu przez odrzucenie duplikatów.
 
-## <a name="get-help"></a>Uzyskaj pomoc
+## <a name="get-help"></a>Uzyskiwanie pomocy
 
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

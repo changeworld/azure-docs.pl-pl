@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
 ms.openlocfilehash: 36cb2462a47f9d175ca25bbbde46a14009637db0
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65907884"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Zarządzanie roboczym usługi Log Analytics w usłudze Azure Monitor przy użyciu programu PowerShell

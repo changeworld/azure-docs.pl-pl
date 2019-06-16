@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: ce04e19022a9902c228079e866c192985694134c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799242"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Samouczek: Korzystanie z interfejsu API usługi Video Indexer
@@ -40,14 +40,14 @@ W tym artykule pokazano, jak deweloperzy mogą korzystać z [interfejsu API usł
 
     Wybierz kartę [Products](https://api-portal.videoindexer.ai/products) (Produkty). Następnie wybierz pozycję Authorization (Autoryzacja) i subskrybuj ten element. 
     
-    ![Zarejestruj się](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Rejestrowanie](./media/video-indexer-use-apis/video-indexer-api02.png)
 
     > [!NOTE]
     > Nowi użytkownicy automatycznie subskrybują autoryzację.
     
     Po subskrybowaniu będzie można wyświetlić subskrypcję, a także klucze podstawowy i pomocniczy. Te klucze należy chronić. Powinno się ich używać tylko w kodzie serwera. Nie powinny być dostępne po stronie klienta (w plikach .js, .html itp.).
 
-    ![Zarejestruj się](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Rejestrowanie](./media/video-indexer-use-apis/video-indexer-api03.png)
 
 > [!TIP]
 > Usługa Video Indexer może używać klucza pojedynczej subskrypcji do łączenia się z wieloma kontami usługi Video Indexer. Te konta usługi Video Indexer można następnie połączyć z różnymi kontami usługi Media Services.
@@ -99,7 +99,7 @@ Identyfikator konta to parametr wymagany we wszystkich wywołaniach interfejsu A
     https://www.videoindexer.ai/accounts/00000000-f324-4385-b142-f77dacb0a368/videos/d45bf160b5/
     ```
 
-## <a name="recommendations"></a>Rekomendacje
+## <a name="recommendations"></a>Zalecenia
 
 W tej sekcji przedstawiono kilka zaleceń dotyczących korzystania z interfejsu API usługi Video Indexer.
 

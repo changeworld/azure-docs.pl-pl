@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606260"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB tabel interfejsu API platformy .NET: Pobierz i informacje o wersji
@@ -84,7 +84,7 @@ Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej 
 Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK są odrzucane przez usługę.
 <br/>
 
-| Wersja | Data wydania | Data wygaśnięcia |
+| Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [2.1.0](#2.1.0) |22 stycznia 2019 r.|01 kwietnia 2020 r. |
 | [2.0.0](#2.0.0) |26 września 2018 r.|01 marca 2020 r. |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 39a757900b4307d702a0ce0ce1c20694418aa8dd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65872832"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak uruchamiać funkcje trwałe jako zadania Webjob
@@ -53,9 +53,9 @@ W tym artykule wyjaśniono, jak opracować Projekt 2.x zestawu SDK usługi WebJo
 
 Aby uruchomić funkcje trwałe jako zadania Webjob, należy najpierw utworzyć aplikację konsoli. Projekt zestawu SDK usługi WebJobs jest po prostu projekt aplikacji konsoli przy użyciu odpowiednich zainstalowanych pakietów NuGet.
 
-W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **Windows Classic Desktop** > **Aplikacja konsoli (.NET Framework)**. W pliku projektu `TargetFrameworkVersion` powinien być `v4.6.1`.
+W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **Windows Classic Desktop** > **Aplikacja konsoli (.NET Framework)** . W pliku projektu `TargetFrameworkVersion` powinien być `v4.6.1`.
 
-Program Visual Studio zawiera również szablonu projektu zadania WebJob, którego można użyć, wybierając **chmury** > **zadań WebJob platformy Azure (.NET Framework)**. Ten szablon instaluje wielu pakietów, z których część może nie być konieczny.
+Program Visual Studio zawiera również szablonu projektu zadania WebJob, którego można użyć, wybierając **chmury** > **zadań WebJob platformy Azure (.NET Framework)** . Ten szablon instaluje wielu pakietów, z których część może nie być konieczny.
 
 ## <a name="install-nuget-packages"></a>Instalowanie pakietów NuGet
 
@@ -222,7 +222,7 @@ W tym artykule wyjaśniono, jak opracować Projekt 2.x zestawu SDK usługi WebJo
 
 Główne zmiana wprowadzona polega na użyciu platformy .NET Core, a nie .NET Framework. Aby utworzyć projekt 3.x zestawu SDK usługi WebJobs, instrukcje są takie same, z uwzględnieniem poniższych wyjątków:
 
-1. Tworzenie aplikacji konsolowej .NET Core. W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **platformy .NET Core** > **Aplikacja konsoli (.NET Core)**. Plik projektu określa, że `TargetFramework` jest `netcoreapp2.x`.
+1. Tworzenie aplikacji konsolowej .NET Core. W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **platformy .NET Core** > **Aplikacja konsoli (.NET Core)** . Plik projektu określa, że `TargetFramework` jest `netcoreapp2.x`.
 
 1. Wybierz wersję zestawu SDK usługi WebJobs 3.x następujące pakiety:
 

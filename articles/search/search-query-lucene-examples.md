@@ -11,10 +11,10 @@ ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 467c323a0b669e70e12f801fd8fdd6df119e793d
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595902"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Przykłady zapytań przy użyciu składni wyszukiwania w usłudze "pełnej" Lucene (zaawansowanych zapytań w usłudze Azure Search)
@@ -67,7 +67,7 @@ Wklej ten adres URL do klienta REST, jako kroku weryfikacji i wyświetlić struk
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-Ciąg zapytania **`search=*`**, odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. To najprostsza wyszukiwania, które można wykonać.
+Ciąg zapytania **`search=*`** , odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. To najprostsza wyszukiwania, które można wykonać.
 
 Opcjonalnie można dodać **`$count=true`** do adresu URL, aby zwrócić liczbę dokumentów spełniających kryteria wyszukiwania. W ciągu wyszukiwania puste to wszystkie dokumenty w indeksie (około 2800 w przypadku Pokazowa).
 

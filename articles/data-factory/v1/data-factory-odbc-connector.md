@@ -14,14 +14,14 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0db301109da657083d121cc8b986372adcb54171
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389042"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Przenieś magazyny danych ODBC z danych za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-odbc-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-odbc.md)
 
@@ -139,7 +139,7 @@ Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zesta
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| tableName |Nazwa tabeli w magazynie danych ODBC. |Yes |
+| tableName |Nazwa tabeli w magazynie danych ODBC. |Tak |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasady są dostępne dla wszystkich typów działań.
@@ -150,7 +150,7 @@ W działaniu kopiowania, gdy źródłem jest typu **RelationalSource** (w tym OD
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Tak |
+| query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Yes |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z magazynu danych ODBC do obiektów Blob platformy Azure

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 48a84520a61d19968b467091871459e21898dd5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60564246"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Rozpoczynanie pracy z wdrażaniem usługi Azure CDN
@@ -86,7 +86,7 @@ Za pomocą *app.js* Otwórz w naszego edytora, Pozwól nam podstawowa struktura 
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Należy zdefiniować kilka stałych, używanymi przez naszych metod.  Dodaj następujący fragment kodu.  Koniecznie Zastąp symbole zastępcze, w tym  **&lt;nawiasy kątowe&gt;**, przy użyciu własnych wartości, zgodnie z potrzebami.
+2. Należy zdefiniować kilka stałych, używanymi przez naszych metod.  Dodaj następujący fragment kodu.  Koniecznie Zastąp symbole zastępcze, w tym  **&lt;nawiasy kątowe&gt;** , przy użyciu własnych wartości, zgodnie z potrzebami.
    
     ``` javascript
     //Tenant app constants

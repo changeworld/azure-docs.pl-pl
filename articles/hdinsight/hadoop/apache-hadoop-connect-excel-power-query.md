@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.openlocfilehash: e35e86bee4dfee21d0a98867c3e0d1d7850ed0ec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762008"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Łączenie programu Excel do platformy Apache Hadoop za pomocą dodatku Power Query
@@ -41,7 +41,7 @@ Dodatek Power Query dla programu Excel można łatwo importować dane z klastra 
 
    - Excel 2016
 
-     - Kliknij przycisk **danych** menu, kliknij przycisk **Pobierz dane** z **Pobierz i Transformuj dane** wstążki, kliknij przycisk **z platformy Azure**, a następnie kliknij przycisk **z platformy Azure HDInsight(HDFS)**.
+     - Kliknij przycisk **danych** menu, kliknij przycisk **Pobierz dane** z **Pobierz i Transformuj dane** wstążki, kliknij przycisk **z platformy Azure**, a następnie kliknij przycisk **z platformy Azure HDInsight(HDFS)** .
 
        ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
@@ -54,10 +54,10 @@ Dodatek Power Query dla programu Excel można łatwo importować dane z klastra 
        **Uwaga:** Jeśli nie widzisz **dodatku Power Query** przejdź do menu **pliku** > **opcje** > **Add-ins**i wybierz  **Dodatki COM** z listy rozwijanej **Zarządzaj** u dołu strony. Wybierz **Przejdź...**  znajdujący się i sprawdź, czy zostało zaznaczone pole dla dodatku Power Query dla dodatku programu Excel.
        
        **Uwaga:** Dodatku Power Query pozwala również na importowanie danych z systemu plików HDFS, klikając **z innych źródeł**.
-4. Aby uzyskać **nazwa konta**, wprowadź nazwę konta magazynu obiektów Blob platformy Azure skojarzony z klastrem, a następnie kliknij przycisk **OK**. To konto może być domyślne konto magazynu lub połączone konto magazynu.  Format jest *https://&lt;StorageAccountName >.blob.core.windows.net/*.
+4. Aby uzyskać **nazwa konta**, wprowadź nazwę konta magazynu obiektów Blob platformy Azure skojarzony z klastrem, a następnie kliknij przycisk **OK**. To konto może być domyślne konto magazynu lub połączone konto magazynu.  Format jest *https://&lt;StorageAccountName >.blob.core.windows.net/* .
 5. Aby uzyskać **klucz konta**, wprowadź klucz dla konta usługi Blob storage, a następnie kliknij przycisk **Zapisz**. (Należy wprowadzić czas informacji tylko pierwszy konta dostępu tego magazynu.)
 6. W **Nawigator** w okienku po lewej stronie edytora zapytań, kliknij dwukrotnie nazwę kontenera magazynu obiektów Blob. Domyślnie nazwa kontenera jest taką samą nazwę jak nazwa klastra.
-7. Znajdź **HiveSampleData.txt** w **nazwa** kolumny (ścieżka folderu jest **... / hive/warehouse/hivesampletable/**), a następnie kliknij przycisk **binarne** w lewej części HiveSampleData.txt. HiveSampleData.txt jest dostarczany z klastrem usługi. Opcjonalnie można użyć własnego pliku.
+7. Znajdź **HiveSampleData.txt** w **nazwa** kolumny (ścieżka folderu jest **... / hive/warehouse/hivesampletable/** ), a następnie kliknij przycisk **binarne** w lewej części HiveSampleData.txt. HiveSampleData.txt jest dostarczany z klastrem usługi. Opcjonalnie można użyć własnego pliku.
    
     ![HDI.PowerQuery.ImportData][image-hdi-powerquery-importdata]
 8. Jeśli chcesz, można zmienić nazwy kolumny. Gdy wszystko będzie gotowe, kliknij przycisk **Zamknij i załaduj**.  Dane zostały załadowane do skoroszytu:

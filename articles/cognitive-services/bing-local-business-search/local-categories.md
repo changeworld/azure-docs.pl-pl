@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 61bd230ffdb79b31390e96179e5beb3646902142
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796730"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Przeszukaj kategorie lokalnych firm interfejsu API wyszukiwania Bing
@@ -26,7 +26,7 @@ Lokalnych firm interfejsu API wyszukiwania Bing umożliwia wyszukiwanie jednoste
 Następujące typy definiują główne kategorie wyszukiwania.  Można określić więcej niż jednej kategorii przy użyciu rozdzielana przecinkami lista przypisane do `localCategories` parametru.  
 - EatDrink 
 - SeeDo 
-- Sklep 
+- Rejestrator 
 - HotelsAndMotels 
 - BanksAndCreditUnions 
 - Parkowania 
@@ -66,7 +66,7 @@ Podkategorie są przekazywane w taki sam sposób jak `localCategories`. Podkateg
 | MovieTheaters | Muzeów | Parki |
 | SightseeingTours | TouristInformation | Zoo |
  
-### <a name="shop"></a>Sklep 
+### <a name="shop"></a>Rejestrator 
 |  |  |  |
 | -- | -- | -- |
 | AntiqueStores | Księgarniach | CDAndRecordStores |

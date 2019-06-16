@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 7cc52493ec0e2b9c81d52da4bb22102c2c7e5e5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60712492"
 ---
 # <a name="project-url-preview-endpoint"></a>Podgląd adresu URL punktu końcowego projektu
@@ -31,7 +31,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ```
 
 ### <a name="query-parameters"></a>Parametry zapytania
-|Name (Nazwa)|Wartość|Type|Wymagane|  
+|Name (Nazwa)|Wartość|Typ|Wymagane|  
 |----------|-----------|----------|--------------|  
 |q|Adres URL, aby wyświetlić podgląd|String |Yes|
 |bezpieczne wyszukiwanie|Nielegalnych treści dla dorosłych lub pirackich zawartości jest zablokowany kod błędu: 400 i *isFamilyFriendly* flaga nie jest zwracana. <p>Treści dla dorosłych prawnych poniżej jest to zachowanie. Zwraca wartość Kod stanu 200, a *isFamilyFriendly* flaga jest ustawiona na wartość false.<ul><li>bezpieczne wyszukiwanie = ograniczeniami: Tytuł i opis, adres URL obrazu nie zostaną zwrócone.</li><li>bezpieczne wyszukiwanie = średni; Uzyskaj tytuł, adres URL i opis, ale nie opisowy obraz.</li><li>bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie odpowiedzi obiektów/elementy — tytuł, adres URL, opis i obraz.</li></ul> |String|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = strict.| 

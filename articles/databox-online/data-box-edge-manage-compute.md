@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953124"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Zarządzanie obliczeniami na krawędzi sieci Azure Data Box
@@ -34,7 +34,7 @@ Zdarzenia są rzeczy, które odbywa się w Twoim środowisku chmury lub na urzą
 - **Zaplanowane**: Te wyzwalacze są w odpowiedzi na harmonogram, który można zdefiniować przy użyciu datę rozpoczęcia, godzinę rozpoczęcia i interwału powtarzania.
 
 
-### <a name="add-a-trigger"></a>Dodaj wyzwalacz
+### <a name="add-a-trigger"></a>Dodawanie wyzwalacza
 
 Wykonaj następujące kroki w witrynie Azure portal, aby utworzyć wyzwalacz.
 
@@ -76,7 +76,7 @@ Wykonaj następujące kroki w witrynie Azure portal, można usunąć wyzwalacza.
 
 3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**.
 
-    ![Potwierdź usuwanie](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Potwierdzenie usunięcia](media/data-box-edge-manage-compute/add-trigger-1.png)
 
 Lista aktualizacji wyzwalaczy w celu odzwierciedlenia usunięcia.
 

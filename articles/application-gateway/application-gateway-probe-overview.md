@@ -6,14 +6,13 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-origin.date: 08/06/2018
-ms.date: 04/16/2019
-ms.author: v-junlch
+ms.date: 8/6/2018
+ms.author: victorh
 ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66135191"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Omówienie monitorowania kondycji bramy aplikacji
@@ -86,7 +85,7 @@ Poniższa tabela zawiera definicje dla właściwości sondę kondycji niestandar
 | Name (Nazwa) |Nazwa sondy. Ta nazwa jest używana do odwoływania się do sondowania w ustawieniach protokołu HTTP zaplecza. |
 | Protocol |Protokół używany do wysyłania sondy. Sonda korzysta z protokołu, zdefiniowane w ustawieniach HTTP zaplecza |
 | Host |Nazwa hosta, aby wysłać sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowany w usłudze Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej. |
-| `Path` |Ścieżka względna sondy. Nieprawidłowa ścieżka zaczyna się od "/". |
+| Ścieżka |Ścieżka względna sondy. Nieprawidłowa ścieżka zaczyna się od "/". |
 | Interval |Interwał sondy w sekundach. Ta wartość jest odstęp czasu między dwóch następujących po sobie sondy. |
 | Limit czasu |Sonda limitu czasu w sekundach. Jeśli prawidłowe odpowiedzi nie zostanie odebrany w ramach tego limitu czasu, sondy jest oznaczony jako zakończony niepowodzeniem.  |
 | Próg złej kondycji |Sonda liczbę ponownych prób. Serwer zaplecza jest oznaczony w dół po liczba niepowodzeń sondy kolejnych osiąga próg złej kondycji. |
@@ -105,5 +104,3 @@ Ponadto wychodzące połączenie z Internetem nie mogą zostać zablokowane, a r
 Po zapoznaniu się z informacji na temat monitorowania kondycji bramy Application Gateway, można skonfigurować [sondy kondycji niestandardowe](application-gateway-create-probe-portal.md) w witrynie Azure portal lub [sondy kondycji niestandardowe](application-gateway-create-probe-ps.md) przy użyciu programu PowerShell i usługi Azure Resource Manager model wdrażania.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
-
-<!-- Update_Description: wording update -->

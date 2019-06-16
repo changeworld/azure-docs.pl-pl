@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: c7f5fda405ca0e5ba9cf1dd0ed44c47cd3ee74b1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65949863"
 ---
 #   <a name="text-split-cognitive-skill"></a>Tekst, Podziel umiejętności cognitive
@@ -43,7 +43,7 @@ Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru       | Opis      |
 |----------------------|------------------|
-| text  | Tekst, który można podzielić na podciąg. |
+| tekst  | Tekst, który można podzielić na podciąg. |
 | languageCode  | (Opcjonalnie) Kod języka dla danego dokumentu.  |
 
 ## <a name="skill-outputs"></a>Dane wyjściowe umiejętności 

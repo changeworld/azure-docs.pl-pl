@@ -5,13 +5,13 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140678"
 ---
-**Zaplecze platformy .NET (C#)**:
+**Zaplecze platformy .NET (C#)** :
   
 1. W programie Visual Studio, kliknij prawym przyciskiem myszy projekt serwera, a następnie kliknij przycisk **Zarządzaj pakietami NuGet**, wyszukaj `Microsoft.Azure.NotificationHubs`, następnie kliknij przycisk **zainstalować**. Spowoduje to zainstalowanie biblioteki usługi Notification Hubs do wysyłania powiadomień z zaplecza.
 2. W projekcie programu Visual Studio wewnętrznej bazy danych otwórz **kontrolerów** > **TodoItemController.cs**. W górnej części pliku Dodaj następujący kod `using` instrukcji:

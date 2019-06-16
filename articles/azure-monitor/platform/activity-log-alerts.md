@@ -9,15 +9,15 @@ ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 5d0819f71405b1bf1d4bef57a8b93d57bc879087
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244968"
 ---
 # <a name="alerts-on-activity-log"></a>Alerty dotyczące dzienników aktywności 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Alerty dzienników aktywności są alerty, które aktywują po wystąpieniu nowego zdarzenia dziennika aktywności, który spełnia warunki określone w alercie. Są one zasobów platformy Azure, dzięki czemu mogą być tworzone przy użyciu szablonu usługi Azure Resource Manager. One również mogą być tworzone, zaktualizował lub usunął w witrynie Azure portal. Ten artykuł wprowadza pojęcia dotyczące alertów dziennika aktywności. Go następnie pokazano, jak skonfigurować alertów dla zdarzenia dziennika aktywności przy użyciu witryny Azure portal. Aby uzyskać więcej informacji na temat użycia, zobacz [tworzenie i zarządzanie nimi alertów dziennika aktywności](alerts-activity-log.md).
 
 > [!NOTE]

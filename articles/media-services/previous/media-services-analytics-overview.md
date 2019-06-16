@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
 ms.openlocfilehash: ceaf4d3db71d99c3e87157f9847312fdf4000026
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991786"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Analiza multimediów na platformie Media Services 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Więcej organizacji używasz wideo jako preferowany średni szkolenie pracowników, angażować swoich klientów i udokumentować funkcje biznesowe. Przetwarzanie zapewnia sposób przechowywania, przesyłanie strumieniowe i dostępu do tych duże pliki multimedialne w chmurze. Ale wraz z rozwojem firmy biblioteki zawartości filmu wideo muszą równie skutecznym sposobem przeprowadzanie analizy zawartości. 
 
 Aby zaspokoić te potrzeby rosnący, usługi Azure Media Services oferuje analizy multimediów Azure. Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają organizacjom i przedsiębiorstwom pozyskiwanie przydatnych informacji z posiadanych plików wideo. Utworzony za pomocą podstawowe składniki platformy Media Services, usługi Media Analytics może obsłużyć przetwarzanie na dużą skalę, od pierwszego dnia multimediów.
@@ -124,7 +124,7 @@ Odpowiedź:
 ## <a name="demos"></a>Pokazy
 Zobacz [pokazy analizy multimediów Azure](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Przesyłanie opinii
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Pokrewne artykuły:

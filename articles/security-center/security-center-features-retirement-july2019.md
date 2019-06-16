@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
 ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952140"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcje usługi Security Center (lipiec 2019 r.)
@@ -100,7 +100,7 @@ Firma Microsoft jest usunięcie **przejdź do mapy zdarzeń zabezpieczeń** przy
 
 Po wybraniu **przejdź do mapy zdarzeń zabezpieczeń** przycisku, Otwórz pulpit nawigacyjny analizy zagrożeń. Firma Microsoft przechodzisz na emeryturę pulpit nawigacyjny analizy zagrożeń.  
 
-![Pulpit nawigacyjny Analiza zagrożeń][11]
+![Pulpit nawigacyjny analizy zagrożeń][11]
 
 Możesz wybrać obszar roboczy, aby wyświetlić jego pulpit nawigacyjny analizy zagrożeń, należy otworzyć ekran mapy (wersja zapoznawcza) alerty zabezpieczeń w usłudze Log Analytics. Firma Microsoft przechodzisz na emeryturę ten ekran.
 
@@ -110,7 +110,7 @@ Istniejące dane pozostaną dostępne w rozwiązaniu zabezpieczenia usługi Log 
 
 ### <a name="security-events-map---the-new-experience"></a>Mapy zdarzeń zabezpieczeń — nowe środowisko
 
-Zachęcamy do korzystania z funkcji mapy alerty utworzone w usłudze Security Center: **Mapa alertów zabezpieczeń (wersja zapoznawcza)**. Ta funkcja zapewnia zoptymalizowane środowisko i działa we wszystkich subskrypcji i obszarów roboczych skojarzone. Jego daje ogólny widok w środowisku i nie jest koncentruje się na jeden obszar roboczy.
+Zachęcamy do korzystania z funkcji mapy alerty utworzone w usłudze Security Center: **Mapa alertów zabezpieczeń (wersja zapoznawcza)** . Ta funkcja zapewnia zoptymalizowane środowisko i działa we wszystkich subskrypcji i obszarów roboczych skojarzone. Jego daje ogólny widok w środowisku i nie jest koncentruje się na jeden obszar roboczy.
 
 ## Niestandardowe reguły alertów (wersja zapoznawcza)<a name="menu_customalerts"></a>
 

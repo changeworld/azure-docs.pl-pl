@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
 ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60926082"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Ruch przychodzący danych telemetrycznych i łączność urządzeń
@@ -69,8 +69,8 @@ Można dostosować format wiadomości na urządzeniu oraz ładunek do potrzeb sw
 
 | Nazwa właściwości | Wartość | Wymagane | Opis |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | Yes | Stała wartość, która identyfikuje wiadomość do systemu. |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | Yes | Unikatowy identyfikator czujnik, który wysyła **komunikat**. Ta wartość musi odpowiadać obiektu **HardwareId** właściwości systemu do ich przetworzenia. Na przykład `00FF0643BE88-CO2`. |
+| **DigitalTwins-Telemetry** | 1.0 | Tak | Stała wartość, która identyfikuje wiadomość do systemu. |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Tak | Unikatowy identyfikator czujnik, który wysyła **komunikat**. Ta wartość musi odpowiadać obiektu **HardwareId** właściwości systemu do ich przetworzenia. Na przykład `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nie | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) sformatowany ciąg daty, który identyfikuje podczas próbkowania w ładunku. Na przykład `2018-09-20T07:35:00.8587882-07:00`. |
 | **CorrelationId** | `string` | Nie | Identyfikator UUID, który został użyty do śledzenia zdarzeń w systemie. Na przykład `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 

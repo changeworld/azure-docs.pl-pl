@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 87cfce6045ce84f83ca651472635227547c26ee9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117023"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
@@ -35,9 +35,9 @@ Podobnie jak wielu innych usług, które obsługują elementy webhook usługi Ev
 
 Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na podstawie funkcji platformy Azure, swój kod punktu końcowego musi wziąć udział w uzgadniania weryfikacji za pomocą usługi Event Grid. Usługa Event Grid obsługuje sprawdzanie poprawności subskrypcji na dwa sposoby.
 
-1. **Uzgadnianie ValidationCode (programowe)**: Jeśli dla punktu końcowego usługi jest kontroli kodu źródłowego, ta metoda jest zalecana. Tworzenie subskrypcji zdarzeń usługi Event Grid wysyła zdarzenie sprawdzania poprawności subskrypcji do punktu końcowego usługi. Schemat tego zdarzenia jest podobne do innych zdarzeń usługi Event Grid. Zawiera części danych to zdarzenie `validationCode` właściwości. Aplikacja sprawdza, czy żądanie weryfikacji dotyczy subskrypcji zdarzeń oczekiwanego i funkcją kod sprawdzania poprawności do usługi Event Grid. Ten mechanizm uzgadniania jest obsługiwana we wszystkich wersjach usługi Event Grid.
+1. **Uzgadnianie ValidationCode (programowe)** : Jeśli dla punktu końcowego usługi jest kontroli kodu źródłowego, ta metoda jest zalecana. Tworzenie subskrypcji zdarzeń usługi Event Grid wysyła zdarzenie sprawdzania poprawności subskrypcji do punktu końcowego usługi. Schemat tego zdarzenia jest podobne do innych zdarzeń usługi Event Grid. Zawiera części danych to zdarzenie `validationCode` właściwości. Aplikacja sprawdza, czy żądanie weryfikacji dotyczy subskrypcji zdarzeń oczekiwanego i funkcją kod sprawdzania poprawności do usługi Event Grid. Ten mechanizm uzgadniania jest obsługiwana we wszystkich wersjach usługi Event Grid.
 
-2. **Uzgadnianie ValidationURL (ręcznie)**: W niektórych przypadkach nie można uzyskać dostęp do kodu źródłowego punktu końcowego w celu wykonania uzgadniania ValidationCode. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie możesz programowo odpowiedzieć kodem sprawdzania poprawności.
+2. **Uzgadnianie ValidationURL (ręcznie)** : W niektórych przypadkach nie można uzyskać dostęp do kodu źródłowego punktu końcowego w celu wykonania uzgadniania ValidationCode. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie możesz programowo odpowiedzieć kodem sprawdzania poprawności.
 
    Począwszy od wersji 2018-05-01-preview usługi Event Grid obsługuje uzgadniania ręcznej weryfikacji. Jeżeli tworzysz subskrypcję zdarzeń przy użyciu zestawu SDK lub narzędzia, która używa interfejsu API w wersji 2018-05-01-preview lub później, usługa Event Grid wysyła `validationUrl` właściwości w części danych zdarzeń sprawdzania poprawności subskrypcji. Aby ukończyć uzgadnianie, należy znaleźć tego adresu URL w danych zdarzeń i ręcznie Wyślij żądanie Pobierz do niego. Można użyć klienta REST lub przeglądarki sieci web.
 
@@ -204,7 +204,7 @@ Zarządzanie subskrypcjami zdarzeń usługi Event Grid zapewnia dwie wbudowane r
 
 Możesz [przypisania tych ról użytkownikowi lub grupie](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
-**Współautor EventSubscription EventGrid (wersja zapoznawcza)**: zarządzanie operacjami subskrypcji usługi Event Grid
+**Współautor EventSubscription EventGrid (wersja zapoznawcza)** : zarządzanie operacjami subskrypcji usługi Event Grid
 
 ```json
 [
@@ -240,7 +240,7 @@ Możesz [przypisania tych ról użytkownikowi lub grupie](../role-based-access-c
 ]
 ```
 
-**Czytnik EventSubscription EventGrid (wersja zapoznawcza)**: odczytu subskrypcji usługi Event Grid
+**Czytnik EventSubscription EventGrid (wersja zapoznawcza)** : odczytu subskrypcji usługi Event Grid
 
 ```json
 [

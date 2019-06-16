@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606438"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
@@ -362,7 +362,7 @@ W tej chwili oblicza łączną liczbę potencjalnych współbieżnych wersji tes
 
 **Test szablonu dysku usługi Resource Manager —** *wymagane* przekazywanie szablonie usługi Resource Manager. Jest to plik utworzony w poprzedniej sekcji powyżej. Nadaj nazwę pliku głównego szablonu: "main-template.json" i upewnij się, że szablon usługi Resource Manager zawiera parametry wyjściowe klucza zmiennych, które są wymagane. (Musi być plikiem .zip)
 
-**Dostęp do informacji -** *wymagane* po klient pobiera ich wersji testowej, uzyskiwanie dostępu do informacji są prezentowane do nich. Te instrukcje są przeznaczone do udostępniania parametry wyjściowe przydatne szablonu Menedżera zasobów testowych z dysku. Aby uwzględnić parametry wyjściowe, należy użyć podwójnego nawiasów klamrowych (na przykład **{{outputname}}**), a ich zostanie wstawiony poprawnie w lokalizacji. (Formatowanie ciągu HTML zaleca się tutaj do renderowania frontonu).
+**Dostęp do informacji -** *wymagane* po klient pobiera ich wersji testowej, uzyskiwanie dostępu do informacji są prezentowane do nich. Te instrukcje są przeznaczone do udostępniania parametry wyjściowe przydatne szablonu Menedżera zasobów testowych z dysku. Aby uwzględnić parametry wyjściowe, należy użyć podwójnego nawiasów klamrowych (na przykład **{{outputname}}** ), a ich zostanie wstawiony poprawnie w lokalizacji. (Formatowanie ciągu HTML zaleca się tutaj do renderowania frontonu).
 
 ### <a name="test-drive-deployment-subscription-details"></a>Szczegóły subskrypcji wdrożenia dysku testu
 
@@ -403,7 +403,7 @@ Kliknij pozycję Zapisz. Ostatnim krokiem jest identyfikator aplikacji dla tej a
 Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy dodać aplikację jako współautora w subskrypcji. Instrukcje te są jak poniżej:
 
 1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, którego używasz do testowej.
-1. Kliknij przycisk **kontrola dostępu (IAM)**.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 1. Kliknij przycisk **przypisań ról** kartę.  ![Dodaj nową jednostkę kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Kliknij przycisk **Dodaj przypisanie roli**.
 1. Ustaw rolę **Współautor**.

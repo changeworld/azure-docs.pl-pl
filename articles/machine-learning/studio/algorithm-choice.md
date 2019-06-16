@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
 ms.openlocfilehash: 3bb88f2f9546ec25433061a0704bd144730bd34c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60752976"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
@@ -41,7 +41,7 @@ Te zalecenia stanowią skompilowany opinie i porady od wielu analityków danych 
 
 ### <a name="how-to-use-the-cheat-sheet"></a>Jak używać — ściągawka
 
-Przeczytaj ścieżkę i algorytmu etykiet na wykresie jako "dla  *&lt;etykieta ścieżki&gt;*, użyj  *&lt;algorytm&gt;*." Na przykład "dla *szybkość*, użyj *dwie klasy regresji logistycznej*." Czasami może być więcej niż jedna gałąź ma zastosowanie.
+Przeczytaj ścieżkę i algorytmu etykiet na wykresie jako "dla  *&lt;etykieta ścieżki&gt;* , użyj  *&lt;algorytm&gt;* ." Na przykład "dla *szybkość*, użyj *dwie klasy regresji logistycznej*." Czasami może być więcej niż jedna gałąź ma zastosowanie.
 Czasami żadna z nich są idealnym rozwiązaniem. Są one przeznaczone do reguły z thumb zaleceń, więc nie martw się o nim są dokładne.
 Wielu analityków danych, które wspomnieliśmy o wspomniane, które jedynym pewnym sposobem znalezienia bardzo najlepszy algorytm jest do wypróbowania wszystkich z nich.
 
@@ -66,14 +66,14 @@ Uczenia nadzorowanego jest popularne i przydatne rodzaj usługi machine learning
 
 Uczenie nienadzorowane punktów danych, musi bez etykiet skojarzonych z nimi. Zamiast tego celem algorytmu uczenia nienadzorowanych jest do organizowania danych, które w jakiś sposób, lub do opisania jego struktury. Oznacza to grupowanie go w klastrach lub znajdowania spojrzenie na złożonych danych, tak aby była wyświetlana, prostsze lub bardziej zorganizowane na różne sposoby.
 
-### <a name="reinforcement-learning"></a>Uczenia przez wzmacnianie
+### <a name="reinforcement-learning"></a>Uczenie przez wzmacnianie
 
 W przypadku uczenia przez wzmacnianie algorytm pobiera wybierz akcję w odpowiedzi na każdy punkt danych. Algorytm uczenia otrzymuje również sygnał nagradzania przez krótki czas później, wskazującą, jak dobra była decyzji.
 Na tej podstawie algorytm modyfikuje podstawę strategii w celu uzyskania najwyższej nagrody. Aktualnie nie istnieją żadne wzmocnienie uczenie algorytmu moduły w usłudze Azure Machine Learning Studio. Uczenia przez wzmacnianie jest często używany w związane z robotyką, gdzie zestaw odczyty czujników w jednym punkcie w czasie jest punkt danych, a algorytm należy wybrać następne działanie robota. Jest to również fizyczną dopasowania dla Internetu rzeczy aplikacji.
 
 ## <a name="considerations-when-choosing-an-algorithm"></a>Zagadnienia dotyczące wybierania algorytmów
 
-### <a name="accuracy"></a>Dokładność
+### <a name="accuracy"></a>dokładność
 
 Pobieranie możliwych najdokładniejszą odpowiedź nie zawsze jest konieczne.
 Czasami przybliżeniem jest odpowiednia, w zależności od tego, co chcesz stosować. Jeśli tak jest rzeczywiście, może być znacznie Wytnij czasu przetwarzania przez wyobrazić metodami przybliżony więcej. Inną zaletą więcej metod przybliżony jest, że naturalnie charakteryzują się uniknąć overfitting.

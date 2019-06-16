@@ -14,11 +14,11 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f510a111a6c8846b300c09f368a3a2a05b2bb7ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306994"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719900"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Rozwiązywanie problemów z wdrożeniem przy ponownym uruchamianiu lub zmienianiu rozmiaru istniejącej maszyny Wirtualnej Windows na platformie Azure
 Podczas próby uruchomienia zatrzymania maszyny wirtualnej platformy Azure (VM) lub zmienić rozmiar istniejącej maszyny Wirtualnej platformy Azure typowym błędem, które wystąpią jest wystąpił błąd alokacji. Ten błąd rezultatem klastra lub regionie nie ma dostępnych zasobów albo nie obsługuje żądanego rozmiaru maszyny Wirtualnej.

@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5f3b70a2dd9816210ed61280be38504a3980d205
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515341"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Szybki start: Używanie rozpoznawania mowy Bing interfejsu API w języku C&#35; dla platformy .NET w Windows
@@ -101,7 +101,7 @@ Przykładowe pliki audio za pomocą tej przykładowej aplikacji. Znajdź pliki w
 
 Programy obsługi zdarzeń są już wskazano w kodzie w postaci komentarzy do kodu.
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 
 * [Odwołanie do biblioteki pulpitu Microsoft Speech](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html)
 * [Wprowadzenie do interfejsu API rozpoznawania mowy firmy Microsoft w języku Java w systemie Android](GetStartedJavaAndroid.md)

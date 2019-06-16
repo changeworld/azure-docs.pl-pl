@@ -10,10 +10,10 @@ ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61227015"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation
@@ -21,12 +21,12 @@ Większość elementów runbook automatyzacji Azure obejmuje jakąś formę dany
 
 Poniższa tabela zawiera krótki opis każdego strumienia i ich zachowania w witrynie Azure portal w przypadku opublikowanych elementów runbook i kiedy [testowania elementu runbook](automation-testing-runbook.md). W kolejnych sekcjach znajdują się dalsze szczegółowe informacje na temat każdego strumienia.
 
-| Strumień | Opis | Opublikowane | Test |
+| Stream | Opis | Opublikowane | Test |
 |:--- |:--- |:--- |:--- |
 | Dane wyjściowe |Obiekty, które mają być używane przez inne elementy runbook. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
 | Ostrzeżenie |Komunikat ostrzegawczy przeznaczony dla użytkownika. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
 | Błąd |Przeznaczony dla użytkownika komunikat o błędzie. W przeciwieństwie do wyjątku element runbook jest kontynuowane po komunikat o błędzie domyślnie. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
-| Pełne |Komunikaty, które podają informacje ogólne lub debugowania. |Zapisywany w historii zadań tylko wtedy, gdy dla elementu runbook jest włączone rejestrowanie pełne. |Wyświetlane w okienku danych wyjściowych testu tylko wtedy, gdy $VerbosePreference ustawiono Kontynuuj w elemencie runbook. |
+| Pełny |Komunikaty, które podają informacje ogólne lub debugowania. |Zapisywany w historii zadań tylko wtedy, gdy dla elementu runbook jest włączone rejestrowanie pełne. |Wyświetlane w okienku danych wyjściowych testu tylko wtedy, gdy $VerbosePreference ustawiono Kontynuuj w elemencie runbook. |
 | Postęp |Rekordy generowane automatycznie przed i po każdym działaniu elementu runbook. Element runbook nie należy próbować utworzyć swoich własnych rekordów postępu, ponieważ są one przeznaczone dla użytkownika interaktywnego. |Zapisywany w historii zadań tylko wtedy, gdy dla elementu runbook jest włączone rejestrowanie postępu. |Nie są wyświetlane w okienku danych wyjściowych testu. |
 | Debugowanie |Komunikaty przeznaczone dla użytkownika interaktywnego. Nie można używać w elementach runbook. |Nie jest zapisywany w historii zadań. |Nie jest zapisywany do okienka danych wyjściowych testu. |
 

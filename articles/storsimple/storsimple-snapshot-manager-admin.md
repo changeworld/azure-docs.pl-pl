@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: v-sharos
 ms.openlocfilehash: bc72da98800ef85ef14be0882ba856fbf01386b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630023"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Użyj przystawki StorSimple Snapshot Manager do administrowania rozwiązania StorSimple
@@ -51,7 +51,7 @@ Menedżer migawek StorSimple umożliwia monitorowanie i zarządzanie nimi aktual
 | Dowiedz się więcej na temat programu StorSimple Snapshot Manager |[Co to jest StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
 | Instalowanie programu StorSimple Snapshot Manager<br>Ponowne zainstalowanie programu StorSimple Snapshot Manager<br>Usuwanie programu StorSimple Snapshot Manager |[Wdrażanie programu StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md) |
 | Użyj przystawki StorSimple Snapshot Manager menu i funkcje:<ul><li>Pasek menu</li><li>Pasek narzędzi</li><li>Okienko zakresu</li><li>Okienko wyników</li><li>Okienko akcji</li><li>Nawigowanie przy użyciu klawiatury i skróty</li></ul> |[Interfejs użytkownika programu StorSimple Snapshot Manager](storsimple-use-snapshot-manager.md) |
-| Użyj funkcji wspólnych MMC programu StorSimple Snapshot Manager:<ul><li>Widok</li><li>Nowe okno, w tym miejscu</li><li>Odświeżanie</li><li>Eksportuj listę</li><li>Pomoc</li></ul> |[Używanie akcji menu programu MMC programu StorSimple Snapshot Manager](storsimple-snapshot-manager-mmc-menu.md) |
+| Użyj funkcji wspólnych MMC programu StorSimple Snapshot Manager:<ul><li>Widok</li><li>Nowe okno, w tym miejscu</li><li>Odśwież</li><li>Eksportuj listę</li><li>Help</li></ul> |[Używanie akcji menu programu MMC programu StorSimple Snapshot Manager](storsimple-snapshot-manager-mmc-menu.md) |
 | Dodawanie lub zastępowanie urządzenia<br>Podłącz urządzenie<br>Sprawdź grupy importowane woluminu<br>Odśwież połączone urządzenia<br>Uwierzytelnienia urządzenia<br>Wyświetlanie szczegółów urządzenia<br>Usuwanie konfiguracji urządzenia<br>Zmień hasło urządzenia<br>Zamień urządzenia nie powiodło się<br> |[Aby nawiązać połączenie i zarządzanie urządzeniami StorSimple za pomocą Menedżera migawek StorSimple](storsimple-snapshot-manager-manage-devices.md) |
 | Woluminy instalacji<br>Wyświetlanie informacji o woluminach<br>Usuwanie woluminu<br>Skanuj ponownie woluminów<br>Konfigurowanie i tworzenie kopii zapasowej woluminu podstawowego<br>Konfigurowanie i utworzyć kopię zapasową woluminu dublowanego dynamiczne |[Do wyświetlania i zarządzanie woluminami za pomocą Menedżera migawek StorSimple](storsimple-snapshot-manager-manage-volumes.md) |
 | Wyświetlanie grup woluminu<br>Utwórz grupę woluminu<br>Tworzenie kopii zapasowej grupy woluminów<br>Edytuj grupę woluminu<br>Usuwanie grupy woluminów |[Tworzenie i zarządzanie grupami woluminów za pomocą Menedżera migawek StorSimple](storsimple-snapshot-manager-manage-volume-groups.md) |

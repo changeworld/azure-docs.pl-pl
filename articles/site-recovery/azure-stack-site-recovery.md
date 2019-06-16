@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 11d409f904c43c0df4bbbd44fdb24531f2f989f6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399595"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikowanie maszyn wirtualnych usługi Azure Stack na platformie Azure

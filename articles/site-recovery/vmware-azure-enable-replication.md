@@ -7,10 +7,10 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540756"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
@@ -24,7 +24,7 @@ W tym artykule założono, że masz:
 - [Konfigurowanie środowiska źródłowego w środowisku lokalnym](vmware-azure-set-up-source.md).
 - [Konfigurowanie środowiska docelowego, na platformie Azure](vmware-azure-set-up-target.md).
 
-## <a name="before-you-start"></a>Zanim rozpoczniesz
+## <a name="before-you-start"></a>Przed rozpoczęciem
 Jeśli replikujesz maszyny wirtualne VMware pamiętać o tych informacji:
 
 * Twoje konto platformy Azure użytkownika musi mieć pewne [uprawnienia](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) Aby włączyć replikację nowej maszyny wirtualnej na platformie Azure.
@@ -111,7 +111,7 @@ Liczba kart sieciowych jest zależna od rozmiaru określonego w następujący sp
 - Jeśli liczba kart sieciowych dla źródłowej maszyny wirtualnej przekracza liczbę, która jest dozwolona dla rozmiaru docelowej maszyny Wirtualnej, używana jest maksymalny rozmiar docelowy. Na przykład jeśli źródłowa maszyna wirtualna ma dwie karty sieciowe, a rozmiar maszyny docelowej obsługuje cztery, docelowej maszyny wirtualnej ma dwie karty. Jeśli źródłowa maszyna wirtualna ma dwie karty sieciowe, ale rozmiar docelowej obsługuje tylko jedną, docelowa maszyna wirtualna ma tylko jedną kartę sieciową.
 - Jeśli maszyna wirtualna ma wiele kart sieciowych, wszystkie łączą się z tą samą siecią. Ponadto staje się pierwsza karta, która jest wyświetlana na liście *domyślne* karty sieciowej na maszynie wirtualnej platformy Azure. 
 
-### <a name="azure-hybrid-benefit"></a>Korzyści użycia hybrydowego platformy Azure
+### <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 
 Microsoft Software Assurance klienci mogą używać korzyści użycia hybrydowego platformy Azure, aby zmniejszyć koszty licencjonowania dla komputerów z systemu Windows Server, które są migrowane na platformie Azure. Dotyczy również korzyści odzyskiwania po awarii platformy Azure. Jeśli masz uprawnienia, korzyści można przypisać do maszyny wirtualnej, która usługa Site Recovery tworzy w przypadku przejścia w tryb failover. W tym celu wykonaj następujące kroki:
 1. Przejdź do **właściwości komputera i sieci** zreplikowanej maszyny wirtualnej.

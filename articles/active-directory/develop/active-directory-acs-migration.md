@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84a8c2954473401a9e57cba045907c60862ed61f
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546233"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control Service
@@ -115,7 +115,7 @@ Od listopada 2017 r. wszystkie składniki kontroli dostępu są w pełni obsług
 Oto harmonogram wycofano składniki kontroli dostępu:
 
 - **Listopad 2017**:  Administrator usługi Azure AD występują w klasycznej witrynie Azure portal [została wycofana](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). W tym momencie zarządzanie przestrzenią nazw kontroli dostępu jest dostępna na nowego, dedykowanego adresu URL: `https://manage.windowsazure.com?restoreClassic=true`. Użyj tego adresu URl, aby wyświetlić swoje istniejące obszary nazw, włączanie i wyłączanie przestrzenie nazw i można usunąć przestrzeni nazw, jeśli zdecydujesz się.
-- **2 kwietnia 2018 r.**: Klasyczny portal Azure jest całkowicie wycofane, co oznacza, że zarządzanie przestrzenią nazw kontroli dostępu nie jest już dostępna za pośrednictwem dowolnego adresu URL. W tym momencie nie można wyłączyć lub włączyć, usuń lub wyliczanie przestrzeniami nazw usługi Access Control. Jednak, w portalu zarządzania kontroli dostępu jest w pełni funkcjonalne i znajduje się w `https://\<namespace\>.accesscontrol.windows.net`. Wszystkie inne składniki kontroli dostępu w dalszym ciągu działać normalnie.
+- **2 kwietnia 2018 r.** : Klasyczny portal Azure jest całkowicie wycofane, co oznacza, że zarządzanie przestrzenią nazw kontroli dostępu nie jest już dostępna za pośrednictwem dowolnego adresu URL. W tym momencie nie można wyłączyć lub włączyć, usuń lub wyliczanie przestrzeniami nazw usługi Access Control. Jednak, w portalu zarządzania kontroli dostępu jest w pełni funkcjonalne i znajduje się w `https://\<namespace\>.accesscontrol.windows.net`. Wszystkie inne składniki kontroli dostępu w dalszym ciągu działać normalnie.
 - **7 listopada 2018**: Wszystkie składniki kontroli dostępu są trwale zamknąć. W tym portalu zarządzania kontroli dostępu, Usługa zarządzania, usługi STS i aparat reguł przekształcania tokenu. W tym momencie wszelkie żądania wysyłane do kontroli dostępu (znajdujący się w \<przestrzeni nazw\>. accesscontrol.windows.net) się nie powieść. Użytkownik powinien zostały zmigrowane wszystkie istniejące aplikacje i usługi do innych technologii również przed upływem wskazanego terminu.
 
 > [!NOTE]
@@ -204,7 +204,7 @@ Na wysokim poziomie *usługi Azure Active Directory jest prawdopodobnie jest naj
 | WS-Trust | Obsługiwane | Nieobsługiwane |
 | **Format tokenu** | | |
 | JWT | Obsługiwane w wersji Beta | Obsługiwane |
-| SAML 1.1 | Obsługiwane | Preview |
+| SAML 1.1 | Obsługiwane | Wersja zapoznawcza |
 | SAML 2.0 | Obsługiwane | Obsługiwane |
 | SWT | Obsługiwane | Nieobsługiwane |
 | **Dostosowania** | | |
@@ -286,7 +286,7 @@ W takich przypadkach warto rozważyć migrowanie aplikacji sieci web w taki spos
 |     |     | 
 | --- | --- |
 | ![Rozwiązanie Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Rozwiązanie Auth0](https://auth0.com/acs) jest elastyczne chmurze Usługa zarządzania tożsamościami, która została utworzona [wskazówek dotyczących migracji wysokiego poziomu dla klientów, Access Control](https://auth0.com/acs), obsługuje prawie w każdym funkcję, która wykonuje ACS. |
-| ![Polecenie ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. PingOne jest usługa tożsamości w chmurze obsługuje wiele same funkcje co usługa ACS, a serwera PingFederate jest podobny sposób na lokalne tożsamości produktu, który zapewnia większą elastyczność. Zapoznaj się [wskazówek dotyczących emerytury ACS firmy Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat korzystania z tych produktów. |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. PingOne jest usługa tożsamości w chmurze obsługuje wiele same funkcje co usługa ACS, a serwera PingFederate jest podobny sposób na lokalne tożsamości produktu, który zapewnia większą elastyczność. Zapoznaj się [wskazówek dotyczących emerytury ACS firmy Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat korzystania z tych produktów. |
 
 Naszym celem w pracy firmy Ping Identity i Auth0 jest upewnij się, że wszyscy klienci kontrola dostępu do ścieżki migracji dla swoich aplikacji i usług, które minimalizuje nakład pracy wymagany do przenoszenia z kontroli dostępu.
 
@@ -348,7 +348,7 @@ W takich przypadkach należy rozważyć, migrowanie aplikacji sieci web w taki s
 |     |     | 
 | --- | --- |
 | ![Rozwiązanie Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Rozwiązanie Auth0](https://auth0.com/acs) jest elastyczne chmurze Usługa zarządzania tożsamościami, która została utworzona [wskazówek dotyczących migracji wysokiego poziomu dla klientów, Access Control](https://auth0.com/acs), obsługuje prawie w każdym funkcję, która wykonuje ACS. |
-| ![Polecenie ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. PingOne jest usługa tożsamości w chmurze obsługuje wiele same funkcje co usługa ACS, a serwera PingFederate jest podobny sposób na lokalne tożsamości produktu, który zapewnia większą elastyczność. Zapoznaj się [wskazówek dotyczących emerytury ACS firmy Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat korzystania z tych produktów. |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. PingOne jest usługa tożsamości w chmurze obsługuje wiele same funkcje co usługa ACS, a serwera PingFederate jest podobny sposób na lokalne tożsamości produktu, który zapewnia większą elastyczność. Zapoznaj się [wskazówek dotyczących emerytury ACS firmy Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat korzystania z tych produktów. |
 
 Naszym celem w pracy firmy Ping Identity i Auth0 jest upewnij się, że wszyscy klienci kontrola dostępu do ścieżki migracji dla swoich aplikacji i usług, które minimalizuje nakład pracy wymagany do przenoszenia z kontroli dostępu.
 

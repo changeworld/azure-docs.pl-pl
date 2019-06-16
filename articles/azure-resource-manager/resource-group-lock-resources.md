@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: tomfitz
 ms.openlocfilehash: a6c7983d22eed4a4232fbb2db490c1743684a04c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65813387"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Blokowanie zasobów w celu uniemożliwienia nieoczekiwanych zmian 
@@ -59,7 +59,7 @@ Powiadomienie usługi zawiera również link do **grupy zarządzanej z wykorzyst
 
 Aby usunąć wszystkie usługi, w tym infrastruktury zablokowanej grupy zasobów, wybierz pozycję **Usuń** dla usługi.
 
-![Usuwanie usługi](./media/resource-group-lock-resources/delete-service.png)
+![Usuń usługę](./media/resource-group-lock-resources/delete-service.png)
 
 ## <a name="portal"></a>Portal
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]

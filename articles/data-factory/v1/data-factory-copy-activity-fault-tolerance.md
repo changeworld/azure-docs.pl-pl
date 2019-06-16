@@ -13,15 +13,15 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3a255b21e8bfd7d78954603e9aa6e5ca39cee95b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60566081"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Dodaj odporności na uszkodzenia w działaniu kopiowania, pomijania niezgodnych wierszy
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-copy-activity-fault-tolerance.md)
 > * [Wersja 2 (bieżąca wersja)](../copy-activity-fault-tolerance.md)
 
@@ -75,7 +75,7 @@ W poniższym przykładzie przedstawiono definicję formatu JSON, aby skonfigurow
 | **enableSkipIncompatibleRow** | Włącz pomijanie niezgodnych wierszy podczas kopiowania, czy nie. | True<br/>FALSE (domyślnie) | Nie |
 | **redirectIncompatibleRowSettings** | Grupy właściwości, które można określić, kiedy mają być rejestrowane niezgodnych wierszy. | &nbsp; | Nie |
 | **linkedServiceName** | Połączona usługa Azure Storage do przechowywania w dzienniku, który zawiera pominiętych wierszy. | Nazwa [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) lub [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) połączone usługi, która odnosi się do wystąpienia magazynu, którego chcesz użyć do przechowywania plików dziennika. | Nie |
-| **path** | Ścieżka pliku dziennika, który zawiera pominiętych wierszy. | Określ ścieżkę magazynu obiektów Blob, którą chcesz używać do logowania się niezgodne dane. Jeśli ścieżka nie zostanie określona, usługa utworzy kontener. | Nie |
+| **Ścieżka** | Ścieżka pliku dziennika, który zawiera pominiętych wierszy. | Określ ścieżkę magazynu obiektów Blob, którą chcesz używać do logowania się niezgodne dane. Jeśli ścieżka nie zostanie określona, usługa utworzy kontener. | Nie |
 
 ## <a name="monitoring"></a>Monitorowanie
 Po zakończeniu uruchomienia działania kopiowania, będzie widoczna Liczba pominiętych wierszy w sekcji monitorowania:

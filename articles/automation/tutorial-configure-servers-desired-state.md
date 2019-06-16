@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 582533d23757de748b9cc7d40e45acc00240d384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 83a65be50a3cec9cea47682ab5e207bd4ad9e984
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599724"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072555"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurowanie serwerów do żądanego stanu i zarządzanie odejściem od tego stanu
 
@@ -145,6 +145,27 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 # Display the most recent report
 $reports[0]
 ```
+
+## <a name="removing-nodes-from-service"></a>Usuwanie węzłów z usługi
+
+Podczas dodawania węzła do usługi Azure Automation stan konfiguracji, ustawienia Local Configuration Manager są ustawiane zarejestrować za pomocą konfiguracji usługi ściągania i wypychania i wymaganych modułów, aby skonfigurować maszynę.
+Jeśli zdecydujesz się usunąć węzła z usługi, możesz to zrobić przy użyciu witryny Azure portal lub poleceń cmdlet Az.
+
+> [!NOTE]
+> Wyrejestrowywanie węzła z usługi tylko Ustawia ustawienia Local Configuration Manager, więc węzeł nie jest już połączenia z usługą.
+> Nie ma wpływu konfiguracji, który jest aktualnie używany do węzła.
+> Aby usunąć bieżącą konfigurację, użyj [PowerShell](https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) lub usunięcie pliku konfiguracji lokalnej (jest to jedyna opcja w przypadku węzłów systemu Linux).
+
+### <a name="azure-portal"></a>Azure Portal
+
+Usługi Azure Automation, kliknij pozycję **State configuration (DSC)** w spisie treści.
+Następnie kliknij przycisk **węzłów** Aby wyświetlić listę węzłów, które są zarejestrowane w usłudze.
+Kliknij nazwę węzła, który chcesz usunąć.
+W widoku węzła kliknij **Wyrejestruj**.
+
+### <a name="powershell"></a>PowerShell
+
+Aby wyrejestrować węzła z usługi Azure Automation stan konfiguracji przy użyciu programu PowerShell, postępuj zgodnie z dokumentacją polecenia cmdlet [AzAutomationDscNode Wyrejestruj](https://docs.microsoft.com/en-us/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

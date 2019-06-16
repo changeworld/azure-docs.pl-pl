@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/06/2019
 ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723501"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich bazy danych SQL: Błędy połączenia bazy danych i inne problemy
@@ -53,7 +53,7 @@ Omówienie *czasu blokowania* dla klientów używających ADO.NET jest dostępna
 
 Następujące błędy są przejściowe i powinno być ponowione w aplikacji logiki: 
 
-| Kod błędu | Ważność | Opis |
+| Kod błędu | Severity | Opis |
 | ---:| ---:|:--- |
 | 4060 |16 |Nie można otworzyć bazy danych "%.&#x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. Aby uzyskać więcej informacji, zobacz [błędy 4000 do 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |Usługa napotkała błąd podczas przetwarzania Twojego żądania. Spróbuj ponownie. Kod błędu: %d.<br/><br/>Ten błąd jest wyświetlany, gdy usługa nie działa z powodu oprogramowania lub Modernizacje sprzętu, awarii sprzętu lub innych problemów trybu failover. Kod błędu: (%d) osadzane komunikat o błędzie 40197 zawiera dodatkowe informacje dotyczące rodzaju awarii lub pracy awaryjnej, który wystąpił. Niektóre przykłady błąd, który kodów są osadzane komunikat o błędzie 40197 są 40020, 40143, 40166 i 40540.<br/><br/>Ponowne nawiązywanie połączenia z serwerem bazy danych SQL Database automatycznie łączy dobrej kondycji kopię bazy danych. Aplikację należy przechwytywać 40197, dziennik błędów osadzony kod błędu: (%d) w ramach komunikatu w celu rozwiązywania problemów i ponowić próbę połączenia do bazy danych SQL, dopóki zasoby są dostępne, a następnie połączenie zostanie nawiązane ponownie. Aby uzyskać więcej informacji, zobacz [błędów przejściowych](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
@@ -68,7 +68,7 @@ Następujące błędy są przejściowe i powinno być ponowione w aplikacji logi
 
 Następujące błędy mogą podczas kopiowania bazy danych w usłudze Azure SQL Database. Więcej informacji znajdziesz w artykule [Kopiowanie bazy danych usługi Azure SQL Database](sql-database-copy.md).
 
-| Kod błędu | Ważność | Opis |
+| Kod błędu | Severity | Opis |
 | ---:| ---:|:--- |
 | 40635 |16 |Klient o adresie IP '%.&#x2a;ls' jest tymczasowo wyłączona. |
 | 40637 |16 |Utwórz kopię bazy danych jest obecnie wyłączona. |
@@ -103,7 +103,7 @@ Tematy pokrewne:
   * [oparty na rdzeniach wirtualnych limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)
   * [Limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). 
 
-| Kod błędu | Ważność | Opis |
+| Kod błędu | Severity | Opis |
 | ---:| ---:|:--- |
 | 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](sql-database-resource-limits-database-server.md).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz: <br/>&bull; &nbsp;[Limity zasobów na serwerze bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Limity oparty na jednostkach DTU dla pojedynczej bazy danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[Oparte na jednostkach DTU limity dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[oparty na rdzeniach wirtualnych limity dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[oparty na rdzeniach wirtualnych limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). |
 | 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[Limity zasobów na serwerze bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Limity oparty na jednostkach DTU dla pojedynczej bazy danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[Oparte na jednostkach DTU limity dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[oparty na rdzeniach wirtualnych limity dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[oparty na rdzeniach wirtualnych limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md). <br/>W przeciwnym razie spróbuj ponownie później. |
@@ -118,7 +118,7 @@ Tematy pokrewne:
 
 Następujące błędy odnoszą się do tworzenia i używania pul elastycznych:
 
-| Kod błędu | Ważność | Opis | Działania naprawcze |
+| Kod błędu | Severity | Opis | Działania naprawcze |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Osiągnięto limit przestrzeni dyskowej w puli elastycznej. Użycie magazynu dla puli elastycznej nie może przekroczyć (%d) MB. Podjęto próbę zapisu danych do bazy danych, gdy został osiągnięty limit magazynu elastycznej puli. Aby uzyskać informacji na temat limitów zasobów Zobacz: <br/>&bull; &nbsp;[Oparte na jednostkach DTU limity dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[oparty na rdzeniach wirtualnych limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md). <br/> |Należy rozważyć zwiększenie Dtu i/lub Dodawanie magazynu do elastycznej puli, jeśli jest to możliwe, aby zwiększyć limit przestrzeni dyskowej, zmniejszenie miejsca używanego przez poszczególnych baz danych w puli elastycznej lub usuwać bazy danych z puli elastycznej. Do skalowania elastycznej puli, zobacz [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).|
 | 10929 | 16 |Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać informacji na temat limitów zasobów Zobacz: <br/>&bull; &nbsp;[Oparte na jednostkach DTU limity dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[oparty na rdzeniach wirtualnych limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md). <br/> W przeciwnym razie spróbuj ponownie później. Jednostka DTU / minimalna liczba rdzeni wirtualnych na bazę danych; Jednostka DTU / maksymalna liczba na bazę danych rdzeni wirtualnych. Całkowita liczba współbieżnych procesów roboczych (żądań) we wszystkich bazach danych w puli elastycznej próba przekracza limit puli. |Należy rozważyć zwiększenie liczby jednostek Dtu lub rdzeni wirtualnych w puli elastycznej w miarę możliwości w celu zwiększenia limitu jego procesów roboczych lub usuwać bazy danych z puli elastycznej. |
@@ -152,7 +152,7 @@ Tematy pokrewne:
 
 Następujące błędy, które nie należą do żadnych poprzednich kategorii.
 
-| Kod błędu | Ważność | Opis |
+| Kod błędu | Severity | Opis |
 | ---:| ---:|:--- |
 | [15006](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-15000-to-15999) |16 |(AdministratorLogin) nie jest prawidłową nazwą, ponieważ zawiera ona nieprawidłowe znaki.|
 | [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Logowanie nie powiodło się. Nazwa logowania pochodzi z niezaufanej domeny i nie można używać z systemu Windows authentication.%.&#x2a;ls (nazwy logowania systemu Windows nie są obsługiwane w tej wersji programu SQL Server). |
@@ -216,7 +216,7 @@ Następujące błędy, które nie należą do żadnych poprzednich kategorii.
 | 40652 |16 |Nie można przenieść ani utworzyć serwera. Subskrypcja (identyfikator subskrypcji) przekroczy przydział serwera. |
 | 40671 |17 |Błąd komunikacji między bramą i usługą zarządzania. Spróbuj ponownie później. |
 | 40852 |16 |Nie można otworzyć bazy danych "%. \*ls na serwerze "%. \*ls żądanego podczas logowania. Dostęp do bazy danych jest dozwolone tylko przy użyciu parametrów połączenia z włączoną obsługą zabezpieczeń. Aby uzyskać dostęp do tej bazy danych, należy zmodyfikować parametry połączenia zawierają bezpieczny, FQDN -.database.windows "name server" serwera .net należy zmodyfikować, aby .database "name server". `secure`. windows.net. |
-| 40914 | 16 | Nie można otworzyć serwera "*[nazwa_serwera]*" żądanego podczas logowania. Klient nie może uzyskać dostęp do serwera.<br /><br />Aby rozwiązać problem, należy rozważyć dodanie [reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md). |
+| 40914 | 16 | Nie można otworzyć serwera " *[nazwa_serwera]* " żądanego podczas logowania. Klient nie może uzyskać dostęp do serwera.<br /><br />Aby rozwiązać problem, należy rozważyć dodanie [reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md). |
 | 45168 |16 |System SQL Azure jest obciążony i umieszcza górny limit współbieżnych operacji CRUD bazy danych dla jednego serwera bazy danych SQL (np. Tworzenie bazy danych). Serwer, który został określony w komunikacie o błędzie przekroczyła maksymalną liczbę równoczesnych połączeń. Spróbuj ponownie później. |
 | 45169 |16 |System SQL azure jest obciążony i umieszcza górny limit liczby współbieżnych serwera operacji CRUD dla pojedynczej subskrypcji (np. do tworzenia serwera). Subskrypcja określona w komunikacie o błędzie przekroczyła maksymalną liczbę jednoczesnych połączeń, a żądanie zostało odrzucone. Spróbuj ponownie później. |
 

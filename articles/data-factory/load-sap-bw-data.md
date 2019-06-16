@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
 ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152414"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse za pomocą usługi Azure Data Factory
@@ -29,7 +29,7 @@ W tym artykule pokazano, jak używać usługi Azure Data Factory do kopiowania d
 
 - **Azure Data Factory**: Jeśli nie masz, wykonaj kroki, aby [utworzyć fabrykę danych](quickstart-create-data-factory-portal.md#create-a-data-factory).
 
-- **Oprogramowanie SAP BW Open koncentrator docelowy (OHD) z typem docelowym "W tabeli bazy danych"**: Aby utworzyć OHD lub Sprawdź poprawnie skonfigurowane usługi OHD integracji usługi Data Factory, zobacz [konfiguracji SAP BW Open koncentrator docelowy](#sap-bw-open-hub-destination-configurations) dalszej części tego artykułu.
+- **Oprogramowanie SAP BW Open koncentrator docelowy (OHD) z typem docelowym "W tabeli bazy danych"** : Aby utworzyć OHD lub Sprawdź poprawnie skonfigurowane usługi OHD integracji usługi Data Factory, zobacz [konfiguracji SAP BW Open koncentrator docelowy](#sap-bw-open-hub-destination-configurations) dalszej części tego artykułu.
 
 - **Użytkownik systemu SAP BW musi mieć następujące uprawnienia**:
 

@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152895"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
@@ -110,12 +110,12 @@ Aby uzyskać więcej informacji, zobacz [nazwę rozwiązania, który używa wła
 ### <a name="nsg"></a> Sieciowa grupa zabezpieczeń
 Jeśli musisz wdrożyć sieciową grupę zabezpieczeń (NSG) dla podsieci używane przez środowisko Azure-SSIS integration runtime, Zezwalaj ruchu przychodzącego/wychodzącego, za pomocą następujących portów: 
 
-| Direction | Protokół transportowy | Source | Zakres portów źródłowych | Lokalizacja docelowa | Zakres portów docelowych | Komentarze |
+| Direction | Protokół transportowy | source | Zakres portów źródłowych | Miejsce docelowe | Zakres portów docelowych | Komentarze |
 |---|---|---|---|---|---|---|
 | Przychodzący | TCP | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | * | VirtualNetwork | 29876, 29877 (Jeśli dołączysz środowiska IR do sieci wirtualnej usługi Azure Resource Manager) <br/><br/>10100, 20100, 30100 (jeśli Podczerwieni przyłączyć się do klasycznej sieci wirtualnej)| Usługa Data Factory używa tych portów do komunikacji z węzłami Twojego środowiska Azure-SSIS integration runtime w sieci wirtualnej. <br/><br/> Czy tworzysz sieciowa grupa zabezpieczeń poziomu podsieci, czy nie, Data Factory zawsze konfiguruje sieciowej grupy zabezpieczeń na poziomie kart interfejsu sieciowego (NIC) dołączonych do maszyn wirtualnych, które hostują Azure-SSIS IR. Tylko dla ruchu przychodzącego ruchu z adresów IP fabryki danych w określonych portów jest dozwolone przy tym poziomie karty Sieciowej, sieciowej grupy zabezpieczeń. Nawet jeśli otworzysz te porty dla ruchu internetowego na poziomie podsieci, ruch z adresów IP, które nie są adresami IP fabryki danych jest zablokowany na poziomie karty Sieciowej. |
-| Wychodzący | TCP | VirtualNetwork | * | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | 443 | Ten port jest używany przez węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej na dostęp do usług platformy Azure, takich jak Azure Storage i Azure Event Hubs. |
-| Wychodzący | TCP | VirtualNetwork | * | Internet | 80 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej, ten port jest używany do pobierania listy odwołania certyfikatów z Internetu. |
-| Wychodzący | TCP | VirtualNetwork | * | Sql<br/>(lub większym zakresie, takich jak Internet) | 1433, 11000-11999, 14000-14999 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej użycie tych portów do dostępu do bazy danych SSISDB hostowanych przez serwer usługi Azure SQL Database — w tym celu nie ma zastosowania do danych SSISDB hostowaną przez wystąpienia zarządzanego. |
+| Wychodzące | TCP | VirtualNetwork | * | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | 443 | Ten port jest używany przez węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej na dostęp do usług platformy Azure, takich jak Azure Storage i Azure Event Hubs. |
+| Wychodzące | TCP | VirtualNetwork | * | Internet | 80 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej, ten port jest używany do pobierania listy odwołania certyfikatów z Internetu. |
+| Wychodzące | TCP | VirtualNetwork | * | Sql<br/>(lub większym zakresie, takich jak Internet) | 1433, 11000-11999, 14000-14999 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej użycie tych portów do dostępu do bazy danych SSISDB hostowanych przez serwer usługi Azure SQL Database — w tym celu nie ma zastosowania do danych SSISDB hostowaną przez wystąpienia zarządzanego. |
 ||||||||
 
 ### <a name="route"></a> Za pomocą usługi Azure ExpressRoute lub trasa zdefiniowana przez użytkownika
@@ -185,7 +185,7 @@ Musisz skonfigurować sieć wirtualną można było przyłączyć środowiska Az
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
-1. Wybierz **więcej usług**. Filtruj, a następnie wybierz pozycję **sieci wirtualne (klasyczne)**. 
+1. Wybierz **więcej usług**. Filtruj, a następnie wybierz pozycję **sieci wirtualne (klasyczne)** . 
 
 1. Filtruj, a następnie wybierz sieć wirtualną z listy. 
 

@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 715c595f7a8757842ddf10de1c5d5c0a905e9d53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60824222"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Wywoływanie programów MapReduce z usługi Data Factory
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="Działania przekształcania"]
 > * [Działanie technologii hive](data-factory-hive-activity.md) 
 > * [Działania technologii pig](data-factory-pig-activity.md)
 > * [Działania technologii MapReduce](data-factory-map-reduce.md)
@@ -188,7 +188,7 @@ Potok w tym przykładzie ma tylko jedno działanie, którego typ jest: HDInsight
 | className |Nazwa klasy jest: **wordcount** |
 | jarFilePath |Ścieżka do pliku jar z klasą. Jeśli kopiujesz/wklejasz następujący kod, nie zapomnij zmienić nazwę klastra. |
 | jarLinkedService |Połączona usługa Azure Storage, który zawiera plik jar. Ta połączona usługa odnosi się do magazynu, który jest skojarzony z klastrem HDInsight. |
-| argumenty |Wordcount program przyjmuje dwa argumenty wejściowe i wyjściowe. Wejściowy plik jest plikiem davinci.txt. |
+| arguments |Wordcount program przyjmuje dwa argumenty wejściowe i wyjściowe. Wejściowy plik jest plikiem davinci.txt. |
 | frequency/interval |Wartości tych właściwości są zgodne wyjściowy zestaw danych. |
 | linkedServiceName |odnosi się do usługi połączonej HDInsight, z którą została wcześniej utworzona. |
 

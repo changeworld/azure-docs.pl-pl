@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
 ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66143656"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostowanie odwrotnego wyszukiwania stref DNS w usłudze Azure DNS
@@ -40,7 +40,7 @@ W tym artykule przedstawiono kroki umożliwiające utworzenie po raz pierwszy wy
 
 1. W **tworzenie strefy DNS** okienko, nazwę strefy DNS. Nazwa strefy jest specjalnie inaczej w przypadku prefiksów protokołów IPv4 i IPv6. Postępuj zgodnie z instrukcjami dla [IPv4](#ipv4) lub [IPv6](#ipv6) nazwę strefy. Gdy skończysz, wybierz pozycję **Utwórz** do utworzenia strefy.
 
-### <a name="ipv4"></a>Protokół IPv4
+### <a name="ipv4"></a>IPv4
 
 Nazwa strefy wyszukiwania wstecznego IPv4 opiera się na zakres adresów IP, który reprezentuje. Powinna być w następującym formacie: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Aby uzyskać przykłady, zobacz [omówienie odwrotnego DNS i pomocy technicznej na platformie Azure](dns-reverse-dns-overview.md#ipv4).
 
@@ -77,7 +77,7 @@ azure network dns zone create MyResourceGroup 2.0.192.in-addr.arpa
 az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
 ```
 
-### <a name="ipv6"></a>Protokół IPv6
+### <a name="ipv6"></a>IPv6
 
 Nazwa strefy wyszukiwania wstecznego IPv6 powinien znajdować się w następującej postaci: `<IPv6 network prefix in reverse order>.ip6.arpa`.  Aby uzyskać przykłady, zobacz [omówienie odwrotnego DNS i pomocy technicznej na platformie Azure](dns-reverse-dns-overview.md#ipv6).
 
@@ -116,7 +116,7 @@ Dla stref wyszukiwania do przodu opisano proces delegowanie strefy DNS w [delego
 
 ## <a name="create-a-dns-ptr-record"></a>Tworzenie rekordu PTR systemu DNS
 
-### <a name="ipv4"></a>Protokół IPv4
+### <a name="ipv4"></a>IPv4
 
 Poniższy przykład przeprowadzi Cię przez proces tworzenia rekordu PTR w DNS strefy wyszukiwania wstecznego w usłudze Azure DNS. Aby uzyskać informacje o innych typach rekordów oraz sposobie modyfikowania istniejących rekordów, zobacz [Manage DNS records and record sets by using the Azure portal](dns-operations-recordsets-portal.md) (Zarządzanie rekordami i zestawami rekordów DNS przy użyciu witryny Azure Portal).
 
@@ -152,7 +152,7 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
     az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
 ```
 
-### <a name="ipv6"></a>Protokół IPv6
+### <a name="ipv6"></a>IPv6
 
 Poniższy przykład przeprowadzi Cię przez proces tworzenia nowego rekordu PTR. Aby uzyskać informacje o innych typach rekordów oraz sposobie modyfikowania istniejących rekordów, zobacz [Manage DNS records and record sets by using the Azure portal](dns-operations-recordsets-portal.md) (Zarządzanie rekordami i zestawami rekordów DNS przy użyciu witryny Azure Portal).
 
@@ -193,7 +193,7 @@ azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.
 
 Aby wyświetlić rekordy, które zostały utworzone, przejdź do strefy DNS w witrynie Azure portal. W dolnej części **strefy DNS** okienku widoczne są rekordy dla strefy DNS. Powinien zostać wyświetlony domyślne NS i SOA rekordy oraz nowe rekordy, które zostały utworzone. Rekordy NS i SOA są tworzone w każdej strefie. 
 
-### <a name="ipv4"></a>Protokół IPv4
+### <a name="ipv4"></a>IPv4
 
 **Strefy DNS** okienko zawiera rekordów IPv4 PTR:
 
@@ -219,7 +219,7 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
     azure network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
 ```
 
-### <a name="ipv6"></a>Protokół IPv6
+### <a name="ipv6"></a>IPv6
 
 **Strefy DNS** okienko zawiera rekordów IPv6 PTR:
 

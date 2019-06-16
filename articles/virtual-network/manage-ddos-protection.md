@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65911239"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie Standard platformy Azure przed atakami DDoS Protection w witrynie Azure portal
@@ -221,7 +221,7 @@ Alerty zawierają ogólne informacje o publicznym adresie IP, która podlega ata
 
 Aby pracować z planów ochrony przed atakami DDoS, Twoje konto musi mieć przypisaną do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowe](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, którą przypisano odpowiednie działania wymienione w poniższej tabeli:
 
-| action                                            | Name (Nazwa)                                     |
+| Akcja                                            | Name (Nazwa)                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | Odczyt planu ochrony przed atakami DDoS              |
 | Microsoft.Network/ddosProtectionPlans/write       | Tworzenie lub aktualizowanie planu ochrony przed atakami DDoS  |

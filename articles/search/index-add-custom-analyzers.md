@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b670b5aeffcd699226a088d8db21a12dbaf40042
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242818"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Dodaj niestandardowe analizatory do indeksu usługi Azure Search
@@ -32,7 +32,7 @@ A *analizatora niestandardowego* jest określonego typu [analizatora tekstu](sea
 
  Można zdefiniować wiele analizatory niestandardowe, będzie się różnić w kombinacji filtrów, ale każde pole do indeksowania, analizy i jeden dla analizy wyszukiwania można używać tylko jednego analizatora. Ilustracja wygląda analizatora klienta znajduje się [przykład analizatora niestandardowego](search-analyzers.md#Custom-analyzer-example).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
  Rola [aparat wyszukiwania pełnotekstowego](search-lucene-query-architecture.md), mówiąc najprościej, jest do przetwarzania i przechowywania dokumentów w sposób, który umożliwia wydajne wykonywanie zapytań i pobierania. Na wysokim poziomie wszystkie sprowadza się do wyodrębniania słów ważne dokumenty, umieszczenie ich w indeksie i następnie przy użyciu indeksu do wyszukiwania dokumentów, które odpowiadają słów danego zapytania. Proces wyodrębniania wyrazy w dokumentach i zapytaniach wyszukiwania jest nazywany *poddawać analizie leksykalnej*. Składniki, które wykonują poddawać analizie leksykalnej są nazywane *analizatory*.
 
@@ -214,7 +214,7 @@ Dla analizatorów, atrybuty indeksu różnią się w zależności od tego, czy u
 |||  
 |-|-|  
 |Name (Nazwa)|Musi zawierać tylko litery, cyfry, spacje, kreski lub znaki podkreślenia, uruchom może i kończyć i jest ograniczona do 128 znaków.|  
-|Type|Analizator typ z listy obsługiwanych analizatorów. Zobacz **analyzer_type** kolumny w [analizatory](#AnalyzerTable) w poniższej tabeli.|  
+|Typ|Analizator typ z listy obsługiwanych analizatorów. Zobacz **analyzer_type** kolumny w [analizatory](#AnalyzerTable) w poniższej tabeli.|  
 |Opcje|Musi być prawidłowe opcje wstępnie zdefiniowanych analizatora, na liście [analizatory](#AnalyzerTable) w poniższej tabeli.|  
 
 #### <a name="custom-analyzers"></a>Analizatory niestandardowe
@@ -222,7 +222,7 @@ Dla analizatorów, atrybuty indeksu różnią się w zależności od tego, czy u
 |||  
 |-|-|  
 |Name (Nazwa)|Musi zawierać tylko litery, cyfry, spacje, kreski lub znaki podkreślenia, uruchom może i kończyć i jest ograniczona do 128 znaków.|  
-|Type|Musi być "#Microsoft.Azure.Search.CustomAnalyzer".|  
+|Typ|Musi być "#Microsoft.Azure.Search.CustomAnalyzer".|  
 |CharFilters|Ustawiona na jeden z wstępnie zdefiniowanych char filtrów na liście [filtry Char](#char-filters-reference) tabeli lub filtr niestandardowy char określone w definicji indeksu.|  
 |Tokenizer|Wymagany. Ustawiona na jeden z wstępnie zdefiniowanych tokenizatory na liście [Tokenizatory](#Tokenizers) w poniższej tabeli lub tokenizator niestandardowe określone w definicji indeksu.|  
 |TokenFilters|Ustawiona na jeden z wstępnie zdefiniowanych tokenów filtrów na liście [Token filtry](#TokenFilters) tabeli lub filtr niestandardowy token określonego w definicji indeksu.|  
@@ -239,7 +239,7 @@ Dla analizatorów, atrybuty indeksu różnią się w zależności od tego, czy u
 |||  
 |-|-|  
 |Name (Nazwa)|Musi zawierać tylko litery, cyfry, spacje, kreski lub znaki podkreślenia, uruchom może i kończyć i jest ograniczona do 128 znaków.|  
-|Type|CHAR filtrowania typu z listy obsługiwanych char filtrów. Zobacz **char_filter_type** kolumny w [Char filtry](#char-filters-reference) w poniższej tabeli.|  
+|Typ|CHAR filtrowania typu z listy obsługiwanych char filtrów. Zobacz **char_filter_type** kolumny w [Char filtry](#char-filters-reference) w poniższej tabeli.|  
 |Opcje|Musi być prawidłowe opcje z danym [Char filtry](#char-filters-reference) typu.|  
 
 ### <a name="tokenizers"></a>Tokenizatory
@@ -252,7 +252,7 @@ Analizatora niestandardowego za pomocą wstępnie zdefiniowanych tokenizatora do
 |||  
 |-|-|  
 |Name (Nazwa)|Musi zawierać tylko litery, cyfry, spacje, kreski lub znaki podkreślenia, uruchom może i kończyć i jest ograniczona do 128 znaków.|  
-|Type|Tokenizator nazwę z listy obsługiwanych tokenizatory. Zobacz **tokenizer_type** kolumny w [Tokenizatory](#Tokenizers) w poniższej tabeli.|  
+|Typ|Tokenizator nazwę z listy obsługiwanych tokenizatory. Zobacz **tokenizer_type** kolumny w [Tokenizatory](#Tokenizers) w poniższej tabeli.|  
 |Opcje|Musi być prawidłowe opcje tokenizatora danego typu na liście [Tokenizatory](#Tokenizers) w poniższej tabeli.|  
 
 ### <a name="token-filters"></a>Filtry tokenu
@@ -263,7 +263,7 @@ Może mieć wiele filtrów tokenu w analizatora niestandardowego. Token filtry s
 |||  
 |-|-|  
 |Name (Nazwa)|Musi zawierać tylko litery, cyfry, spacje, kreski lub znaki podkreślenia, uruchom może i kończyć i jest ograniczona do 128 znaków.|  
-|Type|Nazwa filtru token z listy obsługiwanych filtry tokenu. Zobacz **token_filter_type** kolumny w [Token filtry](#TokenFilters) w poniższej tabeli.|  
+|Typ|Nazwa filtru token z listy obsługiwanych filtry tokenu. Zobacz **token_filter_type** kolumny w [Token filtry](#TokenFilters) w poniższej tabeli.|  
 |Opcje|Musi być [Token filtry](#TokenFilters) typu podanego filtra tokenu.|  
 
 <a name="PropertyReference"></a>  

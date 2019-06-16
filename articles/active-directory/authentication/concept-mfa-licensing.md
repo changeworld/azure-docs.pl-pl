@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a1ee55dd3aebca869da47bbc994f546aa4fe528
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66496771"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak uzyskać usługę Azure Multi-Factor Authentication
@@ -30,7 +30,7 @@ Jeśli chodzi o ochronę kont, weryfikację dwuetapową powinna być standardowa
 
 W poniższej tabeli opisano różnice między trzy wersje usługi Multi-Factor authentication:
 
-| Wersja | Opis |
+| Version | Opis |
 | --- | --- |
 | Usługa Multi-Factor Authentication dla usługi Office 365 <br> Microsoft 365 Business | Ta wersja jest zarządzana z portalu usługi Office 365 lub Microsoft 365. Administratorzy mogą [zabezpieczanie zasobów usługi Office 365 za pomocą weryfikacji dwuetapowej](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ta wersja jest częścią subskrypcji usługi Office 365 lub Microsoft 365 Business. |
 | Uwierzytelnianie wieloskładnikowe dla administratorów usługi Azure AD | Użytkownicy z przypisaną rolą administratora globalnego usługi Azure AD w dzierżawach usługi Azure AD można włączyć weryfikację dwuetapową, bez ponoszenia dodatkowych kosztów. |

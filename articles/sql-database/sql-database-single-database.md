@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65794387"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedynczej bazy danych w usłudze Azure SQL Database
@@ -32,7 +32,7 @@ Opcja wdrażania pojedynczej bazy danych tworzy bazę danych w usłudze Azure SQ
 
 Możesz utworzyć swoją pierwszą aplikację na małej, pojedynczej bazy danych przy niskich kosztach w warstwa wystąpień obliczeniowych bez użycia serwera (wersja zapoznawcza) lub rozmiar małego wystąpienia obliczeniowego w warstwie zainicjowanych zasobów obliczeniowych. Możesz zmienić [warstwy obliczeń lub usługa](sql-database-single-database-scale.md) ręcznie lub programowo w dowolnym momencie, aby zaspokoić potrzeby rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
-## <a name="single-databases-and-elastic-pools"></a>Pojedyncze bazy danych i pul elastycznych
+## <a name="single-databases-and-elastic-pools"></a>Pojedyncze bazy danych i elastyczne pule
 
 Pojedynczą bazę danych można przenieść do lub z [puli elastycznej](sql-database-elastic-pool.md) na potrzeby udostępniania zasobów. W przypadku wielu firm i aplikacji możliwość tworzenia pojedynczych baz danych i dostosowywania wydajności na żądanie jest wystarczająca, zwłaszcza gdy wzorce użycia są względnie przewidywalne. Jednak w przypadku nieprzewidywalnych wzorców zarządzanie kosztami i modelem biznesowym może być trudne. Pule elastyczne są przeznaczone do rozwiązania tego problemu. Koncepcja jest prosta. Przydzielasz zasoby wydajności do puli, a nie poszczególnych baz danych i płać za zasoby zbiorczą wydajnością puli, a nie dla wydajności pojedynczej bazy danych.
 

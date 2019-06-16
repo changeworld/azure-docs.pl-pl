@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
 ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153277"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 >
 > * [Wersja 1](v1/data-factory-data-movement-security-considerations.md)
 > * [Bieżąca wersja](data-movement-security-considerations.md)
@@ -135,11 +135,11 @@ Usługa Azure Virtual Network jest logicznym odzwierciedleniem Twojej sieci w ch
 
 Poniższa tabela zawiera podsumowanie sieci i zaleceń dotyczących Self-Hosted integration runtime konfiguracji na podstawie różnych kombinacji źródłowe i docelowe lokalizacje hybrydowe przenoszenie danych.
 
-| Source      | Lokalizacja docelowa                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
+| source      | Miejsce docelowe                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | Sieć VPN IPSec (point-to-site lub site-to-site) | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatnej komunikacji równorzędnej)           | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalne | Usługi oparte na platformie Azure, z publicznym punktem końcowym | ExpressRoute (komunikacji równorzędnej firmy Microsoft)            | Własne środowisko integration runtime może być zainstalowane w środowisku lokalnym lub na maszynie wirtualnej platformy Azure. |
+| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | Sieć VPN IPSec (point-to-site lub site-to-site) | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatnej komunikacji równorzędnej)           | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalnie | Usługi oparte na platformie Azure, z publicznym punktem końcowym | ExpressRoute (komunikacji równorzędnej firmy Microsoft)            | Własne środowisko integration runtime może być zainstalowane w środowisku lokalnym lub na maszynie wirtualnej platformy Azure. |
 
 Na poniższych ilustracjach przedstawiono użycie własnego środowiska integration runtime do przenoszenia danych między lokalną bazą danych i usług platformy Azure przy użyciu usługi ExpressRoute i sieci VPN IPSec (usługa Azure Virtual Network):
 

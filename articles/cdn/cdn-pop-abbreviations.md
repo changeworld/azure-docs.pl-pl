@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
 ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869615"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Lokalizacje POP sieci CDN platformy Azure według skrótu
@@ -91,7 +91,7 @@ KIX | Osaka, Japonia | Azja
 LAA | Los Angeles, Kalifornia, USA | Ameryka Północna: Wybrzeże zachodnie stany USA
 LAB | Los Angeles, Kalifornia, USA | Ameryka Północna: Wybrzeże zachodnie stany USA
 LAM | Los Angeles, Kalifornia, USA | Ameryka Północna: Wybrzeże zachodnie stany USA
-Sieć LAN | Los Angeles, Kalifornia, USA | Ameryka Północna: Wybrzeże zachodnie stany USA
+LAN | Los Angeles, Kalifornia, USA | Ameryka Północna: Wybrzeże zachodnie stany USA
 LAX | Los Angeles, Kalifornia, USA | Ameryka Północna: Wybrzeże zachodnie stany USA
 PLN. | London, UK | Europa
 LGA | Nowy Jork, Nowy Jork, USA | Ameryka Północna: Wschodnim wybrzeżu Stanów Zjednoczonych
@@ -118,7 +118,7 @@ NDL | Delhi, Indie | Azja
 NRT | Tokio, Japonia | Azja
 NYA | Nowy Jork, Nowy Jork, USA | Ameryka Północna: Wschodnim wybrzeżu Stanów Zjednoczonych
 NYB | Nowy Jork, Nowy Jork, USA | Ameryka Północna: Wschodnim wybrzeżu Stanów Zjednoczonych
-OMM | Maskat, Oman | Bliski Wschód
+OMM | Muscat, Oman | Bliski Wschód
 ORD | Chicago, Illinois, USA | Ameryka Północna: Środkowe stany USA
 HISTORII | Paryż, Francja | Europa
 OXR | Los Angeles, Kalifornia, USA | Ameryka Północna: Wybrzeże zachodnie stany USA

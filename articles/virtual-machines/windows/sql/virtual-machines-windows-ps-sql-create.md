@@ -17,10 +17,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: edf5f2b681123243f55b1c2bf19a500e68171c0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165729"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak wykonać aprowizację maszyn wirtualnych programu SQL Server przy użyciu programu Azure PowerShell
@@ -427,7 +427,7 @@ Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName
 ## <a name="next-steps"></a>Kolejne kroki
 Po utworzeniu maszyny wirtualnej, możesz wykonywać następujące czynności:
 
-- Połącz się z maszyną wirtualną za pomocą protokołu RDP
+- Łączenie z maszyną wirtualną przy użyciu protokołu RDP
 - Konfigurowanie ustawień programu SQL Server w portalu dla maszyny Wirtualnej, w tym:
    - [Ustawienia magazynu](virtual-machines-windows-sql-server-storage-configuration.md) 
    - [Zautomatyzowanych zadań zarządzania](virtual-machines-windows-sql-server-agent-extension.md)

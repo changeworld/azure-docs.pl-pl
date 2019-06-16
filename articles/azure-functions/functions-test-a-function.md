@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 7489f42719223dbd7f9cc2908f666dca53fe7c04
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9a078579fff355d7ddb996316af2a2136fb62335
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66496389"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usłudze Azure Functions
@@ -312,7 +312,7 @@ module.exports = {
 ```
 Ten moduł stanowi wdrożenie `IsPastDue` właściwości do autonomicznych jest jako wystąpienie fałszywych czasomierza.
 
-Następnie należy użyć rozszerzenia programu VS Code funkcje [Tworzenie nowej funkcji języka JavaScript HTTP](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started) i nadaj mu nazwę *HttpTrigger*. Po utworzeniu funkcji należy dodać nowy plik w tym samym folderze o nazwie **index.test.js**i Dodaj następujący kod:
+Następnie należy użyć rozszerzenia programu VS Code funkcje [Tworzenie nowej funkcji języka JavaScript HTTP](https://code.visualstudio.com/tutorials/functions-extension/getting-started) i nadaj mu nazwę *HttpTrigger*. Po utworzeniu funkcji należy dodać nowy plik w tym samym folderze o nazwie **index.test.js**i Dodaj następujący kod:
 
 ```javascript
 const httpFunction = require('./index');

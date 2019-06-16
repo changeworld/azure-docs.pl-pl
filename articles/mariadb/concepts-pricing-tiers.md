@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 7a52d05c77d0aeb8ebeba196df60e59f0647fea9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66233919"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database dla serwera MariaDB warstw cenowych
@@ -19,7 +19,7 @@ W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Data
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Generacja obliczeń | 5. generacja |5. generacja | 5. generacja |
+| Generacja obliczeń | 5\. generacja |5\. generacja | 5\. generacja |
 | rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Ilość pamięci na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |

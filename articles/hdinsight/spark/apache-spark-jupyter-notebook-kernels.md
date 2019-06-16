@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
 ms.openlocfilehash: b2ae24c0449b009db6fcecdd8a1366ea5154629a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257820"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jądra dla notesu Jupyter w klastrach platformy Apache Spark w usłudze Azure HDInsight 
@@ -72,7 +72,7 @@ Poniżej przedstawiono kilka korzyści wynikające ze stosowania nowych jądra z
    | Magic | Przykład | Opis |
    | --- | --- | --- |
    | pomoc |`%%help` |Generuje spis wszystkich dostępnych poleceń magicznych przy użyciu przykładu i opis |
-   | Informacje o |`%%info` |Informacje o sesji danych wyjściowych dla bieżącego punktu końcowego usługi Livy |
+   | info |`%%info` |Informacje o sesji danych wyjściowych dla bieżącego punktu końcowego usługi Livy |
    | Konfigurowanie |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Umożliwia skonfigurowanie parametrów do utworzenia sesji. Flagi force (-f) jest wymagane, jeśli sesja została już utworzona, który zapewnia, że sesja jest porzucona i utworzona ponownie. Przyjrzyj się [/sessions WPIS usługi Livy firmy treść żądania](https://github.com/cloudera/livy#request-body) listę prawidłowych parametrów. Parametry muszą być przekazywane w postaci ciągu JSON i musi być w następnym wierszu po magic, jak pokazano w przykładzie kolumna. |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Wykonuje zapytanie programu Hive względem sqlContext. Jeśli `-o` parametr jest przekazywany, wynik kwerendy są utrwalane w %% kontekstu Python lokalnego jako [Pandas](https://pandas.pydata.org/) ramki danych. |
    | lokalne |`%%local`<br>`a=1` |Cały kod w kolejnych wierszy jest wykonywana lokalnie. Kod musi być prawidłowym kodem Python2 nawet niezależnie od tego, jądra, którego używasz. Tak, nawet jeśli wybrano **PySpark3** lub **Spark** jądra podczas tworzenia notesu, jeśli używasz `%%local` magic w komórce, ta komórka może mieć tylko prawidłowy kod Python2. |

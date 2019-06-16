@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: b-juche
 ms.openlocfilehash: b55467d77beb8f97b8e392b72682268ae0407e54
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826377"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
@@ -31,9 +31,9 @@ W poniższej tabeli opisano limity zasobów dla usługi Azure Files NetApp:
 
 |  Resource  |  Limit domyślny  |  Zmienianych za pośrednictwem żądania pomocy technicznej  |
 |----------------|---------------------|--------------------------------------|
-|  Liczba kont NetApp na subskrypcję platformy Azure   |  10    |  Tak   |
-|  Liczba pul pojemność na jednym koncie NetApp   |    25     |   Tak   |
-|  Liczba woluminów na pulę pojemności     |    500   |    Tak     |
+|  Liczba kont NetApp na subskrypcję platformy Azure   |  10    |  Yes   |
+|  Liczba pul pojemność na jednym koncie NetApp   |    25     |   Yes   |
+|  Liczba woluminów na pulę pojemności     |    500   |    Yes     |
 |  Liczba migawek na każdym woluminie       |    255     |    Nie        |
 |  Liczba podsieci delegować domenę do usługi Azure Files NetApp (Microsoft.NetApp/volumes) na sieć wirtualną platformy Azure    |   1   |    Nie    |
 |  Maksymalna liczba maszyn wirtualnych (w tym wirtualne sieci równorzędne) który może nawiązać woluminu     |    1000   |    Nie   |
@@ -43,7 +43,7 @@ W poniższej tabeli opisano limity zasobów dla usługi Azure Files NetApp:
 |  Maksymalna przypisany przydział pojedynczy wolumin *   |   92 TiB   |    Nie   |
 |  Maksymalny rozmiar jednego woluminu *     |    100 TiB    |    Nie       |
 
-* Ręcznie utworzone woluminu lub rozmiar maksymalnie 92 TiB. Jednak woluminu można powiększać maksymalnie 100 TiB w scenariuszu nadwyżkowe. Zobacz [modelu kosztów dla usługi Azure Files NetApp](azure-netapp-files-cost-model.md) szczegółowe informacje na temat nadwyżki zdolności produkcyjnych. 
+\* Ręcznie utworzone woluminu lub rozmiar maksymalnie 92 TiB. Jednak woluminu można powiększać maksymalnie 100 TiB w scenariuszu nadwyżkowe. Zobacz [modelu kosztów dla usługi Azure Files NetApp](azure-netapp-files-cost-model.md) szczegółowe informacje na temat nadwyżki zdolności produkcyjnych. 
 
 ## <a name="request-limit-increase"></a>Zażądać zwiększenia limitu 
 
@@ -54,7 +54,7 @@ Płaszczyzny Nawigacja w portalu Azure:
 1. Kliknij przycisk **Pomoc i obsługa techniczna**.
 2. Kliknij przycisk **+ nowe żądanie pomocy technicznej**.
 3. Na karcie podstawy Podaj następujące informacje: 
-    1. Typ problemu: Wybierz **limity usług i subskrypcji (przydziały)**.
+    1. Typ problemu: Wybierz **limity usług i subskrypcji (przydziały)** .
     2. Subskrypcje: Wybierz subskrypcję, dla wymagających zwiększenia limitu przydziału zasobu.
     3. Typ limitu przydziału: Wybierz **magazynu: Limity usługi Azure Files NetApp**.
     4. Kliknij pozycję **Next: Rozwiązania**.

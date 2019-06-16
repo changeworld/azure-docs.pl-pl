@@ -10,10 +10,10 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597197"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testowanie aplikacji logiki za pomocą danych testowych, konfigurując wyniki statycznej
@@ -38,7 +38,7 @@ Na przykład jeśli skonfigurowano statyczne wyniki dla usługi Outlook 365 wys�
 
 1. W przypadku akcji, której chcesz skonfigurować statyczne wyniki wykonaj następujące kroki: 
 
-   1. W akcji w prawym górnym rogu wybierz wielokropek (*...* ) i wybierz **statyczny wynik**, na przykład:
+   1. W akcji w prawym górnym rogu wybierz wielokropek ( *...* ) i wybierz **statyczny wynik**, na przykład:
 
       ![Wybierz pozycję "Statyczny wynik" > "Włącz statyczny wynik"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
@@ -137,7 +137,7 @@ Wyłączenie wyniki statycznej nie Pozbywać się wartości z ostatniej konfigur
 
    ![Wyłącz wyniki statycznej](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="reference"></a>Odwołanie
+## <a name="reference"></a>Tematy pomocy
 
 Aby uzyskać więcej informacji na temat tego ustawienia w podstawowej definicji przepływu pracy, zobacz [wyniki statycznej — odwołanie do schematu dla języka definicji programu Workflow](../logic-apps/logic-apps-workflow-definition-language.md#static-results) i [runtimeConfiguration.staticResult — środowisko uruchomieniowe ustawienia konfiguracji](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 

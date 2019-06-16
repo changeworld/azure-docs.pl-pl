@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65594019"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Usługa Azure Active Directory reporting opóźnienia
@@ -41,7 +41,7 @@ W poniższej tabeli wymieniono opóźnienie dotycząca raporty aktywności.
 > **Czas oczekiwania (95. percentyl)** odnosi się do czasu za pomocą którego 95% dzienników jest informowany, i **opóźnienie (99. percentyl)** odnosi się do czasu raportowane 99% dzienniki. 
 >
 
-| Zgłoś | Czas oczekiwania (95. percentyl) |Opóźnienie (99. percentyl)|
+| Raport | Czas oczekiwania (95. percentyl) |Opóźnienie (99. percentyl)|
 | :-- | --- | --- |
 | Dzienniki inspekcji | 2 min  | 5 min  |
 | Logowania | 2 min  | 5 min |
@@ -59,7 +59,7 @@ Istnieją dwa typy raportów dotyczących zabezpieczeń:
 
 W poniższej tabeli wymieniono opóźnienie dotycząca raporty dotyczące zabezpieczeń.
 
-| Zgłoś | Minimum | Średnia | Maksimum |
+| Raport | Minimalne | Średnia | Maksimum |
 | :-- | --- | --- | --- |
 | Narażeni użytkownicy          | 5 minut   | 15 minut  | 2 godziny  |
 | Ryzykowne logowania         | 5 minut   | 15 minut  | 2 godziny  |
@@ -70,14 +70,14 @@ Usługa Azure AD używa adaptacyjnych algorytmów uczenia maszynowego i algorytm
 
 Poniższa tabela zawiera informacje opóźnienie dla zdarzeń o podwyższonym ryzyku.
 
-| Zgłoś | Minimum | Średnia | Maksimum |
+| Raport | Minimalne | Średnia | Maksimum |
 | :-- | --- | --- | --- |
 | Logowania z anonimowych adresów IP |5 minut |15 minut |2 godziny |
 | Logowania z nieznanych lokalizacji |5 minut |15 minut |2 godziny |
 | Użytkownicy z ujawnionymi poświadczeniami |2 godziny |4 godziny |8 godzin |
 | Niemożliwa podróż do nietypowych lokalizacji |5 minut |1 godzina |8 godzin  |
 | Logowania z zainfekowanych urządzeń |2 godziny |4 godziny |8 godzin  |
-| Logowania z adresów IP z podejrzaną aktywnością |2 godziny |4 godziny |8 godzin  |
+| Logowania z adresów IP związanych z podejrzanymi działaniami |2 godziny |4 godziny |8 godzin  |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
