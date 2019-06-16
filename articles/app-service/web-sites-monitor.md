@@ -16,10 +16,10 @@ ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60832594"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorowanie aplikacji w usłudze Azure App Service
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji o określonych przydziały, limity i dostęp do 
 
 ### <a name="quota-enforcement"></a>Wymuszanie przydziałów
 
-Jeśli aplikacja przekracza *Procesora (krótki)*, *Procesora (dzień)*, lub *przepustowości* limit przydziału, aplikacja zostanie zatrzymana, dopóki nie powoduje zresetowanie limitu przydziału. W tym czasie wszystkie żądania przychodzące powodować wystąpienie błędu HTTP 403.
+Jeśli aplikacja przekracza *Procesora (krótki)* , *Procesora (dzień)* , lub *przepustowości* limit przydziału, aplikacja zostanie zatrzymana, dopóki nie powoduje zresetowanie limitu przydziału. W tym czasie wszystkie żądania przychodzące powodować wystąpienie błędu HTTP 403.
 
 ![komunikat o błędzie 403][http403]
 

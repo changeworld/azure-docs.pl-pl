@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
 ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190063"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
@@ -23,7 +23,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 1. Komentarze części tego artykułu.
 2. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [W usłudze pliki Azure UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. pomocą techniczną firmy Microsoft. Aby utworzyć nowe żądanie obsługi w witrynie Azure portal na **pomocy** zaznacz **Pomoc i obsługa techniczna** przycisk, a następnie wybierz **nowe żądanie obsługi**.
+4. Microsoft Support. Aby utworzyć nowe żądanie obsługi w witrynie Azure portal na **pomocy** zaznacz **Pomoc i obsługa techniczna** przycisk, a następnie wybierz **nowe żądanie obsługi**.
 
 ## <a name="general"></a>Ogólne
 * <a id="why-files-useful"></a>
@@ -360,7 +360,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
     Nie. Maksymalny rozmiar udziału plików platformy Azure wynosi 5 TiB. Obecnie jest to stały limit, które firma Microsoft nie można dostosować. Pracujemy nad rozwiązaniem, aby zwiększyć rozmiar udziału na 100 TiB, ale nie mamy osi czasu, aby udostępnić w tej chwili.
 
 * <a id="open-handles-quota"></a>
-**Ilu klientów mogą uzyskać dostęp do tego samego pliku jednocześnie?**   
+**Ilu klientów mogą uzyskać dostęp do tego samego pliku jednocześnie?**    
     Obowiązuje przydział 2000 otwartymi dojściami w jednym pliku. W przypadku 2 000 otwarte dojścia jest wyświetlany komunikat o błędzie stwierdzający, że osiągnięto limit przydziału.
 
 * <a id="zip-slow-performance"></a>

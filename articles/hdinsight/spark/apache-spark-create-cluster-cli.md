@@ -1,20 +1,20 @@
 ---
-title: Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu wiersza polecenia platformy Azure
+title: 'Szybki start: Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu wiersza polecenia platformy Azure'
 description: Ten przewodnik Szybki Start pokazano, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight przy użyciu wiersza polecenia platformy Azure.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 05/09/2019
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9478ca8e1b31c1761e063a6789e96043f9a2c68
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.openlocfilehash: 72bdab9d7fb5c3019d97ffc4c92257c49ec2b8e5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556832"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066240"
 ---
-# <a name="create-an-apache-spark-cluster-in-azure-hdinsight-with-azure-cli"></a>Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu wiersza polecenia platformy Azure
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Szybki start: Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu wiersza polecenia platformy Azure
 
 W tym przewodniku Szybki Start dowiesz się, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight przy użyciu wiersza polecenia platformy Azure. Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. [Interfejsu wiersza polecenia platformy Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) to środowisko wiersza polecenia dla wielu platform firmy Microsoft do zarządzania zasobami platformy Azure.
 

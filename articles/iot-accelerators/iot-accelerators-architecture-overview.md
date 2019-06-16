@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: 1e3ec677f2c3ce2a7f942c47269fe1f70885ac02
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 01349dbc5fe98fd69ce7219ef6f2029d7bb815d0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067907"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Wprowadzenie do architektura referencyjna IoT platformy Azure
 
 W tym artykule przedstawiono [architektura referencyjna IoT platformy Azure](https://aka.ms/iotrefarchitecture) oraz przykłady sposób [akceleratorów rozwiązań Azure IoT](about-iot-accelerators.md) wykonaj zalecenia.
 
-Open source [zdalne monitorowanie](iot-accelerators-remote-monitoring-sample-walkthrough.md) i [połączonej fabryki](iot-accelerators-connected-factory-sample-walkthrough.md) akceleratorów rozwiązań, należy wykonać wiele zaleceń architektury odwołanie. Akceleratory rozwiązań służy jako punkt początkowy dla własnych rozwiązań IoT lub narzędzi do uczenia.
+Open source [zdalne monitorowanie](iot-accelerators-remote-monitoring-sample-walkthrough.md) i [połączonej fabryki](iot-accelerators-connected-factory-features.md) akceleratorów rozwiązań, należy wykonać wiele zaleceń architektury odwołanie. Akceleratory rozwiązań służy jako punkt początkowy dla własnych rozwiązań IoT lub narzędzi do uczenia.
 
 ## <a name="overview"></a>Omówienie
 

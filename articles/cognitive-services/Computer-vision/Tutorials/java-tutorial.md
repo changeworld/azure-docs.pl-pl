@@ -12,10 +12,10 @@ ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
 ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232634"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Użyj funkcji przetwarzania obrazów z interfejsu API REST i językiem Java
@@ -60,11 +60,11 @@ Nie ma potrzeby wyodrębniania zawartości pliku zip, ponieważ NetBeans importu
 
 Zaimportuj plik **cognitive-services-java-computer-vision-tutorial-master.zip** do środowiska NetBeans.
 
-1. W środowisku NetBeans kliknij kolejno opcje **File (Plik)** > **Import project (Importuj projekt)**  > **From ZIP...(Z pliku ZIP)**. Zostanie wyświetlone okno dialogowe **Import Project(s) from ZIP** (Importuj projekt(y) z pliku ZIP).
+1. W środowisku NetBeans kliknij kolejno opcje **File (Plik)**  > **Import project (Importuj projekt)**  > **From ZIP...(Z pliku ZIP)** . Zostanie wyświetlone okno dialogowe **Import Project(s) from ZIP** (Importuj projekt(y) z pliku ZIP).
 1. W polu **ZIP File:** (Plik ZIP:) kliknij przycisk **Browse** (Przeglądaj), aby zlokalizować plik **cognitive-services-java-computer-vision-tutorial-master.zip**, a następnie kliknij przycisk **Open** (Otwórz).
 1. Kliknij przycisk **Import** (Importuj) w oknie dialogowym **Import Project(s) from ZIP** (Importuj projekt(y) z pliku ZIP).
-1. W panelu **Projects** (Projekty) rozwiń do opcji **ComputerVision (Przetwarzanie obrazów)** > **Source Packages (Pakiety źródłowe)** > **&lt;pakiet domyślny&gt;**. 
-   Niektóre wersje środowiska NetBeans używają opcji **src** zamiast **Source Packages (Pakiety źródłowe)** > **&lt;pakiet domyślny&gt;**. W takim przypadku rozwiń pozycję **src**.
+1. W panelu **Projects** (Projekty) rozwiń do opcji **ComputerVision (Przetwarzanie obrazów)**  > **Source Packages (Pakiety źródłowe)**  >  **&lt;pakiet domyślny&gt;** . 
+   Niektóre wersje środowiska NetBeans używają opcji **src** zamiast **Source Packages (Pakiety źródłowe)**  >  **&lt;pakiet domyślny&gt;** . W takim przypadku rozwiń pozycję **src**.
 1. Kliknij dwukrotnie pozycję **MainFrame.java**, aby załadować plik do edytora NetBeans. Zostaje wyświetlona karta **Design** (Projektowanie) pliku **MainFrame.java**.
 1. Kliknij kartę **Source** (Źródło), aby wyświetlić kod źródłowy języka Java.
 

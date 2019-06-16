@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35dad420aa004e27ec974c494dc66e9b8e13c733
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65811943"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurowanie aplikacji SaaS na potrzeby współpracy B2B
@@ -72,7 +72,7 @@ Aby umożliwić użytkownikom na logowanie przy użyciu swojego konta organizacj
 
 Po użytkowników z gościa lub elementu członkowskiego zdefiniowano w aplikacji Dropbox, otrzyma zaproszenie oddzielne z usługi Dropbox. Aby korzystać z usługi Dropbox logowanie jednokrotne, zapraszane osoby muszą musi zaakceptować zaproszenie, klikając łącze w nim.
 
-## <a name="box"></a>Pole
+## <a name="box"></a>Box
 Możesz umożliwić użytkownikom uwierzytelnianie użytkowników-gości pole za pomocą konta usługi Azure AD przy użyciu Federacji, który jest oparty na protokole SAML. W ramach tej procedury możesz przekazać do usługi Box.com metadanych.
 
 1. Dodawanie aplikacji Box z aplikacjami w przedsiębiorstwie.

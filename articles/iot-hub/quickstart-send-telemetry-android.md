@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: b8cf0891bd2a11a4ea46cc9fb8bad266862b6971
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6e7d0ff396a4d264ee1f724d192c6c36abb400b1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005370"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051571"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Szybki start: Przesyłanie danych telemetrycznych usługi IoT z urządzenia z systemem Android
 
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Program Android Studio ze strony https://developer.android.com/studio/. Aby uzyskać więcej informacji na temat instalacji programu Android Studio, zobacz artykuł dotyczący [instalowania w systemie Android](https://developer.android.com/studio/install). 
+* Program Android Studio ze strony https://developer.android.com/studio/. Aby uzyskać więcej informacji na temat instalacji programu Android Studio, zobacz artykuł dotyczący [instalowania w systemie Android](https://developer.android.com/studio/install).
 
 * W przykładzie w tym artykule jest używany zestaw Android SDK 27.
 
@@ -113,11 +113,10 @@ W tej sekcji, używając usługi Azure Cloud Shell z [rozszerzeniem IoT](https:/
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
+
     Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie odbierania przez centrum IoT Hub danych telemetrycznych wysyłanych przez urządzenie z systemem Android:
 
       ![Czytanie komunikatów urządzenia za pomocą interfejsu wiersza polecenia platformy Azure](media/quickstart-send-telemetry-android/read-data.png)
-
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
@@ -130,4 +129,3 @@ Aby dowiedzieć się, jak kontrolować urządzenie symulowane z poziomu aplikacj
 
 > [!div class="nextstepaction"]
 > [Szybki start: Sterowanie urządzeniem połączonym z centrum IoT Hub](quickstart-control-device-android.md)
-

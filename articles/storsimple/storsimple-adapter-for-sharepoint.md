@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
 ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60633422"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Instalowanie i Konfigurowanie adaptera StorSimple dla programu SharePoint
@@ -217,7 +217,7 @@ Zbierz następujące informacje, aby przenieść dane z powrotem do bazy danych 
 ### <a name="move-the-blobs-back-to-the-content-databases"></a>Przenieść obiekty BLOB z powrotem do bazy danych zawartości
 Przed odinstalowaniem adaptera StorSimple dla oprogramowania SharePoint, należy przeprowadzić migrację wszystkich obiektów blob, które zostały zewnętrznych do bazy danych zawartości programu SQL Server. Jeśli użytkownik podejmie próbę odinstalowania adaptera StorSimple dla programu SharePoint, zanim przeniesieniu wszystkich obiektów blob z powrotem do bazy danych zawartości, zobaczą następujący komunikat ostrzegawczy.
 
-![Komunikat ostrzeżenia](./media/storsimple-adapter-for-sharepoint/sasp1.png)
+![Komunikat ostrzegawczy](./media/storsimple-adapter-for-sharepoint/sasp1.png)
 
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>Aby przenieść z powrotem do bazy danych zawartości obiektów blob
 1. Pobierz, każdy z obiektów zewnętrznych.

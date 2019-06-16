@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 1ed8dac90527de396e0b7ae59e5d19939a4a36be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf054cb3a965e94f7f18e39065d744b4376b6527
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102190"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Form.com
 
@@ -28,7 +28,7 @@ Integracja aplikacji Form.com z usługą Azure AD zapewnia następujące korzyś
 
 * W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Form.com.
 * Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Form.com (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -52,7 +52,7 @@ Aby skonfigurować integrację aplikacji Form.com w usłudze Azure AD, należy d
 
 **Aby dodać aplikację Form.com z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -60,27 +60,27 @@ Aby skonfigurować integrację aplikacji Form.com w usłudze Azure AD, należy d
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Form.com**, wybierz pozycję **Form.com** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
      ![Aplikacja Form.com na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Form.com, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Form.com.
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Form.com, należy wykonać kroki opisane w poniższych blokach konstrukcyjnych:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Form.com](#configure-formcom-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego aplikacji Form.com](#create-formcom-test-user)** — aby mieć w aplikacji Form.com odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -90,7 +90,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Form.com, 
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Form.com** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -118,9 +118,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Form.com, 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Form.com](https://form.com/about/company/contact-us/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)**, i kliknij **ikonę** kopiowania, aby skopiować **adres URL metadanych federacyjnych aplikacji** z podanych opcji zgodnie z wymaganiami i zapisać je na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** , i kliknij **ikonę** kopiowania, aby skopiować **adres URL metadanych federacyjnych aplikacji** z podanych opcji zgodnie z wymaganiami i zapisać je na komputerze.
 
-    ![Link do pobierania certyfikatu](./media/formcom-tutorial/certificatebase64-url.png)
+    ![Link pobierania certyfikatu](./media/formcom-tutorial/certificatebase64-url.png)
 
 6. W sekcji **Konfigurowanie aplikacji Form.com** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -134,7 +134,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Form.com, 
 
 ### <a name="configure-formcom-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Form.com
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Form.com**, musisz wysłać pobrany **certyfikat (Base64)**, **adres URL metadanych federacyjnych aplikacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Form.com](https://form.com/about/company/contact-us/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Form.com**, musisz wysłać pobrany **certyfikat (Base64)** , **adres URL metadanych federacyjnych aplikacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Form.com](https://form.com/about/company/contact-us/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -189,7 +189,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 ### <a name="create-formcom-test-user"></a>Tworzenie użytkownika testowego aplikacji Form.com
 
-W tej sekcji utworzysz użytkownika Britta Simon w aplikacji Form.com. Współpracuj z  [zespołem pomocy technicznej aplikacji Form.com](https://form.com/about/company/contact-us/), aby dodać użytkowników na platformie Form.com. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika Britta Simon w aplikacji Form.com. Współpracuj z  [zespołem pomocy technicznej aplikacji Form.com](https://form.com/about/company/contact-us/), aby dodać użytkowników na platformie Form.com. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 8e344d6908ba19f8e2294c7777b9c1016eafaf52
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43f940c3c5b0fcf06fb5aa9be268f85db19fc8a6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927645"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077660"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>Rozwiązywanie problemów — omówienie, opinie i pomoc techniczna
+# <a name="troubleshooting-overview-feedback-and-support"></a>Rozwiązywania problemów — omówienie, opinie i obsługa techniczna
 
 Ten artykuł zawiera omówienie problemy mogą wystąpić podczas konfigurowania środowiska dzierżawy pulpitu wirtualnego Windows i zawiera sposoby rozwiązania problemów.
 
@@ -24,7 +24,7 @@ Firma Microsoft obecnie nie są zbyt przypadki pomocy technicznej Windows pulpit
 
 ## <a name="escalation-tracks"></a>Śledzi eskalacji
 
-Skorzystaj z poniższej tabeli, aby zidentyfikować i rozwiązać problemy, które można napotkać podczas konfigurowania środowiska dzierżawy, przy użyciu klienta pulpitu zdalnego.
+Skorzystaj z poniższej tabeli, aby zidentyfikować i rozwiązać problemy, które można napotkać podczas konfigurowania środowiska dzierżawy, przy użyciu klienta pulpitu zdalnego. Po skonfigurowaniu przez dzierżawców można użyć naszej nowej [Usługa diagnostyczna](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service) umożliwiają zidentyfikowanie problemów dla typowych scenariuszy.
 
 >[!NOTE]
 >Firma Microsoft obecnie nie są zbyt przypadki pomocy technicznej Windows pulpitu wirtualnego jest dostępna w wersji zapoznawczej. Zawsze, gdy będziemy odwoływać się do pomocy technicznej Windows pulpitu wirtualnego, przejdź na naszym forum społeczności technicznej teraz. Odwiedź stronę [społeczności technicznej pulpitu wirtualnego Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) aby omówić problemy związane z zespołu pracującego nad produktem i elementów członkowskich aktywnej społeczności użytkowników. Jeśli trzeba rozwiązać problemu wymagającego pomocy technicznej, należy uwzględnić identyfikator działania oraz przybliżony przedział czasu, w przypadku wystąpienia problemu.
@@ -34,8 +34,8 @@ Skorzystaj z poniższej tabeli, aby zidentyfikować i rozwiązać problemy, któ
 | Tworzenie dzierżawy                                                    | W przypadku awarii platformy Azure, skontaktuj się z pomocą [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/); w przeciwnym razie skontaktuj się z pomocą **obsługę zdalnego pulpitu wirtualnego usług/Windows Desktop**.|
 | Uzyskiwanie dostępu do portalu Marketplace szablony w witrynie Azure portal       | W przypadku awarii platformy Azure, skontaktuj się z pomocą [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/). <br> <br> Szablony platformy Azure pulpit wirtualny w Windows Marketplace są dostępne bezpłatnie.|
 | Uzyskiwanie dostępu do usługi Azure Resource Manager z usługi GitHub                                  | W sekcji "Tworzenie Windows Virtual host sesji usług pulpitu maszyn wirtualnych" [dzierżawy i hostów puli tworzenia](troubleshoot-set-up-issues.md). Jeśli nadal nierozwiązany problem, skontaktuj się z [zespołem pomocy technicznej w witrynie GitHub](https://github.com/contact). <br> <br> Jeśli błąd wystąpi po uzyskaniu dostępu do szablonu w usłudze GitHub, skontaktuj się z [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/).|
-| Ustawienia hosta sesji puli usługi Azure Virtual Network (VNET) i Express Route               | Skontaktuj się z pomocą **pomocy technicznej platformy Azure (sieć)**. |
-| Pula hosta sesji tworzenia maszyn wirtualnych (VM), gdy nie są używane szablony usługi Azure Resource Manager dostarczane z pulpitem wirtualnym Windows | Skontaktuj się z pomocą **pomocy technicznej platformy Azure (składnik obliczeniowy)**. <br> <br> W przypadku problemów z szablonami usługi Azure Resource Manager, które są dostarczane z Windows pulpitu wirtualnego, w sekcji Tworzenie wirtualnego pulpitu Windows dzierżawy [dzierżawy i hostów puli tworzenia](troubleshoot-set-up-issues.md). |
+| Ustawienia hosta sesji puli usługi Azure Virtual Network (VNET) i Express Route               | Skontaktuj się z pomocą **pomocy technicznej platformy Azure (sieć)** . |
+| Pula hosta sesji tworzenia maszyn wirtualnych (VM), gdy nie są używane szablony usługi Azure Resource Manager dostarczane z pulpitem wirtualnym Windows | Skontaktuj się z pomocą **pomocy technicznej platformy Azure (składnik obliczeniowy)** . <br> <br> W przypadku problemów z szablonami usługi Azure Resource Manager, które są dostarczane z Windows pulpitu wirtualnego, w sekcji Tworzenie wirtualnego pulpitu Windows dzierżawy [dzierżawy i hostów puli tworzenia](troubleshoot-set-up-issues.md). |
 | Zarządzanie środowisku hosta sesji pulpitu wirtualnego Windows w witrynie Azure portal    | Skontaktuj się z pomocą **pomocy technicznej platformy Azure**. <br> <br> Dotycząca problemów z zarządzaniem przy użyciu zdalnego pulpitu usług/Windows wirtualnego pulpitu programu PowerShell, zobacz [środowiska PowerShell pulpitu wirtualnego Windows](troubleshoot-powershell.md) lub skontaktuj się z **zespołem pomocy technicznej zdalnego pulpitu wirtualnego usług/Windows Desktop** . |
 | Zarządzanie konfiguracją pulpitu wirtualnego Windows powiązane z hostów, pul i aplikacji (grup aplikacji)      | Zobacz [środowiska PowerShell pulpitu wirtualnego Windows](troubleshoot-powershell.md), lub skontaktuj się z **zespołem pomocy technicznej zdalnego pulpitu wirtualnego usług/Windows Desktop**. <br> <br> Jeśli problemy, które są powiązane próbki graficznego interfejsu użytkownika (GUI), korzystał z usługi Yammer dla społeczności.|
 | Klienci usług pulpitu zdalnego usterek w menu start                                                 | Zobacz [połączeń klienta usług pulpitu zdalnego](troubleshoot-client-connection.md) i jeśli to nie rozwiąże problemu, skontaktuj się z **zespołem pomocy technicznej zdalnego pulpitu wirtualnego usług/Windows Desktop**.  <br> <br> Jeśli jest problem z siecią, użytkownicy musieli skontaktować się z administratorem sieci, ich. |

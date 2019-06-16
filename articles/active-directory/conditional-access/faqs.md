@@ -1,5 +1,5 @@
 ---
-title: Dostęp warunkowy usługi Azure Active Directory — często zadawane pytania | Dokumentacja firmy Microsoft
+title: Usługa Azure Active Directory dostępu warunkowego często zadawane pytania | Dokumentacja firmy Microsoft
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące dostępu warunkowego w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 01/15/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21c89d9d686c4af594aa7a0fd921471105669e02
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 111daef3448533cd863d45197d45c87d8d21264b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60354540"
+ms.locfileid: "67112398"
 ---
-# <a name="azure-active-directory-conditional-access-faqs"></a>Dostęp warunkowy usługi Azure Active Directory — często zadawane pytania
+# <a name="azure-active-directory-conditional-access-faqs"></a>Często zadawane pytania usługi Azure Active Directory dostępu warunkowego
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>Aplikacji, które współpracuje z zasad dostępu warunkowego?
 
@@ -46,7 +46,7 @@ Zasady dostępu warunkowego Ustawia wymagania dotyczące dostępu do usługi. Wy
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Zasady dostępu warunkowego ma zastosowania do kont usługi?
 
-Zasady dostępu warunkowego mają zastosowanie do wszystkich kont użytkowników. Obejmuje to konta użytkowników, które są używane jako konta usług. Często konta usługi, które uruchamia instalacji nienadzorowanej nie może spełnić wymagań zasad dostępu warunkowego. Na przykład uwierzytelnianie wieloskładnikowe może być wymagane. Konta usług mogą być wykluczone z zasad za pomocą ustawienia zarządzania zasad dostępu warunkowego. 
+Zastosuj zasady dostępu warunkowego do wszystkich kont użytkowników. Obejmuje to konta użytkowników, które są używane jako konta usług. Często konta usługi, które uruchamia instalacji nienadzorowanej nie może spełnić wymagań zasad dostępu warunkowego. Na przykład uwierzytelnianie wieloskładnikowe może być wymagane. Konta usług mogą być wykluczone z zasad za pomocą ustawienia zarządzania zasad dostępu warunkowego. 
 
 ## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Interfejsy API programu Graph są dostępne do konfigurowania zasad dostępu warunkowego?
 
@@ -61,6 +61,6 @@ Obecnie zasady dostępu warunkowego selektywnie są wymuszane dla użytkowników
 
 Microsoft Teams zależy od intensywnie usługi Exchange Online i SharePoint Online dla podstawowych scenariuszy wydajności, takich jak spotkania, kalendarze i udostępnianie plików. Zasady dostępu warunkowego, które są ustawione dla tych aplikacji w chmurze dotyczy Microsoft Teams po użytkownik zalogował bezpośrednio do Microsoft Teams.
 
-Microsoft Teams także jest obsługiwany oddzielnie jako aplikacja w chmurze w ramach zasad dostępu warunkowego usługi Azure Active Directory. Zasady dostępu warunkowego, które są ustawione dla aplikacji w chmurze dotyczy Microsoft Teams, gdy użytkownik loguje się. Jednak bez prawidłowe zasady na inne aplikacje, takie jak Exchange Online i SharePoint Online użytkownicy mogą nadal mieć możliwość bezpośrednio dostęp do tych zasobów.
+Microsoft Teams także jest obsługiwany oddzielnie jako aplikacja w chmurze w ramach zasad usługi Azure Active Directory dostępu warunkowego. Zasady dostępu warunkowego, które są ustawione dla aplikacji w chmurze dotyczy Microsoft Teams, gdy użytkownik loguje się. Jednak bez prawidłowe zasady na inne aplikacje, takie jak Exchange Online i SharePoint Online użytkownicy mogą nadal mieć możliwość bezpośrednio dostęp do tych zasobów.
 
 Klienci stacjonarni Microsoft Teams dla Windows i komputerów Mac obsługuje nowoczesnego uwierzytelniania. Nowoczesne uwierzytelniane umożliwia logowanie oparte na Azure Active Directory Authentication Library (ADAL) dla aplikacji klienckich Microsoft Office na różnych platformach.

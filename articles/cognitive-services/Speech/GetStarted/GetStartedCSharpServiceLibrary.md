@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 0f445d1fff48ee7a04c0b1c1d64c808f87d824b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515225"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Szybki start: Korzystanie z biblioteki usługi rozpoznawania mowy Bing w języku C&#35; dla Windows .NET
@@ -166,6 +166,6 @@ Interfejs API korzysta z jednego połączenia protokołu WebSocket na żądanie.
 
 Domyślnie zestaw SDK buforuje audio, dzięki czemu możliwe jest Odzyskiwanie po wystąpieniu przerwania sieci. W przypadku, gdy jest to korzystniejsze odrzucenie audio utracone podczas rozłączania sieci i uruchomić ponownie połączenie, warto wyłączyć buforowanie audio, ustawiając `EnableAudioBuffering` w obiekcie preferencje, aby `false`.
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 
 [Dokumentacja biblioteki usługa Microsoft Speech C#](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)

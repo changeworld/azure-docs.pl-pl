@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 29b607f10c15ba35a515b55b059b7b55ff594fe6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66135749"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Tworzenie bramy aplikacji przy użyciu szablonu usługi Azure Resource Manager
@@ -161,9 +161,9 @@ Aby wdrożyć szablon usługi Azure Resource Manager, który został pobrany prz
     az group create --location westus --name appgatewayRG
     ```
     
-    **-n (lub --name)**. Nazwa nowej grupy zasobów. W naszym scenariuszu jest to *appgatewayRG*.
+    **-n (lub --name)** . Nazwa nowej grupy zasobów. W naszym scenariuszu jest to *appgatewayRG*.
     
-    **-l (lub --location)**. Region świadczenia usługi Azure, w którym zostanie utworzona nowa grupa zasobów. W naszym scenariuszu przedstawiono w nim *westus*.
+    **-l (lub --location)** . Region świadczenia usługi Azure, w którym zostanie utworzona nowa grupa zasobów. W naszym scenariuszu przedstawiono w nim *westus*.
 
 1. Uruchom `az group deployment create` polecenia cmdlet, aby wdrożyć nową sieć wirtualną przy użyciu szablonu oraz parametrów pliki uprzednio pobranych i zmodyfikowanych w poprzednim kroku. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
 

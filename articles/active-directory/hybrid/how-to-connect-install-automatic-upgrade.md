@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60349848"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Program Azure AD Connect: Automatycznie uaktualnianie
@@ -40,8 +40,8 @@ Bieżący stan automatycznego uaktualniania można wyświetlić za pomocą polec
 | Stan | Komentarz |
 | --- | --- |
 | Enabled (Włączony) |Automatyczne uaktualnianie jest włączona. |
-| Wstrzymane |Ustaw tylko w systemie. System jest **nie jest obecnie** prawo do otrzymania automatycznych uaktualnień. |
-| Disabled (Wyłączony) |Automatyczne uaktualnianie jest wyłączona. |
+| Suspended |Ustaw tylko w systemie. System jest **nie jest obecnie** prawo do otrzymania automatycznych uaktualnień. |
+| Wyłączone |Automatyczne uaktualnianie jest wyłączona. |
 
 Można zmieniać **włączone** i **wyłączone** z `Set-ADSyncAutoUpgrade`. Tylko do systemu, należy ustawić stan **zawieszone**.  Przed 1.1.750.0 polecenia cmdlet Set-ADSyncAutoUpgrade mogłyby spowodować zablokowanie Autoupgrade Jeśli ustawiono stan automatyczną aktualizację zawieszone. Ta funkcja zostanie zmieniona tak AutoUpgrade nie są blokowane.
 

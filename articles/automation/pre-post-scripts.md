@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a11602919a8b68a078b0b2690411358b4b5f814
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65913863"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063496"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Zarządzanie skryptami przed i po
 
@@ -68,7 +68,7 @@ Oprócz parametry elementu runbook standardowe dodatkowy parametr jest dostępna
 
 ## <a name="stopping-a-deployment"></a>Zatrzymywanie wdrożenia
 
-Jeśli chcesz zatrzymać wdrożenie na podstawie wstępnie skryptu należy [throw](automation-runbook-execution.md#throw) wyjątek. Jeśli użytkownik nie zgłasza wyjątku, wdrażania i skrypt Post będą nadal działać. [Przykładowy element runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) w galerii pokazuje, jak to zrobić. Poniżej przedstawiono fragment z tego elementu runbook.
+Jeśli chcesz zatrzymać wdrażanie na podstawie skryptu Pre, musisz najpierw [throw](automation-runbook-execution.md#throw) wyjątek. Jeśli nie zgłasza wyjątku, wdrażania i skrypt Post będą nadal działać. [Przykładowy element runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) w galerii pokazuje, jak to zrobić. Poniżej przedstawiono fragment z tego elementu runbook.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -206,11 +206,11 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-machines"></a>Interakcja z maszyn
 
-Przed i po zadania są uruchamiane jako elementu runbook na Twoim koncie usługi Automation, a nie bezpośrednio na maszynach w danym wdrożeniu. Zadania przed i po również są uruchamiane w kontekście platformy Azure i nie mają dostępu do maszyny spoza platformy Azure. W poniższych sekcjach opisano, jak możesz porozmawiać z maszyn bezpośrednio czy maszyny spoza platformy Azure lub Maszynie wirtualnej platformy Azure:
+Przed i po zadania są uruchamiane jako elementu runbook na Twoim koncie usługi Automation, a nie bezpośrednio na maszynach w danym wdrożeniu. Zadania przed i po również są uruchamiane w kontekście platformy Azure i nie mają dostępu do maszyny spoza platformy Azure. W poniższych sekcjach opisano, jak możesz porozmawiać z maszyn bezpośrednio czy są one maszyny spoza platformy Azure lub Maszynie wirtualnej platformy Azure:
 
 ### <a name="interacting-with-azure-machines"></a>Interakcja z maszyn platformy Azure
 
-Zadania przed i po są uruchomione jako elementy runbook i natywnie nie należy uruchamiać na maszynach wirtualnych platformy Azure w danym wdrożeniu. Do interakcji z maszynami wirtualnymi portalu Azure, należy dysponować następującymi elementami:
+Przed i po zadania są uruchamiane jako elementy runbook i natywnie nie uruchomienia na maszynach wirtualnych platformy Azure w danym wdrożeniu. Do interakcji z maszynami wirtualnymi portalu Azure, należy dysponować następującymi elementami:
 
 * Konto Uruchom jako
 * Element runbook, który chcesz uruchomić
@@ -239,9 +239,10 @@ if (<My custom error logic>)
     throw "There was an error, abort deployment"
 }
 ```
+
 ## <a name="known-issues"></a>Znane problemy
 
-* Nie można przekazać obiekty i tablice parametrów przy użyciu skryptów przed i po. Element runbook zakończy się niepowodzeniem.
+* Nie można przekazać wartość logiczną, obiekty lub tablice parametrów przy użyciu skryptów przed i po. Element runbook zakończy się niepowodzeniem. Aby uzyskać pełną listę obsługiwanych typów, zobacz [parametry](#passing-parameters).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: robb
 ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65471780"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów z usługi Diagnostyka Azure
 W tym artykule opisano informacje dotyczące rozwiązywania problemów, która jest odpowiednia do korzystania z usługi Azure Diagnostics. Aby uzyskać więcej informacji na temat usługi Diagnostyka Azure, zobacz [Omówienie usługi Azure Diagnostics](diagnostics-extension-overview.md).
 
 ## <a name="logical-components"></a>Logiczne składniki
-**Uruchamianie diagnostyki wtyczki programu (DiagnosticsPluginLauncher.exe)**: Uruchamia rozszerzenie diagnostyki platformy Azure. Służy jako wpis punktu procesu.
+**Uruchamianie diagnostyki wtyczki programu (DiagnosticsPluginLauncher.exe)** : Uruchamia rozszerzenie diagnostyki platformy Azure. Służy jako wpis punktu procesu.
 
-**Wtyczka diagnostyki (DiagnosticsPlugin.exe)**: Konfiguruje, uruchamia i zarządza czasem istnienia agenta monitorowania. Jest głównego procesu, który jest uruchamiany przez uruchamianie.
+**Wtyczka diagnostyki (DiagnosticsPlugin.exe)** : Konfiguruje, uruchamia i zarządza czasem istnienia agenta monitorowania. Jest głównego procesu, który jest uruchamiany przez uruchamianie.
 
-**Monitoring Agent (MonAgent\*procesy .exe)**: Monitoruje, zbiera i przesyła dane diagnostyczne.  
+**Monitoring Agent (MonAgent\*procesy .exe)** : Monitoruje, zbiera i przesyła dane diagnostyczne.  
 
 ## <a name="logartifact-paths"></a>Ścieżki dziennika/artefaktu
 Poniżej przedstawiono ścieżki do niektórych ważnych dzienników i artefaktów. Nazywamy te informacje w pozostałej części dokumentu.
 
-### <a name="azure-cloud-services"></a>Azure Cloud Services
-| Artefakt | `Path` |
+### <a name="azure-cloud-services"></a>Usług Azure Cloud Services
+| Artefakt | Ścieżka |
 | --- | --- |
 | **Plik konfiguracji usługi Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **Pliki dziennika** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
@@ -40,7 +40,7 @@ Poniżej przedstawiono ścieżki do niektórych ważnych dzienników i artefakt�
 | **Plik dziennika MonAgentHost** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>Maszyny wirtualne
-| Artefakt | `Path` |
+| Artefakt | Ścieżka |
 | --- | --- |
 | **Plik konfiguracji usługi Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **Pliki dziennika** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
@@ -207,14 +207,14 @@ Oto przykład:
 ```
 Ten kod generuje cztery tabele:
 
-| Zdarzenie | Nazwa tabeli |
+| Wydarzenie | Nazwa tabeli |
 | --- | --- |
 | Dostawca = "prov1" &lt;zdarzenie o identyfikatorze = "1" /&gt; |WADEvent+MD5(“prov1”)+”1” |
 | Dostawca = "prov1" &lt;zdarzenie o identyfikatorze = "2" eventDestination = "dest1" /&gt; |WADdest1 |
 | Dostawca = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5(“prov1”) |
 | Dostawca = "prov2" &lt;DefaultEvents eventDestination = "dest2" /&gt; |WADdest2 |
 
-## <a name="references"></a>Odwołania
+## <a name="references"></a>Dokumentacja
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Jak sprawdzić konfiguracji rozszerzenia diagnostyki
 Najprostszym sposobem, aby sprawdzić konfigurację rozszerzenia jest przejdź do [Eksploratora zasobów Azure](http://resources.azure.com), a następnie przejdź do maszyny wirtualnej lub w chmurze usługi gdzie przez rozszerzenie Diagnostyka Azure (IaaSDiagnostics / PaaDiagnostics) jest.

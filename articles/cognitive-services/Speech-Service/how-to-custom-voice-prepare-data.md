@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 18e1bb486c47baf7648a74e31451e2db73f72250
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23ba45804632163cc5de41ac2353091b7cf850c1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156861"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063192"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Przygotowywanie danych do tworzenia niestandardowych voice
 
@@ -49,7 +49,7 @@ Można przygotować nagrania poszczególnych wypowiedzi i dopasowania transkrypc
 Aby wygenerować czcionka głosowa dobre, należy utworzyć nagrania w pokoju cichy z mikrofonu wysokiej jakości. Spójne woluminu wypowiedzi szybkości, wypowiedzi gęstość i ekspresyjny mannerisms mowy mają kluczowe znaczenie.
 
 > [!TIP]
-> Aby utworzyć głosu w środowisku produkcyjnym, zalecamy możesz talent studio i głosu profesjonalnych rejestrowania. Aby uzyskać więcej informacji, zobacz [jak głos przykłady dla niestandardowych voice](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/record-custom-voice-samples).
+> Aby utworzyć głosu w środowisku produkcyjnym, zalecamy możesz talent studio i głosu profesjonalnych rejestrowania. Aby uzyskać więcej informacji, zobacz [jak głos przykłady dla niestandardowych voice](record-custom-voice-samples.md).
 
 ### <a name="audio-files"></a>Pliki dźwiękowe
 
@@ -64,7 +64,7 @@ Należy przestrzegać następujących wytycznych podczas przygotowywania audio.
 | Przykładowy format | PCM, 16-bitowych |
 | Nazwa pliku | Liczbowe z rozszerzeniem wav. Nie nazwy zduplikowanych plików są dozwolone. |
 | Długość audio | Mniej niż 15 sekund |
-| Format archiwum | zip |
+| Format archiwum | .zip |
 | Rozmiar maksymalny archiwum | 200 MB |
 
 > [!NOTE]
@@ -109,7 +109,7 @@ Należy przestrzegać następujących wytycznych podczas przygotowywania audio s
 | Format pliku | RIFF (wav) za pomocą próbkowania co najmniej 16 khz-16-bitowych w module PCM lub MP3 za pomocą szybkość transmisji bitów, co najmniej 256 KB/s, pogrupowane według plik .zip |
 | Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie zakończy się niepowodzeniem (na przykład znakami języka chińskiego lub symbole, takie jak "—"). Nie zduplikowane nazwy są dozwolone. |
 | Długość audio | Dłuższy niż 20 sekund |
-| Format archiwum | zip |
+| Format archiwum | .zip |
 | Rozmiar maksymalny archiwum | 200 MB |
 
 Wszystkie pliki dźwiękowe, powinny zostać utworzone w pliku zip. Zgadzam się umieścić .wav — pliki i pliki MP3 w jednym zip audio, ale podfolder nie jest dozwolone w pliku zip. Na przykład możesz przekazać plik zip zawierający plik dźwiękowy o nazwie "kingstory.wav", 45 sekundę długich i innym jeden o nazwie "queenstory.mp3", 200-second-long, bez żadnych podfolderów. Wszystkie pliki MP3 będą przekształcane w formacie .wav po zakończeniu przetwarzania.
@@ -144,7 +144,7 @@ Należy przestrzegać następujących wytycznych podczas przygotowywania audio.
 | Format pliku | RIFF (wav) za pomocą próbkowania co najmniej 16 khz-16-bitowych w module PCM lub MP3 za pomocą szybkość transmisji bitów, co najmniej 256 KB/s, pogrupowane według plik .zip |
 | Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie zakończy się niepowodzeniem (na przykład znakami języka chińskiego lub symbole, takie jak "—"). Nie zduplikowane nazwy dozwolone. |
 | Długość audio | Dłuższy niż 20 sekund |
-| Format archiwum | zip |
+| Format archiwum | .zip |
 | Rozmiar maksymalny archiwum | 200 MB |
 
 Wszystkie pliki dźwiękowe, powinny zostać utworzone w pliku zip. Nie podfolderów jest dozwolone w pliku zip. Po pomyślnym przekazaniu zestawu danych, pomożemy Ci segmentu plik dźwiękowy do wypowiedzi w oparciu o usługa transkrypcja mowy usługi batch. Unikatowe identyfikatory zostanie automatycznie przypisany do segmentowanych wypowiedzi. Dopasowywanie transkrypcji zostanie wygenerowany za pomocą funkcji rozpoznawania mowy. Wszystkie pliki MP3 będą przekształcane w formacie .wav po zakończeniu przetwarzania. Możesz sprawdzić segmentowanych wypowiedzi i zapisy dopasowania, pobierając zestaw danych.

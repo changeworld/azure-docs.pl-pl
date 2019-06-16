@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: ec9f5aa8163ea9bb838b1a95ab8ad49233a72643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: a88842802759a5c3ae7af7334bbe125344c978ea
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392655"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066919"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
@@ -62,7 +62,7 @@ Domyślnie klastra węzłów dla modelu dostępności — wersja premium jest tw
 Ponieważ nadmiarowych baz danych strefy mają replik w różnych centrach danych z niektórych odległość między nimi, opóźnienie sieci zwiększone może zwiększyć czas zatwierdzenia i dlatego ma wpływ na wydajność niektórych obciążeń OLTP. Zawsze możesz wrócić do konfiguracji pojedynczej strefy, wyłączając ustawienie nadmiarowości strefy. Ten proces jest podobny do uaktualniania warstwy usługi regularnych operacji w trybie online. Po zakończeniu procesu bazy danych lub puli jest migrowane z nadmiarowych pierścień strefy do pierścienia jedną strefę lub na odwrót.
 
 > [!IMPORTANT]
-> Strefa nadmiarowych baz danych i pule elastyczne są obecnie obsługiwane tylko w warstwach Premium i krytyczne dla działania firmy. Domyślnie kopie zapasowe i inspekcji rekordy są przechowywane w magazynach RA-GRS i dlatego nie można automatycznie dostępne w przypadku awarii całej strefy. 
+> Strefa nadmiarowych baz danych i pule elastyczne są obecnie obsługiwane tylko w warstwach Premium i krytyczne dla działania firmy w wybranych regionach. Korzystając z warstwy krytyczne dla działalności, nadmiarowe konfiguracji strefy jest dostępna tylko wtedy, po wybraniu sprzętu obliczeniowe 5. generacji. Aby uzyskać aktualne informacje na temat regionów, które obsługują strefy nadmiarowych baz danych zobacz [Services obsługują według regionu](../availability-zones/az-overview.md#services-support-by-region).  
 
 Poniższy diagram przedstawia nadmiarowe strefy wersję architektura wysokiej dostępności:
 

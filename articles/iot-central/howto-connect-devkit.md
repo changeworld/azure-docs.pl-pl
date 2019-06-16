@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235880"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
@@ -212,7 +212,7 @@ Aplikacja utworzone na podstawie szablonu aplikacji przykładowej Devkits zawier
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Stan urządzenia   | Zielony  | Orange  | Czerwony    | 
 
-#### <a name="events"></a>Zdarzenia 
+#### <a name="events"></a>Events 
 | Name (Nazwa)             | `Display name`      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Naciśnięty przycisk B  | 
@@ -235,7 +235,7 @@ Ustawienia przełącznika
 
 ### <a name="properties"></a>Właściwości
 
-| Type            | `Display name` | Nazwa pola | Typ danych |
+| Typ            | `Display name` | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Właściwości urządzenia | Lokalizacji urządzenia   | location  | location    |
@@ -245,7 +245,7 @@ Ustawienia przełącznika
 
 | `Display name` | Nazwa pola | Zwracany typ | Nazwa wyświetlana pola wejściowego | Nazwa pola wejściowego | Typ pola wejściowego |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| Echo         | echo       | text        | wartość, aby wyświetlić         | displayedValue   | text             |
+| Echo         | echo       | tekst        | wartość, aby wyświetlić         | displayedValue   | tekst             |
 | Odliczanie    | Odliczanie  | numer      | Są liczone od               | countFrom        | numer           |
 
 ## <a name="next-steps"></a>Kolejne kroki

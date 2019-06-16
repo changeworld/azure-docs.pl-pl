@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 01020a23b102c896bbeb3d8cf455afabfc164917
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1e96431af575533566786341750e17e7a7f446e0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165321"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076015"
 ---
 ## <a name="prepare-for-akv-integration"></a>Przygotowanie do Integracja
 Aby korzystać z integracji magazynu kluczy Azure do skonfigurowania maszyny Wirtualnej programu SQL Server, istnieje kilka wymagań wstępnych: 
@@ -32,7 +32,7 @@ W poniższych sekcjach opisano te warunki wstępne i informacje, które należy 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 ### <a id="install"></a> Instalowanie programu Azure PowerShell
-Upewnij się, że zainstalowano najnowszy zestaw SDK programu PowerShell platformy Azure. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps).
+Upewnij się, że zainstalowano najnowszy moduł Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a id="register"></a> Zarejestrować aplikację w usłudze Azure Active Directory
 

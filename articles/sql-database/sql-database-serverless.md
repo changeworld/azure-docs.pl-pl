@@ -11,35 +11,38 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/05/2019
-ms.openlocfilehash: b39d2c839444e3cad60d5ff08e117282ecc04d7a
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.date: 06/12/2019
+ms.openlocfilehash: b740b49e2decabd5f104d1db5d38b48f2bc2111c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734776"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116200"
 ---
-# <a name="sql-database-serverless-preview"></a>Bazy danych SQL Database bez użycia serwera (wersja zapoznawcza)
+# <a name="azure-sql-database-serverless-preview"></a>Usługa Azure SQL Database bez użycia serwera (wersja zapoznawcza)
+
+Usługa Azure SQL Database, bez użycia serwera (wersja zapoznawcza) to warstwa wystąpień obliczeniowych dla pojedynczych baz danych, automatycznie skalowanych obliczeniowych, w zależności od potrzeb obciążenia rachunków ilości obliczeń jest używany na sekundę. Warstwa bezserwerowe środowisko obliczeniowe również automatycznie wstrzymuje baz danych okresach nieaktywny, gdy tylko magazynu jest rozliczana i automatycznie wznawia działanie bazy danych, jeśli działanie zwróci.
 
 ## <a name="serverless-compute-tier"></a>Warstwa bezserwerowych usług obliczeniowych
 
-Bez użycia serwera bazy danych SQL Database (wersja zapoznawcza) jest warstwa wystąpień obliczeniowych pojedynczej bazy danych, automatycznego skalowania, obliczenia i rozlicza ilości zasoby obliczeniowe na sekundę. 
-
-Bazy danych w warstwie bezserwerowe środowisko obliczeniowe jest sparametryzowany przez zakres obliczeniowe, których można używać i opóźnienie autopause.
+W warstwie bezserwerowe środowisko obliczeniowe dla pojedynczej bazy danych jest sparametryzowany przez zakres automatyczne skalowanie obliczeń i opóźnienie autopause.  Konfiguracja z tych parametrów kształt środowisko wydajności bazy danych i koszt zasobów obliczeniowych.
 
 ![rozliczenia bez użycia serwera](./media/sql-database-serverless/serverless-billing.png)
 
-### <a name="performance"></a>Wydajność
+### <a name="performance-configuration"></a>Konfiguracja wydajności
 
-- Liczba rdzeni wirtualnych minimalną i maksymalną rdzeni wirtualnych są konfigurowalne parametry, które określają zakres możliwości obliczeniowych dostępnych dla bazy danych. Limity pamięci i we/wy są proporcjonalne do określony zakres (rdzeń wirtualny).  
-- Opóźnienie autopause jest konfigurowalne parametr, który określa okres czasu, przez który baza danych musi być nieaktywne, zanim automatycznie zostało wstrzymane. Bazy danych zostanie automatycznie wznowione podczas następnego logowania wystąpi.
+- **Minimalne rdzeni wirtualnych** i **maksymalna rdzeni wirtualnych** są konfigurowalne parametry, które określają zakres możliwości obliczeniowych dostępnych dla bazy danych. Limity pamięci i we/wy są proporcjonalne do określony zakres (rdzeń wirtualny).  
+- **Opóźnienie autopause** jest konfigurowalne parametr, który definiuje czas bazy danych musi być nieaktywne, zanim automatycznie zostało wstrzymane. Bazy danych zostanie automatycznie wznowione podczas następnego logowania lub inne działanie.  Alternatywnie można wyłączyć autopausing.
 
-### <a name="pricing"></a>Cennik
+### <a name="cost"></a>Koszty
 
-- Łączna opłata bezserwerowa baza danych jest sumą rachunku obliczeń i rachunek za przestrzeń dyskową.
-Opłaty za obliczenia zależy od liczby rdzeni wirtualnych, używane i pamięć używana na sekundę.
-- Minimalne zasoby obliczeniowe naliczane jest oparty na rdzeniach min i minimalna ilość pamięci.
-- Gdy baza danych jest wstrzymany, tylko magazyn jest naliczana opłata.
+- Koszt bezserwerowa baza danych jest sumą koszt obliczeń oraz kosztów magazynowania.
+- Gdy wykorzystanie mocy obliczeniowej jest w zakresie między minimalną i maksymalnych limitów skonfigurowane, koszt obliczeń opiera się na wartość elementów vCore i używanej pamięci.
+- Gdy wykorzystanie mocy obliczeniowej jest poniżej granic min skonfigurowane, koszt obliczeń opiera się na min rdzeni wirtualnych i minimalna ilość pamięci skonfigurowane.
+- Gdy baza danych jest wstrzymany, koszt obliczeń wynosi zero, i są naliczane tylko koszty magazynowania.
+- Koszt magazynu jest określana w taki sam sposób jak w warstwie zainicjowanych zasobów obliczeniowych.
+
+Aby uzyskać więcej informacji kosztów, zobacz [rozliczeń](sql-database-serverless.md#billing).
 
 ## <a name="scenarios"></a>Scenariusze
 
@@ -73,7 +76,7 @@ W poniższej tabeli przedstawiono różnice między warstwami bezserwerowe środ
 
 Bez użycia serwera bazy danych SQL jest obecnie obsługiwany tylko w warstwie ogólnego przeznaczenia 5 generacji sprzętu w rdzeniach wirtualnych zakupem modelu.
 
-## <a name="autoscale"></a>Automatyczne skalowanie
+## <a name="autoscaling"></a>Skalowanie automatyczne
 
 ### <a name="scaling-responsiveness"></a>Skalowanie czasu odpowiedzi
 
@@ -98,9 +101,9 @@ Zarówno bez użycia serwera, jak i elastycznie obliczeń baz danych, pamięci p
 
 Pamięć podręczna SQL zwiększa rozmiar pobieranych z dysków w taki sam sposób, jak i z tego samego szybkością, jak w przypadku aprowizowanych baz danych. Gdy baza danych jest zajęta, pamięci podręcznej może wzrosnąć nieograniczonego do limitu pamięci max.
 
-## <a name="autopause-and-autoresume"></a>Autopause i autoresume
+## <a name="autopausing-and-autoresuming"></a>Autopausing i autoresuming
 
-### <a name="autopause"></a>Autopause
+### <a name="autopausing"></a>Autopausing
 
 Autopausing jest wyzwalany, jeśli wszystkie następujące warunki mają wartość true, czas trwania zwłoki autopause:
 
@@ -117,7 +120,7 @@ Następujące funkcje nie obsługują autopausing.  Oznacza to jeśli używane s
 
 Tymczasowo nie Autopausing podczas wdrażania niektórych aktualizacji usług, które wymagają, bazy danych w trybie online.  W takich przypadkach autopausing staje się dozwolone ponownie po ukończeniu aktualizacji usługi.
 
-### <a name="autoresume"></a>Autoresume
+### <a name="autoresuming"></a>Autoresuming
 
 Autoresuming jest wyzwalana w przypadku spełnienia dowolnego z następujących warunków w dowolnym momencie:
 
@@ -148,33 +151,35 @@ Czas oczekiwania na autoresume i autopause bezserwerowa baza danych jest ogólni
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Dołączanie do warstwy bezserwerowe środowisko obliczeniowe
 
-Tworzenie nowej bazy danych lub przenoszenie że istniejącą bazę danych w warstwie bezserwerowe środowisko obliczeniowe zgodna z tym samym wzorcem używanym podczas tworzenia nowej bazy danych w aprowizowane warstwa wystąpień obliczeniowych i obejmuje następujące dwa kroki:
+Tworzenie nowej bazy danych lub przenoszenie że istniejącą bazę danych w warstwie bezserwerowe środowisko obliczeniowe zgodna z tym samym wzorcem używanym podczas tworzenia nowej bazy danych w elastycznie warstwa wystąpień obliczeniowych i obejmuje następujące dwa kroki.
 
 1. Określona nazwa celu usługi. Cel usługi określa warstwę usługi, generacja sprzętu i maksymalna rdzeni wirtualnych. W poniższej tabeli przedstawiono opcje celu usługi:
 
    |Nazwa celu usługi|Warstwa usług|Generacja sprzętu|Maksymalna liczba rdzeni wirtualnych|
    |---|---|---|---|
-   |GP_S_Gen5_1|Ogólne zastosowanie|5. generacji|1|
-   |GP_S_Gen5_2|Ogólne zastosowanie|5. generacji|2|
-   |GP_S_Gen5_4|Ogólne zastosowanie|5. generacji|4|
+   |GP_S_Gen5_1|Ogólne zastosowanie|5\. generacji|1|
+   |GP_S_Gen5_2|Ogólne zastosowanie|5\. generacji|2|
+   |GP_S_Gen5_4|Ogólne zastosowanie|5\. generacji|4|
 
 2. Opcjonalnie można określić opóźnienia rdzeni wirtualnych i autopause min, aby zmienić wartości domyślne. W poniższej tabeli przedstawiono dostępne wartości dla tych parametrów.
 
    |Parametr|Wartość opcji|Wartość domyślna|
    |---|---|---|---|
    |Rdzenie wirtualne min|Dowolne {0,5, 1, 2, 4} nie przekracza maksymalny rdzeni wirtualnych|0,5 rdzeni wirtualnych|
-   |Autopause opóźnienia|Minimalna: 360 minut (6 godzin)<br>Maks.: do 10 080 minut (7 dni)<br>Zwiększa: 60 minut<br>Wyłącz autopause: -1|360 minut|
+   |Autopause opóźnienia|Minimalnie: 360 minut (6 godzin)<br>Maksimum: do 10 080 minut (7 dni)<br>Zwiększa: 60 minut<br>Wyłącz autopause: -1|360 minut|
 
 > [!NOTE]
 > Przy użyciu języka T-SQL, aby przenieść istniejącą bazę danych do bez użycia serwera lub zmienić jego rozmiar obliczeń nie jest obecnie obsługiwane, ale może odbywać się za pośrednictwem witryny Azure portal lub programu PowerShell.
 
-### <a name="create-new-serverless-database-using-azure-portal"></a>Utwórz nową bazę danych bez użycia serwera za pomocą witryny Azure portal
+### <a name="create-new-database-in-serverless-compute-tier"></a>Utwórz nową bazę danych w warstwie bezserwerowe środowisko obliczeniowe 
+
+#### <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
 
 Zobacz [Szybki start: Tworzenie pojedynczej bazy danych w usłudze Azure SQL Database przy użyciu witryny Azure portal](sql-database-single-database-get-started.md).
 
-### <a name="create-new-serverless-database-using-powershell"></a>Utwórz nową bazę danych bez użycia serwera za pomocą programu PowerShell
+#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Poniższy przykład tworzy nową bazę danych w warstwie bezserwerowe środowisko obliczeniowe, zdefiniowane przez cel usługi o nazwie GP_S_Gen5_4 przy użyciu wartości domyślnych dla opóźnienia rdzeni wirtualnych i autopause min.
+Poniższy przykład tworzy nową bazę danych w warstwie bezserwerowe środowisko obliczeniowe.  Ten przykład jawnie określa rdzeni wirtualnych min, max rdzeni wirtualnych i autopause opóźnienia.
 
 ```powershell
 New-AzSqlDatabase `
@@ -189,9 +194,11 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
-### <a name="move-provisioned-compute-database-into-serverless-compute-tier"></a>Przenoszenie bazy danych zainicjowanych zasobów obliczeniowych w warstwie bezserwerowe środowisko obliczeniowe
+### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Przeniesienie bazy danych z zainicjowanych zasobów obliczeniowych warstwy do warstwy bezserwerowe środowisko obliczeniowe
 
-Poniższy przykład przenosi istniejących pojedynczej bazy danych z warstwy zainicjowanych zasobów obliczeniowych w warstwie bezserwerowe środowisko obliczeniowe. Ten przykład jawnie określa rdzeni wirtualnych min, max rdzeni wirtualnych i autopause opóźnienia.
+#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+
+Poniższy przykład przenosi bazę danych z warstwy zainicjowanych zasobów obliczeniowych w warstwie bezserwerowe środowisko obliczeniowe. Ten przykład jawnie określa rdzeni wirtualnych min, max rdzeni wirtualnych i autopause opóźnienia.
 
 ```powershell
 Set-AzSqlDatabase
@@ -206,7 +213,7 @@ Set-AzSqlDatabase
   -AutoPauseDelayInMinutes 1440
 ```
 
-### <a name="move-serverless-database-into-provisioned-compute-tier"></a>Przeniesienie bazy danych bez użycia serwera w warstwie zainicjowanych zasobów obliczeniowych
+### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Przenoszenie bazy danych z warstwy bezserwerowe środowisko obliczeniowe w warstwie zainicjowanych zasobów obliczeniowych
 
 Bezserwerowa baza danych mogą zostać przeniesione w warstwie zainicjowanych zasobów obliczeniowych, w taki sam sposób jak przeniesienie bazy danych zainicjowanych zasobów obliczeniowych w warstwie bezserwerowe środowisko obliczeniowe.
 
@@ -214,13 +221,19 @@ Bezserwerowa baza danych mogą zostać przeniesione w warstwie zainicjowanych za
 
 ### <a name="maximum-vcores"></a>Maksymalna liczba rdzeni wirtualnych
 
+#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+
 Modyfikowanie max rdzeni wirtualnych odbywa się za pomocą [AzSqlDatabase zestaw](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) polecenia przy użyciu programu PowerShell `MaxVcore` argumentu.
 
 ### <a name="minimum-vcores"></a>Minimalna liczba rdzeni wirtualnych
 
+#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+
 Modyfikowanie rdzeni wirtualnych min odbywa się za pomocą [AzSqlDatabase zestaw](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) polecenia przy użyciu programu PowerShell `MinVcore` argumentu.
 
 ### <a name="autopause-delay"></a>Autopause opóźnienia
+
+#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
 Modyfikowanie opóźnienie autopause odbywa się za pomocą [AzSqlDatabase zestaw](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) polecenia przy użyciu programu PowerShell `AutoPauseDelayInMinutes` argumentu.
 
@@ -228,7 +241,7 @@ Modyfikowanie opóźnienie autopause odbywa się za pomocą [AzSqlDatabase zesta
 
 ### <a name="resources-used-and-billed"></a>Zasoby używane i rozliczane
 
-Zasoby bez użycia serwera bazy danych są hermetyzowane w następujących elementach:
+Zasoby bez użycia serwera bazy danych są hermetyzowany pakiet aplikacji, wystąpienia SQL i jednostkami puli zasobów użytkownika.
 
 #### <a name="app-package"></a>Pakiet aplikacji
 

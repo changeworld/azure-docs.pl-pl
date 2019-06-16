@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123707"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopiowanie danych z HubSpot przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
@@ -116,7 +116,7 @@ Aby skopiować dane z HubSpot, należy ustawić typ źródła w działaniu kopio
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **HubspotSource** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **HubspotSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

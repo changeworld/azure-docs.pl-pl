@@ -6,18 +6,18 @@ documentationcenter: ''
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 06/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: sasubram
+ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5db5eb9c0e0493d906345892fcc5f2872a3e0e14
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 81aad3ef9a4a53532d19fdb81bc48fc50931d49c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812456"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056062"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Dodawanie użytkowników-gości współpracy B2B bez zaproszenia łącze lub wiadomości e-mail
 
@@ -29,7 +29,7 @@ Zanim ta nowa metoda był dostępny, można zaprosić użytkowników-gości bez 
 2. Administratorem w organizacji hosta [konfiguruje zasady](delegate-invitations.md) umożliwiające Sam zidentyfikować i Dodaj innych użytkowników z organizacji partnerskiej (Litware). (Sam musi zostać dodany do **osoba zapraszająca gości** roli.)
 3. Teraz Sam można dodawać innych użytkowników z Litware do katalogu, grupy lub aplikacje WoodGrove bez zaproszenia można zrealizować. Jeśli Sam powoduje wyliczenie odpowiednie uprawnienia Litware, odbywa się automatycznie.
  
-Ta metoda oryginalnego nadal działa. Istnieje jednak niewielkie różnice w zachowaniu. Jeśli używasz programu PowerShell, można zauważyć, że zaproszeni gościa konto ma teraz **PendingAcceptance** stanu, a nie od razu przedstawiający **zaakceptowano**. Mimo że jest w stanie oczekiwania, użytkownik-Gość można nadal Zaloguj się i uzyskać dostęp do aplikacji, nie klikając łącze w wiadomości e-mail z zaproszeniem. Stan oczekiwania oznacza, że użytkownik nie jeszcze zrealizowano [zgody środowisko](redemption-experience.md#privacy-policy-agreement), gdzie akceptują warunki ochrony prywatności organizacji zapraszającej. Użytkownik-Gość widzi ten ekran wyrażania zgody, gdy logują się oni po raz pierwszy. 
+Ta metoda oryginalnego nadal działa. Istnieje jednak niewielkie różnice w zachowaniu. Jeśli używasz programu PowerShell, można zauważyć, że zaproszeni gościa konto ma teraz **PendingAcceptance** stanu, a nie od razu przedstawiający **zaakceptowano**. Mimo że jest w stanie oczekiwania, użytkownik-Gość można nadal Zaloguj się i uzyskać dostęp do aplikacji, nie klikając łącze w wiadomości e-mail z zaproszeniem. Stan oczekiwania oznacza, że użytkownik nie jeszcze zrealizowano [zgody środowisko](redemption-experience.md#consent-experience-for-the-guest), gdzie akceptują warunki ochrony prywatności organizacji zapraszającej. Użytkownik-Gość widzi ten ekran wyrażania zgody, gdy logują się oni po raz pierwszy. 
 
 Jeśli zaproszenie użytkownika do katalogu użytkownik-Gość musi uzyskać dostęp do portalu Azure specyficznym dla dzierżawy zasobów bezpośrednio adres URL (takie jak https://portal.azure.com/ *resourcetenant*. onmicrosoft.com) aby wyświetlić i zaakceptować warunki ochrony prywatności.
 

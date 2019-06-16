@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 030259f7773435760c09afd25ca674b63bb1b3ca
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901123"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073241"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -35,7 +35,7 @@ Każda operacja wychodzących, takie jak wywołania HTTP do innego składnika je
 
 Widok rozproszonych operacji logicznej można tworzyć przy użyciu `operation_Id`, `operation_parentId`, i `request.id` z `dependency.id`. Te pola określają również kolejność przyczynowości wywołań telemetrii.
 
-W środowisku mikrousług śladów ze składników można przejść do innego magazynu elementów. Każdy składnik może mieć własny klucz Instrumentacji w usłudze Application Insights. Aby uzyskać dane telemetryczne dla operacji logicznej, można zapytania danych z każdego elementu magazynu. Gdy liczba elementów magazynu jest bardzo duży, konieczne będzie wskazówkę o tym, gdzie należy spojrzeć dalej. Model danych usługi Application Insights definiuje dwa pola, aby rozwiązać ten problem: `request.source` i `dependency.target`. Pierwsze pole identyfikuje składnik, który zainicjował żądanie zależności, a druga identyfikuje, które składnik zwrócił odpowiedź na wywołania zależności.
+W środowisku mikrousług śladów ze składników można przejść do innego magazynu elementów. Każdy składnik może mieć własny klucz Instrumentacji w usłudze Application Insights. Aby uzyskać dane telemetryczne dla operacji logicznej, środowiska użytkownika Application Insights wysyła zapytanie do danych z każdego elementu magazynu. Gdy liczba elementów magazynu jest bardzo duży, konieczne będzie wskazówkę o tym, gdzie należy spojrzeć dalej. Model danych usługi Application Insights definiuje dwa pola, aby rozwiązać ten problem: `request.source` i `dependency.target`. Pierwsze pole identyfikuje składnik, który zainicjował żądanie zależności, a druga identyfikuje, które składnik zwrócił odpowiedź na wywołania zależności.
 
 ## <a name="example"></a>Przykład
 
@@ -54,9 +54,9 @@ W wynikach, należy pamiętać, że wszystkie elementy danych telemetrycznych ud
 | itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Podstawowy strony                |              | STYz               | STYz         |
-| zależność | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
-| żądanie    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| zależność | Pobierz /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
+| Zależności | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
+| request    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| Zależności | Pobierz /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Podczas wywołania `GET /api/stock/value` składa się z zewnętrzną usługę, chcesz muszą znać tożsamość tego serwera, dzięki czemu można ustawić `dependency.target` odpowiednio pola. Gdy usługi zewnętrznej nie obsługuje monitorowania, `target` jest ustawiona na nazwę hosta usługi (na przykład `stock-prices-api.com`). Jednakże, jeśli usługa identyfikuje, zwracając wstępnie zdefiniowanych nagłówków HTTP, `target` zawiera tożsamości usługi, która umożliwia usługi Application Insights do utworzenia rozproszonego śledzenia, badając dane telemetryczne z tej usługi.
 

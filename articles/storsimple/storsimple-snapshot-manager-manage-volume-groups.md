@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303152"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699715"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Tworzenie i zarządzanie grupami woluminów za pomocą Menedżera migawek StorSimple
 ## <a name="overview"></a>Omówienie
@@ -52,8 +52,8 @@ Jeśli klikniesz **grupami woluminów** węzła, **wyniki** okienku są wyświet
 |:--- |:--- |
 | Name (Nazwa) |**Nazwa** kolumna zawiera nazwę grupy woluminu. |
 | Aplikacja |**Aplikacje** kolumnie jest wyświetlana liczba aktualnie zainstalowane składniki zapisywania usługi VSS i uruchomiona na hoście Windows. |
-| Wybrano |**Wybrane** kolumnie jest wyświetlana liczba woluminów, które są zawarte w grupie woluminu. Zero (0) oznacza, że żadna aplikacja nie jest skojarzony z woluminami, w grupie woluminu. |
-| Zaimportowane |**Zaimportowane** kolumna pokazuje liczbę zaimportowanych woluminów. Po ustawieniu **True**, ta kolumna wskazuje, że grupy woluminów zostały zaimportowane z witryny Azure portal, a nie został utworzony w programie StorSimple Snapshot Manager. |
+| Wybrane |**Wybrane** kolumnie jest wyświetlana liczba woluminów, które są zawarte w grupie woluminu. Zero (0) oznacza, że żadna aplikacja nie jest skojarzony z woluminami, w grupie woluminu. |
+| Zaimportowany |**Zaimportowane** kolumna pokazuje liczbę zaimportowanych woluminów. Po ustawieniu **True**, ta kolumna wskazuje, że grupy woluminów zostały zaimportowane z witryny Azure portal, a nie został utworzony w programie StorSimple Snapshot Manager. |
 
 > [!NOTE]
 > Grupami woluminów StorSimple Snapshot Manager są również wyświetlane na **zasady tworzenia kopii zapasowych** kartę w witrynie Azure portal.

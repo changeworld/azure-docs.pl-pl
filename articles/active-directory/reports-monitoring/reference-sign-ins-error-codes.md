@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3208afc7ec18013c6e70e148995d33114cf7e06c
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 760eb5a37a09687cd98ca7abbdcb0bc42667f830
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513665"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107622"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raport aktywności logowania 
 
@@ -107,7 +107,7 @@ Można także programowo uzyskiwać dostęp za pomocą danych logowania [interfe
 |50128|Nieprawidłowa nazwa domeny — żadnych informacji do identyfikowania dzierżawy odnaleziony ani w żądaniu, lub też dorozumianych przez dowolnego podanych poświadczeń.|
 |50129|Urządzenie nie jest dołączone - **dołączanie** jest wymagany do zarejestrowania urządzenia.|
 |50130|Wartość oświadczenia nie może być interpretowane jako metoda uwierzytelniania znane.|
-|50131|Kod używany w przypadku różnych błędów dostępu warunkowego, Na przykład Zły stan urządzenia z systemem Windows albo żądanie zablokowane z powodu podejrzanych decyzji związanych z działaniami, zasadami dostępu i zasadami zabezpieczeń.|
+|50131|Używane w różnych błędów dostępu warunkowego. Na przykład Zły stan urządzenia z systemem Windows albo żądanie zablokowane z powodu podejrzanych decyzji związanych z działaniami, zasadami dostępu i zasadami zabezpieczeń.|
 |50132|Poświadczenia zostały odwołane z następujących powodów:<ul><li>Artefakt logowania jednokrotnego jest nieprawidłowy lub wygasł</li><li>Sesja nie jest wystarczająco świeża dla aplikacji</li><li>Wysłano żądanie logowania dyskretnego, ale sesja użytkownika z usługą Azure AD jest nieprawidłowy lub wygasła.</li></ul>|
 |50133|Sesja jest nieprawidłowa z powodu wygaśnięcia lub niedawnej zmiany hasła.|
 |50135|Zmiana hasła jest wymagana ze względu na ryzyko konta.|
@@ -133,8 +133,8 @@ Można także programowo uzyskiwać dostęp za pomocą danych logowania [interfe
 |52004|Użytkownik nie wyraził zgody na dostęp do zasobów usługi LinkedIn. |
 |53000|Zasady dostępu warunkowego wymagają zgodnego urządzenia, ale urządzenie nie jest zgodne. Należy mieć użytkownika zarejestrować swoje urządzenie przy użyciu zatwierdzonych dostawcy zarządzania urządzeniami Przenośnymi, takiej jak Intune.|
 |53001|Zasady dostępu warunkowego wymagają urządzenia przyłączonego do domeny, ale urządzenie nie jest przyłączone do domeny. Użyj użytkownika domeny dołączają do urządzenia.|
-|53002|Używana aplikacja nie jest zatwierdzoną aplikacją dla dostępu warunkowego. Użytkownik musi używać jednej z aplikacji z listy zatwierdzonych aplikacji w celu uzyskania dostępu.|
-|53003|Dostęp został zablokowany ze względu na zasady dostępu warunkowego.|
+|53002|Aplikacja nie jest zatwierdzonych aplikacji, aby dostęp warunkowy. Użytkownik musi używać jednej z aplikacji z listy zatwierdzonych aplikacji w celu uzyskania dostępu.|
+|53003|Dostęp został zablokowany z powodu zasad dostępu warunkowego.|
 |53004|Użytkownik musi ukończyć proces rejestracji w celu używania uwierzytelniania wieloskładnikowego przed uzyskaniem dostępu do tej zawartości. Użytkownik powinien zarejestrować się w celu uwierzytelniania wieloskładnikowego.|
 |65001|Aplikacja X nie ma uprawnienia dostępu do aplikacji Y lub uprawnienie zostało odwołany. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z Identyfikatorem X. Wyślij żądanie autoryzacji do administratora dzierżawy na działanie w imieniu aplikacji: Y dla zasobu: Z.|
 |65004|Użytkownik odmówił wyrażenia zgody na dostęp do aplikacji. Użytkownik musi ponowić próbę zalogowania się i wyrazić zgodę na aplikację|

@@ -1,21 +1,21 @@
 ---
-title: Konfigurowanie i dostęp do dzienników serwera usługi Azure Database dla serwera MariaDB w witrynie Azure Portal
-description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w usłudze Azure Database dla serwera MariaDB z witryny Azure Portal.
+title: Konfigurowanie i Dzienniki dostępu serwera usługi Azure Database dla serwera MariaDB w witrynie Azure portal
+description: W tym artykule opisano sposób konfigurowania i uzyskać dostęp do dzienników serwera w usłudze Azure Database dla serwera MariaDB z witryny Azure portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4ff2fbd5976a8e203bbc43a87b31ddb1bed63402
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 3dbf7064e409230916668e62ef861c0ce149fdbb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61040656"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065634"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurowanie i dzienników serwera dostępu w witrynie Azure portal
 
-Można skonfigurować, listy i pobrać [— Azure Database for dzienniki serwera MariaDB](concepts-server-logs.md) w witrynie Azure portal.
+Można skonfigurować, listy i pobrać [— Azure Database for dzienniki wolnych zapytań MariaDB](concepts-server-logs.md) w witrynie Azure portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków w tym przewodniku, potrzebne są:
@@ -42,7 +42,7 @@ Konfigurowanie dostępu do dzienników wolnych zapytań.
 6. Wróć do listy dzienniki, klikając **przycisk Zamknij** (ikonę X) na **parametrów serwera** strony.
 
 ## <a name="view-list-and-download-logs"></a>Wyświetl listę i pobieranie dzienników
-Po rozpoczęciu rejestrowania, można wyświetlić listę dostępnych dzienników i Pobierz pojedyncze pliki dziennika w okienku dzienniki serwera. 
+Po rozpoczęciu rejestrowania, można wyświetlić listę dostępnych wolnych zapytań dzienników i Pobierz pojedyncze pliki dziennika w okienku dzienniki serwera. 
 
 1. Otwórz witrynę Azure Portal.
 
@@ -62,7 +62,7 @@ Po rozpoczęciu rejestrowania, można wyświetlić listę dostępnych dziennikó
    ![Kliknij ikonę pobierania](./media/howto-configure-server-logs-portal/5-download.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [dzienniki serwera](concepts-server-logs.md) w usłudze Azure Database dla serwera MariaDB.
+- Dowiedz się więcej o [wolne dzienniki zapytań](concepts-server-logs.md) w usłudze Azure Database dla serwera MariaDB.
 - Aby uzyskać więcej informacji na temat rejestrowania i definicjami parametrów, zobacz dokumentację MariaDB na [dzienniki](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-<!-- - See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->
+<!--- See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->

@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38decf98707231c21427f7a22dd4d12adb41852b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825435"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji spoza galerii, skonfigurowanej do obsługi federacyjnego logowania jednokrotnego
@@ -148,7 +148,7 @@ Usługa Azure AD nie obsługuje żądania SAML wysłanego przez aplikację na po
 
 -   Brak wymaganych pól w żądaniu języka SAML
 
--   Zakodowana metoda żądania SAML
+-   SAML zakodowana metoda żądania
 
 **Rozdzielczość**
 
@@ -264,7 +264,7 @@ Usuń adresy URL odpowiedzi nieużywane, skonfigurowane dla aplikacji.
 
 6.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-7.  Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. W **adres URL odpowiedzi (adres URL usługi Assertion konsumenta)**, Usuń nieużywany lub adresy URL odpowiedzi domyślnej utworzonych przez system. Na przykład `https://127.0.0.1:444/applications/default.aspx`.
+7.  Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. W **adres URL odpowiedzi (adres URL usługi Assertion konsumenta)** , Usuń nieużywany lub adresy URL odpowiedzi domyślnej utworzonych przez system. Na przykład `https://127.0.0.1:444/applications/default.aspx`.
 
 
 

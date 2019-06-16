@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
 ms.openlocfilehash: ee7ffba182cdbc2a77df5edf112e29c49cd610ad
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65519654"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
@@ -33,7 +33,7 @@ Dowiedz się, jak tworzenie, zmienianie lub usuwanie komunikacji równorzędnej 
 Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać następujące zadania:
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zasubskrybować [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
-- Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta które ma [niezbędne uprawnienia](#permissions) do pracy za pomocą komunikacji równorzędnej.
+- Jeśli przy użyciu portalu, otwórz https://portal.azure.com i zaloguj się przy użyciu konta które ma [niezbędne uprawnienia](#permissions) do pracy za pomocą komunikacji równorzędnej.
 - Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 1.0.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Connect-AzAccount` za pomocą konta mającego [niezbędne uprawnienia](#permissions) do pracy za pomocą komunikacji równorzędnej, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` za pomocą konta mającego [niezbędne uprawnienia](#permissions) do pracy za pomocą komunikacji równorzędnej, aby utworzyć połączenie z platformą Azure.
 
@@ -142,7 +142,7 @@ Konta, na których możesz użyć do pracy za pomocą komunikacji równorzędnej
 
 Jeśli Twoje konto nie jest przypisana do jednego z poprzednich ról, musi ona zostać przypisana do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany niezbędne czynności z poniższej tabeli:
 
-| action                                                          | Name (Nazwa) |
+| Akcja                                                          | Name (Nazwa) |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Wymagane do utworzenia komunikacji równorzędnej z siecią wirtualną A siecią wirtualną B. wirtualnych sieci A musi być sieci wirtualnej (Resource Manager)          |
 | Microsoft.Network/virtualNetworks/peer/action                   | Wymagane do utworzenia komunikacji równorzędnej z siecią wirtualną B (Resource Manager) z siecią wirtualną A                                                       |

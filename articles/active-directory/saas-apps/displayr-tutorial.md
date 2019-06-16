@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93a1ad1f9fbc01cd06b3aaffc8a718634e8454d6
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357026"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103984"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Samouczek: Integracja Displayr za pomocą usługi Azure Active Directory
 
@@ -217,7 +217,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się w celu Displayr, ic
 
 Po wybraniu kafelka Displayr w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Displayr, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

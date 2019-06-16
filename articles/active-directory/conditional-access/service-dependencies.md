@@ -1,8 +1,8 @@
 ---
-title: Co to są zależności usługi w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
-description: Dowiedz się, jak używane warunków do wyzwolenia zasad dostępu warunkowego usługi Azure Active Directory.
+title: Co to są zależności usługi Azure Active Directory dostępu warunkowego? | Microsoft Docs
+description: Dowiedz się, jak warunki są używane w usłudze Azure Active Directory dostępu warunkowego do wyzwolenia zasad.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
+keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 03/18/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f727fc7133ebc9ee124e63253e8a266862b0d908
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 54e5de5fdb03cfaff4d4ed53da94b512f30db58a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60354385"
+ms.locfileid: "67112093"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co to są zależności usługi w usłudze Azure Active Directory dostępu warunkowego? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co to są zależności usługi Azure Active Directory dostępu warunkowego? 
 
 
 Za pomocą zasad dostępu warunkowego można określić wymagania dotyczące dostępu do witryn internetowych i usług. Na przykład Twoje wymagania dotyczące dostępu mogą obejmować wymaganie uwierzytelniania wieloskładnikowego (MFA) lub [urządzeń zarządzanych przy użyciu](require-managed-devices.md). 

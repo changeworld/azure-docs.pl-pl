@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e7993ee1cb439ebeaa9f64bee55429aa54f9cee
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 897685eb967e03cfd30182eec6b237e27386496c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903948"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą rozwiązaniu SAP Fiori
 
@@ -193,7 +193,7 @@ W tej sekcji skonfigurujesz usługi Azure AD logowania jednokrotnego dzięki roz
 
     1. Wybierz **Edytuj** otworzyć **Zarządzanie oświadczenia użytkownika** okienka.
 
-    1. W **przekształcania** listy wybierz **ExtractMailPrefix()**.
+    1. W **przekształcania** listy wybierz **ExtractMailPrefix()** .
 
     1. W **parametr 1** listy wybierz **user.userprinicipalname**.
 
@@ -272,7 +272,7 @@ W tej sekcji skonfigurujesz usługi Azure AD logowania jednokrotnego dzięki roz
 
     **Scenariusz 1**: Użytkownik SAP do mapowania użytkowników usługi Azure AD
 
-    1. W systemie SAP w obszarze **szczegóły Format identyfikatora NameID "Nieokreślone"**, zanotuj szczegóły:
+    1. W systemie SAP w obszarze **szczegóły Format identyfikatora NameID "Nieokreślone"** , zanotuj szczegóły:
 
         ![Okno dialogowe "Nieokreślone" Szczegóły Format identyfikatora NameID, w systemie SAP](./media/sapfiori-tutorial/nameiddetails.png)
 
@@ -282,7 +282,7 @@ W tej sekcji skonfigurujesz usługi Azure AD logowania jednokrotnego dzięki roz
 
     **Scenariusz 2**: Wybierz identyfikator użytkownika SAP na podstawie adresu e-mail skonfigurowany w SU01. W tym przypadku identyfikator poczty e-mail należy skonfigurować w SU01 dla każdego użytkownika, który wymaga logowania jednokrotnego.
 
-    1.  W systemie SAP w obszarze **szczegóły Format identyfikatora NameID "Nieokreślone"**, zanotuj szczegóły:
+    1.  W systemie SAP w obszarze **szczegóły Format identyfikatora NameID "Nieokreślone"** , zanotuj szczegóły:
 
         ![Okno dialogowe "Nieokreślone" Szczegóły Format identyfikatora NameID, w systemie SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
 
@@ -314,7 +314,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< Rozszerzenia >**. Na przykład **brittasimon\@contoso.com**.
+    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< Rozszerzenia >** . Na przykład **brittasimon\@contoso.com**.
 
     1. Wybierz **hasło Show** pole wyboru. Zanotuj wartość, która jest wyświetlana w **hasło** pole.
 

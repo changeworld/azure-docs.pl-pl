@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 15-04-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 573e06f0dd57b92f7621ecf77039159a64249f18
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2d7c7cf4972b1ee0a5add3b4611dc4c8655da875
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786489"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091537"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Samouczek: Integracja usługi Azure Active Directory z menedżerem certyfikatów Sectigo
 
@@ -130,7 +130,7 @@ W tej sekcji skonfigurujesz usługi Azure AD logowanie jednokrotne z menedżerem
 
       ![Menedżer certyfikatów Sectigo domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/both-signonurl.png)
 
-1. W **Ustaw się logowanie jednokrotne z SAML** okienko w **certyfikat podpisywania SAML** zaznacz **Pobierz** obok **certyfikat (Base64)**. Wybierz opcję pobierania, w zależności od wymagań. Zapisz certyfikat na komputerze.
+1. W **Ustaw się logowanie jednokrotne z SAML** okienko w **certyfikat podpisywania SAML** zaznacz **Pobierz** obok **certyfikat (Base64)** . Wybierz opcję pobierania, w zależności od wymagań. Zapisz certyfikat na komputerze.
 
     ![Opcja pobierania certyfikat (Base64)](common/certificatebase64.png)
 
@@ -162,7 +162,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< rozszerzenie\>**. Na przykład **brittasimon\@contoso.com**.
+    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< rozszerzenie\>** . Na przykład **brittasimon\@contoso.com**.
 
     1. Wybierz **hasło Show** pole wyboru. Zanotuj wartość, która jest wyświetlana w **hasło** pole.
 

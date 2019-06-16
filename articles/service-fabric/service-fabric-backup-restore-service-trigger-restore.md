@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65413735"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Przywracanie kopii zapasowej w usłudze Azure Service Fabric
@@ -161,7 +161,7 @@ Dla interfejsu API przywracania, należy podać _BackupId_ i _BackupLocation_ sz
 
 Należy również wybrać partycję docelową alternatywne klastra zgodnie z opisem w [schemat partycji](service-fabric-concepts-partitioning.md#get-started-with-partitioning). Kopia zapasowa alternatywne klastra zostanie przywrócony do partycji określona w schemacie partycji z oryginalnego klastra utracone.
 
-Jeśli identyfikator partycji w klastrze alternatywne `1c42c47f-439e-4e09-98b9-88b8f60800c6`, można go mapować do oryginalnego Identyfikatora partycji klastra `974bd92a-b395-4631-8a7f-53bd4ae9cf22` porównując klucz wysoka i niska wartość klucza dla _Ranged partycjonowania (UniformInt64Partition)_.
+Jeśli identyfikator partycji w klastrze alternatywne `1c42c47f-439e-4e09-98b9-88b8f60800c6`, można go mapować do oryginalnego Identyfikatora partycji klastra `974bd92a-b395-4631-8a7f-53bd4ae9cf22` porównując klucz wysoka i niska wartość klucza dla _Ranged partycjonowania (UniformInt64Partition)_ .
 
 Dla _o nazwie partycjonowanie_, nazwa wartość jest porównywana do identyfikowania partycji docelowej w klastrze alternatywne.
 

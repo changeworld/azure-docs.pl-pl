@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600d6b9f1eb8d8073e1658dd5b8196a3d8137e42
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: ea834a0fc1d92cc8d2326bd94dde2e0a983c90a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733720"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110757"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych
 
@@ -26,7 +26,7 @@ W podobny sposób jak użytkownik urządzenie jest innej tożsamości core, któ
 - Dołączenie hybrydowe do usługi Azure AD
 - Rejestracja w usłudze Azure AD
 
-Przenosząc urządzenia do usługi Azure AD, można zmaksymalizować wydajność użytkowników dzięki zastosowaniu logowania jednokrotnego (SSO) w zasobach chmury i zasobach lokalnych. Jednocześnie można zapewnić bezpieczny dostęp do zasobów chmury i zasobów lokalnych przy użyciu [dostępu warunkowego](../active-directory-conditional-access-azure-portal.md).
+Przenosząc urządzenia do usługi Azure AD, można zmaksymalizować wydajność użytkowników dzięki zastosowaniu logowania jednokrotnego (SSO) w zasobach chmury i zasobach lokalnych. W tym samym czasie można zabezpieczyć dostęp do zasobów w chmurze i lokalnych przy użyciu [dostępu warunkowego](../active-directory-conditional-access-azure-portal.md).
 
 W tym samouczku dowiesz się, jak skonfigurować dołączenie do hybrydowej usługi Azure AD dla urządzeń z komputerów przyłączonych do domeny usługi AD w środowisku federacyjnym za pomocą usług AD FS.
 
@@ -167,7 +167,7 @@ W przypadku użycia polecenia cmdlet **Get-MSolDevice** w celu sprawdzenia szcze
 
 - Obiekt o **identyfikator urządzenia** odpowiadającej Identyfikatora w Windows, klient musi istnieć.
 - Wartością atrybutu **DeviceTrustType** musi być **Dołączone do domeny**. Jest to równoważne ze stanem **Dołączone hybrydowo do usługi Azure AD** na stronie Urządzenia w portalu usługi Azure AD.
-- Ustawienie **Włączone** musi mieć wartość **True**, a ustawienie **DeviceTrustLevel** musi mieć wartość **Zarządzane** dla urządzeń używanych w dostępie warunkowym.
+- Wartość **włączone** musi być **True** i **DeviceTrustLevel** musi być **zarządzane** dla urządzeń, które są używane w funkcji dostępu warunkowego.
 
 **Aby sprawdzić szczegóły usługi:**
 

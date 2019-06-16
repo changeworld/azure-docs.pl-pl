@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f1972a870ac15e1ca8dde963eef6cf7f1caf3039
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 30ab8a3fec459bef1a85c44e9a7cdb91b541fa2d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544180"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111376"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Obsługa wyjątków i błędów z zastosowaniem biblioteki MSAL
 Wyjątki w Microsoft Authentication Library (MSAL) są przeznaczone dla deweloperów aplikacji rozwiązać, a nie w celu wyświetlania użytkownikom końcowym. Nie są lokalizowane komunikaty o wyjątkach.
@@ -29,21 +29,21 @@ Wyjątki w Microsoft Authentication Library (MSAL) są przeznaczone dla dewelope
 Podczas przetwarzania, wyjątki i błędy, można użyć samego typu wyjątku i kod błędu: rozróżnienie między wyjątków.  Aby uzyskać listę kodów błędów, zobacz [kody błędów uwierzytelniania i autoryzacji](reference-aadsts-error-codes.md).
 
 ## <a name="net-exceptions"></a>Wyjątki platformy .NET
-Podczas przetwarzania wyjątki, można użyć samego typu wyjątku i `ErrorCode` elementu członkowskiego, aby rozróżniać wyjątków. Wartości `ErrorCode` to stałe typu [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet#fields).
+Podczas przetwarzania wyjątki, można użyć samego typu wyjątku i `ErrorCode` elementu członkowskiego, aby rozróżniać wyjątków. Wartości `ErrorCode` to stałe typu [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
 
-Mogą też istnieć przyjrzeć się pola [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet#fields), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet#fields), [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet#fields).
+Mogą też istnieć przyjrzeć się pola [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet), [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet).
 
 Jeśli [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) jest zgłaszany błąd kodu może zawierać kod, który można znaleźć w [kody błędów uwierzytelniania i autoryzacji](reference-aadsts-error-codes.md).
 
 ### <a name="common-exceptions"></a>Typowe wyjątki
 Poniżej przedstawiono typowe wyjątki, które może zostać wygenerowany i niektóre możliwe środki zaradcze.
 
-| Wyjątek | Kod błędu | Ograniczanie ryzyka|
+| Wyjątek | Kod błędu | Środki zaradcze|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: Użytkownik albo administrator nie wyraził zgody na używanie aplikacji o identyfikatorze {appId} o nazwie "{appName}". Wyślij żądanie interaktywnej autoryzacji dla tego użytkownika i zasobu.| Musisz pobrać pierwszy zgody użytkownika. Jeśli nie używasz platformy .NET Core, (która nie ma żadnych interfejsów użytkownika sieci Web), wywołaj (tylko raz) `AcquireTokeninteractive`. Jeśli używasz platformy .NET core, lub nie chcesz zrobić `AcquireTokenInteractive`, użytkownik może przejść do adresu URL, aby wyrazić zgodę: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read . Aby wywołać `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: Wymagane jest wprowadzenie przez użytkownika do korzystania z uwierzytelniania Multi-Factor Authentication.| Nie ma bez ograniczania ryzyka — Jeśli skonfigurowano usługę MFA dla Twojej dzierżawy i AAD decyduje się na jej wymusić, musisz powrót do interaktywnego przepływu takich jak `AcquireTokenInteractive` lub `AcquireTokenByDeviceCode`.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet#fields) |AADSTS90010: Typ udzielania nie jest obsługiwana przez */common* lub */consumers* punktów końcowych. Użyj */organizations* lub punktem końcowym specyficznym dla dzierżawy. Użyte */common*.| Jak wyjaśniono w wiadomości z usługi Azure AD, musi mieć dzierżawę urzędowi lub w inny sposób */organizations*.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet#fields) | AADSTS70002: Treść żądania musi zawierać następujący parametr: "client_secret lub client_assertion".| Może to nastąpić, jeśli aplikacja nie został zarejestrowany jako aplikację kliencką publicznych w usłudze Azure AD. W witrynie Azure portal, edytowanie manifestu dla aplikacji i zestaw `allowPublicClient` do `true`. |
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: Typ udzielania nie jest obsługiwana przez */common* lub */consumers* punktów końcowych. Użyj */organizations* lub punktem końcowym specyficznym dla dzierżawy. Użyte */common*.| Jak wyjaśniono w wiadomości z usługi Azure AD, musi mieć dzierżawę urzędowi lub w inny sposób */organizations*.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: Treść żądania musi zawierać następujący parametr: "client_secret lub client_assertion".| Może to nastąpić, jeśli aplikacja nie został zarejestrowany jako aplikację kliencką publicznych w usłudze Azure AD. W witrynie Azure portal, edytowanie manifestu dla aplikacji i zestaw `allowPublicClient` do `true`. |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| unknown_user komunikat: Nie można zidentyfikować zalogowanego użytkownika| Biblioteki nie mógł zbadać Windows bieżącego zalogowanego użytkownika lub ten użytkownik nie jest AD lub dołączonych do usługi AAD (użytkownicy dołączonym do miejsca pracy nie są obsługiwane). Ograniczenie 1: na platformie UWP, sprawdź, czy aplikacja ma następujące możliwości: Uwierzytelnianie w przedsiębiorstwie, sieci prywatne (klient i serwer), informacje o koncie użytkownika. Ograniczenie 2: Implementuje logikę można pobrać nazwy użytkownika (na przykład john@contoso.com) i używać `AcquireTokenByIntegratedWindowsAuth` formularz, który przyjmuje nazwę użytkownika.|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Ta metoda korzysta protokół udostępnianych przez Active Directory (AD). Jeśli użytkownik został utworzony w usłudze Azure Active Directory bez kopii AD (na użytkownika "zarządzany"), ta metoda nie powiedzie się. Użytkownicy utworzeni w AD i wspierana przez usługi AAD (użytkownicy "federacyjni") mogą korzystać z tej metody nieinterakcyjnych Authentication. Środki zaradcze: Uwierzytelnianie interakcyjne.|
 
@@ -142,7 +142,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ## <a name="conditional-access-and-claims-challenges"></a>Warunkowego dostępu i oświadczenia wyzwania
 Podczas uzyskiwania tokenów w trybie dyskretnym, aplikacja może otrzymywać komunikaty o błędach podczas [dostępu warunkowego oświadczeń wyzwanie](conditional-access-dev-guide.md) takie jak zasady MFA jest wymagana przez interfejs API próbujesz uzyskać dostęp.
 
-Wzorzec do obsługi tego błędu jest interaktywnie uzyskać token z zastosowaniem biblioteki MSAL. Interaktywnie pobierania tokenu monituje użytkownika i daje im możliwość spełnić wymagania zasad dostępu warunkowego wymagany.
+Wzorzec do obsługi tego błędu jest interaktywnie uzyskać token z zastosowaniem biblioteki MSAL. Interaktywnie pobierania tokenu monituje użytkownika i daje im możliwość spełnia wymagane zasady dostępu warunkowego.
 
 W niektórych przypadkach podczas wywoływania interfejsu API wymaga dostępu warunkowego może odbierać żądania oświadczeń w błędzie z interfejsu API. Związane z wystąpieniem, jeśli zasady dostępu warunkowego jest zapewnienie zarządzanego urządzenia (Intune) błąd podobny do [AADSTS53000: Urządzenie nie jest wymagane do zarządzania dostępu do tego zasobu](reference-aadsts-error-codes.md) lub innego ogranicznika. W takim przypadku mogą przesyłać oświadczenia w wywołaniu tokenu nabywania, więc, że użytkownik jest monitowany o spełniają odpowiednie zasady.
 
@@ -170,7 +170,7 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenRespo
 });
 ```
 
-Interaktywnie uzyskiwania tokenu monituje użytkownika i daje im możliwość spełnić wymagania zasad dostępu warunkowego wymagany.
+Interaktywnie uzyskiwania tokenu monituje użytkownika i daje im możliwość spełnia wymagane zasady dostępu warunkowego.
 
 Podczas wywoływania interfejsu API wymaga dostępu warunkowego, może odbierać żądania oświadczeń w wyniku błędu z interfejsu API. W takim przypadku można przekazać oświadczenia zwrócone w wyniku błędu, jako `extraQueryParameters` w wywołaniu uzyskać tokeny, dzięki czemu użytkownik jest monitowany o spełniają odpowiednie zasady:
 

@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: d28f6ed1957f8f6ae7ff7eb49f8ce4cbdec62266
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 230fe94820a00c276238a7f5ff189ecc817f3f96
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147422"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074041"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-sqlserver-connector.md)
 > * [Bieżąca wersja](connector-sql-server.md)
 
@@ -280,6 +280,9 @@ GO
 
 ### <a name="sql-server-as-sink"></a>SQL Server jako ujście
 
+> [!TIP]
+> Dowiedz się więcej na temat obsługiwanych zapisu zachowań, konfiguracji i najlepszym rozwiązaniem z [najlepsze praktyki dotyczące ładowania danych do programu SQL Server](#best-practice-for-loading-data-into-sql-server).
+
 Aby skopiować dane do programu SQL Server, należy ustawić typ ujścia w działaniu kopiowania, aby **SqlSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
 
 | Właściwość | Opis | Wymagane |
@@ -288,12 +291,9 @@ Aby skopiować dane do programu SQL Server, należy ustawić typ ujścia w dzia�
 | writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). Domyślnie Data Factory dynamiczne określanie rozmiar partii odpowiednie, w zależności od rozmiaru wiersza. |Nie |
 | writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania.<br/>Dozwolone wartości to: przedziału czasu. Przykład: "00: 30:00" (30 minut). |Nie |
 | preCopyScript |Określ zapytanie SQL, działanie kopiowania do wykonania przed zapisaniem danych do programu SQL Server. Jej będzie można wywołać tylko raz na kopiowania Uruchom. Ta właściwość umożliwia czyszczenie wstępnie załadowanych danych. |Nie |
-| sqlWriterStoredProcedureName |Nazwa procedury składowanej, który definiuje sposób dotyczą źródła danych do tabeli docelowej, np. czy wykonuje operację UPSERT lub przekształcenie za pomocą z własną logiką biznesową. <br/><br/>Należy pamiętać, tę procedurę składowaną będzie **wywoływane na partię**. Jeśli chcesz wykonać operację, która tylko jest uruchamiane jeden raz i nie ma nic wspólnego z źródła danych, np. Usuń/truncate, użyj `preCopyScript` właściwości. |Nie |
+| sqlWriterStoredProcedureName |Nazwa procedury składowanej, który definiuje sposób stosowania źródła danych do tabeli docelowej.<br/>Należy pamiętać, tę procedurę składowaną będzie **wywoływane na partię**. Jeśli chcesz wykonać operację, która tylko jest uruchamiane jeden raz i nie ma nic wspólnego z źródła danych, np. Usuń/truncate, użyj `preCopyScript` właściwości. |Nie |
 | storedProcedureParameters |Parametry procedury składowanej.<br/>Dozwolone wartości to: par nazwa/wartość. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie |
 | sqlWriterTableType |Określ nazwę typu tabeli ma być używany w procedurze składowanej. Działanie kopiowania udostępnia dane jest przenoszony w tabeli tymczasowej w przypadku tego typu tabeli. Kod procedury składowanej można następnie scalić dane, w której są kopiowane z istniejącymi danymi. |Nie |
-
-> [!TIP]
-> Podczas kopiowania danych do programu SQL Server, działanie kopiowania dołącza dane do tabeli ujścia domyślnie. Aby przeprowadzić UPSERT lub dodatkowe reguły biznesowe, użyj procedury składowanej w SqlSink. Dowiedz się więcej szczegółów z [wywoływania procedury składowanej dla SQL ujścia](#invoking-stored-procedure-for-sql-sink).
 
 **Przykład 1: dołączanie danych**
 
@@ -327,7 +327,7 @@ Aby skopiować dane do programu SQL Server, należy ustawić typ ujścia w dzia�
 ]
 ```
 
-**Przykład 2: wywoływanie procedury składowanej podczas kopiowania dla upsert**
+**Przykład 2: wywoływanie procedury składowanej podczas kopiowania**
 
 Dowiedz się więcej szczegółów z [wywoływania procedury składowanej dla SQL ujścia](#invoking-stored-procedure-for-sql-sink).
 
@@ -366,80 +366,69 @@ Dowiedz się więcej szczegółów z [wywoływania procedury składowanej dla SQ
 ]
 ```
 
-## <a name="identity-columns-in-the-target-database"></a>Kolumny tożsamości w docelowej bazie danych
+## <a name="best-practice-for-loading-data-into-sql-server"></a>Najlepsze praktyki dotyczące ładowania danych do programu SQL Server
 
-Ta sekcja zawiera przykład, który kopiuje dane z tabeli źródłowej, za pomocą żadnej kolumny tożsamości do tabeli docelowej z kolumną tożsamości.
+Podczas kopiowania danych do programu SQL Server, mogą wymagać zachowanie różnych zapisu:
 
-**Tabela źródłowa:**
+- **[Dołącz](#append-data)** : Moje źródło danych zawiera tylko nowe rekordy;
+- **[UPSERT](#upsert-data)** : Moje źródło danych zawiera zarówno wstawienia i aktualizacje;
+- **[Zastąp](#overwrite-entire-table)** : Czy chcesz ponownie załadować tabelę wymiarów całego każdorazowo;
+- **[Zapis za pomocą logiki niestandardowej](#write-data-with-custom-logic)** : Potrzebne są dodatkowe przetwarzania przed ostatnim wstawiania do tabeli docelowej.
+
+Zapoznaj się odpowiednio sekcje dotyczące sposobu konfigurowania w usłudze ADF i najlepszych rozwiązań.
+
+### <a name="append-data"></a>Dołączanie danych
+
+Jest to domyślne zachowanie tego łącznika ujścia programu SQL Server, a następnie wykonaj ADF **wstawiania zbiorczego** można zapisać do tabeli wydajnie. Możesz po prostu skonfigurować źródła i ujścia odpowiednio w działaniu kopiowania.
+
+### <a name="upsert-data"></a>Wykonywanie operacji upsert dla danych
+
+**Opcja I** (sugerowany, szczególnie gdy korzystasz dużych ilości danych do skopiowania): **większość wydajne podejście** celu upsert jest następująca: 
+
+- Po pierwsze, wykorzystaj [tabeli tymczasowej](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) można wykonać ładowania zbiorczego, wszystkie rekordy, za pomocą działania kopiowania. Jak operacje wobec tabel tymczasowych nie są rejestrowane, należy załadować miliony rekordów, w ciągu kilku sekund.
+- Wykonaj działania procedury składowanej w usłudze ADF, aby zastosować [scalania](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) (lub INSERT/UPDATE) instrukcji i używaj tymczasowej tabeli jako źródła do wykonywania wszystkich aktualizuje lub wstawia jako jedna transakcja, skracając natężenie ruchu i rejestrowanie operacji. Po zakończeniu działania procedury składowanej Tabela tymczasowa może być obcinana jest gotowy do następnego cyklu upsert. 
+
+Na przykład w usłudze Azure Data Factory, można utworzyć potoku za pomocą **działanie kopiowania, które** łańcuchowa przy użyciu **działania procedura składowana** w przypadku powodzenia. Pierwszych kopiuje dane z magazynu źródła do tabeli tymczasowej bazy danych, załóżmy, że " **##UpsertTempTable**" jako nazwę tabeli w zestawie danych, następnie one wywołuje procedury składowanej, aby scalić źródła danych z tabeli tymczasowej do tabeli docelowej i wyczyścić tabeli tymczasowej.
+
+![UPSERT](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+
+W bazie danych zdefiniuj procedury składowanej, wraz z logiką scalania, podobnie do poniższego, który jest wskazywany powyższe działania procedury składowanej. Zakładając, że docelowy **marketingu** tabelę zawierającą trzy kolumny: **ProfileID**, **stanu**, i **kategorii**, i wykonaj upsert na podstawie **ProfileID** kolumny.
 
 ```sql
-create table dbo.SourceTbl
-(
-    name varchar(100),
-    age int
-)
+CREATE PROCEDURE [dbo].[spMergeData]
+AS
+BEGIN
+    MERGE TargetTable AS target
+    USING ##UpsertTempTable AS source
+    ON (target.[ProfileID] = source.[ProfileID])
+    WHEN MATCHED THEN
+        UPDATE SET State = source.State
+    WHEN NOT matched THEN
+        INSERT ([ProfileID], [State], [Category])
+      VALUES (source.ProfileID, source.State, source.Category);
+    
+    TRUNCATE TABLE ##UpsertTempTable
+END
 ```
 
-**Tabela docelowa:**
+**Opcja II:** Alternatywnie możesz [wywołaj procedurę składowaną w ramach działania kopiowania](#invoking-stored-procedure-for-sql-sink), podczas Uwaga to podejście jest wykonywane dla każdego wiersza w tabeli źródłowej zamiast wykorzystaniu zbiorcze Wstaw jako podejście domyślne w działaniu kopiowania dlatego nie mieści się na dużą skalę upsert.
 
-```sql
-create table dbo.TargetTbl
-(
-    identifier int identity(1,1),
-    name varchar(100),
-    age int
-)
-```
+### <a name="overwrite-entire-table"></a>Zastąp całą tabelę
 
-Należy zauważyć, że tabela docelowa ma kolumny tożsamości.
+Można skonfigurować **preCopyScript** ujścia właściwości w działaniu kopiowania, w którym to przypadku dla każdego uruchomienia działania kopiowania usługi ADF wykonuje skrypt najpierw uruchom kopiowania, aby wstawić dane. Na przykład aby zastąpić całą tabelę przy użyciu najnowszych danych, można określić skrypt, aby usunąć wszystkie rekordy przed ładowania zbiorczego nowe dane ze źródła.
 
-**Definicja JSON zestawu danych źródłowych**
+### <a name="write-data-with-custom-logic"></a>Zapisywanie danych za pomocą logiki niestandardowej
 
-```json
-{
-    "name": "SampleSource",
-    "properties": {
-        "type": " SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "SourceTbl"
-        }
-    }
-}
-```
-
-**Definicja JSON zestawu danych docelowego**
-
-```json
-{
-    "name": "SampleTarget",
-    "properties": {
-        "structure": [
-            { "name": "name" },
-            { "name": "age" }
-        ],
-        "type": "SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "TargetTbl"
-        }
-    }
-}
-```
-
-Należy zauważyć, że jako tabela źródłowa i docelowa mają różne schemat (element docelowy ma dodatkową kolumnę z tożsamością). W tym scenariuszu należy określić **struktury** właściwości w definicji zestawu danych docelowego nie zawiera kolumny tożsamości.
+Podobnie, zgodnie z opisem w [danych Upsert](#upsert-data) sekcji, kiedy należy zastosować dodatkowe przetwarzania przed ostatnim wstawiania danych źródłowych do tabeli docelowej możesz) na dużą skalę, ładowanie do tabeli tymczasowej, a następnie wywołaj przechowywanego Procedura lub b) wywoływanie procedury składowanej podczas kopiowania.
 
 ## <a name="invoking-stored-procedure-for-sql-sink"></a> Wywołaj procedurę składowaną z SQL ujścia
 
-Podczas kopiowania danych do bazy danych serwera SQL, procedury składowanej można skonfigurować i wywoływane z dodatkowymi parametrami określone przez użytkownika.
+Podczas kopiowania danych do bazy danych programu SQL Server, można również skonfigurować i wywoływać procedury składowanej określonych przez użytkownika z dodatkowych parametrów.
 
-Procedura składowana służy podczas kopiowania wbudowane mechanizmy nie służą do celów. Jest ona zwykle używana, gdy upsert (insert i update) lub dodatkowego przetwarzania (Scalanie kolumn wyszukiwania dodatkowe wartości, wstawiania do wielu tabel, itp.) musi odbywać się przed ostatnim wstawiania danych źródłowych w tabeli docelowej.
+> [!TIP]
+> Wywoływanie procedury składowanej przetwarza dane wiersz po wierszu zamiast operacji zbiorczej, która nie jest zalecane dla kopiowania na dużą skalę. Dowiedz się więcej z [najlepsze praktyki dotyczące ładowania danych do programu SQL Server](#best-practice-for-loading-data-into-sql-server).
+
+Można użyć procedury składowanej, podczas kopiowania wbudowane mechanizmy nie służą do celów, np. Zastosuj dodatkowe przetwarzania przed ostatnim wstawiania danych źródłowych do tabeli docelowej. Niektóre przykłady dodatkowego przetwarzania są łączenie kolumn wyszukiwania dodatkowe wartości, a jego wstawieniem do więcej niż jedną tabelą.
 
 Poniższy przykład pokazuje sposób użycia procedury składowanej w celu upsert do tabeli w bazie danych programu SQL Server. Przyjęto założenie, że dane wejściowe i obiekt sink **marketingu** każda tabela ma trzy kolumny: **ProfileID**, **stanu**, i **kategorii**. Czy upsert na podstawie **ProfileID** kolumny i zastosować je tylko dla określonej kategorii.
 

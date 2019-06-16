@@ -11,10 +11,10 @@ ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024637"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w usłudze Azure Search
@@ -47,7 +47,7 @@ Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dok
 
 ## <a name="index-limits"></a>Limity indeksu
 
-| Resource | Bezpłatna | Podstawowe&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | PAMIĘCI PODRĘCZNEJ L2 |
+| Resource | Wolne | Podstawowe&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | PAMIĘCI PODRĘCZNEJ L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksów |3 |5 lub 15 |50 |200 |200 |1000 na partycję lub 3000 na usługę |10 |10 |
 | Maksymalna proste pola indeksu |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -82,7 +82,7 @@ Portal wskazuje limit dokumentów, usługa została utworzona późno 2017 r., c
 
 W przypadku usług, które podlegają limity dokumentów mają zastosowanie następujące maksymalny limit:
 
-|  Bezpłatna | Podstawowa | S1 | S2 | S3 | S3&nbsp;HD |
+|  Wolne | Podstawowa | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
 |  10 000 |1&nbsp;mln |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
 

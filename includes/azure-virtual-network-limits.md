@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 05/15/2019
+ms.date: 06/13/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: cb586be1a139b331c259a1197cc62e7ca4f25666
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 813c8e92907a60046c2e53f97d4dd05125076241
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133156"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zarządzanych przy użyciu zasobów sieciowych **klasycznego** modelu wdrażania na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -81,7 +81,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Zasady dla każdego zasobu, Basic | 250 |
 | Zasady dla każdego zasobu i Standard | 1,500 | 
 | Zasady na konfigurację adresu IP | 299 |
-| Reguły dla karty Sieciowej | 500 |
+| Reguły dla karty Sieciowej | 300 |
 | Konfiguracje adresów IP frontonu, Basic | 200 |
 | Konfiguracje adresów IP frontonu, standardowy | 600 |
 | Puli zaplecza, Basic | 100, pojedynczym zestawie dostępności |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: kasinh
 ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60650901"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Odzyskiwanie danych z usługi Azure Backup Server
@@ -65,7 +65,7 @@ Aby odzyskać dane z usługi Azure Backup Server:
      Określenie czy **powiadomień** jest wysyłana, po pomyślnym zakończeniu odzyskiwania.
 
      ![Zewnętrzny program DPM odzyskiwania powiadomienia](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. **Podsumowanie** ekranu zawiera listę opcji wybranych do tej pory. Po kliknięciu **"Odzyskiwanie"**, dane są odzyskiwane do lokalizacji odpowiednie w środowisku lokalnym.
+9. **Podsumowanie** ekranu zawiera listę opcji wybranych do tej pory. Po kliknięciu **"Odzyskiwanie"** , dane są odzyskiwane do lokalizacji odpowiednie w środowisku lokalnym.
 
     ![Podsumowanie opcji odzyskiwania zewnętrznego programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 

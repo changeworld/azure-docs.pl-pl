@@ -3,7 +3,7 @@ title: Typy punktów końcowych usługi Traffic Manager | Dokumentacja firmy Mic
 description: W tym artykule opisano różne typy punktów końcowych, które mogą być używane z usługą Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,18 +11,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: kumud
-ms.openlocfilehash: dc76f56b6c05f22a380ff33715fe22e8c72e4891
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.author: allensu
+ms.openlocfilehash: 469b6543b380cb6b3b10c3def8484bed944f8556
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508436"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071203"
 ---
 # <a name="traffic-manager-endpoints"></a>Punkty końcowe usługi Traffic Manager
+
 Microsoft Azure Traffic Manager umożliwia kontrolowanie sposobu dystrybucji ruchu sieciowego do wdrożenia aplikacji działające w różnych centrach danych. Skonfiguruj każde wdrożenie aplikacji jako punktu końcowego w usłudze Traffic Manager. Gdy usługa Traffic Manager odbiera żądanie DNS, wybiera dostępnego punktu końcowego do zwrócenia w odpowiedzi DNS. Usługa Traffic manager Określa wybór na bieżący stan punktu końcowego i metody routingu ruchu. Aby uzyskać więcej informacji, zobacz [jak działa usługa Traffic Manager](traffic-manager-how-it-works.md).
 
 Istnieją trzy typy obsługiwanych przez usługę Traffic Manager punktu końcowego:
+
 * **Punkty końcowe platformy Azure** używane w przypadku usług hostowanych na platformie Azure.
 * **Zewnętrzne punkty końcowe** są używane dla adresów IPv4 i IPv6, nazwy FQDN, lub dla usług hostowanych poza systemem Azure, która może być lokalne lub u innego dostawcy usług hostingowych.
 * **Zagnieżdżone punktów końcowych** są używane do łączenia profilów usługi Traffic Manager, aby utworzyć bardziej elastyczne systemy kierowania ruchu do obsługi wymagań większych i bardziej złożonych wdrożeń.
@@ -36,20 +38,20 @@ W poniższych sekcjach opisano każdy typ punktu końcowego w dokładniej.
 Punkty końcowe platformy Azure używane w przypadku usług opartych na platformie Azure w usłudze Traffic Manager. Obsługiwane są następujące typy zasobów platformy Azure:
 
 * Usługi PaaS w chmurze.
-* Aplikacje internetowe
+* Web Apps
 * Miejsc aplikacji sieci Web
 * Zasoby publicznego adresu IP (które mogą być podłączone do maszyn wirtualnych bezpośrednio lub za pośrednictwem usługi Azure Load Balancer). Publiczny adres IP musi mieć nazwę DNS, przypisany do użycia w profilu usługi Traffic Manager.
 
 Publiczny adres IP zasoby są zasobami usługi Azure Resource Manager. Nie istnieją w klasycznym modelu wdrażania. Tak więc są tylko obsługiwane na forach usługi Traffic Manager w usłudze Azure Resource Manager środowisk. Inne typy punktów końcowych są obsługiwane przy użyciu usługi Resource Manager oraz klasycznego modelu wdrażania.
 
-Korzystając z punkty końcowe platformy Azure, usługa Traffic Manager wykrywa "Classic" maszyny Wirtualnej IaaS, usługi w chmurze lub aplikacji sieci Web jest zatrzymana i uruchomiona. Ten stan jest widoczny w stan punktu końcowego. Zobacz [monitorowania punktu końcowego usługi Traffic Manager](traffic-manager-monitoring.md#endpoint-and-profile-status) Aby uzyskać szczegółowe informacje. Po zatrzymaniu podstawowej usługi Traffic Manager wykonuje kontrole kondycji punktów końcowych lub bezpośrednie kierowanie ruchu do punktu końcowego. Brak zdarzeń rozliczeń usługi Traffic Manager miejsce w przypadku zatrzymania. Po ponownym uruchomieniu usługi, wznawia rozliczeń i punkt końcowy jest uprawniona do odbierania ruchu. Wykrywanie nie ma zastosowania do publicznego adresu IP punktów końcowych.
+Korzystając z punkty końcowe platformy Azure, usługi Traffic Manager wykrywa, gdy aplikacja sieci Web jest zatrzymana i uruchomiona. Ten stan jest widoczny w stan punktu końcowego. Zobacz [monitorowania punktu końcowego usługi Traffic Manager](traffic-manager-monitoring.md#endpoint-and-profile-status) Aby uzyskać szczegółowe informacje. Po zatrzymaniu podstawowej usługi Traffic Manager wykonuje kontrole kondycji punktów końcowych lub bezpośrednie kierowanie ruchu do punktu końcowego. Brak zdarzeń rozliczeń usługi Traffic Manager miejsce w przypadku zatrzymania. Po ponownym uruchomieniu usługi, wznawia rozliczeń i punkt końcowy jest uprawniona do odbierania ruchu. Wykrywanie nie ma zastosowania do publicznego adresu IP punktów końcowych.
 
 ## <a name="external-endpoints"></a>Zewnętrzne punkty końcowe
 
 Zewnętrzne punkty końcowe są używane dla obu adresów IPv4 i IPv6, nazwy FQDN, lub usługi spoza platformy Azure. Korzystanie z punktami końcowymi adresów IPv4 i IPv6 zezwala na ruch Menedżera do sprawdzenia kondycji punktów końcowych bez nazwy DNS dla nich. Co w efekcie usługi Traffic Manager może odpowiadać na zapytania o rekordy A i AAAA, gdy zwracany jest ten punkt końcowy w odpowiedzi. Usługi spoza platformy Azure mogą obejmować usługi hostowanej lokalnie lub u innego dostawcy. Zewnętrzne punkty końcowe można użyć pojedynczo lub w połączeniu z punktami końcowymi usługi Azure w tym samym profilu usługi Traffic Manager, z wyjątkiem punktów końcowych, określony jako adresów IPv4 lub IPv6, które mogą być tylko zewnętrzne punkty końcowe. Łącząc punkty końcowe platformy Azure przy użyciu zewnętrzne punkty końcowe umożliwia różne scenariusze:
 
 * Obejmij zwiększenia nadmiarowości istniejącej aplikacji w środowisku lokalnym albo model trybu failover active-active lub active-passive przy użyciu platformy Azure. 
-* Kierowanie ruchu do punktów końcowych, które nie mają skojarzonych z nimi nazwy DNS. Ponadto Zmniejsz ogólny czas oczekiwania wyszukiwania DNS, usuwając potrzeba wykonania drugiej zapytanie DNS w celu uzyskania adresu IP, nazwy DNS, zwracane. 
+* Kierowanie ruchu do punktów końcowych, które nie mają skojarzonych z nimi nazwy DNS. Ponadto Zmniejsz ogólny czas oczekiwania wyszukiwania DNS, usuwając potrzeba wykonania drugiej zapytanie DNS w celu uzyskania adresu IP, nazwy DNS, zwracane.
 * Zmniejszenie opóźnień aplikacji dla użytkowników na całym świecie, Rozszerz istniejącą aplikację w środowisku lokalnym, do dodatkowych lokalizacjach geograficznych platformy Azure. Aby uzyskać więcej informacji, zobacz [usługi Traffic Manager "Wydajność" routing ruchu](traffic-manager-routing-methods.md#performance).
 * Podaj dodatkowej pojemności dla istniejącej lokalnej aplikacji, ciągle lub jako "dużego ruchu do chmury" rozwiązania spełniającego wzrost popytu korzystanie z platformy Azure.
 

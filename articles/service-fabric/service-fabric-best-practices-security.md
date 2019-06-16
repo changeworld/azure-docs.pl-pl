@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 69e51f23980aa1d4225f2e5062470f94e5ca9008
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4888ea8473c50b8774add7a930612c585fc9cbde
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753792"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074341"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpieczenia usługi Azure Service Fabric 
 
@@ -205,7 +205,13 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Firma Microsoft zaleca, aby zaimplementować konfiguracji będące standardami branżowymi, która jest powszechnie znane i dobrze przetestowanych, takie jak wartości bazowych zabezpieczeń firmy Microsoft, w przeciwieństwie tworzenia punktu odniesienia, samodzielnie](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); opcję aprowizacji tych na maszynie wirtualnej. Zestawy skalowania jest na potrzeby obsługi rozszerzenia Azure Desired State Configuration (DSC), skonfigurować maszyn wirtualnych, zgodnie z ich przejdzie w tryb online, dzięki czemu są one uruchomione oprogramowania w środowiskach produkcyjnych.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Zapora platformy Azure to usługa zabezpieczeń sieci zarządzanej, oparte na chmurze, która chroni Twoje zasoby usługi Azure Virtual Network. Jest w pełni stanowych zapory jako usługa z wbudowaną wysoką dostępność i skalowalność chmury bez ograniczeń. ](https://docs.microsoft.com/azure/firewall/overview); dzięki temu możliwość ograniczania ruchu wychodzącego ruchu HTTP/Https na określoną listę w pełni kwalifikowanych nazw domen (FQDN) w tym symbole wieloznaczne. Ta funkcja nie wymaga kończenia żądań protokołu SSL. Jego zaleca się, że możesz korzystać z [tagów w pełni kwalifikowaną nazwę domeny dla zapory usługi Azure](https://docs.microsoft.com/azure/firewall/fqdn-tags) aktualizacji Windows i aby umożliwić ruch sieciowy do usługi Microsoft Windows Update punktów końcowych może przepływać za pośrednictwem zapory. [Wdrażanie zapory platformy Azure przy użyciu szablonu](https://docs.microsoft.com/azure/firewall/deploy-template) zawiera przykładowy Microsoft.Network/azureFirewalls zasobów szablonu definicji. Dwie reguły zapory często aplikacje usługi Service Fabric jest umożliwienie sieci klastrów do komunikowania się z * witrynie download.microsoft.com, i * servicefabric.azure.com; Aby ściągnąć aktualizacji Windows i sieci szkieletowej obliczeń maszyny wirtualnej usługi w rozszerzenie kodu.
+[Zapora platformy Azure to usługa zabezpieczeń sieci zarządzanej, oparte na chmurze, która chroni Twoje zasoby usługi Azure Virtual Network. Jest w pełni stanowych zapory jako usługa z wbudowaną wysoką dostępność i skalowalność chmury bez ograniczeń. ](https://docs.microsoft.com/azure/firewall/overview); dzięki temu możliwość ograniczania ruchu wychodzącego ruchu HTTP/Https na określoną listę w pełni kwalifikowanych nazw domen (FQDN) w tym symbole wieloznaczne. Ta funkcja nie wymaga kończenia żądań protokołu SSL. Jego zaleca się, że możesz korzystać z [tagów w pełni kwalifikowaną nazwę domeny dla zapory usługi Azure](https://docs.microsoft.com/azure/firewall/fqdn-tags) aktualizacji Windows i aby umożliwić ruch sieciowy do usługi Microsoft Windows Update punktów końcowych może przepływać za pośrednictwem zapory. [Wdrażanie zapory platformy Azure przy użyciu szablonu](https://docs.microsoft.com/azure/firewall/deploy-template) zawiera przykładowy Microsoft.Network/azureFirewalls zasobów szablonu definicji. Reguły zapory często aplikacje usługi Service Fabric jest umożliwia następujące czynności dla sieci wirtualnej klastrów:
+
+- *download.microsoft.com
+- *servicefabric.azure.com
+- *.core.windows.net
+
+Te reguły zapory uzupełniają dozwolonego ruchu wychodzącego sieciowych grupach zabezpieczeń, który obejmuje ServiceFabric i pamięci masowej, jako dozwolone miejsca docelowe z Twojej sieci wirtualnej.
 
 ## <a name="tls-12"></a>TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
@@ -243,6 +249,18 @@ Domyślnie programu antywirusowego Windows Defender jest zainstalowany w systemi
 
 > [!NOTE]
 > Można znaleźć w dokumentacji ochrony przed złośliwym oprogramowaniem dla reguły konfiguracji, jeśli nie używasz programu Windows Defender. Usługa Windows Defender nie jest obsługiwana w systemie Linux.
+
+## <a name="platform-isolation"></a>Izolacja platformy
+Domyślnie aplikacje usługi Service Fabric uzyskują dostęp do usługi Service Fabric środowiska uruchomieniowego, które ujawnia się w różnych formularzach: [zmienne środowiskowe](service-fabric-environment-variables-reference.md) wskazujący ścieżek plików na hoście, odpowiadający aplikacji i Pliki sieci szkieletowej, punkt końcowy komunikacji między procesami, który akceptuje żądania specyficzne dla aplikacji i klienta certyfikatu oczekiwała sieci szkieletowej w aplikacji na potrzeby samodzielnego uwierzytelnienia. W przypadku możliwości usługi znajduje się zaufany kod, zaleca się wyłączyć ten dostęp do środowiska uruchomieniowego SF — chyba że wyraźnie wymagane. Dostęp do środowiska uruchomieniowego jest usuwane, w sekcji dotyczącej zasad manifest aplikacji przy użyciu następującej deklaracji: 
+
+```xml
+<ServiceManifestImport>
+    <Policies>
+        <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+    </Policies>
+</ServiceManifestImport>
+
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

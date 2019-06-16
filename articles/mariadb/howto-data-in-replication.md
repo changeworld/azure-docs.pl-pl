@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3897c402e45962836880ccebbeb252d189188d3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39c5efee0958fdfc8fa647f5acaf929f559f7bf7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038589"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065649"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Jak skonfigurować bazę danych Azure do replikacji danych MariaDB
 
-W tym artykule dowiesz się, sposobu konfigurowania replikacji danych w usłudze Azure Database dla usługi MariaDB przez konfigurowanie serwerów głównego i repliki. Replikacji danych umożliwia synchronizowanie danych z głównego serwera MariaDB działających lokalnie, w maszynach wirtualnych lub bazy danych usług hostowanych przez innych dostawców rozwiązań w chmurze do repliki w bazie danych Azure dla usługi MariaDB. 
+W tym artykule dowiesz się, sposobu konfigurowania replikacji danych w usłudze Azure Database dla usługi MariaDB przez konfigurowanie serwerów głównego i repliki. Replikacji danych umożliwia synchronizowanie danych z głównego serwera MariaDB działających lokalnie, w maszynach wirtualnych lub bazy danych usług hostowanych przez innych dostawców rozwiązań w chmurze do repliki w bazie danych Azure dla usługi MariaDB. Firma Microsoft recommanded, możesz skonfigurować replikację w danych za pomocą [globalny identyfikator transakcji](https://mariadb.com/kb/en/library/gtid/) gdy 10.2 jest wersja serwera głównego lub nowszej.
 
 W tym artykule założono, że masz co najmniej pewne doświadczenie z MariaDB, serwerami i bazami danych.
 
@@ -116,7 +116,16 @@ Następujące kroki Przygotuj i skonfiguruj MariaDB server hostowanych lokalnie,
    Wyniki powinny być podobną do poniższej. Koniecznie Zanotuj nazwę pliku binarnego, ponieważ zostaną użyte w kolejnych krokach.
 
    ![Wzorzec stan wyników](./media/howto-data-in-replication/masterstatus.png)
+   
+6. Pobierz pozycję GTID (opcjonalnie, wymagane dla replikacji z GTID)
+
+   Uruchom funkcję [ `BINLOG_GTID_POS` ](https://mariadb.com/kb/en/library/binlog_gtid_pos/) polecenie, aby uzyskać położenie GTID dla nazwy pliku binlog odpowiednio i przesunięcia.
+  
+    ```sql
+    select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
+    ```
  
+
 ## <a name="dump-and-restore-master-server"></a>Zrzucanie i przywracanie serwera głównego
 
 1. Zrzut wszystkich baz danych z serwera głównego
@@ -142,10 +151,16 @@ Następujące kroki Przygotuj i skonfiguruj MariaDB server hostowanych lokalnie,
 
    Wszystkie funkcje replikacji danych są wykonywane tylko przez procedury składowane. Możesz znaleźć wszystkie procedury na [w danych replikacji procedur składowanych](reference-data-in-stored-procedures.md). Procedury składowane mogą być uruchamiane w powłoce MySQL lub połączenia aplikacji MySQL Workbench.
 
-   Aby połączyć dwa serwery i Rozpocznij replikację, zaloguj się do serwera docelowego repliki w usłudze Azure DB dla usługi MariaDB i ustawić zewnętrznego wystąpienia jako serwer główny. Jest to wykonywane przy użyciu `mysql.az_replication_change_master` procedury składowanej w usłudze Azure DB dla serwera MariaDB.
+   Aby połączyć dwa serwery i Rozpocznij replikację, zaloguj się do serwera docelowego repliki w usłudze Azure DB dla usługi MariaDB i ustawić zewnętrznego wystąpienia jako serwer główny. Jest to wykonywane przy użyciu `mysql.az_replication_change_master` lub `mysql.az_replication_change_master_with_gtid` procedury składowanej w usłudze Azure DB dla serwera MariaDB.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   ```
+   
+   lub
+   
+   ```sql
+   CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
 
    - master_host: hostname of the master server
@@ -153,6 +168,7 @@ Następujące kroki Przygotuj i skonfiguruj MariaDB server hostowanych lokalnie,
    - master_password: hasło dla tego serwera głównego
    - master_log_file: Nazwa pliku dziennika binarne uruchamiania `show master status`
    - master_log_pos: pozycja dziennik binarny uruchamianie `show master status`
+   - master_gtid_pos: Pozycja GTID uruchamianie `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
    - master_ssl_ca: Kontekst certyfikatu urzędu certyfikacji. Jeśli nie używasz protokołu SSL, należy przekazać pusty ciąg.
        - Zalecane jest przekazanie tego parametru w jako zmienną. Poniżej przedstawiono przykłady, aby uzyskać więcej informacji.
 
@@ -199,9 +215,13 @@ Następujące kroki Przygotuj i skonfiguruj MariaDB server hostowanych lokalnie,
 
    Jeśli stan `Slave_IO_Running` i `Slave_SQL_Running` "yes" i wartość `Seconds_Behind_Master` "0", replikacja działa prawidłowo. `Seconds_Behind_Master` Wskazuje wielkość opóźnienia jest repliką. Jeśli wartość nie jest "0", oznacza to, że replika jest przetwarzanie aktualizacji. 
 
+4. Aktualizacja odpowiadają zmiennych serwera, aby dane replikacji bardziej bezpieczne (tylko wymagane dla replikacji bez GTID)
+    
+    Ze względu na ograniczenia replikacji natywnych MariaDB, musisz instalacji [ `sync_master_info` ](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) i [ `sync_relay_log_info` ](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) zmiennych na replikacji bez GTID scenariusza. Firma Microsoft recommand Sprawdź serwer podrzędny `sync_master_info` i `sync_relay_log_info` zmienne i ich zmienić ot `1` Jeśli chcesz upewnić się, replikacji danych jest stabilna.
+    
 ## <a name="other-stored-procedures"></a>Inne procedury składowane
 
-### <a name="stop-replication"></a>Zatrzymaj replikację
+### <a name="stop-replication"></a>Zatrzymywanie replikacji
 
 Aby zatrzymać replikację między serwera głównego i repliki, użyj następującej procedury składowanej:
 

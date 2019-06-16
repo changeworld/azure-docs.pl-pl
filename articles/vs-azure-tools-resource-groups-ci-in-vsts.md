@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
 ms.openlocfilehash: 692c075b55efd138f6d731ffae43608f141abfdc
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66019769"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w usługom DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure
@@ -172,8 +172,8 @@ Poniższe procedury opisują czynności niezbędne do skonfigurowania ciągłego
    * Akcja — wybierz **tworzenia lub zaktualizować grupy zasobów**
    * Grupy zasobów — wybierz grupę zasobów lub wprowadź nazwę nowej grupy zasobów dla wdrożenia
    * Lokalizacja — wybierz lokalizację grupy zasobów
-   * Szablon — wprowadź ścieżkę i nazwę szablonu do wdrożenia AS **$(Build.StagingDirectory)**, na przykład: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
-   * Parametry szablonu — wprowadź ścieżkę i nazwę parametrów, które ma być używany, AS **$(Build.StagingDirectory)**, na przykład: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
+   * Szablon — wprowadź ścieżkę i nazwę szablonu do wdrożenia AS **$(Build.StagingDirectory)** , na przykład: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
+   * Parametry szablonu — wprowadź ścieżkę i nazwę parametrów, które ma być używany, AS **$(Build.StagingDirectory)** , na przykład: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
    * Przesłanianie parametrów szablonu — wpisz lub skopiuj i wklej następujący kod:
      
      ```    

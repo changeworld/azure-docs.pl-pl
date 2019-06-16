@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956846"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108297"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy z logowaniem do aplikacji firmy Microsoft
 
@@ -67,7 +67,7 @@ Poniżej przedstawiono niektóre typowe problemy, które osoby zajmujące się n
 
   * Upewnij się, że **uwierzytelnianie wieloskładnikowe** nie blokuje dostęp użytkownika. [Sprawdź stan usługi Multi-Factor authentication użytkownika](#check-a-users-multi-factor-authentication-status) lub [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info)
 
-  * Upewnij się, że **zasad dostępu warunkowego** lub **Identity Protection** zasad nie blokuje dostęp użytkownika. [Sprawdź zasady dostępu warunkowego określonych](#problems-with-conditional-access-policies) lub [Sprawdź zasady dostępu warunkowego określonej aplikacji](#check-a-specific-applications-conditional-access-policy) lub [Wyłącz zasady dostępu warunkowego określonych](#disable-a-specific-conditional-access-policy)
+  * Upewnij się, że **zasad dostępu warunkowego** lub **Identity Protection** zasad nie blokuje dostęp użytkownika. [Sprawdź określone zasady dostępu warunkowego](#problems-with-conditional-access-policies) lub [Sprawdź zasady dostępu warunkowego określonej aplikacji](#check-a-specific-applications-conditional-access-policy) lub [wyłączyć określone zasady dostępu warunkowego](#disable-a-specific-conditional-access-policy)
 
   * Upewnij się, że użytkownik **informacje kontaktowe uwierzytelniania** pozostają aktualne, aby umożliwić uwierzytelnianie wieloskładnikowe lub dostępu warunkowego zasad, które mają być egzekwowane. [Sprawdź stan usługi Multi-Factor authentication użytkownika](#check-a-users-multi-factor-authentication-status) lub [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info)
 
@@ -419,9 +419,9 @@ Aby przypisać licencję do grupy, wykonaj następujące kroki:
 
 ## <a name="problems-with-conditional-access-policies"></a>Problemy z zasadami dostępu warunkowego
 
-### <a name="check-a-specific-conditional-access-policy"></a>Sprawdź zasady dostępu warunkowego określonych
+### <a name="check-a-specific-conditional-access-policy"></a>Sprawdź określone zasady dostępu warunkowego
 
-Aby sprawdzić lub Sprawdzanie poprawności zasad dostępu warunkowego pojedynczego:
+Aby sprawdzić lub zweryfikować jednych zasad dostępu warunkowego:
 
 1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
@@ -474,9 +474,9 @@ Aby sprawdzić lub zweryfikować pojedynczej aplikacji obecnie skonfigurowane za
      >
      >
 
-### <a name="disable-a-specific-conditional-access-policy"></a>Wyłącz zasady dostępu warunkowego określonych
+### <a name="disable-a-specific-conditional-access-policy"></a>Wyłącz szczególne zasady dostępu warunkowego
 
-Aby sprawdzić lub Sprawdzanie poprawności zasad dostępu warunkowego pojedynczego:
+Aby sprawdzić lub zweryfikować jednych zasad dostępu warunkowego:
 
 1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
@@ -512,7 +512,7 @@ Może zostać zablokowany dostęp do aplikacji, ponieważ nie przeprowadzono ope
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Operacja zgody na poziomie administratora dla każdej aplikacji
 
--   Dla **tylko aplikacje opracowane przy użyciu modelu aplikacji w wersji 1**, możesz wymusić tego poziomu zgody administratora wystąpią, dodając "**? prompt = administrator\_zgody**" na końcu podpisanie aplikacji w adresie URL.
+-   Dla **tylko aplikacje opracowane przy użyciu modelu aplikacji w wersji 1**, możesz wymusić tego poziomu zgody administratora wystąpią, dodając " **? prompt = administrator\_zgody**" na końcu podpisanie aplikacji w adresie URL.
 
 -   Dla **dowolnej aplikacji opracowanych za pomocą modelu aplikacji w wersji 2**, można wymusić użycie tego administratora zezwoleniem wystąpią, postępując zgodnie z instrukcjami dotyczącymi **żądania uprawnień z administratorem katalogu** części [przy użyciu punktu końcowego zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 

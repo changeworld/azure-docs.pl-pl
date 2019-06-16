@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 61173d21c52d061f0d02ab02eb2f1083507983c2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0c3eb72abc90347c8e18a2f56a5d4756ecd80f3a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991675"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096334"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Samouczek: Integracja MyWorkDrive za pomocą usługi Azure Active Directory
 
@@ -154,7 +154,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MyWorkDrive. Praca z
 
 Po wybraniu kafelka MyWorkDrive w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze MyWorkDrive, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

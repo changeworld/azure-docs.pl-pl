@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 3cfd6bd453cd06be4676a806997697a71afb0b59
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727397"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Pojęcia dla deweloperów w usłudze Azure Data Catalog
@@ -105,7 +105,7 @@ Te właściwości mają zastosowanie do wszystkich typów niepojedynczej adnotac
 ### <a name="root-asset-types"></a>Typy zasobów katalogu głównego
 Typy zasobów katalogu głównego to tych typów, które reprezentują różne typy zasobów danych, które mogą być zarejestrowane w wykazie. Dla każdego typu głównego istnieje widok, w którym opisano zasobów i adnotacje uwzględnione w widoku. Nazwa widoku powinna być używana w odpowiadającym segmencie adresu url {view_name}, podczas publikowania zasobów przy użyciu interfejsu API REST.
 
-<table><tr><td><b>Typ zasobu (nazwy widoku)</b></td><td><b>Dodatkowe właściwości</b></td><td><b>Typ danych</b></td><td><b>Dozwolone adnotacji</b></td><td><b>Komentarze</b></td></tr><tr><td>Tabela ("tabele")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Schemat<p>ColumnDescription<p>ColumnTag<p> Ekspert<p>Wersja zapoznawcza<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentacja<p></td><td>Tabela reprezentuje wszystkie dane tabelaryczne.  Na przykład: Tabela SQL, Widok SQL, tabela tabelarycznych usług Analysis Services, wielowymiarowych usług Analysis Services wymiaru, tabela bazy danych Oracle, itp.   </td></tr><tr><td>Miary ("środki")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia miara usług Analysis Services.</td></tr><tr><td></td><td>miara</td><td>Kolumna</td><td></td><td>Metadane opisujące miary</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Określa, jeśli miara jest obliczana, czy nie.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Fizycznych kontenerów dla miary</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Fizycznych kontenerów dla miary</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Liczbowego wyrażenia MDX lub obliczeń, które zwraca docelowa wartość wskaźnika KPI.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Wyrażenie liczbowe MDX, które zwraca wartością rzeczywistą kluczowego wskaźnika wydajności.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Wyrażenie MDX, który reprezentuje stan kluczowego wskaźnika wydajności w określonym punkcie w czasie.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Wyrażenie MDX, które oblicza wartość wskaźnika KPI wraz z upływem czasu. Trend może być dowolnym opartych na czasie kryterium jest przydatne w kontekście firmy.</td>
+<table><tr><td><b>Typ zasobu (nazwy widoku)</b></td><td><b>Dodatkowe właściwości</b></td><td><b>Typ danych</b></td><td><b>Dozwolone adnotacji</b></td><td><b>Komentarze</b></td></tr><tr><td>Tabela ("tabele")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Schemat<p>ColumnDescription<p>ColumnTag<p> Ekspert<p>Wersja zapoznawcza<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentacja<p></td><td>Tabela reprezentuje wszystkie dane tabelaryczne.  Na przykład: Tabela SQL, Widok SQL, tabela tabelarycznych usług Analysis Services, wielowymiarowych usług Analysis Services wymiaru, tabela bazy danych Oracle, itp.   </td></tr><tr><td>Miary ("środki")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia miara usług Analysis Services.</td></tr><tr><td></td><td>Miary</td><td>Kolumna</td><td></td><td>Metadane opisujące miary</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Określa, jeśli miara jest obliczana, czy nie.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Fizycznych kontenerów dla miary</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Fizycznych kontenerów dla miary</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Liczbowego wyrażenia MDX lub obliczeń, które zwraca docelowa wartość wskaźnika KPI.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Wyrażenie liczbowe MDX, które zwraca wartością rzeczywistą kluczowego wskaźnika wydajności.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Wyrażenie MDX, który reprezentuje stan kluczowego wskaźnika wydajności w określonym punkcie w czasie.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Wyrażenie MDX, które oblicza wartość wskaźnika KPI wraz z upływem czasu. Trend może być dowolnym opartych na czasie kryterium jest przydatne w kontekście firmy.</td>
 <tr><td>Raport ("raporty")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia raport usług SQL Server Reporting Services </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Kontener ("kontenery")</td><td></td><td></td><td>Opis<p>FriendlyName<p>Tag<p>Ekspert<p>AccessInstruction<p>Dokumentacja<p></td><td>Ten typ przedstawia kontener inne zasoby, takie jak bazy danych SQL, kontener obiektów blob platformy Azure lub modelu usług Analysis Services.</td></tr></table>
 
 ### <a name="annotation-types"></a>Typy adnotacji
@@ -135,7 +135,7 @@ Adnotacja typów stanowią typy metadanych, które mogą być przypisane do inny
 <tr><td></td><td>tag</td><td>String</td><td>Tag, zawierający opis kolumny.</td></tr>
 
 <tr><td>Ekspert ("ekspertów")</td><td></td><td></td><td>Ta właściwość zawiera użytkownika, który jest uważany za eksperta w zestawie danych. Bąbelkowy opinions(descriptions) przez ekspertów na początku środowiska użytkownika, wyświetlając opisy. Każdy użytkownik może określić własne ekspertów. Tylko ten użytkownik może edytować obiekt ekspertów. (Administratorzy i zawartości właściciele mogą usuwać obiekty ekspertów, ale nie można go edytować).</td></tr>
-<tr><td></td><td>ekspert</td><td>SecurityPrincipal</td><td></td></tr>
+<tr><td></td><td>Ekspert</td><td>SecurityPrincipal</td><td></td></tr>
 
 <tr><td>("Wersje zapoznawcze") w wersji zapoznawczej</td><td></td><td></td><td>(Wersja zapoznawcza) zawiera migawkę pierwszych 20 wierszy danych dla elementu zawartości. (Wersja zapoznawcza) tylko ma sensu w przypadku niektórych typów zasobów (sens dla tabeli, ale nie dla miary).</td></tr>
 <tr><td></td><td>wersja zapoznawcza</td><td>obiekt]</td><td>Tablica obiektów, które reprezentują kolumny.  Każdy obiekt ma właściwość mapowanie do kolumny z wartością dla tej kolumny dla wiersza.</td></tr>
@@ -146,7 +146,7 @@ Adnotacja typów stanowią typy metadanych, które mogą być przypisane do inny
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>Liczba wierszy w zestawie danych</td></tr>
-<tr><td></td><td>rozmiar</td><td>długi</td><td>Rozmiar w bajtach zestawu danych.  </td></tr>
+<tr><td></td><td>size</td><td>long</td><td>Rozmiar w bajtach zestawu danych.  </td></tr>
 <tr><td></td><td>schemaModifiedTime</td><td>string</td><td>Czas ostatniej modyfikacji schematu</td></tr>
 <tr><td></td><td>dataModifiedTime</td><td>string</td><td>Czas ostatniego zestawu danych został zmodyfikowany (danych zostało dodane, zmodyfikowane, lub usuń)</td></tr>
 
@@ -155,7 +155,7 @@ Adnotacja typów stanowią typy metadanych, które mogą być przypisane do inny
 
 <tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName</td><td>String</td><td>Nazwa ta klasyfikacja odnosi się do kolumny.</td></tr>
-<tr><td></td><td>klasyfikacja</td><td>String</td><td>Klasyfikacja danych w tej kolumnie.</td></tr>
+<tr><td></td><td>Klasyfikacja</td><td>String</td><td>Klasyfikacja danych w tej kolumnie.</td></tr>
 
 <tr><td>Dokumentacja ("dokumentacja")</td><td></td><td></td><td>Dany zasób może mieć tylko jeden dokumentacji skojarzonych z nim.</td></tr>
 <tr><td></td><td>mimeType</td><td>string</td><td>Typ mime zawartości.</td></tr>
@@ -173,8 +173,8 @@ Popularne typy może służyć jako typy właściwości, ale nie są elementami.
 <tr><td></td><td>Typ obiektu</td><td>string</td><td>Opisuje typ obiektu źródła danych. Na przykład: Tabela, widok dla programu SQL Server.</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protokół</td><td>string</td><td>Wymagany. W tym artykule opisano protokół używany do komunikowania się ze źródłem danych. Na przykład: "tds" dla programu SQl Server "oracle" Oracle itp. Zapoznaj się <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">Specyfikacja odwołania - DSL struktury źródła danych</a> listę aktualnie obsługiwanych protokołów.</td></tr>
-<tr><td></td><td>adres</td><td>Słownik&lt;ciąg, obiekt&gt;</td><td>Wymagany. Adres jest zestaw danych, które są specyficzne dla protokołu, który jest używany do identyfikowania źródła danych, do którego nastąpiło odwołanie. Dane adres zakresu określonego protokołu, czyli jest bez znaczenia, nie wiedząc o tym protokołu.</td></tr>
+<tr><td></td><td>protocol</td><td>string</td><td>Wymagany. W tym artykule opisano protokół używany do komunikowania się ze źródłem danych. Na przykład: "tds" dla programu SQl Server "oracle" Oracle itp. Zapoznaj się <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">Specyfikacja odwołania - DSL struktury źródła danych</a> listę aktualnie obsługiwanych protokołów.</td></tr>
+<tr><td></td><td>address</td><td>Słownik&lt;ciąg, obiekt&gt;</td><td>Wymagany. Adres jest zestaw danych, które są specyficzne dla protokołu, który jest używany do identyfikowania źródła danych, do którego nastąpiło odwołanie. Dane adres zakresu określonego protokołu, czyli jest bez znaczenia, nie wiedząc o tym protokołu.</td></tr>
 <tr><td></td><td>uwierzytelnianie</td><td>string</td><td>Opcjonalny. Schemat uwierzytelniania używany do komunikowania się ze źródłem danych. Na przykład: windows, oauth, itp.</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Słownik&lt;ciąg, obiekt&gt;</td><td>Opcjonalny. Dodatkowe informacje na temat nawiązywania połączenia ze źródłem danych.</td></tr>
 
@@ -188,16 +188,16 @@ Popularne typy może służyć jako typy właściwości, ale nie są elementami.
 <tr><td></td><td>name</td><td>string</td><td>Nazwa kolumny lub atrybutu.</td></tr>
 <tr><td></td><td>type</td><td>string</td><td>Typ danych kolumny lub atrybutu. Dopuszczalne typy są zależne od danych sourceType elementu zawartości.  Tylko podzbiór typów jest obsługiwany.</td></tr>
 <tr><td></td><td>Element maxLength</td><td>int</td><td>Maksymalna dozwolona długość kolumny lub atrybutu. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
-<tr><td></td><td>dokładność</td><td>bajt</td><td>Dokładność kolumny lub atrybutu. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
+<tr><td></td><td>Precyzja</td><td>byte</td><td>Dokładność kolumny lub atrybutu. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
 <tr><td></td><td>isNullable</td><td>Boolean</td><td>Czy kolumna może mieć wartości null lub nie. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
 <tr><td></td><td>expression</td><td>string</td><td>Jeśli wartość jest kolumną obliczaną, to pole zawiera wyrażenie, które określa wartości. Tworzony na podstawie źródła danych. Dotyczy to tylko niektóre typy źródeł.</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName </td><td>string</td><td>Nazwa kolumny</td></tr>
-<tr><td></td><td>type </td><td>string</td><td>Typ kolumny</td></tr>
+<tr><td></td><td>— typ </td><td>string</td><td>Typ kolumny</td></tr>
 <tr><td></td><td>min. </td><td>string</td><td>Minimalna wartość w zestawie danych</td></tr>
-<tr><td></td><td>maks. </td><td>string</td><td>Maksymalna wartość w zestawie danych</td></tr>
-<tr><td></td><td>średnio </td><td>double</td><td>Średnia wartość w zestawie danych</td></tr>
+<tr><td></td><td>Maksymalna </td><td>string</td><td>Maksymalna wartość w zestawie danych</td></tr>
+<tr><td></td><td>Średni </td><td>double</td><td>Średnia wartość w zestawie danych</td></tr>
 <tr><td></td><td>StDev </td><td>double</td><td>Odchylenie standardowe dla zestawu danych</td></tr>
 <tr><td></td><td>nullCount </td><td>int</td><td>Liczba wartości null w zestawie danych</td></tr>
 <tr><td></td><td>distinctCount  </td><td>int</td><td>Liczba odrębnych wartości w zestawie danych</td></tr>
@@ -216,7 +216,7 @@ Zestaw obsługiwanych protokołów, które mogą zostać rozszerzone programowo 
 <tr><td><b>Typ</b></td><td><b>Właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>przestrzeń nazw</td><td>string</td><td>Przestrzeń nazw protokołu. Namespace musi mieć długość od 1 do 255 znaków długości, zawierać co najmniej jeden części niepuste, oddzielone znakiem kropki (.). Każda część musi mieć długość od 1 do 255 znaków, rozpoczynać się literą i zawierać tylko litery i cyfry.</td></tr>
+<tr><td></td><td>— przestrzeń nazw</td><td>string</td><td>Przestrzeń nazw protokołu. Namespace musi mieć długość od 1 do 255 znaków długości, zawierać co najmniej jeden części niepuste, oddzielone znakiem kropki (.). Każda część musi mieć długość od 1 do 255 znaków, rozpoczynać się literą i zawierać tylko litery i cyfry.</td></tr>
 <tr><td></td><td>name</td><td>string</td><td>Nazwa protokołu. Nazwa musi mieć długość od 1 do 255 znaków, rozpoczynać się literą i zawierać tylko litery, cyfry i znak kreski (-).</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>Lista właściwości tożsamości, musi zawierać co najmniej jeden, ale nie więcej niż 20 właściwości. Na przykład: "server", "baza danych", "schema", "object" są właściwości tożsamości protokołu "tds".</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>Lista zestawów tożsamości. Określa zestawy właściwości tożsamości, które reprezentują tożsamość prawidłowy element zawartości. Musi zawierać co najmniej jeden, ale nie więcej niż 20 zestawów. Na przykład: {"server", "baza danych", "schema" i "obiekt"} jest tożsamością dla protokołu "tds", który określa tożsamość zasobu tabela programu Sql Server.</td></tr>

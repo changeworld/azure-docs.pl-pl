@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb36d6a03da07681db468184a489a79f7f0deab7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825489"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Jak włączyć natywne aplikacje klienckie do interakcji z serwera proxy aplikacji
@@ -54,7 +54,7 @@ Teraz musisz zarejestrować aplikację w usłudze Azure AD, w następujący spos
    - Pod kątem tylko konta, które są wewnętrzne dla Twojej organizacji, wybierz **kont w tym katalogu organizacji tylko**.
    - Pod kątem tylko firmy lub klienci edukacyjnych, wybierz **kont w dowolnym katalogu organizacji**.
    - Pod kątem możliwie najszerszej zbiór tożsamości firmy Microsoft, wybierz **kont w dowolnym katalogu organizacji i osobistych kont Microsoft**.
-7. W **identyfikator URI przekierowania** nagłówka, wybierz **klientem publicznym (mobilnych i klasycznych)**, a następnie wpisz identyfikator URI przekierowania dla aplikacji.
+7. W **identyfikator URI przekierowania** nagłówka, wybierz **klientem publicznym (mobilnych i klasycznych)** , a następnie wpisz identyfikator URI przekierowania dla aplikacji.
 8. Wybierz, a następnie przeczytaj **zasady platformy firmy Microsoft**, a następnie wybierz pozycję **zarejestrować**. Strona przeglądu rejestrowanie nowej aplikacji jest tworzone i wyświetlane.
 
 Aby uzyskać szczegółowe informacje dotyczące tworzenia nowej rejestracji aplikacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).

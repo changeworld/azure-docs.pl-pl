@@ -1,17 +1,17 @@
 ---
 title: Monitorowanie usługi Azure Database dla serwera MariaDB
 description: W tym artykule opisano metryki dotyczące monitorowania i alertów dla usługi Azure Database dla serwera MariaDB, w tym statystyk procesora CPU, Magazyn i połączenia.
-author: rachel-msft
-ms.author: raagyema
+author: andrela
+ms.author: ajlam
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 06/12/2019
+ms.openlocfilehash: 8625441f836256028362fc327873383f5b46620c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "64925923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065741"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorowanie usługi Azure Database dla serwera MariaDB
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database dla serwera MariaDB oferuje różne metryki, które zapewniają wgląd w zachowania serwera.
@@ -36,13 +36,27 @@ Te metryki są dostępne dla usługi Azure Database dla serwera MariaDB:
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Przechowywanie dziennika serwera maksymalną dla tego serwera.|
 |storage_limit|Limit magazynu|Bajty|Maksymalny rozmiar magazynu dla tego serwera.|
 |active_connections|Aktywne połączenia|Count|Liczba aktywnych połączeń z serwerem.|
-|connections_failed|Połączenia zakończone niepowodzeniem|Count|Liczba połączeń z serwerem nie powiodło się.|
+|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Liczba połączeń z serwerem nie powiodło się.|
 |network_bytes_egress|Sieć — wyjście|Bajty|Sieć się między aktywnych połączeń.|
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 
 ## <a name="server-logs"></a>Dzienniki serwera
+
 Można włączyć wolnych zapytań rejestrowania na serwerze. Te dzienniki są również dostępne dzienniki diagnostyczne platformy Azure w dzienniki usługi Azure Monitor, usługa Event Hubs i konta magazynu. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
 
+## <a name="query-store"></a>Magazyn zapytań
+
+[Query Store](concepts-query-store.md) to funkcja publicznej wersji zapoznawczej, która śledzi zapytania wydajność w tym czasie statystyki czasu wykonywania zapytań i poczekaj zdarzenia. Ta funkcja będzie nadal występować kwerendy informacji o wydajności środowiska uruchomieniowego w **mysql** schematu. Można kontrolować zbieranie i przechowywanie danych za pośrednictwem różnych konfiguracji pokrętła.
+
+## <a name="query-performance-insight"></a>Szczegółowe informacje o wydajności zapytań
+
+[Szczegółowe informacje o wydajności zapytań](concepts-query-performance-insight.md) działa w połączeniu z Query Store umożliwia prezentowanie wizualizacji dostępne w witrynie Azure portal. Te wykresy umożliwiają identyfikowanie zapytań klucza tego obniżenie wydajności. Query Performance Insight w publicznej wersji zapoznawczej i jest dostępny w **inteligentne wydajności** sekcji usługi Azure Database dla serwera MariaDB strony portalu.
+
+## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
+
+[Zalecenia dotyczące wydajności](concepts-performance-recommendations.md) funkcji identyfikuje możliwości poprawy wydajność obciążenia. Publiczna wersja zapoznawcza zalecenia dotyczące wydajności zapewnia zaleceń dotyczących tworzenia nowych indeksy, które potencjalnie mogą zwiększyć wydajność obciążeń. Aby uzyskać zalecenia dotyczące indeksu, funkcja bierze pod uwagę różne cechy bazy danych, w tym jego schematu i obciążenia zgłoszonej Query Store. Po zaimplementowaniu żadnych rekomendacji wydajności, klientów należy przetestować wydajność, aby ocenić wpływ tych zmian.
+
 ## <a name="next-steps"></a>Kolejne kroki
+
 - Aby uzyskać więcej informacji na temat sposobu uzyskania dostępu i eksportowanie metryk przy użyciu witryny Azure portal, interfejsu API REST lub interfejsu wiersza polecenia, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
   - Zobacz [jak skonfigurować alerty](howto-alert-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.

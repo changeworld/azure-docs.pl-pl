@@ -6,20 +6,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 6fecd2278ddad4de3a2cff9035d60083101e873e
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
-ms.translationtype: MT
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: d24686a094c524c5ce913eee4b711daf1c60100d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393833"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67130615"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co to są usługi ML w usłudze Azure HDInsight
 
 Serwer Microsoft Machine Learning jest dostępna jako opcja wdrażania podczas tworzenia klastrów HDInsight w systemie Azure. Typ klastra, który zawiera ta opcja jest wywoływana **usługi ML**. Ta funkcja zapewnia, że analityków danych, statystykom i programistom języka R dostęp na żądanie do skalowalnych, rozproszonych metod analizy w HDInsight.
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 Usługi uczenie Maszynowe na HDInsight udostępnia najnowsze możliwości analizy na podstawie języka R w zestawach danych z praktycznie dowolnego rozmiaru, załadowane do magazynu obiektów Blob platformy Azure lub usługi Data Lake. Ponieważ klaster usługi ML jest oparta na języka R typu open source, tworzone aplikacje na podstawie języka R mogą korzystać z dowolnej pakietów języka R typu open-source 8000 +. Procedury w ScaleR pakiet analizy danych big data firmy Microsoft są także dostępne.
 

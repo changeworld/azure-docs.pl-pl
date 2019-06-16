@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66403a18be8337939d457c061b07de948c3e34e8
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 5f23b20d460952ae582c292c8015851b9dc2ea98
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108174"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Przy użyciu serwera Proxy aplikacji usługi Azure AD do publikowania lokalnych aplikacji dla użytkowników zdalnych
 
@@ -65,7 +65,7 @@ W miejscu pracy cyfrowego dzisiejsza użytkownicy wszędzie pracować z wieloma 
 * Usługi oceny zasad w celu określenia, czy użytkowników i urządzeń jest zgodny z zasadami określonymi przez użytkowników jako administratorów zabezpieczeń.
 * Możliwość udzielania lub odmawiania dostępu do zasobów organizacji.
 
-Za pomocą serwera Proxy aplikacji usługi Azure AD śledzi użytkowników, którzy chcą korzystać z sieci web aplikacji opublikowanych lokalnie i w chmurze. Zapewnia punktu centralnego zarządzania dla tych aplikacji. Chociaż nie jest to wymagane, zaleca się, że również włączyć dostęp warunkowy usługi Azure AD. Definiując warunki jak użytkowników uwierzytelniania i uzyskania dostępu, możesz dodatkowo upewnij się, że odpowiednie osoby mają dostęp do aplikacji.
+Za pomocą serwera Proxy aplikacji usługi Azure AD śledzi użytkowników, którzy chcą korzystać z sieci web aplikacji opublikowanych lokalnie i w chmurze. Zapewnia punktu centralnego zarządzania dla tych aplikacji. Chociaż nie jest to wymagane, zaleca się, że spowoduje także włączenie dostępu warunkowego usługi Azure AD. Definiując warunki jak użytkowników uwierzytelniania i uzyskania dostępu, możesz dodatkowo upewnij się, że odpowiednie osoby mają dostęp do aplikacji.
 
 **Uwaga:** Jest ważne dowiedzieć się, że serwer Proxy aplikacji usługi Azure AD jest przeznaczony jako serwer VPN lub zastępuje zwrotny serwer proxy (zdalnych lub mobilnych) użytkowników, którzy potrzebują dostępu do zasobów wewnętrznych. Nie jest on przeznaczony dla użytkowników wewnętrznych w sieci firmowej. Użytkownicy wewnętrzni, którzy niepotrzebnie Użyj serwera Proxy aplikacji mogą powodować problemy nieoczekiwany i niepożądanych wydajność.
 

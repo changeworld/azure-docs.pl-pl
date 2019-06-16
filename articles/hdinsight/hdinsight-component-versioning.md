@@ -8,19 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
-ms.date: 03/26/2019
-ms.openlocfilehash: 16a168f69c635ca86f40a08ba38a26d68c95954c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.date: 06/07/2019
+ms.openlocfilehash: 847b6f12a2be0b92fe59b19b81e7953e261d1dd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495756"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67129252"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?
 
 Dowiedz się więcej o [Apache Hadoop](https://hadoop.apache.org/) ekosystem, składników i wersji w programie Microsoft Azure HDInsight, a także pakiet Enterprise Security. Poznaj także sposób sprawdzić wersje składników usługi Hadoop w HDInsight.
-
-Każda wersja HDInsight jest dystrybucją chmury wersji Hortonworks Data Platform (HDP).
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Składniki platformy Apache Hadoop dostępne z różnymi wersjami HDInsight
 
@@ -48,8 +46,8 @@ Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poni�
 | Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
 | Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
 | Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.2 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1 (tylko Windows) |
-| Apache Livy | 0,5 | 0.4 | 0.3 | 0.3 | 0.2 | - |
+| Apache Spark | 2.3.1 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1 (tylko Windows) |
+| Apache Livy | 0,5 | 0.4, 0.4, 0.3 | 0.3 | 0.3 | 0.2 | - |
 | Apache Kafka | 1.1.1 | 1.1, 1.0 * (zobacz uwaga poniżej) | 0.10.0 | 0.9.0 | - | - |
 | Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
 | Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
@@ -60,10 +58,7 @@ Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poni�
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Sprawdź, czy bieżące informacje o wersji składników usługi Hadoop
 
-Wersje składników ekosystemu Hadoop skojarzone z wersji klastra HDInsight można zmienić za pomocą aktualizacji HDInsight. Aby sprawdzić składniki usługi Hadoop i sprawdź, które wersje są używane dla klastra, należy użyć interfejsu API REST Ambari. **GetComponentInformation** polecenie umożliwia pobranie informacji o składnikach usługi. Aby uzyskać więcej informacji, zobacz [dokumentację Apache Ambari][ambari-docs].
-
-> [!IMPORTANT]    
-> Linux jest jedynym systemem operacyjnym na HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz [wycofanie Windows w HDInsight](#hdinsight-windows-retirement).
+Wersje składników ekosystemu Hadoop skojarzone z wersji klastra HDInsight można zmienić za pomocą aktualizacji HDInsight. Aby sprawdzić składniki usługi Hadoop i sprawdź, które wersje są używane dla klastra, należy użyć interfejsu API REST Ambari. **GetComponentInformation** polecenie umożliwia pobranie informacji o składnikach usługi. Aby uzyskać więcej informacji, zobacz [dokumentację Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 ### <a name="release-notes"></a>Informacje o wersji
 
@@ -80,7 +75,7 @@ W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w witrynie
 | HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Wysoka dostępność |  Dostępność w witrynie Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Tak |Tak |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 r. | 30 czerwca 2020 r. |31 grudnia 2020 r. |Yes |Tak |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 r. | 30 czerwca 2020 r. |Do 31 grudnia 2020 r. |Tak |Tak |
 
 
 > [!NOTE]  
@@ -93,14 +88,14 @@ W poniższej tabeli wymieniono wersje HDInsight, które są **nie** dostępne w 
 
 | HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Wysoka dostępność |  Dostępność w witrynie Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.5 <br> (Inne niż Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 r. |5 września 2017 r. |28 czerwca 2018 r. |Yes |Nie |
+| HDInsight 3.5 <br> (Inne niż Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 r. |5 września 2017 r. |28 czerwca 2018 r. |Tak |Nie |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 r. |9 stycznia 2018 r. |Tak |Nie |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2018 r. |Yes |Nie |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2018 r. |Tak |Nie |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 r. |27 czerwca 2016 r. |Do 31 lipca 2017 r. |Tak |Nie |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS lub Windows Server 2012 R2 |18 luty 2015 r. |1 marca 2016 r. |1 kwietnia 2017 r. |Tak |Nie |
+| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS lub Windows Server 2012 R2 |18 luty 2015 r. |1 marca 2016 r. |1 kwietnia 2017 r. |Yes |Nie |
 | HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 r. |18 maja 2015 r. |30 czerwca 2016 r. |Tak |Nie |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 r. |17 września 2014 r. |Do 30 czerwca 2015 |Tak |Nie |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 r. |Do 31 maja 2015 r. |Yes |Nie |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 r. |17 września 2014 r. |Do 30 czerwca 2015 |Yes |Nie |
+| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 r. |Do 31 maja 2015 r. |Tak |Nie |
 | HDInsight w wersji 1.6 |HDP 1.1 | |28 października 2013 |26 kwietnia 2014 r. |Do 31 maja 2015 r. |Nie |Nie |
 
 > [!NOTE]  
@@ -144,67 +139,14 @@ Obecnie tylko następujące typy klastrów obsługują pakiet Enterprise Securit
 
 Obsługuje pakiet Enterprise Security, za pomocą usługi Azure Data Lake Storage jako magazynu głównego i dodatkowego magazynu.
 
-### <a name="pricing-and-sla"></a>Cennik i umowy SLA
+### <a name="pricing-and-service-level-agreement"></a>Cennik i usługi Umowa dotycząca poziomu
 
 Aby uzyskać informacje o cenach i umowy SLA pakiet Enterprise Security, zobacz [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="hdinsight-windows-retirement"></a>Wycofanie Windows HDInsight
-
-Microsoft Azure HDInsight w wersji 3.3 było ostatniej wersji HDInsight na Windows. Data wycofania HDInsight na Windows jest 31 lipca 2018 r. W przypadku klastrów HDInsight Windows 3.3 lub wcześniej, należy przeprowadzić migrację do HDInsight w systemie Linux (HDInsight w wersji 3.5 lub nowszej) przed 31 lipca 2018 r. Migracja do systemu operacyjnego Linux pozwala zachować możliwość tworzenia lub zmiany rozmiaru klastry usługi HDInsight. Obsługa HDInsight w wersji 3.3 na Windows wygasła w dniu 27 czerwca 2016 r.
-
-Począwszy od HDInsight w wersji 3.4, firma Microsoft wydała HDInsight tylko w systemie operacyjnym Linux. W rezultacie niektóre składniki w ramach HDInsight są dostępne dla systemu Linux tylko. Obejmują one [struktury Apache Ranger](https://ranger.apache.org/), [platformy Apache Kafka](https://kafka.apache.org/), zapytania interakcyjne, [platformy Apache Spark](https://spark.apache.org/), HDInsight aplikacje i usługi Azure Data Lake Storage jako główny system plików. Przyszłe wersje programu HDInsight są dostępne tylko w systemie operacyjnym Linux. Nie będzie żadnych kolejnych wersji HDInsight na Windows. 
-
-## <a name="faqs"></a>Często zadawane pytania
-
-### <a name="what-is-the-timeline-for-retiring-hdinsight-on-windows"></a>Jaka jest oś czasu dla wycofanie usługi HDInsight na Windows?
-
-Do 31 lipca 2018 r. jest Data wycofania HDInsight na Windows. Planowana data wygaśnięcia jest inna w Twoim regionie, użytkownik jest powiadamiany oddzielnie. 
-
-### <a name="what-is-the-impact-of-retiring-hdinsight-on-windows-for-existing-customers"></a>Co to jest wpływ wycofanie usługi HDInsight na Windows dla istniejących klientów?
-
-Po wycofaniu HDInsight na Windows nie można utworzyć nowy klaster HDInsight Windows lub zmiany rozmiaru istniejącego klastra HDInsight Windows. Obsługa HDInsight w wersji 3.3 wygasła w dniu 27 czerwca 2016 r. W związku z tym nie ma obsługi lub poprawki dla HDInsight 3.3 i jego wcześniejsze wersje. Przyszłe wersje programu HDInsight są dostępne tylko w systemie operacyjnym Linux. Nie będzie żadnych kolejnych wersji HDInsight na Windows.
- 
-### <a name="which-versions-of-hdinsight-on-windows-are-affected"></a>Które wersje HDInsight na Windows dotyczy problem?
-
-Usługa Azure HDInsight w wersji 3.3 jest ostatnią wersję HDInsight for Windows. Zanim HDInsight na Windows została wycofana, wszystkie wersje klastrów HDInsight Windows 3.3 lub starszym muszą być migrowane do HDInsight w systemie Linux w wersji 3.5 lub nowszej. Migrowanie klastrów do HDInsight w systemie Linux, można zachować możliwość tworzenia nowych klastrów lub zmienianie jej rozmiaru istniejących klastrów. 
-
-### <a name="what-do-i-need-to-do"></a>Co muszę zrobić?
-
-Migrowanie klastry usługi HDInsight Windows do obsługiwanych klastra HDInsight w systemie Linux przed 31 lipca 2018 r. Dowiedz się więcej w [dokumentu migrace HDInsight](hdinsight-migrate-from-windows-to-linux.md). Aby uzyskać szczegółowe informacje o wersji usługi Azure HDInsight, zobacz listę [obsługiwane wersje](hdinsight-component-versioning.md#supported-hdinsight-versions). 
-
-### <a name="where-do-i-find-the-cluster-os-type"></a>Gdzie znaleźć typ systemu operacyjnego klastra?
-
-W witrynie Azure portal przejdź do strony Przegląd klastra HDInsight i wyszukaj **typ klastra** w obszarze **Essentials**. Typy systemu operacyjnego klastra są wyświetlane na tej stronie. 
-
-### <a name="i-cant-migrate-to-an-hdinsight-linux-cluster-by-july-31-2018-what-is-the-impact-to-my-hdinsight-windows-cluster"></a>Nie można migrować z klastrem usługi HDInsight Linux 31 lipca 2018 r. Jaki jest wpływ na mój klaster HDInsight Windows?
-
-Klaster HDInsight Windows działa jako —, ale nie można utworzyć nowy klaster HDInsight Windows lub zmiany rozmiaru istniejącego klastra HDInsight Windows. 
-
-### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>Mój klaster ma zależności platformy .NET. Jak rozwiązać tę zależność w systemie Linux?
-
-Zależność klastra systemu Linux można rozwiązać za pomocą [projekt Mono](https://www.mono-project.com/). Ta implementacja typu open-source .NET jest dostępna dla klastrów HDInsight w systemie Linux. Dowiedz się więcej w [dokumentu migrace HDInsight](hdinsight-migrate-from-windows-to-linux.md). 
-
-### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>Jestem nowego klienta dla HDInsight na Windows. Jak utworzyć klaster usługi HDInsight Windows?
-
-Od 3 lipca 2017 r. tylko istniejący klienci Windows HDInsight można utworzyć nowego Windows HDInsight klastry. Nowi klienci nie można utworzyć klaster usługi HDInsight Windows w witrynie Azure portal przy użyciu programu PowerShell lub zestawu SDK. Zaleca się, dzięki czemu nowi klienci Tworzenie klastra HDInsight w systemie Linux. Istniejący klienci mogą utworzyć nowego Windows HDInsight klastrów do momentu HDInsight na Windows Data wygaśnięcia. 
-
-### <a name="is-there-a-pricing-impact-associated-with-moving-from-hdinsight-on-windows-to-hdinsight-on-linux"></a>Ma wpływ na cenę skojarzone z przejściem z HDInsight Windows do HDInsight w systemie Linux?
-
-Nie, cena jest taka sama dla HDInsight w dowolnym systemie operacyjnym. 
-
-### <a name="what-are-the-customer-advantages-associated-with-the-move-to-only-using-hdinsight-on-linux"></a>Jakie są zalety klientów skojarzonych z przeniesieniem do tylko w systemie Linux przy użyciu HDInsight?
-
-* Szybsze czasu to-market dla technologii danych big data typu open source za pomocą usługi HDInsight
-* Duża społeczność i ekosystem do pomocy technicznej
-* Możliwość wykonywania aktywnych rozwoju przez społeczność open source dla usług Hadoop i innych technologii danych big data
-
-### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>HDInsight w systemie Linux zapewnia dodatkowe funkcje, które są dostępne w HDInsight na Windows?
-
-Począwszy od HDInsight w wersji 3.4, firma Microsoft wydała HDInsight tylko w systemie operacyjnym Linux. W rezultacie niektóre składniki w ramach HDInsight są dostępne dla systemu Linux tylko. Należą do nich struktury Apache Ranger, Kafka, Interactive Query, Spark, aplikacji HDInsight i usługi Azure Data Lake Storage jako główny system plików. 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Umowa dotycząca poziomu usług dla wersji klastra HDInsight
 
-Umowa dotycząca poziomu usług (SLA) jest definiowane w kategoriach _okna obsługi_. Okno obsługi jest czas, który klastra HDInsight w wersji jest obsługiwany przez dział obsługi klienta firmy Microsoft i pomocy technicznej. Jeśli wersja _obsługuje daty wygaśnięcia_ który został przekazany, klaster HDInsight znajduje się poza oknem obsługi. Aby uzyskać więcej informacji na temat obsługiwanych wersji, zobacz listę [obsługiwanych wersji klastra HDInsight](hdinsight-migrate-from-windows-to-linux.md). Obsługa datę wygaśnięcia określoną HDInsight w wersji X (po dostępna jest nowsza wersja X + 1) jest obliczany jako późniejsza od:  
+Umowa dotycząca poziomu usług (SLA) jest definiowane w kategoriach _okna obsługi_. Okno obsługi jest czas, który klastra HDInsight w wersji jest obsługiwany przez dział obsługi klienta firmy Microsoft i pomocy technicznej. Jeśli wersja _obsługuje daty wygaśnięcia_ który został przekazany, klaster HDInsight znajduje się poza oknem obsługi. Obsługa datę wygaśnięcia określoną HDInsight w wersji X (po dostępna jest nowsza wersja X + 1) jest obliczany jako późniejsza od:  
 
 * Formuła 1: Dodaj 180 dni do daty, kiedy wydanej wersji klastra HDInsight X.
 * Formuła 2: Dodaj 90 dni do daty, kiedy wersji klastra HDInsight X + 1 ma zostać udostępnione w witrynie Azure portal.
@@ -262,8 +204,8 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 |Dozorcy: zalecane rozmiary maszyn wirtualnych||A4 v2||A2 v2|||A2M, wersja 2|
 |||A8 v2||A4 v2|||D3 v2|
 |||A2m v2||A8 v2|||E8 v3|
-|Edge: domyślny rozmiar maszyny Wirtualnej||||||D4 v2||
-|Edge: zalecany rozmiar maszyny Wirtualnej||||||D4 v2||
+|Usługi ML: domyślny rozmiar maszyny Wirtualnej||||||D4 v2||
+|Usługi ML: zalecany rozmiar maszyny Wirtualnej||||||D4 v2||
 |||||||D12 v2||
 |||||||D13 v2||
 |||||||D14 v2||
@@ -282,8 +224,8 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
   | Proces roboczy: zalecane rozmiary maszyn wirtualnych |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
   | Dozorcy: domyślny rozmiar maszyny Wirtualnej | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
   | Dozorcy: zalecane rozmiary maszyn wirtualnych | |A2,<br/> A3<br/> A4 | |A2,<br/> A3<br/> A4 | | |
-  | Edge: rozmiary maszyny Wirtualnej domyślne | | | | | |D4 |
-  | Edge: zalecane rozmiary maszyn wirtualnych | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
+  | Usługi ML: domyślne rozmiarów maszyn wirtualnych | | | | | |D4 |
+  | Usługi ML: zalecane rozmiary maszyn wirtualnych | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
 
 > [!NOTE]
 > - Head jest znany jako *Nimbus* Storm typ klastra.
@@ -293,14 +235,6 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 ## <a name="next-steps"></a>Kolejne kroki
 - [Klaster Instalatora dla technologii Apache Hadoop, Spark i więcej informacji na temat HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Praca w technologii Apache Hadoop w HDInsight z Windows PC](hdinsight-hadoop-windows-tools.md)
-
-[Supported HDInsight versions]:(#supported-hdinsight-versions)
-
-[image-hdi-versioning-versionscreen]: ./media/hdinsight-component-versioning/hdi-versioning-version-screen.png
-
-[wa-forums]: https://azure.microsoft.com/support/forums/
-
-[connect-excel-with-hive-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
 
 [hdp-2-2]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.9/bk_HDP_RelNotes/content/ch_relnotes_v229.html
 
@@ -313,7 +247,3 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 [hdp-1-3-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
 
 [hdp-1-1-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.1.1.16_1.html
-
-[ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
-
-[zookeeper]: https://zookeeper.apache.org/

@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204036"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
@@ -184,7 +184,7 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
 
    b. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**.
 
-   c. Rozwiń **szablony**i wybierz **Visual C\#**. W tym przewodniku można użyć C\#, ale można użyć dowolnego języka platformy .NET do tworzenia działań niestandardowych.
+   c. Rozwiń **szablony**i wybierz **Visual C\#** . W tym przewodniku można użyć C\#, ale można użyć dowolnego języka platformy .NET do tworzenia działań niestandardowych.
 
    d. Wybierz **biblioteki klas** z listy typów projektów po prawej stronie.
 
@@ -192,7 +192,7 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
 
    f. Wybierz **C:\\ADF** dla **lokalizacji**. Utwórz folder **ADF** Jeśli nie istnieje.
 
-   g. Wybierz przycisk **OK**, aby utworzyć projekt.
+   g. Wybierz **OK** do tworzenia projektu.
 
 1. Wybierz **narzędzia** > **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**.
 

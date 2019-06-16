@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8d1f0f6ae3ffc123f1ae8318a6fbce4a9a3024fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143391"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814729"
 ---
 ## <a name="access-the-virtual-machine"></a>Dostęp do maszyny wirtualnej
 
-Następujące kroki użycia `az` polecenia w usłudze Azure Cloud Shell. Jeśli wolisz, możesz to zrobić [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) na rozwój swojej maszyny, a następnie uruchom polecenia lokalnie.
+Użyto interfejsu wiersza polecenia platformy Azure w usłudze Azure Cloud Shell. Jeśli wolisz, możesz to zrobić [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) na rozwój swojej maszyny, a następnie uruchom polecenia lokalnie.
 
 Poniższe kroki pokazują, jak skonfigurować maszyny wirtualnej platformy Azure, aby umożliwić **SSH** dostępu. Pokazano założono w nim wybrana dla akceleratora rozwiązań jest nazwa **symulacji contoso** — Zastąp tę wartość o nazwie wdrożenia:
 

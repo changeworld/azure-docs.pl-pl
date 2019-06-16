@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8db7e2588b03807a42f82fd0fcd4e71855e55c1d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 8babf2a6a4f4a15c6d2979ea0d5ce558dfb0cd6a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66426328"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052136"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: ręczne konfigurowanie urządzeń dołączonych hybrydowo do usługi Azure Active Directory
 
@@ -139,7 +139,7 @@ Polecenie cmdlet `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Korzysta z modułu Active Directory PowerShell i narzędzi usług Azure Active Directory Domain Services (Azure AD DS). Te narzędzia są zależne od usług internetowych usługi Active Directory uruchomionych na kontrolerze domeny. Usługi internetowe usługi Active Directory są obsługiwane na kontrolerach domeny z systemem Windows Server 2008 R2 lub nowszym.
 * Jest obsługiwane tylko przez moduł MSOnline programu PowerShell w wersji 1.1.166.0. Aby pobrać ten moduł, użyj [tego linku](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/).
-* Jeśli nie zainstalowano narzędzi usług Azure AD DS, polecenie cmdlet `Initialize-ADSyncDomainJoinedComputerSync` zakończy się niepowodzeniem. Narzędzia usług Azure AD DS można zainstalować za pomocą Menedżera serwera w obszarze **Funkcje** > **Narzędzia administracji zdalnej serwera** > **Narzędzia do administrowania rolami**.
+* Jeśli nie zainstalowano narzędzia usług AD DS, `Initialize-ADSyncDomainJoinedComputerSync` zakończy się niepowodzeniem. Możesz zainstalować narzędzia usług AD DS za pomocą Menedżera serwera w obszarze **funkcji** > **narzędzia administracji zdalnej serwera** > **narzędzia do administrowania rolami**.
 
 W przypadku kontrolerów domeny z systemem Windows Server 2008 i jego wcześniejszymi wersjami użyj następującego skryptu, aby utworzyć punkt połączenia usługi. W konfiguracji z wieloma lasami użyj następującego skryptu, aby utworzyć punkt połączenia usługi w każdym lesie, w którym istnieją komputery.
 

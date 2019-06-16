@@ -9,16 +9,39 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 53b9f8fb58a6e70a4bd2cd02adb9ce824466d7de
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8a94994d697784fb9dab8027e5a43f24c135b32c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481597"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059750"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rozwiązywanie problemów z kopii zapasowej stanu systemu
 
 W tym artykule opisano rozwiązania problemów, które mogą wystąpić podczas korzystania z kopii zapasowej stanu systemu.
+
+## <a name="basic-troubleshooting"></a>Podstawowe rozwiązywanie problemów
+Zalecane jest wykonanie poniżej sprawdzania poprawności, przed rozpoczęciem rozwiązywania problemów z kopii zapasowej stanu systemu:
+
+- [Upewnij się, że Agent usługi Microsoft Azure Recovery Services (MARS) jest aktualny](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Upewnij się, że istnieje połączenie sieciowe między agentem MARS i platformą Azure](https://aka.ms/AB-A4dp50)
+- Upewnij się, że usługa Microsoft Azure Recovery Services jest uruchomiona (w konsoli usługi). Jeśli to wymagane, ponownie uruchom i ponów operację
+- [Upewnij się, że 5–10% wolnego miejsca na woluminie jest dostępne na potrzeby lokalizacji folderu plików tymczasowych](https://aka.ms/AB-AA4dwtt)
+- [Sprawdź, czy inny proces lub oprogramowanie antywirusowe nie zakłóca działania usługi Azure Backup](https://aka.ms/AB-AA4dwtk)
+- [Zaplanowane tworzenie kopii zapasowej kończy się niepowodzeniem, ale ręczne tworzenie kopii zapasowej działa](https://aka.ms/ScheduledBackupFailManualWorks)
+- Upewnij się, że w systemie operacyjnym zainstalowano najnowsze aktualizacje
+- [Upewnij się, nieobsługiwane dyski i pliki z nieobsługiwanych atrybutów, które są wykluczone z kopii zapasowej](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
+- Upewnij się, że **zegar systemowy** chronionego systemu ma skonfigurowaną prawidłową strefę czasową <br>
+- [Upewnij się, że na serwerze zainstalowano program .NET Framework w wersji 4.5.2 lub nowszej](https://www.microsoft.com/download/details.aspx?id=30653)<br>
+- Jeśli próbujesz **ponownie zarejestrować serwer** w magazynie, wykonaj następujące czynności: <br>
+  - Upewnij się, że agent został odinstalowany z serwera oraz usunięty z portalu <br>
+  - Użyj tego samego hasła, które zostało początkowo użyte podczas rejestrowania serwera <br>
+- W przypadku kopii zapasowej offline upewnij się, że Azure PowerShell w wersji numer 3.7.0 jest zainstalowany na komputerze źródłowym i kopiowania, przed przystąpieniem do wykonywania operacji tworzenia kopii zapasowej w trybie offline
+- [Kwestia, gdy agent usługi Kopia zapasowa jest uruchomiony na maszynie wirtualnej platformy Azure](https://aka.ms/AB-AA4dwtr)
+
+### <a name="limitation"></a>Ograniczenia
+- Odzyskiwanie na inny komputer przy użyciu funkcji odzyskiwania stanu systemu nie jest zalecane przez firmę Microsoft.
+- Kopia zapasowa stanu systemu obsługuje obecnie "lokalne" serwery Windows, ta funkcja nie jest dostępna dla maszyn wirtualnych platformy Azure.
 
 ## <a name="pre-requisite"></a>Wymagania wstępne
 

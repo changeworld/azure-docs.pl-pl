@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 8f1ed582b7abf43afd38ca5c358aa7e179bfecb3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64702270"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Przesyłanie zadań z narzędzi R Tools for Visual Studio
@@ -67,7 +67,7 @@ Przy użyciu Microsoft ML Server i Microsoft R Client z komputera Windows wyposa
 
 1. Aby znaleźć nazwę hosta węzła brzegowego, otwórz okienko klastra usługi HDInsight usługi ML w na platformie Azure, a następnie wybierz **Secure Shell (SSH)** w menu górnej części okienka Przegląd.
 
-    ![Bezpieczna powłoka (SSH)](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
+    ![Secure Shell (SSH)](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
 
 2. Kopiuj **nazwa hosta węzła brzegowego** wartość.
 

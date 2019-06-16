@@ -13,10 +13,10 @@ ms.reviewer: GeneMi
 ms.date: 03/12/2019
 manager: craigg
 ms.openlocfilehash: bc7274308b8a349d16866f107eac4a57e115be9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160836"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Nawiązać połączenie z usługi Azure SQL Database za pomocą usługi Azure Multi-Factor Authentication
@@ -122,7 +122,7 @@ Aby uzyskać C# program w celu pomyślnego uruchomienia, musisz przypisać odpow
 | AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Usługa Azure Active Directory** > **użytkownika** > **nowy użytkownik-Gość** |
 | Initial_DatabaseName | "myDatabase" | **Serwery SQL** > **baz danych SQL** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Usługa Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwanie według nazwy** > **Identyfikatora aplikacji** |
-| RedirectUri | Nowy identyfikator Uri ("https://mywebserver.com/") | **Usługa Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwanie według nazwy** > *[Your-App rejestracji]*  >  **Ustawienia** > **RedirectURIs**<br /><br />W tym artykule dowolną prawidłową wartość jest dobrym rozwiązaniem dla elementu RedirectUri, ponieważ nie jest używany w tym miejscu. |
+| RedirectUri | Nowy identyfikator Uri ("https://mywebserver.com/") | **Usługa Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwanie według nazwy** >  *[Your-App rejestracji]*  >  **Ustawienia** > **RedirectURIs**<br /><br />W tym artykule dowolną prawidłową wartość jest dobrym rozwiązaniem dla elementu RedirectUri, ponieważ nie jest używany w tym miejscu. |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>Weryfikuj za pomocą programu SQL Server Management Studio

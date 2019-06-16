@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2019
+ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 531e51fbddb99ebba11284d5291b4cca26559bc1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a370dcb349b61f3dda544d9c5a2030b6789e34c4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906772"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075417"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów 
 Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności oraz stan kondycji monitorowania obciążenia klastry usługi Azure Kubernetes Service (AKS) z dwóch perspektyw bezpośrednio z klastra usługi AKS lub we wszystkich klastrach usługi AKS w ramach subskrypcji platformy Azure Monitor. Wyświetlanie usługi Azure Container Instances (ACI) możliwe jest również w przypadku monitorowania określonych klastra AKS.
@@ -61,7 +61,7 @@ Stany kondycji, uwzględnione są następujące:
 * **Nie można odnaleźć** — jedno obszaru roboczego, grupy zasobów lub subskrypcji zawierającej obszaru roboczego dla tego rozwiązania zostało usunięte.
 * **Nieautoryzowany** — użytkownik nie ma wymaganych uprawnień do odczytu danych w obszarze roboczym.
 * **Błąd** — wystąpił błąd podczas próby odczytu danych z obszaru roboczego.
-* **MIS skonfigurowane** — usługa Azure Monitor dla kontenerów nie został prawidłowo skonfigurowany w określonym obszarze roboczym.
+* **Nieprawidłowo skonfigurowany** — usługa Azure Monitor dla kontenerów nie został prawidłowo skonfigurowany w określonym obszarze roboczym.
 * **Brak danych** -danych nie jest zgłaszany do obszaru roboczego w ciągu ostatnich 30 minut.
 
 Stan kondycji oblicza ogólny stan klastra jako *najgorszy* trzy stany z jednym wyjątkiem — Jeśli jeden z trzech stanów *nieznany*, będą wyświetlane ogólny stan klastra **nieznany**.  
@@ -102,12 +102,12 @@ Domyślna strona otwarty po kliknięciu **Insights** jest **klastra**, i zawiera
 
 Wykres wydajności przedstawia cztery metryki wydajności:
 
-- **Wykorzystanie procesora CPU węzła&nbsp;%**: Zagregowane perspektywy wykorzystanie procesora CPU dla całego klastra. Wyniki zakresu czasu można filtrować, wybierając **Avg**, **Min**, **Max**, **50.**, **90**, i **95** w selektorze percentyle nad wykresem, albo indywidualnie lub w połączeniu. 
-- **Wykorzystanie pamięci węzła&nbsp;%**: Zagregowane perspektywy wykorzystanie pamięci dla całego klastra. Wyniki zakresu czasu można filtrować, wybierając **Avg**, **Min**, **Max**, **50.**, **90**, i **95** w selektorze percentyle nad wykresem, albo indywidualnie lub w połączeniu. 
+- **Wykorzystanie procesora CPU węzła&nbsp;%** : Zagregowane perspektywy wykorzystanie procesora CPU dla całego klastra. Wyniki zakresu czasu można filtrować, wybierając **Avg**, **Min**, **Max**, **50.** , **90**, i **95** w selektorze percentyle nad wykresem, albo indywidualnie lub w połączeniu. 
+- **Wykorzystanie pamięci węzła&nbsp;%** : Zagregowane perspektywy wykorzystanie pamięci dla całego klastra. Wyniki zakresu czasu można filtrować, wybierając **Avg**, **Min**, **Max**, **50.** , **90**, i **95** w selektorze percentyle nad wykresem, albo indywidualnie lub w połączeniu. 
 - **Liczba węzłów**: Liczba węzłów i stan usługi Kubernetes. Są Stany węzłów klastra, reprezentowany *wszystkich*, *gotowe*, i *niegotowe* i może być filtrowana indywidualnie lub w połączeniu w selektorze powyżej wykresu. 
 - **Liczba zasobników działań**: Liczba zasobników i stan usługi Kubernetes. Są Stany zasobników reprezentowane *wszystkich*, *oczekujące*, *systemem*, i *nieznany* i może być filtrowana indywidualnie lub w Selektor powyżej wykresu. 
 
-Strzałka w lewo/w prawo umożliwia przechodzić przez każdy punkt danych na wykresie i Strzałka w górę/w dół klucze, aby przechodzić między wiersze percentyl.
+Strzałka w lewo/w prawo umożliwia przechodzić przez każdy punkt danych na wykresie i Strzałka w górę/w dół klucze, aby przechodzić między wiersze percentyl. Kliknij ikonę pinezki w prawym górnym rogu któregokolwiek z wykresów Przypnij wybranego wykresu do ostatniego platformy Azure pulpit nawigacyjny, który ostatnio wyświetlane. Na pulpicie nawigacyjnym możesz zmienić rozmiar i zmienić położenie wykresu. Wybierając wykres na pulpicie nawigacyjnym przekierowanie do usługi Azure Monitor dla kontenerów i załadować poprawny zakres i widoku.
 
 Usługa Azure Monitor dla kontenerów obsługuje również usługi Azure Monitor [Eksploratora metryk](../platform/metrics-getting-started.md), gdzie można utworzyć własnego wykresów wykres, korelować i śledzenie trendów i przypinać do pulpitów nawigacyjnych. Z poziomu Eksploratora metryk umożliwia także kryteria zostało ustawione w celu wizualizacji metryk jako podstawa [metryki na podstawie reguły alertu](../platform/alerts-metric.md).  
 
@@ -163,11 +163,11 @@ Kontener wystąpień wirtualnych węzły na platformie Azure z systemem operacyj
 Z rozwinięty węzeł można przejść do szczegółów z pod lub kontenerów uruchomione w węźle z kontrolerem, aby wyświetlić dane dotyczące wydajności przefiltrowana pod kątem tego kontrolera. Kliknij wartość, w obszarze **kontrolera** kolumny dla określonego węzła.   
 ![Przykład przechodzenie do szczegółów z węzła do kontrolera w widoku wydajności](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Można wybrać kontrolery lub kontenerów w górnej części strony i sprawdź stan i użycia zasobów dla tych obiektów.  Jeśli zamiast tego chcesz przejrzeć wykorzystanie pamięci w **metryki** listy rozwijanej wybierz **RSS pamięci** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwany tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie do wyświetlania wartości **Min&nbsp; %**  jako *NaN&nbsp;%*, który jest wartość typu danych liczbowych, który reprezentuje niezdefiniowany lub wartość wyniku. 
+Można wybrać kontrolery lub kontenerów w górnej części strony i sprawdź stan i użycia zasobów dla tych obiektów.  Jeśli zamiast tego chcesz przejrzeć wykorzystanie pamięci w **metryki** listy rozwijanej wybierz **RSS pamięci** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwany tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie do wyświetlania wartości **Min&nbsp; %**  jako *NaN&nbsp;%* , który jest wartość typu danych liczbowych, który reprezentuje niezdefiniowany lub wartość wyniku. 
 
 ![Widok wydajności węzłów kontenerów](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
-Domyślnie dane dotyczące wydajności opiera się na ostatnie 6 godzin, ale okno można zmienić za pomocą **TimeRange** opcji w lewym górnym rogu. Można również filtrować wyniki do zakresu, wybierając **Avg**, **Min**, **Max**, **50.**, **90**, i **95** w selektorze percentyl. 
+Domyślnie dane dotyczące wydajności opiera się na ostatnie 6 godzin, ale okno można zmienić za pomocą **TimeRange** opcji w lewym górnym rogu. Można również filtrować wyniki do zakresu, wybierając **Avg**, **Min**, **Max**, **50.** , **90**, i **95** w selektorze percentyl. 
 
 ![Wybór percentyl filtrowanie danych](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
@@ -175,7 +175,7 @@ Gdy przesuniesz wskaźnik myszy nad wykres słupkowy w ramach **Trend** kolumny,
 
 ![Trend wykres słupkowy, umieść kursor nad przykład](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
-W następnym przykładzie, należy pamiętać, pierwszy na liście - węzeł *aks-nodepool1 -*, wartość **kontenery** jest 9, która stanowi pakiet zbiorczy całkowita liczba kontenerów wdrożonych.
+W następnym przykładzie, należy pamiętać, pierwszy na liście - węzeł *aks-nodepool1 -* , wartość **kontenery** jest 9, która stanowi pakiet zbiorczy całkowita liczba kontenerów wdrożonych.
 
 ![Pakiet zbiorczy kontenerów na przykład węzeł](./media/container-insights-analyze/containers-nodes-containerstotal.png)
 
@@ -219,7 +219,7 @@ W poniższej tabeli opisano informacje, które jest wyświetlane, gdy wyświetla
 | Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Przedstawia średnią średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Avg, Min, Max, 50., 90  | Zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
 | Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |
-| Uruchamia ponownie | Rzutowanie liczby ponowne uruchomienie z kontenerów. |
+| Ponowne uruchomienie | Rzutowanie liczby ponowne uruchomienie z kontenerów. |
 | Czas pracy | Reprezentuje czas od momentu uruchomienia kontenera. |
 | Węzeł | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest znajdującej się. | 
 | Trend Avg&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;%| Wykres słupkowy trend reprezentuje metryki średni percentyl kontrolera. |
@@ -233,7 +233,7 @@ Ikony w polu Stan wskazują stan online kontenerów:
 | ![Ikona stanu uruchomiona po raz ostatni informowało](./media/container-insights-analyze/containers-grey-icon.png) | Ostatnie zgłaszane uruchomiona, ale nie odpowiedział w ponad 30 minut|
 | ![Ikona stanu powodzenia](./media/container-insights-analyze/containers-green-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|
 
-Ikona stanu przedstawia liczbę oparte na zasobnik udostępnia. Pokazuje dwa najgorsze Stany i po umieszczeniu status Wyświetla stan pakietu zbiorczego z wszystkich zasobników w kontenerze. Jeśli nie ma stanu gotowości, wyświetlana jest wartość stanu **(0)**. 
+Ikona stanu przedstawia liczbę oparte na zasobnik udostępnia. Pokazuje dwa najgorsze Stany i po umieszczeniu status Wyświetla stan pakietu zbiorczego z wszystkich zasobników w kontenerze. Jeśli nie ma stanu gotowości, wyświetlana jest wartość stanu **(0)** . 
 
 W selektorze, wybierz **kontenery**.
 
@@ -270,6 +270,20 @@ Ikony w polu Stan wskazują online stany zasobników, zgodnie z opisem w poniżs
 | ![Ikona stanu uruchomiona po raz ostatni informowało](./media/container-insights-analyze/containers-grey-icon.png) | Ostatnie zgłaszane uruchomiona, ale nie odpowiedział w ponad 30 minut|  
 | ![Ikona stanu zakończone](./media/container-insights-analyze/containers-terminated-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|  
 | ![Ikona stanu nie powiodło się](./media/container-insights-analyze/containers-failed-icon.png) | Stan niepowodzenia |  
+
+## <a name="disk-capacity-workbook"></a>Skoroszyt pojemność dysku
+Skoroszyty połączenie tekstu, [rejestrowania zapytań](../log-query/query-language.md), [metryki](../platform/data-platform-metrics.md)i parametrów w zaawansowanych interaktywnych raportów. Skoroszyty są edytowalne przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
+
+Usługa Azure Monitor dla kontenerów obejmuje skoroszytu, aby rozpocząć pracę, **pojemności dysku**.  Ten skoroszyt przedstawia wykresy dotyczące użycia dysku interaktywne dla każdego dysku przedstawiony w węźle w kontenerze przez następujące perspektyw:
+
+- Dysku % użycia dla wszystkich dysków
+- Wolnego miejsca na dysku dla wszystkich dysków
+- Tabelę przedstawiającą dla każdego dysku węzłów, jego % używane miejsce, trend % używane miejsce, wolne miejsce na dysku (GiB) i trend wolnego miejsca na dysku (GiB). Wybranie wiersza w tabeli % używane miejsce i wolnego miejsca na dysku (GiB) znajdują się poniżej. 
+
+Możesz uzyskać dostęp do tego skoroszytu, wybierając **pojemności dysku** z **skoroszyty widoku** listy rozwijanej.  
+
+![Wyświetlanie listy rozwijanej skoroszytów](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Przegląd [Tworzenie alertów wydajności dzięki usłudze Azure Monitor dla kontenerów](container-insights-alerts.md) dowiesz się, jak tworzyć alerty dla wysokie wykorzystanie procesora CPU i pamięci do obsługi infrastruktury DevOps lub procedur i procesy operacyjne. 

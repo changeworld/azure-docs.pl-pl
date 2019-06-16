@@ -10,10 +10,10 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62120130"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Śledzenie komunikatów B2B przy użyciu dzienników usługi Azure Monitor
@@ -148,7 +148,7 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu AS2.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawca | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** umowy AS2 |
+| Nadawcy | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** umowy AS2 |
 | Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub określone partner gościa **ustawienia wysyłania** umowy AS2 |
 | Aplikacja logiki | Aplikacja logiki gdzie skonfigurować akcje AS2 |
 | Stan | Stan komunikatu AS2 <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat AS2. Nie powiadomienia MDN jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat AS2. Ustawianie i odbierane powiadomienia MDN, lub są wysyłane powiadomienia MDN. <br>Nie powiodło się = Odebrano nieprawidłowy komunikat AS2. Nie powiadomienia MDN jest skonfigurowany. <br>Oczekujące = odebranych lub wysłanych prawidłowy komunikat AS2. Skonfigurowano powiadomienia MDN, a oczekiwano powiadomienia MDN. |
@@ -179,7 +179,7 @@ Poniżej przedstawiono opisy właściwości dla każdego X12 wiadomości.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawca | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** dla X12 umowy |
+| Nadawcy | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** dla X12 umowy |
 | Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub określone partner gościa **ustawienia wysyłania** dla X12 umowy |
 | Aplikacja logiki | Aplikacja logiki gdzie X12 akcje zostały skonfigurowane. |
 | Stan | X12 komunikatu stanu <br>Powodzenie = odebranych lub wysłanych X12 prawidłowy komunikat. Nie potwierdzenia funkcjonalności jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych X12 prawidłowy komunikat. Potwierdzenia funkcjonalnych została ustawiona i odebranych lub funkcjonalności potwierdzenia są wysyłane. <br>Nie powiodło się = odebranych lub wysłanych X12 nieprawidłowy komunikat. <br>Oczekujące = odebranych lub wysłanych X12 prawidłowy komunikat. Funkcjonalności potwierdzenia jest skonfigurowany, a oczekiwano funkcjonalności potwierdzenia. |
@@ -212,7 +212,7 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu EDIFACT.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawca | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** umowy EDIFACT |
+| Nadawcy | Partner gościa, określone w **ustawienia odbierania**, lub partner hosta określona w **ustawienia wysyłania** umowy EDIFACT |
 | Odbiornik | Partner hosta określona w **ustawienia odbierania**, lub określone partner gościa **ustawienia wysyłania** umowy EDIFACT |
 | Aplikacja logiki | Aplikacja logiki gdzie skonfigurować akcje EDIFACT |
 | Stan | Stan komunikatu EDIFACT <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Nie potwierdzenia funkcjonalności jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Potwierdzenia funkcjonalnych została ustawiona i odebranych lub funkcjonalności potwierdzenia są wysyłane. <br>Nie powiodło się = odebranych lub wysłanych nieprawidłowy komunikat EDIFACT <br>Oczekujące = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Funkcjonalności potwierdzenia jest skonfigurowany, a oczekiwano funkcjonalności potwierdzenia. |

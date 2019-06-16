@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 83a5d4c1d9c0475609a506fbfe6ae23bd9e236fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 837ba4043fe27c15f75c4d401878dfdb3328b82f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865501"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą BA
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację BA w usłudze Azure AD, należy dodać BA z galer
 
 **Aby dodać BA z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -195,7 +195,7 @@ Zobacz [osadzania organizacji kursów](https://support.versal.com/hc/en-us/artic
 
 Należy utworzyć kurs, udostępnić swojej organizacji i opublikować ją w celu przetestowania kurs osadzania. Zobacz [tworzenia kurs](https://support.versal.com/hc/en-us/articles/203722528-Create-a-course), [publikowania kurs](https://support.versal.com/hc/en-us/articles/203753398-Publishing-a-course), i [kurs i uczeń zarządzania](https://support.versal.com/hc/en-us/articles/206029467-Course-and-learner-management) Aby uzyskać więcej informacji.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

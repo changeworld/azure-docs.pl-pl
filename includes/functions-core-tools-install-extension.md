@@ -9,10 +9,10 @@ ms.date: 09/25/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66131463"
 ---
 Pakiety rozszerzeń wprowadzić wszystkie powiązania opublikowane przez zespół usługi Azure Functions, dostępne za pośrednictwem ustawienie w *host.json* pliku. Dla wdrożenia lokalnego, upewnij się, masz najnowszą wersję [podstawowych narzędzi usługi Azure Functions](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools).
@@ -36,7 +36,7 @@ Inkrementacja wersje pakietu jako pakiety w zmianach pakietu. Wersja główna zm
 
 Gdy odwołujesz się pakiety rozszerzeń w projekcie, wszystkie powiązania domyślne są dostępne dla funkcji. Powiązania, które są dostępne w [pakietu rozszerzenia](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) są:
 
-|Pakiet  |Wersja  |
+|Pakiet  |Version  |
 |---------|---------|
 |Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
 |Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0|

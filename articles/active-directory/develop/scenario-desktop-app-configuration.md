@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc0042d6392891e8282c563afea2212031a0f49a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f0224c215c1d5f6e0c36402926a594dcd79d2af0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121885"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057241"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Aplikacja klasyczna, że wywołania sieci web interfejsy API — Konfiguracja kodu
 
@@ -45,7 +45,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Aby przeprowadzić uwierzytelnianie interakcyjne, jak pokazano powyżej, chcesz użyć `.WithRedirectUri` modyfikator:
+Jeśli zamierzasz używać przeprowadzić uwierzytelnianie interakcyjne lub urządzenie przepływu kodu, jak pokazano powyżej, chcesz użyć `.WithRedirectUri` modyfikator:
 
 ```CSharp
 IPublicClientApplication app;

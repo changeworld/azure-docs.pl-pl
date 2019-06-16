@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 5d6cce859aa26935f0b6007fe8e5ff2c2239b210
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60243684"
+ms.locfileid: "67109450"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Harmonogram instalacji usług Azure AD Connect i Azure AD Connect Health.
 
@@ -68,7 +68,7 @@ Program Azure AD Connect zawiera szereg funkcji, które są domyślnie włączon
 
 [Zapisywanie zwrotne haseł](../authentication/quickstart-sspr.md) umożliwia użytkownikom zmienianie i resetowanie haseł w chmurze i stosowanie lokalnych zasad haseł.
 
-[Zapisywanie zwrotne urządzeń](how-to-connect-device-writeback.md) umożliwia zapisywanie w lokalnej usłudze Active Directory urządzeń zarejestrowanych w usłudze Azure AD w celu użycia ich na potrzeby dostępu warunkowego.
+[Zapisywanie zwrotne urządzeń](how-to-connect-device-writeback.md) umożliwi urządzeń zarejestrowanych w usłudze Azure AD można zapisać zwrotnie w usłudze Active Directory w środowisku lokalnym, dzięki czemu mogą być używane dla dostępu warunkowego.
 
 Funkcja [zapobiegania przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md) jest domyślnie włączona i zabezpiecza katalog w chmurze przed usunięciem dużej liczby elementów jednocześnie. Domyślnie dozwolone jest usunięcie 500 elementów w jednym przebiegu. Możesz zmienić to ustawienie w zależności od wielkości organizacji.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00ed40bef3f3cbe59825f546ffa39c3ebfb2e41f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 24b54a3645fe97903219841dd148c0942dfcda76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003179"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112384"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Zasady punktu odniesienia: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)
 
@@ -40,7 +40,7 @@ Do wykonania, interaktywne logowanie przy użyciu [programu Azure Powershell](ht
 Connect-AzAccount
 ```
 
-Po uruchomieniu to polecenie cmdlet spowoduje wyświetlenie ciągu tokenu. Aby się zarejestrować, skopiuj następujący ciąg i wklej go w [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) w przeglądarce. Sesja programu PowerShell zostanie uwierzytelniona na potrzeby połączenia z platformą Azure.
+Po uruchomieniu to polecenie cmdlet spowoduje wyświetlenie ciągu tokenu. Aby się zarejestrować, skopiuj następujący ciąg i wklej go w [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  w przeglądarce. Sesja programu PowerShell zostanie uwierzytelniona na potrzeby połączenia z platformą Azure.
 
 Do wykonania, interaktywne logowanie przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)Uruchom [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) polecenia.
 
@@ -73,7 +73,7 @@ Aby włączyć te zasady i chronić administratorów:
 
 1. Zaloguj się do **witryny Azure portal** jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
-1. Na liście zasad wybierz **bazowymi zasadami: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)**.
+1. Na liście zasad wybierz **bazowymi zasadami: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)** .
 1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
 1. Dodaj wykluczenia użytkownika, klikając **użytkowników** > **wybierz wykluczonych użytkowników** i wybierając pozycję Użytkownicy, którzy muszą być wyłączone. Kliknij przycisk **wybierz** następnie **gotowe**.
 1. Kliknij przycisk **Zapisz**.

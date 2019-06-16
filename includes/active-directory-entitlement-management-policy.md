@@ -9,10 +9,10 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113388"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zasady: Dla użytkowników w katalogu
@@ -69,7 +69,7 @@ Jeśli chcesz, aby zasady, aby ominąć żądania dostępu i umożliwiają admin
 
 1. Przejdź w dół do [zasad: Wygaśnięcie](#policy-expiration) sekcji.
 
-### <a name="policy-request"></a>Zasady: Zażądaj
+### <a name="policy-request"></a>Zasady: Żądanie
 
 W sekcji żądania należy określić ustawienia zatwierdzania po użytkownik zażąda dostępu do pakietu.
 
@@ -95,7 +95,7 @@ W sekcji żądania należy określić ustawienia zatwierdzania po użytkownik za
 
 1. W **limit czasu żądania zatwierdzenia (w dniach)** Określ ilość czasu osób zatwierdzających musi przejrzeć żądania. Jeśli żadne osoby zatwierdzające je przejrzeć w następującej liczbie dni, żądanie wygaśnie, a użytkownik będzie musiał przesłać kolejne żądanie dostępu do pakietu.
 
-### <a name="policy-expiration"></a>Zasady: Wygaśnięcie
+### <a name="policy-expiration"></a>Zasady: wygaśnięcie
 
 W sekcji wygaśnięcia należy określić, kiedy wygasa przypisanie użytkownika do dostępu do pakietu.
 
@@ -115,7 +115,7 @@ W sekcji wygaśnięcia należy określić, kiedy wygasa przypisanie użytkownika
 
     ![Pakiet dostępu — ustawienia wygaśnięcia zasad](./media/active-directory-entitlement-management-policy/policy-expiration.png)
 
-### <a name="policy-enable-policy"></a>Zasady: Włącz zasady
+### <a name="policy-enable-policy"></a>Zasady: Włączanie zasad
 
 1. Pakiet dostępu do udostępnienia bezpośrednio do użytkowników w zasadach, kliknij przycisk **tak** Aby włączyć zasady.
 

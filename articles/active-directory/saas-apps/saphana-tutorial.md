@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8def13360bba2f82d5adf315503dc7d655f490d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 231b9b6d217a9ad1fe5f4a6478f5e8799257b92b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867891"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091627"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem SAP HANA
 
@@ -64,7 +64,7 @@ Aby skonfigurować integrację oprogramowania SAP HANA z usługą Azure AD, nale
 
 **Aby dodać oprogramowanie SAP HANA z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -135,7 +135,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP H
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
-    b. Z listy **Przekształcenie** wybierz pozycję **ExtractMailPrefix()**.
+    b. Z listy **Przekształcenie** wybierz pozycję **ExtractMailPrefix()** .
 
     c. Z listy **Parametr 1** wybierz pozycję **user.mail**.
 
@@ -160,7 +160,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP H
 
     ![Dodawanie ustawień dostawcy tożsamości](./media/saphana-tutorial/sap2.png)
 
-    b. Jeśli zawartość dokumentu XML jest prawidłowa, proces analizy wyodrębni informacje wymagane dla pól **Subject (Podmiot), Entity ID (Identyfikator jednostki) i Issuer (Wystawca)** w obszarze ekranu **General data** (Dane ogólne). Wyodrębni także informacje niezbędne dla pól adresu URL w obszarze ekranu **Destination** (Cel), na przykład **Base URL (Podstawowy adres URL) i SingleSignOn URL (Adres URL logowania jednokrotnego) (*)**.
+    b. Jeśli zawartość dokumentu XML jest prawidłowa, proces analizy wyodrębni informacje wymagane dla pól **Subject (Podmiot), Entity ID (Identyfikator jednostki) i Issuer (Wystawca)** w obszarze ekranu **General data** (Dane ogólne). Wyodrębni także informacje niezbędne dla pól adresu URL w obszarze ekranu **Destination** (Cel), na przykład **Base URL (Podstawowy adres URL) i SingleSignOn URL (Adres URL logowania jednokrotnego) (*)** .
 
     ![Dodawanie ustawień dostawcy tożsamości](./media/saphana-tutorial/sap3.png)
 
@@ -266,7 +266,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka SAP HANA na panelu dostępu powinno nastąpić automatyczne zalogowanie do oprogramowania SAP HANA, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

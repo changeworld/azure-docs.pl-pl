@@ -8,42 +8,43 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6eeca062bdc17ec207910b9ba4aa8cea4048f849
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61451319"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080503"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Wdrażanie bliźniaczej reprezentacji OPC do istniejącego projektu
 
-OPC bliźniaczej reprezentacji modułu jest uruchamiany w usłudze IoT Edge i udostępnia usługi edge do bliźniaczej reprezentacji OPC i usług rejestru. 
+OPC bliźniaczej reprezentacji modułu jest uruchamiany w usłudze IoT Edge i udostępnia usługi edge do bliźniaczej reprezentacji OPC i usług rejestru.
 
 Usługa wczesnych w bliźniaczej reprezentacji OPC ułatwia tworzenie komunikacji między operatorami fabryki i urządzeń serwerów OPC UA na etapie produkcji przy użyciu moduł usługi IoT Edge w bazie wiedzy OPC bliźniaczej reprezentacji. Usługa wczesnych przedstawia usług OPC UA (przeglądania, odczytu, zapisu i wykonania) za pośrednictwem jego interfejsu API REST. 
 
 Mikrousługi rejestru urządzenia OPC UA zapewnia dostęp do zarejestrowanych aplikacji serwera OPC UA i ich punktami końcowymi. Operatorzy i Administratorzy można rejestrować i wyrejestrować nowe aplikacje serwera OPC UA i przeglądanie istniejących, łącznie z ich punkty końcowe. Oprócz aplikacji i punkt końcowy zarządzania usługi rejestru Skatalogowano zarejestrowany moduł OPC bliźniaczej reprezentacji IoT Edge. Interfejs API usługi zapewnia kontrolę nad moduł funkcji, na przykład uruchamianie lub zatrzymywanie odnajdywaniem serwera (skanowania usługi) lub aktywowanie nowego bliźniaczych reprezentacji punktu końcowego, które mogą być udostępniane przy użyciu usługi wczesnych OPC bliźniaczej reprezentacji.
 
-Podstawowy moduł jest tożsamością kierownika. Nadzorca zarządza bliźniaczej reprezentacji punktu końcowego, który odnosi się do punktów końcowych serwera OPC UA, które są aktywowane przy użyciu odpowiedniego rejestru OPC UA interfejsu API. Ten punkt końcowy twins wykonuje translację elementu OPC UA JSON otrzymanych z usługi wczesnych bliźniaczej reprezentacji OPC działające w chmurze do wiadomości binarnych serwera OPC UA, które są wysyłane za pośrednictwem stanowych bezpiecznego kanału do zarządzanego punktu końcowego. Nadzorca udostępnia również usługi odnajdywania, wysyłających zdarzenia odnajdywania urządzenia w usłudze OPC UA device dołączania do przetworzenia, w których te zdarzenia spowodować aktualizacje w rejestrze serwera OPC UA.  W tym artykule przedstawiono sposób wdrażania modułu bliźniaczej reprezentacji OPC do istniejącego projektu. 
+Podstawowy moduł jest tożsamością kierownika. Nadzorca zarządza bliźniaczej reprezentacji punktu końcowego, który odnosi się do punktów końcowych serwera OPC UA, które są aktywowane przy użyciu odpowiedniego rejestru OPC UA interfejsu API. Ten punkt końcowy twins wykonuje translację elementu OPC UA JSON otrzymanych z usługi wczesnych bliźniaczej reprezentacji OPC działające w chmurze do wiadomości binarnych serwera OPC UA, które są wysyłane za pośrednictwem stanowych bezpiecznego kanału do zarządzanego punktu końcowego. Nadzorca udostępnia również usługi odnajdywania, wysyłających zdarzenia odnajdywania urządzenia w usłudze OPC UA device dołączania do przetworzenia, w których te zdarzenia spowodować aktualizacje w rejestrze serwera OPC UA.  W tym artykule przedstawiono sposób wdrażania modułu bliźniaczej reprezentacji OPC do istniejącego projektu.
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat szczegółów wdrażania oraz instrukcje, zobacz GitHub [repozytorium](https://github.com/Azure/azure-iiot-opc-twin-module).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Upewnij się, że program PowerShell został i [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) zainstalowanych rozszerzeń.   Jeśli użytkownik nie zostało zrobione jeszcze, sklonuj to repozytorium serwisu GitHub.  Otwórz wiersz polecenia lub terminalu i uruchom:
+Upewnij się, że program PowerShell został i [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) zainstalowanych rozszerzeń. Jeśli zostało to jeszcze zrobione, sklonuj to repozytorium serwisu GitHub. W programie PowerShell, uruchom następujące polecenia:
 
-```bash
-git clone --recursive https://github.com/Azure/azure-iiot-components 
+```powershell
+git clone --recursive https://github.com/Azure/azure-iiot-components.git
 cd azure-iiot-components
 ```
 
 ## <a name="deploy-industrial-iot-services-to-azure"></a>Wdrażanie usług przemysłowych IoT na platformie Azure
 
-1. Otwórz wiersz polecenia lub terminalu Uruchom:
+1. W sesji programu PowerShell Uruchom polecenie:
 
-   ```bash
-   deploy
-   ```
+    ```powershell
+    set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
+    .\deploy.cmd
+    ```
 
 2. Postępuj zgodnie z monitami, aby przypisać nazwy do wdrożenia grupy zasobów i nazwy do witryny sieci Web.   Skrypt wdraża się mikrousługi i ich zależności platformy Azure w wybranej grupie zasobów w subskrypcji platformy Azure.  Skrypt rejestruje także aplikację w dzierżawie usługi Azure Active Directory (AAD) do obsługi uwierzytelniania OAUTH.  Wdrożenie potrwa kilka minut.  Przykład widoczne po pomyślnym wdrożeniu rozwiązania:
 
@@ -77,11 +78,12 @@ Skrypt wdrażania próbuje zarejestrować dwie aplikacje usługi AAD w usłudze 
 
 Zamiast po prostu usług i zależności można także wdrożyć pokaz All-in-one.  Wszystko w jednym pokaz zawiera trzy serwery OPC UA, OPC bliźniaczej reprezentacji modułu, wszystkie mikrousługi i przykładowej aplikacji sieci Web.  Jest ona przeznaczona dla celów demonstracyjnych.
 
-1. Upewnij się, że masz klon repozytorium (zobacz powyżej). Otwórz wiersz polecenia lub terminalu w katalogu głównym repozytorium i uruchomienia:
+1. Upewnij się, że masz klon repozytorium (zobacz powyżej). Otwórz wiersz polecenia programu PowerShell w folderze głównym repozytorium i uruchomienia:
 
-   ```bash
-   deploy -type demo
-   ```
+    ```powershell
+    set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
+    .\deploy -type demo
+    ```
 
 2. Postępuj zgodnie z monitami, aby przypisać nazwę nowej grupy zasobów i nazwę witryny sieci Web.  Po pomyślnym wdrożeniu, skrypt wyświetli adres URL punktu końcowego aplikacji sieci web.
 
@@ -89,55 +91,55 @@ Zamiast po prostu usług i zależności można także wdrożyć pokaz All-in-one
 
 Skrypt przyjmuje następujące parametry:
 
-```bash
+```powershell
 -type
 ```
 
 Typ wdrożenia (pokaz lokalnych, maszyn wirtualnych)
 
-```bash
+```powershell
 -resourceGroupName
 ```
 
 Może być nazwą istniejącej lub nowej grupy zasobów.
 
-```bash
+```powershell
 -subscriptionId
 ```
 
 Opcjonalne, identyfikator subskrypcji, w którym będą wdrażane zasoby.
 
-```bash
+```powershell
 -subscriptionName
 ```
 
 Lub nazwy subskrypcji.
 
-```bash
+```powershell
 -resourceGroupLocation
 ```
 
 Opcjonalne, lokalizację grupy zasobów. Jeśli zostanie określony, spróbuje utworzyć nową grupę zasobów w tej lokalizacji.
 
-```bash
+```powershell
 -aadApplicationName
 ```
 
-Nazwa aplikacji usługi AAD zarejestrować się w obszarze. 
+Nazwa aplikacji usługi AAD zarejestrować się w obszarze.
 
-```bash
+```powershell
 -tenantId
 ```
 
 Dzierżawy usługi AAD do użycia.
 
-```bash
+```powershell
 -credentials
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wiesz jak wdrożyć bliźniaczej reprezentacji OPC do istniejącego projektu, poniżej przedstawiono sugerowany następnego kroku:
+Teraz, kiedy znasz sposób wdrażania bliźniaczej reprezentacji OPC do istniejącego projektu, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
 > [Bezpieczna komunikacja klienta OPC i OPC PLC](howto-opc-vault-deploy-existing-client-plc-communication.md)

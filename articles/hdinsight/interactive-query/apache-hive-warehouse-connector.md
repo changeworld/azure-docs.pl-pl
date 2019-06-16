@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b2b3d1ac0a7c0e917f87be1dd131120f63a70f8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b245661ab8f26c1f529a049d326d2c72838c7a17
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142811"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056728"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrowanie platformy Apache Spark i Apache Hive za pomocą łącznika magazynu Hive
 
@@ -20,7 +20,7 @@ Apache Hive magazynu łącznika (HWC) jest biblioteką, która pozwala łatwiej 
 
 Łącznik magazynu Hive pozwala korzystać z unikatowych funkcji Hive i platformy Spark, aby tworzyć zaawansowane aplikacje danych big data. Apache Hive zapewnia obsługę transakcji bazy danych, które są niepodzielność, spójność, izolowany i trwałe (kwas). Aby uzyskać więcej informacji na kwasu i transakcje w gałęzi, zobacz [Hive transakcji](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Gałąź zapewnia również zabezpieczenia szczegółowe sterowanie przy użyciu struktury Apache Ranger i niskie opóźnienie analitycznych przetwarzania nie jest dostępna w Apache Spark.
 
-Apache Spark jest strukturą API przesyłania strumieniowego, który daje możliwość przesyłania strumieniowego nie są dostępne w Apache Hive. Począwszy od za pomocą Hortonworks Data Platform (HDP) 3.0, Apache Spark i Apache Hive mają oddzielne magazyny metadanych, który może utrudnić współdziałania. Łącznik magazynu Hive ułatwia korzystanie z platformy Spark i Hive razem. Biblioteka użytkownika powoduje załadowanie danych z funkcji LLAP demonów do executors platformy Spark w sposób równoległy, dzięki czemu bardziej wydajne i skalowalne niż przy użyciu standardowego połączenia sterownika JDBC z platformy Spark do gałęzi.
+Apache Spark jest strukturą API przesyłania strumieniowego, który daje możliwość przesyłania strumieniowego nie są dostępne w Apache Hive. Począwszy od HDInsight 4.0 Apache Spark 2.3.1 i Apache Hive 3.1.0 mają oddzielne magazyny metadanych, który może utrudnić współdziałania. Łącznik magazynu Hive ułatwia korzystanie z platformy Spark i Hive razem. Biblioteka użytkownika powoduje załadowanie danych z funkcji LLAP demonów do executors platformy Spark w sposób równoległy, dzięki czemu bardziej wydajne i skalowalne niż przy użyciu standardowego połączenia sterownika JDBC z platformy Spark do gałęzi.
 
 ![Architektura](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -239,5 +239,5 @@ Wykonaj poniższe kroki, aby utworzyć przykładową łącznika magazynu Hive, k
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Używanie zapytania interakcyjnego z HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [Używanie zapytań interakcyjnych w usłudze HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
 * [Przykłady interakcji z łącznika magazynu Hive za pomocą rozwiązania Zeppelin, usługi Livy, skryptu spark-submit i pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

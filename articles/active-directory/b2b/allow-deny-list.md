@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b302ec0265473e09b3960660b10661faa1960442
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fa975446c19db3176fdb89ccfb1a987b1fda049d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812963"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113221"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zezwalaj na zaproszenia lub blokowanie ich dla użytkowników B2B z określonym organizacjom
 
@@ -64,7 +64,7 @@ Aby dodać listę dozwolonych:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **usługi Azure Active Directory** > **użytkowników** > **ustawienia użytkownika**.
 3. W obszarze **użytkowników zewnętrznych**, wybierz opcję **Zarządzaj ustawieniami współpracy zewnętrznej**.
-4. W obszarze **ograniczenia współpracy**, wybierz opcję **Zezwalaj na zaproszenia tylko do określonych domen (najbardziej restrykcyjne)**.
+4. W obszarze **ograniczenia współpracy**, wybierz opcję **Zezwalaj na zaproszenia tylko do określonych domen (najbardziej restrykcyjne)** .
 5. W obszarze **domeny docelowe**, wprowadź nazwę domeny, które chcesz zezwolić. W przypadku wielu domen należy wprowadzić każdej domeny w nowym wierszu. Na przykład:
 
    ![Pokazuje opcję Zezwalaj domenom dodano](./media/allow-deny-list/AllowListSettings.png)
@@ -79,7 +79,7 @@ Po przełączeniu z jednej zasady do drugiego to odrzuca istniejącą konfigurac
 
 ## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>Ustaw Zezwalaj lub Odmów zasady listy przy użyciu programu PowerShell
 
-### <a name="prerequisite"></a>Wymaganie wstępne
+### <a name="prerequisite"></a>Wymagania wstępne
 
 Aby ustawić dozwolonych lub Lista niedozwolonych aplikacji przy użyciu programu PowerShell, należy zainstalować wersję zapoznawczą usługi Azure Active Directory modułu dla Windows PowerShell. W szczególności zainstalować AzureADPreview wersja modułu 2.0.0.98 lub nowszej.
 
@@ -157,7 +157,7 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Omówienie usługi Azure AD B2B, zobacz [czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
-- Aby uzyskać informacji na temat dostępu warunkowego i współpraca B2B, zobacz [dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md).
+- Aby uzyskać informacji na temat dostępu warunkowego i B2B współpracę, zobacz [dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md).
 
 
 

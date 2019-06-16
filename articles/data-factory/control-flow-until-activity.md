@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155177"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Do działania w usłudze Azure Data Factory
@@ -55,8 +55,8 @@ Działanie Until zapewnia taką samą funkcjonalność wykonuj — aż struktur�
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa `Until` działania. | String | Tak
-typ | Musi być równa **aż**. | String | Tak
-expression | Wyrażenie musi zwrócić wartość true lub false | wyrażenie.  | Tak
+type | Musi być równa **aż**. | String | Tak
+expression | Wyrażenie musi zwrócić wartość true lub false | wyrażenie.  | Yes
 timeout | Nie — aż do limit czasu pętli po określonym czasie. | ciąg. `d.hh:mm:ss` (lub) `hh:mm:ss`. Wartość domyślna to 7 dni. Wartość maksymalna to: 90 dni. | Nie
 Działania | Zestaw działań, które są wykonywane, dopóki wyrażenie daje w wyniku `true`. | Tablica działań. |  Tak
 

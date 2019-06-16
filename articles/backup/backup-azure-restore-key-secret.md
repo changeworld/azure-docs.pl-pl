@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: geetha
 ms.openlocfilehash: 13eb800cd64e0de736b1fdea308a03d8a8d0f046
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66127904"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Przywróć klucz usługi Key Vault i klucz tajny dla szyfrowanych maszyn wirtualnych przy użyciu usługi Azure Backup
@@ -52,7 +52,7 @@ Get-AzStorageBlobContent -Blob $encryptedBlobName -Container $containerName -Des
 $encryptionObject = Get-Content -Path $destination_path  | ConvertFrom-Json
 ```
 
-## <a name="restore-key"></a>Przywracanie klucza
+## <a name="restore-key"></a>Przywróć klucz
 
 Po wygenerowaniu pliku JSON w ścieżce docelowej w wymienionych powyżej wygenerować plik obiektu blob klucza z danych JSON i źródła danych do przywrócenia klucza polecenia cmdlet, aby przełączyć klucza (KEK), wróć do usługi key vault.
 
@@ -108,7 +108,7 @@ Jeśli utworzono kopię zapasową zaszyfrowanej maszyny Wirtualnej przy użyciu 
 
 Podejście, o których wspomniano powyżej, będzie działać dla wszystkich punktów odzyskiwania. Jednak starsze metody pobierania klucza i wpisu tajnego informacje z punktu odzyskiwania będzie obowiązywać punkty odzyskiwania starsze niż 11 lipca 2017 r. za maszyny wirtualne szyfrowane przy użyciu BEK i KEK. Po zakończeniu przywracania dysku zadania dla zaszyfrowanej maszyny Wirtualnej przy użyciu [— kroki programu PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm), upewnij się, $rp jest wypełniana prawidłową wartość.
 
-### <a name="restore-key"></a>Przywracanie klucza
+### <a name="restore-key"></a>Przywróć klucz
 
 Użyj następujących poleceń cmdlet, aby uzyskać informacje o kluczu (KEK) z punktu odzyskiwania i źródła danych do przywrócenia klucza polecenia cmdlet, aby umieścić go w magazynie kluczy.
 

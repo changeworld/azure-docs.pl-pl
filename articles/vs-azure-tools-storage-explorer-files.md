@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60456854"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Używanie programu Storage Explorer z usługą Azure File Storage
@@ -203,7 +203,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         ![Przekazywanie plików](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. W oknie dialogowym **Przekazywanie plików** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Pliki**, aby wybrać pliki do przekazania.
+        b. W oknie dialogowym **Przekazywanie plików** wybierz przycisk wielokropka ( **...** ) po prawej stronie pola tekstowego **Pliki**, aby wybrać pliki do przekazania.
 
         ![Dodawanie plików](media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -215,7 +215,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         ![Menu Przekaż folder](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
+        b. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka ( **...** ) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
 
         c. Opcjonalnie określ folder docelowy, do którego zawartość wybranego folderu zostanie przekazana. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
 

@@ -3,20 +3,20 @@ title: Instalowanie i uruchamianie kontenerów
 titlesuffix: Face - Azure Cognitive Services
 description: Pobieranie, instalowanie i uruchamianie kontenerów twarzy, w tym samouczku wskazówki.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 26ebeb463f42dce06c29a5bd3f69585430a2ee90
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 4d3f3e64e109d0b1dc010be39b62b4f0bdc0573d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306638"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063590"
 ---
 # <a name="install-and-run-face-containers"></a>Instalowanie i uruchamianie kontenerów twarzy
 
@@ -135,7 +135,7 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](./face-resource-container-config.md#mount-settings) i rejestrowanie jest włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które odbywa się podczas uruchamiania lub uruchamiania kontenera. 
 
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Kontenery interfejsu API rozpoznawania twarzy wysyłanie informacji dotyczących rozliczeń na platformie Azure przy użyciu zasobów interfejsu API rozpoznawania twarzy na koncie platformy Azure. 
 

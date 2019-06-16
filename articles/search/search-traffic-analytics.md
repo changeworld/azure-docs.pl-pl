@@ -10,10 +10,10 @@ ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60749618"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>Implementowanie analiza ruchu wyszukiwania w usłudze Azure Search
@@ -160,7 +160,7 @@ Każdym kliknięciu w dokumencie, który jest sygnałem, który musi być zalogo
         Rank: <clicked document position>
     });
 
-## <a name="3---analyze-in-power-bi"></a>3. analiza w usłudze Power BI
+## <a name="3---analyze-in-power-bi"></a>3\. analiza w usłudze Power BI
 
 Po instrumentacji aplikacji i sprawdzono, czy aplikacja jest prawidłowo podłączone do usługi Application Insights, można użyć wstępnie zdefiniowany szablon utworzony przez usługę Azure Search dla usługi Power BI desktop. 
 

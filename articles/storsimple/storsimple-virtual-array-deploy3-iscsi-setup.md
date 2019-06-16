@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61417311"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Podczas wdrażania rozwiązania StorSimple Virtual Array — zestaw się jako serwera iSCSI za pośrednictwem witryny Azure portal
@@ -90,7 +90,7 @@ Poniższe instrukcje umożliwiają instalowanie i konfigurowanie rozwiązania St
       > 
    4. Pojawi się okno dialogowe. Wprowadź swoje poświadczenia domeny w określonym formacie. Kliknij ikonę znacznika wyboru ![ikona znacznika wyboru](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). Będzie można zweryfikować poświadczeń domeny. Zostanie wyświetlony komunikat o błędzie, jeśli poświadczenia są nieprawidłowe.
       
-       ![poświadczenia](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
+       ![Poświadczenia](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. Kliknij przycisk **Zastosuj**. Spowoduje to zastosowanie i sprawdź poprawność ustawień urządzenia.
 7. (Opcjonalnie) skonfiguruj serwer proxy sieci web. Mimo że konfiguracja serwera proxy sieci web jest opcjonalny, należy pamiętać, że jeśli używasz serwera proxy sieci web, można skonfigurować tylko go tutaj.
    
@@ -118,12 +118,12 @@ Poniższe instrukcje umożliwiają instalowanie i konfigurowanie rozwiązania St
    2. Jeśli nie jest to pierwsze urządzenie, które są rejestrowane w tej usłudze, musisz podać **klucza szyfrowania danych usługi**. Ten klucz jest wymagany przy użyciu klucza rejestracji usługi w celu rejestracji dodatkowych urządzeń w usłudze Menedżer urządzeń StorSimple. Aby uzyskać więcej informacji, zobacz [Pobierz klucz szyfrowania danych usługi](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) lokalnej interfejs użytkownika sieci web.
    3. Kliknij przycisk **zarejestrować**. To spowoduje ponowne uruchomienie urządzenia. Może być konieczne poczekaj 2-3 minut, zanim urządzenie zostanie pomyślnie zarejestrowana. Po ponownym uruchomieniu urządzenia, nastąpi przekierowanie do strony logowania.
       
-      ![Zarejestruj urządzenie](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
+      ![Rejestrowanie urządzenia](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. Wróć do witryny Azure Portal.
 11. Przejdź do **urządzeń** bloku usługi. Jeśli masz wiele zasobów, kliknij przycisk **wszystkie zasoby**, kliknij nazwę usługi (wyszukaj go w razie potrzeby), a następnie kliknij przycisk **urządzeń**.
 12. Na **urządzeń** bloku, sprawdź, czy urządzenie pomyślnie nawiązało z usługą, sprawdzając jego stan. Urządzenie powinno mieć stan **Gotowe do skonfigurowania**.
     
-    ![Zarejestruj urządzenie](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Rejestrowanie urządzenia](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>Krok 2: Konfigurowanie urządzenia jako serwera iSCSI
 

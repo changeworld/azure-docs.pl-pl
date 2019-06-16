@@ -12,12 +12,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f430a832ffb35b95d0bf4eff2d82be5ecc3d865c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 42de060d81539030ef1970e01e753383662e924f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472353"
+ms.locfileid: "67083907"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Zarządzanie kontami dostępu awaryjnego w usłudze Azure AD
 
@@ -56,7 +56,7 @@ Jednak co najmniej jedno z kont dostępu awaryjnego nie powinny mieć ten sam me
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Wyklucz co najmniej jedno konto z zasad dostępu warunkowego
 
-W sytuacji awaryjnej nie ma zasad, aby uniemożliwić dostęp w celu rozwiązania problemu. Kont dostępu awaryjnego co najmniej jeden powinny być wykluczone z wszystkie zasady dostępu warunkowego. Po włączeniu [bazowymi zasadami](../conditional-access/baseline-protection.md), należy wyłączyć konta dostępu awaryjnego.
+W sytuacji awaryjnej nie ma zasad, aby uniemożliwić dostęp w celu rozwiązania problemu. Co najmniej jedno konto dostępu awaryjnego powinny być wykluczone z wszystkie zasady dostępu warunkowego. Po włączeniu [bazowymi zasadami](../conditional-access/baseline-protection.md), należy wyłączyć konta dostępu awaryjnego.
 
 ## <a name="additional-guidance-for-hybrid-customers"></a>Dodatkowe wytyczne dla klientów hybrydowych
 

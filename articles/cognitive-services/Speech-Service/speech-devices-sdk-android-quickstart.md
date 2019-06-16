@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 5bebdd77afb9e9c77624ea4266ca217567dbf143
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66425663"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072392"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Szybki start: Uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Android
 
@@ -37,7 +37,7 @@ Przed rozpoczęciem przy użyciu zestawu Speech Devices SDK, musisz:
 
 * Aby uzyskać [klucz subskrypcji platformy Azure dla usług przetwarzania mowy](get-started.md)
 
-* Jeśli planujesz używać transkrypcji konwersacji należy użyć [cykliczne mikrofonu urządzenia](get-speech-devices-sdk.md) i usługa jest obecnie dostępna tylko dla "en US" i "zh-CN" w regionach, "centralus" i "Azja Wschodnia". Musi mieć klucz mowy w jednym z tych regionów, aby użyć transkrypcji konwersacji.
+* Jeśli planujesz używać transkrypcji konwersacji należy użyć [cykliczne mikrofonu urządzenia](get-speech-devices-sdk.md) i ta funkcja jest obecnie dostępna tylko dla "en US" i "zh-CN" w regionach, "centralus" i "Azja Wschodnia". Musi mieć klucz mowy w jednym z tych regionów, aby użyć transkrypcji konwersacji.
 
 * Jeśli planujesz używać usług przetwarzania mowy do identyfikowania intencji (lub akcji) z wypowiedzi użytkowników, musisz [usługa interpretacji języka (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) subskrypcji. Aby dowiedzieć się więcej na temat usługi LUIS i rozpoznawanie intencji, zobacz [rozpoznać intencje mowy z użyciem usługi LUIS, C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 

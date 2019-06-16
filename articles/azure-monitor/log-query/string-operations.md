@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424707"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Praca z ciągami zapytań dzienników usługi Azure Monitor
@@ -51,37 +51,37 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 Operator       |Opis                         |Case-Sensitive|Przykład (daje `true`)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Równa się                              |Yes           |`"aBc" == "aBc"`
-`!=`           |Nierówne                          |Yes           |`"abc" != "ABC"`
+`==`           |Równa się                              |Tak           |`"aBc" == "aBc"`
+`!=`           |Nie równa się                          |Tak           |`"abc" != "ABC"`
 `=~`           |Równa się                              |Nie            |`"abc" =~ "ABC"`
-`!~`           |Nierówne                          |Nie            |`"aBc" !~ "xyz"`
+`!~`           |Nie równa się                          |Nie            |`"aBc" !~ "xyz"`
 `has`          |Po prawej stronie jest cały termin w po lewej stronie |Nie|`"North America" has "america"`
 `!has`         |Po prawej stronie nie jest pełną termin w po lewej stronie       |Nie            |`"North America" !has "amer"` 
-`has_cs`       |Po prawej stronie jest cały termin w po lewej stronie |Yes|`"North America" has_cs "America"`
+`has_cs`       |Po prawej stronie jest cały termin w po lewej stronie |Tak|`"North America" has_cs "America"`
 `!has_cs`      |Po prawej stronie nie jest pełną termin w po lewej stronie       |Yes            |`"North America" !has_cs "amer"` 
 `hasprefix`    |Po prawej stronie jest określenie prefiksu po lewej stronie         |Nie            |`"North America" hasprefix "ame"`
 `!hasprefix`   |Po prawej stronie nie jest określenie prefiksu po lewej stronie     |Nie            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |Po prawej stronie jest określenie prefiksu po lewej stronie         |Yes            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |Po prawej stronie nie jest określenie prefiksu po lewej stronie     |Yes            |`"North America" !hasprefix_cs "CA"` 
+`hasprefix_cs`    |Po prawej stronie jest określenie prefiksu po lewej stronie         |Tak            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |Po prawej stronie nie jest określenie prefiksu po lewej stronie     |Tak            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |Po prawej stronie jest sufiksem termin w polu po lewej stronie         |Nie            |`"North America" hassuffix "ica"`
 `!hassuffix`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Nie            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |Po prawej stronie jest sufiksem termin w polu po lewej stronie         |Yes            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Yes            |`"North America" !hassuffix_cs "icA"`
+`hassuffix_cs`    |Po prawej stronie jest sufiksem termin w polu po lewej stronie         |Tak            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Tak            |`"North America" !hassuffix_cs "icA"`
 `contains`     |Występuje po prawej stronie podsekwencji po lewej stronie  |Nie            |`"FabriKam" contains "BRik"`
 `!contains`    |Po prawej stronie nie występuje w po lewej stronie           |Nie            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Występuje po prawej stronie podsekwencji po lewej stronie  |Yes           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |Po prawej stronie nie występuje w po lewej stronie           |Yes           |`"Fabrikam" !contains_cs "Kam"`
+`contains_cs`   |Występuje po prawej stronie podsekwencji po lewej stronie  |Tak           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |Po prawej stronie nie występuje w po lewej stronie           |Tak           |`"Fabrikam" !contains_cs "Kam"`
 `startswith`   |Po prawej stronie jest początkowa podsekwencję po lewej stronie|Nie            |`"Fabrikam" startswith "fab"`
 `!startswith`  |Po prawej stronie nie jest początkowa podsekwencję po lewej stronie|Nie        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |Po prawej stronie jest początkowa podsekwencję po lewej stronie|Yes            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |Po prawej stronie nie jest początkowa podsekwencję po lewej stronie|Yes        |`"Fabrikam" !startswith_cs "fab"`
+`startswith_cs`   |Po prawej stronie jest początkowa podsekwencję po lewej stronie|Tak            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |Po prawej stronie nie jest początkowa podsekwencję po lewej stronie|Tak        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |Po prawej stronie jest podsekwencji zamknięcia po lewej stronie|Nie             |`"Fabrikam" endswith "Kam"`
 `!endswith`    |Po prawej stronie nie jest podsekwencji zamknięcia po lewej stronie|Nie         |`"Fabrikam" !endswith "brik"`
 `endswith_cs`     |Po prawej stronie jest podsekwencji zamknięcia po lewej stronie|Yes             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Po prawej stronie nie jest podsekwencji zamknięcia po lewej stronie|Yes         |`"Fabrikam" !endswith "brik"`
-`matches regex`|po lewej stronie zawiera dopasowanie po prawej stronie        |Yes           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Równa się do jednego z elementów       |Yes           |`"abc" in ("123", "345", "abc")`
-`!in`          |Nie równa się do dowolnych elementów   |Yes           |`"bca" !in ("123", "345", "abc")`
+`!endswith_cs`    |Po prawej stronie nie jest podsekwencji zamknięcia po lewej stronie|Tak         |`"Fabrikam" !endswith "brik"`
+`matches regex`|po lewej stronie zawiera dopasowanie po prawej stronie        |Tak           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Równa się do jednego z elementów       |Tak           |`"abc" in ("123", "345", "abc")`
+`!in`          |Nie równa się do dowolnych elementów   |Tak           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>countof

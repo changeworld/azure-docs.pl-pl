@@ -11,14 +11,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764411"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania procedury składowanej programu SQL Server w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-stored-proc-activity.md)
 > * [Bieżąca wersja](transform-data-using-stored-procedure.md)
 
@@ -70,8 +70,8 @@ W poniższej tabeli opisano te właściwości kodu JSON:
 | name                      | Nazwa działania                     | Yes      |
 | description               | Tekst opisujący przeznaczenie działania | Nie       |
 | type                      | Dla działania dotyczącego procedury składowanej jest typ działania **SqlServerStoredProcedure** | Yes      |
-| linkedServiceName         | Odwołanie do **usługi Azure SQL Database** lub **Azure SQL Data Warehouse** lub **programu SQL Server** zarejestrowany jako połączonej usługi w usłudze Data Factory. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Yes      |
-| storedProcedureName       | Określ nazwę procedury składowanej do wywołania. | Yes      |
+| linkedServiceName         | Odwołanie do **usługi Azure SQL Database** lub **Azure SQL Data Warehouse** lub **programu SQL Server** zarejestrowany jako połączonej usługi w usłudze Data Factory. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Tak      |
+| storedProcedureName       | Określ nazwę procedury składowanej do wywołania. | Tak      |
 | storedProcedureParameters | Określ wartości dla parametrów procedury składowanej. Użyj `"param1": { "value": "param1Value","type":"param1Type" }` do przekazywania wartości parametrów i ich typu, obsługiwane przez źródło danych. Jeśli musisz przekazać wartości null dla parametru, użyj `"param1": { "value": null }` (wszystkie małe litery). | Nie       |
 
 ## <a name="error-info"></a>Informacje o błędzie

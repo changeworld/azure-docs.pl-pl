@@ -5,17 +5,17 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 06/12/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 74c5fcfabe0f24127c4eddb3a019f8ea5debe453
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4bfa325017d485a76bfe87c0f7facde4acf8f2b4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714333"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066093"
 ---
-# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>Szybki start: tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu szablonu
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki start: Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu szablonu usługi Resource Manager
 
 Dowiedz się, jak utworzyć klaster [Apache Spark](https://spark.apache.org/) w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu [Apache Hive](https://hive.apache.org/). Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat platformy Apache Spark w usłudze HDInsight, zobacz [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
 
@@ -40,7 +40,7 @@ Utwórz klaster HDInsight Spark przy użyciu szablonu usługi Azure Resource Man
 
     | Właściwość | Wartość |
     |---|---|
-    |**Subskrypcja**|Wybierz subskrypcję platformy Azure, za pomocą której utworzono ten klaster. Subskrypcja używana w tym przewodniku Szybki start to **&lt;Nazwa subskrypcji platformy Azure>**. |
+    |**Subskrypcja**|Wybierz subskrypcję platformy Azure, za pomocą której utworzono ten klaster. Subskrypcja używana w tym przewodniku Szybki start to **&lt;Nazwa subskrypcji platformy Azure>** . |
     | **Grupa zasobów**|Utwórz grupę zasobów lub wybierz istniejącą grupę. Grupa zasobów służy do zarządzania zasobami platformy Azure na potrzeby projektów. Nową nazwą grupy zasobów używaną w tym przewodniku Szybki start jest **myspark20180403rg**.|
     | **Lokalizacja**|Wybierz lokalizację dla grupy zasobów. Szablon używa tej lokalizacji do tworzenia klastra oraz na potrzeby domyślnego magazynu klastra. Lokalizacja używana w tym przewodniku Szybki start to **Wschodnie stany USA 2**.|
     | **Nazwa klastra**|Wprowadź nazwę tworzonego klastra usługi HDInsight. Nazwą nowego klastra używaną w tym przewodniku Szybki start jest **myspark20180403**.|
