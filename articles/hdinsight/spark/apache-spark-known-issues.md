@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 51a0ee6f2d928d79e60ca9976d7651c70867a41f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64717597"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Znane problemy dotyczące klastra Apache Spark w HDInsight
@@ -67,7 +67,7 @@ Klastry HDInsight Spark nie obsługują łącznik Spark Phoenix.
 
 **Środki zaradcze:**
 
-Zamiast tego należy użyć łącznika Spark HBase. Aby uzyskać instrukcje, zobacz [sposób korzystania z łącznika Spark HBase](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
+Zamiast tego należy użyć łącznika Spark HBase. Aby uzyskać instrukcje, zobacz [sposób korzystania z łącznika Spark HBase](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Problemy związane z notesów programu Jupyter
 Poniżej przedstawiono niektóre znane problemy związane z notesów programu Jupyter.

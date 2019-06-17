@@ -8,10 +8,10 @@ ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 6ba17a3839390ed5fe503a6fe57b63d8fb119138
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713498"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z bazy danych Apache HBase przy użyciu usługi Azure HDInsight
@@ -219,7 +219,7 @@ Aby połączyć się z rozwiązaniem Apache Phoenix, należy podać adres IP w a
    ```
 
    > [!Note] 
-   > Adres IP aktywnego węzła dozorcy można uzyskać z poziomu interfejsu użytkownika Ambari. Przejdź do **HBase** > **szybkich łączy** > **ZK\* (aktywny)** > **informacje dozorcy**. 
+   > Adres IP aktywnego węzła dozorcy można uzyskać z poziomu interfejsu użytkownika Ambari. Przejdź do **HBase** > **szybkich łączy** > **ZK\* (aktywny)**  > **informacje dozorcy**. 
 
 3. Jeśli pliku sqlline.py Phoenix umożliwia nawiązywanie połączeń i jest nie limitu czasu, uruchom następujące polecenie, aby sprawdzić dostępność i kondycję Phoenix:
 

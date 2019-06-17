@@ -10,10 +10,10 @@ ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60713081"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service Kubernetes za pomocą usługi CoScale
@@ -72,7 +72,7 @@ Aby uruchomić agenta w klastrze, uruchom polecenie dostarczony:
 
 ![Uruchom agenta pomocą usługi CoScale](./media/container-service-kubernetes-coscale/agent_script.png)
 
-Gotowe. Po skonfigurowaniu i uruchomieniu agentów dane w konsoli powinny być widoczne w ciągu kilku minut. Odwiedź stronę [agent strona](https://app.coscale.com/) znajduje się pozycja klastra podsumowanie wykonać dodatkowe czynności konfiguracyjne i wyświetlić pulpity nawigacyjne, takie jak **klaster Kubernetes — omówienie**.
+To wszystko! Po skonfigurowaniu i uruchomieniu agentów dane w konsoli powinny być widoczne w ciągu kilku minut. Odwiedź stronę [agent strona](https://app.coscale.com/) znajduje się pozycja klastra podsumowanie wykonać dodatkowe czynności konfiguracyjne i wyświetlić pulpity nawigacyjne, takie jak **klaster Kubernetes — omówienie**.
 
 ![Omówienie klastra Kubernetes](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 

@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515209"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Wprowadzenie do interfejsu API rozpoznawania mowy w języku JavaScript
@@ -69,7 +69,7 @@ Więcej informacji na temat do nich zestawu SDK do swojej własnej stronie sieci
 - Interfejs API rozpoznawania mowy obsługuje trzy [tryby rozpoznawania](../concepts.md#recognition-modes). Możesz przełączać tryb, aktualizując **Setup()** funkcja znajdującą się w pliku Sample.html. Przykład ustawia tryb `Interactive` domyślnie. Aby zmienić tryb, należy zaktualizować parametru `SR.RecognitionMode.Interactive` do innego trybu. Na przykład zmień parametr `SR.RecognitionMode.Conversation`.
 - Aby uzyskać pełną listę obsługiwanych języków, zobacz [obsługiwane języki](../API-Reference-REST/supportedlanguages.md).
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 
 - [Interfejs API rozpoznawania mowy JavaScript przykładowego repozytorium](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)
 - [Wprowadzenie do interfejsu API REST](GetStartedREST.md)

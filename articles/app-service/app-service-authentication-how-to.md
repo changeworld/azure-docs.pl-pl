@@ -15,10 +15,10 @@ ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851427"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service
@@ -41,7 +41,7 @@ Konfiguracja portalu nie oferują sposób setką kompleksowych istnieje wielu do
 
 Pierwszy w **uwierzytelniania / autoryzacji** stronie w witrynie Azure portal, skonfiguruj każdy z dostawcy tożsamości, aby włączyć.
 
-W **akcji do wykonania w przypadku nieuwierzytelnionego żądania**, wybierz opcję **Zezwalaj na anonimowe żądania (Brak działania)**.
+W **akcji do wykonania w przypadku nieuwierzytelnionego żądania**, wybierz opcję **Zezwalaj na anonimowe żądania (Brak działania)** .
 
 Strony logowania na pasku nawigacyjnym lub dowolnej innej lokalizacji w aplikacji, Dodaj Link umożliwiający zalogowanie się do każdego z dostawców włączono (`/.auth/login/<provider>`). Na przykład:
 
@@ -186,7 +186,7 @@ Gdy token dostępu z dostawcą (nie [tokenu sesji](#extend-session-token-expirat
 - **Konto Microsoft**: Gdy [ustawienia uwierzytelniania konta Microsoft](configure-authentication-provider-microsoft.md), wybierz opcję `wl.offline_access` zakresu.
 - **Azure Active Directory**: W [ https://resources.azure.com ](https://resources.azure.com), wykonaj następujące czynności:
     1. W górnej części strony wybierz **odczytu/zapisu**.
-    2. W przeglądarce po lewej stronie przejdź do **subskrypcje** > **_\<subskrypcji\_nazwa_**   >  **resourceGroups** > _**\<zasobów\_grupy\_name >**_   >  **dostawców** > **Microsoft.Web** > **witryn** > _**\<aplikacji \_name >**_ > **config** > **authsettings**. 
+    2. W przeglądarce po lewej stronie przejdź do **subskrypcje** >  ** _\<subskrypcji\_nazwa_**   >  **resourceGroups** >  _ **\<zasobów\_grupy\_name >** _   >  **dostawców** > **Microsoft.Web** > **witryn** >  _ **\<aplikacji \_name >** _ > **config** > **authsettings**. 
     3. Kliknij pozycję **Edytuj**.
     4. Zmodyfikować następujące właściwości. Zastąp  _\<aplikacji\_id >_ identyfikator aplikacji usługi Azure Active Directory, usługi, którego chcesz uzyskać dostęp.
 
@@ -233,7 +233,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Account Microsoft wraz z usługi Azure Active Directory pozwala zalogować się z wielu domen. Na przykład umożliwia Account Microsoft _outlook.com_, _live.com_, i _hotmail.com_ kont. Usługa Azure Active Directory umożliwia dowolną liczbę domen niestandardowych dla kont logowania. To działanie może być niepożądane dla wewnętrznych aplikacji, której nie chcesz upoważniać nikogo z _outlook.com_ konto dostępu. Aby ograniczyć nazwę domeny konta logowania, wykonaj następujące kroki.
 
-W [ https://resources.azure.com ](https://resources.azure.com), przejdź do **subskrypcje** > **_\<subskrypcji\_nazwa_**   >  **resourceGroups** > _**\<zasobów\_grupy\_name >**_   >  **dostawców** > **Microsoft.Web** > **witryn**  >    _**\<aplikacji\_name >**_ > **config** > **authsettings**. 
+W [ https://resources.azure.com ](https://resources.azure.com), przejdź do **subskrypcje** >  ** _\< subskrypcji\_ nazwa_**   >  **resourceGroups** >  _ **\< zasobów\_ grupy\_ name >** _   >  **dostawców** > **Microsoft.Web** > **witryn**  >    _ **\< aplikacji\_ name >** _ > **config** > **authsettings**. 
 
 Kliknij przycisk **Edytuj**, zmodyfikować następujące właściwości, a następnie kliknij przycisk **umieścić**. Koniecznie Zastąp  _\<domeny\_name >_ domeny ma.
 

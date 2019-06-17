@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.openlocfilehash: 6f89e27b06179c33857d581c0c6e3fc78c683d48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119813"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
@@ -21,7 +21,7 @@ W tym artykule wymieniono niektóre typowe terminy używane w artykułach usług
 ## <a name="advanced-message-queueing-protocol"></a>Protokół Kolejkowanie komunikatów zaawansowane
 [Zaawansowane komunikat Kolejkowanie Protocol (AMQP)](https://www.amqp.org/) jest jedną z wiadomości, protokoły [usługi IoT Hub](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokołów obsługi komunikatów, obsługiwanych przez usługę IoT Hub, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
-## <a name="automatic-device-management"></a>Automatyczne zarządzanie urządzeniami
+## <a name="automatic-device-management"></a>Zarządzanie urządzeniami automatyczne
 Automatyczne zarządzanie urządzeniami w usłudze Azure IoT Hub automatyzuje wiele powtarzających się i złożonych zadań zarządzania flot duże urządzenia względem całej ich cykle życia. Za pomocą automatycznego zarządzania urządzeniami można docelowe zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją i umożliwić usługi IoT Hub aktualizowania urządzenia, które pochodzą one do zakresu.  Składa się z [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md) i [automatycznego wdrożenia usługi IoT Edge](../iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="automatic-device-configuration"></a>Konfiguracja urządzenia automatycznego
@@ -67,7 +67,7 @@ Każde wystąpienie usługi IoT hub zawiera wbudowaną [punktu końcowego](iot-h
 ## <a name="cloud-gateway"></a>Brama chmury
 Brama chmury umożliwia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub). Brama chmury jest hostowana w chmurze, w przeciwieństwie do [bramy w terenie](#field-gateway) , które jest uruchamiane lokalnych do urządzeń. Typowym przypadkiem użycia dla bramy chmury jest do zaimplementowania translację protokołu dla urządzeń.
 
-## <a name="cloud-to-device"></a>Chmura-urządzenie
+## <a name="cloud-to-device"></a>Chmura urządzenie
 Odnosi się do komunikatów wysyłanych z usługi IoT hub do podłączonego urządzenia. Często te komunikaty są poleceń, które poinstruowanie urządzenia w celu wykonania akcji. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="configuration"></a>Konfigurowanie
@@ -93,7 +93,7 @@ W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-t
 ## <a name="desired-properties"></a>Żądane właściwości
 W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), żądane właściwości jest podciągiem bliźniaczej reprezentacji urządzenia, który jest używany z [zgłaszanych właściwości](#reported-properties) zsynchronizować konfiguracji urządzenia lub warunek. Żądane właściwości można ustawić tylko przy [aplikacji zaplecza](#back-end-app) i są przestrzegane [aplikacji urządzenia](#device-app).
 
-## <a name="device-to-cloud"></a>Urządzenie-chmura
+## <a name="device-to-cloud"></a>Urządzenia do chmury
 Odwołuje się do komunikatów wysyłanych z urządzenia podłączone do [usługi IoT Hub](#iot-hub). Te komunikaty mogą być [punktu danych](#data-point-message) lub [interaktywne](#interactive-message) wiadomości. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Urządzenie
@@ -138,7 +138,7 @@ Usługa IoT hub udostępnia wiele [punktów końcowych](iot-hub-devguide-endpoin
 ## <a name="event-hubs-service"></a>Usługa centra zdarzeń
 [Usługa Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) jest wysoce skalowalna Usługa transferu danych przychodzących, która może pozyskiwać miliony zdarzeń na sekundę. Usługa pozwala na przetwarzanie i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Porównanie z usługą IoT Hub, zobacz [porównanie usługi Azure IoT Hub i Azure Event Hubs](iot-hub-compare-event-hubs.md).
 
-## <a name="event-hub-compatible-endpoint"></a>Punkt końcowy zgodny z centrum zdarzeń usługi Event Hubs
+## <a name="event-hub-compatible-endpoint"></a>Punkt końcowy zgodny z Centrum zdarzeń
 Aby przeczytać [urządzenia do chmury](#device-to-cloud) komunikaty wysyłane do usługi IoT hub, możesz nawiązać połączenie z punktem końcowym w Centrum i zastosować dowolną metodę zgodnego z Centrum zdarzeń do odczytywania tych komunikatów. Metody zgodnego z Centrum zdarzeń obejmują użycie [Event Hubs SDK](../event-hubs/event-hubs-programming-guide.md) i [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 
 ## <a name="field-gateway"></a>Bramy w terenie
@@ -232,7 +232,7 @@ Możesz użyć [interfejsu API REST usługi](https://docs.microsoft.com/rest/api
 ## <a name="shared-access-signature"></a>Sygnatura dostępu współdzielonego
 Udostępnione sygnatur dostępu (SAS) to mechanizm uwierzytelniania, na podstawie bezpiecznego skróty SHA-256 lub identyfikatory URI. Uwierzytelniania sygnatury dostępu Współdzielonego ma dwa składniki: _zasady dostępu współużytkowanego_ i _sygnatura dostępu współdzielonego_ (często nazywanej tokenu). Urządzenie korzysta z sygnatury dostępu Współdzielonego do uwierzytelniania za pomocą usługi IoT hub. [Zaplecza aplikacji](#back-end-app) również użyć do uwierzytelniania za pomocą punktów końcowych przeznaczonych dla usługi w Centrum IoT hub sygnatury dostępu Współdzielonego. Zazwyczaj obejmują tokenu sygnatury dostępu Współdzielonego w [parametry połączenia](#connection-string) czy aplikacja używa do nawiązywania połączenia z Centrum IoT hub.
 
-## <a name="shared-access-policy"></a>Zasady dostępu współużytkowanego
+## <a name="shared-access-policy"></a>Zasady dostępu współdzielonego
 Zasady dostępu współdzielonego definiuje uprawnienia nadane dla każdego, kto ma prawidłowe [klucz podstawowy lub pomocniczy](#primary-and-secondary-keys) skojarzone z tą zasadą. Możesz określić zasady dostępu współdzielonego i klucze Centrum w [portal](#azure-portal).
 
 ## <a name="simulated-device"></a>Symulowane urządzenie
@@ -247,7 +247,7 @@ Subskrypcja platformy Azure jest o tym, gdzie odbywa się rozliczanie. Tworzenie
 ## <a name="system-properties"></a>Właściwości systemu
 W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), właściwości systemu są przeznaczone tylko do odczytu i zawierają informacje na temat użycia urządzenia, np. ostatni stan połączenia i czas działania.
 
-## <a name="tags"></a>Tagi
+## <a name="tags"></a>`Tags`
 W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), tagi są metadane urządzenia przechowywane i pobierane przez zaplecze rozwiązania w postaci dokumentów JSON. Tagi nie są widoczne dla aplikacji na urządzeniu.
 
 ## <a name="telemetry"></a>Telemetria

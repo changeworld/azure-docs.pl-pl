@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64698163"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Korzystanie z platformy Apache Kafka w HDInsight z usługą Azure IoT Hub
@@ -167,7 +167,7 @@ Aby pobrać IoT hub informacje używane przez łącznik, użyj następujących k
 
 1. Pobieranie punktu końcowego zgodnego z Centrum zdarzeń i nazwę punktu końcowego zgodnego z Centrum zdarzeń usługi IoT hub. Aby uzyskać te informacje, użyj jednej z następujących metod:
 
-   * __Z [witryny Azure portal](https://portal.azure.com/)__, wykonaj następujące czynności:
+   * __Z [witryny Azure portal](https://portal.azure.com/)__ , wykonaj następujące czynności:
 
      1. Przejdź do Centrum IoT Hub i wybierz __punktów końcowych__.
      2. Z __wbudowanych punktach końcowych__, wybierz opcję __zdarzenia__.
@@ -180,7 +180,7 @@ Aby pobrać IoT hub informacje używane przez łącznik, użyj następujących k
         > [!IMPORTANT]  
         > Wartość punktu końcowego w portalu może zawierać dodatkowy tekst, który nie jest potrzebne w tym przykładzie. Wyodrębnij tekst, który pasuje do tego wzorca `sb://<randomnamespace>.servicebus.windows.net/`.
 
-   * __Z [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, użyj następującego polecenia:
+   * __Z [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ , użyj następującego polecenia:
 
        ```azure-cli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -196,13 +196,13 @@ Aby pobrać IoT hub informacje używane przez łącznik, użyj następujących k
 
 2. Pobierz __współużytkowane zasady dostępu__ i __klucz__. W tym przykładzie użyj __usługi__ klucza. Aby uzyskać te informacje, użyj jednej z następujących metod:
 
-    * __Z [witryny Azure portal](https://portal.azure.com/)__, wykonaj następujące czynności:
+    * __Z [witryny Azure portal](https://portal.azure.com/)__ , wykonaj następujące czynności:
 
         1. Wybierz __zasady dostępu współdzielonego__, a następnie wybierz pozycję __usługi__.
         2. Kopiuj __klucz podstawowy__ wartość.
         3. Kopiuj __parametry połączenia — klucz podstawowy__ wartość.
 
-    * __Z [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, użyj następującego polecenia:
+    * __Z [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ , użyj następującego polecenia:
 
         1. Aby uzyskać wartość klucza podstawowego, użyj następującego polecenia:
 
