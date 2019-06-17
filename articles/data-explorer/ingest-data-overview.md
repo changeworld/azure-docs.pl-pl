@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759340"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych w usłudze Azure Eksplorator danych
@@ -90,7 +90,7 @@ Kusto oferuje zestaw SDK, który może służyć do odbierania i wysyłania zapy
 
 | Metoda | Opóźnienie |
 | --- | --- |
-| **Pozyskiwanie wbudowane** | Natychmiast |
+| **Pozyskiwanie wbudowane** | Natychmiastowe |
 | **Pozyskiwanie z zapytania** | Czas wykonywania zapytania i czas przetwarzania |
 | **Pozyskiwanie z magazynu** | Czas pobierania i czas przetwarzania |
 | **Pozyskiwanie umieszczonych w kolejce** | Przetwarzanie wsadowe, czas i czas przetwarzania |

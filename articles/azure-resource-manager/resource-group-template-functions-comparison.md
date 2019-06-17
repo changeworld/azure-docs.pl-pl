@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128692"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Funkcje porównania dla szablonów usługi Azure Resource Manager
@@ -250,7 +250,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | Fałsz |
+| checkInts | Bool | False |
 | checkStrings | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
@@ -274,7 +274,7 @@ Sprawdza, czy pierwsza wartość jest większa lub równa wartości drugiego.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int lub ciągu |Pierwsza wartość do porównania większe lub równe. |
+| arg1 |Yes |int lub ciągu |Pierwsza wartość do porównania większe lub równe. |
 | argument2 |Tak |int lub ciągu |Druga wartość do porównania większe lub równe. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -326,7 +326,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | Fałsz |
+| checkInts | Bool | False |
 | checkStrings | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
@@ -341,7 +341,7 @@ Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
-## <a name="less"></a>mniej
+## <a name="less"></a>less
 `less(arg1, arg2)`
 
 Sprawdza, czy pierwsza wartość jest mniejsza od drugiej wartości.
@@ -403,7 +403,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | Fałsz |
+| checkStrings | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -479,7 +479,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | Fałsz |
+| checkStrings | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 

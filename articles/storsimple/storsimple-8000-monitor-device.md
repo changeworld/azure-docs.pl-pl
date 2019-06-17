@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 10/17/2017
 ms.author: alkohli
 ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60634566"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Monitorować urządzenie StorSimple przy użyciu usługi Menedżer urządzeń StorSimple
@@ -42,9 +42,9 @@ Elastycznie i pozostałej pojemności jest dalszych rozbiciu woluminy warstwowe 
 Domyślnie jest zgłaszany użycia w ciągu ostatnich 24 godzin. Można edytować wykres, aby zmienić czas trwania, którego użycie jest zgłaszany, wybierając:
 * Ostatnie 24 godziny
 * Ostatnie 7 dni
-* Ostatnie 30 dni
+* Ostatnich 30 dni
 * Ostatnie 90 dni
-* Ostatni rok
+* Ubiegły rok
 
 Dwa kluczowe metrices, rozwój i zakres są raportowane wykresy użycia. Zakres odwołuje się do wartości maksymalnej i minimalnej wartości użycia zgłoszone w wybranym okresie (wystąpienia fo, ostatnie 7 dni).
 

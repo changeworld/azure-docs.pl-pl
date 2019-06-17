@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c19dae4af1007d8444097db06bded51d714e74ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 897f117fb0bc5d45b4c96a4d1d6abd5c89803757
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867796"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-schoox"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Schoox
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikację Schoox z usługą Azure AD, musisz dod
 
 **Aby dodać aplikację Schoox z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 

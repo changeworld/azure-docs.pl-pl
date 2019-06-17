@@ -13,10 +13,10 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61417587"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Zalecenia dotyczące wydajności usługi SQL Database
@@ -77,9 +77,9 @@ Po zastosowaniu tej rekomendacji umożliwia wymuszenie parametryzacji w ciągu k
 
 Zalecenie "Naprawić problem ze schematem" jest wyświetlany, gdy usługa Azure SQL Database uwagi dotyczące anomalii w liczbę błędów dotyczące schematu SQL, w które są wykonywane w bazie danych SQL. W poniższej tabeli przedstawiono błędów, które są powiązane z problemy ze schematem:
 
-| Kod błędu SQL | Komunikat |
+| Kod błędu SQL | Message |
 | --- | --- |
-| 201 |Procedura lub funkcja "*"oczekuje parametru"*", który nie został dostarczony. |
+| 201 |Procedura lub funkcja " *"oczekuje parametru"* ", który nie został dostarczony. |
 | 207 |Nieprawidłowa nazwa kolumny "*". |
 | 208 |Nieprawidłowa nazwa obiektu "*". |
 | 213 |Nazwa kolumny lub liczba podanych wartości nie jest zgodna definicję tabeli. |

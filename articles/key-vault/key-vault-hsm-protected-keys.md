@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
 ms.openlocfilehash: 1ae94718aa41c58f4d5e397942492ad8ed643ae3
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65556201"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
@@ -74,7 +74,7 @@ Użyjesz następujące pięć kroków, aby wygenerować i przenieść swój kluc
 
 To pierwszy krok wykonaj następujące procedury na stacji roboczej podłączonej do Internetu.
 
-### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Zainstaluj program Azure PowerShell
+### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Instalowanie programu Azure PowerShell
 
 Ze stacji roboczej podłączonej do Internetu należy pobrać i zainstalować moduł programu Azure PowerShell, który zawiera polecenia cmdlet do zarządzania usługi Azure Key Vault. Aby uzyskać instrukcje dotyczące instalacji, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
@@ -162,7 +162,7 @@ KeyVault-BYOK-Tools-Australia.zip
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 - - -
-[**Platforma Azure Government:**](https://azure.microsoft.com/features/gov/)
+[**Platforma Azure Government:** ](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
@@ -236,7 +236,7 @@ Ten drugi krok wykonaj następujące procedury na stacji roboczej, który nie je
 
 Zainstaluj oprogramowanie wspomagające nCipher na komputerze Windows, a następnie dołącz nShield nCipher przez moduł HSM do tego komputera.
 
-Upewnij się, że narzędzia nCipher znajdują się w ścieżce (**%nfast_home%\bin**). Na przykład wpisz następujące polecenie:
+Upewnij się, że narzędzia nCipher znajdują się w ścieżce ( **%nfast_home%\bin**). Na przykład wpisz następujące polecenie:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -369,7 +369,7 @@ Po uruchomieniu tego polecenia, użyj tych instrukcji:
 * Zastąp wartość *contosokey* dla **ident** i **plainname** z dowolną wartością ciągu. Aby zminimalizować ogólne koszty administracyjne i zmniejszyć ryzyko błędów, zaleca się używać tej samej wartości dla obu. **Ident** wartość musi zawierać tylko cyfry, łączniki i małe litery.
 * Parametr pubexp został pozostawiony pusty (ustawienie domyślne), w tym przykładzie, ale można określić konkretne jego wartości. Aby uzyskać więcej informacji, zobacz [nCipher dokumentacji.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
-To polecenie tworzy plik Stokenizowanego klucza w folderze %NFAST_KMDATA%\local za pomocą nazwę zaczynającą się od **key_simple_**, a następnie **ident** podany w poleceniu. Na przykład: **key_simple_contosokey**. Ten plik zawiera zaszyfrowany klucz.
+To polecenie tworzy plik Stokenizowanego klucza w folderze %NFAST_KMDATA%\local za pomocą nazwę zaczynającą się od **key_simple_** , a następnie **ident** podany w poleceniu. Na przykład: **key_simple_contosokey**. Ten plik zawiera zaszyfrowany klucz.
 
 Utwórz kopię zapasową tego pliku Stokenizowanego klucza w bezpiecznym miejscu.
 

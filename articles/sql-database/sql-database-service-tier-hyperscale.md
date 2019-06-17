@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 0fe098bd644762fb291eb623a7b41cd987c7fa26
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a953af3d9cd5a6748b79465a59b4a4284e58714c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779184"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070125"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Warstwy usług w Hiperskali dla maksymalnie 100 TB
 
@@ -111,7 +111,7 @@ Dzięki możliwości szybkiego uruchomienia dodatkowych tylko do odczytu węzł�
 
 Można utworzyć bazę danych na dużą skalę za pomocą [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Bazy danych w Hiperskali są dostępne, tylko przy użyciu [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
-Następujące polecenie języka T-SQL tworzy bazę danych na dużą skalę. Należy określić zarówno wersji, jak i usługa cel w `CREATE DATABASE` instrukcji.
+Następujące polecenie języka T-SQL tworzy bazę danych na dużą skalę. Należy określić zarówno wersji, jak i usługa cel w `CREATE DATABASE` instrukcji. Zapoznaj się [limity zasobów](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier) Lista celów prawidłową usługę.
 
 ```sql
 -- Create a HyperScale Database
@@ -146,8 +146,8 @@ Jeśli chcesz przywrócić bazy danych na dużą skalę bazy danych SQL Azure w 
 1. Tworzenie serwera usługi SQL Database w regionie docelowym, jeśli nie masz już odpowiedniego serwera istnieje.  Ten serwer powinien należeć do tej samej subskrypcji co oryginalny serwer (źródło).
 2. Postępuj zgodnie z instrukcjami w [geoprzywracanie](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) tematu strony na przywrócenie bazy danych SQL Azure z automatycznych kopii zapasowych.
 
-#### <a name="notes-on-geo-restores-of-a-hyperscale-database"></a>Uwagi dotyczące geograficzne — Przywracanie bazy danych na dużą skalę
-Ponieważ źródłowy i docelowy znajdują się w oddzielnych regionach, baza danych nie mogą mieć Magazyn migawek źródłowej bazy danych, tak jak inne niż geograficznie przeprowadzać operacje przywracania, które są wykonywane bardzo szybko.  W przypadku przywracania geograficznego bazy danych na dużą skalę będzie operacją danych o rozmiarze, nawet jeśli miejsce docelowe jest w sparowanym regionie magazyn z replikacją geograficzną.  Oznacza to, że podczas przywracania geograficznego zajmie trochę czasu proporcjonalny do rozmiaru przywracana baza danych.  Jeśli element docelowy znajduje się w sparowanym regionie, kopia zostanie umieszczona w obrębie centrum danych, który będzie znacznie szybsze niż kopię zamiejscowych za pośrednictwem Internetu, ale wciąż będzie kopiować wszystkie bity.
+> [!NOTE]
+> Ponieważ źródłowy i docelowy znajdują się w oddzielnych regionach, baza danych nie mogą mieć Magazyn migawek źródłowej bazy danych, tak jak inne niż geograficznie przeprowadzać operacje przywracania, które są wykonywane bardzo szybko.  W przypadku przywracania geograficznego bazy danych na dużą skalę będzie operacją danych o rozmiarze, nawet jeśli miejsce docelowe jest w sparowanym regionie magazyn z replikacją geograficzną.  Oznacza to, że podczas przywracania geograficznego zajmie trochę czasu proporcjonalny do rozmiaru przywracana baza danych.  Jeśli element docelowy znajduje się w sparowanym regionie, kopia zostanie umieszczona w obrębie centrum danych, który będzie znacznie szybsze niż kopię zamiejscowych za pośrednictwem Internetu, ale wciąż będzie kopiować wszystkie bity.
 
 ## <a name=regions></a>Dostępne regiony
 
@@ -168,13 +168,13 @@ Warstwa Azure SQL Database na dużą skalę jest obecnie dostępna w następują
 - Japonia Zachodnia
 - Korea Środkowa
 - Korea Południowa
-- Północno-środkowe stany USA
+- Środkowo-północne stany USA
 - Europa Północna
-- Północna Republika Południowej Afryki
-- Południowo-środkowe stany USA
+- Republika Południowej Afryki (północ)
+- Środkowo-południowe stany USA
 - Azja Południowo-Wschodnia
-- Zjednoczone Królestwo (południe)
-- Zjednoczone Królestwo (zachód)
+- Południowe Zjednoczone Królestwo
+- Zachodnie Zjednoczone Królestwo
 - Europa Zachodnia
 - Zachodnie stany USA
 - Zachodnie stany USA 2
@@ -225,12 +225,12 @@ Są to bieżące ograniczenia do warstwy usług na dużą skalę, począwszy od 
 
 | Problem | Opis |
 | :---- | :--------- |
-| W okienku Zarządzanie kopiami zapasowymi dla serwera logicznego nie pokazuje, że będą filtrowane baz danych na dużą skalę z programu SQL server ->  | W Hiperskali ma oddzielne metodę zarządzania kopiami zapasowymi i jako takie długotrwałego przechowywania danych i punktu w czasie tworzenia kopii zapasowej ustawień przechowywania nie stosuje się / są unieważniane. W związku z tym baz danych na dużą skalę, nie są wyświetlane w okienku Zarządzanie kopii zapasowej. |
+| W okienku Zarządzanie kopiami zapasowymi serwera logicznego nie pokazuje, że będą filtrowane baz danych na dużą skalę z programu SQL server  | W Hiperskali ma oddzielne metodę zarządzania kopiami zapasowymi i jako takie długotrwałego przechowywania danych i punktu w czasie tworzenia kopii zapasowej ustawień przechowywania nie stosuje się / są unieważniane. W związku z tym baz danych na dużą skalę, nie są wyświetlane w okienku Zarządzanie kopii zapasowej. |
 | Przywracanie do określonego momentu | Po migracji bazy danych w warstwie usługi w Hiperskali, przywracanie do punktu w czasie przed migracją nie jest obsługiwane.|
 | Przywracanie z innych niż - w Hiperskali DB Hypserscale i na odwrót | Nie można przywrócić bazę danych na dużą skalę w bazie danych — na dużą skalę, nie można przywrócić bazę danych — na dużą skalę w bazie danych na dużą skalę.|
 | Jeśli plik bazy danych zwiększa się podczas migracji ze względu na to aktywne obciążenie i przekracza 1 TB na granicy pliku, migracja nie powiedzie się | Środki zaradcze: <br> — Jeśli to możliwe, migracji bazy danych, po nie obciążenia aktualizacji.<br> -Ponów próbę migracji, zakończy się powodzeniem tak długo, jak granica 1 TB nie jest przekroczony podczas migracji.|
 | Wystąpienie zarządzane | Wystąpienie usługi Azure SQL Database Managed nie jest obecnie obsługiwane z bazami danych na dużą skalę. |
-| Elastyczne pule |  Pule elastyczne nie są obecnie obsługiwane za pomocą bazy danych SQL na dużą skalę.|
+| Pule elastyczne |  Pule elastyczne nie są obecnie obsługiwane za pomocą bazy danych SQL na dużą skalę.|
 | Operacja jednokierunkowa trwa w migracji do usługi w Hiperskali | Po migracji bazy danych na dużą skalę, nie można migrować bezpośrednio do warstwy usług — na dużą skalę. Obecnie jedynym sposobem na migrację bazy danych w Hiperskali do innego niż w Hiperskali jest eksportu/importu za pomocą pliku BACPAC.|
 | Migracja bazy danych z obiektów w pamięci | Obiekty w pamięci, należy porzucić i tworzony ponownie jako obiektów innych niż w pamięci, przed przeprowadzeniem migracji bazy danych do warstwy usług na dużą skalę.|
 | Dane śledzenia zmian | Nie można użyć Change Tracking danych z bazami danych na dużą skalę. |

@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60770722"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Szybki start: Tworzenie obszaru roboczego usługi Azure Databricks w sieci wirtualnej
@@ -61,7 +61,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
     |Lokalizacja|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz tę samą lokalizację sieci wirtualnej.|
     |Warstwa cenowa|Wybierz między Standard lub Premium.|Aby uzyskać więcej informacji na temat warstw cenowych, zobacz [stronę usługi Databricks](https://azure.microsoft.com/pricing/details/databricks/).|
     |Wdrażanie obszaru roboczego usługi Azure Databricks w usłudze Virtual Network|Yes|To ustawienie umożliwia wdrażanie obszaru roboczego usługi Azure Databricks w usłudze virtual network.|
-    |Virtual Network|databricks-quickstart|Wybierz sieć wirtualną, który został utworzony w poprzedniej sekcji.|
+    |Sieć wirtualna|databricks-quickstart|Wybierz sieć wirtualną, który został utworzony w poprzedniej sekcji.|
     |Nazwa podsieci publicznej|public-subnet|Użyj domyślnej nazwy podsieci publicznej.|
     |Zakres CIDR podsieci publicznej|10.179.64.0/18|Zakres CIDR dla tej podsieci powinien należeć do zakresu od /18 i /26.|
     |Nazwa podsieci prywatnej|private-subnet|Użyj domyślnej nazwy podsieci prywatnej.|
@@ -84,7 +84,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Wróć do usługi Azure Databricks i wybierz pozycję **Uruchom obszar roboczy** na **Przegląd** strony.
 
-2. Wybierz **klastrów** > **+ Utwórz klaster**. Następnie utwórz nazwę klastra, takie jak *klastra usługi databricks — Szybki Start*i zaakceptuj pozostałe domyślne ustawienia. Wybierz pozycję **Utwórz klaster**.
+2. Wybierz **klastrów** >  **+ Utwórz klaster**. Następnie utwórz nazwę klastra, takie jak *klastra usługi databricks — Szybki Start*i zaakceptuj pozostałe domyślne ustawienia. Wybierz pozycję **Utwórz klaster**.
 
     ![Tworzenie klastra usługi Azure Databricks](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 

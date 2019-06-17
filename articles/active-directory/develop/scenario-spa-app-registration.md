@@ -16,10 +16,10 @@ ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1faf4669dca2aaaf3f873e66f859473ccd99f10
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074833"
 ---
 # <a name="single-page-application---app-registration"></a>Aplikacja jednostronicowa — rejestrowanie aplikacji
@@ -42,7 +42,7 @@ W tym samym **uwierzytelniania** w obszarze **Zaawansowane ustawienia**, należy
 
 Jeśli aplikacja wymaga również uzyskiwanie tokenów dostępu w celu wywoływania interfejsów API, upewnij się umożliwić **tokeny dostępu** również pole wyboru. Aby uzyskać więcej informacji, zobacz [tokeny Identyfikatora](./id-tokens.md) i [tokeny dostępu](./access-tokens.md).
 
-## <a name="api-permissions"></a>Uprawnienia interfejsu API
+## <a name="api-permissions"></a>Uprawnienia do interfejsu API
 
 Aplikacje jednej strony można wywołać interfejsy API w imieniu zalogowanego użytkownika. Muszą zażądać uprawnień delegowanych. Aby uzyskać więcej informacji, zobacz [Dodawanie uprawnień dostępu do interfejsów API sieci web](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: bc7569c9f230abb7677a8df9fc0cc0268e57296f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60725927"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak elementy Reliable Actors korzystają z platformy usługi Service Fabric
@@ -69,7 +69,7 @@ Usługi aktora są podzielone na partycje usług stanowych. Każda partycja usł
 
 Usług Reliable Services mogą być tworzone za pomocą zakresów kluczy partycji i schematy partycjonowania. Usługa aktora używa schematu partycjonowania Int64 z pełnego zakresu kluczy Int64 do mapowania partycje aktorów.
 
-### <a name="actor-id"></a>Identyfikator aktora
+### <a name="actor-id"></a>ID aktora
 Każdego aktora, który jest tworzony w usłudze ma unikatowy identyfikator skojarzony z nim, reprezentowane przez `ActorId` klasy. `ActorId` jest nieprzezroczysta wartość Identyfikatora, który może służyć równomiernego rozkładu aktorów partycjach usługi przez Generowanie losowe identyfikatory:
 
 ```csharp

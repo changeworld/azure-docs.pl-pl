@@ -9,10 +9,10 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66147703"
 ---
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "66147703"
 W ramach tego samouczka, możesz wdrożyć **Chłodnica** urządzenia, które wysyła następujące dane telemetryczne do monitorowania zdalnego [akcelerator rozwiązań](../articles/iot-accelerators/about-iot-accelerators.md):
 
 * Temperatura
-* Ciśnienie
+* Wykorzystanie
 * Wilgotność
 
 Dla uproszczenia kod generuje przykładowe wartości danych telemetrycznych dla **Chłodnica**. Można rozszerzenia przykładu przez podłączenie rzeczywistych czujników do urządzenia i wysyłanie rzeczywistych danych telemetrycznych.
@@ -39,7 +39,7 @@ Urządzenie przykładowe również:
 
 Do wykonania kroków tego samouczka jest potrzebne aktywne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="before-you-start"></a>Zanim rozpoczniesz
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
 Przed przystąpieniem do napisania jakiegokolwiek kodu dla Twojego urządzenia, wdrożyć Twój akcelerator rozwiązań monitorowania zdalnego i dodać nowe rzeczywistego urządzenia z rozwiązaniem.
 

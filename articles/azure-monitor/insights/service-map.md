@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606508"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
@@ -45,7 +45,7 @@ Dostęp do rozwiązania Service Map w witrynie Azure portal w obszarze roboczym 
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Przypadki użycia: Wprowadź dział IT przetwarza pamiętać zależności
 
-### <a name="discovery"></a>Odnajdowanie
+### <a name="discovery"></a>Odnajdywanie
 Usługa Service Map automatycznie tworzy mapę typowych odwołanie zależności między serwerami, procesami i usługami innych firm. Go umożliwia odnalezienie i mapuje wszystkie zależności TCP w celu identyfikowania połączeń Zaskoczenie, zdalne systemów innych firm, których zależysz i zależności do tradycyjnych ciemny obszarów sieci, takich jak usługi Active Directory. Usługa Service Map odnajduje połączenia sieciowe nie powiodło się, które próbujesz zarządzanych systemach, aby ułatwia identyfikowanie potencjalnych błędnej konfiguracji serwera, przerwa w działaniu usługi i problemy z siecią.
 
 ### <a name="incident-management"></a>Zarządzanie zdarzeniami
@@ -160,10 +160,10 @@ Połączenia zakończone niepowodzeniem są wyświetlane w mapach rozwiązania S
 
 Omówienie połączenia zakończone niepowodzeniem mogą pomóc w rozwiązywaniu problemów, sprawdzanie poprawności migracji, analizy zabezpieczeń i architektury ogólny opis. Połączenia zakończone niepowodzeniem są czasami nieszkodliwe, ale często wskazują bezpośrednio do problemu, takie jak środowisko pracy awaryjnej, nagle staje się niedostępny lub dwie warstwy aplikacji nie będzie w stanie komunikować się po migracji do chmury.
 
-## <a name="client-groups"></a>Grupy klientów
+## <a name="client-groups"></a>Grup klientów
 Grupy klienta są pola na mapie, które reprezentują komputerów klienckich, które nie mają agenci zależności. Pojedynczą grupę klienta reprezentuje klientów dla poszczególnych proces lub komputera.
 
-![Grupy klientów](media/service-map/client-groups.png)
+![Grup klientów](media/service-map/client-groups.png)
 
 Aby wyświetlić adresy IP serwerów z grupy klientów, wybierz grupę. Zawartość grupy są wymienione w **właściwości grupy klientów** okienka.
 
@@ -510,5 +510,5 @@ Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-ove
 Zobacz [Rozwiązywanie problemów z części dokumentu konfigurowania rozwiązania Service Map]( service-map-configure.md#troubleshooting).
 
 
-## <a name="feedback"></a>Opinie
+## <a name="feedback"></a>Opinia
 Masz opinię dla nas o rozwiązania Service Map lub tej dokumentacji?  Odwiedź nasze [stronę z opiniami użytkowników](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), gdzie możesz proponować funkcje lub głosować się sugestie istniejących.

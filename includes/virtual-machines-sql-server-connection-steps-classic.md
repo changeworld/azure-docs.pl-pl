@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 57f238a8f91df1271e91894b88a7f02118b1f123
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165550"
 ---
 ### <a name="determine-the-dns-name-of-the-virtual-machine"></a>Określ nazwę DNS maszyny wirtualnej
 Aby połączyć się z aparatem bazy danych programu SQL Server z innego komputera, musisz znać nazwę systemu nazw domen (DNS, Domain Name System) maszyny wirtualnej. (Jest to nazwa, używanych przez internet do identyfikowania maszyny wirtualnej. Możesz użyć adresu IP, ale adresu IP mogą ulec zmianie, gdy Azure przenosi zasoby dla zapewnienia nadmiarowości lub konserwacji. Nazwa DNS będzie stabilny, ponieważ mogą zostać przekierowane do nowego adresu IP).  
 
-1. W witrynie Azure Portal (lub w poprzednim kroku), wybierz **maszyny wirtualne (klasyczne)**.
+1. W witrynie Azure Portal (lub w poprzednim kroku), wybierz **maszyny wirtualne (klasyczne)** .
 2. Wybierz maszynę Wirtualną SQL.
 3. Na **maszyny wirtualnej** bloku, kopia **nazwy DNS** dla maszyny wirtualnej.
    

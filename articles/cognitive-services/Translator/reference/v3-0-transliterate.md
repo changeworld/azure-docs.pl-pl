@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-pawal
 ms.openlocfilehash: 138a04cca1bbbaf7b59f628f491a5f13d73fb6f7
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66387391"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
@@ -37,7 +37,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
-    <td>wersja interfejsu API</td>
+    <td>api-version</td>
     <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>

@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595455"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Wprowadzenie do Eksploratora metryk platformy Azure
@@ -32,7 +32,7 @@ Aby utworzyć wykres metryk z zasobu, grupy zasobów, subskrypcji lub widok usł
 
 1. Za pomocą selektora zasobów, wybierz zasób, dla którego chcesz wyświetlać metryki. (Zasób jest wstępnie wybrane, jeśli otworzysz **metryki** w kontekście określonego zasobu).
 
-    > ![Wybierz zasób](./media/metrics-getting-started/resource-picker.png)
+    > ![Wybieranie zasobu](./media/metrics-getting-started/resource-picker.png)
 
 2. Dla niektórych zasobów należy wybrać przestrzeni nazw. Przestrzeń nazw jest po prostu sposób organizowania metryk, aby można je łatwo odnaleźć. Na przykład konta magazynu mają oddzielne przestrzenie nazw do przechowywania plików, tabel, obiektów blob i kolejek metryki. Wiele typów zasobów mieć tylko jedną przestrzeń nazw.
 

@@ -10,10 +10,10 @@ ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b53e07d6086f2a02fd1bbd158ffc09dc95b0c377
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60500128"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Zarządzanie pakietami języka Python 2 w usłudze Azure Automation
@@ -54,7 +54,7 @@ Zaimportuj element runbook python [pakietów importu języka Python 2 pypi do ko
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>
-* - \<konta usługi Automation\>
+* \- \<konta usługi Automation\>
 * -m \<modulePackage\>
 
 ![Lista pakietów](media/python-packages/import-python-runbook.png)

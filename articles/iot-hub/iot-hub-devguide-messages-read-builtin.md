@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61364085"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Odczytywanie komunikatów przesyłanych z urządzeń do chmury z wbudowanego punktu końcowego
@@ -46,7 +46,7 @@ Gdy używasz Event Hubs z zestawów SDK lub integracji produktu, które znają u
 
 3. **Zdarzenia** sekcja zawiera następujące wartości: **Partycje**, **nazwę zgodną z Centrum zdarzeń**, **punktu końcowego zgodnego z Centrum zdarzeń**, **czas przechowywania**, i **grupy konsumentów**.
 
-    ![Ustawienia komunikacji między urządzeniem i chmurą](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
+    ![Ustawienia urządzenia do chmury](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
 W portalu pole punktu końcowego zgodnego z Centrum zdarzeń zawiera pełne parametry połączenia usługi Event Hubs, wygląda następująco: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Jeśli używasz zestawu SDK wymaga inne wartości, ich będzie:
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
 ms.openlocfilehash: e0f3de95cfd4a18294e5e8e2adcf3b52a7487dbb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411356"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
@@ -88,15 +88,15 @@ Domyślny klient Windows DNS ma wbudowaną pamięć podręczną DNS. Niektórych
 
 Istnieje szereg różnych buforowanie pakietów (takich jak dnsmasq) DNS. Poniżej przedstawiono sposób instalowania dnsmasq na najbardziej typowe dystrybucji:
 
-* **Ubuntu (używa resolvconf)**:
+* **Ubuntu (używa resolvconf)** :
   * Zainstaluj pakiet dnsmasq z `sudo apt-get install dnsmasq`.
-* **SUSE (używa netconf)**:
+* **SUSE (używa netconf)** :
   * Zainstaluj pakiet dnsmasq z `sudo zypper install dnsmasq`.
   * Włącz usługę dnsmasq z `systemctl enable dnsmasq.service`. 
   * Uruchom usługę dnsmasq z `systemctl start dnsmasq.service`. 
   * Edytuj **/etc/sysconfig/network/config**i zmień *NETCONFIG_DNS_FORWARDER = ""* do *dnsmasq*.
   * Aktualizuj resolv.conf z `netconfig update`, aby ustawić pamięci podręcznej jako lokalnego rozpoznawania nazw DNS.
-* **CentOS (zużywa NetworkManager)**:
+* **CentOS (zużywa NetworkManager)** :
   * Zainstaluj pakiet dnsmasq z `sudo yum install dnsmasq`.
   * Włącz usługę dnsmasq z `systemctl enable dnsmasq.service`.
   * Uruchom usługę dnsmasq z `systemctl start dnsmasq.service`.
@@ -154,7 +154,7 @@ Również przesyłania dalej DNS umożliwia rozpoznawanie nazw DNS między sieci
 
 ![Diagram przedstawiający DNS między sieciami wirtualnymi](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-Korzystając z rozpoznawania nazw platformy Azure, Azure Dynamic Host Configuration Protocol (DHCP) zawiera wewnętrzny sufiks DNS (**. internal.cloudapp.net**) do każdej maszyny Wirtualnej. Ten sufiks umożliwia rozpoznawanie nazwy hosta, ponieważ są rekordy nazw hosta **internal.cloudapp.net** strefy. Korzystając z własnego rozwiązania rozpoznawania nazw, ten sufiks nie jest dostarczany do maszyn wirtualnych, ponieważ zakłócać innych architektur DNS (np. scenariusze przyłączone do domeny). Zamiast tego system Azure oferuje symbolu zastępczego niedziałającej (*reddog.microsoft.com*).
+Korzystając z rozpoznawania nazw platformy Azure, Azure Dynamic Host Configuration Protocol (DHCP) zawiera wewnętrzny sufiks DNS ( **. internal.cloudapp.net**) do każdej maszyny Wirtualnej. Ten sufiks umożliwia rozpoznawanie nazwy hosta, ponieważ są rekordy nazw hosta **internal.cloudapp.net** strefy. Korzystając z własnego rozwiązania rozpoznawania nazw, ten sufiks nie jest dostarczany do maszyn wirtualnych, ponieważ zakłócać innych architektur DNS (np. scenariusze przyłączone do domeny). Zamiast tego system Azure oferuje symbolu zastępczego niedziałającej (*reddog.microsoft.com*).
 
 Jeśli to konieczne, można określić wewnętrznego sufiks DNS przy użyciu programu PowerShell lub interfejsu API:
 

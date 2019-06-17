@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 2dad1caeba8a0417b7ac16ebaa45f4f291f54495
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c28c87339bbfda7cc47e329c8fe6cebdee4a7843
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127190"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 Ten artykuł zawiera wprowadzenie do zabezpieczeń usług na platformie Azure, które ułatwiają ochronę danych, zasobów i aplikacji w chmurze i potrzeb bezpieczeństwa Twojej firmy.
@@ -124,9 +124,9 @@ Korzystając z usługi Azure Active Directory B2C użytkownicy mogą rejestrowa�
 
 #### <a name="device-registration"></a>Rejestracja urządzenia
 
-[Rejestracja urządzenia w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-introduction) jest podstawą dla opartego na urządzeniach [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup) scenariuszy. Po zarejestrowaniu urządzenia usługa rejestracja urządzeń w usłudze Azure AD Inicjuje obsługę urządzenia przy użyciu tożsamości, który jest używany do uwierzytelniania urządzenia podczas logowania użytkownika. Uwierzytelnionego urządzenia i atrybutów urządzenia można następnie użyć do wymuszania zasad dostępu warunkowego dla aplikacji hostowanych w chmurze i lokalnych.
+[Rejestracja urządzenia w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-introduction) jest podstawą dla opartego na urządzeniach [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup) scenariuszy. Po zarejestrowaniu urządzenia usługa rejestracja urządzeń w usłudze Azure AD Inicjuje obsługę urządzenia przy użyciu tożsamości, który jest używany do uwierzytelniania urządzenia podczas logowania użytkownika. Uwierzytelnionego urządzenia i atrybutów urządzenia można następnie służyć do wymuszania zasad dostępu warunkowego dla aplikacji, które są hostowane w chmurze i lokalnych.
 
-W połączeniu z [zarządzania urządzeniami przenośnymi (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) rozwiązań, takich jak usługi Intune, atrybuty urządzenia w usłudze Azure Active Directory są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Umożliwia to tworzenie reguł dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności.
+W połączeniu z [zarządzania urządzeniami przenośnymi (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) rozwiązań, takich jak usługi Intune, atrybuty urządzenia w usłudze Azure Active Directory są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Dzięki temu można utworzyć zasady dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności.
 
 #### <a name="privileged-identity-management"></a>Privileged Identity Management
 

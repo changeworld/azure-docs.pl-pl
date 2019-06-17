@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: 424453e70e5b62e408f408cd5ae8169cddb14dd7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121695"
 ---
 # <a name="azure-database-security-checklist"></a>Lista kontrolna zabezpieczeń bazy danych platformy Azure
@@ -34,7 +34,7 @@ Należą do nich:
 -   Zarządzanie dostępem do użycia
 -   Szyfrowanie danych
 -   Inspekcja usługi SQL Database
--   Wykrywanie zagrożeń usługi SQL Database
+-   Wykrywanie zagrożeń bazy danych SQL
 
 ## <a name="introduction"></a>Wprowadzenie
 Chmura obliczeniowa wymaga nowych paradygmatów zabezpieczeń, które są Ci znane wielu użytkowników aplikacji, administratorzy baz danych i programistów. W rezultacie niektóre organizacje są wątpliwości do wdrożenia infrastruktury w chmurze do zarządzania danymi ze względu na postrzegany zagrożenia dla bezpieczeństwa. Jednak mogą znacznie tej częste złagodzone za pośrednictwem lepiej zrozumieć funkcje zabezpieczeń wbudowane w Microsoft Azure i Microsoft Azure SQL Database.

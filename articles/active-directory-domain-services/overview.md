@@ -16,14 +16,14 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: mstephen
 ms.openlocfilehash: 4435407737508132fcf9f2ce6148650399e5316b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246932"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługi infrastruktury platformy Azure umożliwiają wdrażanie szerokiego zakresu rozwiązań obliczeniowych zwinne. Usługa Azure Virtual Machines można wykonywać niemal natychmiastowe wdrażanie, i płacisz tylko za wykorzystane minuty. Przy użyciu obsługi Windows, Linux, SQL Server, Oracle, IBM, SAP i BizTalk, możesz wdrożyć dowolne obciążenie, w dowolnym języku i w prawie każdym systemie operacyjnym. Korzyści te umożliwiają migrować starsze aplikacje wdrożone w środowisku lokalnym na platformie Azure, aby zaoszczędzić na wydatki operacyjne.
 
 Kluczowym aspektem migrowania aplikacji lokalnych do platformy Azure jest obsługa wymagań tożsamości tych aplikacji. Aplikacji obsługujących katalog może Polegaj na LDAP w celu odczytu lub zapisu do katalogu firmy, zależą od Windows zintegrowanego uwierzytelniania (uwierzytelnianie Kerberos lub NTLM) do uwierzytelniania użytkowników końcowych. Line-of-business (LOB) działających w systemie Windows Server są zazwyczaj wdrożone na komputerach przyłączonych do domeny, aby można było zarządzać nimi przy użyciu zasad grupy. Te zależności w infrastrukturze tożsamość firmowa aplikacjom "lift-and-shift" środowiska lokalnego do chmury, muszą zostać rozwiązane.

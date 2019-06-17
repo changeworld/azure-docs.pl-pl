@@ -11,10 +11,10 @@ ms.topic: conceptual
 manager: carmonm
 keywords: Program PowerShell, elementów runbook, json, usługa azure automation
 ms.openlocfilehash: 2008ba697665baa0e8cf73564ec31d6267425404
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61073750"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
@@ -240,7 +240,7 @@ Get-AzureRmStorageAccount
 
 ## <a name="summary"></a>Podsumowanie
 
-Gotowe. Teraz można użyć szablonów usługi Azure Automation i Azure Storage i usługi Resource Manager do wdrażania wszystkich zasobów platformy Azure.
+To wszystko! Teraz można użyć szablonów usługi Azure Automation i Azure Storage i usługi Resource Manager do wdrażania wszystkich zasobów platformy Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

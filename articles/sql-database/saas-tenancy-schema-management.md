@@ -13,10 +13,10 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
 ms.openlocfilehash: eb461367d58f7cadeccd434c0e4ab452b7fc640e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66241916"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Zarządzanie schematami w aplikacji SaaS przy użyciu wzorca bazy danych dla dzierżawy usługa Azure SQL Database

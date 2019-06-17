@@ -12,10 +12,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 94c9c3f997143d72262c1ba3d8dbfea90d6f920c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61347725"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz, który uruchamia potok w odpowiedzi na zdarzenie
@@ -69,7 +69,7 @@ Poniższa tabela zawiera omówienie elementów schematu that are related to Wyzw
 
 | **JSON Element** | **Opis** | **Typ** | **Dozwolone wartości** | **Wymagane** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **Zakres** | Identyfikator zasobu usługi Azure Resource Manager na koncie magazynu. | String | Identyfikator usługi Azure Resource Manager | Yes |
+| **Zakres** | Identyfikator zasobu usługi Azure Resource Manager na koncie magazynu. | String | Identyfikator usługi Azure Resource Manager | Tak |
 | **Zdarzenia** | Typ zdarzenia, które powodują uruchomienie tego wyzwalacza. | Tablica    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Tak, dowolnej kombinacji tych wartości. |
 | **blobPathBeginsWith** | Ścieżka obiektu blob musi zaczynać się od wzorca parametru Aby uruchomić wyzwalacz. Na przykład `/records/blobs/december/` tylko uruchamia wyzwalacz dla obiektów blob w `december` folderze `records` kontenera. | String   | | Należy podać wartość dla co najmniej jednej z tych właściwości: `blobPathBeginsWith` lub `blobPathEndsWith`. |
 | **blobPathEndsWith** | Ścieżka obiektu blob musi kończyć się przy użyciu wzorca parametru Aby uruchomić wyzwalacz. Na przykład `december/boxes.csv` tylko uruchamia wyzwalacz dla obiektów blob o nazwie `boxes` w `december` folderu. | String   | | Należy podać wartość dla co najmniej jednej z tych właściwości: `blobPathBeginsWith` lub `blobPathEndsWith`. |

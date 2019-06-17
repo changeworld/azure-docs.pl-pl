@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60688831"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>Połącz z serwerem IBM MQ z aplikacji logiki przy użyciu łącznika MQ
@@ -48,7 +48,7 @@ Microsoft Connector dla programu MQ wysyła i pobiera wiadomości przechowywanyc
 2. Wprowadź **nazwa**, takich jak MQTestApp, **subskrypcji**, **grupy zasobów**, i **lokalizacji** (Użyj lokalizacji gdzie lokalne Połączenie bramy danych jest skonfigurowane). Wybierz **Przypnij do pulpitu nawigacyjnego**i wybierz **Utwórz**.  
 ![Tworzenie aplikacji logiki](media/connectors-create-api-mq/Create_Logic_App.png)
 
-## <a name="add-a-trigger"></a>Dodaj wyzwalacz
+## <a name="add-a-trigger"></a>Dodawanie wyzwalacza
 
 > [!NOTE]
 > Łącznik MQ nie ma żadnych wyzwalaczy. Tak, użyj innego wyzwalacza, aby uruchomić aplikację logiki, takich jak **cyklu** wyzwalacza.

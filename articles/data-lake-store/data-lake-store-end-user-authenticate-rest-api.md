@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60877826"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu interfejsu API REST
@@ -33,9 +33,9 @@ Ten artykuł zawiera informacje o sposobie używania interfejsu API REST w celu 
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Tworzenie aplikacji usługi Azure Active Directory "Natywnego"**. Zostały wykonane kroki opisane w [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Tworzenie aplikacji usługi Azure Active Directory "Natywnego"** . Zostały wykonane kroki opisane w [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **[Adres cURL](https://curl.haxx.se/)**. W tym artykule używa programu cURL w celu zademonstrowania sposobu wykonywania wywołań interfejsu API REST względem konta Data Lake Storage Gen1.
+* **[Adres cURL](https://curl.haxx.se/)** . W tym artykule używa programu cURL w celu zademonstrowania sposobu wykonywania wywołań interfejsu API REST względem konta Data Lake Storage Gen1.
 
 ## <a name="end-user-authentication"></a>Uwierzytelnianie użytkowników końcowych
 Uwierzytelnianie użytkowników końcowych jest zalecaną metodą, jeśli chcesz, aby użytkownika do logowania do aplikacji za pomocą usługi Azure AD. Aplikacja jest w stanie uzyskać dostęp do zasobów platformy Azure na tym samym poziomie dostępu jako zalogowanego użytkownika. Użytkownik musi podawać swoich poświadczeń kolei okresowo dla swojej aplikacji zachować dostęp.
@@ -49,7 +49,7 @@ W tym scenariuszu aplikacja wyświetla monit o zalogowanie się i wówczas wszys
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > Identyfikator \<REDIRECT-URI> musi być zakodowany na potrzeby adresu URL. Tak, aby uzyskać https://localhost, użyj `https%3A%2F%2Flocalhost`)
+   > Identyfikator \<REDIRECT-URI> musi być zakodowany na potrzeby adresu URL. Tak, aby uzyskać https://localhost , użyj `https%3A%2F%2Flocalhost` )
 
     Na potrzeby tego samouczka możesz zastąpić symbole zastępcze w powyższym adresie URL i wkleić go w pasku adresu przeglądarki sieci web. Nastąpi przekierowanie w celu uwierzytelniania przy użyciu identyfikatora logowania do platformy Azure. Gdy pomyślnie się zalogujesz, odpowiedź zostanie wyświetlona na pasku adresu przeglądarki. Odpowiedź będzie miała następujący format:
 

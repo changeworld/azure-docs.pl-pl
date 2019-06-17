@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878446"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Szyfrowanie danych w usłudze Azure Data Lake magazynu Gen1
@@ -74,7 +74,7 @@ Podczas wybierania trybu głównych kluczy szyfrowania należy pamiętać o nast
 
 W projekcie szyfrowania danych używane są trzy typy kluczy. Poniższa tabela zawiera podsumowanie:
 
-| Klucz                   | Skrót | Skojarzony z | Lokalizacja magazynu                             | Type       | Uwagi                                                                                                   |
+| Klucz                   | Skrót | Skojarzony z | Lokalizacja magazynu                             | Typ       | Uwagi                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Główny klucz szyfrowania | GKS          | Konta Data Lake Storage Gen1 | Usługa Key Vault                              | Asymetryczny | Można nim zarządzać, Data Lake Storage Gen1 lub.                                                              |
 | Klucz szyfrowania danych   | KSD          | Konta Data Lake Storage Gen1 | Magazyn trwały zarządzany przez usługę Data Lake Storage Gen1 | Symetryczny  | Klucz szyfrowania danych jest szyfrowany przy użyciu głównego klucza szyfrowania. Na nośniku trwałym jest zapisywany zaszyfrowany klucz szyfrowania danych. |

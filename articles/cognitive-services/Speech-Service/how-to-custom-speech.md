@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: ab33feb1ffdbced193afaba8f52719b3c215652f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f9b9fc0a2939f601cbddafb6ac400130e794da2b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511102"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060895"
 ---
 # <a name="what-is-custom-speech"></a>Co to jest niestandardowa mowy?
 
@@ -29,7 +29,7 @@ Ten diagram zawiera wyróżnione fragmenty, które tworzą portalu usługi Custo
 
 ![Prezentuje różne składniki, które tworzą portalu usługi Custom Speech.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Subskrypcja i Utwórz projekt](#set-up-your-azure-account) — Tworzenie konta platformy Azure i Subskrypcja usług przetwarzania mowy. Ta subskrypcja ujednoliconego zapewnia dostęp do zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenie mowy i portal usługi custom speech. Następnie przy użyciu posiadanej subskrypcji usług przetwarzania mowy, Utwórz swój pierwszy projekt Custom Speech.
+1. [Subskrypcja i Utwórz projekt](#set-up-your-azure-account) — Tworzenie konta platformy Azure i Subskrypcja usług przetwarzania mowy. Ta subskrypcja ujednoliconego zapewnia dostęp do zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenie mowy i portalu usługi Custom Speech. Następnie przy użyciu posiadanej subskrypcji usług przetwarzania mowy, Utwórz swój pierwszy projekt Custom Speech.
 
 2. [Przekazywanie danych testowych](how-to-custom-speech-test-data.md) — przekazywanie danych testowych (pliki audio) do oceny firmy Microsoft zamiany mowy na tekst przeznaczone dla aplikacji, narzędzi i produktów.
 
@@ -52,7 +52,7 @@ Po utworzeniu konta platformy Azure i Subskrypcja usług przetwarzania mowy, mus
 
 1. Pobierz klucz subskrypcji usług przetwarzania mowy z witryny Azure portal.
 2. Zaloguj się do [portal Custom Speech](https://aka.ms/custom-speech).
-3. Wybierz subskrypcję, czego potrzebujesz do pracy nad Tworzenie projektu funkcji rozpoznawania mowy.
+3. Wybierz subskrypcję, którą trzeba pracować nad, a następnie utwórz projekt mowy.
 4. Jeśli chcesz zmodyfikować subskrypcję, użyj **koło zębate** ikonę znajduje się w górnym menu nawigacyjnym.
 
 ## <a name="how-to-create-a-project"></a>Jak utworzyć projekt

@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696417"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Nawiązywanie połączenia programu SQL Server lub usługi Azure SQL Database z usługi Azure Logic Apps
@@ -90,7 +90,7 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
    ![Wybierz pozycję "Nowy krok", "Dodaj akcję"](./media/connectors-create-api-sqlazure/add-action.png)
    
    Aby dodać akcję między krokami istniejących, myszą strzałkę nawiązującego połączenie. 
-   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 2. W polu wyszukiwania wprowadź "sql server" jako filtr. Z listy akcji wybierz dowolną akcję SQL, która ma. 
 

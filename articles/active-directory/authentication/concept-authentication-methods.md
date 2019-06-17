@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119365"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
@@ -33,7 +33,7 @@ Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkown
 | Adres e-mail | Tylko samoobsługowego resetowania HASEŁ |
 | Aplikacja Microsoft Authenticator | Uwierzytelnianie wieloskładnikowe i publicznej wersji zapoznawczej na potrzeby samoobsługowego resetowania HASŁA |
 | Token sprzętowy OATH | Publicznej wersji zapoznawczej dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
-| Wiadomość SMS | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
+| SMS | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Połączenie głosowe | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Hasła aplikacji | Uwierzytelnianie wieloskładnikowe tylko w niektórych przypadkach |
 
@@ -60,41 +60,41 @@ Jeśli używasz pytań zabezpieczających, firma Microsoft zaleca używanie ich 
 
 ### <a name="predefined-questions"></a>Wstępnie zdefiniowane pytania
 
-* W jakim mieście poznałeś/poznałaś swoją pierwszą współmałżonkę lub partnerkę albo swojego pierwszego współmałżonka lub partnera?
-* W jakim mieście poznali się Twoi rodzice?
-* W jaki mieście mieszka Twoje najbliższe rodzeństwo?
-* W jakim mieście urodził się Twój ojciec?
-* W jakim mieście podjąłeś/podjęłaś swoją pierwszą pracę?
-* W jakim mieście urodziła się Twoja matka?
-* W jakim mieście byłeś/byłaś w Nowy Rok w 2000 r.?
-* Jak miał na nazwisko Twój ulubiony nauczyciel w szkole średniej?
-* Na jaką uczelnię próbowałeś/próbowałaś się dostać, ale się nie udało?
-* Gdzie odbyło się Twoje pierwsze wesele?
-* Jakie jest drugie imię Twojego ojca?
-* Jakie jest Twoje ulubione danie?
-* Jak ma na imię i nazwisko Twoja babcia od strony matki?
-* Jakie jest drugie imię Twojej matki?
+* W jakim mieście możesz spełniał pierwszego współmałżonka/partnera?
+* W jakim mieście Twoi rodzice?
+* W jakim mieście Twojego najbliższej rodzeństwa na żywo?
+* W jakim mieście był Twój ojciec?
+* W jakim mieście podjęłaś swoją pierwszą pracę?
+* W jakim mieście była Twoja matka?
+* Jakim mieście byłeś/byłaś w nowy rok w 2000?
+* Co to jest nazwisko Twoja ulubiony nauczyciel w szkole średniej?
+* Co to jest nazwa college dotyczą, ale nie uczestniczyły?
+* Co to jest nazwa miejsca, w którym przechowywane są Twoje pierwsze odbioru wesele?
+* Co to jest Twojego ojca?
+* Co to jest Twoje ulubione danie?
+* Co to jest Twoja babcia ma na imię i nazwisko?
+* Co to jest Twojej matki?
 * Co to jest urodzin miesiąca i roku Twojego najstarszego rodzeństwa? (na przykład listopad 1985)
-* Jakie jest drugie imię Twojego najstarszego rodzeństwa?
-* Jak ma na imię i nazwisko Twój dziadek od strony ojca?
-* Jakie jest drugie imię Twojego najmłodszego rodzeństwa?
+* Jaka jest nazwa bliski Twojego najstarszego rodzeństwa?
+* Co to jest Twój dziadek od strony na imię i nazwisko?
+* Co to jest Twojego najmłodszego rodzeństwa?
 * Do jakiej szkoły uczęszczałeś/uczęszczałaś w szóstej klasie?
-* Jak miał na imię i nazwisko Twój najlepszy przyjaciel lub przyjaciółka w dzieciństwie?
-* Jakie było imię i nazwisko Twojego pierwszego partnera lub Twojej pierwszej partnerki?
-* Jak miał na nazwisko Twój ulubiony nauczyciel w szkole podstawowej?
+* Jakie było imię i nazwisko Twój najlepszy przyjaciel?
+* Jakie było imię i nazwisko Twojej pierwszej partnerki?
+* Jaki był nazwisko nauczyciel w szkole Ulubione usługi podstawowej?
 * Jakie były marka i model Twojego pierwszego samochodu lub motocykla?
-* Jak się nazywała Twoja pierwsza szkoła?
-* Jak się nazywał szpital, w którym się urodziłeś/urodziłaś?
-* Przy jakiej ulicy znajdował się Twój pierwszy dom z dzieciństwa?
-* Jak się nazywał Twój bohater z dzieciństwa?
-* Jak się nazywała Twoja ulubiona maskotka?
-* Jak się wabiło Twoje pierwsze zwierzę domowe?
+* Jak się nazywał nazywała Twoja pierwsza Szkoła?
+* Co się nazywał szpital, w którym zostały stworzone?
+* Jaka była nazwa ulicę Twoje pierwszy DOM z dzieciństwa?
+* Jak się nazywał Twój bohater z?
+* Jaka była nazwa Twoje ulubione zwierzę jak się?
+* Jak się nazywał Twoje pierwsze zwierzę domowe?
 * Jaki był Twój pseudonim w dzieciństwie?
-* Jaki był Twój ulubiony sport w szkole średniej?
-* Jaka była Twoja pierwsza praca?
-* Jakie były cztery ostatnie cyfry Twojego numeru telefonu z dzieciństwa?
-* Kim chciałeś/chciałaś zostać w dzieciństwie, gdy dorośniesz?
-* Jak się nazywa najpopularniejsza poznana przez Ciebie osoba?
+* Jaka była Twoja ulubiony Sport w szkole średniej?
+* Co podjęłaś swoją pierwszą pracę?
+* Jakie były cztery ostatnie cyfry numeru telefonu Twojego dzieciństwa?
+* Gdy udało młodych, co chcesz się, gdy dorośniesz?
+* Kto jest Najpopularniejsza poznana osoby, które nigdy nie zostały spełnione?
 
 Wstępnie zdefiniowane pytania zabezpieczające są przetłumaczone i zlokalizowane do pełnego zestawu języków usługi Office 365 na podstawie ustawień regionalnych przeglądarki przez użytkownika.
 
@@ -204,7 +204,7 @@ Automatyczne połączenie głosowe wykonano pod numer telefonu, których udziela
 > [!IMPORTANT]
 > Począwszy od marca 2019 opcji połączenia telefonicznego nie będą dostępne dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ użytkowników w dzierżawach bezpłatnej/wersji próbnej usługi Azure AD. Ta zmiana nie wpływa na wiadomości SMS. Połączenie telefoniczne będą nadal dostępne dla użytkowników w płatną dzierżaw usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżaw bezpłatnej/wersji próbnej usługi Azure AD.
 
-## <a name="office-phone"></a>Telefon służbowy
+## <a name="office-phone"></a>Telefon biurowy
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebrać połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia.
 

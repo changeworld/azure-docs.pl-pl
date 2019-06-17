@@ -13,10 +13,10 @@ ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
 ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978526"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Wdrażanie i eksplorowanie aplikacji z wieloma dzierżawami podzielonej na fragmenty
@@ -58,7 +58,7 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 ### <a name="plan-the-names"></a>Planowanie nazwy
 
 W krokach w tej sekcji podaj *użytkownika* wartość, która służy do zapewnienia zasobów nazwy są globalnie unikatowe oraz nazwę *grupy zasobów* zawierającą wszystkie zasoby utworzone przez wdrożenie aplikacji. Dla osoby o nazwie *Finley pods*, sugerujemy:
-- *Użytkownik:* **af1***(ich skróty, a także cyfry.   Użyj innej wartości (np. af2), gdy wdrożysz aplikację po raz drugi).*
+- *Użytkownik:* **af1** *(ich skróty, a także cyfry. Użyj innej wartości (np. af2), gdy wdrożysz aplikację po raz drugi).*
 - *Grupa zasobów:* **wingtip-mt-af1** *(o nazwie wingtip-mt wskazuje to aplikacji wielodostępnych podzielonej na fragmenty. Dołączanie af1 nazwa użytkownika jest skorelowane z nazwami zasobów, które zawiera nazwy grupy zasobów.)*
 
 Teraz wybierz nazwy i zanotuj je. 
@@ -125,19 +125,19 @@ Każde miejsce otrzymuje spersonalizowaną aplikację sieci web do wyświetlania
 Centralna **Centrum zdarzeń** strony sieci Web zawiera listę linków dla dzierżaw w ramach danego wdrożenia. Wykonaj następujące kroki, aby środowisko **Centrum zdarzeń** strony sieci Web i aplikację internetową poszczególnych:
 
 1. Otwórz **Centrum zdarzeń** w przeglądarce sieci web:
-   - http://events.wingtip-mt.&lt; użytkownika&gt;. trafficmanager.net &nbsp; *(Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia.)*
+   - http://events.wingtip-mt.&lt ; użytkownika&gt;. trafficmanager.net &nbsp; *(Zastąp &lt; użytkownika&gt; wartością użytkownika wdrożenia.)*
 
      ![centrum zdarzeń](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. Kliknij przycisk **Fabrikam Jazz Club** w **Centrum zdarzeń**.
 
-   ![Zdarzenia](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Events](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Aby kontrolować dystrybucję żądań przychodzących, aplikacja Wingtip używa [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Na stronie zdarzenia dla każdej dzierżawy zawiera nazwę dzierżawy w jego adresie URL. Każdy adres URL zawiera również wartość określonego użytkownika. Każdy adres URL przestrzegają pokazano format wykonując następujące kroki:
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Aplikacja zdarzeń analizuje nazwę dzierżawy w adresie URL. Nazwa dzierżawy jest *fabrikamjazzclub* w poprzednim przykładowego adresu URL.
 2. Aplikacja następnie tworzy skrót nazwy dzierżawy, aby utworzyć klucz w celu uzyskania dostępu do wykazu przy użyciu [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md).

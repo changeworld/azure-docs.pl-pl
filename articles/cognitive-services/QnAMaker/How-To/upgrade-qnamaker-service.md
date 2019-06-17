@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: tulasim
 ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61372360"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>Udostępnianie lub Uaktualnij usługi QnA Maker
@@ -29,7 +29,7 @@ Usługa QnA Maker tworzy kilka zasobów platformy Azure. Aby można było ograni
 |Usługa|Udostępnij|
 |--|--|
 |Cognitive Services|X|
-|Plan usługi aplikacji|✔|
+|plan usługi App service|✔|
 |App Service|X|
 |Application Insights|✔|
 |Search Service|✔|

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
 ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684244"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Wprowadzenie do zasobów, rozwiązywanie problemów w usłudze Azure Network Watcher
@@ -49,9 +49,9 @@ W poniższej tabeli przedstawiono typy różnych domenach błędów (identyfikat
 
 ### <a name="gateway"></a>Brama
 
-| Typ błędu | Przyczyna | Log|
+| Typ błędu | Reason | Log|
 |---|---|---|
-| NoFault | Po wykryciu braku błędów |Yes|
+| NoFault | Po wykryciu braku błędów |Tak|
 | GatewayNotFound | Nie można odnaleźć bramy lub bramy nie zostało aprowizowane. |Nie|
 | PlannedMaintenance |  Wystąpienie bramy jest w trakcie konserwacji  |Nie|
 | UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizacja może być operacji zmiany rozmiaru. | Nie |
@@ -59,25 +59,25 @@ W poniższej tabeli przedstawiono typy różnych domenach błędów (identyfikat
 | PlatformInActive | Występuje problem z platformą. | Nie|
 | ServiceNotRunning | Usługa podstawowy nie jest uruchomiona. | Nie|
 | NoConnectionsFoundForGateway | Nawiązywanie połączeń nie istnieje w bramie. Ten błąd jest tylko to ostrzeżenie.| Nie|
-| ConnectionsNotConnected | Połączenia są połączone. Ten błąd jest tylko to ostrzeżenie.| Yes|
-| GatewayCPUUsageExceeded | Brama bieżące użycie procesora CPU jest > 95%. | Yes |
+| ConnectionsNotConnected | Połączenia są połączone. Ten błąd jest tylko to ostrzeżenie.| Tak|
+| GatewayCPUUsageExceeded | Brama bieżące użycie procesora CPU jest > 95%. | Tak |
 
 ### <a name="connection"></a>Połączenie
 
-| Typ błędu | Przyczyna | Log|
+| Typ błędu | Reason | Log|
 |---|---|---|
-| NoFault | Po wykryciu braku błędów |Yes|
+| NoFault | Po wykryciu braku błędów |Tak|
 | GatewayNotFound | Nie można odnaleźć bramy lub bramy nie zostało aprowizowane. |Nie|
 | PlannedMaintenance | Wystąpienie bramy jest w trakcie konserwacji  |Nie|
 | UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizacja może być operacji zmiany rozmiaru.  | Nie |
 | VipUnResponsive | Ten błąd występuje, gdy podstawowe wystąpienie bramy nie można połączyć się z powodu błędu sondy kondycji. | Nie |
 | ConnectionEntityNotFound | Brak konfiguracji połączenia | Nie |
 | ConnectionIsMarkedDisconnected | Połączenie jest oznaczone jako "odłączonego" |Nie|
-| ConnectionNotConfiguredOnGateway | Usłudze podstawowej nie ma skonfigurowanego połączenia. | Yes |
+| ConnectionNotConfiguredOnGateway | Usłudze podstawowej nie ma skonfigurowanego połączenia. | Tak |
 | ConnectionMarkedStandby | Usłudze podstawowej jest oznaczana w stanie wstrzymania.| Yes|
 | Authentication | Niezgodność klucza wstępnego | Yes|
-| PeerReachability | Bramy równorzędnej jest nieosiągalny. | Yes|
-| IkePolicyMismatch | Brama elementów równorzędnych ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
+| PeerReachability | Bramy równorzędnej jest nieosiągalny. | Tak|
+| IkePolicyMismatch | Brama elementów równorzędnych ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Tak|
 | WfpParse Error | Wystąpił błąd podczas analizowania dziennika wywołanie. |Yes|
 
 ## <a name="supported-gateway-types"></a>Obsługiwane typy bram

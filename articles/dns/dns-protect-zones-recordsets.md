@@ -2,17 +2,16 @@
 title: Ochrona usługi Azure strefy i rekordy DNS
 description: Jak chronić strefy DNS i zestawami rekordów w systemie Microsoft Azure DNS.
 services: dns
-author: WenJason
+author: vhorne
 ms.service: dns
 ms.topic: article
-origin.date: 12/4/2018
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 12/4/2018
+ms.author: victorh
 ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66121452"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chronić strefy i rekordy DNS
@@ -23,7 +22,7 @@ Strefy i rekordy DNS są zasoby o znaczeniu krytycznym. Usunięcie strefy DNS lu
 
 W tym artykule wyjaśniono, jak usługi Azure DNS pozwala chronić swoje strefy i rekordy DNS dla takich zmian.  Możemy zastosować dwa zaawansowanych funkcji zabezpieczeń udostępniane przez usługi Azure Resource Manager: [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) i [blokad zasobów](../azure-resource-manager/resource-group-lock-resources.md).
 
-## <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
+## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
 Usługa Azure opartej na rolach kontrola dostępu (RBAC) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure użytkownikom, grupom i zasobów. Korzystając z modelu RBAC, można przyznać dokładnie ilość dostępu potrzebnym użytkownikom do wykonywania swoich zadań. Aby uzyskać więcej informacji na temat sposobu RBAC ułatwia zarządzanie dostępem, zobacz [co to jest kontrola dostępu oparta na rolach](../role-based-access-control/overview.md).
 
@@ -118,7 +117,8 @@ Poniższy przykład przedstawia niestandardową definicję roli do zarządzania 
         "Microsoft.Insights/alertRules/*",
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
-        "Microsoft.Resources/subscriptions/resourceGroups/read"
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
     ],
     "NotActions": [
     ],
@@ -156,7 +156,7 @@ Rolę można przypisać w taki sam sposób jak wbudowanych ról, zgodnie z opise
 
 Aby uzyskać więcej informacji na temat sposobu tworzenia, zarządzania i przypisywanie ról niestandardowych, zobacz [niestandardowych ról RBAC platformy Azure](../role-based-access-control/custom-roles.md).
 
-## <a name="resource-locks"></a>Blokady zasobów
+## <a name="resource-locks"></a>Blokad zasobów
 
 Oprócz RBAC usługi Azure Resource Manager obsługuje innego typu kontroli zabezpieczeń, a mianowicie możliwość blokowanie zasobów. Gdzie RBAC, zasady umożliwiają kontrolowanie działania konkretnych użytkowników i grup blokad zasobów są stosowane do zasobu i obowiązują we wszystkich użytkowników i ról. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 

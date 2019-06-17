@@ -16,17 +16,17 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3fb7fbba7ec48da580d2a630ae51aa20b3307848
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074623"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Aplikacja logujący się użytkownicy sieci Web — zaloguj się
 
 Dowiedz się, jak dodać logowanie do kodu aplikacji sieci web logowania przez użytkowników.
 
-## <a name="sign-in"></a>Zaloguj się
+## <a name="sign-in"></a>Logowanie
 
 Kodu zostały wykonane następujące kroki w poprzednim artykule [konfiguracji kodu aplikacji](scenario-web-app-sign-user-app-configuration.md) to wszystko, czego potrzebujesz do zaimplementowania wylogowania. Po użytkownik logował się do aplikacji, prawdopodobnie chcesz włączyć je się wylogować. Platforma ASP.NET core obsługuje wylogowywanie w protokole dla Ciebie.
 
@@ -124,7 +124,7 @@ public void SignOut()
 }
 ```
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol
 
 Jeśli nie chcesz używać platformy ASP.NET Core i ASP.NET, można przyjrzeć się w dokumentacji protokołu, który jest dostępny z [Open ID Connect](./v2-protocols-oidc.md).
 

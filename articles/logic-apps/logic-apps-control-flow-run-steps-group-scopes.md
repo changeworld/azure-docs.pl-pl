@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60685560"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Uruchom akcje na podstawie stanu grupy z zakresów w usłudze Azure Logic Apps
@@ -68,7 +68,7 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
       | Ustawienie | Wartość | Opis |
       | ------- | ----- | ----------- |
       | **Nazwa połączenia** | BingMapsConnection | Podaj nazwę połączenia. | 
-      | **Klucz interfejsu API** | <*klucz_usługi_Mapy_Bing*> | Wprowadź uzyskany wcześniej klucz usługi Mapy Bing. | 
+      | **Klucz interfejsu API** | <*your-Bing-Maps-key*> | Wprowadź uzyskany wcześniej klucz usługi Mapy Bing. | 
       ||||  
 
    1. Konfigurowanie usługi **Pobierz trasę** akcji, jak pokazano w tabeli poniżej następująco:
@@ -165,7 +165,7 @@ Następnie dodaj zakresu, dzięki czemu można grupować konkretne akcje i oceni
 1. Dodaj zakres lokalizacji przepływu pracy, który ma. Na przykład aby dodać zakresu między krokami istniejących w przepływ pracy aplikacji logiki, wykonaj następujące kroki: 
 
    1. Przesuń wskaźnik myszy strzałkę, w której chcesz dodać zakresu. 
-   Wybierz **znak plus** (**+**) > **Dodaj akcję**.
+   Wybierz **znak plus** ( **+** ) > **Dodaj akcję**.
 
       ![Dodaj zakres](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 

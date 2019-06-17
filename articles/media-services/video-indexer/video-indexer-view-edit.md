@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 24a723bd32cb40807da1757b3fffb925d4ba1fef
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799178"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Wyświetlanie i edytowanie informacji szczegółowych w usłudze Video Indexer
@@ -27,7 +27,7 @@ W tym temacie przedstawiono sposób wyświetlania i edytowania informacji szczeg
 
     Na stronie zostaną wyświetlone podsumowane szczegółowe informacje dotyczące tego pliku wideo. 
 
-    ![Szczegółowe informacje](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
+    ![Insights](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
 
 4. Wyświetlanie podsumowania szczegółowe informacje dotyczące filmu wideo. 
 

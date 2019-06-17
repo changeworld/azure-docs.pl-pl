@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4cfbfc4bed5438ed901fca86d8c2939d3860c68e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8ef9da86377ac6f1b012cb0ebfd9d6866bc0c620
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684157"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061590"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Wprowadzenie do Przechwytywanie pakietów zmiennych w usłudze Azure Network Watcher
 
-Przechwytywanie pakietów zmiennych obserwatora sieci umożliwia tworzenie sesji przechwytywania pakietów, aby śledzić ruch do i z maszyny wirtualnej. Ułatwia Przechwytywanie pakietów do diagnozowania sieci anomalie zarówno w sposób reaktywny i proactivity. Inne zastosowania obejmują zbierania statystyk sieciowych, uzyskiwanie informacji na temat włamań sieci, debugowanie komunikacja klient serwer i wiele więcej.
+Przechwytywanie pakietów zmiennych obserwatora sieci umożliwia tworzenie sesji przechwytywania pakietów, aby śledzić ruch do i z maszyny wirtualnej. Przechwytywanie pakietów ułatwia diagnozowanie anomalie sieci w sposób reaktywny i aktywnie. Inne zastosowania obejmują zbierania statystyk sieciowych, uzyskiwanie informacji na temat włamań sieci, debugowanie komunikacja klient serwer i wiele więcej.
 
 Przechwytywanie pakietów jest uruchamiana zdalnie przy użyciu usługi Network Watcher rozszerzenie maszyny wirtualnej. Ta możliwość ułatwia obciążenia ręczne uruchomienie przechwytywania pakietów na odpowiednią maszynę wirtualną, co pozwoli zaoszczędzić cenny czas. Przechwytywanie pakietów mogą być wywoływane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST. Jest jednym z przykładów jak przechwytywanie pakietów mogą być wywoływane z alertami maszyny wirtualnej. Filtry są dostarczane dla sesji przechwytywania, aby upewnić się, że Przechwytywanie ruchu sieciowego, który chcesz monitorować. Filtry są oparte na tuple 5 (protokół, lokalny adres IP, zdalny adres IP, portu lokalnego i zdalnego port) informacji. Przechwycone dane są przechowywane w lokalnych dysków lub magazynu obiektów blob. Obowiązuje limit 10 sesji przechwytywania pakietów na region na subskrypcję. To ograniczenie ma zastosowanie tylko do sesji i nie ma zastosowania do plików przechwytywania pakietów zapisanych lokalnie na maszynie Wirtualnej lub na koncie magazynu.
 

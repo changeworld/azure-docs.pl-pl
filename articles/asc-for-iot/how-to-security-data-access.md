@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 1ec6a174d05f8707bbffcc9fb013a98c2eb9196c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200557"
 ---
 # <a name="access-your-security-data"></a>Dostęp do danych zabezpieczeń 
@@ -92,12 +92,12 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | Nazwa wyświetlana                           | Count |
+| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | Nazwa wyświetlana                           | Licznik |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Atak siłowy powiodło się.           | 9   |   
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | Próba logowania lokalnego na urządzeniu nie powiodła się  | 242 |    
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni        | Próba logowania lokalnego na urządzeniu nie powiodła się  | 242 |    
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | 31  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | Crypto Coin Miner                     | 4   |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni        | Crypto Coin Miner                     | 4   |
 
 ### <a name="iot-hub-summary"></a>Podsumowanie usługi IoT hub
 
@@ -119,9 +119,9 @@ SecurityAlert
 | IoTHubId                                                                                                       | AlertSeverity | Nazwa wyświetlana                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Wysoka          | Atak siłowy powiodło się.           | 1          |    
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Medium        | Próba logowania lokalnego na urządzeniu nie powiodła się  | 1          | 
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Średni        | Próba logowania lokalnego na urządzeniu nie powiodła się  | 1          | 
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Medium        | Crypto Coin Miner                     | 1          |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Średni        | Crypto Coin Miner                     | 1          |
 
 ## <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
@@ -151,8 +151,8 @@ SecurityRecommendation
     
 | TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Opis | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium | Aktywne | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych | Znaleziono regułę zapory, która zawiera liberalny wzorzec dla szerokiego zakresu adresów IP lub portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
-| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium | Aktywne | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych | Znaleziono regułę zapory, która zawiera liberalny wzorzec dla szerokiego zakresu adresów IP lub portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni | Aktywne | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP i portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni | Aktywne | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP i portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
 
 ### <a name="device-summary"></a>Podsumowania urządzenia
 
@@ -169,12 +169,12 @@ SecurityRecommendation
 | summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Count |
+| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Licznik |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | 2   |    
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | 1 |  
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni        | 1 |  
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | 1  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | 4   |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni        | 4   |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

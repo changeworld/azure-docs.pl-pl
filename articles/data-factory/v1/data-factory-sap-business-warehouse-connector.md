@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61258662"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Przenoszenie danych z rozwiązania SAP Business Warehouse przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-sap-business-warehouse-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-sap-business-warehouse.md)
 
@@ -64,12 +64,12 @@ Poniższa tabela zawiera opis specyficzne dla usługi SAP Business Warehouse (BW
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | string | Yes
-systemNumber | Numer systemu systemu SAP BW. | Liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes
-clientId | Identyfikator klienta klienta w SAP W systemie. | Liczba dziesiętna trzycyfrowy reprezentowane jako ciąg. | Yes
-nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Yes
-hasło | Hasło użytkownika. | string | Yes
-gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem programu SAP BW. | string | Yes
+server | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | string | Tak
+systemNumber | Numer systemu systemu SAP BW. | Liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Tak
+clientId | Identyfikator klienta klienta w SAP W systemie. | Liczba dziesiętna trzycyfrowy reprezentowane jako ciąg. | Tak
+username | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Tak
+password | Hasło użytkownika. | string | Tak
+gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem programu SAP BW. | string | Tak
 encryptedCredential | Ciąg zaszyfrowane poświadczenia. | string | Nie
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
@@ -87,7 +87,7 @@ Gdy źródłowego w działaniu kopiowania jest typu **RelationalSource** (w tym 
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query | Określa zapytanie MDX, które można odczytać danych z wystąpienia systemu SAP BW. | Zapytanie MDX. | Yes |
+| query | Określa zapytanie MDX, które można odczytać danych z wystąpienia systemu SAP BW. | Zapytanie MDX. | Tak |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z rozwiązania SAP Business Warehouse do obiektów Blob platformy Azure
@@ -301,15 +301,15 @@ FLTP | Double
 INT1 | Byte
 INT2 | Int16
 INT4 | Int
-JĘZYK | String
+LANG | String
 LCHR | String
 LRAW | Byte[]
 PREC | Int16
 QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
-CIĄG | String
-JEDNOSTKA | String
+STRING | String
+UNIT | String
 DATS | String
 NUMC | String
 TIMS | String

@@ -17,10 +17,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60540406"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Przykład wskazówki infrastruktury platformy Azure dla maszyn wirtualnych Windows
@@ -55,8 +55,8 @@ Wszystkie powyższe postępuj zgodnie z tymi konwencji nazewnictwa:
 * Adventure Works Cycles używa **[IT obciążenia]-[lokalizacja]-[zasobów platformy Azure]** jako prefiksu
   * Na przykład "**azos**" (Store Online platformy Azure) jest nazwą obciążenia IT i "**użyj**" (wschodnie stany USA 2) to lokalizacja
 * Sieci wirtualne używać AZOS — UŻYJ-VN **[liczba]**
-* Zestawy dostępności Użyj azos — Użyj-jako-**[rola]**
-* Nazwy maszyn wirtualnych Użyj azos — Użyj-vm -**[vmname]**
+* Zestawy dostępności Użyj azos — Użyj-jako- **[rola]**
+* Nazwy maszyn wirtualnych Użyj azos — Użyj-vm - **[vmname]**
 
 ## <a name="azure-subscriptions-and-accounts"></a>Konta i subskrypcji platformy Azure
 Adventure Works Cycles korzysta z ich subskrypcji Enterprise, o nazwie Adventure Works subskrypcji Enterprise, zapewnienie rozliczenia dla tego obciążenia IT.

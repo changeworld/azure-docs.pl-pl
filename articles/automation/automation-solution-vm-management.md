@@ -10,10 +10,10 @@ ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389106"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
@@ -312,11 +312,11 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|
 |ResourceProvider | Określa nazwę usługi platformy Azure, która zapewnia zasoby do wdrożenia i zarządzania. W przypadku usługi Automation wartością jest Azure Automation.|
 |ResourceType | Określa typ zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
-|resultType | Stan zadania elementu Runbook. Możliwe wartości to:<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>— Powiodło się|
-|resultDescription | Opisuje stan wyniku zadania elementu Runbook. Możliwe wartości to:<br>— Zadanie jest uruchomione<br>— Zadanie nie powiodło się<br>— Zadanie zostało ukończone|
+|resultType | Stan zadania elementu Runbook. Możliwe wartości:<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>— Powiodło się|
+|resultDescription | Opisuje stan wyniku zadania elementu Runbook. Możliwe wartości:<br>— Zadanie jest uruchomione<br>— Zadanie nie powiodło się<br>— Zadanie zostało ukończone|
 |RunbookName | Określa nazwę elementu Runbook.|
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager|
-|StreamType | Określa typ zdarzenia. Możliwe wartości to:<br>— Pełne<br>— Dane wyjściowe<br>— Błąd<br>— Ostrzeżenie|
+|StreamType | Określa typ zdarzenia. Możliwe wartości:<br>— Pełne<br>— Dane wyjściowe<br>— Błąd<br>— Ostrzeżenie|
 |SubscriptionId | Określa identyfikator subskrypcji zadania.
 |Time | Data i godzina dla wykonania zadania elementu Runbook.|
 
@@ -336,7 +336,7 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |resultDescription | Obejmuje strumień wyjściowy z elementu Runbook.|
 |RunbookName | Nazwa elementu Runbook.|
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager.|
-|StreamType | Typ strumienia zadania. Możliwe wartości to:<br>-Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne|
+|StreamType | Typ strumienia zadania. Możliwe wartości:<br>-Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne|
 |Time | Data i godzina dla wykonania zadania elementu Runbook.|
 
 Jeśli wykonujesz dowolne wyszukiwanie dzienników, które zwraca rekordy kategorii **JobLogs** lub **JobStreams**, możesz wybrać **JobLogs** lub **JobStreams**widoku, który wyświetla zestaw kafelków z podsumowaniem aktualizacji zwracanych przez wyszukiwanie.

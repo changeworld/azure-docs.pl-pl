@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61436481"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące systemu Storm w HDInsight i Azure Data Lake Storage Gen1 dostrajania wydajności
@@ -132,7 +132,7 @@ Jeśli napotkasz limity przepustowości, dostarczone przez Data Lake Storage Gen
 
 Aby sprawdzić, czy użytkownik jest ograniczany, Włącz debugowanie rejestrowania po stronie klienta:
 
-1. W **Ambari** > **Storm** > **Config** > **zaawansowane storm-proces roboczy — log4j**, Zmień **&lt;poziom główny = "info"&gt;** do  **&lt;poziom główny = "debug"&gt;**. Uruchom ponownie wszystkie węzły/usługę konfiguracji zostały wprowadzone.
+1. W **Ambari** > **Storm** > **Config** > **zaawansowane storm-proces roboczy — log4j**, Zmień **&lt;poziom główny = "info"&gt;** do  **&lt;poziom główny = "debug"&gt;** . Uruchom ponownie wszystkie węzły/usługę konfiguracji zostały wprowadzone.
 2. Monitorowanie topologii systemu Storm dzienniki na węzłach procesu roboczego (w obszarze /var/log/storm/worker-artifacts /&lt;TopologyName&gt;/&lt;portu&gt;/worker.log) for Data Lake Storage Gen1 ograniczania wyjątków.
 
 ## <a name="next-steps"></a>Kolejne kroki

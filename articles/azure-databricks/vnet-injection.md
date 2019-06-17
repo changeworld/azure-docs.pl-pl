@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62126685"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>Wdrażanie usługi Azure Databricks w usłudze virtual network (wersja zapoznawcza)
@@ -121,15 +121,15 @@ Możesz użyć tego szablonu bez również przy użyciu szablonu grupy zabezpiec
 
 Jeśli nie używasz [witryny Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) lub [szablonów usługi Azure Resource Manager](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) do tworzenia sieci grup zabezpieczeń, użytkownik będzie musiał ręcznie umieścić na liście dozwolonych następujące ruchu w podsieci.
 
-|Direction|Protokół|Element źródłowy|Port źródłowy|Element docelowy|Port docelowy|
+|Direction|Protocol|source|Port źródłowy|Element docelowy|Port docelowy|
 |---------|--------|------|-----------|-----------|----------------|
 |Przychodzący|\*|VirtualNetwork|\*|\*|\*|
 |Przychodzący|\*|IP translatora adresów Sieciowych na płaszczyźnie kontroli|\*|\*|22|
 |Przychodzący|\*|IP translatora adresów Sieciowych na płaszczyźnie kontroli|\*|\*|5557|
-|Wychodzący|\*|\*|\*|IP aplikacji sieci Web|\*|
-|Wychodzący|\*|\*|\*|SQL (numer seryjny)|\*|
-|Wychodzący|\*|\*|\*|Magazyn (numer seryjny)|\*|
-|Wychodzący|\*|\*|\*|VirtualNetwork|\*|
+|Wychodzące|\*|\*|\*|IP aplikacji sieci Web|\*|
+|Wychodzące|\*|\*|\*|SQL (numer seryjny)|\*|
+|Wychodzące|\*|\*|\*|Magazyn (numer seryjny)|\*|
+|Wychodzące|\*|\*|\*|VirtualNetwork|\*|
 
 Ruchu przy użyciu następujących adresów IP w podsieci z listy dozwolonych adresów. SQL (magazynu metadanych) i magazynu (artefaktów i dziennika), należy używać Sql i Storage [tagów usług](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 

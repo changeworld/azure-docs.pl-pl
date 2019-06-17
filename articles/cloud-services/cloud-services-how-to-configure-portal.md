@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: jeconnoc
 ms.openlocfilehash: 4d8d3b93ef2a6347076fada53932b5fc56838d20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61435811"
 ---
 # <a name="how-to-configure-cloud-services"></a>Jak skonfigurować usługi w chmurze
@@ -58,8 +58,8 @@ Alerty można dodać do swojej usługi w chmurze. Kliknij przycisk **ustawienia*
 
 W tym miejscu możesz skonfigurować alert. Za pomocą **metryki** pole listy rozwijanej możesz skonfigurować alert dla następujących typów danych.
 
-* Odczyt dysku
-* Zapis dysku
+* Odczytu z dysku
+* Zapis na dysku
 * Sieć — wejście
 * Sieć — wyjście
 * Procent użycia procesora CPU
@@ -101,7 +101,7 @@ Może być konieczne ponowne skonfigurowanie usługi w chmurze za pośrednictwem
     ![Do pobrania](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Po zaktualizowaniu pliku konfiguracji usługi przekazywania i zastosować aktualizacji konfiguracji:
 
-    ![Upload](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
+    ![Przekazanie](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. Wybierz plik .cscfg, a następnie kliknij przycisk **OK**.
 
 ## <a name="next-steps"></a>Kolejne kroki

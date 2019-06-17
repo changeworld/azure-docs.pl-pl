@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 1102aee9d7fa5fe3df0e048398cdc8bd71ff0a3c
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512297"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
@@ -42,8 +42,8 @@ Niestandardowe zasady jest przedstawiana jako jeden lub więcej plików w formac
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Tak | Wersja schematu, który ma być używany do wykonywania zasad. Wartość musi być `0.3.0.0` |
 | TenantObjectId | Nie | Unikatowy identyfikator dzierżawy usługi Azure Active Directory (Azure AD) B2C. |
-| Identyfikator dzierżawy | Tak | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
-| `PolicyId` | Tak | Unikatowy identyfikator zasad. Ten identyfikator musi być poprzedzony *B2C_1A_* |
+| Identyfikator dzierżawy | Yes | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
+| `PolicyId` | Yes | Unikatowy identyfikator zasad. Ten identyfikator musi być poprzedzony *B2C_1A_* |
 | PublicPolicyUri | Tak | Identyfikator URI dla zasad, które jest kombinacja Identyfikatora dzierżawy oraz identyfikatora zasad. |
 | DeploymentMode | Nie | Możliwe wartości: `Production`, `Debugging`, lub `Development`. Wartość domyślna to `Production`. Ta właściwość służy do debugowania zasady. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md). |
 | UserJourneyRecorderEndpoint | Nie | Punkt końcowy, który jest używany podczas **DeploymentMode** ustawiono `Development`. Wartość musi być `urn:journeyrecorder:applicationinsights`. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md). |

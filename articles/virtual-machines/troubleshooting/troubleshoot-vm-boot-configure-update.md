@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: c3592529d20680c6920e569887effee4ffe38344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443851"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64684005"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Uruchamianie maszyny Wirtualnej znajduje się na "gotowy Windows wprowadzenie. Nie wyłączaj komputera"na platformie Azure
 

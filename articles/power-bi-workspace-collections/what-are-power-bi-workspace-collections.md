@@ -11,10 +11,10 @@ ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: rkarlin
 ms.openlocfilehash: 7f23856363b337a361f329ed54e2152842faf26e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64705132"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Co to są kolekcje obszarów roboczych usługi Power BI?
@@ -60,7 +60,7 @@ Należy używać pamięci podręcznej zestawów danych.  Jednak nie można odśw
 
 ## <a name="authentication-and-authorization-with-app-tokens"></a>Uwierzytelnianie i autoryzacja przy użyciu tokenów aplikacji
 
-**Obszar roboczy kolekcji usługi Microsoft Power BI** różni się do aplikacji w taki sposób, aby wykonać wszelkie niezbędne uwierzytelniania i autoryzacji użytkowników. Nie ma jawnej, użytkownicy końcowi można klientów usługi Azure Active Directory (Azure AD).  Zamiast tego aplikacja wyraża się **kolekcji obszarów roboczych pakietu Microsoft Power BI** autoryzacji do renderowania raportu usługi Power BI przy użyciu **tokeny uwierzytelniania aplikacji (aplikacji tokeny)**.  Te **tokenów aplikacji** są tworzone zgodnie z potrzebami, gdy aplikacja chce renderowania raportu.
+**Obszar roboczy kolekcji usługi Microsoft Power BI** różni się do aplikacji w taki sposób, aby wykonać wszelkie niezbędne uwierzytelniania i autoryzacji użytkowników. Nie ma jawnej, użytkownicy końcowi można klientów usługi Azure Active Directory (Azure AD).  Zamiast tego aplikacja wyraża się **kolekcji obszarów roboczych pakietu Microsoft Power BI** autoryzacji do renderowania raportu usługi Power BI przy użyciu **tokeny uwierzytelniania aplikacji (aplikacji tokeny)** .  Te **tokenów aplikacji** są tworzone zgodnie z potrzebami, gdy aplikacja chce renderowania raportu.
 
 ![Diagram użycie tokenu aplikacji](media/what-are-power-bi-workspace-collections/app-tokens.png)
 

@@ -3,21 +3,20 @@ title: Kopiowanie danych z bazy danych MongoDB przy użyciu usługi Azure Data F
 description: Dowiedz się, jak skopiować dane z Mongo DB do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 12/20/2018
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 12/20/2018
+ms.author: jingwang
 ms.openlocfilehash: ca6040bb74839f30a2f1b13297f6037f05240c67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61400444"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory
@@ -113,7 +112,7 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **MongoDbV2Source** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **MongoDbV2Source** | Tak |
 | filter | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, pominięcie tego parametru lub przekazać pusty dokument ({}). | Nie |
 | cursorMethods.project | Określa pól do zwrócenia w dokumentach projekcji. Aby zwrócić wszystkie pola w pasujących dokumentów, Pomiń ten parametr. | Nie |
 | cursorMethods.sort | Określa kolejność, w którym zapytanie zwraca pasujących dokumentów. Zapoznaj się [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nie |

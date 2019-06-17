@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067198"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą Store zapytania
@@ -86,7 +86,7 @@ Następujące opcje są dostępne w celu konfigurowania parametrów Query Store.
 
 | **Parametr** | **Opis** | **Domyślne** | **Range**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Zestawy instrukcji, które są śledzone. | brak | Brak, top, wszystkie |
+| pg_qs.query_capture_mode | Zestawy instrukcji, które są śledzone. | Brak | Brak, top, wszystkie |
 | pg_qs.max_query_text_length | Ustawia długość maksymalna zapytania, który może zostać zapisany. Dłużej zapytań zostanie obcięta. | 6000 | 100 - 10 TYS. |
 | pg_qs.retention_period_in_days | Ustawia okres przechowywania. | 7 | 1 - 30 |
 | pg_qs.track_utility | Określa, czy polecenia narzędzia są śledzone. | włączone | włączony wyłączony |
@@ -95,7 +95,7 @@ Poniższe opcje są stosowane specjalnie w celu oczekiwania statystyk.
 
 | **Parametr** | **Opis** | **Domyślne** | **Range**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Zestawy, które są śledzone instrukcji poczekaj statystyki. | brak | Brak, wszystkie|
+| pgms_wait_sampling.query_capture_mode | Zestawy, które są śledzone instrukcji poczekaj statystyki. | Brak | Brak, wszystkie|
 | Pgms_wait_sampling.history_period | Ustaw częstotliwość (w milisekundach), w których oczekiwania są próbkowane zdarzenia. | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -115,8 +115,8 @@ Ten widok zwraca wszystkie dane w Query Store. Istnieje jeden wiersz dla każdej
 |**Nazwa**   |**Typ** | **Odwołania**  | **Opis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | Identyfikator z tabeli runtime_stats_entries|
-|user_id    |Identyfikator OID    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcji|
-|db_id  |Identyfikator OID    |pg_database.oid    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
+|user_id    |oid    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcji|
+|db_id  |oid    |pg_database.oid    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
 |query_id   |bigint  || Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
 |query_sql_text |Varchar(10000)  || Tekst instrukcji językiem. Różne zapytania przy użyciu tej samej struktury są zgrupowane razem; Ten tekst jest tekstem, który w pierwszym zapytań w klastrze.|
 |plan_id    |bigint |   |Identyfikator planu jeszcze odpowiadający to zapytanie nie jest dostępna|
@@ -128,7 +128,7 @@ Ten widok zwraca wszystkie dane w Query Store. Istnieje jeden wiersz dla każdej
 |max_time   |podwójnej precyzji   ||  Czas wykonywania zapytania maksymalna (w milisekundach)|
 |mean_time  |podwójnej precyzji   ||  Oznacza czas wykonywania zapytania, w milisekundach|
 |stddev_time|   podwójnej precyzji    ||  Odchylenie standardowe czasu wykonywania kwerendy w milisekundach |
-|wiersze   |bigint ||  Całkowita liczba wierszy, pobrać lub wpływ instrukcja|
+|Wiersze   |bigint ||  Całkowita liczba wierszy, pobrać lub wpływ instrukcja|
 |shared_blks_hit|   bigint  ||  Łączna liczba trafień w pamięci podręcznej bloku udostępnionego przez instrukcję|
 |shared_blks_read|  bigint  ||  Całkowita liczba bloków udostępnionego odczytywane przez instrukcję|
 |shared_blks_dirtied|   bigint   || Całkowita liczba bloków udostępnionego dirtied przez instrukcję |
@@ -155,12 +155,12 @@ Ten widok zwraca oczekiwać dane zdarzeń w Query Store. Istnieje jeden wiersz d
 
 |**Nazwa**|  **Typ**|   **Odwołania**| **Opis**|
 |---|---|---|---|
-|user_id    |Identyfikator OID    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcji|
-|db_id  |Identyfikator OID    |pg_database.oid    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
+|user_id    |oid    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcji|
+|db_id  |oid    |pg_database.oid    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
 |query_id   |bigint     ||Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
 |event_type |tekst       ||Typ zdarzenia, dla którego oczekuje wewnętrznej bazy danych|
-|event  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli oczekiwaniem wewnętrznej bazy danych|
-|wywołania  |Liczba całkowita        ||Liczba te same zdarzenia, które są przechwytywane|
+|zdarzenie  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli oczekiwaniem wewnętrznej bazy danych|
+|wywołania  |Integer        ||Liczba te same zdarzenia, które są przechwytywane|
 
 
 ### <a name="functions"></a>Funkcje

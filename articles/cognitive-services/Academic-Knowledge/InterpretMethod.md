@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61338456"
 ---
 # <a name="interpret-method"></a>Interpretowanie — metoda
@@ -31,7 +31,7 @@ Aby zapewnić środowisko interaktywne, tę metodę można wywołać wielokrotni
 
 Name (Nazwa)     | Wartość | Wymagana?  | Opis
 ---------|---------|---------|---------
-**Zapytanie**    | Ciąg tekstowy | Yes | Zapytanie wprowadzonej przez użytkownika.  Pełne jest ustawiona na 1, zapytania będą interpretowane jako prefiks dla generowania sugestie automatyczne uzupełnianie zapytań.        
+**Zapytanie**    | Ciąg tekstowy | Tak | Zapytanie wprowadzonej przez użytkownika.  Pełne jest ustawiona na 1, zapytania będą interpretowane jako prefiks dla generowania sugestie automatyczne uzupełnianie zapytań.        
 **model**    | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
 **Wykonaj** | 0 lub 1 | Nie<br>domyślna: 0  | 1 oznacza, że wygenerowany automatycznego uzupełniania, sugestii na podstawie danych gramatyki i graph.         
 **count**    | Liczba | Nie<br>domyślny: 10 | Maksymalna liczba interpretacji do zwrócenia.         

@@ -13,11 +13,11 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511802"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Powiązania usługi Twilio dla usługi Azure Functions
 
@@ -403,11 +403,11 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|---------|----------------------|
 |**type**|**type**| Musi być równa `twilioSms`.|
 |**direction**|**direction**| Musi być równa `out`.|
-|**Nazwa**|**Nazwa**| Nazwa zmiennej, używane w kodzie funkcji wiadomości SMS usługi Twilio. |
+|**name**|**name**| Nazwa zmiennej, używane w kodzie funkcji wiadomości SMS usługi Twilio. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, np. zawierającą Sid konta usługi Twilio TwilioAccountSid. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**authTokenSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, który zawiera token uwierzytelniania usługi Twilio, np. TwilioAccountAuthToken. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAuthToken". |
-|**Aby**| N/d - określić w kodzie | **Do**| Ta wartość jest równa numer telefonu, tekst wiadomości SMS wysyłane do.|
-|**Z**|**Z** | **From**| Ta wartość jest równa numer telefonu, który tekst wiadomości SMS są wysyłane z.|
+|**to**| N/d - określić w kodzie | **Do**| Ta wartość jest równa numer telefonu, tekst wiadomości SMS wysyłane do.|
+|**from**|**from** | **From**| Ta wartość jest równa numer telefonu, który tekst wiadomości SMS są wysyłane z.|
 |**body**|**body** | **Treść**| Ta wartość może służyć do ciężko kodu wiadomość SMS, jeśli nie potrzebujesz dynamicznie ustawić go w kodzie funkcji. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

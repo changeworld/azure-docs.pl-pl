@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606413"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
@@ -295,7 +295,7 @@ Tworzenie [klastra usługi Databricks](https://docs.microsoft.com/azure/azure-da
 
 Użyj następujących ustawień:
 
-| Ustawienie |Dotyczy| Wartość |
+| Ustawienie |Stosuje się do| Wartość |
 |----|---|---|
 | Nazwa klastra |zawsze| yourclustername |
 | Środowisko uruchomieniowe usługi Databricks |zawsze| Środowisko uruchomieniowe żadnych innych ML (innego niż ML 4.x, 5.x) |
@@ -311,7 +311,7 @@ Gdy klaster działa, [utworzyć bibliotekę](https://docs.databricks.com/user-gu
 
 1. Wybierz **tylko jeden** opcji (nie instalacji zestawu SDK są obsługiwane)
 
-   |SDK&nbsp;package&nbsp;extras|Source|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK&nbsp;package&nbsp;extras|source|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Dla usługi Databricks| Przekaż Python Egg lub PyPI | azureml-sdk[databricks]|
    |Dla usługi Databricks - with-<br> automatyczne możliwości usług ML| Przekaż Python Egg lub PyPI | azureml-sdk[automl_databricks]|
@@ -378,7 +378,7 @@ Aby użyć tego pliku w kodzie, należy użyć `ws=Workspace.from_config()`. Ten
 
 Można utworzyć pliku konfiguracji na trzy sposoby:
 
-* **Postępuj zgodnie z instrukcjami w [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#sdk)**: A *config.json* plik zostanie utworzony w bibliotece notesy platformy Azure. Plik zawiera informacje o konfiguracji dla obszaru roboczego. Można pobrać lub skopiuj *config.json* do innych środowisk programowania.
+* **Postępuj zgodnie z instrukcjami w [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#sdk)** : A *config.json* plik zostanie utworzony w bibliotece notesy platformy Azure. Plik zawiera informacje o konfiguracji dla obszaru roboczego. Można pobrać lub skopiuj *config.json* do innych środowisk programowania.
 
 * **Pobierz plik**: W [witryny Azure portal](https://ms.portal.azure.com), wybierz opcję **Pobierz config.json** z **Przegląd** części obszaru roboczego.
 

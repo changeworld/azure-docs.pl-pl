@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/24/2019
+ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: bdcc4349f84a35b312ecb3ad6205273b62c2e989
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 803fe6eff8804dbd407642386865fe975c8db524
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722720"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67123263"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: Konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -48,7 +48,7 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 
         ![Tworzenie laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Na stronie **Wybór specyfikacji maszyny wirtualnej** wykonaj następujące czynności:
-    1. Wybierz **rozmiar** maszyn wirtualnych tworzonych w laboratorium. Obecnie **małych**, **średni**, **dużych**, i **procesora GPU** rozmiarów są dozwolone.
+    1. Wybierz **rozmiar** maszyn wirtualnych tworzonych w laboratorium. Obecnie **małych**, **średni**, **medium (wirtualizacja)** , **dużych**, i **procesora GPU** o rozmiarach dozwolone.
     3. Wybierz **obraz maszyny wirtualnej**, którego chcesz używać do tworzenia maszyn wirtualnych w laboratorium. Jeśli wybierzesz obraz systemu Linux, zobaczysz opcję, aby włączyć połączenie pulpitu zdalnego dla niego. Aby uzyskać więcej informacji, zobacz [Włączanie połączeń usług pulpitu zdalnego dla systemu Linux](how-to-enable-remote-desktop-linux.md).
     4. Wybierz opcję **Dalej**.
 
@@ -69,9 +69,11 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 
     ![Strona Konfigurowanie szablonu po zakończeniu konfiguracji](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Na stronie **Konfigurowanie szablonu** wykonaj następujące kroki: Te kroki samouczka są **opcjonalne**.
-    1. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. Jeśli szablon maszyny Wirtualnej systemu Linux, wybierz, czy chcesz nawiązać połączenie przy użyciu klienta SSH lub RDP (jeśli został włączony protokół RDP).
-    2. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu.     
-    3. Wprowadź **opis** szablonu.
+    2. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. Jeśli szablon maszyny Wirtualnej systemu Linux, wybierz, czy chcesz nawiązać połączenie przy użyciu klienta SSH lub RDP (jeśli został włączony protokół RDP).
+    1. Wybierz **Resetuj hasło** resetowania hasła dla maszyny Wirtualnej. 
+    1. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu. 
+    1. **Zatrzymaj** maszynę wirtualną.  
+    1. Wprowadź **opis** szablonu.
 9. Wybierz przycisk **Dalej** na stronie szablonu. 
 10. Na stronie **Publikowanie szablonu** wykonaj następujące czynności. 
     1. Aby natychmiast opublikować szablonu, wybierz **Publikuj**.  
@@ -107,6 +109,40 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 
     ![Lista użytkowników](../media/how-to-configure-student-usage/users-list-new.png)
 
+## <a name="set-quotas-for-users"></a>Ustawianie przydziałów dla użytkowników
+Można ustawić limity przydziału dla poszczególnych użytkowników wykonując następujące kroki: 
+
+1. Wybierz **użytkowników** w menu po lewej stronie, jeśli strona nie jest jeszcze aktywna. 
+2. Wybierz **limitu przydziału dla poszczególnych użytkowników:** na pasku narzędzi. 
+3. Na **limitu przydziału dla poszczególnych użytkowników** Określ liczbę godzin, które ma zostać przypisany do każdego użytkownika (dla uczniów): 
+    1. **0 godz. (tylko dla harmonogramu)** . Użytkownicy mogą używać swoich maszyn wirtualnych tylko w zaplanowanym terminie lub jako właściciel laboratorium zmieni się na maszynach wirtualnych dla nich.
+
+        ![Zero godzin — tylko zaplanowanym czasie](../media/how-to-configure-student-usage/zero-hours.png)
+    1. **Łączną liczbę godzin laboratorium na użytkownika**. Użytkownicy mogą używać swoich maszyn wirtualnych przez liczbę godzin (określone dla tego pola) **poza zaplanowanym terminie**. Jeśli wybierzesz tę opcję, wprowadź **liczby godzin** w polu tekstowym. 
+
+        ![Liczba godzin na użytkownika](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. Wybierz pozycję **Zapisz**. 
+5. Teraz widać zmienionymi wartościami na pasku narzędzi: **Limit przydziału dla poszczególnych użytkowników: &lt;liczby godzin&gt;** . 
+
+    ![Limit przydziału dla poszczególnych użytkowników](../media/how-to-configure-student-usage/quota-per-user.png)
+
+## <a name="set-a-schedule-for-the-lab"></a>Ustaw harmonogram dla laboratorium
+Jeśli skonfigurowano ustawienie limitu przydziału, aby **0 godz. (tylko dla harmonogramu)** , musisz ustawić harmonogram dla laboratorium. W tym samouczku można ustawić harmonogram jako cykliczny harmonogram tygodniowy.
+
+1. Przełącz się do **harmonogramy** strony i wybierz **harmonogramu Dodaj** na pasku narzędzi. 
+
+    ![Dodaj przycisk harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/add-schedule-button.png)
+2. Na **harmonogramu Dodaj** strony, przełącz się do **tygodniowy** u góry. 
+3. Aby uzyskać **zaplanować dni (wymagane)** , wybierz dni, w których ma harmonogram, aby zastosować zmiany. W poniższym przykładzie wybrano od poniedziałku do piątku. 
+4. Dla **z** wprowadź **zaplanować Data rozpoczęcia** lub wybierz datę, wybierając **kalendarza** przycisku. To pole jest wymagane. 
+5. Aby uzyskać **Data zakończenia harmonogramu**wprowadź lub wybierz datę zakończenia, w którym maszyny wirtualne mają być zamknięty. 
+6. Aby uzyskać **czas rozpoczęcia**, wybierz godzinę maszyn wirtualnych ma zostać uruchomiony. Czas rozpoczęcia jest wymagany, jeśli nie ustawiono czas przestoju. Wybierz **Usuń zdarzenie początkowe** Jeśli chcesz określić tylko godzina zatrzymania. Jeśli **czas rozpoczęcia** jest wyłączona, wybierz **Dodaj zdarzenie rozpoczęcia** obok listy rozwijanej, aby go włączyć. 
+7. Aby uzyskać **czas zakończenia**, wybierz godzinę maszyn wirtualnych można zamknąć. Czas przestoju jest wymagany, jeśli nie ustawiono czasu rozpoczęcia. Wybierz **zdarzenie stop usuwania** Jeśli chcesz określić tylko godziny rozpoczęcia. Jeśli **czas zakończenia** jest wyłączona, wybierz **zdarzenia zatrzymania Dodaj** obok listy rozwijanej, aby go włączyć.
+8. Aby uzyskać **strefy czasowej (wymagane)** , wybierz strefę czasową uruchomienia i zatrzymania razy określono.  
+9. Aby uzyskać **uwagi**, wprowadź opis lub notatki dla harmonogramu. 
+10. Wybierz pozycję **Zapisz**. 
+
+    ![Harmonogram tygodniowy](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="send-an-email-with-the-registration-link"></a>Wyślij wiadomość e-mail z linkiem rejestracji
 

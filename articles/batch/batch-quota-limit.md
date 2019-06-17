@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820eddff7da3bb52ca94ea0cb7e2361d89892a4a
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: de32ae16ea4d3c52b8017f35ae5af6009ab59205
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595305"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080896"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -32,12 +32,13 @@ Można uruchomić wiele obciążeń usługi Batch na jednym koncie usługi Batch
 
 Jeśli planujesz uruchamianie obciążeń produkcyjnych w usłudze Batch, może być konieczne zwiększenie co najmniej jeden z limitów przydziału ponad wartość domyślną. Jeśli chcesz zwiększyć limit przydziału, możesz otworzyć online [żądanie obsługi klienta](#increase-a-quota) bez dodatkowych opłat.
 
-> [!NOTE]
-> Przydział to limit środków, nie gwarancję możliwości obliczeniowych. Jeśli masz zapotrzebowanie na pojemność, skontaktuj się z pomocą techniczną platformy Azure.
-
 ## <a name="resource-quotas"></a>Limity przydziałów zasobów
-[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+Przydział to limit środków, nie gwarancję możliwości obliczeniowych. Jeśli masz zapotrzebowanie na pojemność, skontaktuj się z pomocą techniczną platformy Azure.
+
+Ponadto należy pamiętać, że przydziały nie są gwarantowane wartości. Przydziały może się różnić w zależności od zmian z usługi Batch lub żądania użytkownika, aby zmienić wartość limitu przydziału.
+
+[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Limity przydziałów rdzeni w trybie subskrypcji użytkownika
 
@@ -45,18 +46,22 @@ Jeśli zostało utworzone konto usługi Batch z trybem alokacji puli równa **su
 
 ## <a name="pool-size-limits"></a>Limity rozmiaru puli
 
+Limity rozmiaru puli są ustawiane przez usługę Batch. W odróżnieniu od [limity przydziałów zasobów](#resource-quotas), nie można zmienić tych wartości. Tylko pule z komunikacji między węzłami i obrazy niestandardowe mają ograniczenia różni się od przydział standardowy.
+
 | **Zasób** | **Limit maksymalny** |
 | --- | --- |
 | **Węzłów obliczeniowych w [puli komunikacji między węzłami włączone](batch-mpi.md)**  ||
 | Tryb alokacji puli usługa Batch | 100 |
 | Tryb alokacji puli subskrypcja usługi Batch | 80 |
-| **Węzłów obliczeniowych w [pula została utworzona przy użyciu niestandardowego obrazu maszyny Wirtualnej](batch-custom-images.md)**<sup>1</sup> ||
+| **Węzłów obliczeniowych w [pula została utworzona przy użyciu niestandardowego obrazu maszyny Wirtualnej](batch-custom-images.md)** <sup>1</sup> ||
 | Węzły dedykowane | 2000 |
 | Węzły o niskim priorytecie | 1000 |
 
 <sup>1</sup> dla puli, które nie są włączone komunikacji między węzłami.
 
 ## <a name="other-limits"></a>Inne limity
+
+Dodatkowe ograniczenia są ustawiane przez usługę Batch. W odróżnieniu od [limity przydziałów zasobów](#resource-quotas), nie można zmienić tych wartości.
 
 | **Zasób** | **Limit maksymalny** |
 | --- | --- |
@@ -84,7 +89,7 @@ Wykonaj następujące kroki, aby zażądać przydziału zwiększyć dla konta us
 
 ### <a name="increase-cores-quota-in-batch"></a>Zwiększ limit przydziału rdzeni w usłudze Batch 
 
-1. Wybierz **Pomoc i obsługa techniczna** kafelków na pulpicie nawigacyjnym portalu lub znak zapytania (**?**) w prawym górnym rogu portalu.
+1. Wybierz **Pomoc i obsługa techniczna** kafelków na pulpicie nawigacyjnym portalu lub znak zapytania ( **?** ) w prawym górnym rogu portalu.
 1. Wybierz **nowe żądanie obsługi** > **podstawy**.
 1. W **podstawy**:
    

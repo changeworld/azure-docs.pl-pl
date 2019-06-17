@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 47f6678f8d18d734176d964f18a6febecea957ab
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c2b99525e3d0a61c02dc502fcd0927ea65993e5b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481417"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108637"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Bezpieczny dostęp do interfejsów API w środowisku lokalnym, za pomocą serwera Proxy aplikacji usługi Azure AD
 
@@ -36,7 +36,7 @@ Na poniższym diagramie przedstawiono, jak serwer Proxy aplikacji usługi Azure 
 
 Serwer Proxy aplikacji usługi AD systemu Azure stanowi szkielet rozwiązania, działa jako publiczny punkt końcowy, aby uzyskać dostęp do interfejsu API i zapewnienia uwierzytelniania i autoryzacji. Dostępne interfejsy API z szeroką gamę platform za pomocą [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) bibliotek. 
 
-Ponieważ serwer Proxy aplikacji usługi Azure AD, uwierzytelnianie i autoryzacja są zbudowane na podstawie usługi Azure AD, można użyć dostępu warunkowego usługi Azure AD do upewnij się, że tylko zaufane urządzenia mają dostęp do interfejsów API opublikowane za pośrednictwem serwera Proxy aplikacji. Użyj usługi Azure AD Join lub dołączono do usługi Azure AD hybrydowego dla komputerów stacjonarnych i zarządzane przez usługę Intune dla urządzeń. Możesz również skorzystać z korzystać z funkcji usługi Azure Active Directory — wersja Premium, takich jak uwierzytelnianie wieloskładnikowe systemu Azure i maszyn opartych na learning bezpieczeństwa [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
+Ponieważ serwer Proxy aplikacji usługi Azure AD, uwierzytelnianie i autoryzacja są zbudowane na podstawie usługi Azure AD, można użyć dostępu warunkowego usługi Azure AD, aby upewnić się, że tylko zaufane urządzenia mają dostęp do interfejsów API opublikowane za pośrednictwem serwera Proxy aplikacji. Użyj usługi Azure AD Join lub dołączono do usługi Azure AD hybrydowego dla komputerów stacjonarnych i zarządzane przez usługę Intune dla urządzeń. Możesz również skorzystać z korzystać z funkcji usługi Azure Active Directory — wersja Premium, takich jak uwierzytelnianie wieloskładnikowe systemu Azure i maszyn opartych na learning bezpieczeństwa [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510391"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Tworzenie i zarządzanie nimi odczytu replik w usłudze Azure Database for PostgreSQL — jeden serwer w witrynie Azure portal
@@ -81,7 +81,7 @@ Po utworzeniu repliki odczytu mogą być wyświetlane z **replikacji** okna:
 ![Wyświetl nową replikę w oknie replikacji](./media/howto-read-replicas-portal/list-replica.png)
  
 
-## <a name="stop-replication"></a>Zatrzymaj replikację
+## <a name="stop-replication"></a>Zatrzymywanie replikacji
 Można zatrzymać replikację między głównym serwerem i odczytu repliki.
 
 > [!IMPORTANT]
