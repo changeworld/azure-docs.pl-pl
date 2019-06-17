@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: yizhon
 ms.openlocfilehash: d758d761e560642de76e149c83fc6898aa78bafb
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65910332"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C
@@ -163,7 +163,7 @@ Należy przekazać kopię parametry połączenia urządzenia, uzyskany w narzęd
 
 Gdy masz prawidłową **IOTHUB\_klienta\_obsługi**, możesz rozpocząć wywoływanie interfejsów API do wysyłania i odbierania wiadomości z usługi IoT Hub.
 
-### <a name="send-messages"></a>Wysyłanie wiadomości
+### <a name="send-messages"></a>Wysyłanie komunikatów
 
 Przykładowa aplikacja konfiguruje pętlę do wysyłania komunikatów do Centrum IoT hub. Poniższy fragment kodu:
 
@@ -226,7 +226,7 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 
 Należy pamiętać, wywołanie **IoTHubMessage\_Destroy** działać po zakończeniu korzystania z komunikatem. Ta funkcja powoduje zwolnienie zasobów przydzielonych podczas tworzenia komunikatu.
 
-### <a name="receive-messages"></a>Odbieranie wiadomości
+### <a name="receive-messages"></a>Odbieranie komunikatów
 
 Odebranie komunikatu jest operacją asynchroniczną. Najpierw należy zarejestrować się wywołanie zwrotne do wywołania, gdy urządzenie otrzyma komunikat:
 
@@ -414,7 +414,7 @@ W tym przykładzie jest jednym modelu o nazwie **ContosoAnemometer**. Ten model 
 
 Zdefiniuj powierzchni interfejsu API, który służy do wysyłania komunikatów do Centrum IoT i odpowiadać na komunikaty wysyłane do urządzenia, danych i akcji zdefiniowanych w modelu. Użyj tego modelu najlepiej rozumie przykładu.
 
-### <a name="send-messages"></a>Wysyłanie wiadomości
+### <a name="send-messages"></a>Wysyłanie komunikatów
 
 Model definiuje dane, które można wysyłać do Centrum IoT Hub. W tym przykładzie, oznacza to jeden z elementów danych dwóch zdefiniowane przy użyciu **WITH_DATA** makra. Istnieje kilka kroków wymaganych do wysyłania **DeviceId** i **prędkość wiatru** wartości do usługi IoT hub. Pierwsza to można ustawić dane, które mają zostać wysłane:
 
@@ -483,7 +483,7 @@ Drugi parametr jest wskaźnikiem do kontekstu użytkownika; Ten sam wskaźnik pr
 
 To wszystko na temat wysyłania komunikatów z urządzenia do chmury. Pozostało jedynie na pokrycie jest jak odbierać komunikaty.
 
-### <a name="receive-messages"></a>Odbieranie wiadomości
+### <a name="receive-messages"></a>Odbieranie komunikatów
 
 Odbieranie komunikatów działa podobnie jak sposób wiadomości działają w **usługi IoTHubClient** biblioteki. Najpierw należy zarejestrować się funkcji wywołania zwrotnego komunikat:
 

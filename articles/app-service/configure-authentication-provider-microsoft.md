@@ -16,10 +16,10 @@ ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: e3da856efd7d44f15f9de27c9e38375d40dc211d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60850959"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Jak skonfigurować aplikację App Service, aby używała Microsoft Account login
@@ -44,7 +44,7 @@ W tym temacie przedstawiono sposób konfigurowania usługi Azure App Service, ab
     > [!IMPORTANT]
     > Hasło jest ważnym poświadczeniem zabezpieczeń. Nie udostępnić innym osobom hasło i rozpowszechnić ją w aplikacji klienckiej.
     
-8. Kliknij pozycję **Zapisz**
+8. Kliknij polecenie **Zapisz**.
 
 ## <a name="secrets"> </a>Dodaj informacje o Account firmy Microsoft do aplikacji usługi App Service
 1. Ponownie [Azure Portal], przejdź do aplikacji, kliknij przycisk **ustawienia** > **uwierzytelniania / autoryzacji**.

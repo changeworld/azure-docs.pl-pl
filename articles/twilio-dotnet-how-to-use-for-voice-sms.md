@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60329505"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Jak za pomocą usługi Twilio dla połączeń głosowych i SMS możliwości platformy Azure
@@ -143,7 +143,7 @@ var call = CallResource.Create(
 
 Aby uzyskać więcej informacji na temat parametrów przekazanych do **CallResource.Create** metody, zobacz [ https://www.twilio.com/docs/api/rest/making-calls ] [ twilio_rest_making_calls].
 
-Jak wspomniano wcześniej, ten kod używa witryny dostarczone do usługi Twilio do zwracania odpowiedzi TwiML. Zamiast tego można użyć do własnej witryny można podać odpowiedzi TwiML. Aby uzyskać więcej informacji, zobacz [Instrukcje: Zapewnienie TwiML odpowiedzi z własną witrynę sieci Web](#howto_provide_twiml_responses).
+Jak wspomniano wcześniej, ten kod używa witryny dostarczone do usługi Twilio do zwracania odpowiedzi TwiML. Zamiast tego można użyć do własnej witryny można podać odpowiedzi TwiML. Aby uzyskać więcej informacji, zobacz [jak: Zapewnienie TwiML odpowiedzi z własną witrynę sieci Web](#howto_provide_twiml_responses).
 
 ## <a id="howto_send_sms"></a>Jak: Wyślij wiadomość SMS
 Poniższy zrzut ekranu przedstawia sposób wysłania wiadomości SMS za pomocą **MessageResource** klasy. **z** zostanie podany numer, Twilio dla konta wersji próbnej do wysyłania wiadomości SMS. **Do** numer musi być zweryfikowany dla konta usługi Twilio, przed uruchomieniem kodu.
@@ -176,7 +176,7 @@ catch (TwilioException ex)
 Gdy aplikacja inicjuje wywołanie interfejsu API usługi Twilio — na przykład za pośrednictwem **CallResource.Create** metoda - Twilio wysyła żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. W przykładzie w [jak: Wykonywanie wywołania interfejsu wychodzącego](#howto_make_call) używa adresu URL dostarczone do usługi Twilio [ https://twimlets.com/message ] [ twimlet_message_url] do zwracania odpowiedzi.
 
 > [!NOTE]
-> Gdy TwiML jest przeznaczony do użytku przez usługi sieci web, możesz wyświetlić TwiML w przeglądarce. Na przykład kliknij pozycję [ https://twimlets.com/message ] [ twimlet_message_url] będzie pusta `<Response>` element; inny przykład kliknij [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) się `<Response>` element, który zawiera &lt;Say&gt; elementu.
+> Gdy TwiML jest przeznaczony do użytku przez usługi sieci web, możesz wyświetlić TwiML w przeglądarce. Na przykład kliknij pozycję [ https://twimlets.com/message ] [ twimlet_message_url] będzie pusta `<Response>` element; inny przykład kliknij [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) się `<Response>` element, który zawiera &lt; Say&gt; elementu.
 >
 
 Zamiast polegania na adres URL podany do usługi Twilio, można utworzyć własny adres URL w witrynie odpowiedzi HTTP. W dowolnym języku, który zwraca odpowiedzi HTTP, można utworzyć witryny. W tym temacie założono, że będziesz hostingu adres URL z ogólna procedura obsługi ASP.NET.

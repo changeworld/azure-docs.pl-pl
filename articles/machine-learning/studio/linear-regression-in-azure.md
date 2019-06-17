@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60861118"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrowanie analytics z programu Excel do usługi Azure Machine Learning Studio
@@ -73,7 +73,7 @@ Stosowania zaleceń, możemy osiągnąć ten sam punkt odniesienia wydajności w
 | --- |:---:|:---:|:---:|
 | Wartość etykietą |Rzeczywiste (liczbowe od) |Ten sam |Ten sam |
 | Uczeń |Excel -> Data Analysis -> regresji |Regresji liniowej. |Regresja liniowa |
-| Opcje learner |ND |Domyślne |zwykłe najmniejszych kwadratów<br />L2 = 0,005 |
+| Opcje learner |ND |Ustawienia domyślne |zwykłe najmniejszych kwadratów<br />L2 = 0,005 |
 | Zestaw danych |26 ostatnich wierszy, funkcje 3, 1 etykiety. Wszystkie numeryczne. |Ten sam |Ten sam |
 | Split: Szkolenie |Excel uczony w wierszach najpierw 18, przetestowana na ostatnie 8 wierszy. |Ten sam |Ten sam |
 | Split: Testowanie |Formuła regresji, które dotyczą ostatnie 8 wierszy w programie Excel |Ten sam |Ten sam |
@@ -119,7 +119,7 @@ Jeśli chcesz poeksperymentować z regresji, dobry zestaw danych, aby spróbowa�
 | --- | --- | --- | --- | --- | --- |
 | Wzmocnione drzewo decyzyjnego |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | Regresja liniowa (spadku gradientu) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
-| Regresja sieci neuronowych |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
+| Regresja sieci neuronowej |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
 | Regresja liniowa (zwykłe najmniejszych kwadratów) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Najważniejsze wnioski

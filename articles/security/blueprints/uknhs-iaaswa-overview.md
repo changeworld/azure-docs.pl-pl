@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
 ms.openlocfilehash: 5f7f9641e8fc7cd4c0e8dd153b350b9dd876b004
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62115435"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-uk-nhs"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web IaaS dla NHS Zjednoczone Królestwo
@@ -37,7 +37,7 @@ Zarządzanie hostem bastionu zapewnia bezpieczne połączenie, Administratorzy m
 
 To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegóły architektura wdrożenia znajdują się w [architektura wdrożenia](#deployment-architecture) sekcji.
 
-- Azure Virtual Machines
+- Usługa Azure Virtual Machines
     - (1) zarządzania/bastionu (Windows Server 2016 Datacenter)
     - (2) usługi active Directory kontrolera domeny (Windows Server 2016 Datacenter)
     - (2) węzeł klastra programu SQL Server (SQL Server 2017 w systemie Windows Server 2016)
@@ -95,7 +95,7 @@ Każdej z tych podsieci ma dedykowanej grupy zabezpieczeń sieci:
 - 1 sieciowej grupy zabezpieczeń dla serwerów SQL i monitor w chmurze (SQLNSG)
 - 1 sieciowej grupy zabezpieczeń dla warstwy internetowej (WEBNSG)
 
-### <a name="data-in-transit"></a>Przesyłane dane
+### <a name="data-in-transit"></a>Dane przesyłane
 Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. Ponadto wszystkie transakcje w usłudze Azure Storage za pośrednictwem witryny Azure portal występować za pośrednictwem protokołu HTTPS.
 
 ### <a name="data-at-rest"></a>Dane magazynowane

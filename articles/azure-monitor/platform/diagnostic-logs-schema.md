@@ -9,10 +9,10 @@ ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
 ms.openlocfilehash: 21eec5ee2fef185a927f6a416732303765e02b1c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65789319"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
@@ -29,18 +29,18 @@ Połączenie typu zasobu (dostępne w `resourceId` właściwości) i `category` 
 | resourceId | Wymagane | Identyfikator zasobu zasobu, do którego emitowane zdarzenia. W przypadku usług dzierżawy jest to /tenants/tenant-id/providers/provider-name formularza. |
 | tenantId | Wymagane dla dzienników dzierżawy | Identyfikator dzierżawy dzierżawy usługi Active Directory, która to zdarzenie jest powiązane. Ta właściwość jest używana tylko dla dzienników na poziomie dzierżawy, nie ma w dziennikach poziom zasobów. |
 | operationName | Wymagane | Nazwa operacji reprezentowany przez to zdarzenie. Zdarzenie reprezentuje operację RBAC, to czy nazwy operacji RBAC (np.) Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Zazwyczaj w modelu w postaci operacji usługi Resource Manager, nawet jeśli nie są udokumentowane operacje usługi Resource Manager (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
-| operationVersion | Opcjonalne | Wersja interfejsu api skojarzone z operacją, jeśli operationName została wykonana przy użyciu interfejsu API (np.) `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Jeśli nie ma żadnych interfejsów API, który odnosi się do tej operacji, wersja reprezentuje wersję tej operacji w przypadku, gdy właściwości skojarzone z operacją zmiany w przyszłości. |
+| operationVersion | Optional (Opcjonalność) | Wersja interfejsu api skojarzone z operacją, jeśli operationName została wykonana przy użyciu interfejsu API (np.) `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Jeśli nie ma żadnych interfejsów API, który odnosi się do tej operacji, wersja reprezentuje wersję tej operacji w przypadku, gdy właściwości skojarzone z operacją zmiany w przyszłości. |
 | category | Wymagane | Kategoria dziennika zdarzeń. Kategoria jest stopień szczegółowości, w którym można włączać lub wyłączać dzienniki dla określonego zasobu. Właściwości, które są wyświetlane w obiekcie blob właściwości zdarzenia są takie same, w ramach typu dziennika w określonej kategorii i zasobów. Rejestruj typowe kategorie są "do inspekcji" "działa" "Wykonanie" i "Żądania". |
-| resultType | Opcjonalne | Stan zdarzenia. Typowe wartości to uruchomiona, w toku, zakończone powodzeniem, nie powiodło się, aktywny i rozwiązany. |
-| resultSignature | Opcjonalne | Stan podrzędny zdarzenia. Ta operacja odpowiada wywołaniu interfejsu API REST, to kod stanu HTTP odpowiedniego wywołania REST. |
-| resultDescription | Opcjonalne | Opis tekst statyczny tej operacji, np. "Pobierz plik magazynu". |
-| durationMs | Opcjonalne | Czas trwania działania (w milisekundach). |
-| callerIpAddress | Opcjonalne | Adres IP obiektu wywołującego, gdy operacja odpowiada wywołaniu interfejsu API, nadchodzące z jednostki z publicznie dostępnego adresu IP. |
-| correlationId | Opcjonalne | Identyfikator GUID służący do grupowania zestawu powiązanych zdarzeń. Zwykle Jeśli dwa zdarzenia mają ten sam operationName, ale dwa różne stany (np.) "Wprowadzenie" i "Sukces"), współużytkują one ten sam identyfikator korelacji. To może również reprezentować relacje między zdarzeniami. |
-| identity | Opcjonalne | Obiekt blob JSON, który opisuje tożsamość użytkownika lub aplikacji, który wykonał operację. Zwykle dotyczy to autoryzację i oświadczenia / token JWT z usługi active directory. |
-| Poziom | Opcjonalne | Poziom ważności zdarzenia. Musi być jednym z informacyjny "," ostrzeżenie "," błąd "lub" krytyczne. |
-| lokalizacja | Opcjonalne | Region zasobu wysyłających zdarzenia, np. "Wschodnie stany USA" lub "Francja Południowa" |
-| properties | Opcjonalne | Dowolny rozszerzone właściwości powiązanych z tym określonej kategorii zdarzenia. Wszystkie właściwości niestandardowe/unikalnego muszą znajdować się w tym "B część" schematu. |
+| resultType | Optional (Opcjonalność) | Stan zdarzenia. Typowe wartości to uruchomiona, w toku, zakończone powodzeniem, nie powiodło się, aktywny i rozwiązany. |
+| resultSignature | Optional (Opcjonalność) | Stan podrzędny zdarzenia. Ta operacja odpowiada wywołaniu interfejsu API REST, to kod stanu HTTP odpowiedniego wywołania REST. |
+| resultDescription | Optional (Opcjonalność) | Opis tekst statyczny tej operacji, np. "Pobierz plik magazynu". |
+| durationMs | Optional (Opcjonalność) | Czas trwania działania (w milisekundach). |
+| callerIpAddress | Optional (Opcjonalność) | Adres IP obiektu wywołującego, gdy operacja odpowiada wywołaniu interfejsu API, nadchodzące z jednostki z publicznie dostępnego adresu IP. |
+| correlationId | Optional (Opcjonalność) | Identyfikator GUID służący do grupowania zestawu powiązanych zdarzeń. Zwykle Jeśli dwa zdarzenia mają ten sam operationName, ale dwa różne stany (np.) "Wprowadzenie" i "Sukces"), współużytkują one ten sam identyfikator korelacji. To może również reprezentować relacje między zdarzeniami. |
+| identity | Optional (Opcjonalność) | Obiekt blob JSON, który opisuje tożsamość użytkownika lub aplikacji, który wykonał operację. Zwykle dotyczy to autoryzację i oświadczenia / token JWT z usługi active directory. |
+| Poziom | Optional (Opcjonalność) | Poziom ważności zdarzenia. Musi być jednym z informacyjny "," ostrzeżenie "," błąd "lub" krytyczne. |
+| location | Optional (Opcjonalność) | Region zasobu wysyłających zdarzenia, np. "Wschodnie stany USA" lub "Francja Południowa" |
+| properties | Optional (Opcjonalność) | Dowolny rozszerzone właściwości powiązanych z tym określonej kategorii zdarzenia. Wszystkie właściwości niestandardowe/unikalnego muszą znajdować się w tym "B część" schematu. |
 
 ## <a name="service-specific-schemas-for-resource-diagnostic-logs"></a>Specyficzne dla usługi schematy dla dzienników diagnostycznych zasobów
 Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i dziennika. Ta lista zawiera wszystkich usług, które ułatwiają dostępne dzienniki diagnostyczne i linki do usługi i schematu specyficznego dla kategorii, gdzie są dostępne.
@@ -53,12 +53,12 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 | Bramy aplikacji |[Rejestrowanie diagnostyczne bramy Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Usługa log analytics dla usługi Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Usługa Azure Batch rejestrowanie diagnostyczne](../../batch/batch-diagnostics.md) |
-| Usługa Azure Database for MySQL | [Usługa Azure Database for MySQL — dzienniki diagnostyczne](../../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for MySQL | [Usługa Azure Database for MySQL — dzienniki diagnostyczne](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Usługa Azure Database for postgresql w warstwie dzienników diagnostycznych](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Cognitive Services | Schemat nie jest dostępna. |
 | Content Delivery Network | [Dzienniki diagnostyczne platformy Azure dla usługi CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Rejestrowanie usługi Azure Cosmos DB](../../cosmos-db/logging.md) |
-| Data Factory | [Monitorowanie fabryki danych przy użyciu usługi Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
+| Fabryka danych | [Monitorowanie fabryki danych przy użyciu usługi Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Accessing diagnostic logs for Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) (Dostęp do dzienników diagnostycznych usługi Azure Data Lake Analytics) |
 | Data Lake Store |[Uzyskiwanie dostępu do dzienników diagnostycznych usługi Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Event Hubs |[Dzienniki diagnostyczne platformy Azure Event Hubs](../../event-hubs/event-hubs-diagnostic-logs.md) |
@@ -72,11 +72,11 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 | Ochrona przed atakami DDOS | [Zarządzanie standardowa ochrona platformy Azure przed atakami DDoS](../../virtual-network/manage-ddos-protection.md) |
 | PowerBI Dedicated | [Rejestrowanie diagnostyczne dla usługi Power BI Embedded na platformie Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Model danych usługi Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| wyszukaj |[Włączanie i korzystanie z analizy ruchu wyszukiwania](../../search/search-traffic-analytics.md) |
-| Magistrala usług |[Dzienniki diagnostyczne platformy Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| Baza danych SQL | [Usługa Azure SQL Database rejestrowania diagnostycznego](../../sql-database/sql-database-metrics-diag-logging.md) |
+| Wyszukiwanie |[Włączanie i korzystanie z analizy ruchu wyszukiwania](../../search/search-traffic-analytics.md) |
+| Service Bus |[Dzienniki diagnostyczne platformy Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
+| SQL Database | [Usługa Azure SQL Database rejestrowania diagnostycznego](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Dzienniki diagnostyczne zadania](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| Menedżer ruchu | [Schemat dziennika usługi Traffic Manager](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
+| Traffic Manager | [Schemat dziennika usługi Traffic Manager](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Sieci wirtualne | Schemat nie jest dostępna. |
 | Bramy sieci wirtualnej | Schemat nie jest dostępna. |
 
@@ -90,17 +90,17 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Automation/automationAccounts|JobStreams|Strumienie zadania|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Stan węzła DSC|
 |Microsoft.Batch/batchAccounts|ServiceLog|Dzienniki usługi|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Pobiera metryki punktu końcowego (np. przepustowość, ruch wychodzący itd.).|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Pobiera metryki punktu końcowego, np. przepustowość, ruch wychodzący itd.|
 |Microsoft.ClassicNetwork/networksecuritygroups|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|
 |Microsoft.CognitiveServices/accounts|Inspekcja|Dzienniki inspekcji|
-|Microsoft.CognitiveServices/accounts|RequestResponse|Dzienniki żądań i odpowiedzi|
-|Microsoft.ContainerService/managedClusters|kube-apiserver|Serwer interfejsu API usługi Kubernetes|
-|Microsoft.ContainerService/managedClusters|kube-controller-manager|Menedżer kontrolera usługi Kubernetes|
-|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Moduł automatycznego skalowania klastra usługi Kubernetes|
-|Microsoft.ContainerService/managedClusters|Usługa scheduler rozwiązania kubernetes|Harmonogram usługi Kubernetes|
-|Microsoft.ContainerService/managedClusters|Ochrona|Element webhook uwierzytelniania|
+|Microsoft.CognitiveServices/accounts|RequestResponse|Żądania i odpowiedzi dzienników|
+|Microsoft.ContainerService/managedClusters|kube-apiserver|Serwera interfejsu API rozwiązania Kubernetes|
+|Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes Controller Manager|
+|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Skalowanie klastra usługi Kubernetes|
+|Microsoft.ContainerService/managedClusters|Usługa scheduler rozwiązania kubernetes|Kubernetes Scheduler|
+|Microsoft.ContainerService/managedClusters|Ochrona|Uwierzytelnianie elementu Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
-|Microsoft.DataFactory/factories|ActivityRuns|Dziennik uruchomienia działania potoku|
+|Microsoft.DataFactory/factories|Uruchomień działania|Dziennik uruchomienia działania potoku|
 |Microsoft.DataFactory/factories|PipelineRuns|Potok jest uruchamiany dziennika|
 |Microsoft.DataFactory/factories|TriggerRuns|Wyzwalacz jest uruchamiany dziennika|
 |Microsoft.DataLakeAnalytics/accounts|Inspekcja|Dzienniki inspekcji|
@@ -130,10 +130,10 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archiwizuj dzienniki|
 |Microsoft.EventHub/namespaces|OperationalLogs|Dzienniki operacyjne|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Dzienniki skalowania automatycznego|
-|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Autoskalowanie ocen|
-|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Autoskalowanie akcji skalowania|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Obliczanie automatyczne skalowanie|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Akcje skalowania automatycznego skalowania|
 |Microsoft.IoTSpaces/Graph|Ślad|Ślad|
-|Microsoft.IoTSpaces/Graph|Działa|Działa|
+|Microsoft.IoTSpaces/Graph|Operacyjne|Operacyjne|
 |Microsoft.IoTSpaces/Graph|Inspekcja|Inspekcja|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
 |Microsoft.IoTSpaces/Graph|Ruch przychodzący|Ruch przychodzący|
@@ -174,10 +174,10 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Punkty odzyskiwania odzyskiwania lokacji platformy Azure|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Szybkość przesyłania danych replikacji usługi Azure Site Recovery|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Usługa Azure Site Recovery chronione współczynnik zmian danych na dysku|
-|Microsoft.Search/searchServices|OperationLogs|Dzienniki operacji |
+|Microsoft.Search/searchServices|OperationLogs|Dzienniki operacji|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Dzienniki operacyjne|
 |Microsoft.Sql/servers/databases|SQLInsights|Szczegółowe informacje SQL|
-|Microsoft.Sql/servers/databases|AutomaticTuning|Dostrajanie automatyczne|
+|Microsoft.Sql/servers/databases|AutomaticTuning|Automatyczne dostrajanie|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Statystyki środowiska uruchomieniowego Query Store|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Statystyki oczekiwania Query Store|
 |Microsoft.Sql/servers/databases|Błędy|Błędy|
@@ -198,7 +198,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Statystyki środowiska uruchomieniowego Query Store|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Statystyki oczekiwania Query Store|
 |Microsoft.Sql/managedInstances/databases|Błędy|Błędy|
-|Microsoft.StreamAnalytics/streamingjobs|Wykonywanie|Wykonywanie|
+|Microsoft.StreamAnalytics/streamingjobs|Wykonanie|Wykonanie|
 |Microsoft.StreamAnalytics/streamingjobs|Tworzenie|Tworzenie|
 |Microsoft.Web/Sites|FunctionExecutionLogs|Dzienniki wykonywania — funkcja|
 |Microsoft.Web/Sites/Slots|FunctionExecutionLogs|Dzienniki wykonywania — funkcja|

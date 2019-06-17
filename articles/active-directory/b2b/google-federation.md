@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94b35f0530dacfadb799f1d44d7a9eb666def6c9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65891977"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B
@@ -36,7 +36,7 @@ Jeśli użytkownik-Gość widzi błąd "za długi nagłówek", użytkownik podej
 
 ## <a name="step-1-configure-a-google-developer-project"></a>Krok 1: Konfigurowanie projektu programu Google developer
 Najpierw utwórz nowy projekt w konsoli deweloperów Google, aby otrzymać klient, identyfikator i klucz tajny klienta, który można później dodać do usługi Azure AD. 
-1. Przejdź do interfejsów API Google na https://console.developers.google.comi zaloguj się przy użyciu konta Google. Firma Microsoft zaleca używanie udostępnionych zespołu konto Google.
+1. Przejdź do interfejsów API Google na https://console.developers.google.com i zaloguj się przy użyciu konta Google. Firma Microsoft zaleca używanie udostępnionych zespołu konto Google.
 2. Tworzenie nowego projektu: Na pulpicie nawigacyjnym wybierz **Tworzenie projektu**, a następnie wybierz pozycję **Utwórz**. Na stronie nowy projekt wprowadź **Nazwa projektu**, a następnie wybierz pozycję **Utwórz**.
    
    ![Zrzut ekranu przedstawiający nowej stronie projektu dla usług Google](media/google-federation/google-new-project.png)
@@ -64,7 +64,7 @@ Najpierw utwórz nowy projekt w konsoli deweloperów Google, aby otrzymać klien
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(gdzie `<directory id>` jest Twój identyfikator katalogu)
    
      > [!NOTE]
-     > Aby znaleźć swój identyfikator katalogu, przejdź do https://portal.azure.com, a następnie w obszarze **usługi Azure Active Directory**, wybierz **właściwości** i skopiuj **identyfikator katalogu**.
+     > Aby znaleźć swój identyfikator katalogu, przejdź do https://portal.azure.com , a następnie w obszarze **usługi Azure Active Directory**, wybierz **właściwości** i skopiuj **identyfikator katalogu**.
 
    ![Zrzut ekranu przedstawiający autoryzowanych przekierowywanie sekcja identyfikatorów URI](media/google-federation/google-create-oauth-client-id.png)
 
@@ -101,7 +101,7 @@ Możesz usunąć konfigurację Federacji Google. Jeśli tak zrobisz, Google uży
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com). W lewym okienku wybierz pozycję **Azure Active Directory**. 
 2. Wybierz **relacje w organizacji**.
 3. Wybierz **dostawców tożsamości**.
-4. Na **Google** wiersz, wybierz menu kontekstowe (**...** ), a następnie wybierz **Usuń**. 
+4. Na **Google** wiersz, wybierz menu kontekstowe ( **...** ), a następnie wybierz **Usuń**. 
    
    ![Zrzut ekranu przedstawiający opcję Usuń społecznościowego dostawcy tożsamości](media/google-federation/google-social-identity-providers.png)
 

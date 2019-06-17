@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
 ms.openlocfilehash: f5dfa34760bcef23bf54d65b35e3ad8f48cc2ee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831850"
 ---
 # <a name="application-gateway-components"></a>Składniki bramy aplikacji
@@ -104,7 +104,7 @@ Nagłówki można ustawić wartości statyczne lub innych nagłówków i zmienny
 
 Aby uzyskać więcej informacji, zobacz [nagłówków HTTP ponownego zapisywania w Twojej bramy application gateway](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
 
-## <a name="http-settings"></a>Ustawienia protokołu HTTP
+## <a name="http-settings"></a>Ustawienia HTTP
 
 Usługa application gateway kieruje ruch do serwerów wewnętrznej bazy danych (określone w regule routingu żądania, który zawiera ustawienia protokołu HTTP) przy użyciu numeru portu, protokołu i inne ustawienia, które szczegółowo opisane w tej części.
 
@@ -126,7 +126,7 @@ Pula zaplecza kieruje żądanie do serwerów wewnętrznej bazy danych, które ob
 - Zestawy skalowania maszyn wirtualnych
 - Publiczne adresy IP
 - Wewnętrzne adresy IP
-- Nazwa FQDN
+- NAZWA FQDN
 - Wielodostępne zaplecza (takich jak usługa App Service)
 
 Zestaw dostępności nie są powiązane składowych puli zaplecza bramy aplikacji. Bramy aplikacji może komunikować się z wystąpieniami poza siecią wirtualną, która znajduje się w. W rezultacie członkowie pule zaplecza może być w klastrach, między centrami danych lub spoza platformy Azure, tak długo, jak istnieje łączność IP.

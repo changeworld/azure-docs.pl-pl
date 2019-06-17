@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
-ms.component: alerts
+ms.subservice: alerts
 ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60346340"
 ---
 # <a name="smart-groups"></a>Grupy inteligentne
@@ -32,7 +32,7 @@ Obsługiwane są następujące stany inteligentne grupy.
 | Stan | Opis |
 |:---|:---|
 | Nowa | Problem został wykryty i jeszcze nie została sprawdzona. |
-| Potwierdzono | Administrator ma przejrzane grupy inteligentne i do pracy w niej. |
+| Potwierdzone | Administrator ma przejrzane grupy inteligentne i do pracy w niej. |
 | Zamknięte | Problem został rozwiązany. Po zamknięciu inteligentne grupy możesz otworzyć go ponownie, zmieniając go do innego stanu. |
 
 [Dowiedz się, jak można zmienić stanu grupy inteligentne.](https://aka.ms/managing-alert-smart-group-states)
@@ -49,7 +49,7 @@ Po wybraniu grupy inteligentne, zostanie wyświetlona strona szczegółów grupy
 
 Strona szczegółów grupy inteligentnych zawiera następujące sekcje.
 
-| Sekcja | Opis |
+| `Section` | Opis |
 |:---|:---|
 | Alerty | Zawiera listę poszczególnych alertów, które znajdują się w grupie inteligentne. Wybierz alert, aby otworzyć jego stronę szczegółów alertu. |
 | Historia | Wyświetla listę każdej akcji podjętej przez inteligentny grupy i wszelkie zmiany, które zostały wprowadzone. To jest obecnie ograniczona do zmiany stanu i zmiany członkostwa alertu. |
@@ -62,4 +62,5 @@ Nazwa grupy inteligentne nazywa się jej pierwszy alert. Nie można utworzyć lu
 
 - [Zarządzanie grupami inteligentne](https://aka.ms/managing-smart-groups)
 - [Zmień swój stan alertu i inteligentne grupy](https://aka.ms/managing-alert-smart-group-states)
+
 

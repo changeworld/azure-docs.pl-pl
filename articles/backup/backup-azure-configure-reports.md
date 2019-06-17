@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
 ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60642778"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
@@ -87,7 +87,7 @@ Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykona
       ![Pobieranie pakietu zawartości](./media/backup-azure-configure-reports/content-pack-get.png)
 4. Wprowadź nazwę konta magazynu, który został skonfigurowany w poprzednim kroku 5, a następnie wybierz pozycję **dalej**.
 
-    ![Podaj nazwę konta magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
+    ![Wprowadź nazwę konta magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
 5. Przy użyciu metody uwierzytelniania "Key", wprowadź klucz konta magazynu dla tego konta magazynu. Aby [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys), przejdź do swojego konta magazynu w witrynie Azure portal.
 
      ![Wprowadź konto magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>

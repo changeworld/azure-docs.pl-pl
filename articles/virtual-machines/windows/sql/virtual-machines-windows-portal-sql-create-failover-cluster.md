@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
 ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60591598"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
@@ -74,7 +74,7 @@ Musisz mieć operacyjnej znajomości następujące technologie:
 - [Technologie klastrowania Windows](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
 - [Wystąpienia klastra trybu Failover programu SQL Server](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Jedną istotną różnicą jest, że w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, firma Microsoft zaleca jednej karty Sieciowej na serwerze (węzeł klastra) oraz pojedynczej podsieci. Sieci platformy Azure ma fizyczny nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci niepotrzebne w klastrze gościa maszyny Wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie węzły tylko są dostępne w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny Wirtualnej IaaS platformy Azure. 
+Jedną istotną różnicą jest, że w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, firma Microsoft zaleca jednej karty Sieciowej na serwerze (węzeł klastra) oraz pojedynczej podsieci. Sieć platformy Azure ma fizyczną nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci są niepotrzebne w klastrze gościa maszyny wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie, że węzły są dostępne tylko w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny wirtualnej IaaS platformy Azure. 
 
 Ponadto powinien mieć ogólna wiedza o następujące technologie:
 
@@ -416,12 +416,12 @@ Aby utworzyć moduł równoważenia obciążenia:
    - **Nazwa**: Nazwa reguły równoważenia obciążenia.
    - **Adres IP frontonu**: Użyj adresu IP dla sieci zasobu klastra programu SQL Server infrastruktury klasyfikacji plików.
    - **Port**: Ustaw dla portu TCP programu SQL Server z osobna. Wystąpienia domyślnego portu to 1433.
-   - **Port zaplecza**: Ta wartość używa tego samego portu **portu** wartość po włączeniu **pływającego adresu IP (bezpośredni zwrot serwera)**.
+   - **Port zaplecza**: Ta wartość używa tego samego portu **portu** wartość po włączeniu **pływającego adresu IP (bezpośredni zwrot serwera)** .
    - **Pula zaplecza**: Użyj nazwy puli zaplecza, które zostały wcześniej skonfigurowane.
    - **Sonda kondycji**: Za pomocą sondy kondycji, które zostały wcześniej skonfigurowane.
    - **Trwałość sesji**: Brak.
    - **Limit czasu (w minutach) bezczynności**: 4.
-   - **Pływający adres IP (bezpośredni zwrot serwera)**: Enabled (Włączony)
+   - **Pływający adres IP (bezpośredni zwrot serwera)** : Enabled (Włączony)
 
 1. Kliknij przycisk **OK**.
 

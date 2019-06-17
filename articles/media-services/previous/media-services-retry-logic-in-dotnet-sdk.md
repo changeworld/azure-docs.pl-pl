@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61094659"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika ponawiania w zestawie SDK usługi multimediów dla platformy .NET  
@@ -39,11 +39,11 @@ W poniższej tabeli opisano wyjątki, które obsługuje Media Services SDK dla p
 
 | Wyjątek | Żądania sieci Web | Magazyn | Zapytanie | SaveChanges |
 | --- | --- | --- | --- | --- |
-| Klasa WebException<br/>Aby uzyskać więcej informacji, zobacz [kodów stanu WebException](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) sekcji. |Yes |Yes |Yes |Yes |
-| DataServiceClientException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Yes |
-| DataServiceQueryException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Yes |
+| Klasa WebException<br/>Aby uzyskać więcej informacji, zobacz [kodów stanu WebException](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) sekcji. |Tak |Yes |Yes |Tak |
+| DataServiceClientException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Tak |
+| DataServiceQueryException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Tak |
 | DataServiceRequestException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Yes |
-| DataServiceTransportException |Nie |Nie |Yes |Yes |
+| DataServiceTransportException |Nie |Nie |Yes |Tak |
 | TimeoutException |Yes |Yes |Yes |Nie |
 | SocketException |Yes |Yes |Yes |Yes |
 | StorageException |Nie |Yes |Nie |Nie |
@@ -54,18 +54,18 @@ W poniższej tabeli przedstawiono, który kodów błędu WebException Logika pon
 
 | Stan | Żądania sieci Web | Magazyn | Zapytanie | SaveChanges |
 | --- | --- | --- | --- | --- |
-| ConnectFailure |Yes |Yes |Yes |Yes |
-| NameResolutionFailure |Yes |Yes |Yes |Yes |
-| ProxyNameResolutionFailure |Yes |Yes |Yes |Yes |
-| SendFailure |Yes |Yes |Yes |Yes |
-| PipelineFailure |Yes |Yes |Yes |Nie |
-| ConnectionClosed |Yes |Yes |Yes |Nie |
-| KeepAliveFailure |Yes |Yes |Yes |Nie |
+| ConnectFailure |Tak |Yes |Yes |Tak |
+| NameResolutionFailure |Tak |Yes |Yes |Tak |
+| ProxyNameResolutionFailure |Tak |Yes |Yes |Tak |
+| SendFailure |Tak |Yes |Yes |Yes |
+| PipelineFailure |Tak |Yes |Yes |Nie |
+| ConnectionClosed |Tak |Yes |Yes |Nie |
+| KeepAliveFailure |Tak |Yes |Yes |Nie |
 | Nieznany błąd zostanie |Yes |Yes |Yes |Nie |
-| ReceiveFailure |Yes |Yes |Yes |Nie |
+| ReceiveFailure |Tak |Yes |Yes |Nie |
 | RequestCanceled |Yes |Yes |Yes |Nie |
-| Limit czasu |Yes |Yes |Yes |Nie |
-| ProtocolError <br/>Ponowienie dotyczące ProtocolError jest kontrolowana przez obsługę kodu stanu HTTP. Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Yes |Yes |Yes |Yes |
+| limit czasu |Yes |Yes |Yes |Nie |
+| ProtocolError <br/>Ponowienie dotyczące ProtocolError jest kontrolowana przez obsługę kodu stanu HTTP. Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Yes |Yes |Yes |Tak |
 
 ### <a name="HTTPStatusCode"></a> Kody stanu błędu HTTP
 Podczas operacji zapytań i SaveChanges zgłosić wyjątek DataServiceClientException, DataServiceQueryException lub DataServiceQueryException, kod statusu błędu HTTP jest zwracany we właściwości StatusCode.  W poniższej tabeli przedstawiono dla kody błędów Logika ponawiania jest zaimplementowana.  
@@ -73,13 +73,13 @@ Podczas operacji zapytań i SaveChanges zgłosić wyjątek DataServiceClientExce
 | Stan | Żądania sieci Web | Magazyn | Zapytanie | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |Nie |Yes |Nie |Nie |
-| 403 |Nie |Yes<br/>Obsługa ponownych prób przy użyciu dłuższego oczekiwania. |Nie |Nie |
-| 408 |Yes |Yes |Yes |Yes |
-| 429 |Yes |Yes |Yes |Yes |
-| 500 |Yes |Yes |Yes |Nie |
-| 502 |Yes |Yes |Yes |Nie |
-| 503 |Yes |Yes |Yes |Yes |
-| 504 |Yes |Yes |Yes |Nie |
+| 403 |Nie |Tak<br/>Obsługa ponownych prób przy użyciu dłuższego oczekiwania. |Nie |Nie |
+| 408 |Yes |Yes |Yes |Tak |
+| 429 |Tak |Yes |Yes |Tak |
+| 500 |Tak |Yes |Yes |Nie |
+| 502 |Tak |Yes |Yes |Nie |
+| 503 |Tak |Yes |Yes |Tak |
+| 504 |Tak |Yes |Yes |Nie |
 
 Jeśli chcesz Przyjrzyj się rzeczywistą implementację Media Services SDK dla platformy .NET logikę ponawiania próby, zobacz [azure sdk media services dla](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling).
 

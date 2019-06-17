@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
 ms.openlocfilehash: dd0a33364ed9395a85478798e47352c533bd47dc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028203"
 ---
 # <a name="azure-blockchain-service-security"></a>Zabezpieczenia usługi Azure Service łańcucha bloków
@@ -43,7 +43,7 @@ Istnieją trzy tryby uwierzytelniania dla dostępu zdalnego wywoływania procedu
 
 Podstawowe uwierzytelnianie przy użyciu nagłówka uwierzytelniania HTTP zawierający nazwę użytkownika i hasło. Nazwa użytkownika jest nazwa węzła łańcucha bloków. Hasło jest ustawiany podczas inicjowania obsługi administracyjnej element członkowski lub węzeł. Można zmienić hasło przy użyciu witryny Azure portal lub interfejsu wiersza polecenia.
 
-### <a name="access-keys"></a>Klawisze dostępu
+### <a name="access-keys"></a>Klucze dostępu
 
 Klucze dostępu użyć losowo wygenerowanego ciągu objęte adres URL punktu końcowego. Dwa klucze dostępu wspomagające wymiany kluczy. Klucze można generowane z witryny Azure portal i interfejs wiersza polecenia.
 

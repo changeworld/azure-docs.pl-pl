@@ -11,10 +11,10 @@ ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738836"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
@@ -32,14 +32,14 @@ W usłudze Azure Automation prawo dostępu jest nadawane poprzez przypisywanie u
 | Czytelnik |Rola Czytelnik służy do wyświetlania wszystkich zasobów w ramach konta usługi Automation, ale nie pozwala na wprowadzanie żadnych zmian. |
 | Operator usługi |Rola Operator usługi Automation pozwala wyświetlić nazwę elementu runbook i właściwości oraz do tworzenia zadań i zarządzanie nimi dla wszystkich elementów runbook w ramach konta usługi Automation. Ta rola jest przydatna, jeśli zasoby konta usługi Automation, takie jak zasoby poświadczeń i inne elementy Runbook, mają być chronione przed możliwością wyświetlenia lub modyfikowania, ale członkowie organizacji mają mieć możliwość wykonywania tych elementów Runbook. |
 |Operator zadań usługi Automation|Rola Operator zadań automatyzacji pozwala na tworzenie zadań i zarządzanie nimi dla wszystkich elementów runbook w ramach konta usługi Automation.|
-|Operator elementów runbook usługi Automation|Rola Operator elementów Runbook usługi Automation umożliwia wyświetlenie nazwy i właściwości elementu runbook.|
+|Operator elementów Runbook usługi Automation|Rola Operator elementów Runbook usługi Automation umożliwia wyświetlenie nazwy i właściwości elementu runbook.|
 | Współautor usługi Log Analytics | Rola Współautor usługi Log Analytics umożliwia odczytywanie wszystkich danych monitorowania i edytowanie ustawień monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia maszyny Wirtualnej do maszyn wirtualnych, odczytywanie kluczy kont magazynu, aby można było skonfigurować zbieranie dzienników z usługi Azure storage, tworzenie i konfigurowanie kont usługi Automation, dodawanie rozwiązań i konfigurowanie diagnostyki platformy Azure na wszystkie zasoby platformy Azure.|
 | Czytelnik usługi Log Analytics | Rola Czytelnik usługi Log Analytics umożliwia wyświetlanie i wyszukiwanie wszystkich monitorowania danych także wyświetlać ustawienia monitorowania. Dotyczy to również wyświetlanie konfiguracji diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
 | Współautor monitorowania | Rola Współautor monitorowania umożliwia odczytywanie wszystkich danych monitorowania i aktualizacji ustawienia monitorowania.|
 | Czytelnik monitorowania | Rola Czytelnik monitorowania umożliwia odczytywanie wszystkich danych monitorowania. |
 | Administrator dostępu użytkowników |Rola Administrator dostępu użytkowników umożliwia zarządzanie dostępem użytkowników do kont usługi Azure Automation. |
 
-## <a name="role-permissions"></a>Uprawnienia ról
+## <a name="role-permissions"></a>Uprawnienia roli
 
 W poniższych tabelach opisano określone uprawnienia udzielone każdej roli. Może to obejmować działania, które należy nadać uprawnienia, i NotActions, która je ograniczyć.
 
@@ -116,7 +116,7 @@ Rola Operator zadań automatyzacji udzielany jest w zakresie konta usługi Autom
 |Microsoft.Insights/alertRules/*      | Utwórz i Zarządzaj regułami alertów.        |
 |Microsoft.Support/* |Tworzenie i zarządzanie biletami pomocy technicznej.|
 
-### <a name="automation-runbook-operator"></a>Operator elementów runbook usługi Automation
+### <a name="automation-runbook-operator"></a>Operator elementów Runbook usługi Automation
 
 Rola Operator elementów Runbook usługi Automation jest udzielany w zakresie elementu Runbook. Operator elementów Runbook usługi Automation można wyświetlić nazwę i właściwości elementu runbook.  Tej roli w połączeniu z roli "Operator zadań automatyzacji" umożliwia operatorowi również tworzenie zadań i zarządzanie nimi dla elementu runbook. W poniższej tabeli przedstawiono uprawnienia przyznane dla roli:
 
@@ -264,8 +264,8 @@ Rozwiązanie Update management osiągnie wielu usług, aby zapewnić jej obsług
 |---------|---------|---------|
 |Konto usługi Automation     | Współautor usługi Log Analytics       | Konto usługi Automation        |
 |Konto usługi Automation    | Współautor maszyny wirtualnej        | Grupa zasobów dla konta        |
-|Obszar roboczy usługi Log Analytics     | Współautor usługi Log Analytics| Obszar roboczy usługi Log Analytics        |
-|Obszar roboczy usługi Log Analytics |Czytelnik usługi Log Analytics| Subskrypcja|
+|Obszar roboczy usługi log Analytics     | Współautor usługi Log Analytics| Obszar roboczy usługi log Analytics        |
+|Obszar roboczy usługi log Analytics |Czytelnik usługi Log Analytics| Subskrypcja|
 |Rozwiązanie     |Współautor usługi Log Analytics         | Rozwiązanie|
 |Maszyna wirtualna     | Współautor maszyny wirtualnej        | Maszyna wirtualna        |
 

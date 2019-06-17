@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
 ms.openlocfilehash: 9dd473aadd7123cafc27209f5c34322fdbcffb71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60816459"
 ---
 # <a name="migrate-to-the-30-api"></a>Migracja do wersji 3.0 interfejsu API
@@ -30,7 +30,7 @@ Ten przewodnik będzie pokazują, jak zaktualizować swoje projekty do pracy z n
 
 ## <a name="use-the-updated-prediction-api"></a>Za pomocą zaktualizowanego interfejsu API prognozowania
 
-2.x interfejsy API używane to samo wywołanie prognozowania zarówno klasyfikatorów obrazów, jak i obiekt wykrywanie projektów. Oba typy projektu były do przyjęcia **PredictImage** i **PredictImageUrl** wywołania. Począwszy od 3.0, firma Microsoft ma podzielić ten interfejs API, aby konieczne jest zgodny z typem projektu do wywołania:
+2\.x interfejsy API używane to samo wywołanie prognozowania zarówno klasyfikatorów obrazów, jak i obiekt wykrywanie projektów. Oba typy projektu były do przyjęcia **PredictImage** i **PredictImageUrl** wywołania. Począwszy od 3.0, firma Microsoft ma podzielić ten interfejs API, aby konieczne jest zgodny z typem projektu do wywołania:
 
 * Użyj **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** i **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** można pobrać prognoz dotyczących projektów klasyfikacji obrazów.
 * Użyj **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** i **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** można uzyskiwać prognozy dla obiektu wykrywanie projektów.
@@ -40,7 +40,7 @@ Ten przewodnik będzie pokazują, jak zaktualizować swoje projekty do pracy z n
 Interfejsy API 2.x umożliwia domyślnej iteracji lub identyfikator iteracji wybierz iterację do użycia na potrzeby prognozowania. Począwszy od 3.0 wdrożyliśmy przepływ publikowania, według której najpierw opublikować iteracji w określonej nazwie z interfejsu API szkolenia. Nazwa jest następnie przekazać do metody prognozowania, aby określić, które iteracji do użycia.
 
 > [!IMPORTANT]
-> 3.0 interfejsów API należy używać domyślnej funkcji iteracji. Do czasu firma Microsoft wycofana starszych interfejsów API, można nadal używać 2.x interfejsy API umożliwiające przełączanie iteracji jako domyślny. Te interfejsy API będzie przechowywany w okresie czasu, a może wywołać **[UpdateIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b818)** metodę, aby oznaczyć iteracji jako domyślny.
+> 3\.0 interfejsów API należy używać domyślnej funkcji iteracji. Do czasu firma Microsoft wycofana starszych interfejsów API, można nadal używać 2.x interfejsy API umożliwiające przełączanie iteracji jako domyślny. Te interfejsy API będzie przechowywany w okresie czasu, a może wywołać **[UpdateIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b818)** metodę, aby oznaczyć iteracji jako domyślny.
 
 ### <a name="publish-an-iteration"></a>Publikowanie iteracji
 

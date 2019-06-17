@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607297"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Przeglądy moderowanie zawartości, zadań i przepływów pracy
@@ -29,7 +29,7 @@ W przeglądzie, zawartość zostanie przekazany do narzędzia do przeglądu i po
 
 Zobacz [przewodnik narzędzie do przeglądu](./review-tool-user-guide/review-moderated-images.md) wprowadzenie do tworzenia przeglądów lub zobacz [Podręcznik interfejsu API REST](./try-review-api-review.md) Aby dowiedzieć się, jak to zrobić programowo.
 
-## <a name="workflows"></a>Przepływy
+## <a name="workflows"></a>Przepływy pracy
 
 Przepływ pracy jest oparta na chmurze dostosowane filtr dla zawartości. Przepływy pracy mogą łączyć się z różnych usług do filtrowania zawartości na różne sposoby, a następnie podjąć odpowiednie działania. Z łącznikiem usługi Content Moderator przepływu pracy można automatycznie zastosować znaczniki Moderowanie i Utwórz przeglądy przesłanych treści.
 
@@ -66,7 +66,7 @@ Przepływy pracy mogą całkowicie opisane jako ciągi formatu JSON, co sprawia,
 
 Zobacz [przewodnik narzędzie do przeglądu](./review-tool-user-guide/workflows.md) Rozpocznij tworzenie i korzystanie z przepływów pracy, lub zobacz [Podręcznik interfejsu API REST](./try-review-api-workflow.md) Aby dowiedzieć się, jak to zrobić programowo.
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 
 Zadania Moderowanie służy jako typ otoki dla funkcji moderowania zawartości, przepływy pracy i recenzje. Zadanie skanowania zawartości przy użyciu Moderowanie obrazów Content Moderator, interfejsu API lub interfejs API moderowania tekstu i następnie porównuje ją z wyznaczonym przepływu pracy. Na podstawie przepływu pracy wyników, może lub nie może utworzyć przeglądu zawartości w [narzędzie do przeglądu](./review-tool-user-guide/human-in-the-loop.md). Przeglądy i przepływów pracy można utworzone i skonfigurowane za pomocą ich odpowiednich interfejsów API, zadanie interfejsu API pozwala uzyskać szczegółowy raport dotyczący całego procesu, (które mogą być wysyłane do punktu końcowego określonego wywołania zwrotnego).
 

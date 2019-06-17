@@ -5,19 +5,19 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 02/02/2018
+ms.date: 06/14/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: cd7fc7487a41979f37c9a55baeb0b8e172e808c4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ebea8bfd69a4df605142ab82f3efbc7d97d34529
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66133169"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143968"
 ---
-W usłudze Azure Cloud Shell skonfiguruj poświadczenia wdrożenia za pomocą [ `az webapp deployment user set` ](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) polecenia. Ten użytkownik wdrożenia jest wymagany do wdrożenia protokołu FTP i lokalnego narzędzia Git w aplikacji internetowej. Nazwa użytkownika i hasło są na poziomie konta. _Są one różne od poświadczeń subskrypcji platformy Azure._
+W usłudze Azure Cloud Shell skonfiguruj poświadczenia wdrożenia za pomocą [ `az webapp deployment user set` ](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) polecenia. Możesz użyć tego użytkownika wdrożenia dla protokołu FTP i lokalnego wdrożenia narzędzia Git do aplikacji sieci web. Nazwa użytkownika i hasło są na poziomie konta. _Są one różne od poświadczeń subskrypcji platformy Azure._
 
-W poniższym przykładzie Zastąp  *\<username >* i  *\<hasło >*, razem z nawiasami, Nowa nazwa użytkownika i hasło. Nazwa użytkownika musi być unikatowa w obrębie platformy Azure. Hasło musi mieć co najmniej ośmiu znaków i zawierać dwa z następujących trzech elementów: litery, cyfry i symbole. 
+W poniższym przykładzie Zastąp  *\<username >* i  *\<hasło >* , razem z nawiasami, Nowa nazwa użytkownika i hasło. Nazwa użytkownika musi być unikatowa w obrębie platformy Azure. Hasło musi mieć co najmniej ośmiu znaków i zawierać dwa z następujących trzech elementów: litery, cyfry i symbole.
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <username> --password <password>

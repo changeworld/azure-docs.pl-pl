@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: reference
 ms.date: 05/13/2019
 ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596945"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Dokumentacja dla typów akcji i wyzwalaczy w język definicji przepływów pracy dla usługi Azure Logic Apps
@@ -154,10 +154,10 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 
 *Dane wyjściowe*
  
-| Element | Type | Opis |
+| Element | Typ | Opis |
 |---------|------|-------------|
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi |
-| treść | Obiekt JSON | Jednostka z odpowiedzi |
+| Treść | Obiekt JSON | Jednostka z odpowiedzi |
 | Kod stanu: | Integer | Kod stanu z odpowiedzi |
 |||| 
 
@@ -327,10 +327,10 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 
 *Dane wyjściowe*
 
-| Element | Type | Opis |
+| Element | Typ | Opis |
 |---------|------|-------------| 
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
-| treść | Obiekt JSON | Jednostka z odpowiedzi | 
+| Treść | Obiekt JSON | Jednostka z odpowiedzi | 
 | Kod stanu: | Integer | Kod stanu z odpowiedzi | 
 |||| 
 
@@ -340,7 +340,7 @@ Do pracy ze swoją aplikację logiki, punkt końcowy musi są zgodne ze wzorcem 
   
 | Odpowiedź | Wymagane | Opis | 
 |----------|----------|-------------| 
-| Kod stanu | Tak | "200 OK" Kod stanu: uruchamia przebieg. Każdy inny kod stanu nie zaczyna się przebiegu. | 
+| Kod stanu | Yes | "200 OK" Kod stanu: uruchamia przebieg. Każdy inny kod stanu nie zaczyna się przebiegu. | 
 | Nagłówek retry-after | Nie | Liczba sekund, aż aplikacja logiki sonduje punkt końcowy ponownie | 
 | Nagłówek lokalizacji | Nie | Adres URL do wywołania na kolejnego interwału sondowania. Jeśli nie zostanie określony, oryginalnym adresie URL jest używany. | 
 |||| 
@@ -422,10 +422,10 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 *Dane wyjściowe* 
 
-| Element | Type | Opis |
+| Element | Typ | Opis |
 |---------|------|-------------| 
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
-| treść | Obiekt JSON | Jednostka z odpowiedzi | 
+| Treść | Obiekt JSON | Jednostka z odpowiedzi | 
 | Kod stanu: | Integer | Kod stanu z odpowiedzi | 
 |||| 
 
@@ -824,7 +824,7 @@ Poniżej przedstawiono niektóre typy powszechnie używane akcji:
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Tworzy pojedynczy dane wyjściowe na podstawie danych wejściowych, które mogą mieć różnych typów. | 
 | [**Wykonywanie kodu JavaScript**](#run-javascript-code) | Uruchom fragmenty kodu JavaScript, które mieszczą się w określonych kryteriów. Wymagania dotyczące kodu i uzyskać więcej informacji, zobacz [Dodaj i fragmenty kodu uruchamiania przy użyciu kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**— Funkcja**](#function-action) | Wywołuje funkcję platformy Azure. | 
+| [ **— Funkcja**](#function-action) | Wywołuje funkcję platformy Azure. | 
 | [**HTTP**](#http-action) | Wywołuje punkt końcowy HTTP. | 
 | [**Join**](#join-action) | Tworzy ciąg ze wszystkich elementów w tablicy, a następnie dzieli te elementy ze znakiem określonego ogranicznika. | 
 | [**Parse JSON**](#parse-json-action) | Tworzy zawartości tokeny przyjazny dla użytkownika przy użyciu właściwości w formacie JSON. Następnie można odwoływać się te właściwości, umieszczając tokenów w aplikacji logiki. | 
@@ -2389,7 +2389,7 @@ Można zmienić domyślne zachowanie środowiska uruchomieniowego dla wyzwalaczy
 
 Można zmienić domyślne zachowanie dla wyzwalaczy i akcji przy użyciu `operationOptions` właściwości w definicji wyzwalacza lub akcji.
 
-| Opcja operacji | Type | Opis | Wyzwalacza lub akcji | 
+| Opcja operacji | Typ | Opis | Wyzwalacza lub akcji | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | Uruchom działania oparte na protokole HTTP, synchronicznie zamiast asynchronicznie. <p><p>Aby ustawić tę opcję, zobacz [akcje były uruchamiane synchronicznie](#asynchronous-patterns). | Akcje: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Odpowiedź](#response-action) | 
 | `OptimizedForHighThroughput` | String | Zmiana [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) liczby wykonań akcji na 5 minut, aby [maksymalny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Aby ustawić tę opcję, zobacz [działania w trybie wysokiej przepływności](#run-high-throughput-mode). | Wszystkie akcje | 
@@ -2666,7 +2666,7 @@ Aby uzyskać [uwierzytelnianie podstawowe](../active-directory-b2c/active-direct
 | Właściwość | Wymagany | Value | Opis | 
 |----------|----------|-------|-------------| 
 | **type** | Tak | "Podstawowa" | Typ uwierzytelniania do użycia, która jest tutaj "Basic" | 
-| **Nazwa użytkownika** | Tak | "@parameters('userNameParam')" | Nazwa użytkownika do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
+| **Nazwa użytkownika** | Yes | "@parameters('userNameParam')" | Nazwa użytkownika do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
 | **Hasło** | Tak | "@parameters(passwordParam)" | Hasło do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
 ||||| 
 
@@ -2735,10 +2735,10 @@ Dla [uwierzytelniania OAuth usługi AD Azure](../active-directory/develop/authen
 |----------|----------|-------|-------------|
 | **type** | Tak | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth |
 | **Urząd** | Nie | <*URL-for-authority-token-issuer*> | Adres URL urząd certyfikacji który zawiera token uwierzytelniania |
-| **dzierżawy** | Tak | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
+| **dzierżawy** | Yes | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
 | **audience** | Tak | <*resource-to-authorize*> | Zasób, którego chcesz użyć do autoryzacji, na przykład `https://management.core.windows.net/` |
 | **clientId** | Tak | <*Identyfikator klienta*> | Identyfikator klienta aplikacji żądanie autoryzacji |
-| **credentialType** | Tak | "Certyfikat" lub "Wpis tajny" | Typ poświadczeń klienta używa dla żądania autoryzacji. Tej właściwości i wartości nie są wyświetlane w podstawowej definicji, ale określa wymagane parametry typu poświadczeń. |
+| **credentialType** | Yes | "Certyfikat" lub "Wpis tajny" | Typ poświadczeń klienta używa dla żądania autoryzacji. Tej właściwości i wartości nie są wyświetlane w podstawowej definicji, ale określa wymagane parametry typu poświadczeń. |
 | **pfx** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(pfxParam) | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
 | **Hasło** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
 | **Klucz tajny** | Tak, tylko w przypadku "Wpis tajny" typ poświadczeń | "@parameters(secretParam)" | Klucz tajny klienta do żądania autoryzacji |

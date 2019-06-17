@@ -11,10 +11,10 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: ffcc2f46a30569979879ff302cde1e3b146d3b50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60543687"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
@@ -77,7 +77,7 @@ Usługa Site Recovery umożliwia migrowanie maszyn wirtualnych IaaS platformy Az
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: Tworzenie magazynu usługi Recovery Services
 
 1. Otwórz [portal Azure](https://portal.azure.com).
-2. Wybierz **Utwórz zasób** > **zarządzania** > **kopii zapasowej** i **Site Recovery (OMS)**. Alternatywnie, można wybrać **Przeglądaj** > **magazyn usługi Recovery Services** > **Dodaj**. 
+2. Wybierz **Utwórz zasób** > **zarządzania** > **kopii zapasowej** i **Site Recovery (OMS)** . Alternatywnie, można wybrać **Przeglądaj** > **magazyn usługi Recovery Services** > **Dodaj**. 
 3. Określ region, który zostanie zreplikowana maszyn wirtualnych. Na potrzeby migracji, w tym samym regionie wybierz region, w których są Twoje źródłowe maszyny wirtualne i konta magazynu źródłowej. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2: Wybranie celów ochrony 
@@ -142,7 +142,7 @@ Aby sprawdzić, czy serwer konfiguracji jest pomyślnie skojarzone z zasadami re
 ### <a name="step-6-plan-capacity"></a>Krok 6: Planowanie pojemności
 
 1. Użyj [planowania pojemności](../../site-recovery/site-recovery-capacity-planner.md) Aby dokładnie oszacować przepustowość sieci, magazynu i innych wymagań, aby spełnić swoje replikacji. 
-2. Gdy wszystko będzie gotowe, wybierz pozycję **tak, ma to zostało zrobione** w **czy ukończono Planowanie pojemności?**.
+2. Gdy wszystko będzie gotowe, wybierz pozycję **tak, ma to zostało zrobione** w **czy ukończono Planowanie pojemności?** .
 
    ![Pole potwierdzenia ukończono Planowanie pojemności][11]
 
@@ -219,7 +219,7 @@ W określonych scenariuszach Migrowanie maszyn wirtualnych zobacz następujące 
 Zobacz też następujące zasoby, aby dowiedzieć się więcej na temat usługi Azure Storage i Azure Virtual Machines:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Usługa Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Wybierz typ dysku dla maszyn wirtualnych IaaS](disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png

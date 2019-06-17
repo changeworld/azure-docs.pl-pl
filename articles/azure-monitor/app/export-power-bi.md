@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
 ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900397"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
@@ -42,7 +42,7 @@ Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 ### <a name="export-an-analytics-query"></a>Eksportuj zapytania usługi Analytics
 1. [Otwórz analizę i zapisać zapytania](../../azure-monitor/log-query/get-started-portal.md).
 2. Przetestuj i uściślenie kwerendy, dopóki nie jesteś zadowolony z wyników. Upewnij się, że zapytanie działa prawidłowo w usłudze Analytics przed wykonaniem eksportu.
-3. Na **wyeksportować** menu, wybierz **usługi Power BI (M)**. Zapisz plik tekstowy.
+3. Na **wyeksportować** menu, wybierz **usługi Power BI (M)** . Zapisz plik tekstowy.
    
     ![Zrzut ekranu usługi Analytics, za pomocą menu eksportu wyróżniony](./media/export-power-bi/analytics-export-power-bi.png)
 4. W programie Power BI Desktop, wybierz **Pobierz dane** > **puste zapytanie**. Następnie w edytorze zapytań w ramach **widoku**, wybierz opcję **edytora zaawansowanego**.

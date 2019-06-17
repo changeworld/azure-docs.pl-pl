@@ -11,17 +11,17 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60735467"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Przeprowadzanie analiz przy użyciu usługi Azure Machine Learning Studio korzystania z bazy danych programu SQL Server w środowisku lokalnym
 
 Często w przypadku przedsiębiorstw, które działają z danymi lokalnymi chce wykorzystują skali i elastyczności chmury w celu ich usługi machine learning obciążeń. Ale nie chcesz przerwać bieżącego procesów biznesowych i przepływów pracy przez przeniesienie ich danych lokalnych do chmury. Usługa Azure Machine Learning Studio obsługuje teraz odczytywanie danych z bazy danych programu SQL Server w środowisku lokalnym i następnie szkolenia i oceniania modelu przy użyciu tych danych. Nie masz już ręcznie skopiować i synchronizowanie danych między chmurą a serwerem w środowisku lokalnym. Zamiast tego **importu danych** modułu w usłudze Azure Machine Learning Studio może teraz odczytywać bezpośrednio z lokalną bazą danych programu SQL Server do szkolenia i oceniania zadania.
 
-Ten artykuł zawiera omówienie sposobu transferu danych przychodzących lokalnych danych programu SQL server do usługi Azure Machine Learning Studio. Przyjęto założenie, że znasz Studio koncepcje, takie jak obszary robocze, moduły, zestawy danych, eksperymenty *itp.*.
+Ten artykuł zawiera omówienie sposobu transferu danych przychodzących lokalnych danych programu SQL server do usługi Azure Machine Learning Studio. Przyjęto założenie, że znasz Studio koncepcje, takie jak obszary robocze, moduły, zestawy danych, eksperymenty *itp.* .
 
 > [!NOTE]
 > Ta funkcja nie jest dostępna dla bezpłatnych obszarów roboczych. Aby uzyskać więcej informacji na temat cen usługi Machine Learning i warstwy, zobacz [Azure Machine Learning — cennik](https://azure.microsoft.com/pricing/details/machine-learning/).

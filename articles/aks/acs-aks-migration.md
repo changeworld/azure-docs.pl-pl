@@ -10,10 +10,10 @@ ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
 ms.openlocfilehash: dcee8da943603fb0978caf9992be76347ca197d6
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65977711"
 ---
 # <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrowanie z usługi Azure Container Service (ACS) do usługi Azure Kubernetes Service (AKS)
@@ -42,7 +42,7 @@ W przypadku migrowania do nowszej wersji rozwiązania Kubernetes (na przykład z
 
 ## <a name="migration-considerations"></a>Zagadnienia dotyczące migracji
 
-### <a name="agent-pools"></a>Pule agenta
+### <a name="agent-pools"></a>Pule agentów
 
 Mimo że AKS zarządza na płaszczyźnie kontroli rozwiązania Kubernetes, nadal definiujesz rozmiaru i liczby węzłów, które mają zostać objęte nowego klastra. Przy założeniu, że chcesz, aby mapowanie 1:1 z usługi ACS do usługi AKS, można przechwycić informacje istniejącego węzła usługi ACS. Podczas tworzenia nowego klastra AKS, należy użyć tych danych.
 

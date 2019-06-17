@@ -2,18 +2,16 @@
 title: Omówienie zarządzania urządzeniami za pomocą usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Omówienie zarządzania urządzeniami w usłudze Azure IoT Hu — enterprise urządzenia cyklu życia i wzorce zarządzania urządzeniami takie jak ponowne uruchamianie, resetowanie do ustawień fabrycznych, aktualizacja oprogramowania układowego, konfiguracja, bliźniacze reprezentacje urządzeń, zapytania, zadania.
 author: bzurcher
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-origin.date: 08/24/2017
-ms.date: 10/29/2018
-ms.author: v-yiso
+ms.date: 08/24/2017
+ms.author: briz
 ms.openlocfilehash: bdc55af23568b5785a831e81f352400c728c902e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400990"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Omówienie zarządzania urządzeniami za pomocą usługi IoT Hub
@@ -24,25 +22,29 @@ Usługa Azure IoT Hub udostępnia funkcje i model rozszerzeń, który umożliwia
 
 Kluczowym elementem procesu tworzenia prawidłowo działającego rozwiązania IoT w przedsiębiorstwie jest opracowanie strategii dotyczącej metody bieżącego zarządzania kolekcją urządzeń przez operatorów. Operatorzy urządzeń IoT muszą mieć do dyspozycji proste oraz niezawodne narzędzia i aplikacje, dzięki którym będą mogli skoncentrować się na ważniejszych aspektach swojej pracy. Ten artykuł zawiera:
 
-- Krótkie omówienie podejścia do zarządzania urządzeniami w usłudze Azure IoT Hub.
-- Opis typowych zasad dotyczących zarządzania urządzeniami.
-- Opis cyklu życia urządzenia.
-- Przegląd typowych wzorców zarządzania urządzeniami.
+* Krótkie omówienie podejścia do zarządzania urządzeniami w usłudze Azure IoT Hub.
+* Opis typowych zasad dotyczących zarządzania urządzeniami.
+* Opis cyklu życia urządzenia.
+* Przegląd typowych wzorców zarządzania urządzeniami.
 
 ## <a name="device-management-principles"></a>Zasady zarządzania urządzeniami
+
 Środowisko IoT charakteryzuje się pewnymi problemami w zakresie zarządzania urządzeniami i każde rozwiązanie klasy korporacyjnej musi uwzględniać następujące zasady:
 
 ![Ilustracja dotycząca zasad zarządzania urządzeniami](media/iot-hub-device-management-overview/image4.png)
 
-- **Skalowanie i automatyzacja**: Rozwiązania IoT wymagają prostych narzędzi, które pozwalają zautomatyzować rutynowe zadania i umożliwiają stosunkowo małej grupie pracowników operacyjnych Zarządzanie milionami urządzeń. Na co dzień operatorzy chcą zdalnie i zbiorczo obsługiwać operacje związane z urządzeniami oraz chcą być powiadamiani tylko o problemach wymagających ich bezpośredniej uwagi.
+* **Skalowanie i automatyzacja**: Rozwiązania IoT wymagają prostych narzędzi, które pozwalają zautomatyzować rutynowe zadania i umożliwiają stosunkowo małej grupie pracowników operacyjnych Zarządzanie milionami urządzeń. Na co dzień operatorzy chcą zdalnie i zbiorczo obsługiwać operacje związane z urządzeniami oraz chcą być powiadamiani tylko o problemach wymagających ich bezpośredniej uwagi.
 
-- **Otwartość i zgodność**: Ekosystem urządzeń jest bardzo zróżnicowany. Narzędzia do zarządzania muszą być zgodne z wieloma klasami urządzeń, platformami i protokołami. Operatorzy muszą mieć możliwość zapewnienia obsługi dla wielu typów urządzeń — od wbudowanych układów wykonujących pojedyncze procesy po zaawansowane i w pełni funkcjonalne komputery.
-- **Uwzględnianie kontekstu**: Środowiska IoT są dynamiczne i nieustannie się zmieniają. Najważniejszą kwestią jest niezawodność usługi. Operacje zarządzania urządzeniami muszą uwzględniać następujące czynniki w celu zapewnienia, że przestój w ramach konserwacji nie wpłynie na operacje o krytycznym znaczeniu dla firmy ani nie spowoduje powstania niebezpiecznych warunków:
+* **Otwartość i zgodność**: Ekosystem urządzeń jest bardzo zróżnicowany. Narzędzia do zarządzania muszą być zgodne z wieloma klasami urządzeń, platformami i protokołami. Operatorzy muszą mieć możliwość zapewnienia obsługi dla wielu typów urządzeń — od wbudowanych układów wykonujących pojedyncze procesy po zaawansowane i w pełni funkcjonalne komputery.
+
+* **Uwzględnianie kontekstu**: Środowiska IoT są dynamiczne i nieustannie się zmieniają. Najważniejszą kwestią jest niezawodność usługi. Operacje zarządzania urządzeniami muszą uwzględniać następujące czynniki w celu zapewnienia, że przestój w ramach konserwacji nie wpłynie na operacje o krytycznym znaczeniu dla firmy ani nie spowoduje powstania niebezpiecznych warunków:
+
     * Okna obsługi w umowie SLA
     * Stany sieci i zasilania
     * Warunki użycia
     * Geolokalizacja urządzenia
-- **Obsługa wielu ról**: Obsługa unikatowych przepływów pracy i procesów ról operacji IoT jest niezwykle istotne. Pracownicy operacyjni muszą zachować zgodność z ograniczeniami wewnętrznych działów IT.  Muszą również znaleźć niezawodne sposoby udostępniania nadzorcom i innym osobom odpowiedzialnym za zarządzanie informacji dotyczących odpowiednich operacji na urządzeniach.
+
+* **Obsługa wielu ról**: Obsługa unikatowych przepływów pracy i procesów ról operacji IoT jest niezwykle istotne. Pracownicy operacyjni muszą zachować zgodność z ograniczeniami wewnętrznych działów IT.  Muszą również znaleźć niezawodne sposoby udostępniania nadzorcom i innym osobom odpowiedzialnym za zarządzanie informacji dotyczących odpowiednich operacji na urządzeniach.
 
 ## <a name="device-lifecycle"></a>Cykl życia urządzenia
 Istnieje zestaw ogólnych etapów zarządzania urządzeniami, które są wspólne dla wszystkich projektów IoT. W usłudze Azure IoT istnieje pięć etapów cyklu życia urządzenia:
@@ -114,6 +116,7 @@ Usługa IoT Hub udostępnia przedstawiony poniżej zestaw wzorców zarządzania 
     ![Ilustracja dotycząca postępu i stanu raportowania zarządzania urządzeniami](./media/iot-hub-device-management-overview/report-progress-pattern.png)
 
 ## <a name="next-steps"></a>Następne kroki
+
 Funkcji, wzorców i bibliotek kodu udostępnianych przez usługę IoT Hub na potrzeby zarządzania urządzeniami możesz użyć do tworzenia aplikacji IoT, które spełniają wymagania operatora IoT przedsiębiorstwa na każdym etapie cyklu życia urządzenia.
 
 Aby kontynuować zapoznawanie się z funkcjami zarządzania urządzeniami w usłudze IoT Hub, zobacz [wprowadzenie do zarządzania urządzeniami](iot-hub-node-node-device-management-get-started.md) samouczka.

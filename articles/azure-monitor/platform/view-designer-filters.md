@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551722"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filtry w widokach usługi Azure Monitor
@@ -28,7 +28,7 @@ Kliknij zakres czasu daty u góry widoku, aby otworzyć rozwijanego którym moż
 
 ![Przykład filtru](media/view-designer-filters/filters-example-time.png)
 
-Kliknij przycisk **+** Aby dodać filtr, za pomocą filtrów niestandardowych, które są zdefiniowane dla widoku. Z listy rozwijanej lub wpisz wartość, albo wybierz wartość dla filtru. Dodaj filtry, klikając przycisk w dalszym ciągu **+**. 
+Kliknij przycisk **+** Aby dodać filtr, za pomocą filtrów niestandardowych, które są zdefiniowane dla widoku. Z listy rozwijanej lub wpisz wartość, albo wybierz wartość dla filtru. Dodaj filtry, klikając przycisk w dalszym ciągu **+** . 
 
 
 ![Przykład filtru](media/view-designer-filters/filters-example-custom.png)
@@ -40,7 +40,7 @@ Jeśli usuniesz wszystkie wartości filtru, a następnie z filtrem nie zostaną 
 
 Utwórz filtr z **filtry** kartę, kiedy [widoku do edycji](view-designer.md).  Filtr jest globalne dla widoku i dotyczy wszystkich części widoku.  
 
-![Ustawienia filtra](media/view-designer-filters/filters-settings.png)
+![Ustawienia filtru](media/view-designer-filters/filters-settings.png)
 
 W poniższej tabeli opisano ustawienia filtru.
 
@@ -57,8 +57,8 @@ Poniższa tabela zawiera kilka przykładów typowych filtrów.
 | Nazwa pola | Zapytanie o wartości | Tag |
 |:--|:--|:--|
 | Computer (Komputer)   | Puls &#124; distinct Computer &#124; sortowania przez usługę asc komputera | Komputery |
-| EventLevelName | Event &#124; distinct EventLevelName | Ważność |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | Ważność |
+| EventLevelName | Event &#124; distinct EventLevelName | Severity |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 

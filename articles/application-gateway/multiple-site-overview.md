@@ -4,15 +4,14 @@ description: Ten artykuł zawiera omówienie obsługi wielu witryn w usłudze Az
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-origin.date: 01/17/2019
-ms.date: 04/16/2019
-ms.author: v-junlch
+ms.date: 1/17/2019
+ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 335545f86c9c23feefb6ac21ca9cc5c8fcb5e7fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60715862"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostowanie wielu witryn usługi Application Gateway
@@ -125,5 +124,3 @@ Reguła routingu nie wymaga żadnej zmiany. Nadal należy wybierać podstawową 
 
 Po zapoznaniu się z informacjami o hostowaniu wielu witryn przejdź do [tworzenia bramy aplikacji przy użyciu hostowania wielu witryn](tutorial-multiple-sites-powershell.md), aby utworzyć bramę aplikacji z możliwością obsługi więcej niż jednej aplikacji internetowej.
 
-
-<!-- Update_Description: update metedata properties -->

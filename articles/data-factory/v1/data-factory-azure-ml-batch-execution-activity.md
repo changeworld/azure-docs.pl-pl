@@ -14,15 +14,15 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 4093febd19d71512e3c80704e88f9d5cf669d7d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567421"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Tworzenie potoków predykcyjnych przy użyciu usługi Azure Machine Learning i Azure Data Factory
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="Działania przekształcania"]
 > * [Działanie technologii hive](data-factory-hive-activity.md)
 > * [Działania technologii pig](data-factory-pig-activity.md)
 > * [Działania technologii MapReduce](data-factory-map-reduce.md)
@@ -303,7 +303,7 @@ Zalecamy przeczytanie [Tworzenie pierwszego potoku za pomocą usługi Data Facto
       }
       ```
 
-      Zarówno **start** i **zakończenia** Data/godzina musi należeć do [ISO format](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. **Zakończenia** czasu jest opcjonalne. Jeśli nie określisz wartości dla **zakończenia** właściwości, zostanie ona obliczona jako "**rozpoczęcia + 48 godzin.**" Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**. Szczegółowe informacje dotyczące właściwości kodu JSON znajdują się w artykule [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Dokumentacja dotycząca skryptów JSON).
+      Zarówno **start** i **zakończenia** Data/godzina musi należeć do [ISO format](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. **Zakończenia** czasu jest opcjonalne. Jeśli nie określisz wartości dla **zakończenia** właściwości, zostanie ona obliczona jako "**rozpoczęcia + 48 godzin.** " Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**. Szczegółowe informacje dotyczące właściwości kodu JSON znajdują się w artykule [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Dokumentacja dotycząca skryptów JSON).
 
       > [!NOTE]
       > Określenie dane wejściowe na potrzeby AzureMLBatchExecution działania jest opcjonalne.
@@ -407,7 +407,7 @@ Korzystając z pomocy modułu czytnika w eksperymencie usługi Azure Machine Lea
 W powyższym przykładzie JSON:
 
 * Wdrożonej usługi Azure Machine Learning w sieci Web używa modułu zapisywania i odczytywania danych z usługi Azure SQL Database i do odczytu/zapisu. Ta usługa sieci Web udostępnia następujące cztery parametry:  Nazwa serwera bazy danych, nazwę bazy danych, nazwę konta użytkownika serwera i hasło konta użytkownika serwera.
-* Zarówno **start** i **zakończenia** Data/godzina musi należeć do [ISO format](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. **Zakończenia** czasu jest opcjonalne. Jeśli nie określisz wartości dla **zakończenia** właściwości, zostanie ona obliczona jako "**rozpoczęcia + 48 godzin.**" Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**. Szczegółowe informacje dotyczące właściwości kodu JSON znajdują się w artykule [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Dokumentacja dotycząca skryptów JSON).
+* Zarówno **start** i **zakończenia** Data/godzina musi należeć do [ISO format](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. **Zakończenia** czasu jest opcjonalne. Jeśli nie określisz wartości dla **zakończenia** właściwości, zostanie ona obliczona jako "**rozpoczęcia + 48 godzin.** " Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**. Szczegółowe informacje dotyczące właściwości kodu JSON znajdują się w artykule [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Dokumentacja dotycząca skryptów JSON).
 
 ### <a name="other-scenarios"></a>Inne scenariusze
 #### <a name="web-service-requires-multiple-inputs"></a>Usługa sieci Web wymaga wielu danych wejściowych

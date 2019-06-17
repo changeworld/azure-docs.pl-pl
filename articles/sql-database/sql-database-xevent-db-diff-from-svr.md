@@ -13,10 +13,10 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 7f742b094575b78f453fb735b23cc5319a27fa7e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65206653"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozszerzone zdarzenia w bazie danych SQL
@@ -90,7 +90,7 @@ Z funkcji zdarzeń rozszerzonych jest obsługiwany przez kilka [widoków wykazu]
 | **sys.database_event_session_targets** |Zwraca wiersz dla każdego obiektu docelowego zdarzeń dla sesji zdarzeń. |
 | **sys.database_event_sessions** |Zwraca wiersz dla każdej sesji zdarzeń w bazie danych SQL Database. |
 
-W programie Microsoft SQL Server, podobne widoki wykazu mają nazwy, które zawierają *.server\_*  zamiast *.database\_*. Wzorzec nazwy przypomina **sys.server_event_%**.
+W programie Microsoft SQL Server, podobne widoki wykazu mają nazwy, które zawierają *.server\_*  zamiast *.database\_* . Wzorzec nazwy przypomina **sys.server_event_%** .
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nowe dynamiczne widoki zarządzania [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -170,8 +170,8 @@ Konieczne jest posiadanie **kontroli** uprawnień w bazie danych do wysyłania *
 
 Token sygnatury dostępu Współdzielonego, możesz wygenerować dla kontenera usługi Azure Storage, należy określić **rwl** uprawnienia. **Rwl** wartość zawiera następujące uprawnienia:
 
-- Odczytaj
-- Zapis
+- Odczyt
+- Zapisywanie
 - List
 
 ## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności

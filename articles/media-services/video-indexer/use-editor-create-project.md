@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518150"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Tworzenie projektów za pomocą edytora indeksatora wideo
@@ -73,7 +73,7 @@ Po kliknięciu strzałki w dół po prawej stronie każdego filmu wideo będzie 
 
 1. Wybierz **Wyświetl szczegółowe dane** dostosować informacje, które chcesz znaleźć oraz tych, które nie chcesz wyświetlić. 
 
-    ![Wyświetl szczegółowe informacje](./media/video-indexer-view-edit/insights.png)
+    ![Wyświetl szczegółowe dane](./media/video-indexer-view-edit/insights.png)
 1. Aby utworzyć zapytania dotyczące określonych klipy wideo, użyj pola wyszukiwania, informujący, że "ciąg Wyszukiwanie transkrypcji, tekstu, osoby i etykiety".
 1. Dodaj filtry, aby bardziej szczegółowo określić szczegóły, w jaki scen, którego szukasz, wybierając **opcje filtru**.
 
@@ -81,7 +81,7 @@ Po kliknięciu strzałki w dół po prawej stronie każdego filmu wideo będzie 
 
     Na przykład można wyświetlić klipy gdzie GitHub jest wymieniony w trakcie Donovan Brown na ekranie. W tym celu należy dodać filtr "include", która ma "Ludzie" jako typ szczegółowe informacje. Następnie należy wpisać "Donovan Brown" w polu wyszukiwania dla filtru.
     
-    ![Dołącz](./media/video-indexer-view-edit/include.png)
+    ![Obejmują](./media/video-indexer-view-edit/include.png)
     
     Jeśli chcesz, klipy wideo, gdzie GitHub jest wymieniony w trakcie Donovan Brown _nie_ na ekranie, należy po prostu zmienić filtru "include" do filtru "Wyklucz", korzystając z listy rozwijanej. 
 
@@ -89,14 +89,14 @@ Po kliknięciu strzałki w dół po prawej stronie każdego filmu wideo będzie 
     
     Dodaj wszystkie segmenty filmu wideo, klikając opcję menu listy obok wideo i wybierając opcję **wybierz wszystkie segmenty**. 
 
-    ![Dodaj wszystkie](./media/video-indexer-view-edit/add-all.png)
+    ![Dodaj wszystko](./media/video-indexer-view-edit/add-all.png)
 
     Możesz wyczyścić wszystkie zaznaczenia, wybierając pozycję Wyczyść zaznaczenie.
 
 > [!TIP]
 > Jak zaznaczania i kolejność klipów, możesz wyświetlić podgląd wideo w odtwarzaczu w prawej części strony. 
 
-![Preview](./media/video-indexer-view-edit/preview.png)
+![Wersja zapoznawcza](./media/video-indexer-view-edit/preview.png)
 
 Pamiętaj, aby zapisać projekt, wprowadzając zmiany, wybierając **Zapisz projekt**. 
 
@@ -107,7 +107,7 @@ Pamiętaj, aby zapisać projekt, wprowadzając zmiany, wybierając **Zapisz proj
 
 1. Gdy wszystko będzie gotowe, upewnij się, że projekt został zapisany. Teraz można renderować tego projektu. Wybierz **renderowania i Pobierz**. 
 
-    ![Zapisz](./media/video-indexer-view-edit/save.png)
+    ![Zapisanie](./media/video-indexer-view-edit/save.png)
 
     Będą dostępne okno podręczne informujące o tym, że Video indexer będzie renderowany pliku i link pobierania będzie wysyłania pocztą e-mail. Wybierz pozycję Kontynuuj. 
     

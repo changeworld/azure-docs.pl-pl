@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60397281"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Transfer danych w przypadku małych zestawów danych z małą ilością Średnia przepustowość sieci
@@ -54,9 +54,9 @@ W poniższej tabeli podsumowano różnice w kluczowych funkcji.
 | Dostępność | Pobierz i zainstaluj <br>Autonomiczne narzędzie | Narzędzia do eksploracji opartej na sieci Web w witrynie Azure portal | Narzędzie wiersza polecenia |Programowalne interfejsy w .NET, Java, Python, JavaScript, C++, Go, Ruby i PHP |
 | Interfejs graficzny | Yes | Yes | Nie | Nie |
 | Obsługiwane platformy | Windows, Mac i Linux | Oparte na sieci Web |Windows, Mac i Linux |Wszystkie platformy |
-| Dozwolone operacje magazynu obiektów Blob<br>dla obiektów blob oraz folderów | Upload<br>Do pobrania<br>Zarządzanie | Upload<br>Do pobrania<br>Zarządzanie |Upload<br>Do pobrania<br>Zarządzanie | Tak, można dostosowywać |
-| Dozwolone magazynu Data Lake Gen1<br>operacje dotyczące plików i folderów | Upload<br>Do pobrania<br>Zarządzanie | Nie |Upload<br>Do pobrania<br>Zarządzanie                   | Nie |
-| Dozwolone operacje na plikach<br>dla plików i katalogów | Upload<br>Do pobrania<br>Zarządzanie | Upload<br>Do pobrania<br>Zarządzanie   |Upload<br>Do pobrania<br>Zarządzanie | Tak, można dostosowywać |
+| Dozwolone operacje magazynu obiektów Blob<br>dla obiektów blob oraz folderów | Przekazanie<br>Do pobrania<br>Zarządzanie | Przekazanie<br>Do pobrania<br>Zarządzanie |Przekazanie<br>Do pobrania<br>Zarządzanie | Tak, można dostosowywać |
+| Dozwolone magazynu Data Lake Gen1<br>operacje dotyczące plików i folderów | Przekazanie<br>Do pobrania<br>Zarządzanie | Nie |Przekazanie<br>Do pobrania<br>Zarządzanie                   | Nie |
+| Dozwolone operacje na plikach<br>dla plików i katalogów | Przekazanie<br>Do pobrania<br>Zarządzanie | Przekazanie<br>Do pobrania<br>Zarządzanie   |Przekazanie<br>Do pobrania<br>Zarządzanie | Tak, można dostosowywać |
 | Dozwolone operacje magazynu tabeli<br>w przypadku tabel |Zarządzanie | Nie |Obsługa tabel w wersji 7 narzędzia AzCopy |Tak, można dostosowywać|
 | Dozwolone usługi Queue storage | Zarządzanie | Nie  |Nie | Tak, jest możliwe do dostosowania|
 

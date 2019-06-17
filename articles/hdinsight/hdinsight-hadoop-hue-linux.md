@@ -9,19 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: b0354803a117e8e2c2382ae888bde94a502f24c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 74ccf2af2d379b3c1966543885df6ebe5cf0f47a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059423"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z rozwiązania Hue w klastrach usługi HDInsight Hadoop
 
 Dowiedz się, jak instalowanie aplikacji Hue w klastrach HDInsight i korzystanie z tunelowania do kierowania żądań do aplikacji Hue.
-
-> [!IMPORTANT]  
-> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="what-is-hue"></a>Co to jest Hue?
 HUE to zestaw aplikacji sieci Web umożliwiający interakcję z klastrem usługi Apache Hadoop. Możesz przeglądać magazynu skojarzonego z klastrem usługi Hadoop (w przypadku klastrów HDInsight WASB) za pomocą aplikacji Hue, uruchamiania zadań Hive i Pig skryptów i tak dalej. Następujące składniki są dostępne z instalacjami aplikacji Hue w klastrze usługi HDInsight Hadoop.

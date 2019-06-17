@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 446203b45744a95c32cd41d9ded26fd960ac8a22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60585631"
 ---
 # <a name="elastic-database-tools-glossary"></a>Słownik narzędzi usługi elastycznych baz danych
@@ -29,7 +29,7 @@ Te warunki są używane w [dodanie fragmentu, za pomocą narzędzi elastycznych 
 
 **Baza danych**: Baza danych Azure SQL Database. 
 
-**Routing zależny od danych**: Funkcje, które umożliwia połączenie z fragmentem danego klucza fragmentowania określonych aplikacji. Zobacz [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md). Porównaj  **[zapytania z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md)**.
+**Routing zależny od danych**: Funkcje, które umożliwia połączenie z fragmentem danego klucza fragmentowania określonych aplikacji. Zobacz [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md). Porównaj  **[zapytania z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md)** .
 
 **Mapowanie fragmentów w postaci globalnego**: Mapy między kluczy fragmentowania oraz ich odpowiednich fragmentów w ramach **zestaw fragmentów**. Mapowania fragmentów globalne są przechowywane w **Menedżera mapowań fragmentów**. Porównaj **mapowanie fragmentów w postaci lokalnej**.
 

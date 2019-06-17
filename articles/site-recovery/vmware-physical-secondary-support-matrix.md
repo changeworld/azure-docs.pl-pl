@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 742f1359d928aa05a8b8d36bde2ccf022db93b79
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66418259"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
@@ -59,13 +59,13 @@ Można replikować tylko maszyny z systemem Linux przy użyciu następujących m
 --- | --- 
 Host - zespołu kart interfejsu Sieciowego | Tak 
 Host - sieci VLAN | Tak 
-Host — protokołu IPv4 | Yes 
+Host — protokołu IPv4 | Tak 
 Host - IPv6 | Nie 
 Maszyna wirtualna - gościa zespołu kart interfejsu Sieciowego | Nie
 Gość maszyny Wirtualnej — protokołu IPv4 | Tak
 Gość maszyny Wirtualnej — IPv6 | Nie
-Gość maszyny Wirtualnej — Windows/Linux — statyczny adres IP | Yes
-Gość maszyny Wirtualnej — Multi-NIC | Tak
+Gość maszyny Wirtualnej — Windows/Linux — statyczny adres IP | Tak
+Gość maszyny Wirtualnej — Multi-NIC | Yes
 
 
 ## <a name="storage"></a>Magazyn
@@ -76,8 +76,8 @@ Gość maszyny Wirtualnej — Multi-NIC | Tak
 --- | --- 
 NFS | Tak 
 SMB 3.0 | ND 
-SAN (ISCSI) | Yes 
-Wiele ścieżek (MPIO) | Tak 
+SAN (ISCSI) | Tak 
+Wiele ścieżek (MPIO) | Yes 
 
 ### <a name="guest-or-physical-server-storage"></a>Maszyna gościa lub serwer fizyczny magazynu
 
@@ -91,11 +91,11 @@ Zaszyfrowanego dysku | Nie
 UEFI| Tak 
 NFS | Nie 
 SMB 3.0 | Nie 
-RDM | Tak 
-> 1 TB danych na dysku | Yes 
+RDM | Yes 
+> 1 TB danych na dysku | Tak 
 Wolumin dysku rozłożonego > 1 TB<br/><br/> LVM | Tak 
 Miejsca do magazynowania | Nie 
-Dodaj lub usuń gorąco dysku | Tak 
+Dodaj lub usuń gorąco dysku | Yes 
 Wykluczanie dysku | Tak 
 Wiele ścieżek (MPIO) | ND 
 

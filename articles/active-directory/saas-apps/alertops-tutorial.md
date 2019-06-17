@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 124f69b3fd6944d0a6e3814f1bbfa5594bcd95cb
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 21b8cb06712e370972e0b8fec518c37d078262e0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988405"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107055"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Samouczek: Integracja AlertOps za pomocą usługi Azure Active Directory
 
@@ -119,7 +119,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     ![Konfigurowanie aplikacji AlertOps](./media/alertops-tutorial/configure2.png)
 
-    a. Zaznacz pole wyboru **Użyj logowania jednokrotnego Sign-On (SSO)**.
+    a. Zaznacz pole wyboru **Użyj logowania jednokrotnego Sign-On (SSO)** .
 
     b. Wybierz **usługi Azure Active Directory** jako **dostawcy logowania jednokrotnego** z listy rozwijanej.
 
@@ -197,7 +197,7 @@ W tej sekcji można udostępnić Britta Simon do używania usługi Azure logowan
 
 Po wybraniu kafelka AlertOps w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze AlertOps, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

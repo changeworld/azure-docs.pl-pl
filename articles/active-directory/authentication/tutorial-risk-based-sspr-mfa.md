@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35039dc05103ac6528f668fd76e1372ed7cc0708
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 17cea353df0337b062b89cd440f79f7869450f8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113205"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Samouczek: wyzwalanie uwierzytelniania wieloskładnikowego i zmiany hasła przy użyciu zdarzeń o podwyższonym ryzyku
 
 W tym samouczku włączysz funkcje usługi Azure Active Directory (Azure AD) Identity Protection, funkcję usługi Azure AD w warstwie Premium P2, która jest więcej niż tylko narzędziem do monitorowania i raportowania. Aby chronić tożsamości w organizacji, można skonfigurować zasady oparte na ryzykach, które reagują automatycznie na ryzykowne zachowania. Te zasady mogą automatycznie stosować blokadę lub inicjować rozwiązanie problemu, w tym wymaganie zmiany hasła lub wymuszanie uwierzytelniania wieloskładnikowego.
 
-Zasady usługi Azure AD Identity Protection mogą być używane razem z istniejącymi zasadami dostępu warunkowego jako dodatkowa warstwa ochrony. Użytkownicy być może nigdy nie wyzwolą ryzykownego zachowania wymagającego zastosowania jednej z tych zasad, ale jako administrator będziesz wiedzieć, że są chronieni.
+Zasady usługi Azure AD Identity Protection może służyć oprócz istniejących zasad dostępu warunkowego jako dodatkową warstwę ochrony. Użytkownicy być może nigdy nie wyzwolą ryzykownego zachowania wymagającego zastosowania jednej z tych zasad, ale jako administrator będziesz wiedzieć, że są chronieni.
 
 Do elementów, które mogą wyzwolić zdarzenie o podwyższonym ryzyku, należą m.in.:
 
@@ -73,7 +73,7 @@ Firma Microsoft współpracuje z naukowcami, organami ścigania, różnymi zespo
 1. W obszarze **Dostęp** wybierz pozycję **Zezwól na dostęp**, a następnie wybierz pozycję **Wymagaj zmiany hasła**.
 1. Kliknij pozycję „Wybierz”
 1. Dla opcji Wymuś zasady ustaw wartość **Włączone**.
-1. Kliknij pozycję **Zapisz**
+1. Kliknij polecenie **Zapisz**.
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>Włączanie uwierzytelniania wieloskładnikowego opartego na ryzykach
 
@@ -85,7 +85,7 @@ Większości użytkowników dotyczy zachowanie normalne, które można śledzić
 1. W obszarze **Dostęp** wybierz pozycję **Zezwól na dostęp**, a następnie wybierz pozycję **Wymagaj uwierzytelniania wieloskładnikowego**.
 1. Kliknij pozycję „Wybierz”
 1. Dla opcji Wymuś zasady ustaw wartość **Włączone**.
-1. Kliknij pozycję **Zapisz**
+1. Kliknij polecenie **Zapisz**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

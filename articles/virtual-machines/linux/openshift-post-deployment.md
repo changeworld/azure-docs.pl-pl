@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
 ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60771371"
 ---
 # <a name="post-deployment-tasks"></a>Po wdrożeniu zadania
@@ -83,7 +83,7 @@ W witrynie Azure Portal:
 
    ![Rejestracja aplikacji](media/openshift-post-deployment/app-registration.png)
 
-6. Kliknij krok 1: Wybierz interfejs API, a następnie kliknij przycisk **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Kliknij przycisk **wybierz** u dołu.
+6. Kliknij krok 1: Wybierz interfejs API, a następnie kliknij przycisk **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)** . Kliknij przycisk **wybierz** u dołu.
 
    ![Rejestracja aplikacji interfejsu API](media/openshift-post-deployment/app-registration-select-api.png)
 

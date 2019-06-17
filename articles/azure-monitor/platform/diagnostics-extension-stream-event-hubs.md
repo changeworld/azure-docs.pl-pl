@@ -10,10 +10,10 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922829"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Strumieniowe przesyłanie danych diagnostycznych platformy Azure w warstwie gorąca ścieżce za pomocą usługi Event Hubs
@@ -45,7 +45,7 @@ Usługa Event Hubs odbierania danych z usługi Azure Diagnostics jest obsługiwa
 * Aprowizowane na artykułu, przestrzeń nazw usługi Event Hubs [Rozpoczynanie pracy z usługą Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Łączenie usługi Azure Diagnostics do ujścia usługi Event Hubs
-Domyślnie Diagnostyka Azure zawsze wysyła dzienniki i metryki na konto usługi Azure Storage. Aplikacja może również wysyłać dane do usługi Event Hubs, dodając nowe **wychwytywanie** sekcji **PublicConfig** / **WadCfg** elementu *. wadcfgx* pliku. W programie Visual Studio *.wadcfgx* plik jest przechowywany w następującej ścieżce: **Projekt usługi w chmurze** > **role** > **(RoleName)** > **diagnostics.wadcfgx** pliku.
+Domyślnie Diagnostyka Azure zawsze wysyła dzienniki i metryki na konto usługi Azure Storage. Aplikacja może również wysyłać dane do usługi Event Hubs, dodając nowe **wychwytywanie** sekcji **PublicConfig** / **WadCfg** elementu *. wadcfgx* pliku. W programie Visual Studio *.wadcfgx* plik jest przechowywany w następującej ścieżce: **Projekt usługi w chmurze** > **role** >  **(RoleName)**  > **diagnostics.wadcfgx** pliku.
 
 ```xml
 <SinksConfig>
@@ -184,7 +184,7 @@ W powyższym przykładzie obiekt sink jest stosowany do nadrzędnego **liczniki 
 }
 ```
 
-W poprzednim przykładzie obiekt sink jest stosowany do tylko trzy liczniki: **Żądania w kolejce**, **żądań odrzuconych**, i **czas procesora (%)**.  
+W poprzednim przykładzie obiekt sink jest stosowany do tylko trzy liczniki: **Żądania w kolejce**, **żądań odrzuconych**, i **czas procesora (%)** .  
 
 Poniższy przykład pokazuje, jak deweloper może ograniczyć ilość danych wysłanych do krytyczne metryki, które są używane na potrzeby tej usługi kondycji.  
 
@@ -202,7 +202,7 @@ Poniższy przykład pokazuje, jak deweloper może ograniczyć ilość danych wys
 W tym przykładzie obiekt sink jest stosowany do dzienników i jest filtrowana tylko do śledzenia poziomu błędu.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Wdrażanie i aktualizowanie konfiguracji aplikacji i Diagnostyka usług w chmurze
-Program Visual Studio udostępnia najłatwiejszą drogą do wdrażania aplikacji i konfiguracji ujścia usługi Event Hubs. Aby wyświetlić i edytować plik, otwórz *.wadcfgx* pliku w programie Visual Studio, edytować go i zapisz go. Ścieżka jest **projekt usługi w chmurze** > **role** > **(RoleName)** > **diagnostics.wadcfgx**.  
+Program Visual Studio udostępnia najłatwiejszą drogą do wdrażania aplikacji i konfiguracji ujścia usługi Event Hubs. Aby wyświetlić i edytować plik, otwórz *.wadcfgx* pliku w programie Visual Studio, edytować go i zapisz go. Ścieżka jest **projekt usługi w chmurze** > **role** >  **(RoleName)**  > **diagnostics.wadcfgx**.  
 
 W tym momencie wszystkie wdrożeniem i aktualizowanie działań w Visual Studio, Visual Studio Team System i wszystkich poleceń lub skryptów, które są oparte na MSBuild i użyj **/t: publikowanie** docelowy obejmują *.wadcfgx* w procesie tworzenia pakietów. Ponadto wdrożenia i aktualizacje wdrażanie pliku na platformie Azure przy użyciu odpowiedniego rozszerzenia agenta usługi Azure Diagnostics na maszynach wirtualnych.
 

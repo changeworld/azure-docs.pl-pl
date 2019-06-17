@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65416117"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów z zarządzanych tożsamości w usłudze Azure Logic Apps
@@ -132,7 +132,7 @@ Aby udzielić dostępu do innego zasobu platformy Azure dla aplikacji logiki prz
 
 1. W witrynie Azure portal przejdź do zasobu platformy Azure której chcesz przypisać dostęp dla Twojej tożsamości zarządzanej. 
 
-1. Wybierz z menu zasobu **kontrola dostępu (IAM)**. Na pasku narzędzi wybierz **Dodaj** > **Dodaj przypisanie roli**.
+1. Wybierz z menu zasobu **kontrola dostępu (IAM)** . Na pasku narzędzi wybierz **Dodaj** > **Dodaj przypisanie roli**.
 
    ![Dodaj przypisanie roli](./media/create-managed-service-identity/add-permissions-logic-app.png)
 

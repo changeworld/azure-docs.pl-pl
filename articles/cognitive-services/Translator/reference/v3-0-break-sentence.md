@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-pawal
 ms.openlocfilehash: 0ecb620757bc58b109747f69eb3b5afe0c56bac4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66387557"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
@@ -37,7 +37,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
-    <td>wersja interfejsu API</td>
+    <td>api-version</td>
     <td>*Wymagany parametr zapytania*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
@@ -45,7 +45,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
     <td>*Parametr opcjonalny zapytania*.<br/>Tag języka, który identyfikuje język tekstu wejściowego. Jeśli kod nie zostanie określony, zostaną zastosowane automatyczne wykrywanie języka.</td>
   </tr>
   <tr>
-    <td>skrypt</td>
+    <td>script</td>
     <td>*Parametr opcjonalny zapytania*.<br/>Tag skryptu, który identyfikuje skryptu używany przez tekst wejściowy. Jeśli skrypt nie jest określony, domyślny skrypt języka zostanie przyjęta wartość.</td>
   </tr>
 </table> 

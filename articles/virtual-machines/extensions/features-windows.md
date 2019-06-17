@@ -17,10 +17,10 @@ ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160269"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozszerzenia maszyn wirtualnych i funkcji dla Windows
@@ -291,7 +291,7 @@ Aby sprawdzić, której wersji używasz, zobacz [wykrycie zainstalował agenta g
 
 #### <a name="extension-updates"></a>Aktualizacje rozszerzenia
 
-Po udostępnieniu aktualizacji rozszerzenia agenta gościa Windows pobiera i uaktualnia rozszerzenia. Aktualizacje automatyczne rozszerzenia są albo *pomocnicza* lub *poprawkę*. Można zgodzić się na lub zrezygnować z rozszerzenia *pomocnicza* aktualizacji podczas aprowizacji rozszerzenia. Poniższy przykład pokazuje, jak automatycznie uaktualnić wersje pomocnicze w szablonie usługi Resource Manager za pomocą *autoUpgradeMinorVersion ": ma wartość true,"*:
+Po udostępnieniu aktualizacji rozszerzenia agenta gościa Windows pobiera i uaktualnia rozszerzenia. Aktualizacje automatyczne rozszerzenia są albo *pomocnicza* lub *poprawkę*. Można zgodzić się na lub zrezygnować z rozszerzenia *pomocnicza* aktualizacji podczas aprowizacji rozszerzenia. Poniższy przykład pokazuje, jak automatycznie uaktualnić wersje pomocnicze w szablonie usługi Resource Manager za pomocą *autoUpgradeMinorVersion ": ma wartość true,"* :
 
 ```json
     "properties": {
@@ -368,7 +368,7 @@ Następujące kroki dotyczą wszystkich rozszerzeń maszyn wirtualnych.
 
 ### <a name="view-extension-status"></a>Wyświetl stan rozszerzenia
 
-Po wykonaniu rozszerzenia maszyny Wirtualnej względem maszyny Wirtualnej za pomocą [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) zostać zwrócony stan rozszerzenia. *Podstany [0]* pokazują aprowizacja rozszerzenia zakończyło się pomyślnie, co oznacza jego pomyślne wdrożone na maszynie Wirtualnej, ale nie można wykonać rozszerzenia wewnątrz maszyny Wirtualnej, *podstany [1]*.
+Po wykonaniu rozszerzenia maszyny Wirtualnej względem maszyny Wirtualnej za pomocą [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) zostać zwrócony stan rozszerzenia. *Podstany [0]* pokazują aprowizacja rozszerzenia zakończyło się pomyślnie, co oznacza jego pomyślne wdrożone na maszynie Wirtualnej, ale nie można wykonać rozszerzenia wewnątrz maszyny Wirtualnej, *podstany [1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
