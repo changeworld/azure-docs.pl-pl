@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: bwren
 ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60996521"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Dzienniki niestandardowe w usłudze Azure Monitor
@@ -100,7 +100,7 @@ Poniższa tabela zawiera przykłady prawidłowych do określenia różnych plika
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Podaj nazwę i opis dziennika
 Typ dziennika umożliwi podanej nazwie zgodnie z powyższym opisem.  Zawsze zakończy się za pomocą _CL odróżniający go jako dziennik niestandardowy.
 
-1. Wpisz nazwę dziennika.   **\_CL** sufiks jest dostarczana automatycznie.
+1. Wpisz nazwę dziennika.  **\_CL** sufiks jest dostarczana automatycznie.
 2. Dodaj opcjonalny **opis**.
 3. Kliknij przycisk **dalej** można zapisać definicji dzienników niestandardowych.
 

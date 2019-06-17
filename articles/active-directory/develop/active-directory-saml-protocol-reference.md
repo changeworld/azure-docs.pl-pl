@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07d07f73412e889b018c1f667a500d7625912751
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546143"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak usługa Azure AD używa protokołu SAML
@@ -37,7 +37,7 @@ Usługa Azure AD używa usługi w chmurze **URI metadanych** można pobrać kluc
 
 Usługa Azure Active Directory uwidacznia specyficznym dla dzierżawy i wspólne (niezależny od dzierżawcy) pojedynczego logowania jednokrotnego i jednym wylogowania punkty końcowe. Te adresy URL przedstawiają lokalizacji mogą być adresowane — nie są one tylko identyfikatory — dzięki czemu można przejść do punktu końcowego do odczytu metadanych.
 
-* Punkt końcowy specyficznym dla dzierżawy znajduje się w `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  *\<TenantDomainName >* symbol zastępczy reprezentuje zarejestrowaną nazwę domeny lub identyfikator GUID identyfikatora dzierżawy dzierżawę usługi Azure AD. Na przykład metadanych Federacji dzierżawy contoso.com wynosi: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Punkt końcowy specyficznym dla dzierżawy znajduje się w `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`. *\<TenantDomainName >* symbol zastępczy reprezentuje zarejestrowaną nazwę domeny lub identyfikator GUID identyfikatora dzierżawy dzierżawę usługi Azure AD. Na przykład metadanych Federacji dzierżawy contoso.com wynosi: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * Punkt końcowy dzierżawy niezależny znajduje się w `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. W tym adres punktu końcowego **wspólnej** pojawia się zamiast nazwy domeny dzierżawy lub identyfikatora organizacji.
 

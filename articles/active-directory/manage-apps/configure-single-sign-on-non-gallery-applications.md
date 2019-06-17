@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65989238"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w platformie tożsamości firmy Microsoft
@@ -64,11 +64,11 @@ Dodawanie aplikacji w ten sposób, zapewnia podobne możliwości dostępne niż 
 - **Oparte na hasłach**
 - **Połączone**
 
-![Wybierz metodę logowania jednokrotnego](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
+![Wybierz jedną metodę logowania jednokrotnego](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
 
 Aby uzyskać więcej informacji o tych opcjach zobacz następujące sekcje tego artykułu.
 
-## <a name="saml-based-single-sign-on"></a>Logowanie jednokrotne oparte na języku SAML
+## <a name="saml-based-single-sign-on"></a>Opartej na SAML logowania jednokrotnego
 
 Wybierz **SAML** opcję, aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji. (Ta opcja wymaga, że aplikacja obsługuje SAML 2.0). **Ustaw się logowanie jednokrotne z SAML** zostanie wyświetlona strona.
 
@@ -125,7 +125,7 @@ Wymagane są następujące dwa pola:
 
 Następujące trzy pola są opcjonalne:
 
-- **Adres URL logowania (zainicjowanego przez dostawcę usług tylko)**. Ta wartość wskazuje, gdzie użytkownik przechodzi do logowania się do tej aplikacji. Jeśli aplikacja wykonuje zainicjowanego przez dostawcę usług rejestracji Jednokrotnej, następnie po użytkownik przejdzie do tego adresu URL PS nie konieczne przekierowanie do usługi Azure AD do uwierzytelniania i zalogować użytkownika. Jeśli określisz to pole, usługa Azure AD używa tego adresu URL do uruchomienia aplikacji z usługi Office 365 i stronie panelu dostępu usługi Azure AD. Jeśli to pole zostanie pominięty, usługi Azure AD zamiast tego wykonuje inicjowane przez dostawcę tożsamości logowania podczas uruchomień aplikacji z usługi Office 365, Panel dostępu usługi Azure AD lub adres URL logowania jednokrotnego usługi Azure AD (które można skopiować z **pulpit nawigacyjny** strony).
+- **Adres URL logowania (zainicjowanego przez dostawcę usług tylko)** . Ta wartość wskazuje, gdzie użytkownik przechodzi do logowania się do tej aplikacji. Jeśli aplikacja wykonuje zainicjowanego przez dostawcę usług rejestracji Jednokrotnej, następnie po użytkownik przejdzie do tego adresu URL PS nie konieczne przekierowanie do usługi Azure AD do uwierzytelniania i zalogować użytkownika. Jeśli określisz to pole, usługa Azure AD używa tego adresu URL do uruchomienia aplikacji z usługi Office 365 i stronie panelu dostępu usługi Azure AD. Jeśli to pole zostanie pominięty, usługi Azure AD zamiast tego wykonuje inicjowane przez dostawcę tożsamości logowania podczas uruchomień aplikacji z usługi Office 365, Panel dostępu usługi Azure AD lub adres URL logowania jednokrotnego usługi Azure AD (które można skopiować z **pulpit nawigacyjny** strony).
 
 - **Stan przekazywania**. Stan przekazywania można określić w SAML w celu poinstruowania dokąd przekierowywać użytkowników po uwierzytelnieniu w aplikacji. Wartością jest zwykle adres URL lub adres URL ścieżki, która powoduje przejście do określonej lokalizacji w aplikacji.
 
@@ -141,7 +141,7 @@ Aby wyświetlić lub edytować oświadczenia wysyłane w tokenie języka SAML do
 
 - Przejdź do **atrybutów użytkowników i oświadczeń** nagłówek i wybierz **Edytuj** ikony. **Atrybutów użytkowników i oświadczeń** zostanie wyświetlona strona.
 
-![Atrybuty użytkownika i oświadczenia](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+![Atrybuty użytkowników i oświadczeń](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
 
 Może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML dwóch powodów:
 
@@ -181,12 +181,12 @@ Po skonfigurowaniu aplikacji do użycia usługi Azure AD jako dostawcy tożsamo�
 
 Aby przypisać nowego użytkownika lub grupy do aplikacji:
 
-1. Na pasku bocznym aplikacji wybierz **użytkowników i grup**.  **\<Nazwa aplikacji >-Użytkownicy i grupy** zostanie wyświetlona strona, która pokazuje bieżącą listę przypisanych użytkowników i grup.
+1. Na pasku bocznym aplikacji wybierz **użytkowników i grup**. **\<Nazwa aplikacji >-Użytkownicy i grupy** zostanie wyświetlona strona, która pokazuje bieżącą listę przypisanych użytkowników i grup.
 2. Wybierz **dodawania użytkowników**. **Dodać przypisania** zostanie wyświetlona strona.
-3. Wybierz **użytkowników i grup (\<numer > wybrany)**. **Użytkowników i grup** zostanie wyświetlona strona, wyświetlanie listy dostępnych użytkowników i grup.
+3. Wybierz **użytkowników i grup (\<numer > wybrany)** . **Użytkowników i grup** zostanie wyświetlona strona, wyświetlanie listy dostępnych użytkowników i grup.
 4. Typ lub przewijania, aby znaleźć użytkownika lub grupę, którą chcesz przypisać z listy.
 5. Wybierz użytkowników lub grupy, którą chcesz dodać, a następnie wybierz **wybierz** przycisku. **Użytkowników i grup** strony zniknie.
-6. W **dodać przypisania** wybierz opcję **przypisać**.  **<application name> — Użytkownicy i grupy** innym użytkownikom wyświetlanych na liście zostanie wyświetlona strona.
+6. W **dodać przypisania** wybierz opcję **przypisać**. **<application name> — Użytkownicy i grupy** innym użytkownikom wyświetlanych na liście zostanie wyświetlona strona.
 
    ![Użytkownicy aplikacji i grupy](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 
@@ -213,7 +213,7 @@ Wybierz tę opcję, aby skonfigurować [opartego na hasłach logowania jednokrot
 
 Po wybraniu **opartego na hasłach**, zostanie wyświetlony monit wprowadź adres URL aplikacji sieci web stronę logowania.
 
-![Logowanie jednokrotne oparte na hasłach](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+![Na podstawie hasła logowania jednokrotnego](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 Następnie wykonaj następujące kroki:
 

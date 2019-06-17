@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d7c1d9b59e802343f6d8fe258e8e4ac961bb2df
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394527"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061011"
 ---
 # <a name="standard-properties-in-azure-monitor-log-records"></a>Standardowe właściwości w usłudze Azure Monitor rekordów dziennika
 Dane z dzienników w usłudze Azure Monitor [przechowywane jako zbiór rekordów](../log-query/log-query-overview.md), każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
@@ -39,7 +39,7 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Type
+## <a name="type"></a>Typ
 **Typu** właściwość przechowuje nazwę tabeli, z którego pobrano rekord może również być uważane za typu rekordu. Ta właściwość jest przydatna w zapytaniach, które łączą rekordy z wielu tabel, takich jak implementacje używające `search` operator rozróżnienie między rekordami różnych typów. **$table** mogą być używane zamiast **typu** w jednych miejscach.
 
 ### <a name="examples"></a>Przykłady
@@ -52,7 +52,7 @@ search *
 ```
 
 ## <a name="resourceid"></a>\_ResourceId
- **\_ResourceId** właściwość przechowuje unikatowy identyfikator zasobu, który jest skojarzony rekord. Dzięki temu standardowy właściwość użycie ustal zakres zapytania do tylko rekordy z określonego zasobu lub Dołącz do powiązanych danych dla wielu tabel.
+**\_ResourceId** właściwość przechowuje unikatowy identyfikator zasobu, który jest skojarzony rekord. Dzięki temu standardowy właściwość użycie ustal zakres zapytania do tylko rekordy z określonego zasobu lub Dołącz do powiązanych danych dla wielu tabel.
 
 Dla zasobów platformy Azure, wartość **_ResourceId** jest [zasobów platformy Azure, adres URL Identyfikatora](../../azure-resource-manager/resource-group-template-functions-resource.md). Właściwość jest obecnie ograniczona do zasobów platformy Azure, ale będzie można rozszerzyć do zasobów spoza platformy Azure, takich jak komputery w środowisku lokalnym.
 
@@ -98,7 +98,7 @@ union withsource = tt *
 Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania.
 
 ## <a name="isbillable"></a>\_IsBillable
- **\_IsBillable** właściwość określa, czy odebrane dane są płatne. Dane za pomocą  **\_IsBillable** równa _false_ są zbierane za darmo i nie są rozliczane na koncie platformy Azure.
+**\_IsBillable** właściwość określa, czy odebrane dane są płatne. Dane za pomocą  **\_IsBillable** równa _false_ są zbierane za darmo i nie są rozliczane na koncie platformy Azure.
 
 ### <a name="examples"></a>Przykłady
 Aby uzyskać listę komputerów, które wysyłają typy danych rozliczane, użyj następującego zapytania:
@@ -125,7 +125,7 @@ union withsource = tt *
 ```
 
 ## <a name="billedsize"></a>\_BilledSize
- **\_BilledSize** właściwość określa rozmiar w bajtach, danych, które będzie rozliczane na koncie platformy Azure, jeśli  **\_IsBillable** ma wartość true.
+**\_BilledSize** właściwość określa rozmiar w bajtach, danych, które będzie rozliczane na koncie platformy Azure, jeśli  **\_IsBillable** ma wartość true.
 
 ### <a name="examples"></a>Przykłady
 Aby wyświetlić rozmiar płatnych zdarzeń wprowadzanych na komputerze, użyj `_BilledSize` właściwość, która zapewnia rozmiar w bajtach:
@@ -135,6 +135,26 @@ union withsource = tt *
 | where _IsBillable == true 
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
 ```
+
+Aby wyświetlić rozmiar płatnych zdarzeń pozyskanych w każdej subskrypcji, użyj następującego zapytania:
+
+```Kusto
+union withsource=table * 
+| where _IsBillable == true 
+| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
+| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+```
+
+Aby wyświetlić rozmiar płatnych zdarzeń pozyskanych dla grupy zasobów, użyj następującego zapytania:
+
+```Kusto
+union withsource=table * 
+| where _IsBillable == true 
+| parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
+| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+
+```
+
 
 Aby wyświetlić liczbę zdarzeń przetwarzanych na komputerze, użyj następującego zapytania:
 
@@ -151,7 +171,7 @@ union withsource = tt *
 | summarize count() by Computer  | sort by count_ nulls last
 ```
 
-Użyj następującego zapytania wyświetlić liczniki dla typów danych płatnych wysyłania danych do konkretnego komputera:
+Aby wyświetlić liczbę płatnych typami z określonego komputera, użyj następującego zapytania:
 
 ```Kusto
 union withsource = tt *
@@ -159,7 +179,6 @@ union withsource = tt *
 | where _IsBillable == true 
 | summarize count() by tt | sort by count_ nulls last 
 ```
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

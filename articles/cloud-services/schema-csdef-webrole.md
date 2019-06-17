@@ -14,10 +14,10 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 0bb0946ea48a4c206d6bfe683da0835aca9b198b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60613242"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services, definicja webrole — schemat
@@ -124,7 +124,7 @@ Plik definicji usługi obejmuje te elementy, opisano szczegółowo w kolejnych s
 
 [Importy](#Imports)
 
-[Importowanie](#Import)
+[Importujuj](#Import)
 
 [Środowisko uruchomieniowe](#Runtime)
 
@@ -150,7 +150,7 @@ Plik definicji usługi obejmuje te elementy, opisano szczegółowo w kolejnych s
 
 [Uruchamianie](#Startup)
 
-[Zadanie podrzędne](#Task)
+[Zadanie](#Task)
 
 [Zawartość](#Contents)
 
@@ -220,7 +220,7 @@ W poniższej tabeli opisano atrybuty `InputEndpoint` elementu.
 | Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
 |name|string|Wymagany. Unikatowa nazwa jest zewnętrzny punkt końcowy.|  
-|protokół|string|Wymagany. Protokół transportu jest zewnętrzny punkt końcowy. Dla roli sieci web, możliwe wartości to `HTTP`, `HTTPS`, `UDP`, lub `TCP`.|  
+|protocol|string|Wymagany. Protokół transportu jest zewnętrzny punkt końcowy. Dla roli sieci web, możliwe wartości to `HTTP`, `HTTPS`, `UDP`, lub `TCP`.|  
 |port|int|Wymagany. Port zewnętrznego punktu końcowego. Można określić dowolny numer portu, które wybierzesz, ale numery portów, określony dla każdej roli w ramach usługi musi być unikatowa.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
 |certyfikat|string|Wymagane dla punktu końcowego HTTPS. Nazwa certyfikatu z definicją `Certificate` elementu.|  
 |localPort|int|Opcjonalny. Określa port używany dla wewnętrznych połączeń w punkcie końcowym. `localPort` Porcie zewnętrznym w punkcie końcowym mapowań atrybutów do portu wewnętrznej w roli. Jest to przydatne w scenariuszach, w której roli musi komunikować się do wewnętrznego składnika na porcie, inny niż ten, który jest widoczna zewnętrznie.<br /><br /> Jeśli nie zostanie określony, wartość `localPort` jest taka sama jak `port` atrybutu. Ustaw wartość `localPort` na "*" Aby automatycznie przypisać nieprzydzielone port wykrywalny, przy użyciu interfejsu API środowiska wykonawczego.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).<br /><br /> `localPort` Atrybut jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.|  
@@ -235,7 +235,7 @@ W poniższej tabeli opisano atrybuty `InternalEndpoint` elementu.
 | Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
 |name|string|Wymagany. Unikatowa nazwa wewnętrznego punktu końcowego.|  
-|protokół|string|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `HTTP`, `TCP`, `UDP`, lub `ANY`.<br /><br /> Wartość `ANY` Określa, że każdego protokołu, każdy port jest dozwolone.|  
+|protocol|string|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `HTTP`, `TCP`, `UDP`, lub `ANY`.<br /><br /> Wartość `ANY` Określa, że każdego protokołu, każdy port jest dozwolone.|  
 |port|int|Opcjonalny. Port używany dla połączeń punkt końcowy wewnętrznego równoważenia obciążenia. Dwa porty używa punktu końcowego ze zrównoważonym obciążeniem. Port używany do publicznego adresu IP i port używany na prywatny adres IP. Zazwyczaj są to te właściwości są ustawiane na takie same, ale można wybrać używało innych portów.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).<br /><br /> `Port` Atrybut jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.|  
 
 ##  <a name="InstanceInputEndpoint"></a> InstanceInputEndpoint  
@@ -249,7 +249,7 @@ W poniższej tabeli opisano atrybuty `InstanceInputEndpoint` elementu.
 | --------- | ---- | ----------- |  
 |name|string|Wymagany. Unikatowa nazwa punktu końcowego.|  
 |localPort|int|Wymagany. Określa port wewnętrzny, który będzie nasłuchiwać wszystkich wystąpień roli w celu odbierania ruchu przychodzącego przekazywane z modułu równoważenia obciążenia. Możliwe wartości z zakresu od 1 do 65535 (włącznie).|  
-|protokół|string|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `udp` lub `tcp`. Użyj `tcp` dla protokołu http/https na podstawie ruchu.|  
+|protocol|string|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `udp` lub `tcp`. Użyj `tcp` dla protokołu http/https na podstawie ruchu.|  
   
 ##  <a name="AllocatePublicPortFrom"></a> AllocatePublicPortFrom  
 `AllocatePublicPortFrom` Element opisuje zakres portu publicznego, który może być używane przez klientów zewnętrznych do dostępu wejściowy punkt końcowy każdego wystąpienia. Publiczny numer portu (VIP) jest przydzielany z tego zakresu i przypisane do każdego punktu końcowego wystąpienia poszczególnych ról podczas wdrażania dzierżawy i aktualizacji. Ten element jest elementem nadrzędnym `FixedPortRange` elementu.
@@ -280,7 +280,7 @@ W poniższej tabeli opisano atrybuty `FixedPortRange` elementu.
 | Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
 |min.|int|Wymagany. Minimalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
-|maks.|string|Wymagany. Maksymalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
+|Maksymalna|string|Wymagany. Maksymalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
 
 ##  <a name="Certificates"></a> Certyfikaty  
 `Certificates` Element w tym artykule opisano kolekcji certyfikatów dla roli sieci web. Ten element jest elementem nadrzędnym `Certificate` elementu. Rola może mieć dowolną liczbę certyfikatów skojarzonych. Aby uzyskać więcej informacji na temat korzystania z elementu certyfikatów, zobacz [modyfikowania pliku definicji usługi z certyfikatem](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
@@ -363,7 +363,7 @@ W poniższej tabeli opisano atrybuty `NetFxEntryPoint` elementu.
 
 | Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|AssemblyName|string|Wymagany. Ścieżka i nazwa pliku zestawu zawierającego punkt wejścia. Ścieżka jest określana względem folderu  **\\%ROLEROOT%\Approot** (nie należy określać  **\\%ROLEROOT%\Approot** w `commandLine`, zakłada się). **ROLEROOT %** zmienną środowiskową obsługiwany przez platformę Azure, reprezentuje lokalizację folderu głównego dla roli użytkownika.  **\\%ROLEROOT%\Approot** folder reprezentuje folder aplikacji dla roli użytkownika.<br /><br /> Dla ról użytkownika ścieżka będzie zawsze względne  **\\%ROLEROOT%\Approot\bin** folderu.<br /><br /> Dla pełnego usług IIS i usług IIS Express role sieci web, jeśli nie można odnaleźć zestawu względem  **\\%ROLEROOT%\Approot** folderze  **\\%ROLEROOT%\Approot\bin** jest przeszukiwany.<br /><br /> Ten bazowy zachowanie dla usługi IIS nie jest najlepszym rozwiązaniem jest zalecany i może być usunięte w przyszłych wersjach.|  
+|AssemblyName|string|Wymagany. Ścieżka i nazwa pliku zestawu zawierającego punkt wejścia. Ścieżka jest określana względem folderu  **\\%ROLEROOT%\Approot** (nie należy określać  **\\%ROLEROOT%\Approot** w `commandLine`, zakłada się). **ROLEROOT %** zmienną środowiskową obsługiwany przez platformę Azure, reprezentuje lokalizację folderu głównego dla roli użytkownika. **\\%ROLEROOT%\Approot** folder reprezentuje folder aplikacji dla roli użytkownika.<br /><br /> Dla ról użytkownika ścieżka będzie zawsze względne  **\\%ROLEROOT%\Approot\bin** folderu.<br /><br /> Dla pełnego usług IIS i usług IIS Express role sieci web, jeśli nie można odnaleźć zestawu względem  **\\%ROLEROOT%\Approot** folderze  **\\%ROLEROOT%\Approot\bin** jest przeszukiwany.<br /><br /> Ten bazowy zachowanie dla usługi IIS nie jest najlepszym rozwiązaniem jest zalecany i może być usunięte w przyszłych wersjach.|  
 |targetFrameworkVersion|string|Wymagany. Wersja programu .NET framework, na którym został skompilowany zestaw. Na przykład `targetFrameworkVersion="v4.0"`.|  
 
 ##  <a name="Sites"></a> Lokacje  
@@ -430,7 +430,7 @@ W poniższej tabeli opisano atrybut `Startup` elementu.
 
 | Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|priority|int|Tylko do użytku wewnętrznego.|  
+|priorytet|int|Tylko do użytku wewnętrznego.|  
 
 ##  <a name="Task"></a> Zadanie  
 `Task` Element określa zadania uruchamiania, który ma miejsce podczas uruchamiania roli. Zadania uruchamiania może służyć do wykonywania zadań, które przygotowują rolę do uruchamiania takich instalacji składników oprogramowania lub uruchamiania innych aplikacji. Zadania wykonywane w kolejności, w jakiej są wyświetlane w ramach `Startup` bloku elementu.
@@ -459,7 +459,7 @@ W poniższej tabeli opisano atrybuty `Content` elementu.
 
 | Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|miejsce docelowe|string|Wymagany. Lokalizacja na maszynie wirtualnej platformy Azure, do którego jest umieszczana zawartość. Ta lokalizacja jest względną wobec folderu **%ROLEROOT%\Approot**.|  
+|destination|string|Wymagany. Lokalizacja na maszynie wirtualnej platformy Azure, do którego jest umieszczana zawartość. Ta lokalizacja jest względną wobec folderu **%ROLEROOT%\Approot**.|  
 
 Ten element jest elementem nadrzędnym `SourceDirectory` elementu.
 
