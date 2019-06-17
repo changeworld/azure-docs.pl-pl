@@ -9,24 +9,24 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 8b39866b990812913924118c564a5e93f898b1cb
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 7cfe19614b2107161dcce9c80690333212162045
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939464"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061308"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake Storage Gen2
 
 W tym artykule poznasz najlepsze praktyki i zagadnienia dotyczące pracy z usługi Azure Data Lake Storage Gen2. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajność, odporność i monitorowanie Data Lake Storage Gen2. Przed Data Lake Storage Gen2 Praca z danymi naprawdę big data w usług, takich jak Azure HDInsight był zbyt złożony. Trzeba było fragmentować dane na wielu kontach magazynu obiektów Blob, dzięki czemu można osiągnąć petabajtów magazynu i uzyskania optymalnej wydajności tej skali. Za pomocą Data Lake Storage Gen2 większość stałych limitów rozmiaru i wydajności zostaną usunięte. Jednak nadal istnieją pewne zagadnienia, które w tym artykule opisano, dzięki czemu można uzyskać najlepszą wydajność dzięki Data Lake Storage Gen2.
 
-## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
 
 Azure Data Lake magazynu Gen2 oferuje kontroli dostępu POSIX dla użytkowników, grupy i jednostki usługi Azure Active Directory (Azure AD). Można ustawić te kontroli dostępu do istniejących plików i katalogów. Kontroli dostępu można również utworzyć uprawnienia domyślne, które mogą być automatycznie stosowane do nowych plików lub katalogów. Szczegółowe informacje na temat Data Lake Storage Gen2 listy kontroli dostępu są dostępne pod adresem [kontrola dostępu w usługach Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md).
 
 ### <a name="use-security-groups-versus-individual-users"></a>Przy użyciu grup zabezpieczeń i użytkowników indywidualnych
 
-Praca z danymi big data w Data Lake Storage Gen2 WWhen, prawdopodobne jest, że nazwy głównej usługi jest stosowane do umożliwienia usług, takich jak Azure HDInsight, aby pracować z danymi. Jednak może być przypadki, w którym poszczególni użytkownicy muszą mieć dostęp do danych, jak również. We wszystkich przypadkach zdecydowanie należy wziąć pod uwagę przy użyciu usługi Azure Active Directory [grup zabezpieczeń](../common/storage-auth-aad.md) zamiast przypisywać poszczególnym użytkownikom do katalogów i plików.
+Podczas pracy z danymi big data w Data Lake Storage Gen2, istnieje prawdopodobieństwo, że nazwy głównej usługi jest stosowane do umożliwienia usług, takich jak Azure HDInsight, aby pracować z danymi. Jednak może być przypadki, w którym poszczególni użytkownicy muszą mieć dostęp do danych, jak również. We wszystkich przypadkach zdecydowanie należy wziąć pod uwagę przy użyciu usługi Azure Active Directory [grup zabezpieczeń](../common/storage-auth-aad.md) zamiast przypisywać poszczególnym użytkownikom do katalogów i plików.
 
 Po przypisaniu grupie zabezpieczeń uprawnienia dodawania lub usuwania użytkowników z grupy nie wymaga żadnych aktualizacji Data Lake Storage Gen2. Pomaga to również, upewnij się, że nie przekraczają maksymalną liczbę wpisów kontroli dostępu na listy kontroli dostępu (ACL). Obecnie ta liczba jest 32, (w tym cztery listy ACL stylu POSIX, które zawsze są skojarzone z każdym plików i katalogów): użytkownik będący właścicielem, grupy będącej właścicielem, maski i inne. Każdy katalog może mieć dwa typy list ACL, listy ACL dostępu i domyślne listy ACL dla danych całkowitych 64 wpisów kontroli dostępu. Aby uzyskać więcej informacji na temat tych list ACL, zobacz [kontrola dostępu w usługach Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
@@ -40,7 +40,7 @@ Jednostki usługi w usłudze Azure Active Directory są zwykle używane przez us
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Włącz zaporę Data Lake Storage Gen2 z dostępem do usług platformy Azure
 
-Data Lake Storage Gen2 obsługuje opcję Włączanie zapory i ograniczając dostęp tylko do usług platformy Azure, co jest zalecane, aby ograniczyć wektor ataki zewnętrzne. Może być włączona Zapora na koncie magazynu w witrynie Azure portal, za pośrednictwem **zapory** > **włączenia zapory (dalej)** > **zezwolić na dostęp do usług platformy Azure** opcje.
+Data Lake Storage Gen2 obsługuje opcję Włączanie zapory i ograniczając dostęp tylko do usług platformy Azure, co jest zalecane, aby ograniczyć wektor ataki zewnętrzne. Może być włączona Zapora na koncie magazynu w witrynie Azure portal, za pośrednictwem **zapory** > **włączenia zapory (dalej)**  > **zezwolić na dostęp do usług platformy Azure** opcje.
 
 Dodawania klastrów usługi Azure Databricks z siecią wirtualną, która może mogła uzyskać dostęp za pośrednictwem zapory magazynu wymagane jest użycie funkcji wersji zapoznawczej usługi Databricks. Aby włączyć tę funkcję, należy umieścić żądanie pomocy technicznej.
 

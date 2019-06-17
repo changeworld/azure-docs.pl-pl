@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 11ebaec75b1220f39fe059ea7825cdccafda2f5d
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735619"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Usługi Azure Maps mobilności pokrycia
@@ -47,7 +47,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps mobilnośc
 | Portoryko | Juan sieci SAN |
 | Urugwaj | Montevideo, Punta del Este |
 | Stany Zjednoczone | <p>Albany (NY), Kraków (NM), mocowania (AK) Appleton Oshkosh Neenah (WI), Asheville (NC), (OH) Ateny, Atlancie (GA), Austin (Teksas), Bakersfield (CA), Baltimore), Bellevue (Waszyngton), Powiat Berkshire (MA), Birmingham (AL), Bloomington (Indie), Boise (ID) (Bostonie MA), Powiat Brevard Boulder (CO) (Floryda), pole (NY), Butte (MT), zielonego Cod), Powiat Centrum (PA), Group Independent JPEG (IL), Charleston (SC), Charlotte (NC), Chicago (IL), Charlottesville (oceny luk w zabezpieczeniach), Cheyenne (WY), Charleston (WV), Chattanooga (TN), Cincinnati (OH) Powiat cytrusów (Floryda), Cleveland (OH), krzemowa Coachella (CA), sprężyny Kolorado (CO), Kolumbii (TN), Columbus (OH), Boże Ciało (Teksas), Dallas/dalej warto (Teksas), Dayton (OH), Delaware, Denver (CO), Moines Des (IA), Detroit (MI), Duluth (MN), El Paso (Teksas), Eugene (lub ), Fairbanks (AK), Fargo (ND), Flagstaff (AZ), Gainesville (Floryda), Collins Fort krzesiwowych (MI) (CO), Fresno (CA), Fayetteville (NC), Wayne Fort (Indie), Grand rozwidlenia (ND) Rapids Grand MI, kolor zielony Bay (WI), Greensboro (NC), Greenville (SC), Gunnison (CO), dróg Hampton (oceny luk w zabezpieczeniach ), Hanford (CA), Hartford (CT), Hernando Powiat (Floryda), Krakowie (HI), Houston (Teksas), Humboldta Powiat (CA), Huntsville (AL), Indianapolis (Indie), Ithaca (NY), Jackson (MS), Jackson (TN), konferencji w Jacksonville — St. John's Województwo (Floryda), Johnson city (TN) Jonesboro (AR) Joplin (MO), Juneau (AK), Kalamazoo (MI), Kansas City (MO), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (Indie), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (Znaczniki), Powiat Lee (Floryda), Lexington (KY), Powiat Lincoln (lub), Little Rock (AR), Los Angeles ( CA), Louisville (KY), Madison (WI), McAllen (Teksas), Memphis (TN), Miami (Floryda), Milwaukee/Waukesha (WI), Paul Minneapolis St. (MN), Missoula (MT), Modesto (USA), Moline (IL), Powiat Monroe (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), Navajo kraj), Nowe Haven (CT), nowy Orlean (LA) NYC JORK), Ocala (Floryda), hrabstwa Okaloosa (Floryda), Miasto Oklahoma (OK), Omaha (NE), Orlando (Floryda), Panama City (Floryda), Pensacola (Floryda), Peoria (IL), Philadelphia (PA), Phoenix (AZ), energię (PA), Portland, (ME), Portland (lub), Racine (WI) Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), dolina Roanoke VA - Lynchburg, Rochester (NY) Skaliste Park narodowy górski) nieautoryzowane krzemowa (lub), Roseburg (lub), Roseville (CA), Sacramento (CA), Salem (lub), City Lake soli (UT), San Antonio (Teksas) (w San Diego CA), sieci San Luis Obispo (CA), Barbara Santa (CA), Santa Fe (NM), Sarasota (Floryda), Savannah (GA), Seacoast Region (NH) Seattle Tacoma Bellevue (Waszyngton) SF kieszeni obszar (CA), City Sioux (IA), spadki Sioux (SD), Sitka (AK), Spokane (Waszyngton), Springfield (IL), Springfield (urządzeń pamięci masowej) Św. (UT), St. Louis (MO), Stockton (CA), Syrakuzach Utica (NY), Tallahassee (Floryda), Tampa Sankt Petersburg (Floryda), Haute Terre (Indie), Toledo (OH), Topeka (Znaczniki), City przechodzenia (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Powiat Volusia (Floryda), Waco (Teksas) Waszyngton (DC), Waterbury (CT), Wichita (Znaczniki), Wilmington (NC), Yakima (Waszyngton), Powiat Jorku (PA), Powiat Yuma (AZ)</p>|
-| + USA Wyspy Dziewicze | Federalna Wyspy Dziewicze * |
+| \+ USA Wyspy Dziewicze | Federalna Wyspy Dziewicze * |
 
 
 ## <a name="asia-pacific"></a>Azja i Pacyfik
@@ -90,8 +90,8 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps mobilnośc
 | Estonia   | Estonia * |   
 | Finlandia   | Hämeenlinna, Helsinki, Joensuu, Jyväskylä, Kajaani, Kouvola - Kotka, Kuopio, Lappeenranta, Mikkeli, Oulu, Seinäjoki, Tampere, Turku, Vaasa|
 | Francja    | <p>Amberieu-en-Bugey Amiens, Angers, Annecy, Annonay, Arras, Aubenas, Bayonne, Besançon, Blois, Bordeaux, Boulogne sur Mer, Brest, Briançon cannes, Châlons-en szampan Chartres, Clermont-Ferrand, Colmar, języka Dax, Dijon, Grenoble, Haguenau, La Rochelle, Le Oznacza obiektywu Lille, Lorient, Lyon, komputerów Mac, Marsylii & Provence, Metz, Millau, Mont-de-Marsan, Montpellier, Mulhouse, Nancy Nantes nieuprzywilejowany Nimes, Normandia, Nyons, Paryż, Poitiers, Privas, Quimper, Rennes, Saint Saint-Malo, Saint Étienne, Saint-Nazaire, Przewodniki Saintes Sarrebourg, Sete, Strasburgu, Tarbes, system,</P> | 
-| + Gujana Francuska | Cayenne |
-| + Nowa Kaledonia | Nouméa  |
+| \+ Gujana Francuska | Cayenne |
+| \+ Nowa Kaledonia | Nouméa  |
 | Gruzja | Tbilisi | 
 | Niemcy | <p>Berlin, Brandenburgii, Bremen & Niedersachsen, Kolonia, Eisenach, Frankfurt, Hamburg, Karlsruhe, Mainz, München - Monachium, Region Neckar Ren Ruhra ren regionu, Stuttgart, Titisee-Neustadt, Ulm</P> | 
 | Grecja | <p>Ateny, Arta, Amorgos, Chanii, Korfu, Chios Kos, Heraklion, Ioannina, Kavala, Kalamata, Komotini, Kos, Larissa, Meganisi, Mykonos, Patra, Rethimno, Rhodes, na wyspie Santoryn, Serres, Syros, Tinos, Saloniki, Veria, Volos, Xanthi </P> |

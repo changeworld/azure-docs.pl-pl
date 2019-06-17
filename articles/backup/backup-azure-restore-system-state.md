@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
 ms.openlocfilehash: 6619611bee96089e465feb6f50d38caeada06dd9
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472505"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Przywracanie stanu systemu do systemu Windows Server
@@ -93,7 +93,7 @@ Składa się z terminologią używaną w ramach tej procedury:
 6. W okienku wybierz pozycję Utwórz kopię zapasową serwera wybierz *maszyny źródłowej* z listy wyświetlanych maszyn.
 7. W okienku wybierz tryb odzyskiwania wybierz **stanu systemu** i kliknij przycisk **dalej**.
 
-    ![wyszukaj](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Wyszukiwanie](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. W kalendarzu w **Wybierz wolumin i datę** punktu okienku wybierz odzyskiwania. Dowolny punkt odzyskiwania można przywrócić w czasie. Daty **bold** wskazującą dostępność co najmniej jeden punkt odzyskiwania. Po wybraniu daty, jeśli dostępnych jest wiele punktów odzyskiwania, należy wybrać określony punkt odzyskiwania z **czasu** menu rozwijanego.
 

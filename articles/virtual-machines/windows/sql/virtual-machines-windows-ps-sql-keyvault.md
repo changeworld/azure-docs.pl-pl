@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6ad8eea21c10726b2c3eaf1e10bfd5efba4d1e48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 13d698cfbc0241248a77fd5f3b148a9393320c64
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129622"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076011"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurowanie integracji usługi Azure Key Vault dla programu SQL Server na maszynach wirtualnych platformy Azure (Resource Manager)
 
@@ -50,28 +50,24 @@ W przypadku udostępniania nowej maszyny wirtualnej programu SQL Server przy uż
 
 ![Integracja magazynu kluczy Usług SQL Azure](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-Aby uzyskać szczegółowy przewodnik dotyczący inicjowania obsługi administracyjnej, zobacz [Aprowizowanie maszyny wirtualnej programu SQL Server w witrynie Azure Portal](virtual-machines-windows-portal-sql-server-provision.md).
+Aby uzyskać szczegółowy przewodnik dotyczący inicjowania obsługi administracyjnej, zobacz [Aprowizowanie maszyny wirtualnej programu SQL Server w witrynie Azure portal](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Istniejące maszyny wirtualne
-W przypadku istniejących maszyn wirtualnych programu SQL Server należy wybrać maszyny wirtualnej programu SQL Server. Następnie wybierz pozycję **konfiguracji programu SQL Server** części **ustawienia** bloku.
+
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Dla istniejących maszyn wirtualnych programu SQL Server, Otwórz swoje [zasobów maszyn wirtualnych SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) i wybierz **zabezpieczeń** w obszarze **ustawienia**. Wybierz **Włącz** można włączyć integracji usługi Azure Key Vault. 
 
 ![Integracja programu SQL dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-W **konfiguracji programu SQL Server** bloku kliknij **Edytuj** przycisk w sekcji integracja automatycznego usługi Key Vault.
-
-![Konfigurowanie integracja SQL dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
-
-Po zakończeniu kliknij przycisk **OK** przycisk w dolnej części **konfiguracji programu SQL Server** bloku, aby zapisać zmiany.
+Po zakończeniu wybierz pozycję **Zastosuj** przycisk w dolnej części **zabezpieczeń** strony, aby zapisać zmiany.
 
 > [!NOTE]
-> Nazwa poświadczenia, którą utworzyliśmy, w tym miejscu zostaną zmapowane do identyfikatora logowania SQL później. Dzięki temu identyfikator logowania SQL do dostępu do magazynu kluczy. 
->
->
+> Nazwa poświadczenia, którą utworzyliśmy, w tym miejscu będą mapowane na nazwę logowania SQL później. Dzięki temu identyfikator logowania SQL do dostępu do magazynu kluczy. 
+
 
 > [!NOTE]
 > Można również skonfigurować integracja przy użyciu szablonu. Aby uzyskać więcej informacji, zobacz [szablon szybkiego startu platformy Azure dla usługi Azure Key Vault integration](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
-> 
-> 
+
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
-

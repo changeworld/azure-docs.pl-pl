@@ -10,10 +10,10 @@ ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 38bafdb4753b41a9c8acd599e6b7215e1777c6cd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65779462"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Tworzenie oprogramowania dla usługi Azure Files przy użyciu platformy .NET
@@ -46,7 +46,7 @@ Interfejs API | Kiedy stosować | Uwagi
 W programie Visual Studio utwórz nową aplikację konsoli dla systemu Windows. Poniższe kroki pokazują, jak utworzyć aplikację konsoli w programie Visual Studio 2017, jednak kroki w innych wersjach programu Visual Studio są podobne.
 
 1. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**
-2. Wybierz kolejno pozycje **Zainstalowane** > **Szablony** > **Visual C#** > **Klasyczny pulpit systemu Windows**
+2. Wybierz kolejno pozycje **Zainstalowane** > **Szablony** > **Visual C#**  > **Klasyczny pulpit systemu Windows**
 3. Wybierz pozycję **Aplikacja konsoli (.NET Framework)**
 4. Wprowadź nazwę aplikacji w polu **Nazwa:**
 5. Kliknij przycisk **OK**
@@ -470,7 +470,7 @@ Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi 
 * [Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Troubleshooting Azure Files problems](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems) (Rozwiązywanie problemów z usługą Azure Files)
 
-### <a name="reference"></a>Odwołanie
+### <a name="reference"></a>Tematy pomocy
 * [Dokumentacja biblioteki klienta usługi Storage dla programu .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Dokumentacja interfejsu API REST usługi plików](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 

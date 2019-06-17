@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
 ms.openlocfilehash: 58c09c71aad2b6244f6e2f3d144c033665932f50
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925574"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności

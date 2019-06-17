@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
-ms.component: alerts
+ms.subservice: alerts
 ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60345796"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Masz klasycznego alertu metryki powiadomić systemu poza platformą Azure za pomocą elementu webhook
@@ -78,7 +78,7 @@ Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wsz
 | name |Tak | |Nazwa alertu. |
 | description |Tak | |Opis alertu. |
 | conditionType |Tak |Metryki i zdarzenia |Obsługiwane są dwa typy alertów: metryk i zdarzeń. Alerty metryki są oparte na warunku metryki. Alerty zdarzeń są oparte na zdarzenie w dzienniku aktywności. Użyj tej wartości, aby sprawdzić, czy alert jest na podstawie metryki lub zdarzenia. |
-| warunek |Tak | |Na podstawie określonych pól do sprawdzenia **conditionType** wartości. |
+| condition |Tak | |Na podstawie określonych pól do sprawdzenia **conditionType** wartości. |
 | MetricName |Dla alertów dotyczących metryk | |Nazwa metryki, który definiuje reguły monitoruje. |
 | metricUnit |Dla alertów dotyczących metryk |BytesPerSecond, Count, CountPerSecond, procent, w sekundach, w bajtach |Jednostka dozwolone w metrykę. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Dla alertów dotyczących metryk | |Wartość rzeczywista metryk, który spowodował wygenerowanie alertu. |
@@ -106,3 +106,4 @@ Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wsz
 * Dowiedz się, jak [wysyłać wiadomości SMS za pośrednictwem usługi Twilio, z poziomu alertu usługi Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
 * Dowiedz się, jak [wysyłać wiadomość Slack z poziomu alertu platformy Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
 * Dowiedz się, jak [użyj aplikacji logiki, aby wysłać komunikat do kolejki platformy Azure z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
+

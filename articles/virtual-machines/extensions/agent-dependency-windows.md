@@ -1,6 +1,6 @@
 ---
 title: Rozszerzenie maszyny wirtualnej platformy Azure Monitor zależności dla Windows | Dokumentacja firmy Microsoft
-description: Wdróż agenta usługi Azure Monitor zależności na maszynie wirtualnej Windows przy użyciu rozszerzenia maszyny wirtualnej.
+description: Wdrażanie agenta usługi Azure Monitor zależności na maszynie wirtualnej Windows za pomocą rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mgoedtel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 2cdde2f9dbba9676ba8a4d35ed6b79940668d684
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 34dd872db199a4c10e9f321457188b7f7642944d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521790"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67120223"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej platformy Azure Monitor zależności dla Windows
 
@@ -36,7 +36,7 @@ Rozszerzenie agenta zależności maszyn wirtualnych platformy Azure dla Windows 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujący kod JSON zawiera schemat dla rozszerzenia agenta zależności maszyn wirtualnych platformy Azure na maszynie Wirtualnej Windows Azure. 
+Następujący kod JSON zawiera schemat dla rozszerzenia agenta zależności maszyn wirtualnych platformy Azure na maszynie Wirtualnej Windows Azure.
 
 ```json
 {
@@ -76,20 +76,20 @@ Następujący kod JSON zawiera schemat dla rozszerzenia agenta zależności masz
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład |
+| Name (Nazwa) | Przykład/wartości |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
-## <a name="template-deployment"></a>Wdrożenie szablonu
+## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do uruchomienia rozszerzenia agenta zależności maszyn wirtualnych platformy Azure podczas wdrażania szablonu usługi Azure Resource Manager. 
+Można wdrożyć rozszerzeń maszyny Wirtualnej platformy Azure przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji w szablonie usługi Azure Resource Manager umożliwia rozszerzenie agenta zależności maszyn wirtualnych platformy Azure są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager.
 
-Kod JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Rozmieszczanie za pomocą pliku JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
+Kod JSON dla rozszerzenia maszyny wirtualnej może być zagnieżdżona w zasób maszyny wirtualnej. Możesz również umieścić go w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Rozmieszczanie za pomocą pliku JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources).
 
-W poniższym przykładzie założono, że rozszerzenia agenta zależności jest zagnieżdżona w obrębie zasobu maszyny wirtualnej. Zagnieżdżanie rozszerzenia zasobu, za pomocą pliku JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
+W poniższym przykładzie założono, że rozszerzenia agenta zależności jest zagnieżdżona w obrębie zasobu maszyny wirtualnej. Możesz zagnieździć rozszerzenia zasobu, za pomocą pliku JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
 
 
 ```json
@@ -110,7 +110,7 @@ W poniższym przykładzie założono, że rozszerzenia agenta zależności jest 
 }
 ```
 
-Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zasobu zawiera odwołanie do nadrzędnej maszyny wirtualnej, a typ odzwierciedla zagnieżdżonych. 
+Po umieszczeniu rozszerzenia JSON w katalogu głównym szablonu Nazwa zasobu zawiera odwołanie do nadrzędnej maszyny wirtualnej. Typ odzwierciedla zagnieżdżonych konfiguracji.
 
 ```json
 {
@@ -132,7 +132,7 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-`Set-AzVMExtension` Polecenie może służyć do wdrożenia rozszerzenia maszyny wirtualnej agenta zależności do istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell. 
+Możesz użyć `Set-AzVMExtension` polecenie, aby wdrożyć rozszerzenie maszyny wirtualnej agenta zależności do istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia konfiguracji publicznych i prywatnych muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell.
 
 ```powershell
 
@@ -149,7 +149,7 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą modułu Azure PowerShell. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając modułu Azure PowerShell.
+Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą modułu Azure PowerShell. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie przy użyciu modułu Azure PowerShell:
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -163,4 +163,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Lub mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz **uzyskać pomoc techniczną**. Aby uzyskać informacji o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).

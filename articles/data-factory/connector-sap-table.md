@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 06/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 4dee0e994c9e7be9677a8f1051481850990998e9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 49f07b4aaadfd45e9743bde58dc715230e5bc983
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074062"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>Kopiowanie danych z tabeli SAP przy użyciu usługi Azure Data Factory
 
@@ -29,7 +29,13 @@ Możesz skopiować dane z tabeli SAP do dowolnego obsługiwanego magazynu danych
 
 W szczególności ten łącznik SAP tabeli obsługuje:
 
-- Kopiowanie danych z tabeli SAP w **SAP Business Suite, za pomocą wersji 7.01 lub nowszej** (w ostatnich SAP pomocy technicznej pakietu stosie wydana po roku 2015) lub **S/4HANA**.
+- Kopiowanie danych z tabeli SAP w:
+
+    - **SAP ECC** wersją 7.01 lub nowszy (w ostatnich SAP pomocy technicznej pakietu stosie wydana po roku 2015)
+    - **System SAP BW** za pomocą wersji 7.01 lub nowszej
+    - **SAP S/4HANA**
+    - **Innych produktów SAP Business Suite** za pomocą wersji 7.01 lub nowszej 
+
 - Kopiowanie danych z obu **tabeli przezroczyste SAP** i **widoku**.
 - Kopiowanie danych przy użyciu **uwierzytelnianie podstawowe** lub **SNC** (zabezpieczenia komunikacji sieciowej) Jeśli SNC jest skonfigurowany.
 - Nawiązywanie połączenia z **serwera aplikacji** lub **serwer komunikatów**.
@@ -61,7 +67,7 @@ Następujące właściwości są obsługiwane w przypadku usługi SAP Business W
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **SapTable** | Tak |
+| type | Właściwość type musi być równa: **SapTable** | Yes |
 | server | Nazwa serwera, na którym znajduje się wystąpienie SAP.<br/>Zastosowanie, jeśli chcesz się połączyć **serwera aplikacji SAP**. | Nie |
 | systemNumber | Numer systemu systemu SAP.<br/>Zastosowanie, jeśli chcesz się połączyć **serwera aplikacji SAP**.<br/>Dozwolone wartości: liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Nie |
 | messageServer | Nazwa hosta serwera SAP wiadomości.<br/>Zastosowanie, jeśli chcesz się połączyć **SAP Message Server**. | Nie |
@@ -71,7 +77,7 @@ Następujące właściwości są obsługiwane w przypadku usługi SAP Business W
 | clientId | Identyfikator klienta klienta w systemie SAP.<br/>Dozwolone wartości: liczba dziesiętna trzy cyfry, reprezentowane jako ciąg. | Yes |
 | language | Język, który używa systemu SAP. | Nie (wartość domyślna to **EN**)|
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
-| password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | sncMode | Wskaźnik aktywacji SNC dostęp do serwera SAP, w którym znajduje się tabela.<br/>Zastosowanie, jeśli chcesz użyć SNC nawiązać połączenia z serwerem SAP.<br/>Dozwolone wartości to: **0** (wyłączony, domyślny) lub **1** (dalej). | Nie |
 | sncMyName | Nazwy SNC inicjatora dostęp do serwera SAP, w którym znajduje się tabela.<br/>Gdy stosowane `sncMode` znajduje się na. | Nie |
 | sncPartnerName | Komunikacja partnera SNC nazwa dostęp do serwera SAP, w którym znajduje się tabela.<br/>Gdy stosowane `sncMode` znajduje się na. | Nie |
@@ -169,7 +175,7 @@ Aby skopiować dane z i do Centrum Otwórz programu SAP BW, następujące właś
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość type musi być równa **SapTableResource**. | Tak |
+| type | Właściwość type musi być równa **SapTableResource**. | Yes |
 | tableName | Nazwa tabeli SAP, aby skopiować dane z. | Tak |
 
 **Przykład:**
@@ -200,10 +206,10 @@ Aby skopiować dane z tabeli SAP, następujące właściwości są obsługiwane.
 
 | Właściwość                         | Opis                                                  | Wymagane |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| — typ                             | Właściwość type musi być równa **SapTableSource**.       | Tak      |
+| type                             | Właściwość type musi być równa **SapTableSource**.       | Yes      |
 | Liczba wierszy                         | Liczba wierszy, które mają zostać pobrane.                              | Nie       |
 | rfcTableFields                   | Pola, aby skopiować z tabeli SAP. Na przykład `column0, column1`. | Nie       |
-| rfcTableOptions                  | Funkcje umożliwiające filtrowanie wierszy w tabeli SAP. Na przykład `COLUMN0 EQ 'SOMEVALUE'`. | Nie       |
+| rfcTableOptions                  | Funkcje umożliwiające filtrowanie wierszy w tabeli SAP. Na przykład `COLUMN0 EQ 'SOMEVALUE'`. Zobacz więcej opis pod tą tabelą. | Nie       |
 | customRfcReadTableFunctionModule | Niestandardowe RFC funkcja moduł, który może służyć do odczytywania danych z tabeli SAP. | Nie       |
 | partitionOption                  | Mechanizm partycji można odczytać z tabeli SAP. Obsługiwane opcje: <br/>- **Brak**<br/>- **PartitionOnInt** (normalne liczby całkowitej lub liczby całkowitej wartości zero Dopełnienie z lewej strony, takie jak 0000012345)<br/>- **PartitionOnCalendarYear** (4 cyfr w formacie "YYYY")<br/>- **PartitionOnCalendarMonth** (6 cyfr w formacie "YYYYMM")<br/>- **PartitionOnCalendarDate** (8 cyfr w formacie "RRRRMMDD") | Nie       |
 | partitionColumnName              | Nazwa kolumny w celu podzielenia danych. | Nie       |
@@ -215,6 +221,18 @@ Aby skopiować dane z tabeli SAP, następujące właściwości są obsługiwane.
 >- Jeśli tabela SAP ma dużej ilości danych, takich jak kilka miliardów wierszy, należy użyć `partitionOption` i `partitionSetting` można podzielić dane na małych partycji, w którym to przypadku dane są odczytywane przez partycje i każdej partycji danych są pobierane z serwera SAP za pośrednictwem jednego pojedynczego Wywołanie RFC.<br/>
 >- Biorąc `partitionOption` jako `partitionOnInt` na przykład liczbę wierszy w poszczególnych partycjach jest obliczana na podstawie (razem wierszy objętych między *partitionUpperBound* i *partitionLowerBound*) /*maxPartitionsNumber*.<br/>
 >- Jeśli chcesz przeprowadzić dalsze partycje równolegle w celu przyspieszenia kopiowania, zaleca się `maxPartitionsNumber` jako wiele wartości `parallelCopies` (Dowiedz się więcej z [osobną kopię](copy-activity-performance.md#parallel-copy)).
+
+W `rfcTableOptions`, np. następujące typowe SAP operatory zapytania można użyć do filtrowania wiersze: 
+
+| Operator | Opis |
+| :------- | :------- |
+| EQ | Równa się |
+| NE | Nie równa się |
+| LT | Mniejsze niż |
+| LE | Mniejsze niż lub równe |
+| GT | Większe niż |
+| GE | Większe niż lub równe |
+| NP. | W takich jak "Emma %" |
 
 **Przykład:**
 

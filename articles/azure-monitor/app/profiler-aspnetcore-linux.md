@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
 ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60306536"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil aplikacji sieci web platformy ASP.NET Core platformy Azure w systemie Linux za pomocą Application Insights Profiler
@@ -27,7 +27,7 @@ Dowiedz się, jaka jest zużywany czas w każdej metodzie działającej aplikacj
 
 Po ukończeniu tego przewodnika aplikacji może zbierać ślady Profiler, takich jak śladów, które są wyświetlane na obrazie. W tym przykładzie śledzenia Profiler wskazuje, że żądanie namierzenie internetowego jest powolne, ze względu na czas oczekiwania. *Ścieżka aktywna* w kodzie, który spowalnia aplikacji jest oznaczony ikoną gaśniczego. **o** method in Class metoda **HomeController** sekcji spowalnia aplikacji sieci web, ponieważ wywołuje metodę **Thread.Sleep** funkcji.
 
-![Ślady narzędzia Profiler](./media/profiler-aspnetcore-linux/profiler-traces.png)
+![Ślady Profiler](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Poniższe instrukcje mają zastosowanie do wszystkich środowisk programowania Windows, Linux i Mac:

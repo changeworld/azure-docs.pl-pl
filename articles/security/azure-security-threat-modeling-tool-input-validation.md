@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 0803ade7613480621a0cd87f9944ee5f55bf432c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586309"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Ramka zabezpieczeń: Dane wejściowe weryfikacji | Środki zaradcze 
@@ -32,7 +32,7 @@ ms.locfileid: "60586309"
 
 ## <a id="disable-xslt"></a>Wyłącz funkcje tworzenia skryptów wszystkie przekształcenia przy użyciu arkuszy stylów niezaufanych XSLT
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -64,7 +64,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 
 ## <a id="out-sniffing"></a>Upewnij się, że każdej strony zawierające zawartość musi użytkownika oznacza brak zgody na automatyczne wykrywanie MIME
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -133,7 +133,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 
 ## <a id="xml-resolution"></a>Wzmacniania ochrony lub wyłączanie rozpoznawania jednostki XML
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -195,7 +195,7 @@ Należy pamiętać, że w program MSXML6, ProhibitDtd dla elementu ma wartość 
 
 ## <a id="app-verification"></a>Aplikacje korzystające z http.sys przeprowadzenie weryfikacji canonicalization adresu URL
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -206,7 +206,7 @@ Należy pamiętać, że w program MSXML6, ProhibitDtd dla elementu ma wartość 
 
 ## <a id="controls-users"></a>Upewnij się, że odpowiednie formanty są stosowane podczas akceptowania plików od użytkowników
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -322,7 +322,7 @@ Ostatni punkt dotyczące weryfikacji podpisu format pliku można znaleźć klasy
 
 ## <a id="typesafe"></a>Upewnij się, że bezpieczny parametry są używane w aplikacji sieci Web uzyskać dostęp do danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -352,7 +352,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 ## <a id="binding-mvc"></a>Użyj klasy powiązanie osobnymi plikami modelu lub listy powiązania filtru, aby zapobiec MVC przydziału pamięci masowej luk w zabezpieczeniach
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -363,7 +363,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 ## <a id="rendering"></a>Kodowanie wyjścia niezaufanych sieci web przed renderowaniem
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -388,7 +388,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 ## <a id="typemodel"></a>Wykonywanie walidacji danych wejściowych i filtrowanie typu string wszystkie właściwości modelu
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -399,7 +399,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 ## <a id="richtext"></a>Narzędzie oczyszczania powinny być stosowane na pola formularza, które akceptują znaków, np., Edytor tekstu sformatowanego
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -410,7 +410,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 ## <a id="inbuilt-encode"></a>Nie przypisuj elementów DOM do ujścia, które nie mają wbudowane kodowania
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -432,7 +432,7 @@ Nie używaj `innerHtml`; zamiast tego użyć `innerText`. Podobnie, zamiast z `$
 
 ## <a id="redirect-safe"></a>Sprawdź, czy wszystkie przekierowania w aplikacji zostaną zamknięte lub wykonywane w sposób bezpieczny
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -443,7 +443,7 @@ Nie używaj `innerHtml`; zamiast tego użyć `innerText`. Podobnie, zamiast z `$
 
 ## <a id="string-method"></a>Implementowanie walidacji danych wejściowych na wszystkich parametrów typu ciąg zaakceptowane przez metody kontrolera
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -454,7 +454,7 @@ Nie używaj `innerHtml`; zamiast tego użyć `innerText`. Podobnie, zamiast z `$
 
 ## <a id="dos-expression"></a>Ustawić limitu górnego limitu czasu dla wyrażenia regularnego, przetwarzania, aby zapobiec DoS ze względu na nieprawidłowy wyrażeń regularnych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -472,7 +472,7 @@ Na przykład następująca konfiguracja zgłosi RegexMatchTimeoutException, jeś
 
 ## <a id="html-razor"></a>Unikaj używania Html.Raw w widokami Razor
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -497,7 +497,7 @@ Nie używaj `Html.Raw()` o ile nie trzeba wyświetlić znaczników. Ta metoda ni
 
 ## <a id="stored-proc"></a>W procedurach składowanych nie należy używać zapytań dynamicznych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -557,7 +557,7 @@ AS
 
 ## <a id="validation-api"></a>Upewnij się, że weryfikacja modelu odbywa się na metody interfejsu API sieci Web
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -614,7 +614,7 @@ namespace MyApi.Controllers
 
 ## <a id="string-api"></a>Implementowanie walidacji danych wejściowych na wszystkich parametrów typu ciąg zaakceptowane przez metody interfejsu API sieci Web
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -625,7 +625,7 @@ namespace MyApi.Controllers
 
 ## <a id="typesafe-api"></a>Upewnij się, że bezpieczny są używane parametry w internetowego interfejsu API dostępu do danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -655,7 +655,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 ## <a id="sql-docdb"></a>Użyj sparametryzowane zapytania SQL usługi Cosmos DB
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Document DB | 
 | **Faza SDL**               | Kompilacja |  
@@ -666,7 +666,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 ## <a id="schema-binding"></a>Weryfikacja danych wejściowych WCF przez powiązanie ze schematem
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -677,7 +677,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 ## <a id="parameters"></a>Weryfikacja wprowadzania WCF za pomocą parametru inspektorzy
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  

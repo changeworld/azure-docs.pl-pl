@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730698"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068783"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -33,7 +33,7 @@ Nie ma opłat do szyfrowania dysków maszyn wirtualnych za pomocą usługi Azure
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Warstwy maszyny wirtualnej, który obsługuje usługi Azure Disk Encryption?
 
-Usługa Azure Disk Encryption jest dostępna na maszynach wirtualnych w warstwie standardowa, w tym [A, D, DS, G, GS i F](https://azure.microsoft.com/pricing/details/virtual-machines/) serię maszyn wirtualnych IaaS. Jest również dostępna dla maszyn wirtualnych dzięki usłudze premium storage. Nie jest dostępna na maszynach wirtualnych w warstwie podstawowa.
+Usługa Azure Disk Encryption jest dostępna na maszynach wirtualnych w warstwie standardowa, w tym [A, D, DS, E, G, GS i F](https://azure.microsoft.com/pricing/details/virtual-machines/) serię maszyn wirtualnych IaaS. Jest również dostępna dla maszyn wirtualnych dzięki usłudze premium storage. Nie jest dostępna na maszynach wirtualnych w warstwie podstawowa.
 
 ## <a name="bkmk_LinuxOSSupport"></a> Jakie są dystrybucje systemu Linux obsługuje usługi Azure Disk Encryption?
 
@@ -121,7 +121,9 @@ Tak. Szyfrowanie dysków za pomocą aplikacji usługi Azure AD jest nadal obsłu
 Najnowszą wersję zestawu SDK programu Azure PowerShell umożliwia skonfigurowanie usługi Azure Disk Encryption. Pobierz najnowszą wersję [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Usługa Azure Disk Encryption jest *nie* obsługiwany przez zestaw SDK platformy Azure w wersji 1.1.0.
 
 > [!NOTE]
-> Rozszerzenia w wersji zapoznawczej szyfrowania dysków Azure dla systemu Linux jest przestarzały. Aby uzyskać więcej informacji, zobacz [rozszerzenie Azure wycofano dysku encryption (wersja zapoznawcza) dla maszyn wirtualnych IaaS z systemem Linux](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/).
+> Rozszerzenia (wersja zapoznawcza) szyfrowania dysków Azure dla systemu Linux "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" jest przestarzały. To rozszerzenie została opublikowana na potrzeby szyfrowania dysków Azure w wersji zapoznawczej. Wersja zapoznawcza rozszerzenia nie należy używać w danym wdrożeniu testowania i produkcji.
+
+> Scenariusze wdrażania, takich jak Azure zasobu Manager (ARM), gdzie ma się, aby wdrożyć rozszerzenie szyfrowania dysków Azure dla maszyny Wirtualnej systemu Linux włączyć szyfrowanie na maszynie Wirtualnej IaaS systemu Linux, należy użyć rozszerzenia obsługiwane w środowisku produkcyjnym szyfrowania dysków Azure" Microsoft.Azure.Security.AzureDiskEncryptionForLinux".
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Czy mogę zastosować szyfrowania dysków Azure na mój niestandardowych obrazów systemu Linux?
 

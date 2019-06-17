@@ -1,6 +1,6 @@
 ---
 title: Przewodnik Szybki Start — blokuje dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft
-description: W tym przewodniku Szybki Start dowiesz się, jak konfigurować zasady dostępu warunkowego usługi Azure Active Directory (Azure AD) Identity Protection ryzyka logowania do blokowania operacji logowania w oparciu o ryzyko sesji.
+description: W tym przewodniku Szybki Start dowiesz się, jak można skonfigurować usługi Azure Active Directory (Azure AD) Identity Protection ryzyka logowania zasady dostępu warunkowego do blokowania operacji logowania w oparciu o ryzyko sesji.
 services: active-directory
 keywords: ochronę tożsamości i dostępu warunkowego do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
@@ -17,18 +17,18 @@ ms.date: 09/13/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: c04d1a01c0ffd69e70dfa3b88b4f3c7f4b3576d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381826"
+ms.locfileid: "67108804"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Szybki start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory Identity Protection  
 
-Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników z logowaniem. Usługa Azure Active Directory (Azure AD) Identity Protection analizuje każdy logowania i oblicza prawdopodobieństwo, że logowanie próba nie było wykonywane przez prawowitym właścicielem konta użytkownika. Prawdopodobieństwo (niskiej, średniej, wysokiej) jest wskazywany w postaci obliczonej wartości o nazwie poziom ryzyka logowania. Ustawiając warunek ryzyka logowania, można skonfigurować zasady dostępu warunkowego ryzyka logowania reagują na wystąpienie określonego ryzyka logowania poziomów. 
+Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników z logowaniem. Usługa Azure Active Directory (Azure AD) Identity Protection analizuje każdy logowania i oblicza prawdopodobieństwo, że logowanie próba nie było wykonywane przez prawowitym właścicielem konta użytkownika. Prawdopodobieństwo (niskiej, średniej, wysokiej) jest wskazywany w postaci obliczonej wartości o nazwie poziom ryzyka logowania. Ustawiając warunek ryzyka logowania, można skonfigurować ryzyka logowania zasady dostępu warunkowego, aby odpowiedzieć na poziomach określonych ryzyka logowania. 
 
-Ten przewodnik Szybki Start przedstawia sposób konfigurowania zasad dostępu warunkowego ryzyka logowania które blokuje logowania w przypadku średniej lub i powyżej ryzyka logowania poziomu został wykryty. 
+Ten przewodnik Szybki Start przedstawia sposób konfigurowania ryzyka logowania zasady dostępu warunkowego, które blokuje logowania w przypadku średniej lub i powyżej ryzyka logowania poziomu został wykryty. 
 
 ![Tworzenie zasad](./media/quickstart-sign-in-risk-policy/1004.png)
 
@@ -65,7 +65,7 @@ Celem tego kroku jest, aby upewnić się, że Twoje konto testu mają dostęp do
 
 Scenariusz, w tym przewodniku Szybki Start używa logowania za pomocą przeglądarki Tor do generowania wykryte **logowania z anonimowych adresów IP** zdarzenie o podwyższonym ryzyku. Poziom ryzyka dotyczący tego zdarzenia o podwyższonym ryzyku to średni. Aby odpowiedzieć na to zdarzenie o podwyższonym ryzyku, należy ustawić warunkiem ryzyka logowania średniej. 
 
-W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany ryzyka logowania. Ustaw w zasadach:
+W tej sekcji przedstawiono sposób tworzenia wymaganych ryzyko logowania zasady dostępu warunkowego. Ustaw w zasadach:
 
 |Ustawienie |Wartość|
 |---     | --- |
@@ -119,7 +119,7 @@ Aby sprawdzić zasady, spróbuj zalogować się do swojej [witryny Azure portal]
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie będą już potrzebne, Usuń użytkownika testowego, w przeglądarce sieci Tor i wyłączanie zasad dostępu warunkowego ryzyka logowania:
+Gdy nie jest już potrzebny, Usuń użytkownika testowego, w przeglądarce sieci Tor i wyłączyć ryzyka logowania zasady dostępu warunkowego:
 
 - Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [jak dodać lub usunąć użytkowników](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 

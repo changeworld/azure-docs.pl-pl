@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1c9c24f5b594935c0057eb15acec09a0b27324
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8b1461999679935587370f66349a440d588465cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496782"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052538"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kiedy należy używać dostawcę usługi Azure Multi-Factor Authentication
 
@@ -25,7 +25,7 @@ Weryfikacja dwuetapowa jest domyślnie dostępna dla administratorów globalnych
 Dostawcy usługi Multi-Factor Authentication platformy Azure umożliwia korzystanie z zalet funkcji oferowanych przez usługę Azure Multi-Factor Authentication dla użytkowników, którzy **nie masz licencji**.
 
 > [!NOTE]
-> Od 1 września 2018 r nowych dostawców uwierzytelniania już nie może zostać utworzony. Istniejące dostawców uwierzytelniania mogą nadal może być używany i zaktualizowane. Uwierzytelnianie wieloskładnikowe, będą w dalszym ciągu być dostępna jako funkcja w licencji usługi Azure AD Premium.
+> Od 1 września 2018 r nowych dostawców uwierzytelniania już nie może zostać utworzony. Istniejące dostawców uwierzytelniania mogą nadal są używane, a następnie aktualizować, ale migracja nie jest już możliwe. Uwierzytelnianie wieloskładnikowe, będą w dalszym ciągu być dostępna jako funkcja w licencji usługi Azure AD Premium.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Zastrzeżenia związane z zestawem SDK usługi Azure MFA
 

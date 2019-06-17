@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60471900"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenariusze, ograniczenia i znane problemy, używanie grup do zarządzania, Licencjonowanie w usłudze Azure Active Directory
@@ -188,7 +188,7 @@ Po zmianie w grupie licencji usługi Azure AD rozpocznie stosowania zmian do wsz
    > ```
 
 3. Aby wyświetlić pełny dziennik dla jak grupy został przetworzony, w tym wszystkie zmiany użytkownika, ustaw następujące filtry:
-   - **Zainicjowane przez (Aktor)**: "Licencjonowanie oparte na grupach usługi Microsoft Azure AD"
+   - **Zainicjowane przez (Aktor)** : "Licencjonowanie oparte na grupach usługi Microsoft Azure AD"
    - **Zakres dat** (opcjonalnie): niestandardowy zakres o których wiadomo, konkretną grupę rozpoczęcia i zakończenia przetwarzania
 
 To przykładowe dane wyjściowe pokazują rozpoczęcia przetwarzania, wynikowe zmiany użytkowników i wykończenia przetwarzania.

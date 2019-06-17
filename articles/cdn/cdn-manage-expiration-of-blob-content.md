@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: a6dcd57591dcc6aa09ae2cb62f4b6dfe964c979f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 89f821398f2bccf19a8be090de0e8788090670fb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191142"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080829"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Zarządzanie wygasaniem usługi Azure Blob storage w usłudze Azure CDN
 > [!div class="op_single_selector"]
@@ -114,7 +114,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>Nagłówki Cache-Control ustawienie przy użyciu platformy .NET
-Aby określić obiekt blob `Cache-Control` nagłówka za pomocą kodu platformy .NET, użyj [biblioteki klienta usługi Azure Storage dla platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) można ustawić [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol#Microsoft_WindowsAzure_Storage_Blob_BlobProperties_CacheControl) właściwości.
+Aby określić obiekt blob `Cache-Control` nagłówka za pomocą kodu platformy .NET, użyj [biblioteki klienta usługi Azure Storage dla platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) można ustawić [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) właściwości.
 
 Na przykład:
 

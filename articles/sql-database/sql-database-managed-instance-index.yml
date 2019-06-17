@@ -69,6 +69,9 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> 4 rdzenie wirtualne w generacja sprzętu do 5. generacji</a>'
+          - html: 'Obsługa subskrypcji przy użyciu <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > Azure miesięczne środki dla subskrybentów programu Visual Studio </a>'
+          - html: 'Obsługa <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> programu SharePoint 2016 i SharePoint 2019 </a> i <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>'
           - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Konfigurowanie strefy czasowej</a> podczas tworzenia wystąpienia.'
           - html: 'Tworzenie wystąpień przy użyciu <a href="https://aka.ms/managed-instance-collation">sortowanie na poziomie serwera wybranego</a>.'
           - html: 'Funkcja przywracania geograficznego umożliwia <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">przywrócić bazę danych do innego centrum danych przy użyciu programu PowerShell</a>.'

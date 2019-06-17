@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
 ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60608088"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Zaufany wskazówki połączeń internetowych
@@ -160,7 +160,7 @@ Usług, które obsługują wdrażanie wystąpień dedykowanych w sieci wirtualne
 |Azure Cache for Redis                     | Ogólna dostępność               |
 |Azure HDInsight                       | Ogólna dostępność               |
 |Zestaw skalowania maszyn wirtualnych             | Ogólna dostępność               |
-|usług Azure Cloud Services                  | Ogólna dostępność               |
+|Usług Azure Cloud Services                  | Ogólna dostępność               |
 
 
 ### <a name="virtual-network-integration-details"></a>Szczegóły integracji sieci wirtualnej
@@ -249,25 +249,25 @@ Można łatwo skonfigurować dostęp dla Microsoft Azure, Office 365 i Dynamics 
 
 | Category | Obciążenie | IaaS | PaaS w wersji dedykowanej / iniekcji sieciami wirtualnymi  | Punkty końcowe usługi  |
 |---------|---------|---------|---------|--------|
-| Wystąpienia obliczeniowe | Maszyny wirtualne systemu Linux platformy Azure | Yes | | |
-| Wystąpienia obliczeniowe | Maszyny wirtualne platformy Azure Windows | Yes | | |
+| Wystąpienia obliczeniowe | Maszyny wirtualne systemu Linux platformy Azure | Tak | | |
+| Wystąpienia obliczeniowe | Maszyny wirtualne platformy Azure Windows | Tak | | |
 | Wystąpienia obliczeniowe | Zestawy skalowania maszyn wirtualnych | Yes | | |
 | Wystąpienia obliczeniowe | Azure Functions | | Środowisko usługi App Service | |
 | Sieci Web i mobilnych | Wewnętrzne aplikacje internetowe | | Środowisko usługi App Service| |
 | Sieci Web i mobilnych | Wewnętrzny aplikacji mobilnej | | Środowisko usługi App Service | |
 | Sieci Web i mobilnych | Aplikacje interfejsu API | | Środowisko usługi App Service | |
-| Containers | Azure Container Service | | | Yes |
-| Containers | Usługa Azure Kubernetes Service (AKS) \* | | | Yes |
+| Containers | Azure Container Service | | | Tak |
+| Containers | Usługa Azure Kubernetes Service (AKS) \* | | | Tak |
 | Database (Baza danych) | Azure SQL Database | | Wystąpienie zarządzane usługi Azure SQL Database \* | Azure SQL |
 | Database (Baza danych) | Azure Database for MySQL | | | Yes |
 | Database (Baza danych) | Azure Database for PostgreSQL | | | Yes |
-| Database (Baza danych) | Azure SQL Data Warehouse | | | Yes |
-| Database (Baza danych) | Azure Cosmos DB | | | Yes |
-| Database (Baza danych) | Azure Cache for Redis | | Yes | |
-| Magazyn | Azure Blob Storage | Yes | | |
-| Magazyn | Azure Files | Yes | | |
-| Magazyn | Usługa Azure Queue storage | Yes | | |
-| Magazyn | Azure Table Storage | Yes | | |
-| Magazyn | Usługa Azure Disk storage | Yes | | |
+| Database (Baza danych) | Azure SQL Data Warehouse | | | Tak |
+| Database (Baza danych) | Azure Cosmos DB | | | Tak |
+| Database (Baza danych) | Azure Cache for Redis | | Tak | |
+| Magazyn | Azure Blob Storage | Tak | | |
+| Magazyn | Azure Files | Tak | | |
+| Magazyn | Usługa Azure Queue storage | Tak | | |
+| Magazyn | Azure Table Storage | Tak | | |
+| Magazyn | Usługa Azure Disk storage | Tak | | |
 
 \* Publiczna wersja zapoznawcza na platformie Azure Government maja 2018 r.

@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567218"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Przenoszenie danych do i z usługi Azure Cosmos DB przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-azure-documentdb-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-azure-cosmos-db.md)
 
@@ -57,10 +57,10 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, k
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis specyficzne dla usługi Azure Cosmos DB, połączone elementy JSON.
 
-| **Właściwość** | **Opis** | **Wymagane** |
+| **Property** | **Opis** | **Wymagane** |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **Baza danych DocumentDb** |Yes |
-| connectionString |Określ informacje potrzebne do łączenia z bazą danych Azure Cosmos DB. |Yes |
+| connectionString |Określ informacje potrzebne do łączenia z bazą danych Azure Cosmos DB. |Tak |
 
 Przykład:
 
@@ -81,9 +81,9 @@ Pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych m
 
 W sekcji typeProperties różni się dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. Zestaw danych o typie sekcji typeProperties **DocumentDbCollection** ma następujące właściwości.
 
-| **Właściwość** | **Opis** | **Wymagane** |
+| **Property** | **Opis** | **Wymagane** |
 | --- | --- | --- |
-| collectionName |Nazwa kolekcji dokumentu Cosmos DB. |Yes |
+| collectionName |Nazwa kolekcji dokumentu Cosmos DB. |Tak |
 
 Przykład:
 
@@ -122,17 +122,17 @@ Właściwości, które są dostępne w sekcji typeProperties działania z drugie
 
 W przypadku działania kopiowania, gdy źródłem jest typu **DocumentDbCollectionSource** następujące właściwości są dostępne w **typeProperties** sekcji:
 
-| **Właściwość** | **Opis** | **Dozwolone wartości** | **Wymagane** |
+| **Property** | **Opis** | **Dozwolone wartości** | **Wymagane** |
 | --- | --- | --- | --- |
 | query |Określ zapytanie, które można odczytać danych. |Zapytanie ciągu obsługiwany przez usługę Azure Cosmos DB. <br/><br/>Przykład: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nie <br/><br/>Jeśli nie zostanie określony, instrukcję SQL, która jest wykonywana: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Znaki specjalne, aby wskazać, że dokument jest zagnieżdżona |Dowolny znak. <br/><br/>Usługa Azure Cosmos DB jest magazyn danych NoSQL dla dokumentów JSON, gdzie struktury zagnieżdżone są dozwolone. Usługa Azure Data Factory umożliwia użytkownikowi oznaczają hierarchii za pomocą nestingSeparator, czyli "." w powyższych przykładach. Separatorem, działanie kopiowania generuje obiekt "Name", z trzema elementami podrzędnymi elementami najpierw drugie imię i nazwisko, zgodnie z "Name.First", "Name.Middle" i "Name.Last" w definicji tabeli. |Nie |
 
 **DocumentDbCollectionSink** obsługuje następujące właściwości:
 
-| **Właściwość** | **Opis** | **Dozwolone wartości** | **Wymagane** |
+| **Property** | **Opis** | **Dozwolone wartości** | **Wymagane** |
 | --- | --- | --- | --- |
 | nestingSeparator |Znaki specjalne w nazwa kolumny źródłowej, aby wskazać zagnieżdżonych dokumentu jest wymagana. <br/><br/>Na przykład powyżej: `Name.First` w danych wyjściowych tabeli tworzy następującą strukturę JSON w dokumencie usługi Cosmos DB:<br/><br/>"Name": {<br/>    "First": "John"<br/>}, |Znak używany do rozdzielania poziomów zagnieżdżenia.<br/><br/>Wartość domyślna to `.` (kropka). |Znak używany do rozdzielania poziomów zagnieżdżenia. <br/><br/>Wartość domyślna to `.` (kropka). |
-| writeBatchSize |Liczba równoległych żądań do usługi Azure Cosmos DB do tworzenia dokumentów.<br/><br/>Podczas kopiowania danych z usługi Cosmos DB przy użyciu tej właściwości można dostosować wydajność. Lepszą wydajność można oczekiwać, gdy zwiększasz writeBatchSize, ponieważ więcej równoległych żądań do usługi Cosmos DB są wysyłane. Jednak należy unikać ograniczania przepustowości, która może zgłosić komunikat o błędzie: "Liczba żądań jest duży."<br/><br/>Ograniczanie zadecyduje o wiele czynników, w tym rozmiar dokumentów, liczbę warunków w dokumentach, indeksowanie zasady kolekcji docelowej, itd. Dla operacji kopiowania umożliwia lepsze kolekcji (np. S3) najbardziej w dostępne przepływności (2500 żądanie jednostek na sekundę). |Liczba całkowita |Nie (domyślne: 5) |
+| writeBatchSize |Liczba równoległych żądań do usługi Azure Cosmos DB do tworzenia dokumentów.<br/><br/>Podczas kopiowania danych z usługi Cosmos DB przy użyciu tej właściwości można dostosować wydajność. Lepszą wydajność można oczekiwać, gdy zwiększasz writeBatchSize, ponieważ więcej równoległych żądań do usługi Cosmos DB są wysyłane. Jednak należy unikać ograniczania przepustowości, która może zgłosić komunikat o błędzie: "Liczba żądań jest duży."<br/><br/>Ograniczanie zadecyduje o wiele czynników, w tym rozmiar dokumentów, liczbę warunków w dokumentach, indeksowanie zasady kolekcji docelowej, itd. Dla operacji kopiowania umożliwia lepsze kolekcji (np. S3) najbardziej w dostępne przepływności (2500 żądanie jednostek na sekundę). |Integer |Nie (domyślne: 5) |
 | writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji oczekiwania. |TimeSpan<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 ## <a name="importexport-json-documents"></a>Dokumenty JSON importu/eksportu

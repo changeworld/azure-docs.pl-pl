@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125801"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Usługa Menedżer urządzeń StorSimple użycia do zarządzania woluminach macierzy wirtualnej StorSimple
@@ -133,7 +133,7 @@ Wykonaj poniższe kroki, aby usunąć wolumin.
 1. Z **woluminów** ustawienia w bloku podsumowania usługi StorSimple, wybierz macierz wirtualna, na którym znajduje się wolumin, chcesz, możesz usunąć.
 2. **Wybierz** woluminu i kliknij przycisk **...**  (Alternatywnie kliknij prawym przyciskiem myszy w tym wierszu) z menu kontekstowego wybierz **Usuń**.
    
-    ![Usuń wolumin](./media/storsimple-virtual-array-manage-volumes/volume-delete.png)
+    ![Usuwanie woluminu](./media/storsimple-virtual-array-manage-volumes/volume-delete.png)
 3. Sprawdź stan woluminów, które chcesz usunąć. Jeśli wolumin, który chcesz usunąć, nie jest w trybie offline, przejść do trybu offline, wykonaj czynności w [przełączyć wolumin w tryb offline](#take-a-volume-offline).
 4. Po wyświetleniu monitu o potwierdzenie w **Usuń** bloku Zaakceptuj potwierdzenie i kliknij przycisk **Usuń**. Wolumin zostanie usunięte i **woluminów** bloku pokaże zaktualizowaną listę woluminów w ramach macierzy wirtualnej.
 

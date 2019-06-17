@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587210"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Usługi Azure information składników systemu i granice
@@ -91,12 +91,12 @@ Pracownicy (lub wykonawcy) firmy Microsoft są uznawane za użytkowników wewnę
 
 | Rola | Wewnętrzne lub zewnętrzne | Poziom ważności | Uprawnienia autoryzowanego i funkcje realizowane | Typ dostępu
 | --- | --- | --- | --- | --- |
-| Inżynier ds. centrów danych platformy Azure | Wewnętrzny | Brak dostępu do danych klienta | Zarządzaj fizyczne zabezpieczenia lokalnego. Należy przeprowadzić patroli i centrum danych i monitorowania wszystkich punktów wejścia. Pracownicy konwojowanie do i z centrum danych pewnych-wyczyszczone, którzy zapewniają ogólne usługi (na przykład jadalni lub czyszczenie) lub IT pracę w centrum danych. Należy przeprowadzić procedury monitorowania i konserwacji sprzętu sieciowego. Wykonaj pracy zarządzania i naprawa zdarzenia przy użyciu różnych narzędzi. Należy przeprowadzić procedury monitorowania i konserwacji sprzętu fizycznego, w centrach danych. Dostęp do środowiska na żądanie z właścicieli nieruchomości. Możliwe do wykonania śledczej dochodzeń, zaloguj się raporty zdarzeń i wymagają wymagania dotyczące szkoleń i zasad obowiązkowych zabezpieczeń usługi. Własność operacyjną i obsługi narzędzi krytycznych, takich jak skanery i zbieranie danych dziennika. | Trwały dostęp do środowiska. |
-| Klasyfikacja zdarzeń platformy Azure (inżynierów błyskawicznej) | Wewnętrzny | Dostęp do danych klienta | Zarządzaj komunikacją między MCIO, pomocy technicznej i zespoły inżynierów. Klasyfikacja platformy zdarzenia, problemy z wdrażaniem i żądania obsługi. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
-| Inżynierowie wdrażania na platformie Azure | Wewnętrzny | Dostęp do danych klienta | Wdrażanie i uaktualnianie składniki platformy, oprogramowania i zmian w konfiguracji zaplanowane w odniesieniu do platformy Azure. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
-| Obsługa awarii klientów platformy Azure (dzierżawcy) | Wewnętrzny | Dostęp do danych klienta | Debugowanie i diagnozowanie błędów i awarii platformy dla dzierżaw poszczególnych obliczeń i kont platformy Azure. Analizowanie błędów. Dysk krytycznych poprawek platformy lub klientowi i korzystaj z pomocy technicznej ulepszeń technicznych. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
-| Azure inżynierów (monitorowanie engineers) i zdarzenia | Wewnętrzny | Dostęp do danych klienta | Zdiagnozować i rozwiązać kondycji platformy za pomocą narzędzi diagnostycznych. Poprawki dla sterowników woluminów dysków, naprawy elementów wynikających z awarii i pomóc akcje odzyskiwania awarii. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
-|Klienci platformy Azure | Zewnętrzna | ND | ND | ND |
+| Inżynier ds. centrów danych platformy Azure | Wewnętrzne | Brak dostępu do danych klienta | Zarządzaj fizyczne zabezpieczenia lokalnego. Należy przeprowadzić patroli i centrum danych i monitorowania wszystkich punktów wejścia. Pracownicy konwojowanie do i z centrum danych pewnych-wyczyszczone, którzy zapewniają ogólne usługi (na przykład jadalni lub czyszczenie) lub IT pracę w centrum danych. Należy przeprowadzić procedury monitorowania i konserwacji sprzętu sieciowego. Wykonaj pracy zarządzania i naprawa zdarzenia przy użyciu różnych narzędzi. Należy przeprowadzić procedury monitorowania i konserwacji sprzętu fizycznego, w centrach danych. Dostęp do środowiska na żądanie z właścicieli nieruchomości. Możliwe do wykonania śledczej dochodzeń, zaloguj się raporty zdarzeń i wymagają wymagania dotyczące szkoleń i zasad obowiązkowych zabezpieczeń usługi. Własność operacyjną i obsługi narzędzi krytycznych, takich jak skanery i zbieranie danych dziennika. | Trwały dostęp do środowiska. |
+| Klasyfikacja zdarzeń platformy Azure (inżynierów błyskawicznej) | Wewnętrzne | Dostęp do danych klienta | Zarządzaj komunikacją między MCIO, pomocy technicznej i zespoły inżynierów. Klasyfikacja platformy zdarzenia, problemy z wdrażaniem i żądania obsługi. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
+| Inżynierowie wdrażania na platformie Azure | Wewnętrzne | Dostęp do danych klienta | Wdrażanie i uaktualnianie składniki platformy, oprogramowania i zmian w konfiguracji zaplanowane w odniesieniu do platformy Azure. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
+| Obsługa awarii klientów platformy Azure (dzierżawcy) | Wewnętrzne | Dostęp do danych klienta | Debugowanie i diagnozowanie błędów i awarii platformy dla dzierżaw poszczególnych obliczeń i kont platformy Azure. Analizowanie błędów. Dysk krytycznych poprawek platformy lub klientowi i korzystaj z pomocy technicznej ulepszeń technicznych. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
+| Azure inżynierów (monitorowanie engineers) i zdarzenia | Wewnętrzne | Dostęp do danych klienta | Zdiagnozować i rozwiązać kondycji platformy za pomocą narzędzi diagnostycznych. Poprawki dla sterowników woluminów dysków, naprawy elementów wynikających z awarii i pomóc akcje odzyskiwania awarii. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
+|Klienci platformy Azure | Zewnętrzne | ND | ND | ND |
 
 Platforma Azure używa unikatowych identyfikatorów do uwierzytelniania użytkowników w organizacji i klientów (lub procesów działających w imieniu użytkowników w organizacji). Dotyczy to wszystkich zasobów i urządzeń, które są częścią środowiska platformy Azure.
 

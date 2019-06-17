@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: fa82725174645a0e5f1d957d8423c97547682542
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833517"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065479"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera usługi Azure PowerShell funkcji
 
@@ -60,7 +60,7 @@ W folderze głównym projektu jest wspólny [ `host.json` ](functions-host-json.
 
 Niektóre powiązania wymagają obecności `extensions.csproj` pliku. Powiązanie rozszerzenia, wymagane w [wersji 2.x](functions-versions.md) funkcje środowiska uruchomieniowego, są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
 
-W aplikacjach funkcji programu PowerShell, mogą opcjonalnie mieć `profile.ps1` które są uruchamiane podczas uruchamiania aplikacji funkcji (znanych jako  *[zimnego](#cold-start)*. Aby uzyskać więcej informacji, zobacz [profil PowerShell](#powershell-profile).
+W aplikacjach funkcji programu PowerShell, mogą opcjonalnie mieć `profile.ps1` które są uruchamiane podczas uruchamiania aplikacji funkcji (znanych jako  *[zimnego](#cold-start)* . Aby uzyskać więcej informacji, zobacz [profil PowerShell](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Definiowanie skryptu programu PowerShell w funkcji
 
@@ -81,7 +81,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| Właściwość   | Opis                                     | Type     |
+| Właściwość   | Opis                                     | Typ     |
 |------------|-------------------------------------------------|----------|
 | utcNow     | Gdy w formacie UTC, funkcja została wyzwolona        | DateTime |
 | MethodName | Nazwa funkcji, która została wyzwolona     | string   |
@@ -133,7 +133,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Poniżej przedstawiono prawidłowe parametry w celu wywoływania `Push-OutputBinding`:
 
-| Name (Nazwa) | Type | Pozycja | Opis |
+| Name (Nazwa) | Typ | Pozycja | Opis |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | String | 1 | Nazwa powiązania danych wyjściowych chcesz ustawić. |
 | **`-Value`** | Object | 2 | Wartość powiązania danych wyjściowych należy ustawić, który jest akceptowany z potoku ByValue. |
@@ -243,7 +243,7 @@ Rejestrowanie w funkcjach programu PowerShell działa jak regularne rejestrowani
 | Błąd | **`Write-Error`** |
 | Ostrzeżenie | **`Write-Warning`**  | 
 | Informacje | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informacje | Zapisuje _informacji_ poziomu rejestrowania. |
-| Debug | **`Write-Debug`** |
+| Debugowanie | **`Write-Debug`** |
 | Ślad | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Oprócz tych poleceń cmdlet nic zapisywane do potoku zostanie przekierowana do `Information` dziennika poziomu i wyświetlane w formacie domyślnym programu PowerShell.
@@ -253,7 +253,7 @@ Oprócz tych poleceń cmdlet nic zapisywane do potoku zostanie przekierowana do 
 
 ### <a name="configure-the-function-app-log-level"></a>Konfiguruje poziom dziennika aplikacji — funkcja
 
-Functions umożliwia definiowanie poziomu próg ułatwia do sterowania sposobem funkcji zapisuje w dziennikach. Aby ustawić próg wszystkie ślady wyświetlony w konsoli, należy użyć `logging.logLevel.default` właściwość [ `host.json` pliku][dokumentacja pliku host.JSON]. To ustawienie ma zastosowanie do wszystkich funkcji w aplikacji funkcji.
+Usługa Azure Functions umożliwia definiowanie poziomu próg ułatwia do sterowania sposobem funkcji zapisuje w dziennikach. Aby ustawić próg wszystkie ślady wyświetlony w konsoli, należy użyć `logging.logLevel.default` właściwość [ `host.json` pliku][dokumentacja pliku host.JSON]. To ustawienie ma zastosowanie do wszystkich funkcji w aplikacji funkcji.
 
 Poniższy przykład ustawia próg na wartość, aby włączyć pełne rejestrowanie dla wszystkich funkcji, ale ustawiające próg na wartość, aby włączyć rejestrowanie debugowania dla funkcji o nazwie `MyFunction`:
 
@@ -302,7 +302,7 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 
 Obiekt odpowiedzi, który jest przekazywany do skryptu jest typu `HttpRequestContext`, który ma następujące właściwości:
 
-| Właściwość  | Opis                                                    | Type                      |
+| Właściwość  | Opis                                                    | Typ                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Obiekt, który zawiera treść żądania. `Body` jest serializowany w najlepszy typ na podstawie danych. Na przykład jeśli dane JSON, jest przekazywany w tablicy skrótów. Jeśli danych jest ciągiem, jest przekazywany w postaci ciągu. | obiekt |
 | **`Headers`** | Słownik zawierający nagłówki żądania.                | Dictionary < string, string ><sup>*</sup> |
@@ -317,7 +317,7 @@ Obiekt odpowiedzi, który jest przekazywany do skryptu jest typu `HttpRequestCon
 
 Obiekt odpowiedzi, który należy wysłać ponownie jest typu `HttpResponseContext`, który ma następujące właściwości:
 
-| Właściwość      | Opis                                                 | Type                      |
+| Właściwość      | Opis                                                 | Typ                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Obiekt, który zawiera treści odpowiedzi.           | obiekt                    |
 | **`ContentType`** | Krótkie dostępne ustawienia Typ zawartości odpowiedzi. | string                    |
@@ -598,7 +598,7 @@ Podczas tworzenia funkcji platformy Azure w [bez użycia serwera modelu hostingu
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Moduły pakietu zamiast `Install-Module`
 
-Skrypt jest uruchamiany na każdego wywołania. Unikaj używania `Install-Module` w skrypcie. Zamiast tego użyć `Save-Module` przed opublikowaniem, dzięki czemu nie trzeba marnowania czasu pobierania modułu funkcji. Jeśli zimnych startów mających wpływ na funkcje, zaleca się wdrożenie aplikacji funkcji do [planu usługi App Service](functions-scale.md#app-service-plan) równa *zawsze włączone* lub [plan w warstwie Premium](functions-scale.md#premium-plan-public-preview).
+Skrypt jest uruchamiany na każdego wywołania. Unikaj używania `Install-Module` w skrypcie. Zamiast tego użyć `Save-Module` przed opublikowaniem, dzięki czemu nie trzeba marnowania czasu pobierania modułu funkcji. Jeśli zimnych startów mających wpływ na funkcje, zaleca się wdrożenie aplikacji funkcji do [planu usługi App Service](functions-scale.md#app-service-plan) równa *zawsze włączone* lub [plan w warstwie Premium](functions-scale.md#premium-plan).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

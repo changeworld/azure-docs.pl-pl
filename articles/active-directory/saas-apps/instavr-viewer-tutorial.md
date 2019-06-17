@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8acc835a7f18ee673f0857f65d49eed59638a6d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0e005d794fa3c6c70edf3d3466b0f076e2007352
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898080"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją InstaVR Viewer
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację aplikacji InstaVR Viewer z usługą Azure AD, mus
 
 **Aby dodać aplikację InstaVR Viewer z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -227,7 +227,7 @@ W tej sekcji w aplikacji InstaVR Viewer jest tworzony użytkownik o nazwie Britt
 
 5. Wprowadź swoje poświadczenia usługi Azure AD, aby pomyślnie zalogować się do usługi Azure AD za pomocą logowania jednokrotnego.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

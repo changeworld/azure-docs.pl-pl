@@ -16,10 +16,10 @@ ms.date: 04/08/2019
 ms.author: kfollis
 ms.custom: accessibility
 ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551434"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Skróty klawiaturowe w witrynie Azure portal
@@ -51,7 +51,7 @@ W tym artykule przedstawiono skróty klawiaturowe, które działają w dowolnym 
 |Przejdź do **pulpitu nawigacyjnego** |G+D |
 |Przejdź do **wszystkie zasoby**|G+A |
 |Przejdź do **grup zasobów**|G+R |
-|Otwórz element lewym pasku bocznym, w tym miejscu |G+numer|
+|Otwórz element lewym pasku bocznym, w tym miejscu |G + numer.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

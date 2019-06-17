@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
 ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60740998"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Grupy komputerów w usłudze Azure Monitor rejestrowania zapytań
@@ -72,7 +72,7 @@ Konfigurowanie usługi Azure Monitor do zaimportowania grup zabezpieczeń usług
 
 Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
 
-### <a name="windows-server-update-service"></a>Windows Server Update Service
+### <a name="windows-server-update-service"></a>Usługa Windows Update Server
 Po skonfigurowaniu usługi Azure Monitor, aby zaimportować członkostwa w grupach usług WSUS, analizuje określania wartości docelowej członkostwa w grupie komputerów za pomocą agenta usługi Log Analytics.  Jeśli używasz klienta przeznaczone dla dowolnego komputera, który jest podłączony do usługi Azure Monitor i jest częścią dowolnego programu WSUS przeznaczone dla grup ma jego członkostwo w grupie zaimportowany do usługi Azure Monitor. Jeśli używasz po stronie serwera dla usługi Log Analytics agent powinien być zainstalowany na serwerze programu WSUS w taki sposób, w kolejności, aby uzyskać informacje o członkostwie grupy do zaimportowania do usługi Azure Monitor.  To członkostwo jest stale aktualizowany co 4 godziny. 
 
 Konfigurowanie usługi Azure Monitor do zaimportowania grup usług WSUS z **Zaawansowane ustawienia** w obszarze roboczym usługi Log Analytics w witrynie Azure portal.  Wybierz **grup komputerów**, **WSUS**, a następnie **członkostwa w grupach importu programu WSUS**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60455240"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Rozwiązywanie problemów z obiektem, który nie jest synchronizowany z usługą Azure Active Directory
@@ -81,7 +81,7 @@ W górnej połowie **operacji** karcie są wyświetlane wszystkie przebiegi w po
 | ukończone -\*— ostrzeżenia |Zakończono działanie, ale niektóre dane nie są w oczekiwanym stanie. Jeśli błędy, ten komunikat jest zwykle tylko objawem. Nie należy zbadać ostrzeżenia, dopóki nie zostały rozwiązane błędy. |
 | powodzenie |Brak problemów. |
 
-Po zaznaczeniu wiersza na koniec **operacji** karta zostanie zaktualizowany i będzie wyświetlenie szczegółów dotyczących tego uruchomienia. Po stronie lewej tego obszaru, Niewykluczone, że lista pod tytułem **kroku #**. Ta lista jest wyświetlana tylko wtedy, gdy masz wiele domen w lesie i każdej domeny, jest reprezentowane przez krok. Nazwa domeny można znaleźć pod nagłówkiem **partycji**. W obszarze **statystyki synchronizacji** nagłówka, można znaleźć więcej informacji na temat liczby zmian, które zostały przetworzone. Wybierz łącza, aby uzyskać listę zmienionych obiektów. Jeśli masz obiektów z błędami, usuń te błędy są wyświetlane w oknie **błędów synchronizacji** nagłówka.
+Po zaznaczeniu wiersza na koniec **operacji** karta zostanie zaktualizowany i będzie wyświetlenie szczegółów dotyczących tego uruchomienia. Po stronie lewej tego obszaru, Niewykluczone, że lista pod tytułem **kroku #** . Ta lista jest wyświetlana tylko wtedy, gdy masz wiele domen w lesie i każdej domeny, jest reprezentowane przez krok. Nazwa domeny można znaleźć pod nagłówkiem **partycji**. W obszarze **statystyki synchronizacji** nagłówka, można znaleźć więcej informacji na temat liczby zmian, które zostały przetworzone. Wybierz łącza, aby uzyskać listę zmienionych obiektów. Jeśli masz obiektów z błędami, usuń te błędy są wyświetlane w oknie **błędów synchronizacji** nagłówka.
 
 ### <a name="errors-on-the-operations-tab"></a>Błędy na karcie operacje
 W przypadku błędów Menedżera usługi synchronizacji zawiera zarówno obiekt w wyniku błędu, jak i błąd jako linki, które zawierają więcej informacji.
@@ -91,7 +91,7 @@ Rozpocznij, wybierając ciąg błędu. (W tym przykładzie jest ciąg błędu **
 
 Kliknij prawym przyciskiem myszy **Wywołaj informacje stosu** kliknij **Zaznacz wszystko**, a następnie wybierz pozycję **kopiowania**. Następnie skopiuj stosu i spójrz na błąd w ulubionym edytorze, takiego jak Notatnik.
 
-Jeśli został zgłoszony błąd **SyncRulesEngine**, informacje stosu wywołań wyświetla najpierw wszystkie atrybuty obiektu. Przewiń w dół, aż zobaczysz nagłówek **InnerException = >**.  
+Jeśli został zgłoszony błąd **SyncRulesEngine**, informacje stosu wywołań wyświetla najpierw wszystkie atrybuty obiektu. Przewiń w dół, aż zobaczysz nagłówek **InnerException = >** .  
 
   ![Zrzut ekranu z Menedżera usługi synchronizacji, przedstawiający informacje o błędzie pod nagłówkiem InnerException = >](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   

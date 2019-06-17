@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465681"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Użyj usługi Azure Media Content Moderator, aby wykrywanie możliwej zawartości dla dorosłych 
@@ -59,8 +59,8 @@ Dane wyjściowe JSON zawiera następujące elementy:
 
 |Element|Opis|
 |---|---|
-| rozpoczynanie |Czas rozpoczęcia pierwsze zdarzenie "taktów." |
-| czas trwania |Długość fragmentu, w "taktów." |
+| start |Czas rozpoczęcia pierwsze zdarzenie "taktów." |
+| Czas trwania |Długość fragmentu, w "taktów." |
 | interval |Interwał każdego wpisu zdarzenia w obrębie fragmentu, w "taktów." |
 | [Zdarzenia](#events-json-elements) |Każde zdarzenie reprezentuje klipu i każdy plik zawiera klatki kluczowe wykryte i śledzenia w tym czas trwania. Istnieje szereg zdarzeń. Zewnętrzna tablica reprezentuje jeden interwał czasu. Wewnętrzna tablica składa się z 0 lub większej liczby zdarzeń, które wystąpiły w danym momencie.|
 
@@ -71,7 +71,7 @@ Dane wyjściowe JSON zawiera następujące elementy:
 | reviewRecommended | `true` lub `false` zależności od tego, czy **adultScore** lub **racyScore** przekroczy progi wewnętrznego. |
 | adultScore | Współczynnik ufności dla możliwe zawartości dla dorosłych w skali od 0,00 0,99. |
 | racyScore | Współczynnik ufności możliwe zawartości erotycznej, na skalę 0,00 do 0,99. |
-| indeks | Indeks ramki w skali od pierwszej ramki do ostatniego indeks indeksu ramki. |
+| index | Indeks ramki w skali od pierwszej ramki do ostatniego indeks indeksu ramki. |
 | timestamp | Lokalizacja ramki "taktów." |
 | shotIndex | Zrzut indeks elementu nadrzędnego. |
 

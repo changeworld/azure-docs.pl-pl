@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a23b024737f6af1f6361983045037b325783518a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 2555c0040c1f2b587adb57e808ed122a4d4ce808
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896018"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Yardi aktualne
 
@@ -56,7 +56,7 @@ Aby skonfigurować integrację Yardi aktualne w usłudze Azure AD, należy doda�
 
 **Aby dodać aktualne Yardi z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 

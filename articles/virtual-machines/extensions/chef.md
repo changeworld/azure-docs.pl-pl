@@ -70,16 +70,16 @@ Następujący kod JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej progr
 
 | Name (Nazwa) | Wartość / przykład | Typ danych
 | ---- | ---- | ---- 
-| apiVersion | `2017-12-01` | ciąg (Data) |
+| apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.12` | ciąg (podwójny) |
+| typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Ustawienia
 
 | Name (Nazwa) | Wartość / przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | ciąg (url) | Tak |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Tak |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Tak |
 | settings/runlist | `recipe[mycookbook::default]` | string | Tak |
 

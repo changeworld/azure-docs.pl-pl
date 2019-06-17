@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c21a923f06a768c0a9a0f2843a24583df7a7821d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835723"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059649"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w usłudze Azure App Service
 ## <a name="overview"></a>Omówienie
@@ -38,7 +38,7 @@ Można włączyć lub wyłączyć następujące rodzaje dzienników:
 * **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub izolowania określonego błędu HTTP. Jeden folder jest generowany dla każdego błędu w systemie plików aplikacji. Zasady przechowywania plików są takie same jak szczegółowy komunikat o błędzie logowania powyżej.
 * **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](/windows/desktop/Http/w3c-logging). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
 
-### <a name="application-diagnostics"></a>Diagnostyka aplikacji
+### <a name="application-diagnostics"></a>Usługa Application diagnostics
 Usługa Application diagnostics można przechwytywać informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Na przykład:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -75,7 +75,7 @@ Aby uzyskać **rejestrowanie serwera sieci Web**, możesz wybrać **magazynu** l
 
 Jeśli dzienniki są przechowywane w systemie plików, pliki mogą być dostęp do FTP, lub pobrane jako archiwum Zip przy użyciu wiersza polecenia platformy Azure.
 
-Domyślnie dzienniki nie są automatycznie usuwane (z wyjątkiem produktów **rejestrowanie aplikacji (system plików)**). Aby automatycznie usunąć dzienniki, ustaw **okres przechowywania (dni)** pola.
+Domyślnie dzienniki nie są automatycznie usuwane (z wyjątkiem produktów **rejestrowanie aplikacji (system plików)** ). Aby automatycznie usunąć dzienniki, ustaw **okres przechowywania (dni)** pola.
 
 > [!NOTE]
 > Jeśli użytkownik [ponowne generowanie kluczy dostępu do konta magazynu](../storage/common/storage-create-storage-account.md), musisz zresetować konfigurację rejestrowania odpowiednich do używania kluczy zaktualizowane. W tym celu:
@@ -93,7 +93,7 @@ Gdy zarówno w lokalizacji magazynu zapewnia te same informacje podstawowe dla z
 > Informacje przechowywane w **magazynu obiektów blob** może zostać oceniony jedynie przy użyciu klienta usługi storage lub aplikacji, która bezpośrednio może współpracować z tych systemów magazynowania. Na przykład programu Visual Studio 2013 zawiera Eksploratora magazynu, który może służyć do eksplorowania usługi blob storage i HDInsight dostęp do danych przechowywanych w magazynie obiektów blob. Możesz również zapisywać dane aplikacji, która uzyskuje dostęp do usługi Azure Storage przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/downloads/).
 >
 
-## <a name="download"></a> Jak: Dzienniki pobierania
+## <a name="download"></a> Jak: Pobieranie dzienników
 Informacje diagnostyczne są przechowywane w systemie plików aplikacji są dostępne bezpośrednio za pomocą protokołu FTP. Można go również pobrać jako archiwum Zip, przy użyciu wiersza polecenia platformy Azure.
 
 Struktury katalogów, które dzienniki są przechowywane w jest następująca:
@@ -104,7 +104,7 @@ Struktury katalogów, które dzienniki są przechowywane w jest następująca:
 * **Dzienniki serwera Web** -/LogFiles/http/RawLogs. Ten folder zawiera jeden lub więcej plików tekstowych formatowana przy użyciu [rozszerzonym formacie W3C dziennika pliku](/windows/desktop/Http/w3c-logging).
 * **Dzienniki wdrożenia** -/ LogFiles/Git. Ten folder zawiera dzienniki generowane przez procesy wewnętrznego wdrażania używane przez usługę Azure App Service, a także dzienniki dla wdrożenia Git. Można również znaleźć dzienniki wdrożenia w obszarze D:\home\site\deployments.
 
-### <a name="ftp"></a>FTP
+### <a name="ftp"></a>Protokół FTP
 
 Aby otworzyć połączenie FTP do serwera FTP swojej aplikacji, zobacz [wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S](deploy-ftp.md).
 
@@ -192,12 +192,12 @@ Gdy logujesz się do magazynu obiektów blob, dane są przechowywane w formacie 
 | Date |Data i godzina wystąpienia zdarzenia |
 | Poziom |Poziom zdarzenia (na przykład błąd, ostrzeżenie, informacje) |
 | ApplicationName |Nazwa aplikacji |
-| Identyfikator wystąpienia |Wystąpienie aplikacji, które zdarzenie |
+| InstanceId |Wystąpienie aplikacji, które zdarzenie |
 | EventTickCount |Data i godzina wystąpienia zdarzenia, format taktu (większą precyzję) |
 | Identyfikator zdarzenia |Identyfikator zdarzenia tego zdarzenia<p><p>Wartość domyślna to 0, jeśli żaden określony |
 | Identyfikator PID |Identyfikator procesu |
 | identyfikatora TID |Identyfikator wątku wątku, który jest generowane zdarzenie |
-| Komunikat |Komunikat szczegółów zdarzenia |
+| Message |Komunikat szczegółów zdarzenia |
 
 Dane przechowywane w obiekcie blob powinien wyglądać podobnie do poniższego przykładu:
 
@@ -205,7 +205,7 @@ Dane przechowywane w obiekcie blob powinien wyglądać podobnie do poniższego p
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> Dla platformy ASP.NET Core rejestrowanie odbywa się przy użyciu [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) dostawcy dzienniku dodatkowe depozyty dostawcy plików w kontenerze obiektów blob. Aby uzyskać więcej informacji, zobacz [platformy ASP.NET Core rejestrowania na platformie Azure](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure).
+> Dla platformy ASP.NET Core rejestrowanie odbywa się przy użyciu [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) dostawcy dzienniku dodatkowe depozyty dostawcy plików w kontenerze obiektów blob. Aby uzyskać więcej informacji, zobacz [platformy ASP.NET Core rejestrowania na platformie Azure](/aspnet/core/fundamentals/logging).
 >
 >
 

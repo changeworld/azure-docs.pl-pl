@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
 ms.openlocfilehash: 8f067bc005c4de9ddc87ed598b1717f8fbb29a6a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072373"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu dla usługi LUIS
@@ -49,14 +49,14 @@ Usługa LUIS rozumie wypowiedzi w następujących językach:
 
 Obsługa języka jest różny dla [ze wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md) i [ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md).
 
-### <a name="chinese-support-notes"></a>* Informacje o pomocy technicznej chiński
+### <a name="chinese-support-notes"></a>\* Informacje o pomocy technicznej chiński
 
  - W `zh-cn` kultury, LUIS oczekuje zestawu zamiast zestawu znaków tradycyjnych uproszczone znaków chińskich.
  - Nazwy intencji, jednostki, funkcje i wyrażenia regularne mogą być znakami języka chińskiego lub litery rzymskie.
  - Zobacz [odwołania ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md) informacje obsługiwanych ze wstępnie utworzonych domen w `zh-cn` kultury.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
-### <a name="japanese-support-notes"></a>* Informacje o pomocy technicznej japoński
+### <a name="japanese-support-notes"></a>\* Informacje o pomocy technicznej japoński
 
  - LUIS nie zapewnia analizy składni i nie będzie zrozumieć różnicę między Keigo i japoński nieformalnej, dlatego należy zastosować różne poziomy formalności jako przykłady szkolenia dla aplikacji.
      - でございます nie jest taka sama jak です.
@@ -99,7 +99,7 @@ Do przeprowadzenia uczenia maszynowego, usługa LUIS dzieli wypowiedź na [token
 
 Następujących kultur są wersje tokenizatora niestandardowe:
 
-|Kultura|Wersja|Przeznaczenie|
+|Kultura|Version|Przeznaczenie|
 |--|--|--|
 |Niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je przy użyciu maszyny oparte na nauce maszynowej tokenizator który podejmie próbę podziału wyrazy złożone do ich pojedynczego składników.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź jest przekształcane w `Ich fahre einen kranken wagen`. Zezwolenie oznakowania `kranken` i `wagen` niezależnie jako różnymi jednostkami.|
 |Niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na miejsca do magazynowania.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź pozostaje pojedynczy token. Ten sposób `krankenwagen` jest oznaczony jako pojedynczy element. |

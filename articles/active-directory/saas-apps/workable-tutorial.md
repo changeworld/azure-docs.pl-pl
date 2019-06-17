@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a13d2a62c64ea114e45b49e38eda0ddc686fe7cf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1341f0def306a1167e1e4876365c70901cf89cd2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143153"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Workable
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację aplikacji Workable z usługą Azure AD, musisz do
 
 **Aby dodać aplikację Workable z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -204,7 +204,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Workable w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Workable, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

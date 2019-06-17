@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.openlocfilehash: 26ddb0cdd2728f9dff5d45494a14841cdc1a20cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922881"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Łączenie programu Configuration Manager do usługi Azure Monitor
@@ -27,7 +27,7 @@ Można połączyć środowiska programu System Center Configuration Manager do u
 
 Usługa Azure Monitor obsługuje System Center Configuration Manager bieżącej gałęzi w wersji 1606 i wyższej.  
 
-## <a name="configuration-overview"></a>Przegląd konfiguracji
+## <a name="configuration-overview"></a>Omówienie konfiguracji
 Poniższe instrukcje stanowią podsumowanie czynności, aby skonfigurować integrację programu Configuration Manager z usługą Azure Monitor.  
 
 1. W witrynie Azure portal Zarejestruj programu Configuration Manager jako aplikację sieci Web, aplikacji i/lub interfejs API sieci Web i upewnij się, że identyfikator klienta i klucz tajny klienta z rejestracji z usługi Azure Active Directory. Zobacz [w obsłudze portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md) Aby uzyskać szczegółowe informacje na temat wykonywania tego kroku.
@@ -49,7 +49,7 @@ W poniższej procedurze, można przyznać *Współautor* roli w obszarze roboczy
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. Na liście obszarów roboczych usługi Log Analytics wybierz obszar roboczy, aby zmodyfikować.
-3. W okienku po lewej stronie wybierz **kontrola dostępu (IAM)**.
+3. W okienku po lewej stronie wybierz **kontrola dostępu (IAM)** .
 4. Strony kontrola dostępu (IAM), kliknij **Dodaj przypisanie roli** i **Dodaj przypisanie roli** zostanie wyświetlone okienko.
 5. W **Dodaj przypisanie roli** okienku w obszarze **roli** listy rozwijanej wybierz **Współautor** roli.  
 6. W obszarze **Przypisz dostęp do** listy rozwijanej wybierz aplikacji programu Configuration Manager wcześniej utworzone w AD, a następnie kliknij przycisk **OK**.  

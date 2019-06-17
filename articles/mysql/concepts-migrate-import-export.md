@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.openlocfilehash: fa72037c8f54271f5651667765c5d5e2e9c03619
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60838121"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrowanie bazy danych MySQL za pomocą importowania i eksportowania
@@ -90,7 +90,7 @@ Następujący przykład importuje tabeli z pliku CSV:
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>Dane SQL eksportowanie i importowanie kreatorów w okienku Nawigatora
 Eksportowanie lub importowanie SQL wygenerowane za pomocą aplikacji MySQL Workbench lub wygenerowanej na podstawie polecenie polecenia mysqldump za pomocą kreatora. Dostęp do tych kreatorów z **Nawigator** okienka lub wybierając **serwera** z menu głównego. Następnie wybierz pozycję **eksportu danych** lub **importowania danych**. 
 
-#### <a name="data-export"></a>Eksport danych
+#### <a name="data-export"></a>Eksportowanie danych
 ![Aplikację MySQL Workbench eksportu przy użyciu okienko Nawigatora](./media/concepts-migrate-import-export/p2.png)
 
 Możesz użyć **eksportu danych** kartę, aby wyeksportować dane bazy danych MySQL. 

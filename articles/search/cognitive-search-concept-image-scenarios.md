@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65023746"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzanie i wyodrębnianie informacji z obrazów w scenariuszach wyszukiwania kognitywnego
@@ -66,7 +66,7 @@ Gdy *imageAction* jest ustawiona na wartość innych następnie "none", nowy *no
 
 | Element członkowski obrazu       | Opis                             |
 |--------------------|-----------------------------------------|
-| dane               | Ciąg znormalizowane obrazu w formacie JPEG, zakodowany w formacie BASE64.   |
+| data               | Ciąg znormalizowane obrazu w formacie JPEG, zakodowany w formacie BASE64.   |
 | Szerokość              | Szerokość znormalizowane obrazu w pikselach. |
 | Wysokość             | Wysokość znormalizowane obrazu w pikselach. |
 | originalWidth      | Oryginalna szerokość obrazu przed normalizacji. |

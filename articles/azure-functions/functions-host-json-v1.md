@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
 ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62107078"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions 1.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Wybierz wersję środowiska uruchomieniowego usługi Azure Functions, którego używasz: "]
 > * [Wersja 1](functions-host-json-v1.md)
 > * [Wersja 2](functions-host-json.md)
 
@@ -127,7 +127,7 @@ Ustawienia konfiguracji dla [Centrum zdarzeń wyzwalaczy i powiązań](functions
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>— funkcje
 
 Lista funkcji, które uruchamia hosta zadania. Pusta tablica oznacza, że uruchamianie wszystkich funkcji. Przeznaczony do użytku tylko wtedy, gdy [uruchamiane lokalnie](functions-run-local.md). W aplikacji funkcji na platformie Azure, należy zamiast tego wykonaj czynności opisane w [jak wyłączyć funkcje w usłudze Azure Functions](disable-function.md) wyłączenie określonych funkcji, a nie przy użyciu tego ustawienia.
 
@@ -301,7 +301,7 @@ Ustawienia konfiguracji dla dzienników, które tworzysz przy użyciu `TraceWrit
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|consoleLevel|informacje|Poziom śledzenia dla rejestrowania konsoli. Opcje to: `off`, `error`, `warning`, `info`, i `verbose`.|
+|consoleLevel|info|Poziom śledzenia dla rejestrowania konsoli. Opcje to: `off`, `error`, `warning`, `info`, i `verbose`.|
 |fileLoggingMode|debugOnly|Poziom śledzenia dla rejestrowania w pliku. Dostępne są opcje `never`, `always`, `debugOnly`.| 
 
 ## <a name="watchdirectories"></a>watchDirectories

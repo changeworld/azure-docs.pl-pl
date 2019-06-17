@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 0e1127d90aeb4c59687ac4df7fb7ebae1901cee8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65228427"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopiowanie danych z serwera FTP za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 >
 > * [Wersja 1](v1/data-factory-ftp-connector.md)
 > * [Bieżąca wersja](connector-ftp.md)
@@ -53,7 +53,7 @@ Następujące właściwości są obsługiwane przez usługę FTP połączone:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **FtpServer**. | Tak |
-| host | Określ nazwę lub adres IP serwera FTP. | Tak |
+| host | Określ nazwę lub adres IP serwera FTP. | Yes |
 | port | Określ port, na którym nasłuchuje serwer FTP.<br/>Dozwolone wartości to: liczba całkowita, wartość domyślna to **21**. | Nie |
 | enableSsl | Określ, czy należy użyć serwera FTP za pośrednictwem kanału SSL/TLS.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false**. | Nie |
 | enableServerCertificateValidation | Określ, czy włączyć weryfikacji certyfikatu SSL serwera w przypadku korzystania z protokołu FTP za pośrednictwem kanału SSL/TLS.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false**. | Nie |

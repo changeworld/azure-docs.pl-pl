@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ac0497b13dad6795e8dc7ffaf761fe887a9953
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65988624"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Zaawansowane opcje konfiguracji dla rozszerzenia serwera NPS do uwierzytelniania wieloskładnikowego
@@ -30,10 +30,10 @@ W ramach rozszerzenia serwera NPS należy wyznaczyć atrybut usługi Active Dire
 
 Aby skonfigurować alternatywnych identyfikatorów logowania, przejdź do `HKLM\SOFTWARE\Microsoft\AzureMfa` i edytować następujące wartości rejestru:
 
-| Name (Nazwa) | Type | Wartość domyślna | Opis |
+| Name (Nazwa) | Typ | Wartość domyślna | Opis |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Pusty | Należy określić nazwę atrybut usługi Active Directory, który chcesz użyć zamiast nazwy UPN. Ten atrybut jest używany jako atrybut AlternateLoginId. Jeśli ta wartość rejestru jest równa [nieprawidłowy atrybut usługi Active Directory](https://msdn.microsoft.com/library/ms675090.aspx) (na przykład wiadomości e-mail lub nazwa wyświetlana), następnie wartość atrybutu jest używany zamiast nazwy UPN użytkownika dla uwierzytelniania. Jeśli ta wartość rejestru jest pusty lub nie skonfigurowano, następnie AlternateLoginId jest wyłączona i nazwa UPN użytkownika jest używany do uwierzytelniania. |
-| LDAP_FORCE_GLOBAL_CATALOG | wartość logiczna | Fałsz | Aby wymusić użytek wyszukiwania LDAP wykazu globalnego, podczas wyszukiwania AlternateLoginId, należy użyć tej flagi. Konfigurowanie kontrolera domeny jako wykazu globalnego, Dodaj atrybut AlternateLoginId do wykazu globalnego i włączysz tę flagę. <br><br> Jeśli LDAP_LOOKUP_FORESTS skonfigurowano (Niepuste), **ta flaga jest wymuszana jako PRAWDA**, niezależnie od wartości tego ustawienia rejestru. W tym przypadku rozszerzenia serwera NPS wymaga wykazu globalnego, należy skonfigurować za pomocą atrybutu AlternateLoginId dla każdego lasu. |
+| LDAP_FORCE_GLOBAL_CATALOG | wartość logiczna | False | Aby wymusić użytek wyszukiwania LDAP wykazu globalnego, podczas wyszukiwania AlternateLoginId, należy użyć tej flagi. Konfigurowanie kontrolera domeny jako wykazu globalnego, Dodaj atrybut AlternateLoginId do wykazu globalnego i włączysz tę flagę. <br><br> Jeśli LDAP_LOOKUP_FORESTS skonfigurowano (Niepuste), **ta flaga jest wymuszana jako PRAWDA**, niezależnie od wartości tego ustawienia rejestru. W tym przypadku rozszerzenia serwera NPS wymaga wykazu globalnego, należy skonfigurować za pomocą atrybutu AlternateLoginId dla każdego lasu. |
 | LDAP_LOOKUP_FORESTS | string | Pusty | Podaj Rozdzielana średnikami lista lasów do wyszukania. Na przykład *contoso.com;foobar.com*. Jeśli ta wartość rejestru jest skonfigurowany, rozszerzenia serwera NPS iteracyjne wyszukuje wszystkie lasy w kolejności, w jakiej zostały wymienione, a zwraca pierwszą wartość AlternateLoginId się pomyślnie. Jeśli ta wartość rejestru nie jest skonfigurowane, wyszukiwanie AlternateLoginId jest ograniczona do bieżącej domeny.|
 
 Informacje dotyczące rozwiązywania problemów z alternatywne identyfikatory należy używać zalecane czynności [błędy Identyfikatora logowania alternatywny](howto-mfa-nps-extension-errors.md#alternate-login-id-errors).
@@ -44,7 +44,7 @@ Jeśli potrzebujesz do monitorowania dostępności serwera, np. Jeśli usługi r
 
 Aby skonfigurować listy dozwolonych adresów IP, przejdź do `HKLM\SOFTWARE\Microsoft\AzureMfa` i skonfiguruj następujące wartości rejestru:
 
-| Name (Nazwa) | Type | Wartość domyślna | Opis |
+| Name (Nazwa) | Typ | Wartość domyślna | Opis |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Pusty | Podaj Rozdzielana średnikami lista adresów IP. Zawierać adresy IP maszyn, których pochodzą żądania usług, takich jak serwer NAS/sieci VPN. Zakresy adresów IP i podsieci nie są obsługiwane. <br><br> Na przykład *10.0.0.1;10.0.0.2;10.0.0.3*.
 

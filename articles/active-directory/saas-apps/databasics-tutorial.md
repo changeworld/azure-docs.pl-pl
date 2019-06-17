@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c2f4b2fd0d634b933a88307b468c2bf57ef32d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ce1505405de7bc90e53c032eaf2bba390d6abad0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104608"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją DATABASICS
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji DATABASICS z usługą Azure AD, musisz 
 
 **Aby dodać aplikację DATABASICS z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -191,7 +191,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka DATABASICS w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji DATABASICS, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

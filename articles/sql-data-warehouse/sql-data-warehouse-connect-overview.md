@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 2c937285b9c54072c6d1e1b0628c3d5fbfe786f3
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873662"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Nawiązywanie połączenia z usługą Azure SQL Data Warehouse
@@ -63,8 +63,8 @@ Usługa SQL Data Warehouse standaryzuje niektóre ustawienia podczas tworzenia p
 
 | Ustawienia bazy danych | Wartość |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |WŁĄCZONE |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |WŁĄCZONE |
+| [ANSI_NULLS][ANSI_NULLS] |ON |
+| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 

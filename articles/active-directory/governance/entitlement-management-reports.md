@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60a61a581574c77a57939ea23fdadc7b060b82af
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541543"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Wyświetlanie raportów i dzienniki w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
@@ -44,7 +44,7 @@ ms.locfileid: "64541543"
 
     Zostanie wyświetlona lista zasobów, których użytkownik ma dostęp. Obejmuje dostęp do pakietu, zasad i daty.
 
-    ![Raport przypisań użytkowników](./media/entitlement-management-reports/user-assignments-report.png)
+    ![Raport przypisania użytkownika](./media/entitlement-management-reports/user-assignments-report.png)
 
 ## <a name="determine-the-status-of-a-users-request"></a>Sprawdź stan żądania użytkownika
 

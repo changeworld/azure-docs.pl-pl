@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c6271b5bb64eacf66c771b84139cead722a2e7b3
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 23c4d5ee5ac1de9522cbf89a6de39578cf65347e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869398"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073562"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Używanie dynamicznego szyfrowania Common Encryption w usługach PlayReady i Widevine
 
 > [!NOTE]
-> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadnych nowych funkcji lub funkcje są dodawane do usługi Media Services v2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadnych nowych funkcji lub funkcje są dodawane do usługi Media Services v2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
 >   
 
 ## <a name="overview"></a>Omówienie
@@ -563,7 +563,7 @@ namespace DynamicEncryptionWithDRM
             // Get a reference to the streaming manifest file from the 
             // collection of files in the asset.
 
-            var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+            var assetFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
                          FirstOrDefault();
 

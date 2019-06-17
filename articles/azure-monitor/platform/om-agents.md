@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 19ae3322d26447cf7c7dd94d06f073ccf013738e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60255080"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Łączenie programu Operations Manager do usługi Azure Monitor
@@ -67,21 +67,21 @@ Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych inform
 |Resource | Numer portu| Obejście inspekcji HTTP|  
 |---------|------|-----------------------|  
 |**Agent**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.ods.opinsights.azure.com| 443 |Tak|  
+|\*.oms.opinsights.azure.com| 443|Tak|  
 |\*.blob.core.windows.net| 443|Yes|  
 |\*.azure-automation.net| 443|Yes|  
 |**Serwer zarządzania**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
+|\*.blob.core.windows.net| 443| Tak|  
 |\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|*.azure-automation.net | 443| Tak|  
 |**Konsola programu Operations Manager do usługi Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.live.com| 80 i 443||  
+|\*. live.com| 80 i 443||  
 |\*.microsoft.com| 80 i 443||  
-|\*.microsoftonline.com| 80 i 443||  
+|\*. microsoftonline.com| 80 i 443||  
 |\*.mms.microsoft.com| 80 i 443||  
 |login.windows.net| 80 i 443||  
 |portal.loganalytics.io| 80 i 443||
@@ -150,7 +150,7 @@ Jeśli Twój serwer proxy wymaga uwierzytelniania, należy wykonać poniższe kr
 1. W obszarze **Konfiguracja Uruchom jako** wybierz pozycję **Profile**.
 1. Otwórz profil **Serwer proxy profilu Uruchom jako usługi System Center Advisor**.
 1. W kreatorze profilu Uruchom jako kliknij przycisk Dodaj, aby użyć konta Uruchom jako. Możesz utworzyć [konto Uruchom jako](https://technet.microsoft.com/library/hh321655.aspx) lub użyć istniejącego konta. Konto to musi mieć wystarczające uprawnienia do komunikacji za pośrednictwem serwera proxy.
-1. Aby ustawić konto do zarządzania, wybierz pozycję **Wybrana klasa, grupa lub obiekt**, kliknij polecenie **Wybierz...**, a następnie kliknij pozycję **Grupuj...** w celu otwarcie okna **Wyszukiwanie grup**.
+1. Aby ustawić konto do zarządzania, wybierz pozycję **Wybrana klasa, grupa lub obiekt**, kliknij polecenie **Wybierz...** , a następnie kliknij pozycję **Grupuj...** w celu otwarcie okna **Wyszukiwanie grup**.
 1. Wyszukaj **grupę serwerów monitorowania usługi Microsoft System Center Advisor**, a następnie ją wybierz. Po wybraniu grupy kliknij przycisk **OK**, aby zamknąć okno **Wyszukiwanie grup**.
 1. Kliknij przycisk **OK**, aby zamknąć okno **Dodawanie konta Uruchom jako**.
 1. Kliknij przycisk **Zapisz**, aby zakończyć pracę kreatora i zapisać zmiany.

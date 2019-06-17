@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465647"
 ---
 # <a name="develop-video-player-applications"></a>Opracowywanie aplikacji odtwarzacza wideo
@@ -33,7 +33,7 @@ Usługa Azure Media Services udostępnia narzędzia potrzebne do tworzenia zaawa
 
 Microsoft Azure Media Services umożliwia zawartości do być udostępniany przy użyciu DASH, Smooth Streaming i HLS formatów przesyłania strumieniowego do odtwarzania zawartości. Usługa Azure Media Player uwzględnia te różne formaty i automatycznie odtwarza łącze najlepsze możliwości platformy/przeglądarki. Microsoft Azure Media Services umożliwia również dynamiczne szyfrowanie zasobów za pomocą szyfrowanie PlayReady lub AES-128-bitowego szyfrowania koperty. Usługa Azure Media Player umożliwia odszyfrowywanie PlayReady i szyfrowania AES-128-bitowego zaszyfrowaną zawartość, gdy jest skonfigurowany prawidłowo. 
 
-Więcej informacji:
+Informacje dodatkowe:
 
 * [Azure Media Player](https://aka.ms/ampinfo)
 * [Usługa Azure Media Player dokumentacji](https://aka.ms/ampdocs) 
@@ -52,7 +52,7 @@ Można również użyć dowolnego z następujących SDK:
 * [Licencjonowania Microsoft® Smooth Streaming Client Porting Kit](https://aka.ms/sspk) 
 * [Tworzenie aplikacji wideo XBOX](https://xbox.create.msdn.com/) 
 
-## <a name="advertising"></a>Reklama
+## <a name="advertising"></a>Reklamy
 Usługa Azure Media Services zapewnia obsługę wstawiania reklam za pośrednictwem platformy Media Windows: Architektury odtwarzaczy. Architektury odtwarzaczy z obsługą usługi ad są dostępne dla urządzeń z systemem Windows 8, Silverlight, Windows Phone 8 i iOS. Każdy struktury odtwarzacza zawiera przykładowy kod, który pokazuje, jak zaimplementować aplikacja odtwarzacza. Istnieją trzy różne rodzaje reklam, które można wstawić do multimediów:
 
 Liniowy — reklamy pełną ramki, które wstrzymanie odtwarzania filmu głównego

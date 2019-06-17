@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0dad74f75fd7b73e7dab0b2dddbdfda193d5b2ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50779f8a37713bda8b27c1cfd2ca37eed4edbd11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61073947"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054711"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Przekazuj konfiguracji stanu automatyzacji Azure dane raportowania z dziennikami usługi Azure Monitor
 
@@ -49,26 +49,26 @@ Aby rozpocząć, importowanie danych z usługi Azure Automation DSC do usługi A
 
    ```powershell
    # Find the ResourceId for the Automation Account
-   Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+   Get-AzResource -ResourceType 'Microsoft.Automation/automationAccounts'
    ```
 
 1. Pobierz _ResourceId_ obszaru roboczego usługi Log Analytics, uruchamiając następujące polecenie programu PowerShell: (Jeśli masz więcej niż jeden obszar roboczy, wybierz _ResourceID_ dla obszaru roboczego, którą chcesz skonfigurować).
 
    ```powershell
    # Find the ResourceId for the Log Analytics workspace
-   Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+   Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
 1. Uruchom następujące polecenie programu PowerShell, zastępując `<AutomationResourceId>` i `<WorkspaceResourceId>` z _ResourceId_ wartości z każdego z poprzednich kroków:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
+   Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
    ```
 
 Jeśli chcesz zatrzymać importowanie danych z usługi Azure Automation stanu konfiguracji do dzienników usługi Azure Monitor, uruchom następujące polecenie programu PowerShell:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
+Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Category 'DscNodeStatus'
 ```
 
 ## <a name="view-the-state-configuration-logs"></a>Wyświetlanie dzienników Konfiguracja stanu
@@ -133,7 +133,7 @@ Diagnostyka usługi Azure Automation tworzy dwie kategorie rekordów w dziennika
 | NodeName_s |Nazwa węzła zarządzanego. |
 | NodeComplianceStatus_s |Czy ten węzeł jest zgodne. |
 | DscReportStatus |Czy sprawdzanie zgodności został uruchomiony pomyślnie. |
-| ConfigurationMode | Jak konfiguracja jest stosowana do węzła. Możliwe wartości to __"ApplyOnly"__,__"ApplyandMonitior"__, i __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: Ma zastosowanie do konfiguracji DSC, a nie robi nic więcej, chyba że nowa konfiguracja zostanie przypisany do węzła docelowego lub gdy nowa konfiguracja zostanie ściągnięty z serwera. Po początkowej stosowania nowej konfiguracji DSC nie sprawdza odejście od stanu wcześniej skonfigurowany. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyOnly__ staje się skuteczny. </li><li> __ApplyAndMonitor__: Jest to wartość domyślna. LCM stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyAndMonitor__ staje się skuteczny.</li><li>__ApplyAndAutoCorrect__: DSC stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach, a następnie przywrócenie bieżącej konfiguracji.</li></ul> |
+| ConfigurationMode | Jak konfiguracja jest stosowana do węzła. Możliwe wartości to __"ApplyOnly"__ , __"ApplyandMonitior"__ , i __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: Ma zastosowanie do konfiguracji DSC, a nie robi nic więcej, chyba że nowa konfiguracja zostanie przypisany do węzła docelowego lub gdy nowa konfiguracja zostanie ściągnięty z serwera. Po początkowej stosowania nowej konfiguracji DSC nie sprawdza odejście od stanu wcześniej skonfigurowany. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyOnly__ staje się skuteczny. </li><li> __ApplyAndMonitor__: Jest to wartość domyślna. LCM stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyAndMonitor__ staje się skuteczny.</li><li>__ApplyAndAutoCorrect__: DSC stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach, a następnie przywrócenie bieżącej konfiguracji.</li></ul> |
 | HostName_s | Nazwa węzła zarządzanego. |
 | IPAddress | Adres IPv4 zarządzany węzeł. |
 | Category | DscNodeStatus |

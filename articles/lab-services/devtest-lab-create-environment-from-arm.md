@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833983"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS za pomocą szablonów usługi Azure Resource Manager
@@ -99,7 +99,7 @@ Po skonfigurowaniu repozytorium szablonów usługi Azure Resource Manager w śro
 1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 1. Z listy labs wybierz żądane laboratorium.   
-1. W okienku laboratorium wybierz **Dodaj +**.
+1. W okienku laboratorium wybierz **Dodaj +** .
 1. **Wybierz podstawowej** okienko Wyświetla podstawowe obrazy za pomocą szablonów usługi Azure Resource Manager wymienione jako pierwsze. Wybierz żądany szablon usługi Azure Resource Manager.
 
     ![Wybieranie bazy](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)

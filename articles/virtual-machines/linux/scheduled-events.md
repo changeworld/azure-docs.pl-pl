@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
 ms.openlocfilehash: 0831f08eaa3e8e6f6a0d3f68bc50cd927167b7ba
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507927"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events maszyn wirtualnych systemu Linux
@@ -75,11 +75,11 @@ Jeśli maszyna wirtualna nie została utworzona w sieci wirtualnej, a przypadki 
 ### <a name="version-and-region-availability"></a>Wersja i dostępność regionów
 Usługa Scheduled Events to numerów wersji. Wersje są obowiązkowe; Bieżąca wersja to `2017-11-01`.
 
-| Wersja | Typ zlecenia | Regiony | Informacje o wersji | 
+| Version | Typ zlecenia | Regiony | Informacje o wersji | 
 | - | - | - | - | 
 | 2017-11-01 | Ogólna dostępność | Wszyscy | <li> Dodano obsługę maszyn wirtualnych o niskim priorytecie eksmisji typ zdarzenia "Preempt"<br> | 
 | 2017-08-01 | Ogólna dostępność | Wszyscy | <li> Usunięte poprzedzona znakiem podkreślenia z nazwy zasobów dla maszyn wirtualnych IaaS<br><li>Wymaganie nagłówka metadanych wymuszone dla wszystkich żądań | 
-| 2017-03-01 | Preview | Wszyscy | <li>Wersja początkowa
+| 2017-03-01 | Wersja zapoznawcza | Wszyscy | <li>Wersja początkowa
 
 
 > [!NOTE] 
@@ -95,7 +95,7 @@ Użytkownik zainicjował konserwację maszyny Wirtualnej za pośrednictwem witry
 
 Jeśli ponowne uruchomienie maszyny Wirtualnej, zdarzenia z typem `Reboot` zostało zaplanowane. Jeśli ponowne wdrożenie maszyny Wirtualnej, zdarzenia z typem `Redeploy` zostało zaplanowane.
 
-## <a name="use-the-api"></a>Za pomocą interfejsu API
+## <a name="use-the-api"></a>Używanie interfejsu API
 
 ### <a name="headers"></a>Nagłówki
 Kiedy wykonujesz zapytanie o Metadata Service, musisz podać nagłówek `Metadata:true` zapewnienie żądania przypadkowo nie został przekierowany. `Metadata:true` Nagłówka jest wymagana dla wszystkich żądań zaplanowanych zdarzeń. Niepodanie nagłówka w żądaniu powoduje "Złe żądanie" odpowiedź z usługi metadanych.
@@ -130,7 +130,7 @@ W przypadku których zaplanowanych zdarzeń, odpowiedź zawiera szereg zdarzeń.
 |Właściwość  |  Opis |
 | - | - |
 | Identyfikator zdarzenia | Globalnie unikatowy identyfikator dla tego zdarzenia. <br><br> Przykład: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Wpływ, który powoduje, że to zdarzenie. <br><br> Wartości: <br><ul><li> `Freeze`: Maszyna wirtualna jest zaplanowana do wstrzymania przez kilka sekund. Może zostać zawieszone procesora CPU oraz łączności sieciowej, ale nie ma to wpływu na pamięć lub otwarte pliki.<li>`Reboot`: Maszyna wirtualna jest zaplanowana do ponownego uruchomienia (— trwałej pamięci jest utracona). <li>`Redeploy`: Maszyna wirtualna jest zaplanowane na przeniesienie do innego węzła (efemeryczne dyski zostaną utracone). <li>`Preempt`: Trwa usuwanie maszyny wirtualnej o niskim priorytecie (efemeryczne dyski zostaną utracone).|
+| Typ zdarzenia | Wpływ, który powoduje, że to zdarzenie. <br><br> Wartości: <br><ul><li> `Freeze`: Maszyna wirtualna jest zaplanowana do wstrzymania przez kilka sekund. Może zostać zawieszone procesora CPU oraz łączności sieciowej, ale nie ma to wpływu na pamięć lub otwarte pliki.<li>`Reboot`: Maszyna wirtualna jest zaplanowana do ponownego uruchomienia (— trwałej pamięci jest utracona). <li>`Redeploy`: Maszyna wirtualna jest zaplanowane na przeniesienie do innego węzła (efemeryczne dyski zostaną utracone). <li>`Preempt`: Trwa usuwanie maszyny wirtualnej o niskim priorytecie (efemeryczne dyski zostaną utracone).|
 | ResourceType | Typ zasobu, który ma wpływ na to zdarzenie. <br><br> Wartości: <ul><li>`VirtualMachine`|
 | Zasoby| Lista zasobów, który wpływa na to zdarzenie. Listy może zawierać maszyny z co najwyżej jeden [domena aktualizacji](manage-availability.md), ale nie może nie zawierać wszystkich maszyn w UD. <br><br> Przykład: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Obiektu EventStatus | Stan tego zdarzenia. <br><br> Wartości: <ul><li>`Scheduled`: To zdarzenie jest zaplanowane do uruchomienia po upływie czasu określonego w `NotBefore` właściwości.<li>`Started`: To zdarzenie zostało rozpoczęte.</ul> Nie `Completed` lub podobne stan nigdy nie są dostarczane. Zdarzenie nie jest zwracana, po zakończeniu zdarzenia.
@@ -139,11 +139,11 @@ W przypadku których zaplanowanych zdarzeń, odpowiedź zawiera szereg zdarzeń.
 ### <a name="event-scheduling"></a>Planowanie zdarzenia
 Każde zdarzenie jest zaplanowane minimalną ilość czasu w przyszłości na podstawie zdarzeń typu. Tym razem znajduje odzwierciedlenie w zdarzeniu `NotBefore` właściwości. 
 
-|EventType  | Minimalna powiadomienia |
+|Typ zdarzenia  | Minimalna powiadomienia |
 | - | - |
 | Freeze| 15 minut |
-| Uruchom ponownie | 15 minut |
-| Ponownie wdróż | 10 minut |
+| Ponowne uruchamianie | 15 minut |
+| Ponowne wdrożenie | 10 minut |
 | Wywłaszczenia | 30 sekund |
 
 ### <a name="start-an-event"></a>Zdarzenie początkowe 

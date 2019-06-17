@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: e03cc45c5868f90dd1c2da0d7b4890fbf72c9899
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9d29fdbfc82f221dac3b304dcf9de8c230b4d5e2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954813"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056794"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Szybki start: Utwórz Asystenta ustawień wirtualnego pierwszy głosu przy użyciu zestawu SDK mowy platformy uniwersalnej systemu Windows
 
@@ -32,11 +32,11 @@ W tym artykule polega na opracowywaniu C# Windows platformy Uniwersalnej aplikac
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
+* Klucz subskrypcji platformy Azure dla usług mowy w **westus2** regionu. Tworzenie subskrypcji na [witryny Azure portal](https://portal.azure.com).
 * Robota utworzonej wcześniej skonfigurowano [kanału Direct mowy wiersza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
     > [!NOTE]
-    > W wersji zapoznawczej, kanału Direct mowy wiersza obsługuje obecnie tylko **westus2** regionu.
+    > Bezpośrednie wiersza Speech (wersja zapoznawcza) jest obecnie dostępna tylko w **westus2** regionu.
 
     > [!NOTE]
     > 30-dniowej wersji próbnej dla warstwy standardowa, opisanego w warstwie cenowej [bezpłatnego wypróbowania usługi mowy](get-started.md) jest ograniczony do **westus** (nie **westus2**) i dlatego nie jest zgodny z bezpośrednich Wiersz mowy. Warstwy bezpłatna i standardowa **westus2** subskrypcje są zgodne.
@@ -49,7 +49,7 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodaj kod przykładowy
+## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
 1. Interfejs użytkownika aplikacji jest definiowany przy użyciu języka XAML. Otwórz `MainPage.xaml` w Eksploratorze rozwiązań. W widoku XAML w projektancie, Zastąp całą zawartość przy użyciu poniżej.
 
@@ -254,9 +254,9 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
     ```csharp
     // create a BotConnectorConfig by providing a bot secret key and Cognitive Services subscription key
     // the RecoLanguage property is optional (default en-US); note that only en-US is supported in Preview
-    const string channelSecret = "YourChannelSecret";
-    const string speechSubscriptionKey = "YourSpeechSubscriptionKey";
-    const string region = "YourServiceRegion"; // note: this is assumed as westus2 for preview
+    const string channelSecret = "YourChannelSecret"; // Your channel secret
+    const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
+    const string region = "YourServiceRegion"; // Your subscription service region. Note: only 'westus2' is currently supported
 
     var botConnectorConfig = BotConnectorConfig.FromSecretKey(channelSecret, speechSubscriptionKey, region);
     botConnectorConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");

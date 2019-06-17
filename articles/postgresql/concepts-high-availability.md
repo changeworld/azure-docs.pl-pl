@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: f54c83099957b4d8795c4049be52d70e8a0e2a61
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073452"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Pojęcia wysokiej dostępności w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 Usługa Azure Database for PostgreSQL oferuje gwarantowaną wysoką dostępność. Finansowo umowy dotyczącej poziomu usług (SLA) wynosi 99,99% po ogólnym udostępnieniu. Nie ma praktycznie nie aplikacji, czas przestoju podczas korzystania z tej usługi.
 
-## <a name="high-availability"></a>Duża dostępność
+## <a name="high-availability"></a>Wysoka dostępność
 Model o wysokiej dostępności (HA) opiera się na mechanizmów wbudowany tryb failover, po wystąpieniu przerwania poziomu węzła. Przerwanie poziomu węzła może wystąpić z powodu awarii sprzętu lub w odpowiedzi na wdrożenie usługi.
 
 Przez cały czas zmiany wprowadzone do usługi Azure Database for postgresql w warstwie serwera bazy danych występują w kontekście transakcji. Zmiany są rejestrowane w synchronicznie w usłudze Azure storage, gdy transakcja została zatwierdzona. W przypadku przerwania poziomu węzła serwera bazy danych powoduje utworzenie nowego węzła i automatycznie dołącza magazynu danych do nowego węzła. Wszystkie aktywne połączenia są odrzucane i wszystkich transakcji porządkowych nie są zatwierdzone.

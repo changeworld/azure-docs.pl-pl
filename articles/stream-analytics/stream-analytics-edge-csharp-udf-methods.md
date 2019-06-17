@@ -10,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 40035b946d0f2b09929f8c7f1ac27231546e6746
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480987"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64692914"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Programowanie .NET Standard funkcje zdefiniowane przez użytkownika dla zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Format dowolny pakiet funkcji zdefiniowanej przez użytkownika ma ścieżkę `/U
 |Data i godzina  |  Data i godzina   |
 |— Struktura  |  IRecord   |
 |obiekt  |  IRecord   |
-|Tablica<object>  |  IArray   |
+|Tablica\<obiektu >  |  IArray   |
 |Dictionary < string, object >  |  IRecord   |
 
 ## <a name="codebehind"></a>Plik CodeBehind
@@ -136,4 +136,4 @@ Wersja zapoznawcza funkcji zdefiniowanej przez użytkownika aktualnie ma następ
 
 * [Samouczek: Zapis C# funkcji zdefiniowanej przez użytkownika do zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)](stream-analytics-edge-csharp-udf.md)
 * [Samouczek: Funkcje usługi Azure Stream Analytics JavaScript zdefiniowane przez użytkownika](stream-analytics-javascript-user-defined-functions.md)
-* [Use Visual Studio to view Azure Stream Analytics jobs (Wyświetlanie zadań usługi Azure Stream Analytics za pomocą programu Visual Studio)](stream-analytics-vs-tools.md)
+* [Wyświetl zadania usługi Azure Stream Analytics przy użyciu programu Visual Studio](stream-analytics-vs-tools.md)

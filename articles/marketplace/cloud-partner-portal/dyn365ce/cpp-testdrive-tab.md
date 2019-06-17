@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: 5bb5f39ef5f5bce09a8639ba9eedc6d042e60c1d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942349"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 Customer Engagement aplikacji testowej karta
@@ -62,7 +62,7 @@ Gdy pola mają następujące cele.  Wymagane pola są wskazanych przez znak gwia
 | Identyfikator aplikacji w usłudze Azure AD\*               | Identyfikator GUID aplikacji usługi Azure AD  |
 | Klucz aplikacji w usłudze Azure AD\*              | Klucz tajny aplikacji usługi Azure AD, na przykład: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` |
 | Nazwa dzierżawy usługi Azure AD\*          | Nazwa dzierżawy platformy Azure dla wystąpienia usługi Dynamics 365. Użyj formatu < tenantname. >. onmicrosoft.com, na przykład: `testdrive.onmicrosoft.com`  |
-| Adres URL wystąpienia interfejsu API sieci Web\*          | Interfejs API sieci Web adres URL wystąpienia usługi Dynamics 365. Tę wartość można pobrać, logując się do swojego wystąpienia programu Microsoft Dynamics 365 i przechodząc do **ustawienia** > **dostosowywania** > **dla deweloperów Zasoby** > **wystąpienia interfejsu Web API (kopia tego adresu URL)**. Przykładowa wartość: `https://testdrive.crm.dynamics.com/api/data/v9.0`  |
+| Adres URL wystąpienia interfejsu API sieci Web\*          | Interfejs API sieci Web adres URL wystąpienia usługi Dynamics 365. Tę wartość można pobrać, logując się do swojego wystąpienia programu Microsoft Dynamics 365 i przechodząc do **ustawienia** > **dostosowywania** > **dla deweloperów Zasoby** > **wystąpienia interfejsu Web API (kopia tego adresu URL)** . Przykładowa wartość: `https://testdrive.crm.dynamics.com/api/data/v9.0`  |
 | Nazwa roli\*                     | Nazwa niestandardowej roli zabezpieczeń Dynamics 365 dla wersji testowej zostały utworzone i przypisane do użytkowników po uruchomieniu, na przykład `testdriveuser`. |
 |  |  |
 

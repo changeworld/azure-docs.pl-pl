@@ -14,19 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 7db40de921c0eb8826a2fee832c1a51c57796f6d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a5d8a724a0b4dd6899a71187176b9d444e5fe19c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051679"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrzną siecią wirtualną
 Sieci wirtualnych platformy Azure usługi Azure API Management umożliwia zarządzanie interfejsami API nie jest dostępny w Internecie. Wiele technologii sieci VPN są dostępne do nawiązania połączenia. Usługa API Management można wdrożyć w dwa główne tryby wewnątrz sieci wirtualnej:
-* Zewnętrzna
-* Wewnętrzny
+* Zewnętrzne
+* Wewnętrzne
 
-Podczas wdrażania usługi API Management w trybie wewnętrznej sieci wirtualnej, wszystkie punkty końcowe usługi (bramy, portal dla deweloperów, witryny Azure portal, zarządzanie bezpośrednie i Git) są widoczne tylko wewnątrz sieci wirtualnej, która umożliwia kontrolę dostępu do. Brak punktów końcowych usługi są rejestrowane na publicznym serwerze DNS.
+Podczas wdrażania usługi API Management w trybie wewnętrznej sieci wirtualnej, wszystkie punkty końcowe usługi (bramy serwera proxy, Developer portal, zarządzanie bezpośrednie i Git) są widoczne tylko w obrębie sieci wirtualnej, która umożliwia kontrolę dostępu do. Brak punktów końcowych usługi są rejestrowane na publicznym serwerze DNS.
+
+> [!NOTE]
+> Ponieważ nie zawiera żadnych wpisów DNS dla punktów końcowych usługi, tych punktów końcowych nie są dostępne do momentu [system DNS jest skonfigurowany](#apim-dns-configuration) dla sieci wirtualnej.
 
 Za pomocą usługi API Management w trybie wewnętrznego, można osiągnąć następujące scenariusze:
 
@@ -116,10 +119,12 @@ Jeśli używasz niestandardowego serwera DNS w sieci wirtualnej, możesz równie
 2. Następnie możesz utworzyć rekordy na serwerze DNS w celu dostępu do punktów końcowych, które są dostępne jedynie z w ramach sieci wirtualnej.
 
 ## <a name="routing"> </a> Routing
-+ Równoważenia obciążenia prywatny wirtualny adres IP z zakresu podsieci zostanie zarezerwowane i umożliwiają dostęp do punktów końcowych usługi API Management z w obrębie sieci wirtualnej.
-+ Aby zapewnić dostęp do punktu końcowego usługi zarządzania tylko za pośrednictwem portu 3443 rezerwowane również równoważenia obciążenia publiczny adres IP (VIP).
-+ Adres IP z zakresu adresów IP podsieci (DIP) będzie służyć do dostępu do zasobów w sieci wirtualnej i publicznego adresu IP (VIP) będzie służyć do dostępu do zasobów spoza sieci wirtualnej.
-+ Ze zrównoważonym obciążeniem: publiczne i prywatne adresy IP można znaleźć w bloku Przegląd/Essentials w witrynie Azure portal.
+
+* Ze zrównoważonym obciążeniem *prywatnej* wirtualnego adresu IP z zakresu podsieci zostanie zarezerwowane i umożliwiają dostęp do punktów końcowych usługi API Management z w ramach sieci wirtualnej. To *prywatnej* adres IP można znaleźć w bloku przeglądu usługi w witrynie Azure portal. Ten adres należy zarejestrować serwery DNS używane przez sieć wirtualną.
+* Ze zrównoważonym obciążeniem *publicznych* adresu IP (VIP) rezerwowane zapewniać dostęp do punktu końcowego programu service management za pośrednictwem portu 3443. To *publicznych* adres IP można znaleźć w bloku przeglądu usługi w witrynie Azure portal. *Publicznych* adres IP jest używany tylko w przypadku ruchu płaszczyzna kontroli `management` punkt końcowy ponad portu 3443 i może być zablokowany w dół do [ApiManagement] [ ServiceTags] servicetag .
+* Adresy IP z zakresu adresów IP podsieci (DIP) zostaną przypisane do każdej maszyny Wirtualnej w usłudze i będą używane do dostępu do zasobów w ramach sieci wirtualnej. Publiczny adres IP (VIP) będzie służyć do dostępu do zasobów spoza sieci wirtualnej. Listy ograniczeń adresów IP są używane do zabezpieczania zasobów w ramach sieci wirtualnej, cały zakres dla podsieci, w której wdrażana jest usługa API Management musi określić do przyznawanie lub ograniczanie dostępu z usługi.
+* Ze zrównoważonym obciążeniem: publiczne i prywatne adresy IP można znaleźć w bloku Przegląd w witrynie Azure portal.
+* Adresy IP przypisane do dostępu publiczne i prywatne mogą ulec zmianie, jeśli usługa jest usuwane z, a następnie ponowne ich dodanie do sieci wirtualnej. W takiej sytuacji może być konieczne zaktualizowanie rejestracji w usłudze DNS, reguły routingu i listy ograniczeń adresów IP w sieci wirtualnej.
 
 ## <a name="related-content"> </a>Powiązana zawartość
 Aby dowiedzieć się więcej, zobacz następujące artykuły:

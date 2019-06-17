@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
 ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237810"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Tworzenie kopii zapasowej bazy danych SAP HANA
@@ -40,7 +40,7 @@ ms.locfileid: "65237810"
 - Kopii zapasowych dzienników bazy danych co 15 minut. Kopie zapasowe dziennika tylko rozpoczyna się przepływ po ukończeniu pomyślne pełnej kopii zapasowej dla bazy danych.
 - Możesz korzystać z pełnych i różnicowych kopii zapasowych. Przyrostowa kopia zapasowa nie jest obecnie obsługiwane.
 - Nie można modyfikować zasad tworzenia kopii zapasowej, po zastosowaniu kopii zapasowych oprogramowania SAP HANA. Jeśli chcesz utworzyć kopię zapasową z różnymi ustawieniami, Utwórz nowe zasady lub przypisać inne zasady. 
-    - Aby utworzyć nowe zasady, w magazynie kliknij **zasady** > **zasady tworzenia kopii zapasowych** > **+ Dodaj** > **platformy SAP HANA w Maszyna wirtualna platformy Azure**, a następnie określ ustawienia zasad.
+    - Aby utworzyć nowe zasady, w magazynie kliknij **zasady** > **zasady tworzenia kopii zapasowych** >  **+ Dodaj** > **platformy SAP HANA w Maszyna wirtualna platformy Azure**, a następnie określ ustawienia zasad.
     - Aby przypisać inne zasady, we właściwościach maszyny Wirtualnej, w którym działa baza danych, kliknij przycisk bieżącą nazwę zasad. Następnie na **zasad tworzenia kopii zapasowej** strony można wybrać inne zasady służące do tworzenia kopii zapasowej.
 
 
@@ -91,7 +91,7 @@ Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
 ## <a name="discover-the-databases"></a>Odnajdowanie baz danych
 
 
-1. W magazynie w **wprowadzenie**, kliknij przycisk **kopii zapasowej**. W **gdzie jest uruchomione Twoje obciążenie?**, wybierz opcję **danych SAP HANA na maszynie Wirtualnej platformy Azure**.
+1. W magazynie w **wprowadzenie**, kliknij przycisk **kopii zapasowej**. W **gdzie jest uruchomione Twoje obciążenie?** , wybierz opcję **danych SAP HANA na maszynie Wirtualnej platformy Azure**.
 2. Kliknij przycisk **Uruchom odnajdowanie**. Spowoduje to zainicjowanie odnajdywania niechronionych maszyn wirtualnych systemu Linux w regionie magazynu.
 
    - Po odnalezieniu, niechronione maszyny wirtualne są wyświetlane w portalu, według nazwy i grupie zasobów.

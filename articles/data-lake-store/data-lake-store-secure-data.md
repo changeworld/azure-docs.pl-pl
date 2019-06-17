@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60198266"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake magazynu Gen1
@@ -55,7 +55,7 @@ Po przypisaniu użytkowników lub grup zabezpieczeń do konta Data Lake Storage 
 
 1. Otwieranie konta Data Lake Storage Gen1. W okienku po lewej stronie kliknij **wszystkie zasoby**, a następnie w bloku wszystkie zasoby kliknij nazwę konta, do którego chcesz przypisać użytkownikowi lub grupie zabezpieczeń.
 
-2. W bloku konta usługi Data Lake Storage Gen1 kliknij **kontrola dostępu (IAM)**. Blok domyślnie wyświetla właściciele subskrypcji jako właściciel.
+2. W bloku konta usługi Data Lake Storage Gen1 kliknij **kontrola dostępu (IAM)** . Blok domyślnie wyświetla właściciele subskrypcji jako właściciel.
    
     ![Przypisz grupy zabezpieczeń do konta usługi Azure Data Lake Storage Gen1](./media/data-lake-store-secure-data/adl.select.user.icon1.png "Przypisz grupę zabezpieczeń do konta usługi Azure Data Lake Storage Gen1")
 
@@ -127,7 +127,7 @@ Po usunięciu grupy zabezpieczeń z kont usługi Data Lake Storage Gen1 tylko zm
 
 Dostęp do danych pozostaje niezmieniony i nadal jest zarządzany przez listy ACL dostępu.  Wyjątkiem są użytkownicy/grupy, roli właścicieli.  Użytkownicy/grupy usunięte z roli właścicieli nie są już superużytkowników i ich dostęp powraca do ustawienia listy ACL dostępu. 
 
-1. W bloku konta usługi Data Lake Storage Gen1 kliknij **kontrola dostępu (IAM)**. 
+1. W bloku konta usługi Data Lake Storage Gen1 kliknij **kontrola dostępu (IAM)** . 
    
     ![Przypisz grupy zabezpieczeń do konta Data Lake Storage Gen1](./media/data-lake-store-secure-data/adl.select.user.icon.png "Przypisz grupę zabezpieczeń do konta Data Lake Storage Gen1")
 2. W **kontrola dostępu (IAM)** bloku kliknij opcję grupy zabezpieczeń, aby usunąć. Kliknij pozycję **Usuń**.

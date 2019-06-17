@@ -1,5 +1,5 @@
 ---
-title: Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory? | Microsoft Docs
+title: Co to jest warunek lokalizacji w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
 description: Dowiedz się, jak używać warunek lokalizacji do kontrolowania dostępu do aplikacji w chmurze na podstawie lokalizacji sieciowej użytkownika.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98588e0c25439fd4988fe39e06e7042cfa9113cb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 886118614427bea61f745e1ded28824b60225919
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305676"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112294"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w usłudze Azure Active Directory dostępu warunkowego? 
 
 Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), można kontrolować sposób autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze. Warunek lokalizacji zasad dostępu warunkowego można powiązać ustawienia kontroli dostępu do lokalizacji sieciowych użytkowników.
 
@@ -58,9 +58,9 @@ Lokalizacja o nazwie zawiera następujące składniki:
 
 Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Organizacje można skonfigurować maksymalnie 90 nazwane lokalizacje, każdy skonfigurowany z maksymalnie 1200 zakresów adresów IP.
 
-Zasadom dostępu warunkowego dla ruchu IPv4 i IPv6. Obecnie nazwane lokalizacje są dozwolone zakresy adresów IPv6, należy skonfigurować. To ograniczenie powoduje, że następujące sytuacje:
+Zasady dostępu warunkowego dotyczy ruchu IPv4 i IPv6. Obecnie nazwane lokalizacje są dozwolone zakresy adresów IPv6, należy skonfigurować. To ograniczenie powoduje, że następujące sytuacje:
 
-- Nie można objęte zasadami dostępu warunkowego, aby określone zakresy adresów IPv6
+- Zasady dostępu warunkowego nie będzie można wykonywać na określone zakresy adresów IPv6
 - Zasady dostępu warunkowego nie można wykluczyć określone zakresy adresów IPV6
 
 Jeśli zasady są skonfigurowane do zastosowania "Dowolne miejsce", będą dotyczyć ruchu IPv4 i IPv6. Nazwane lokalizacje skonfigurowane dla określonej kraje i regiony obsługują tylko adresy IPv4. Ruch IPv6 jest tylko włączone, gdy wybrano opcję "Uwzględnij nieznane obszary".
@@ -145,5 +145,5 @@ Interfejs API i programu PowerShell nie jest jeszcze obsługiwana dla nazwanych 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
-- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
+- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).

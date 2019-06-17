@@ -13,10 +13,10 @@ ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
 ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60699350"
 ---
 # <a name="local-forwarder-preview"></a>Lokalne usługi przesyłania dalej (wersja zapoznawcza)
@@ -29,13 +29,13 @@ Lokalne usługi przesyłania dalej jest [projekt typu open source w serwisie Git
 
 ### <a name="windows"></a>Windows
 
-#### <a name="windows-service"></a>Usługa systemu Windows
+#### <a name="windows-service"></a>Windows Service
 
 Jest najprostszym sposobem uruchamiania lokalnego usługi przesyłania dalej w obszarze Windows przez zainstalowanie go jako usługę Windows. Wersja zawiera plik wykonywalny usługi Windows (*WindowsServiceHost/Microsoft.LocalForwarder.WindowsServiceHost.exe*) który można łatwo zarejestrować w systemie operacyjnym.
 
 > [!NOTE]
 > Usługa lokalnej usługi przesyłania dalej wymaga co najmniej programu .NET Framework 4.7. Jeśli nie masz programu .NET Framework 4.7 usługi instalacji, ale nie rozpocznie się. Najnowsza wersja programu .NET Framework dostęp do **[odwiedź stronę pobierania programu .NET Framework](
-https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)**.
+https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Pobierz LF. Plik WindowsServiceHost.zip [stronie wersji lokalnej usługi przesyłania dalej](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) w witrynie GitHub.
 
@@ -146,7 +146,7 @@ systemctl enable localforwarder
 systemctl start localforwarder
 ```
 
-* Monitorowanie usługi, sprawdzając **.log* plików w katalogu /home/SAMPLE_USER/LOCALFORWARDER_DIR.
+* Monitorowanie usługi, sprawdzając * *.log* plików w katalogu /home/SAMPLE_USER/LOCALFORWARDER_DIR.
 
 ### <a name="mac"></a>Mac
 Lokalne usługi przesyłania dalej, mogą działać z systemem macOS, ale obecnie nie jest oficjalnie obsługiwana.
@@ -177,7 +177,7 @@ host.Stop();
 
 ## <a name="monitoring-local-forwarder"></a>Monitorowanie lokalne usługi przesyłania dalej
 
-Zapisy są zapisywane w do systemu plików, obok pliku wykonywalnego, który uruchamia lokalnej usługi przesyłania dalej (Wyszukaj **.log* plików). Możesz umieścić plik o nazwie *NLog.config* obok pliku wykonywalnego zapewnienie konfigurację zamiast domyślna. Zobacz [dokumentacji](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) opisu formatu.
+Zapisy są zapisywane w do systemu plików, obok pliku wykonywalnego, który uruchamia lokalnej usługi przesyłania dalej (Wyszukaj * *.log* plików). Możesz umieścić plik o nazwie *NLog.config* obok pliku wykonywalnego zapewnienie konfigurację zamiast domyślna. Zobacz [dokumentacji](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) opisu formatu.
 
 Jeśli nie podano żadnego pliku konfiguracji (jest to ustawienie domyślne), lokalne usługi przesyłania dalej użyje domyślnej konfiguracji, który można znaleźć [tutaj](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
 

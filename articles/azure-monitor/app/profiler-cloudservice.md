@@ -13,18 +13,18 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: 8ad472b9c92e3bc2164146191a63985fd26becab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60306386"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil na żywo usług Azure Cloud Services za pomocą usługi Application Insights
 
 Można także wdrożyć Application Insights Profiler od następujących usług:
-* [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Usługa Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Aplikacje usługi Service Fabric platformy Azure](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Usługa Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler jest instalowany z rozszerzenie diagnostyki platformy Azure. Wystarczy Konfigurowanie diagnostyki Azure, aby zainstalować Profiler i wysłać profile do zasobu usługi Application Insights.
 

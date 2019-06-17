@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60883320"
 ---
 # <a name="troubleshooting-network-performance"></a>Rozwiązywanie problemów z wydajnością sieci
@@ -179,7 +179,7 @@ Konfiguracja testu:
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Lokalizacja|Azure<br/>Region|Szacowane<br/>Distance (km)|Opóźnienie|1 sesji<br/>Przepustowość|Maksimum<br/>Przepustowość|
+|ExpressRoute<br/>Lokalizacja|Azure<br/>Region|Szacowany<br/>Distance (km)|Opóźnienie|1 sesji<br/>Przepustowość|Maksimum<br/>Przepustowość|
 | Seattle | Zachodnie stany USA 2        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits na sekundę |
 | Seattle | Zachodnie stany USA          |  1,094 km |  18 ms |  82.3 MB/s |  3.70 Gbits na sekundę |
 | Seattle | Środkowe stany USA       |  2,357 km |  40 ms |  38.8 MB/s |  Do 2,55 Gbits/s |

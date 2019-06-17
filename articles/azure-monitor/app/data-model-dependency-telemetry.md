@@ -13,10 +13,10 @@ ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60901029"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetria zależności: Model danych usługi Application Insights
@@ -35,11 +35,11 @@ Identyfikator wystąpienia wywołań zależności. Używane na potrzeby korelacj
 
 Polecenia inicjowane przez wywołanie zależności. Przykładami są instrukcji SQL i adresem URL protokołu HTTP z wszystkie parametry zapytania.
 
-## <a name="type"></a>Type
+## <a name="type"></a>Typ
 
 Nazwa typu zależności. Niski Kardynalność wartości powodują ustawienie logicznego grupowania zależności i interpretacji inne pola, takie jak commandName i kod wyniku. Przykłady to SQL, tabela platformy Azure i HTTP.
 
-## <a name="target"></a>Środowisko docelowe
+## <a name="target"></a>Cel
 
 Witryna docelowa wywołania zależności. Przykłady to nazwa serwera, adres hosta. Aby uzyskać więcej informacji, zobacz [korelacji](../../azure-monitor/app/correlation.md) strony.
 

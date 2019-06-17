@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: e756a0a7af9ad89e3aad8b0dbe27a870a3f855c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d94567800a9fd020784c9cb07b2c6824cd032509
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60907488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064270"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center
 Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączonymi z usługą Azure Security Center i dodawanie nowych.
+
+> [!NOTE]
+> Podzbiór rozwiązania w zakresie bezpieczeństwa zostaną wycofane z dniem 31 lipca 2019 r. Aby uzyskać więcej informacji i alternatywne usług zobacz [wycofywania Centrum zabezpieczeń funkcji (2019 lipca)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Zintegrowane rozwiązania zabezpieczeń platformy Azure
 Usługa Security Center ułatwia włączanie zintegrowanych rozwiązań zabezpieczeń na platformie Azure. Korzyści to:
@@ -31,11 +34,7 @@ Usługa Security Center ułatwia włączanie zintegrowanych rozwiązań zabezpie
 - **Zintegrowane funkcje wykrywania**: Zdarzenia zabezpieczeń z rozwiązań partnerskich są automatycznie zbierane, agregowane i wyświetlane w ramach zdarzeń i alertów usługi Security Center. Te zdarzenia są także połączone z funkcjami wykrywania z innych źródeł, aby zapewnić zaawansowane możliwości w zakresie wykrywania zagrożeń.
 - **Ujednolicone zarządzanie monitorowaniem kondycji**: Klienci mogą używać zintegrowanych zdarzeń kondycji w celu jednoczesnego monitorowania wszystkich rozwiązań partnerskich. Podstawowe funkcje zarządzania zapewniają łatwy dostęp do konfiguracji zaawansowanej przy użyciu rozwiązania partnerskiego.
 
-Obecnie zintegrowane rozwiązania zabezpieczeń obejmują:
-
-- Zapora aplikacji internetowej ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/products.html) i [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
-- Zapora nowej generacji ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](https://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) i [Palo Alto Networks](https://www.paloaltonetworks.com/products))
-- Ocena luk w zabezpieczeniach ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) i [Rapid7](https://www.rapid7.com/products/insightvm/))
+Obecnie zintegrowane rozwiązania zabezpieczeń obejmują oceny luk w zabezpieczeniach przez [Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) i [Rapid7](https://www.rapid7.com/products/insightvm/) i zapory aplikacji sieci Web bramy aplikacji firmy Microsoft.
 
 > [!NOTE]
 > Usługa Security Center nie może zainstalować programu Microsoft Monitoring Agent na wirtualnych urządzeniach partnera, ponieważ większość dostawców zabezpieczeń zabrania korzystania z zewnętrznych agentów na swoich urządzeniach.
@@ -43,12 +42,7 @@ Obecnie zintegrowane rozwiązania zabezpieczeń obejmują:
 >
 
 ## <a name="how-security-solutions-are-integrated"></a>Jak są integrowane rozwiązania zabezpieczeń
-Rozwiązania zabezpieczeń platformy Azure, które zostały wdrożone z usługi Security Center, są automatycznie połączone. Możesz także połączyć inne źródła danych zabezpieczeń, a w tym:
-
-- Usługa Azure AD Identity Protection
-- Komputery działające lokalnie lub w innych chmurach
-- Rozwiązanie zabezpieczeń, które obsługuje format Common Event Format (CEF)
-- Microsoft Advanced Threat Analytics
+Rozwiązania zabezpieczeń platformy Azure, które zostały wdrożone z usługi Security Center, są automatycznie połączone. Można też połączyć inne źródła danych zabezpieczeń, w tym komputerami z systemami w środowisku lokalnym lub w innych chmurach.
 
 ![Integracja rozwiązań partnerskich](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
 
@@ -112,76 +106,6 @@ Sekcja **Dodawanie źródeł danych** obejmuje inne dostępne źródła danych, 
 
 ![Źródła danych](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
-### <a name="connect-external-solutions"></a>Łączenie z rozwiązaniami zewnętrznymi
-
-Oprócz zbierania danych zabezpieczeń z komputerów, można integrować dane zabezpieczeń z różnych innych rozwiązań zabezpieczeń, między innymi tych, które obsługują format CEF (Common Event Format). CEF to standardowy format branżowy komunikatów dzienników systemu używany przez wielu dostawców zabezpieczeń w celu umożliwienia integracji zdarzeń między różnymi platformami.
-
-W tym przewodniku szybkiego startu przedstawiono sposób wykonywania następujących czynności:
-- Łączenie rozwiązania zabezpieczeń z usługą Security Center przy użyciu dzienników CEF
-- Sprawdzanie poprawności połączenia z rozwiązaniem zabezpieczeń
-
-#### <a name="prerequisites"></a>Wymagania wstępne
-Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnego konta](https://azure.microsoft.com/free/).
-
-Aby wypróbować funkcje omówione w tym przewodniku szybkiego startu, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
-
-Potrzebujesz również [komputera z systemem Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-linux) i usługą Syslog, która jest już połączona z usługą Security Center.
-
-#### <a name="connect-solution-using-cef"></a>Łączenie rozwiązania przy użyciu formatu CEF
-
-1. Zaloguj się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
-
-    ![Wybieranie usługi Security Center](./media/quick-security-solutions/quick-security-solutions-fig1.png)  
-
-3. W menu głównym usługi Security Center wybierz pozycję **Rozwiązania zabezpieczeń**.
-4. Na stronie Rozwiązania zabezpieczeń w sekcji **Dodawanie źródeł danych (3)** kliknij pozycję **Dodaj** w obszarze **Common Event Format**.
-
-    ![Dodawanie źródła danych](./media/quick-security-solutions/quick-security-solutions-fig2.png)
-
-5. Na stronie Dzienniki w formacie CEF rozwiń drugi etap **Konfigurowanie przekazywania usługi Syslog w celu wysyłania wymaganych dzienników do agenta na porcie UDP 25226**, a następnie na komputerze z systemem Linux wykonaj poniższe instrukcje:
-
-    ![Konfigurowanie usługi Syslog](./media/quick-security-solutions/quick-security-solutions-fig3.png)
-
-6. Rozwiń trzeci etap **Umieszczanie pliku konfiguracji agenta na komputerze agenta**, a następnie na komputerze z systemem Linux wykonaj poniższe instrukcje:
-
-    ![Konfiguracja agenta](./media/quick-security-solutions/quick-security-solutions-fig4.png)
-
-7. Rozwiń czwarty etap **Ponowne uruchamianie demona usługi Syslog i agenta**, a następnie na komputerze z systemem Linux wykonaj poniższe instrukcje:
-
-    ![Ponowne uruchamianie usługi Syslog](./media/quick-security-solutions/quick-security-solutions-fig5.png)
-
-
-#### <a name="validate-the-connection"></a>Sprawdzanie poprawności połączenia
-
-Zanim przejdziesz do poniższych czynności, musisz zaczekać, aż usługa Syslog rozpocznie raportowanie do usługi Security Center. Może to zająć trochę czasu (w zależności od wielkości środowiska).
-
-1.  W lewym okienku pulpitu nawigacyjnego usługi Security Center kliknij pozycję **Wyszukaj**.
-2.  Wybierz obszar roboczy, z którym jest połączona usługa Syslog (komputer z systemem Linux).
-3.  Wpisz *CommonSecurityLog* i kliknij przycisk **Wyszukaj**.
-
-Poniższy przykład przedstawia wynik tych kroków: ![CommonSecurityLog](./media/quick-security-solutions/common-sec-log.png)
-
-#### <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Inne przewodniki szybkiego startu i samouczki w tej kolekcji bazują na tym przewodniku. Jeśli zamierzasz kontynuować pracę z kolejnymi przewodnikami szybkiego startu i samouczkami, w dalszym ciągu korzystaj z warstwy standardowej i zachowaj włączoną automatyczną aprowizację. Jeśli nie zamierzasz kontynuować lub chcesz wrócić do warstwy bezpłatnej:
-
-1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. Wybierz subskrypcję lub zasady, którym chcesz przywrócić warstwę bezpłatną. Zostanie otwarte okno **Zasady zabezpieczeń**.
-3. W obszarze **SKŁADNIKI ZASAD** wybierz pozycję **Warstwa cenowa**.
-4. Wybierz pozycję **Bezpłatna**, aby zmienić subskrypcję z warstwy standardowej na warstwę bezpłatną.
-5. Wybierz pozycję **Zapisz**.
-
-Jeśli chcesz wyłączyć automatyczną aprowizację:
-
-1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację.
-3. W sekcji **Zasady zabezpieczeń — zbieranie danych** wybierz pozycję **Wyłącz** w obszarze **Dołączanie**, aby wyłączyć automatyczną aprowizację.
-4. Wybierz pozycję **Zapisz**.
-
->[!NOTE]
-> Wyłączenie automatycznej aprowizacji nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, na których aprowizowano agenta. Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów.
->
-
 ## <a name="exporting-data-to-a-siem"></a>Eksportowanie danych do rozwiązania SIEM
 
 Przetworzone zdarzenia generowane przez usługę Azure Security Center są publikowane na platformie Azure [dziennika aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), jeden z dziennika typów dostępnych za pośrednictwem usługi Azure Monitor. Usługa Azure Monitor udostępnia skonsolidowany potoku na potrzeby routingu jakichkolwiek danych monitorowania do narzędzia SIEM. Polega to na przesyłanie strumieniowe danych do Centrum zdarzeń, gdzie go może następnie zostać pobrane do narzędzia partnera.
@@ -230,6 +154,5 @@ Poniżej przedstawiono kilka zapytań Splunk, które służy do pobierania danyc
 W tym artykule przedstawiono sposób zintegrowania rozwiązania partnerskiego w usłudze Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 
 * [Monitorowanie kondycji zabezpieczeń w usłudze Security Center](security-center-monitoring.md). Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
-* [Monitorowanie rozwiązań partnerskich w usłudze Security Center](security-center-partner-solutions.md). Informacje na temat sposobu monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi Security Center.
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

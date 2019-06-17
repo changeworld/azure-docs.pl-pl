@@ -14,10 +14,10 @@ ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
 ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64721095"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Stream metryki na żywo: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
@@ -65,7 +65,7 @@ Sprawdź [porty wychodzące dla Live Stream metryki](../../azure-monitor/app/ip-
 |Opóźnienie|Dane wyświetlane w ciągu sekundy|Zagregowane w ciągu minut|
 |Nie przechowywania|Danych będzie nadal występować, gdy znajduje się na wykresie, a następnie zostaje odrzucone|[Dane przechowywane przez 90 dni](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |Na żądanie|Dane są przesyłane strumieniowo, gdy otworzysz metryki na żywo|Dane są wysyłane zawsze, gdy zestaw SDK jest zainstalowane i włączone|
-|Bezpłatna|Nie ma opłat dla danych Live Stream.|Podlegają [ceny](../../azure-monitor/app/pricing.md)
+|Wolne|Nie ma opłat dla danych Live Stream.|Podlegają [ceny](../../azure-monitor/app/pricing.md)
 |Próbkowanie|Wszystkie wybrane metryk i liczników są przesyłane. Błędy i ślady stosu są próbkowane. TelemetryProcessors nie są stosowane.|Zdarzenia mogą być [próbkowania](../../azure-monitor/app/api-filtering-sampling.md)|
 |Kanał kontrolny|Sygnały formant filtru są wysyłane do zestawu SDK. Zaleca się, że zabezpieczenia tego kanału.|Komunikacja jest jednokierunkowe do portalu|
 
@@ -113,7 +113,7 @@ Niestandardowe Stream metryk na żywo jest dostępne przy użyciu wersji 2.4.0-b
 Filtry niestandardowe określonych kryteriów są wysyłane do składnika metryki na żywo w zestaw SDK usługi Application Insights. Filtry potencjalnie mogą zawierać poufne informacje, takie jak customerIDs. Kanał można zabezpieczyć przy użyciu klucza tajnego klucza interfejsu API, oprócz klucz instrumentacji.
 ### <a name="create-an-api-key"></a>Utwórz klucz interfejsu API
 
-![Tworzenie klucza interfejsu API](./media/live-stream/live-metrics-apikeycreate.png)
+![Utwórz klucz interfejsu API](./media/live-stream/live-metrics-apikeycreate.png)
 
 ### <a name="add-api-key-to-configuration"></a>Dodaj klucz interfejsu API do konfiguracji
 

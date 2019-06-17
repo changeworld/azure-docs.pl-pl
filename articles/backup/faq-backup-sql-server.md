@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: sachdevaswati
 ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700165"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Często zadawane pytania dotyczące bazy danych programu SQL Server, działające w kopii zapasowej maszyny Wirtualnej platformy Azure
@@ -37,7 +37,7 @@ W niektórych przypadkach usługa Azure Backup wyzwala zaradczych kopii zapasowy
 Automatyczne poprawianie jako funkcja jest domyślnie dla wszystkich użytkowników; Jednak w przypadku, gdy zdecydujesz się zrezygnować z jej, następnie wykonać poniżej:
 
   * W wystąpieniu programu SQL Server w *C:\Program Files\Azure obciążenia Backup\bin* folderu, tworzenia lub edytowania **ExtensionSettingsOverrides.json** pliku.
-  * W **ExtensionSettingsOverrides.json**ustaw *{"EnableAutoHealer": false}*.
+  * W **ExtensionSettingsOverrides.json**ustaw *{"EnableAutoHealer": false}* .
   * Zapisz zmiany i zamknij plik.
   * W wystąpieniu programu SQL Server otwórz **zadań zarządzania** i ponownie uruchom **AzureWLBackupCoordinatorSvc** usługi.  
 

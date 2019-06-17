@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: b522b0bd641d0147518843b11be4cd3a1430ae20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240443"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Praca z plikami danych w projektach notesu platformy Azure
@@ -62,11 +62,11 @@ Przenoszenie plików do projektu na pulpicie nawigacyjnym projektu lub w ramach 
 
 1. W **stan przekazywania** okna podręcznego, który jest wyświetlany, wybierz **Folder docelowy** z listy rozwijanej:
 
-    - Folder sesji (*~/* ): Przesyła pliki do bieżącej sesji Notes, ale nie tworzy pliki w projekcie. Folder sesji jest równorzędny folder projektu, ale nie jest zachowana po zakończeniu sesji. Aby uzyskać dostęp do plików sesji w kodzie, prefiks nazw plików ze ścieżką względną *... /*.
+    - Folder sesji ( *~/* ): Przesyła pliki do bieżącej sesji Notes, ale nie tworzy pliki w projekcie. Folder sesji jest równorzędny folder projektu, ale nie jest zachowana po zakończeniu sesji. Aby uzyskać dostęp do plików sesji w kodzie, prefiks nazw plików ze ścieżką względną *... /* .
 
         Za pomocą folderu sesji jest przydatne do eksperymentowania i pozwala uniknąć przeładowania projekt z plikami, może być lub może nie być potrzebna w dłuższym okresie. Można również przekazać pliki do folderu sesji, który miało identyczne nazwy plików w projekcie, bez powodowania konfliktów i bez konieczności zmień nazwy plików. Na przykład, załóżmy, że masz jedną wersję *data.csv* w projekcie, ale chcesz eksperymentować z inną wersję *data.csv*. Przekazując plik do folderu, w sesji, można uruchomić Notes, przy użyciu danych w przekazanym pliku (odwołując się do niego w kodzie za pomocą *... /Data.csv*) zamiast dane w pliku projektu.
 
-    - Folder projektu (*/project*): przekazywanie plików do projektu, gdzie można uzyskać dostęp przy użyciu nazw względnych ścieżek w kodzie. Próba przekazania pliku do tego folderu jest taka sama jak przekazać plik na pulpicie nawigacyjnym projekt. Plik jest zapisywany z projektem i jest dostępny w nowszych sesji.
+    - Folder projektu ( */project*): przekazywanie plików do projektu, gdzie można uzyskać dostęp przy użyciu nazw względnych ścieżek w kodzie. Próba przekazania pliku do tego folderu jest taka sama jak przekazać plik na pulpicie nawigacyjnym projekt. Plik jest zapisywany z projektem i jest dostępny w nowszych sesji.
 
         Przekazywanie zakończy się niepowodzeniem, jeśli zostanie podjęta próba przekazania pliku o takiej samej nazwie jako jedna, która już istnieje w projekcie. Aby zastąpić plik, Przekaż nowy plik na pulpicie nawigacyjnym projektu zamiast tego, które zapewnia opcję zastąpienia.
 

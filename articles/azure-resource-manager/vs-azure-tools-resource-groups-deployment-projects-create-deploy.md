@@ -1,5 +1,5 @@
 ---
-title: Projekty grup zasobów platformy Azure programu Visual Studio | Microsoft Docs
+title: Tworzenie i wdrażanie projekty grup zasobów w programie Visual Studio na platformie Azure
 description: Tworzenie projektu grupy zasobów platformy Azure przy użyciu programu Visual Studio i wdrażanie zasobów na platformie Azure.
 services: azure-resource-manager
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: ca7cccb1d4f17ff9f80ca006da0ef7ce77109227
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 4b54a1c234eb2211884fede1c059e4c20cda137e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595526"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053278"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
 
@@ -37,7 +37,7 @@ W tej sekcji omówiono tworzenie projektu grupy zasobów platformy Azure przy u�
     ![Projekt wdrażania w chmurze](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 2. Wybierz szablon, który ma zostać wdrożony w usłudze Azure Resource Manager. Należy zauważyć, że dostępnych jest wiele różnych opcji, zależnie od typu projektu, który chcesz wdrożyć. Na potrzeby tego artykułu wybierz szablon **Aplikacja internetowa i baza danych SQL**.
    
-    ![Wybierz szablon](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
+    ![Wybieranie szablonu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
     Wybrany szablon jest tylko punktem wyjściowym. Możesz dodać lub usunąć zasoby, aby wykonać dany scenariusz.
    

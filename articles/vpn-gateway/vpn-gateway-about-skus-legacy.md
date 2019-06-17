@@ -3,8 +3,8 @@ title: Starsze sieci wirtualnej platformy Azure jednostki SKU bramy sieci VPN | 
 description: Sposób pracy ze starymi jednostkami SKU; bramy sieci wirtualnej Basic, Standard i HighPerformance.
 services: vpn-gateway
 documentationcenter: na
-author: WenJason
-manager: digimobile
+author: cherylmc
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/20/2018
-ms.date: 03/04/2019
-ms.author: v-jay
-ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.author: cherylmc
+ms.openlocfilehash: 00f1677e2691f9be5bb4584b07ca00340a52b1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159274"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056436"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Praca z bramy sieci wirtualnej jednostki SKU (starszych jednostek SKU)
 
@@ -30,6 +29,8 @@ Ten artykuł zawiera informacje o starszych bramy sieci wirtualnej (stare) jedno
 ## <a name="gwsku"></a>Jednostki SKU bramy
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
+
+Możesz wyświetlić starszych bramy cen w **bramy sieci wirtualnej** sekcji, która znajduje się na [stronę z cennikiem usługi ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute).
 
 ## <a name="agg"></a>Szacowana agregowana przepływność według jednostki SKU
 
@@ -68,5 +69,3 @@ Można również zmienić rozmiar bramy w witrynie Azure portal.
 Aby uzyskać więcej informacji na temat nowej jednostki SKU bramy, zobacz [jednostki SKU bramy](vpn-gateway-about-vpngateways.md#gwsku).
 
 Aby uzyskać więcej informacji na temat ustawień konfiguracji, zobacz [ustawienia konfiguracji bramy sieci VPN — informacje](vpn-gateway-about-vpn-gateway-settings.md).
-
-<!--Update_Description: wording update-->

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c919d02a72565f42c125e6d123b48e2cedaea508
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 1184e282c8dc52cb616bcc47068d96fe61651da9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407977"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą TextMagic
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację TextMagic w usłudze Azure AD, należy dodać Tex
 
 **Aby dodać TextMagic z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -116,10 +116,10 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z TextMagic, wykonaj 
 
     | Name (Nazwa) |   Atrybut źródłowy| Przestrzeń nazw  |
     | --------------- | --------------- | --------------- |
-    | Firmy | user.companyname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | user.givenname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | user.surname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | telefon               | user.telephonenumber |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Firmy | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | phone               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
@@ -166,13 +166,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z TextMagic, wykonaj 
 
     ![Konfiguracja TextMagic](./media/textmagic-tutorial/config2.png)
 
-    a. W **dostawcy tożsamości identyfikator jednostki:** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, który skopiowano z witryny Azure portal.
+    a. W **dostawcy tożsamości identyfikator jednostki:**  pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, który skopiowano z witryny Azure portal.
 
-    b. W **dostawcy tożsamości adres URL logowania jednokrotnego:** pola tekstowego, Wklej wartość **adres URL logowania**, który skopiowano z witryny Azure portal.
+    b. W **dostawcy tożsamości adres URL logowania jednokrotnego:**  pola tekstowego, Wklej wartość **adres URL logowania**, który skopiowano z witryny Azure portal.
 
-    c. W **dostawcy tożsamości SLO URL:** pola tekstowego, Wklej wartość **adres URL wylogowania**, który skopiowano z witryny Azure portal.
+    c. W **dostawcy tożsamości SLO URL:**  pola tekstowego, Wklej wartość **adres URL wylogowania**, który skopiowano z witryny Azure portal.
 
-    d. Otwórz swoje **certyfikat szyfrowany algorytmem base-64** w Notatniku pobranego z witryny Azure portal, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu publicznego x509:** pola tekstowego.
+    d. Otwórz swoje **certyfikat szyfrowany algorytmem base-64** w Notatniku pobranego z witryny Azure portal, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu publicznego x509:**  pola tekstowego.
 
     e. Kliknij pozycję **Zapisz**.
 
@@ -194,7 +194,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**. Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension** . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
@@ -237,7 +237,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka TextMagic w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze TextMagic, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

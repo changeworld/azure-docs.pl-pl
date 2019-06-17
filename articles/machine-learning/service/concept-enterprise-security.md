@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e9002b96467d6fa3a5c4fb03fb20bde4e1bf87a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059341"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Bezpieczeństwo przedsiębiorstwa w usłudze Azure Machine Learning
 
@@ -62,7 +62,7 @@ W poniższej tabeli wymieniono niektóre z podstawowych operacji usługi Azure M
 
 | Usługa Azure Machine Learning operacji | Właściciel | Współautor | Czytelnik |
 | ---- |:----:|:----:|:----:|
-| Tworzenie obszaru roboczego | ✓ | ✓ | |
+| Create Workspace | ✓ | ✓ | |
 | Udostępnij obszar roboczy | ✓ | |  |
 | Create Compute | ✓ | ✓ | |
 | Dołącz obliczeń | ✓ | ✓ | |
@@ -75,7 +75,7 @@ W poniższej tabeli wymieniono niektóre z podstawowych operacji usługi Azure M
 | Przeglądanie modeli/obrazów | ✓ | ✓ | ✓ |
 | Wywoływanie usługi sieci web | ✓ | ✓ | ✓ |
 
-Wbudowane role są niewystarczające do własnych potrzeb, można również utworzyć niestandardowe role. Należy zauważyć, że tylko niestandardowe role, które firma Microsoft obsługuje dla operacji na obszar roboczy i obliczeniowego usługi Machine Learning. Role niestandardowe mogą mieć odczytu, zapisu lub usuwania uprawnień obszaru roboczego i zasobu obliczeniowego, w tym obszarze roboczym. Rolę można udostępnić w poziomie określonego obszaru roboczego, na poziomie grupy określonego zasobu lub na poziomie określonej subskrypcji. Aby uzyskać więcej informacji, zobacz [zarządzania użytkownikami i rolami w obszarze roboczym usługi Azure Machine Learning](how-to-assign-roles.md)
+Wbudowane role są niewystarczające do własnych potrzeb, można również utworzyć niestandardowe role. Tylko niestandardowe role, które firma Microsoft obsługuje są przeznaczone dla operacji na obszar roboczy i obliczeniowego usługi Machine Learning. Role niestandardowe mogą mieć odczytu, zapisu lub usuwania uprawnień obszaru roboczego i zasobu obliczeniowego, w tym obszarze roboczym. Rolę można udostępnić w poziomie określonego obszaru roboczego, na poziomie grupy określonego zasobu lub na poziomie określonej subskrypcji. Aby uzyskać więcej informacji, zobacz [zarządzania użytkownikami i rolami w obszarze roboczym usługi Azure Machine Learning](how-to-assign-roles.md)
 
 ### <a name="securing-compute-and-data"></a>Zabezpieczanie moc obliczeniową i dane
 Właściciele i współautorzy można użyć wszystkich obliczeniowych elementów docelowych i magazynów danych, które są dołączone do obszaru roboczego.  
@@ -86,15 +86,15 @@ Aby uzyskać więcej informacji na temat zarządzanych tożsamości, zobacz [zar
 | Resource | Uprawnienia |
 | ----- | ----- |
 | Obszar roboczy | Współautor | 
-| Konto magazynu | Współautor danych obiektu blob usługi Storage | 
+| Konto magazynu | Współautor danych obiektu Blob magazynu | 
 | Usługa Key Vault | Dostęp do wszystkich certyfikatów kluczy, wpisów tajnych oraz ich | 
-| Rejestr kontenerów platformy Azure | Współautor | 
+| Azure Container Registry | Współautor | 
 | Grupa zasobów, która zawiera obszar roboczy | Współautor | 
 | Grupy zasobów zawierającej usługę Key Vault (jeśli jest inna niż ta, zawierająca obszar roboczy) | Współautor | 
 
 Zaleca się, że administratorzy nie odwołać dostęp zarządzanych tożsamości do zasobów, o których wspomniano powyżej. Dostęp można przywrócić za pomocą operacji ponownej synchronizacji kluczy.
 
-Usługa Azure Machine Learning tworzy dodatkową aplikację (nazwa rozpoczyna się od ciągu aml-) z poziomu dostępu współautora w subskrypcji dla każdego regionu obszaru roboczego. Aby uzyskać przykład. Jeśli masz obszar roboczy w regionie wschodnie stany USA i innego obszaru roboczego w regionie Europa Północna z tą samą subskrypcją, zobaczysz 2 takich aplikacji. Jest to niezbędne, aby zasoby obliczeniowe usługi Azure Machine Learning, usługa może ułatwić zarządzanie.
+Usługa Azure Machine Learning tworzy dodatkową aplikację (nazwa rozpoczyna się od `aml-`) z poziomu dostępu współautora w subskrypcji dla każdego regionu obszaru roboczego. Aby uzyskać przykład. Jeśli masz obszar roboczy w regionie wschodnie stany USA i innego obszaru roboczego w regionie Europa Północna z tą samą subskrypcją, zobaczysz dwie takich aplikacji. Jest to niezbędne, aby zasoby obliczeniowe usługi Azure Machine Learning, usługa może ułatwić zarządzanie.
 
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci
@@ -113,13 +113,15 @@ Aby uzyskać więcej informacji na temat wyświetlić klucze dla danych przechow
 
 Szkolenie danych zazwyczaj także są przechowywane w usłudze Azure Blob storage, aby była dostępna dla obliczeń szkolenia. Ten magazyn jest zarządzany przez usługi Azure Machine Learning, ale nie zainstalowane do obliczenia jako w systemie zdalnym plików.
 
+Aby uzyskać informacji na temat ponownego generowania kluczy dostępu do konta magazynu platformy Azure używane z obszaru roboczego, zobacz [ponowne generowanie kluczy dostępu do magazynu](how-to-change-storage-access-key.md) artykułu.
+
 #### <a name="cosmos-db"></a>Cosmos DB
 Usługa Azure Machine Learning przechowuje metryki i metadane usługi Cosmos DB, który znajduje się w ramach subskrypcji Microsoft zarządzane przez usługę Azure Machine Learning. Wszystkie dane, które są przechowywane w usłudze Cosmos DB są szyfrowane w stanie spoczynku przy użyciu kluczy zarządzanych firmy Microsoft.
 
 #### <a name="azure-container-registry-acr"></a>Usługa Azure Container Registry (ACR)
 Wszystkie obrazy kontenerów w rejestrze (ACR) są szyfrowane, gdy. Platforma Azure automatycznie szyfruje obraz przed przekazaniem jej i odszyfrowuje je na bieżąco, gdy usługa Azure Machine Learning ściąga obraz.
 
-#### <a name="machine-learning-compute"></a>Środowisko obliczeniowe usługi Machine Learning
+#### <a name="machine-learning-compute"></a>W usłudze Machine Learning obliczeń
 Dysk systemu operacyjnego na każdym węźle obliczeniowym jest przechowywany w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych firmy Microsoft w ramach kont magazynu usługi Azure Machine Learning. To obliczenie jest tymczasowych i klastrów zwykle są skalowane w dół, gdy brak uruchomień w kolejce. Podstawowej maszyny wirtualnej jest rozliczeniu i usunąć dysk systemu operacyjnego. Usługa Azure disk encryption nie jest obsługiwane dla dysku systemu operacyjnego.
 Każda maszyna wirtualna ma również lokalnego dysku tymczasowego dla operacji systemu operacyjnego. Ten dysk można również opcjonalnie używany do przygotowania danych szkoleniowych. Ten dysk nie jest zaszyfrowany. Aby uzyskać więcej informacji o sposobie działania szyfrowanie danych magazynowanych na platformie Azure, zobacz [danych na platformę Azure szyfrowania podczas spoczynku](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest). 
 
@@ -149,7 +151,7 @@ Szczegóły wyników żądania są przechowywane w usłudze AppInsights, który 
 
 ## <a name="data-flow-diagram"></a>Diagram przepływu danych
 
-### <a name="create-workspace"></a>Tworzenie obszaru roboczego
+### <a name="create-workspace"></a>Create Workspace
 Na poniższym diagramie przedstawiono przepływ pracy tworzenia obszaru roboczego.
 Użytkownik loguje się do usługi Azure AD za pomocą dowolnego z obsługiwanych klientów usługi Azure Machine Learning (portal Azure CLI, w przypadku zestawu SDK języka Python) i żąda odpowiedniego tokenu usługi Azure Resource Manager.  Użytkownik wywołuje usługi Azure Resource Manager do utworzenia obszaru roboczego.  Usługa Azure Resource Manager kontakty usługi Azure Machine Learning usługi dostawcy zasobów można aprowizować obszaru roboczego.  Dodatkowe zasoby są tworzone w ramach subskrypcji klienta podczas tworzenia obszaru roboczego:
 * Magazyn kluczy (na potrzeby przechowywania wpisów tajnych)
@@ -167,7 +169,7 @@ Skojarzone z usługi Azure Machine Learning obszaru roboczego usługi są katalo
 
 ![Zrzut ekranu przedstawiający tworzenie przepływu pracy dla obszaru roboczego](./media/enterprise-readiness/code-snapshot.png)
 
-### <a name="training"></a>Szkolenie
+### <a name="training"></a>Szkolenia
 Na poniższym diagramie przedstawiono przepływ pracy szkolenia.
 * Usługa Azure Machine Learning jest wywoływana przy użyciu Identyfikatora migawki dla migawki kod zapisany wcześniej
 * Usługa Azure Machine Learning, który tworzy usługi Uruchom (opcjonalnie) identyfikator & tokenem usługi Azure Machine Learning, który jest później używany przez celów obliczeń, takich jak Machine obliczeń/maszyna wirtualna do uczenia odpowiedzieć usługi Azure Machine Learning

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 33c2d211fad16a81a307a5c0f2a9d048ef07bf4d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Samouczek: Integracja usługi Azure Active Directory z pakietem BPM Questetra
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację Questetra BPM Suite w usłudze Azure AD, należy 
 
 **Aby dodać pakiet BPM Questetra z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -134,7 +134,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z pakietem BPM Queste
    
     ![Usługa Azure AD logowanie jednokrotne][10]
 
-3. Aby otworzyć **SingleSignOnSAML** kliknij **logowania jednokrotnego (SAML)**. 
+3. Aby otworzyć **SingleSignOnSAML** kliknij **logowania jednokrotnego (SAML)** . 
    
     ![Usługa Azure AD logowanie jednokrotne][11]
 
@@ -240,7 +240,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Questetra BPM Suite w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Questetra Suite BPM, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

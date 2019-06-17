@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 638703e4d67cbd004f0bd616ba31475f507dfd8a
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64873424"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrowanie infrastruktury bramy usług pulpitu zdalnego przy użyciu rozszerzenia serwera zasad sieciowych (NPS) i Azure AD
@@ -254,7 +254,7 @@ Aby działać poprawnie, w tym scenariuszu, serwer NPS musi zostać zarejestrowa
 
 1. Na serwerze NPS Otwórz **Menedżera serwera**.
 1. W Menedżerze serwera kliknij **narzędzia**, a następnie kliknij przycisk **serwer zasad sieciowych**.
-1. W konsoli serwera zasad sieciowych, kliknij prawym przyciskiem myszy **serwer NPS (lokalny)**, a następnie kliknij przycisk **Zarejestruj serwer w usłudze Active Directory**.
+1. W konsoli serwera zasad sieciowych, kliknij prawym przyciskiem myszy **serwer NPS (lokalny)** , a następnie kliknij przycisk **Zarejestruj serwer w usłudze Active Directory**.
 1. Kliknij przycisk **OK** dwa razy.
 
    ![Rejestrowanie serwera NPS w usłudze Active Directory](./media/howto-mfa-nps-extension-rdg/image16.png)
@@ -327,7 +327,7 @@ Po pomyślnym uwierzytelnieniu przy użyciu metody uwierzytelniania pomocniczego
 
 Aby wyświetlić pomyślnych zdarzeń logowania w dziennikach podglądu zdarzeń Windows, mogą wydać następujące polecenie programu Windows PowerShell do wykonywania zapytań w dziennikach usług terminalowych Windows i Windows zabezpieczeń.
 
-Aby wysłać zapytanie zdarzeń pomyślnego logowania w dzienniki operacyjne bramy _(zdarzenie Viewer\Applications i usług Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_, użyj następujących poleceń programu PowerShell:
+Aby wysłać zapytanie zdarzeń pomyślnego logowania w dzienniki operacyjne bramy _(zdarzenie Viewer\Applications i usług Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ , użyj następujących poleceń programu PowerShell:
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
 * To polecenie wyświetla zdarzenia Windows, które pokazują użytkownika zostały spełnione wymagania zasad autoryzacji zasobów (zdalnego RD RAP) i uzyskał dostęp.

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 16fe2d23fdd07f8f150cc010b0a1d232c761c77f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 024a2dbbd46fa2ab60da0f9682dbe298eaf73e86
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61300099"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055563"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -85,7 +85,7 @@ Komputery, które zostały niedawno włączono rozwiązanie Update Management mo
 
 - **Niezgodne**: Komputery, na których brakuje co najmniej jeden krytycznych lub aktualizacji zabezpieczeń.
 
-- **Nie oceniono**: Dane oceny aktualizacji nie zostały odebrane z komputera w oczekiwanym czasie. W przypadku komputerów z systemem Linux przedział czasu oczekiwania jest w ciągu ostatnich 3 godzin. W przypadku komputerów Windows oczekiwanego przedział czasu jest w ciągu ostatnich 12 godzin.
+- **Nie oceniono**: Dane oceny aktualizacji nie zostały odebrane z komputera w oczekiwanym czasie. W przypadku komputerów z systemem Linux przedział czasu oczekiwania jest w ciągu ostatniej godziny. W przypadku komputerów Windows oczekiwanego przedział czasu jest w ciągu ostatnich 12 godzin.
 
 Aby wyświetlić stan agenta, wybierz link w **AKTUALIZUJ gotowość AGENTA** kolumny. Wybranie tej opcji powoduje otwarcie **hybrydowy proces roboczy** okienku i wyświetla stan hybrydowy proces roboczy. Na poniższej ilustracji przedstawiono przykład agenta, który nie został połączony z rozwiązania Update Management przez dłuższy czas:
 
@@ -106,7 +106,7 @@ W poniższej tabeli opisano połączone źródła obsługiwane przez to rozwiąz
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
 | Agenci dla systemu Windows |Yes |Rozwiązanie Update Management zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
-| Agenci dla systemu Linux |Yes |Rozwiązanie Update Management zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
+| Agenci dla systemu Linux |Tak |Rozwiązanie Update Management zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
 | Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie Update Management zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania. |
 | Konto usługi Azure Storage |Nie |Usługa Azure Storage nie zawiera informacji o aktualizacjach systemu. |
 
@@ -116,7 +116,7 @@ Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agent prz
 
 Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut MMA uruchamiany ponownie, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
 
-Komputera z systemem Linux skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 3 godziny. Jeśli ponownego uruchomienia agenta MMA skanowania pod kątem zgodności jest inicjowane w ciągu 15 minut.
+Komputera z systemem Linux skanowanie pod kątem zgodności jest domyślnie przeprowadzane co godzinę. Jeśli ponownego uruchomienia agenta MMA skanowania pod kątem zgodności jest inicjowane w ciągu 15 minut.
 
 Może upłynąć od 30 minut do 6 godzin dla pulpitu nawigacyjnego wyświetlić zaktualizowane dane z zarządzanych komputerów.
 
@@ -130,7 +130,7 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 
 - **Nazwa**: Wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
 - **System operacyjny**: Wybierz **Windows** lub **Linux**.
-- **Grupy do zaktualizowania (wersja zapoznawcza)**: Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
+- **Grupy do zaktualizowania (wersja zapoznawcza)** : Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
 - **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub maszyn, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md)
 
   ![Nowe okienko wdrożenia aktualizacji](./media/manage-update-multi/update-select-computers.png)
@@ -154,7 +154,7 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
    ![Okno dialogowe Ustawienia harmonogramu](./media/manage-update-multi/update-set-schedule.png)
 
 - **Skrypty wstępne i końcowe**: Wybierz skrypty do uruchomienia przed i po wdrożeniu. Aby dowiedzieć się więcej, zobacz [Zarządzanie skryptami wstępnymi i końcowymi](pre-post-scripts.md).
-- **Okno obsługi (minuty)**: Określ czas, który ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
+- **Okno obsługi (minuty)** : Określ czas, który ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
 
 - **Ponowne uruchomienie kontroli** — to ustawienie określa sposób obsługi ponownego uruchamiania dla wdrożenia aktualizacji.
 

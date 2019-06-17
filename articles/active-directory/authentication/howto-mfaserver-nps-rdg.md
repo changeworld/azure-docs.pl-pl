@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bc47f1f3e7022b566181220e203d33564b5b93b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a129030e8071dc590562ca5ca203d8d735f0449e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358319"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052553"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Brama usług pulpitu zdalnego i serwer Azure Multi-Factor Authentication korzystające z usługi RADIUS
 
@@ -25,6 +25,9 @@ Często bramy usług pulpitu zdalnego (RD) używa lokalnej [usług zasad sieciow
 Ponieważ uwierzytelnianie systemu Windows dla usług terminalowych nie jest obsługiwane w przypadku systemu Windows Server 2012 R2, należy użyć bramy usług pulpitu zdalnego i usługi RADIUS do integracji z serwerem MFA.
 
 Serwer Azure Multi-Factor Authentication należy zainstalować na osobnym serwerze, który przekaże żądanie usługi RADIUS z powrotem do serwera NPS na serwerze bramy usług pulpitu zdalnego. Po zweryfikowaniu nazwy użytkownika i hasła serwer NPS zwróci odpowiedź do serwera Multi-Factor Authentication. Następnie serwer MFA zrealizuje drugi składnik uwierzytelniania przed zwróceniem wyników do bramy.
+
+> [!IMPORTANT]
+> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

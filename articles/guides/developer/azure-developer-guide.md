@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
 ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64570555"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
@@ -50,7 +50,7 @@ Platforma Azure oferuje usługi, które obsługują do tworzenia aplikacji i pot
 ![Opcje hostowania aplikacji platformy Azure](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
 
-#### <a name="azure-app-service"></a>Azure App Service 
+#### <a name="azure-app-service"></a>Usługa Azure App Service 
 
 Najszybszą metodą publikowanie projektów sieci web, należy wziąć pod uwagę usługi Azure App Service. App Service umożliwia łatwe rozszerzenie aplikacji sieci web do obsługi klientów mobilnych i publikować łatwo użyte interfejsów API REST. Ta platforma udostępnia uwierzytelniania przy użyciu dostawców sieci społecznościowych, na podstawie ruchu skalowania automatycznego testowania w produkcji i wdrożenia ciągłej i opartych na kontenerach.
 
@@ -68,7 +68,7 @@ Można migrować istniejące aplikacje do usługi App Service przy użyciu [narz
 > 
 > **Wypróbuj teraz usługę**: Usługa App Service umożliwia inicjowanie obsługi administracyjnej krótkotrwałe aplikacji, aby wypróbować platformę bez konieczności Załóż konto platformy Azure. Wypróbuj platformę i [utworzyć aplikację usługi Azure App Service](https://tryappservice.azure.com/).
 
-#### <a name="azure-virtual-machines"></a>Azure Virtual Machines
+#### <a name="azure-virtual-machines"></a>Usługa Azure Virtual Machines
 
 Jako infrastrukturę jako dostawca usługi (IaaS), platforma Azure umożliwia wdrażanie lub migracji aplikacji wirtualnych z systemem Linux lub Windows. Wraz z usługi Azure Virtual Network Azure Virtual Machines obsługuje wdrażanie systemu Windows lub maszyny wirtualne systemu Linux na platformie Azure. Z maszynami wirtualnymi masz całkowitej kontroli nad konfiguracji komputera. Korzystając z maszyn wirtualnych, jesteś odpowiedzialny za serwera instalacji, konfiguracji, konserwacja i systemu operacyjnego poprawek oprogramowania.
 
@@ -158,7 +158,7 @@ System Azure oferuje kilka sposobów na korzystanie z kontenerów w swoich aplik
 
 Bezwzględnie nie tylko wiedzieć, kto korzysta z aplikacji, ale także w celu uniemożliwienia nieupoważnionego dostępu do zasobów. System Azure oferuje kilka sposobów uwierzytelniania klientów aplikacji.
 
-- **Azure Active Directory (Azure AD)**: Microsoft wielodostępna, oparta na chmurze tożsamościami i dostępem usługi management. Dzięki integracji z usługą Azure AD, można dodać logowania jednokrotnego (SSO) do aplikacji. Możesz uzyskać dostęp właściwości katalogu przy użyciu interfejsu API programu Graph usługi Azure AD, bezpośrednio lub interfejsu API programu Microsoft Graph. Możesz wprowadzić integrację z obsługą usługi Azure AD ramy autoryzacji OAuth 2.0 i Open ID Connect, przy użyciu bibliotek uwierzytelniania dla wielu platform w usłudze Azure AD i natywne punkty końcowe REST protokołu HTTP.
+- **Azure Active Directory (Azure AD)** : Microsoft wielodostępna, oparta na chmurze tożsamościami i dostępem usługi management. Dzięki integracji z usługą Azure AD, można dodać logowania jednokrotnego (SSO) do aplikacji. Możesz uzyskać dostęp właściwości katalogu przy użyciu interfejsu API programu Graph usługi Azure AD, bezpośrednio lub interfejsu API programu Microsoft Graph. Możesz wprowadzić integrację z obsługą usługi Azure AD ramy autoryzacji OAuth 2.0 i Open ID Connect, przy użyciu bibliotek uwierzytelniania dla wielu platform w usłudze Azure AD i natywne punkty końcowe REST protokołu HTTP.
 
   > **Kiedy należy używać**: Jeśli chcesz zapewnić środowisko logowania jednokrotnego, pracować z danymi opartej na wykresach lub uwierzytelnianie oparte na domenie użytkowników.
   > 
@@ -229,7 +229,7 @@ Azure portal to aplikacji sieci web, która służy do tworzenia, zarządzania i
 
 Jest ona oparta na zestaw interfejsów API REST, która obsługuje interfejs użytkownika witryny Azure portal. Większość tych interfejsów API REST są również obsługiwane umożliwia programowe obsługi administracyjnej i zarządzanie zasobami platformy Azure i aplikacji z dowolnego urządzenia z włączoną funkcją łączności internetowej. Aby uzyskać pełny zestaw dokumentacji interfejsu API REST, zobacz [odwołanie do zestawu SDK REST platformy Azure](https://docs.microsoft.com/rest/api/).
 
-### <a name="apis"></a>Interfejsy API
+### <a name="apis"></a>interfejsy API
 
 Oprócz interfejsów API REST wielu usług platformy Azure pozwalają również programowe zarządzanie zasobami z poziomu aplikacji przy użyciu zestawów SDK platformy Azure specyficzne dla platformy, m.in. zestawy SDK dla następujących platform programowania:
 
@@ -281,7 +281,7 @@ Usługi Azure Resource Explorer to doskonałe narzędzie do wizualizacji zasoby,
 
 Jeśli zezwolisz na dostęp do zasobów platformy Azure, zawsze jest najlepszym rozwiązaniem, aby zapewnić użytkownikom najniższych uprawnień, które są wymagane do wykonywania danego zadania.
 
-- **Kontrola dostępu oparta na rolach (RBAC)**: Na platformie Azure, możesz udzielić dostępu do kont użytkowników (jednostki) w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Kontrola RBAC umożliwia wdrażanie zestaw zasobów w grupie zasobów i przyznawanie uprawnień do określonego użytkownika lub grupy. Umożliwia on również ograniczanie dostępu do zasobów, które należą do docelowej grupy zasobów. Można również przyznać dostęp do jednego zasobu, np. maszyny wirtualnej lub sieci wirtualnej. Aby udzielić dostępu, przypisywanie roli do użytkownika, grupy lub jednostki usługi. Istnieje wiele wstępnie zdefiniowanych ról, a można również definiować własne niestandardowe role. Aby dowiedzieć się więcej, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md).
+- **Kontrola dostępu oparta na rolach (RBAC)** : Na platformie Azure, możesz udzielić dostępu do kont użytkowników (jednostki) w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Kontrola RBAC umożliwia wdrażanie zestaw zasobów w grupie zasobów i przyznawanie uprawnień do określonego użytkownika lub grupy. Umożliwia on również ograniczanie dostępu do zasobów, które należą do docelowej grupy zasobów. Można również przyznać dostęp do jednego zasobu, np. maszyny wirtualnej lub sieci wirtualnej. Aby udzielić dostępu, przypisywanie roli do użytkownika, grupy lub jednostki usługi. Istnieje wiele wstępnie zdefiniowanych ról, a można również definiować własne niestandardowe role. Aby dowiedzieć się więcej, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md).
 
   > **Kiedy należy używać**: Kiedy należy precyzyjne zarządzanie dostępem dla użytkowników i grup lub należy ustawić użytkownika jako właściciela, subskrypcji.
   > 
@@ -291,7 +291,7 @@ Jeśli zezwolisz na dostęp do zasobów platformy Azure, zawsze jest najlepszym 
 
   > **Kiedy należy używać**: Jeśli one programowo zarządzania zasobami platformy Azure lub udzielania dostępu do aplikacji. Aby uzyskać więcej informacji, zobacz [aplikacji Utwórz usługi Active Directory i jednostki usługi](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-#### <a name="tags"></a>Tagi
+#### <a name="tags"></a>`Tags`
 
 Usługa Azure Resource Manager pozwala przypisać znaczniki niestandardowe do poszczególnych zasobów. Tagi, które są pary klucz wartość, może być przydatne, gdy trzeba zorganizować zasoby dotyczące rozliczeń lub monitorowania. Tagi umożliwiają możesz śledzić zasoby w wielu grupach zasobów. Można przypisać tagi w portalu, w szablonie usługi Azure Resource Manager lub programowo, za pomocą interfejsu API REST, wiersza polecenia platformy Azure lub programu PowerShell. Wiele tagów można przypisać do każdego zasobu. Aby dowiedzieć się więcej, zobacz [porządkowanie zasobów na platformie Azure za pomocą tagów](../../resource-group-using-tags.md).
 

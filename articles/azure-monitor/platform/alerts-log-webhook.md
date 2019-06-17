@@ -9,10 +9,10 @@ ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 809c98c1e2e51ae51d7fe03f2165a5d9eecb05cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681818"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla reguł alertów dzienników
@@ -29,7 +29,7 @@ Akcje elementu Webhook wymagają właściwości w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Adres URL elementu webhook |Adres URL elementu webhook. |
+| Adres URL elementu Webhook |Adres URL elementu webhook. |
 | Niestandardowy ładunek JSON |Niestandardowy ładunek do wysyłania za pomocą elementu webhook, po wybraniu tej opcji podczas tworzenia alertu. Szczegóły dostępne pod adresem [Zarządzaj alertów dzienników](alerts-log.md) |
 
 > [!NOTE]
@@ -41,7 +41,7 @@ Elementy Webhook obejmują adres URL i ładunek zapisany w formacie JSON, które
 | Parametr | Zmienna | Opis |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |Nazwa reguły alertu. |
-| Ważność |#severity |Ważność ustawić alert wyzwolenia dziennika. |
+| Severity |#severity |Ważność ustawić alert wyzwolenia dziennika. |
 | AlertThresholdOperator |#thresholdoperator |Operator progu dla reguły alertu.  *Większa niż* lub *mniej niż*. |
 | AlertThresholdValue |#thresholdvalue |Wartość progowa dla reguły alertu. |
 | LinkToSearchResults |#linktosearchresults |Link do portalu analiza, które zwraca rekordy kwerendę, która utworzyła alert. |

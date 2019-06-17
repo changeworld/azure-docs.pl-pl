@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024529"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Przykłady zapytań przy użyciu składni "prosta" wyszukiwania w usłudze Azure Search
@@ -63,7 +63,7 @@ Wklej ten adres URL do klienta REST, jako kroku weryfikacji i wyświetlić struk
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-Ciąg zapytania **`search=*`**, odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. Nie jest to szczególnie przydatne, ale jest najprostszym wyszukiwania, które można wykonać.
+Ciąg zapytania **`search=*`** , odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. Nie jest to szczególnie przydatne, ale jest najprostszym wyszukiwania, które można wykonać.
 
 Opcjonalnie można dodać **`$count=true`** do adresu URL, aby zwrócić liczbę dokumentów spełniających kryteria wyszukiwania. W ciągu wyszukiwania puste to wszystkie dokumenty w indeksie (około 2800 w przypadku Pokazowa).
 

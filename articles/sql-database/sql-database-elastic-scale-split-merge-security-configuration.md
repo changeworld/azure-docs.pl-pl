@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335227"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
@@ -446,7 +446,7 @@ W **Kreator eksportu certyfikatów**:
 11. Kliknij przycisk **Zakończ**.
 12. Kliknij przycisk **OK**.
 
-## <a name="import-certificate"></a>Importuj certyfikat
+## <a name="import-certificate"></a>Importowanie certyfikatu
 W Kreatorze importu certyfikatów:
 
 1. Wybierz lokalizację magazynu.
@@ -459,7 +459,7 @@ W Kreatorze importu certyfikatów:
    1. Wprowadź hasło ochrony klucza prywatnego
    2. Wybierz opcje importowania
 5. Wybierz "W miejscu" certyfikaty w następującym magazynie
-6. Kliknij pozycję **Browse (Przeglądaj)**.
+6. Kliknij pozycję **Browse (Przeglądaj)** .
 7. Wybierz żądany magazyn.
 8. Kliknij przycisk **Zakończ**.
    

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: d3e56f1741a9cfd3f2d9f786c2ce22eb6a946ef2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61481624"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozszerzanie lokalnych zawsze włączone grupy dostępności na platformie Azure
@@ -42,7 +42,7 @@ W tej sekcji dowiesz się, jak używać **Kreatora dodawania repliki platformy A
 > [!IMPORTANT]
 > **Kreatora dodawania repliki platformy Azure** obsługuje tylko maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrażania. Nowych wdrożeń maszyn wirtualnych należy używać nowy model usługi Resource Manager. Jeśli używasz maszyn wirtualnych przy użyciu usługi Resource Manager, należy ręcznie dodać repliki pomocniczej platformy Azure przy użyciu języka Transact-SQL commmands (nie pokazane tutaj). Ten kreator nie będzie działać w tym scenariuszu usługi Resource Manager.
 
-1. Z poziomu programu SQL Server Management Studio, rozwiń węzeł **zawsze włączona wysoka dostępność** > **grup dostępności** > **[Nazwa grupy dostępności]**.
+1. Z poziomu programu SQL Server Management Studio, rozwiń węzeł **zawsze włączona wysoka dostępność** > **grup dostępności** >  **[Nazwa grupy dostępności]** .
 2. Kliknij prawym przyciskiem myszy **replik dostępności**, następnie kliknij przycisk **dodać repliki**.
 3. Domyślnie **dodać repliki z Kreatora grup dostępności** jest wyświetlana. Kliknij przycisk **Dalej**.  Jeśli wybrano **nie pokazuj tej strony ponownie** opcję w dolnej części strony podczas poprzedniego uruchomienia tego kreatora, a ten ekran nie będą wyświetlane.
    

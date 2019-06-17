@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303030"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64715282"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Używanie akcji menu programu MMC programu StorSimple Snapshot Manager
 
@@ -28,9 +28,9 @@ Programie StorSimple Snapshot Manager zobaczysz następujące akcje wymienione n
 
 * Widok
 * Nowe okno, w tym miejscu 
-* Odświeżanie 
+* Odśwież 
 * Eksportuj listę 
-* Pomoc 
+* Help 
 
 Te akcje są dostępne w ramach programu Microsoft Management Console (MMC) i nie są specyficzne do programu StorSimple Snapshot Manager. W tym samouczku opisano te akcje oraz wyjaśniono sposób używania każdego z nich w programie StorSimple Snapshot Manager.
 
@@ -69,7 +69,7 @@ Możesz użyć **nowe okno, w tym miejscu** opcję, aby otworzyć nowe okno kons
    
     ![Nowe okno, w tym miejscu](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
 
-## <a name="refresh"></a>Odświeżanie
+## <a name="refresh"></a>Odśwież
 Możesz użyć **Odśwież** akcji w celu zaktualizowania okna konsoli.
 
 #### <a name="to-update-the-console-window"></a>Aby zaktualizować okna konsoli
@@ -91,7 +91,7 @@ Możesz użyć **Eksportuj listę** akcję, aby zapisać listę w pliku wartośc
       
       ![Eksportuj listę w formacie wartości rozdzielanych przecinkami](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Pomoc
+## <a name="help"></a>Help
 Możesz użyć **pomocy** menu, aby wyświetlić dostępne Pomoc online dla programu StorSimple Snapshot Manager i programu MMC.
 
 #### <a name="to-view-available-online-help"></a>Aby wyświetlić dostępne Pomoc online

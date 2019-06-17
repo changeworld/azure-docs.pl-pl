@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa3d7d22ed032379f452eb4648c9a1cf87293df9
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 15900758945fd5c97198caf47ff01fcfb5a6a794
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956575"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057405"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Wprowadzenie do serwera Azure Multi-Factor Authentication
 
@@ -24,7 +24,10 @@ ms.locfileid: "65956575"
 
 ![Wprowadzenie do serwera usługi MFA w środowisku lokalnym](./media/howto-mfaserver-deploy/server2.png)</center>
 
-Po podjęciu decyzji o użyciu lokalnego serwera Multi-Factor Authentication można przejść do kolejnych kroków. Ta strona obejmuje nową instalację serwera oraz jego konfigurację z uwzględnieniem lokalnej usługi Active Directory. Jeśli masz już zainstalowany serwer MFA i chcesz go uaktualnić, zobacz [Upgrade to the latest Azure Multi-Factor Authentication Server](howto-mfaserver-deploy-upgrade.md) (Uaktualnianie do najnowszej wersji serwera Azure Multi-Factor Authentication). Jeśli szukasz informacji dotyczących instalowania tylko usługi sieci Web, zobacz [Wdrażanie usługi sieci Web aplikacji mobilnej serwera Azure Multi-Factor Authentication](howto-mfaserver-deploy-mobileapp.md).
+Ta strona obejmuje nową instalację serwera oraz jego konfigurację z uwzględnieniem lokalnej usługi Active Directory. Jeśli masz już zainstalowany serwer MFA i chcesz go uaktualnić, zobacz [Upgrade to the latest Azure Multi-Factor Authentication Server](howto-mfaserver-deploy-upgrade.md) (Uaktualnianie do najnowszej wersji serwera Azure Multi-Factor Authentication). Jeśli szukasz informacji dotyczących instalowania tylko usługi sieci Web, zobacz [Wdrażanie usługi sieci Web aplikacji mobilnej serwera Azure Multi-Factor Authentication](howto-mfaserver-deploy-mobileapp.md).
+
+> [!IMPORTANT]
+> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
 
 ## <a name="plan-your-deployment"></a>Planowanie wdrożenia
 
@@ -116,7 +119,7 @@ Po pobraniu serwera możesz go zainstalować i skonfigurować. Sprawdź, czy ser
 3. Po ukończeniu instalacji kliknij przycisk **Zakończ**. Spowoduje to uruchomienie kreatora konfiguracji.
 4. Na ekranie powitalnym kreatora konfiguracji zaznacz pole **Pomiń korzystanie z kreatora konfiguracji uwierzytelniania** i kliknij przycisk **Dalej**. Spowoduje to zamknięcie kreatora i uruchomienie serwera.
 
-   ![Pomiń korzystanie z kreatora konfiguracji uwierzytelniania](./media/howto-mfaserver-deploy/skip2.png)
+   ![Pomiń korzystanie z Kreatora konfiguracji uwierzytelniania](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Na stronie, z której został pobrany serwer, kliknij przycisk **Generuj poświadczenia aktywacji**. Skopiuj uzyskane informacje do serwera Azure MFA, wpisując je w odpowiednich polach, a następnie kliknij przycisk **Aktywuj**.
 

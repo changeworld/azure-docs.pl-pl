@@ -8,19 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: c52574485a62b081224a36ca5deb0fdae114f9bc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b00630354834897793bbf357be378051bcf74698
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859654"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059378"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
 Usługa Azure klastry HDInsight zapewniają Apache Hadoop w znajomym środowisku systemu Linux działające w chmurze platformy Azure. W przypadku większości elementów powinny działać dokładnie tak jak w innych instalacji usługi Hadoop w systemie Linux. W tym dokumencie wywołuje konkretne różnice, które należy wiedzieć.
-
-> [!IMPORTANT]  
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -55,7 +52,7 @@ To polecenie zwraca dokument JSON z opisem usługi, a następnie [jq](https://st
 
 ## <a name="remote-access-to-services"></a>Zdalny dostęp do usług
 
-* **Ambari (web)** - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
 
     Uwierzytelnianie przy użyciu użytkownika administratora klastra i hasło, a następnie zaloguj się do systemu Ambari.
 
@@ -66,14 +63,14 @@ To polecenie zwraca dokument JSON z opisem usługi, a następnie [jq](https://st
     >
     > Aby użyć pełnej funkcjonalności interfejsu użytkownika sieci web Ambari, użyj tunelu SSH, aby ruch internetowy serwer proxy do węzła głównego klastra. Zobacz [użycie tunelowania SSH do uzyskania dostępu do systemu Apache Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie i innych web UI](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > Uwierzytelnianie za pomocą użytkownika administratora klastra i hasło.
     >
     > Uwierzytelnianie to zwykły tekst — zawsze używaj protokołu HTTPS, aby mieć pewność, że połączenie jest bezpieczne.
 
-* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > Uwierzytelnianie za pomocą użytkownika administratora klastra i hasło.
@@ -288,7 +285,6 @@ Aby użyć innej wersji składnika, Przekaż wersji, potrzebujesz i używać go 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Migracja z systemem Windows HDInsight do opartych na systemie Linux](hdinsight-migrate-from-windows-to-linux.md)
 * [Zarządzanie klastrami HDInsight przy użyciu interfejsu API Apache Ambari REST](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Use Apache Hive z HDInsight](hadoop/hdinsight-use-hive.md)
 * [Apache Pig za pomocą HDInsight](hadoop/hdinsight-use-pig.md)

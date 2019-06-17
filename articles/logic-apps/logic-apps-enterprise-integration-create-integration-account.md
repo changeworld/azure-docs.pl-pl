@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
 ms.openlocfilehash: 43ecdafac4f0a5cdc9e619537cdbe2a42ff7fe1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60999615"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>Tworzenie i zarządzanie kontami integracji B2B rozwiązania dzięki usłudze logic apps
@@ -54,12 +54,12 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
 
    | Właściwość | Wymagane | Przykładowa wartość | Opis | 
    |----------|----------|---------------|-------------|
-   | Name | Yes | test-integration-account | Nazwa konta integracji. W tym przykładzie należy użyć określonej nazwy. | 
+   | Name | Tak | test-integration-account | Nazwa konta integracji. W tym przykładzie należy użyć określonej nazwy. | 
    | Subskrypcja | Yes | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure do użycia | 
-   | Grupa zasobów | Yes | test-integration-account-rg | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używane do organizowania powiązanych zasobów. W tym przykładzie należy utworzyć nową grupę zasobów o określonej nazwie. | 
-   | Warstwa cenowa | Yes | Bezpłatna | Warstwa cenowa, którego chcesz używać. W tym przykładzie wybierz **bezpłatna**, ale uzyskać więcej informacji, zobacz [Logic Apps, limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md) i [Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps/). | 
-   | Lokalizacja | Yes | Zachodnie stany USA | Region którym będą przechowywane informacje o koncie integracji. Wybierz tej samej lokalizacji co aplikacja logiki lub utworzyć aplikację logiki w tej samej lokalizacji co konto usługi integracji. | 
-   | Obszar roboczy usługi Log Analytics | Nie | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. | 
+   | Grupa zasobów | Tak | test-integration-account-rg | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używane do organizowania powiązanych zasobów. W tym przykładzie należy utworzyć nową grupę zasobów o określonej nazwie. | 
+   | Warstwa cenowa | Yes | Wolne | Warstwa cenowa, którego chcesz używać. W tym przykładzie wybierz **bezpłatna**, ale uzyskać więcej informacji, zobacz [Logic Apps, limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md) i [Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps/). | 
+   | Lokalizacja | Tak | Zachodnie stany USA | Region którym będą przechowywane informacje o koncie integracji. Wybierz tej samej lokalizacji co aplikacja logiki lub utworzyć aplikację logiki w tej samej lokalizacji co konto usługi integracji. | 
+   | Obszar roboczy usługi log Analytics | Nie | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. | 
    ||||| 
 
 4. Gdy wszystko będzie gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie pozycję **Utwórz**.

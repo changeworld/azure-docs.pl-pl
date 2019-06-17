@@ -14,12 +14,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706a826d1b256e95e459d2a44cdb13ee56c70599
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 969d08888002c97453cb2af18f42371227676597
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60352711"
+ms.locfileid: "67109476"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](how-to-connect-install-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -177,7 +177,7 @@ Na tym ekranie można wybrać funkcje opcjonalne dla określonych scenariuszy.
 | Synchronizacja skrótów haseł |Te opcję można włączyć, jeśli jako metodę logowania wybrano federację. Synchronizacja skrótów haseł może być następnie użyta jako opcja tworzenia kopii zapasowych. Dodatkowe informacje znajdują się w temacie [Synchronizacja skrótów haseł](how-to-connect-password-hash-synchronization.md). </br></br>W przypadku wybrania uwierzytelniania przekazywanego tę opcję można również włączyć, aby zapewnić obsługę starszych klientów i opcję tworzenia kopii zapasowych. Dodatkowe informacje znajdują się w temacie [Synchronizacja skrótów haseł](how-to-connect-password-hash-synchronization.md).|
 | Zapisywanie zwrotne haseł |Po włączeniu zapisywania zwrotnego haseł zmiany hasła, które pochodzą z usługi Azure AD, są ponownie zapisywane w katalogu lokalnym. Więcej informacji można znaleźć w temacie [Wprowadzenie do zarządzania hasłami](../authentication/quickstart-sspr.md) |
 | Zapisywanie zwrotne grup |Jeśli używana jest funkcja **Grupy usługi Office 365**, grupy te mogą być reprezentowane w lokalnej usłudze Active Directory. Ta opcja jest dostępna tylko, jeśli w lokalnej usłudze Active Directory jest dostępny program Exchange. Więcej informacji znajduje się w temacie [Zapisywanie zwrotne grup](how-to-connect-preview.md#group-writeback). |
-| Zapisywanie zwrotne urządzeń |Umożliwia zapisywanie zwrotne obiektów urządzeń w usłudze Azure AD do lokalnej usługi Active Directory dla scenariuszy dostępu warunkowego. Więcej informacji znajduje się w temacie [Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](how-to-connect-device-writeback.md). |
+| Zapisywanie zwrotne urządzeń |Umożliwia zapisywanie zwrotne obiektów urządzeń w usłudze Azure AD do usługi Active Directory w środowisku lokalnym dla scenariuszy dostępu warunkowego. Więcej informacji znajduje się w temacie [Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](how-to-connect-device-writeback.md). |
 | Synchronizacja atrybutów rozszerzeń katalogów |Po włączeniu synchronizacji atrybutów rozszerzeń katalogów określone atrybuty są synchronizowane z usługą Azure AD. Więcej informacji znajduje się w temacie [Rozszerzenia katalogów](how-to-connect-sync-feature-directory-extensions.md). |
 
 ### <a name="azure-ad-app-and-attribute-filtering"></a>Filtrowanie atrybutów i aplikacji usługi Azure AD

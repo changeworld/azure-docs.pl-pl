@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
 ms.openlocfilehash: 730ff68e70999307417eea276761d56f4a44046a
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65520011"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standardowe formaty i kodeki Encoder
@@ -29,16 +29,16 @@ Ten artykuł zawiera listę najbardziej typowych importu i eksportu formatów pl
 | Formaty plików (rozszerzenia plików) | Obsługiwane |
 | --- | --- |
 | FLV (z koderów-dekoderów H.264 i AAC) (FLV) |Tak |
-| MXF    (.mxf) |Tak |
-| GXF    (.gxf) |Tak |
-| MPEG2-PS, MPEG2-TS, 3GP (TS, PS, 3GP, 3GPP, mpg) |Tak |
+| MXF    (.mxf) |Yes |
+| GXF    (.gxf) |Yes |
+| MPEG2-PS, MPEG2-TS, 3GP (TS, PS, 3GP, 3GPP, mpg) |Yes |
 | Windows Media Video (WMV) / ASF (WMV, ASF) |Tak |
-| AVI (nieskompresowany 8-bitowy/10-bitowy) (AVI) |Tak |
+| AVI (nieskompresowany 8-bitowy/10-bitowy) (AVI) |Yes |
 | MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Tak |
-| [Microsoft Digital Video Recording](https://msdn.microsoft.com/library/windows/desktop/dd692984) (dvr ms) |Tak |
-| Matroska/WebM (mkv) |Tak |
+| [Microsoft Digital Video Recording](https://msdn.microsoft.com/library/windows/desktop/dd692984) (dvr ms) |Yes |
+| Matroska/WebM (mkv) |Yes |
 | WAVE/WAV (wav) |Tak |
-| QuickTime (.mov) |Tak |
+| QuickTime (.mov) |Yes |
 
 > [!NOTE]
 > 
@@ -61,7 +61,7 @@ lub
 | Avid DNxHD (in MXF) |Tak |
 | DVCPro/DVCProHD (in MXF) |Tak |
 | Cyfrowy video (DV) (w plikach AVI) |Tak |
-| JPEG 2000 |Tak |
+| JPEG 2000 |Yes |
 | MPEG-2 (profil 422 i wysoki poziom; wraz z wariantami, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® oraz D10) |Maksymalnie profil 422 |
 | MPEG-1 |Tak |
 | VC-1/WMV9 |Tak |
@@ -81,7 +81,7 @@ lub
 | Dane wejściowe Audio kodery-dekodery | Obsługiwane |
 | --- | --- |
 | AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Tak |
-| MPEG Layer 2 |Tak |
+| MPEG Layer 2 |Yes |
 | Mp3 (MPEG-1 Audio warstwa 3) |Tak |
 | Program Windows Media Audio |Tak |
 | WAV/PCM |Tak |

@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60824018"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenoszenie danych z bazy danych DB2 za pomocą działania kopiowania w fabryce danych Azure
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-onprem-db2-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-db2.md)
 
@@ -82,10 +82,10 @@ W poniższej tabeli wymieniono właściwości kodu JSON, które są specyficzne 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | **type** |Ta właściwość musi być równa **OnPremisesDb2**. |Yes |
-| **server** |Nazwa serwera bazy danych DB2. |Yes |
+| **server** |Nazwa serwera bazy danych DB2. |Tak |
 | **database** |Nazwa bazy danych DB2. |Yes |
 | **schema** |Nazwa schematu w bazie danych DB2. Ta właściwość jest rozróżniana wielkość liter. |Nie |
-| **authenticationType** |Typ uwierzytelniania, który służy do łączenia z bazą danych DB2. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Yes |
+| **authenticationType** |Typ uwierzytelniania, który służy do łączenia z bazą danych DB2. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Tak |
 | **Nazwa użytkownika** |Nazwa konta użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | **Hasło** |Hasło dla konta użytkownika. |Nie |
 | **gatewayName** |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych DB2 w środowisku lokalnym. |Yes |
@@ -309,7 +309,7 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | Typ bazy danych DB2 | Typ .NET framework |
 | --- | --- |
 | SmallInt |Int16 |
-| Liczba całkowita |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -319,23 +319,23 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | Numeric |Decimal |
 | Date |DateTime |
 | Time |TimeSpan |
-| Znacznik czasu |DateTime |
+| Timestamp |DateTime |
 | Xml |Byte[] |
-| char |String |
+| Char |String |
 | VarChar |String |
 | LongVarChar |String |
 | DB2DynArray |String |
 | Binarny |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Grafika |String |
+| Graphic |String |
 | VarGraphic |String |
 | LongVarGraphic |String |
-| CLOB |String |
+| Clob |String |
 | Obiekt blob |Byte[] |
 | DbClob |String |
 | SmallInt |Int16 |
-| Liczba całkowita |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -345,9 +345,9 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | Numeric |Decimal |
 | Date |DateTime |
 | Time |TimeSpan |
-| Znacznik czasu |DateTime |
+| Timestamp |DateTime |
 | Xml |Byte[] |
-| char |String |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
 Aby dowiedzieć się, jak mapowania kolumn w zestawie danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

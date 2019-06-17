@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60320588"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Przykładowy przepływ pracy przygotowywania dysków twardych do zadania importu
@@ -29,7 +29,7 @@ W tym przykładzie importuje następujące dane do konta magazynu Windows Azure 
   
 Zadania importu importuje dane do następujących miejsc docelowych w ramach konta magazynu:  
   
-|Element źródłowy|Katalog wirtualny docelowego lub obiektu blob|  
+|source|Katalog wirtualny docelowego lub obiektu blob|  
 |------------|-------------------------------------------|  
 |H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
 |H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  
@@ -103,7 +103,7 @@ Aby ustawić te właściwości, Utwórz plik tekstowy `c:\WAImportExport\SampleP
 </Properties>  
 ```
   
-Teraz można przystąpić do uruchomienia narzędzia Azure Import/Export przygotowywania dwóch dysków twardych. Należy pamiętać, że:  
+Teraz można przystąpić do uruchomienia narzędzia Azure Import/Export przygotowywania dwóch dysków twardych. Należy pamiętać o następujących kwestiach:  
   
 -   Pierwszy dysk jest zainstalowany jako dysku X.  
   

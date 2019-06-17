@@ -4,14 +4,14 @@ description: Pokazuje, jakie typy zasobów platformy Azure obsługuje tagi. Zawi
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/10/2019
+ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ef37323fb8150e3a6b52800bfafa2585ae328c2
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523232"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056882"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-tags.md). Kolumnę z etykietą **obsługuje tagi** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumnę z etykietą **tagu w raporcie koszt** wskazuje, czy ten typ zasobu przekazuje tagu do raportów kosztów.
@@ -40,10 +40,10 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | ------------- | ----------- | ----------- |
 | aadsupportcases | Nie |  Nie |
 | addsservices | Nie |  Nie |
-| agenci | Nie |  Nie |
+| Agenci | Nie |  Nie |
 | anonymousapiusers | Nie |  Nie |
 | konfiguracja | Nie |  Nie |
-| dzienniki | Nie |  Nie |
+| logs | Nie |  Nie |
 | raporty | Nie |  Nie |
 | services | Nie |  Nie |
 
@@ -52,14 +52,14 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | ------------- | ----------- | ----------- |
 | Konfiguracje | Nie |  Nie |
 | generateRecommendations | Nie |  Nie |
-| zalecenia | Nie |  Nie |
+| Zalecenia | Nie |  Nie |
 | pominięć | Nie |  Nie |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | actionRules | Nie |  Nie |
-| alerty | Nie |  Nie |
+| alerts | Nie |  Nie |
 | alertsList | Nie |  Nie |
 | alertsSummary | Nie |  Nie |
 | alertsSummaryList | Nie |  Nie |
@@ -70,7 +70,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| serwerów | Tak | Tak |
+| Serwery | Yes | Tak |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -103,7 +103,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | automationAccounts | Tak | Tak |
-| automationAccounts/configurations | Tak | Tak |
+| automationAccounts/configurations | Yes | Yes |
 | automationAccounts/zadań | Nie |  Nie |
 | automationAccounts/runbooks | Tak | Tak |
 | automationAccounts/softwareUpdateConfigurations | Nie | Nie |
@@ -120,7 +120,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| b2cDirectories | Tak | Nie |
+| b2cDirectories | Yes | Nie |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -132,7 +132,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| batchAccounts | Tak | Tak |
+| batchAccounts | Tak | Yes |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -220,7 +220,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftcache"></a>Microsoft.Cache
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| Redis | Tak | Tak |
+| Redis | Tak | Yes |
 | RedisConfigDefinition | Nie |  Nie |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
@@ -238,8 +238,8 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | reservationOrders/return | Nie |  Nie |
 | reservationOrders/split | Nie |  Nie |
 | reservationOrders/wymiany | Nie |  Nie |
-| rezerwacje | Nie |  Nie |
-| zasoby | Nie |  Nie |
+| zastrzeżenia | Nie |  Nie |
+| Zasoby | Nie |  Nie |
 | validateReservationOrder | Nie |  Nie |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -255,7 +255,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| certificateOrders | Tak | Tak |
+| certificateOrders | Yes | Tak |
 | zamówień certyfikatów/certyfikaty | Nie |  Nie |
 | validateCertificateRegistrationInformation | Nie |  Nie |
 
@@ -301,8 +301,8 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | Możliwości | Nie |  Nie |
-| dyski | Nie |  Nie |
-| obrazy | Nie |  Nie |
+| Dyski | Nie |  Nie |
+| images | Nie |  Nie |
 | osImages | Nie |  Nie |
 | osPlatformImages | Nie |  Nie |
 | publicImages | Nie |  Nie |
@@ -316,7 +316,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Tak | Yes |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -327,18 +327,18 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| availabilitySets | Tak | Tak |
-| dyski | Tak | Tak |
-| obrazy | Tak | Tak |
+| availabilitySets | Yes | Tak |
+| Dyski | Tak | Tak |
+| images | Yes | Tak |
 | restorePointCollections | Tak | Tak |
 | restorePointCollections/restorePoints | Nie |  Nie |
 | sharedVMImages | Tak | Tak |
 | sharedVMImages/wersji | Tak | Tak |
-| migawki | Tak | Tak |
-| maszyn wirtualnych | Tak | Tak |
+| Migawki | Tak | Tak |
+| maszyn wirtualnych | Tak | Yes |
 | maszyn wirtualnych/diagnosticSettings | Nie |  Nie |
-| virtualMachines/extensions | Tak | Tak |
-| virtualMachineScaleSets | Tak | Tak |
+| virtualMachines/extensions | Tak | Yes |
+| virtualMachineScaleSets | Yes | Tak |
 | virtualMachineScaleSets/extensions | Nie |  Nie |
 | virtualMachineScaleSets/networkInterfaces | Nie |  Nie |
 | virtualMachineScaleSets/publicIPAddresses | Nie |  Nie |
@@ -351,7 +351,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | AggregatedCost | Nie |  Nie |
 | Salda | Nie |  Nie |
 | Budżety | Nie |  Nie |
-| Opłaty | Nie |  Nie |
+| Opłaty za | Nie |  Nie |
 | CostTags | Nie |  Nie |
 | Środki na korzystanie z | Nie |  Nie |
 | zdarzenia | Nie |  Nie |
@@ -359,7 +359,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | partie | Nie |  Nie |
 | Marketplaces | Nie |  Nie |
 | Pricesheets | Nie |  Nie |
-| produkty | Nie |  Nie |
+| Produkty | Nie |  Nie |
 | ReservationDetails | Nie |  Nie |
 | ReservationRecommendations | Nie |  Nie |
 | ReservationSummaries | Nie |  Nie |
@@ -381,7 +381,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | rejestry/kompilacji | Nie |  Nie |
 | rejestry/kompilacji/anulować | Nie |  Nie |
 | registries/builds/getLogLink | Nie |  Nie |
-| registries/buildTasks | Tak | Tak |
+| registries/buildTasks | Yes | Yes |
 | registries/buildTasks/steps | Nie |  Nie |
 | registries/eventGridFilters | Nie |  Nie |
 | registries/getBuildSourceUploadUrl | Nie |  Nie |
@@ -394,7 +394,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | rejestry/przebiegów | Nie |  Nie |
 | rejestry/uruchomienia/anulować | Nie |  Nie |
 | registries/scheduleRun | Nie |  Nie |
-| rejestry/zadań | Tak | Tak |
+| rejestry/zadań | Tak | Yes |
 | registries/updatePolicies | Nie |  Nie |
 | rejestry/elementów webhook | Tak | Tak |
 | registries/webhooks/getCallbackConfig | Nie |  Nie |
@@ -404,26 +404,26 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | containerServices | Tak | Tak |
-| managedClusters | Tak | Tak |
+| managedClusters | Yes | Tak |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| aplikacje | Tak | Tak |
+| aplikacje | Yes | Yes |
 | updateCommunicationPreference | Nie |  Nie |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Yes | Yes |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | Alerty | Nie |  Nie |
 | BillingAccounts | Nie |  Nie |
-| Łączniki | Tak | Tak |
-| Działy | Nie |  Nie |
+| Łączniki | Tak | Yes |
+| działy | Nie |  Nie |
 | Wymiary | Nie |  Nie |
 | enrollmentAccounts | Nie |  Nie |
 | Zapytanie | Nie |  Nie |
@@ -434,7 +434,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| Koncentratory | Tak | Tak |
+| Koncentratory | Tak | Yes |
 | hubs/authorizationPolicies | Nie |  Nie |
 | Koncentratory/łączników | Nie |  Nie |
 | Koncentratory/łączników/mapowania | Nie |  Nie |
@@ -451,17 +451,17 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| zadania | Tak | Tak |
+| Zadania | Tak | Tak |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| DataBoxEdgeDevices | Tak | Tak |
+| DataBoxEdgeDevices | Yes | Yes |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| obszary robocze | Tak | Nie |
+| Obszary robocze | Yes | Nie |
 | workspaces/virtualNetworkPeerings | Nie |  Nie |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -472,7 +472,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| connectionManagers | Tak | Tak |
+| connectionManagers | Yes | Tak |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -486,7 +486,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Tak | Tak |
 | accounts/dataLakeStoreAccounts | Nie |  Nie |
 | accounts/storageAccounts | Nie |  Nie |
 | accounts/storageAccounts/containers | Nie |  Nie |
@@ -494,7 +494,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Tak | Tak |
 | accounts/eventGridFilters | Nie |  Nie |
 | konta/firewallRules | Nie |  Nie |
 
@@ -507,21 +507,21 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| serwerów | Tak | Tak |
+| Serwery | Tak | Tak |
 | servers/recoverableServers | Nie |  Nie |
 | servers/virtualNetworkRules | Nie |  Nie |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| serwerów | Tak | Tak |
+| Serwery | Tak | Tak |
 | servers/recoverableServers | Nie |  Nie |
 | servers/virtualNetworkRules | Nie |  Nie |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| serwerów | Tak | Tak |
+| Serwery | Tak | Tak |
 | serwery/doradców | Nie |  Nie |
 | serwery/queryTexts | Nie |  Nie |
 | servers/recoverableServers | Nie |  Nie |
@@ -545,10 +545,10 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| Warsztaty | Tak | Tak |
-| labs/serviceRunners | Tak | Tak |
+| Warsztaty | Yes | Tak |
+| labs/serviceRunners | Tak | Yes |
 | laboratoria/maszyn wirtualnych | Tak | Tak |
-| Harmonogramy | Tak | Tak |
+| Harmonogramy | Yes | Tak |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -586,7 +586,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | Klastry | Tak | Nie |
-| przestrzenie nazw | Tak | Nie |
+| Przestrzenie nazw | Yes | Nie |
 | przestrzenie nazw/reguł autoryzacji | Nie |  Nie |
 | przestrzenie nazw/disasterrecoveryconfigs | Nie |  Nie |
 | przestrzenie nazw/eventhubs | Nie |  Nie |
@@ -612,7 +612,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | myareas/areas/galleryitems | Nie |  Nie |
 | myareas/galleryitems | Nie |  Nie |
 | register | Nie |  Nie |
-| zasoby | Nie |  Nie |
+| Zasoby | Nie |  Nie |
 | retrieveresourcesbyid | Nie |  Nie |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -624,18 +624,18 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| hanaInstances | Tak |  Tak |
+| hanaInstances | Tak |  Yes |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| Klastry | Tak | Tak |
+| Klastry | Yes | Yes |
 | klastry/aplikacji | Nie |  Nie |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| zadania | Tak | Tak |
+| Zadania | Tak | Tak |
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -649,14 +649,14 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftinsights"></a>microsoft.insights
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| actiongroups | Tak | Tak |
+| actiongroups | Tak | Yes |
 | activityLogAlerts | Tak | Tak |
-| alertrules | Tak | Tak |
+| alertrules | Yes | Tak |
 | automatedExportSettings | Nie |  Nie |
-| wartość autoscalesettings | Tak | Tak |
-| punkt odniesienia | Nie |  Nie |
+| wartość autoscalesettings | Yes | Tak |
+| Punkt odniesienia | Nie |  Nie |
 | calculatebaseline | Nie |  Nie |
-| Składniki | Tak | Tak |
+| Składniki | Yes | Tak |
 | składniki/zdarzenia | Nie |  Nie |
 | składniki/pricingPlans | Nie |  Nie |
 | składniki/zapytania | Nie |  Nie |
@@ -667,16 +667,16 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | extendedDiagnosticSettings | Nie |  Nie |
 | logDefinitions | Nie |  Nie |
 | logprofiles | Nie |  Nie |
-| dzienniki | Nie |  Nie |
-| metricAlerts | Tak | Tak |
+| logs | Nie |  Nie |
+| metricAlerts | Yes | Tak |
 | migrateToNewPricingModel | Nie |  Nie |
 | myWorkbooks | Nie |  Nie |
 | — zapytania | Nie |  Nie |
 | rollbackToLegacyPricingModel | Nie |  Nie |
-| scheduledqueryrules | Tak | Tak |
+| scheduledqueryrules | Yes | Tak |
 | vmInsightsOnboardingStatuses | Nie |  Nie |
 | testy internetowe | Tak | Tak |
-| skoroszyty | Tak | Tak |
+| Skoroszyty | Tak | Tak |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -692,13 +692,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| Wykres | Tak | Tak |
+| Graph | Tak | Tak |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | deletedVaults | Nie |  Nie |
-| Magazyny | Tak | Tak |
+| Magazyny | Tak | Yes |
 | Magazyny/accessPolicies | Nie |  Nie |
 | Magazyny/klucze tajne | Nie |  Nie |
 
@@ -713,23 +713,23 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| labaccounts | Tak | Tak |
-| Użytkownicy | Nie |  Nie |
+| labaccounts | Yes | Tak |
+| użytkownicy | Nie |  Nie |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Tak | Yes |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Yes | Yes |
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| dzienniki | Nie |  Nie |
+| logs | Nie |  Nie |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -740,50 +740,50 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| commitmentPlans | Tak | Tak |
-| webServices | Tak | Tak |
-| Obszary robocze | Tak | Tak |
+| commitmentPlans | Yes | Tak |
+| webServices | Tak | Yes |
+| Obszary robocze | Tak | Yes |
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
-| konta/obszarów roboczych | Tak | Tak |
+| accounts | Tak | Tak |
+| konta/obszarów roboczych | Tak | Yes |
 | obszary robocze/kont/projektów | Tak | Tak |
-| teamAccounts | Tak | Tak |
+| teamAccounts | Tak | Yes |
 | teamAccounts/obszarów roboczych | Tak | Tak |
-| obszary robocze/teamAccounts/projektów | Tak | Tak |
+| obszary robocze/teamAccounts/projektów | Tak | Yes |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Tak | Yes |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| obszary robocze | Tak | Tak |
+| Obszary robocze | Tak | Tak |
 | obszary robocze/usługi obliczeniowe | Nie |  Nie |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | Tożsamości | Nie |  Nie |
-| userAssignedIdentities | Tak | 
+| userAssignedIdentities | Yes | 
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | getEntities | Nie |  Nie |
 | managementGroups | Nie |  Nie |
-| zasoby | Nie |  Nie |
+| Zasoby | Nie |  Nie |
 | startTenantBackfill | Nie |  Nie |
 | tenantBackfillStatus | Nie |  Nie |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Tak | Yes |
 | accounts/eventGridFilters | Nie |  Nie |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
@@ -798,7 +798,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | offerTypes/publishers/offers/plans/configs | Nie |  Nie |
 | offerTypes/publishers/offers/plans/configs/importImage | Nie |  Nie |
 | privategalleryitems | Nie |  Nie |
-| produkty | Nie |  Nie |
+| Produkty | Nie |  Nie |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -822,11 +822,11 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | mediaservices/contentKeyPolicies | Nie |  Nie |
 | mediaservices/eventGridFilters | Nie |  Nie |
 | mediaservices/liveEventOperations | Nie |  Nie |
-| mediaservices/liveEvents | Tak | Tak |
+| mediaservices/liveEvents | Tak | Yes |
 | mediaservices/liveEvents/liveOutputs | Nie |  Nie |
 | mediaservices/liveOutputOperations | Nie |  Nie |
 | mediaservices/streamingEndpointOperations | Nie |  Nie |
-| mediaservices/punkty | Tak | Tak |
+| mediaservices/punkty | Tak | Yes |
 | mediaservices/streamingLocators | Nie |  Nie |
 | mediaservices/streamingPolicies | Nie |  Nie |
 | mediaservices/przekształceń | Nie |  Nie |
@@ -835,7 +835,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| Projekty | Tak | Tak |
+| Projekty | Tak | Yes |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -845,11 +845,11 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | azureFirewallFqdnTags | Nie |  Nie |
 | azureFirewalls | Tak | Nie |
 | bgpServiceCommunities | Nie |  Nie |
-| połączenia | Tak | Tak |
-| ddosCustomPolicies | Tak | Tak |
+| Połączenia | Tak | Tak |
+| ddosCustomPolicies | Yes | Yes |
 | ddosProtectionPlans | Tak | Tak |
 | dnsOperationStatuses | Nie |  Nie |
-| dnszones | Tak | Tak |
+| dnszones | Tak | Yes |
 | dnszones/A | Nie |  Nie |
 | dnszones/AAAA | Nie |  Nie |
 | dnszones/all | Nie |  Nie |
@@ -864,46 +864,46 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | dnszones/TXT | Nie |  Nie |
 | expressRouteCircuits | Tak  | Nie |
 | expressRouteServiceProviders | Nie |  Nie |
-| usługi Frontdoor | Tak | Tak |
-| frontdoorWebApplicationFirewallPolicies | Tak | Tak |
+| frontdoors | Yes | Yes |
+| frontdoorWebApplicationFirewallPolicies | Yes | Tak |
 | getDnsResourceReference | Nie |  Nie |
-| interfaceEndpoints | Tak | Tak |
+| interfaceEndpoints | Yes | Yes |
 | internalNotify | Nie |  Nie |
 | loadBalancers | Tak | Nie |
 | localNetworkGateways | Tak | Tak |
-| natGateways | Tak | Tak |
-| networkIntentPolicies | Tak | Tak |
+| natGateways | Yes | Yes |
+| networkIntentPolicies | Tak | Yes |
 | Interfejsy | Tak | Tak |
-| networkProfiles | Tak | Tak |
+| networkProfiles | Yes | Tak |
 | networkSecurityGroups | Tak | Tak |
-| networkWatchers | Tak | Nie |
-| networkWatchers/connectionMonitors | Tak | Nie |
+| networkWatchers | Yes | Nie |
+| networkWatchers/connectionMonitors | Yes | Nie |
 | networkWatchers/lenses | Tak | Nie |
 | networkWatchers/pingMeshes | Tak | Nie |
 | privateLinkServices | Tak | Tak |
-| publicIPAddresses | Tak | Tak |
-| publicIPPrefixes | Tak | Tak |
+| publicIPAddresses | Yes | Yes |
+| publicIPPrefixes | Yes | Tak |
 | routeFilters | Tak | Tak |
 | routeTables | Tak | Tak |
-| serviceEndpointPolicies | Tak | Tak |
+| serviceEndpointPolicies | Tak | Yes |
 | trafficManagerGeographicHierarchies | Nie |  Nie |
 | trafficmanagerprofiles | Tak | Tak |
 | trafficmanagerprofiles/heatMaps | Nie |  Nie |
-| virtualHubs | Tak | Tak |
+| virtualHubs | Tak | Yes |
 | virtualNetworkGateways | Tak | Nie |
-| virtualNetworks | Tak | Tak |
+| virtualNetworks | Tak | Yes |
 | virtualNetworks/subnets | Nie |  Nie |
-| virtualNetworkTaps | Tak | Tak |
-| virtualWans | Tak | Tak |
+| virtualNetworkTaps | Tak | Yes |
+| virtualWans | Tak | Yes |
 | vpnGateways | Tak | Nie |
 | vpnSites | Tak | Tak |
-| webApplicationFirewallPolicies | Tak | Tak |
+| webApplicationFirewallPolicies | Yes | Yes |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| przestrzenie nazw | Tak | Nie |
-| namespaces/notificationHubs | Tak | Nie |
+| Przestrzenie nazw | Tak | Nie |
+| namespaces/notificationHubs | Yes | Nie |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -911,7 +911,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | urządzenia | Nie |  Nie |
 | linkTargets | Nie |  Nie |
 | storageInsightConfigs | Nie |  Nie |
-| obszary robocze | Tak | Tak |
+| Obszary robocze | Tak | Tak |
 | workspaces/dataSources | Nie |  Nie |
 | workspaces/linkedServices | Nie |  Nie |
 | workspaces/query | Nie |  Nie |
@@ -920,9 +920,9 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | managementassociations | Nie |  Nie |
-| managementconfigurations | Tak | Tak |
-| rozwiązania | Tak | Tak |
-| wyświetlenia | Tak | Tak |
+| managementconfigurations | Yes | Tak |
+| rozwiązania | Tak | Yes |
+| Widoki | Yes | Tak |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -942,28 +942,28 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| workspaceCollections | Tak | Tak |
+| workspaceCollections | Tak | Yes |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| Pojemności | Tak | Tak |
+| Pojemności | Tak | Yes |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konta | Tak | Tak |
+| accounts | Yes | Tak |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | backupProtectedItems | Nie |  Nie |
-| Magazyny | Tak | Tak |
+| Magazyny | Tak | Yes |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| przestrzenie nazw | Tak | Tak |
+| Przestrzenie nazw | Yes | Tak |
 | przestrzenie nazw/reguł autoryzacji | Nie |  Nie |
 | przestrzenie nazw/hybridconnections | Nie |  Nie |
 | przestrzenie nazw/hybridconnections/reguł autoryzacji | Nie |  Nie |
@@ -973,7 +973,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| zasoby | Nie |  Nie |
+| Zasoby | Nie |  Nie |
 | subscriptionsStatus | Nie |  Nie |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
@@ -984,19 +984,19 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | childResources | Nie |  Nie |
 | zdarzenia | Nie |  Nie |
 | impactedResources | Nie |  Nie |
-| powiadomienia | Nie |  Nie |
+| Powiadomienia | Nie |  Nie |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| wdrożenia | Nie |  Nie |
+| Wdrożenia | Nie |  Nie |
 | Wdrożenia/operations | Nie |  Nie |
 | Łącza | Nie |  Nie |
 | notifyResourceJobs | Nie |  Nie |
 | dostawcy | Nie |  Nie |
 | resourceGroups | Nie |  Nie |
-| zasoby | Nie |  Nie |
-| subskrypcji | Nie |  Nie |
+| Zasoby | Nie |  Nie |
+| Subskrypcje | Nie |  Nie |
 | Subskrypcje/dostawców | Nie |  Nie |
 | subscriptions/resourceGroups | Nie |  Nie |
 | zasobów/resourcegroups/subskrypcji | Nie |  Nie |
@@ -1008,13 +1008,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| aplikacje | Tak | Tak |
+| aplikacje | Yes | Tak |
 | saasresources | Nie |  Nie |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| przepływy | Tak | Tak |
+| przepływy | Yes | Tak |
 | kolekcjach | Tak | Tak |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1027,7 +1027,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | advancedThreatProtectionSettings | Nie |  Nie |
-| alerty | Nie |  Nie |
+| alerts | Nie |  Nie |
 | allowedConnections | Nie |  Nie |
 | urządzenia | Nie |  Nie |
 | applicationWhitelistings | Nie |  Nie |
@@ -1038,7 +1038,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | externalSecuritySolutions | Nie |  Nie |
 | InformationProtectionPolicies | Nie |  Nie |
 | jitNetworkAccessPolicies | Nie |  Nie |
-| monitorowanie | Nie |  Nie |
+| Monitorowanie | Nie |  Nie |
 | monitorowanie/ochrony przed złośliwym kodem | Nie |  Nie |
 | monitorowanie/punkt odniesienia | Nie |  Nie |
 | monitorowanie poprawki | Nie |  Nie |
@@ -1053,7 +1053,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | securityStatus/maszyn wirtualnych | Nie |  Nie |
 | securityStatuses | Nie |  Nie |
 | securityStatusesSummaries | Nie |  Nie |
-| ustawienia | Nie |  Nie |
+| settings | Nie |  Nie |
 | zadania | Nie |  Nie |
 | Topologie | Nie |  Nie |
 | workspaceSettings | Nie |  Nie |
@@ -1067,7 +1067,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| przestrzenie nazw | Tak | Nie |
+| Przestrzenie nazw | Tak | Nie |
 | przestrzenie nazw/reguł autoryzacji | Nie |  Nie |
 | przestrzenie nazw/disasterrecoveryconfigs | Nie |  Nie |
 | przestrzenie nazw/eventgridfilters | Nie |  Nie |
@@ -1092,7 +1092,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Bramy | Tak | Tak |
 | Sieci | Tak | Tak |
 | wpisy tajne | Tak | Tak |
-| woluminy | Tak | Tak |
+| volumes | Tak | Tak |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -1102,11 +1102,11 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| applianceDefinitions | Tak | Tak |
-| urządzenia | Tak | Tak |
+| applianceDefinitions | Yes | Tak |
+| urządzenia | Tak | Yes |
 | applicationDefinitions | Tak | Tak |
 | aplikacje | Tak | Tak |
-| jitRequests | Tak | Tak |
+| jitRequests | Yes | Tak |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -1121,7 +1121,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | managedInstances/kluczy | Nie | Nie |
 | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nie | Nie |
 | managedInstances/vulnerabilityAssessments | Nie | Nie |
-| serwerów | Tak | Tak |
+| Serwery | Yes | Tak |
 | serwery/administratorów | Nie |  Nie |
 | serwery/communicationLinks | Nie |  Nie |
 | serwery/baz danych | Tak (zobacz uwaga poniżej) | Tak |
@@ -1141,7 +1141,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | ------------- | ----------- | ----------- |
 | SqlVirtualMachineGroups | Tak | Tak |
 | SqlVirtualMachineGroups/AvailabilityGroupListeners | Nie |  Nie |
-| SqlVirtualMachines | Tak | Tak |
+| SqlVirtualMachines | Yes | Tak |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -1157,7 +1157,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| storageSyncServices | Tak | Tak |
+| storageSyncServices | Yes | Tak |
 | storageSyncServices/registeredServers | Nie |  Nie |
 | storageSyncServices/syncGroups | Nie |  Nie |
 | storageSyncServices/syncGroups/cloudEndpoints | Nie |  Nie |
@@ -1172,7 +1172,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| streamingjobs | Tak (zobacz uwaga poniżej) | Tak |
+| streamingjobs | Tak (zobacz uwaga poniżej) | Yes |
 | streamingjobs/diagnosticSettings | Nie |  Nie |
 
 > [!NOTE]
@@ -1194,7 +1194,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
 | providerRegistrations | Tak | Tak |
-| zasoby | Tak | Tak |
+| Zasoby | Yes | Tak |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -1207,9 +1207,9 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| konto | Tak | Tak |
-| konta i rozszerzeń | Tak | Tak |
-| konto lub projekt docelowy | Tak | Tak |
+| account | Tak | Yes |
+| konta i rozszerzeń | Yes | Tak |
+| konto lub projekt docelowy | Tak | Yes |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
@@ -1225,24 +1225,24 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | apiManagementAccounts/connectionAcls | Nie |  Nie |
 | apiManagementAccounts/connections | Nie |  Nie |
 | billingMeters | Nie |  Nie |
-| Certyfikaty | Tak | Tak |
-| connectionGateways | Tak | Tak |
-| połączenia | Tak | Tak |
+| Certyfikaty | Tak | Yes |
+| connectionGateways | Tak | Yes |
+| Połączenia | Yes | Tak |
 | customApis | Tak | Tak |
 | deletedSites | Nie |  Nie |
-| funkcje | Nie |  Nie |
-| hostingEnvironments | Tak | Nie |
+| — funkcje | Nie |  Nie |
+| hostingEnvironments | Yes | Tak |
 | hostingEnvironments/multiRolePools | Nie |  Nie |
 | hostingEnvironments/multiRolePools/wystąpieniach | Nie |  Nie |
 | hostingEnvironments/workerPools | Nie |  Nie |
 | hostingEnvironments/workerPools/instances | Nie |  Nie |
 | publishingUsers | Nie |  Nie |
-| zalecenia | Nie |  Nie |
+| Zalecenia | Nie |  Nie |
 | resourceHealthMetadata | Nie |  Nie |
 | środowiska uruchomieniowe | Nie |  Nie |
-| farm serwerów | Tak | Tak |
+| farm serwerów | Yes | Tak |
 | farm serwerów/procesów roboczych | Nie |  Nie |
-| lokacje | Tak | Tak |
+| Lokacje | Tak | Tak |
 | Lokacje/domainOwnershipIdentifiers | Nie |  Nie |
 | sites/hostNameBindings | Nie |  Nie |
 | Lokacje/wystąpieniach | Nie |  Nie |
@@ -1267,7 +1267,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |
 | ------------- | ----------- | ----------- |
-| DeviceServices | Tak | Tak |
+| DeviceServices | Tak | Yes |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 | Typ zasobu | Obsługa tagów | Tag w raporcie kosztów |

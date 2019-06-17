@@ -8,10 +8,10 @@ ms.topic: conceptional
 ms.date: 04/22/2019
 ms.author: alzam
 ms.openlocfilehash: e54dadbda0582095e8152ea30376d369177bfd86
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65509908"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Ustawianie alertów dotyczących metryk bramy sieci VPN
@@ -22,14 +22,14 @@ Ten artykuł ułatwia konfigurowanie alertów dotyczących metryk usługi Azure 
 |**Metryka**   | **Unit** | **Poziom szczegółowości** | **Opis** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bajty/s  | 5 minut| Średnie wykorzystanie przepustowości połączone wszystkich połączeń lokacja lokacja na bramę.     |
-|**P2SBandwidth**| Bajty/s  | 1 minuta  | Średnie wykorzystanie przepustowości połączone wszystkich połączeń punkt lokacja na bramę.    |
-|**P2SConnectionCount**| Count  | 1 minuta  | Liczba połączeń punkt lokacja na bramę.   |
+|**P2SBandwidth**| Bajty/s  | 1 min  | Średnie wykorzystanie przepustowości połączone wszystkich połączeń punkt lokacja na bramę.    |
+|**P2SConnectionCount**| Count  | 1 min  | Liczba połączeń punkt lokacja na bramę.   |
 |**TunnelAverageBandwidth** | Bajty/s    | 5 minut  | Średnie wykorzystanie przepustowości w bramie należy utworzyć tuneli. |
 |**TunnelEgressBytes** | Bajty | 5 minut | Ruch wychodzący w tunelach w bramie należy utworzyć.   |
 |**TunnelEgressPackets** | Count | 5 minut | Liczba wychodzących pakietów w tunelach w bramie należy utworzyć.   |
 |**TunnelEgressPacketDropTSMismatch** | Count | 5 minut | Liczba wychodzących pakietów porzucony w tunelach spowodowane niezgodnością selektor ruchu. |
 |**TunnelIngressBytes** | Bajty | 5 minut | Ruch przychodzący w tunelach w bramie należy utworzyć.   |
-|**TunnelIngressPackets** | Count | 5 minut | Liczba przychodzących pakietów w tunelach w bramie należy utworzyć.   |
+|**TunnelIngressPackets** | Licznik | 5 minut | Liczba przychodzących pakietów w tunelach w bramie należy utworzyć.   |
 |**TunnelIngressPacketDropTSMismatch** | Count | 5 minut | Liczba przychodzących pakietów porzucony w tunelach spowodowane niezgodnością selektor ruchu. |
 
 
@@ -40,7 +40,7 @@ Krokach w poniższym przykładzie spowoduje utworzenie alertu na bramę:
 - **Metryka:** TunnelAverageBandwidth
 - **Warunek:** Przepustowość > 10 bajtów na sekundę
 - **Window:** 5 minut
-- **Akcja alertu:** Poczta e-mail
+- **Akcja alertu:** Email
 
 
 

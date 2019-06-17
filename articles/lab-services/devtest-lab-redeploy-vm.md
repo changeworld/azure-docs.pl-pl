@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60561628"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Ponowne wdrażanie maszyny Wirtualnej w laboratorium Azure DevTest Labs

@@ -17,12 +17,12 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c4aa4d3a4425c93cb495d27d0fe38d329ddea7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c61c62555b3712983d7eb5c1478ed193730ed9b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110585"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
 
@@ -54,7 +54,7 @@ Ponieważ nieaktywne urządzenie jest zdefiniowane jako zarejestrowane urządzen
 
 Obliczanie znacznika czasu aktywności jest wyzwalane przez próbę uwierzytelnienia urządzenia. Usługa Azure AD oblicza znacznik czasu aktywności w następujących sytuacjach:
 
-- Wyzwolenie zasad dostępu warunkowego wymagających [urządzeń zarządzanych](../conditional-access/require-managed-devices.md) lub [zatwierdzonych aplikacji klienckich](../conditional-access/app-based-conditional-access.md).
+- Zasady dostępu warunkowego, wymagających [urządzeń zarządzanych przy użyciu](../conditional-access/require-managed-devices.md) lub [zatwierdzonych aplikacji klienckich](../conditional-access/app-based-conditional-access.md) została wyzwolona.
 
 - Wykazywanie aktywności w sieci przez urządzenia z systemem Windows 10, które są dołączone do usługi Azure AD lub dołączone hybrydowo do usługi Azure AD. 
 
@@ -98,7 +98,7 @@ W zasadach oczyszczania wybierz konta, które mają przypisane wymagane role.
 
 ### <a name="timeframe"></a>Przedział czasu
 
-Zdefiniuj przedział czasu, który jest wskaźnikiem służącym do wykrywania nieaktywnego urządzenia. Podczas definiowania przedziału czasu uwzględnij 14-dniowy okres na aktualizowanie znacznika czasu aktywności. Nie powinno się używać znacznika czasu krótszego niż 14 dni do wykrywania nieaktywnego urządzenia. Istnieją sytuacje, w których urządzenie może wyglądać na nieaktywne, chociaż tak nie jest. Na przykład gdy właściciel urządzenia jest na urlopie lub na zwolnieniu lekarskim   przekraczającym przedział czasu zdefiniowany dla nieaktywnych urządzeń.
+Zdefiniuj przedział czasu, który jest wskaźnikiem służącym do wykrywania nieaktywnego urządzenia. Podczas definiowania przedziału czasu uwzględnij 14-dniowy okres na aktualizowanie znacznika czasu aktywności. Nie powinno się używać znacznika czasu krótszego niż 14 dni do wykrywania nieaktywnego urządzenia. Istnieją sytuacje, w których urządzenie może wyglądać na nieaktywne, chociaż tak nie jest. Na przykład gdy właściciel urządzenia jest na urlopie lub na zwolnieniu lekarskim  przekraczającym przedział czasu zdefiniowany dla nieaktywnych urządzeń.
 
 ### <a name="disable-devices"></a>Wyłączanie urządzeń
 

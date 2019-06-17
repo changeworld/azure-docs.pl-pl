@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122927"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (projekty, zadania WebJob)
@@ -89,7 +89,7 @@ Możesz użyć **BlobTrigger** atrybutu w następujących typów:
 Jeśli chcesz współpracować bezpośrednio z konta magazynu platformy Azure, możesz również dodać **CloudStorageAccount** parametr podpis metody.
 
 ## <a name="getting-text-blob-content-by-binding-to-string"></a>Pobieranie zawartości obiektu blob tekstu przez powiązanie parametrów
-Jeżeli oczekuje tekstu obiektów blob **BlobTrigger** mogą być stosowane do **ciąg** parametru. Poniższy przykładowy kod wiąże obiekt blob tekstu do **ciąg** parametr o nazwie **logmessage —**. Funkcja używa tego parametru do zapisania zawartość obiektu blob do pulpitu nawigacyjnego zestawu SDK usługi WebJobs.
+Jeżeli oczekuje tekstu obiektów blob **BlobTrigger** mogą być stosowane do **ciąg** parametru. Poniższy przykładowy kod wiąże obiekt blob tekstu do **ciąg** parametr o nazwie **logmessage —** . Funkcja używa tego parametru do zapisania zawartość obiektu blob do pulpitu nawigacyjnego zestawu SDK usługi WebJobs.
 
         public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
             string name,
@@ -144,9 +144,9 @@ Maksymalna liczba ponownych prób może zostać skonfigurowana. Taki sam **MaxDe
 
 Komunikat w kolejce dla obiektów blob poison to obiekt JSON, który zawiera następujące właściwości:
 
-* FunctionId (w formacie *{Nazwa zadania WebJob}*. Funkcje. *{Nazwa funkcji}*, na przykład: WebJob1.Functions.CopyBlob)
+* FunctionId (w formacie *{Nazwa zadania WebJob}* . Funkcje. *{Nazwa funkcji}* , na przykład: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" lub "PageBlob")
-* NazwaKontenera
+* ContainerName
 * BlobName
 * Element ETag (identyfikator wersji obiektów blob, na przykład: "0x8D1DC6E70A277EF")
 
@@ -193,7 +193,7 @@ Zestaw SDK zadań Webjob zapewniają, że nie **BlobTrigger** funkcja jest wywo�
 
 Potwierdzenia obiektów blob są przechowywane w kontenerze o nazwie *azure webjobs hostów* koncie magazynu platformy Azure, określona przez ciąg połączenia AzureWebJobsStorage. Odbieranie obiektów blob zawiera następujące informacje:
 
-* Funkcja, która została wywołana dla obiektu blob ("*{Nazwa zadania WebJob}*. Funkcje. *{Nazwa funkcji}*", na przykład: "WebJob1.Functions.CopyBlob")
+* Funkcja, która została wywołana dla obiektu blob (" *{Nazwa zadania WebJob}* . Funkcje. *{Nazwa funkcji}* ", na przykład: "WebJob1.Functions.CopyBlob")
 * Nazwa kontenera
 * Typ obiektu blob ("BlockBlob" lub "PageBlob")
 * Nazwa obiektu blob

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b29dec76fb6b1f9883c5c594d4719c9f3032089e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3f80f3c6be747cf84aa9d8b2c386c0568a7511ad
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514623"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069378"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Informacje dotyczące sieci środowiska App Service Environment #
 
@@ -58,24 +58,32 @@ Skalowanie w górę lub w dół, są dodawane nowe role odpowiedni rozmiar, a na
 
 ### <a name="ase-inbound-dependencies"></a>Środowisko ASE zależności dla ruchu przychodzącego ###
 
-Środowisko ASE przychodzące dostępu, które zależności są:
+Tylko dla środowiska ASE działanie środowiska ASE wymaga być otwarte poniższe porty:
 
 | Użycie | Od | Do |
 |-----|------|----|
 | Zarządzanie | Adresy zarządzania usługi aplikacji | Podsieci środowiska ASE: 454, 455 |
 |  Środowisko ASE wewnętrznej komunikacji | Podsieci środowiska ASE: Wszystkie porty | Podsieci środowiska ASE: Wszystkie porty
-|  Zezwalaj na moduł równoważenia obciążenia platformy Azure dla ruchu przychodzącego | Moduł równoważenia obciążenia platformy Azure | Podsieci środowiska ASE: Wszystkie porty
-|  Przypisane adresy IP aplikacji | Przypisane adresy aplikacji | Podsieci środowiska ASE: Wszystkie porty
+|  Zezwalaj na moduł równoważenia obciążenia platformy Azure dla ruchu przychodzącego | Moduł równoważenia obciążenia platformy Azure | Podsieci środowiska ASE: 16001
 
-Ruch przychodzący zarządzania zapewnia poleceń i kontroli środowiska ASE, oprócz systemu monitorowania. Adresy źródła dla tego ruchu są wymienione w [adresy zarządzania środowiska ASE] [ ASEManagement] dokumentu. Konfiguracja zabezpieczeń sieci musi zezwolić na dostęp ze wszystkich adresów IP na portach 454 i 455. Jeśli zablokujesz dostęp z tych adresów, Twoje środowisko ASE przestanie złej kondycji i następnie wstrzymane.
+Istnieją 2 porty, które można wyświetlić jako otwarty na skanowanie portów, 7654 i 1221. Ich odpowiedzi z adresu IP i od niczego więcej. Może zostać zablokowany w razie potrzeby. 
+
+Ruch przychodzący zarządzania zapewnia poleceń i kontroli środowiska ASE, oprócz systemu monitorowania. Adresy źródła dla tego ruchu są wymienione w [adresy zarządzania środowiska ASE] [ ASEManagement] dokumentu. Konfiguracja zabezpieczeń sieci musi zezwolić na dostęp z adresy zarządzania środowiska ASE na portach 454 i 455. Jeśli zablokujesz dostęp z tych adresów, Twoje środowisko ASE przestanie złej kondycji i następnie wstrzymane. Ruch TCP, których można użyć w na portach 454 i 455 musi przejść z tego samego adresu VIP lub będzie mieć problemu z routingiem asymetrycznym. 
 
 W obrębie podsieci środowiska ASE są wielu portów używany do komunikacji z wewnętrznych składników i mogą zmieniać. Wymaga to wszystkie porty w podsieci środowiska ASE, które mają być dostępne z podsieci środowiska ASE. 
 
-Do komunikacji między równoważenia obciążenia platformy Azure oraz podsieci środowiska ASE niezbędne porty, które muszą być otwarte są 454 i 455 16001. 16001 port jest używany keep alive ruchu między modułu równoważenia obciążenia i środowisko ASE. Jeśli używasz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, a następnie zablokować ruch w dół, aby po prostu 454, 455, 16001 portów.  Jeśli używasz zewnętrznego środowiska ASE, należy wziąć pod uwagę porty dostępu normalna aplikacja.  Jeśli używasz aplikacji przypisane adresy należy otworzyć ją do wszystkich portów.  Po adres zostanie przypisany do określonej aplikacji, moduł równoważenia obciążenia będzie używać portów, które nie są znane z wyprzedzeniem do wysyłania ruchu HTTP i HTTPS do środowiska ASE.
+Do komunikacji między równoważenia obciążenia platformy Azure oraz podsieci środowiska ASE niezbędne porty, które muszą być otwarte są 454 i 455 16001. 16001 port jest używany keep alive ruchu między modułu równoważenia obciążenia i środowisko ASE. Jeśli używasz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, a następnie zablokować ruch w dół, aby po prostu 454, 455, 16001 portów.  Jeśli używasz zewnętrznego środowiska ASE, należy wziąć pod uwagę porty dostępu normalna aplikacja.  
 
-Jeśli używasz aplikacji przypisanych adresów IP, musisz zezwolić na ruch z adresów IP przypisanych do aplikacji w celu podsieci środowiska ASE.
+Inne porty, które trzeba należmy są porty aplikacji:
 
-Ruch TCP, których można użyć w na portach 454 i 455 musi przejść z tego samego adresu VIP lub będzie mieć problemu z routingiem asymetrycznym. 
+| Użycie | Porty |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Visual Studio zdalne debugowanie  |  4020, 4022, 4024 |
+|  Wdrażanie usługi sieci Web | 8172 |
+
+Jeśli zablokujesz porty aplikacji, środowiska ASE mogą nadal działać, ale aplikacja nie może być.  Jeśli używane są adresy IP przypisane aplikacji za pomocą zewnętrznego środowiska ASE, musisz zezwolić na ruch z adresów IP przypisanych do aplikacji w celu podsieci środowiska ASE na portach, wyświetlana w portalu środowiska ASE > stronę adresy IP.
 
 ### <a name="ase-outbound-dependencies"></a>Wychodzące zależności środowiska ASE ###
 
@@ -83,15 +91,15 @@ Na potrzeby dostępu wychodzącego środowisko ASE zależy od wielu systemów ze
 
 Środowisko ASE komunikuje się z dostępny adresami internetowymi na następujące porty:
 
-| Port | Użycie |
+| Użycie | Porty |
 |-----|------|
-| 53 | DNS |
-| 123 | NTP |
-| 80/443 | Listy CRL, aktualizacje Windows, Linux, zależności, usług platformy Azure |
-| 1433 | Azure SQL | 
-| 12000 | Monitorowanie |
+| DNS | 53 |
+| NTP | 123 |
+| 8CRL, aktualizacji Windows, Linux, zależności, usług platformy Azure | 80/443 |
+| Azure SQL | 1433 | 
+| Monitorowanie | 12000 |
 
-Pełną listę zależności wychodzące są wymienione w dokumencie, który opisuje [Zablokowanie ruchu wychodzącego środowiska App Service Environment](./firewall-integration.md). Jeśli środowisko ASE utraci dostęp do jego zależności, przestanie działać. Jeśli tak się stanie wystarczająco długi, środowisko ASE jest zawieszone. 
+Wychodzące zależności są wymienione w dokumencie, który opisuje [Zablokowanie ruchu wychodzącego środowiska App Service Environment](./firewall-integration.md). Jeśli środowisko ASE utraci dostęp do jego zależności, przestanie działać. Jeśli tak się stanie wystarczająco długi, środowisko ASE jest zawieszone. 
 
 ### <a name="customer-dns"></a>Klient DNS ###
 
@@ -165,12 +173,12 @@ Są odpowiednie wpisy w sieciowej grupie zabezpieczeń, za środowisko ASE, funk
 
 DNS port nie musi być dodawane jako ruchu sieciowego w systemie DNS nie ma wpływu reguły sieciowej grupy zabezpieczeń. Te porty są uwzględniane portów, które aplikacje wymagają do pomyślnego użycia. Dostępne są następujące porty dostępu zwykła aplikacja:
 
-| Użycie | Od | Do |
-|----------|---------|-------------|
-|  HTTP/HTTPS  | Użytkownika można konfigurować |  80, 443 |
-|  FTP/FTPS    | Użytkownika można konfigurować |  21, 990, 10001-10020 |
-|  Visual Studio zdalne debugowanie  |  Użytkownika można konfigurować |  4020, 4022, 4024 |
-|  Wdrażanie usługi sieci Web | Użytkownika można konfigurować | 8172 |
+| Użycie | Porty |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Visual Studio zdalne debugowanie  |  4020, 4022, 4024 |
+|  Wdrażanie usługi sieci Web | 8172 |
 
 Gdy wymagania dotyczące ruchu przychodzącego i wychodzącego są brane pod uwagę, sieciowe grupy zabezpieczeń powinien wyglądać podobnie do sieciowych grup zabezpieczeń, w poniższym przykładzie. 
 

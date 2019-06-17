@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/04/2019
+ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: aea6f58c74d6e50e7936b949620912f3f587f004
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d5deedb12afb1b766255ad0a9f247594ed70acaa
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205865"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069299"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal
 
@@ -45,7 +45,7 @@ Wielu programistów doświadczonym szablonu umożliwia generowanie szablonów, g
     |Name (Nazwa)|Wartość|
     |----|----|
     |**Grupa zasobów**|Wybierz pozycję **Utwórz nową** i podaj wybraną nazwę grupy zasobów. Na zrzucie ekranu nazwa grupy zasobów to *mystorage1016rg*. Grupa zasobów jest kontenerem zasobów platformy Azure. Grupa zasobów ułatwia zarządzanie zasobami platformy Azure. |
-    |**Nazwa**|nadaj unikatową nazwę kontu magazynu. Nazwa konta magazynu musi być unikatowa na platformie Azure, a ona zawierać tylko małe litery i cyfry. Nazwa musi być od 3 do 24 znaków. Jeśli zostanie wyświetlony komunikat o błędzie informujący o tym, "Nazwa konta magazynu"mystorage1016"jest już zajęta", spróbuj użyć  **&lt;Twoja nazwa > magazynu&lt;bieżącą datę w MMDD >**, na przykład  **johndolestorage1016**. Aby uzyskać więcej informacji, zobacz [ograniczenia i reguły nazewnictwa](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
+    |**Nazwa**|nadaj unikatową nazwę kontu magazynu. Nazwa konta magazynu musi być unikatowa na platformie Azure, a ona zawierać tylko małe litery i cyfry. Nazwa musi być od 3 do 24 znaków. Jeśli zostanie wyświetlony komunikat o błędzie informujący o tym, "Nazwa konta magazynu"mystorage1016"jest już zajęta", spróbuj użyć  **&lt;Twoja nazwa > magazynu&lt;bieżącą datę w MMDD >** , na przykład  **johndolestorage1016**. Aby uzyskać więcej informacji, zobacz [ograniczenia i reguły nazewnictwa](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
 
     Dla pozostałych właściwości możesz użyć wartości domyślnych.
 
@@ -64,7 +64,7 @@ Wielu programistów doświadczonym szablonu umożliwia generowanie szablonów, g
     Istnieje sześć zdefiniowanych parametrów. Jeden z nich jest nazywany **storageAccountName**. Druga wyróżniona część na poprzednim zrzucie ekranu pokazuje, jak odwoływać się do tego parametru w szablonie. W następnej sekcji będziesz edytować szablon w celu użycia wygenerowanej nazwy konta magazynu.
 
     W szablonie zdefiniowany jest jeden zasób platformy Azure. Typ jest `Microsoft.Storage/storageAccounts`. Trwa wyglądu, jak zasób jest zdefiniowany, a struktura definicji.
-6. Wybierz **Pobierz** w górnej części ekranu. 
+6. Wybierz **Pobierz** w górnej części ekranu.
 7. Otwórz plik zip pobrany, a następnie Zapisz **template.json** do komputera. W następnej sekcji użyjesz narzędzia do wdrażania szablonu do edycji szablonu.
 8. Wybierz kartę **Parametr**, aby zobaczyć wartości podane dla parametrów. Zapisz te wartości, ponieważ będą potrzebne w następnej sekcji podczas wdrażania szablonu.
 
@@ -75,6 +75,9 @@ Wielu programistów doświadczonym szablonu umożliwia generowanie szablonów, g
 ## <a name="edit-and-deploy-the-template"></a>Edytowanie i wdrażanie szablonu
 
 Witryna Azure Portal może służyć do wykonywania niektórych podstawowych czynności edycji szablonu. W tym przewodniku Szybki start użyjesz narzędzia portalu o nazwie *Wdrożenie szablonu*. Narzędzie *Wdrożenie szablonu* jest używane w tym samouczku, aby umożliwić ukończenie całego samouczka przy użyciu jednego interfejsu — witryny Azure Portal. Aby edytować bardziej złożony szablon, rozważ użycie programu [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), który zapewnia bardziej zaawansowane funkcje edycji.
+
+> [!IMPORTANT]
+> Wdrożenie szablonu zapewnia interfejs do testowania prostych szablonów. Nie zaleca się używać tej funkcji w środowisku produkcyjnym. Zamiast tego należy przechowywać szablonów w konto magazynu platformy Azure lub repozytorium kodu źródłowego, takich jak GitHub.
 
 Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie może zakończyć się niepowodzeniem, jeśli zostanie wprowadzona już istniejąca nazwa konta magazynu. W celu uniknięcia tego problemu zmodyfikuj szablon, aby użyć wywołania funkcji szablonu `uniquestring()` do wygenerowania unikatowej nazwy konta magazynu.
 

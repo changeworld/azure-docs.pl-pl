@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 3ebeb3c601dd3f734265d49d60728056561928be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61127821"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Przekazywanie plików na konto usługi Media Services w witrynie Azure Portal 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: cf9356c2792781558c4403608ff5de0e3aaddb6a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 9339d891e8fe895f598e1a2615fcfa66b053b3e0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254462"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063851"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Java w systemie Linux dla usługi Azure App Service
 
@@ -480,9 +480,7 @@ App Service dla systemu Linux obsługuje dwa środowiska uruchomieniowe zarządz
 
 ### <a name="jdk-versions-and-maintenance"></a>Wersje zestawu JDK i konserwacji
 
-Interfejsów platformy Azure obsługiwane Java Development Kit (JDK) jest [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dostępne za pośrednictwem [firmy Azul Systems](https://www.azul.com/).
-
-Aktualizacji wersji głównych będzie świadczona poprzez nowe opcje środowiska uruchomieniowego usługi Azure App Service dla systemu Linux. Klienci aktualizacji tych nowszych wersji języka Java, konfigurując ich wdrożenie usługi App Service i są odpowiedzialne za przeprowadzanie testów i zapewnienie ważna aktualizacja odpowiadają ich potrzebom.
+Rozwiązanie Azul Zulu Enterprise kompilacje OpenJDK są bezpłatnie dla wielu platform, gotowe do produkcji rozkład OpenJDK dla platformy Azure i usługi Azure Stack przez firmę Microsoft i firmy Azul Systems. Zawierają one wszystkie składniki do tworzenia i uruchamiania aplikacji Java SE. Można zainstalować zestaw JDK z [instalacji zestawu JDK języka Java](https://aka.ms/azure-jdks).
 
 Obsługiwane JDK są automatycznie poprawić kwartalnie w styczniu, kwietniu, lipcu i październiku każdego roku.
 
@@ -493,18 +491,6 @@ Jak najszybciej po ich udostępnieniu firmy Azul Systems zostaną wydane poprawk
 ### <a name="deprecation-and-retirement"></a>Ogłoszone jako przestarzałe i wycofania
 
 Jeśli zostanie wycofana obsługiwane środowisko wykonawcze języka Java, deweloperów platformy Azure przy użyciu których to dotyczy środowiska uruchomieniowego otrzymają powiadomienie o wycofaniu co najmniej sześć miesięcy przed środowiska uruchomieniowego została wycofana.
-
-### <a name="local-development"></a>Lokalne programowanie
-
-Deweloperzy mogli przeprowadzić pobieranie produkcji wersji o Azul Zulu Enterprise zestaw JDK potrzeby lokalnego programowania z [witryny pobierania firmy Azul](https://www.azul.com/downloads/azure-only/zulu/).
-
-### <a name="development-support"></a>Obsługa projektowania
-
-Pomoc techniczna dla [obsługiwanej przez platformę Azure rozwiązanie Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) jest dostępna za pośrednictwem podczas tworzenia na platformie Azure lub [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/) z [kwalifikowana planu pomocy technicznej Azure](https://azure.microsoft.com/support/plans/).
-
-### <a name="runtime-support"></a>Obsługa środowiska uruchomieniowego
-
-Deweloperzy mogą [Otwórz problem](/azure/azure-supportability/how-to-create-azure-support-request) z JDK oprogramowanie Zulu firmy Azul za pośrednictwem pomocy technicznej platformy Azure, jeśli mają one [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

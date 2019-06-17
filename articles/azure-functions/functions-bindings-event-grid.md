@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e11446b961727663961e4d3fa295a9b7f64860c9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438760"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059672"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -324,7 +324,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|
 | **type** | Wymagana — musi być równa `eventGridTrigger`. |
 | **direction** | Wymagana — musi być równa `in`. |
-| **Nazwa** | Wymagana — nazwa zmiennej, używane w kodzie funkcji parametr, który odbiera dane zdarzenia. |
+| **name** | Wymagana — nazwa zmiennej, używane w kodzie funkcji parametr, który odbiera dane zdarzenia. |
 
 ## <a name="usage"></a>Sposób użycia
 
@@ -555,7 +555,7 @@ Funkcja wyzwalacza usługi Event Grid wykonuje i dzienniki zostaną wyświetlone
 
 ## <a name="local-testing-with-ngrok"></a>Lokalne testowanie za pomocą ngrok
 
-Innym sposobem przetestowania wyzwalacza usługi Event Grid lokalnie jest zautomatyzować połączenia HTTP między Internetem a komputer deweloperski. Możesz to zrobić za pomocą narzędzia typu open source o nazwie [ngrok](https://ngrok.com/):
+Innym sposobem przetestowania wyzwalacza usługi Event Grid lokalnie jest zautomatyzować połączenia HTTP między Internetem a komputer deweloperski. Możesz to zrobić za pomocą narzędzia, takiego jak [ngrok](https://ngrok.com/):
 
 1. [Tworzenie punktu końcowego ngrok](#create-an-ngrok-endpoint).
 1. [Uruchamianie funkcji wyzwalacza usługi Event Grid](#run-the-event-grid-trigger-function).

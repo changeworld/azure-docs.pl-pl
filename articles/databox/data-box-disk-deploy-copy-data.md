@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f5c498fc3f3fe051070b3565041e506bc40fceda
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925167"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147527"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja
 
@@ -88,8 +88,8 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
     
     |Parametry/opcje  |Opis |
     |--------------------|------------|
-    |Element źródłowy            | Określa ścieżkę do katalogu źródłowego.        |
-    |Element docelowy       | Określa ścieżkę do katalogu docelowego.        |
+    |source            | Określa ścieżkę do katalogu źródłowego.        |
+    |Miejsce docelowe       | Określa ścieżkę do katalogu docelowego.        |
     |/E                  | Kopiuje podkatalogi, włącznie z pustymi katalogami. |
     |/MT[:N]             | Tworzy kopie wielowątkowe zawierające N wątków, gdzie N to liczba całkowita od 1 do 128. <br>Domyślna wartość N to 8.        |
     |/R: \<N>             | Określa liczbę ponownych prób w przypadku niepowodzenia kopiowania. Domyślna wartość N to 1 000 000 (milion ponownych prób).        |
@@ -223,7 +223,7 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
  
 7. Otwórz okno wiersza polecenia. 
 
-8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Type
+8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Typ
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -250,6 +250,8 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+Jeśli widzisz błędy przy użyciu narzędzia do kopiowania podziału, przejdź do sposobu [Rozwiązywanie problemów z błędami narzędzia do kopiowania podziału](data-box-disk-troubleshoot-data-copy.md).
+
 Po zakończeniu kopiowania danych możesz przejść do walidowania danych. Jeśli użyto narzędzia do dzielenia skopiowanych plików, pomiń walidację (przeprowadza ją również narzędzie do dzielenia skopiowanych plików) i przejdź do następnego samouczka.
 
 
@@ -270,6 +272,8 @@ Jeśli nie użyto narzędzia do dzielenia skopiowanych plików, musisz przeprowa
     > - Użyj opcji 1, jeśli obsługujesz duży zestaw danych zawierający małe pliki (~ KB/s). Ta opcja powoduje tylko walidowanie plików, ponieważ generowanie sumy kontrolnej może zająć bardzo dużo czasu i spowodować spadek wydajności.
 
 3. Jeśli używasz wielu dysków, uruchom to polecenie dla każdego dysku.
+
+Jeśli widzisz błędy podczas sprawdzania poprawności, zobacz [Rozwiązywanie problemów z błędami sprawdzania poprawności](data-box-disk-troubleshoot.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

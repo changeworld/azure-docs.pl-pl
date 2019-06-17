@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 82a8eecb4fb211117000c94c51644ce1fd27916d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463909"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64709531"
 ---
 # <a name="encoding-error-codes"></a>Kody błędów kodowania
 
@@ -27,10 +27,10 @@ Poniższa tabela zawiera listę kodów błędów, które mogą być zwracane w p
 
 | ErrorDetail.Code | Możliwe przyczyny błędu |
 | --- | --- |
-| Nieznana |Nieznany błąd podczas wykonywania zadania |
+| Nieznane |Nieznany błąd podczas wykonywania zadania |
 | ErrorDownloadingInputAssetMalformedContent |Kategorii błędów, który obejmuje błędy podczas pobierania danych wejściowych zasobów, takich jak nazwy uszkodzonych plików, zerowego pliki o długości, niepoprawny formatuje i tak dalej. |
 | ErrorDownloadingInputAssetServiceFailure |Kategoria błędów, który obejmuje problemów po stronie usługi — na przykład błędy sieci i magazynu podczas pobierania. |
-| ErrorParsingConfiguration |Kategoria błędów, gdy zadanie <see cref="MediaTask.PrivateData"/> (Konfiguracja) nie jest prawidłowa, na przykład konfiguracja nie jest ustawienie wstępne systemu nieprawidłowy lub zawiera nieprawidłowy kod XML. |
+| ErrorParsingConfiguration |Kategoria błędów, gdy zadanie \<Zobacz cref="MediaTask.PrivateData"/ > (Konfiguracja) nie jest prawidłowa, na przykład konfiguracja nie jest ustawienie wstępne systemu nieprawidłowy lub zawiera nieprawidłowy kod XML. |
 | ErrorExecutingTaskMalformedContent |Kategoria błędów podczas wykonywania zadania, w którym problemów wewnątrz multimedialnych plików wejściowych spowodować niepowodzenie. |
 | ErrorExecutingTaskUnsupportedFormat |Kategorii błędów, gdy procesor multimediów nie może przetworzyć pliki udostępniane — format multimediów nie jest obsługiwany lub nie jest zgodna z konfiguracją. Na przykład próby wygenerowanie danych wyjściowych zawierających tylko dane audio z zasobu, który zawiera tylko wideo |
 | ErrorProcessingTask |Kategoria innych błędów, które procesor multimediów napotka podczas przetwarzania zadania, które są związane z zawartością. |

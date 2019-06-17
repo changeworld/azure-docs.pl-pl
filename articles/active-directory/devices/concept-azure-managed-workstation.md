@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7e9ca9fa26e9744eb0a9bfafe692a096825b0b5
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 05d21910d1b3601346fbd038cbc25f8f2be61f99
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110700"
 ---
 # <a name="building-secure-workstations"></a>Tworzenie bezpiecznej stacji roboczych
 
 Zabezpieczone izolowane stacje robocze są niezwykle ważne dla bezpieczeństwa poufnych ról, takich jak Administratorzy, deweloperów i operatorów krytycznych usług. Wiele innych opcji zabezpieczeń i zapewnienia będą się nie powieść lub nie obowiązują w przypadku naruszenia zabezpieczeń podstawowych zabezpieczeń stacji roboczej klienta.
 
 W tym dokumencie opisano, co jest potrzebne do tworzenia bezpiecznego stacji roboczej użytkownika, wraz ze szczegółowymi instrukcjami krok po kroku, w tym sposób konfigurowania od kontroli zabezpieczeń. Ten typ z stacje robocze w czasie nosi nazwę stacji roboczej dostępu uprzywilejowanego (PAW), to odwołanie jest używany, która utworzonych na podstawie. Jednak wskazówek, odwołując się do technologii opartych na chmurze do zarządzania usługą i wprowadza możliwości zabezpieczeń wprowadzonych od Windows 10RS5, Microsoft Defender ATP, usługi Azure Active Directory i Intune.
+
+> [!NOTE]
+> W tym artykule wyjaśniono pojęcie bezpiecznego stacji roboczych i ich znaczenie. Jeśli znasz już pojęcia i chcesz od razu przejść do wdrożenia, należy przeczytać [sposób wdrażania stacji roboczej Secure](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation).
 
 ## <a name="why-securing-workstation-access-is-important"></a>Zabezpieczanie dostępu do stacji roboczej jest ważna
 

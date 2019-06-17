@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60199163"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Przetestuj swoją aplikację usługi LUIS w portalu usługi LUIS
@@ -103,9 +103,9 @@ Użyj poniższej procedury, aby uwzględnić [sprawdzania pisowni Bing w wersji 
 
 1. W **testu** okienku, wprowadź wypowiedź. Gdy przewiduje wypowiedź wybierz **[Sprawdź](#inspect-score)** poniżej wypowiedź wprowadzony. 
 
-2. Gdy **Sprawdź** zostanie otwarty panel, wybierz opcję  **[porównania z opublikowaną](#compare-with-published-version)**. 
+2. Gdy **Sprawdź** zostanie otwarty panel, wybierz opcję  **[porównania z opublikowaną](#compare-with-published-version)** . 
 
-3. Gdy **opublikowano** zostanie otwarty panel, wybierz opcję  **[dodatkowe ustawienia](#additional-settings-in-test-panel)**.
+3. Gdy **opublikowano** zostanie otwarty panel, wybierz opcję  **[dodatkowe ustawienia](#additional-settings-in-test-panel)** .
 
 4. W wyskakującym oknie dialogowym Wprowadź swoje **sprawdzania pisowni Bing** klucza usługi. 
     ![Wprowadź klucz usługi sprawdzania pisowni Bing](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)

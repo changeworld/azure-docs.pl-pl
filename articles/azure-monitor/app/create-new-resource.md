@@ -10,60 +10,54 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/02/2016
+ms.date: 06/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: 712004a1ae8a2a72854b7b2332449a019c0820c3
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 9da52e5a9dfa3b55431d66ed3162172226f71a40
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256255"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073290"
 ---
 # <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
-Usługa Azure Application Insights zawiera dane dotyczące Twojej aplikacji w systemie Microsoft Azure *zasobów*. Tworzenie nowego zasobu znajduje się w związku z tym [konfiguracji usługi Application Insights na potrzeby monitorowania nowej aplikacji][start]. W wielu przypadkach tworzenia zasobu może odbywać się automatycznie IDE. Ale w niektórych przypadkach możesz Utwórz ręcznie zasób — na przykład mieć osobne zasoby do rozwoju i produkcji kompilacji aplikacji.
 
-Po utworzeniu zasobu możesz pobrać jego klucza Instrumentacji i używać, aby skonfigurować zestaw SDK w aplikacji. Klucz zasobu łączy dane telemetryczne do zasobu.
+Usługa Azure Application Insights zawiera dane dotyczące Twojej aplikacji w systemie Microsoft Azure *zasobów*. Tworzenie nowego zasobu znajduje się w związku z tym [konfiguracji usługi Application Insights na potrzeby monitorowania nowej aplikacji][start]. Po utworzeniu nowego zasobu, możesz pobrać jego klucza Instrumentacji i używać go do konfigurowania zestawu SDK usługi Application Insights. Klucz Instrumentacji łączy telemetrii do zasobu.
 
-## <a name="sign-up-to-microsoft-azure"></a>Zarejestruj się w systemie Microsoft Azure
-Jeśli nie mam [Microsoft account, Uzyskaj je teraz](https://live.com). (Jeśli używasz usług, takich jak Outlook.com, OneDrive, Windows Phone i XBox Live, masz już konto Microsoft.)
+## <a name="sign-in-to-microsoft-azure"></a>Zaloguj się do platformy Microsoft Azure
 
-Należy również subskrypcji [Microsoft Azure](https://azure.com). Jeśli Twój zespół lub organizacja mają subskrypcję platformy Azure, właściciel może Cię dodać do niego przy użyciu swojego identyfikatora Windows Live. Opłaty są naliczane tylko za rzeczywiste użycie. Domyślny plan basic umożliwia pewna ilość użycia eksperymentalnych bezpłatnie.
-
-Jeśli masz dostęp do subskrypcji, zaloguj się do usługi Application Insights w [ https://portal.azure.com ](https://portal.azure.com)i użyj identyfikatora Live ID, aby zalogować się.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 ## <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
-W [portal.azure.com](https://portal.azure.com), Dodaj zasób usługi Application Insights:
 
-![Kliknij kolejno polecenia Nowy, Application Insights](./media/create-new-resource/01-new.png)
+Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Utwórz zasób usługi Application Insights:
 
-* **Typ aplikacji** dotyczy, zostanie wyświetlony w bloku przeglądu i właściwości, które są dostępne w [Eksplorator metryk][metrics]. Jeśli nie widać danego typu aplikacji, wybierz opcję ogólne.
-* **Subskrypcja** jest Twoje konto płatności na platformie Azure.
-* **Grupa zasobów** jest wygoda do zarządzania właściwościami, takich jak kontrola dostępu. Jeśli utworzono już innych zasobów platformy Azure, można umieścić tego nowego zasobu w tej samej grupie.
-* **Lokalizacja** jest, w którym przechowujemy Twoje dane.
-* **Przypnij do pulpitu nawigacyjnego** umieszcza kafelka szybkiego dostępu do zasobu na stronie głównej usługi Azure. Zalecane.
+![Kliknij znak "+" w lewym górnym rogu. Wybierz narzędzia dla deweloperów, a następnie przez usługę Application Insights](./media/create-new-resource/new-app-insights.png)
 
-Po utworzeniu aplikacji, zostanie otwarty nowy blok. Ten blok jest tam, gdzie zobaczysz danych użycia i wydajności dotyczące Twojej aplikacji. 
+   | Ustawienia        |  Wartość           | Opis  |
+   | ------------- |:-------------|:-----|
+   | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację. |
+   | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej lub istniejącej grupy zasobów do przechowywania danych usługi App Insights. |
+   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji. |
 
-Aby wrócić do niego następnym razem, gdy logujesz się do platformy Azure, poszukaj kafelka szybki start aplikacji na początku tablicy (główną). Lub kliknij przycisk Przeglądaj, aby ją znaleźć.
+Wprowadź odpowiednie wartości w wymaganych polach, a następnie wybierz **przeglądu + Utwórz**.
+
+![Wprowadź wartości w polach wymagane, a następnie wybierz pozycję "Przeglądanie + tworzenie".](./media/create-new-resource/review-create.png)
+
+Po utworzeniu aplikacji, zostanie otwarte nowe okienko. To okienko jest tam, gdzie zobaczysz danych użycia i wydajności dotyczące monitorowanej aplikacji. 
 
 ## <a name="copy-the-instrumentation-key"></a>Skopiuj klucz Instrumentacji
-Klucz Instrumentacji identyfikuje zasób, który został utworzony. Możesz go potrzebować, aby zapewnić do zestawu SDK.
 
-![Kliknij Essentials, kliknij przycisk klucz instrumentacji, CTRL + C](./media/create-new-resource/02-props.png)
+Klucz Instrumentacji identyfikuje zasób, który chcesz skojarzyć dane telemetryczne z. Konieczne będzie kopiowania, aby dodać klucz Instrumentacji do kodu aplikacji.
+
+![Kliknij przycisk, a następnie skopiuj klucz Instrumentacji](./media/create-new-resource/instrumentation-key.png)
 
 ## <a name="install-the-sdk-in-your-app"></a>Zainstaluj zestaw SDK w aplikacji
-Zainstaluj zestaw SDK usługi Application Insights w swojej aplikacji. Ten krok zależy od intensywnie typu aplikacji. 
+
+Zainstaluj zestaw SDK usługi Application Insights w swojej aplikacji. Ten krok zależy od intensywnie typu aplikacji.
 
 Użyj klucza Instrumentacji do skonfigurowania [zestawu SDK, który można zainstalować w aplikacji][start].
 
-Zestaw SDK zawiera standardowe moduły, które wysyłają dane telemetryczne bez konieczności pisania kodu. Śledzenie działań użytkownika lub diagnozować problemy z bardziej szczegółowo [za pomocą interfejsu API] [ api] do wysyłania własnej telemetrii.
-
-## <a name="monitor"></a>Zobacz dane telemetryczne
-Zamknij blok szybkiego startu, aby wrócić do bloku aplikacji w witrynie Azure portal.
-
-Kliknij pole wyszukiwania, aby zobaczyć [wyszukiwaniu diagnostycznym][diagnostic], gdzie pierwszy zdarzenia są wyświetlane. 
-
-Jeśli oczekujesz większej ilości danych, kliknij przycisk **Odśwież** po kilku sekundach.
+Zestaw SDK zawiera standardowe moduły, które wysyłają dane telemetryczne bez konieczności pisania dodatkowego kodu. Śledzenie działań użytkownika lub diagnozować problemy z bardziej szczegółowo [za pomocą interfejsu API] [ api] do wysyłania własnej telemetrii.
 
 ## <a name="creating-a-resource-automatically"></a>Automatyczne tworzenie zasobu
 Można napisać [skrypt programu PowerShell](../../azure-monitor/app/powershell.md) automatycznego tworzenia zasobu.
@@ -79,4 +73,3 @@ Można napisać [skrypt programu PowerShell](../../azure-monitor/app/powershell.
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

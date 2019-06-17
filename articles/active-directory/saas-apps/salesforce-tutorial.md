@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27a61205426cbf43fd3b3b549909ffa13ff07dc7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4dffa40d4a34241f54b67fc28a1d4b7ba320347d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903835"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092508"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Samouczek: Samouczek: integracja usługi Azure Active Directory z usługą Salesforce
 

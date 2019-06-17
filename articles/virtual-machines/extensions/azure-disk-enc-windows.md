@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff77f9fc017627143b14544af03d0d5e80813db9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051697"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Usługa Azure Disk Encryption for Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -41,7 +41,44 @@ Aby uzyskać listę aktualnie wersje Windows, zobacz [wymagań wstępnych szyfro
 Usługa Azure Disk Encryption wymaga łączności z Internetem, aby uzyskać dostęp do usługi Active Directory, Key Vault, magazynu i punktów końcowych zarządzania pakietu.  Aby uzyskać więcej informacji na temat ustawień zabezpieczeń sieci, zobacz [wymagań wstępnych szyfrowania dysków Azure](
 ../../security/azure-security-disk-encryption-prerequisites.md).
 
-## <a name="extension-schema"></a>Schemat rozszerzenia
+## <a name="extension-schemata"></a>Rozszerzenia schematu
+
+Istnieją dwa wypełniana dla usługi Azure Disk Encryption: v1.1, nowsze, zalecane schematu, która nie korzysta z usługi Azure Active Directory (AAD), właściwości i v0.1, starszy schemat, który wymaga właściwości usługi AAD. Należy użyć wersji schematu odpowiadający rozszerzenia, którego używasz: AzureDiskEncryption rozszerzenia w wersji 1.1, v0.1 schematu dla AzureDiskEncryption wersja rozszerzenia 0,1 w wersji 1.1 schematu.
+
+### <a name="schema-v11-no-aad-recommended"></a>Schemat w wersji 1.1: Nie usługi AAD (zalecane)
+
+Schematu w wersji 1.1 jest zalecana i wymaga właściwości usługi Azure Active Directory.
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2015-06-15",
+  "location": "[location]",
+  "properties": {
+    "publisher": "Microsoft.Azure.Security",
+    "settings": {
+      "EncryptionOperation": "[encryptionOperation]",
+      "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KekVaultResourceId": "[keyVaultResourceID]",
+      "KeyVaultURL": "[keyVaultURL]",
+      "KeyVaultResourceId": "[keyVaultResourceID]",
+      "SequenceVersion": "sequenceVersion]",
+      "VolumeType": "[volumeType]"
+    },
+  "type": "AzureDiskEncryption",
+  "typeHandlerVersion": "[extensionVersion]"
+  }
+}
+```
+
+
+### <a name="schema-v01-with-aad"></a>Schemat v0.1: przy użyciu usługi AAD 
+
+Wymaga schematu 0,1 `aadClientID` i `aadClientSecret` lub `AADClientCertificate`.
+
+Za pomocą `aadClientSecret`:
 
 ```json
 {
@@ -51,47 +88,74 @@ Usługa Azure Disk Encryption wymaga łączności z Internetem, aby uzyskać dos
   "location": "[location]",
   "properties": {
     "protectedSettings": {
-      "AADClientSecret": "[aadClientSecret]",
-    },
+      "AADClientSecret": "[aadClientSecret]"
+    },    
     "publisher": "Microsoft.Azure.Security",
     "settings": {
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
-      
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
-          "KekVaultResourceId": "[keyVaultResourceID]",
-      
+      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyVaultURL": "[keyVaultURL]",
-          "KeyVaultResourceId": "[keyVaultResourceID]",
-
-      "EncryptionOperation": "[encryptionOperation]",
+      "KeyVaultResourceId": "[keyVaultResourceID]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     },
-    "type": "AzureDiskEncryption",
-    "typeHandlerVersion": "[extensionVersion]"
+  "type": "AzureDiskEncryption",
+  "typeHandlerVersion": "[extensionVersion]"
   }
 }
 ```
+
+Za pomocą `AADClientCertificate`:
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2015-06-15",
+  "location": "[location]",
+  "properties": {
+    "protectedSettings": {
+      "AADClientCertificate": "[aadClientCertificate]"
+    },    
+    "publisher": "Microsoft.Azure.Security",
+    "settings": {
+      "AADClientID": "[aadClientID]",
+      "EncryptionOperation": "[encryptionOperation]",
+      "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KekVaultResourceId": "[keyVaultResourceID]",
+      "KeyVaultURL": "[keyVaultURL]",
+      "KeyVaultResourceId": "[keyVaultResourceID]",
+      "SequenceVersion": "sequenceVersion]",
+      "VolumeType": "[volumeType]"
+    },
+  "type": "AzureDiskEncryption",
+  "typeHandlerVersion": "[extensionVersion]"
+  }
+}
+```
+
 
 ### <a name="property-values"></a>Wartości właściwości
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Wydawcy | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForWindows| string |
-| typeHandlerVersion | 1.0, 1.1, 2.2 (ZESTAWU SKALOWANIA MASZYN WIRTUALNYCH) | int |
-| (opcjonalnie) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identyfikator GUID | 
-| (optional) AADClientSecret | password | string |
-| (opcjonalnie) AADClientCertificate | thumbprint | string |
-| EncryptionOperation | EnableEncryption | string | 
-| KeyEncryptionAlgorithm | RSA OAEP, RSA1_5 | string |
+| publisher | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
+| typeHandlerVersion | 0.1, 1.1 | int |
+| (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identyfikator GUID | 
+| (0.1 schema) AADClientSecret | password | string |
+| (0.1 schema) AADClientCertificate | thumbprint | string |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Słownik JSON |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
-| KeyVaultResourceId | Identyfikator uri zasobu | string |
-| KekVaultResourceId | Identyfikator uri zasobu | string |
 | KeyVaultURL | url | string |
+| (opcjonalnie) Hasło | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Systemu operacyjnego, danych, wszystkie | string |
 

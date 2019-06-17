@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60320440"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Użyj usługi Menedżer urządzeń StorSimple, aby wyświetlić alerty i zarządzaj nimi StorSimple
@@ -72,7 +72,7 @@ Po włączeniu powiadomień e-mail dla urządzeń, elementy członkowskie do lis
       
 3. Aby Wyślij testowe powiadomienie e-mail, kliknij przycisk **Wyślij testową wiadomość e-mail**. Usługa Menedżer urządzeń StorSimple spowoduje wyświetlenie komunikatów o stanie, jak przekazuje testowe powiadomienie.
 
-    ![Ustawienia alertu](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
+    ![Ustawienia alertów](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
 4. Zostanie wyświetlone powiadomienie o wysłaniu testową wiadomość e-mail. 
    
@@ -154,13 +154,13 @@ Jeśli łączność z chmurą nie powiedzie się na urządzeniu StorSimple w śr
 |:--- |:--- |:--- |
 | Urządzenie przełączone w tryb failover <*nazwy urządzenia*>. |Urządzenie jest w trybie konserwacji. |Urządzenie w trybie failover z powodu wprowadzanych konserwacji lub wychodzenia z trybu konserwacji. Jest to normalne i nie wymaga żadnej akcji. Po potwierdzeniu tego alertu wyczyść go na stronie alertów. |
 | Urządzenie przełączone w tryb failover <*nazwy urządzenia*>. |Oprogramowanie układowe urządzenia lub oprogramowania właśnie został zaktualizowany. |Wystąpił z powodu aktualizacji klastra pracy awaryjnej. Jest to normalne i nie wymaga żadnej akcji. Po potwierdzeniu tego alertu wyczyść go na stronie alertów. |
-| Urządzenie przełączone w tryb failover <*nazwy urządzenia*>. |Kontroler został zamknięty lub ponownie uruchomiony. |Urządzenie zostało przełączone za pośrednictwem ponieważ aktywny kontroler został zamknięty lub ponownie uruchomiony przez administratora. Żadna akcja nie jest wymagana. Po potwierdzeniu tego alertu wyczyść go na stronie alertów. |
+| Urządzenie przełączone w tryb failover <*nazwy urządzenia*>. |Kontroler został zamknięty lub ponownie uruchomiony. |Urządzenie zostało przełączone za pośrednictwem ponieważ aktywny kontroler został zamknięty lub ponownie uruchomiony przez administratora. Jest wymagana żadna akcja. Po potwierdzeniu tego alertu wyczyść go na stronie alertów. |
 | Urządzenie przełączone w tryb failover <*nazwy urządzenia*>. |Planowany tryb failover. |Sprawdź, czy ta planowany tryb failover. Po podjęciu odpowiedniej akcji wyczyść ten alert na stronie alertów. |
 | Urządzenie przełączone w tryb failover <*nazwy urządzenia*>. |Nieplanowany tryb failover. |Usługa StorSimple jest skompilowana do automatycznego odzyskiwania po nieplanowanej pracy w trybie Failover. Jeśli widzisz dużą liczbę tych alertów, skontaktuj się z Microsoft Support. |
 | Urządzenie przełączone w tryb failover <*nazwy urządzenia*>. |Inne/Nieznana przyczyna. |Jeśli widzisz dużą liczbę tych alertów, skontaktuj się z Microsoft Support. Po usunięciu problemu wyczyść ten alert na stronie alertów. |
 | Usługi krytyczne urządzenie raportuje stan jako zakończony niepowodzeniem. |Awaria usługi ścieżki danych. |Aby uzyskać pomoc, skontaktuj się z Microsoft Support. |
-| Wirtualny adres IP dla interfejsu sieciowego <*danych #*> zgłasza stan jako zakończony niepowodzeniem. |Inne/Nieznana przyczyna. |Czasami tymczasowe warunki mogą być przyczyną tych alertów. Jeśli jest to możliwe, następnie ten alert zostanie automatycznie wyczyszczony po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z działem pomocy technicznej firmy Microsoft. |
-| Wirtualny adres IP dla interfejsu sieciowego <*danych #*> zgłasza stan jako zakończony niepowodzeniem. |Nazwa interfejsu: <*danych #*> adres IP `<IP address>` nie można przełączyć online, ponieważ wykryto zduplikowany adres IP w sieci. |Upewnij się, że zduplikowany adres IP został usunięty z sieci, lub ponownie skonfigurować interfejs przy użyciu innego adresu IP. |
+| Wirtualny adres IP dla interfejsu sieciowego <*danych #* > zgłasza stan jako zakończony niepowodzeniem. |Inne/Nieznana przyczyna. |Czasami tymczasowe warunki mogą być przyczyną tych alertów. Jeśli jest to możliwe, następnie ten alert zostanie automatycznie wyczyszczony po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z działem pomocy technicznej firmy Microsoft. |
+| Wirtualny adres IP dla interfejsu sieciowego <*danych #* > zgłasza stan jako zakończony niepowodzeniem. |Nazwa interfejsu: <*danych #* > adres IP `<IP address>` nie można przełączyć online, ponieważ wykryto zduplikowany adres IP w sieci. |Upewnij się, że zduplikowany adres IP został usunięty z sieci, lub ponownie skonfigurować interfejs przy użyciu innego adresu IP. |
 
 ### <a name="disaster-recovery-alerts"></a>Alerty odzyskiwania po awarii
 
@@ -187,7 +187,7 @@ Jeśli łączność z chmurą nie powiedzie się na urządzeniu StorSimple w śr
 
 | Tekst alertu | Wydarzenie | Więcej informacji / zalecane akcje |
 |:--- |:--- |:--- |
-| Tworzenie woluminu lokalnego <*nazwa woluminu*> nie powiodło się. |Zadanie tworzenia woluminu nie powiodło się. <*Komunikat o błędzie odpowiadający kod błędu nie powiodło się:*>. |Problemy z łącznością mogą uniemożliwiać uniemożliwiać pomyślne ukończenie operacji tworzenia miejsca. Woluminy przypięte lokalnie jest alokowany nieelastycznie i proces tworzenia miejsca obejmuje rozlanie woluminów warstwowych do chmury. Jeśli nie występują żadne problemy z łącznością, może wyczerpano lokalne miejsce na urządzeniu. Ustal, czy miejsce przed ponowieniem próby wykonania tej operacji istnieje na urządzeniu. |
+| Tworzenie woluminu lokalnego <*nazwa woluminu*> nie powiodło się. |Zadanie tworzenia woluminu nie powiodło się. <*Komunikat o błędzie odpowiadający kod błędu nie powiodło się:* >. |Problemy z łącznością mogą uniemożliwiać uniemożliwiać pomyślne ukończenie operacji tworzenia miejsca. Woluminy przypięte lokalnie jest alokowany nieelastycznie i proces tworzenia miejsca obejmuje rozlanie woluminów warstwowych do chmury. Jeśli nie występują żadne problemy z łącznością, może wyczerpano lokalne miejsce na urządzeniu. Ustal, czy miejsce przed ponowieniem próby wykonania tej operacji istnieje na urządzeniu. |
 | Rozszerzenie woluminu lokalnego <*nazwa woluminu*> nie powiodło się. |Zadanie modyfikacji woluminu nie udało się ze względu <*odpowiadający kod błędu nie powiodło się: komunikat o błędzie*>. |Problemy z łącznością mogą uniemożliwiać uniemożliwiać pomyślne ukończenie operacji rozszerzenia woluminu. Woluminy przypięte lokalnie jest alokowany nieelastycznie i proces rozszerzania istniejącego miejsca obejmuje rozlanie woluminów warstwowych do chmury. Jeśli nie występują żadne problemy z łącznością, może wyczerpano lokalne miejsce na urządzeniu. Ustal, czy miejsce przed ponowieniem próby wykonania tej operacji istnieje na urządzeniu. |
 | Konwersja woluminu <*nazwa woluminu*> nie powiodło się. |Zadanie konwersji woluminu w celu konwersji typu woluminu z lokalnie przypięte do warstwowy nie powiodło się. |Konwersję typu woluminu z typu lokalnie przypięte do warstwy nie można ukończyć. Upewnij się, że nie istnieją żadne problemy z łącznością operacji pomyślne zakończenie działania. Do rozwiązywania problemów z łącznością problemów, przejdź do [Rozwiązywanie problemów za pomocą polecenia cmdlet Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Oryginalnego woluminu przypiętego lokalnie teraz została oznaczona jako wolumin warstwowy, ponieważ część danych z woluminu przypiętego lokalnie ma rozlane z chmurą podczas konwersji. Wynikowe wolumin warstwowy jest nadal zajmuje lokalne miejsce na urządzeniu, które nie mogą być odzyskiwane do przyszłych woluminy lokalne.<br>Rozwiąż wszelkie problemy z łącznością, wyczyść alert i przekonwertować ten wolumin z powrotem oryginalny typ woluminu przypiętego lokalnie, aby upewnić się, wszystkie wprowadzone dane są dostępne lokalnie ponownie. |
 | Konwersja woluminu <*nazwa woluminu*> nie powiodło się. |Zadanie konwersji woluminu w celu konwersji typu woluminu z warstwowego na lokalnie przypięty nie powiodło się. |Konwersja typu woluminu warstwowego na lokalnie przypięty nie mogła zostać zakończona. Upewnij się, że nie istnieją żadne problemy z łącznością operacji pomyślne zakończenie działania. Do rozwiązywania problemów z łącznością problemów, przejdź do [Rozwiązywanie problemów za pomocą polecenia cmdlet Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Jako część procesu konwersji w dalszym ciągu ma danych znajdujących się w chmurze, gdy nie będzie można odzyskać grubo aprowizowane miejsce na urządzeniu dla tego woluminu do przyszłych woluminy lokalne: nazwa oryginalnego woluminu warstwowego teraz jest oznaczony jako woluminu przypiętego lokalnie.<br>Rozwiąż wszelkie problemy z łącznością, wyczyść alert i przekonwertować ten wolumin z powrotem oryginalny typ woluminu warstwowego w celu zapewnienia, że lokalne miejsce aprowizowane na urządzeniu można odzyskać. |

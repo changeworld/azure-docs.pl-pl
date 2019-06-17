@@ -10,10 +10,10 @@ ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 912e3342b4e8031b4404dffb56f1add2cc705f8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60721763"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Omówienie narzędzi i interfejsów API usługi Batch
@@ -37,7 +37,7 @@ Podczas opracowywania rozwiązań usługi Batch potrzebne są następujące kont
 
 Aplikacje i usługi mogą wykonywać bezpośrednie wywołania interfejsu API REST lub użyć co najmniej jednej z następujących bibliotek klienckich do uruchamiania obciążeń usługi Azure Batch i zarządzania nimi.
 
-| Interfejs API | Dokumentacja interfejsu API | Do pobrania | Samouczek | Przykłady kodu | Więcej informacji |
+| Interfejs API | Dokumentacja interfejsów API | Do pobrania | Samouczek | Przykłady kodu | Więcej informacji |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[docs.microsoft.com][batch_rest] |ND |- |- | [Obsługiwane wersje](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Samouczek](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Informacje o wersji](https://aka.ms/batch-net-dataplane-changelog) |
@@ -49,7 +49,7 @@ Aplikacje i usługi mogą wykonywać bezpośrednie wywołania interfejsu API RES
 
 Interfejsy API usługi Azure Resource Manager dla usługi Batch zapewniają dostęp programowy do kont usługi Batch. Za pomocą tych interfejsów API możesz programowo zarządzać kontami usługi Batch, limitami przydziału, pakietami aplikacji i innymi zasobami za pośrednictwem dostawcy Microsoft.Batch.  
 
-| Interfejs API | Dokumentacja interfejsu API | Do pobrania | Samouczek | Przykłady kodu |
+| Interfejs API | Dokumentacja interfejsów API | Do pobrania | Samouczek | Przykłady kodu |
 | --- | --- | --- | --- | --- |
 | **Batch Management REST (Interfejs REST zarządzania usługą Batch)** |[docs.microsoft.com][api_rest_mgmt] |ND |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Samouczek](batch-management-dotnet.md) |[GitHub][api_sample_net] |

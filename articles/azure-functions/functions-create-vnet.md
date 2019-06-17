@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche, glenga
-ms.openlocfilehash: 07c7d7fb682708bf813820440d9c790c28b1f3e5
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834570"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063280"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Samouczek: Integrowanie usługi Functions z usługą Azure virtual network
 
@@ -113,7 +113,7 @@ Z witryną programu WordPress w Maszynę wirtualną w sieci wirtualnej zapewnia 
 
     ![Stan do konfigurowania funkcji sieci](./media/functions-create-vnet/Networking-1.png)
 
-1. Na stronie integracji sieci wirtualnej wybierz **Dodaj sieć wirtualna (wersja zapoznawcza)**.
+1. Na stronie integracji sieci wirtualnej wybierz **Dodaj sieć wirtualna (wersja zapoznawcza)** .
 
     ![Dodaj Integracja sieci wirtualnej w wersji zapoznawczej](./media/functions-create-vnet/networking-2.png)
 
@@ -137,7 +137,7 @@ Aplikacja funkcji może teraz uzyskiwać dostęp do sieci wirtualnej, w którym 
 
 Integracja sieci wirtualnej jest włączona umożliwia tworzenie serwera proxy w aplikacji funkcji do przekazywania żądań do maszyny Wirtualnej uruchomionej w sieci wirtualnej.
 
-1. W aplikacji funkcji, wybierz **proxy** > **+**, następnie użyj ustawień serwera proxy w tabeli pod ilustracją:
+1. W aplikacji funkcji, wybierz **proxy** >  **+** , następnie użyj ustawień serwera proxy w tabeli pod ilustracją:
 
     ![Zdefiniuj ustawienia serwera proxy](./media/functions-create-vnet/create-proxy.png)
 
@@ -149,7 +149,7 @@ Integracja sieci wirtualnej jest włączona umożliwia tworzenie serwera proxy w
 
 1. Wybierz **Utwórz** można dodać serwer proxy do aplikacji funkcji.
 
-## <a name="try-it-out"></a>Wypróbuj go
+## <a name="try-it-out"></a>Wypróbuj
 
 1. W przeglądarce, próby dostępu do adresu URL używany jako **URL wewnętrznej bazy danych**. Zgodnie z oczekiwaniami, upłynął limit czasu żądania. Przekroczono limit czasu występuje, ponieważ witryny WordPress jest podłączony do sieci wirtualnej i nie przez internet.
 
@@ -170,4 +170,4 @@ Funkcje działające w ramach planu Premium udostępnianie tej samej podstawowej
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej na temat opcji sieciowych w funkcjach](./functions-networking-options.md)
 
-[Plan w warstwie Premium]: functions-scale.md#premium-plan-public-preview
+[Plan w warstwie Premium]: functions-scale.md#premium-plan

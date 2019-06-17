@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: c6fc363a7ab9de215647e371a9d3c846f8688bd5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466327"
 ---
 # <a name="widevine-license-template-overview"></a>Omówienie szablonu licencji Widevine 
@@ -64,7 +64,7 @@ Usługa Azure Media Services umożliwia szyfrowanie zawartości przy użyciu **G
 | --- | --- | --- |
 | ładunek |Ciąg kodowany w formacie Base64 |Żądanie dotyczące licencji wysłane przez klienta. |
 | content_id |Ciąg kodowany w formacie Base64 |Identyfikator używany do uzyskania kluczowych identyfikator i zawartości klucza dla każdego content_key_specs.track_type. |
-| dostawca |string |Używane w celu wyszukania zawartości kluczy i zasad. Jeśli dostarczania kluczy firmy Microsoft jest używana do dostarczania licencji Widevine, ten parametr jest ignorowany. |
+| Dostawcy |string |Używane w celu wyszukania zawartości kluczy i zasad. Jeśli dostarczania kluczy firmy Microsoft jest używana do dostarczania licencji Widevine, ten parametr jest ignorowany. |
 | nazwa_zasady |string |Nazwa zasady wcześniej zarejestrowany. Opcjonalny. |
 | allowed_track_types |Wyliczenia |SD_ONLY lub SD_HD. Formanty, które zawartości klucze są uwzględnione w licencji. |
 | content_key_specs |Tablica JSON struktur, zobacz sekcję "Specyfikacje klucza zawartości."  |Bardziej szczegółowej kontroli na które kluczy zawartości do zwrócenia. Aby uzyskać więcej informacji zobacz sekcję "Specyfikacje klucza zawartości." Można określić tylko jedną z wartości allowed_track_types i content_key_specs. |

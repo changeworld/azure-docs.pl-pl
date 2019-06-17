@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: b649c77b34837ba2220d04b36d4a46598c321fdf
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 47f3885d9bd71abeb2a1bffe27b3ca1b2aa611ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898136"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego SAML insygnia
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację logowania jednokrotnego SAML insygnia w usłudze 
 
 **Aby dodać logowania jednokrotnego SAML insygnia z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 

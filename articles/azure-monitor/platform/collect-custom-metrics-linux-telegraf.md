@@ -1,18 +1,18 @@
 ---
 title: Zbieranie metryk niestandardowych dla maszyny Wirtualnej systemu Linux z agentem InfluxData Telegraf
 description: Zbieranie metryk niestandardowych dla maszyny Wirtualnej systemu Linux z agentem InfluxData Telegraf
-author: lingliw
+author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
-ms.date: 01/21/19
-ms.author: v-lingwu
+ms.topic: conceptual
+ms.date: 09/24/2018
+ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 14415b88cd6036642442ef9ae23e8dee301bb908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60741609"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Zbieranie metryk niestandardowych dla maszyny Wirtualnej systemu Linux z agentem InfluxData Telegraf
@@ -47,7 +47,7 @@ Utwórz nową maszynę Wirtualną systemu Linux:
 
     ![Omówienie agenta telegraf rozmiar maszyny wirtualnej](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. Na **ustawienia** strony w **sieci** > **sieciowej grupy zabezpieczeń**   >  ** Dodaj publiczne porty wejściowe**, wybierz opcję **HTTP** i **SSH (22)**. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**. 
+1. Na **ustawienia** strony w **sieci** > **sieciowej grupy zabezpieczeń**   >  ** Dodaj publiczne porty wejściowe**, wybierz opcję **HTTP** i **SSH (22)** . Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**. 
 
 1. Na stronie podsumowania wybierz **Utwórz** rozpocząć wdrażanie maszyny Wirtualnej. 
 
@@ -132,5 +132,6 @@ Gdy nie są już potrzebne, możesz usunąć grupę zasobów, maszyna wirtualna 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [metryki niestandardowe](metrics-custom-overview.md).
+
 
 

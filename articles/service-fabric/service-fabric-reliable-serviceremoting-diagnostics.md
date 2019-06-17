@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
 ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925937"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostyka i monitorowanie wydajności dla wiarygodnych zdalna komunikacja usług
@@ -30,7 +30,7 @@ Emituje ServiceRemoting niezawodne środowisko uruchomieniowe [liczniki wydajno�
 
 | Category | Opis |
 | --- | --- |
-| Usługa Service Fabric |Liczniki specyficzne dla usługi Azure Service Fabric zdalna komunikacja usług, na przykład średni czas przetwarzania żądania |
+| Service Fabric Service |Liczniki specyficzne dla usługi Azure Service Fabric zdalna komunikacja usług, na przykład średni czas przetwarzania żądania |
 | Metoda usługi Service Fabric |Liczniki specyficzne dla metody implementowane przez usługi Service Fabric wywołaniem funkcji zdalnych, na przykład, jak często jest wywoływana metoda usługi |
 
 Każda z powyższych kategorii ma co najmniej jeden licznik.
@@ -85,7 +85,7 @@ W powyższym przykładzie `ivoicemailboxservice.leavemessageasync` jest nazwa me
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Metoda usługi Service Fabric |Wywołania/s |Liczba prób wywołaniu metody usługi na sekundę |
+| Metoda usługi Service Fabric |Wywołania na sekundę |Liczba prób wywołaniu metody usługi na sekundę |
 | Metoda usługi Service Fabric |Średnia liczba milisekund dla wywołania |Czas wykonania metody usługi w milisekundach |
 | Metoda usługi Service Fabric |Zgłoszone wyjątki/s |Liczba przypadków, metoda usługi zgłosił wyjątek na sekundę |
 
@@ -94,10 +94,10 @@ Gdy klient wywołuje metodę za pośrednictwem obiektu serwera proxy usługi, wy
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Usługa Service Fabric |Liczba oczekujących żądań |Liczba żądań przetwarzanych w usłudze |
-| Usługa Service Fabric |Średni czas na żądanie (milisekundy) |Czas (w milisekundach) przez usługę do przetwarzania żądań |
-| Usługa Service Fabric |Średni czas deserializacji żądania (milisekundy) |Czas trwania (w milisekundach) do deserializacji komunikatu żądania usługi, po odebraniu na usługę |
-| Usługa Service Fabric |Średni czas serializacji odpowiedzi (milisekundy) |Czas trwania (w milisekundach), można serializować komunikatu odpowiedzi usługi na usługę przed odpowiedź jest wysyłana do klienta |
+| Service Fabric Service |Liczba oczekujących żądań |Liczba żądań przetwarzanych w usłudze |
+| Service Fabric Service |Średnia liczba milisekund dla żądania |Czas (w milisekundach) przez usługę do przetwarzania żądań |
+| Service Fabric Service |Średni czas deserializacji żądania |Czas trwania (w milisekundach) do deserializacji komunikatu żądania usługi, po odebraniu na usługę |
+| Service Fabric Service |Średni czas serializacji odpowiedzi |Czas trwania (w milisekundach), można serializować komunikatu odpowiedzi usługi na usługę przed odpowiedź jest wysyłana do klienta |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przykładowy kod](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)

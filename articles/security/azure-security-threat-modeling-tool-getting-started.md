@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610756"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Wprowadzenie do narzędzia do modelowania zagrożeń
 
-2018 modelowania narzędzia w programie Microsoft Threat został wydany jako wersji Ogólnodostępnej w września 2018 jako wolną  **[kliknij do pobierania](https://aka.ms/threatmodelingtool)**. Zmiana mechanizm dostarczania pozwala nam wypychania najnowsze ulepszenia i poprawki dla klientów każdym otwarciu narzędzia, dzięki czemu łatwiejsze do utrzymania i użycia.
+2018 modelowania narzędzia w programie Microsoft Threat został wydany jako wersji Ogólnodostępnej w września 2018 jako wolną  **[kliknij do pobierania](https://aka.ms/threatmodelingtool)** . Zmiana mechanizm dostarczania pozwala nam wypychania najnowsze ulepszenia i poprawki dla klientów każdym otwarciu narzędzia, dzięki czemu łatwiejsze do utrzymania i użycia.
 Ten artykuł przeprowadzi Cię przez proces wprowadzenie zagrożeń firmy Microsoft SDL podejście do modelowania i pokazano, jak użyć narzędzia do tworzenia modeli doskonałe zagrożeń szkieletu do procesu z zabezpieczeniami.
 
 W tym artykule jest oparta na wiedzy na temat zagrożenia SDL modelowania podejście. Szybki przegląd można znaleźć **[aplikacji sieci Web do modelowania zagrożeń](https://msdn.microsoft.com/library/ms978516.aspx)** zarchiwizowane wersję **[odkryć zabezpieczeń wady przy użyciu podejścia STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** Opublikowany artykuł w witrynie MSDN w 2006 r.
@@ -79,14 +79,14 @@ Ich przechodzenia przez proces tworzenia ich pierwszy model zagrożeń.
 > - Są one wysyłania poleceń do serwera sieci Web — okręgu
 > - Serwer sieci Web jest konsultacji bazy danych (dwie linie)
 
-Co Ricardo właśnie pokazałeś Cristina jest DPD, mała w przypadku  **[Diagram przepływu danych](https://en.wikipedia.org/wiki/Data_flow_diagram)**. Narzędzie do modelowania zagrożeń umożliwia użytkownikom podanie granice zaufania, wskazywanym przez czerwone linie kropkowana, aby pokazać, gdzie są różnymi jednostkami w formancie. Na przykład Administratorzy IT wymagają systemu usługi Active Directory na potrzeby uwierzytelniania, dzięki usłudze Active Directory znajduje się poza jej kontrolą.
+Co Ricardo właśnie pokazałeś Cristina jest DPD, mała w przypadku  **[Diagram przepływu danych](https://en.wikipedia.org/wiki/Data_flow_diagram)** . Narzędzie do modelowania zagrożeń umożliwia użytkownikom podanie granice zaufania, wskazywanym przez czerwone linie kropkowana, aby pokazać, gdzie są różnymi jednostkami w formancie. Na przykład Administratorzy IT wymagają systemu usługi Active Directory na potrzeby uwierzytelniania, dzięki usłudze Active Directory znajduje się poza jej kontrolą.
 
 > Cristina: Wygląda prawo do mnie. Jak wygląda zagrożeń?
 > Ricardo: Pozwól mi pokazano.
 
 ## <a name="analyzing-threats"></a>Analiza zagrożeń
 
-Po kliknięciu przycisku w widoku analizy z zaznaczenia menu ikonę (plik z lupę), jest on przekierowanie do listy wygenerowanych zagrożeń narzędzie do modelowania zagrożeń znaleziono oparty na szablonie domyślnym, korzystającą z podejściem SDL o nazwie  **[ STRIDE (fałszowaniem/przechwyceniem, Zmanipulowaniem, ujawnienia informacji, możliwość wyparcia, odmowę usługi i podniesienie uprawnień)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Chodzi o to, że oprogramowanie jest dostępna w ramach przewidywalnego zbiór zagrożenia, które można znaleźć, używając tych kategorii 6.
+Po kliknięciu przycisku w widoku analizy z zaznaczenia menu ikonę (plik z lupę), jest on przekierowanie do listy wygenerowanych zagrożeń narzędzie do modelowania zagrożeń znaleziono oparty na szablonie domyślnym, korzystającą z podejściem SDL o nazwie  **[ STRIDE (fałszowaniem/przechwyceniem, Zmanipulowaniem, ujawnienia informacji, możliwość wyparcia, odmowę usługi i podniesienie uprawnień)](https://en.wikipedia.org/wiki/STRIDE_(security))** . Chodzi o to, że oprogramowanie jest dostępna w ramach przewidywalnego zbiór zagrożenia, które można znaleźć, używając tych kategorii 6.
 
 To podejście jest takie, jak zabezpieczanie Twoim domu, zapewniając każdego drzwi i okno ma mechanizm blokowania przed dodaniem system alarmowy lub wyszukiwać te elementy po złodziej będzie.
 

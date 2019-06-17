@@ -3,17 +3,16 @@ title: 'Generowanie i eksportowanie certyfikatów for Point-to-Site: MakeCert : 
 description: Utworzyć certyfikat główny z podpisem własnym, a następnie wyeksportować klucz publiczny i generowania certyfikatów klienta, za pomocą narzędzia MakeCert.
 services: vpn-gateway
 documentationcenter: na
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-origin.date: 09/05/2018
-ms.date: 10/01/2018
-ms.author: v-jay
+ms.date: 09/05/2018
+ms.author: cherylmc
 ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60768110"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generowanie i eksportowanie certyfikatów dla połączeń punkt-lokacja za pomocą narzędzia MakeCert

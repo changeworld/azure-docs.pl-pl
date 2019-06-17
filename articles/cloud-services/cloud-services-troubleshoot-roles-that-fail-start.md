@@ -16,10 +16,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60653395"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Rozwiązywanie problemów z ról usługi w chmurze, które można uruchomić
@@ -76,7 +76,7 @@ Przejdź do witryny sieci Web teraz zwróci dokładniejsze komunikaty o błędac
 
 * Błąd serwera w aplikacji» /».
 * Opis: Wystąpił nieobsługiwany wyjątek podczas wykonywania bieżącego żądania sieci web. Sprawdź ślad stosu, aby uzyskać więcej informacji o błędzie i pochodzenie w kodzie.
-* Szczegóły wyjątku: System.IO.FIleNotFoundException: Nie można załadować pliku lub zestawu ' Microsoft.WindowsAzure.StorageClient, wersja = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 "lub jednej z jego zależności. W systemie nie można odnaleźć określonego pliku.
+* Szczegóły wyjątku: System.IO.FIleNotFoundException: Nie można załadować pliku lub zestawu ' Microsoft.WindowsAzure.StorageClient, wersja = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 "lub jednej z jego zależności. System nie może odnaleźć określonego pliku.
 
 Na przykład:
 

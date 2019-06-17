@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 45cbb26eb74dd78bf46a6b148a32a7762bb31fbc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 730ecd306bf33709ed5d9fa334b64f7cd7a482dc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696877"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066485"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analizowanie dzienników telemetrii usługi Application Insights przy użyciu platformy Apache Spark w HDInsight
 
@@ -26,9 +26,6 @@ Dowiedz się, jak używać [platformy Apache Spark](https://spark.apache.org/) n
 * Aplikacja, która jest skonfigurowana do używania usługi Application Insights.
 
 * Znajomość tworzenia klastra HDInsight opartych na systemie Linux. Aby uzyskać więcej informacji, zobacz [tworzenie platformy Apache Spark w HDInsight](apache-spark-jupyter-spark-sql.md).
-
-  > [!IMPORTANT]  
-  > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * Przeglądarka sieci web.
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 30ac6a94142c9b9d987fb3fd32b3483cc6dc130c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867592"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Szyfrowanie zawartości przy użyciu szyfrowania magazynu 
 
 > [!NOTE]
-> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadnych nowych funkcji lub funkcje są dodawane do usługi Media Services v2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadnych nowych funkcji lub funkcje są dodawane do usługi Media Services v2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
 >   
 
 Zdecydowanie zaleca się szyfrowanie zawartości lokalnie przy użyciu algorytmu AES-256-bitowego, a następnie przekaż go do usługi Azure Storage gdzie są przechowywane, szyfrowane w stanie spoczynku.
@@ -120,7 +120,7 @@ Poniżej przedstawiono ogólne kroki do generowania kluczy zawartości, które s
     EncryptedContentKey | Utworzymy nową wartość klucza zawartości, która jest wartością 256-bitowego (32-bajtów). Klucz jest zaszyfrowany przy użyciu certyfikatu X.509 szyfrowania magazynu, który możemy pobrać z usługi Microsoft Azure Media Services, wykonując żądanie HTTP GET dla GetProtectionKeyId i metod GetProtectionKey. Na przykład zobacz następujący kod .NET: **EncryptSymmetricKeyData** metody zdefiniowanej [tutaj](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
     ProtectionKeyId | Jest to ochrona identyfikator klucza dla certyfikatu X.509 szyfrowania magazynu, który został użyty do zaszyfrowania naszych klucza zawartości.
     ProtectionKeyType | Jest to typ szyfrowania do ochrony klucza, który został użyty do szyfrowania klucza zawartości. Ta wartość jest StorageEncryption(1) w naszym przykładzie.
-    Suma kontrolna |Obliczony sumy kontrolnej MD5 dla klucza zawartości. Jest ona obliczana przez szyfrowania identyfikator zawartości przy użyciu klucza zawartości. Przykładowy kod przedstawia sposób obliczania sumy kontrolnej.
+    Sumy kontrolnej |Obliczony sumy kontrolnej MD5 dla klucza zawartości. Jest ona obliczana przez szyfrowania identyfikator zawartości przy użyciu klucza zawartości. Przykładowy kod przedstawia sposób obliczania sumy kontrolnej.
 
 
 ### <a name="retrieve-the-protectionkeyid"></a>Pobieranie ProtectionKeyId

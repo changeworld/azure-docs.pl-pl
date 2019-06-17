@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 22521abbc341fa9999738dd51301d3f84c18627a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919307"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077623"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -90,7 +90,7 @@ Aby uzyskać informacje dotyczące uprawnień wymaganych do utworzenia komunikac
 
 Istnieje nominalna opłata za ruch przychodzący i wychodzący w połączeniach wirtualnych sieciach równorzędnych. Aby uzyskać więcej informacji na temat cen wirtualnych sieci równorzędnych i globalnych wirtualnych sieci równorzędnych, zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Tranzyt bramy jest właściwością komunikacji równorzędnej, która umożliwia sieci wirtualnej wykorzystanie bramy sieci VPN w równorzędnej sieci wirtualnej na potrzeby połączeń obejmujących wiele lokalizacji lub połączeń między sieciami wirtualnymi. Ruch przechodzący przez bramę zdalną w tym scenariuszu podlega [opłatom za bramę sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/). [Opłaty za wirtualne sieci równorzędne](https://azure.microsoft.com/pricing/details/virtual-network) nie są naliczane. Na przykład jeśli zachodzi komunikacja równorzędna między ma bramę sieci VPN dla łączności lokalnej i Vnetc jest połączona z zachodzi komunikacja równorzędna między za pomocą odpowiednich właściwości skonfigurowane, ruch z Vnetc do lokalnego tylko za ruch wychodzący na cennik bramy sieci VPN. Opłaty za wirtualne sieci równorzędne nie są naliczane. Dowiedz się, jak [skonfigurować tranzyt bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tranzyt przez bramę jest właściwością komunikacji równorzędnej, która umożliwia korzystanie z bramy sieci VPN/ExpressRoute w równorzędnej sieci wirtualnej dla wielu lokalnych lub połączenia sieć wirtualna-sieć wirtualna sieć wirtualną. Ruchu przechodzącego przez z bramy zdalnej, w tym scenariuszu jest podlegają [opłaty za bramy sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/) lub brama usługi ExpressRoute opłaty i nie są naliczane [komunikacji równorzędnej w sieci vnet.](https://azure.microsoft.com/pricing/details/virtual-network) Na przykład jeśli zachodzi komunikacja równorzędna między ma bramę sieci VPN dla łączności lokalnej i Vnetc jest połączona z zachodzi komunikacja równorzędna między za pomocą odpowiednich właściwości skonfigurowane, ruch z Vnetc do lokalnego tylko za ruch wychodzący na cennik bramy sieci VPN lub ExpressRoute — cennik. Opłaty za wirtualne sieci równorzędne nie są naliczane. Dowiedz się, jak [skonfigurować tranzyt bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

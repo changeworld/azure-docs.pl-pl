@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: cbabdde2dd5df2ca40ee45fe0f7b0437f095673b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 84e8eedfb206e28f245128a4e30aba44e96277ab
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020378"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072417"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
@@ -48,7 +48,7 @@ Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Konwertuj tekst na mowę. | Yes | Yes |
+| Konwertuj tekst na mowę. | Tak | Yes |
 | Przekaż zestawów danych dostosowywania głosu. | Nie | Tak\* |
 | Tworzenie i zarządzanie modelami czcionek głosowych. | Nie | Tak\* |
 | Tworzenie i zarządzanie wdrożeniami czcionek głosowych. | Nie | Tak\* |
@@ -63,7 +63,7 @@ Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamian
 
 ### <a name="sdk-quickstarts"></a>Przewodniki szybkiego startu zestawu SDK
 
-| Przewodnik Szybki Start (SDK) | Platforma | Dokumentacja interfejsu API |
+| Przewodnik Szybki Start (SDK) | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
 | [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref) |
@@ -71,7 +71,7 @@ Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamian
 
 ### <a name="rest-quickstarts"></a>Przewodniki Szybki Start REST
 
-| Przewodnik Szybki Start (REST) | Platforma | Dokumentacja interfejsu API |
+| Przewodnik Szybki Start (REST) | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
 | [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS i Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |

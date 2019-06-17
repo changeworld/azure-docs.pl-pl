@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242926c0821e4951d2a2bd2f858f63691baf1017
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: ae7c823b9aea262556081354a108ac9509a284ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307230"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110682"
 ---
 # <a name="deploy-a-secure-workstation"></a>Wdrażanie bezpiecznej stacji roboczej
 
@@ -28,17 +28,17 @@ Przed wdrożeniem rozwiązania, należy wybrać profil, który będzie używany.
 
 | Profil | Małe | Rozszerzone | Wysoka | Wyspecjalizowany | Zabezpieczone | Izolowane |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Użytkownik w usłudze Azure AD | Tak | Yes | Yes | Yes | Yes | Tak |
-| Zarządzane przez usługę Intune | Tak | Yes | Yes | Yes | Yes | Tak |
+| Użytkownik w usłudze Azure AD | Tak | Yes | Yes | Yes | Yes | Yes |
+| Zarządzane przez usługę Intune | Tak | Yes | Yes | Yes | Yes | Yes |
 | Urządzenia zarejestrowane w usłudze Azure AD | Tak |  |  |  |  | |   |
 | Urządzenia przyłączone do usługi Azure AD |   | Tak | Yes | Yes | Yes | Tak |
-| Usługa Intune linii bazowej zabezpieczeń stosowane |   | Tak <br> (Rozszerzony) | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Tak <br> (Zabezpieczone) |  Nie dotyczy |
-| Sprzęt spełnia bezpiecznego systemu Windows 10 i standardy |   | Yes | Yes | Yes | Yes | Yes |
-| Włączony program Microsoft Defender ATP |   | Tak  | Yes | Yes | Yes | Yes |
-| Usuwanie uprawnień administratora |   |   | Tak  | Yes | Yes | Tak |
+| Usługa Intune linii bazowej zabezpieczeń stosowane |   | Yes <br> (Rozszerzony) | Tak <br> (HighSecurity) | Tak <br> (NCSC) | Tak <br> (Zabezpieczone) |  Nie dotyczy |
+| Sprzęt spełnia bezpiecznego systemu Windows 10 i standardy |   | Tak | Yes | Yes | Yes | Tak |
+| Włączony program Microsoft Defender ATP |   | Tak  | Yes | Yes | Yes | Tak |
+| Usuwanie uprawnień administratora |   |   | Yes  | Yes | Yes | Yes |
 | Wdrażanie przy użyciu Microsoft Autopilot |   |   | Tak  | Yes | Yes | Tak |
-| Aplikacje zainstalowane tylko przez usługę Intune |   |   |   | Tak | Yes |Tak |
-| Ograniczone do listy zatwierdzonych tylko adresów URL |   |   |   | Tak | Yes |Yes |
+| Aplikacje zainstalowane tylko przez usługę Intune |   |   |   | Yes | Yes |Tak |
+| Ograniczone do listy zatwierdzonych tylko adresów URL |   |   |   | Tak | Yes |Tak |
 | Internet (ruchu przychodzącego/wychodzącego zablokowane) |   |   |   |  |  |Tak |
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
@@ -102,9 +102,9 @@ Dalsze wzmacnianie procesu przyłączania urządzenia do usługi Azure AD, przej
 
 W witrynie Azure portal, przejdź do **usługi Azure Active Directory** > **mobilność (Zarządzanie urządzeniami Przenośnymi i zarządzania aplikacjami Mobilnymi)**  > **Microsoft Intune**. Zmień ustawienie **zakres użytkownika oprogramowania MDM** do **wszystkich** i wybierz polecenie **Zapisz** dopuszcza możemy dowolnego urządzenia, które mają być zarządzane przez usługę Intune, w tym scenariuszu. Więcej informacji można znaleźć w artykule [szybkiego startu usługi Intune: Konfigurowanie automatycznej rejestracji urządzeń z systemem Windows 10](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment). Zasady konfiguracji i zgodności usługi Intune zostanie utworzona w przyszłym kroku.
 
-#### <a name="azure-ad-conditional-access"></a>Dostęp warunkowy usługi Azure AD
+#### <a name="azure-ad-conditional-access"></a>Dostęp warunkowy Azure AD
 
-Dostęp warunkowy usługi Azure AD może pomóc zachować uprzywilejowanych wykonywania zadań administracyjnych na zgodnych urządzeniach. Użytkownicy, gdy zdefiniowaliśmy jako elementy członkowskie **Secure użytkownicy stacji roboczej** grupy będą musieli wykonywać uwierzytelnianie wieloskładnikowe podczas logowania do aplikacji w chmurze. Firma Microsoft postępuj zgodnie z najlepszych rozwiązań i wykluczyć naszych kont dostępu awaryjnego. Dodatkowe informacje można znaleźć w artykule [zarządzania kont dostępu awaryjnego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+Azure AD warunkowego dostępu może pomóc zachować uprzywilejowanych wykonywania zadań administracyjnych na zgodnych urządzeniach. Użytkownicy, gdy zdefiniowaliśmy jako elementy członkowskie **Secure użytkownicy stacji roboczej** grupy będą musieli wykonywać uwierzytelnianie wieloskładnikowe podczas logowania do aplikacji w chmurze. Firma Microsoft postępuj zgodnie z najlepszych rozwiązań i wykluczyć naszych kont dostępu awaryjnego. Dodatkowe informacje można znaleźć w artykule [zarządzania kont dostępu awaryjnego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 
 Aby skonfigurować dostęp warunkowy w witrynie Azure portal, przejdź do **usługi Azure Active Directory** > **dostępu warunkowego** > **nowe zasady**.
 
@@ -122,7 +122,7 @@ Aby skonfigurować dostęp warunkowy w witrynie Azure portal, przejdź do **usł
       * W przypadku wielu kontrolek — **Wymagaj wszystkich wybranych kontrolek**
 * Włącz zasady — **na**
 
-Organizacje, można opcjonalnie utworzyć zasady krajach bloku, w których użytkownicy nie będzie dostępu do zasobów firmy. Więcej informacji na temat zasad dostępu warunkowego na podstawie lokalizacji IP można znaleźć w artykule [co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)
+Organizacje, można opcjonalnie utworzyć zasady krajach bloku, w których użytkownicy nie będzie dostępu do zasobów firmy. Więcej informacji na temat zasad dostępu warunkowego na podstawie lokalizacji IP można znaleźć w artykule [co to jest warunek lokalizacji w usłudze Azure Active Directory dostępu warunkowego?](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)
 
 ## <a name="intune-configuration"></a>Konfiguracja usługi Intune
 

@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 65e94a271fc8fc72ac74d51af3cf7b717f8410b0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5f3c1331e2b005b136a015c537d0fc18406ca9d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072089"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i korzystać z woluminu z udziałem plików platformy Azure w usłudze Azure Kubernetes Service (AKS)
@@ -71,7 +71,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Instalowanie udziału plików jako wolumin
 
-Aby zainstalować udział plików platformy Azure, w tym zasobniku, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Jeśli zmienisz nazwę udziału plików lub nazwa wpisu tajnego, zaktualizuj *shareName* i *secretName*. W razie potrzeby zaktualizuj `mountPath`, czyli ścieżkę, w których udostępnianie plików jest zainstalowany w zasobnik.
+Aby zainstalować udział plików platformy Azure, w tym zasobniku, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Jeśli zmienisz nazwę udziału plików lub nazwa wpisu tajnego, zaktualizuj *shareName* i *secretName*. W razie potrzeby zaktualizuj `mountPath`, czyli ścieżkę, w których udostępnianie plików jest zainstalowany w zasobnik. W systemie Windows Server kontenerów (obecnie dostępna w wersji zapoznawczej w usłudze AKS), określ *mountPath* przy użyciu konwencji ścieżkę Windows, takich jak *"D:"* .
 
 ```yaml
 apiVersion: v1

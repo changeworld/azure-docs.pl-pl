@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
 ms.openlocfilehash: 4ee91a91a20cbffebf7453ba573266962aa35806
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924740"
 ---
 # <a name="get-started-with-storage-explorer"></a>Wprowadzenie do Eksploratora usługi Storage
@@ -89,7 +89,7 @@ Ponadto można pracować z kontami magazynu na globalnej i krajowej platformie A
 
 1. W Eksploratorze usługi Storage wybierz **Zarządzanie kontami** można przejść do **Panelu zarządzania kontem**.
 
-    ![Zarządzaj kontami][1]
+    ![Zarządzanie kontami][1]
 
 2. W okienku po lewej stronie zostaną wyświetlone wszystkie konta platformy Azure, których użytkownik został zarejestrowany w usłudze. Aby połączyć z innym kontem, wybierz **Dodaj konto**
 
@@ -161,7 +161,7 @@ Aby udostępnić konto magazynu zewnętrznego, właściciel tego konta musi najp
 
 6. Kopiuj **nazwa konta magazynu** i **klucz1**.
 
-    ![Klawisze dostępu][8]
+    ![Klucze dostępu][8]
 
 ### <a name="attach-to-an-external-storage-account"></a>Dołączanie konta magazynu zewnętrznego
 

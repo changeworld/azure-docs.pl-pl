@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254864"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808302"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów 
 
@@ -83,11 +83,11 @@ Po zmianie nazwy maszyny Windows wszystkie aktualnie skonfigurowane kopie zapaso
 - Jeśli potrzebujesz odzyskać dane z kopii zapasowej do magazynu przy użyciu starej nazwy serwera, użyj opcji, aby przywrócić do innej lokalizacji w Kreatorze odzyskiwania danych. [Dowiedz się więcej](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine). 
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Co to jest maksymalna długość ścieżki pliku do utworzenia kopii zapasowej?
-Agenta usług MARS opiera się na systemie plików NTFS i używa Specyfikacja długości ścieżki pliku, które są ograniczone przez [interfejsu Windows API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Jeśli pliki, które mają być chronione są dłuższe niż dozwolona wartość, należy utworzyć kopię zapasową folderu nadrzędnego lub napędu dyskowego.  
+Agenta usług MARS opiera się na systemie plików NTFS i używa Specyfikacja długości ścieżki pliku, które są ograniczone przez [interfejsu Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths). Jeśli pliki, które mają być chronione są dłuższe niż dozwolona wartość, należy utworzyć kopię zapasową folderu nadrzędnego lub napędu dyskowego.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Jakie znaki są dozwolone w ścieżkach plików?
 
-Agenta usług MARS opiera się na systemie plików NTFS i umożliwia [obsługiwane znaki](/windows/desktop/FileIO/naming-a-file#naming_conventions) w ścieżkach nazw plików.
+Agenta usług MARS opiera się na systemie plików NTFS i umożliwia [obsługiwane znaki](/windows/desktop/FileIO/naming-a-file#naming-conventions) w ścieżkach nazw plików.
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Zostanie wyświetlone ostrzeżenie "Kopii zapasowych Azure nie został skonfigurowany dla tego serwera".
 To ostrzeżenie może się pojawić, nawet jeśli skonfigurowano zasady kopii zapasowych, gdy ustawienia harmonogramu tworzenia kopii zapasowych przechowywane na serwerze lokalnym nie są takie same jak ustawienia przechowywane w magazynie kopii zapasowych.

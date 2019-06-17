@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 11fbf14cdeb8d22dbfdf522e1c5838634937f6cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f1e014bb14b2b5c1ae924f4371e08aa8bf8698f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679417"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056478"
 ---
 # <a name="about-point-to-site-vpn"></a>Sieci VPN typu punkt lokacja — informacje
 
@@ -22,9 +22,9 @@ Połączenie bramy VPN Gateway typu punkt-lokacja pozwala utworzyć bezpieczne p
 
 Sieci VPN typu punkt lokacja można użyć jednej z następujących protokołów:
 
-* **Protokół® OpenVPN**, SSL/TLS, na podstawie protokołu sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. OpenVPN może służyć do łączenia z systemem Android, iOS (w wersji 11.0 i nowszych), urządzenia Windows, Linux i Mac (wersji OS x 10.13 i nowsze wersje).
+* **Protokół® OpenVPN**, SSL/TLS, na podstawie protokołu sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port TCP 443 wychodzących, która używa protokołu SSL. OpenVPN może służyć do łączenia z systemem Android, iOS (w wersji 11.0 i nowszych), urządzenia Windows, Linux i Mac (wersji OS x 10.13 i nowsze wersje).
 
-* Zabezpiecz SSTP Socket Tunneling Protocol (), protokołem opartym na protokole SSL sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. Protokół SSTP jest obsługiwana tylko na urządzeniach Windows. Platforma Azure obsługuje wszystkich wersji systemu Windows, który ma protokołu SSTP (Windows 7 i nowsze).
+* Zabezpiecz SSTP Socket Tunneling Protocol (), protokołem opartym na protokole SSL sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port TCP 443 wychodzących, która używa protokołu SSL. Protokół SSTP jest obsługiwana tylko na urządzeniach Windows. Platforma Azure obsługuje wszystkich wersji systemu Windows, który ma protokołu SSTP (Windows 7 i nowsze).
 
 * Sieć VPN z protokołem IKEv2 to oparte na standardach rozwiązanie sieci VPN korzystające z protokołu IPsec. Sieci VPN z protokołem IKEv2 można używać do łączenia z urządzeniami Mac (z systemem OSX 10.11 lub nowszym).
 
@@ -86,6 +86,68 @@ Plik zip zawiera również wartości niektórych ważnych ustawień po stronie p
 >Podstawowa jednostka SKU nie obsługuje uwierzytelniania za pomocą protokołu IKEv2 ani usługi RADIUS.
 >
 
+## <a name="IKE/IPsec policies"></a>Jakie zasady IKE/IPsec są skonfigurowane na bramach sieci VPN dla P2S?
+
+
+**IKEv2**
+
+|**Szyfrowania** | **Integralność** | **PRF** | **Grupa DH** |
+|---        | ---           | ---       | ---   |
+|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
+|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
+|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP384 |
+|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP256 |
+|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_24 |
+|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_14 |
+|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP384 |
+|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP256 |
+|AES256     |   SHA384      | SHA384    | GROUP_24 |
+|AES256     |   SHA384      | SHA384    | GROUP_14 |
+|AES256     |   SHA384      | SHA384    | GROUP_ECP384 |
+|AES256     |   SHA384      | SHA384    | GROUP_ECP256 |
+|AES256     |   SHA256      | SHA256    | GROUP_24 |
+|AES256     |   SHA256      | SHA256    | GROUP_14 |
+|AES256     |   SHA256      | SHA256    | GROUP_ECP384 |
+|AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
+|AES256     |   SHA256      | SHA256    | GROUP_2 |
+
+**IPsec**
+
+|**Szyfrowania** | **Integralność** | **Grupa PFS** |
+|---        | ---           | ---       |
+|GCM_AES256 | GCM_AES256 | GROUP_NONE |
+|GCM_AES256 | GCM_AES256 | GROUP_24 |
+|GCM_AES256 | GCM_AES256 | GROUP_14 |
+|GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
+|GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
+| AES256    | SHA256 | GROUP_NONE |
+| AES256    | SHA256 | GROUP_24 |
+| AES256    | SHA256 | GROUP_14 |
+| AES256    | SHA256 | GROUP_ECP384 |
+| AES256    | SHA256 | GROUP_ECP256 |
+| AES256    | SHA1 | GROUP_NONE |
+
+## <a name="TLS policies"></a>Jakie zasady protokołu TLS są skonfigurowane na bramach sieci VPN dla P2S?
+**TLS**
+
+|**Zasady** |
+|---| 
+|TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 |
+|TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 |
+|TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 |
+|TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 |
+|TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 |
+|TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 |
+|TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 |
+|TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 |
+|TLS_RSA_WITH_AES_128_GCM_SHA256 |
+|TLS_RSA_WITH_AES_256_GCM_SHA384 |
+|TLS_RSA_WITH_AES_128_CBC_SHA256 |
+|TLS_RSA_WITH_AES_256_CBC_SHA256 |
+
+
+
+
 ## <a name="configure"></a>Jak skonfigurować połączenia P2S?
 
 Konfiguracji P2S wymaga kilku określonych kroków. Następujące artykuły zawierają instrukcje umożliwia przeprowadzenie konfiguracji P2S i linki do skonfigurowanie urządzeń klienckich w sieci VPN:
@@ -96,6 +158,12 @@ Konfiguracji P2S wymaga kilku określonych kroków. Następujące artykuły zawi
 
 * [Konfigurowanie OpenVPN](vpn-gateway-howto-openvpn.md)
 
+## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Jak usunąć konfigurację połączenia P2S?
+
+Można usunąć konfiguracji P2S za pomocą interfejsu wiersza polecenia az oraz następujące polecenie: 
+
+`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+ 
 ## <a name="faqcert"></a>Często zadawane pytania dotyczące uwierzytelniania certyfikatu platformy Azure natywne
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]

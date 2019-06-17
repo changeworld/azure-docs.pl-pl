@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60332401"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure 
 
-Usługa Azure Security Center partnerów firmy Microsoft Cloud App Security, aby zapewnić Ci alerty oparte na użytkownika i analizie zachowań jednostek (UEBA) dla zasobów platformy Azure i użytkowników (aktywności platformy Azure). Te alerty wykrycia anomalii w zachowanie użytkowników i są oparte na użytkownika i jednostki analizy behawioralnej i usługi machine learning (ML), dzięki czemu można natychmiast uruchomić wykrywanie zaawansowanych zagrożeń działań wykonywanych na Twoich subskrypcji. Ponieważ są one automatycznie włączone, nowe funkcje wykrywania anomalii zapewnia wyniki wprowadzenia, zapewniając natychmiastowy wykrywania zagrożeń, przeznaczonych dla wielu anomalii zachowań użytkowników i zasobów skojarzonych z Twoją subskrypcją. Ponadto te alerty korzystać z dodatkowych danych, która już istnieje w aparacie wykrywania Microsoft Cloud App Security w celu przyspieszenia procesu badania i zawierają bieżących zagrożeń. 
+Usługa Azure Security Center partnerów firmy Microsoft Cloud App Security, aby zapewnić Ci alerty oparte na użytkownika i analizie zachowań jednostek (UEBA) dla zasobów platformy Azure i użytkowników (aktywności platformy Azure). Te alerty wykrywają nieprawidłowości w zachowaniu użytkowników i są oparte na analizie behawioralnej użytkowników i jednostek oraz uczeniu maszynowym (ML, machine learning), dzięki czemu można natychmiast uruchomić zaawansowane wykrywanie zagrożeń wśród działań wykonywanych na Twoich subskrypcjach. Ponieważ są one automatycznie włączone, nowe wykrycia anomalii dostarczają natychmiastowe wyniki, zapewniając błyskawiczne wykrywanie, ukierunkowując się na liczne anomalie w zachowaniu użytkowników i zasobów powiązanych z subskrypcją. Ponadto te alerty korzystają z dodatkowych danych, które już istnieją w aparacie wykrywania Microsoft Cloud App Security w celu przyspieszenia procesu badania i powstrzymywania bieżących zagrożeń. 
 
 > [!NOTE]
 > Usługi Azure Security Center, która może przechowywać kopię danych klientów związanych z zabezpieczeniami, zebranych z lub skojarzone z zasobem klientów (np. maszyna wirtualna lub dzierżawy usługi Azure Active Directory): () w tej samej lokalizacji geograficznej co tego zasobu, z wyjątkiem w tych obszarach geograficznych gdzie firmy Microsoft nie ma jeszcze do wdrożenia usługi Azure Security Center, w którym będą przechowywane w przypadku kopii tych danych w Stanach Zjednoczonych. i (b) w przypadku, gdy usługa Azure Security Center używa innej usługi Online firmy Microsoft do przetwarzania tych danych, mogą być przechowywane takich danych zgodnie z regułami geolokalizacja tej usługi Online.

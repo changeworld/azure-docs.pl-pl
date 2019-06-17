@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a076c924d57aadfae477a5df0d128aad8e67af60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a45a1fbe0d7a99c970d6f8f5626c1349f9d8b1ca
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61305421"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67123694"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Obsługa modułu az w usłudze Azure Automation
 
@@ -63,7 +63,7 @@ Ten proces importowania można również wykonać za pomocą [galerii programu P
 
 ## <a name="test-your-runbooks"></a>Testowanie elementów runbook
 
-Raz `Az` moduły są importowane na koncie usługi Automation, możesz teraz rozpocząć edycję Twoje elementy runbook, aby zamiast tego użyj modułu Az. Większość poleceń cmdlet mają taką samą nazwę, z wyjątkiem `AzureRM` został zmieniony na `Az`. Aby uzyskać listę modułów, które nie podlegają tym procesie, zobacz [listy wyjątków](/powershell/azure/migrate-from-azurerm-to-az?view=azps-1.1.0#change-module-imports-and-cmdlet-names).
+Raz `Az` moduły są importowane na koncie usługi Automation, możesz teraz rozpocząć edycję Twoje elementy runbook, aby zamiast tego użyj modułu Az. Większość poleceń cmdlet mają taką samą nazwę, z wyjątkiem `AzureRM` został zmieniony na `Az`. Aby uzyskać listę modułów, które nie podlegają tym procesie, zobacz [listy wyjątków](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
 
 Jednym ze sposobów, do testowania elementów runbook przed Modyfikowanie elementu runbook za pomocą nowych poleceń cmdlet przy użyciu `Enable-AzureRMAlias -Scope Process` na początku elementu runbook. Dodając to do elementu runbook, element runbook można uruchomić bez konieczności wprowadzania zmian.
 

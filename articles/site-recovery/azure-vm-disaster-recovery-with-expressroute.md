@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772419"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
@@ -108,7 +108,7 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
 --- | --- | ---
 Szprycha do piasty | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
 Szprycha do piasty | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
-Szprycha do piasty | Zezwalaj na tranzyt bramy | Disabled (Wyłączony)
+Szprycha do piasty | Zezwalaj na tranzyt bramy | Wyłączone
 Szprycha do piasty | Za pomocą bram remove | Enabled (Włączony)
 
  ![Typu gwiazda Centrum konfiguracji komunikacji równorzędnej](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
@@ -120,7 +120,7 @@ Szprycha do piasty | Za pomocą bram remove | Enabled (Włączony)
 Piasta do szprychy | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
 Piasta do szprychy | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
 Piasta do szprychy | Zezwalaj na tranzyt bramy | Enabled (Włączony)
-Piasta do szprychy | Za pomocą bram remove | Disabled (Wyłączony)
+Piasta do szprychy | Za pomocą bram remove | Wyłączone
 
  ![Centrum typu gwiazda konfiguracji komunikacji równorzędnej](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
@@ -164,11 +164,11 @@ Ta konfiguracja wpiera ochronę przed awariami głównej obwodu usługi ExpressR
 
 ### <a name="access-with-a-single-circuit"></a>Dostęp za pomocą jednego obwodu
 
-W tej konfiguracji jest tylko jeden obwód usługi Expressroute. Mimo, że obwód jest nadmiarowe połączenie w przypadku, gdy ulegnie awarii jednego, obwodu jedną trasę nie zapewnia odporności na błędy, jeśli ulegnie awarii komunikacji równorzędnej regionu. Należy pamiętać, że:
+W tej konfiguracji jest tylko jeden obwód usługi Expressroute. Mimo, że obwód jest nadmiarowe połączenie w przypadku, gdy ulegnie awarii jednego, obwodu jedną trasę nie zapewnia odporności na błędy, jeśli ulegnie awarii komunikacji równorzędnej regionu. Należy pamiętać o następujących kwestiach:
 
 - Teraz można replikować maszyny wirtualne platformy Azure do dowolnego regionu Azure w [tej samej lokalizacji geograficznej](azure-to-azure-support-matrix.md#region-support). Jeśli docelowy region platformy Azure nie jest w tej samej lokalizacji co źródłowa, musisz włączyć ExpressRoute Premium, jeśli używasz jednego obwodu usługi ExpressRoute. Dowiedz się więcej o [lokalizacji usługi ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [ExpressRoute — cennik](https://azure.microsoft.com/pricing/details/expressroute/).
 - Nie można nawiązać połączenia sieci wirtualnych źródłowych i docelowych jednocześnie obwodu Jeśli tą samą przestrzenią adresów IP jest używany w regionie docelowym. W tym scenariuszu:    
-    -  Rozłącz połączenie po stronie źródła, a następnie ustanawiać połączenie po stronie docelowej. Ta zmiana połączenia umożliwia pisanie skryptów, w ramach planu odzyskiwania Usługa Site Recovery. Należy pamiętać, że:
+    -  Rozłącz połączenie po stronie źródła, a następnie ustanawiać połączenie po stronie docelowej. Ta zmiana połączenia umożliwia pisanie skryptów, w ramach planu odzyskiwania Usługa Site Recovery. Należy pamiętać o następujących kwestiach:
         - W przypadku regionalnej awarii jeśli region podstawowy jest niedostępny, może nie działać operację rozłączania. Może to mieć wpływ na region docelowy tworzenia połączenia.
         - Jeśli połączenie jest tworzone w regionie docelowym, i regionu podstawowego odzyskuje później, może wystąpić pakietów docelowych, jeśli dwa połączenia próbują nawiązać połączenia z tą samą przestrzenią adresów.
         - Aby tego uniknąć, należy natychmiast zakończyć połączenia podstawowego.

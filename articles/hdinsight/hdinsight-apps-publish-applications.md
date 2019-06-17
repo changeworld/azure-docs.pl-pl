@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685325"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikowanie aplikacji HDInsight w witrynie Azure Marketplace
@@ -91,8 +91,8 @@ Publikowanie aplikacji HDInsight:
 3. Wprowadź tytuł, a następnie wybierz **Utwórz nowy szablon rozwiązania**.
 4. Jeśli nie została jeszcze zarejestrowana Twojej organizacji, wybierz **konta Centrum deweloperów Utwórz i Dołącz do programu platformy Azure**.  Aby uzyskać więcej informacji, zobacz [Utwórz konto Microsoft Developer](../marketplace/marketplace-publishers-guide.md).
 5. Wybierz **zdefiniować niektórych topologii, aby rozpocząć**. Szablon rozwiązania jest "nadrzędny" do wszystkich jego topologii. Można zdefiniować wiele topologii w jednym szablonie oferty lub rozwiązania. Wypchnięcie oferty do wdrażania przejściowego wypchnięciach przy użyciu jego topologii. 
-6. Wprowadź nazwę topologii, a następnie wybierz **+**.
-7. Wprowadź nową wersję, a następnie wybierz **+**.
+6. Wprowadź nazwę topologii, a następnie wybierz **+** .
+7. Wprowadź nową wersję, a następnie wybierz **+** .
 8. Przekaż plik zip, który został utworzony podczas Spakowana aplikacja.  
 9. Wybierz **żądanie certyfikacji**. Zespół certyfikacji Microsoft przeglądów pliki i certyfikuje topologii.
 

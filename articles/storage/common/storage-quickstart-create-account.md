@@ -10,10 +10,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234182"
 ---
 # <a name="create-a-storage-account"></a>Tworzenie konta magazynu
@@ -220,7 +220,7 @@ Jeśli chcesz wyczyścić zasoby utworzone w tym artykule, możesz usunąć grup
 Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Grupy zasobów**, aby wyświetlić listę grup zasobów.
-2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk **Więcej** (**...** ) po prawej stronie listy.
+2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk **Więcej** ( **...** ) po prawej stronie listy.
 3. Wybierz pozycję **Usuń grupę zasobów** i potwierdź.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)

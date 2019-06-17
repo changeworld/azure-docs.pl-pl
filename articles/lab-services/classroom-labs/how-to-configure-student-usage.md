@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 494c285f1c096a84925d9d9a4fb98409960e5230
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67faf268d265fd045c21b75b6f64840511a371d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703782"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067300"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurowanie zasad i ustawień użycia
 W tym artykule opisano, jak dodać użytkowników do laboratorium, Uzyskaj je zarejestrowane w usłudze laboratorium, kontrolować liczbę godzin, które mogą używać maszyny Wirtualnej i nie tylko. 
@@ -80,19 +80,24 @@ Wybierz **użytkowników** w menu po lewej stronie, aby zapoznać się z listą 
 Można ustawić limity przydziału dla poszczególnych użytkowników wykonując następujące kroki: 
 
 1. W menu po lewej stronie wybierz pozycję **Użytkownicy**.
-2. Wybierz **limitu przydziału dla poszczególnych użytkowników: bez ograniczeń** na pasku narzędzi. 
-3. Na **limitu przydziału dla poszczególnych użytkowników** zaznacz jedną z następujących opcji: 
-    1. **Brak**. Użytkownicy mogą używać ich maszyn wirtualnych tylko w trakcie zaplanowanego czasu lub właściciel laboratorium zmieni się na maszynach wirtualnych dla nich.
-    2. **Bez ograniczeń (ustawienie domyślne)**. Użytkownicy mogą używać ich maszyn wirtualnych bez ograniczeń czasowych.
-    3. **Określ liczbę godzin na użytkownika**. Użytkownicy mogą używać ich maszyn wirtualnych przez liczbę godzin (wymienionymi poniżej), poza zaplanowanym terminie. Jeśli wybierzesz tę opcję, wprowadź **liczby godzin** w polu tekstowym. 
+2. Wybierz **limitu przydziału dla poszczególnych użytkowników:** na pasku narzędzi. 
+3. Na **limitu przydziału dla poszczególnych użytkowników** Określ liczbę godzin, które ma zostać przypisany do każdego użytkownika (dla uczniów): 
+    1. **0 godz. (tylko dla harmonogramu)** . Użytkownicy mogą używać swoich maszyn wirtualnych tylko w zaplanowanym terminie lub jako właściciel laboratorium zmieni się na maszynach wirtualnych dla nich.
+
+        ![Zero godzin — tylko zaplanowanym czasie](../media/how-to-configure-student-usage/zero-hours.png)
+    1. **Łączną liczbę godzin laboratorium na użytkownika**. Użytkownicy mogą używać swoich maszyn wirtualnych przez liczbę godzin (określone dla tego pola) **poza zaplanowanym terminie**. Jeśli wybierzesz tę opcję, wprowadź **liczby godzin** w polu tekstowym. 
 
         ![Liczba godzin na użytkownika](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
     4. Wybierz pozycję **Zapisz**. 
-5. Teraz widać zmienionymi wartościami na pasku narzędzi: **Limit przydziału dla poszczególnych użytkowników: &lt;liczby godzin&gt;**. 
+5. Teraz widać zmienionymi wartościami na pasku narzędzi: **Limit przydziału dla poszczególnych użytkowników: &lt;liczby godzin&gt;** . 
 
     ![Limit przydziału dla poszczególnych użytkowników](../media/how-to-configure-student-usage/quota-per-user.png)
 
+
+
 > [!IMPORTANT]
+> Przed wysłaniem łącze rejestracji dla uczniów i studentów, nauczycieli muszą skonfigurować harmonogram dla klasy, wybierz 0 godz. limit przydziału lub Określ godziny limitu przydziału dla laboratorium.
+>
 > [Zaplanowany czas maszyny wirtualne działania](how-to-create-schedules.md) nie uwzględniane w limicie przydziału przydzielony do użytkownika. Limit przydziału jest czas poza godzinami harmonogramu, które student spędza na maszynach wirtualnych. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Aby dodać użytkowników, przekazywanie pliku CSV

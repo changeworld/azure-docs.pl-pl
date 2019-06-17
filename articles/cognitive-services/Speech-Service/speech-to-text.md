@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 7596670e794c090b04f81cf6b235a4bc54c1f3c4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fcb09720d188150736dbe7da0c925f5762ff6a10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800097"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072313"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest mowy na tekst?
 
 Mowy na tekst z usług przetwarzania mowy platformy Azure, znany także jako zamiany mowy na tekst, umożliwia w czasie rzeczywistym transkrypcji strumieni audio na tekst, którą może wykorzystać aplikacje, narzędzia lub urządzeń, wyświetlania i podejmij działanie jako dane wejściowe polecenia. Ta usługa jest obsługiwana w tej samej technologii rozpoznawania firmy Microsoft korzysta z produktów Cortana i pakietu Office, która bezproblemowo współdziała z przesunięcia i zamiany tekstu na mowę.  Aby uzyskać pełną listę dostępnych języków mowy na tekst, zobacz [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
-Domyślnie usługa mowy na tekst używa modelu językowego uniwersalnych. Ten model został uczony przy użyciu danych należącymi do firmy Microsoft i jest wdrożona w chmurze. Jest optymalna do konwersacji i dyktowanie scenariuszy. Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych. 
+Domyślnie usługa mowy na tekst używa modelu językowego uniwersalnych. Ten model został uczony przy użyciu danych należącymi do firmy Microsoft i jest wdrażana w chmurze. Jest optymalna do konwersacji i dyktowanie scenariuszy. Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych. 
 
 Można łatwo przechwytywania dźwięku z mikrofonu, odczytywania ze strumienia lub dostępu do plików dźwiękowych z magazynu przy użyciu zestawu SDK rozpoznawania mowy i interfejsów API REST. Zestaw SDK rozpoznawania mowy obsługuje format WAV/PCM 16 bitów 16 kHz/8 kHz, dźwięk kanału pojedynczej do rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane przy użyciu [punktu końcowego REST mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub [transkrypcji, usługa batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
@@ -32,7 +32,7 @@ Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Transkrypcja wypowiedzi krótki (< 15 sekund). Obsługuje tylko wynik końcowy transkrypcji. | Tak | Tak |
+| Transkrypcja wypowiedzi krótki (< 15 sekund). Obsługuje tylko wynik końcowy transkrypcji. | Tak | Yes |
 | Ciągłe transkrypcji długie wypowiedzi i przesyłania strumieniowego audio (> 15 sekund). Obsługuje wyniki tymczasowe i końcowe transkrypcji. | Tak | Nie |
 | Dziedziczyć intencji wyniki rozpoznawania [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Tak | Brak\* |
 | Asynchronicznie partii transkrypcji audio plików. | Nie | Tak\** |
@@ -49,7 +49,7 @@ Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
 
 Firma Microsoft oferuje Przewodniki Szybki Start w najbardziej popularnych języków programowania, każde jest zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Poniższa tabela zawiera listę wszystkich SDK mowy przewodników Szybki Start, uporządkowane według języka.
 
-| Szybki start | Platforma | Dokumentacja interfejsu API |
+| Szybki start | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
 | [C#, .NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET Framework](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
@@ -57,7 +57,7 @@ Firma Microsoft oferuje Przewodniki Szybki Start w najbardziej popularnych języ
 | [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref)|
 | [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Przeglądaj](https://aka.ms/csspeech/cppref) |
 | [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Przeglądaj](https://aka.ms/csspeech/javaref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux, macOS | [Przeglądaj](https://aka.ms/csspeech/javaref) |
 | [JavaScript, przeglądarki](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Przeglądarka, Windows, Linux, macOS | [Przeglądaj](https://aka.ms/AA434tv) |
 | [JavaScript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Przeglądaj](https://aka.ms/AA434tv) |
 | [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Przeglądaj](https://aka.ms/csspeech/objectivecref) |
@@ -80,7 +80,7 @@ Przykładowy kod dla zestawu SDK rozpoznawania mowy jest dostępny w witrynie Gi
 
 Oprócz modelu Universal używane przez usługi rozpoznawania mowy możesz utworzyć niestandardowe modele akustyczne, języka i Wymowa określonego środowiska. Poniżej przedstawiono listę opcji dostosowywania:
 
-| Model | Opis |
+| Modelowanie | Opis |
 |-------|-------------|
 | [Model akustyczny](how-to-customize-acoustic-models.md) | Tworzenie niestandardowy model akustyczny jest przydatne, jeśli w Twojej aplikacji, narzędzia lub urządzeń są używane w określonym środowisku, takich jak w samochodu lub fabrykę przy użyciu rejestrowania określonych warunków. Przykłady obejmują akcentowaną mowę, specyficzne szumy w tle lub użycie konkretnego mikrofonu na potrzeby rejestrowania. |
 | [Model językowy](how-to-customize-language-model.md) | Utwórz model języka niestandardowego usprawniających transkrypcji słownika specyficzne dla branży i gramatyki, takie jak terminologia medycznych lub żargon IT. |

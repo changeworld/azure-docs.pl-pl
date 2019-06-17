@@ -8,21 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 8b27ad34bdc6fcbd7a1eb46515fbf33c96d02528
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682894"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078243"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie 
 
 W tym dokumencie przedstawiono podstawy monitorowania i zarządzania nim [Apache Storm](https://storm.apache.org/) topologii uruchamianych w systemie Storm w klastrach HDInsight.
-
-> [!IMPORTANT]  
-> Kroki opisane w tym artykule wymaga platformy Storm opartej na systemie Linux w klastrze HDInsight. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). 
->
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -105,7 +100,7 @@ Wybierz kształt elementy spout lub bolt, aby wyświetlić informacje o tych sk�
 
 Dezaktywowanie topologii wstrzymuje jej dopóki zostanie zakończone, lub ponownie aktywować. Aby wykonać te operacje, użyj __Dezaktywuj__ i __ponownie uaktywnić__ przycisków w górnej części __podsumowanie topologii__.
 
-### <a name="rebalance"></a>Zbilansuj ponownie
+### <a name="rebalance"></a>Ponowne zrównoważenie
 
 Ponowne równoważenie topologii umożliwia systemowi uzupełniać równoległości topologii. Umożliwia na przykład jeśli zmieniono rozmiar klastra, aby dodać więcej uwagi, ponowne równoważenie topologii zobaczyć nowe węzły.
 
@@ -148,7 +143,7 @@ System STORM topologies, po uruchomieniu, nadal uruchomione do czasu ich zatrzym
 
     storm kill TOPOLOGYNAME
 
-### <a name="rebalance"></a>Zbilansuj ponownie
+### <a name="rebalance"></a>Ponowne zrównoważenie
 
 Ponowne równoważenie topologii umożliwia systemowi uzupełniać równoległości topologii. Umożliwia na przykład jeśli zmieniono rozmiar klastra, aby dodać więcej uwagi, ponowne równoważenie topologii zobaczyć nowe węzły.
 
@@ -159,7 +154,7 @@ Ponowne równoważenie topologii umożliwia systemowi uzupełniać równoległo�
 
 ## <a name="monitor-and-manage-storm-ui"></a>Monitorowanie i zarządzanie nimi: Interfejs użytkownika platformy STORM
 
-Interfejs użytkownika platformy Storm udostępnia interfejs sieci Web do pracy z uruchomionymi topologiami i jest zawarty w klastrze usługi HDInsight. Aby wyświetlić interfejs użytkownika platformy Storm, użyj przeglądarki sieci web, aby otworzyć **https://CLUSTERNAME.azurehdinsight.net/stormui**, gdzie **CLUSTERNAME** jest nazwą klastra.
+Interfejs użytkownika platformy Storm udostępnia interfejs sieci Web do pracy z uruchomionymi topologiami i jest zawarty w klastrze usługi HDInsight. Aby wyświetlić interfejs użytkownika platformy Storm, użyj przeglądarki sieci web, aby otworzyć **https://CLUSTERNAME.azurehdinsight.net/stormui** , gdzie **CLUSTERNAME** jest nazwą klastra.
 
 > [!NOTE]  
 > Jeśli zostanie wyświetlony monit o podanie nazwy użytkownika i hasła, wprowadź nazwę administratora klastra (admin) i hasło użyte podczas tworzenia klastra.
@@ -213,7 +208,7 @@ Aby uzyskać więcej informacji, zobacz [Apache Storm Interfejsu REST API](https
 
 ### <a name="base-uri"></a>Podstawowy identyfikator URI
 
-Podstawowy identyfikator URI dla interfejsu API REST w klastrach HDInsight opartych na systemie Linux jest dostępna w węźle głównym w **https:\//HEADNODEFQDN:8744/api/v1/**. Nazwa domeny węzła głównego jest generowany podczas tworzenia klastra i nie jest statyczne.
+Podstawowy identyfikator URI dla interfejsu API REST w klastrach HDInsight opartych na systemie Linux jest dostępna w węźle głównym w **https:\//HEADNODEFQDN:8744/api/v1/** . Nazwa domeny węzła głównego jest generowany podczas tworzenia klastra i nie jest statyczne.
 
 W pełni kwalifikowana nazwa domeny (FQDN) węzła głównego klastra można znaleźć na kilka różnych sposobów:
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
 ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60716051"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Wdrażanie programu IBM DB2 pureScale na platformie Azure
@@ -80,7 +80,7 @@ Repozytorium GitHub zawiera DB2server.rsp, plik odpowiedzi (rsp), który umożli
 
 | Nazwa ekranowa               | Pole                                        | Wartość                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Powitanie                   |                                              | Nowej instalacji                                                                                           |
+| Witaj                   |                                              | Nowej instalacji                                                                                           |
 | Wybierz produkt          |                                              | Bazy danych DB2 wersja 11.1.3.3. Wersje serwera z pureScale bazy danych DB2                                              |
 | Konfigurowanie             | Katalog                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Wybieranie typu instalacji                 | Typowe                                                                                               |
@@ -120,7 +120,7 @@ Repozytorium GitHub zawiera DB2server.rsp, plik odpowiedzi (rsp), który umożli
 
 - Po uruchomieniu skryptu instalacyjnego na d0, **/dev/dm -\***  wartości mogą się różnić w d1, cf0 i cf1. Różnica w wartości nie ma wpływu na instalacji pureScale bazy danych DB2.
 
-## <a name="troubleshooting-and-known-issues"></a>Rozwiązywanie problemów i znane problemy
+## <a name="troubleshooting-and-known-issues"></a>Znane problemy i rozwiązywanie problemów
 
 Repozytorium GitHub zawiera wiedzy, która utrzymuje autorów. Wyświetla listę potencjalnych problemów, które mogą mieć i rozwiązania, które można wypróbować. Na przykład, znanych problemów może się zdarzyć, gdy:
 

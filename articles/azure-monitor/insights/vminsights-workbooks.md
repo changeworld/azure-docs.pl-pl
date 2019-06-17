@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2019
 ms.author: magoedte
 ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61387280"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor
@@ -33,7 +33,7 @@ Skoroszyty są przydatne w scenariuszach takich jak:
 
 Usługa Azure Monitor dla maszyn wirtualnych zawiera kilka skoroszyty, które ułatwią Ci rozpoczęcie pracy i w poniższej tabeli podsumowano je.
 
-| Skoroszyt | Opis | Zakres |
+| Skoroszyt | Opis | Scope |
 |----------|-------------|-------|
 | Wydajność | Udostępnia dostosowywalne wersję naszych pierwszych N listy i widok wykresów w jednym skoroszyt, który wykorzystuje wszystkie liczniki wydajności usługi Log Analytics, które mają włączone.| W dużej skali |
 | Liczniki wydajności | Widok wykresu górnego N w szeroki zestaw liczników wydajności. | W dużej skali |
@@ -57,7 +57,7 @@ Skoroszyt składa się z sekcji składający się z można edytować niezależni
 
 3. Z listy wybierz maszynę wirtualną.
 
-4. Na stronie maszyny Wirtualnej w **monitorowanie** zaznacz **Insights (wersja zapoznawcza)**.
+4. Na stronie maszyny Wirtualnej w **monitorowanie** zaznacz **Insights (wersja zapoznawcza)** .
 
 5. Na stronie szczegółowych informacji maszyny Wirtualnej wybierz **wydajności** lub **mapy** , a następnie wybierz pozycję **skoroszyty widoku** przy użyciu linku na stronie. 
 
@@ -166,14 +166,14 @@ Istnieją cztery typy parametrów, które są obecnie obsługiwane:
 
 |                  |      |
 | ---------------- |:-----|
-| **Tekst**    | Umożliwia użytkownikom edytowanie pola tekstowego, a opcjonalnie można podać zapytanie, aby podać wartość domyślną. |
+| **Text**    | Umożliwia użytkownikom edytowanie pola tekstowego, a opcjonalnie można podać zapytanie, aby podać wartość domyślną. |
 | **Lista rozwijana** | Zezwala użytkownikowi na wybranie z zestawu wartości. |
 | **Selektor zakresu czasu**| Umożliwia użytkownikowi wybrać ze wstępnie zdefiniowanego zestawu wartości zakresu czasu lub masz do wyboru niestandardowego zakresu czasu.|
 | **Wybór zasobów** | Zezwala użytkownikowi na wybranie z zasobów wybranych do skoroszytu.|
 
 ### <a name="using-a-text-parameter"></a>Za pomocą parametru tekstu
 
-Wartość użytkownik wpisze w polu tekstowym jest zastępowany bezpośrednio w zapytaniu bez anulowania zapewnianego element i cytowanie. Jeśli wartość potrzebne jest ciągiem, zapytanie powinien mieć parametru w cudzysłowie (takich jak **'{parameter}'**).
+Wartość użytkownik wpisze w polu tekstowym jest zastępowany bezpośrednio w zapytaniu bez anulowania zapewnianego element i cytowanie. Jeśli wartość potrzebne jest ciągiem, zapytanie powinien mieć parametru w cudzysłowie (takich jak **'{parameter}'** ).
 
 Parametr tekst umożliwia wartość w polu tekstowym, aby używać w dowolnym miejscu. Może być nazwa tabeli, nazwa kolumny, nazwa funkcji, operatora, itp.  Typ parametru tekst ma ustawienie **Pobierz wartość domyślną z zapytania analizy**, co pozwala autor skoroszytu korzystać z zapytania, aby wypełnić wartością domyślną dla tego pola tekstowego.
 
@@ -227,7 +227,7 @@ Można tworzyć własne parametr zakres czasu niestandardowych za pomocą listy 
 
 Typy parametrów zakresu czasu ma 15 zakresów dla domyślnych, które bardziej szczegółowo w ciągu pięciu minut do ostatnich 90 dni. Istnieje również opcję, aby umożliwić wybranie niestandardowego zakresu czasu, który umożliwia operatorowi raportu wybierz przycisk start jawnego i Zatrzymaj wartości zakresu czasu.
 
-### <a name="resource-picker"></a>Selektor zasobów
+### <a name="resource-picker"></a>Wybór zasobów
 
 Typ parametru selektor zasobów daje możliwość zakres raportu do określonych typów zasobów. Na przykład wstępnie skoroszytu, który korzysta z zasobów typu selektora **wydajności** skoroszytu.
 
