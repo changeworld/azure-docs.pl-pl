@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60683176"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Tworzenie instrukcji switch, systemem akcji przepływu pracy na podstawie określonej wartości w usłudze Azure Logic Apps
@@ -45,7 +45,7 @@ Na przykład załóżmy, że chcesz aplikację logiki, która wykonuje różne c
 
 1. W tym przykładzie Dodaj instrukcję switch na końcu przykładowego przepływu pracy. Po wykonaniu ostatniego kroku wybierz **nowy krok**.
 
-   Jeśli chcesz dodać instrukcji switch między krokami, przesuń wskaźnik nad strzałką znajdującą się gdzie chcesz dodać instrukcji switch. Wybierz **znak plus** (**+**) wyświetlany, wybierz **Dodaj akcję**.
+   Jeśli chcesz dodać instrukcji switch między krokami, przesuń wskaźnik nad strzałką znajdującą się gdzie chcesz dodać instrukcji switch. Wybierz **znak plus** ( **+** ) wyświetlany, wybierz **Dodaj akcję**.
 
 1. W polu wyszukiwania wprowadź "Przejdź" jako filtr. Wybierz tę akcję: **Przełącznik — formant**
 

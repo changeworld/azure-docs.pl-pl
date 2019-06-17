@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66306657"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Storage
@@ -65,7 +65,7 @@ Przyjrzyjmy się na stronie dokumentacja interfejsu API REST [ListContainers](/r
 
 **Metoda żądania**: POBIERZ. To polecenie jest metoda HTTP, który został określony jako właściwość obiektu żądania. Inne wartości dla tego zlecenia obejmują HEAD, PUT i DELETE, w zależności od tego, wywoływany jest interfejs API.
 
-**Identyfikator URI żądania**: https://myaccount.blob.core.windows.net/?comp=list  To jest tworzona na podstawie punkt końcowy konta usługi blob storage `http://myaccount.blob.core.windows.net` i ciągu zasobu `/?comp=list`.
+**Identyfikator URI żądania**: https://myaccount.blob.core.windows.net/?comp=list   To jest tworzona na podstawie punkt końcowy konta usługi blob storage `http://myaccount.blob.core.windows.net` i ciągu zasobu `/?comp=list`.
 
 [Parametry identyfikatora URI](/rest/api/storageservices/List-Containers2#uri-parameters): Istnieją dodatkowe parametry zapytania używane podczas wywoływania ListContainers. Kilka z tych parametrów są *limitu czasu* wywołania (w sekundach) i *prefiks*, która jest używana do filtrowania.
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60516763"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Zarządzanie zużycia zasobów i obciążenia w usłudze Service Fabric za pomocą metryk
@@ -36,8 +36,8 @@ Załóżmy, że chcesz rozpocząć pisanie i wdrażanie usługi. Na tym etapie n
 | Metryka | Obciążenia bezstanowe wystąpienia | Stanowe dodatkowej obciążenia | Stanowe podstawowego obciążenia | Waga |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Wysoka |
-| ReplicaCount |0 |1 |1 |Medium |
-| Licznik |1 |1 |1 |Małe |
+| ReplicaCount |0 |1 |1 |Średni |
+| Count |1 |1 |1 |Małe |
 
 
 W przypadku obciążeń podstawowych domyślnych metryk oferują znośnego rozłożenia pracy w klastrze. W poniższym przykładzie Zobaczmy, co się stanie, gdy firma Microsoft tworzy się dwie usługi i polegają na domyślnych metryk dla równoważenia. Pierwszej usługi jest stanowej usługi za pomocą trzech partycje i repliki docelowej Ustaw rozmiar trzy. Druga usługa jest usługę bezstanową, za pomocą jednej partycji i liczby wystąpień trzech.

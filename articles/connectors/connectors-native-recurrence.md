@@ -10,10 +10,10 @@ ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: f5fc778ee4d8f91232bc732cc276f642f748b29d
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66297530"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Tworzenie, planowanie i uruchamianie zadań cyklicznych i przepływów pracy za pomocą wyzwalacza w usłudze Azure Logic Apps
@@ -55,10 +55,10 @@ Różnice między tego wyzwalacza i wyzwalacza przesuwanego okna lub więcej inf
 
    ![Ustaw interwał i częstotliwość](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | Właściwość | Wymagane | Nazwa JSON | Type | Opis |
+   | Właściwość | Wymagane | Nazwa JSON | Typ | Opis |
    |----------|----------|-----------|------|-------------|
    | **Interval** | Tak | interval | Integer | Dodatnia liczba całkowita, która opisuje, jak często przepływu pracy jest uruchamiana na podstawie częstotliwości. Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. |
-   | **Częstotliwość** | Tak | frequency | String | Jednostka czasu cyklu: **Drugi**, **minutę**, **godzinę**, **dzień**, **tydzień**, lub **miesiąca** |
+   | **Częstotliwość** | Yes | frequency | String | Jednostka czasu cyklu: **Drugi**, **minutę**, **godzinę**, **dzień**, **tydzień**, lub **miesiąca** |
    ||||||
 
    Aby uzyskać więcej opcji planowania, otwórz **dodano nowy parametr** listy. 
@@ -66,7 +66,7 @@ Różnice między tego wyzwalacza i wyzwalacza przesuwanego okna lub więcej inf
 
    ![Zaawansowane opcje planowania](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | Właściwość | Wymagane | Nazwa JSON | Type | Opis |
+   | Właściwość | Wymagane | Nazwa JSON | Typ | Opis |
    |----------|----------|-----------|------|-------------|
    | **Strefa czasowa** | Nie | timeZone | String | Ma zastosowanie tylko po określeniu godziny rozpoczęcia, ponieważ ten wyzwalacz nie zaakceptuje [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Wybierz strefę czasową, który chcesz zastosować. |
    | **Godzina rozpoczęcia** | Nie | startTime | String | Podaj datę i godzinę rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg w przypadku wybrania strefy czasowej <p>—lub— <p>RRRR-MM-Ddtgg, jeśli nie zaznaczysz strefy czasowej <p>Na przykład jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i wybierz strefę czasową, takich jak standardowy czas pacyficzny. Alternatywnie można wskazać "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ten czas rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie zaznaczysz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. [*Jakie są sposoby, czy można używać daty rozpoczęcia i godzinę?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |

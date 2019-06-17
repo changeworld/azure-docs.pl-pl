@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110013"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Przewodnik po konwersji w sieci Web i ról procesów roboczych do usługi bezstanowej usługi Service Fabric
@@ -44,7 +44,7 @@ Podobnie jak w roli proces roboczy, roli sieci Web również reprezentuje bezsta
 | ASP.NET Web Forms |Nie |Konwertuj na MVC platformy ASP.NET Core 1 |
 | ASP.NET MVC |Z migracją |Uaktualnianie do platformy ASP.NET Core 1 MVC |
 | Internetowy interfejs API platformy ASP.NET |Z migracją |Użyj własnego serwera lub ASP.NET Core 1 |
-| ASP.NET Core 1 |Yes |ND |
+| ASP.NET Core 1 |Tak |ND |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Interfejs API punktu wejścia i cyklu życia
 Punkty wejścia podobne oferty interfejsów API dla usługi roli procesu roboczego i usługi Service Fabric: 
@@ -136,7 +136,7 @@ Ustawienia konfiguracji w usługach Cloud Services są ustawiane dla roli maszyn
 Każda z tych pakietów może być niezależnie wersjonowana i uaktualniana. Podobnie jak usługi w chmurze, pakiet konfiguracji można uzyskać programistycznie przy użyciu interfejsu API i zdarzenia są dostępne do powiadamiania usługi zmianie pakietu konfiguracji. Plik Settings.xml może służyć do konfiguracji klucz wartość i dostęp programowy, podobna do sekcji Ustawienia aplikacji w pliku App.config. Jednak w przeciwieństwie do usług w chmurze, pakiet konfiguracji usługi Service Fabric może zawierać wszystkie pliki konfiguracji, w dowolnym formacie XML, JSON, YAML lub niestandardowy format binarny. 
 
 ### <a name="accessing-configuration"></a>Uzyskiwanie dostępu do konfiguracji
-#### <a name="cloud-services"></a>Cloud Services
+#### <a name="cloud-services"></a>Usługi w chmurze
 Ustawienia konfiguracji z ServiceConfiguration.*.cscfg jest możliwy za pośrednictwem `RoleEnvironment`. Te ustawienia są ogólnie dostępna dla wszystkich wystąpień roli w tym samym wdrożeniu usługi w chmurze.
 
 ```csharp
@@ -168,7 +168,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 ```
 
 ### <a name="configuration-update-events"></a>Zdarzeń aktualizacji konfiguracji
-#### <a name="cloud-services"></a>Cloud Services
+#### <a name="cloud-services"></a>Usługi w chmurze
 `RoleEnvironment.Changed` Zdarzeń służy do Powiadom wszystkich wystąpień roli, gdy nastąpi zmiana w środowisku, takie jak zmiana konfiguracji. Umożliwia używanie aktualizacji konfiguracji bez odtwarzania wystąpień roli lub ponowne uruchomienie procesu roboczego.
 
 ```csharp
@@ -208,13 +208,13 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>Zadania uruchamiania
 Zadania uruchamiania to akcje, które są wykonywane przed uruchomieniem aplikacji. Zadanie uruchamiania jest zazwyczaj używany do uruchamiania skryptów instalacji przy użyciu podniesionych przywilejów. Cloud Services i Service Fabric obsługuje zadań uruchamiania. Główną różnicą jest to, czy w usługach w chmurze, zadanie uruchamiania jest powiązany z maszyny Wirtualnej, ponieważ jest on częścią wystąpienia roli, natomiast w usłudze Service Fabric zadanie uruchamiania jest powiązany z usługą, która nie jest związany z dowolnej maszyny Wirtualnej z określonego.
 
-| Service Fabric | Cloud Services |
+| Service Fabric | Usługi w chmurze |
 | --- | --- |
 | Lokalizacja konfiguracji |ServiceDefinition.csdef |
-| Przywileje |"ograniczony" lub "z podwyższonym poziomem uprawnień" |
+| Uprawnienia |"ograniczony" lub "z podwyższonym poziomem uprawnień" |
 | Sekwencyjne |"prosty", "tła", "narzędzia" |
 
-### <a name="cloud-services"></a>Cloud Services
+### <a name="cloud-services"></a>Usługi w chmurze
 W usługach w chmurze punktu wejścia uruchamiania jest konfigurowana w ramach roli w ServiceDefinition.csdef. 
 
 ```xml

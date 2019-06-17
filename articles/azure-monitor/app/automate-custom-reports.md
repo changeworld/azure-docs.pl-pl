@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f57d80adc7c77f2d874d13a68214cd638a2ac2a0
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f22cb620bf8cf56110bec60a4dd809066393a8ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067657"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatyzowanie raporty niestandardowe z danymi usługi Azure Application Insights
 
@@ -92,7 +92,7 @@ availabilityResults
 
    ![Tworzenie nowego zrzutu ekranu — funkcja](./media/automate-custom-reports/function-app-03.png)
 
-5. Wybierz  **_usługi Application Insights zaplanowane podsumowanie szablonu_**.
+5. Wybierz  **_usługi Application Insights zaplanowane podsumowanie szablonu_** .
 
      > [!NOTE]
      > Domyślnie aplikacje funkcji są tworzone za pomocą środowiska uruchomieniowego w wersji 2.x. Należy najpierw [docelowa wersja środowiska uruchomieniowego usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) 1.x do użycia w usłudze Application Insights zaplanowane podsumowanie szablonu.
@@ -120,7 +120,7 @@ availabilityResults
      > [!NOTE]
      > Jeśli nie masz konta usługi SendGrid można go utworzyć. Dokumentacja usługi SendGrid dla usługi Azure Functions jest [tutaj](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Jeśli jest to po prostu chcesz minimalny wyjaśnienie sposobu instalacji usługi SendGrid i wygeneruj klucz interfejsu API, który został dostarczony na końcu tego artykułu. 
 
-9. Wybierz **integracja** i w obszarze danych wyjściowych kliknij **SendGrid ($return)**.
+9. Wybierz **integracja** i w obszarze danych wyjściowych kliknij **SendGrid ($return)** .
 
      ![Zrzut ekranu danych wyjściowych](./media/automate-custom-reports/function-app-09.png)
 

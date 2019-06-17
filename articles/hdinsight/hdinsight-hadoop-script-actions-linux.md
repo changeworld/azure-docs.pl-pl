@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687448"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Opracowywanie akcji skryptu za pomocą HDInsight
@@ -337,7 +337,7 @@ Błędy, które mogą wystąpić, gdy za pomocą skryptów, które zostały opra
 
 Ten problem najczęściej występuje, gdy skrypt został utworzony w środowisku Windows CRLF jest linii Kończenie dla wielu edytorów tekstu na Windows.
 
-*Rozwiązanie*: Jest to opcja w edytorze tekstu, na koniec wiersza wybierz format systemu Unix lub LF. Aby zmienić CRLF LF można także użyć następujących poleceń w systemie Unix:
+*Rozpoznawanie*: Jest to opcja w edytorze tekstu, na koniec wiersza wybierz format systemu Unix lub LF. Aby zmienić CRLF LF można także użyć następujących poleceń w systemie Unix:
 
 > [!NOTE]  
 > Następujące polecenia są mniej więcej odpowiednikami, w tym, że ich należy zmienić CRLF końce wierszy na LF. Wybierz jedną, w oparciu o narzędzi dostępnych w systemie.
@@ -353,7 +353,7 @@ Ten problem najczęściej występuje, gdy skrypt został utworzony w środowisku
 
 *Przyczyna*: Ten błąd występuje, gdy skrypt został zapisany w formacie UTF-8 za pomocą znacznika kolejności bajtów (BOM).
 
-*Rozwiązanie*: Zapisz plik w formacie ASCII lub jako UTF-8 bez BOM. Aby utworzyć plik bez BOM można także użyć następującego polecenia w systemie Linux lub Unix:
+*Rozpoznawanie*: Zapisz plik w formacie ASCII lub jako UTF-8 bez BOM. Aby utworzyć plik bez BOM można także użyć następującego polecenia w systemie Linux lub Unix:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: b952763378de562f35c2e1ecaf49c56f0145c559
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166301"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Zabezpieczenia dla Internetu rzeczy (IoT) od podstaw
@@ -49,7 +49,7 @@ Akceleratory rozwiązań zalet zabezpieczeń i ochrony prywatności wbudowane w 
 
 Aby komunikować się najlepiej w funkcje zabezpieczeń i prywatności wbudowane w akceleratorów rozwiązań Azure IoT, w tym artykule dzieli suite na trzy obszary głównych zabezpieczeń.
 
-![Akceleratory rozwiązań IoT platformy Azure](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
+![Akceleratory rozwiązań Azure IoT](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>Zabezpieczanie device provisioning i uwierzytelniania
 
@@ -99,7 +99,7 @@ Internet of Things zaczyna się od Twoich rzeczy, rzeczy, które są najważniej
 
 Akceleratory rozwiązań kompilacja w środki bezpieczeństwa, zgodnie z projektem, włączania bezpiecznego monitorowania zasobów, aby poprawić wydajność, wydajność operacyjnej dysku, aby włączyć innowacji i stosować zaawansowanej analizy danych do przekształcenia firmy. Dzięki warstwowego podejścia do zabezpieczeń, wielu funkcji zabezpieczeń i wzorce projektowe Akceleratory rozwiązań pomocy, wdrożyć infrastrukturę, która jest zaufany do przekształcania wszystkich firm.
 
-## <a name="additional-information"></a>Informacje dodatkowe
+## <a name="additional-information"></a>Dodatkowe informacje
 
 Każdy akcelerator rozwiązań tworzy wystąpienia usług platformy Azure, takich jak:
 

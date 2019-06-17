@@ -9,14 +9,13 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-origin.date: 06/20/2018
-ms.date: 12/31/2018
-ms.author: v-yiso
+ms.date: 06/20/2018
+ms.author: apimpm
 ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123471"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatyczne skalowanie wystąpienia usługi Azure API Management  
@@ -106,7 +105,7 @@ Wykonaj poniższe kroki, aby skonfigurować automatyczne skalowanie dla usługi 
     | Agregacja czasu      | Średnia           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Nazwa metryki           | Pojemność          | Tym samym metryki jak konto używane dla reguły skalowania.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | Statystyka ziarna czasu  | Średnia           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operator              | Mniej niż         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Operator              | Mniejsze niż         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Próg             | 35%               | Podobnie do reguły skalowania, ta wartość silnie zależy od wzorców użycia usługi Azure API Management. |
     | Czas trwania (w minutach) | 30                | Tę samą wartość jak konto używane dla reguły skalowania.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Akcja*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |

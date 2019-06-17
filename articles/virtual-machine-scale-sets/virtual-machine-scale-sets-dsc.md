@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
 ms.openlocfilehash: 24a37d352413ff9ac55ce8e189691988383950f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203996"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64728452"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Inicjowanie zestawów za pomocą skalowania maszyn wirtualnych przy użyciu rozszerzenia Azure DSC
 [Virtual Machine Scale Sets](virtual-machine-scale-sets-overview.md) mogą być używane z [Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) rozszerzenie obsługi. Zestawy skalowania maszyn wirtualnych umożliwiają wdrażanie i zarządzanie nimi dużej liczby maszyn wirtualnych i danych mogą elastycznie skalować w poziomie i pionie w odpowiedzi do załadowania. DSC jest używany do konfigurowania maszyn wirtualnych w miarę ich do trybu online, dzięki czemu są one uruchomione oprogramowania w środowiskach produkcyjnych.

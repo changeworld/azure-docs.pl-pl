@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122391"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Tworzenie niestandardowej sondy dla bramy aplikacji przy użyciu portalu
@@ -54,7 +54,7 @@ Sondy są konfigurowane w dwuetapowy proces za pośrednictwem portalu. Pierwszym
    |**Nazwa**|customProbe|Ta wartość jest przyjazna nazwa sondy, który jest dostępny w portalu.|
    |**Protokół**|HTTP lub HTTPS | Protokół, który używa sondy kondycji.|
    |**Host**|i.e contoso.com|Ta wartość jest nazwę hosta, który jest używany dla sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowany w usłudze Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej.|
-   |**Ścieżka**|/ lub inną ścieżkę|W pozostałej części pełny adres url dla niestandardowej sondy. Nieprawidłowa ścieżka zaczyna się od "/". Domyślne ścieżki http:\//contoso.com po prostu użyj "/" |
+   |**Path**|/ lub inną ścieżkę|W pozostałej części pełny adres url dla niestandardowej sondy. Nieprawidłowa ścieżka zaczyna się od "/". Domyślne ścieżki http:\//contoso.com po prostu użyj "/" |
    |**Interwał (w sekundach)**|30|Jak często sondy jest uruchamiany pod kątem kondycji. Nie zaleca się ustawić niższy niż 30 sekund.|
    |**Limit czasu (w sekundach)**|30|Ilość czasu sondy czeka przed przekroczeniem limitu czasu. Interwał limitu czasu musi być wystarczająco wysoka, że wywołania http może również upewnić się, że strona kondycji wewnętrznej bazy danych jest dostępna.|
    |**Próg złej kondycji**|3|Liczba nieudanych prób jest uznawana za złą. Próg 0 oznacza, że jeśli kontrola kondycji nie powiedzie się zapleczem jest określana złej kondycji od razu.|

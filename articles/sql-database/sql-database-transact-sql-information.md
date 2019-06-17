@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
 ms.openlocfilehash: 84b93005941acf625d05a48f0df7b685e1bea0bd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785493"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Rozstrzyganie różnic języka Transact-SQL podczas migracji do usługi SQL Database
@@ -83,7 +83,7 @@ Aby uzyskać więcej informacji dotyczących gramatyki języka Transact-SQL oraz
 
 ### <a name="about-the-applies-to-tags"></a>Tagi „Applies to” (Dotyczy)
 
-Dokumentacja języka Transact-SQL zawiera artykuły dotyczące wersji programu SQL Server 2008 do chwili obecnej. Poniżej tytułu artykułu jest ikony paska, wyświetlanie listy cztery platformy programu SQL Server i wyświetlono. Na przykład grupy dostępności zostały wprowadzone w programie SQL Server 2012.  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) artykułu wskazuje, że instrukcja ma zastosowanie do programu  **SQL Server (począwszy od 2012)**. Instrukcja nie dotyczy programu SQL Server 2008, SQL Server 2008 R2, usługi Azure SQL Database, programu Azure SQL Data Warehouse ani Parallel Data Warehouse.
+Dokumentacja języka Transact-SQL zawiera artykuły dotyczące wersji programu SQL Server 2008 do chwili obecnej. Poniżej tytułu artykułu jest ikony paska, wyświetlanie listy cztery platformy programu SQL Server i wyświetlono. Na przykład grupy dostępności zostały wprowadzone w programie SQL Server 2012.  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) artykułu wskazuje, że instrukcja ma zastosowanie do programu  **SQL Server (począwszy od 2012)** . Instrukcja nie dotyczy programu SQL Server 2008, SQL Server 2008 R2, usługi Azure SQL Database, programu Azure SQL Data Warehouse ani Parallel Data Warehouse.
 
 W niektórych przypadkach temat artykułu może służyć w produkcie, ale występują niewielkie różnice między produktami. Różnice są wskazane w punkty środkowe w artykule zgodnie z potrzebami. W niektórych przypadkach temat artykułu może służyć w produkcie, ale występują niewielkie różnice między produktami. Różnice są wskazane w punkty środkowe w artykule zgodnie z potrzebami. Na przykład w artykule CREATE TRIGGER jest dostępna w bazie danych SQL. Ale **wszystkie SERVER** opcję wyzwalaczy na poziomie serwera, wskazuje, że nie można używać wyzwalaczy poziomu serwera w bazie danych SQL. Zamiast tego Użyj wyzwalaczy na poziomie bazy danych.
 

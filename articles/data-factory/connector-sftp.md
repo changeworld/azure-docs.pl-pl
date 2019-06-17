@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 1a62e9e8377705af1a70e356f554cfa549c58f20
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233471"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Kopiowanie danych z serwera SFTP przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-sftp-connector.md)
 > * [Bieżąca wersja](connector-sftp.md)
 
@@ -51,8 +51,8 @@ Następujące właściwości są obsługiwane przez SFTP połączone usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **SFTP**. |Tak |
-| host | Nazwa lub adres IP serwera SFTP. |Tak |
+| type | Właściwość type musi być równa: **SFTP**. |Yes |
+| host | Nazwa lub adres IP serwera SFTP. |Yes |
 | port | Port, na którym nasłuchuje serwer SFTP.<br/>Dozwolone wartości to: liczba całkowita, wartość domyślna to **22**. |Nie |
 | skipHostKeyValidation | Określ, czy pominąć sprawdzanie poprawności klucza hosta.<br/>Dozwolone wartości to: **true**, **false** (ustawienie domyślne).  | Nie |
 | hostKeyFingerprint | Określ odcisk palca klucza hosta. | Tak, jeśli "skipHostKeyValidation" jest ustawiona na wartość false.  |
@@ -65,7 +65,7 @@ Aby użyć uwierzytelniania podstawowego, ustaw właściwość "authenticationTy
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| userName | Użytkownik, który ma dostęp do serwera SFTP. |Tak |
+| userName | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
 | password | Hasło dla użytkownika (nazwa użytkownika). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 
 **Przykład:**
@@ -102,7 +102,7 @@ Aby użyć uwierzytelniania klucza publicznego SSH, ustaw właściwość "authen
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| userName | Użytkownik, który ma dostęp do serwera SFTP |Tak |
+| userName | Użytkownik, który ma dostęp do serwera SFTP |Yes |
 | privateKeyPath | Określ ścieżkę bezwzględną do pliku klucza prywatnego, które mogą uzyskiwać dostęp do środowiska Integration Runtime. Ma zastosowanie tylko wtedy, gdy typ Self-Hosted Integration Runtime jest określona w "connectVia". | Wybierz opcję `privateKeyPath` lub `privateKeyContent`.  |
 | privateKeyContent | Prywatne treści kluczy SSH w formacie Base64. Prywatny klucz SSH powinien być w formacie OpenSSH. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. |
 | passPhrase | Określ — dostęp próbny frazy/hasło do odszyfrowania klucza prywatnego, jeśli plik klucza, który jest chroniony przez frazę. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak, czy plik klucza prywatnego jest chroniony przez frazę. |

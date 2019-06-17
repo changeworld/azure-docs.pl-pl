@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: b609a708a987194398c53bdf83f0d6e1f281808d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66139839"
 ---
 Domyślnie interfejsy API w zaplecze funkcji Mobile Apps może być wywoływany anonimowo. Następnie należy ograniczyć dostęp do tylko uwierzytelnionym klientom.  
@@ -16,7 +16,7 @@ Domyślnie interfejsy API w zaplecze funkcji Mobile Apps może być wywoływany 
 * **Środowisko node.js z powrotem zakończenia (za pośrednictwem witryny Azure portal)** :  
 
     W ustawieniach aplikacji mobilnej kliknij **łatwych tabel** i Wybieranie tabeli. Kliknij przycisk **zmienić uprawnienia**, wybierz opcję **tylko dostęp uwierzytelniony** wszystkich uprawnień, a następnie kliknij przycisk **Zapisz**.
-* **Zaplecze platformy .NET (C#)**:  
+* **Zaplecze platformy .NET (C#)** :  
 
     W programie project server, przejdź do **kontrolerów** > **TodoItemController.cs**. Dodaj `[Authorize]` atrybutu **TodoItemController** klasy w następujący sposób. Aby ograniczyć dostęp tylko do określonych metod, można także zastosować ten atrybut tylko do jednej z tych metod zamiast klasy. Ponownie opublikować projekt serwera.
 

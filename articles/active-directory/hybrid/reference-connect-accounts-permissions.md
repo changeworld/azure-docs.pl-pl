@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919165"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Program Azure AD Connect: Konta i uprawnienia
@@ -48,7 +48,7 @@ Oprócz tych trzech kont używanych do uruchamiania usługi Azure AD Connect nal
 
 - **(Opcjonalnie) dla konta SQL SA**: użyty do utworzenia bazy danych ADSync, korzystając z pełnej wersji programu SQL Server.  Serwer SQL może być lokalne lub zdalne do instalacji usługi Azure AD Connect.  To konto może być to samo konto jako Administrator przedsiębiorstwa.  Teraz inicjowania obsługi usługi bazy danych mogą być wykonywane poza pasmem administrator usługi SQL, a następnie przez administratora usługi Azure AD Connect z uprawnieniami właściciela bazy danych.  Aby uzyskać informacje na ten temat, zobacz [zainstalować program Azure AD Connect przy użyciu uprawnień administratora delegowanego SQL](how-to-connect-install-sql-delegation.md)
 
-## <a name="installing-azure-ad-connect"></a>Instalowanie programu Azure AD Connect
+## <a name="installing-azure-ad-connect"></a>Instalowanie usługi Azure AD Connect
 Kreatora instalacji usługi Azure AD Connect oferuje dwie różne ścieżki:
 
 * W ustawieniach Express kreator wymaga wyższego poziomu uprawnień.  Jest to tak, aby go skonfigurować konfigurację, bez konieczności tworzenia użytkowników lub skonfigurować uprawnienia.
@@ -146,7 +146,7 @@ Kiedy uaktualniasz z jednej wersji programu Azure AD Connect do nowej wersji, po
 >Program Azure AD Connect, począwszy od kompilacji 1.1.484 wprowadzono usterkę regresji, co wymaga uprawnień administratora systemu, aby uaktualnić bazę danych SQL.  Ten problem został rozwiązany w kompilacji 1.1.647.  Jeśli uaktualniasz z bieżącą kompilacją, konieczne będzie uprawnienia administratora systemu.  Uprawnienia dbo nie są wystarczające.  Jeśli użytkownik podejmie próbę uaktualnić program Azure AD Connect bez uprawnień administratora systemu, uaktualnienie nie powiedzie i Azure AD Connect nie będzie już działać poprawnie po tym dniu.  Firma Microsoft zapoznała się z tym i dokłada starań, aby rozwiązać ten problem.
 
 
-| Podmiot zabezpieczeń | Wymagane uprawnienia | Używana do |
+| Jednostki | Wymagane uprawnienia | Używana do |
 | --- | --- | --- |
 | Uruchomienie Kreatora instalacji użytkownika |Administrator serwera lokalnego |Aktualizowanie plików binarnych. |
 | Uruchomienie Kreatora instalacji użytkownika |Członek ADSyncAdmins |Wprowadź zmiany do reguły synchronizacji i innych konfiguracji. |
@@ -154,7 +154,7 @@ Kiedy uaktualniasz z jednej wersji programu Azure AD Connect do nowej wersji, po
 
 ## <a name="more-about-the-created-accounts"></a>Więcej informacji na temat utworzonych kont
 ### <a name="ad-ds-connector-account"></a>Konta DS łącznika usługi AD
-Jeśli używasz ustawień ekspresowych, konto jest tworzone w usłudze Active Directory, które jest używane do synchronizacji. Utworzono konto znajduje się w domenie głównej lasu w kontenerze Użytkownicy i ma jego nazwa jest prefiksem **MSOL_**. Konto zostanie utworzone za pomocą długie, złożone hasło, które nie wygasa. Jeśli masz zasady haseł w domenie, upewnij się, że długie i złożone hasła będzie dozwolone dla tego konta.
+Jeśli używasz ustawień ekspresowych, konto jest tworzone w usłudze Active Directory, które jest używane do synchronizacji. Utworzono konto znajduje się w domenie głównej lasu w kontenerze Użytkownicy i ma jego nazwa jest prefiksem **MSOL_** . Konto zostanie utworzone za pomocą długie, złożone hasło, które nie wygasa. Jeśli masz zasady haseł w domenie, upewnij się, że długie i złożone hasła będzie dozwolone dla tego konta.
 
 ![Konto usługi AD](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
@@ -177,7 +177,7 @@ Jeśli używasz Połącz z kompilacją z 2017 marca lub wcześniej, następnie n
 
 Jest to tabela domyślnych opcji zalecane i obsługiwanych dla konta usługi synchronizacji.
 
-Legenda:
+Legendy:
 
 - **Pogrubienie** wskazuje to opcja domyślna i w większości przypadków to zalecana opcja.
 - *Kursywa* wskazuje to zalecana opcja, jeśli nie jest opcją domyślną.
@@ -248,7 +248,7 @@ Aby uzyskać dodatkowe informacje na temat sposobu zarządzania lub zresetuj has
 ## <a name="related-documentation"></a>Dokumentacja pokrewna
 Jeśli nie przeczytać dokumentację na [integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md), Poniższa tabela zawiera linki do powiązanych tematów.
 
-|Temat |Link|  
+|Temat |Łącze|  
 | --- | --- |
 |Pobieranie programu Azure AD Connect | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Instalowanie przy użyciu ustawień ekspresowych | [Ekspresowa instalacja programu Azure AD Connect](how-to-connect-install-express.md)|

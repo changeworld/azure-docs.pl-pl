@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155902"
 ---
 #### <a name="to-attach-the-sas-cables"></a>Aby dołączyć kabli SAS
@@ -45,8 +45,8 @@ ms.locfileid: "66155902"
       |:--- |:--- |
       | A |Podstawowy obudowy |
       | B |Obudowa EBOD |
-      | 1 |Kontrolera 0 |
-      | 2 |Kontrolera 1 |
+      | 1 |Kontroler 0 |
+      | 2 |Kontroler 1 |
       | 3 |Kontrolera EBOD 0 |
       | 4 |Kontrolera EBOD 1 |
       | 5, 6 |Portów SAS na podstawowym obudowa (EBOD etykietami) |

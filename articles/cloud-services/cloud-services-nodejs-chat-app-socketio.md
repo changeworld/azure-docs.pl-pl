@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
 ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61433203"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Tworzenie aplikacji czatu Node.js przy użyciu biblioteki Socket.IO w usłudze w chmurze platformy Azure
@@ -113,7 +113,7 @@ Po zapisaniu zmian **server.js**, wykonaj następujące kroki, aby zainstalować
    > 
    > Zainstaluj ponownie AzureAuthoringTools v 2.7.1 i AzureComputeEmulator v 2.7 — upewnij się, że ta wersja jest zgodna.
 
-2. Otwórz przeglądarkę i przejdź do **http://127.0.0.1**.
+2. Otwórz przeglądarkę i przejdź do **http://127.0.0.1** .
 3. Gdy zostanie otwarte okno przeglądarki, wprowadź nazwę, a następnie naciśnij klawisz enter.
    Pozwoli to publikować wiadomości jako określonych pseudonim. Aby przetestować działanie wielu użytkowników, Otwórz dodatkowe okna przeglądarki przy użyciu tego samego adresu URL i wprowadź różne pseudonimy.
    

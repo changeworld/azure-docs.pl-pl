@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
 ms.openlocfilehash: 48a7e52d4284e5c2db1d77d24d91fd4701aad8d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587161"
 ---
 # <a name="azure-network-architecture"></a>Architektura sieci platformy Azure
@@ -54,7 +54,7 @@ Routery dystrybucji/dostęp L3 (ARs), wykonuje podstawowe funkcje routingu warst
 Te urządzenia służyć jako punkt agregacji dla ruchu w pamięci podręcznej L2. Ich warstwy dystrybucji dla sieci szkieletowej L2 i może obsługiwać dużą ilością ruchu. Ponieważ te urządzenia agregacji ruchu, wymagają one 802.1Q funkcji i technologii wysokiej przepustowości, takich jak 10GE i port agregacji.
 
 ### <a name="l2-host-switches"></a>Przełączniki hosta pamięci podręcznej L2
-Hosty łączyć się bezpośrednio z tych przełączników. Mogą być przełączniki montowane w stojaku lub obudowy wdrożeń. 802.1Q standardowa umożliwia oznaczenie jednej sieci VLAN jako macierzystą sieć VLAN, traktując tej sieci VLAN jako normalny (nieoznakowany) ramki Ethernet. W normalnych warunkach ramek na macierzystą sieć VLAN są wysłanych i odebranych nieoznakowany na 802.1Q portem magistrali. Ta funkcja została zaprojektowana pod kątem migracji do 802.1Q przeznaczenia i zgodności z innych niż-802.1Q urządzeń obsługujących. W ramach tej architektury w infrastrukturze sieci korzysta z macierzystą sieć VLAN.
+Hosty łączyć się bezpośrednio z tych przełączników. Mogą być przełączniki montowane w stojaku lub obudowy wdrożeń. 802\.1Q standardowa umożliwia oznaczenie jednej sieci VLAN jako macierzystą sieć VLAN, traktując tej sieci VLAN jako normalny (nieoznakowany) ramki Ethernet. W normalnych warunkach ramek na macierzystą sieć VLAN są wysłanych i odebranych nieoznakowany na 802.1Q portem magistrali. Ta funkcja została zaprojektowana pod kątem migracji do 802.1Q przeznaczenia i zgodności z innych niż-802.1Q urządzeń obsługujących. W ramach tej architektury w infrastrukturze sieci korzysta z macierzystą sieć VLAN.
 
 Ta architektura określa standardowe rozwiązanie dla natywnych wybór sieci VLAN. Standardowa zapewnia, gdzie to możliwe, urządzenia AR unikatowy, natywne sieci VLAN dla każdego magistrali i L2Aggregation do szyby L2Aggregation. L2Aggregation do przełącznika L2Host szyby mają macierzystą sieć VLAN innych niż domyślne.
 

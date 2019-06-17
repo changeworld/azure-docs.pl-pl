@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630215"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Macierz magazynowa serii StorSimple 8000: hybrydowe rozwiązanie magazynu w chmurze
@@ -205,10 +205,10 @@ Funkcja deduplikacji zmniejsza ogólną ilość danych przechowywanych przez wye
 ## <a name="storsimple-workload-summary"></a>Podsumowanie obciążenia usługi StorSimple
 Podsumowanie obsługiwanych obciążeń StorSimple jest przedstawione w poniższej tabeli.
 
-| Scenariusz | Obciążenie | Obsługiwane | Ograniczenia | Wersja |
+| Scenariusz | Obciążenie | Obsługiwane | Ograniczenia | Version |
 | --- | --- | --- | --- | --- |
-| Współpraca |Udostępnianie plików |Yes | |Wszystkie wersje |
-| Współpraca |Udostępnianie plików rozproszonych |Yes | |Wszystkie wersje |
+| Współpraca |Udostępnianie plików |Tak | |Wszystkie wersje |
+| Współpraca |Udostępnianie plików rozproszonych |Tak | |Wszystkie wersje |
 | Współpraca |Sharepoint |Tak* |Obsługiwane tylko w przypadku woluminów przypiętych lokalnie |Update 2 i nowsza |
 | Archiwizacja |Archiwizowanie pliku prostego |Yes | |Wszystkie wersje |
 | Wirtualizacja |Maszyny wirtualne |Tak* |Obsługiwane tylko w przypadku woluminów przypiętych lokalnie |Update 2 i nowsza |
@@ -232,7 +232,7 @@ Następujące obciążenia nie są obsługiwane przez urządzenia serii StorSimp
 
 Poniżej znajduje się lista składników infrastruktury usługi StorSimple jest obsługiwany.
 
-| Scenariusz | Obciążenie | Obsługiwane | Ograniczenia | Wersja |
+| Scenariusz | Obciążenie | Obsługiwane | Ograniczenia | Version |
 | --- | --- | --- | --- | --- |
 | Ogólne |ExpressRoute |Yes | |Wszystkie wersje |
 | Ogólne |DataCore FC |Tak* |Obsługiwane z DataCore SANsymphony |Wszystkie wersje |
@@ -244,7 +244,7 @@ Poniżej znajduje się lista składników infrastruktury usługi StorSimple jest
 
 Poniżej przedstawiono listę innego oprogramowania, które służą do tworzenia rozwiązań, za pomocą usługi StorSimple.
 
-| Typ obciążenia | Oprogramowanie używane z usługą StorSimple | Obsługiwane wersje|Łącze do przewodnika dotyczącego rozwiązań| 
+| Typ obciążeń | Oprogramowanie używane z usługą StorSimple | Obsługiwane wersje|Łącze do przewodnika dotyczącego rozwiązań| 
 | --- | --- | --- | --- |
 | Docelowa kopia zapasowa |Veeam |V Veeam 9 lub nowszy |[Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą Veaam](storsimple-configure-backup-target-veeam.md)|
 | Docelowa kopia zapasowa |Oprogramowaniem Veritas Backup Exec |Backup Exec 16 lub nowszy |[Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)|
@@ -273,7 +273,7 @@ Przed wdrożeniem rozwiązania Microsoft Azure StorSimple, firma Microsoft zalec
 | klucz szyfrowania magazynu w chmurze |Hasło lub klucz używany przez urządzenia StorSimple do dostępu do zaszyfrowanych danych, które są wysyłane przez urządzenie do chmury. |
 | Aktualizacja typu cluster-aware |Zarządzanie aktualizacje oprogramowania na serwerach w klastrze trybu failover, aby aktualizacje zostały minimalny lub nie wpływa na dostępność usług. |
 | ścieżki danych |Kolekcja jednostki organizacyjne, które wykonują operacje wzajemnie połączonych przetwarzania danych. |
-| dezaktywuj |Stałe akcji, która spowoduje przerwanie połączenia między urządzeniem StorSimple i usługą skojarzonej chmurze. Migawki urządzenia w chmurze pozostają po zakończeniu tego procesu i można sklonować lub używanej na potrzeby odzyskiwania po awarii. |
+| Dezaktywuj |Stałe akcji, która spowoduje przerwanie połączenia między urządzeniem StorSimple i usługą skojarzonej chmurze. Migawki urządzenia w chmurze pozostają po zakończeniu tego procesu i można sklonować lub używanej na potrzeby odzyskiwania po awarii. |
 | dublowanie dysków |Replikację woluminów dysku logicznego do osobnych twardych dysków w czasie rzeczywistym, aby zapewnić ciągłą dostępność. |
 | dublowanie dysk dynamiczny |Replikacja woluminów dysku logicznego w przypadku dysków dynamicznych. |
 | dyski dynamiczne |Format woluminu dysku, który używa Menedżera dysków logicznych (LDM) do przechowywania danych i zarządzanie nimi na wielu dyskach fizycznych. Dyski dynamiczne można uruchomić zapewniają więcej wolnego miejsca. |

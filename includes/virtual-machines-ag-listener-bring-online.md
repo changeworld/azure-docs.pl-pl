@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165417"
 ---
 1. W Menedżerze klastra trybu Failover rozwiń **role**, a następnie zaznacz grupy dostępności.  
@@ -31,7 +31,7 @@ ms.locfileid: "66165417"
 
 8. Uruchom program SQL Server Management Studio, a następnie połącz się z repliką podstawową.
 
-9. Przejdź do **AlwaysOn wysokiej dostępności** > **grup dostępności** > **\<AvailabilityGroupName\>**   >  **Odbiorników grup dostępności**.  
+9. Przejdź do **AlwaysOn wysokiej dostępności** > **grup dostępności** >  **\<AvailabilityGroupName\>**   >  **Odbiorników grup dostępności**.  
     Powinna być wyświetlana nazwa odbiornika, który został utworzony w Menedżerze klastra trybu Failover.
 
 10. Kliknij prawym przyciskiem myszy odbiornik o nazwie, a następnie kliknij przycisk **właściwości**.

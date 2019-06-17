@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
 ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60742126"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy adresów IP i metody alokacji (model klasyczny) na platformie Azure
@@ -87,12 +87,12 @@ Azure [bramy Application gateway](../application-gateway/application-gateway-int
 ### <a name="at-a-glance"></a>W skrócie
 W poniższej tabeli przedstawiono każdy typ zasobu z ewentualne metody alokacji (dynamiczne/statyczne), a także przypisać wiele publicznych adresów IP.
 
-| Resource | Dynamiczny | Statyczny | Wiele adresów IP |
+| Resource | Dynamiczne | Static | Wiele adresów IP |
 | --- | --- | --- | --- |
-| Usługa w chmurze |Yes |Yes |Yes |
+| Usługa w chmurze |Tak |Yes |Tak |
 | Wystąpienia roli maszyny Wirtualnej IaaS lub PaaS |Yes |Nie |Nie |
-| Brama sieci VPN |Yes |Nie |Nie |
-| Brama aplikacji |Yes |Nie |Nie |
+| Brama sieci VPN |Tak |Nie |Nie |
+| Brama aplikacji |Tak |Nie |Nie |
 
 ## <a name="private-ip-addresses"></a>Prywatne adresy IP
 Prywatne adresy IP umożliwiają zasobom platformy Azure komunikację z innymi zasobami w usłudze w chmurze lub [sieci wirtualnej](virtual-networks-overview.md)(VNet) lub między siecią lokalną (za pośrednictwem bramy sieci VPN lub obwodu usługi ExpressRoute), bez użycia Internet dostępny adres IP.
@@ -137,12 +137,12 @@ Prywatny adres IP możesz przypisać do konfiguracji **frontonu** [wewnętrznego
 ### <a name="at-a-glance"></a>W skrócie
 W poniższej tabeli przedstawiono każdy typ zasobu z ewentualne metody alokacji (dynamiczne/statyczne), a także przypisać wiele prywatnych adresów IP.
 
-| Resource | Dynamiczny | Statyczny | Wiele adresów IP |
+| Resource | Dynamiczne | Static | Wiele adresów IP |
 | --- | --- | --- | --- |
-| Maszyna wirtualna (w *autonomiczny* usług w chmurze lub sieci wirtualnej) |Yes |Yes |Yes |
-| Wystąpienia roli PaaS (w *autonomiczny* usług w chmurze lub sieci wirtualnej) |Yes |Nie |Nie |
-| Frontonu modułu równoważenia obciążenia wewnętrznego |Yes |Yes |Yes |
-| Fronton aplikacji bramy |Yes |Yes |Yes |
+| Maszyna wirtualna (w *autonomiczny* usług w chmurze lub sieci wirtualnej) |Yes |Yes |Tak |
+| Wystąpienia roli PaaS (w *autonomiczny* usług w chmurze lub sieci wirtualnej) |Tak |Nie |Nie |
+| Frontonu modułu równoważenia obciążenia wewnętrznego |Tak |Yes |Tak |
+| Fronton aplikacji bramy |Yes |Yes |Tak |
 
 ## <a name="limits"></a>Limits
 W poniższej tabeli przedstawiono limity dotyczące adresów IP adresowania na platformie Azure na subskrypcję. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.

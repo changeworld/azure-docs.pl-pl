@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 53571fdd7c5a93fef4df0832253542a5a6dfbec5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234001"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058540"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -36,24 +36,26 @@ Obecnie działa usługa Azure Dev miejsca do magazynowania najlepsze podczas deb
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Błąd "Nie można utworzyć kontroler Azure Dev miejsca do magazynowania"
 
+### <a name="reason"></a>Reason
 Można napotkać ten błąd, gdy coś pójdzie nie tak z tworzeniem kontrolera. Jeśli jest to błąd przejściowy, Usuń i Utwórz ponownie kontrolera, aby rozwiązać ten problem.
 
-### <a name="try"></a>Wypróbuj:
+### <a name="try"></a>Spróbuj
 
-Aby usunąć kontroler, należy użyć wiersza polecenia platformy Azure Dev miejsca do magazynowania. Nie jest możliwe tylko w programie Visual Studio lub usłudze Cloud Shell. Aby zainstalować interfejs wiersza polecenia AZDS, najpierw zainstaluj wiersza polecenia platformy Azure, a następnie uruchom następujące polecenie:
+Usuwanie kontrolera:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+```
+
+Aby usunąć kontroler, należy użyć wiersza polecenia platformy Azure Dev miejsca do magazynowania. Nie jest możliwe usunąć kontroler z programu Visual Studio. Również nie można zainstalować interfejs wiersza polecenia Azure Dev miejsca do magazynowania w usłudze Azure Cloud Shell, więc nie można usunąć kontroler z usługi Azure Cloud Shell.
+
+Jeśli nie masz usługi Azure Dev miejsca do magazynowania zainstalować interfejs wiersza polecenia, należy najpierw ją zainstalować przy użyciu następującego polecenia następnie usuń kontroler:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-A następnie uruchom to polecenie, aby usunąć kontrolera:
-
-```cmd
-azds remove -g <resource group name> -n <cluster name>
-```
-
-Ponowne tworzenie kontrolera może odbywać się z interfejsu wiersza polecenia lub programu Visual Studio. Postępuj zgodnie z instrukcjami w samouczkach tak, jakby uruchamiania po raz pierwszy.
-
+Ponowne tworzenie kontrolera może odbywać się z interfejsu wiersza polecenia lub programu Visual Studio. Zobacz [zespołu rozwoju](quickstart-team-development.md) lub [opracowywanie zawartości przy użyciu platformy .NET Core](quickstart-netcore-visualstudio.md) przewodników Szybki Start, przykłady.
 
 ## <a name="error-service-cannot-be-started"></a>Błąd "nie można uruchomić usługi."
 
@@ -408,4 +410,7 @@ azds controller create --name my-controller --target-name MyAKS --resource-group
 ## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Włączanie tworzenia miejsca do magazynowania kończy się niepowodzeniem, gdy pule węzłów Windows zostaną dodane do klastra usługi AKS
 
 ### <a name="reason"></a>Reason
-Obecnie Azure Dev miejsca do magazynowania jest przeznaczony do uruchamiania na zasobników systemu Linux i tylko węzłów. W tej chwili nie można włączyć usługi Azure Dev miejsca do magazynowania w klastrze usługi AKS z pulą węzłów Windows.
+Obecnie Azure Dev miejsca do magazynowania jest przeznaczony do uruchamiania na zasobników systemu Linux i tylko węzłów. W przypadku klastra usługi AKS z pulą węzłów Windows upewnij się, że zasobników Azure Dev miejsca do magazynowania są tylko zaplanowane na węzłów systemu Linux. Jeśli zasobnika Azure Dev miejsca do magazynowania jest zaplanowane do uruchomienia w węźle Windows, nie rozpocznie się pod tym i włączenie tworzenia miejsca do magazynowania zakończy się niepowodzeniem.
+
+### <a name="try"></a>Spróbuj
+[Dodaj zmiany barwy](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) do klastra usługi AKS, aby upewnić się, systemu Linux zasobników nie są zaplanowane do uruchomienia w węźle Windows.

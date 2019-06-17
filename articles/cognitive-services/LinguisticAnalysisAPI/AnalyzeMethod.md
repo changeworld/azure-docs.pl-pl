@@ -12,10 +12,10 @@ ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61401190"
 ---
 # <a name="analyze-method"></a>Metoda analyze
@@ -26,7 +26,7 @@ ms.locfileid: "61401190"
 **Analizowanie** interfejsu API REST jest używany do analizowania danych wejściowych danego języka naturalnego.
 Który może obejmować tylko znajdowanie [zdania i tokeny](Sentences-and-Tokens.md) w tym dane wejściowe, znajdowanie [tagów części mowy](POS-tagging.md), lub znajdowania [drzewa fraz](Constituency-Parsing.md).
 Można określić wyników, wybierając odpowiednie analizatorów.
-Aby wyświetlić listę wszystkich dostępnych analizatorów, Przyjrzyj się  **[analizatory](AnalyzersMethod.md)**.
+Aby wyświetlić listę wszystkich dostępnych analizatorów, Przyjrzyj się  **[analizatory](AnalyzersMethod.md)** .
 
 Uwaga: należy także określić język, w ciągu wejściowym.
 
@@ -41,8 +41,8 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 Name (Nazwa) | Type | Wymagane | Opis
 -----|-------|----------|------------
 **Język**    | string | Yes | Dwuliterowa kod języka ISO ma być używany do analizy. Na przykład "en" jest angielski.
-**analyzerIds** | Lista ciągów | Yes | Lista identyfikatorów GUID analizatorów, aby zastosować. Zobacz dokumentację analizatorów, aby uzyskać więcej informacji.
-**Tekst**        | string | Yes | Nieprzetworzone dane wejściowe do analizy. Może to być krótkiego ciągu, takiej jak słowo lub frazę, pełną zdania, akapitu pełną lub discourse.
+**analyzerIds** | Lista ciągów | Tak | Lista identyfikatorów GUID analizatorów, aby zastosować. Zobacz dokumentację analizatorów, aby uzyskać więcej informacji.
+**text**        | string | Tak | Nieprzetworzone dane wejściowe do analizy. Może to być krótkiego ciągu, takiej jak słowo lub frazę, pełną zdania, akapitu pełną lub discourse.
 
 ## <a name="response-json"></a>Odpowiedź (JSON)
 

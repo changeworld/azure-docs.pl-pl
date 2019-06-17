@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387965"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67120197"
 ---
 Diagnozowanie problemów z usługą w chmurze Microsoft Azure wymaga zbierania plików dziennika usługi na maszynach wirtualnych, w momencie wystąpienia problemów. Można użyć AzureLogCollector rozszerzenia na żądanie wykonaj jednorazowy zbieranie dzienników z przynajmniej jednej chmury usługi maszyny wirtualnej (z ról sieć web i ról procesów roboczych) i przenieść zebranych plików na konto magazynu platformy Azure — wszystko to bez konieczności zdalne logowanie do dowolnej maszyn wirtualnych.
 
@@ -20,8 +20,8 @@ Diagnozowanie problemów z usługą w chmurze Microsoft Azure wymaga zbierania p
 
 Istnieją dwa tryby gromadzenia, zależne od typów plików, które mają być zbierane.
 
-* **Gościa platformy Azure agenta dzienniki tylko (GA)**. Ten tryb kolekcji obejmuje wszystkie dzienniki związane z agentów gościa platformy Azure i innymi składnikami platformy Azure.
-* **Wszystkie dzienniki (pełne)**. Ten tryb kolekcji zbiera wszystkie pliki w trybie GA plus:
+* **Gościa platformy Azure agenta dzienniki tylko (GA)** . Ten tryb kolekcji obejmuje wszystkie dzienniki związane z agentów gościa platformy Azure i innymi składnikami platformy Azure.
+* **Wszystkie dzienniki (pełne)** . Ten tryb kolekcji zbiera wszystkie pliki w trybie GA plus:
   
   * dzienniki zdarzeń systemu i aplikacji
   * Dzienniki błędów HTTP

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 882bae14678d8bfff15b35c63c666a20aeee3d1d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720040"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorowanie, odbieranie i wysyłanie zdarzeń za pomocą usługi Azure Event Hubs i Azure Logic Apps
@@ -79,12 +79,12 @@ Ten przykład pokazuje, jak można uruchomić przepływu pracy aplikacji logiki,
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Nazwa Centrum zdarzeń** | Yes | Nazwa Centrum zdarzeń, które chcesz monitorować |
+   | **Nazwa Centrum zdarzeń** | Tak | Nazwa Centrum zdarzeń, które chcesz monitorować |
    | **Typ zawartości** | Nie | Typ zawartości zdarzenia. Wartość domyślna to `application/octet-stream`. |
    | **Nazwa grupy konsumentów** | Nie | [Nazwę grupę konsumentów Centrum zdarzeń](../event-hubs/event-hubs-features.md#consumer-groups) do używania w celu odczytywania zdarzeń. Jeśli nie zostanie określony, domyślna grupa odbiorców jest używana. |
    | **Liczba zdarzeń maksymalna** | Nie | Maksymalna liczba zdarzeń. Wyzwalacz zwróci między jednym i liczbę zdarzeń, określonej przez tę właściwość. |
-   | **Interwał** | Yes | Dodatnia liczba całkowita, która w tym artykule opisano, jak często wykonywania przepływu pracy na podstawie częstotliwości |
-   | **Częstotliwość** | Yes | Jednostka czasu cyklu |
+   | **Interval** | Yes | Dodatnia liczba całkowita, która w tym artykule opisano, jak często wykonywania przepływu pracy na podstawie częstotliwości |
+   | **Częstotliwość** | Tak | Jednostka czasu cyklu |
    ||||
 
    **Dodatkowe właściwości**
@@ -95,7 +95,7 @@ Ten przykład pokazuje, jak można uruchomić przepływu pracy aplikacji logiki,
    | **Klucz partycji minimalne** | Nie | Wprowadź minimalną [partycji](../event-hubs/event-hubs-features.md#partitions) identyfikator do odczytu. Domyślnie wszystkie partycje są do odczytu. |
    | **Klucz partycji maksymalna** | Nie | Wprowadź maksymalną [partycji](../event-hubs/event-hubs-features.md#partitions) identyfikator do odczytu. Domyślnie wszystkie partycje są do odczytu. |
    | **Strefa czasowa** | Nie | Ma zastosowanie tylko wtedy, gdy określa godziny rozpoczęcia, ponieważ ten wyzwalacz nie akceptuje przesunięcie czasu UTC. Wybierz strefę czasową, który chcesz zastosować. <p>Aby uzyskać więcej informacji, zobacz [tworzenia i wykonywania powtarzających się zadań i przepływów pracy z usługą Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
-   | **Godzina rozpoczęcia** | Nie | Podaj godzinę rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg w przypadku wybrania strefy czasowej<p>— lub —<p>RRRR-MM-Ddtgg, jeśli nie zaznaczysz strefy czasowej<p>Aby uzyskać więcej informacji, zobacz [tworzenia i wykonywania powtarzających się zadań i przepływów pracy z usługą Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
+   | **Godzina rozpoczęcia** | Nie | Podaj godzinę rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg w przypadku wybrania strefy czasowej<p>—lub—<p>RRRR-MM-Ddtgg, jeśli nie zaznaczysz strefy czasowej<p>Aby uzyskać więcej informacji, zobacz [tworzenia i wykonywania powtarzających się zadań i przepływów pracy z usługą Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
    ||||
 
 1. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**.
@@ -120,7 +120,7 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
 1. W obszarze wyzwalacza lub akcji, wybierz opcję **nowy krok**.
 
    Aby dodać akcję między krokami istniejących, myszą strzałkę nawiązującego połączenie. 
-   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 1. W polu wyszukiwania wprowadź "event hubs" jako filtr.
 Z listy akcji wybierz następującą akcję: **Wyślij zdarzenie — Event Hubs**
@@ -158,7 +158,7 @@ Z listy akcji wybierz następującą akcję: **Wyślij zdarzenie — Event Hubs*
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
    | **Nazwa połączenia** | Yes | <*connection-name*> | Nazwa do utworzenia połączenia |
-   | **Event Hubs Namespace** | Yes | <*event-hubs-namespace*> | Wybierz przestrzeń nazw usługi Event Hubs, którego chcesz użyć. |
+   | **Event Hubs Namespace** | Tak | <*event-hubs-namespace*> | Wybierz przestrzeń nazw usługi Event Hubs, którego chcesz użyć. |
    |||||  
 
    Na przykład:

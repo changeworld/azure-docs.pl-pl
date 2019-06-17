@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
 ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938253"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Dostępność geograficzna i Obsługa walut
@@ -22,7 +22,7 @@ Oferty platformy Azure Marketplace można zakupić w 141 lokalizacje geograficzn
 |-------------------------------------|-----------|--------------|
 | Afganistan                         | AF        | USD          |
 | Albania                             | AL        | USD          |
-| Algieria                             | DZ        | USD          |
+| Algeria                             | DZ        | USD          |
 | Andora                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Argentyna                           | AR        | USD          |
@@ -81,17 +81,17 @@ Oferty platformy Azure Marketplace można zakupić w 141 lokalizacje geograficzn
 | Irlandia                             | IE        | EUR          |
 | Izrael                              | IL        | USD          |
 | Włochy                               | IT        | EUR          |
-| Jamajka                             | JM        | USD          |
+| Jamaica                             | JM        | USD          |
 | Japonia                               | JP        | JPY          |
 | Jordania                              | JO        | USD          |
-| Kazachstan                          | KZ        | USD          |
-| Kenia                               | KE        | USD          |
+| Kazakhstan                          | KZ        | USD          |
+| Kenya                               | KE        | USD          |
 | Korea Południowa                       | KR        | KRW          |
 | Kuwejt                              | KW        | USD          |
-| Kirgistan                          | KG        | USD          |
+| Kyrgyzstan                          | KG        | USD          |
 | Łotwa                              | LV        | EUR          |
 | Liban                             | LB        | USD          |
-| Libia                               | LY        | USD          |
+| Libya                               | LY        | USD          |
 | Liechtenstein                       | LI        | EUR          |
 | Litwa                           | LT        | EUR          |
 | Luksemburg                          | LU        | EUR          |
@@ -102,7 +102,7 @@ Oferty platformy Azure Marketplace można zakupić w 141 lokalizacje geograficzn
 | Mauritius                           | JEDNOSTKĘ OBSŁUGI KOMUNIKATÓW        | USD          |
 | Meksyk                              | MX        | USD          |
 | Mołdawia                             | MD        | USD          |
-| Monako                              | MC        | EUR          |
+| Monaco                              | MC        | EUR          |
 | Mongolia                            | MN        | USD          |
 | Czarnogóra                          | ME        | USD          |
 | Maroko                             | MA        | USD          |
@@ -157,7 +157,7 @@ Oferty platformy Azure Marketplace można zakupić w 141 lokalizacje geograficzn
 | Urugwaj                             | UY        | USD          |
 | Uzbekistan                          | UZ        | USD          |
 | Wenezuela                           | VE        | USD          |
-| Wietnam                             | VN        | USD          |
+| Vietnam                             | VN        | USD          |
 | Jemen                               | YE        | USD          |
 | Zambia                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |

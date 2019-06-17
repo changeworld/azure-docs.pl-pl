@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799091"
 ---
 # <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
@@ -26,14 +26,14 @@ Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkr
 
     W poniższym przykładzie przeszukiwania dla wszystkich filmów wideo, które mówić o zabezpieczeniach i Satya widocznego,
 
-    ![wyszukaj](./media/video-indexer-search/video-indexer-search01.png)
+    ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search01.png)
 3. Wyszukaj podsumowane szczegółowe informacje dotyczące filmu wideo.
 
     Możesz wyszukiwać w filmie wideo, klikając **Odtwórz** film wideo. Następnie możesz przeszukiwać wideo, wybierając **wyszukiwania** kartę. 
 
     W poniższym przykładzie mamy wyszukiwanie "secure" wewnątrz wybrany film wideo.
 
-    ![wyszukaj](./media/video-indexer-search/video-indexer-search02.png)
+    ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search02.png)
 
     Po kliknięciu jednego z wyników, gracz oferuje do tej pory w trakcie filmu wideo. W aplikacji, można osiągnąć player/szczegółowe dane i synchronizacja. Aby uzyskać więcej informacji, zobacz [osadzić Video Indexer widżetów w aplikacji](video-indexer-embed-widgets.md). 
 4. Wyszukaj szczegółowy podział filmu wideo.
@@ -44,7 +44,7 @@ Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkr
     
     W poniższym przykładzie firma Microsoft wyszukiwany tekst "mixed reality". Możemy również stosowane dodatkowe filtry, jak pokazano na poniższym ekranie.
     
-    ![wyszukaj](./media/video-indexer-search/video-indexer-search03.png)
+    ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>Kolejne kroki 
 

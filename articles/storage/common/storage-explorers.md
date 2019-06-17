@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: d7debbc760e103046ce9bb1a8bdf25a954d9891c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65138554"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage Client Tools
@@ -26,17 +26,17 @@ Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Stora
 <table>
   <tr>
     <th rowspan="2">Azure Storage Client Tool</th>
-    <th rowspan="2">Blokowy obiekt blob</th>
-    <th rowspan="2">Stronicowy obiekt blob</th>
-    <th rowspan="2">Dołącz obiekt blob</th>
+    <th rowspan="2">Blokowe obiekty Blob</th>
+    <th rowspan="2">Obiekt blob typu Page</th>
+    <th rowspan="2">Obiekt Blob dołączania</th>
     <th rowspan="2">Tabele</th>
     <th rowspan="2">Kolejki</th>
     <th rowspan="2">Pliki</th>
-    <th rowspan="2">Bezpłatna</th>
+    <th rowspan="2">Wolne</th>
     <th colspan="4">Platforma</th>
   </tr>
   <tr>
-    <td>Sieć Web</td>
+    <td>sieć Web</td>
     <td>Windows</td>
     <td>OSX</td>
     <td>Linux</td>
@@ -92,17 +92,17 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
 <table>
   <tr>
     <th rowspan="2">Azure Storage Client Tool</th>
-    <th rowspan="2">Blokowy obiekt blob</th>
-    <th rowspan="2">Stronicowy obiekt blob</th>
-    <th rowspan="2">Dołącz obiekt blob</th>
+    <th rowspan="2">Blokowe obiekty Blob</th>
+    <th rowspan="2">Obiekt blob typu Page</th>
+    <th rowspan="2">Obiekt Blob dołączania</th>
     <th rowspan="2">Tabele</th>
     <th rowspan="2">Kolejki</th>
     <th rowspan="2">Pliki</th>
-    <th rowspan="2">Bezpłatna</th>
+    <th rowspan="2">Wolne</th>
     <th colspan="4">Platforma</th>
   </tr>
   <tr>
-    <td>Sieć Web</td>
+    <td>sieć Web</td>
     <td>Windows</td>
     <td>OSX</td>
     <td>Linux</td>

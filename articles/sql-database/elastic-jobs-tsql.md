@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475817"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
@@ -456,7 +456,7 @@ Opis zadania. Długość opisu jest nvarchar(512) z domyślną wartością NULL.
 [  **\@włączone =** ] włączone  
 Czy jest włączony harmonogram zadań. Włączone jest bit z domyślną 0 (wyłączone). Jeśli jest to 0, zadanie nie jest włączona i nie jest uruchamiane zgodnie ze swoim harmonogramem; jednak go mogą być uruchamiane ręcznie. Jeśli jest to 1, zadanie będzie uruchamiany zgodnie ze swoim harmonogramem i może być także uruchamiane ręcznie.
 
-[  **\@schedule_interval_type =**] schedule_interval_type  
+[  **\@schedule_interval_type =** ] schedule_interval_type  
 Wartość wskazuje, kiedy zadanie jest wykonywana. schedule_interval_type jest nvarchar(50) z domyślną jeden raz i może być jedną z następujących wartości:
 - Raz,
 - "Minutes"

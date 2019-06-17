@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
 ms.openlocfilehash: 183e2144317bf3f1c9a60443d393bdcb3fd7c04a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66390563"
 ---
 # <a name="generation-2-vms-preview-on-azure"></a>Maszyny wirtualne generacji 2 (wersja zapoznawcza) na platformie Azure
@@ -30,7 +30,7 @@ ms.locfileid: "66390563"
 
 Obsługa generacji 2 maszyn wirtualnych (VM) jest teraz dostępna w publicznej wersji zapoznawczej na platformie Azure. Nie można zmienić generacji maszynę wirtualną po jej utworzeniu. Dlatego zaleca się przejrzenie zagadnienia [tutaj](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) oraz informacje na tej stronie, przed wybraniem generacji.
 
-2. generacji maszyn wirtualnych obsługi kluczowych funkcji, które nie są obsługiwane na maszynach wirtualnych generacji 1, takich jak: pamięć, Intel® Software Guard rozszerzenia (SGX) i wirtualnej pamięci trwałej (vPMEM). Maszyny wirtualne generacji 2 mają również niektórych funkcji, które nie są jeszcze obsługiwane na platformie Azure. Aby uzyskać więcej informacji, zobacz [funkcje i możliwości](#features-and-capabilities) sekcji.
+2\. generacji maszyn wirtualnych obsługi kluczowych funkcji, które nie są obsługiwane na maszynach wirtualnych generacji 1, takich jak: pamięć, Intel® Software Guard rozszerzenia (SGX) i wirtualnej pamięci trwałej (vPMEM). Maszyny wirtualne generacji 2 mają również niektórych funkcji, które nie są jeszcze obsługiwane na platformie Azure. Aby uzyskać więcej informacji, zobacz [funkcje i możliwości](#features-and-capabilities) sekcji.
 
 Maszyny wirtualne generacji 2 używają cena subskrypcji nowej architektury rozruch z interfejsem UEFI architektury opartej na systemie BIOS, używane przez maszyny wirtualne generacji 1. W porównaniu do maszyn wirtualnych generacji 1 maszyny wirtualne generacji 2 mogą mieć zwiększona czasów instalacji i rozruchu. Omówienie maszyn wirtualnych generacji 2 i niektóre z najważniejszych różnic między generacji 1 i 2, zobacz [należy utworzyć maszyny wirtualnej generacji 1 lub 2 w funkcji Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
@@ -70,7 +70,7 @@ Azure obecnie nie obsługuje niektórych funkcji, które on-premises Hyper-V obs
 
 ### <a name="generation-1-vs-generation-2-features"></a>Funkcje generacji 2 vs generacji 1
 
-| Cecha | 1. generacji | 2. generacji |
+| Cecha | 1\. generacji | 2\. generacji |
 |---------|--------------|--------------|
 | Rozruch             | PCAT                      | UEFI                               |
 | Kontrolery dysku | IDE                       | SCSI                               |
@@ -78,7 +78,7 @@ Azure obecnie nie obsługuje niektórych funkcji, które on-premises Hyper-V obs
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Możliwości generacja 2 vs generacji 1
 
-| Możliwości | 1. generacji | 2. generacji |
+| Możliwości | 1\. generacji | 2\. generacji |
 |------------|--------------|--------------|
 | > 2 TB dysku systemu operacyjnego                    | : x:.                        | :heavy_check_mark: |
 | Niestandardowe wymiany dysku/obraz systemu operacyjnego.         | :heavy_check_mark:         | :heavy_check_mark: |

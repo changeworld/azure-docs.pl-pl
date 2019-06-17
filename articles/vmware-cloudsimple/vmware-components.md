@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160188"
 ---
 # <a name="private-cloud-vmware-components"></a>Składniki programu VMware chmury prywatnej
@@ -28,7 +28,7 @@ Chmura prywatna to izolowane stos oprogramowania VMware (hosty ESXi, vCenter, si
 
 Stos oprogramowania VMware Chmura prywatna jest wdrażana przy użyciu następujących wersji oprogramowania.
 
-| Składnik | Wersja | Wersji licencjonowanej |
+| Składnik | Version | Wersji licencjonowanej |
 |-----------|---------|------------------|
 | ESXi | 6.7U1 | Enterprise Plus |
 | vCenter | 6.7U1 | vCenter Standard |
@@ -37,7 +37,7 @@ Stos oprogramowania VMware Chmura prywatna jest wdrażana przy użyciu następuj
 
 ## <a name="esxi"></a>ESXi
 
-Host VMware ESXi jest zainstalowany na zakupione CloudSimple węzły, podczas tworzenia chmury prywatnej.  ESXi zapewnia funkcji hypervisor wdrażania obciążeń maszyn wirtualnych (VM).  Węzły zawierają hiper zbieżności infrastruktury (obliczanie i magazynowanie) w chmurze prywatnej.  Węzły są częścią klastra vSphere w chmurze prywatnej.  Każdy węzeł ma cztery interfejsy sieci fizycznej połączone underlay sieci.  Dwa interfejsy sieci fizycznej są używane do tworzenia **vSphere rozproszonego przełącznika (VDS)** vCenter i dwa są używane do tworzenia **zarządzane NSX rozproszonego przełącznika wirtualnego (N VDS)**.  Interfejsy sieciowe są konfigurowane w trybie aktywny aktywny w celu zapewnienia wysokiej dostępności.
+Host VMware ESXi jest zainstalowany na zakupione CloudSimple węzły, podczas tworzenia chmury prywatnej.  ESXi zapewnia funkcji hypervisor wdrażania obciążeń maszyn wirtualnych (VM).  Węzły zawierają hiper zbieżności infrastruktury (obliczanie i magazynowanie) w chmurze prywatnej.  Węzły są częścią klastra vSphere w chmurze prywatnej.  Każdy węzeł ma cztery interfejsy sieci fizycznej połączone underlay sieci.  Dwa interfejsy sieci fizycznej są używane do tworzenia **vSphere rozproszonego przełącznika (VDS)** vCenter i dwa są używane do tworzenia **zarządzane NSX rozproszonego przełącznika wirtualnego (N VDS)** .  Interfejsy sieciowe są konfigurowane w trybie aktywny aktywny w celu zapewnienia wysokiej dostępności.
 
 Dowiedz się więcej o VMware ESXi
 

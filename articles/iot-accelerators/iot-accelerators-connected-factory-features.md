@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450015"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080445"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Co to jest akcelerator rozwiązań IoT połączona fabryka?
 
@@ -65,7 +65,4 @@ Połączona fabryka obejmuje następujące funkcje:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o rozwiązaniu połączonej fabryki, które są wstępnie skonfigurowane, czytając następujące artykuły:
-
-* [We wstępnie skonfigurowanym Przewodnik po rozwiązaniu połączonej fabryki](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [Wdrażanie bramy dla połączonej fabryki]( iot-accelerators-connected-factory-gateway-deployment.md)
+Aby dowiedzieć się więcej na temat akcelerator rozwiązania połączonej fabryki, zobacz samouczek Szybki Start [spróbuj oparte na chmurze rozwiązanie do zarządzania przemysłowych urządzeń IoT](quickstart-connected-factory-deploy.md).

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: d7ca566b86ed79aa773d7af2553223c79ed9944a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64701834"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Planowanie wydajności dla aplikacji usługi Service Fabric
 Ten dokument zawiera wskazówki dotyczące szacowanie ilości zasobów (procesorów CPU, pamięci RAM, dysk magazynu), musisz uruchomić aplikacje usługi Azure Service Fabric. Bardzo często wymagań dotyczących zasobów można zmienić wraz z upływem czasu. Opracowywanie i testowanie usługi, a następnie wymaga większej ilości zasobów, możesz wdrożyć gotowe środowisko produkcyjne i wzrostu w popularności aplikacji zwykle wymagają niewielkiej ilości zasobów. Podczas projektowania aplikacji przemyślenie długoterminowych wymagań i opcji, które umożliwiają usłudze skalowanie wysokiego zapotrzebowania.

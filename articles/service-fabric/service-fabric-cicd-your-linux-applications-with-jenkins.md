@@ -13,10 +13,10 @@ ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
 ms.openlocfilehash: 3b1e6f769d5c65065d95ac96c4ab4ed10702e5cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61038852"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Tworzenie i wdrażanie aplikacji systemu Linux przy użyciu narzędzia Jenkins
@@ -229,7 +229,7 @@ Kroki opisane w tej sekcji opisano skonfigurować zadania narzędzia Jenkins, od
 1. Na **kompilowanie wyzwalaczy** w usłudze Jenkins, a następnie wybierz odpowiednią opcję, która kompilacji. Na przykład chcesz wyzwolić kompilację, zawsze wtedy, gdy się stanie, wypychania do repozytorium, więc wybierz **wyzwalacz punktu zaczepienia GitHub na potrzeby sondowania GITScm**. Wcześniej ta opcja miała nazwę **Build when a change is pushed to GitHub** (Kompiluj po wypchnięciu zmiany do usługi GitHub).
 1. Na **kompilacji** karcie, wykonaj jedną z następujących czynności, w zależności od tego, czy tworzysz aplikację Java lub .NET Core:
 
-   * **W przypadku aplikacji Java:** Z **Dodaj krok kompilacji** listę rozwijaną, wybierz opcję **wywołaj skrypt Gradle**. Kliknij pozycję **Advanced** (Zaawansowane). W menu Zaawansowane, określ ścieżkę do **głównego kompilacji skryptu** dla aplikacji. Spowoduje to wybranie elementu build.gradle z określonej ścieżki i wykonanie odpowiedniego działania. Aby uzyskać [aplikacji ActorCounter](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), to: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
+   * **W przypadku aplikacji Java:** Z **Dodaj krok kompilacji** listę rozwijaną, wybierz opcję **wywołaj skrypt Gradle**. Kliknij przycisk **zaawansowane**. W menu Zaawansowane, określ ścieżkę do **głównego kompilacji skryptu** dla aplikacji. Spowoduje to wybranie elementu build.gradle z określonej ścieżki i wykonanie odpowiedniego działania. Aby uzyskać [aplikacji ActorCounter](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), to: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
 
      ![Akcja kompilacji narzędzia Jenkins w usłudze Service Fabric][build-step]
 
@@ -298,7 +298,7 @@ Dla środowisk deweloperskich i testowych można skonfigurować poświadczeń pl
 
 1. Aby utworzyć jednostkę usługi Azure Active Directory i przypisz mu uprawnienia w ramach subskrypcji platformy Azure, wykonaj kroki opisane w [korzystanie z portalu do tworzenia aplikacji i usługi nazwy głównej usługi Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Należy zwrócić uwagę na następujące kwestie:
 
-   * Podczas czynności opisane w temacie, upewnij się, skopiuj i Zapisz następujące wartości: *Identyfikator aplikacji*, *klucz aplikacji*, *identyfikator katalogu (identyfikator dzierżawy)*, i *identyfikator subskrypcji*. Będą one potrzebne do konfigurowania poświadczeń platformy Azure w usłudze Jenkins.
+   * Podczas czynności opisane w temacie, upewnij się, skopiuj i Zapisz następujące wartości: *Identyfikator aplikacji*, *klucz aplikacji*, *identyfikator katalogu (identyfikator dzierżawy)* , i *identyfikator subskrypcji*. Będą one potrzebne do konfigurowania poświadczeń platformy Azure w usłudze Jenkins.
    * Jeśli nie masz [wymagane uprawnienia](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) w Twoim katalogu, musisz poprosić administratora o udzielenie uprawnień albo utworzyć jednostkę usługi lub musisz skonfigurować punkt końcowy zarządzania usługi klaster w **akcjach wykonywanych po kompilacji** dla zadania w usłudze Jenkins.
    * W [utworzyć aplikację usługi Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) sekcji, możesz wprowadzić dowolny sformułowany adres URL dla **adres URL logowania**.
    * W [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) sekcji można przypisać aplikacji *czytnika* roli w grupie zasobów klastra.

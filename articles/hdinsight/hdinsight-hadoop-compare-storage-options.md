@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fb25386ef9282a922866e39353d84f0e339caee7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479163"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122132"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
 
@@ -44,18 +44,18 @@ Można utworzyć klastra przy użyciu różnych kombinacji usług podstawowych i
 
 | Wersja usługi HDInsight | Podstawowy magazyn | Magazyn pomocniczy | Obsługiwane |
 |---|---|---|---|
-| 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Yes |
+| 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Tak |
 | 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Usługa Data Lake Storage 2. generacji | Nie |
 | 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Usługa Data Lake Storage 1. generacji | Tak |
-| 3.6 & 4.0 | Data Lake Storage Gen2* | Usługa Data Lake Storage 2. generacji | Tak |
-| 3.6 & 4.0 | Data Lake Storage Gen2* | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Yes |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | Usługa Data Lake Storage 2. generacji | Yes |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Tak |
 | 3.6 & 4.0 | Usługa Data Lake Storage 2. generacji | Usługa Data Lake Storage 1. generacji | Nie |
-| 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 1. generacji | Yes |
+| 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 1. generacji | Tak |
 | 3.6 | Usługa Data Lake Storage 1. generacji | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Tak |
 | 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 2. generacji | Nie |
 | 4.0 | Usługa Data Lake Storage 1. generacji | Dowolne | Nie |
 
-* = Może to być jeden lub wiele kont Data Lake Storage Gen2, tak długo, jak są one wszystkie Instalatora, aby uzyskać dostęp do klastra za pomocą tej samej tożsamości zarządzanej.
+\* = Może to być jeden lub wiele kont Data Lake Storage Gen2, tak długo, jak są one wszystkie Instalatora, aby uzyskać dostęp do klastra za pomocą tej samej tożsamości zarządzanej.
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Za pomocą usług Azure Data Lake Storage Gen2 Apache Hadoop w usłudze Azure HDInsight
 

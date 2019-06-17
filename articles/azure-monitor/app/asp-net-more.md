@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
 ms.openlocfilehash: 7e62efb0b64b0b882b36126af4a1f9d520d92475
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65230637"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Więcej funkcji telemetrii z usługi Application Insights
 Po utworzeniu [dodawane usługi Application Insights do kodu ASP.NET](../../azure-monitor/app/asp-net.md), istnieje kilka kwestii, które można zrobić, aby uzyskać jeszcze więcej funkcji telemetrii. 
 
-| action | Efekty|
+| Akcja | Efekty|
 |---|---|
 |(Na serwerach usług IIS) [Instalowanie Monitora stanu](https://go.microsoft.com/fwlink/?LinkId=506648) na każdym komputerze serwera.<br/>(Aplikacje sieci web platformy azure) W Panelu sterowania platformy Azure dla aplikacji sieci web Otwórz blok usługi Application Insights.| [**Liczniki wydajności**](../../azure-monitor/app/performance-counters.md)<br/>[**Wyjątki** ](asp-net-exceptions.md) — szczegółowe ślady stosu<br/>[**Zależności**](../../azure-monitor/app/asp-net-dependencies.md)|
 |[Dodaj fragment kodu JavaScript do stron sieci web](../../azure-monitor/app/javascript.md)|[Wydajność strony](../../azure-monitor/app/usage-overview.md), wyjątków przeglądarki, wydajności AJAX. Niestandardowej telemetrii po stronie klienta.|

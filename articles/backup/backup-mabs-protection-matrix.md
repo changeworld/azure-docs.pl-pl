@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 83cfd2b7ccdf8ec14e828baec1031e11b28c988c
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427363"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Macierz ochrony usługi Azure Backup Server
@@ -22,7 +22,7 @@ W tym artykule wymieniono różne serwerów i obciążeń, które można chroni�
 
 ## <a name="protection-support-matrix"></a>Macierz obsługi ochrony
 
-|Obciążenie|Wersja|Azure Backup Server</br> installation|Azure Backup</br> Server V3|Azure Backup</br> Server V2|Ochrona i odzyskiwanie|
+|Obciążenie|Version|Azure Backup Server</br> installation|Azure Backup</br> Server V3|Azure Backup</br> Server V2|Ochrona i odzyskiwanie|
 |------------|-----------|---------------|--------------|---------------|-----------------|
 |Komputery klienckie (64-bitowe i 32-bitowy)|Windows 10|Serwer fizyczny<br /><br />Maszyna wirtualna z funkcją Hyper-V<br /><br />Maszyna wirtualna VMware|Tak|Tak|Wolumin, udział, folder, pliki, aby deduplikowane woluminy<br /><br />Chronione woluminy muszą mieć system plików NTFS. FAT i FAT32 nie są obsługiwane.<br /><br />Woluminy muszą mieć co najmniej 1 GB. Program DPM używa usługi kopiowania woluminów w tle (VSS), aby utworzyć migawkę danych i migawki tylko wtedy, gdy wolumin jest co najmniej 1 GB.|
 |Komputery klienckie (64-bitowe i 32-bitowy)|Windows 8.1|Serwer fizyczny<br /><br />Maszyna wirtualna z funkcją Hyper-V|Tak|Tak|Pliki<br /><br />Chronione woluminy muszą mieć system plików NTFS. FAT i FAT32 nie są obsługiwane.<br /><br />Woluminy muszą mieć co najmniej 1 GB. Program DPM używa usługi kopiowania woluminów w tle (VSS), aby utworzyć migawkę danych i migawki tylko wtedy, gdy wolumin jest co najmniej 1 GB.|

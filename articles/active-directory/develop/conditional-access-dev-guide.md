@@ -1,5 +1,5 @@
 ---
-title: Wskazówki dla deweloperów na potrzeby dostępu warunkowego usługi Azure Active Directory
+title: Wskazówki dla deweloperów dla usługi Azure Active Directory dostępu warunkowego
 description: Wskazówki dla deweloperów i scenariuszy dostępu warunkowego usługi Azure AD
 services: active-directory
 keywords: ''
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0674934f7105df3874048308e98fd582d32e72bc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9e4e0eb830d5ede910e72ec3193cfd613561811b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111539"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Wskazówki dla deweloperów na potrzeby dostępu warunkowego usługi Azure Active Directory
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Wskazówki dla deweloperów dla usługi Azure Active Directory dostępu warunkowego
 
 Funkcja dostępu warunkowego w usłudze Azure Active Directory (Azure AD) oferuje kilka sposobów, które służy do zabezpieczania aplikacji i ochrony usługi. Dostęp warunkowy umożliwia deweloperom i firmom, chronią usługi w różnych sposobów, w tym:
 
@@ -32,7 +32,7 @@ Funkcja dostępu warunkowego w usłudze Azure Active Directory (Azure AD) oferuj
 
 Aby uzyskać więcej informacji na temat pełnego zestawu dostępu warunkowego, zobacz [dostępu warunkowego w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 
-Dla deweloperów, tworzenie aplikacji dla usługi Azure AD w tym artykule przedstawiono sposób korzystania z dostępu warunkowego i zdobędziesz także wiedzę na temat uzyskiwania dostępu do zasobów, które nie mają wpływu że kontrolę nad tym, który może być stosowane zasady dostępu warunkowego. Artykuł opisuje także wpływ dostępu warunkowego w przepływie w imieniu użytkownika z aplikacji sieci web, uzyskiwanie dostępu do programu Microsoft Graph i wywoływanie interfejsów API.
+Dla deweloperów, tworzenie aplikacji dla usługi Azure AD w tym artykule przedstawiono sposób korzystania z dostępu warunkowego i zdobędziesz także wiedzę na temat uzyskiwania dostępu do zasobów, które nie mają wpływu że kontrolę nad tym, który może być stosowane zasady dostępu warunkowego. Artykuł opisuje również skutków dostępu warunkowego w przepływie w imieniu użytkownika z aplikacji sieci web, uzyskiwanie dostępu do programu Microsoft Graph i wywoływanie interfejsów API.
 
 Znajomości [pojedynczego](quickstart-v1-integrate-apps-with-azure-ad.md) i [wielodostępnych](howto-convert-app-to-be-multi-tenant.md) aplikacji i [typowych wzorców uwierzytelniania](authentication-scenarios.md) zakłada, że.
 
@@ -49,7 +49,7 @@ W szczególności następujące scenariusze wymagają kod służący do obsługi
 * Aplikacje jednej strony, przy użyciu ADAL.js
 * Usługa Web Apps wywołanie zasobu
 
-Dostęp warunkowy, zasady mogą być stosowane do aplikacji, ale także mogą być stosowane do interfejsu API sieci web uzyskuje dostęp do aplikacji. Aby dowiedzieć się więcej o sposobie konfigurowania zasad dostępu warunkowego, zobacz [Szybki Start: Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](../conditional-access/app-based-mfa.md).
+Dostęp warunkowy, zasady mogą być stosowane do aplikacji, ale także mogą być stosowane do interfejsu API sieci web uzyskuje dostęp do aplikacji. Aby dowiedzieć się więcej o sposobie konfigurowania zasad dostępu warunkowego, zobacz [Szybki Start: Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](../conditional-access/app-based-mfa.md).
 
 W zależności od scenariusza Klient firmowy zastosować i usuwania zasad dostępu warunkowego w dowolnym momencie. Dla twojej aplikacji kontynuować działanie po zastosowaniu nowych zasad, należy zaimplementować obchodzenia "żądania". Poniższe przykłady ilustrują żądania obsługi.
 
@@ -100,9 +100,9 @@ Poniższe informacje dotyczą tylko w tych scenariuszy dostępu warunkowego:
 * Uzyskiwanie dostępu do wielu usług/zasobów aplikacji
 * Aplikacje jednej strony, przy użyciu ADAL.js
 
-W poniższych sekcjach omówiono typowe scenariusze, które są bardziej złożone. Podstawowa zasada działania jest dostęp warunkowy, których zasady są oceniane w czasie których żądany jest token dla usługi, która ma zastosowane zasady dostępu warunkowego.
+W poniższych sekcjach omówiono typowe scenariusze, które są bardziej złożone. Podstawowa zasada działania jest zasady dostępu warunkowego są oceniane w czasie których żądany jest token dla usługi, która ma zastosowane zasady dostępu warunkowego.
 
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scenariusz: Wykonywanie przepływu w imieniu użytkownika z aplikacji
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scenariusz: Aplikacja wykonująca przepływ „w imieniu”
 
 W tym scenariuszu, w jaki sposób za pośrednictwem przypadek, w którym aplikacja natywna wywołania API/usługi sieci web. Z kolei ta usługa ma przepływ "w imieniu z" do wywołania usługi podrzędne. W naszym przypadku możemy zostały zastosowane nasze zasady dostępu warunkowego w usłudze podrzędnego (Web API 2) i korzysta z aplikacji natywnej, a nie aplikacji demona/na serwerze. 
 

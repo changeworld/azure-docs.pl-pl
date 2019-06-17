@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799514"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Zarządzanie kontem Video Indexer połączony z platformą Azure
@@ -56,13 +56,13 @@ Jeśli Twoje konto musi mieć pewnych zmian, zobaczysz istotne błędy i ostrze�
 
 Automatyczne skalowanie nie skaluje poniżej 1 RU lub powyżej limitu domyślnego konta usługi Media Services. Aby zwiększyć limit, Utwórz żądanie obsługi. Aby uzyskać informacje o limitach przydziałów i ograniczeń i sposobu otwierania biletu pomocy technicznej, zobacz [przydziały i ograniczenia](../../media-services/previous/media-services-quotas-and-limitations.md).
 
-![Zarejestruj się](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
+![Rejestrowanie](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
 
 Jeśli Twoje konto musi mieć pewnych zmian, zobaczysz istotne błędy i ostrzeżenia dotyczące konfiguracji konta na **ustawienia** strony. Komunikaty zawierają łącza do dokładne miejsca w witrynie Azure portal, w którym należy wprowadzić zmiany. Ta sekcja zawiera szczegółowe informacje o błędach i komunikaty ostrzegawcze.
 
-* Siatka zdarzeń
+* Event Grid
 
     Należy zarejestrować dostawcę zasobów EventGrid przy użyciu witryny Azure portal. W [witryny Azure portal](https://portal.azure.com/), przejdź do **subskrypcje** > [subskrypcja] > **ResourceProviders** > **Microsoft.EventGrid**. W przeciwnym razie w **zarejestrowanej** stan, kliknij przycisk **zarejestrować**. Może potrwać kilka minut, aby zarejestrować. 
 

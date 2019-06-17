@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919147"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Ustawianie konta rozliczeniowego dla umowy klienta firmy Microsoft
@@ -81,7 +81,7 @@ Możesz poprosić rejestracji Administratorzy przedsiębiorstwa, aby ukończyć 
 
 Użytkownik w Twojej organizacji, którzy podpisanej umowy klienta firmy Microsoft jest dodawany jako właściciela na profil rozliczeniowy. Należy poprosić użytkownika o dodanie Cię jako właściciela, dzięki czemu można ukończyć instalację.  <!-- Todo Are there any next steps -->
 
-## <a name="understand-changes-to-your-billing-hierarchy"></a>Informacje o zmianach hierarchii rozliczeń
+## <a name="understand-changes-to-your-billing-hierarchy"></a>Omówienie zmian w hierarchii rozliczeń
 
 Nowe konto rozliczeniowe upraszcza rozliczeń w organizacji przy jednoczesnym zapewnieniu rozszerzone, rozliczeń i kosztów zarządzania. Poniższy diagram wyjaśnia sposób organizowania rozliczeń w nowe konta rozliczeniowego.
 
@@ -205,7 +205,7 @@ Aby ukończyć instalację, należy dostęp do nowego konta rozliczeniowego oraz
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -221,7 +221,7 @@ Subskrypcje platformy Azure, które są przenoszone z rejestrację umowy Enterpr
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -241,7 +241,7 @@ Rezerwacje platformy Azure, które są przenoszone z rejestrację umowy Enterpri
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -257,7 +257,7 @@ Administratorzy przedsiębiorstwa są wyświetlane jako rozliczeń właścicieli
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
 
@@ -271,7 +271,7 @@ Administratorzy przedsiębiorstwa są wyświetlane jako rozliczeń właścicieli
 
 Administratorzy przedsiębiorstwa i Administratorzy działów są wyświetlane jako właścicieli sekcji faktury lub czytników sekcji faktury podczas właścicieli kont z odpowiednimi używanych w dziale są wyświetlane jako twórców subskrypcji platformy Azure. Powtórz krok dla wszystkich sekcji faktury sprawdzić dostęp do wszystkich działach w rejestrację umowy Enterprise Agreement. Właściciele kont, które nie były częścią dział otrzyma uprawnienia w sekcji faktury o nazwie **domyślnej sekcji faktury**. Jeśli Twoim zdaniem Brak dostępu do żadnych administratorów, możesz udzielić im dostępu w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Zarządzanie rolami rozliczeń w witrynie Azure portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
 

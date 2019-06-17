@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128567"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
@@ -30,7 +30,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 
 ## <a name="error-codes"></a>Kody błędów
 
-| Kod błędu | Ograniczanie ryzyka | Więcej informacji |
+| Kod błędu | Środki zaradcze | Więcej informacji |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Postępuj zgodnie z ograniczenia nazewnictwa dla kont magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Sprawdź właściwości konta dostępnego magazynu. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
@@ -63,7 +63,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | MissingRegistrationForLocation | Sprawdź stan rejestracji dostawcy zasobów oraz obsługiwane lokalizacje. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zarejestruj swoją subskrypcję dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Sprawdź stan rejestracji dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
-| Nie odnaleziono | Może być próba wdrożenia zasób zależny równolegle z zasobu nadrzędnego. Sprawdź, czy wymagane można dodać zależności. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
+| NotFound | Może być próba wdrożenia zasób zależny równolegle z zasobu nadrzędnego. Sprawdź, czy wymagane można dodać zależności. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Wdrożenie próbuje operacji, która przekracza limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe Sprawdź, czy wdrożenie w ramach limitów przydziału. W przeciwnym razie należy wziąć pod uwagę żądania zmiany limity przydziału. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Upewnij się, że zasób nadrzędny znajduje się przed utworzeniem elementu podrzędnego zasobów. | [Rozwiąż zasób nadrzędny](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | Być może wybrano hasło zbyt wiele znaków lub mogą mieć przekonwertowane wartość hasła na bezpieczny ciąg przed przekazaniem go jako parametr. Jeśli szablon zawiera **bezpieczny ciąg** parametru, nie trzeba przekonwertować wartości na bezpieczny ciąg. Podaj hasło jako tekst. |  |
@@ -86,36 +86,36 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 
 ## <a name="find-error-code"></a>Znajdź kod błędu:
 
-Istnieją dwa typy błędów, które mogą odbierać:
+Istnieją dwa typy błędów, które mogą wystąpić:
 
-* błędy sprawdzania poprawności
-* błędy związane z wdrażaniem
+* błędy weryfikacji
+* błędy wdrażania
 
-Błędy sprawdzania poprawności wynikają z scenariusze, które można określić przed przystąpieniem do wdrożenia. Są to na przykład błędy składniowe w szablonie lub próby wdrożenia zasobów, które przekraczają limity przydziału w ramach subskrypcji. Błędy związane z wdrażaniem wynikają z warunków, które występują podczas procesu wdrażania. Obejmują one próby uzyskania dostępu do zasobu, który jest wdrażany równolegle.
+Błędy weryfikacji wynikają z sytuacji, które można rozpoznać przed przystąpieniem do wdrożenia. Są to na przykład błędy składniowe w szablonie lub próby wdrożenia zasobów, które przekraczają limity przydziału w ramach subskrypcji. Błędy wdrażania wynikają z warunków, które mają miejsce podczas procesu wdrażania. Obejmują one próby uzyskania dostępu do zasobu, który jest wdrażany równolegle.
 
-Oba rodzaje błędów zwracają kod błędu, którego należy użyć do rozwiązania problemów z wdrożeniem. Oba rodzaje błędy są wyświetlane w [dziennika aktywności](resource-group-audit.md). Błędy weryfikacji nie są jednak wyświetlane w historii wdrażania, ponieważ wdrożenie nie jest w takim przypadku rozpoczynane.
+Oba rodzaje błędów zwracają kod błędu, którego należy użyć do rozwiązania problemów z wdrożeniem. Oba rodzaje błędów są wyświetlane w [dzienniku aktywności](resource-group-audit.md). Błędy weryfikacji nie są jednak wyświetlane w historii wdrażania, ponieważ wdrożenie nie jest w takim przypadku rozpoczynane.
 
-### <a name="validation-errors"></a>Błędy weryfikacji
+### <a name="validation-errors"></a>błędy sprawdzania poprawności
 
-Podczas wdrażania za pośrednictwem portalu, zobaczysz błąd sprawdzania poprawności po przesłaniu własnymi wartościami.
+Podczas wdrażania za pośrednictwem portalu zobaczysz błąd weryfikacji po przesłaniu własnych wartości.
 
 ![Pokaż błąd sprawdzania poprawności w portalu](./media/resource-manager-common-deployment-errors/validation-error.png)
 
-Zaznacz wiadomość, aby uzyskać więcej informacji. Na poniższej ilustracji widać **InvalidTemplateDeployment** błąd i komunikat informujący, zasady jest blokowany wdrożenia.
+Wybierz komunikat, aby uzyskać więcej informacji. Na poniższej ilustracji widać **InvalidTemplateDeployment** błąd i komunikat informujący, zasady jest blokowany wdrożenia.
 
 ![Pokaż szczegóły sprawdzania poprawności](./media/resource-manager-common-deployment-errors/validation-details.png)
 
 ### <a name="deployment-errors"></a>błędy związane z wdrażaniem
 
-Podczas operacji pozytywnie zweryfikowane, ale nie powiedzie się podczas wdrażania, otrzymasz błąd wdrażania.
+Jeśli operacja przeszła weryfikację, ale kończy się niepowodzeniem podczas wdrażania, otrzymasz błąd wdrażania.
 
-Aby wyświetlić kody błędów wdrażania i wiadomości za pomocą programu PowerShell, należy użyć:
+Aby wyświetlić kody błędów wdrażania i komunikaty za pomocą programu PowerShell, użyj następującego polecenia:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
 ```
 
-Aby wyświetlić kody błędów wdrażania i komunikatów za pomocą wiersza polecenia platformy Azure, należy użyć:
+Aby wyświetlić kody błędów wdrażania i komunikaty za pomocą wiersza polecenia platformy Azure, użyj następującego polecenia:
 
 ```azurecli-interactive
 az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
@@ -129,9 +129,9 @@ Zostanie wyświetlone więcej szczegółów dotyczących wdrożenia. Wybierz opc
 
 ![Wdrażanie nie powiodło się](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-Zostanie wyświetlony komunikat o błędzie i kody błędów. Należy zauważyć, że istnieją dwa kody błędów. Pierwszy kod błędu: (**niepowodzenia wdrożenia**) jest błąd ogólny, który nie zapewnia szczegółowe informacje, musisz rozwiązać błąd. Drugi kod błędu: (**StorageAccountNotFound**) zawiera szczegółowe informacje, potrzebujesz. 
+Zostanie wyświetlony komunikat o błędzie i kody błędu. Zauważ, że są tam podane dwa kody błędu. Pierwszy kod błędu (**DeploymentFailed**) identyfikuje błąd ogólny, który nie zapewnia szczegółów niezbędnych do rozwiązania problemu. Drugi kod błędu (**StorageAccountNotFound**) udostępnia szczegółowe informacje, których potrzebujesz. 
 
-![szczegóły błędu](./media/resource-manager-common-deployment-errors/error-details.png)
+![Szczegóły błędu](./media/resource-manager-common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>Włączenie rejestrowania debugowania
 

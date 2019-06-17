@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925652"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Polecenia rozszerzenia bazy danych MongoDB umożliwia zarządzanie danymi zapisanymi w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB 
@@ -163,7 +163,7 @@ W poniższej tabeli opisano parametry w ramach polecenia:
 |**Pole**|**Typ** |**Opis** |
 |---------|---------|---------|
 | Akcja niestandardowa    | string | Nazwa polecenia niestandardowego. Musi być "CreateCollection"     |
-| kolekcja      | string | Nazwa kolekcji                                   |
+| Kolekcja      | string | Nazwa kolekcji                                   |
 | offerThroughput | int    | Aprowizowana przepływność można ustawić w bazie danych. Jest to parametr opcjonalny |
 | shardKey        | string | Ścieżka klucza fragmentu do utworzenia kolekcji podzielonych na fragmenty. Jest to parametr opcjonalny |
 
@@ -208,7 +208,7 @@ W poniższej tabeli opisano parametry w ramach polecenia:
 |**Pole**|**Typ** |**Opis** |
 |---------|---------|---------|
 |  Akcja niestandardowa   |   string      |   Nazwa polecenia niestandardowego. Musi być "UpdateCollection".      |
-|  kolekcja   |   string      |   Nazwa kolekcji.       |
+|  Kolekcja   |   string      |   Nazwa kolekcji.       |
 | offerThroughput   |int|   Aprowizowana przepływność można ustawić w kolekcji.|
 
 ## <a name="output"></a>Dane wyjściowe
@@ -243,7 +243,7 @@ W poniższej tabeli opisano parametry w ramach polecenia:
 |**Pole**|**Typ** |**Opis** |
 |---------|---------|---------|
 | Akcja niestandardowa    |   string      |   Nazwa polecenia niestandardowego. Musi być "GetCollection".      |
-| kolekcja    |    string     |    Nazwa kolekcji.     |
+| Kolekcja    |    string     |    Nazwa kolekcji.     |
 
 ### <a name="output"></a>Dane wyjściowe
 

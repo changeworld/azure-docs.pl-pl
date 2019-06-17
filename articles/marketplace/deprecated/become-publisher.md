@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 5e691dde92ac05b653cdafb22db9276c7a566008
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258957"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Zostań chmury wydawcy w witrynie Marketplace
@@ -24,7 +24,7 @@ W tym artykule omówiono rejestrowanie jako wydawcy w witrynie marketplace chmur
 |:--- |:--- |:--- |:--- |  
 | 1 | Rejestrowanie w sieci Microsoft Partner Network | 15 min | [Rejestrowanie w sieci Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
 | 2 | Utwórz konto Microsoft <ul>(wymagane dla portalu Azure Marketplace transact oferty; zalecane dla innych użytkowników)</ul> | 15 min | [Utwórz identyfikator firmy Microsoft](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
-| 3 | Utwórz konto Centrum partnerskiego | 15 min | [Utwórz konto Centrum partnerskiego](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
+| 3 | Utwórz konto Centrum partnerskiego | 15 min | [Tworzenie konta w Centrum partnerskim](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
 | 4 |  Zaloguj się do portalu Cloud Partner | 1 do 3 dni | [Zaloguj się do portalu Cloud Partner](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
 | 5 | Rejestrowanie w programie Microsoft Developer Center (Centrum deweloperów) (dla witryny Azure Marketplace transact oferty) | 5 – 10 dni | [Rejestracja w Centrum deweloperów](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c131f034b4a8b5afaa2556c5c8d053b3e6793b4d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: d2dc6dcbcdee8df93f34cf4d68b5e08453554bc8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090010"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>Samouczek: Integracja logowania jednokrotnego Soloinsight CloudGate za pomocą usługi Azure Active Directory
 
@@ -186,7 +186,7 @@ Aby utworzyć użytkownika testowego, wybierz pozycję **Employees** z menu gł�
 
 Po wybraniu kafelka Usługa rejestracji Jednokrotnej Soloinsight CloudGate w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze Soloinsight CloudGate Usługa rejestracji Jednokrotnej, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

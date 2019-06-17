@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334883"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696593"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Wskazówki dotyczące rozwiązywania problemów dla wyszukiwania kognitywnego
 
@@ -84,7 +84,7 @@ Dodaj ```enriched``` pola jako część definicji indeksu na potrzeby debugowani
 
 Brak zawartości może być wynikiem dokumentów porzucane podczas indeksowania. Warstwy bezpłatna i podstawowa mają niski limity rozmiaru dokumentu. Każdy plik przekracza limit zostanie usunięte podczas indeksowania. Możesz sprawdzić, czy porzuconych dokumentów w witrynie Azure portal. Na pulpicie nawigacyjnym usługi wyszukiwania kliknij dwukrotnie Kafelek indeksatorów. Przejrzyj współczynnik pomyślnie zindeksowanych dokumentów. Jeśli nie jest 100%, możesz kliknąć współczynnik, aby uzyskać więcej informacji. 
 
-Problem jest związany z rozmiar pliku, może zostać wyświetlony błąd taki jak ten: "< Nazwa pliku > blob" ma rozmiar < plik-> bajtów, co powoduje przekroczenie maksymalnego rozmiaru wyodrębniania dokumentu w bieżącej warstwie usługi". Aby uzyskać więcej informacji na temat limitów indeksatora, zobacz [limitów usług](search-limits-quotas-capacity.md).
+Problem jest związany z rozmiar pliku, może zostać wyświetlony błąd taki jak ten: "Obiekt blob \<nazwa pliku >" ma rozmiar \<rozmiar pliku > bajtów, które przekracza maksymalny rozmiar do wyodrębnienia dokumentu w bieżącej warstwie usługi. " Aby uzyskać więcej informacji na temat limitów indeksatora, zobacz [limitów usług](search-limits-quotas-capacity.md).
 
 Drugi Przyczyna, dla zawartości, które nie są wyświetlane, może być błędy powiązane mapowania wejścia/wyjścia. Na przykład nazwa docelowego dane wyjściowe to "Ludzie", ale nazwa pola indeksu to małe "ludzie". System może zwrócić 201 komunikaty sukces dla całego potoku, dlatego uważasz, że indeksowanie zakończyło się pomyślnie, gdy w rzeczywistości pole jest puste. 
 

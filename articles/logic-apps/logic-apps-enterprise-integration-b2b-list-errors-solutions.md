@@ -10,10 +10,10 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60998830"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Błędy B2B i rozwiązania dla usługi Azure Logic Apps
@@ -52,7 +52,7 @@ Ten artykuł ułatwia rozwiązywanie problemów z błędami, które może się z
 
 |   |   |  
 |---|---|
-| Opis błędu | Zawartość żądania ma wartość null lub jest pusta. | 
+| Opis błędu | Zawartość żądania ma wartość null lub jest pusty. | 
 | Akcja użytkownika | Odebrano komunikat AS2, który nie zawiera treści wiadomości. |
 |  |  | 
 
@@ -105,7 +105,7 @@ Na przykład:
 
 ## <a name="x12-and-edifact"></a>X12 i EDIFACT
 
-### <a name="leading-or-trailing-space-found"></a>Znaleziono wiodącą lub końcową spację    
+### <a name="leading-or-trailing-space-found"></a>Wiodącą lub końcową spację, znaleziono    
     
 |   |   | 
 |---|---|
@@ -135,7 +135,7 @@ Na przykład:
 
 |   |   | 
 |---|---| 
-| Opis błędu | Typ dokumentu komunikatu jest nieznany i nie został rozpoznany jako jeden z istniejących schematów skonfigurowanych w umowie. |
+| Opis błędu | Komunikat ma nieznany typ dokumentu i nie został rozpoznany do dowolnego z istniejących schematów skonfigurowane w umowie. |
 | Akcja użytkownika | Skonfiguruj poprawnego schematu w ustawieniach umowy. |
 |   |   |
 

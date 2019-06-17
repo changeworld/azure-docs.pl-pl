@@ -9,10 +9,10 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 0f1decae5fb3ec4a07f01c5bff7475f3d73a3cbb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132854"
 ---
 1. Aby utworzyć pamięć podręczną, najpierw zaloguj się w [witrynie Azure Portal](https://portal.azure.com). Następnie wybierz pozycję **Utwórz zasób** > **Bazy danych** > **Azure Cache for Redis**.
@@ -28,7 +28,7 @@ ms.locfileid: "66132854"
     | **Grupa zasobów** |  *TestResources* | Nazwa nowej grupy zasobów, w której ma zostać utworzona pamięć podręczna. Dzięki wprowadzeniu wszystkich zasobów dla aplikacji do grupy można nimi zarządzać jednocześnie. Na przykład usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów skojarzonych z aplikacją. | 
     | **Lokalizacja** | Wschodnie stany USA | Wybierz [region](https://azure.microsoft.com/regions/) w pobliżu innych usług, które będą korzystać z pamięci podręcznej. |
     | **[Warstwa cenowa](https://azure.microsoft.com/pricing/details/cache/)** |  Podstawowa C0 (250 MB pamięci podręcznej) |  Warstwa cenowa decyduje o rozmiarze, wydajności i funkcjach dostępnych dla pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [Omówienie pamięci podręcznej Azure Cache for Redis](../articles/azure-cache-for-redis/cache-overview.md). |
-    | **Przypnij do pulpitu nawigacyjnego** |  wybrano | Przypnij nową pamięć podręczną do pulpitu nawigacyjnego, aby było łatwo ją znaleźć. |
+    | **Przypnij do pulpitu nawigacyjnego** |  Wybrane | Przypnij nową pamięć podręczną do pulpitu nawigacyjnego, aby było łatwo ją znaleźć. |
 
     ![Tworzenie pamięci podręcznej](media/redis-cache-create/redis-cache-cache-create.png) 
 

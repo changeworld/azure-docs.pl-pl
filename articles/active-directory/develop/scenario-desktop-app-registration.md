@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da934709274d90668d94dfea3a9c223e191d032
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076063"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057213"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikacja klasyczna, że wywołania sieci web interfejsy API — rejestrowanie aplikacji
 
@@ -46,16 +46,17 @@ Jeśli uwierzytelnianie interakcyjne korzysta z aplikacji pulpitu, możesz zalog
 
 Ponownie identyfikatory URI przekierowania do użycia w aplikacji klasycznej zależy przepływ, którego chcesz użyć.
 
-- Jeśli używasz uwierzytelnianie interakcyjne będziesz chciał użyć `https://login.microsoftonline.com/common/oauth2/nativeclient`. Ta konfiguracja będzie osiągnięcie, klikając odpowiedni adres URL w **uwierzytelniania** sekcji dla aplikacji
+- Jeśli używasz **przeprowadzić uwierzytelnianie interakcyjne** lub **przepływu kodu urządzenia**, będziesz chciał użyć `https://login.microsoftonline.com/common/oauth2/nativeclient`. Ta konfiguracja będzie osiągnięcie, klikając odpowiedni adres URL w **uwierzytelniania** sekcji dla aplikacji
   
   > [!IMPORTANT]
   > Już dziś platformy MSAL.NET domyślnie aplikacje pulpitu w systemie Windows korzysta inny identyfikator URI przekierowania (`urn:ietf:wg:oauth:2.0:oob`). W przyszłości będzie chcemy zmienić to ustawienie domyślne, a w związku z tym firma Microsoft zaleca użycie `https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- Jeśli aplikacja używa tylko Windows zintegrowanego uwierzytelniania, nazwę użytkownika/hasło lub urządzenie przepływu kodu, nie trzeba zarejestrować identyfikator URI przekierowania dla aplikacji. W rzeczywistości te przepływy są rund do punktu końcowego v2.0 platforma tożsamości firmy Microsoft i aplikacja nie będzie wywołanie zwrotne w dowolnym określonym identyfikatorze URI. Aby odróżnić je od przepływ aplikacji zawierających poufne dane klienta, który nie ma identyfikatory URI przekierowania albo (klient poświadczeń przepływ używany w aplikacjach demon), musisz express, że aplikacja jest aplikacją kliencką publicznych. Ta konfiguracja jest osiągane, przechodząc do **uwierzytelniania** sekcji dla aplikacji, a w **Zaawansowane ustawienia** podsekcję, wybierz polecenie **tak**, użytkownik **Traktować aplikacji w publicznych klienta** (w **domyślny typ klienta** akapitu)
+- Aplikacji tylko za pomocą uwierzytelniania zintegrowanego Windows, nazwy użytkownika/hasła, nie trzeba zarejestrować identyfikator URI przekierowania dla aplikacji. W rzeczywistości te przepływy są rund do punktu końcowego v2.0 platforma tożsamości firmy Microsoft i aplikacja nie będzie wywołanie zwrotne w dowolnym określonym identyfikatorze URI. 
+- W celu odróżnienia przepływ kodu urządzenia, zintegrowane uwierzytelnianie Windows i nazwy użytkownika/hasła z przepływ aplikacji zawierających poufne dane klienta, który nie ma identyfikatory URI przekierowania albo (klient poświadczeń przepływ używany w aplikacjach demon), musisz express czy aplikacja jest aplikacją kliencką publicznych. Ta konfiguracja jest osiągane, przechodząc do **uwierzytelniania** sekcji dla aplikacji, a w **Zaawansowane ustawienia** podsekcję, wybierz polecenie **tak**, użytkownik **Traktować aplikacji w publicznych klienta** (w **domyślny typ klienta** akapitu)
 
   ![Zezwalaj na publicznych klienta](media/scenarios/default-client-type.png)
 
-## <a name="api-permissions"></a>Uprawnienia interfejsu API
+## <a name="api-permissions"></a>Uprawnienia do interfejsu API
 
 Aplikacje klasyczne wywoływania interfejsów API w imieniu zalogowanego użytkownika. Muszą zażądać uprawnień delegowanych. Nie można ich zażądać uprawnień aplikacji (tylko obsługę w [aplikacje demona](scenario-daemon-overview.md))
 

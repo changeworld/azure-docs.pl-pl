@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
 ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472170"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie SensorTile.box do aplikacji usługi Azure IoT Central
@@ -51,7 +51,7 @@ W tej sekcji dowiesz się, jak wypychać oprogramowanie układowe aplikacji na u
 
 1. Otwórz aplikację czujnik cz ST i naciśnij klawisz **Utwórz nową aplikację** przycisku.
 
-    ![Utwórz aplikację](media/howto-connect-sensortile/create-app.png)
+    ![Tworzenie aplikacji](media/howto-connect-sensortile/create-app.png)
 
 1. Wybierz **Barometer** aplikacji.
 1. Naciśnij przycisk Prześlij.
@@ -84,7 +84,7 @@ Aplikacja utworzone na podstawie szablonu urządzenia SensorTile.box o następuj
 
 ### <a name="telemetry"></a>Telemetria
 
-| Nazwa pola     | Jednostki  | Minimum | Maksimum | Miejsca dziesiętne |
+| Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 30       | 90     | 1              |
 | Temp           | °C     | 0     | 40     | 1              |

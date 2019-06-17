@@ -9,10 +9,10 @@ ms.date: 01/31/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c0f19e3ea4f5952ac96b589fa267a2136c85e4f3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711655"
 ---
 # <a name="monitor-azure-file-sync"></a>Monitorowanie usługi Azure File Sync
@@ -49,7 +49,7 @@ Metryki:
   |-|-|-|
   | Bajty synchronizowane | Rozmiar danych transferowanych (przekazywania i pobierania) | Grupy synchronizacji, punkt końcowy serwera |
   | Wycofanie obsługi warstw w chmurze | Rozmiar danych przypomnieć | Zarejestrowane serwery |
-  | Pliki nie są synchronizowane | Liczba plików, które kończą się niepowodzeniem do synchronizacji | Punkt końcowy serwera |
+  | Nie synchronizuje pliki | Liczba plików, które kończą się niepowodzeniem do synchronizacji | Punkt końcowy serwera |
   | Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania) | Grupy synchronizacji, punkt końcowy serwera |
   | Stan online Server | Liczba pulsów otrzymany z serwera | Zarejestrowane serwery |
 
@@ -70,7 +70,7 @@ Następujące metryki dla usługi Azure File Sync są dostępne w usłudze Azure
 |-|-|
 | Bajty synchronizowane | Rozmiar danych transferowanych (przekazywania i pobierania).<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 | Wycofanie obsługi warstw w chmurze | Rozmiar danych odwołać.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa serwera |
-| Pliki nie są synchronizowane | Liczba plików, które kończą się niepowodzeniem do synchronizacji.<br><br>Jednostka: Licznik<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
+| Nie synchronizuje pliki | Liczba plików, które kończą się niepowodzeniem do synchronizacji.<br><br>Jednostka: Count<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 | Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania).<br><br>Jednostka: Licznik<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 | Stan online Server | Liczba pulsów otrzymany z serwera.<br><br>Jednostka: Licznik<br>Typ agregacji: Maksimum<br>Wymiar dotyczy: Nazwa serwera |
 | Wynik sesji synchronizacji | Synchronizuj wynik sesji (1 = pomyślna synchronizacja sesji; 0 = sesję synchronizacji nie powiodło się)<br><br>Jednostka: Licznik<br>Typy agregacji: Maksimum<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |

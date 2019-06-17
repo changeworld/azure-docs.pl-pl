@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66148181"
 ---
 Liczba dysków z danymi można dołączyć do maszyny wirtualnej platformy Azure. Oparte na cele skalowalności i wydajności dla dysków z danymi maszyny Wirtualnej, można określić liczbę i typ dysku, który trzeba spełniaj swoje wymagania pojemności i wydajności.
@@ -23,8 +23,8 @@ W poniższej tabeli przedstawiono domyślne i maksymalnych limitów wybranej lic
 > | Resource | Limit domyślny  | Limit maksymalny |
 > | --- | --- | --- |
 > | Dyski zarządzane w warstwie standardowa | 25,000 | 50,000 |
-> | Zarządzane dyski SSD w warstwie Standardowa | 25,000 | 50,000 |
-> | Dyski zarządzane w warstwie Premium | 25,000 | 50,000 |
+> | SSD w warstwie standardowa usługi managed disks | 25,000 | 50,000 |
+> | Managed disks w warstwie Premium | 25,000 | 50,000 |
 > | Standard_LRS migawek | 25,000 | 50,000 |
 > | Standard_ZRS migawek | 25,000 | 50,000 |
 > | Zarządzany obraz | 25,000 | 50,000 |
