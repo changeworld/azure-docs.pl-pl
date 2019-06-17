@@ -123,10 +123,10 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | string |
-| — typ | CustomScriptForLinux | string |
-| typeHandlerVersion | 1,5 | int |
+| type | CustomScriptForLinux | string |
+| typeHandlerVersion | 1.5 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (np.) | Python MyPythonScript.py \<Moje param1\> | string |
+| commandToExecute (np.) | python MyPythonScript.py \<Moje param1\> | string |
 | enableInternalDNSCheck | true | boolean |
 | storageAccountName (np.) | examplestorageacct | string |
 | storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
