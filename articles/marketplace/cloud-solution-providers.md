@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: d39ebf993498cea3ede11e07c5e71628287b81ac
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938551"
 ---
 # <a name="cloud-solution-providers"></a>Dostawcy rozwiązań w chmurze
@@ -27,10 +27,10 @@ W poniższej tabeli przedstawiono typy oferty i modele cen, które zgodzić się
 | **Typ oferty**    | **BYOL**  |  **Bezpłatna** | **PAYG**   |
 | :---------------- | :---------|:----------|:-----------|
 | Maszyny wirtualne  | Yes | Yes | Yes |
-| Containers | ND | Yes | ND |
+| Containers | ND | Tak | ND |
 | Szablony rozwiązań | ND | Yes | ND |
-| Aplikacje zarządzane | ND | Yes | Yes |
-| IT rozwiązanie SaaS (dla poszczególnych lokacji ceny) | ND | Yes | Yes |
+| Aplikacje zarządzane | ND | Tak | Tak |
+| IT rozwiązanie SaaS (dla poszczególnych lokacji ceny) | ND | Yes | Tak |
 |   |   |   |
 
 ## <a name="how-to-opt-in"></a>Jak włączyć

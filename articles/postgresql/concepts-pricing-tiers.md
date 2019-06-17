@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ed534f910fa1e44d3d53ab61ee86378eba788036
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 42f290109ca380464cb07ac9f684cdde25b8fdcd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063764"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -19,7 +19,7 @@ W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Data
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Generacja obliczeń | Gen 4, 5. generacji | Gen 4, 5. generacji | 5. generacja |
+| Generacja obliczeń | Gen 4, 5. generacji | Gen 4, 5. generacji | 5\. generacja |
 | rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Ilość pamięci na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
@@ -54,6 +54,26 @@ Magazyn, który możesz aprowizować to pojemność magazynu jest dostępne dla 
 Dodanie pojemności dodatkowego miejsca do magazynowania, podczas i po utworzeniu serwera i umożliwić systemu w celu zwiększenia magazynu automatycznie w zależności od użycia magazynu obciążenia. Warstwa podstawowa nie zapewnia gwarancję operacji We/Wy. Ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych operacje We/Wy skalowanie o rozmiarze aprowizowanego magazynu współczynnik 3:1.
 
 Można monitorować swoje użycie operacji We/Wy w witrynie Azure portal lub za pomocą poleceń interfejsu wiersza polecenia platformy Azure. Istotne metryki do monitorowania są [limit przestrzeni dyskowej, procent użycia magazynu, magazynu i procent We/Wy](concepts-monitoring.md).
+
+### <a name="large-storage-preview"></a>Duże storage (wersja zapoznawcza)
+
+Firma Microsoft coraz limity magazynu w warstwach naszego ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Nowo utworzonych serwerów tego wyrażenia zgody na wersję zapoznawczą można aprowizować maksymalnie 16 TB pamięci. Operacje We/Wy skalować je w stosunku 3:1 do 20 000 operacji We/Wy. Podobnie jak w przypadku bieżącego magazynu jest ogólnie dostępna, możesz dodać dodatkową pojemność po utworzeniu serwera i umożliwiają systemu w celu zwiększenia magazynu automatycznie w zależności od użycia magazynu obciążenia.
+
+|              | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
+|:-------------|:--------------------|:---------------------|
+| Typ magazynu | Azure Premium Storage | Azure Premium Storage |
+| Rozmiar magazynu | 32 GB do 16 TB| 32-16 TB |
+| Rozmiar przyrost magazynu | 1 GB | 1 GB |
+| Operacje wejścia/wyjścia | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy| 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy |
+
+> [!IMPORTANT]
+> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Japonia, część wschodnia, Korea środkowa, Australia Wschodnia.
+>
+>Obecnie nie obsługuje duże magazyny w wersji zapoznawczej:
+>
+> * Połączenia przychodzące realizowane przez punkty końcowe usługi sieci wirtualnej
+> * Geograficznie nadmiarowych kopii zapasowych
+> * Obejmujące wiele regionów replikacji
 
 ### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
 

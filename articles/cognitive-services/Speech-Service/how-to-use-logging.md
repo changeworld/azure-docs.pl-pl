@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: amishu
-ms.openlocfilehash: e8f470647c218188705cfa65cba7077e62d1b2ac
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4573ff14c5326a47cf7b15ae2660614661d45d80
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148026"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073071"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Włącz rejestrowanie w zestawie SDK rozpoznawania mowy
 
 Rejestrowanie do pliku jest opcjonalna funkcja zestawu SDK rozpoznawania mowy. Podczas tworzenia rejestrowanie udostępnia dodatkowe informacje i informacji diagnostycznych z zestawu SDK mowy podstawowe składniki. Można ją włączyć, ustawiając właściwość `Speech_LogFilename` na obiekt konfiguracji rozpoznawania mowy, lokalizację i nazwę pliku dziennika. Rejestrowanie zostanie aktywowany globalnie po utworzeniu aparat rozpoznawania od tej konfiguracji i nie można wyłączyć później. Nie można zmienić nazwę pliku dziennika podczas uruchamiania rejestrowania sesji.
 
 > [!NOTE]
-> Rejestrowanie jest dostępny w wszystkich SDK mowy obsługiwanych języków programowania, z wyjątkiem języka JavaScript.
+> Rejestrowanie jest dostępne, ponieważ mowy zestawu SDK w wersji 1.4.0 we wszystkich obsługiwanych zestaw SDK rozpoznawania mowy, języków programowania, z wyjątkiem języka JavaScript.
 
 ## <a name="sample"></a>Sample
 
@@ -57,7 +57,7 @@ Aparat rozpoznawania można utworzyć obiektu konfiguracji. Spowoduje to włącz
 
 Windows lub Linux plik dziennika może być w dowolnej ścieżce, do których użytkownik ma uprawnienia do zapisu dla. Uprawnienia do zapisu do lokalizacji systemu plików w innych systemach operacyjnych może być ograniczony lub domyślnie ograniczony.
 
-### <a name="universal-windows-platform-uwp"></a>Platforma uniwersalna systemu Windows
+### <a name="universal-windows-platform-uwp"></a>Platforma uniwersalna systemu Windows (UWP)
 
 Aplikacje platformy uniwersalnej systemu Windows muszą być umieszcza pliki dziennika w lokalizacji danych aplikacji (lokalnego, mobilnych lub tymczasowe). Plik dziennika można utworzyć w taki sposób, w folderze lokalnym aplikacji:
 

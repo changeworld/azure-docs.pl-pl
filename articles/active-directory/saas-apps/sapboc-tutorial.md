@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c64fb2dc4c494252f0078b8d23e05b15f07ebe00
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8ad2ffddf96aa6ecc886ac5653d2d0b8dcfb0856
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903747"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem SAP Business Object Cloud
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację rozwiązania SAP Business Object Cloud z usługą
 
 **Aby dodać rozwiązanie SAP Business Object Cloud z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -225,7 +225,7 @@ Aby aprowizować konto użytkownika:
 
     ![Dodawanie pracownika](./media/sapboc-tutorial/user1.png)
 
-3. Na stronie **Users** (Użytkownicy) wybierz pozycję **+**, aby dodać szczegółowe informacje dotyczące nowego użytkownika. 
+3. Na stronie **Users** (Użytkownicy) wybierz pozycję **+** , aby dodać szczegółowe informacje dotyczące nowego użytkownika. 
 
     ![Strona dodawania użytkowników](./media/sapboc-tutorial/user4.png)
 
@@ -243,7 +243,7 @@ Aby aprowizować konto użytkownika:
 
     f. Na stronie **Select Roles** (Wybieranie ról) wybierz odpowiednią rolę użytkownika, a następnie wybierz pozycję **OK**.
 
-      ![Wybieranie roli](./media/sapboc-tutorial/user3.png)
+      ![Wybór roli](./media/sapboc-tutorial/user3.png)
 
     g. Wybierz ikonę **zapisywania**.    
 
@@ -253,7 +253,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka SAP Business Object Cloud w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania SAP Business Object Cloud, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

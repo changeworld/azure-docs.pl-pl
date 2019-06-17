@@ -7,27 +7,24 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: be7479d3f042d6e64428a07e0509907b78595200
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9e3f7e3b23cba3fab87ee35aa2a15b6305d9ece4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159783"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054184"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Uruchamianie usługi Azure IoT Edge na maszyny wirtualne z systemem Windows Server
 Środowisko uruchomieniowe usługi Azure IoT Edge to, co jest przekształcany urządzenia urządzenia usługi IoT Edge. Środowisko uruchomieniowe można wdrożyć na urządzeniach jako małej, jak Raspberry Pi lub tak duże jak serwer przemysłowe. Gdy urządzenie zostanie skonfigurowany ze środowiskiem uruchomieniowym usługi IoT Edge, możesz rozpocząć wdrażanie logikę biznesową w chmurze.
 
 Aby dowiedzieć się więcej na temat sposobu działania środowiska uruchomieniowego usługi IoT Edge i jakie składniki wchodzą, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md).
 
-W tym artykule wymieniono kroki, aby uruchomić środowisko uruchomieniowe usługi Azure IoT Edge na maszynie wirtualnej systemu Windows Server 2019 przy użyciu [systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview) oferty w portalu Azure Marketplace. Postępuj zgodnie z instrukcjami w artykule [zainstalować środowisko uruchomieniowe usługi Azure IoT Edge](how-to-install-iot-edge-windows.md) na Windows do użycia z innymi wersjami.
-
-> [!NOTE]
-> Środowisko uruchomieniowe usługi IoT Edge w systemie Windows Server znajduje się w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W tym artykule wymieniono kroki, aby uruchomić środowisko uruchomieniowe usługi Azure IoT Edge na maszynie wirtualnej systemu Windows Server 2019 przy użyciu [systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) oferty w portalu Azure Marketplace. Postępuj zgodnie z instrukcjami w artykule [zainstalować środowisko uruchomieniowe usługi Azure IoT Edge](how-to-install-iot-edge-windows.md) na Windows do użycia z innymi wersjami.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Wdrażanie portalu Azure Marketplace
-1.  Przejdź do [systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview) oferty w portalu Azure Marketplace lub przeszukując "Windows Server" na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/)
+1.  Przejdź do [systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) oferty w portalu Azure Marketplace lub przeszukując "Windows Server" na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/)
 2.  Wybierz **Pobierz teraz** 
 3.  W **plan oprogramowania**, Znajdź "Kontenery systemu Windows Server 2019 Datacenter Server Core za pomocą", a następnie wybierz **Kontynuuj** w następnym oknie dialogowym.
     * Umożliwia również w instrukcjach w przypadku innych wersji systemu Windows Server za pomocą kontenerów

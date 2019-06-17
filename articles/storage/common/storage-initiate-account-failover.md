@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 94a385b7e41dd4a7664dc40418456b304ebef509
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65150015"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Zainicjuj tryb failover konta magazynu (wersja zapoznawcza)
@@ -55,7 +55,7 @@ Aby zainicjować trybu failover konta w witrynie Azure portal, wykonaj następuj
 
 3. Sprawdź, czy konta magazynu została skonfigurowana dla magazynu geograficznie nadmiarowego (GRS) lub magazyn geograficznie nadmiarowy dostęp do odczytu (RA-GRS). Jeśli tak nie jest, wybierz **konfiguracji** w obszarze **ustawienia** można zaktualizować swoje konto magazynu geograficznie nadmiarowego. 
 4. **Czas ostatniej synchronizacji** właściwość wskazuje, jak daleko pomocnicza jest za zaporą z serwera podstawowego. **Czas ostatniej synchronizacji** zapewnia oszacowanie stopnia utraty danych, które wystąpią po zakończeniu pracy w trybie failover.
-5. Wybierz **przygotować się do trybu failover (wersja zapoznawcza)**. 
+5. Wybierz **przygotować się do trybu failover (wersja zapoznawcza)** . 
 6. Przejrzyj okno dialogowe potwierdzenia. Gdy wszystko będzie gotowe, wprowadź **tak** aby potwierdzić, a następnie zainicjuj tryb failover.
 
     ![Zrzut ekranu przedstawiający potwierdzenia w oknie dialogowym dla konta trybu failover](media/storage-initiate-account-failover/portal-failover-confirm.png)

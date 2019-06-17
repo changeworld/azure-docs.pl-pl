@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8b93f26080229e980b680c157f59db4edf33e7a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545479"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Sposobu wypełniania określonych pól dla aplikacji niestandardowej
@@ -51,11 +51,11 @@ Po wypełnieniu pól powyżej, aplikacja jest zarejestrowana w witrynie Azure po
 | Pole           | Opis                                                                                                                                                                                                                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Identyfikator aplikacji  | Podczas rejestrowania aplikacji usługi Azure AD przypisze aplikacji, identyfikator aplikacji. Identyfikator może być używana do unikatowej identyfikacji aplikacji w żądaniach uwierzytelniania usługi Azure AD, a także uzyskać dostęp do zasobów aplikacji, np. interfejsu API programu Graph.                                                          |
-| Identyfikator URI identyfikatora aplikacji      | Powinno to być unikatowy identyfikator URI, zwykle w formie **https://&lt;dzierżawy\_nazwa&gt;/&lt;aplikacji\_nazwa&gt;.** Jest on używany podczas przepływu Udziel autoryzacji, jako unikatowy identyfikator, aby określić zasób, który powinien być wystawiony token na. Staje się również w tokenie dostępu wystawione oświadczenie "roszczenia". |
+| Identyfikator URI Identyfikatora aplikacji      | Powinno to być unikatowy identyfikator URI, zwykle w formie **https://&lt;dzierżawy\_nazwa&gt;/&lt;aplikacji\_nazwa&gt;.** Jest on używany podczas przepływu Udziel autoryzacji, jako unikatowy identyfikator, aby określić zasób, który powinien być wystawiony token na. Staje się również w tokenie dostępu wystawione oświadczenie "roszczenia". |
 | Przekaż nowe logo | Możesz użyć tego, aby przekazać logo aplikacji. Logo musi być w formacie BMP, jpg lub PNG, a rozmiar pliku powinien być mniejszy niż 100KB. Wymiary obrazu należy 215 x 215 pikseli i wymiary obrazu środkowego 94 x 94 piksele.                                                       |
 | Adres URL strony głównej   | Jest to adres URL logowania wskazanej podczas rejestracji aplikacji.                                                                                                                                                                                                                                              |
 | Adres URL wylogowywania      | Ten adres URL wylogowania wylogowania jednokrotnego. Usługa Azure AD wysyła żądanie wylogowania do tego adresu URL po użytkownik usunie zaznaczenie ich sesji z usługą Azure AD przy użyciu zarejestrowanej aplikacji.                                                                                                                                       |
-| Z wieloma dzierżawami  | Ten przełącznik określa, czy aplikacja może być używana przez wielu dzierżawców. Zazwyczaj oznacza to, że zewnętrznych organizacje mogą używać aplikacji przez zarejestrowanie go w ramach ich dzierżawy i udzielanie dostępu do danych organizacji.                                                                   |
+| Wielodostępnych  | Ten przełącznik określa, czy aplikacja może być używana przez wielu dzierżawców. Zazwyczaj oznacza to, że zewnętrznych organizacje mogą używać aplikacji przez zarejestrowanie go w ramach ich dzierżawy i udzielanie dostępu do danych organizacji.                                                                   |
 | Adresy URL odpowiedzi      | Odpowiedź adresy URL są punkty końcowe gdzie zwraca wszelkie tokeny żądań aplikacji w usłudze Azure AD.                                                                                                                                                                                                          |
 | Identyfikatory URI przekierowania   | Dla natywnych aplikacji jest to, gdzie użytkownik jest wysyłane po pomyślnej autoryzacji. Usługa Azure AD czy identyfikator URI przekierowania aplikacji dostarcza żądania OAuth 2.0 pasuje do jednego z zarejestrowanych wartości w portalu.                                                            |
 | Klucze            | Klucze można utworzyć w celu programowego dostępu do interfejsów API sieci web zabezpieczony przez usługę Azure AD bez żadnej interakcji użytkownika. Z \* \*klucze\* \* strony, wprowadź opis klucza i datę wygaśnięcia i Zapisz w celu wygenerowania klucza. Upewnij się go zapisać gdzieś bezpieczne, ponieważ nie można będzie później uzyskać dostęp do.             |

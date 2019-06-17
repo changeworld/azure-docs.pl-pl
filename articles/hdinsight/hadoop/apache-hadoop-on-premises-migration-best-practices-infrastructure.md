@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1bd06507bd8a20cf504c1ff4cd9fe7e3b9196a3c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057476"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania infrastruktury
 
@@ -36,7 +36,7 @@ Zobacz [domyślne rozmiary maszyn wirtualnych i konfiguracja węzła klastrów](
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>Sprawdzanie dostępności składników usługi Hadoop w HDInsight
 
-Każda wersja HDInsight jest dystrybucją chmury wersji Hortonworks Data Platform (HDP) i składa się z zestawu składników ekosystemu Hadoop. Zobacz [HDInsight Component Versioning](../hdinsight-component-versioning.md) szczegółowe informacje dotyczące wszystkich składników HDInsight i ich bieżącej wersji.
+Każda wersja HDInsight jest dystrybucją zestaw składników ekosystemu Hadoop w chmurze. Zobacz [HDInsight Component Versioning](../hdinsight-component-versioning.md) szczegółowe informacje dotyczące wszystkich składników HDInsight i ich bieżącej wersji.
 
 Aby sprawdzić składniki i wersje w HDInsight, można użyć interfejsu użytkownika programu Apache Ambari lub interfejs API REST Ambari.
 
@@ -63,7 +63,7 @@ Aplikacje lub składniki, które były dostępne w klastrach w środowisku lokal
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW zamiast na platformie Azure)
-|Tableau|IaaS 
+|TABLEAU|IaaS 
 |Wodnej|Węzeł brzegowy HDInsight
 |StreamSets|HDInsight krawędzi 
 |Palantir|IaaS 
@@ -84,9 +84,9 @@ HDInsight udostępnia wstępnie napisane skrypty do zainstalowania następujący
 - Dodaj konto usługi Azure Storage
 - Instalowanie rozwiązania Hue
 - Zainstaluj skrypt Presto
-- Zainstaluj program Solr
-- Zainstaluj program Giraph
-- Ładuj wstępnie biblioteki technologii Hive
+- Zainstalować platformę Solr
+- Zainstalować system Giraph
+- Wstępne ładowanie bibliotek technologii Hive
 - Instalowanie lub aktualizowanie środowiska Mono
 
 > [!Note]  

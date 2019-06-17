@@ -10,10 +10,10 @@ ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
 ms.openlocfilehash: 10a6e5c33f6a3c23d98e6eb3380de0d6dc6ac216
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544485"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla usługi Azure Logic Apps
@@ -32,7 +32,7 @@ Brama obsługuje [łączniki lokalne](../connectors/apis-list.md#on-premises-con
 *   IBM Informix
 *   IBM MQ
 *   MySQL
-*   Oracle Database
+*   Baza danych Oracle
 *   PostgreSQL
 *   SAP Application Server 
 *   SAP Message Server
@@ -430,7 +430,7 @@ Poniżej przedstawiono inne lokalizacje, gdzie można znaleźć różnych dzienn
 Aby bramy na ten temat można znaleźć w dziennikach zdarzeń, wykonaj następujące kroki:
 
 1. Na komputerze z instalacją bramy Otwórz **Podgląd zdarzeń**. 
-2. Rozwiń **podglądu zdarzeń (lokalne)** > **Dzienniki aplikacji i usług**. 
+2. Rozwiń **podglądu zdarzeń (lokalne)**  > **Dzienniki aplikacji i usług**. 
 3. Wybierz **Usługa bramy danych lokalnych**.
 
    ![Przeglądanie dzienników zdarzeń dla bramy](./media/logic-apps-gateway-install/event-viewer.png)

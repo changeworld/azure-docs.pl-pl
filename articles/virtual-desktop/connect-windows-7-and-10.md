@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 04/24/2019
 ms.author: helohr
 ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65145985"
 ---
-# <a name="connect-from-windows-10-or-windows-7"></a>Łączenie z systemem Windows 10 lub Windows 7
+# <a name="connect-from-windows-10-or-windows-7"></a>Łączenie z systemu Windows 10 lub Windows 7
 
-> Dotyczy Windows 7 i Windows 10.
+> Dotyczy: Windows 7 i Windows 10.
 
 Dostępny jest dostępny do pobrania klient, który zapewnia dostęp do zasobów Windows wirtualnego pulpitu (wersja zapoznawcza) z urządzeń z systemem Windows 7 i Windows 10.
 
@@ -51,7 +51,7 @@ Gdy subskrybować źródła danych, zawartość kanału informacyjnego jest aktu
 
 Po subskrypcji, możesz wyświetlić dodatkowe informacje o źródle danych, uzyskując dostęp do panelu szczegółów.
 
-1. Ze strony głównego klienta, wybierz przycisk wielokropka (**...** ) po prawej stronie nazwy źródła danych.
+1. Ze strony głównego klienta, wybierz przycisk wielokropka ( **...** ) po prawej stronie nazwy źródła danych.
 1. Z menu rozwijanego wybierz **szczegóły**.
 1. Panel szczegółów pojawia się po prawej stronie klienta.
 
@@ -68,7 +68,7 @@ Jeśli to konieczne, można uruchomić ręcznej aktualizacji, wybierając na **t
 
 W tej sekcji nauczą Cię, jak zrezygnować z kanału informacyjnego. Subskrypcję można anulować ponownej subskrypcji za pomocą innego konta lub usunąć swoje zasoby z systemu.
 
-1. Ze strony głównego klienta, wybierz przycisk wielokropka (**...** ) po prawej stronie nazwy źródła danych.
+1. Ze strony głównego klienta, wybierz przycisk wielokropka ( **...** ) po prawej stronie nazwy źródła danych.
 1. Z menu rozwijanego wybierz **Unsubscribe**.
 1. Przejrzyj i wybierz **Kontynuuj** z poziomu okna dialogowego.
 

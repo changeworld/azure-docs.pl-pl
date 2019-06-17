@@ -2,40 +2,38 @@
 title: Konfigurowanie kontenera — aparat rozpoznawania formularza
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak skonfigurować kontener rozpoznawania formularza, aby przeanalizować dane formularza i tabeli.
-author: PatrickFarley
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/31/2019
-ms.author: pafarley
-ms.openlocfilehash: 28acc2d1eafacb9e53fac3e3cce092738401f838
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: bdff74be8578bb862974479b3151b0d922f00dd9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475386"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063990"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurowanie aparatu rozpoznającego w postaci kontenerów
 
-Kontenery aparatu rozpoznawania formularza Umożliwiaj klientom tworzenie architektury aplikacji, która jest zoptymalizowana, aby móc korzystać z możliwości chmury niezawodne i lokalizacja krawędzi.
+Przy użyciu kontenerów aparatu rozpoznawania formularza platformy Azure, możesz tworzyć architekturę aplikacji, która jest zoptymalizowana, aby móc korzystać z możliwości chmury niezawodne i lokalizacja krawędzi.
 
-**Rozpoznawania formularza** środowisko uruchomieniowe kontenera jest konfigurowana przy użyciu `docker run` argumenty polecenia. Ten kontener ma wymagane ustawienia, wraz z kilku ustawień opcjonalnych. Kilka [przykłady](#example-docker-run-commands) polecenia są dostępne. Ustawienia specyficzne dla kontenera są ustawienia rozliczeń.
+Można skonfigurować za pomocą środowiska wykonawczego kontenera aparatu rozpoznawania formularza `docker run` argumenty polecenia. Ten kontener ma kilka wymagane ustawienia i kilka ustawień opcjonalnych. Aby uzyskać kilka przykładów, zobacz ["Przykład docker, Uruchom polecenia"](#example-docker-run-commands) sekcji. Ustawienia specyficzne dla kontenera są ustawienia rozliczeń.
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), I [ `Eula` ](#eula-setting) ustawienia są używane razem. Ponadto należy podać prawidłowe wartości dla wszystkich trzech ich; w przeciwnym razie Nie można uruchomić kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](form-recognizer-container-howto.md#billing).
+> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), I [ `Eula` ](#eula-setting) ustawienia są używane razem. Należy podać prawidłowe wartości dla wszystkich trzech ustawień; w przeciwnym razie nie uruchamia się kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](form-recognizer-container-howto.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji ApiKey
 
-`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _rozpoznawania formularza_ zasób określony dla [ `Billing` ](#billing-configuration-setting) ustawienia konfiguracji.
+`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure, które jest używane do śledzenia informacji rozliczeniowych dla kontenera. Wartość ApiKey musi być prawidłowy klucz dla _rozpoznawania formularza_ zasobu, który jest określony dla `Billing` w sekcji "Rozliczenia ustawienie konfiguracji".
 
-To ustawienie można znaleźć w tym miejscu następujące:
-
-* Witryna Azure Portal: **Formularz aparatu rozpoznawania** zarządzanie zasobami w obszarze **kluczy**
+Możesz znaleźć tego ustawienia w witrynie Azure portal w **zarządzania zasobami rozpoznawania formularza**w obszarze **klucze**.
 
 ## <a name="applicationinsights-setting"></a>Ustawienie dotycząca usługi Application Insights
 
@@ -43,11 +41,9 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 ## <a name="billing-configuration-setting"></a>Ustawienie konfiguracji rozliczeń
 
-`Billing` Ustawienie określa identyfikator URI punktu końcowego z _rozpoznawania formularza_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _rozpoznawania formularza_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
+`Billing` Ustawienie określa identyfikator URI punktu końcowego z _rozpoznawania formularza_ zasobów na platformie Azure, który służy do pomiaru informacji rozliczeniowych dla kontenera. Wartość tego ustawienia konfiguracji musi być prawidłowy identyfikator URI punktu końcowego dla _rozpoznawania formularza_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
 
-To ustawienie można znaleźć w tym miejscu następujące:
-
-* Witryna Azure Portal: **Formularz aparatu rozpoznawania** Przegląd, etykietą `Endpoint`
+Możesz znaleźć tego ustawienia w witrynie Azure portal w **Przegląd rozpoznawania formularza**w obszarze **punktu końcowego**.
 
 |Wymagane| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
@@ -72,11 +68,11 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 ## <a name="mount-settings"></a>Ustawienia instalacji
 
-Użyj powiązania instaluje do odczytu i zapisu danych do i z kontenera. Można określić instalacji danych wejściowych lub wyjściowych instalacji, określając `--mount` opcji [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenia.
+Użyj powiązania instaluje do odczytu i zapisu danych do i z kontenera. Możesz określić wejściowych instalacji lub instalacji w danych wyjściowych, określając `--mount` opcji [ `docker run` polecenia](https://docs.docker.com/engine/reference/commandline/run/).
 
-Kontener formularz rozpoznawania wymaga instalacji wejściowych i wyjściowych. Wejściowy instalacji może być tylko do odczytu i jest wymagany dostęp do danych, która będzie służyć do szkolenia i oceniania. Dane wyjściowe instalacji musi być zapisywalny i będzie służyć do przechowywania danych tymczasowych i modeli.
+Kontener formularz rozpoznawania wymaga instalacji wejściowe i dane wyjściowe instalacji. Wejściowy instalacji może być tylko do odczytu i jest to wymagane do uzyskiwania dostępu do danych, który służy do szkolenia i oceniania. Ma instalacji danych wyjściowych można było zapisywać i można go użyć do przechowywania modeli i danych tymczasowych.
 
-Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto [komputerze-hoście](form-recognizer-container-howto.md#the-host-computer)w lokalizacji instalacji może być niedostępna z powodu konfliktu między uprawnienia użyte dla konta usługi Docker i hosta instalacji uprawnienia do lokalizacji.
+Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto lokalizacja instalacji programu [komputerze-hoście](form-recognizer-container-howto.md#the-host-computer) nie mogą być niedostępne z powodu konfliktu między uprawnienia kontu usługi Docker i uprawnienia do lokalizacji instalacji hosta.
 
 |Optional (Opcjonalność)| Name (Nazwa) | Typ danych | Opis |
 |-------|------|-----------|-------------|
@@ -85,22 +81,24 @@ Dokładna składnia lokalizację instalacji hosta różni się zależnie od syst
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia
 
-W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, jak pisać i użyj `docker run` poleceń.  Po uruchomieniu kontenera będzie działać do momentu [zatrzymać](form-recognizer-container-howto.md#stop-the-container) go.
+W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, jak pisać i użyj `docker run` poleceń. Gdy jest uruchomiona, kontener będzie kontynuował działanie aż [zatrzymać](form-recognizer-container-howto.md#stop-the-container).
 
-* **Znak kontynuacji wiersza**: Platformy Docker w poniższych sekcjach użyto ukośnika, `\`, jako znak kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta.
-* **Kolejność argumentów**: Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy Docker.
+* **Znak kontynuacji wiersza**: Platformy Docker w poniższych sekcjach użyto ukośnika (\\) jako znak kontynuacji wiersza. Zamień lub Usuń ten znak, w zależności od wymagań systemu operacyjnego hosta.
+* **Kolejność argumentów**: Nie należy zmieniać kolejność argumentów, jeśli nie jesteś zaznajomiony z kontenerami aparatu Docker.
 
-Zastąp {_argument_name_} własnymi wartościami:
+Zastąp {_argument_name_} w tabeli poniżej własnymi wartościami:
 
 | Symbol zastępczy | Wartość |
 |-------------|-------|
-|{BILLING_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie formularza rozpoznawania klucze w witrynie Azure portal.  |
-|{BILLING_ENDPOINT_URI} | Punkt końcowy rozliczeń wartość identyfikatora URI jest dostępna na stronie Przegląd rozpoznawania formularza witryny Azure portal.|
-|{COMPUTER_VISION_API_KEY}| Klucz jest dostępny na stronie klucze interfejsu API przetwarzania komputera w witrynie Azure portal.|
-|{COMPUTER_VISION_ENDPOINT_URI}|Punkt końcowy rozliczeń. Jeśli używasz zasobów opartych na chmurze przetwarzania obrazów to wartość identyfikatora URI jest dostępny na stronie Przegląd interfejsu API przetwarzania komputera witryny Azure portal. Jeśli używasz `cognitive-services-recognize-text` kontener, użyj rozliczeń adresu URL punktu końcowego przekazany do kontenera w `docker run` polecenia.|
+|{BILLING_KEY} | Klucz, który jest używany do uruchamiania kontenera. Jest ona dostępna w witrynie Azure portal, strona klucze rozpoznawania formularza.  |
+|{BILLING_ENDPOINT_URI} | Rozliczeń wartość identyfikatora URI punktu końcowego jest dostępna w witrynie Azure portal, strona przeglądu rozpoznawania formularza.|
+|{COMPUTER_VISION_API_KEY}| Klucz jest dostępny w witrynie Azure portal, strona klucze interfejsu API przetwarzania komputera.|
+|{COMPUTER_VISION_ENDPOINT_URI}|Punkt końcowy rozliczeń. Jeśli używasz zasobów opartych na chmurze przetwarzania obrazów to wartość identyfikatora URI jest dostępna w witrynie Azure portal, strona omówienie interfejsu API przetwarzania komputera. Jeśli używasz *cognitive services — rozpoznawanie tekstu* kontenera, użyj rozliczeń adresu URL punktu końcowego, który jest przekazywany do kontenera w `docker run` polecenia.|
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing-configuration-setting).
+> Aby uruchomić kontener, określ `Eula`, `Billing`, i `ApiKey` opcje; w przeciwnym razie nie uruchamia się kontener. Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing-configuration-setting).
+
+> [!NOTE] 
 > Wartość ApiKey **klucz** ze strony klucze zasobów rozpoznawania formularza platformy Azure.
 
 ## <a name="form-recognizer-container-docker-examples"></a>Formularz rozpoznawania kontenera platformy Docker przykłady
@@ -139,4 +137,4 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Przegląd [sposobu instalowania i uruchamiania kontenerów](form-recognizer-container-howto.md)
+* Przegląd [Zainstaluj i uruchom kontenery](form-recognizer-container-howto.md).

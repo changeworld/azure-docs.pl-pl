@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29569302d20e23c95b6508a5b58c7ed96e005885
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: bd8cebbd7c60715bc90412d9f53458edfee6c56d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66499252"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108197"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planowanie wdrożenia pojedynczego logowania jednokrotnego
 
@@ -146,7 +146,7 @@ Aby uzyskać informacje o MCAS, zobacz [omówienie Microsoft Cloud App Security]
 
 Przy użyciu dostępu warunkowego możesz zautomatyzować decyzji dotyczących kontroli dostępu na podstawie kryteriów dla aplikacji w chmurze.
 
-Zasady dostępu warunkowego są wymuszane po zakończeniu uwierzytelniania pierwszego stopnia. W związku z tym dostęp warunkowy nie jest przeznaczony jako pierwszy defense wiersza w scenariuszach typu "odmowa usługi" (DoS) ataki, takie jak, ale można użyć sygnałów z tych zdarzeń w celu określenia dostępu do. Na przykład poziom ryzyka logowania może służyć lokalizacji żądania, i tak dalej. Aby uzyskać więcej informacji na temat dostępu warunkowego, zobacz [Przegląd](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) i [planu wdrożenia](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access).
+Po zakończeniu pierwszego czynnika, wymuszane są zasady dostępu warunkowego. W związku z tym dostęp warunkowy nie jest przeznaczony jako pierwszy defense wiersza w scenariuszach typu "odmowa usługi" (DoS) ataki, takie jak, ale można użyć sygnałów z tych zdarzeń w celu określenia dostępu do. Na przykład poziom ryzyka logowania może służyć lokalizacji żądania, i tak dalej. Aby uzyskać więcej informacji na temat dostępu warunkowego, zobacz [Przegląd](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) i [planu wdrożenia](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access).
 
 ## <a name="azure-sso-technical-requirements"></a>Usługa rejestracji Jednokrotnej techniczne wymagania dotyczące usługi Azure
 

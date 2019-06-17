@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc4d96b900090cd217b4b49b1af2f09762c0da84
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 78d259c0354a1519fa57633a68a1dcfa5a183890
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407025"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Cezanne HR Software
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Cezanne HR Software z usługą Azure AD
 
 **Aby dodać aplikację Cezanne HR Software z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -77,7 +77,7 @@ Aby logowanie jednokrotne działało, należy ustanowić relację połączenia m
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Cezanne HR Software, należy ukończyć poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Cezanne HR Software](#configure-cezanne-hr-software-single-sign-on)**— aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Cezanne HR Software](#configure-cezanne-hr-software-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego aplikacji Cezanne HR Software](#create-cezanne-hr-software-test-user)** — aby mieć w aplikacji Cezanne HR Software odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
@@ -156,7 +156,7 @@ Aby skonfigurować integrację usługi Azure AD z aplikacją Cezanne HR Software
 
     d. W polu tekstowym **Security Token Service Endpoint** (Punkt końcowy usługi tokenu zabezpieczającego) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    e. W polu tekstowym User ID Attribute Name (Nazwa atrybutu identyfikatora użytkownika) wprowadź `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    e. W polu tekstowym User ID Attribute Name (Nazwa atrybutu identyfikatora użytkownika) wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     f. Kliknij ikonę **Upload** (Przekaż), aby przekazać certyfikat pobrany z witryny Azure Portal.
 
@@ -271,7 +271,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Cezanne HR Software w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Cezanne HR Software, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61339100"
 ---
 # <a name="evaluate-method"></a>Oceń — metoda
@@ -32,11 +32,11 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 
 Name (Nazwa)     | Wartość | Wymagana?  | Opis
 -----------|-----------|---------|--------
-**expr**       | Ciąg tekstowy | Yes | Wyrażenie zapytania, które określa jednostki, która ma zostać zwrócony.
+**expr**       | Ciąg tekstowy | Tak | Wyrażenie zapytania, które określa jednostki, która ma zostać zwrócony.
 **model**      | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
 **Atrybuty** | Ciąg tekstowy | Nie<br>Wartość domyślna: Identyfikator | Listę rozdzielonych przecinkami, która określa wartości atrybutów, które znajdują się w odpowiedzi. Nazwy atrybutów jest rozróżniana wielkość liter.
-**count**        | Liczba | Nie<br>Domyślne: 10 | Liczba wyników do zwrócenia.
-**offset**     | Liczba |   Nie<br>Domyślne: 0    | Indeks pierwszego wyniku do zwrócenia.
+**count**        | Liczba | Nie<br>Wartość domyślna: 10 | Liczba wyników do zwrócenia.
+**offset**     | Liczba |   Nie<br>Wartość domyślna: 0    | Indeks pierwszego wyniku do zwrócenia.
 **orderby** |   Ciąg tekstowy | Nie<br>Wartość domyślna: dzięki skróceniu PRAWDPD | Nazwa atrybutu, który jest używany na potrzeby sortowania jednostki. Opcjonalnie rosnąco/malejąco może być określona. Format to: *name: asc* lub *name: desc*.
   
  <br>

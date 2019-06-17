@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: baaa7b1068e13863293e0968cb0bf1ffb198882b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d5bceff004d1cc6ddac4046a2ddcd0b5f0b5e73
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487235"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072510"
 ---
 # <a name="speech-to-text-rest-api"></a>Interfejs API REST mowy na tekst
 
@@ -164,7 +164,7 @@ Wyniki są dostarczane w formacie JSON. `simple` Formatu zawiera następujące p
 > [!NOTE]
 > Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy.
 
-`detailed` Format obejmuje te same dane co `simple` formacie wraz z `NBest`, listę alternatywnych interpretacji ten sam wynik rozpoznawania. Te wyniki są oceniane od najbardziej prawdopodobne najmniej prawdopodobnie pierwszy wpis jest taki sam jak wynik rozpoznawania głównego.  Korzystając z `detailed` formacie `DisplayText` jest dostarczana jako `Display` dla każdego wyniku `NBest` listy.
+`detailed` Format obejmuje te same dane co `simple` formacie wraz z `NBest`, listę alternatywnych interpretacji ten sam wynik rozpoznawania. Te wyniki są oceniane od najbardziej prawdopodobne do najmniej prawdopodobne. Pierwszy wpis jest taki sam jak wynik rozpoznawania głównego.  Korzystając z `detailed` formacie `DisplayText` jest dostarczana jako `Display` dla każdego wyniku `NBest` listy.
 
 Każdy obiekt w `NBest` lista zawiera:
 

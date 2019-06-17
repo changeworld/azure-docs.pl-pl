@@ -10,10 +10,10 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: c95af40c3fa3f9dad2bfb5ea4a1b9f585c636928
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60881220"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integracja kontroli źródła w usłudze Azure Automation — starsza wersja
@@ -42,10 +42,10 @@ Jeśli masz już konto w usłudze GitHub i repozytorium, którego chcesz utworzy
 
    | **Parametr** | **Opis** |
    |:--- |:--- |
-   | Wybieranie źródła |Wybierz źródło. Obecnie tylko **GitHub** jest obsługiwana. |
+   | Wybierz źródło |Wybierz źródło. Obecnie tylko **GitHub** jest obsługiwana. |
    | Autoryzacja |Kliknij przycisk **Autoryzuj** przycisk, aby udzielić dostępu usługi Azure Automation do repozytorium GitHub. Jeśli użytkownik jest już zalogowany do konta usługi GitHub w innym oknie, są używane poświadczenia tego konta. Po pomyślnym autoryzacji strony wyświetli swoją nazwę użytkownika usługi GitHub, w obszarze **właściwości autoryzacji**. |
    | Wybierz repozytorium |Wybierz repozytorium GitHub z listy dostępnych repozytoriów. |
-   | Wybierz rozgałęzienie |Wybierz gałąź z listy dostępnych gałęzi. Tylko **wzorca** gałąź jest wyświetlana, jeśli nie utworzono żadnych gałęzi. |
+   | Wybierz gałąź |Wybierz gałąź z listy dostępnych gałęzi. Tylko **wzorca** gałąź jest wyświetlana, jeśli nie utworzono żadnych gałęzi. |
    | Ścieżka folderu elementów Runbook |Ścieżka folderu elementów runbook ścieżka w repozytorium GitHub, z którego chcesz wypchnąć ani ściągnąć kod. Należy wprowadzić w formacie **/nazwa folderu/nazwa podfolderu**. Tylko elementy runbook w ścieżce folderu elementów runbook będą synchronizowane z kontem usługi Automation. Elementy Runbook w podfolderach ścieżka folderu elementów runbook będą **nie** zostanie on zsynchronizowany. Użyj **/** na zsynchronizowanie wszystkich elementów runbook w ramach repozytorium. |
 3. Na przykład, jeśli masz repozytorium o nazwie **PowerShellScripts** zawiera folder o nazwie **RootFolder**, który zawiera folder o nazwie **podfolder**. Można zsynchronizować każdy poziom folderu, można użyć następujących ciągów:
 

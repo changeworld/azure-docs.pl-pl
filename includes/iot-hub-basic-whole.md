@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 65c5f4c79bfb68804e7a876dc14fb6feda04655e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: bad21019607c99964caa1712e50231705689aad2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146366"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055312"
 ---
 >[!NOTE]
->Funkcje opisane w tym artykule są dostępne tylko w warstwie standardowa usługi IoT hub. Aby uzyskać więcej informacji na temat warstw Podstawowa i Standardowa usługi IoT Hub, zobacz [Jak wybrać właściwą warstwę usługi IoT Hub](../articles/iot-hub/iot-hub-scaling.md).
+>Funkcje opisane w tym artykule są dostępne tylko w warstwie standardowa usługi IoT Hub. Aby uzyskać więcej informacji na temat warstw podstawowa i standardowa usługi IoT Hub, zobacz [wybrać właściwą warstwę usługi IoT Hub](../articles/iot-hub/iot-hub-scaling.md).

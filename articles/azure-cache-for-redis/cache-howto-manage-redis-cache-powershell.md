@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: f7f4f9ae6a80052e06b2cafa68cb5c11dfa1333a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097933"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Zarządzanie pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu programu Azure PowerShell
@@ -84,7 +84,7 @@ lub
 
 Aby utworzyć pamięć podręczną w chmurze Azure dla instytucji rządowych, użyj jednej z następujących lokalizacji.
 
-* USGov Virginia
+* USGov Wirginia
 * USGov Iowa
 
 Aby uzyskać więcej informacji na temat chmury dla instytucji rządowych platformy Azure, zobacz [platformy Microsoft Azure Government](https://azure.microsoft.com/features/gov/) i [Microsoft Azure dla instytucji rządowych — przewodnik dewelopera](../azure-government-developer-guide.md).
@@ -130,7 +130,7 @@ Poniższa tabela zawiera właściwości i opisy parametrów często używane pod
 | Name (Nazwa) |Nazwa pamięci podręcznej | |
 | Lokalizacja |Lokalizacja pamięci podręcznej | |
 | ResourceGroupName |Nazwa grupy zasobów, w której chcesz utworzyć pamięci podręcznej | |
-| Rozmiar |Rozmiar pamięci podręcznej. Prawidłowe wartości to: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
+| Rozmiar |Rozmiar pamięci podręcznej. Prawidłowe wartości to: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1GB |
 | ShardCount |Liczba fragmentów, aby utworzyć podczas tworzenia cache w warstwie premium przy włączonym klastrowaniu. Prawidłowe wartości to: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Określa jednostki SKU w pamięci podręcznej. Prawidłowe wartości to: Podstawowa, Standardowa i Premium |Standardowa (Standard) |
 | RedisConfiguration |Określa ustawienia konfiguracji pamięci podręcznej Redis. Aby uzyskać szczegółowe informacje na temat poszczególnych ustawień, zobacz następującą [właściwości RedisConfiguration](#redisconfiguration-properties) tabeli. | |

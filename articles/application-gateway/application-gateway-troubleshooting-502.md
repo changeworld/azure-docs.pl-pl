@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: amsriva
 ms.openlocfilehash: 2a1c7e480e896da6852949c9d765d17290e4e9ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64697160"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Rozwiązywanie problemów z błędami nieprawidłowej bramy w usłudze Application Gateway
@@ -109,7 +109,7 @@ Dodano następujące dodatkowe właściwości:
 | Właściwość sondy | Opis |
 | --- | --- |
 | Name (Nazwa) |Nazwa sondy. Ta nazwa jest używana do odwoływania się do sondowania w ustawieniach protokołu HTTP zaplecza. |
-| Protokół |Protokół używany do wysyłania sondy. Sonda korzysta z protokołu, zdefiniowane w ustawieniach HTTP zaplecza |
+| Protocol |Protokół używany do wysyłania sondy. Sonda korzysta z protokołu, zdefiniowane w ustawieniach HTTP zaplecza |
 | Host |Nazwa hosta, aby wysłać sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowana w usłudze application gateway. To różni się od nazwy hosta maszyny Wirtualnej. |
 | Ścieżka |Ścieżka względna sondy. Nieprawidłowa ścieżka zaczyna się od "/". Sonda jest wysyłana do \<protokołu\>://\<hosta\>:\<portu\>\<ścieżki\> |
 | Interval |Interwał sondy w sekundach. Jest to odstęp czasu między dwóch następujących po sobie sondy. |

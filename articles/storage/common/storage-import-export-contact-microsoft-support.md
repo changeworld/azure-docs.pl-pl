@@ -9,10 +9,10 @@ ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
 ms.openlocfilehash: 42c8c9c89a69224b222aabe8e929d800d22162ce
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604224"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Otwórz bilet pomocy technicznej do zadania importu/eksportu
@@ -22,13 +22,13 @@ Jeśli napotkasz jakiekolwiek problemy przy użyciu usługi Import/Export można
 * Jak utworzyć żądanie pomocy technicznej.
 * Jak zarządzać żądanie zasady świadczenia pomocy technicznej z poziomu portalu.
 
-## <a name="create-a-support-request"></a>Utwórz żądanie obsługi
+## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
 
 Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 
 1. Przejdź do zadania importu/eksportu. Przejdź do **pomoc techniczna i rozwiązywanie problemów** sekcji, a następnie kliknij przycisk **nowe żądanie obsługi**.
      
-    ![Ustawienia podstawowe](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![Podstawy](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
 2. W **nowe żądanie obsługi**, wybierz opcję **podstawy**. W **podstawy**, wykonaj następujące czynności:
     

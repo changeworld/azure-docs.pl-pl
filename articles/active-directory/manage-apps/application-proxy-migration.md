@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a3468d720cb04e73cb284abb20c7bcf6a392dd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859523"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108405"
 ---
 # <a name="compare-remote-access-solutions"></a>Porównanie rozwiązań dostępu zdalnego
 
@@ -36,14 +36,14 @@ Aby dowiedzieć się, jak Threat Management Gateway (TMG), Unified dostępu do b
 | ------- | --- | --- | --- | --- |
 | Uwierzytelnianie certyfikatów | Tak | Tak | - | - |
 | Selektywne publikowanie aplikacji przeglądarki | Tak | Yes | Yes | Tak |
-| Wstępnego uwierzytelniania i pojedynczego logowania jednokrotnego | Tak | Yes | Yes | Tak | 
-| Warstwy 2/3 zapory | Tak | Tak | - | - |
+| Wstępnego uwierzytelniania i pojedynczego logowania jednokrotnego | Tak | Yes | Yes | Yes | 
+| Warstwy 2/3 zapory | Yes | Tak | - | - |
 | Funkcje serwera proxy do przodu | Tak | - | - | - |
 | Funkcje sieci VPN | Tak | Tak | - | - |
 | Obsługa protokołu zaawansowane | - | Tak | Tak, jeśli uruchomiony za pośrednictwem protokołu HTTP | Tak, jeśli uruchomiony za pośrednictwem protokołu HTTP lub za pośrednictwem bramy usług pulpitu zdalnego |
-| Służy jako serwer proxy usług AD FS | - | Tak | Tak | - |
+| Służy jako serwer proxy usług AD FS | - | Yes | Tak | - |
 | Jednego portalu, aby uzyskać dostęp do aplikacji | - | Tak | - | Tak |
-| Tłumaczenie łącze treści odpowiedzi | Tak | Yes | - | Tak | 
+| Tłumaczenie łącze treści odpowiedzi | Yes | Yes | - | Tak | 
 | Uwierzytelnianie przy użyciu nagłówków | - | Tak | - | Tak, z usługą PingAccess | 
 | Zabezpieczenia w skali chmury | - | - | - | Tak | 
 | Dostęp warunkowy | - | Tak | - | Tak |

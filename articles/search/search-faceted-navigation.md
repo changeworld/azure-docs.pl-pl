@@ -10,10 +10,10 @@ ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65793621"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 Parametr zapytania reguł jest ustawiona na pole, a w zależności od typu danych, może być dodatkowo sparametryzowany przez rozdzielana przecinkami lista, która obejmuje `count:<integer>`, `sort:<>`, `interval:<integer>`, i `values:<list>`. Lista wartości jest obsługiwana dla danych liczbowych, podczas konfigurowania zakresów. Zobacz [wyszukiwania dokumentów (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) szczegóły użycia.
 
-Wraz z aspektami żądanie formułować przez aplikację powinno również tworzyć filtry, aby zawęzić zestaw dokumentów kandydat na podstawie wybranych wartości aspektu. W sklepie rowerów, nawigacji aspektowej udostępnia wskazówki na pytania, takie jak *jakie kolory, producentów i typy rowery są dostępne?*. Filtrowanie odpowiedzi na pytania, takie jak *które dokładnie rowery są oznaczone kolorem czerwonym, rowery górskie, w tym cena zakres?*. Po kliknięciu przycisku "Red", aby wskazać, czy mają być wyświetlane tylko produktów Red następne zapytanie, aplikacja wysyła obejmuje `$filter=Color eq ‘Red’`.
+Wraz z aspektami żądanie formułować przez aplikację powinno również tworzyć filtry, aby zawęzić zestaw dokumentów kandydat na podstawie wybranych wartości aspektu. W sklepie rowerów, nawigacji aspektowej udostępnia wskazówki na pytania, takie jak *jakie kolory, producentów i typy rowery są dostępne?* . Filtrowanie odpowiedzi na pytania, takie jak *które dokładnie rowery są oznaczone kolorem czerwonym, rowery górskie, w tym cena zakres?* . Po kliknięciu przycisku "Red", aby wskazać, czy mają być wyświetlane tylko produktów Red następne zapytanie, aplikacja wysyła obejmuje `$filter=Color eq ‘Red’`.
 
 Poniższy fragment kodu z `JobsSearch.cs` strony dodaje wybrany tytuł biznesowych do filtru, po wybraniu wartości z zestawu reguł biznesowych tytuł.
 

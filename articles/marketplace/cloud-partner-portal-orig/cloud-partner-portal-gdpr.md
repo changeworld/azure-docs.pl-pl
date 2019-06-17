@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 221f559dde2017c9b5d13dd4e06a140a6bcb5e2e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935422"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud-zgodność z RODO Portal partnerów
@@ -31,7 +31,7 @@ Cloud Partner Portal zapewnia dostęp do wszystkich danych na karcie Użytkownic
 
 Dane osobowe użytkownika przez naciśnięcie klawisza delete można zarządzać na koncie użytkownika na karcie Użytkownicy. Mamy role **właściciela** i **Współautor** , można przypisać do każdego określonego użytkownika, a jednocześnie może być przypisany skopiowany/zaktualizowane lub usunięte.
 
-<a name="consent"></a>Wyraź zgodę
+<a name="consent"></a>Wyrażenie zgody
 -------
 
 Do zarządzania zgody w portalu Cloud Partner, są zawsze początkowo wyświetlane wydawca ręki, do której należy zaakceptować do wydawcy z firmą Microsoft w celu. Jeśli nie zgadzasz się na kontrakt umowy wydawcy, następnie będziemy ograniczać przydziału obowiązków z wydawcą, aby nie będą mogli sprzedaży z firmą Microsoft.

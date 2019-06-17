@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1abae0a454e17e8f633f68bc5853bfb4a4b24d14
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 0534613a9df3177290e9b4b57e9830fe62f9741a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112130"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Usługa Azure Active Directory z warunkami użytkowania
 
@@ -122,16 +122,16 @@ Po zakończeniu pracy nad zawartością Twojej dokument z warunkami użytkowania
    | **Dostęp do aplikacji w chmurze dla wszystkich gości** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich gości i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, może być wymagane wylogowanie się i zaloguj się. |
    | **Dostęp do aplikacji dla wszystkich użytkowników w chmurze** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich użytkowników i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, konieczna będzie wylogowanie się i zaloguj się. |
    | **Zasady niestandardowe** | Wybierz użytkowników, grup i aplikacji, które będą dotyczyć te warunki użytkowania. |
-   | **Tworzenie zasad dostępu warunkowego później** | Te warunki użytkowania zostaną wyświetlone na liście przyznawania kontroli podczas tworzenia zasad dostępu warunkowego. |
+   | **Tworzenie zasad dostępu warunkowego później** | Te warunki użytkowania pojawi się na liście Udziel kontroli podczas tworzenia zasad dostępu warunkowego. |
 
    >[!IMPORTANT]
-   >Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi. Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
+   >Kontrolki zasad dostępu warunkowego (w tym z warunkami użytkowania) nie obsługują wymuszania dla kont usług. Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
 
     Niestandardowe zasady dostępu warunkowego Włącz zwiększyć szczegółowość warunków użytkowania w dół do aplikacji w chmurze lub grupy użytkowników. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze wymagają](require-tou.md).
 
 1. Kliknij pozycję **Utwórz**.
 
-   Jeśli wybrano szablon niestandardowy dostęp warunkowy, nowy ekran pojawi się, która umożliwia tworzenie niestandardowych zasad dostępu warunkowego.
+   Jeśli wybrano niestandardowego szablonu dostępu warunkowego, nowy ekran pojawi się umożliwiającą tworzenie niestandardowych zasad dostępu warunkowego.
 
    ![Niestandardowe zasady](./media/terms-of-use/custom-policy.png)
 
@@ -256,7 +256,7 @@ Poniżej przedstawiono listę obsługiwanych platform i oprogramowania.
 > |  | iOS | Android | Windows 10 | Inne |
 > | --- | --- | --- | --- | --- |
 > | **Aplikacja natywna** | Yes | Yes | Tak |  |
-> | **Microsoft Edge** | Yes | Yes | Yes |  |
+> | **Microsoft Edge** | Tak | Yes | Yes |  |
 > | **Program Internet Explorer** | Yes | Yes | Yes |  |
 > | **Chrome (z rozszerzeniem)** | Yes | Yes | Tak |  |
 
@@ -307,7 +307,7 @@ Zasady dostępu warunkowego zaczynają obowiązywać natychmiast. W takim przypa
 > [!IMPORTANT]
 > W następujących przypadkach uprawnieni użytkownicy muszą się wylogować i zalogować ponownie, aby spełnić wymagania nowych zasad:
 >
-> - Dla warunków użytkowania włączono zasady dostępu warunkowego
+> - zasady dostępu warunkowego są włączone na warunki użytkowania
 > - Utworzono drugą wersję warunków użytkowania
 
 ## <a name="b2b-guests-preview"></a>Goście B2B (wersja zapoznawcza)
@@ -384,4 +384,4 @@ Odp.: Warunki użytkowania korzysta z następujących punktów końcowych do uwi
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Szybki start: Wymagane warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze](require-tou.md)
-- [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md)
+- [Najlepsze rozwiązania w zakresie dostępu warunkowego w usłudze Azure Active Directory](best-practices.md)

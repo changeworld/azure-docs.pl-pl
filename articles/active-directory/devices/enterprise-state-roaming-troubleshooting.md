@@ -19,12 +19,12 @@ ms.author: joflore
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 0b74be0dda8e5c79987479393ad0d8ef5c3bdd16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353180"
+ms.locfileid: "67110664"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Rozwiązywanie problemów z ustawieniami Roaming stanu dla przedsiębiorstw w usłudze Azure Active Directory
 
@@ -85,7 +85,7 @@ W pewnych okolicznościach Roaming stanu dla przedsiębiorstw może zakończyć 
 
 **Potencjalny problem**: Jeśli urządzenie jest skonfigurowany do wymagania uwierzytelniania wieloskładnikowego w portalu usługi Azure Active Directory, może zakończyć się niepowodzeniem, synchronizowanie ustawień podczas logowania się do urządzenia z systemem Windows 10 przy użyciu hasła. Ten typ konfiguracji usługi Multi-Factor Authentication ma na celu ochronę konta administratora platformy Azure. Administratorzy nadal można zsynchronizować, logując się do urządzeń z systemem Windows 10 za pomocą ich Microsoft Passport pracy numeru PIN lub wykonując uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
 
-**Potencjalny problem**: Synchronizacja może zakończyć się niepowodzeniem, jeśli administrator konfiguruje zasady dostępu warunkowego uwierzytelniania Multi-Factor Authentication usług federacyjnych Active Directory i wygaśnięcia ważności tokenu dostępu na urządzeniu. Upewnij się, zaloguj się, a następnie się wylogować, przy użyciu Microsoft Passport pracy numeru PIN lub wykonać uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
+**Potencjalny problem**: Synchronizacja może zakończyć się niepowodzeniem, jeśli administrator konfiguruje zasady dostępu warunkowego Active Directory Federacji usługi Multi-Factor Authentication uwierzytelniania i wygaśnięcia ważności tokenu dostępu na urządzeniu. Upewnij się, zaloguj się, a następnie się wylogować, przy użyciu Microsoft Passport pracy numeru PIN lub wykonać uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
 
 ### <a name="event-viewer"></a>Podgląd zdarzeń
 

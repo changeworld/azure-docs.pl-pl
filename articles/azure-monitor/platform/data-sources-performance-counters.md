@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205752"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor
@@ -44,7 +44,7 @@ Liczniki wydajności Windows możesz wybrać konkretne wystąpienie dla każdego
 
 Wykonaj poniższą procedurę, aby dodać nowy licznik wydajności Windows do zbierania.
 
-1. Wpisz nazwę licznika w polu tekstowym w formacie *\counter obiektu (wystąpienia)*.  Gdy zaczniesz pisać, zostanie wyświetlona pasującego listę typowych liczników.  Można albo wybierz licznik z listy lub wpisz własny.  Możesz też zwrócić wszystkie wystąpienia określonego licznika, określając *object\counter*.  
+1. Wpisz nazwę licznika w polu tekstowym w formacie *\counter obiektu (wystąpienia)* .  Gdy zaczniesz pisać, zostanie wyświetlona pasującego listę typowych liczników.  Można albo wybierz licznik z listy lub wpisz własny.  Możesz też zwrócić wszystkie wystąpienia określonego licznika, określając *object\counter*.  
 
     Podczas zbierania liczników wydajności programu SQL Server z nazwanego wystąpienia, wszystkie nazwane wystąpienia liczników rozpoczyna się od *MSSQL$* i następuje nazwa wystąpienia.  Na przykład, aby zbieranie danych licznika Współczynnik trafień w pamięci podręcznej dziennika dla wszystkich baz danych z obiektu wydajności bazy danych SQL o nazwie wystąpienia INST2, należy określić `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
 
@@ -59,7 +59,7 @@ Wykonaj poniższą procedurę, aby dodać nowy licznik wydajności Windows do zb
 Wykonaj poniższą procedurę, aby dodać nowy licznik wydajności systemu Linux w celu zbierania.
 
 1. Domyślnie wszystkie zmiany konfiguracji są automatycznie przekazywane do wszystkich agentów.  Agenci dla systemu Linux, aby uzyskać plik konfiguracji są wysyłane do Fluentd modułów zbierających dane.  Jeśli chcesz zmodyfikować ten plik ręcznie na każdym agencie systemu Linux, usuń zaznaczenie pola *Zastosuj poniższą konfigurację do moich maszyn z systemem Linux* i wykonaj poniższe wskazówki.
-2. Wpisz nazwę licznika w polu tekstowym w formacie *\counter obiektu (wystąpienia)*.  Gdy zaczniesz pisać, zostanie wyświetlona pasującego listę typowych liczników.  Można albo wybierz licznik z listy lub wpisz własny.  
+2. Wpisz nazwę licznika w polu tekstowym w formacie *\counter obiektu (wystąpienia)* .  Gdy zaczniesz pisać, zostanie wyświetlona pasującego listę typowych liczników.  Można albo wybierz licznik z listy lub wpisz własny.  
 3. Kliknij przycisk **+** lub naciśnij **Enter** można dodać licznika listę innych liczników dla tego obiektu.
 4. Wszystkie liczniki dla obiektu używać tego samego **interwał próbkowania**.  Wartość domyślna to 10 sekund.  Możesz zmienić na wyższa wartość do 1800 sekund (30 minut) Jeśli chcesz zmniejszyć wymagania dotyczące magazynu danych wydajności zebranych.
 5. Po zakończeniu dodawania liczników, kliknij przycisk **Zapisz** znajdujący się u góry ekranu, aby zapisać konfigurację.
@@ -126,10 +126,10 @@ Poniższa tabela zawiera listę obiektów i liczników, które można określić
 | Dysk fizyczny | Średni Dysku w s/Transfer |
 | Dysk fizyczny | Średni Dysku w s/Zapis |
 | Dysk fizyczny | Bajty dysku fizycznego/s |
-| Przetwórz | Czas uprzywilejowany PCT |
-| Przetwórz | Czas użytkownika protokołu PCT |
-| Przetwórz | Używana pamięć (KB pamięci) |
-| Przetwórz | Wirtualnej pamięci wspólnej |
+| Process | Czas uprzywilejowany PCT |
+| Process | Czas użytkownika protokołu PCT |
+| Process | Używana pamięć (KB pamięci) |
+| Process | Wirtualnej pamięci wspólnej |
 | Procesor | Czas DPC (%) |
 | Procesor | Czas bezczynności (%) |
 | Procesor | Czas przerwań (%) |
@@ -214,7 +214,7 @@ Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobiera
 | Perf &#124; gdzie ObjectName == "Procesor" i CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; Podsumuj AVGCPU = avg(CounterValue) według komputera |Średnie wykorzystanie procesora CPU na wszystkich komputerach |
 | Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" &#124; summarize AggregatedValue = max(CounterValue) według komputera |Maksymalne wykorzystanie procesora CPU na wszystkich komputerach |
 | Perf &#124; gdzie ObjectName == "DyskLogiczny" i CounterName == "Bieżąca długość kolejki dysku" i komputer == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) przez InstanceName |Średnia długość kolejki na bieżącym dysku we wszystkich wystąpieniach danego komputera |
-| Perf &#124; w przypadku, gdy CounterName == "Transfery dyskowe/s" &#124; summarize AggregatedValue = percentyl (CounterValue 95) według komputera |95. percentyl z transfery dyskowe/s na wszystkich komputerach |
+| Perf &#124; w przypadku, gdy CounterName == "Transfery dyskowe/s" &#124; summarize AggregatedValue = percentyl (CounterValue 95) według komputera |95\. percentyl z transfery dyskowe/s na wszystkich komputerach |
 | Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Średnia co godzinę użycia procesora CPU na wszystkich komputerach |
 | Perf &#124; gdzie komputer == "Mój komputer" i CounterName startswith_cs "%" i InstanceName == "_łącznie" &#124; summarize AggregatedValue = bin (TimeGenerated, 1 godz.), CounterName percentyl (CounterValue 70) | Co godzinę 70 percentyl licznika procent co % dla określonego komputera |
 | Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" i komputer == "Mój komputer" &#124; podsumowanie ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = (CounterValue, 75.), percentyl ["max(CounterValue)"] = max(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Co godzinę średnią, minimalną, maksymalną i percentyl 75 użycie procesora CPU dla określonego komputera |

@@ -9,11 +9,11 @@ ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
 ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60541147"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67122214"
 ---
 * Jeśli używasz usługi Azure SQL Database, wykonaj kroki opisane w temacie [nawiązywanie połączenia z bazą danych SQL Azure](#connect-azure-sql-db). 
 
@@ -104,7 +104,7 @@ Aby można było wybrać bramę, upewnij się, że już [Konfigurowanie Twoja br
    | Nazwa bazy danych SQL | <*my-sql-database*>  | Nazwa bazy danych SQL |
    | Nazwa użytkownika | <*my-sql-username*> | Nazwa użytkownika do uzyskiwania dostępu do bazy danych |
    | Hasło | <*moje hasło sql*> | Hasło do uzyskiwania dostępu do bazy danych | 
-   | Typ uwierzytelnienia | Windows lub Basic | Opcjonalnie: Typ uwierzytelniania używany przez program SQL server | 
+   | Typ uwierzytelniania | Windows lub Basic | Opcjonalnie: Typ uwierzytelniania używany przez program SQL server | 
    | Bramy | <*my-data-gateway*> | Nazwa dla lokalnej bramy danych | 
    |||| 
 

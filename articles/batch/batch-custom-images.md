@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
 ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706332"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Używanie niestandardowego obrazu, aby utworzyć pulę maszyn wirtualnych 
@@ -27,7 +27,7 @@ Przy użyciu niestandardowego obrazu zaoszczędzić czas, w ramach przygotowywan
 
 Przy użyciu niestandardowego obrazu skonfigurowany dla danego scenariusza można podać kilka dodatkowych korzyści:
 
-- **Konfigurowanie systemu operacyjnego (OS)**. Można dostosować konfigurację dysku systemu operacyjnego obrazu. 
+- **Konfigurowanie systemu operacyjnego (OS)** . Można dostosować konfigurację dysku systemu operacyjnego obrazu. 
 - **Przed rozpoczęciem instalacji aplikacji.** Przed instalacją aplikacje na dysku systemu operacyjnego, który jest bardziej wydajne i mniej podatne na błędy niż instalowania aplikacji po zainicjowaniu obsługi administracyjnej węzłów obliczeniowych za pomocą zadania uruchamiania.
 - **Zapisz czas ponownego uruchomienia na maszynach wirtualnych.** Instalacja aplikacji zwykle wymaga ponownego uruchomienia maszyny Wirtualnej, czasochłonne. Aby zaoszczędzić czas ponownego uruchomienia, należy wstępnie instalowania aplikacji. 
 - **Skopiuj jeden raz bardzo dużych ilości danych.** Należy dane statyczne część zarządzany obraz niestandardowy, kopiując go do dysków z danymi obrazu zarządzanego. To musi odbywać się jeden raz i tylko udostępnia dane w każdym węźle puli.
@@ -41,7 +41,7 @@ Przy użyciu niestandardowego obrazu skonfigurowany dla danego scenariusza możn
   - Aby utworzyć pulę przy użyciu obrazu przy użyciu interfejsów API usługi Batch, należy określić **identyfikator zasobu** obrazu, który ma postać `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. Aby korzystać z portalu, użyj **nazwa** obrazu.  
   - Zasób obrazu zarządzanego powinna istnieć okres istnienia puli, aby umożliwić skalowanie w górę i może zostać usunięta po usunięciu puli.
 
-- **Uwierzytelnianie usługi Azure Active Directory (AAD)**. Interfejs API klienta usługi Batch, należy użyć uwierzytelniania usługi AAD. Obsługa usługi Azure Batch dla usługi AAD jest udokumentowany w [uwierzytelnianie rozwiązań usługi Batch service z usługą Active Directory](batch-aad-auth.md).
+- **Uwierzytelnianie usługi Azure Active Directory (AAD)** . Interfejs API klienta usługi Batch, należy użyć uwierzytelniania usługi AAD. Obsługa usługi Azure Batch dla usługi AAD jest udokumentowany w [uwierzytelnianie rozwiązań usługi Batch service z usługą Active Directory](batch-aad-auth.md).
 
 ## <a name="prepare-a-custom-image"></a>Przygotowanie obrazu niestandardowego
 

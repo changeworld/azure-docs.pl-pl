@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: 614f9a44f7c699be38906ac00e12f523490ce112
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2703c97dc78983ef294b3aa50f7ace879c96f66d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900495"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061233"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Zapoznaj się z języka Java, dzienniki śledzenia w usłudze Application Insights
 Jeśli używasz, Logback lub Log4J (wersja 1.2 lub 2.0) do śledzenia, może mieć dzienników śledzenia automatycznie przesyłane do usługi Application Insights, gdzie możesz eksplorować i wyszukiwania na nich.
@@ -100,7 +100,7 @@ Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
 #### <a name="otherwise-"></a>W innym przypadku...
 Postępuj zgodnie z zasadami, aby ręcznie zainstalować zestaw SDK Java usługi Application Insights, Pobierz plik jar (po Maven Central kliknij Link "jar" w sekcji pobierania) dla odpowiednich appendera i dodawanie appendera pobrany plik jar do projektu.
 
-| Rejestrator | Do pobrania | Biblioteka |
+| Logger | Do pobrania | Biblioteka |
 | --- | --- | --- |
 | Logback |[Appendera Logback Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v2.0 |[Log4J v2 appendera Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |

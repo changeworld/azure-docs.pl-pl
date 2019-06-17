@@ -3,17 +3,17 @@ title: Użyj urządzenia ustawia w aplikacji usługi Azure IoT Central | Dokumen
 description: Uprawnienia operatora sposób używania urządzenia ustawia się w aplikacji usługi Azure IoT Central.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 02/05/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60517321"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052938"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Za pomocą zestawów urządzeń w aplikacji usługi Azure IoT Central
 
@@ -50,7 +50,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
 
 1. Wybierz zestaw Twojego urządzenia.
 
-1. Wybierz kartę **Pulpit nawigacyjny**.
+1. Wybierz kartę **Pulpit nawigacyjny** .
 
 1. Wybierz pozycję **Edit** (Edytuj).
 
@@ -73,7 +73,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
     1. Wybierz **siatki** w okienku po prawej stronie.
     1. Nadaj swojej siatce **tytuł**.
     1. Wybierz kolumny do wyświetlenia, wybierając **Dodaj/Usuń**. W panelu, które się pojawi wybierz kolumny, które mają być pokazywane i kliknij strzałkę w prawo, aby go zaznaczyć.
-    1. Wybierz pozycję **OK**.
+    1. Wybierz **OK**.
     1. Wybierz pozycję **Zapisz**.
 
         ![Zapisz siatki](media/howto-use-device-sets/image9.png)
@@ -115,7 +115,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować **listy**. **Listy** pok
 
     ![Wybierz kolumnę](media/howto-use-device-sets/image12.png)
 
-1. Wybierz pozycję **OK**.
+1. Wybierz **OK**.
 
 ## <a name="analytics"></a>Analiza
 

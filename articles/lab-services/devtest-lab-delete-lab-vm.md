@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: spelluru
 ms.openlocfilehash: 9634c70566aba21bdd28ee016c9fa94464ec9c1b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127416"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Usuń maszynę Wirtualną lub laboratorium w laboratorium Azure DevTest Labs
@@ -37,7 +37,7 @@ Aby usunąć laboratorium, wykonaj następujące czynności:
     ![Wybierz swoje laboratorium](media/devtest-lab-delete-lab-vm/select-lab.png)
 3. Na **laboratorium DevTest Lab** kliknij **Usuń** na pasku narzędzi. 
 
-    ![Przycisk Usuń](media/devtest-lab-delete-lab-vm/delete-button.png)
+    ![Usuwanie przycisku](media/devtest-lab-delete-lab-vm/delete-button.png)
 4. Na **potwierdzenie** wpisz **nazwa** swoje laboratorium, a następnie wybierz pozycję **Usuń**. 
 
     ![Potwierdź](media/devtest-lab-delete-lab-vm/confirm-delete.png)

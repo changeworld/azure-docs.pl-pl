@@ -11,10 +11,10 @@ ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
 ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236435"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorowanie obciążeń usługi Azure Backup
@@ -49,7 +49,7 @@ Alerty są głównie scenariusze, w której użytkownicy są powiadamiani, tak, 
 Poniższe scenariusze są definiowane przez usługę jako dla scenariuszy.
 
   - Niepowodzenia wykonywania kopii zapasowej/przywracania
-  - Kopii zapasowej zakończyło się pomyślnie z ostrzeżeniami dla usługi Azure Backup Agent (MAB)
+  - Wykonanie kopii zapasowej zakończyło się pomyślnie z ostrzeżeniami dla agenta usługi Azure Backup (MAB)
   - Zatrzymaj ochronę za pomocą zachowanych danych/Zatrzymaj ochronę za pomocą usuwania danych
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Wyjątki, gdy nie zostanie zgłoszony alert
@@ -65,7 +65,7 @@ Powyższe wyjątki zostały zaprojektowane z warunkiem, że wynik tych operacji 
 
   - Kopie zapasowe maszyn wirtualnych platformy Azure
   - Kopie zapasowe plików platformy Azure
-  - Tworzenie kopii zapasowych obciążenie platformy Azure, takimi jak SQL
+  - Kopie zapasowe obciążenia platformy Azure, takie jak SQL
   - Agent usługi Azure Backup (MAB)
 
 > [!NOTE]

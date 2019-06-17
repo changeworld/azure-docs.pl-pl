@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: a668bb2e0e3381abefaac93a0fb63f0d33bac5a1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234069"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu usługi Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-http-connector.md)
 > * [Bieżąca wersja](connector-http.md)
 
@@ -70,8 +70,8 @@ Ustaw **authenticationType** właściwości **podstawowe**, **szyfrowanego**, lu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| userName | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Tak |
-| password | Hasło dla użytkownika ( **userName** wartości). Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| userName | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Yes |
+| password | Hasło dla użytkownika ( **userName** wartości). Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
 **Przykład**
 
@@ -171,7 +171,7 @@ Aby skopiować dane z protokołu HTTP w **Parquet lub format tekstu rozdzielaneg
 
 | Właściwość    | Opis                                                  | Wymagane |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | Właściwość type w obszarze `location` w zestawie danych musi być równa **HttpServerLocation**. | Tak      |
+| — typ        | Właściwość type w obszarze `location` w zestawie danych musi być równa **HttpServerLocation**. | Tak      |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane.       | Nie       |
 
 > [!NOTE]
@@ -279,7 +279,7 @@ Aby skopiować dane z protokołu HTTP w **Parquet lub format tekstu rozdzielaneg
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Właściwość type w obszarze `storeSettings` musi być równa **HttpReadSetting**. | Tak      |
+| — typ                     | Właściwość type w obszarze `storeSettings` musi być równa **HttpReadSetting**. | Tak      |
 | requestMethod            | Metoda HTTP. <br>Dozwolone wartości to **uzyskać** (ustawienie domyślne) i **wpis**. | Nie       |
 | addtionalHeaders         | Dodatkowe nagłówki żądania HTTP.                             | Nie       |
 | requestBody              | Treść żądania HTTP.                               | Nie       |
@@ -336,7 +336,7 @@ Aby skopiować dane z protokołu HTTP w **format ORC/Avro/JSON/dane binarne**, n
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** właściwość źródła działania kopiowania musi być równa **HttpSource**. | Tak |
+| — typ | **Typu** właściwość źródła działania kopiowania musi być równa **HttpSource**. | Tak |
 | httpRequestTimeout | Limit czasu ( **TimeSpan** wartość) dla żądania HTTP można uzyskać odpowiedzi. Ta wartość jest limit czasu można uzyskać odpowiedzi nie limitu czasu można odczytać danych odpowiedzi. Wartość domyślna to **00:01:40**.  | Nie |
 
 **Przykład**

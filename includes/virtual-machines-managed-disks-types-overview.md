@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4abf50e11070f2060309ae9b9cd045c874a2c52e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147784"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133731"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
 
@@ -23,17 +23,17 @@ Usługi Azure managed disks jest obecnie oferuje cztery typy dysków, z których
 
 Poniższa tabela zawiera porównanie ultra solid-Województwo dyski (SSD) (wersja zapoznawcza), dysk SSD w warstwie premium, SSD w warstwie standardowa i standardowych dysków twardych (HDD) dla dysków zarządzanych, aby ułatwić wybór rozwiązania do zastosowania.
 
-|   | Największa SSD (wersja zapoznawcza)   | SSD w warstwie Premium   | SSD w warstwie Standardowa   | HDD w warstwie Standardowa   |
+|   | Największa SSD (wersja zapoznawcza)   | Premium, SSD   | Standardowa, SSD   | Standardowa, dysk twardy   |
 |---------|---------|---------|---------|---------|
-|Typ dysku   |SSD   |SSD   |SSD   |Dysk twardy   |
+|Typ dysku   |SSD   |SSD   |SSD   |HDD   |
 |Scenariusz   |Obciążeń intensywnie korzystających z operacji We/Wy, takich jak SAP HANA, baz danych w warstwie najwyższego (na przykład SQL, Oracle) i innych obciążeń dużej transakcji.   |Obciążenia produkcyjne i wrażliwe na wydajność   |Serwery sieci Web, aplikacje dla przedsiębiorstw używana w niewielkim stopniu i tworzenie i testowanie   |Tworzenie kopii zapasowej, zastosowania niekrytyczne, rzadkie dostępu   |
 |Rozmiar dysku   |gibibajt 65 536 (GiB) (wersja zapoznawcza)   |32,767 GiB    |32,767 GiB   |32,767 GiB   |
 |Maksymalna przepływność   |2000 MiB/s (wersja zapoznawcza)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maks. IOPS   |160,000 (wersja zapoznawcza)   |20,000   |6,000   |2000   |
+|Maksymalna liczba operacji We/Wy   |160,000 (wersja zapoznawcza)   |20,000   |6,000   |2000   |
 
 ## <a name="ultra-ssd-preview"></a>Największa SSD (wersja zapoznawcza)
 
-Dyski SSD ultra platformy Azure (wersja zapoznawcza) dostarczać wysokiej przepływności, wysoka operacje We/Wy i magazynu dyskowego niskie opóźnienia dla maszyn wirtualnych IaaS platformy Azure. Niektóre dodatkowe korzyści ultra SSD obejmują możliwość dynamicznie zmieniać wydajność dysku, wraz z obciążeń, bez konieczności ponownego uruchamiania maszyn wirtualnych. Największa dyski SSD są odpowiednie dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, najwyższej warstwy bazy danych i transakcji duże obciążenia. Największa dysków SSD należy używać tylko jako dyski z danymi. Zalecamy używanie dysków premium SSD jako dyski systemu operacyjnego.
+SSD ultra platformy Azure (wersja zapoznawcza) zapewnia wysoką przepływność, wysokiej operacje We/Wy i magazynu dyskowego niskie opóźnienia dla maszyn wirtualnych IaaS platformy Azure. Niektóre dodatkowe korzyści ultra SSD obejmują możliwość dynamicznie zmieniać wydajność dysku, wraz z obciążeń, bez konieczności ponownego uruchamiania maszyn wirtualnych. Największa dyski SSD są odpowiednie dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, najwyższej warstwy bazy danych i transakcji duże obciążenia. Największa dysków SSD należy używać tylko jako dyski z danymi. Zalecamy używanie dysków premium SSD jako dyski systemu operacyjnego.
 
 ### <a name="performance"></a>Wydajność
 
@@ -73,7 +73,8 @@ W trakcie okresu zapoznawczego ultra SSD:
 - Są obsługiwane tylko na maszynach wirtualnych v3 ES/DS
 - Są dostępne tylko jako dyski z danymi i tylko rozmiar sektora fizycznego 4k pomocy technicznej  
 - Może być utworzony tylko jako pustych dysków  
-- Obecnie można wdrożyć tylko przy użyciu szablonów usługi Azure Resource Manager, interfejsu wiersza polecenia i zestawu SDK języka python.
+- Obecnie można wdrożyć tylko przy użyciu szablonów usługi Azure Resource Manager, interfejsu wiersza polecenia, programu PowerShell i zestawu SDK języka Python.
+- Nie można wdrożyć w witrynie Azure Portal (jeszcze).
 - Nie obsługuje jeszcze migawki dysków maszyny Wirtualnej obrazy, zestawy dostępności, zestawy skalowania maszyn wirtualnych i usługa Azure disk encryption.
 - Nie obsługuje jeszcze integracji z usługą Azure Backup lub usługi Azure Site Recovery.
 - Podobnie jak w przypadku [większość wersji zapoznawczych](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), nie należy używać tej funkcji dla obciążeń produkcyjnych do ogólnodostępnej (GA).

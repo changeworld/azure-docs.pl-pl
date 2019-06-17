@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6e0adc6b4abbb58504b6f56c8def72440ad370d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61414374"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061403"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Łączenie programu Excel z pojedynczej bazy danych w bazie danych Azure SQL i utworzenie raportu
 
@@ -37,9 +37,9 @@ Potrzebna będzie również kopia programu Excel. W tym artykule wykorzystano pr
    ![Wybierz źródło danych: Łączenie programu Excel do usługi SQL database.](./media/sql-database-connect-excel/excel_data_source.png)
 
    Zostanie otwarty Kreator połączenia danych.
-3. W oknie dialogowym **Łączenie z serwerem bazy danych** wpisz **nazwę serwera** usługi SQL Database, z którym chcesz nawiązać połączenie w następującej formie: <*nazwaserwera*>**. database.windows.net**. Na przykład **msftestserver.database.windows.net**. Opcjonalnie wprowadź nazwę bazy danych. Wybierz **OK** aby otworzyć okno poświadczeń. 
+3. W oknie dialogowym **Łączenie z serwerem bazy danych** wpisz **nazwę serwera** usługi SQL Database, z którym chcesz nawiązać połączenie w następującej formie: <*nazwaserwera*> **. database.windows.net**. Na przykład **msftestserver.database.windows.net**. Opcjonalnie wprowadź nazwę bazy danych. Wybierz **OK** aby otworzyć okno poświadczeń. 
 
-   ![server-name.png](media/sql-database-connect-excel/server-name.png)
+   ![Łączenie do serwera bazy danych okna dialogowego](media/sql-database-connect-excel/server-name.png)
 
 4. W **bazy danych SQL Server** okno dialogowe, wybierz opcję **bazy danych** po lewej stronie strony, a następnie wprowadź w Twojej **nazwa_użytkownika** i **hasło** dla Serwer SQL Database, którą chcesz się połączyć. Wybierz **Connect** otworzyć **Nawigator**. 
 
@@ -68,7 +68,7 @@ Teraz, po nawiązaniu połączenia, masz kilka różnych opcji, jak załadować 
 
 > [!TIP]
 > Aby połączyć inne skoroszyty programu Excel i arkuszy z bazą danych, należy zaznaczyć **danych** , a następnie wybierz pozycję **ostatnio używane źródła** można uruchomić **ostatnio używane źródła** okno dialogowe. Z tego miejsca wybierz połączenie, utworzonym na podstawie listy, a następnie kliknij przycisk **Otwórz**.
-> ![Najnowsze połączenia](media/sql-database-connect-excel/recent-connections.png)
+> ![Najnowsze źródła, okno dialogowe](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>Utwórz trwałe połączenie przy użyciu pliku odc
 
@@ -78,7 +78,7 @@ Aby trwale zapisać informacje dotyczące połączenia, możesz utworzyć plik o
    1. Wybierz **Przeglądaj w poszukiwaniu kolejnych** otworzyć **wybierz źródło danych** okno dialogowe.   
    2. Wybierz **+NewSqlServerConnection.odc** pliku, a następnie wybierz pozycję **Otwórz** otworzyć **Kreatora połączenia danych**.
 
-      ![Nowe połączenie](media/sql-database-connect-excel/new-connection.png)
+      ![Nowe okno dialogowe połączenia](media/sql-database-connect-excel/new-connection.png)
 
 2. W **Kreatora połączenia danych**, wpisz nazwę serwera i poświadczenia bazy danych SQL. Wybierz opcję **Dalej**. 
    1. Wybierz bazę danych, która zawiera dane z listy rozwijanej. 

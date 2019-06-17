@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/04/2019
-ms.openlocfilehash: 2be1f7bb6417834196da03b7cba22387744f8c19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1db1535779d180994c9ce4350d11f4c696da9e3e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61075569"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721531"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Baza danych SQL dynamiczne maskowanie danych
 
@@ -43,7 +43,7 @@ Dynamiczne maskowanie danych mogą być konfigurowane przez administratora usłu
 
 | Funkcja maskowania | Maskowanie logiki |
 | --- | --- |
-| **Domyślne** |**Pełne maskowania zgodnie z typów danych w wyznaczonych polach**<br/><br/>• Użycie XXXX lub mniej Xs, jeśli rozmiar pola jest mniejszy niż 4 znaki dla danych typu ciąg (nchar, ntext, nvarchar).<br/>• Wykorzystanie wartości 0 dla typów numerycznych (bigint, bit, decimal, int, pieniądze, numeryczne, smallint, smallmoney, tinyint, float, rzeczywistym).<br/>• Wykorzystanie 01-01-1900 dla typów danych daty/godziny (Data, datetime2, datetime, datetimeoffset, smalldatetime, czasu).<br/>• Dla wariantu języka SQL, wartością domyślną bieżącego typu jest używany.<br/>• Dla formatu XML w dokumencie <masked/> jest używany.<br/>• Na użytek pustą wartość specjalne typy danych (tabeli sygnatury czasowej, hierarchyid, GUID, plik binarny, obraz, varbinary typów przestrzennych). |
+| **Domyślne** |**Pełne maskowania zgodnie z typów danych w wyznaczonych polach**<br/><br/>• Użycie XXXX lub mniej Xs, jeśli rozmiar pola jest mniejszy niż 4 znaki dla danych typu ciąg (nchar, ntext, nvarchar).<br/>• Wykorzystanie wartości 0 dla typów numerycznych (bigint, bit, decimal, int, pieniądze, numeryczne, smallint, smallmoney, tinyint, float, rzeczywistym).<br/>• Wykorzystanie 01-01-1900 dla typów danych daty/godziny (Data, datetime2, datetime, datetimeoffset, smalldatetime, czasu).<br/>• Dla wariantu języka SQL, wartością domyślną bieżącego typu jest używany.<br/>• Dla formatu XML w dokumencie \<maskowane / > jest używane.<br/>• Na użytek pustą wartość specjalne typy danych (tabeli sygnatury czasowej, hierarchyid, GUID, plik binarny, obraz, varbinary typów przestrzennych). |
 | **Karta kredytowa** |**Maskowanie metody, która udostępnia cztery ostatnie cyfry wyznaczonych polach** i dodaje ciąg stałej jako prefiks w postaci karty kredytowej.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **Wiadomość e-mail** |**Maskowanie metody, która udostępnia pierwszą literę i zamienia domeny XXX.com** przy użyciu prefiksu stałym ciągiem w postaci adresu e-mail.<br/><br/>aXX@XXXX.com |
 | **Liczby losowe** |**Maskowanie metody, która generuje losową liczbę** zgodnie z wybranych granicach i typy danych rzeczywistych. Jeśli wyznaczonych granicach są równe, funkcji maskowania jest stałej liczbowej.<br/><br/>![Okienko nawigacji](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |

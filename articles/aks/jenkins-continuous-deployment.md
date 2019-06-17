@@ -7,11 +7,11 @@ author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 703aa081c8acf41f9206e2b0ccff45571367d2e8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7a81f26b4dad5f7257e5c3fd012dffaf06d573bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073786"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z repozytorium GitHub do usługi Azure Kubernetes Service (AKS) przy użyciu narzędzia Jenkins ciągłej integracji i ciągłego wdrażania
@@ -48,6 +48,9 @@ Do ukończenia tego samouczka są potrzebne następujące elementy:
 ## <a name="prepare-your-app"></a>Przygotowywanie aplikacji
 
 W tym artykule używamy przykładową aplikację głosowania na platformie Azure, który zawiera interfejs sieci web hostowanych w zasobników przynajmniej jednego i drugiego zasobnik obsługującego magazyn Redis do przechowywania danych tymczasowych. Zanim włączysz Jenkins i usługi AKS w przypadku zautomatyzowanych wdrożeń, najpierw ręcznie przygotować i wdrożyć aplikację głosowania na platformie Azure w klastrze AKS. To ręczne wdrożenie jest wersja 1 aplikacji i pozwala zobaczyć aplikację w akcji.
+
+> [!NOTE]
+> Przykładową aplikację głosowania na platformie Azure używa zasobnika systemu Linux, które jest zaplanowane do uruchomienia w węźle systemu Linux. Przepływ opisane w tym artykule działa również w zasobniku systemu Windows Server zaplanowane na węzła systemu Windows Server.
 
 Utworzenie rozwidlenia repozytorium GitHub poniższej przykładowej aplikacji — [ https://github.com/Azure-Samples/azure-voting-app-redis ](https://github.com/Azure-Samples/azure-voting-app-redis). Aby utworzyć rozwidlenie repozytorium na koncie usługi GitHub, wybierz przycisk **Rozwidlenie** w prawym górnym rogu.
 

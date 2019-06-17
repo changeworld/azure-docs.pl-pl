@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003025"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Wszystkie tematy usługi Azure SQL Server Stretch Database
@@ -31,7 +31,7 @@ Ten temat zawiera listę każdego tematu, która bezpośrednio dotyczy **program
 | 3 |[Omówienie usługi Stretch Database](sql-server-stretch-database-overview.md) |Dowiedz się, jak w sposób niewidoczny i bezpieczny usługa Stretch Database migruje zimne dane do chmury platformy Microsoft Azure. |
 | 4 |[Rozpoczynanie pracy przez uruchomienie włączania bazy danych Stretch Kreatora](sql-server-stretch-database-wizard.md) |Dowiedz się, jak skonfigurować bazę danych dla bazy danych Stretch przy użyciu kreatora włączania bazy danych Stretch. |
 
-## <a name="enable"></a>Włącz
+## <a name="enable"></a>Włączenie
 | &nbsp; | Stanowisko | Opis |
 | ---:|:--- |:--- |
 | 5 |[Włączanie usługi Stretch Database dla bazy danych](sql-server-stretch-database-enable-database.md) |Dowiedz się, jak skonfigurować bazę danych dla Stretch Database. |

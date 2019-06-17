@@ -12,10 +12,10 @@ ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154569"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice dla modelu usługi LUIS i klucze
@@ -28,7 +28,7 @@ Jeśli aplikacja przekracza limity modelu usługi LUIS i granice, należy wzią�
 
 |Obszar|Limit|
 |--|:--|
-| [Nazwa aplikacji][luis-get-started-create-app] | * Znak Domyślna maksymalna |
+| [Nazwa aplikacji][luis-get-started-create-app] | \* Znak Domyślna maksymalna |
 | [Testowanie usługi Batch][batch-testing]| 10 zestawów danych, 1000 wypowiedzi dla zestawu danych|
 | Lista jawnego | 50 na aplikację|
 | Podmiotów zewnętrznych | bez ograniczeń |
@@ -47,7 +47,7 @@ Jeśli aplikacja przekracza limity modelu usługi LUIS i granice, należy wzią�
 | [Wersje](luis-concept-version.md)| bez ograniczeń |
 | [Nazwa wersji][luis-how-to-manage-versions] | 10 znaków dotyczy alfanumeryczne oraz kropki (.) |
 
-* Znak Domyślna maksymalna to 50 znaków. 
+\* Znak Domyślna maksymalna to 50 znaków. 
 
 <a name="intent-and-entity-naming"></a>
 

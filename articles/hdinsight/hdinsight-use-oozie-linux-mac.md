@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142824"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Za pomocą programu Apache Oozie Apache Hadoop do definiowania i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight
@@ -518,7 +518,7 @@ Aby uzyskać dostęp do interfejsu użytkownika sieci web programu Oozie, wykona
 
 5. Aby wyświetlić więcej informacji o zadaniu, wybierz zadanie.
 
-    ![Informacje o stanowisku](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![Informacje o zadaniu](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
 
 6. Z **informacji o zadaniu** karcie, można zobaczyć informacje o zadaniu podstawowe i poszczególne akcje w ramach zadania. Kart u góry służy do wyświetlania **definicji zadania**, **konfiguracji zadania**, dostępu **dziennik zadań**, lub wyświetlać skierowanym grafie acyklicznym (DAG) zadania w obszarze **Zadania DAG**.
 
@@ -665,7 +665,7 @@ Poniżej przedstawiono określonych błędów, które mogą wystąpić i ich roz
 
 **Przyczyna**: Adresy magazynu obiektów Blob platformy Azure, które są używane w **job.xml** plik nie zawiera kontenera magazynu lub nazwa konta magazynu. Format adresu magazynu obiektów Blob musi być `wasbs://containername@storageaccountname.blob.core.windows.net`.
 
-**Rozwiązanie**: Zmień adresy magazynu obiektów Blob, które korzysta z zadania.
+**Rozpoznawanie**: Zmień adresy magazynu obiektów Blob, które korzysta z zadania.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Oozie nie może spersonifikować &lt;użytkownika&gt;
 
@@ -675,7 +675,7 @@ Poniżej przedstawiono określonych błędów, które mogą wystąpić i ich roz
 
 **Przyczyna**: Bieżące ustawienia uprawnień nie zezwalaj na Oozie personifikować określonego konta użytkownika.
 
-**Rozwiązanie**: Oozie mogą personifikować użytkowników w **użytkowników** grupy. Użyj `groups USERNAME` wyświetlić konto użytkownika jest członkiem grupy. Jeśli użytkownik nie jest członkiem **użytkowników** grupy, użyj następującego polecenia, aby dodać użytkownika do grupy:
+**Rozpoznawanie**: Oozie mogą personifikować użytkowników w **użytkowników** grupy. Użyj `groups USERNAME` wyświetlić konto użytkownika jest członkiem grupy. Jeśli użytkownik nie jest członkiem **użytkowników** grupy, użyj następującego polecenia, aby dodać użytkownika do grupy:
 
     sudo adduser USERNAME users
 
@@ -690,7 +690,7 @@ Poniżej przedstawiono określonych błędów, które mogą wystąpić i ich roz
 
 **Przyczyna**: Nie można załadować sterownik bazy danych wymagane do dostępu do bazy danych jest Sqoop.
 
-**Rozwiązanie**: Podczas korzystania z narzędzia Sqoop z zadania usługi Oozie, musi zawierać ten sterownik bazy danych z innych zasobów, takich jak workflow.xml, używa zadania. Ponadto odwoływać się do archiwum, zawierającą sterownik bazy danych z `<sqoop>...</sqoop>` sekcji workflow.xml.
+**Rozpoznawanie**: Podczas korzystania z narzędzia Sqoop z zadania usługi Oozie, musi zawierać ten sterownik bazy danych z innych zasobów, takich jak workflow.xml, używa zadania. Ponadto odwoływać się do archiwum, zawierającą sterownik bazy danych z `<sqoop>...</sqoop>` sekcji workflow.xml.
 
 Na przykład dla zadania w tym dokumencie, możesz użyć następujące czynności:
 

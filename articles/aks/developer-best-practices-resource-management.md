@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: zarhoads
-ms.openlocfilehash: aebade14f3a8a1095925d17325ce99b78031dc32
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 69f60036bd718264174bf1befe832305e250e77c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073948"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dla deweloperów aplikacji do zarządzania zasobami w usłudze Azure Kubernetes Service (AKS)
 
 Podczas tworzenia i uruchamiania aplikacji w usłudze Azure Kubernetes Service (AKS), istnieje kilka kluczowe obszary, które należy wziąć pod uwagę. Jak zarządzać wdrożenia aplikacji może niekorzystnie wpłynąć na środowisko użytkownika końcowego usługi, które należy podać. Ułatwiające pomyślnie, należy pamiętać, niektóre najlepsze rozwiązania można wykonać podczas tworzenia i uruchamiania aplikacji w usłudze AKS.
 
-Najlepsze rozwiązania dotyczące tej koncentruje się na sposób uruchamiania klastra i obciążeń usługi z perspektywy dewelopera aplikacji. Aby uzyskać informacji na temat administracyjne najlepszych rozwiązań, zobacz [klastra operator najlepsze rozwiązania dotyczące izolacji i zarządzanie zasobami w usłudze Azure Kubernetes Service (AKS)][operator-best-practices-isolation]. W tym artykule omówiono następujące zagadnienia:
+Najlepsze rozwiązania dotyczące tej koncentruje się na sposób uruchamiania klastra i obciążeń usługi z perspektywy dewelopera aplikacji. Aby uzyskać informacji na temat administracyjne najlepszych rozwiązań, zobacz [klastra operator najlepsze rozwiązania dotyczące izolacji i zarządzanie zasobami w usłudze Azure Kubernetes Service (AKS)][operator-best-practices-isolation]. W tym artykule dowiesz się:
 
 > [!div class="checklist"]
 > * Jakie są limity i żądania zasobu pod
@@ -74,6 +74,8 @@ Za pomocą usługi Azure Dev miejsca do magazynowania tworzyć, debugować i tes
 
 Ten zintegrowany proces projektowania i testowania spacjami Dev ogranicza potrzebę dla środowisk testowych lokalnych, takich jak [minikube][minikube]. Zamiast tego twórz i testujemy współpracę z klastra usługi AKS. Ten klaster może być zabezpieczone i izolowane, jak wspomniano w poprzedniej sekcji przy użyciu przestrzeni nazw do izolowania logicznie klastra. Gdy Twoje aplikacje są gotowe do wdrożenia do środowiska produkcyjnego, możesz skutecznie wdrażać jako rozwoju zostało zrobione przed rzeczywistym klastrem AKS.
 
+Azure Dev spacji jest przeznaczony do użytku z aplikacjami, przeznaczonych dla systemu Linux zasobników i węzłów.
+
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Użyj rozszerzenia programu Visual Studio Code dla rozwiązania Kubernetes
 
 **Najważniejsze wskazówki** -instalacji i używania manifesty rozszerzenia programu VS Code dla platformy Kubernetes podczas pisania kodu YAML. Rozszerzenie służy również do wdrożenia zintegrowanego rozwiązania, które mogą pomóc właścicieli aplikacji, które rzadko wchodzić w interakcje z klastrem usługi AKS.
@@ -87,6 +89,8 @@ Ten zintegrowany proces projektowania i testowania spacjami Dev ogranicza potrze
 **Najważniejsze wskazówki** -regularnie uruchomić najnowszą wersję `kube-advisor` narzędzia typu open source do wykrywania problemów w klastrze. Jeśli zastosujesz limity przydziałów zasobów w istniejącym klastrze usługi AKS, uruchom `kube-advisor` najpierw po to, aby znaleźć zasobników, które nie mają żądania zasobów i ograniczeń.
 
 [Klastra kubernetes w usłudze advisor] [ kube-advisor] narzędzie jest skojarzone projekt typu open source AKS, które skanuje klastra Kubernetes i raporty dotyczące problemów, które znajdzie. Jest jeden wyboru przydatne do identyfikowania zasobników, które nie mają i limity zasobów w miejscu.
+
+Narzędzia klastra kubernetes w usłudze advisor mogą być przedstawione na żądanie zasobów i limity Brak w aplikacji PodSpecs dla Windows, a także aplikacje dla systemu Linux, ale samo narzędzie klastra kubernetes w usłudze klasyfikatora musi być zaplanowane na zasobnik systemu Linux. Można zaplanować zasobnika do uruchamiania na pulę węzłów przy użyciu określonego systemu operacyjnego [selektor węzła] [ k8s-node-selector] w zasobniku konfiguracji.
 
 W klastrze AKS, który hostuje wiele zespołów deweloperów i aplikacji może być trudne do śledzenia zasobników, bez tych zasobów żądania i ogranicza zestaw. Najlepszym rozwiązaniem jest regularne uruchamianie `kube-advisor` w klastrach usługi AKS.
 
@@ -110,3 +114,4 @@ Aby zaimplementować niektórych z tych najlepszych rozwiązań, zobacz następu
 [dev-spaces]: ../dev-spaces/get-started-netcore.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

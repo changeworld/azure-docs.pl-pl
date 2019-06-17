@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: 5f55228c80142b2a21af585cb04d16f148460af0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65149098"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Korzystanie z emulatora usługi Azure storage do programowania i testowania
@@ -170,7 +170,7 @@ Aby wyświetlić listę opcji, wpisz ciąg `/help` w wierszu polecenia.
 
 | Opcja | Opis | Polecenie | Argumenty |
 | --- | --- | --- | --- |
-| **Rozpocznij** |Uruchamiania emulatora magazynu. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Uruchom emulator w bieżącym procesie zamiast tworzenia nowego procesu. |
+| **Start** |Uruchamiania emulatora magazynu. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Uruchom emulator w bieżącym procesie zamiast tworzenia nowego procesu. |
 | **Stop** |Zatrzymuje emulatora magazynu. |`AzureStorageEmulator.exe stop` | |
 | **Stan** |Wyświetla stan emulatora magazynu. |`AzureStorageEmulator.exe status` | |
 | **Usuń zaznaczenie** |Czyści dane w usługach wszystkie określone w wierszu polecenia. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*Obiekt blob*: Czyści dane z obiektu blob. <br/>*kolejka*: Czyści dane w kolejce. <br/>*Tabela*: Czyści tabeli danych. <br/>*Wszystkie*: Czyści wszystkie dane w przypadku wszystkich usług. |

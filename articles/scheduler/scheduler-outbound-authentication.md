@@ -10,11 +10,11 @@ ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 42d6ec93a3382f494b49fb574c4aee5e8eec142a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344352"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64708951"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Uwierzytelnianie połączeń wychodzących usługi Azure Scheduler
 
@@ -38,7 +38,7 @@ Usługa Scheduler obsługuje te modele uwierzytelniania:
 
 * Aby usunąć uwierzytelniania z zadania usługi Scheduler, jawnie uruchom żądanie PUT lub PATCH w zadaniu i ustaw `authentication` obiekt o wartości null. Odpowiedź nie zawiera właściwości uwierzytelniania.
 
-## <a name="client-certificate"></a>Certyfikat klienta
+## <a name="client-certificate"></a>certyfikat klienta
 
 ### <a name="request-body---client-certificate"></a>Treść żądania - certyfikatu klienta
 
@@ -47,9 +47,9 @@ Podczas dodawania uwierzytelnianie przy użyciu `ClientCertificate` modelu, nale
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
-| **type** | Yes | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL, wartość jest `ClientCertificate`. |
-| **pfx** | Yes | Zawartość algorytmem Base64 pliku PFX |
-| **Hasło** | Yes | Hasło do uzyskiwania dostępu do pliku PFX |
+| **type** | Tak | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL, wartość jest `ClientCertificate`. |
+| **pfx** | Tak | Zawartość algorytmem Base64 pliku PFX |
+| **Hasło** | Tak | Hasło do uzyskiwania dostępu do pliku PFX |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Treść odpowiedzi - certyfikatu klienta 
@@ -167,7 +167,7 @@ Podczas dodawania uwierzytelnianie przy użyciu `Basic` modelu, należy określi
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania dla uwierzytelniania podstawowego | 
-| **type** | Yes | Typ uwierzytelniania. Uwierzytelnianie podstawowe, wartość jest `Basic`. | 
+| **type** | Tak | Typ uwierzytelniania. Uwierzytelnianie podstawowe, wartość jest `Basic`. | 
 | **Nazwa użytkownika** | Yes | Nazwa użytkownika do uwierzytelniania | 
 | **Hasło** | Yes | Hasło do uwierzytelniania |
 |||| 
@@ -276,7 +276,7 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="active-directory-oauth"></a>Uwierzytelnianie OAuth usługi Active Directory
+## <a name="active-directory-oauth"></a>OAuth usługi Active Directory
 
 ### <a name="request-body---active-directory-oauth"></a>Treść — OAuth usługi Active Directory żądania 
 
@@ -284,12 +284,12 @@ Podczas dodawania uwierzytelnianie przy użyciu `ActiveDirectoryOAuth` modelu, n
 
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
-| **uwierzytelnianie** (element nadrzędny) | Yes | Obiekt uwierzytelniania dla uwierzytelniania ActiveDirectoryOAuth |
-| **type** | Yes | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. |
-| **dzierżawy** | Yes | Identyfikator dzierżawy dla dzierżawy usługi Azure AD. Aby znaleźć identyfikator dzierżawy dla dzierżawy usługi Azure AD, uruchom `Get-AzureAccount` w programie Azure PowerShell. |
-| **audience** | Yes | Ta wartość jest równa `https://management.core.windows.net/`. | 
-| **clientId** | Yes | Identyfikator klienta aplikacji usługi Azure AD | 
-| **Klucz tajny** | Yes | Klucz tajny klienta, który żąda tokenu | 
+| **uwierzytelnianie** (element nadrzędny) | Tak | Obiekt uwierzytelniania dla uwierzytelniania ActiveDirectoryOAuth |
+| **type** | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. |
+| **dzierżawy** | Tak | Identyfikator dzierżawy dla dzierżawy usługi Azure AD. Aby znaleźć identyfikator dzierżawy dla dzierżawy usługi Azure AD, uruchom `Get-AzureAccount` w programie Azure PowerShell. |
+| **audience** | Tak | Ta wartość jest równa `https://management.core.windows.net/`. | 
+| **clientId** | Tak | Identyfikator klienta aplikacji usługi Azure AD | 
+| **Klucz tajny** | Tak | Klucz tajny klienta, który żąda tokenu | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Treść odpowiedzi - OAuth usługi Active Directory

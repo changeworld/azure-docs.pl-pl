@@ -11,10 +11,10 @@ ms.custom: vs-azure
 ms.topic: article
 ms.date: 04/25/2019
 ms.openlocfilehash: fb071ac056355a056e5333284808417a258515de
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467447"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Utwórz swoją pierwszą aplikację bez użycia serwera za pomocą usługi Azure Logic Apps i Azure Functions — Visual Studio
@@ -88,7 +88,7 @@ Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resou
    > [!TIP]
    > W scenariuszach, w których nie chcesz do wstępnego wdrażania rozwiązania w grupie zasobów platformy Azure, można użyć pustego **aplikacji logiki** szablonu, który po prostu tworzy pustej aplikacji logiki.
 
-1. Z **Pokaż szablony z tej lokalizacji** listy wybierz **szybkiego startu platformy Azure (github.com/Azure/azure-quickstart-templates)**.
+1. Z **Pokaż szablony z tej lokalizacji** listy wybierz **szybkiego startu platformy Azure (github.com/Azure/azure-quickstart-templates)** .
 
 1. W polu wyszukiwania wprowadź "aplikacja logiki" jako filtr. Wybierz z wyników, ten szablon: **101-Logic-App-and-Function-App**
 

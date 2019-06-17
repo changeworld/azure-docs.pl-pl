@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/29/2019
 ms.author: jowargo
-ms.openlocfilehash: edd0e12460e07cfd2990cc43a9056ed06b84fb1d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: abc77ad4d06dc719ee1a89cd8fcf29d42d96b483
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926770"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147652"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Rozpoczynanie pracy z usługą Notification Hubs dla aplikacji dla urządzeń Kindle
 
@@ -58,24 +58,35 @@ W tym samouczku utworzysz/zaktualizujesz kod, aby wykonać następujące zadania
     5. Wybierz pozycję **Zapisz**.
 
         ![Nowa strona przesyłania aplikacji](./media/notification-hubs-kindle-get-started/new-app-submission-page.png) 
-2.  U góry strony, przełącz się do **Mobile Ads** , a następnie wykonaj następujące czynności: 
+2.  U góry strony, przełącz się do **App Services** kartę.
+
+    ![Karta usługi aplikacji](./media/notification-hubs-kindle-get-started/app-services-tab.png)
+1. Na **App Services** karty, przewiń w dół i wybierz **wyświetlanie reklam mobilnych** w **Mobile Ads** sekcji. Zostanie wyświetlony **Mobile Ads** strony na nowej karcie w przeglądarce sieci web. 
+
+    ![Sekcja Mobile Ads - link widoku Mobile Ads](./media/notification-hubs-kindle-get-started/view-mobile-ads-link.png)
+1. Na **Mobile Ads** wykonaj następujące czynności: 
     1. Określ, czy aplikacja jest skierowany głównie dzieci w obszarze 13. Na potrzeby tego samouczka wybierz **nie**.
-    2. Wybierz pozycję **Prześlij**. 
+    1. Wybierz **przesłać**. 
 
         ![Strona Mobile Ads](./media/notification-hubs-kindle-get-started/mobile-ads-page.png)
     3. Kopiuj **klucz aplikacji** z **Mobile Ads** strony. 
 
         ![Klucz aplikacji](./media/notification-hubs-kindle-get-started/application-key.png)
-3.  Wybierz **aplikacje i usługi** menu u góry, a następnie swoją aplikację na liście. 
+3.  Teraz przejdź do karty przeglądarki sieci web, która ma **App Services** Otwórz, a następnie wykonaj następujące czynności:
+    1. Przewiń do **Device Messaging** sekcji.     
+    1. Rozwiń **wybierz istniejący profil zabezpieczeń lub Utwórz nową**, a następnie wybierz pozycję **Utwórz profil zabezpieczeń**. 
 
-    ![Wybierz aplikację z listy](./media/notification-hubs-kindle-get-started/all-apps-select.png)
-4. Przełącz się do **Device Messaging** , a następnie wykonaj następujące kroki: 
-    1. Wybierz **Utwórz nowy profil zabezpieczeń**.
-    2. Wprowadź **nazwa** dla swojego profilu zabezpieczeń. 
-    3. Wprowadź **opis** dla swojego profilu zabezpieczeń. 
-    4. Wybierz pozycję **Zapisz**. 
-    5. Wybierz **Wyświetl profil zabezpieczeń** na stronie wyników. 
-5. Teraz na **profil zabezpieczeń** wykonaj następujące czynności: 
+        ![Tworzenie przycisku profil zabezpieczeń](./media/notification-hubs-kindle-get-started/create-security-profile-button.png)
+    1. Wprowadź **nazwa** dla swojego profilu zabezpieczeń. 
+    2. Wprowadź **opis** dla swojego profilu zabezpieczeń. 
+    3. Wybierz pozycję **Zapisz**. 
+
+        ![Zapisz profil zabezpieczeń](./media/notification-hubs-kindle-get-started/save-security-profile.png)
+    1. Wybierz **Włącz Device Messaging** do włączenia obsługi wiadomości na ten profil zabezpieczeń urządzenia. 
+
+        ![Umożliwianie przesyłania wiadomości urządzenia](./media/notification-hubs-kindle-get-started/enable-device-messaging.png)
+    1. Następnie wybierz **Wyświetl profil zabezpieczeń** na stronie wyników. 
+1. Teraz na **profil zabezpieczeń** wykonaj następujące czynności: 
     1. Przełącz się do **ustawień sieci Web** , a następnie skopiuj **identyfikator klienta** i **klucz tajny klienta** wartości do późniejszego użycia. 
 
         ![Pobierz klucz tajny i identyfikator klienta](./media/notification-hubs-kindle-get-started/client-id-secret.png) 
@@ -314,6 +325,36 @@ W tym samouczku utworzysz/zaktualizujesz kod, aby wykonać następujące zadania
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
     ```
+## <a name="create-an-adm-object"></a>Utwórz obiekt usługi ADM
+1 w `MainActivity.java` Dodaj następujące instrukcje importu:
+
+    ```java
+    import android.os.AsyncTask;
+    import android.util.Log;
+    import com.amazon.device.messaging.ADM;
+    ```
+2. Dodaj następujący kod na końcu metody `OnCreate`:
+
+    ```java
+    final ADM adm = new ADM(this);
+    if (adm.getRegistrationId() == null)
+    {
+        adm.startRegister();
+    } else {
+        new AsyncTask() {
+                @Override
+                protected Object doInBackground(Object... params) {
+                    try {                         MyADMMessageHandler.getNotificationHub(getApplicationContext()).register(adm.getRegistrationId());
+                    } catch (Exception e) {
+                        Log.e("com.wa.hellokindlefire", "Failed registration with hub", e);
+                        return e;
+                    }
+                    return null;
+                }
+            }.execute(null, null, null);
+    }
+    ```
+
 
 ## <a name="add-your-api-key-to-your-app"></a>Dodawanie klucza interfejsu API do aplikacji
 1. Wykonaj następujące kroki, aby dodać folder zasobów do projektu. 

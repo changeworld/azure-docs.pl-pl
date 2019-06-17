@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: c3e483a33d986eff767b3529e30208319ad90b23
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935001"
 ---
 <a name="get-customer-leads"></a>Pozyskiwanie potencjalnych klientów
@@ -85,7 +85,7 @@ W polach w poniższym przykładzie wyświetlane informacje o kliencie, który je
 - Imię: Jan
 - Nazwisko: Smith
 - Adres e-mail: jsmith\@microsoft.com
-- Telefon: 1234567890
+- Numer telefonu: 1234567890
 - Kraj: USA
 - Firmy: Microsoft
 - Tytuł: DYREKTOR DS. TECHNOLOGII

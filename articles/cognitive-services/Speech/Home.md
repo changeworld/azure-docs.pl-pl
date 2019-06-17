@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d2c7211831658a18e65e04aa753607f4eb22dac8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515087"
 ---
 # <a name="what-is-bing-speech"></a>Co to jest rozpoznawanie mowy Bing?
@@ -37,8 +37,8 @@ Interfejs API rozpoznawania mowy Microsoft *transcribes* strumieni audio na teks
 | Przypadki zastosowań | [Interfejsy API REST](GetStarted/GetStartedREST.md) | [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
 | Konwertuj krótko wypowiedzi audio, na przykład poleceń (audio długość < 15 s) bez wyników pośrednich | Yes | Yes |
-| Konwertuj długie audio (> 15 s) | Nie | Yes |
-| Dźwięk Stream z wyników pośrednich żądanego | Nie | Yes |
+| Konwertuj długie audio (> 15 s) | Nie | Tak |
+| Dźwięk Stream z wyników pośrednich żądanego | Nie | Tak |
 | Zrozumienie tekstu skonwertowaniu dźwięku za pomocą usługi LUIS | Nie | Yes |
 
 Niezależnie od deweloperów podejście wybierz (interfejsy API REST lub bibliotek klienckich), usługa Microsoft speech service obsługuje następujące:

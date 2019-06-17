@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 19/02/2019
 ms.author: v-mohabe
 ms.openlocfilehash: fe8ceb8c196f7329027502847fba481169458d86
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966786"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączanie do usługi Azure Security Center w warstwie standardowa celu uzyskania zwiększonych zabezpieczeń
@@ -57,7 +57,7 @@ Aby uaktualnić subskrypcję lub obszar roboczy na warstwę standardowa:
    >
    >
 
-## <a name="onboard-non-azure-computers"></a>Dodawanie komputerów spoza platformy Azure
+## <a name="onboard-non-azure-computers"></a>Dodawanie komputerów nienależących do platformy Azure
 Usługa Security Center może monitorować stan bezpieczeństwa komputerów nienależących do platformy Azure, ale musisz najpierw dołączyć te zasoby. Można dodać komputery spoza platformy Azure z **wprowadzenie** bloku lub **obliczenia** bloku. Omówimy obu tych metod.
 
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>Dodać nowe komputery spoza platformy Azure z **wprowadzenie**
@@ -65,11 +65,11 @@ Usługa Security Center może monitorować stan bezpieczeństwa komputerów nien
 1. Wróć do **wprowadzenie**.   
 2. Wybierz kartę **Rozpoczęcie pracy**.
 
-   ![Poza platformą Azure](./media/security-center-onboarding/non-azure.png)
+   ![Non-Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**. Zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 
-   ![Dodaj komputer spoza platformy Azure][7]
+   ![Dodawanie komputera spoza platformy Azure][7]
 
 W przypadku istniejących obszarów roboczych są wymienione w obszarze **dodać nowe komputery spoza platformy Azure**. Możesz dodać komputery do istniejącego obszaru roboczego, lub Utwórz nowy obszar roboczy. Aby utworzyć nowy obszar roboczy, wybierz link **Dodaj nowy obszar roboczy**.
 
@@ -94,7 +94,7 @@ Możesz dodać komputer, postępując zgodnie z przepływu pracy od **dołączan
 
 1. Wróć do menu głównego usługi Security Center i **Przegląd** pulpitu nawigacyjnego.
 
-   ![Przegląd][5]
+   ![Omówienie][5]
 
 2. Wybierz **obliczenia i aplikacje**.
 3. W obszarze **obliczenia i aplikacje**, wybierz opcję **dodawania komputerów**.

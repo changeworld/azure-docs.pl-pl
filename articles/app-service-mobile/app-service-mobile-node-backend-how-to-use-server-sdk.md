@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128104"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu SDK środowiska Node.js w aplikacji mobilnej
@@ -374,7 +374,7 @@ Większość ustawień w pliku azureMobile.js ma ustawienia aplikacji równoważ
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |name |Nazwa aplikacji |string |
 | **MS_MobileLoggingLevel** |logging.level |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje o verbose, debug, niemądre |
-| **MS_DebugMode** |debuguj |Włącza lub wyłącza tryb debugowania |wartość true, false |
+| **MS_DebugMode** |Debugowanie |Włącza lub wyłącza tryb debugowania |wartość true, false |
 | **MS_TableSchema** |data.schema |Domyślna nazwa schematu dla tabel programu SQL |ciąg (domyślne: dbo) |
 | **MS_DynamicSchema** |data.dynamicSchema |Włącza lub wyłącza tryb debugowania |wartość true, false |
 | **MS_DisableVersionHeader** |Wersja (ustawione do niezdefiniowanego) |Wyłącza nagłówka X-ZUMO-Server-Version |wartość true, false |
@@ -404,7 +404,7 @@ Za pomocą usługi Azure SQL Database do przechowywania danych jest identyczna w
 1. W **grupy zasobów** wprowadź taką samą nazwę co aplikacja.
 1. Wybrano domyślny plan usługi App Service. Jeśli chcesz zmienić plan usługi App Service:
 
-   a. Wybierz **planu usługi App Service** > **+ Utwórz nowe**.
+   a. Wybierz **planu usługi App Service** >  **+ Utwórz nowe**.
 
    b. Podaj nazwę nowego planu usługi App Service, a następnie wybierz odpowiednią lokalizację.
 
@@ -422,7 +422,7 @@ Można połączyć z istniejącej bazy danych SQL do zaplecza funkcji Mobile App
 > [!NOTE]
 > Jeśli masz już bazę danych w tej samej lokalizacji jako zaplecze funkcji Mobile Apps, zamiast tego można wybrać **Użyj istniejącej bazy danych** i następnie wybrać tę bazę danych. Korzystanie z bazy danych w innej lokalizacji nie jest zalecane z powodu większych opóźnień.
 
-1. Nowe zaplecze funkcji Mobile Apps, wybierz **ustawienia** > **aplikacji mobilnej** > **danych** > **+ Dodaj**.
+1. Nowe zaplecze funkcji Mobile Apps, wybierz **ustawienia** > **aplikacji mobilnej** > **danych** >  **+ Dodaj**.
 1. W **Dodaj połączenie danych** okienku wybierz **bazy danych SQL — Skonfiguruj wymagane ustawienia** > **Utwórz nową bazę danych**. Wprowadź nazwę nowej bazy danych w **nazwa** pole.
 1. Wybierz **serwera**. W **nowy serwer** okienku, wprowadź unikatową nazwę serwera w **nazwy serwera** polu, a następnie podaj odpowiedni serwer oraz hasło logowania administratora. Upewnij się, że **Zezwalaj usługom platformy azure na dostęp do serwera** jest zaznaczone. Kliknij przycisk **OK**.
 
@@ -942,7 +942,7 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 
 1. W okienku wybierz opcję dla zaplecza usługi Mobile Apps **wszystkie ustawienia** > albo **łatwych tabel** lub **łatwe interfejsy API**. Wybierz tabelę lub interfejsu API, a następnie wybierz **Przeprowadź edycję skryptu**. Plik skryptu zostanie otwarty w edytorze usługi aplikacji.
 
-   ![Edytor usługi App Service](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+   ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 1. Wprowadź zmiany do pliku kodu w edytorze online. Zmiany są zapisywane automatycznie podczas pisania.
 
 <!-- Images -->

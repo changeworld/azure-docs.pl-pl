@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a18d0b5ebc9aef1f8fa03d6351e53e4df6d9931f
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65601995"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Dokumentacja programu Azure AD SAML tokenu
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) emituje kilka rodzajów tokenów zabezpieczaj�
 > [!div class="mx-codeBreakAll"]
 > | Name (Nazwa) | Equivalent JWT Claim | Opis | Przykład |
 > | --- | --- | --- | ------------|
-> |Odbiorcy | `aud` |Adresat tokenu. Aplikację, która odbiera token musi sprawdzić, czy wartość odbiorców jest poprawny i odrzucić wszystkie tokeny przeznaczone dla różnych odbiorców. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
+> |Grupy odbiorców | `aud` |Adresat tokenu. Aplikację, która odbiera token musi sprawdzić, czy wartość odbiorców jest poprawny i odrzucić wszystkie tokeny przeznaczone dla różnych odbiorców. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Błyskawiczne uwierzytelnianie | |Rejestruje datę i godzinę wystąpienia uwierzytelniania. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
 > |Metoda uwierzytelniania | `amr` |Określa, jak został uwierzytelniony podmiot tokenu. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |Imię | `given_name` |Zawiera pierwszy lub "" Nazwa użytkownika, według stawki ustalonej w obiekcie użytkownika usługi Azure AD. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |

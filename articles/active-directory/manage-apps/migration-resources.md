@@ -12,12 +12,12 @@ ms.date: 09/19/2018
 ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12370d54500dbc1fcd6f812206fdfea3e5298112
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b39704b25c26998e16ca8080c4e44dd1adf6965c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108210"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zasoby dotyczące migrowania aplikacji do usługi Azure Active Directory
 
@@ -32,6 +32,6 @@ Zasoby pomagające w migracji do usługi Azure Active Directory (Azure AD) dost�
 | [Plan wdrożenia: Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/ADFSTOPTADPDownload)|Uwierzytelnianie przekazywane usługi Azure AD pomaga użytkownikom na logowanie się zarówno lokalnie, jak i aplikacji działających w chmurze przy użyciu tego samego hasła. Ta funkcja zapewnia użytkownikom lepsze środowisko, ponieważ mają one mniej jedno hasło do zapamiętania. Zmniejsza to także koszty pomocy technicznej IT, ponieważ użytkownicy są mniej prawdopodobne, należy zapominać, jak mają logować się, gdy potrzebują do zapamiętania hasło. Gdy użytkownicy logują się za pomocą usługi Azure AD, ta funkcja weryfikuje ich hasła bezpośrednio w lokalnej usłudze Active Directory.|
 | [Plan wdrożenia: Włączanie logowania jednokrotnego do aplikacji SaaS z usługą Azure AD](https://aka.ms/SSODPDownload) | Pojedynczego logowania jednokrotnego (SSO) ułatwia dostęp wszystkie aplikacje i zasoby niezbędne do prowadzenia firmy, podczas logowania się tylko raz, za pomocą jednego konta użytkownika. Na przykład po zalogowaniu się użytkownika, użytkownik może przechodzić z Microsoft Office, do usługi SalesForce do usługi Box bez uwierzytelniania (na przykład wpisanie hasła) po raz drugi. 
 | [Plan wdrożenia: Rozszerzanie aplikacji do usługi Azure AD przy użyciu serwera Proxy aplikacji](https://aka.ms/AppProxyDPDownload)| Dostęp z komputerów przenośnych pracowników i innych urządzeń do lokalnych aplikacji został użyty tradycyjnie, wirtualnych sieci prywatnych (VPN) lub stref zdemilitaryzowaną (stref DMZ). Te rozwiązania nie tylko są skomplikowane i trudne do zabezpieczenia, ale też mają wysokie koszty konfigurowania i zarządzania. Serwer Proxy aplikacji usługi Azure AD ułatwia dostęp do aplikacji lokalnych. |
-| [Plany wdrożenia](../fundamentals/active-directory-deployment-plans.md) | Znajdź więcej planów wdrożenia dotyczące wdrażania funkcji, takich jak uwierzytelnianie wieloskładnikowe, dostęp warunkowy, aprowizacji użytkowników, bezproblemowego logowania jednokrotnego, samoobsługowego resetowania haseł i więcej! |
+| [Plany wdrożenia](../fundamentals/active-directory-deployment-plans.md) | Znajdź więcej planów wdrożenia dotyczące wdrażania funkcji, takich jak uwierzytelnianie wieloskładnikowe, dostęp warunkowy, inicjowanie obsługi użytkowników, bezproblemowe logowanie Jednokrotne, Samoobsługowe resetowanie haseł i więcej! |
 
 

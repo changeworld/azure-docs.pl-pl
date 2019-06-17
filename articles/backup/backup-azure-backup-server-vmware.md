@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
 ms.openlocfilehash: f034f31f2c8c49bbdfb88e2ba0a009ff5b795fa2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65789603"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware za pomocą usługi Azure Backup Server
@@ -27,7 +27,7 @@ W tym artykule opisano sposób:
 - Dodaj vCenter lub ESXi server do usługi Azure Backup Server.
 - Skonfiguruj grupę ochrony, która zawiera maszyny wirtualne VMware, które chcesz utworzyć kopię zapasową, określ ustawienia kopii zapasowej i zaplanować tworzenie kopii zapasowej.
 
-## <a name="before-you-start"></a>Zanim rozpoczniesz
+## <a name="before-you-start"></a>Przed rozpoczęciem
 - Sprawdź, czy jest używana wersja programu vCenter/ESXi, która jest obsługiwana dla kopii zapasowej — wersji 6.5, 6.0 i 5.5.
 - Upewnij się, że po skonfigurowaniu serwera usługi Azure Backup. Jeśli jeszcze tego nie, [zrobić](backup-azure-microsoft-azure-backup.md) przed rozpoczęciem. Usługi Azure Backup Server powinna być uruchomiona z najnowszymi aktualizacjami.
 
@@ -37,7 +37,7 @@ W tym artykule opisano sposób:
 Domyślnie usługi Azure Backup Server komunikuje się z serwerami VMware przy użyciu protokołu HTTPS. Aby skonfigurować połączenie HTTPS, Pobierz certyfikat VMware urząd certyfikacji (CA) i zaimportuj go na serwerze usługi Azure Backup.
 
 
-### <a name="before-you-start"></a>Zanim rozpoczniesz
+### <a name="before-you-start"></a>Przed rozpoczęciem
 
 - Jeśli nie chcesz używać protokołu HTTPS można [wyłączyć weryfikację certyfikatów protokołu HTTPS dla wszystkich serwerów VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Zazwyczaj połączyć się za pomocą przeglądarki na komputerze serwera usługi Azure Backup na serwerze vCenter/ESXi, przy użyciu kliencie internetowym vSphere. Po raz pierwszy w tym połączenia nie jest bezpieczne i będzie można zobaczyć następujące informacje.
@@ -140,7 +140,7 @@ Usługi Azure Backup Server należy konto użytkownika z uprawnieniami dostępu 
 
      ![Uprawnienie hierarchii nadrzędny-podrzędny](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
-### <a name="role-permissions"></a>Uprawnienia ról
+### <a name="role-permissions"></a>Uprawnienia roli
 **6.5/6.0** | **5.5**
 --- | ---
 Datastore.AllocateSpace | Datastore.AllocateSpace
@@ -245,7 +245,7 @@ Dodawanie serwera vCenter do serwera usługi Azure Backup.
 
      ![Kreator dodawania serwerów produkcyjnych](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
-3. W **wybierz komputery****nazwa/adres IP serwera**, określ nazwę FQDN lub adres IP serwera VMware. Jeśli wszystkie serwery ESXi są zarządzane przez ten sam program vCenter, należy określić nazwę vCenter. W przeciwnym razie Dodaj hosta ESXi.
+3. W **wybierz komputery** **nazwa/adres IP serwera**, określ nazwę FQDN lub adres IP serwera VMware. Jeśli wszystkie serwery ESXi są zarządzane przez ten sam program vCenter, należy określić nazwę vCenter. W przeciwnym razie Dodaj hosta ESXi.
 
     ![Określ serwer VMware](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 
@@ -359,7 +359,7 @@ Do tworzenia kopii zapasowej vSphere 6.7 wykonaj następujące czynności:
 
 - Włącz szyfrowanie TLS 1.2 na serwerze programu DPM
   >[!Note]
-  >6.7 VMWare lub nowszym ma włączony TLS jako protokołu komunikacyjnego.
+  >6\.7 VMWare lub nowszym ma włączony TLS jako protokołu komunikacyjnego.
 
 - Ustawić klucze rejestru w następujący sposób:  
 

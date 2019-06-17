@@ -3,18 +3,18 @@ title: Definiowanie nowego typu urządzenia w usłudze Azure IoT Central | Micro
 description: Ten samouczek przedstawia, jak konstruktor może zdefiniować nowy typ urządzenia w aplikacji usługi Azure IoT Central. Dla typu można zdefiniować telemetrię, stan, właściwości i ustawienia.
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/28/2019
+ms.date: 06/07/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54884728533aeff0472ed99660be00478227fbcd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60748753"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056783"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
@@ -176,7 +176,7 @@ Użyj zdarzeń, aby zdefiniować dane wysyłane przez urządzenie w momencie wys
      | -------------------- | -----------       |
      | Nazwa wyświetlana         | Błąd silnika wentylatora   |
      | Nazwa pola           | fanmotorerr       |
-     | Ważność             | Błąd             |
+     | Severity             | Błąd             |
 
      Aby zapisać definicji zdarzenia, wybierz pozycję **Zapisz**:
 
@@ -386,7 +386,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
     | Ustawienie      | Wartość       |
     | ------------ | ----------- |
-    | Tytuł        | Temperatura |
+    | Stanowisko        | Temperatura |
     | Zakres czasu   | Ostatnie 30 minut |
     | Miary     | Temperatura (wybierz **widoczność** obok **temperatury**) |
 
@@ -398,7 +398,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
     | Ustawienie      | Wartość       |
     | ------------ | ----------- |
-    | Tytuł        | Zdarzenia silnika wentylatora |
+    | Stanowisko        | Zdarzenia silnika wentylatora |
     | Zakres czasu   | Ostatnie 30 minut |
     | Miary     | Wentylator Motor błędu (wybierz **widoczność** obok **błąd Motor wentylator**) |
 
@@ -410,7 +410,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
     | Ustawienie      | Wartość       |
     | ------------ | ----------- |
-    | Tytuł        | Tryb wentylatora |
+    | Stanowisko        | Tryb wentylatora |
     | Zakres czasu   | Ostatnie 30 minut |
     | Miary | Wentylator trybu (wybierz **widoczność** obok **wentylator tryb**) |
 
@@ -424,7 +424,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
     | Ustawienie                 | Wartość         |
     | ----------------------- | ------------- |
-    | Tytuł                   | Właściwości urządzenia |
+    | Stanowisko                   | Właściwości urządzenia |
     | Ustawienia i właściwości | Ustaw temperaturę<br/>Numer seryjny<br/>Wersja oprogramowania układowego |
 
     Ustawienia i właściwości zdefiniowane wcześniej na stronach **Ustawienia i właściwości** są wyświetlone w polu **Dostępne kolumny**.

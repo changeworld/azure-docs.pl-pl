@@ -1,5 +1,5 @@
 ---
-title: Zasady dostępu warunkowego do ochrony linii bazowej — usługi Azure Active Directory
+title: Zasady dostępu warunkowego punktu odniesienia ochrona — Azure Active Directory
 description: Zasady dostępu warunkowego punktu odniesienia do ochrony organizacji przed typowymi atakami
 services: active-directory
 ms.service: active-directory
@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca062f4024bb5b0946812e00c8ccc1254b56d333
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 39a591a335d022ef7b2b99fdec930ddf0496cd47
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112589"
 ---
 # <a name="what-are-baseline-policies"></a>Co to są zasady linii bazowej?
 
 Zasady linii bazowej to zestaw wstępnie zdefiniowane zasady, które pomagają w ochronie organizacji przed wieloma typowymi atakami. Te typowymi atakami może zawierać hasła osłony, metodą powtórzeń i wyłudzania informacji. Zasady linii bazowej są dostępne we wszystkich wersjach programu Azure AD. Microsoft udostępnia te zasady ochrony linii bazowej dla wszystkich użytkowników ponieważ atakami opartymi na tożsamości zostały rośnie w ciągu ostatnich kilku lat. Celem tych czterech zasad jest upewnij się, że wszystkie organizacje poziomie linii bazowej zabezpieczeń włączone bez dodatkowych kosztów.  
 
-Zarządzanie zasadami dostępu warunkowego dostosowane wymaga licencji usługi Azure AD Premium.
+Zarządzanie dostosowane zasady dostępu warunkowego wymaga licencji usługi Azure AD Premium.
 
 ## <a name="baseline-policies"></a>Zasady punktu odniesienia
 
-![Zasady linii bazowej dostępu warunkowego w witrynie Azure portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Zasady dostępu warunkowego dostępu do linii bazowej w witrynie Azure portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Istnieją cztery zasady linii bazowej, umożliwiające organizacjom:
 
@@ -50,7 +50,7 @@ Z powodu siły i dostępu, który ma konta administratora należy potraktować j
 * Administrator zabezpieczeń
 * Administrator pomocy technicznej / administrator haseł
 * Administrator rozliczeń
-* Administrator użytkownika
+* Administrator użytkowników
 
 Jeśli Twoja organizacja ma konta te używane w skryptach lub kod, należy wziąć pod uwagę zastępowała je za pomocą [zarządzanych tożsamości](../managed-identities-azure-resources/overview.md). Jako rozwiązanie tymczasowe można wykluczyć określone konta użytkowników z zasad linii bazowej.
 

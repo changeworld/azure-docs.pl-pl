@@ -17,10 +17,10 @@ ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236892"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Obciążeń SAP na Azure Lista kontrolna dotycząca planowania i wdrażania 
@@ -157,7 +157,7 @@ Przed lub w sposób równoległy do projektu, planowania i przygotowania, można
    3.  Upewnij się, że wszystkie zasoby, które muszą być szyfrowane są szyfrowane. Definiowanie i wykonywanie procesów Utwórz kopię zapasową certyfikaty, przechowywać, dostęp do tych certyfikatów i przywracania zaszyfrowanych jednostek. 
    4.  Użyj [usługi Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) i/lub dysków systemu operacyjnego, gdzie to możliwe z systemem operacyjnym obsługują punktu widzenia
    5.  Sprawdź używano nie ma zbyt wielu warstw szyfrowania. Sensowne ograniczone do używania usługi Azure Disk encryption i następnie na pierwszych jednej z metod przezroczyste szyfrowanie bazy danych systemu DBMS
-6. Testowanie wydajnościowe
+6. Testowanie wydajności
    1.  W systemie SAP na podstawie śledzenia SAP i pomiary porównania najważniejsze 10 raporty online, aby bieżąca implementacja parametru, jeśli ma to zastosowanie 
    2.  W systemie SAP na podstawie śledzenia SAP i pomiary Porównaj 10 pierwszych zadań wsadowych, aby bieżąca implementacja parametru, jeśli ma to zastosowanie 
    3.  W systemie SAP na podstawie śledzenia SAP i pomiary Porównaj transfery danych za pośrednictwem interfejsów w systemie SAP. Skup się na interfejsach, gdy wiadomo, że transfer posłuży między różnymi lokalizacjami, jak ze środowiska lokalnego do platformy Azure 
@@ -183,7 +183,7 @@ W tej fazie przyjęto założenie, że po pilotażowego lub weryfikacji koncepcj
 11. Wykonaj inne kontrole, zgodnie z opisem w fazie weryfikacji koncepcji przed zastosowaniem obciążenia
 12. Ponieważ obciążenie ma zastosowanie, rejestrowanie użycia zasobów w tych systemów na platformie Azure i porównać z uzyskana z platformą stare rekordy. Jeśli widzisz, że masz większe różnice, należy dostosować zmianę rozmiaru maszyny Wirtualnej przyszłych wdrożeń. Należy pamiętać, że w przypadku redukcję zatrudnienia, magazynu i przepustowości sieci maszyny wirtualnej zostanie ona zredukowana także:
     1.  [Rozmiary maszyn wirtualnych Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). 
-    2.  [Rozmiary maszyn wirtualnych systemu Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    2.  [Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Działa w systemie funkcji kopiowania i procesów. Celem jest, to ułatwia umożliwiające kopiowanie systemie deweloperskim lub system testowy tak, które zespoły projektu można nowych systemów szybkiego uzyskania. Należy wziąć pod uwagę [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) jako narzędzie do wykonywania takich zadań.
 14. Optymalizuj i doskonalenie zespołu uzyskuje dostęp do platformy Azure opartej na rolach, uprawnienia i procesów w celu upewnij się, że separacji należności na jednej stronie. Na tej stronie chcesz mieć wszystkie zespoły włączona w celu wykonywania zadań w ramach infrastruktury platformy Azure.
 15. Wykonywania, testów i procedur dokumentu wysoką dostępność i odzyskiwanie po awarii odzyskiwania aby umożliwić pracownikom wykonywanie takich zadań. Identyfikowanie braków i dostosowania są integrowanie Twoich wdrożeń na nowych funkcji platformy Azure

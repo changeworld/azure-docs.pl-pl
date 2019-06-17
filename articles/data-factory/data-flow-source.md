@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5b53819c1d30f6cd62c5941d4b44d70a4996daad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67117876"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcenie źródła dla mapowania przepływu danych 
 
@@ -65,13 +65,13 @@ Nazwy kolumn w transformacji wybierz można później zmienić. Umożliwia takż
 
 Na **Optymalizacja** karta Przekształcenie źródła może zostać wyświetlony **źródła** partycji typu. Ta opcja jest dostępna tylko wtedy, gdy źródłem jest usługa Azure SQL Database. Jest to spowodowane usługi Data Factory stara się połączenia równolegle uruchamiać duże zapytania źródło bazy danych SQL.
 
-![Ustawienia partycji źródła](media/data-flow/sourcepart2.png "partycjonowania")
+![Ustawienia partycji źródła](media/data-flow/sourcepart3.png "partycjonowania")
 
 Nie masz do partycjonowania danych w źródle bazy danych SQL, ale partycje są przydatne w przypadku dużych kwerend. Można utworzyć partycji kolumny lub zapytanie.
 
 ### <a name="use-a-column-to-partition-data"></a>Użyj kolumny do partycjonowania danych
 
-Z tabeli źródłowej wybierz kolumnę do partycji na. Również ustawić maksymalną liczbę połączeń.
+Z tabeli źródłowej wybierz kolumnę do partycji na. Również ustawić liczbę partycji.
 
 ### <a name="use-a-query-to-partition-data"></a>Użyj zapytania do partycjonowania danych
 
@@ -84,9 +84,39 @@ Wybierz ustawienia do zarządzania plikami w źródle.
 ![Nowe ustawienia źródła](media/data-flow/source2.png "nowe ustawienia")
 
 * **Ścieżka symboli wieloznacznych**: Z folderu źródłowego wybierz serię plików, które pasują do wzorca. Ustawienie to zastępuje dowolny plik w definicji zestawu danych.
+
+Przykłady symboli wieloznacznych:
+
+* ```*``` Reprezentuje dowolny zestaw znaków
+* ```**``` Reprezentuje zagnieżdżanie katalogu cykliczne
+* ```?``` Zastępuje jeden znak
+* ```[]``` Pasuje do jednej więcej znaków w nawiasach
+
+* ```/data/sales/**/*.csv``` Pobiera wszystkie pliki csv w ramach /data/sales
+* ```/data/sales/20??/**``` Pobiera wszystkie pliki w XX wieku
+* ```/data/sales/2004/*/12/[XY]1?.csv``` Pobiera wszystkie pliki csv w 2004 w grudniu, począwszy od X lub Y poprzedzony 2-cyfrowy numer
+
+Kontener musi być w zestawie danych. Ścieżki symboli wieloznacznych w związku z tym należy również uwzględnić swoje ścieżkę folderu w folderze głównym.
+
 * **Lista plików**: Jest to zestaw plików. Utwórz plik tekstowy, który zawiera listę plików ścieżkę względną do przetworzenia. Wskaż to plik tekstowy.
 * **Kolumny do przechowywania nazwy pliku**: Store nazwę pliku źródłowego w kolumnie w Twoich danych. Wprowadź nową nazwę do przechowywania ciągu nazwy pliku.
 * **Po zakończeniu**: Wybierz nic nie rób z plikiem źródłowym, po danych przebiegi przepływu, usuń plik źródłowy lub Przenieś plik źródłowy. Ścieżki na czas przeprowadzki są względne.
+
+Aby przenieść pliki źródłowe do innej lokalizacji przetwarzania końcowego, najpierw wybierz "Przenieś" dla operacji pliku. Następnie ustaw katalog "od". Jeśli nie używasz żadnych symboli wieloznacznych dotyczące ścieżki, a następnie "ustawienie od" będzie tym samym folderze co folderu źródłowego.
+
+Jeśli masz ścieżkę źródłową ze znakami wieloznacznymi, np:
+
+```/data/sales/20??/**/*.csv```
+
+Można określić jako "od"
+
+```/data/sales```
+
+A "do" jako
+
+```/backup/priorSales```
+
+W takim przypadku wszystkie podkatalogi, w obszarze /data/sales, które zostały źródło są przenoszone względem /backup/priorSales.
 
 ### <a name="sql-datasets"></a>Zestawy danych SQL
 

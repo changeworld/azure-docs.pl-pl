@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: v-mohabe
 ms.openlocfilehash: cc0c319357b39ddb3e88d515613273a6f7dc0867
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968804"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>File Integrity Monitoring w usłudze Azure Security Center
@@ -112,7 +112,7 @@ Wybieranie filtru w górnej części pulpitu nawigacyjnego umożliwia zastosowan
 
 **Wyszukiwania w dzienniku** zostanie otwarta po wprowadzeniu nazwy komputera w wyszukiwaniu pola lub wybierz maszynę, na liście na karcie komputery. Wyszukiwanie w dzienniku Wyświetla wszystkie zmiany wprowadzone w czasie wybranego przedziału czasu dla maszyny. Można rozwinąć zmiany, aby uzyskać więcej informacji.
 
-![Wyszukiwanie w dziennikach][8]
+![Przeszukiwanie dzienników][8]
 
 **Zmiany** (pokazana poniżej) zawiera listę wszystkich zmian dla obszaru roboczego w wybranym okresie. Dla każdej jednostki, który został zmieniony na listach pulpitu nawigacyjnego:
 

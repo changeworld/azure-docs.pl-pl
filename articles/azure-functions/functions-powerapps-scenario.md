@@ -13,10 +13,10 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65786111"
 ---
 # <a name="call-a-function-from-powerapps"></a>Wywoływanie funkcji z usługi PowerApps
@@ -82,7 +82,7 @@ Teraz możesz przystąpić do tworzenia aplikacji w usłudze PowerApps, a nastę
 
     **(B) środkowym okienku**, które pokazuje ekran pracujesz nad
 
-    **W okienku po prawej stronie (C)**, w którym określane są opcje, takie jak układ i źródła danych
+    **W okienku po prawej stronie (C)** , w którym określane są opcje, takie jak układ i źródła danych
 
     **(D) właściwość** listy rozwijanej, wybierania właściwości, które dotyczą formuły
 
@@ -136,7 +136,7 @@ Skoro źródeł danych są dostępne w aplikacji, aby można było wyświetlić 
 
 1. W **danych** panelu wybierz **turbiny** z listy.
 
-    ![Wybierz źródło danych](media/functions-powerapps-scenario/select-data-source.png)
+    ![Wybieranie źródła danych](media/functions-powerapps-scenario/select-data-source.png)
 
     Zestaw danych nie zawiera obrazu, tak aby następnie zmienisz układ, aby lepiej dopasować się dane. 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1828cdce66104424cc7845fea89127219e6b77a0
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190410"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137263"
 ---
 # <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
 
@@ -66,8 +66,8 @@ Parametry konfiguracji są dostarczane jako dane JSON:
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<local to us, for example en-US>",
-  "name": "<user define name of the transcription batch>",
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
     "ProfanityFilterMode": "Masked",
@@ -83,12 +83,14 @@ Parametry konfiguracji są dostarczane jako dane JSON:
 
 ### <a name="configuration-properties"></a>Właściwości konfiguracji
 
-| Parametr | Opis | Wymagane / opcjonalne |
-|-----------|-------------|---------------------|
-| `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza filtrowanie wulgaryzmów `masked` gwiazdek, która zastępuje wulgaryzmów `removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `masked`. | Optional (Opcjonalność) |
-| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. | Opcjonalne |
- | `AddWordLevelTimestamps` | Określa, jeśli sygnatury czasowe z poziomu programu word powinna być dodana do danych wyjściowych. Akceptowane wartości to `true` umożliwiająca sygnatury czasowe z poziomu programu word i `false` (wartość domyślna) można ją wyłączyć. | Opcjonalne |
- | `AddSentiment` | Określa, że wskaźniki nastrojów klientów powinny zostać dodane do wypowiedź. Akceptowane wartości to `true` umożliwiająca tonacji na wypowiedź i `false` (wartość domyślna) można ją wyłączyć. | Opcjonalne |
+Aby skonfigurować transkrypcji, wykonaj następujące opcjonalne właściwości:
+
+| Parametr | Opis |
+|-----------|-------------|
+| `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza filtrowanie wulgaryzmów `masked` gwiazdek, która zastępuje wulgaryzmów `removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `masked`. |
+| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. |
+ | `AddWordLevelTimestamps` | Określa, jeśli sygnatury czasowe z poziomu programu word powinna być dodana do danych wyjściowych. Akceptowane wartości to `true` umożliwiająca sygnatury czasowe z poziomu programu word i `false` (wartość domyślna) można ją wyłączyć. |
+ | `AddSentiment` | Określa, że wskaźniki nastrojów klientów powinny zostać dodane do wypowiedź. Akceptowane wartości to `true` umożliwiająca tonacji na wypowiedź i `false` (wartość domyślna) można ją wyłączyć. |
 
 ### <a name="storage"></a>Magazyn
 
@@ -100,6 +102,40 @@ Sondowania stanu transkrypcji nie może być większość wydajne lub zapewnia n
 
 Aby uzyskać więcej informacji, zobacz [elementów Webhook](webhooks.md).
 
+## <a name="speaker-separation-diarization"></a>Rozdzielenie osoby mówiącej (Diarization)
+
+Diarization jest proces głośników w fragmentu audio. Nasz potok usługi Batch obsługuje Diarization i jest w stanie rozpoznawać dwóch prelegentów na nagrania mono kanału.
+
+Aby zażądać, że żądania transkrypcję audio są przetwarzane dla diarization, wystarczy dodać odpowiedniego parametru w żądaniu HTTP, jak pokazano poniżej.
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+Sygnatury czasowe z poziomu programu Word będzie również musiał zostać "włączona", jak wskazać parametrów w żądaniu powyżej. 
+
+Odpowiadające im pliki audio będzie zawierać Prelegenci identyfikowana przez numer (obecnie obsługujemy tylko dwa głosy, więc prelegentów zostaną zidentyfikowane jako "osoby mówiącej 1" i "Osoby mówiącej 2") następuje dane wyjściowe transkrypcji.
+
+Należy również zauważyć, że Diarization nie jest dostępna w Stereo nagrania. Ponadto JSON wszystkie dane wyjściowe będą zawierać tag osoby mówiącej. Jeżeli nie zastosowano diarization, widoczna będzie "osoby mówiącej: Wartość null "w kodzie JSON, dane wyjściowe.
+
+Poniżej przedstawiono obsługiwanych ustawień regionalnych.
+
+| Język | Ustawienia regionalne |
+|--------|-------|
+| Polski | en-US |
+| Chiński | zh-CN |
+| Deutsch | de-DE. |
+
 ## <a name="sentiment"></a>Opinia
 
 Wskaźniki nastrojów klientów jest nowa funkcja interfejsu API usługi Batch transkrypcji i ważną funkcję w domenie Centrum połączenia. Klienci mogą używać `AddSentiment` parametrów na ich żądania 
@@ -110,7 +146,7 @@ Wskaźniki nastrojów klientów jest nowa funkcja interfejsu API usługi Batch t
 4.  Wykrywanie, co poszło dobrze w przypadku, gdy włączenie wywołania ujemny wynik dodatni
 5.  Identyfikowanie klientów lubi i co one podoba produktu lub usługi
 
-Wynik tonacji skategoryzowano według segmentu audio, gdzie audio segmentu jest zdefiniowany jako okres od początku wypowiedź (przesunięciem) i wyciszenia wykrywania końca strumienia bajtów. Cały tekst w tym segmencie jest używane do obliczania wskaźniki nastrojów klientów. Firma Microsoft nie obliczać wartości tonacji agregacji całego połączenia lub całego mowy poszczególnych kanałów. Te są pozostawiane do właściciela domeny, do dalszego zastosowania.
+Wynik tonacji skategoryzowano według segmentu audio, gdzie audio segmentu jest zdefiniowany jako okres od początku wypowiedź (przesunięciem) i wyciszenia wykrywania końca strumienia bajtów. Cały tekst w tym segmencie jest używane do obliczania wskaźniki nastrojów klientów. Firma Microsoft nie obliczać wartości tonacji agregacji całego połączenia lub całego mowy poszczególnych kanałów. Tych agregacji są pozostawiane do właściciela domeny, do dalszego zastosowania.
 
 Wskaźniki nastrojów klientów są stosowane w formularzu leksykalne.
 
@@ -149,11 +185,11 @@ Przykładowe dane wyjściowe JSON wygląda jak poniżej:
   ]
 }
 ```
-Funkcje korzysta z modelu tonacji, która jest obecnie dostępna w wersji Beta.
+Funkcja korzysta z modelu tonacji, która jest obecnie dostępna w wersji Beta.
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Pełny przykład jest dostępny w [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples) wewnątrz `samples/batch` podkatalogu.
+Pełne przykłady są dostępne w [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples) wewnątrz `samples/batch` podkatalogu.
 
 Trzeba dostosować przykładowego kodu, informacje o subskrypcji, usługa region sygnatury dostępu Współdzielonego identyfikator URI wskazujący na plik dźwiękowy transkrypcja i identyfikatory modelu, w przypadku, gdy chcesz użyć niestandardowego modelu akustycznego lub języka. 
 

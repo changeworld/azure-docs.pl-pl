@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b18c4c039b615c7c88268b6e668df9f7fec9fabf
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 414573a90e5a7b7de845b65e6e88715a26024f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66687914"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125786"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Skopiuj dane z zasobników Amazon S3 za pomocą narzędzia AzCopy
 
@@ -49,6 +49,9 @@ Zbierz swój klucz dostępu AWS i klucz dostępu do kluczy tajnych, a następnie
 ## <a name="copy-objects-directories-and-buckets"></a>Kopiuje obiekty, katalogów i przedziałów
 
 Korzysta z narzędzia AzCopy [umieścić blok z adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) interfejsu API, dzięki czemu dane są kopiowane bezpośrednio między AWS S3, a serwery pamięci masowej. Przepustowość sieci na komputerze nie należy używać tych operacji kopiowania.
+
+> [!IMPORTANT]
+> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Jeśli zdecydujesz się usunąć dane z zasobników usługi S3, po zakończeniu operacji kopiowania, upewnij się sprawdzić, czy dane prawidłowo zostały skopiowane do konta magazynu, przed usunięciem danych.
 
 ### <a name="copy-an-object"></a>Kopiowanie obiektu
 

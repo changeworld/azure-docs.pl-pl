@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64716123"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu interfejsu REST
@@ -77,7 +77,7 @@ Dowiedz się, jak Apache Hive WebHCat interfejsu API REST umożliwia uruchomieni
    * **-u**: Wskazuje nazwę użytkownika i hasło używane do uwierzytelniania żądania
    * **-G**: Wskazuje, że ta operacja jest żądanie GET
 
-   Początek identyfikatora URI **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, jest taka sama dla wszystkich żądań.
+   Początek identyfikatora URI **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** , jest taka sama dla wszystkich żądań.
 
 4. Aby przesłać zadanie MapReduce, użyj następującego polecenia:
 

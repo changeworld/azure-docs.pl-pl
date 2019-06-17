@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 2bde63bb668188936b3dd3cf5ecbf3b8c604eb95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 87693caa5343e359bb3ab424de489c2270bbca62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564331"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704435"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Obsługa błędów w zasady usługi API Management
 
@@ -77,12 +77,12 @@ Podczas przetwarzania żądania wbudowanych kroki są wykonywane oraz wszystkie 
 
  Gdy wystąpi błąd i kontrola przechodzi do `on-error` sekcji zasady błędu są przechowywane w [kontekstu. LastError](api-management-policy-expressions.md#ContextVariables) właściwość, która może zostać oceniony przez zasady w `on-error` sekcji. LastError ma następujące właściwości.  
   
-| Name (Nazwa)     | Typ   | Opis                                                                                               | Wymagane |
-|----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Source   | string | Nazwy elementu, w którym wystąpił błąd. Może być zasad lub nazwa kroku wbudowanej potoku.     | Yes      |
-| Reason   | string | Kod błędu przyjaznego dla komputera, który może być używany do obsługi błędów.                                       | Nie       |
-| Message  | string | Opis błędu czytelny dla człowieka.                                                                         | Yes      |
-| Scope    | string | Nazwa zakresu, w którym wystąpił błąd i mogą mieć jedną z "global", "produkt", "interfejs api" lub "Operacja" | Nie       |
+| Name (Nazwa)       | Typ   | Opis                                                                                               | Wymagane |
+|------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
+| `Source`   | string | Nazwy elementu, w którym wystąpił błąd. Może być zasad lub nazwa kroku wbudowanej potoku.     | Yes      |
+| `Reason`   | string | Kod błędu przyjaznego dla komputera, który może być używany do obsługi błędów.                                       | Nie       |
+| `Message`  | string | Opis błędu czytelny dla człowieka.                                                                         | Tak      |
+| `Scope`    | string | Nazwa zakresu, w którym wystąpił błąd i mogą mieć jedną z "global", "produkt", "interfejs api" lub "Operacja" | Nie       |
 | `Section`  | string | Nazwa sekcji, w którym wystąpił błąd. Możliwe wartości: "dla ruchu przychodzącego", "wewnętrzna", "wychodzące" lub "on error".       | Nie       |
 | `Path`     | string | Określa zasady zagnieżdżonych, na przykład "Wybierz [3] / podczas [2]".                                                        | Nie       |
 | `PolicyId` | string | Wartość atrybutu `id` atrybutu, jeśli określony przez klienta w zasadach, w którym wystąpił błąd             | Nie       |
@@ -99,8 +99,8 @@ Podczas przetwarzania żądania wbudowanych kroki są wykonywane oraz wszystkie 
 | Source        | Warunek                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | konfiguracja | Identyfikator URI nie pasują do dowolnego interfejsu API lub operacji | OperationNotFound       | Nie można dopasować przychodzące żądanie operacji.                                                                      |
-| Autoryzacja | Klucz subskrypcji nie podano             | SubscriptionKeyNotFound | Odmowa z powodu braku subskrypcji klucz dostępu. Upewnij się uwzględnić klucz subskrypcji, w przypadku wysyłania żądań do tego interfejsu API. |
-| Autoryzacja | Wartość klucza subskrypcji jest nieprawidłowy         | SubscriptionKeyInvalid  | Odmowa z powodu nieprawidłowej subskrypcji klucz dostępu. Upewnij się zapewnić prawidłowy klucz dla aktywną subskrypcję.            |
+| authorization | Klucz subskrypcji nie podano             | SubscriptionKeyNotFound | Odmowa z powodu braku subskrypcji klucz dostępu. Upewnij się uwzględnić klucz subskrypcji, w przypadku wysyłania żądań do tego interfejsu API. |
+| authorization | Wartość klucza subskrypcji jest nieprawidłowy         | SubscriptionKeyInvalid  | Odmowa z powodu nieprawidłowej subskrypcji klucz dostępu. Upewnij się zapewnić prawidłowy klucz dla aktywną subskrypcję.            |
   
 ## <a name="predefined-errors-for-policies"></a>Błędy wstępnie zdefiniowane zasady  
  Następujące błędy są wstępnie zdefiniowane warunki błędów, które mogą wystąpić podczas oceny zasad.  
@@ -108,7 +108,7 @@ Podczas przetwarzania żądania wbudowanych kroki są wykonywane oraz wszystkie 
 | Source       | Warunek                                                       | Reason                    | Message                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | limit szybkości   | Przekroczono limit szybkości                                             | RateLimitExceeded         | Przekroczono limit szybkości                                                                                                               |
-| limit przydziału        | Przekroczono limit przydziału                                                  | QuotaExceeded             | Poza limitem woluminu wywołania. Limit przydziału zostanie uzupełniona w xx:xx:xx. - lub - limit przydziału przepustowości. Limit przydziału zostanie uzupełniona w xx:xx:xx. |
+| quota        | Przekroczono limit przydziału                                                  | QuotaExceeded             | Poza limitem woluminu wywołania. Limit przydziału zostanie uzupełniona w xx:xx:xx. \- lub - limit przydziału przepustowości. Limit przydziału zostanie uzupełniona w xx:xx:xx. |
 | jsonp        | Nieprawidłowa wartość parametru wywołania zwrotnego (zawiera nieprawidłowe znaki) | CallbackParameterInvalid  | Wartość parametru wywołania zwrotnego {wywołania zwrotnego — parametr name} nie jest prawidłowym identyfikatorem języka JavaScript.                                          |
 | ip-filter    | Nie można przeanalizować IP obiektu wywołującego z żądania                          | FailedToParseCallerIP     | Nie można ustanowić adresu IP do obiektu wywołującego. Odmowa dostępu.                                                                        |
 | ip-filter    | Obiekt wywołujący IP nie znajduje się w listy dozwolonych                                | CallerIpNotAllowed        | Adres IP obiektu wywołującego {adres ip} jest niedozwolone. Odmowa dostępu.                                                                        |

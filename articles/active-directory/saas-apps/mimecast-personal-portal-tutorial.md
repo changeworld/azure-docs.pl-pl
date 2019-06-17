@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed7d8d1a2c2f8c515fa520f6701068e4655cad35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bfafa1157619e151f97fcf9c8a410a0644354b80
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Samouczek: Integracja usługi Azure Active Directory z portalem Mimecast Personal Portal
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację portalu Mimecast Personal Portal z usługą Azure
 
 **Aby dodać portal Mimecast Personal Portal z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -184,7 +184,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą portalu Mim
    
     f. W polu tekstowym **Adres URL wylogowywania** wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
-    g. Otwórz w Notatniku swój zakodowany w formacie **base-64** certyfikat pobrany z witryny Azure Portal, skopiuj jego zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat dostawcy tożsamości (metadane)**.
+    g. Otwórz w Notatniku swój zakodowany w formacie **base-64** certyfikat pobrany z witryny Azure Portal, skopiuj jego zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat dostawcy tożsamości (metadane)** .
 
     h. Wybierz pozycję **Zezwalaj na logowanie jednokrotne**.
    
@@ -251,7 +251,7 @@ Należy zarejestrować domenę, aby można było utworzyć użytkowników.
 
 1. Zaloguj się do portalu **Mimecast Personal Portal** jako administrator.
 
-2. Przejdź do pozycji **Directories (Katalogi) \> Internal (Wewnętrzny)**.
+2. Przejdź do pozycji **Directories (Katalogi) \> Internal (Wewnętrzny)** .
    
     ![Katalogi](./media/mimecast-personal-portal-tutorial/ic795003.png "Katalogi")
 
@@ -284,7 +284,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Mimecast Personal Portal na panelu dostępu powinno nastąpić automatyczne zalogowanie do portalu Mimecast Personal Portal, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

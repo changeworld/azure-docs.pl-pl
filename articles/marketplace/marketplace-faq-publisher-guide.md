@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
 ms.openlocfilehash: 152be044b5696a0d9017729d731e080ed9163828
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964049"
 ---
 # <a name="marketplace-faqs"></a>Witryna Marketplace — często zadawane pytania
@@ -35,8 +35,8 @@ Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów rozw
 Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone przez firmę Microsoft i jej partnerów w celu zwiększenia możliwości produktów i usług platformy Azure. Katalog rozwiązań składa się kilka kategorii, w tym między innymi:
 
 * podstawowe systemy operacyjne
-* baz danych
-* zabezpieczenia
+* bazy danych
+* security
 * identity
 * sieć
 * łańcuch bloków
@@ -216,7 +216,7 @@ Tak. Środki subskrypcyjne lub fundusze zobowiązań pieniężnych na koncie mog
 
 Informacje o szacowanym użyciu znajdują się w [portal zarządzania Microsoft Azure](https://portal.azure.com/). Takie informacje o szacowanym użyciu mogą nie uwzględniać ostatnie działania i mogą opierać się na projektowanych podstawie przeszłego zużycia. Okresie publicznej wersji zapoznawczej ta możliwość może nie być dostępna dla wszystkich zakupów i może się różnić w zależności od typu produktu.
 
-### <a name="customer-support"></a>Pomoc techniczna
+### <a name="customer-support"></a>Obsługa klienta
 
 **Skontaktować się z ogólnych problemów z portalu Azure Marketplace?**
 

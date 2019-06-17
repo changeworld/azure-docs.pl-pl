@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64934975"
 ---
 <a name="publish-an-offer"></a>Publikowanie oferty
@@ -28,11 +28,11 @@ Rozpoczyna się proces publikowania dla określonej oferty. To wywołanie jest o
 |  ------------- |  ------------------------------------            |   -----------  |
 |  publisherId   | Identyfikator wydawcy, na przykład `contoso`      |   String       |
 |  offerId       | Identyfikator oferty                                 |   String       |
-|  wersja interfejsu API   | Najnowszą wersję interfejsu API                        |   Date         |
+|  api-version   | Najnowszą wersję interfejsu API                        |   Date         |
 |  |  |
 
 
-<a name="header"></a>Nagłówek
+<a name="header"></a>nagłówek
 ------
 
 |  **Nazwa**        |    **Wartość**          |

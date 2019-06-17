@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fa79f519c8f3eb8baeaab04870f22a1cfefa59ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431353"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053161"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Za pomocą bot usługi QnA Maker i LUIS do dystrybucji bazy wiedzy
 Wraz z rozwojem dużej wiedzy usługi QnA Maker staje się trudne w utrzymaniu go jako monolityczny jeden zestaw i ma konieczności dzielenia bazy wiedzy knowledge base na mniejsze części logiczne.
@@ -27,7 +27,7 @@ W tym artykule użyto zestawu SDK programu platformy Bot Framework w wersji 3. P
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura usługi luis usługi QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![Usługa QnA Maker z architekturą Language Understanding](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 W powyższym scenariuszu Usługa QnA Maker najpierw pobiera celem przychodzące zapytania z modelu usługi LUIS, a następnie użyj, przekazać go do poprawne usługi QnA Maker wiedzy.
 
@@ -51,7 +51,7 @@ W powyższym scenariuszu Usługa QnA Maker najpierw pobiera celem przychodzące 
 
 ## <a name="web-app-bot"></a>Web Apps
 
-1. [Utwórz bota aplikacji sieci Web](https://docs.microsoft.com/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample) przy użyciu szablonu usługi LUIS. Wybierz język programowania C# i 3.x zestawu SDK.
+1. [Utwórz bota aplikacji sieci Web "Podstawowa"](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) zawierający automatycznie aplikacją usługi LUIS. Wybierz 4.x SDK i C# języka programowania.
 
 1. Po utworzeniu bot aplikacji sieci web w witrynie Azure portal wybierz bot aplikacji sieci web.
 1. Wybierz **ustawienia aplikacji** w internetowej aplikacji bot service nawigacji, a następnie przewiń w dół do **ustawienia aplikacji** sekcji dostępne ustawienia.

@@ -3,18 +3,18 @@ title: Instalowanie i uruchamianie kontenerów — wykrywanie anomalii
 titleSuffix: Azure Cognitive Services
 description: Użyj zaawansowanych algorytmów API wykrywanie anomalii, aby identyfikować anomalie w danych szeregów czasowych.
 services: cognitive-services
-author: aahill
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: aahi
-ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 0369e27e7a260c50fc4de690dd3261421356799a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306981"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073328"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalowanie i uruchamianie kontenerów wykrywanie anomalii
 
@@ -57,7 +57,7 @@ Najpierw należy wypełnić oraz przesłać [formularz wniosku kontenera wykrywa
 
 W poniższej tabeli opisano minimalne i zalecane rdzeni procesora CPU i pamięci do przydzielenia dla kontenera wykrywanie anomalii.
 
-| Liczby zapytań na Sekundę (zapytań na sekundę) | Minimum | Zalecane |
+| Liczby zapytań na Sekundę (zapytań na sekundę) | Minimalne | Zalecane |
 |-----------|---------|-------------|
 | 10 QPS | 4 podstawowe, 1GB pamięci | 8 rdzeni 2GB pamięci |
 | 20 QPS | 8 rdzeni, 2GB pamięci | 16 rdzeni 4GB pamięci RAM |
@@ -169,7 +169,7 @@ Użyj hosta, https://localhost:5000, dla kontenera interfejsów API.
 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](anomaly-detector-container-configuration.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Wyślij kontenery wykrywanie anomalii w usłudze rozliczeń informacje na platformie Azure, przy użyciu _wykrywanie anomalii_ zasobów dla konta systemu Azure. 
 

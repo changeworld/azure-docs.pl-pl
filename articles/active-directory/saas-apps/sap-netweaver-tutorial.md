@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 01a70bfbb169090fbdf4b5f8e00af6895f69c964
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903529"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Samouczek: integracja usługi Azure Active Directory z oprogramowaniem SAP NetWeaver
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację oprogramowania SAP NetWeaver z usługą Azure AD,
 
 **Aby dodać oprogramowanie SAP NetWeaver z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -165,7 +165,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 
     a. Kliknij pozycję **Przekaż plik metadanych**, aby przekazać uzyskany wcześniej **plik metadanych dostawcy usług**.
 
-    ![Przekaż plik metadanych](common/upload-metadata.png)
+    ![Przekazywanie pliku metadanych](common/upload-metadata.png)
 
     b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
 
@@ -196,7 +196,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
-    b. Z listy **Przekształcenie** wybierz pozycję **ExtractMailPrefix()**.
+    b. Z listy **Przekształcenie** wybierz pozycję **ExtractMailPrefix()** .
 
     c. Z listy **Parametr 1** wybierz pozycję **user.userprinicipalname**.
 
@@ -256,7 +256,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. Przejdź do karty **Trusted Provider (Zaufany dostawca)** > **Identity Federation (Federacja tożsamości)** (na dole ekranu). Kliknij pozycję **Edytuj**.
+11. Przejdź do karty **Trusted Provider (Zaufany dostawca)**  > **Identity Federation (Federacja tożsamości)** (na dole ekranu). Kliknij pozycję **Edytuj**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
@@ -374,7 +374,7 @@ W tej sekcji utworzysz użytkownika Britta Simon w oprogramowaniu SAP NetWeaver.
 
     `https://<sapurl>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#`
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

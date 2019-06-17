@@ -5,21 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a78a9b8f0772a83e45ac2b926878e61e6ee2e61
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/12/2019
+ms.openlocfilehash: 7a517be49a249b0b73c901137381bd05946aa4cc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926332"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065697"
 ---
-# <a name="server-logs-in-azure-database-for-mariadb"></a>Dzienników serwera w usłudze Azure Database dla serwera MariaDB
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Wolnych zapytań dzienników w usłudze Azure Database dla serwera MariaDB
 W usłudze Azure Database dla serwera MariaDB dziennik dotyczący wolnego zapytania jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwane. Dziennik dotyczący wolnego zapytania może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
 
 Aby uzyskać więcej informacji na temat w dzienniku wolnych zapytań, zobacz dokumentację MariaDB [dziennik dotyczący wolnego zapytania](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-## <a name="access-server-logs"></a>Dzienniki dostępu serwera
-Można wyświetlić listę, a następnie pobrać dzienniki serwera MariaDB przy użyciu witryny Azure portal i interfejsu wiersza polecenia platformy Azure — Azure Database.
+## <a name="access-slow-query-logs"></a>Uzyskiwanie dostępu do dzienników wolnych zapytań
+Można wyświetlić listę i Pobierz — Azure Database for MariaDB dzienniki wolnych zapytań przy użyciu witryny Azure portal i interfejsu wiersza polecenia platformy Azure.
 
 W witrynie Azure portal wybierz usługi Azure Database dla serwera MariaDB. W obszarze **monitorowanie** nagłówka, wybierz **dzienniki serwera** strony.
 
@@ -30,7 +30,7 @@ Dzienniki są dostępne przez maksymalnie siedem dni od ich tworzenia. Jeśli ca
 
 Dzienniki zostały obrócone co 24 godziny lub 7 GB, zależnie co nastąpi wcześniej.
 
-## <a name="configure-logging"></a>Konfigurowanie rejestrowania
+## <a name="configure-slow-query-logging"></a>Skonfigurować rejestrowanie wolnych zapytań
 Domyślnie dziennik wolnych zapytań jest wyłączony. Aby ją włączyć, ustaw slow_query_log na wartość ON.
 
 Inne parametry, które można dostosować obejmują:
@@ -50,7 +50,7 @@ Azure Database dla serwera MariaDB jest zintegrowany z dzienników diagnostyczny
 
 W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od danych wyjściowych metody, pola, znajdujące się i kolejność, w jakiej są wyświetlane mogą się różnić.
 
-| **Właściwość** | **Opis** |
+| **Property** | **Opis** |
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |

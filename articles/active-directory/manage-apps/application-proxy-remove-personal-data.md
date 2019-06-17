@@ -16,10 +16,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 039f8c9f114dfd3542fefa7b1a1eea8656cbb9c4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65782966"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Usuwanie danych osobowych dla serwera Proxy usługi Azure Active Directory aplikacji  
@@ -60,9 +60,9 @@ Umożliwiające znalezienie danych osobowych, Wyszukaj pliki dziennika na identy
 
 Aby znaleźć dane osobowe rejestrowane przez aplikację, która korzysta z ograniczonego delegowania protokołu Kerberos, wyszukaj te składniki wpisz nazwę użytkownika:
 
-- Główna nazwa użytkownika lokalnego
-- Część nazwy użytkownika głównej nazwy użytkownika
-- Część nazwy użytkownika głównej nazwy użytkownika lokalnego
+- Główna nazwa użytkownika w środowisku lokalnym
+- Część nazwy głównej nazwy użytkownika
+- Część nazwy głównej nazwy użytkownika w środowisku lokalnym
 - Nazwa konta Menedżera (kont zabezpieczeń SAM) kont zabezpieczeń w środowisku lokalnym 
 
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 5/8/2019
 ms.author: barclayn
 ms.openlocfilehash: b73b6bdc0158591565281ca2e86a9a474c4196d9
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467737"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
@@ -69,13 +69,13 @@ Począwszy od późno marca 2019 r dedykowany przez moduł HSM jest dostępna w 
 * Wschodnie stany USA
 * Wschodnie stany USA 2
 * Zachodnie stany USA
-* Południowo-środkowe stany USA
+* Środkowo-południowe stany USA
 * Azja Południowo-Wschodnia
 * Azja Wschodnia
 * Europa Północna
 * Europa Zachodnia
-* Zjednoczone Królestwo (południe)
-* Zjednoczone Królestwo (zachód)
+* Południowe Zjednoczone Królestwo
+* Zachodnie Zjednoczone Królestwo
 * Kanada Środkowa
 * Kanada Wschodnia
 * Australia Wschodnia
@@ -183,7 +183,7 @@ Klient ma pełny dostęp do dzienników aktywności przez moduł HSM za pośredn
 
 Tak. Możesz wysłać dzienniki z urządzenia przez moduł HSM do serwera syslog
 
-## <a name="high-availability"></a>Duża dostępność
+## <a name="high-availability"></a>Wysoka dostępność
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Pyt.: Czy jest możliwe skonfigurować wysoką dostępność, w tym samym regionie lub w wielu regionach?
 

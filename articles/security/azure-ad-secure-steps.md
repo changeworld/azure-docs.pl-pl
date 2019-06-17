@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f63ceb6a80f253ea1661d215939705f8e39f3e58
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236768"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119298"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków do zabezpieczania infrastruktury tożsamości
 
@@ -36,7 +36,7 @@ Ta lista kontrolna mogą pomóc w szybkim wdrażaniu krytycznych zalecane dział
 
 Zalecenia przedstawione w tym dokumencie są wyrównane z [wynik zabezpieczyć tożsamość](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score), zautomatyzowane oceny konfiguracji zabezpieczeń tożsamości dzierżawy usługi Azure AD. Organizacje mogą używać na stronie ocena zabezpieczanie tożsamości w portalu usługi Azure AD, znaleźć luki w ich bieżącej konfiguracji zabezpieczeń, aby upewnić się, że używają bieżącego Microsoft najlepsze rozwiązania dotyczące zabezpieczeń. Implementowanie każde zalecenie, na stronie zabezpieczenia wynik zwiększenia wyniku i pozwalają śledzić postęp, a także ułatwić porównanie implementacji względem innych podobnych organizacji rozmiar lub Twojej branży.
 
-![Wskaźnik bezpieczeństwa tożsamości](media/azure-ad/azure-ad-sec-steps0.png)
+![Wynik bezpiecznego tożsamości](media/azure-ad/azure-ad-sec-steps0.png)
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Przed rozpoczęciem: Ochronę uprzywilejowanych kont za pomocą usługi MFA
 

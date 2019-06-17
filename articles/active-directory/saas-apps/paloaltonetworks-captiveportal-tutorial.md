@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c3651e81cd3916bccc859bc3bc010511b2a114a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870004"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Palo Alto Networks Captive Portal
 
@@ -78,12 +78,12 @@ Skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacj
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Palo Alto Networks Captive Portal, należy wykonać następujące zadania:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)**: włącz tę funkcję, aby umożliwić użytkownikowi korzystanie z niej.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Palo Alto Networks Captive Portal](#configure-palo-alto-networks-captive-portal-single-sign-on)**: skonfiguruj ustawienia logowania jednokrotnego w aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**: przetestuj logowanie jednokrotne w usłudze Azure AD przy użyciu użytkownika *Britta Simon*.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**: skonfiguruj użytkownika Britta Simon w celu korzystania z logowania jednokrotnego w usłudze Azure AD.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** : włącz tę funkcję, aby umożliwić użytkownikowi korzystanie z niej.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Palo Alto Networks Captive Portal](#configure-palo-alto-networks-captive-portal-single-sign-on)** : skonfiguruj ustawienia logowania jednokrotnego w aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** : przetestuj logowanie jednokrotne w usłudze Azure AD przy użyciu użytkownika *Britta Simon*.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** : skonfiguruj użytkownika Britta Simon w celu korzystania z logowania jednokrotnego w usłudze Azure AD.
 5. **Tworzenie użytkownika testowego w aplikacji Palo Alto Networks Captive Portal**: utwórz w aplikacji Palo Alto Networks Captive Portal odpowiednik użytkownika *Britta Simon*, który jest połączony z użytkownikiem usługi Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**: Sprawdź, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** : Sprawdź, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -158,7 +158,7 @@ Następnie utwórz użytkownika testowego o nazwie *Britta Simon* w witrynie Azu
 
     1. W polu **Nazwa** wprowadź ciąg **BrittaSimon**.
   
-    2. Aby uzyskać **nazwa_użytkownika**, wprowadź **BrittaSimon\@\<your_company_domain\>**. Na przykład **BrittaSimon\@contoso.com**.
+    2. Aby uzyskać **nazwa_użytkownika**, wprowadź **BrittaSimon\@\<your_company_domain\>** . Na przykład **BrittaSimon\@contoso.com**.
 
     3. W polu **Hasło** wprowadź hasło. Zalecamy zapisanie i zachowanie wprowadzonego hasła. Możesz zaznaczyć pole wyboru **Pokaż hasło**, aby wyświetlić hasło.
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
 ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233769"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Rozwiązywanie problemów z błędami ograniczania przepływności interfejsu API 
@@ -32,7 +32,7 @@ Gdy klienta interfejsu API platformy Azure pobiera ograniczenie błędu, stan HT
 
 ## <a name="call-rate-informational-response-headers"></a>Wywołaj nagłówki odpowiedzi informacyjny szybkości 
 
-| Nagłówek                            | Format wartości                           | Przykład                               | Opis                                                                                                                                                                                               |
+| nagłówek                            | Format wartości                           | Przykład                               | Opis                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Pozostała liczba wywołań interfejsu API dla zasady ograniczania obejmujące przedział lub operacji grupę zasobów łącznie celem tego żądania                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | Liczba wywołań zlicza "naliczane" dla tego żądania HTTP limitem odpowiednich zasad. Najczęściej jest to 1. Żądania wsadowe, takie jak skalowanie zestawu skalowania maszyn wirtualnych, mogą być obciążani wiele liczników. |
@@ -89,7 +89,7 @@ To ograniczenie analizator przez pewien czas jest, czy nie powoduje liczenia ż�
 Polecenia cmdlet programu PowerShell używasz usługi interfejsu API REST, który można łatwo wywołać bezpośrednio przez klientów (chociaż posiadanie obsługi jeszcze). Aby wyświetlić format żądania HTTP, Uruchom polecenia cmdlet z - debugowania lub rozpoznanie, na ich wykonanie, przy użyciu programu Fiddler.
 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania 
+## <a name="best-practices"></a>Najlepsze praktyki 
 
 - Nie należy wykonywać ponowień błędów interfejsu API usługi platformy Azure, bezwarunkowo i/lub od razu. Jest wystąpieniem typowe dla klienta kodu w pętli ponawiania szybkie po wystąpieniu błędu, który nie jest w stanie ponownych prób. Ponownych prób po pewnym czasie będzie wyczerpać limit dozwolony wywołania dla operacji docelowej grupy i mieć wpływ na innych klientów subskrypcji. 
 - W przypadkach, mocno obciążające interfejsu API usługi automation należy wziąć pod uwagę Implementowanie aktywnego klienta własnym ograniczania, gdy liczba dostępnych wywołań dla grupy operacji docelowej nie spadnie poniżej niektóre progu dolnego. 

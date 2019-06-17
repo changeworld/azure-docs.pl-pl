@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f77e322ffd7eec78fe13650f40c93f914706d557
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 272d5194b2922e57aca0d63fd62c222e17a29c53
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824625"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108250"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Przenieś aplikacje z usług AD FS do usługi Azure AD 
 
@@ -46,7 +46,7 @@ Wiele organizacji często ma — oprócz aplikacji opartych na usługach Office 
 Dla organizacji, która już korzysta z usług AD FS, Ping lub innego dostawcy uwierzytelniania lokalnego przenoszenie aplikacji do usługi Azure AD zapewnia następujące korzyści:
 
 **Bezpieczniejszy dostęp**
-- Skonfiguruj szczegółowe procesy kontroli dostępu do poszczególnych aplikacji, w tym usługę Azure Multi-Factor Authentication, za pomocą funkcji [dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md). Zasady można stosować do aplikacji SaaS i niestandardowych w taki sam sposób, w jaki mogą być one stosowane obecnie w usłudze Office 365.
+- Konfigurowanie formantów szczegółową dostęp do poszczególnych aplikacji, w tym usługi Azure Multi-Factor Authentication, za pomocą [dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md). Zasady można stosować do aplikacji SaaS i niestandardowych w taki sam sposób, w jaki mogą być one stosowane obecnie w usłudze Office 365.
 - Aby wykrywać zagrożenia i pomóc chronić logowanie w oparciu o uczenie maszynowe i algorytmy heurystyczne identyfikujące ryzykowny ruch, skorzystaj z usługi [Azure AD Identity Protection](../active-directory-identityprotection.md).
 
 **Współpraca B2B w usłudze Azure AD**
@@ -155,7 +155,7 @@ Aplikacje, które można obecnie łatwo przenieść to aplikacje SAML 2.0 używa
 - Oświadczenia niestandardowe. Aby uzyskać informacje dotyczące obsługiwanych mapowań oświadczeń, zobacz [Mapowanie oświadczeń w usłudze Azure Active Directory](../develop/active-directory-claims-mapping.md) i [Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
 
 Oprócz oświadczeń niestandardowych i elementów **NameID**, konfiguracje, które wymagają wykonania dodatkowych kroków konfiguracji w usłudze Azure AD w ramach migracji, to:
-- Niestandardowe reguły autoryzacji lub uwierzytelniania wieloskładnikowego w usługach AD FS. Można je skonfigurować za pomocą funkcji [dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md).
+- Niestandardowe reguły autoryzacji lub uwierzytelniania wieloskładnikowego w usługach AD FS. Można skonfigurować za pomocą [dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md) funkcji.
 - Aplikacje z wieloma punktami końcowymi języka SAML. Można je skonfigurować w usłudze Azure AD za pomocą programu PowerShell. (Ta możliwość nie jest dostępna w portalu).
 - Aplikacje usług federacyjnych w Internecie, takie jak aplikacje programu SharePoint, które wymagają tokenów w wersji 1.1 protokołu SAML. Należy je skonfigurować ręcznie przy użyciu programu PowerShell.
 
@@ -224,11 +224,11 @@ Proces migracji jednorazowej z federacji lokalnej do usługi Azure AD zależy od
    Jeśli aplikacja obsługuje wielu dostawców tożsamości i wybierzesz wielu dostawców tożsamości do jednoczesnej obsługi uwierzytelniania podczas logowania, użytkownik może wskazać dostawcę tożsamości na potrzeby uwierzytelnienia na swojej stronie logowania.
 
 #### <a name="example-support-for-multiple-idps"></a>Przykład: Obsługa wielu dostawców tożsamości
-Na przykład w aplikacji Salesforce konfigurację dostawcy tożsamości można znaleźć w obszarze **Settings (Ustawienia)** > **Company Settings (Ustawienia firmowe)** > **My Domain (Moja domena)** > **Authentication Configuration (Konfiguracja uwierzytelniania)**.
+Na przykład w aplikacji Salesforce konfigurację dostawcy tożsamości można znaleźć w obszarze **Settings (Ustawienia)**  > **Company Settings (Ustawienia firmowe)**  > **My Domain (Moja domena)**  > **Authentication Configuration (Konfiguracja uwierzytelniania)** .
 
 ![Sekcja „Authentication Configuration” (Konfiguracja uwierzytelniania) w aplikacji Salesforce](media/migrate-adfs-apps-to-azure/migrate9.png)
 
-Ze względu na konfigurację utworzoną wcześniej w obszarze **Identity (Tożsamość)** > **Single sign-on settings (Ustawienia logowania jednokrotnego)** powinna być możliwa zmiana dostawcy tożsamości dla konfiguracji uwierzytelniania. Na przykład można go zmienić z usług AD FS na usługę Azure AD. 
+Ze względu na konfigurację utworzoną wcześniej w obszarze **Identity (Tożsamość)**  > **Single sign-on settings (Ustawienia logowania jednokrotnego)** powinna być możliwa zmiana dostawcy tożsamości dla konfiguracji uwierzytelniania. Na przykład można go zmienić z usług AD FS na usługę Azure AD. 
 
 ![Wybieranie usługi Azure AD jako usługi uwierzytelniania](media/migrate-adfs-apps-to-azure/migrate10.png)
 

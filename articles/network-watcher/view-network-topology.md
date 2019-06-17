@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
 ms.openlocfilehash: a67f1cca54c89ead9ae7fc46ef0c9fc8c5217c74
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64682057"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Wyświetlanie topologii sieci wirtualnej platformy Azure
@@ -37,7 +37,7 @@ Możesz użyć [witryny Azure portal](#azure-portal), [wiersza polecenia platfor
 4. Wybierz **topologii**. Generowanie topologii wymaga w tym samym regionie, który znajduje się w sieci wirtualnej, która ma zostać wygenerowany topologii usługi network watcher. Jeśli nie masz usługi network watcher w regionie, w którym znajduje się w sieci wirtualnej, który chcesz wygenerować topologii dla włączone obserwatorów sieci są tworzone automatycznie dla Ciebie we wszystkich regionach. Obserwatorzy sieciowi są tworzone w grupie zasobów o nazwie **NetworkWatcherRG**.
 5. Wybierz subskrypcję i grupę zasobów w sieci wirtualnej, którą chcesz wyświetlić topologii, a następnie wybierz sieć wirtualną. Na poniższej ilustracji przedstawiono topologię sieci wirtualnej o nazwie *MyVnet*, w grupie zasobów o nazwie *MyResourceGroup*:
 
-    ![Wyświetl topologię](./media/view-network-topology/view-topology.png)
+    ![Wyświetlanie topologii](./media/view-network-topology/view-topology.png)
 
     Jak widać na poprzedniej ilustracji, sieć wirtualna zawiera trzy podsieci. Jedną podsieć zawiera maszyny Wirtualnej wdrożonej w nim. Maszyna wirtualna ma jeden interfejs sieciowy dołączony do niego i publiczny adres IP, powiązany. Dwie podsieci mają tabelę tras skojarzone z nimi. Każda tabela tras zawiera dwie trasy. Jedną podsieć ma sieciową grupę zabezpieczeń skojarzoną do niego. Informacje o topologii jest wyświetlana tylko dla zasobów, które są:
     

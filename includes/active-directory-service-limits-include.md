@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 3b1019d45f4fee60e0e197f283ef38f4f3fca875
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.openlocfilehash: 067280cdad85f59106bce5ff214e2fa9eddf3b71
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143065"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133816"
 ---
 Oto ograniczenia używania i inne limity usługi dotyczące usługi Azure Active Directory (Azure AD).
 
@@ -29,4 +29,4 @@ Oto ograniczenia używania i inne limity usługi dotyczące usługi Azure Active
 | Panel dostępu |<ul><li>Nie ma limitu liczby aplikacji na użytkownika, które są widoczne w panelu dostępu. Dotyczy to przypisanych do użytkowników licencji usługi Azure AD Premium lub pakietu Enterprise Mobility Suite.</li><li>Panel dostępu zawiera maksymalnie 10 kafelków aplikacji dla każdego użytkownika. Ten limit dotyczy użytkowników z przypisanymi licencjami usługi Azure AD — wersja Podstawowa w usłudze Azure Active Directory. Przykładowe kafelki aplikacji Box, Salesforce i Dropbox. Ten limit nie dotyczy kont administratorów.</li></ul> |
 | Raporty | W dowolnym raporcie można wyświetlić lub pobrać maksymalnie 1000 wierszy. Dodatkowe dane są obcinane. |
 | Jednostki administracyjne | Jeden obiekt może być członkiem maksymalnie 30 jednostek administracyjnych. |
-| Role i uprawnienia administratora | <li>Nie można dodać grupy jako właściciela.<li>Nie można przypisać grupy do roli.<li>Domyślnie nie można zmienić uprawnień użytkownika z wyjątkiem przełączników dzierżawy, czyli ustawień użytkownika w usłudze Azure AD. |
+| Role i uprawnienia administratora | <ul><li>Nie można dodać grupy jako [właściciela](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Nie można przypisać grupę [roli](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>Użytkownikowi możliwość odczytywania informacji o katalogu inni użytkownicy nie może być ograniczony poza przełącznik obowiązujące w dzierżawie można wyłączyć dostępu wszystkich użytkowników bez uprawnień administratora do wszystkich informacji katalogowych (niezalecane). Więcej informacji na temat domyślnych uprawnień [tutaj](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Może upłynąć do 15 minut lub podpisywania poza/logowania przed administratora dodatki członkostwa roli i odwołania zaczęły obowiązywać.</li></ul> |

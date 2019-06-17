@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: e020cbc9c18db2142ee7f52cdac22a3518683fce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 82e08a8eeeb86d407be61c299656abe79a6f90f4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078347"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Uruchamianie zapytania usługi Apache Hive z usługą Apache Hadoop w HDInsight przy użyciu usługi REST
 
@@ -24,9 +24,6 @@ Dowiedz się, jak uruchomić zapytania usługi Apache Hive przy użyciu technolo
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Opartą na systemie Linux platformą Hadoop w wersji klastra HDInsight 3.4 lub nowszą.
-
-  > [!IMPORTANT]  
-  > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * Klient REST. Ten dokument używa programu Windows PowerShell i [Curl](https://curl.haxx.se/) przykłady.
 
@@ -141,7 +138,7 @@ W tym dokumencie używa również środowiska Windows PowerShell i [Jq](https://
 
    * `ROW FORMAT` — W jaki sposób dane są sformatowane. Pola w każdym dzienniku są oddzielone spacją.
    * `STORED AS TEXTFILE LOCATION` — Gdzie dane są przechowywane (katalog przykład/danych) i które są przechowywane jako tekst.
-   * `SELECT` -Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]**. Ta instrukcja zwraca wartość **3** , jak istnieją trzy wiersze, które zawierają tę wartość.
+   * `SELECT` -Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]** . Ta instrukcja zwraca wartość **3** , jak istnieją trzy wiersze, które zawierają tę wartość.
 
      > [!NOTE]  
      > Należy zauważyć, że spacji między instrukcje HiveQL są zastępowane przez `+` znaku w przypadku korzystania z programu Curl. Wartości w cudzysłowie, zawierające spację, takich jak ogranicznik, nie powinna zostać zastąpiona przez `+`.

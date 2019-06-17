@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105584"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Wymiana komunikatów w chmurze za pomocą usługi Azure Service Bus i Azure Logic Apps
@@ -79,7 +79,7 @@ Upewnij się, że Twoja aplikacja logiki ma uprawnienia do uzyskiwania dostępu 
    ![Wybieranie wyzwalacza usługi Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
    > [!NOTE]
-   > Niektóre wyzwalaczy może zwracać jedną ani wiadomości, na przykład wyzwalacz, **kiedy co najmniej jeden komunikat dociera w kolejce (Automatyczne zakończenie)**. Gdy te wyzwalacze są uruchamiane, zwracają one między jednym i liczby komunikatów określonej przez wyzwalacz **maksymalna liczba komunikatów** właściwości.
+   > Niektóre wyzwalaczy może zwracać jedną ani wiadomości, na przykład wyzwalacz, **kiedy co najmniej jeden komunikat dociera w kolejce (Automatyczne zakończenie)** . Gdy te wyzwalacze są uruchamiane, zwracają one między jednym i liczby komunikatów określonej przez wyzwalacz **maksymalna liczba komunikatów** właściwości.
 
    *Wszystkie wyzwalacze usługi Service Bus to wyzwalacze długiego sondowania*, co oznacza, że po aktywowaniu wyzwalacza wyzwalacza są przetwarzane wszystkie komunikaty, a następnie czeka 30 sekund w przypadku większej liczby wiadomości, które pojawią się w subskrypcji kolejki lub tematu. 
    Jeśli żadne komunikaty są wyświetlane w ciągu 30 sekund, uruchom wyzwalacz zostanie pominięty. 
@@ -90,7 +90,7 @@ Upewnij się, że Twoja aplikacja logiki ma uprawnienia do uzyskiwania dostępu 
    1. W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
 
       Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
-      Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+      Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
    1. W polu wyszukiwania wprowadź "Azure Service Bus" jako filtr. 
    W obszarze listy akcji wybierz akcję, którą chcesz. 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: a5b1838007e1be7fc1d9872516ede14c208b1f57
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60415339"
+ms.locfileid: "67113458"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpieczanie zasobów w chmurze przy użyciu usługi Azure Multi-Factor Authentication i usług AD FS
 
@@ -86,10 +86,10 @@ W pierwszej kolejności należy skonfigurować oświadczenia usług AD FS. Utwó
 Po skonfigurowaniu oświadczeń można przystąpić do konfigurowania zaufanych adresów IP.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz pozycję **Azure Active Directory** > **Dostęp warunkowy** > **Lokalizacje z nazwą**.
-3. W bloku **Dostęp warunkowy — lokalizacje z nazwą** wybierz opcję **Konfiguruj zaufane adresy IP usługi MFA**
+2. Wybierz **usługi Azure Active Directory** > **dostępu warunkowego** > **lokalizacje z nazwą**.
+3. Z **dostęp warunkowy — lokalizacje z nazwą** bloku wybierz **skonfigurować uwierzytelnianie wieloskładnikowe zaufane adresy IP**
 
-   ![Dostęp warunkowy — lokalizacje z nazwą usługi Azure AD: opcja Konfiguruj zaufane adresy IP usługi MFA](./media/howto-mfa-adfs/trustedip6.png)
+   ![Lokalizacje z nazwą dostęp warunkowy usługi Azure AD MFA skonfigurować zaufane adresy IP](./media/howto-mfa-adfs/trustedip6.png)
 
 4. Na stronie Ustawienia usługi w obszarze **zaufanych adresów IP** wybierz pozycję **Pomiń uwierzytelnianie wieloskładnikowe w przypadku żądań od użytkowników federacyjnych w moim intranecie**.  
 5. Kliknij pozycję **Zapisz**.

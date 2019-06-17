@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4df40febefa872fa52afdfaaf31b94dba7000af5
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: MT
+ms.openlocfilehash: b28d590390cd1a1ef1c6651e6943ac2a7fa0af29
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729480"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075499"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -45,7 +45,7 @@ Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agent prz
 
 Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut MMA uruchamiany ponownie, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
 
-Komputera z systemem Linux skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 3 godziny. Jeśli ponownego uruchomienia agenta MMA skanowania pod kątem zgodności jest inicjowane w ciągu 15 minut.
+Komputera z systemem Linux skanowanie pod kątem zgodności jest domyślnie przeprowadzane co godzinę. Jeśli ponownego uruchomienia agenta MMA skanowania pod kątem zgodności jest inicjowane w ciągu 15 minut.
 
 Rozwiązanie informuje, jak aktualne, komputer jest oparty na źródle jest skonfigurowany do synchronizacji z usługą. Jeśli komputer Windows jest skonfigurowany do raportu w programie WSUS, w zależności od tego, kiedy usługi WSUS od ostatniej synchronizacji upłynęła z usługą Microsoft Update, wyniki mogą różnić się od pokazuje Microsoft Updates. To zachowanie jest takie same dla komputerów z systemem Linux, które są skonfigurowane do raportu, aby zamiast z lokalnego repozytorium do repozytorium publicznego.
 
@@ -184,7 +184,7 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
+| Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
 | Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
 | Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do dzienników usługi Azure Monitor nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
@@ -303,7 +303,7 @@ Rozwiązanie Update Management opiera się na Windows Update, aby pobrać i zain
 
 ### <a name="pre-download-updates"></a>Wstępnie pobierać aktualizacje
 
-Aby skonfigurować automatyczne pobieranie aktualizacji zasad grupy, można ustawić [Konfigurowanie aktualizacji automatycznych](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) do **3**. Pobiera aktualizacje wymagane w tle, ale nie można zainstalować je. Dzięki temu zarządzanie aktualizacjami w formancie harmonogramów, ale zezwala na aktualizacje do pobrania poza oknem obsługi rozwiązania Update Management. Może to spowodować **Przekroczono czas okna obsługi** błędy w zarządzania aktualizacjami.
+Aby skonfigurować automatyczne pobieranie aktualizacji zasad grupy, można ustawić [Konfigurowanie aktualizacji automatycznych](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) do **3**. Pobiera aktualizacje wymagane w tle, ale nie można zainstalować je. Dzięki temu zarządzanie aktualizacjami w formancie harmonogramów, ale zezwala na aktualizacje do pobrania poza oknem obsługi rozwiązania Update Management. Może to spowodować **Przekroczono czas okna obsługi** błędy w zarządzania aktualizacjami.
 
 Możesz również ustawić za pomocą programu PowerShell, uruchom następujące polecenie programu PowerShell w systemie, który chcesz automatycznego pobierania aktualizacji.
 

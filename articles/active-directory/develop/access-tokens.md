@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1e47939913435b5b7040c0e6d01b1208d709d3
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 355e61fdfd9847e54a4bd13ac3b0f2d416c05812
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962885"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111954"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny dostępu platforma tożsamości firmy Microsoft
 
@@ -74,7 +74,7 @@ Oświadczenia są obecne, tylko wtedy, gdy istnieje wartość, aby wypełnić go
 
 ### <a name="header-claims"></a>Nagłówek oświadczeń
 
-|Oświadczenie | Format | Opis |
+|Claim | Format | Opis |
 |--------|--------|-------------|
 | `typ` | Ciąg — zawsze "JWT" | Wskazuje, czy token jest token JWT.|
 | `nonce` | String | Unikatowy identyfikator używany do ochrony przed atakami powtarzania tokenu. Zasób może zapisać tę wartość, aby zapewnić ochronę przed odtworzenie. |
@@ -84,7 +84,7 @@ Oświadczenia są obecne, tylko wtedy, gdy istnieje wartość, aby wypełnić go
 
 ### <a name="payload-claims"></a>Ładunek oświadczeń
 
-| Oświadczenie | Format | Opis |
+| Claim | Format | Opis |
 |-----|--------|-------------|
 | `aud` | Ciąg, identyfikator URI Identyfikatora aplikacji | Identyfikuje zamierzonym odbiorcą tokenu. W tokenach dostępu odbiorców jest identyfikator aplikacji, przypisany do aplikacji w witrynie Azure portal. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli wartość nie jest zgodny. |
 | `iss` | Ciąg identyfikatora URI usługi STS | Określa usługę tokenu zabezpieczającego (STS), który tworzy i zwraca token i dzierżawy usługi Azure AD, w którym użytkownik został uwierzytelniony. Jeśli token wystawiony token w wersji 2.0 (zobacz `ver` oświadczeń), identyfikator URI będzie kończyć się `/v2.0`. Identyfikator GUID, który wskazuje, czy użytkownik jest użytkownikiem odbiorcy z konta Microsoft jest `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikację należy użyć część stanowiącą identyfikator GUID oświadczenia, aby ograniczyć zestaw dzierżawców, którzy mogą zalogować do aplikacji, jeśli ma to zastosowanie. |
@@ -119,7 +119,7 @@ Oświadczenia są obecne, tylko wtedy, gdy istnieje wartość, aby wypełnić go
 
 Poniższe oświadczenia zostaną uwzględnione w tokenów w wersji 1.0, jeśli ma to zastosowanie, ale nie są domyślnie włączone w tokenach w wersji 2.0. Jeśli używasz wersji 2.0 i konieczności te oświadczenia żądania ich przy użyciu [opcjonalnych oświadczeń](active-directory-optional-claims.md).
 
-| Oświadczenie | Format | Opis |
+| Claim | Format | Opis |
 |-----|--------|-------------|
 | `ipaddr`| String | Adres IP użytkownika dokonało uwierzytelnienia z komputera. |
 | `onprem_sid`| Ciąg w [format identyfikatora SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | W przypadkach, w której użytkownik ma uwierzytelniania lokalnego to oświadczenie udostępnia identyfikatora SID. Możesz użyć `onprem_sid` do autoryzacji w starszych aplikacji.|
@@ -141,7 +141,7 @@ Tożsamości firmy Microsoft mogą uwierzytelniać się na różne sposoby, któ
 | `rsa` | Uwierzytelnianie zależała od dowód klucz RSA, na przykład za pomocą [aplikacji Microsoft Authenticator](https://aka.ms/AA2kvvu). W tym przypadku uwierzytelnianie zostało wykonanej przez JWT podpisanych przy użyciu usługi należące do X509 certyfikatu. |
 | `otp` | Jednorazowy kod dostępu za pomocą wiadomości e-mail lub wiadomości SMS. |
 | `fed` | Użyto asercję uwierzytelnianie federacyjne (na przykład JWT lub SAML). |
-| `wia` | Zintegrowane uwierzytelnianie systemu Windows |
+| `wia` | Zintegrowane uwierzytelnianie Windows |
 | `mfa` | Użyto usługi Multi-Factor authentication. Jeśli jest obecny innych metod uwierzytelniania, również zostaną dołączone. |
 | `ngcmfa` | Odpowiednikiem `mfa`, który jest używany do inicjowania obsługi niektórych typów zaawansowanych poświadczenia. |
 | `wiaormfa`| Użytkownik użył Windows lub poświadczenia usługi MFA do uwierzytelniania. |
@@ -233,12 +233,12 @@ Odśwież tokeny mogą zostać unieważnione lub odwołać w dowolnym momencie i
 |   | Cookie opartego na hasłach | Token opartego na hasłach | Opartego na hasłach inne niż plik cookie | Token opartego na hasłach inne niż | Token poufne klienta |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | Hasło wygasło | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
-| Hasło zostało zmienione przez użytkownika | Odwołano | Odwołano | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
-| Użytkownik wykona samoobsługowego resetowania HASEŁ | Odwołano | Odwołano | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
-| Administrator operacji resetowania hasła | Odwołano | Odwołano | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
-| Użytkownik odwołuje tokeny odświeżania [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odwołano | Odwołano | Odwołano | Odwołano | Odwołano |
-| Administrator odwołuje wszystkie tokeny odświeżania dla dzierżawy [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odwołano | Odwołano |Odwołano | Odwołano | Odwołano |
-| [Wylogowania jednokrotnego](v1-protocols-openid-connect-code.md#single-sign-out) w sieci web | Odwołano | Pozostanie aktywny | Odwołano | Pozostanie aktywny | Pozostanie aktywny |
+| Hasło zostało zmienione przez użytkownika | Odwołane | Odwołane | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
+| Użytkownik wykona samoobsługowego resetowania HASEŁ | Odwołane | Odwołane | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
+| Administrator operacji resetowania hasła | Odwołane | Odwołane | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
+| Użytkownik odwołuje tokeny odświeżania [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odwołane | Odwołane | Odwołane | Odwołane | Odwołane |
+| Administrator odwołuje wszystkie tokeny odświeżania dla dzierżawy [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odwołane | Odwołane |Odwołane | Odwołane | Odwołane |
+| [Wylogowania jednokrotnego](v1-protocols-openid-connect-code.md#single-sign-out) w sieci web | Odwołane | Pozostanie aktywny | Odwołane | Pozostanie aktywny | Pozostanie aktywny |
 
 > [!NOTE]
 > "Non-password na podstawie" nazwy logowania jest w jednym gdzie użytkownik nie wpisz hasło, aby pobrać go. Na przykład za pomocą usługi rozpoznawania twarzy Windows Hello, klucz FIDO lub numeru PIN.

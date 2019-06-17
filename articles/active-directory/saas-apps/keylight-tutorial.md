@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a03bb2626525bf022b109105a7c6bc0dee23aea
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098787"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą LockPath Keylight
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację LockPath Keylight w usłudze Azure AD, należy do
 
 **Aby dodać LockPath Keylight z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -172,11 +172,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z LockPath Keylight, 
 
     j. Ustaw **konfiguracji zabezpieczeń automatycznej obsługi**, wybierz opcję **standardowej konfiguracji użytkownika**.
 
-    k. W **atrybut E-mail** polu tekstowym wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    k. W **atrybut E-mail** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    l. W **atrybut imię** polu tekstowym wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    l. W **atrybut imię** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    m. W **ostatniego atrybutu nazwy** polu tekstowym wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    m. W **ostatniego atrybutu nazwy** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
     n. Kliknij pozycję **Zapisz**.
 
@@ -240,7 +240,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka LockPath Keylight w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze LockPath Keylight, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

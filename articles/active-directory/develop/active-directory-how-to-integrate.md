@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8804988387ba4a6cdc8dff5d93077de42ea2051
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4af8cdc1072678de7e34458fc4b54d52aae9eff1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111595"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 
@@ -81,7 +81,7 @@ Integracja z usługą Azure AD jest powiązana z korzyści, które nie wymagają
 
 **Nietypowe logowanie wykrywania.**  Usługa Azure AD przetwarza ponad miliard logowań na dobę, podczas korzystania z algorytmów uczenia maszynowego do wykrywania podejrzanych działań i powiadomienia administratorów IT o ewentualnych problemach. Obsługa logowania w usłudze Azure AD, że dana aplikacja otrzyma korzyści tej ochrony. Dowiedz się więcej o [wyświetlanie raportów dostępu do usługi Azure Active Directory](../active-directory-view-access-usage-reports.md).
 
-**Dostęp warunkowy.**  Oprócz usługi uwierzytelnianie wieloskładnikowe, Administratorzy mogą wymagać od spełnienia określonych warunków, zanim użytkownicy mogą zalogować się do aplikacji. Warunki, które można ustawić obejmują zakres adresów IP urządzeń klienckich, członkostwa w określonych grup i stan urządzenia używane dla dostępu. Dowiedz się więcej o [dostępu warunkowego usługi Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+**Dostęp warunkowy.**  Oprócz usługi uwierzytelnianie wieloskładnikowe, Administratorzy mogą wymagać od spełnienia określonych warunków, zanim użytkownicy mogą zalogować się do aplikacji. Warunki, które można ustawić obejmują zakres adresów IP urządzeń klienckich, członkostwa w określonych grup i stan urządzenia używane dla dostępu. Dowiedz się więcej o [usługi Azure Active Directory dostępu warunkowego](../active-directory-conditional-access-azure-portal.md).
 
 ### <a name="easy-development"></a>Łatwe projektowanie
 

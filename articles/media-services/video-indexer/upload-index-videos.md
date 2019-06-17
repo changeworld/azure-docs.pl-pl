@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799213"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
@@ -62,15 +62,15 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
     
         |Name (Nazwa)|Opis|
         |---|---|
-        |identyfikator|Identyfikator wideo|
-        |stan|Stan wideo|  
+        |id|Identyfikator wideo|
+        |state|Stan wideo|  
     - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Osoba rozpoznana na filmie wideo:
   - Właściwości
     
       |Name (Nazwa)|Opis|
       |---|---|
-      |identyfikator| Identyfikator wideo|
+      |id| Identyfikator wideo|
       |faceId|Identyfikator Face ID w indeksie wideo|
       |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
       |personName|Imię i nazwisko osoby|

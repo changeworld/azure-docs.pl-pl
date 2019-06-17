@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 407b8ba2fda35d3acbf1b425bb15fe20778613d7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65146004"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Format tekstu rozdzielanego w usłudze Azure Data Factory
@@ -28,10 +28,10 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zesta
 
 | Właściwość         | Opis                                                  | Wymagane |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Właściwość typu elementu dataset musi być równa **DelimitedText**. | Yes      |
-| location         | Ustawienia lokalizacji plików. Każdy łącznik opartych na plikach ma swój własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Szczegółowe informacje w artykule łącznika -> Sekcja właściwości zestawu danych**. | Yes      |
+| type             | Właściwość typu elementu dataset musi być równa **DelimitedText**. | Tak      |
+| location         | Ustawienia lokalizacji plików. Każdy łącznik opartych na plikach ma swój własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Szczegółowe informacje w artykule łącznika -> Sekcja właściwości zestawu danych**. | Tak      |
 | columnDelimiter  | Znaki, używany do rozdzielania kolumn w pliku. Obecnie wielu znak ogranicznika jest obsługiwana tylko dla mapowania przepływu danych, ale nie działania kopiowania. <br>Wartość domyślna to **przecinkami `,`** , jeśli ogranicznikiem kolumny jest zdefiniowana jako ciąg pusty, co oznacza, że nie było ogranicznika, cały wiersz jest traktowana jako jedną kolumnę. | Nie       |
-| rowDelimiter     | Pojedynczy znak lub "\r\n" używany do rozdzielania wierszy w pliku.<br>Wartość domyślna to dowolne z następujących wartości **przy odczycie: ["\r\n", "\r", "\n"]**, i **"\n" lub "\r\n" przy zapisie** dane mapowania przepływu i działanie kopiowania, odpowiednio. <br>Gdy `rowDelimiter` jest ustawiona na nie było ogranicznika (ciąg pusty) `columnDelimiter` musi być ustawiona jako nie było ogranicznika (ciąg pusty) jako, co oznacza traktowanie całą zawartość jako pojedynczą wartość. | Nie       |
+| rowDelimiter     | Pojedynczy znak lub "\r\n" używany do rozdzielania wierszy w pliku.<br>Wartość domyślna to dowolne z następujących wartości **przy odczycie: ["\r\n", "\r", "\n"]** , i **"\n" lub "\r\n" przy zapisie** dane mapowania przepływu i działanie kopiowania, odpowiednio. <br>Gdy `rowDelimiter` jest ustawiona na nie było ogranicznika (ciąg pusty) `columnDelimiter` musi być ustawiona jako nie było ogranicznika (ciąg pusty) jako, co oznacza traktowanie całą zawartość jako pojedynczą wartość. | Nie       |
 | quoteChar        | Pojedynczy znak cudzysłowu wartości w kolumnie, jeśli zawiera on ogranicznik kolumny. <br>Wartość domyślna to **podwójne cudzysłowy** `"`. <br>Dla mapowania przepływu danych `quoteChar` nie może być pustym ciągiem. <br>Działanie kopiowania gdy `quoteChar` jest zdefiniowana jako ciąg pusty, oznacza to, istnieje nie znaków cudzysłowu, a wartość kolumny nie jest ujęty w cudzysłów, i `escapeChar` jest używany jako znak ucieczki ogranicznik kolumny, a nią samą. | Nie       |
 | escapeChar       | Pojedynczy znak jako znak ucieczki dla cudzysłowów w cudzysłowie wartość.<br>Wartość domyślna to **ukośnik odwrotny `\`** . <br>Dla mapowania przepływu danych `escapeChar` nie może być pustym ciągiem. <br/>Działanie kopiowania gdy `escapeChar` jest zdefiniowana jako ciąg pusty, `quoteChar` musi być ustawiony jako ciąg pusty, a także, w którym to przypadku upewnij się, wszystkie wartości w kolumnie nie zawiera ograniczników. | Nie       |
 | firstRowAsHeader | Określa, czy Traktuj/upewnij pierwszego wiersza jako wiersz nagłówka z nazwami kolumn.<br>Dozwolone wartości to **true** i **false** (ustawienie domyślne). | Nie       |
@@ -77,7 +77,7 @@ Następujące właściwości są obsługiwane w działaniu kopiowania ***\*źró
 
 | Właściwość       | Opis                                                  | Wymagane |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | Właściwość typu źródła działania kopiowania musi być równa **DelimitedTextSource**. | Yes      |
+| — typ           | Właściwość typu źródła działania kopiowania musi być równa **DelimitedTextSource**. | Yes      |
 | formatSettings | Grupa właściwości. Zapoznaj się **tekst rozdzielany Odczytaj ustawienia** w poniższej tabeli. | Nie       |
 | storeSettings  | Grupa właściwości o tym, jak można odczytać danych z magazynu danych. Każdy łącznik opartych na plikach ma swoje własne obsługiwane ustawienia odczytu w ramach `storeSettings`. **Szczegółowe informacje w artykule łącznika -> Sekcja właściwości działania kopiowania**. | Nie       |
 
@@ -94,7 +94,7 @@ Następujące właściwości są obsługiwane w działaniu kopiowania ***\*ujśc
 
 | Właściwość       | Opis                                                  | Wymagane |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | Właściwość typu źródła działania kopiowania musi być równa **DelimitedTextSink**. | Yes      |
+| type           | Właściwość typu źródła działania kopiowania musi być równa **DelimitedTextSink**. | Tak      |
 | formatSettings | Grupa właściwości. Zapoznaj się **tekst rozdzielany zapis ustawień** w poniższej tabeli. |          |
 | storeSettings  | Grupa właściwości o tym, jak można zapisać danych do magazynu danych. Każdy łącznik opartych na plikach ma swoje własne ustawienia obsługiwanych zapisu w obszarze `storeSettings`. **Szczegółowe informacje w artykule łącznika -> Sekcja właściwości działania kopiowania**. | Nie       |
 
@@ -102,7 +102,7 @@ Obsługiwane **tekst rozdzielany zapis ustawień** w obszarze `formatSettings`:
 
 | Właściwość      | Opis                                                  | Wymagane                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | Typ formatsettings — musi być równa **DelimitedTextWriteSetting**. | Yes                                                   |
+| — typ          | Typ formatsettings — musi być równa **DelimitedTextWriteSetting**. | Tak                                                   |
 | fileExtension | Rozszerzenie pliku używany do nazywania plików wyjściowych, np. `.csv`, `.txt`. Musi być określony, gdy `fileName` nie została określona w danych wyjściowych DelimitedText zestawu danych. | Tak, jeśli nie określono nazwy pliku wyjściowego zestawu danych |
 
 ## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości z przepływu danych

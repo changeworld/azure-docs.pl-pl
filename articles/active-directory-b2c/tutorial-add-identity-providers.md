@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e12dc6bf9bcb50dc58e7730f3a08dd6a9d4440
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ceae908b37c825721a42c49db4503382eb35c71c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512194"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055103"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dodawanie dostawcy tożsamości do aplikacji w usłudze Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Aby włączyć logowania dla użytkowników z usługi Azure AD, musisz zarejestr
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera dzierżawy usługi Azure AD.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **rejestracje aplikacji**.
+3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **rejestracje aplikacji (starsza wersja)** .
 4. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 5. Wprowadź nazwę aplikacji. Na przykład `Azure AD B2C App`.
 6. Aby uzyskać **typ aplikacji**, wybierz opcję `Web app / API`.
@@ -106,7 +106,7 @@ Po utworzeniu aplikacji dostawcy tożsamości, który chcesz dodać, możesz dod
     Na przykład `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
 8. Dla **identyfikator klienta**, wprowadź identyfikator aplikacji, które wcześniej zapisaną i **klucz tajny klienta**, wprowadź wartości klucza, który wcześniej zapisane.
-9. Opcjonalnie wprowadź wartość dla **Domain_hint**. Na przykład `ContosoAD`. 
+9. Opcjonalnie wprowadź wartość dla **Domain_hint**. Na przykład `ContosoAD`. Wskazówki dotyczące domeny (https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) są dyrektyw, które są częścią żądania uwierzytelniania z aplikacji. Mogą one używane, aby przyspieszyć użytkownika do ich federacyjnych dostawca tożsamości strony logowania. Lub mogą być używane przez aplikację wielodostępną aby przyspieszyć użytkownika bezpośrednio na marki usługi Azure AD strony logowania dla swojej dzierżawy.
 10. Kliknij przycisk **OK**.
 11. Wybierz **Mapowanie oświadczeń tego dostawcy tożsamości** i ustaw następujące oświadczeń:
     

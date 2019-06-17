@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
 ms.openlocfilehash: bc939011f87f03ef1de7e728fc52fc0c9887dd31
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935403"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>W trybie offline FairPlay Streaming dla systemu iOS 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Media Services, którego używasz:"]
 > * [Wersja 3](../latest/offline-fairplay-for-ios.md)
 > * [Wersja 2](media-services-protect-hls-with-offline-fairplay.md)
 
@@ -207,7 +207,7 @@ Poniższe często zadawane pytania dotyczące pomocy w rozwiązywaniu problemów
 - **Dlaczego on nadal odtwarzania dźwięku tylko bez wideo w trybie offline po dodaniu tylko dane audio = false?** W zależności od content delivery network (CDN) pamięci podręcznej klucza projektu zawartość może być buforowane. Przeczyścić pamięci podręcznej.
 - **Jest trybie offline kl. / s również obsługiwane w systemie iOS 11, oprócz systemu iOS 10?** Tak. Tryb offline kl. / s jest obsługiwany dla systemu iOS 10 i systemie iOS 11.
 - **Dlaczego nie można odnaleźć dokumentu "W trybie Offline odtwarzanie przy użyciu technologii FairPlay Streaming i HTTP Live Streaming" w zestawie SDK serwera kl. / s?** Od czasu kl. / s Server SDK w wersji 4 w tym dokumencie zostały scalone z "technologii FairPlay Streaming Programming Guide."
-- **Co to ostatni parametr oznaczać w następujący interfejs API w trybie offline kl. / s?**
+- **Co to ostatni parametr oznaczać w następujący interfejs API w trybie offline kl. / s?** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Aby uzyskać dokumentację dla tego interfejsu API, zobacz [metoda FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametr reprezentuje czas trwania w trybie offline wypożyczeń, za pomocą godzinę jako jednostka.

@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61269166"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Konstruktor wyrażeń przepływu danych mapowania
@@ -48,7 +48,7 @@ Dodawanie komentarzy do wyrażenia przy użyciu pojedynczego wiersza i komentarz
 
 ![Komentarze](media/data-flow/comments.png "komentarze")
 
-## <a name="regular-expressions"></a>Wyrażenia regularne
+## <a name="regular-expressions"></a>Regular Expressions
 
 Język wyrażeń przepływ danych fabryki danych Azure [pełna dokumentacja tutaj](https://aka.ms/dataflowexpressions), włącza funkcje, które zawierają składni wyrażeń regularnych. Korzystając z funkcji wyrażenia regularnego, Konstruktor wyrażeń podejmie próbę interpretacji kreski ułamkowej odwróconej (\\) jako sekwencja znaków ucieczki. Korzystając z ukośników odwrotnych w wyrażeniu regularnym, umieść je całego wyrażenia regularnego w dziesięciomilionowych częściach sekundy (\`) lub podwójny ukośnik odwrotny.
 

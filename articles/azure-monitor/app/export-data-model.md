@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f8fd0b317c17f142664d22291c23442dd49f970
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60898920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053293"
 ---
 # <a name="application-insights-export-data-model"></a>Model danych eksportu Insights aplikacji
 Poniższa tabela zawiera listę właściwości telemetrii wysyłanych z [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) zestawów SDK do portalu.
@@ -114,7 +114,7 @@ Informacje, które należy zwrócić uwagę:
 ## <a name="context"></a>Kontekst
 Wszystkie rodzaje danych telemetrycznych towarzyszą sekcję kontekstu. Nie wszystkie te pola są przesyłane przy użyciu każdego punktu danych.
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | context.Custom.Dimensions [0] |obiekt] |Pary klucz wartość ciągu jest ustawiony za pomocą parametru właściwości niestandardowe. Maksymalna długość 100, wartości maksymalna długość klucza 1024. Więcej niż 100 wartości unikatowych, właściwości mogą być wyszukiwane, ale nie można używać do segmentacji. 200 maksymalna liczba kluczy na klucz instrumentacji. |
 | context.Custom.Metrics [0] |obiekt] |Ustaw parametr pomiary niestandardowe i TrackMetrics pary klucz wartość. Maksymalny długości klucza 100 wartości może być liczbą. |
@@ -158,10 +158,10 @@ Wszystkie rodzaje danych telemetrycznych towarzyszą sekcję kontekstu. Nie wszy
 | internal.data.documentVersion |string | |
 | internal.data.id |string | Unikatowy identyfikator, który jest przypisywany podczas element pobieranym do usługi Application Insights |
 
-## <a name="events"></a>Zdarzenia
+## <a name="events"></a>Events
 Niestandardowe zdarzenia generowane przez [poleceń TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | Liczba zdarzeń [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | Nazwa zdarzenia [0] |string |Nazwa zdarzenia.  Maksymalna długość 250. |
@@ -172,7 +172,7 @@ Niestandardowe zdarzenia generowane przez [poleceń TrackEvent()](../../azure-mo
 ## <a name="exceptions"></a>Wyjątki
 Raporty [wyjątki](../../azure-monitor/app/asp-net-exceptions.md) na serwerze i w przeglądarce.
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | zestaw basicException [0] |string | |
 | Liczba basicException [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
@@ -198,10 +198,10 @@ Raporty [wyjątki](../../azure-monitor/app/asp-net-exceptions.md) na serwerze i 
 | stos basicException [0] |string |Maksymalna długość wynosi 10k |
 | typeName basicException [0] |string | |
 
-## <a name="trace-messages"></a>Śledź komunikaty
+## <a name="trace-messages"></a>Komunikaty śledzenia
 Wysyłany przez [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)i [kart rejestrowania](../../azure-monitor/app/asp-net-trace-logs.md).
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | Nazwa_rejestratora komunikatu [0] |string | |
 | Parametry komunikatu [0] |string | |
@@ -211,7 +211,7 @@ Wysyłany przez [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.m
 ## <a name="remote-dependency"></a>Zależności zdalne
 Wysyłany przez TrackDependency. Używany do raportu wydajności i użycia [wywołania zależności](../../azure-monitor/app/asp-net-dependencies.md) na serwerze i wywołań AJAX w przeglądarce.
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | asynchroniczne remoteDependency [0] |wartość logiczna | |
 | remoteDependency [0] baseName |string | |
@@ -232,7 +232,7 @@ Wysyłany przez TrackDependency. Używany do raportu wydajności i użycia [wywo
 ## <a name="requests"></a>Żądania
 Wysyłany przez [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). Standardowe moduły umożliwia czas odpowiedzi serwera raportów, mierzona na serwerze.
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | Liczba żądań [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład: 4 =&gt; 25%. |
 | request [0] durationMetric.value |numer |Czas od żądania przychodzące do odpowiedzi. 1e7 == 1s |
@@ -250,7 +250,7 @@ Wysyłane przez przeglądarkę. Pomiar czasu przetwarzania strony, użytkownik i
 
 Wartości w kontekście pokazują kliencki system operacyjny i wersję przeglądarki.
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess.value |liczba całkowita |Czas od końca odbieranie HTML do wyświetlania strony. |
 | Nazwa clientPerformance [0] |string | |
@@ -267,7 +267,7 @@ Wartości w kontekście pokazują kliencki system operacyjny i wersję przegląd
 ## <a name="page-views"></a>Wyświetlenia strony
 Wysyłany przez trackPageView() lub [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | Liczba wyświetleń [0] |liczba całkowita |100 / ([próbkowania](../../azure-monitor/app/sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | Wyświetl durationMetric.value [0] |liczba całkowita |Wartość Opcjonalnie trackPageView() lub startTrackPage() - stopTrackPage(). Nie taka sama jak clientPerformance wartości. |
@@ -280,7 +280,7 @@ Wysyłany przez trackPageView() lub [stopTrackPage](../../azure-monitor/app/api-
 ## <a name="availability"></a>Dostępność
 Raporty [testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md).
 
-| Ścieżka | Type | Uwagi |
+| Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | availabilityMetric.name dostępności [0] |string |availability |
 | availabilityMetric.value dostępności [0] |numer |w wersji 1.0 lub 0.0 |

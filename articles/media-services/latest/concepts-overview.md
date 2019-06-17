@@ -13,10 +13,10 @@ ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762305"
 ---
 # <a name="media-services-concepts"></a>Pojęcia dotyczące usługi Media Services
@@ -62,7 +62,7 @@ Kodowanie za pomocą usługi Media Services v3, musisz utworzyć **przekształca
 - [Transformacje i zadania](transforms-jobs-concept.md)
 - [Kodowanie za pomocą usługi Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Media Analytics
+## <a name="media-analytics"></a>Analiza multimediów
 
 Do analizowania plików audio i wideo, należy również utworzyć **przekształca** i **zadań**.
 
@@ -114,7 +114,7 @@ Na poniższym obrazie przedstawiono przepływu pracy typu przekazywania:
 
 ## <a name="monitoring"></a>Monitorowanie
 
-### <a name="event-grid"></a>Siatka zdarzeń
+### <a name="event-grid"></a>Event Grid
 
 Aby wyświetlić postęp zadania, należy użyć **usługi Event Grid**. Usługa Media Services emituje również typy zdarzeń na żywo. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. 
 
