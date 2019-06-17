@@ -7,23 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: b883dcf941683d6065c9b6ee5075d2a358f3452a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 7172c1c4c31a47500eaba28ab6ed21e54674b80a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61481499"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077708"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Wprowadzenie do usługi Azure Stream Analytics służącej do przetwarzania danych z urządzeń IoT
-Korzystając z tego samouczka, nauczysz się tworzyć logikę przetwarzania strumieni w celu zbierania danych z urządzeń Internetu rzeczy (IoT). Użyjemy w nim rzeczywistych przypadków użycia Internetu rzeczy (IoT) w celu zademonstrowania szybkiego i ekonomicznego kompilowania rozwiązań.
+
+W tym samouczku nauczysz się tworzyć logikę przetwarzania strumieni w celu zbierania danych z urządzeń Internetu rzeczy (IoT). Użyjemy w nim rzeczywistych przypadków użycia Internetu rzeczy (IoT) w celu zademonstrowania szybkiego i ekonomicznego kompilowania rozwiązań.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 * [Subskrypcja platformy Azure](https://azure.microsoft.com/pricing/free-trial/)
 * Przykładowe pliki zapytań i danych do pobrania z serwisu [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)
 
 ## <a name="scenario"></a>Scenariusz
+
 Contoso to firma z branży automatyki przemysłowej, która w pełni zautomatyzowała swój proces produkcji. Maszyny w tym zakładzie mają czujniki mogące emitować strumienie danych w czasie rzeczywistym. W tym scenariuszu menedżer warsztatu produkcyjnego chce mieć wgląd w czasie rzeczywistym w dane czujników w celu szukania wzorców i podejmowania na ich podstawie odpowiednich działań. Dla danych czujników będzie używany język zapytań usługi Stream Analytics (SAQL) w celu znalezienia interesujących wzorców w przychodzącym strumieniu danych.
 
 W tym przykładzie dane są generowane z urządzenia Texas Instruments Sensor Tag. Ładunek danych jest w formacie JSON i może wyglądać następująco:

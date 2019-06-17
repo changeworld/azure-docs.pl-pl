@@ -3,16 +3,16 @@ title: 'Usuwanie bramy sieci wirtualnej: Witryna Azure Portal: Resource Manager 
 description: Usuwanie bramy sieci wirtualnej przy użyciu portalu Azure w modelu wdrażania usługi Resource Manager.
 services: vpn-gateway
 documentationcenter: na
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
-origin.date: 10/23/2018
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 10/23/2018
+ms.author: cherylmc
+ms.topic: conceptual
 ms.openlocfilehash: 387b4e982772f22453876e1ea8b9e7c4039601c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845705"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Usuwanie bramy sieci wirtualnej przy użyciu portalu
@@ -61,7 +61,5 @@ W tym momencie usuwana jest brama sieci wirtualnej. Następne kroki pomóc usun�
 Jeśli nie jesteś zajmującym się przechowywanie wszystkich zasobów w grupie zasobów i po prostu chcesz zacząć od początku, możesz usunąć całą grupę zasobów. Jest to szybki sposób, aby usunąć wszystkie elementy. Poniższe kroki mają zastosowanie tylko do modelu wdrażania usługi Resource Manager.
 
 1. W **wszystkie zasoby**, Znajdź grupę zasobów i kliknij, aby otworzyć blok.
-2. Kliknij polecenie **Usuń**. W bloku usuwanie wyświetlanie uwzględnionych zasobów. Upewnij się, że chcesz usunąć wszystkich tych zasobów. Jeśli nie, wykonaj kroki w obszarze usuwanie bramy sieci VPN w górnej części tego artykułu.
+2. Kliknij przycisk **Usuń**. W bloku usuwanie wyświetlanie uwzględnionych zasobów. Upewnij się, że chcesz usunąć wszystkich tych zasobów. Jeśli nie, wykonaj kroki w obszarze usuwanie bramy sieci VPN w górnej części tego artykułu.
 3. Aby kontynuować, wpisz nazwę grupy zasobów, którą chcesz usunąć, a następnie kliknij przycisk **Usuń**.
-
-<!--Update_Description: wording update-->

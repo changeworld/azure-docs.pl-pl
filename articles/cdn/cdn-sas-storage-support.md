@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60324156"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Usługa Azure CDN przy użyciu sygnatury dostępu Współdzielonego
@@ -136,7 +136,7 @@ Ponieważ sygnatury dostępu Współdzielonego parametry nie są widoczne dla us
 | Nazwa parametru sygnatury dostępu Współdzielonego | Opis |
 | --- | --- |
 | Uruchamianie | Czas rozpoczęcia przez sieć CDN systemu Azure na dostęp do pliku obiektu blob. Z powodu zegara pochylanie (po odebraniu sygnału zegara w różnym czasie dla różnych składników), wybierz czas 15 minut wcześniej, jeśli chcesz, aby zasobów, które mają być dostępne natychmiast. |
-| Koniec | Czas, po upływie którego usługa Azure CDN nie jest już dostęp do pliku obiektu blob. Wcześniej buforowanych plików w usłudze Azure CDN, są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, ustaw czas wygaśnięcia odpowiednie w tokenie zabezpieczeń usługi Azure CDN lub przeczyszczania elementu zawartości. |
+| End | Czas, po upływie którego usługa Azure CDN nie jest już dostęp do pliku obiektu blob. Wcześniej buforowanych plików w usłudze Azure CDN, są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, ustaw czas wygaśnięcia odpowiednie w tokenie zabezpieczeń usługi Azure CDN lub przeczyszczania elementu zawartości. |
 | Dozwolone adresy IP | Opcjonalny. Jeśli używasz **Azure CDN from Verizon**, ten parametr zostanie ustawiony na zakresy zdefiniowane w [Azure CDN from Verizon zakresy adresów IP serwerów brzegowych](/azure/cdn/cdn-pop-list-api). Jeśli używasz **Azure CDN from Akamai**, nie można ustawić parametru zakresów adresów IP, ponieważ nie są statyczne adresy IP.|
 | Dozwolone protokoły | Rozróżniany, dozwolone dla żądań wykonywanych przy użyciu sygnatury dostępu Współdzielonego konta. Ustawienie HTTPS jest zalecane.|
 

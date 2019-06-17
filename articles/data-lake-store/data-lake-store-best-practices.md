@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 50d0ed644b5afa744e8bce478199079fd4fb7432
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878960"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake Storage Gen1
@@ -23,7 +23,7 @@ ms.locfileid: "60878960"
 
 W tym artykule poznasz najlepsze praktyki i zagadnienia dotyczące pracy z usługi Azure Data Lake Storage Gen1. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajność, odporność i monitorowanie Data Lake Storage Gen1. Przed Data Lake Storage Gen1 Praca z danymi naprawdę big data w usług, takich jak Azure HDInsight był zbyt złożony. Trzeba było fragmentować dane na wielu kontach magazynu obiektów Blob, dzięki czemu można osiągnąć petabajtów magazynu i uzyskania optymalnej wydajności tej skali. Za pomocą Data Lake Storage Gen1 większość stałych limitów rozmiaru i wydajności zostaną usunięte. Jednak nadal istnieją pewne zagadnienia, które w tym artykule opisano, dzięki czemu można uzyskać najlepszą wydajność dzięki Data Lake Storage Gen1.
 
-## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
 
 Usługa Azure Data Lake Storage Gen1 oferty POSIX kontrole dostępu i szczegółową inspekcję dla użytkowników usługi Azure Active Directory (Azure AD), grupy i jednostki usługi. Można ustawić te kontroli dostępu do istniejących plików i folderów. Kontroli dostępu można również tworzyć wartości domyślnych, które można stosować do nowych plików lub folderów. Gdy uprawnienia do istniejących folderów i obiektów podrzędnych, uprawnienia muszą być rekursywnie propagowany dla każdego obiektu. W przypadku dużej liczby plików propagowanie uprawnień może zająć dużo czasu. Czas poświęcony może wynosić między obiektami 30 – 50 przetwarzanych na sekundę. W związku z tym odpowiednio planować grup folder struktury i użytkownika. W przeciwnym razie może to spowodować nieprzewidziane opóźnienia i problemy podczas pracy z danymi.
 
@@ -45,7 +45,7 @@ Jednostki usługi w usłudze Azure Active Directory są zwykle używane przez us
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>Włącz zaporę Data Lake Storage Gen1 z dostępem do usług platformy Azure
 
-Data Lake Storage Gen1 obsługuje możliwość Włączanie zapory i ograniczanie dostępu tylko do usług platformy Azure, co jest zalecane w przypadku mniejszych ataku, przed atakami z zewnątrz. Zapory można włączyć w witrynie Azure portal za pomocą konta Data Lake Storage Gen1 **zapory** > **włączenia zapory (dalej)** > **zezwolić na dostęp do platformy Azure usługi** opcje.
+Data Lake Storage Gen1 obsługuje możliwość Włączanie zapory i ograniczanie dostępu tylko do usług platformy Azure, co jest zalecane w przypadku mniejszych ataku, przed atakami z zewnątrz. Zapory można włączyć w witrynie Azure portal za pomocą konta Data Lake Storage Gen1 **zapory** > **włączenia zapory (dalej)**  > **zezwolić na dostęp do platformy Azure usługi** opcje.
 
 ![Ustawienia w Data Lake Storage Gen1 zapory](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "ustawienia w Data Lake Storage Gen1 zapory")
 
@@ -101,8 +101,8 @@ Poniżej przedstawiono najważniejsze trzy zalecane opcje organizowanie replikac
 |  |Narzędzia Distcp  |Azure Data Factory  |Narzędzia AdlCopy  |
 |---------|---------|---------|---------|
 |**Limity skalowania**     | Ograniczone przez węzły procesu roboczego        | Ograniczone przez przenoszenie danych w chmurze maksymalna liczba jednostek        | Związana z jednostki analizy        |
-|**Obsługuje kopiowanie różnic**     |   Yes      | Nie         | Nie         |
-|**Wbudowane aranżacji**     |  Nie (używanie zadań programu Oozie powietrza lub usługi cron)       | Yes        | Nie (należy użyć usługi Azure Automation lub harmonogramu zadań Windows)         |
+|**Obsługuje kopiowanie różnic**     |   Tak      | Nie         | Nie         |
+|**Wbudowane aranżacji**     |  Nie (używanie zadań programu Oozie powietrza lub usługi cron)       | Tak        | Nie (należy użyć usługi Azure Automation lub harmonogramu zadań Windows)         |
 |**Obsługiwanych systemów plików**     | ADL, HDFS, WASB, S3, GS, CFS        |Zobacz wiele, [łączników](../data-factory/connector-azure-blob-storage.md).         | ADL do systemu plików ADL, WASB do systemu plików ADL (tylko w tym samym regionie)        |
 |**Obsługa systemu operacyjnego**     |Dowolny system operacyjny uruchomiony usługi Hadoop         | ND          | Windows 10         |
 

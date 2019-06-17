@@ -9,10 +9,10 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: cf7afb50006fb273b4d685f9e4259be1cb60fe4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60563890"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Zainstaluj klienta programu Chef w witrynie Azure portal
@@ -74,7 +74,7 @@ W tej sekcji najpierw użyjesz witryny Azure portal do utworzenia maszyny z syst
 
      ![Wybierz pozycję Dodaj rozszerzenie, aby dodać rozszerzenie do maszyny wirtualnej](./media/chef-extension-portal/add-vm-add-extension.png)
 
-1. Na **nowy zasób** zaznacz **rozszerzenia Chef systemu Linux (1.2.3)**.
+1. Na **nowy zasób** zaznacz **rozszerzenia Chef systemu Linux (1.2.3)** .
 
      ![Program chef oferuje rozszerzenia dla maszyn wirtualnych z systemem Linux i Windows](./media/chef-extension-portal/select-linux-chef-extension.png)
 
@@ -82,7 +82,7 @@ W tej sekcji najpierw użyjesz witryny Azure portal do utworzenia maszyny z syst
 
 1. Na **zainstalować rozszerzenie** karcie, określ następujące wartości, a następnie wybierz **OK**.
 
-    - **Adres URL serwera programu chef** — wprowadź adres URL serwera programu Chef, który zawiera nazwę organizacji, na przykład *https://api.chef.io/organization/mycompany*.
+    - **Adres URL serwera programu chef** — wprowadź adres URL serwera programu Chef, który zawiera nazwę organizacji, na przykład *https://api.chef.io/organization/mycompany* .
     - **Nazwa węzła chef** — wprowadź nazwę węzła programu Chef. Może to być dowolna wartość.
     - **Lista uruchamiania** — wprowadź listę Chef uruchamiania, który jest dodawany do maszyny. To może być puste.
     - **Nazwa klienta weryfikacji** — Podaj nazwę programu Chef weryfikacji klienta. na przykład *weryfikacji tarcher*.

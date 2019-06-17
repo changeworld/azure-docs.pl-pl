@@ -13,10 +13,10 @@ ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900893"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi Application Insights
@@ -124,7 +124,7 @@ Protokół HTTP dla korelacji deklaruje również `Correlation-Context` nagłów
 ## <a name="queue-instrumentation"></a>Instrumentacja kolejki
 Choć [protokołu HTTP na potrzeby korelacji](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) do przekazania szczegóły korelacji z żądania HTTP, każdy protokół kolejki ma do zdefiniowania, jak ten sam szczegółowe informacje są przekazywane komunikatu w kolejce. Niektóre protokoły kolejki (na przykład protokół AMQP) zezwala na przekazywanie dodatkowych metadanych i inne (takie usługi Azure Storage Queue) wymaga kontekstu, który ma być zdekodowany do ładunku komunikatu.
 
-### <a name="service-bus-queue"></a>Kolejka usługi Service Bus
+### <a name="service-bus-queue"></a>Kolejki usługi Service Bus
 Usługa Application Insights śledzi wywołania komunikatów usługi Service Bus przy użyciu nowego [klienta magistrali usług Microsoft Azure dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) wersji 3.0.0 lub nowszej.
 Jeśli używasz [wzorzec procedury obsługi komunikatów](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) do przetwarzania komunikatów, wszystko będzie gotowe: wszystkie wywołania usługi Service Bus, wykonywane przez usługę są automatycznie śledzone i skorelowane z innych elementów telemetrii. Zapoznaj się [śledzenie za pomocą Microsoft Application Insights klienta usługi Service Bus](../../service-bus-messaging/service-bus-end-to-end-tracing.md) Jeśli ręcznie przetwarzać komunikatów.
 
@@ -170,7 +170,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>Przetwórz
+#### <a name="process"></a>Process
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -229,8 +229,8 @@ Ponieważ magazyn kolejek obsługuje interfejsu API protokołu HTTP, wszystkie o
 
 W tym przykładzie pokazano, jak śledzić `Enqueue` operacji. Możesz:
 
- - **Korelowanie ponownych prób (jeśli istnieje)**: Wszystkie one mają jednej wspólnej nadrzędnego, który ma `Enqueue` operacji. W przeciwnym razie jest śledzona jako elementy podrzędne żądania przychodzącego. W przypadku wielu żądań logiczne do kolejki, może być trudne do znalezienia, która wywołuje metodę spowodowało ponownych prób.
- - **Korelowanie dzienniki magazynu (Jeśli wymagane)**: Są one powiązane z telemetrii usługi Application Insights.
+ - **Korelowanie ponownych prób (jeśli istnieje)** : Wszystkie one mają jednej wspólnej nadrzędnego, który ma `Enqueue` operacji. W przeciwnym razie jest śledzona jako elementy podrzędne żądania przychodzącego. W przypadku wielu żądań logiczne do kolejki, może być trudne do znalezienia, która wywołuje metodę spowodowało ponownych prób.
+ - **Korelowanie dzienniki magazynu (Jeśli wymagane)** : Są one powiązane z telemetrii usługi Application Insights.
 
 `Enqueue` Operacji jest elementem podrzędnym elementu operacji nadrzędnej (na przykład z przychodzącym żądaniem HTTP). Wywołania zależności HTTP jest elementem podrzędnym elementu `Enqueue` operacji i podwójnym postać przychodzącego żądania:
 
@@ -335,7 +335,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>Przetwórz
+#### <a name="process"></a>Process
 
 W poniższym przykładzie wiadomości przychodzących jest śledzona w sposób podobny sposób na przychodzące żądania HTTP:
 

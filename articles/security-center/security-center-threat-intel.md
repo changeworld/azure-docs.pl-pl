@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 36201bad64e5516375afe1ec9ce141c3fd311d48
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906132"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574349"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Mapa alertów zabezpieczeń i analiza zagrożeń
 Ten artykuł ułatwia korzystanie Mapa alertów zabezpieczeń usługi Azure Security Center i Mapa analizy zagrożeń na podstawie zdarzeń zabezpieczeń do rozwiązania problemów związanych z zabezpieczeniami.
+
+> [!NOTE]
+> Zabezpieczenia *zdarzenia* przycisk mapy zostaną wycofane z dniem 31 lipca 2019 r. Aby uzyskać więcej informacji i alternatywne usług zobacz [wycofywania Centrum zabezpieczeń funkcji (2019 lipca)](security-center-features-retirement-july2019.md#menu_securityeventsmap).
+
 
 ## <a name="how-the-security-alerts-map-works"></a>Sposób mapowania alerty zabezpieczeń działania
 Usługa Security Center zapewnia, że Ci mapę, która pomoże Ci identyfikować zagrożenia bezpieczeństwa środowiska. Na przykład można zidentyfikować, czy dany komputer jest częścią botnetu, a w przypadku, gdy zagrożenia pochodzi z. Komputerów może stać się węzłami w botnecie, gdy osoby atakujące bezprawnie zainstalują złośliwe oprogramowanie, które potajemnie wchodzi w interakcję z poleceń i kontroli, która zarządzać botnetem. 

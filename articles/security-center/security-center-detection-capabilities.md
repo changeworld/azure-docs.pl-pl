@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
 ms.openlocfilehash: 8cd76909c9ce15a97de4ea5af3b21ac120058dd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60705893"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkcje wykrywania usługi Azure Security Center
 W tym dokumencie omówiono usługę Azure Security Center zaawansowane funkcje wykrywania, która ułatwia identyfikację aktywnych zagrożeń atakujących zasoby Microsoft Azure — Windows i Linux — i udostępnia szczegółowe informacje potrzebne do szybkiego reagowania.
 
-Funkcje zaawansowanego wykrywania są dostępne w warstwie Standardowa usługi Azure Security Center. Bezpłatna wersja próbna jest dostępna. Uaktualnienie usługi jest możliwe po przejściu do wyboru warstwy cenowej na stronie [Zasady zabezpieczeń](tutorial-security-policy.md). Odwiedź [stronę usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/), aby dowiedzieć się więcej na temat cen.
+Funkcje zaawansowanego wykrywania są dostępne w warstwie Standardowa usługi Azure Security Center. Dostępna jest bezpłatna wersja próbna. Uaktualnienie usługi jest możliwe po przejściu do wyboru warstwy cenowej na stronie [Zasady zabezpieczeń](tutorial-security-policy.md). Odwiedź [stronę usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/), aby dowiedzieć się więcej na temat cen.
 
 
 ## <a name="responding-to-todays-threats"></a>Odpowiadanie na nowe rodzaje zagrożeń

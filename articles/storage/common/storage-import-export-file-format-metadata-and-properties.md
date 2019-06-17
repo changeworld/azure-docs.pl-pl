@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 2066d4a2ed6db97285d92d15e14dbd21629dbdfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478559"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Usługa Azure Import/Export właściwości i metadanych format pliku usługi
@@ -30,7 +30,7 @@ Format pliku metadanych jest następująca:
 </Metadata>  
 ```
   
-|XML Element|Type|Opis|  
+|XML Element|Typ|Opis|  
 |-----------------|----------|-----------------|  
 |`Metadata`|Element główny|Element główny plik metadanych.|  
 |`metadata-name`|String|Opcjonalny. XML element Określa nazwę metadanych dla obiektu blob, a jego wartość określa wartość ustawienia metadanych.|  
@@ -52,7 +52,7 @@ Format pliku właściwości jest następująca:
 </Properties>  
 ```
   
-|XML Element|Type|Opis|  
+|XML Element|Typ|Opis|  
 |-----------------|----------|-----------------|  
 |`Properties`|Element główny|Element główny pliku właściwości.|  
 |`Last-Modified`|String|Opcjonalny. Czas ostatniej modyfikacji dla obiektu blob. Aby uzyskać tylko zadania eksportu.|  

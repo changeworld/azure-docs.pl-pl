@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61436498"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Wymagania dotyczące magazynu Azure Blob pole danych
@@ -53,11 +53,11 @@ Dla pola danych w usłudze Blob storage istnieje biblioteki określonego klienta
 
 ### <a name="azure-data-box-18-onwards"></a>Usługa Azure Data Box 1.8 lub nowszy
 
-| Biblioteka kliencka     |Magazyn obiektów Blob pole danych jest obsługiwana wersja     | Link   |     Specyfikacja punktu końcowego      |
+| Biblioteka kliencka     |Magazyn obiektów Blob pole danych jest obsługiwana wersja     | Łącze   |     Specyfikacja punktu końcowego      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    9.2.0                                           |    Pakiet Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    pliku App.config                 |
 |    Java                |    7.0.0                                           |    Pakiet maven:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Ustawienia parametrów połączenia         |
-|    Node.js             |    2.8.3                                           |    NPM link:   https://www.npmjs.com/package/azure-storage   (Uruchom: `npm install azure-storage@2.7.0`)   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Deklaracja wystąpienia usługi    |
+|    Node.js             |    2.8.3                                           |    NPM link:   https://www.npmjs.com/package/azure-storage   (Uruchom: `npm install azure-storage@2.7.0` )   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Deklaracja wystąpienia usługi    |
 |    C++                 |    5.2.0                                           |    Pakiet Nuget:   https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Ustawienia parametrów połączenia         |
 |    PHP                 |    1.2.0                                           |    Wersja usługi GitHub:<br>Wspólne: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Obiekt blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Instalowanie za pomocą Composer (Aby dowiedzieć się więcej, zobacz szczegóły poniżej).                                                                                                             |    Ustawienia parametrów połączenia         |
 |    Python              |    1.1.0                                           |    Wersja usługi GitHub:<br>Wspólne:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Obiekt blob:   https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Deklaracja wystąpienia usługi    |

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 6793fbcc50711e10231b87fa6e1f11f54f90d325
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60445438"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Xero przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
@@ -49,7 +49,7 @@ Następujące właściwości są obsługiwane w przypadku usługi Xero połączo
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Xero** | Yes |
+| type | Właściwość type musi być równa: **Xero** | Tak |
 | host | Punkt końcowy serwera usługi Xero (`api.xero.com`).  | Yes |
 | consumerKey | Klucz klienta skojarzonego z aplikacją usługi Xero. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | privateKey | Klucz prywatny z pliku PEM został wygenerowany dla aplikacji prywatnych Xero, zobacz [tworzenia pary kluczy publiczny/prywatny](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Należy pamiętać, aby **Generowanie privatekey.pem z numbits 512** przy użyciu `openssl genrsa -out privatekey.pem 512`; 1024 nie jest obsługiwane. Obejmować cały tekst z pliku PEM, w tym endings(\n) wiersza systemu Unix, zobacz poniższy przykład.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
@@ -95,7 +95,7 @@ Aby skopiować dane z usługi Xero, należy ustawić właściwość typu zestawu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **XeroObject** | Yes |
+| type | Właściwość typu elementu dataset musi być równa: **XeroObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -124,7 +124,7 @@ Aby skopiować dane z usługi Xero, należy ustawić typ źródła w działaniu 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **XeroSource** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **XeroSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Contacts"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

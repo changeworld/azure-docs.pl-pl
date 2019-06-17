@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
 ms.openlocfilehash: fbbc8a4f636a95d18baa0dc5de541279ce36789b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551996"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Udostępnianie pulpitów nawigacyjnych platformy Azure przy użyciu kontroli dostępu opartej na rolach
@@ -36,7 +36,7 @@ Za pomocą opartej na rolach kontrola dostępu (RBAC), można przypisać użytko
 
 * subskrypcja
 * grupa zasobów
-* zasób
+* resource
 
 Uprawnienia, które można przypisać są dziedziczone z subskrypcji w dół do zasobu. Opublikowany pulpit nawigacyjny jest zasobem. W związku z tym może już być użytkowników przypisanych do ról dla subskrypcji, które działa także w przypadku opublikowany pulpit nawigacyjny. 
 
@@ -50,7 +50,7 @@ Załóżmy, że zakończono konfigurowanie pulpitu nawigacyjnego, który chcesz 
 1. Na pulpicie nawigacyjnym wybierz **udziału**.
    
      ![Wybierz udział](./media/azure-portal-dashboard-share-access/select-share.png)
-2. Przed udzieleniem im dostępu, możesz opublikować pulpitu nawigacyjnego. Domyślnie, pulpit nawigacyjny zostanie opublikowana w grupie zasobów o nazwie **pulpity nawigacyjne**. Wybierz pozycję **Publikuj**.
+2. Przed udzieleniem im dostępu, możesz opublikować pulpitu nawigacyjnego. Domyślnie, pulpit nawigacyjny zostanie opublikowana w grupie zasobów o nazwie **pulpity nawigacyjne**. Wybierz **publikowania**.
    
      ![publish](./media/azure-portal-dashboard-share-access/publish.png)
 

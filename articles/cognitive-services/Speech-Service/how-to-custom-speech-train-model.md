@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 194ae477bb3cba4ac7e3350da6b793c6fea6ecdb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e12cef052db6aabad94b47283eda11f60f3b2b13
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025859"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063914"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Uczenie modelu niestandardowego rozpoznawania mowy
 
@@ -27,7 +27,7 @@ Jeśli występują problemy rozpoznawania zawierający model, za pomocą oznaczo
 
 | Przypadek użycia | Typ danych | Ilość danych |
 |----------|-----------|---------------|
-| Prawidłowe nazwy są niepoprawnie rozpoznana. | Odnoszą się tekst (zdania/wypowiedzi) | 10 MB do 500 MB |
+| Prawidłowe nazwy są niepoprawnie rozpoznana. | Dowolny tekst związany z (zdania/wypowiedzi) | 10 MB do 500 MB |
 | Wyrazy są niepoprawnie rozpoznana ze względu na akcent | Dowolny tekst związany z (Wymowa) | Podaj misrecognized słów |
 | Popularne wyrazy są usuwane lub niepoprawnie rozpoznana | Transkrypcje audio i oznaczone przez człowieka | transkrypcja 10 do 1000 godzin |
 

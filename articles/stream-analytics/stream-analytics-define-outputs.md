@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.openlocfilehash: b29f3168b7ecc1ec8f783a7ce7a6dea83318fa14
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66455699"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
@@ -297,7 +297,7 @@ Poniższa tabela zawiera podsumowanie obsługi partycji i liczby modułów zapis
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Tak | Użyj {date} i {time} tokenów w wzorzec prefiksu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
 | Azure SQL Database | Tak | Oparte na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). Aby dowiedzieć się więcej na temat osiągania lepszej przepływności wydajność zapisu podczas ładowania danych do usługi Azure SQL Database, zobacz [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md). |
-| Azure Blob Storage | Tak | Użyj {date} i {time} tokeny od pól zdarzeń we wzorcu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. Dane wyjściowe obiektu blob można podzielić na partycje atrybut pojedyncze zdarzenie niestandardowe {fieldname} lub {daty/godziny:\<specyfikator >}. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
+| Azure Blob Storage | Yes | Użyj {date} i {time} tokeny od pól zdarzeń we wzorcu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. Dane wyjściowe obiektu blob można podzielić na partycje atrybut pojedyncze zdarzenie niestandardowe {fieldname} lub {daty/godziny:\<specyfikator >}. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Yes | Yes | Różni się w zależności od wyrównania partycji.<br /> Liczba modułów zapisujących klucza partycji dla danych wyjściowych Centrum zdarzeń jest równie powiązana z nadrzędnego krok zapytania (poprzednia wersja), jest taka sama jak liczba partycji w danych wyjściowych Centrum zdarzeń. Każdy moduł zapisujący używa [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. <br /> Liczba modułów zapisujących klucza partycji dla danych wyjściowych Centrum zdarzeń nie jest wyrównana z nadrzędnego krok zapytania (poprzednia wersja), jest taka sama jak liczba partycji w tym w poprzednim kroku. Każdy moduł zapisujący używa [klasy SendBatchAsync](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) w **EventHubClient** do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
 | Power BI | Nie | Brak | Nie dotyczy. |
 | Azure Table Storage | Yes | Wszystkie kolumny wyjściowej.  | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |

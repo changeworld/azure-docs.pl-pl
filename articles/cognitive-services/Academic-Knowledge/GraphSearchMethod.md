@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61339139"
 ---
 # <a name="graph-search-method"></a>Metoda wyszukiwania programu Graph
@@ -32,7 +32,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 
 Name (Nazwa)     | Wartość | Wymagana?  | Opis
 -----------|-----------|---------|--------
-**Tryb**       | Ciąg tekstowy | Yes | Nazwa trybu w którym chcesz użyć. Wartość to *json* lub *lambda*.
+**Tryb**       | Ciąg tekstowy | Tak | Nazwa trybu w którym chcesz użyć. Wartość to *json* lub *lambda*.
 
 Metoda wyszukiwania programu graph musi zostać wywołany przez żądanie HTTP POST. Żądanie post powinna zawierać nagłówek typu zawartości: **application/json**.
 

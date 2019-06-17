@@ -14,20 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60705499"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573605"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center (wersja zapoznawcza)
 
 W tym instruktażu pokazano, jak dostosować oceny konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center.
 
+> [!NOTE]
+> Możliwość dostosowywania konfiguracji zabezpieczeń systemu operacyjnego zostaną wycofane z dniem 31 lipca 2019 r. Aby uzyskać więcej informacji i alternatywne usług zobacz [wycofywania Centrum zabezpieczeń funkcji (2019 lipca)](security-center-features-retirement-july2019.md#menu_securityconfigurations).
+
 ## <a name="what-are-os-security-configurations"></a>Co to są konfiguracje zabezpieczeń systemu operacyjnego?
 
-Usługa Azure Security Center monitoruje konfiguracji zabezpieczeń, stosując zestaw [ponad 150 zalecanych reguł](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) dotyczących wzmacniania ochrony systemu operacyjnego, w tym reguł dotyczących zapór, inspekcji, zasady dotyczące haseł i inne. Maszyny w przypadku konfiguracji na ataki, usługa Security Center generuje zalecenie dotyczące zabezpieczeń.
+Usługa Azure Security Center monitoruje konfiguracje zabezpieczeń, stosując zestaw [ponad 150 rekomendowanych reguł](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) dotyczących wzmacniania ochrony systemu operacyjnego, w tym reguł dotyczących zapór, inspekcji, zasad dotyczących haseł i wiele więcej. Jeśli okaże się, że maszyna ma konfigurację podatną na zagrożenia, usługa Security Center wygeneruje rekomendację dotyczącą zabezpieczeń.
 
 Dostosowując reguły, organizacje można kontrolować, które opcje konfiguracji są bardziej odpowiednie dla swojego środowiska. Można ustawić zasady niestandardowe oceny i zastosować je na wszystkich komputerach stosowane w ramach subskrypcji.
 
@@ -180,7 +183,7 @@ Trzy poniższe sekcje zawierają przykłady powyższych zasad. *ExpectedValue* i
 
 Niektóre reguły są duplikowane dla różnych typów systemów operacyjnych. Zduplikowane reguły mają taką samą *originalId* atrybutu.
 
-## <a name="create-custom-rules"></a>Tworzenie niestandardowych reguł
+## <a name="create-custom-rules"></a>Tworzenie reguł niestandardowych
 
 Można również utworzyć nowe zasady. Przed utworzeniem nowej reguły, pamiętać o następujących ograniczeniach:
 
@@ -275,7 +278,7 @@ Wszystkie potencjalne błędy są wymienione w poniższej tabeli:
 
 | **Error**                                | **Opis**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfigurationSchemaVersionError  | Właściwość *schemaVersion* znaleziono nieprawidłowy lub pusty. Wartość musi być równa *{0}*.                                                         |
+| BaselineConfigurationSchemaVersionError  | Właściwość *schemaVersion* znaleziono nieprawidłowy lub pusty. Wartość musi być równa *{0}* .                                                         |
 | BaselineInvalidStringError               | Właściwość *{0}* nie może zawierać  *\\n*.                                                                                                         |
 | BaselineNullRuleError                    | Lista reguł linii bazowej konfiguracji zawiera reguły z wartością *null*.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | Identyfikator CCE *{0}* nie jest unikatowa.                                                                                                                  |
@@ -290,12 +293,12 @@ Wszystkie potencjalne błędy są wymienione w poniższej tabeli:
 | BaselineRuleNotInPlace                   | Reguła domyślna reguła z typem {0} i wyświetlony na liście {1} listy.                                                                       |
 | BaselineRulePropertyTooLong              | Właściwość *{0}* jest za długa. Maksymalna dozwolona długość: {1}.                                                                                        |
 | BaselineRuleRegTypeInvalidError          | Oczekiwana wartość *{0}* jest niezgodny z typem wartości rejestru, który jest zdefiniowany.                                                              |
-| BaselineRulesetAdded                     | Zestaw reguł z Identyfikatorem *{0}* nie został znaleziony w konfiguracji domyślnej. Nie można dodać zestaw reguł.                                               |
+| BaselineRulesetAdded                     | Zestaw reguł z identyfikatorem *{0}* nie został znaleziony w konfiguracji domyślnej. Nie można dodać zestaw reguł.                                               |
 | BaselineRulesetIdMustBeUnique            | Zestaw reguł jednej linii bazowej *{0}* muszą być unikatowe.                                                                                           |
 | BaselineRulesetNotFound                  | Zestaw reguł z identyfikatorem *{0}* i nazwy *{1}* nie został znaleziony w danej konfiguracji. Nie można usunąć zestaw reguł.                                |
 | BaselineRuleSourceNotMatch               | Reguła o identyfikatorze *{0}* jest już zdefiniowany.                                                                                                       |
-| BaselineRuleTypeDoesntMatch              | Domyślny typ reguły to *{0}*.                                                                                                              |
-| BaselineRuleTypeDoesntMatchError         | Rzeczywisty typ reguły to *{0}*, ale *typ ruleType* właściwość *{1}*.                                                                          |
+| BaselineRuleTypeDoesntMatch              | Domyślny typ reguły to *{0}* .                                                                                                              |
+| BaselineRuleTypeDoesntMatchError         | Rzeczywisty typ reguły to *{0}* , ale *typ ruleType* właściwość *{1}* .                                                                          |
 | BaselineRuleUnpermittedChangesError      | Tylko *expectedValue* i *stanu* właściwości mogą zostać zmienione.                                                                       |
 | BaselineTooManyRules                     | Maksymalna liczba dozwolonych niestandardowych reguł to {0} reguły. Zawiera daną konfigurację {1} reguł, {2} domyślne reguły, a {3} dostosowanej reguły. |
 | ErrorNoConfigurationStatus               | Brak stanu konfiguracji został znaleziony. Stan konfiguracji żądanego stanu: *Domyślne* lub *niestandardowe*.                                    |

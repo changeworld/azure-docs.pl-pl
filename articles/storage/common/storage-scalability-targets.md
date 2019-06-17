@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a61c2577f79f32f97fe2ef10a2ac67fdbbc1feda
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101490"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073773"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Usługa Azure Storage cele skalowalności i wydajności dla kont magazynu
 
@@ -43,6 +43,9 @@ Gdy aplikacja osiągnie limit partycji radzić dla obciążenia, usługi Azure S
 
 Aby uzyskać więcej informacji na temat cele skalowalności i wydajności dla usługi Azure Files i usługi Azure File Sync, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Files](../files/storage-files-scale-targets.md).
 
+> [!IMPORTANT]
+> Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont magazynu tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada na koncie magazynu.
+
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="premium-files-scale-targets"></a>Files w warstwie Premium skalowanie elementów docelowych
@@ -53,27 +56,7 @@ Na przykład: Pojedynczy udział może osiągnąć 100 000 operacji We/Wy i maks
 
 #### <a name="premium-file-share-limits"></a>Limity udziału plików — wersja Premium
 
-> [!IMPORTANT]
-> Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont magazynu tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada na koncie magazynu.
-
-|Obszar  |Środowisko docelowe  |
-|---------|---------|
-|Zainicjowano obsługę administracyjną minimalny rozmiar                        |100 GiB      |
-|Maksymalny rozmiar zainicjowano obsługę administracyjną                        |100 TiB      |
-|Zwiększenie/zmniejszenie minimalnego rozmiaru    |1 GiB      |
-|Baseline IOPS    |1 operacje We/Wy za GiB maksymalnie 100 000|
-|Operacje We/Wy, przenoszenie obsługi dużego ruchu    |3 x IOPS za GiB maksymalnie 100 000|
-|Współczynnik ruchu wychodzącego         |60 MiB/s i 0,06 * aprowizowane GiB        |
-|Szybkość transferu danych przychodzących| 40 MiB/s i 0,04 * aprowizowane GiB |
-|Maksymalna liczba migawek        |200       |
-
-#### <a name="premium-file-limits"></a>Limity pliku Premium
-
-|Obszar  |Środowisko docelowe  |
-|---------|---------|
-|Rozmiar                  |1 TiB         |
-|Maksymalna liczba operacji We/Wy na pliku     |5000         |
-|Uchwyty współbieżne    |2000         |
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Cele skalowania usługi Azure File Sync
 

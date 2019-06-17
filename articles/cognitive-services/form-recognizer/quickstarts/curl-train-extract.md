@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 351cb7ba2d7a55300a0ace999792a498cf72ebbb
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: aed18cd33078d6af65e749cf9dd4950087b6b72c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475268"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063908"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki start: Uczenie modelu rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST za pomocą programu cURL
 
@@ -52,7 +52,7 @@ Po pierwsze należy zestaw danych szkoleniowych w rozszerzeniu Azure Storage blo
 Aby wytrenuj model rozpoznawania formularza za pomocą dokumentów w kontenerze obiektów blob platformy Azure, należy wywołać **szkolenie** interfejsu API, uruchamiając polecenie programu cURL, która jest zgodna. Przed uruchomieniem polecenia dokonaj następujących zmian:
 
 1. Zastąp `<Endpoint>` z punktem końcowym, uzyskany klucz subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
-1. Zastąp `<SAS URL>` z kontenera magazynu obiektów Blob platformy Azure udostępnione adresu URL sygnatury (SAS) lokalizacji danych szkoleniowych dostępu.  
+1. Zastąp `<SAS URL>` z kontenera magazynu obiektów Blob platformy Azure udostępnione adresu URL sygnatury (SAS) lokalizacji danych szkoleniowych dostępu. (Pobierz adres URL sygnatury dostępu Współdzielonego, klikając pozycję "Shared Access Signature" w menu Ustawienia konta magazynu i "Generowanie sygnatury dostępu Współdzielonego i parametry połączenia". Spowoduje to wyświetlenie adres URL SAS usługi Blob. Dostosuj ten adres url, dodając containername po .net / i przed? sv = w adresie url, na przykład:.blob.core.windows.net/ < name_of_your_container > /? sv =... Jest to URL sygnatury dostępu Współdzielonego ma być używany).
 1. Zastąp `<subscription key>` z kluczem subskrypcji został skopiowany w poprzednim kroku.
 
 ```bash
@@ -108,7 +108,7 @@ Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wart
 
 1. Zastąp `<Endpoint>` z punktem końcowym, uzyskany klucz subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
 1. Zastąp `<modelID>` o identyfikatorze modelu, który otrzymał w poprzedniej sekcji.
-1. Zastąp `<path to your form>` ze ścieżką pliku formularza. Na przykład c:\temp\file.pdf. 
+1. Zastąp `<path to your form>` ze ścieżką pliku formularza (na przykład C:\temp\file.pdf).
 1. Zastąp `<file type>` z typem pliku. Obsługiwane typy: pdf, image/jpeg, image/png.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 

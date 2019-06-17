@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
 ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155957"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
@@ -43,7 +43,7 @@ Istnieje wiele korzyści, zaloguj się do maszyn wirtualnych systemu Linux na pl
 
 Poniższe dystrybucje systemu Linux są obecnie obsługiwane w okresie zapoznawczym tę funkcję:
 
-| Dystrybucja | Wersja |
+| Dystrybucja | Version |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |

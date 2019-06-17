@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
 ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66400173"
 ---
 # <a name="azure-backup-support-matrix"></a>Tabela obsługi usługi Azure Backup
@@ -117,10 +117,10 @@ Usługa Azure Backup obsługuje szyfrowanie danych podczas przesyłania i danych
 
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
-**Lokalne maszyny Windows bez programu DPM/serwera usługi Mab** | ![Tak][green] | ![Yes][green]
-**Maszyny wirtualne platformy Azure** | ![Tak][green] | ![Yes][green]
-**Lokalnych maszyn Windows lub maszyny wirtualne platformy Azure przy użyciu programu DPM** | ![Yes][green] | ![Tak][green]
-**Lokalnych maszyn Windows lub maszyny wirtualne platformy Azure przy użyciu serwera usługi Mab** | ![Tak][green] | ![Yes][green]
+**Lokalne maszyny Windows bez programu DPM/serwera usługi Mab** | ![Tak][green] | ![Tak][green]
+**Maszyny wirtualne platformy Azure** | ![Yes][green] | ![Tak][green]
+**Lokalnych maszyn Windows lub maszyny wirtualne platformy Azure przy użyciu programu DPM** | ![Tak][green] | ![Tak][green]
+**Lokalnych maszyn Windows lub maszyny wirtualne platformy Azure przy użyciu serwera usługi Mab** | ![Tak][green] | ![Tak][green]
 
 ## <a name="compression-support"></a>Obsługa kompresji
 
@@ -133,7 +133,7 @@ Backup obsługuje kompresję kopii zapasowej ruchu, zgodnie z opisem w poniższe
 --- | --- | ---
 **Bezpośrednie tworzenie kopii zapasowych maszyn Windows w środowisku lokalnym** | Nie dotyczy | ![Yes][green]
 **Kopia zapasowa maszyn wirtualnych platformy Azure przy użyciu rozszerzenia maszyny Wirtualnej** | Nie dotyczy | Nie dotyczy
-**Tworzenie kopii zapasowych na maszynach środowiska lokalne/platformę Azure za pomocą serwera usługi Mab/DPM** | ![Tak][green] | ![Yes][green]
+**Tworzenie kopii zapasowych na maszynach środowiska lokalne/platformę Azure za pomocą serwera usługi Mab/DPM** | ![Tak][green] | ![Tak][green]
 
 ## <a name="retention-limits"></a>Limity przechowywania
 

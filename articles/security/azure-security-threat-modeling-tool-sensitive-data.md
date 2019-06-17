@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610563"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Ramka zabezpieczeń: Danych poufnych | Środki zaradcze 
@@ -38,7 +38,7 @@ ms.locfileid: "60610563"
 
 ## <a id="binaries-info"></a>Upewnij się, że pliki binarne są zaciemniony plikach, jeśli zawierają one informacje poufne
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
@@ -49,7 +49,7 @@ ms.locfileid: "60610563"
 
 ## <a id="efs-user"></a>Należy wziąć pod uwagę, że za pomocą systemu szyfrowania plików (EFS) jest używany do ochrony danych poufnych specyficzne dla użytkownika
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Kompilacja |  
@@ -60,7 +60,7 @@ ms.locfileid: "60610563"
 
 ## <a id="filesystem"></a>Upewnij się, że poufne dane przechowywane przez aplikację w systemie plików jest zaszyfrowany
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
@@ -71,7 +71,7 @@ ms.locfileid: "60610563"
 
 ## <a id="cache-browser"></a>Upewnij się, że poufnej zawartości nie jest buforowana w przeglądarce
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -124,7 +124,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="encrypt-data"></a>Szyfruj sekcje pliki konfiguracji aplikacji sieci Web, które zawierają dane poufne
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -135,7 +135,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="autocomplete-input"></a>Jawnie Wyłącz Autouzupełnianie atrybutu HTML w formularzach poufnych i dane wejściowe
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -154,7 +154,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="data-mask"></a>Upewnij się, że poufne dane wyświetlane na ekranie użytkownika są wyświetlane jako znaki
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -165,7 +165,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="dynamic-users"></a>Implementowanie dynamiczne maskowanie danych Aby ograniczyć użytkowników bez ujawniania uprzywilejowany poufnych danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -176,7 +176,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="salted-hash"></a>Upewnij się, że hasła są przechowywane w formacie solone wyznaczania wartości skrótu
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -187,7 +187,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="db-encrypted"></a>Upewnij się, że poufne dane w kolumnach bazy danych są szyfrowane
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -198,7 +198,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="tde-enabled"></a>Upewnij się, że włączone jest szyfrowanie tego poziomu bazy danych (TDE)
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -209,7 +209,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="backup"></a>Upewnij się, że są szyfrowane kopie zapasowe bazy danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -220,7 +220,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="api-browser"></a>Upewnij się, że dane poufne, które są istotne dla interfejsu API sieci Web nie są przechowywane w pamięci masowej w przeglądarce
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -244,7 +244,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="encrypt-docdb"></a>Szyfruj poufne dane przechowywane w usłudze Cosmos DB
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Document DB | 
 | **Faza SDL**               | Kompilacja |  
@@ -255,7 +255,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="disk-vm"></a>Usługa Azure Disk Encryption umożliwia szyfrowanie dysków używanych przez maszyny wirtualne
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania maszyn wirtualnych IaaS platformy Azure | 
 | **Faza SDL**               | Wdrożenie |  
@@ -266,7 +266,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="fabric-apps"></a>Szyfrowanie kluczy tajnych w aplikacji usługi Service Fabric
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania usługi Service Fabric | 
 | **Faza SDL**               | Kompilacja |  
@@ -277,7 +277,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="modeling-teams"></a>Wykonaj bezpieczeństwa modelowania i użyj zespoły jednostki biznesowe w przypadku, gdy wymagane
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
@@ -288,7 +288,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="entities"></a>Minimalizacja dostępu, aby udostępnić funkcję na jednostkach krytyczne
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Wdrożenie |  
@@ -299,7 +299,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="good-practices"></a>Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i rozwiązania w zakresie zabezpieczeń
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Wdrożenie |  
@@ -310,7 +310,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="exception-mgmt"></a>Obejmują reguły standardy programowania proscribing przedstawiający szczegóły konfiguracji w Zarządzanie wyjątkami
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Wdrożenie |  
@@ -321,7 +321,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="sse-preview"></a>Użyj usługi Azure Storage Service Encryption (SSE) dla danych magazynowanych (wersja zapoznawcza)
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -332,7 +332,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="client-storage"></a>Użyj szyfrowania po stronie klienta do przechowywania poufnych danych w usłudze Azure Storage
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -343,7 +343,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="pii-phones"></a>Szyfruj poufne lub dane osobowe dane zapisane w magazynie lokalnym telefonów
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Mobile Client | 
 | **Faza SDL**               | Kompilacja |  
@@ -393,7 +393,7 @@ Jeśli aplikacja nie jest aplikacja dla przedsiębiorstw, następnie za pomocą 
 
 ## <a id="binaries-end"></a>Zaciemniania wygenerowanych plików binarnych, przed rozpoczęciem dystrybuowania dla użytkowników końcowych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Mobile Client | 
 | **Faza SDL**               | Kompilacja |  
@@ -404,7 +404,7 @@ Jeśli aplikacja nie jest aplikacja dla przedsiębiorstw, następnie za pomocą 
 
 ## <a id="cert"></a>Ustaw właściwości ClientCredentialType o wartości certyfikatu lub Windows
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -423,7 +423,7 @@ Ustaw właściwości ClientCredentialType o wartości do certyfikatu lub Windows
 
 ## <a id="security"></a>Nie jest włączony tryb zabezpieczeń programu WCF
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  

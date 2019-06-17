@@ -17,10 +17,10 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60835655"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One na maszynach wirtualnych platformy Azure
@@ -130,7 +130,7 @@ Do wdrożenia programu SQL Server jako system DBMS dla jednej firmy, przejść w
 
 Oszacowania nierównej rozmiaru strony bazami danych programu SQL Server są:
 
-| Liczba użytkowników | Procesory wirtualne vCPU | Memory (Pamięć) | Przykładowe typy maszyn wirtualnych |
+| Liczba użytkowników | procesorów wirtualnych | Memory (Pamięć) | Przykładowe typy maszyn wirtualnych |
 | --- | --- | --- | --- |
 | do 20 | 4 | 16 GB | D4s_v3, E4s_v3 |
 | maksymalnie 40 | 8 | 32 GB | D8s_v3, E8s_v3 |
@@ -150,7 +150,7 @@ Dla oprogramowania SAP HANA kopia zapasowa i przywracanie strategie, powinni prz
 ### <a name="business-one-client-server"></a>Business jeden klient serwer
 Składniki te zagadnienia dotyczące magazynu nie są podstawową kwestią. Niemniej jednak chcesz mieć niezawodnej platformie. Dlatego należy używać usługi Azure Premium Storage dla tej maszyny Wirtualnej, nawet w przypadku podstawowy dysk VHD. Ustalanie rozmiaru maszyny Wirtualnej, z danymi w [SAP Business jednego sprzętu Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Dla platformy Azure należy skoncentrować się i obliczeń z wymagania określone w rozdziale 2.4 dokumentu. Podczas obliczania wymagania należy porównać w poniższych dokumentach można znaleźć idealne maszyny Wirtualnej:
 
-- [Rozmiary maszyn wirtualnych Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+- [Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 - [Uwaga SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 Porównaj liczbę procesorów i pamięci potrzebnej do dokumentacji, przez firmę Microsoft. Również pamiętać przepustowość sieci podczas wybierania maszyny wirtualne.

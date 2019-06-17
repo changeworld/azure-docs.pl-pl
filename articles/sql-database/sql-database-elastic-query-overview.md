@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 01/19/2019
-ms.openlocfilehash: fad9437a631254d6c60d6d97267ae111d195040f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/13/2019
+ms.openlocfilehash: 2ea1d116de2c435e873c653bbfa0571377c4f5ef
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60585714"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067071"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Omówienie zapytanie elastyczne w usłudze Azure SQL Database (wersja zapoznawcza)
 
@@ -140,7 +140,7 @@ Elastyczne zapytanie znajduje się na koszt baz danych Azure SQL Database. Nale�
 * Obsługa skryptów zewnętrznych źródeł danych lub tabele zewnętrzne z programu SSMS lub program SSDT nie jest jeszcze obsługiwana.
 * Import/Export dla bazy danych SQL nie obsługuje jeszcze zewnętrznych źródeł danych i tabel zewnętrznych. Jeśli musisz użyć usługi Import/Export, Porzuć te obiekty przed wyeksportowaniem, a następnie ponownie utwórz je po zaimportowaniu.
 * Zapytanie elastyczne aktualnie obsługuje tylko dostęp tylko do odczytu do tabel zewnętrznych. Można jednak, używając pełnej funkcjonalności języka T-SQL w bazie danych którym jest zdefiniowany w tabeli zewnętrznej. Może to być przydatne, np. zachować tymczasowych wyników, na przykład przy użyciu, lokalizację, wybierz OPCJĘ < column_list > w < local_table > lub Definiowanie procedur składowanych w bazie danych zapytania elastycznego, odwołując się do tabel zewnętrznych.
-* Z wyjątkiem nvarchar(max) typy obiektów LOB nie są obsługiwane w definicji tabeli zewnętrznej. Obejść ten problem możesz utworzyć widok w zdalnej bazy danych, który rzutuje typu LOB do nvarchar(max), definiowanie tabeli zewnętrznej za pośrednictwem widoku zamiast tabeli podstawowej, a następnie przerzuć go do oryginalnego typu LOB w zapytaniach.
+* Z wyjątkiem nvarchar(max) typy obiektów LOB (w tym typów przestrzennych) nie są obsługiwane w definicji tabeli zewnętrznej. Obejść ten problem możesz utworzyć widok w zdalnej bazy danych, który rzutuje typu LOB do nvarchar(max), definiowanie tabeli zewnętrznej za pośrednictwem widoku zamiast tabeli podstawowej, a następnie przerzuć go do oryginalnego typu LOB w zapytaniach.
 * Kolumnami typu danych nvarchar(max) w wyniku zestaw Wyłącz zaawansowane techniki używane w celu wykonania zapytania elastycznego dzielenia na partie i może mieć wpływ na wydajność zapytanie o rząd wielkości lub nawet w dwóch rzędów w canonical przypadki użycia, w przypadku, gdy duża ilość zagregowane dane są przesyłane w wyniku zapytania.
 * Statystyki kolumny za pośrednictwem tabel zewnętrznych nie są obecnie obsługiwane. Statystyki tabeli są obsługiwane, ale muszą zostać utworzone ręcznie.
 

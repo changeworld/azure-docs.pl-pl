@@ -6,16 +6,16 @@ metadata:
   title: Usługa Azure SQL Database — skalowalności
   meta.description: Learn how to scale your Azure SQL Database.
   services: sql-database
-  author: WenJason
-  manager: digimobile
+  ms.subservice: scale-out
+  author: jovanpop-msft
+  manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  origin.date: 01/25/2019
-  ms.date: 02/25/2019
-  ms.author: v-jay
+  ms.date: 01/25/2019
+  ms.author: jovanpop-msft
 sections:
   - items:
       - type: paragraph
@@ -26,22 +26,22 @@ sections:
         columns: 3
         items:
           - title: Skalowanie w górę
-            href: /sql-database/sql-database-scale-resources
+            href: /azure/sql-database/sql-database-scale-resources
             html: '<p>Łatwe dodawanie lub usuwanie zasobów w usłudze SQL Database, aby można było znaleźć najlepszą stosunek ceny do wydajności lub rozwiązać problemy z wydajnością.</p>'
           - title: Przeczytaj skalowalnego w poziomie
-            href: /sql-database/sql-database-read-scale-out
+            href: /azure/sql-database/sql-database-read-scale-out
             html: '<p>Warstwie krytyczne dla działania firmy udostępnia wolnego od opłat repliki bazy danych, gdzie można uruchomić raporty, analizy i inne zapytania tylko do odczytu na kopiowanie danych.</p>'
           - title: Dzielenie bazy danych na fragmenty
-            href: /sql-database/sql-database-elastic-scale-introduction
+            href: /azure/sql-database/sql-database-elastic-scale-introduction
             html: '<p>Do skalowania w poziomie bazy danych poza maksymalny obliczeń i limity przestrzeni dyskowej dla pojedynczych baz danych, można użyć wielu baz danych fragmentów.</p>'
           - title: Zapytania elastyczne
-            href: /sql-database/sql-database-elastic-query-overview
+            href: /azure/sql-database/sql-database-elastic-query-overview
             html: <p>Zapytania elastyczne umożliwiają uruchomienie standardowego zapytania Transact-SQL na zestaw fragmentów globalnie rozproszonej bazy danych.</p>
           - title: Transakcje elastyczne
-            href: /sql-database/sql-database-elastic-transactions-overview
+            href: /azure/sql-database/sql-database-elastic-transactions-overview
             html: '<p>Używają transakcji rozproszonych globalnie, aby zapewnić spójny transakcyjnie dostęp do danych rozproszonych.</p>'
           - title: Zadania obejmujące wiele baz danych
-            href: /sql-database/elastic-jobs-overview
+            href: /azure/sql-database/elastic-jobs-overview
             html: <p>Obsługa zestawu baz danych przy użyciu zadań elastycznych obejmujące wiele baz danych.</p>
   - title: Więcej zasobów
     items:

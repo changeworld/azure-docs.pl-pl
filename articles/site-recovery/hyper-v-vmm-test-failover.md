@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: dc8deb16f7d124c5fb11568f25050eee99a245b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60865534"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
@@ -43,7 +43,7 @@ Możesz uruchomić test trybu failover z węzła podstawowego do lokacji dodatko
 
 Po uruchomieniu testu trybu failover, zostanie wyświetlony monit wybierz ustawienia sieci dla maszyny repliki testu, zgodnie z opisem w tabeli.
 
-| **Opcja** | **Szczegóły** | |
+| **Option** | **Szczegóły** | |
 | --- | --- | --- |
 | **Brak** | Testowej maszyny Wirtualnej jest tworzony na hoście, na którym znajduje się maszyna wirtualna repliki. Nie została dodana do chmury, a nie jest połączona z żadną siecią.<br/><br/> Komputer można połączyć z siecią maszyny Wirtualnej, po jego utworzeniu.| |
 | **Użyj istniejącej** | Testowej maszyny Wirtualnej jest tworzony na hoście, na którym znajduje się maszyna wirtualna repliki. Nie jest dodawany do chmury.<br/><br/>Utwórz sieć maszyny Wirtualnej, która jest odizolowana od sieci środowiska produkcyjnego.<br/><br/>Jeśli używasz sieci VLAN, zalecamy utworzenie oddzielnych sieci logiczne (ale nie używane w środowisku produkcyjnym) w programie VMM w tym celu. Ta sieć logiczna jest używana do tworzenia sieci maszyn wirtualnych dla testu pracy w trybie Failover.<br/><br/>Sieć logiczna powinna być skojarzona z co najmniej jedną z kart sieciowych w procentach wszystkich serwerów funkcji Hyper-V, które hostują maszyny wirtualne.<br/><br/>Dla sieci VLAN sieci logicznych lokacji sieciowych, które dodajesz do sieci logicznej powinna być odizolowane.<br/><br/>Jeśli używasz wirtualizacji sieci Windows oparte na sieci logicznej, usługi Azure Site Recovery automatycznie tworzy izolowanych sieci maszyn wirtualnych. | |

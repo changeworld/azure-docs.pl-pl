@@ -12,16 +12,16 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: b09182ef06c708e9c606173f02b006e7802f29ed
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7066b600cf50df583fbf8e9e674ef17d77b86183
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477810"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061385"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
-Przezroczyste szyfrowanie danych (TDE) ułatwia ochronę przed złośliwymi działaniami usługi Azure SQL Database, wystąpienia zarządzanego Azure SQL i Azure Data Warehouse. Wykonuje w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian do aplikacji. Domyślnie funkcja TDE jest włączona dla wszystkich nowo wdrożonym baz danych Azure SQL. Funkcja TDE nie może być używane do szyfrowania logicznej **wzorca** bazy danych w bazie danych SQL.  **Wzorca** baza danych zawiera obiekty, które są wymagane do wykonywania operacji TDE w bazach danych użytkownika.
+Przezroczyste szyfrowanie danych (TDE) ułatwia ochronę usługi Azure SQL Database, wystąpienia zarządzanego Azure SQL i Azure Data Warehouse przed złośliwymi działaniami w trybie offline szyfrowanie danych magazynowanych. Wykonuje w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian do aplikacji. Domyślnie funkcja TDE jest włączona dla wszystkich nowo wdrożonym baz danych Azure SQL. Funkcja TDE nie może być używane do szyfrowania logicznej **wzorca** bazy danych w bazie danych SQL.  **Wzorca** baza danych zawiera obiekty, które są wymagane do wykonywania operacji TDE w bazach danych użytkownika.
 
 Funkcja TDE musi zostać włączona ręcznie dla wystąpienia zarządzanego Azure SQL, starszych baz danych Azure SQL Database lub Azure SQL Data Warehouse.  
 

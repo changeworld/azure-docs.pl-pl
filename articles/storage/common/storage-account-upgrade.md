@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
 ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66115645"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnienie do konta magazynu ogólnego przeznaczenia w wersji 2
@@ -137,12 +137,12 @@ Najnowszy wpis w tabeli metryk pojemności *$MetricsCapacityBlob* z kluczem wier
 
 #### <a name="transaction-costs"></a>Koszty transakcji
 
-Suma *„TotalBillableRequests”* dla wszystkich wpisów interfejsu API w tabeli metryk transakcji wskazuje całkowitą liczbę transakcji dla tego konkretnego interfejsu API. *Na przykład* całkowitą liczbę transakcji *„GetBlob”* w danym okresie można obliczyć, sumując liczbę płatnych żądań dla wszystkich wpisów z kluczem wiersza *'user;GetBlob'*.
+Suma *„TotalBillableRequests”* dla wszystkich wpisów interfejsu API w tabeli metryk transakcji wskazuje całkowitą liczbę transakcji dla tego konkretnego interfejsu API. *Na przykład* całkowitą liczbę transakcji *„GetBlob”* w danym okresie można obliczyć, sumując liczbę płatnych żądań dla wszystkich wpisów z kluczem wiersza *'user;GetBlob'* .
 
 Aby oszacować koszty transakcji dla kont usługi Blob Storage, konieczne będzie podzielenie transakcji na trzy grupy, ponieważ mają one różne ceny.
 
-* Transakcje zapisu, takie jak *„PutBlob”*, *„PutBlock”*, *„PutBlockList”*, *„AppendBlock"*, *„ListBlobs”*, *„ListContainers”*, *„CreateContainer”*, *„SnapshotBlob”* i *„CopyBlob”*.
-* Transakcje usuwania, takie jak *„DeleteBlob”* i *„DeleteContainer”*.
+* Transakcje zapisu, takie jak *„PutBlob”* , *„PutBlock”* , *„PutBlockList”* , *„AppendBlock"* , *„ListBlobs”* , *„ListContainers”* , *„CreateContainer”* , *„SnapshotBlob”* i *„CopyBlob”* .
+* Transakcje usuwania, takie jak *„DeleteBlob”* i *„DeleteContainer”* .
 * Wszystkie inne transakcje.
 
 W celu oszacowania kosztów transakcji dla kont magazynu GPv1 należy zagregować wszystkie transakcje niezależnie od operacji/interfejsu API.
@@ -153,9 +153,9 @@ Usługa Storage Analytics nie udostępnia informacji na temat ilości odczytywan
 
 Aby oszacować koszty dostępu do danych dla kont usługi Blob Storage, konieczne będzie podzielenie transakcji na dwie grupy.
 
-* Ilość danych pobieranych z konta magazynu można oszacować, przyglądając się sumie *„TotalEgress”* przede wszystkim dla operacji *„GetBlob”* i *„CopyBlob”*.
+* Ilość danych pobieranych z konta magazynu można oszacować, przyglądając się sumie *„TotalEgress”* przede wszystkim dla operacji *„GetBlob”* i *„CopyBlob”* .
 
-* Ilość danych zapisywanych na koncie magazynu można oszacować, przyglądając się sumie *„TotalIngress”* przede wszystkim dla operacji *„PutBlob”*, *„PutBlock”*, *„CopyBlob”* i *„AppendBlock”*.
+* Ilość danych zapisywanych na koncie magazynu można oszacować, przyglądając się sumie *„TotalIngress”* przede wszystkim dla operacji *„PutBlob”* , *„PutBlock”* , *„CopyBlob”* i *„AppendBlock”* .
 
 Koszt transferu danych replikacji geograficznej dla kont usługi Blob Storage można obliczyć, korzystając z kalkulacji ilości danych zapisanych w przypadku używania konta magazynu GRS lub RA-GRS.
 

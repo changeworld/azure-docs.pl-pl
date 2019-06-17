@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60499889"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Wymagania dotyczące użycia i wyświetlania interfejsu API wyszukiwania Bing
@@ -39,7 +39,7 @@ Wymagania w zakresie użycia i wyświetlania zastosowania do implementacji zawar
 |Odpowiedź     | Kategoria wyników zwróconych w odpowiedzi. Na przykład odpowiedź z interfejsu API wyszukiwania w sieci Web Bing może zawierać odpowiedzi w kategoriach wyniki strony sieci Web, obrazów, wideo, wizualizacji i wiadomości. |
 |Odpowiedź     | I wszystkie odpowiedzi i skojarzone dane odebrane w odpowiedzi na jedno wywołanie interfejsu API wyszukiwania. |
 |Wynik    | Element informacje w odpowiedzi. Na przykład zestaw danych połączonych przy użyciu pojedynczego nowości jest wynik w odpowiedzi na wiadomości. |
-|interfejsy API wyszukiwania    | zbiorczo wyszukiwanie niestandardowe Bing, wyszukiwanie jednostek, wyszukiwanie obrazów, wyszukiwania wiadomości, wyszukiwania wideo, wyszukiwania wizualnego, lokalnego wyszukiwania biznesowych i interfejsy API wyszukiwania w sieci Web. |
+|Interfejsy API wyszukiwania    | zbiorczo wyszukiwanie niestandardowe Bing, wyszukiwanie jednostek, wyszukiwanie obrazów, wyszukiwania wiadomości, wyszukiwania wideo, wyszukiwania wizualnego, lokalnego wyszukiwania biznesowych i interfejsy API wyszukiwania w sieci Web. |
 
 ## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Ograniczenia dotyczące sprawdzania pisowni Bing i interfejs API automatycznego sugerowania Bing
 

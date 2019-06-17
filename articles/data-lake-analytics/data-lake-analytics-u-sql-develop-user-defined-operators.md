@@ -10,10 +10,10 @@ ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813795"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Opracowywanie operatorów języka U-SQL zdefiniowane przez użytkownika (udo)
@@ -115,7 +115,7 @@ W tym artykule opisano tworzenie operatory zdefiniowane przez użytkownika do pr
 8. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **Script.usql**, a następnie kliknij pozycję **Build Script** (Kompiluj skrypt).
 9. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **Script.usql**, a następnie kliknij pozycję **Submit Script** (Prześlij skrypt).
 10. Jeszcze nie nawiązano z subskrypcją platformy Azure, zostanie wyświetlony monit wprowadź swoje poświadczenia konta platformy Azure.
-11. Kliknij przycisk **Prześlij**. Wyniki przesyłania i link do zadania są dostępne w oknie wyników po zakończeniu przesyłania.
+11. Kliknij przycisk **Submit** (Prześlij). Wyniki przesyłania i link do zadania są dostępne w oknie wyników po zakończeniu przesyłania.
 12. Kliknij przycisk **Odśwież** przycisk, aby wyświetlić najbardziej aktualny stan zadania i odświeżyć ekran.
 
 **Aby wyświetlić dane wyjściowe**

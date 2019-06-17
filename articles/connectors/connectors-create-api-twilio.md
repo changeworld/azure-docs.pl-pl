@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: fab52236c701f10c8e8e23ac398362ca4583ea06
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104905"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Zarządzanie wiadomości w Twilio za pomocą usługi Azure Logic Apps
@@ -51,10 +51,10 @@ Korzystając z usługi Azure Logic Apps i łącznik usługi Twilio można utworz
 
      * W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
 
-       — lub —
+       —lub—
 
      * Między krokami, które chcesz dodać akcję wskaźnik myszy nad strzałką znajdującą się między krokami. 
-     Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+     Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
      
        W polu wyszukiwania wprowadź "twilio" jako filtr. 
        W obszarze listy akcji wybierz akcję, którą chcesz.

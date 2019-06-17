@@ -9,10 +9,10 @@ ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: cd3b7d6cc75afc5d83ff02a15b920d9f8b05f608
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66391375"
 ---
 Utworzenie maszyny wirtualnej (VM) platformy Azure wymaga utworzenia [sieci wirtualnej](../articles/virtual-network/virtual-networks-overview.md) (VNet) lub użycia istniejącej sieci wirtualnej. Należy także określić sposób dostępu do maszyn wirtualnych w sieci wirtualnej. Ważne jest [zaplanowanie tworzenia zasobów](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) i dokładne zapoznanie się z [limitami zasobów sieciowych](../articles/azure-subscription-service-limits.md#networking-limits).

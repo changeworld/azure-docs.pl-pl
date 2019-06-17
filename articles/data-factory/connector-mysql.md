@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: e05e2f2d04aeb572307f8114ca80f148b3d50e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61370720"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z MySQL za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-onprem-mysql-connector.md)
 > * [Bieżąca wersja](connector-mysql.md)
 
@@ -50,7 +50,7 @@ Następujące właściwości są obsługiwane w przypadku usługi MySQL połącz
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **MySql** | Yes |
+| type | Właściwość type musi być równa: **MySql** | Tak |
 | connectionString | Podaj informacje wymagane do połączenia usługi Azure Database for MySQL — wystąpienia.<br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault i ściągania `password` konfiguracji poza parametry połączenia. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 

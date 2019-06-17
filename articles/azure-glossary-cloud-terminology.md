@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60325429"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Słownik programu Microsoft Azure: Słownik terminologii chmury na platformie Azure
@@ -39,7 +39,7 @@ Inną nazwę dla [aplikację usługi app Service](#app-service-app).
 ## <a name="app-service-app"></a>Aplikacja usługi App Service
 Zasoby obliczeniowe, [usługi Azure App Service](app-service/overview.md) udostępnia do hostowania witryny sieci Web lub aplikacji sieci web, w przypadku interfejsu API sieci web lub [zaplecza aplikacji mobilnej](app-service-mobile/app-service-mobile-value-prop.md). Aplikacje usługi App Service są również nazywane *App Services*, *aplikacje sieci web*, *aplikacje API apps*, i *aplikacje mobilne*.
 
-## <a name="availability-set"></a>zestaw dostępności
+## <a name="availability-set"></a>Zestaw dostępności
 Kolekcja maszyn wirtualnych, które są ze sobą zarządzane w celu zapewnienia nadmiarowości aplikacji i niezawodności. Korzystanie z zestawu dostępności temu podczas zdarzenia planowaną lub nieplanowaną konserwacją co najmniej jednej maszyny wirtualnej są dostępne.  
 Zobacz [Zarządzanie dostępnością maszyn wirtualnych Windows](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i [Zarządzanie dostępnością maszyn wirtualnych systemu Linux](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -77,10 +77,10 @@ Zobacz [Navigate i wybierz pozycję Windows obrazów maszyn wirtualnych na platf
 Liczba zasobów, które mogą być tworzone lub testów porównawczych wydajności, który można osiągnąć. Limity są zwykle skojarzone z subskrypcji, usługi i oferty.  
 Zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](azure-subscription-service-limits.md)
 
-## <a name="load-balancer"></a>moduł równoważenia obciążenia
+## <a name="load-balancer"></a>Moduł równoważenia obciążenia
 Zasób, który dystrybuuje ruch przychodzący między komputerami w sieci. Na platformie Azure modułu równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych zdefiniowanych w zestawie modułu równoważenia obciążenia. A [moduł równoważenia obciążenia](load-balancer/load-balancer-overview.md) mogą być połączone z Internetem lub może być wewnętrzny.  
 
-## <a name="mobile-app"></a>aplikacja mobilna
+## <a name="mobile-app"></a>Aplikacja mobilna
 Inną nazwę dla [aplikację usługi App Service](#app-service-app).
 
 ## <a name="offer"></a>oferty
@@ -94,7 +94,7 @@ Portal bezpieczne sieci web, używany do wdrażania i zarządzania usługami pla
 Obszar w obrębie georegionu, które nie nie cross krajami i zawiera co najmniej jedno centrum danych. Cennik usług regionalnych i typów ofert są widoczne na poziomie regionu. Region zwykle jest powiązany z innym regionem, który może zawierać maksymalnie kilka natychmiast kilkuset mil. Pary regionalne może służyć jako mechanizm odzyskiwania po awarii i scenariuszy wysokiej dostępności. Nazywana także *lokalizacji*.  
 Zobacz [regiony platformy Azure](best-practices-availability-paired-regions.md)
 
-## <a name="resource"></a>zasób
+## <a name="resource"></a>resource
 Element, który jest częścią rozwiązania platformy Azure. Każda z usług Azure umożliwia wdrażanie różnych typów zasobów, takich jak bazy danych lub maszyn wirtualnych.   
 Zobacz [Omówienie usługi Azure Resource Manager](azure-resource-manager/resource-group-overview.md)
 
@@ -110,7 +110,7 @@ Zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templ
 Usługa dostarczająca zasoby, które można wdrażać i zarządzać nimi za pomocą usługi Resource Manager. Każdy dostawca zasobów udostępnia operacje do pracy z wdrażanymi zasobami. Dostawcy zasobów jest możliwy za pośrednictwem witryny Azure portal, programu Azure PowerShell i zestawów SDK programowania.  
 Zobacz [Omówienie usługi Azure Resource Manager](azure-resource-manager/resource-group-overview.md)
 
-## <a name="role"></a>role (rola)
+## <a name="role"></a>rola
 Sposób kontrolowania dostępu, który można przypisać do użytkowników, grup i usług. Role są możliwe do wykonania akcji, takie jak tworzenie, zarządzanie i Odczyt dla zasobów platformy Azure.  
 Zobacz [RBAC: Wbudowane role](role-based-access-control/built-in-roles.md)
 

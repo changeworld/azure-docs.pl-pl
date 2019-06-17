@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
 ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60653720"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migracja z rozpoznawania mowy Bing do usługi rozpoznawania mowy
@@ -50,7 +50,7 @@ Głosy 24 kHz | : heavy_minus_sign: | :heavy_check_mark:
 Rozpoznawanie celu mowy | Wymaga wywołania interfejsu API usługi LUIS | Zintegrowane (przy użyciu zestawu SDK) |  Za pomocą klucza usługi LUIS z usługa mowy.
 Proste rozpoznawanie intencji | : heavy_minus_sign: | :heavy_check_mark:
 Batch transkrypcji pliki długo audio | : heavy_minus_sign: | :heavy_check_mark:
-Tryb rozpoznawania | Ręcznie za pomocą identyfikatora URI punktu końcowego | Automatyczny | Tryb rozpoznawania nie jest dostępne w usłudze rozpoznawania mowy.
+Tryb rozpoznawania | Ręcznie za pomocą identyfikatora URI punktu końcowego | Automatyczne | Tryb rozpoznawania nie jest dostępne w usłudze rozpoznawania mowy.
 Lokalizacja punktu końcowego | Globalny | Regionalne | Punkty końcowe regionalnych Zmniejszaj opóźnienia.
 Interfejsy API REST | :heavy_check_mark: | :heavy_check_mark: | Interfejsy API mowy usługi REST są zgodne z rozpoznawania mowy Bing (inny punkt końcowy). Interfejsy API REST obsługują funkcji zamiany mowy na tekst zamiany tekstu na mowę i ograniczony.
 Protokoły WebSockets | :heavy_check_mark: | :heavy_check_mark: | Interfejs API mowy usługi WebSockets jest zgodny z rozpoznawania mowy Bing (inny punkt końcowy). Przeprowadź migrację do zestawu SDK rozpoznawania mowy, jeśli to możliwe, aby uprościć swój kod.

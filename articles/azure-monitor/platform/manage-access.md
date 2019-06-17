@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60782806"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w usłudze Azure Monitor
@@ -180,7 +180,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 Aby skonfigurować tryb dostępu w szablonie usługi Azure Resource Manager, należy ustawić **enableLogAccessUsingOnlyResourcePermissions** funkcji flagi w obszarze roboczym do jednej z następujących wartości.
 
 - **FALSE**: Ustaw obszar roboczy uprawnień skoncentrowane na obszar roboczy. To ustawienie domyślne, jeśli flaga nie jest ustawiona.
-- **Wartość true,**: Ustaw obszar roboczy skoncentrowane na zasób uprawnień.
+- **Wartość true,** : Ustaw obszar roboczy skoncentrowane na zasób uprawnień.
 
 
 ## <a name="manage-accounts-and-users"></a>Zarządzanie kontami i użytkownikami

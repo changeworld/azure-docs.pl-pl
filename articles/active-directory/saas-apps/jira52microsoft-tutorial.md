@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 003666d5bb3c309e501bcf76a15beb47340f9150
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708740"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Samouczek: Integracja usługi Azure Active Directory z programem JIRA SAML SSO by Microsoft (V5.2)
 
@@ -30,7 +30,7 @@ Zintegrowanie programu JIRA SAML SSO by Microsoft (V5.2) z usługą Azure AD daj
 
 * Możliwość kontrolowania dostępu do programu JIRA SAML SSO by Microsoft (V5.2) za pomocą usługi Azure AD.
 * Możliwość skonfigurowania automatycznego logowania użytkowników do programu JIRA SAML SSO by Microsoft (V5.2) (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -55,9 +55,9 @@ Do skonfigurowania integracji usługi Azure AD z programem JIRA SAML SSO by Micr
 > [!NOTE]
 > Podczas testowania kroków w tym samouczku nie zalecamy używania środowiska produkcyjnego usługi JIRA. Integrację należy najpierw przetestować w środowisku programistycznym lub przejściowym aplikacji, a dopiero później użyć środowiska produkcyjnego.
 
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
+Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej tutaj: [Wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="supported-versions-of-jira"></a>Obsługiwane wersje usługi JIRA
@@ -80,7 +80,7 @@ Aby skonfigurować integrację programu JIRA SAML SSO by Microsoft (V5.2) z usł
 
 **Aby dodać program JIRA SAML SSO by Microsoft (V5.2) z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -88,27 +88,27 @@ Aby skonfigurować integrację programu JIRA SAML SSO by Microsoft (V5.2) z usł
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **JIRA SAML SSO by Microsoft (V5.2)**, wybierz pozycję **JIRA SAML SSO by Microsoft (V5.2)** na panelu, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **JIRA SAML SSO by Microsoft (V5.2)** , wybierz pozycję **JIRA SAML SSO by Microsoft (V5.2)** na panelu, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
     ![Program JIRA SAML SSO by Microsoft (V5.2) na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z programem JIRA SAML SSO by Microsoft (V5.2), korzystając z danych testowego użytkownika **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem programu JIRA SAML SSO by Microsoft (V5.2).
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD przy użyciu programu JIRA SAML SSO by Microsoft (V5.2), należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w programie JIRA SAML SSO by Microsoft (V5.2)](#configure-jira-saml-sso-by-microsoft-v52-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego programu JIRA SAML SSO by Microsoft (V5.2)](#create-jira-saml-sso-by-microsoft-v52-test-user)** — aby mieć w programie JIRA SAML SSO by Microsoft (V5.2) odpowiednik użytkownika Britta Simon, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -118,7 +118,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w programie JIRA SAML 
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **JIRA SAML SSO by Microsoft (V5.2)** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -143,7 +143,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w programie JIRA SAML 
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
 
 ### <a name="configure-jira-saml-sso-by-microsoft-v52-single-sign-on"></a>Konfigurowanie logowania jednokrotnego programu JIRA SAML SSO by Microsoft (V5.2)
 
@@ -224,11 +224,11 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do programu JIRA SAML SSO by Microsoft (V5.2).
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **JIRA SAML SSO by Microsoft (V5.2)**.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **JIRA SAML SSO by Microsoft (V5.2)** .
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz pozycję **JIRA SAML SSO by Microsoft (V5.2)**.
+2. Na liście aplikacji wybierz pozycję **JIRA SAML SSO by Microsoft (V5.2)** .
 
     ![Link programu JIRA SAML SSO by Microsoft (V5.2) na liście aplikacji](common/all-applications.png)
 
@@ -288,7 +288,7 @@ Po kliknięciu kafelka JIRA SAML SSO by Microsoft (V5.2) na panelu dostępu powi
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

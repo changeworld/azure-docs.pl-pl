@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60705301"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Omówienie zaleceń kontenera usługi Azure Security Center
@@ -32,11 +32,11 @@ Usługa Azure Security Center oferuje następujące funkcje, które ułatwiają 
     ![karty kontenera](./media/security-center-container-recommendations/docker-recommendation.png)
 
 
-- **Zalecenia dotyczące zabezpieczeń oparte na wzorzec konfiguracji (ci) dla platformy Docker**<br>Usługa Security Center skanuje konfiguracje platformy Docker i zapewnia wgląd w błędów konfiguracji poprzez dostarczenie listy wszystkich reguł nie powiodło się, które zostały ocenione. Usługa Security Center zapewnia wskazówek, aby pomóc Ci szybko rozwiązać te problemy i zaoszczędzić czas. Centrum zabezpieczeń stale ocenia konfiguracji platformy Docker i udostępniają Ci ich najnowszy stan.
+- **Zalecenia dotyczące zabezpieczeń oparte na wzorzec konfiguracji (ci) dla platformy Docker**<br>Usługa Security Center skanuje konfiguracje platformy Docker i zapewnia wgląd w błędy konfiguracji poprzez dostarczenie listy wszystkich ocenionych reguł zakończonych niepowodzeniem. Usługa Security Center zapewnia wskazówek, aby pomóc Ci szybko rozwiązać te problemy i zaoszczędzić czas. Usługa Security Center stale ocenia konfiguracje platformy Docker i udostępnia Ci ich najnowszy stan.
 
     ![karty kontenera](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Wykrywanie zagrożeń w czasie rzeczywistym kontenera**<br> Usługa Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym dla kontenerów na maszynach z systemem Linux za pomocą składnika wykorzystują. Alerty zidentyfikować kilka podejrzanych działań platformy Docker, takich jak tworzenie uprzywilejowanych kontenera na hoście, wskazanie serwera protokołu Secure Shell (SSH) uruchomionej w kontenerze platformy Docker lub korzystanie z usług kryptograficznych wyszukiwarek. Te informacje umożliwia szybkie rozwiązywanie problemów dotyczących bezpieczeństwa i poprawę zabezpieczeń kontenerów.
+- **Wykrywanie zagrożeń w czasie rzeczywistym kontenera**<br> Usługa Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym dla kontenerów na maszynach z systemem Linux za pomocą składnika wykorzystują. Alerty zidentyfikować kilka podejrzanych działań platformy Docker, takich jak tworzenie uprzywilejowanych kontenera na hoście, wskazanie serwera protokołu Secure Shell (SSH) uruchomionej w kontenerze platformy Docker lub korzystanie z usług kryptograficznych wyszukiwarek. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
 
     ![karty kontenera](./media/security-center-container-recommendations/docker-threat-detection.png)
 
@@ -45,7 +45,7 @@ Aby lepiej zrozumieć dostępne kontenery hostowanych na maszynach z systemem Ia
 
 | Zalecenie | Opis | Korygowanie |
 | --- | --- | --- |
-|Skoryguj luki w zabezpieczeniach konfiguracji zabezpieczeń kontenerów |Korygowanie luk w zabezpieczeniach w kontenerze konfiguracji zabezpieczeń oparte na najlepszymi rozwiązaniami konfiguracyjnymi.| Aby korygowanie luk w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów:<br>1. Przejrzyj listę reguł nie powiodło się.<br>2. Usuń każdą regułę, zgodnie z instrukcjami określony.|
+|Korygowanie luk w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów |Korygowanie luk w zabezpieczeniach w kontenerze konfiguracji zabezpieczeń oparte na najlepszymi rozwiązaniami konfiguracyjnymi.| Aby korygowanie luk w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów:<br>1. Przejrzyj listę reguł nie powiodło się.<br>2. Usuń każdą regułę, zgodnie z instrukcjami określony.|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

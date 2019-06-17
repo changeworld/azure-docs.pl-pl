@@ -7,17 +7,17 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
-ms.date: 04/09/2018
+ms.date: 06/05/2019
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 80977c13aa9851ea5df9a15f5b9580dd1a931259
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5aa2616bfbfd4b31d3e5e5aeee71da8fd511faed
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60762144"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066707"
 ---
-# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Uruchamianie usługi Azure Functions z zadań usługi Azure Stream Analytics 
+# <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Samouczek: Uruchamianie usługi Azure Functions z zadań usługi Azure Stream Analytics 
 
 Usługę Azure Functions można uruchomić z usługi Azure Stream Analytics, konfigurując usługę Functions jako jedno z ujść danych wyjściowych dla zadania usługi Stream Analytics. Usługa Functions to sterowane zdarzeniami środowisko obliczeń na żądanie, które umożliwia implementowanie kodu wyzwalanego przez zdarzenia występujące na platformie Azure lub w usługach innych firm. Dzięki możliwości reagowania na wyzwalacze usługa Functions stanowi naturalne wyjście dla zadań usługi Stream Analytics.
 
@@ -26,9 +26,10 @@ Usługa Stream Analytics wywołuje usługę Functions za pomocą wyzwalaczy prot
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie zadania usługi Stream Analytics
+> * Tworzenie i uruchamianie zadania usługi Stream Analytics
+> * Tworzenie wystąpienia pamięci podręcznej Azure Cache for Redis
 > * Tworzenie funkcji platformy Azure
-> * Konfigurowanie funkcji platformy Azure jako wyjścia zadania
+> * Sprawdzanie pamięci podręcznej Azure Cache for Redis pod kątem wyników
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,16 +39,9 @@ W tej sekcji przedstawiono sposób konfigurowania zadania usługi Stream Analyti
 
 ![Diagram przedstawiający relacje między usługami platformy Azure](./media/stream-analytics-with-azure-functions/image1.png)
 
-Poniższe kroki są wymagane do wykonania tego zadania:
-* [Utworzenie zadania usługi Stream Analytics z usługą Event Hubs jako wejściem](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* Tworzenie wystąpienia pamięci podręcznej Azure Cache for Redis  
-* Tworzenie funkcji w usłudze Azure Functions, która może zapisywać dane w pamięci podręcznej Azure Cache for Redis    
-* [Aktualizacja zadania usługi Stream Analytics za pomocą funkcji jako wyjścia](#update-the-stream-analytics-job-with-the-function-as-output)  
-* Sprawdzanie pamięci podręcznej Azure Cache for Redis pod kątem wyników  
-
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Tworzenie zadania usługi Stream Analytics z usługą Event Hubs jako wejściem
 
-Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](stream-analytics-real-time-fraud-detection.md), aby utworzyć centrum zdarzeń, uruchomić aplikację generatora zdarzeń i utworzyć zadanie usługi Stream Analytics. (Pomiń kroki tworzenia zapytania i wyjścia. Zamiast tego zapoznaj się z następującymi sekcjami w celu skonfigurowania wyjścia usługi Functions).
+Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](stream-analytics-real-time-fraud-detection.md), aby utworzyć centrum zdarzeń, uruchomić aplikację generatora zdarzeń i utworzyć zadanie usługi Stream Analytics. Pomiń kroki tworzenia zapytania i danych wyjściowych. Zamiast tego zobacz poniższe sekcje, aby skonfigurować dane wyjściowe usługi Azure Functions.
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Tworzenie wystąpienia pamięci podręcznej Azure Cache for Redis
 
@@ -61,7 +55,7 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
 
 1. Zobacz sekcję [Tworzenie aplikacji funkcji](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) w dokumentacji usługi Functions. Zawiera ona procedurę tworzenia aplikacji funkcji i [funkcji wyzwalanej za pomocą protokołu HTTP w usłudze Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function) w języku CSharp.  
 
-2. Przejdź do funkcji **run.csx**. Zaktualizuj ją za pomocą następującego kodu. Pamiętaj o zastąpieniu ciągu „\<your Azure Cache for Redis connection string goes here\>” (tu wstaw parametry połączenia z usługą Azure Cache for Redis) podstawowymi parametrami połączenia z usługą Azure Cache for Redis pobranymi w poprzedniej sekcji.  
+2. Przejdź do funkcji **run.csx**. Zaktualizuj ją za pomocą następującego kodu. Zastąp **"\<miejsce w pamięci podręcznej Azure dla parametrów połączenia Redis\>"** z pamięci podręcznej Azure redis Cache podstawowe parametry połączenia pobranymi w poprzedniej sekcji. 
 
     ```csharp
     using System;
@@ -112,7 +106,7 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
 
    ```
 
-   Gdy usługa Stream Analytics odbierze z funkcji wyjątek dotyczący zbyt dużej jednostki żądania HTTP, to zmniejszy rozmiar partii wysyłanych do usługi Functions. W ramach funkcji użyj poniższego kodu, aby sprawdzić, czy usługa Stream Analytics nie wysyła za dużych partii. Upewnij się, że wartości rozmiaru i maksymalnej liczby partii używane w funkcji są zgodne z wartościami podanymi w portalu usługi Stream Analytics.
+   Gdy usługa Stream Analytics odbierze z funkcji wyjątek dotyczący zbyt dużej jednostki żądania HTTP, to zmniejszy rozmiar partii wysyłanych do usługi Functions. Poniższy kod zapewnia, że usługi Stream Analytics nie wysyła za dużych partii. Upewnij się, że wartości rozmiaru i maksymalnej liczby partii używane w funkcji są zgodne z wartościami podanymi w portalu usługi Stream Analytics.
 
     ```csharp
     if (dataArray.ToString().Length > 262144)
@@ -121,7 +115,7 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
         }
    ```
 
-3. W edytorze tekstów utwórz plik JSON o nazwie **project.json**. Użyj poniższego kodu i zapisz go na komputerze lokalnym. Ten plik zawiera zależności pakietów NuGet, które są wymagane przez funkcję języka C#.  
+3. W edytorze tekstów utwórz plik JSON o nazwie **project.json**. Wklej następujący kod i zapisz go na komputerze lokalnym. Ten plik zawiera zależności pakietów NuGet, które są wymagane przez funkcję języka C#.  
    
     ```json
     {
@@ -145,8 +139,6 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
 
    ![Zrzut ekranu edytora usługi App Service](./media/stream-analytics-with-azure-functions/image4.png)
 
- 
-
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>Aktualizacja zadania usługi Stream Analytics za pomocą funkcji jako wyjścia
 
 1. Otwórz zadanie usługi Stream Analytics w witrynie Azure Portal.  
@@ -163,9 +155,9 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
    |Maksymalna liczba partii|Umożliwia określenie maksymalnej liczby zdarzeń w każdej z partii wysyłanych do funkcji. Wartość domyślna to 100. Ta właściwość jest opcjonalna.|
    |Klucz|Pozwala na użycie funkcji z innej subskrypcji. Podaj wartość klucza, aby uzyskać dostęp do funkcji. Ta właściwość jest opcjonalna.|
 
-3. Podaj nazwę aliasu danych wyjściowych. W tym samouczku użyjemy nazwy **saop1** (możesz użyć dowolnej nazwy). Podaj inne szczegóły.  
+3. Podaj nazwę aliasu danych wyjściowych. W tym samouczku o nazwie **saop1**, ale można użyć dowolnej nazwy wybranego. Podaj inne szczegóły.
 
-4. Otwórz zadanie usługi Stream Analytics i zaktualizuj zapytanie w następujący sposób. (Pamiętaj o zastąpieniu tekstu „saop1”, jeśli ujście danych wyjściowych zostało nazwane inaczej).  
+4. Otwórz zadanie usługi Stream Analytics i zaktualizuj zapytanie w następujący sposób. Jeśli użytkownik nie nazwy obiektu sink danych wyjściowych **saop1**, pamiętaj, aby ją zmienić w zapytaniu.  
 
    ```sql
     SELECT
@@ -178,9 +170,11 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
         WHERE CS1.SwitchNum != CS2.SwitchNum
    ```
 
-5. Uruchom aplikację telcodatagen.exe, uruchamiając następujące polecenie w wierszu polecenia (użyj formatu `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`):  
+5. Uruchom aplikację telcodatagen.exe, uruchamiając następujące polecenie w wierszu polecenia. Polecenie używa formatu `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`.  
    
-   **telcodatagen.exe 1000 .2 2**
+   ```cmd
+   telcodatagen.exe 1000 0.2 2
+   ```
     
 6.  Uruchom zadanie usługi Stream Analytics.
 

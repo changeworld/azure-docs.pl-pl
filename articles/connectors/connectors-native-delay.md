@@ -11,10 +11,10 @@ tags: connectors
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66297608"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Opóźnienie uruchamiania następnej akcji w usłudze Azure Logic Apps
@@ -55,7 +55,7 @@ Poniżej przedstawiono niektóre sposoby przykład za pomocą tych akcji:
 
    | Właściwość | Nazwa JSON | Wymagane | Typ | Opis |
    |----------|-----------|----------|------|-------------|
-   | Count | count | Yes | Integer | Liczba jednostek czasu opóźnienia |
+   | Licznik | count | Yes | Integer | Liczba jednostek czasu opóźnienia |
    | Jednostka | Jednostki | Tak | String | Jednostka czasu, na przykład: `Second`, `Minute`, `Hour`, `Day`, `Week`, lub `Month` |
    ||||||
 
@@ -81,7 +81,7 @@ Poniżej przedstawiono niektóre sposoby przykład za pomocą tych akcji:
 
    | Właściwość | Nazwa JSON | Wymagane | Typ | Opis |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | timestamp | Yes | String | Data i godzina zakończenia dla wznawianie przepływu pracy, używając następującego formatu: <p>RRRR-MM-Ddtgg <p>Na przykład jeśli chcesz 18 września 2017 r. o 14:00, określ "2017-09-18T14:00:00Z". <p>**Uwaga:** Wykonaj to format czasu [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Bez strefę czasową należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). |
+   | Znacznik czasu | timestamp | Tak | String | Data i godzina zakończenia dla wznawianie przepływu pracy, używając następującego formatu: <p>RRRR-MM-Ddtgg <p>Na przykład jeśli chcesz 18 września 2017 r. o 14:00, określ "2017-09-18T14:00:00Z". <p>**Uwaga:** Wykonaj to format czasu [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Bez strefę czasową należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||
 
 1. Dodaj inne czynności, które chcesz uruchomić w przepływie pracy.

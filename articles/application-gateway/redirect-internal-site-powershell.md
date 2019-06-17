@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
 ms.openlocfilehash: c887c5ea72a64828749bfc62756e59a8a22ea9df
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66729632"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania przy użyciu programu Azure PowerShell
@@ -300,7 +300,7 @@ Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Na przykład http://ww
 
 ![Testowanie witryny contoso w bramie aplikacji](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Na przykład zmienić adres do Twojej domeny http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika dla www\.contoso.com.
+Na przykład zmienić adres do Twojej domeny http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika dla www\. contoso.com.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 1bab1ed9e2a24b0a84f4327d47a910934319b397
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475907"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Używanie klasy RecoveryManager do rozwiązywanie problemów z mapą fragmentów
@@ -33,7 +33,7 @@ Aby uzyskać definicje terminów, zobacz [słownik narzędzi elastycznych baz da
 
 ## <a name="why-use-the-recovery-manager"></a>Dlaczego warto korzystać z Menedżera odzyskiwania
 
-W środowisku bazy danych podzielonej na fragmenty ma jedną dzierżawę na bazę danych i wieloma bazami danych na serwer. Można również istnieć wiele serwerów w środowisku. Każda baza danych jest mapowany w ramach mapowania fragmentów, dlatego wywołania, można je skierować na właściwym serwerem i bazy danych. Bazy danych są śledzone na podstawie położenia **klucz fragmentowania**, i każdy fragment ma przypisany **zakres wartości klucza**. Na przykład klucz fragmentowania może reprezentują nazwy klienta od "D" do "F." Mapowania wszystkich fragmentów (czyli baz danych) i ich zakresów mapowania są zawarte w **mapowania fragmentów globalne (GSM)**. Każda baza danych zawiera także mapę zakresów znajdujących się w fragmentu, który jest znany jako **mapowanie fragmentów w postaci lokalnej (LSM) tak,**. Gdy aplikacja nawiązuje połączenie z fragmentu, mapowanie jest buforowana przy użyciu aplikacji do szybkiego pobierania. LSM służy do sprawdzania poprawności danych w pamięci podręcznej.
+W środowisku bazy danych podzielonej na fragmenty ma jedną dzierżawę na bazę danych i wieloma bazami danych na serwer. Można również istnieć wiele serwerów w środowisku. Każda baza danych jest mapowany w ramach mapowania fragmentów, dlatego wywołania, można je skierować na właściwym serwerem i bazy danych. Bazy danych są śledzone na podstawie położenia **klucz fragmentowania**, i każdy fragment ma przypisany **zakres wartości klucza**. Na przykład klucz fragmentowania może reprezentują nazwy klienta od "D" do "F." Mapowania wszystkich fragmentów (czyli baz danych) i ich zakresów mapowania są zawarte w **mapowania fragmentów globalne (GSM)** . Każda baza danych zawiera także mapę zakresów znajdujących się w fragmentu, który jest znany jako **mapowanie fragmentów w postaci lokalnej (LSM) tak,** . Gdy aplikacja nawiązuje połączenie z fragmentu, mapowanie jest buforowana przy użyciu aplikacji do szybkiego pobierania. LSM służy do sprawdzania poprawności danych w pamięci podręcznej.
 
 GSM i LSM może stać zsynchronizowany z następujących powodów:
 

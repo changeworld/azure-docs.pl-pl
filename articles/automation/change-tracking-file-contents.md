@@ -10,10 +10,10 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61304344"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Wyświetl zawartość pliku, który jest śledzone za pomocą śledzenia zmian
@@ -34,7 +34,7 @@ ms.locfileid: "61304344"
 2. W górnym menu wybierz **edytowanie ustawień**.
 3. Wybierz **zawartość pliku** i kliknij przycisk **łącze**. Spowoduje to otwarcie **Dodaj lokalizację zawartości na potrzeby śledzenia zmian** okienka.
 
-   ![włącz](./media/change-tracking-file-contents/enable.png)
+   ![Włącz](./media/change-tracking-file-contents/enable.png)
 
 4. Wybierz subskrypcję i konto magazynu służące do przechowywania zawartości pliku do. Jeśli chcesz włączyć śledzenie zawartości pliku dla wszystkich istniejących plików śledzone, wybierz **na** dla **przekazywać zawartość pliku dla wszystkich ustawień**. Możesz zmienić to dla każdej ścieżki pliku później.
 

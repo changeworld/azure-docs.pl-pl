@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: danlep
 ms.openlocfilehash: 2cf64c7c4f99a57c4a4a6cf03e68e8af803ceca9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787366"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Najlepsze rozwiązania dla usługi Azure Container Registry
@@ -54,7 +54,7 @@ Choć możesz eksperymentować z określonym typem hosta, na przykład z usług�
 
 Istnieją dwa podstawowe scenariusze uwierzytelniania w usłudze Azure Container Registry: uwierzytelnianie indywidualne i uwierzytelnianie usługi („bezobsługowe”). Poniższa tabela zawiera krótkie omówienie tych scenariuszy i wskazuje zalecaną metodę uwierzytelniania w przypadku każdego z nich.
 
-| Type | Przykładowy scenariusz | Zalecana metoda |
+| Typ | Przykładowy scenariusz | Zalecana metoda |
 |---|---|---|
 | Indywidualne tożsamości | Deweloper ściągający obrazy na swoją maszynę deweloperską lub wypychający z niej obrazy. | Polecenie [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | Bezobsługowe/tożsamość usługi | Potoki kompilacji i wdrażania, w których użytkownik nie bierze bezpośrednio udziału. | [Jednostka usługi](container-registry-authentication.md#service-principal) |

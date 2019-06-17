@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: geetha
 ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217046"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych platformy Azure
@@ -33,7 +33,7 @@ Usługa Azure Backup można kopii zapasowej i przywracania maszyn wirtualnych pl
 **Typ dysku maszyny wirtualnej** | **ADE (klucz szyfrowania bloków dm-crypt)** | **ADE i KEK**
 --- | --- | ---
 **niezarządzane** | Yes | Yes
-**Zarządzane**  | Yes | Yes
+**Zarządzane**  | Tak | Yes
 
 - Dowiedz się więcej o [ADE](../security/azure-security-disk-encryption-overview.md), [usługi Key Vault](../key-vault/key-vault-overview.md), i [kluczy Kek](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
 - Odczyt [— często zadawane pytania](../security/azure-security-disk-encryption-faq.md) dotyczące szyfrowania dysku maszyny Wirtualnej platformy Azure.
@@ -134,7 +134,7 @@ Aby ustawić uprawnienia:
 
     ![Wybieranie kopii zapasowej usługi](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. W **zasad dostępu Dodaj** > **Konfiguruj z szablonu (opcjonalnie)**, wybierz opcję **kopia zapasowa Azure**.
+6. W **zasad dostępu Dodaj** > **Konfiguruj z szablonu (opcjonalnie)** , wybierz opcję **kopia zapasowa Azure**.
     - Wymagane uprawnienia są wstępnie dla **uprawnienia klucza** i **uprawnienia klucza tajnego**.
     - Jeśli maszyna wirtualna jest zaszyfrowana przy użyciu **tylko bloków**, usuń zaznaczenie dla **uprawnienia klucza** ponieważ dzięki temu wystarczy uprawnień dotyczących wpisów tajnych.
 

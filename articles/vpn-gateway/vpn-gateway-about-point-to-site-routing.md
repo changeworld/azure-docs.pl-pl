@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: anzaman
 ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60653616"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Routing sieci VPN typu punkt-lokacja — informacje
@@ -44,7 +44,7 @@ Połączenie bramy sieci VPN typu punkt-lokacja, w tym przykładzie jest dla sie
 
 * Dodano dla klientów innych niż Windows trasy: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Dostęp
+### <a name="access"></a>Access
 
 * Klienci Windows mogą uzyskać dostępu do sieci VNet1
 
@@ -74,7 +74,7 @@ Klienci korzystający z Windows mogą uzyskiwać dostęp do wirtualne sieci rów
 
 * Dodano dla klientów innych niż Windows trasy: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Dostęp
+### <a name="access"></a>Access
 
 * Klienci Windows dostęp do sieci VNet1, VNet2 i sieci VNet4, ale klient sieci VPN musi zostać ponownie pobrana topologia zmiany zaczęły obowiązywać.
 
@@ -102,7 +102,7 @@ Klienci korzystający z Windows lub innego obsługiwanego systemu operacyjnego d
 
 * Trasy dodane do klientów Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Dostęp
+### <a name="access"></a>Access
 
 * Klienci Windows mogą uzyskać dostęp tylko do sieci VNet1
 
@@ -130,7 +130,7 @@ Klienci korzystający z Windows lub innego obsługiwanego systemu operacyjnego, 
 
 * Trasy dodane do klientów Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Dostęp
+### <a name="access"></a>Access
 
 * Klienci Windows dostęp do sieci VNet1, VNet2 i sieci VNet3, ale będzie musiał ręcznie należy dodać trasy do sieci VNet2 i sieci VNet3.
 
@@ -156,7 +156,7 @@ Klientów z systemami Windows i innych niż Windows mogą uzyskać dostęp tylko
 
 * Trasy dodane do klientów Non-Windows: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Dostęp
+### <a name="access"></a>Access
 
 * Klienci Windows mogą uzyskać dostęp tylko do sieci VNet1
 
@@ -182,7 +182,7 @@ Klienci Windows mogą uzyskiwać dostęp do sieci wirtualnej oddziału (Site1), 
 
 * Trasy dodane do klientów Non-Windows: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Dostęp
+### <a name="access"></a>Access
 
 * Klienci Windows mogą uzyskiwać dostęp do sieci VNet1 Site1, ale będzie musiał ręcznie należy dodać trasy, aby Site1.
 
@@ -213,7 +213,7 @@ Wszyscy klienci mogą uzyskać dostęp do sieci VNet1 tylko.
 
 * Trasy dodane do klientów Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Dostęp
+### <a name="access"></a>Access
 
 * Klienci Windows mogą uzyskiwać dostęp do sieci VNet1 tylko
 
@@ -243,7 +243,7 @@ Klienci korzystający z Windows mogą uzyskiwać dostęp do sieci wirtualnych i 
 
 * Trasy dodane do klientów Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Dostęp
+### <a name="access"></a>Access
 
 * Klienci Windows mogą uzyskać dostęp, VNet1, VNet2, sieci VNet3 i Site1, ale należy ręcznie dodać trasy do sieci VNet2, sieci VNet3 i Site1 do klienta.
 

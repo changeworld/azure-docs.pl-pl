@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60758668"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Zarządzaj klastra skalowalnego w poziomie do uwzględnienia zmiennym obciążeniem
@@ -26,13 +26,13 @@ W tym artykule przedstawiono sposób zarządzania klastra skalowalnego w poziomi
 
 W witrynie Azure portal przejdź do zasobu klastra Eksploratora danych. W obszarze **ustawienia** nagłówka, wybierz **skalowanie w poziomie**. Na **Konfiguruj** zaznacz **włączyć Skalowanie automatyczne**.
 
-   ![Włącz skalowanie automatyczne](media/manage-cluster-scaling/enable-autoscale.png)
+   ![Włącz Skalowanie automatyczne](media/manage-cluster-scaling/enable-autoscale.png)
 
 Na poniższym rysunku przedstawiono przepływ następnych krokach. Więcej szczegółów postępuj zgodnie z grafiki.
 
 1. W **Nazwa ustawienia skalowania automatycznego** Podaj nazwę, taką jak *skalowalnego w poziomie: wykorzystanie w pamięci podręcznej*. 
 
-   ![Reguła skalowania](media/manage-cluster-scaling/scale-rule.png)
+   ![Reguły skalowania](media/manage-cluster-scaling/scale-rule.png)
 
 2. Aby uzyskać **tryb skalowania**, wybierz opcję **skalowania na podstawie metryki**. Ten tryb zapewnia dynamiczne skalowanie. Możesz również wybrać **Skaluj do określonej liczby wystąpień**.
 

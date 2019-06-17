@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
 ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60852143"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
@@ -323,11 +323,11 @@ Po sprawdzeniu stanu łączność platformy Azure i subskrypcji platformy Azure,
 
 | Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Tworzenie kopii zapasowej dysku | Przywracanie z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączono |Aktywne |Dopuszczeni |Dopuszczeni |Dopuszczeni |Dopuszczeni |
-| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Połączono |Aktywne |Dozwolone |Dozwolone |Dozwolone |Dozwolone |
+| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
 | Połączono |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
-| Utraty łączności > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
-| Utraty łączności > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Utraty łączności > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
+| Utraty łączności > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
 | Utraty łączności > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie z utraty łączności
@@ -337,8 +337,8 @@ Jeśli zapora lub serwer proxy uniemożliwia dostęp do platformy Azure, umieśc
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+- \*. microsoftonline.com
+- \*. windows.net
 
 Po przywróceniu łączności na platformę Azure do usługi Azure Backup Server, stan subskrypcji platformy Azure określa operacje, które mogą być wykonywane. Gdy serwer jest **połączono**, skorzystać z tabeli w [połączenia sieciowego](backup-mabs-install-azure-stack.md#network-connectivity) Aby wyświetlić dostępne operacje.
 

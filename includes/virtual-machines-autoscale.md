@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8d10c3edcf64ccc66b0599d064e91270a4ad8202
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814908"
 ---
 Możesz z łatwością [automatyczne skalowanie](../articles/azure-monitor/platform/autoscale-best-practices.md) swoje [maszyn wirtualnych (VM)](../articles/virtual-machines/windows/overview.md) zastosowania [zestawy skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) i [funkcja automatycznego skalowania platformy Azure Monitor](../articles/azure-monitor/platform/autoscale-overview.md). Maszyny wirtualne muszą należeć do zestawu skalowania automatycznego skalowania. Ten artykuł zawiera informacje, która pozwala na lepsze zrozumienie, jak skalowanie w pionie i w poziomie przy użyciu automatycznej i ręcznej metody maszyn wirtualnych.
 
@@ -31,7 +31,7 @@ Automatyczne skalowanie zapewnia odpowiednią liczbę maszyn wirtualnych do obs�
 
 Można włączyć automatyczne skalowanie, podczas tworzenia zestawu skalowania przy użyciu [programu Azure PowerShell](../articles/azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings). Możesz również je włączyć po utworzeniu zestawu skalowania. Tworzenie zestawu skalowania, należy zainstalować rozszerzenie i Konfigurowanie automatycznego skalowania przy użyciu [szablonu usługi Azure Resource Manager](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md). W witrynie Azure portal włączyć automatyczne skalowanie z usługi Azure Monitor lub skalowania automatycznego z ustawień zestawu skalowania.
 
-![Włącz skalowanie automatyczne](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
+![Włącz Skalowanie automatyczne](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  
 ### <a name="metrics"></a>Metryki
 
@@ -53,13 +53,13 @@ Możesz [ustawić wyzwalacze](../articles/azure-monitor/platform/autoscale-webho
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>Ręczne skalowanie maszyn wirtualnych w zestawie skalowania
 
-### <a name="horizontal"></a>Poziomo
+### <a name="horizontal"></a>Poziome
 
 Można dodać lub usunąć zmianę pojemności zestawu skalowania maszyn wirtualnych. W witrynie Azure portal, można zmniejszyć lub zwiększyć liczbę maszyn wirtualnych (wyświetlana jako **liczba wystąpień**) w zestawie skalowania za przesuwanie na pasku stanu zastąpienie na ekranie skalowanie w lewo lub w prawo.
 
 Przy użyciu programu Azure PowerShell, należy uzyskać, używając obiektu zestawu skalowania [Get AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss). Następnie ustawiamy **sku.capacity** liczbę maszyn wirtualnych, które mają i zaktualizuj zestaw skalowania za pomocą [AzVmss aktualizacji](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss). Przy użyciu wiersza polecenia platformy Azure, możesz zmienić pojemnością przy użyciu **— nową pojemność** parametr [az vmss scale](/cli/azure/vmss?view=azure-cli-latest#az-vmss-scale) polecenia.
 
-### <a name="vertical"></a>Pionowa
+### <a name="vertical"></a>W pionie
 
 Można ręcznie zmienić rozmiar maszyn wirtualnych w witrynie Azure portal w rozmiaru ekranu dla zestawu skalowania. Za pomocą programu Azure PowerShell Get-AzVmss, ustawiając właściwość sku obrazu odniesienia, a następnie używając [AzVmss aktualizacji](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) i [AzVmssInstance aktualizacji](https://docs.microsoft.com/powershell/module/az.compute/update-azvmssinstance).
 

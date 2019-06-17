@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
 ms.openlocfilehash: 4ee970f14a6da3d65849a79ff4afae68601f106f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141669"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integracja usługi API Management w wewnętrznej sieci Wirtualnej z usługą Application Gateway

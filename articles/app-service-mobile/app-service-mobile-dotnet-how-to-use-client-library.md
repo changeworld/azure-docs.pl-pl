@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
 ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119307"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak używać zarządzanego klienta usługi Azure Mobile Apps
@@ -249,7 +249,7 @@ W przypadku aplikacji rzeczywistych służy zapytania, podobnie jak w poprzednim
 
 
 ### <a name="selecting"></a>Jak: Wybrać określone kolumny
-Można określić, który zestaw właściwości do uwzględnienia w wynikach, dodając [wybierz] klauzuli do zapytania. Na przykład poniższy kod przedstawia, jak wybrać tylko jedno pole, a także jak należy wybierać i formatowanie wielu pól:
+Można określić, który zestaw właściwości do uwzględnienia w wynikach, dodając [Select] klauzuli do zapytania. Na przykład poniższy kod przedstawia, jak wybrać tylko jedno pole, a także jak należy wybierać i formatowanie wielu pól:
 
 ```csharp
 // Select one field -- just the Text
@@ -657,7 +657,7 @@ Active Directory Authentication Library (ADAL) można użyć do uwierzytelnienia
    * Zastąp **INSERT-urzędu-tutaj** nazwą dzierżawy, w której aprowizowano aplikacji. Powinna być w formacie https://login.microsoftonline.com/contoso.onmicrosoft.com. Ta wartość może zostać skopiowany z karcie domeny w usłudze Azure Active Directory w [Azure Portal].
    * Zastąp **INSERT zasobów — identyfikator — tutaj** z Identyfikatorem klienta dla zaplecza aplikacji mobilnej. Można uzyskać identyfikator klienta z **zaawansowane** karcie **ustawienia usługi Azure Active Directory** w portalu.
    * Zastąp **INSERT klienta-ID — tutaj** z Identyfikatorem klienta został skopiowany z aplikacja kliencka macierzystego.
-   * Zastąp **INSERT PRZEKIEROWANIA-URI-tutaj** z witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done*.
+   * Zastąp **INSERT PRZEKIEROWANIA-URI-tutaj** z witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done* .
 
      Następujący kod wymagane dla każdej platformy:
 
@@ -1063,7 +1063,7 @@ public class MyHandler : DelegatingHandler
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
 [Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
-[Wybierz]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
 [Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx

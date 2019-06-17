@@ -17,10 +17,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: b8994d4c1eabf4381bf8364c76f7328d225f7e1a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62111531"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Łączenie z maszyną wirtualną programu SQL Server na platformie Azure (wdrażanie klasyczne)
@@ -58,7 +58,7 @@ W tym scenariuszu można połączyć za pomocą maszyny Wirtualnej **nazwa** (ta
 ### <a name="connect-to-sql-server-over-the-internet"></a>Połączenia z serwerem SQL w Internecie
 Jeśli chcesz nawiązać połączenie z aparatem bazy danych programu SQL Server z Internetu, należy utworzyć punkt końcowy maszyny wirtualnej dla przychodzącą komunikację protokołu TCP. Ten krok konfiguracji platformy Azure kieruje ruch przychodzący port TCP do portu TCP, który jest dostępny dla maszyny wirtualnej.
 
-Aby połączyć się za pośrednictwem Internetu, należy użyć nazwy DNS maszyny Wirtualnej i numer portu punktu końcowego maszyny Wirtualnej (skonfigurowane w dalszej części tego artykułu). Aby znaleźć nazwę DNS, przejdź do witryny Azure portal i wybierz **maszyny wirtualne (klasyczne)**. Następnie wybierz maszynę wirtualną. **Nazwy DNS** jest wyświetlany w **Przegląd** sekcji.
+Aby połączyć się za pośrednictwem Internetu, należy użyć nazwy DNS maszyny Wirtualnej i numer portu punktu końcowego maszyny Wirtualnej (skonfigurowane w dalszej części tego artykułu). Aby znaleźć nazwę DNS, przejdź do witryny Azure portal i wybierz **maszyny wirtualne (klasyczne)** . Następnie wybierz maszynę wirtualną. **Nazwy DNS** jest wyświetlany w **Przegląd** sekcji.
 
 Na przykład, należy wziąć pod uwagę klasycznej maszyny wirtualnej o nazwie **mysqlvm** o nazwie DNS **mysqlvm7777.cloudapp.net** i punktu końcowego maszyny Wirtualnej **57500**. Zakładając, że łączność prawidłowo skonfigurowane, następujące parametry połączenia można uzyskać dostęp do maszyny wirtualnej z dowolnego miejsca w Internecie:
 

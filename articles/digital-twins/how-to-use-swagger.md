@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c402b82b91b02f8d9619c851d09c689fd103c9fe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730410"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116432"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja platformy Azure cyfrowego Twins struktury Swagger
 
@@ -112,7 +112,7 @@ Aby dowiedzieć się więcej o testowaniu interaktywnie żądania chronione prze
 
     ![Rejestracje aplikacji w usłudze Azure AD, Dodaj interfejs api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
-4. Konfigurowanie manifestu aplikacji, aby zezwolić na niejawny przepływ OAuth 2.0. Kliknij przycisk **manifestu** otworzyć manifest aplikacji dla aplikacji. Ustaw *oauth2AllowImplicitFlow* do `true`.
+4. Konfigurowanie manifestu aplikacji, aby zezwolić na niejawny przepływ OAuth 2.0. Wybierz **manifestu** otworzyć manifest aplikacji dla aplikacji. Ustaw *oauth2AllowImplicitFlow* do `true`.
 
     ![Usługa Azure AD niejawny przepływ](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
 
@@ -120,9 +120,9 @@ Aby dowiedzieć się więcej o testowaniu interaktywnie żądania chronione prze
 
 Po zakończeniu rejestracji usługi Azure Active Directory:
 
-6. Kliknij przycisk **Autoryzuj** przycisk na stronie struktury swagger.
+6. Wybierz **Autoryzuj** przycisk na stronie struktury swagger.
 
-    [![Struktura Swagger kliknij przycisk Autoryzuj](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![Wybierz Swagger autoryzować przycisku](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 7. Wklej identyfikator aplikacji do **client_id** pola.
 

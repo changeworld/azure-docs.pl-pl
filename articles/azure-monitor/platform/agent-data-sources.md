@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: d7d4aa89c4dcf2ac9cc0c393e0481cae1f3aeaf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776082"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Agent źródeł danych w usłudze Azure Monitor
@@ -36,7 +36,7 @@ Poniższa tabela zawiera listę źródeł danych agenta, które są obecnie dost
 | [Dzienniki usług IIS](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |zależy od ustawienia Przerzucanie pliku dziennika |
 | [Liczniki wydajności](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |zgodnie z harmonogramem, co najmniej 10 sekund |
 | [Liczniki wydajności](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |zgodnie z harmonogramem, co najmniej 10 sekund |
-| [Dziennik systemu](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z usługi Azure storage: 10 minut; od agenta: po przybyciu |
+| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z usługi Azure storage: 10 minut; od agenta: po przybyciu |
 | [Dzienniki zdarzeń Windows](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | Po dostarczeniu |
 
 

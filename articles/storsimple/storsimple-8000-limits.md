@@ -16,11 +16,11 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a0053f950b36351b06d08630cbf9977f53f2ed47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60319568"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721692"
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>Jakie są ograniczenia systemu serii StorSimple 8000?
 

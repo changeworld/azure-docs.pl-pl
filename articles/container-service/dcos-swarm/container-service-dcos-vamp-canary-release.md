@@ -10,10 +10,10 @@ ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61458191"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(PRZESTARZAŁE) Mikrousługi wydania canary za pomocą systemu Vamp w klastrze usługi Azure Container Service DC/OS
@@ -93,7 +93,7 @@ Pomocą systemu vamp wymaga Elasticsearch zbieranie metryk i agregacji. Możesz 
    ```
   
 
-3. Kliknij przycisk **Deploy (Wdróż)**.
+3. Kliknij przycisk **wdrażanie**.
 
    DC/OS służy do wdrażania kontenerów programu Elasticsearch. Postęp można śledzić na **usług** strony.  
 

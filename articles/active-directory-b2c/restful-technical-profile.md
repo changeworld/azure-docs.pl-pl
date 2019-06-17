@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512739"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych usługi Azure Active Directory B2C
@@ -85,8 +85,8 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ServiceUrl | Yes | Adres URL punktu końcowego interfejsu API REST. | 
-| AuthenticationType | Tak | Typ uwierzytelniania jest wykonywane przez dostawcę oświadczeń typu RESTful. Możliwe wartości: `None`, `Basic`, lub `ClientCertificate`. `None` Wartość wskazuje, że interfejs API REST jest anonimowy. `Basic` Wartość wskazuje, że interfejs API REST jest zabezpieczony za pomocą podstawowego uwierzytelniania protokołu HTTP. Weryfikowane tylko użytkowników, w tym usługi Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. `ClientCertificate` (Zalecane) wartość wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko w przypadku usług, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C może uzyskać dostęp do usługi. | 
+| ServiceUrl | Tak | Adres URL punktu końcowego interfejsu API REST. | 
+| AuthenticationType | Yes | Typ uwierzytelniania jest wykonywane przez dostawcę oświadczeń typu RESTful. Możliwe wartości: `None`, `Basic`, lub `ClientCertificate`. `None` Wartość wskazuje, że interfejs API REST jest anonimowy. `Basic` Wartość wskazuje, że interfejs API REST jest zabezpieczony za pomocą podstawowego uwierzytelniania protokołu HTTP. Weryfikowane tylko użytkowników, w tym usługi Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. `ClientCertificate` (Zalecane) wartość wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko w przypadku usług, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C może uzyskać dostęp do usługi. | 
 | SendClaimsIn | Nie | Określa, jak oświadczeń wejściowych są wysyłane do dostawcy oświadczeń typu RESTful. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń przychodzących, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń przychodzących, który będzie wysyłany w ciągu zapytania żądania. | 
 | ClaimsFormat | Nie | Określa format dla oświadczeń danych wyjściowych. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń wychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w ciągu zapytania żądania. | 
 | Element DebugMode | Nie | Uruchamia profil techniczny w trybie debugowania. W trybie debugowania interfejs API REST może zwrócić więcej informacji. Zobacz sekcję zwracanie komunikatu błędu. | 
@@ -112,7 +112,7 @@ Jeśli ustawiono typ uwierzytelniania `Basic`, **CryptographicKeys** element zaw
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | Tak | Nazwa użytkownika, który jest używany do uwierzytelniania. | 
-| BasicAuthenticationPassword | Yes | Hasło, które służy do uwierzytelniania. |
+| BasicAuthenticationPassword | Tak | Hasło, które służy do uwierzytelniania. |
 
 Poniższy przykład przedstawia profilu technicznego z uwierzytelnianiem podstawowym:
 

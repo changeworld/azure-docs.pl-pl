@@ -4,19 +4,19 @@ description: W tym artykule opisano, jak użyć danych referencyjnych do wyszuki
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/11/2019
+ms.openlocfilehash: 99917fa01fcdb3faf731e9d0909d67ff41222f22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393121"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066779"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics
+
 Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub do skorelowania ze strumienia danych. Można na przykład w scenariuszu IoT są przechowywane metadane dotyczące czujniki, (które nie zmieniają się często) w danych referencyjnych i przyłączyć go ze strumieniami danych IoT w czasie rzeczywistym. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. 
 
 Stream Analytics obsługuje usługi Azure Blob storage i Azure SQL Database jako Warstwa przechowywania danych referencyjnych. Użytkownik może także przekształcić i/lub skopiowania do magazynu obiektów Blob usługi Azure Data Factory, aby użyć danych referencyjnych [dowolną liczbę chmurowych i lokalnych magazynów danych](../data-factory/copy-activity-overview.md).
@@ -43,7 +43,7 @@ Aby skonfigurować swoje dane referencyjne, najpierw musisz utworzyć danych wej
 
 ### <a name="static-reference-data"></a>Statyczne dane referencyjne
 
-Jeśli dane odwołanie nie powinna się zmienić, obsługuje odwołania statyczne, danych jest włączona, określając ścieżkę statycznych w konfiguracji danych wejściowych. Usługa Azure Stream Analytics przejmuje obiektu blob z określonej ścieżki. {date} i {time} podstawienia tokenów nie są wymagane. Dane referencyjne są niezmienne w usłudze Stream Analytics. W związku z tym zastępując obiekt blob danych odwołania statycznego nie jest zalecane.
+Jeśli dane odwołanie nie powinna się zmienić, obsługuje odwołania statyczne, danych jest włączona, określając ścieżkę statycznych w konfiguracji danych wejściowych. Usługa Azure Stream Analytics przejmuje obiektu blob z określonej ścieżki. {date} i {time} podstawienia tokenów nie są wymagane. Ponieważ dane referencyjne są niezmienne w usłudze Stream Analytics, zastępując obiekt blob danych odwołania statycznego nie jest zalecane.
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Generowanie danych referencyjnych, zgodnie z harmonogramem
 
@@ -54,7 +54,7 @@ Usługa Azure Stream Analytics automatycznie skanuje w poszukiwaniu obiekty BLOB
 > [!NOTE]
 > Obecnie zadania usługi Stream Analytics Wyszukaj odświeżanie obiektów blob tylko wtedy, gdy czas maszyny jest przesuwany do czasu zakodowane w nazwie obiektu blob. Na przykład, zadanie będzie szukać `sample/2015-04-16/17-30/products.csv` tak szybko, jak to możliwe, ale nie wcześniej niż 17:30:00 od 16 kwietnia 2015 UTC strefę czasową. Będzie ono *nigdy nie* Wyszukaj obiekt blob z wcześniej, niż ostatni odnaleziono zakodowany czasu.
 > 
-> Na przykład Po zadania znajduje się obiekt blob `sample/2015-04-16/17-30/products.csv` go będzie ignorować wszystkie pliki z datą zakodowany starszych niż 17:30:00 16 kwietnia 2015 r. Jeśli opóźnione odebranych `sample/2015-04-16/17-25/products.csv` tworzony obiekt blob w tym samym kontenerze zadania nie są one używane.
+> Na przykład, gdy zadanie znajdzie obiektu blob `sample/2015-04-16/17-30/products.csv` go będzie ignorować wszystkie pliki z datą zakodowany starszych niż 17:30:00 16 kwietnia 2015 r. Jeśli opóźnione odebranych `sample/2015-04-16/17-25/products.csv` tworzony obiekt blob w tym samym kontenerze zadania nie są one używane.
 > 
 > Podobnie jeśli `sample/2015-04-16/17-30/products.csv` tylko jest generowany w 22:03:00 16 kwietnia 2015 r., ale nie obiektu blob z datą wcześniejszą znajduje się w kontenerze, zadanie będzie używać tego pliku, zaczynając od 10: 18:03 16 kwietnia 2015 r. i użyć danych referencyjnych, poprzednie do tego czasu.
 > 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64572785"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Rozwiązywanie problemów z łącznością z usługi Azure AD
@@ -48,9 +48,9 @@ Tych adresów URL Poniższa tabela dotyczy absolutne minimum systemu od zera, ab
 | mscrl.microsoft.com |HTTP/80 |Używane do pobierania listy CRL. |
 | \*.verisign.com |HTTP/80 |Używane do pobierania listy CRL. |
 | \*.entrust.net |HTTP/80 |Używane do pobierania listy CRL dla usługi MFA. |
-| \*.windows.net |HTTPS/443 |Używane do logowania do usługi Azure AD. |
+| \*. windows.net |HTTPS/443 |Używane do logowania do usługi Azure AD. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |Używany do uwierzytelniania Wieloskładnikowego. |
-| \*.microsoftonline.com |HTTPS/443 |Umożliwia konfigurowanie katalogu usługi Azure AD i importowanie/eksportowanie danych. |
+| \*. microsoftonline.com |HTTPS/443 |Umożliwia konfigurowanie katalogu usługi Azure AD i importowanie/eksportowanie danych. |
 
 ## <a name="errors-in-the-wizard"></a>Błędy Kreatora
 Kreator instalacji korzysta z dwóch różnych kontekstach zabezpieczeń. Na stronie **nawiązywanie połączenia z usługi Azure AD**, korzysta ona z aktualnie zalogowanego użytkownika. Na stronie **Konfiguruj**, jest zmiana [konto na którym uruchomiono usługę dla aparatu synchronizacji](reference-connect-accounts-permissions.md#adsync-service-account). Jeśli wystąpi problem, wygląda na to, najprawdopodobniej osiągnięcia **nawiązywanie połączenia z usługi Azure AD** strony w Kreatorze konfiguracji serwera proxy jest globalne.
@@ -151,7 +151,7 @@ Oto zrzut z dziennika rzeczywiste serwera proxy i strona kreatora instalacji, z 
 W tej sekcji opisano błędy, które mogą być zwracane z biblioteki ADAL (Biblioteka uwierzytelniania używany przez program Azure AD Connect) i programu PowerShell. Błąd wyjaśniono powinien pomóc zrozumiesz, w następnych krokach.
 
 ### <a name="invalid-grant"></a>Nieprawidłowy przydział
-Nieprawidłowa nazwa użytkownika lub nieprawidłowe hasło. Aby uzyskać więcej informacji, zobacz [nie można zweryfikować hasła](#the-password-cannot-be-verified).
+Nieprawidłowa nazwa użytkownika lub hasło. Aby uzyskać więcej informacji, zobacz [nie można zweryfikować hasła](#the-password-cannot-be-verified).
 
 ### <a name="unknown-user-type"></a>Typ Nieznany użytkownik
 Katalogu usługi Azure AD, nie można odnaleźć lub rozwiązane. Może spróbować zalogować się za pomocą nazwy użytkownika w niezweryfikowanej domeny?

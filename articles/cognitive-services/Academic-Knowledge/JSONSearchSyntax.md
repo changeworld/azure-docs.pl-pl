@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: fddd2291fe7fbb46c57d31e9aebc7fc6244df971
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61336970"
 ---
 # <a name="json-search-syntax"></a>Składnia wyszukiwania JSON
@@ -33,7 +33,7 @@ ms.locfileid: "61336970"
 }
 ```
 
-Nazwy węzłów w ścieżce zapytania (_v0-v1..._ ) służą jako identyfikatory węzłów, które mogą być przywoływane w obiekcie zapytania; nazwy krawędzi (_e0, e1..._ ) w ścieżce reprezentują typy odpowiednich krawędzi. Możemy użyć gwiazdki _*_ jako nazwę węzła lub krawędzi (z wyjątkiem począwszy od węzła, który należy zachować szczególną) do deklarowania, istnieją bez ograniczeń w odniesieniu do takiego elementu. Na przykład ścieżka kwerendy `/v0/*/v1/e1/*/` pobiera ścieżki z wykresu bez ograniczania typie krawędzi _(v0, wersja 1)_. W międzyczasie zapytanie nie ma albo ograniczenia na komputerze docelowym (ostatni węzeł) ścieżki.
+Nazwy węzłów w ścieżce zapytania (_v0-v1..._ ) służą jako identyfikatory węzłów, które mogą być przywoływane w obiekcie zapytania; nazwy krawędzi (_e0, e1..._ ) w ścieżce reprezentują typy odpowiednich krawędzi. Możemy użyć gwiazdki _*_ jako nazwę węzła lub krawędzi (z wyjątkiem począwszy od węzła, który należy zachować szczególną) do deklarowania, istnieją bez ograniczeń w odniesieniu do takiego elementu. Na przykład ścieżka kwerendy `/v0/*/v1/e1/*/` pobiera ścieżki z wykresu bez ograniczania typie krawędzi _(v0, wersja 1)_ . W międzyczasie zapytanie nie ma albo ograniczenia na komputerze docelowym (ostatni węzeł) ścieżki.
 
 Jeśli ścieżka zawiera tylko jeden węzeł, powiedz _v0_, zapytanie po prostu zwrócenia wszystkich jednostek, które spełniają ograniczenia. Obiekt ograniczenia stosowane do węzeł początkowy jest wywoływana *od obiektu kwerendy*, którego specyfikacji znajduje się w następujący sposób.
 

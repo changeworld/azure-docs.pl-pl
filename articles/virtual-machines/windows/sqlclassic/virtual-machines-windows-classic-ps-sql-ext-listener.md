@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 89623adbddce07cbc3c3ead811f5174d108c9b0e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62101629"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurowanie odbiornika zewnętrznego dla zawsze włączonych grup dostępności na platformie Azure
@@ -96,7 +96,7 @@ Utwórz odbiornik grupy dostępności w dwóch krokach. Najpierw utwórz zasób 
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>Konfigurowanie zasobów klastra w programie PowerShell
 1. Równoważenie obciążenia zewnętrznych, należy uzyskać publiczny wirtualny adres IP usługi w chmurze, która zawiera repliki. Zaloguj się do witryny Azure portal. Przejdź do usługi w chmurze, która zawiera grupy dostępności maszyny Wirtualnej. Otwórz **pulpit nawigacyjny** widoku.
-2. Zanotuj adres wyświetlany w obszarze **adres publiczny wirtualnego adresu IP (VIP)**. Jeśli rozwiązanie obejmuje sieci wirtualne, powtórz ten krok dla każdej usługi w chmurze, zawierający maszyny Wirtualnej, który obsługuje replikę.
+2. Zanotuj adres wyświetlany w obszarze **adres publiczny wirtualnego adresu IP (VIP)** . Jeśli rozwiązanie obejmuje sieci wirtualne, powtórz ten krok dla każdej usługi w chmurze, zawierający maszyny Wirtualnej, który obsługuje replikę.
 3. Na jednym z maszyn wirtualnych Skopiuj poniższy skrypt programu PowerShell do edytora tekstu, a następnie ustaw zmienne do wartości, które możesz zauważyć, wcześniej.
    
         # Define variables

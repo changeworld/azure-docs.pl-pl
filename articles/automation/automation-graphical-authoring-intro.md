@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60740822"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Graficzny, tworzenia w usłudze Azure Automation
@@ -44,7 +44,7 @@ Formanty w dolnej części kanwy umożliwia powiększać i pomniejszać.
 
 W kontrolce biblioteka jest wybierania [działania](#activities) do dodania do elementu runbook. Możesz je dodać do kanwy, w którym połączenia do innych działań. Zawiera cztery sekcje opisane w poniższej tabeli:
 
-| Sekcja | Opis |
+| `Section` | Opis |
 |:--- |:--- |
 | Polecenia cmdlet |Obejmuje wszystkie polecenia cmdlet, których można użyć w elemencie runbook. Polecenia cmdlet są uporządkowane według modułu. Dostępne są wszystkie moduły, które zostały zainstalowane na koncie usługi automation. |
 | Elementy Runbook |Zawiera elementy runbook na Twoim koncie usługi automation. Tych elementów runbook można dodać do kanwy, aby służyć jako podrzędne elementy runbook. Wyświetlane są tylko elementy runbook typu core jako elementu runbook, edytowany; Graficzny tylko opartego na programie PowerShell elementów runbook w elementach runbook są pokazane, gdy dla elementów runbook graficzny przepływ pracy programu PowerShell są wyświetlane tylko przepływu pracy — opartego na programie PowerShell elementów runbook. |
@@ -111,7 +111,7 @@ Po określeniu wartości dla parametru, wybierasz źródła danych, aby określi
 
 | Źródło danych | Opis |
 |:--- |:--- |
-| Wartość stałej |Wpisz wartość dla parametru. To jest dostępna tylko dla następujących typów danych: Int32, Int64, String, Boolean, DateTime, przełącz się. |
+| Stała wartość |Wpisz wartość dla parametru. To jest dostępna tylko dla następujących typów danych: Int32, Int64, String, Boolean, DateTime, przełącz się. |
 | Wyjście działania |Dane wyjściowe z działania, które poprzedza bieżącego działania w przepływie pracy. Wszystkie prawidłowe działania są wymienione. Wybierz tylko działania Użyj jego danych wyjściowych dla wartości parametru. Jeśli obiekt z wieloma właściwościami wyjściem działania, można wpisać nazwę właściwości po wybraniu działania. |
 | Dane wejściowe elementu Runbook |Wybierz parametr wejściowy elementu runbook jako dane wejściowe dla parametru działania. |
 | Zasób zmiennej |Zmienna usługi Automation wybierz jako dane wejściowe. |
@@ -119,11 +119,11 @@ Po określeniu wartości dla parametru, wybierasz źródła danych, aby określi
 | Zasób certyfikatu |Wybierz certyfikat usługi Automation jako dane wejściowe. |
 | Zasób połączenia |Wybierz połączenie automatyzacji jako dane wejściowe. |
 | Wyrażenie programu PowerShell |Określ prosty [wyrażenie programu PowerShell](#powershell-expressions). Wyrażenie jest obliczane przed działania i wynik używany dla wartości parametru. Można używać zmiennych do odwoływania się do danych wyjściowych działania lub parametr wejściowy elementu runbook. |
-| Nieskonfigurowane |Czyści dowolnej wartości, który został wcześniej skonfigurowany. |
+| Nie skonfigurowano |Czyści dowolnej wartości, który został wcześniej skonfigurowany. |
 
 #### <a name="optional-additional-parameters"></a>Opcjonalne parametry dodatkowe
 
-Wszystkie polecenia cmdlet mają opcję, aby zapewnić dodatkowe parametry. Są to typowe parametry programu PowerShell lub inne parametry niestandardowe. Zostanie wyświetlona pole tekstowe, w którym można podać parametry przy użyciu składni programu PowerShell. Na przykład, aby użyć **pełne** typowy parametr należy określić **"-Verbose: $True"**.
+Wszystkie polecenia cmdlet mają opcję, aby zapewnić dodatkowe parametry. Są to typowe parametry programu PowerShell lub inne parametry niestandardowe. Zostanie wyświetlona pole tekstowe, w którym można podać parametry przy użyciu składni programu PowerShell. Na przykład, aby użyć **pełne** typowy parametr należy określić **"-Verbose: $True"** .
 
 ### <a name="retry-activity"></a>Ponów próbę wykonania działania
 
@@ -191,7 +191,7 @@ Utwórz łącze między dwoma działaniami, wybierając działanie źródłowego
 
 Wybierz link, aby skonfigurować jej właściwości w bloku konfiguracji. Obejmuje to typ łącza, który jest opisany w poniższej tabeli:
 
-| Typ linku | Opis |
+| Typ łącza | Opis |
 |:--- |:--- |
 | Potok |Działanie docelowe jest uruchamiane raz dla każdego obiektu danych wyjściowych działania źródłowego. Działanie docelowe nie jest uruchamiany, jeśli działania źródłowego nie powoduje żadnych danych wyjściowych. Dane wyjściowe działania źródłowego jest dostępna jako obiekt. |
 | Sekwencja |Działanie docelowe jest uruchamiane tylko jeden raz. Tablica obiektów otrzymuje z działania źródłowego. Dane wyjściowe działania źródłowego jest dostępna jako tablica obiektów. |
@@ -249,7 +249,7 @@ W poniższym przykładzie jest częścią elementu runbook, który uruchamia zes
 
 Cykl jest, gdy łączy działania docelowego do jego działania źródłowego lub inne działanie, które ostatecznie łącza z powrotem do źródła. Obecnie cykle nie są dozwolone w tworzenia elementów graficznych. Jeśli element runbook zawiera cykl, zapisuje prawidłowo, ale odbiera błąd, po jego uruchomieniu.
 
-![Cykliczny](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Cykl](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="sharing-data-between-activities"></a>Udostępnianie danych między działaniami
 
@@ -272,7 +272,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 Możesz ustawić [punktów kontrolnych](automation-powershell-workflow.md#checkpoints) w elemencie runbook graficzny przepływ pracy programu PowerShell, wybierając *element runbook punktu kontrolnego* dla każdego działania. Powoduje to, że punkt kontrolny można ustawić, po uruchomieniu działania.
 
-![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![Punkt kontrolny](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 Punkty kontrolne są tylko włączone w elementach runbook graficzny przepływ pracy programu PowerShell, nie jest dostępna w graficznych elementach runbook. Jeśli element runbook używa poleceń cmdlet platformy Azure, należy wykonać żadnych działań utworzono punkt kontrolny przy użyciu Connect-AzureRmAccount w przypadku, gdy element runbook jest wstrzymana, a także ponowne uruchomienie z tego punktu kontrolnego w ramach innego procesu roboczego.
 
@@ -326,7 +326,7 @@ Każdy parametr wejściowy jest zdefiniowana za pomocą właściwości w poniżs
 |:--- |:--- |
 | Name (Nazwa) |Unikatowa nazwa parametru. To może zawierać tylko alfanumeryczne znaki numeryczne i nie może zawierać spacji. |
 | Opis |Opcjonalny opis dla parametru wejściowego. |
-| Type |Oczekiwano wartości parametru typu danych. Azure portal udostępnia kontrolkę, która jest odpowiednie dla typu danych dla każdego parametru przy monitowaniu o dane wejściowe. |
+| Typ |Oczekiwano wartości parametru typu danych. Azure portal udostępnia kontrolkę, która jest odpowiednie dla typu danych dla każdego parametru przy monitowaniu o dane wejściowe. |
 | Obowiązkowy |Określa, czy należy podać wartość dla parametru. Nie można uruchomić elementu runbook, jeśli nie zostanie określona wartość dla każdego obowiązkowy parametr, który nie ma wartości domyślnej. |
 | Wartość domyślna |Określa, jaka wartość jest używana dla parametru, jeśli nie zostało ono określone. Może to być wartość Null lub określoną wartość. |
 

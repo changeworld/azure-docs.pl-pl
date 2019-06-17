@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
 ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60595043"
 ---
 # <a name="outbound-connections-classic"></a>Połączenia wychodzące (klasyczne)
@@ -39,9 +39,9 @@ Platforma Azure udostępnia trzy różnych metod na osiągnięcie łączności w
 
 | Scenariusz | Metoda | Protokoły IP | Opis | Rola procesu roboczego w sieci Web | IaaS | 
 | --- | --- | --- | --- | --- | --- |
-| [1. Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia](#ilpip) | Nieużywany port maskaradę SNAT, | TCP, UDP, ICMP, ESP | Platforma Azure używa publicznego adresu IP, przypisany do maszyny wirtualnej. Wystąpienie ma wszystkie dostępne porty efemeryczne. | Nie | Yes |
-| [2. publicznego punktu końcowego, które są ze zrównoważonym obciążeniem](#publiclbendpoint) | SNAT przy użyciu portu (PAT) maskaradę publicznego punktu końcowego | TCP, UDP | Platforma Azure udostępnia publicznego adresu IP adres punktu końcowego publicznego z wieloma punktami końcowymi prywatnych. Platforma Azure używa portów tymczasowych publicznego punktu końcowego uzyskać osobisty token dostępu. | Yes | Yes |
-| [3. Autonomiczna maszyna wirtualna](#defaultsnat) | SNAT przy użyciu portu maskaradę (PAT) | TCP, UDP | Azure automatycznie wyznacza publiczny adres IP dla SNAT, udostępni ten publiczny adres IP całe wdrożenie i wykorzystuje porty efemeryczne punktu końcowego publicznego adresu IP osobisty token dostępu. Jest to rezerwowego scenariusz dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać lepszy wgląd i kontrolę. | Yes | Yes |
+| [1. Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia](#ilpip) | Nieużywany port maskaradę SNAT, | TCP, UDP, ICMP, ESP | Platforma Azure używa publicznego adresu IP, przypisany do maszyny wirtualnej. Wystąpienie ma wszystkie dostępne porty efemeryczne. | Nie | Tak |
+| [2. publicznego punktu końcowego, które są ze zrównoważonym obciążeniem](#publiclbendpoint) | SNAT przy użyciu portu (PAT) maskaradę publicznego punktu końcowego | TCP, UDP | Platforma Azure udostępnia publicznego adresu IP adres punktu końcowego publicznego z wieloma punktami końcowymi prywatnych. Platforma Azure używa portów tymczasowych publicznego punktu końcowego uzyskać osobisty token dostępu. | Tak | Tak |
+| [3. Autonomiczna maszyna wirtualna](#defaultsnat) | SNAT przy użyciu portu maskaradę (PAT) | TCP, UDP | Azure automatycznie wyznacza publiczny adres IP dla SNAT, udostępni ten publiczny adres IP całe wdrożenie i wykorzystuje porty efemeryczne punktu końcowego publicznego adresu IP osobisty token dostępu. Jest to rezerwowego scenariusz dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać lepszy wgląd i kontrolę. | Tak | Yes |
 
 Jest to podzbiór funkcji połączeń wychodzących dostępnych w przypadku wdrożeń usługi Resource Manager na platformie Azure.  
 

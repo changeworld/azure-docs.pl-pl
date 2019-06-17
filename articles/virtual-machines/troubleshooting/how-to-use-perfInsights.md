@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318419"
 ---
 # <a name="how-to-use-perfinsights"></a>Korzystanie z narzędzia PerfInsights
@@ -105,27 +105,27 @@ Rejestruje informacje o maszynie Wirtualnej Windows, dyski lub konfigurację pul
 |Zebrane dane                              |  |  | Scenariusze wydajności |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
 |                               | Analiza wydajności szybki | Benchmarking | Analiza wydajności | Usługi Azure analysis plików | Analiza wydajności Zaawansowane |
-| Informacje z dzienników zdarzeń       | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Informacje o systemie                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Mapa woluminu                        | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Mapy dysku                          | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Uruchamianie zadań                     | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Liczniki niezawodność magazynu      | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Informacje dotyczące magazynu               | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Dane wyjściowe fsutil                     | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Informacje z dzienników zdarzeń       | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Informacje o systemie                | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Mapa woluminu                        | Yes                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Mapy dysku                          | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Uruchomione zadania podrzędne                     | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Liczniki niezawodność magazynu      | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Informacje dotyczące magazynu               | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Dane wyjściowe fsutil                     | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
 | Informacje dotyczące sterownika filtru                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Dane wyjściowe polecenia netstat                    | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Konfiguracja sieci             | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Dane wyjściowe polecenia netstat                    | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Konfiguracja sieci             | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
 | Konfiguracja zapory            | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Konfiguracja programu SQL Server          | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Konfiguracja programu SQL Server          | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
 | Ślady diagnostyki wydajności *  | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Śledzenia licznika wydajności **      |                            |                                    | Yes                      |                      | Yes                  |
+| Śledzenia licznika wydajności **      |                            |                                    | Tak                      |                      | Yes                  |
 | Protokół SMB licznik śledzenia **              |                            |                                    |                          | Yes                  |                      |
-| Śledzenie licznik programu SQL Server **       |                            |                                    | Yes                      |                      | Yes                  |
-| Ślad narzędzia XPerf                       |                            |                                    |                          |                      | Yes                  |
-| StorPort śledzenia                    |                            |                                    |                          |                      | Yes                  |
-| Śledzenie sieci                     |                            |                                    |                          | Yes                  | Yes                  |
-| Śledzenie testów porównawczych narzędzia Diskspd ***       |                            | Yes                                |                          |                      |                      |
+| Śledzenie licznik programu SQL Server **       |                            |                                    | Tak                      |                      | Tak                  |
+| Ślad narzędzia XPerf                       |                            |                                    |                          |                      | Tak                  |
+| StorPort śledzenia                    |                            |                                    |                          |                      | Tak                  |
+| Śledzenie sieci                     |                            |                                    |                          | Yes                  | Tak                  |
+| Śledzenie testów porównawczych narzędzia Diskspd ***       |                            | Tak                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Diagnostyka wydajności śledzenia (*)

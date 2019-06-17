@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: acf2526e79519e610614dc5217efbfe5e327b90f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66248147"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportuj Dziennik aktywności usługi Azure storage lub Azure Event Hubs
@@ -155,7 +155,7 @@ Jeśli istnieje już profil dziennika, należy najpierw usunąć istniejący pro
     | Właściwość | Wymagane | Opis |
     | --- | --- | --- |
     | name |Tak |Nazwa profilu dziennika. |
-    | storage-account-id |Yes |Identyfikator zasobu konta magazynu, do którego powinny być zapisywane dzienniki aktywności. |
+    | storage-account-id |Tak |Identyfikator zasobu konta magazynu, do którego powinny być zapisywane dzienniki aktywności. |
     | locations |Tak |Rozdzielonych spacjami listę regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Można wyświetlić listę wszystkich regionów dla subskrypcji przy użyciu `az account list-locations --query [].name`. |
     | days |Tak |Liczba dni dla zdarzenia, które powinny zostać zachowane, od 1 do 365. Wartość zero będzie przechowywać dzienniki na czas nieokreślony (nieskończoność).  Jeśli zero, następnie włączone parametru powinna być ustawiona na wartość true. |
     |enabled | Tak |Wartość TRUE lub False.  Używane, aby włączyć lub wyłączyć zasady przechowywania.  W przypadku opcji True parametr liczby dni musi być wartością większą niż 0.
@@ -235,7 +235,7 @@ W poniższej tabeli opisano elementy w tym pliku JSON.
 | callerIpAddress |Adres IP użytkownika, który wykonał operację, oświadczenia nazwy UPN lub nazwy SPN oświadczenia na podstawie dostępności. |
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które mają identyfikator korelacji należą do tej samej akcji uber. |
 | identity |Obiekt blob JSON opisujące autoryzację i oświadczenia. |
-| Autoryzacja |Obiekt blob RBAC właściwości zdarzenia. Zazwyczaj zawiera właściwości "action", "roli" i "scope". |
+| authorization |Obiekt blob RBAC właściwości zdarzenia. Zazwyczaj zawiera właściwości "action", "roli" i "scope". |
 | poziom |Poziom zdarzenia. Jeden z następujących wartości: _Krytyczne_, _błąd_, _ostrzeżenie_, _informacyjny_, i _pełne_ |
 | location |Region, w którym wystąpił lokalizacji (lub globalnego). |
 | properties |Zestaw `<Key, Value>` pary (tj. Słownik), opisujący szczegóły zdarzenia. |

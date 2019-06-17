@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 30d52f1ac6a68a3202de59a0b4cab8edfb7ed042
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 28f154c4bd8bb1675eac509bd9d6dab9bb6af026
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701094"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066231"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Debugowanie aplikacji platformy Apache Spark, zdalnie w HDInsight za pośrednictwem sieci VPN przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ
 
@@ -85,7 +85,7 @@ Firma Microsoft zaleca również utworzyć klaster Apache Spark w usłudze Azure
 
     ![Wybierz nowy szablon projektu w IntelliJ IDEA](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. Wybierz pozycję **HDInsight** > **Spark w usłudze HDInsight (Scala)**.
+    a. Wybierz pozycję **HDInsight** > **Spark w usłudze HDInsight (Scala)** .
 
     b. Wybierz opcję **Dalej**.
 1. W ciągu następnych **nowy projekt** okno dialogowe, wykonaj następujące czynności, a następnie wybierz **Zakończ**:
@@ -94,7 +94,7 @@ Firma Microsoft zaleca również utworzyć klaster Apache Spark w usłudze Azure
 
     - Z listy rozwijanej **Zestaw SDK projektu** wybierz pozycję **Java 1.8** dla klastra Spark 2.x lub pozycję **Java 1.7** dla klastra Spark 1.x.
 
-    - W **wersji platformy Spark** listy rozwijanej, Kreator tworzenia projektu w języku Scala integruje się odpowiednia wersja zestawu SDK platformy Spark i Scala zestawu SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie używana jest wersja **Spark 2.0.2 (Scala 2.11.8)**.
+    - W **wersji platformy Spark** listy rozwijanej, Kreator tworzenia projektu w języku Scala integruje się odpowiednia wersja zestawu SDK platformy Spark i Scala zestawu SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie używana jest wersja **Spark 2.0.2 (Scala 2.11.8)** .
   
    ![Wybierz wersję zestawu SDK i platformy Spark projektu](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
   
@@ -102,7 +102,7 @@ Firma Microsoft zaleca również utworzyć klaster Apache Spark w usłudze Azure
 
     a. W menu **File** (Plik) wybierz pozycję **Project Structure** (Struktura projektu).
 
-    b. W **struktury projektu** okno dialogowe, wybierz opcję **artefaktów** Aby wyświetlić artefakt domyślny, który zostanie utworzony. Można również utworzyć własne artefaktu, wybierając znak plus (**+**).
+    b. W **struktury projektu** okno dialogowe, wybierz opcję **artefaktów** Aby wyświetlić artefakt domyślny, który zostanie utworzony. Można również utworzyć własne artefaktu, wybierając znak plus ( **+** ).
 
    ![Tworzenie pliku JAR](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/default-artifact.png)
 
@@ -111,7 +111,7 @@ Firma Microsoft zaleca również utworzyć klaster Apache Spark w usłudze Azure
 
     a. Kliknij prawym przyciskiem myszy nazwę projektu, w drzewie projektu, a następnie wybierz **Otwórz ustawienia modułu**. 
 
-    b. W **struktury projektu** okno dialogowe, wybierz opcję **bibliotek**, wybierz opcję (**+**) symboli, a następnie wybierz **z narzędzia Maven** .
+    b. W **struktury projektu** okno dialogowe, wybierz opcję **bibliotek**, wybierz opcję ( **+** ) symboli, a następnie wybierz **z narzędzia Maven** .
 
     ![Dodaj bibliotekę](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/add-library.png)
 
@@ -224,7 +224,7 @@ Firma Microsoft zaleca również utworzyć klaster Apache Spark w usłudze Azure
 
     ![Utwórz konfigurację zdalnego](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
-1. W **Tworzenie konfiguracji RemoteClusterDebugging** okno dialogowe, podaj nazwę dla konfiguracji, a następnie wybierz **Test rodzaj** jako **nazwa testu**. Wszystkie pozostałe wartości pozostaw ustawienia domyślne. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
+1. W **Tworzenie konfiguracji RemoteClusterDebugging** okno dialogowe, podaj nazwę dla konfiguracji, a następnie wybierz **Test rodzaj** jako **nazwa testu**. Wszystkie pozostałe wartości pozostaw ustawienia domyślne. Wybierz **Zastosuj**, a następnie wybierz pozycję **OK**.
 
     ![Dodaj szczegóły konfiguracji](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
 1. Powinien zostać wyświetlony **zdalnym przebiegiem** konfiguracji na liście rozwijanej na pasku menu.
@@ -241,7 +241,7 @@ Firma Microsoft zaleca również utworzyć klaster Apache Spark w usłudze Azure
 1. Podczas wykonywania programu osiąga punkt przerwania, zostanie wyświetlony **debugera** kartę w dolnym okienku.
 
     ![Wyświetl kartę debugera](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch.png)
-1. Aby dodać wyrażenie kontrolne, wybierz (**+**) ikona.
+1. Aby dodać wyrażenie kontrolne, wybierz ( **+** ) ikona.
 
     ![Wybierz ikonę +](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
@@ -277,7 +277,6 @@ Firma Microsoft zaleca również utworzyć klaster Apache Spark w usłudze Azure
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 * [Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji platformy Apache Spark dla klastra usługi HDInsight](apache-spark-intellij-tool-plugin.md)
 * [Debugowanie aplikacji platformy Apache Spark, zdalnie za pośrednictwem protokołu SSH przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Używanie narzędzia HDInsight w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark](../hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [Korzystanie z notesów Apache Zeppelin przy użyciu klastra Apache Spark w HDInsight](apache-spark-zeppelin-notebook.md)
 * [Jądra dostępne dla notesu Jupyter w klastrze Apache Spark dla HDInsight](apache-spark-jupyter-notebook-kernels.md)

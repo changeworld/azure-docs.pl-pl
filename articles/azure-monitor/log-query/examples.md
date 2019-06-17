@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
 ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759915"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Przykłady zapytań dzienników w usłudze Azure Monitor
@@ -25,7 +25,7 @@ W tym artykule przedstawiono różne przykłady [zapytania](log-query-overview.m
 
 Zobacz [Skorowidz języka Kusto](https://docs.microsoft.com/azure/kusto/query/) szczegółowe informacje dotyczące innych słów kluczowych, używane w tych przykładów. Zapoznaj się z artykułem [lekcji na temat tworzenia zapytań](get-started-queries.md) Jeśli jesteś nowym użytkownikiem usługi Azure Monitor.
 
-## <a name="events"></a>Zdarzenia
+## <a name="events"></a>Events
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Wyszukać zdarzenia na poziomie aplikacji określana jako "Kryptograficznych"
 W tym przykładzie tabela **Zdarzenia** jest przeszukiwana pod kątem rekordów, które w parametrze **EventLog** mają wartość _Application_ oraz zawierają ciąg _cryptographic_ w parametrze **RenderedDescription**. Wyświetlane są rekordy z ostatnich 24 godzin.

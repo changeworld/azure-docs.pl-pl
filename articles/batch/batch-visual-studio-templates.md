@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60550076"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Szybko Rozpocznij korzystanie z rozwiązań usługi Batch przy użyciu szablonów projektu programu Visual Studio
@@ -89,7 +89,7 @@ Aby dodać Menedżera zadań do rozwiązania, który został utworzony wcześnie
 
 1. Otwórz istniejące rozwiązanie w programie Visual Studio.
 2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy rozwiązanie, kliknij przycisk **Dodaj** > **nowy projekt**.
-3. W obszarze **Visual C#**, kliknij przycisk **chmury**, a następnie kliknij przycisk **Menedżera zadania usługi Batch Azure z rozdzielaczem zadania**.
+3. W obszarze **Visual C#** , kliknij przycisk **chmury**, a następnie kliknij przycisk **Menedżera zadania usługi Batch Azure z rozdzielaczem zadania**.
 4. Wpisz nazwę, opis aplikacji, która identyfikuje ten projekt jako Menedżer zadań (np. "LitwareJobManager").
 5. Aby utworzyć projekt, kliknij przycisk **OK**.
 6. Na koniec Skompiluj projekt, aby wymusić programu Visual Studio można załadować wszystkich pakietów NuGet odwołania i sprawdź, czy projekt jest prawidłowa, przed rozpoczęciem modyfikowania go.
@@ -258,7 +258,7 @@ Aby dodać procesor zadania do rozwiązania, który został utworzony wcześniej
 
 1. Otwórz istniejące rozwiązanie w programie Visual Studio.
 2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy rozwiązanie, kliknij przycisk **Dodaj**, a następnie kliknij przycisk **nowy projekt**.
-3. W obszarze **Visual C#**, kliknij przycisk **chmury**, a następnie kliknij przycisk **procesor zadania usługi Batch Azure**.
+3. W obszarze **Visual C#** , kliknij przycisk **chmury**, a następnie kliknij przycisk **procesor zadania usługi Batch Azure**.
 4. Wpisz nazwę, opis aplikacji, która identyfikuje ten projekt jako procesor zadania (np. "LitwareTaskProcessor").
 5. Aby utworzyć projekt, kliknij przycisk **OK**.
 6. Na koniec Skompiluj projekt, aby wymusić programu Visual Studio można załadować wszystkich pakietów NuGet odwołania i sprawdź, czy projekt jest prawidłowa, przed rozpoczęciem modyfikowania go.

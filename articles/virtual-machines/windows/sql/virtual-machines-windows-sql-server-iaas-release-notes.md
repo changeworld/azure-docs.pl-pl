@@ -13,16 +13,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: f929369030b6f0a634eb2c84e33eee24af8cb6a2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ee3aeb9f44d1b98d6307c6a72d1e4786ea1ec664
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787512"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076903"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Program SQL Server na maszynie wirtualnej platformy Azure — informacje o wersji
 
 Platforma Azure umożliwia wdrażanie maszyny wirtualnej za pomocą obrazu programu SQL Server, wbudowane. Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersjach [programu SQL Server na maszynach wirtualnych Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Artykuł zawiera także listę znaczące zmiany zawartości, które nie są bezpośrednio do wersji mimo opublikowane w tym samym przedziale czasu. Ulepszenia do innych usług platformy Azure, można zobaczyć [usługi aktualizacji](https://azure.microsoft.com/updates)
+
+## <a name="may-2019"></a>Maja 2019 r
+
+### <a name="service-improvements"></a>Udoskonalenia usługi
+
+| Udoskonalenia usługi | Szczegóły |
+| --- | --- |
+| **Nowe zarządzania maszyny Wirtualnej SQL w witrynie Azure portal** | Teraz jest nowy sposób zarządzania maszyny Wirtualnej programu SQL Server w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [zarządzania maszyny Wirtualnej SQL Server w witrynie Azure portal](virtual-machines-windows-sql-manage-portal.md).  | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
+
+| Dokumentacja | Szczegóły |
+| --- | --- |
+| **Nowe maszyny Wirtualnej SQL portalu zarządzania.** | Około dwunastu artykułów zostały zaktualizowane do nowego środowiska portalu zarządzania maszyny Wirtualnej SQL. | 
+| &nbsp; | &nbsp; |
+
 
 ## <a name="april-2019"></a>2019 kwietnia
 
@@ -33,9 +50,6 @@ Platforma Azure umożliwia wdrażanie maszyny wirtualnej za pomocą obrazu progr
 | **Rozszerzona obsługa programu SQL Server 2008/2008/R2** | [Rozszerzenie obsługi](virtual-machines-windows-sql-server-2008-eos-extend-support.md) dla programu SQL Server 2008 i SQL Server 2008 R2 przy użyciu funkcji migracji *jako — jest* na Maszynie wirtualnej platformy Azure. | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
-
-Brak
 
 ## <a name="march-2019"></a>Marca 2019 r
 

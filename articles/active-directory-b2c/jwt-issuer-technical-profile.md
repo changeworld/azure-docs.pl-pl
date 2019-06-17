@@ -11,10 +11,10 @@ ms.date: 10/30/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 573463d91fc7a4119bd1bc30182588ff9dfdecb7
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510706"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego wystawcy tokenów JWT, w zasadach niestandardowych usługi Azure Active Directory B2C
@@ -62,7 +62,7 @@ CryptographicKeys element zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| issuer_secret | Tak | X509 certyfikatu (zestawu kluczy RSA) używany do podpisywania tokenu JWT. Jest to `B2C_1A_TokenSigningKeyContainer` klucza skonfigurowane w [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md). | 
+| issuer_secret | Yes | X509 certyfikatu (zestawu kluczy RSA) używany do podpisywania tokenu JWT. Jest to `B2C_1A_TokenSigningKeyContainer` klucza skonfigurowane w [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md). | 
 | issuer_refresh_token_key | Tak | X509 certyfikat (zestawu kluczy RSA) ma być używany do szyfrowania tokenu odświeżania. Możesz skonfigurować `B2C_1A_TokenEncryptionKeyContainer` w [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md) |
 
 

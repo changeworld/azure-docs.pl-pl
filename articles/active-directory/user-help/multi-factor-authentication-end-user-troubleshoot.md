@@ -14,10 +14,10 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b74049833b055caa112c346b74798893f2c0febf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60476676"
 ---
 # <a name="get-help-with-two-step-verification"></a>Uzyskaj pomoc dotyczącą weryfikacji dwuetapowej
@@ -58,7 +58,7 @@ Istnieje kilka powodów dlaczego konieczne może być metodą weryfikacji altern
 
 Jeśli sprawdzone następujące kroki, ale nadal są uruchomione w problemy, skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 
 * [Zarządzanie ustawieniami weryfikacji dwuetapowej](multi-factor-authentication-end-user-manage-settings.md)
 

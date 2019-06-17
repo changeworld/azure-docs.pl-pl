@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60755138"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Usługa Azure specyfikacji technicznej krawędź pola danych
@@ -28,7 +28,7 @@ Urządzenie brzegowe pole danych ma dwa 100 – 240 V dostaw jednostki zasilania
 | Maksymalna moc zasilania    | 750 W                     |
 | Częstotliwość               | 50/60 Hz                   |
 | Wybór zakresu napięcia | Auto, zakresu: 100-240 V AC |
-| Hot plug           | Yes                        |
+| Hot plug           | Tak                        |
 
 <!--## Power consumption statistics
 
@@ -86,7 +86,7 @@ Ta sekcja zawiera specyfikacje dotyczące środowiska obudowy, takich jak temper
 
 |     Obudowy         |     Zakres temperatury otoczenia     |     Wilgotność względna otoczenia     |     Maksymalny punkt Rosa     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Działa        |    10 C - 35 C (50° F - 86° F)         |    10-80% bez kondensacji.         |    29°C (84°F)            |
+|    Operacyjne        |    10 C - 35 C (50° F - 86° F)         |    10-80% bez kondensacji.         |    29°C (84°F)            |
 |    Nie działa    |    C-40 do 65 C (-40 ° F - 149 ° F)     |    5 – 95% bez kondensacji.          |    33°C (91°F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Powietrza, wysokość, próbuj wstrząsnąć, wibracje, orientacji, bezpieczeństwa i EMC

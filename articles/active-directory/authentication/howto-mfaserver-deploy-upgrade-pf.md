@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277001faf988e5d201a65c9e4112263f226b3db5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bcb1bf4996e381db933eac91135093a101e504bb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358348"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055976"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Uaktualnianie agenta PhoneFactor do serwera Azure Multi-Factor Authentication
 
 Aby uaktualnić agenta PhoneFactor (w wersji 5.x lub starszej) do serwera Azure Multi-Factor Authentication, najpierw odinstaluj agenta PhoneFactor i powiązane z nim składniki. Następnie można zainstalować serwer Multi-Factor Authentication i powiązane z nim składniki.
+
+> [!IMPORTANT]
+> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
 
 ## <a name="uninstall-the-phonefactor-agent"></a>Odinstalowywanie agenta PhoneFactor
 

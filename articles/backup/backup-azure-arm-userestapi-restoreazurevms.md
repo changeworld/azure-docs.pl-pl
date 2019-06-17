@@ -11,10 +11,10 @@ ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646660"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Przywracanie maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST
@@ -35,7 +35,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *UZYSKAĆ* identyfikator URI ma wszystkie wymagane parametry. Nie ma potrzeby treść żądania dodatkowych
 
-### <a name="responses"></a>Odpowiedzi
+### <a name="responses"></a>Responses
 
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
@@ -173,7 +173,7 @@ Zwraca ona dwie odpowiedzi: 202 (zaakceptowano), gdy inna operacja zostanie utwo
 
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
-|202 zaakceptowano     |         |     Zaakceptowany    |
+|202 zaakceptowano     |         |     Zaakceptowane    |
 
 #### <a name="example-responses"></a>Przykładowe odpowiedzi
 

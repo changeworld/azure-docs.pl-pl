@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567235"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Wypychanie danych do indeksu usługi Azure Search przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-azure-search-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-azure-search.md)
 
@@ -58,9 +58,9 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usłu
 
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
-| type | Właściwość type musi być równa: **AzureSearch**. | Yes |
+| type | Właściwość type musi być równa: **AzureSearch**. | Tak |
 | url | Adres URL dla usługi Azure Search. | Yes |
-| key | Klucz administratora dla usługi Azure Search. | Yes |
+| key | Klucz administratora dla usługi Azure Search. | Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
@@ -68,8 +68,8 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
-| type | Właściwość type musi być równa **AzureSearchIndex**.| Yes |
-| indexName | Nazwa indeksu usługi Azure Search. Fabryki danych nie powoduje utworzenia indeksu. Indeks musi istnieć w usłudze Azure Search. | Yes |
+| type | Właściwość type musi być równa **AzureSearchIndex**.| Tak |
+| indexName | Nazwa indeksu usługi Azure Search. Fabryki danych nie powoduje utworzenia indeksu. Indeks musi istnieć w usłudze Azure Search. | Tak |
 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
@@ -79,7 +79,7 @@ Działanie kopiowania, gdy obiekt sink jest typu **AzureSearchIndexSink**, w sek
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Określa, czy należy scalić lub Zastąp, jeśli istnieje już dokument w indeksie. Zobacz [właściwość WriteBehavior](#writebehavior-property).| Scal (ustawienie domyślne)<br/>Upload| Nie |
+| WriteBehavior | Określa, czy należy scalić lub Zastąp, jeśli istnieje już dokument w indeksie. Zobacz [właściwość WriteBehavior](#writebehavior-property).| Scal (ustawienie domyślne)<br/>Przekazanie| Nie |
 | WriteBatchSize | Przekazywanie danych do indeksu usługi Azure Search, gdy writeBatchSize osiągnie rozmiar buforu. Zobacz [właściwość WriteBatchSize](#writebatchsize-property) Aby uzyskać szczegółowe informacje. | od 1 do 1000. Wartość domyślna to 1000. | Nie |
 
 ### <a name="writebehavior-property"></a>Właściwość WriteBehavior

@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626744"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw SDK środowiska Node.js usługi Azure Cosmos DB dla interfejsu API SQL: Informacje o wersji i zasoby
@@ -30,7 +30,7 @@ ms.locfileid: "60626744"
 > * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
 
-|Resource  |Link  |
+|Resource  |Łącze  |
 |---------|---------|
 |Pobierz zestaw SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Dokumentacja interfejsu API  |  [Dokumentacja referencyjna zestawu SDK języka JavaScript](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
@@ -212,7 +212,7 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK jest o
 
 <br/>
 
-| Wersja | Data wydania | Data wygaśnięcia |
+| Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2 sierpnia 2018 r. |--- |
 | [1.14.4](#1.14.4) |03 maja 2018 r. |--- |

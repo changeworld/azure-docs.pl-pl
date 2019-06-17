@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 1a70d1b2ea504d0ccfba925810a2d19d0c7583cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759609"
 ---
 # <a name="language-support-for-computer-vision"></a>Obsługa języka dla przetwarzania obrazów
@@ -49,7 +49,7 @@ Optyczne rozpoznawanie znaków automatycznie wykrywa język wprowadzania materia
 |Portugalski | `pt` |✔ |
 |Rumuński | `ro` |✔ |
 |Rosyjski | `ru` |✔ |
-|Serbski (cyrylica) | `sr-Cyrl` |✔ |
+|Serbski (Cyrylica) | `sr-Cyrl` |✔ |
 |Serbski (łaciński) | `sr-Latn` |✔ |
 |Słowacki | `sk` |✔ |
 |Hiszpański | `es` |✔ |
@@ -60,7 +60,7 @@ Optyczne rozpoznawanie znaków automatycznie wykrywa język wprowadzania materia
 
 Niektóre akcje [analizowanie — obraz](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API może zwrócić wyniki w różnych językach, określony za pomocą `language` parametr zapytania. Inne akcje zwracają wyniki w języku angielskim niezależnie od tego, jaki język jest określony, a inne zgłoszenie wyjątku dla języków nieobsługiwanych. Akcje są określane za pomocą `visualFeatures` i `details` parametry zapytania; zobacz [Przegląd](home.md) listę wszystkich działań, które można zrobić za pomocą analizy obrazów.
 
-|Język | Kod języka | Categories | Tagi | Opis | Dla dorosłych | Marki | Kolor | Twarze | Typ obrazu | Obiekty | Celebryci | Charakterystycznych elementów krajobrazu |
+|Język | Kod języka | Categories | `Tags` | Opis | Dla dorosłych | Marki | Kolor | Twarze | Typ obrazu | Obiekty | Celebryci | Charakterystycznych elementów krajobrazu |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chiński | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Polski | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, bonova, jovanpop
 manager: craigg
 ms.date: 03/13/2019
 ms.openlocfilehash: 9ca9506ad9ca826349b2815e504e9ba8bf976faa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60702071"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Szybki start: Konfigurowanie połączenia typu punkt lokacja do wystąpienia usługi Azure SQL Database Managed ze środowiska lokalnego
@@ -109,5 +109,5 @@ Po nawiązaniu połączenia, mogą wyświetlać systemu i użytkownika bazy dany
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać szybki start przedstawiający sposób nawiązywania połączeń z maszyną wirtualną platformy Azure, zobacz [Konfigurowanie połączenia typu punkt lokacja](sql-database-managed-instance-configure-p2s.md).
-- Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz artykuł [Łączenie aplikacji z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md).
+- Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz artykuł [Connect your applications to Managed Instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).
 - Aby przywrócić istniejącą bazę danych programu SQL Server ze środowiska lokalnego do wystąpienia zarządzanego, można użyć [usługi Azure Database Migration Service (DMS) do migracji](../dms/tutorial-sql-server-to-managed-instance.md) lub [polecenia języka T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md) przywracania z Plik kopii zapasowej bazy danych.

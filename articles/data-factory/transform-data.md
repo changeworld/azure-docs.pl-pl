@@ -12,10 +12,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 2c674f77ef0f779c9764771e2e0ae7a4aea47548
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60622111"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Data Factory
@@ -60,10 +60,10 @@ Wraz z upływem czasu modele predykcyjne w usłudze Machine Learning do oceny ek
 
 Zobacz [działań usługi Machine Learning użyj](transform-data-using-machine-learning.md) szczegółowe informacje na temat tych działań usługi Machine Learning. 
 
-## <a name="stored-procedure-activity"></a>Działanie procedury przechowywanej
+## <a name="stored-procedure-activity"></a>Działania procedur składowanych
 Działanie procedury składowanej programu SQL Server w potoku usługi fabryka danych umożliwia wywoływanie procedury składowanej w jednym z następujących magazynów danych: Azure SQL Database, Azure SQL Data Warehouse, bazy danych SQL Server w przedsiębiorstwie lub Maszynie wirtualnej platformy Azure. Zobacz [działania procedura składowana](transform-data-using-stored-procedure.md) artykuł, aby uzyskać szczegółowe informacje.  
 
-## <a name="data-lake-analytics-u-sql-activity"></a>Działanie U-SQL usługi Data Lake Analytics
+## <a name="data-lake-analytics-u-sql-activity"></a>Działania usługi Data Lake Analytics U-SQL
 Działania usługi Data Lake Analytics U-SQL uruchamia skrypt U-SQL w klastrze usługi Azure Data Lake Analytics. Zobacz [działanie analiz danych U-SQL](transform-data-using-data-lake-analytics.md) artykuł, aby uzyskać szczegółowe informacje. 
 
 ## <a name="databricks-notebook-activity"></a>Działanie notesu usługi Databricks

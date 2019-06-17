@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12d603ddbba9e36d562c8dcd6e3844af28c91255
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fc638c515af59f6872f2dae262a6910318abdd0e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110772"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -44,13 +44,13 @@ Aby zaplanować wdrożenie usługi Azure AD join, należy się zapoznać z:
 
 |   |   |
 |---|---|
-|![Zaznacz][1]|Przegląd scenariuszy|
-|![Zaznacz][1]|Przejrzyj swoją infrastrukturę tożsamości|
-|![Zaznacz][1]|Ocena zarządzania urządzeniami|
-|![Zaznacz][1]|Omówienie zagadnień dotyczących aplikacji i zasobów|
-|![Zaznacz][1]|Opis opcji inicjowania obsługi administracyjnej|
-|![Zaznacz][1]|Konfigurowanie roaming stanu dla przedsiębiorstw|
-|![Zaznacz][1]|Konfigurowanie dostępu warunkowego|
+|![Sprawdź][1]|Przegląd scenariuszy|
+|![Sprawdź][1]|Przejrzyj swoją infrastrukturę tożsamości|
+|![Sprawdź][1]|Ocena zarządzania urządzeniami|
+|![Sprawdź][1]|Omówienie zagadnień dotyczących aplikacji i zasobów|
+|![Sprawdź][1]|Opis opcji inicjowania obsługi administracyjnej|
+|![Sprawdź][1]|Konfigurowanie roaming stanu dla przedsiębiorstw|
+|![Sprawdź][1]|Konfigurowanie dostępu warunkowego|
 
 
 
@@ -241,7 +241,7 @@ Poniżej znajduje się porównanie tych trzech metod.
 ||Instalator samoobsługi|Rozwiązania Windows Autopilot|Rejestrowanie zbiorcze|
 |---|---|---|---|
 |Wymagaj interakcji użytkownika, aby skonfigurować|Yes|Yes|Nie|
-|Wymaga IT|Nie|Yes|Yes|
+|Wymaga IT|Nie|Yes|Tak|
 |Zastosowanie przepływów|Ustawienia & OOBE|Tylko w trybie OOBE|Tylko w trybie OOBE|
 |Prawa administratora lokalnego do podstawowego użytkownika|Tak, domyślnie|Można konfigurować|Nie|
 |Wymagana jest obsługa urządzeń OEM|Nie|Yes|Nie|
@@ -276,11 +276,11 @@ Ustaw tę opcję na **wszystkich** lub **wybrane** na podstawie zakresu wdrożen
 
 ![Użytkownicy mogą dołączać urządzania do usługi Azure AD](./media/azureadjoin-plan/01.png)
 
-### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Dodatkowi administratorzy lokalni na urządzeniach dołączonych do usługi Azure AD
+### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Urządzenia przyłączone do dodatkowych administratorów lokalnych w usłudze Azure AD
 
 Wybierz **wybrane** i wybiera użytkowników, które chcesz dodać do grupy Administratorzy lokalni na urządzeniach przyłączonych do wszystkich Azure AD. 
 
-![Dodatkowi administratorzy lokalni na urządzeniach dołączonych do usługi Azure AD](./media/azureadjoin-plan/02.png)
+![Urządzenia przyłączone do dodatkowych administratorów lokalnych w usłudze Azure AD](./media/azureadjoin-plan/02.png)
 
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń
@@ -325,9 +325,9 @@ Oparte na zakresie Twoich obowiązków, jedną z następujących sytuacji:
 
 Istnieją trzy adresy URL, które są powiązane z konfiguracji zarządzania urządzeniami Przenośnymi:
 
-- Adres URL warunków użytkowania oprogramowania MDM
+- Zarządzania urządzeniami Przenośnymi adres URL warunków użytkowania
 
-- Adres URL odnajdywania zarządzania urządzeniami przenośnymi 
+- Adres URL odnajdywania zarządzania urządzeniami Przenośnymi 
 
 - Adres URL zgodności oprogramowania MDM
 

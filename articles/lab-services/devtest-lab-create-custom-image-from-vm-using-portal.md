@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 07f3b60b9218f74bb3a778daa27f31687c4538b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60868503"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Tworzenie niestandardowego obrazu maszyny wirtualnej
@@ -39,7 +39,7 @@ Tworzenie obrazu niestandardowego z aprowizowanej maszyny Wirtualnej i później
  
 1. Na **Moje maszyny wirtualne** okienku wybierz maszynę Wirtualną, z którego chcesz utworzyć obraz niestandardowy.
 
-1. W okienku zarządzania maszyny Wirtualnej, wybierz **Tworzenie niestandardowego obrazu (VHD)**.
+1. W okienku zarządzania maszyny Wirtualnej, wybierz **Tworzenie niestandardowego obrazu (VHD)** .
 
     ![Tworzenie niestandardowego obrazu elementu menu.](./media/devtest-lab-create-template/create-custom-image.png)
 

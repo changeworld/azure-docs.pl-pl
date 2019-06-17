@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60749261"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Usługa Service Bus z platformy .NET za pomocą protokołu AMQP 1.0
@@ -64,14 +64,14 @@ Aby ułatwić współdziałania z klientami — .NET, należy użyć tylko te ty
 | Typ obiektu na treść platformy .NET | Typ zamapowanego protokołu AMQP | Typ części treści protokołu AMQP |
 | --- | --- | --- |
 | bool |wartość logiczna |Wartość protokołu AMQP |
-| bajt |ubyte |Wartość protokołu AMQP |
+| byte |ubyte |Wartość protokołu AMQP |
 | ushort |ushort |Wartość protokołu AMQP |
 | uint |uint |Wartość protokołu AMQP |
 | ulong |ulong |Wartość protokołu AMQP |
-| sbyte — |bajt |Wartość protokołu AMQP |
+| sbyte — |byte |Wartość protokołu AMQP |
 | Krótka |Krótka |Wartość protokołu AMQP |
 | int |int |Wartość protokołu AMQP |
-| długi |długi |Wartość protokołu AMQP |
+| long |long |Wartość protokołu AMQP |
 | float |float |Wartość protokołu AMQP |
 | double |double |Wartość protokołu AMQP |
 | decimal |decimal128 |Wartość protokołu AMQP |
@@ -86,7 +86,7 @@ Aby ułatwić współdziałania z klientami — .NET, należy użyć tylko te ty
 | Identyfikator URI |Opisano parametry (patrz poniższa tabela) |Wartość protokołu AMQP |
 | DateTimeOffset |Opisano długo (patrz poniższa tabela) |Wartość protokołu AMQP |
 | TimeSpan |Opisano długo (patrz poniżej) |Wartość protokołu AMQP |
-| Strumień |binary |Dane AMQP (może być wiele). Sekcje danych zawierają odczytanych z obiektu Stream bajtów raw. |
+| Stream |binary |Dane AMQP (może być wiele). Sekcje danych zawierają odczytanych z obiektu Stream bajtów raw. |
 | Inny obiekt |binary |Dane AMQP (może być wiele). Zawiera wartość binarną Zserializowany obiekt, który korzysta z elementu DataContractSerializer, lub element serializujący dostarczoną przez aplikację. |
 
 | Typ architektury .NET | Zamapowane AMQP opisem typu | Uwagi |
@@ -107,10 +107,10 @@ Istnieją pewne niewielkie różnice w zachowaniu API .NET usługi Service Bus, 
 
 [Interfejsów API platformy .NET](/dotnet/api/) ujawnić kilka ustawień w celu sterowania zachowaniem protokołu AMQP:
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: Określa początkowe środki zastosowane do łącza. Wartość domyślna to 0.
-* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: Formanty maksymalny rozmiar ramki protokołu AMQP oferowane w trakcie negocjowania połączenia Otwórz czasu. Wartość domyślna to 65 536 bajtów.
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Jeśli transfery batchable, ta wartość określa maksymalne opóźnienie wysyłania przepisy. Dziedziczone przez nadawcy/odbiorcy, domyślnie. Poszczególne nadawcy/odbiorcy mogą zastąpić domyślne, czyli 20 MS.
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: Określa, czy nawiązywane są połączenia AMQP, przez połączenie SSL. Wartość domyślna to **true**.
+* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)** : Określa początkowe środki zastosowane do łącza. Wartość domyślna to 0.
+* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)** : Formanty maksymalny rozmiar ramki protokołu AMQP oferowane w trakcie negocjowania połączenia Otwórz czasu. Wartość domyślna to 65 536 bajtów.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)** : Jeśli transfery batchable, ta wartość określa maksymalne opóźnienie wysyłania przepisy. Dziedziczone przez nadawcy/odbiorcy, domyślnie. Poszczególne nadawcy/odbiorcy mogą zastąpić domyślne, czyli 20 MS.
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** : Określa, czy nawiązywane są połączenia AMQP, przez połączenie SSL. Wartość domyślna to **true**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

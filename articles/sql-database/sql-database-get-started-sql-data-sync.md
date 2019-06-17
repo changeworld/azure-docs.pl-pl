@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/14/2019
 ms.openlocfilehash: 82b85ffd685df52e702db15e5a5b57a53a3b4f64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60342244"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Samouczek: Konfigurowanie synchronizacji danych programu SQL między usługi Azure SQL Database i programu SQL Server w środowisku lokalnym
@@ -172,16 +172,16 @@ Minimalny czas między synchronizacjami wynosi pięć minut.
 
 **SQL Data Sync w pełni tworzy tabele?**
 
-Jeśli tabele schematu synchronizacji w docelowej bazie danych SQL Data Sync utworzone przy użyciu wybranych kolumn. Jednak to nie spowodować schematu pełnej wierności z następujących powodów:
+Jeśli w docelowej bazie danych brakuje tabel schematu synchronizacji, usługa SQL Data Sync tworzy je z wybranymi kolumnami. Jednak to nie spowodować schematu pełnej wierności z następujących powodów:
 
-- Tylko te kolumny, którą wybierzesz są tworzone w tabeli docelowej. Nie wybrano kolumn są ignorowane.
-- Tylko wybrane kolumny indeksy są tworzone w tabeli docelowej. Nie wybrano kolumn, aby uzyskać te indeksy są ignorowane.
+- W tabeli docelowej są tworzone tylko wybrane kolumny. Niewybrane kolumny są ignorowane.
+- W tabeli docelowej są tworzone tylko wybrane indeksy kolumn. Indeksy niewybranych kolumn są ignorowane.
 - Indeksy w kolumnach typu XML nie są tworzone.
 - Ograniczenia CHECK nie są tworzone.
 - Wyzwalacze w tabelach źródłowych nie są tworzone.
 - Nie tworzy się widoków i procedur składowanych.
 
-Ze względu na te ograniczenia zaleca się następujące elementy:
+Ze względu na te ograniczenia zalecamy następujące rozwiązania:
 
 - W środowiskach produkcyjnych utworzyć schemat pełnej wierności samodzielnie.
 - Eksperymentowanie w usłudze, użyj funkcji automatycznej aprowizacji.

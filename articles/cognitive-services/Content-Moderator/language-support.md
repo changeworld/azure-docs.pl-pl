@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: cf1dc352068747ab2f77beec8802407d15699d17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607166"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Obsługa języków w programie Content Moderator interfejsu API
@@ -32,8 +32,8 @@ ms.locfileid: "60607166"
 | Bengalski | Amharski | Chiński (tradycyjny)     | Holenderski | |
 | Buginese | Arabski | Czeski                     | Polski | |
 | Buhid | Armeński | Duński                     | Fiński | |
-| Carian | Assamski | Holenderski                     | Francuski | |
-| Chiński (uproszczony) | Azerski | Polski  | Grecki (nowoczesny) | |
+| Carian | Assamese | Holenderski                     | Francuski | |
+| Chiński (uproszczony) | Azerbejdżański | Polski  | Grecki (nowoczesny) | |
 | Chiński (tradycyjny) | Bengalski — Bangladesz | Fiński  | Włoski | |
 | Church (Słowiański) | Bengalski — Indie | Francuski     | Koreański | |
 | Koptyjski | Baskijski | Niemiecki                      | Norweski | |
@@ -41,11 +41,11 @@ ms.locfileid: "60607166"
 | Dhivehi | Bośniacki — cyrylica | Węgierski      | Portugalski | |
 | Holenderski | Bośniacki - łaciński | Włoski             | Rumuński | |
 | Polski | (Creole) | Bretoński [bez GeoPol] | Japoński  | Rosyjski |
-| Perski | Bułgarski | Koreański                        | Słowacki | |
+| Farsi | Bułgarski | Koreański                        | Słowacki | |
 | Francuski | Kataloński | Norweski                        | Hiszpański ||
 | Niemiecki | Środkowokurdyjski | Polski        | Turecki | |
 | Grecki | Czirokeski | Portugalski | | |
-| haitański | Chiński (uproszczony) | Rumuński | | |
+| Haiti | Chiński (uproszczony) | Rumuński | | |
 | Hebrajski | Chiński (tradycyjny) — SRA Hongkong | Rosyjski | | |
 | Hindi | Chiński (tradycyjny) — Tajwan | Serbian Cyrillic | | |
 | Hmong | Chorwacki | Serbski, łaciński | | |
@@ -63,7 +63,7 @@ ms.locfileid: "60607166"
 | Mycenaean (grecki) | Niemiecki | | | |
 | Nko | Grecki | | | |
 | Norweski (Bokmal) | Gudżarati | | | |
-| Norweski (Nynorsk) |  Hausański | | | |
+| Norweski (Nynorsk) |  Hausa | | | |
 | Stary (perski) | Hebrajski | | | |
 | Paszto | Hindi | | | |
 | Polski | Węgierski | | | |
@@ -72,22 +72,22 @@ ms.locfileid: "60607166"
 | Rejang | Indonezyjski | | | |
 | Rosyjski | Inuktitut | | | |
 | Santali | Irlandzki | | | |
-| Sasak | Isixhosa | | | |
-| Saurashtra | Isizulu | | | |
-| Serbski (cyrylica) | Włoski | | | |
+| Sasak | isiXhosa | | | |
+| Saurashtra | isiZulu | | | |
+| Serbski (Cyrylica) | Włoski | | | |
 | Serbski (łaciński) | Japoński | | | |
-| Sinaloa | Kannada | | | |
+| Sinhala | Kannada | | | |
 | Słoweński | Kazachski | | | |
 | Hiszpański | Khmerski | | | |
-| Szwedzki | Kicze | | | |
-| Sylheti | Kinjarwanda | | | |
+| Szwedzki | K'iche | | | |
+| Sylheti | Kinyarwanda | | | |
 | Syryjski | Suahili | | | |
 | Tagbanwa | Konkani | | | |
 | Akończenie (Nua) | Koreański | | | |
-| Tamashek | Kirgijski | | | |
-| Turecki | Laotański | | | |
+| Tamashek | Kyrgyz | | | |
+| Turecki | Lao | | | |
 | Ugaritic | Łotewski | | | |
-| Uzbecki (cyrylica) | Litewski | | | |
+| Uzbek (Cyrillic) | Litewski | | | |
 | Uzbecki (łaciński) | Luksemburski | | | |
 | Vai | Macedoński | | | |
 | Yi | Malajski | | | |
@@ -95,8 +95,8 @@ ms.locfileid: "60607166"
 | | Maltański | | | |
 | | Maoryjski | | | |
 | | Marathi | | | |
-| | Mongolski | | | |
-| | Nepalski | | | |
+| | Mongolian | | | |
+| | Nepali | | | |
 | | Norwegian (Bokmål) | | | |
 | | Norweski (Nynorsk) | | | |
 | | Orija | | | |
@@ -112,14 +112,14 @@ ms.locfileid: "60607166"
 | | Rumuński | | | |
 | | Rosyjski | | | |
 | | Szkocki celtycki | | | |
-| | Serbski (cyrylica) | | | |
+| | Serbski (Cyrylica) | | | |
 | | Serbski (cyrylica, Bośnia i Hercegowina) | | | |
 | | Serbski (łaciński) | | | |
 | | Sesotho | | | |
-| | Sesotho północny | | | |
+| | Sesotho sa Leboa | | | |
 | | Setswana | | | |
 | | Sindhi | | | |
-| | Sinaloa | | | |
+| | Sinhala | | | |
 | | Słowacki | | | |
 | | Słoweński | | | |
 | | Hiszpański | | | |
@@ -135,9 +135,9 @@ ms.locfileid: "60607166"
 | | Ukraiński | | | |
 | | Urdu | | | |
 | | Ujgurski | | | |
-| | Uzbecki | | | |
+| | Uzbek | | | |
 | | Walencki | | | |
 | | Wietnamski | | | |
 | | Walijski | | | |
 | | Wolof | | | |
-| | Joruba | | | |
+| | Yoruba | | | |

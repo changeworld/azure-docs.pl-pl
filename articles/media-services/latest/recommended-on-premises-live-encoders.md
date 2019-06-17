@@ -6,15 +6,15 @@ keywords: encoding;encoders;media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 01/17/2019
+ms.date: 06/12/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 50b22cefccf620d7b79202a5c432e2e6a4e3e3be
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 1bede8ff7c33988a4e11a84d3a51ca098a608f33
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055279"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery transmisji strumieniowej na żywo
 
@@ -24,7 +24,7 @@ W usłudze Azure Media Services [wydarzenie na żywo](https://docs.microsoft.com
 
   > [!NOTE]
   > Metoda przekazywania to najbardziej ekonomiczny sposób transmisja strumieniowa na żywo.
-
+ 
 * Lokalny koder na żywo wysyła strumień o pojedynczej szybkości bitów do wydarzenie na żywo, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Wydarzenie na żywo wykonuje następnie kodowanie na żywo przychodzącego strumienia pojedynczej do wielokrotnej szybkości transmisji bitów (adaptacyjnej) strumienia wideo.
 
 Aby uzyskać szczegółowe informacje na temat kodowania na żywo za pomocą usługi Media Services, zobacz [na żywo, przesyłanie strumieniowe przy użyciu usługi Media Services v3](live-streaming-overview.md).
@@ -127,7 +127,7 @@ Te same czynności co w [weryfikacji wydarzenie na żywo przekazywanego](#pass-t
 
 ### <a name="email-your-recorded-settings"></a>Swoje zarejestrowane ustawienia poczty e-mail
 
-Na koniec swoje zarejestrowane ustawienia poczty e-mail i parametry archiwum usługi Azure Media Services na żywo amsstreaming@microsoft.com jako powiadomienie, które przeszły wszystkie testy weryfikacyjne opisane samooceny. Także informacji kontaktowych w dowolnym przegapisz odpowiedzi członka. Możesz skontaktować się z zespołu usługi Azure Media Services za pomocą jakieś pytania dotyczące tego procesu.
+Na koniec swoje zarejestrowane ustawienia poczty e-mail i parametry archiwum usługi Azure Media Services na żywo amslived@microsoft.com jako powiadomienie, które przeszły wszystkie testy weryfikacyjne opisane samooceny. Także informacji kontaktowych w dowolnym przegapisz odpowiedzi członka. Możesz skontaktować się z zespołu usługi Azure Media Services za pomocą jakieś pytania dotyczące tego procesu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60554697"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować pamięć podręczna systemu Azure dla usługi Redis
@@ -82,7 +82,7 @@ Kliknij przycisk **dziennika aktywności** Aby wyświetlić akcje wykonywane dla
 
 **Kontrola dostępu (IAM)** sekcji zapewnia obsługę kontroli dostępu opartej na rolach (RBAC) w witrynie Azure portal. Taka konfiguracja pozwala organizacjom wymagań ich dostępu do zarządzania po prostu i dokładnie. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach w witrynie Azure portal](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="tags"></a>Tagi
+### <a name="tags"></a>`Tags`
 
 **Tagi** sekcja ułatwia organizowanie zasobów. Aby uzyskać więcej informacji, zobacz [porządkowanie zasobów na platformie Azure za pomocą tagów](../azure-resource-manager/resource-group-using-tags.md).
 
@@ -112,7 +112,7 @@ Kliknij przycisk **diagnozowanie i rozwiązywanie problemów** dostarczanych z n
 
 
 
-### <a name="access-keys"></a>Klawisze dostępu
+### <a name="access-keys"></a>Klucze dostępu
 Kliknij przycisk **klucze dostępu** można wyświetlić lub ponownie wygenerować klucze dostępu pamięci podręcznej. Te klucze są używane przez klientów nawiązywania połączenia z pamięci podręcznej.
 
 ![Pamięć podręczna systemu Azure, aby uzyskać klucze dostępu pamięci podręcznej Redis](./media/cache-configure/redis-cache-manage-keys.png)
@@ -124,7 +124,7 @@ Następujące ustawienia są konfigurowane na **Zaawansowane ustawienia** bloku.
 * [Zasady pamięci](#memory-policies)
 * [Powiadomienia przestrzeni kluczy (ustawienia zaawansowane)](#keyspace-notifications-advanced-settings)
 
-#### <a name="access-ports"></a>Porty dostępowe
+#### <a name="access-ports"></a>Porty dostępu
 Domyślnie dostęp inny niż za pomocą protokołu SSL jest zablokowany dla nowych pamięci podręcznych. Aby włączyć port bez protokołu SSL, kliknij przycisk **nie** dla **zezwolić na dostęp tylko za pomocą protokołu SSL** na **Zaawansowane ustawienia** bloku, a następnie kliknij przycisk **Zapisz**.
 
 > [!NOTE]
@@ -263,7 +263,7 @@ Aby określić okna obsługi, sprawdź odpowiednią dni i określ godzina rozpoc
 > 
 > 
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Sieć wirtualna
 **Sieci wirtualnej** sekcja umożliwia konfigurowanie ustawień sieci wirtualnej dla pamięci podręcznej. Informacje dotyczące tworzenia cache w warstwie premium z sieciami Wirtualnymi obsługuje i aktualizowanie jej ustawienia, zobacz [jak skonfigurować obsługę sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -347,7 +347,7 @@ Aby ponownie uruchomić co najmniej jeden węzeł pamięci podręcznej, wybierz 
 * [Reguły alertów](#alert-rules)
 * [Diagnostyka](#diagnostics)
 
-### <a name="redis-metrics"></a>Metryki pamięci podręcznej Redis
+### <a name="redis-metrics"></a>Metryki pamięci podręcznej redis
 Kliknij przycisk **metryki pamięci podręcznej Redis** do [wyświetlaj metryki](cache-how-to-monitor.md#view-cache-metrics) dla pamięci podręcznej.
 
 ### <a name="alert-rules"></a>Reguły alertów
@@ -404,7 +404,7 @@ Nowej usługi Azure Cache dla wystąpień usługi Redis są konfigurowane przy u
 | `maxclients` |Zależy od warstwy cenowej<sup>2</sup> |Ta wartość jest maksymalna liczba podłączonych klientów jest dozwolona w tym samym czasie. Po osiągnięciu limitu pamięci podręcznej Redis zamyka wszystkie nowe połączenia zwróci komunikat "Osiągnięto maksymalną liczbę klientów". |
 | `maxmemory-policy` |`volatile-lru` |Zasad dotyczących maksymalnego rozmiaru pamięci jest jak Redis wybiera co do usunięcia, kiedy to ustawienie `maxmemory` osiągnięciu (rozmiar pamięci podręcznej, oferty, wybrane podczas tworzenia pamięci podręcznej). Z pamięci podręcznej Azure redis Cache jest ustawieniem domyślnym `volatile-lru`, co spowoduje usunięcie kluczy z wygaśnięcia, można ustawić przy użyciu algorytmu LRU. To ustawienie można skonfigurować w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [zasad pamięci](#memory-policies). |
 | `maxmemory-samples` |3 |Zapisanie w pamięci, LRU i minimalny czas wygaśnięcia algorytmy są przybliżonego algorytmy zamiast dokładne algorytmów. Domyślnie usługa Redis trzy klucze kontrole i wybór ten, który był ostatnio używany podczas mniej. |
-| `lua-time-limit` |5000 |Maksymalny czas wykonywania skryptu Lua (w milisekundach). Jeśli osiągnięty zostanie maksymalny czas wykonywania, Redis, rejestruje nadal trwa wykonywanie po maksymalny dozwolony czas skryptu i uruchamia na udzielenie odpowiedzi na zapytania z powodu błędu. |
+| `lua-time-limit` |5,000 |Maksymalny czas wykonywania skryptu Lua (w milisekundach). Jeśli osiągnięty zostanie maksymalny czas wykonywania, Redis, rejestruje nadal trwa wykonywanie po maksymalny dozwolony czas skryptu i uruchamia na udzielenie odpowiedzi na zapytania z powodu błędu. |
 | `lua-event-limit` |500 |Maksymalny rozmiar kolejki zdarzeń skryptu. |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity buforu danych wyjściowych klienta można wymusić odłączenie klientów, którzy nie są odczytywanie danych z serwera wystarczająco szybko przyczyny (typową przyczyną jest, czy klient Pub/Sub nie mogą korzystać z tak szybko, jak Wydawca może tworzyć je wiadomości). Aby uzyskać więcej informacji, zobacz [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 

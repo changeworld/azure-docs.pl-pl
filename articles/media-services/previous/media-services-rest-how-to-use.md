@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
 ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687059"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Omówienie interfejsu API REST usługi Media Services operacji 
@@ -57,7 +57,7 @@ Obowiązują następujące zastrzeżenia, gdy przy użyciu interfejsu REST.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standardowa nagłówków żądań HTTP obsługiwane przez usługę Media Services
 Za każde wywołanie, wprowadzone do usługi Media Services ustawiono wymagane nagłówki, które należy uwzględnić w żądaniu, a także zestaw opcjonalne nagłówki warto uwzględnić. W poniższej tabeli przedstawiono wymagane nagłówki:
 
-| Nagłówek | Type | Wartość |
+| nagłówek | Typ | Wartość |
 | --- | --- | --- |
 | Autoryzacja |Elementu nośnego |Elementu nośnego jest mechanizm autoryzacji akceptowane tylko. Wartość musi również zawierać token dostępu udostępniony przez usługę Azure Active Directory. |
 | x-ms-version |Decimal |2.17 (lub najnowsza wersja)|
@@ -71,7 +71,7 @@ Za każde wywołanie, wprowadzone do usługi Media Services ustawiono wymagane n
 
 Oto zbiór opcjonalne nagłówki:
 
-| Nagłówek | Type | Wartość |
+| nagłówek | Typ | Wartość |
 | --- | --- | --- |
 | Date |RFC 1123 daty |Sygnatura czasowa żądania |
 | Zaakceptuj |Typ zawartości |Żądany typ zawartości odpowiedzi podobny do następującego:<p> -application/json;odata=verbose<p> -application/atom + xml<p> Odpowiedzi mogą mieć inny typ zawartości, takie jak pobieranie obiektów blob, gdy odpowiedź oznaczająca Powodzenie zawiera strumienia obiektu blob jako ładunek. |
@@ -85,7 +85,7 @@ Oto zbiór opcjonalne nagłówki:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardowych nagłówków odpowiedzi HTTP obsługiwane przez usługę Media Services
 Poniżej znajduje się zestaw nagłówków, które mogą być zwrócone do użytkownika w zależności od tego, czy zasób, do którego zostały żądania i akcję, którą zamierzasz wykonać.
 
-| Nagłówek | Type | Wartość |
+| nagłówek | Typ | Wartość |
 | --- | --- | --- |
 | Identyfikator żądania |String |Unikatowy identyfikator dla bieżącej operacji usługi wygenerowany. |
 | client-request-id |String |Identyfikator określony przez obiekt wywołujący w oryginalne żądanie, jeśli jest obecny. |
@@ -103,7 +103,7 @@ Poniżej przedstawiono pełną listę zleceń HTTP, które mogą być używane p
 | PUT |Zastępuje obiekt lub tworzy nazwany obiekt (jeśli ma zastosowanie). |
 | DELETE |Usuwa obiekt. |
 | SCALANIE |Aktualizuje istniejący obiekt ze zmianami właściwości o nazwie. |
-| HEAD |Zwraca metadane obiektu dla odpowiedzi GET. |
+| GŁÓWNY |Zwraca metadane obiektu dla odpowiedzi GET. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Odnajdywanie i Przeglądaj modelu jednostki usługi Media Services
 Aby jednostek usługi Media Services mogą szybciej odnajdywać, służy operacja $metadata. Umożliwia pobranie wszystkich typów jednostek prawidłowe, właściwości jednostki, skojarzeń, funkcji, działania i tak dalej. Dodanie operacji $metadata-to-end punktu końcowego interfejsu API REST usługi Media Services, dostęp do tej usługi odnajdywania.

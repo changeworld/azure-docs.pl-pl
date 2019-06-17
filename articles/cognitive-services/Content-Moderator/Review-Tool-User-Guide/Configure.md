@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
 ms.openlocfilehash: f88ccbabc925b651abbc06f571a9d4220ed8aeb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61285555"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurowanie narzędzia do przeglądu
@@ -64,7 +64,7 @@ Jeśli jesteś członkiem więcej niż jeden ustalenie, można przełączać si�
 
 ![Przełączanie między zespoły podrzędne](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Tagi
+## <a name="tags"></a>`Tags`
 
 **Tagi** kartę umożliwia definiowanie tagów niestandardowych Moderowanie oprócz tagów Moderowanie dwóch domyślnych&mdash;**isadult** (**a**) i **isracy**  (**r**). Możesz utworzyć niestandardowy tag, staje się dostępna w przeglądach obok znaczniki domyślne. Można zmienić, jakie znaczniki mają wyświetlane w recenzji, przełączając ich ustawień widoczności.
 
@@ -105,7 +105,7 @@ Aby dodać łącznik (i udostępnić go do użytku w zawartości [przepływów p
 
 ![Moderator łączników ustawienia zawartości](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Przepływy
+## <a name="workflows"></a>Przepływy pracy
 
 **Przepływy pracy** kartę umożliwia zarządzanie swoje [przepływy pracy](../review-api.md#workflows). Przepływy pracy są oparte na chmurze filtrów zawartości i pracują z łączników, aby posortować zawartość na różne sposoby i podjąć odpowiednie działania. W tym miejscu można zdefiniować, edytować i testowania swoich przepływów pracy. Zobacz [definiowanie i używanie przepływów pracy](Workflows.md) wskazówki dotyczące sposobu wykonania tego zadania.
 

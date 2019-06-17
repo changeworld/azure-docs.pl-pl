@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217237"
 ---
 # <a name="azure-media-services-error-codes"></a>Kody błędów usługi Azure Media Services
@@ -88,7 +88,7 @@ Nie można uwierzytelnić żądania, (zanim może być autoryzowane) z jednego z
 * Próbowano utworzenie lokalizatora do elementu zawartości, która ma już lokalizatorów 5 w użyciu. (Usługa azure Storage wymusza limit pięciu zasady dostępu współdzielonego na jeden kontener magazynu).
 * Łączenie konta magazynu trwałego IngestManifestAsset nie jest taka sama jak konto magazynu używane przez nadrzędne IngestManifest.  
 
-## <a name="500-internal-server-error"></a>500 — wewnętrzny błąd serwera
+## <a name="500-internal-server-error"></a>500 Wewnętrzny błąd serwera
 Podczas przetwarzania żądania usługi Media Services napotka błąd uniemożliwiający przetwarzania za kontynuację. Może to być spowodowane jedną z następujących przyczyn:
 
 * Tworzenie zasobu lub zadanie nie powiedzie się, ponieważ informacje o limitach przydziału usługi konta usługi Media Services jest tymczasowo niedostępna.

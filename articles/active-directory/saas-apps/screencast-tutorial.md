@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 836ef454e5bdb14fcc3f519f9c6d9f6dfb4b5703
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 73a29e106424fe87596bf196c16e9ea190da2d72
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686311"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą zrzut ekranu-O-obie
 
@@ -30,7 +30,7 @@ Integrowanie zrzut ekranu-O-obie z usługą Azure AD zapewnia następujące korz
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do zrzut ekranu-O-obie.
 * Aby umożliwić użytkownikom można automatycznie zalogował się zrzut ekranu-O-obie (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -55,7 +55,7 @@ Aby skonfigurować integrację zrzut ekranu-O-obie w usłudze Azure AD, należy 
 
 **Aby dodać zrzut ekranu-O-obie z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -63,27 +63,27 @@ Aby skonfigurować integrację zrzut ekranu-O-obie w usłudze Azure AD, należy 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **zrzut ekranu-O-obie**, wybierz opcję **zrzut ekranu-O-obie** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Zrzut ekranu-O-obie na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą zrzut ekranu-O-obie w oparciu o nazwie użytkownika testowego **Britta Simon**.
 Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w zrzut ekranu-O-obie musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą zrzut ekranu-O-obie, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie zrzut ekranu-O-obie logowania jednokrotnego](#configure-screencast-o-matic-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego zrzut ekranu-O-obie](#create-screencast-o-matic-test-user)**  — aby odpowiednikiem Britta Simon w zrzut ekranu-O-obie połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -93,7 +93,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą zrzut ekran
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **zrzut ekranu-O-obie** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -114,7 +114,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą zrzut ekran
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
 6. Na **Konfigurowanie zrzut ekranu-O-obie** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 

@@ -15,10 +15,10 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60935775"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira i Confluence podręczniku administratora usługi Azure Active Directory
@@ -112,11 +112,11 @@ Na poniższej ilustracji przedstawiono ekran konfiguracji w usłudze Jira i Conf
 
 * **Adres URL metadanych**: Adres URL można uzyskać metadanych federacji z usługi Azure AD.
 
-* **Identyfikatory**: Adres URL usługi Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*\<domeny: port >*/.
+* **Identyfikatory**: Adres URL usługi Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<domeny: port >* /.
 
-* **Adres URL odpowiedzi**: Adres URL odpowiedzi, inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*\<domeny: port >*/plugins/servlet/saml/auth.
+* **Adres URL odpowiedzi**: Adres URL odpowiedzi, inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<domeny: port >* /plugins/servlet/saml/auth.
 
-* **Adres URL logowania**: Adres URL logowania w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*\<domeny: port >*/plugins/servlet/saml/auth.
+* **Adres URL logowania**: Adres URL logowania w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<domeny: port >* /plugins/servlet/saml/auth.
 
 * **Identyfikator dostawcy tożsamości jednostki**: Identyfikator jednostki, która używa dostawcy tożsamości. To pole jest wypełniana po usunięciu adres URL metadanych.
 
@@ -144,7 +144,7 @@ Na poniższej ilustracji przedstawiono ekran konfiguracji w usłudze Jira i Conf
 
 * **Certyfikat wkrótce wygaśnie w usłudze Azure AD**: Dodatki zajmie się automatyczne Przerzucanie certyfikatu. Gdy certyfikat wkrótce wygaśnie, nowego certyfikatu powinna być oznaczona jako aktywny i nieużywanych certyfikaty powinny zostać usunięte. Gdy użytkownik próbuje zalogować się do programu Jira, w tym scenariuszu wtyczki odczyty i zapisywany nowy certyfikat.
 
-* **Aby wyłączyć WebSudo (Wyłącz sesji bezpiecznego administratora)**:
+* **Aby wyłączyć WebSudo (Wyłącz sesji bezpiecznego administratora)** :
 
   * Dla programu Jira administrator bezpiecznej sesji (oznacza to potwierdzenie hasła przed uzyskaniem dostępu do funkcji administracyjnych) są domyślnie włączone. Jeśli chcesz usunąć tę możliwość w wystąpieniu programu Jira, należy wprowadzić następujący wiersz w pliku jira config.properties: `ira.websudo.is.disabled = true`
 

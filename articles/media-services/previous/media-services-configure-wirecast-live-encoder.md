@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61232142"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder Wirecast 
@@ -94,7 +94,7 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
 3. Kliknij przycisk **OK**.
 4. Na stronie Ustawienia zestawu **docelowy** pole było **usługi Azure Media Services**.
 
-    Profil kodowanie jest wstępnie wybrane do **H.264 Azure 720 p 16:9 (1280 x 720)**. Aby dostosować te ustawienia, wybierz ikonę koła zębatego, aby po prawej stronie listy rozwijanej, a następnie wybierz **nowe ustawienie wstępne**.
+    Profil kodowanie jest wstępnie wybrane do **H.264 Azure 720 p 16:9 (1280 x 720)** . Aby dostosować te ustawienia, wybierz ikonę koła zębatego, aby po prawej stronie listy rozwijanej, a następnie wybierz **nowe ustawienie wstępne**.
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Skonfiguruj ustawienia wstępne kodera.
@@ -106,7 +106,7 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
    * Koder: MainConcept H.264
    * Liczba klatek na sekundę: 30
    * Średnia szybkość transmisji bitów: 5000 kbitów na sekundę (mogą być dostosowywane według ograniczenia sieci)
-   * Profil: Główny
+   * Profil: Main
    * Klatka kluczowa co: 60 klatek
 
      **Audio**

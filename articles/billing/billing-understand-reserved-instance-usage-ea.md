@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
 ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66126847"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobieranie kosztów rezerwacji umowy Enterprise Agreement i danych użycia
@@ -94,7 +94,7 @@ W witrynie Azure portal przejdź do [Zarządzanie kosztami i rozliczenia](https:
 2. Kliknij przycisk **użycie i opłaty za**.
 3. Kliknij przycisk **Pobierz**.  
 ![Przykład przedstawiający miejsce pobrać plik CSV użycia danych w witrynie Azure portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. W **Pobierz dane użycia i opłat** w obszarze **szczegółów użycia w wersji 2** , wybierz opcję **wszystkie opłaty (użycia i zakupów)** , a następnie kliknij przycisk Pobierz. Powtórz tę procedurę dla **amortyzowanego opłaty (użycia i zakupów)**.
+4. W **Pobierz dane użycia i opłat** w obszarze **szczegółów użycia w wersji 2** , wybierz opcję **wszystkie opłaty (użycia i zakupów)** , a następnie kliknij przycisk Pobierz. Powtórz tę procedurę dla **amortyzowanego opłaty (użycia i zakupów)** .
 
 Pliki CSV, które możesz pobrać zawierają faktyczne koszty i zamortyzowany koszt.
 

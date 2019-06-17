@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 6/03/2019
 ms.author: monhaber
 ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66480541"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcji obsługiwanych przez usługę Azure Security Center
@@ -110,9 +110,9 @@ Aby dowiedzieć się, jak podczas zalecenia są generowane dla każdego z tych �
 
 | Ochrona punktów końcowych| Platformy | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
 |------|------|-----|-----|
-| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Tak |
-| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (zobacz uwaga poniżej) | Za pomocą rozszerzenia | Tak |
-| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Yes |
+| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Yes |
+| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (zobacz uwaga poniżej) | Za pomocą rozszerzenia | Yes |
+| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Tak |
 | Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Tak |
 | McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Tak |
 | Kaspersky| Rodzina systemów Windows Server  | Nie | Nie  |

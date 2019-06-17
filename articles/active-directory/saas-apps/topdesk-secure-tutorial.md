@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0295162acdf358bd798e86bd7d3479f5e78d72
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: eded8eb446d36a321acf46231eee3e764ba41504
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407904"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją TOPdesk - Secure
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji TOPdesk - Secure z usługą Azure AD, m
 
 **Aby dodać aplikację TOPdesk - Secure z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -184,7 +184,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją TOPdesk -
 
     d. Aby przekazać plik logo uzyskany od zespołu pomocy technicznej TOPdesk, w obszarze **Logo icon** (Ikona logo) kliknij przycisk **Browse** (Przeglądaj).
 
-    e. W polu tekstowym **User name attribute** (Atrybut nazwy użytkownika) wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. W polu tekstowym **User name attribute** (Atrybut nazwy użytkownika) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     f. W polu tekstowym **Display name** (Nazwa wyświetlana) wpisz nazwę konfiguracji.
 
@@ -277,7 +277,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka TOPdesk - Secure w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji TOPdesk - Secure, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

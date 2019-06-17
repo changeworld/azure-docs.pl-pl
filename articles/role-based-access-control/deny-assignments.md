@@ -11,27 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 432703b5acb4cd56dac9b25edf99165ca26b0aa0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197140"
+ms.locfileid: "67118273"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Zrozumienie Odmów przydziały dla zasobów platformy Azure
 
-Podobnie jak w przypadku przypisania roli *Odmów przypisania* dołącza zbiór akcje odmowy zawsze do użytkownika, grupy lub jednostki usługi w określonym zakresie na potrzeby odmowa dostępu. Odmowa przypisania Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. Niektórych zasobów, które obejmują teraz dostawców na platformie Azure odmówić przypisania.
-
-Pod pewnymi względami Odmów przypisania są inne niż przypisań ról. Odmowa przypisania można wykluczyć podmiotów zabezpieczeń i zapobiegać dziedziczeniu na zakresy podrzędne. Odmów dotyczą również przypisania [klasyczny administrator subskrypcji](rbac-and-directory-admin-roles.md) przypisania.
+Podobnie jak w przypadku przypisania roli *Odmów przypisania* dołącza zbiór akcje odmowy zawsze do użytkownika, grupy lub jednostki usługi w określonym zakresie na potrzeby odmowa dostępu. Odmowa przypisania Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp.
 
 W tym artykule opisano sposób Odmów przypisania są zdefiniowane.
 
-> [!NOTE]
-> W tej chwili jedynym sposobem, które można dodać własne odmówić przypisania polega na użyciu plany platformy Azure. Aby uzyskać więcej informacji, zobacz [chronić nowe zasoby za pomocą blokad zasobów platformy Azure, plany](../governance/blueprints/tutorials/protect-new-resources.md).
+## <a name="how-deny-assignments-are-created"></a>Jak uniemożliwić przypisania są tworzone
+
+Odmowa przypisania są tworzone i zarządzane przez platformę Azure, aby chronić zasoby. Na przykład Azure schematy i na platformie Azure aplikacje zarządzane przez użycie Odmów przydziały, aby chronić zasoby zarządzane przez system. Aby uzyskać więcej informacji, zobacz [chronić nowe zasoby za pomocą blokad zasobów platformy Azure, plany](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="compare-role-assignments-and-deny-assignments"></a>Porównaj przypisań ról i odmawiać go przypisania
+
+Odmowa przypisania wykonaj podobny wzorzec Odmów przypisania, ale również mają pewne różnice.
+
+| Możliwości | Przypisanie roli | Zezwalaj na przypisanie |
+| --- | --- | --- |
+| Udzielanie dostępu | :heavy_check_mark: |  |
+| Odmowa dostępu |  | :heavy_check_mark: |
+| Można bezpośrednio utworzyć | :heavy_check_mark: |  |
+| Stosowanie w zakresie | :heavy_check_mark: | :heavy_check_mark: |
+| Wykluczanie jednostek |  | :heavy_check_mark: |
+| Zapobiegaj dziedziczenia zakresy podrzędne |  | :heavy_check_mark: |
+| Dotyczą [klasyczny administrator subskrypcji](rbac-and-directory-admin-roles.md) przypisania |  | :heavy_check_mark: |
 
 ## <a name="deny-assignment-properties"></a>Odmów przypisania właściwości
 
@@ -48,20 +61,30 @@ W tym artykule opisano sposób Odmów przypisania są zdefiniowane.
 > | `Permissions.NotDataActions` | Nie | Ciąg] | Tablica ciągów, które określają operacje na danych, aby wykluczyć z przypisania Odmów. |
 > | `Scope` | Nie | String | Ciąg, który określa zakres, który dotyczy przypisania Odmów. |
 > | `DoNotApplyToChildScopes` | Nie | Boolean | Określa, czy przypisanie odmowy mają zastosowanie do zakresy podrzędne. Wartość domyślna to false. |
-> | `Principals[i].Id` | Yes | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których zostanie zastosowana przypisania Odmów. Ustaw na pustym identyfikatorem GUID `00000000-0000-0000-0000-000000000000` do reprezentowania wszystkich podmiotów zabezpieczeń. |
+> | `Principals[i].Id` | Tak | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których zostanie zastosowana przypisania Odmów. Ustaw na pustym identyfikatorem GUID `00000000-0000-0000-0000-000000000000` do reprezentowania wszystkich podmiotów zabezpieczeń. |
 > | `Principals[i].Type` | Nie | Ciąg] | Tablica typów obiektów, reprezentowane przez jednostki [i] .id. Ustaw `SystemDefined` do reprezentowania wszystkich podmiotów zabezpieczeń. |
 > | `ExcludePrincipals[i].Id` | Nie | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których przypisanie Odmów nie ma zastosowania. |
 > | `ExcludePrincipals[i].Type` | Nie | Ciąg] | Tablica typów obiektów, reprezentowane przez .id ExcludePrincipals [i]. |
 > | `IsSystemProtected` | Nie | Boolean | Określa, czy odmówić przypisania został utworzony przez platformę Azure i nie można edytować ani usunąć. Obecnie wszystkie Odmów przypisania są chronione systemu. |
 
-## <a name="system-defined-principal"></a>Jednostki zdefiniowaną przez system
+## <a name="the-all-principals-principal"></a>Podmiot zabezpieczeń wszystkich podmiotów zabezpieczeń
 
-Do obsługi odmowy przypisania, **System-Defined jednostki** zostały wprowadzone. Ten podmiot zabezpieczeń reprezentuje wszystkich użytkowników, grup, nazw głównych usług i zarządzanych tożsamości w katalogu usługi Azure AD. Jeśli identyfikator podmiotu zabezpieczeń jest zerowy identyfikator GUID `00000000-0000-0000-0000-000000000000` i typ podmiotu zabezpieczeń jest `SystemDefined`, podmiot zabezpieczeń reprezentuje wszystkie podmioty zabezpieczeń. `SystemDefined` może być łączone z `ExcludePrincipals` odrzucanie wszystkich podmiotów zabezpieczeń, z wyjątkiem niektórych użytkowników. `SystemDefined` ma następujące ograniczenia:
+Do obsługi odmowy przypisania, podmiot zabezpieczeń zdefiniowaną przez system o nazwie *wszystkich podmiotów zabezpieczeń* zostały wprowadzone. Ten podmiot zabezpieczeń reprezentuje wszystkich użytkowników, grup, nazw głównych usług i zarządzanych tożsamości w katalogu usługi Azure AD. Jeśli identyfikator podmiotu zabezpieczeń jest zerowy identyfikator GUID `00000000-0000-0000-0000-000000000000` i typ podmiotu zabezpieczeń jest `SystemDefined`, podmiot zabezpieczeń reprezentuje wszystkie podmioty zabezpieczeń. W danych wyjściowych programu Azure PowerShell wszystkie podmioty zabezpieczeń wygląda następująco:
+
+```azurepowershell
+Principals              : {
+                          DisplayName:  All Principals
+                          ObjectType:   SystemDefined
+                          ObjectId:     00000000-0000-0000-0000-000000000000
+                          }
+```
+
+Wszystkie podmioty zabezpieczeń może być łączone z `ExcludePrincipals` odrzucanie wszystkich podmiotów zabezpieczeń, z wyjątkiem niektórych użytkowników. Wszystkie podmioty zabezpieczeń ma następujące ograniczenia:
 
 - Może być używana tylko w `Principals` i nie może być używany w `ExcludePrincipals`.
 - `Principals[i].Type` musi być równa `SystemDefined`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wyświetl Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal](deny-assignments-portal.md)
+* [Lista Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal](deny-assignments-portal.md)
 * [Zrozumienie definicje ról na potrzeby zasobów platformy Azure](role-definitions.md)

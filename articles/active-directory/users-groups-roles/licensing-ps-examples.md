@@ -14,16 +14,16 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fc6e31afbb7ced4699afef38b67b637914198e4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f95c0596d7a2b55867cdb7ed9355006500e89242
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065492"
 ---
-# <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure AD
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Przykłady programu PowerShell i Graph z licencjonowaniem opartym na grupach w usłudze Azure AD
 
-Pełna funkcjonalność dla licencjonowania opartego na grupach jest dostępna za pośrednictwem [witryny Azure portal](https://portal.azure.com), i obecnie Obsługa programu PowerShell i program Microsoft Graph jest ograniczona. Istnieją jednak pewne użytecznych zadań, które mogą być wykonywane przy użyciu istniejącego [poleceń cmdlet programu MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) i Microsoft Graph. W tym dokumencie przedstawiono przykłady, co jest możliwe.
+Pełna funkcjonalność dla licencjonowania opartego na grupach jest dostępna za pośrednictwem [witryny Azure portal](https://portal.azure.com), i obecnie Obsługa programu PowerShell i program Microsoft Graph jest ograniczona do operacji tylko do odczytu. Istnieją jednak pewne użytecznych zadań, które mogą być wykonywane przy użyciu istniejącego [poleceń cmdlet programu MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) i Microsoft Graph. W tym dokumencie przedstawiono przykłady, co jest możliwe.
 
 > [!NOTE]
 > Przed uruchomieniem poleceń cmdlet, upewnij się, nawiązaniu połączenia z Twojej organizacji, uruchamiając `Connect-MsolService`  polecenia cmdlet.

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61342041"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Azure Monitor
@@ -31,7 +31,7 @@ Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
 W poniższej tabeli opisano dostępnych kafelków Projektant widoków:  
 
-| Sąsiadująco | Opis |
+| Kafelek | Opis |
 |:--- |:--- |
 | [Liczba](#number-tile) |Liczba rekordów w wyniku zapytania. |
 | [Dwóch liczb](#two-numbers-tile) |Liczba rekordów z dwóch różnych zapytań. |
@@ -60,7 +60,7 @@ W kolejnych sekcjach opisano typy kafelków i ich właściwości szczegółowo.
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Jeśli weryfikacja przepływu danych powinno być włączone dla kafelka, wybierz ten link. To podejście oferuje komunikat alternatywnego, jeśli dane są niedostępne. Zazwyczaj można użyć metody, aby podać komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu ustalenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zostanie wyświetlony komunikat zamiast wartość główne zapytanie. |
-| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
+| Message |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
 
 
 ## <a name="two-numbers-tile"></a>Kafelek dwóch liczb
@@ -81,7 +81,7 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Jeśli weryfikacja przepływu danych powinno być włączone dla kafelka, wybierz ten link. To podejście oferuje komunikat alternatywnego, jeśli dane są niedostępne. Zazwyczaj można użyć metody, aby podać komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu ustalenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zostanie wyświetlony komunikat zamiast wartość główne zapytanie. |
-| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
+| Message |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
 
 
 ## <a name="donut-tile"></a>Wykres pierścieniowy kafelka
@@ -105,7 +105,7 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Jeśli weryfikacja przepływu danych powinno być włączone dla kafelka, wybierz ten link. To podejście oferuje komunikat alternatywnego, jeśli dane są niedostępne. Zazwyczaj można użyć metody, aby podać komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu ustalenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zostanie wyświetlony komunikat zamiast wartość główne zapytanie. |
-| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
+| Message |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
 
 
 ## <a name="line-chart-tile"></a>Wiersz kafelka wykresu
@@ -126,7 +126,7 @@ Ten Kafelek jest wykres liniowy, który wyświetla wielu serii, w wyniku zapytan
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Jeśli weryfikacja przepływu danych powinno być włączone dla kafelka, wybierz ten link. To podejście oferuje komunikat alternatywnego, jeśli dane są niedostępne. Zazwyczaj można użyć metody, aby podać komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu ustalenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zostanie wyświetlony komunikat zamiast wartość główne zapytanie. |
-| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
+| Message |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
 
 
 ## <a name="line-chart-and-callout-tile"></a>Wiersz kafelka wykresu i objaśnienie
@@ -151,7 +151,7 @@ Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dzienn
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Jeśli weryfikacja przepływu danych powinno być włączone dla kafelka, wybierz ten link. To podejście oferuje komunikat alternatywnego, jeśli dane są niedostępne. Zazwyczaj można użyć metody, aby podać komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu ustalenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zostanie wyświetlony komunikat zamiast wartość główne zapytanie. |
-| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
+| Message |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
 
 
 ## <a name="two-timelines-tile"></a>Kafelek dwie osie czasu
@@ -176,7 +176,7 @@ Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dzienn
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Jeśli weryfikacja przepływu danych powinno być włączone dla kafelka, wybierz ten link. To podejście oferuje komunikat alternatywnego, jeśli dane są niedostępne. Zazwyczaj można użyć metody, aby podać komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu ustalenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zostanie wyświetlony komunikat zamiast wartość główne zapytanie. |
-| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
+| Message |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacji przepływu danych nie zwraca żadnych danych. Jeśli podasz żaden komunikat *przeprowadzanie oceny* jest wyświetlany komunikat o stanie. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

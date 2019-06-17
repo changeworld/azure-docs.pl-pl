@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: f1bf62596b6edcc6fff6572e431f3a777be93f05
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002090"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Używać alertów koszt monitorowanie użycia i wydatków
@@ -43,7 +43,7 @@ Obsługa typów alertów, zależy od typu konta platformy Azure, czy masz (Micro
 |---|---|---|---|
 | Budżet | ✔ | ✔ | ✔ |
 | Środki | ✔ |✘ | ✘ |
-| Limit przydziału wydatków dla działu | ✔ | ✘ | ✘ |
+| Limit przydziału wydatków działu | ✔ | ✘ | ✘ |
 
 
 

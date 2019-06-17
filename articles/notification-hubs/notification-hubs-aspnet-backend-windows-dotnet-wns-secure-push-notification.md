@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61459244"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Bezpiecznie powiadomienia wypychane z usługi Azure Notification Hubs
@@ -90,7 +90,7 @@ W tym samouczku Secure wypychania pokazuje, jak bezpiecznie wysyłać powiadomie
 Następnym krokiem jest utworzyć składnika tła wypychania.
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy węzeł najwyższego poziomu rozwiązania (**SecurePush rozwiązania** w tym przypadku), następnie kliknij przycisk **Dodaj**, następnie kliknij przycisk **nowy projekt**.
-2. Rozwiń **Store Apps**, następnie kliknij przycisk **aplikacji Windows Phone**, następnie kliknij przycisk **składnika środowiska wykonawczego Windows (Windows Phone)**. Nadaj projektowi nazwę **PushBackgroundComponent**, a następnie kliknij przycisk **OK** do tworzenia projektu.
+2. Rozwiń **Store Apps**, następnie kliknij przycisk **aplikacji Windows Phone**, następnie kliknij przycisk **składnika środowiska wykonawczego Windows (Windows Phone)** . Nadaj projektowi nazwę **PushBackgroundComponent**, a następnie kliknij przycisk **OK** do tworzenia projektu.
 
     ![][12]
 3. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **PushBackgroundComponent (Windows Phone 8.1)** projektu, a następnie kliknij przycisk **Dodaj**, następnie kliknij przycisk **klasy**. Nadaj nowej klasie `PushBackgroundTask.cs`. Kliknij przycisk **Dodaj** aby wygenerować klasę.

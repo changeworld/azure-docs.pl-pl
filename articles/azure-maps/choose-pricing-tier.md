@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60796311"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Wybrać właściwą warstwę cenową w usługi Azure Maps
 
-Usługi Azure Maps oferuje dwie warstwy cenowe. Ten artykuł ma na celu pomóc wybrać właściwą ceny dla Twoich potrzeb warstwę. Aby wybrać właściwą warstwę cenową, spróbuj odpowiedzieć sobie następujące dwa pytania.
+Usługa Azure Maps oferuje dwie warstwy cenowe. Ten artykuł ma na celu pomóc wybrać właściwą ceny dla Twoich potrzeb warstwę. Aby wybrać właściwą warstwę cenową, spróbuj odpowiedzieć sobie następujące dwa pytania.
 
 ## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Jakie funkcje geoprzestrzenne chcę użyć?
 Warstwa cenowa S0 jest dla Ciebie odpowiednia, jeśli dane geograficzne podstawowych interfejsów API spełniają Twoje wymagania usługi. Jeśli chcesz bardziej zaawansowane funkcje dla aplikacji, należy wziąć pod uwagę sposób na warstwę cenową S1. Przykład możliwości są areal plus obrazach hybrydowych, uzyskiwanie zakres z trasy i geokodowania usługi batch. **Ceny warstwy możliwości** tabeli znajdującej się poniżej pozwala lepiej zrozumieć wymagania Twojej aplikacji. Ułatwia on również wybrać warstwę cenową najbardziej odpowiedni dla aplikacji.

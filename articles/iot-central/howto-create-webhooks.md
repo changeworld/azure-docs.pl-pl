@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 22167de6676837c45c48a0bafd19b1ba69578827
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888325"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Utwórz akcje elementu webhook na reguły w usłudze Azure IoT Central
@@ -39,7 +39,7 @@ W tym przykładzie połączenie z narzędzia RequestBin powiadomieniom reguły w
 
 Po wyzwoleniu reguły, spowoduje to wyświetlenie nowego żądania są wyświetlane w RequestBin.
 
-## <a name="payload"></a>Ładunek
+## <a name="payload"></a>ładunek
 
 Po wyzwoleniu reguły żądanie HTTP POST wykonywane, aby adres URL wywołania zwrotnego zawierającego ładunek json z pomiarów, urządzenia, reguły i szczegóły dotyczące aplikacji. Reguły telemetrii ładunek wygląda podobnie do poniższego:
 

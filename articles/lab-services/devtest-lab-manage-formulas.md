@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60562596"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Zarządzanie formułami Azure DevTest Labs
@@ -44,7 +44,7 @@ Poniższe kroki ułatwiają tworzenie formuły z niestandardowego obrazu, obrazu
 
 3. Z listy labs wybierz żądane laboratorium.  
 
-4. Na stronie laboratorium wybierz **formuły (zasady wielokrotnego użytku)**.
+4. Na stronie laboratorium wybierz **formuły (zasady wielokrotnego użytku)** .
    
     ![Menu formuły](./media/devtest-lab-create-formulas/lab-settings-formulas.png)
 
@@ -88,7 +88,7 @@ Poniższe kroki ułatwiają tworzenie formuły na podstawie istniejącej maszyny
 4. W laboratorium **Przegląd** wybierz maszynę Wirtualną, z którego chcesz utworzyć formułę.
    
     ![Maszyny wirtualne laboratoria](./media/devtest-lab-create-formulas/my-vms.png)
-5. Na stronie maszyny wybierz **tworzona jest formuła (base wielokrotnego użytku)**.
+5. Na stronie maszyny wybierz **tworzona jest formuła (base wielokrotnego użytku)** .
    
     ![Tworzenie formuły](./media/devtest-lab-create-formulas/create-formula-menu.png)
 6. Na **tworzona jest formuła** wpisz **nazwa** i **opis** dla nowej formuły.
@@ -102,7 +102,7 @@ Aby zmodyfikować formułę, wykonaj następujące kroki:
 1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 3. Z listy labs wybierz żądane laboratorium.  
-4. Na stronie laboratorium wybierz **formuły (zasady wielokrotnego użytku)**.
+4. Na stronie laboratorium wybierz **formuły (zasady wielokrotnego użytku)** .
    
     ![Menu formuły](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. Na **formuły laboratorium** wybierz formułę, którą chcesz zmodyfikować.

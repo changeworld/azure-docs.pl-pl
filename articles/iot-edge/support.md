@@ -4,17 +4,17 @@ description: Dowiedz się, które systemy operacyjne można uruchomić demona us
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 05/06/2019
+ms.date: 06/12/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1db999f5d3172734311ecc7dbec72214a1e07e91
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 178cbf930c946170834eb1f7de17e6d5bc0dda48
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137806"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058294"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Usługa Azure IoT Edge obsługiwanych systemów
 
@@ -60,15 +60,16 @@ Ogólnie dostępna
 | Raspbian stretch | Nie | Yes|
 | Ubuntu Server 16.04 | Yes | Nie |
 | Serwer Ubuntu 18.04 | Yes | Nie |
-| Windows 10 IoT Enterprise, build 17763 | Yes | Nie |
+| Windows 10 IoT Enterprise, build 17763 | Tak | Nie |
+| Windows Server 2019, build 17763 | Tak | Nie |
+| Windows Server IoT 2019, build 17763 | Tak | Nie |
 
 Publiczna wersja zapoznawcza
 
 | System operacyjny | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core, build 17763 | Yes | Nie |
-| Windows Server 2019, build 17763 | Yes | Nie |
-| Windows Server IoT 2019, build 17763 | Yes | Nie |
+| Windows 10 IoT Core, build 17763 | Tak | Nie |
+
 
 Systemów operacyjnych Windows wymienionych powyżej przedstawiono wymagania dotyczące urządzeń z systemem Windows kontenery na Windows. Ta konfiguracja jest tylko obsługiwana konfiguracja dla środowiska produkcyjnego. Pakiety instalacyjne usługi Azure IoT Edge dla Windows umożliwia korzystanie z kontenerów systemu Linux na Windows; Jednak ta konfiguracja jest do tworzenia i testowania tylko. Korzystanie z kontenerów systemu Linux na Windows nie jest obsługiwaną konfiguracją w środowisku produkcyjnym. Dowolna wersja systemu Windows 10 kompilacji 14393 lub nowszym i Windows Server 2016 lub nowszym może służyć w tym scenariuszu rozwoju.
 

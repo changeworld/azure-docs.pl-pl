@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813571"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
@@ -68,7 +68,7 @@ Składnia wzorca obsługuje następującej składni:
 |Funkcja|Składnia|Poziom zagnieżdżenia|Przykład|
 |--|--|--|--|
 |jednostka| {} -nawiasów klamrowych|2|Gdzie znajduje się w formie {nazwa jednostki}?|
-|opcjonalne|[] — nawiasami kwadratowymi<BR><BR>Obowiązuje limit 3 dla poziomów zagnieżdżenia z dowolnej kombinacji opcjonalne i grupowania |2|Znak zapytania jest opcjonalne [?]|
+|Opcjonalne|[] — nawiasami kwadratowymi<BR><BR>Obowiązuje limit 3 dla poziomów zagnieżdżenia z dowolnej kombinacji opcjonalne i grupowania |2|Znak zapytania jest opcjonalne [?]|
 |Grupowanie|() - nawiasów|2|jest ( \| b).|
 |lub| \| -pionowy pasek (potok)<br><br>Jest ograniczona do 2 na pionowych słupków (lub) w jednej grupie |-|Gdzie jest formularz ({formularza name krótki} &#x7c; {formularza name długich} &#x7c; {numer formularza})| 
 |początkowy i końcowy wypowiedź|^ — karetki|-|^ rozpocząć wypowiedź<br>odbywa się wypowiedź ^<br>^ strict literału dopasowanie całego wypowiedź z jednostką {number} ^|
@@ -91,22 +91,22 @@ Jeśli jednostki Entity1 to lokalizacja, z ról, takich jak pochodzenia (Seattle
 |--|--|
 |RedWest-C|pasuje do jednostki zewnętrznej grupowania|
 |Seattle|zgodny z jednym z podmiotów wewnętrzny grupowania|
-|Kair|zgodny z jednym z podmiotów wewnętrzny grupowania|
+|Cairo|zgodny z jednym z podmiotów wewnętrzny grupowania|
 
 ## <a name="nesting-limits-for-groups-with-optional-syntax"></a>Limity zagnieżdżanie grup za pomocą opcjonalnych składni
 
 Kombinacji **grupowanie** z **opcjonalne** składni ma limit 3 poziomów zagnieżdżenia.
 
-|Dopuszczeni|Przykład|
+|Dozwolone|Przykład|
 |--|--|
-|Yes|([(test1 &#x7c; test2)] &#x7c; test3)|
+|Tak|([(test1 &#x7c; test2)] &#x7c; test3)|
 |Nie|( [ ( [ test1 ] &#x7c; test2 ) ] &#x7c; test3 )|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Limity zagnieżdżanie grup przy użyciu składni lub ing
 
 Kombinacji **grupowanie** z **lub ing** składni obowiązuje limit wynoszący 2 pionowych słupków.
 
-|Dopuszczeni|Przykład|
+|Dozwolone|Przykład|
 |--|--|
 |Yes|(test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
 |Nie|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
@@ -170,7 +170,7 @@ Oznacz opcjonalny tekst w wypowiedź przy użyciu składni wyrażeń regularnych
 |Wzorzec z opcjonalnym tekstem|Znaczenie|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` i `from {person}` są opcjonalne|
-|"Proszę [?] o pomoc | Znak interpunkcyjny jest opcjonalna|
+|' Można prosić o [?]|Znak interpunkcyjny jest opcjonalna|
 
 Znaki interpunkcyjne (`?`, `!`, `.`) mają być ignorowane i trzeba je przy użyciu składni nawias kwadratowy we wzorcach zignorować. 
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 3a7cc1ac3940104993e6643e92da923ad1c6a14a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66249073"
 ---
 | Category | Magazyn danych | Obsługiwany jako [działanie kopiowania, które](../articles/data-factory/copy-activity-overview.md) źródła | Obsługiwany jako [działanie kopiowania, które](../articles/data-factory/copy-activity-overview.md) ujścia | Obsługiwane przez środowisko [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Obsługiwane przez [własne środowisko IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) | Obsługiwane przez [przepływu danych](../articles/data-factory/concepts-data-flow-overview.md)
@@ -19,7 +19,7 @@ ms.locfileid: "66249073"
 | &nbsp; |[Azure Data Explorer](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ ||
 | &nbsp; |[Usługa Azure Data Lake Storage 1. generacji](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |✓ <br> <small>Obsługiwane formaty: Delimited Text, Parquet</small> |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |✓ <br> <small>Obsługiwane formaty: Delimited Text, Parquet</small> |
-| &nbsp; |[Azure Database dla serwera MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  ||
+| &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  ||

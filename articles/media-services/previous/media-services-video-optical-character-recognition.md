@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60825612"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Użyj analizy multimediów Azure, aby przekonwertować na tekst cyfrowych, zawartości tekstowej w plikach wideo  
@@ -111,8 +111,8 @@ Dane wyjściowe zawierają następujące atrybuty:
 | Szerokość |szerokość obrazu wideo w pikselach |
 | Wysokość |wysokość w pikselach |
 | Fragments |Tablica oparte na czasie fragmenty filmu wideo, do którego jest podzielony metadanych |
-| rozpoczynanie |uruchomienie fragmentu w "taktach" |
-| czas trwania |Długość fragmentu w "taktach" |
+| start |uruchomienie fragmentu w "taktach" |
+| Czas trwania |Długość fragmentu w "taktach" |
 | interval |Interwał każde zdarzenie w ramach danego fragmentu |
 | zdarzenia |Tablica zawierająca regionów |
 | region |Obiekt reprezentujący wykryto słów i fraz |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711450"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalowanie i Konfigurowanie bazy danych MongoDB na maszynie Wirtualnej Windows na platformie Azure
@@ -47,7 +47,7 @@ Aby rozpocząć instalowanie i Konfigurowanie bazy danych MongoDB, [Zaloguj się
      
      ![Konfiguruj ustawienia zabezpieczeń programu Internet Explorer](./media/install-mongodb/configure-internet-explorer-security.png)
 4. Przejdź do [MongoDB — pliki do pobrania](https://www.mongodb.com/downloads) strony (https://www.mongodb.com/downloads).
-5. Jeśli to konieczne, zaznacz **Community Server** wersji, a następnie wybierz pozycję, najnowsza wersja stabilna bieżące wersji*systemu Windows Server 2008 R2 64-bitowych lub nowszy*. Aby pobrać Instalatora, kliknij przycisk **pobierania (msi)**.
+5. Jeśli to konieczne, zaznacz **Community Server** wersji, a następnie wybierz pozycję, najnowsza wersja stabilna bieżące wersji*systemu Windows Server 2008 R2 64-bitowych lub nowszy*. Aby pobrać Instalatora, kliknij przycisk **pobierania (msi)** .
    
     ![Pobierz Instalator bazy danych MongoDB](./media/install-mongodb/download-mongodb.png)
    

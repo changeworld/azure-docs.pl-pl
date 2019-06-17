@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b6c203583a082228c2ba1f4c5f6fdb04d059be
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7fc8c21db0f42bbb6804c00e27e82f840d7038c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962388"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111168"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja mobilna, która wywołuje interfejsy API — w sieci web wywołania interfejsu API sieci web
 
@@ -131,7 +131,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 Czy potrzebne do wywoływania tego samego interfejsu API kilka razy, czy należy wywołać wiele interfejsów API, wziąć pod uwagę następujące pod uwagę podczas tworzenia aplikacji:
 
 - **Przyrostowe zgody**: Platforma tożsamości firmy Microsoft umożliwia aplikacjom uzyskanie zgody użytkownika, jakie uprawnienia są wymagane, a nie wszystkie na początku. Każdorazowo, gdy aplikacja jest gotowa do wywołania interfejsu API powinien go zażądać zakresy, trzeba go użyć.
-- **Dostęp warunkowy**: W niektórych scenariuszach możesz otrzymać wymagania dotyczące dostępu warunkowego dodatkowe po wprowadzeniu kilka żądań interfejsu API. Może to nastąpić, jeśli pierwsze żądanie ma nie zastosowano żadnych zasad dostępu warunkowego, a aplikacja próbuje dyskretnie dostęp do nowego interfejsu API, który wymaga dostępu warunkowego. Aby obsługiwać ten scenariusz, należy przechwytywania błędów z żądań w trybie dyskretnym i przygotuj interaktywne żądania.  Aby dowiedzieć się więcej, zobacz [wskazówki dotyczące dostępu warunkowego](conditional-access-dev-guide.md).
+- **Dostęp warunkowy**: Po wprowadzeniu kilka żądań interfejsu API w niektórych scenariuszach możesz otrzymać dodatkowe wymagania dotyczące dostępu warunkowego. Może to nastąpić, jeśli pierwsze żądanie ma nie zastosowano żadnych zasad dostępu warunkowego, a aplikacja próbuje dyskretnie dostęp do nowego interfejsu API, który wymaga dostępu warunkowego. Aby obsługiwać ten scenariusz, należy przechwytywania błędów z żądań w trybie dyskretnym i przygotuj interaktywne żądania.  Aby dowiedzieć się więcej, zobacz [wskazówki dotyczące dostępu warunkowego](conditional-access-dev-guide.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

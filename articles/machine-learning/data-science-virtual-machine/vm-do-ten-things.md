@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
 ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60366274"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
@@ -403,7 +403,7 @@ Jeśli dane znajdują się w usłudze Azure Blob storage, mogą bezpośrednio od
 
 ![Zrzut ekranu przedstawiający okno dialogowe Dodaj źródło danych](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
-W programie Visual Studio można odczytać danych z magazynu obiektów blob, wykonaj operacje na danych, inżynieria i dane wyjściowe dane wynikowe do usługi Azure Data Lake lub usługi Azure Blob Storage. Gdy odwołujesz się dane w magazynie obiektów blob, użyj **wasb: / /**; Gdy odwołujesz się dane w usłudze Azure Data Lake, użyj **swbhdfs: / /**
+W programie Visual Studio można odczytać danych z magazynu obiektów blob, wykonaj operacje na danych, inżynieria i dane wyjściowe dane wynikowe do usługi Azure Data Lake lub usługi Azure Blob Storage. Gdy odwołujesz się dane w magazynie obiektów blob, użyj **wasb: / /** ; Gdy odwołujesz się dane w usłudze Azure Data Lake, użyj **swbhdfs: / /**
 
 ![Zrzut ekranu zapytania z wyróżnioną pozycją wpisem WASB](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 

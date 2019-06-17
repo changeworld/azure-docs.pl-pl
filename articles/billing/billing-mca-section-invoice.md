@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371616"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Tworzenie sekcji na fakturze w taki sposób, aby zorganizować koszty
@@ -30,7 +30,7 @@ Aby utworzyć sekcji faktury, muszą być **rozliczeń właściciela profilu** l
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
@@ -57,6 +57,6 @@ Aby utworzyć sekcji faktury, muszą być **rozliczeń właściciela profilu** l
 - [Zezwól na uprawnienia do tworzenia subskrypcji platformy Azure](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions)
 - [Uzyskaj własność rozliczeń subskrypcji platformy Azure od użytkowników w innych kont rozliczeń](billing-mca-request-billing-ownership.md)
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

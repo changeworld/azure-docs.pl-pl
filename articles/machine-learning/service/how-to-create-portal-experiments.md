@@ -12,10 +12,10 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
 ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990151"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Tworzenie i eksplorowanie zautomatyzowanych usługi machine learning eksperymentów w witrynie Azure portal (wersja zapoznawcza)
@@ -60,9 +60,9 @@ Wybierz przycisk tworzenia eksperymentu, aby wypełnić następującą postać.
 
     Pole|Opis
     ---|---
-    Nazwa środowiska obliczeniowego| Wprowadź unikatową nazwę, która identyfikuje Twoje kontekstu obliczeniowego.
+    Nazwa obliczeniowego| Wprowadź unikatową nazwę, która identyfikuje Twoje kontekstu obliczeniowego.
     Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dotyczącymi obliczeń.
-    Ustawienia dodatkowe| *Węzeł min*: Wprowadź minimalną liczbę węzłów obliczeń. Minimalna liczba węzłów obliczeniowych AML to 0. Aby włączyć profilowanie danych, musi mieć co najmniej 1 węzłów. <br> *Maksymalna liczba węzłów*: Wprowadź maksymalną liczbę węzłów obliczeń. Wartość domyślna to 6 węzły obliczeniowe AML.
+    Dodatkowe ustawienia| *Węzeł min*: Wprowadź minimalną liczbę węzłów obliczeń. Minimalna liczba węzłów obliczeniowych AML to 0. Aby włączyć profilowanie danych, musi mieć co najmniej 1 węzłów. <br> *Maksymalna liczba węzłów*: Wprowadź maksymalną liczbę węzłów obliczeń. Wartość domyślna to 6 węzły obliczeniowe AML.
 
       Aby rozpocząć tworzenie nowych zasobów obliczeniowych, wybierz opcję **Utwórz**. Może to potrwać kilka chwil.
 
@@ -103,9 +103,9 @@ Wybierz przycisk tworzenia eksperymentu, aby wypełnić następującą postać.
     Ustawienia zaawansowane|Opis
     ------|------
     Podstawowe metryki| Metryka główne używane do oceniania modelu. [Dowiedz się więcej o metrykach modelu](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
-    Kryteria wyjścia| Gdy dowolne z poniższych kryteriów są spełnione, przed ukończeniem pełną kończy się zadania szkolenia. <br> *Szkolenie zadania czas (w minutach)*: Jak długo, aby zezwolić na uruchomienie zadania szkolenia.  <br> *Maksymalna liczba iteracji*: Maksymalna liczba potoków (iteracji) do testowania w ramach zadania szkolenia. Zadanie nie zostanie uruchomione więcej niż określoną liczbę iteracji. <br> *Metryki oceny próg*:  Minimalny wynik metryki dla wszystkich potoków. Daje to gwarancję, że jeśli Metryka zdefiniowanego celu, którą chcesz się połączyć, możesz nie poświęcić więcej czasu na zadania szkolenia, niż jest to konieczne.
+    Kryteria wyjścia| Gdy dowolne z poniższych kryteriów są spełnione, przed ukończeniem pełną kończy się zadania szkolenia. <br> *Szkolenie zadania czas (w minutach)* : Jak długo, aby zezwolić na uruchomienie zadania szkolenia.  <br> *Maksymalna liczba iteracji*: Maksymalna liczba potoków (iteracji) do testowania w ramach zadania szkolenia. Zadanie nie zostanie uruchomione więcej niż określoną liczbę iteracji. <br> *Metryki oceny próg*:  Minimalny wynik metryki dla wszystkich potoków. Daje to gwarancję, że jeśli Metryka zdefiniowanego celu, którą chcesz się połączyć, możesz nie poświęcić więcej czasu na zadania szkolenia, niż jest to konieczne.
     Przetwarzanie wstępne| Zaznacz, aby włączyć lub wyłączyć wstępnego przetwarzania wykonywane przez uczenie maszynowe automatycznych. Przetwarzanie wstępne obejmuje czyszczenia danych, przygotowywania i transformacji do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
-    Weryfikacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności do użycia w ramach zadania szkolenia. [Dowiedz się więcej o krzyżowego sprawdzania poprawności](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności do użycia w ramach zadania szkolenia. [Dowiedz się więcej o krzyżowego sprawdzania poprawności](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
     Współbieżność| Wybierz limity wielordzeniowych, którego chcesz używać podczas używania wielu rdzeni obliczeniowych.
     Algorytm zablokowane| Wybieranie algorytmów, które chcesz wykluczyć z zadania szkolenia.
 

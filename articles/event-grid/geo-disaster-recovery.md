@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: spelluru
 ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66307320"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Po stronie serwera geograficznego odzyskiwania po awarii w usłudze Azure Event Grid
@@ -26,7 +26,7 @@ Automatycznej pracy awaryjnej usługi Event Grid ma inną wartościom celu punkt
 
 ## <a name="recovery-point-objective-rpo"></a>Cel punktu odzyskiwania (recovery point objective, RPO)
 - **Cel punktu odzyskiwania w metadanych**: zero minut. W dowolnym momencie zasób jest tworzony w usłudze Event Grid, natychmiast są replikowane między regionami. W przypadku przejścia w tryb failover metadanych nie zostaną utracone.
-- **Cel punktu odzyskiwania danych**: Jeśli system jest w dobrej kondycji i zawiera istniejące ruchu w czasie regionalnej pracy awaryjnej, cel punktu odzyskiwania dla zdarzeń jest około 5 minut.
+- **Cel punktu odzyskiwania danych**: Jeśli system jest w dobrej kondycji i w czasie wystąpienia regionalnego trybu failover będzie podążać za istniejącym ruchem, cel RPO dla zdarzeń wynosi około 5 minut.
 
 ## <a name="recovery-time-objective-rto"></a>Cel czasu odzyskiwania (recovery time objective, RTO)
 - **Cel czasu odzyskiwania metadanych**: Chociaż zwykle dużo szybciej i nastąpi to w ciągu 60 minut, usługa Event Grid rozpocznie się do akceptowania połączeń Tworzenie/aktualizowanie/usuwanie tematów i subskrypcji.

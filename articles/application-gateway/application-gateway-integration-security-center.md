@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: victorh
 ms.openlocfilehash: 10f115b64f0bd3f7e557da2bedbf3327d0ef483d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122303"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Omówienie integracji między bramy aplikacji i usługi Azure Security Center
@@ -38,7 +38,7 @@ Kliknięcie żadnych zaleceń, że dotyczące zapory aplikacji sieci web otwiera
 
 Przejdź do **wszystkich usług** > **bezpieczeństwo i Obsługa tożsamości** > **usługi Security Center** i **Security Center — Przegląd**, kliknij przycisk **aplikacji**. Na **Security Center — aplikacje**, tabela zawiera listę aplikacji, które usługa Security Center wykryła w Twojej subskrypcji.
 
-![aplikacje internetowe][3]
+![Aplikacje sieci Web][3]
 
 Klikając w aplikacji sieci web dzięki rozwiązaniu krytycznego problemu, możesz uzyskać **kondycja zabezpieczeń aplikacji** strony. Na poniższej ilustracji, aplikacji sieci web, które nie są chronione przez zaporę aplikacji sieci web. 
 

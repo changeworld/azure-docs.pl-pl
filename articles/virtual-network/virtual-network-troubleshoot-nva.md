@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b7ac96d3588923727a71cf6152ba36481ef44545
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 00393395745ca96ae14269ae80e4f3d25673fbfa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526660"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64723010"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problemy z urządzenia wirtualnego sieci na platformie Azure
 
@@ -74,7 +74,14 @@ Korzystanie z programu PowerShell
 3. Sprawdź **EnableIPForwarding** właściwości.
 4. Jeśli nie jest włączone przekazywanie adresów IP, uruchom następujące polecenia, aby ją włączyć:
 
-   $nic2 = Get-AzNetworkInterface - ResourceGroupName <ResourceGroupName> — nazwa <NicName> $nic2. EnableIPForwarding = 1 Set AzNetworkInterface - interfejsu sieciowego $nic2 wykonania: $nic2 # and oczekiwanych danych wyjściowych: EnableIPForwarding   : True NetworkSecurityGroup : null
+   ```powershell
+   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   $nic2.EnableIPForwarding = 1
+   Set-AzNetworkInterface -NetworkInterface $nic2
+   Execute: $nic2 #and check for an expected output:
+   EnableIPForwarding   : True
+   NetworkSecurityGroup : null
+   ```
 
 **Sprawdź dla sieciowej grupy zabezpieczeń, korzystając z IP Pubilc w warstwie standardowa jednostka SKU** przy użyciu standardowej jednostki SKU i publicznych adresów IP, musi istnieć sieciowa grupa zabezpieczeń utworzona i jawne reguły, aby zezwolić na ruch do urządzenia WUS.
 

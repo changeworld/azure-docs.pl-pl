@@ -1,18 +1,18 @@
 ---
 title: Wdrożenia usługi Azure Databricks przy użyciu punktu końcowego usługi Cosmos DB
 description: W tym samouczku opisano sposób wdrażania usługi Azure Databricks w sieci wirtualnej przy użyciu punktu końcowego usługi obsługującego usługi Cosmos DB.
-services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
+ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: 0d5442a63680227f3a6186330502666c92dc3129
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d1268ea2cfc22e6350edb32230588a497be8bc79
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126702"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054565"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Samouczek: Wdrożenia usługi Azure Databricks przy użyciu punktu końcowego usługi Cosmos DB
 
@@ -63,13 +63,13 @@ Przed rozpoczęciem należy wykonać następujące czynności:
    |Interfejs API|Core (SQL)|
    |Lokalizacja|Zachodnie stany USA|
    |Nadmiarowość geograficzna|Wyłączanie|
-   |Zapisy w wielu regionach|Włączanie|
+   |Operacje zapisu w wielu regionach|Włączenie|
 
    ![Dodawanie punktu końcowego usługi Cosmos DB](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
 
 3. Wybierz **sieci** kartę i konfigurowanie sieci wirtualnej. 
 
-   a. Wybierz sieć wirtualną utworzono jako warunek wstępny, a następnie wybierz *podsieci publicznej*. Należy zauważyć, że *podsieci prywatnej* ma notatki *punktu końcowego "Microsoft AzureCosmosDB" Brak "*. Jest to spowodowane punktu końcowego usługi Cosmos DB można włączyć tylko na *podsieci publicznej*.
+   a. Wybierz sieć wirtualną utworzono jako warunek wstępny, a następnie wybierz *podsieci publicznej*. Należy zauważyć, że *podsieci prywatnej* ma notatki *punktu końcowego "Microsoft AzureCosmosDB" Brak "* . Jest to spowodowane punktu końcowego usługi Cosmos DB można włączyć tylko na *podsieci publicznej*.
 
    b. Upewnij się, że **zezwolić na dostęp z witryny Azure portal** włączone. To ustawienie umożliwia dostęp do konta usługi Cosmos DB w witrynie Azure portal. Jeśli ta opcja jest ustawiona na **Odmów**, zostaną zwrócone błędy podczas próby dostępu do Twojego konta. 
 

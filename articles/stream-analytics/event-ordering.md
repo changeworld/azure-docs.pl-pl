@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 970eeb871775e24abb87c8b977e214645e514d3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789488"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurowanie kolejności zasad usługi Azure Stream Analytics zdarzeń
@@ -41,7 +41,7 @@ Poinformuj nas zobaczyć przykład te zasady w akcji.
 <br> **Późnego przybycia zasady:** 15 sekund
 <br> **Poza kolejnością zasady:** 8 sekund
 
-| Nie zdarzenie. | Czas zdarzenia | Godzina nadejścia | System.Timestamp | Wyjaśnienie |
+| Nie zdarzenie. | Czas trwania zdarzenia | Godzina nadejścia | System.Timestamp | Wyjaśnienie |
 | --- | --- | --- | --- | --- |
 | **1** | 00:10:00  | 00:10:40  | 00:10:25  | Zdarzenie dostarczone poziom tolerancji późnego i na zewnątrz. Dlatego maksymalna tolerancja spóźnionego przybycia uwzględnieniem pobiera czas trwania zdarzenia.  |
 | **2** | 00:10:30 | 00:10:41  | 00:10:30  | Zdarzenie już korzystać z opóźnieniem, ale w obrębie poziom tolerancji. Czas trwania zdarzenia nie uzyskać ustawiony w taki sposób.  |
@@ -73,7 +73,9 @@ Połączeniu wiele partycji z tego samego strumienia wejściowego tolerancja sp�
 <br><code>
 {"message Time":"2/3/2019 8:54:16 PM UTC","message":"Input Partition [2] does not have additional data for more than [5] minute(s). Partition will not progress until either events arrive or late arrival threshold is met.","type":"InputPartitionNotProgressing","correlation ID":"2328d411-52c7-4100-ba01-1e860c757fc2"} 
 </code><br><br>
-Ten komunikat z informacją, że co najmniej jedną partycję w danych wejściowych jest pusty i zostanie opóźnione, danych wyjściowych przez próg późnego przybycia. Aby tego uniknąć, zalecane jest przeprowadzenie albo: 1. Upewnij się, że wszystkie partycje usługi Event Hub/IoT Hub odbierania danych. 2. Użyj partycji przez klauzulę identyfikatora partycji w zapytaniu. 
+Ten komunikat z informacją, że co najmniej jedną partycję w danych wejściowych jest pusty i zostanie opóźnione, danych wyjściowych przez próg późnego przybycia. Aby tego uniknąć, zalecane jest przeprowadzenie albo: 
+1. Upewnij się, że wszystkie partycje usługi Event Hub/IoT Hub odbierania danych. 
+2. Użyj partycji przez klauzulę identyfikatora partycji w zapytaniu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zagadnienia dotyczące obsługi czasu](stream-analytics-time-handling.md)

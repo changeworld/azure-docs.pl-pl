@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 8bacc3940cebaf9c62179cee0788e5903e56a310
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60751862"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych
@@ -52,7 +52,7 @@ Jedną z tajemnice handlowe do nauki o danych otrzymuje inni użytkownicy będą
 
 Firma Microsoft zapewnia oparte na chmurze usługi o nazwie [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) już Zapraszamy do bezpłatnego wypróbowania. Zapewnia ona obszar roboczy w przypadku, gdy możesz eksperymentować z algorytmów uczenia maszynowego różnych oraz, jeśli masz określone rozwiązania, możesz uruchomić go jako usługę sieci web.
 
-Ta usługa jest to coś o nazwie  **[galerii Azure AI](https://gallery.azure.ai/)**. Zawiera zasoby, w tym zestaw eksperymentów w usłudze Azure Machine Learning Studio i modeli, które osoby mają wbudowane i przyczyniały się innym użytkownikom. Te doświadczenia to doskonały sposób myślenia i trudną pracę innych osób, aby rozpocząć pracę na własnych rozwiązań. Wszyscy jest Zapraszamy do przeglądania przez nią.
+Ta usługa jest to coś o nazwie  **[galerii Azure AI](https://gallery.azure.ai/)** . Zawiera zasoby, w tym zestaw eksperymentów w usłudze Azure Machine Learning Studio i modeli, które osoby mają wbudowane i przyczyniały się innym użytkownikom. Te doświadczenia to doskonały sposób myślenia i trudną pracę innych osób, aby rozpocząć pracę na własnych rozwiązań. Wszyscy jest Zapraszamy do przeglądania przez nią.
 
 ![Galeria sztucznej inteligencji platformy Azure](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 

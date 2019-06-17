@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4b125649dee51680625ac5a92b31bdc9f6830529
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653394"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069661"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Połączenia hybrydowe usługi Azure App Service #
 
@@ -41,7 +41,6 @@ Gdy aplikacja wykonuje żądanie DNS, które odpowiada skonfigurowanego punktu k
 > [!NOTE]
 > Oznacza to, że należy zawsze używaj nazwy DNS dla połączenia hybrydowego. Niektóre oprogramowanie klienckie nie wyszukiwania DNS, jeśli zamiast tego używa punktu końcowego adresu IP.
 >
-
 
 ### <a name="app-service-hybrid-connection-benefits"></a>Korzyści połączenia hybrydowe usługi aplikacji ###
 
@@ -140,8 +139,8 @@ Aby dodać co najmniej jednego połączenia hybrydowe do Twojej HCM:
 2. Wybierz **skonfigurować inne połączenie hybrydowe**.
 ![Zrzut ekranu przedstawiający Konfigurowanie nowego połączenia hybrydowe][8]
 
-1. Zaloguj się przy użyciu konta platformy Azure.
-1. Wybierz subskrypcję.
+1. Zaloguj się przy użyciu konta platformy Azure, można pobrać połączeń hybrydowych dostępne z subskrypcjami. HCM, nie mogą korzystać z Twojego konta platformy Azure, poza tym. 
+1. wybierz subskrypcję.
 1. Wybierz połączeń hybrydowych, które HCM przekazanie.
 ![Zrzut ekranu przedstawiający połączeń hybrydowych][9]
 
@@ -226,7 +225,9 @@ Stan "Połączono" oznacza, że co najmniej jeden HCM skonfigurowano przy użyci
 
 Głównym powodem, że klienci nie można połączyć z ich punktu końcowego jest, ponieważ punkt końcowy został określony przy użyciu adresu IP zamiast nazwy DNS. Jeśli aplikacja nie może nawiązać połączenia żądanego punktu końcowego i użycie adresu IP, przełączyć się przy użyciu nazwy DNS, który jest niepoprawna na hoście, gdzie jest uruchomione HCM. Sprawdź także, czy nazwa DNS rozpoznaje poprawnie na hoście, na którym działa HCM. Upewnij się, że istnieje łączność z hosta, w którym HCM, działa na punkt końcowy połączenia hybrydowego.  
 
-W usłudze App Service narzędzie tcpping mogą być wywoływane z poziomu konsoli narzędzia zaawansowane (Kudu). To narzędzie może określić, jeśli masz dostęp do punktu końcowego TCP, ale go nie informujące, jeśli masz dostęp do punktu końcowego połączenia hybrydowego. Gdy używasz narzędzia w konsoli względem punktu końcowego połączenia hybrydowego tylko potwierdzasz korzysta z kombinacji hosta: port.  
+W usłudze App Service **tcpping** narzędzia wiersza polecenia mogą być wywoływane z poziomu konsoli narzędzia zaawansowane (Kudu). To narzędzie może określić, jeśli masz dostęp do punktu końcowego TCP, ale go nie informujące, jeśli masz dostęp do punktu końcowego połączenia hybrydowego. Gdy używasz narzędzia w konsoli względem punktu końcowego połączenia hybrydowego tylko potwierdzasz korzysta z kombinacji hosta: port.  
+
+Jeśli masz klienta wiersza polecenia dla punktu końcowego usługi, możesz przetestować łączność z aplikacji konsoli. Na przykład można przetestować dostęp do punktów końcowych serwera sieci web, przy użyciu programu curl.
 
 ## <a name="biztalk-hybrid-connections"></a>Połączenia hybrydowe BizTalk ##
 

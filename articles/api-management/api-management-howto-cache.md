@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60527438"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Dodawanie buforowania w celu poprawy wydajności usługi Azure API Management
@@ -57,7 +57,7 @@ W zasadach buforowania pokazanych w tym przykładzie pierwsze żądanie operacji
 4. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
 5. Wybierz operację **GetSpeakers**.
 6. W górnej części ekranu wybierz kartę **Projektowanie**.
-7. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**.
+7. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>** .
 
     ![edytor kodu](media/api-management-howto-cache/code-editor.png)
 

@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: b6eb0c5b0d52bba3d34c9853a73b1f3e07b112a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61322738"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Właściwości agenta usługi IoT Edge i bliźniaczych reprezentacjach modułów Centrum IoT Edge
@@ -34,15 +34,15 @@ Bliźniacza reprezentacja modułu dla agenta usługi IoT Edge jest nazywany `$ed
 | runtime.settings.loggingOptions | JSON skonwertowanej do formatu tekstowego, zawierający opcje rejestrowania dla kontenera agenta usługi IoT Edge. [Opcje rejestrowania platformy docker](https://docs.docker.com/engine/admin/logging/overview/) | Nie |
 | runtime.settings.registryCredentials<br>. .username {registryId} | Nazwa rejestru kontenerów. Usługi Azure Container Registry nazwa użytkownika jest zazwyczaj nazwa rejestru.<br><br> Poświadczenia rejestru są niezbędne dla wszelkich obrazów modułu, które nie są publicznie udostępniane. | Nie |
 | runtime.settings.registryCredentials<br>. .password {registryId} | Hasło dla rejestru kontenerów. | Nie |
-| runtime.settings.registryCredentials<br>. .address {registryId} | Adres rejestru kontenera. Usługi Azure Container Registry, adres, jest zazwyczaj *.azurecr.io {nazwa rejestru}*. | Nie |  
+| runtime.settings.registryCredentials<br>. .address {registryId} | Adres rejestru kontenera. Usługi Azure Container Registry, adres, jest zazwyczaj *.azurecr.io {nazwa rejestru}* . | Nie |  
 | systemModules.edgeAgent.type | Musi być "docker" | Yes |
-| systemModules.edgeAgent.settings.image | Identyfikator URI obrazu agenta usługi IoT Edge. Obecnie usługa agenta usługi IoT Edge nie będzie mógł automatycznie zaktualizowana. | Yes |
+| systemModules.edgeAgent.settings.image | Identyfikator URI obrazu agenta usługi IoT Edge. Obecnie usługa agenta usługi IoT Edge nie będzie mógł automatycznie zaktualizowana. | Tak |
 | systemModules.edgeAgent.settings<br>.createOptions | JSON skonwertowanej do formatu tekstowego zawierającego opcje tworzenia kontenera agenta usługi IoT Edge. [Opcje tworzenia platformy docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nie |
 | systemModules.edgeAgent.configuration.id | Identyfikator wdrożenia, które są wdrożone w tym module. | Usługa IoT Hub ustawia tę właściwość, jeśli manifest jest stosowany przy użyciu wdrożenia. Nie jest częścią manifestu wdrażania. |
 | systemModules.edgeHub.type | Musi być "docker" | Yes |
 | systemModules.edgeHub.status | Musi być "uruchomiona" | Yes |
 | systemModules.edgeHub.restartPolicy | Musi być "zawsze" | Yes |
-| systemModules.edgeHub.settings.image | Identyfikator URI obrazu Centrum usługi IoT Edge. | Yes |
+| systemModules.edgeHub.settings.image | Identyfikator URI obrazu Centrum usługi IoT Edge. | Tak |
 | systemModules.edgeHub.settings<br>.createOptions | JSON skonwertowanej do formatu tekstowego zawierającego opcje tworzenia kontenera Centrum IoT Edge. [Opcje tworzenia platformy docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nie |
 | systemModules.edgeHub.configuration.id | Identyfikator wdrożenia, które są wdrożone w tym module. | Usługa IoT Hub ustawia tę właściwość, jeśli manifest jest stosowany przy użyciu wdrożenia. Nie jest częścią manifestu wdrażania. |
 | moduły. {moduleId} .version | Zdefiniowane przez użytkownika ciąg reprezentujący wersję tego modułu. | Yes |

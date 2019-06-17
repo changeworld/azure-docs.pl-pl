@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371363"
 ---
 # <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>Opis warunków w arkuszu cen dla umowy klienta firmy Microsoft
@@ -44,8 +44,8 @@ W poniższej sekcji opisano ważne terminy wyświetlane w arkuszu cen umowy klie
 | productId  | Unikatowy identyfikator produktu, którego licznik jest używany. |
 | unitOfMeasure  | Identyfikuje jednostki miary dla rozliczeń dla usługi. Na przykład usługi obliczeniowe są rozliczane godzinowo. |
 | meterId  | Unikatowy identyfikator miernika. |
-| lmeterName  | Nazwa licznika. Licznik reprezentuje możliwych do wdrożenia zasobów usługi platformy Azure. |
-| meterCategory  | Nazwa kategorii klasyfikacji dla licznika. Na przykład _usług w chmurze_, _sieć_itp. |
+| meterName  | Nazwa licznika. Licznik reprezentuje możliwych do wdrożenia zasobów usługi platformy Azure. |
+| MeterCategory  | Nazwa kategorii klasyfikacji dla licznika. Na przykład _usług w chmurze_, _sieć_itp. |
 | meterType  |  Nazwa typu miernika. |
 | meterSubCategory  | Nazwa kategorii klasyfikacji podrzędnych miernika.  |
 | meterRegion  | Nazwa regionu, w których mierniku usługi jest dostępny. Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych.    |

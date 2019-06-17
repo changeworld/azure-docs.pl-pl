@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001835"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak nawiązywać połączenie ze źródłami danych
@@ -39,7 +39,7 @@ Korzystając z "Otwórz w..." menu dla źródeł danych w portalu usługi Azure 
 | --- | --- | --- |
 | Excel |odc |Program Excel 2010 lub nowszy |
 | Excel (pierwsze 1000) |odc |Program Excel 2010 lub nowszy |
-| Power Query |.xlsx |Zainstalowany program Excel 2016 i Excel 2010 lub Excel 2013 za pomocą dodatku Power Query dla dodatku programu Excel |
+| Dodatek Power Query |.xlsx |Zainstalowany program Excel 2016 i Excel 2010 lub Excel 2013 za pomocą dodatku Power Query dla dodatku programu Excel |
 | Power BI Desktop |.pbix |Usługa Power BI Desktop lipca 2016 lub nowszy |
 | SQL Server Data Tools |vsweb:// |Visual Studio 2013 Update 4 lub nowszym za pomocą narzędzi SQL Server zainstalowana |
 | Menedżer raportów |http:// |Zobacz [wymagania dotyczące przeglądarki dla programu SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |

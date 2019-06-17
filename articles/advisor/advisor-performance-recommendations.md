@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
 ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66254649"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Poprawianie wydajności aplikacji Azure za pomocą usługi Azure Advisor
@@ -106,7 +106,7 @@ Klasyfikator wykryje konta usługi Azure Cosmos DB, które mają ruch z regionu,
 
 Usługa Azure Advisor będzie identyfikować kontenerów usługi Cosmos DB, które korzystają z domyślnych zasad indeksowania, ale mogą odnieść korzyści z niestandardowych zasad indeksowania oparte na wzorcu obciążenia. Domyślnych zasad indeksowania indeksuje wszystkie właściwości, ale za pomocą jawnego dołączone lub wykluczone ścieżki używane w filtrach zapytań za pomocą niestandardowych zasad indeksowania może zmniejszyć (RUS) oraz magazynu używane do indeksowania. [Dowiedz się więcej na temat modyfikowania zasad indeksu](https://aka.ms/cosmosdb/modify-index-policy)
 
-## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Konfigurowanie usługi Azure Cosmos DB rozmiar strony zapytania (MaxItemCount) na wartość -1 
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Konfigurowanie rozmiaru strony zapytania usługi Azure Cosmos DB (MaxItemCount) na wartość -1 
 
 Usługa Azure Advisor będzie identyfikować kontenerów usługi Azure Cosmos DB, które korzystają z rozmiar strony zapytania 100 i zaleca się używanie rozmiar strony,-1 w przypadku skanowania szybciej. [Dowiedz się więcej o maksymalna liczba elementów](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 

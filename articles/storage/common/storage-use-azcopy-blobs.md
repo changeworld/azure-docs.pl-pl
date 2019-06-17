@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 140f2ec6252eac2958f236b2ffb48225fa16fe2b
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: fea9e79986e45127ad4918ed62bd8bf8dc782133
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688056"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125809"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą narzędzia AzCopy i Blob storage
 
@@ -191,10 +191,10 @@ Ta sekcja zawiera następujące przykłady:
 
 ## <a name="synchronize-files"></a>Synchronizuj pliki
 
-Możesz zsynchronizować zawartość z lokalnego systemu plików do kontenera obiektów blob. Możesz także zsynchronizować kontenerem obiektów blob do lokalnego systemu plików na komputerze. Synchronizacja jest jednokierunkowa. Innymi słowy możesz wybrać który te dwa punkty końcowe jest źródłem, a który z nich jest miejscem docelowym.
+Zawartość lokalny system plików można synchronizować z kontenera obiektów blob. Synchronizacja jest jednokierunkowa. Innymi słowy możesz wybrać który te dwa punkty końcowe jest źródłem, a który z nich jest miejscem docelowym.
 
 > [!NOTE]
-> Bieżąca wersja programu AzCopy nie Synchronizacja pomiędzy innych źródeł i miejsc docelowych (na przykład: Magazyn plików lub pakiety Amazon Web Services (AWS) S3).
+> Obecnie ten scenariusz jest obsługiwany tylko dla kont, które nie mają hierarchicznej przestrzeni nazw. Bieżąca wersja programu AzCopy nie Synchronizacja pomiędzy innych źródeł i miejsc docelowych (na przykład: Magazyn plików lub pakiety Amazon Web Services (AWS) S3).
 
 `sync` Polecenia porównuje nazwy plików i Data ostatniej modyfikacji sygnatur czasowych. Ustaw `--delete-destination` opcjonalna Flaga wartości `true` lub `prompt` można usunąć pliki w katalogu docelowym, jeśli te pliki nie istnieją już w katalogu źródłowym.
 
@@ -203,26 +203,24 @@ Jeśli ustawisz `--delete-destination` flaga `true` AzCopy usuwa pliki bez podaw
 > [!NOTE]
 > Aby zapobiec przypadkowym, upewnij się umożliwić [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkcji przed użyciem `--delete-destination=prompt|true` flagi.
 
-### <a name="synchronize-a-container-to-a-local-file-system"></a>Synchronizuj kontener służący do lokalnego systemu plików
+### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Zaktualizuj kontenera, wprowadzając zmiany w lokalnym systemie plików
 
-W takim przypadku w lokalnym systemie plików źródłem i kontenera jest miejscem docelowym.
+W tym przypadku kontener jest miejscem docelowym, a w lokalnym systemie plików jest źródłem.
 
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy sync "<local-directory-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
 | **Przykład** | `azcopy sync "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
-| **Przykład** (hierarchicznej przestrzeni nazw) | `azcopy sync "C:\myDirectory" "https://<storage-account-name>.dfs.core.windows.net/mycontainer" --recursive` |
 
+### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Zaktualizuj lokalny system plików, wprowadzając zmiany w kontenerze
 
-### <a name="synchronize-a-local-file-system-to-a-container"></a>Zsynchronizować lokalny system plików do kontenera
-
-W tym przypadku kontener, staje się źródła i lokalnego systemu plików jest miejscem docelowym.
+W takim przypadku w lokalnym systemie plików jest miejscem docelowym, a kontener jest źródłem.
 
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy sync "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" "C:\myDirectory" --recursive` |
 | **Przykład** | `azcopy sync "https://mystorageaccount.blob.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
-| **Przykład** (hierarchicznej przestrzeni nazw) | `azcopy sync "https://mystorageaccount.dfs.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
+|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

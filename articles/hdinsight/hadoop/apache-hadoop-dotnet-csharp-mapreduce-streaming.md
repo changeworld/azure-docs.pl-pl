@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: b06f19736c4d50ab7d246a5c71da04ada95b6f98
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727367"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# o MapReduce, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
@@ -154,7 +154,7 @@ Po utworzeniu aplikacji, skompiluj go, aby wygenerować `/bin/Debug/reducer.exe`
 
     ![Konto magazynu dla klastra Eksplorator serwera](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/storage.png)
 
-    * Jeśli ten wpis można rozszerzać, używasz __konta usługi Azure Storage__ jako magazynem domyślnym dla klastra. Aby wyświetlić pliki na domyślny magazyn dla klastra, rozwiń pozycję, a następnie kliknij dwukrotnie __(domyślny kontener)__.
+    * Jeśli ten wpis można rozszerzać, używasz __konta usługi Azure Storage__ jako magazynem domyślnym dla klastra. Aby wyświetlić pliki na domyślny magazyn dla klastra, rozwiń pozycję, a następnie kliknij dwukrotnie __(domyślny kontener)__ .
 
     * Jeśli tego wpisu nie może zostać rozszerzona, którego używasz __usługi Azure Data Lake Storage__ jako magazynem domyślnym dla klastra. Aby wyświetlić pliki na domyślny magazyn dla klastra, kliknij dwukrotnie __(domyślne konto magazynu)__ wpisu.
 

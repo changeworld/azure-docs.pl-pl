@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
 ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60782726"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Tworzenie kopii zapasowej stanu systemu Windows podczas wdrażania usługi Resource Manager

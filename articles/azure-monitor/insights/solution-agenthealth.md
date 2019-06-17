@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
 ms.openlocfilehash: 568ff99364923c43b7199bed1dacd32cf0d18ab9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571155"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Rozwiązanie Agent Health w usłudze Azure Monitor
@@ -47,8 +47,8 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows | Yes | Zdarzenia pulsu są zbierane z bezpośrednich agentów systemu Windows.|
-| Grupa zarządzania programu System Center Operations Manager | Yes | Zdarzenia pulsu są zbierane z agentów raportujących do grupy zarządzania co 60 sekund, a następnie przekazywane do usługi Azure Monitor. Bezpośrednie połączenie agenta programu Operations Manager do usługi Azure Monitor nie jest wymagane. Dane zdarzeń pulsu są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics.|
+| Agenci dla systemu Windows | Tak | Zdarzenia pulsu są zbierane z bezpośrednich agentów systemu Windows.|
+| Grupa zarządzania programu System Center Operations Manager | Tak | Zdarzenia pulsu są zbierane z agentów raportujących do grupy zarządzania co 60 sekund, a następnie przekazywane do usługi Azure Monitor. Bezpośrednie połączenie agenta programu Operations Manager do usługi Azure Monitor nie jest wymagane. Dane zdarzeń pulsu są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics.|
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 Po dodaniu rozwiązania do obszaru roboczego usługi Log Analytics, **Agent Health** zostanie dodany Kafelek do pulpitu nawigacyjnego. Ten kafelek pokazuje całkowitą liczbę agentów oraz liczbę nieodpowiadających agentów w ciągu ostatnich 24 godzin.<br><br> ![Kafelek rozwiązania Agent Health na pulpicie nawigacyjnym](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)

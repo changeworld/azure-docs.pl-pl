@@ -9,10 +9,10 @@ ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60840323"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute
@@ -206,7 +206,7 @@ W przypadku komunikacji równorzędnej firmy Microsoft kliknij połączenia komu
 
 1. Sprawdź **Monitoruj tę komunikację równorzędną** pola wyboru. 
 2. (Opcjonalnie) Można zmienić docelowy punkt końcowy usługi firmy Microsoft. Domyślnie NPM wybiera punkt końcowy usługi firmy Microsoft jako element docelowy. NPM monitoruje łączność z serwerów lokalnych do tego punktu końcowego docelowego, za pośrednictwem usługi ExpressRoute. 
-    * Aby zmienić ten punkt końcowy docelowej, kliknij przycisk **(Edytuj)** łącze w obszarze **docelowego:**, a następnie wybierz inny punkt końcowy docelowej usługi firmy Microsoft z listy adresów URL.
+    * Aby zmienić ten punkt końcowy docelowej, kliknij przycisk **(Edytuj)** łącze w obszarze **docelowego:** , a następnie wybierz inny punkt końcowy docelowej usługi firmy Microsoft z listy adresów URL.
       ![edytowanie docelowego](./media/how-to-npm/edit_target.png)<br>
 
     * Można użyć niestandardowego adresu URL lub adres IP. Ta opcja jest szczególnie ważne w przypadku korzystania z komunikacji równorzędnej, aby nawiązać połączenie z usługami PaaS platformy Azure, takich jak Azure Storage, bazy danych SQL i witryn sieci Web, które są oferowane na publiczne adresy IP firmy Microsoft. Aby to zrobić, kliknij łącze **(Użyj niestandardowego adresu URL lub adres IP)** w dolnej części listy adresów URL, a następnie wprowadź publiczny punkt końcowy usługi PaaS platformy Azure, która jest połączona za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute.

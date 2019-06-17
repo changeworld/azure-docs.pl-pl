@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888945"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
@@ -38,7 +38,7 @@ Dodaj następujące dane telemetryczne na **pomiarów** strony:
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | Temperatura  | temperature | F     | 60  | 110 | 0              |
 | Wilgotność     | humidity    | %     | 0   | 100 | 0              |
-| Ciśnienie     | pressure    | kPa   | 80  | 110 | 0              |
+| Wykorzystanie     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > Typ danych miary telemetrii jest zmiennoprzecinkowy numer punktu.
@@ -62,7 +62,7 @@ Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzeni
 
 Dodaj następujące zdarzenie na **pomiarów** strony:
 
-| Nazwa wyświetlana | Nazwa pola  | Ważność |
+| Nazwa wyświetlana | Nazwa pola  | Severity |
 | ------------ | ----------- | -------- |
 | Przegrzaniu  | przegrzeje się    | Błąd    |
 
@@ -76,7 +76,7 @@ Dodaj następujące właściwości urządzenia na **właściwości** strony:
 | Nazwa wyświetlana        | Nazwa pola        | Typ danych |
 | ------------------- | ----------------- | --------- |
 | Numer seryjny       | serialNumber      | tekst      |
-| Producent urządzenia | producent      | tekst      |
+| Producent urządzenia | Producent      | tekst      |
 
 Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenia, właściwości nie można wyświetlić w aplikacji.
 

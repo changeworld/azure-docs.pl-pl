@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60691005"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Rozpoczynanie pracy z łącznikiem usługi Informix
@@ -44,7 +44,7 @@ Ten łącznik obsługuje następujące akcje aplikacji Logic Apps:
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Wyświetl tabele
+## <a name="list-tables"></a>Lista tabel
 Tworzenie aplikacji logiki dla każdej operacji składa się z wielu kroków wykonywanych za pośrednictwem portalu Microsoft Azure.
 
 W aplikacji logiki możesz dodać do listy tabel w bazie danych programu Informix akcję. Ta akcja powoduje, że łącznik do przetwarzania instrukcji schematu Informix, takich jak `CALL SYSIBM.SQLTABLES`.
@@ -58,7 +58,7 @@ W aplikacji logiki możesz dodać do listy tabel w bazie danych programu Informi
 2. W **wyzwalaczy** listy wybierz **cyklu**. 
 3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**.  
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix - Get tabel (wersja zapoznawcza)**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix - Get tabel (wersja zapoznawcza)** .
    
    ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
 6. W **Informix - Get tabel** konfiguracji wybierz opcję **wyboru** umożliwiające **Połącz za pośrednictwem lokalnej bramy danych**. Zwróć uwagę, zmianie ustawienia z chmury do środowiska lokalnego.
@@ -82,12 +82,12 @@ Ten łącznik obsługuje połączenia do bazy danych w środowisku lokalnym i w 
 
 | Właściwość | Opis |
 | --- | --- |
-| serwer |Wymagany. Akceptuje wartości ciągu reprezentujący adresu TCP/IP lub alias w formacie IPv4 lub IPv6, a następnie (-średnikami) przez numer portu TCP/IP. |
+| server |Wymagany. Akceptuje wartości ciągu reprezentujący adresu TCP/IP lub alias w formacie IPv4 lub IPv6, a następnie (-średnikami) przez numer portu TCP/IP. |
 | baza danych |Wymagany. Akceptuje wartości ciągu reprezentujący DRDA relacyjnej bazy danych nazwa (RDBNAM). Informix akceptuje ciąg 128 bajtów (baza danych jest znany jako nazwa bazy danych programu IBM Informix (dbname)). |
 | uwierzytelnianie |Opcjonalny. Akceptuje wartości elementu listy, podstawowe lub Windows (kerberos). |
-| nazwa użytkownika |Wymagany. Przyjmuje wartość ciągu. |
+| username |Wymagany. Przyjmuje wartość ciągu. |
 | password |Wymagany. Przyjmuje wartość ciągu. |
-| brama |Wymagany. Akceptuje wartości elementu listy, reprezentujący lokalnej bramy danych zdefiniowana z usługi Logic Apps w ramach grupy magazynów. |
+| gateway |Wymagany. Akceptuje wartości elementu listy, reprezentujący lokalnej bramy danych zdefiniowana z usługi Logic Apps w ramach grupy magazynów. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Utwórz połączenie bramy lokalnej
 Ten łącznik może uzyskać dostęp do bazy danych programu Informix lokalnie przy użyciu lokalnej bramy danych. Zobacz Tematy bramy, aby uzyskać więcej informacji. 
@@ -128,7 +128,7 @@ Można utworzyć akcji aplikacji logiki, aby pobrać wszystkie wiersze w tabeli 
 2. W **wyzwalaczy** listy wybierz **cyklu**. 
 3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Pobierz wiersze (wersja zapoznawcza)**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Pobierz wiersze (wersja zapoznawcza)** .
 6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**.
 7. W **połączeń** konfiguracji wybierz opcję **Utwórz nową**. 
    
@@ -165,7 +165,7 @@ Można utworzyć akcji aplikacji logiki, aby dodać jeden wiersz w tabeli progra
 2. W **wyzwalaczy** listy wybierz **cyklu**. 
 3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Wstaw wiersz (wersja zapoznawcza)**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Wstaw wiersz (wersja zapoznawcza)** .
 6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**. 
 7. W **połączeń** konfiguracji wybierz, aby wybrać połączenie. Na przykład wybierz **hisdemo2**.
    
@@ -192,7 +192,7 @@ Można utworzyć akcji aplikacji logiki, aby pobrać jeden wiersz w tabeli progr
 2. W **wyzwalaczy** listy wybierz **cyklu**. 
 3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Pobierz wiersze (wersja zapoznawcza)**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Pobierz wiersze (wersja zapoznawcza)** .
 6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**. 
 7. W **połączeń** konfiguracji wybierz, aby wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
    
@@ -220,7 +220,7 @@ Można utworzyć akcji aplikacji logiki, aby zmienić jeden wiersz w tabeli prog
 2. W **wyzwalaczy** listy wybierz **cyklu**. 
 3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Aktualizuj wiersz (wersja zapoznawcza)**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Aktualizuj wiersz (wersja zapoznawcza)** .
 6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**. 
 7. W **połączeń** konfiguracji wybierz, aby wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
    
@@ -247,7 +247,7 @@ Można utworzyć akcji aplikacji logiki, aby usunąć jeden wiersz w tabeli prog
 2. W **wyzwalaczy** listy wybierz **cyklu**. 
 3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Usuń wiersz (wersja zapoznawcza)**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Usuń wiersz (wersja zapoznawcza)** .
 6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**. 
 7. W **połączeń** okienko konfiguracji, wybierz istniejące połączenie. Na przykład wybierz **hisdemo2**.
    

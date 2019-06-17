@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5330d398a75105b78cb2caa0373b78fa2e32a99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8fdc9132a88a9822f96600afd64bbb8e2f69a0a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863157"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Compliance ELF
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Compliance ELF z usługą Azure AD, mus
 
 **Aby dodać aplikację Compliance ELF z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -77,7 +77,7 @@ Aby logowanie jednokrotne działało, należy ustanowić relację połączenia m
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Compliance ELF, należy ukończyć poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Compliance ELF](#configure-compliance-elf-single-sign-on)**— aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Compliance ELF](#configure-compliance-elf-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego aplikacji Compliance ELF](#create-compliance-elf-test-user)** — aby mieć w aplikacji Compliance ELF odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
@@ -185,7 +185,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Compliance ELF w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Compliance ELF, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

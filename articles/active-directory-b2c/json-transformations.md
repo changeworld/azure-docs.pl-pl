@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 9a026d205d3ab855ecbb51048e7464df6fb4a094
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510746"
 ---
 # <a name="json-claims-transformations"></a>JSON oświadczeń przekształcenia
@@ -121,7 +121,7 @@ Pobiera określony element liczbowych (long) z danymi w formacie JSON.
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | inputJson | string | ClaimTypes, używane przez Przekształcanie oświadczeń można pobrać oświadczenia. |
 | InputParameter | claimToExtract | string | Nazwa elementu JSON do wyodrębnienia. |
-| oświadczenie outputClaim | extractedClaim | długi | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation, wartość elementu określona w _claimToExtract_ parametrów wejściowych. |
+| oświadczenie outputClaim | extractedClaim | long | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation, wartość elementu określona w _claimToExtract_ parametrów wejściowych. |
 
 W poniższym przykładzie wyodrębnia przekształcania oświadczeń `id` element z danych JSON.
 

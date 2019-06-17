@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
 ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61234975"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Model danych analizy dzienników dla danych usługi Azure Backup

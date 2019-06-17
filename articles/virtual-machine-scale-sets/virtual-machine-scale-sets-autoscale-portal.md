@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: 648bc0295cd5435e9c3e44f33b7ae80522fa8e0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60618882"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatyczne skalowanie maszyn wirtualnych zestawu skalowania w witrynie Azure portal
@@ -76,7 +76,7 @@ Wieczorami lub w weekendy zapotrzebowanie aplikacji może być mniejsze. Jeśli 
     
     | Parametr              | Wyjaśnienie                                                                                                          | Wartość          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Operator*             | Operator używany do porównywania danych metryki z wartością progową.                                                      | Mniej niż   |
+    | *Operator*             | Operator używany do porównywania danych metryki z wartością progową.                                                      | Mniejsze niż   |
     | *Próg*            | Wartość procentowa, która powoduje wyzwolenie akcji przez regułę skalowania automatycznego.                                                 | 30             |
     | *Operacja*            | Określa, czy zestaw skalowania powinny być skalowane w górę lub w dół, gdy ta reguła ma zastosowanie i z jakich przyrostem                         | Zmniejsz wartość procentową o |
     | *Liczba wystąpień*       | Wartość procentowa liczby wystąpień maszyn wirtualnych, która powinna zostać zmieniona po wyzwoleniu reguły.                                             | 20             |

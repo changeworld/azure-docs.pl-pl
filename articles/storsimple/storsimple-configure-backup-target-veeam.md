@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60633969"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Usługa StorSimple jako miejsce docelowe kopii zapasowej z oprogramowaniem Veeam
@@ -319,8 +319,8 @@ Oto przykład planu obrotu GFS cztery tygodnie, miesięczne i roczne:
 | Typ częstotliwości/kopia zapasowa | Pełne | Przyrostowa (1 – 5 dni)  |   
 |---|---|---|
 | Co tydzień (1 – 4 tygodnie) | Sobota | Od poniedziałku do piątku |
-| Co miesiąc  | Sobota  |   |
-| Rocznie | Sobota  |   |
+| Miesięczne  | Sobota  |   |
+| Co rok | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Przypisać woluminy StorSimple do zadania tworzenia kopii zapasowej Veeam
@@ -399,8 +399,8 @@ Obrót GFS tygodniowe, miesięczne i roczne harmonogramu
 | Tydzień 2 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 3 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 4 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
-| Co miesiąc | Co miesiąc StorSimple |   |   |   |   |   |
-| Rocznie | Co rok StorSimple  |   |   |   |   |   |
+| Miesięczne | Co miesiąc StorSimple |   |   |   |   |   |
+| Co rok | Co rok StorSimple  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Przypisać woluminy StorSimple do zadania kopiowania Veeam
 

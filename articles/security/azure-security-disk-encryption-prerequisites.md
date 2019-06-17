@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6874258c31d4dd7d2a0aa0042624ee57616c0a89
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 16a556264cda3ed4eb93e8fb738765ddcb379f69
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234279"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068571"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption
 
@@ -39,7 +39,7 @@ Dla systemu Windows Server 2008 R2 musisz mieć zainstalowany przed włączeniem
 ## <a name="bkmk_LinuxPrereq"></a> Dodatkowe wymagania wstępne dotyczące maszyn wirtualnych IaaS z systemem Linux 
 
 - Usługa Azure Disk Encryption dla systemu Linux wymaga 7 GB pamięci RAM na maszynę Wirtualną, aby włączyć szyfrowanie dysku systemu operacyjnego na [obsługiwane obrazy](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Po zakończeniu procesu szyfrowania dysku systemu operacyjnego maszyny Wirtualnej można skonfigurować do uruchamiania przy użyciu mniejszej ilości pamięci.
-- Usługa Azure Disk Encryption wymaga modułu vfat być obecne w systemie.  Usunięcie lub wyłączenie tego modułu na podstawie domyślnego obrazu uniemożliwi systemu można odczytać klucza woluminu oraz uzyskać klucz, który chcesz odblokować dysków na kolejnym rozruchu. Kroki zaostrzanie poziomu zabezpieczeń systemu, które usunąć moduł vfat z systemu nie są zgodne z usługi Azure Disk Encryption. 
+- Usługa Azure Disk Encryption wymaga dm-crypt i modułów vfat obecne w systemie. Usunięcie lub wyłączenie vfat z domyślnego obrazu uniemożliwi systemu w zakresie odczytywania klucza woluminu i uzyskiwanie klucza chcesz odblokować dysków na kolejnym rozruchu. Kroki zaostrzanie poziomu zabezpieczeń systemu, które usunąć moduł vfat z systemu nie są zgodne z usługi Azure Disk Encryption. 
 - Przed włączeniem szyfrowania, dysków danych do zaszyfrowania muszą właściwie się na liście/etc/fstab. Użyj nazwy urządzenia trwałego blok dla tego wpisu jako nazwy w formacie "/ dev/sdX" nie można polegać ma zostać skojarzony z tym samym dysku między ponownymi uruchomieniami, szczególnie w przypadku, po zastosowaniu szyfrowania urządzenia. Aby uzyskać więcej szczegółowych informacji dotyczących tego zachowania zobacz: [Rozwiązywanie problemów z zmiany nazwy urządzenia maszyny Wirtualnej systemu Linux](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - Upewnij się, że poprawnie skonfigurowano ustawienia/etc/fstab potrzeby instalowania. Aby skonfigurować te ustawienia, polecenie instalacji lub ponowne uruchomienie maszyny Wirtualnej i wyzwolić ponowne zainstalowanie w ten sposób. Sprawdź dane wyjściowe polecenia lsblk, aby zweryfikować, że dysk jest nadal zainstalowany, po zakończeniu tej operacji. 
   - Jeśli plik/etc/fstab nie poprawnie zainstalować dysku przed włączeniem szyfrowania, usługa Azure Disk Encryption nie będzie mogła poprawnie go zainstalować.
@@ -61,9 +61,9 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
 **Zasady grupy:**
  - Rozwiązanie Azure Disk Encryption dla maszyn wirtualnych IaaS Windows korzysta z zewnętrznego ochrony klucza funkcji BitLocker. Dla maszyn wirtualnych przyłączonych do domeny, nie Wypchnij żadnych zasad grupy, które wymuszają modułu TPM funkcje ochrony kluczy. Aby uzyskać informacje o zasadach grupy "Zezwalaj na funkcję BitLocker bez zgodnego modułu TPM", zobacz [dokumentacja zasad grupy funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup).
 
--  Zasad funkcji BitLocker na maszynach wirtualnych przyłączonych do domeny za pomocą zasad grupy niestandardowe, należy uwzględnić następujące ustawienia: [Konfigurowanie magazynu użytkownika informacji o odzyskiwaniu -> Zezwalaj na 256-bitowego klucza odzyskiwania funkcji bitlocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Usługa Azure Disk Encryption zakończy się niepowodzeniem, jeśli ustawienia zasad grupy niestandardowe do używania funkcji BitLocker są niezgodne. Na komputerach, które nie mają poprawne ustawienie, należy zastosować nowe zasady, wymusić nowe zasady w celu aktualizacji (/ Force gpupdate.exe) i ponowne uruchomienie, może być wymagane.
+-  Zasad funkcji BitLocker na maszynach wirtualnych przyłączonych do domeny za pomocą zasad grupy niestandardowe, należy uwzględnić następujące ustawienia: [Konfigurowanie magazynu użytkownika informacji o odzyskiwaniu -> Zezwalaj na 256-bitowego klucza odzyskiwania funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Usługa Azure Disk Encryption zakończy się niepowodzeniem, jeśli ustawienia zasad grupy niestandardowe do używania funkcji BitLocker są niezgodne. Na komputerach, które nie mają poprawne ustawienie, należy zastosować nowe zasady, wymusić nowe zasady w celu aktualizacji (/ Force gpupdate.exe) i ponowne uruchomienie, może być wymagane.
 
-- Usługa Azure Disk Encryption zakończy się niepowodzeniem, jeśli zasady grupy na poziomie domeny blokuje algorytmu AES-CBC, który jest używany przez funkcję Bitlocker.
+- Usługa Azure Disk Encryption zakończy się niepowodzeniem, jeśli zasady grupy na poziomie domeny blokuje algorytmu AES-CBC, który jest używany przez funkcję BitLocker.
 
 
 ## <a name="bkmk_PSH"></a> Program Azure PowerShell
@@ -243,7 +243,7 @@ Użyj [az keyvault update](/cli/azure/keyvault#az-keyvault-update) umożliwia sz
 3. Wybierz **włączyć dostęp do usługi Azure Virtual Machines na potrzeby wdrożenia** i/lub **Włącz dostęp do usługi Azure Resource Manager dla wdrożenia szablonu**, jeśli to konieczne. 
 4. Kliknij pozycję **Zapisz**.
 
-![Zaawansowane zasady dostępu magazynu kluczy Azure](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
+    ![Zaawansowane zasady dostępu magazynu kluczy Azure](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="bkmk_KEK"></a> Konfigurowanie klucza szyfrowania (opcjonalnie)

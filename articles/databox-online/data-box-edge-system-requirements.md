@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60756549"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Wymagania dotyczące systemu Azure krawędź pola danych
@@ -60,7 +60,7 @@ Konfiguracja portu dla serwerów obsługujących środowisko uruchomieniowe usł
 
 | Nr portu. | Wewnątrz lub na zewnątrz | Zakres portów | Wymagane | Wskazówki |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Wyjście       | Sieć WAN        | Yes      | Otwórz ruchu wychodzącego dla usługi IoT Edge inicjowania obsługi administracyjnej. Ta konfiguracja jest wymagana w przypadku korzystania z ręcznego skryptów lub usługi Azure IoT urządzenia inicjowania obsługi usługi (DPS).|
+| TCP 443 (HTTPS)| limit       | WAN        | Yes      | Otwórz ruchu wychodzącego dla usługi IoT Edge inicjowania obsługi administracyjnej. Ta konfiguracja jest wymagana w przypadku korzystania z ręcznego skryptów lub usługi Azure IoT urządzenia inicjowania obsługi usługi (DPS).|
 
 Aby uzyskać pełne informacje, przejdź do [Zapora i reguły konfiguracji portów dla wdrożenia usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457655"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Sposób użycia usługi Twilio dla połączeń głosowych i SMS funkcji w języku Ruby
@@ -52,16 +52,16 @@ Twilio zlecenia są tagi XML, określające Twilio, co **czy**. Na przykład **&
 
 Oto lista poleceń usługi Twilio.
 
-* **&lt;Wybierania&gt;**: Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
-* **&lt;Gather&gt;**: Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
-* **&lt;Rozłączanie&gt;**: Kończy wywołanie.
-* **&lt;Play&gt;**: Odtwarza plik audio.
-* **&lt;Pause&gt;**: Dyskretnie czeka określoną liczbę sekund.
-* **&lt;Rekord&gt;**: Rejestruje głosu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
-* **&lt;Redirect&gt;**: Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
-* **&lt;Reject&gt;**: Odrzuca połączenie na numer Twilio bez możesz rozliczeń
-* **&lt;Powiedz&gt;**: Konwertuje tekst na mowę, który składa się na wywołanie.
-* **&lt;Sms&gt;**: Wysyła wiadomość SMS.
+* **&lt;Wybierania&gt;** : Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
+* **&lt;Gather&gt;** : Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
+* **&lt;Rozłączanie&gt;** : Kończy wywołanie.
+* **&lt;Play&gt;** : Odtwarza plik audio.
+* **&lt;Pause&gt;** : Dyskretnie czeka określoną liczbę sekund.
+* **&lt;Rekord&gt;** : Rejestruje głosu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
+* **&lt;Redirect&gt;** : Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
+* **&lt;Reject&gt;** : Odrzuca połączenie na numer Twilio bez możesz rozliczeń
+* **&lt;Powiedz&gt;** : Konwertuje tekst na mowę, który składa się na wywołanie.
+* **&lt;Sms&gt;** : Wysyła wiadomość SMS.
 
 Aby uzyskać więcej informacji na temat Twilio zleceń, ich atrybuty i TwiML zobacz [TwiML][twiml]. Aby uzyskać dodatkowe informacje na temat interfejsu API usługi Twilio, zobacz [interfejsu API usługi Twilio][twilio_api].
 

@@ -5,16 +5,15 @@ description: Dowiedz się, jak połączyć się z usługi Cosmos DB korzystanie 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-origin.date: 12/26/2018
-ms.date: 03/18/2019
-author: rockboyfor
-ms.author: v-yeche
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
 ms.custom: seodec18
 ms.openlocfilehash: 9b0a6393d2372c831fdc964dee18acbccfd39a77
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61332047"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Łączenie się z kontem Cosmos korzystanie z programu Studio 3T
@@ -114,5 +113,3 @@ Aby utworzyć bazę danych, kolekcję i dokumenty przy użyciu z programu Studio
 
 - Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
-
-<!-- Update_Description: update meta properties, wording update -->

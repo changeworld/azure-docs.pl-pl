@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 042c3c2925e9d537847f16f02d841d793456fb03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d9dd3ff2f24660404a1ab0440668c4d4da1e7319
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61451841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080515"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co to są akceleratory rozwiązań Azure IoT?
 
@@ -42,7 +42,7 @@ Za pomocą pulpitu nawigacyjnego zdalnego monitorowania można wyświetlać dane
 
 ### <a name="connected-factory"></a>Połączona fabryka
 
-[Akcelerator rozwiązań Połączona fabryka](iot-accelerators-connected-factory-sample-walkthrough.md) umożliwia zbieranie danych telemetrycznych z zasobów przemysłowych korzystających z interfejsu [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) oraz sterowanie nimi. Zasoby przemysłowe mogą obejmować stanowiska montażu i testowania na fabrycznej linii produkcyjnej.
+[Akcelerator rozwiązań Połączona fabryka](iot-accelerators-connected-factory-features.md) umożliwia zbieranie danych telemetrycznych z zasobów przemysłowych korzystających z interfejsu [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) oraz sterowanie nimi. Zasoby przemysłowe mogą obejmować stanowiska montażu i testowania na fabrycznej linii produkcyjnej.
 
 Pulpit nawigacyjny połączonej fabryki umożliwia monitorowanie urządzeń przemysłowych i zarządzanie nimi:
 

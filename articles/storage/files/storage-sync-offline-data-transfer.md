@@ -9,10 +9,10 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d1ec5168b898d0aa75c12e6eb435e20c09de1929
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700270"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migracja danych zbiorczo do usługi Azure File Sync
@@ -49,9 +49,9 @@ Poniżej przedstawiono sposób konfigurowania usługi Azure File Sync w sposób,
 
 ![Diagram przedstawiający sposób konfigurowania usługi Azure File Sync](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
 
-| Krok | Szczegół |
+| Krok | Szczegóły |
 |---|---------------------------------------------------------------------------------------|
-| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Zamówienie usługi Data Box](../../databox/data-box-deploy-ordered.md). Urządzenie Data Box oferty rodziny [kilka produktów](https://azure.microsoft.com/services/storage/databox/data) stosownie do potrzeb. Gdy pojawi się usługi Data Box, postępuj zgodnie z jego [dokumentacji, aby skopiować dane](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do ścieżki UNC na urządzenie Data Box:  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\> \<ShareName\>*. W tym miejscu *ShareName* to nazwa udziału przemieszczania. Urządzenie Data Box można wysyłać do platformy Azure. |
+| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Zamówienie usługi Data Box](../../databox/data-box-deploy-ordered.md). Urządzenie Data Box oferty rodziny [kilka produktów](https://azure.microsoft.com/services/storage/databox/data) stosownie do potrzeb. Gdy pojawi się usługi Data Box, postępuj zgodnie z jego [dokumentacji, aby skopiować dane](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do ścieżki UNC na urządzenie Data Box:  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\> \<ShareName\>* . W tym miejscu *ShareName* to nazwa udziału przemieszczania. Urządzenie Data Box można wysyłać do platformy Azure. |
 | ![Krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Poczekaj, aż pliki pojawiają się w udziałów plików platformy Azure, wybranych przez Ciebie jako tymczasowy udziały przemieszczania. *Nie włączaj synchronizację w tych udziałach.* |
 | ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Utwórz nowy pusty udział dla każdego udziału plików, które urządzenia Data Box utworzone dla Ciebie. Ten nowy udział powinien być na tym samym koncie magazynu, udziału urządzenia Data Box. [Jak utworzyć nowy udział plików platformy Azure](storage-how-to-create-file-share.md). |
 | ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Tworzenie grupy synchronizacji](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) w usłudze synchronizacji magazynu. Odwołanie do pustego udziału jako punktu końcowego w chmurze. Powtórz ten krok dla każdego udziału plików urządzenia Data Box. [Konfigurowanie usługi Azure File Sync](storage-sync-files-deployment-guide.md). |

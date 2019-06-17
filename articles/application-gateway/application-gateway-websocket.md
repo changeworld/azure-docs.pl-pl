@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
 ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831255"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Omówienie obsługi protokołu WebSocket w usłudze Application Gateway
 
-Usługa Application Gateway zapewnia Natywna obsługa protokołu WebSocket we wszystkich rozmiarów bramy. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. 
+Usługa Application Gateway zapewnia natywną obsługę protokołu WebSocket w bramach każdego rozmiaru. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. 
 
 Protokół WebSocket ujednoliceniu [RFC6455](https://tools.ietf.org/html/rfc6455) umożliwia komunikację pełnodupleksową między serwerem klientem za pośrednictwem połączenia protokołu TCP długotrwałe. Ta funkcja umożliwia bardziej interaktywny komunikacji między serwerem sieci web i klienta, który można dwukierunkową, bez konieczności sondowania jako wymagane w implementacji oparty na protokole HTTP. WebSocket niski ma obciążenie w odróżnieniu od protokołu HTTP i można ponownie użyć tego samego połączenia protokołu TCP dla wielu żądań/odpowiedzi skutkuje bardziej wydajne wykorzystanie zasobów. Protokoły WebSocket zostały zaprojektowane do pracy za pośrednictwem tradycyjnych portów HTTP 80 i 443.
 

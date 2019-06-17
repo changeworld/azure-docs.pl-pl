@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61346347"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w usłudze Azure Data Factory
@@ -81,9 +81,9 @@ Poniżej przedstawiono niektóre zalecenia dotyczące używania działania usuwa
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| Zestaw danych | Zawiera dokumentację zestawu danych, aby określić, które pliki lub folder do usunięcia | Yes |
-| cykliczne | Wskazuje, czy pliki są rekursywnie usuniętych z podfolderów lub tylko z określonego folderu.  | Nie. Wartość domyślna to `false`. |
-| MaxConcurrentConnections | Liczba połączeń, aby połączyć się z magazynem magazynu jednocześnie związanych z usuwaniem folder lub wybrane pliki.   |  Nie. Wartość domyślna to `1`. |
+| Zestaw danych | Zawiera dokumentację zestawu danych, aby określić, które pliki lub folder do usunięcia | Tak |
+| recursive | Wskazuje, czy pliki są rekursywnie usuniętych z podfolderów lub tylko z określonego folderu.  | Nie. Wartość domyślna to `false`. |
+| maxConcurrentConnections | Liczba połączeń, aby połączyć się z magazynem magazynu jednocześnie związanych z usuwaniem folder lub wybrane pliki.   |  Nie. Wartość domyślna to `1`. |
 | EnableLogging | Wskazuje, czy należy on do rejestrowania nazw folderów lub plików, które zostały usunięte. W przypadku opcji true należy dodatkowo podać konto magazynu, aby zapisać plik dziennika tak, aby można było śledzić zachowania działania usuwania, zapoznając się w pliku dziennika. | Nie |
 | logStorageSettings | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Grupy właściwości magazynu, które można określić, gdzie chcesz zapisać plik dziennika, zawierającą nazwy folderu lub pliku, które zostały usunięte przez działanie usuwania. | Nie |
 | linkedServiceName | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Połączona usługa [usługi Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties), lub [usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) do przechowywania plików dziennika, który zawiera folder i nazwę pliku został usunięty przez działanie Delete. | Nie |
@@ -573,4 +573,4 @@ Zestaw danych jako miejsce docelowe danych używane przez działanie kopiowania.
 
 Dowiedz się więcej na temat przenoszenia plików w usłudze Azure Data Factory.
 
--   [Narzędzie do kopiowania danych w usłudze Azure Data Factory](copy-data-tool.md)
+-   [Narzędzie do kopiowanie danych w usłudze Azure Data Factory](copy-data-tool.md)

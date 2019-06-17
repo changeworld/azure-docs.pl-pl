@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61425954"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Wyświetlanie i analizowanie danych dzienników w usłudze Azure Monitor
@@ -46,7 +46,7 @@ Otwieranie usługi Log Analytics z określonego zasobu, jest objęty zakresem au
 
 Następujące opcje nie są jeszcze dostępne za pośrednictwem widoku zasobów usługi Log Analytics:
 
-- Zapisz
+- Zapisanie
 - Ustawianie alertu
 - Eksplorator zapytań
 - Przełączanie do innego obszaru roboczego/zasobu (aktualnie nie zaplanowana)
@@ -55,11 +55,11 @@ Następujące opcje nie są jeszcze dostępne za pośrednictwem widoku zasobów 
 ## <a name="firewall-requirements"></a>Wymagania dotyczące zapory
 Przeglądarka wymaga dostępu do następujących adresów do dostępu do usługi Log Analytics.  Jeśli przeglądarka jest dostęp do witryny Azure portal za pośrednictwem zapory, należy włączyć dostęp do tych adresów.
 
-| Identyfikator URI | Adres IP | Porty |
+| Identyfikator URI | IP | Porty |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamiczny | 80,443 |
-| api.loganalytics.io    | Dynamiczny | 80,443 |
-| docs.loganalytics.io   | Dynamiczny | 80,443 |
+| portal.loganalytics.io | Dynamiczne | 80,443 |
+| api.loganalytics.io    | Dynamiczne | 80,443 |
+| docs.loganalytics.io   | Dynamiczne | 80,443 |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -9,10 +9,10 @@ ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60366555"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Tworzenie i modyfikowanie obwodu usługi ExpressRoute
@@ -83,7 +83,7 @@ Na tej stronie **stan dostawcy** zawiera informacje dotyczące bieżącego stanu
 
 Podczas tworzenia nowego obwodu usługi ExpressRoute obwód jest w następującym stanie:
 
-Stan dostawcy: Nie aprowizowano<BR>
+Stan dostawcy: Nie zainicjowano obsługi administracyjnej<BR>
 Stan obwodu: Enabled (Włączony)
 
 ![Zainicjuj proces aprowizacji](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
@@ -95,7 +95,7 @@ Stan obwodu: Enabled (Włączony)
 
 Należy mieć możliwość użycia obwodu usługi ExpressRoute musi być w następującym stanie:
 
-Stan dostawcy: Przeprowadzono aprowizację<BR>
+Stan dostawcy: Zaaprowizowane<BR>
 Stan obwodu: Enabled (Włączony)
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Okresowo sprawdzać stan i stan klawisza obwodu

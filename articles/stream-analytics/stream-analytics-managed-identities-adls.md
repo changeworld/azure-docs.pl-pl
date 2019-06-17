@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66148514"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 za pomocą tożsamości zarządzanych
@@ -180,7 +180,7 @@ Ta funkcja nie obsługuje następujących działań:
 
 1. **Dostęp do wielu dzierżawców**: Nazwa główna usługi utworzone dla danego zadania usługi Stream Analytics będą znajdować się w dzierżawie usługi Azure Active Directory, na którym utworzono zadanie i nie można używać wobec zasobu, który znajduje się w innej dzierżawie usługi Azure Active Directory. W związku z tym tylko służy MSI na zasobach ADLS generacji 1, które znajdują się w tej samej dzierżawie usługi Azure Active Directory jako zadanie Azure Stream Analytics. 
 
-2. **[Tożsamość użytkownika z przypisaną](../active-directory/managed-identities-azure-resources/overview.md)**: nie jest obsługiwane. Oznacza to, że użytkownik nie będzie mógł wprowadzić własne jednostki usługi, który będzie używany przez ich zadania usługi Stream Analytics. Nazwa główna usługi jest generowany przez usługę Azure Stream Analytics.
+2. **[Tożsamość użytkownika z przypisaną](../active-directory/managed-identities-azure-resources/overview.md)** : nie jest obsługiwane. Oznacza to, że użytkownik nie będzie mógł wprowadzić własne jednostki usługi, który będzie używany przez ich zadania usługi Stream Analytics. Nazwa główna usługi jest generowany przez usługę Azure Stream Analytics.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

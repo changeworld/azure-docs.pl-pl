@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/29/2019
 ms.author: roiyz
-ms.openlocfilehash: 270b3ae49a815c9e12fce9377c8298192237f28a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fb931d5ce72b21cb17abbcd11095dbc8d611f0c9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790374"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064426"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej platformy Azure Monitor dla Windows
 
@@ -38,17 +38,18 @@ Rozszerzenie agenta usługi Log Analytics dla Windows obsługuje następujące w
 - Windows Server 2008 R2, 2012, 2012 R2, 2016 w wersji 1709 i 1803
 
 ### <a name="agent-and-vm-extension-version"></a>Wersja agenta i rozszerzenia maszyny Wirtualnej
-Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej platformy Azure Monitor i pakietu agenta usługi Log Analytics dla każdej wersji. 
+Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej programu Windows Azure Monitor i pakietu agenta usługi Log Analytics dla każdej wersji. 
 
-| Wersja rozszerzenia usługi Azure Monitor maszyny Wirtualnej z systemem Linux | Wersja pakietu agenta analizy dziennika | Data wydania | Informacje o wersji |
+| Wersja pakietu agenta Windows Analytics dziennika | Wersja rozszerzenia usługi Azure Monitor Windows VM | Data wydania | Informacje o wersji |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 8.0.11049.0 | 1.0.11049.1 | Lutego 2017 r. | |
-| 8.0.11072.0 | 1.0.11072.1 | Września 2017 r. | |
-| 8.0.11081.0 | 1.0.11081.5 | Listopada 2017 r. | | 
-| 8.0.11103.0 | Nie dotyczy |  Kwiecień 2018 r. | |
-| 8.0.11136.0 | Nie dotyczy | Września 2018 r. |  <ul><li> Dodano obsługę wykrywania zmianę Identyfikatora zasobu na przeniesienie maszyny Wirtualnej </li><li> Dodano obsługę raportowania zasobów, zainstaluj identyfikator podczas korzystania bez rozszerzeń </li></ul>| 
-| 10.19.10006.0 | Nie dotyczy | Grudnia 2018 r. | <ul><li> Stabilizacji drobne poprawki </li></ul> | 
-| 10.19.13515.0 | 1.0.13515.1 | Marca 2019 r | <ul><li>Stabilizacji drobne poprawki </li></ul> |
+| 10.20.18001 | 1.0.18001 | 2019 czerwca | <ul><li> Niewielkie poprawki błędów i ulepszenia stabilizacji </li><li> Dodano możliwość wyłączyć domyślne poświadczenia podczas nawiązywania połączenia serwera proxy (Obsługa WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
+| 10.19.13515 | 1.0.13515 | Marca 2019 r | <ul><li>Stabilizacji drobne poprawki </li></ul> |
+| 10.19.10006 | Nie dotyczy | Grudnia 2018 r. | <ul><li> Stabilizacji drobne poprawki </li></ul> | 
+| 8.0.11136 | Nie dotyczy | Września 2018 r. |  <ul><li> Dodano obsługę wykrywania zmianę Identyfikatora zasobu na przeniesienie maszyny Wirtualnej </li><li> Dodano obsługę raportowania zasobów, zainstaluj identyfikator podczas korzystania bez rozszerzeń </li></ul>| 
+| 8.0.11103 | Nie dotyczy |  Kwiecień 2018 r. | |
+| 8.0.11081 | 1.0.11081 | Listopada 2017 r. | | 
+| 8.0.11072 | 1.0.11072 | Września 2017 r. | |
+| 8.0.11049 | 1.0.11049 | Lutego 2017 r. | |
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -89,7 +90,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia agenta usługi Log Analy
 | Name (Nazwa) | Wartość / przykład |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| Wydawcy | Microsoft.EnterpriseCloud.Monitoring |
+| publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | workspaceId (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
@@ -97,7 +98,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia agenta usługi Log Analy
 
 \* Identyfikator obszaru roboczego jest nazywany consumerId w interfejsu API programu Log Analytics.
 
-## <a name="template-deployment"></a>Wdrożenie szablonu
+## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
 Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do uruchomienia rozszerzenia agenta usługi Log Analytics podczas wdrażania szablonu usługi Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie maszyny Wirtualnej agenta usługi Log Analytics można znaleźć na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 

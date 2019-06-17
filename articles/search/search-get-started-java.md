@@ -10,10 +10,10 @@ ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
 ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61289879"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Wprowadzenie do usługi Azure Search w języku Java
@@ -97,7 +97,7 @@ Wszystkie kolejne modyfikacje plików i instrukcje uruchamiania będą wykonywan
    
     ![][6]
 3. Kliknij przycisk **Zastosuj**.
-4. Wybierz pozycję **Okna** > **Preferencje** > **Serwer** > **Środowiska wykonawcze** > **Dodaj...**.
+4. Wybierz pozycję **Okna** > **Preferencje** > **Serwer** > **Środowiska wykonawcze** > **Dodaj...** .
 5. Rozwiń pozycję Apache i wybierz wersję serwera Apache Tomcat, która została wcześniej zainstalowana. W naszym systemie zainstalowano wersję 8.
    
     ![][7]
@@ -118,7 +118,7 @@ Wszystkie kolejne modyfikacje plików i instrukcje uruchamiania będą wykonywan
 Zadania konfiguracji zostały zakończone. W dalszej części skompilujesz i uruchomisz projekt.
 
 ## <a name="build-the-project"></a>Kompilowanie projektu
-1. W obszarze Eksplorator projektów kliknij prawym przyciskiem myszy nazwę projektu i wybierz polecenie **Wykonaj jako** > **Kompilacja Maven...**, aby skonfigurować projekt.
+1. W obszarze Eksplorator projektów kliknij prawym przyciskiem myszy nazwę projektu i wybierz polecenie **Wykonaj jako** > **Kompilacja Maven...** , aby skonfigurować projekt.
    
     ![][10]
 2. W obszarze Edycja konfiguracji, w polu Cele wpisz „czysta instalacja”, a następnie kliknij pozycję **Wykonaj**.
