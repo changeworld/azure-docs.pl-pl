@@ -39,6 +39,8 @@
   items:
     - name: Wdrażanie przy użyciu programu Azure PowerShell
       href: deploy-ps.md
+    - name: Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
+      href: deploy-cli.md
     - name: Wdrażanie przy użyciu szablonu
       href: deploy-template.md
     - name: Integrowanie z modułem równoważenia obciążenia

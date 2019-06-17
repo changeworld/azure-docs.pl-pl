@@ -74,8 +74,9 @@
     - name: Widoczność w całej dzierżawie
       href: security-center-management-groups.md
     - name: Zalecenia dotyczące implementowania zabezpieczeń
-      href: security-center-recommendations.md
       items:
+        - name: Co to są zalecenia dotyczące zabezpieczeń
+          href: security-center-recommendations.md
         - name: Zwiększanie poziomu bezpieczeństwa
           href: security-center-monitoring.md
         - name: Ochrona maszyn i aplikacji
@@ -181,6 +182,8 @@
       href: /learn/browse/?term=securityS
     - name: Zarządzanie danymi użytkowników
       href: security-center-privacy.md
+    - name: Zarządzanie środowiskiem IoT
+      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: Często zadawane pytania
       href: security-center-faq.md
     - name: Zabezpieczenia platformy Azure

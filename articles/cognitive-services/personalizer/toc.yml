@@ -43,6 +43,8 @@
         - name: Ocena w trybie offline
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+    - name: Skalowalność i wydajność
+      href: concepts-scalability-performance.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie i konfigurowanie usługi Personalizacja

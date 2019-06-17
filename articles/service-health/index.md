@@ -5,33 +5,48 @@ author: stephbaron
 layout: LandingPage
 ms.service: service-health
 ms.topic: landing-page
-ms.date: 03/4/2019
+ms.date: 06/05/2019
 ms.author: stbaron
-ms.openlocfilehash: aa00d4b08725eaf4b667fc7b53b225198db95a02
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 05ea33076f329a6244d4259bf3f973b88bf1f2b5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441661"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073390"
 ---
 # <a name="azure-service-health-documentation"></a>Dokumentacja usługi Azure Service Health
 
-Platforma Azure oferuje pakiet środowisk umożliwiający informowanie o kondycji zasobów w chmurze, łącznie z bieżącymi i przyszłymi problemami, takimi jak zdarzenia mające wpływ na usługę, planowana konserwacja i inne zmiany, które mogą mieć wpływ na dostępność.
+Usługa Azure Service Health to zestaw środowisk, które udostępniają spersonalizowane wskazówki i pomoc techniczną, gdy napotkasz problemy z usługami platformy Azure. Usługa Azure Service Health może generować powiadomienia, pomagać zrozumieć znaczenie problemów i informować na bieżąco o rozwiązywaniu problemów. Usługa Azure Service Health może też ułatwić przygotowanie się do zaplanowanej konserwacji i zmian, które mogą wpłynąć na dostępność zasobów.
 
-Być może znasz **[stronę stanu platformy Azure](https://status.azure.com)**, która zapewnia globalny widok kondycji wszystkich usług platformy Azure we wszystkich regionach świadczenia usługi Azure. Strona stanu jest przydatna w przypadku zdarzeń mających wpływ na wiele elementów, ale zdecydowanie zalecamy, aby bieżący użytkownicy platformy Azure korzystali z usługi **Azure Service Health**, aby uzyskiwać informacje o zdarzeniach i konserwacji platformy Azure.
+Usługa Azure Service Health składa się z następujących elementów:
 
-Usługa **[Azure Service Health](service-health-overview.md)** zapewnia spersonalizowany widok kondycji usług platformy Azure i używanych regionów. Jest to najlepsze miejsce do sprawdzania komunikatów mających wpływ na usługi o przestojach i działaniach planowanej konserwacji oraz innych porad dotyczących kondycji, ponieważ uwierzytelnione środowisko usługi Azure Service Health zna obecnie używane usługi i zasoby. Najlepszym sposobem używania usługi Service Health jest skonfigurowanie alertów, aby otrzymywać powiadomienia za pośrednictwem preferowanych kanałów komunikacyjnych w przypadku problemów z usługą, planowanej konserwacji lub innych zmian, które mogą mieć wpływ na używane usługi platformy Azure i regiony.
-
-Usługa **[Azure Resource Health](resource-health-overview.md)** udostępnia informacje o kondycji poszczególnych zasobów w chmurze, takich jak określone wystąpienie maszyny wirtualnej. Za pomocą usługi Azure Monitor można również skonfigurować alerty informujące o zmianach dostępności zasobów w chmurze. Usługa Azure Resource Health wraz z powiadomieniami w usłudze Azure Monitor pomogą Ci w uzyskiwaniu aktualnych informacji na temat dostępności zasobów minuta po minucie i szybko ocenić, czy problem jest spowodowany problemem po Twojej stronie czy jest związany ze zdarzeniem platformy Azure.
+ * **Stan platformy Azure** — globalny widok kondycji usług platformy Azure
+ * **Service Health** — spersonalizowany widok kondycji usług platformy Azure
+ * **Resource Health** — dokładniejszy widok kondycji poszczególnych zasobów aprowizowanych przez usługi platformy Azure
 
 Razem te środowiska umożliwiają kompleksowy wgląd w kondycję platformy Azure, na poziomie szczegółowości najbardziej odpowiednim dla Ciebie.
 
-### <a name="watch-an-overview-of-the-azure-status-page-azure-service-health-and-azure-resource-health"></a>Zobacz omówienie strony stanu platformy Azure, usługi Azure Service Health i usługi Azure Resource Health
-
->[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]
-
+Aby uzyskać więcej szczegółowych informacji o każdej z tych usług, zobacz [Omówienie usługi Service Health](overview.md)
 
 <ul class="panelContent cardsFTitle">
+    <li>
+        <a href="https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Obejrzyj wprowadzenie wideo do usługi Service Health</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
     <li>
         <a href="/azure/service-health/azure-status-overview">
         <div class="cardSize">
@@ -80,24 +95,6 @@ Razem te środowiska umożliwiają kompleksowy wgląd w kondycję platformy Azur
                     </div>
                     <div class="cardText">
                         <h3>Dowiedz się więcej o usłudze Resource Health</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/resources/videos/announcing-azure-service-health/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Obejrzyj wprowadzenie wideo do usługi Service Health</h3>
                     </div>
                 </div>
             </div>

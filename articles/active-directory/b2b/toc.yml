@@ -51,6 +51,8 @@
     - name: Przewodniki z instrukcjami
       expanded: true
       items:
+        - name: Zarządzanie udostępnianiem B2B
+          href: delegate-invitations.md
         - name: Zarządzanie zaproszeniami
           items:
             - name: Administratorzy dodający użytkowników B2B
@@ -61,8 +63,6 @@
               href: google-federation.md
             - name: Uwierzytelnianie za pomocą jednorazowego kodu dostępu
               href: one-time-passcode.md
-            - name: Zasady udostępniania B2B
-              href: delegate-invitations.md
             - name: Zezwalanie na zaproszenia lub blokowanie ich
               href: allow-deny-list.md
             - name: Dodawanie użytkowników B2B bez zaproszenia

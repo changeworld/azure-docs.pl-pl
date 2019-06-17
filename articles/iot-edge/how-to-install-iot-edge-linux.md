@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: b519ed21b4d2e0e258c48bd1dc12750176281c9e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 86ca3080229f2a286e8aa4725fe13c40e2a38549
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152846"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054277"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)
 
@@ -82,6 +82,18 @@ Zainstaluj Moby interfejsu wiersza polecenia (CLI). Interfejs wiersza polecenia 
    ```bash
    sudo apt-get install moby-cli
    ```
+
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Sprawdź swoje jądra systemu Linux w celu Moby zgodności
+
+Wielu producentów urządzeń osadzonych dostarczane w obrazach urządzeń, które zawierają niestandardowe jądra systemu Linux, które może brakować funkcje wymagane przez kontener środowiska uruchomieniowego zgodności. Jeśli napotkasz problemy podczas instalowania zalecanych [Moby](https://github.com/moby/moby) kontener środowiska uruchomieniowego, można rozwiązywać problemy z systemem Linux jądra konfiguracji przy użyciu [wyboru config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) skryptu podane w Oficjalna [repozytorium Moby Github](https://github.com/moby/moby) , uruchamiając następujące polecenia na urządzeniu.
+
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
+   chmod +x check-config.sh
+   ./check-config.sh
+   ```
+
+Zapewni to szczegółowych danych wyjściowych, który zawiera stan funkcji jądra, które są używane przez środowisko uruchomieniowe Moby. Należy upewnić się, że wszystkie elementy w obszarze `Generally Necessary` i `Network Drivers` są włączone, aby upewnić się, że Twoje jądra jest w pełni zgodna ze środowiskiem uruchomieniowym Moby.  Po zidentyfikowaniu dowolnej brakujących funkcji mogą umożliwiać ich ponowne tworzenie usługi jądra ze źródła i wybierając skojarzone modułów do włączenia w .config jądra odpowiedni.  Podobnie jeśli używasz jądra generatora konfiguracji, takich jak defconfig lub menuconfig należy znaleźć i włączyć odpowiednie funkcje i odpowiednio odbudować usługi jądra.  Po wdrożeniu nowo zmodyfikowanych jądra, należy uruchomić skrypt konfiguracji wyboru ponownie, aby sprawdzić, czy określonych funkcji została pomyślnie włączona.
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>Instalowanie demona zabezpieczeń usługi Azure IoT Edge
 

@@ -10,16 +10,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: ccafa3431e12b036346c4fd654b2978dc9021471
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65912374"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Diagnozowanie i rozwiązywanie problemów w aplikacji rozproszonej hostowanej w środowisku chmury może być bardziej skomplikowane niż w tradycyjnych środowiskach. Aplikacje można wdrożyć w infrastrukturze PaaS lub IaaS, w środowisku lokalnym, na urządzeniu przenośnym lub w kombinacji tych środowisk. Zazwyczaj ruchem sieciowym Twojej aplikacji mogą przechodzić publicznych i prywatnych sieci i aplikacji mogą używać wielu technologii magazynowania, takich jak Microsoft Azure Storage tabele, obiekty BLOB, kolejek lub przechowuje pliki oprócz innych danych, takich jak relacyjne i bazy danych dokumentów.
 
 Do zarządzania pomyślnie takich aplikacji należy aktywne monitorowanie i zrozumienie, jak diagnozowanie i rozwiązywanie problemów z wszystkimi aspektami ich i ich technologie zależne. Jako użytkownik usługi Azure Storage należy ciągłego monitorowania usług magazynu używanych przez aplikację nieoczekiwane zmiany w zachowaniu (na przykład wolniej niż zwykłe czasy) i używać rejestrowania w celu zbierania bardziej szczegółowych danych i do analizowania problemu w głębokość. Informacje diagnostyczne, którego można uzyskać od zarówno monitorowanie i rejestrowanie pomoże w celu ustalenia głównej przyczyny aplikacji wystąpił problem. Następnie można rozwiązać ten problem i określić odpowiednie czynności, które można wykonać w celu jego rozwiązania. Usługa Azure Storage jest podstawowe usługi platformy Azure i stanowi ważną część większość rozwiązań, które klienci wdrożyć do infrastruktury platformy Azure. Usługa Azure Storage obejmuje funkcje, aby uprościć monitorowanie, diagnozowanie i rozwiązywanie problemów z magazynowaniem w swoich aplikacjach opartych na chmurze.
@@ -467,7 +467,7 @@ Najczęstszą przyczyną tego błędu jest klientem odłączania, zanim upłynie
 ### <a name="the-client-is-receiving-403-messages"></a>Klient odbiera komunikaty HTTP 403 (zabronione)
 Jeśli aplikacja kliencka zgłasza błędy HTTP 403 (zabronione), prawdopodobną przyczyną jest to, że klient używa wygasłej sygnatury dostępu współdzielonego podczas wysyłania żądania magazynu (chociaż inne możliwe przyczyny to niedokładność zegara, nieprawidłowe klucze i puste nagłówki). Jeśli przyczyną jest wygasły klucz sygnatury dostępu współdzielonego, nie będą widoczne żadne wpisy w danych dziennika rejestrowania danych magazynu po stronie serwera. W poniższej tabeli przedstawiono przykład z dziennika klienta wygenerowane z biblioteki klienta magazynu, który ilustruje ten problem:
 
-| Source | Poziom szczegółowości | Poziom szczegółowości | Identyfikator żądania klienta | Operacja tekstu |
+| source | Verbosity | Verbosity | Identyfikator żądania klienta | Operacja tekstu |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |Informacje |3 |85d077ab-… |Trwa uruchamianie operacji z lokalizacji podstawowej dla trybu lokalizacji PrimaryOnly. |
 | Microsoft.Azure.Storage |Informacje |3 |85d077ab -… |Począwszy od żądanie synchroniczne <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
@@ -505,7 +505,7 @@ Aby uzyskać bardziej szczegółowe informacje o z gdy klient wysyła określone
 
 Następujący dziennik po stronie klienta, wygenerowany przez bibliotekę klienta usługi Storage zilustrowano problem, kiedy klient nie może odnaleźć kontenera obiektu blob, który, która zostanie utworzona. Ten dziennik zawiera szczegółowe informacje o następujących czynności:
 
-| Identyfikator żądania | Operacja |
+| Identyfikator żądania: | Operacja |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** metodę, aby usunąć kontener obiektów blob. Należy zauważyć, że ta operacja obejmuje **HEAD** żądanie do sprawdzania istnienia kontenera. |
 | e2d06d78… |**CreateIfNotExists** metodę w celu utworzenia kontenera obiektów blob. Należy zauważyć, że ta operacja obejmuje **HEAD** żądania, który umożliwia sprawdzenie istnienia kontenera. **HEAD** zwraca komunikat 404, ale nadal. |
@@ -513,7 +513,7 @@ Następujący dziennik po stronie klienta, wygenerowany przez bibliotekę klient
 
 Wpisy dziennika:
 
-| Identyfikator żądania | Operacja tekstu |
+| Identyfikator żądania: | Operacja tekstu |
 | --- | --- |
 | 07b26a5d-... |Uruchamianie synchroniczne żądanie https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
 | 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
@@ -521,14 +521,14 @@ Wpisy dziennika:
 | 07b26a5d-... |Odebrano odpowiedź. Kod stanu 200, identyfikator żądania = = eeead849... Zawartość MD5 = element ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |Nagłówki odpowiedzi zostały pomyślnie przetworzone, kontynuowanie z pozostałą częścią operacji. |
 | 07b26a5d-... |Trwa pobieranie treści odpowiedzi. |
-| 07b26a5d-... |Operacja ukończona pomyślnie. |
+| 07b26a5d-... |Operacja została ukończona pomyślnie. |
 | 07b26a5d-... |Uruchamianie synchroniczne żądanie https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Oczekiwanie na odpowiedź. |
 | 07b26a5d-... |Odebrano odpowiedź. Kod stanu = 202, identyfikator żądania = 6ab2a4cf-..., zawartość MD5 = element ETag =. |
 | 07b26a5d-... |Nagłówki odpowiedzi zostały pomyślnie przetworzone, kontynuowanie z pozostałą częścią operacji. |
 | 07b26a5d-... |Trwa pobieranie treści odpowiedzi. |
-| 07b26a5d-... |Operacja ukończona pomyślnie. |
+| 07b26a5d-... |Operacja została ukończona pomyślnie. |
 | e2d06d78-... |Uruchamianie asynchronicznego żądanie https://domemaildist.blob.core.windows.net/azuremmblobcontainer.</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Oczekiwanie na odpowiedź. |
@@ -539,7 +539,7 @@ Wpisy dziennika:
 | e2d06d78-... |Odebrano odpowiedź. Kod stanu 404, identyfikator żądania = = 353ae3bc-..., zawartość MD5 = element ETag =. |
 | e2d06d78-... |Nagłówki odpowiedzi zostały pomyślnie przetworzone, kontynuowanie z pozostałą częścią operacji. |
 | e2d06d78-... |Trwa pobieranie treści odpowiedzi. |
-| e2d06d78-... |Operacja ukończona pomyślnie. |
+| e2d06d78-... |Operacja została ukończona pomyślnie. |
 | e2d06d78-... |Uruchamianie asynchronicznego żądanie https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Oczekiwanie na odpowiedź. |
@@ -568,7 +568,7 @@ W poniższej tabeli przedstawiono przykładowy komunikat dziennika po stronie se
 | Stan żądania     | SASAuthorizationError        |
 | Kod stanu HTTP   | 404                          |
 | Typ uwierzytelniania| Sygnatury dostępu współdzielonego                          |
-| Typ usługi       | Blob                         |
+| Typ usługi       | Obiekt blob                         |
 | Adres URL żądania        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | Nagłówka Identyfikatora żądania  | a1f348d5-8032-4912-93ef-b393e5252a3b |
@@ -626,7 +626,7 @@ Jeśli ten problem występuje często, powinieneś zbadać, dlaczego klient jest
 ### <a name="the-client-is-receiving-409-messages"></a>Klient odbiera komunikaty HTTP 409 (konflikt)
 W poniższej tabeli przedstawiono wyciąg z dwóch operacji klienta w dzienniku po stronie serwera: **DeleteIfExists** a następnie natychmiast przez **CreateIfNotExists** przy użyciu tej samej nazwy kontenera obiektów blob. Każda operacja klienta powoduje dwa żądania wysyłane do serwera, najpierw **GetContainerProperties** żądania, aby sprawdzić, czy kontener istnieje, następuje **DeleteContainer** lub  **CreateContainer** żądania.
 
-| Timestamp | Operacja | Wynik | Nazwa kontenera | Identyfikator żądania klienta |
+| Znacznik czasu | Operacja | Wynik | Nazwa kontenera | Identyfikator żądania klienta |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |

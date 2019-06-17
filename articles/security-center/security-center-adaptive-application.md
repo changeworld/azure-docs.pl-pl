@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/02/2019
 ms.author: v-mohabe
 ms.openlocfilehash: 4a8a241df38c258dc1747f04c6079d29ee25b3ae
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968859"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center
@@ -47,7 +47,7 @@ Funkcje adaptacyjnego sterowania aplikacjami ułatwiają zdefiniowanie zestawu a
 
 Zostanie wyświetlona strona **Adaptacyjne kontrolki aplikacji**.
 
-![funkcje sterowania](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
 Sekcja **Grupy maszyn wirtualnych** zawiera trzy karty:
 

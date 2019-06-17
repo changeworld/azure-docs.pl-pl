@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128695"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Funkcje tablicy i obiektów dla szablonów usługi Azure Resource Manager
@@ -195,7 +195,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringOutput | String | domyślny |
+| stringOutput | String | default |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"first": "default"} |
 | arrayOutput | Tablica | [1] |
@@ -403,11 +403,11 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
-| stringFalse | Bool | Fałsz |
+| stringFalse | Bool | False |
 | objectTrue | Bool | True |
-| objectFalse | Bool | Fałsz |
+| objectFalse | Bool | False |
 | arrayTrue | Bool | True |
-| arrayFalse | Bool | Fałsz |
+| arrayFalse | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -432,7 +432,7 @@ Tworzy tablicę z parametrów.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |Ciąg, liczba całkowita, tablicy lub obiektu |Pierwsza wartość w tablicy. |
+| arg1 |Yes |Ciąg, liczba całkowita, tablicy lub obiektu |Pierwsza wartość w tablicy. |
 | dodatkowe argumenty |Nie |Ciąg, liczba całkowita, tablicy lub obiektu |Dodatkowe wartości w tablicy. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -513,7 +513,7 @@ Określa, czy tablica, obiekt lub ciąg jest pusty.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Tak |Array, obiekt lub ciągu |Wartość, aby sprawdzić, czy jest pusta. |
+| itemToTest |Yes |Array, obiekt lub ciągu |Wartość, aby sprawdzić, czy jest pusta. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -657,7 +657,7 @@ Zwraca pojedynczą tablicę lub obiekt o wspólnych elementach zawiera sekcja z 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Tak |tablicy lub obiektu |Pierwsza wartość używanych na potrzeby znajdowania wspólne elementy. |
-| argument2 |Tak |tablicy lub obiektu |Druga wartość używanych na potrzeby znajdowania wspólne elementy. |
+| argument2 |Yes |tablicy lub obiektu |Druga wartość używanych na potrzeby znajdowania wspólne elementy. |
 | dodatkowe argumenty |Nie |tablicy lub obiektu |Dodatkowe wartości używanych na potrzeby znajdowania wspólne elementy. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -808,7 +808,7 @@ Zwraca ostatni element tablicy lub ostatni znak w ciągu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |tablicy lub ciągu |Wartość można pobrać ostatniego elementu lub znak. |
+| arg1 |Yes |tablicy lub ciągu |Wartość można pobrać ostatniego elementu lub znak. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -864,7 +864,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="length" />
 
-## <a name="length"></a>Długość
+## <a name="length"></a>length
 `length(arg1)`
 
 Zwraca liczbę elementów w tablicy lub znaków w ciągu.
@@ -947,7 +947,7 @@ Aby uzyskać więcej informacji na temat korzystania z tej funkcji z tablicą zo
 
 <a id="max" />
 
-## <a name="max"></a>maks.
+## <a name="max"></a>Maksymalna
 `max(arg1)`
 
 Zwraca maksymalną wartość w tablicy liczb całkowitych lub na liście liczb całkowitych rozdzielonych przecinkami.
@@ -1011,7 +1011,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min
+## <a name="min"></a>min.
 `min(arg1)`
 
 Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb całkowitych rozdzielonych przecinkami.
@@ -1139,7 +1139,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="skip" />
 
-## <a name="skip"></a>pomiń
+## <a name="skip"></a>Pomiń
 `skip(originalValue, numberToSkip)`
 
 Zwraca tablicę ze wszystkimi elementami po określonej liczbie w tablicy lub zwraca ciąg zawierający wszystkie znaki po określonej liczbie w ciągu.
@@ -1149,7 +1149,7 @@ Zwraca tablicę ze wszystkimi elementami po określonej liczbie w tablicy lub zw
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalValue |Tak |tablicy lub ciągu |Tablica lub ciąg używany do pomijania. |
-| numberToSkip |Tak |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
+| numberToSkip |Yes |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1230,7 +1230,7 @@ Zwraca tablicę z określonej liczby elementów od początku tablicy lub ciągu 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalValue |Tak |tablicy lub ciągu |Tablicy lub ciągu, aby móc elementy z. |
-| numberToTake |Tak |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
+| numberToTake |Yes |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1310,8 +1310,8 @@ Zwraca pojedynczą tablicę lub obiekt ze wszystkimi elementami z parametrów. Z
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |tablicy lub obiektu |Pierwsza wartość na potrzeby dołączenia elementów. |
-| argument2 |Tak |tablicy lub obiektu |Druga wartość na potrzeby dołączenia elementów. |
+| arg1 |Yes |tablicy lub obiektu |Pierwsza wartość na potrzeby dołączenia elementów. |
+| argument2 |Yes |tablicy lub obiektu |Druga wartość na potrzeby dołączenia elementów. |
 | dodatkowe argumenty |Nie |tablicy lub obiektu |Dodatkowe wartości na potrzeby dołączenia elementów. |
 
 ### <a name="return-value"></a>Wartość zwracana

@@ -83,6 +83,10 @@
           href: plan-sso-deployment.md
     - name: Portale użytkowników końcowych
       href: end-user-experiences.md
+    - name: Logowanie jednokrotne jednym kliknięciem
+      items:
+        - name: Co to jest logowanie jednokrotne jednym kliknięciem
+          href: one-click-sso-tutorial.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Dodawanie aplikacji w chmurze

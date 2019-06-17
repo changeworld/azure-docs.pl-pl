@@ -9,10 +9,10 @@ ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
 ms.openlocfilehash: 51754021f5029a751be90bfc4194ac6347c1e278
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772159"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrona serwera plików za pomocą usługi Azure Site Recovery 
@@ -64,12 +64,12 @@ Poniższy diagram ułatwia określenie, jakiej strategii użyć w swoim środowi
 ### <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 Ponieważ replikacja usługi Site Recovery jest niezależna od aplikacji, te rekomendacje powinny pozostać prawdziwe w następujących scenariuszach.
 
-| Element źródłowy    |Do lokacji dodatkowej    |Na platformę Azure
+| source    |Do lokacji dodatkowej    |Na platformę Azure
 |---------|---------|---------|
-|Azure| -|Yes|
-|Funkcja Hyper-V|   Yes |Yes
-|VMware |Yes|   Yes
-|Serwer fizyczny|   Yes |Yes
+|Azure| -|Tak|
+|Funkcja Hyper-V|   Tak |Tak
+|VMware |Tak|   Tak
+|Serwer fizyczny|   Tak |Tak
  
 
 > [!IMPORTANT]

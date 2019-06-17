@@ -51,6 +51,22 @@
           href: tutorial-deploy-custom-vision.md
         - name: Przechowywanie danych lokalnie przy użyciu języka SQL
           href: tutorial-store-data-sql-server.md
+    - name: 4. Pełny przykład uczenia maszynowego na urządzeniach brzegowych
+      items:
+        - name: Wprowadzenie
+          href: tutorial-machine-learning-edge-01-intro.md
+        - name: Konfigurowanie maszyny deweloperskiej i usług platformy Azure
+          href: tutorial-machine-learning-edge-02-prepare-environment.md
+        - name: Generowanie danych urządzenia symulowanego
+          href: tutorial-machine-learning-edge-03-generate-data.md
+        - name: Trenowanie i wdrażanie modelu usługi Azure Machine Learning
+          href: tutorial-machine-learning-edge-04-train-model.md
+        - name: Konfigurowanie przezroczystej bramy
+          href: tutorial-machine-learning-edge-05-configure-edge-device.md
+        - name: Tworzenie i wdrażanie modułów usługi IoT Edge
+          href: tutorial-machine-learning-edge-06-custom-modules.md
+        - name: Wysyłanie danych do usługi IoT Hub za pomocą przezroczystej bramy
+          href: tutorial-machine-learning-edge-07-send-data-to-hub.md
 - name: Pojęcia
   items:
     - name: Środowisko uruchomieniowe usługi IoT Edge
@@ -149,6 +165,8 @@
       items:
         - name: Konfigurowanie przezroczystej bramy
           href: how-to-create-transparent-gateway.md
+        - name: Uwierzytelnianie urządzenia podrzędnego
+          href: how-to-authenticate-downstream-device.md
         - name: Podłączanie urządzenia podrzędnego
           href: how-to-connect-downstream-device.md
         - name: Brama protokołu Modbus

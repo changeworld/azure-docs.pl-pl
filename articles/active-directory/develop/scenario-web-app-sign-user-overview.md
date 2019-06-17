@@ -16,10 +16,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ce534c6eeecba220fd829be829caa679df52055
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833101"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenariusz: Aplikacja internetowa z możliwością logowania użytkowników
@@ -42,7 +42,7 @@ Jeśli chcesz pozostać przy użyciu platformy ASP.NET, wypróbuj następująceg
 > [!div class="nextstepaction"]
 > [Szybki start: Aplikacja sieci web platformy ASP.NET przez logowania użytkowników](quickstart-v2-aspnet-webapp.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Możesz dodać do uwierzytelniania aplikacji sieci web, dzięki czemu można logowania użytkowników. Dodawanie uwierzytelniania umożliwia aplikacji dostęp do informacji o profilu ograniczona, a, na przykład Dostosowywanie doświadczenia z oferowanych swoim użytkownikom w sieci web. Aplikacje sieci Web uwierzytelnienia użytkownika w przeglądarce sieci web. W tym scenariuszu aplikacji sieci web poleca przeglądarkę użytkownika do logowania do usługi Azure AD. Usługa Azure AD, zwraca odpowiedź logowania za pośrednictwem przeglądarki przez użytkownika, który zawiera oświadczenia dotyczące użytkownika w tokenie zabezpieczającym. Korzystać z logowania użytkowników [Open ID Connect](./v2-protocols-oidc.md) standardowego protokołu sam upraszczane przez użycie oprogramowania pośredniczącego [biblioteki](scenario-web-app-sign-user-app-configuration.md#libraries-used-to-protect-web-apps).
 

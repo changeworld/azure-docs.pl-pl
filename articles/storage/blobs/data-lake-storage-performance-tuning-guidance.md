@@ -10,10 +10,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 6f831dd0cde4641eb48f3c23e010f8c5e8aa3fa2
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939361"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Dostosowywanie usługi Azure Data Lake Storage Gen2 wydajności
@@ -44,7 +44,7 @@ Połączenie sieciowe między źródła danych i Data Lake Storage Gen2 czasami 
 
 Gdy zostały rozwiązane sprzętu źródłowego i sieci połączenia gardła powyżej, można przystąpić do konfigurowania narzędzia do wprowadzania. Poniższa tabela zawiera podsumowanie ustawień klucza dla kilku popularnych pozyskiwania narzędzi i udostępnia szczegółowe Dostosowywanie artykuły ich wydajności.  Aby dowiedzieć się więcej na temat narzędzia do użycia dla danego scenariusza, odwiedź [artykułu](data-lake-storage-data-scenarios.md).
 
-| Tool               | Ustawienia     | Więcej szczegółów                                                                 |
+| Narzędzie               | Ustawienia     | Więcej szczegółów                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapowanie)   | [Link](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Link](../../data-factory/copy-activity-performance.md)                          |

@@ -11,10 +11,10 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie funkcji — program Visual Studio
-      href: functions-create-your-first-function-visual-studio.md
     - name: Tworzenie funkcji — program Visual Studio Code
       href: functions-create-first-function-vs-code.md
+    - name: Tworzenie funkcji — program Visual Studio
+      href: functions-create-your-first-function-visual-studio.md
     - name: Tworzenie funkcji — Java/Maven
       href: functions-create-first-java-maven.md
     - name: Tworzenie funkcji — Python
@@ -65,7 +65,9 @@
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: Przykłady
   items:
-    - name: Przykłady kodu
+    - name: Azure Serverless Community Library
+      href: 'https://www.serverlesslibrary.net/'
+    - name: Przykłady dla platformy Azure
       href: 'https://azure.microsoft.com/resources/samples/?service=functions'
     - name: Interfejs wiersza polecenia platformy Azure
       href: functions-cli-samples.md
@@ -74,10 +76,12 @@
     - name: Porównanie wersji 1.x i 2.x
       href: functions-versions.md
       displayName: 'migrate, migration'
-    - name: Plan Premium
-      href: functions-premium-plan.md
     - name: Skalowanie i hosting
       href: functions-scale.md
+    - name: Plan Premium
+      href: functions-premium-plan.md
+    - name: Wdrożenia
+      href: functions-deployment-technologies.md
     - name: Wyzwalacze i powiązania
       items:
         - name: Informacje o wyzwalaczach i powiązaniach

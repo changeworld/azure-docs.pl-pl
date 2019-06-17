@@ -82,10 +82,10 @@
           items:
             - name: Optymalizowanie wydajności
               href: storage-performance.md
-        - name: Optymalizacja pod kątem procesora GPU
-          displayName: NV NVv2 NC NCv2 NCv3 ND
-          href: sizes-gpu.md
+        - name: Przyspieszone obliczenia
           items:
+            - name: Optymalizacja pod kątem procesora GPU
+              href: sizes-gpu.md
             - name: Konfigurowanie sterowników procesora GPU
               href: n-series-driver-setup.md
         - name: Obliczenia o wysokiej wydajności
@@ -387,7 +387,7 @@
           href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Otwieranie portów dla maszyny wirtualnej
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md

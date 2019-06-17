@@ -89,12 +89,20 @@
           href: concepts-business-continuity.md
         - name: Tworzenie kopii zapasowej i przywracanie
           href: concepts-backup.md
-    - name: Monitorowanie
+    - name: Monitorowanie i dostrajanie
       items:
-        - name: Monitorowanie
+        - name: Monitorowanie i dostrajanie
           href: concepts-monitoring.md
-        - name: Dzienniki serwera
+        - name: Dzienniki wolnych zapytań
           href: concepts-server-logs.md
+        - name: Dzienniki inspekcji
+          href: concepts-audit-logs.md
+        - name: Magazyn zapytań
+          href: concepts-query-store.md
+        - name: Szczegółowe informacje o wydajności zapytań
+          href: concepts-query-performance-insight.md
+        - name: Zalecenia dotyczące wydajności
+          href: concepts-performance-recommendations.md
     - name: Opracowywanie zawartości
       items:
         - name: Zgodność sterowników i narzędzi
@@ -165,10 +173,16 @@
           href: howto-auto-grow-storage-portal.md
     - name: Dzienniki dostępu serwera
       items:
-        - name: Azure Portal
-          href: howto-configure-server-logs-in-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-configure-server-logs-in-cli.md
+        - name: Dzienniki wolnych zapytań
+          items:
+            - name: Portal Azure
+              href: howto-configure-server-logs-in-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-configure-server-logs-in-cli.md
+        - name: Dzienniki inspekcji
+          items:
+            - name: Portal Azure
+              href: howto-configure-audit-logs-portal.md
     - name: Monitorowanie
       items:
         - name: Tworzenie alertów dotyczących metryk

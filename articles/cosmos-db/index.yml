@@ -48,16 +48,31 @@ sections:
             image:
               src: media/index/mongodb-api.svg
             title: Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
-          - href: /azure/cosmos-db/table-introduction/
-            html: '<p>Korzystaj z interfejsu API tabel, jeśli migrujesz dane z usługi Azure Table Storage do oferty tabeli usługi Azure Cosmos DB w warstwie Premium.</p>'
-            image:
-              src: media/index/table-api.svg
-            title: Interfejs API tabel
           - href: /azure/cosmos-db/cassandra-introduction/
             html: '<p>Korzystaj z interfejsu API rozwiązania Cassandra, jeśli migrujesz dane z rozwiązania Cassandra do w pełni zarządzanej usługi Azure Cosmos DB.</p>'
             image:
               src: media/index/cassandra-api.png
             title: Interfejs API rozwiązania Cassandra
+          - href: /azure/cosmos-db/table-introduction/
+            html: '<p>Korzystaj z interfejsu API tabel, jeśli migrujesz dane z usługi Azure Table Storage do oferty tabeli usługi Azure Cosmos DB w warstwie Premium.</p>'
+            image:
+              src: media/index/table-api.svg
+            title: Interfejs API tabel
+          - href: /azure/cosmos-db/spark-api-introduction/
+            html: <p>Wbudowana obsługa platformy Apache Spark umożliwia analizowanie danych przechowywanych na koncie usługi Azure Cosmos. </p>
+            image:
+              src: media/index/spark-logo.png
+            title: Wbudowana analiza przy użyciu platformy Apache Spark
+          - href: /azure/cosmos-db/change-feed/
+            html: '<p>Przeprowadzaj analizę w czasie rzeczywistym, używając zestawienia zmian z posortowaną listą dokumentów w kontenerze usługi Azure Cosmos DB w kolejności, w której zostały zmodyfikowane. </p>'
+            image:
+              src: media/index/change-feed-logo.png
+            title: Źródło zmian
+          - href: /azure/cosmos-db/etcd-api-introduction/
+            html: <p> Interfejs API rozwiązania etcd umożliwia używanie usługi Azure Cosmos DB jako magazynu zaplecza dla usługi Azure Kubernetes.</p>
+            image:
+              src: media/index/etcd-logo.png
+            title: Interfejs API rozwiązania etcd
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph

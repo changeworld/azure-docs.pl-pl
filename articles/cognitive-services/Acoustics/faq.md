@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1f2b4d25b39e9b3ebc6659e736d47640964251dc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61335334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693878"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akustyka — często zadawane pytania
 
@@ -27,7 +27,7 @@ Pakiet Akustyka projektu wtyczek to system Akustyka obliczający zachowanie dźw
 
 Możesz pobrać [wtyczki projektu Akustyka Unity](https://www.microsoft.com/download/details.aspx?id=57346) lub [wtyczki projektu Akustyka Unreal](https://www.microsoft.com/download/details.aspx?id=58090).
 
-## <a name="does-project-acoustics-support-x-platform"></a>Obsługuje Akustyka projektu <x> platformy?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Obsługuje Akustyka projektu &lt;x&gt; platformy?
 
 Obsługa platform Akustyka projektu rozwoju zależnie od potrzeb klienta. Skontaktuj się z nami na [forów Akustyka projektu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) na uzyskiwanie informacji o obsłudze dotyczącymi dodatkowych platform.
 

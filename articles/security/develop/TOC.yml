@@ -1,0 +1,15 @@
+- name: Dokumentacja bezpiecznego tworzenia
+  href: index.yml
+- name: Pojęcia
+  expanded: true
+  items:
+    - name: Najlepsze praktyki
+      items:
+        - name: Omówienie
+          href: secure-dev-overview.md
+        - name: Projektowanie bezpiecznych aplikacji
+          href: secure-design.md
+        - name: Tworzenie bezpiecznych aplikacji
+          href: secure-develop.md
+        - name: Wdrażanie bezpiecznych aplikacji
+          href: secure-deploy.md

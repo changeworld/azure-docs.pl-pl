@@ -85,9 +85,10 @@
           items:
             - name: Optymalizowanie wydajności
               href: storage-performance.md
-        - name: Optymalizacja pod kątem procesora GPU
-          href: sizes-gpu.md
+        - name: Przyspieszone obliczenia
           items:
+            - name: Optymalizacja pod kątem procesora GPU
+              href: sizes-gpu.md
             - name: Konfigurowanie sterowników procesora GPU
               href: n-series-driver-setup.md
         - name: Obliczenia o wysokiej wydajności

@@ -486,6 +486,8 @@
           href: control-flow-expression-language-functions.md
         - name: Zmienne systemu
           href: control-flow-system-variables.md
+        - name: Parametry przepływu danych
+          href: parameters-data-flow.md
     - name: Bezpieczeństwo
       items:
         - name: Zagadnienia związane z zabezpieczeniami podczas przenoszenia danych
@@ -516,7 +518,7 @@
       items:
         - name: Środowisko uruchomieniowe integracji Azure
           href: create-azure-integration-runtime.md
-        - name: Integration Runtime (Self-hosted)
+        - name: Infrastruktura Integration Runtime (Self-hosted)
           href: create-self-hosted-integration-runtime.md
         - name: Azure SSIS Integration Runtime
           href: create-azure-ssis-integration-runtime.md
@@ -546,6 +548,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Czyszczenie dzienników bazy danych SSISDB za pomocą zadań bazy danych Elastic Database
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku Azure-SSIS IR
+          href: ssis-integration-runtime-ssis-activity-faq.md
     - name: Tworzenie wyzwalaczy
       items:
         - name: Tworzenie wyzwalacza opartego na zdarzeniach

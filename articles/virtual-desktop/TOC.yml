@@ -16,6 +16,10 @@
       href: manage-app-groups.md
     - name: 5. Tworzenie puli hostów na potrzeby weryfikacji aktualizacji usług
       href: create-validation-host-pool.md
+    - name: 6. Wdrażanie narzędzia do zarządzania
+      href: manage-resources-using-ui.md
+    - name: 7. Konfigurowanie alertów usługi
+      href: set-up-service-alerts.md
 - name: Porady
   items:
     - name: Łączenie się z zasobami usługi Windows Virtual Desktop
@@ -40,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: Automatyczne skalowanie hostów sesji
       href: set-up-scaling-script.md
+    - name: Dostosowywanie właściwości protokołu RDP
+      href: customize-rdp-properties.md
 - name: Pojęcia
   items:
     - name: Środowisko usługi Windows Virtual Desktop

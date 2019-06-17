@@ -59,12 +59,20 @@
           href: concepts-business-continuity.md
         - name: Tworzenie kopii zapasowej i przywracanie
           href: concepts-backup.md
-    - name: Monitorowanie
+    - name: Monitorowanie i dostrajanie
       items:
         - name: Monitorowanie
           href: concepts-monitoring.md
-        - name: Dzienniki serwera
+        - name: Dzienniki wolnych zapytań
           href: concepts-server-logs.md
+        - name: Dzienniki inspekcji
+          href: concepts-audit-logs.md
+        - name: Magazyn zapytań
+          href: concepts-query-store.md
+        - name: Szczegółowe informacje o wydajności zapytań
+          href: concepts-query-performance-insight.md
+        - name: Zalecenia dotyczące wydajności
+          href: concepts-performance-recommendations.md
     - name: Opracowywanie zawartości
       items:
         - name: Zgodność sterowników i narzędzi
@@ -75,6 +83,8 @@
       items:
         - name: Replikacja wejściowa danych
           href: concepts-data-in-replication.md
+        - name: Repliki do odczytu
+          href: concepts-read-replicas.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Reguły zapory
@@ -113,10 +123,16 @@
           href: howto-auto-grow-storage-portal.md
     - name: Dzienniki dostępu serwera
       items:
-        - name: Azure Portal
-          href: howto-configure-server-logs-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-configure-server-logs-cli.md
+        - name: Dzienniki wolnych zapytań
+          items:
+            - name: Portal Azure
+              href: howto-configure-server-logs-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-configure-server-logs-cli.md
+        - name: Dzienniki inspekcji
+          items:
+            - name: Portal Azure
+              href: howto-configure-audit-logs-portal.md
     - name: Monitorowanie
       items:
         - name: Tworzenie alertów dotyczących metryk
@@ -125,6 +141,8 @@
       items:
         - name: Konfigurowanie replikacji wejściowej danych
           href: howto-data-in-replication.md
+        - name: Tworzenie replik do odczytu w witrynie Azure Portal
+          href: howto-read-replicas-portal.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów z błędami połączenia

@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4169b15304afe1ecc4af9c5354798b29ad9dba38
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8611338acf7a1299e9c3a4f5347fb633604254e7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64571353"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110398"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Przeglądy dostępu usługa Azure AD do zarządzania użytkownikami wykluczone z zasad dostępu warunkowego
 
@@ -36,7 +36,7 @@ Jako IT administrator może użyć [dostępu warunkowego usługi Azure AD](../co
 
 Inny przykład można użyć [lokalizacje z nazwą](../conditional-access/location-condition.md) dostępu warunkowego, aby skonfigurować zestaw powiatach i regionów, z których nie chcesz umożliwić użytkownikom dostęp do swojej dzierżawy.
 
-![Lokalizacje nazwane](./media/conditional-access-exclusion/named-locations.png)
+![Nazwane lokalizacje](./media/conditional-access-exclusion/named-locations.png)
 
 Jednak w niektórych przypadkach użytkownicy mogą mieć uzasadniona Przyczyna, aby zalogować się z tymi zablokowanych krajów/regionów. Na przykład użytkownicy mogą podróżować do pracy lub osobistych powodów. W tym przykładzie zasady dostępu warunkowego do blokowania tych krajów/regionów może mieć chmura dedykowana grupy zabezpieczeń dla użytkowników, którzy są wykluczeni z zasad. Użytkownicy, którzy muszą mieć dostęp podczas podróży, można samodzielnie dodać do grupy przy użyciu [Zarządzanie grupami samoobsługi usługi Azure AD](../users-groups-roles/groups-self-service-management.md).
 

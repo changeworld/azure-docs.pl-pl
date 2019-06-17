@@ -83,22 +83,26 @@
           href: sql-database-design-first-database.md
         - name: Projektowanie bazy danych przy użyciu platformy .NET
           href: sql-database-design-first-database-csharp.md
-    - name: Migracja do bazy danych SQL
+    - name: Pojedyncza baza danych
       items:
         - name: Migrowanie do pojedynczej bazy danych lub bazy danych w puli przy użyciu usługi DMS
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-        - name: Migrowanie do wystąpienia zarządzanego przy użyciu usługi DMS
+        - name: Implementowanie rozproszonej geograficznie bazy danych
+          href: sql-database-implement-geo-distributed-database.md
+        - name: Konfigurowanie usługi Azure SQL Data Sync
+          href: sql-database-get-started-sql-data-sync.md
+    - name: Wystąpienie zarządzane
+      items:
+        - name: Migracja online za pomocą usługi DMS
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: Konfigurowanie replikacji transakcyjnej
+          href: replication-with-sql-database-managed-instance.md
     - name: Zabezpieczenia w usłudze SQL Database
       items:
         - name: Zabezpieczenia pojedynczej bazy danych i bazy danych w puli
           href: sql-database-security-tutorial.md
         - name: Zabezpieczenia wystąpienia zarządzanego
           href: sql-database-managed-instance-aad-security-tutorial.md
-    - name: Implementowanie rozproszonej geograficznie bazy danych
-      href: sql-database-implement-geo-distributed-database.md
-    - name: Konfigurowanie usługi Azure SQL Data Sync
-      href: sql-database-get-started-sql-data-sync.md
     - name: Machine Learning Services
       items:
         - name: Tworzenie modelu predykcyjnego w języku R
@@ -500,8 +504,6 @@
           href: sql-database-managed-instance-find-management-endpoint-ip-address.md
         - name: Weryfikowanie ochrony wbudowanej zapory
           href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
-        - name: Replikacja transakcyjna
-          href: replication-with-sql-database-managed-instance.md
         - name: Konfigurowanie wykrywania zagrożeń
           href: sql-database-managed-instance-threat-detection.md
         - name: Łączenie aplikacji
