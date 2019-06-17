@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65442382"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Wymagania systemowe w usłudze Azure brama pola danych
@@ -50,7 +50,7 @@ Bazowego systemu hosta dla bramy pole danych jest w stanie dedykować następuj�
 
 | **System operacyjny i platformy**  |**Wersje**   |**Uwagi**  |
 |---------|---------|---------|
-|Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
+|Funkcja Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |Narzędzia VMware nie są obsługiwane.         |
 
 

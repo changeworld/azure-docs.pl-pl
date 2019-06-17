@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a4f9d9a7fe368ec4ffaceff80ce42d42a318c68d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61489113"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Wdrażanie lokalnego urządzenia StorSimple (z aktualizacją Update 3 lub nowszą)
@@ -68,7 +68,7 @@ Przed wdrożeniem urządzenia należy zebrać informacje w celu skonfigurowania 
 
 * [Pobieranie listy kontrolnej dotyczącej konfiguracji wdrożenia urządzenia StorSimple](https://www.microsoft.com/download/details.aspx?id=49159)
 
-## <a name="deployment-prerequisites"></a>Wymagania wstępne dotyczące wdrożenia
+## <a name="deployment-prerequisites"></a>Wymagania wstępne dotyczące wdrażania
 Poniższe sekcje zawierają opis wymagań wstępnych dotyczących konfiguracji usługi Menedżer urządzeń StorSimple oraz urządzenia StorSimple.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>Usługa Menedżer urządzeń StorSimple

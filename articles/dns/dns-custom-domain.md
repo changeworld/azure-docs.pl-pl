@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
 ms.openlocfilehash: 5c098c6c22b079d586c0bd808df9af4a737c17a8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62096250"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Podaj ustawienia domeny niestandardowej dla usługi platformy Azure przy użyciu usługi Azure DNS
@@ -41,8 +41,8 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
 |Name (Nazwa)     | myfunctionapp        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
-|Type     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
-|Czas wygaśnięcia     | 1        | 1 jest używana przez 1 godzinę        |
+|Typ     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Alias     | adatumfunction.azurewebsites.net        | Nazwa DNS powoduje utworzenie aliasu, w tym przykładzie jest to nazwa DNS adatumfunction.azurewebsites.net domyślne do aplikacji funkcji.        |
 
@@ -66,8 +66,8 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
 |Name (Nazwa)     | mywebserver        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
-|Type     | A        | Tylko zasób jest adres IP, należy użyć rekordu A.        |
-|Czas wygaśnięcia     | 1        | 1 jest używana przez 1 godzinę        |
+|Typ     | A        | Tylko zasób jest adres IP, należy użyć rekordu A.        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Adres IP     | `<your ip address>`       | Publiczny adres IP.|
 
@@ -93,8 +93,8 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
 |Name (Nazwa)     | mywebserver        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
-|Type     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu. Jeśli zasób jest używany adres IP, będzie używany rekord.        |
-|Czas wygaśnięcia     | 1        | 1 jest używana przez 1 godzinę        |
+|Typ     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu. Jeśli zasób jest używany adres IP, będzie używany rekord.        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Alias     | webserver.azurewebsites.net        | Nazwa DNS powoduje utworzenie aliasu, w tym przykładzie jest to nazwa DNS webserver.azurewebsites.net domyślne do aplikacji sieci web.        |
 
@@ -127,8 +127,8 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
 |Name (Nazwa)     | asverify.mystorageaccount        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
-|Type     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
-|Czas wygaśnięcia     | 1        | 1 jest używana przez 1 godzinę        |
+|Typ     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Nazwa DNS powoduje utworzenie aliasu, w tym przykładzie jest to nazwa DNS asverify.adatumfunctiona9ed.blob.core.windows.net domyślne konto magazynu.        |
 
@@ -148,15 +148,15 @@ Przejdź do **sieć** > **profilów CDN**, wybierz swój profil usługi CDN.
 
 Wybierz punkt końcowy pracujesz z i kliknij przycisk **+ domena niestandardowa**. Uwaga **nazwę hosta punktu końcowego** ta wartość jest rekord, który wskazuje rekordu CNAME.
 
-![Niestandardowa domena usługi CDN](./media/dns-custom-domain/endpointcustomdomain.png)
+![Domenę niestandardową CDN](./media/dns-custom-domain/endpointcustomdomain.png)
 
 Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wypełnij następujące informacje w **Dodawanie zestawu rekordów** bloku i kliknij przycisk **OK** do jego utworzenia.
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
 |Name (Nazwa)     | cdnverify.mycdnendpoint        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
-|Type     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
-|Czas wygaśnięcia     | 1        | 1 jest używana przez 1 godzinę        |
+|Typ     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Nazwa DNS powoduje utworzenie aliasu, w tym przykładzie jest to nazwa DNS cdnverify.adatumcdnendpoint.azureedge.net domyślne konto magazynu.        |
 

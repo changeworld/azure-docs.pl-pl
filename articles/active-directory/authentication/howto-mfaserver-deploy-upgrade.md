@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c01c7a22800d633696382687feb7090a4ed8b60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dcafa3e2f2665e84856b80cc0911d2e83df1aa65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358331"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057341"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Uaktualnienie do najnowszej serwera usługi Azure Multi-Factor Authentication
 
 W tym artykule opisano Cię przez proces uaktualniania serwera Azure Multi-Factor Authentication (MFA) w wersji 6.0 lub nowszej. Jeśli zachodzi potrzeba uaktualniania starszej wersji agenta PhoneFactor, zobacz [uaktualnić agenta PhoneFactor do serwera Azure Multi-Factor Authentication](howto-mfaserver-deploy-upgrade-pf.md).
 
 Jeśli wykonujesz uaktualnienie z 6.x lub w starszych do v7.x lub nowszej, zmienione wszystkie składniki programu .NET 2.0 .NET 4.5. Wszystkie składniki również wymagają programu Microsoft Visual C++ 2015 Redistributable Update 1 lub nowszym. Instalator serwera usługi MFA instaluje x86 i x64 wersje tych składników, jeśli nie są już zainstalowane. Jeśli Portal użytkowników i usługa sieci Web aplikacji mobilnej są uruchomione na oddzielnych serwerach, należy zainstalować te pakiety przed rozpoczęciem uaktualniania tych składników. Możesz wyszukać najnowszą aktualizację programu Microsoft Visual C++ 2015 Redistributable na [Microsoft Download Center](https://www.microsoft.com/download/). 
+
+> [!IMPORTANT]
+> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
 
 Kroki uaktualnienia w skrócie:
 

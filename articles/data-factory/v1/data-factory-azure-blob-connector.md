@@ -14,14 +14,14 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 85832abeb9908dd891e3f35a0368bc35c7816a6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66167862"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Blob Storage przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-azure-blob-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-azure-blob-storage.md)
 
@@ -31,7 +31,7 @@ ms.locfileid: "66167862"
 
 W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do kopiowania danych do i z usługi Azure Blob Storage. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Możesz skopiować dane z obsługiwanego źródłowego magazynu danych do usługi Azure Blob Storage lub Azure Blob Storage do dowolnego obsługiwanego magazynu danych ujścia. Poniższa tabela zawiera listę magazynów danych obsługiwanych jako źródła lub wychwytywanie przez działanie kopiowania. Na przykład dane można przenosić z **z** bazy danych programu SQL Server lub usługi Azure SQL database **do** usługi Azure blob storage. A może kopiować dane **z** usługi Azure blob storage **do** usługi Azure SQL Data Warehouse lub kolekcji usługi Azure Cosmos DB.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -252,7 +252,7 @@ Przyjrzyjmy się jak szybko skopiować dane z usługi Azure blob storage. W tym 
     4. Wybierz swoje konto usługi Azure storage.
     5. Kliknij przycisk **Dalej**.
 10. Na **Wybieranie wyjściowego pliku lub folderu** strony:  
-    1. Określ **ścieżka folderu** jako **adfblobconnector/output / {year} / {month} / {day}**. Wprowadź **kartę**.
+    1. Określ **ścieżka folderu** jako **adfblobconnector/output / {year} / {month} / {day}** . Wprowadź **kartę**.
     1. Aby uzyskać **roku**, wybierz opcję **rrrr**.
     1. Aby uzyskać **miesiąca**, upewnij się, że jest ustawiona na **MM**.
     1. Aby uzyskać **dzień**, upewnij się, że jest ustawiona na **dd**.

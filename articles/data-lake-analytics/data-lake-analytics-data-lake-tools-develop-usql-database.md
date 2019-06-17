@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628850"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Użyj projektu bazy danych U-SQL do tworzenia bazy danych U-SQL dla usługi Azure Data Lake
@@ -101,7 +101,7 @@ Możesz wdrożyć bazę danych U-SQL za pomocą projektu bazy danych U-SQL lub p
 Projekt U-SQL można odwoływać się do projektu bazy danych U-SQL. Odwołanie ma wpływ na dwóch obciążeń:
 
 - *Projekt kompilacji*: Konfigurowanie środowiska, w której istnieje odwołanie przed tworzenie skryptów U-SQL. 
-- *Konto wykonywania (lokalnego projekt)*: Środowiska, w której istnieje odwołanie są wdrażane do (lokalnego projektu) konta przed wykonaniem skryptu U-SQL. [Dowiedz się więcej o lokalnych przebiegów i różnica między (lokalnego maszyna) oraz (lokalnego projekt) konta w tym miejscu](data-lake-analytics-data-lake-tools-local-run.md).
+- *Konto wykonywania (lokalnego projekt)* : Środowiska, w której istnieje odwołanie są wdrażane do (lokalnego projektu) konta przed wykonaniem skryptu U-SQL. [Dowiedz się więcej o lokalnych przebiegów i różnica między (lokalnego maszyna) oraz (lokalnego projekt) konta w tym miejscu](data-lake-analytics-data-lake-tools-local-run.md).
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>Jak dodać odwołanie do bazy danych U-SQL
 

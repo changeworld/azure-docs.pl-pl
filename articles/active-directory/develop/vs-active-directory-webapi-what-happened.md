@@ -14,10 +14,10 @@ ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353282"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z moim projektem WebAPI (usługa połączona programu Visual Studio usługi Azure Active Directory)
@@ -34,7 +34,7 @@ Aby uzyskać informacje na temat pracy z podłączoną usługę, zobacz [wprowad
 
 Ma wpływ na odwołania *.NET pliku projektu) i `packages.config` (odwołań NuGet).
 
-| Type | Informacje ogólne |
+| Typ | Tematy pomocy |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -47,7 +47,7 @@ Ma wpływ na odwołania *.NET pliku projektu) i `packages.config` (odwołań NuG
 
 Dodatkowe informacje, w przypadku wybrania **Odczyt danych katalogu** opcji:
 
-| Type | Informacje ogólne |
+| Typ | Tematy pomocy |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 tylko) |
@@ -61,7 +61,7 @@ Dodatkowe informacje, w przypadku wybrania **Odczyt danych katalogu** opcji:
 
 Zostaną usunięte następujące odwołania (ASP.NET 4 wyłącznie dla projektów, tak jak w programie Visual Studio 2015):
 
-| Type | Informacje ogólne |
+| Typ | Tematy pomocy |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

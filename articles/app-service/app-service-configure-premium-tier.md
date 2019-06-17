@@ -17,10 +17,10 @@ ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: c85644e3cab39f9e0864af91722ee54aab6d59f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66139748"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurowanie warstwy PremiumV2 dla usługi Azure App Service
@@ -66,7 +66,7 @@ W zależności od środowiska hostingu skalowanie w górę może wymagać wykona
 
 W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, otwórz stronę aplikacji usługi App Service.
 
-W lewym obszarze nawigacji strony aplikacji usługi App Service wybierz **skalowanie w górę (plan usługi App Service)**.
+W lewym obszarze nawigacji strony aplikacji usługi App Service wybierz **skalowanie w górę (plan usługi App Service)** .
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 

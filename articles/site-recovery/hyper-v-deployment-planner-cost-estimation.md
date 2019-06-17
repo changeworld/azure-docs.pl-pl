@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60947230"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Raport szacowania kosztów przez Planistę wdrażania usługi Azure Site Recovery 
@@ -125,7 +125,7 @@ Aby ręcznie dodać maszyny wirtualne:
 
     i. **Korzyść użycia hybrydowego platformy Azure**
 
-1. Tę samą wartość można zastosować do wszystkich maszyn wirtualnych w tabeli, wybierając pozycję **Zastosuj do wszystkich** dla kolumn **Liczba operacji testowania odzyskiwania po awarii w roku**, **Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**, **Nadmiarowość danych** i **Korzyść użycia hybrydowego platformy Azure**.
+1. Tę samą wartość można zastosować do wszystkich maszyn wirtualnych w tabeli, wybierając pozycję **Zastosuj do wszystkich** dla kolumn **Liczba operacji testowania odzyskiwania po awarii w roku**, **Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)** , **Nadmiarowość danych** i **Korzyść użycia hybrydowego platformy Azure**.
 
 1. Wybierz pozycję **Oblicz ponownie koszt**, aby zaktualizować koszt.
 
@@ -133,17 +133,17 @@ Aby ręcznie dodać maszyny wirtualne:
 
 **Liczba maszyn wirtualnych**: Liczba maszyn wirtualnych, które zgodna z konfiguracją. Możesz zaktualizować liczbę istniejących maszyn wirtualnych, jeśli maszyny wirtualne o podobnej konfiguracji nie są profilowane, ale chronione.
 
-**Rozmiar IaaS (zalecenie)**: Rozmiar roli zgodnej maszyny Wirtualnej zalecany przez narzędzie. 
+**Rozmiar IaaS (zalecenie)** : Rozmiar roli zgodnej maszyny Wirtualnej zalecany przez narzędzie. 
 
-**Rozmiar IaaS (wybór)**: Domyślnie rozmiar jest taki sam jak zalecany rozmiar roli maszyny Wirtualnej. Rolę można zmienić zgodnie z wymaganiami. Koszt obliczeń opiera się na wybranym rozmiarze roli maszyny wirtualnej.
+**Rozmiar IaaS (wybór)** : Domyślnie rozmiar jest taki sam jak zalecany rozmiar roli maszyny Wirtualnej. Rolę można zmienić zgodnie z wymaganiami. Koszt obliczeń opiera się na wybranym rozmiarze roli maszyny wirtualnej.
 
 **Typ magazynu**: Typ magazynu, który jest używany przez maszynę Wirtualną. Jest to magazyn w warstwie Standardowa lub Premium.
 
-**Maszyna wirtualna łączny rozmiar magazynu (GB)**: Całkowita wielkość magazynu maszyny Wirtualnej.
+**Maszyna wirtualna łączny rozmiar magazynu (GB)** : Całkowita wielkość magazynu maszyny Wirtualnej.
 
 **Liczba awarii w roku**: Liczba wykonań testowania odzyskiwania po awarii w roku. Wartość domyślna to cztery razy w roku. Okres możesz zmodyfikować dla konkretnych maszyn wirtualnych lub zastosować nową wartość dla wszystkich maszyn wirtualnych. Wprowadź nową wartość w górnym wierszu, a następnie wybierz pozycję **Zastosuj do wszystkich**. Łączny koszt odzyskiwania po awarii jest obliczany na podstawie liczby operacji testowania odzyskiwania po awarii w ciągu roku i czasu trwania poszczególnych okresów testowania odzyskiwania po awarii. 
 
-**Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**: Czas trwania poszczególnych operacji testowania odzyskiwania po awarii. Wartość domyślna to 7 dni co 90 dni zgodnie z [korzyścią odzyskiwania po awarii w pakiecie Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). Okres możesz zmodyfikować dla konkretnych maszyn wirtualnych lub zastosować nową wartość dla wszystkich maszyn wirtualnych. Wprowadź nową wartość w górnym wierszu, a następnie wybierz pozycję **Zastosuj do wszystkich**. Łączny koszt odzyskiwania po awarii jest obliczany w oparciu o liczbę operacji testowania odzyskiwania po awarii w ciągu roku i czas trwania poszczególnych okresów testowania odzyskiwania po awarii.
+**Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)** : Czas trwania poszczególnych operacji testowania odzyskiwania po awarii. Wartość domyślna to 7 dni co 90 dni zgodnie z [korzyścią odzyskiwania po awarii w pakiecie Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). Okres możesz zmodyfikować dla konkretnych maszyn wirtualnych lub zastosować nową wartość dla wszystkich maszyn wirtualnych. Wprowadź nową wartość w górnym wierszu, a następnie wybierz pozycję **Zastosuj do wszystkich**. Łączny koszt odzyskiwania po awarii jest obliczany w oparciu o liczbę operacji testowania odzyskiwania po awarii w ciągu roku i czas trwania poszczególnych okresów testowania odzyskiwania po awarii.
  
 **Typ systemu operacyjnego**: Typ systemu operacyjnego (OS) maszyny Wirtualnej. Może to być system Windows lub Linux. Jeśli typ systemu operacyjnego to Windows, do tej maszyny wirtualnej można zastosować korzyść użycia hybrydowego platformy Azure. 
 
@@ -155,7 +155,7 @@ Aby ręcznie dodać maszyny wirtualne:
 
 **Koszt replikacji w stanie stabilnym**: Koszt magazynu na potrzeby replikacji.
 
-**Łączny koszt testowania odzyskiwania po awarii (średni)**: Zasoby obliczeniowe i Magazyn koszt testowania odzyskiwania po awarii.
+**Łączny koszt testowania odzyskiwania po awarii (średni)** : Zasoby obliczeniowe i Magazyn koszt testowania odzyskiwania po awarii.
 
 **Koszt licencji usługi Azure Site Recovery**: Koszt licencji usługi Site Recovery.
 
@@ -175,7 +175,7 @@ Planista wdrażania usługi Site Recovery może wygenerować raport kosztów z u
 |IDR|Rupia indonezyjska (Rp)||INR|Rupia indyjska (₹)||JPY|Jen japoński (y)|
 |KRW|Won południowokoreański (₩)||MXN|Peso meksykańskie (MX$)||MYR|Ringgit malezyjski (RM$)|
 |NOK|Korona norweska (kr)||NZD|Dolar nowozelandzki ($)||RUB|Rubel rosyjski (руб)|
-|SAR|Rial saudyjski (SR)||SEK|Korona szwedzka (kr)||TWD|Dolar tajwański (NT$)|
+|SAR|Saudi riyal (SR)||SEK|Korona szwedzka (kr)||TWD|Dolar tajwański (NT$)|
 |TRY|Lira turecka (TL)||USD| Dolar amerykański ($)||ZAR|Rand RPA (R)|
 
 ## <a name="next-steps"></a>Kolejne kroki

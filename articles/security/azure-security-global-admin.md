@@ -8,12 +8,12 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: fbc3bba3d95526277da3487cb8670c1f1a88a925
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7d40b8f0ca05000a51e70d7a124e9cb143aa2dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951770"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127233"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>Wymuszanie uwierzytelniania wieloskładnikowego (MFA) dla administratorów subskrypcji
 
@@ -44,5 +44,5 @@ Dopóki użytkownicy będą mieli licencje obejmujące usługę Azure Multi-Fact
 
 ## <a name="turn-on-two-step-verification-for-users"></a>Włączanie weryfikacji dwuetapowej dla użytkowników
 
-Użyj jednej z procedur wymienionych w [jak wymagać weryfikacji dwuetapowej](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) dla użytkownika lub grupy rozpocząć korzystanie z usługi Azure MFA. Weryfikację dwuetapową możesz wymusić dla wszystkich logowań lub utworzyć zasady dostępu warunkowego, które wymuszają weryfikację dwuetapową tylko wtedy, gdy jest to pożądane.
+Użyj jednej z procedur wymienionych w [jak wymagać weryfikacji dwuetapowej](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) dla użytkownika lub grupy rozpocząć korzystanie z usługi Azure MFA. Istnieje możliwość wymuszenia weryfikacji dwuetapowej dla wszystkich logowań lub można utworzyć zasady dostępu warunkowego, które wymuszają weryfikację dwuetapową tylko wtedy, gdy ma znaczenia dla Ciebie.
 

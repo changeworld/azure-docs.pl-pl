@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6b74f217d296b5de8886f608b1bc92e908b5d8b4
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866476"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-create-datasets.md)
 > * [Bieżąca wersja](concepts-datasets-linked-services.md)
 
@@ -70,9 +70,9 @@ W poniższej tabeli opisano właściwości w powyższy kod JSON:
 Właściwość | Opis | Wymagane |
 -------- | ----------- | -------- |
 name | Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Yes |
-type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: AzureBlob, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typy zestawów danych](#dataset-type). | Yes |
-Struktura | Schemat zestawu danych. Aby uzyskać więcej informacji, zobacz [schemat zestawu danych](#dataset-structure-or-schema). | Nie |
-typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#dataset-type). | Yes |
+type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: AzureBlob, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typy zestawów danych](#dataset-type). | Tak |
+structure | Schemat zestawu danych. Aby uzyskać więcej informacji, zobacz [schemat zestawu danych](#dataset-structure-or-schema). | Nie |
+typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#dataset-type). | Tak |
 
 ### <a name="data-flow-compatible-dataset"></a>Dataset zgodne przepływu danych
 
@@ -114,9 +114,9 @@ W poniższej tabeli opisano właściwości w powyższy kod JSON:
 
 Właściwość | Opis | Wymagane |
 -------- | ----------- | -------- |
-name | Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Yes |
+name | Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Tak |
 type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: AzureBlob, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typy zestawów danych](#dataset-type). | Yes |
-Schemat | Schemat zestawu danych. Aby uzyskać więcej informacji, zobacz [przepływ danych zgodne zestawy danych](#dataset-type). | Nie |
+schema | Schemat zestawu danych. Aby uzyskać więcej informacji, zobacz [przepływ danych zgodne zestawy danych](#dataset-type). | Nie |
 typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#dataset-type). | Yes |
 
 
@@ -182,9 +182,9 @@ Każda kolumna w strukturze zawiera następujące właściwości:
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
-name | Nazwa kolumny. | Yes
+name | Nazwa kolumny. | Tak
 type | Typ danych kolumny. Usługa Data Factory obsługuje następujące typy danych tymczasowych jako dozwolone wartości: **Int16, Int32, Int64, pojedynczego, Double, Decimal, bajt [], atrybut typu wartość logiczna, ciąg, identyfikator Guid, daty/godziny, Datetimeoffset i przedziału czasu** | Nie
-Kultury | . Kulturę opartą na sieci ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie
+culture | . Kulturę opartą na sieci ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie
 format | Format ciągu ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Zapoznaj się [Custom Date and Time Format Strings](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) w sposób formatowania daty/godziny. | Nie
 
 ### <a name="example"></a>Przykład

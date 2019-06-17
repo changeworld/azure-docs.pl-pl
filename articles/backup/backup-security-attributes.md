@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 86b8ab96a94a6ffc44c304d8a0a689301560a989
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002801"
 ---
 # <a name="security-attributes-for-azure-backup"></a>Atrybuty zabezpieczeń dla usługi Azure Backup
@@ -25,7 +25,7 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowanych w usługę Azure Backu
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak | Dzięki szyfrowaniu usługi storage dla kont magazynu. |
+| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Yes | Dzięki szyfrowaniu usługi storage dla kont magazynu. |
 | Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Nie | Przy użyciu protokołu HTTPS. |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Nie |  |
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| Nie |  |
@@ -37,7 +37,7 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowanych w usługę Azure Backu
 |---|---|--|
 | Obsługa punktu końcowego usługi| Nie |  |
 | Obsługa iniekcji sieci wirtualnej| Nie |  |
-| Izolacja sieci i zapory pomocy technicznej| Tak | Wymuszanie tunelowania jest obsługiwana dla kopii zapasowych maszyn wirtualnych. Wymuszone tunelowanie nie jest obsługiwana w przypadku obciążeń uruchomionych maszyn wirtualnych. |
+| Izolacja sieci i zapory pomocy technicznej| Yes | Wymuszanie tunelowania jest obsługiwana dla kopii zapasowych maszyn wirtualnych. Wymuszone tunelowanie nie jest obsługiwana w przypadku obciążeń uruchomionych maszyn wirtualnych. |
 | Obsługa tunelowania wymuszonego| Nie |  |
 
 ## <a name="detection"></a>Wykrywanie
@@ -65,4 +65,4 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowanych w usługę Azure Backu
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Tak|  |
+| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Yes|  |

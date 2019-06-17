@@ -9,10 +9,10 @@ ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ee9b70827c19236287f81f66f4b9c6e1004a54fd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114490"
 ---
 W poniższej tabeli opisano domyślne limity dla platformy Azure, general-purpose v1, v2 i konta usługi Blob storage. *Ruch przychodzący* limit odnosi się do wszystkich danych z żądań, które są wysyłane do konta magazynu. *Ruch wychodzący* limit odnosi się do wszystkich danych z odpowiedzi, które są odbierane z konta magazynu.
@@ -21,7 +21,7 @@ W poniższej tabeli opisano domyślne limity dla platformy Azure, general-purpos
 | --- | --- |
 | Liczba kont magazynu na region na subskrypcję, w tym kont w warstwach standardowa i premium | 250 |
 | Maksymalna pojemność konta | 2 PB dla Stanów Zjednoczonych i Europie, 500 TB dla wszystkich innych regionów, w tym Wielkiej Brytanii |
-| Maksymalna liczba kontenerów obiektów blob, obiekty BLOB, udziały plików, tabel, kolejek, jednostki lub wiadomości na koncie magazynu | Bez limitu |
+| Maksymalna liczba kontenerów obiektów blob, obiekty BLOB, udziały plików, tabel, kolejek, jednostki lub wiadomości na koncie magazynu | Bez ograniczeń |
 | Maksymalna liczba żądań<sup>1</sup> na konto magazynu | 20 000 żądań na sekundę |
 | Maksymalna ruch przychodzący<sup>1</sup> na konto magazynu (regionami w Stanach Zjednoczonych) | 10 GB/s Jeśli Magazyn RA-GRS/GRS jest włączona, 20 GB/s dla magazynu LRS/ZRS<sup>2</sup> |
 | Maksymalna ruch przychodzący<sup>1</sup> na konto magazynu (regiony poza USA) | 5 GB/s Jeśli Magazyn RA-GRS/GRS jest włączona, 10 GB/s dla magazynu LRS/ZRS<sup>2</sup> |

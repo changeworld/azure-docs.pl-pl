@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 890cd7080447649396855bfbe051dca4470a4564
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546298"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Za pomocą usług Data Lake Storage Gen1 klastrów Azure HDInsight
@@ -43,9 +43,9 @@ Aktualnie tylko niektóre HDInsight klastra typy/wersje pomocy technicznej za po
 | Typ klastra usługi HDInsight | Data Lake Storage Gen1 jako magazynem domyślnym | Data Lake Storage Gen1 jako magazyn dodatkowy| Uwagi |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight w wersji 4.0 | Nie | Nie |Gen1 Azure Data Lake Store nie jest obsługiwana przy użyciu HDInsight w wersji 4.0 |
-| HDInsight w wersji 3.6 | Tak | Tak | Z wyjątkiem bazy danych HBase|
+| HDInsight w wersji 3.6 | Yes | Tak | Z wyjątkiem bazy danych HBase|
 | HDInsight w wersji 3.5 | Tak | Tak | Z wyjątkiem bazy danych HBase|
-| HDInsight w wersji 3.4 | Nie | Tak | |
+| HDInsight w wersji 3.4 | Nie | Yes | |
 | HDInsight w wersji 3.3 | Nie | Nie | |
 | HDInsight w wersji 3.2 | Nie | Yes | |
 | Storm | | |Data Lake Storage Gen1 służy do zapisywania danych pochodzących z topologii Storm. Można również użyć usługi Data Lake Storage dla danych referencyjnych, które następnie mogą być odczytywane przez topologię Storm.|
@@ -62,7 +62,7 @@ Po wdrożeniu HDInsight przy użyciu Data Lake Storage Gen1 jako magazynem domy�
 * Klaster1 może używać ścieżki `adl://mydatalakestore/cluster1storage`
 * Klaster2 może używać ścieżki `adl://mydatalakestore/cluster2storage`
 
-Zwróć uwagę, że oba klastry używają tego samego konta Data Lake Storage Gen1 **mydatalakestore**. Każdy klaster ma dostęp do własnego głównego systemu plików w usługi Data Lake Storage. W środowisku wdrażania witryny Azure Portal zostanie wyświetlony monit o użycie nazwy folderu, takiej jak **/clusters/\<nazwa_klastra>**, dla ścieżki głównej.
+Zwróć uwagę, że oba klastry używają tego samego konta Data Lake Storage Gen1 **mydatalakestore**. Każdy klaster ma dostęp do własnego głównego systemu plików w usługi Data Lake Storage. W środowisku wdrażania witryny Azure Portal zostanie wyświetlony monit o użycie nazwy folderu, takiej jak **/clusters/\<nazwa_klastra>** , dla ścieżki głównej.
 
 Aby można było używać Data Lake Storage Gen1 jako magazynem domyślnym, należy przyznać jednostce usługi dostęp do następujących ścieżek:
 

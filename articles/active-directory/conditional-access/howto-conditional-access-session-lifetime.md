@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie zarządzania sesji uwierzytelniania przy użyciu dostępu warunkowego usługi Azure Active Directory
+title: Konfigurowanie zarządzania sesji uwierzytelniania przy użyciu usługi Azure Active Directory dostępu warunkowego
 description: Dostosuj konfigurację sesji uwierzytelniania usługi Azure AD tym częstotliwość i przeglądarki trwałość sesji logowania użytkownika.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: e15cf9b2e10a581c72a5035b52be47c3e2c9dfda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112338"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurowanie zarządzania sesji uwierzytelniania przy użyciu dostępu warunkowego
 
@@ -53,7 +53,7 @@ Wartość domyślna usługi Azure AD dla trwałości sesji przeglądarki umożli
 Dostęp warunkowy jest możliwość usługi Azure AD Premium i wymaga licencji premium. Jeśli chcesz dowiedzieć się więcej na temat dostępu warunkowego, zobacz [co to jest dostęp warunkowy w usłudze Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Jeśli używasz [można skonfigurować okres istnienia tokenu](../develop/active-directory-configurable-token-lifetimes.md) są wyposażone w obecnie w publicznej wersji zapoznawczej, należy pamiętać, że firma Microsoft nie obsługuje tworzenia dwóch różnych zasad dla tej samej kombinacji aplikacji lub użytkownika: jeden z tej funkcji i inną z żądanymi funkcję można skonfigurować okres istnienia tokenu. Firma Microsoft planuje wycofanie funkcji można skonfigurować okres istnienia tokenu od 15 października i zastąp go za pomocą funkcji zarządzania sesji uwierzytelniania dostępu warunkowego.  
+> Jeśli używasz [można skonfigurować okres istnienia tokenu](../develop/active-directory-configurable-token-lifetimes.md) są wyposażone w obecnie w publicznej wersji zapoznawczej, należy pamiętać, że firma Microsoft nie obsługuje tworzenia dwóch różnych zasad dla tej samej kombinacji aplikacji lub użytkownika: jeden z tej funkcji i inną z żądanymi funkcję można skonfigurować okres istnienia tokenu. Firma Microsoft planuje wycofanie funkcji można skonfigurować okres istnienia tokenu 1 listopada i zastąp go za pomocą funkcji zarządzania sesji uwierzytelniania dostępu warunkowego.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zasady 1: Kontrolka logowania częstotliwości
 
@@ -74,7 +74,7 @@ W usłudze Azure AD zarejestrowanej Windows urządzenia logowanie do urządzenia
 
 Skonfigurowanie częstotliwość różnych logowania dla aplikacji internetowej innej, które są uruchomione w tej samej sesji przeglądarki najbardziej rygorystyczne zasady zostaną zastosowane do obu aplikacji, ponieważ wszystkie aplikacje uruchomione w tej samej sesji przeglądarki, Udostępnij token jednej sesji.
 
-### <a name="policy-2-persistent-browser-session"></a>Zasady 2: Trwała sesja przeglądarki
+### <a name="policy-2-persistent-browser-session"></a>Zasady 2: Trwałe sesję
 
 1. Utwórz nowe zasady
 1. Wybierz wszystkie wymagane warunki.
@@ -91,11 +91,11 @@ Skonfigurowanie częstotliwość różnych logowania dla aplikacji internetowej 
 > [!NOTE]
 > Spowoduje to zastąpienie trwałego konfiguracji sesji przeglądarki w funkcji dostępu warunkowego usługi Azure AD "pobytu zalogowany?" ustawienie w firmie znakowania okienku w portalu Azure dla tego samego użytkownika, jeśli obie zasady zostały skonfigurowane.
 
-## <a name="validation"></a>Weryfikacja
+## <a name="validation"></a>Walidacja
 
 Narzędzie warunkowej do symulowania logowania użytkownika do aplikacji docelowej i innych warunków, oparte na konfiguracji zasad. Kontrolki zarządzania sesji uwierzytelniania wyświetlany w wyniku tego narzędzia.
 
-![Dostęp warunkowy, co się stanie, jeśli wyniki narzędzia](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![Wyniki działania narzędzia warunkowego dostępu What If](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
 ## <a name="policy-deployment"></a>Wdrażanie zasad
 
@@ -103,5 +103,5 @@ Aby upewnić się, że zasad usługi działa zgodnie z oczekiwaniami, zalecanym 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz artykuł [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+* Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz artykuł [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
 * Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz artykuł [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).

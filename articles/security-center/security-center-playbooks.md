@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ec16e6daec099adbede625c5ec6fe6909059143b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60907101"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Element playbook zabezpieczeń w usłudze Azure Security Center (wersja zapoznawcza)
@@ -34,7 +34,7 @@ Element playbook zabezpieczeń to kolekcja procedur, które mogą być wykonywan
 Wykonaj poniższe kroki, aby utworzyć nowy element playbook zabezpieczeń w usłudze Security Center:
 
 1.  Otwórz pulpit nawigacyjny usługi **Security Center**.
-2.  W obszarze **automatyzacji i aranżacji** w lewym okienku kliknij pozycję **Elementy playbook (wersja zapoznawcza)**.
+2.  W obszarze **automatyzacji i aranżacji** w lewym okienku kliknij pozycję **Elementy playbook (wersja zapoznawcza)** .
 
     ![Aplikacja logiki](./media/security-center-playbooks/security-center-playbooks-fig17.png)
 

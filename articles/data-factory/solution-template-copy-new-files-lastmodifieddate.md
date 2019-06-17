@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
 ms.openlocfilehash: cae75f4d64c8b3f74cc40e94a675c0f10a6bd9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312817"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Skopiuj nowe i zmienione pliki, Data ostatniej modyfikacji przy użyciu usługi Azure Data Factory
@@ -60,12 +60,12 @@ Szablon definiuje cztery parametry:
     ![Pokaż potoku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
 6. Wybierz **debugowania**, zapisać wartości dla **parametry** i wybierz **Zakończ**.  Na ilustracji poniżej, ustawimy parametry, jako pokazano poniżej.
-   - **FolderPath_Source** = **/source/**
-   - **FolderPath_Destination** = **/destination/**
+   - **FolderPath_Source** =  **/source/**
+   - **FolderPath_Destination** =  **/destination/**
    - **LastModified_From** =  **2019-02-01T00:00:00Z**
    - **LastModified_To** = **2019-03-01T00:00:00Z**
     
-     Przykład wskazuje pliki, które zostały ostatnio zmodyfikowane w ramach przedziału czasu między *2019 r-02-01T00:00:00Z* i *2019-03-01T00:00:00Z* zostaną skopiowane z folderu */source/*  do folderu */destination/*.  Możesz zastąpić je własnymi parametrami.
+     Przykład wskazuje pliki, które zostały ostatnio zmodyfikowane w ramach przedziału czasu między *2019 r-02-01T00:00:00Z* i *2019-03-01T00:00:00Z* zostaną skopiowane z folderu */source/*  do folderu */destination/* .  Możesz zastąpić je własnymi parametrami.
     
      ![Uruchamianie potoku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
@@ -86,10 +86,10 @@ Szablon definiuje cztery parametry:
     ![Tworzenie wyzwalacza](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. Zapisz wartość dla **Parametry uruchamiania wyzwalacza** jako poniżej, a następnie wybierz **Zakończ**.
-    - **FolderPath_Source** = **/source/**.  Można zastąpić folderu w magazynie danych źródłowych.
-    - **FolderPath_Destination** = **/destination/**.  Można zastąpić folderu w docelowego magazynu danych.
-    - **LastModified_From** =  **@trigger().outputs.windowStartTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas, kiedy potoku zostało wyzwolone ostatniego.
-    - **LastModified_To** = **@trigger(). outputs.windowEndTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas, kiedy potoku jest wyzwalany w tej chwili.
+    - **FolderPath_Source** =  **/source/** .  Można zastąpić folderu w magazynie danych źródłowych.
+    - **FolderPath_Destination** =  **/destination/** .  Można zastąpić folderu w docelowego magazynu danych.
+    - **LastModified_From** =   **@trigger().outputs.windowStartTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas, kiedy potoku zostało wyzwolone ostatniego.
+    - **LastModified_To** =  **@trigger(). outputs.windowEndTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas, kiedy potoku jest wyzwalany w tej chwili.
     
     ![Parametry wejściowe](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

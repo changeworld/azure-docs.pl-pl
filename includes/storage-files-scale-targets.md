@@ -1,22 +1,22 @@
 ---
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
-ms.author: tamram
-ms.openlocfilehash: 213ecee34df46c0a408e7034a07ab864c96b340b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.author: rogarana
+ms.openlocfilehash: df5d8ff941c742d546208c27c7af4e7bcbeec08a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114520"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073747"
 ---
 | Resource | Udziały plików standardowe | Udziały plików w warstwie Premium (wersja zapoznawcza) |
 |----------|---------------|------------------------------------------|
 | Minimalny rozmiar udziału plików | Nie minimum; Płatność zgodnie z rzeczywistym użyciem | 100 giB; Zainicjowano obsługę administracyjną |
 | Maksymalny rozmiar udziału plików | 5 TiB | 100 TiB |
 | Maksymalny rozmiar pliku w udziale plików | 1 TiB | 1 TiB |
-| Maksymalna liczba plików w udziale plików | Bez limitu | Bez limitu |
+| Maksymalna liczba plików w udziale plików | Bez ograniczeń | Bez ograniczeń |
 | Maksymalna liczba IOPS na akcję | 1000 OPERACJI WE/WY | 100 000 OPERACJI WE/WY |
 | Maksymalna liczba przechowywanych zasad dostępu dla pliku udostępniania | 5 | 5 |
 | Docelowa przepustowość jeden udział pliku | Maksymalnie 60 MiB/s | Zobacz premium Udostępnij przychodzący i wychodzący wartości w pliku|

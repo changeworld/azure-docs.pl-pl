@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61408764"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Zainstaluj aktualizację 1.1 na rozwiązania StorSimple Virtual Array
@@ -76,7 +76,7 @@ Wykonaj poniższe kroki, aby pobrać aktualizację 1.1 z wykazu usługi Microsof
    
     ![Przeszukiwanie wykazu](./media/storsimple-virtual-array-install-update-11/download1.png)
 
-4. Kliknij pozycję **Pobierz**.
+4. Kliknij przycisk **Pobierz**.
 
 5. Pobierz oba pliki do folderu. Można również skopiować folder do udziału sieciowego, który jest dostępny z urządzenia.
 

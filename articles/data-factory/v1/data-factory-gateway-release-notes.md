@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486468"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Informacje o wersji bramy zarządzania danymi
@@ -103,7 +103,7 @@ Firma Microsoft ma więcej zachowuje informacje o wersji w tym miejscu. Uzyskaj 
 *  Obsługuje ustawienie serwera proxy HTTP dla bramy przy użyciu Menedżera konfiguracji bramy. Jeśli skonfigurowano, obiektów Blob platformy Azure, Azure Table, usługa Azure Data Lake i baza danych Documentdb są dostępne za pośrednictwem serwera proxy HTTP.
 *  Obsługuje nagłówek obsługi TextFormat podczas kopiowania danych z/do obiektów Blob platformy Azure, Azure Data Lake Store, System plików lokalnych i w środowisku lokalnym systemem plików HDFS.
 *  Obsługuje kopiowanie danych z Uzupełnialnych obiektów Blob i stronicowych obiektów Blob oraz już obsługiwanych blokowych obiektów Blob.
-*  Wprowadza nowy stan bramy **Online (ograniczone)**, co oznacza, że główne funkcje bramy działa z wyjątkiem obsługi operacji interaktywnych kreatora kopiowania.
+*  Wprowadza nowy stan bramy **Online (ograniczone)** , co oznacza, że główne funkcje bramy działa z wyjątkiem obsługi operacji interaktywnych kreatora kopiowania.
 *  Zwiększa niezawodność rejestracji bramy przy użyciu klucza rejestracji.
 
 ## <a name="216040"></a>2.1.6040.

@@ -16,10 +16,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb03869cdea2150b6e922e2d6d81e577c3be02da
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65075388"
 ---
 # <a name="web-api-that-calls-web-apis---app-registration"></a>Czy interfejsy API — rejestrowanie aplikacji sieci web wywołań interfejsu API sieci Web
@@ -30,7 +30,7 @@ Ponieważ aplikacja sieci web teraz połączeń internetowych interfejsów API, 
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
-## <a name="api-permissions"></a>Uprawnienia interfejsu API
+## <a name="api-permissions"></a>Uprawnienia do interfejsu API
 
 Aplikacje sieci Web wywoływania interfejsów API w imieniu użytkownika, dla którego został odebrany token elementu nośnego. Muszą zażądać uprawnień delegowanych. Aby uzyskać więcej informacji, zobacz [Dodawanie uprawnień dostępu do interfejsów API sieci web](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 

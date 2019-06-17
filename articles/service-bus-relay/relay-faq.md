@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111473"
 ---
 # <a name="azure-relay-faqs"></a>Usługa Azure Relay — często zadawane pytania
@@ -86,7 +86,7 @@ Przekaźniki, które są otwarte przy użyciu **netTCPRelay** wiązania WCF trak
 | Połączeń współbieżnych przekazywania na wszystkich punktem końcowym przekaźnika w przestrzeni nazw usługi |Przestrzeń nazw |- |5,000 |
 | Punktów końcowych przestrzeni nazw usługi Relay |Przestrzeń nazw |- |10 000 |
 | Rozmiar komunikatu [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) i [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) przekazuje |Przestrzeń nazw |Wiadomości przychodzących, które wykraczają poza te przydziały są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |64 KB |
-| Rozmiar komunikatu [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) przekazuje |Przestrzeń nazw |Brak limitu rozmiaru wiadomości. |Nieograniczone |
+| Rozmiar komunikatu [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) przekazuje |Przestrzeń nazw |Brak limitu rozmiaru wiadomości. |Nieograniczona liczba |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Przekaźnik ma przydziały użycia?
 Domyślnie dla dowolnej usługi w chmurze firmy Microsoft ustawia łączny miesięczny przydział użycia, który jest obliczany dla wszystkich subskrypcji klientów. Rozumiemy, że czasami potrzeb może przekroczenia limitów. Dlatego firma Microsoft jest zrozumienie potrzeb i odpowiednio dostosować te limity można skontaktować się działem obsługi klienta w dowolnym momencie. Service Bus przydziały użycia agregacji są następujące:

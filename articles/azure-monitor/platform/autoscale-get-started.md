@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.component: autoscale
+ms.subservice: autoscale
 ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60788594"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Rozpoczynanie pracy z funkcją automatycznego skalowania na platformie Azure
@@ -46,7 +46,7 @@ Przejdźmy teraz przechodzić przez proste przewodnik krok po kroku, aby utworzy
   ![Ustawienie Skala dla nowej aplikacji sieci web][5]
 1. Podaj nazwę dla ustawienia skalowania, a następnie kliknij przycisk **Dodaj regułę**. Zapoznaj się z opcjami reguły skalowania, które Uruchom jako w okienku kontekstowym po prawej stronie. Domyślnie to ustawienie opcji skalować swoje liczbę wystąpień o 1, jeśli procent użycia procesora CPU zasobu przekracza 70 procent. Pozostaw wartości domyślne, a następnie kliknij przycisk **Dodaj**.
   ![Tworzenie Ustawienia skalowania dla aplikacji sieci web][6]
-1. Teraz utworzyłeś swoją pierwszą regułę skalowania. Pamiętaj, że środowiska użytkownika zaleca najlepsze rozwiązania i informacją, że "zaleca się mieć co najmniej jeden skalowania w regule." W tym celu:
+1. Teraz utworzyłeś swoją pierwszą regułę skalowania. Pamiętaj, że środowiska użytkownika zaleca najlepsze rozwiązania i informacją, że "zaleca się mieć co najmniej jeden skalowania w regule." Aby to zrobić:
 
     a. Kliknij przycisk **Dodaj regułę**.
 
@@ -133,3 +133,4 @@ Zawsze możesz wrócić do automatycznego skalowania, klikając **włączyć Ska
 [12]: ./media/autoscale-get-started/scale-definition-json.png
 [13]: ./media/autoscale-get-started/disable-autoscale.png
 [14]: ./media/autoscale-get-started/set-manualscale.png
+

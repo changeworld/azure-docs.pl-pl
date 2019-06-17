@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: c1e74efa9cf99e8510ea17aedc840ce3b0731c3b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7ff036fbdf3ae9360bed8d728b9bec3a1937b70a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916674"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808246"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Dodawanie repozytorium artefaktów do laboratorium w usłudze DevTest Labs
-DevTest Labs umożliwia określenie artefaktu ma zostać dodany do maszyny Wirtualnej w czasie tworzenia maszyny Wirtualnej lub po utworzeniu maszyny Wirtualnej. Ten artefakt może być narzędziem lub aplikacji, którą chcesz zainstalować na maszynie Wirtualnej. Artefakty są zdefiniowane w pliku JSON załadowane z repozytorium GitHub i VSTS Git. 
+DevTest Labs umożliwia określenie artefaktu ma zostać dodany do maszyny Wirtualnej w czasie tworzenia maszyny Wirtualnej lub po utworzeniu maszyny Wirtualnej. Ten artefakt może być narzędziem lub aplikacji, którą chcesz zainstalować na maszynie Wirtualnej. Artefakty są zdefiniowane w pliku JSON załadowane z repozytorium GitHub lub DevOps Git platformy Azure. 
 
 [Publiczne repozytorium artefaktów](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), obsługiwane przez usługi DevTest Labs, udostępnia wiele popularnych narzędzi dla systemów Windows i Linux. Łącze do tego repozytorium jest automatycznie dodawane do środowiska laboratoryjnego. Repozytorium artefaktów można utworzyć przy użyciu określonego narzędzia, które nie są dostępne w publiczne repozytorium artefaktów. Aby dowiedzieć się więcej na temat tworzenia niestandardowych artefaktów, zobacz [Tworzenie niestandardowych artefaktów](devtest-lab-artifact-author.md).
 

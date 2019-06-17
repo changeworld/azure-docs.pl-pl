@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298832"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Program Azure AD Connect: Specjalne uwagi dotyczące wystąpień
@@ -33,7 +33,7 @@ Program Azure AD Connect jest najczęściej używana z wystąpienia na całym ś
 | --- |
 | \*.microsoftonline.de |
 | \*. windows.net |
-| + Listy odwołania certyfikatów |
+| \+ Listy odwołania certyfikatów |
 
 Po zalogowaniu się do dzierżawy usługi Azure AD, należy użyć konta w domenie onmicrosoft.de.
 
@@ -53,7 +53,7 @@ Ta chmura obsługiwanego przez wcześniejszych wersjach narzędzia DirSync. Z 1.
 | \*.microsoftonline.us |
 | \*. windows.net (wymagane w celu automatycznego wykrywania dzierżawy Azure dla instytucji rządowych) |
 | \*.gov.us.microsoftonline.com |
-| + Listy odwołania certyfikatów |
+| \+ Listy odwołania certyfikatów |
 
 > [!NOTE]
 > Począwszy od usługi Azure AD Connect w wersji 1.1.647.0, ustawiając wartość AzureInstance w rejestrze nie jest już wymagane, pod warunkiem że *. windows.net jest otwarty na Twoje serwery proxy. Jednak w przypadku klientów, które nie zezwalają na połączenie z Internetem z ich serwerów usługi Azure AD Connect, następująca konfiguracja ręczna może służyć.

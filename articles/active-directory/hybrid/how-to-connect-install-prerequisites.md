@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f7219578932a259f48b0109d433dcba9ff28d1f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 1d17823c4ef4917f9f312b8f2f327e2b0395cfa3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508035"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109429"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -48,6 +48,9 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
 * Zaleca się [Włączanie Kosza usługi Active Directory](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Serwer usługi Azure AD Connect
+>[!IMPORTANT]
+>Serwer programu Azure AD Connect zawiera dane krytyczne tożsamości i powinny być traktowane jako składnik warstwy 0, zgodnie z opisem w [model warstw administracyjnych usługi Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)
+
 * Program Azure AD Connect nie można zainstalować na Small Business Server, Windows Server Essentials przed 2019 r (system Windows Server Essentials 2019 jest obsługiwane). Serwer musi używać systemu Windows Server standard lub lepszej.
 * Program Azure AD Connect na kontrolerze domeny nie jest zalecane instalowanie ze względu na rozwiązania w zakresie zabezpieczeń i bardziej restrykcyjne ustawienia, które mogą uniemożliwić poprawne zainstalowanie przez program Azure AD Connect
 * Na serwerze usługi Azure AD Connect musi być pełnym interfejsem GUI zainstalowane. Jest **nieobsługiwane** zainstalować w instalacji server core.
@@ -130,7 +133,7 @@ Aby dowiedzieć się więcej, zobacz:
 Aby uzyskać więcej informacji, zobacz MSDN na temat [domyślny serwer proxy elementu](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
 Aby uzyskać więcej informacji, jeśli masz problemy z łącznością, zobacz [Rozwiązywanie problemów z łącznością](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Inny
+### <a name="other"></a>Inne
 * Opcjonalnie: Testowe konto użytkownika weryfikowanie synchronizacji.
 
 ## <a name="component-prerequisites"></a>Wymagania wstępne dotyczące składników
@@ -208,7 +211,7 @@ Oto lista składników usługi Azure AD Connect jest instalowana na serwerze, na
 ## <a name="hardware-requirements-for-azure-ad-connect"></a>Wymagania sprzętowe programu Azure AD Connect
 W poniższej tabeli przedstawiono minimalne wymagania dotyczące komputera do synchronizacji Azure AD Connect.
 
-| Liczba obiektów w usłudze Active Directory | CPU | Memory (Pamięć) | Rozmiar dysku twardego |
+| Liczba obiektów w usłudze Active Directory | Procesor CPU | Memory (Pamięć) | Rozmiar dysku twardego |
 | --- | --- | --- | --- |
 | Mniej niż 10 000 operacji |1,6 GHz |4 GB |70 GB |
 | 10,000–50,000 |1,6 GHz |4 GB |70 GB |
@@ -220,7 +223,7 @@ W poniższej tabeli przedstawiono minimalne wymagania dotyczące komputera do sy
 
 Minimalne wymagania dotyczące komputerów z systemem usług AD FS lub serwerów aplikacji sieci Web jest następująca:
 
-* Procesor CPU: Podwójne podstawowe 1,6 GHz lub nowszej
+* CPU: Podwójne podstawowe 1,6 GHz lub nowszej
 * PAMIĘĆ: 2 GB lub nowszej
 * Maszyna wirtualna platformy Azure: Konfiguracja a2 lub nowszej
 

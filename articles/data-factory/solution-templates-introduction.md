@@ -12,10 +12,10 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60786978"
 ---
 # <a name="templates"></a>Szablony
@@ -30,7 +30,7 @@ Pracę można rozpocząć tworzenia potoku usługi fabryka danych na podstawie s
 
     ![Otwórz galerię szablonów ze strony Przegląd](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  Na karcie autora w Eksploratorze zasobów wybierz **+**, następnie **potoku za pomocą szablonu** do otwierania galerii szablonów.
+1.  Na karcie autora w Eksploratorze zasobów wybierz **+** , następnie **potoku za pomocą szablonu** do otwierania galerii szablonów.
 
     ![Otwórz galerię szablonów z karty autora](media/solution-templates-introduction/templates-intro-image2.png)
 

@@ -1,44 +1,42 @@
 ---
 title: Płatność dla subskrypcji platformy Azure przy użyciu faktury | Dokumentacja firmy Microsoft
 description: Opisuje sposób płatności dla subskrypcji platformy Azure przy użyciu faktury
-services: ''
 documentationcenter: ''
-author: genlin
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 06/06/2019
 ms.author: banders
-ms.openlocfilehash: 7caa7df3817c51d63dfa2838e4223d3fba88e529
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 7af8789d61069f37d34d07653177e839caf35304
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076506"
 ---
 # <a name="pay-azure-subscription-by-invoice"></a>Płatności subskrypcji platformy Azure przy użyciu faktury
 
 Jeśli przełącznik przy użyciu faktury, oznacza to, że płaci się w ciągu 30 dni od daty faktury na rachunku. Aby czerpać płatności dla subskrypcji platformy Azure za pomocą faktury, należy przesłać żądanie pomocy technicznej platformy Azure. Po zatwierdzeniu żądania subskrypcji do faktury płatność można przełączać w [witryny Azure portal](https://portal.azure.com).
 
 > [!IMPORTANT]
-> * Płatność na podstawie faktury jest dostępna tylko dla kont firmowych.
+> * Płatność faktur jest dostępna tylko dla konta firmowe.
 > * Przed przełączeniem do faktury płatności, musisz zapłacić wszystkie zaległe opłaty.
-> * Po przejściu na płatność na podstawie faktury nie można przejść z powrotem na płatność kartą kredytową lub debetową.
+> * Kiedy przełączysz się do faktury płatność nie Przełącz się do płatności Karta kredytowa lub debetowa.
 
 ## <a name="request-to-pay-by-invoice"></a>Żądanie przy użyciu faktury
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/). Wybierz **Pomoc i obsługa techniczna** > **nowe żądanie obsługi**.
 
-    ![Pomoc i obsługa techniczna przycisku](./media/billing-how-to-pay-by-invoice/help-and-support.png)
+    ![Pomoc i obsługa techniczna łącza](./media/billing-how-to-pay-by-invoice/help-and-support.png)
 
-2. Wybierz pozycję **Rozliczenia** jako typ problemu, wybierz subskrypcję, która ma być opłacana za pomocą faktury, wybierz plan pomocy technicznej, a następnie pozycję **Dalej**.
+2. Wybierz **rozliczeń** jako **typ problemu**. *Typ problemu* jest kategoria żądania pomocy technicznej. Wybierz subskrypcję, dla którego chcesz zapłacić za pomocą faktury, wybierz plan pomocy technicznej, a następnie wybierz **dalej**.
 
-3. Wybierz wartość **Płatność za pomocą faktury** w polu **Typ problemu**.
+3. Wybierz wartość **Płatność za pomocą faktury** w polu **Typ problemu**. *Typ problemu* jest podkategorię żądania pomocy technicznej.
 
 4. Wprowadź następujące informacje w **szczegóły** , a następnie wybierz **dalej**.
 
@@ -65,8 +63,8 @@ Jeśli przełącznik przy użyciu faktury, oznacza to, że płaci się w ciągu 
          (New quota) Requested cores:
          Specific region & series of Subscription:
 
-    - **Nazwa firmy** i **firmy adres** powinien być zgodny z informacjami, które podano dla konta platformy Azure.  Aby wyświetlić lub zaktualizować informacje, zobacz [zmiany informacji o Twoim profilu konta platformy Azure](billing-how-to-change-azure-account-profile.md).
-    - Zanim może zostać zatwierdzone limit środków, należy dodać przez osobę kontaktową rozliczeń w witrynie Azure portal. Szczegółowe dane kontaktowe powinny być związane z działu płatne konta lub finansów firmy. Aby zaktualizować rozliczeń kontaktu, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Profile).
+    - **Nazwa firmy** i **firmy adres** powinny odpowiadać informacje podane dla konta platformy Azure. Aby wyświetlić lub zaktualizować informacje, zobacz [zmiany informacji o Twoim profilu konta platformy Azure](billing-how-to-change-azure-account-profile.md).
+    - Zanim może zostać zatwierdzone limit środków, należy dodać swoje informacje kontaktowe rozliczeń w witrynie Azure portal. Szczegółowe dane kontaktowe powinny być związane z działu płatne konta lub finansów firmy. Aby zaktualizować informacje kontaktowe rozliczeń, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Profile).
 
 5. Zweryfikuj informacje kontaktowe i preferowaną metodę kontaktu, a następnie kliknij polecenie **Utwórz**.
 
@@ -87,6 +85,9 @@ Po zatwierdzeniu przy użyciu faktury można przełączyć subskrypcji platformy
 
     ![Zrzut ekranu pokazujący płacić za przycisku faktury](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+## <a name="next-steps"></a>Kolejne kroki
+- W razie potrzeby zaktualizuj swoje informacje kontaktowe rozliczeń w [Centrum konta platformy Azure](https://account.azure.com/Profile).

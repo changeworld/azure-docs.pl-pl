@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
 ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723605"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializacja elementu Reliable Collection obiektu w usłudze Azure Service Fabric
@@ -36,7 +36,7 @@ Serializatory wbudowane są bardziej wydajne, ponieważ wiedzieli, nie można zm
 Elementy Reliable State Manager ma wbudowane serializatora dla następujących typów: 
 - Guid
 - bool
-- bajt
+- byte
 - sbyte —
 - byte[]
 - char
@@ -46,7 +46,7 @@ Elementy Reliable State Manager ma wbudowane serializatora dla następujących t
 - float
 - int
 - uint
-- długi
+- long
 - ulong
 - Krótka
 - ushort

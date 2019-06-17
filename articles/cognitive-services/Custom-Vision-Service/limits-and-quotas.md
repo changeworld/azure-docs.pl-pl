@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
 ms.openlocfilehash: 85abc4a50710629d3485d05115698e59a93fc96e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60995635"
 ---
 # <a name="limits-and-quotas"></a>Limity przydziału i ograniczenia
@@ -26,7 +26,7 @@ Liczba uczone obrazy na projekt i tagi dla poszczególnych projektów powinny ro
 ||**F0**|**S0**|
 |-----|-----|-----|
 |Projekty|2|100|
-|Uczone obrazy na projekt |5000|100 000|
+|Uczone obrazy na projekt |5,000|100,000|
 |Prognozy / miesiąc|10 000 |Nieograniczona liczba|
 |Tagi / project|50|500|
 |Liczba iteracji |10|10|

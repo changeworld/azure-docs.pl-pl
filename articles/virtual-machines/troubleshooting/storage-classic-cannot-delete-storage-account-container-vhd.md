@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926226"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usuwania zasobów magazynu klasycznego
@@ -99,7 +99,7 @@ W portalu może być dwa środowiska w zależności od listy obiektów blob wybr
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Jeśli użytkownik zdecyduje się usunąć przy użyciu programu PowerShell, spowodują następujący błąd. 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
 > <span style="color:red">Remove-AzureStorageBlob : Serwer zdalny zwrócił błąd: Miejsca (412) jest obecnie dostępna dzierżawa obiektu blob, a nie Identyfikatora dzierżawy została określona w żądaniu... Kod stanu HTTP: 412 — komunikat o błędzie HTTP: Obecnie jest dzierżawy w obiekcie blob i identyfikator dzierżawy nie został określony w żądaniu.</span>
 

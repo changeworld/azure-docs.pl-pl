@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61020997"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Praca z serwerów proxy usługi Azure Functions
@@ -80,17 +80,17 @@ Na przykład, jeśli serwer proxy ma szablon trasy, takie jak `/pets/{petId}`, a
 #### <a name="additional-request-parameters"></a>Dodatkowe parametry żądania
 Oprócz parametrów szablonu trasy następujące wartości może służyć w wartości konfiguracji:
 
-* **{request.method}**: Metoda HTTP, która jest używana na oryginalne żądanie.
-* **{request.headers. \<HeaderName\>}**: Nagłówek, który może zostać odczytany z oryginalnego żądania. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz odczytać. Jeśli nagłówek nie jest uwzględniony w żądaniu, wartość będzie pusty ciąg.
-* **{request.querystring.\<ParameterName\>}**: Parametr ciągu zapytania, który może zostać odczytany z oryginalnego żądania. Zastąp *\<ParameterName\>* o nazwie parametru, który chcesz odczytać. Jeśli parametr nie jest uwzględniony w żądaniu, wartość będzie pusty ciąg.
+* **{request.method}** : Metoda HTTP, która jest używana na oryginalne żądanie.
+* **{request.headers. \<HeaderName\>}** : Nagłówek, który może zostać odczytany z oryginalnego żądania. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz odczytać. Jeśli nagłówek nie jest uwzględniony w żądaniu, wartość będzie pusty ciąg.
+* **{request.querystring.\<ParameterName\>}** : Parametr ciągu zapytania, który może zostać odczytany z oryginalnego żądania. Zastąp *\<ParameterName\>* o nazwie parametru, który chcesz odczytać. Jeśli parametr nie jest uwzględniony w żądaniu, wartość będzie pusty ciąg.
 
 ### <a name="response-parameters"></a>Parametry odpowiedzi zaplecza odwołania
 
 Parametrów odpowiedzi może służyć jako część modyfikowania odpowiedzi do klienta. Następujące wartości może służyć w wartości konfiguracji:
 
-* **{backend.response.statusCode}**: Kod stanu HTTP, który jest zwracany w odpowiedzi zaplecza.
-* **{backend.response.statusReason}**: Fraza przyczyny HTTP, który jest zwracany w odpowiedzi zaplecza.
-* **{backend.response.headers.\<HeaderName\>}**: Nagłówek, który może zostać odczytany z odpowiedzi zaplecza. Zastąp *\<HeaderName\>* o nazwie nagłówka chcesz odczytać. Jeśli nagłówek nie jest uwzględniony w odpowiedzi, wartość będzie pusty ciąg.
+* **{backend.response.statusCode}** : Kod stanu HTTP, który jest zwracany w odpowiedzi zaplecza.
+* **{backend.response.statusReason}** : Fraza przyczyny HTTP, który jest zwracany w odpowiedzi zaplecza.
+* **{backend.response.headers.\<HeaderName\>}** : Nagłówek, który może zostać odczytany z odpowiedzi zaplecza. Zastąp *\<HeaderName\>* o nazwie nagłówka chcesz odczytać. Jeśli nagłówek nie jest uwzględniony w odpowiedzi, wartość będzie pusty ciąg.
 
 ### <a name="use-appsettings"></a>Dokumentacja ustawień aplikacji
 
@@ -189,8 +189,8 @@ Serwery proxy odczytywać wszystkie ciągi poza JSON plików, przy użyciu \ jak
 Obiekt requestOverrides definiuje zmiany wprowadzone do żądania, gdy wywoływana jest zasobów zaplecza. Obiekt jest zdefiniowany przez następujące właściwości:
 
 * **backend.Request.Method**: Metoda HTTP, która służy do wywoływania zaplecza.
-* **backend.request.querystring.\<ParameterName\>**: Parametr ciągu zapytania, który można ustawić dla wywołania do zaplecza. Zastąp *\<ParameterName\>* o nazwie parametru, który chcesz ustawić. Jeśli podano pusty ciąg, parametr nie jest uwzględniony w żądaniu zaplecza.
-* **backend.request.headers.\<HeaderName\>**: Nagłówek, który można ustawić dla wywołania do zaplecza. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz ustawić. Jeśli podasz pusty ciąg, nagłówka nie jest uwzględniony w żądaniu zaplecza.
+* **backend.request.querystring.\<ParameterName\>** : Parametr ciągu zapytania, który można ustawić dla wywołania do zaplecza. Zastąp *\<ParameterName\>* o nazwie parametru, który chcesz ustawić. Jeśli podano pusty ciąg, parametr nie jest uwzględniony w żądaniu zaplecza.
+* **backend.request.headers.\<HeaderName\>** : Nagłówek, który można ustawić dla wywołania do zaplecza. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz ustawić. Jeśli podasz pusty ciąg, nagłówka nie jest uwzględniony w żądaniu zaplecza.
 
 Wartości może przywoływać ustawień aplikacji i parametry, z oryginalnego żądania klienta.
 
@@ -222,7 +222,7 @@ Obiekt requestOverrides definiuje zmiany wprowadzone do odpowiedzi, który jest 
 * **response.statusCode**: Kod stanu HTTP zwracany do klienta.
 * **response.statusReason**: Fraza przyczyny HTTP do zwrócenia do klienta.
 * **response.body**: Ciąg reprezentujący treść do zwrócenia do klienta.
-* **response.headers.\<HeaderName\>**: Nagłówek, który może być ustawiona dla odpowiedzi do klienta. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz ustawić. Jeśli podasz pusty ciąg, nagłówka nie znajduje się w odpowiedzi.
+* **response.headers.\<HeaderName\>** : Nagłówek, który może być ustawiona dla odpowiedzi do klienta. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz ustawić. Jeśli podasz pusty ciąg, nagłówka nie znajduje się w odpowiedzi.
 
 Wartości można odwoływać się ustawienia aplikacji, parametrami oryginalne żądanie klienta i parametry, z odpowiedzi zaplecza.
 

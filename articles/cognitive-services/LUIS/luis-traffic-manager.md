@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
 ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123548"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy
@@ -308,7 +308,7 @@ Utwórz element nadrzędny profilu usługi Traffic Manager i połączyć dwa pro
     Odpowiedź oznaczająca Powodzenie to tę samą odpowiedź w kroku 3.
 
 ### <a name="powershell-variables"></a>Zmienne programu PowerShell
-W poprzednich sekcjach, zostały utworzone trzy zmienne programu PowerShell: `$eastprofile`, `$westprofile`, `$parentprofile`. Te zmienne są używane w kierunku końca Konfiguracja usługi Traffic Manager. Jeśli zrezygnował z tworzenia zmiennych lub zapomniał lub upłynie limit czasu okna programu PowerShell, możesz użyć polecenia cmdlet programu PowerShell  **[Get AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)**, aby ponownie pobrać profilu i przypisz ją do Zmienna. 
+W poprzednich sekcjach, zostały utworzone trzy zmienne programu PowerShell: `$eastprofile`, `$westprofile`, `$parentprofile`. Te zmienne są używane w kierunku końca Konfiguracja usługi Traffic Manager. Jeśli zrezygnował z tworzenia zmiennych lub zapomniał lub upłynie limit czasu okna programu PowerShell, możesz użyć polecenia cmdlet programu PowerShell  **[Get AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** , aby ponownie pobrać profilu i przypisz ją do Zmienna. 
 
 Zastąpienie elementów w nawiasy kątowe `<>`, za pomocą poprawne wartości dla każdego z trzech profilów, potrzebujesz. 
 

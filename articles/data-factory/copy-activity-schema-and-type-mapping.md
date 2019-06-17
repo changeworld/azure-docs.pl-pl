@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 9108f83e854b51720c64c5a74a828543cc5e7688
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875801"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w działaniu kopiowania
@@ -105,7 +105,7 @@ Następujące właściwości są wspierane w ramach `translator`  ->  `mappings`
 
 ### <a name="alternative-column-mapping"></a>Mapowanie kolumn alternatywnego
 
-Można określić kopiowania activity -> `translator`  ->  `columnMappings` do mapowania danych tabelarycznych w kształcie. W tym przypadku "strukturę" sekcja jest wymagana do wejściowe i wyjściowe zestawy danych. Obsługuje mapowanie kolumny **mapowania wszystkich lub podzestawu kolumn w zestawie danych źródłowych "strukturę" do wszystkich kolumn w zestawie danych ujścia "strukturę"**. Dostępne są następujące warunki błędów, które powoduje wyjątek:
+Można określić kopiowania activity -> `translator`  ->  `columnMappings` do mapowania danych tabelarycznych w kształcie. W tym przypadku "strukturę" sekcja jest wymagana do wejściowe i wyjściowe zestawy danych. Obsługuje mapowanie kolumny **mapowania wszystkich lub podzestawu kolumn w zestawie danych źródłowych "strukturę" do wszystkich kolumn w zestawie danych ujścia "strukturę"** . Dostępne są następujące warunki błędów, które powoduje wyjątek:
 
 * Zapytanie, że wynik nie jest nazwa kolumny, które jest określone w sekcji "strukturę" wejściowy zestaw danych magazynu danych źródłowych.
 * Magazyn danych ujścia (Jeśli za pomocą wstępnie zdefiniowany schemat) nie ma nazwę kolumny, który jest określony w sekcji "strukturę" wyjściowego zestawu danych.

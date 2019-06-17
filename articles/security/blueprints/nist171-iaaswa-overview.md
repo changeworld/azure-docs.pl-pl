@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: b30094e264086f018acbf84144300df46c60ac4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610284"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web IaaS dla SP NIST 800-171
@@ -38,7 +38,7 @@ Zarządzanie hostem bastionu zapewnia bezpieczne połączenie, Administratorzy m
 
 To rozwiązanie korzysta z poniższych usług platformy Azure. Aby uzyskać więcej informacji, zobacz [architektura wdrożenia](#deployment-architecture) sekcji.
 
-- Azure Virtual Machines
+- Usługa Azure Virtual Machines
     - (1) zarządzania/bastionu (Windows Server 2016 Datacenter)
     - (2) usługi active Directory kontrolera domeny (Windows Server 2016 Datacenter)
     - (2) węzeł klastra programu SQL Server (SQL Server 2017 w systemie Windows Server 2016)
@@ -93,7 +93,7 @@ Każdej z tych podsieci ma dedykowany sieciowej grupy zabezpieczeń:
 - Jednej sieciowej grupy zabezpieczeń dla serwerów SQL i monitor w chmurze (SQLNSG)
 - Jednej sieciowej grupy zabezpieczeń dla warstwy sieci web (WEBNSG)
 
-### <a name="data-in-transit"></a>Przesyłane dane
+### <a name="data-in-transit"></a>Dane przesyłane
 Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. Ponadto wszystkie transakcje do magazynu w witrynie Azure portal występować za pośrednictwem protokołu HTTPS.
 
 ### <a name="data-at-rest"></a>Dane magazynowane

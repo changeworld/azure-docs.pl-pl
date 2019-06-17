@@ -2,18 +2,17 @@
 title: Jak aprowizować urządzenia dla wielodostępności w usłudze Azure IoT Hub Device Provisioning Service | Dokumentacja firmy Microsoft
 description: Jak aprowizować urządzenia dla wielodostępności urządzeń z systemem aprowizacji wystąpienia usługi
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116092"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak wykonać aprowizację dla wielodostępności 
@@ -42,6 +41,8 @@ W tym artykule wykorzystano przykładowe symulowane urządzenie, z [zestawu SDK 
 
 * Ukończenie [skonfigurować IoT Hub Device Provisioning Service przy użyciu witryny Azure portal](./quick-setup-auto-provision.md) Szybki Start.
 
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="create-two-regional-iot-hubs"></a>Tworzenie dwóch regionalnych centrów IoT Hub
@@ -192,7 +193,7 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
 W tej sekcji zostanie sklonować zestawu SDK C usługi IoT platformy Azure na każdej maszynie Wirtualnej. Zestaw SDK zawiera próbki, który będzie symulowanie urządzenia dzierżawy, inicjowanie obsługi administracyjnej z każdego regionu.
 
 
-1. Dla każdej maszyny Wirtualnej, należy zainstalować **Cmake**, **g ++**, **gcc**, i [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) przy użyciu następujących poleceń:
+1. Dla każdej maszyny Wirtualnej, należy zainstalować **Cmake**, **g ++** , **gcc**, i [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) przy użyciu następujących poleceń:
 
     ```bash
     sudo apt-get update
@@ -299,7 +300,7 @@ W tej sekcji zaktualizuje przykładu aprowizacji w języku C zestawu SDK usługi
 
 Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysłanie żądania aprowizacji wystąpienia usługi Device Provisioning Service. Sekwencji rozruchu spowoduje, że urządzenie zostało rozpoznane i przypisane do Centrum IoT, które znajdujący się najbliżej zależy od opóźnienia.
 
-1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_**.
+1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_** .
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi Device Provisioning Service z bloku portalu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -413,7 +414,7 @@ Aby usunąć grupę zasobów o nazwie:
 
 2. W **Filtruj według nazwy...**  polu tekstowym wpisz nazwę zasobu, grupy, zawierający zasoby, **contoso-us-resource-group**. 
 
-3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 

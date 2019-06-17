@@ -9,14 +9,14 @@ ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66416957"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
-## <a name="overview"></a>Przegląd ##
+## <a name="overview"></a>Omówienie ##
 Grupy akcji to zbiór preferencje powiadamiania zdefiniowane przez właściciela subskrypcji platformy Azure. Alerty monitorowania i kondycji usług platformy Azure umożliwia powiadomienie użytkowników, czy alert został wywołany grup akcji. Różne alerty może używać tej samej grupy akcji lub grupy inną akcję w zależności od wymagań użytkownika. Można skonfigurować maksymalnie 2000 grup akcji w ramach subskrypcji.
 
 Możesz skonfigurować akcję, aby powiadomić osoby, adres e-mail lub wiadomości SMS, otrzymują potwierdzenie wskazujący, że zostały one dodane do grupy akcji.

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: mayg
 ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772895"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analizowanie raportu Planisty wdrożenia usługi Azure Site Recovery
@@ -33,13 +33,13 @@ Arkusz podsumowania środowiska lokalnego zawiera omówienie profilowanego środ
 
 **Średnia liczba dysków na zgodną maszynę wirtualną**: Średnia liczba dysków obliczana dla wszystkich zgodnych maszyn wirtualnych.
 
-**Średni rozmiar dysku (GB)**: Średni rozmiar dysku obliczany dla wszystkich zgodnych maszyn wirtualnych.
+**Średni rozmiar dysku (GB)** : Średni rozmiar dysku obliczany dla wszystkich zgodnych maszyn wirtualnych.
 
-**Żądany cel punktu odzyskiwania (w minutach)**: Albo domyślny cel punktu odzyskiwania lub przekazana dla parametru "DesiredRPO" podczas generowania raportu umożliwiająca oszacowanie wymaganej przepustowości wartość.
+**Żądany cel punktu odzyskiwania (w minutach)** : Albo domyślny cel punktu odzyskiwania lub przekazana dla parametru "DesiredRPO" podczas generowania raportu umożliwiająca oszacowanie wymaganej przepustowości wartość.
 
-**Żądana przepustowość (MB/s)**: Wartość przekazana dla parametru "Bandwidth" podczas generowania raportu umożliwiająca oszacowanie cel punktu odzyskiwania osiągalna (RPO).
+**Żądana przepustowość (MB/s)** : Wartość przekazana dla parametru "Bandwidth" podczas generowania raportu umożliwiająca oszacowanie cel punktu odzyskiwania osiągalna (RPO).
 
-**Zaobserwowany Typowy współczynnik zmian danych dziennie (GB)**: Średni współczynnik zmian danych zaobserwowany we wszystkie dni profilowania.
+**Zaobserwowany Typowy współczynnik zmian danych dziennie (GB)** : Średni współczynnik zmian danych zaobserwowany we wszystkie dni profilowania.
 
 ## <a name="recommendations"></a>Zalecenia 
 Arkusz Zalecenia raportu dotyczącego replikacji z funkcji Hyper-V do platformy Azure zawiera następujące szczegółowe informacje zgodnie z wybranym żądanym celem punktu odzyskiwania:
@@ -195,19 +195,19 @@ Na przykład jeśli charakterystyki obciążenia dysku powodują umieszczenie go
 
 **Konto magazynu**: Nazwa która używa prefiks sugerowana konta magazynu.
 
-**Szczytowy odczytu i zapisu na SEKUNDĘ (ze współczynnikiem wzrostu)**: Szczytowe obciążenia odczytu i zapisu operacji We/Wy na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Łączna liczba operacji we/wy odczytu i zapisu na sekundę maszyny wirtualnej nie zawsze jest sumą liczby operacji we/wy odczytu i zapisu na sekundę poszczególnych dysków maszyny wirtualnej. Wartość szczytowa liczby operacji we/wy odczytu i zapisu na sekundę maszyny wirtualnej jest wartością szczytową sumy liczby operacji we/wy odczytu i zapisu na sekundę jej poszczególnych dysków w każdej minucie okresu profilowania.
+**Szczytowy odczytu i zapisu na SEKUNDĘ (ze współczynnikiem wzrostu)** : Szczytowe obciążenia odczytu i zapisu operacji We/Wy na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Łączna liczba operacji we/wy odczytu i zapisu na sekundę maszyny wirtualnej nie zawsze jest sumą liczby operacji we/wy odczytu i zapisu na sekundę poszczególnych dysków maszyny wirtualnej. Wartość szczytowa liczby operacji we/wy odczytu i zapisu na sekundę maszyny wirtualnej jest wartością szczytową sumy liczby operacji we/wy odczytu i zapisu na sekundę jej poszczególnych dysków w każdej minucie okresu profilowania.
 
-**Szczytowy współczynnik zmian danych w MB/s (ze współczynnikiem wzrostu)**: Szczytowy współczynnik zmian danych na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Łączna wartość współczynnika zmian danych maszyny wirtualnej nie zawsze jest sumą współczynników zmian danych poszczególnych dysków maszyny wirtualnej. Wartość szczytowa współczynnika zmian danych maszyny wirtualnej jest wartością szczytową sumy współczynników zmian danych jej poszczególnych dysków w każdej minucie okresu profilowania.
+**Szczytowy współczynnik zmian danych w MB/s (ze współczynnikiem wzrostu)** : Szczytowy współczynnik zmian danych na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Łączna wartość współczynnika zmian danych maszyny wirtualnej nie zawsze jest sumą współczynników zmian danych poszczególnych dysków maszyny wirtualnej. Wartość szczytowa współczynnika zmian danych maszyny wirtualnej jest wartością szczytową sumy współczynników zmian danych jej poszczególnych dysków w każdej minucie okresu profilowania.
 
 **Rozmiar maszyny Wirtualnej platformy Azure**: Idealnie zamapowany rozmiar maszyny Wirtualnej programu Azure Cloud Services dla tej maszyny Wirtualnej w środowisku lokalnym. Mapowanie jest oparte na wielkości pamięci, liczbie dysków/rdzeni/kart sieciowych oraz liczbie operacji we/wy zapisu i odczytu lokalnej maszyny wirtualnej. Zawsze zalecany jest najmniejszy rozmiar maszyny wirtualnej platformy Azure zgodny ze wszystkimi charakterystykami lokalnej maszyny wirtualnej.
 
 **Liczba dysków**: Całkowita liczba dysków maszyny wirtualnej (VHD) na maszynie Wirtualnej.
 
-**Rozmiar dysku (GB)**: Całkowity rozmiar wszystkich dysków maszyny wirtualnej. W narzędziu jest też wyświetlany rozmiar poszczególnych dysków maszyny wirtualnej.
+**Rozmiar dysku (GB)** : Całkowity rozmiar wszystkich dysków maszyny wirtualnej. W narzędziu jest też wyświetlany rozmiar poszczególnych dysków maszyny wirtualnej.
 
 **Rdzenie**: Liczba rdzeni procesora CPU na maszynie Wirtualnej.
 
-**Pamięć (MB)**: Pamięć RAM maszyny Wirtualnej.
+**Pamięć (MB)** : Pamięć RAM maszyny Wirtualnej.
 
 **NICs**: Liczba kart sieciowych na maszynie Wirtualnej.
 
@@ -252,17 +252,17 @@ Raport programu Excel generowany przez Planistę wdrażania usługi Site Recover
 
 * Obliczony magazyn migawek przekracza obsługiwany limit magazynu migawek wynoszący 10 TB.
 
-**Szczytowy odczytu i zapisu na SEKUNDĘ (ze współczynnikiem wzrostu)**: Szczytowego obciążenia operacji We/Wy na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Łączna liczba operacji we/wy odczytu i zapisu na sekundę maszyny wirtualnej nie zawsze jest sumą liczby operacji we/wy odczytu i zapisu na sekundę poszczególnych dysków maszyny wirtualnej. Wartość szczytowa liczby operacji we/wy odczytu i zapisu na sekundę maszyny wirtualnej jest wartością szczytową sumy liczby operacji we/wy odczytu i zapisu na sekundę jej poszczególnych dysków w każdej minucie okresu profilowania.
+**Szczytowy odczytu i zapisu na SEKUNDĘ (ze współczynnikiem wzrostu)** : Szczytowego obciążenia operacji We/Wy na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Łączna liczba operacji we/wy odczytu i zapisu na sekundę maszyny wirtualnej nie zawsze jest sumą liczby operacji we/wy odczytu i zapisu na sekundę poszczególnych dysków maszyny wirtualnej. Wartość szczytowa liczby operacji we/wy odczytu i zapisu na sekundę maszyny wirtualnej jest wartością szczytową sumy liczby operacji we/wy odczytu i zapisu na sekundę jej poszczególnych dysków w każdej minucie okresu profilowania.
 
-**Szczytowy współczynnik zmian danych (MB/s) (ze współczynnikiem wzrostu)**: Szczytowy współczynnik zmian danych na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Zwróć uwagę, że łączna wartość współczynnika zmian danych maszyny wirtualnej nie zawsze jest sumą współczynników zmian danych poszczególnych dysków maszyny wirtualnej. Wartość szczytowa współczynnika zmian danych maszyny wirtualnej jest wartością szczytową sumy współczynników zmian danych jej poszczególnych dysków w każdej minucie okresu profilowania.
+**Szczytowy współczynnik zmian danych (MB/s) (ze współczynnikiem wzrostu)** : Szczytowy współczynnik zmian danych na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Zwróć uwagę, że łączna wartość współczynnika zmian danych maszyny wirtualnej nie zawsze jest sumą współczynników zmian danych poszczególnych dysków maszyny wirtualnej. Wartość szczytowa współczynnika zmian danych maszyny wirtualnej jest wartością szczytową sumy współczynników zmian danych jej poszczególnych dysków w każdej minucie okresu profilowania.
 
 **Liczba dysków**: Całkowita liczba wirtualnych dysków twardych na maszynie Wirtualnej.
 
-**Rozmiar dysku (GB)**: Łączny skonfigurowany rozmiar wszystkich dysków maszyny wirtualnej. W narzędziu jest też wyświetlany rozmiar poszczególnych dysków maszyny wirtualnej.
+**Rozmiar dysku (GB)** : Łączny skonfigurowany rozmiar wszystkich dysków maszyny wirtualnej. W narzędziu jest też wyświetlany rozmiar poszczególnych dysków maszyny wirtualnej.
 
 **Rdzenie**: Liczba rdzeni procesora CPU na maszynie Wirtualnej.
 
-**Pamięć (MB)**: Ilość pamięci RAM na maszynie Wirtualnej.
+**Pamięć (MB)** : Ilość pamięci RAM na maszynie Wirtualnej.
 
 **NICs**: Liczba kart sieciowych na maszynie Wirtualnej.
 
@@ -298,13 +298,13 @@ Arkusz zawiera informacje o łącznym wymaganym wolnym miejscu w magazynie dla k
 
 **Host funkcji Hyper-V**: Lista profilowanych serwerów funkcji Hyper-V. Jeśli serwer jest częścią klastra funkcji Hyper-V, wszystkie węzły klastra są grupowane razem.
 
-**Wolumin (ścieżka dysku VHD)**: Każdy wolumin hosta funkcji Hyper-V, gdzie znajdują się dyski VHD/Vhdx. 
+**Wolumin (ścieżka dysku VHD)** : Każdy wolumin hosta funkcji Hyper-V, gdzie znajdują się dyski VHD/Vhdx. 
 
-**Wolne miejsce dostępne (GB)**: Wolne miejsce dostępne na woluminie.
+**Wolne miejsce dostępne (GB)** : Wolne miejsce dostępne na woluminie.
 
-**Łączne miejsce do magazynowania wymagane na woluminie (GB)**: Całkowita ilość wolnego miejsca wymagane miejsce na woluminie na potrzeby pomyślnego zakończenia replikacji początkowej i replikacji różnicowej. 
+**Łączne miejsce do magazynowania wymagane na woluminie (GB)** : Całkowita ilość wolnego miejsca wymagane miejsce na woluminie na potrzeby pomyślnego zakończenia replikacji początkowej i replikacji różnicowej. 
 
-**Łączna liczba dodatkowego magazynu do aprowizowania na woluminie na potrzeby pomyślnego zakończenia replikacji (GB)**: Zalecane łączne dodatkowe miejsce, które należy aprowizować na woluminie na potrzeby pomyślnego zakończenia replikacji początkowej i replikacji różnicowej.
+**Łączna liczba dodatkowego magazynu do aprowizowania na woluminie na potrzeby pomyślnego zakończenia replikacji (GB)** : Zalecane łączne dodatkowe miejsce, które należy aprowizować na woluminie na potrzeby pomyślnego zakończenia replikacji początkowej i replikacji różnicowej.
 
 ## <a name="initial-replication-batching"></a>Dzielenie replikacji początkowej na partie 
 
@@ -327,9 +327,9 @@ Jeśli zostanie wykonane zalecenie dotyczące wymaganego magazynu lokalnego dla 
 
 **Komentarze**: Jeśli wymagane dla określonego woluminu maszyny wirtualnej jest wykonanie akcji, komentarz znajduje się w tym miejscu. Jeśli na przykład ilość wolnego miejsca dostępnego na woluminie jest niewystarczająca, tekst komentarza jest następujący: „Dodaj dodatkowy magazyn, aby chronić tę maszynę wirtualną”.
 
-**Wolumin (ścieżka dysku VHD)**: Nazwa woluminu, w którym znajdują się wirtualne dyski twarde maszyny Wirtualnej. 
+**Wolumin (ścieżka dysku VHD)** : Nazwa woluminu, w którym znajdują się wirtualne dyski twarde maszyny Wirtualnej. 
 
-**Wolne miejsce dostępne na woluminie (GB)**: Wolne miejsce dostępne na woluminie dla maszyny Wirtualnej. Podczas obliczania wolnego miejsca dostępnego na woluminach jest uwzględniane miejsce na dysku używane do replikacji różnicowej przez maszyny wirtualne z poprzednich partii, których dyski VHD znajdują się na tym samym woluminie. 
+**Wolne miejsce dostępne na woluminie (GB)** : Wolne miejsce dostępne na woluminie dla maszyny Wirtualnej. Podczas obliczania wolnego miejsca dostępnego na woluminach jest uwzględniane miejsce na dysku używane do replikacji różnicowej przez maszyny wirtualne z poprzednich partii, których dyski VHD znajdują się na tym samym woluminie. 
 
 Na przykład maszyny VM1, VM2 i VM3 znajdują się na woluminie E:\VHDpath. Przed replikacją wolne miejsce na woluminie wynosi 500 GB. Maszyna VM1 jest częścią partii 1, maszyna VM2 jest częścią partii 2, a maszyna VM3 jest częścią partii 3. W przypadku maszyny VM1 dostępne wolne miejsce wynosi 500 GB. W przypadku maszyny VM2 dostępne wolne miejsce wynosi 500 — miejsce na dysku wymagane dla replikacji różnicowej maszyny VM1. Jeśli maszyna VM1 wymaga 300 GB miejsca dla replikacji różnicowej, wolne miejsce dostępne dla maszyny VM2 wynosi 500 GB - 300 GB = 200 GB. Podobnie maszyna VM2 wymaga 300 GB dla replikacji różnicowej. Wolne miejsce dostępne dla maszyny VM3 wynosi 200 GB - 300 GB = -100 GB.
 
@@ -337,11 +337,11 @@ Na przykład maszyny VM1, VM2 i VM3 znajdują się na woluminie E:\VHDpath. Prze
 
 **Magazyn na woluminie na potrzeby replikacji różnicowej (GB) wymagany**: Wolne miejsce do magazynowania wymagane na woluminie dla maszyny Wirtualnej na potrzeby replikacji różnicowej.
 
-**Wymagany dodatkowy magazyn oparty na niedoborze umożliwiający uniknięcie niepowodzenia replikacji (GB)**: Dodatkowego miejsca do magazynowania wymagane na woluminie dla maszyny Wirtualnej. Jest to maksymalna wartość wymaganego miejsca do magazynowania na potrzeby replikacji początkowej i replikacji różnicowej pomniejszona o wolne miejsce dostępne na woluminie.
+**Wymagany dodatkowy magazyn oparty na niedoborze umożliwiający uniknięcie niepowodzenia replikacji (GB)** : Dodatkowego miejsca do magazynowania wymagane na woluminie dla maszyny Wirtualnej. Jest to maksymalna wartość wymaganego miejsca do magazynowania na potrzeby replikacji początkowej i replikacji różnicowej pomniejszona o wolne miejsce dostępne na woluminie.
 
-**Minimalna przepustowość wymagana dla replikacji początkowej (MB/s)**: Minimalna przepustowość wymagana na potrzeby replikacji początkowej dla maszyny Wirtualnej.
+**Minimalna przepustowość wymagana dla replikacji początkowej (MB/s)** : Minimalna przepustowość wymagana na potrzeby replikacji początkowej dla maszyny Wirtualnej.
 
-**Minimalna przepustowość wymagana dla replikacji różnicowej (MB/s)**: Minimalna przepustowość wymagana na potrzeby replikacji różnicowej dla maszyny Wirtualnej.
+**Minimalna przepustowość wymagana dla replikacji różnicowej (MB/s)** : Minimalna przepustowość wymagana na potrzeby replikacji różnicowej dla maszyny Wirtualnej.
 
 ### <a name="network-utilization-details-for-each-batch"></a>Szczegóły wykorzystania sieci dla każdej partii 
 Każda tabela partii zawiera podsumowanie wykorzystania sieci przez partię.
@@ -352,7 +352,7 @@ Każda tabela partii zawiera podsumowanie wykorzystania sieci przez partię.
 
 **Przybliżona przepustowość wykorzystana dla replikacji różnicowej partii**: Przepustowość potrzebna do replikacji różnicowej maszyn wirtualnych w partii. 
 
-**Szacowany czas replikacji początkowej dla partii (gg: mm)**: Szacowany czas replikacji początkowej w godziny: minuty.
+**Szacowany czas replikacji początkowej dla partii (gg: mm)** : Szacowany czas replikacji początkowej w godziny: minuty.
 
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: e91351d4571eaa084865c5a179ed05e6c773b952
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2ddb8777a6470c0e739545e71867a694022d1723
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240425"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093599"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Promapp
 
@@ -95,7 +95,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Promapp, wykonaj na
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
 
 3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 

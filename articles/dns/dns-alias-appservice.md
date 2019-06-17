@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
 ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790746"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hostowanie aplikacji internetowych platformy Azure ze zrównoważonym obciążeniem w wierzchołku strefy
@@ -60,8 +60,8 @@ Utworzyć dwie aplikacje internetowe, po jednym w każdym planie usługi App Ser
 
    |Name (Nazwa)<br>(musi być unikatowa w obrębie. azurewebsites.net)|Grupa zasobów |Plan usługi App Service/lokalizacja
    |---------|---------|---------|
-   |App-01|Użyj istniejącego<br>Wybieranie grupy zasobów|ASP-01(East US)|
-   |App-02|Użyj istniejącego<br>Wybieranie grupy zasobów|ASP 02(Central US)|
+   |App-01|Użyj istniejącej<br>Wybieranie grupy zasobów|ASP-01(East US)|
+   |App-02|Użyj istniejącej<br>Wybieranie grupy zasobów|ASP 02(Central US)|
 
 ### <a name="gather-some-details"></a>Zbierz niektóre szczegóły
 
@@ -87,10 +87,10 @@ Teraz możesz utworzyć punkty końcowe dla dwóch aplikacji sieci web.
 3. Kliknij pozycję **Add** (Dodaj).
 4. Skorzystaj z poniższej tabeli, aby skonfigurować punkty końcowe:
 
-   |Type  |Name (Nazwa)  |Środowisko docelowe  |Lokalizacja  |Ustawienia nagłówka niestandardowego|
+   |Typ  |Name (Nazwa)  |Cel  |Lokalizacja  |Ustawienia niestandardowego nagłówka|
    |---------|---------|---------|---------|---------|
-   |Zewnętrzny punkt końcowy     |End-01|Adres IP, który jest zarejestrowany dla programu App-01|Wschodnie stany USA|Host:\<adres URL dla programu App-01\><br>Przykład: **hosta: aplikacja-01.azurewebsites.net**|
-   |Zewnętrzny punkt końcowy     |End-02|Adres IP, który jest zarejestrowany dla programu App-02|Środkowe stany USA|Host:\<adres URL dla programu App-02\><br>Przykład: **hosta: aplikacja-02.azurewebsites.net**
+   |Jest zewnętrzny punkt końcowy     |End-01|Adres IP, który jest zarejestrowany dla programu App-01|Wschodnie stany USA|Host:\<adres URL dla programu App-01\><br>Przykład: **hosta: aplikacja-01.azurewebsites.net**|
+   |Jest zewnętrzny punkt końcowy     |End-02|Adres IP, który jest zarejestrowany dla programu App-02|Środkowe stany USA|Host:\<adres URL dla programu App-02\><br>Przykład: **hosta: aplikacja-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>Tworzenie strefy DNS
 
@@ -104,7 +104,7 @@ Gdy strefy DNS jest gotowy, możesz dodać rekord aliasu dla wierzchołku strefy
 2. Kliknij pozycję **Zestaw rekordów**.
 3. Dodaj rekord, można ustawić przy użyciu poniższej tabeli:
 
-   |Name (Nazwa)  |Type  |Alias record set  |Typ aliasu  |Zasób platformy Azure|
+   |Name (Nazwa)  |Typ  |Alias record set  |Typ aliasu  |Zasób platformy Azure|
    |---------|---------|---------|---------|-----|
    |@     |A|Yes|Zasób platformy Azure|Traffic Manager — swój profil|
 

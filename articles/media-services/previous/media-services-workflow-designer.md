@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu;anilmur
 ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60825136"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Tworzenie zaawansowanych przepływów pracy kodowania za pomocą projektanta przepływu pracy  
@@ -46,7 +46,7 @@ Wartość domyślna [opublikowane przepływy pracy](media-services-workflow-desi
 Następujące filmy wideo pokazują, jak używać projektanta.
 
 ### <a name="day-1--getting-started"></a>Dzień 1 — wprowadzenie
-1. dnia wideo obejmuje:
+1\. dnia wideo obejmuje:
 
 * Omówienie projektanta
 * Podstawowych przepływów pracy — "Hello World"

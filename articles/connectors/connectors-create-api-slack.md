@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105653"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitorowanie i zarządzanie nimi Slack przy użyciu usługi Azure Logic Apps
@@ -49,14 +49,14 @@ Możesz użyć wyzwalaczy, które uzyskiwanie odpowiedzi z konta usługi Slack i
 
 1. W przypadku aplikacji logiki puste w polu wyszukiwania wprowadź "slack" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
 
-   — lub —
+   —lub—
 
    Dla istniejących aplikacji logiki w ostatnim kroku, które chcesz dodać akcję, wybierz **nowy krok**. 
    W polu wyszukiwania wprowadź "slack" jako filtr. 
    W obszarze listy akcji wybierz akcję, którą chcesz.
 
    Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
-   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 1. Jeśli zostanie wyświetlony monit, aby zarejestrować się w usłudze Slack, zaloguj się do obszaru roboczego usługi Slack. 
 

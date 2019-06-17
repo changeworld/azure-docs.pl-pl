@@ -16,10 +16,10 @@ ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955713"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
@@ -50,7 +50,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 | Ustawienie | Opis |
 |-|-|
 | Name (Nazwa) | Przyjazna nazwa dla certyfikatu usługi App Service. |
-| Sama nazwa hosta w domenie | Jeśli określisz domeny katalogu głównego, należy uzyskać certyfikat, który zabezpiecza *zarówno* domeny katalogu głównego i `www` poddomeny. Aby bezpiecznego dowolna poddomena tylko określić w pełni kwalifikowaną nazwę domeny podrzędnej, w tym miejscu (na przykład `mysubdomain.contoso.com`). |
+| Nazwa hosta w domenie "naked" | Jeśli określisz domeny katalogu głównego, należy uzyskać certyfikat, który zabezpiecza *zarówno* domeny katalogu głównego i `www` poddomeny. Aby bezpiecznego dowolna poddomena tylko określić w pełni kwalifikowaną nazwę domeny podrzędnej, w tym miejscu (na przykład `mysubdomain.contoso.com`). |
 | Subskrypcja | Centrum danych, w którym hostowana jest aplikacja internetowa. |
 | Grupa zasobów | Grupa zasobów, który zawiera certyfikat. Można użyć nowej grupy zasobów lub wybrać tej samej grupie zasobów jako aplikacji usługi app Service, na przykład. |
 | Jednostka SKU certyfikatu | Określa typ certyfikatu w celu utworzenia, czy to standardowy certyfikat lub [certyfikat uniwersalny](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -97,9 +97,9 @@ Wybierz **Weryfikacja usługi App Service**. Ponieważ domena już zmapowany do 
 
 ## <a name="bind-certificate-to-app"></a>Powiąż certyfikat do aplikacji
 
-W  **[witryny Azure portal](https://portal.azure.com/)**, z menu po lewej stronie wybierz **App Services** > **\<your_ aplikacji >**.
+W  **[witryny Azure portal](https://portal.azure.com/)** , z menu po lewej stronie wybierz **App Services** >  **\<your_ aplikacji >** .
 
-W lewym obszarze nawigacji aplikacji, wybierz **ustawienia protokołu SSL** > **certyfikaty prywatne (.pfx)** > **Import certyfikatu usługi App Service**.
+W lewym obszarze nawigacji aplikacji, wybierz **ustawienia protokołu SSL** > **certyfikaty prywatne (.pfx)**  > **Import certyfikatu usługi App Service**.
 
 ![Wstaw obraz certyfikatu importu](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
@@ -115,7 +115,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować powiązania w **powiązania S
 |-|-|
 | Nazwa hosta | Nazwa domeny, które można dodać wiązania SSL dla. |
 | Odcisk palca certyfikatu prywatnego | Certyfikat, aby powiązać. |
-| Typ SSL | <ul><li>**Połączenia SNI SSL** -powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).</li><li>**Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Po skonfigurowaniu powiązania, wykonaj kroki opisane w [ponowne mapowanie rekordu dla protokołu IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
+| Typ protokołu SSL | <ul><li>**Połączenia SNI SSL** -powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).</li><li>**Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Po skonfigurowaniu powiązania, wykonaj kroki opisane w [ponowne mapowanie rekordu dla protokołu IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
 ## <a name="verify-https-access"></a>Sprawdź dostęp do protokołu HTTPS
 

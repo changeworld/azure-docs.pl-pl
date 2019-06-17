@@ -4,21 +4,20 @@ titlesuffix: Azure Load Balancer
 description: Jak Konfigurowanie trybu dystrybucji dla modułu równoważenia obciążenia platformy Azure do obsługi koligacji IP źródła.
 services: load-balancer
 documentationcenter: na
-author: WenJason
+author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 09/25/2017
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 09/25/2017
+ms.author: kumud
 ms.openlocfilehash: afa840bd0b48cc9df1e9711caa035b85e8ec3855
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122425"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia Azure
@@ -62,14 +61,14 @@ Set-AzLoadBalancer -LoadBalancer $lb
 Dla klasycznych maszyn wirtualnych zmieniać ustawienia dystrybucji za pomocą programu Azure PowerShell. Dodawanie punktu końcowego platformy Azure do maszyny wirtualnej i Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia:
 
 ```powershell
-Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 -LoadBalancerDistribution sourceIP | Update-AzureVM
+Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
 Ustaw wartość `LoadBalancerDistribution` element dla wymaganej ilości równoważenia obciążenia. Określ sourceIP Równoważenie obciążenia sieciowego 2-krotka (źródłowy adres IP i docelowy adres IP). Określ sourceIPProtocol dla 3-krotka (źródłowy adres IP, docelowy adres IP i protokołu typ) załadować równoważenia. Określ przez domyślne zachowanie równoważenia obciążenia w 5-elementowej spójnej kolekcji.
 
 Pobierz konfigurację trybu dystrybucji modułu równoważenia punktu końcowego obciążenia za pomocą tych ustawień:
 
-    PS C:\> Get-AzureVM -ServiceName MyService -Name MyVM | Get-AzureEndpoint
+    PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
@@ -95,8 +94,8 @@ Gdy `LoadBalancerDistribution` element nie jest obecny, usługa Azure Load Balan
 
 Punkty końcowe są częścią zestawu końcowy z równoważeniem obciążenia, tryb dystrybucji muszą zostać skonfigurowane w zestawie końcowy z równoważeniem obciążenia:
 
-```powershell
-Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -LoadBalancerDistribution sourceIP
+```azurepowershell
+Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
 ### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Konfigurowanie trybu dystrybucji dla punktów końcowych usługi w chmurze
@@ -133,10 +132,10 @@ Aby zmienić istniejącą konfigurację wdrożenia przy użyciu modelu klasyczny
 
 #### <a name="request"></a>Żądanie
 
-    POST https://management.core.chinacloudapi.cn/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
+    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
 
-    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
       <InputEndpoint>
         <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName>
         <LocalPort> local-port-number </LocalPort>
@@ -171,5 +170,3 @@ Wcześniej opisany, ustaw `LoadBalancerDistribution` elementu sourceIP 2-krotka 
 * [Omówienie wewnętrznego modułu równoważenia obciążenia na platformie Azure](load-balancer-internal-overview.md)
 * [Wprowadzenie do konfigurowania modułu równoważenia obciążenia dostępnego z Internetu](load-balancer-get-started-internet-arm-ps.md)
 * [Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md) (Konfigurowanie ustawień limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia)
-
-<!-- Update_Description: update meta properties, wording update, update link -->

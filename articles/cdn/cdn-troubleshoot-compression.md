@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60323813"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Rozwiązywanie problemów związanych z kompresją pliku CDN
@@ -97,7 +97,7 @@ Przejdź do punktu końcowego w [witryny Azure portal](https://portal.azure.com)
 
 Za pomocą narzędzi dla deweloperów w przeglądarce, sprawdź nagłówki odpowiedzi, aby upewnić się, że plik jest buforowany w regionie, gdzie jest on wymagany.
 
-* Sprawdź **serwera** nagłówka odpowiedzi.  Nagłówek powinien mieć format **platformy (serwer protokołu POP/ID)**, jak pokazano w poniższym przykładzie.
+* Sprawdź **serwera** nagłówka odpowiedzi.  Nagłówek powinien mieć format **platformy (serwer protokołu POP/ID)** , jak pokazano w poniższym przykładzie.
 * Sprawdź **X-Cache** nagłówka odpowiedzi.  Nagłówek powinni przeczytać **TRAFIEŃ**.  
 
 ![Nagłówki odpowiedzi sieci CDN](./media/cdn-troubleshoot-compression/cdn-response-headers.png)

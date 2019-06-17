@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
 ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61036059"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Tworzenie alertów dla usługi Azure SQL Database i Data Warehouse przy użyciu witryny Azure portal
@@ -55,7 +55,7 @@ Można skonfigurować i uzyskać informacje na temat przy użyciu reguł alertó
 
 3. Wybierz **Dodaj alert dotyczący metryki (wersja klasyczna)** przycisk, a następnie wypełnij pola.
    
-    ![Dodaj alert](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
+    ![Dodaj Alert](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Nazwa** alert reguły, a następnie wybierz **opis**, który pokazuje także w wiadomości e-mail z powiadomieniem.
 5. Wybierz **metryki** chcesz monitorować, a następnie wybierz **warunek** i **próg** wartość metryki. Również wybrać **okres** czasu, przez jaki reguła metryki muszą być spełnione przed wyzwala alert. Na przykład jeśli używasz okres "PT5M", a alert szuka procesora CPU przekracza 80%, alert wyzwala kiedy **średni** został procesora CPU przekracza 80% przez 5 minut. Gdy wystąpi to pierwszy wyzwalacz, ponownie uaktywnia to, gdy średnie użycie procesora CPU wynosi poniżej 80% przez 5 minut. Pomiar procesora CPU występuje co minutę. Można znaleźć w poniższej tabeli opisano obsługiwane czas systemu windows, a następnie wpisz agregacji, że każdy alert nie używa wszystkich alertów należy użyć wartości średniej.   
 6. Sprawdź **wiadomości E-mail właścicielom...**  chcącym administratorów i współadministratorów, aby otrzymywać pocztą e-mail powiadomienia, gdy zostanie wyzwolony alert.
@@ -79,7 +79,7 @@ Po utworzeniu alertu możesz wybrać go oraz:
 | --- | --- | --- | --- | --- |
 | Baza danych SQL | cpu_percent | Procent użycia procesora CPU | Średnia | 5 minut |
 | Baza danych SQL | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 5 minut |
-| Baza danych SQL | log_write_percent | We/wy dziennika (procent) | Średnia | 5 minut |
+| Baza danych SQL | log_write_percent | Wartość procentowa we/wy dziennika | Średnia | 5 minut |
 | Baza danych SQL | dtu_consumption_percent | Procent użycia jednostek DTU | Średnia | 5 minut |
 | Baza danych SQL | magazyn | Łączny rozmiar bazy danych | Maksimum | 30 minut |
 | Baza danych SQL | connection_successful | Pomyślnie nawiązane połączenia | Łącznie | 10 minut |
@@ -88,31 +88,31 @@ Po utworzeniu alertu możesz wybrać go oraz:
 | Baza danych SQL | Zakleszczenia | Zakleszczenia | Łącznie | 10 minut |
 | Baza danych SQL | storage_percent | Procent użycia rozmiaru bazy danych | Maksimum | 30 minut |
 | Baza danych SQL | xtp_storage_percent | Percent(Preview) magazynu OLTP w pamięci | Średnia | 5 minut |
-| Baza danych SQL | workers_percent | Procent procesów roboczych | Średnia | 5 minut |
+| Baza danych SQL | workers_percent | Procent pracowników | Średnia | 5 minut |
 | Baza danych SQL | sessions_percent | Procent sesji | Średnia | 5 minut |
 | Baza danych SQL | dtu_limit | DTU limit | Średnia | 5 minut |
 | Baza danych SQL | dtu_used | Używane jednostki DTU | Średnia | 5 minut |
 ||||||
 | Pula elastyczna | cpu_percent | Procent użycia procesora CPU | Średnia | 10 minut |
 | Pula elastyczna | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 10 minut |
-| Pula elastyczna | log_write_percent | We/wy dziennika (procent) | Średnia | 10 minut |
+| Pula elastyczna | log_write_percent | Wartość procentowa we/wy dziennika | Średnia | 10 minut |
 | Pula elastyczna | dtu_consumption_percent | Procent użycia jednostek DTU | Średnia | 10 minut |
 | Pula elastyczna | storage_percent | Procent użycia magazynu | Średnia | 10 minut |
-| Pula elastyczna | workers_percent | Procent procesów roboczych | Średnia | 10 minut |
+| Pula elastyczna | workers_percent | Procent pracowników | Średnia | 10 minut |
 | Pula elastyczna | eDTU_limit | eDTU limit | Średnia | 10 minut |
 | Pula elastyczna | storage_limit | Limit magazynu | Średnia | 10 minut |
 | Pula elastyczna | eDTU_used | używane jednostki eDTU | Średnia | 10 minut |
 | Pula elastyczna | storage_used | Użyty magazyn | Średnia | 10 minut |
 ||||||               
-| magazyn danych SQL | cpu_percent | Procent użycia procesora CPU | Średnia | 10 minut |
-| magazyn danych SQL | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 10 minut |
-| magazyn danych SQL | connection_successful | Pomyślnie nawiązane połączenia | Łącznie | 10 minut |
-| magazyn danych SQL | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
-| magazyn danych SQL | blocked_by_firewall | Blokowane przez zaporę | Łącznie | 10 minut |
-| magazyn danych SQL | service_level_objective | Warstwy usługi bazy danych | Łącznie | 10 minut |
-| magazyn danych SQL | dwu_limit | limit jednostek dwu | Maksimum | 10 minut |
-| magazyn danych SQL | dwu_consumption_percent | Procent jednostek DWU | Średnia | 10 minut |
-| magazyn danych SQL | dwu_used | Używane jednostki DWU | Średnia | 10 minut |
+| Usługa SQL data warehouse | cpu_percent | Procent użycia procesora CPU | Średnia | 10 minut |
+| Usługa SQL data warehouse | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 10 minut |
+| Usługa SQL data warehouse | connection_successful | Pomyślnie nawiązane połączenia | Łącznie | 10 minut |
+| Usługa SQL data warehouse | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
+| Usługa SQL data warehouse | blocked_by_firewall | Blokowane przez zaporę | Łącznie | 10 minut |
+| Usługa SQL data warehouse | service_level_objective | Warstwy usługi bazy danych | Łącznie | 10 minut |
+| Usługa SQL data warehouse | dwu_limit | limit jednostek dwu | Maksimum | 10 minut |
+| Usługa SQL data warehouse | dwu_consumption_percent | Procent jednostek DWU | Średnia | 10 minut |
+| Usługa SQL data warehouse | dwu_used | Używane jednostki DWU | Średnia | 10 minut |
 ||||||
 
 

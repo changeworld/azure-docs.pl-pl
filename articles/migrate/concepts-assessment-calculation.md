@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
 ms.openlocfilehash: 012a352b00de2e2d1bf64fd18125ddd10faba5cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60679123"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
@@ -35,7 +35,7 @@ Usługa Azure Migrate przegląda właściwości maszyny i system operacyjny goś
 ### <a name="machine-properties"></a>Właściwości maszyny
 Usługa Azure Migrate monitoruje następujące właściwości lokalnej maszyny Wirtualnej, aby ustalić, czy uruchomić Maszynę wirtualną na platformie Azure.
 
-**Właściwość** | **Szczegóły** | **Stan gotowości na platformę Azure**
+**Property** | **Szczegóły** | **Stan gotowości na platformę Azure**
 --- | --- | ---
 **Typ rozruchu** | Platforma Azure obsługuje maszyny wirtualne z typem rozruchu systemu BIOS i UEFI nie. | Warunkowo gotowa, jeśli typ rozruchu to UEFI.
 **Cores** | Liczby rdzeni na komputerach musi być równa lub mniejsza niż maksymalna liczba rdzeni (128) obsługiwanych na Maszynie wirtualnej platformy Azure.<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia rdzenie wykorzystywanych do porównania. Jeśli współczynnik komfortu jest określony w ustawieniach oceny, liczby rdzeni wykorzystywanych jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnych historii wydajności, usługę Azure migrate przydzielone rdzenie, bez stosowania współczynnik komfortu. | Gotowe, jeśli są mniejsze niż lub równe limitów.
@@ -68,7 +68,7 @@ Inne systemy operacyjne<br/><br/> np. Oracle Solaris, itp. system operacyjny Mac
 System operacyjny określony jako **innych** w programie vCenter Server | Usługa Azure Migrate nie może zidentyfikować w takim przypadku system operacyjny. | Nieznana gotowość. Upewnij się, że system operacyjny działający na maszynie Wirtualnej jest obsługiwana na platformie Azure.
 32-bitowych systemach operacyjnych | Maszynę można uruchomić na platformie Azure, ale Azure mogą nie zapewnić pełną pomoc techniczną. | Warunkowo gotowa na platformę Azure, Rozważ uaktualnienie systemu operacyjnego maszyny z 32-bitowego systemu operacyjnego do 64-bitowego systemu operacyjnego przed migracją na platformę Azure.
 
-## <a name="sizing"></a>Ustalanie rozmiaru
+## <a name="sizing"></a>Zmiany rozmiaru
 
 Po maszyny jest oznaczony jako gotowa na platformę Azure, usługa Azure Migrate rozmiarów maszyny Wirtualnej i jej dysków na platformie Azure. Jeśli kryterium ustalania rozmiaru określone we właściwościach oceny do ustalenia rozmiaru na podstawie wydajności Usługa Azure Migrate uwzględnia historii wydajności maszyn do identyfikowania typu dysk i rozmiar maszyny Wirtualnej na platformie Azure. Ta metoda jest przydatne w scenariuszach, gdzie ma nadmierną alokację maszyny Wirtualnej w środowisku lokalnym, ale wykorzystanie jest niskie, i chcesz odpowiedni rozmiar maszyn wirtualnych na platformie Azure koszty.
 

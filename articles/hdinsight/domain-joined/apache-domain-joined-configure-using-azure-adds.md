@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: e1bc99cdc089050fbfa931bbbc7b9a6a316a3a75
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8699533cd64e6b1778c5e78b8c51eb1efe518c75
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126211"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -27,7 +27,7 @@ W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu E
 ## <a name="enable-azure-ad-ds"></a>Włączanie usługi Azure AD DS
 
 > [!NOTE]  
-> Tylko Administratorzy dzierżawy mają uprawnienia do włączenia usług AD DS Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Storage (ADLS) Gen1 lub Gen2 tylko dla użytkowników, którzy chcą uzyskać dostęp do klastra przy użyciu podstawowe uwierzytelnianie Kerberos, należy wyłączyć uwierzytelnianie wieloskładnikowe (MFA). Możesz użyć [zaufane adresy IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) lub [dostępu warunkowego](../../active-directory/conditional-access/overview.md) wyłączania uwierzytelnianie wieloskładnikowe dla określonych użytkowników tylko wtedy gdy uzyskują dostęp do klastra HDInsight zakres adresów IP w sieci Wirtualnej. Jeśli używasz warunkowego dostępu upewnij się, ten punkt końcowy usługi AD w włączone w sieci Wirtualnej HDInsight.
+> Tylko Administratorzy dzierżawy mają uprawnienia do włączenia usług AD DS Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Storage (ADLS) Gen1 lub Gen2 tylko dla użytkowników, którzy chcą uzyskać dostęp do klastra przy użyciu podstawowe uwierzytelnianie Kerberos, należy wyłączyć uwierzytelnianie wieloskładnikowe (MFA). Możesz użyć [zaufane adresy IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) lub [dostępu warunkowego](../../active-directory/conditional-access/overview.md) wyłączania uwierzytelnianie wieloskładnikowe dla określonych użytkowników tylko wtedy gdy uzyskują dostęp do klastra HDInsight zakres adresów IP w sieci Wirtualnej. Jeśli używasz dostępu warunkowego upewnij się, że, które punkt końcowy usługi AD w włączone w sieci Wirtualnej HDInsight.
 >
 > Jeśli magazyn klastra usługi Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
 

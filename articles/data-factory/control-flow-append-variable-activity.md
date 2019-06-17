@@ -12,10 +12,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60557226"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Dołącz działania zmiennej w usłudze Azure Data Factory
@@ -26,7 +26,7 @@ Działanie Dołącz zmienna służy do Dodaj wartość istniejącej zmiennej tab
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
-name | Nazwa działania w potoku | Yes
+name | Nazwa działania w potoku | Tak
 description | Tekst opisujący, co działanie robi | nie
 type | Typ działania jest AppendVariable | tak
 value | Ciąg literału lub wyrażenie wartości obiektu używane do dołączenia do określonej zmiennej | tak

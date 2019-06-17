@@ -8,35 +8,45 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: a5d29e77f6ba10ed3069cb3f5a3c8089f49c237d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 244a4ebe20863945bfc3b6236e70e786387c8909
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140587"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116678"
 ---
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie i wybierz pozycję **Notification Hubs** w sekcji **Urządzenia przenośne**. Wybierz gwiazdkę (`*`) obok nazwy usługi, aby dodać ją do sekcji **ULUBIONE** w menu po lewej stronie. Po dodaniu usługi **Notification Hubs** do sekcji **ULUBIONE** wybierz ją z menu po lewej stronie. 
+
+1. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie i wybierz pozycję **Notification Hubs** w sekcji **Urządzenia przenośne**. Wybierz ikonę gwiazdki obok nazwy usługi, aby dodać usługę do **ulubione** sekcji, w menu po lewej stronie. Po dodaniu **usługi Notification Hubs** do **ulubione**, wybierz go z menu po lewej stronie.
 
       ![Azure Portal — wybieranie usługi Notification Hubs](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
-3. Na stronie **Notification Hubs** wybierz pozycję **Dodaj** na pasku narzędzi. 
+
+1. Na stronie **Notification Hubs** wybierz pozycję **Dodaj** na pasku narzędzi.
 
       ![Notification Hubs — przycisk Dodaj na pasku narzędzi](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
-4. Na stronie **Centrum powiadomień** wykonaj następujące kroki: 
-    1. Podaj **nazwę** **centrum** powiadomień.  
-    2. Podaj **nazwę** **przestrzeni nazw**. Przestrzeń nazw zawiera co najmniej jedno centrum. 
-    3. Wybierz **lokalizację** , w której ma zostać utworzone centrum powiadomień. 
-    4. Wybierz istniejącą grupę zasobów lub wprowadź nazwę nowej **grupy zasobów**.
-    5. Wybierz pozycję **Utwórz**. 
+
+1. Na stronie **Centrum powiadomień** wykonaj następujące kroki:
+
+    1. Wprowadź nazwę w **Centrum powiadomień**.  
+
+    1. Wprowadź nazwę w **Utwórz nową przestrzeń nazw**. Przestrzeń nazw zawiera co najmniej jedno centrum.
+
+    1. Wybierz wartość z zakresu od **lokalizacji** pole listy rozwijanej. Ta wartość określa lokalizację, w której chcesz utworzyć Centrum powiadomień.
+
+    1. Wybierz istniejącą grupę zasobów w **grupy zasobów**, lub Utwórz nazwę nowej grupy zasobów.
+
+    1. Wybierz pozycję **Utwórz**.
 
         ![Azure Portal — ustawianie właściwości centrum powiadomień](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
-4. Wybierz pozycję **Powiadomienia** (ikonę dzwonka), a następnie polecenie **Przejdź do zasobu**. Możesz również odświeżyć listę na stronie usługi **Notification Hubs** i wybrać centrum powiadomień. 
+
+1. Wybierz **powiadomienia** (ikonę dzwonka) i wybierz **przejdź do zasobu**. Możesz też odświeżyć listy na **usługi Notification Hubs** strony i wybierz Centrum powiadomień.
 
       ![Witryna Azure Portal -> Powiadomienia -> Przejdź do zasobu](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
-5. Wybierz z listy pozycję **Zasady dostępu**. Zanotuj dwa parametry połączenia, które są dla Ciebie dostępne. Będą one potrzebne później do obsługi powiadomień push.
+
+1. Wybierz z listy pozycję **Zasady dostępu**. Zanotuj dwa parametry połączenia, które są dla Ciebie dostępne. Będą później potrzebne do obsługi powiadomień wypychanych.
 
       >[!IMPORTANT]
-      >**NIE UŻYWAJ** elementu DefaultFullSharedAccessSignature w aplikacji. Jest on przeznaczony tylko do użycia w zapleczu.
+      >Czy *nie* użyj **DefaultFullSharedAccessSignature** zasady w aplikacji. Jest on przeznaczony do użycia w sieci wewnętrznej tylko.
       >
 
       ![Azure Portal — parametry połączenia centrum powiadomień](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)

@@ -16,11 +16,11 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302916"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64724417"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Menedżer urządzeń StorSimple Użyj zarządzania rekordy kontroli dostępu dla rozwiązania StorSimple Virtual Array
 
@@ -125,7 +125,7 @@ Wykonaj poniższe kroki, aby usunąć rekord kontroli dostępu.
 
 4. Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **Usuń** aby kontynuować usuwanie. Tabelarycznej liście jest aktualizowana w celu odzwierciedlenia usunięcia.
    
-   ![Komunikat ostrzeżenia](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
+   ![Komunikat ostrzegawczy](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

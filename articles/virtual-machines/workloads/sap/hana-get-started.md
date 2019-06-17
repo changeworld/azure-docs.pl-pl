@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
 ms.openlocfilehash: 5091932989849943f00cb71f72378dd17af23a4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60205055"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Szybki start: Ręczna instalacja jednego wystąpienia SAP HANA na maszynach wirtualnych platformy Azure
@@ -189,7 +189,7 @@ Są często używane wartości na poziomie ważności:
 - Ważne
 - Średnia
 - Małe
-- Nieokreślona
+- Nie określono tego parametru
 
 **Zypper** polecenie sprawdza tylko w przypadku aktualizacji wymagających zainstalowane pakiety. Na przykład można użyć tego polecenia:
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3b4c3bac1a2d62246fa5a7ff3a348c6cb2652ea1
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059207"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Użyj platformy Azure z elementów Webhook do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET 
 
@@ -79,7 +79,7 @@ Po wdrożeniu aplikacji funkcji można znaleźć wśród **App Services** usług
 
 Funkcji platformy Azure jest skojarzony z plików kodu i innych plików, które są opisane w tej sekcji. Domyślnie funkcja jest skojarzony z **function.json** i **run.csx** (C#) plików. Należy dodać **project.json** pliku. Pozostała część tej sekcji zawiera definicje dla tych plików.
 
-![plików](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
@@ -245,7 +245,7 @@ private static string PublishAndBuildStreamingURLs(String jobID)
 
     // Get a reference to the streaming manifest file from the  
     // collection of files in the asset. 
-    var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+    var manifestFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                 EndsWith(".ism")).
                 FirstOrDefault();
 

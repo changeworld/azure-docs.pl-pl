@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60616455"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie i wyświetlanie Azure faktury i dane dotyczące dziennego wykorzystania
@@ -58,7 +58,7 @@ Aby uzyskać więcej informacji na temat fakturze zobacz [opis zawartości rachu
 
 Faktury są generowane dla każdego [rozliczeń profilu](billing-mca-overview.md#understand-billing-profiles) w umowie klienta firmy Microsoft. Musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub faktury Menedżera uprawnień umożliwiających pobieranie faktur w witrynie Azure portal.
 
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 2. Wybierz profil rozliczeniowy.
 3. Wybierz pozycję **Faktury**.
 4. W siatce faktury Znajdź wiersz faktury, który chcesz pobrać.
@@ -108,12 +108,12 @@ Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty 
 
 Jeśli masz umowy klienta firmy Microsoft, możesz zrezygnować w można pobrać fakturę w wiadomości e-mail. Wszystkie rozliczeń profilu właściciele, współautorzy, czytelnicy i faktury menedżerów otrzyma fakturę za pośrednictwem poczty e-mail. Czytelnicy nie można zaktualizować preferencji faktury wiadomości e-mail.
 
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 1. Wybierz profil rozliczeniowy.
 1. W obszarze **ustawienia**, wybierz opcję **właściwości**.
 1. W obszarze **Wyślij fakturę pocztą E-mail**, wybierz opcję **preferencji faktury e-mail aktualizacji**.
 1. Wybierz **Zgadzaj**.
-1. Kliknij przycisk **Update** (Aktualizuj).
+1. Kliknij przycisk **Aktualizuj**.
 
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>Zrezygnować z wprowadzenie fakturach profilu rozliczeń w wiadomości e-mail
 
@@ -169,7 +169,7 @@ Aby wyświetlić i pobrać dane użycia dla profil rozliczeniowy, musi rozlicze�
 
 #### <a name="download-usage-for-billed-charges"></a>Pobierz dane użycia opłaty rozliczane
 
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 2. Wybierz profil rozliczeniowy.
 3. Wybierz pozycję **Faktury**.
 4. W siatce faktury Znajdź wiersz faktury odpowiadający użycia, który chcesz pobrać.
@@ -180,7 +180,7 @@ Aby wyświetlić i pobrać dane użycia dla profil rozliczeniowy, musi rozlicze�
 
 Możesz również pobrać użycia data miesiąca dla bieżącego okresu rozliczeniowego, co oznacza, że opłaty nie zostały jeszcze naliczane.
 
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 2. Wybierz profil rozliczeniowy.
 3. W **Przegląd** bloku kliknij **Azure Pobierz użycia i opłat**.
 

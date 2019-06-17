@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: a063461d9da66d57a7bdc3311ae80dec7f2c98f1
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65470241"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
@@ -179,8 +179,8 @@ sudo yum install servicefabricsdkcommon
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Niejawne z rozwiązania npm | najnowsze |
-RHEL | - | OpenJDK 1.8 | Niejawne z rozwiązania npm | najnowsze |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
+RHEL | - | OpenJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
 
 ## <a name="set-up-a-local-cluster"></a>Tworzenie klastra lokalnego
 Uruchom klaster lokalny po zakończeniu instalacji.
@@ -277,7 +277,7 @@ Wtyczkę środowiska Eclipse dla usługi Service Fabric można zainstalować z p
 
 2. Aby zainstalować wtyczkę usługi Service Fabric, wybierz pozycję **Help** > **Install New Software** (Pomoc > Zainstaluj nowe oprogramowanie).
 
-3. W polu **Work with** (Praca z) wpisz adres **https://dl.microsoft.com/eclipse**.
+3. W polu **Work with** (Praca z) wpisz adres **https://dl.microsoft.com/eclipse** .
 
 4. Wybierz pozycję **Dodaj**.
 

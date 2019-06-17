@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466016"
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder FMLE 
@@ -102,7 +102,7 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
      Przy użyciu z przeplotem źródeł, skontaktuj się znacznik wyboru opcji "Opcji Usuń przeplot"
 2. Wybierz ikonę klucza, obok Format, należy te dodatkowe ustawienia:
 
-   * Profil: Główny
+   * Profil: Main
    * Poziom: 4.0
    * Ramka kluczowa częstotliwość: 2 sekundy
 

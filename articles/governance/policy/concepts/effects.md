@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116203"
 ---
 # <a name="understand-azure-policy-effects"></a>Omówienie usługi Azure Policy efekty
@@ -88,7 +88,7 @@ Przykład 2: Dwa **pól i wartości** pary do dołączenia zestawu tagów.
 }
 ```
 
-Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu innej niż **[\*]** [alias](definition-structure.md#aliases) z tablicą **wartość** do konfigurowania reguł adresów IP na koncie magazynu. Gdy non -**[\*]** aliasu jest tablicą, dołącza efekt **wartość** jako macierz w całości. Jeśli tablica już istnieje, Odmów zdarzeniu z konflikt.
+Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu innej niż **[\*]** [alias](definition-structure.md#aliases) z tablicą **wartość** do konfigurowania reguł adresów IP na koncie magazynu. Gdy non - **[\*]** aliasu jest tablicą, dołącza efekt **wartość** jako macierz w całości. Jeśli tablica już istnieje, Odmów zdarzeniu z konflikt.
 
 ```json
 "then": {
@@ -118,7 +118,7 @@ Przykład 4: Pojedynczy **pól i wartości** Sparuj przy użyciu **[\*]** [alias
 }
 ```
 
-## <a name="deny"></a>Odrzuć
+## <a name="deny"></a>Zablokuj
 
 Odmów używany w celu zapobiegania żądania zasobów nie jest zgodna standardów zdefiniowanych za pośrednictwem definicji zasad, która kończy się niepowodzeniem żądania.
 

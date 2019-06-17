@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 1610678b0ae1d94c3f3b8f91913beceb211d08d6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7d26d4c924ba2b7116b95e0b396652e49ca1b8f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701701"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059388"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji na temat skalowania HDInsight, zobacz [klastrów
 
 ## <a name="use-apache-tez-instead-of-map-reduce"></a>Używanie Apache Tez zamiast Map Reduce
 
-[Apache Tez](https://hortonworks.com/hadoop/tez/) to aparat wykonywania alternatywne do aparatu MapReduce. Opartą na systemie Linux klastrów HDInsight mają domyślnie włączony w aplikacji Tez.
+[Apache Tez](https://tez.apache.org/) to aparat wykonywania alternatywne do aparatu MapReduce. Opartą na systemie Linux klastrów HDInsight mają domyślnie włączony w aplikacji Tez.
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
@@ -51,7 +51,7 @@ Tez jest szybsze, ponieważ:
 * **Ponownie używa kontenerów**. Zawsze, gdy Tez możliwe jest w stanie to ponowne użycie kontenerów, aby upewnić się, czy jest mniejsze opóźnienie z powodu uruchamiania kontenerów.
 * **Techniki optymalizacji ciągłe**. Tradycyjnie optymalizacji została wykonana w fazie kompilacji. Jednak więcej informacji na temat danych wejściowych jest dostępny umożliwiające celu uzyskania lepszej optymalizacji w czasie wykonywania. Tez wykorzystuje techniki optymalizacji ciągłym, w celu optymalizacji plan dalsze w fazie środowiska uruchomieniowego.
 
-Aby uzyskać więcej informacji dotyczących tych pojęć, zobacz [Apache TEZ](https://hortonworks.com/hadoop/tez/).
+Aby uzyskać więcej informacji dotyczących tych pojęć, zobacz [Apache TEZ](https://tez.apache.org/).
 
 Możesz wykonać dowolne zapytanie Hive Tez włączone przez dodanie przedrostka zapytania za pomocą następującego polecenia zestawu:
 

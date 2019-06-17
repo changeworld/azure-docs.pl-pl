@@ -10,10 +10,10 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813435"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Zarządzanie przy użyciu witryny Azure portal usługi Azure Data Lake Analytics
@@ -44,9 +44,9 @@ W tym artykule opisano sposób zarządzania kont, źródła danych, użytkownik�
 Zanim usuniesz konto usługi Data Lake Analytics, należy usunąć jego domyślnego konta Data Lake Store.
 
 1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
-2. Kliknij polecenie **Usuń**.
+2. Kliknij przycisk **Usuń**.
 3. Wpisz nazwę konta.
-4. Kliknij polecenie **Usuń**.
+4. Kliknij przycisk **Usuń**.
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -111,7 +111,7 @@ Aby umożliwić programistom języka U-SQL do korzystania z usługi Data Lake An
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Dodaj użytkowników lub grup zabezpieczeń do konta usługi Data Lake Analytics
 
 1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
-2. Kliknij przycisk **kontrola dostępu (IAM)** > **Dodaj przypisanie roli**.
+2. Kliknij przycisk **kontrola dostępu (IAM)**  > **Dodaj przypisanie roli**.
 3. Wybierz rolę.
 4. Dodaj użytkownika.
 5. Kliknij przycisk **OK**.

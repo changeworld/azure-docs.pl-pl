@@ -4,22 +4,22 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 228f445dda2724985154723a292adb8215a5ad68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9798e5f76881be38fb27e1f428565caba6e50bf2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342513"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135060"
 ---
-Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
+Otwórz obszar **Build Settings (Ustawienia kompilacji)** , wybierając pozycje **File (Plik)**  > **Build Settings (Ustawienia kompilacji)** .
 
-W sekcji **Platform (Platforma)** wybierz pozycję **Android**. Zmiana **System kompilacji** do **Gradle** i wybierz **Eksportowanie projektu**.
+W sekcji **Platform (Platforma)** wybierz pozycję **Android**. Zmiana **System kompilacji** do **Gradle** i upewnij się, **Eksportowanie projektu** pole wyboru nie ma znacznik wyboru.
 
-Wybierz pozycję **Switch Platform (Przełącz platformę)**, aby zmienić platformę na **Android**. Unity może spowodować wyświetlenie monitu do zainstalowania składników obsługi systemu Android, jeśli są one Brak.
+Wybierz pozycję **Switch Platform (Przełącz platformę)** , aby zmienić platformę na **Android**. Unity może spowodować wyświetlenie monitu do zainstalowania składników obsługi systemu Android, jeśli są one Brak.
 
 ![Okno ustawień kompilacji platformy Unity](./media/spatial-anchors-unity/unity-android-build-settings.png)
 
-Zamknij okno **Build Settings (Ustawienia kompilacji)**.
+Zamknij okno **Build Settings (Ustawienia kompilacji)** .
 
 ### <a name="download-and-import-the-arcore-sdk-for-unity"></a>Pobierz i zaimportuj zestaw ARCore SDK dla aparatu Unity
 

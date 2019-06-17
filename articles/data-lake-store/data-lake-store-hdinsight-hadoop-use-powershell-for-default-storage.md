@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161410"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Tworzenie klastrów HDInsight za pomocą usługi Azure Data Lake Storage Gen1 jako magazynem domyślnym przy użyciu programu PowerShell
@@ -45,7 +45,7 @@ Przed rozpoczęciem tego samouczka, upewnij się, że spełniasz następujące w
 
 * **Subskrypcja platformy Azure**: Przejdź do [uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Program Azure PowerShell 1.0 lub nowszy**: Zobacz [jak zainstalować i skonfigurować program PowerShell](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: Aby zainstalować zestaw Windows SDK, przejdź do [pliki do pobrania i narzędzia dla systemu Windows 10](https://dev.windows.com/downloads). Zestaw SDK jest używany do utworzenia certyfikatu zabezpieczeń.
+* **Windows Software Development Kit (SDK)** : Aby zainstalować zestaw Windows SDK, przejdź do [pliki do pobrania i narzędzia dla systemu Windows 10](https://dev.windows.com/downloads). Zestaw SDK jest używany do utworzenia certyfikatu zabezpieczeń.
 * **Jednostki usługi w usłudze Azure Active Directory**: W tym samouczku opisano tworzenie usługi podmiotu zabezpieczeń w usłudze Azure Active Directory (Azure AD). Jednak aby utworzyć nazwę główną usługi, musi być administratorem usługi Azure AD. Jeśli jesteś administratorem, możesz pominąć to wymaganie wstępne i kontynuować z tego samouczka.
 
     >[!NOTE]
@@ -125,7 +125,7 @@ Aby skonfigurować uwierzytelnianie usługi Active Directory dla programu Data L
 ### <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 Upewnij się, że masz [zestawu Windows SDK](https://dev.windows.com/en-us/downloads) zainstalowane przed wykonaniem kroków w tej sekcji. Należy także utworzyć katalogu, takie jak *C:\mycertdir*, w którym można utworzyć certyfikatu.
 
-1. W oknie programu PowerShell, przejdź do lokalizacji, w której zainstalowany zestaw Windows SDK (zazwyczaj *\Windows Kits\10\bin\x86 C:\Program Files (x86)*) i używać [MakeCert] [ makecert] Narzędzie do tworzenia certyfikatu z podpisem własnym i klucza prywatnego. Użyj następujących poleceń:
+1. W oknie programu PowerShell, przejdź do lokalizacji, w której zainstalowany zestaw Windows SDK (zazwyczaj *\Windows Kits\10\bin\x86 C:\Program Files (x86)* ) i używać [MakeCert] [ makecert] Narzędzie do tworzenia certyfikatu z podpisem własnym i klucza prywatnego. Użyj następujących poleceń:
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir

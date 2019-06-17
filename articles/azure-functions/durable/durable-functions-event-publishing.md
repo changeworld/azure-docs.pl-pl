@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
 ms.openlocfilehash: c07a42349fbd81a46b1b7cd9bcad1978f891a6b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60733773"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikowanie do usługi Azure Event Grid (wersja zapoznawcza)
@@ -250,19 +250,19 @@ Zobacz dzienniki z funkcji, który został utworzony w witrynie Azure portal.
 
 Poniżej opisano schemat zdarzenia cyklu życia:
 
-* **`id`**: Unikatowy identyfikator zdarzenia siatki zdarzeń.
-* **`subject`**: Ścieżka do tematu zdarzenia. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` będzie `Running`, `Completed`, `Failed`, i `Terminated`.  
-* **`data`**: Trwałe funkcje określonymi parametrami.
-  * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) nazwy.
-  * **`functionName`**: Nazwa funkcji programu orchestrator.
-  * **`instanceId`**: Trwałe funkcje identyfikator wystąpienia.
-  * **`reason`**: Dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [Diagnostyka funkcje trwałe (usługi Azure Functions)](durable-functions-diagnostics.md)
-  * **`runtimeStatus`**: Stan czasu wykonywania aranżacji. Uruchomione, zakończone, nie powiodło się, zostało anulowane.
-* **`eventType`**: "orchestratorEvent"
-* **`eventTime`**: Czas zdarzenia (UTC).
-* **`dataVersion`**: Wersja schematu zdarzeń cyklu życia.
-* **`metadataVersion`**:  Wersja metadanych.
-* **`topic`**: Zasób tematu siatki zdarzeń.
+* **`id`** : Unikatowy identyfikator zdarzenia siatki zdarzeń.
+* **`subject`** : Ścieżka do tematu zdarzenia. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` będzie `Running`, `Completed`, `Failed`, i `Terminated`.  
+* **`data`** : Trwałe funkcje określonymi parametrami.
+  * **`hubName`** : [TaskHub](durable-functions-task-hubs.md) nazwy.
+  * **`functionName`** : Nazwa funkcji programu orchestrator.
+  * **`instanceId`** : Trwałe funkcje identyfikator wystąpienia.
+  * **`reason`** : Dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [Diagnostyka funkcje trwałe (usługi Azure Functions)](durable-functions-diagnostics.md)
+  * **`runtimeStatus`** : Stan czasu wykonywania aranżacji. Uruchomione, zakończone, nie powiodło się, zostało anulowane.
+* **`eventType`** : "orchestratorEvent"
+* **`eventTime`** : Czas zdarzenia (UTC).
+* **`dataVersion`** : Wersja schematu zdarzeń cyklu życia.
+* **`metadataVersion`** :  Wersja metadanych.
+* **`topic`** : Zasób tematu siatki zdarzeń.
 
 ## <a name="how-to-test-locally"></a>Jak przetestować ją lokalnie
 

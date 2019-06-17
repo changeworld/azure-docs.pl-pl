@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/12/2019
 ms.author: juliako
-ms.openlocfilehash: f04ae727957d988e75ea0984d0005a6a140ca63f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: 49ab52f031e24ac77a534c86061fe831bbec39ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66732984"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67114665"
 ---
 # <a name="live-events-and-live-outputs"></a>Wydarzenia i dane wyjściowe na żywo
 
@@ -54,14 +54,14 @@ Zobacz przykładowy kod platformy .NET w [MediaV3LiveApp](https://github.com/Azu
 
 ![Kodowanie na żywo](./media/live-streaming/live-encoding.svg)
 
-W przypadku korzystania z kodowania na żywo za pomocą usługi Media Services należy skonfigurować lokalny koder na żywo, aby wysłać klip wideo z jedną szybkością transmisji bitów jako kanał informacyjny do wydarzenia na żywo (przy użyciu protokołu RTMP lub pliku MP4 podzielonego na fragmenty). Wydarzenie na żywo koduje ten strumień z jedną szybkością transmisji bitów do [strumienia z wieloma szybkościami transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia go do dostarczenia do urządzeń odtwarzania za pomocą protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. Podczas tworzenia tego typu wydarzenia na żywo określ typ kodowania jako **Standardowy** (LiveEventEncodingType.Standard).
+W przypadku korzystania z kodowania na żywo za pomocą usługi Media Services należy skonfigurować lokalny koder na żywo, aby wysłać klip wideo z jedną szybkością transmisji bitów jako kanał informacyjny do wydarzenia na żywo (przy użyciu protokołu RTMP lub pliku MP4 podzielonego na fragmenty). Możesz następnie należy skonfigurować to zdarzenie na żywo, aby go koduje tej przychodzącej pojedyncza szybkość transmisji bitów do usługi stream [wielu strumienia wideo o szybkości transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)i sprawia, że dane wyjściowe do dostarczenia do mleka oraz odtwarzanie urządzeń za pośrednictwem protokołów, takich jak MPEG-DASH, HLS, Przesyłanie strumieniowe.
 
-Możesz wysyłać kanał informacyjny o rozdzielczości maksymalnie 1080p oraz z szybkością 30 klatek na sekundę za pomocą kodera-dekodera wideo H.264/AVC i kodera-dekodera audio AAC (AAC-LC, HE-AACv1 lub HE-AACv2). Aby uzyskać więcej informacji, zobacz artykuł [Porównanie typów wydarzeń na żywo](live-event-types-comparison.md).
+Korzystając z kodowania na żywo, możesz wysłać wkład źródła danych tylko w rozdzielczości rozdzielczości 1080p z prędkością 30 klatek, / sekundę, przy użyciu kodera-dekodera wideo koder H.264/AVC i AAC (AAC-LC, HE-AACv1 lub HE-AACv2) kodera-dekodera audio. Należy pamiętać, że przekazywane zdarzenia na żywo może obsługiwać rozdzielczości, maksymalnie 4 K na 60 klatek na sekundę. Aby uzyskać więcej informacji, zobacz artykuł [Porównanie typów wydarzeń na żywo](live-event-types-comparison.md).
 
-W przypadku korzystania z kodowania na żywo (wydarzenie na żywo z ustawieniem **Standardowy**) ustawienie wstępne kodowania definiuje sposób kodowania przychodzącego strumienia w wielu różnych szybkościach transmisji bitów lub warstwach. Aby uzyskać informacje, zobacz [Ustawienia wstępne systemu](live-event-types-comparison.md#system-presets).
+Rozdzielczości i szybkości transmisji, zawarte w danych wyjściowych z kodera na żywo jest określany przez ustawienie wstępne. Jeśli przy użyciu **standardowa** live encoder (LiveEventEncodingType.Standard), a następnie *Default720p* ustawienie wstępne określa zestaw par 6 rozpoznawania/bitowy szybkości, przechodząc od 720 p w elemencie 3.5Mbps dół 192 p w elemencie 200 KB/s. W przeciwnym razie, jeśli za pomocą **Premium1080p** live encoder (LiveEventEncodingType.Premium1080p), a następnie *Default1080p* ustawienie wstępne określa zestaw par 6 rozpoznawania/bitowy szybkości, przechodząc od 1080 p w elemencie 3.5Mbps do 180 p w elemencie 200 KB/s. Aby uzyskać informacje, zobacz [Ustawienia wstępne systemu](live-event-types-comparison.md#system-presets).
 
 > [!NOTE]
-> Obecnie jedyną dozwoloną wartością ustawienia wstępnego dla standardowego typu wydarzenia na żywo jest *Default720p*. Jeśli chcesz użyć niestandardowego ustawienia wstępnego kodowania na żywo, wyślij wiadomość na adres amshelp@microsoft.com. Musisz określić odpowiednią tabelę z rozdzielczością i szybkościami transmisji bitów. Sprawdź, czy istnieje tylko jedna warstwa dla rozdzielczości 720p i maksymalnie 6 warstw.
+> Jeśli trzeba dostosować ustawienia wstępne kodowania na żywo, otwórz bilet pomocy technicznej za pośrednictwem witryny Azure portal. Musisz określić odpowiednią tabelę z rozdzielczością i szybkościami transmisji bitów. Sprawdź, czy jest tylko jedna warstwa 720 p (jeśli jest to żądanie ustawienia domyślne dla standardowego kodera na żywo) lub 1080 p (jeśli jest to żądanie ustawienia domyślne dla Premium1080p koder na żywo) i maksymalnie 6 warstwy.
 
 ## <a name="live-event-creation-options"></a>Opcje tworzenia zdarzenia na żywo
 
@@ -93,6 +93,14 @@ Możesz użyć znaczących lub nieznaczących adresów URL.
 
     Token dostępu musi być unikatowa w Twoim centrum danych. Jeśli aplikacja musi używać adresu URL znaczących, zalecane jest zawsze twórz nowe wystąpienie identyfikatora GUID dla tokenu dostępu (zamiast ponownego użycia dowolnym istniejący identyfikator GUID). 
 
+    Włącz znaczącym adresie URL i ustawić token dostępu na prawidłowy identyfikator GUID przy użyciu następujących interfejsów API (na przykład `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`):
+    
+    |Język|Włącz znaczącym adresie URL|Określanie tokenu dostępu|
+    |---|---|---|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |Interfejs wiersza polecenia|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    
 ### <a name="live-ingest-url-naming-rules"></a>Pozyskiwanie na żywo reguł nazewnictwa adresów URL
 
 *Losowy* ciąg poniżej to 128-bitowa liczba szesnastkowa (która składa się z 32 znaków 0–9 a–f).<br/>
