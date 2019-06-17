@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 93fd14d1148ce29731087cba5cd20f5ff1bcd4a2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b57222d2857110817ff62d3a455690a662073cc6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897989"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iris-intranet"></a>Samouczek: Integracja usługi Azure Active Directory z intranetu irysów
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację intranetu irysów w usłudze Azure AD, należy do
 
 **Aby dodać Iris Intranet z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 

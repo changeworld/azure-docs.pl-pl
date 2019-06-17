@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749216d3fe9164857bd4abce7ba7c766e466e7d3
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 2dbf27301e738978e7f03d2423a4d23fd63c97b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823293"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113493"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest funkcja zapisywania zwrotnego haseł?
 
@@ -152,7 +152,6 @@ Hasła są zapisywane z powrotem w następujących sytuacjach:
    * Wszelkie życie samoobsługi administratora Zmień operacji hasła, na przykład, datę wygaśnięcia hasła
    * Wszelkie administratora samoobsługowego resetowania haseł pochodzący z [portal resetowania haseł](https://passwordreset.microsoftonline.com)
    * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła z [witryny Azure portal](https://portal.azure.com)
-   * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła z [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com)
 
 ## <a name="unsupported-writeback-operations"></a>Operacje zapisywania zwrotnego nieobsługiwany
 
@@ -162,6 +161,7 @@ Hasła są *nie* zapisywane z powrotem w następujących sytuacjach:
    * Każdy użytkownik końcowy resetowania ich własnych haseł przy użyciu programu PowerShell w wersji 1, wersja 2 lub interfejsu API programu Graph usługi Azure AD
 * **Nieobsługiwana administrator operacji**
    * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła programu PowerShell w wersji 1, wersja 2 lub interfejsu API programu Graph usługi Azure AD
+   * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła z [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
 > Użyj pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w narzędziach administracyjnych lokalnej usługi Active Directory użytkownicy usługi Active Directory i komputerów lub Centrum administracyjne usługi Active Directory nie jest obsługiwana. Podczas zmiany hasła w środowisku lokalnym nie należy zaznaczać tej opcji.

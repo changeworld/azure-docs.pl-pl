@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 897634ac0c30b4a2cc496c225965f465a94fe4e9
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: f2787cd74525e7676befb133a6106ce83d9c2a20
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751901"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072632"
 ---
 # <a name="create-a-new-saas-offer"></a>Tworzenie nowej oferty SaaS
 
@@ -72,12 +72,12 @@ Sprzedaż firmy Microsoft zapewnia większą odnajdywania klienta i przejęcia, 
 
 Aby wyświetlić listę oprogramowania jako usługi (SaaS) oferuje komercyjnych Portal Marketplace w Centrum partnerskim, muszą być spełnione następujące kryteria:
 
-- Oferty muszą być zgodne z klientami platformy Azure. (Często uzyskać najlepszą wydajność i zgodność aplikacji SaaS również są obsługiwane na platformie Azure, ale nie jest wymagane.) 
 - Należy użyć oferty [usługi Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) do uwierzytelniania i zarządzania tożsamościami.
 - Należy użyć oferty [interfejsami API usług SaaS realizacji](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) do integracji z portalu Azure Marketplace.
+- Bardziej rozległe wymaganiami, zobacz [SaaS oferują Podręcznik publikowania](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
-#### <a name="billing-infrastructure-costs"></a>Rozliczenia kosztów infrastruktury
-W przypadku ofert SaaS, jako wydawca, należy uwzględnić opłaty za użycie infrastruktury platformy Azure i opłat licencyjnych jako element pojedynczy koszt. Ten koszt jest przedstawiana jako płaskie miesięcznej opłaty za do klienta. Użycie infrastruktury platformy Azure zarządzane i rozliczane w przypadku partnera, bezpośrednio. Opłaty za użycie rzeczywistej infrastruktury nie są widoczne dla klienta. Wydawcy zazwyczaj zdecydować się na pakietu opłaty za użycie infrastruktury platformy Azure do ich ceny licencji oprogramowania. 
+#### <a name="saas-on-azure-billing-infrastructure-costs"></a>SaaS na kosztach infrastruktury rozliczeń platformy Azure
+Jeśli oferta SaaS jest hostowane na platformie Azure, jako wydawca, należy uwzględnić opłaty za użycie infrastruktury platformy Azure i opłat licencyjnych jako element pojedynczy koszt. Ten koszt jest przedstawiana jako płaskie miesięcznej opłaty za do klienta. Użycie infrastruktury platformy Azure zarządzane i rozliczane w przypadku partnera, bezpośrednio. Opłaty za użycie rzeczywistej infrastruktury nie są widoczne dla klienta. Wydawcy zazwyczaj zdecydować się na pakietu opłaty za użycie infrastruktury platformy Azure do ich ceny licencji oprogramowania. 
 
 Oprogramowanie opłat licencyjnych są uporządkowane jako opłata stosowana jest stała stawka miesięczna, cyklicznego subskrypcji oparty na lokacji i nie są mierzone lub oparty na zużyciu.
 

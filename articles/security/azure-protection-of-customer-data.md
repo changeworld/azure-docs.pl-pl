@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 04163d1fa2a46a2de877702d479f439a5e8711d7
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603133"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrona danych klientów platformy Azure   
@@ -55,9 +55,9 @@ Dane mogą być replikowane w obrębie zaznaczonego obszaru geograficznego w cel
 
 Podczas tworzenia konta magazynu, wybierz jedną z następujących opcji replikacji:
 
-- **Magazyn lokalnie nadmiarowy (LRS)**: Magazyn lokalnie nadmiarowy przechowuje trzy kopie danych. Magazyn LRS jest replikowany trzy razy w jednym obiekcie w pojedynczym regionie. Magazyn LRS chroni dane przed zwykłymi awariami sprzętu, ale nie przed awarią pojedynczego obiektu.
-- **Magazyn strefowo nadmiarowy (ZRS)**: Magazyn strefowo nadmiarowy przechowuje trzy kopie danych. Magazyn ZRS jest replikowany trzy razy w dwóch do trzech lokalizacjach, aby zapewnić większą trwałość niż magazyn LRS. Replikacja odbywa się w jednym regionie lub w dwóch regionach. Magazyn ZRS pomaga upewnić się, że Twoje dane są trwałe w pojedynczym regionie.
-- **Magazyn geograficznie nadmiarowy (GRS)**: Magazyn geograficznie nadmiarowy jest domyślnie włączany dla konta magazynu podczas jego tworzenia. Magazyn GRS przechowuje sześć kopii danych. W przypadku magazynu GRS Twoje dane są replikowane trzy razy w regionie podstawowym. Dane są także replikowane trzy razy w regionie pomocniczym oddalonym setki odległości od regionu podstawowego, co zapewnia najwyższy poziom trwałości. Jeśli wystąpi awaria w regionie podstawowym usługi Azure Storage awaryjnie do regionu pomocniczego. GRS zapewnia, że Twoje dane są trwałe w dwóch oddzielnych regionach.
+- **Magazyn lokalnie nadmiarowy (LRS)** : Magazyn lokalnie nadmiarowy przechowuje trzy kopie danych. Magazyn LRS jest replikowany trzy razy w jednym obiekcie w pojedynczym regionie. Magazyn LRS chroni dane przed zwykłymi awariami sprzętu, ale nie przed awarią pojedynczego obiektu.
+- **Magazyn strefowo nadmiarowy (ZRS)** : Magazyn strefowo nadmiarowy przechowuje trzy kopie danych. Magazyn ZRS jest replikowany trzy razy w dwóch do trzech lokalizacjach, aby zapewnić większą trwałość niż magazyn LRS. Replikacja odbywa się w jednym regionie lub w dwóch regionach. Magazyn ZRS pomaga upewnić się, że Twoje dane są trwałe w pojedynczym regionie.
+- **Magazyn geograficznie nadmiarowy (GRS)** : Magazyn geograficznie nadmiarowy jest domyślnie włączany dla konta magazynu podczas jego tworzenia. Magazyn GRS przechowuje sześć kopii danych. W przypadku magazynu GRS Twoje dane są replikowane trzy razy w regionie podstawowym. Dane są także replikowane trzy razy w regionie pomocniczym oddalonym setki odległości od regionu podstawowego, co zapewnia najwyższy poziom trwałości. Jeśli wystąpi awaria w regionie podstawowym usługi Azure Storage awaryjnie do regionu pomocniczego. GRS zapewnia, że Twoje dane są trwałe w dwóch oddzielnych regionach.
 
 **Zniszczenie danych**: Gdy klienci usuwania danych lub pozostaw platformy Azure, Microsoft stosuje rygorystyczne standardy dla zastępowanie zasobów magazynu przed ich ponownego użycia, jak również fizyczne zniszczenie zlikwidowana sprzętu. Microsoft wykonuje pełną usuwania danych na żądanie klienta, a na zakończenie umowy.
 

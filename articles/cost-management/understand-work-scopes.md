@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991378"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
@@ -154,14 +154,14 @@ Wszystkie widoki zarządzania kosztami w witrynie Azure portal obejmują **zakre
 
 Podczas pracy z interfejsów API usługi Cost Management, wiedząc, że zasięg jest krytyczny. Skorzystaj z poniższych informacji do tworzenia zakresu prawidłowego identyfikatora URI dla interfejsów API usługi Cost Management.
 
-### <a name="billing-accounts"></a>Konta bilingowe
+### <a name="billing-accounts"></a>Rozliczanie konta
 
 1. Otwórz witrynę Azure portal, a następnie przejdź do **Zarządzanie kosztami i rozliczenia** na liście usług.
 2. Wybierz **właściwości** w menu konta rozliczeniowego.
 3. Skopiuj identyfikator konta rozliczeniowego
 4. Zakres jest: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
-### <a name="billing-profiles"></a>Profile rozliczeniowe
+### <a name="billing-profiles"></a>Profile rozliczeń
 
 1. Otwórz witrynę Azure portal, a następnie przejdź do **Zarządzanie kosztami i rozliczenia** na liście usług.
 2. Wybierz **profile rozliczeń** w menu konta rozliczeniowego.
@@ -170,7 +170,7 @@ Podczas pracy z interfejsów API usługi Cost Management, wiedząc, że zasięg 
 5. Skopiuj konta rozliczeniowego i rozliczeń identyfikatory profilu.
 6. Zakres jest: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
-### <a name="invoice-sections"></a>Sekcje faktur
+### <a name="invoice-sections"></a>Sekcje faktury
 
 1. Otwórz witrynę Azure portal, a następnie przejdź do **Zarządzanie kosztami i rozliczenia** na liście usług.
 2. Wybierz **faktury sekcje** w menu konta rozliczeniowego.
@@ -218,7 +218,7 @@ Podczas pracy z interfejsów API usługi Cost Management, wiedząc, że zasięg 
 4. Skopiuj wartość pola Identyfikatora zasobu.
 5. Zakres jest: `"/subscriptions/{id}/resourceGroups/{name}"`
 
-Usługa Cost Management jest obecnie obsługiwany w [Azure Global](https://management.azure.com) i [Azure dla instytucji rządowych](https://management.usgovcloudapi.net). Aby uzyskać więcej informacji na temat platformy Azure Government, zobacz [punktów końcowych globalnej platformy Azure i interfejsu API dla instytucji rządowych](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
+Usługa Cost Management jest obecnie obsługiwany w [Azure Global](https://management.azure.com) i [Azure dla instytucji rządowych](https://management.usgovcloudapi.net). Aby uzyskać więcej informacji na temat platformy Azure Government, zobacz [punktów końcowych globalnej platformy Azure i interfejsu API dla instytucji rządowych](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
 ## <a name="next-steps"></a>Kolejne kroki
 

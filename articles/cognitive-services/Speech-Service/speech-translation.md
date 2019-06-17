@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 95682612b4b0fdb1baa5038039630e74abddb1a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 84d212129c5225fd0efebfca5640cfc3d32e8a40
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072407"
 ---
 # <a name="what-is-speech-translation"></a>Co to jest tłumaczenia mowy?
 
@@ -32,21 +32,21 @@ Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Tłumaczenie mowy na tekst za pomocą wyniki rozpoznawania. | Yes | Nie |
-| Tłumaczenie mowy do rozpoznawania mowy. | Yes | Nie |
-| Wyników pośrednich rozpoznawanie i tłumaczenia. | Yes | Nie |
+| Tłumaczenie mowy na tekst za pomocą wyniki rozpoznawania. | Tak | Nie |
+| Tłumaczenie mowy do rozpoznawania mowy. | Tak | Nie |
+| Wyników pośrednich rozpoznawanie i tłumaczenia. | Tak | Nie |
 
 ## <a name="get-started-with-speech-translation"></a>Rozpoczynanie pracy z usługą tłumaczenia mowy
 
 Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Poniższa tabela zawiera listę uporządkowane według języka mowy tłumaczenia przewodników Szybki Start.
 
-| Szybki start | Platforma | Dokumentacja interfejsu API |
+| Szybki start | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
 | [C#, .NET Core](quickstart-translate-speech-dotnetcore-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET Framework](quickstart-translate-speech-dotnetframework-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C#, UWP](quickstart-translate-speech-uwp.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C++](quickstart-translate-speech-cpp-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref)|
-| [Java](quickstart-translate-speech-java-jre.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| [Java](quickstart-translate-speech-java-jre.md) | Windows, Linux, macOS | [Przeglądaj](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 

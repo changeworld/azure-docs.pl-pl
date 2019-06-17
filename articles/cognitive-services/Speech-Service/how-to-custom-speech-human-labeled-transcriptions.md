@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f0b467284872f3d936984741c6d092705008a5a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ba6d137a7eb5fc2c56bfc39aa8f831d76411fb46
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025924"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060857"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak utworzyć transkrypcje oznaczone przez człowieka
 
@@ -78,7 +78,7 @@ Poniżej przedstawiono kilka przykładów normalizacji automatycznie są wykonyw
 | Pi jest około 3,14 | pi jest około trzy punktu 1 4 |
 To kosztuje $3,14| to kosztuje trzech czternastu |
 
-## <a name="mandarin-chinese-zh-cn"></a>Mandaryński chiński (zh-cn)
+## <a name="mandarin-chinese-zh-cn"></a>Mandaryński chiński (zh-CN)
 
 Oznaczone przez człowieka transkrypcji dla audio chińskich mandaryński muszą być zakodowane za pomocą znacznika kolejności bajtów UTF-8. Unikaj stosowania znaków interpunkcyjnych połowę szerokości. Te znaki mogą być uwzględniane przypadkowo podczas przygotowywania danych w edytorze tekstu lub scrape danych ze stron sieci web. Jeśli te znaki są obecne, pamiętaj je zaktualizować za pomocą odpowiednich podstawienia pełnej szerokości.
 

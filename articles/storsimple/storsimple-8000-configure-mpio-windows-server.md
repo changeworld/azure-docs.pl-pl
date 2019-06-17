@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60363401"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia dla urządzenia StorSimple
@@ -113,7 +113,7 @@ Po skonfigurowaniu wielościeżkowego wejścia/wyjścia w systemie Windows Serve
    ![Karta elementy docelowe właściwości inicjatora iSCSI](./media/storsimple-configure-mpio-windows-server/IC741007.png)
    
 6. Kliknij przycisk **Connect** ustanowienie sesji iSCSI na urządzeniu StorSimple. A **nawiązywanie połączenia z docelowym** pojawi się okno dialogowe.
-7. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru. Kliknij pozycję **Advanced** (Zaawansowane).
+7. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru. Kliknij przycisk **zaawansowane**.
 8. W **Zaawansowane ustawienia** okna dialogowego pole, wykonaj następujące czynności:
    
    1. Na **karty lokalnej** listy rozwijanej wybierz **inicjatora iSCSI firmy Microsoft**.
@@ -121,7 +121,7 @@ Po skonfigurowaniu wielościeżkowego wejścia/wyjścia w systemie Windows Serve
    3. Na **portalu obiektu docelowego** IP listę rozwijaną, wybierz adres IP interfejsu urządzenia na liście.
    4. Kliknij przycisk **OK** aby powrócić do **właściwości inicjatora iSCSI** okno dialogowe.
 9. Kliknij pozycję **Właściwości**. W **właściwości** okno dialogowe, kliknij przycisk **Dodaj sesję**.
-10. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru. Kliknij pozycję **Advanced** (Zaawansowane).
+10. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru. Kliknij przycisk **zaawansowane**.
 11. W **Zaawansowane ustawienia** okno dialogowe:
 
     1. Na **karty lokalnej** listy rozwijanej, wybierz opcję inicjatora iSCSI firmy Microsoft.
@@ -169,7 +169,7 @@ Poniższa procedura opisuje sposób dodawania sesji, gdy urządzenie StorSimple 
    
    1. Pozostaw domyślnie wybrane ustawienie obiektu docelowego dla **dodać to połączenie** do listy ulubionych elementów docelowych. To sprawia, że urządzenie automatycznej próbie ponownego uruchomienia połączenie, za każdym razem, gdy ten komputer zostanie uruchomiony ponownie.
    2. Wybierz **Włącz wielościeżkowe** pole wyboru.
-   3. Kliknij pozycję **Advanced** (Zaawansowane).
+   3. Kliknij przycisk **zaawansowane**.
 6. W **Zaawansowane ustawienia** okno dialogowe:
    
    1. Na **karty lokalnej** listy rozwijanej wybierz **inicjatora iSCSI firmy Microsoft**.

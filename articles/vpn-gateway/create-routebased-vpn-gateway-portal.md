@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: ddc42023bae3403e7778327a40316462c85222c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390074"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Tworzenie bramy sieci VPN opartej na trasach przy użyciu witryny Azure portal
@@ -25,14 +25,14 @@ Kroki opisane w tym artykule spowoduje utworzenie sieci wirtualnej, podsieci, po
 1. Przejdź w przeglądarce do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 2. Kliknij pozycję **Utwórz zasób**. W polu **Szukaj w witrynie Marketplace** wpisz „Sieć wirtualna”. Znajdź pozycję **Sieć wirtualna** na liście wyników i kliknij, aby otworzyć stronę **Sieć wirtualna**.
 3. W dolnej części strony sieć wirtualna z **wybierz model wdrożenia** listy, upewnij się, że **usługi Resource Manager** wybrania z listy rozwijanej, a następnie kliknij przycisk **Utwórz**. Spowoduje to otwarcie **Utwórz sieć wirtualną** strony.
-4. Na stronie **Tworzenie sieci wirtualnej** skonfiguruj ustawienia sieci wirtualnej. Po wypełnieniu pól czerwony wykrzyknik zmieni się na zielony znacznik wyboru, jeśli znaki wprowadzone w polu są prawidłowe. Wprowadź następujące wartości:
+4. Na stronie **Tworzenie sieci wirtualnej** skonfiguruj ustawienia sieci wirtualnej. Po wypełnieniu pól czerwony wykrzyknik zmieni się na zielony znacznik wyboru, jeśli znaki wprowadzone w polu są prawidłowe. Użyj następujących wartości:
 
    - **Nazwa**: TestVNet1
    - **Przestrzeń adresowa**: 10.1.0.0/16
    - **Subskrypcja**: Sprawdź subskrypcję na liście, którego chcesz użyć. Subskrypcje można zmieniać, korzystając z listy rozwijanej.
    - **Grupa zasobów**: TestRG1
    - **Lokalizacja**: Wschodnie stany USA
-   - **Podsieć**: Fronton
+   - **Podsieć**: Frontonu
    - **Zakres adresów**: 10.1.0.0/24
 
    ![Strona Tworzenie sieci wirtualnej](./media/create-routebased-vpn-gateway-portal/create-virtual-network.png "Strona Tworzenie sieci wirtualnej")
@@ -49,7 +49,7 @@ Podsieć bramy zawiera zastrzeżone adresy IP, z których korzystają usługi br
    ![Dodawanie podsieci bramy](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "Dodawanie podsieci bramy")
 4. **Nazwa** dla podsieci zostanie automatycznie wypełniona wymagane wartością "GatewaySubnet". Dostosuj automatycznie wypełniane **zakres adresów** wartości, aby dopasować następujące wartości:
 
-   **Zakres adresów (blok CIDR)**: 10.1.255.0/27
+   **Zakres adresów (blok CIDR)** : 10.1.255.0/27
 
    ![Dodawanie podsieci bramy](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "Dodawanie podsieci bramy")
 5. Aby utworzyć podsieć bramy, kliknij przycisk **OK** w dolnej części strony.

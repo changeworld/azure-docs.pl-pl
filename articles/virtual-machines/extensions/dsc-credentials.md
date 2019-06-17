@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6618906f7b1b063de18a4f8a418c1c2744ca1533
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 723d0cfe6e292c4b8013de4da55779a6c675d610
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975788"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64705928"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Przekazywania poświadczeń do obsługi DSCExtension platformy Azure
 
 W tym artykule opisano rozszerzenie Desired State Configuration (DSC) dla platformy Azure. Aby uzyskać przegląd procedury obsługi rozszerzenia DSC, zobacz [wprowadzenie do procedury obsługi rozszerzenia Azure Desired State Configuration](dsc-overview.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="pass-in-credentials"></a>Przekazywanie poświadczeń
 
@@ -61,7 +61,7 @@ configuration Main
 }
 ```
 
-Jest ważne uwzględnić **localhost węzła** jako część konfiguracji. Procedury obsługi rozszerzenia specjalnie szuka **localhost węzła** instrukcji. Poniższe kroki nie działają, jeśli brakuje tej instrukcji. Warto również uwzględnić typecast **[PsCredential]**. Określonego typu, wyzwala rozszerzenie Aby zaszyfrować poświadczenia.
+Jest ważne uwzględnić **localhost węzła** jako część konfiguracji. Procedury obsługi rozszerzenia specjalnie szuka **localhost węzła** instrukcji. Poniższe kroki nie działają, jeśli brakuje tej instrukcji. Warto również uwzględnić typecast **[PsCredential]** . Określonego typu, wyzwala rozszerzenie Aby zaszyfrować poświadczenia.
 
 Aby opublikować ten skrypt do usługi Azure Blob storage:
 
@@ -84,7 +84,7 @@ $vm | Update-AzVM
 
 Uruchamiając ten kod wyświetla monit o podanie poświadczeń. Po poświadczenie jest warunkiem krótko jest przechowywany w pamięci. Po opublikowaniu przy użyciu poświadczeń **AzVMDscExtension zestaw** polecenia cmdlet, poświadczenia są przesyłane za pośrednictwem protokołu HTTPS do maszyny Wirtualnej. Na maszynie wirtualnej platformy Azure są przechowywane poświadczenia szyfrowane na dysku przy użyciu lokalnego certyfikatu maszyny Wirtualnej. Poświadczenie krótko zostaną odszyfrowane w pamięci, a następnie ponownie jest szyfrowany do przekazania go do DSC.
 
-Ten proces różni się od [przy użyciu bezpiecznej konfiguracji bez obsługi rozszerzenia](/powershell/dsc/securemof). Środowisko platformy Azure zapewnia możliwość przesyłania danych konfiguracji w bezpieczny sposób za pomocą certyfikatów. Korzystając z obsługi rozszerzenia DSC, nie musisz podać **$CertificatePath** lub **$CertificateID**/ **$Thumbprint** wpis **ConfigurationData**.
+Ten proces różni się od [przy użyciu bezpiecznej konfiguracji bez obsługi rozszerzenia](/powershell/dsc/securemof). Środowisko platformy Azure zapewnia możliwość przesyłania danych konfiguracji w bezpieczny sposób za pomocą certyfikatów. Korzystając z obsługi rozszerzenia DSC, nie musisz podać **$CertificatePath** lub **$CertificateID**/  **$Thumbprint** wpis **ConfigurationData**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

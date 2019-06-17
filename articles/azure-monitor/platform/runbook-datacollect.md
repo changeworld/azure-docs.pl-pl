@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60454199"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
@@ -66,7 +66,7 @@ Galeria programu PowerShell zapewnia jednak możliwość szybkiego wdrażania mo
 | Właściwość | Wartość Identyfikatora obszaru roboczego | Wartość klucza obszaru roboczego |
 |:--|:--|:--|
 | Name (Nazwa) | WorkspaceId | WorkspaceKey |
-| Type | String | String |
+| Typ | String | String |
 | Wartość | Wklej identyfikator obszaru roboczego z obszaru roboczego usługi Log Analytics. | Wklej się przy użyciu podstawowy lub pomocniczy klucz obszaru roboczego usługi Log Analytics. |
 | Zaszyfrowane | Nie | Yes |
 
@@ -182,7 +182,7 @@ Najczęstszym sposobem uruchamiania elementu runbook, który służy do zbierani
 | Właściwość | Wartość |
 |:--|:--|
 | Name (Nazwa) | Co godzinę AutomationJobs |
-| Początek | Wybierz, w dowolnym momencie co najmniej 5 minut późniejsza niż bieżąca godzina. |
+| Rozpoczyna się | Wybierz, w dowolnym momencie co najmniej 5 minut późniejsza niż bieżąca godzina. |
 | Cykl | Cykliczna |
 | Powtarzaj co | 1 godzina |
 | Ustaw czas wygaśnięcia | Nie |
@@ -196,13 +196,13 @@ Po utworzeniu harmonogramu, musisz podać wartości parametrów, które będą u
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9. Sprawdź element runbook uruchamia zgodnie z harmonogramem
 Za każdym razem, gdy element runbook jest uruchamiany, [tworzone jest zadanie](../../automation/automation-runbook-execution.md) i wszelkie dane wyjściowe rejestrowane. W rzeczywistości są one tych samych zadań, które zbiera elementu runbook. Aby sprawdzić, czy element runbook uruchamiany zgodnie z oczekiwaniami, sprawdzając zadania elementu runbook, po upływie czasu rozpoczęcia dla harmonogramu.
 
-![Stanowiska](media/runbook-datacollect/jobs.png)
+![Zadania](media/runbook-datacollect/jobs.png)
 
 1. We właściwościach elementu runbook, zaznacz **zadania** w obszarze **zasobów**.
 2. Powinieneś zobaczyć listę zadań każdorazowo, gdy element runbook został uruchomiony.
 3. Kliknij jedno z zadań, aby wyświetlić jego szczegóły.
 4. Kliknij pozycję **wszystkie dzienniki** do wyświetlania dzienników i danych wyjściowych z elementu runbook.
-5. Przewiń w dół, aby odnaleźć wpisu, podobnie jak na poniższej ilustracji.<br>![Pełne](media/runbook-datacollect/verbose.png)
+5. Przewiń w dół, aby odnaleźć wpisu, podobnie jak na poniższej ilustracji.<br>![Pełny](media/runbook-datacollect/verbose.png)
 6. Kliknij ten wpis, aby wyświetlić dane szczegółowe json, który został wysłany do usługi Log Analytics.
 
 ## <a name="next-steps"></a>Kolejne kroki

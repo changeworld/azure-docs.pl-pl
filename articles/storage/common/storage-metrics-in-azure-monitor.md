@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 8b091ecce98a626f18fe6547445d898b6710e1a5
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510547"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
@@ -339,7 +339,7 @@ Usługa Azure Storage udostępnia następujące metryki pojemności w usłudze A
 | ------------------- | ----------------- |
 | UsedCapacity | Ilość miejsca używanego przez konta magazynu. W przypadku kont magazynu w warstwie Standardowa jest to suma pojemności używanej przez obiekt blob, tabelę, plik i kolejkę. W przypadku kont w warstwie Premium i kont usługi Blob Storage wartość jest taka sama jak BlobCapacity. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 |
 
-### <a name="blob-storage"></a>Magazyn obiektów blob
+### <a name="blob-storage"></a>Blob Storage
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
@@ -362,7 +362,7 @@ Usługa Azure Storage udostępnia następujące metryki pojemności w usłudze A
 | ------------------- | ----------------- |
 | QueueCapacity | Ilość usługi Queue storage używane przez konto magazynu. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 |
 | QueueCount   | Liczba kolejek na koncie magazynu. <br/><br/> Jednostka: Count <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 |
-| QueueMessageCount | Liczba komunikatów w kolejce niewygasłe na koncie magazynu. <br/><br/>Jednostka: Count <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 |
+| QueueMessageCount | Liczba komunikatów w kolejce niewygasłe na koncie magazynu. <br/><br/>Jednostka: Licznik <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 |
 
 ### <a name="file-storage"></a>File Storage
 
@@ -380,12 +380,12 @@ Usługa Azure Storage udostępnia następujące metryki transakcji w usłudze Az
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| Transakcje | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone zarówno powodzeniem, jak i niepowodzeniem, a także żądania, które wywołały błędy. <br/><br/> Jednostka: Count <br/> Typ agregacji: Łączna <br/> Wymiary stosowane: Wartość ResponseType, GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions))<br/> Przykład wartości: 1024 |
-| Ruch przychodzący | Ilość danych przychodzących. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Łączna <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
-| Ruch wychodzący | Ilość danych wychodzących. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Łączna <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
-| SuccessServerLatency | Średni czas potrzebny na przetworzenie żądania zakończonego powodzeniem przez usługę Azure Storage. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia. <br/><br/> Jednostka: Milisekundy <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
-| SuccessE2ELatency | Średnie całkowite opóźnienie dla żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. <br/><br/> Jednostka: Milisekundy <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
-| Dostępność | Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości wszystkich żądań do rozliczenia przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API. <br/><br/> Jednostka: Wartość procentowa <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 99.99 |
+| Transakcje | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone zarówno powodzeniem, jak i niepowodzeniem, a także żądania, które wywołały błędy. <br/><br/> Jednostka: Count <br/> Typ agregacji: Łącznie <br/> Wymiary stosowane: Wartość ResponseType, GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions))<br/> Przykład wartości: 1024 |
+| Ruch przychodzący | Ilość danych przychodzących. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Łącznie <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
+| Ruch wychodzący | Ilość danych wychodzących. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Łącznie <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
+| SuccessServerLatency | Średni czas potrzebny na przetworzenie żądania zakończonego powodzeniem przez usługę Azure Storage. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia. <br/><br/> Jednostka: MS <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
+| SuccessE2ELatency | Średnie całkowite opóźnienie dla żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. <br/><br/> Jednostka: MS <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
+| Dostępność | Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości wszystkich żądań do rozliczenia przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API. <br/><br/> Jednostka: Procent <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 99.99 |
 
 ## <a name="metrics-dimensions"></a>Wymiary metryki
 

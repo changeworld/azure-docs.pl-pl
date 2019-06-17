@@ -9,10 +9,10 @@ ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787810"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguracja zaawansowane automatyczne skalowanie usługi VM Scale Sets za pomocą szablonów usługi Resource Manager
@@ -31,7 +31,7 @@ W tym przewodniku używamy [Eksploratora zasobów Azure](https://resources.azure
 
     ![Azure Explorer](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
-    Wykonywanie szablonu, który utworzył domyślne ustawienie automatycznego skalowania o nazwie **"autoscalewad"**. Po prawej stronie można wyświetlić pełna definicja to ustawienie automatycznego skalowania. W tym przypadku domyślne ustawienie skalowania automatycznego jest dostarczany z regułą skalowania w poziomie i skalowanie w % na podstawie procesora CPU.  
+    Wykonywanie szablonu, który utworzył domyślne ustawienie automatycznego skalowania o nazwie **"autoscalewad"** . Po prawej stronie można wyświetlić pełna definicja to ustawienie automatycznego skalowania. W tym przypadku domyślne ustawienie skalowania automatycznego jest dostarczany z regułą skalowania w poziomie i skalowanie w % na podstawie procesora CPU.  
 
 3. Teraz możesz dodać więcej profile i zasady na podstawie harmonogramu lub określonych wymagań. Ustawienia automatycznego skalowania możemy utworzyć przy użyciu trzech profilów. Aby poznać profile i regułami automatycznego skalowania, zobacz [najlepszych praktykach dotyczących skalowania](autoscale-best-practices.md).  
 

@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347259"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Zarządzanie za pomocą interfejsu API zarządzania usługami sieci web Azure Machine Learning Studio
@@ -150,7 +150,7 @@ Operacje mogą być wywoływane bezpośrednio z portalu dla deweloperów, która
 
 4. Dla **parametry żądania**, typ usługi **obszaru roboczego** i **usługi**, typu "2.0 dla **apiversion**i jest to"true"dla **szczegóły**. Możesz znaleźć swojej **obszaru roboczego** i **usługi** pulpicie nawigacyjnym usługi sieci web Azure ml (zobacz **przetestować usługę sieci web** w załączniku A).
 
-   Aby uzyskać **nagłówki żądań**, kliknij przycisk **Dodaj nagłówek** i wpisz "Content-Type" i "application/json". Kliknij przycisk **Dodaj nagłówek** ponownie i wpisz "Autoryzacja" i "Bearer  *\<klucz interfejsu API usługi\>*". KLUCZ interfejsu API można znaleźć na pulpicie nawigacyjnym usługi sieci web Azure ml (zobacz **przetestować usługę sieci web** w załączniku A).
+   Aby uzyskać **nagłówki żądań**, kliknij przycisk **Dodaj nagłówek** i wpisz "Content-Type" i "application/json". Kliknij przycisk **Dodaj nagłówek** ponownie i wpisz "Autoryzacja" i "Bearer  *\<klucz interfejsu API usługi\>* ". KLUCZ interfejsu API można znaleźć na pulpicie nawigacyjnym usługi sieci web Azure ml (zobacz **przetestować usługę sieci web** w załączniku A).
 
    Aby uzyskać **treść żądania**, typ `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`.
 

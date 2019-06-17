@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki Start — blokuje dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: W tym przewodniku Szybki Start dowiesz się, jak konfigurować zasady dostępu warunkowego usługi Azure Active Directory (Azure AD) do blokowania operacji logowania w oparciu o ryzyko sesji.
+title: Przewodnik Szybki Start — blokuje dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory dostępu warunkowego | Dokumentacja firmy Microsoft
+description: W tym przewodniku Szybki Start dowiesz się, jak konfigurować zasady dostępu warunkowego usługi Azure Active Directory (Azure AD), blokowanie operacji logowania w oparciu o ryzyko sesji.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5defdf2d33d32042775271fe01aba377687ae75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8de4e785bbe2496ca38b33512da1c85f9ff76f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112773"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory dostępu warunkowego  
 
 Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników logowania. [Usługa Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analizuje każdy logowania, a następnie oblicza prawdopodobieństwo, że logowanie próba nie było wykonywane przez prawowitym właścicielem konta użytkownika. Prawdopodobieństwo (niskiej, średniej, wysokiej) jest wskazywany w postaci obliczonej wartości o nazwie [poziomy ryzyka logowania](conditions.md#sign-in-risk). Ustawiając warunek ryzyka logowania, można skonfigurować zasady dostępu warunkowego, aby odpowiedzieć na poziomach określonych ryzyka logowania.
 
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy:
 
-- **Dostęp do wersji Azure AD Premium P2** — dostęp warunkowy jest funkcja Azure AD Premium P1, należy wersji P2, ponieważ scenariusz, w tym przewodniku Szybki Start wymaga Identity Protection.
+- **Dostęp do wersji Azure AD Premium P2** — gdy dostęp warunkowy jest funkcja Azure AD Premium P1, potrzebne wersji P2, ponieważ w ramach scenariusza opisywanego w tym przewodniku Szybki Start wymaga ochrony tożsamości.
 
 - **Ochrona tożsamości** — scenariusz, w tym przewodniku Szybki Start wymaga włączenia ochrony tożsamości. Jeśli nie wiesz, jak włączyć usługę Identity Protection, zobacz [włączania usługi Azure Active Directory Identity Protection](../identity-protection/enable.md).
 
@@ -53,20 +53,20 @@ Celem tego kroku jest, aby upewnić się, że Twoje konto testu mają dostęp do
 
 Scenariusz, w tym przewodniku Szybki Start używa logowania za pomocą przeglądarki Tor do generowania wykryte **logowania z anonimowych adresów IP** zdarzenie o podwyższonym ryzyku. Poziom ryzyka dotyczący tego zdarzenia o podwyższonym ryzyku to średni. Aby odpowiedzieć na to zdarzenie o podwyższonym ryzyku, należy ustawić warunkiem ryzyka logowania średniej. W środowisku produkcyjnym należy ustawić stan ryzyka logowania wysoki lub na Średni i wysoki.
 
-W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany. Ustaw w zasadach:
+W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowego. Ustaw w zasadach:
 
 | Ustawienie | Wartość |
 | --- | --- |
 | Użytkownicy i grupy | Alain Charon  |
 | Aplikacje w chmurze | Wszystkie aplikacje w chmurze |
-| Ryzyko logowania | Medium |
-| Udziel | Blokuj dostęp |
+| Ryzyko logowania | Średni |
+| Przydział | Blokuj dostęp |
 
 ![Tworzenie zasad](./media/app-sign-in-risk/130.png)
 
 **Aby skonfigurować zasady dostępu warunkowego:**
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com) jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
 
 1. W witrynie Azure portal, w lewym pasku nawigacyjnym kliknij **usługi Azure Active Directory**.
 
@@ -114,7 +114,7 @@ W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany
 
 1. Kliknij przycisk **warunki**.
 
-   ![Kontrole dostępu](./media/app-sign-in-risk/19.png)
+   ![Kontrola dostępu](./media/app-sign-in-risk/19.png)
 
 1. Na **warunki** strony:
 
@@ -132,7 +132,7 @@ W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany
 
 1. W **kontrole dostępu** kliknij **Grant**.
 
-   ![Kontrole dostępu](./media/app-sign-in-risk/10.png)
+   ![Kontrola dostępu](./media/app-sign-in-risk/10.png)
 
 1. Na **Grant** strony:
 
@@ -144,13 +144,13 @@ W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany
 
 1. W **Włącz zasady** kliknij **na**.
 
-   ![Włącz zasady](./media/app-sign-in-risk/18.png)
+   ![Włączanie zasad](./media/app-sign-in-risk/18.png)
 
 1. Kliknij pozycję **Utwórz**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Oceń symulowane logowania
 
-Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działają one zgodnie z oczekiwaniami. Pierwszym krokiem używać dostępu warunkowego **co zrobić, jeśli narzędzie zasad** do symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.  
+Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działa zgodnie z oczekiwaniami. Pierwszym krokiem używać dostępu warunkowego **co zrobić, jeśli narzędzie zasad** do symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.  
 
 Po uruchomieniu **co zrobić, jeśli narzędzie zasad** w tym scenariuszu **zablokować dostęp dla poziomu średniego ryzyka** powinny zostać wyświetlone w obszarze **zasad, które będą stosowane**.
 
@@ -160,7 +160,7 @@ Po uruchomieniu **co zrobić, jeśli narzędzie zasad** w tym scenariuszu **zabl
 
 1. Na [dostępu warunkowego — zasady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) w menu u góry kliknij **co zrobić, jeśli**.  
 
-   ![What If](./media/app-sign-in-risk/14.png)
+   ![A co jeżeli](./media/app-sign-in-risk/14.png)
 
 1. Kliknij przycisk **użytkownika**, wybierz opcję **Alan Charon** na **użytkowników** strony, a następnie kliknij przycisk **wybierz**.
 

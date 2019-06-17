@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 53ab1e28c5864b403d52bf5e73f0c5c41b8f18a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478457"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Wyświetlanie podglądu użycia dysków przez zadanie eksportu
@@ -26,12 +26,12 @@ Można użyć poniższych parametrów, korzystając z `PreviewExport` polecenia 
 
 |Parametr wiersza polecenia|Opis|  
 |--------------------------|-----------------|  
-|**/ logdir:**< LogDirectory\>|Opcjonalny. Katalog dziennika. Plików pełnego dziennika będą zapisywane do tego katalogu. Jeśli katalog dziennika nie jest określony, bieżący katalog będzie służyć jako katalog dziennika.|  
-|**/SN:**< StorageAccountName\>|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
-|**/sk:**<StorageAccountKey\>|Wymagane tylko wtedy, gdy nie określono sygnatury dostępu Współdzielonego kontenera. Klucz konta dla konta magazynu dla zadania eksportu.|  
-|**/csas:**< ContainerSas\>|Wymagane tylko wtedy, gdy nie określono klucza konta magazynu. Sygnatury dostępu Współdzielonego kontenera do wyświetlania listy obiektów blob, które mają zostać wyeksportowane przez zadanie eksportu.|  
-|**/ExportBlobListFile:**<ExportBlobListFile\>|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs) operacji interfejs API REST usługi Import/Export.|  
-|**/DriveSize:**<DriveSize\>|Wymagany. Rozmiar dysków do użycia przez zadanie eksportu *np.*, 500 GB, 1,5 TB.|  
+|**/ logdir:** < LogDirectory\>|Opcjonalny. Katalog dziennika. Plików pełnego dziennika będą zapisywane do tego katalogu. Jeśli katalog dziennika nie jest określony, bieżący katalog będzie służyć jako katalog dziennika.|  
+|**/SN:** < StorageAccountName\>|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
+|**/sk:** <StorageAccountKey\>|Wymagane tylko wtedy, gdy nie określono sygnatury dostępu Współdzielonego kontenera. Klucz konta dla konta magazynu dla zadania eksportu.|  
+|**/csas:** < ContainerSas\>|Wymagane tylko wtedy, gdy nie określono klucza konta magazynu. Sygnatury dostępu Współdzielonego kontenera do wyświetlania listy obiektów blob, które mają zostać wyeksportowane przez zadanie eksportu.|  
+|**/ExportBlobListFile:** <ExportBlobListFile\>|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs) operacji interfejs API REST usługi Import/Export.|  
+|**/DriveSize:** <DriveSize\>|Wymagany. Rozmiar dysków do użycia przez zadanie eksportu *np.* , 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Przykład wiersza polecenia
 

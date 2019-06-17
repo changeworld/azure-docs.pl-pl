@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
 ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609816"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Korzystanie z programu PowerShell do tworzenia maszyny wirtualnej platformy Azure z serwerem raportów pracującym w trybie macierzystym
@@ -125,7 +125,7 @@ Certyfikat z podpisem własnym został utworzony na maszynie Wirtualnej, gdy mas
        Na przykład na poniższej ilustracji Nazwa maszyny Wirtualnej jest **ssrsnativecloud** i nazwa użytkownika jest **testuser**.
       
        ![Zaloguj się obejmuje nazwę maszyny wirtualnej](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. Uruchom mmc.exe. Aby uzyskać więcej informacji, zobacz [Instrukcje: Wyświetlanie certyfikatów za pomocą przystawki programu MMC](https://msdn.microsoft.com/library/ms788967.aspx).
+   2. Uruchom mmc.exe. Aby uzyskać więcej informacji, zobacz [jak: Wyświetlanie certyfikatów za pomocą przystawki programu MMC](https://msdn.microsoft.com/library/ms788967.aspx).
    3. W aplikacji konsolowej **pliku** menu Dodaj **certyfikaty** przystawki, wybierz opcję **konto komputera** po wyświetleniu monitu, a następnie kliknij przycisk **dalej**.
    4. Wybierz **komputera lokalnego** zarządzać, a następnie kliknij przycisk **Zakończ**.
    5. Kliknij przycisk **Ok** a następnie rozwiń węzeł **certyfikaty - osobistych** węzłów, a następnie kliknij przycisk **certyfikaty**. Certyfikat jest nazwana na nazwę DNS maszyny Wirtualnej i kończy się **cloudapp.net**. Kliknij prawym przyciskiem myszy nazwę certyfikatu, a następnie kliknij przycisk **kopiowania**.

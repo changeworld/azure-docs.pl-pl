@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487082"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Usługa Azure Data Factory — zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych
@@ -79,7 +79,7 @@ Amazon S3 obsługuje klienta i serwera szyfrowanie danych magazynowanych. Aby uz
 #### <a name="amazon-redshift"></a>Amazon Redshift
 Usługi Amazon Redshift obsługuje klaster szyfrowanie danych magazynowanych. Aby uzyskać więcej informacji, zobacz [szyfrowania bazy danych usługi Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). Obecnie fabryki danych nie obsługuje usługi Amazon Redshift wewnątrz VPC. 
 
-#### <a name="salesforce"></a>SalesForce
+#### <a name="salesforce"></a>Salesforce
 SalesForce obsługuje szyfrowanie platformy Shield, który umożliwia szyfrowanie wszystkich plików, załączniki, pól niestandardowych. Aby uzyskać więcej informacji, zobacz [zrozumienie przepływu uwierzytelniania OAuth serwera sieci Web](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios-using-data-management-gateway"></a>Scenariusze hybrydowe (przy użyciu bramy zarządzania danymi)
@@ -127,7 +127,7 @@ Sieć wirtualna jest logicznym odzwierciedleniem Twojej sieci w chmurze. Można 
 
 W poniższej tabeli przedstawiono zalecenia konfiguracji sieci i bramy, w zależności od różnych kombinacji lokalizację źródłową i docelową dla hybrydowe przenoszenie danych.
 
-| Element źródłowy | Element docelowy | Konfiguracja sieci | Instalator bramy |
+| source | Miejsce docelowe | Konfiguracja sieci | Instalator bramy |
 | ------ | ----------- | --------------------- | ------------- | 
 | Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | Sieć VPN IPSec (point-to-site lub site-to-site) | Brama może być zainstalowana lokalnie lub na usługa Azure virtual machine (VM) w sieci wirtualnej | 
 | Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatnej komunikacji równorzędnej) | Brama może być zainstalowana lokalnie lub na Maszynie wirtualnej platformy Azure w sieci wirtualnej | 
@@ -183,7 +183,7 @@ Następujące magazynami danych w chmurze wymagają umieszczania na białej liś
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 **Pytanie:** Bramy można współdzielić w ramach fabryki danych?
-**Odpowiedź:** Firma Microsoft nie obsługuje tej funkcji jeszcze. Aktywnie pracujemy nad jej.
+**Odpowiedź:** Firma Microsoft nie obsługuje tej funkcji jeszcze. Aktywnie nad nią pracujemy.
 
 **Pytanie:** Jakie są wymagania dotyczące portów, aby brama mogła działać?
 **Odpowiedź:** Brama umożliwia nawiązanie połączenia oparte na protokole HTTP do otwartej sieci internet. **Wychodzącego porty 443 i 80** muszą być otwarte dla bramy to połączenie. Otwórz **8050 portu dla ruchu przychodzącego** tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Jeśli usługa Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło / docelowym, a następnie możesz trzeba otworzyć **1433** również port. Aby uzyskać więcej informacji, zobacz [zapory, konfiguracje i listy dozwolonych adresów IP](#firewall-configurations-and-whitelisting-ip-address-of gateway) sekcji. 

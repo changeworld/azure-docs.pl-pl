@@ -10,10 +10,10 @@ ms.custom: seodec18
 ms.reviewer: arduppal
 manager: philmea
 ms.openlocfilehash: d844e81de9cfb556e91ab5c0d5a8074c822cce0a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990464"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Wdrażanie usługi Azure Blob Storage na moduł usługi IoT Edge na urządzeniu
@@ -157,7 +157,7 @@ Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc
    | ----- | ----- |
    | Wybierz folder | Wybierz lokalizację znajdującą się na komputerze deweloperskim programu Visual Studio Code do tworzenia plików rozwiązania. |
    | Podaj nazwę rozwiązania | Wprowadź opisową nazwę rozwiązania lub zaakceptuj nazwę domyślną **EdgeSolution**. |
-   | Wybierz szablon modułu | Wybierz **istniejącego modułu (wprowadź pełny obrazu URL)**. |
+   | Wybierz szablon modułu | Wybierz **istniejącego modułu (wprowadź pełny obrazu URL)** . |
    | Podaj nazwę modułu | Wprowadź nazwę wszystkie małe dla modułu, takie jak **usłudze Azure blob Storage**.<br /><br />Należy używać małych liter nazwy usługi Azure Blob Storage na moduł usługi IoT Edge. Przy odwoływaniu się do modułów, IoT Edge jest rozróżniana wielkość liter, a zestaw SDK usługi Storage domyślnie na małe litery. |
    | Udostępnianie obrazu platformy Docker modułu | Podaj identyfikator URI obrazu: **mcr.microsoft.com/azure-blob-storage:latest** |
 

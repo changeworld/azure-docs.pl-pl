@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312511"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Kopiowanie zmian z bazy danych za pomocą kontrolki tabeli
@@ -108,11 +108,11 @@ Szablon definiuje parametry pięć:
 
      ![Przejrzyj potoku](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Wybierz **procedury składowanej**. Aby uzyskać **Nazwa procedury składowanej**, wybierz **[update_watermark]**. Wybierz **Importuj parametr**, a następnie wybierz pozycję **Dodaj zawartość dynamiczną**.  
+9. Wybierz **procedury składowanej**. Aby uzyskać **Nazwa procedury składowanej**, wybierz **[update_watermark]** . Wybierz **Importuj parametr**, a następnie wybierz pozycję **Dodaj zawartość dynamiczną**.  
 
      ![Ustaw działania procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 
-10. Zapisać zawartość  **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}**, a następnie wybierz pozycję **Zakończ**.  
+10. Zapisać zawartość  **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** , a następnie wybierz pozycję **Zakończ**.  
 
      ![Zapisanie zawartości dla parametrów procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
      

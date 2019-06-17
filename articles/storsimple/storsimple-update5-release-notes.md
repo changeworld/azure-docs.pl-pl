@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60844095"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 Series Update 5 — informacje o wersji
@@ -53,9 +53,9 @@ Poniższa tabela zawiera podsumowanie problemów, które zostały rozwiązane w 
 
 | Nie | Cecha | Problem | Stosuje się do urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
 | --- | --- | --- | --- | --- |
-| 1 |Komunikacji zdalnej programu Windows PowerShell |W poprzedniej wersji użytkownik otrzyma błąd podczas próby ustanowienia połączenia zdalnego na urządzenie StorSimple w chmurze za pomocą programu Windows PowerShell. Ten problem został spowodowany przez główny i rozwiązane w tej wersji. |Nie |Yes |
-| 2 |Szablony przepustowości |W starszej wersji wystąpił problem z szablonami przepustowości, które wpłynęły na mniejszej przepustowości niż co urządzenie zostało skonfigurowane dla. Ten problem został rozwiązany w tej wersji. |Yes |Yes |
-| 3 |Tryb failover |W poprzedniej wersji urządzenia z dużą liczbą woluminów przełączoną w tryb failover do innego urządzenia, uruchomić aktualizację Update 4, proces może zakończyć się niepowodzeniem podczas próby zastosowania rekordy kontroli dostępu. Ten problem jest rozwiązany w tej wersji. |Yes |Yes |
+| 1 |Komunikacji zdalnej programu Windows PowerShell |W poprzedniej wersji użytkownik otrzyma błąd podczas próby ustanowienia połączenia zdalnego na urządzenie StorSimple w chmurze za pomocą programu Windows PowerShell. Ten problem został spowodowany przez główny i rozwiązane w tej wersji. |Nie |Tak |
+| 2 |Szablony przepustowości |W starszej wersji wystąpił problem z szablonami przepustowości, które wpłynęły na mniejszej przepustowości niż co urządzenie zostało skonfigurowane dla. Ten problem został rozwiązany w tej wersji. |Yes |Tak |
+| 3 |Tryb failover |W poprzedniej wersji urządzenia z dużą liczbą woluminów przełączoną w tryb failover do innego urządzenia, uruchomić aktualizację Update 4, proces może zakończyć się niepowodzeniem podczas próby zastosowania rekordy kontroli dostępu. Ten problem jest rozwiązany w tej wersji. |Yes |Tak |
 
 
 

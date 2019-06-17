@@ -11,10 +11,10 @@ ms.date: 11/09/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: ed57a9fa3b041961ce220e8f10d9aed5e7bef60e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511919"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Użytkownik wersji przepływów w usłudze Azure Active Directory B2C
@@ -31,11 +31,11 @@ Nowych przepływów użytkownika są dodawane jako nowe wersje. W miarę stabiln
 | Przepływ użytkownika | Zalecane | Opis |
 | --------- | ----------- | ----------- |
 | Resetowanie hasła | Yes | Umożliwia użytkownikowi wybranie nowego hasła po sprawdzeniu swojej poczty e-mail. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Ustawienia zgodności tokenu</li><li>[Wymagania dotyczące złożoności hasła](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Edytowanie profilu | Yes | Umożliwia użytkownikowi konfigurowanie ich atrybuty użytkownika. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li><li>Zachowanie sesji</li></ul> |
+| Edytowanie profilu | Tak | Umożliwia użytkownikowi konfigurowanie ich atrybuty użytkownika. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li><li>Zachowanie sesji</li></ul> |
 | właściciel zasobu | Nie | Umożliwia użytkownikowi zalogowanie się bezpośrednio w aplikacji natywnych (przeglądarka nie jest wymagane) za pomocą konta lokalnego. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li></ul> |
 | Logowanie | Nie | Umożliwia użytkownikowi zalogowanie się do swojego konta. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li><li>Zachowanie sesji</li><li>Blokuj logowanie</li><li>Wymuszenie zresetowania hasła</li><li>Nie wylogowuj mnie (KMSI)</ul><br>Nie można dostosować interfejsu użytkownika za pomocą tego przepływu użytkownika. |
 | Rejestrowanie | Nie | Umożliwia użytkownikowi tworzenie konta usługi. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li><li>Zachowanie sesji</li><li>[Wymagania dotyczące złożoności hasła](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Rejestrowanie i logowanie | Yes | Umożliwia użytkownikowi tworzenie konta usługi lub zalogowanie się do swojego konta. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li><li>Zachowanie sesji</li><li>[Wymagania dotyczące złożoności hasła](active-directory-b2c-reference-password-complexity.md)</li></ul>|
+| Rejestrowanie i logowanie | Tak | Umożliwia użytkownikowi tworzenie konta usługi lub zalogowanie się do swojego konta. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li><li>Zachowanie sesji</li><li>[Wymagania dotyczące złożoności hasła](active-directory-b2c-reference-password-complexity.md)</li></ul>|
 
 ## <a name="v2"></a>Wersja 2
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60498836"
 ---
 # <a name="calchistogram-method"></a>Metoda CalcHistogram
@@ -32,12 +32,12 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 Name (Nazwa)  |Wartość | Wymagana?  |Opis
 -----------|----------|--------|----------
-**expr**    |Ciąg tekstowy | Yes  |Wyrażenie zapytania, które określa jednostki, względem którego ma zostać obliczanie histogramów.
+**expr**    |Ciąg tekstowy | Tak  |Wyrażenie zapytania, które określa jednostki, względem którego ma zostać obliczanie histogramów.
 **model** |Ciąg tekstowy | Nie |Wybierz nazwę modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.
 **Atrybuty** | Ciąg tekstowy | Nie<br>Wartość domyślna: | Listę rozdzielonych przecinkami, która określa wartości atrybutów, które znajdują się w odpowiedzi. Nazwy atrybutów jest rozróżniana wielkość liter.
-**count** |Liczba | Nie<br>Domyślne: 10 |Liczba wyników do zwrócenia.
-**offset**  |Liczba | Nie<br>Domyślne: 0 |Indeks pierwszego wyniku do zwrócenia.
-**limit czasu**  |Liczba | Nie<br>Domyślne: 1000 |Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
+**count** |Liczba | Nie<br>Wartość domyślna: 10 |Liczba wyników do zwrócenia.
+**offset**  |Liczba | Nie<br>Wartość domyślna: 0 |Indeks pierwszego wyniku do zwrócenia.
+**limit czasu**  |Liczba | Nie<br>Wartość domyślna: 1000 |Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
 
 ## <a name="response-json"></a>Odpowiedź (JSON)
 
@@ -65,7 +65,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime teevan after 2012
 ```
-<br>Wyrażenie, które w pierwszej interpretacji, który jest zwracany z interpretację interfejsu API jest *i (złożonego (AA. AuN == "trzyczęściową teevan"), Y > 2012)*.
+<br>Wyrażenie, które w pierwszej interpretacji, który jest zwracany z interpretację interfejsu API jest *i (złożonego (AA. AuN == "trzyczęściową teevan"), Y > 2012)* .
 <br>Ta wartość wyrażenia jest następnie przekazywany do **calchistogram** interfejsu API. *Attributes=Y,F.FN* parametr wskazuje, że dystrybucje liczby dokument powinny być według roku i pola badania, np.:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

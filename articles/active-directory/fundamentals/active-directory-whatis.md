@@ -10,12 +10,12 @@ ms.date: 05/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8fad7f0dc76aad306e0f2a8e26692ec997952c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: bd4c0bbe4e4ef1cfbd4d9da92d6fcfac509f45ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470359"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110419"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
 
@@ -54,7 +54,7 @@ Aby zwiększyć możliwości implementacji usługi Azure AD, możesz także doda
 
 - **Azure Active Directory — wersja Premium P1.** Oprócz funkcji wersji Bezpłatna i Podstawowa, wersja P1 umożliwia też użytkownikom hybrydowym dostęp zarówno do zasobów lokalnych, jak i w chmurze. Obsługuje ona również zaawansowaną administrację, taką jak grupy dynamiczne, samoobsługowe zarządzanie grupami, usługa Microsoft Identity Manager (lokalny pakiet do zarządzania tożsamościami i dostępem) oraz funkcje zapisu zwrotnego, które umożliwiają samoobsługowe resetowanie haseł przez użytkowników lokalnych.
 
-- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji wersji Bezpłatna, Podstawowa i P1, wersja P2 oferuje też [usługę Azure Active Directory Identity Protection](../identity-protection/enable.md), aby zapewnić oparty na ryzykach dostęp warunkowy do aplikacji i kluczowych danych firmy, oraz usługę [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md), aby ułatwić odnajdywanie, ograniczanie i monitorowanie administratorów oraz ich dostępu do zasobów w celu zapewnienia dostępu dokładnie wtedy, gdy jest potrzebny.
+- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji bezpłatna, podstawowa i P1, P2 oferuje [usługi Azure Active Directory Identity Protection](../identity-protection/enable.md) w celu uzyskania dostępu warunkowego do aplikacji i kluczowych danych firmy na podstawie ryzyka i [Privileged Identity Zarządzanie](../privileged-identity-management/pim-getting-started.md) ułatwiające odkrywanie, ograniczanie i monitorowanie administratorów oraz ich dostępu do zasobów i zapewnić dostęp just in time w razie.
 
 - **Licencje funkcji „Płatność zgodnie z rzeczywistym użyciem”.** Istnieje też możliwość uzyskania licencji dodatkowych funkcji, takich jak usługa Azure Active Directory Business-to-Customer (B2C). Usługa B2C może ułatwić zapewnianie rozwiązań do zarządzania tożsamościami i dostępem dla aplikacji udostępnianych klientom. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 

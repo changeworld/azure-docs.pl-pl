@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764962"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Zbieranie danych z zebrane na agentach systemu Linux w usłudze Azure Monitor
@@ -114,7 +114,7 @@ Aby zachować znanego modelu między metryk infrastruktury już zebrane przez ag
 |:--|:--|
 | `host` | Computer (Komputer) |
 | `plugin` | Brak |
-| `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** jest *null* następnie InstanceName = "*_Total*" |
+| `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** jest *null* następnie InstanceName = " *_Total*" |
 | `type` | Nazwa obiektu |
 | `type_instance` | CounterName<br>Jeśli **type_instance** jest *null* następnie CounterName =**puste** |
 | `dsnames[]` | CounterName |

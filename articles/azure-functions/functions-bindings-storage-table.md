@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.openlocfilehash: 0c9cd513f4d5842d14077bb7470ebd18c7a46340
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306753"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511867"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla tabeli platformy Azure
 
@@ -503,13 +503,13 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa `table`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w witrynie Azure portal. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje tabelą lub obiektem, w kodzie funkcji. | 
+|**name** | Nie dotyczy | Nazwa zmiennej, która reprezentuje tabelą lub obiektem, w kodzie funkcji. | 
 |**tableName** | **TableName** | Nazwa tabeli.| 
-|**właściwości partitionKey** | **właściwości partitionKey** |Opcjonalny. Klucz partycji jednostkę tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
+|**partitionKey** | **PartitionKey** |Opcjonalny. Klucz partycji jednostkę tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**rowKey** |**RowKey** | Opcjonalny. Klucz wiersza jednostki tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**Wypełnij** |**Take** | Opcjonalny. Maksymalna liczba jednostek do odczytu w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**Filtr** |**Filtr** | Opcjonalny. Wyrażenie filtru OData dla tabeli danych wejściowych w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
-|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
+|**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -763,11 +763,11 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa `table`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa `out`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w witrynie Azure portal. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej użytą w kodzie funkcji, który reprezentuje tabelą lub obiektem. Ustaw `$return` odwoływać się do wartości zwracanej funkcji.| 
+|**name** | Nie dotyczy | Nazwa zmiennej użytą w kodzie funkcji, który reprezentuje tabelą lub obiektem. Ustaw `$return` odwoływać się do wartości zwracanej funkcji.| 
 |**tableName** |**TableName** | Nazwa tabeli.| 
-|**właściwości partitionKey** |**właściwości partitionKey** | Klucz partycji tabeli jednostki do zapisania. Zobacz [sekcji](#output---usage) wskazówki dotyczące sposobu używania tej właściwości.| 
+|**partitionKey** |**PartitionKey** | Klucz partycji tabeli jednostki do zapisania. Zobacz [sekcji](#output---usage) wskazówki dotyczące sposobu używania tej właściwości.| 
 |**rowKey** |**RowKey** | Klucz wiersza jednostki tabeli do zapisu. Zobacz [sekcji](#output---usage) wskazówki dotyczące sposobu używania tej właściwości.| 
-|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
+|**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -791,7 +791,7 @@ Magazyn tabel danych wyjściowych powiązanie obsługuje następujące scenarius
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Powiązanie | Informacje ogólne |
+| Powiązanie | Tematy pomocy |
 |---|---|
 | Tabela | [Kody błędów w tabeli](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Obiekt blob, tabela, kolejka | [Kody błędów magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

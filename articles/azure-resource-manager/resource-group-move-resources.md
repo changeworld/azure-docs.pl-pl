@@ -4,14 +4,14 @@ description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 046b8e75be0247f335bcf1d29117f5900b70aeb6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477255"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083538"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -88,7 +88,6 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Logic Apps
 * Machine Learning — Machine Learning Studio, usług sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale nie w ramach innej subskrypcji. Inne zasoby usługi Machine Learning można przenosić między subskrypcjami.
 * Usługa Managed Disks — Managed Disks w strefach dostępności nie można przenieść do innej subskrypcji
-* Tożsamość zarządzana — przypisanych przez użytkownika
 * Media Services
 * Monitor — upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#monitor-limits)
 * Notification Hubs
@@ -141,6 +140,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * ExpressRoute
 * Lab Services - laboratorium na potrzeby zajęć, nie można przenieść do nowej grupy zasobów lub subskrypcji. DevTest Labs, mogą być przenoszone do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
 * Aplikacje zarządzane
+* Tożsamość zarządzana — przypisanych przez użytkownika
 * Microsoft Genomics
 * Bezpieczeństwo
 * Site Recovery

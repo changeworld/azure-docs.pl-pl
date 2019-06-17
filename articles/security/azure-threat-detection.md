@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a6a0e6219a45821e2a4416a4e563aa6edb86eba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611237"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127167"
 ---
 # <a name="azure-advanced-threat-detection"></a>Usługa Azure zaawansowane wykrywanie zagrożeń
 
@@ -37,7 +37,7 @@ Usługa Identity Protection używa adaptacyjnych algorytmów uczenia maszynowego
 
 Usługa Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. Oparte na zdarzenia o podwyższonym ryzyku, Identity Protection oblicza poziomie ryzyka użytkownika, dla każdego użytkownika, tak że można skonfigurować zasady oparte na ryzyku, aby automatycznie chronić tożsamości organizacji.
 
-Te zasady na podstawie ryzyka, oprócz innych [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) są dostarczane przez usługę Azure Active Directory i [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access), można automatycznie Blokuj lub oferują działania korygujące adaptacyjne, obejmują resetowania hasła, jak i wymuszanie uwierzytelniania wieloskładnikowego.
+Te zasady na podstawie ryzyka, oprócz innych [kontroluje dostęp warunkowy](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) są dostarczane przez usługę Azure Active Directory i [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access), można automatycznie Blokuj lub oferują działania korygujące adaptacyjne, obejmują resetowania hasła, jak i wymuszanie uwierzytelniania wieloskładnikowego.
 
 ### <a name="identity-protection-capabilities"></a>Funkcje ochrony tożsamości
 
@@ -61,7 +61,7 @@ Przykłady niektóre metody, które mogą ułatwić Azure Identity Protection Za
 -   Blokowanie lub Zabezpieczanie kont użytkowników ryzykowne.
 -   Wymagać od użytkowników rejestracji do uwierzytelniania wieloskładnikowego.
 
-### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
+### <a name="azure-ad-privileged-identity-management"></a>Usługa Azure AD Privileged Identity Management
 
 Za pomocą [usługi Azure Active Directory Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), można zarządzać, kontrolę i monitorowanie dostępu w organizacji. Ta funkcja obejmuje dostęp do zasobów w usłudze Azure AD i innych usług Microsoft online services, takich jak usługi Office 365 lub Microsoft Intune.
 
@@ -95,7 +95,7 @@ Log Analytics zabezpieczenia i inspekcja pulpit nawigacyjny jest podzielony na c
 
 -   **Problemy godne uwagi**: Umożliwia szybką identyfikację liczby aktywnych problemów i ważności problemów.
 
--   **Wykrycia (Podgląd)**: Umożliwia określenie schematów ataku przez wyświetlanie alertów zabezpieczeń w miarę ich występowania dotyczących poszczególnych zasobów.
+-   **Wykrycia (Podgląd)** : Umożliwia określenie schematów ataku przez wyświetlanie alertów zabezpieczeń w miarę ich występowania dotyczących poszczególnych zasobów.
 
 -   **Analiza zagrożeń**: Umożliwia określenie schematów ataku przez wyświetlanie całkowita liczba serwerów z wychodzącym złośliwym ruchem IP, typu złośliwych zagrożeń oraz mapę lokalizacji adresy IP.
 
@@ -342,10 +342,10 @@ Organizacja może bezpieczniej przenieść się do chmury i jednocześnie utrzym
 | | |
 |---|---|
 | Wykrywanie | Odkrywanie działań IT z usługą Cloud App Security. Zyskaj widoczność przez odnajdywanie aplikacji, działań, użytkowników, danych i plików w Twoim środowisku chmury. Odkryj aplikacje innych firm, które są połączone z Twoją chmurą.|
-|Zbadaj | Badaj aplikacje w chmurze przy użyciu narzędzi dowodowych chmury w celu dokładnego przeanalizowania ryzykownych aplikacji, konkretnych użytkowników i plików w Twojej sieci. Znajduj wzorce w danych zebranych z chmury. Generuj raporty do monitorowania chmury. |
-| Kontrola | Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrowanie użytkowników do chmury, bezpieczne alternatywnych, oficjalnie zaakceptowanych aplikacji. |
+|Badanie | Badaj aplikacje w chmurze przy użyciu narzędzi dowodowych chmury w celu dokładnego przeanalizowania ryzykownych aplikacji, konkretnych użytkowników i plików w Twojej sieci. Znajduj wzorce w danych zebranych z chmury. Generuj raporty do monitorowania chmury. |
+| Formant | Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrowanie użytkowników do chmury, bezpieczne alternatywnych, oficjalnie zaakceptowanych aplikacji. |
 | Ochrona | Usługa Cloud App Security umożliwia oficjalne akceptowanie lub ze Stanów Zjednoczonych zabraniają aplikacje, wymuszać zapobieganie utracie danych, kontrolować uprawnienia i udostępnianie oraz generować raporty niestandardowe i alerty. |
-| Kontrola | Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrowanie użytkowników do chmury, bezpieczne alternatywnych, oficjalnie zaakceptowanych aplikacji. |
+| Formant | Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrowanie użytkowników do chmury, bezpieczne alternatywnych, oficjalnie zaakceptowanych aplikacji. |
 | | |
 
 

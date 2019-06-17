@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 80b196b34e8eee99ed77c3c8a914f89fa68d87b8
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512953"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OAuth2 w zasadach niestandardowych usługi Azure Active Directory B2C
@@ -78,11 +78,11 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
+| client_id | Tak | Identyfikator aplikacji dostawcy tożsamości. |
 | IdTokenAudience | Nie | Odbiorcy id_token. Jeśli zostanie określony, usługi Azure AD B2C sprawdza, czy token jest oświadczenie zwrócona przez dostawcę tożsamości i jest taki sam, jak określona. |
-| authorization_endpoint | Yes | Adres URL punktu końcowego autoryzacji, zgodnie z RFC 6749. |
+| authorization_endpoint | Tak | Adres URL punktu końcowego autoryzacji, zgodnie z RFC 6749. |
 | AccessTokenEndpoint | Tak | Adres URL punktu końcowego tokenu zgodnie z RFC 6749. |  
-| ClaimsEndpoint | Yes | Adres URL punktu końcowego informacji użytkownika zgodnie z RFC 6749. | 
+| ClaimsEndpoint | Tak | Adres URL punktu końcowego informacji użytkownika zgodnie z RFC 6749. | 
 | AccessTokenResponseFormat | Nie | Format wywołanie punktu końcowego tokenu dostępu. Na przykład Facebook wymaga metody HTTP GET, ale odpowiedzi tokenu dostępu jest w formacie JSON. |
 | AdditionalRequestQueryParameters | Nie | Żądanie dodatkowe parametry zapytania. Na przykład można wysłać dodatkowe parametry do dostawcy tożsamości. Może zawierać wiele parametrów przy użyciu ogranicznika przecinkami. | 
 | ClaimsEndpointAccessTokenName | Nie | Nazwa parametru ciągu zapytania tokenu dostępu. Niektórzy dostawcy tożsamości oświadczeń z punktami końcowymi obsługuje żądania GET HTTP. W tym przypadku tokenu elementu nośnego, są wysyłane przy użyciu parametru ciągu zapytania zamiast nagłówka autoryzacji. |
@@ -102,7 +102,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz szyfrowania jest wymagany tylko wtedy, gdy **response_types** metadanych jest ustawiona na `code`. W tym przypadku usługi Azure AD B2C sprawia, że inne wywołanie wymienić kod autoryzacji do tokena dostępu. Jeśli ustawiono metadanych `id_token`, można pominąć klucz kryptograficzny. |  
+| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz szyfrowania jest wymagany tylko wtedy, gdy **response_types** metadanych jest ustawiona na `code`. W tym przypadku usługi Azure AD B2C sprawia, że inne wywołanie wymienić kod autoryzacji do tokena dostępu. Jeśli ustawiono metadanych `id_token`, można pominąć klucz kryptograficzny. |  
 
 ## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 

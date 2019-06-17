@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 3b2b472407175df307c569704d4c7611737c4ea1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60694358"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie we wszystkich bazach danych w chmurze skalowanych w poziomie (wersja zapoznawcza)
@@ -149,7 +149,7 @@ Klauzula dystrybucji określa dystrybucję danych używane dla tej tabeli. Proce
 
 **Warstwa danych odwołania**: Tabela zewnętrzna DDL odnosi się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa mapowania fragmentów, co zapewnia tabeli zewnętrznej informacje niezbędne do zlokalizowania wszystkich baz danych w warstwie danych.
 
-### <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+### <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
 
 Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskać dostęp do podstawowych tabel zdalnych, w obszarze poświadczenia podane w definicji zewnętrznego źródła danych. Należy unikać niepożądane podniesienia uprawnień za pomocą poświadczeń z zewnętrznym źródłem danych. Na użytek GRANT lub REVOKE tabeli zewnętrznej po prostu tak, jakby była zwykłą tabelę.  
 

@@ -10,10 +10,10 @@ ms.reviewer: derek1ee, LADocs
 ms.topic: article
 ms.date: 05/14/2019
 ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602119"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Dodawanie i uruchamianie fragmenty kodu przy użyciu kodu wbudowanego w usłudze Azure Logic Apps
@@ -52,7 +52,7 @@ W tym artykule przykład wyzwalacze aplikacji logiki po nowej wiadomości e-mail
 
    * Aby dodać akcję na końcu przepływu pracy, wybierz opcję **nowy krok**.
 
-   * Aby dodać akcję między krokami istniejący, należy przesunąć wskaźnik myszy nad strzałkę, która łączy się z tych kroków. Wybierz znak plus (**+**) i wybierz **Dodaj akcję**.
+   * Aby dodać akcję między krokami istniejący, należy przesunąć wskaźnik myszy nad strzałkę, która łączy się z tych kroków. Wybierz znak plus ( **+** ) i wybierz **Dodaj akcję**.
 
    Ten przykład dodaje **kodu wbudowanego** akcji w obszarze wyzwalacza usługi Office 365 Outlook.
 
@@ -204,7 +204,7 @@ W przykładzie w tym temacie `workflowContext` obiekt ma następujące właściw
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>Dodaj parametry
+## <a name="add-parameters"></a>Dodawanie parametrów
 
 W niektórych przypadkach może być jawnie wymagającą **kodu wbudowanego** akcji zawiera wyniki z wyzwalacza lub konkretne akcje, których kod odwołuje się jako zależności, dodając **wyzwalacza** lub **Akcje** parametrów. Ta opcja jest przydatne w scenariuszach, gdzie odwołania wyniki nie zostaną znalezione w czasie wykonywania.
 
@@ -215,7 +215,7 @@ Załóżmy, że masz kod, który odwołuje się do **SelectedOption** wynikiem *
 
 Aby dodać te parametry, otwórz **dodano nowy parametr** listy i wybierz parametry mają:
 
-   ![Dodaj parametry](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![Dodawanie parametrów](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | Parametr | Opis |
    |-----------|-------------|
@@ -259,7 +259,7 @@ Jeśli wybierzesz **akcje**, zostanie wyświetlony monit dla akcji, które chces
 
 1. Aby dodać kolejną akcję, wybierz **Dodaj nowy element**.
 
-## <a name="reference"></a>Odwołanie
+## <a name="reference"></a>Tematy pomocy
 
 Aby uzyskać więcej informacji na temat **wykonywanie kodu JavaScript** akcji struktury i składni w podstawowej definicji przepływu pracy aplikacji logiki, za pomocą języka definicji przepływu pracy, zobacz tę akcję [w sekcji ](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code).
 

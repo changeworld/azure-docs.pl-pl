@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: acee2aabe94f5d015562bd697d08f657895d3b02
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 97d0615fcc4f86c295441ec6a0eb8b86ba6b11b5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059702"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki start: Zdefiniuj i przypisz plan w witrynie portal
 
@@ -70,11 +70,11 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    1. Zmiana **typu** do **wbudowanych**. W **wyszukiwania**, wprowadź **tag**.
 
-   1. Kliknij poza polem **Wyszukiwanie**, aby zastosować filtrowanie. Wybierz **Zastosuj tag i jego wartość domyślną do grup zasobów**.
+   1. Kliknij poza polem **Wyszukiwanie**, aby zastosować filtrowanie. Wybierz **Dołącz tag i jego wartość domyślną do grup zasobów**.
 
    1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
 
-1. Zaznacz wiersz przypisania zasad **Zastosuj tag i jego wartość domyślną do grup zasobów**.
+1. Zaznacz wiersz przypisania zasad **Dołącz tag i jego wartość domyślną do grup zasobów**.
 
 1. Okna, aby podać parametry do artefaktu w ramach definicji planu otwiera i umożliwia ustawienie parametrów dla wszystkich przypisań (parametry statyczne) oparte na ten plan zamiast podczas przypisywania (parametry dynamiczne). W tym przykładzie użyto parametrów dynamicznych podczas przypisywania planu, więc pozostaw wartości domyślne i wybierz pozycję **anulować**.
 

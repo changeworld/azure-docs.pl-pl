@@ -12,10 +12,10 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: 19666eb668dd120c1705c6a62a8ba1abd2321026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61261839"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role i uprawnienia dla usługi Azure Data Factory
@@ -78,7 +78,7 @@ Poniżej przedstawiono kilka przykładów, które pokazują, co można osiągną
   Ten scenariusz wymaga dwóch przypisań ról.
 
   1. Przypisanie wbudowanej **Współautor** roli na poziomie usługi data factory.
-  2. Utworzyć niestandardową rolę z uprawnieniami **Microsoft.Resources/deployments/**. Przypisz tę rolę niestandardową do użytkownika na poziomie grupy zasobów.
+  2. Utworzyć niestandardową rolę z uprawnieniami **Microsoft.Resources/deployments/** . Przypisz tę rolę niestandardową do użytkownika na poziomie grupy zasobów.
 
 - Umożliwia użytkownikowi zaktualizować fabrykę danych z programu PowerShell lub zestawu SDK, ale nie w witrynie Azure portal.
 

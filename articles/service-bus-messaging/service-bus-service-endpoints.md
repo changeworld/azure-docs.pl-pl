@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61471965"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Punkty końcowe usługi sieci wirtualnej za pomocą usługi Azure Service Bus
@@ -40,7 +40,7 @@ Wynik jest prywatne i izolowany relacji między obciążeniami usług związanyc
 > - Azure Data Explorer
 >
 > Poniżej Microsoft usług są wymagane w sieci wirtualnej
-> - Azure App Service
+> - Usługa Azure App Service
 > - Azure Functions
 
 > [!IMPORTANT]
@@ -79,7 +79,7 @@ Parametry szablonu:
 > Choć Brak reguł odmowy, możliwe, szablon usługi Azure Resource Manager jest domyślna akcja równa **"Zezwalaj"** która nie stanowi ograniczenia połączeń.
 > Podczas tworzenia reguł sieci wirtualnej lub zapory, możemy zmienić ***"defaultAction"***
 > 
-> z
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

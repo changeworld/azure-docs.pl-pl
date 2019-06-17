@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 7380cf6727817d99edbedf5552c8bea42f177074
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a7b38f26261625c6db8acb6653b3cd9353fdcc2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65744402"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Samouczek: Raporty wydatków Integracja usługi Azure Active Directory za pomocą N2F-
 
@@ -52,7 +52,7 @@ Aby skonfigurować integrację N2F - raportów wydatków w usłudze Azure AD, mu
 
 **Aby dodać N2F — raporty wydatków z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -235,7 +235,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do N2F — raporty 
 
     c. W polu tekstowym **Name** (Nazwa) wprowadź nazwę użytkownika, na przykład **BrittaSimon**.
 
-    d. Wybierz **roli, Menedżer bezpośrednich (N + 1)**, i **dzielenia** zgodnie z wymaganiami organizacji.
+    d. Wybierz **roli, Menedżer bezpośrednich (N + 1)** , i **dzielenia** zgodnie z wymaganiami organizacji.
 
     e. Kliknij przycisk **sprawdzania poprawności i wysłać zaproszenie**.
 
@@ -248,7 +248,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu N2F — raporty wydatków kafelka w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze N2F — raporty wydatków, dla których skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

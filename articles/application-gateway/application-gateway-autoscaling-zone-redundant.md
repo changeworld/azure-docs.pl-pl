@@ -1,20 +1,20 @@
 ---
-title: Skalowanie automatyczne i strefowo nadmiarowe Application Gateway na platformie Azure
+title: Skalowanie automatyczne i strefowo nadmiarowe Application Gateway w wersji 2
 description: W tym artykule przedstawiono Standard_v2 aplikacji platformy Azure i jednostki SKU, WAF_v2, która zawiera funkcje automatycznego skalowania i strefowo nadmiarowe.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/1/2019
+ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 7cf6b4984f3941da3b2cd0e4eada5eb1d87f2b01
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054748"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway 
+# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway w wersji 2 
 
 Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są również dostępne w obszarze Standard_v2 i WAF_v2 jednostki SKU. Jednostka SKU w wersji 2 oferuje ulepszenia wydajności i dodaje obsługę krytyczne nowe funkcje, takie jak skalowanie automatyczne, nadmiarowości strefy i obsługę statycznych adresów VIP. Istniejących funkcji w obszarze standardowa i jednostki SKU zapory aplikacji sieci Web w dalszym ciągu być obsługiwane w nowej jednostki SKU w wersji 2 z pewnymi wyjątkami, na liście [porównania](#differences-with-v1-sku) sekcji.
 
@@ -71,7 +71,7 @@ Aby uzyskać więcej informacji o cenach, zobacz [stronę z cennikiem](https://a
 Standard_v2 bramy aplikacji był zaopatrzony bez skalowania automatycznego w trybie skalowanie ręczne stałą wydajność pięć wystąpień.
 
 Stała cena = 744(hours) * 0,20 USD = 148.8 $ <br>
-Jednostki pojemności = 744 (godziny) 10 jednostki pojemności dla każdego wystąpienia * pięć wystąpień * $0.008 za godzinę używania jednostki pojemności = 297.6 $
+Jednostki pojemności = 744 (godziny) * 10 jednostek pojemności dla każdego wystąpienia * 5 wystąpień * $0.008 za godzinę używania jednostki pojemności = 297.6 $
 
 Łączna cena = 148.8 $ + $297.6 = 446.4 $
 
@@ -85,6 +85,9 @@ Cena jednostki pojemności = 744(hours) * Max (jednostka obliczeniowa 25/50 dla 
 
 Łączna cena = $148. 23.81 8 + = $172.61
 
+> [!NOTE]
+> Funkcja Max zwraca największą wartość w parze wartości.
+
 **Przykład 3**
 
 WAF_v2 bramy aplikacji są aprowizowane w miesiącu. W tym czasie odbierze 25 nowe SSL połączeń na sekundę, średnia 8.88 MB/s transferu danych i jest 80 żądań na sekundę. Przy założeniu, że połączenia są krótkie krótkotrwałe, a cen obliczania jednostki obliczeniowej dla aplikacji obsługiwane przez 10 RPS poszczególnych jednostek obliczeniowych, będzie:
@@ -95,11 +98,14 @@ Cena jednostki pojemności = 744(hours) * Max (Max(25/50 for connections/sec, 80
 
 Łączna cena = 267.84 $ + $85.71 = 353.55 $
 
+> [!NOTE]
+> Funkcja Max zwraca największą wartość w parze wartości.
+
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Skalowanie usługa Application Gateway i zapory aplikacji sieci Web w wersji 2
 
 Usługa Application Gateway i zapory aplikacji sieci Web można skonfigurować do skalowania w dwóch trybach:
 
-- **Skalowanie automatyczne** — z włączonym skalowaniem automatycznym, usługa Application Gateway i zapory aplikacji sieci Web w wersji 2, jednostki SKU skalować w górę lub w dół w zależności od wymagań ruchu aplikacji. W tym trybie oferuje lepsze elastyczność aplikacji i eliminuje potrzebę odgadnięcia licznik rozmiaru lub wystąpienia bramy aplikacji. Ten tryb umożliwia obniżenie kosztów przez nie wymaga, by było uruchamiane bram szczytu aprowizowana pojemność dla przewidywanego ruchu maksymalnego obciążenia. Klienci muszą określać minimalną i opcjonalnie maksymalną liczbą wystąpień. Pojemności minimalnej gwarantuje, że usługa Application Gateway i zapory aplikacji sieci Web w wersji 2 nie spadnie poniżej minimalnej liczby wystąpień określony, nawet przy braku ruchu sieciowego. Opłata jest naliczana dla tej minimalnej pojemności, nawet w przypadku braku dowolnego ruchu. Możesz również opcjonalnie określić maksymalną liczbę wystąpień, który zapewnia, że Application Gateway nie skalować poza określoną liczbę wystąpień. Nadal będzie naliczana ilości ruch przez bramę. Liczbę wystąpień może należeć do zakresu od 0 do 125. Domyślna wartość maksymalna liczba wystąpień to 20, jeśli nie określono.
+- **Skalowanie automatyczne** — z włączonym skalowaniem automatycznym, usługa Application Gateway i zapory aplikacji sieci Web w wersji 2, jednostki SKU skalować w górę lub w dół w zależności od wymagań ruchu aplikacji. W tym trybie oferuje lepsze elastyczność aplikacji i eliminuje potrzebę odgadnięcia licznik rozmiaru lub wystąpienia bramy aplikacji. Ten tryb umożliwia obniżenie kosztów przez nie wymaga, by było uruchamiane bram szczytu aprowizowana pojemność dla przewidywanego ruchu maksymalnego obciążenia. Klienci muszą określać minimalną i opcjonalnie maksymalną liczbą wystąpień. Pojemności minimalnej gwarantuje, że usługa Application Gateway i zapory aplikacji sieci Web w wersji 2 nie spadną poniżej minimalnej liczby wystąpień określony, nawet przy braku ruchu sieciowego. Opłata jest naliczana dla tej minimalnej pojemności, nawet w przypadku braku dowolnego ruchu. Możesz również opcjonalnie określić maksymalną liczbę wystąpień, który zapewnia, że Application Gateway nie skalować poza określoną liczbę wystąpień. Nadal będzie naliczana ilości ruch przez bramę. Liczbę wystąpień może należeć do zakresu od 0 do 125. Domyślna wartość maksymalna liczba wystąpień to 20, jeśli nie określono.
 - **Ręczne** — może też ręcznego trybu, w których brama nie będzie skalowania automatycznego. W tym trybie Jeśli istnieje więcej ruchu niż co usługa Application Gateway i zapory aplikacji sieci Web może obsługiwać, jego może spowodować utratę ruchu. W trybie ręczne określenie liczby wystąpień jest obowiązkowy. Liczba wystąpień może się różnić od 1 do 125 wystąpień.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porównanie funkcji jednostki SKU v1 i v2 jednostki SKU
@@ -142,11 +148,12 @@ W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
 |Tryb FIPS|Te nie są obecnie obsługiwane.|
 |Trybie tylko do wewnętrznego modułu równoważenia obciążenia|To nie jest obecnie obsługiwane. Publiczne i tryb wewnętrznego modułu równoważenia obciążenia ze sobą jest obsługiwany.|
 |Sieć, obserwator integracji|Nieobsługiwane.|
-|Integracja z Centrum pomocy technicznej platformy Azure|Nie jest jeszcze dostępna.
+|Integracja usługi Azure Security Center|Nie jest jeszcze dostępna.
 
 ## <a name="migrate-from-v1-to-v2"></a>Migrowanie z wersji 1 do wersji 2
 
 Skrypt programu Azure PowerShell jest dostępny w galerii programu PowerShell ułatwiające migrację z usługi v1 aplikacji brama/Zapora aplikacji sieci Web do automatycznego skalowania w wersji 2 jednostki SKU. Ten skrypt pomaga kopiować konfigurację z bramy w wersji 1. Ruch migracji nadal jest odpowiedzialny za. Aby uzyskać więcej informacji, zobacz [migracji usługi Azure Application Gateway z v1 na v2](migrate-v1-v2.md).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Szybki start: Ruchem internetowym bezpośredniego przy użyciu usługi Azure Application Gateway — witryna Azure portal](quick-create-portal.md)

@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567354"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopiowanie danych do i z Data Lake Storage Gen1 przy użyciu usługi fabryka danych
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-azure-datalake-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-azure-data-lake-store.md)
 
@@ -72,7 +72,7 @@ Połączona usługa łączy magazyn danych do usługi data factory. Tworzenie po
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **type** | Właściwość type musi być równa **AzureDataLakeStore**. | Yes |
+| **type** | Właściwość type musi być równa **AzureDataLakeStore**. | Tak |
 | **dataLakeStoreUri** | Informacje o koncie usługi Azure Data Lake Store. Informacja ta ma jedną z następujących formatów: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Yes |
 | **subscriptionId** | Identyfikator subskrypcji platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
 | **resourceGroupName** | Nazwa grupy zasobów platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
@@ -93,9 +93,9 @@ Użyj uwierzytelniania jednostki usługi, określając następujące właściwo�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Określ identyfikator klienta aplikacji. | Yes |
+| **servicePrincipalId** | Określ identyfikator klienta aplikacji. | Tak |
 | **servicePrincipalKey** | Określ klucz aplikacji. | Yes |
-| **dzierżawy** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Yes |
+| **dzierżawy** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Tak |
 
 **Przykład: Uwierzytelnianie jednostki usługi**
 ```json
@@ -120,8 +120,8 @@ Alternatywnie można uwierzytelnienia poświadczeń użytkownika kopiowanie Data
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **Autoryzacja** | Kliknij przycisk **Autoryzuj** znajdujący się w edytorze fabryki danych i wprowadź swoje poświadczenia, które przypisuje adres URL autoryzacji wygenerowany automatycznie do tej właściwości. | Yes |
-| **sessionId** | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i mogą być użyte tylko raz. To ustawienie jest generowany automatycznie, korzystając z edytora fabryki danych. | Yes |
+| **Autoryzacja** | Kliknij przycisk **Autoryzuj** znajdujący się w edytorze fabryki danych i wprowadź swoje poświadczenia, które przypisuje adres URL autoryzacji wygenerowany automatycznie do tej właściwości. | Tak |
+| **sessionId** | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i mogą być użyte tylko raz. To ustawienie jest generowany automatycznie, korzystając z edytora fabryki danych. | Tak |
 
 > [!IMPORTANT]
 > Upewnij się, że można przyznać odpowiednie uprawnienia użytkownika w usłudze Azure Data Lake Store:
@@ -155,7 +155,7 @@ W poniższej tabeli przedstawiono czas wygaśnięcia różnych rodzajów kont u�
 
 | Typ użytkownika | Wygasa po |
 |:--- |:--- |
-| Konta użytkowników *nie* zarządzane przez usługę Azure Active Directory (na przykład @hotmail.com lub @live.com) |12 godzin |
+| Konta użytkowników *nie* zarządzane przez usługę Azure Active Directory (na przykład @hotmail.com lub @live.com) |12 godz. |
 | Konta użytkowników zarządzanych przez usługę Azure Active Directory |Uruchom 14 dni od ostatniego wycinka <br/><br/>90 dni, jeśli wycinek na połączonej usługi OAuth na podstawie działa co najmniej raz na 14 dni |
 
 Jeśli zmienisz hasło przed upływem czasu wygaśnięcia tokenu, token jest ważny od razu. Zostanie wyświetlony komunikat, o których wspomniano wcześniej w tej sekcji.
@@ -239,7 +239,7 @@ Aby określić zestaw danych reprezentujący dane wejściowe w Data Lake Store, 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **folderPath** |Ścieżka do kontenera i folderu w Data Lake Store. |Yes |
+| **folderPath** |Ścieżka do kontenera i folderu w Data Lake Store. |Tak |
 | **fileName** |Nazwa pliku w usłudze Azure Data Lake Store. **FileName** właściwość jest opcjonalna i wielkość liter. <br/><br/>Jeśli określisz **fileName**, aktywności (w tym kopiowania) działa na określonego pliku.<br/><br/>Gdy **fileName** nie zostanie określony, kopia uwzględnia wszystkie pliki w **folderPath** w zestawie danych wejściowych.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku jest w formacie `Data._Guid_.txt`. Na przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nie |
 | **partitionedBy** |**PartitionedBy** właściwość jest opcjonalna. Służy do określania dynamiczne ścieżkę i nazwę pliku dla danych szeregów czasowych. Na przykład **folderPath** mogą być parametryzowane za każdą godzinę danych. Aby uzyskać szczegółowe informacje i przykłady Zobacz właściwość partitionedBy. |Nie |
 | **Format** | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. Ustaw **typu** właściwości **format** do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje w [formaty plików i kompresji, które są obsługiwane przez usługę Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykułu. <br><br> Jeśli chcesz skopiować pliki "jako — jest" między opartych na plikach magazynów (kopia binarna), Pomiń `format` sekcji w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
@@ -294,7 +294,7 @@ Właściwości dostępne w **typeProperties** różnią się w sekcji działania
 ### <a name="recursive-and-copybehavior-examples"></a>przykładów rekurencyjnych i copyBehavior
 W tej sekcji opisano wynikowe zachowania operacji kopiowania różne kombinacje wartości cyklicznych i copyBehavior.
 
-| cykliczne | copyBehavior | Wynikowe zachowania |
+| recursive | copyBehavior | Wynikowe zachowania |
 | --- | --- | --- |
 | true |preserveHierarchy |Do folderu źródłowego Folder1 o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony przy użyciu tej samej struktury jako źródło<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
 | true |flattenHierarchy |Do folderu źródłowego Folder1 o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>element docelowy Folder1 jest tworzony o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Wygenerowany automatycznie nazwę plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File5 |

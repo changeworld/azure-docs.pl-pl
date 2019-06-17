@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb0726fdddf6d20a9c8c5f20d6cec0cae68322ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586990"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119257"
 ---
 # <a name="azure-operational-security"></a>Bezpieczeństwo działania platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -224,7 +224,7 @@ Inspekcja zabezpieczeń sieci jest wykrywanie luk w zabezpieczeniach sieci przy 
 
 Usługa Network Watcher jest obecnie ma następujące możliwości:
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Dzienniki inspekcji</a>**— operacje wykonywane w ramach konfiguracji sieci są rejestrowane. Te dzienniki mogą być wyświetlane w witrynie Azure portal lub pobrać przy użyciu narzędzi firmy Microsoft, takich jak usługa Power BI lub narzędzi innych firm. Dzienniki inspekcji są dostępne za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API Rest. Aby uzyskać więcej informacji na temat dzienników inspekcji Zobacz operacje inspekcji w usłudze Resource Manager. Dzienniki inspekcji są dostępne dla operacje wykonywane na wszystkich zasobów sieciowych.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Dzienniki inspekcji</a>** — operacje wykonywane w ramach konfiguracji sieci są rejestrowane. Te dzienniki mogą być wyświetlane w witrynie Azure portal lub pobrać przy użyciu narzędzi firmy Microsoft, takich jak usługa Power BI lub narzędzi innych firm. Dzienniki inspekcji są dostępne za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API Rest. Aby uzyskać więcej informacji na temat dzienników inspekcji Zobacz operacje inspekcji w usłudze Resource Manager. Dzienniki inspekcji są dostępne dla operacje wykonywane na wszystkich zasobów sieciowych.
 
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">Weryfikuje przepływu dla adresu IP </a>**  — sprawdza, czy pakiet jest dozwolony lub zablokowany na podstawie przepływ informacji 5-elementowe spójne kolekcje pakietów parametrów (docelowy adres IP, źródłowy adres IP, Port docelowy, Port źródłowy i protokół). Jeśli pakiet zostanie odrzucona przez sieciową grupę zabezpieczeń, zwracany jest reguła i sieciowej grupy zabezpieczeń, która odrzuciła pakiet.

@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 49f853341edab7c7dc92f72472b81f7fb22c0ad8
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 52725950be24e5c84bd16f17bb2d079b58612a37
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808760"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058302"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: Tworzenie modułu C IoT Edge dla urządzeń Windows
 
@@ -51,8 +51,16 @@ Przed rozpoczęciem tego samouczka, powinien wykonano za pomocą poprzedniego sa
 * Rejestr kontenera, takiej jak [usługi Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) skonfigurowano [Azure IoT Edge narzędzia](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) rozszerzenia.
 * [Docker CE](https://docs.docker.com/install/) skonfigurowane do uruchamiania kontenerów Windows.
-* Zestaw SDK usługi Azure IoT dla języka C. 
+* Instalowanie zestawu SDK C usługi Azure IoT dla Windows x64 za pośrednictwem vcpkg:
 
+   ```powershell
+   git clone https://github.com/Microsoft/vcpkg
+   cd vcpkg
+   .\bootstrap-vcpkg.bat
+   .\vcpkg install azure-iot-sdk-c:x64-windows
+   .\vcpkg --triplet x64-windows integrate install
+   ```
+   
 > [!TIP]
 > Jeśli używasz programu Visual Studio 2017 (w wersji 15.7 lub nowszej), Pobierz i zainstaluj [narzędzia do usługi Azure IoT Edge (wersja zapoznawcza)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) dla programu VS 2017 z witryny marketplace programu Visual Studio
 

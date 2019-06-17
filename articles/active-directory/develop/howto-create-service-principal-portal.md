@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5a16e2d5e3ac723675ebdb536a51d20412681f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 33ef65f09a4e7513738a6cc6b277d06cd4cb4da8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235396"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052408"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: Aby utworzyć aplikację usługi Azure AD i jednostkę usługi, które mogą uzyskiwać dostęp do zasobów, użyj portalu
 
@@ -98,7 +98,7 @@ Podczas programowego logowania, musisz przekazać identyfikator dzierżawy z ż�
    ![Identyfikator klienta](./media/howto-create-service-principal-portal/copy-app-id.png)
 
 ## <a name="certificates-and-secrets"></a>Certyfikaty i klucze tajne
-Aplikacje demona mogą używać dwie formy poświadczeń do uwierzytelniania za pomocą usługi Azure AD: certyfikatów i kluczy tajnych aplikacji.  Firma Microsoft zaleca używanie certyfikatu, ale można również utworzyć nowy klucz tajny aplikacji.
+Demon umożliwia aplikacjom dwie formy poświadczeń uwierzytelniania w usłudze Azure AD: certyfikatów i kluczy tajnych aplikacji.  Firma Microsoft zaleca używanie certyfikatu, ale można również utworzyć nowy klucz tajny aplikacji.
 
 ### <a name="upload-a-certificate"></a>Przekaż certyfikat
 

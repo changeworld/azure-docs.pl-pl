@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609494"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpieczenia platformy Azure i zgodności planu — IaaS trójwarstwowa aplikacja sieci Web dla UK-OFFICIAL
@@ -154,7 +154,7 @@ Te sieci wirtualne są nadal zarządzane jako oddzielne zasoby, ale są traktowa
 
 **Sieciowe grupy zabezpieczeń**: [Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawierają listy kontroli dostępu, które blokują lub zezwalają na ruch sieciowy w ramach sieci wirtualnej. Sieciowe grupy zabezpieczeń może służyć do zabezpieczenia ruchu na poziomie podsieci lub poszczególnych maszyn wirtualnych.
 
-**Active Directory Domain Services (AD DS)**: Ta architektura zapewnia dedykowany [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) wdrożenia.
+**Active Directory Domain Services (AD DS)** : Ta architektura zapewnia dedykowany [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) wdrożenia.
 
 **Rejestrowanie i inspekcja**: [Dziennik aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) przechwytywania operacji wykonywanych na zasoby w ramach subskrypcji, takie jak którzy zainicjował operację, gdy operacja Wystąpił stan operacji i wartości innych właściwości, które mogą pomóc badań Operacja. Dziennik aktywności platformy Azure jest usługą platformy Azure, która przechwytuje wszystkie akcje w ramach subskrypcji. Dzienniki można zarchiwizować lub wyeksportować, jeśli jest to wymagane.
 

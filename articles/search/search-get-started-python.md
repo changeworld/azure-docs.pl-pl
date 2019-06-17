@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: Python i interfejsów API REST — usługa Azure Search'
 description: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu języka Python, notesy Jupyter i interfejsu API REST usługi Azure Search.
-ms.date: 05/23/2019
+ms.date: 06/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c519cbd151ac3008593e3309930db4e9a9414e51
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244792"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056643"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu notesów programu Jupyter w języku Python
 > [!div class="op_single_selector"]
@@ -88,22 +88,19 @@ W tym zadaniu uruchamiania notesu programu Jupyter i sprawdź, czy możesz nawi�
 
    Z kolei kolekcji pusty indeks zwraca tej odpowiedzi: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
-> [!Tip]
-> Bezpłatne usługi są ograniczone do trzech indeksów, indeksatorów i źródeł danych. Ten przewodnik Szybki Start tworzy jeden. Upewnij się, że dysponujesz miejscem do tworzenia nowych obiektów, zanim przejdziesz dalej.
-
 ## <a name="1---create-an-index"></a>1 — Tworzenie indeksu
 
 Jeśli używasz portalu indeksu musi istnieć w usłudze przed załadowaniem danych. Ten krok używa [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index) wypychania schematu indeksu w usłudze.
 
 Wymagane elementy indeksu obejmują nazwę, kolekcję pól i klucz. Kolekcja pól definiuje strukturę *dokumentu*. Każde pole ma nazwę, typ i atrybuty, które określają sposób używania pola (na przykład, czy jest pełnotekstowe wyszukiwanie, filtrowanie lub pobieranie w wynikach wyszukiwania). W ramach indeksu, jednego pola typu `Edm.String` musi zostać wyznaczona jako *klucz* dokumentu tożsamości.
 
-Ten indeks o nazwie "hotels-py" i ma definicje pól, pokazane poniżej. Jest podzbiorem większego [indeksu Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) używane w innych instruktaży. Firma Microsoft spacje w tym przewodniku Szybki Start w celu skrócenia programu.
+Ten indeks o nazwie "hotels — Szybki Start" i ma definicje pól, pokazane poniżej. Jest podzbiorem większego [indeksu Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) używane w innych instruktaży. Firma Microsoft spacje w tym przewodniku Szybki Start w celu skrócenia programu.
 
 1. W następnej komórki Wklej poniższy w komórce w celu zapewnienia schematu. 
 
     ```python
     index_schema = {
-       "name": "hotels-py",  
+       "name": "hotels-quickstart",  
        "fields": [
          {"name": "HotelId", "type": "Edm.String", "key": "true", "filterable": "true"},
          {"name": "HotelName", "type": "Edm.String", "searchable": "true", "filterable": "false", "sortable": "true", "facetable": "false"},
@@ -236,10 +233,10 @@ Aby wypchnąć dokumenty, należy użyć żądania HTTP POST do punktu końcoweg
     }
     ```   
 
-2. W innej komórce sformułować żądania. To żądanie POST jest przeznaczony dla kolekcji docs indeksu hotels py i wypycha dokumenty określone w poprzednim kroku.
+2. W innej komórce sformułować żądania. To żądanie POST jest przeznaczony dla kolekcji docs indeksu hotels — Szybki Start i wypycha dokumenty określone w poprzednim kroku.
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs/index" + api_version
+   url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
    response  = requests.post(url, headers=headers, json=documents)
    index_content = response.json()
    pprint(index_content)
@@ -253,56 +250,63 @@ Aby wypchnąć dokumenty, należy użyć żądania HTTP POST do punktu końcoweg
 
 W tym kroku przedstawiono sposób tworzenia zapytań względem indeksu przy użyciu [interfejs API REST wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
+1. W komórce, należy podać wyrażenie zapytania, które wykonuje to puste wyszukiwanie (wyszukiwania = *), zwracając unranked listy (Wyszukaj wynik = 1,0) dowolnych dokumentów. Domyślnie usługa Azure Search zwraca 50 dopasowaniami w danym momencie. Jako ze strukturą ta kwerenda zwraca strukturę całego dokumentu i wartości. Dodaj $count = true, aby uzyskać liczbę wszystkich dokumentów w wynikach.
 
-1. W nowej komórki należy podać wyrażenie zapytania. Poniższy przykład wyszukuje warunki "hotels" i "sieć Wi-Fi". Również zwraca *liczba* dokumentów, które są zgodne, i *wybiera* pola do uwzględnienia w wynikach wyszukiwania.
+   ```python
+   searchstring = '&search=*&$count=true'
+   ```
+
+1. W nowej komórce Podaj poniższy przykład, aby wyszukać warunki "hotels" i "sieć Wi-Fi". Dodaj $select określić które pola mają być uwzględnione w wynikach wyszukiwania.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. W innej komórce Sformułuj żądanie. To żądanie GET jest przeznaczony dla kolekcji docs indeksu hotels py i dołącza zapytania, które określiłeś w poprzednim kroku.
+1. W innej komórce Sformułuj żądanie. To żądanie GET jest przeznaczony dla kolekcji docs indeksu hotels — Szybki Start i dołącza zapytania, które określiłeś w poprzednim kroku.
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-3. Uruchom każdego kroku. Wyniki powinny wyglądać podobnie do następujących danych wyjściowych. 
+1. Uruchom każdego kroku. Wyniki powinny wyglądać podobnie do następujących danych wyjściowych. 
 
     ![Przeszukiwanie indeksu](media/search-get-started-python/search-index.png "przeszukiwanie indeksu")
 
-4. Wypróbuj kilka innych przykładów zapytanie, aby uzyskać pewne pojęcie składni. Można zastąpić ciągwyszukiwania poniższych przykładach, a następnie uruchom ponownie żądanie wyszukiwania. 
+1. Wypróbuj kilka innych przykładów zapytanie, aby uzyskać pewne pojęcie składni. Można zastąpić ciągwyszukiwania poniższych przykładach, a następnie uruchom ponownie żądanie wyszukiwania. 
 
    Zastosuj filtr: 
 
    ```python
-   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
    ```
 
    Wykonaj najwyższe dwa wyniki:
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
    ```
 
     Kolejność, według określonego pola:
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
 ## <a name="clean-up"></a>Czyszczenie 
 
-Jeśli nie są już potrzebne, należy usunąć indeks. Usługi w warstwie bezpłatna jest ograniczona do trzech indeksów. Możesz chcieć usunąć wszystkie indeksy, których nie używasz aktywnie aby zwolnić miejsce dla innych samouczków.
+Jeśli nie są już potrzebne, należy usunąć indeks. Usługi w warstwie bezpłatna jest ograniczona do trzech indeksów. Należy usunąć wszystkie indeksy, których nie używasz aktywnie aby zwolnić miejsce dla innych samouczków.
+
+Najprostszym sposobem usuwania obiektów jest za pośrednictwem portalu, ale ponieważ jest to szybki start języka Python, następująca składnia daje ten sam wynik:
 
    ```python
-  url = endpoint + "indexes/hotels-py" + api_version
+  url = endpoint + "indexes/hotels-quickstart" + api_version
   response  = requests.delete(url, headers=headers)
    ```
 
-Możesz sprawdzić usunięcie indeksu, zwracając listę istniejące indeksy. Jeśli py hotele został usunięty, wiesz żądanie zakończyło się pomyślnie.
+Aby sprawdzić usunięcie indeksu, żądanie listy istniejące indeksy. Jeśli hotele — Szybki Start został usunięty, wiesz żądanie zakończyło się pomyślnie.
 
 ```python
 url = endpoint + "indexes" + api_version + "&$select=name"

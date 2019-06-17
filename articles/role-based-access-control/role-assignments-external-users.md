@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
 ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952210"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Zarządzanie dostępem do zasobów platformy Azure dla użytkowników zewnętrznych, korzystając z modelu RBAC
@@ -44,7 +44,7 @@ Role RBAC, które mogą być przyznane tylko przez **właścicieli** subskrypcji
 W witrynie Azure portal po zalogowaniu się jako administrator, wybierz pozycję "Subskrypcje" i wybierz opcję jedno.
 ![Blok subskrypcji w witrynie Azure portal](./media/role-assignments-external-users/0.png) domyślnie, jeśli administrator subskrypcji platformy Azure, użytkownik będzie wyświetlany jako **administrator konta**, to jest rola subskrypcji. Aby uzyskać więcej informacji na temat ról subskrypcji platformy Azure, zobacz [Administratorzy subskrypcji platformy Azure Dodaj lub zmień](../billing/billing-add-change-azure-subscription-administrator.md).
 
-W tym przykładzie użytkownik "alflanigan@outlook.com" jest **właściciela** "Bezpłatna wersja próbna" dzierżawy "Domyślna dzierżawa usługi Azure" subskrypcji w usłudze AAD. Ponieważ ten użytkownik jest twórca subskrypcji platformy Azure za pomocą początkowego Account Microsoft "Outlook" (Account Microsoft = programu Outlook, na żywo itp.) będzie domyślna nazwa domeny dla wszystkich innych użytkowników, dodać w tej dzierżawie **"\@ alflaniganuoutlook.onmicrosoft.com"**. Zgodnie z projektem składni nowej domeny jest tworzona przez zestawiania nazwy użytkownika i domena nazwa użytkownika, który utworzył dzierżawy oraz dodawania rozszerzenia **". onmicrosoft.com"**.
+W tym przykładzie użytkownik "alflanigan@outlook.com" jest **właściciela** "Bezpłatna wersja próbna" dzierżawy "Domyślna dzierżawa usługi Azure" subskrypcji w usłudze AAD. Ponieważ ten użytkownik jest twórca subskrypcji platformy Azure za pomocą początkowego Account Microsoft "Outlook" (Account Microsoft = programu Outlook, na żywo itp.) będzie domyślna nazwa domeny dla wszystkich innych użytkowników, dodać w tej dzierżawie **"\@ alflaniganuoutlook.onmicrosoft.com"** . Zgodnie z projektem składni nowej domeny jest tworzona przez zestawiania nazwy użytkownika i domena nazwa użytkownika, który utworzył dzierżawy oraz dodawania rozszerzenia **". onmicrosoft.com"** .
 Ponadto użytkownicy mogą zarejestrować się przy użyciu niestandardowej nazwy domeny w dzierżawie po dodaniu i weryfikowanie jego dla nowej dzierżawy. Aby uzyskać więcej informacji na temat zweryfikować niestandardowej nazwy domeny w dzierżawie usługi Azure Active Directory, zobacz [Dodawanie niestandardowej nazwy domeny do katalogu](../active-directory/fundamentals/add-custom-domain.md).
 
 W tym przykładzie katalog "Domyślna dzierżawa usługi Azure" zawiera tylko użytkownicy z tą nazwą domeny "\@alflanigan.onmicrosoft.com".

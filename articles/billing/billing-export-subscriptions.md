@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 8a3d1a3a6b1dce1d729942715bbe5962837ff093
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60918803"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Eksportowanie i wyświetlić najwyższego poziomu informacji o subskrypcji
@@ -28,7 +28,7 @@ Jeśli chcesz wyświetlić zestaw subskrypcji identyfikatorów skojarzonych z po
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 Plik JSON pobranych zawiera następujące informacje:
-- Wiadomość e-mail: Adres e-mail skojarzony z Twoim kontem.
+- Email: Adres e-mail skojarzony z Twoim kontem.
 - Identyfikator PUID: Unikatowy identyfikator skojarzony z kontem rozliczeniowym.
 - SubscriptionIds: Lista subskrypcji należących do swojego konta, wymienionych według identyfikatora subskrypcji.
 

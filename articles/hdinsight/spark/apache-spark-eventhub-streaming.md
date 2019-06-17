@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: 0bdcc253a57fb55d610d67acd9b6a50182a699e3
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: bf6a728f66f5eeaf5983ecd50d65326a59cc3267
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257845"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066197"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Samouczek: Przetwarzaj tweety za pomocą usługi Azure Event Hubs i Apache Spark w HDInsight
 

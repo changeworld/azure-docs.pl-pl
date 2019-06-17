@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: c8d5df0f83a7ae37b9f06a5e255e9809288b6d67
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64917040"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna, za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
@@ -52,8 +52,8 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
 
 | Rola | Jedno- i puli baz danych | Wystąpienie bazy danych |
 | :----| :------------- | :--------------- |
-| **Wydawca** | Nie | Yes | 
-| **Dystrybutor** | Nie | Yes|
+| **Publisher** | Nie | Tak | 
+| **Dystrybutor** | Nie | Tak|
 | **Ściągnij subskrybenta** | Nie | Yes|
 | **Wypychanie subskrybenta**| Yes | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
@@ -66,12 +66,12 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 
 | Replikacja | Jedno- i puli baz danych | Wystąpienie bazy danych|
 | :----| :------------- | :--------------- |
-| [**transakcyjne**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybenta) | Yes | 
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybenta) | Yes|
+| [**transakcyjne**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybenta) | Tak | 
+| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybenta) | Tak|
 | [**Replikacja scalająca**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nie | Nie|
 | [**Sieć równorzędna**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nie | Nie|
-| **One-way** | Yes | Yes|
-| [**Dwukierunkowe**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Yes|
+| **One-way** | Tak | Tak|
+| [**Dwukierunkowe**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Tak|
 | [**Aktualizowalne subskrypcje**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nie | Nie|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -82,7 +82,7 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Macierz obsługi dla wystąpienia bazy danych i lokalnymi systemami
   Macierz obsługi replikacji dla wystąpienia bazy danych jest taka sama, jak dla programu SQL Server w środowisku lokalnym. 
   
-  | **Wydawca**   | **Dystrybutor** | **Dla subskrybentów** |
+  | **Publisher**   | **Dystrybutor** | **Dla subskrybentów** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
 | SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |

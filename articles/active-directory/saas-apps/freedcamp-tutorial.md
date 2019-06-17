@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9aabdba16b334aa957e1e8109d1e16d22e01dc7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 4de1ae135df4cd070fe9c6ee322e304caa1e17c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987806"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101911"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Samouczek: Integracja Freedcamp za pomocą usługi Azure Active Directory
 
@@ -185,7 +185,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się w celu Freedcamp, i
 
 Po wybraniu kafelka Freedcamp w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Freedcamp, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

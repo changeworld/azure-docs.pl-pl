@@ -11,10 +11,10 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60648809"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Tworzenie zasad kopii zapasowych usługi Azure Recovery Services, za pomocą interfejsu API REST
@@ -152,7 +152,7 @@ Zasady jest wyświetlany komunikat:
 > [!IMPORTANT]
 > Formaty czasu harmonogram i okres przechowywania obsługuje tylko daty/godziny. Nie obsługują tylko format godziny.
 
-## <a name="responses"></a>Odpowiedzi
+## <a name="responses"></a>Responses
 
 Zasady tworzenia kopii zapasowej Tworzenie/aktualizowanie jest [operację asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy inną operację, która musi być śledzona oddzielnie.
 
@@ -161,7 +161,7 @@ Zwraca ona dwie odpowiedzi: 202 (zaakceptowano), gdy inna operacja zostanie utwo
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |    [PolicyResource ochrony](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 zaakceptowano     |         |     Zaakceptowany    |
+|202 zaakceptowano     |         |     Zaakceptowane    |
 
 ### <a name="example-responses"></a>Przykładowe odpowiedzi
 

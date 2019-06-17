@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: v-adgera
-ms.openlocfilehash: 31944c08bad503c20832ea7e4e682c0063ab0f9f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: cd67f1065f47b758f2a7e0e5be3c60169c30273e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116567"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Konfigurowanie narzędzia Postman bliźniaki cyfrowych platformy Azure
 
@@ -41,7 +41,7 @@ Konfigurowanie aplikacji usługi Azure Active Directory, aby korzystać z tego p
 
     [![Rejestracje aplikacji w usłudze Azure Active Directory dodawania interfejsu api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. Kliknij przycisk **manifestu** otworzyć manifest aplikacji dla aplikacji. Ustaw *oauth2AllowImplicitFlow* do `true`.
+1. Wybierz **manifestu** otworzyć manifest aplikacji dla aplikacji. Ustaw *oauth2AllowImplicitFlow* do `true`.
 
     [![Usługa Azure Active Directory niejawny przepływ](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
@@ -111,7 +111,7 @@ Po wykonaniu poprzednich kroków, konfigurowanie programu Postman nawiązać uwi
    > * Nie trzeba określić te nagłówki dla każdej części.
    > * Musisz wybrać `multipart/mixed` lub inną odpowiednią **Content-Type** dla całego żądania.
 
-1. Na koniec kliknij **wysyłania** Aby przesłać żądanie HTTP POST wieloczęściową.
+1. Na koniec wybierz **wysyłania** Aby przesłać żądanie HTTP POST wieloczęściową.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -9,10 +9,10 @@ ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 7932d057a348957d369ba325044055ac8dfe3428
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119898"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorowanie elementów runbook z alertów dotyczących metryk
@@ -71,7 +71,7 @@ W witrynie Azure portal przejdź do swojego konta usługi Automation. W obszarze
 > [!NOTE]
 > Podczas dodawania adresu e-mail do grupy akcji, wiadomość e-mail z powiadomieniem są wysyłane, informujący, że adres został dodany do grupy akcji.
 
-## <a name="notification"></a>Powiadomienie
+## <a name="notification"></a>Powiadomienia
 
 Po spełnieniu kryteriów alertu grupy akcji uruchamia czynność zdefiniowana. W przykładzie w tym artykule zostanie wysłana wiadomość e-mail. Poniższy rysunek jest przykładem wiadomość e-mail, który pojawi się po wyzwoleniu alertu:
 

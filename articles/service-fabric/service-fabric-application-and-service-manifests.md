@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 5e93bb3b206fbef6beb09b7aca6df0742a80ccf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5fb28b176ce14a9b871b2a6a775e0017fcc993d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621517"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052668"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Manifesty aplikacji usługi Service Fabric i usługi
 W tym artykule opisano, jak aplikacje usługi Service Fabric i usługi są zdefiniowane i kontrolą wersji, przy użyciu plików ApplicationManifest.xml i ServiceManifest.xml.  Aby uzyskać bardziej szczegółowe przykłady, zobacz [aplikacji i usługi manifestu przykłady](service-fabric-manifest-examples.md).  Schemat XML dla tych plików manifestu jest udokumentowany w [dokumentacja schematu ServiceFabricServiceModel.xsd](service-fabric-service-model-schema.md).
@@ -96,7 +96,7 @@ Aby uzyskać więcej informacji na temat konfigurowania SetupEntryPoint, zobacz 
 </Settings>
 ```
 
-Usługa Service Fabric **punktu końcowego** znajduje się przykład w przypadku zasobów sieci szkieletowej usług; Zasób usługi Service Fabric może być zadeklarowana/zmienić bez konieczności zmieniania kodu skompilowanego. Dostęp do zasobów usługi Service Fabric, które są określone w manifeście usługi mogą być kontrolowane za pośrednictwem **SecurityGroup** w manifeście aplikacji. Gdy zasób punktu końcowego jest zdefiniowany w manifeście usługi, usługi Service Fabric przypisuje porty z zakresu portów zarezerwowanych aplikacji, jeśli port nie jest jawnie określona. Przeczytaj więcej na temat [określenie lub punkt końcowy zasoby przesłaniające](service-fabric-service-manifest-resources.md).
+Usługa Service Fabric **punktu końcowego** jest przykładem zasób usługi Service Fabric. Zasób usługi Service Fabric może być zadeklarowana/zmienić bez konieczności zmieniania kodu skompilowanego. Dostęp do zasobów usługi Service Fabric, które są określone w manifeście usługi mogą być kontrolowane za pośrednictwem **SecurityGroup** w manifeście aplikacji. Gdy zasób punktu końcowego jest zdefiniowany w manifeście usługi, usługi Service Fabric przypisuje porty z zakresu portów zarezerwowanych aplikacji, jeśli port nie jest jawnie określona. Przeczytaj więcej na temat [określenie lub punkt końcowy zasoby przesłaniające](service-fabric-service-manifest-resources.md).
 
 
 <!--
@@ -163,7 +163,11 @@ Manifestów usługi, takie jak **wersji** atrybuty są ciągami bez określonej 
 
 **Certyfikaty** (innej wartości w powyższym przykładzie) oświadcza, certyfikaty używane do [skonfigurować punkty końcowe HTTPS](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) lub [szyfrować klucze tajne w manifeście aplikacji](service-fabric-application-secret-management.md).
 
-**Zasady** (innej wartości w powyższym przykładzie) w tym artykule opisano zbieranie dzienników [domyślnej Uruchom jako](service-fabric-application-runas-security.md), [kondycji](service-fabric-health-introduction.md#health-policies), i [dostępu zabezpieczeń](service-fabric-application-runas-security.md) zasady można ustawić w Poziom aplikacji.
+**Zasady** (innej wartości w powyższym przykładzie) w tym artykule opisano zbieranie dzienników [domyślnej Uruchom jako](service-fabric-application-runas-security.md), [kondycji](service-fabric-health-introduction.md#health-policies), i [dostępu zabezpieczeń](service-fabric-application-runas-security.md) zasady można ustawić w Poziom aplikacji, w tym usług mają dostęp do środowiska uruchomieniowego usługi Service Fabric.
+
+> [!NOTE] 
+> Domyślnie aplikacje usługi Service Fabric mają dostęp do środowiska uruchomieniowego usługi Service Fabric, w postaci punkt końcowy, akceptując żądania specyficzne dla aplikacji i zmiennych środowiskowych, wskazując ścieżek plików na hoście, zawierające sieci szkieletowej i pliki specyficzne dla aplikacji . Rozważ wyłączenie dostępu, gdy aplikacja udostępnia niezaufany kod (czyli którego pochodzenia jest nieznane lub który właściciel aplikacji nie powinna być bezpieczne do wykonywania). Aby uzyskać więcej informacji, zobacz [najważniejsze wskazówki dotyczące zabezpieczeń w usłudze Service Fabric](service-fabric-best-practices-security.md#platform-isolation). 
+>
 
 **Jednostki** (nie ustawiono w powyższym przykładzie) opisano podmiotów zabezpieczeń (użytkowników lub grupy) wymagane do [uruchamiania usług i zasobów Usługa bezpiecznego](service-fabric-application-runas-security.md).  Jednostki są określone w **zasady** sekcje.
 

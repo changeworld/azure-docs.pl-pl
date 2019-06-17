@@ -10,10 +10,10 @@ ms.date: 05/03/2019
 ms.author: mhopkins
 ms.subservice: common
 ms.openlocfilehash: 3d241f1905244d3a8039372262f84ba0fd25220d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209773"
 ---
 # <a name="azure-storage-samples-using-java"></a>Przykłady usługi Azure Storage przy użyciu języka Java
@@ -25,11 +25,11 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Endpoint</th><th style="font-size:110%">Scenariusz</th><th style="font-size:110%">Przykładowy kod</th></tr></thead><tbody>
 <tr>
 <td rowspan="16"><b>Obiekt blob</b></td>
-<td>Dołącz obiekt blob</td>
+<td>Obiekt Blob dołączania</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
 </tr>
 <tr>
-<td>Blokowy obiekt blob</td>
+<td>Blokowe obiekty Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
 </tr>
 <tr>
@@ -73,7 +73,7 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
 </tr>
 <tr>
-<td>Stronicowy obiekt blob</td>
+<td>Obiekt blob typu Page</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
 </tr>
 <tr>
@@ -160,7 +160,7 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 </tr>
 <tr>
 <td rowspan="7"><b>Tabela</b></td>
-<td>Utwórz tabelę</td>
+<td>Tworzenie tabeli</td>
 <td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td>
 </tr>
 <tr>

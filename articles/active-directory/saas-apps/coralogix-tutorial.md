@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0095a825f5582dc795f5bebdcf08be07a92946e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 721e0c40ec2e02dabee0681e01fea4182b906183
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900397"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Samouczek: integracja usługi Azure Active Directory z platformą Coralogix
 

@@ -12,10 +12,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 05/22/2019
 ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66016389"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Strefy czasowe w wystąpieniu zarządzanym usługi Azure SQL Database
@@ -100,45 +100,45 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 
 | **Identyfikator strefy czasowej** | **Nazwa wyświetlana strefy czasowej** |
 | --- | --- |
-| Czas standardowy linii zmiany czasu | (UTC-12:00) Międzynarodowa linia zmiany daty — Zachód |
+| Czas stand. | (UTC-12:00) Międzynarodowa linia zmiany daty — Zachód |
 | UTC-11 | (UTC-11:00) Uniwersalny czas koordynowany-11 |
-| Aleuty (czas standardowy) | (UTC-10:00) Aleuty |
+| Aleucka (czas standardowy) | (UTC-10:00) Wyspy Aleuckie |
 | Hawaje (czas standardowy) | (UTC-10:00) Hawaje |
-| Markizy (czas standardowy) | (UTC-09:30) Markizy |
+| Markizy (czas standardowy) | (UTC-09:30) Wyspy Markizy |
 | Alaska (czas standardowy) | (UTC-09:00) Alaska |
 | UTC-09 | (UTC-09:00) Uniwersalny czas koordynowany-09 |
-| Meksyk (standardowy czas pacyficzny) | (UTC-08:00) Kalifornia Dolna |
+| Pacyficzny czas standardowy (Meksyk) | (UTC-08:00) Kalifornia Dolna |
 | UTC-08 | (UTC-08:00) Uniwersalny czas koordynowany-08 |
 | Pacyfik (czas standardowy) | (UTC-08:00) Stany Zjednoczone i Kanada (czas pacyficzny) |
-| Stany Zjednoczone (górski czas standardowy) | (UTC-07:00) Arizona |
+| Stany Zjed | (UTC-07:00) Arizona |
 | Górski czas standardowy (Meksyk) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
 | Górski czas standardowy | (UTC-07:00) Stany Zjednoczone i Kanada (czas górski) |
 | Ameryka Środkowa (czas standardowy) | (UTC-06:00) Ameryka Środkowa |
-| Środkowy czas standardowy | (UTC-06:00) Stany Zjednoczone i Kanada (czas środkowy) |
-| Wyspa Wielkanocna (czas standardowy) | (UTC-06:00) Wyspa Wielkanocna |
+| Środkowa (czas standardowy) | (UTC-06:00) Stany Zjednoczone i Kanada (czas środkowy) |
+| Wyspa wielkanocna (czas standardowy) | (UTC-06:00) Wyspa Wielkanocna |
 | Środkowy czas standardowy (Meksyk) | (UTC-06:00) Guadalajara, Meksyk, Monterrey |
-| Kanada (środkowy czas stand.) | (UTC-06:00) Saskatchewan |
-| Ameryka Południowa (pacyficzny czas standardowy) | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
+| Kanada Środkowa (czas standardowy) | (UTC-06:00) Saskatchewan |
+| Standardowy czas pacyficzny SA | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
 | Wschodni czas standardowy (Meksyk) | (UTC-05:00) Chetumal |
 | Wschodni czas standardowy | (UTC-05:00) Stany Zjednoczone i Kanada (czas wschodni) |
 | Haiti (czas standardowy) | (UTC-05:00) Haiti |
 | Kuba (czas standardowy) | (UTC-05:00) Hawana |
-| Stany Zjednoczone (wschodni czas standardowy) | (UTC-05:00) Indiana (Wschód) |
-| Wyspy Turks i Caicos (czas standardowy) | (UTC-05:00) Turks i Caicos |
+| USA, wschodni czas standardowy | (UTC-05:00) Indiana (Wschód) |
+| Wyspy Turks i Caicos (czas standardowy) | (UTC-05:00) Wyspy Turks i Caicos |
 | Paragwaj (czas standardowy) | (UTC-04:00) Asuncion |
 | Atlantycki czas standardowy | (UTC-04:00) Kanada (czas atlantycki) |
 | Wenezuela (czas standardowy) | (UTC-04:00) Caracas |
-| Brazylia Środkowa (czas standardowy) | (UTC-04:00) Cuiaba |
-| Ameryka Południowa (zachodni czas standardowy) | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
-| Standardowy czas pacyficzny (Ameryka Południowa) | (UTC-04:00) Santiago |
+| Brazylijski centralnej (czas standardowy) | (UTC-04:00) Cuiaba |
+| SA Zachodnia (czas standardowy) | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
+| SA Pacyfik (czas standardowy) | (UTC-04:00) Santiago |
 | Nowa Fundlandia (czas standardowy) | (UTC-03:30) Nowa Fundlandia |
 | Tocantins (czas standardowy) | (UTC-03:00) Araguaina |
 | E. Ameryka Południowa (czas standardowy) | (UTC-03:00) Brasilia |
-| Ameryka Południowa (wschodni czas standardowy) | (UTC-03:00) Kajenna, Fortaleza |
+| Ameryka Południowa wschodni czas standardowy | (UTC-03:00) Kajenna, Fortaleza |
 | Argentyna (czas standardowy) | (UTC-03:00) Buenos Aires |
 | Grenlandia (czas standardowy) | (UTC-03:00) Grenlandia |
 | Montevideo (czas standardowy) | (UTC-03:00) Montevideo |
-| Czas standardowy (Magallanes) | (UTC-03:00) Punta Arenas |
+| Czas standardowy (magallanes) | (UTC-03:00) Na arenie Punta |
 | Saint-Pierre (czas standardowy) | (UTC-03:00) Saint-Pierre i Miquelon |
 | Bahia (czas standardowy) | (UTC-03:00) Salwador |
 | UTC-02 | (UTC-02:00) Uniwersalny czas koordynowany-02 |
@@ -147,33 +147,33 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Wyspy Zielonego Przylądka (czas standardowy) | (UTC-01:00) Wyspy Zielonego Przylądka |
 | UTC | (UTC) Uniwersalny czas koordynowany |
 | GMT (czas standardowy) | (UTC+00:00) Dublin, Edynburg, Lizbona, Londyn |
-| Greenwich (czas standardowy) | (UTC+00:00) Monrowia, Reykjavik |
+| Greenwich (czas standardowy) | (UTC+00:00) Monrovia, Reykjavik |
 | W. Europa (czas standardowy) | (UTC+01:00) Amsterdam, Berlin, Berno, Rzym, Sztokholm, Wiedeń |
 | Europa Środkowa (czas standardowy) | (UTC+01:00) Belgrad, Bratysława, Budapeszt, Lublana, Praga |
 | Romański czas standardowy | (UTC+01:00) Bruksela, Kopenhaga, Madryt, Paryż |
-| Maroko (czas standardowy) | (UTC+01:00) Casablanca |
-| Wyspa Świętego Tomasza — czas standardowy | (UTC+01:00) Wyspa Świętego Tomasza |
+| Morocco Standard Time | (UTC + 01:00) Casablanca |
+| Św. Tomasza (czas standardowy) | (UTC + 01:00) Św. Tomasza |
 | Środkowoeuropejski czas standardowy | (UTC+01:00) Sarajewo, Skopie, Warszawa, Zagrzeb |
 | W. Afryka Środkowozachodnia (czas standardowy) | (UTC+01:00) Afryka Środkowozachodnia |
-| Jordania (czas standardowy) | (UTC+02:00) Amman |
+| (Czas standardowy Jordania) | (UTC+02:00) Amman |
 | GTB (czas standardowy) | (UTC+02:00) Ateny, Bukareszt |
 | Bliski Wschód (czas standardowy) | (UTC+02:00) Bejrut |
 | Egipt (czas standardowy) | (UTC+02:00) Kair |
 | E. Europa (czas standardowy) | (UTC+02:00) Kiszyniów |
 | Syria (czas standardowy) | (UTC+02:00) Damaszek |
 | Zachodni Brzeg (czas standardowy) | (UTC+02:00) Gaza, Hebron |
-| Rep. Płd. Afryki (czas standardowy) | (UTC+02:00) Harare, Pretoria |
+| Republika Południowej Afryki (czas standardowy) | (UTC+02:00) Harare, Pretoria |
 | Finlandia (czas standardowy) | (UTC+02:00) Helsinki, Kijów, Ryga, Sofia, Tallin, Wilno |
 | Izrael (czas standardowy) | (UTC+02:00) Jerozolima |
 | Kaliningrad (czas standardowy) | (UTC+02:00) Kaliningrad |
-| Sudan (czas standardowy) | (UTC+02:00) Chartum |
+| Sudan (czas standardowy) | (UTC + 02:00) Chartum |
 | Libia (czas standardowy) | (UTC+02:00) Trypolis |
-| Namibia (czas standardowy) | (UTC+02:00) Windhoek |
-| Arabski czas standardowy | (UTC+03:00) Bagdad |
-| Turcja (czas standardowy) | (UTC+03:00) Stambuł |
-| Arabia Saud. (czas standardowy) | (UTC+03:00) Kuwejt, Ar-Rijad |
+| Namibia (czas standardowy) | (UTC + 02:00) Windhuk |
+| Arabski (czas standardowy) | (UTC+03:00) Bagdad |
+| Turcja (czas standardowy) | (UTC + 03:00) Stambuł |
+| Arabia (czas standardowy) | (UTC+03:00) Kuwejt, Rijad |
 | Białoruś (czas standardowy) | (UTC+03:00) Mińsk |
-| Rosyjski (czas standardowy) | (UTC+03:00) Moskwa, Petersburg |
+| Rosyjski (czas standardowy) | (UTC + 03:00) Moskwa, Sankt Petersburg |
 | E. Afryki (czas standardowy) | (UTC+03:00) Nairobi |
 | Iran (czas standardowy) | (UTC+03:30) Teheran |
 | Arabia (czas standardowy) | (UTC+04:00) Abu Zabi, Maskat |
@@ -181,60 +181,60 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Azerbejdżan (czas standardowy) | (UTC+04:00) Baku |
 | Russia Time Zone 3 | (UTC+04:00) Iżewsk, Samara |
 | Mauritius (czas standardowy) | (UTC+04:00) Port Louis |
-| Czas standardowy (Saratów) | (UTC+04:00) Saratów |
-| Gruzja (czas standardowy) | (UTC+04:00) Tibilisi |
-| Wołgograd (czas standardowy) | (UTC+04:00) Wołgograd |
+| Saratów (czas standardowy) | (UTC + 04:00) Saratów |
+| Gruzja (czas standardowy) | (UTC+04:00) Tbilisi |
+| Wołgograd (czas standardowy) | (UTC+04:00) Volgograd |
 | Kaukaz (czas standardowy) | (UTC+04:00) Erywań |
 | Afganistan (czas standardowy) | (UTC+04:30) Kabul |
 | Azja Zach. (czas standardowy) | (UTC+05:00) Aszchabad, Taszkient |
 | Jekaterynburg (czas standardowy) | (UTC+05:00) Jekaterynburg |
 | Pakistan (czas standardowy) | (UTC+05:00) Islamabad, Karaczi |
 | Indie (czas standardowy) | (UTC+05:30) Chennai, Kolkata (Kalkuta), Mumbaj (Bombaj), Nowe Delhi |
-| Sri Lanka (czas standardowy) | (UTC+05:30) Sri Dźajawardanapura Kotte |
+| Sri Lanka (czas standardowy) | (UTC+05:30) Sri Jayawardenepura |
 | Nepal (czas standardowy) | (UTC+05:45) Katmandu |
 | Azja Środkowa (czas standardowy) | (UTC+06:00) Astana |
 | Bangladesz (czas standardowy) | (UTC+06:00) Dakka |
-| Omsk (czas standardowy) | (UTC+06:00) Omsk |
-| Mjanma (czas standardowy) | (UTC+06:30) Yangon (Rangun) |
-| Azja Południowo-Wschodnia (czas standardowy) | (UTC+07:00) Bangkok, Hanoi, Dżakarta |
-| Ałtaj (czas standardowy) | (UTC+07:00) Barnauł, Gornoałtajsk |
+| Omsk (czas standardowy) | (UTC + 06:00) Omsk |
+| Myanmar (czas standardowy) | (UTC+06:30) Yangon (Rangun) |
+| Azja Pd (czas standardowy) | (UTC+07:00) Bangkok, Hanoi, Dżakarta |
+| Altai Standard Time | (UTC+07:00) Barnauł, Gornoałtajsk |
 | W. Mongolia (czas standardowy) | (UTC+07:00) Ajmak kobdoski |
 | Azja Północna (czas standardowy) | (UTC+07:00) Krasnojarsk |
-| N. Azja Środkowa (czas standardowy) | (UTC+07:00) Nowosybirsk |
+| N. Azja Środkowa (czas standardowy) | (UTC + 07:00) Nowosybirsk |
 | Tomsk (czas standardowy) | (UTC+07:00) Tomsk |
-| Chiny (czas standardowy) | (UTC+08:00) Pekin, Czungking, SRA Hongkong, Urumczi |
+| Chiny (czas standardowy) | (UTC+08:00) Pekin, Chongqing, Hongkong SAR, Urumczi |
 | Wschodnia Azja Północna (czas standardowy) | (UTC+08:00) Irkuck |
 | Singapur (czas standardowy) | (UTC+08:00) Kuala Lumpur, Singapur |
 | W. Australia (czas standardowy) | (UTC+08:00) Perth |
-| Tajpej (czas standardowy) | (UTC+08:00) Tajpej |
+| Taipei (czas standardowy) | (UTC+08:00) Taipei |
 | Ułan Bator (czas standardowy) | (UTC+08:00) Ułan Bator |
 | Australia Środkowo-Zachodnia (czas standardowy) | (UTC+08:45) Eucla |
 | Zabajkale (czas standardowy) | (UTC+09:00) Czyta |
 | Tokio (czas standardowy) | (UTC+09:00) Osaka, Sapporo, Tokio |
-| Korea Północna (czas standardowy) | (UTC+09:00) Phenian |
+| Korea Północna (czas standardowy) | (UTC + 09:00) Phenian |
 | Korea (czas standardowy) | (UTC+09:00) Seul |
 | Jakuck (czas standardowy) | (UTC+09:00) Jakuck |
 | Cen. Australia (czas standardowy) | (UTC+09:30) Adelajda |
-| Australia (środkowy czas standardowy) | (UTC+09:30) Darwin |
+| Australia Środkowa (czas standardowy) | (UTC+09:30) Darwin |
 | E. Australia (czas standardowy) | (UTC+10:00) Brisbane |
-| Australia (wschodni czas standardowy) | (UTC+10:00) Canberra, Melbourne, Sydney |
+| Australia Wschodnia (czas standardowy) | (UTC+10:00) Canberra, Melbourne, Sydney |
 | Zachodni Pacyfik (czas standardowy) | (UTC+10:00) Guam, Port Moresby |
 | Tasmania (czas standardowy) | (UTC+10:00) Hobart |
 | Władywostok (czas standardowy) | (UTC+10:00) Władywostok |
-| Lord Howe (czas standardowy) | (UTC+10:30) Lord Howe |
-| Bougainville (czas standardowy) | (UTC+11:00) Wyspa Bougainville’a |
+| Lord Howe (czas standardowy) | (UTC+10:30) Wyspa Lord Howe |
+| Bougainville Standard Time | (UTC+11:00) Wyspa Bougainville |
 | Russia Time Zone 10 | (UTC+11:00) Czokurdach |
 | Magadan (czas standardowy) | (UTC+11:00) Magadan |
-| Norfolk (czas standardowy) | (UTC+11:00) Norfolk |
+| Norfolk (czas standardowy) | (UTC+11:00) Wyspa Norfolk |
 | Sachalin (czas standardowy) | (UTC+11:00) Sachalin |
-| Środkowy Pacyfik (czas standardowy) | (UTC+11:00) Wyspy Salomona, Nowa Kaledonia |
+| Centralna standardowy czas pacyficzny | (UTC+11:00) Wyspy Salomona, Nowa Kaledonia |
 | Russia Time Zone 11 | (UTC+12:00) Anadyr, Pietropawłowsk Kamczacki |
 | Nowa Zelandia (czas standardowy) | (UTC+12:00) Auckland, Wellington |
 | UTC+12 | (UTC+12:00) Uniwersalny czas koordynowany+12 |
 | Fidżi (czas standardowy) | (UTC+12:00) Fidżi |
-| Kamczatka (czas standardowy) | (GMT+12:00) Pietropawłowsk Kamczacki — stare |
+| Kamchatka Standard Time | (UTC+12:00) Pietropawłowsk Kamczacki — stare |
 | Wyspy Chatham (czas standardowy) | (UTC+12:45) Wyspy Chatham |
-| UTC+13 | (UTC+13:00) Uniwersalny czas koordynowany+13 |
+| UTC+13 | (UTC + 13:00) Koordynowane uniwersalny czas + 13 |
 | Tonga (czas standardowy) | (UTC+13:00) Nuku'alofa |
 | Samoa (czas standardowy) | (UTC+13:00) Samoa |
 | Line Islands (czas standardowy) | (UTC+14:00) Wyspa Kiritimati |

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e128e7e8b39075d23d7d4fe2bdc856b030ea05
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3a0c0795ff859b6ecf95e1627693c4a7b066081a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899902"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Clever
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Clever z usługą Azure AD, należy dod
 
 **Aby dodać aplikację Clever z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -151,7 +151,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Clever, wy
 
 1. W innym oknie przeglądarki internetowej zaloguj się do firmowej witryny aplikacji Clever jako administrator.
 
-1. Na pasku narzędzi kliknij pozycję **Instant Login (Błyskawiczne logowanie)**.
+1. Na pasku narzędzi kliknij pozycję **Instant Login (Błyskawiczne logowanie)** .
 
     ![Błyskawiczne logowanie](./media/clever-tutorial/ic798984.png "Błyskawiczne logowanie")
 
@@ -239,7 +239,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Clever w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Clever, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

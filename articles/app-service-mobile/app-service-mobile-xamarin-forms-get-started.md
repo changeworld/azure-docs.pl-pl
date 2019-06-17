@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: b0719f6ac2f99f9e665b1265665752dd53ccbaf0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b47e498754bad6917efca5b7f19f8ebce9cf0330
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242661"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062209"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Tworzenie aplikacji platformy Xamarin.Forms na platformie Azure
 
@@ -48,19 +48,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 Do otwierania rozwiązania wymagane są narzędzia Visual Studio Tools for Xamarin. Zobacz [instrukcje dotyczące instalacji platformy Xamarin][Install Xamarin]. Jeśli te narzędzia zostały już zainstalowane, wykonaj następujące kroki, aby pobrać i otwórz rozwiązanie:
 
-### <a name="visual-studio"></a>Visual Studio
-
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com/).
-
-2. W bloku ustawień aplikacji mobilnej kliknij pozycję **Szybki start** (w obszarze Wdrożenie > **Xamarin.Forms**). W kroku 3 kliknij pozycję **Utwórz nową aplikację**, jeśli nie została jeszcze wybrana.  Następnie kliknij przycisk **Pobierz**.
-
-   Ta akcja spowoduje pobranie projektu zawierającego aplikację klienta połączoną z aplikacją mobilną. Zapisz skompresowany plik projektu na komputerze lokalnym i zapamiętaj, gdzie został on zapisany.
-
-3. Wyodrębnij pobrany projekt, a następnie otwórz go w programie Visual Studio.
-
-4. Wykonaj poniższe instrukcje, aby uruchomić projekty systemu Android lub Windows, a jeśli w sieci jest dostępny komputer Mac, również projekty systemu iOS.
-
-### <a name="visual-studio-for-mac"></a>Visual Studio dla komputerów Mac
+### <a name="visual-studio-windows-and-mac"></a>Visual Studio (Windows i Mac)
 
 1. Przejdź do [witryny Azure portal](https://portal.azure.com/) i przejdź do aplikacji mobilnej, który został utworzony. Na `Overview` bloku, zwróć uwagę na adres URL, który jest publiczny punkt końcowy dla twojej aplikacji mobilnej. Przykład — nazwa witryny, dla mojej nazwy aplikacji "test123" będzie https://test123.azurewebsites.net.
 

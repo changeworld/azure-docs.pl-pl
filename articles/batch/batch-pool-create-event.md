@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776511"
 ---
 # <a name="pool-create-event"></a>Zdarzenie utworzenia puli
@@ -47,7 +47,7 @@ ms.locfileid: "60776511"
 }
 ```
 
-|Element|Type|Uwagi|
+|Element|Typ|Uwagi|
 |-------------|----------|-----------|
 |id|String|Identyfikator puli.|
 |displayName|String|Nazwa wyświetlana puli.|
@@ -61,18 +61,18 @@ ms.locfileid: "60776511"
 |enableInterNodeCommunication|Bool|Określa, czy pula jest skonfigurowany do bezpośredniej komunikacji między węzłami.|
 |isAutoPool|Bool|Określa, czy pula została utworzona za pośrednictwem mechanizmu AutoPool zadania.|
 |maxTasksPerNode|Int32|Maksymalna liczba zadań, które można uruchomić jednocześnie w jednym węźle obliczeń w puli.|
-|vmFillType|String|Definiuje sposób rozdzielania zadań przez usługę Partia zadań między węzły obliczeń w puli. Prawidłowe wartości są dystrybuowane lub pakietu.|
+|vmFillType|String|Definiuje, jak usługa Batch rozdziela zadania podrzędne między węzłami obliczeniowymi w puli. Prawidłowe wartości są dystrybuowane lub pakietu.|
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
 |osFamily|String|Rodzina systemów operacyjnych gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Możliwe wartości:<br /><br /> **2** — 2 rodziny systemów operacyjnych, równoważne z systemu Windows Server 2008 R2 z dodatkiem SP1.<br /><br /> **3** — 3 rodziny systemów operacyjnych, odpowiednikiem w systemie Windows Server 2012.<br /><br /> **4** — 4 rodziny systemów operacyjnych, równoważne do systemu Windows Server 2012 R2.<br /><br /> Aby uzyskać więcej informacji, zobacz [wersji systemu operacyjnego gościa Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 |targetOSVersion|String|Wersja systemu operacyjnego gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Wartość domyślna to **\*** określający najnowszej wersji systemu operacyjnego dla określonej rodziny.<br /><br /> Aby uzyskać inne dozwolonych wartości, zobacz [wersji systemu operacyjnego gościa Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
 |[imageReference](#bk_imgref)|Typ złożony|Określa informacje dotyczące platformy lub obrazu z witryny Marketplace do użycia.|
 |nodeAgentSKUId|String|Jednostka SKU agenta węzła partii aprowizowane w węźle obliczeniowym.|
@@ -80,21 +80,21 @@ ms.locfileid: "60776511"
 
 ###  <a name="bk_imgref"></a> imageReference
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
-|Wydawcy|String|Wydawca obrazu.|
+|publisher|String|Wydawca obrazu.|
 |oferty|String|Oferta obrazu.|
 |sku|String|Jednostka SKU obrazu.|
 |version|String|Wersja obrazu.|
 
 ###  <a name="bk_winconf"></a> windowsConfiguration
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
 |enableAutomaticUpdates|Boolean|Wskazuje, czy maszyna wirtualna jest włączona dla aktualizacji automatycznych. Jeśli ta właściwość nie zostanie określony, wartość domyślna to true.|
 
 ###  <a name="bk_netconf"></a> Konfiguracja sieci
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|--------------|----------|
 |subnetId|String|Określa identyfikator zasobu podsieci, w którym są tworzone w puli węzłów obliczeniowych.|

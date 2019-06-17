@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506628"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Wdrażanie usługi Menedżer urządzeń StorSimple dla urządzeń z serii StorSimple 8000
@@ -75,9 +75,9 @@ Wykonaj poniższe kroki, aby usunąć usługę.
 
     ![Usługa wyszukiwania do usunięcia](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Spowoduje to przejście do bloku usługi Menedżer urządzeń StorSimple. Kliknij polecenie **Usuń**.
+2. Spowoduje to przejście do bloku usługi Menedżer urządzeń StorSimple. Kliknij przycisk **Usuń**.
 
-    ![Usuwanie usługi](./media/storsimple-8000-manage-service/deletessdevman2.png)
+    ![Usuń usługę](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
 3. Kliknij przycisk **tak** w powiadomieniu o potwierdzenie. Może upłynąć kilka minut, aż usługi do usunięcia.
 
@@ -189,9 +189,9 @@ W witrynie Azure portal są obsługiwane tylko na urządzeniach StorSimple z akt
 
 | Operacja                                                                                                                       | Obsługiwane      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Rejestrowanie urządzenia                                                                                                               | Yes            |
-| Konfigurowanie ustawień urządzenia, takich jak ogólne, sieci i zabezpieczeń                                                                | Yes            |
-| Skanowanie, Pobierz i zainstaluj aktualizacje                                                                                             | Yes            |
+| Rejestrowanie urządzenia                                                                                                               | Tak            |
+| Konfigurowanie ustawień urządzenia, takich jak ogólne, sieci i zabezpieczeń                                                                | Tak            |
+| Skanowanie, Pobierz i zainstaluj aktualizacje                                                                                             | Tak            |
 | Dezaktywowanie urządzenia                                                                                                               | Yes            |
 | Usuwanie urządzenia                                                                                                                   | Yes            |
 | Tworzenie, modyfikowanie i usuwanie kontenera woluminów                                                                                   | Nie             |
@@ -200,7 +200,7 @@ W witrynie Azure portal są obsługiwane tylko na urządzeniach StorSimple z akt
 | Utwórz kopię zapasową ręczne                                                                                                            | Nie             |
 | Wykonaj zaplanowane tworzenie kopii zapasowej                                                                                                         | Nie dotyczy |
 | Przywracanie z kopii zapasowych                                                                                                        | Nie             |
-| Sklonować na urządzeniu z systemem aktualizacji w wersji 3.0 lub nowszy <br> Urządzenie źródłowe jest uruchomiony w wersji wcześniejszej niż Update w wersji 3.0.                                | Yes            |
+| Sklonować na urządzeniu z systemem aktualizacji w wersji 3.0 lub nowszy <br> Urządzenie źródłowe jest uruchomiony w wersji wcześniejszej niż Update w wersji 3.0.                                | Tak            |
 | Sklonować na urządzeniu z systemem w wersjach wcześniejszych niż Update w wersji 3.0                                                                          | Nie             |
 | Tryb failover, jak urządzenie źródłowe <br> (z urządzenia z wersją przed Update w wersji 3.0 na urządzeniu z systemem Update w wersji 3.0 i nowszych)                                                               | Yes            |
 | Pracy awaryjnej jako urządzenie docelowe <br> (na urządzeniu z systemem w wersji wcześniejszej niż 3.0 aktualizacji oprogramowania)                                                                                   | Nie             |

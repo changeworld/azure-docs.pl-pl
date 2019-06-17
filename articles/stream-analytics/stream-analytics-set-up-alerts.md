@@ -7,20 +7,19 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 09a5c77c770f7709b90d4959da5be9134b0f0ad9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771954"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077679"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Konfigurowanie alertów dotyczących zadań usługi Azure Stream Analytics
 
 Należy monitorować zadania usługi Azure Stream Analytics do upewnij się, że zadanie działa nieprzerwanie, bez problemów. W tym artykule opisano sposób konfigurowania alertów dla typowych scenariuszy, które powinny być monitorowane. 
 
-Zasady można skonfigurować pod kątem dotyczące metryk za pośrednictwem portalu i może być konfigurowana [programowo](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) danych dzienników operacji.
+Można zdefiniować reguły dotyczące metryk z danych dzienników operacji za pośrednictwem portalu, a także [programowo](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a).
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Konfigurowanie alertów w witrynie Azure portal
 
@@ -30,7 +29,7 @@ Poniższy przykład pokazuje, jak skonfigurować alerty, gdy zadanie przechodzi 
 
 2. Na **zadania** stronie, przejść do **monitorowanie** sekcji.  
 
-3. Wybierz **metryki**, a następnie kliknij przycisk **Nowa reguła alertu**.
+3. Wybierz **metryki**, a następnie **Nowa reguła alertu**.
 
    ![Ustawienia alertów usługi Stream Analytics portalu Azure](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
@@ -38,7 +37,7 @@ Poniższy przykład pokazuje, jak skonfigurować alerty, gdy zadanie przechodzi 
 
    ![Wybierz nazwę sygnał alertu usługi Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. W obszarze **konfigurowanie logiki sygnału**, zmień **poziom zdarzenia** do **wszystkich** i zmień **stan** do **nie powiodło się** . Pozostaw **zdarzenie zainicjowane przez** blank, a następnie kliknij przycisk **gotowe**.
+5. W obszarze **konfigurowanie logiki sygnału**, zmień **poziom zdarzenia** do **wszystkich** i zmień **stan** do **nie powiodło się** . Pozostaw **zdarzenie zainicjowane przez** puste i wybierz **gotowe**.
 
    ![Konfigurowanie logiki sygnału dla alertu usługi Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 

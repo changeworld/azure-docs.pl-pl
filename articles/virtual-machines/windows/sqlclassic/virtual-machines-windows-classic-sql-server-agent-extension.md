@@ -17,10 +17,10 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2b719185aabd39cd70b9cb890a9599aa06ca4ff4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334849"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatyzowanie zadań zarządzania na maszynach wirtualnych platformy Azure za pomocą rozszerzenia agenta programu SQL Server (wersja klasyczna)
@@ -94,7 +94,7 @@ Można również użyć **Get AzureVMSqlServerExtension** polecenia cmdlet progr
 
     Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
 
-## <a name="removal"></a>Usunięcie
+## <a name="removal"></a>Usuwanie
 W witrynie Azure Portal, można odinstalować rozszerzenie, klikając przycisk wielokropka **rozszerzenia** blok właściwości maszyny wirtualnej. Następnie kliknij przycisk **Odinstaluj**.
 
 ![Odinstaluj rozszerzenie agenta IaaS programu SQL Server w witrynie Azure Portal](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)

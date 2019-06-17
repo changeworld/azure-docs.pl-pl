@@ -1,136 +1,156 @@
 ---
 title: Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service
-description: Jak utworzyć klastry z włączoną obsługą usługi Azure Active Directory Azure Kubernetes Service (AKS).
+description: Sposób tworzenia klastrów z obsługą usługi Azure Active Directory Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: a6ed8ec37a3b20ccdbd2b013ba308518d8e3b97c
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: db166c82e39e9184528fde67ff868229cf9b1d57
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849890"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061112"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service
 
-Usługa Azure Kubernetes Service (AKS) można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). W tej konfiguracji należy zalogować się do klastra usługi AKS przy użyciu tokenu uwierzytelniania usługi Azure Active Directory. Ponadto administratorzy klastra mogą Konfigurowanie kontroli dostępu opartej na rolach Kubernetes (RBAC) na podstawie członkostwa grupy użytkownika tożsamości lub katalogu.
+Usługa Azure Kubernetes Service (AKS) można skonfigurować do użycia usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkowników. W tej konfiguracji można Zaloguj się do klastra usługi AKS przy użyciu token uwierzytelniania usługi Azure AD.
 
-W tym artykule dowiesz się, jak wdrażanie wstępnie wymaganych składników dla usługi AKS i Azure AD, a następnie wdrożyć klaster usługi platformy Azure z obsługą usługi AD i tworzeniu Podstawowa rola RBAC w klastrze usługi AKS przy użyciu witryny Azure portal. Możesz również [wykonaj te kroki przy użyciu wiersza polecenia platformy Azure][azure-ad-cli].
+Administratorzy klastra mogą skonfigurować kontroli dostępu opartej na rolach Kubernetes (RBAC) na podstawie członkostwa grupy użytkownika tożsamości lub katalogu.
 
-Obowiązują następujące ograniczenia:
+W tym artykule opisano sposób:
 
-- Usługa Azure AD można włączyć tylko podczas tworzenia klastra nowe, włączone RBAC. Nie można włączyć usługi Azure AD w istniejącym klastrze usługi AKS.
+- Wdrażanie wstępnie wymaganych składników dla usługi AKS i Azure AD.
+- Wdrażanie klastra platformy Azure z obsługą usługi AD.
+- Utwórz podstawowe rolę RBAC w klastrze usługi AKS przy użyciu witryny Azure portal.
+
+Mogą również wykonać te kroki przy użyciu [wiersza polecenia platformy Azure][azure-ad-cli].
+
+> [!NOTE]
+> Usługa Azure AD można włączyć tylko podczas tworzenia nowego klastra z włączoną funkcją RBAC. Nie można włączyć usługi Azure AD w istniejącym klastrze usługi AKS.
 
 ## <a name="authentication-details"></a>Szczegóły uwierzytelniania
 
-Uwierzytelnianie usługi Azure AD jest udostępniane na klastry usługi AKS przy użyciu protokołu OpenID Connect. OpenID Connect jest warstwy tożsamości korzystających z protokołu OAuth 2.0. Aby uzyskać więcej informacji na temat protokołu OpenID Connect, zobacz [Open ID connect dokumentacji][open-id-connect].
+Uwierzytelnianie usługi Azure AD znajduje się w klastrach usługi AKS, które mają OpenID Connect. OpenID Connect jest warstwy tożsamości korzystających z protokołu OAuth 2.0.
 
-Z wewnątrz klastra Kubernetes uwierzytelnianie przy użyciu elementu Webhook tokenów służy do Sprawdź tokeny uwierzytelniania. Uwierzytelnianie przy użyciu elementu Webhook tokenów jest konfigurowane i zarządzane w ramach klastra AKS. Aby uzyskać więcej informacji na temat uwierzytelniania tokenu elementu Webhook, zobacz [dokumentacji uwierzytelniania elementu webhook][kubernetes-webhook].
+Aby uzyskać więcej informacji na temat protokołu OpenID Connect, zobacz [Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OpenID Connect a usługą Azure AD][open-id-connect].
 
-Aby zapewnić uwierzytelnianie usługi Azure AD dla klastra usługi AKS, są tworzone dwie aplikacje usługi Azure AD. Pierwsza aplikacja jest składnik serwera, który przeprowadza uwierzytelnianie użytkownika. Druga aplikacja jest składnik klienta, który jest używany po wyświetleniu monitu przez interfejs wiersza polecenia do uwierzytelniania. Ta aplikacja kliencka używa aplikacji serwera dla rzeczywistego uwierzytelniania poświadczeń dostarczonych przez klienta.
+Wewnątrz klastra Kubernetes element webhook, uwierzytelnianie tokenu jest używany do tokenów uwierzytelniania. Uwierzytelnianie przy użyciu elementu Webhook tokenów jest konfigurowane i zarządzane w ramach klastra AKS.
+
+Aby uzyskać więcej informacji o uwierzytelnianiu token elementu webhook, zobacz [uwierzytelnianie przy użyciu elementu Webhook tokenów] [ kubernetes-webhook] sekcji dokumentacją rozwiązania Kubernetes.
+
+Aby zapewnić uwierzytelnianie usługi Azure AD dla klastra usługi AKS, są tworzone dwie aplikacje usługi Azure AD. Pierwsza aplikacja jest składnik serwera, który zapewnia uwierzytelnianie użytkownika. Druga aplikacja jest składnik klienta, który jest używany po wyświetleniu monitu przez interfejs wiersza polecenia do uwierzytelniania. Ta aplikacja kliencka używa aplikacji serwera dla rzeczywistego uwierzytelniania poświadczeń dostarczonych przez klienta.
 
 > [!NOTE]
-> Podczas konfigurowania usługi Azure AD do uwierzytelniania usługi AKS, dwóch aplikacji usługi Azure AD są skonfigurowane. Należy wykonać kroki, aby delegować uprawnienia dla każdej z aplikacji przez administratora dzierżawy usługi Azure.
+> Po skonfigurowaniu usługi Azure AD do uwierzytelniania usługi AKS, są skonfigurowane dwie aplikacje usługi Azure AD. Kroki, aby delegować uprawnienia dla każdej aplikacji muszą być wykonywane przez administratora dzierżawy usługi Azure.
 
-## <a name="create-server-application"></a>Tworzenie aplikacji serwera
+## <a name="create-the-server-application"></a>Tworzenie aplikacji serwera
 
-Pierwszą aplikację usługi Azure AD umożliwia uzyskiwanie członkostwa grupy użytkowników usługi Azure AD. Utwórz tę aplikację w witrynie Azure portal.
+Pierwszą aplikację usługi Azure AD jest stosowany do uzyskać członkostwo w grupie usługi Azure AD przez użytkownika. Aby utworzyć aplikację w witrynie Azure portal:
 
 1. Wybierz **usługi Azure Active Directory** > **rejestracje aplikacji** > **nowej rejestracji**.
 
-    * Nadaj aplikacji nazwę, taką jak *AKSAzureADServer*.
-    * Aby uzyskać **obsługiwane typy kont**, wybierz *kont w tym katalogu organizacji tylko*.
-    * Wybierz *Web* dla **identyfikator URI przekierowania** wpisz i wprowadź dowolną wartość w formacie identyfikatora URI, taki jak *https://aksazureadserver*.
-    * Wybierz **zarejestrować** po zakończeniu.
+    a. Nadaj aplikacji nazwę, taką jak *AKSAzureADServer*.
 
-1. Wybierz **manifestu** i edytować `groupMembershipClaims` wartość `"All"`.
+    b. Aby uzyskać **obsługiwane typy kont**, wybierz opcję **kont w tym katalogu organizacji tylko**.
+    
+    c. Wybierz **Web** dla identyfikatora URI przekierowania typu, a następnie wprowadź dowolną wartość sformatowany identyfikator URI, takich jak *https://aksazureadserver* .
+
+    d. Wybierz **zarejestrować** po zakończeniu.
+
+2. Wybierz **manifestu**, a następnie Edytuj **groupMembershipClaims:** wartość jako **wszystkich**. Po zakończeniu aktualizacji, wybierz **Zapisz**.
 
     ![Członkostwo w grupie aktualizacji do wszystkich](media/aad-integration/edit-manifest.png)
 
-    **Zapisz** aktualizacji po wykonaniu tych czynności.
+3. W okienku po lewej stronie aplikacji usługi Azure AD wybierz **certyfikaty i klucze tajne**.
 
-1. W lewym obszarze nawigacji aplikacji usługi Azure AD, wybierz **certyfikaty i klucze tajne**.
+    a. Wybierz **+ nowy wpis tajny klienta**.
 
-    * Wybierz **+ nowy wpis tajny klienta**.
-    * Dodaj opis klucza, takie jak *serwera usługi Azure AD w usłudze AKS*. Wybierz czas wygaśnięcia, a następnie wybierz **Dodaj**.
-    * Zanotuj wartość klucza. Jest wyświetlane tylko ten czas wstępnej. Podczas wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest określany jako `Server application secret`.
+    b. Dodaj opis klucza, takie jak *serwera usługi Azure AD w usłudze AKS*. Wybierz czas wygaśnięcia, a następnie wybierz pozycję **Dodaj**.
 
-1. W lewym obszarze nawigacji aplikacji usługi Azure AD, wybierz **uprawnienia do interfejsu API**, następnie **+ Dodaj uprawnienia**.
+    c. Należy zauważyć wartość klucza, który jest wyświetlany tylko w tej chwili. Podczas wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, wartość ta nosi nazwę wpisu tajnego aplikacji serwera.
 
-    * W obszarze **Microsoft APIs**, wybierz *programu Microsoft Graph*.
-    * Wybierz **delegowane uprawnienia**, należy zaznaczyć w polu **katalogu > Directory.Read.All (Czytaj dane katalogu)**.
-        * Jeśli domyślny delegować uprawnienia dla **użytkownika > User.Read (Zaloguj się i odczytuj profil użytkownika)** nie istnieje, należy zaznaczyć to uprawnienie.
-    * Wybierz **uprawnienia aplikacji**, należy zaznaczyć w polu **katalogu > Directory.Read.All (Czytaj dane katalogu)**.
+4. W okienku po lewej stronie aplikacji usługi Azure AD wybierz **uprawnienia do interfejsu API**, a następnie wybierz pozycję **+ Dodaj uprawnienia**.
 
-        ![Ustaw uprawnienia do wykresu](media/aad-integration/graph-permissions.png)
+    a. W obszarze **Microsoft APIs**, wybierz opcję **programu Microsoft Graph**.
 
-    * Wybierz **Dodaj uprawnienia** Aby zapisać aktualizacje.
+    b. Wybierz **delegowane uprawnienia**, a następnie zaznacz pole wyboru obok pozycji **katalogu > Directory.Read.All (Czytaj dane katalogu)** .
 
-    * W obszarze **wyrazić zgody** sekcji, możliwość **udzielić zgody administratora**. Ten przycisk jest nieaktywny i jest niedostępna, jeśli bieżące konto nie jest administratorem dzierżawy.
+    c. Jeśli domyślny delegować uprawnienia dla **użytkownika > User.Read (Zaloguj się i odczytuj profil użytkownika)** nie istnieje, zaznacz pole wyboru obok niego.
 
-        Po pomyślnym przyznano uprawnienia, w portalu zostanie wyświetlone następujące powiadomienie:
+    d. Wybierz **uprawnienia aplikacji**, a następnie zaznacz pole wyboru obok pozycji **katalogu > Directory.Read.All (Czytaj dane katalogu)** .
 
-        ![Powiadomienie o pomyślnym uprawnienia przyznane](media/aad-integration/permissions-granted.png)
+    ![Ustaw uprawnienia do wykresu](media/aad-integration/graph-permissions.png)
 
-1. W lewym obszarze nawigacji aplikacji usługi Azure AD, wybierz **uwidaczniania interfejsu API**, następnie **+ Dodaj zakres**.
+    e. Wybierz **Dodaj uprawnienia** Aby zapisać aktualizacje.
+
+    f. W obszarze **wyrazić zgody**, wybierz opcję **udzielić zgody administratora**. Ten przycisk jest niedostępny, jeśli bieżące konto nie jest administratorem dzierżawy.
+
+    Po pomyślnym udzieleniu uprawnień, w portalu zostanie wyświetlone następujące powiadomienie:
+
+   ![Powiadomienie o pomyślnym uprawnienia przyznane](media/aad-integration/permissions-granted.png)
+
+5. W okienku po lewej stronie aplikacji usługi Azure AD wybierz **uwidaczniania interfejsu API**, a następnie wybierz pozycję **+ Dodaj zakres**.
     
-    * Ustaw *nazwa zakresu*, *nazwę wyświetlaną zgody administratora*, i *opis zgody administratora*, takich jak *AKSAzureADServer*.
-    * Upewnij się, że **stanu** ustawiono *włączone*.
+    a. Wprowadź **nazwa zakresu**, **nazwę wyświetlaną zgody administratora**, a następnie **opis zgody administratora** takich jak *AKSAzureADServer*.
 
-        ![Udostępnianie aplikacji serwera jako interfejsu API do użycia z innymi usługami](media/aad-integration/expose-api.png)
+    b. Upewnij się, że **stanu** ustawiono **włączone**.
 
-    * Wybierz **Dodaj zakres**.
+    ![Udostępnianie aplikacji serwera jako interfejsu API do użycia z innymi usługami](media/aad-integration/expose-api.png)
 
-1. Wróć do aplikacji **Przegląd** strony i zwróć uwagę na **identyfikator aplikacji (klienta)**. Podczas wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest określany jako `Server application ID`.
+    c. Wybierz **Dodaj zakres**.
 
-   ![Uzyskiwanie Identyfikatora aplikacji](media/aad-integration/application-id.png)
+6. Wróć do aplikacji **Przegląd** strony i zanotuj **identyfikator aplikacji (klienta)** . Podczas wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest nazywana identyfikator serwera aplikacji.
 
-## <a name="create-client-application"></a>Tworzenie aplikacji klienckiej
+    ![Uzyskiwanie Identyfikatora aplikacji](media/aad-integration/application-id.png)
 
-Druga aplikacja usługi Azure AD jest używany podczas logowania się przy użyciu interfejsu wiersza polecenia Kubernetes (`kubectl`).
+## <a name="create-the-client-application"></a>Tworzenie aplikacji klienckiej
+
+Druga aplikacja usługi Azure AD jest używany, gdy logują się przy użyciu interfejsu wiersza polecenia Kubernetes (kubectl).
 
 1. Wybierz **usługi Azure Active Directory** > **rejestracje aplikacji** > **nowej rejestracji**.
 
-    * Nadaj aplikacji nazwę, taką jak *AKSAzureADClient*.
-    * Aby uzyskać **obsługiwane typy kont**, wybierz *kont w tym katalogu organizacji tylko*.
-    * Wybierz *Web* dla **identyfikator URI przekierowania** wpisz i wprowadź dowolną wartość w formacie identyfikatora URI, taki jak *https://aksazureadclient*.
-    * Wybierz **zarejestrować** po zakończeniu.
+    a. Nadaj aplikacji nazwę, taką jak *AKSAzureADClient*.
 
-1. W lewym obszarze nawigacji aplikacji usługi Azure AD, wybierz **uprawnienia do interfejsu API**, następnie **+ Dodaj uprawnienia**.
+    b. Aby uzyskać **obsługiwane typy kont**, wybierz opcję **kont w tym katalogu organizacji tylko**.
 
-    * Wybierz **Moje interfejsy API**, następnie wybierz utworzony w poprzednim kroku, takie jak aplikacja serwera usługi Azure AD *AKSAzureADServer*.
-    * Wybierz **delegowane uprawnienia**, następnie zaznaczyć pole obok aplikacji serwera usługi Azure AD.
+    c. Wybierz **Web** dla identyfikatora URI przekierowania typu, a następnie wprowadź dowolną wartość sformatowany identyfikator URI takich jak *https://aksazureadclient* .
 
-        ![Skonfiguruj uprawnienia aplikacji](media/aad-integration/select-api.png)
+    d. Wybierz **zarejestrować** po zakończeniu.
 
-    * Wybierz **Dodaj uprawnienia**.
+2. W okienku po lewej stronie aplikacji usługi Azure AD wybierz **uprawnienia do interfejsu API**, a następnie wybierz pozycję **+ Dodaj uprawnienia**.
 
-    * W obszarze **wyrazić zgody** sekcji, możliwość **udzielić zgody administratora**. Ten przycisk jest nieaktywny i jest niedostępna, jeśli bieżące konto nie jest administratorem dzierżawy.
+    a. Wybierz **Moje interfejsy API**, a następnie wybierz utworzony w poprzednim kroku, takie jak aplikacja serwera usługi Azure AD *AKSAzureADServer*.
 
-        Po pomyślnym przyznano uprawnienia, w portalu zostanie wyświetlone następujące powiadomienie:
+    b. Wybierz **delegowane uprawnienia**, a następnie zaznacz pole wyboru obok aplikacji serwera usługi Azure AD.
 
-        ![Powiadomienie o pomyślnym uprawnienia przyznane](media/aad-integration/permissions-granted.png)
+    ![Skonfiguruj uprawnienia aplikacji](media/aad-integration/select-api.png)
 
-1. W lewym obszarze nawigacji aplikacji usługi Azure AD, wybierz **uwierzytelniania**.
+    c. Wybierz **Dodaj uprawnienia**.
 
-    * W obszarze **domyślny typ klienta**, wybierz opcję **tak** do *traktować klienta jako publicznych klienta*.
+    d. W obszarze **wyrazić zgody**, wybierz opcję **udzielić zgody administratora**. Ten przycisk jest niedostępny, jeśli bieżące konto nie jest administratorem dzierżawy. Po udzieleniu uprawnień są następujące powiadomienie jest wyświetlane w portalu:
 
-1. W okienku nawigacji po lewej stronie aplikacji usługi Azure AD, zwróć uwagę na **identyfikator aplikacji**. W przypadku wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest określany jako `Client application ID`.
+    ![Powiadomienie o pomyślnym uprawnienia przyznane](media/aad-integration/permissions-granted.png)
+
+3. W okienku po lewej stronie aplikacji usługi Azure AD wybierz **uwierzytelniania**.
+
+    - W obszarze **domyślny typ klienta**, wybierz opcję **tak** do **traktować klienta jako publicznych klienta**.
+
+5. W okienku po lewej stronie aplikacji usługi Azure AD Zanotuj identyfikator aplikacji. Podczas wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest nazywana identyfikator klienta aplikacji.
 
    ![Uzyskiwanie Identyfikatora aplikacji](media/aad-integration/application-id-client.png)
 
-## <a name="get-tenant-id"></a>Pobieranie identyfikatora dzierżawy
+## <a name="get-the-tenant-id"></a>Pobieranie Identyfikatora dzierżawy
 
-Na koniec Uzyskaj identyfikator dzierżawy platformy Azure. Ta wartość jest używana podczas tworzenia klastra usługi AKS.
+Następnie Uzyskaj identyfikator dzierżawy platformy Azure. Ta wartość jest używana podczas tworzenia klastra usługi AKS.
 
-W witrynie Azure portal, wybierz **usługi Azure Active Directory** > **właściwości** i zwróć uwagę na **identyfikator katalogu**. Podczas tworzenia klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest określany jako `Tenant ID`.
+W witrynie Azure portal, wybierz **usługi Azure Active Directory** > **właściwości** i zanotuj **identyfikator katalogu**. Podczas tworzenia klastra usługi AKS z obsługą usługi AD systemu Azure, wartość ta jest nazywana identyfikatorem dzierżawy.
 
 ![Uzyskaj identyfikator dzierżawy platformy Azure](media/aad-integration/tenant-id.png)
 
-## <a name="deploy-cluster"></a>Wdrażanie klastra
+## <a name="deploy-the-aks-cluster"></a>Wdrażanie klastra AKS
 
 Użyj [Tworzenie grupy az] [ az-group-create] polecenie, aby utworzyć grupę zasobów dla klastra AKS.
 
@@ -138,7 +158,7 @@ Użyj [Tworzenie grupy az] [ az-group-create] polecenie, aby utworzyć grupę za
 az group create --name myResourceGroup --location eastus
 ```
 
-Wdrażanie klastra przy użyciu [tworzenie az aks] [ az-aks-create] polecenia. Zastąp wartości w poniższym poleceniu przykładowe wartości zebrane podczas tworzenia aplikacji usługi Azure AD, aby uzyskać identyfikator aplikacji serwera i klucz tajny, Identyfikatora aplikacji klienckiej i identyfikator dzierżawy:
+Użyj [tworzenie az aks] [ az-aks-create] polecenie, aby wdrożyć klaster AKS. Następnie zastąp wartości w następujące przykładowe polecenie. Użyj wartości zebrane podczas tworzenia aplikacji usługi Azure AD dla Identyfikatora aplikacji serwera, klucz tajny aplikacji, Identyfikatora aplikacji klienckiej i identyfikator dzierżawy.
 
 ```azurecli
 az aks create \
@@ -151,11 +171,11 @@ az aks create \
   --aad-tenant-id 72f988bf-0000-0000-0000-2d7cd011db47
 ```
 
-Trwa kilka minut, aby utworzyć klaster usługi AKS.
+Klaster AKS zajmuje kilka minut, aby utworzyć.
 
-## <a name="create-rbac-binding"></a>Utwórz powiązanie RBAC
+## <a name="create-an-rbac-binding"></a>Utwórz powiązanie RBAC
 
-Konto usługi Azure Active Directory można było korzystać z klastrem usługi AKS, powiązanie roli lub powiązania roli klastra musi zostać utworzona. *Role* zdefiniować uprawnienia, aby przyznać użytkownikom, i *powiązania* zastosować je do odpowiednich użytkowników. Te przypisania można zastosować do danej przestrzeni nazw lub dla całego klastra. Aby uzyskać więcej informacji, zobacz [autoryzacji RBAC przy użyciu][rbac-authorization].
+Przed skorzystaniem z konta usługi Azure Active Directory z klastrem usługi AKS, należy utworzyć powiązania roli lub powiązania roli klastra. Role definiują uprawnienia, aby udzielić i powiązania zastosować je do odpowiednich użytkowników. Te przypisania można zastosować do danej przestrzeni nazw lub dla całego klastra. Aby uzyskać więcej informacji, zobacz [autoryzacji RBAC przy użyciu][rbac-authorization].
 
 Najpierw za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia `--admin` argument do logowania do klastra z prawami dostępu administratora.
 
@@ -163,17 +183,17 @@ Najpierw za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Następnie należy utworzyć ClusterRoleBinding dla konta usługi Azure AD, które chcesz udzielić dostępu do klastra usługi AKS. Poniższy przykład daje pełny dostęp konta do wszystkich przestrzeni nazw w klastrze.
+Następnie należy utworzyć ClusterRoleBinding dla konta usługi Azure AD, które chcesz udzielić dostępu do klastra usługi AKS. Poniższy przykład zapewnia konta o pełny dostęp do wszystkich przestrzeni nazw w klastrze:
 
-- Jeśli użytkownika można przyznać, że powiązanie funkcji RBAC dla znajduje się w tej samej dzierżawie usługi Azure AD, należy przypisać uprawnienia, w oparciu o nazwę główną użytkownika (UPN). Przejdź do kroku do tworzenia manifestu YAML ClusterRuleBinding.
+- Jeśli użytkownika można przyznać, że powiązanie funkcji RBAC dla znajduje się w tej samej dzierżawie usługi Azure AD, należy przypisać uprawnienia, w oparciu o nazwę główną użytkownika (UPN). Przejdź do kroku do tworzenia manifestu YAML ClusterRoleBinding.
 
-- Jeśli użytkownik znajduje się w innej usłudze Azure AD dzierżawy, kwerendy i użyć *objectId* właściwości zamiast tego. Jeśli to konieczne, uzyskać *objectId* użytkownika wymagane konta przy użyciu [az ad użytkownika show] [ az-ad-user-show] polecenia. Podaj główną nazwę użytkownika (UPN) konta wymagane:
+- Jeśli użytkownik znajduje się w innej usłudze Azure AD dzierżawy, kwerendy i użyć **objectId** właściwości zamiast tego. Jeśli to konieczne, uzyskać identyfikator obiektu konta użytkowników wymagane za pomocą [az ad użytkownika show] [ az-ad-user-show] polecenia. Podaj główną nazwę użytkownika (UPN) konta wymagane:
 
     ```azurecli-interactive
     az ad user show --upn-or-object-id user@contoso.com --query objectId -o tsv
     ```
 
-Utwórz plik, takich jak *rbac-aad-user.yaml*i Wklej poniższą zawartość. W ostatnim wierszu, Zastąp *userPrincipalName_or_objectId* przy użyciu nazwy UPN lub obiektu o identyfikatorze zależności od tego, jeśli użytkownik jest tą samą dzierżawą usługi Azure AD, czy nie.
+Utwórz plik, takich jak *rbac-aad-user.yaml*, a następnie wklej poniższą zawartość. W ostatnim wierszu, Zastąp **userPrincipalName_or_objectId** o identyfikatorze głównej nazwy użytkownika lub obiekt. Wybór zależy od tego, czy użytkownik jest tą samą dzierżawą usługi Azure AD, czy nie.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -190,13 +210,15 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
-Stosowanie użyciu powiązania [zastosować kubectl] [ kubectl-apply] polecenia, jak pokazano w poniższym przykładzie:
+Zastosuj powiązanie, używając [zastosować kubectl] [ kubectl-apply] polecenia, jak pokazano w poniższym przykładzie:
 
 ```console
 kubectl apply -f rbac-aad-user.yaml
 ```
 
-Powiązanie roli można również tworzyć dla wszystkich członków grupy usługi Azure AD. Grupy usługi Azure AD są określane za pomocą identyfikator obiektu grupy, jak pokazano w poniższym przykładzie. Utwórz plik, takich jak *rbac-aad-group.yaml*i Wklej poniższą zawartość. Zaktualizuj identyfikator obiektu grupy przy użyciu jednego z dzierżawą usługi Azure AD:
+Powiązanie roli można również tworzyć dla wszystkich członków grupy usługi Azure AD. Określone grupy usługi Azure AD za pomocą identyfikator obiektu grupy, jak pokazano w poniższym przykładzie.
+
+Utwórz plik, takich jak *rbac-aad-group.yaml*, a następnie wklej poniższą zawartość. Zaktualizuj identyfikator obiektu grupy przy użyciu jednego z dzierżawą usługi Azure AD:
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -213,7 +235,7 @@ subjects:
    name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
 ```
 
-Stosowanie użyciu powiązania [zastosować kubectl] [ kubectl-apply] polecenia, jak pokazano w poniższym przykładzie:
+Zastosuj powiązanie, używając [zastosować kubectl] [ kubectl-apply] polecenia, jak pokazano w poniższym przykładzie:
 
 ```console
 kubectl apply -f rbac-aad-group.yaml
@@ -221,20 +243,20 @@ kubectl apply -f rbac-aad-group.yaml
 
 Aby uzyskać więcej informacji na temat zabezpieczania klastra Kubernetes za pomocą funkcji RBAC, zobacz [autoryzacji RBAC przy użyciu][rbac-authorization].
 
-## <a name="access-cluster-with-azure-ad"></a>Dostęp do klastra za pomocą usługi Azure AD
+## <a name="access-the-cluster-with-azure-ad"></a>Dostęp do klastra z usługą Azure AD
 
-Następnie ściągnąć kontekst dla użytkownika bez uprawnień administratora za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia.
+Ściągnij kontekst dla użytkowników bez uprawnień administratora przy użyciu [az aks get-credentials] [ az-aks-get-credentials] polecenia.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Po uruchomieniu `kubectl` polecenia zostanie wyświetlony monit o uwierzytelnianie za pomocą platformy Azure. Postępuj zgodnie z wyświetlanymi instrukcjami, aby ukończyć proces, jak pokazano w poniższym przykładzie:
+Po uruchomieniu `kubectl` polecenia zostanie wyświetlony monit do uwierzytelnienia za pomocą platformy Azure. Postępuj zgodnie z wyświetlanymi instrukcjami, aby zakończyć proces, jak pokazano w poniższym przykładzie:
 
 ```console
 $ kubectl get nodes
 
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BUJHWDGNL to authenticate.
+To sign in, use a web browser to open https://microsoft.com/devicelogin. Next, enter the code BUJHWDGNL to authenticate.
 
 NAME                       STATUS    ROLES     AGE       VERSION
 aks-nodepool1-79590246-0   Ready     agent     1h        v1.13.5
@@ -242,25 +264,26 @@ aks-nodepool1-79590246-1   Ready     agent     1h        v1.13.5
 aks-nodepool1-79590246-2   Ready     agent     1h        v1.13.5
 ```
 
-Po zakończeniu jest buforowany token uwierzytelniania. Są tylko ponownie monitowany, aby zalogować się po token wygasł lub ponowne utworzenie pliku konfiguracji platformy Kubernetes.
+Po zakończeniu procesu jest buforowany token uwierzytelniania. Zostanie wyświetlony tylko monit Zaloguj się ponownie po wygaśnięciu ważności tokenu lub plik konfiguracji Kubernetes jest utworzony ponownie.
 
-Jeśli widzisz komunikat o błędzie autoryzacji po zalogowaniu się pomyślnie, sprawdź, czy:
+Jeśli po pomyślnym zalogowaniu się zostanie wyświetlony komunikat o błędzie autoryzacji, sprawdź następujące kryteria:
 
 ```console
 error: You must be logged in to the server (Unauthorized)
 ```
 
-1. Zdefiniowana jest odpowiedni obiekt o identyfikatorze lub główną nazwę użytkownika, w zależności od Jeśli konto użytkownika jest w tej samej dzierżawie usługi Azure AD, czy nie.
-2. Użytkownik nie jest członkiem więcej niż 200 grup.
-3. Klucz tajny zdefiniowane w rejestracji aplikacji dla serwera jest zgodna z wartości ustawionej za pomocą `--aad-server-app-secret`
+
+- Zdefiniowana jest odpowiedni obiekt o identyfikatorze lub główną nazwę użytkownika, w zależności od Jeśli konto użytkownika jest w tej samej dzierżawie usługi Azure AD, czy nie.
+- Użytkownik nie jest członkiem więcej niż 200 grup.
+- Zdefiniowane podczas rejestracji aplikacji serwera jest zgodna z wartości ustawionej za pomocą klucza tajnego `--aad-server-app-secret`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby użyć usługi Azure AD użytkownicy i grupy do kontrolowania dostępu do zasobów klastra, zobacz [kontrolować dostęp do zasobów klastra przy użyciu tożsamości usługi Azure AD i kontroli dostępu opartej na rolach w usłudze AKS][azure-ad-rbac].
 
-Aby uzyskać więcej informacji o tym, jak zabezpieczyć klastry Kubernetes, zobacz [opcje dostęp i tożsamość dla usługi AKS)][rbac-authorization].
+Aby uzyskać więcej informacji na temat zabezpieczonych klastrów usługi Kubernetes, zobacz [opcje dostęp i tożsamość dla usługi AKS][rbac-authorization].
 
-Aby uzyskać najlepsze rozwiązania dotyczące kontrolowanie tożsamości i zasobów, zobacz [najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze AKS][operator-best-practices-identity].
+Aby dowiedzieć się więcej na temat kontrolowanie tożsamości i zasobów, zobacz [najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze AKS][operator-best-practices-identity].
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

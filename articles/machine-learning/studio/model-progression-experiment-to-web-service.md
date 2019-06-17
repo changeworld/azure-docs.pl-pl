@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
 ms.openlocfilehash: 28bb96099acb800d9095325b8c7b46a6b5124b4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61066052"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-a-web-service"></a>Jak modelu usługi Machine Learning Studio w miarę z eksperymentu usługi sieci Web
@@ -67,7 +67,7 @@ W ramach tego procesu konwersji eksperymentu szkolenia nie zostanie usunięty. P
 >
 
 ### <a name="the-web-service"></a>Usługa sieci Web
-Po zakończeniu czy eksperymentu predykcyjnej jest gotowy, można wdrożyć jako usługę sieci Web usługi lub usługi sieci Web nowy oparty na usłudze Resource Manager. Do obsługi operacji modelu, wdrażając go jako *usługi sieci Web Machine Learning*, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [klasyczny]**. Do wdrożenia jako *nowe Machine Learning w sieci Web usługi*, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [New]**. Użytkownicy mogą teraz wysyłać dane do modelu przy użyciu usługi sieci Web interfejsu API REST i ponownie wyświetlone wyniki. Aby uzyskać więcej informacji, zobacz [How to consume an Azure Machine Learning Web service](consume-web-services.md) (Jak korzystać z usługi internetowej Azure Machine Learning).
+Po zakończeniu czy eksperymentu predykcyjnej jest gotowy, można wdrożyć jako usługę sieci Web usługi lub usługi sieci Web nowy oparty na usłudze Resource Manager. Do obsługi operacji modelu, wdrażając go jako *usługi sieci Web Machine Learning*, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [klasyczny]** . Do wdrożenia jako *nowe Machine Learning w sieci Web usługi*, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [New]** . Użytkownicy mogą teraz wysyłać dane do modelu przy użyciu usługi sieci Web interfejsu API REST i ponownie wyświetlone wyniki. Aby uzyskać więcej informacji, zobacz [How to consume an Azure Machine Learning Web service](consume-web-services.md) (Jak korzystać z usługi internetowej Azure Machine Learning).
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>Typowy przypadek: tworzenie-predykcyjne usługi sieci Web
 Jeśli eksperymentu nie uczenie modelu analizy predykcyjnej, a następnie użytkownik nie ma potrzeby tworzenia eksperymentu szkolenia i oceniania eksperymentu — istnieje tylko jeden eksperyment i można go wdrożyć jako usługę sieci Web. Usługa Machine Learning Studio wykrywa, czy eksperymentu zawiera model predykcyjny, analizując modułów, które zostały użyte.

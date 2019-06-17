@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450440"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080485"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Dostosowywanie sposobu wyświetlania danych z serwerów OPC UA w rozwiązaniu połączonej fabryki
 
@@ -39,7 +39,7 @@ W tym artykule opisano:
 
 ## <a name="data-sources"></a>Źródła danych
 
-Rozwiązania połączonej fabryki są wyświetlane dane z serwerów OPC UA, połączonego z rozwiązaniem. Instalacja domyślna obejmuje kilka serwerów OPC UA, uruchamiania symulacji fabryki. Można dodać własnych serwerów OPC UA, [nawiązać połączenie za pośrednictwem bramy] [ lnk-connect-cf] do rozwiązania.
+Rozwiązania połączonej fabryki są wyświetlane dane z serwerów OPC UA, połączonego z rozwiązaniem. Instalacja domyślna obejmuje kilka serwerów OPC UA, uruchamiania symulacji fabryki. Można dodać własnych serwerów OPC UA, [nawiązać połączenie za pośrednictwem bramy] [lnk-connect-cf] do rozwiązania.
 
 Możesz przeglądać elementy danych, które połączony serwer OPC UA mogą wysyłać do rozwiązania na pulpicie nawigacyjnym:
 
@@ -79,8 +79,6 @@ Po zakończeniu wprowadzania zmian do **ContosoTopologyDescription.json** pliku,
 
 Dowiedz się więcej o akcelerator rozwiązania połączonej fabryki, czytając następujące artykuły:
 
-* [Przewodnik po akceleratorze rozwiązania połączonej fabryki][lnk-rm-walkthrough]
-* [Wdrażanie bramy dla połączonej fabryki][lnk-connect-cf]
 * [Uprawnienia w witrynie azureiotsolutions.com][lnk-permissions]
 * [Połączona fabryka — często zadawane pytania](iot-accelerators-faq-cf.md)
 * [FAQ][lnk-faq]
@@ -93,7 +91,5 @@ Dowiedz się więcej o akcelerator rozwiązania połączonej fabryki, czytając 
 [img-published]: ./media/iot-accelerators-connected-factory-customize/published.png
 
 
-[lnk-rm-walkthrough]:iot-accelerators-connected-factory-sample-walkthrough.md
-[lnk-connect-cf]:iot-accelerators-connected-factory-gateway-deployment.md
 [lnk-permissions]: iot-accelerators-permissions.md
 [lnk-faq]: iot-accelerators-faq.md

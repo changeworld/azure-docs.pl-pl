@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: 51632b8b68640814fc113a94925b6d6deaca4c5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482562"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64682492"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Aby nawiązać połączenie i zarządzanie urządzeniami StorSimple za pomocą Menedżera migawek StorSimple
 ## <a name="overview"></a>Omówienie
 Węzły można użyć w programie StorSimple Snapshot Manager **zakres** okienko w celu sprawdzenia importowanych danych urządzenia StorSimple i Odśwież urządzenia magazynujące połączone. Ponadto po kliknięciu **urządzeń** węzła, można wyświetlić listę połączonych urządzeń i odpowiednie informacje o stanie w **wyniki** okienka.
 
-![Podłączone urządzenia](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
+![Połączone urządzenia](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
 **Rysunek 1: Podłączone urządzenie StorSimple Snapshot Manager** 
 
@@ -35,7 +35,7 @@ W zależności od Twojego **widoku** wybory, **wyniki** okienku są wyświetlane
 |:--- |:--- |
 | Name (Nazwa) |Nazwa urządzenia, zgodnie z konfiguracją w klasycznej witrynie Azure portal |
 | Modelowanie |Numer modelu urządzenia |
-| Wersja |Wersja oprogramowania zainstalowanego na urządzeniu |
+| Version |Wersja oprogramowania zainstalowanego na urządzeniu |
 | Stan |Czy urządzenie jest dostępne |
 | Ostatnia synchronizacja |Data i godzina, kiedy ostatniej synchronizacji urządzenia |
 | Numer seryjny |Numer seryjny urządzenia |

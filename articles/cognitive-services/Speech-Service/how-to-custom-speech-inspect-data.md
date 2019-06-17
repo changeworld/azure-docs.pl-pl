@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 682f3df362a7fbb0e95a07aa8a8f3a068367eef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 132e355abbdbe147a843c51efd018cc759c06836
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064039"
 ---
 # <a name="inspect-custom-speech-data"></a>Sprawdzanie danych Custom Speech
 
@@ -34,7 +34,7 @@ Wykonaj te instrukcje, aby utworzyć test:
 
 1. Przejdź do **mowy na tekst > Custom Speech > testowania**.
 2. Kliknij przycisk **Dodaj Test**.
-3. Wybierz **kontroli jakości (dane tylko dźwięk)**. Nadaj nazwę, opis, test i wybierz zestaw danych audio.
+3. Wybierz **kontroli jakości (dane tylko dźwięk)** . Nadaj nazwę, opis, test i wybierz zestaw danych audio.
 4. Wybierz maksymalnie dwa modele, które chcesz przetestować.
 5. Kliknij pozycję **Utwórz**.
 
@@ -46,7 +46,7 @@ Gdy stan testu jest *Powodzenie*, kliknij nazwę elementu testu, aby wyświetli�
 
 Aby sprawdzić porównania side-by-side, można przełączać się różne typy błędów, tym wstawiania, usuwania i podstawienia. Nasłuchiwanie audio i porównanie wyników rozpoznawania w każdej kolumnie (wyświetlanie oznaczone przez człowieka transkrypcji oraz wyniki z dwóch modeli mowy na tekst), można zdecydować, gdzie wymaganą ulepszenia i model, który odpowiada Twoim potrzebom.
 
-Procedury kontroli jakości testowania przydaje się do sprawdzania, czy jakość punkt końcowy rozpoznawania mowy jest wystarczający dla aplikacji.  Dla celu miary, dokładności, wymagających uzyskanego audio postępuj zgodnie z instrukcjami w sekcji Testowanie: Ocena dokładności.
+Procedury kontroli jakości testowania przydaje się do sprawdzania, czy jakość punkt końcowy rozpoznawania mowy jest wystarczający dla aplikacji.  Dla celu miary dokładności, wymagających uzyskanego audio, postępuj zgodnie z instrukcjami w [oceny dokładności](how-to-custom-speech-evaluate-data.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

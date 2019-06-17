@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 145960db27247a8535eb96640000b86d810619c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60420209"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Uwidacznianie lokalnej usługi WCF dla aplikacji internetowej w chmurze za pomocą usługi Azure Relay 
@@ -81,7 +81,7 @@ Najpierw utworzysz symulowany system katalogu produktów w środowisku lokalnym.
 ### <a name="create-the-project"></a>Tworzenie projektu
 1. Korzystając z uprawnień administratora, uruchom program Microsoft Visual Studio. W tym celu kliknij prawym przyciskiem myszy ikonę programu Visual Studio, a następnie kliknij pozycję **Uruchom jako administrator**.
 2. W menu **Plik** programu Visual Studio kliknij pozycję **Nowy**, a następnie kliknij pozycję **Projekt**.
-3. W sekcji **Zainstalowane szablony** obszaru **Visual C#** kliknij pozycję **Aplikacja konsolowa (.NET Framework)**. W polu **Nazwa** wpisz nazwę **ProductsServer**:
+3. W sekcji **Zainstalowane szablony** obszaru **Visual C#** kliknij pozycję **Aplikacja konsolowa (.NET Framework)** . W polu **Nazwa** wpisz nazwę **ProductsServer**:
 
    ![Okno dialogowe Nowy projekt][11]
 4. Kliknij przycisk **OK**, aby utworzyć projekt **ProductsServer**.
@@ -229,9 +229,9 @@ W tej sekcji utworzysz prostą aplikację ASP.NET, która będzie wyświetlać d
 
 1. Upewnij się, że program Visual Studio jest uruchomiony z uprawnieniami administratora.
 2. W menu **Plik** programu Visual Studio kliknij pozycję **Nowy**, a następnie kliknij pozycję **Projekt**.
-3. W sekcji **Zainstalowane szablony** w obszarze **Visual C#** kliknij pozycję **Aplikacja internetowa programu ASP.NET (.NET Framework)**. Nazwij projekt **ProductsPortal**. Następnie kliknij przycisk **OK**.
+3. W sekcji **Zainstalowane szablony** w obszarze **Visual C#** kliknij pozycję **Aplikacja internetowa programu ASP.NET (.NET Framework)** . Nazwij projekt **ProductsPortal**. Następnie kliknij przycisk **OK**.
 
-   ![Okno dialogowe Nowy projekt][15]
+   ![Okno dialogowe nowego projektu][15]
 
 4. Na liście **Szablony ASP.NET** w oknie dialogowym **Nowa aplikacja internetowa programu ASP.NET** kliknij pozycję **MVC**.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 73a19fa97a898e2c51912a18f46751e855ee0303
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c2c153d8e67ff952add177d8a98b7561c3165774
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60273330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Menedżera o podwyższonym ryzyku IMPAC
 
@@ -29,7 +29,7 @@ Integrowanie IMPAC ryzyka Manager z usługą Azure AD zapewnia następujące kor
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do menedżera o podwyższonym ryzyku IMPAC.
 * Użytkownikom można automatycznie zalogowany do menedżera o podwyższonym ryzyku IMPAC (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -53,7 +53,7 @@ Aby skonfigurować integrację IMPAC ryzyka Menedżera do usługi Azure AD, nale
 
 **Aby dodać menedżera o podwyższonym ryzyku IMPAC z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,27 +61,27 @@ Aby skonfigurować integrację IMPAC ryzyka Menedżera do usługi Azure AD, nale
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **IMPAC ryzyka Menedżera**, wybierz opcję **IMPAC ryzyka Menedżera** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Menedżer ryzyka IMPAC na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji konfigurowania i testowania, w usłudze Azure AD logowanie jednokrotne, przy użyciu IMPAC ryzyka Manager oparte na użytkownika testu o nazwie **Britta Simon**.
 Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Menedżerze ryzyka IMPAC musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Menedżera o podwyższonym ryzyku IMPAC, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie menedżera o podwyższonym ryzyku IMPAC Single Sign-On](#configure-impac-risk-manager-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego menedżera o podwyższonym ryzyku IMPAC](#create-impac-risk-manager-test-user)**  — aby odpowiednikiem Britta Simon w IMPAC ryzyka Manager połączonej z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -91,7 +91,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Menedżera 
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **menedżera o podwyższonym ryzyku IMPAC** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -111,9 +111,9 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Menedżera 
 
     | Środowisko | Wzorzec URL |
     | ---------------|--------------- |
-    | Na potrzeby produkcji |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
+    | W środowisku produkcyjnym |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | W celu przygotowania i szkolenia  |`https://staging.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
-    | Na potrzeby programowania  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
+    | Do tworzenia  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Aby uzyskać odpowiedzi na pytania |`https://QA.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Dla testu |`https://test.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | | |
@@ -126,9 +126,9 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Menedżera 
 
     | Środowisko | Wzorzec URL |
     | ---------------|--------------- |
-    | Na potrzeby produkcji |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
+    | W środowisku produkcyjnym |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | W celu przygotowania i szkolenia  |`https://staging.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
-    | Na potrzeby programowania  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
+    | Do tworzenia  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Aby uzyskać odpowiedzi na pytania |`https://QA.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Dla testu |`https://test.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | | |
@@ -138,7 +138,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Menedżera 
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
 7. Na **skonfigurować IMPAC ryzyka Manager** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
@@ -152,7 +152,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Menedżera 
 
 ### <a name="configure-impac-risk-manager-single-sign-on"></a>Konfigurowanie IMPAC Menedżera ryzyka logowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne na **IMPAC ryzyka Menedżera** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [IMPAC ryzyka Menedżera zespołu pomocy technicznej](mailto:rmsupport@Impac.co.nz). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **IMPAC ryzyka Menedżera** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [IMPAC ryzyka Menedżera zespołu pomocy technicznej](mailto:rmsupport@Impac.co.nz). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -207,7 +207,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-impac-risk-manager-test-user"></a>Tworzenie użytkownika testowego menedżera o podwyższonym ryzyku IMPAC
 
-W tej sekcji utworzysz użytkownika o nazwie w Menedżerze ryzyka IMPAC Britta Simon. Praca z [zespołem pomocy technicznej IMPAC ryzyka Menedżera](mailto:rmsupport@Impac.co.nz) Aby dodać użytkowników na platformie IMPAC ryzyka menedżera. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie w Menedżerze ryzyka IMPAC Britta Simon. Praca z [zespołem pomocy technicznej IMPAC ryzyka Menedżera](mailto:rmsupport@Impac.co.nz) Aby dodać użytkowników na platformie IMPAC ryzyka menedżera. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

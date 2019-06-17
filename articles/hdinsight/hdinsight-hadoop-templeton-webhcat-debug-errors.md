@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 683580ba65ad775ccec105c78cc1af66fbb63c37
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691872"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067984"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Omówienie i rozwiązywanie błędów odebranych z usługi WebHCat na HDInsight
 
@@ -32,8 +32,6 @@ Więcej informacji na temat błędów odebranych podczas przy użyciu usługi We
 
 * Aby uzyskać **Linux** klastrów: Za pomocą systemu Apache Ambari (sieć web lub interfejsu API REST), aby zmodyfikować wartość. Aby uzyskać więcej informacji, zobacz [Zarządzanie HDInsight przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
-> [!IMPORTANT]  
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ### <a name="default-configuration"></a>Konfiguracja domyślna
 
@@ -45,7 +43,7 @@ Przekroczeniu następujące wartości domyślne go obniżyć wydajność usługi
 | [templeton.exec.max-procs][max-procs] |Maksymalna liczba żądań, które mogą być udostępniane jednocześnie |20 |
 | [mapreduce.jobhistory.max-age-ms][max-age-ms] |Liczba dni, Historia zadania, które zostaną zachowane. |7 dni |
 
-## <a name="too-many-requests"></a>Za dużo żądań
+## <a name="too-many-requests"></a>Zbyt wiele żądań
 
 **Kod stanu HTTP**: 429
 

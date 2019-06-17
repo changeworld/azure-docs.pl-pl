@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61363183"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje w rejestrze tożsamości w Centrum IoT hub
@@ -117,7 +117,7 @@ Komunikat powiadomienia dla urządzenia:
 |operationTimestamp | Sygnatura czasowa ISO8601 operacji |
 |iothub-message-schema | deviceLifecycleNotification |
 
-Treść: Ta sekcja jest w formacie JSON i reprezentuje bliźniaczą reprezentację urządzenia utworzonego tożsamości. Na przykład:
+Body: Ta sekcja jest w formacie JSON i reprezentuje bliźniaczą reprezentację urządzenia utworzonego tożsamości. Na przykład:
 
 ```json
 {
@@ -153,7 +153,7 @@ moduleId | Identyfikator modułu |
 operationTimestamp | Sygnatura czasowa ISO8601 operacji |
 iothub-message-schema | moduleLifecycleNotification |
 
-Treść: Ta sekcja jest w formacie JSON i reprezentuje bliźniaczą reprezentację tożsamości utworzony moduł. Na przykład:
+Body: Ta sekcja jest w formacie JSON i reprezentuje bliźniaczą reprezentację tożsamości utworzony moduł. Na przykład:
 
 ```json
 {
@@ -186,10 +186,10 @@ Tożsamości urządzeń są reprezentowane jako dokumenty JSON z następującymi
 | deviceId |wymagane tylko do odczytu na aktualizacje |Ciąg uwzględniający wielkość liter (maksymalnie 128 znaków) znaki alfanumeryczne znaki ASCII 7-bitowych oraz niektórych znaków specjalnych: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | generationId |wymagane tylko do odczytu |IoT generowanych przez koncentrator, wielkość liter ciągu maksymalnie 128 znaków. Ta wartość jest używana do rozróżniania urządzeń o takiej samej **deviceId**, gdy został usunięty i utworzony ponownie. |
 | etag |wymagane tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia zgodnie [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| uwierzytelnianie |opcjonalne |Obiekt złożony zawierające uwierzytelnianie materiały informacji i zabezpieczeń. |
-| auth.symkey |opcjonalne |Obiekt złożony, zawierający podstawowy i klucz pomocniczy, przechowywane w formacie base64. |
-| status |wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
-| statusReason |opcjonalne |128 ciąg znaków długości, który przechowuje przyczynę stanu tożsamości urządzenia. Wszystkie znaki UTF-8 są dozwolone. |
+| uwierzytelnianie |Opcjonalne |Obiekt złożony zawierające uwierzytelnianie materiały informacji i zabezpieczeń. |
+| auth.symkey |Opcjonalne |Obiekt złożony, zawierający podstawowy i klucz pomocniczy, przechowywane w formacie base64. |
+| status |Wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
+| statusReason |Opcjonalne |128 ciąg znaków długości, który przechowuje przyczynę stanu tożsamości urządzenia. Wszystkie znaki UTF-8 są dozwolone. |
 | statusUpdateTime |tylko do odczytu |Wskaźnik danych czasowych, wyświetlane data i godzina ostatniej aktualizacji stanu. |
 | connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: W tym polu powinna służyć wyłącznie do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
 | connectionStateUpdatedTime |tylko do odczytu |Wskaźnik danych czasowych przedstawiająca stan połączenia datę i godzinę ostatniego został zaktualizowany. |
@@ -211,10 +211,10 @@ Moduł tożsamości są reprezentowane jako dokumenty JSON z następującymi wł
 | moduleId |wymagane tylko do odczytu na aktualizacje |Ciąg uwzględniający wielkość liter (maksymalnie 128 znaków) znaki alfanumeryczne znaki ASCII 7-bitowych oraz niektórych znaków specjalnych: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | generationId |wymagane tylko do odczytu |IoT generowanych przez koncentrator, wielkość liter ciągu maksymalnie 128 znaków. Ta wartość jest używana do rozróżniania urządzeń o takiej samej **deviceId**, gdy został usunięty i utworzony ponownie. |
 | etag |wymagane tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia zgodnie [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| uwierzytelnianie |opcjonalne |Obiekt złożony zawierające uwierzytelnianie materiały informacji i zabezpieczeń. |
-| auth.symkey |opcjonalne |Obiekt złożony, zawierający podstawowy i klucz pomocniczy, przechowywane w formacie base64. |
-| status |wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
-| statusReason |opcjonalne |128 ciąg znaków długości, który przechowuje przyczynę stanu tożsamości urządzenia. Wszystkie znaki UTF-8 są dozwolone. |
+| uwierzytelnianie |Opcjonalne |Obiekt złożony zawierające uwierzytelnianie materiały informacji i zabezpieczeń. |
+| auth.symkey |Opcjonalne |Obiekt złożony, zawierający podstawowy i klucz pomocniczy, przechowywane w formacie base64. |
+| status |Wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
+| statusReason |Opcjonalne |128 ciąg znaków długości, który przechowuje przyczynę stanu tożsamości urządzenia. Wszystkie znaki UTF-8 są dozwolone. |
 | statusUpdateTime |tylko do odczytu |Wskaźnik danych czasowych, wyświetlane data i godzina ostatniej aktualizacji stanu. |
 | connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: W tym polu powinna służyć wyłącznie do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
 | connectionStateUpdatedTime |tylko do odczytu |Wskaźnik danych czasowych przedstawiająca stan połączenia datę i godzinę ostatniego został zaktualizowany. |

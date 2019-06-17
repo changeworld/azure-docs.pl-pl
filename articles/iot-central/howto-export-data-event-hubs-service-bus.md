@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
 ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65463981"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych w usłudze Azure IoT Central
@@ -36,7 +36,7 @@ Jeśli nie masz istniejących zdarzeń koncentratory/usługi Service Bus można 
 ## <a name="create-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
 1. Tworzenie [nowych nazw usługi Event Hubs w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Dowiedz się więcej w [dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
-2. Wybierz subskrypcję. 
+2. wybierz subskrypcję. 
 
     > [!Note] 
     > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
@@ -45,7 +45,7 @@ Jeśli nie masz istniejących zdarzeń koncentratory/usługi Service Bus można 
 ## <a name="create-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
 
 1. Tworzenie [nowej przestrzeni nazw magistrali usług w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . Dowiedz się więcej w [dokumentacja usługi Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
-2. Wybierz subskrypcję. 
+2. wybierz subskrypcję. 
 
     > [!Note] 
     > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.

@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 86e9508049635d51726e9d0bcbdc5a4d52539f3a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 8ec0ae435b9b3818f742531bfaf728f36957ecbf
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384168"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143985"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Szybki start: Tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision Node.js SDK
 
@@ -31,8 +31,8 @@ Ten artykuł zawiera informacje i przykładowy kod, dzięki którym można łatw
 Aby zainstalować zestaw Custom Vision Service SDK dla środowiska Node.js, uruchom następujące polecenie w programie PowerShell:
 
 ```powershell
-npm install azure-cognitiveservices-customvision-training
-npm install azure-cognitiveservices-customvision-prediction
+npm install @azure/cognitiveservices-customvision-training
+npm install @azure/cognitiveservices-customvision-prediction
 ```
 
 [!INCLUDE [get-keys](includes/get-keys.md)]

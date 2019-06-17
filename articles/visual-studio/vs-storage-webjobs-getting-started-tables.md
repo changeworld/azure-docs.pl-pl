@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390836"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Wprowadzenie do usługi Azure Storage (projekty, zadanie WebJob platformy Azure)
@@ -25,7 +25,7 @@ ms.locfileid: "60390836"
 ## <a name="overview"></a>Omówienie
 Ten artykuł zawiera C# przykłady kodu, które pokazują, jak używać zestawu Azure WebJobs SDK w wersji 1.x za pomocą usługi Azure table storage. Przykłady kodu, użyj [zestawu SDK usługi WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki) wersji 1.x.
 
-Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.  Zobacz [Rozpoczynanie pracy z usługą Azure Table storage przy użyciu platformy .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) Aby uzyskać więcej informacji.
+Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele platformy Azure są idealnym rozwiązaniem do przechowywania strukturalnych danych nierelacyjnych.  Zobacz [Rozpoczynanie pracy z usługą Azure Table storage przy użyciu platformy .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) Aby uzyskać więcej informacji.
 
 Niektóre show fragmenty kodu **tabeli** atrybut używany w funkcjach, które są wywoływane ręcznie, oznacza to, że nie przy użyciu jednego z atrybutów wyzwalacza.
 

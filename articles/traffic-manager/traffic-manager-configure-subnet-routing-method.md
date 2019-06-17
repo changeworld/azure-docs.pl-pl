@@ -3,7 +3,7 @@ title: Konfigurowanie metody routingu ruchu dla podsieci za pomocą usługi Azur
 description: W tym artykule opisano sposób konfigurowania usługi Traffic Manager na potrzeby kierowania ruchu z określonych podsieci.
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: kumud
-ms.openlocfilehash: b3eb7995dac1adf3053d28b40cf322e78c69c55f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 1a7bc38a91dc7621a3b09d7901c70eecb21101d6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060965"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Bezpośrednie kierowanie ruchu do określonych punktów końcowych na podstawie podsieci użytkownika przy użyciu usługi Traffic Manager
 
@@ -77,7 +77,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne *myEndpointVMEastUS* i *myEndpoint
     |---|---|
     |Grupa zasobów | Wybierz pozycję **Nowa**, a następnie wpisz *myResourceGroupTM2*|
     |Lokalizacja|Europa Zachodnia|
-    |Nazwa maszyny wirtualnej | myIISVMWEurope|
+    |Nazwa maszyny Wirtualnej | myIISVMWEurope|
     |Sieć wirtualna | Wybierz opcję **Sieć wirtualna** w obszarze **Tworzenie sieci wirtualnej**, następnie w polu **nazwa** wprowadź *myVNet2*, a jako nazwę podsieci wprowadź *mySubnet*.|
     |||
 
@@ -160,7 +160,7 @@ W tej sekcji utworzysz Maszynę wirtualną (*mVMEastUS* i *myVMWestEurope*) w ka
 
     |Ustawienie|Wartość|
     |---|---|
-    |Nazwa maszyny wirtualnej | *myVMWEurope*|
+    |Nazwa maszyny Wirtualnej | *myVMWEurope*|
     |Grupa zasobów | Wybierz pozycję **Istniejąca**, a następnie wpisz *myResourceGroupTM2*|
     |Sieć wirtualna | Wybierz opcję **Sieć wirtualna** w obszarze **Tworzenie sieci wirtualnej**, następnie w polu **Nazwa** wprowadź *myVNet4*, a jako nazwę podsieci wprowadź *mySubnet4*.|
     |||
@@ -194,7 +194,7 @@ Dodaj dwie maszyny wirtualne uruchomione usługi IIS serwery — *myIISVMEastUS*
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Type                    | Punkt końcowy platformy Azure                                   |
+    | Typ                    | Punkt końcowy platformy Azure                                   |
     | Name (Nazwa)           | myTestWebSiteEndpoint                                        |
     | Typ zasobu docelowego           | Publiczny adres IP                          |
     | Zasób docelowy          | **Wybierz publiczny adres IP**, aby wyświetlić listę zasobów z publicznymi adresami IP w ramach tej samej subskrypcji. W obszarze **Zasób** wybierz publiczny adres IP o nazwie *myIISVMEastUS-ip*. Jest to publiczny adres IP serwera usług IIS maszyny wirtualnej w regionie Wschodnie stany USA.|

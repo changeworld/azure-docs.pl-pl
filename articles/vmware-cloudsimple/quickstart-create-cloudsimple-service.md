@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9b3b95db24f4b0f9a0cf8f5102dfeea5dc51e29f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577573"
 ---
 # <a name="quickstart---create-service"></a>Przewodnik Szybki Start — Tworzenie usługi
@@ -71,7 +71,7 @@ Wykonaj poniższe kroki, aby umożliwić dostawcy zasobów usługi CloudSimple.
 
 Usługa zostanie utworzony i dodany do listy usług.
 
-## <a name="purchase-nodes"></a>Węzły zakupu
+## <a name="purchase-nodes"></a>Kupowanie węzłów
 
 Aby skonfigurować płatność — jako — możesz Przejdź pojemności w środowisku chmury prywatnej CloudSimple, należy najpierw aprowizować węzły w witrynie Azure portal.
 

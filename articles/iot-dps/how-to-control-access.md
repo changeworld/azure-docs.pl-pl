@@ -2,17 +2,17 @@
 title: Punkty końcowe zabezpieczeń, w IoT Device Provisioning Service | Dokumentacja firmy Microsoft
 description: Pojęcia — jak kontrolować dostęp do usługi IoT Device Provisioning Service dla aplikacji zaplecza. Zawiera informacje na temat tokenów zabezpieczających.
 author: wesmc7777
-manager: timlt
+manager: philmea
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626662"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Kontrola dostępu do usługi Azure IoT Hub Device Provisioning Service
@@ -141,7 +141,7 @@ Składniki usługi może generować jedynie tokeny zabezpieczające, za pomocą 
 
 Poniżej przedstawiono funkcje usługi dostępne w punktach końcowych:
 
-| Endpoint | Funkcjonalność |
+| Endpoint | Funkcja |
 | --- | --- |
 | `{your-service}.azure-devices-provisioning.net/enrollments` |Udostępnia operacje rejestracji urządzeń z usługą Device Provisioning. |
 | `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |Udostępnia operacje do zarządzania grupami rejestracji urządzenia. |

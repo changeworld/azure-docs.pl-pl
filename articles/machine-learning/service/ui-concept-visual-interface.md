@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 0b158a1d713e0de8f3d1b2672aed442fce66e724
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65917163"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077373"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Co to jest interfejs graficzny dla usługi Azure Machine Learning? 
 
@@ -27,7 +27,7 @@ Interfejs graficzny korzysta z usługi Azure Machine Learning [obszaru roboczego
 + Zapis artefaktów [eksperymentować](#experiment) uruchamia do obszaru roboczego.
 + Dostęp do [zestawów danych](#dataset).
 + Użyj [zasoby obliczeniowe](#compute) w obszarze roboczym, aby uruchomić eksperyment. 
-+ Zarejestruj [modeli](concept-azure-machine-learning-architecture.md#model).
++ Zarejestruj [modeli](concept-azure-machine-learning-architecture.md#models).
 + [Wdrażanie](#deployment) modeli jako usług sieci web na obliczenia zasobów w obszarze roboczym.
 
 ![Omówienie interfejsu wizualnego](media/ui-concept-visual-interface/overview.png)

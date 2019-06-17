@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: f7e3b1496890a4b97fc435b49ab9bf282134d1a6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65910818"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-use-custom-activities.md)
 > * [Wersja 2 (bieżąca wersja)](../transform-data-using-dotnet-custom-activity.md)
 
@@ -548,7 +548,7 @@ W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wy
 
     Obiekt blob/plik wyjściowy jest generowany dla każdego wycinek danych wejściowych. Oto, jak plik wyjściowy nosi nazwę każdego wycinka. Wszystkie pliki wyjściowe są generowane w jednym folderze danych wyjściowych: **adftutorial\customactivityoutput**.
 
-   | Wycinek | Godzina rozpoczęcia | Plik wyjściowy |
+   | wycinek | Godzina rozpoczęcia | Plik wyjściowy |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |

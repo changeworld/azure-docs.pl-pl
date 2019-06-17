@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40fc631e84336b684f981a2fef1515a1febec0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: df4f06528d0dd261dd92ab84b07bb705e23f7fd6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65811906"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113068"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Współpraca B2B usługi Active Directory Azure — często zadawane pytania
 
@@ -85,7 +85,7 @@ Tak, Dynamics 365 (online) obsługuje współpracy B2B usługi Azure AD. Aby uzy
 Usługa Azure AD ma stały zestaw znaków, siły hasła i konta wymagania blokady, które stosuje się jednakowo do wszystkich usługi Azure AD w chmurze kont użytkowników. Konta użytkowników w chmurze są kontami, które nie są Sfederowane z użyciem innego dostawcy tożsamości, takich jak 
 * Konto Microsoft
 * Facebook
-* Usługi federacyjne Active Directory
+* Active Directory Federation Services
 * Innej dzierżawy w chmurze (na potrzeby współpracy B2B)
 
 W przypadku kont federacyjnych zasady haseł zależy od zasad, które są stosowane w dzierżawy w środowisku lokalnym i ustawienia konta Microsoft użytkownika.

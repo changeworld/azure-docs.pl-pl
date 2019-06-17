@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
 ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60408606"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Tworzenie, monitorowanie i zarządzanie plikami FTP za pomocą usługi Azure Logic Apps
@@ -54,14 +54,14 @@ Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępni
 
 1. Puste logic apps w polu wyszukiwania wprowadź "ftp" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma.
 
-   — lub —
+   —lub—
 
    Dla istniejących aplikacji logiki w ostatnim kroku, które chcesz dodać akcję, wybierz **nowy krok**, a następnie wybierz pozycję **Dodaj akcję**. 
    W polu wyszukiwania wprowadź "ftp" jako filtr. 
    W obszarze listy akcji wybierz akcję, którą chcesz.
 
    Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
-   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 1. Podaj odpowiednie szczegóły połączenia, a następnie wybierz **Utwórz**.
 
@@ -69,7 +69,7 @@ Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępni
 
 Podczas żądania zawartości pliku, wyzwalacz nie przyniesie oczekiwanych plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru:
 
-* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
 
 * Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -85,7 +85,7 @@ Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki po wykryciu wyzw
 
 Podczas żądania zawartości pliku, wyzwalaczy nie można pobrać plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
 
-* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
 
 * Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -106,7 +106,7 @@ Oto przykład pokazujący tego wyzwalacza: **Po dodaniu lub zmodyfikowaniu pliku
 
    ![Utwórz połączenie z serwerem FTP](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
-1. Obok pozycji **folderu** , wybierz ikonę folderu, więc zostanie wyświetlona lista. Aby znaleźć folder, który chcesz monitorować nowe lub zmodyfikowane pliki, wybierz strzałkę pod kątem prostym (**>**), przejdź do folderu, a następnie wybierz folder.
+1. Obok pozycji **folderu** , wybierz ikonę folderu, więc zostanie wyświetlona lista. Aby znaleźć folder, który chcesz monitorować nowe lub zmodyfikowane pliki, wybierz strzałkę pod kątem prostym ( **>** ), przejdź do folderu, a następnie wybierz folder.
 
    ![Znajdź i wybierz folder do monitorowania](./media/connectors-create-api-ftp/select-folder.png)  
 
@@ -124,7 +124,7 @@ Ta akcja pobiera zawartość z pliku na serwerze FTP, gdy ten plik jest dodane l
 
 Podczas żądania zawartości pliku, wyzwalaczy nie można pobrać plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
 
-* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
 
 * Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 

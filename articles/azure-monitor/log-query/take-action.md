@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
 ms.openlocfilehash: 9194d5fe6553607ac5a0bb4e133da97f53790984
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424758"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Chroń za pomocą elementu Runbook usługi Automation z wyniki wyszukiwania dziennika usługi Log Analytics
@@ -38,7 +38,7 @@ Podejmowanie akcji na zdarzenia i zainicjowania elementu runbook z wyników wysz
 
 1. W witrynie Azure portal kliknij pozycję **wszystkich usług** i wybierz **usługi Log Analytics**.  
 2. Wybierz swój obszar roboczy usługi Log Analytics.
-3. W obszarze roboczym, wybierz **dzienniki (wersja klasyczna)**.  
+3. W obszarze roboczym, wybierz **dzienniki (wersja klasyczna)** .  
 4. Na stronie wyszukiwania w dziennikach wykonaj wyszukiwanie w dzienniku.  
 5. Z poziomu wyników wyszukiwania dziennika, kliknij przycisk wielokropka z lewej strony pól i z menu podręczne, wybierz opcję **podejmowanie akcji na**.<br><br> ![Wybierz podjąć akcję z wyników wyszukiwania](./media/take-action/log-search-takeaction-menuoption.png) 
 6. Wybierz **uruchomienia elementu runbook** i wybierz pozycję uruchomienia elementu runbook.  Na koncie usługi Automation, która jest połączona z obszarem roboczym usługi Log Analytics, możesz wybrać każdego elementu runbook.  Pamiętaj o następujących kwestiach:

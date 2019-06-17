@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2018
+ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: b968cc29a7139a4a6db5d2dea8dd6f8f4e1c7ccd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6d4a5b9688540e5aa96dd8789dbb609aedeca97
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60630793"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077858"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia na hoście StorSimple z systemem CentOS
 W tym artykule opisano kroki wymagane do skonfigurowania Wielościeżkowe We/Wy (MPIO) na serwerze hosta Centos 6.6. Serwer hosta jest podłączony do Twojego urządzenia Microsoft Azure StorSimple, wysokiej dostępności za pośrednictwem inicjatorów iSCSI. Opisano w nim szczegółowo automatyczne odnajdowanie urządzeń wielościeżkowego i dlatego konfiguracja tylko w przypadku woluminów StorSimple.
@@ -56,11 +56,11 @@ Plik konfiguracyjny `/etc/multipath.conf` zapewnia wiele funkcji wielu ścieżek
 
 Multipath.conf składa się z pięciu sekcji:
 
-- **Poziom domyślnych ustawień systemowych** *(wartość domyślna)*: Można zastąpić domyślne ustawienia poziomu systemu.
-- **Na czarnej liście urządzeń** *(czarna lista)*: Można określić listę urządzeń, które nie powinny być kontrolowane przez urządzenie mapowania.
-- **Utworzyć listę niedozwolonych wyjątki** *(blacklist_exceptions)*: Można zidentyfikować konkretnych urządzeń powinien być traktowany jako wielościeżkowe urządzeń, nawet jeżeli listy zabronionych na liście.
-- **Ustawienia określonego kontrolera magazynu** *(urządzenia)*: Można określić ustawienia konfiguracji, które będą stosowane do urządzeń, dostawcy i informacje o produkcie.
-- **Określone ustawienia urządzenia** *(multipaths)*: W tej sekcji można użyć, aby dostroić ustawienia konfiguracji dla poszczególnych jednostek LUN.
+- **Poziom domyślnych ustawień systemowych** *(wartość domyślna)* : Można zastąpić domyślne ustawienia poziomu systemu.
+- **Na czarnej liście urządzeń** *(czarna lista)* : Można określić listę urządzeń, które nie powinny być kontrolowane przez urządzenie mapowania.
+- **Utworzyć listę niedozwolonych wyjątki** *(blacklist_exceptions)* : Można zidentyfikować konkretnych urządzeń powinien być traktowany jako wielościeżkowe urządzeń, nawet jeżeli listy zabronionych na liście.
+- **Ustawienia określonego kontrolera magazynu** *(urządzenia)* : Można określić ustawienia konfiguracji, które będą stosowane do urządzeń, dostawcy i informacje o produkcie.
+- **Określone ustawienia urządzenia** *(multipaths)* : W tej sekcji można użyć, aby dostroić ustawienia konfiguracji dla poszczególnych jednostek LUN.
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Konfigurowanie wielu ścieżek na StorSimple połączony z hostem systemu Linux
 Można skonfigurować urządzenia StorSimple podłączonego do hosta systemu Linux o wysokiej dostępności i równoważenia obciążenia. Na przykład jeśli na hoście z systemem Linux ma dwa interfejsy połączony z siecią SAN, a urządzenie ma dwa interfejsy połączony z siecią SAN w taki sposób, że te interfejsy są w tej samej podsieci, następnie rozdamy 4 ścieżki. Jednak jeśli każdy interfejs danych w interfejsie urządzenia i host znajdują się w innej podsieci IP (a nie Routing), to tylko 2 ścieżki będą dostępne. Można skonfigurować wielościeżkowe automatycznie odkryć wszystkie dostępne ścieżki, wybieranie algorytmu równoważenia obciążenia dla tych ścieżek, zastosowanie określonych ustawień konfiguracji w przypadku woluminów StorSimple — tylko do włączenia i sprawdź wielu ścieżek.
@@ -417,10 +417,10 @@ A. Aby sprawdzić, czy urządzenie znajduje się na białej liście, użyj nast�
     dm-3 devnode blacklisted, unmonitored
 
 
-Aby uzyskać więcej informacji, przejdź do [Użyj Rozwiązywanie problemów z poleceń interaktywnych wielu ścieżek](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html).
+Aby uzyskać więcej informacji, przejdź do [Rozwiązywanie problemów z wielu ścieżek](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot).
 
 ## <a name="list-of-useful-commands"></a>Lista przydatnych poleceń
-| Type | Polecenie | Opis |
+| Typ | Polecenie | Opis |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Uruchomienie usługi iSCSI |
 | &nbsp; |`service iscsid stop` |Zatrzymaj usługę iSCSI |
@@ -444,6 +444,6 @@ Aby uzyskać więcej informacji, przejdź do [Użyj Rozwiązywanie problemów z 
 ## <a name="next-steps"></a>Kolejne kroki
 Jak skonfigurować wielościeżkowego wejścia/wyjścia na hoście z systemem Linux, konieczne może być można znaleźć w następujących dokumentach CentoS 6.6:
 
-* [Konfigurowanie wielościeżkowego wejścia/wyjścia na CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
+* [Konfigurowanie wielościeżkowego wejścia/wyjścia na CentOS](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Przewodnik szkolenia systemu Linux](http://linux-training.be/linuxsys.pdf)
 

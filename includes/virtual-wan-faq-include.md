@@ -5,19 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/18/2019
+ms.date: 06/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a89a5d753eaa241b11eb4c7eed9500c9715d405d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9d8482fdf8e914801fb77e2ab1712145fa3ccea0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150788"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077484"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaka jest różnica między bramą sieci wirtualnej platformy Azure (VPN Gateway) i Azure bramą VPN Gateway wirtualnej sieci WAN platformy Azure?
 
 Wirtualna sieć WAN zapewnia łączność typu lokacja-lokacja w dużej skali oraz oferuje przepływność, skalowalność i łatwość użycia. Usługa ExpressRoute i funkcje łączności punkt-lokacja są obecnie dostępne w wersji zapoznawczej. CPE gałęzi autoprovision urządzeń i połączenie z sieci platformy Azure z wirtualnych WAN. Te urządzenia są dostępne w rozwijającym się ekosystemie partnerów sieci SD-WAN i VPN. Zobacz [listę preferowanych partnerów](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+
+### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Co to jest gałąź połączenie WAN wirtualnych platformy Azure?
+
+Połączenie z urządzeniem gałęzi w usłudze Azure wirtualne sieci WAN, składające się z dwóch tuneli IPsec aktywny/aktywny.
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Którzy dostawcy urządzeń (partnerzy wirtualnej sieci WAN) są obsługiwani w czasie wprowadzenia oferty?
 
@@ -45,7 +49,7 @@ Tak. Wraz z wirtualną siecią WAN wprowadzono nowe zasoby usługi Resource Mana
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Ile urządzeń sieci VPN można połączyć z jednym koncentratorem?
 
-Obsługiwanych jest do 1000 połączeń na koncentrator wirtualny. Każde połączenie obejmuje dwa tunele w konfiguracji aktywne-aktywne. Tunele kończą się w bramie VPN Gateway koncentratora wirtualnego platformy Azure.
+Maksymalnie 1000 połączeń obsługiwanych na koncentrator wirtualny. Każde połączenie obejmuje dwa tunele w konfiguracji aktywne-aktywne. Tunele kończą się w bramie VPN Gateway koncentratora wirtualnego platformy Azure.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Czy lokalne urządzenie sieci VPN może łączyć się z wieloma koncentratorami?
 
@@ -105,7 +109,7 @@ Tak.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Czym różni się usługa Virtual WAN od istniejącej bramy sieci wirtualnej platformy Azure?
 
-Sieć VPN bramy sieci wirtualnej jest ograniczona do 30 tuneli. W przypadku połączeń należy używać usługi Virtual WAN dla sieci VPN na dużą skalę. W koncentratorze można połączyć maksymalnie 1000 połączeń oddziałów z prędkością 2 Gb/s we wszystkich regionach z wyjątkiem regionu Zachodnio-środkowe stany USA. W regionie Zachodnio-środkowe stany USA dostępna jest szybkość 20 Gb/s. W przyszłości będziemy wprowadzać standard 20 Gb/s w dodatkowych regionach. Połączenie to tunel typu aktywny-aktywny od lokalnego urządzenia sieci VPN do koncentratora wirtualnego. Możesz mieć jeden koncentrator na region, co oznacza, że możesz połączyć więcej niż 1000 oddziałów w koncentratorach.
+Sieć VPN bramy sieci wirtualnej jest ograniczona do 30 tuneli. W przypadku połączeń należy używać usługi Virtual WAN dla sieci VPN na dużą skalę. Maksymalnie 1000 połączeń w oddziale firmy można połączyć z 2 GB/s w Centrum dla wszystkich regionach z wyjątkiem regionu zachodnie centralnej. W regionie Zachodnio-środkowe stany USA dostępna jest szybkość 20 Gb/s. W przyszłości będziemy wprowadzać standard 20 Gb/s w dodatkowych regionach. Połączenie to tunel typu aktywny-aktywny od lokalnego urządzenia sieci VPN do koncentratora wirtualnego. Możesz mieć jedno centrum regionu, co oznacza, że możesz połączyć więcej niż 1000 gałęzi w centrach.
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Jak jest wirtualne sieci WAN obsługi SD-WAN urządzeń?
 
@@ -118,6 +122,14 @@ Nie. Usługa Virtual WAN nie wymaga usługi ExpressRoute w każdej lokacji. Uży
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Czy istnieje limit przepływności sieci podczas korzystania z usługi Azure Virtual WAN?
 
 Liczba oddziałów jest ograniczona do 1000 połączeń na koncentrator/region, a łączna szybkość do 2 Gb/s w koncentratorze. Wyjątek stanowi region Zachodnio-środkowe stany USA, w którym łączna szybkość wynosi 20 Gb/s. W przyszłości będziemy wprowadzać standard 20 Gb/s w innych regionach.
+
+### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Jak wiele połączeń sieci VPN obsługuje wirtualne sieci WAN hub?
+
+Centrum Azure wirtualnego WAN może obsługiwać maksymalnie 1000 połączeń S2S i 10 000 połączeń P2S jednocześnie.
+
+### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Co to jest łączna przepływność sieci VPN tunelu sieci VPN i połączenia?
+
+Łączna przepływność sieci VPN koncentrator jest maksymalnie 20 GB/s opartego na jednostce skalowania wybrany. Przepływność jest współużytkowana przez wszystkie istniejące połączenia.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Czy usługa Virtual WAN umożliwia urządzeniu lokalnemu równoległe korzystanie z wielu usługodawców internetowych, czy jest to zawsze pojedynczy tunel sieci VPN?
 

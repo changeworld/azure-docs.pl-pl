@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: 1bcec37e7642ae0cb5bd68de1426c8cc62085d38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475528"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration rozszerzenia z szablonami usługi Azure Resource Manager
@@ -178,7 +178,7 @@ Aby uzyskać listę argumentów, które są dostępne dla skryptu konfiguracji d
 
 ## <a name="details"></a>Szczegóły
 
-| Nazwa właściwości | Type | Opis |
+| Nazwa właściwości | Typ | Opis |
 | --- | --- | --- |
 | settings.wmfVersion |string |Określa wersję programu Windows Management Framework (WMF), ma być zainstalowany na maszynie Wirtualnej. Ustawienie tej właściwości na **najnowsze** instaluje najnowszą wersję programu WMF. Obecnie jedyną możliwą wartości dla tej właściwości to **4.0**, **5.0**, **5.1**, i **najnowsze**. Te wartości możliwe jest zależna od aktualizacji. Wartość domyślna to **najnowsze**. |
 | settings.configuration.url |string |Określa lokalizację adresu URL, z której można pobrać plik zip konfiguracji DSC. Jeśli adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, ustaw **protectedSettings.configurationUrlSasToken** właściwości na wartość tokenu sygnatury dostępu Współdzielonego. Ta właściwość jest wymagana, jeśli **settings.configuration.script** lub **settings.configuration.function** są zdefiniowane. Jeśli wartość nie zostanie podany dla tych właściwości, rozszerzenie wywołuje skrypt konfiguracji domyślnej można ustawić metadanych lokalizacji Configuration Manager (LCM), a powinien być dostarczony argumentów. |
@@ -186,7 +186,7 @@ Aby uzyskać listę argumentów, które są dostępne dla skryptu konfiguracji d
 | settings.configuration.function |string |Określa nazwę konfiguracji DSC. Konfiguracja, który nosi nazwę muszą być zawarte w skrypcie, **settings.configuration.script** definiuje. Ta właściwość jest wymagana, jeśli **settings.configuration.url** lub **settings.configuration.function** są zdefiniowane. Jeśli wartość nie zostanie podany dla tych właściwości, rozszerzenie wywołuje skrypt konfiguracji domyślnej można ustawić metadanych LCM i powinien być dostarczony argumentów. |
 | settings.configurationArguments |Collection |Określa wszelkie parametry, które mają być przekazane do konfiguracji DSC. Ta właściwość nie jest zaszyfrowany. |
 | settings.configurationData.url |string |Określa adres URL do pobrania pliku (psd1) danych konfiguracji do użycia jako dane wejściowe dla danej konfiguracji DSC. Jeśli adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, ustaw **protectedSettings.configurationDataUrlSasToken** właściwości na wartość tokenu sygnatury dostępu Współdzielonego. |
-| settings.privacy.dataCollection |string |Włącza lub wyłącza zbieranie danych telemetrycznych. Tylko wtedy możliwe wartości dla tej właściwości to **Włącz**, **wyłączyć**, **''**, lub **$null**. Pozostawienie tej właściwości, puste ani mieć wartości null umożliwia danych telemetrycznych. Wartość domyślna to **''**. Aby uzyskać więcej informacji, zobacz [zbierania danych rozszerzenia DSC usługi Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
+| settings.privacy.dataCollection |string |Włącza lub wyłącza zbieranie danych telemetrycznych. Tylko wtedy możliwe wartości dla tej właściwości to **Włącz**, **wyłączyć**, **''** , lub **$null**. Pozostawienie tej właściwości, puste ani mieć wartości null umożliwia danych telemetrycznych. Wartość domyślna to **''** . Aby uzyskać więcej informacji, zobacz [zbierania danych rozszerzenia DSC usługi Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
 | settings.advancedOptions.downloadMappings |Collection |Definiuje alternatywnych lokalizacji, z którego będą pobierane programu WMF. Aby uzyskać więcej informacji, zobacz [rozszerzenie DSC usługi Azure 2.8 i sposób mapowania plików do pobrania zależności rozszerzenia na własnej lokalizacji](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
 | protectedSettings.configurationArguments |Collection |Określa wszelkie parametry, które mają być przekazane do konfiguracji DSC. Ta właściwość jest szyfrowana. |
 | protectedSettings.configurationUrlSasToken |string |Określa tokenu sygnatury dostępu Współdzielonego na potrzeby dostępu do adresu URL, **settings.configuration.url** definiuje. Ta właściwość jest szyfrowana. |
@@ -197,7 +197,7 @@ Aby uzyskać listę argumentów, które są dostępne dla skryptu konfiguracji d
 Aby uzyskać więcej informacji na temat następujących wartości zobacz [Local Configuration Manager podstawowych ustawień](/powershell/dsc/metaconfig#basic-settings).
 Skrypt konfiguracji domyślnej rozszerzenia DSC służy do konfigurowania właściwości LCM, które są wymienione w poniższej tabeli.
 
-| Nazwa właściwości | Type | Opis |
+| Nazwa właściwości | Typ | Opis |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |Wymagana właściwość. Określa klucz, który jest używany dla węzła do rejestracji w usłudze Azure Automation jako hasło obiekt poświadczeń PowerShell. Ta wartość może automatycznie odnalezione za pomocą **listkeys** metoda względem konta usługi Automation.  Zobacz [przykład](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments.RegistrationUrl |string |Wymagana właściwość. Określa adres URL punktu końcowego usługi Automation, gdzie węzeł, próbuje zarejestrować. Ta wartość może automatycznie odnalezione za pomocą **odwołania** metoda względem konta usługi Automation. |

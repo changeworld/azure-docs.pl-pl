@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f73756373a145375aa2b3d0bcb1c8fa0ede5cdb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65823488"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma tożsamości firmy Microsoft i niejawne udzielić przepływu
@@ -76,23 +76,23 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| `tenant` | wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | wymagane | Identyfikator aplikacji (klienta) [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony przypisany do aplikacji. |
-| `response_type` | wymagane |Musi zawierać `id_token` dla logowania OpenID Connect. Może również obejmować response_type `token`. Za pomocą `token` w tym miejscu pozwoli aplikację do odbierania token dostępu bezpośrednio z punktu końcowego autoryzacji bez konieczności wykonywania drugie żądanie do punktu końcowego autoryzacji. Jeśli używasz `token` elementu response_type, `scope` parametr musi zawierać wskazujący zasobu, który można wystawić tokenu dla zakresu. |
+| `tenant` | Wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
+| `client_id` | Wymagane | Identyfikator aplikacji (klienta) [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony przypisany do aplikacji. |
+| `response_type` | Wymagane |Musi zawierać `id_token` dla logowania OpenID Connect. Może również obejmować response_type `token`. Za pomocą `token` w tym miejscu pozwoli aplikację do odbierania token dostępu bezpośrednio z punktu końcowego autoryzacji bez konieczności wykonywania drugie żądanie do punktu końcowego autoryzacji. Jeśli używasz `token` elementu response_type, `scope` parametr musi zawierać wskazujący zasobu, który można wystawić tokenu dla zakresu. |
 | `redirect_uri` | Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. |
-| `scope` | wymagane |Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md). Dla protokołu OpenID Connect, musi on zawierać zakres `openid`, co przekłada się na uprawnienia "Logowanie się w" w zgody interfejsu użytkownika. Opcjonalnie możesz również chcieć dołączyć `email` lub `profile` zakresy do uzyskania dostępu do danych dodatkowych użytkowników. W tym żądaniu do żądania zgody z różnymi zasobami, może również obejmować inne zakresy. |
-| `response_mode` | opcjonalne |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Wartość domyślna to zapytania dla tokenu dostępu, ale fragmentu, jeśli żądanie zawiera element id_token. |
+| `scope` | Wymagane |Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md). Dla protokołu OpenID Connect, musi on zawierać zakres `openid`, co przekłada się na uprawnienia "Logowanie się w" w zgody interfejsu użytkownika. Opcjonalnie możesz również chcieć dołączyć `email` lub `profile` zakresy do uzyskania dostępu do danych dodatkowych użytkowników. W tym żądaniu do żądania zgody z różnymi zasobami, może również obejmować inne zakresy. |
+| `response_mode` | Opcjonalne |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Wartość domyślna to zapytania dla tokenu dostępu, ale fragmentu, jeśli żądanie zawiera element id_token. |
 | `state` | Zalecane |Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
-| `nonce` | wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, która zostanie uwzględniona w wynikowej id_token jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. Wymagane tylko w przypadku elementu id_token jest wymagane. |
-| `prompt` | opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są "login", "none", "select_account" i "". `prompt=login` Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja logowania jednokrotnego. `prompt=none` jest przeciwieństwem - zapewni, że użytkownik nie jest wyświetlone wszystkie interaktywne monity w inny sposób. Jeśli nie można ukończyć żądania dyskretnie za pomocą logowania jednokrotnego, Microsoft platformy tożsamości z punktu końcowego zwróci błąd. `prompt=select_account` wysyła użytkownika do selektora konta, w którym zostaną wyświetlone wszystkie konta zapamiętanych w sesji. `prompt=consent` wywołuje okno dialogowe ze zgodą OAuth po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |
-| `login_hint`  |opcjonalne |Można wstępnie wypełnić pola Adres e-mail/nazwa użytkownika logowania do strony użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często użyje tego parametru podczas ponownego uwierzytelniania już o wyodrębnić nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia.|
-| `domain_hint` | opcjonalne |Może być jednym z `consumers` lub `organizations`. Jeśli uwzględniony, pominie proces odnajdywania bazujące na poczcie e-mail tego użytkownika przechodzi na stronie rejestracji, co prowadzi do nieco bardziej usprawnione środowisko użytkownika. Aplikacje często będzie tego parametru należy użyć podczas ponownego uwierzytelniania, wyodrębniając `tid` oświadczeń z id_token. Jeśli `tid` oświadczenia, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad` (Account Microsoft dzierżawcy konsumenta), należy użyć `domain_hint=consumers`. W przeciwnym razie można użyć `domain_hint=organizations` podczas ponownego uwierzytelniania. |
+| `nonce` | Wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, która zostanie uwzględniona w wynikowej id_token jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. Wymagane tylko w przypadku elementu id_token jest wymagane. |
+| `prompt` | Opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są "login", "none", "select_account" i "". `prompt=login` Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja logowania jednokrotnego. `prompt=none` jest przeciwieństwem - zapewni, że użytkownik nie jest wyświetlone wszystkie interaktywne monity w inny sposób. Jeśli nie można ukończyć żądania dyskretnie za pomocą logowania jednokrotnego, Microsoft platformy tożsamości z punktu końcowego zwróci błąd. `prompt=select_account` wysyła użytkownika do selektora konta, w którym zostaną wyświetlone wszystkie konta zapamiętanych w sesji. `prompt=consent` wywołuje okno dialogowe ze zgodą OAuth po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |
+| `login_hint`  |Opcjonalne |Można wstępnie wypełnić pola Adres e-mail/nazwa użytkownika logowania do strony użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często użyje tego parametru podczas ponownego uwierzytelniania już o wyodrębnić nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia.|
+| `domain_hint` | Opcjonalne |Może być jednym z `consumers` lub `organizations`. Jeśli uwzględniony, pominie proces odnajdywania bazujące na poczcie e-mail tego użytkownika przechodzi na stronie rejestracji, co prowadzi do nieco bardziej usprawnione środowisko użytkownika. Aplikacje często będzie tego parametru należy użyć podczas ponownego uwierzytelniania, wyodrębniając `tid` oświadczeń z id_token. Jeśli `tid` oświadczenia, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad` (Account Microsoft dzierżawcy konsumenta), należy użyć `domain_hint=consumers`. W przeciwnym razie można użyć `domain_hint=organizations` podczas ponownego uwierzytelniania. |
 
 W tym momencie użytkownik będzie monitowany wprowadzić swoje poświadczenia i wykonania uwierzytelnienia. Microsoft platformy tożsamości z punktu końcowego będą upewnij się również, że użytkownik wyraził zgodę na uprawnienia czcionką `scope` parametr zapytania. Jeśli użytkownik zgodził się **Brak** tych uprawnień, zostanie wyświetlony monit użytkownika o zgodę na wymagane uprawnienia. Aby uzyskać więcej informacji, zobacz [uprawnienia, wyrażania zgody i aplikacje z wieloma dzierżawami](v2-permissions-and-consent.md).
 
 Po użytkownik jest uwierzytelniany i przyznaje zgody, Microsoft platformy tożsamości z punktu końcowego zwróci odpowiedź do aplikacji, na wskazany `redirect_uri`, przy użyciu metody podanej w `response_mode` parametru.
 
-#### <a name="successful-response"></a>Pomyślna odpowiedź
+#### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
 
 Odpowiedź oznaczająca Powodzenie przy użyciu `response_mode=fragment` i `response_type=id_token+token` wygląda podobnie do następujących (z podziałów wierszy dla czytelności):
 
@@ -175,7 +175,7 @@ Szczegółowe informacje na temat parametrów zapytania w adresie URL, [Wyślij 
 
 Dzięki `prompt=none` parametr, to żądanie będzie albo powiedzie się lub od razu zakończyć się niepowodzeniem i powrócić do aplikacji. Odpowiedź oznaczająca Powodzenie zostaną wysłane do Twojej aplikacji, na wskazany `redirect_uri`, przy użyciu metody podanej w `response_mode` parametru.
 
-#### <a name="successful-response"></a>Pomyślna odpowiedź
+#### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
 
 Odpowiedź oznaczająca Powodzenie przy użyciu `response_mode=fragment` wyglądają następująco:
 
@@ -238,7 +238,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| `tenant` |wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
+| `tenant` |Wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
 | `post_logout_redirect_uri` | Zalecane | Adres URL, który użytkownik powinien nastąpić powrót do po ukończeniu Wyloguj. Ta wartość musi odpowiadać przekierowania URI zarejestrowanej aplikacji. Jeśli nie zostanie uwzględniony, zostanie wyświetlony komunikat ogólny przez punkt końcowy platforma tożsamości firmy Microsoft. |
 
 ## <a name="next-steps"></a>Kolejne kroki

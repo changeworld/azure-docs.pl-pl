@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6112facfc0c10d7a0a0495cd778fa6c3cb6130a7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 79ffb31dd41e600344d341d17e07ad13d5fcd7f8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962152"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111095"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Logowania użytkowników i wywoływania usługi Microsoft Graph w aplikacji systemu Android
 
@@ -70,11 +70,11 @@ W tym samouczku spowoduje utworzenie nowego projektu. Jeśli chcesz zamiast tego
 3. Nadaj nazwę aplikacji, ustaw `Minimum API level` do **interfejsu API 19 lub nowszej**, trafień **Zakończ**.
 5. W swojej `app/build.gradle`ustaw `targetedSdkVersion` 27. 
 
-## <a name="register-your-application"></a>Zarejestruj swoją aplikację
+## <a name="register-your-application"></a>Rejestrowanie aplikacji
 
 Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch następnych sekcjach.
 
-### <a name="register-your-app"></a>Rejestrowanie aplikacji
+### <a name="register-your-app"></a>Zarejestruj swoją aplikację
 
 1. Przejdź do [witryny Azure portal](https://aka.ms/MobileAppReg) > Wybierz `New registration`. 
 2. Wprowadź **nazwa** aplikacji > `Register`. **Identyfikator URI przekierowania nie jest ustawiona na tym etapie**. 
@@ -85,7 +85,7 @@ Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch nast�
 
 ## <a name="build-your-app"></a>Tworzenie aplikacji
 
-### <a name="configure-your-android-app"></a>Konfigurowanie aplikacji dla systemu Android
+### <a name="configure-your-android-app"></a>Konfiguruj aplikację systemu Android
 
 1. Kliknij prawym przyciskiem myszy **res** > **New** > **folderu** > **pierwotne Folder zasobów**
 2. W **aplikacji** > **res** > **pierwotne**, Utwórz plik JSON o nazwie `auth_config.json` i Wklej swoje ***konfiguracji biblioteki MSAL***. Zobacz [MSAL konfiguracji, aby uzyskać więcej informacji](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
@@ -178,7 +178,7 @@ Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch nast�
 
 ### <a name="add-msal-to-your-project"></a>Dodawanie biblioteki MSAL do projektu
 
-1. W programie Android Studio wybierz **skryptów narzędzia Gradle** > **build.gradle (moduł: aplikacja)**.
+1. W programie Android Studio wybierz **skryptów narzędzia Gradle** > **build.gradle (moduł: aplikacja)** .
 2. W obszarze **zależności**, wklej następujący kod:
 
     ```gradle  

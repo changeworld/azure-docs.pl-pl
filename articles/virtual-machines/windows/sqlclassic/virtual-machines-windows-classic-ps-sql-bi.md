@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
 ms.openlocfilehash: 29e851772e665b4130ee58b04c264d55bcd54523
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609465"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Analiza biznesowa programu SQL Server w usłudze Azure Virtual Machines
@@ -78,9 +78,9 @@ W poniższej tabeli podsumowano funkcje analizy biznesowej, zainstalowanym typow
 
 | Funkcję analizy Biznesowej programu SQL Server | Instalowany w obrazie galerii | Uwagi |
 | --- | --- | --- |
-| **Reporting Services Native Mode** |Yes |Zainstalowany, ale wymaga konfiguracji, w tym adres URL Menedżera raportów. Zobacz sekcję [konfigurowania usług Reporting Services](#configure-reporting-services). |
+| **Reporting Services Native Mode** |Tak |Zainstalowany, ale wymaga konfiguracji, w tym adres URL Menedżera raportów. Zobacz sekcję [konfigurowania usług Reporting Services](#configure-reporting-services). |
 | **Reporting Services w trybie programu SharePoint** |Nie |Obraz galerii maszyny wirtualnej Microsoft Azure nie ma programu SharePoint lub SharePoint pliki instalacyjne. <sup>1</sup> |
-| **Wyszukiwania danych i wielowymiarowych usług Analysis Services (OLAP)** |Yes |Zainstalowany i skonfigurowany jako domyślne wystąpienie usług Analysis Services |
+| **Wyszukiwania danych i wielowymiarowych usług Analysis Services (OLAP)** |Tak |Zainstalowany i skonfigurowany jako domyślne wystąpienie usług Analysis Services |
 | **Tabelaryczne usługi Analysis Services** |Nie |Obsługiwane w programie SQL Server 2012, 2014 i 2016 obrazy, ale go nie zainstalowano domyślnie. Zainstaluj inne wystąpienie usług Analysis Services. Zobacz sekcję dotyczącą instalowania innych usług SQL Server i funkcji w tym temacie. |
 | **Analizy usługi Power Pivot dla programu SharePoint** |Nie |Obraz galerii maszyny wirtualnej Microsoft Azure nie ma programu SharePoint lub SharePoint pliki instalacyjne. <sup>1</sup> |
 
@@ -317,7 +317,7 @@ Ta sekcja zawiera podsumowanie punktów końcowych maszyny wirtualnej platformy 
   * Tworzenie punktów końcowych maszyny wirtualnej dla portów dostrzeżone (*).
 * Jeśli maszyna wirtualna jest przyłączona do domeny przy użyciu tunelu VPN, takich jak sieci wirtualne platformy Azure, punktów końcowych, które nie są wymagane. Jednak otworzyć porty w zaporze na maszynie Wirtualnej.
   
-  | Port | Type | Opis |
+  | Port | Typ | Opis |
   | --- | --- | --- |
   | **80** |TCP |Raport serwera dostępu zdalnego (*). |
   | **1433** |TCP |SQL Server Management Studio (*). |

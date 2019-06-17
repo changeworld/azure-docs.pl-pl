@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736648"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Obsługa protokołów dla nagłówków HTTP w usłudze Azure Service drzwi
@@ -33,9 +33,9 @@ Usługa drzwiami frontowymi akceptuje większość nagłówków z żądania przy
 
 Usługa drzwiami frontowymi zawiera nagłówki z przychodzącego żądania, chyba że usunięty ze względu na ograniczenia. Drzwiami frontowymi dodaje również następujące nagłówki:
 
-| Nagłówek  | Przykład i opis |
+| nagłówek  | Przykład i opis |
 | ------------- | ------------- |
-| Przez |  Via: 1.1 azure </br> Drzwiami frontowymi dodaje wersji klienta HTTP, następuje *Azure* jako wartość nagłówka Via. Oznacza to, wersja HTTP klienta i tego drzwiami frontowymi była pośrednich adresata dla żądania między klientem i wewnętrznej bazy danych.  |
+| za pomocą |  Via: 1.1 azure </br> Drzwiami frontowymi dodaje wersji klienta HTTP, następuje *Azure* jako wartość nagłówka Via. Oznacza to, wersja HTTP klienta i tego drzwiami frontowymi była pośrednich adresata dla żądania między klientem i wewnętrznej bazy danych.  |
 | X-Azure-ClientIP | X-Azure-ClientIP: 127.0.0.1 </br> Reprezentuje adres IP klienta, które są skojarzone z żądaniem przetwarzany. Na przykład żądanie pochodzące z serwera proxy może dodać nagłówek X-Forwarded-dla do wskazywania adresu IP, oryginalnym obiektu wywołującego. |
 | X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> Reprezentuje adres IP gniazda, które są skojarzone z połączeniem TCP, bieżącego żądania pochodzących z. Adres IP klienta dla żądania nie może być równa jego adres IP gniazda, ponieważ mogą być dowolnie zastąpione przez użytkownika.|
 | X-Azure-Ref |  X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> Ciąg unikatowy odwołania, który identyfikuje żądanie obsługiwanej przez drzwiami frontowymi. Służy do wyszukiwania uzyskiwanie dostępu do dzienników i rozwiązywanie problemów z bardzo ważne.|
@@ -48,7 +48,7 @@ Usługa drzwiami frontowymi zawiera nagłówki z przychodzącego żądania, chyb
 
 Również wszelkie nagłówki wysyłane do drzwi z wewnętrznej bazy danych są przekazywane do klienta. Dostępne są następujące nagłówki wysyłane z wejściu do klientów.
 
-| Nagłówek  | Przykład |
+| nagłówek  | Przykład |
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Jest to ciąg unikatowy odwołania, który identyfikuje żądanie obsługiwanej przez drzwi wejściowe. Jest to niezbędne do rozwiązywania problemów, ponieważ jest używany do wyszukiwania uzyskiwanie dostępu do dzienników.|
 

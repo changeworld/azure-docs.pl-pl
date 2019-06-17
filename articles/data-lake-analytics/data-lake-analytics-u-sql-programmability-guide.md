@@ -10,10 +10,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60811599"
 ---
 # <a name="u-sql-programmability-guide"></a>Podręcznik programowania U-SQL
@@ -1067,11 +1067,11 @@ Operatory zdefiniowane przez użytkownika jest zwykle nazywany jawnie w skrypcie
 ## <a name="use-user-defined-extractors"></a>Użyj zdefiniowanych przez użytkownika ekstraktory
 U-SQL umożliwia importowanie danych zewnętrznych przy użyciu instrukcji WYODRĘBNIANIA. Instrukcja WYODRĘBNIANIA można użyć wbudowanych ekstraktory operatory zdefiniowane przez użytkownika:  
 
-* *Extractors.Text()*: Udostępnia wyodrębniania z rozdzielanych plików tekstowych różne kodowania.
+* *Extractors.Text()* : Udostępnia wyodrębniania z rozdzielanych plików tekstowych różne kodowania.
 
-* *Extractors.Csv()*: Zapewnia wyodrębniania z wartości rozdzielanych przecinkami (CSV) plików różnych kodowań.
+* *Extractors.Csv()* : Zapewnia wyodrębniania z wartości rozdzielanych przecinkami (CSV) plików różnych kodowań.
 
-* *Extractors.Tsv()*: Udostępnia wyodrębniania wartości rozdzielane znakami tabulacji pliki (TSV) z różnych kodowań.
+* *Extractors.Tsv()* : Udostępnia wyodrębniania wartości rozdzielane znakami tabulacji pliki (TSV) z różnych kodowań.
 
 Może być przydatne do tworzenia niestandardowy moduł wyodrębniający. Może to być przydatne podczas importowania danych, jeśli chcemy wykonać jedną z następujących zadań:
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>Użyj outputters zdefiniowanych przez użytkownika
 Outputter zdefiniowanych przez użytkownika jest innego języka U-SQL operatory zdefiniowane przez użytkownika, który umożliwia rozszerzanie wbudowanych funkcji języka U-SQL. Podobnie jak wyodrębnianie, istnieje kilka wbudowanych outputters.
 
-* *Outputters.Text()*: Zapisuje dane do rozdzielanych plików tekstowych różnych kodowań.
-* *Outputters.Csv()*: Zapisuje dane do plików różnych kodowań rozdzielanymi przecinkami (CSV).
-* *Outputters.Tsv()*: Zapisuje dane do plików różnych kodowań wartości rozdzielane tabulatorami (TSV).
+* *Outputters.Text()* : Zapisuje dane do rozdzielanych plików tekstowych różnych kodowań.
+* *Outputters.Csv()* : Zapisuje dane do plików różnych kodowań rozdzielanymi przecinkami (CSV).
+* *Outputters.Tsv()* : Zapisuje dane do plików różnych kodowań wartości rozdzielane tabulatorami (TSV).
 
 Outputter niestandardowych umożliwia zapisywanie danych w niestandardowym formacie zdefiniowane. Może to być przydatne w przypadku następujących zadań:
 

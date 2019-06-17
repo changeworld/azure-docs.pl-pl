@@ -9,18 +9,51 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0a6b48dbba232c06945b00d5107581d8d0c017b0
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 9c08cd52bba6391660bc5f28e5db2dbec1126951
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118708"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
 
 W tym artykule wymieniono typowe problemy, które są powiązane z usługą Azure Files, po nawiązaniu połączenia z klientami z systemem Linux. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. 
 
 Oprócz kroki rozwiązywania problemów, w tym artykule, można użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) aby upewnić się, że klient systemu Linux ma poprawne warunki wstępne. AzFileDiagnostics automatyzuje wykrywania większości objawy wymienionych w tym artykule. Pomaga ono służą do konfigurowania środowiska w celu uzyskania optymalnej wydajności. Można również znaleźć te informacje w [udziałów plików platformy Azure do rozwiązywania problemów z](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Narzędzie do rozwiązywania problemów zawiera instrukcje do udzielenia odpowiedzi na problemy, łączenie, mapowanie i instalowanie udziałów plików platformy Azure.
+
+## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nie można nawiązać lub zainstalować udział plików platformy Azure
+
+### <a name="cause"></a>Przyczyna
+
+Typowe przyczyny tego problemu są:
+
+- Używasz niezgodny klient dystrybucji systemu Linux. Zaleca się, że używasz poniższe dystrybucje systemu Linux do łączenia z udziałem plików platformy Azure:
+
+|   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje ze środowiska lokalnego i między regionami) |
+| --- | :---: | :---: |
+| Ubuntu Server | 14.04+ | 16.04+ |
+| RHEL | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
+| Debian | 8+ |   |
+| openSUSE | 13.2+ | 42.3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+
+- Narzędzia CIFS (cfs utils) nie są zainstalowane na komputerze klienckim.
+- Minimalna wersja protokołu SMB/CIFS, 2.1, nie jest zainstalowany na komputerze klienckim.
+- Szyfrowanie protokołu SMB 3.0 nie jest obsługiwane na komputerze klienckim. Zgodnie z poprzednią tabelą, zawiera listę dystrybucje systemu Linux tej instalowania pomocy technicznej ze środowiska lokalnego i między regionami przy użyciu szyfrowania. Inne dystrybucje wymagają jądra 4.11 i nowszych wersjach.
+- Próbujesz połączyć się z kontem magazynu za pośrednictwem portu TCP 445, który nie jest obsługiwany.
+- Próbujesz nawiązać połączenie z udziałem plików platformy Azure z maszyny Wirtualnej platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
+- Jeśli [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu i usługi Azure Files zezwala tylko na połączenia, które używają protokołu SMB 3.0 za pomocą szyfrowania.
+
+### <a name="solution"></a>Rozwiązanie
+
+Aby rozwiązać ten problem, należy użyć [narzędzie do rozwiązywania problemów dla usługi Azure Files spowodowanych błędami instalowania w systemie Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). To narzędzie:
+
+* Pomocne podczas walidowania klienta uruchamiania środowiska.
+* Wykrywa konfiguracji niezgodny klienta, spowodowałoby błąd dostępu dla usługi Azure Files.
+* Zawiera wskazówki nad własnym rozwiązaniem problemu.
+* Służy do zbierania danych diagnostycznych śledzenia.
 
 <a id="mounterror13"></a>
 ## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Instalowanie error(13): Odmowa uprawnień"podczas instalowania udziału plików platformy Azure
@@ -55,9 +88,11 @@ W systemie Linux pojawi się komunikat o błędzie podobny do następującego:
 
 Osiągnięto górny limit współbieżnych otwartych dojść, których można używać do pliku.
 
+Obowiązuje przydział 2000 otwartymi dojściami w jednym pliku. W przypadku 2 000 otwarte dojścia jest wyświetlany komunikat o błędzie stwierdzający, że osiągnięto limit przydziału.
+
 ### <a name="solution"></a>Rozwiązanie
 
-Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uchwyty, a następnie spróbuj ponownie wykonać operację. Aby uzyskać więcej informacji, zobacz [Lista kontrolna wydajności i skalowalności usługi Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uchwyty, a następnie spróbuj ponownie wykonać operację.
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Wolne kopiowania plików do i z usługi Azure Files w systemie Linux
@@ -66,36 +101,12 @@ Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uc
 - Jeśli wiesz, końcowy rozmiar pliku, który jest rozszerzanie przy użyciu zapisu oraz oprogramowania nie występują problemy ze zgodnością, podczas niepisane tail do pliku zawiera zera wartość rozmiaru pliku wcześniej dokonywane co zapisu rozszerzanie zapisu.
 - Użyj metody kopiowania prawa:
     - Użyj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) wszelkie transferu między dwoma udziałami plików.
-    - Użyj [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) między udziałów plików na komputerze lokalnym.
-
-<a id="error112"></a>
-## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Instalowanie error(112): Host nie działa"z powodu upływu limitu czasu ponownego łączenia
-
-Błąd instalacji "112" występuje na komputerze klienckim systemu Linux po przez długi czas klienta. Po dłuższy czas bezczynności klient odłączy się i upłynie limit czasu połączenia.  
-
-### <a name="cause"></a>Przyczyna
-
-Połączenie może być bezczynne, z następujących powodów:
-
--   Problemy z komunikacją sieci, które uniemożliwiają ponowne ustanowienie połączenia TCP z serwerem, gdy jest używana opcja "elastyczne" instalacji domyślnej
--   Najnowsze poprawki ponowne nawiązanie połączenia, które nie są obecne w starszych jądra
-
-### <a name="solution"></a>Rozwiązanie
-
-Ten problem ponowne nawiązanie połączenia w jądrze systemu Linux jest teraz ustalone jako część następujących zmian:
-
-- [Poprawka połączyć odraczaj sesji protokołu smb3 ponownie gdy ponownego połączenia gniazda](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
-- [Wywoływanie usługi echo, natychmiast po zakończeniu ponownego połączenia gniazda](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: Naprawić uszkodzenie pamięci możliwe podczas ponownego nawiązania połączenia](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
-- [CIFS: Napraw możliwe double blokowanie mutex podczas ponownego nawiązania połączenia (dla jądra v4.9 i nowszych)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
-
-Jednak te zmiany mogą nie być przenoszone jeszcze do wszystkich dystrybucjach systemu Linux. Ta poprawka i inne poprawki ponowne nawiązanie połączenia znajdują się w następujących popularnych jądra systemu Linux: 4.4.40 4.8.16 i 4.9.1. Po uaktualnieniu do wersji jądra zalecane, możesz uzyskać tę poprawkę.
-
-### <a name="workaround"></a>Obejście
-
-Ten problem można obejść, określając twarde instalacji. Twarde instalacji wymusza to na kliencie, aby czekać do momentu nawiązaniu połączenia lub jawnie zostało przerwane. Aby zapobiec wystąpieniu błędów z powodu limitów czasu w sieci, można użyć go. Jednak to rozwiązanie może spowodować czeka na czas nieokreślony. Przygotuj się na zatrzymanie połączenia zgodnie z potrzebami.
-
-Jeśli nie można uaktualnić do najnowszej wersji jądra, możesz obejść ten problem, przechowując plik w udziale plików platformy Azure, które piszesz co 30 sekund lub mniej. Musi to być operacji zapisu, takie jak ponowne napisanie Data utworzonego lub zmodyfikowanego pliku. W przeciwnym razie możesz otrzymać wyników z pamięci podręcznej, a operacja nie może wyzwalać ponownego łączenia.
+    - Cp przy użyciu równoległe można poprawić szybkość kopiowania, liczba wątków zależy od obciążenia i przypadek użycia. W tym przykładzie użyto sześć: `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - Narzędzia open source innych firm takich jak:
+        - [Równoległe GNU](http://www.gnu.org/software/parallel/).
+        - [Fpart](https://github.com/martymac/fpart) — Sortuje pliki i pakuje je w partycji.
+        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -używa Fpart i narzędzia do kopiowania, uruchomić wiele wystąpień do migracji danych z src_dir do dst_url.
+        - [Obsługa wielu](https://github.com/pkolano/mutil) -cp wielowątkowych i md5sum oparte na GNU coreutils.
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Instalowanie error(115): Operacja w toku"podczas instalowania usługi Azure Files przy użyciu protokołu SMB 3.0
@@ -106,7 +117,7 @@ Niektórych dystrybucjach systemu Linux nie obsługują funkcji szyfrowania w pr
 
 ### <a name="solution"></a>Rozwiązanie
 
-Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub z innego regionu platformy Azure. W czasie publikowania ta funkcja została backported Ubuntu 17.04 i Ubuntu 16.10. 
+Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub z innego regionu platformy Azure. Ta funkcjonalność jest zawarta w dystrybucje systemu Linux, na liście [minimalna zalecana wersji przy użyciu odpowiedniej funkcji instalacji (protokół SMB w wersji 2.1 vs protokołu SMB w wersji 3.0 lub nowszej)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30). Inne dystrybucje wymagają jądra 4.11 i nowszych wersjach.
 
 Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, instalowanie usługi Azure Files przy użyciu protokołu SMB 2.1 maszyny wirtualnej systemu Linux platformy Azure, która znajduje się w tym samym centrum danych jako udziału plików. Upewnij się, że [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu. 
 
@@ -133,13 +144,13 @@ Sprawdź, czy wirtualnej sieci i reguł zapory są poprawnie skonfigurowane na k
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Niska wydajność w udziale plików platformy Azure zainstalowany na maszynie Wirtualnej systemu Linux
 
-### <a name="cause"></a>Przyczyna
+### <a name="cause-1-caching"></a>Przyczyny 1: Buforowanie
 
-Jedną z możliwych przyczyn spadek wydajności jest wyłączone buforowanie.
+Jedną z możliwych przyczyn spadek wydajności jest wyłączone buforowanie. Pamięć podręczna może być przydatne, jeśli regularnie uzyskują dostęp do pliku, w przeciwnym razie może być obciążenie. Sprawdź, czy korzystasz pamięci podręcznej przed wyłączeniem śledzenia zmian.
 
-### <a name="solution"></a>Rozwiązanie
+### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
 
-Aby sprawdzić, czy buforowanie jest wyłączone, poszukaj **pamięci podręcznej =** wpisu. 
+Aby sprawdzić, czy buforowanie jest wyłączone, poszukaj **pamięci podręcznej =** wpisu.
 
 **Pamięć podręczna = none** wskazuje, że buforowanie jest wyłączone. Zainstaluj udział, za pomocą polecenia instalacji domyślnej lub przez jawne dodanie **pamięci podręcznej = strict** jest włączona opcja instalacji polecenie, aby zapewnić tej buforowanie domyślne lub "strict" Tryb pamięci podręcznej.
 
@@ -154,6 +165,14 @@ Możesz również sprawdzić, czy prawidłowe opcje są używane przez uruchomie
 ```
 
 Jeśli **pamięci podręcznej = strict** lub **serverino** opcja jest obecne, odinstaluj i ponownie zainstaluj usługi Azure Files za pomocą polecenia instalacji z [dokumentacji](../storage-how-to-use-files-linux.md). Następnie sprawdź ponownie, **/etc/fstab** wpis ma prawidłowe opcje.
+
+### <a name="cause-2-throttling"></a>Przyczyny 2: Ograniczanie przepływności
+
+Istnieje możliwość, występują ograniczenia przepustowości i żądania są wysyłane do kolejki. Można to sprawdzić, wykorzystując [metryk usługi Azure Storage w usłudze Azure Monitor](../common/storage-metrics-in-azure-monitor.md).
+
+### <a name="solution-for-cause-2"></a>Rozwiązanie przyczyny 2
+
+Upewnij się, Twoja aplikacja znajduje się w obrębie [usługi Azure Files skalowanie elementów docelowych](storage-files-scale-targets.md#azure-files-scale-targets).
 
 <a id="timestampslost"></a>
 ## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Sygnatury czasowe zostały utracone podczas kopiowania plików z Windows z systemem Linux
@@ -172,40 +191,6 @@ Do kopiowania plików przy użyciu poświadczeń użytkownika konta magazynu:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
-
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nie można nawiązać lub zainstalować udział plików platformy Azure
-
-### <a name="cause"></a>Przyczyna
-
-Typowe przyczyny tego problemu są:
-
-
-- Używasz niezgodny klient dystrybucji systemu Linux. Zaleca się, że używasz poniższe dystrybucje systemu Linux do łączenia z udziałem plików platformy Azure:
-
-    |   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje ze środowiska lokalnego i między regionami) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
-
-- Narzędzia CIFS (cfs utils) nie są zainstalowane na komputerze klienckim.
-- Minimalna wersja protokołu SMB/CIFS, 2.1, nie jest zainstalowany na komputerze klienckim.
-- Szyfrowanie protokołu SMB 3.0 nie jest obsługiwane na komputerze klienckim. Szyfrowanie protokołu SMB 3.0 jest dostępny w Ubuntu 16.4 i nowsze wersje, wraz z systemem SUSE 12.3 i nowszych wersjach. Inne dystrybucje wymagają jądra 4.11 i nowszych wersjach.
-- Próbujesz połączyć się z kontem magazynu za pośrednictwem portu TCP 445, który nie jest obsługiwany.
-- Próbujesz nawiązać połączenie z udziałem plików platformy Azure z maszyny Wirtualnej platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
-- Jeśli [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu i usługi Azure Files zezwala tylko na połączenia, które używają protokołu SMB 3.0 za pomocą szyfrowania.
-
-### <a name="solution"></a>Rozwiązanie
-
-Aby rozwiązać ten problem, należy użyć [narzędzie do rozwiązywania problemów dla usługi Azure Files spowodowanych błędami instalowania w systemie Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). To narzędzie:
-
-* Pomocne podczas walidowania klienta uruchamiania środowiska.
-* Wykrywa konfiguracji niezgodny klienta, spowodowałoby błąd dostępu dla usługi Azure Files.
-* Zawiera wskazówki nad własnym rozwiązaniem problemu.
-* Służy do zbierania danych diagnostycznych śledzenia.
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": Błąd wejścia/wyjścia
 
@@ -248,6 +233,35 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 Następnie możesz utworzyć łączy symbolicznych jako sugerowane na [wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
+
+<a id="error112"></a>
+## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Instalowanie error(112): Host nie działa"z powodu upływu limitu czasu ponownego łączenia
+
+Błąd instalacji "112" występuje na komputerze klienckim systemu Linux po przez długi czas klienta. Po dłuższy czas bezczynności klient odłączy się i upłynie limit czasu połączenia.  
+
+### <a name="cause"></a>Przyczyna
+
+Połączenie może być bezczynne, z następujących powodów:
+
+-   Problemy z komunikacją sieci, które uniemożliwiają ponowne ustanowienie połączenia TCP z serwerem, gdy jest używana opcja "elastyczne" instalacji domyślnej
+-   Najnowsze poprawki ponowne nawiązanie połączenia, które nie są obecne w starszych jądra
+
+### <a name="solution"></a>Rozwiązanie
+
+Ten problem ponowne nawiązanie połączenia w jądrze systemu Linux jest teraz ustalone jako część następujących zmian:
+
+- [Poprawka połączyć odraczaj sesji protokołu smb3 ponownie gdy ponownego połączenia gniazda](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
+- [Wywoływanie usługi echo, natychmiast po zakończeniu ponownego połączenia gniazda](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
+- [CIFS: Naprawić uszkodzenie pamięci możliwe podczas ponownego nawiązania połączenia](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: Napraw możliwe double blokowanie mutex podczas ponownego nawiązania połączenia (dla jądra v4.9 i nowszych)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
+
+Jednak te zmiany mogą nie być przenoszone jeszcze do wszystkich dystrybucjach systemu Linux. Ta poprawka i inne poprawki ponowne nawiązanie połączenia można znaleźć w [minimalna zalecana wersji przy użyciu odpowiedniej funkcji instalacji (protokół SMB w wersji 2.1 vs protokołu SMB w wersji 3.0 lub nowszej)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) części [użycia usługi Azure Files z systemem Linux](storage-how-to-use-files-linux.md)artykułu. Po uaktualnieniu do wersji jądra zalecane, możesz uzyskać tę poprawkę.
+
+### <a name="workaround"></a>Obejście
+
+Ten problem można obejść, określając twarde instalacji. Twarde instalacji wymusza to na kliencie, aby czekać do momentu nawiązaniu połączenia lub jawnie zostało przerwane. Aby zapobiec wystąpieniu błędów z powodu limitów czasu w sieci, można użyć go. Jednak to rozwiązanie może spowodować czeka na czas nieokreślony. Przygotuj się na zatrzymanie połączenia zgodnie z potrzebami.
+
+Jeśli nie można uaktualnić do najnowszej wersji jądra, możesz obejść ten problem, przechowując plik w udziale plików platformy Azure, które piszesz co 30 sekund lub mniej. Musi to być operacji zapisu, takie jak ponowne napisanie Data utworzonego lub zmodyfikowanego pliku. W przeciwnym razie możesz otrzymać wyników z pamięci podręcznej, a operacja nie może wyzwalać ponownego łączenia.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 

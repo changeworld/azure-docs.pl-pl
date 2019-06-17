@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 8d4cc5e46066ad2f18d596d0484f62f478b4cc23
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 71c6f1936f8cbc700a24d0ffb497947c8c8d3a50
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514322"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075278"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Sposób wyświetlania dzienników i zdarzeń w czasie rzeczywistym (wersja zapoznawcza)
-Usługa Azure Monitor dla kontenerów zawiera funkcję, która jest obecnie dostępna w wersji zapoznawczej, która zawiera widok na żywo w sieci Web i zdarzenia dzienników kontenera usługi Azure Kubernetes Service (AKS) (stdout/stderr) bez konieczności uruchamiania poleceń kubectl. Gdy wybierzesz dowolną opcję, zostanie wyświetlone nowe okienko pod tabelą danych wydajności w **węzłów**, **kontrolerów**, i **kontenery** widoku. Pokazuje rejestrowanie na żywo i zdarzenia generowane przez aparat container ułatwiających dalsze rozwiązywanie problemów w czasie rzeczywistym. 
+Usługa Azure Monitor dla kontenerów zawiera funkcję, która jest obecnie dostępna w wersji zapoznawczej, która zawiera widok na żywo w sieci Web i zdarzenia dzienników kontenera usługi Azure Kubernetes Service (AKS) (stdout/stderr) bez konieczności uruchamiania poleceń kubectl. Gdy wybierzesz dowolną opcję, zostanie wyświetlone nowe okienko pod tabelą danych wydajności w **węzłów**, **kontrolerów**, i **kontenery** widoku. Pokazuje rejestrowanie na żywo i zdarzenia generowane przez aparat container ułatwiających dalsze rozwiązywanie problemów w czasie rzeczywistym.
 
 >[!NOTE]
 >**Współautor** dostęp do zasobu klastra jest wymagany dla tej funkcji do pracy.
@@ -29,9 +29,9 @@ Usługa Azure Monitor dla kontenerów zawiera funkcję, która jest obecnie dost
 
 Dzienniki na żywo obsługuje trzy różne metody kontroli dostępu do dzienników:
 
-1. AKS, bez autoryzacji Kubernetes RBAC włączone 
+1. AKS, bez autoryzacji Kubernetes RBAC włączone
 2. Włączone z autoryzacji RBAC platformy Kubernetes w usłudze AKS
-3. Włączone za pomocą usługi Azure Active Directory (AD) opartej na SAML logowania jednokrotnego w usłudze AKS 
+3. Włączone za pomocą usługi Azure Active Directory (AD) opartej na SAML logowania jednokrotnego w usłudze AKS
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Klaster Kubernetes bez RBAC włączone
  
@@ -66,21 +66,21 @@ Po włączeniu autoryzacji RBAC platformy Kubernetes, należy zastosować powią
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. Jeśli konfigurujesz je po raz pierwszy, utworzyć powiązanie reguły klastra, uruchamiając następujące polecenie: `kubectl create -f LogReaderRBAC.yaml`. Jeśli wcześniej włączony pomocy technicznej dla dzienniki na żywo w wersji zapoznawczej przed wprowadziliśmy dzienniki zdarzeń na żywo, aby zaktualizować konfigurację, uruchom następujące polecenie: `kubectl apply -f LogReaderRBAC.yml`. 
+2. Jeśli konfigurujesz je po raz pierwszy, utworzyć powiązanie reguły klastra, uruchamiając następujące polecenie: `kubectl create -f LogReaderRBAC.yaml`. Jeśli wcześniej włączony pomocy technicznej dla dzienniki na żywo w wersji zapoznawczej przed wprowadziliśmy dzienniki zdarzeń na żywo, aby zaktualizować konfigurację, uruchom następujące polecenie: `kubectl apply -f LogReaderRBAC.yml`.
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Konfigurowanie usługi AKS przy użyciu usługi Azure Active Directory
-AKS można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). Jeśli konfigurujesz je po raz pierwszy, zobacz [integracji usługi Azure Active Directory z usługą Azure Kubernetes Service](../../aks/azure-ad-integration.md). Podczas wykonywania czynności, aby utworzyć [aplikacja kliencka](../../aks/azure-ad-integration.md#create-client-application), należy określić dwa **identyfikator URI przekierowania** wpisów. Dwa identyfikatory URI są następujące:
 
-- https://ininprodeusuxbase.microsoft.com/*
-- https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html  
+AKS można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). Jeśli konfigurujesz je po raz pierwszy, zobacz [integracji usługi Azure Active Directory z usługą Azure Kubernetes Service](../../aks/azure-ad-integration.md). Podczas wykonywania czynności, aby utworzyć [aplikacja kliencka](../../aks/azure-ad-integration.md#create-the-client-application), podaj następujące informacje:
+
+- **(Opcjonalnie) identyfikator URI przekierowania**: Jest to **Web** typu aplikacji i wartości bazowej adres URL powinien być `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+- Po zarejestrowaniu aplikacji z **Przegląd** stronie wybierz **uwierzytelniania** z okienka po lewej stronie. Na **uwierzytelniania** w obszarze **Zaawansowane ustawienia** niejawnie udzielić **tokeny dostępu** i **tokeny Identyfikatora** , a następnie zapisz swoje zmiany.
 
 >[!NOTE]
->Konfigurowanie uwierzytelniania za pomocą usługi Azure Active Directory dla logowania jednokrotnego można wykonywać tylko podczas wstępnej wdrożenia nowego klastra AKS. Nie można skonfigurować logowania jednokrotnego na dla klastra usługi AKS już wdrożone. Należy skonfigurować uwierzytelnianie z **rejestracji aplikacji (starsza wersja)** opcji w usłudze Azure AD w celu obsługi symboli wieloznacznych w identyfikatorze URI, a podczas dodawania go do listy, zarejestruj go jako **natywnych** aplikacji.
-> 
+>Konfigurowanie uwierzytelniania za pomocą usługi Azure Active Directory dla logowania jednokrotnego można wykonywać tylko podczas początkowego wdrożenia nowego klastra AKS. Nie można skonfigurować logowania jednokrotnego na dla klastra usługi AKS już wdrożone.
 
 ## <a name="view-live-logs-and-events"></a>Wyświetl dzienniki na żywo i zdarzenia
 
-Można wyświetlać zdarzenia dziennika w czasie rzeczywistym, wygenerowane przez aparat kontenera z **węzłów**, **kontrolerów**, i **kontenery** widoku. W okienku właściwości wybierz **wyświetlać dane na żywo (wersja zapoznawcza)** opcji i okienko znajduje się poniżej w tabeli danych wydajności, gdzie można przejrzeć dziennik i zdarzenia w sposób ciągły. 
+Można wyświetlać zdarzenia dziennika w czasie rzeczywistym, wygenerowane przez aparat kontenera z **węzłów**, **kontrolerów**, i **kontenery** widoku. W okienku właściwości wybierz **wyświetlać dane na żywo (wersja zapoznawcza)** opcji i okienko znajduje się poniżej w tabeli danych wydajności, gdzie można przejrzeć dziennik i zdarzenia w sposób ciągły.
 
 ![Opcja dzienniki na żywo widok okienka właściwości węzła](./media/container-insights-live-logs/node-properties-live-logs-01.png)  
 
@@ -100,9 +100,11 @@ Po pomyślnym uwierzytelnieniu w dolnej części środkowym okienku pojawi się 
     
   ![Data pobrania okienka dzienniki na żywo](./media/container-insights-live-logs/live-logs-pane-01.png)  
 
-Na pasku wyszukiwania można filtrować według słowa kluczowego, aby zaznaczyć ten tekst w dzienniku lub zdarzenia, a następnie na pasku wyszukiwania, na końcu z prawej strony, pokazuje, ile wyników dopasowania się filtru.   
+Na pasku wyszukiwania można filtrować według słowa kluczowego, aby zaznaczyć ten tekst w dzienniku lub zdarzenia, a następnie na pasku wyszukiwania, na końcu z prawej strony, pokazuje, ile wyników dopasowania się filtru.
 
   ![Przykład filtr w okienku dzienniki na żywo](./media/container-insights-live-logs/live-logs-pane-filter-example-01.png)
+
+Podczas wyświetlania zdarzeń, mogą dodatkowo ograniczyć wyniki za pomocą **filtru** skażone znaleźć po prawej stronie na pasku wyszukiwania. W zależności od zasobów, jakich wybrano skażone wymieniono zasobników, przestrzeń nazw lub klastra, aby wybrać z.  
 
 Aby wstrzymać automatyczne przewijanie i kontrolować zachowanie okienka umożliwiają ręczne przewijanie przez nowe dane odczytu, kliknij **przewijania** opcji. Aby ponownie włączyć automatyczne przewijanie, wystarczy kliknąć łącze **przewijania** opcji ponownie. Pobieranie danych dziennika lub zdarzenia można również wstrzymać, klikając **wstrzymać** opcji, a gdy wszystko jest gotowe do wznowienia, wystarczy kliknąć **Odtwórz**.  
 

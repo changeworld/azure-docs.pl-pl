@@ -2,21 +2,20 @@
 title: Sprawdź ustawienia usługi Azure Traffic Manager
 description: Ten artykuł pomoże Ci zweryfikować ustawień usługi Traffic Manager.
 services: traffic-manager
-author: rockboyfor
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/16/2017
-ms.date: 02/18/2019
-ms.author: v-yeche
-ms.openlocfilehash: 1e954e3c4ebba245d91cfb84ab583b314150e5b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/16/2017
+ms.author: allensu
+ms.openlocfilehash: 19ef08a40d0a84aecb070e71bbb8c9b6a88ae059
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771621"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070936"
 ---
 # <a name="verify-traffic-manager-settings"></a>Weryfikowanie ustawień usługi Traffic Manager
 
@@ -36,7 +35,7 @@ Poniższe przykłady ułatwiają Testowanie profilu usługi Traffic Manager.
 2. Typ `ipconfig /flushdns` opróżnienia pamięci podręcznej programu rozpoznawania nazw DNS.
 3. Wpisz polecenie `nslookup <your Traffic Manager domain name>`. Na przykład poniższe polecenie sprawdza nazwę domeny z prefiksem *myapp.contoso*
 
-        nslookup myapp.contoso.trafficmanager.cn
+        nslookup myapp.contoso.trafficmanager.net
 
     Typowy wynik zawiera następujące informacje:
 
@@ -72,5 +71,3 @@ Alternatywnie istnieją wolne opartego na sieci web wyszukiwania DNS i szczegó�
 * [Metody routingu ruchu w usłudze Traffic Manager](traffic-manager-routing-methods.md)
 * [Zagadnienia dotyczące wydajności usługi Traffic Manager](traffic-manager-performance-considerations.md)
 * [Rozwiązywanie problemów ze stanem obniżonej wydajności usługi Traffic Manager](traffic-manager-troubleshooting-degraded.md)
-
-<!-- Update_Description: update meta properties -->

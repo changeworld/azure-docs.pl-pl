@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb89b1ef4dbbef234fba3152d7f85bbadfbdc64a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873888"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>Znane problemy w przeglądarce Safari MSAL.js 
@@ -32,11 +32,11 @@ Apple iOS 12 i systemów operacyjnych z systemem MacOS 10.14 uwzględnione wersj
 
 ### <a name="impact-on-msaljs"></a>Wpływ na MSAL.js
 
-MSAL.js używa ukryty element Iframe do wykonywania dyskretnej uzyskanie tokenu i odnawiania jako część `acquireTokenSilent` wywołania. Dyskretnej żądania tokenu zależą od elementu Iframe, mieli dostęp do sesji uwierzytelnionego użytkownika, reprezentowane przez pliki cookie, ustaw przez usługę Azure AD. 2.0 ITP uniemożliwia dostęp do tych plików cookie z MSAL.js kończy się niepowodzeniem dyskretnie nabywania i odnawiania tokenów i skutkuje `acquireTokenSilent` błędów.
+MSAL.js używa ukryty element Iframe do wykonywania dyskretnej uzyskanie tokenu i odnawiania jako część `acquireTokenSilent` wywołania. Dyskretnej żądania tokenu zależą od elementu Iframe, mieli dostęp do sesji uwierzytelnionego użytkownika, reprezentowane przez pliki cookie, ustaw przez usługę Azure AD. 2\.0 ITP uniemożliwia dostęp do tych plików cookie z MSAL.js kończy się niepowodzeniem dyskretnie nabywania i odnawiania tokenów i skutkuje `acquireTokenSilent` błędów.
 
 W tym momencie istnieje rozwiązanie tego problemu i możemy sprawdzamy ze społecznością standardy.
 
-### <a name="work-around"></a>Obejście
+### <a name="work-around"></a>Obejścia
 
 Domyślnie ustawienie ITP jest włączone w przeglądarce Safari. To ustawienie zostanie wyłączone, przechodząc do **preferencje** -> **zachowania** i usuwając zaznaczenie pola wyboru **zapobiec śledzenia między lokacjami** opcji.
 

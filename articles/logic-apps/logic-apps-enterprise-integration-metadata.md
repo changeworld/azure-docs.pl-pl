@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
 ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60846205"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Zarządzanie metadanymi artefaktu w ramach kont integracji z usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
@@ -87,8 +87,8 @@ Można zdefiniować niestandardowych metadanych dla artefaktów w ramach kont in
 
       | Właściwość | Wymagany | Value | Opis | 
       |----------|----------|-------|-------------| 
-      | **Metoda** | Yes | <*Operacja do uruchomienia*> | Operacja HTTP do uruchamiania w artefakcie. Na przykład, ta akcja HTTP używa **UZYSKAĆ** metody. | 
-      | **IDENTYFIKATOR URI** | Yes | <*metadata-location*> | Aby uzyskać dostęp do `routingUrl` metadanych z wartości artefaktu możesz pobrać, można użyć wyrażenia, na przykład: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **— Metoda** | Yes | <*Operacja do uruchomienia*> | Operacja HTTP do uruchamiania w artefakcie. Na przykład, ta akcja HTTP używa **UZYSKAĆ** metody. | 
+      | **IDENTYFIKATOR URI** | Tak | <*metadata-location*> | Aby uzyskać dostęp do `routingUrl` metadanych z wartości artefaktu możesz pobrać, można użyć wyrażenia, na przykład: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
       | **Nagłówki** | Nie | <*header-values*> | Dowolny nagłówek danych wyjściowych z wyzwalacza, który chcesz przekazać do akcji HTTP. Na przykład, aby przekazać wyzwalacza `headers` wartość właściwości: Możesz na przykład użyć wyrażenia: <p>`@triggeroutputs()['headers']` | 
       | **Treść** | Nie | <*body-content*> | Inną zawartość chcesz przekazać za pomocą akcji HTTP `body` właściwości. Ten przykład przekazuje artefaktu `properties` wartości akcji HTTP: <p>1. Kliknij wewnątrz **treści** właściwości, aby wyświetlić listę zawartości dynamicznej. Nie właściwości są wyświetlane, wybierz opcję **Zobacz więcej**. <br>2. Z listy zawartości dynamicznej w obszarze **wyszukiwanie artefaktu konta integracji**, wybierz opcję **właściwości**. | 
       |||| 

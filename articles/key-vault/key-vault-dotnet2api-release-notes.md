@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: f9dd8a48da08f00cea1219f72940dd84dd3a97ac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64725510"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Usługa Azure Key Vault .NET w wersji 2.0 — przewodnik migracji i informacje o wersji
@@ -60,11 +60,11 @@ Certyfikaty usługi Key Vault Zarządzanie x509 certyfikaty i obsługuje następ
 
 * *KeyVaultClientException* jest zmieniana na *KeyVaultErrorException*
 * Błąd usługi zmieniła się z *wyjątku. Błąd* do *wyjątku. Body.Error.Message*.
-* Usunięte dodatkowe informacje z komunikat o błędzie dla **[JsonExtensionData]**.
+* Usunięte dodatkowe informacje z komunikat o błędzie dla **[JsonExtensionData]** .
 
 ## <a name="constructors"></a>Konstruktory
 
-* Zamiast akceptowanie *HttpClient* jako argument konstruktora akceptuje tylko Konstruktor *HttpClientHandler* lub *DelegatingHandler []*.
+* Zamiast akceptowanie *HttpClient* jako argument konstruktora akceptuje tylko Konstruktor *HttpClientHandler* lub *DelegatingHandler []* .
 
 ## <a name="downloaded-packages"></a>Pakietów do pobrania
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60203418"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow przy użyciu usługi Azure Data Factory
@@ -117,7 +117,7 @@ Należy pamiętać, że podczas określania schematu i kolumn dla usługi Servic
 - **Schemat:** Określ schemat, jak `Actual` lub `Display` kwerendę usługi ServiceNow, które można przyjrzeć się go jako parametr `sysparm_display_value` PRAWDA lub FAŁSZ, gdy wywołanie [interfejsów API restful usługi ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
 - **Kolumna:** nazwa kolumny do rzeczywistej wartości w obszarze `Actual` schemat jest `[column name]_value`, natomiast w przypadku wartości wyświetlanej w obszarze `Display` schemat jest `[column name]_display_value`. Uwaga nazwa kolumny musi mapowania do schematu, używany w zapytaniu.
 
-**Przykładowe zapytanie:**
+**Przykładowe zapytanie:** 
 `SELECT col_value FROM Actual.alm_asset` OR 
 `SELECT col_display_value FROM Display.alm_asset`
 

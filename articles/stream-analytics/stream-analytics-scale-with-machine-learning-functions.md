@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61479149"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning
@@ -77,8 +77,8 @@ Poniżej znajduje się tabela przepływności zadania usługi Stream Analytics, 
 | **1 SU** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **3 SUs** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **6 SUs** |2,500 |5,000 |20,000 |30,000 |50,000 |
-| **12 SUs** |5000 |10 000 |40,000 |60,000 |100 000 |
-| **18 SUs** |7500 |15,000 |60,000 |90,000 |150,000 |
+| **12 SUs** |5,000 |10 000 |40,000 |60,000 |100,000 |
+| **18 SUs** |7,500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SUs** |10 000 |20,000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
 | **60 SUs** |25,000 |50,000 |200,000 |300,000 |500,000 |

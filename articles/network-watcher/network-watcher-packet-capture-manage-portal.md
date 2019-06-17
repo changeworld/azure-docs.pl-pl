@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
 ms.openlocfilehash: 50092db9e2e3670168cbb3440b8cb99eb0c2ac20
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714702"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher przy użyciu portalu
@@ -54,7 +54,7 @@ Jeśli sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym lub 
 
    - **Maksymalna liczba bajtów na pakiet**: Liczba bajtów z każdego pakietu, które są przechwytywane. Jeśli pole pozostanie puste, wszystkie wartości bajtowe są przechwytywane.
    - **Maksymalna liczba bajtów na sesję**: Całkowita liczba bajtów, które są przechwytywane. Po zatrzymaniu przechwytywania pakietów jest osiągnięta wartość.
-   - **Limit czasu (w sekundach)**: Limit czasu, zanim przechwytywania pakietów została zatrzymana. Wartość domyślna to 18,000 sekund.
+   - **Limit czasu (w sekundach)** : Limit czasu, zanim przechwytywania pakietów została zatrzymana. Wartość domyślna to 18,000 sekund.
    - Filtrowanie (opcjonalne). Wybierz **+ Dodaj filtr**
      - **Protokół**: Protokół, aby filtrować pod kątem przechwytywania pakietów. Dostępne wartości to TCP, UDP i dowolny.
      - **Lokalny adres IP**: Filtruje przechwytywania pakietów dla pakietów, jeśli lokalny adres IP odpowiada tej wartości.

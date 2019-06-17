@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 607f85c10183366e88d597d84090f49fc30aff48
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687980"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usługi ML w usłudze Azure HDInsight
@@ -23,7 +23,7 @@ W tym artykule dowiesz się, jak zarządzać istniejącego klastra usługi ML w 
 
 * **Klaster usługi ML w HDInsight**: Aby uzyskać instrukcje, zobacz [Rozpocznij pracę z usługami uczenia Maszynowego na HDInsight](r-server-get-started.md).
 
-* **Klient protokołu Secure Shell (SSH)**: Klient SSH jest używany do zdalnego łączenia z klastrem HDInsight i uruchamianie poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [użycia protokołu SSH w usłudze HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient protokołu Secure Shell (SSH)** : Klient SSH jest używany do zdalnego łączenia z klastrem HDInsight i uruchamianie poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [użycia protokołu SSH w usłudze HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="enable-multiple-concurrent-users"></a>Włączanie obsługi równoczesnych użytkowników
@@ -33,7 +33,7 @@ Można włączyć dla klastra usługi ML na HDInsight jednoczesną pracę wielu 
 ![Równoczesny użytkownik 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
 - **Nazwa użytkownika logowania klastra**: użytkownik HTTP uwierzytelniany za pośrednictwem bramy HDInsight, która umożliwia ochronę utworzonych klastrów usługi HDInsight. Ten użytkownik HTTP umożliwia dostęp do interfejsu użytkownika programu Apache Ambari, Apache Hadoop YARN w interfejsie użytkownika, a także innych składników interfejsu użytkownika.
-- **Nazwa użytkownika protokołu SSH (Secure Shell)**: użytkownik SSH zapewniający dostęp do klastra za pośrednictwem protokołu Secure Shell. Jest to użytkownik systemu Linux, który ma dostęp do wszystkich węzłów głównych, węzłów procesu roboczego oraz węzłów krawędzi. Pozwala to na korzystanie z dowolnego węzła klastra zdalnego za pomocą protokołu Secure Shell.
+- **Nazwa użytkownika protokołu SSH (Secure Shell)** : użytkownik SSH zapewniający dostęp do klastra za pośrednictwem protokołu Secure Shell. Jest to użytkownik systemu Linux, który ma dostęp do wszystkich węzłów głównych, węzłów procesu roboczego oraz węzłów krawędzi. Pozwala to na korzystanie z dowolnego węzła klastra zdalnego za pomocą protokołu Secure Shell.
 
 Wersję R Studio Server Community używaną w klastrze usługi ML w HDInsight są akceptowane tylko nazwa użytkownika systemu Linux i hasło logowania w mechanizmie. Przekazywanie tokenów nie jest obsługiwane. Dlatego podczas próby dostępu do oprogramowania R Studio po raz pierwszy w klastrze usługi uczenie Maszynowe, należy zalogować się dwukrotnie.
 

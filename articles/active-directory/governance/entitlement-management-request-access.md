@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39a50240b4360c5b4adcd6020c2b80b0f06315f7
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541558"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Żądanie dostępu do pakietu dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
@@ -34,7 +34,7 @@ ms.locfileid: "64541558"
 
 Pierwszym krokiem jest zalogować się do portalu Moje dostępu, których może zażądać dostępu do pakietu dostępu.
 
-**Rola wymagań wstępnych:** Żądający
+**Rola wymagań wstępnych:** Obiekt żądający
 
 1. Wyszukaj wiadomości e-mail lub wiadomości z Menedżer projektu lub business, którą pracujesz. Wiadomość e-mail powinna zawierać łącze do pakietu dostępu, który jest potrzebny dostęp do. Łącze rozpoczyna się od:
 
@@ -50,7 +50,7 @@ Pierwszym krokiem jest zalogować się do portalu Moje dostępu, których może 
 
 Po znalezieniu pakiet dostępu w portalu Moje dostępu, możesz przesłać żądanie.
 
-**Rola wymagań wstępnych:** Żądający
+**Rola wymagań wstępnych:** Obiekt żądający
 
 1. Kliknij znacznik wyboru, aby wybrać pakiet dostępu.
 
@@ -76,7 +76,7 @@ Po znalezieniu pakiet dostępu w portalu Moje dostępu, możesz przesłać żąd
 
 Prześlij żądanie dostępu, jeśli żądanie nadal znajduje się w **oczekujące na zatwierdzenie** stanu, można anulować żądania.
 
-**Rola wymagań wstępnych:** Żądający
+**Rola wymagań wstępnych:** Obiekt żądający
 
 1. W portalu Moje dostępu po lewej stronie, kliknij przycisk **Historia żądań** umożliwia wyświetlenie listy wykonanych żądań i stanów.
 
@@ -92,7 +92,7 @@ Prześlij żądanie dostępu, jeśli żądanie nadal znajduje się w **oczekują
 
 Jeśli zażądano dostępu do pakietu dostępu, który ma wiele zasad, które są stosowane, może być proszony o wybranie zasad. Na przykład dostęp do Menedżera pakietów może skonfigurować pakiet dostępu przy użyciu dwóch zasad na dwie grupy pracowników wewnętrznych. Pierwszy zasad może zezwolić na dostęp przez 60 dni i wymagają zatwierdzenia. Drugie zasady mogą zezwolić na dostęp do 2 dni i nie wymagają zatwierdzenia. Jeśli napotkasz ten scenariusz, należy wybrać zasad które chcesz użyć.
 
-**Rola wymagań wstępnych:** Żądający
+**Rola wymagań wstępnych:** Obiekt żądający
 
 ## <a name="next-steps"></a>Kolejne kroki
 

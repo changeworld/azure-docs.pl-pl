@@ -5,18 +5,26 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptional
-ms.date: 04/22/2019
+ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 3880c847c54136dfd3ba1ecfe0178565091e229f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 48725ed8cdf3df30f8df31966aa632bfb2a4ef1f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066887"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Ustawianie alertów dotyczących zdarzeń dziennika diagnostycznego z bramy sieci VPN
 
-Ten artykuł pomoże Ci skonfigurować alerty na podstawie zdarzeń dziennika diagnostycznego z bramy Azure VPN Gateway.
+Ten artykuł pomoże Ci skonfigurować alerty na podstawie zdarzeń dziennika diagnostycznego z bramy Azure VPN Gateway. Dostępne są następujące dzienniki.
+
+|***Nazwa*** | ***Opis*** |
+|---        | ---               |
+|GatewayDiagnosticLog | Zawiera dzienniki diagnostyczne na potrzeby zdarzeń konfiguracji bramy, zmiany podstawowego i zdarzenia konserwacji |
+|TunnelDiagnosticLog | Zawiera zdarzenia zmiany stanu tunelu. Tunel łączenie/rozłączanie połączeń zdarzenia mają podsumowane Przyczyna zmiany stanu, jeśli ma to zastosowanie |
+|RouteDiagnosticLog | Dzienniki zmiany trasy statyczne i zdarzeń dotyczących bramy protokołu BGP |
+|IKEDiagnosticLog | Rejestruje komunikaty sterujące IKE i zdarzeniach w bramie |
+|P2SDiagnosticLog | Rejestruje komunikaty sterujące punkt lokacja i zdarzeniach w bramie |
 
 ## <a name="setup"></a>Konfigurowanie alertów
 

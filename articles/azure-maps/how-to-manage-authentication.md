@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952572"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Zarządzaj uwierzytelnianiem w usługi Azure Maps
@@ -61,17 +61,17 @@ Po utworzeniu konta usługi Azure Maps, należy ustanowić połączenia między 
 
 Po skojarzeniu konta usługi Azure Maps z dzierżawą usługi Azure AD, można przyznać kontroli dostępu, przydzielając użytkownikowi lub aplikacji do co najmniej jedną rolę kontroli dostępu do usługi Azure Maps.
 
-1. Przejdź do **kontrola dostępu (IAM)**, wybierz opcję **przypisań ról**, a następnie wybierz pozycję **Dodaj przypisanie roli**.
+1. Przejdź do **kontrola dostępu (IAM)** , wybierz opcję **przypisań ról**, a następnie wybierz pozycję **Dodaj przypisanie roli**.
 
     ![Udziel kontroli RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. W **Dodaj przypisanie roli** okna, w obszarze **roli**, wybierz opcję **czytnika Data mapy platformy Azure (wersja zapoznawcza)**. W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika, grupy lub jednostki usługi Azure AD**. W obszarze **wybierz**, wybierz użytkownika lub aplikacji. Wybierz pozycję **Zapisz**.
+2. W **Dodaj przypisanie roli** okna, w obszarze **roli**, wybierz opcję **czytnika Data mapy platformy Azure (wersja zapoznawcza)** . W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika, grupy lub jednostki usługi Azure AD**. W obszarze **wybierz**, wybierz użytkownika lub aplikacji. Wybierz pozycję **Zapisz**.
 
     ![Dodaj przypisanie roli](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>Wyświetlanie dostępnych ról RBAC mapy platformy Azure
 
-Aby wyświetlić ról kontroli dostępu opartej na rolach, które są dostępne dla usługi Azure Maps, przejdź do **kontrola dostępu (IAM)**, wybierz opcję **role**, a następnie wyszukaj role począwszy od **usługi Azure Maps**. Są to role, które można udzielić dostępu do.
+Aby wyświetlić ról kontroli dostępu opartej na rolach, które są dostępne dla usługi Azure Maps, przejdź do **kontrola dostępu (IAM)** , wybierz opcję **role**, a następnie wyszukaj role począwszy od **usługi Azure Maps**. Są to role, które można udzielić dostępu do.
 
 ![Wyświetlanie dostępnych ról.](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
@@ -80,7 +80,7 @@ Aby wyświetlić ról kontroli dostępu opartej na rolach, które są dostępne 
 
 RBAC zapewnia pełną kontrolę dostępu.
 
-Aby wyświetlić użytkowników i aplikacje, które zostały udzielone RBAC dla usługi Azure Maps, przejdź do **kontrola dostępu (IAM)**, wybierz opcję **przypisań ról**, a następnie filtrować dane według **usługi Azure Maps**.
+Aby wyświetlić użytkowników i aplikacje, które zostały udzielone RBAC dla usługi Azure Maps, przejdź do **kontrola dostępu (IAM)** , wybierz opcję **przypisań ról**, a następnie filtrować dane według **usługi Azure Maps**.
 
 ![Wyświetl użytkowników i aplikacje przyznawane RBAC](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 

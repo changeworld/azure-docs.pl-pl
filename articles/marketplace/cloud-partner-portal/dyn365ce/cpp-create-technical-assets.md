@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/29/2018
 ms.author: pabutler
 ms.openlocfilehash: eff175264677d6b8ffb885229b5e68b306424335
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943105"
 ---
 # <a name="create-technical-assets-for-azure-application-offer"></a>Utwórz zasoby techniczne w celu skorzystania z oferty aplikacji platformy Azure

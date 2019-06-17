@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
 ms.openlocfilehash: 1f90ce71084ba3acbf5a0aec5c7b8e9683323766
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60362122"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Jak rozpocząć pracę z zestawem Azure Table storage i Visual Studio podłączone usługi
@@ -25,7 +25,7 @@ ms.locfileid: "60362122"
 
 W tym artykule opisano sposób rozpoczęcia pracy przy użyciu usługi Azure Table storage w programie Visual Studio po użytkownik utworzył, lub odwołanie do konta usługi Azure storage w projektach programu ASP.NET Core przy użyciu programu Visual Studio **podłączone usługi** funkcji. **Podłączone usługi** operacji instaluje odpowiednie pakiety NuGet dostępu do magazynu platformy Azure w swoim projekcie i dodaje parametry połączenia dla konta magazynu do plików konfiguracji projektu. (Zobacz [dokumentacja usługi Storage](https://azure.microsoft.com/documentation/services/storage/) ogólne informacje o usłudze Azure Storage.)
 
-Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych. Aby uzyskać więcej ogólnych informacji o korzystaniu z usługi Azure Table storage, zobacz [Rozpoczynanie pracy z usługą Azure Table storage przy użyciu platformy .NET](../storage/storage-dotnet-how-to-use-tables.md).
+Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele platformy Azure są idealnym rozwiązaniem do przechowywania strukturalnych danych nierelacyjnych. Aby uzyskać więcej ogólnych informacji o korzystaniu z usługi Azure Table storage, zobacz [Rozpoczynanie pracy z usługą Azure Table storage przy użyciu platformy .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
 Aby rozpocząć pracę, należy najpierw utworzyć tabelę, w ramach konta magazynu. Następnie w tym artykule pokazano, jak utworzyć tabelę w języku C# oraz jak wykonywać operacje tabeli podstawowej, takie jak dodawanie, modyfikowanie, odczytywanie i usuwanie wpisów tabeli.  Kod używa biblioteki klienta usługi Azure Storage dla platformy .NET. Aby uzyskać więcej informacji na temat platformy ASP.NET, zobacz [ASP.NET](https://www.asp.net).
 

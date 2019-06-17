@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60313750"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Zarządzanie rekordami Dynamics 365 z usługą Azure Logic Apps
@@ -53,9 +53,9 @@ Najpierw dodaj wyzwalacz Dynamics 365, która jest uruchamiana, gdy nowy rekord 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
    | **Nazwa organizacji** | Yes | Nazwa wystąpienia Dynamics 365 Twojej organizacji do monitorowania, na przykład "Contoso" |
-   | **Nazwa jednostki** | Yes | Nazwa jednostkę którą chcesz monitorować, na przykład "prowadzi" | 
+   | **Nazwa jednostki** | Tak | Nazwa jednostkę którą chcesz monitorować, na przykład "prowadzi" | 
    | **Częstotliwość** | Yes | Jednostka czasu do użycia z interwałami podczas sprawdzania dostępności aktualizacji związanych z wyzwalacza |
-   | **Interwał** | Yes | Liczba sekund, minuty, godziny, dni, tygodni lub miesięcy, które upłynąć przed następnym wyboru |
+   | **Interval** | Tak | Liczba sekund, minuty, godziny, dni, tygodni lub miesięcy, które upłynąć przed następnym wyboru |
    ||| 
 
    ![Szczegóły wyzwalacza](./media/connectors-create-api-crmonline/trigger-details.png)
@@ -74,8 +74,8 @@ Teraz Dodaj akcję Dynamics 365, która tworzy rekord zadania dla nowego rekordu
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Nazwa organizacji** | Yes | W tym przykładzie wystąpienia Dynamics 365, w którym chcesz utworzyć rekord, który nie musi to być to samo wystąpienie w wyzwalacza, ale jest "Contoso" |
-   | **Nazwa jednostki** | Yes | Jednostki, której chcesz utworzyć rekord, na przykład "Zadania" |
+   | **Nazwa organizacji** | Tak | W tym przykładzie wystąpienia Dynamics 365, w którym chcesz utworzyć rekord, który nie musi to być to samo wystąpienie w wyzwalacza, ale jest "Contoso" |
+   | **Nazwa jednostki** | Tak | Jednostki, której chcesz utworzyć rekord, na przykład "Zadania" |
    | | |
 
    ![Szczegóły akcji](./media/connectors-create-api-crmonline/action-details.png)

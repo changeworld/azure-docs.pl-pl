@@ -7,17 +7,16 @@ ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: MladjoA
+ms.author: mlandzic
 ms.reviewer: sstein
-manager: digimobile
-origin.date: 01/25/2019
-ms.date: 02/25/2019
+manager: craigg
+ms.date: 01/25/2019
 ms.openlocfilehash: e7ba8057cd22c5cc1080b4a6d95f17bf76d4acb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60585429"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Wykonywanie zapytań w bazach danych w chmurze z różnymi schematami (wersja zapoznawcza)
@@ -62,8 +61,8 @@ Składnia:
     <External_Data_Source> ::=
     CREATE EXTERNAL DATA SOURCE <data_source_name> WITH 
                (TYPE = RDBMS,
-                LOCATION = '<fully_qualified_server_name>',
-                DATABASE_NAME = '<remote_database_name>',  
+                LOCATION = ’<fully_qualified_server_name>’,
+                DATABASE_NAME = ‘<remote_database_name>’,  
                 CREDENTIAL = <credential_name> 
                 ) [;] 
 
@@ -79,7 +78,7 @@ Poniższy przykład ilustruje użycie instrukcji CREATE dla zewnętrznych źród
     WITH 
     ( 
         TYPE=RDBMS, 
-        LOCATION='myserver.database.chinacloudapi.cn', 
+        LOCATION='myserver.database.windows.net', 
         DATABASE_NAME='ReferenceData', 
         CREDENTIAL= SqlUser 
     ); 
@@ -143,7 +142,7 @@ Poniższa instrukcja DDL odrzuca istniejącej definicji tabeli zewnętrznej z ka
 
 **Uprawnienia dla polecenia CREATE/DROP tabeli zewnętrznej**: Dla tabeli zewnętrznej DDL, który jest również wymagany do odwoływania się do bazowego źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.  
 
-## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
 
 Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskać dostęp do podstawowych tabel zdalnych, w obszarze poświadczenia podane w definicji zewnętrznego źródła danych. Aby zapobiec niepożądanemu podniesienia uprawnień za pomocą poświadczeń z zewnętrznym źródłem danych, należy dokładnie zarządzać dostępem do tabeli zewnętrznej. Regularne uprawnienia SQL można udzielić lub ODWOŁAĆ dostęp do tabeli zewnętrznej po prostu tak, jakby była zwykłą tabelę.  
 

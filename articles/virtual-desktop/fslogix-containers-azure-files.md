@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: v-chjenk
 ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66497538"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
@@ -47,10 +47,10 @@ W poniższej tabeli przedstawiono zalety i ograniczenia dotyczące poprzedniego 
 
 | Technologia | Ustawienia nowoczesny | Ustawienia systemu Win32 | Ustawienia systemu operacyjnego | Dane użytkowników | Obsługiwane na serwerze jednostki SKU | Magazynu zaplecza na platformie Azure | Magazynu zaplecza w środowisku lokalnym | Obsługa wersji | Kolejne logowania w czasie |Uwagi|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Dyski profilu użytkownika (UPD)** | Tak | Yes | Yes | Yes | Yes | Nie | Tak | Windows 7 + | Tak | |
-| **Mobilnego profilu użytkownika (RUP), trybu konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Yes | Windows 7 + | Nie | |
+| **Dyski profilu użytkownika (UPD)** | Yes | Yes | Yes | Yes | Yes | Nie | Yes | Windows 7 + | Tak | |
+| **Mobilnego profilu użytkownika (RUP), trybu konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Tak | Windows 7 + | Nie | |
 | **(ESR) Roaming stanu dla przedsiębiorstw** | Tak | Nie | Yes | Nie | Zobacz uwagi | Yes | Nie | Win 10 | Nie | Funkcje na serwerze jednostki SKU, ale bez obsługi interfejsu użytkownika |
-| **Wirtualizacji środowiska użytkownika (wirtualizacji środowiska użytkownika)** | Tak | Yes | Yes | Nie | Yes | Nie | Yes | Windows 7 + | Nie |  |
+| **Wirtualizacji środowiska użytkownika (wirtualizacji środowiska użytkownika)** | Tak | Yes | Yes | Nie | Yes | Nie | Tak | Windows 7 + | Nie |  |
 | **Plików w chmurze usługi OneDrive** | Nie | Nie | Nie | Yes | Zobacz uwagi | Zobacz uwagi  | Zobacz uwagi | Windows 10 RS3 | Nie | Nie przetestowane na serwerze jednostki SKU. Magazynu zaplecza na platformie Azure, zależy od klienta synchronizacji. Magazynu zaplecza środowiska lokalnego wymaga klienta synchronizacji. |
 
 #### <a name="performance"></a>Wydajność

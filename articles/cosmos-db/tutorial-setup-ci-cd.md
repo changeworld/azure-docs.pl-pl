@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b97fb1956c75332c40e242484b9d94419a45eb92
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 19ced9767d77b0d7bfcec6f01425ab1089a55d54
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242558"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069224"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -48,6 +48,9 @@ Teraz, gdy rozszerzenie jest zainstalowane, zaloguj się do swojego konta usług
    ![Wybieranie projektu zespołowego, repozytorium i gałęzi dla potoku kompilacji](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. Na koniec wybierz odpowiedni szablon dla potoku kompilacji. Do celów tego samouczka wybierzemy szablon **ASP.NET**. 
+
+> [!NOTE]
+> Pula agentów należy wybrać ten element CI powinny mieć Docker for Windows zainstalowany, chyba, że instalacja odbywa się ręcznie w poprzednie zadanie jako część elementu konfiguracji. Zobacz [agentów hostowanych przez Microsoft](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) artykuł dotyczący wybór pul agentów; zaleca się zaczynać `Hosted VS2017` lub `Hosted VS2019`. 
 
 Mamy już potok kompilacji, który możemy skonfigurować, aby użyć zadania kompilacji emulatora usługi Azure Cosmos DB. 
 

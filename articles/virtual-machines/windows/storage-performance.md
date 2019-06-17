@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: f84e81a5a9e9c9cf6f477adefa0869d776f7dd71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec6a6ea5d00d43f6dffa3aabc367d94ebb8db198
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075602"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optymalizuj wydajność na maszynach wirtualnych serii Lsv2
 
@@ -24,7 +24,7 @@ Maszyny wirtualne serii Lsv2 obsługi różnych obciążeń wymagających wysoki
 
 Projekt maszyny wirtualne serii Lsv2 (VM) maksymalizuje procesora AMD EPYC™ 7551, aby zapewnić najlepszą wydajność, od procesora, pamięci, NVMe urządzeń i maszyn wirtualnych. Oprócz maksymalizowanie wydajności sprzętu, maszyny wirtualne z serii Lsv2 zostały zaprojektowane do pracy z potrzebami systemów operacyjnych Windows i Linux w celu zapewnienia lepszej wydajności sprzętu i oprogramowania.
 
-Dostrojenie sprzętu i oprogramowania spowodowało zoptymalizowana wersja [systemie Windows Datacenter 2019](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview), wydanej w 2018 r. grudnia w portalu Azure Marketplace, który obsługuje maksymalną wydajność urządzenia NVMe w serii Lsv2 Maszyny wirtualne.
+Dostrojenie sprzętu i oprogramowania spowodowało zoptymalizowana wersja [systemie Windows Datacenter 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), wydanej w 2018 r. grudnia w portalu Azure Marketplace, który obsługuje maksymalną wydajność urządzenia NVMe w serii Lsv2 Maszyny wirtualne.
 
 Ten artykuł zawiera porady i sugestie, aby upewnić się, obciążenia i aplikacje osiągnąć maksymalną wydajność, zaprojektowane do maszyn wirtualnych. Informacje na tej stronie jest uaktualniany po dodaniu więcej Lsv2 zoptymalizowane pod kątem obrazów w portalu Azure Marketplace.
 

@@ -9,10 +9,10 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60616511"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Uzyskiwanie dostępu do dzienników diagnostycznych usługi Azure Data Lake Analytics
@@ -200,7 +200,7 @@ Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. 
 | JobId |String |Identyfikator przypisany do zlecenia |
 | JobName |String |Nazwa która została podana dla zadania |
 | JobRunTime |String |Środowiska uruchomieniowego użytego do przetworzenia zadania |
-| Godzina przesłania |String |Czas (w formacie UTC), które przesłano zadanie |
+| SubmitTime |String |Czas (w formacie UTC), które przesłano zadanie |
 | StartTime |String |Uruchomienia zadania uruchamiania po przesłaniu wizualizacji (w formacie UTC) |
 | EndTime |String |Czas zakończenia zadania |
 | Równoległość |String |Liczba wymagane dla tego zadania podczas przesyłania jednostki usługi Data Lake Analytics |

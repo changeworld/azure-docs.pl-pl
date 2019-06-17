@@ -1,8 +1,8 @@
 ---
-title: Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory? | Microsoft Docs
-description: Dowiedz się, jak kontrolę dostępu w pracach dostępu warunkowego usługi Azure Active Directory.
+title: Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
+description: Dowiedz się, jak kontrolę dostępu w usłudze Azure Active Directory dostępu warunkowego pracy.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
+keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc30bc18921b79be3b5e5b2ae340eab29dd5bcf
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
-ms.translationtype: MT
+ms.openlocfilehash: dd1ea7665daa6fd93a755cbdb20ebc63e3d63a94
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305757"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112556"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego?
 
 Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak autoryzowanego dostępu użytkowników można kontrolować swoje aplikacje w chmurze. W zasadach dostępu warunkowego zdefiniujesz odpowiedzi ("to") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku").
 
@@ -72,7 +72,7 @@ Przy użyciu usługi uwierzytelnianie wieloskładnikowe pomaga chronić zasoby p
 
 ### <a name="compliant-device"></a>Zgodne urządzenie
 
-Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest tylko udzielić dostępu do aplikacji w wybranej chmurze z [urządzeń zarządzanych przy użyciu](require-managed-devices.md). Wymaganie urządzenie było oznaczone jako zgodne jest jedną z opcji należy ograniczyć dostęp do zarządzanych urządzeń. Urządzenie może zostać oznaczony jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez system MDM innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami Przenośnymi innej firmy dla systemu operacyjnego urządzenia typów innych niż Windows 10 nie są obsługiwane. 
+Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniach, które jest tylko udzielić dostępu do aplikacji w wybranej chmurze z [urządzeń zarządzanych przy użyciu](require-managed-devices.md). Wymaganie urządzenie było oznaczone jako zgodne jest jedną z opcji należy ograniczyć dostęp do zarządzanych urządzeń. Urządzenie może zostać oznaczony jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez system MDM innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami Przenośnymi innej firmy dla systemu operacyjnego urządzenia typów innych niż Windows 10 nie są obsługiwane. 
 
 Urządzenie musi być zarejestrowany w usłudze Azure AD przed mogą zostać oznaczone jako zgodne. Aby zarejestrować urządzenie, masz trzy opcje: 
 
@@ -86,7 +86,7 @@ Aby uzyskać więcej informacji, zobacz [sposób wymagać zarządzanych urządze
 
 Wymaganie hybrydowych dołączonym do urządzenia w usłudze Azure AD inną opcję, należy skonfigurować zasady dostępu warunkowego opartego na urządzeniach. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów przedsiębiorstwa, które są przyłączone do lokalnej usługi Active Directory Windows. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje dostęp do podjętych z urządzeniami, które są przyłączone do lokalnej usługi Active Directory i usługi Azure Active Directory.  
 
-Aby uzyskać więcej informacji, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](require-managed-devices.md).
+Aby uzyskać więcej informacji, zobacz [skonfigurować zasady dostępu warunkowego opartego na urządzeniach w usłudze Azure Active Directory](require-managed-devices.md).
 
 ### <a name="approved-client-app"></a>Zatwierdzonej aplikacji klienckiej
 
@@ -100,7 +100,7 @@ Przy użyciu zatwierdzonych aplikacji klienckich, możesz wymagać od aplikacji 
 Pracownicy używają urządzeń przenośnych na potrzeby osobiste i zadania, możesz chcieć mieć możliwość ochrony danych firmowych, uzyskiwać dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez użytkownika.
 Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy jest niezależna od wszelkich rozwiązań do zarządzania urządzeniami przenośnymi (MDM).
 
-Za pomocą zasad ochrony aplikacji, można ograniczyć dostęp do aplikacji klienckich, które zostały zgłoszone do usługi Azure AD ma otrzymały [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która zawiera zasady ochrony aplikacji usługi Intune. Zasady dostępu warunkowego, które wymagają zasad ochrony aplikacji jest również nazywany [zasady dostępu warunkowego opartego na ochronę aplikacji](app-protection-based-conditional-access.md). 
+Za pomocą zasad ochrony aplikacji, można ograniczyć dostęp do aplikacji klienckich, które zostały zgłoszone do usługi Azure AD ma otrzymały [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która zawiera zasady ochrony aplikacji usługi Intune. Zasady dostępu warunkowego, które wymagają zasad ochrony aplikacji jest również nazywany [zasad dostępu warunkowego oparte na ochronę aplikacji](app-protection-based-conditional-access.md). 
 
 Urządzenie musi być zarejestrowana do usługi Azure AD, zanim aplikacja może być oznaczony jako chroniony zasad.
 
@@ -136,7 +136,7 @@ Aby uzyskać więcej informacji na temat tych usług skontaktuj się bezpośredn
 
 ### <a name="creating-custom-controls"></a>Tworzenie niestandardowych formantów
 
-Aby utworzyć formant niestandardowy, najpierw skontaktuj się dostawcą, który chcesz wykorzystać. Każdy dostawca firm innych niż Microsoft ma swój własny proces i wymagania dotyczące Zarejestruj, subskrybowanie lub w przeciwnym razie stają się częścią usługi i wskazują, że chcesz zintegrować z dostępem warunkowym. W tym momencie dostawcę udostępni bloku danych w formacie JSON. Te dane umożliwia dostawcy i dostępu warunkowego współpracują ze sobą w dzierżawie, tworzy nowy formant i definiuje, jak dostęp warunkowy można stwierdzić, jeśli użytkownicy mają wykonane pomyślnie weryfikacji za pomocą dostawcy.
+Aby utworzyć formant niestandardowy, najpierw skontaktuj się dostawcą, który chcesz wykorzystać. Każdy dostawca firm innych niż Microsoft ma swój własny proces i wymagania dotyczące Zarejestruj, subskrybowanie lub w przeciwnym razie stają się częścią usługi i wskazują, że chcesz zintegrować z dostępem warunkowym. W tym momencie dostawcę udostępni bloku danych w formacie JSON. Te dane umożliwia dostawcy i dostępu warunkowego współpracują ze sobą w dzierżawie, tworzy nowy formant i definiuje, jak można sprawdzić dostępu warunkowego w przypadku użytkowników zostały wykonane pomyślnie weryfikacji za pomocą dostawcy.
 
 Nie można użyć niestandardowych kontrolek, za pomocą usługi Identity Protection automation wymaganie uwierzytelniania wieloskładnikowego lub podniesienie poziomu ról w Privileged Identity Manager (PIM).
 
@@ -182,6 +182,6 @@ Aby dowiedzieć się więcej, zobacz:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
 
-- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md).
+- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).

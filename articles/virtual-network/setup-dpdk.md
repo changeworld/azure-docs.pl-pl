@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
 ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60731604"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Konfigurowanie DPDK na maszynie wirtualnej systemu Linux
@@ -33,7 +33,7 @@ DPDK można uruchamiać na maszynach wirtualnych platformy Azure, które obsług
 
 ## <a name="benefit"></a>Korzyść
 
-**Wyższe pakietów na sekundę (PPS)**: Pomijanie jądra i kontroli pobieranie pakietów w obszarze użytkownika zmniejsza liczbę cyklu przez wyeliminowanie przełączeń kontekstu. Zwiększa to liczba pakietów, które są przetwarzane na sekundę na maszynach wirtualnych z systemem Linux platformy Azure.
+**Wyższe pakietów na sekundę (PPS)** : Pomijanie jądra i kontroli pobieranie pakietów w obszarze użytkownika zmniejsza liczbę cyklu przez wyeliminowanie przełączeń kontekstu. Zwiększa to liczba pakietów, które są przetwarzane na sekundę na maszynach wirtualnych z systemem Linux platformy Azure.
 
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne

@@ -3,33 +3,29 @@ title: Jak wyłączyć funkcje w usłudze Azure Functions
 description: Dowiedz się, jak wyłączyć lub włączyć funkcje w usłudze Azure Functions w wersji 1.x i 2.x.
 services: functions
 documentationcenter: ''
-author: tdykstra
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.workload: na
-ms.devlang: na
-ms.topic: article
-origin.date: 07/24/2018
-ms.date: 08/31/2018
-ms.author: v-junlch
+author: ggailey777
+manager: jeconnoc
+ms.service: azure-functions
+ms.topic: conceptual
+ms.date: 07/24/2018
+ms.author: glenga
 ms.openlocfilehash: a32b4815a2716428ceeec034ddc5589e3aa062e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60710581"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Jak wyłączyć funkcje w usłudze Azure Functions
 
 W tym artykule wyjaśniono, jak wyłączyć funkcję w usłudze Azure Functions. Aby *wyłączyć* funkcji oznacza, że należy zignorować automatyczny wyzwalacz, który jest zdefiniowany dla funkcji środowiska uruchomieniowego. Sposób, możesz zrobić to zależy od wersji środowiska uruchomieniowego i języka programowania:
 
-- Functions w wersji 1.x
-  - Języki skryptów
-  - Biblioteki klas C#
-- Functions w wersji 2.x
-  - Jednym ze sposobów dla wszystkich języków
-  - Rozwiązanie opcjonalne dla bibliotek klas języka C#
+* Functions w wersji 1.x
+  * Języki skryptów
+  * Biblioteki klas C#
+* Functions w wersji 2.x
+  * Jednym ze sposobów dla wszystkich języków
+  * Rozwiązanie opcjonalne dla bibliotek klas języka C#
 
 ## <a name="functions-1x---scripting-languages"></a>Funkcje 1.x - języków skryptów
 
@@ -62,7 +58,7 @@ W drugim przykładzie funkcja jest wyłączona, gdy istnieje ustawienie aplikacj
 
 Możesz edytować plik w witrynie Azure portal lub użyj **stan funkcji** przełącznika funkcji **Zarządzaj** kartę. Portal przełącznika działa, zmieniając *function.json* pliku.
 
-![Przełącz stan — funkcja](./media/disable-function/function-state-switch.png)
+![Przełącz stan — funkcja](media/disable-function/function-state-switch.png)
 
 ## <a name="functions-1x---c-class-libraries"></a>Funkcje 1.x — bibliotek klas języka C#
 
@@ -113,7 +109,7 @@ Ta metoda umożliwia włączanie i wyłączanie funkcji, zmieniając ustawienia 
 
 W przypadku funkcji 2.x wyłączyć funkcję za pomocą ustawienia aplikacji. Na przykład, aby wyłączyć funkcję o nazwie `QueueTrigger`, utworzyć ustawienie aplikacji o nazwie `AzureWebJobs.QueueTrigger.Disabled`i ustaw ją na `true`. Aby włączyć funkcję, w ustawieniu aplikacji `false`. Można również użyć **stan funkcji** przełącznika funkcji **Zarządzaj** kartę. Przełącznik polega na tworzenie i usuwanie `AzureWebJobs.<functionname>.Disabled` ustawienia aplikacji.
 
-![Przełącz stan — funkcja](./media/disable-function/function-state-switch.png)
+![Przełącz stan — funkcja](media/disable-function/function-state-switch.png)
 
 ## <a name="functions-2x---c-class-libraries"></a>Funkcje 2.x - bibliotek klas języka C#
 
@@ -122,4 +118,3 @@ W bibliotece klas 2.x funkcji firma Microsoft zaleca używanie metody, która dz
 ## <a name="next-steps"></a>Kolejne kroki
 
 Ten artykuł dotyczy wyłączania automatycznych wyzwalaczy. Aby uzyskać więcej informacji na temat wyzwalaczy zobacz [wyzwalaczy i powiązań](functions-triggers-bindings.md).
-

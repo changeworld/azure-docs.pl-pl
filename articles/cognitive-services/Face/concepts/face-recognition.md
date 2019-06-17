@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: fa38c492530cb8938e49bc15e13fdd39ed5b6f1c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65890883"
 ---
 # <a name="face-recognition-concepts"></a>Pojęcia rozpoznawania twarzy
@@ -37,7 +37,7 @@ Operacje rozpoznawania używają głównie następujące struktury danych. Te ob
 
 W tej sekcji przedstawiono, jak cztery operacje rozpoznawania używają struktury danych, które opisano wcześniej. Szeroka opis każdej operacji rozpoznawania, zobacz [Przegląd](../Overview.md).
 
-### <a name="verify"></a>Sprawdź
+### <a name="verify"></a>Weryfikuj
 
 [Sprawdź](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) operacja pobiera funkcji face ID DetectedFace lub PersistedFace i innej funkcji face ID lub osoby i określa, czy należą do tej samej osoby. Jeśli przekażesz w obiekcie osoby, można przekazać w grupie, do której tej osobie należy poprawić wydajność.
 

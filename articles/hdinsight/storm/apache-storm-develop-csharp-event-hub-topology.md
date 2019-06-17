@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b02945197b20c7fe704d0f8cfa9201a5b9cbc292
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7f4db76fe2a302dd5acce01b456ef3b676b187c6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690939"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078281"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (C#)
 
@@ -38,7 +38,7 @@ Pakiet Microsoft.SCP.Net.SDK NuGet, których używasz dla projektu musi być zgo
 > [!IMPORTANT]  
 > W przykładzie w tym dokumencie oczekuje HDInsight 3.5 i 3.6 klastra.
 >
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. 
 
 Topologie języka C# muszą również wskazywać .NET 4.5.
 
@@ -137,8 +137,8 @@ Event Hubs to źródło danych, w tym przykładzie. Informacje przedstawione w s
 
    | Name (Nazwa) | Uprawnienia |
    | --- | --- |
-   | autor |Wysyłanie |
-   | czytelnik |Nasłuchuj |
+   | Składnik zapisywania |Wysyłanie |
+   | Czytnik |Nasłuchiwanie |
 
     ![Okno zasady dostępu zrzut ekranu udziału](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f6feceff234bed51bcf6adf34f51313fa348d77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358653"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056054"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Portal użytkowników serwera usługi Azure Multi-Factor Authentication
 
@@ -27,6 +27,9 @@ Użytkownik loguje się do portalu użytkowników przy użyciu swojej zwykłej n
 Można skonfigurować administratorów portalu użytkowników oraz przyznać im uprawnienia pozwalające dodawać nowych użytkowników i aktualizować istniejących.
 
 W zależności od środowiska można wdrożyć portal użytkowników na tym samym serwerze co serwer usługi Azure Multi-Factor Authentication lub na innym serwerze internetowym.
+
+> [!IMPORTANT]
+> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
 
 ![Strony logowania portalu użytkowników serwera usługi MFA](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -100,8 +103,8 @@ Zainstalowanie portalu użytkowników na serwerze innym niż serwer usługi Azur
 5. Edytowanie pliku Web.Config w Notatniku
 
     * Znajdź klucz **"USE_WEB_SERVICE_SDK"** i zmień wartość **value="false"** na **value="true"**
-    * Znajdź klucz **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** i zmień wartość **value=""** na **value="DOMAIN\User"**, gdzie DOMAIN\User to konto usługi będące częścią grupy „PhoneFactor Admins”.
-    * Znajdź klucz **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** i zmień wartość **value=""** na **value="Password"**, gdzie Password to hasło konta usługi wprowadzonego w poprzednim wierszu.
+    * Znajdź klucz **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** i zmień wartość **value=""** na **value="DOMAIN\User"** , gdzie DOMAIN\User to konto usługi będące częścią grupy „PhoneFactor Admins”.
+    * Znajdź klucz **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** i zmień wartość **value=""** na **value="Password"** , gdzie Password to hasło konta usługi wprowadzonego w poprzednim wierszu.
     * Znajdź wartość **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** i zmień ten zastępczy adres URL na adres URL zestawu SDK usługi internetowej zainstalowanej w kroku 2.
     * Zapisz plik Web.Config i zamknij Notatnik.
 

@@ -17,12 +17,12 @@ ms.date: 06/04/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faabc65a78626c053aecfac81b560b4731e40b95
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: f8e6873a1ef44e8919d08d24dbab88c63ebb45bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729990"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110520"
 ---
 # <a name="what-is-a-device-identity"></a>Co to jest tożsamość urządzenia?
 
@@ -33,7 +33,7 @@ W świecie zdominowanym przez urządzenia przenośne i rozwiązania chmurowe us�
 
 Za pomocą urządzeń w usłudze Azure AD użytkownicy uzyskują dostęp do zasobów firmowych. Aby chronić Twoje zasoby firmowe, administrator IT, chcesz zarządzać tymi tożsamościami urządzeń. W ten sposób może zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy dotyczące zabezpieczeń i zgodności.
 
-Zarządzanie tożsamościami urządzeń jest również podstawą dla [dostępu warunkowego opartego na urządzeniu](../conditional-access/require-managed-devices.md). Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.
+Zarządzanie tożsamościami urządzeń jest również podstawą dla [dostępu warunkowego opartego na urządzeniu](../conditional-access/require-managed-devices.md). Przy użyciu dostępu warunkowego opartego na urządzeniach można zagwarantować, że dostęp do zasobów w środowisku jest możliwe tylko przy użyciu zarządzanych urządzeń.
 
 ## <a name="getting-devices-in-azure-ad"></a>Pobieranie urządzenia w usłudze Azure AD
 
@@ -44,7 +44,7 @@ Aby uzyskać urządzenie w usłudze Azure AD, masz dwie opcje:
 
 **Zarejestrowanie** urządzenia w usłudze Azure AD umożliwia zarządzanie tożsamością urządzenia. Po zarejestrowaniu urządzenia usługa rejestracji urządzeń w usłudze Azure AD zapewnia urządzeniu tożsamość, która jest używana do uwierzytelniania urządzenia podczas logowania użytkownika w usłudze Azure AD. Możesz użyć tożsamości, aby włączyć lub wyłączyć urządzenie.
 
-W przypadku połączenia z rozwiązaniem do zarządzania urządzeniami przenośnymi (MDM, mobile device management), takim jak usługa Microsoft Intune, atrybuty urządzenia w usłudze Azure AD są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Umożliwia to tworzenie reguł dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności. Aby uzyskać więcej informacji na temat rejestrowania urządzeń w usłudze Microsoft Intune, zobacz artykuł [Co to jest rejestrowanie urządzenia?](https://docs.microsoft.com/intune/device-enrollment)
+W przypadku połączenia z rozwiązaniem do zarządzania urządzeniami przenośnymi (MDM, mobile device management), takim jak usługa Microsoft Intune, atrybuty urządzenia w usłudze Azure AD są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Dzięki temu można utworzyć zasady dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności. Aby uzyskać więcej informacji na temat rejestrowania urządzeń w usłudze Microsoft Intune, zobacz artykuł [Co to jest rejestrowanie urządzenia?](https://docs.microsoft.com/intune/device-enrollment)
 
 **Dołączenie** urządzenia jest rozszerzeniem zarejestrowania urządzenia. Oznacza to zapewnienie wszystkich korzyści z rejestrowania urządzenia oraz zmianę stanu lokalnego urządzenia. Zmiana stanu lokalnego umożliwia użytkownikom logowanie do urządzenia przy użyciu konta służbowego w organizacji zamiast konta osobistego.
 
@@ -156,4 +156,4 @@ Ogólnie omówione typy urządzeń mają następujące zastosowania:
    - Usługa Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10, zobacz [sposób konfigurowania usługi Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10](../user-help/device-management-azuread-registered-devices-windows10-setup.md).
    - Urządzenia przyłączone do usługi Azure Active Directory, zobacz [sposobu planowania wdrożenia usługi Azure Active Directory join](azureadjoin-plan.md).
    - Urządzenia dołączone hybrydowo do usługi Azure AD — zobacz [Jak planować implementację z dołączaniem hybrydowym do usługi Azure Active Directory](hybrid-azuread-join-plan.md).
-- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [zasady dostępu warunkowego opartego na urządzeniu Azure skonfiguruj usługę Active Directory](../conditional-access/require-managed-devices.md).
+- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [zasady dostępu warunkowego opartego na urządzeniach skonfiguruj usługę Azure Active Directory](../conditional-access/require-managed-devices.md).

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2e9968e8716818637a34adea86de88e1f848c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388308"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108481"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planowanie wdrożenia serwera Proxy aplikacji usługi Azure AD
 
@@ -64,7 +64,7 @@ Aby skonfigurować i wdrożyć serwer Proxy aplikacji usługi Azure AD, muszą b
 
 *  **Dołączanie do usługi Azure**: Przed wdrożeniem serwera proxy aplikacji, tożsamości użytkowników musi być synchronizowane z katalogu lokalnego lub utworzonych bezpośrednio w dzierżawcy usługi Azure AD. Synchronizacja tożsamości umożliwia usłudze Azure AD do wstępnie uwierzytelnia użytkowników, zanim nadawania im praw do serwera Proxy aplikacji opublikowane aplikacje i udostępniają informacje identyfikator użytkownika wymagane do wykonywania logowania jednokrotnego (SSO).
 
-* **Wymagania dotyczące dostępu warunkowego**: Firma Microsoft nie zaleca się przy użyciu serwera Proxy aplikacji w przypadku dostępu z intranetu, ponieważ spowoduje to dodanie opóźnienia, które mają wpływ na użytkowników. Firma Microsoft zaleca używanie serwera Proxy aplikacji przy użyciu wstępnego uwierzytelniania i warunkowego dostępu do zasad dostępu zdalnego z Internetu.  Podejście w celu zapewnienia, że dostęp warunkowy do użytku w sieci intranet, modernizuj aplikacje, dzięki czemu mogą oni diretly uwierzytelnianie za pomocą usługi AAD. Zapoznaj się [zasoby dotyczące migrowania aplikacji do usługi AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) Aby uzyskać więcej informacji. 
+* **Wymagania dotyczące dostępu warunkowego**: Firma Microsoft nie zaleca się przy użyciu serwera Proxy aplikacji w przypadku dostępu z intranetu, ponieważ spowoduje to dodanie opóźnienia, które mają wpływ na użytkowników. Firma Microsoft zaleca używanie serwera Proxy aplikacji przy użyciu wstępnego uwierzytelniania i zasad dostępu warunkowego dla dostępu zdalnego z Internetu.  Podejście w celu zapewnienia, że dostęp warunkowy do użytku w sieci intranet, modernizuj aplikacje, dzięki czemu mogą oni diretly uwierzytelnianie za pomocą usługi AAD. Zapoznaj się [zasoby dotyczące migrowania aplikacji do usługi AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) Aby uzyskać więcej informacji. 
 
 * **Limitów usług**: Aby zapewnić ochronę przed nadmierne zużycie zasobów przez poszczególne dzierżawy są limity ograniczania ustawiana dla poszczególnych aplikacji i dzierżawy. Aby zobaczyć te limity dotyczą [usługi Azure AD, ograniczenia i limity](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Te limity ograniczania przepływności opierają się na ekstrapolacji znacznie powyżej typowy woluminu i udostępnia bufor wystarczającą dla większości wdrożeń.
 
@@ -268,7 +268,7 @@ Następujące funkcje może służyć do obsługi serwera Proxy aplikacji usług
 
 * Dostęp warunkowy oparty na aplikacji: Pracy nie ma na celu zatrzymywania po użytkownik nie znajduje się w sieci firmowej. [Bezpieczny dostęp do firmowych aplikacji w chmurze i lokalnych](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) i zachowywania kontroli przy użyciu dostępu warunkowego.
 
-* Dostęp warunkowy na podstawie ryzyka: Ochrona danych przed złośliwych hakerów [zasad dostępu warunkowego na podstawie ryzyka](https://www.microsoft.com/cloud-platform/conditional-access) , można zastosować do wszystkich aplikacji i wszystkich użytkowników, czy w środowisku lokalnym lub w chmurze.
+* Dostęp warunkowy na podstawie ryzyka: Chronić dane przed złośliwych hakerów [zasad dostępu warunkowego opartych na ryzykach](https://www.microsoft.com/cloud-platform/conditional-access) , można zastosować do wszystkich aplikacji i wszystkich użytkowników, czy w środowisku lokalnym lub w chmurze.
 
 * Panel dostępu usługi Azure AD: Z usługi Serwer Proxy aplikacji wdrożonych i aplikacjach opublikowanych w bezpieczny oferują użytkownikom proste koncentratora do odnajdywania i uzyskują dostęp do wszystkich aplikacji. Zwiększanie produktywności za pomocą usługi możliwości samoobsługi, takie jak możliwość żądania dostępu do nowych aplikacji i grup lub zarządzania dostęp do tych zasobów w imieniu innych użytkowników, za pomocą [panelu dostępu](https://aka.ms/AccessPanelDPDownload).
 

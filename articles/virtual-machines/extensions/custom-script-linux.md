@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 19637a1fe49550d0ed7aea7e3a596f1f77f5984b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b9bc3ef0cf5dd54802d32058afb904800c364c19
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60869881"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64725231"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 2 za pomocą maszyn wirtualnych systemu Linux
 Rozszerzenie niestandardowego skryptu w wersji 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrażaniu, instalacja oprogramowania lub innych zadań konfiguracji i zarządzania nimi. Skrypty można pobrać z usługi Azure Storage lub w innej lokalizacji internet dostępny, lub można udostępnić je w czasie wykonywania rozszerzenia. 
@@ -110,12 +110,12 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 | Name (Nazwa) | Wartość / przykład | Typ danych | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Wydawcy | Microsoft.Compute.Extensions | string |
+| publisher | Microsoft.Compute.Extensions | string |
 | type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | tablica |
-| commandToExecute (np.) | python MyPythonScript.py <my-param1> | string |
-| skrypt | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
+| commandToExecute (np.) | python MyPythonScript.py \<my-param1> | string |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix (np.) | false | wartość logiczna |
 | Sygnatura czasowa (np.) | 123456789 | 32-bitowa liczba całkowita |
 | storageAccountName (np.) | examplestorageacct | string |

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736805"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Monitorowanie metryk i dzienników w usłudze Azure Service drzwi
@@ -34,11 +34,11 @@ Metryki są funkcją dla niektórych zasobów platformy Azure, które umożliwia
 | RequestCount | Liczba żądań | Licznik | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba żądań klientów obsługiwanych przez wejściu.  |
 | RequestSize | Rozmiar żądania | Bajty | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba bajtów wysłanych jako żądania od klientów na wejściu. |
 | ResponseSize | Rozmiar odpowiedzi | Bajty | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba bajtów wysłanych jako odpowiedzi z wejściu do klientów. |
-| TotalLatency | Całkowity czas oczekiwania | Milisekundy | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Czas jest obliczany od żądania klienta odebranych przez drzwiami frontowymi, dopóki klient potwierdzenia ostatni bajt odpowiedzi z drzwiami frontowymi. |
-| BackendRequestCount | Liczba żądań wewnętrznej bazy danych | Licznik | HttpStatus</br>HttpStatusGroup</br>Zaplecze | Liczba żądań wysyłanych z wejściu do zaplecza. |
-| BackendRequestLatency | Opóźnienia żądania wewnętrznej bazy danych | Milisekundy | Zaplecze | Czas obliczonym na podstawie Jeśli żądanie zostało wysłane przy wejściu do wewnętrznej bazy danych, do chwili drzwiami frontowymi odebrania ostatniego bajtu odpowiedzi z wewnętrznej bazy danych. |
-| BackendHealthPercentage | Wartość procentowa kondycję wewnętrznej bazy danych | Procent | Zaplecze</br>BackendPool | Procent pomyślnych kondycji sondy z wejściu do zaplecza. |
-| WebApplicationFirewallRequestCount | Liczba żądań zapory aplikacji sieci Web | Licznik | PolicyName</br>RuleName</br>Akcja | Liczba żądań klienta przetwarzanych przez drzwiami frontowymi zabezpieczeń warstwy aplikacji. |
+| TotalLatency | Całkowity czas oczekiwania | MS | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Czas jest obliczany od żądania klienta odebranych przez drzwiami frontowymi, dopóki klient potwierdzenia ostatni bajt odpowiedzi z drzwiami frontowymi. |
+| BackendRequestCount | Liczba żądań wewnętrznej bazy danych | Count | HttpStatus</br>HttpStatusGroup</br>Wewnętrznej bazy danych | Liczba żądań wysyłanych z wejściu do zaplecza. |
+| BackendRequestLatency | Opóźnienia żądania wewnętrznej bazy danych | MS | Wewnętrznej bazy danych | Czas obliczonym na podstawie Jeśli żądanie zostało wysłane przy wejściu do wewnętrznej bazy danych, do chwili drzwiami frontowymi odebrania ostatniego bajtu odpowiedzi z wewnętrznej bazy danych. |
+| BackendHealthPercentage | Wartość procentowa kondycję wewnętrznej bazy danych | Procent | Wewnętrznej bazy danych</br>BackendPool | Procent pomyślnych kondycji sondy z wejściu do zaplecza. |
+| WebApplicationFirewallRequestCount | Liczba żądań zapory aplikacji sieci Web | Count | PolicyName</br>RuleName</br>Akcja | Liczba żądań klienta przetwarzanych przez drzwiami frontowymi zabezpieczeń warstwy aplikacji. |
 
 ## <a name="activity-log"></a>Dzienniki aktywności
 

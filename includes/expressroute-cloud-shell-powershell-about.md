@@ -9,10 +9,10 @@ ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0074696fe61570b7595179cbf953308f75ed14bd
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66730523"
 ---
 W tym artykule używa poleceń cmdlet programu PowerShell. Aby uruchomić polecenia cmdlet, można użyć usługi Azure Cloud Shell, środowisko interaktywnej powłoki hostowanych na platformie Azure i używać za pośrednictwem przeglądarki. Usługa Azure Cloud Shell jest powiązana z poleceń cmdlet programu PowerShell platformy Azure wstępnie zainstalowane.

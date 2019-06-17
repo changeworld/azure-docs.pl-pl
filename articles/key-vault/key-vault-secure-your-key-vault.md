@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: a88451403f242c39212c80e3c7425a901c6819cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 67925f2123f2a4f2524002eb075754c38fad4b42
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725290"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118981"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Bezpieczny dostęp do magazynu kluczy
 
@@ -125,7 +125,7 @@ Poniższa tabela podsumowuje uprawnienia dostępu dla naszych ról i aplikacji.
 
 | Rola | Uprawnienia do płaszczyzny zarządzania | Uprawnienia do płaszczyzny danych |
 | --- | --- | --- |
-| Zespół ds. zabezpieczeń | Współautor magazynu kluczy | Klucze: tworzenie kopii zapasowej, tworzenia, usuwania, Pobierz, importowanie, listy, Przywracanie<br>Wpisy tajne: wszystkie operacje |
+| Zespół ds. zabezpieczeń | Współautor magazynu kluczy | Klucze: wykonywanie kopii zapasowej, tworzenie, usuwanie, pobieranie, importowanie, wyświetlanie, przywracanie<br>Wpisy tajne: wszystkie operacje |
 | Deweloperzy i&nbsp;operatorów | Uprawnienia do wdrażania usługi Key Vault<br><br> **Uwaga**: To uprawnienie umożliwia wdrożone maszyny wirtualne można pobrać Wpisy tajne z magazynu kluczy. | Brak |
 | Audytorzy | Brak | Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie<br><br> **Uwaga**: To uprawnienie umożliwia audytorów do atrybutów (tagi, daty aktywacji, daty wygaśnięcia) klucze i wpisy tajne nie są emitowane w dziennikach inspekcji. |
 | Aplikacja | Brak | Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
