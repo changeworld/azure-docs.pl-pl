@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123400"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Przenoszenie danych między skalowanymi bazami danych w chmurze
@@ -25,9 +25,9 @@ To oprogramowanie, usługi dla deweloperów i nagle ulega ogromne popytu w swoje
 
 Narzędzie do dzielenia i scalania działa jako usługa sieci web platformy Azure. Administratorem lub deweloperem używa narzędzia do przenoszenia podfragmentów (dane z fragmentu) między różnych baz danych (fragmentami). Narzędzie wykorzystuje procesu zarządzania mapą fragmentów obsługa bazy danych metadanych usługi w celu zapewnienia spójnego mapowania.
 
-![Przegląd][1]
+![Omówienie][1]
 
-## <a name="download"></a>Pobierz
+## <a name="download"></a>Do pobrania
 
 [Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
@@ -176,7 +176,7 @@ Bieżąca implementacja usługi dzielenia i scalania podlega następujące wymag
 - W trakcie przetwarzania żądania niektórych danych podfragmentu może występować zarówno na źródłowym i docelowym fragmencie. Jest to konieczne zapewnić ochronę przed awariami podczas przemieszczania podfragmentu. Integracja dzielenia i scalania z mapą fragmentów, masz pewność, że połączenia za pośrednictwem zależne od danych routingu interfejsów API przy użyciu **OpenConnectionForKey** metody w ramach mapowania fragmentów nie ma żadnych niespójne pośrednich stanów. Jednak podczas nawiązywania połączenia źródła lub fragmenty docelowej bez użycia **OpenConnectionForKey** metody niespójne pośrednich stanów mogą być widoczne, gdy żądania podziału/scalania/Przenieś przechodzenia. Połączenia te mogą być wyświetlane wyniki częściowe lub zduplikowane w zależności od czas lub fragmentu połączenie znajdujące się poniżej. To ograniczenie obecnie dotyczy to połączeń elastycznego skalowania wielu-Shard — zapytania.
 - Baza danych metadanych dla usługi dzielenia i scalania nie może być udostępniany między różne role. Na przykład rola usługi dzielenia i scalania, uruchomiony w środowisku tymczasowym musi wskazywać innych metadanych bazy danych niż roli w środowisku produkcyjnym.
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Usługi dzielenia i scalania działa jako usługa w chmurze w Twojej subskrypcji Microsoft Azure. W związku z tym dla usług w chmurze opłaty do swojego wystąpienia usługi. Chyba że często wykonywania operacji podziału/scalania/przenoszenia, zalecamy usuwanie usługi w chmurze dzielenia i scalania. Które zmniejszyć koszty do uruchomienia lub wdrożonych wystąpień usług w chmurze. Można ponownie wdrożyć i uruchomić konfigurację łatwo możliwy do uruchomienia w każdym przypadku, gdy trzeba wykonać operacji dzielenia ani scalania.
 

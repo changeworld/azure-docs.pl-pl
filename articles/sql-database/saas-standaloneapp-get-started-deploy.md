@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
 ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304137"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i eksplorowanie oddzielną aplikację pojedynczej dzierżawy, który używa usługi Azure SQL Database
@@ -76,16 +76,16 @@ Aplikacja prezentuje miejsca, które obsługują zdarzenia.  Lokalizacje są dzi
 
 1. Otwórz stronę wydarzenia dla każdego z trzech dzierżaw w osobnych kartach przeglądarki:
 
-   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt ;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt ;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt ;user&gt;.trafficmanager.net
 
      (W przypadku każdego adresu URL, Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia.)
 
-   ![Zdarzenia](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Aby kontrolować dystrybucję żądań przychodzących, ta aplikacja używa [ *usługi Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Każde wystąpienie aplikacji specyficznym dla dzierżawy zawiera nazwę dzierżawy jako część nazwy domeny w adresie URL. Wszystkie dzierżawy adresów URL zawierają **użytkownika** wartość. Adresy URL należy wykonać następujący format:
-- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
+- http://events.&lt ;venuename&gt;.&lt; user&gt;.trafficmanager.net
 
 Bazy danych z każdej dzierżawy **lokalizacji** znajduje się w ustawieniach aplikacji odpowiednie wdrożonej aplikacji.
 

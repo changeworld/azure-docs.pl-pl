@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: mstephen
 ms.openlocfilehash: a8c21e3b27a4868837d3e381c7c1868c89858bea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246497"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Rozwiązywanie problemów z nieprawidłową konfiguracją nazwy głównej usługi dla swojej domeny zarządzanej
@@ -112,5 +112,5 @@ Aby rozwiązać ten problem, wpisz następujące polecenia w oknie programu Powe
 3. Po usunięciu obu system będzie korygowanie sam i ponowne utworzenie aplikacji służące do synchronizacji haseł. Aby upewnić się, że ten alert został skorygowany, Zaczekaj dwie godziny i sprawdzanie kondycji domeny.
 
 
-## <a name="contact-us"></a>Skontaktuj się z nami
+## <a name="contact-us"></a>Kontakt z nami
 Skontaktuj się z zespołem produktu usługi Azure Active Directory Domain Services, aby [Podziel się opinią lub pomocy technicznej](contact-us.md).

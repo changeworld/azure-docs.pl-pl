@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66154563"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Tworzenie konta magazynu dla hosta procesora zdarzeń
@@ -22,7 +22,7 @@ Host procesora zdarzeń to inteligentny agent, który upraszcza odbieranie zdarz
 
 2. Wybierz pozycję **Storage**, a następnie wybierz pozycję **Konto usługi Storage — Blob, File, Table, Queue**.
    
-    ![Wybierz konto magazynu](./media/event-hubs-create-storage/create-storage1.png)
+    ![Wybieranie konta magazynu](./media/event-hubs-create-storage/create-storage1.png)
 
 3. Na stronie **Utwórz konto magazynu** wykonaj następujące kroki: 
 

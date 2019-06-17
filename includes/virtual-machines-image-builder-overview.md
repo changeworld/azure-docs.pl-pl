@@ -6,10 +6,10 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111455"
 ---
 Obrazy standardowych maszyn wirtualnych (VM) umożliwiają organizacjom migrację do chmury i zapewnia spójność we wdrożeniach. Obrazy obejmują zazwyczaj wstępnie zdefiniowanych ustawień zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Konfigurowanie potoku przetwarzania obrazów wymaga czasu, infrastruktury i konfiguracji, ale za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, po prostu podać prostej konfiguracji opisujące obrazu, Prześlij go do usługi i wbudowany obraz i rozproszone.
@@ -20,7 +20,7 @@ Kreator obrazów maszyn wirtualnych platformy Azure (Kreatora obrazów platformy
 > Kreator obrazów platformy Azure jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkcje wersji zapoznawczej
+## <a name="preview-features"></a>Funkcje w wersji zapoznawczej
 
 Dla wersji zapoznawczej te funkcje są obsługiwane:
 
@@ -37,7 +37,7 @@ Dla wersji zapoznawczej te funkcje są obsługiwane:
 Usługa Konstruktora obrazów platformy Azure będzie dostępna w wersji zapoznawczej w tych regionach. Obrazy mogą być dystrybuowane spoza tych regionów.
 - Wschodnie stany USA
 - Wschodnie stany USA 2
-- Zachodnio-środkowe stany USA
+- Środkowo-zachodnie stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
 

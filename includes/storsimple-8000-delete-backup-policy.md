@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b7a86963c657524fa91c4eb824ced1a495391f3f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66172162"
 ---
 #### <a name="to-delete-a-storsimple-backup-policy"></a>Aby usunąć zasady kopii zapasowych usługi StorSimple
@@ -21,7 +21,7 @@ ms.locfileid: "66172162"
 
 3. Użytkownik jest monitowany o potwierdzenie. Należy pamiętać, że usunięcie zasad kopii zapasowych spowoduje usunięcie wszystkich skojarzonych kopii zapasowych. Kliknij przycisk **tak** do usunięcia.
 
-    ![Potwierdź usuwanie](./media/storsimple-8000-delete-backup-policy/deletebupol2.png)
+    ![Potwierdzenie usunięcia](./media/storsimple-8000-delete-backup-policy/deletebupol2.png)
 
 Na liście zasad tworzenia kopii zapasowych zostaną zaktualizowane, aby wyświetlić listę nowych zasad.
 

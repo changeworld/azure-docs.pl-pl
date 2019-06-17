@@ -9,10 +9,10 @@ ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
 ms.openlocfilehash: ca0c45b5d74140e0398595070df71da669caab53
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160083"
 ---
 Pojęcia z usługi Azure Compute jednostki (ACU) umożliwia porównanie wydajności obliczeniowej (procesora CPU) w jednostkach SKU platformy Azure. Ten parametr pomoże łatwo zidentyfikować jednostkę SKU, która najprawdopodobniej spełni określone potrzeby związane z wydajnością.  Jednostka ACU jest obecnie standaryzowana na małej maszynie wirtualnej (Standardowa_A1) jako równa 100, a wszystkie pozostałe jednostki SKU reprezentują w przybliżeniu, o ile szybciej dana jednostka SKU może uruchomić standardowy test porównawczy. 
@@ -24,7 +24,7 @@ Pojęcia z usługi Azure Compute jednostki (ACU) umożliwia porównanie wydajno�
 
 <br>
 
-| Rodzina SKU | ACU/procesor wirtualny vCPU | Procesor wirtualny: Rdzeń |
+| Rodzina SKU | ACU/procesor wirtualny vCPU | Procesor wirtualny: Podstawowe |
 | --- | --- |---|
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 | 1:1 |
 | [A1 - A4](../articles/virtual-machines/windows/sizes-general.md) |100 | 1:1 |
@@ -52,7 +52,7 @@ Pojęcia z usługi Azure Compute jednostki (ACU) umożliwia porównanie wydajno�
 | [L8s_v2 w warstwie - L80s_v2](../articles/virtual-machines/windows/sizes-storage.md) |150 - 175** | 2:1 |
 | [M](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) | 160 - 180 | 2:1\*\*\* |
 
-* ACU wykorzystują technologię Intel® Turbo zwiększyć częstotliwość procesora CPU i zapewnić wzrost wydajności.  Ilość wzrost wydajności może się różnić w zależności od rozmiaru maszyny Wirtualnej, obciążenia i innych obciążeń uruchomionych na tym samym hoście.
+\* ACU wykorzystują technologię Intel® Turbo zwiększyć częstotliwość procesora CPU i zapewnić wzrost wydajności.  Ilość wzrost wydajności może się różnić w zależności od rozmiaru maszyny Wirtualnej, obciążenia i innych obciążeń uruchomionych na tym samym hoście.
 
 ** ACU wykorzystują technologię AMD® Boost, aby zwiększyć częstotliwość procesora CPU i zapewnić wzrost wydajności.  Ilość wzrost wydajności może się różnić w zależności od rozmiaru maszyny Wirtualnej, obciążenia i innych obciążeń uruchomionych na tym samym hoście.
 

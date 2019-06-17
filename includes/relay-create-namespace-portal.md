@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111541"
 ---
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
@@ -18,7 +18,7 @@ ms.locfileid: "66111541"
 5. W polu [Grupa zasobów](../articles/azure-resource-manager/manage-resource-groups-portal.md) wybierz istniejącą grupę zasobów, w której znajdzie się przestrzeń nazw, lub utwórz nową.  
 6. W polu **Lokalizacja** wybierz kraj lub region, w którym powinna być hostowana przestrzeń nazw.
    
-    ![Tworzenie przestrzeni nazw][create-namespace]
+    ![Create namespace][create-namespace]
 7. Wybierz pozycję **Utwórz**. System utworzy przestrzeń nazw i włączy ją. Po kilku minutach system aprowizuje zasoby dla Twojego konta.
 
 ### <a name="get-management-credentials"></a>Uzyskiwanie poświadczeń zarządzania

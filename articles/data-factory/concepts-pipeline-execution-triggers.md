@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
 ms.openlocfilehash: 21e66f962d1cc0bbbe8d780a702216d40abe2836
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155215"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, której używasz:"]
 > * [Wersja 1](v1/data-factory-scheduling-and-execution.md)
 > * [Bieżąca wersja](concepts-pipeline-execution-triggers.md)
 
@@ -277,10 +277,10 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów schematu odnos
 
 ### <a name="schema-defaults-limits-and-examples"></a>Wartości domyślne, limity i przykłady harmonogramów
 
-| Właściwość JSON | Type | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
+| Właściwość JSON | Typ | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | Tak | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | obiekt | Tak | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | string | Yes | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | obiekt | Yes | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | numer | Nie | 1 | Od 1 do 1000 | `"interval":10` |
 | **endTime** | string | Tak | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | obiekt | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |

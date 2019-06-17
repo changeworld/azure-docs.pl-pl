@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
 ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66431318"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)

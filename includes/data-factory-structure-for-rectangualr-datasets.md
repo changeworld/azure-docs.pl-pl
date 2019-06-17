@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122523"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Określanie definicji struktury dla prostokątnych zestawów danych
@@ -19,7 +19,7 @@ Każda kolumna zawiera następujące właściwości:
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | name |Nazwa kolumny. |Tak |
-| typ |Typ danych kolumny. Zobacz więcej szczegółów typu konwersje sekcji poniżej dotyczącą tego, możesz określić informacje o typie |Nie |
+| type |Typ danych kolumny. Zobacz więcej szczegółów typu konwersje sekcji poniżej dotyczącą tego, możesz określić informacje o typie |Nie |
 | culture |Kultura ma być używany, gdy typ jest określony, a typ architektury .NET, Datetime i Datetimeoffset oparte na platformie .NET. Wartość domyślna to "en-us". |Nie |
 | format |Ciąg formatu, które ma być używany, gdy typ jest określony, a .NET typu Datetime i Datetimeoffset. |Nie |
 
@@ -58,7 +58,7 @@ Usługi Data factory obsługuje następujące zgodny ze specyfikacją zgodne .NE
 * Guid
 * Datetime
 * Datetimeoffset
-* Timespan 
+* Zakres czasu 
 
 Dla typu Datetime i Datetimeoffset również Opcjonalnie możesz określić ciąg "kultury" & "format" ułatwiają analizowanie niestandardowego ciągu daty/godziny. Zobacz przykład poniżej konwersji typu.
 

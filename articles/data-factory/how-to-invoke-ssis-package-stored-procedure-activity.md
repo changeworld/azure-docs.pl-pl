@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
 ms.openlocfilehash: b71a954da746ba04aeaa0797c13bf2c81838179d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66154946"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Uruchamianie pakietów SSIS za pomocą działania procedury składowanej w usłudze Azure Data Factory
@@ -108,12 +108,12 @@ Aby utworzyć potok, w tym kroku Użyj interfejs użytkownika usługi Data Facto
         ```
 
         ![Połączona usługa Azure SQL Database](./media/how-to-invoke-ssis-package-stored-procedure-activity/stored-procedure-settings.png)
-6. Aby sprawdzić poprawność konfiguracji potoku, kliknij przycisk **weryfikacji** na pasku narzędzi. Aby zamknąć okno **Raport weryfikacji potoku**, kliknij pozycję **>>**.
+6. Aby sprawdzić poprawność konfiguracji potoku, kliknij przycisk **weryfikacji** na pasku narzędzi. Aby zamknąć okno **Raport weryfikacji potoku**, kliknij pozycję **>>** .
 
     ![Weryfikowanie potoku](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. Opublikuj potok w fabryce Data Factory, klikając **Opublikuj wszystkie** przycisku. 
 
-    ![Opublikuj](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    ![Publikowanie](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>Uruchamianie i monitorowanie potoku
 W tej sekcji możesz wyzwolić uruchomienie potoku, a następnie monitorować je. 

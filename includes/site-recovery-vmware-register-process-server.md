@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: cf39baf34096691144181332566cf567ebc02310
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66169985"
 ---
 1. Ustanowienia połączenia pulpitu zdalnego do maszyny z systemem serwera przetwarzania. 
@@ -19,7 +19,7 @@ ms.locfileid: "66169985"
 3. W **serwera konfiguracji, nazwy FQDN lub adres IP**, określ nazwę lub adres IP serwera konfiguracji za pomocą którego ma zostać zarejestrowany na serwerze przetwarzania.
 4. W **Port serwera konfiguracji**, upewnij się, że określono 443. Jest to port, na którym nasłuchuje serwer konfiguracji dla żądań.
 5. W **hasło połączenia**, określ hasło określone podczas konfigurowania serwera konfiguracji. Aby znaleźć hasło:
-    -  Na serwerze konfiguracji, przejdź do folderu instalacji usługi Site Recovery **\home\svssystems\bin\**. 
+    -  Na serwerze konfiguracji, przejdź do folderu instalacji usługi Site Recovery * *\home\svssystems\bin\** . 
     - Uruchom następujące polecenie: **genpassphrase.exe.n**. Pokazuje lokalizację hasło, które można następnie zanotuj.
 
 6. W **Port transferu danych**, pozostaw wartość domyślną, chyba że został określony port niestandardowy.

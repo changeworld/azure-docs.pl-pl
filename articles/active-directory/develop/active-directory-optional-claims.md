@@ -18,10 +18,10 @@ ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119722"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD
@@ -84,7 +84,7 @@ Te oświadczenia są zawsze dołączane w tokenach usługi Azure AD w wersji 1.0
 | Token JWT oświadczeń     | Name (Nazwa)                            | Opis                                | Uwagi |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | Adres IP                      | Adres IP klienta, zalogowany z.   |       |
-| `onprem_sid`  | Identyfikator zabezpieczeń lokalnych |                                             |       |
+| `onprem_sid`  | Identyfikator zabezpieczeń w środowisku lokalnym |                                             |       |
 | `pwd_exp`     | Czas wygaśnięcia hasła        | Data i godzina jaką hasło wygaśnie. |       |
 | `pwd_url`     | Zmień hasło, adres URL             | Adres URL, który użytkownik może odwiedzić, aby zmienić swoje hasło.   |   |
 | `in_corp`     | Inside Corporate Network        | Sygnały, jeśli klient jest logowania się z siecią firmową. Jeśli nie jesteś, oświadczenia nie jest uwzględniona.   |  Na podstawie wylogować się z [zaufane adresy IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) ustawień w usłudze MFA.    |

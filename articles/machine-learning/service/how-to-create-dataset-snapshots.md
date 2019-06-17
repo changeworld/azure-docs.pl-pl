@@ -10,10 +10,10 @@ ms.author: sihhu
 author: MayMSFT
 ms.date: 05/23/2019
 ms.openlocfilehash: 525660be0f38c9458590e52cfcd575acb4cf5444
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66162052"
 ---
 # <a name="compare-data-and-ensure-reproducibility-with-snapshots-preview"></a>Porównywanie danych i upewnij się, odtwarzaniem przy użyciu migawek (wersja zapoznawcza)
@@ -124,7 +124,7 @@ Użyj [ `get_profile()` ](https://docs.microsoft.com/python/api/azureml-core/azu
 snapshot.get_profile()
 ```
 
-||Type|Min.|Maks.|Liczba|Liczba brakujących|Liczba niebrakujących|Odsetek brakujących|Liczba błędów|Liczba pustych|Kwantyl 0,1%|Kwantyl 1%|Kwantyl 5%|Kwantyl 25%|Kwantyl 50%|Kwantyl 75%|Kwantyl 95%|Kwantyl 99%|Kwantyl 99,9%|Średnia|Odchylenie standardowe|Wariancja|Skośność|Kurtoza
+||Typ|Min.|Maks.|Liczba|Liczba brakujących|Liczba niebrakujących|Odsetek brakujących|Liczba błędów|Liczba pustych|Kwantyl 0,1%|Kwantyl 1%|Kwantyl 5%|Kwantyl 25%|Kwantyl 50%|Kwantyl 75%|Kwantyl 95%|Kwantyl 99%|Kwantyl 99,9%|Średnia|Odchylenie standardowe|Wariancja|Skośność|Kurtoza
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Liczba przypadków|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -134,10 +134,10 @@ IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1
 Typ podstawowy|FieldType.STRING|PRAKTYKI OSZUKAŃCZYM|PRZED KRADZIEŻĄ|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Opis|FieldType.STRING|SFAŁSZOWANY WYBORU|ZA POŚREDNICTWEM 500 USD|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Opis lokalizacji|FieldType.STRING||SZKOŁY, PUBLICZNEJ I TWORZENIE|10.0|0.0|10.0|0.0|0.0|1.0||||||||||||||
-Aresztowania|FieldType.BOOLEAN|Fałsz|Fałsz|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-Krajowych|FieldType.BOOLEAN|Fałsz|Fałsz|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Aresztowania|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Krajowych|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Sygnał|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
-Okręg|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
+Dystrykt|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
 Lej|FieldType.INTEGER|1|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 Obszar społeczności|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 
@@ -153,9 +153,9 @@ snapshot.to_pandas_dataframe().head(3)
 
 ||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Opis|Opis lokalizacji|Aresztowania|Krajowych|Przyciski ...|Lej|Obszar społeczności|FBI kodu|Współrzędna x|Współrzędna Y|Rok|Aktualizacja:|Szerokość geograficzna|Długość geograficzna|Lokalizacja
 -|--|-----------|----|-----|----|------------|-----------|--------------------|------|--------|---|----|--------------|--------|------------|------------|----|----------|--------|---------|--------
-0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|1153|PRAKTYKI OSZUKAŃCZYM|KRADZIEŻE TOŻSAMOŚCI FINANSOWYCH ZA POŚREDNICTWEM 300 USD|INNE|Fałsz|Fałsz|...|9|50|11|1183356.0|1831503.0|2016|2016-05-11 15:48:00|41.692834|-87.604319|(41.692833841, -87.60431945)
-1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|OD TWORZENIA|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|Fałsz|Fałsz|...|21|71|6|1166776.0|1850053.0|2016|2016-05-12 15:48:00|41.744107|-87.664494|(41.744106973, -87.664494285)
-2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|KRADZIEŻE TOŻSAMOŚCI FINANSOWYCH 300 USD I W OBSZARZE|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|Fałsz|Fałsz|...|19|74|11|NaN|NaN|2016|2016-05-12 15:50:00|NaN|NaN|
+0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|1153|PRAKTYKI OSZUKAŃCZYM|KRADZIEŻE TOŻSAMOŚCI FINANSOWYCH ZA POŚREDNICTWEM 300 USD|INNE|False|False|Przyciski ...|9|50|11|1183356.0|1831503.0|2016|2016-05-11 15:48:00|41.692834|-87.604319|(41.692833841, -87.60431945)
+1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|OD TWORZENIA|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|False|False|Przyciski ...|21|71|6|1166776.0|1850053.0|2016|2016-05-12 15:48:00|41.744107|-87.664494|(41.744106973, -87.664494285)
+2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|KRADZIEŻE TOŻSAMOŚCI FINANSOWYCH 300 USD I W OBSZARZE|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|False|False|Przyciski ...|19|74|11|NaN|NaN|2016|2016-05-12 15:50:00|NaN|NaN|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: da3793c428c624ce3a224cbd7606ab26c4a50803
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140235"
 ---
 Funkcja Mobile Apps w usłudze Azure App Service używa [Azure Notification Hubs] wysyłać wypchnięciom, dzięki czemu będą konfigurowane Centrum powiadomień dla aplikacji mobilnej.

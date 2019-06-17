@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132462"
 ---
 ## <a name="trigger"></a>Wyzwalacz
@@ -691,9 +691,9 @@ W języku JavaScript, zdarzenie wyjściowe uzyskują dostęp przy użyciu `conte
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Powiązanie | Odwołanie |
+| Powiązanie | Tematy pomocy |
 |---|---|
-| Centrum zdarzeń usługi Event Hubs | [Przewodnik obsługi](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Centrum zdarzeń | [Przewodnik obsługi](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 

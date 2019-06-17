@@ -9,10 +9,10 @@ ms.date: 12/20/2018
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: 7e4760990229433b2ea40fadd0d17de0b52fcb36
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66162159"
 ---
 W poniższej tabeli opisano role, które są dostępne w reprezentacji urządzeń cyfrowych platformy Azure:
@@ -21,7 +21,7 @@ W poniższej tabeli opisano role, które są dostępne w reprezentacji urządze�
 | --- | --- | --- |
 | Administrator miejsca | *Tworzenie*, *odczytu*, *aktualizacji*, i *Usuń* uprawnień do określonego miejsca i na wszystkich węzłach poniżej. Uprawnienie globalne. | 98e44ad7-28d4-4007-853b-b9968ad132d1 |
 | Administrator użytkowników| *Tworzenie*, *odczytu*, *aktualizacji*, i *Usuń* uprawnień dla użytkowników i obiektów związanych z użytkownika. *Przeczytaj* uprawnienia dla miejsca do magazynowania. | dfaac54c-f583-4dd2-b45d-8d4bbc0aa1ac |
-| Administrator urządzenia | *Tworzenie*, *odczytu*, *aktualizacji*, i *Usuń* uprawnień dla urządzeń i obiektów związanych z urządzenia. *Przeczytaj* uprawnienia dla miejsca do magazynowania. | 3cdfde07-bc16-40d9-bed3-66d49a8f52ae |
+| Rola Administrator urządzenia | *Tworzenie*, *odczytu*, *aktualizacji*, i *Usuń* uprawnień dla urządzeń i obiektów związanych z urządzenia. *Przeczytaj* uprawnienia dla miejsca do magazynowania. | 3cdfde07-bc16-40d9-bed3-66d49a8f52ae |
 | Klucz administratora | *Tworzenie*, *odczytu*, *aktualizacji*, i *Usuń* uprawnienia dostępu do kluczy. *Przeczytaj* uprawnienia dla miejsca do magazynowania. | 5a0b1afc-e118-4068-969f-b50efb8e5da6 |
 | Token administratora |  *Przeczytaj* i *aktualizacji* uprawnienia dostępu do kluczy. *Przeczytaj* uprawnienia dla miejsca do magazynowania. | 38a3bb21-5424-43b4-b0bf-78ee228840c3 |
 | Użytkownik |  *Przeczytaj* uprawnień miejsca do magazynowania, czujniki i użytkowników, która zawiera odpowiednie powiązane obiekty. | b1ffdb77-c635-4e7e-ad25-948237d85b30 |

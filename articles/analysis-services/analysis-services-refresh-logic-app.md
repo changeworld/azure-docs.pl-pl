@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
 ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142460"
 ---
 # <a name="refresh-with-logic-apps"></a>Odświeżanie za pomocą usługi Logic Apps
@@ -68,8 +68,8 @@ Skonfiguruj aktywności protokołu HTTP w następujący sposób:
 |**— Metoda**     |POST         |
 |**IDENTYFIKATOR URI**     | https://*regionu serwera*/servers/*jako nazwy serwera*/models/*Nazwa bazy danych*/ <br /> <br /> Na przykład: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
 |**Nagłówki**     |   Content-Type, application/json <br /> <br />  ![Nagłówki](./media/analysis-services-async-refresh-logic-app/6.png)    |
-|**Body**     |   Aby dowiedzieć się więcej na temat stanowiący treści żądania, zobacz [asynchroniczne odświeżanie za pomocą interfejsu API REST - POST /refreshes](analysis-services-async-refresh.md#post-refreshes). |
-|**Uwierzytelnianie**     |Uwierzytelnianie OAuth usługi Active Directory         |
+|**Treść**     |   Aby dowiedzieć się więcej na temat stanowiący treści żądania, zobacz [asynchroniczne odświeżanie za pomocą interfejsu API REST - POST /refreshes](analysis-services-async-refresh.md#post-refreshes). |
+|**Uwierzytelnianie**     |OAuth usługi Active Directory         |
 |**dzierżawy**     |Wprowadź identyfikator dzierżawy usługi Azure Active Directory         |
 |**Grupy odbiorców**     |https://*.asazure.windows.net         |
 |**Identyfikator klienta**     |Wprowadź swoje ClientID nazwę jednostki usługi         |

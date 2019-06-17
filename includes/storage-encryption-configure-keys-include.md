@@ -9,10 +9,10 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.custom: include
 ms.openlocfilehash: 3076065d23d4701711c0ecb60349e77ee5c9b7c8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66115444"
 ---
 Usługa Azure Storage obsługuje szyfrowanie danych magazynowanych za pomocą kluczy zarządzanych przez firmę Microsoft lub kluczy zarządzanych przez klienta. Kluczy zarządzanych przez klienta umożliwiają tworzenie, obracanie, wyłącz i odwołać kontroli dostępu.

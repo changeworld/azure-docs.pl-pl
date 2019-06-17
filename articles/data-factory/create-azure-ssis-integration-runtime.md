@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: d30ec0765627ec173f0027e49f44cb77f6b26ac6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155204"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Tworzenie środowiska Azure-SSIS Integration Runtime w usłudze Azure Data Factory
@@ -51,7 +51,7 @@ Podczas aprowizowania środowiska IR Azure-SSIS instalowane są również pakiet
 
     Upewnij się, że usługi Azure SQL Database server/zarządzanego wystąpienia nie istnieje już baza SSISDB. Aprowizacja środowiska Azure-SSIS IR nie obsługuje przy użyciu istniejącej bazy danych SSISDB.
 
-- **Usługa Azure Resource Manager virtual network (opcjonalnie)**. Musi mieć z siecią wirtualną usługi Azure Resource Manager, jeśli co najmniej jeden z następujących warunków jest spełniony:
+- **Usługa Azure Resource Manager virtual network (opcjonalnie)** . Musi mieć z siecią wirtualną usługi Azure Resource Manager, jeśli co najmniej jeden z następujących warunków jest spełniony:
 
   - Bazy danych SSISDB są hostowane na serwerze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej lub w wystąpieniu zarządzanym, która znajduje się wewnątrz sieci wirtualnej.
   - Aby nawiązać połączenie z danymi lokalnymi magazynami z pakietów usług SSIS działającymi na usługi platformy Azure-SSIS IR.
