@@ -83,7 +83,7 @@
     - name: Planowanie
       items:
         - name: Architektury aplikacji internetowych
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: Architektury maszyn wirtualnych
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/'
         - name: Nawiązywanie połączenia z sieciami lokalnymi
