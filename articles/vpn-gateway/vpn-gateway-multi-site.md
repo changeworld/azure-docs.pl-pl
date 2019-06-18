@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
 ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836100"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Dodawanie połączenia lokacja-lokacja z siecią wirtualną przy użyciu istniejącego połączenia bramy sieci VPN (model klasyczny)
@@ -62,7 +62,7 @@ Przed rozpoczęciem konfiguracji Sprawdź, czy dysponujesz następującymi eleme
 
 * Zgodny sprzęt sieci VPN dla każdej lokalizacji lokalnej. Sprawdź [informacje o urządzeniach sieci VPN dla łączność sieciowa](vpn-gateway-about-vpn-devices.md) można sprawdzić, czy urządzenie, którego chcesz używać jest coś, co jest znane jako zgodne.
 * Dostępny zewnętrznie publiczny adres IP protokołu IPv4 dla każdego urządzenia sieci VPN. Adres IP nie może znajdować się za translatorem adresów sieciowych. Jest to wymagane.
-* Niezbędne jest zainstalowanie najnowszej wersji poleceń cmdlet programu Azure PowerShell.  Upewnij się, że możesz zainstalować wersję Service Management (SM) oprócz wersji Menedżera zasobów. Zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) Aby uzyskać więcej informacji.
+* Niezbędne jest zainstalowanie najnowszej wersji poleceń cmdlet programu Azure PowerShell. Upewnij się, że możesz zainstalować wersję Service Management (SM) oprócz wersji Menedżera zasobów. Zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) Aby uzyskać więcej informacji.
 * Osoba, która jest biegły w konfigurowaniu sprzętem sieci VPN. Musisz mieć wiedzą, jak skonfigurować urządzenie sieci VPN lub osobą, która jest pracować.
 * Zakresy adresów IP, które chcesz użyć dla sieci wirtualnej (Jeśli nie utworzono jeszcze jeden).
 * Zakresy adresów IP dla każdej lokacji sieci lokalnej, które będą łączyć się z. Należy się upewnić, że zakresy adresów IP dla każdej lokacji sieci lokalnej, które chcesz połączyć się z nie pokrywają się. W przeciwnym razie portalu lub interfejsu API REST odrzuci konfiguracji są przekazywane.<br>Na przykład jeśli dwie lokacje sieci lokalnej, że oba zawierają 10.2.3.0/24 zakres adresów IP i ma pakietu przy użyciu adresu docelowego 10.2.3.3, Azure w takich sytuacjach przydałaby znać lokacji, do której chcesz wysłać pakietu, ponieważ wszystkie nakładające się zakresy adresów. Aby uniknąć problemów z routingiem, Azure nie zezwala na przekazywanie pliku konfiguracji, który ma nakładające się zakresy.

@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c57feb33967732481d78e0ddaba5e90f4f82f327
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544439"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Zagadnienia specyficzne dla platformy Xamarin Android przy użyciu platformy MSAL.NET
@@ -56,16 +56,16 @@ Poniższa tabela zawiera listę urządzeń i przeglądarek, które zostały prze
 
 | | Przeglądarka&ast;     |  Wynik  | 
 | ------------- |:-------------:|:-----:|
-| Huawei jeden + / | Chrome&ast; | Powodzenie|
-| Huawei jeden + / | Edge&ast; | Powodzenie|
-| Huawei jeden + / | Firefox&ast; | Powodzenie|
-| Huawei jeden + / | Brave&ast; | Powodzenie|
-| Jeden + | Ecosia&ast; | Powodzenie|
-| Jeden + | Hodowca&ast; | Powodzenie|
-| Huawei jeden + / | Opera | Powodzenie|
-| Huawei | OperaMini | Powodzenie|
-| Huawei jeden + / | InBrowser | Powodzenie|
-| Jeden + | Maxthon | Powodzenie|
+| Huawei jeden + / | Chrome&ast; | — Dostęp próbny|
+| Huawei jeden + / | Edge&ast; | — Dostęp próbny|
+| Huawei jeden + / | Firefox&ast; | — Dostęp próbny|
+| Huawei jeden + / | Brave&ast; | — Dostęp próbny|
+| Jeden + | Ecosia&ast; | — Dostęp próbny|
+| Jeden + | Hodowca&ast; | — Dostęp próbny|
+| Huawei jeden + / | Opera | — Dostęp próbny|
+| Huawei | OperaMini | — Dostęp próbny|
+| Huawei jeden + / | InBrowser | — Dostęp próbny|
+| Jeden + | Maxthon | — Dostęp próbny|
 | Huawei jeden + / | DuckDuckGo | Użytkownik anulował uwierzytelnianie|
 | Huawei jeden + / | UC przeglądarki | Użytkownik anulował uwierzytelnianie|
 | Jeden + | Delfinów | Użytkownik anulował uwierzytelnianie|

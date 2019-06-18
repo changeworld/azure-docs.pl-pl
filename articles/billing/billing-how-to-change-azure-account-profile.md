@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65850765"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Zmień informacje o profilu dla Twojego konta platformy Azure
@@ -57,7 +57,7 @@ Ze względu na ograniczenia techniczne firma Microsoft nie można zmienić kraj/
 
 Zostanie wyświetlony monit w [witryny Azure portal](https://portal.azure.com) można sprawdzić ani zaktualizować swój adres e-mail co 90 dni. Firma Microsoft wysyła wiadomości e-mail na adres e-mail profilu za pomocą usługi Azure information związanych z kontem dla:
 
-- Powiadomienia usługi
+- Powiadomienia dotyczące usług
 - Alerty zabezpieczeń
 - Do celów rozliczeń
 - Pomoc techniczna
@@ -76,7 +76,7 @@ Kontaktowy adres e-mail można zmienić przy użyciu jednej z następujących me
 
 * Przejdź do [informacje kontaktowe](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) obszaru w witrynie Azure portal i wprowadź adres e-mail. Adres, który podasz odbiera usługi i marketingowej. Adres e-mail w profilu Centrum konta platformy Azure są dostosowywane do automatycznie. Aktualizowanie swój adres e-mail profilu nie powoduje aktualizacji adresu e-mail logowania.
 
-* W [witryny Azure portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), wybierz ikonę inicjały użytkownika lub obraz. Następnie wybierz menu kontekstowe (**...** ). Następnie wybierz pozycję **Moje informacje kontaktowe** z menu i wprowadź adres e-mail. Adres, który podasz odbiera usługi i marketingowej. Adres e-mail w Twoim profilu Centrum konta platformy Azure są dostosowywane do automatycznie. Aktualizowanie swój adres e-mail profilu nie powoduje aktualizacji adresu e-mail logowania.
+* W [witryny Azure portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), wybierz ikonę inicjały użytkownika lub obraz. Następnie wybierz menu kontekstowe ( **...** ). Następnie wybierz pozycję **Moje informacje kontaktowe** z menu i wprowadź adres e-mail. Adres, który podasz odbiera usługi i marketingowej. Adres e-mail w Twoim profilu Centrum konta platformy Azure są dostosowywane do automatycznie. Aktualizowanie swój adres e-mail profilu nie powoduje aktualizacji adresu e-mail logowania.
 
 ![Przykład aktualizowania adresu e-mail na platformie Azure](./media/billing-how-to-change-azure-account-profile/azure-contact-information.png)
 

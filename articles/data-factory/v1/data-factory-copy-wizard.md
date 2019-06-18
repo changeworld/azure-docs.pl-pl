@@ -15,10 +15,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90f78428601d7b039d00d39c1ca8339ab3ace9ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487984"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Kopiowanie lub przenoszenie danych za pomocą Kreatora kopiowania usługi Azure Data Factory
@@ -63,7 +63,7 @@ W tym przykładzie korzysta z zapytania SQL `Text.Format` funkcji i `WindowStart
 ![Sprawdź poprawność wyrażenia](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtrowanie danych w folderze obiektu blob platformy Azure
-Zmienne w ścieżce folderu służy do kopiowania danych z folderu, który jest określana w czasie wykonywania na podstawie [zmiennych systemowych](data-factory-functions-variables.md#data-factory-system-variables). Są obsługiwane zmienne: **{year}**, **{month}**, **{dzień}**, **{godzina}**, **{minuta}** i **{niestandardowych}**. Przykład: inputfolder / {year} / {month} / {day}.
+Zmienne w ścieżce folderu służy do kopiowania danych z folderu, który jest określana w czasie wykonywania na podstawie [zmiennych systemowych](data-factory-functions-variables.md#data-factory-system-variables). Są obsługiwane zmienne: **{year}** , **{month}** , **{dzień}** , **{godzina}** , **{minuta}** i **{niestandardowych}** . Przykład: inputfolder / {year} / {month} / {day}.
 
 Załóżmy, że należy wprowadzić folderów w następującym formacie:
 
@@ -72,11 +72,11 @@ Załóżmy, że należy wprowadzić folderów w następującym formacie:
     2016/03/01/03
     ...
 
-Kliknij przycisk **Przeglądaj** przycisku **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład, 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinien zostać wyświetlony `2016/03/01/02` w polu tekstowym. Teraz Zastąp **2016** z **{year}**, **03** z **{month}**, **01** z **{dzień}** , i **02** z **{godzina}**, i naciśnij klawisz Tab. Powinny zostać wyświetlone list rozwijanych, aby wybrać format dla tych czterech zmiennych:
+Kliknij przycisk **Przeglądaj** przycisku **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład, 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinien zostać wyświetlony `2016/03/01/02` w polu tekstowym. Teraz Zastąp **2016** z **{year}** , **03** z **{month}** , **01** z **{dzień}** , i **02** z **{godzina}** , i naciśnij klawisz Tab. Powinny zostać wyświetlone list rozwijanych, aby wybrać format dla tych czterech zmiennych:
 
 ![Za pomocą zmiennych systemowych](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Jak pokazano na poniższym zrzucie ekranu, można również użyć **niestandardowe** zmiennej i wszystkie [obsługiwanych ciągów formatu](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Aby wybrać folder o tej struktury, użyj **Przeglądaj** najpierw przycisk. Następnie zastąp wartość składającą się z **{niestandardowych}**, i naciśnij klawisz Tab, aby wyświetlić pole tekstowe, w którym można wpisać w formacie ciągu.     
+Jak pokazano na poniższym zrzucie ekranu, można również użyć **niestandardowe** zmiennej i wszystkie [obsługiwanych ciągów formatu](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Aby wybrać folder o tej struktury, użyj **Przeglądaj** najpierw przycisk. Następnie zastąp wartość składającą się z **{niestandardowych}** , i naciśnij klawisz Tab, aby wyświetlić pole tekstowe, w którym można wpisać w formacie ciągu.     
 
 ![Korzystanie ze zmienną niestandardową](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

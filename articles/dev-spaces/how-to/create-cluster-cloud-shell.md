@@ -9,16 +9,16 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Dowiedz się, jak szybko utworzyć klaster usługi Kubernetes, włączone dla usługi Azure Dev miejsca do magazynowania bezpośrednio z przeglądarki, bez konieczności instalowania żadnych.
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
-ms.openlocfilehash: 532a094f96817f3c525384694b6fa60a292aa948
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: cd0c8c3c26feefe3448ada1cf1575706cd17e525
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391673"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808691"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Cloud Shell
 
-Możesz użyć [usługi Azure Cloud Shell](/azure/cloud-shell) do tworzenia klastra dla usługi Azure Dev miejsca do magazynowania przy użyciu **wypróbuj** przycisku z tej strony. Jeśli użytkownik nie jest zalogowany, postępuj zgodnie z monitami, aby zalogować się przy użyciu konta platformy Azure, a następnie wpisz polecenie w wierszu usługi Azure Cloud Shell polecenia, gdy się pojawi.
+Możesz użyć [usługi Azure Cloud Shell](/azure/cloud-shell) do utworzenia klastra usługi Azure Kubernetes Service za pomocą **wypróbuj** przycisku z tej strony. Jeśli użytkownik nie jest zalogowany, postępuj zgodnie z monitami, aby zalogować się przy użyciu konta platformy Azure, a następnie wpisz polecenie w wierszu usługi Azure Cloud Shell polecenia, gdy się pojawi.
 
 ## <a name="create-the-cluster"></a>Tworzenie klastra
 
@@ -39,6 +39,9 @@ Utworzenie klastra trwa kilka minut.  Po ukończeniu dane wyjściowe jest wyświ
 ## <a name="next-steps"></a>Kolejne kroki
 
 Zobacz [miejsca do magazynowania Azure Dev](/azure/dev-spaces/) linki do samouczków, pełne.
+
+> [!IMPORTANT]
+> Wiele miejsc do magazynowania Azure Dev przewodników Szybki Start i samouczków korzystanie z wiersza polecenia platformy Azure Dev miejsca do magazynowania w celu wykonywania operacji. Nie można zainstalować interfejs wiersza polecenia Azure Dev miejsca do magazynowania w usłudze Azure Cloud Shell.
 
 
 [supported-regions]: ../about.md#supported-regions-and-configurations

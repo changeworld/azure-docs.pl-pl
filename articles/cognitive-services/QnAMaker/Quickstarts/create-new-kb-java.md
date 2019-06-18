@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 85d5fa1cc036737497e276413985e0828e3b51f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c6fddec80da1baa852a2f3712a94b785d775919e
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788714"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151041"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: Tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
 
@@ -100,7 +100,7 @@ Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 ```
 
 ## <a name="add-a-main-method"></a>Dodawanie metody głównej
-Metoda główna tworzy bazę wiedzy, a następnie wykonuje sondowanie pod kątem stanu. **Identyfikator operacji** tworzenia jest zwracany w polu **Location** nagłówka odpowiedzi POST, a następnie używany jako część trasy w żądaniu GET. **Pętla `while` ponawia próbę uzyskania stanu, jeśli jest on inny od ukończonego.
+Metoda główna tworzy bazę wiedzy, a następnie wykonuje sondowanie pod kątem stanu. Operacja identyfikator jest zwracany w polu nagłówka odpowiedzi WPIS **lokalizacji**, następnie użyta jako część tras w żądanie GET. `while` Pętli ponawia próbę stan, jeśli nie zostało ukończone.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

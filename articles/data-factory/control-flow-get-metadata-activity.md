@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: jingwang
 ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61346915"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Pobieranie metadanych działania w usłudze Azure Data Factory
@@ -43,24 +43,24 @@ Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i 
 
 **Magazyn plików:**
 
-| Łącznik/metadanych | itemName<br>(plik/folder) | itemType<br>(plik/folder) | rozmiar<br>(file) | utworzone<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>(folder) |contentMD5<br>(file) | Struktura<br/>(file) | columnCount<br>(file) | Istnieje<br>(plik/folder) |
+| Łącznik/metadanych | itemName<br>(plik/folder) | itemType<br>(plik/folder) | size<br>(file) | Utworzone<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>(folder) |contentMD5<br>(file) | structure<br/>(file) | columnCount<br>(file) | Istnieje<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Obiekt bob Azure | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| Usługa Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Obiekt blob platformy Azure | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | Usługa Azure Data Lake Storage 1. generacji | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Usługa Azure Data Lake Storage 2. generacji | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | System plików | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Protokół FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
 - Dla dostawców Amazon S3 i magazynu Sloud Google `lastModified` ma zastosowanie do zasobnika i klucza, ale nie wirtualnego folderu; i `exists` odnosi się do zasobnika i klucza, ale nie do prefiksu lub folder wirtualny.
 - Dla obiektów Blob platformy Azure `lastModified` ma zastosowanie do kontenerów i obiektów blob, ale folder nie jest wirtualny.
 
 **Relacyjna baza danych:**
 
-| Łącznik/metadanych | Struktura | columnCount | Istnieje |
+| Łącznik/metadanych | structure | columnCount | Istnieje |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
 | Wystąpienie zarządzane usługi Azure SQL Database | √ | √ | √ |
@@ -75,12 +75,12 @@ Na liście pól działanie GetMetadata do pobrania można określić następują
 |:--- |:--- |
 | itemName | Nazwa pliku lub folderu. |
 | itemType | Typ pliku lub folderu. Wartość wyjściowa to `File` lub `Folder`. |
-| rozmiar | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
-| utworzone | Data i godzina utworzonego pliku lub folderu. |
+| size | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
+| Utworzone | Data i godzina utworzonego pliku lub folderu. |
 | lastModified | Data ostatniej modyfikacji daty i godziny pliku lub folderu. |
 | childItems | Lista podfoldery i pliki znajdujące się w danym folderze. Dotyczy tylko do folderu. Wartość wyjściowa jest listę nazw i typ każdego elementu podrzędnego. |
 | contentMD5 | Algorytm MD5 pliku. Dotyczy tylko plików. |
-| Struktura | Struktura danych wewnątrz pliku lub tabeli w relacyjnej bazie danych. Wartość wyjściowa jest lista nazwa kolumny i typ kolumny. |
+| structure | Struktura danych wewnątrz pliku lub tabeli w relacyjnej bazie danych. Wartość wyjściowa jest lista nazwa kolumny i typ kolumny. |
 | columnCount | Liczba kolumn w pliku lub tabeli. |
 | Istnieje| Czy plik/folder/tabeli istnieje, czy nie. Należy pamiętać, jeśli "istnieje" jest określony na liście pól GetaMetadata, działanie nie będą się nie powieść, nawet wtedy, gdy nie istnieje element (plik/folder/table); Zamiast tego zwraca `exists: false` w danych wyjściowych. |
 

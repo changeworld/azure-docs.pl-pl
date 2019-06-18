@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122719"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorowanie potoków i zarządzanie nimi usługi Azure Data Factory przy użyciu witryny Azure portal i programu PowerShell
@@ -49,7 +49,7 @@ W tej sekcji opisano również sposób przejścia wycinek zestawu danych z jedne
 
 ### <a name="navigate-to-your-data-factory"></a>Przejdź do usługi data factory
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Kliknij przycisk **fabryk danych** w menu po lewej stronie. Jeśli nie widzisz, kliknij przycisk **więcej usług >**, a następnie kliknij przycisk **fabryk danych** w obszarze **rozwiązania INTELIGENTNE + analiza** kategorii.
+2. Kliknij przycisk **fabryk danych** w menu po lewej stronie. Jeśli nie widzisz, kliknij przycisk **więcej usług >** , a następnie kliknij przycisk **fabryk danych** w obszarze **rozwiązania INTELIGENTNE + analiza** kategorii.
 
    ![Przeglądaj wszystko > fabryki danych](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. Na **fabryk danych** bloku wybierz fabrykę danych, które interesują Cię.
@@ -89,7 +89,7 @@ Wycinków zestawu danych w usłudze data factory może mieć jedną z następuj�
 
 <table>
 <tr>
-    <th align="left">Stan</th><th align="left">Podstan</th><th align="left">Opis</th>
+    <th align="left">Stan</th><th align="left">Podstanu</th><th align="left">Opis</th>
 </tr>
 <tr>
     <td rowspan="8">Oczekiwanie</td><td>ScheduleTime</td><td>Czas nie pochodzą dla uruchomienia wycinka.</td>
@@ -107,10 +107,10 @@ Wycinków zestawu danych w usłudze data factory może mieć jedną z następuj�
 <td>ActivityResume</td><td>Działanie jest wstrzymane i nie może uruchamiać wycinków, dopóki nie zostanie wznowione działanie.</td>
 </tr>
 <tr>
-<td>Spróbuj ponownie</td><td>Ponawiane wykonywania działania.</td>
+<td>Ponawianie próby</td><td>Ponawiane wykonywania działania.</td>
 </tr>
 <tr>
-<td>Weryfikacja</td><td>Weryfikacja jeszcze się nie rozpoczął.</td>
+<td>Walidacja</td><td>Weryfikacja jeszcze się nie rozpoczął.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Walidacja Trwa oczekiwanie na ponowienie próby.</td>
@@ -123,13 +123,13 @@ Wycinków zestawu danych w usłudze data factory może mieć jedną z następuj�
 <td>Wycinek jest przetwarzany.</td>
 </tr>
 <tr>
-<td rowspan="4">Błąd</td><td>Przekroczono limit czasu</td><td>Wykonanie działanie trwało dłużej niż dozwolona przez działanie.</td>
+<td rowspan="4">Niepowodzenie</td><td>Przekroczono limit czasu</td><td>Wykonanie działanie trwało dłużej niż dozwolona przez działanie.</td>
 </tr>
 <tr>
-<td>Anulowano</td><td>Wycinek została anulowana przez użytkownika akcji.</td>
+<td>Anulowane</td><td>Wycinek została anulowana przez użytkownika akcji.</td>
 </tr>
 <tr>
-<td>Weryfikacja</td><td>Weryfikacja nie powiodła się.</td>
+<td>Walidacja</td><td>Weryfikacja nie powiodła się.</td>
 </tr>
 <tr>
 <td>-</td><td>Wycinek nie powiodło się wygenerowany i/lub zweryfikować.</td>
@@ -156,7 +156,7 @@ Jeśli wycinek została wykonana wiele razy, zobaczysz wiele wierszy w **uruchom
 
 Jeśli wycinek nie znajduje się w **gotowe** stanu, możesz zobaczyć wycinki strumienia wychodzącego, które nie są gotowe i blokują bieżącego wycinka na wykonywanie **niegotowe wycinki strumienia wychodzącego nie są gotowe** listy. Ta funkcja jest przydatna, gdy Twoje wycinek jest w **oczekiwania** stanu i chcesz zrozumieć zależności strumienia wychodzącego, które wycinek oczekuje na.
 
-![Niegotowe wycinki strumienia wychodzącego](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
+![Niegotowe wycinki strumienia wychodzącego nie są gotowe](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
 ### <a name="dataset-state-diagram"></a>Diagram stanu zestawu danych
 Po wdrażanie fabryki danych, potoki prawidłowe okresu aktywności, zestaw danych dzieli przejścia z jednego stanu do drugiego. Obecnie stan wycinka następuje na poniższym diagramie stanu:

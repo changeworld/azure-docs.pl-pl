@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: cecdb9f9af9c5194eb56cfefd63b31348f111980
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61400734"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Kopiowanie danych z Magento przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane w przypadku Magento połączone us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Magento** | Yes |
+| type | Właściwość type musi być równa: **Magento** | Tak |
 | host | Adres URL wystąpienia Magento. (czyli 192.168.222.110/magento3)  | Yes |
 | accessToken | Token dostępu z Magento. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
@@ -109,7 +109,7 @@ Aby skopiować dane z Magento, należy ustawić typ źródła w działaniu kopio
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **MagentoSource** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **MagentoSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Customers"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

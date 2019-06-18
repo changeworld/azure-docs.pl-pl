@@ -14,10 +14,10 @@ ms.date: 02/07/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
 ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61461565"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie regułami wykrywania inteligentnego usługi Application Insights przy użyciu szablonów usługi Azure Resource Manager
@@ -39,7 +39,7 @@ Maksymalny elastyczności każdej reguły wykrywania inteligentnego można skonf
 ## <a name="examples"></a>Przykłady
 
 Poniżej przedstawiono kilka przykładów, w którym pokazano, jak skonfigurować ustawienia reguły wykrywania inteligentnego, za pomocą szablonów usługi Azure Resource Manager.
-Wszystkie przykłady odnoszą się do zasobu usługi Application Insights o nazwie _"MojaAplikacja"_, i "zależności długi czas trwania wykrywania inteligentnego reguły", która wewnętrznie nosi nazwę _"longdependencyduration"_.
+Wszystkie przykłady odnoszą się do zasobu usługi Application Insights o nazwie _"MojaAplikacja"_ , i "zależności długi czas trwania wykrywania inteligentnego reguły", która wewnętrznie nosi nazwę _"longdependencyduration"_ .
 Upewnij się, zastąp nazwę zasobu usługi Application Insights i określ nazwę wewnętrznego reguły wykrywania inteligentnego odpowiednie. Sprawdź w tabeli poniżej listy odpowiednie wewnętrzne nazwy usługi Azure Resource Manager dla każdej reguły wykrywania inteligentnego.
 
 ### <a name="disable-a-smart-detection-rule"></a>Wyłącz regułę wykrywania inteligentnego
@@ -148,8 +148,8 @@ Poniżej znajduje się tabela nazwy reguł wykrywania inteligentnego, w jakiej w
 | Długi czas ładowania strony | slowpageloadtime |
 | Długi czas odpowiedzi serwera | slowserverresponsetime |
 | Długi czas trwania zależności | longdependencyduration |
-| Wydłużenie czasu odpowiedzi serwera | degradationinserverresponsetime |
-| Obniżenie w czasie trwania zależności | degradationindependencyduration |
+| Pogorszenie czasu odpowiedzi serwera | degradationinserverresponsetime |
+| Pogorszenie czasu trwania zależności | degradationindependencyduration |
 | Obniżenie wydajności stopień ważności śledzenia (wersja zapoznawcza) | extension_traceseveritydetector |
 | Nietypowy wzrost liczby wyjątków (wersja zapoznawcza) | extension_exceptionchangeextension |
 | Potencjalny przeciek pamięci wykryto (wersja zapoznawcza) | extension_memoryleakextension |

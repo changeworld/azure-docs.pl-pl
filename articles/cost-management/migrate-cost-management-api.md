@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967242"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migracja z umową Enterprise Agreement do interfejsów API umowy klienta firmy Microsoft
@@ -91,7 +91,7 @@ Jeśli używasz żadnych istniejących interfejsów API EA, należy je zaktualiz
 - Nowe zakupy
 - Opłaty za usługi platformy Azure Marketplace
 - Korekty
-- Opłata za nadwyżkę usługi
+- Opłaty za użycie nadwyżkowe usługi
 
 Wszystkie interfejsy API zużycia są zastępowane przez natywnych interfejsów API platformy Azure, używanego przez usługi Azure AD do uwierzytelniania i autoryzacji. Aby uzyskać więcej informacji na temat wywoływania interfejsów API REST platformy Azure, zobacz [wprowadzenie z użyciem usług REST](/rest/api/azure/#create-the-request).
 
@@ -126,10 +126,10 @@ Aby uzyskać szczegóły użycia za pomocą interfejsu API szczegółów użycia
 
 Interfejs API szczegóły użycia, podobnie jak w przypadku wszystkich interfejsów API zarządzania kosztami, jest dostępna w wielu zakresach. Invoiced kosztów rozliczeń zakresu profilu używać jako tradycyjnie otrzyma na poziomie rejestracji.  Aby uzyskać więcej informacji na temat zakresów Cost Management, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
 
-| Type | Format Identyfikatora |
+| Typ | Format Identyfikatora |
 | --- | --- |
-| Konto rozliczeniowe | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
-| Profil rozliczeniowy | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
+| Konto billingowe | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
+| Karta profilu | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
 | Subskrypcja | `/subscriptions/{subscriptionId}` |
 | Grupa zasobów | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
@@ -172,27 +172,27 @@ Nazwa właściwości zawierający tablicę rekordów użycia zmieniła się z da
 
 | Stary właściwości | Nowa właściwość | Uwagi |
 | --- | --- | --- |
-| Identyfikator konta | ND | Procedura tworzenia subskrypcji nie jest śledzone. Użyj invoiceSectionId (tak jak departmentId). |
+| AccountId | ND | Procedura tworzenia subskrypcji nie jest śledzone. Użyj invoiceSectionId (tak jak departmentId). |
 | AccountNameAccountOwnerId i AccountOwnerEmail | ND | Procedura tworzenia subskrypcji nie jest śledzone. Użyj invoiceSectionName (tak jak departmentName). |
-| Informacje dodatkowe | additionalInfo | &nbsp;  |
+| AdditionalInfo | AdditionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | Należy pamiętać, że te właściwości są przeciwieństwem. Obowiązuje isAzureCreditEnabled ChargesBilledSeparately będzie mieć wartość false. |
-| Użyta ilość | quantity | &nbsp; |
-| Użyta usługa | consumedService | Dokładnie taki ciąg znaków wartości mogą się różnić. |
-| Identyfikator użytej usługi | Brak | &nbsp; |
-| Centrum kosztów | costCenter | &nbsp; |
+| ConsumedQuantity | Ilość | &nbsp; |
+| ConsumedService | consumedService | Dokładnie taki ciąg znaków wartości mogą się różnić. |
+| ConsumedServiceId | Brak | &nbsp; |
+| CostCenter | costCenter | &nbsp; |
 | Data i usageStartDate | date | &nbsp;  |
-|  Dzień | Brak | Analizuje dni od daty. |
-| Identyfikator działu | invoiceSectionId | Dokładne wartości są różne. |
+| Dzień | Brak | Analizuje dni od daty. |
+| DepartmentId | invoiceSectionId | Dokładne wartości są różne. |
 | Nazwa działu | invoiceSectionName | Dokładnie taki ciąg znaków wartości mogą się różnić. Skonfiguruj faktury sekcji, aby dopasować działów, jeśli to konieczne. |
 | ExtendedCost i kosztów | costInBillingCurrency | &nbsp;  |
-| Identyfikator wystąpienia | resourceId | &nbsp;  |
-| Opłata jest cykliczna | Brak | &nbsp;  |
-| Lokalizacja | lokalizacja | &nbsp;  |
-| Kategoria miernika | meterCategory | Dokładnie taki ciąg znaków wartości mogą się różnić. |
-| Identyfikator miernika | meterId | Dokładnie taki ciąg znaków wartości są różne. |
-| Nazwa miernika | lmeterName | Dokładnie taki ciąg znaków wartości mogą się różnić. |
-| Region miernika | meterRegion | Dokładnie taki ciąg znaków wartości mogą się różnić. |
-| Podkategoria miernika | meterSubCategory | Dokładnie taki ciąg znaków wartości mogą się różnić. |
+| InstanceId | resourceId | &nbsp;  |
+| Opłaty cykliczne | Brak | &nbsp;  |
+| Lokalizacja | location | &nbsp;  |
+| MeterCategory | MeterCategory | Dokładnie taki ciąg znaków wartości mogą się różnić. |
+| MeterId | meterId | Dokładnie taki ciąg znaków wartości są różne. |
+| MeterName | meterName | Dokładnie taki ciąg znaków wartości mogą się różnić. |
+| MeterRegion | meterRegion | Dokładnie taki ciąg znaków wartości mogą się różnić. |
+| MeterSubCategory | meterSubCategory | Dokładnie taki ciąg znaków wartości mogą się różnić. |
 | Miesiąc | Brak | Analizuje miesiąc od daty. |
 | Nazwa oferty | Brak | Użyj argumenty publisherName i productOrderName. |
 | OfferId | Brak | &nbsp;  |
@@ -202,33 +202,33 @@ Nazwa właściwości zawierający tablicę rekordów użycia zmieniła się z da
 | Product (Produkt) | Product (Produkt) |   |
 | Identyfikator produktu | productId | Dokładnie taki ciąg znaków wartości są różne. |
 | Nazwa wydawcy | publisherName | &nbsp;  |
-| Grupa zasobów | resourceGroupName | &nbsp;  |
-| GuidZasobu | meterId | Dokładnie taki ciąg znaków wartości są różne. |
-| Lokalizacja zasobu | resourceLocation | &nbsp;  |
-| Identyfikator lokalizacji zasobu | Brak | &nbsp;  |
-| Współczynnik zasobów | effectivePrice | &nbsp;  |
-| Identyfikator administratora usługi | ND | &nbsp;  |
-| Informacje o usłudze 1 | serviceInfo1 | &nbsp;  |
-| Informacje o usłudze 2 | serviceInfo2 | &nbsp;  |
-| ServiceName | meterCategory | Dokładnie taki ciąg znaków wartości mogą się różnić. |
+| ResourceGroup | resourceGroupName | &nbsp;  |
+| ResourceGuid | meterId | Dokładnie taki ciąg znaków wartości są różne. |
+| resourceLocation | resourceLocation | &nbsp;  |
+| ResourceLocationId | Brak | &nbsp;  |
+| ResourceRate | effectivePrice | &nbsp;  |
+| ServiceAdministratorId | ND | &nbsp;  |
+| ServiceInfo1 | ServiceInfo1 | &nbsp;  |
+| ServiceInfo2 | serviceInfo2 | &nbsp;  |
+| ServiceName | MeterCategory | Dokładnie taki ciąg znaków wartości mogą się różnić. |
 | ServiceTier | meterSubCategory | Dokładnie taki ciąg znaków wartości mogą się różnić. |
-| Identyfikator usługi magazynu | ND | &nbsp;  |
-| Identyfikator GUID subskrypcji | subscriptionId | &nbsp;  |
+| StoreServiceIdentifier | ND | &nbsp;  |
+| SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
-| Nazwa subskrypcji | subscriptionName | &nbsp;  |
+| SubscriptionName | subscriptionName | &nbsp;  |
 | `Tags` | tags | Właściwość tags ma zastosowanie do obiektu głównego, aby nie właściwość zagnieżdżonych właściwości. |
-| Jednostka miary | unitOfMeasure | Dokładnie taki ciąg znaków wartości są różne. |
+| UnitOfMeasure | unitOfMeasure | Dokładnie taki ciąg znaków wartości są różne. |
 | usageEndDate | date | &nbsp;  |
 | Rok | Brak | Analizuje roku od daty. |
-| (nowe)  | billingCurrency | Waluta używana opłaty. |
-| (nowe)  | billingProfileId | Unikatowy identyfikator profil rozliczeniowy, (tak jak rejestracji). |
-| (nowe)  | billingProfileName | Nazwa profilu rozliczeń, (tak jak rejestracji). |
-| (nowe)  | chargeType | Służy do rozróżnienia użycia usługi Azure Marketplace i użycie zakupów. |
-| (nowe)  | invoiceId | Unikatowy identyfikator dla faktury. Pusta dla miesiąca bieżącej, Otwórz. |
-| (nowe)  | publisherType | Typ wydawcy w celu dokonywania zakupów. Pusta do użycia. |
-| (nowe)  | serviceFamily | Typ zakupu. Pusta do użycia. |
-| (nowe)  | servicePeriodEndDate | Data zakończenia zakupionej usługi. |
-| (nowe)  | servicePeriodStartDate | Data rozpoczęcia dla usług zakupionych. |
+| (nowe) | billingCurrency | Waluta używana opłaty. |
+| (nowe) | billingProfileId | Unikatowy identyfikator profil rozliczeniowy, (tak jak rejestracji). |
+| (nowe) | billingProfileName | Nazwa profilu rozliczeń, (tak jak rejestracji). |
+| (nowe) | chargeType | Służy do rozróżnienia użycia usługi Azure Marketplace i użycie zakupów. |
+| (nowe) | invoiceId | Unikatowy identyfikator dla faktury. Pusta dla miesiąca bieżącej, Otwórz. |
+| (nowe) | publisherType | Typ wydawcy w celu dokonywania zakupów. Pusta do użycia. |
+| (nowe) | serviceFamily | Typ zakupu. Pusta do użycia. |
+| (nowe) | servicePeriodEndDate | Data zakończenia zakupionej usługi. |
+| (nowe) | servicePeriodStartDate | Data rozpoczęcia dla usług zakupionych. |
 
 ## <a name="billing-periods-api-replaced-by-invoices-api"></a>Interfejs API okresy zastępuje faktur API rozliczeń
 
@@ -373,7 +373,7 @@ W poniższej tabeli przedstawiono pola w starszych API arkusza przedsiębiorstwa
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | Dokładnie taki ciąg znaków wartości mogą się różnić. |
 | includedQuantity  | includedQuantity | Nie dotyczy usługi w ramach umowy klienta firmy Microsoft. |
-| partNumber  | _Nie dotyczy_ | Zamiast tego należy użyć kombinacji productOrderName (tak jak identyfikatora oferty) i meterid. |
+| PartNumber  | _Nie dotyczy_ | Zamiast tego należy użyć kombinacji productOrderName (tak jak identyfikatora oferty) i meterid. |
 | Cena jednostkowa  | Cena jednostkowa | Cena ma zastosowanie do usług używane w umowach klientów firmy Microsoft. |
 | currencyCode  | pricingCurrency | Umowy klienta firmy Microsoft mają reprezentacji ceny w walucie cen i waluta rozliczeniowa. CurrencyCode odpowiada pricingCurrency w umowy klienta firmy Microsoft. |
 | offerId | productOrderName | Zamiast identyfikatora oferty można użyć productOrderName, ale nie jest taka sama jak identyfikatora oferty. Jednak productOrderName i licznik stwierdzić, że ceny w umowy klienta firmy Microsoft związane z meterId i identyfikatora oferty w starszej wersji rejestracji. |
@@ -431,16 +431,16 @@ Starsze właściwości [interfejsów API usługi Azure Resource Manager cena ark
 | Stary właściwość API arkusza cen zasobów platformy Azure Menedżera  | Właściwości nowego interfejsu API arkusza cen umowy klienta Microsoft   | Opis |
 | --- | --- | --- |
 | Identyfikator miernika | _meterId_ | Unikatowy identyfikator miernika. Taka sama jak meterId. |
-| Nazwa miernika | lmeterName | Nazwa licznika. Licznik reprezentuje zasób do wdrożenia usługi platformy Azure. |
+| Nazwa miernika | meterName | Nazwa licznika. Licznik reprezentuje zasób do wdrożenia usługi platformy Azure. |
 | Kategoria miernika  | usługa | Nazwa kategorii klasyfikacji dla licznika. Taka sama jak usługi w arkuszu cen umowy klienta firmy Microsoft. Dokładnie taki ciąg znaków wartości są różne. |
 | Podkategoria miernika | meterSubCategory | Nazwa kategorii podrzędna miernika. Na podstawie klasyfikacji zróżnicowania zestaw funkcji wysokiego poziomu usługi. Na przykład podstawowa baza danych SQL w stosunku do standardowych bazy danych SQL |
 | Region miernika | meterRegion | &nbsp;  |
 | Jednostka | _Nie dotyczy_ | Może być pochodzącą z analizy unitOfMeasure. |
 | Jednostka miary | unitOfMeasure | &nbsp;  |
-| Numer części | _Nie dotyczy_ | Zamiast partNumber należy użyć productOrderName i MeterId do unikatowego identyfikowania cena na profil rozliczeniowy. Pola są wyświetlane na fakturze MCA zamiast partNumber MCA faktur. |
+| Numer produktu | _Nie dotyczy_ | Zamiast partNumber należy użyć productOrderName i MeterId do unikatowego identyfikowania cena na profil rozliczeniowy. Pola są wyświetlane na fakturze MCA zamiast partNumber MCA faktur. |
 | Cena jednostkowa | Cena jednostkowa | Cena jednostkowa umowy klienta firmy Microsoft. |
 | Kod waluty | pricingCurrency | Umowy klienta firmy Microsoft stanowią ceny w cenie waluty i waluta rozliczeniowa. Kod waluty jest taka sama jak pricingCurrency w umowy klienta firmy Microsoft. |
-| Uwzględniona ilość | includedQuantity | Nie dotyczy usług w umowy klienta firmy Microsoft. Pokaż o wartości zero. |
+| Uwzględnione | includedQuantity | Nie dotyczy usług w umowy klienta firmy Microsoft. Pokaż o wartości zero. |
 |  Identyfikator oferty  | productOrderName | Zamiast identyfikatora oferty należy użyć productOrderName. Nie taka sama, jak identyfikatora oferty, jednak productOrderName i licznik określają, cen w umowy klienta firmy Microsoft. Powiązane meterId i identyfikatora oferty starszych rejestracji. |
 
 Cena dla umowy klienta firmy Microsoft jest zdefiniowany inaczej niż umowy Enterprise Agreement. Cena usługi w ramach rejestracji Enterprise jest unikatowy dla produktu, PartNumber, miernika i oferty. PartNumber nie jest używany w umowy klienta firmy Microsoft.
@@ -461,8 +461,8 @@ Następujące pola nie są dostępne w interfejsów API arkusza cen umowy klient
 |---|---|
 | billingPeriodId | Nie dotyczy. MCA odnosi się do identyfikatora faktury. |
 | offerId | Nie dotyczy. Odnosi się do productOrderName w MCA. |
-| meterCategory  | Nie dotyczy. Odnosi się do usługi w MCA. |
-| jednostka | Nie dotyczy. Może być pochodzącą z analizy unitOfMeasure. |
+| MeterCategory  | Nie dotyczy. Odnosi się do usługi w MCA. |
+| Jednostki | Nie dotyczy. Może być pochodzącą z analizy unitOfMeasure. |
 | currencyCode | Taka sama jak pricingCurrency w MCA. |
 | meterLocation | Taka sama jak meterRegion w MCA. |
 | partNumber partnumber | Nie dotyczy, ponieważ nie ma na liście numer części MCA faktur. Zamiast partnumber należy użyć kombinacji meterId i productOrderName do unikatowego identyfikowania ceny. |

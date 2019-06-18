@@ -18,19 +18,19 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: eb7919c6f4ff1b3cf2480333273a98f2cca9a223
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204937"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver
 
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -189,7 +189,7 @@ Artykuły te obejmują wdrożenia SAP na platformie Azure:
 
 Te informacje SAP są związane z tym tematem SAP na platformie Azure:
 
-| Numer | Tytuł |
+| Numer | Stanowisko |
 | --- | --- |
 | [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i zmianę rozmiaru |
 | [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
@@ -738,7 +738,7 @@ Ustaw adres IP modułu równoważenia obciążenia **pr1-lb-dbms** adres IP, naz
 
 Jeśli chcesz użyć innej liczby wystąpień SAP ASCS lub SCS, możesz zmienić nazwy i wartości ich portów z wartościami domyślnymi.
 
-1. W witrynie Azure portal wybierz  **< *SID*> moduł równoważenia obciążenia ascs - lb -** > **załadować reguł równoważenia**.
+1. W witrynie Azure portal wybierz  **< *SID*> moduł równoważenia obciążenia ascs - lb -**  > **załadować reguł równoważenia**.
 2. W przypadku reguł, które należą do wystąpienia SAP ASCS lub SCS równoważenia obciążenia wszystkie zmieniać tych wartości:
 
    * Name (Nazwa)
@@ -767,7 +767,7 @@ Usługa Azure Load Balancer ma wewnętrznego modułu równoważenia obciążenia
 
 Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, najpierw dodaj te wpisy rejestru Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
 
-| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveTime` |
 | Typ zmiennej |REG_DWORD (Decimal) |
@@ -778,7 +778,7 @@ _**Tabela 3:** Zmień pierwszy parametr TCP/IP_
 
 Następnie należy dodać wpisy rejestru w tym Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
 
-| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveInterval` |
 | Typ zmiennej |REG_DWORD (Decimal) |
@@ -901,7 +901,7 @@ Konfigurowanie monitora udostępniania plików klastra obejmuje następujące za
 
    _**Ilustracja 30** Przypisz uprawnienia w udziale obiektu nazwy klastra_
 
-   Pamiętaj, że uprawnienia obejmują uprawnień do zmiany danych w udziale dla obiektu nazwy klastra (w naszym przykładzie **pr1-ascs-vir$**).
+   Pamiętaj, że uprawnienia obejmują uprawnień do zmiany danych w udziale dla obiektu nazwy klastra (w naszym przykładzie **pr1-ascs-vir$** ).
 
 3. Aby dodać obiekt nazwy klastra, do listy, wybierz **Dodaj**. Zmień filtr, aby wyszukać obiekty komputerów, oprócz tych pokazano na rysunku 31.
 
@@ -1133,7 +1133,7 @@ Instalowanie SAP za pomocą wystąpienia ASCS/SCS wysokiej dostępności obejmuj
 1. W Menedżerze Windows DNS utworzyć wpis DNS dla nazwy hosta wirtualnego wystąpienia ASCS/SCS.
 
    > [!IMPORTANT]
-   > Adres IP, który zostanie przypisany do nazwy hosta wirtualnego wystąpienia ASCS/SCS musi być taka sama, jak adres IP, która została przypisana do usługi Azure Load Balancer (**<*SID*> - lb - ascs**).  
+   > Adres IP, który zostanie przypisany do nazwy hosta wirtualnego wystąpienia ASCS/SCS musi być taka sama, jak adres IP, która została przypisana do usługi Azure Load Balancer ( **<*SID*> - lb - ascs**).  
    >
    >
 
@@ -1335,7 +1335,7 @@ Jest łatwy do testowania i monitorowania usługi SAP ASCS/SCS wystąpienia w tr
 
 _**Ilustracja 61** Menedżer klastra trybu failover: SAP <*SID*> grupy klastra jest uruchomiona w węźle klastra, A_
 
-W narzędziu oprogramowanie SIOS DataKeeper zarządzania i konfiguracji możesz zobaczyć, czy udostępniony dysk synchronicznie replikacji danych z dysku woluminu źródłowego S w węźle klastra, A na dysku woluminu docelowego S w węźle klastra B. Na przykład jest replikowany z **pr1 ascs 0 [10.0.0.40]** do **pr1 ascs 1 [10.0.0.41]**.
+W narzędziu oprogramowanie SIOS DataKeeper zarządzania i konfiguracji możesz zobaczyć, czy udostępniony dysk synchronicznie replikacji danych z dysku woluminu źródłowego S w węźle klastra, A na dysku woluminu docelowego S w węźle klastra B. Na przykład jest replikowany z **pr1 ascs 0 [10.0.0.40]** do **pr1 ascs 1 [10.0.0.41]** .
 
 ![Ilustracja 62 W oprogramowanie SIOS DataKeeper replikowania woluminu lokalnego z węzła klastra, A do węzła klastra B][sap-ha-guide-figure-5001]
 
@@ -1364,7 +1364,7 @@ _**Ilustracja 62** W oprogramowanie SIOS DataKeeper replikowania woluminu lokaln
 
    _**Rysunek 63**: W Menedżerze klastra trybu Failover, SAP <*SID*> grupy klastra jest uruchomiona w węźle klastra B_
 
-   Udostępniony dysk jest teraz zainstalowany w klastrze węzła B. oprogramowanie SIOS DataKeeper jest replikowanie danych z dysku woluminu źródłowego S w węźle klastra B na dysku woluminu docelowego S w węźle klastra A. Na przykład jest replikowany z **pr1 ascs 1 [10.0.0.41]** do **pr1 ascs 0 [10.0.0.40]**.
+   Udostępniony dysk jest teraz zainstalowany w klastrze węzła B. oprogramowanie SIOS DataKeeper jest replikowanie danych z dysku woluminu źródłowego S w węźle klastra B na dysku woluminu docelowego S w węźle klastra A. Na przykład jest replikowany z **pr1 ascs 1 [10.0.0.41]** do **pr1 ascs 0 [10.0.0.40]** .
 
    ![Ilustracja 64 Oprogramowanie SIOS DataKeeper replikuje woluminu lokalnego z węzła klastra B do A węzłem klastra][sap-ha-guide-figure-5003]
 

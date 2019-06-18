@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 9c9a4b41dbb9b9acc2982ae2af1f3a611f9d3beb
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65228281"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Kopiowanie danych z magazynu w chmurze Google przy użyciu usługi Azure Data Factory
@@ -38,7 +38,7 @@ W szczególności ten łącznik w usłudze Google Cloud Storage obsługuje kopio
 
 Aby skopiować dane z usługi Google Cloud Storage, upewnij się, że przyznano następujące uprawnienia:
 
-- **Do wykonania działania kopiowania:**: `s3:GetObject` i `s3:GetObjectVersion` dla operacji obiektu.
+- **Do wykonania działania kopiowania:** : `s3:GetObject` i `s3:GetObjectVersion` dla operacji obiektu.
 - **Do tworzenia fabryki danych graficznego interfejsu użytkownika**: `s3:ListAllMyBuckets` i `s3:ListBucket` / `s3:GetBucketLocation` operacji zasobnika Ponadto wymagane są uprawnienia, dla operacji, takich jak połączenie testowe i Przeglądaj/Przejdź ścieżki plików. Jeśli nie chcesz przyznać te uprawnienia, Pomiń Testuj połączenie na stronie tworzenia połączonej usługi i określ ścieżkę bezpośrednio w ustawieniach zestawu danych.
 
 ## <a name="getting-started"></a>Wprowadzenie
@@ -56,7 +56,7 @@ Google Cloud połączoną usługę Storage są obsługiwane następujące właś
 | type | Właściwość type musi być równa **AmazonS3**. | Yes |
 | accessKeyId | Identyfikator klucza dostępu do kluczy tajnych. Aby znaleźć klucz dostępu i klucz tajny, przejdź do **usłudze Google Cloud Storage** > **ustawienia** > **współdziałanie**. |Tak |
 | secretAccessKey | Sam klucz dostępu do kluczy tajnych. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| serviceUrl | Określ niestandardowy punkt końcowy S3, jako **`https://storage.googleapis.com`**. | Tak |
+| serviceUrl | Określ niestandardowy punkt końcowy S3, jako **`https://storage.googleapis.com`** . | Tak |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 Oto przykład:

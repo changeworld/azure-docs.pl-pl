@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 7058d7f46373f8adaacbcbf90e5ea591a15f8f37
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58404079"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67125617"
 ---
 Na urządzeniu krawędź pola danych, które ma rolę obliczeń skonfigurowane, podzbiór platformy docker do monitorowania lub Rozwiązywanie problemów z modułami dostępnych poleceń. Aby wyświetlić listę dostępnych poleceń [nawiązać połączenie z interfejsu programu PowerShell](#connect-to-the-powershell-interface) i użyj `dkrdbe` funkcji.
 
@@ -37,7 +37,7 @@ Commands:
 ```
 Poniższa tabela zawiera krótki opis poleceń dostępnych dla `dkrdbe`:
 
-|command  |Opis |
+|Polecenie  |Opis |
 |---------|---------|
 |`image`     | Zarządzanie obrazami       |
 |`images`     | Tworzenie listy obrazów         |

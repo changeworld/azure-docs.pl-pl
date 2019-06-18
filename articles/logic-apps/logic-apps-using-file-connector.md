@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: a933824e9553ee7f638da495b46ebed19e04169d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60846768"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Nawiązać połączenie z lokalnymi systemami plików za pomocą usługi Azure Logic Apps
@@ -42,7 +42,7 @@ Aby skorzystać z przykładu, potrzebne są następujące elementy:
 
 * Podstawową wiedzę na temat o [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). W tym przykładzie należy pustej aplikacji logiki.
 
-## <a name="add-trigger"></a>Dodaj wyzwalacz
+## <a name="add-trigger"></a>Dodawanie wyzwalacza
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -58,7 +58,7 @@ Aby skorzystać z przykładu, potrzebne są następujące elementy:
 
    ![Wyzwalacz usługi Dropbox](media/logic-apps-using-file-connector/dropbox-trigger.png)
 
-## <a name="add-actions"></a>Dodaj akcje
+## <a name="add-actions"></a>Dodawanie akcji
 
 1. W obszarze wyzwalacza wybierz **następny krok**. W polu wyszukiwania wprowadź "file system" jako filtr. Z listy akcji wybierz następującą akcję: **Tworzenie pliku — System plików**
 
@@ -73,9 +73,9 @@ Aby skorzystać z przykładu, potrzebne są następujące elementy:
    | **Nazwa połączenia** | Yes | <*connection-name*> | Nazwę, która ma połączenia | 
    | **Folder główny** | Yes | <*root-folder-name*> | Folder główny systemu plików, na przykład po zainstalowaniu lokalnej bramy danych przykład folderu lokalnego na komputerze, na którym instalowany jest lokalna brama danych, lub folderu do udziału sieciowego, w których komputer może uzyskać dostęp. <p>Na przykład: `\\PublicShare\\DropboxFiles` <p>Folder główny jest folder nadrzędny głównego, który jest używany dla ścieżek względnych dla wszystkich działań związanych z plikami. | 
    | **Typ uwierzytelniania** | Nie | <*Typ uwierzytelnienia*> | Typ uwierzytelniania, który używa systemu plików, na przykład **Windows** | 
-   | **Nazwa użytkownika** | Yes | <*domeny*>\\<*nazwy użytkownika*> | Nazwa użytkownika na komputerze, na którym masz systemu plików | 
-   | **Hasło** | Yes | <*— hasło*> | Hasło dla komputera, na którym masz systemu plików | 
-   | **gateway** | Yes | <*installed-gateway-name*> | Nazwa dla uprzednio zainstalowanej bramy | 
+   | **Nazwa użytkownika** | Tak | <*domeny*>\\<*nazwy użytkownika*> | Nazwa użytkownika na komputerze, na którym masz systemu plików | 
+   | **Hasło** | Tak | < *— hasło*> | Hasło dla komputera, na którym masz systemu plików | 
+   | **gateway** | Tak | <*installed-gateway-name*> | Nazwa dla uprzednio zainstalowanej bramy | 
    ||| 
 
 1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.

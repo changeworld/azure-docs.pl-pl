@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecadb499d140ccfc993820080cae0b749977fc61
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824742"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Zarządzanie certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory
@@ -34,7 +34,7 @@ Podczas dodawania nowej aplikacji z galerii i skonfigurować opartej na SAML log
 
 ![SAML active podpisywania certyfikatu opcje pobierania](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
-Możesz również pobrać certyfikat aktywną lub nieaktywną, wybierając **certyfikat podpisywania SAML** nagłówka **Edytuj** ikonę (ołówka), która wyświetla **certyfikatpodpisywaniaSAML** strony. Wybierz przycisk wielokropka (**...** ) obok certyfikatu, aby pobrać, a następnie wybierz format certyfikatu, który chcesz. Masz dodatkową opcję Pobierz certyfikat w formacie poczty z rozszerzoną ochroną prywatności (PEM). Ten format jest taka sama jak Base64, ale z **PEM** rozszerzenie, które nie są rozpoznawane w Windows w formacie certyfikatu.
+Możesz również pobrać certyfikat aktywną lub nieaktywną, wybierając **certyfikat podpisywania SAML** nagłówka **Edytuj** ikonę (ołówka), która wyświetla **certyfikatpodpisywaniaSAML** strony. Wybierz przycisk wielokropka ( **...** ) obok certyfikatu, aby pobrać, a następnie wybierz format certyfikatu, który chcesz. Masz dodatkową opcję Pobierz certyfikat w formacie poczty z rozszerzoną ochroną prywatności (PEM). Ten format jest taka sama jak Base64, ale z **PEM** rozszerzenie, które nie są rozpoznawane w Windows w formacie certyfikatu.
 
 ![Opcje pobierania certyfikatu (aktywnych i nieaktywnych) podpisywania protokołu SAML](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
@@ -88,7 +88,7 @@ Następnie Pobierz nowy certyfikat w prawidłowym formacie, przekaż go do aplik
 
 3. Postępuj zgodnie z instrukcjami w [automatycznie wygenerowany certyfikat dla aplikacji i innych galerii](#auto-generated-certificate-for-gallery-and-non-gallery-applications) wcześniejszej sekcji. Ten krok spowoduje pobranie certyfikatu w formacie kodowania, wymagane do przekazania przez aplikację.
 
-4. Gdy użytkownik chce przechodzą do nowego certyfikatu, wróć do **certyfikat podpisywania SAML** strony, a w wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka (**...** ) i wybierz **uaktywnić certyfikat**. Stan nowego certyfikatu zmieni się na **Active**, a wcześniej aktywnego certyfikatu zmienia stan **nieaktywny**.
+4. Gdy użytkownik chce przechodzą do nowego certyfikatu, wróć do **certyfikat podpisywania SAML** strony, a w wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka ( **...** ) i wybierz **uaktywnić certyfikat**. Stan nowego certyfikatu zmieni się na **Active**, a wcześniej aktywnego certyfikatu zmienia stan **nieaktywny**.
 
 5. Kontynuuj poniższe instrukcje konfiguracji logowania jednokrotnego SAML aplikacji, które wcześniej wyświetlane tak, aby przekazać podpisywania SAML certyfikatów poprawny format kodowania.
 
@@ -116,7 +116,7 @@ Jeśli certyfikat wygaśnie, można odnowić go za pomocą procedury, która pow
 
 2. Jeśli aplikacji można automatycznego przerzucania certyfikatu, ustawić nowy certyfikat na aktywny, wykonaj następujące czynności:
    1. Wróć do **certyfikat podpisywania SAML** strony.
-   2. W wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka (**...** ), a następnie wybierz **uaktywnić certyfikat**.
+   2. W wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka ( **...** ), a następnie wybierz **uaktywnić certyfikat**.
    3. Pomiń dwa następne kroki.
 
 3. Jeśli aplikacja może obsługiwać tylko jeden certyfikat naraz, wybierz przedział czasu przestojów do wykonania kolejnego kroku. (W przeciwnym razie, jeśli aplikacja nie automatyczne pobranie nowego certyfikatu, ale może obsługiwać więcej niż jeden certyfikat podpisywania, można wykonać następny krok dowolnym.)

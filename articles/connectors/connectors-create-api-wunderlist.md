@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105670"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitorowanie i zarządzanie nimi aplikacji Wunderlist za pomocą usługi Azure Logic Apps
@@ -52,16 +52,16 @@ Korzystając z usługi Azure Logic Apps i łącznik usługi Wunderlist można ut
    * W przypadku aplikacji logiki puste w polu wyszukiwania wprowadź "wunderlist" jako filtr. 
    W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
 
-     — lub —
+     —lub—
 
    * W przypadku istniejących aplikacji logiki: 
    
      * W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
 
-       — lub —
+       —lub—
 
      * Między krokami, które chcesz dodać akcję wskaźnik myszy nad strzałką znajdującą się między krokami. 
-     Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+     Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
      
        W polu wyszukiwania wprowadź "wunderlist" jako filtr. 
        W obszarze listy akcji wybierz akcję, którą chcesz.

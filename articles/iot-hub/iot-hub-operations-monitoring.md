@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60345724"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Operacje usługi IoT Hub monitorowania (przestarzałe)
@@ -29,7 +29,7 @@ Usługa IoT Hub monitoruje sześć kategorie zdarzeń:
 * Komunikaty z chmury do urządzenia
 * Połączenia
 * Operacje przekazywania plików
-* Kierowanie komunikatów
+* Routing wiadomości
 
 > [!IMPORTANT]
 > Monitorowanie operacji usługi IoT Hub nie gwarantuje niezawodne lub są uporządkowane dostarczenia zdarzeń. W zależności od podstawowej infrastruktury usługi IoT Hub niektóre zdarzenia mogą utracone lub dostarczony poza kolejnością. Użyj operacji na monitorowanie w celu generowania alertów w oparciu o sygnały błędu, takie jak próby nawiązania połączenia nie powiodło się lub odłączenia o wysokiej częstotliwości dla określonych urządzeń. Nie należy polegać na operacje monitorowania zdarzeń, aby utworzyć magazyn spójnego stanu urządzenia, np. store, śledzenie połączone lub odłączona stan urządzenia. 
@@ -96,7 +96,7 @@ Kategorię danych telemetrycznych urządzenia do śledzenia błędów, które wy
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Polecenia chmura-urządzenie
+### <a name="cloud-to-device-commands"></a>Poleceń z chmury do urządzenia
 
 Kategorii poleceń chmura urządzenie do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potok komunikatów z chmury do urządzenia. Ta kategoria obejmuje błędów występujących podczas wysyłania komunikatów z chmury do urządzeń (na przykład nieautoryzowanego nadawcę), odbieranie komunikatów z chmury do urządzeń (np. Przekroczono licznik dostaw) i odbieranie opinii komunikatów z chmury do urządzenia (takie jak opinii wygasła). Ta kategoria nie może przechwytywać błędy z urządzenia, obsługujący nieprawidłowo komunikatu chmura urządzenie, jeśli komunikatu chmura urządzenie zostało pomyślnie dostarczone.
 
@@ -169,7 +169,7 @@ Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośred
 }
 ```
 
-### <a name="message-routing"></a>Kierowanie komunikatów
+### <a name="message-routing"></a>Routing wiadomości
 
 Kategoria routingu wiadomości do śledzenia błędów występujących podczas oceny trasy wiadomości i punktu końcowego kondycji postrzeganiu przez usługę IoT Hub. Ta kategoria zawiera zdarzenia, np. gdy reguła zwraca "undefined", gdy usługi IoT Hub oznacza punktu końcowego jako martwe i inne błędy otrzymane od punktu końcowego. Ta kategoria nie obejmuje określone błędy dotyczące komunikatów samodzielnie (na przykład urządzenie błędy ograniczania przepływności), które zostały zgłoszone w kategorii "danych telemetrycznych z urządzenia".
 

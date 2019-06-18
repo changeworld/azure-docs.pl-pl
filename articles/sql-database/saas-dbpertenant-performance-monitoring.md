@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61388646"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
@@ -178,7 +178,7 @@ Alternatywnym rozwiązaniem w stosunku do skalowania puli w górę jest utworzen
    1. Kliknij przycisk **Dodawanie baz danych** umożliwia wyświetlenie listy baz danych na serwerze, który można dodać do *Pool2*.
    1. Wybierz wszystkie 10 bazy danych, aby przenieść je do nowej puli, a następnie kliknij przycisk **wybierz**. Jeśli został już uruchomiony generator obciążenia, usługa już wie, że Twój profil wydajności wymaga większą pulę niż domyślny rozmiar 50 jednostek eDTU i zaleca się, rozpoczynając od 100 ustawieniem eDTU.
 
-      ![zalecenie](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![Zalecenie](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. W tym samouczku pozostaw domyślny odpowiada 50 jednostkom Edtu, a następnie kliknij przycisk **wybierz** ponownie.
    1. Wybierz **OK** Aby utworzyć nową pulę i przenieść wybranych baz danych do niego.

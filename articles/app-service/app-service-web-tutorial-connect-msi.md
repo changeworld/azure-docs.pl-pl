@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: dd84f9b3b68d7a34903241caed7f1f93e685fb57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 548cd3de6d2eff9f2077ca66b66d5c60aa84f7e2
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138969"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154217"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: Zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 
@@ -52,7 +52,7 @@ W tym artykule kontynuowana jest praca rozpoczęta w artykule [Samouczek: Tworze
 
 ## <a name="enable-managed-identities"></a>Włączanie tożsamości zarządzanych
 
-Aby włączyć tożsamość zarządzanej dla aplikacji platformy Azure, użyj polecenia [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciąg *\<nazwa aplikacji>*.
+Aby włączyć tożsamość zarządzanej dla aplikacji platformy Azure, użyj polecenia [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciąg *\<nazwa aplikacji>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -77,13 +77,22 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>Udzielanie tożsamości dostępu do bazy danych
 
-Następnie należy przyznać tożsamości zarządzanej aplikacji dostęp do bazy danych, używając polecenia [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciągi *\<nazwa_serwera >* i <principalid_from_last_step>. Wpisz nazwę administratora dla parametru *\<administrator>*.
+Następnie należy przyznać tożsamości zarządzanej aplikacji dostęp do bazy danych, używając polecenia [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciągi *\<nazwa_serwera >* i <principalid_from_last_step>. Wpisz nazwę administratora dla parametru *\<administrator>* .
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
 ```
 
 Tożsamość zarządzana ma teraz dostęp do serwera usługi Azure SQL Database.
+
+> [!IMPORTANT]
+> Dla uproszczenia ten krok obejmuje skonfigurowanie tożsamości usługi Azure AD zarządzane jako administrator bazy danych SQL. Metoda ma następujące ograniczenia:
+>
+> - Dostęp administracyjny aplikacji on skorzystać z najlepszych rozwiązań dotyczących zabezpieczeń.
+> - Ponieważ tożsamość zarządzaną jest specyficzne dla poszczególnych aplikacji, nie możesz użyć tej samej tożsamości zarządzanych do łączenia z bazą danych SQL z innej aplikacji.
+> - Tożsamość zarządzana nie można zalogować do bazy danych SQL interaktywnie tak nie jest możliwe udzielić dostępu do zarządzanych tożsamości również inne aplikacje. 
+>
+> Aby zwiększyć bezpieczeństwo i administrowanie kontami usługi Azure AD w bazie danych SQL, wykonaj czynności opisane w temacie [przyznawanie minimalnych uprawnień tożsamości](#grant-minimal-privileges-to-identity).
 
 ## <a name="modify-connection-string"></a>Modyfikowanie parametrów połączenia
 

@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813489"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Uruchamianie i testowanie U-SQL przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
@@ -332,7 +332,7 @@ LocalRunHelper.exe zapewnia interfejsy programowania U-SQL lokalnej kompilacji, 
 
 publiczne LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
-|Parametr|Type|Opis|
+|Parametr|Typ|Opis|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|Komunikaty wyjściowe ustawiona na wartość null, przy użyciu konsoli|
 
@@ -362,9 +362,9 @@ publiczne LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |WorkDir|string|Preferowany katalog roboczy|
 
 
-**Metoda**
+**— Metoda**
 
-|Metoda|Opis|Powrót|Parametr|
+|Metoda|Opis|Wróć|Parametr|
 |------|-----------|------|---------|
 |public bool DoCompile()|Kompiluj skrypt U-SQL|Wartość true w przypadku powodzenia| |
 |publiczne bool DoExec()|Wynik wykonania|Wartość true w przypadku powodzenia| |

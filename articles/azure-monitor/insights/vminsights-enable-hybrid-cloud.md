@@ -11,31 +11,31 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.date: 06/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 6b8870f0a6f14536fdf3a1ff675f2fbe3ce8aeec
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: bc26cc0654aac9416bf31ffccf426648e3a8b8d2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524193"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122542"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Włączanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) dla środowisk hybrydowych
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-W tym artykule opisano sposób włączania usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) dla maszyn wirtualnych lub fizycznych komputerów, hostowanej w centrum danych lub w innym środowisku chmury. Po zakończeniu tego procesu, który zostanie pomyślnie rozpoczęto monitorowanie maszyn wirtualnych w danym środowisku i Dowiedz się, jeśli występują one wszelkie problemy z wydajnością lub dostępnością. 
+W tym artykule opisano sposób włączania usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) dla maszyn wirtualnych lub fizycznych komputerów, hostowanej w centrum danych lub w innym środowisku chmury. Po zakończeniu tego procesu zostanie pomyślnie rozpoczęto monitorowanie maszyn wirtualnych w danym środowisku i Dowiedz się, jeśli występują one wszelkie problemy z wydajnością lub dostępnością. 
 
-Było wprowadzenie pracę, zapoznaj się z [wymagania wstępne](vminsights-enable-overview.md) i sprawdź, subskrypcji i zasobów spełniają wymagania. Przegląd wymagań i metod wdrażania [agenta Log Analytics w systemie Linux i Windows](../../log-analytics/log-analytics-agent-overview.md).
+Przed rozpoczęciem należy przejrzeć [wymagania wstępne](vminsights-enable-overview.md) i sprawdź, czy Twoja subskrypcja i zasoby spełniają wymagania. Przegląd wymagań i metod wdrażania [agenta Log Analytics w systemie Linux i Windows](../../log-analytics/log-analytics-agent-overview.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->Usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych nie przesyłać żadnych danych, a nie wymaga wprowadzania zmian w zapory i porty. Dane mapy są zawsze przesyłane przez agenta usługi Log Analytics w usłudze Azure Monitor, bezpośrednio lub za pośrednictwem [bramy pakietu OMS](../../azure-monitor/platform/gateway.md) Jeśli Twoje informatyczne zasady zabezpieczeń nie pozwalają komputerom w sieci, aby nawiązać połączenie z Internetem.
+>Usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych nie przesyłać żadnych danych, a nie wymaga wprowadzania zmian w zapory i porty. Dane mapy są zawsze przesyłane przez agenta usługi Log Analytics w usłudze Azure Monitor, bezpośrednio lub za pośrednictwem [bramy pakietu Operations Management Suite](../../azure-monitor/platform/gateway.md) Jeśli Twoje informatyczne zasady zabezpieczeń nie pozwalają komputerom w sieci połączenie z Internetem.
 
-Zadania do wykonania tego zadania są podsumować w następujący sposób:
+Kroki do wykonania tego zadania są podsumować w następujący sposób:
 
-1. Zainstaluj agenta programu Log Analytics dla Windows lub Linux.
+1. Zainstaluj agenta usługi Log Analytics dla Windows lub Linux. Przed zainstalowaniem agenta, przejrzyj [omówienie agenta usługi Log Analytics](../platform/log-analytics-agent.md) artykuł, aby zrozumieć wymagania wstępne systemu i metod wdrażania.
 
 2. Pobierz i zainstaluj usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych dla [Windows](https://aka.ms/dependencyagentwindows) lub [Linux](https://aka.ms/dependencyagentlinux).
 
@@ -56,7 +56,7 @@ W poniższej tabeli wymieniono parametry, które są obsługiwane przez Instalat
 | /? | Zwraca listę opcji wiersza polecenia. |
 | /S | Wykonanie dyskretnej instalacji bez interakcji użytkownika. |
 
-Na przykład, aby uruchomić program instalacyjny z `/?` parametr, typ **InstallDependencyAgent Windows.exe /?**.
+Na przykład, aby uruchomić program instalacyjny z `/?` parametrów, wprowadź **InstallDependencyAgent Windows.exe /?** .
 
 Pliki agenta zależności Windows są zainstalowane w *C:\Program Files\Microsoft Dependency Agent* domyślnie. Jeśli agenta zależności nie powiedzie się po zakończeniu instalacji, sprawdź dzienniki Aby uzyskać szczegółowe informacje o błędzie. Katalog dziennika jest *%Programfiles%\Microsoft Agent\logs zależności*.
 
@@ -73,9 +73,9 @@ Agent zależności jest zainstalowany na serwery z systemem Linux z *InstallDepe
 | -s | Przeprowadź instalację cichą bez monitowania użytkownika. |
 | — Sprawdź | Sprawdzanie uprawnień i systemu operacyjnego, ale nie należy instalować agenta. |
 
-Na przykład, aby uruchomić program instalacyjny z `-help` parametr, typ **InstallDependencyAgent Linux64.bin — Pomoc**.
+Na przykład, aby uruchomić program instalacyjny z `-help` parametrów, wprowadź **InstallDependencyAgent Linux64.bin — Pomoc**.
 
-Instalowanie agenta zależności systemu Linux jako użytkownik główny, uruchamiając następujące polecenie `sh InstallDependencyAgent-Linux64.bin`.
+Instalowanie agenta zależności systemu Linux jako użytkownik główny, uruchamiając polecenie `sh InstallDependencyAgent-Linux64.bin`.
 
 Jeśli agenta zależności nie powiedzie się, sprawdź dzienniki Aby uzyskać szczegółowe informacje o błędzie. Na agentach systemu Linux jest katalog dziennika */var/opt/microsoft/dependency-agent/log*.
 
@@ -90,18 +90,18 @@ Pliki agenta zależności są umieszczone w następujących katalogach:
 | Pliki binarne magazynu | /var/opt/microsoft/dependency-agent/storage |
 
 ## <a name="enable-performance-counters"></a>Włącz liczniki wydajności
-Jeśli obszar roboczy usługi Log Analytics, który odwołuje się do niej rozwiązanie nie jest już skonfigurowany można zebrać liczników wydajności wymaganych przez to rozwiązanie, należy je włączyć. Można to zrobić na dwa sposoby:
+Jeśli obszar roboczy usługi Log Analytics, który odwołuje się do niej rozwiązanie nie jest już skonfigurowany można zebrać liczników wydajności wymaganych przez to rozwiązanie, należy je włączyć. Możesz to zrobić na dwa sposoby:
 * Ręcznie, zgodnie z opisem w [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
 * Pobierając i uruchamiając skrypt programu PowerShell, który jest dostępny z [galerii programu PowerShell systemu Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
 
 ## <a name="deploy-azure-monitor-for-vms"></a>Wdrażanie usługi Azure Monitor dla maszyn wirtualnych
 Ta metoda obejmuje szablon JSON, który określa konfigurację włączanie składników rozwiązania w Twoim obszarze roboczym usługi Log Analytics.
 
-Jeśli znasz wdrażanie zasobów za pomocą szablonu, zobacz:
+Jeśli nie wiesz, jak wdrażać zasoby przy użyciu szablonu, zobacz:
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Aby użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Aby zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Tworzenie i wykonywanie szablonu
 
@@ -188,4 +188,9 @@ Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy monitorowanie jest włączone dla maszyn wirtualnych, te informacje są dostępne dla analizy dzięki usłudze Azure Monitor dla maszyn wirtualnych. Aby dowiedzieć się, jak korzystać z funkcji Health, zobacz [widok usługi Azure Monitor kondycji maszyn wirtualnych](vminsights-health.md). Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md). Aby zidentyfikować wąskie gardła i ogólnego użycia za pomocą wydajność maszyn wirtualnych, zobacz [wydajność maszyny Wirtualnej platformy Azure w widoku](vminsights-performance.md), lub aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych jest mapowany](vminsights-maps.md).
+Teraz, gdy monitorowanie jest włączone dla maszyn wirtualnych, te informacje są dostępne dla analizy dzięki usłudze Azure Monitor dla maszyn wirtualnych.
+ 
+- Aby dowiedzieć się, jak korzystać z funkcji Health, zobacz [widok usługi Azure Monitor kondycji maszyn wirtualnych](vminsights-health.md).
+- Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md).
+- Aby zidentyfikować wąskie gardła i ogólnego użycia z wydajnością maszyny Wirtualnej, zobacz [maszyny Wirtualnej platformy Azure w widoku wydajności](vminsights-performance.md).
+- Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md).

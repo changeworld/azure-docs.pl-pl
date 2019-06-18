@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: ramamill
 ms.openlocfilehash: c25ca8c27b84f34b025ec5abce00c8d8c70e5df6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125699"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
@@ -195,7 +195,7 @@ Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adr
 
 Inne często zadawane pytania na serwerze konfiguracji, można znaleźć w naszej [dokumentacji na typowe pytania dotyczące konfiguracji serwera](vmware-azure-common-questions.md#configuration-server) .
 
-## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
+## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów z wdrożeniem
 
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 

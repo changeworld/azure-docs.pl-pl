@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787282"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
@@ -104,7 +104,7 @@ Kilka następnych sekcji obejmują określonych interfejsów API protokołu HTTP
 
 Pobiera stan wystąpienia określonego aranżacji.
 
-#### <a name="request"></a>Zażądaj
+#### <a name="request"></a>Żądanie
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -146,11 +146,11 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
-* **HTTP 200 (OK)**: Określone wystąpienie jest w stanie ukończone.
-* **HTTP 202 (zaakceptowano)**: Określone wystąpienie jest w toku.
-* **HTTP 400 (złe żądanie)**: Podane wystąpienie nie powiodło się lub zostało przerwane.
-* **HTTP 404 (nie znaleziono)**: Podane wystąpienie nie istnieje lub nie rozpoczęło działanie.
-* **HTTP 500 (wewnętrzny błąd serwera)**: Podane wystąpienie nie powiodło się z powodu nieobsługiwanego wyjątku.
+* **HTTP 200 (OK)** : Określone wystąpienie jest w stanie ukończone.
+* **HTTP 202 (zaakceptowano)** : Określone wystąpienie jest w toku.
+* **HTTP 400 (złe żądanie)** : Podane wystąpienie nie powiodło się lub zostało przerwane.
+* **HTTP 404 (nie znaleziono)** : Podane wystąpienie nie istnieje lub nie rozpoczęło działanie.
+* **HTTP 500 (wewnętrzny błąd serwera)** : Podane wystąpienie nie powiodło się z powodu nieobsługiwanego wyjątku.
 
 Ładunek odpowiedzi dla **HTTP 200** i **HTTP 202** przypadkach jest obiektem JSON przy użyciu następujących pól:
 
@@ -228,7 +228,7 @@ Możesz także zbadać stan wszystkich wystąpień, usuwając `instanceId` w ż�
 Jest to jedno należy pamiętać, że `connection` i `code` są opcjonalne. Jeśli uwierzytelnianie anonimowe dla funkcji, a następnie kod nie jest wymagane.
 Jeśli nie chcesz użyć parametrów połączenia innego magazynu innego niż zdefiniowane w ustawieniach aplikacji AzureWebJobsStorage, można bezpiecznie zignorować parametr ciągu zapytania połączenia.
 
-#### <a name="request"></a>Zażądaj
+#### <a name="request"></a>Żądanie
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -336,7 +336,7 @@ Jeśli ustawisz wartość tokenu kontynuacji w nagłówku żądania dalej, możn
 
 Usuwa historię i powiązanych artefaktów dla wystąpienia określonego aranżacji.
 
-#### <a name="request"></a>Zażądaj
+#### <a name="request"></a>Żądanie
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -366,8 +366,8 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 Mogą być zwrócone następujące wartości Kod stanu HTTP.
 
-* **HTTP 200 (OK)**: Pomyślnie usunięto historii wystąpienia.
-* **HTTP 404 (nie znaleziono)**: Podane wystąpienie nie istnieje.
+* **HTTP 200 (OK)** : Pomyślnie usunięto historii wystąpienia.
+* **HTTP 404 (nie znaleziono)** : Podane wystąpienie nie istnieje.
 
 Ładunek odpowiedzi dla **HTTP 200** wielkość liter jest obiekt JSON z następujących pól:
 
@@ -387,7 +387,7 @@ Poniżej przedstawiono przykładowy ładunek odpowiedzi, (sformatowane, aby zwi�
 
 Można również usunąć przez usunięcie historii i powiązanych artefaktów dla wielu wystąpień w ramach Centrum zadań `{instanceId}` w żądaniu "Przeczyścić historię pojedyncze wystąpienie". Aby selektywnie Wyczyść historię wystąpienia, należy użyć tych samych filtrów, które są opisane w żądaniu "Pobierz stan dla wszystkich wystąpień".
 
-#### <a name="request"></a>Zażądaj
+#### <a name="request"></a>Żądanie
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -428,8 +428,8 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Mogą być zwrócone następujące wartości Kod stanu HTTP.
 
-* **HTTP 200 (OK)**: Pomyślnie usunięto historii wystąpienia.
-* **HTTP 404 (nie znaleziono)**: Nie znaleziono wystąpień pasujące wyrażenie filtru.
+* **HTTP 200 (OK)** : Pomyślnie usunięto historii wystąpienia.
+* **HTTP 404 (nie znaleziono)** : Nie znaleziono wystąpień pasujące wyrażenie filtru.
 
 Ładunek odpowiedzi dla **HTTP 200** wielkość liter jest obiekt JSON z następujących pól:
 
@@ -449,7 +449,7 @@ Poniżej przedstawiono przykładowy ładunek odpowiedzi, (sformatowane, aby zwi�
 
 Wysyła powiadomienie o zdarzeniu do uruchomionego wystąpienia aranżacji.
 
-#### <a name="request"></a>Zażądaj
+#### <a name="request"></a>Żądanie
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -481,10 +481,10 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
-* **HTTP 202 (zaakceptowano)**: Zostaje zgłoszone zdarzenie zostało zaakceptowane do przetworzenia.
-* **HTTP 400 (złe żądanie)**: Zawartość żądania nie jest typu `application/json` lub nie jest prawidłowym plikiem JSON.
-* **HTTP 404 (nie znaleziono)**: Nie można odnaleźć określonego wystąpienia.
-* **HTTP 410 (przeniesiono)**: Określone wystąpienie zostało ukończone lub nie powiodło się i nie można przetworzyć zdarzeń zostaje zgłoszone.
+* **HTTP 202 (zaakceptowano)** : Zostaje zgłoszone zdarzenie zostało zaakceptowane do przetworzenia.
+* **HTTP 400 (złe żądanie)** : Zawartość żądania nie jest typu `application/json` lub nie jest prawidłowym plikiem JSON.
+* **HTTP 404 (nie znaleziono)** : Nie można odnaleźć określonego wystąpienia.
+* **HTTP 410 (przeniesiono)** : Określone wystąpienie zostało ukończone lub nie powiodło się i nie można przetworzyć zdarzeń zostaje zgłoszone.
 
 Oto przykładowe żądanie, która wysyła ciągu JSON `"incr"` do wystąpienia oczekiwania na zdarzenie o nazwie **operacji**:
 
@@ -502,7 +502,7 @@ Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
 Kończy uruchomionego wystąpienia aranżacji.
 
-#### <a name="request"></a>Zażądaj
+#### <a name="request"></a>Żądanie
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -535,9 +535,9 @@ Parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a t
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
-* **HTTP 202 (zaakceptowano)**: Otrzymała żądanie zostało zaakceptowane do przetworzenia.
-* **HTTP 404 (nie znaleziono)**: Nie można odnaleźć określonego wystąpienia.
-* **HTTP 410 (przeniesiono)**: Określone wystąpienie zostało ukończone lub nie powiodło się.
+* **HTTP 202 (zaakceptowano)** : Otrzymała żądanie zostało zaakceptowane do przetworzenia.
+* **HTTP 404 (nie znaleziono)** : Nie można odnaleźć określonego wystąpienia.
+* **HTTP 410 (przeniesiono)** : Określone wystąpienie zostało ukończone lub nie powiodło się.
 
 Oto przykładowe żądanie, kończy uruchomionego wystąpienia, która określa przyczynę **buggy**:
 
@@ -551,7 +551,7 @@ Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
 Przywraca wystąpienia orchestration nie powiodło się, do stanu uruchomienia przez odtworzenie najnowszych operacje zakończone niepowodzeniem.
 
-### <a name="request"></a>Zażądaj
+### <a name="request"></a>Żądanie
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -584,9 +584,9 @@ Parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a t
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
-* **HTTP 202 (zaakceptowano)**: Żądanie do tyłu zostało zaakceptowane do przetworzenia.
-* **HTTP 404 (nie znaleziono)**: Nie można odnaleźć określonego wystąpienia.
-* **HTTP 410 (przeniesiono)**: Określone wystąpienie zostało ukończone lub został zakończony.
+* **HTTP 202 (zaakceptowano)** : Żądanie do tyłu zostało zaakceptowane do przetworzenia.
+* **HTTP 404 (nie znaleziono)** : Nie można odnaleźć określonego wystąpienia.
+* **HTTP 410 (przeniesiono)** : Określone wystąpienie zostało ukończone lub został zakończony.
 
 Oto przykładowe żądanie, przechodzi zakończone niepowodzeniem wystąpienie, która określa przyczynę **stałej**:
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: f90140e9464ee72e9ceae8ca140bd060c51aade8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60597113"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Skala migracji maszyn wirtualnych przy użyciu usługi Azure Site Recovery
@@ -39,7 +39,7 @@ Przed rozpoczęciem pracy należy wykonać następujące czynności:
     - Zestaw dostępności (jeśli jest to konieczne)
     - Docelowa grupa zabezpieczeń sieci i jej grupy zasobów
 - Upewnij się, że zdecydujesz się na właściwościach docelowej maszyny Wirtualnej
-    - Nazwa docelowej maszyny wirtualnej
+    - Nazwa docelowej maszyny Wirtualnej
     - Rozmiar docelowej maszyny Wirtualnej na platformie Azure (może zostać podjęta przy użyciu usługi Azure Migrate oceny)
     - Prywatny adres IP podstawowej karty Sieciowej na maszynie wirtualnej
 - Pobierz skrypty z [przykłady programu Azure PowerShell](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) repozytorium w witrynie GitHub

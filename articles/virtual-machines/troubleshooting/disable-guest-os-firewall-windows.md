@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60505465"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure
@@ -104,11 +104,11 @@ Wykonaj następujące kroki, aby użyć [Rejestr zdalny](https://support.microso
 
 4.  Otwórz wystąpienie **Services.msc**.
 
-5.  Kliknij przycisk **usługi (lokalne)**.
+5.  Kliknij przycisk **usługi (lokalne)** .
 
 6.  Wybierz **Podłącz do innego komputera**.
 
-7.  Wprowadź **prywatny adres IP (DIP)** problemu maszyny Wirtualnej.
+7.  Wprowadź **prywatny adres IP (DIP)**  problemu maszyny Wirtualnej.
 
 8.  Uruchom ponownie zasady lokalne zapory.
 

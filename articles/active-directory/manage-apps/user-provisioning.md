@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963985"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
@@ -91,7 +91,7 @@ Aby uzyskać informacje dotyczące ogólnej połączyć aplikacje, które implem
 
 Konfigurowanie usługi Azure AD, inicjowania obsługi usługi dla wybranej aplikacji za pomocą portalu usługi Azure Active Directory.
 
-1. Otwórz  **[portalu Azure Active Directory](https://aad.portal.azure.com)**.
+1. Otwórz  **[portalu Azure Active Directory](https://aad.portal.azure.com)** .
 
 1. Wybierz **aplikacje dla przedsiębiorstw** z okienka po lewej stronie. Pokaż jest lista wszystkich skonfigurowanych aplikacji.
 
@@ -179,7 +179,7 @@ Jeśli użytkownik nie dodano, zaktualizowane lub usunięte w systemie docelowym
 
 Te błędy można rozwiązać przez zmianę wartości atrybutów użytkownika w systemie źródłowym lub przez dostosowywanie mapowań atrybutów, aby nie powodować konflikty.   
 
-### <a name="quarantine"></a>Kwarantanna
+### <a name="quarantine"></a>Kwarantanny
 
 Jeśli większość lub wszystkie wywołania względem systemu docelowego spójnie kończą się niepowodzeniem z powodu błędu (np. Nieprawidłowa wartość pola administrator poświadczeń), zadanie inicjowania obsługi administracyjnej przechodzi w stan "kwarantannie". Ten stan jest wskazywany w [aprowizacji raport z podsumowaniem](check-status-user-account-provisioning.md) i za pośrednictwem poczty e-mail, jeśli powiadomienia e-mail zostały skonfigurowane w witrynie Azure portal. 
 

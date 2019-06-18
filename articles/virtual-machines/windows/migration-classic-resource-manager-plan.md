@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d3e1995682569e5ef7b356bd85ad6c7dba6cdbdb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112521"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64689495"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager
 Gdy usługi Azure Resource Manager oferuje wiele wspaniałych nowych funkcji, ważne jest zaplanowanie podróż migracyjną Postaramy się bezproblemowym przejściu. Poświęcania czasu na temat planowania będą upewnij się, czy nie występują problemy podczas wykonywania działania migracji.
@@ -116,7 +116,7 @@ Poniżej zostały problemów znalezionych w wielu większych migracji. To nie je
 
 - **Wdrażanie roli sieć Web/proces roboczy** -zawierający role sieć web i proces roboczy usług w chmurze nie można migrować do usługi Azure Resource Manager. Role sieć web/proces roboczy. najpierw należy usunąć z siecią wirtualną, przed rozpoczęciem migracji.  Typowe rozwiązanie jest po prostu przesuń wystąpienia roli sieć web/proces roboczy do oddzielnych klasycznej sieci wirtualnej połączonej z obwodem usługi ExpressRoute lub migrację kodu do nowszych usług aplikacji PaaS (tej dyskusji wykracza poza zakres tego dokumentu). W poprzedniej wersji portalu Wdróż ponownie przypadek, Utwórz nową sieć wirtualną w klasycznym, Przenieś/ponowne wdrażanie ról sieć web/proces roboczy do tej nowej sieci wirtualnej, a następnie usunięcie jego wdrożeń z sieci wirtualnej jest przenoszony. Nie wymaganych zmian w kodzie. Nowy [komunikacji równorzędnej sieci wirtualnej](../../virtual-network/virtual-network-peering-overview.md) możliwość może służyć do komunikacji równorzędnej ze sobą klasycznej sieci wirtualnej, zawierający role sieć web/proces roboczy i innymi sieciami wirtualnymi w tym samym regionie platformy Azure, takich jak sieci wirtualnej, są migrowane (**po zakończeniu migracji sieci wirtualnej, ponieważ wirtualnych sieciach równorzędnych nie mogą być migrowane**), dlatego dostarczanie tych samych możliwości bez utraty wydajności oraz kar nie opóźnienia/przepustowości. Biorąc pod uwagę dodanie [komunikacji równorzędnej sieci wirtualnej](../../virtual-network/virtual-network-peering-overview.md), teraz można łatwo zminimalizować wdrożenia ról sieć web/proces roboczy i blokuje migracji do usługi Azure Resource Manager.
 
-- **Limity przydziału Menedżera zasobów platformy Azure** — regiony platformy Azure mają oddzielne limity przydziału/limity dla wdrożeń klasycznych, jak i usługi Azure Resource Manager. Mimo że w scenariuszu migracji nowy sprzęt nie jest używane *(Firma Microsoft jest zamienianie istniejących maszyn wirtualnych z wersji klasycznej do usługi Azure Resource Manager)*, limity przydziału Menedżera zasobów platformy Azure nadal muszą być w miejscu z wystarczającą pojemnością przed można uruchomić migracji. Poniżej wymieniono główne ograniczenia, które okazały spowodować problemy.  Otwórz bilet pomocy technicznej limitu przydziału, aby zwiększyć limity.
+- **Limity przydziału Menedżera zasobów platformy Azure** — regiony platformy Azure mają oddzielne limity przydziału/limity dla wdrożeń klasycznych, jak i usługi Azure Resource Manager. Mimo że w scenariuszu migracji nowy sprzęt nie jest używane *(Firma Microsoft jest zamienianie istniejących maszyn wirtualnych z wersji klasycznej do usługi Azure Resource Manager)* , limity przydziału Menedżera zasobów platformy Azure nadal muszą być w miejscu z wystarczającą pojemnością przed można uruchomić migracji. Poniżej wymieniono główne ograniczenia, które okazały spowodować problemy.  Otwórz bilet pomocy technicznej limitu przydziału, aby zwiększyć limity.
 
     > [!NOTE]
     > Te limity muszą być wywoływany w tym samym regionie, co Twoje bieżące środowisko do migracji.
@@ -132,7 +132,7 @@ Poniżej zostały problemów znalezionych w wielu większych migracji. To nie je
 
     Możesz sprawdzić bieżące limity przydziału usługi Azure Resource Manager przy użyciu następujących poleceń do najnowszej wersji programu Azure PowerShell.
     
-    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+    [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
     **Obliczenia** *(rdzenie, zestawy dostępności)*
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: ef24e356c9ac8424fc519a3b16af5d37a20e706f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60444218"
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Jak używać wtyczki podrzędnej platformy Azure z funkcją ciągłej integracji Hudson
@@ -152,7 +152,7 @@ W tej sekcji zostanie utworzona zadań Hudson, która zostanie uruchomiona na w�
 5. Na stronie konfiguracji zadania wybierz **ograniczanie, gdzie można uruchomić tego projektu**.
 6. Wybierz **węzła i etykiety menu** i wybierz **linux** (określonej etykiety podczas tworzenia szablonu maszyny wirtualnej w poprzedniej sekcji).
 7. W **kompilacji** kliknij **Dodaj krok kompilacji** i wybierz **wykonaj powłokę**.
-8. Edytuj następujące skrypt, zastępując **{Twoja nazwa konta usługi github}**, **{Nazwa projektu}**, i **{Twój katalog projektu}** odpowiednie wartości i Wklej edytowany skrypt w obszarze tekst, który pojawia się.
+8. Edytuj następujące skrypt, zastępując **{Twoja nazwa konta usługi github}** , **{Nazwa projektu}** , i **{Twój katalog projektu}** odpowiednie wartości i Wklej edytowany skrypt w obszarze tekst, który pojawia się.
    
         # Clone from git repo
    

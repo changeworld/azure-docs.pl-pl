@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130606"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Przy użyciu wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service
@@ -108,7 +108,7 @@ Adres IP dla swojej wewnętrznego modułu równoważenia obciążenia znajduje s
 
 ![][4]
 
-## <a name="using-an-ilb-ase"></a>Przy użyciu środowiska ASE wewnętrznego modułu równoważenia obciążenia
+## <a name="using-an-ilb-ase"></a>Przy użyciu środowisko ASE z wewnętrznym modułem równoważenia obciążenia
 #### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 Środowisko ASE z wewnętrznym modułem równoważenia obciążenia umożliwia izolację sieci dla aplikacji. Aplikacje nie są dostępne lub nawet znane przez internet. To podejście jest doskonała do hostowania witryn intranetowych, takich jak aplikacje line-of-business. Gdy musisz ograniczyć dostęp do jeszcze bardziej, możesz nadal używać Groups(NSGs) zabezpieczeń sieci do kontroli dostępu na poziomie sieci. 
 

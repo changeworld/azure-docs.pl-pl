@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 30d99c3f4767eb50361f7074c0d508fcf309faca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61488460"
 ---
 # <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Uruchamianie Micro Focus Enterprise Server w wersji 4.0 w kontenerze platformy Docker na platformie Azure
@@ -166,7 +166,7 @@ W tym momencie maszyna wirtualna jest uruchomiona i dołączone za pośrednictwe
 
      ![Konsola administracyjna serwera przedsiębiorstwa](media/container-010.png)
 
-Gotowe. Jesteś teraz uruchomiona i zarządzania aplikacją CICS w kontenerze platformy Docker.
+To wszystko! Jesteś teraz uruchomiona i zarządzania aplikacją CICS w kontenerze platformy Docker.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 407e25b7bb1a2220448c9701bbef208195c50b63
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953109"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Zarządzanie zasobami danych w usłudze Azure Data Catalog
@@ -38,7 +38,7 @@ Po zasobu danych w usłudze Data Catalog jest właścicielem, tylko użytkownicy
 >
 >
 
-### <a name="take-ownership"></a>Przejmij na własność
+### <a name="take-ownership"></a>Przejęcie na własność
 Użytkownicy mogą przejąć prawo własności zasobów danych, wybierając **Przejmij na własność** opcji w portalu usługi Data Catalog. Żadne specjalne ustawienia nie są wymagane do przejęcie na własność zasobu nieposiadanej danych. Każdy użytkownik może zająć własności zasobów nieposiadanej danych.
 
 ### <a name="add-owners-and-co-owners"></a>Dodawanie właścicieli i współwłaścicieli

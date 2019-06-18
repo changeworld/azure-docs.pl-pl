@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 67f72c5b396bc935f7bec34bc8a52f63131649b1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b0cd88cbb3729a3e81aeb5d6f43f417c8cb2f17
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904478"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64682769"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozszerzenie DSC dla systemu Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -34,7 +34,7 @@ Rozszerzenie DSCForLinux jest opublikowany i obsługiwane przez firmę Microsoft
 - Zainstaluj moduły niestandardowe DSC maszyny Wirtualnej systemu Linux (instalowanie ExtensionAction)
 - Usuń niestandardowe moduły DSC do maszyny Wirtualnej systemu Linux (Usuń ExtensionAction)
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,7 +42,7 @@ Rozszerzenie DSCForLinux jest opublikowany i obsługiwane przez firmę Microsoft
 
 Rozszerzenie DSC w systemie Linux obsługuje wszystkie [dystrybucje systemu Linux zalecanych dla na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) z wyjątkiem:
 
-| Dystrybucja | Wersja |
+| Dystrybucja | Version |
 |---|---|
 | Debian | Wszystkie wersje |
 | Ubuntu| 18.04 |

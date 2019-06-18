@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
 ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64690046"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Najlepsze rozwiązania w zakresie wydajności dla rozwiązania Apache Phoenix
@@ -31,21 +31,21 @@ Klucz podstawowy, zdefiniowanego w tabeli Phoenix Określa, jak dane są przecho
 
 Na przykład tabela kontaktów ma imię, ostatnia nazwa, numer telefonu i adres, w tej samej rodziny kolumn. Można zdefiniować klucz podstawowy, w oparciu o rosnący numer kolejny:
 
-|rowkey|       adres|   phone| firstName| lastName|
+|rowkey|       address|   phone| firstName| lastName|
 |------|--------------------|--------------|-------------|--------------|
 |  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvina|Raji|
 
 Jednak po wykonaniu zapytania według nazwiska często tego klucza podstawowego może nie działać poprawnie, ponieważ każde zapytanie wymaga pełne skanowanie tabeli można odczytać wartości każdego lastName. Zamiast tego można zdefiniować klucz podstawowy na lastName, imię i numer ubezpieczenia społecznego kolumn. Jest to ostatnia kolumna do odróżniania dwóch mieszkańców na ten sam adres o takiej samej nazwie, takie jak ojcem i syn.
 
-|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvina|Raji| 222 |
 
 Przy użyciu nowego klucza podstawowego wiersza będzie klucze generowane przez Phoenix:
 
-|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji Calvina-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvina|Raji| 222 |
@@ -54,7 +54,7 @@ W pierwszym wierszu powyżej jest reprezentowany dane rowkey, jak pokazano:
 
 |rowkey|       key|   value| 
 |------|--------------------|---|
-|  Dole-John-111|adres |1111 San Gabriel Dr.|  
+|  Dole-John-111|address |1111 San Gabriel Dr.|  
 |  Dole-John-111|phone |1-425-000-0002|  
 |  Dole-John-111|firstName |Jan|  
 |  Dole-John-111|lastName |Dole|  
@@ -113,7 +113,7 @@ Pokryte indeksy są indeksy, które zawierają dane z wiersza, oprócz wartości
 
 Na przykład w tym przykładzie należy skontaktować się z tabeli, można utworzyć pomocniczego indeksu tylko kolumny socialSecurityNum. Ten indeks pomocniczy może przyspieszyć działanie zapytań, które filtrować według wartości socialSecurityNum, ale pobieranie innych wartości pól będzie wymagać innego odczytu względem tabeli głównej.
 
-|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji Calvina-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvina|Raji| 222 |

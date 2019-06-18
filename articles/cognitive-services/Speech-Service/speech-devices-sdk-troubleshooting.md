@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wellsi
 ms.openlocfilehash: 87fb35f06dcb1d1e3fb8c3ae3be64c7448162f14
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65026158"
 ---
-# <a name="troubleshoot-the-speech-devices-sdk"></a>Rozwiązywanie problemów z Speech Devices SDK
+# <a name="troubleshoot-the-speech-devices-sdk"></a>Rozwiązywanie problemów z zestawem Speech Devices SDK
 
 Ten artykuł zawiera informacje ułatwiające rozwiązanie problemów, które można napotkać, korzystając z zestawu Speech Devices SDK.
 
@@ -25,7 +25,7 @@ Ten artykuł zawiera informacje ułatwiające rozwiązanie problemów, które mo
 
 Jeśli pojawi się błędy certyfikatów, korzystając z usług przetwarzania mowy, upewnij się, że urządzenie ma poprawną datę i godzinę:
 
-1. Przejdź do obszaru **Settings** (Ustawienia). W obszarze **systemu**, wybierz opcję **daty i godziny**.
+1. Przejdź do **ustawienia**. W obszarze **systemu**, wybierz opcję **daty i godziny**.
 
     ![W obszarze Ustawienia wybierz datę i godzinę](media/speech-devices-sdk/qsg-12.png)
 

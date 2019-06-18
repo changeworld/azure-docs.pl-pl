@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61447016"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akceleratora rozwiązania monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
@@ -23,7 +23,7 @@ Ten poradnik pokazuje, jak wdrożyć akcelerator rozwiązań monitorowania zdaln
 
 Aby wdrożyć akcelerator rozwiązań monitorowania zdalnego, konieczne jest aktywna subskrypcja platformy Azure.
 
-Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 Aby uruchomić interfejs wiersza polecenia, musisz mieć [Node.js](https://nodejs.org/) zainstalowane na komputerze lokalnym.
 
@@ -68,7 +68,7 @@ Wdrożenie w warstwie Podstawowa to wdrożenie ukierunkowane na prezentowanie ro
 
 Podstawowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure:
 
-| Licznik | Resource                       | Type         | Używane dla |
+| Count | Resource                       | Typ         | Używane dla |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Maszyny wirtualnej systemu Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardowa D1, wersja 2  | Mikrousługi hostingu |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 — warstwa standardowa | Zarządzanie urządzeniami i komunikacja |

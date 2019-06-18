@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ee15b6fb7160ece907d55e790b0ae38ee458ab96
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028608"
 ---
 # <a name="enter-data-manually-module"></a>Wprowadź dane ręcznie modułu
@@ -31,7 +31,7 @@ Ten moduł może być przydatne w scenariuszach takich jak te:
   
 - Wpisując listę nazw kolumn do wstawienia w zestawie danych
 
-## <a name="enter-data-manually"></a>Ręcznie wprowadź dane jednostki 
+## <a name="enter-data-manually"></a>Ręczne wprowadzanie danych 
   
 1.  Dodaj [ręcznie wprowadź dane](./enter-data-manually.md) modułu do eksperymentu. Możesz znaleźć tego modułu w **danych wejściowych i wyjściowych** kategorii w usłudze Azure Machine Learning. 
   

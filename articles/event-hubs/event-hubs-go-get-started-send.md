@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
 ms.openlocfilehash: 823ebc985c77785f8b48d12d5919dbbd1b2b1459
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60821684"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-go"></a>Wysyłanie zdarzeń do lub odbieranie zdarzeń z usługi Event Hubs za pomocą języka Go
@@ -31,7 +31,7 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 
 - Przejdź zainstalowane lokalnie. Postępuj zgodnie z [w instrukcjach](https://golang.org/doc/install) w razie potrzeby.
 - Aktywne konto platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][].
-- **Tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń**. Użyj [witryny Azure portal](https://portal.azure.com) do utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z Centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md).
+- **Tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń**. Użyj [witryny Azure portal](https://portal.azure.com) do utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z Centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md).
 
 ## <a name="send-events"></a>Wysyłanie zdarzeń
 W tej sekcji pokazano, jak utworzyć aplikację języka Go do wysyłania zdarzeń do Centrum zdarzeń. 
@@ -285,7 +285,7 @@ if err != nil {
 Przeczytaj następujące artykuły:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Funkcje i terminologią dotyczącą usługi Azure Event Hubs](event-hubs-features.md)
+- [Funkcje i terminologia w usłudze Azure Event Hubs](event-hubs-features.md)
 - [Event Hubs — często zadawane pytania](event-hubs-faq.md)
 
 

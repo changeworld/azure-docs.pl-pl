@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794037"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Pokrycie ruchem w usłudze Azure Maps
@@ -53,7 +53,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Singapur     |✓         |✓         |
 |Tajwan     |✓         |✓        |
 |Tajlandia     |✓         |✓        |
-|Wietnam   |✓         |✓         |
+|Vietnam   |✓         |✓         |
 
 
 ## <a name="europe"></a>Europa
@@ -69,9 +69,9 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Dania     |✓         |✓         |
 |Estonia     |         | ✓        |
 |Finlandia     |✓         |✓         |
-|+ Wyspy Alandzkie      |✓         |✓         |
+|\+ Wyspy Alandzkie      |✓         |✓         |
 |Francja     |✓         |✓         |
-|Monako     |✓         |✓         |
+|Monaco     |✓         |✓         |
 |Niemcy     |✓         |✓         |
 |Grecja     |✓         |✓         |
 |Węgry     |✓         |✓         |
@@ -84,12 +84,12 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Litwa     |✓         |✓         |
 |Luksemburg     |✓         |✓         |
 |Malta     |✓         |✓         |
-|Monako   |✓         |✓         |
+|Monaco   |✓         |✓         |
 |Holandia     |✓         |✓         |
 |Norwegia     |✓         |✓         |
 |Polska     |✓         |✓         |
 |Portugalia     |✓         |✓         |
-|+ Azory i Madera     |✓         |✓         |
+|\+ Azory i Madera     |✓         |✓         |
 |Rumunia     |✓         |✓         |
 |Federacja Rosyjska     |✓         |✓         |
 |San Marino    |✓         |✓         |
@@ -97,8 +97,8 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Słowenia     |✓         |✓         |
 |Hiszpania     |✓         |✓         |
 |+Andorra     |✓         |✓         |
-|+ Baleary     |✓         |✓         |
-|+ Wyspy Kanaryjskie     |✓         |✓         |
+|\+ Baleary     |✓         |✓         |
+|\+ Wyspy Kanaryjskie     |✓         |✓         |
 |Szwecja     |✓         |✓         |
 |Szwajcaria     |✓         |✓        |
 |Turcja     |✓         |✓         |
@@ -106,7 +106,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Zjednoczone Królestwo     |✓         |✓         |
 |+Gibraltar     |✓         |✓         |
 |+Guernsey & Jersey     |✓         |✓         |
-|+ Wyspa Man     |✓         |✓         |
+|\+ Wyspa Man     |✓         |✓         |
 |Watykan   |✓         |✓         |
 
 
@@ -117,7 +117,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Bahrajn     |✓         |✓         |
 |Egipt     |✓         |✓         |
 |Izrael     |✓         |✓         |
-|Kenia     |✓         |✓         |
+|Kenya     |✓         |✓         |
 |Kuwejt     |✓         |✓         |
 |Maroko     |✓         |✓         |
 |Mozambik  |✓         |✓         |

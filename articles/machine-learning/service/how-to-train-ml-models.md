@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 689d7dcd57c513479c7bc08a45094670242ef6a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153614"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075036"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Szkolenie modeli przy użyciu usługi Azure Machine Learning przy użyciu narzędzie do szacowania
 
@@ -66,7 +66,7 @@ Parametr | Opis
 
 Konstruktor ma inny parametr o nazwie `pip_packages` używaną dla dowolnego pakietu pip, wymagane
 
-Teraz, po utworzeniu usługi `Estimator` obiektu i przesyłaj zadania szkolenia, należy uruchomić na zdalne zasoby obliczeniowe z wywołaniem `submit` działać na Twoje [eksperymentu](concept-azure-machine-learning-architecture.md#experiment) obiektu `experiment`. 
+Teraz, po utworzeniu usługi `Estimator` obiektu i przesyłaj zadania szkolenia, należy uruchomić na zdalne zasoby obliczeniowe z wywołaniem `submit` działać na Twoje [eksperymentu](concept-azure-machine-learning-architecture.md#experiments) obiektu `experiment`. 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -128,10 +128,10 @@ Po rozpoczęciu szkolenia, gdzie katalog źródłowy jest w nim program lokalneg
 Aby uzyskać Notes, która przedstawia podstawy wzorca narzędzie do szacowania zobacz:
 * [how-to-use-azureml/training-with-deep-learning/how-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
-Dla notesu, który przygotowuje scikit-informacje modelu przy użyciu narzędzie do szacowania, zobacz:
+Dla notesu, który przygotowuje scikit-dowiedzieć się modelu przy użyciu narzędzie do szacowania, zobacz:
 * [Samouczki/img klasyfikacji — część 1 — training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-Aby uzyskać notesów na szkolenie modeli za pomocą określonych aplikacjom framework w przypadku uczenia głębokiego zobacz:
+Aby uzyskać notesów na szkolenie modeli przy użyciu określonych aplikacjom framework w przypadku uczenia głębokiego zobacz:
 * [How-to-use-azureml/Training-with-deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

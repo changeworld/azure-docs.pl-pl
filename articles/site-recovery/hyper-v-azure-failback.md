@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 4030b1905f8d5b50ef6be3ffa61eda74d8a27951
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60552420"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Uruchamianie powrotu po awarii dla maszyn wirtualnych funkcji Hyper-V
@@ -29,11 +29,11 @@ Po przejściu w tryb failover z serwera podstawowego do lokalizacji dodatkowej r
 1. Wybierz **plany odzyskiwania** > *recoveryplan_name*. Kliknij przycisk **trybu Failover** > **zaplanowanym powrocie po awarii**.
 2. Na **potwierdzić planowanego trybu Failover** wybierz lokalizacje źródłowe i docelowe. Należy pamiętać, wybrano kierunek trybu failover. W przypadku pracy awaryjnej z podstawowej pracował jako oczekują, i wszystkie maszyny wirtualne znajdują się w lokalizacji dodatkowej, jest to wyłącznie w celach informacyjnych.
 3. W przypadku przechodzenia powrót po awarii z platformy Azure wybierz ustawienia w **synchronizacji danych**:
-    - **Synchronizowanie danych przed włączeniem trybu failover (tylko zmiany różnicowe Synchronize)**— tę opcję, minimalizuje czas przestoju w przypadku maszyn wirtualnych, jak synchronizuje się bez ich zamykania. Go wykonuje następujące czynności:
+    - **Synchronizowanie danych przed włączeniem trybu failover (tylko zmiany różnicowe Synchronize)** — tę opcję, minimalizuje czas przestoju w przypadku maszyn wirtualnych, jak synchronizuje się bez ich zamykania. Go wykonuje następujące czynności:
         - Faza 1: Pobiera migawkę maszyny wirtualnej na platformie Azure i kopiuje go do hosta funkcji Hyper-V w środowisku lokalnym. Komputer nadal działających na platformie Azure.
         - Faza 2: Spowoduje to nie nowych zmian zamknięcie maszyny wirtualnej na platformie Azure. Ostateczny zestaw zmian różnicowych jest przekazywany do lokalnego serwera i uruchomienia maszyny wirtualnej w środowisku lokalnym.
 
-    - **Synchronizowanie danych podczas pracy awaryjnej tylko (pełne pobieranie)**— ta opcja jest szybsze.
+    - **Synchronizowanie danych podczas pracy awaryjnej tylko (pełne pobieranie)** — ta opcja jest szybsze.
         - Ta opcja jest szybsze, ponieważ oczekuje się, że większość dysku został zmieniony i nie chcemy poświęcić czas Obliczanie sumy kontrolnej. Wykonuje pobierania dysku. Jest również przydatne, gdy maszyna wirtualna w warstwie Premium zostały usunięte.
         - Firma Microsoft zaleca, użyj tej opcji, jeśli działała Azure od pewnego czasu (miesiąc lub więcej) lub lokalnej maszyny wirtualnej zostało usunięte. Ta opcja nie wykonuje żadnych obliczania sumy kontrolnej.
 

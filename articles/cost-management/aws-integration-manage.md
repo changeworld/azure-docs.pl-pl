@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64870315"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Zarządzanie kosztami AWS i użycia na platformie Azure
@@ -85,14 +85,14 @@ W poniższej tabeli opisano wymiary dostępne do grupy i Filtruj według analizy
 | Operacja | lineItem/Operation | Wszyscy |   |
 | Resource | lineItem/ResourceId | Wszyscy |   |
 | Typ zasobu | product/instanceType | Wszyscy | Jeśli produkt/instanceType ma wartość null, używana jest lineItem/UsageType. |
-| GuidZasobu | ND | Wszyscy | Identyfikator GUID liczników platformy Azure. |
+| ResourceGuid | ND | Wszyscy | Identyfikator GUID liczników platformy Azure. |
 | Nazwa usługi | product/ProductName | Wszyscy | Jeśli produkt/ProductName ma wartość null, używana jest lineItem/kod produktu. |
 | Warstwa usług |   |   |   |
 | Identyfikator subskrypcji | lineItem/UsageAccountId | Skonsolidowane grupy konta i zarządzanie |   |
 | Nazwa subskrypcji | ND | Skonsolidowane grupy konta i zarządzanie | Nazwy kont są zbierane przy użyciu interfejsu API organizacji usługi AWS. |
 | Tag | resourceTags/\* | Wszyscy | _Użytkownika:_ prefiks jest usuwany z zdefiniowanych przez użytkownika tagów, aby umożliwić wielu chmur tagów. _Aws:_ prefiks pozostaje niezmienione. |
-| Identyfikator konta bilingowego | bill/PayerAccountId | Grupa zarządzania |   |
-| Nazwa konta rozliczeniowego | ND | Grupa zarządzania | Nazwy kont są zbierane przy użyciu interfejsu API organizacji usługi AWS. |
+| Identyfikator konta rozliczeń | bill/PayerAccountId | Grupa zarządzania |   |
+| Nazwa konta rozliczeń | ND | Grupa zarządzania | Nazwy kont są zbierane przy użyciu interfejsu API organizacji usługi AWS. |
 | Dostawca | ND | Grupa zarządzania | Usługi AWS i Azure. |
 
 ## <a name="set-budgets-on-aws-scopes"></a>Zestaw budżet na zakresy usług AWS

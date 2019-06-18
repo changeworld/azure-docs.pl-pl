@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515317"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokół WebSocket rozpoznawania mowy Bing
@@ -80,7 +80,7 @@ Następujące informacje nagłówka są wymagane do uzyskania tokenu dostępu.
 
 | Name (Nazwa) | Format | Opis |
 |----|----|----|
-| OCP-Apim-Subscription-Key | ASCII | Twój klucz subskrypcji |
+| OCP-Apim-Subscription-Key | ASCII | Klucz subskrypcji |
 
 Zwraca wartość usługi tokenu JWT token dostępu jako `text/plain`. Następnie tokenu JWT jest przekazywany jako `Base64 access_token` do uzgadniania jako *autoryzacji* nagłówków z prefiksem ciągu `Bearer`. Na przykład:
 
@@ -101,7 +101,7 @@ Klienci *musi* użyć odpowiednich punktów końcowych usługi mowy. Punkt końc
 | Tryb | Ścieżka | Identyfikator URI usługi |
 | -----|-----|-----|
 | Interaktywne | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| Konwersacja | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
+| konwersacji | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
 | Dyktowanie | /speech/recognition/dictation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
 Aby uzyskać więcej informacji, zobacz [identyfikator URI usługi](../GetStarted/GetStartedREST.md#service-uri) strony.
@@ -150,7 +150,7 @@ Główne wiadomości wysłane przez klienta do usług są `speech.config`, `audi
 
 Następujące nagłówki są wymagane dla wszystkich komunikatów pochodzących od klientów.
 
-| Nagłówek | Wartość |
+| nagłówek | Wartość |
 |----|----|
 | Ścieżka | Ścieżka podana w tym dokumencie |
 | X-RequestId | Identyfikator UUID w formacie "nie-dash" |
@@ -250,7 +250,7 @@ Usługa rozpoznawania mowy używa pierwszego `audio` wiadomość, która zawiera
 
 Następujące nagłówki są wymagane w przypadku wszystkich `audio` wiadomości.
 
-| Nagłówek         |  Wartość     |
+| nagłówek         |  Wartość     |
 | ------------- | ---------------- |
 | Ścieżka | `audio` |
 | X-RequestId | Identyfikator UUID w formacie "nie-dash" |
@@ -511,7 +511,7 @@ Klienci mogą zawierać informacje o zdarzeniach, które wystąpiły w okresie i
 | Name (Nazwa) | `Connection` | Wymagane |
 | Identyfikator | Wartość identyfikatora połączenia, który był używany w *X ConnectionId* nagłówek dla tego żądania połączenia | Wymagane |
 | Uruchamianie | Czas, kiedy klient wysyłał żądania połączenia | Wymagane |
-| Koniec | Podczas gdy klient otrzymał powiadomienie, że połączenie zostało nawiązane pomyślnie, lub w przypadku błędów, odrzucona, odrzuconych lub nie powiodło się | Wymagane |
+| End | Podczas gdy klient otrzymał powiadomienie, że połączenie zostało nawiązane pomyślnie, lub w przypadku błędów, odrzucona, odrzuconych lub nie powiodło się | Wymagane |
 | Błąd | Opis błędu, który wystąpił, jeśli istnieje. Połączenie zakończyło się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
 Opis błędu nie powinna przekraczać 50 znaków i najlepiej musi mieć jedną z wartości wymienione w poniższej tabeli. Jeśli warunek błędu nie odpowiada jednej z tych wartości, klienci mogą używać zwięzły opis warunku błędu przy użyciu [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) bez biały znak. Możliwość wysyłania *telemetrii* komunikat wymaga połączenia z usługą, więc tylko przejściowy lub tymczasowe błędy mogą być zgłaszane w *telemetrii* wiadomości. Błędów, które *trwale* bloku przez klienta podczas nawiązywania połączenia z usługą zapobiec wysyła wszystkie komunikaty do usługi, w tym *telemetrii* wiadomości.
@@ -527,7 +527,7 @@ Opis błędu nie powinna przekraczać 50 znaków i najlepiej musi mieć jedną z
 | BadRequest | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `400 Bad Request` kod stanu na żądanie uaktualnienia protokołu WebSocket. |
 | ServerUnavailable | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `503 Server Unavailable` kod stanu na żądanie uaktualnienia protokołu WebSocket. |
 | Błąd ServerError | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła `HTTP 500` kod stanu błędu wewnętrznego na żądanie uaktualnienia protokołu WebSocket. |
-| Limit czasu | Upłynął limit czasu bez odpowiedzi z usługi żądanie połączenia klienta. *Zakończenia* pole zawiera godzinę, kiedy klient przekroczyło limit czasu i zatrzymanie oczekiwanie na połączenie. |
+| limit czasu | Upłynął limit czasu bez odpowiedzi z usługi żądanie połączenia klienta. *Zakończenia* pole zawiera godzinę, kiedy klient przekroczyło limit czasu i zatrzymanie oczekiwanie na połączenie. |
 | Błąd ClientError | Klient zakończył połączenie ze względu na błąd wewnętrznego klienta. |
 
 ### <a name="metric-microphone"></a>Metryki `Microphone`
@@ -550,7 +550,7 @@ Można użyć następujących przykładów jak wskazówki for rejestrujące *Sta
 | ----- | ----------- | ----- |
 | Name (Nazwa) | Mikrofon | Wymagane |
 | Uruchamianie | Czas, kiedy klient uruchomiony przy użyciu audio dane wejściowe z mikrofonu lub innego strumienia audio lub odebrane wyzwalacza z spotter — słowo kluczowe | Wymagane |
-| Koniec | Czas, kiedy klient zatrzymana, za pomocą usługi stream mikrofon lub nagrania dźwiękowego | Wymagane |
+| End | Czas, kiedy klient zatrzymana, za pomocą usługi stream mikrofon lub nagrania dźwiękowego | Wymagane |
 | Błąd | Opis błędu, który wystąpił, jeśli istnieje. Operacje mikrofon zakończyły się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
 ### <a name="metric-listeningtrigger"></a>Metryki `ListeningTrigger`
@@ -570,7 +570,7 @@ Można użyć następujących przykładów jak wskazówki for rejestrujące *Sta
 | ----- | ----------- | ----- |
 | Name (Nazwa) | ListeningTrigger | Optional (Opcjonalność) |
 | Uruchamianie | Czas rozpoczęcia nasłuchiwania wyzwalacz klient | Wymagane |
-| Koniec | Czas, po zakończeniu nasłuchiwania wyzwalacz klient | Wymagane |
+| End | Czas, po zakończeniu nasłuchiwania wyzwalacz klient | Wymagane |
 | Błąd | Opis błędu, który wystąpił, jeśli istnieje. Operacja wyzwalacza zakończyło się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
 #### <a name="sample-message"></a>Przykładowy komunikat
@@ -705,6 +705,6 @@ Inny przykład załóżmy, że użytkownik mówi wyzwalacz — słowo kluczowe, 
 | 1007 nieprawidłowy ładunek danych | Klient wysłał nieprawidłowy ładunek komunikatu protokołu. | Sprawdź ostatni komunikat, który wysyłane do usługi w przypadku błędów. Przeczytaj dokumentację poprzedniej o błędach ładunku. |
 | Błąd serwera 1011 | Usługa napotkała błąd wewnętrzny i nie może spełnić żądania. | W większości przypadków ten błąd jest przejściowy. Ponów żądanie. |
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 
 Zobacz [zestaw JavaScript SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) oznacza to implementacja protokołu WebSocket usługi mowy.

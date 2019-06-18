@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 86efbaa053e087885f0dbfea24000781d41ac5d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a2096004a7b389f627c528a8dfb4768ac001f390
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057715"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155623"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Samouczek: Konfigurowanie urządzenia usługi IoT Edge
 
@@ -35,7 +35,7 @@ W tej sekcji utworzymy certyfikatów z podpisem własnym za pomocą obrazu platf
 2. Otwórz wiersz polecenia i uruchom następujące polecenie, aby utworzyć katalog na maszynie Wirtualnej.
 
     ```cmd
-    mkdir C:\edgecertificates
+    mkdir c:\edgeCertificates
     ```
 
 3. Rozpocznij **Docker for Windows** z menu Windows Start.
@@ -56,22 +56,20 @@ W tej sekcji utworzymy certyfikatów z podpisem własnym za pomocą obrazu platf
 9. W oknie terminalu programu Visual Studio Code uruchomienia kontenera createcertificates.
 
     ```cmd
-    docker run --name createcertificates --rm -v
-    C:\edgeCertificates:/edgeCertificates createcertificates
-    /edgeCertificates
+    docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Wyświetli monit o platformy docker w celu uzyskania dostępu do **C:\\**  dysku. Wybierz **udostępnić go**.
+10. Wyświetli monit o platformy docker w celu uzyskania dostępu do **c:\\**  dysku. Wybierz **udostępnić go**.
 
 11. Wprowadź swoje poświadczenia, po wyświetleniu monitu.
 
-12. Raz kontenera zakończy działa, sprawdź następujące pliki w **c:\\edgecertificates**:
+12. Raz kontenera zakończy działa, sprawdź następujące pliki w **c:\\edgeCertificates**:
 
-    * C:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
-    * C:\\edgeCertificates\\private\\new-edge-device.key.pem
+    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
+    * c:\\edgeCertificates\\private\\new-edge-device.key.pem
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Przekaż certyfikaty usługi Azure Key Vault
 
@@ -86,8 +84,7 @@ Nasze certyfikaty Przechowuj w bezpiecznym miejscu i udostępnić je przy użyci
 3. Na komputerze deweloperskim należy przekazać certyfikaty do usługi Key Vault. Zastąp **\<subscriptionId\>** i **\<keyvaultname\>** przy użyciu informacji o zasobach.
 
     ```powershell
-    C:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1
-    -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
+    c:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1 -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
     ```
 
 4. Jeśli zostanie wyświetlony monit, zaloguj się do platformy Azure.
@@ -145,7 +142,7 @@ Następnie uruchom skrypt, aby utworzyć maszynę wirtualną dla urządzenia us�
 1. Otwórz okno programu PowerShell i przejdź do **EdgeVM** katalogu.
 
     ```powershell
-    cd C:\source\IoTEdgeAndMlSample\EdgeVM”
+    cd c:\source\IoTEdgeAndMlSample\EdgeVM
     ```
 
 2. Uruchom skrypt, aby utworzyć maszynę wirtualną.
@@ -210,7 +207,7 @@ W tym artykule certyfikaty przekazany do usługi Key Vault, aby były one dostę
 1. ASet subskrypcji platformy Azure, którego chcesz używać dla poleceń interfejsu wiersza polecenia platformy Azure.
 
     ```bash
-    az account set --subscription <subscription id>
+    az account set --subscription <subscriptionId>
     ```
 
 1. Utwórz katalog na maszynie Wirtualnej certyfikatów.

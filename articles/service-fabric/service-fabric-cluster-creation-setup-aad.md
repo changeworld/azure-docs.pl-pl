@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/15/2019
 ms.author: aljo
 ms.openlocfilehash: c02e38880fdf8e8f1a2229f009b343d6431af853
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125140"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurowanie usługi Azure Active Directory do uwierzytelniania klientów
@@ -85,7 +85,7 @@ Po zalogowaniu pomyślnie z usługą Azure AD w narzędziu Service Fabric Explor
 
 ![Okno dialogowe certyfikat SFX][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>Przyczyna
+#### <a name="reason"></a>Reason
 Użytkownik nie ma przypisaną rolę w aplikacji do klastra usługi Azure AD. W związku z tym uwierzytelnianie usługi Azure AD nie powiedzie się w klastrze usługi Service Fabric. Narzędzie Service Fabric Explorer powraca do uwierzytelniania certyfikatu.
 
 #### <a name="solution"></a>Rozwiązanie
@@ -104,7 +104,7 @@ Gdy spróbujesz się zalogować się do usługi Azure AD w narzędziu Service Fa
 
 ![Adres zwrotny SFX nie jest zgodny.][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>Przyczyna
+#### <a name="reason"></a>Reason
 Aplikacji klastra (sieć web), który reprezentuje narzędzia Service Fabric Explorer podejmie próbę uwierzytelniania w usłudze Azure AD i jako część żądania zapewnia zwrotny adres URL przekierowania. Adres URL nie znajduje się w aplikacji usługi Azure AD, ale **adres URL odpowiedzi** listy.
 
 #### <a name="solution"></a>Rozwiązanie

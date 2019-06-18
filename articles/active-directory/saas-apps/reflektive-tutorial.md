@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b8d7b6fee973379516e7dbf58b27cfafe1e1edc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca2a7edff4b8c06b2838474449360b4b14b3e393
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868542"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Reflektive
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację Reflektive w usłudze Azure AD, należy dodać Re
 
 **Aby dodać Reflektive z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -138,7 +138,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Reflektive, wykonaj
 
 ### <a name="configure-reflektive-single-sign-on"></a>Konfigurowanie Reflektive logowanie jednokrotne
 
-Aby skonfigurować logowanie jednokrotne na **Reflektive** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej Reflektive](mailto:https://support@reflektive.com/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne na **Reflektive** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej Reflektive](mailto: https://support@reflektive.com/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -192,7 +192,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 ### <a name="create-reflektive-test-user"></a>Tworzenie użytkownika testowego Reflektive
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Reflektive. Praca z [zespołem pomocy technicznej Reflektive](mailto:https://support@reflektive.com/) Aby dodać użytkowników na platformie Reflektive. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Reflektive. Praca z [zespołem pomocy technicznej Reflektive](mailto: https://support@reflektive.com/) Aby dodać użytkowników na platformie Reflektive. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
@@ -200,7 +200,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Reflektive w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Reflektive, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

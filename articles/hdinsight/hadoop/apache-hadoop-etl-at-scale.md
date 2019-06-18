@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: a343caaa998505a1772096b058ec7ad300eec03c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64725698"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę
@@ -127,9 +127,9 @@ Sqoop używa MapReduce, aby importować i eksportować dane, w celu dostarczania
 
 Apache Flume to usługa rozproszonej, niezawodnej i dostępnej efektywnie zbieranie, agregowania i przenoszenie dużych ilości danych dziennika. Flume ma architektury prosty i elastyczny, oparty na tym strumieniu przepływów danych. Flume będzie niezawodne i odporne na uszkodzenia za pomocą mechanizmów niezawodności możliwą do dostosowania i wiele mechanizmów trybu failover i odzyskiwania. Flume korzysta z modelu prostego extensible danych, umożliwiający online aplikacji analitycznych.
 
-Nie można użyć Apache Flume przy użyciu usługi Azure HDInsight.  Instalacja usługi Hadoop w środowisku lokalnym służy Flume do przesyłania danych do usługi Azure Storage Blobs lub usługi Azure Data Lake Storage.  Aby uzyskać więcej informacji, zobacz [przy użyciu Apache Flume z HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Nie można użyć Apache Flume przy użyciu usługi Azure HDInsight.  Instalacja usługi Hadoop w środowisku lokalnym służy Flume do przesyłania danych do usługi Azure Storage Blobs lub usługi Azure Data Lake Storage.  Aby uzyskać więcej informacji, zobacz [przy użyciu Apache Flume z HDInsight](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
-## <a name="transform"></a>Przekształcanie
+## <a name="transform"></a>Transformacja
 
 Po danych istnieje w wybranej lokalizacji, należy go wyczyścić, połączyć go lub przygotowania go do wzorca określonego użycia.  Hive, Pig i Spark SQL są wszystkie dobrych wyborów dla tego rodzaju pracy.  Są one wszystkie obsługiwane w HDInsight. 
 

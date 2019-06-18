@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5d10562a70b7d37908bc272bf555fd967831009
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477551"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076927"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Zagadnienia dotyczące zabezpieczeń programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -42,7 +42,7 @@ Poniższe sekcje zawierają sugestie na myślenie za pośrednictwem tych punktó
 
 ## <a name="secure-connections"></a>Bezpieczne połączenia
 
-Podczas tworzenia maszyny wirtualnej programu SQL Server z obrazem galerii **łączność z serwerem SQL** opcja zapewnia wybór **lokalnego (wewnątrz maszyny Wirtualnej)**, **prywatnie (wewnątrz sieci wirtualnej)**, lub **publiczne (Internet)**.
+Podczas tworzenia maszyny wirtualnej programu SQL Server z obrazem galerii **łączność z serwerem SQL** opcja zapewnia wybór **lokalnego (wewnątrz maszyny Wirtualnej)** , **prywatnie (wewnątrz sieci wirtualnej)** , lub **publiczne (Internet)** .
 
 ![Łączność z serwerem SQL](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
@@ -62,9 +62,11 @@ Na koniec należy wziąć pod uwagę Włączanie połączeń szyfrowanych wystą
 
 Domyślnie program SQL Server nasłuchuje na dobrze znanym porcie 1433. Aby zwiększyć bezpieczeństwo należy skonfigurować program SQL Server do nasłuchiwania na porcie inny niż domyślny, takim jak 1401. Zainicjowanie obsługi wyświetlania obrazu z galerii programu SQL Server w witrynie Azure portal, można określić ten port w **ustawień programu SQL Server** bloku.
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Aby to skonfigurować po zainicjowaniu obsługi administracyjnej, masz dwie opcje:
 
-- W przypadku maszyn wirtualnych usługi Resource Manager możesz wybrać **konfiguracji programu SQL Server** z poziomu bloku Przegląd maszyny Wirtualnej. Zapewnia to możliwość zmiany portu.
+- W przypadku maszyn wirtualnych usługi Resource Manager możesz wybrać **zabezpieczeń** z [zasobów maszyn wirtualnych SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource). Zapewnia to możliwość zmiany portu.
 
   ![TCP port zmiany w portalu](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 

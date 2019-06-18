@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5b53ccdcd33e2542834769baff5b759ff7b170
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 0f007ad1d5bf99136328ec5706f7ccbb5f6593c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962365"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111229"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenariusz: Wywołuje interfejsy API sieci web aplikacji mobilnej
 
@@ -42,7 +42,7 @@ Utwórz swoją pierwszą aplikację mobilną i wypróbuj Szybki Start!
 >
 > [Szybki start: Uzyskiwanie tokenu i wywołania interfejsu API Microsoft Graph z platformy Xamarin iOS & aplikacji dla systemu Android](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Środowisko spersonalizowane bezproblemowy interfejs użytkownika ma zasadnicze znaczenie dla aplikacji mobilnych.  Platforma tożsamości firmy Microsoft umożliwia deweloperów aplikacji mobilnych utworzyć środowiska dla systemów iOS i Android użytkowników. Aplikacji do logowania użytkowników usługi Azure Active Directory (Azure AD), osobiste użytkowników kont Microsoft i użytkowników usługi Azure AD B2C i uzyskać tokeny do wywołania internetowego interfejsu API w ich imieniu. Aby zaimplementować te przepływy, użyjemy Microsoft Authentication Library (MSAL), która implementuje będące standardami branżowymi [przepływ kodu autoryzacji OAuth2.0](v2-oauth2-auth-code-flow.md).
 
@@ -52,7 +52,7 @@ Zagadnienia dotyczące aplikacji mobilnych:
 
 - **Środowisko użytkownika jest klucz**: Użytkownicy mogą zobaczyć wartość aplikacji przed monitem logowania i zażądać wymaganych uprawnień.
 - **Obsługuje wszystkie konfiguracje użytkownika**: Wielu użytkowników biznesowych przenośnych znajdują się pod dostępu warunkowego i zasad zgodności urządzeń. Pamiętaj obsługiwać te kluczowych scenariuszy.
-- **Implementowanie logowania jednokrotnego (SSO)**: Biblioteka MSAL i platformą Microsoft identity się włączanie logowania jednokrotnego łatwo kupić za pośrednictwem przeglądarki na urządzeniu lub Microsoft Authenticator (i Portal firmy usługi Intune w systemie Android).
+- **Implementowanie logowania jednokrotnego (SSO)** : Biblioteka MSAL i platformą Microsoft identity się włączanie logowania jednokrotnego łatwo kupić za pośrednictwem przeglądarki na urządzeniu lub Microsoft Authenticator (i Portal firmy usługi Intune w systemie Android).
 
 ## <a name="specifics"></a>Szczegółowe informacje
 

@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288416"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM
@@ -85,7 +85,7 @@ W niektórych przypadkach można przypisać członka do roli przez krótki czas 
 
 Aby upewnij się, że administrator zasobów spełniających przypisania kto mówią, że są one, można wymusić uwierzytelnianie wieloskładnikowe przy aktywnym przypisaniu, sprawdzając **Wymagaj uwierzytelniania wieloskładnikowego przy aktywnym przypisaniu** pole.
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Wymagaj usługi Multi-Factor Authentication przy uaktywnianiu
+### <a name="require-multi-factor-authentication-on-activation"></a>Wymagaj uwierzytelniania wieloskładnikowego aktywacji
 
 Może wymagać uprawnionych członków roli do uruchamiania usługi MFA, zanim użytkownik może dokonać aktywacji. Ten proces zapewnia, że użytkownik, który żąda aktywacji jest kto mówią, że są one z pewnością uzasadnione. Wymuszanie ta opcja chroni zasoby o znaczeniu krytycznym w sytuacjach, gdy konto użytkownika może być zabezpieczenia mogły zostać naruszone.
 
@@ -93,7 +93,7 @@ Aby wymagać kwalifikującego się elementu członkowskiego uruchomić usługę 
 
 Aby uzyskać więcej informacji, zobacz [uwierzytelnianie wieloskładnikowe (MFA) i PIM](pim-how-to-require-mfa.md).
 
-## <a name="activation-maximum-duration"></a>Maksymalny czas trwania uaktywniania
+## <a name="activation-maximum-duration"></a>Maksymalny czas trwania aktywacji
 
 Użyj **maksymalny czas trwania aktywacji** suwak, aby ustawić maksymalny czas w godzinach, rola pozostaje aktywna, przed jego wygaśnięciem. Ta wartość może mieć wartość od 1 do 24 godzin.
 
@@ -101,7 +101,7 @@ Użyj **maksymalny czas trwania aktywacji** suwak, aby ustawić maksymalny czas 
 
 Może wymagać, że elementy członkowskie wprowadzić uzasadnienia przy aktywnym przypisaniu lub podczas aktywacji. Aby wymaga uzasadnienia, zapoznaj się z **Wymagaj uzasadnienia przy aktywnym przypisaniu** pole lub **Wymagaj uzasadnienia przy aktywacji** pole.
 
-## <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia w celu aktywacji
+## <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia do aktywowania
 
 Jeśli ma być wymagane zatwierdzenie, aby aktywować rolę, wykonaj następujące kroki.
 
@@ -109,7 +109,7 @@ Jeśli ma być wymagane zatwierdzenie, aby aktywować rolę, wykonaj następują
 
 1. Kliknij przycisk **wybierz osoby zatwierdzające** otworzyć wybierz panel lub grupę.
 
-    ![Wybierz członka lub grupę](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Zaznacz element lub grupę](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
 1. Wybierz co najmniej jeden element członkowski lub grupę, a następnie kliknij przycisk **wybierz**. Możesz dodać dowolną kombinację elementów członkowskich i grup. Należy wybrać co najmniej jedna osoba zatwierdzająca. Nie istnieją żadne osoby zatwierdzające domyślne.
 

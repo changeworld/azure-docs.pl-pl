@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64694223"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Połącz z Identyfikatorem partnera do kont systemu Azure
@@ -34,7 +34,7 @@ Aby połączyć się z Partnerem, klient musi udzielić Ci dostępu do swoich za
 
 - **Nazwa główna usługi**: Klienta można dodać aplikację lub skrypt z Twojej organizacji w jego katalogu i przyznawać żadnej roli RBAC. Tożsamość aplikacji lub skryptu jest określany jako nazwy głównej usługi.
 
-## <a name="link-to-a-partner-id"></a>Łączenie z identyfikatorem partnera
+## <a name="link-to-a-partner-id"></a>Połącz z Identyfikatorem partnera
 
 Jeśli masz dostęp do zasobów przez klienta, użyć witryny Azure portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby połączyć identyfikator sieci Microsoft Partner (identyfikator MPN) do Identyfikatora użytkownika lub nazwy głównej usługi. Połącz z Identyfikatorem partnera w każdej dzierżawy klienta.
 

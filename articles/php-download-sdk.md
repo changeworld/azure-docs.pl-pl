@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
 ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411599"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Pobierz zestaw Azure SDK dla języka PHP
@@ -28,9 +28,9 @@ ms.locfileid: "65411599"
 Zestaw Azure SDK dla języka PHP zawiera składniki, które umożliwiają tworzenie, wdrażanie i zarządzanie aplikacjami PHP na platformie Azure. W szczególności zestawu Azure SDK dla języka PHP obejmuje następujące funkcje:
 
 * **Biblioteki klienckie PHP na platformie Azure**. Te biblioteki klas zapewniają interfejs do uzyskiwania dostępu do funkcji platformy Azure, takich jak usługi zarządzania danymi i usługami w chmurze.
-* **Interfejsu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows (Azure CLI)**. Jest to zestaw poleceń służących do wdrażania i zarządzania nimi usług platformy Azure, takich jak usługa Azure Websites i maszyn wirtualnych platformy Azure. Praca wiersza polecenia platformy Azure na dowolnej platformie, w tym systemów Mac, Linux i Windows.
-* **Program Azure PowerShell (tylko Windows)**. Jest to zestaw poleceń cmdlet programu PowerShell dotyczące wdrażania i zarządzania usługami platformy Azure, takie jak maszyny wirtualne i usługi w chmurze.
-* **Emulatory systemu Azure (tylko Windows)**. Emulatory zasobów obliczeniowych i magazynu są lokalne emulatorów usług w chmurze i usług zarządzania danymi, które umożliwiają przetestowanie aplikacji w środowisku lokalnym. Emulatory Azure uruchomić tylko na Windows.
+* **Interfejsu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows (Azure CLI)** . Jest to zestaw poleceń służących do wdrażania i zarządzania nimi usług platformy Azure, takich jak usługa Azure Websites i maszyn wirtualnych platformy Azure. Praca wiersza polecenia platformy Azure na dowolnej platformie, w tym systemów Mac, Linux i Windows.
+* **Program Azure PowerShell (tylko Windows)** . Jest to zestaw poleceń cmdlet programu PowerShell dotyczące wdrażania i zarządzania usługami platformy Azure, takie jak maszyny wirtualne i usługi w chmurze.
+* **Emulatory systemu Azure (tylko Windows)** . Emulatory zasobów obliczeniowych i magazynu są lokalne emulatorów usług w chmurze i usług zarządzania danymi, które umożliwiają przetestowanie aplikacji w środowisku lokalnym. Emulatory Azure uruchomić tylko na Windows.
 
 W poniższych sekcjach opisano sposób pobrać i zainstalować składniki opisanych powyżej.
 

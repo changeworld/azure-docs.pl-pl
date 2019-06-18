@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
 ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787737"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Narzędzie do kopiowania danych w usłudze Azure Data Factory
@@ -78,7 +78,7 @@ Poniższy zrzut ekranu przedstawia zapytanie SQL do filtrowania danych.
 ![Filtrowanie danych w bazie danych](./media/copy-data-tool/filter-data-in-database.png)
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>Filtrowanie danych w folderze obiektu blob platformy Azure
-Aby skopiować dane z folderem, można używać zmiennych w ścieżce folderu. Są obsługiwane zmienne: **{year}**, **{month}**, **{dzień}**, **{godzina}**, i **{minuta}**. Na przykład: inputfolder / {year} / {month} / {day}. 
+Aby skopiować dane z folderem, można używać zmiennych w ścieżce folderu. Są obsługiwane zmienne: **{year}** , **{month}** , **{dzień}** , **{godzina}** , i **{minuta}** . Na przykład: inputfolder / {year} / {month} / {day}. 
 
 Załóżmy, że należy wprowadzić folderów w następującym formacie: 
 
@@ -91,7 +91,7 @@ Załóżmy, że należy wprowadzić folderów w następującym formacie:
 
 Kliknij przycisk **Przeglądaj** przycisku **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład, 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinien zostać wyświetlony 2016/03/01/02 w polu tekstowym. 
 
-Następnie zastąp **2016** z **{year}**, **03** z **{month}**, **01** z **{dzień}** , i **02** z **{godzina}** i naciśnij klawisz **kartę** klucza. Powinny zostać wyświetlone list rozwijanych, aby wybrać format dla tych czterech zmiennych:
+Następnie zastąp **2016** z **{year}** , **03** z **{month}** , **01** z **{dzień}** , i **02** z **{godzina}** i naciśnij klawisz **kartę** klucza. Powinny zostać wyświetlone list rozwijanych, aby wybrać format dla tych czterech zmiennych:
 
 ![Filtr pliku lub folderu](./media/copy-data-tool/filter-file-or-folder.png)
 

@@ -11,10 +11,10 @@ ms.date: 12/21/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: dca330f20548d3a93091f89dc8ab2b3cb92f50e2
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512708"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny SAML w zasadach niestandardowych usługi Azure Active Directory B2C
@@ -143,7 +143,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | Atrybut |Wymagane | Opis |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |Tak | X509 certyfikat (zestawu kluczy RSA) ma być używany do podpisywania wiadomości protokołu SAML. Usługa Azure AD B2C używa tego klucza do podpisania żądania i wysyłać je do dostawcy tożsamości. |
-| SamlAssertionDecryption |Tak | X509 certyfikat (zestawu kluczy RSA) ma być używany do odszyfrowywania wiadomości protokołu SAML. Ten certyfikat należy podać przez dostawcę tożsamości. Usługa Azure AD B2C używa tego certyfikatu do odszyfrowania danych wysłanych przez dostawcę tożsamości. |
+| SamlAssertionDecryption |Yes | X509 certyfikat (zestawu kluczy RSA) ma być używany do odszyfrowywania wiadomości protokołu SAML. Ten certyfikat należy podać przez dostawcę tożsamości. Usługa Azure AD B2C używa tego certyfikatu do odszyfrowania danych wysłanych przez dostawcę tożsamości. |
 | MetadataSigning |Nie | X509 certyfikatu (zestawu kluczy RSA) używany do podpisywania metadanych SAML. Usługa Azure AD B2C używa tego klucza do podpisania metadanych.  |
 
 ## <a name="examples"></a>Przykłady

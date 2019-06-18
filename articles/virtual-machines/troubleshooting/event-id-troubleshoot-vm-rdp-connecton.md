@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485519"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Rozwiązywanie problemów z połączeniem RDP maszyny wirtualnej platformy Azure według identyfikatora zdarzenia 
@@ -56,35 +56,35 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 
 **Nazwa dziennika:**      System <br />
 **Źródło:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:**      1058 <br />
 **Kategoria zadania:** Brak <br />
 **Poziom:**         Błąd <br />
 **Słowa kluczowe:**      Wdrożenie klasyczne <br />
 **Użytkownik:**          ND <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** Serwer hosta sesji usług pulpitu zdalnego nie powiodło się zastąpić wygasłego certyfikatu używany do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL z podpisem własnym. Odpowiedni kod stanu była odmowa dostępu.
 
 **Nazwa dziennika:**      System <br />
 **Źródło:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:**      1058 <br />
 **Kategoria zadania:** Brak <br />
 **Poziom:**         Błąd <br />
 **Słowa kluczowe:**      Wdrożenie klasyczne <br />
 **Użytkownik:**          ND <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** Serwer hosta sesji usług pulpitu zdalnego nie udało się utworzyć nowy certyfikat z podpisem własnym służący do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL, odpowiedni kod stanu to obiekt już istnieje.
 
 **Nazwa dziennika:**      System <br />
 **Źródło:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:**      1057 <br />
 **Kategoria zadania:** Brak <br />
 **Poziom:**         Błąd <br />
 **Słowa kluczowe:**      Wdrożenie klasyczne <br />
 **Użytkownik:**          ND <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** Serwer hosta sesji usług pulpitu zdalnego nie powiodło się tworzenie nowego certyfikatu używanego do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL z podpisem własnym. Odpowiedni kod stanu to zestaw kluczy nie istnieje.
 
 Możesz również sprawdzić dla zdarzenia błędów kanału SCHANNEL 36872 i 36870, uruchamiając następujące polecenia:
@@ -102,7 +102,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Poziom:**         Błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:**          SYSTEM <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** Wystąpił błąd krytyczny podczas próby uzyskania dostępu do klucza prywatnego poświadczeń SSL serwera. Kod błędu zwrócony z modułu kryptograficznego: 0x8009030d.  <br />
 Stan błędu wewnętrznego jest 10001.
 
@@ -224,7 +224,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Poziom:**         Błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:**          SYSTEM <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** Wystąpił błąd krytyczny podczas tworzenia poświadczeń serwera protokołu TLS. Stan błędu wewnętrznego jest 10013.
  
 ### <a name="cause"></a>Przyczyna
@@ -248,13 +248,13 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 
 **Nazwa dziennika:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Źródło:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:**      2056 <br />
 **Kategoria zadania:** (109) <br />
 **Poziom:**         Błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:**          USŁUGA SIECIOWA <br />
-**Komputer:***nazwy fqdn komputera* <br />
+**Komputer:** *nazwy fqdn komputera* <br />
 **Opis:** Nie można odnaleźć opis 2056 identyfikator zdarzenia ze źródła Microsoft-Windows-TerminalServices-SessionBroker. Składnik, który wywołuje to zdarzenie nie jest zainstalowany na komputerze lokalnym albo instalacja jest uszkodzona. Można zainstalować lub naprawić składnik na komputerze lokalnym. <br />
 Jeśli zdarzenie pochodzi z innego komputera, wyświetlane informacje musiały zostać zapisane w ze zdarzeniem. <br />
 Zdarzenie dołączono następujące informacje: <br />
@@ -264,18 +264,18 @@ Logowanie do bazy danych nie powiodło się.
 
 **Nazwa dziennika:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **Źródło:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:**      1296 <br />
 **Kategoria zadania:** (104) <br />
 **Poziom:**         Błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:**          USŁUGA SIECIOWA <br />
-**Komputer:***nazwy fqdn komputera* <br />
+**Komputer:** *nazwy fqdn komputera* <br />
 **Opis:** Nie można odnaleźć opis 1296 identyfikator zdarzenia ze źródła Microsoft-Windows-TerminalServices-SessionBroker-Client. Składnik, który wywołuje to zdarzenie nie jest zainstalowany na komputerze lokalnym albo instalacja jest uszkodzona. Można zainstalować lub naprawić składnik na komputerze lokalnym.
 Jeśli zdarzenie pochodzi z innego komputera, wyświetlane informacje musiały zostać zapisane w ze zdarzeniem.
 Zdarzenie dołączono następujące informacje:  <br />
-*Tekst* <br />
-*Tekst* <br />
+*text* <br />
+*text* <br />
 Broker połączeń usług pulpitu zdalnego nie jest gotowy do komunikacji RPC.
 
 ### <a name="cause"></a>Przyczyna

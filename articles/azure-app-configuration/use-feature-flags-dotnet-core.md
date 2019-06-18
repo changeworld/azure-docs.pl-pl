@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: fc5215f71af45d3273da437fc796bf0d396ba3f9
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 577cb55ce381976a6d623b272b920d0d1bf2eeb9
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393513"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144000"
 ---
-# <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Samouczek: Używanie flag funkcji w aplikacji platformy .NET Core
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Samouczek: Użyj flagi funkcji w aplikacji ASP.NET Core
 
 Biblioteki .NET Core funkcja zarządzania umożliwiają idiomatyczną Implementowanie flagi funkcji w aplikacji .NET lub ASP.NET Core. Te biblioteki pozwalają na deklaratywne dodać flag funkcji w kodzie, dzięki czemu nie trzeba napisać cały `if` instrukcje dla nich ręcznie.
 
@@ -109,7 +109,7 @@ Wartości z flag funkcji powinny ulegać zmianie. Domyślnie Menedżer funkcji o
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(5);
+                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
            });
 });
 ```

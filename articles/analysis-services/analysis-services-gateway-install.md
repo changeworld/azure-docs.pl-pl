@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 629a97048ceba4ac02e3aa1dd59310980e5a0c95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55f68d777d291c7d12fcbae93884a5596b84c8ca
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327532"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062249"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
 
@@ -40,7 +40,7 @@ Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure An
 * Instalowanie bramy na komputerze, który pozostaje na, a nie przechodzi w stan uśpienia.
 * Nie należy instalować bramy na komputerze bezprzewodowo podłączonej do sieci. Wydajność może być mniejsza.
 * Podczas instalowania bramy, konto użytkownika, który jest zalogowany do komputera za pomocą musi mieć dziennika jako uprawnienia usługi. Po zakończeniu instalacji usługi lokalnej bramy danych używa konta NT SERVICE\PBIEgwService do logowania się jako usługa. Inne konto można określić podczas instalacji lub w usługach po zakończeniu instalacji. Upewnij się, że zasady grupy Zezwalaj, że konto, na którym użytkownik jest zalogowany podczas instalowania i konto usługi, które wybierzesz dziennika na jako uprawnienia usługi.
-* Logowanie do platformy Azure przy użyciu konta w usłudze Azure AD dla tej samej [dzierżawy](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) co subskrypcji w przypadku rejestracji bramy w. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, podczas instalowania i rejestrowania bramy.
+* Logowanie do platformy Azure przy użyciu konta w usłudze Azure AD dla tej samej [dzierżawy](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) co subskrypcji w przypadku rejestracji bramy w. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, podczas instalowania i rejestrowania bramy.
 * W przypadku źródeł danych znajdują się na usługi Azure Virtual Network (VNet), należy skonfigurować [AlwaysUseGateway](analysis-services-vnet-gateway.md) właściwości serwera.
 * (Ujednoliconej) bramy, które są opisane w tym miejscu nie jest obsługiwana w regionach platformy Azure w Niemczech. Zamiast tego należy użyć **dedykowanych lokalnej bramy dla usług Azure Analysis Services**zainstalowanego na serwerze server **— Szybki Start** w portalu. 
 

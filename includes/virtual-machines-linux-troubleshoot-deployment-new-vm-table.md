@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d93de4ed758afb5e951bb5e19f4f7adb290e461c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160337"
 ---
 W poniższej tabeli wymieniono możliwości przekazywania i przechwytywania kombinacji Linux uogólnionych i wyspecjalizowanych obrazy systemu operacyjnego. Kombinacje, które będą przetwarzać bez żadnych błędów są wskazywane przez Y i te, które będzie zgłaszać błędy są wskazywane przez N. Przyczyny i rozwiązania różnych błędów, które będzie uruchamiane w są podane poniżej tabeli.

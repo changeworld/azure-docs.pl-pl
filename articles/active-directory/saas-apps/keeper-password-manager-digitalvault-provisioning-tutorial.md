@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: zchia
 ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65508533"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Menedżera haseł hodowca & cyfrowego magazynu dla automatycznej aprowizacji użytkowników
@@ -45,7 +45,7 @@ Przed skonfigurowaniem Menedżera haseł hodowca & cyfrowego magazynu dla automa
 
 **Aby dodać Menedżera haseł hodowca & cyfrowego magazynu z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W  **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
 
     ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
@@ -124,7 +124,7 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
 
-    ![Wiadomość e-mail z powiadomieniem](common/provisioning-notification-email.png)
+    ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
 
 9. Kliknij pozycję **Zapisz**.
 

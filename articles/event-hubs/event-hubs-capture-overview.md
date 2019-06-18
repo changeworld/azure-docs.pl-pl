@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: ee64d25afcb2be73bed26c6c4dec87f216a0fd82
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66383870"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
@@ -36,7 +36,7 @@ Usługa Event Hubs jest trwały bufor czasu przechowywania dla przychodzących d
 
 Funkcja przechwytywania usługi Event Hubs można określić własnego konta usługi Azure Blob storage i kontenera lub konta usługi Azure Data Lake Store, które są używane do przechowywania przechwyconych danych. Te konta można w tym samym regionie, co Centrum zdarzeń lub w innym regionie znajdującym się dodanie do elastyczność funkcji przechwytywania usługi Event Hubs.
 
-Przechwycone dane są zapisywane [Apache Avro] [ Apache Avro] format: formatu compact, szybkie i binarny, który zapewnia struktury zaawansowanych danych za pomocą wbudowanego schematu. Ten format jest powszechnie używany w ekosystemie usługi Hadoop, usługi Stream Analytics i Azure Data Factory. Więcej informacji na temat pracy z Avro jest dostępna w dalszej części tego artykułu.
+Przechwycone dane są zapisywane [Apache Avro][Apache Avro] format: formatu compact, szybkie i binarny, który zapewnia struktury zaawansowanych danych za pomocą wbudowanego schematu. Ten format jest powszechnie używany w ekosystemie usługi Hadoop, usługi Stream Analytics i Azure Data Factory. Więcej informacji na temat pracy z Avro jest dostępna w dalszej części tego artykułu.
 
 ### <a name="capture-windowing"></a>Przechwytywanie obsługi okien
 
@@ -162,4 +162,4 @@ Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event H
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[Przesyłanie strumieniowe w dużej skali: Funkcja przechwytywania usługi Event Hubs]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Przesyłanie strumieniowe w dużej skali: Funkcja przechwytywania usługi Event Hubs]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

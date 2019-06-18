@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
 ms.openlocfilehash: 783921009a1668647a238f1c344885ec807d5b8a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166459"
 ---
 Aby kontynuować, aby rozpocząć pracę z usługą Azure IoT Hub i zapoznać się z innymi scenariuszami IoT, przy użyciu mxchip IoT DevKit, zobacz następujące tematy:

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 9fa76c9637a6dcdca48bf45e8ee2aa9305a4f64f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66130454"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Poznanie kondycji usługi Azure virtual machines
@@ -98,9 +98,9 @@ Stany kondycji zdefiniowane dla maszyny Wirtualnej zostały opisane w poniższej
 |Ikona |Stan kondycji |Znaczenie |
 |-----|-------------|---------------|
 | |W dobrej kondycji |Stan kondycji jest w dobrej kondycji, jeśli znajduje się on w zdefiniowanych zdrowotnych, wskazując nie wykryto dla maszyny Wirtualnej problemów i działa zgodnie z potrzebami. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
-| |Krytyczne |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
+| |Krytyczny |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
 | |Ostrzeżenie |Stan kondycji jest ostrzeżenie, jeśli jest między dwiema wartościami progowymi kondycji zdefiniowany warunek, gdzie jeden wskazuje *ostrzeżenie* wskazuje stan, a druga *krytyczny* stanu (trzy wartości progowe stanu kondycji może można skonfigurować), gdy problem niekrytyczne wykrycia lub co może spowodować problemy krytyczne, jeśli nie uda się rozwiązać. Z listą nadrzędny monitor, jeśli jeden lub więcej podrzędnych jest w stanie ostrzeżenia, a następnie element nadrzędny będzie odzwierciedlać *ostrzeżenie* stanu. Jeśli jest elementem podrzędnym, który znajduje się w *krytyczny* i inny podrzędny w *ostrzeżenie* stanu zbiorczego nadrzędnego wyświetli stan kondycji *krytyczny*.|
-| |Nieznana |Stan kondycji jest *nieznany* kiedy nie można obliczyć z kilku powodów. Zobacz następujący przypis <sup>1</sup> dodatkowe szczegóły i możliwe rozwiązania, aby je rozwiązać. |
+| |Nieznane |Stan kondycji jest *nieznany* kiedy nie można obliczyć z kilku powodów. Zobacz następujący przypis <sup>1</sup> dodatkowe szczegóły i możliwe rozwiązania, aby je rozwiązać. |
 
 <sup>1</sup> nieznany stan kondycji jest spowodowane przez następujące problemy:
 
@@ -120,7 +120,7 @@ Podczas uzyskiwania dostępu do kondycji, w maszynie Wirtualnej platformy Azure 
 
 ### <a name="aggregate-virtual-machine-perspective"></a>Perspektywa agregacji maszyny wirtualnej
 
-Aby wyświetlić kondycji zbieranie danych dla wszystkich maszyn wirtualnych w grupie zasobów, z listy nawigacji w portalu wybierz **usługi Azure Monitor** , a następnie wybierz **maszyny wirtualne (wersja zapoznawcza)**.  
+Aby wyświetlić kondycji zbieranie danych dla wszystkich maszyn wirtualnych w grupie zasobów, z listy nawigacji w portalu wybierz **usługi Azure Monitor** , a następnie wybierz **maszyny wirtualne (wersja zapoznawcza)** .  
 
 ![Maszyna wirtualna analizy, monitorowanie widoku z usługi Azure Monitor](./media/vminsights-health/vminsights-aggregate-health.png)
 
@@ -187,7 +187,7 @@ Stan kryteria kondycji jest zdefiniowana za pomocą jednej z czterech stanów �
 
 Strona Diagnostyka kondycji zawiera trzema głównymi sekcjami:
 
-* Model składnika 
+* Model składników 
 * Kryteria kondycji
 * Zmiany stanu 
 
@@ -239,7 +239,7 @@ Trzy kolumny są powiązane ze sobą. Po wybraniu odnalezione wystąpienia w **s
 
 ![Przykład wybierania monitorowanych wystąpień i wyniki](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-W powyższym przykładzie po wybraniu **dysk — 1 D:**, drzewa kryteria kondycji jest filtrowana w celu **dysk — 1 D:**. **Zmiany stanu** kolumna pokazuje zmiany stanu, w oparciu o dostępności **dysk — 1 D:**. 
+W powyższym przykładzie po wybraniu **dysk — 1 D:** , drzewa kryteria kondycji jest filtrowana w celu **dysk — 1 D:** . **Zmiany stanu** kolumna pokazuje zmiany stanu, w oparciu o dostępności **dysk — 1 D:** . 
 
 Aby wyświetlić stan kondycji zaktualizowane, można odświeżyć stronę diagnostyki kondycji, klikając **Odśwież** łącza.  W przypadku aktualizacji do stanu kondycji kryterium kondycji na podstawie wstępnie zdefiniowanych interwału sondowania, to zadanie pozwala uniknąć oczekiwania i odzwierciedla najnowszy stan kondycji.  **Kryteria kondycji** filtr zezwala na do zakresu wyniki oparte na stanie kondycji wybranego - *dobra kondycja*, *ostrzeżenie*, *krytyczne*, *Nieznany*, i *wszystkich*.  **Ostatniej aktualizacji** czasu w prawym górnym rogu reprezentuje czas ostatniego po stronie Diagnostyka kondycji została odświeżona.  
 
@@ -259,17 +259,17 @@ Alerty z innych typów zasobów lub usług nie są przeznaczone do uwzględnieni
 
 Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej części strony.
 
-|Kolumnowy |Opis | 
+|Kolumna |Opis | 
 |-------|------------| 
-|Subskrypcja |Wybierz subskrypcję Azure. Tylko w wybranej subskrypcji są uwzględniane alerty w widoku. | 
+|Subskrypcja |Wybierz subskrypcję platformy Azure. Tylko w wybranej subskrypcji są uwzględniane alerty w widoku. | 
 |Grupa zasobów |Wybierz pojedynczą grupę zasobów. Tylko alerty z usługą obiektów docelowych w wybranej grupie zasobów znajdują się w widoku. | 
 |Typ zasobu |Wybierz jeden lub więcej typów zasobów. Domyślnie tylko alerty docelowej **maszyn wirtualnych** jest zaznaczone, a następnie zawarte w tym widoku. W tej kolumnie jest dostępna tylko po określono grupę zasobów. | 
 |Resource |Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. | 
 |Severity |Wybiera alert o ważności lub wybierz *wszystkich* obejmujący alerty wszystkie poziomy ważności. | 
-|Stan monitora |Wybierz warunek monitora, aby filtrować alerty, jeśli zostały one *Fired* przez system lub *rozwiązane* przez system, jeśli warunek nie jest już aktywna. Lub wybierz *wszystkich* obejmujący alerty wszystkie warunki. | 
+|Warunek monitora |Wybierz warunek monitora, aby filtrować alerty, jeśli zostały one *Fired* przez system lub *rozwiązane* przez system, jeśli warunek nie jest już aktywna. Lub wybierz *wszystkich* obejmujący alerty wszystkie warunki. | 
 |Stan alertu |Wybierz stan alertu *New*, *potwierdzonym*, *zamknięte*, lub wybierz *wszystkich* obejmujący alerty wszystkich stanów. | 
 |Monitorowanie usługi |Wybierz usługę, lub wybierz *wszystkich* obejmujący wszystkie usługi. Tylko alerty *Insights maszyny Wirtualnej* są obsługiwane w przypadku tej funkcji.| 
-|Zakres czasu| Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. | 
+|Przedział czasu| Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. | 
 
 **Alert szczegółów** zostanie wyświetlona strona, po wybraniu alertu, który udostępnia szczegółowe informacje o alercie, dzięki czemu można zmienić jego stan. Aby dowiedzieć się więcej na temat zarządzania alertami, zobacz [Utwórz, Wyświetl, alerty i zarządzaj nimi przy użyciu usługi Azure Monitor](../../azure-monitor/platform/alerts-metric.md).  
 

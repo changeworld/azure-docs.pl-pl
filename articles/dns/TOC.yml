@@ -4,6 +4,8 @@
   items:
     - name: Co to jest system DNS platformy Azure?
       href: dns-overview.md
+    - name: Co to jest prywatna strefa DNS platformy Azure?
+      href: private-dns-overview.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -20,7 +22,7 @@
     - name: Tworzenie niestandardowych rekordów DNS dla aplikacji internetowej
       href: dns-web-sites-custom-domain.md
     - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS
-      href: private-dns-getstarted-powershell.md
+      href: private-dns-portal.md
     - name: Rekordy aliasów dla usługi Traffic Manager
       href: tutorial-alias-tm.md
     - name: Rekordy aliasów dla publicznych adresów IP
@@ -33,6 +35,12 @@
       href: cli-samples.md
 - name: Pojęcia
   items:
+    - name: Prywatna strefa DNS
+      items:
+        - name: Często zadawane pytania dotyczące prywatnej strefy DNS
+          href: dns-faq-private.md
+        - name: Scenariusze prywatnej usługi DNS
+          href: private-dns-scenarios.md
     - name: Strefy i rekordy
       href: dns-zones-records.md
     - name: Rekordy aliasu
@@ -41,10 +49,6 @@
       href: dns-domain-delegation.md
     - name: Często zadawane pytania
       href: dns-faq.md
-    - name: Używanie prywatnych stref DNS
-      href: private-dns-overview.md
-    - name: Scenariusze prywatnej usługi DNS
-      href: private-dns-scenarios.md
     - name: Alerty i metryki DNS
       href: dns-alerts-metrics.md
     - name: Wsteczna usługa DNS
@@ -53,13 +57,17 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Instrukcje
   items:
-    - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS — interfejs wiersza polecenia platformy Azure
-      href: private-dns-getstarted-cli.md
+    - name: Prywatna strefa DNS
+      items:
+        - name: Tworzenie strefy prywatnej — interfejs wiersza polecenia
+          href: private-dns-getstarted-cli.md
+        - name: Tworzenie strefy prywatnej — PowerShell
+          href: private-dns-getstarted-powershell.md
     - name: Rekordy aliasów dla aplikacji internetowych z równoważeniem obciążenia
       href: dns-alias-appservice.md
     - name: Zarządzanie strefami DNS
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: dns-operations-dnszones-portal.md
         - name: Azure PowerShell
           href: dns-operations-dnszones.md
@@ -67,7 +75,7 @@
           href: dns-operations-dnszones-cli.md
     - name: Zarządzanie rekordami DNS
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: dns-operations-recordsets-portal.md
         - name: Azure PowerShell
           href: dns-operations-recordsets.md

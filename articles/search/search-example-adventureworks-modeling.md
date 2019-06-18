@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: chstone
 ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61291912"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Przykład: Model bazy danych AdventureWorks magazynu na potrzeby usługi Azure Search
@@ -43,7 +43,7 @@ Nie jest równie proste jak przenoszenie indeksu docelowego do tabeli ProductMod
 
 ## <a name="use-a-collection-data-type"></a>Użyj typu danych kolekcji
 
-"Właściwe podejście" jest korzystanie z funkcji schemat wyszukiwania, który nie ma bezpośredniego równoległe w modelu bazy danych: **Collection(EDM.String)**. Typ danych kolekcji jest używany w przypadku listy poszczególnych ciągów, a nie bardzo długi ciąg (pojedynczą). Jeśli masz tagów lub słowa kluczowe, należy użyć typu danych kolekcji dla tego pola.
+"Właściwe podejście" jest korzystanie z funkcji schemat wyszukiwania, który nie ma bezpośredniego równoległe w modelu bazy danych: **Collection(EDM.String)** . Typ danych kolekcji jest używany w przypadku listy poszczególnych ciągów, a nie bardzo długi ciąg (pojedynczą). Jeśli masz tagów lub słowa kluczowe, należy użyć typu danych kolekcji dla tego pola.
 
 Definiując pól wielowartościowych indeksu **Collection(Edm.String)** "color", "rozmiar" i "obraz" pomocniczych informacje są zachowane dla tworzenia kategorii wyszukanych informacji i filtrowania bez zanieczyszczenie indeksu o zduplikowane wpisy. Podobnie, zastosowanie funkcji agregujących do pól liczbowych produktu indeksowania **minListPrice** zamiast każdego pojedynczego produktu **listPrice**.
 

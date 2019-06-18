@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: a06447aaa6579052285e7e2cd93bf40183ed173f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512582"
 ---
 # <a name="string-claims-transformations"></a>Ciąg oświadczeń przekształcenia
@@ -157,8 +157,8 @@ Ustal, czy jedno oświadczenie ciągu jest równy innemu. Wynik jest nowy logicz
 | Oświadczenie InputClaim | inputClaim1 | string | Najpierw oświadczenia typu, który ma być porównane. |
 | Oświadczenie InputClaim | inputClaim2 | string | Po drugie oświadczenia typu, który ma być porównane. |
 | InputParameter | operator | string | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
-| InputParameter | ignoreCase | wartość logiczna | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
-| oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
+| InputParameter | ignoreCase | boolean | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
+| oświadczenie outputClaim | oświadczenie outputClaim | boolean | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
 
 Użycie oświadczeń to przekształcenie, aby sprawdzić, czy roszczenie jest taki sam, do innego roszczenia. Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **e-mail** oświadczeń jest równa **Verified.Email** oświadczenia.
 
@@ -198,8 +198,8 @@ Określa, czy wartość oświadczenia jest równa wartości parametru wejściowe
 | Oświadczenie InputClaim | inputClaim1 | string | Typ oświadczenia, który ma być porównane. |
 | InputParameter | operator | string | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
 | InputParameter | Element compareTo | string | porównania ciągów, jedna z wartości: Ordinal, OrdinalIgnoreCase. |
-| InputParameter | ignoreCase | wartość logiczna | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
-| oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
+| InputParameter | ignoreCase | boolean | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
+| oświadczenie outputClaim | oświadczenie outputClaim | boolean | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
 
 Możesz użyć tego oświadczenia przekształcenia, aby sprawdzić, czy roszczenie jest równa określonej wartości. Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **termsOfUseConsentVersion** oświadczeń jest równa `v1`.
 
@@ -237,7 +237,7 @@ Tworzy losowy ciąg przy użyciu generator liczb losowych. Jeśli generator licz
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | string | Określa wartość losowe wygenerowanie, `GUID` (unikatowy identyfikator globalny) lub `INTEGER` (liczba). |
 | InputParameter | stringFormat | string | [Opcjonalnie] Sformatuj wartości losowej. |
-| InputParameter | base64 | wartość logiczna | [Opcjonalnie] Konwertuj wartość losową base64. Jeśli zostanie zastosowany format ciągu, wartość po ciągu formatu jest zakodowany w formacie Base64. |
+| InputParameter | base64 | boolean | [Opcjonalnie] Konwertuj wartość losową base64. Jeśli zostanie zastosowany format ciągu, wartość po ciągu formatu jest zakodowany w formacie Base64. |
 | InputParameter | maximumNumber | int | [Opcjonalnie] Aby uzyskać `INTEGER` randomGeneratorType tylko. Określ maksymalną liczbę. |
 | InputParameter | Inicjator  | int | [Opcjonalnie] Aby uzyskać `INTEGER` randomGeneratorType tylko. Należy określić inicjatora dla wartości losowej. Uwaga: ten sam inicjatora daje tę samą sekwencję liczb losowych. |
 | oświadczenie outputClaim | oświadczenie outputClaim | string | Zostało wywołane ClaimTypes, które zostaną wygenerowane po tym przekształcania oświadczeń. Wartości losowej. |
@@ -412,7 +412,7 @@ Wyszukaj wartość oświadczenia z listy na podstawie wartości oświadczenia in
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | inputParameterId | string | Oświadczenie, które zawiera wartość wyszukiwania |
 | InputParameter | |string | Kolekcja inputParameters. |
-| InputParameter | errorOnFailedLookup | wartość logiczna | Kontrolowanie, czy błąd jest zwracany, gdy nie pasującego wyszukiwania. |
+| InputParameter | errorOnFailedLookup | boolean | Kontrolowanie, czy błąd jest zwracany, gdy nie pasującego wyszukiwania. |
 | oświadczenie outputClaim | inputParameterId | string | Zostało wywołane ClaimTypes, które zostaną wygenerowane po tym przekształcania oświadczeń. Wartość identyfikatora dopasowania. |
 
 Poniższy przykład pobiera nazwę domeny w jednej z kolekcji inputParameters. Przekształcanie oświadczeń wyszukuje nazwy domeny w identyfikatorze i zwraca jego wartość (identyfikator aplikacji).
@@ -511,7 +511,7 @@ Sprawdza, czy ciąg oświadczeń i `matchTo` parametr wejściowy są równe, i z
 | InputParameter | stringMatchMsgCode | string | Druga wartość do ustawienia, jeśli ciągi są równe. |
 | oświadczenie outputClaim | outputClaim1 | string | Jeśli ciągi są equals, to oświadczenie w danych wyjściowych zawiera wartość `stringMatchMsg` parametr wejściowy. |
 | oświadczenie outputClaim | outputClaim2 | string | Jeśli ciągi są equals, to oświadczenie w danych wyjściowych zawiera wartość `stringMatchMsgCode` parametr wejściowy. |
-| oświadczenie outputClaim | stringCompareResultClaim | wartość logiczna | Typ, który ma być ustawiony jako oświadczeń wychodzących wynik porównania `true` lub `false` na podstawie wyniku porównania. |
+| oświadczenie outputClaim | stringCompareResultClaim | boolean | Typ, który ma być ustawiony jako oświadczeń wychodzących wynik porównania `true` lub `false` na podstawie wyniku porównania. |
 
 Możesz użyć tego oświadczenia przekształcenia, aby sprawdzić, czy roszczenie jest równa określonej wartości. Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **termsOfUseConsentVersion** oświadczeń jest równa `v1`. Jeśli tak, zmień wartość na `v2`. 
 
@@ -558,7 +558,7 @@ Sprawdza, czy ciąg oświadczeń i `matchTo` parametr wejściowy są równe, i z
 | InputParameter | stringComparison | string | Możliwe wartości: `Ordinal` lub `OrdinalIgnoreCase`. |
 | InputParameter | outputClaimIfMatched | string | Wartość można ustawić, jeśli ciągi są równe. |
 | oświadczenie outputClaim | oświadczenie outputClaim | string | Jeśli ciągi są equals, to oświadczenie w danych wyjściowych zawiera wartość `outputClaimIfMatched` parametr wejściowy. Lub wartość null, jeśli ciągi są dopasowania. |
-| oświadczenie outputClaim | stringCompareResultClaim | wartość logiczna | Typ, który ma być ustawiony jako oświadczeń wychodzących wynik porównania `true` lub `false` na podstawie wyniku porównania. |
+| oświadczenie outputClaim | stringCompareResultClaim | boolean | Typ, który ma być ustawiony jako oświadczeń wychodzących wynik porównania `true` lub `false` na podstawie wyniku porównania. |
 
 Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **grupy wiekowej** oświadczeń jest równa `Minor`. Jeśli tak, zwróć wartość `B2C_V1_90001`. 
 

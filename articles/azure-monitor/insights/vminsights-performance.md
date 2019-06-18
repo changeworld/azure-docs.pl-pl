@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: magoedte
 ms.openlocfilehash: c83a862a37dbf28c6933877bf4a0aecc4364e6c5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522085"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak Wykres wydajności dzięki usłudze Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
@@ -66,7 +66,7 @@ Dostępne są następujące wykresy wykorzystanie pojemności:
 * Bajty wysłane przepustowości — ustawienia domyślne, pokazujący średnią liczbę bajtów wysłanych 
 * Szybkość odbierania bajtów — wartości domyślne, pokazujący średnią liczbę bajtów odebranych
 
-Możesz również zmienić stopień szczegółowości wykresy w zakresie czasu, wybierając **Avg**, **Min**, **Max**, **50.**,  **90**, i **95** w selektorze percentyl.   
+Możesz również zmienić stopień szczegółowości wykresy w zakresie czasu, wybierając **Avg**, **Min**, **Max**, **50.** ,  **90**, i **95** w selektorze percentyl.   
 
 Aby wyświetlić wykorzystanie zasobów przez poszczególne maszynę Wirtualną w widoku listy i zobacz, w jakim komputerze trendu o największym wykorzystaniu, wybierz **lista N najlepszych** kartę.  **Lista N najlepszych** strona zawiera najważniejsze 20 maszyn, posortowane według najczęściej wykorzystywanych przez 95. percentyl metryki *% wykorzystanie procesora CPU*.  Możesz zobaczyć więcej maszyn, wybierając **obciążenia więcej**, i wyniki rozszerzyć, aby wyświetlić maszyny pierwszych 500. 
 
@@ -78,7 +78,7 @@ Aby wyświetlić wykorzystanie zasobów przez poszczególne maszynę Wirtualną 
 
 Aby przefiltrować wyniki według określonej maszyny wirtualnej na liście, wprowadź jego nazwę komputera w **wyszukiwanie według nazwy** pola tekstowego.  
 
-Jeśli wykorzystanie z metryki wydajności, zamiast będzie wyświetlić z **metryki** listy rozwijanej wybierz **dostępnej pamięci**, **logiczne używane miejsca na dysku %**,  **Sieci odebranych bajtów/s**, lub **sieci wysłanych bajtów/s** i listy aktualizacji do wyświetlenia wykorzystania ograniczone do tej metryki.  
+Jeśli wykorzystanie z metryki wydajności, zamiast będzie wyświetlić z **metryki** listy rozwijanej wybierz **dostępnej pamięci**, **logiczne używane miejsca na dysku %** ,  **Sieci odebranych bajtów/s**, lub **sieci wysłanych bajtów/s** i listy aktualizacji do wyświetlenia wykorzystania ograniczone do tej metryki.  
 
 Wybranie maszyny wirtualnej z listy powoduje otwarcie **właściwości** panelu w prawej części strony, a w tym miejscu można wybrać **szczegóły wydajności**.  **Szczegóły maszyny wirtualnej** zostanie otwarta strona i jest ograniczone do tej maszyny Wirtualnej, podobnie środowisko podczas uzyskiwania dostępu do maszyny Wirtualnej Insights wydajności bezpośrednio z poziomu maszyny Wirtualnej platformy Azure.  
 
@@ -86,7 +86,7 @@ Wybranie maszyny wirtualnej z listy powoduje otwarcie **właściwości** panelu 
 Aby uzyskać dostęp bezpośrednio z maszyny wirtualnej, wykonaj następujące czynności.
 
 1. W witrynie Azure portal wybierz **maszyn wirtualnych**. 
-2. Z listy wybierz Maszynę wirtualną i **monitorowanie** wybierz sekcję **Insights (wersja zapoznawcza)**.  
+2. Z listy wybierz Maszynę wirtualną i **monitorowanie** wybierz sekcję **Insights (wersja zapoznawcza)** .  
 3. Wybierz **wydajności** kartę. 
 
 Ta strona nie tylko zawiera wykresy wykorzystanie wydajności, ale także tabeli wyświetlane dla każdego dysku logicznego odnalezione i jego możliwości, wykorzystanie i łączna liczba średnia, każda miara.  
@@ -119,7 +119,7 @@ Kliknij ikonę pinezki w prawym górnym rogu jeden z kodów PIN wykresy wybraneg
 ![Maszyna wirtualna wydajności bezpośrednio wglądu w dane skalowania maszyn wirtualnych Ustaw widok](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
 >[!NOTE]
->Można także przejść widok szczegółowy wydajności dla określonego wystąpienia z widoku wystąpień dla zestawu skalowania. Przejdź do **wystąpień** w obszarze **ustawienia** sekcji, a następnie wybierz **Insights (wersja zapoznawcza)**.
+>Można także przejść widok szczegółowy wydajności dla określonego wystąpienia z widoku wystąpień dla zestawu skalowania. Przejdź do **wystąpień** w obszarze **ustawienia** sekcji, a następnie wybierz **Insights (wersja zapoznawcza)** .
 
 ## <a name="alerts"></a>Alerty  
 Metryki wydajności, włączone w ramach usługi Azure Monitor dla maszyn wirtualnych nie zawierają wstępnie skonfigurowanych reguł alertów. Istnieją [alerty dotyczące kondycji](vminsights-health.md#alerts) odpowiadający problemy z wydajnością wykryte na maszynie Wirtualnej platformy Azure, np. wysokie wykorzystanie procesora CPU, miejsca na dysku dostępna, niski małej ilości pamięci, itp.  Jednak te alerty dotyczące kondycji dotyczą tylko wszystkie maszyny wirtualne, włączone dla usługi Azure Monitor dla maszyn wirtualnych. 

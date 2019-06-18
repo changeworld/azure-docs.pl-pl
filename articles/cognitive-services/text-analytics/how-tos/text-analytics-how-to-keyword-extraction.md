@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 04/16/2019
-ms.author: aahi
-ms.openlocfilehash: 9cb6a40e6ce53a6d82d4129db876a1b24269f166
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/05/2019
+ms.author: raymondl
+ms.openlocfilehash: b7683b6d5932872f8cef2f6db9a1ec7e5e4fa86d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069180"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Przykład: Sposób wyodrębniania kluczowych fraz przy użyciu analizy tekstu
 
@@ -22,7 +22,7 @@ ms.locfileid: "60828736"
 
 Ta możliwość jest przydatna, jeśli chcesz szybko zidentyfikować główne tematy w kolekcji dokumentów. Na przykład dla tekstu wejściowego „Jedzenie było pyszne, a serwowała je doskonała obsługa” usługa zwraca główne tematy wypowiedzi: „jedzenie” i „doskonała obsługa”.
 
-Aktualnie wyodrębnianie kluczowych fraz obsługuje angielski, niemiecki, hiszpański i japoński. Inne języki są dostępne w wersji zapoznawczej. Więcej informacji, zobacz [Obsługiwane języki](../text-analytics-supported-languages.md).
+Zobacz [obsługiwane języki](../text-analytics-supported-languages.md) artykuł, aby uzyskać więcej informacji. 
 
 > [!TIP]
 > Analiza tekstu udostępnia również obraz kontenera platformy Docker oparty na systemie Linux na potrzeby wyodrębniania kluczowych fraz, można więc [zainstalować i uruchomić kontener analizy tekstu](text-analytics-how-to-install-containers.md) blisko danych.

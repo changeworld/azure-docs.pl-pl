@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372024"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Należy utworzyć dodatkową subskrypcję platformy Azure dla umowy klienta firmy Microsoft
@@ -59,7 +59,7 @@ Dodawać użytkowników jako subskrypcji platformy Azure dla twórców w sekcji 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+2. Wyszukiwanie **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący wyszukiwania w portalu dla subskrypcji](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
@@ -80,7 +80,7 @@ Dodawać użytkowników jako subskrypcji platformy Azure dla twórców w sekcji 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 

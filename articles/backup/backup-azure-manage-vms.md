@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
 ms.openlocfilehash: aa953440f03137f3359276bc9e06cb0c73f0ab4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61219299"
 ---
 # <a name="manage-azure-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure
@@ -132,7 +132,7 @@ Aby wznowić ochronę dla maszyny Wirtualnej:
 
     ![Komunikat informujący o pomyślnym chronionej maszyny Wirtualnej](./media/backup-azure-manage-vms/success-message.png)
 
-## <a name="delete-backup-data"></a>Usuń dane kopii zapasowej
+## <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej
 
 Można usunąć danych kopii zapasowej maszyny Wirtualnej podczas **Zatrzymaj kopię zapasową** zadania lub po zakończeniu zadania tworzenia kopii zapasowej. Przed usunięciem danych kopii zapasowej należy pamiętać o te informacje:
 

@@ -9,11 +9,11 @@ ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65535860"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67119123"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Kopia zapasowa i odzyskiwanie po awarii dla dysków IaaS platformy Azure
 
@@ -121,7 +121,7 @@ Wysoka dostępność najlepiej można spełnić przez użycie dysków zarządzan
 
 Opcje wysokiej dostępności, kopii zapasowych i odzyskiwania po awarii na poziomie aplikacji lub infrastruktury mogą być reprezentowane w następujący sposób:
 
-| Poziom |   Duża dostępność   | Tworzenia kopii zapasowej lub odzyskiwania po awarii |
+| Poziom |   Wysoka dostępność   | Tworzenia kopii zapasowej lub odzyskiwania po awarii |
 | --- | --- | --- |
 | Aplikacja | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktura    | Zestaw dostępności  | Magazyn geograficznie nadmiarowy z migawki spójne z aplikacjami |

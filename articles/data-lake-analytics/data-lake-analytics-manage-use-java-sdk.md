@@ -10,10 +10,10 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: f2a4b98404139abead411c20648b82d9081481f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60614988"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Zarządzanie przy użyciu aplikacji Java usługi Azure Data Lake Analytics
@@ -33,7 +33,7 @@ Kod poniższy fragment kodu zawiera kod **nieinterakcyjnych** uwierzytelniania, 
 ## <a name="create-a-java-application"></a>Tworzenie aplikacji Java
 1. Otwórz środowisko IntelliJ i Utwórz projekt Java za pomocą **aplikacji wiersza polecenia** szablonu.
 2. Kliknij prawym przyciskiem myszy projekt po lewej stronie ekranu, a następnie kliknij pozycję **Add Framework Support** (Dodaj obsługę struktury). Wybierz pozycję **Maven** i kliknij przycisk **OK**.
-3. Otwórz nowo utworzony plik **„pom.xml”** i dodaj poniższy fragment tekstu między tagami **\</version >** i **\</project >**:
+3. Otwórz nowo utworzony plik **„pom.xml”** i dodaj poniższy fragment tekstu między tagami **\</version >** i **\</project >** :
 
 ```
 <repositories>

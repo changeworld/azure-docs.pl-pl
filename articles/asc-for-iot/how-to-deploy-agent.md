@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 5c76cce5a3d9add8a1dcd8acc439a70c4a8655a9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200570"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybierz i wdrożyć agenta zabezpieczeń na urządzeniu IoT
@@ -48,16 +48,16 @@ Agent zabezpieczenia oparty na C ma mniejsze obciążenie pamięci i jest idealn
 | --- | ----------- | --------- |
 | Oprogramowanie typu „open source” | Dostępne w obszarze [licencją MIT](https://en.wikipedia.org/wiki/MIT_License) w [Github](https://aka.ms/iot-security-github-cs) | Dostępne w obszarze [licencją MIT](https://en.wikipedia.org/wiki/MIT_License) w [Github](https://aka.ms/iot-security-github-c) |
 | Języka programowania    | C | C# |
-| Obsługiwane platformy Windows? | Nie | Yes |
+| Obsługiwane platformy Windows? | Nie | Tak |
 | Wymagania wstępne Windows | --- | [USŁUGI WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Obsługiwane platformy Linux? | Tak, x64 i x86 | Tak, tylko x64 |
 | Wymagania wstępne systemu Linux | libunwind8 libcurl3, środowisko uruchomieniowe identyfikatora uuid, wykorzystują, audispd wtyczek | libunwind8 libcurl3, środowisko uruchomieniowe uuid, wykorzystują, audispd wtyczek, "sudo", polecenia netstat, iptables |
 | Przestrzeń dyskową | 10.5 MB | 90MB |
 | Zużycie pamięci (średnio) | 5.5 MB | 33MB |
-| [Uwierzytelnianie](concept-security-agent-authentication-methods.md) do usługi IoT Hub | Yes | Yes |
-| Dane zabezpieczeń [kolekcji](how-to-agent-configuration.md#supported-security-events) | Yes | Yes |
-| Zdarzenie agregacji | Yes | Yes |
-| Konfigurowanie zdalnego za pomocą [bliźniaczą reprezentację modułu zabezpieczeń](concept-security-module.md) | Yes | Yes |
+| [Uwierzytelnianie](concept-security-agent-authentication-methods.md) do usługi IoT Hub | Yes | Tak |
+| Dane zabezpieczeń [kolekcji](how-to-agent-configuration.md#supported-security-events) | Yes | Tak |
+| Zdarzenie agregacji | Tak | Yes |
+| Konfigurowanie zdalnego za pomocą [bliźniaczą reprezentację modułu zabezpieczeń](concept-security-module.md) | Tak | Tak |
 
 
 ## <a name="choose-an-agent-flavor"></a>Wybierz wersję agenta 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723452"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Dodawanie niestandardowych raportów kondycji usługi Service Fabric
@@ -57,8 +57,8 @@ Raz zdrowia, raportowanie, że projekt jest wyczyszczone, raportów o kondycji m
 ## <a name="health-client"></a>Kondycja klienta
 Raporty o kondycji są wysyłane do Menedżera kondycji za pomocą klienta kondycji, które znajdują się wewnątrz klienta sieci szkieletowej. Menedżer kondycji raporty są zapisywane w magazynie kondycji. Kondycji klienta można skonfigurować następujące ustawienia:
 
-* **HealthReportSendInterval**: Opóźnienie między czas, który raport zostanie dodany do klienta i są wysyłane do Menedżera kondycji. Używany do raportów usługi batch w pojedynczym komunikacie, zamiast wysyłania jeden komunikat dla każdego raportu. Przetwarzanie wsadowe poprawia wydajność. Domyślne: 30 sekund.
-* **HealthReportRetrySendInterval**: Interwał, jaką kondycji klienta umożliwia ponowne wysłanie kondycji zebranych raportów do Menedżera kondycji. Domyślne: 30 sekund, minimalna: 1 sekunda.
+* **HealthReportSendInterval**: Opóźnienie między czas, który raport zostanie dodany do klienta i są wysyłane do Menedżera kondycji. Używany do raportów usługi batch w pojedynczym komunikacie, zamiast wysyłania jeden komunikat dla każdego raportu. Przetwarzanie wsadowe poprawia wydajność. Wartość domyślna: 30 sekund.
+* **HealthReportRetrySendInterval**: Interwał, jaką kondycji klienta umożliwia ponowne wysłanie kondycji zebranych raportów do Menedżera kondycji. Wartość domyślna: 30 sekund, minimalna: 1 sekunda.
 * **HealthOperationTimeout**: Limit czasu dla raportu komunikat wysyłany do Menedżera kondycji. Jeśli upłynie limit czasu wiadomości, kondycji klient ponawia próbę go do momentu Menedżera kondycji potwierdza, że raport został przetworzony. Wartość domyślna: dwie minuty.
 
 > [!NOTE]

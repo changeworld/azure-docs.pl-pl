@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
 ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61449063"
 ---
 # <a name="create-an-advanced-device-model"></a>Utwórz model zaawansowanych urządzeń
@@ -163,7 +163,7 @@ Pola wymienione w schemacie można się z następujących typów:
 * Plik binarny - serializacji przy użyciu base64
 * Text
 * Boolean
-* Liczba całkowita
+* Integer
 * Double
 * DateTime
 
@@ -512,7 +512,7 @@ Kliknij przycisk **Przeglądaj** i wybierz pliki JSON i języka JavaScript, zost
 
 Jeśli weryfikacja zakończy się pomyślnie plików, kliknij przycisk **Zapisz** i modelu urządzenia jest gotowy do użycia w symulacji. W przeciwnym razie należy naprawić wszystkie błędy i ponownego przekazywania plików:
 
-![Zapisz](media/iot-accelerators-device-simulation-advanced-device/validated.png)
+![Zapisanie](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

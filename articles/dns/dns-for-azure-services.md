@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: victorh
 ms.openlocfilehash: dcf209d2036d2686bea0b51380db3cd2473d04a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61293196"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Jak usługa Azure DNS współpracuje z innymi usługami platformy Azure
@@ -37,7 +37,7 @@ W poniższej tabeli przedstawiono typy obsługiwanych rekordów, które można u
 | Azure Application Gateway |[Publiczny adres IP frontonu](dns-custom-domain.md#public-ip-address) |Można utworzyć rekord DNS A lub CNAME. |
 | Azure Load Balancer |[Publiczny adres IP frontonu](dns-custom-domain.md#public-ip-address) |Można utworzyć rekord DNS A lub CNAME. Moduł równoważenia obciążenia może mieć IPv6 publicznego adresu IP, który jest dynamicznie przypisywany. Utwórz rekord CNAME dla adresu IPv6. |
 | Azure Traffic Manager |Publiczna nazwa |Możesz utworzyć rekord aliasu, który mapuje nazwę trafficmanager.net przypisane do profilu usługi Traffic Manager. Aby uzyskać więcej informacji, zobacz [Samouczek: Konfigurowanie rekordu aliasu do obsługi języka apex nazw domen przy użyciu usługi Traffic Manager](tutorial-alias-tm.md). |
-| usług Azure Cloud Services |[Publiczny adres IP](dns-custom-domain.md#public-ip-address) |Statycznie przydzielonych adresów IP można utworzyć rekord A systemu DNS. Dynamicznie przydzielone adresy IP, należy utworzyć rekord CNAME, który jest mapowany do *cloudapp.net* nazwy.|
-| Azure App Service | [Zewnętrzny adres IP](dns-custom-domain.md#app-service-web-apps) |Dla zewnętrznych adresów IP można utworzyć rekord A systemu DNS. W przeciwnym razie należy utworzyć rekord CNAME, który mapuje nazwę azurewebsites.net. Aby uzyskać więcej informacji, zobacz [zamapować niestandardową nazwę domeny na aplikację platformy Azure](../app-service/app-service-web-tutorial-custom-domain.md). |
+| Usług Azure Cloud Services |[Publiczny adres IP](dns-custom-domain.md#public-ip-address) |Statycznie przydzielonych adresów IP można utworzyć rekord A systemu DNS. Dynamicznie przydzielone adresy IP, należy utworzyć rekord CNAME, który jest mapowany do *cloudapp.net* nazwy.|
+| Usługa Azure App Service | [Zewnętrzny adres IP](dns-custom-domain.md#app-service-web-apps) |Dla zewnętrznych adresów IP można utworzyć rekord A systemu DNS. W przeciwnym razie należy utworzyć rekord CNAME, który mapuje nazwę azurewebsites.net. Aby uzyskać więcej informacji, zobacz [zamapować niestandardową nazwę domeny na aplikację platformy Azure](../app-service/app-service-web-tutorial-custom-domain.md). |
 | Maszyny wirtualne platformy Azure Resource Manager |[Publiczny adres IP](dns-custom-domain.md#public-ip-address) |Maszyny wirtualne usługi Resource Manager może mieć publiczne adresy IP. Maszyna wirtualna z publicznym adresem IP można również za modułem równoważenia obciążenia. Można utworzyć, A systemu DNS, CNAME lub rekordu aliasu dla publicznego adresu. Pomijanie adresów VIP modułu równoważenia obciążenia, można użyć tej niestandardowej nazwy. |
 | Klasyczne maszyny wirtualne |[Publiczny adres IP](dns-custom-domain.md#public-ip-address) |Klasyczne maszyny wirtualne tworzone za pomocą programu PowerShell lub interfejsu wiersza polecenia można skonfigurować za pomocą dynamiczny lub statyczny (zastrzeżony) wirtualny adres. Możesz utworzyć rekord CNAME DNS lub rekord A, odpowiednio. |

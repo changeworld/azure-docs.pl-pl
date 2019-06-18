@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604040"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Zrozumienie warunki na fakturze umowy klienta firmy Microsoft
@@ -59,14 +59,14 @@ W poniższych sekcjach wymieniono ważne pojęcia, które widzisz na faktury i o
 
 | Termin | Opis |
 | --- | --- |
-| Opłaty|Łączna liczba opłat firmy Microsoft dla tego profilu rozliczeń od czasu ostatniego okresu rozliczeniowego |
+| Opłaty za|Łączna liczba opłat firmy Microsoft dla tego profilu rozliczeń od czasu ostatniego okresu rozliczeniowego |
 | Napisy końcowe |Kredyty otrzymany od zwraca |
 | Stosowane środki platformy Azure | Kredytów systemu Azure, które są automatycznie stosowane do platformy Azure opłaty za każdego okresu rozliczeniowego |
 | Suma częściowa |Kwota przed opodatkowaniem |
-| Podatek |Typ i kwota podatku, że opłaty są naliczane, w zależności od kraju/regionie rozliczeniowym profilu. Jeśli nie masz płacenia podatków, nie będziesz widzieć podatku na fakturze. |
+| Podatku |Typ i kwota podatku, że opłaty są naliczane, w zależności od kraju/regionie rozliczeniowym profilu. Jeśli nie masz płacenia podatków, nie będziesz widzieć podatku na fakturze. |
 | Szacowany łączne oszczędności |Szacowana łączna kwota zapisane ze skutecznego rabatów. Jeśli to konieczne, obowiązywać stawki z rabatem są wymienione poniżej pozycje zakupu w szczegółach przez sekcję faktury. |
 
-### <a name="invoice-sections"></a>Sekcje faktur
+### <a name="invoice-sections"></a>Sekcje faktury
 
 Dla każdej sekcji faktury w ramach rozliczeń profilu zostaną wyświetlone opłaty, ilość środków platformy Azure są stosowane, podatku i łączna kwota.
 
@@ -90,7 +90,7 @@ Szczegóły dotyczące pokazują kosztów dla każdej sekcji faktury, podzielone
 | Kredyt na korzystanie z systemu Azure | Kwota kredytów systemu Azure, które dotyczą opłat za/środków|
 | Stawka podatku | Podatkowej w zależności od kraju/regionu |
 | Kwota podatku | Kwota podatku stosowane do zakupu w oparciu podatku |
-| Łączna | Łączna kwota należności na zakup |
+| Łącznie | Łączna kwota należności na zakup |
 
 ### <a name="how-to-pay"></a>Sposób zapłaty
 

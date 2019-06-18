@@ -17,10 +17,10 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60835264"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
@@ -30,7 +30,7 @@ ms.locfileid: "60835264"
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]:https://launchpad.support.sap.com/#/notes/1114181
+[1114181]: https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
@@ -39,7 +39,7 @@ ms.locfileid: "60835264"
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
+[1597355]: https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
@@ -55,23 +55,23 @@ ms.locfileid: "60835264"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2039619]: https://launchpad.support.sap.com/#/notes/2039619
+[2069760]: https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2171857]: https://launchpad.support.sap.com/#/notes/2171857
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -319,7 +319,7 @@ Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby urucham
 
 Poniższe uwagi SAP są związane z SAP na platformie Azure.
 
-| Numer | Tytuł |
+| Numer | Stanowisko |
 | --- | --- |
 | [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
 | [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
@@ -397,9 +397,9 @@ Konfiguracja wydajności jest następująca:
 | \oracle\<SID > \oraarch* | Premium | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | Nie jest wymagany |
 
-* (n + 1): hosting systemu, TEMP i cofania obszary tabel. Wzorzec operacji We/Wy systemu i cofania obszary tabel różnią się od innych obszary tabel hostowania danych aplikacji. Brak buforowania jest najlepszym rozwiązaniem dla wydajności systemu i cofania obszary tabel.
+\* (n + 1): hosting systemu, TEMP i cofania obszary tabel. Wzorzec operacji We/Wy systemu i cofania obszary tabel różnią się od innych obszary tabel hostowania danych aplikacji. Brak buforowania jest najlepszym rozwiązaniem dla wydajności systemu i cofania obszary tabel.
 
-* oraarch: Pula magazynów nie jest konieczne z punktu widzenia wydajności. Może służyć do uzyskiwanie dodatkowego miejsca.
+\* oraarch: Pula magazynów nie jest konieczne z punktu widzenia wydajności. Może służyć do uzyskiwanie dodatkowego miejsca.
 
 Więcej operacji We/Wy są wymagane, zaleca się tworzenie jednego urządzenia logicznego dużych przez wiele dysków zainstalowanych przy użyciu pul magazynu systemu Windows (tylko dostępne w systemie Windows Server 2012 lub nowszy). To podejście upraszcza administrowanie w czasie Zarządzanie miejscem na dysku i pomaga uniknąć nakład pracy ręcznie dystrybucji plików na wielu dyskach zainstalowanego.
 
@@ -471,7 +471,7 @@ Minimalna konfiguracja:
 | /Oracle/\<SID > / oraarch | Standardowa (Standard) | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | | Nie jest wymagany |
 
-* Obcięcie: LVM stripe lub MDADM przy użyciu RAID0
+\* Obcięcie: LVM stripe lub MDADM przy użyciu RAID0
 
 Wybranego dysku do obsługi dzienników Powtórz online firmy Oracle powinien opierać się przez wymagania dotyczące operacji We/Wy. Istnieje możliwość przechowywania wszystkich sapdata1... n (obszary tabel) na jednym dysku zainstalowanego tak długo, jak wolumin, operacje We/Wy i przepływność spełniają wymagania. 
 
@@ -488,11 +488,11 @@ Konfiguracja wydajności:
 | /Oracle/\<SID > / oraarch * | Premium | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | Nie jest wymagany |
 
-* Obcięcie: LVM stripe lub MDADM przy użyciu RAID0
+\* Obcięcie: LVM stripe lub MDADM przy użyciu RAID0
 
-* (n + 1): hosting systemu, TEMP i cofania obszary tabel: Wzorzec operacji We/Wy systemu i cofania obszary tabel różnią się od innych obszary tabel hostowania danych aplikacji. Brak buforowania jest najlepszym rozwiązaniem dla wydajności systemu i cofania obszary tabel.
+\* (n + 1): hosting systemu, TEMP i cofania obszary tabel: Wzorzec operacji We/Wy systemu i cofania obszary tabel różnią się od innych obszary tabel hostowania danych aplikacji. Brak buforowania jest najlepszym rozwiązaniem dla wydajności systemu i cofania obszary tabel.
 
-* oraarch: Pula magazynów nie jest konieczne z punktu widzenia wydajności.
+\* oraarch: Pula magazynów nie jest konieczne z punktu widzenia wydajności.
 
 
 Jeśli więcej operacji We/Wy są wymagane, zaleca się przy użyciu LVM (Menedżer woluminów logicznych) lub MDADM, aby utworzyć jedną dużą logiczne przez wiele dysków zainstalowanych. Aby uzyskać więcej informacji, zobacz [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) dotyczące wskazówki i wskaźników o tym, jak korzystać z LVM lub MDADM. To podejście ułatwia zmniejszenie administracyjnych kosztów ogólnych zarządzania miejsca na dysku i pomaga uniknąć nakład pracy ręcznie dystrybucji plików na wielu dyskach zainstalowanego.

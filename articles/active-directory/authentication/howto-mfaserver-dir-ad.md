@@ -12,16 +12,19 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97b4ee364ecadde7738b8fe077f21d5732365f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82aa566c5bcd6347a6f62b2f693a7ad796347438
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056003"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integracja katalogu między serwerem Azure MFA i usługą Active Directory
 
 Sekcja Integracja katalogu serwera usługi Azure MFA umożliwia przeprowadzenie integracji z usługą Active Directory lub innym katalogiem LDAP. Pozwala ona skonfigurować atrybuty w celu ich dostosowania do schematu katalogu oraz ustawić automatyczną synchronizację użytkowników.
+
+> [!IMPORTANT]
+> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
 
 ## <a name="settings"></a>Ustawienia
 
@@ -81,7 +84,7 @@ Atrybuty mogą być wprowadzane ręcznie i nie muszą odpowiadać atrybutom na l
 | Imię |Wprowadź nazwę atrybutu, który zawiera imię w rekordzie użytkownika.  Wartość domyślna to givenName. |
 | Nazwisko |Wprowadź nazwę atrybutu, który zawiera nazwisko w rekordzie użytkownika.  Wartość domyślna to sn. |
 | Adres e-mail |Wprowadź nazwę atrybutu, który zawiera adres e-mail w rekordzie użytkownika.  Adres e-mail jest używany do przesłania użytkownikowi powitalnej wiadomości e-mail oraz w celu przesyłania wiadomości dotyczących aktualizacji.  Wartość domyślna to mail. |
-| Grupa użytkowników |Wprowadź nazwę atrybutu, który zawiera grupę użytkowników w rekordzie użytkownika.  Grupa użytkowników może służyć do filtrowania użytkowników w agencie i w raportach w portalu zarządzania serwerem usługi Multi-Factor Auth. |
+| Grupy użytkowników |Wprowadź nazwę atrybutu, który zawiera grupę użytkowników w rekordzie użytkownika.  Grupa użytkowników może służyć do filtrowania użytkowników w agencie i w raportach w portalu zarządzania serwerem usługi Multi-Factor Auth. |
 | Opis |Wprowadź nazwę atrybutu, który zawiera opis w rekordzie użytkownika.  Opis jest wykorzystywany wyłącznie do celów wyszukiwania.  Wartością domyślną jest description. |
 | Język połączenia telefonicznego |Wprowadź nazwę atrybutu, który zawiera skróconą nazwę języka używanego na potrzeby połączeń głosowych użytkownika. |
 | Język wiadomości SMS |Wprowadź nazwę atrybutu, który zawiera skróconą nazwę języka używanego na potrzeby wiadomości SMS użytkownika. |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938457"
 ---
 <a name="what-is-test-drive"></a>Co to jest wersja testowa?
@@ -47,8 +47,8 @@ A tutaj poniżej przedstawiono przykładowy wygląd oferty wymaga czasu wdrażan
 
 Niezależnie od tego, jak złożone aplikacji, wersji testowej firmy Microsoft pomoże Ci Ożyw produktu dla klienta. Obecnie oferujemy wersji testowych na podstawie typu produktu, scenariusza i portalu marketplace, które znajdują się na trzy różne typy.
 
-- **[Usługa Azure Resource Manager](./azure-resource-manager-test-drive.md)**: Usługi Azure Resource Manager testowej jest szablon wdrożenia, który zawiera wszystkie zasoby platformy Azure, wchodzące w skład rozwiązania tworzona przez wydawcę. Produkty, które mieszczą się w tym scenariuszu są te, które korzystać tylko zasobów platformy Azure.
-- **[Aplikacja logiki](./logic-app-test-drive.md)**: Wersję testową aplikacji logiki jest szablon wdrożenia, który jest przeznaczony do uwzględniający wszystkie architektury złożonych rozwiązań. Wszystkie aplikacje Dynamics lub niestandardowych produktów należy używać tego rodzaju wersji testowej.
+- **[Usługa Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Usługi Azure Resource Manager testowej jest szablon wdrożenia, który zawiera wszystkie zasoby platformy Azure, wchodzące w skład rozwiązania tworzona przez wydawcę. Produkty, które mieszczą się w tym scenariuszu są te, które korzystać tylko zasobów platformy Azure.
+- **[Aplikacja logiki](./logic-app-test-drive.md)** : Wersję testową aplikacji logiki jest szablon wdrożenia, który jest przeznaczony do uwzględniający wszystkie architektury złożonych rozwiązań. Wszystkie aplikacje Dynamics lub niestandardowych produktów należy używać tego rodzaju wersji testowej.
 - **Power BI**: Usługa Power BI testowej jest po prostu osadzonego link do pulpitu nawigacyjnego niestandardowym. Produkt, który chce po prostu ilustrują, interaktywne wizualizacje usługi Power BI należy używać tego rodzaju wersji testowej.
     Wszystko, co należy przekazać w tym miejscu jest osadzony adres URL do usługi Power BI.
 

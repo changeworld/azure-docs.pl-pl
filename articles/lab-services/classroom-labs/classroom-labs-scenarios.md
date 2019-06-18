@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60695293"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Laboratorium na potrzeby zajęć na użytek szkoleniach
@@ -39,7 +39,7 @@ W tym artykule poznasz różne funkcje usługi Azure Lab Services, których moż
 ## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Utwórz konto laboratorium jako administratora konta laboratorium
 Pierwszym krokiem przy użyciu usługi Azure Lab Services jest utworzenie konta laboratorium w witrynie Azure portal. Gdy administrator konta laboratorium utworzy konto laboratorium, administrator dodaje użytkowników, którzy chcą tworzyć laboratoriów **twórca laboratorium** roli. Wykładowców utworzyć laboratoria z maszynami wirtualnymi dla uczniów lub studentów w celu ćwiczenia dotyczące kursów, które są one przeznaczone. Aby uzyskać więcej informacji, zobacz [tworzenie i zarządzanie kontem laboratorium](how-to-manage-lab-accounts.md).
 
-## <a name="create-and-manage-classroom-labs"></a>Tworzenie i zarządzanie laboratorium na potrzeby zajęć
+## <a name="create-and-manage-classroom-labs"></a>Tworzenie laboratoriów na potrzeby zajęć i zarządzanie nimi
 Trainer, będący członkiem roli Twórca laboratorium na koncie laboratorium, można utworzyć przynajmniej jednego laboratoriów w ramach konta laboratorium. Możesz utworzyć i skonfigurować szablon maszyny Wirtualnej za pomocą całe oprogramowanie wymagane do wykonywania ćwiczeniami z kursu. Wybierz obraz gotowych do użycia z dostępnych obrazów do tworzenia laboratorium na potrzeby zajęć, a następnie dostosuj je, instalując oprogramowanie wymagane do laboratorium. Aby uzyskać więcej informacji, zobacz [tworzenie i zarządzanie laboratorium na potrzeby zajęć](how-to-manage-classroom-labs.md).
 
 ## <a name="configure-usage-settings-and-policies"></a>Konfigurowanie zasad i ustawień użycia

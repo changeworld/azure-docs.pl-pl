@@ -16,12 +16,12 @@ ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233726"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108466"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikowanie usług pulpitu zdalnego z serwerem Proxy aplikacji usługi Azure AD
 
@@ -57,6 +57,8 @@ We wdrożeniu usług pulpitu zdalnego roli usług pulpitu zdalnego w sieci Web i
 - Podczas publikowania usług pulpitu zdalnego w sieci Web, zaleca się używać tej samej nazwy FQDN wewnętrznych i zewnętrznych. Różnią się nazwy FQDN wewnętrznych i zewnętrznych należy wyłączyć żądania tłumaczenia nagłówka, aby uniknąć klienta odbieranie nieprawidłowe linki. 
 
 - W programie Internet Explorer należy włączyć dodatek ActiveX usług pulpitu zdalnego.
+
+- Usługi flow wstępnego uwierzytelniania usługi Azure AD, użytkownicy mogą łączyć się tylko z zasobów opublikowanych w **programów RemoteApp i pulpitami** okienka. Użytkownicy nie mogą nawiązać pulpitu za pomocą **nawiązywanie połączenia z Komputerem zdalnym** okienka.
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Wdrażanie wspólnego scenariusz usług pulpitu zdalnego i serwer Proxy aplikacji
 
@@ -127,7 +129,7 @@ Konfiguracja opisane w tym artykule jest przeznaczona dla użytkowników na Wind
 | Uwierzytelnianie wstępne    | Windows 7/10 przy użyciu programu Internet Explorer + dodatek ActiveX usług pulpitu zdalnego |
 | Przekazywanie | Inny system operacyjny, który obsługuje aplikację Pulpit zdalny firmy Microsoft |
 
-Przepływ uwierzytelniania wstępnego oferuje więcej korzyści w zakresie zabezpieczeń niż przepływ przekazującego. Przy użyciu wstępnego uwierzytelniania można użyć funkcji uwierzytelniania usługi Azure AD, takich jak logowanie jednokrotne dostępu warunkowego i weryfikację dwuetapową dla zasobów w środowisku lokalnym. Musisz także upewnić się, tylko uwierzytelnianego przypada ruchu w sieci.
+Przepływ uwierzytelniania wstępnego oferuje więcej korzyści w zakresie zabezpieczeń niż przepływ przekazującego. Przy użyciu wstępnego uwierzytelniania można użyć funkcji uwierzytelniania usługi Azure AD, takich jak pojedynczego logowania jednokrotnego dostępu warunkowego i dwuetapowej weryfikacji dla zasobów w środowisku lokalnym. Musisz także upewnić się, tylko uwierzytelnianego przypada ruchu w sieci.
 
 Aby użyć uwierzytelniania przekazującego, istnieją tylko dwa modyfikacji kroków opisanych w tym artykule:
 1. W [publikowania usług pulpitu zdalnego punktu końcowego hosta](#publish-the-rd-host-endpoint) kroku 1, ustaw metoda uwierzytelniania wstępnego **przekazywanie**.

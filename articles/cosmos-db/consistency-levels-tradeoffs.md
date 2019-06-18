@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 09777a9980e4576a5d00123516e33696e845dcac
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990221"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
@@ -55,7 +55,7 @@ Poniższa tabela definiuje relację między trwałości danych i modelu spójno�
 |1|Jednego lub wielu wzorców|Dowolny poziom spójności|< 240 minut|< 1 tydzień|
 |>1|Wzorca pojedynczej|Sesja, spójny prefiks i ostateczna|< 15 minut|< 15 minut|
 |>1|Wzorca pojedynczej|Powiązana nieaktualność|*K* & *T*|< 15 minut|
-|>1|Wzorca pojedynczej|Silne|0|< 15 minut|
+|>1|Wzorca pojedynczej|Silna|0|< 15 minut|
 |>1|Multi-Master|Sesja, spójny prefiks i ostateczna|< 15 minut|0|
 |>1|Multi-Master|Powiązana nieaktualność|*K* & *T*|0|
 

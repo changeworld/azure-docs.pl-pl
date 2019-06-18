@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775a03a82c1fc432e65ce45309a5af3febb448a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472285"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083894"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Użytkownicy, grupy, licencje i role w dużych organizacjach
 
@@ -52,7 +52,7 @@ Wiele dużych organizacji chce, aby ich użytkownicy mogli uzyskiwać uprawnieni
 
  Nazwa roli | Podsumowanie uprawnień
  --------- | -------------------
- **Administrator aplikacji** | Może dodawać aplikacje przedsiębiorstwa i rejestracje aplikacji oraz zarządzać nimi, a także konfigurować ustawienia aplikacji serwera proxy. Administratorzy aplikacji mogą wyświetlać urządzenia i zasady dostępu warunkowego, ale nie mogą nimi zarządzać.
+ **Administrator aplikacji** | Może dodawać aplikacje przedsiębiorstwa i rejestracje aplikacji oraz zarządzać nimi, a także konfigurować ustawienia aplikacji serwera proxy. Administratorzy aplikacji można wyświetlać zasady dostępu warunkowego i urządzenia, ale nie zarządzać nimi.
  **Administrator aplikacji w chmurze** | Może dodawać aplikacje przedsiębiorstwa i rejestracje aplikacji przedsiębiorstwa oraz zarządzać nimi. Ta rola ma wszystkie uprawnienia administratora aplikacji, ale nie może zarządzać ustawieniami serwera proxy aplikacji.
 **Deweloper aplikacji** | Może dodawać i aktualizować rejestracje aplikacji, ale nie może zarządzać aplikacjami przedsiębiorstwa ani konfigurować serwera proxy aplikacji.
 

@@ -2,17 +2,16 @@
 title: Uwierzytelnianie za pomocą usługi Azure Container Registry w usłudze Azure Container Instances
 description: Dowiedz się, jak zapewnić dostęp do obrazów w prywatnego rejestru kontenera z usługi Azure Container Instances za pomocą jednostki usługi Azure Active Directory.
 services: container-registry
-author: rockboyfor
+author: dlepow
 ms.service: container-registry
 ms.topic: article
-origin.date: 04/23/2018
-ms.date: 03/25/2019
-ms.author: v-yeche
+ms.date: 04/23/2018
+ms.author: danlep
 ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61333591"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry w usłudze Azure Container Instances
@@ -35,12 +34,12 @@ Nazwy główne usług powinny być używane podczas rejestru [administrator](con
 
 Do uruchomienia kontenera w usłudze Azure Container Instances za pomocą nazwy głównej usługi, należy określić jego identyfikator `--registry-username`i jego hasło na potrzeby `--registry-password`.
 
-```azurecli
+```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image mycontainerregistry.azurecr.cn/myimage:v1 \
-    --registry-login-server mycontainerregistry.azurecr.cn \
+    --image mycontainerregistry.azurecr.io/myimage:v1 \
+    --registry-login-server mycontainerregistry.azurecr.io \
     --registry-username <service-principal-ID> \
     --registry-password <service-principal-password>
 ```

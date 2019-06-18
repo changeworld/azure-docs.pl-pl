@@ -9,10 +9,10 @@ ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66171217"
 ---
 W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne dla usługi Azure Service Bus messaging. Aby uzyskać informacje o cenach i inne limity przydziału dla usługi Service Bus, zobacz [cennika usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
@@ -37,6 +37,6 @@ W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne 
 | Liczba filtry korelacji przypadających na temat |Jednostka |Kolejne żądania do tworzenia dodatkowych filtrów tematu są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |100,000 |
 | Rozmiar filtry SQL lub akcje |Przestrzeń nazw |Kolejne żądania do tworzenia dodatkowych filtrów są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |Maksymalna długość ciągu warunek filtru: 1024 (1 KB).<br /><br />Maksymalna długość ciągu działanie reguły: 1024 (1 KB).<br /><br />Maksymalna liczba wyrażeń na działanie reguły: 32. |
 | Liczba [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) reguł na przestrzeń nazw, kolejki lub tematu |Jednostki, przestrzeń nazw |Każde kolejne wywołanie tworzenia dodatkowych reguł są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |Maksymalna liczba reguł: 12. <br /><br /> Reguły, które są skonfigurowane w przestrzeni nazw usługi Service Bus dotyczą wszystkie kolejki i tematy w tej przestrzeni nazw. |
-| Liczba komunikatów na transakcję | Transakcja | Dodatkowe wiadomości przychodzące są odrzucane, a wyjątek z informacją "nie można wysyłać więcej niż 100 komunikatów w ramach jednej transakcji" jest odbierany przez kod wywołujący. | 100 <br /><br /> Dla obu **Send()** i **SendAsync()** operacji. |
+| Liczba komunikatów na transakcję | Transakcji | Dodatkowe wiadomości przychodzące są odrzucane, a wyjątek z informacją "nie można wysyłać więcej niż 100 komunikatów w ramach jednej transakcji" jest odbierany przez kod wywołujący. | 100 <br /><br /> Dla obu **Send()** i **SendAsync()** operacji. |
 
 [Azure portal]: https://portal.azure.com

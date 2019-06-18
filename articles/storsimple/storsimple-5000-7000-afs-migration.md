@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65150733"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrację danych z serii StorSimple 5000 – 7000 do usługi Azure File Sync
@@ -56,7 +56,7 @@ W tym miejscu znajdziesz wymagań wstępnych migracji dla starszego urządzenia 
 - Woluminy StorSimple są zainstalowane na hoście, a także zawierać udziały plików.
 - Host ma wystarczającej ilości miejsca lokalnego do przechowywania lokalnie buforowanych danych.
 - Poziom dostępu właściciela do subskrypcji platformy Azure, który będzie używany do wdrażania usługi Azure File Sync. Mogą wystąpić problemy podczas tworzenia punktu końcowego w chmurze grupy synchronizacji, jeśli nie masz właściciela lub uprawnienia na poziomie administratora.
-- Dostęp do [konta magazynu ogólnego przeznaczenia v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) z udziału plików platformy Azure, który chcesz zsynchronizować z. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+- Dostęp do [konta magazynu ogólnego przeznaczenia v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) z udziału plików platformy Azure, który chcesz zsynchronizować z. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
   - Jak [utworzyć udział plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Proces migracji

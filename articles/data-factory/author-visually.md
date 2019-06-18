@@ -13,10 +13,10 @@ ms.author: shlo
 ms.reviewer: ''
 manager: craigg
 ms.openlocfilehash: b32e4abebdfb93312c60a25ca8b483f071e5e73c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507824"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
@@ -78,7 +78,7 @@ Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacj
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Użyj innej dzierżawy usługi Azure Active Directory
 
-Repozytorium Git repozytoriów platformy Azure można utworzyć w innej dzierżawie usługi Azure Active Directory. Aby określić inną dzierżawą usługi Azure AD, musisz mieć uprawnienia administratora dla subskrypcji platformy Azure, której używasz.
+Repozytorium Git usługi Azure Repos możesz utworzyć w innej dzierżawie usługi Azure Active Directory. Aby określić inną dzierżawą usługi Azure AD, musisz mieć uprawnienia administratora dla subskrypcji platformy Azure, której używasz.
 
 ### <a name="use-your-personal-microsoft-account"></a>Użyj osobistego konta Microsoft
 
@@ -209,7 +209,7 @@ W okienku wyświetlana następujący kod repozytoriów Azure ustawień repozytor
 | **Gałąź współpracy**                                 | Gałęzi współpracy usługi GitHub, które jest używane do publikowania. Domyślnie jest głównym. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi.                                                                                                                                                                                                                                                               |                    |
 | **Folder główny**                                          | Folderem w gałęzi współpracy usługi GitHub.                                                                                                                                                                                                                                                                                                                                                                             |                    |
 | **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium GitHub. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
-| **Gałąź do importowania zasobów do**                       | Określa, które gałęzią zasoby fabryki danych (potoki, zestawy danych, połączonych usług itp.) są importowane. Zasoby można importować do jednej z następujących gałęziach:. B współpracy. Utwórz nowy. Użyj istniejącego                                                                                                                                                                                                     |                    |
+| **Gałąź do importowania zasobów do**                       | Określa, które gałęzią zasoby fabryki danych (potoki, zestawy danych, połączonych usług itp.) są importowane. Zasoby można importować do jednej z następujących gałęziach:. B współpracy. Utwórz nowy. Użyj istniejącej                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (publiczne repozytorium). Kanwa tworzenia interfejsu użytkownika
 
@@ -243,7 +243,7 @@ W okienku wyświetlana następujący kod repozytoriów Azure ustawień repozytor
 | **Gałąź współpracy**                                 | Gałęzi współpracy usługi GitHub, które jest używane do publikowania. Domyślnie jest głównym. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi.                                                                                                                                                                                                                                                               |                    |
 | **Folder główny**                                          | Folderem w gałęzi współpracy usługi GitHub.                                                                                                                                                                                                                                                                                                                                                                             |                    |
 | **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium GitHub. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
-| **Gałąź do importowania zasobów do**                       | Określa, które gałęzią zasoby fabryki danych (potoki, zestawy danych, połączonych usług itp.) są importowane. Zasoby można importować do jednej z następujących gałęziach:. B współpracy. Utwórz nowy. Użyj istniejącego                                                                                                                                                                                                     |                    |
+| **Gałąź do importowania zasobów do**                       | Określa, które gałęzią zasoby fabryki danych (potoki, zestawy danych, połączonych usług itp.) są importowane. Zasoby można importować do jednej z następujących gałęziach:. B współpracy. Utwórz nowy. Użyj istniejącej                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (Enterprise repozytorium). Kanwa tworzenia interfejsu użytkownika
 
@@ -266,10 +266,10 @@ Aby uzyskać informacji na temat obsługiwanych wyrażeń, zobacz [wyrażeń i f
 
 ![Dodaj zawartość dynamiczną](media/author-visually/dynamic-content-2.png)
 
-## <a name="provide-feedback"></a>Przesyłanie opinii
+## <a name="provide-feedback"></a>Przekazywanie opinii
 Wybierz **opinii** komentarz na temat funkcji lub powiadomić firmę Microsoft o problemach, za pomocą narzędzia:
 
-![Opinie](media/author-visually/provide-feedback.png)
+![Opinia](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat monitorowania i zarządzania potoków, zobacz [monitorowanie potoków i zarządzanie nimi programistycznie](monitor-programmatically.md).

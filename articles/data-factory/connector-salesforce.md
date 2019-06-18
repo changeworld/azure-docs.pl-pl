@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: jingwang
 ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60546576"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-salesforce-connector.md)
 > * [Bieżąca wersja](connector-salesforce.md)
 
@@ -238,7 +238,7 @@ Aby skopiować dane do usługi Salesforce, należy ustawić typ ujścia w dział
 | writeBehavior | Zachowanie zapisu dla tej operacji.<br/>Dozwolone wartości to **Wstaw** i **Upsert**. | Nie (wartość domyślna to wstawiania) |
 | externalIdFieldName | Nazwa pola Identyfikatora zewnętrznego dla operacji upsert. Określone pole musi być zdefiniowany jako "Pole identyfikatora zewnętrznego" w obiekcie usługi Salesforce. Go nie może mieć wartości NULL w odpowiednich danych wejściowych. | Tak, aby "Upsert" |
 | writeBatchSize | Liczba wierszy danych zapisanych w każdej z partii usługi Salesforce. | Nie (wartość domyślna to 5000) |
-| ignoreNullValues | Wskazuje, czy ignorować wartości NULL w danych wejściowych podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,**: Pozostawiają dane w obiekcie docelowym niezmieniony po wykonaniu operacji upsert lub aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **FALSE**: Zaktualizować dane w obiekcie docelowym na wartość NULL, podczas wykonywania operacji upsert lub aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
+| ignoreNullValues | Wskazuje, czy ignorować wartości NULL w danych wejściowych podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,** : Pozostawiają dane w obiekcie docelowym niezmieniony po wykonaniu operacji upsert lub aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **FALSE**: Zaktualizować dane w obiekcie docelowym na wartość NULL, podczas wykonywania operacji upsert lub aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
 
 **Przykład: SalesForce ujścia w działaniu kopiowania**
 
@@ -317,23 +317,23 @@ Podczas kopiowania danych z usług Salesforce, następujące mapowania są używ
 |:--- |:--- |
 | Auto Number |String |
 | Checkbox |Boolean |
-| Currency |Decimal |
+| Waluta |Decimal |
 | Date |DateTime |
-| Date/Time |DateTime |
+| Data/godzina |DateTime |
 | Email |String |
-| Id |String |
+| Identyfikator |String |
 | Lookup Relationship |String |
 | Multi-Select Picklist |String |
-| Number |Decimal |
-| Percent |Decimal |
-| Phone |String |
+| Liczba |Decimal |
+| Procent |Decimal |
+| Numer telefonu |String |
 | Picklist |String |
 | Text |String |
 | Text Area |String |
 | Text Area (Long) |String |
 | Text Area (Rich) |String |
 | Text (Encrypted) |String |
-| URL |String |
+| Adres URL |String |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

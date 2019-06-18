@@ -10,10 +10,10 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 8a1ae906a72d781f638fb171a409b860ffa6d501
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65517702"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Użyj alertów do wyzwalania elementu runbook usługi Azure Automation
@@ -25,7 +25,7 @@ Możesz użyć [usługi Azure Monitor](../azure-monitor/overview.md?toc=%2fazure
 Za pomocą elementów runbook usługi automation trzy typy alertów:
 
 * Najczęstsze alerty
-* Alerty dziennika aktywności
+* Alerty dotyczące dziennika aktywności
 * Niemal w czasie rzeczywistym alertów dotyczących metryk
 
 > [!NOTE]
@@ -33,7 +33,7 @@ Za pomocą elementów runbook usługi automation trzy typy alertów:
 
 Jeśli alert wywołuje element runbook, to rzeczywiste wywołanie jest wysłanie żądania HTTP POST do elementu webhook. Treść żądania POST zawiera sformatowane JSON obiekt, który ma użytecznych właściwości, które są powiązane z alertem. Poniższa lista zawiera łącza do schematu ładunku dla każdego typu alertu:
 
-|Alert  |Opis|Ładunek schematu  |
+|Alerty  |Opis|Ładunek schematu  |
 |---------|---------|---------|
 |[Typowe alertu](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Wspólny schemat alertu, który standaryzuje środowisko wykorzystania powiadomień o alertach na platformie Azure już dziś.|[Wspólny schemat ładunku alertu](../azure-monitor/platform/alerts-common-schema-definitions.md?toc=%2fazure%2fautomation%2ftoc.json#sample-alert-payload)|
 |[Alert dziennika aktywności](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy wszystkie nowe zdarzenie w dzienniku aktywności platformy Azure jest zgodna z określonych warunków. Na przykład, gdy `Delete VM` operacja odbywa się w **myProductionResourceGroup** lub gdy nowe zdarzenie kondycji usługi platformy Azure za pomocą **Active** zostanie wyświetlony stan.| [Schemat ładunku alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md)        |

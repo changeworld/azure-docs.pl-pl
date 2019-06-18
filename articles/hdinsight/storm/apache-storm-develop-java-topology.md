@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 43f68908c8549c2f1d8322b5c4ad3985618cfe6e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 89cee70c9d7c5dffdb3078756cf4fa94d7cd1a9a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695643"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078223"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Tworzenie topologii Apache Storm w języku Java
 
-Dowiedz się, jak utworzyć topologię opartych na języku Java dla [Apache Storm](https://storm.apache.org/). W tym miejscu tworzysz topologii Storm, który implementuje aplikacji zliczania wyrazów. Możesz użyć [narzędzia Apache Maven](https://maven.apache.org/) do kompilacji i tworzenia pakietów projektu. Następnie dowiesz się, jak zdefiniować przy użyciu topologii [Apache Storm strumień](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) framework.
+Dowiedz się, jak utworzyć topologię opartych na języku Java dla [Apache Storm](https://storm.apache.org/). W tym miejscu tworzysz topologii Storm, który implementuje aplikacji zliczania wyrazów. Możesz użyć [narzędzia Apache Maven](https://maven.apache.org/) do kompilacji i tworzenia pakietów projektu. Następnie dowiesz się, jak zdefiniować przy użyciu topologii [Apache Storm strumień](https://storm.apache.org/releases/2.0.0/flux.html) framework.
 
 Po wykonaniu tych kroków w tym dokumencie, można wdrożyć topologię Storm Apache na HDInsight.
 
@@ -621,7 +621,7 @@ Istnieje 5-sekundowego interwału między emisji wyrazy i liczby. **WordCount** 
 
 ## <a name="convert-the-topology-to-flux"></a>Konwertuj topologii na strumień
 
-[Strumień](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) to nowa struktura dostępne z systemem Storm 0.10.0 lub nowszy, dzięki czemu można oddzielić konfiguracji z wdrożenia. Składniki nadal są zdefiniowane w języku Java, ale topologii definiuje się przy użyciu pliku YAML. Pakiet definicji topologii domyślnej z projektem lub używać autonomicznego pliku podczas przesyłania topologii. Podczas przesyłania topologii systemu Storm, można użyć zmiennych środowiskowych lub pliki konfiguracji do wypełniania wartości w definicji topologii YAML.
+[Strumień](https://storm.apache.org/releases/2.0.0/flux.html) to nowa struktura dostępne z systemem Storm 0.10.0 lub nowszy, dzięki czemu można oddzielić konfiguracji z wdrożenia. Składniki nadal są zdefiniowane w języku Java, ale topologii definiuje się przy użyciu pliku YAML. Pakiet definicji topologii domyślnej z projektem lub używać autonomicznego pliku podczas przesyłania topologii. Podczas przesyłania topologii systemu Storm, można użyć zmiennych środowiskowych lub pliki konfiguracji do wypełniania wartości w definicji topologii YAML.
 
 Plik YAML definiuje składników na potrzeby topologii oraz dane przepływ między nimi. Można dołączyć plik YAML, jako część pliku jar, lub można użyć zewnętrznego pliku YAML.
 

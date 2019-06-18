@@ -1,6 +1,6 @@
 ---
-title: Dokumentacja ustawień dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Zapoznaj się z omówieniem obsługiwanych ustawień w zasadach dostępu warunkowego usługi Azure Active Directory.
+title: Informacje dotyczące ustawień usługi Azure Active Directory dostępu warunkowego | Dokumentacja firmy Microsoft
+description: Zapoznaj się z omówieniem obsługiwanych ustawień w zasadach usługi Azure Active Directory dostępu warunkowego.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae09b5aeed05dfb09f2b998de805ef0607e7f39
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112107"
 ---
-# <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
+# <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień usługi Azure Active Directory dostępu warunkowego
 
 Możesz użyć [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) do kontrolowania sposobu autoryzowani użytkownicy mogą uzyskiwać dostęp do zasobów usługi.
 
@@ -73,7 +73,7 @@ Zasady dostępu warunkowego można przypisać do następujących aplikacji w chm
 - Skype dla firm Online
 - Virtual Private Network (VPN)
 - Visual Studio App Center
-- Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender
+- Usługa Windows Defender ATP
 
 ### <a name="other-applications"></a>Inne aplikacje
 
@@ -140,18 +140,18 @@ Aby automatycznie wdrożyć to rozszerzenie przeglądarki Chrome, utwórz nastę
 
 |    |    |
 | --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name (Nazwa) | 1 |
-| Type | REG_SZ (ciąg) |
+| Typ | REG_SZ (ciąg) |
 | Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 Dla programu Chrome obsługi w programie **7 i Windows 8.1**, utwórz następujący klucz rejestru:
 
 |    |    |
 | --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Ścieżka | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name (Nazwa) | 1 |
-| Type | REG_SZ (ciąg) |
+| Typ | REG_SZ (ciąg) |
 | Dane | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 Te przeglądarki obsługują uwierzytelnianie urządzeń, umożliwiając można zidentyfikowane i zweryfikować względem zasad. Sprawdzanie urządzenia kończy się niepowodzeniem, jeśli przeglądarka działa w trybie prywatnym.
@@ -168,7 +168,7 @@ To ustawienie ma wpływ na dostęp podjętych następujące aplikacje mobilne i 
 | --- | --- | --- |
 | Aplikacja CRM Dynamics | Dynamics CRM | Windows 10, Windows 8.1, iOS i Android |
 | Poczta/kalendarz/osób aplikacji Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)| Office 365 Exchange Online | Windows 10 |
-| Zasady uwierzytelniania Wieloskładnikowego i lokalizacji dla aplikacji. Urządzenia, na podstawie zasad nie są obsługiwane.| Wszystkie usługi Moje aplikacje usługi app service| Android i iOS |
+| Zasady uwierzytelniania Wieloskładnikowego i lokalizacji dla aplikacji. Urządzenia, na podstawie zasad nie są obsługiwane.| Wszystkie usługi Moje aplikacje usługi app service| Systemy android i iOS |
 | Usługi Microsoft Teams — w ten sposób kontroluje wszystkie usługi, które obsługują Microsoft Teams i wszystkie jej aplikacje klient — Windows Desktop z systemem iOS, Android, WP i klienta sieci web | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
 | Aplikacje pakietu Office 2016, Office 2013 (z nowoczesnego uwierzytelniania), usługi OneDrive synchronizacji klienta (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
 | Aplikacje pakietu Office 2016, aplikacje uniwersalne pakietu Office, pakietu Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji OneDrive (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), w przyszłości planujemy obsługę grup usługi Office, w przyszłości planujemy obsługę aplikacji programu SharePoint | Office 365 SharePoint Online | Windows 10 |
@@ -252,7 +252,7 @@ To ustawienie dotyczy następujących aplikacji klienta:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać przegląd dostępu warunkowego, zobacz [co to jest dostęp warunkowy w usłudze Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
-- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego w danym środowisku, zobacz [zalecane rozwiązania w zakresie dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).
+- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego w danym środowisku, zobacz [zalecane praktyki dla dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).
 
 <!--Image references-->
 [1]: ./media/technical-reference/01.png

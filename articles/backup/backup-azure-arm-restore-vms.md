@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: geg
 ms.openlocfilehash: 19b249a76a339ce870609fbcdceaf70bf79a6ea2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65906507"
 ---
 # <a name="restore-azure-vms"></a>Przywracanie maszyn wirtualnych platformy Azure
@@ -53,7 +53,7 @@ Informacje na temat kont magazynu:
     - W przypadku przywracania zarządzanych maszyn wirtualnych, kont usługi premium storage skonfigurowane za pomocą reguł sieci nie są obsługiwane.
 
 
-## <a name="before-you-start"></a>Zanim rozpoczniesz
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
 Aby przywrócić Maszynę wirtualną (Utwórz nową maszynę Wirtualną) upewnij się, kontrola poprawne dostępu opartej na rolach (RBAC) [uprawnienia](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) dla operacji przywracania maszyny Wirtualnej.
 

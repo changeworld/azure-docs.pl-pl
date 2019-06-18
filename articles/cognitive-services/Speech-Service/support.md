@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: fc03db268ab05c6718fb323bc30574a36d0ca092
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4099bc7bfce6de620504e03be3afc5392281d8d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072370"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 
@@ -64,7 +64,7 @@ Przepełnienie stosu jest preferowany kanał w przypadku pytań związanych z op
 
 Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prześlij nowe pytanie do przepełnienia stosu. Sformułować pytanie, należy użyć jednej z następujących tagów:
 
-|Składnik/obszaru  |Tagi  |
+|Składnik/obszaru  |`Tags`  |
 |---------|---------|
 |Rozpoznawanie mowy |[[microsoft-cognitive + zamiany mowy na tekst]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
 |Synteza mowy |[[microsoft-cognitive + tekstu do mowy]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
@@ -83,7 +83,7 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 Przykłady są często publikowanych jako "open source". Pytania i problemy, utworzyć *problem* w odpowiednim repozytorium GitHub. Można przesłać żądanie ściągnięcia zbyt. Poniższa lista zawiera łącza do repozytoriów próbki:
 
 * [Zestaw SDK rozpoznawania mowy](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Zestaw Speech Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Można utworzyć raport o usterce, żądania funkcji lub zadać pytanie ogólne i udostępniania najlepszych rozwiązań. Dla raportów usterek postępuj zgodnie z podanym szablonie:
 

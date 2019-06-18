@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 89034b04c6b38c0873f890e55693c6e15e6a8d93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3677e45738c368d8438872da740a362a8048a63
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069396"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155534"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service
 
@@ -156,7 +156,7 @@ Może upłynąć trochę czasu dla nowej domeny niestandardowej, które zostaną
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> A **Secure Uwaga** etykiety oznacza domenę niestandardową, że jeszcze nie jest on powiązany z certyfikatu SSL, a każde żądanie HTTPS z przeglądarki do domeny niestandardowej otrzyma i błąd lub ostrzeżenie, w zależności od przeglądarki. Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md).
+> A **nie zabezpieczyć** etykiety oznacza domenę niestandardową, że jeszcze nie jest on powiązany z certyfikatu SSL, a każde żądanie HTTPS z przeglądarki do domeny niestandardowej otrzyma i błąd lub ostrzeżenie, w zależności od przeglądarki. Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej części strony zostanie wyświetlony komunikat o błędzie weryfikacji.
 
@@ -240,7 +240,7 @@ Może upłynąć trochę czasu dla nowej domeny niestandardowej, które zostaną
 ![Dodany rekord A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> A **Secure Uwaga** etykiety oznacza domenę niestandardową, że jeszcze nie jest on powiązany z certyfikatu SSL, a każde żądanie HTTPS z przeglądarki do domeny niestandardowej otrzyma i błąd lub ostrzeżenie, w zależności od przeglądarki. Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md).
+> A **nie zabezpieczyć** etykiety oznacza domenę niestandardową, że jeszcze nie jest on powiązany z certyfikatu SSL, a każde żądanie HTTPS z przeglądarki do domeny niestandardowej otrzyma i błąd lub ostrzeżenie, w zależności od przeglądarki. Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej części strony zostanie wyświetlony komunikat o błędzie weryfikacji.
 

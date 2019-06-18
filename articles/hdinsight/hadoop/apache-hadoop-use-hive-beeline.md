@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
 ms.openlocfilehash: dcfcd4b55f848e1725e286e6ef2a87a2c36e5a71
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684929"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive za pomocą klienta programu Apache z usługi Beeline
@@ -187,7 +187,7 @@ Ten przykład jest oparty na temat korzystania z poziomu klienta z usługi Beeli
 
     * `STORED AS TEXTFILE LOCATION` — W przypadku gdy dane są przechowywane i w jakim formacie pliku.
 
-    * `SELECT` -Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]**. To zapytanie zwraca wartość **3** , jak istnieją trzy wiersze, które zawierają tę wartość.
+    * `SELECT` -Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]** . To zapytanie zwraca wartość **3** , jak istnieją trzy wiersze, które zawierają tę wartość.
 
     * `INPUT__FILE__NAME LIKE '%.log'` -Hive podejmie próbę zastosowania schematu do wszystkich plików w katalogu. W tym przypadku katalog zawiera pliki, które nie pasuje do schematu. Aby zapobiec odzyskiwanie danych w wynikach, ta instrukcja każe gałąź, czy tylko powinna zwrócić dane z plików kończy się rozszerzeniem. log.
 
@@ -243,12 +243,12 @@ Jest to kontynuacja z poprzedniego przykładu. Wykonaj następujące kroki, aby 
 
    * **Tworzenie tabeli IF NOT EXISTS** — Jeśli tabela już istnieje, zostanie utworzony. Ponieważ **zewnętrznych** — słowo kluczowe nie jest używany, ta instrukcja tworzy wewnętrznej tabeli. Tabele wewnętrzne są przechowywane w magazynie danych programu Hive i są całkowicie zarządzane przez program Hive.
    * **PRZECHOWYWANE ORC AS** — przechowuje dane w formacie zoptymalizowane pod kątem wiersz kolumnowych (ORC). ORC format jest wysoce zoptymalizowane i wydajne formatu do przechowywania danych programu Hive.
-   * **ZASTĄP INSERT... Wybierz** -wybiera wiersze z **log4jLogs** tabeli, która zawiera **[Błąd]**, następnie wstawia dane do **przesłano** tabeli.
+   * **ZASTĄP INSERT... Wybierz** -wybiera wiersze z **log4jLogs** tabeli, która zawiera **[Błąd]** , następnie wstawia dane do **przesłano** tabeli.
 
     > [!NOTE]  
     > W przeciwieństwie do tabel zewnętrznych porzucenie wewnętrznej tabeli powoduje usunięcie danych bazowych.
 
-3. Aby zapisać plik, użyj **Ctrl**+**_X**, wprowadź **Y**, a na koniec **Enter**.
+3. Aby zapisać plik, użyj **Ctrl**+ **_X**, wprowadź **Y**, a na koniec **Enter**.
 
 4. Aby uruchomić plik, korzystając z usługi Beeline, należy użyć następującego:
 

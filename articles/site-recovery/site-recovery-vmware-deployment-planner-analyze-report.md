@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: mayg
 ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61472615"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analizowanie raportu Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
@@ -32,13 +32,13 @@ Arkusz Podsumowanie środowiska lokalnego zawiera omówienie profilowanego środ
 
 **Średnia liczba dysków na zgodną maszynę wirtualną**: Średnia liczba dysków obliczana dla wszystkich zgodnych maszyn wirtualnych.
 
-**Średni rozmiar dysku (GB)**: Średni rozmiar dysku obliczany dla wszystkich zgodnych maszyn wirtualnych.
+**Średni rozmiar dysku (GB)** : Średni rozmiar dysku obliczany dla wszystkich zgodnych maszyn wirtualnych.
 
-**Żądany cel punktu odzyskiwania (w minutach)**: Albo domyślny cel punktu odzyskiwania lub przekazana dla parametru "DesiredRPO" podczas generowania raportu umożliwiająca oszacowanie wymaganej przepustowości wartość.
+**Żądany cel punktu odzyskiwania (w minutach)** : Albo domyślny cel punktu odzyskiwania lub przekazana dla parametru "DesiredRPO" podczas generowania raportu umożliwiająca oszacowanie wymaganej przepustowości wartość.
 
-**Żądana przepustowość (MB/s)**: Wartość przekazana dla parametru "Bandwidth" podczas generowania raportu umożliwiająca oszacowanie osiągalnego celu punktu odzyskiwania.
+**Żądana przepustowość (MB/s)** : Wartość przekazana dla parametru "Bandwidth" podczas generowania raportu umożliwiająca oszacowanie osiągalnego celu punktu odzyskiwania.
 
-**Zaobserwowany Typowy współczynnik zmian danych dziennie (GB)**: Średni współczynnik zmian danych zaobserwowany we wszystkie dni profilowania. Jest on używany jako dane wejściowe do określania liczby serwerów konfiguracji i dodatkowych serwerów przetwarzania do użycia we wdrożeniu.
+**Zaobserwowany Typowy współczynnik zmian danych dziennie (GB)** : Średni współczynnik zmian danych zaobserwowany we wszystkie dni profilowania. Jest on używany jako dane wejściowe do określania liczby serwerów konfiguracji i dodatkowych serwerów przetwarzania do użycia we wdrożeniu.
 
 ## <a name="recommendations"></a>Zalecenia
 
@@ -199,19 +199,19 @@ Na przykład jeśli charakterystyki obciążenia dysku powodują umieszczenie go
 
 **Konto magazynu**: Nazwa która używa prefiks sugerowana konta magazynu.
 
-**Szczytowy odczytu i zapisu na SEKUNDĘ (ze współczynnikiem wzrostu)**: Szczytowe obciążenia odczytu i zapisu operacji We/Wy na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Pamiętaj, że łączna liczba operacji we/wy odczytu i zapisu maszyny wirtualnej nie zawsze jest sumą operacji we/wy odczytu i zapisu z poszczególnych dysków maszyny wirtualnej, ponieważ szczytowa liczba operacji we/wy odczytu i zapisu maszyny wirtualnej to wartość szczytowa sumy operacji we/wy odczytu i zapisu poszczególnych dysków z każdej minuty okresu profilowania.
+**Szczytowy odczytu i zapisu na SEKUNDĘ (ze współczynnikiem wzrostu)** : Szczytowe obciążenia odczytu i zapisu operacji We/Wy na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Pamiętaj, że łączna liczba operacji we/wy odczytu i zapisu maszyny wirtualnej nie zawsze jest sumą operacji we/wy odczytu i zapisu z poszczególnych dysków maszyny wirtualnej, ponieważ szczytowa liczba operacji we/wy odczytu i zapisu maszyny wirtualnej to wartość szczytowa sumy operacji we/wy odczytu i zapisu poszczególnych dysków z każdej minuty okresu profilowania.
 
-**Szczytowy współczynnik zmian danych w MB/s (ze współczynnikiem wzrostu)**: Szczytowy współczynnik zmian danych na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Pamiętaj, że łączny współczynnik zmian danych maszyny wirtualnej nie zawsze jest sumą współczynników zmian danych z poszczególnych dysków maszyny wirtualnej, ponieważ szczytowy współczynnik zmian danych maszyny wirtualnej to wartość szczytowa sumy współczynników zmian poszczególnych dysków z każdej minuty okresu profilowania.
+**Szczytowy współczynnik zmian danych w MB/s (ze współczynnikiem wzrostu)** : Szczytowy współczynnik zmian danych na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Pamiętaj, że łączny współczynnik zmian danych maszyny wirtualnej nie zawsze jest sumą współczynników zmian danych z poszczególnych dysków maszyny wirtualnej, ponieważ szczytowy współczynnik zmian danych maszyny wirtualnej to wartość szczytowa sumy współczynników zmian poszczególnych dysków z każdej minuty okresu profilowania.
 
 **Rozmiar maszyny Wirtualnej platformy Azure**: Idealnie zamapowany rozmiar maszyny wirtualnej usług Azure Cloud Services dla tej maszyny Wirtualnej w środowisku lokalnym. Mapowanie jest oparte na wielkości pamięci, liczbie dysków/rdzeni/kart sieciowych oraz liczbie operacji we/wy zapisu i odczytu lokalnej maszyny wirtualnej. Zawsze zalecany jest najmniejszy rozmiar maszyny wirtualnej platformy Azure zgodny ze wszystkimi charakterystykami lokalnej maszyny wirtualnej.
 
 **Liczba dysków**: Całkowita liczba dysków (Vmdk) maszyny wirtualnej, na maszynie Wirtualnej.
 
-**Rozmiar dysku (GB)**: Łączny skonfigurowany rozmiar wszystkich dysków maszyny wirtualnej. W narzędziu jest też wyświetlany rozmiar poszczególnych dysków maszyny wirtualnej.
+**Rozmiar dysku (GB)** : Łączny skonfigurowany rozmiar wszystkich dysków maszyny wirtualnej. W narzędziu jest też wyświetlany rozmiar poszczególnych dysków maszyny wirtualnej.
 
 **Rdzenie**: Liczba rdzeni procesora CPU na maszynie Wirtualnej.
 
-**Pamięć (MB)**: Pamięć RAM maszyny Wirtualnej.
+**Pamięć (MB)** : Pamięć RAM maszyny Wirtualnej.
 
 **NICs**: Liczba kart sieciowych na maszynie Wirtualnej.
 
@@ -251,17 +251,17 @@ Na przykład jeśli charakterystyki obciążenia dysku powodują umieszczenie go
 * Łączny współczynnik zmian danych dziennie przekracza obsługiwany limit współczynnika zmian dziennie wynoszący 2 TB dla serwera przetwarzania.
 
 
-**Szczytowy odczytu i zapisu na SEKUNDĘ (ze współczynnikiem wzrostu)**: Szczytowego obciążenia operacji We/Wy na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Pamiętaj, że łączna liczba operacji we/wy odczytu i zapisu maszyny wirtualnej nie zawsze jest sumą operacji we/wy odczytu i zapisu z poszczególnych dysków maszyny wirtualnej, ponieważ szczytowa liczba operacji we/wy odczytu i zapisu maszyny wirtualnej to wartość szczytowa sumy operacji we/wy odczytu i zapisu poszczególnych dysków z każdej minuty okresu profilowania.
+**Szczytowy odczytu i zapisu na SEKUNDĘ (ze współczynnikiem wzrostu)** : Szczytowego obciążenia operacji We/Wy na dysku (domyślnie jest używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna to 30 procent). Pamiętaj, że łączna liczba operacji we/wy odczytu i zapisu maszyny wirtualnej nie zawsze jest sumą operacji we/wy odczytu i zapisu z poszczególnych dysków maszyny wirtualnej, ponieważ szczytowa liczba operacji we/wy odczytu i zapisu maszyny wirtualnej to wartość szczytowa sumy operacji we/wy odczytu i zapisu poszczególnych dysków z każdej minuty okresu profilowania.
 
-**Szczytowy współczynnik zmian danych w MB/s (ze współczynnikiem wzrostu)**: Szczytowy współczynnik zmian danych na dysku (domyślnie używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna 30 procent). Pamiętaj, że łączny współczynnik zmian danych maszyny wirtualnej nie zawsze jest sumą współczynników zmian danych z poszczególnych dysków maszyny wirtualnej, ponieważ szczytowy współczynnik zmian danych maszyny wirtualnej to wartość szczytowa sumy współczynników zmian poszczególnych dysków z każdej minuty okresu profilowania.
+**Szczytowy współczynnik zmian danych w MB/s (ze współczynnikiem wzrostu)** : Szczytowy współczynnik zmian danych na dysku (domyślnie używany 95. percentyl) wraz z przyszłym współczynnikiem wzrostu (wartość domyślna 30 procent). Pamiętaj, że łączny współczynnik zmian danych maszyny wirtualnej nie zawsze jest sumą współczynników zmian danych z poszczególnych dysków maszyny wirtualnej, ponieważ szczytowy współczynnik zmian danych maszyny wirtualnej to wartość szczytowa sumy współczynników zmian poszczególnych dysków z każdej minuty okresu profilowania.
 
 **Liczba dysków**: Całkowita liczba dysków Vmdk maszyny Wirtualnej.
 
-**Rozmiar dysku (GB)**: Łączny skonfigurowany rozmiar wszystkich dysków maszyny wirtualnej. W narzędziu jest też wyświetlany rozmiar poszczególnych dysków maszyny wirtualnej.
+**Rozmiar dysku (GB)** : Łączny skonfigurowany rozmiar wszystkich dysków maszyny wirtualnej. W narzędziu jest też wyświetlany rozmiar poszczególnych dysków maszyny wirtualnej.
 
 **Rdzenie**: Liczba rdzeni procesora CPU na maszynie Wirtualnej.
 
-**Pamięć (MB)**: Ilość pamięci RAM na maszynie Wirtualnej.
+**Pamięć (MB)** : Ilość pamięci RAM na maszynie Wirtualnej.
 
 **NICs**: Liczba kart sieciowych na maszynie Wirtualnej.
 
