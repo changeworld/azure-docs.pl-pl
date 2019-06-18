@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e838dd3df417bd0b26167d5f316225520e7263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7be7d8b9fc9aa8b6c9c1d888744c25d710ca79a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859028"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106504"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Autotask Workplace
 
@@ -57,7 +57,7 @@ Aby skonfigurować integrację aplikacji Autotask Workplace z usługą Azure AD,
 
 **Aby dodać aplikację Autotask Workplace z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -143,7 +143,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu aplika
     > [!Note]
     > Podczas konfigurowania dostawcy tożsamości trzeba będzie określić poddomenę. Aby potwierdzić poprawną poddomenę, zaloguj się do usługi Workplace Online. Po zalogowaniu się zanotuj poddomenę w adresie URL. Poddomena to część między „https://” i „.awp.autotask.net/”. Powinna mieć wartość us, eu, ca lub au.
 
-2. Przejdź do pozycji **Configuration (Konfiguracja)** > **Single Sign-On (Logowanie jednokrotne)** i wykonaj następujące kroki:
+2. Przejdź do pozycji **Configuration (Konfiguracja)**  > **Single Sign-On (Logowanie jednokrotne)** i wykonaj następujące kroki:
 
     ![Konfiguracja logowania jednokrotnego w aplikacji Autotask](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
 
@@ -221,7 +221,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Autotask Workplace w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Autotask Workplace, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

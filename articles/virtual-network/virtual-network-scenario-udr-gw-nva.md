@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575587"
 ---
 # <a name="virtual-appliance-scenario"></a>Urządzenie wirtualne scenariusza
@@ -42,11 +42,11 @@ Poniżej rozwiązanie używa urządzenie wirtualne zapory, aby wdrożyć w sieci
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 Możesz wdrożyć środowisko wyjaśniono powyżej na platformie Azure przy użyciu różnych funkcji dostępnych już dziś, wykonując następujące czynności.
 
-* **Sieć wirtualna (VNet)**. Siecią wirtualną platformy Azure działa w podobny sposób, aby między siecią lokalną i można podzielić na co najmniej jednej podsieci w celu zapewnienia izolacji ruchu i separacji.
+* **Sieć wirtualna (VNet)** . Siecią wirtualną platformy Azure działa w podobny sposób, aby między siecią lokalną i można podzielić na co najmniej jednej podsieci w celu zapewnienia izolacji ruchu i separacji.
 * **Urządzenie wirtualne**. Kilka etap to udostępnienie urządzeń wirtualnych w witrynie Azure Marketplace, który może służyć do trzech zapory, opisano powyżej. 
 * **Trasy zdefiniowane przez użytkownika**. Tabele tras może zawierać tras zdefiniowanych przez użytkownika używane przez sieci platformy Azure, aby sterować przepływem pakietów w sieci wirtualnej. Te tabele tras można zastosować do podsieci. Jednym z najnowszych funkcji platformy Azure jest możliwość stosowania tabelę tras dla podsieci GatewaySubnet, zapewniając możliwość przekazywania wszystkich ruch w sieci wirtualnej platformy Azure za pośrednictwem połączenia hybrydowego do urządzenia wirtualnego.
 * **Przesyłanie dalej IP**. Domyślnie aparat sieci platformy Azure przesyłania pakietów do wirtualne karty sieciowe (NIC), tylko wtedy, gdy pakiet docelowy adres IP jest zgodny z adresem IP karty Sieciowej. W związku z tym Jeśli trasa zdefiniowana przez użytkownika określa, że pakiet musi być wysyłane do danego urządzenia wirtualnego, aparat sieci platformy Azure będzie porzucić pakietu. Aby upewnić się, że jest dostarczany z maszyną wirtualną (w tym przypadku urządzenia wirtualnego), który nie jest rzeczywisty miejsce docelowe dla pakietów, musisz włączyć przekazywanie adresów IP dla urządzenia wirtualnego.
-* **Sieciowe grupy zabezpieczeń (NSG)**. W poniższym przykładzie należy używać sieciowych grup zabezpieczeń, ale można użyć grup NSG stosowana do podsieci i/lub kart sieciowych w tym rozwiązaniu do dalszego filtrowania ruchu do i z tych podsieci i karty sieciowe.
+* **Sieciowe grupy zabezpieczeń (NSG)** . W poniższym przykładzie należy używać sieciowych grup zabezpieczeń, ale można użyć grup NSG stosowana do podsieci i/lub kart sieciowych w tym rozwiązaniu do dalszego filtrowania ruchu do i z tych podsieci i karty sieciowe.
 
 ![Łączność IPv6](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 
@@ -78,30 +78,30 @@ Aby upewnić się, komunikacja odbywa się za pośrednictwem urządzenia zapory 
 ### <a name="azgwudr"></a>azgwudr
 W tym scenariuszu tylko ruchem odbywającym się ze środowiska lokalnego do platformy Azure będzie służyć do zarządzania zapory, łącząc się z **AZF3**, oraz czy ruch musi przejść przez zaporę wewnętrznej **AZF2**. W związku z tym, w konieczne jest tylko jedna trasa **GatewaySubnet** jak pokazano poniżej.
 
-| Element docelowy | Następny przeskok | Wyjaśnienie |
+| Miejsce docelowe | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
 | 10.0.4.0/24 |10.0.3.11 |Zezwala na ruch w środowisku lokalnym dotrzeć do zarządzania zaporą **AZF3** |
 
 ### <a name="azsn2udr"></a>azsn2udr
-| Element docelowy | Następny przeskok | Wyjaśnienie |
+| Miejsce docelowe | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
 | 10.0.3.0/24 |10.0.2.11 |Zezwala na ruch do podsieci wewnętrznej bazy danych, który jest hostem aplikacji serwera za pomocą **AZF2** |
 | 0.0.0.0/0 |10.0.2.10 |Zezwala na cały ruch będą kierowane za pośrednictwem **AZF1** |
 
 ### <a name="azsn3udr"></a>azsn3udr
-| Element docelowy | Następny przeskok | Wyjaśnienie |
+| Miejsce docelowe | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
 | 10.0.2.0/24 |10.0.3.10 |Zezwala na ruch do **azsn2** do usługi flow z serwera aplikacji do serwera sieci Web za pośrednictwem **AZF2** |
 
 Należy także utworzyć tabele tras dla podsieci w **onpremvnet** do naśladowania w lokalnym centrum danych.
 
 ### <a name="onpremsn1udr"></a>onpremsn1udr
-| Element docelowy | Następny przeskok | Wyjaśnienie |
+| Miejsce docelowe | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
 | 192.168.2.0/24 |192.168.1.4 |Zezwala na ruch do **onpremsn2** za pośrednictwem **OPFW** |
 
 ### <a name="onpremsn2udr"></a>onpremsn2udr
-| Element docelowy | Następny przeskok | Wyjaśnienie |
+| Miejsce docelowe | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
 | 10.0.3.0/24 |192.168.2.4 |Zezwala na ruch do podsieci, to jest poparte na platformie Azure za pośrednictwem **OPFW** |
 | 192.168.1.0/24 |192.168.2.4 |Zezwala na ruch do **onpremsn1** za pośrednictwem **OPFW** |

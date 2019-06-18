@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487271"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-create-datasets.md)
 > * [Wersja 2 (bieżąca wersja)](../concepts-datasets-linked-services.md)
 
@@ -81,7 +81,7 @@ W poniższej tabeli opisano właściwości w powyższy kod JSON:
 
 | Właściwość | Opis | Wymagane | Domyślne |
 | --- | --- | --- | --- |
-| name |Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](data-factory-naming-rules.md) reguły nazewnictwa. |Yes |Nie dotyczy |
+| name |Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](data-factory-naming-rules.md) reguły nazewnictwa. |Tak |Nie dotyczy |
 | type |Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: AzureBlob, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typ zestawu danych](#Type). |Yes |Nie dotyczy |
 | structure |Schemat zestawu danych.<br/><br/>Aby uzyskać więcej informacji, zobacz [struktury zestawu danych](#Structure). |Nie |Nie dotyczy |
 | typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#Type). |Yes |Nie dotyczy |
@@ -193,7 +193,7 @@ Każda kolumna w strukturze zawiera następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| name |Nazwa kolumny. |Yes |
+| name |Nazwa kolumny. |Tak |
 | type |Typ danych kolumny.  |Nie |
 | culture |. Kulturę opartą na sieci ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. |Nie |
 | format |Format ciągu ma być używany, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. |Nie |
@@ -203,7 +203,7 @@ Poniższe wskazówki pomocne w określeniu, kiedy należy uwzględnić informacj
 * **W przypadku źródeł danych ze strukturą**, określ sekcji struktury, tylko wtedy, gdy chcesz, aby zamapować kolumny źródła do ujścia kolumn i ich nazwy nie są takie same. Tego rodzaju źródła danych ze strukturą są przechowywane informacje schematu i typu danych oraz samych danych. Przykładami źródeł danych ze strukturą programu SQL Server, Oracle i tabela platformy Azure.
   
     Jak informacje o typie jest już dostępna dla źródeł danych ze strukturą, nie może zawierać informacje o typie, gdy zawiera sekcję struktury.
-* **Dla schematu do źródeł danych odczytu (w szczególności usługi Blob storage)**, istnieje możliwość przechowywania danych bez przechowywania żadnych informacji schematu lub typu z danymi. Dla tych typów źródeł danych mają strukturę, gdy chcesz mapować kolumny źródła i ujścia kolumn. Również mają strukturę, gdy zestaw danych jest wartością wejściową dla działania kopiowania, a typy danych źródłowy zestaw danych powinny być konwertowane na typach natywnych ujścia.
+* **Dla schematu do źródeł danych odczytu (w szczególności usługi Blob storage)** , istnieje możliwość przechowywania danych bez przechowywania żadnych informacji schematu lub typu z danymi. Dla tych typów źródeł danych mają strukturę, gdy chcesz mapować kolumny źródła i ujścia kolumn. Również mają strukturę, gdy zestaw danych jest wartością wejściową dla działania kopiowania, a typy danych źródłowy zestaw danych powinny być konwertowane na typach natywnych ujścia.
     
     Usługa Data Factory obsługuje następujące wartości do dostarczania informacji o typie w strukturze: **Int16, Int32, Int64, pojedynczego, Double, Decimal, bajt [], atrybut typu wartość logiczna, ciąg, identyfikator Guid, daty/godziny, Datetimeoffset i Timespan**. Te wartości są Common Language Specification (CLS)-zgodne. Wartości typu opartego na sieci.
 
@@ -235,7 +235,7 @@ W poniższej tabeli opisano właściwości, które można użyć w sekcji dostę
 
 | Właściwość | Opis | Wymagane | Domyślne |
 | --- | --- | --- | --- |
-| frequency |Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuty, godziny, dnia, tygodnia, miesiąca |Yes |Nie dotyczy |
+| frequency |Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuty, godziny, dnia, tygodnia, miesiąca |Tak |Nie dotyczy |
 | interval |Określa mnożnik częstotliwości.<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany. Na przykład, jeśli potrzebujesz zestawu danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/>Należy pamiętać, że jeśli określisz **częstotliwość** jako **minutę**, należy ustawić interwał nie może być mniej niż 15. |Yes |Nie dotyczy |
 | style |Określa, czy wycinek powinny być tworzone na początku lub końcu interwału.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Jeśli **częstotliwość** ustawiono **miesiąca**, i **styl** jest ustawiona na **EndOfInterval**, wycinek jest generowany na ostatni dzień miesiąca. Jeśli **styl** ustawiono **StartOfInterval**, wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli **częstotliwość** jest ustawiona na **dzień**, i **styl** ustawiono **EndOfInterval**, wycinek jest generowany w ciągu ostatniej godziny dnia.<br/><br/>Jeśli **częstotliwość** ustawiono **godzinę**, i **styl** jest ustawiona na **EndOfInterval**, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 - 14: 00, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
 | anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/>Należy pamiętać, że jeśli ta właściwość ma części daty, które są bardziej szczegółowe niż określoną częstotliwością, części bardziej szczegółowe są ignorowane. Na przykład jeśli **interwał** jest **co godzinę** (frequency: hour, interval: 1), a **anchorDateTime** zawiera **minuty i sekundy**, a następnie minuty i sekundy części **anchorDateTime** są ignorowane. |Nie |01/01/0001 |
