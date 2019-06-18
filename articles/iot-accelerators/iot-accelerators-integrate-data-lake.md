@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61449502"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integracja rozwiązania do zdalnego monitorowania za pomocą usługi Azure Data Lake Store
@@ -103,7 +103,7 @@ Utwórz zadanie usługi Azure Stream Analytics, przesłać strumień danych z us
 
 1. Wybierz konto usługi Data Lake Store, do którego został utworzony w poprzednich krokach, a następnie podaj strukturę folderów, przesyłanie strumieniowe danych do magazynu.
 
-1. Wprowadź w polu format daty **/streaming/ {date} / {time}**. Pozostaw domyślny format daty RRRR/MM/DD i format godziny gg.
+1. Wprowadź w polu format daty **/streaming/ {date} / {time}** . Pozostaw domyślny format daty RRRR/MM/DD i format godziny gg.
 
     ![Podaj strukturę folderów](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 

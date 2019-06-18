@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
 ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955920"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
@@ -80,7 +80,7 @@ Podczas klonowania konfiguracji z innego miejsca wdrożenia sklonowanego konfigu
 * Ustawienia ogólne — takich jak gniazda sieci Web 32/64-bitowych wersji framework
 * Ustawienia aplikacji (można skonfigurować w celu przypisane do miejsca)
 * Parametry połączenia (można skonfigurować w celu przypisane do miejsca)
-* Mapowania procedur obsługi
+* Mapowania obsługi
 * Ustawienia monitorowania i diagnostyki
 * Certyfikaty publiczne
 * Zawartość usługi WebJobs
@@ -195,7 +195,7 @@ Automatycznej wymiany usprawnia scenariuszy DevOps, w której chcesz wdrożyć a
 
 Aby skonfigurować automatycznej wymiany, wykonaj następujące kroki:
 
-1. Przejdź do strony zasobów aplikacji. Wybierz **miejsca wdrożenia (wersja zapoznawcza)** > *\<miejsca źródłowego żądaną >* > **ustawienia aplikacji**.
+1. Przejdź do strony zasobów aplikacji. Wybierz **miejsca wdrożenia (wersja zapoznawcza)**  >  *\<miejsca źródłowego żądaną >*  > **ustawienia aplikacji**.
    
 2. W **automatycznej wymiany**, wybierz opcję **na**, następnie wybierz gniazdo wybraną docelową w **gniazda wymiany automatycznej**i kliknij przycisk **Zapisz** na pasku poleceń. 
    
@@ -238,7 +238,7 @@ Domyślnie, wszystkie żądania klientów do aplikacji Produkcja — adres URL (
 
 Aby automatycznie kierować ruch produkcyjny, wykonaj następujące kroki:
 
-1. Przejdź do strony zasobów aplikacji i wybierz **miejsca wdrożenia (wersja zapoznawcza)**.
+1. Przejdź do strony zasobów aplikacji i wybierz **miejsca wdrożenia (wersja zapoznawcza)** .
 
 2. W **% ruchu** kolumny gniazda, którą chcesz rozesłać do, wartość procentowa (od 0 do 100) do reprezentowania ilości całkowitego ruchu, które chcesz rozesłać. Kliknij pozycję **Zapisz**.
 
@@ -272,7 +272,7 @@ Domyślnie nowe miejsc otrzymują reguły routingu `0%`, jak pokazano w kolorze 
 
 ## <a name="delete-slot"></a>Usuń gniazdo
 
-Przejdź do strony zasobów aplikacji. Wybierz **miejsca wdrożenia (wersja zapoznawcza)** > *\<miejsca, aby usunąć >* > **Przegląd**. Kliknij przycisk **Usuń** na pasku poleceń.  
+Przejdź do strony zasobów aplikacji. Wybierz **miejsca wdrożenia (wersja zapoznawcza)**  >  *\<miejsca, aby usunąć >*  > **Przegląd**. Kliknij przycisk **Usuń** na pasku poleceń.  
 
 ![Usuń miejsce wdrożenia](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

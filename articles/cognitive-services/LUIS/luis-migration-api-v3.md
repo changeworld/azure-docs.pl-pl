@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
 ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123881"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Wersja zapoznawcza: Migrowanie do interfejsu API w wersji 3.x dla aplikacji usługi LUIS
@@ -54,7 +54,7 @@ Zmiany obiektu odpowiedzi V3 obejmują [ze wstępnie utworzonych jednostek](luis
 
 Interfejs API w wersji 3 ma parametry ciągu zapytania różne.
 
-|Nazwy parametrów|Type|Wersja|Przeznaczenie|
+|Nazwy parametrów|Typ|Version|Przeznaczenie|
 |--|--|--|--|
 |`query`|string|Tylko w wersji 3|**W wersji 2**, trwa wypowiedź do można przewidzieć `q` parametru. <br><br>**W wersji 3**, funkcji jest przekazywany w `query` parametru.|
 |`show-all-intents`|wartość logiczna|Tylko w wersji 3|Zwróć wszystkie intencji z odpowiedni wynik w **prediction.intents** obiektu. Intents są zwracane jako obiekty w obiekcie nadrzędnym `intents` obiektu. Dzięki temu dostęp programowy bez konieczności znaleźć zamiar w tablicy: `prediction.intents.give`. W wersji 2 te zostały zwrócone w tablicy. |

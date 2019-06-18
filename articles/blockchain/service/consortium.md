@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: e745a4ee4789ef46a61b5cb0bbf806c41ef631ec
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027918"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Usługa Azure Blockchain konsorcjum
@@ -39,12 +39,12 @@ Uczestnicy konsorcjum mogą być osoby i organizacje i można przypisać roli u�
 
 | Akcja | Rola użytkownika | Rola administratora
 |--------|:----:|:------------:|
-| Tworzenie nowego elementu członkowskiego | Yes | Yes |
+| Tworzenie nowego elementu członkowskiego | Tak | Yes |
 | Zapraszanie nowych elementów członkowskich | Nie | Yes |
-| Ustawianie lub zmienianie uczestnika roli członka | Nie | Yes |
+| Ustawianie lub zmienianie uczestnika roli członka | Nie | Tak |
 | Zmień nazwę wyświetlaną elementu członkowskiego | Tylko dla własnej składowej | Tylko dla własnej składowej |
-| Usuń członków | Tylko dla własnej składowej | Yes |
-| Uczestniczenie w transakcjach łańcucha bloków | Yes | Yes |
+| Usuń członków | Tylko dla własnej składowej | Tak |
+| Uczestniczenie w transakcjach łańcucha bloków | Tak | Tak |
 
 ### <a name="user-role"></a>Rola użytkownika
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61340183"
 ---
 # <a name="entity-attributes"></a>Atrybuty obiektu:
@@ -22,7 +22,7 @@ ms.locfileid: "61340183"
 Interfejs academic graph składa się z 7 typów jednostek. Wszystkie jednostki mają Identyfikatora jednostki i typ jednostki.
 
 ## <a name="common-entity-attributes"></a>Wspólne atrybuty jednostki
-Name (Nazwa)    |Opis                |Type       | Operacje
+Name (Nazwa)    |Opis                |Typ       | Operacje
 ------- | ------------------------- | --------- | ----------------------------
 Identyfikator      |Identyfikator jednostki                  |Int64      |Równa się
 Ty      |Typ jednostki                |Wyliczenia   |Równa się

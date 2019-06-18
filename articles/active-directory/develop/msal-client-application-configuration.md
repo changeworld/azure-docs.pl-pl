@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5e175a8cdd1622add90bd80df63303fe914ab9c
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66430812"
 ---
 # <a name="application-configuration-options"></a>Opcje konfiguracji aplikacji
@@ -38,7 +38,7 @@ W kodzie inicjowania nowego publicznego lub poufne klienta (lub agenta użytkown
 ## <a name="authority"></a>Urząd
 Organ ma adres URL, który określa katalog, w jakiej biblioteki MSAL może żądać tokenów z. Typowe są:
 
-- https://login.microsoftonline.com/&lt; dzierżawy&gt;/, gdzie &lt;dzierżawy&gt; jest identyfikator dzierżawy w domenie skojarzone z tym dzierżawcą usługi Azure AD lub dzierżawy usługi Azure Active Directory (Azure AD). Używana tylko do logowania użytkowników konkretnej organizacji.
+- https://login.microsoftonline.com/&lt ; dzierżawy&gt; /, gdzie &lt; dzierżawy&gt; jest identyfikator dzierżawy w domenie skojarzone z tym dzierżawcą usługi Azure AD lub dzierżawy usługi Azure Active Directory (Azure AD). Używana tylko do logowania użytkowników konkretnej organizacji.
 - https://login.microsoftonline.com/common/. Umożliwia logowanie użytkowników mających roboczego i konta służbowe lub osobiste konta Microsoft.
 - https://login.microsoftonline.com/organizations/. Używane do logowania użytkowników przy użyciu kont służbowych.
 - https://login.microsoftonline.com/consumers/. Używane do logowania użytkowników przy użyciu tylko osobistych kont Microsoft (wcześniej znane jako konta usługi Windows Live ID).

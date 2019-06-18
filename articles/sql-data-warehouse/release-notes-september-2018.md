@@ -11,17 +11,17 @@ ms.date: 10/08/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5041458fdc3c6a49c59f2c4c476db71098531419
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65912160"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Wrzesień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w września 2018 r.
 
 ## <a name="new-lower-entry-point-for-sql-data-warehouse-gen2"></a>Nowy punkt wejścia niższe dla Gen2 magazynu danych SQL
-W kwietniu 2018 r. [firma Microsoft ogłosiła](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Gen2 magazynu danych SQL Azure, oferująca 5 x wydajności, 5 x skalowanie obliczeń, 4 x współbieżności i nieograniczony magazyn. Jak wspomniano w [hurtowni danych w chmurze testów porównawczych](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) przez Joego, SQL Data Warehouse Gen2 **przewyższa stosowane przekształcania Amazon Redshift przez 42%**.
+W kwietniu 2018 r. [firma Microsoft ogłosiła](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Gen2 magazynu danych SQL Azure, oferująca 5 x wydajności, 5 x skalowanie obliczeń, 4 x współbieżności i nieograniczony magazyn. Jak wspomniano w [hurtowni danych w chmurze testów porównawczych](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) przez Joego, SQL Data Warehouse Gen2 **przewyższa stosowane przekształcania Amazon Redshift przez 42%** .
 
 Gen2 — jest teraz ogólnie dostępna w dolnym wpis punktu z DWU500c możliwość uruchamiania środowisk magazynu lub projektowania/testowania mniejszy rozmiar danych za pomocą wszystkich najnowszych ulepszeń usługi. Nowy punkt wejścia zachowuje wszystkie funkcje Gen2, w tym [buforowanie adaptacyjne](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/), [oświetlenia szybko danych zmiana kolejności](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/)oraz obsługę [magazynu danych w czasie rzeczywistym](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/).
 

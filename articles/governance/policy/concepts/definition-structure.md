@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65979545"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
@@ -505,7 +505,7 @@ Mieć wiele aliasów, które są dostępne wersji, która jest wyświetlana jako
 
 Alias "normal" reprezentuje pole jako pojedyncza wartość. To pole jest scenariuszach porównania dokładnego dopasowania, gdy cały zestaw wartości muszą zawierać dokładnie zgodnie z definicją, już nie.
 
-**[\*]** Alias sprawia, że można porównać wartości każdego elementu w tablicy i właściwości każdego elementu. To podejście sprawia, że można porównać właściwości elementu "Jeśli żadna z", "ewentualne", lub "Jeśli wszystkie z" scenariuszy. Za pomocą **ipRules [\*]**, przykład czy sprawdzanie poprawności, które każdy _akcji_ jest _Odmów_, ale nie martwiąc się o istnieją reguły ile lub jaki adres IP _wartość_ jest. Ta przykładowa reguła sprawdza, czy wszystkie dopasowania **ipRules [\*] .value** do **10.0.4.1** i stosuje **effectType** tylko wtedy, gdy co najmniej jedno dopasowanie nie zostanie znaleziona:
+**[\*]** Alias sprawia, że można porównać wartości każdego elementu w tablicy i właściwości każdego elementu. To podejście sprawia, że można porównać właściwości elementu "Jeśli żadna z", "ewentualne", lub "Jeśli wszystkie z" scenariuszy. Za pomocą **ipRules [\*]** , przykład czy sprawdzanie poprawności, które każdy _akcji_ jest _Odmów_, ale nie martwiąc się o istnieją reguły ile lub jaki adres IP _wartość_ jest. Ta przykładowa reguła sprawdza, czy wszystkie dopasowania **ipRules [\*] .value** do **10.0.4.1** i stosuje **effectType** tylko wtedy, gdy co najmniej jedno dopasowanie nie zostanie znaleziona:
 
 ```json
 "policyRule": {

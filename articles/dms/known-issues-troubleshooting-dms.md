@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 05/22/2019
 ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002208"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Rozwiązywanie typowych problemów z usługi Azure Database Migration Service, jak i błędy
@@ -96,7 +96,7 @@ Podczas migracji bazy danych MySQL do usługi Azure Database for MySQL wystąpie
 
 | Przyczyna         | Rozwiązanie    |
 | ------------- | ------------- |
-| Ten błąd występuje, gdy migracja nie powiedzie się z powodu przekroczenia limitu czasu oczekiwania dla blokady, podczas migracji. | Rozważ zwiększenie wartości parametru server **"innodb_lock_wait_timeout"**. Dozwolone jest 1073741824. |
+| Ten błąd występuje, gdy migracja nie powiedzie się z powodu przekroczenia limitu czasu oczekiwania dla blokady, podczas migracji. | Rozważ zwiększenie wartości parametru server **"innodb_lock_wait_timeout"** . Dozwolone jest 1073741824. |
 
 ## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>Błąd podczas łączenia ze źródłem programu SQL Server w przypadku korzystania z portów dynamicznych lub nazwane wystąpienie
 

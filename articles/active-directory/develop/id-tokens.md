@@ -18,10 +18,10 @@ ms.custom: aaddev
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25408b2120a9ac9f38e7959ef8e9dbbb34df7c2b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962570"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny Identyfikatora platforma tożsamości firmy Microsoft
@@ -54,7 +54,7 @@ Wyświetl ten token przykładowe v2.0 w [jwt.ms](https://jwt.ms/#id_token=eyJ0eX
 
 ### <a name="header-claims"></a>Nagłówek oświadczeń
 
-|Oświadczenie | Format | Opis |
+|Claim | Format | Opis |
 |-----|--------|-------------|
 |`typ` | Ciąg — zawsze "JWT" | Wskazuje, czy token jest token JWT.|
 |`alg` | String | Określa algorytm, który był używany do podpisywania tokenu. Przykład: "RS256" |
@@ -65,7 +65,7 @@ Wyświetl ten token przykładowe v2.0 w [jwt.ms](https://jwt.ms/#id_token=eyJ0eX
 
 Ta lista zawiera oświadczenia, które są w większości id_tokens domyślnie (z wyjątkiem sytuacji, gdy podane).  Jednak Twoja aplikacja może używać [opcjonalnych oświadczeń](active-directory-optional-claims.md) dodatkowe oświadczenia w id_token żądania.  Te można dostosować w zakresie `groups` oświadczenia do informacji o nazwę użytkownika.
 
-|Oświadczenie | Format | Opis |
+|Claim | Format | Opis |
 |-----|--------|-------------|
 |`aud` |  Ciąg, identyfikator URI Identyfikatora aplikacji | Identyfikuje zamierzonym odbiorcą tokenu. W `id_tokens`, odbiorców jest identyfikator aplikacji, przypisany do aplikacji w witrynie Azure portal. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli wartość nie jest zgodny. |
 |`iss` |  Ciąg identyfikatora URI usługi STS | Określa usługę tokenu zabezpieczającego (STS), który tworzy i zwraca token i dzierżawy usługi Azure AD, w którym użytkownik został uwierzytelniony. Jeśli token został wystawiony przez punkt końcowy v2.0, identyfikator URI zakończy się w `/v2.0`.  Identyfikator GUID, który wskazuje, czy użytkownik jest użytkownikiem odbiorcy z konta Microsoft jest `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikację należy użyć część stanowiącą identyfikator GUID oświadczenia, aby ograniczyć zestaw dzierżawców, którzy mogą zalogować do aplikacji, jeśli ma to zastosowanie. |

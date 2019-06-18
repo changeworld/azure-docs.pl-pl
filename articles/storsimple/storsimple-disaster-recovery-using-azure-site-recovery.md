@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
 ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66150666"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Zautomatyzowane rozwiązanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery dla udziałów plików w serwisie StorSimple
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługa Microsoft Azure StorSimple to hybrydowe rozwiązanie magazynu w chmurze odnoszący się do złożoności danych bez struktury, zwykle powiązanych ze udziałów plików. Usługa StorSimple używa magazynu w chmurze jako rozszerzenia rozwiązania lokalnego i automatycznie warstwy danych przez Magazyn lokalny oraz Magazyn w chmurze. Zintegrowana ochrona danych z lokalnego oraz migawki w chmurze, eliminuje potrzebę stosowania sprawling infrastruktury magazynu.
 
 [Usługa Azure Site Recovery](../site-recovery/site-recovery-overview.md) to usługa oparta na platformie Azure, która oferuje możliwości odzyskiwania po awarii poprzez organizowanie replikacji, trybu failover i odzyskiwanie maszyn wirtualnych. Usługa Azure Site Recovery obsługuje wiele technologii replikacji stale replikować, ochronę i bezproblemowo w tryb failover maszyny wirtualne i aplikacje do publicznego i prywatnego lub hostowanej chmury.
@@ -171,20 +171,20 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
 1. Na koncie usługi automation kliknij **zmienne** &gt; **Dodaj zmienną** i dodaj następujące zmienne. Można zaszyfrować te zasoby. Te zmienne są określonego planu odzyskiwania. Plan odzyskiwania, który zostanie utworzony w następnym kroku, nazwa będzie plan testu, a następnie zmiennych powinny być StorSimRegKey plan testu, AzureSubscriptionName plan testu i tak dalej.
 
    - **BaseUrl**: Adres url usługi Resource Manager dla chmury platformy Azure. Pobieranie przy użyciu **Get AzEnvironment | Nazwa Select-Object, ResourceManagerUrl** polecenia cmdlet.
-   - *RecoveryPlanName***-ResourceGroupName**: Grupa usługi Resource Manager, zawierającej zasób usługi StorSimple.
-   - * RecoveryPlanName ***- ManagerName**: Zasób usługi StorSimple, który ma urządzenia StorSimple.
-   - *RecoveryPlanName***-DeviceName**: Urządzenie StorSimple, który ma być przełączone w tryb failover.
-   - *RecoveryPlanName***-DeviceIpAddress**: Adres IP urządzenia (ten znajduje się w **urządzeń** kartę sekcji Menedżer urządzeń StorSimple &gt; **ustawienia** &gt; **sieci** &gt; **Ustawienia DNS** grupy).
-   - *RecoveryPlanName***-VolumeContainers**: Ciąg rozdzielony przecinkami, kontenerów woluminów na urządzeniu, które muszą zostać przełączone w tryb failover; na przykład: volcon1 volcon2, volcon3.
-   - *RecoveryPlanName***-TargetDeviceName**: Urządzenie StorSimple w chmurze na którym kontenery znajdują się w tryb failover.
-   - *RecoveryPlanName***-TargetDeviceIpAddress**: Adres IP urządzenia docelowego (ten znajduje się w **maszyny wirtualnej** sekcji &gt; **ustawienia** grupy &gt; **sieć** karty).
-   - *RecoveryPlanName***-StorageAccountName**: Nazwa konta magazynu, w którym przechowywane będą skryptu (który ma do uruchamiania na nieudane przez maszynę Wirtualną). Może to być konto magazynu, które ma miejsce do przechowywania skryptu tymczasowo.
-   - *RecoveryPlanName***-StorageAccountKey**: Klucz dostępu dla powyższego konta magazynu.
-   - * RecoveryPlanName ***- VMGUIDS**: Podczas ochrony maszyn wirtualnych, usługi Azure Site Recovery przypisuje każda maszyna wirtualna Unikatowy identyfikator, który zawiera szczegółowe informacje o trybie tryb failover maszyny Wirtualnej. Aby uzyskać VMGUID, wybierz **usługi Recovery Services** kartę, a następnie kliknij przycisk **chronionego elementu** &gt; **grup ochrony** &gt;  **Maszyny** &gt; **właściwości**. Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikator GUID w faktycznej jako ciąg rozdzielonych przecinkami.
+   - *RecoveryPlanName* **-ResourceGroupName**: Grupa usługi Resource Manager, zawierającej zasób usługi StorSimple.
+   - \* RecoveryPlanName * **- ManagerName**: Zasób usługi StorSimple, który ma urządzenia StorSimple.
+   - *RecoveryPlanName* **-DeviceName**: Urządzenie StorSimple, który ma być przełączone w tryb failover.
+   - *RecoveryPlanName* **-DeviceIpAddress**: Adres IP urządzenia (ten znajduje się w **urządzeń** kartę sekcji Menedżer urządzeń StorSimple &gt; **ustawienia** &gt; **sieci** &gt; **Ustawienia DNS** grupy).
+   - *RecoveryPlanName* **-VolumeContainers**: Ciąg rozdzielony przecinkami, kontenerów woluminów na urządzeniu, które muszą zostać przełączone w tryb failover; na przykład: volcon1 volcon2, volcon3.
+   - *RecoveryPlanName* **-TargetDeviceName**: Urządzenie StorSimple w chmurze na którym kontenery znajdują się w tryb failover.
+   - *RecoveryPlanName* **-TargetDeviceIpAddress**: Adres IP urządzenia docelowego (ten znajduje się w **maszyny wirtualnej** sekcji &gt; **ustawienia** grupy &gt; **sieć** karty).
+   - *RecoveryPlanName* **-StorageAccountName**: Nazwa konta magazynu, w którym przechowywane będą skryptu (który ma do uruchamiania na nieudane przez maszynę Wirtualną). Może to być konto magazynu, które ma miejsce do przechowywania skryptu tymczasowo.
+   - *RecoveryPlanName* **-StorageAccountKey**: Klucz dostępu dla powyższego konta magazynu.
+   - \* RecoveryPlanName * **- VMGUIDS**: Podczas ochrony maszyn wirtualnych, usługi Azure Site Recovery przypisuje każda maszyna wirtualna Unikatowy identyfikator, który zawiera szczegółowe informacje o trybie tryb failover maszyny Wirtualnej. Aby uzyskać VMGUID, wybierz **usługi Recovery Services** kartę, a następnie kliknij przycisk **chronionego elementu** &gt; **grup ochrony** &gt;  **Maszyny** &gt; **właściwości**. Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikator GUID w faktycznej jako ciąg rozdzielonych przecinkami.
 
      Na przykład, jeśli nazwa planu odzyskiwania jest fileServerpredayRP wówczas **zmienne**, **połączeń** i **certyfikaty** karta powinna wyglądać następująco, po dodaniu wszystkie zasoby.
 
-      ![Zasoby](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
+      ![Elementy zawartości](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
 1. Przekazywanie modułu Runbook serii StorSimple 8000 na koncie usługi Automation. Użyj poniższych kroków, aby dodać moduł:
    

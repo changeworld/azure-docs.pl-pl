@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
 ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132965"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Jak skalować pamięć podręczna systemu Azure dla usługi Redis
@@ -29,7 +29,7 @@ Możesz użyć [monitorowania](cache-how-to-monitor.md) funkcje pamięci podręc
 
 Można monitorować następujące metryki, aby określić, jeśli chcesz skalować.
 
-* Obciążenie serwera Redis
+* Obciążenie serwera redis
 * Użycie pamięci
 * Przepustowość sieci
 * Użycie procesora CPU
@@ -39,7 +39,7 @@ Jeśli okaże się pamięci podręcznej nie jest już osiąga spełnić wymagani
 ## <a name="scale-a-cache"></a>Skalowanie pamięci podręcznej
 Skalowanie pamięci podręcznej, [przejdź do pamięci podręcznej](cache-configure.md#configure-azure-cache-for-redis-settings) w [witryny Azure portal](https://portal.azure.com) i kliknij przycisk **skalowania** z **menu zasobów**.
 
-![Skaluj](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Skalowanie](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 Wybierz żądaną warstwę cenową z **wybierz warstwę cenową** bloku i kliknij przycisk **wybierz**.
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 45208b5c6538ea523a7b87d6dbdeb99e792783ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61262304"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopiowanie danych z usługa internetowa witryny Amazon Marketplace przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
@@ -44,7 +44,7 @@ Usługa internetowa witryny Amazon Marketplace połączone usługi są obsługiw
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **AmazonMWS** | Yes |
+| type | Właściwość type musi być równa: **AmazonMWS** | Tak |
 | endpoint | Punkt końcowy serwera Amazon MWS, (czyli mws.amazonservices.com)  | Yes |
 | marketplaceID | Identyfikator witryny Marketplace Amazon, którego chcesz pobrać dane z. Do pobierania danych z wielu identyfikatorów portalu Marketplace, rozdziel je przecinkami (`,`). (czyli A2EUQ1WTGCTBG2)  | Yes |
 | sellerID | Identyfikator Amazon sprzedawcy.  | Yes |
@@ -88,7 +88,7 @@ Aby skopiować dane z usługa internetowa witryny Amazon Marketplace, należy us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **AmazonMWSObject** | Yes |
+| type | Właściwość typu elementu dataset musi być równa: **AmazonMWSObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -118,7 +118,7 @@ Aby skopiować dane z usługa internetowa witryny Amazon Marketplace, należy us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **AmazonMWSSource** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **AmazonMWSSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

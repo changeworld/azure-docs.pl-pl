@@ -10,10 +10,10 @@ ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919800"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC usługi Azure Automation stanu konfiguracji
@@ -41,7 +41,7 @@ Po użytkownik zdecydował się na metodzie, kompilacji, należy użyć poniższ
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Kompilowanie konfiguracji DSC w witrynie Azure portal
 
-1. Na koncie usługi Automation kliknij **State configuration (DSC)**.
+1. Na koncie usługi Automation kliknij **State configuration (DSC)** .
 1. Kliknij pozycję **konfiguracje** , a następnie kliknij nazwę konfiguracji, aby skompilować.
 1. Kliknij przycisk **skompilować**.
 1. Jeśli konfiguracja nie ma parametrów, pojawia się monit o potwierdzenie, czy chcesz go skompilować. Jeśli konfiguracja ma parametry, **kompilowania konfiguracji** zostanie otwarty blok, dzięki czemu możesz podać wartości parametrów. Zapoznaj się z poniższymi [ **podstawowych parametrów** ](#basic-parameters) sekcji, aby uzyskać więcej szczegółowych informacji dotyczących parametrów.

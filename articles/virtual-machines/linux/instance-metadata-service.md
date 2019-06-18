@@ -16,10 +16,10 @@ ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 88de601caf984d2511229cd68190554086c3da38
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65779562"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
@@ -107,8 +107,8 @@ Poniższa tabela jest odwołaniem do innych formatów danych, które mogą obsł
 Interfejs API | Domyślny Format danych | W innych formatach
 --------|---------------------|--------------
 /instance | json | tekst
-/scheduledevents | json | brak
-/ zaświadczenia | json | brak
+/scheduledevents | json | Brak
+/ zaświadczenia | json | Brak
 
 Aby uzyskać dostęp, format odpowiedzi innych niż domyślne, określ żądany format jako parametr ciągu zapytania w żądaniu. Na przykład:
 
@@ -132,7 +132,7 @@ Kod stanu HTTP | Reason
 ----------------|-------
 200 OK |
 400 Niewłaściwe żądanie | Brak `Metadata: true` nagłówek lub Brak formatu podczas wykonywania zapytań dotyczących węzeł liścia
-404 Nie znaleziono | Żądany element nie istnieje.
+404 — Nie odnaleziono | Żądany element nie istnieje.
 Metoda 405 nie jest dozwolona | Tylko `GET` i `POST` żądania są obsługiwane
 429 zbyt wiele żądań | Interfejs API obsługuje obecnie maksymalnie 5 zapytań na sekundę
 Błąd usługi 500     | Spróbuj ponownie po pewnym czasie
@@ -344,7 +344,7 @@ Dane | Opis | Wprowadzona w wersji
 -----|-------------|-----------------------
 zaświadczenia | Zobacz [zaświadczenia danych](#attested-data) | 2018-10-01
 identity | Zarządzanych tożsamości dla zasobów platformy Azure. Zobacz [uzyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-wystąpienie | Zobacz [wystąpienia interfejsu API](#instance-api) | 2017-04-02
+instance | Zobacz [wystąpienia interfejsu API](#instance-api) | 2017-04-02
 scheduledevents | Zobacz [zaplanowane zdarzenia](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Wystąpienie interfejsu API
@@ -357,7 +357,7 @@ Dane | Opis | Wprowadzona w wersji
 -----|-------------|-----------------------
 azEnvironment | Gdy maszyna wirtualna jest uruchomiona w środowisku platformy Azure | 2018-10-01
 customData | Zobacz [danych niestandardowych](#custom-data) | 2019-02-01
-lokalizacja | Region platformy Azure maszyna wirtualna jest uruchomiona w | 2017-04-02
+location | Region platformy Azure maszyna wirtualna jest uruchomiona w | 2017-04-02
 name | Nazwa maszyny Wirtualnej | 2017-04-02
 oferty | Oferuje informacje dotyczące obrazu maszyny Wirtualnej i jest obecna tylko w przypadku obrazów jest wdrażany z galerii obrazów systemu Azure | 2017-04-02
 osType | System Linux lub Windows | 2017-04-02
@@ -365,11 +365,11 @@ placementGroupId | [Grupy umieszczania](../../virtual-machine-scale-sets/virtual
 Plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) zawierający nazwę produktu i wydawcy dla maszyny Wirtualnej, jeśli jego obrazu portalu Marketplace platformy Azure | 2018-04-02
 platformUpdateDomain |  [Domena aktualizacji](manage-availability.md) maszyna wirtualna jest uruchomiona | 2017-04-02
 platformFaultDomain | [Domena błędów](manage-availability.md) maszyna wirtualna jest uruchomiona | 2017-04-02
-dostawca | Dostawca maszyny wirtualnej | 2018-10-01
+Dostawcy | Dostawca maszyny wirtualnej | 2018-10-01
 publicKeys | [Kolekcja kluczy publicznych](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) przypisane do maszyny Wirtualnej i ścieżek | 2018-04-02
-Wydawcy | Wydawca obrazu maszyny Wirtualnej | 2017-04-02
+publisher | Wydawca obrazu maszyny Wirtualnej | 2017-04-02
 resourceGroupName | [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) dla maszyny wirtualnej | 2017-08-01
-jednostka SKU | Określone jednostki SKU dla obrazu maszyny Wirtualnej | 2017-04-02
+sku | Określone jednostki SKU dla obrazu maszyny Wirtualnej | 2017-04-02
 subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
 tags | [Tagi](../../azure-resource-manager/resource-group-using-tags.md) dla maszyny wirtualnej  | 2017-08-01
 version | Wersja obrazu maszyny Wirtualnej | 2017-04-02
@@ -606,7 +606,7 @@ Verification successful
 
 Dane | Opis
 -----|------------
-Identyfikator jednorazowy | Użytkownik podał opcjonalny ciąg z żądaniem. W przypadku jednorazowego nie został podany w żądaniu, zwracana jest bieżącą sygnaturę czasową UTC
+nonce | Użytkownik podał opcjonalny ciąg z żądaniem. W przypadku jednorazowego nie został podany w żądaniu, zwracana jest bieżącą sygnaturę czasową UTC
 Plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) dla maszyny Wirtualnej w niej jest obraz Azure Marketplace, zawiera nazwę, produktu i wydawcy
 timestamp/createdOn | Sygnatura czasowa, w którym utworzono pierwszy podpisany dokument
 timestamp/expiresOn | Sygnatura czasowa, w którym wygasa podpisany dokument

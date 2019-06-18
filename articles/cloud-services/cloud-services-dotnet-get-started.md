@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 3082ca34f2bcb71dd7aa02b4539899997374cfc0
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595168"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
@@ -236,7 +236,7 @@ Parametry połączenia konta magazynu platformy Azure dla projektu roli Sieć We
 2. Kliknij kartę **Ustawienia**. W polu listy rozwijanej **Konfiguracja usługi** wybierz wartość **Chmura**.
 
     ![Konfiguracja chmury](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Wybierz wpis **StorageConnectionString**. Na prawym końcu wiersza pojawi się przycisk z wielokropkiem (**...**). Kliknij przycisk z wielokropkiem, aby otworzyć okno dialogowe **Tworzenie parametrów połączenia konta usługi Storage**.
+3. Wybierz wpis **StorageConnectionString**. Na prawym końcu wiersza pojawi się przycisk z wielokropkiem ( **...** ). Kliknij przycisk z wielokropkiem, aby otworzyć okno dialogowe **Tworzenie parametrów połączenia konta usługi Storage**.
 
     ![Otwieranie okna Tworzenie parametrów połączenia](./media/cloud-services-dotnet-get-started/opencscreate.png)
 4. W oknie dialogowym **Tworzenie parametrów połączenia** kliknij pozycję **Twoja subskrypcja**, wybierz utworzone wcześniej konto magazynu, a następnie kliknij przycisk **OK**. Jeśli nie zalogowano się, zostanie wyświetlony monit o podanie poświadczeń konta systemu platformy Azure.

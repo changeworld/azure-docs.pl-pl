@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153422"
 ---
 # <a name="managed-identity-for-data-factory"></a>Tożsamość zarządzana dla usługi Data Factory
@@ -24,7 +24,7 @@ Ten artykuł pomoże Ci zrozumieć, jaka jest tożsamość zarządzaną dla fabr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Podczas tworzenia fabryki danych, można utworzyć tożsamości zarządzanej oraz tworzenie fabryki. Tożsamość zarządzana jest aplikacji zarządzanej, zarejestrowany w usłudze Azure Active Directory i przedstawia tę fabrykę danych z konkretnych.
 
@@ -158,8 +158,8 @@ Możesz pobrać tożsamość zarządzaną w witrynie Azure portal lub programowo
 
 Można znaleźć informacje o tożsamości zarządzanej z witryny Azure portal -> fabryki danych -> Właściwości:
 
-- Identyfikator obiektu tożsamości zarządzanej
-- Dzierżawa tożsamości zarządzanej
+- Identyfikator obiektu tożsamości zarządzanego
+- Dzierżawa tożsamości zarządzanych
 - **Zarządzany identyfikator aplikacji tożsamości** > Skopiuj tę wartość
 
 ![Pobieranie tożsamości zarządzanej](media/data-factory-service-identity/retrieve-service-identity-portal.png)

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122992"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure table storage i Visual Studio połączonych usług (ASP.NET)
@@ -24,7 +24,7 @@ ms.locfileid: "62122992"
 
 ## <a name="overview"></a>Omówienie
 
-Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.
+Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele platformy Azure są idealnym rozwiązaniem do przechowywania strukturalnych danych nierelacyjnych.
 
 W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scenariuszy przy użyciu jednostki usługi Azure table storage. Te scenariusze obejmują tworzenie tabeli i dodawanie, wyszukiwanie i usuwania jednostek tablic. 
 
@@ -171,7 +171,7 @@ Poniższe kroki ilustrują Tworzenie tabeli:
 
 1. Uruchom aplikację, a następnie wybierz pozycję **Tworzenie tabeli** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
   
-    ![Utwórz tabelę](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
+    ![Tworzenie tabeli](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
     Jak wspomniano wcześniej, **CloudTable.CreateIfNotExists** metoda zwraca **true** tylko, gdy w tabeli nie istnieje i zostanie utworzony. W związku z tym, po uruchomieniu aplikacji, gdy tabela istnieje, metoda zwraca **false**. Aby uruchomić aplikację wiele razy, możesz usunąć tabeli przed ponownym uruchomieniem aplikacji. Usunięcie tabeli może odbywać się za pośrednictwem **CloudTable.Delete** metody. Możesz także usunąć tabeli przy użyciu [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) lub [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 

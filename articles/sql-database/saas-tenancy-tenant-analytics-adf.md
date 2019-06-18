@@ -13,10 +13,10 @@ ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485081"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Poznaj analizy SaaS przy użyciu usługi Azure SQL Database, SQL Data Warehouse, Data Factory i Power BI
@@ -63,7 +63,7 @@ Na koniec badane są tabele schematu gwiazdy. Wyniki zapytania są wyświetlane 
 
 Ten samouczek zawiera szczegółowe informacje, które można zebrać dane o nazwie Wingtip Tickets podstawowe przykłady. Zrozumienie, jak na każde miejsce jest używana usługa może spowodować dostawcy Wingtip Tickets wziąć pod uwagę różne plany usługi ukierunkowanych na bardziej lub mniej aktywne miejsca, na przykład. 
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -87,7 +87,7 @@ W tym samouczku przedstawiono analizę danych sprzedaży biletów. W tym kroku m
 ### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>Wdrażanie fabryki danych, SQL Data Warehouse i Blob Storage 
 W aplikacji Wingtip Tickets dzierżawców transakcyjnych dane są rozproszone w wielu bazach danych. Usługa Azure Data Factory (ADF) jest używany do organizowania wyodrębniania, ładowania i przekształcania (ELT) tych danych do magazynu danych. Ładowanie danych do usługi SQL Data Warehouse najbardziej efektywne, wyodrębnia dane do plików pośrednich obiektu blob ADF, a następnie używa [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) do ładowania danych do magazynu danych.   
 
-W tym kroku wdrożysz dodatkowe zasoby używane w tym samouczku: usługa SQL Data Warehouse o nazwie _tenantanalytics_, fabryki danych Azure o nazwie _dbtodwload -\<użytkownika\>_  , oraz konto magazynu platformy Azure o nazwie _wingtipstaging\<użytkownika\>_. Konto magazynu jest używane do tymczasowego przechowywania plików wyodrębnione dane jako obiekty BLOB, zanim zostaną załadowane do magazynu danych. Ten krok również wdraża schemat magazynu danych i definiuje potoki usługi ADF, służących do organizowania procesu ELT.
+W tym kroku wdrożysz dodatkowe zasoby używane w tym samouczku: usługa SQL Data Warehouse o nazwie _tenantanalytics_, fabryki danych Azure o nazwie _dbtodwload -\<użytkownika\>_  , oraz konto magazynu platformy Azure o nazwie _wingtipstaging\<użytkownika\>_ . Konto magazynu jest używane do tymczasowego przechowywania plików wyodrębnione dane jako obiekty BLOB, zanim zostaną załadowane do magazynu danych. Ten krok również wdraża schemat magazynu danych i definiuje potoki usługi ADF, służących do organizowania procesu ELT.
 1. Otwórz w środowisku PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* i ustaw:
     - **$DemoScenario** = **2** wdrożenia magazynu danych analiz dzierżawy, magazynu obiektów blob i data factory 
 1. Naciśnij klawisz **F5** uruchomić skrypt pokazowy i wdrażaj zasoby platformy Azure. 
@@ -126,7 +126,7 @@ W [witryny Azure Portal](https://ms.portal.azure.com) w grupie zasobów, sprawd�
  ![adf_portal](media/saas-tenancy-tenant-analytics/adf-data-factory-portal.png)
 
 W tej sekcji przedstawiono utworzyć fabrykę danych. Wykonaj poniższe kroki, aby uruchomić usługi data factory:
-1. W portalu kliknij fabrykę danych o nazwie **dbtodwload -\<użytkownika\>**.
+1. W portalu kliknij fabrykę danych o nazwie **dbtodwload -\<użytkownika\>** .
 2. Kliknij przycisk **tworzenie i monitorowanie** Kafelek, aby uruchomić projektanta usługi Data Factory na osobnej karcie. 
 
 ## <a name="extract-load-and-transform-data"></a>Wyodrębnij obciążenia i przekształcania danych

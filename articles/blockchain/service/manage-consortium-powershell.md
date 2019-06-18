@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: 4bb72bc3fe8b85a8d2aed88e02f5f3150abb6899
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66493669"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>Zarządzanie członkami konsorcjum w usłudze Azure Service łańcucha bloków przy użyciu programu PowerShell
@@ -91,7 +91,7 @@ Za pomocą tego polecenia cmdlet, aby połączyć z zarządzania konsorcjum kont
 
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
-| RootContractAddress | Główny adres kontraktu kontraktów inteligentnych zarządzania konsorcjum | Yes |
+| RootContractAddress | Główny adres kontraktu kontraktów inteligentnych zarządzania konsorcjum | Tak |
 | Web3Client | Obiekt Web3Client uzyskany z New Web3Connection | Tak |
 
 #### <a name="example"></a>Przykład
@@ -109,7 +109,7 @@ Użyj tego polecenia cmdlet, aby utworzyć obiekt, do przechowywania informacji 
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
 | ManagedAccountAddress | Adres konta członkowskiego łańcucha bloków | Tak |
-| ManagedAccountPassword | Hasło do konta adresu | Tak |
+| ManagedAccountPassword | Hasło do konta adresu | Yes |
 
 #### <a name="example"></a>Przykład
 
@@ -146,7 +146,7 @@ Użyj następującego polecenia cmdlet, aby uzyskać szczegółowe informacje o 
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
 | Name (Nazwa) | Nazwa elementu członkowskiego usługi łańcucha bloków, który chcesz pobrać szczegółowe informacje o. Po wprowadzeniu nazwy zwraca szczegółowe informacje o użytkowniku. Gdy nazwa zostanie pominięty, zwraca listę wszystkich członków konsorcjum. | Nie |
-| Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Yes |
+| Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Tak |
 | Web3Client | Obiekt Web3Client uzyskany z New Web3Connection | Tak |
 
 #### <a name="example"></a>Przykład
@@ -174,9 +174,9 @@ Użyj następującego polecenia cmdlet, aby usunąć element członkowski łańc
 
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
-| Name (Nazwa) | Nazwa elementu członkowskiego do usunięcia | Tak |
+| Name (Nazwa) | Nazwa elementu członkowskiego do usunięcia | Yes |
 | Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Tak |
-| Web3Account | Obiekt Web3Account uzyskany z Web3Account importu | Tak |
+| Web3Account | Obiekt Web3Account uzyskany z Web3Account importu | Yes |
 | Web3Client | Obiekt Web3Client uzyskany z New Web3Connection | Tak |
 
 #### <a name="example"></a>Przykład
@@ -196,12 +196,12 @@ Konsorcjum Administratorzy mogą ustawić **DisplayName** i **roli** wszystkim j
 
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
-| Name (Nazwa) | Nazwa elementu członkowskiego łańcucha bloków | Yes |
+| Name (Nazwa) | Nazwa elementu członkowskiego łańcucha bloków | Tak |
 | Nazwa wyświetlana | Nowa nazwa wyświetlana | Nie |
 | AccountAddress | Adres konta | Nie |
 | Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Tak |
 | Web3Account | Obiekt Web3Account uzyskany z Web3Account importu | Tak |
-| Web3Client |  Obiekt Web3Client uzyskany z New Web3Connection| Tak |
+| Web3Client |  Obiekt Web3Client uzyskany z New Web3Connection| Yes |
 
 #### <a name="example"></a>Przykład
 
@@ -222,8 +222,8 @@ To polecenie cmdlet umożliwia zapraszać nowych użytkowników do konsorcjum.
 
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
-| SubscriptionId | Identyfikator subskrypcji platformy Azure, elementu członkowskiego o zaproszenie | Tak |
-| Rola | Rola konsorcjum. Wartości mogą być administratora lub użytkownika. Administrator jest rola administratora konsorcjum. UŻYTKOWNIK jest konsorcjum roli członka. | Tak |
+| SubscriptionId | Identyfikator subskrypcji platformy Azure, elementu członkowskiego o zaproszenie | Yes |
+| Rola | Rola konsorcjum. Wartości mogą być administratora lub użytkownika. Administrator jest rola administratora konsorcjum. UŻYTKOWNIK jest konsorcjum roli członka. | Yes |
 | Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Tak |
 | Web3Account | Obiekt Web3Account uzyskany z Web3Account importu | Tak |
 | Web3Client | Obiekt Web3Client uzyskany z New Web3Connection | Tak |
@@ -243,8 +243,8 @@ Użyj następującego polecenia cmdlet do pobierania lub listy elementu członko
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
 | SubscriptionId | Identyfikator subskrypcji platformy Azure należy zaprosić. Jeśli subskrypcja identyfikator zostanie podana, funkcja zwraca subskrypcji identyfikatory Szczegóły zaproszenia. Jeśli identyfikator subskrypcji jest pominięty, zwraca listę wszystkich zaproszeń elementu członkowskiego. | Nie |
-| Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Yes |
-| Web3Client | Obiekt Web3Client uzyskany z New Web3Connection | Tak |
+| Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Tak |
+| Web3Client | Obiekt Web3Client uzyskany z New Web3Connection | Yes |
 
 #### <a name="example"></a>Przykład
 
@@ -269,10 +269,10 @@ Użyj następującego polecenia cmdlet, aby można było odwołać zaproszenie e
 
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
-| SubscriptionId | Identyfikator subskrypcji platformy Azure, elementu członkowskiego, aby można było odwołać | Yes |
-| Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Yes |
+| SubscriptionId | Identyfikator subskrypcji platformy Azure, elementu członkowskiego, aby można było odwołać | Tak |
+| Elementy członkowskie | Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Tak |
 | Web3Account | Obiekt Web3Account uzyskany z Web3Account importu | Tak |
-| Web3Client | Obiekt Web3Client uzyskany z New Web3Connection | Tak |
+| Web3Client | Obiekt Web3Client uzyskany z New Web3Connection | Yes |
 
 #### <a name="example"></a>Przykład
 
@@ -289,7 +289,7 @@ Użyj tego polecenia cmdlet, aby ustawić **roli** dla istniejących zaproszenia
 
 | Parametr | Opis | Wymagane |
 |-----------|-------------|:--------:|
-| SubscriptionId | Identyfikator subskrypcji platformy Azure, elementu członkowskiego o zaproszenie | Yes |
+| SubscriptionId | Identyfikator subskrypcji platformy Azure, elementu członkowskiego o zaproszenie | Tak |
 | Rola | Nowa rola konsorcjum na zaproszenie. Możliwe wartości to **użytkownika** lub **administratora**. | Tak |
 | Elementy członkowskie |  Elementy członkowskie obiektu uzyskany z ConsortiumManagementContracts importu | Tak |
 | Web3Account | Obiekt Web3Account uzyskany z Web3Account importu | Tak |

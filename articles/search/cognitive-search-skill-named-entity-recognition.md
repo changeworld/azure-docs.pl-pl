@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: b7af4d0a48f002f7523def971a306d1fa2077c70
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952038"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Nazwane umiejętności cognitive rozpoznawanie jednostek
@@ -43,7 +43,7 @@ Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| kategorie    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
+| categories    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
 |defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `de, en, es, fr, it`|
 | minimumPrecision  | Liczba od 0 do 1. Jeśli dokładność jest niższa niż ta wartość, nie są zwracane jednostki. Wartość domyślna to 0.|
 
@@ -52,16 +52,16 @@ Parametrów jest rozróżniana wielkość liter.
 | Wprowadź nazwę      | Opis                   |
 |---------------|-------------------------------|
 | languageCode  | Opcjonalny. Wartość domyślna to `"en"`.  |
-| text          | Tekst do przeanalizowania.          |
+| tekst          | Tekst do przeanalizowania.          |
 
 ## <a name="skill-outputs"></a>Dane wyjściowe umiejętności
 
 | Nazwa wyjściowego     | Opis                   |
 |---------------|-------------------------------|
 | osoby      | Tablica ciągów, gdzie każdy ciąg reprezentuje imię osoby. |
-| lokalizacje  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
+| locations  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
 | organizations  | Tablica ciągów, w której każdy ciąg reprezentuje organizacji. |
-| jednostki | Tablica typów złożonych. Każdy typ złożony zawiera następujące pola: <ul><li>Kategoria (`"person"`, `"organization"`, lub `"location"`)</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (wartość z zakresu od 0 do 1, który reprezentuje tego zaufania, wartość rzeczywista jednostki)</li></ul> |
+| Jednostki | Tablica typów złożonych. Każdy typ złożony zawiera następujące pola: <ul><li>Kategoria (`"person"`, `"organization"`, lub `"location"`)</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (wartość z zakresu od 0 do 1, który reprezentuje tego zaufania, wartość rzeczywista jednostki)</li></ul> |
 
 ##  <a name="sample-definition"></a>Przykładowa definicja
 

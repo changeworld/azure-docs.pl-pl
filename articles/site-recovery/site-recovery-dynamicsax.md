@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61281485"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji Dynamics AX   
@@ -45,9 +45,9 @@ Na potrzeby tworzenia ten artykuł, użyliśmy maszyn wirtualnych VMware z syste
 
 **Scenariusz** | **Lokacja dodatkowa** | **Platforma Azure**
 --- | --- | ---
-**Funkcja Hyper-V** | Yes | Yes
-**VMware** | Yes | Yes
-**Serwer fizyczny** | Yes | Yes
+**Funkcja Hyper-V** | Tak | Yes
+**VMware** | Tak | Tak
+**Serwer fizyczny** | Yes | Tak
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Włącz odzyskiwanie po awarii aplikacji Dynamics AX przy użyciu usługi Site Recovery
 ### <a name="protect-your-dynamics-ax-application"></a>Ochrona aplikacji Dynamics AX

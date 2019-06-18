@@ -8,20 +8,20 @@ ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: e4357007ec1cfac2cf6a10d339c6b3aa3ae41488
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257100"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Omówienie biblioteki wykonawca zbiorczego usługi Azure Cosmos DB
  
-Usługa Azure Cosmos DB to usługa szybkie, elastyczne i globalnie rozproszonej bazy danych, która umożliwia elastycznie skalować w poziomie: 
+Usługa Azure Cosmos DB to szybka, elastyczna i globalnie rozproszona baza danych zaprojektowana pod kątem elastycznego skalowania w poziomie i obsługi następujących funkcji: 
 
-* Duże odczytu i zapisu przepustowość (w milionach operacji na sekundę).  
-* Przechowywanie dużych ilości (setki terabajtów lub jeszcze więcej) danych transakcyjnych i operacyjnych przy opóźnieniu przewidywalne Milisekunda.  
+* Duża przepływność odczytu i zapisu (miliony operacji na sekundę).  
+* Przechowywanie dużych ilości (setki terabajtów lub jeszcze więcej) danych transakcyjnych i operacyjnych przy przewidywalnym opóźnieniu liczonym w milisekundach.  
 
-Biblioteka przetwarzania zbiorczego pomaga korzystać z tej ogromnej przepustowości i magazynu. Biblioteka przetwarzania zbiorczego można wykonywać zbiorcze operacje w usłudze Azure Cosmos DB za pomocą importowania zbiorczego i wykonywania zbiorczych aktualizacji interfejsów API. Możesz dowiedzieć się więcej o funkcjach biblioteki przetwarzania zbiorczego w poniższych sekcjach. 
+Biblioteka funkcji wykonawczej operacji zbiorczych ułatwia korzystanie z tej ogromnej przepływności i magazynu. Biblioteka funkcji wykonawczej operacji zbiorczych umożliwia wykonywanie operacji zbiorczych w usłudze Azure Cosmos DB za pośrednictwem interfejsów API importu zbiorczego i aktualizacji zbiorczej. Więcej informacji o funkcjach biblioteki funkcji wykonawczej operacji zbiorczych znajdziesz w poniższych sekcjach. 
 
 > [!NOTE] 
 > Obecnie zbiorcze wykonawca biblioteka obsługuje import i operacje aktualizacji i ta biblioteka jest obsługiwana przez tylko konta interfejsu API SQL usługi Azure Cosmos DB i interfejs API Gremlin.

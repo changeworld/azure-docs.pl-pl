@@ -9,10 +9,10 @@ ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 30c7c1c50e59162817d7cfab0d852d8e034457d0
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969409"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy używać obiektów blob platformy Azure, Azure Files lub Azure Disks
@@ -41,12 +41,12 @@ W poniższej tabeli porównano usługi Azure Files za pomocą obiektów blob pla
 |Łączność|Interfejsy API REST — na całym świecie|Interfejsy API REST — na całym świecie<br /><br /> Protokół SMB 2.1--w obrębie regionu<br /><br /> Protokół SMB 3.0 — na całym świecie|  
 |Punkty końcowe|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Katalogi|Prosty obszar nazw|Obiekty katalogu true|  
-|Wielkość liter w nazwach|Uwzględnij wielkość liter|Przypadek jest rozróżniana wielkość liter, ale zachowanie wielkości liter|  
+|Wielkość liter w nazwach|Uwzględnianie wielkości liter|Przypadek jest rozróżniana wielkość liter, ale zachowanie wielkości liter|  
 |Pojemność|Do 2 Limit PiB konta |Udziały plików w usłudze 5 TiB|  
 |Przepływność|Maksymalnie 60 MiB/s dla blokowych obiektów blob|Maksymalnie 60 MiB/s na jedną akcję|  
 |Rozmiar obiektu|Maksymalnie o 4.75 TiB dla blokowych obiektów blob|Do 1 TiB na plik|  
 |Billed pojemności|Oparte na Bajty zapisane|Na podstawie rozmiaru plików|  
-|Biblioteki klienckie|Wiele języków|Wiele języków|  
+|Biblioteki klienta|Wiele języków|Wiele języków|  
   
 ## <a name="comparison-files-and-disks"></a>Porównania: Pliki i dyski
 
@@ -58,7 +58,7 @@ W poniższej tabeli porównano usługi Azure Files z usługi Azure Disks.
 |-|-|-|  
 |**Atrybut**|**Dyski platformy Azure**|**Usługa pliki Azure**|  
 |Scope|Wyłącznie dla jednej maszyny wirtualnej|Dostępu współdzielonego między wieloma maszynami wirtualnymi|  
-|Migawki i skopiuj|Tak|Tak|  
+|Migawki i skopiuj|Yes|Tak|  
 |Konfigurowanie|Połączony podczas uruchamiania maszyny wirtualnej|Połączone po przejściu maszyny wirtualnej została uruchomiona.|  
 |Authentication|Wbudowane|Konfigurowanie przy użyciu netto|  
 |Dostęp przy użyciu usługi REST|Nie można uzyskać dostępu do plików w ramach dysku VHD|Przechowywana w udziale plików jest możliwy|  

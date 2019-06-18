@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: rajanaki
 ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65922093"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji Azure – Azure
@@ -57,7 +57,7 @@ Po włączeniu replikacji dla maszyny Wirtualnej albo uruchamianie [z widoku mas
 2. W obszarze **usługi Azure Virtual Machines** > **ustawień aktualizacji rozszerzenia**, Włącz **umożliwia usługa Site Recovery, aby zarządzać** przełącznika. Aby zarządzać ręcznie, wyłącz ją. 
 3. Wybierz pozycję **Zapisz**.
 
-![Ustawienia aktualizacji rozszerzeń](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![Ustawienia aktualizacji rozszerzenia](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important]
 > Po wybraniu **umożliwia usługa Site Recovery, aby zarządzać**, ustawienie ma zastosowanie do wszystkich maszyn wirtualnych w odpowiedni magazyn.
@@ -520,7 +520,7 @@ Jeśli występuje problem z aktualizacji automatycznych, zobaczysz powiadomienie
 
 Jeśli aktualizacje automatyczne nie jest włączone, zobacz poniższe typowe błędy i zalecane akcje:
 
-- **Błąd**: Nie masz uprawnień do utworzenia konta Uruchom jako platformy Azure (jednostki usługi) i udzielenia roli Współautor jednostce usługi.
+- **Błąd**: Nie masz uprawnienia do tworzenia konta Uruchom jako platformy Azure (nazwy głównej usługi) i przyznania roli Współautor jednostki usługi.
 
    **Zalecana akcja**: Upewnij się, że konto logowania jest przypisany jako współautor i spróbuj ponownie. Zapoznaj się z sekcją wymaganych uprawnień w [korzystanie z portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure AD](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) Aby uzyskać więcej informacji na temat przypisywania uprawnień.
  

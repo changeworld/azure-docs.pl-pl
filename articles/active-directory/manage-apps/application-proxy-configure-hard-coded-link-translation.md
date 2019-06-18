@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0899a127566c4d06de7d42443a956c2660a7a6d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956904"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj zapisane na stałe linki do aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD
@@ -97,11 +97,11 @@ Pełną listę tagów kodu HTML, czy serwer Proxy aplikacji obsługuje tłumacze
 * element IFRAME
 * img
 * wejście
-* link
+* Link
 * Element MenuItem
 * meta
 * obiekt
-* skrypt
+* script
 * source
 * Śledzenie
 * wideo
@@ -142,7 +142,7 @@ Wprowadzenie do tłumaczenia łącze jest równie proste jak kliknięcie przycis
 
 Teraz gdy użytkownicy uzyskują dostęp do tej aplikacji, serwer proxy będzie automatycznie Skanuj w poszukiwaniu wewnętrzne adresy URL, które zostały opublikowane za pośrednictwem serwera Proxy aplikacji w dzierżawie usługi.
 
-## <a name="send-feedback"></a>Prześlij opinię
+## <a name="send-feedback"></a>Wyślij opinię
 
 Chcemy Twojej pomocy, aby ta funkcja działa w przypadku wszystkich aplikacji. Przeszukiwania ponad 30 tagów w kodzie HTML i CSS. Przykład wygenerowanych łączy, które nie są podlega translacji, przesyłać fragment kodu [Opinia dotycząca aplikacji serwera Proxy](mailto:aadapfeedback@microsoft.com). 
 

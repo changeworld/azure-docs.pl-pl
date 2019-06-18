@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951310"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS
@@ -202,12 +202,12 @@ W poniższej tabeli przedstawiono przykład co może się zdarzyć, gdy aktualiz
 | **czas** | **Transakcja**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **wynik** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Odp.: transakcji <br> Wstaw pracownika <br> jednostki w podstawowej |                                   |                    | Transakcja wstawione do głównej, A<br> nie jeszcze zreplikowane. |
-| T1       |                                                            | Transakcja A <br> replikowane do<br> pomocniczy | T1 | Replikowane do dodatkowej A transakcji. <br>Czas ostatniej synchronizacji aktualizacji.    |
+| T1       |                                                            | Transakcja A <br> replikowane do<br> Pomocniczy | T1 | Replikowane do dodatkowej A transakcji. <br>Czas ostatniej synchronizacji aktualizacji.    |
 | T2       | Transakcja B:<br>Aktualizacja<br> Jednostka pracownika<br> w podstawowej  |                                | T1                 | Transakcja zapisywane do podstawowej, B<br> nie jeszcze zreplikowane.  |
-| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>podstawowa |                    | T1                 | Transakcja zapisywane do podstawowej, C<br> nie jeszcze zreplikowane.  |
-| *T4*     |                                                       | Transakcja języka C <br>replikowane do<br> pomocniczy | T1         | Transakcja C replikowane do dodatkowej.<br>Nie zaktualizowano ponieważ LastSyncTime <br>Transakcja B nie zostały jeszcze zreplikowane.|
+| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>Podstawowy |                    | T1                 | Transakcja zapisywane do podstawowej, C<br> nie jeszcze zreplikowane.  |
+| *T4*     |                                                       | Transakcja języka C <br>replikowane do<br> Pomocniczy | T1         | Transakcja C replikowane do dodatkowej.<br>Nie zaktualizowano ponieważ LastSyncTime <br>Transakcja B nie zostały jeszcze zreplikowane.|
 | *T5*     | Odczytaj jednostki <br>z pomocniczych                           |                                  | T1                 | Stare korzyści dla pracowników <br> jednostki, ponieważ nie transakcji B <br> jeszcze zreplikowane. Pobierz nową wartość dla<br> Administrator roli jednostki, ponieważ ma C<br> replikowane. Czas ostatniej synchronizacji nadal nie.<br> zostały zaktualizowane, ponieważ transakcja B<br> nie replikowane. Można stwierdzić<br>Administrator roli jednostki jest niespójna <br>ponieważ jednostka daty/godziny jest po <br>Czas ostatniej synchronizacji. |
-| *T6*     |                                                      | Transakcja B<br> replikowane do<br> pomocniczy | T6                 | *T6* — ma wszystkie transakcje za pośrednictwem języka C <br>zostały zreplikowane czas ostatniej synchronizacji<br> jest aktualizowana. |
+| *T6*     |                                                      | Transakcja B<br> replikowane do<br> Pomocniczy | T6                 | *T6* — ma wszystkie transakcje za pośrednictwem języka C <br>zostały zreplikowane czas ostatniej synchronizacji<br> jest aktualizowana. |
 
 W tym przykładzie przyjęto założenie, że klient przełącza się do odczytu z regionu pomocniczego na T5. Stanie pomyślnie odczytywać **roli administrator** jednostki w tej chwili, ale jednostki zawiera wartość dla liczby administratorów, która nie jest spójna z liczbą **pracowników** jednostek, które są oznaczone jako administratorzy w dodatkowym regionie, w tym momencie. Twój klient po prostu można wyświetlić tę wartość, z ryzykiem jest niespójne informacje. Alternatywnie, klient mógłby próbować ustalenie, że **roli administrator** jest w stanie potencjalnie niespójne aktualizacje wystąpiło poza kolejnością, a następnie poinformowania użytkownika o tym fakcie.
 

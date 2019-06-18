@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
 ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66515740"
 ---
 # <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego 
@@ -59,11 +59,11 @@ Pierwsze 15 dni wolne <sup>1</sup>| Tak |Nie
 Przepływność |Do 600 MB/s i zapewnia znacznie większą przepływność skuteczne stosowania sieci CDN.|200 MB/s dla przesyłania strumieniowego (SU) jednostki. Zapewnia znacznie większą przepływność skuteczne, stosowania sieci CDN.
 CDN|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.
 Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
-Szyfrowanie dynamiczne|Tak|Tak
-Dynamiczne tworzenie pakietów|Tak|Yes
+Szyfrowanie dynamiczne|Yes|Yes
+Dynamiczne tworzenie pakietów|Yes|Tak
 Skalowanie|Automatyczne jest skalowany w górę docelowe przepływności.|Dodatkowe SUs
-Host filtrowanie/G20/Custom IP <sup>2</sup>|Tak|Yes
-Pobierania progresywnego|Yes|Yes
+Host filtrowanie/G20/Custom IP <sup>2</sup>|Tak|Tak
+Pobierania progresywnego|Tak|Tak
 Zalecane użycie |Zalecane w przypadku większość przesyłania strumieniowego scenariuszy.|Użycie Professional.
 
 <sup>1</sup> bezpłatnej wersji próbnej ma zastosowanie tylko do konta usług media nowo utworzony i domyślnego punktu końcowego przesyłania strumieniowego.<br/>

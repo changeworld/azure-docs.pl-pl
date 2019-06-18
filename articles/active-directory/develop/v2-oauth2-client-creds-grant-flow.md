@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545094"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma tożsamości firmy Microsoft i przepływ poświadczeń klienta OAuth 2.0
@@ -66,9 +66,9 @@ Ten typ autoryzacji jest typowe dla demonów i kont usług, które wymagają dos
 Zamiast przy użyciu list kontroli dostępu, można użyć interfejsów API do udostępnienia zestaw uprawnień aplikacji. Uprawnienie aplikacji jest udzielany do aplikacji przez administratora organizacji i może służyć tylko dostęp do danych należących do organizacji i jej pracowników. Na przykład program Microsoft Graph udostępnia kilka uprawnienia aplikacji, wykonaj następujące czynności:
 
 * Odczytuj pocztę we wszystkich skrzynkach pocztowych
-* Odczytuj i zapisuj wiadomości e-mail we wszystkich skrzynkach pocztowych
-* Wysyłaj wiadomości e-mail jako dowolny użytkownik
-* Odczytaj dane katalogu
+* Odczyt i zapis poczty we wszystkich skrzynkach pocztowych
+* Wysyłaj pocztę jako dowolny użytkownik
+* Czytaj dane katalogu
 
 Aby uzyskać więcej informacji dotyczących uprawnień aplikacji, przejdź do [programu Microsoft Graph](https://developer.microsoft.com/graph).
 
@@ -120,7 +120,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 W tym momencie usługa Azure AD wymusza, tylko administrator dzierżawy może zalogować się do ukończone żądania. Administrator jest proszony o zatwierdzania wszystkie uprawnienia bezpośrednich zastosowań, które żądanej aplikacji w portalu rejestracji aplikacji.
 
-##### <a name="successful-response"></a>Pomyślna odpowiedź
+##### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
 
 Jeśli administrator zatwierdza uprawnienia dla aplikacji, odpowiedź oznaczająca Powodzenie wygląda następująco:
 
@@ -206,7 +206,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z tą różnicą, że parametr client_secret zostaje zastąpiona przez dwa parametry: client_assertion_type i client_assertion.
 
-### <a name="successful-response"></a>Pomyślna odpowiedź
+### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
 
 Odpowiedź oznaczająca powodzenie wygląda następująco:
 

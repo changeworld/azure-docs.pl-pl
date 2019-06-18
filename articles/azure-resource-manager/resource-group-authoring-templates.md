@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
 ms.openlocfilehash: e3b8b6b969568fc15558002c268cdc4a16c2fadd
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66431229"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
@@ -40,7 +40,7 @@ W swojej najprostszej strukturze szablon zawiera następujące elementy:
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | $schema |Tak |Lokalizacja pliku schematu JSON, który zawiera opis wersji języka szablonu.<br><br> Dla wdrożenia grupy zasobów użyj polecenia: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>W przypadku wdrożeń w subskrypcji należy użyć: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
-| contentversion — |Yes |Wersja szablonu (na przykład 1.0.0.0). Możesz podać dowolną wartość dla tego elementu. Użyj tej wartości, aby udokumentować znaczące zmiany w szablonie. Podczas wdrażania zasobów przy użyciu szablonu, ta wartość może służyć do upewnij się, że używany jest odpowiedni szablon. |
+| contentversion — |Tak |Wersja szablonu (na przykład 1.0.0.0). Możesz podać dowolną wartość dla tego elementu. Użyj tej wartości, aby udokumentować znaczące zmiany w szablonie. Podczas wdrażania zasobów przy użyciu szablonu, ta wartość może służyć do upewnij się, że używany jest odpowiedni szablon. |
 | apiProfile |Nie | Wersja interfejsu API, która służy jako zbiór wersje interfejsu API dla typów zasobów. Użyj tej wartości, aby uniknąć konieczności określania wersji interfejsu API dla każdego zasobu w szablonie. Gdy określać wersję interfejsu API w profilu, a nie określona wersja interfejsu API dla typu zasobu, Menedżer zasobów używa wersji interfejsu API dla tego typu zasobu, która jest zdefiniowana w profilu.<br><br>Właściwości profilu interfejsu API jest szczególnie przydatne w przypadku wdrażania szablonu w różnych środowiskach, takich jak Azure Stack i globalnej platformy Azure. Wersja profilu interfejs API umożliwia upewnij się, że Twój szablon automatycznie używa wersji, które są obsługiwane w obu środowiskach. Aby uzyskać listę bieżących wersji interfejsu API w profilu i zasobów, wersje interfejsów API, zdefiniowaną w profilu, zobacz [profilu interfejsu API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Aby uzyskać więcej informacji, zobacz [śledzenia wersji przy użyciu interfejsu API profilów](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parameters](#parameters) |Nie |Wartości, które znajdują się po wykonaniu wdrożenia do dostosowywania wdrażania zasobów. |
 | [Zmienne](#variables) |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
@@ -130,7 +130,7 @@ Dostępne właściwości parametru są:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| parameterName |Tak |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
+| parameterName |Yes |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
 | type |Tak |Typ wartości parametru. Dozwolone typy i wartości są **ciąg**, **securestring**, **int**, **bool**, **obiektu**, **secureObject**, i **tablicy**. |
 | defaultValue |Nie |Wartość domyślna parametru, jeśli podano żadnej wartości dla parametru. |
 | allowedValues |Nie |Tablica dozwolonych wartości dla parametru upewnić się, że podano odpowiednie wartości. |
@@ -504,7 +504,7 @@ Możesz zdefiniować zasoby o następującej strukturze:
 |:--- |:--- |:--- |
 | condition | Nie | Wartość logiczna wskazująca, czy zasób zostanie udostępniony podczas tego wdrożenia. Gdy `true`, zasób jest tworzony podczas wdrażania. Gdy `false`, zasób jest pomijana dla tego wdrożenia. Zobacz [warunek](#condition). |
 | apiVersion |Tak |Wersja interfejsu API REST na potrzeby tworzenia zasobu. Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). |
-| — typ |Tak |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). Zasoby podrzędne format typu zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
+| type |Tak |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). Zasoby podrzędne format typu zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
 | name |Yes |Nazwa zasobu. Musi spełniać ograniczenia składnika identyfikatora URI zdefiniowane w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu, aby poza strony zweryfikować nazwę aby upewnić się, że nie jest próba podszywały się pod innego tożsamości. Zasoby podrzędne format nazwy zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
 | location |Różna |Obsługiwane lokalizacje geograficzne podane zasobu. Można wybrać jedną z dostępnych lokalizacji, ale zazwyczaj warto wybrać taki, który znajduje się w pobliżu użytkowników. Zazwyczaj także warto umieścić zasoby, które współdziałają ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisania roli) nie wymagają lokalizacji. |
 | tags |Nie |Tagi, które są skojarzone z zasobem. Stosowanie tagów w celu logicznego uporządkowania zasobów w ramach subskrypcji. |
@@ -745,7 +745,7 @@ Poniższy przykład pokazuje strukturę definicję danych wyjściowych:
 |:--- |:--- |:--- |
 | outputName |Yes |Nazwa wartości danych wyjściowych. Musi być prawidłowym identyfikatorem języka JavaScript. |
 | condition |Nie | Wartość logiczna wskazująca, czy to danych wyjściowych wartość jest zwracana. Gdy `true`, wartość jest uwzględniona w danych wyjściowych dla wdrożenia. Gdy `false`, wartość wyjściowa jest pomijana dla tego wdrożenia. Jeśli nie zostanie określony, wartością domyślną jest `true`. |
-| — typ |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. Jeśli określisz **securestring** dla typu danych wyjściowych wartość nie jest wyświetlane w historii wdrożenia i nie można pobrać z innego szablonu. Aby użyć wartość wpisu tajnego w więcej niż jeden szablon, przechowywać klucz tajny w usłudze Key Vault i odwoływać się do klucza tajnego w pliku parametrów. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Key Vault do przekazywania wartości parametru secure podczas wdrażania](resource-manager-keyvault-parameter.md). |
+| type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. Jeśli określisz **securestring** dla typu danych wyjściowych wartość nie jest wyświetlane w historii wdrożenia i nie można pobrać z innego szablonu. Aby użyć wartość wpisu tajnego w więcej niż jeden szablon, przechowywać klucz tajny w usłudze Key Vault i odwoływać się do klucza tajnego w pliku parametrów. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Key Vault do przekazywania wartości parametru secure podczas wdrażania](resource-manager-keyvault-parameter.md). |
 | value |Yes |Wyrażenie języka szablonu, który jest obliczany i zwracany, jako wartość danych wyjściowych. |
 
 ### <a name="define-and-use-output-values"></a>Definiowanie i korzystanie z wartości danych wyjściowych

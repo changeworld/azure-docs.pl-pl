@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257580"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Uwierzytelnianie urządzeń przy użyciu certyfikatu X.509 urzędu certyfikacji
@@ -24,7 +24,7 @@ W tym artykule opisano, jak używać certyfikatów X.509 urząd certyfikacji (CA
 * Jak zarejestrować urządzenia za pomocą certyfikatów X.509 urzędu certyfikacji
 * Sposób uwierzytelniania urządzeń podpisany przy użyciu X.509 urzędu certyfikacji
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Funkcja X.509 urzędu certyfikacji umożliwia uwierzytelnianie urządzenia w Centrum IoT przy użyciu urząd certyfikacji (CA). Proces rejestracji urządzenie początkowe i logistyki łańcucha dostaw znacznie upraszcza podczas produkcji urządzenia. [Dowiedz się więcej w tym artykule scenariusz o wartości z przy użyciu certyfikatów X.509 urzędu certyfikacji](iot-hub-x509ca-concept.md) uwierzytelniania urządzenia.  Firma Microsoft zachęca do przeczytaj ten artykuł scenariusz, przed kontynuowaniem, ponieważ wyjaśnia, dlaczego istnieje opisanych poniżej.
 

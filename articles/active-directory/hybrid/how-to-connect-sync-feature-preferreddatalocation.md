@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 927987237b51a47d0c8b7c66054842b0a7ff09a7
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66473029"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Usługa Azure Active Directory Connect sync: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
@@ -137,7 +137,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu mogą
 5. Zachowaj **filtru Scoping** puste, aby uwzględnić wszystkie obiekty. Może być konieczne dostosowanie filtru określania zakresu, zgodnie z wdrożenia usługi Azure AD Connect.
 6. Przejdź do **kartę przekształcania**i zaimplementować następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Scal typu |
+    | Typ przepływu | Atrybut docelowy | source | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
     |Direct | preferredDataLocation | Wybierz atrybut źródłowy | Niezaznaczone | Aktualizacja |
 
@@ -174,7 +174,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 
 6. Przejdź do **przekształcania** kartę i wdrożenie następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Scal typu |
+    | Typ przepływu | Atrybut docelowy | source | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
     | Direct | preferredDataLocation | preferredDataLocation | Niezaznaczone | Aktualizacja |
 

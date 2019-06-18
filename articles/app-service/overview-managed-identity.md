@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66136971"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać zarządzanych tożsamości dla usługi App Service i Azure Functions
@@ -287,9 +287,9 @@ Aplikacji za pomocą tożsamości zarządzanej ma dwie zmienne środowiskowe zde
 
 > |Nazwa parametru|W|Opis|
 > |-----|-----|-----|
-> |zasób|Zapytanie|Zasób usługi AAD identyfikator URI zasobu, dla którego mają być uzyskiwane tokenu. Może to być jeden z [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) lub innych zasobów identyfikator URI.|
-> |wersja interfejsu API|Zapytanie|Wersja token interfejsu API do użycia. "2017-09-01" jest obecnie jedyna obsługiwana wersja.|
-> |wpis tajny|Nagłówek|Wartość zmiennej środowiskowej MSI_SECRET. Tego pliku nagłówkowego jest używana w celu ograniczenia zagrożenia atakami sfałszowaniem (SSRF) żądania po stronie serwera.|
+> |resource|Zapytanie|Zasób usługi AAD identyfikator URI zasobu, dla którego mają być uzyskiwane tokenu. Może to być jeden z [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) lub innych zasobów identyfikator URI.|
+> |api-version|Zapytanie|Wersja token interfejsu API do użycia. "2017-09-01" jest obecnie jedyna obsługiwana wersja.|
+> |secret|nagłówek|Wartość zmiennej środowiskowej MSI_SECRET. Tego pliku nagłówkowego jest używana w celu ograniczenia zagrożenia atakami sfałszowaniem (SSRF) żądania po stronie serwera.|
 > |clientid|Zapytanie|(Opcjonalnie) Identyfikator tożsamości przypisanych przez użytkownika ma być używany. W przypadku pominięcia jest używana tożsamości przypisanych przez system.|
 
 Pomyślne odpowiedź 200 OK zawiera treść JSON z następującymi właściwościami:
@@ -298,7 +298,7 @@ Pomyślne odpowiedź 200 OK zawiera treść JSON z następującymi właściwośc
 > |-------------|----------|
 > |access_token|Token żądanego dostępu. Wywoływania usługi sieci web można użyć tego tokenu do uwierzytelnienia w usłudze sieci web odbierania.|
 > |expires_on|Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych.|
-> |zasób|Identyfikator URI Identyfikatora aplikacji odbierającej usługi sieci web.|
+> |resource|Identyfikator URI Identyfikatora aplikacji odbierającej usługi sieci web.|
 > |token_type|Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Ta odpowiedź jest taka sama jak [odpowiedzi dla żądania tokenu dostępu do usługi AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).

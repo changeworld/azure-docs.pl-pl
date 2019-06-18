@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
 ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522119"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Jak wyłączyć monitorowanie maszyn wirtualnych z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
@@ -53,8 +53,8 @@ Poniżej opisano sposób całkowicie usunąć usługi Azure Monitor dla maszyn w
 2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz usługi Log Analytics. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 3. Na liście obszarów roboczych usługi Log Analytics, wybierz obszar roboczy, gdy wybrano dołączania do usługi Azure Monitor dla maszyn wirtualnych.
 4. W okienku po lewej stronie wybierz **rozwiązania**.  
-5. Na liście rozwiązań, wybierz **InfrastructureInsights (nazwa obszaru roboczego)**, a następnie na **Przegląd** stronie rozwiązania, kliknij przycisk **Usuń**.  Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak**.  
-6. Wybierz z listy rozwiązań **ServiceMap (nazwa obszaru roboczego)**, a następnie na **Przegląd** stronie rozwiązania, kliknij przycisk **Usuń**.  Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak**.  
+5. Na liście rozwiązań, wybierz **InfrastructureInsights (nazwa obszaru roboczego)** , a następnie na **Przegląd** stronie rozwiązania, kliknij przycisk **Usuń**.  Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak**.  
+6. Wybierz z listy rozwiązań **ServiceMap (nazwa obszaru roboczego)** , a następnie na **Przegląd** stronie rozwiązania, kliknij przycisk **Usuń**.  Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak**.  
 
 Jeśli przed dołączania do usługi Azure Monitor dla maszyn wirtualnych, możesz nie [zbierania liczników wydajności, włączone](vminsights-enable-overview.md#performance-counters-enabled) Windows lub Linux maszyn wirtualnych z systemem w obszarze roboczym, należy wyłączyć te zasady, wykonując kroki opisane [tutaj](../platform/data-sources-performance-counters.md#configuring-performance-counters) dla Windows i Linux.
 

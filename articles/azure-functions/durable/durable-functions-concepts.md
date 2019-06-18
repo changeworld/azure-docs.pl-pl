@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65071341"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Trwałe wzorce funkcji i zagadnienia techniczne (usługi Azure Functions)
@@ -488,7 +488,7 @@ Powinny być śledzone wszystkie znane problemy występujące w [problemy usług
 
 Aby dowiedzieć się więcej na temat funkcje trwałe, zobacz [funkcje trwałe funkcji typy i funkcje](durable-functions-types-features-overview.md). 
 
-Aby rozpocząć:
+Aby rozpocząć pracę:
 
 > [!div class="nextstepaction"]
 > [Tworzenie pierwszej funkcji trwałych](durable-functions-create-first-csharp.md)

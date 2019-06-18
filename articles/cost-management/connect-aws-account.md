@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: b39296e18b38180e1081866d6e8197973dc782b1
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002159"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Nawiązać połączenie z kontem usług Amazon Web Services
@@ -36,7 +36,7 @@ Pierwszym krokiem jest uzyskanie hasła unikatowego połączenia w portalu Cloud
 
 1. Otwórz Cloudyn portal z witryny Azure portal lub przejdź do [ https://azure.cloudyn.com ](https://azure.cloudyn.com) i zaloguj się.
 2. Kliknij symbol koła zębatego, a następnie wybierz pozycję **kont w chmurze**.
-3. Zarządzanie kontami, wybierz **kont platformy AWS** kartę, a następnie kliknij przycisk **Dodaj nowe +**.
+3. Zarządzanie kontami, wybierz **kont platformy AWS** kartę, a następnie kliknij przycisk **Dodaj nowe +** .
 4. W **Dodawanie konta usługi AWS** okno dialogowe, kopia **Identyfikatora zewnętrznego** i Zapisz wartość dla roli usługi AWS tworzenia kroki opisane w następnej sekcji. Identyfikator zewnętrzny jest unikatowy dla swojego konta. Przykład Identyfikator zewnętrzny jest — na poniższej ilustracji _Contoso_ następuje numer. Twój identyfikator różni się.  
     ![Identyfikator zewnętrzny wyświetlane w oknie Dodaj konto usług AWS](./media/connect-aws-account/external-id.png)
 
@@ -57,7 +57,7 @@ Pierwszym krokiem jest uzyskanie hasła unikatowego połączenia w portalu Cloud
 
 1. Otwórz Cloudyn portal z witryny Azure portal lub przejdź do https://azure.cloudyn.com/ i zaloguj się.
 2. Kliknij symbol koła zębatego, a następnie wybierz pozycję **kont w chmurze**.
-3. Zarządzanie kontami, wybierz **kont platformy AWS** kartę, a następnie kliknij przycisk **Dodaj nowe +**.
+3. Zarządzanie kontami, wybierz **kont platformy AWS** kartę, a następnie kliknij przycisk **Dodaj nowe +** .
 4. W **nazwa konta**, wpisz nazwę konta.
 5. Obok pozycji **typ dostępu**, wybierz opcję **Rola zarządzania tożsamościami i Dostępem**.
 6. W **ARN roli** pole, Wklej wartość skopiowany wcześniej, a następnie kliknij przycisk **Zapisz**.  
@@ -94,7 +94,7 @@ Poniższe sekcje prowadzą użytkownika przez proces tworzenia użytkownika tylk
 
 1. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę https://azure.cloudyn.com/ i zaloguj się.
 2. Kliknij symbol koła zębatego, a następnie wybierz pozycję **kont w chmurze**.
-3. Zarządzanie kontami, wybierz **kont platformy AWS** kartę, a następnie kliknij przycisk **Dodaj nowe +**.
+3. Zarządzanie kontami, wybierz **kont platformy AWS** kartę, a następnie kliknij przycisk **Dodaj nowe +** .
 4. Aby uzyskać **nazwa konta**, wpisz nazwę konta.
 5. Obok pozycji **typ dostępu**, wybierz opcję **użytkownika zarządzania tożsamościami i Dostępem**.
 6. W **klucz dostępu**, Wklej **dostępu Identyfikatora klucza** wartości z pliku credentials.csv.

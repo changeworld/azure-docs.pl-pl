@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65914301"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak wykonać aprowizację starsze urządzenia przy użyciu kluczy symetrycznych
@@ -29,7 +29,7 @@ W tym artykule założono również, że aktualizacja urządzenia ma miejsce w b
 Ten artykuł został opracowany z myślą o stacjach roboczych z systemem Windows. Jednak opisane procedury można wykonać także w systemie Linux. Aby uzyskać przykład dla systemu Linux, zobacz [Aprowizowanie pod kątem wielu dzierżaw](how-to-provision-multitenant.md).
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Identyfikator unikatowy rejestracji zostanie zdefiniowana dla każdego urządzenia, w oparciu o informacje umożliwiające identyfikację tego urządzenia. Na przykład adres MAC lub numeru seryjnego.
 
@@ -198,7 +198,7 @@ W tej sekcji spowoduje zaktualizowanie przykładu aprowizacji o nazwie **prov\_d
 
 Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysłanie żądania aprowizacji wystąpienia usługi Device Provisioning Service. Sekwencji rozruchu spowoduje, że urządzenie zostało rozpoznane i przypisane do Centrum IoT, które zostały skonfigurowane w grupie rejestracji.
 
-1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_**.
+1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_** .
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi Device Provisioning Service z bloku portalu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -268,7 +268,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
 
 
-## <a name="security-concerns"></a>Kwestie dotyczące bezpieczeństwa
+## <a name="security-concerns"></a>Zagadnienia dotyczące zabezpieczeń
 
 Należy pamiętać, że spowoduje to pozostawienie klucza pochodnego urządzenia dołączone jako część obrazu, który nie jest najlepszą zalecaną praktyką zabezpieczeń. To jest jednym z powodów Dlaczego bezpieczeństwo i łatwość użytkowania są wady i zalety. 
 

@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 312658bd653d94f3e1a32204b3c5ae4ae290558e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65832778"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Utwórz nowy pakiet dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
@@ -32,7 +32,7 @@ ms.locfileid: "65832778"
 
 Pakiet dostępu umożliwia wykonywanie jednorazowej konfiguracji zasobów i zasad, który automatycznie zarządza dostępu przez cały okres istnienia pakiet dostępu. W tym artykule opisano sposób tworzenia nowego pakietu dostępu.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Wszystkie pakiety dostępu muszą znajdować się w kontenerze o nazwie katalogu. Wykaz określa jakie zasoby można dodawać do dostępu do pakietu. Jeśli nie określisz katalogu pakietu dostępu będzie umieszczana w katalogu ogólne. Obecnie nie można przenieść istniejący pakiet dostęp do innego katalogu.
 
@@ -56,7 +56,7 @@ Na poniższym diagramie przedstawiono procedurę wysokiego poziomu służącą d
 
 1. Kliknij przycisk **nowy pakiet dostępu**.
 
-## <a name="basics"></a>Ustawienia podstawowe
+## <a name="basics"></a>Podstawy
 
 Na **podstawy** karcie należy nazwij pakiet dostępu i określić, którego katalogu, aby utworzyć pakiet dostępu w.
 

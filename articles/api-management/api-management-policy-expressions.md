@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304356"
 ---
 # <a name="api-management-policy-expressions"></a>Wyrażenia zasad usługi API Management
@@ -74,7 +74,7 @@ Wyrażenia mogą być używane jako wartości atrybutów lub wartości tekstowe 
 ## <a name="CLRTypes"></a> Typów programu .NET framework, które mogą w wyrażeniach zasad
 Poniższa tabela zawiera listę typów programu .NET Framework i ich elementów członkowskich, które są dozwolone w wyrażeniach zasad.
 
-|Type|Obsługiwane elementy członkowskie|
+|Typ|Obsługiwane elementy członkowskie|
 |--------------|-----------------------|
 |Newtonsoft.Json.Formatting|Wszyscy|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject.|

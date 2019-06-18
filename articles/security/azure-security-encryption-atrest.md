@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/07/2019
 ms.author: barclayn
 ms.openlocfilehash: d0974b98975b8f7d09760be964024f92e9690a4e
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596385"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Usługa Azure Data szyfrowanie w spoczynku
@@ -60,7 +60,7 @@ Zgodnie z wcześniejszym opisem celem szyfrowanie w spoczynku jest, że danych, 
 
 ![Składniki](./media/azure-security-encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
-### <a name="azure-key-vault"></a>Azure Key Vault
+### <a name="azure-key-vault"></a>W usłudze Azure Key Vault
 
 Lokalizacja magazynu kluczy szyfrowania i kontroli dostępu do tych kluczy stanowi podstawę do szyfrowania w modelu rest. Klucze muszą być wysoko zabezpieczonej, ale zarządzane przez określonych użytkowników i dostępne do określonych usług. Dla usług platformy Azure Azure Key Vault to rozwiązanie zalecane magazynu kluczy i zapewnia wspólnego środowiska zarządzania w usługach. Klucze są przechowywane i zarządzane w magazynów kluczy, a dostęp do magazynu kluczy można podać dla użytkowników lub usług. Usługa Azure Key Vault obsługuje tworzenie odbiorcy kluczy lub importowanie kluczy klienta do użytku w scenariuszach klucza szyfrowania zarządzanego przez klienta.
 
@@ -238,7 +238,7 @@ Usługi Microsoft Azure każdego obsługuje co najmniej szyfrowanie w modelach r
 
 Każdy klient przy użyciu infrastruktury platformy Azure jako usługa (IaaS) funkcji można uzyskać, szyfrowanie w spoczynku dla swoich maszyn wirtualnych IaaS i dyski za pomocą usługi Azure Disk Encryption. Aby uzyskać więcej informacji na temat usługi Azure Disk encryption, zobacz [dokumentacji usługi Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).
 
-#### <a name="azure-storage"></a>Magazyn Azure
+#### <a name="azure-storage"></a>Azure Storage
 
 Wszystkie usługi Azure Storage (Blob storage, Queue storage, Table storage i Azure Files) obsługuje szyfrowanie po stronie serwera w spoczynku, w przypadku niektórych usług Obsługa kluczy zarządzanych przez klienta i szyfrowanie po stronie klienta.  
 
@@ -258,54 +258,54 @@ Szyfrowanie po stronie klienta, danych usługi Azure SQL Database jest świadczo
 |                                  | **Po stronie serwera za pomocą klucza zarządzanego przez usługę**     | **Strona serwera przy użyciu zarządzanych przez klienta w usłudze Key Vault**             | **Po stronie klienta przy użyciu zarządzanych przez klienta**      |
 | **Sztucznej Inteligencji i uczenia maszynowego**      |                    |                    |                    |
 | Azure Search                     | Tak                | -                  | -                  |
-| Azure Machine Learning Service   | Tak                | -                  | -                  |
+| Usługa Azure Machine Learning   | Tak                | -                  | -                  |
 | Azure Machine Learning Studio    | Tak                | (Wersja zapoznawcza) i RSA 2048-bitowe | -               |
 | Power BI                         | Tak                | -                  | -                  |
 | **Analiza**                    |                    |                    |                    |
-| Usługa Azure Stream Analytics           | Tak                | -                  | -                  |
+| Usługa Azure Stream Analytics           | Yes                | -                  | -                  |
 | Event Hubs                       | Tak                | -                  | -                  |
-| Azure Analysis Services          | Tak                | -                  | -                  |
+| Azure Analysis Services          | Yes                | -                  | -                  |
 | Azure Data Catalog               | Tak                | -                  | -                  |
 | HDInsight                        | Tak                | W wersji zapoznawczej dla platformy Apache Kafka wszystkie długości RSA | -                  |
 | Azure Data Factory               | Tak                | -                  | -                  |
-| Azure Data Lake Store            | Tak                | Tak, RSA 2048-bitowe  | -                  |
+| Azure Data Lake Store            | Yes                | Tak, RSA 2048-bitowe  | -                  |
 | **Obliczanie**                      |                    |                    |                    |
 | Maszyny wirtualne                 | -                  | Tak, RSA 2048-bitowe  | -                  |
 | Zestaw skalowania maszyn wirtualnych        | -                  | Tak, RSA 2048-bitowe  | -                  |
 | **Bazy danych**                    |                    |                    |                    |
-| Program SQL Server w usłudze Virtual Machines   | Tak                | Tak, RSA 2048-bitowe  | Tak                |
-| Azure SQL Database               | Tak                | Tak, RSA 2048-bitowe  | Tak                |
-| Azure SQL Data Warehouse         | Tak                | Tak, RSA 2048-bitowe  | Tak                |
-| SQL Server Stretch Database      | Tak                | Tak, RSA 2048-bitowe  | Tak                |
+| Program SQL Server w usłudze Virtual Machines   | Yes                | Tak, RSA 2048-bitowe  | Tak                |
+| Azure SQL Database               | Tak                | Tak, RSA 2048-bitowe  | Yes                |
+| Azure SQL Data Warehouse         | Tak                | Tak, RSA 2048-bitowe  | Yes                |
+| SQL Server Stretch Database      | Tak                | Tak, RSA 2048-bitowe  | Yes                |
 | Table Storage                    | Tak                | -                  | Tak                |
 | Azure Cosmos DB                  | Tak                | -                  | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps                     | Tak                | -                  | Tak                |
-| Azure Repos                      | Tak                | -                  | Tak                |
+| Azure DevOps                     | Tak                | -                  | Yes                |
+| Azure Repos                      | Yes                | -                  | Tak                |
 | **Tożsamość**                     |                    |                    |                    |
 | Usługa Azure Active Directory           | Tak                | -                  | -                  |
 | Azure Active Directory Domain Services | Tak          | Tak, RSA 2048-bitowe  | -                  |
 | **Integracja**                  |                    |                    |                    |
-| Magistrala usług                      | Tak                | -                  | Tak                |
-| Siatka zdarzeń                       | Tak                | -                  | -                  |
+| Service Bus                      | Tak                | -                  | Tak                |
+| Event Grid                       | Tak                | -                  | -                  |
 | API Management                   | Tak                | -                  | -                  |
 | **IoT Services**                 |                    |                    |                    |
-| Usługa IoT Hub                          | -                  | -                  | Tak                |
+| Usługa IoT Hub                          | -                  | -                  | Yes                |
 | **Zarządzanie i nadzoru**    |                    |                    |                    |
-| Azure Site Recovery              | Tak                | Tak, RSA 2048-bitowe  | Tak                |
+| Azure Site Recovery              | Yes                | Tak, RSA 2048-bitowe  | Yes                |
 | **Nośnik**                        |                    |                    |                    |
-| Usługa multimediów                   | Tak                | -                  | Tak                |
+| Media Services                   | Tak                | -                  | Tak                |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Tak                | Tak, RSA 2048-bitowe  | Tak                |
-| Disk Storage                     | Tak                | -                  | -                  |
-| Managed Disk Storage             | Tak                | -                  | -                  |
-| File Storage                     | Tak                | Tak, RSA 2048-bitowe  | -                  |
-| Queue Storage                    | Tak                | -                  | Tak                |
+| Blob Storage                     | Yes                | Tak, RSA 2048-bitowe  | Tak                |
+| Disk Storage                     | Yes                | -                  | -                  |
+| Managed Disk Storage             | Yes                | -                  | -                  |
+| File Storage                     | Yes                | Tak, RSA 2048-bitowe  | -                  |
+| Queue Storage                    | Yes                | -                  | Tak                |
 | Avere vFXT                       | Tak                | -                  | -                  |
 | Archive Storage                  | Tak                | Tak, RSA 2048-bitowe  | -                  |
-| StorSimple                       | Tak                | -                  | Tak                |
-| Azure Backup                     | Tak                | -                  | Tak                |
-| Data Box                         | Tak                | -                  | Tak                |
+| Usługi StorSimple                       | Yes                | -                  | Yes                |
+| Azure Backup                     | Tak                | -                  | Yes                |
+| Data Box                         | Tak                | -                  | Yes                |
 
 ## <a name="conclusion"></a>Podsumowanie
 

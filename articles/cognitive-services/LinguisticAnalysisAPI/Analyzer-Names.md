@@ -12,10 +12,10 @@ ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: c989f1115bc5a85bf09270c553ac1cb51bb4f170
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954709"
 ---
 # <a name="analyzer-names"></a>Nazwy analizatorów
@@ -31,7 +31,7 @@ Rola każdego składnika jest zdefiniowana poniżej.
 Po pierwsze analizator ma unikatowy identyfikator; Identyfikator GUID.
 Te identyfikatory GUID należy zmienić stosunkowo rzadko, ale są jedynym sposobem, aby jednoznacznie opisują określonego analizatora.
 
-## <a name="kind"></a>Rodzaj
+## <a name="kind"></a>rodzaj
 Następnie każdy analyzer jest **rodzaj**.
 Definiuje warunki bardzo ogólny typ analizy zwracane, a także jednoznacznie należy zdefiniować struktury danych, używany do reprezentowania tej analizy.
 Obecnie istnieją trzy różne typy:

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0771c9c5311e264fb996bbac1c540f9ed11873cb
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65908060"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
@@ -42,7 +42,7 @@ Aby uzyskać instrukcje na temat sposobu wykonywania operacji zarządzania konte
 Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) przeprowadzi Cię przez proces tworzenia plików w magazynie, łączenia plików, pobierania pliku i usuwania niektórych plików z magazynu. Ta część artykułu przeprowadzi Cię przez najważniejsze fragmenty kodu.
 
 1. W programie Visual Studio, wybierz **pliku** menu **New**, a następnie **projektu**.
-2. Wybierz **Aplikacja konsoli (.NET Framework)**, a następnie wybierz pozycję **dalej**.
+2. Wybierz **Aplikacja konsoli (.NET Framework)** , a następnie wybierz pozycję **dalej**.
 3. W **Nazwa projektu**, wprowadź `CreateADLApplication`, a następnie wybierz pozycję **Utwórz**.
 
 4. Dodaj pakiety NuGet do swojego projektu.
@@ -131,7 +131,7 @@ Poniższy fragment kodu odczytuje zawartość pliku w Data Lake Storage Gen1.
         }
     }
 
-## <a name="get-file-properties"></a>Pobierz właściwości pliku
+## <a name="get-file-properties"></a>Pobieranie właściwości pliku
 Poniższy fragment kodu zwraca właściwości skojarzone z plikiem lub katalogiem.
 
     // Get file properties

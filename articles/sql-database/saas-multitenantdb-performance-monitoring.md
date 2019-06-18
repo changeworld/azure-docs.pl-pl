@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: be7dbe35800bbe911bc56d1883462534a16499a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485592"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty bazy danych Azure SQL wielu dzierżaw w aplikacji SaaS z wieloma dzierżawami
@@ -98,7 +98,7 @@ Firmy Wingtip Tickets SaaS wielodostępnej w bazie danych jest aplikacją SaaS, 
 
 Aby monitorować użycie zasobów wynikające z zastosowanego obciążenia, należy otworzyć portal dla wielodostępnej bazie danych, **tenants1**, zawierający dzierżawy:
 
-1. Otwórz [witryny Azure portal](https://portal.azure.com) i przejdź do serwera *tenants1-mt -&lt;użytkownika&gt;*.
+1. Otwórz [witryny Azure portal](https://portal.azure.com) i przejdź do serwera *tenants1-mt -&lt;użytkownika&gt;* .
 1. Przewiń w dół, zlokalizuj baz danych i kliknij przycisk **tenants1**. Ta podzielonej na fragmenty wielodostępnych baza danych zawiera wszystkie dzierżawy utworzone dotychczas.
 
 ![Baza danych wykresu](./media/saas-multitenantdb-performance-monitoring/multitenantdb.png)
