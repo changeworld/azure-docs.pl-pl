@@ -128,7 +128,7 @@ Poniższe kroki opisują proces szczegółowe, używanych przez aplikacje logiki
    | Pola nagłówka odpowiedzi punktu końcowego | Type | Wymagane | Opis |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nie | Rozmiar fragmentu sugerowane w bajtach |
-   | **Lokalizacja** | String | Nie | Adres URL lokalizacji, gdzie wysyłać wiadomości HTTP PATCH |
+   | **Location** | String | Nie | Adres URL lokalizacji, gdzie wysyłać wiadomości HTTP PATCH |
    ||||
 
 3. Twoja aplikacja logiki tworzy i wysyła kolejnych komunikatów HTTP PATCH -, każdy z tych informacji:

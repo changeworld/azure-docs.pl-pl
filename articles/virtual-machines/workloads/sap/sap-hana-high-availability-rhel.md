@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
 ms.openlocfilehash: 1eca9dd82bec120e5554627ade71688c82be7763
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922129"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux
@@ -28,18 +28,18 @@ ms.locfileid: "64922129"
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
 [1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[2292690]:https://launchpad.support.sap.com/#/notes/2292690
-[2455582]:https://launchpad.support.sap.com/#/notes/2455582
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[2292690]: https://launchpad.support.sap.com/#/notes/2292690
+[2455582]: https://launchpad.support.sap.com/#/notes/2455582
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
@@ -109,7 +109,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
     * **Rozmiar systemu SAP**: Wprowadź liczbę protokoły SAP, których zamierza zapewnić nowego systemu. Jeśli nie masz pewności ile protokoły SAP wymaga systemu, zapytaj partnerów technologicznych SAP lub integratora systemów.
     * **Dostępność systemu**: Wybierz **HA**.
     * **Nazwa użytkownika administratora, hasło administratora lub SSH key**: Tworzony jest nowy użytkownik, który może służyć do logowania się na tym komputerze.
-    * **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda **/subscriptions/\<identyfikator subskrypcji > /resourceGroups/\<nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/\<nazwa sieci wirtualnej > /subnets/ \<Nazwa podsieci >**. Pozostaw puste, jeśli chcesz utworzyć nową sieć wirtualną
+    * **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda **/subscriptions/\<identyfikator subskrypcji > /resourceGroups/\<nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/\<nazwa sieci wirtualnej > /subnets/ \<Nazwa podsieci >** . Pozostaw puste, jeśli chcesz utworzyć nową sieć wirtualną
 
 ### <a name="manual-deployment"></a>Ręczne wdrażanie
 
@@ -191,11 +191,11 @@ Więcej informacji na temat wymagane porty dla oprogramowania SAP HANA na ten te
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
-* **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
-* **[1]**: Ten krok dotyczy tylko węzeł 1.
-* **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+* **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
+* **[1]** : Ten krok dotyczy tylko węzeł 1.
+* **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
-1. **[A]**  Konfigurowanie układ dysku: **Menedżer woluminów logicznych (LVM)**.
+1. **[A]**  Konfigurowanie układ dysku: **Menedżer woluminów logicznych (LVM)** .
 
    Zalecamy użycie LVM dla woluminów, które przechowują dane i pliki dziennika. W poniższym przykładzie założono, że maszyny wirtualne mają cztery dyski danych dołączone, które są używane do tworzenia dwa woluminy.
 
@@ -352,9 +352,9 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
-* **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
-* **[1]**: Ten krok dotyczy tylko węzeł 1.
-* **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+* **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
+* **[1]** : Ten krok dotyczy tylko węzeł 1.
+* **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
 1. **[A]**  Konfigurowanie zapory
 
@@ -443,9 +443,9 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
-* **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
-* **[1]**: Ten krok dotyczy tylko węzeł 1.
-* **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+* **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
+* **[1]** : Ten krok dotyczy tylko węzeł 1.
+* **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
 1. **[A]**  Konfigurowanie zapory
 
