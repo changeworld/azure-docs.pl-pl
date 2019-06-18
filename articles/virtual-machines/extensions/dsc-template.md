@@ -205,9 +205,9 @@ Skrypt konfiguracji domyślnej rozszerzenia DSC służy do konfigurowania właś
 | settings.configurationArguments.ConfigurationMode |string |Określa tryb LCM. Prawidłowe opcje to **ApplyOnly**, **ApplyandMonitor**, i **ApplyandAutoCorrect**.  Wartość domyślna to **ApplyandMonitor**. |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | Określa, jak często LCM próbuje skontaktować się z konta usługi Automation, do aktualizacji.  Wartość domyślna to **30**.  Minimalna wartość to **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Określa, jak często LCM sprawdza bieżącą konfigurację. Wartość domyślna to **15**. Minimalna wartość to **15**. |
-| settings.configurationArguments.RebootNodeIfNeeded | wartość logiczna | Określa, czy węzeł zostanie automatycznie ponownie uruchomiony, jeśli operacja DSC żąda ona. Wartość domyślna to **false**. |
+| settings.configurationArguments.RebootNodeIfNeeded | boolean | Określa, czy węzeł zostanie automatycznie ponownie uruchomiony, jeśli operacja DSC żąda ona. Wartość domyślna to **false**. |
 | settings.configurationArguments.ActionAfterReboot | string | Określa, co się stanie po ponownym uruchomieniu, gdy trwa operacja zastosowania konfiguracji. Prawidłowe opcje to **ContinueConfiguration** i **StopConfiguration**. Wartość domyślna to **ContinueConfiguration**. |
-| settings.configurationArguments.AllowModuleOverwrite | wartość logiczna | Określa, czy LCM zastępuje istniejące moduły w węźle. Wartość domyślna to **false**. |
+| settings.configurationArguments.AllowModuleOverwrite | boolean | Określa, czy LCM zastępuje istniejące moduły w węźle. Wartość domyślna to **false**. |
 
 ## <a name="settings-vs-protectedsettings"></a>ustawienia, a protectedSettings
 
