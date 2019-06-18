@@ -85,7 +85,7 @@ Wszystkie ustawienia są opcjonalne. Domyślnym zachowaniem jest nie aktualizacj
 | Name (Nazwa) | Opis | Wartość domyślna | Prawidłowe wartości | Typ danych |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualizacji jądra, nawet jeśli nie są wymagane do instalacji sterowników | false | true, false | boolean |
-| driverVersion | NV: Wersja sterownika siatki<br> NC/ND: Wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla architektury CUDA wybrana są instalowane automatycznie. | latest | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
+| driverVersion | NV: Wersja sterownika siatki<br> NC/ND: Wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla architektury CUDA wybrana są instalowane automatycznie. | najnowsza | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
 | installCUDA | Zainstaluj zestaw narzędzi CUDA. Istotne tylko w przypadku maszyny wirtualne z serii NC/ND. | true | true, false | boolean |
 
 
