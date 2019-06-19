@@ -41,10 +41,10 @@ Rozszerzenie Agent usługi Network Watcher można skonfigurować poniższe dystr
 | Ubuntu | 12+ |
 | Debian | 7 i 8 |
 | Red Hat | 6 i 7 |
-| Oracle Linux | 6.8 + i 7 |
+| Oracle Linux | 6.8+ i 7 |
 | SUSE Linux Enterprise Server | 11 i 12 |
-| Przestępnym OpenSUSE | 42.3+ |
-| CentOS | 6.5 + i 7 |
+| OpenSUSE Leap | 42.3+ |
+| CentOS | 6.5+ i 7 |
 | CoreOS | 899.17.0+ |
 
 
@@ -80,7 +80,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Agent usługi Network Wa
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
-| — typ | NetworkWatcherAgentLinux |
+| type | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
