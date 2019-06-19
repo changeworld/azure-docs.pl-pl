@@ -11,7 +11,7 @@
       href: apache-kafka-get-started.md
     - name: Tworzenie klastra platformy Apache Kafka — PowerShell
       href: apache-kafka-quickstart-powershell.md
-    - name: Tworzenie klastra platformy Apache Kafka — szablon usługi Resource Manager
+    - name: Tworzenie klastra platformy Apache Kafka — szablon
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-kafka-quickstart-resource-manager-template.md
 - name: Samouczki

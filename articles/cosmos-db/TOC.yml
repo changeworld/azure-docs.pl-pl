@@ -145,6 +145,12 @@
             - name: Zasady indeksowania
               displayName: 'consistent, none'
               href: index-policy.md
+        - name: Typy danych
+          items:
+            - name: DateTime
+              href: working-with-dates.md
+            - name: Dane geoprzestrzenne
+              href: geospatial.md
         - name: Czas wygaśnięcia
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -164,7 +170,11 @@
           displayName: change feed
           href: change-feed-functions.md
     - name: Wbudowana analiza przy użyciu platformy Apache Spark
-      href: spark-api-introduction.md
+      items:
+        - name: Wprowadzenie
+          href: spark-api-introduction.md
+        - name: Architektura lambda
+          href: lambda-architecture.md
     - name: Programowanie po stronie serwera
       items:
         - name: 'Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)'
@@ -480,8 +490,16 @@
           href: bootstrap-kubernetes-cluster.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Zarządzanie kontem usługi Azure Cosmos
+    - name: Praca z kontem usługi Azure Cosmos
       href: how-to-manage-database-account.md
+    - name: Praca z zasobami usługi Azure Cosmos DB
+      items:
+        - name: Korzystanie z programu PowerShell
+          href: manage-with-powershell.md
+        - name: Korzystanie z interfejsu wiersza polecenia platformy Azure
+          href: manage-with-cli.md
+        - name: Korzystanie z szablonów usługi Resource Manager
+          href: manage-sql-with-resource-manager.md
     - name: Dystrybucja globalna
       items:
         - name: Konfigurowanie wielowzorcowości
@@ -506,6 +524,12 @@
           href: find-request-unit-charge.md
     - name: Praca z kontenerami i elementami
       items:
+        - name: Praca z danymi usługi Cosmos DB
+          items:
+            - name: Praca z danymi za pomocą Eksploratora usługi Azure Storage
+              href: storage-explorer.md
+            - name: Praca z danymi za pomocą eksploratora usługi Azure Cosmos
+              href: data-explorer.md
         - name: Tworzenie kontenera
           href: how-to-create-container.md
         - name: Tworzenie kontenera przy użyciu dużego klucza partycji
@@ -520,10 +544,6 @@
         - name: Konfigurowanie czasu wygaśnięcia
           displayName: 'delete, delete data, ttl'
           href: how-to-time-to-live.md
-        - name: Praca z danymi za pomocą Eksploratora usługi Azure Storage
-          href: storage-explorer.md
-        - name: Praca z danymi za pomocą eksploratora usługi Azure Cosmos
-          href: data-explorer.md
         - name: Zarządzanie zasadami indeksowania
           href: how-to-manage-indexing-policy.md
         - name: Definiowanie unikatowych kluczy
@@ -531,14 +551,48 @@
         - name: Przykłady podzapytań w języku SQL
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md
+    - name: Najlepsze praktyki
+      items:
+        - name: Porady dotyczące wydajności
+          items:
+            - name: Pobieranie metryk wykonywania zapytań
+              displayName: 'query profile, profile'
+              href: profile-sql-api-query.md
+            - name: Dostosowywanie wydajności zapytań
+              href: sql-api-query-metrics.md
+            - name: Porady dotyczące wydajności dla zestawu.NET SDK
+              href: performance-tips.md
+            - name: Porady dotyczące wydajności dla zestawu Java SDK
+              href: performance-tips-java.md
+            - name: Porady dotyczące wydajności dla zestawu Async Java SDK
+              href: performance-tips-async-java.md
+            - name: Test wydajnościowy — przykładowa aplikacja
+              href: performance-testing.md
+        - name: Ekonomiczne odczyty i zapisy
+          href: key-value-store-cost.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Rozwiązywanie problemów z zestawem Java Async SDK
+          href: troubleshoot-java-async-sdk.md
+        - name: Rozwiązywanie problemów z zestawem .NET SDK
+          href: troubleshoot-dot-net-sdk.md
     - name: Zestawienie zmian
       items:
+        - name: Dzienniki wyzwalacza usługi Azure Cosmos DB
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: Zasady połączeń wyzwalaczy usługi Azure Cosmos DB
           href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: Wiele wyzwalaczy usługi Azure Cosmos DB
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Rozwiązywanie problemów z wyzwalaczami usługi Azure Cosmos DB
           href: troubleshoot-changefeed-functions.md
+    - name: Wbudowana analiza przy użyciu platformy Apache Spark
+      items:
+        - name: Łącznik platformy Azure Spark w usłudze Azure Databricks
+          href: spark-connector.md
+        - name: Przesyłanie strumieniowe na platformie Apache Kafka i w usłudze Cosmos DB
+          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+          maintainContext: true
     - name: Programowanie po stronie serwera
       items:
         - name: 'Zapisywanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)'
@@ -557,18 +611,12 @@
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Zabezpieczanie kluczy usługi Azure Cosmos przy użyciu usługi Key Vault
           href: access-secrets-from-keyvault.md
+        - name: Uwierzytelnianie oparte na certyfikatach za pomocą usługi Azure AD
+          href: certificate-based-authentication.md
     - name: Gotowość przedsiębiorstwa
       items:
         - name: Przywracanie danych z kopii zapasowej
           href: how-to-backup-and-restore.md
-    - name: Zarządzanie zasobami usługi Azure Cosmos DB
-      items:
-        - name: Zarządzanie przy użyciu programu PowerShell
-          href: manage-with-powershell.md
-        - name: Zarządzanie przy użyciu interfejsu wiersza polecenia platformy Azure
-          href: manage-with-cli.md
-        - name: Zarządzanie przy użyciu szablonów usługi Resource Manager
-          href: manage-sql-with-resource-manager.md
     - name: Rejestrowanie
       items:
         - name: Rejestrowanie diagnostyczne
@@ -592,30 +640,6 @@
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania usługi Azure DevOps
       href: tutorial-setup-ci-cd.md
-    - name: Typy danych
-      items:
-        - name: DateTime
-          href: working-with-dates.md
-        - name: Dane geoprzestrzenne
-          href: geospatial.md
-    - name: Najlepsze praktyki
-      items:
-        - name: Porady dotyczące wydajności
-          items:
-            - name: Pobieranie metryk wykonywania zapytań
-              href: profile-sql-api-query.md
-            - name: Dostosowywanie wydajności zapytań
-              href: sql-api-query-metrics.md
-            - name: Porady dotyczące wydajności dla zestawu.NET SDK
-              href: performance-tips.md
-            - name: Porady dotyczące wydajności dla zestawu Java SDK
-              href: performance-tips-java.md
-            - name: Porady dotyczące wydajności dla zestawu Async Java SDK
-              href: performance-tips-async-java.md
-            - name: Test wydajnościowy — przykładowa aplikacja
-              href: performance-testing.md
-        - name: Ekonomiczne odczyty i zapisy
-          href: key-value-store-cost.md
     - name: Wizualizacja danych usługi Cosmos DB
       items:
         - name: Korzystanie z usługi Power BI
@@ -651,13 +675,6 @@
         - name: Używanie programu Spring Boot Starter
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
           maintainContext: true
-        - name: Architektura lambda
-          href: lambda-architecture.md
-        - name: Usługa Azure Databricks (łącznik platformy Spark)
-          href: spark-connector.md
-        - name: Platformy Spark i Kafka
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
         - name: Sterownik ODBC
           href: odbc-driver.md
     - name: Biblioteka funkcji wykonawczej operacji zbiorczych
@@ -668,12 +685,6 @@
           href: bulk-executor-dot-net.md
         - name: Funkcja wykonywania zbiorczego — biblioteka Java
           href: bulk-executor-java.md
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Rozwiązywanie problemów z zestawem Java Async SDK
-          href: troubleshoot-java-async-sdk.md
-        - name: Rozwiązywanie problemów z zestawem .NET SDK
-          href: troubleshoot-dot-net-sdk.md
 - name: Dokumentacja
   items:
     - name: .NET

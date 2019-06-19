@@ -2,23 +2,14 @@
   href: /azure/hdinsight
 - name: Omówienie
   items:
-    - name: Informacje o platformie Apache Hadoop w usłudze HDInsight
+    - name: Co to jest usługa Apache Hadoop w usłudze HDInsight?
       href: apache-hadoop-introduction.md
-      maintainContext: true
-    - name: Architektura platformy Apache Hadoop w usłudze HDInsight
-      href: ../hdinsight-hadoop-architecture.md
-      maintainContext: true
-    - name: Składniki usługi Apache Hadoop w usłudze HDInsight
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
       maintainContext: true
 - name: Przewodniki Szybki start
   items:
     - name: Tworzenie klastra Apache Hadoop — portal
       href: apache-hadoop-linux-create-cluster-get-started-portal.md
-    - name: Tworzenie klastra Apache Hadoop — szablon usługi Resource Manager
+    - name: Tworzenie klastra Apache Hadoop — szablon
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-hadoop-linux-tutorial-get-started.md
 - name: Samouczki
@@ -45,6 +36,15 @@
       maintainContext: true
 - name: Pojęcia
   items:
+    - name: HDInsight 4.0
+      href: ../hdinsight-version-release.md
+      maintainContext: true
+    - name: Architektura platformy Apache Hadoop w usłudze HDInsight
+      href: ../hdinsight-hadoop-architecture.md
+      maintainContext: true
+    - name: Składniki usługi Apache Hadoop w usłudze HDInsight
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
     - name: Planowanie pojemności klastra
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -471,9 +471,6 @@
   items:
     - name: Klastry systemu Windows
       items:
-        - name: Migrowanie klastrów systemu Windows do klastrów systemu Linux
-          href: ../hdinsight-migrate-from-windows-to-linux.md
-          maintainContext: true
         - name: Migrowanie rozwiązań .NET do klastrów z systemem Linux
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
           maintainContext: true

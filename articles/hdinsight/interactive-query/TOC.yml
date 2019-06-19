@@ -2,11 +2,8 @@
   href: /azure/hdinsight
 - name: Omówienie
   items:
-    - name: Składniki usługi Apache Hadoop w usłudze HDInsight
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+    - name: Co to jest zapytanie interakcyjne w usłudze HDInsight?
+      href: ./apache-interactive-query-get-started.md
       maintainContext: true
 - name: Przewodniki Szybki start
   items:
@@ -14,8 +11,6 @@
       href: ./hdinsight-connect-hive-zeppelin.md
 - name: Rozpoczęcie pracy
   items:
-    - name: Rozpoczynanie pracy z zapytaniem interakcyjnym
-      href: ./apache-interactive-query-get-started.md
     - name: Instalowanie aplikacji usługi HDInsight
       href: ../hdinsight-apps-install-applications.md
       maintainContext: true

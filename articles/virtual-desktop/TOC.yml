@@ -44,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: Automatyczne skalowanie hostów sesji
       href: set-up-scaling-script.md
+    - name: Dostosowywanie kanału informacyjnego dla użytkowników usługi Windows Virtual Desktop
+      href: customize-feed-for-virtual-desktop-users.md
     - name: Dostosowywanie właściwości protokołu RDP
       href: customize-rdp-properties.md
 - name: Pojęcia
