@@ -9,11 +9,11 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: a7a86c6a2661a8a1f30491391fc76f4dc5d71f54
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66163434"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183856"
 ---
 Aby utworzyć usługę IoT Hub przy użyciu witryny Azure Portal:
 
@@ -29,7 +29,7 @@ Aby utworzyć usługę IoT Hub przy użyciu witryny Azure Portal:
     | ------- | ----- |
     | Subskrypcja | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
     | Grupa zasobów | Utwórz nową. W tym samouczku użyto nazwy **tutorials-iot-hub-rg**. |
-    | Obszar | W tym samouczku jest używany region **Zachodnie stany USA**. Można wybrać region znajdujący się najbliżej. |
+    | Region | W tym samouczku jest używany region **Zachodnie stany USA**. Można wybrać region znajdujący się najbliżej. |
     | Name (Nazwa) | W poniższym zrzucie ekranu użyto nazwy **tutorials-iot-hub**. Podczas tworzenia centrum należy wybrać własną unikatową nazwę. |
 
     ![Ustawienia centrum 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)

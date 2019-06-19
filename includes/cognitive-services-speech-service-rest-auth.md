@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145369"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183518"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -18,7 +18,7 @@ Każde żądanie wymaga nagłówka autoryzacji. W poniższej tabeli zestawiono, 
 | Nagłówki obsługiwane autoryzacji | Zamiany mowy na tekst | Zamiana tekstu na mowę |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Yes | Nie |
-| Autoryzacja: Elementu nośnego | Tak | Yes |
+| Autoryzacja: Elementu nośnego | Yes | Yes |
 
 Korzystając z `Ocp-Apim-Subscription-Key` nagłówka, tylko, musisz podać klucz subskrypcji. Na przykład:
 

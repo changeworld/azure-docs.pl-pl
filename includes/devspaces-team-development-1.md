@@ -11,11 +11,11 @@ ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
 ms.openlocfilehash: 40c1be20df845b975c023616e38cbb932c985735
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157853"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183669"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
 
@@ -58,7 +58,7 @@ Najpierw musimy wdrożyć punkt odniesienia naszych usług. To wdrożenie będzi
 
 1. Sklonuj [przykładową aplikację usługi Dev Spaces](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. Wyewidencjonuj gałąź zdalną *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
-1. Wybierz przestrzeń _dev_: `azds space select --name dev`. Po wyświetleniu monitu o wybranie nadrzędnej przestrzeni deweloperskiej wybierz pozycję _\<none\>_.
+1. Wybierz przestrzeń _dev_: `azds space select --name dev`. Po wyświetleniu monitu o wybranie nadrzędnej przestrzeni deweloperskiej wybierz pozycję _\<none\>_ .
 1. Przejdź do katalogu _mywebapi_, a następnie wykonaj: `azds up -d`
 1. Przejdź do katalogu _webfrontend_, a następnie wykonaj: `azds up -d`
 1. Wykonaj `azds list-uris`, aby wyświetlić publiczny punkt końcowy usługi _webfrontend_

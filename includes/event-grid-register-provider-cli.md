@@ -9,11 +9,11 @@ ms.date: 08/17/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: ace22a6896a121f5cd8af838c7b0e427bd0287dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152241"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67182913"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Włączanie dostawcy zasobów usługi Event Grid
 

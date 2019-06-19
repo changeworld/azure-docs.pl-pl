@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: scottwhi
 ms.custom: include file
 ms.openlocfilehash: 6016b13fe7d3e1f3b673bd2446d2f68b04878cd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66124731"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183514"
 ---
 Dodatek Statystyka Bing udostępnia analizy dla interfejsów API wyszukiwania Bing. Analytics zawiera wolumin wywołań, ciągi zapytania dotyczącego początkowych, rozmieszczenie geograficzne i inne. Aby włączyć dodatek Statystyka Bing wyszukiwania Bing płatną subskrypcję, przejdź do swojej [pulpitu nawigacyjnego platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7), wybierz swoją subskrypcję płatną i kliknij przycisk Włącz dodatek Statystyka Bing. Włączanie dodatek Statystyka Bing nieco zwiększa szybkość subskrypcji (zobacz [ceny](https://aka.ms/bingstatisticspricing)).
 
