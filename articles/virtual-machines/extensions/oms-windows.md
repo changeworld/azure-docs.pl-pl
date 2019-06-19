@@ -93,8 +93,8 @@ Następujący kod JSON zawiera schemat dla rozszerzenia agenta usługi Log Analy
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| workspaceId (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
-| klucz workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+| workspaceId (np.)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 \* Identyfikator obszaru roboczego jest nazywany consumerId w interfejsu API programu Log Analytics.
 
