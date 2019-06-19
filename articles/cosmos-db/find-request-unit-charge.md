@@ -4,14 +4,14 @@ description: Dowiedz się, jak można znaleźć jednostki żądań (RU) opłaty 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 0671556a1ad049782090ffede509072adbac4c6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416041"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163842"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Znajdź opłata za jednostki żądań w usłudze Azure Cosmos DB
 
@@ -297,8 +297,9 @@ Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji
 Aby dowiedzieć się więcej o optymalizacji sieci zużycia jednostek RU, zobacz następujące artykuły:
 
 * [Jednostki żądania i przepływności w usłudze Azure Cosmos DB](request-units.md)
-* [Optymalizuj koszt aprowizowanej przepływności w usłudze Azure Cosmos DB](optimize-cost-throughput.md)
+* [Optymalizacja zaaprowizowanej przepływności w usłudze Azure Cosmos DB](optimize-cost-throughput.md)
 * [Optymalizuj koszt zapytania w usłudze Azure Cosmos DB](optimize-cost-queries.md)
 * [Skaluj globalnie aprowizowana przepływność](scaling-throughput.md)
 * [Aprowizowanie przepływności na kontenerach i baz danych](set-throughput.md)
 * [Aprowizowanie przepływności dla kontenera](how-to-provision-container-throughput.md)
+* [Monitoruj i Debuguj za pomocą metryk w usłudze Azure Cosmos DB](use-metrics.md)

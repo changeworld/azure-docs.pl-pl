@@ -3,20 +3,20 @@ title: Współczynnik ufności — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Współczynnik ufności wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
+ms.date: 06/17/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4fb5d1e20c4c857dedcec2dc4695f82fccd9269d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c14c607e4c563bbeeaff02b2c2478cc4b4d96ee5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792745"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165135"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Współczynnik ufności z bazy wiedzy usługi QnA Maker
 Jeśli kwerenda użytkownika są dopasowywane do wiedzy, narzędzie QnA Maker zwraca odpowiednich odpowiedzi, wraz z współczynnik ufności. Ten wynik wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika. 
@@ -46,7 +46,7 @@ Poniższa tabela wskazuje typowe ufności skojarzone dla danego wynik.
 |0|Brak dopasowania, więc nie zostanie zwrócona odpowiedź.|"Ile usługa kosztuje"|
 
 ## <a name="choose-a-score-threshold"></a>Wybierz ocenę wartości progowej
-Powyższej tabeli przedstawiono wyniki, które oczekują na większości artykułów bazy wiedzy. Jednak ponieważ każdy KB jest inna i ma różnych typów, słów, intencje i cele zalecamy testowania i wybierz wartość progową najlepiej preferencji. Domyślnie próg wynosi 0, dzięki czemu zwracane są wszystkie możliwe odpowiedzi. Zalecana wartość progowa, które powinny działać dla większości artykułów bazy wiedzy, jest **50**.
+Powyższej tabeli przedstawiono wyniki, które oczekują na większości artykułów bazy wiedzy. Jednak ponieważ każdy KB jest inna i ma różne rodzaje słów, intencji, a następnie cele zalecamy testowania i wybierz wartość progową najlepiej działa dla Ciebie. Domyślnie próg wynosi 0, dzięki czemu zwracane są wszystkie możliwe odpowiedzi. Zalecana wartość progowa, które powinny działać dla większości artykułów bazy wiedzy, jest **50**.
 
 Wybierając próg, należy pamiętać, równowagę między dokładności i pokrycia i dostosować próg zgodnie z wymaganiami.
 
@@ -56,6 +56,12 @@ Wybierając próg, należy pamiętać, równowagę między dokładności i pokry
 
 > [!NOTE]
 > Nowsze wersje usługi QnA Maker obejmują udoskonalenia w zakresie logiki oceniania i mogą mieć wpływ na próg. Ilekroć, zaktualizuj usługę, upewnij się, testowanie i dostosować wartość progową, jeśli to konieczne. Wersję pytań i odpowiedzi usługi można sprawdzić [tutaj](https://www.qnamaker.ai/UserSettings)i zobacz, jak uzyskać najnowsze aktualizacje [tutaj](../How-To/troubleshooting-runtime.md).
+
+## <a name="set-threshold"></a>Progu 
+
+Ustaw próg wynik jako właściwość [treść kodu JSON z interfejsu API GenerateAnswer](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). Oznacza to, że jest on ustawiany dla każdego wywołania GenerateAnswer. 
+
+Z platformy bot framework Ustaw wynik, jako część obiektu opcje [ C# ](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) lub [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
 ## <a name="improve-confidence-scores"></a>Poprawić wyniki ufności
 Aby poprawić współczynnik ufności z określonej odpowiedzi na zapytanie użytkownika, można dodać zapytania użytkownika do bazy wiedzy knowledge base, jako alternatywnej pytanie na odpowiedź. Możesz również użyć bez uwzględniania wielkości liter [word zmiany](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) można dodać synonimy do słów kluczowych w wiedzy.

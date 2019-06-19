@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: wolfma
 ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145503"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183524"
 ---
 1. Uruchom program Visual Studio 2017.
 
@@ -19,7 +19,7 @@ ms.locfileid: "66145503"
 
    ![Włącz pakiet roboczy Programowanie aplikacji klasycznych dla platformy .NET](~/articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
 
-1. Następnie utwórzmy projekt. Na pasku menu wybierz pozycję **Plik > Nowy > Projekt**. W wyświetlonym oknie dialogowym w lewym okienku rozwiń sekcje **Zainstalowane > Visual C# > Pulpit Windows**, a następnie wybierz pozycję **Aplikacja konsoli (.NET Framework)**. Nazwij ten projekt *helloworld*.
+1. Następnie utwórzmy projekt. Na pasku menu wybierz pozycję **Plik > Nowy > Projekt**. W wyświetlonym oknie dialogowym w lewym okienku rozwiń sekcje **Zainstalowane > Visual C# > Pulpit Windows**, a następnie wybierz pozycję **Aplikacja konsoli (.NET Framework)** . Nazwij ten projekt *helloworld*.
 
     ![Utwórz aplikację konsoli w języku Visual C# (.NET Framework)](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "Utwórz aplikację konsoli w języku Visual C# (.NET Framework)")
 

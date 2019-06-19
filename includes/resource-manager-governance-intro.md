@@ -9,11 +9,11 @@ ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: d1e7fa1ed1649508f0d4923db8817d17ad556ca1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66164582"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183161"
 ---
 Wdrażanie zasobów na platformie Azure jest procesem niezwykle elastycznym. Można zdecydować, jakiego rodzaju zasoby będą wdrażane, gdzie się one znajdują oraz jak należy je skonfigurować. Ta elastyczność może jednak spowodować, że dostępnych będzie więcej opcji, niż powinno być dozwolonych w organizacji. Podczas planowania wdrażania zasobów na platformie Azure mogą wyniknąć następujące kwestie:
 

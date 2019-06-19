@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 2a6319565aa05f34ce31a14c5fc57e591248f4ee
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: cb8b188f8d5313852ce57481031faafc28e247b3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399689"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204294"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -50,6 +50,17 @@ Przed rozpoczęciem należy sprawdzić poniżej:
 **Obsługiwane systemy operacyjne** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> System Linux nie jest obecnie obsługiwany.
 **Obsługiwane wersje programu SQL Server** | SQL Server 2017, SQL Server 2016, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Obsługiwane wersje programu .NET** | .NET framework 4.5.2 i nowszej zainstalowany na maszynie Wirtualnej
+
+### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Obsługa programu SQL Server 2008 i SQL Server 2008 R2
+
+Usługa Azure Backup ma zapowiedziała niedawno obsługę [serwerami SQL EOS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) — program SQL Server 2008 i SQL Server 2008 R2. Rozwiązanie jest obecnie dostępna w wersji zapoznawczej dla EOS programu SQL Server i obsługuje następującą konfigurację:
+
+1. Program SQL Server 2008 i SQL Server 2008 R2, systemem Windows 2008 R2 z dodatkiem SP1
+2. .NET framework 4.5.2 lub nowszym należy zainstalować na maszynie Wirtualnej
+3. Tworzenie kopii zapasowej dla infrastruktury klasyfikacji plików i dublowanych baz danych nie jest obsługiwane.
+
+Wszystkich innych [funkcji zagadnień i ograniczeń](#feature-consideration-and-limitations) dotyczą również tych wersji. Klient nie zostanie obciążona dla tej funkcji do czasu, który stanie się ogólnie dostępna.
+
 
 ## <a name="feature-consideration-and-limitations"></a>Funkcja uwag i ograniczeń
 
@@ -114,9 +125,19 @@ Różnicowa | Podstawowy
 Log |  Pomocniczy
 Pełne copy-Only |  Pomocniczy
 
-## <a name="fix-sql-sysadmin-permissions"></a>Naprawianie uprawnień administratora systemu SQL
+## <a name="set-vm-permissions"></a>Ustawianie uprawnień maszyny wirtualnej
 
-  Jeśli trzeba usunąć uprawnienia z powodu **UserErrorSQLNoSysadminMembership** błąd, wykonaj następujące czynności:
+  Po uruchomieniu odnajdywania w programie SQL Server, usługi Azure Backup wykonuje następujące czynności:
+
+* Dodaje rozszerzenie AzureBackupWindowsWorkload.
+* Tworzy konto usługi NT SERVICE\AzureWLBackupPluginSvc można odnaleźć baz danych na maszynie wirtualnej. To konto jest używane dla kopii zapasowej i przywracania i wymaga uprawnień administratora systemu SQL.
+* Umożliwia odnalezienie baz danych, które są uruchomione na maszynie Wirtualnej, usługa Azure Backup używa konta NT AUTHORITY\SYSTEM. To konto musi być publiczny logowania SQL.
+
+Jeśli nie utworzono maszynę Wirtualną programu SQL Server w witrynie Azure Marketplace lub jeśli korzystasz z programu SQL 2008 i 2008 R2, może pojawić się **UserErrorSQLNoSysadminMembership** błędu.
+
+Za udzielenie uprawnień w przypadku programu **SQL 2008** i **2008 R2** systemem Windows 2008 R2, zobacz [tutaj](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
+
+W przypadku innych wersji napraw uprawnienia wykonując następujące kroki:
 
   1. Zaloguj się do programu SQL Server Management Studio (SSMS), używając konta z uprawnieniami administratora systemu SQL Server. Jeśli nie potrzebujesz specjalnych uprawnień, uwierzytelnianie systemu Windows powinno działać.
   2. W programie SQL Server otwórz folder **Security/Logins**.
@@ -146,8 +167,72 @@ Pełne copy-Only |  Pomocniczy
 > [!NOTE]
 > Jeśli program SQL Server ma wiele wystąpień programu SQL Server zainstalowana, a następnie należy dodać uprawnienia administratora systemu dla **NT Service\AzureWLBackupPluginSvc** konta do wszystkich wystąpień programu SQL.
 
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>Nadaj uprawnienia sysadmin SQL dla programu SQL 2008 i SQL 2008 R2
+
+Dodaj **NT AUTHORITY\SYSTEM** i **NT Service\AzureWLBackupPluginSvc** logowania się do wystąpienia programu SQL Server:
+
+1. Przejdź w wystąpieniu serwera SQL w Eksploratorze obiektów.
+2. Przejdź do sekcji Zabezpieczenia -> logowania
+3. Kliknij prawym przyciskiem myszy dane logowania, a następnie kliknij przycisk *nowej nazwy logowania...*
+
+    ![Nowe dane logowania przy użyciu programu SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+
+4. Przejdź na kartę Ogólne, a następnie wprowadź **NT AUTHORITY\SYSTEM** jako nazwę logowania.
+
+    ![Nazwa logowania dla programu SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+
+5. Przejdź do *ról serwera* i wybierz polecenie *publicznych* i *sysadmin* ról.
+
+    ![Wybieranie ról w programie SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+
+6. Przejdź do *stan*. *Udziel* uprawnień, aby nawiązać połączenie z aparatem bazy danych i zaloguj się jako *włączone*.
+
+    ![Udziel uprawnień w programie SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+
+7. Kliknij przycisk OK.
+8. Powtarzaj taką samą sekwencję kroków (powyżej 1-7), aby dodać NT Service\AzureWLBackupPluginSvc Zaloguj się do wystąpienia programu SQL Server. Jeśli istnieje już logowanie, upewnij się, ma roli serwera sysadmin i w obszarze stan ma udzielić uprawnień do połączenia z aparatem bazy danych i zaloguj się jako włączone.
+9. Po przyznaniu uprawnień, **ponowne odnajdywanie baz danych** w portalu: Vault **->** kopii zapasowej infrastruktury **->** obciążenia w maszynie Wirtualnej platformy Azure:
+
+    ![Ponownie Znajdź bazy danych w witrynie Azure Portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+
+Alternatywnie można zautomatyzować, zapewniając uprawnienia, uruchamiając następujące polecenia programu PowerShell w trybie administratora. Nazwa wystąpienia jest równa MSSQLSERVER domyślnie. Zmiana wystąpienia nazwy argumentu w skrypcie, jeśli potrzebne, można:
+
+```powershell
+param(
+    [Parameter(Mandatory=$false)] 
+    [string] $InstanceName = "MSSQLSERVER"
+)
+if ($InstanceName -eq "MSSQLSERVER")
+{
+    $fullInstance = $env:COMPUTERNAME   # In case it is the default SQL Server Instance
+}
+else
+{
+    $fullInstance = $env:COMPUTERNAME + "\" + $InstanceName   # In case of named instance
+}
+try
+{ 
+    sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT Service\AzureWLBackupPluginSvc', 'sysadmin'" # Adds login with sysadmin permission if already not available
+}
+catch
+{
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception|format-list -force
+}
+try
+{ 
+    sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT AUTHORITY\SYSTEM', 'sysadmin'" # Adds login with sysadmin permission if already not available
+}
+catch
+{
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception|format-list -force
+}
+```
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Dowiedz się więcej o](backup-sql-server-database-azure-vms.md) tworzenia kopii zapasowych baz danych programu SQL Server.
-- [Dowiedz się więcej](restore-sql-database-azure-vm.md) o przywracaniu baz danych programu SQL Server z kopii zapasowych.
-- [Dowiedz się więcej](manage-monitor-sql-database-backup.md) o zarządzaniu bazami danych programu SQL Server, dla których są tworzone kopie zapasowe.
+* [Dowiedz się więcej o](backup-sql-server-database-azure-vms.md) tworzenia kopii zapasowych baz danych programu SQL Server.
+* [Dowiedz się więcej](restore-sql-database-azure-vm.md) o przywracaniu baz danych programu SQL Server z kopii zapasowych.
+* [Dowiedz się więcej](manage-monitor-sql-database-backup.md) o zarządzaniu bazami danych programu SQL Server, dla których są tworzone kopie zapasowe.

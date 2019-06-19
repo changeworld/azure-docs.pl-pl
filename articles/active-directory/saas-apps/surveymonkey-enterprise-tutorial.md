@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c55438e2a853094bc26b3cb672687733f206f104
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10d43de00c9daefdb86a92d92ebe2cfe39fd3248
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089586"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-surveymonkey-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Enterprise usługę SurveyMonkey na
 
@@ -110,7 +110,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne, usługę SurveyMonkey
 
     ![Usługę SurveyMonkey Enterprise domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/both-signonurl.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: ` https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 

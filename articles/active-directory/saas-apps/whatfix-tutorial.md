@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49d0f2c695135c6b36eb6a3e89dec74b9e6bb695
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3bc061cca3a2c57d2ebccb0fc09f8168c2fad253
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087143"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163962"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>Samouczek: Integracja Whatfix za pomocą usługi Azure Active Directory
 
@@ -139,8 +139,8 @@ Po wybraniu kafelka Whatfix w panelu dostępu, powinien zostać automatycznie za
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

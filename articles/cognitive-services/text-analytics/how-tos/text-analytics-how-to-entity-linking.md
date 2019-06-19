@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 881c829424124cca843beb7005306edd53be2673
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231424"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203985"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu
 
@@ -31,7 +31,7 @@ Text Analytics `entities` obsługuje punktu końcowego o nazwie rozpoznawanie je
 ### <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek znaku (NER)
 O nazwie rozpoznawanie jednostek (NER) to zdolność do identyfikacji różnych obiektów w tekście i kategoryzowanie je do wstępnie zdefiniowanych klas. Poniżej wymieniono obsługiwane klas jednostek.
 
-W analizy tekstu [w wersji 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne.
+W analizy tekstu [w wersji 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne dla kilku języków. Zobacz [języki](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) artykuł, aby uzyskać więcej informacji. 
 
 ### <a name="language-support"></a>Obsługa języków
 

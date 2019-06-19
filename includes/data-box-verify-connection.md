@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150711"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183898"
 ---
 Wykonaj poniższe czynności, aby nawiązać i zweryfikować połączenie z kontem magazynu.
 
@@ -17,7 +17,7 @@ Wykonaj poniższe czynności, aby nawiązać i zweryfikować połączenie z kont
 
     ![Pulpit nawigacyjny urządzenia Data Box](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. Wklej wartości dla swojego konta w polach **Nazwa konta** i **Klucz konta** (wartość 1 klucza ze strony **Połącz i skopiuj** w lokalnym internetowym interfejsie użytkownika). Wybierz opcję Domena punktów końcowych magazynu w polu **Inne (podaj poniżej)**, a następnie podaj punkt końcowy usługi obiektów blob, jak pokazano poniżej. Opcję **Użyj protokołu HTTP** zaznacz tylko wtedy, gdy przesyłasz za pośrednictwem protokołu *http*. Jeśli używasz protokołu *https*, nie zaznaczaj tej opcji. Wybierz opcję **Dalej**.
+2. Wklej wartości dla swojego konta w polach **Nazwa konta** i **Klucz konta** (wartość 1 klucza ze strony **Połącz i skopiuj** w lokalnym internetowym interfejsie użytkownika). Wybierz opcję Domena punktów końcowych magazynu w polu **Inne (podaj poniżej)** , a następnie podaj punkt końcowy usługi obiektów blob, jak pokazano poniżej. Opcję **Użyj protokołu HTTP** zaznacz tylko wtedy, gdy przesyłasz za pośrednictwem protokołu *http*. Jeśli używasz protokołu *https*, nie zaznaczaj tej opcji. Wybierz opcję **Dalej**.
 
     ![Pulpit nawigacyjny urządzenia Data Box](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 

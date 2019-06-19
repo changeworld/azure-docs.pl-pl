@@ -1,6 +1,6 @@
 ---
 title: Authentication
-titleSuffix: Cognitive Services - Azure
+titleSuffix: Azure Cognitive Services
 description: 'Istnieją trzy sposoby, aby uwierzytelnić żądanie z zasobem usługi Azure Cognitive Services: klucz subskrypcji, token elementu nośnego lub wieloma usługami subskrypcji. W tym artykule dowiesz się, o każdej z metod i wykonać żądanie.'
 services: cognitive-services
 author: erhopf
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06cc5509598cb6227a64e2cf375a5686c89312eb
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336788"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163678"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań usług Azure Cognitive Services
 
@@ -29,7 +29,7 @@ Każde żądanie do usługi Azure Cognitive Service musi zawierać nagłówek uw
 Zanim dokonasz, żądania, potrzebujesz konta platformy Azure i subskrypcja usługi Azure Cognitive Services. Jeśli masz już konto, przejdź dalej, a następnie przejdź do następnej sekcji. Jeśli nie masz konta, mamy wskazówki ułatwiające konfigurowanie w ciągu kilku minut: [Tworzenie konta usług Cognitive Services dla platformy Azure](cognitive-services-apis-create-account.md).
 
 Możesz uzyskać klucz subskrypcji z [witryny Azure portal](cognitive-services-apis-create-account.md#access-your-resource) po utworzeniu konta lub aktywowania [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/my-apis).
- 
+
 ## <a name="authentication-headers"></a>Nagłówki uwierzytelniania
 
 Omówmy szybko nagłówki uwierzytelniania dostępne w połączeniu z usług Azure Cognitive Services.

@@ -15,11 +15,11 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: 8c2dc41fde9387da291b6e4a6c8a6220ae62b514
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121743"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183836"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Logowania użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji jednostronicowej JavaScript (SPA)
 

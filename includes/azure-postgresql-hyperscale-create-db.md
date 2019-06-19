@@ -9,11 +9,11 @@ ms.date: 05/14/2019
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: c07e352288d7dc1d0bf198fd74c8baaded3a2d23
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154492"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183474"
 ---
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -64,7 +64,7 @@ Usługi Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawc
 
 Podczas tworzenia usługi Azure Database for postgresql w warstwie serwera domyślna baza danych o nazwie **citus** zostanie utworzony. Aby połączyć z serwerem bazy danych, należy parametry połączenia i hasło administratora.
 
-1. Uzyskaj parametry połączenia. Na stronie grupy serwera kliknij **parametry połączenia** elementu menu. (Jest w obszarze **ustawienia**.) Znajdź parametry oznaczone jako  **C++ (libpq)**. Klucz będzie mieć postać:
+1. Uzyskaj parametry połączenia. Na stronie grupy serwera kliknij **parametry połączenia** elementu menu. (Jest w obszarze **ustawienia**.) Znajdź parametry oznaczone jako  **C++ (libpq)** . Klucz będzie mieć postać:
 
    ```
    host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require

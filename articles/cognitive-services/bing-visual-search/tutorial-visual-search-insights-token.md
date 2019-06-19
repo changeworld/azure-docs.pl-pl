@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 06/18/2019
 ms.author: rosh
-ms.openlocfilehash: ebe54f5319986f0588e06a980a6f914beb6adbcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78584c2c0419bb27fb58c07eb97b1aa38501951f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65909396"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204077"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>Znajdź podobne obrazy z poprzednich wyników wyszukiwania za pomocą ImageInsightsToken
 
 Zestaw SDK programu Visual wyszukiwania umożliwia znalezienie obrazów w tryb online, korzystając z poprzednich wyników wyszukiwania, które zwracają `ImageInsightsToken`. Ta aplikacja pobiera `ImageInsightsToken` tokenu i używa go do kolejnych wyszukiwania. Następnie wysyła `ImageInsightsToken` do usługi Bing i zwraca wyniki, które obejmują adresy URL wyszukiwania Bing i adresy URL podobnych obrazów znalezione w trybie online.
 
-Pełny kod źródłowy na potrzeby tego samouczka można znaleźć za pomocą obsługi dodatkowych błędów i adnotacji w [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInisghtsTokens.cs).
+Pełny kod źródłowy na potrzeby tego samouczka można znaleźć za pomocą obsługi dodatkowych błędów i adnotacji w [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,10 +38,10 @@ Pełny kod źródłowy na potrzeby tego samouczka można znaleźć za pomocą ob
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Uzyskiwanie ImageInsightsToken wyszukiwania obrazów Bing zestawu SDK
 
-Ta aplikacja używa `ImageInsightsToken` uzyskane za pośrednictwem [zestaw SDK wyszukiwania obrazów Bing](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). W nowym C# konsoli aplikacji, należy utworzyć klienta do wywołania interfejsu API przy użyciu `ImageSearchAPI()`. Następnie użyj `SearchAsync()` ze swoim zapytaniem:
+Ta aplikacja używa `ImageInsightsToken` uzyskane za pośrednictwem [zestaw SDK wyszukiwania obrazów Bing](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). W nowym C# konsoli aplikacji, należy utworzyć klienta do wywołania interfejsu API przy użyciu `ImageSearchClient()`. Następnie użyj `SearchAsync()` ze swoim zapytaniem:
 
 ```csharp
-var client = new ImageSearchAPI(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
+var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
 var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 ```

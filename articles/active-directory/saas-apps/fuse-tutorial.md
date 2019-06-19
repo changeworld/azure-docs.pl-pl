@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a57ab6e8f742cb44425ef703986e61529672264
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fda9594d97500075e6b018e1e8c9ff5816fe3590
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102216"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164970"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Fuse
 
@@ -104,7 +104,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Fuse, wyko
 
     ![Domena i adresy URL aplikacji Fuse — informacje dotyczące logowania jednokrotnego](common/sp-signonurl.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<tenant name>.fusionuniversal.com/`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://{tenantname}.fuseuniversal.com/`
 
     > [!NOTE]
     > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Fuse](mailto:support@fusion-universal.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.

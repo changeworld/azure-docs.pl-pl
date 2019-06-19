@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ce99b537dd5958c2bec43759c58a9c182dd05142
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ff0d3508f1d418a189fab0dfe5803280a20f9a00
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237035"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190141"
 ---
 # <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>Szybki start: Konfigurowanie maszyn wirtualnych systemu Linux na platformie Azure, za pomocą rozwiązania Ansible
 
@@ -105,7 +105,7 @@ Wirtualna karta sieciowa łączy maszynę wirtualną z daną siecią wirtualną,
 Poniższej sekcji, w sekcji element playbook rozwiązania Ansible przykładowy tworzy wirtualną kartę sieciową o nazwie `myNIC` połączone zasoby sieci wirtualne utworzone:
 
 ```yaml
-- name: Create virtual network inteface card
+- name: Create virtual network interface card
   azure_rm_networkinterface:
     resource_group: myResourceGroup
     name: myNIC
@@ -115,7 +115,7 @@ Poniższej sekcji, w sekcji element playbook rozwiązania Ansible przykładowy t
     security_group: myNetworkSecurityGroup
 ```
 
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 Ostatnim krokiem jest utworzenie maszyny wirtualnej, która wykorzystuje wszystkie zasoby utworzone w poprzednich sekcjach tego artykułu. 
 
@@ -184,7 +184,7 @@ Ta sekcja zawiera cały przykładowy podręcznik rozwiązania Ansible utworzony 
           access: Allow
           priority: 1001
           direction: Inbound
-  - name: Create virtual network inteface card
+  - name: Create virtual network interface card
     azure_rm_networkinterface:
       resource_group: myResourceGroup
       name: myNIC
@@ -270,7 +270,7 @@ W tej sekcji omówiono uruchamianie przykładowego podręcznika rozwiązania Ans
    TASK [Create Network Security Group that allows SSH] **********************
    changed: [localhost]
 
-   TASK [Create virtual network inteface card] *******************************
+   TASK [Create virtual network interface card] *******************************
    changed: [localhost]
 
    TASK [Create VM] **********************************************************

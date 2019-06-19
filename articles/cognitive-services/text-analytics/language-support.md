@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 704a1193eb47f9346900c6c8a003122c30c8ab44
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417311"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203972"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejsu API analizy tekstu
 
@@ -31,7 +31,14 @@ Jeśli masz zawartość wyrażona w języku rzadziej używane, możesz spróbowa
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek znaku
 
-Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek listę obsługiwanych języków to tylko niektóre analizatorów jest dostosowany do uwzględnienia językowej reguły dodatkowe języki.
+Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek listę obsługiwanych języków to tylko niektóre analizatorów jest dostosowany do uwzględnienia językowej reguły dodatkowe języki. Obsługa pełnego zestawu [typów jednostek](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) wynosi obecnie następujące języki: 
+* Polski
+* Chiński uproszczony
+* Francuski
+* Niemiecki
+* Hiszpański
+
+Tylko `Person`, `Location` i `Organization` nazwane jednostek są zwracane w przypadku pozostałych języków.
 
 ## <a name="language-list-and-status"></a>Lista języków i stan
 
@@ -64,7 +71,7 @@ Obsługa języków początkowo jest udostępniona w wersji zapoznawczej, tłumac
 
 \* Obsługa języka jest w wersji zapoznawczej
 
-\*\* O nazwie rozpoznawanie jednostek i [łączenie podmiotów](how-tos/text-analytics-how-to-entity-linking.md) są dostępne dla tego języka.    
+\*\* [O nazwie rozpoznawanie jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) i [łączenie podmiotów](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) są dostępne dla tego języka.    
 
 ## <a name="see-also"></a>Zobacz także
 

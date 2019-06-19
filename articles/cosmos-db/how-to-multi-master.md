@@ -1,21 +1,21 @@
 ---
 title: Jak skonfigurować wielowzorcowość w usłudze Azure Cosmos DB
 description: Dowiedz się, jak skonfigurować Multi-Master w aplikacji w usłudze Azure Cosmos DB.
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: 1d9fa7380f62165d360888fd8cb03919f1736297
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.author: mjbrown
+ms.openlocfilehash: e33aa10673f4c4b061f8961959f20b7b3416ec84
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244750"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204786"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurowanie Multi-Master w aplikacjach korzystających z usługi Azure Cosmos DB
 
-Funkcja wielu wzorców w aplikacji, musisz Włącz zapisów w wielu regionach i skonfiguruj międzyregionalnych w usłudze Azure Cosmos DB. Aby skonfigurować multihosting, ustaw region, w którym aplikacja jest wdrażana.
+Funkcja wielu wzorców w aplikacji, musisz Włącz zapisów w wielu regionach i skonfiguruj międzyregionalnych w usłudze Azure Cosmos DB. Aby skonfigurować multihosting, przekazywać nazwę jednostki region, w którym aplikacja jest wdrażana do właściwości SetCurrentLocation. W ten sposób automatycznie wypełnia właściwość PreferredLocations na podstawie zbliżenia geograficznej lokalizacji przekazanej. Jeśli do konta później zostanie dodany nowy region, aplikacja ma zostać zaktualizowane lub ponownego wdrażania, automatycznie wykryje bliżej region i zostanie automatycznie domu się ona wystąpi zdarzenie regionalne.
 
 ## <a id="netv2">Zestaw .NET SDK w wersji 2</a>
 

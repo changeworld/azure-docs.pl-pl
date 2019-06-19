@@ -15,13 +15,13 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: c4dc3d422e18d9ee41bf16ac3e6f22c3d7e466d7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121613"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183407"
 ---
-## <a name="register-your-application"></a>Zarejestruj swoją aplikację
+## <a name="register-your-application"></a>Rejestrowanie aplikacji
 
 Aplikację można zarejestrować na dwa sposoby.
 
@@ -40,11 +40,11 @@ Aby zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji
 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
 1. Wybierz **nowej rejestracji**.
    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `Win-App-calling-MsGraph`.
-   - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)**.
+   - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)** .
    - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
    1. W **identyfikatory URI przekierowań** sekcji na liście identyfikatory URI przekierowań:
-   1. W **typu** wybierz kolumny **klientem publicznym (mobilnych i klasycznych)**.
+   1. W **typu** wybierz kolumny **klientem publicznym (mobilnych i klasycznych)** .
    1. Wprowadź `urn:ietf:wg:oauth:2.0:oob` w **identyfikator URI PRZEKIEROWANIA** kolumny.
 1. Wybierz pozycję **Zapisz**.
 1. Przejdź do programu Visual Studio, otwórz *App.xaml.cs* pliku, a następnie zastąp `Enter_the_Application_Id_here` identyfikatorem aplikacji, który właśnie zarejestrowany i skopiować.
