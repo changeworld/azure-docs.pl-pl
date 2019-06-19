@@ -66,8 +66,8 @@ Content-Type | Aplikacja/ssml + xml | Typ zawartości danych wejściowych.
 X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** pierwotne-16 khz-16-bitowych-mono-pcm <br>**3.** audio-16 khz-16 KB/s-mono-siren <br> **4.** riff-16 khz-16 KB/s-mono-siren <br> **5.** riff-16 khz-16-bitowych-mono-pcm <br> **6.** audio-16 khz-128kbitrate-mono-mp3 <br> **7.** audio-16 khz-64kbitrate-mono-mp3 <br> **8.** audio-16 khz-32kbitrate-mono-mp3 | Format danych wyjściowych audio.
 X-Search-AppId | Identyfikator GUID (tylko szesnastkowy, nie kresek) | Identyfikator, który unikatowo identyfikuje aplikację klienta. Może to być identyfikator magazynu dla aplikacji. Jeśli nie jest dostępny, identyfikator może być generowany dla aplikacji użytkownika.
 X-Search-ClientID | Identyfikator GUID (tylko szesnastkowy, nie kresek) | Identyfikator, który jednoznacznie identyfikuje wystąpienie aplikacji dla każdej instalacji.
-Agent użytkownika | Nazwa aplikacji | Nazwa aplikacji jest wymagany i musi zawierać mniej niż 255 znaków.
-Autoryzacja | Token autoryzacji |  Zobacz <a href="#Subscription">token autoryzacji</a> sekcji.
+User-Agent | Nazwa aplikacji | Nazwa aplikacji jest wymagany i musi zawierać mniej niż 255 znaków.
+Authorization | Token autoryzacji |  Zobacz <a href="#Subscription">token autoryzacji</a> sekcji.
 
 ### <a name="InputParam"></a>Parametry wejściowe
 
