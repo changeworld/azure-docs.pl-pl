@@ -58,7 +58,7 @@ Konwertuje wartość na tablicę.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Tak |int, string, tablicy lub obiektu |Wartość do przekonwertowania na tablicę. |
+| convertToArray |Tak |int, string, array lub object |Wartość do przekonwertowania na tablicę. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
