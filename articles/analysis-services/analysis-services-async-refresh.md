@@ -104,7 +104,7 @@ Określanie parametrów nie jest wymagana. Wartość domyślna jest stosowana.
 | `CommitMode`     | Enum  | Określa, jeśli obiekty zostaną zatwierdzone, w plikach wsadowych lub tylko wtedy, gdy jest to pełny. Tryby obejmują: domyślnie partialBatch transakcyjnych.  |  transakcyjne       |
 | `MaxParallelism` | Int   | Ta wartość określa maksymalną liczbę wątków, w którym można uruchomić polecenia przetwarzania równoległego. Ta wartość jest powiązana z właściwości MaxParallelism, które można ustawić w TMSL [sekwencji poleceń](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
 | `RetryCount`     | Int   | Wskazuje liczbę przypadków, gdy operacja zostanie ponowiona zakończy się niepowodzeniem.      |     0    |
-| `Objects`        | Tablica | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "table" podczas przetwarzania całą tabelę lub "table" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Proces cały model      |
+| `Objects`        | Array | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "table" podczas przetwarzania całą tabelę lub "table" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Proces cały model      |
 
 CommitMode jest równy partialBatch. Jest używany podczas wykonywania ładowania początkowego dużych zestawów danych, który może potrwać do godziny. W przypadku niepowodzenia operacji odświeżania po zatwierdzeniu pomyślnie co najmniej jedna partia pomyślnie zatwierdzić partii pozostaną zatwierdzone (go nie wycofa pomyślnie zatwierdzona partie).
 
