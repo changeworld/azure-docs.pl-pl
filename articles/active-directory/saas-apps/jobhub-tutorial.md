@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fe2f9531c7dc5ab5bde0fb5669fa448d1113a2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: bc5f7bf299465b6af272c9b417a62f121b9a4d82
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099322"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164930"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>Samouczek: Integracja JOBHUB za pomocą usługi Azure Active Directory
 
@@ -78,7 +78,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** sekcji, wprowadź wartości dla następujących pól:  W polu tekstowym Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://pasona.jobhub.jp/saml/init`
+1. Na **podstawową konfigurację protokołu SAML** sekcji, wprowadź wartości dla następujących pól:  W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://pasona.jobhub.jp/saml/init`
 
     > [!NOTE]
     > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta JOBHUB](mailto:platform@pasonagroup.co.jp) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -145,9 +145,9 @@ Po wybraniu kafelka JOBHUB w panelu dostępu, powinien zostać automatycznie zar
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
