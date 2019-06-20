@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd45be69ec29fdcd00710b7366348846f325b151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 350d2c6253a417637c7ec8f2e38919dc4b969340
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921988"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190788"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Połącz urządzenie Barracuda 
 
@@ -41,7 +41,7 @@ Zapory aplikacji internetowych barracuda można integrować i wyeksportuj dzienn
 2. W portalu Azure przez wartownika przejdź do obszaru roboczego, na którym wdrożono przez wartownika platformy Azure i wybierz wielokropek (...) na końcu wiersza i wybierz pozycję **Zaawansowane ustawienia**. 
 1. Wybierz **danych** i następnie **Syslog**.
 1. Upewnij się, funkcji, można ustawić w Barracuda istnieje i ustawić ważność i kliknij przycisk **Zapisz**.
-6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń Barracuda, wyszukaj **CommonSecurityLog**.
+6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń Barracuda, wyszukaj **CommonSecurityLog** i **barracuda_CL**.
 
 
 ## <a name="validate-connectivity"></a>Zweryfikuj łączność

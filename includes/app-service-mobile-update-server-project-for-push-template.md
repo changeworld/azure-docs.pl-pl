@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66140165"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183732"
 ---
 W tej sekcji należy zaktualizować kod w istniejącym projekcie zaplecza funkcji Mobile Apps do wysyłania powiadomień wypychanych za każdym razem, gdy zostanie dodany nowy element. Ten proces jest obsługiwana przez [szablonu](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) wypycha funkcji usługi Azure Notification Hubs, która umożliwia dla wielu platform. Różnych klientów są zarejestrowane dla powiadomień wypychanych przy użyciu szablonów i uzyskać jednej, uniwersalnej wypychania dla wszystkich platform klienta.
 

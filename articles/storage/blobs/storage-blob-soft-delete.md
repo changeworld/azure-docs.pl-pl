@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c23e429966cf9a1e93ac46ea3ecd11744761872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1c6f8074dab19b18f695763b160e4aeffe3ac44
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148620"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204832"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Nietrwałe usuwanie obiektów blob usługi Azure Storage
 Usługa Azure Storage oferuje teraz usuwania nietrwałego dla obiektów blob, tak, aby łatwiej można odzyskać dane, gdy jest błędnie zmodyfikowany lub usunięty przez aplikację lub innego użytkownika do konta magazynu.
@@ -274,13 +274,10 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="should-i-use-soft-delete"></a>Należy używać usuwania nietrwałego?
-Jeśli istnieje ryzyko, że danych przypadkowo zmienione lub usunięte przez aplikację lub innemu użytkownikowi konta magazynu, zaleca się włączenie usuwania nietrwałego. Usuwanie nietrwałego jest częścią strategii ochrony danych i może pomóc w uniknięciu utraty danych przypadkowego.
+## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Czy istnieją wszystkie uwagi dotyczące Korzystanie z miękkiego usuwania?
+Jeśli istnieje ryzyko, że danych przypadkowo zmienione lub usunięte przez aplikację lub innemu użytkownikowi konta magazynu, zaleca się włączenie usuwania nietrwałego. Włączanie usuwania nietrwałego dla często zastępowane danych może spowodować naliczenie opłaty za pojemność zasobów pamięci masowej i większe opóźnienia, podczas wyświetlania listy obiektów blob. Można temu zaradzić, przechowując dane często zastąpione w oddzielne konto magazynu przy użyciu usuwania nietrwałego wyłączone. 
 
 ## <a name="faq"></a>Często zadawane pytania
-**Czy istnieją wszystkie uwagi dotyczące Korzystanie z miękkiego usuwania?**  
-Włączanie usuwania nietrwałego dla często zastępowane danych może spowodować naliczenie opłaty za pojemność zasobów pamięci masowej i większe opóźnienia, podczas wyświetlania listy obiektów blob. Można temu zaradzić, przechowując dane często zastąpione w oddzielne konto magazynu przy użyciu usuwania nietrwałego wyłączone. 
-
 **Dla jakich typów pamięci masowej można używać usuwania nietrwałego?**  
 Obecnie usuwania nietrwałego jest dostępna tylko dla magazynu obiektów blob (obiekt).
 

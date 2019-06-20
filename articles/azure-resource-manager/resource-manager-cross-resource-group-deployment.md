@@ -1,24 +1,17 @@
 ---
 title: Wdrażaj zasoby platformy Azure do wielu subskrypcji i grup zasobów | Dokumentacja firmy Microsoft
 description: Pokazuje, jak pod kątem więcej niż jeden Azure subskrypcji i grupie zasobów podczas wdrażania.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3641833f0b55f20066302de350bfab17adfade0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33b0a998206b68f1807f5bfa3c3f39164798842c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128528"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205486"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Wdrażaj zasoby platformy Azure do więcej niż jedną subskrypcję lub grupę zasobów
 

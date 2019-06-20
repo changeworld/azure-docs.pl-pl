@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: alkohli
 ms.openlocfilehash: 94fe099984fae77c65658d7085a8540ff4f2448b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161228"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183687"
 ---
 W tej sekcji opisano limity dla usługi Azure Storage i wymagane konwencje nazewnictwa dla usługi Azure Files, obiekty BLOB typu block platformy Azure i Azure stronicowych obiektów blob, jeśli ma to zastosowanie do krawędzi pola danych/bramy danych usługi. Należy uważnie przeczytać limity magazynu i postępować zgodnie z zaleceniami.
 

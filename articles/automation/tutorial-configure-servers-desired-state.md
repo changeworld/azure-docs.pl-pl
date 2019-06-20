@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 83a65be50a3cec9cea47682ab5e207bd4ad9e984
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 3bcdb667ee649b9bbf32ad33e74e876cdd2b5cbf
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072555"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144193"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurowanie serwerów do żądanego stanu i zarządzanie odejściem od tego stanu
 
@@ -154,7 +154,7 @@ Jeśli zdecydujesz się usunąć węzła z usługi, możesz to zrobić przy uży
 > [!NOTE]
 > Wyrejestrowywanie węzła z usługi tylko Ustawia ustawienia Local Configuration Manager, więc węzeł nie jest już połączenia z usługą.
 > Nie ma wpływu konfiguracji, który jest aktualnie używany do węzła.
-> Aby usunąć bieżącą konfigurację, użyj [PowerShell](https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) lub usunięcie pliku konfiguracji lokalnej (jest to jedyna opcja w przypadku węzłów systemu Linux).
+> Aby usunąć bieżącą konfigurację, użyj [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) lub usunięcie pliku konfiguracji lokalnej (jest to jedyna opcja w przypadku węzłów systemu Linux).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -165,7 +165,7 @@ W widoku węzła kliknij **Wyrejestruj**.
 
 ### <a name="powershell"></a>PowerShell
 
-Aby wyrejestrować węzła z usługi Azure Automation stan konfiguracji przy użyciu programu PowerShell, postępuj zgodnie z dokumentacją polecenia cmdlet [AzAutomationDscNode Wyrejestruj](https://docs.microsoft.com/en-us/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+Aby wyrejestrować węzła z usługi Azure Automation stan konfiguracji przy użyciu programu PowerShell, postępuj zgodnie z dokumentacją polecenia cmdlet [AzAutomationDscNode Wyrejestruj](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: genli
 ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170747"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183153"
 ---
 ## <a name="scenario"></a>Scenariusz
 Maszynę Wirtualną z jedną kartą Sieciową jest utworzony i połączony z siecią wirtualną. Maszyna wirtualna wymaga trzech różnych *prywatnej* IP adresów i dwóch *publicznych* adresów IP. Adresy IP są przypisywane do poniższej konfiguracji adresów IP:

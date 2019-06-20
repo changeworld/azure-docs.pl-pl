@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 47b1d9720a23c1dbfdee8c2e4cba95ff998a4cc0
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954152"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137736"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -744,11 +744,11 @@ Tak, można użyć regularnych składni można utworzyć klucza złożonego part
 
 ### <a name="can-i-use-stable-loader-for-data-loading"></a>W celu załadowania danych można używać modułu ładującego stabilne?
 
-Nie, w trakcie okresu zapoznawczego stabilne modułu ładującego nie jest obsługiwane.
+Nie, stabilna modułu ładującego nie jest obsługiwane.
 
 ### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Czy klaster Apache Cassandra w środowisku lokalnym mogą być parowane przy użyciu interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB?
 
-Na obecne usługi Azure Cosmos DB zawiera zoptymalizowany środowisko, w środowisku chmury bez koszty operacji. Jeśli potrzebujesz parowania, Wyślij wiadomość e-mail do [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) z opisem Twojego scenariusza.
+Na obecne usługi Azure Cosmos DB zawiera zoptymalizowany środowisko, w środowisku chmury bez koszty operacji. Jeśli potrzebujesz parowania, Wyślij wiadomość e-mail do [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) z opisem Twojego scenariusza. Pracujemy nad oferty na potrzeby pary pomocy do interfejsu API rozwiązania Cassandra Cosomos DB klastra na — lokalne/inną chmurę Cassandra.
 
 ### <a name="does-cassandra-api-provide-full-backups"></a>Interfejs API rozwiązania Cassandra zapewnia pełne kopie zapasowe?
 
@@ -763,15 +763,12 @@ Możesz dodać dowolną liczbę regionów, jak konta i kontrolować, gdzie go mo
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Powoduje interfejsu API Apache Cassandra indeksowania domyślnie wszystkie atrybuty jednostki
 
-Tak, wszystkie atrybuty jednostki są indeksowane, domyślnie przez usługę Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: Zasady indeksowania](index-policy.md). Uzyskaj korzyści o wartości gwarancji wydajności przy użyciu spójnego indeksowania i trwałe kworum zatwierdzone zapisuje zawsze.
+Interfejs API rozwiązania Cassandra jest planowana jest obsługa, indeksowanie pomocnicze pomocnych przy tworzeniu selektywnego indeksu dla niektórych atrybutów. 
 
-### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Czy oznacza to, że nie trzeba utworzyć więcej niż jednego indeksu do zaspokojenia zapytania?
-
-Tak, Azure Cosmos DB zapewnia automatyczne indeksowanie wszystkich atrybutów bez żadnych definicji schematu. Ta Automatyzacja ułatwia deweloperom skoncentrować się na aplikacji, a nie na tworzenie indeksu i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: Zasady indeksowania](index-policy.md).
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Czy można użyć nowego zestawu SDK interfejsu API rozwiązania Cassandra lokalnie w emulatorze?
 
-Planujemy w przyszłości Obsługa tej możliwości.
+Tak, jest to obsługiwane.
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-change-feed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>Usługa Azure Cosmos DB jako platforma wydaje się mieć wiele możliwości, takich jak zestawienia zmian i inne funkcje. Te funkcje zostaną dodane do interfejsu API rozwiązania Cassandra?
 

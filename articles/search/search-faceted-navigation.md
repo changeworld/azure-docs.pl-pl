@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fc1e1aaaa3b2489dd4083f56d45ab0abc2b6892
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65793621"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165973"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacja aspektowa jest mechanizm filtrowania, który zapewnia kierunkowane samodzielnie przez użytkowników Przechodzenie do szczegółów nawigacji w aplikacji do wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak pokazano na poniższym przykładzie, nawigacji aspektowej ma więcej niż kategorii, używana do filtrowania wyników.
@@ -401,5 +401,5 @@ Obejrzyj [szczegółowe dane w usłudze Azure Search](https://channel9.msdn.com/
 Aby uzyskać więcej szczegółowych informacji w zasadach projektowania nawigacji aspektowej zaleca się następujące łącza:
 
 * [Wzorce projektowe: Nawigacja aspektowa](https://alistapart.com/article/design-patterns-faceted-navigation)
-* [Fronton kwestie podczas implementowania wyszukiwanie Aspektowe — część 1 ](https://articles.uie.com/faceted_search2/)
+* [Fronton kwestie podczas implementowania wyszukiwanie Aspektowe — część 1](https://articles.uie.com/faceted_search2/)
 

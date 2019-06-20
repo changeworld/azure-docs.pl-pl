@@ -9,11 +9,11 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: 1e147e8bd9260cd1ece60b70641968a229995ec1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160520"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183610"
 ---
 Możesz utworzyć wiele usług w ramach subskrypcji. Każdy z nich można zainicjowane w określonej warstwy. Ograniczeniem tylko liczby jest dozwolona w poszczególnych warstwach usług. Na przykład można utworzyć maksymalnie 12 usług w warstwie podstawowa i innym 12 usług w warstwie S1, w ramach tej samej subskrypcji. Aby uzyskać więcej informacji na temat warstw, zobacz [wybierz jednostkę SKU lub warstwy usługi Azure Search](../articles/search/search-sku-tier.md).
 

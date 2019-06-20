@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 547f74da303448e79602c60d7ec9125da2f456c6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67078328"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183832"
 ---
 > [!div class="op_single_selector"]
 > * [Omówienie](../articles/hdinsight/hadoop/hdinsight-use-hive.md)
@@ -17,9 +17,9 @@ ms.locfileid: "67078328"
 > * [SSH](../articles/hdinsight/hdinsight-hadoop-use-hive-ssh.md)
 > * [Z usługi beeline](../articles/hdinsight/hadoop/apache-hadoop-use-hive-beeline.md)
 > * [Curl](../articles/hdinsight/hadoop/apache-hadoop-use-hive-curl.md)
-> * [Program PowerShell](../articles/hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)
+> * [PowerShell](../articles/hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)
 > * [.NET](../articles/hdinsight/hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
-> * [Program Visual Studio](../articles/hdinsight/hadoop/apache-hadoop-use-hive-visual-studio.md)
+> * [Visual Studio](../articles/hdinsight/hadoop/apache-hadoop-use-hive-visual-studio.md)
 > * [Pulpit zdalny](../articles/hdinsight/hadoop/apache-hadoop-use-hive-remote-desktop.md)
 > * [Konsola zapytań](../articles/hdinsight/hadoop/apache-hadoop-use-hive-query-console.md)
 > 

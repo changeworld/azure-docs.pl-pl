@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1cb7c9aa0844c82acd333c4f9dd87a4dda013e7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356181"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165344"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej platformy Azure
 
@@ -35,9 +35,13 @@ W tym dokumencie przyjęto założenie, że znasz sieci wirtualnych platformy Az
 ## <a name="storage-account-for-your-workspace"></a>Konto magazynu dla obszaru roboczego
 
 > [!IMPORTANT]
-> Możesz umieścić konta magazynu, który jest dołączony do obszaru roboczego usługi Azure Machine Learning, za zaporą w sieci wirtualnej tylko podczas wykonywania eksperymentów. Wnioskowanie wymaga nieograniczonego dostępu do konta magazynu. Jeśli nie masz pewności, jeśli zmodyfikowano tych ustawień lub nie można znaleźć __zmienić domyślną regułę dostępu sieciowego__ w [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security). Wykonaj kroki, aby zezwolić na dostęp ze wszystkich sieci, podczas wnioskowania lub modelu oceniania.
+> __Domyślne konto magazynu__ dla usługi Azure Machine Learning można umieścić w sieci wirtualnej usługi __tylko podczas wykonywania eksperymentów__.
+>
+> Dla __kont innych niż domyślne magazynu w ramach eksperymentów__, lub jeśli używasz konta magazynu dla __wnioskowania__, konieczne jest posiadanie __nieograniczony dostęp do konta magazynu__.
+> 
+> Jeśli nie masz pewności, jeśli zmodyfikowano tych ustawień lub nie można znaleźć __zmienić domyślną regułę dostępu sieciowego__ w [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security). Wykonaj kroki, aby zezwolić na dostęp ze wszystkich sieci, podczas wnioskowania lub modelu oceniania.
 
-Aby użyć funkcji eksperymentowanie w usłudze Azure Machine Learning z usługą Azure Storage za sieci wirtualnej, wykonaj następujące czynności:
+Aby użyć miejsca domyślne konto usługi Azure Storage dla obszaru roboczego w sieci wirtualnej użyć następujące czynności:
 
 1. Tworzenie obliczeń eksperymentowania, np. Usługi Machine Learning obliczenia za sieci wirtualnej, lub Dołącz obliczeń eksperymentowania z obszarem roboczym, np. Klaster HDInsight lub maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [obliczeniowego usługi użyj Machine Learning](#use-machine-learning-compute) i [Użyj maszyny wirtualnej lub klastra HDInsight](#use-a-virtual-machine-or-hdinsight-cluster) sekcje w tym dokumencie
 2. Przejdź do magazynu dołączone do obszaru roboczego. ![Obraz witryny Azure portal pokazujący usługi Azure Storage, który jest dołączony do obszaru roboczego usługi Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)

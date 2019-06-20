@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65074017"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
@@ -69,7 +69,7 @@ Dla łączności i zabezpieczeń w sieciach lokalnych można wdrożyć klaster A
 
 Aby filtrować przepływu ruchu w sieciach wirtualnych, platforma Azure stosuje reguły sieciowej grupy zabezpieczeń. Te reguły określają źródło i docelowe zakresy adresów IP, portów i protokołów, które są dozwolone lub odmowa dostępu do zasobów. Aby zezwolić na ruch protokołu TLS do serwera interfejsu API rozwiązania Kubernetes tworzone są reguły domyślne. Podczas tworzenia usługi przy użyciu usługi równoważenia obciążenia, mapowania portów lub ruch przychodzący trasy, AKS automatycznie modyfikuje sieciowej grupy zabezpieczeń dla ruchu odpowiedni przepływ.
 
-## <a name="kubernetes-secrets"></a>Kubernetes Secrets
+## <a name="kubernetes-secrets"></a>Wpisy tajne usługi Kubernetes
 
 Kubernetes *klucz tajny* służy do wstrzyknąć poufne dane do zasobników, takich jak dostęp do poświadczeń ani kluczy. Należy najpierw utworzyć wpis tajny przy użyciu interfejsu API rozwiązania Kubernetes. Podczas definiowania wdrożenia lub zasobników, można żądać określonego klucza tajnego. Klucze tajne są udostępniane tylko węzły, które mają zaplanowane zasobnik, który go wymaga i klucz tajny jest przechowywany w *tmpfs*robaków napisanych nie na dysku. Po usunięciu ostatniego zasobnik w węźle, który wymaga klucza tajnego klucza tajnego został usunięty z tmpfs węzła. Klucze tajne są przechowywane w ramach danego obszaru nazw i może zostać oceniony jedynie przez zasobników w tej samej przestrzeni nazw.
 

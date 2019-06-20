@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c12d3233d85a02f6eef8d63e5a4494b4f0cdfa
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822745"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273703"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatyczne skalowanie w górę jednostek przepływności usługi Azure Event Hubs
-Azure Event Hubs to wysoce skalowana platforma do strumieniowego przesyłania danych. W efekcie użycia usługi Event Hubs często zwiększa się po rozpoczęciu korzystania z usługi. Wymaga tych danych użycia, zwiększając wstępnie [jednostek przepływności](event-hubs-features.md#throughput-units) skalowania usługi Event Hubs i obsługiwać większe szybkości transferu. **Automatyczne rozszerzanie** funkcji usługi Event Hubs automatycznie jest skalowany w górę, zwiększając liczbę jednostek przepływności, aby zaspokoić potrzeby użycia wymagań. Zwiększenie jednostek przepływności zapobiega scenariuszy, w którym ograniczania przepływności:
+Azure Event Hubs to wysoce skalowana platforma do strumieniowego przesyłania danych. W efekcie użycia usługi Event Hubs często zwiększa się po rozpoczęciu korzystania z usługi. Wymaga tych danych użycia, zwiększając wstępnie [jednostek przepływności](event-hubs-scalability.md#throughput-units) skalowania usługi Event Hubs i obsługiwać większe szybkości transferu. **Automatyczne rozszerzanie** funkcji usługi Event Hubs automatycznie jest skalowany w górę, zwiększając liczbę jednostek przepływności, aby zaspokoić potrzeby użycia wymagań. Zwiększenie jednostek przepływności zapobiega scenariuszy, w którym ograniczania przepływności:
 
 * Stawki transferu danych przychodzących danych przekracza zestaw jednostek przepływności.
 * Liczby żądań danych wychodzących przekracza zestaw jednostek przepływności.
@@ -32,7 +32,7 @@ Usługa Event Hubs zwiększa przepływność, gdy rośnie obciążenie operacjam
 
 ## <a name="how-auto-inflate-works"></a>Jak działa automatyczne rozszerzanie
 
-Ruch do centrów zdarzeń jest kontrolowane przez [jednostek przepływności](event-hubs-features.md#throughput-units). Pojedyncza jednostka przepływności umożliwia 1 MB na sekundę transferu danych przychodzących i dwa razy ilość danych wychodzących. Centra zdarzeń w wersji Standard można skonfigurować z 1-20 jednostek przepływności. Automatyczne rozszerzanie umożliwia zacznij od czegoś małego z jednostkami minimalna przepustowość wymagana, które wybierzesz. Funkcja następnie skaluje się automatycznie maksymalnego limitu jednostek przepływności, których potrzebujesz, w zależności od zwiększenia ilości ruchu. Automatyczne rozszerzanie zapewnia następujące korzyści:
+Ruch do centrów zdarzeń jest kontrolowane przez [jednostek przepływności](event-hubs-scalability.md#throughput-units). Pojedyncza jednostka przepływności umożliwia 1 MB na sekundę transferu danych przychodzących i dwa razy ilość danych wychodzących. Centra zdarzeń w wersji Standard można skonfigurować z 1-20 jednostek przepływności. Automatyczne rozszerzanie umożliwia zacznij od czegoś małego z jednostkami minimalna przepustowość wymagana, które wybierzesz. Funkcja następnie skaluje się automatycznie maksymalnego limitu jednostek przepływności, których potrzebujesz, w zależności od zwiększenia ilości ruchu. Automatyczne rozszerzanie zapewnia następujące korzyści:
 
 - Wydajny mechanizm skalowania na początku są małe, i skalowanie w górę proporcjonalna do rozwoju środowiska.
 - Automatycznie Skaluj do określonej górnego limitu bez ograniczania problemów.
