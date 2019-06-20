@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 83a1026cd9426e1b1651e0ec4f556b8babccb107
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7362bd5b4e15df516478ef4bef20d76fc46b326f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236243"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275363"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Usługa Azure Event Hubs — platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń
 Usługa Azure Event Hubs to platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń. Może odbierać i przetwarzać miliony zdarzeń na sekundę. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania.
@@ -45,9 +45,9 @@ Event Hubs to w pełni zarządzana usługa PaaS (Platform-as-a-Service), która 
 
 ## <a name="support-for-real-time-and-batch-processing"></a>Obsługa przetwarzania wsadowego w czasie rzeczywistym
 
-Możesz pozyskiwać, buforować, przechowywać i przetwarzać strumień danych w czasie rzeczywistym, aby uzyskiwać praktyczne informacje. W usłudze Event Hubs jest używany [partycjonowany model odbiorców](event-hubs-features.md#partitions), umożliwiający wielu aplikacjom jednoczesne przetwarzanie strumienia danych, podczas gdy Ty kontrolujesz szybkość przetwarzania.
+Możesz pozyskiwać, buforować, przechowywać i przetwarzać strumień danych w czasie rzeczywistym, aby uzyskiwać praktyczne informacje. W usłudze Event Hubs jest używany [partycjonowany model odbiorców](event-hubs-scalability.md#partitions), umożliwiający wielu aplikacjom jednoczesne przetwarzanie strumienia danych, podczas gdy Ty kontrolujesz szybkość przetwarzania.
 
-Funkcja [Capture](event-hubs-capture-overview.md) umożliwia przechwytywanie danych niemal w czasie rzeczywistym do usługi [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  na potrzeby przechowywania długoterminowego lub przetwarzania mikropartii. Jest to możliwe w ramach tego samego strumienia, który jest używany do analizy w czasie rzeczywistym. Przechwytywanie danych zdarzeń można szybko skonfigurować. Używanie go nie wiąże się z żadnymi kosztami administracyjnymi, a ponadto jest ono automatycznie skalowane za pomocą  [jednostek przepływności](event-hubs-features.md#throughput-units) usługi Event Hubs. Usługa Event Hubs pozwala Ci skoncentrować się na przetwarzaniu, a nie przechwytywaniu danych.
+Funkcja [Capture](event-hubs-capture-overview.md) umożliwia przechwytywanie danych niemal w czasie rzeczywistym do usługi [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  na potrzeby przechowywania długoterminowego lub przetwarzania mikropartii. Jest to możliwe w ramach tego samego strumienia, który jest używany do analizy w czasie rzeczywistym. Przechwytywanie danych zdarzeń można szybko skonfigurować. Używanie go nie wiąże się z żadnymi kosztami administracyjnymi, a ponadto jest ono automatycznie skalowane za pomocą  [jednostek przepływności](event-hubs-scalability.md#throughput-units) usługi Event Hubs. Usługa Event Hubs pozwala Ci skoncentrować się na przetwarzaniu, a nie przechwytywaniu danych.
 
 Usługę Azure Event Hubs można również zintegrować z usługą [Azure Functions](/azure/azure-functions/) w celu uzyskania architektury bezserwerowej.
 

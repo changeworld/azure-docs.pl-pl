@@ -20,8 +20,6 @@
   items:
     - name: Uruchamianie zapytań w klastrze platformy Apache Spark
       href: apache-spark-load-data-run-query.md
-    - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu VS Code
-      href: ../hdinsight-for-vscode.md
     - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu IntelliJ
       href: apache-spark-intellij-tool-plugin.md
     - name: Analizowanie danych przy użyciu narzędzi do analizy biznesowej
@@ -32,6 +30,8 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: Tworzenie aplikacji platformy Apache Spark w programie IntelliJ
       href: apache-spark-create-standalone-application.md
+    - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu VS Code
+      href: ../hdinsight-for-vscode.md
     - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
       href: ../hdinsight-cluster-availability.md
 - name: Przykłady

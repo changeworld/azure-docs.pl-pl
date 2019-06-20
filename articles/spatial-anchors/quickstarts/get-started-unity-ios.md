@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 41189d4945ef22f8a587a51717b7dd6f40ac39ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 37856c0833ecde1478d4bd588b8e3122e8eac0ca
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690547"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135231"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji dla systemu iOS Unity za pomocą kotwic przestrzenne platformy Azure
 
@@ -41,9 +41,11 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Otwieranie przykładowego projektu w aparacie Unity
+## <a name="download-and-open-the-unity-sample-project"></a>Pobierz i Otwórz przykładowy projekt aparatu Unity
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+[!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
 [!INCLUDE [iOS Unity Build Settings](../../../includes/spatial-anchors-unity-ios-build-settings.md)]
 
@@ -53,7 +55,7 @@ W okienku **Project (Projekt)** przejdź do katalogu `Assets/AzureSpatialAnchors
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Zapisz scenę, wybierając pozycje **File (Plik)** -> **Save (Zapisz)**.
+Zapisz scenę, wybierając pozycje **File (Plik)**  -> **Save (Zapisz)** .
 
 ## <a name="export-the-xcode-project"></a>Eksportowanie projektu Xcode
 
@@ -64,7 +66,7 @@ Zapisz scenę, wybierając pozycje **File (Plik)** -> **Save (Zapisz)**.
 Postępuj zgodnie z instrukcjami w aplikacji, aby umieścić i przywołać kotwicę.
 
 > [!NOTE]
-> Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz puste miejsce, niebieski kolor lub inne tekstury), prawdopodobnie musisz ponownie zaimportować zasoby w aparacie Unity. Zatrzymaj aplikację. Z górnego menu aparatu Unity wybierz pozycje **Assets -> Re-import all (Zasoby -> Zaimportuj ponownie wszystko)**. Następnie ponownie uruchom aplikację.
+> Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz puste miejsce, niebieski kolor lub inne tekstury), prawdopodobnie musisz ponownie zaimportować zasoby w aparacie Unity. Zatrzymaj aplikację. Z górnego menu aparatu Unity wybierz pozycje **Assets -> Re-import all (Zasoby -> Zaimportuj ponownie wszystko)** . Następnie ponownie uruchom aplikację.
 
 W programie Xcode zatrzymaj aplikację, naciskając pozycję **Stop**.
 

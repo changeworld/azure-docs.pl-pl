@@ -7,16 +7,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: cda1eddc5fa40e97038274cf9b4c3c2cb9552871
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2020ee02d236ca13431adb736d9f48171d33b4f3
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154500"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147414"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Szybki start: Tworzenie pokoju rozmów z platformą ASP.NET i usługi SignalR
 
-Usługi Azure SignalR Service opiera się na [SignalR dla programu ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction), czyli **nie** 100% zgodny z biblioteki SignalR platformy ASP.NET. Usługi Azure SignalR Service dotąd zaimplementowana do biblioteki SignalR platformy ASP.NET protokół danych oparte na najnowszych technoledges platformy ASP.NET Core. Korzystając z usługi Azure SignalR Service dla biblioteki SignalR platformy ASP.NET, niektóre funkcje biblioteki SignalR platformy ASP.NET nie są już obsługiwane, na przykład SignalR platformy Azure nie powtarzania wiadomości, gdy klient ponownie nawiąże połączenie. Ponadto transportu zawsze ramki i JSONP nie są obsługiwane. Niektóre zmiany w kodzie i odpowiednia wersja zależne biblioteki są wymagane do aplikacji ASP.NET SignalR pracy z usługą SignalR. 
+Usługi Azure SignalR Service opiera się na [SignalR dla programu ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction), czyli **nie** 100% zgodny z biblioteki SignalR platformy ASP.NET. Usługi Azure SignalR Service dotąd zaimplementowana protokół danych biblioteki SignalR platformy ASP.NET przy użyciu najnowszych technologii ASP.NET Core. Korzystając z usługi Azure SignalR Service dla biblioteki SignalR platformy ASP.NET, niektóre funkcje biblioteki SignalR platformy ASP.NET nie są już obsługiwane, na przykład SignalR platformy Azure nie powtarzania wiadomości, gdy klient ponownie nawiąże połączenie. Ponadto transportu zawsze ramki i JSONP nie są obsługiwane. Niektóre zmiany w kodzie i odpowiednia wersja zależne biblioteki są wymagane do aplikacji ASP.NET SignalR pracy z usługą SignalR. 
 
 Zapoznaj się [doc różnice wersji](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2) pełną listę funkcji porównania biblioteki SignalR platformy ASP.NET z biblioteki SignalR platformy ASP.NET Core.
 
@@ -107,7 +107,7 @@ W czasie, gdy usługa jest wdrażana, przejdźmy do pracy z kodem. Sklonuj [przy
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. W instrukcjach dla tego przewodnika Szybki start używana była grupa zasobów o nazwie *SignalRTestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. W instrukcjach dla tego przewodnika Szybki start używana była grupa zasobów o nazwie *SignalRTestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
    
 ![Usuwanie](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)

@@ -6,19 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/5/2019
+ms.date: 6/20/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 4b33174b20cdf42e29cdb5b4786122513d2c6080
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: ace0b56ce1ba4c140666c8f2dd6e2187f479446e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753736"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272647"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
-Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest w pełni stanowych zapory jako usługa z wbudowaną wysoką dostępność i skalowalność chmury bez ograniczeń. 
+Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest w pełni stanowych zapory jako usługa z wbudowaną wysoką dostępność i skalowalność chmury bez ograniczeń.
 
 ![Omówienie zapory](media/overview/firewall-threat.png)
 
@@ -31,6 +31,21 @@ Usługa Azure Firewall oferuje następujące funkcje:
 ### <a name="built-in-high-availability"></a>Wbudowana wysoka dostępność
 
 Wysoka dostępność jest wbudowany, nie dodatkowych modułów równoważenia obciążenia są wymagane i nie ma nic, które trzeba skonfigurować.
+
+### <a name="availability-zones-public-preview"></a>Strefy dostępności (publiczna wersja zapoznawcza)
+
+Podczas wdrażania na wielu strefach dostępności na potrzeby zwiększonej dostępności można skonfigurować zaporę platformy Azure. Dzięki strefom dostępności poziomu dostępności zwiększa dostępność przez 99,99% czasu. Aby uzyskać więcej informacji, zobacz zapory usługi Azure [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). Czas działania 99,99% umowy SLA jest oferowana po wybraniu co najmniej dwóch strefach dostępności.
+
+Można również skojarzyć zapory usługi Azure do określonej strefy tylko ze względów odległości między elementami przy użyciu usług standardowa SLA 99,95% czasu.
+
+Nie ma żadnych dodatkowych kosztów, zaporę wdrożonej w strefie dostępności. Jednakże istnieją dodatkowe koszty transferu danych przychodzących i wychodzących skojarzonych stref dostępności. Aby uzyskać więcej informacji, zobacz [przepustowość — szczegóły cennika](https://azure.microsoft.com/pricing/details/bandwidth/).
+
+Strefy dostępności zapory platformy Azure są dostępne w regionach, które obsługują strefy dostępności. Aby uzyskać więcej informacji, zobacz [co to są strefy dostępności na platformie Azure?](../availability-zones/az-overview.md#services-support-by-region)
+
+> [!NOTE]
+> Strefy dostępności można skonfigurować tylko podczas wdrażania. Nie można skonfigurować istniejących zaporę, aby uwzględnić stref dostępności.
+
+Aby uzyskać więcej informacji o strefach dostępności, zobacz [co to są strefy dostępności na platformie Azure?](../availability-zones/az-overview.md)
 
 ### <a name="unrestricted-cloud-scalability"></a>Skalowalność w chmurze bez ograniczeń
 
@@ -64,6 +79,18 @@ Wszystkie adresy IP wychodzącego ruchu sieciowego są tłumaczone na publiczny 
 
 Ruch sieciowy przychodzący do publicznego adresu IP zapory jest przetwarzany przy użyciu technologii DNAT i filtrowany do prywatnych adresów IP w sieciach wirtualnych.
 
+### <a name="multiple-public-ips-public-preview"></a>Wiele publicznych adresów IP (publiczna wersja zapoznawcza)
+
+Wiele publicznych adresów IP (do 600) można skojarzyć z zaporą.
+
+Umożliwia to obsługę następujących scenariuszy:
+
+- **DNAT** — wielu wystąpień standardowego portu można tłumaczyć na serwerach wewnętrznej bazy danych. Na przykład jeśli masz dwa publiczne adresy IP, może dokonywać translacji portu TCP 3389 (RDP) dla obu adresów IP.
+- **SNAT** — dodatkowe porty są dostępne dla połączeń SNAT wychodzących, zmniejszyć prawdopodobieństwo SNAT wyczerpanie portów. W tej chwili zapory usługi Azure losowo wybiera publiczny adres IP źródłowego na potrzeby połączenia. Jeśli masz wszystkie podrzędne filtrowania w sieci, należy zezwolić na wszystkie publiczne adresy IP skojarzone z zaporą.
+
+> [!NOTE]
+> W publicznej wersji zapoznawczej możesz dodać lub usunąć publiczny adres IP do zapory uruchomione, istniejące połączenie przychodzące za pomocą reguł DNAT mogą nie działać 40 – 120 sekund.
+
 ### <a name="azure-monitor-logging"></a>Rejestrowanie w usłudze Azure Monitor
 
 Wszystkie zdarzenia są zintegrowane z usługą Azure Monitor, co umożliwia archiwizowanie dzienników na koncie magazynu, przesyłanie strumieniowe zdarzeń do centrum Event Hub lub wysyłanie ich do dzienników usługi Azure Monitor.
@@ -82,7 +109,11 @@ Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie
 |Zakres portów w regułach sieci i aplikacji|Porty są ograniczone do 64 000, ponieważ porty o dużych numerach są zarezerwowane do zarządzania i sprawdzania kondycji. |Pracujemy nad złagodzenie tego ograniczenia.|
 |Może uzyskać maskowane alerty analizy zagrożeń|Reguły sieciowych z lokalizacją docelową 80/443 dla ruchu wychodzącego masek filtrowania zagrożeń analizy alertów w przypadku skonfigurowania do alertu tylko trybu.|Utwórz, filtrowanie ruchu wychodzącego dla 80/443 przy użyciu reguł aplikacji. Możesz też zmienić tryb analizy zagrożeń **alertów i odmawiać go**.|
 |Zapora usługi Azure używa usługi Azure DNS tylko do rozpoznawania nazw|Zaporę platformy Azure rozpoznaje tylko przy użyciu usługi Azure DNS nazwy FQDN. Niestandardowego serwera DNS nie jest obsługiwane. Ma to żadnego wpływu na rozpoznawanie nazw DNS w innych podsieciach.|Pracujemy nad złagodzenie tego ograniczenia.|
-|Usługa Azure zapory SNAT DNAT nie działa dla prywatnych adresów IP miejsc docelowych.|Pomoc techniczna platformy Azure zapory SNAT/DNAT jest ograniczona do Internetu ruchu wychodzącego/przychodzącego. SNAT/DNAT obecnie nie działa dla prywatnych adresów IP miejsc docelowych. Na przykład typu gwiazda szprychą.|Jest to na mapie drogowej dla przyszłej aktualizacji.
+|Usługa Azure zapory SNAT DNAT nie działa dla prywatnych adresów IP miejsc docelowych.|Pomoc techniczna platformy Azure zapory SNAT/DNAT jest ograniczona do Internetu ruchu wychodzącego/przychodzącego. SNAT/DNAT obecnie nie działa dla prywatnych adresów IP miejsc docelowych. Na przykład typu gwiazda szprychą.|To aktualne ograniczenie.|
+|Nie można usunąć pierwsze publiczny adres IP|Nie można usunąć publiczny adres IP przypisany do zapory, chyba, że Zapora jest cofnięty lub usunięty.|To jest celowe.|
+|Jeśli dodasz lub usuniesz publiczny adres IP, reguły DNAT może nie działać tymczasowo.| Jeśli dodasz lub usuniesz publicznego adresu IP do zapory uruchomione, istniejące połączenie przychodzące za pomocą reguł DNAT może nie działać na 40 – 120 sekund.|Jest to ograniczenie w publicznej wersji zapoznawczej dla tej funkcji.|
+|Strefy dostępności można skonfigurować tylko podczas wdrażania.|Strefy dostępności można skonfigurować tylko podczas wdrażania. Nie można skonfigurować strefy dostępności, po wdrożeniu zapory.|To jest celowe.|
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal](tutorial-firewall-deploy-portal.md)

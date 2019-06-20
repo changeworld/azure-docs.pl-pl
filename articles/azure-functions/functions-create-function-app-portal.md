@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad9c50953447c1effee48eec5b0cb9f64386e6cc
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61342443"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155577"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Tworzenie aplikacji funkcji przy użyciu witryny Azure Portal
 
@@ -27,7 +27,7 @@ Aplikacje funkcji platformy Azure korzystają z infrastruktury usługi Azure App
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
 
-Podczas tworzenia aplikacji funkcji podaj prawidłową **nazwę aplikacji**, która może zawierać tylko litery, cyfry i łączniki. Podkreślenie (**_**) nie jest dozwolonym znakiem.
+Podczas tworzenia aplikacji funkcji podaj prawidłową **nazwę aplikacji**, która może zawierać tylko litery, cyfry i łączniki. Podkreślenie ( **_** ) nie jest dozwolonym znakiem.
 
 Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. 
 
@@ -52,4 +52,7 @@ Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [Wprowadzenie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
+Gdy witryny Azure portal umożliwia łatwe do utworzenia i wypróbowania funkcji, firma Microsoft zaleca [rozwoju lokalnego](functions-develop-local.md). Po utworzeniu aplikacji funkcji w portalu, nadal konieczne dodanie funkcji. 
+
+> [!div class="nextstepaction"]
+> [Dodaj funkcję wyzwalaną przez protokół HTTP](functions-create-first-azure-function.md#create-function)

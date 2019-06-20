@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: c998e01cdb9031771acd3d9605da3e77d5ae3201
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a7681ba815533296deae2b585e377a733074b6c9
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953360"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147911"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Administrowanie usługą Data Box Disk w witrynie Azure Portal
 
@@ -76,7 +76,7 @@ Można usuwać tylko zamówienia, które zostały zakończone lub anulowane. Aby
      ![Usuwanie zamówienia w usłudze Data Box Disk — 2](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Pobierz etykietę wysyłkową
+## <a name="download-shipping-label"></a>Pobieranie etykiety wysyłkowej
 
 W przypadku zgubienia lub utraty zwrotnej etykiety wysyłkowej dostarczonej wraz z dyskami konieczne będzie pobranie etykiety wysyłkowej. 
 
@@ -126,10 +126,10 @@ Aby edytować szczegóły powiadomień, wykonaj następujące czynności.
 |Wysłane     | Zamówienie zostało wysłane. Powinno zostać dostarczone do Ciebie w ciągu 1–2 dni.        |
 |Dostarczono     | Zamówienie zostało dostarczone na adres wskazany w zamówieniu.        |
 |Pobrane     |Przesyłka zwrotna została pobrana. <br> Po odebraniu przesyłki w centrum danych Azure dane zostaną automatycznie przekazane na platformę Azure.         |
-|Odebrane     | Twoje dyski zostały odebrane w centrum danych Azure. Wkrótce rozpocznie się kopiowanie danych.        |
+|Odebrano     | Twoje dyski zostały odebrane w centrum danych Azure. Wkrótce rozpocznie się kopiowanie danych.        |
 |Skopiowane dane     |Kopiowanie danych jest w toku.<br> Poczekaj na zakończenie kopiowania danych.         |
 |Zakończone       |Zamówienie zostało pomyślnie zrealizowane.<br> Przed usunięciem danych lokalnych z serwerów upewnij się, że Twoje dane znajdują się na platformie Azure.         |
-|Zakończone z błędami| Kopiowanie danych zostało ukończone, ale wystąpiły błędy. <br> Przejrzyj dzienniki kopiowania, używając ścieżki wskazanej w sekcji **Przegląd**. Aby uzyskać więcej informacji, zobacz [Download diagnostic logs (Pobieranie dzienników diagnostycznych)](data-box-disk-troubleshoot.md#download-diagnostic-logs).   |
+|Zakończone z błędami| Kopiowanie danych zostało ukończone, ale wystąpiły błędy. <br> Przejrzyj dzienniki błędów w celu przekazania przy użyciu ścieżki w **Przegląd**. Aby uzyskać więcej informacji, przejdź do [dzienniki błędów przekazywania pobierania](data-box-disk-troubleshoot-upload.md#download-logs).   |
 |Anulowane            |Twoje zamówienie zostało anulowane. <br> Zamówienie mogło zostać anulowane przez Ciebie lub, w przypadku wystąpienia błędu, przez usługę.     |
 
 

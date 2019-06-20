@@ -12,46 +12,53 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/30/2019
+ms.date: 06/19/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: c418041c5de343d7210dbd153ebe6cea0af95c42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a95bedc8b2b395f856512ec49bae630666fe36da
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066814"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272887"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Szybki start: Tworzenie standardowego modułu równoważenia obciążenia do równoważenia obciążenia maszyn wirtualnych przy użyciu szablonu usługi Azure Resource Manager
 
-Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między wiele maszyn wirtualnych. Możesz wdrożyć szablonu usługi Azure Resource Manager w celu utworzenia modułu równoważenia obciążenia, aby równoważyć obciążenie maszyn wirtualnych (VM). W tym przewodniku Szybki start pokazano, jak zrównoważyć obciążenie maszyn wirtualnych przy użyciu usługi Load Balancer w warstwie Standardowa.
+Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między wiele maszyn wirtualnych. Ten przewodnik Szybki Start dowiesz się, jak wdrożyć szablon usługi Azure Resource Manager, aby utworzyć moduł równoważenia obciążenia standardowy, aby równoważyć obciążenie maszyn wirtualnych (VM).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-standard-load-balancer"></a>Tworzenie modułu równoważenia obciążenia w warstwie Standardowa
 
-W tej sekcji opisano tworzenie standardowego modułu równoważenia obciążenia, który pomaga równoważyć obciążenie maszyn wirtualnych. Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. Podczas tworzenia usługi Load Balancer w warstwie Standardowa musisz także utworzyć nowy publiczny adres IP w warstwie Standardowa, który jest skonfigurowany jako fronton (domyślnie o nazwie *LoadBalancerFrontend*) dla usługi Load Balancer w warstwie Standardowa. Istnieje wiele metod, które umożliwiają tworzenie standardowego modułu równoważenia obciążenia. W tym przewodniku Szybki Start użyjesz programu Azure PowerShell, aby wdrożyć [szablonu usługi Resource Manager](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-load-balancer-standard-create/azuredeploy.json). Szablony usługi Resource Manager są plikami JSON definiującymi zasoby, które należy wdrożyć dla danego rozwiązania. Aby zrozumieć pojęcia związane z wdrażaniem i zarządzaniem nimi Twoich rozwiązań platformy Azure, zobacz [dokumentacji usługi Azure Resource Manager](/azure/azure-resource-manager/). Aby znaleźć więcej pokrewne szablonu usługi Azure Load Balancer, zobacz [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. Podczas tworzenia standardowego modułu równoważenia obciążenia, możesz również utworzyć nowy adres standardowego publicznego adresu IP, który jest skonfigurowany jako fronton dla standardowego modułu równoważenia obciążenia. Istnieje wiele metod, które umożliwiają tworzenie standardowego modułu równoważenia obciążenia. W tym przewodniku Szybki Start użyjesz programu Azure PowerShell, aby wdrożyć [szablonu usługi Resource Manager](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json). Szablony usługi Resource Manager są plikami JSON definiującymi zasoby, które należy wdrożyć dla danego rozwiązania. Aby zrozumieć pojęcia związane z wdrażaniem i zarządzaniem nimi Twoich rozwiązań platformy Azure, zobacz [dokumentacji usługi Azure Resource Manager](/azure/azure-resource-manager/). Aby znaleźć więcej pokrewne szablonu usługi Azure Load Balancer, zobacz [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
-Aby wdrożyć szablon, zaznacz **wypróbuj** aby otworzyć usługa Azure Cloud shell, a następnie wklej poniższy skrypt programu PowerShell do okna powłoki. Aby wkleić kod, kliknij prawym przyciskiem myszy w oknie shell, a następnie wybierz pozycję **Wklej**. Aby uzyskać listę regionów, które obsługują strefy dostępności maszyn wirtualnych platformy Azure, zobacz [tutaj](../availability-zones/az-overview.md).
+1. Wybierz **wypróbuj** z poniższy blok kodu, aby otworzyć usługa Azure Cloud shell, a następnie postępuj zgodnie z instrukcjami, aby zalogować się do platformy Azure.
 
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$adminUserName = Read-Host -Prompt "Enter the virtual machine administrator account name"
-$adminPassword = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
+   ```azurepowershell-interactive
+   $projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
+   $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+   $adminUserName = Read-Host -Prompt "Enter the virtual machine administrator account name"
+   $adminPassword = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
 
-$resourceGroupName = "${projectName}rg"
-$templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-load-balancer-standard-create/azuredeploy.json"
+   $resourceGroupName = "${projectName}rg"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json"
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
+   New-AzResourceGroup -Name $resourceGroupName -Location $location
+   New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
 
-Write-Host "Press [ENTER] to continue."
+   Write-Host "Press [ENTER] to continue."
+   ```
 
-```
+   Poczekaj, aż zostanie wyświetlony monit z konsoli.
+2. Wybierz **kopiowania** z poprzedni blok kodu, aby skopiować skrypt programu PowerShell.
+3. Kliknij prawym przyciskiem myszy w okienku konsoli shell, a następnie wybierz pozycję **Wklej**.
+4. Wprowadź wartości.
 
- >[!NOTE]
- >Nazwa grupy zasobów jest nazwą projektu **rg** dołączane. Potrzebna jest nazwa grupy zasobów w następnej sekcji.  Trwa kilka minut, aby utworzyć zasoby.
+   Wdrożenie szablonu tworzy trzy strefy dostępności.  Strefy dostępności są obsługiwane tylko w [niektóre regiony](../availability-zones/az-overview.md). Użyj jednej z obsługiwanych regionów. Jeśli nie masz pewności, wprowadź **centralus**.
+
+   Nazwa grupy zasobów jest nazwą projektu **rg** dołączane. Potrzebna jest nazwa grupy zasobów w następnej sekcji.
+
+Trwa około 10 minut do wdrożenia szablonu.
 
 ## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
 

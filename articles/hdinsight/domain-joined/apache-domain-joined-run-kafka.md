@@ -1,18 +1,18 @@
 ---
-title: Konfigurowanie zasad platformy Apache Kafka w usłudze HDInsight przy użyciu pakietu Enterprise Security — Azure
-description: Dowiedz się, jak skonfigurować zasady platformy Apache Ranger dla platformy Kafka w usłudze Azure HDInsight przy użyciu pakietu Enterprise Security.
+title: Samouczek — Konfigurowanie zasad usługi Apache Kafka HDInsight z pakietem Enterprise Security - Azure
+description: Samouczek — Dowiedz się, jak skonfigurować zasady platformy Apache Ranger dla platformy Kafka w usłudze Azure HDInsight z pakietem Enterprise Security.
 ms.service: hdinsight
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 01/14/2019
-ms.openlocfilehash: 6434f7cae3c3fa402efad00b2f6bfb0bc405f9e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/18/2019
+ms.openlocfilehash: 3a7d3a5d066db349bd3002b244d3a9f88777369b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730254"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274348"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: Konfigurowanie zasad platformy Apache Kafka w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
 
@@ -61,7 +61,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user** i **marketing_
 
    |**Ustawienie**  |**Sugerowana wartość**  |
    |---------|---------|
-   |Policy Name (Nazwa zasad)  |  hdi sales* policy   |
+   |Nazwa zasad  |  hdi sales* policy   |
    |Temat   |  sales* |
    |Select User (Wybierz użytkownika)  |  sales_user1 |
    |Uprawnienia  | publish, consume, create |
@@ -82,7 +82,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user** i **marketing_
 
    |**Ustawienie**  |**Sugerowana wartość**  |
    |---------|---------|
-   |Policy Name (Nazwa zasad)  |  hdi marketing policy   |
+   |Nazwa zasad  |  hdi marketing policy   |
    |Temat   |  marketingspend |
    |Select User (Wybierz użytkownika)  |  marketing_user1 |
    |Uprawnienia  | publish, consume, create |

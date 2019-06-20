@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 3635cd422e4c7a064d3317401b734f3bc6ccb6c6
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 4db9e6eaf2d7f7630d3d412d5519d97f8beca3ad
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136446"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272838"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Samouczek: Wdróż narzędzie do zarządzania
+# <a name="tutorial-deploy-a-management-tool"></a>Samouczek: Wdrażanie narzędzia do zarządzania
 
 Narzędzie do zarządzania udostępnia interfejs użytkownika (UI) do zarządzania zasobami Microsoft wirtualnego pulpitu w wersji zapoznawczej. W tym samouczku dowiesz się, jak wdrożyć i nawiązać połączenie z narzędzia do zarządzania.
 
@@ -62,9 +62,29 @@ Poniżej przedstawiono sposób konfigurowania narzędzia wprowadź parametry:
 - Użyj swoich poświadczeń usługi AAD za pomocą usługi MFA, wyłączona, aby zalogować się do platformy Azure. Zobacz [co jest potrzebne uruchomić szablon usługi Azure Resource Manager](#what-you-need-to-run-the-azure-resource-manager-template).
 - Użyj unikatowej nazwy dla aplikacji, który ma zostać zarejestrowany w usłudze Azure Active Directory dla narzędzia do zarządzania; na przykład Apr3UX.
 
-## <a name="use-the-management-tool"></a>Użyj narzędzia do zarządzania
+## <a name="provide-consent-for-the-management-tool"></a>Podaj wyrażania zgody dla narzędzia do zarządzania
 
 Po GitHub usługi Azure Resource Manager kończy szablonu, można znaleźć grupy zasobów, zawierający dwie usługi aplikacji wraz z jednego planu usługi app service w witrynie Azure portal.
+
+Przed logowania i użyj narzędzia do zarządzania należy dostarczyć zgodę dla nowej aplikacji usługi Azure Active Directory, który jest skojarzony z narzędzia do zarządzania. Dostarczając zgody, dozwolone jest narzędzie do zarządzania do nawiązywania połączeń zarządzania pulpitu wirtualnego Windows w imieniu użytkownika, który jest zalogowany do narzędzia.
+
+Aby określić użytkownika, który umożliwia zalogować się do narzędzia, przejdź do usługi [strona Ustawienia użytkownika usługi Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) i zwróć uwagę na wartość **użytkownicy mogą zezwalać aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu**.
+
+- Jeśli wartość jest równa **tak**, możesz zalogować się przy użyciu dowolnego konta użytkownika w usłudze Azure Active Directory i dostarczyć zgody tylko dla niego. Jednak jeśli zalogujesz się do narzędzia do zarządzania z innym użytkownikiem później, należy wykonać ten sam zgody ponownie.
+- Jeśli wartość jest równa **nie**, należy najpierw zaloguj się przy użyciu administratora globalnego usługi Azure Active Directory i podaj zgody administratora dla wszystkich użytkowników w katalogu. Nie będzie 
+
+
+Po wybraniu użytkownika, który będzie używany do zgody, wykonaj te instrukcje dotyczące zgody na narzędzie:
+
+1. Przejdź do zasobów platformy Azure, wybierz zasób usługi Azure App Services przy użyciu podanej nazwy w szablonie (na przykład Apr3UX) i przejdź do adresu URL skojarzone z nim; na przykład <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Zaloguj się przy użyciu odpowiedniego konta użytkownika usługi Azure Active Directory.
+3. W przypadku uwierzytelniania za pomocą administratora globalnego, teraz możesz wybrać pole wyboru, aby **zgody w imieniu swojej organizacji**. Wybierz **Akceptuj** zgody.
+
+Spowoduje to teraz przejście do narzędzia do zarządzania.
+
+## <a name="use-the-management-tool"></a>Użyj narzędzia do zarządzania
+
+Po podaniu wyrażania zgody dla organizacji lub dla określonego użytkownika, są dostępne narzędzia do zarządzania w dowolnym momencie.
 
 Wykonaj te instrukcje, aby uruchomić narzędzie:
 

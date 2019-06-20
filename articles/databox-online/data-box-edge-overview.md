@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 06/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e1870093dc89856e093267172418e9c7330c479
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 438e25a72361866acd449024b6e7e8c06ed6c9c7
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080576"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144235"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Co to jest usługa Azure Data Box Edge? 
 
@@ -34,7 +34,7 @@ Azure Data Box Edge to brzegowe urządzenie do przetwarzania danych z włączon�
     - Dzielenie na podzestawy i transferowanie danych potrzebnych do głębszej analizy w chmurze.
     - Analizowanie zdarzeń IoT i reagowanie na nie. 
 
-- **Usługa Azure Machine Learning z wnioskowaniem** — rozwiązanie Data Box Edge umożliwia uruchamianie modeli uczenia maszynowego (Machine Learning, ML) w celu szybkiego uzyskania wyników, na których można pracować przed wysłaniem danych do chmury. Pełny zestaw danych można przenieść w dalszym ciągu wytrenujesz i zwiększyć swoje modele uczenia Maszynowego. Aby uzyskać więcej informacji na temat sposobu korzystania z funkcji sprzętu uczenie Maszynowe Azure jej jako przyspieszonej modele na urządzeniu usługi Databox Edge, zobacz [wdrożenia usługi Azure ML przyspieszane modele na urządzeniach brzegowych Databox](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Usługa Azure Machine Learning z wnioskowaniem** — rozwiązanie Data Box Edge umożliwia uruchamianie modeli uczenia maszynowego (Machine Learning, ML) w celu szybkiego uzyskania wyników, na których można pracować przed wysłaniem danych do chmury. Pełny zestaw danych można przenieść w dalszym ciągu wytrenujesz i zwiększyć swoje modele uczenia Maszynowego. Aby uzyskać więcej informacji na temat sposobu korzystania z funkcji sprzętu uczenie Maszynowe Azure jej jako przyspieszonej modele na urządzeniu usługi Databox Edge, zobacz [wdrożenia usługi Azure ML przyspieszane modele na urządzeniach brzegowych Databox](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Transfer danych za pośrednictwem sieci na platformę Azure** — za pomocą rozwiązania Data Box Edge można szybko i łatwo transferować dane na platformę Azure, aby umożliwić ich dalsze przetwarzanie i analizę lub archiwizację. 
 

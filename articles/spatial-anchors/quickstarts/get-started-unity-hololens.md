@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 31c7af3edf6364ebca021f87240e73c74e64ebc4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c29819d817138f2512420584947763247837a9ea
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704135"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "67135202"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji Unity HoloLens, która używa kotwic przestrzenne platformy Azure
 
@@ -34,28 +34,28 @@ Omawiane tematy:
 Aby ukończyć ten przewodnik Szybki start:
 
 
-- Potrzebny jest komputer Windows, na którym <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> lub nowszej i <a href="https://www.visualstudio.com/downloads/" target="_blank">programu Visual Studio 2017</a> lub nowszy. Instalację programu Visual Studio musi zawierać **programowania na platformę uniwersalną Windows** obciążenia. Należy również zainstalować <a href="https://git-scm.com/download/win" target="_blank">Git dla Windows</a>.
+- Potrzebny jest komputer Windows, na którym <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> lub nowszej i <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> lub nowszy. Instalację programu Visual Studio musi zawierać **programowania na platformę uniwersalną Windows** obciążenia. Zainstaluj <a href="https://git-scm.com/download/win" target="_blank">Git Pro Windows</a>.
 - Potrzebujesz urządzenia HoloLens, na którym [tryb dewelopera](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) włączone. [Windows 10 października 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (znany także jako RS5) musi być zainstalowany na urządzeniu. Aby uaktualnić do najnowszej wersji na HoloLens, otwórz **ustawienia** aplikację, przejdź do **aktualizacja i zabezpieczenia**, a następnie wybierz pozycję **sprawdzać dostępność aktualizacji**.
 - W aplikacji, musisz włączyć **SpatialPerception** możliwości. To ustawienie znajduje się w **ustawieniach kompilacji** > **ustawienia odtwarzacza** > **ustawień publikowania**  >   **Możliwości**.
 - W aplikacji, musisz włączyć **obsługiwane rzeczywistości wirtualnej** z **zestawu SDK systemu Windows mieszane mogą stać się rzeczywistością**. To ustawienie znajduje się w **ustawieniach kompilacji** > **ustawienia odtwarzacza** > **ustawienia XR**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Otwieranie przykładowego projektu w aparacie Unity
+## <a name="download-and-open-the-unity-sample-project"></a>Pobierz i Otwórz przykładowy projekt aparatu Unity
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Na platformie Unity Otwórz projekt w folderze aparatu Unity.
+[!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
-Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
+Otwórz obszar **Build Settings (Ustawienia kompilacji)** , wybierając pozycje **File (Plik)**  > **Build Settings (Ustawienia kompilacji)** .
 
-W sekcji **Platform (Platforma)** wybierz pozycję **Universal Windows Platform (Platforma uniwersalna systemu Windows)**. Zmiana **urządzenie docelowe** do **HoloLens**.
+W sekcji **Platform (Platforma)** wybierz pozycję **Universal Windows Platform (Platforma uniwersalna systemu Windows)** . Zmiana **urządzenie docelowe** do **HoloLens**.
 
-Wybierz pozycję **Switch Platform (Przełącz platformę)**, aby zmienić platformę na **Universal Windows Platform (Platforma uniwersalna systemu Windows)**. Unity może spowodować wyświetlenie monitu do zainstalowania składniki obsługi platformy uniwersalnej systemu Windows, jeśli są one Brak.
+Wybierz pozycję **Switch Platform (Przełącz platformę)** , aby zmienić platformę na **Universal Windows Platform (Platforma uniwersalna systemu Windows)** . Unity może spowodować wyświetlenie monitu do zainstalowania składniki obsługi platformy uniwersalnej systemu Windows, jeśli są one Brak.
 
-   ![Okno ustawień kompilacji platformy Unity](./media/get-started-unity-hololens/unity-build-settings.png)
+![Okno ustawień kompilacji platformy Unity](./media/get-started-unity-hololens/unity-build-settings.png)
 
-Zamknij okno **Build Settings (Ustawienia kompilacji)**.
+Zamknij okno **Build Settings (Ustawienia kompilacji)** .
 
 ## <a name="configure-the-account-identifier-and-key"></a>Skonfiguruj identyfikator konta i klucz
 
@@ -63,7 +63,7 @@ W **projektu** okienko, przejdź do `Assets/AzureSpatialAnchorsPlugin/Examples` 
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Zapisz scenę, wybierając pozycje **File (Plik)** > **Save (Zapisz)**.
+Zapisz scenę, wybierając pozycje **File (Plik)**  > **Save (Zapisz)** .
 
 ## <a name="export-the-hololens-visual-studio-project"></a>Eksportowanie projektu programu Visual Studio dla urządzenia HoloLens
 

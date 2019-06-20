@@ -9,11 +9,11 @@ ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: 2ddf171090ab4a9e3dbe4506a399cbdbd2621bdd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114644"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183305"
 ---
 Gdy skończysz, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje usunięcie konta magazynu, udziału plików platformy Azure i innych zasobów wdrożonych w grupie zasobów.
 

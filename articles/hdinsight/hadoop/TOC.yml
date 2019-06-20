@@ -20,9 +20,6 @@
     - name: Tworzenie klastrów na żądanie
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
-      href: ../hdinsight-cluster-availability.md
-      maintainContext: true
 - name: Przykłady
   items:
     - name: Przykłady dla platformy .NET
@@ -36,6 +33,9 @@
       maintainContext: true
 - name: Pojęcia
   items:
+    - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
+      href: ../hdinsight-cluster-availability.md
+      maintainContext: true
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
       maintainContext: true
