@@ -1,17 +1,18 @@
 ---
-title: Konfigurowanie zasad platformy Apache HBase w usłudze HDInsight przy użyciu pakietu Enterprise Security — Azure
-description: Dowiedz się, jak skonfigurować zasady platformy Apache Ranger dla platformy HBase w usłudze Azure HDInsight przy użyciu pakietu Enterprise Security.
+title: Samouczek — Konfigurowanie zasad usługi bazy danych Apache HBase HDInsight z pakietem Enterprise Security - Azure
+description: Samouczek — Dowiedz się, jak skonfigurować zasady platformy Apache Ranger dla bazy danych HBase w usłudze Azure HDInsight z pakietem Enterprise Security.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: d1f2a2b24e6f1856d021911e6f2e9c107bd38b72
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/18/2019
+ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926094"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274396"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Samouczek: Konfigurowanie zasad usługi bazy danych Apache HBase HDInsight z pakietem Enterprise Security
 
@@ -105,7 +106,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
 
    |**Ustawienie**  |**Sugerowana wartość**  |
    |---------|---------|
-   |Policy Name (Nazwa zasad)  |  sales_customers_name_contact   |
+   |Nazwa zasad  |  sales_customers_name_contact   |
    |Tabela bazy danych HBase   |  Klienci |
    |Rodzina kolumn bazy danych HBase   |  Nazwa, kontakt |
    |Kolumna bazy danych HBase   |  * |
@@ -129,9 +130,9 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
 
    |**Ustawienie**  |**Sugerowana wartość**  |
    |---------|---------|
-   |Policy Name (Nazwa zasad)  |  marketing_customers_contact   |
+   |Nazwa zasad  |  marketing_customers_contact   |
    |Tabela bazy danych HBase   |  Klienci |
-   |Rodzina kolumn bazy danych HBase   |  Kontakt |
+   |Rodzina kolumn bazy danych HBase   |  Skontaktuj się z |
    |Kolumna bazy danych HBase   |  * |
    |Wybierz grupę  | |
    |Select User (Wybierz użytkownika)  | marketing_user1 |
@@ -159,7 +160,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit sales_user1
    ```
 
-2. Otwórz powłokę hbase, a następnie przeprowadź skanowanie tabeli `Customers`.
+2. Otwórz powłokę HBase, a następnie przeprowadź skanowanie tabeli `Customers`.
 
    ```hbaseshell
    hbase shell
@@ -201,7 +202,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit marketing_user1
    ```
 
-2. Otwórz powłokę hbase, a następnie przeprowadź skanowanie tabeli `Customers`:
+2. Otwórz powłokę HBase, a następnie przeprowadź skanowanie tabeli `Customers`:
 
     ```hbaseshell
     hbase shell
@@ -237,7 +238,7 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster 
 2. W polu **Wyszukaj** w górnej części wpisz **HDInsight**. 
 1. Wybierz pozycję **Klastry usługi HDInsight** w obszarze **Usługi**.
 1. Na wyświetlonej liście klastrów usługi HDInsight kliknij symbol **...** obok klastra utworzonego na potrzeby tego samouczka. 
-1. Kliknij polecenie **Usuń**. Kliknij przycisk **Yes** (Tak).
+1. Kliknij przycisk **Usuń**. Kliknij przycisk **Yes** (Tak).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

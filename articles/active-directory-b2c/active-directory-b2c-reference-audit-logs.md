@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 27c91185bacea839ec73a3f4bd06f5df43bd4edf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 2c1bfd9e2659127ab77e9db661b54fde18a8d25c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509654"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205363"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji usługi Azure AD B2C
 
@@ -23,6 +24,9 @@ Usługa Azure Active Directory B2C (Azure AD B2C), emituje dzienników inspekcji
 
 > [!IMPORTANT]
 > Dzienniki inspekcji tylko są przechowywane przez 7 dni. Planowane pobierania i przechowywania dzienników przy użyciu jednej z metod poniżej, jeśli potrzebujesz dłuższy okres przechowywania danych.
+
+> [!NOTE]
+> Nie widzisz sesji logowania użytkowników dla poszczególnych aplikacji usługi Azure AD B2C w ramach **użytkowników** części **usługi Azure Active Directory** lub **usługi Azure AD B2C** bloków. Sesje logowania będzie wyświetlać aktywności użytkownika, ale nie może być korelowane z powrotem aplikacji B2C, które użytkownik zarejestrował w usłudze. Dzienniki inspekcji należy użyć w tym, jak wyjaśniono dalej w tym artykule.
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Przegląd działań dostępnych w kategorii B2C dzienników inspekcji
 **B2C** kategoria w dziennikach inspekcji zawiera następujące typy działań:
@@ -41,6 +45,18 @@ Usługa Azure Active Directory B2C (Azure AD B2C), emituje dzienników inspekcji
 
 ## <a name="example-activity"></a>Przykład działania
 Poniższy przykład pokazuje dane przechwycone, gdy użytkownik loguje się przy użyciu zewnętrznego dostawcy tożsamości: ![Dzienniki inspekcji — przykład](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+
+Panel szczegółów działania zawiera następujące informacje:
+
+|`Section`|Pole|Opis|
+|-------|-----|-----------|
+| Działanie | Name (Nazwa) | Której działanie miało miejsce. Na przykład "wystawianie elementu id_token dla aplikacji" (które udzielają logowania rzeczywistego użytkownika). |
+| Zainicjowane przez (Aktor) | ObjectId | **Obiektu o identyfikatorze** aplikacji B2C, którą użytkownik loguje się do (ten identyfikator nie jest widoczna w witrynie Azure Portal, ale nie jest dostępny za pośrednictwem interfejsu API programu Graph na przykład). |
+| Zainicjowane przez (Aktor) | Spn | **Identyfikator aplikacji** aplikacji B2C, którą użytkownik się loguje. |
+| Cele | ObjectId | **Obiektu o identyfikatorze** użytkownika, który loguje się. |
+| Dodatkowe szczegóły | Identyfikator dzierżawy | **Identyfikator dzierżawy** dzierżawy usługi Azure AD B2C. |
+| Dodatkowe szczegóły | `PolicyId` | **Identyfikator zasad** przepływu użytkownika (zasady) używane do logowania użytkownika. |
+| Dodatkowe szczegóły | ApplicationId | **Identyfikator aplikacji** aplikacji B2C, którą użytkownik się loguje. |
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>Uzyskiwanie dostępu do dzienników inspekcji w portalu Azure
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com). Upewnij się, że znajdują się w katalogu usługi B2C.
@@ -62,6 +78,9 @@ Zostanie wyświetlona lista działań zarejestrowane w ciągu ostatnich siedmiu 
 - Użyj **zakres dat** listę rozwijaną, aby filtrować zakres dat działania wyświetlane
 - Po kliknięciu na określony wiersz w liście kontekstowe okno po prawej stronie zostanie wyświetlona dodatkowe atrybuty skojarzone z działania
 - Kliknij pozycję **Pobierz** do pobrania działania jako plik csv
+
+> [!NOTE]
+> Widoczna jest także dzienniki inspekcji, przechodząc do **usługi Azure AD B2C** zamiast **usługi Azure Active Directory** na pasku Ulubione po lewej stronie. W obszarze **działania**, kliknij pozycję **dzienniki inspekcji**, gdzie znajduje się w tej samej dziennikach przy użyciu podobnych funkcji filtrowania.
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Uzyskiwanie dostępu do dzienników inspekcji za pomocą interfejsu API raportowania usługi Azure AD
 Dzienniki inspekcji są publikowane w tej samej potoku jako inne działania usługi Azure Active Directory, dzięki czemu są one dostępne za pośrednictwem [interfejsu API raportowania usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference).

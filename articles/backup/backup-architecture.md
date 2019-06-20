@@ -2,18 +2,18 @@
 title: Architektura usługi Azure Backup
 description: Zawiera omówienie architektury, składników i procesów używanych przez usługę Azure Backup.
 services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: dacurwin
+ms.openlocfilehash: 7c0a1650490a863f5b3a3cf09a5500d72359e7f1
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60647449"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272002"
 ---
 # <a name="azure-backup-architecture"></a>Architektura usługi Azure Backup
 
@@ -99,9 +99,9 @@ Poniższa tabela zawiera podsumowanie obsługiwanych funkcji dla różnych typó
 
 **Funkcja** | **Maszyny z systemem Windows Server w środowisku lokalnym (direct)** | **Maszyny wirtualne platformy Azure** | **Maszyny lub aplikacji za pomocą programu DPM/serwera usługi Mab**
 --- | --- | --- | ---
-Tworzenie kopii zapasowej do magazynu | ![Tak][green] | ![Yes][green] | ![Tak][green] 
+Tworzenie kopii zapasowej do magazynu | ![Yes][green] | ![Yes][green] | ![Tak][green] 
 Tworzenie kopii zapasowej na dysku programu DPM/serwera usługi Mab, następnie na platformie Azure | | | ![Tak][green] 
-Kompresuj dane przesyłane do utworzenia kopii zapasowej | ![Yes][green] | Kompresja nie jest używana podczas transferu danych. Magazyn jest nieco zwiększony, ale przywracania jest szybsze.  | ![Tak][green] 
+Kompresuj dane przesyłane do utworzenia kopii zapasowej | ![Tak][green] | Kompresja nie jest używana podczas transferu danych. Magazyn jest nieco zwiększony, ale przywracania jest szybsze.  | ![Tak][green] 
 Uruchamianie tworzenia przyrostowych kopii zapasowych |![Tak][green] |![Yes][green] |![Yes][green] 
 Wykonywanie kopii zapasowych deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> Dla programu DPM/serwera usługi Mab serwery wdrożone tylko lokalnie. 
 

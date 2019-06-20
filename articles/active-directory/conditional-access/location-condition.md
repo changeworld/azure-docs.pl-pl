@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886118614427bea61f745e1ded28824b60225919
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd62cda209a8ac95a41fa271ce3a96001a3b4811
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112294"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164779"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w usłudze Azure Active Directory dostępu warunkowego? 
 
@@ -56,7 +56,10 @@ Lokalizacja o nazwie zawiera następujące składniki:
 - **Kraje/regiony** — ta opcja umożliwia wybranie co najmniej jeden kraj lub region, aby zdefiniować nazwanych lokalizacji.
 - **Uwzględnij nieznane obszary** — adresy IP niektóre nie są zamapowane na konkretnym kraju lub regionu. Ta opcja pozwala wybrać, czy te adresy IP powinien być uwzględniony w lokalizacji o nazwie. Użyj tego ustawienia podczas stosowania zasad za pomocą nazwanych lokalizacji dla nieznanych lokalizacjach.
 
-Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Organizacje można skonfigurować maksymalnie 90 nazwane lokalizacje, każdy skonfigurowany z maksymalnie 1200 zakresów adresów IP.
+Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Można skonfigurować lokalizacje, w oparciu o następujących ograniczeniach:
+
+- Jedną nazwę lokalizacji z maksymalnie 1200 zakresów adresów IP.
+- Maksymalnie 90 nazwane lokalizacje z jednego zakresu adresów IP przypisanych do każdego z nich.
 
 Zasady dostępu warunkowego dotyczy ruchu IPv4 i IPv6. Obecnie nazwane lokalizacje są dozwolone zakresy adresów IPv6, należy skonfigurować. To ograniczenie powoduje, że następujące sytuacje:
 

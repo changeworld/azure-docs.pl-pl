@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0672f25b30bfb34a6ee99b0f4710d01cf0871300
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237658"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150326"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -76,8 +76,23 @@ Jeśli używasz usługi Azure File Sync na dostęp do udziału plików platformy
 
 Usługa Azure Files oferuje dwie warstwy wydajności: standardowa i premium.
 
-* **Udziały plików standardowych** są wspierane przez obrotowych dysków twardych (HDD), które zapewniają niezawodność, wydajność dla obciążeń we/wy, które są mniej podatne na zmiany wydajności, takich jak udziały plików ogólnego przeznaczenia i środowiska deweloperskie i testowe. Udziały plików standardowa są dostępne tylko w modelu rozliczeń zgodnie z rzeczywistym użyciem.
-* **Udziały plików w warstwie Premium (wersja zapoznawcza)** są wspierane przez dyski półprzewodnikowe (SSD), które umożliwiają spójne, wysokiej wydajności i niskich opóźnieniach, w milisekundach oznaczona jedną cyfrą dla większości operacji We/Wy, dla większości obciążeń intensywnie korzystających z operacji We/Wy. To sprawia, że ich odpowiednie dla różnych obciążeń, takich jak bazy danych, hostowanie witryn sieci web, środowisk deweloperskich itp. Udziały plików w warstwie Premium są dostępne tylko w elastycznie model rozliczeń. Udziały plików w warstwie Premium korzystają z modelu wdrożenia, niezależnie od udziałów plików standardowych.
+### <a name="standard-file-shares"></a>Udziały plików standardowe
+
+Udziały plików standardowe są wspierane przez dysków twardych (HDD). Udziały plików standardowa zapewniają niezawodność, wydajność dla obciążeń we/wy, które są mniej podatne na zmiany wydajności, takich jak udziały plików ogólnego przeznaczenia i środowiska deweloperskie i testowe. Udziały plików standardowa są dostępne tylko w modelu rozliczeń zgodnie z rzeczywistym użyciem.
+
+Standardowa udziały plików do rozmiaru wynosi 5 TiB są dostępne jako oferty usług ogólnie dostępnych. Natomiast większe udziałów plików, które są większe niż wynosi 5 TiB, maksymalnie 100 TiB udziałów obecnie są dostępne jako to oferta w wersji zapoznawczej.
+
+> [!IMPORTANT]
+> - Należy utworzyć nowe konto magazynu ogólnego przeznaczenia (nie można rozszerzyć istniejące konta magazynu).
+> - Są dostępne tylko dzięki magazynowi LRS.
+> - Dostępne w trzech regionach: Zachodnie stany USA 2, Europa Zachodnia i Azja regionów.
+> - Magazyn LRS, GRS konto konwersji nie będzie możliwe na wszystkich nowych kont magazynu, które są tworzone po zaakceptowaniu subskrypcji do większych preview udziałów plików.
+
+Jeśli chcesz dołączyć do wersji zapoznawczej te większe rozmiary udziału plików, przesłać to [formularza](https://aka.ms/azurefilesatscalesurvey). 
+
+### <a name="premium-file-shares-preview"></a>Udziały plików w warstwie Premium (wersja zapoznawcza)
+
+Udziały plików w warstwie Premium (wersja zapoznawcza) są wspierane przez dyski półprzewodnikowe (SSD). Udziały plików w warstwie Premium zapewnia spójne, wysokiej wydajności i niskich opóźnieniach, w milisekundach oznaczona jedną cyfrą dla większości operacji We/Wy dla obciążeń intensywnie korzystających z operacji We/Wy. To sprawia, że ich odpowiednie dla różnych obciążeń, takich jak bazy danych, hostowanie witryn sieci web, środowisk deweloperskich itp. Udziały plików w warstwie Premium są dostępne tylko w elastycznie model rozliczeń. Udziały plików w warstwie Premium korzystają z modelu wdrożenia, niezależnie od udziałów plików standardowych.
 
 Usługa Azure Backup jest dostępna dla udziałów plików w warstwie premium i usługi Azure Kubernetes Service obsługuje udziały plików w warstwie premium w wersji 1.13 lub nowszym.
 
@@ -180,7 +195,7 @@ Podczas wybierania opcji replikacji, należy pamiętać o następujących punkt�
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu ilości danych
 
-Obecnie maksymalny rozmiar udziału plików platformy Azure jest wynosi 5 TiB (100 TiB dla udziałów plików — wersja premium, które są dostępne w publicznej wersji zapoznawczej). Ze względu na to bieżące ograniczenie podczas wdrażania udziału plików platformy Azure należy wziąć pod uwagę przewidywanego wzrostu ilości danych.
+Obecnie maksymalny rozmiar udziału plików platformy Azure jest wynosi 5 TiB (100 TiB w wersji zapoznawczej). Ze względu na to bieżące ograniczenie podczas wdrażania udziału plików platformy Azure należy wziąć pod uwagę przewidywanego wzrostu ilości danych.
 
 Istnieje możliwość synchronizowania wielu plików platformy Azure udostępnia do jednego serwera plików Windows za pomocą usługi Azure File Sync. Dzięki temu można zapewnić, że udziały plików starsze, duże, że może mieć w środowisku lokalnym, może być wprowadzana do usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Planowanie wdrażania usługi Azure pliku synchronizacji](storage-files-planning.md).
 

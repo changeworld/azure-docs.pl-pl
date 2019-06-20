@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56ba2dfebeb47f7e12a2693eae443e3c31e2a4dd
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754537"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203102"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -23,7 +23,7 @@ Wprowadzamy pewne ważne zmiany do obsługi więcej szczegółową kontrolę dos
 Wcześniej, wpisów tajnych mogą być uzyskane za pośrednictwem interfejsu API HDInsight przez klaster użytkowników posiadających właściciela, współautora lub czytelnika [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), tak jakby były dostępne dla każdego z `*/read` uprawnienie nie jest wymagana.
 Idąc dalej, uzyskiwanie dostępu do tych kluczy tajnych będzie wymagać `Microsoft.HDInsight/clusters/configurations/*` uprawnienie, co oznacza, nie będzie można do nich przez użytkowników z roli Czytelnik. Klucze tajne są definiowane jako wartości, które mogłyby zostać użyte w celu uzyskania bardziej podwyższonego poziomu dostępu, niż rola użytkownika powinien zezwalać na. Obejmują one wartości, takich jak klaster bramy HTTP poświadczeń, klucze konta magazynu i poświadczenia bazy danych.
 
-Ponadto wprowadzamy nowe [HDInisght klastra Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) roli, który ma być możliwe do pobierania wpisów tajnych, bez konieczności udzielania uprawnień administracyjnych, współautora lub właściciela. Podsumowując:
+Ponadto wprowadzamy nowe [Operator klastra HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) roli, który ma być możliwe do pobierania wpisów tajnych, bez konieczności udzielania uprawnień administracyjnych, współautora lub właściciela. Podsumowując:
 
 | Rola                                  | Wcześniej                                                                                       | Idąc dalej       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
@@ -155,7 +155,7 @@ Aktualizacja do [Az PowerShell w wersji 2.0.0](https://www.powershellgallery.com
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Dodaj przypisanie roli operatora klastra HDInsight z użytkownikiem
 
-Użytkownik mający [Współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) lub [właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) roli można przypisać [HDInisght klastra Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ról do użytkowników, których chcesz mieć dostępu do odczytu i zapisu do wrażliwych Wartości konfiguracji klastra HDInsight (na przykład klaster bramy poświadczenia i klucze konta magazynu).
+Użytkownik mający [Współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) lub [właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) roli można przypisać [Operator klastra HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ról do użytkowników, których chcesz mieć dostępu do odczytu i zapisu do wrażliwych Wartości konfiguracji klastra HDInsight (na przykład klaster bramy poświadczenia i klucze konta magazynu).
 
 ### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 

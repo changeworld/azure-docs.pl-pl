@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 520211f3499931281d3ac86a1da1144564a8bb48
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bd2bcc9284c24f9fa6a02556d7101c1b788ee71e
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980758"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154999"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Używanie programu PowerShell do uruchamiania narzędzia Diagnostyka Azure na maszynie wirtualnej systemu Windows
 
 Narzędzie diagnostyczne systemu Azure jest funkcja w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki umożliwia zbieranie danych diagnostycznych, takich jak dzienniki aplikacji lub liczników wydajności z maszyn wirtualnych (VM) z systemem Windows. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Włączanie rozszerzenia diagnostyki, jeśli używasz modelu wdrażania usługi Resource Manager
 Podczas tworzenia maszyny Wirtualnej z systemem Windows za pomocą modelu wdrażania usługi Azure Resource Manager, dodając konfiguracji rozszerzenia do szablonu usługi Resource Manager, można włączyć rozszerzenie diagnostyki. Zobacz [Utwórz maszynę wirtualną Windows z funkcjami monitorowania i diagnostyki przy użyciu szablonu usługi Azure Resource Manager](diagnostics-template.md).
@@ -65,16 +65,16 @@ Polecenie cmdlet zwraca *PublicSettings*, który zawiera konfiguracji diagnostyk
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Włączanie rozszerzenia diagnostyki, jeśli używasz klasycznego modelu wdrażania
 Możesz użyć [AzureVMDiagnosticsExtension zestaw](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) polecenia cmdlet, aby włączyć rozszerzenie diagnostyki na maszynie Wirtualnej, który utworzono przy użyciu klasycznego modelu wdrażania. Poniższy przykład pokazuje, jak utworzyć nową maszynę Wirtualną za pośrednictwem klasycznego modelu wdrażania przy użyciu rozszerzenia diagnostyki włączone.
 
-    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
+    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 Aby włączyć rozszerzenie diagnostyki w istniejącej maszyny Wirtualnej, który został utworzony za pomocą klasycznego modelu wdrażania, należy najpierw użyć [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) polecenie cmdlet umożliwiające pobranie konfiguracji maszyny Wirtualnej. Następnie zaktualizuj konfigurację maszyny Wirtualnej, aby dołączyć rozszerzenie diagnostyki za pomocą [AzureVMDiagnosticsExtension zestaw](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) polecenia cmdlet. Na koniec zastosowania zaktualizowanej konfiguracji do maszyny Wirtualnej przy użyciu [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
 
-    $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
-    $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
+    $VM = Get-AzVM -ServiceName $Service_Name -Name $VM_Name
+    $VM_Update = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    Update-AzVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 ## <a name="sample-diagnostics-configuration"></a>Przykładowa konfiguracja diagnostyki
 Następujący kod XML może służyć do konfiguracji publicznej diagnostyki za pomocą skryptów powyżej. Tej przykładowej konfiguracji transferować różne liczniki wydajności do konta magazynu diagnostyki oraz błędy z aplikacji, zabezpieczeń i kanały systemu Windows dzienniki zdarzeń i ewentualne błędy z dzienniki infrastruktury diagnostycznej.

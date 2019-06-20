@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d15bb4a1cd19af70b29d1d74f43e137cf884c4db
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473777"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164094"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Zdalny dostęp do programu SharePoint przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -129,7 +129,7 @@ Teraz, gdy skonfigurowano ograniczonego delegowania protokołu Kerberos, możesz
    1. Na stronie aplikacji w portalu wybierz **logowanie jednokrotne**.
    2. Pojedynczego logowania jednokrotnego, wybierz tryb **zintegrowane uwierzytelnianie Windows**.
    3. Główna nazwa usługi aplikacji wewnętrznej należy ustawić wartość, które zostały ustawione wcześniej. W tym przykładzie wyniesie **HTTP/SharePoint**.
-   4. W "Delegowana tożsamość logowania", wybierz **nazwy konta SAM On-premises**.
+   4. W "Delegowana tożsamość logowania" Wybierz opcję najbardziej odpowiedni dla danej konfiguracji lasu usługi Active Directory. Na przykład w przypadku pojedynczej domeny usługi AD w lesie, wybierz opcję **nazwy konta SAM On-premises** (jak pokazano poniżej), ale w przypadku, gdy użytkownicy nie są w tej samej domenie, w programie SharePoint, a następnie wybierz pozycję serwery łącznika serwera Proxy aplikacji  **Główna nazwa użytkownika w środowisku lokalnym** (niewyświetlany).
 
    ![Konfigurowanie uwierzytelniania Windows zintegrowanego logowania jednokrotnego](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 

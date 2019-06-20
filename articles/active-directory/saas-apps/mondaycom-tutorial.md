@@ -5,7 +5,7 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: 9e8ad807-0664-4e31-91de-731097c768e2
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,227 +13,188 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 06/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08108a1718ee917a317b4864de81959ae139eaa5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cdc605c059857c826056fece782bbb9a9c86a15
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097008"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275835"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mondaycom"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą monday.com
+# <a name="tutorial-integrate-mondaycom-with-azure-active-directory"></a>Samouczek: Integracja monday.com za pomocą usługi Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować monday.com w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować monday.com w usłudze Azure Active Directory (Azure AD). W ramach monday.com integracji z usługą Azure AD, możesz wykonywać następujące czynności:
 
-Integrowanie monday.com z usługą Azure AD zapewnia następujące korzyści:
+* Kontrolowanie w usłudze Azure AD, kto ma dostęp do monday.com.
+* Umożliwianie użytkownikom można automatycznie zalogowany do monday.com za pomocą kont usługi Azure AD.
+* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
 
-* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do monday.com.
-* Użytkownicy mogą automatycznie zalogowany do monday.com za pomocą kont usługi Azure AD (logowanie jednokrotne).
-* Możesz zarządzać kontami z jednej centralnej lokalizacji — witryny Azure Portal.
-
-Aby uzyskać więcej informacji na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [logowanie jednokrotne do aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą monday.com, potrzebne są następujące elementy:
+Aby rozpocząć pracę, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcję usługi Azure AD, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
-* Subskrypcja monday.com przy użyciu logowania jednokrotnego włączone.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
+* MONDAY.com logowania jednokrotnego (SSO) włączone subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka konfigurowania i testowania usługi Azure AD logowanie jednokrotne w środowisku testowym, a integracja monday.com z usługą Azure AD.
+W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. obsługuje Monday.com **dodatkiem SP oraz dostawców tożsamości** zainicjowane logowania jednokrotnego i obsługuje **Just In Time** Inicjowanie obsługi użytkowników.
 
-MONDAY.com obsługuje następujące funkcje:
+## <a name="adding-mondaycom-from-the-gallery"></a>Dodawanie monday.com z galerii
 
-* **Zainicjowane przez Dostawcę logowania jednokrotnego**
-* **Logowanie jednokrotne inicjowane przez dostawcę tożsamości**
-* **Aprowizowanie użytkowników typu just in time**
+Aby skonfigurować integrację monday.com w usłudze Azure AD, należy dodać monday.com z galerii z listą zarządzanych aplikacji SaaS.
 
-## <a name="add-mondaycom-in-the-azure-portal"></a>Dodaj monday.com w witrynie Azure portal
-
-Aby zintegrować monday.com z usługą Azure AD, należy dodać monday.com z listą zarządzanych aplikacji SaaS.
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-
-1. W menu po lewej stronie wybierz **usługi Azure Active Directory**.
-
-    ![Opcja usługi Azure Active Directory](common/select-azuread.png)
-
-1. Wybierz pozycję **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
-
-    ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-1. Aby dodać aplikację, wybierz pozycję **nową aplikację**.
-
-    ![Nowa opcja aplikacji](common/add-new-app.png)
-
-1. W polu wyszukiwania wprowadź **monday.com**. W wynikach wyszukiwania wybierz **monday.com**, a następnie wybierz pozycję **Dodaj**.
-
-    ![MONDAY.com na liście wyników](common/search-new-app.png)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
+1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz **nową aplikację**.
+1. W **Dodaj z galerii** sekcji, wpisz **monday.com** w polu wyszukiwania.
+1. Wybierz **monday.com** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą monday.com w oparciu o nazwie użytkownika testowego **Britta Simon**. Dla logowania jednokrotnego do pracy należy ustanowić połączone relację między użytkownikiem usługi Azure AD i powiązanych użytkowników w monday.com.
+Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą monday.com za pomocą użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w monday.com.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą monday.com, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie logowania jednokrotnego usługi Azure AD za pomocą monday.com, wykonaj poniższe bloki konstrukcyjne:
 
-| Zadanie | Opis |
-| --- | --- |
-| **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)** | Umożliwia użytkownikom korzystać z tej funkcji. |
-| **[Konfigurowanie monday.com logowania jednokrotnego](#configure-mondaycom-single-sign-on)** | Konfiguruje pojedynczy ustawień logowania jednokrotnego w aplikacji. |
-| **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** | Testy usługi Azure AD logowanie jednokrotne dla użytkownika o nazwie Britta Simon. |
-| **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** | Umożliwia Britta Simon korzystać z usługi Azure AD logowania jednokrotnego. |
-| **[Tworzenie użytkownika testowego monday.com](#create-a-mondaycom-test-user)** | Tworzy odpowiednikiem Britta Simon monday.com połączonego z usługi Azure AD reprezentacja użytkownika. |
-| **[Testowanie logowania jednokrotnego](#test-single-sign-on)** | Sprawdza, czy konfiguracja działa. |
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Konfigurowanie monday.com](#configure-mondaycom)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające B.Simon do użycia usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego monday.com](#create-mondaycom-test-user)**  mieć odpowiednikiem B.Simon w monday.com połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz usługi Azure AD logowanie jednokrotne za pomocą monday.com w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)w **monday.com** okienko integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **monday.com** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
+1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
+1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
 
-    ![Konfigurowanie opcji rejestracji jednokrotnej](common/select-sso.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W **wybierz jedną metodę logowania jednokrotnego** okienku wybierz **SAML** lub **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-1. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** okienku wybierz **Edytuj** (ikonę ołówka) aby otworzyć **podstawową konfigurację protokołu SAML** okienka.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-1. W **podstawową konfigurację protokołu SAML** okienko, jeśli masz plik metadanych dostawcy usługi i chcesz skonfigurować *inicjowane przez dostawcę tożsamości tryb*, wykonaj następujące czynności:
+4. W **podstawową konfigurację protokołu SAML** okienko, jeśli masz plik metadanych dostawcy usługi i chcesz skonfigurować w **inicjowane przez dostawcę tożsamości** tryb, wykonaj następujące czynności:
 
     1. Wybierz **przekazywania pliku metadanych**.
 
-       ![Opcja przekazywania pliku metadanych](common/upload-metadata.png)
-
     1. Aby wybrać plik metadanych, wybierz ikonę folderu, a następnie wybierz **przekazywanie**.
-
-       ![Wybierz plik metadanych, a następnie wybierz przycisk Przekaż](common/browse-upload-metadata.png)
 
     1. Po pomyślnym przekazaniu pliku metadanych **identyfikator** i **adres URL odpowiedzi** wartości są wypełniane automatycznie w **podstawową konfigurację protokołu SAML** okienka:
 
-       ![Wartości dostawcy tożsamości, w okienku podstawową konfigurację protokołu SAML](common/idp-intiated.png)
-
        > [!Note]
-       > Jeśli **identyfikator** i **adres URL odpowiedzi** wartości nie są automatycznie wypełniane, wprowadź wartości ręcznie.
+       > Jeśli **identyfikator** i **adres URL odpowiedzi** wartości nie wypełniony automatycznie, a następnie wprowadź wartości ręcznie. **Identyfikator** i **adres URL odpowiedzi** są takie same, a wartość to w następującym wzorcem: `https://<your-domain>.monday.com/saml/saml_callback`
 
-1. Aby skonfigurować aplikację w *zainicjowanego przez dostawcę usług trybu*:
+5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    1. Wybierz **Ustaw dodatkowe adresy URL**.
-    
-    1. W **adres URL logowania** wprowadź adres URL z następującym wzorcem: https:\//\<Twojej domeny >. monday.com. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta monday.com](mailto:support@monday.com) można pobrać adresu URL logowania jednokrotnego.
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<your-domain>.monday.com`
 
-        ![Opcja Set dodatkowe adresy URL](common/metadata-upload-additional-signon.png)
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta monday.com](mailto:dev@food.ee) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Aplikacja monday.com oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Zarządzanie wartości tych atrybutów w **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** wybierz opcję **Edytuj** otworzyć **atrybutów użytkownika** okienka.
+1. Aplikacja monday.com oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
 
     ![Okienko atrybuty użytkownika](common/edit-attribute.png)
 
-1. W obszarze **oświadczenia użytkownika**, wybierz opcję **Edytuj** edytowanie oświadczenia. Do dodawania roszczenia, wybierz **Dodaj nowe oświadczenie**, a następnie skonfiguruj atrybut tokenu SAML pokazany na wcześniejszej ilustracji. Następnie wykonaj następujące kroki: 
+6. Ponadto powyżej monday.com aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
 
-    1. Wybierz **Dodaj nowe oświadczenie**.
+    | Name (Nazwa) | Atrybut źródłowy|
+    | ---------------| --------------- |
+    | Email | user.mail |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
 
-        ![Dodaj nowe oświadczenie opcji w okienku oświadczenia użytkownika](common/new-save-attribute.png)
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    1. W **Zarządzanie oświadczenia użytkownika** okienko, ustaw następujące wartości:
-        
-       1. W **nazwa** wprowadź nazwę atrybutu, wyświetlany dla wiersza oświadczenia użytkownika.
+    ![image](./media/mondaycom-tutorial/attribute01.png)
 
-       1. Pozostaw **Namespace** puste.
+    ![image](common/new-attribute-details.png)
 
-       1. Aby uzyskać **źródła**, wybierz opcję **atrybutu**.
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-       1. W **atrybut źródłowy** , wybierz wartość atrybutu wyświetlany dla wiersza oświadczenia użytkownika na liście.
+    c. Usuń **Namespace**.
 
-       1. Wybierz **OK**, a następnie wybierz pozycję **Zapisz**.
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-       ![Zarządzaj oświadczenia użytkownika](common/new-attribute-details.png)
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-1. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** okienku w obszarze **certyfikat podpisywania SAML**, wybierz opcję **Pobierz** obok **certyfikat (Base64)** . Wybierz opcję pobierania, w zależności od wymagań. Zapisz certyfikat na komputerze.
+    f. Kliknij przycisk **OK**.
 
-    ![Opcja pobierania certyfikat (Base64)](common/certificatebase64.png)
+    g. Kliknij pozycję **Zapisz**.
 
-1. W **Konfigurowanie monday.com** sekcji, skopiuj następujące adresy URL, zgodnie z wymaganiami:
+1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikat (Base64)** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
 
-    * Adres URL logowania
-    * Identyfikator usługi Azure AD
-    * Adres URL wylogowywania
+   ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+1. Na **Konfigurowanie monday.com** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-### <a name="configure-mondaycom-single-sign-on"></a>Konfigurowanie monday.com logowania jednokrotnego
+   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-Aby skonfigurować logowanie jednokrotne na stronie monday.com, Wyślij pobrany plik certyfikatu (kodowanie Base64) i odpowiednie adresy URL, które zostały skopiowane z portalu Azure w celu [zespołem pomocy technicznej monday.com](mailto:support@monday.com). Zespół pomocy technicznej monday.com używa tych informacji, wysyłanych przez nich, aby upewnić się, że SAML logowania jednokrotnego połączenie jest prawidłowo po obu stronach.
+### <a name="configure-mondaycom"></a>Konfigurowanie monday.com
+
+1. W oknie przeglądarki internetowej innej Zaloguj się w monday.com jako Administrator.
+
+2. Przejdź do **profilu** w prawym górnym rogu strony i kliknij przycisk **administratora**.
+
+     ![Konfiguracja Monday.com](./media/mondaycom-tutorial/configuration01.png)
+
+3. Wybierz **zabezpieczeń** i upewnij się, że kliknięcie **Otwórz** obok SAML.
+
+    ![Konfiguracja Monday.com](./media/mondaycom-tutorial/configuration02.png)
+
+4. Podaj szczegóły poniżej od dostawcy tożsamości.
+
+    ![Konfiguracja Monday.com](./media/mondaycom-tutorial/configuration03.png)
+
+    >[!NOTE]
+    >Aby uzyskać więcej informacji, zobacz [to](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642) artykułu
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie Azure Portal.
+W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
 
-1. W witrynie Azure Portal wybierz kolejno pozycje **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
-
-    ![Użytkownicy i wszystkie opcje użytkowników](common/users.png)
-
-1. Wybierz przycisk **Nowy użytkownik**.
-
-    ![Nowa opcja użytkownika](common/new-user.png)
-
-1. W okienku **Użytkownik** wykonaj następujące czynności:
-
-    1. W polu **Nazwa** wpisz **BrittaSimon**.
-  
-    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< Rozszerzenia >** . Na przykład **brittasimon\@contoso.com**.
-
-    1. Wybierz **hasło Show** pole wyboru. Zanotuj wartość, która jest wyświetlana w **hasło** pole.
-
-    1. Wybierz pozycję **Utwórz**.
-
-    ![W okienku użytkownika](common/user-properties.png)
+1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. W **użytkownika** właściwości, wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz udostępnić Britta Simon monday.com tak korzystaniem Azure logowania jednokrotnego.
+W tej sekcji można udostępnić B.Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do monday.com.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **monday.com**.
-
-    ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Na liście aplikacji wybierz **monday.com**.
+1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
 
-    ![MONDAY.com na liście aplikacji](common/all-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-1. W menu wybierz pozycję **Użytkownicy i grupy**.
+1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Opcja użytkowników i grup](common/users-groups-blade.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. Wybierz przycisk **Dodaj użytkownika**. Następnie w okienku **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy**.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+### <a name="create-mondaycom-test-user"></a>Tworzenie użytkownika testowego monday.com
 
-1. W **użytkowników i grup** okienku wybierz **Britta Simon** na liście Użytkownicy. Wybierz pozycję **Wybierz**.
+W tej sekcji użytkownika o nazwie B.Simon jest tworzony w monday.com. MONDAY.com obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w monday.com, nowy katalog jest tworzony podczas próby uzyskania dostępu monday.com.
 
-1. Jeśli są oczekiwane wartości roli dla asercji SAML w **wybierz rolę** okienku zaznacz odpowiednie rolę dla użytkownika z listy. Wybierz pozycję **Wybierz**.
+### <a name="test-sso"></a>Test SSO
 
-1. W **Dodaj przydziału** okienku wybierz **przypisać**.
+Po wybraniu kafelka monday.com w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze monday.com, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-### <a name="create-a-mondaycom-test-user"></a>Tworzenie użytkownika testowego monday.com
-
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w aplikacji monday.com. MONDAY.com obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w monday.com, nowy katalog jest tworzony po uwierzytelnieniu.
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji możesz przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu portalu Moje aplikacje.
-
-Po skonfigurowaniu rejestracji jednokrotnej, po wybraniu **monday.com** w portalu Moje aplikacje są automatycznie zarejestrowaniu w usłudze monday.com. Aby uzyskać więcej informacji na temat portalu Moje aplikacje, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Aby dowiedzieć się więcej, przejrzyj następujące artykuły:
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

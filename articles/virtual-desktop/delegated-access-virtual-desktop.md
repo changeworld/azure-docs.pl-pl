@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41cf5f8bcc69e181350a63d215fb0d78d43dcfdf
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870510"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272816"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegowany dostęp w wersji zapoznawczej pulpitu wirtualnego Windows
 
@@ -42,11 +42,11 @@ Delegowanego dostępu w pulpitu wirtualnego Windows ma kilka definicji wbudowany
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>Polecenia cmdlet programu PowerShell dla przypisania roli
 
-Możesz uruchomić następujące polecenia cmdlet, aby tworzyć, wyświetlać i edytować przypisania roli:
+Możesz uruchomić następujące polecenia cmdlet do tworzenia, wyświetlania i usuwanie przypisań ról:
 
 * **Get-RdsRoleAssignment** Wyświetla listę przypisań ról.
 * **Nowe RdsRoleAssignment** tworzy nowe przypisanie roli.
-* **Zestaw RdsRoleAssignment** edytuje przypisań ról.
+* **Usuń RdsRoleAssignment** usuwa przypisań ról.
 
 ### <a name="accepted-parameters"></a>Akceptowane parametry
 

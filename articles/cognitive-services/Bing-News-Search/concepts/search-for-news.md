@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 77f8e41b2271770e49c2e5c4d1591c213eaa257d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: da1dd68b8e155e121f26f5599207691877fbf0ca
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383414"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274156"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Wyszukiwanie wiadomości za pomocą interfejsu API wyszukiwania wiadomości Bing
 
@@ -51,7 +51,7 @@ Aby pobrać wiadomości z określonej domeny, należy użyć operatora zapytania
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Poniżej przedstawiono odpowiedź na poprzednie zapytanie. W ramach [wymagań dotyczących użycia i wyświetlania](../useanddisplayrequirements.md) dla interfejsów API wyszukiwania Bing każdy artykuł z wiadomościami należy wyświetlać w kolejności podanej w odpowiedzi. Jeśli artykuł zawiera klastrowane artykuły, należy wskazać, że pokrewne artykuły istnieją i wyświetlić je na żądanie.
+Poniższy przykładowy kod JSON zawiera odpowiedzi na poprzednie zapytanie. W ramach [wymagań dotyczących użycia i wyświetlania](../useanddisplayrequirements.md) dla interfejsów API wyszukiwania Bing każdy artykuł z wiadomościami należy wyświetlać w kolejności podanej w odpowiedzi. Jeśli artykuł zawiera klastrowane artykuły, należy wskazać, że pokrewne artykuły istnieją i wyświetlić je na żądanie.
 
 ```json
 {
@@ -107,7 +107,7 @@ Jeśli usłudze Bing uda się określić kategorię artykułu z wiadomościami, 
 
 ## <a name="get-todays-top-news"></a>Pobieranie dzisiejszych najważniejszych wiadomości
 
-Aby pobrać najważniejsze artykuły z wiadomościami z dnia dzisiejszego, należy wykonać to samo żądanie co w przypadku wiadomości ogólnych, ale należy pozostawić nieustawioną właściwość `q`.
+Pobierz współczesnych najciekawsze artykuły, możesz wysłać tego samego żądania ogólnego wiadomości tak jak poprzednio, przy równoczesnym zachowaniu `q` nie ustawiono parametru.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Odpowiedź na żądanie pobrania najważniejszych wiadomości jest prawie taka sama jak w przypadku żądania pobrania wiadomości ogólnych. Jednak odpowiedź `news` nie zawiera pola `totalEstimatedMatches`, ponieważ obowiązuje określona liczba wyników. Liczba najważniejszych artykułów może być inna w zależności od cyklu życia informacji. Pamiętaj, aby podać źródło artykułu przy użyciu właściwości `provider`.
+Odpowiedź w celu uzyskania najważniejszych wiadomości jest prawie taki sam, jak w celu uzyskania ogólnego wiadomości. Jednak odpowiedź `news` nie zawiera pola `totalEstimatedMatches`, ponieważ obowiązuje określona liczba wyników. Liczba najważniejszych artykułów może być inna w zależności od cyklu życia informacji. Należy użyć `provider` pole atrybutu tego artykułu.
 
 ## <a name="get-news-by-category"></a>Pobieranie wiadomości według kategorii
 

@@ -1,26 +1,26 @@
 ---
-title: Konfigurowanie niestandardowych reguł zapory aplikacji sieci Web przy użyciu programu Azure PowerShell
-description: Dowiedz się, jak skonfigurować niestandardowe reguły zapory aplikacji sieci Web przy użyciu programu Azure PowerShell
+title: Skonfiguruj reguły niestandardowe v2 zapory aplikacji sieci Web przy użyciu programu Azure PowerShell
+description: Informacje o sposobie konfigurowania zapory aplikacji sieci Web w wersji 2 reguły niestandardowe przy użyciu programu Azure PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/7/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f7215c4f35d36486b8dda483f34bc487cc16fc69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743058"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164750"
 ---
-# <a name="configure-web-application-firewall-with-a-custom-rule-using-azure-powershell"></a>Konfigurowanie zapory aplikacji sieci Web przy użyciu reguły niestandardowej przy użyciu programu Azure PowerShell
+# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>Konfigurowanie zapory aplikacji sieci Web w wersji 2 przy użyciu reguły niestandardowej przy użyciu programu Azure PowerShell
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Reguły niestandardowe umożliwiają tworzenie własnych reguł obliczone dla każdego żądania, który przekazuje za pośrednictwem zapory aplikacji sieci Web (WAF). Te reguły trzymaj wyższy priorytet niż pozostałe reguły zestawów reguł zarządzanego. Niestandardowe reguły mają akcję (zezwalania lub blokowania), warunek dopasowania i operatora w celu umożliwienia pełnego dostosowania.
+Reguły niestandardowe umożliwiają tworzenie własnych reguł obliczone dla każdego żądania, które przechodzą przez zaporę aplikacji sieci Web (WAF) w wersji 2. Te reguły trzymaj wyższy priorytet niż pozostałe reguły zestawów reguł zarządzanego. Niestandardowe reguły mają akcję (zezwalania lub blokowania), warunek dopasowania i operatora w celu umożliwienia pełnego dostosowania.
 
-W tym artykule utworzono aplikacji bramy zapory aplikacji sieci Web używającej regułę niestandardową. Bloki niestandardową regułę ruchu, jeśli nagłówek żądania zawiera agenta użytkownika *evilbot*.
+W tym artykule utworzono v2 brama aplikacji zapory aplikacji internetowych, które używa reguły niestandardowej. Bloki niestandardową regułę ruchu, jeśli nagłówek żądania zawiera agenta użytkownika *evilbot*.
 
 Aby zobaczyć więcej przykładów reguły niestandardowej, zobacz [tworzenia i używania reguł zapory aplikacji sieci web niestandardowego](create-custom-waf-rules.md)
 

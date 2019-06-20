@@ -10,24 +10,31 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d3e0d876550b0c3baf89f3f13e0458fc97e11351
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 3546e342b535a122ea4ed3f844cd5e28a76d551a
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025216"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147791"
 ---
-# <a name="field-mappings-in-azure-search-indexers"></a>Mapowania pól w indeksatorach usługi Azure Search
-Przy użyciu indeksatorów usługi Azure Search, może co pewien czas zaczniesz w sytuacjach, w którym dane wejściowe nie dość zgodny ze schematem indeksu docelowego. W takich przypadkach można użyć **mapowania pól** przekształcić dane w żądany kształt.
+# <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Mapowania pól i przekształcenia przy użyciu indeksatorów usługi Azure Search
+
+Przy użyciu indeksatorów usługi Azure Search, możesz czasami znaleźć to, czy dane wejściowe nie dość zgodny ze schematem indeksu docelowego. W takich przypadkach można użyć **mapowania pól** przekształcenie danych podczas procesu indeksowania.
 
 Sytuacje, gdzie mapowania pól są przydatne:
 
-* Źródło danych zawiera pole `_id`, ale usługa Azure Search nie zezwala na nazwy pól rozpoczynające się od podkreślenia. Mapowanie pól umożliwia "Zmień nazwę" polem.
-* Chcesz wypełnić kilka pól w indeksie przy użyciu tych samych danych źródła danych, na przykład, aby można było zastosować różne analizatory do tych pól. Mapowania pól umożliwiają "rozwidlenie" pole źródła danych.
-* Potrzebujesz do formatu Base64 kodowania lub dekodowania danych. Mapowania pól obsługuje kilka **mapowania funkcji**, takie jak funkcje dla Base64, kodowania i dekodowania.   
+* Źródło danych zawiera pole o nazwie `_id`, ale usługa Azure Search nie zezwala na nazwy pól, które rozpoczynają się od podkreślenia. Mapowanie pól umożliwia efektywne zmienić nazwę pola.
+* Chcesz wypełnić kilka pól w indeksie z tego samego źródła danych. Na przykład możesz zastosować różne analizatory do tych pól.
+* Chcesz wypełnić pole indeksu przy użyciu danych z więcej niż jednego źródła danych i źródeł danych używać nazw inne pole.
+* Potrzebujesz do formatu Base64 kodowania lub dekodowania danych. Mapowania pól obsługuje kilka **mapowania funkcji**, takie jak funkcje dla Base64, kodowania i dekodowania.
 
-## <a name="setting-up-field-mappings"></a>Konfigurowanie mapowania pól
-Można dodać mapowania pól, podczas tworzenia nowego przy użyciu indeksatora [tworzenie indeksatora](https://msdn.microsoft.com/library/azure/dn946899.aspx) interfejsu API. Możesz zarządzać mapowań pól przy użyciu indeksatora w indeksowania [indeksatora aktualizacji](https://msdn.microsoft.com/library/azure/dn946892.aspx) interfejsu API.
+> [!NOTE]
+> Funkcja mapowania pól w indeksatorach usługi Azure Search zapewnia prosty sposób mapowania pól danych na pola indeksu, za pomocą kilku opcji do konwersji danych. Bardziej złożonych danych może wymagać przetwarzania wstępnego, aby przekształcić je do formularza, który jest łatwy do indeksu.
+>
+> Microsoft Azure Data Factory to zaawansowane rozwiązanie oparte na chmurze do importowania i przekształcania danych. Można także napisać kod, aby przetwarzają dane źródłowe przed indeksowania. Aby uzyskać przykłady kodu, zobacz [dane relacyjne modelu](search-example-adventureworks-modeling.md) i [modelu wielopoziomowe aspekty](search-example-adventureworks-multilevel-faceting.md).
+>
+
+## <a name="set-up-field-mappings"></a>Konfigurowanie mapowania pól
 
 Mapowanie pól składa się z trzech części:
 
@@ -35,9 +42,13 @@ Mapowanie pól składa się z trzech części:
 2. Opcjonalny `targetFieldName`, która reprezentuje pola w indeksie wyszukiwania. W przypadku pominięcia jest używana taką samą nazwę jak źródła danych.
 3. Opcjonalny `mappingFunction`, które można transformować dane przy użyciu jednej z kilku predefiniowanymi funkcjami. Pełna lista funkcji jest [poniżej](#mappingFunctions).
 
-Mapowania pól są dodawane do `fieldMappings` tablicy na definicja indeksatora.
+Mapowania pól są dodawane do `fieldMappings` tablicy definicja indeksatora.
 
-Na przykład Oto jak można uwzględnienia różnic między nazwami pól:
+## <a name="map-fields-using-the-rest-api"></a>Mapowanie pól za pomocą interfejsu API REST
+
+Można dodać mapowania pól, podczas tworzenia nowego przy użyciu indeksatora [tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) żądania interfejsu API. Możesz zarządzać mapowań pól użycia istniejącego indeksatora [indeksatora aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-indexer) żądania interfejsu API.
+
+Na przykład poniżej przedstawiono sposób mapowania pól źródłowej na pole docelowe z inną nazwą:
 
 ```JSON
 
@@ -51,7 +62,7 @@ api-key: [admin key]
 }
 ```
 
-Indeksator może mieć wiele mapowań pól. Na przykład Oto jak możesz mogą "rozwidlenie" pola:
+Wiele mapowań pól można odwoływać się do pola źródłowego. Poniższy przykład pokazuje, jak pola, kopiowanie tego samego pola źródłowego do dwóch pól inny indeks "rozwidlenie":
 
 ```JSON
 
@@ -66,10 +77,37 @@ Indeksator może mieć wiele mapowań pól. Na przykład Oto jak możesz mogą "
 >
 >
 
+## <a name="map-fields-using-the-net-sdk"></a>Mapowanie pól przy użyciu zestawu .NET SDK
+
+Należy zdefiniować mapowania pól w przy użyciu zestawu .NET SDK [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) klasy, która ma właściwości `SourceFieldName` i `TargetFieldName`oraz opcjonalny `MappingFunction` odwołania.
+
+Mapowania pól można określić podczas tworzenia indeksatora lub później, ustawiając bezpośrednio `Indexer.FieldMappings` właściwości.
+
+Następujące C# przykładzie ustawiono mapowania pól, podczas tworzenia indeksatora.
+
+```csharp
+  List<FieldMapping> map = new List<FieldMapping> {
+    // removes a leading underscore from a field name
+    new FieldMapping("_custId", "custId"),
+    // URL-encodes a field for use as the index key
+    new FieldMapping("docPath", "docId", FieldMappingFunction.Base64Encode() )
+  };
+
+  Indexer sqlIndexer = new Indexer(
+    name: "azure-sql-indexer",
+    dataSourceName: sqlDataSource.Name,
+    targetIndexName: index.Name,
+    fieldMappings: map,
+    schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
+
+  await searchService.Indexers.CreateOrUpdateAsync(indexer);
+```
+
 <a name="mappingFunctions"></a>
 
 ## <a name="field-mapping-functions"></a>Funkcje mapowania pól
-Te funkcje są obecnie obsługiwane:
+
+Funkcja mapowania pola przekształca zawartość pola, zanim są przechowywane w indeksie. Obecnie obsługiwane są następujące funkcje mapowania:
 
 * [base64Encode](#base64EncodeFunction)
 * [base64Decode](#base64DecodeFunction)
@@ -78,68 +116,69 @@ Te funkcje są obecnie obsługiwane:
 
 <a name="base64EncodeFunction"></a>
 
-## <a name="base64encode"></a>base64Encode
+### <a name="base64encode-function"></a>base64Encode — funkcja
+
 Wykonuje *bezpieczny adres URL* kodowanie Base64 ciągu wejściowego. Przyjęto założenie, że dane wejściowe są zakodowane w formacie UTF-8.
 
-### <a name="sample-use-case---document-key-lookup"></a>Przykładowe przypadek użycia — wyszukiwanie klucza dokumentu
-Znaki tylko bezpieczny adres URL może znajdować się w kluczu dokumentu usługi Azure Search (ponieważ klienci muszą mieć możliwość rozwiązać używając dokumentu [interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document), na przykład). Jeśli dane zawierają adres URL niebezpiecznych znaków i chcesz z niej korzystać, aby wypełnić pola klucza w indeksie wyszukiwania, należy użyć tej funkcji. Gdy klucz jest zakodowany, możesz użyć base64 — dekodowanie można pobrać oryginalnej wartości. Aby uzyskać więcej informacji, zobacz [base64 kodowania i dekodowania](#base64details) sekcji.
+#### <a name="example---document-key-lookup"></a>Przykład — wyszukiwanie klucza dokumentu
 
-#### <a name="example"></a>Przykład
+Znaki tylko bezpieczny adres URL może znajdować się w kluczu dokumentu usługi Azure Search (ponieważ klienci muszą mieć możliwość rozwiązać używając dokumentu [interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) ). Jeśli pole źródłowe związane z kluczem zawiera znaki niebezpieczne adresu URL, możesz użyć `base64Encode` funkcję, aby przekonwertować go na indeksowanie czasu.
+
+Po pobraniu zakodowany klucz w czasie wyszukiwania można użyć `base64Decode` funkcji, aby uzyskać oryginalną wartość klucza i używać go do pobrania dokumentu źródłowego.
+
 ```JSON
 
 "fieldMappings" : [
   {
     "sourceFieldName" : "SourceKey",
     "targetFieldName" : "IndexKey",
-    "mappingFunction" : { "name" : "base64Encode" }
-  }]
-```
-
-### <a name="sample-use-case---retrieve-original-key"></a>Przykładowy przypadek użycia — pobieranie oryginalnego klucza
-Masz indeksatora obiektów blob, który indeksów obiektów blob za pomocą metadanych ścieżka obiektu blob jako klucz dokumentu. Po pobraniu klucza zakodowanego dokumentu, chcesz dekodowania ścieżkę i pobrać obiekt blob.
-
-#### <a name="example"></a>Przykład
-```JSON
-
-"fieldMappings" : [
-  {
-    "sourceFieldName" : "SourceKey",
-    "targetFieldName" : "IndexKey",
-    "mappingFunction" : { "name" : "base64Encode", "parameters" : { "useHttpServerUtilityUrlTokenEncode" : false } }
+    "mappingFunction" : {
+      "name" : "base64Encode",
+      "parameters" : { "useHttpServerUtilityUrlTokenEncode" : false }
+    }
   }]
  ```
 
-Jeśli nie ma potrzeby wyszukania dokumentów według kluczy, a także nie należy do zdekodowania zakodowany zawartości, można po prostu pozostawisz `parameters` mapowanie funkcji, które są domyślnie `useHttpServerUtilityUrlTokenEncode` do `true`. W przeciwnym razie zobacz [szczegóły base64](#base64details) sekcji, aby zdecydować, które ustawienia do użycia.
+Jeśli nie zawiera właściwości parametrów dla funkcji mapowania, jego wartość domyślna to wartość `{"useHttpServerUtilityUrlTokenEncode" : true}`.
+
+Usługa Azure Search obsługuje dwa różne kodowania Base64. Należy używać tych samych parametrów podczas kodowania i dekodowania tego samego pola. Aby uzyskać więcej informacji, zobacz [opcji kodowania base64](#base64details) zdecydować, której parametry do użycia.
 
 <a name="base64DecodeFunction"></a>
 
-## <a name="base64decode"></a>base64Decode
-Wykonuje Base64 dekodowanie ciągu wejściowego. Dane wejściowe przyjmuje się, że *bezpieczny adres URL* ciągu zakodowanego algorytmem Base64.
+### <a name="base64decode-function"></a>base64Decode — funkcja
 
-### <a name="sample-use-case"></a>Przypadek użycia próbki
-Wartości niestandardowe metadane obiektu blob musi być zakodowany w formacie ASCII. Kodowanie Base64 służy do reprezentowania dowolne ciągi UTF-8 w niestandardowych metadanych obiektu blob. Jednak aby wyszukiwanie istotnych, służy tę funkcję, aby przekształcać dane zakodowane powrót do ciągów "regularne" podczas wypełniania indeksu wyszukiwania.
+Wykonuje Base64 dekodowanie ciągu wejściowego. Dane wejściowe zakłada się, że *bezpieczny adres URL* ciągu zakodowanego algorytmem Base64.
 
-#### <a name="example"></a>Przykład
+#### <a name="example---decode-blob-metadata-or-urls"></a>Przykład — dekodowanie metadane obiektu blob lub adresy URL
+
+Źródło danych może zawierać ciągi zakodowane w formacie Base64, takich jak ciągi metadanych obiektu blob lub adresu URL sieci web, które chcą ułatwić wyszukiwanie w postaci zwykłego tekstu. Możesz użyć `base64Decode` funkcję, aby przekształcić dane zakodowane ponownie zwykłe ciągi podczas wypełniania indeksu wyszukiwania.
+
 ```JSON
 
 "fieldMappings" : [
   {
     "sourceFieldName" : "Base64EncodedMetadata",
     "targetFieldName" : "SearchableMetadata",
-    "mappingFunction" : { "name" : "base64Decode", "parameters" : { "useHttpServerUtilityUrlTokenDecode" : false } }
+    "mappingFunction" : { 
+      "name" : "base64Decode", 
+      "parameters" : { "useHttpServerUtilityUrlTokenDecode" : false }
+    }
   }]
 ```
 
-Jeśli nie określisz dowolny `parameters`, następnie wartość domyślną `useHttpServerUtilityUrlTokenDecode` jest `true`. Zobacz [szczegóły base64](#base64details) sekcji, aby zdecydować, które ustawienia do użycia.
+Jeśli nie dodasz Właściwość parameters, jego wartość domyślna to wartość `{"useHttpServerUtilityUrlTokenEncode" : true}`.
+
+Usługa Azure Search obsługuje dwa różne kodowania Base64. Należy używać tych samych parametrów podczas kodowania i dekodowania tego samego pola. Aby uzyskać więcej informacji, zobacz [opcji kodowania base64](#base64details) zdecydować, której parametry do użycia.
 
 <a name="base64details"></a>
 
-### <a name="details-of-base64-encoding-and-decoding"></a>Szczegóły base64, kodowania i dekodowania
-Usługa Azure Search obsługuje dwa kodowania base64: Adres URL HttpServerUtility token i bezpieczny adres URL bez uzupełnień kodowania base64. Należy użyć z tym samym kodowaniem jako funkcji mapowania, aby kodowanie klucz dokumentu, aby się, Koduj wartość ma być zdekodowany, indeksator lub dekodowania pola zakodowany przez indeksator.
+#### <a name="base64-encoding-options"></a>Opcje kodowania Base64
+
+Usługa Azure Search obsługuje dwa różne kodowania Base64: **Adres URL HttpServerUtility token**, i **kodowanie Base64 bezpieczny adres URL bez uzupełnień**. Ciąg, który jest kodowany algorytmem Base64 podczas indeksowania później powinien zostać odczytany przy użyciu tych samych opcji kodowania, w przeciwnym razie wynik nie będzie zgodne z oryginalnym.
 
 Jeśli `useHttpServerUtilityUrlTokenEncode` lub `useHttpServerUtilityUrlTokenDecode` parametry w celu kodowania i dekodowania odpowiednio są ustawione na `true`, następnie `base64Encode` zachowuje się jak [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) i `base64Decode` zachowuje się jak [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
-Jeśli nie używasz pełny program .NET Framework (czyli używasz platformy .NET Core lub inne środowisko programistyczne) do tworzenia wartości klucza w celu emulacji zachowania usługi Azure Search, następnie należy ustawić `useHttpServerUtilityUrlTokenEncode` i `useHttpServerUtilityUrlTokenDecode` do `false`. W zależności od biblioteki, możesz użyć, base64 kodowania i dekodowania narzędzie funkcje mogą różnić się od usługi Azure Search.
+Jeśli nie używasz pełny program .NET Framework (oznacza to, że używasz platformy .NET Core lub innej struktury) do tworzenia wartości klucza w celu emulacji zachowania usługi Azure Search, następnie należy ustawić `useHttpServerUtilityUrlTokenEncode` i `useHttpServerUtilityUrlTokenDecode` do `false`. W zależności od używanej biblioteki base64 kodowania i dekodowania funkcje mogą różnić się od nich używane przez usługę Azure Search.
 
 W poniższej tabeli porównano kodowania base64 różnych ciągu `00>00?00`. Aby ustalić wymagane dodatkowego przetwarzania (jeśli istnieje) dla funkcji base64, zastosuj biblioteki kodowanie funkcji w ciągu `00>00?00` i porównywanie danych wyjściowych z oczekiwanych danych wyjściowych `MDA-MDA_MDA`.
 
@@ -152,19 +191,21 @@ W poniższej tabeli porównano kodowania base64 różnych ciągu `00>00?00`. Aby
 
 <a name="extractTokenAtPositionFunction"></a>
 
-## <a name="extracttokenatposition"></a>extractTokenAtPosition
+### <a name="extracttokenatposition-function"></a>extractTokenAtPosition — funkcja
+
 Dzieli się polem ciągu przy użyciu określonego ogranicznika i odbiera token w określonej pozycji w wynikowej podziału.
+
+Ta funkcja wykorzystuje następujące parametry:
+
+* `delimiter`: ciąg wykorzystywany jako separator, w przypadku dzielenia ciągu wejściowego.
+* `position`: liczba całkowita liczona od zera pozycja token do pobrania po podzieleniu ciągu wejściowego.
 
 Na przykład, jeśli dane wejściowe są `Jane Doe`, `delimiter` jest `" "`(miejsca) i `position` wynosi 0, wynik jest `Jane`; Jeśli `position` wynosi 1, wynik jest `Doe`. Jeśli pozycja odwołuje się do tokenu, który nie istnieje, zwracany jest błąd.
 
-### <a name="sample-use-case"></a>Przypadek użycia próbki
+#### <a name="example---extract-a-name"></a>Przykład — Wyodrębnij nazwę
+
 Źródło danych zawiera `PersonName` pól i chcesz je indeksować jako dwa osobne `FirstName` i `LastName` pola. Funkcja ta jest przydatna do dzielenia danych wejściowych przy użyciu znaku spacji jako ogranicznika.
 
-### <a name="parameters"></a>Parametry
-* `delimiter`: ciąg wykorzystywany jako separator, w przypadku dzielenia ciągu wejściowego.
-* `position`: liczba całkowita liczona od zera pozycja token do pobrania po podzieleniu ciągu wejściowego.    
-
-### <a name="example"></a>Przykład
 ```JSON
 
 "fieldMappings" : [
@@ -182,22 +223,23 @@ Na przykład, jeśli dane wejściowe są `Jane Doe`, `delimiter` jest `" "`(miej
 
 <a name="jsonArrayToStringCollectionFunction"></a>
 
-## <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
+### <a name="jsonarraytostringcollection-function"></a>jsonArrayToStringCollection — funkcja
+
 Przekształca ciąg w formacie JSON tablicę ciągów w tablicy ciągów, który może służyć do wypełniania `Collection(Edm.String)` pola w indeksie.
 
 Na przykład, jeśli ciąg wejściowy jest `["red", "white", "blue"]`, następnie pola docelowego typu `Collection(Edm.String)` zostaną wypełnione wartościami trzy `red`, `white`, i `blue`. Wprowadzenie wartości, które nie może być analizowana jako tablice w formacie JSON ciąg zwracany jest błąd.
 
-### <a name="sample-use-case"></a>Przypadek użycia próbki
-Usługa Azure SQL database nie ma typu danych wbudowane, mapująca się naturalnie do `Collection(Edm.String)` pól w usłudze Azure Search. Aby wypełnić pola kolekcji ciągów, formatu danych źródłowych w postaci tablicy ciągów JSON, a następnie użyć tej funkcji.
+#### <a name="example---populate-collection-from-relational-data"></a>Przykład — wypełnianie kolekcji z danymi relacyjnymi
 
-### <a name="example"></a>Przykład
+Usługa Azure SQL Database nie ma typu danych wbudowane, mapująca się naturalnie do `Collection(Edm.String)` pól w usłudze Azure Search. Aby wypełnić pola kolekcji ciągów, można wstępnie przetworzyć dane źródłowe w postaci tablicy ciągów JSON, a następnie użyć `jsonArrayToStringCollection` mapowania funkcji.
+
 ```JSON
 
 "fieldMappings" : [
-  { "sourceFieldName" : "tags", "mappingFunction" : { "name" : "jsonArrayToStringCollection" } }
-]
+  {
+    "sourceFieldName" : "tags", 
+    "mappingFunction" : { "name" : "jsonArrayToStringCollection" }
+  }]
 ```
 
-
-## <a name="help-us-make-azure-search-better"></a>Pomóż nam ulepszyć usługę Azure Search
-Jeśli masz sugestie funkcji lub pomysły dotyczące ulepszeń, skontaktuj się z nami na naszych [witryny UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+Aby uzyskać szczegółowy przykład przekształca opartego na danych relacyjnych w indeks kolekcji pól, zobacz [dane relacyjne modelu](search-example-adventureworks-modeling.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19bcac68084c4817e0dc0e67f31ab62244db5a2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97bad4d9cd599890dd5e26cbc77f81156c0f1070
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113415"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204674"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -225,7 +225,7 @@ Wyszukaj certyfikat z podpisem własnym utworzony przez Instalatora w magazynie 
 
 Certyfikaty z podpisem własnym generowanych przez *AzureMfaNpsExtnConfigSetup.ps1* skryptu również mieć okresu istnienia ważności na dwa lata. Podczas sprawdzania, czy certyfikat jest zainstalowany, należy także sprawdzić, czy certyfikat nie wygasł.
 
--------------------------------------------------------------
+---
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Jak zweryfikować, że moje certyfikat klienta jest skojarzony z dzierżawą usługi Azure Active Directory?
 
@@ -251,13 +251,13 @@ Po uruchomieniu tego polecenia, przejdź do dysku C, zlokalizuj plik i kliknij g
 
 Nieprawidłowa-z i ważne — aż sygnatury czasowe, które znajdują się w postaci czytelnej dla człowieka, można odfiltrować misfits oczywiste, jeśli polecenie zwraca więcej niż jeden certyfikat.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-cant-i-sign-in"></a>Dlaczego niedomiaru mogę się zarejestrować?
 
 Upewnij się, że hasło nie wygasło. Rozszerzenia serwera NPS nie obsługuje zmieniania hasła jako część przepływu pracy logowania. Aby uzyskać dalszą pomoc, skontaktuj się z pracownikami działu IT Twojej organizacji.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Dlaczego moje żądania kończą się niepowodzeniem z powodu błędu tokenu biblioteki ADAL?
 
@@ -268,19 +268,19 @@ Ten błąd może być spowodowane jedną z kilku powodów. Wykonaj następujące
 3. Sprawdź, czy certyfikat jest skojarzony z dzierżawą w usłudze Azure AD.
 4. Upewnij się, że adres https://login.microsoftonline.com/ jest dostępny z serwera, na którym działa rozszerzenie.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Dlaczego uwierzytelnianie nie powiódł się z powodu błędu w dziennikach HTTP z informacją, że użytkownik nie został znaleziony?
 
 Sprawdź, czy AD Connect jest uruchomiona, a użytkownik musi być obecny w usłudze Azure Active Directory i usługi Windows Active Directory.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Dlaczego widzę HTTP skupionej błędy w dziennikach Moje uwierzytelnień kończy się niepowodzeniem?
 
 Upewnij się, że adres https://adnotifications.windowsazure.com jest osiągalny z serwera, na którym działa rozszerzenie NPS.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Dlaczego uwierzytelnianie nie działa, mimo obecności ważnego certyfikatu?
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97fb4dc37f3c9f776e4abf433f916ceaf177a70b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937831"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202677"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Lista Azure Marketplace, wytycznych
 
@@ -39,14 +39,14 @@ Wszystkie oferty muszą spełniać [wszystkie wymagania ofercie](https://docs.mi
 | 11 | Obsługa rozwiązań & Pomoc | Łącze do co najmniej jeden z następujących czynności: <br>o numerów telefonów <br>Pomoc techniczna pocztą E-mail o <br>agenci Rozmowa o <br>fora o |<br>• Obsługuje wszystkie metody wymienione: adres e-mail i telefonu pomocy technicznej. <br>• Płatna pomoc techniczna oferowane bezpłatnie w okresie wersji próbnej lub testowym dysku | 
 | 12 | Informacje prawne | Zasad lub warunków, dostępne za pośrednictwem publicznego adresu URL |  | 
 
-----
+---
 ## <a name="trial-offer-requirements"></a>Wymagania dotyczące oferta wersji próbnej
 
 |  | Element listy | Wymagania dotyczące podstawowej | Optymalne wymagania | 
 |:--- |:--- |:--- |:--- |
 |  | Stan listy | Łącze musi prowadzić do środowiska wersji próbnej prowadzonej przez klienta | Inne CTAs (np. Kup teraz) dostępne są też | 
 
-----
+---
 ## <a name="saas-apps-requirements"></a>Wymagania dotyczące aplikacji SaaS
 
 |  | Element listy | Wymagania dotyczące podstawowej | Optymalne wymagania | 
@@ -63,7 +63,7 @@ Wszystkie oferty muszą spełniać [wszystkie wymagania ofercie](https://docs.mi
 | 10 | Kontakty: Obsługa rozwiązań & Pomoc | <br>• Inżynierii nazwisko osoby kontaktowej: Wprowadź nazwę kontakt techniczny aplikacji. Kontakt otrzyma komunikacji techniczne firmy Microsoft.<br>• Inżynierii kontaktowy adres e-mail:  Wprowadź adres e-mail kontakt techniczny dla aplikacji.<br>• Inżynierii kontakty telefonu: Wprowadź numer telefonu kontakt techniczny. Notacji numeru telefonu ISO są obsługiwane; Aby uzyskać więcej informacji, zobacz https://en.wikipedia.org/wiki/E.123.<br>• Obsługa nazwa kontaktu: Wprowadź nazwę kontaktu, pomocy technicznej dla aplikacji. Kontakt będą otrzymywać informacji dotyczących pomocy technicznej firmy Microsoft.<br>• Obsługa kontaktowy adres e-mail: Wprowadź adres e-mail kontaktu pomocy technicznej dla aplikacji. <br>• Obsługa telefonu skontaktuj się z pomocą: Wprowadź numer telefonu kontaktu pomocy technicznej. Notacji numeru telefonu ISO są obsługiwane; Aby uzyskać więcej informacji, zobacz https://en.wikipedia.org/wiki/E.123. <br>• Adres URL pomocy technicznej: Wprowadź adres URL do strony pomocy technicznej. | <br>• Obsługuje wszystkie metody wymienione: adres e-mail i telefonu pomocy technicznej. <br>• Płatna pomoc techniczna oferowane bezpłatnie w okresie wersji próbnej lub testowym dysku |
 | 11 | Informacje prawne |<br>• Adres URL zasad ochrony prywatności: Wprowadź adres URL do swojej aplikacji zasady zachowania poufności informacji w polu adres URL zasad ochrony prywatności CPP. <br>• Użytkowania: Wprowadź warunki użytkowania Twojej aplikacji. Klienci są proszeni o zaakceptowanie tych warunków, zanim użytkownik podejmie próbę aplikacji. |  Zasad lub warunków, dostępne za pośrednictwem publicznej witryny adresu URL |
 
-----
+---
 
 ## <a name="container-offer-requirements"></a>Wymagania oferty kontenera
 
@@ -74,7 +74,7 @@ Wszystkie oferty muszą spełniać [wszystkie wymagania ofercie](https://docs.mi
 | 3 | Artefakty portalu Marketplace | Logo wyświetlane nieprawidłowo |<br>• Logo obejmuje "hero obraz" duże format obrazu w witrynie Azure Portal <br>• Logo: Mała liczba godzin (48 x 48) i Large (216 x 216) znajdują się wymagania <br>Wymagania dotyczące obrazu Hero •: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>Zrzut ekranu • (maks. 5):  CPP wymaga obraz PNG o rozdzielczości 1280 x 720.|
 | 4 | Zarządzanie potencjalnymi klientami |<br>• Zarządzanie potencjalnych klientów: Wybierz system przechowywania potencjalnymi klientami. <br>• Dowiedz się, jak połączyć systemu CRM [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) | |
 
-----
+---
 
 ## <a name="consulting-offer-requirements"></a>Usługi doradcze wymagania oferty
 
@@ -97,6 +97,3 @@ Wszystkie oferty muszą spełniać [wszystkie wymagania ofercie](https://docs.mi
 ## <a name="next-steps"></a>Kolejne kroki
 * Informacje o typach inną ofertę w portalu marketplace. <br>[Aplikacje SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Usługi konsultingowe](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [Określić typ oferty dla Twojego rozwiązania](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
-
- 
----

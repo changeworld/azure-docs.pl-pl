@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
-ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 083ed45a8fa95ac5fc26af6547b5765acf80e43b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399834"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154547"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 
@@ -210,7 +210,7 @@ azds up
 1. Tworzy kontener dla aplikacji.
 1. Wdraża aplikację do obszaru deweloperów.
 1. Tworzy publicznie dostępne nazwy DNS dla punktu końcowego usługi aplikacji, jeśli skonfigurowane.
-1. Używa *do przodu portu* zapewniać dostęp do swojej aplikacji punktu końcowego za pomocą http://locahost.
+1. Używa *do przodu portu* zapewniać dostęp do swojej aplikacji punktu końcowego za pomocą http://localhost.
 1. Przekazuje stdout i stderr narzędzi po stronie klienta.
 
 

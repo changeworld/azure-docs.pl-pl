@@ -9,11 +9,11 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: d6d3a7111f3a5e49e32eba8ca4f09d692538cb87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60428024"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64715791"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Wysyłanie komunikatów EDI w partiach do obrotu partnerzy korzystający z usługi Azure Logic Apps
 
@@ -67,12 +67,12 @@ Dla tego odbiornika usługi batch, należy określić tryb usługi batch, nazwa,
 
    | Właściwość | Wartość | Uwagi | 
    |----------|-------|-------|
-   | **Tryb partii** | W tekście |  |  
+   | **Tryb partii** | wbudowane |  |  
    | **Nazwa partii** | TestBatch | Dostępne tylko w przypadku **wbudowane** tryb usługi batch | 
    | **Kryteria zwalniania** | Na podstawie harmonogramu na podstawie liczby komunikatów | Dostępne tylko w przypadku **wbudowane** tryb usługi batch | 
    | **Liczba komunikatów** | 10 | Dostępne tylko w przypadku **komunikat na podstawie liczby** kryteria zwalniania | 
-   | **Interwał** | 10 | Dostępne tylko w przypadku **na podstawie harmonogramu** kryteria zwalniania | 
-   | **Częstotliwość** | minuta | Dostępne tylko w przypadku **na podstawie harmonogramu** kryteria zwalniania | 
+   | **Interval** | 10 | Dostępne tylko w przypadku **na podstawie harmonogramu** kryteria zwalniania | 
+   | **Częstotliwość** | Minuta | Dostępne tylko w przypadku **na podstawie harmonogramu** kryteria zwalniania | 
    ||| 
 
    ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -126,7 +126,7 @@ Zapewnienie usługi batch odbiorcy działa zgodnie z oczekiwaniami, można doda�
 
    | Właściwość | Opis | 
    |----------|-------------|
-   | **Metoda** | Na tej liście, wybierz **WPIS**. | 
+   | **— Metoda** | Na tej liście, wybierz **WPIS**. | 
    | **Identyfikator URI** | Wygenerować identyfikator URI dla pojemnika swoje żądania, a następnie wprowadź tego identyfikatora URI, w tym polu. | 
    | **Treść** | Kliknij wewnątrz tego pola, a po otwarciu listy zawartości dynamicznej wybierz **treści** token, który znajduje się w sekcji, **kodowanie zbiorcze według nazwy umowy**. <p>Jeśli nie widzisz **treści** token obok **kodowanie zbiorcze według nazwy umowy**, wybierz opcję **Zobacz więcej**. | 
    ||| 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.openlocfilehash: fb25386ef9282a922866e39353d84f0e339caee7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/17/2019
+ms.openlocfilehash: b0d963e212e66bf96ec42ec2a5c0fd5005f7a889
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122132"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165889"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
 
@@ -47,11 +47,11 @@ Można utworzyć klastra przy użyciu różnych kombinacji usług podstawowych i
 | 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Tak |
 | 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Usługa Data Lake Storage 2. generacji | Nie |
 | 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Usługa Data Lake Storage 1. generacji | Tak |
-| 3.6 & 4.0 | Data Lake Storage Gen2* | Usługa Data Lake Storage 2. generacji | Yes |
-| 3.6 & 4.0 | Data Lake Storage Gen2* | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Tak |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | Usługa Data Lake Storage 2. generacji | Tak |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Yes |
 | 3.6 & 4.0 | Usługa Data Lake Storage 2. generacji | Usługa Data Lake Storage 1. generacji | Nie |
 | 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 1. generacji | Tak |
-| 3.6 | Usługa Data Lake Storage 1. generacji | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Tak |
+| 3.6 | Usługa Data Lake Storage 1. generacji | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Yes |
 | 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 2. generacji | Nie |
 | 4.0 | Usługa Data Lake Storage 1. generacji | Dowolne | Nie |
 

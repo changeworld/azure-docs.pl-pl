@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e68b522d5a0fe7c359d83fc436aa7a1fd2159198
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9208ceeb760bba97c12b23a1b6e5bdff7efc9020
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048594"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274816"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopiowanie danych do i z wystąpienia zarządzanego Azure SQL Database przy użyciu usługi Azure Data Factory
 
@@ -33,7 +33,11 @@ W szczególności ten łącznik wystąpienia zarządzanego Azure SQL Database ob
 - Jako źródła pobierania danych przy użyciu zapytania SQL lub procedury składowanej.
 - Jako obiekt sink dołączanie danych do tabeli docelowej lub wywołanie procedury składowanej za pomocą logiki niestandardowej podczas kopiowania.
 
-Program SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) nie jest obecnie obsługiwane. 
+>[!NOTE]
+>Wystąpienie usługi Azure SQL Database Managed **[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current)** nie jest obsługiwany przez ten łącznik na teraz. Aby obejść, można użyć [ogólnego łącznika ODBC](connector-odbc.md) i sterownik SQL Server ODBC za pośrednictwem środowiskiem Integration Runtime. Postępuj zgodnie z [Niniejsze wskazówki](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) ODBC driver połączenia i pobierania ciągu konfiguracji.
+
+>[!NOTE]
+>Uwierzytelnienia tożsamości podmiotu zabezpieczeń i zarządzana usługa nie są obecnie obsługiwane przez ten łącznik, a także z planem, aby włączyć wkrótce po. Teraz, aby uniknąć tego problemu możesz wybrać, czy łącznik usługi Azure SQL Database i ręcznie Określ serwer wystąpienia zarządzanego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -57,7 +61,7 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
 | connectionString |Ta właściwość określa informacje parametry połączenia, które jest wymagany do połączenia z wystąpienia zarządzanego przy użyciu uwierzytelniania SQL. Aby uzyskać więcej informacji zobacz następujące przykłady. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. |Tak. |
 | connectVia | To [środowiska integration runtime](concepts-integration-runtime.md) służy do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli wystąpienie zarządzane ma publiczny punkt końcowy i umożliwić usługi ADF, aby uzyskać dostęp). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Tak. |
 
-**Przykład 1: Użyj uwierzytelniania SQL**
+**Przykład 1: Użyj uwierzytelniania SQL** domyślny port to 1433. Jeśli używasz wystąpienia zarządzanego usługi SQL z publicznym punktem końcowym, należy jawnie określić port 3342.
 
 ```json
 {
@@ -67,7 +71,7 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername:port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
             }
         },
         "connectVia": {
@@ -78,7 +82,7 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
 }
 ```
 
-**Przykład 2: Użyj uwierzytelniania SQL za pomocą hasła w usłudze Azure Key Vault**
+**Przykład 2: Użyj uwierzytelniania SQL za pomocą hasła w usłudze Azure Key Vault** domyślny port to 1433. Jeśli używasz wystąpienia zarządzanego usługi SQL z publicznym punktem końcowym, należy jawnie określić port 3342.
 
 ```json
 {
@@ -88,7 +92,7 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
+                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
             },
             "password": { 
                 "type": "AzureKeyVaultSecret", 

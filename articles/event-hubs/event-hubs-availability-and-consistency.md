@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5cad797b633d43bcc9ead657a60fca8aa6679bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822377"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273692"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostępność i spójność w usłudze Event Hubs
 
 ## <a name="overview"></a>Przegląd
-Usługa Azure Event Hubs używa [partycjonowania modelu](event-hubs-features.md#partitions) do zwiększania dostępności i przetwarzanie równoległe w obrębie jednego Centrum zdarzeń. Na przykład jeśli Centrum zdarzeń ma cztery partycje, a jedna z tych partycji jest przenoszony z jednego serwera do drugiego w operacji równoważenia obciążenia, można nadal wysyłać i odbierać z trzech innych partycji. Ponadto istnienie więcej partycji umożliwia większą liczbę jednoczesnych czytników przetwarzania danych, poprawianie przepływności agregacji. Zrozumienia konsekwencji partycjonowanie i kolejność w rozproszonym systemie jest krytycznym aspektem projektowania rozwiązania.
+Usługa Azure Event Hubs używa [partycjonowania modelu](event-hubs-scalability.md#partitions) do zwiększania dostępności i przetwarzanie równoległe w obrębie jednego Centrum zdarzeń. Na przykład jeśli Centrum zdarzeń ma cztery partycje, a jedna z tych partycji jest przenoszony z jednego serwera do drugiego w operacji równoważenia obciążenia, można nadal wysyłać i odbierać z trzech innych partycji. Ponadto istnienie więcej partycji umożliwia większą liczbę jednoczesnych czytników przetwarzania danych, poprawianie przepływności agregacji. Zrozumienia konsekwencji partycjonowanie i kolejność w rozproszonym systemie jest krytycznym aspektem projektowania rozwiązania.
 
 Aby pomóc w wyjaśnieniu kompromisu między porządkowanie i dostępności, zobacz [kolejnego elementu teorii CAP](https://en.wikipedia.org/wiki/CAP_theorem), znanego również jako teorii Brewera firmy. Ta teorii w tym artykule omówiono wybór między spójnością, dostępnością i tolerancji partycji. Stwierdza, że systemów podzielona na partycje sieci jest zawsze zależnościami między spójności i dostępności.
 

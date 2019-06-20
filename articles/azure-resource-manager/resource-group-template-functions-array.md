@@ -16,7 +16,7 @@ ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128695"
@@ -136,8 +136,8 @@ Zwraca pierwszą wartość inną niż null z parametrów. Puste ciągi, pusta ta
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int, string, tablicy lub obiektu |Pierwsza wartość do testowania wartości null. |
-| dodatkowe argumenty |Nie |int, string, tablicy lub obiektu |Dodatkowe wartości null. |
+| arg1 |Tak |int, string, array lub object |Pierwsza wartość do testowania wartości null. |
+| dodatkowe argumenty |Nie |int, string, array lub object |Dodatkowe wartości null. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
