@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 98b316f8a9c1c8ceba91870af4ff67b1aa854a9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0b92fb9c9bf022adce4cc0dd3e58ce8e476ed5b7
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785334"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303506"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Szybki start: Importowanie pliku BACPAC do bazy danych w usłudze Azure SQL Database
 
@@ -35,6 +35,9 @@ Możesz zaimportować bazę danych programu SQL Server do bazy danych w usłudze
 > [!NOTE]
 > [Wystąpienie zarządzane](sql-database-managed-instance.md) aktualnie nie obsługuje migracji bazy danych do wystąpienia bazy danych z pliku BACPAC przy użyciu witryny Azure portal. Aby zaimportować do wystąpienia zarządzanego, należy użyć programu SQL Server Management Studio lub SQLPackage.
 
+> [!NOTE]
+> Potrzebujesz maszyn przetwarzania żądań importu/eksportu przesyłać za pośrednictwem portalu lub programu Powershell do przechowywania pliku bacpac, a także tymczasowe pliki generowane przez struktura Data-Tier Application (DacFX). Przestrzeń dyskowa wymagana różni się znacząco między bazami danych przy użyciu tej samej wielkości i może zająć maksymalnie 3 razy rozmiaru bazy danych. Komputerów z systemem tylko żądania importu/eksportu ma 450GB miejsca na dysku lokalnym. W wyniku niektórych żądań może zakończyć się niepowodzeniem z powodu błędu "Nie ma wystarczającej ilości miejsca na dysku". W takim przypadku obejście jest uruchomienie sqlpackage.exe na komputerze z wystarczającą ilością miejsca na dysku lokalnym. Podczas importowania/eksportowania bazy danych większych niż 150GB, użyj [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) Aby uniknąć tego problemu.
+ 
 1. Aby zaimportować z pliku BACPAC do nowej pojedynczej bazy danych przy użyciu witryny Azure portal, otwórz stronę z odpowiednią bazą danych serwera, a następnie na pasku narzędzi wybierz **Importuj bazę danych**.  
 
    ![Import1 bazy danych](./media/sql-database-import/import1.png)
@@ -81,6 +84,8 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > [Wystąpienie zarządzane](sql-database-managed-instance.md) aktualnie nie obsługuje migracji bazy danych do wystąpienia bazy danych z pliku BACPAC przy użyciu programu Azure PowerShell. Aby zaimportować do wystąpienia zarządzanego, należy użyć programu SQL Server Management Studio lub SQLPackage.
 
+> [!NOTE]
+> Potrzebujesz maszyn przetwarzania żądań importu/eksportu przesyłać za pośrednictwem portalu lub programu Powershell do przechowywania pliku bacpac, a także tymczasowe pliki generowane przez struktura Data-Tier Application (DacFX). Przestrzeń dyskowa wymagana różni się znacząco między bazami danych przy użyciu tej samej wielkości i może zająć maksymalnie 3 razy rozmiaru bazy danych. Komputerów z systemem tylko żądania importu/eksportu ma 450GB miejsca na dysku lokalnym. W wyniku niektórych żądań może zakończyć się niepowodzeniem z powodu błędu "Nie ma wystarczającej ilości miejsca na dysku". W takim przypadku obejście jest uruchomienie sqlpackage.exe na komputerze z wystarczającą ilością miejsca na dysku lokalnym. Podczas importowania/eksportowania bazy danych większych niż 150GB, użyj [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) Aby uniknąć tego problemu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

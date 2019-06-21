@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8923c94409dcf079179ed0464046e39ef7654c4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c067b6e238fab2970e5e40f0660a5c7555a8f2e
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949828"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302227"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>Jak indeksować dużych zestawów danych w usłudze Azure Search
 
@@ -54,7 +54,7 @@ Planowanie indeksatora jest ważnym mechanizmem do przetwarzania dużych zestaw�
 
 Zgodnie z projektem należy zaplanować indeksowanie rozpoczyna się w określonych odstępach czasu, za pomocą zadania zazwyczaj ukończenie przed wznowieniem w następnym zaplanowanym interwale. Jednak jeśli przetwarzanie zakończy się w przedziale czasu, indeksator przestaje (ponieważ zabrakło czasu). W następnym interwale czasowym wznawia przetwarzania tam, gdzie ją ostatnia przerwaliśmy, za pomocą zachowania systemu prowadnicy gdzie występuje. 
 
-W praktyce, w przypadku obciążeń indeksu obejmujące kilka dni można umieścić indeksator zgodnie z harmonogramem 24-godzinnym. Podczas indeksowania wznawia na następny cykl 24-godzinnym, uruchamia ponownie w ostatnich znanych dokumentu dobre. W ten sposób indeksatora pracować jego sposób za pomocą zaległości dokumentu przez szereg dni, po których przetwarzane są wszystkie nieprzetworzone dokumenty. Aby uzyskać więcej informacji na temat tego podejścia, zobacz [indeksowania dużych zestawów danych w usłudze Azure Blob storage](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Aby uzyskać więcej informacji na temat ustawiania harmonogramy ogólnie rzecz biorąc, zobacz [tworzenie indeksatora interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax).
+W praktyce, w przypadku obciążeń indeksu obejmujące kilka dni można umieścić indeksator zgodnie z harmonogramem 24-godzinnym. Podczas indeksowania wznawia na następny cykl 24-godzinnym, uruchamia ponownie w ostatnich znanych dokumentu dobre. W ten sposób indeksatora pracować jego sposób za pomocą zaległości dokumentu przez szereg dni, po których przetwarzane są wszystkie nieprzetworzone dokumenty. Aby uzyskać więcej informacji na temat tego podejścia, zobacz [indeksowania dużych zestawów danych w usłudze Azure Blob storage](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Aby uzyskać więcej informacji na temat ustawiania harmonogramy ogólnie rzecz biorąc, zobacz [tworzenie indeksatora interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) lub zobacz [sposób tworzenia harmonogramu indeksatorów usługi Azure Search](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 

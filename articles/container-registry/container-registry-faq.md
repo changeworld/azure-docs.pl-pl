@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: beeb4986750e398071e3afb6c1f04663f858cec1
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417927"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303573"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące usługi Azure Container Registry
 
@@ -440,6 +440,85 @@ To ustawienie ma zastosowanie także do `az acr run` polecenia.
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [Akcje usługi GitHub](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
+## <a name="error-references-for-az-acr-check-health"></a>Błąd odwołania do `az acr check-health`
+
+### <a name="dockercommanderror"></a>DOCKER_COMMAND_ERROR
+
+Ten błąd oznacza, że ten klient platformy docker dla interfejsu wiersza polecenia nie można odnaleźć, co wyklucza wyszukiwania wersji platformy docker, oceny stanu demona platformy docker i zapewnienie, że można uruchomić polecenia ściągania platformy docker.
+
+*Potencjalne rozwiązania*: Instalowanie klienta platformy docker; Dodawanie ścieżka platformy docker do zmiennych systemowych.
+
+### <a name="dockerdaemonerror"></a>DOCKER_DAEMON_ERROR
+
+Ten błąd oznacza, że stanu demona platformy docker jest niedostępna lub że go nie można osiągnąć przy użyciu interfejsu wiersza polecenia. Oznacza to, że operacje platformy docker (np. nazwy logowania, ściągnięcia) będzie niedostępne za pośrednictwem interfejsu wiersza polecenia.
+
+*Potencjalne rozwiązania*: Ponownie uruchom demona platformy docker lub sprawdzić, czy jest zainstalowany poprawnie.
+
+### <a name="dockerversionerror"></a>DOCKER_VERSION_ERROR
+
+Ten błąd oznacza, że interfejs wiersza polecenia nie był w stanie uruchomić polecenie `docker --version`.
+
+*Potencjalne rozwiązania*: spróbuj ręcznie uruchomić polecenie, upewnij się, jest zainstalowana najnowsza wersja interfejsu wiersza polecenia i zbadaj komunikat o błędzie.
+
+### <a name="dockerpullerror"></a>DOCKER_PULL_ERROR
+
+Ten błąd oznacza, że interfejsu wiersza polecenia nie był w stanie ściągnąć obraz próbki do środowiska.
+
+*Potencjalne rozwiązania*: Zweryfikuj, że wszystkie składniki niezbędne do ściągania obrazu działają prawidłowo.
+
+### <a name="helmcommanderror"></a>HELM_COMMAND_ERROR
+
+Ten błąd oznacza, że nie można odnaleźć tego klienta helm przez interfejs wiersza polecenia, co wyklucza inne operacje narzędzia helm.
+
+*Potencjalne rozwiązania*: Sprawdź, że narzędzia helm klient jest zainstalowany, a jego ścieżka jest dodawany do zmiennych środowiskowych systemu.
+
+### <a name="helmversionerror"></a>HELM_VERSION_ERROR
+
+Ten błąd oznacza, że interfejs wiersza polecenia nie może ustalić zainstalowaną wersję narzędzia Helm. Może się to zdarzyć, jeśli w wersji wiersza polecenia platformy Azure (lub, jeśli wersja narzędzia helm) używana jest przestarzały.
+
+*Potencjalne rozwiązania*: aktualizacji do najnowszej wersji interfejsu wiersza polecenia platformy Azure lub do wersji zalecane helm; ręcznie uruchom polecenie i zbadaj komunikat o błędzie.
+
+### <a name="connectivitydnserror"></a>CONNECTIVITY_DNS_ERROR
+
+Ten błąd oznacza, że nazwy DNS dla serwera logowania rejestru danego był za pomocą polecenia ping, ale nie odpowiada, co oznacza, że jest ona niedostępna. Może to oznaczać, że niektóre problemy z łącznością. To także oznaczać, że rejestru nie istnieje, czy użytkownik ma uprawnienia w rejestrze (Aby prawidłowo pobrać jego serwer logowania), lub że rejestru docelowego jest w chmurze innej niż ta, używany w interfejsie wiersza polecenia platformy Azure.
+
+*Potencjalne rozwiązania*: sprawdzania poprawności łączności; Sprawdź pisownię rejestru i rejestru, że istnieje; Sprawdź, czy użytkownik ma odpowiednie uprawnienia na nim i chmury w rejestrze jest taki sam, który jest używany w interfejsie wiersza polecenia platformy Azure.
+
+### <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
+
+Oznacza to, czy punkt końcowy wyzwanie dla danego rejestru odpowiedziała, zgłaszając 403 stan HTTP jest zabronione. Oznacza to, że użytkownicy nie mają dostępu do rejestru, najprawdopodobniej z powodu konfiguracji sieci Wirtualnej.
+
+*Potencjalne rozwiązania*: usuwanie reguł sieci Wirtualnej lub dodać bieżący adres IP klienta do listy dozwolonych.
+
+### <a name="connectivitychallengeerror"></a>CONNECTIVITY_CHALLENGE_ERROR
+
+Ten błąd oznacza, że żądania punktu końcowego rejestru docelowego nie wystawił wyzwanie.
+
+*Potencjalne rozwiązania*: spróbuj ponownie po pewnym czasie. Jeśli błąd będzie się powtarzać, otwórz problem am w https://aka.ms/acr/issues.
+
+### <a name="connectivityaadloginerror"></a>CONNECTIVITY_AAD_LOGIN_ERROR
+
+Ten błąd oznacza, że punkt końcowy wyzwanie rejestru docelowego wystawione żądanie, ale rejestru nie obsługuje logowania usługi AAD.
+
+*Potencjalne rozwiązania*: spróbuj inny sposób rejestrowania w programie, np. poświadczenia administratora. W przypadku, gdy użytkownik chce, aby zalogować się przy użyciu usługi AAD pomocy technicznej, otwórz problem am w https://aka.ms/acr/issues.
+
+### <a name="connectivityrefreshtokenerror"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
+
+Oznacza to, że adres serwera logowania rejestru nie odpowiedział przy użyciu tokenu odświeżania, co oznacza, że nastąpiła odmowa dostępu do rejestru docelowego. Może to nastąpić, jeśli użytkownik nie ma odpowiednich uprawnień w rejestrze lub poświadczenia użytkownika dla wiersza polecenia platformy Azure są przestarzałe.
+
+*Potencjalne rozwiązania*: Sprawdź, czy użytkownik ma odpowiednie uprawnienia w rejestrze; uruchomienie `az login` odświeżania uprawnień, tokenów i poświadczeń.
+
+### <a name="connectivityaccesstokenerror"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
+
+Oznacza to, że adres serwera logowania rejestru nie odpowiedział przy użyciu tokenu dostępu, co oznacza, że nastąpiła odmowa dostępu do rejestru docelowego. Może to nastąpić, jeśli użytkownik nie ma odpowiednich uprawnień w rejestrze lub poświadczenia użytkownika dla wiersza polecenia platformy Azure są przestarzałe.
+
+*Potencjalne rozwiązania*: Sprawdź, czy użytkownik ma odpowiednie uprawnienia w rejestrze; uruchomienie `az login` odświeżania uprawnień, tokenów i poświadczeń.
+
+### <a name="loginservererror"></a>LOGIN_SERVER_ERROR
+
+Oznacza to, że interfejs wiersza polecenia nie może znaleźć serwera logowania rejestru danego i nie domyślnym sufiksem znaleziono dla bieżącej chmury. Może to nastąpić, jeśli rejestru nie istnieje, jeśli użytkownik ma odpowiednie uprawnienia w rejestrze, jeśli w rejestrze chmury i bieżącej chmury wiersza polecenia platformy Azure nie są zgodne lub wersji wiersza polecenia platformy Azure jest przestarzały.
+
+*Potencjalne rozwiązania*: Sprawdź, że pisownia jest poprawna i czy rejestru istnieje; Sprawdź, jeśli użytkownik ma odpowiednie uprawnienia w rejestrze oraz czy odpowiadają chmury rejestru i środowiska interfejsu wiersza polecenia; zaktualizować wiersza polecenia platformy Azure do najnowszej wersji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
