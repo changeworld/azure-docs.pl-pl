@@ -27,7 +27,7 @@ Aby uzyskać wartości z zasobów, grup zasobów lub subskrypcji, zobacz [funkcj
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deployment"></a>wdrożenie
+## <a name="deployment"></a>deployment
 `deployment()`
 
 Zwraca informacje o bieżącej operacji wdrożenia.
@@ -251,7 +251,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | stringOutput | String | Opcja 1 |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"jeden": "", "dwóch": "b"} |
-| arrayOutput | Tablica | [1, 2, 3] |
+| arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | Opcja 1 |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
@@ -277,7 +277,7 @@ Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowany w se
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| nazwa_zmiennej |Tak |String |Nazwa zmiennej, do zwrócenia. |
+| variableName |Tak |String |Nazwa zmiennej, do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -352,7 +352,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | Moja_zmienna |
-| exampleOutput2 | Tablica | [1, 2, 3, 4] |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | Moja_zmienna |
 | exampleOutput4 |  Object | {"właściwość1": "wartość1", "property2": "wartość2"} |
 
