@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 607da7983cabe4c36c01171ba8d88c752b99ce3d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721095"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303810"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Stream metryki na żywo: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 
-Sonda serce interwałów pulsu aplikacji sieci web na żywo, w środowisku produkcyjnym za pomocą Live Stream metryk z [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Wybierania i filtrowania liczniki wydajności i metryki, aby obejrzeć w czasie rzeczywistym, bez żadnych zakłóceń w usłudze. Sprawdź, czy ślady stosu z przykładowych nie powiodło się żądań i wyjątków. Wraz z [Profiler](../../azure-monitor/app/profiler.md), [rozszerzenia Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md), i [testowania wydajnościowego](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests), Live Stream metryk udostępnia zaawansowane i nieinwazyjny narzędzie diagnostyczne dla sieci web na żywo witryna.
+Sonda serce interwałów pulsu aplikacji sieci web na żywo, w środowisku produkcyjnym za pomocą Live Stream metryk z [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Wybierania i filtrowania liczniki wydajności i metryki, aby obejrzeć w czasie rzeczywistym, bez żadnych zakłóceń w usłudze. Sprawdź, czy ślady stosu z przykładowych nie powiodło się żądań i wyjątków. Wraz z [Profiler](../../azure-monitor/app/profiler.md), [rozszerzenia Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md). Live Stream metryk udostępnia zaawansowane i nieinwazyjny narzędzie diagnostyczne dla witryny sieci web na żywo.
 
 Za pomocą Live Stream metryki możesz wykonywać następujące czynności:
 
@@ -192,15 +192,6 @@ Jednak jeśli rozpoznaje i zaufania połączonych serwerów, możesz spróbować
 >[!NOTE]
 >Zdecydowanie zaleca się skonfigurowanie kanału uwierzytelnionego przed wejściem potencjalnie poufne informacje, takie jak CustomerID w kryteriach filtrowania.
 >
-
-## <a name="generating-a-performance-test-load"></a>Generowanie wydajności testu obciążenia
-
-Jeśli chcesz zobaczyć efekt zwiększenia obciążenia, należy użyć bloku Test wydajności. Symuluje ona żądania pochodzące z wielu równoczesnych użytkowników. Można uruchomić, albo "testy ręczne" (ping testy) z pojedynczego adresu URL lub można uruchomić [wieloetapowego testu sieci web wydajności](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) przekazane (w taki sam sposób jak test dostępności).
-
-> [!TIP]
-> Po utworzeniu testu wydajności, otwórz test i bloku Stream na żywo w oddzielnych okien. Po uruchomieniu testu wydajności umieszczonych w kolejce i obejrzyj transmisji strumieniowej na żywo widoczne w tym samym czasie.
->
-
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 51645f4f0c6dcc70d76ed1a20bc40f95db9d9717
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e411182a26e370ef82a20e67ee18cedd5d96d86
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693363"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296106"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Wykonywać zapytania obejmujące wiele zasobów dzienników w usłudze Azure Monitor  
 
-Wcześniej z usługą Azure Monitor, można było tylko analizować dane z bieżącego obszaru roboczego i jego ograniczoną możliwość wysyłania zapytań w wielu obszarach roboczych zdefiniowanych w subskrypcji.  Ponadto można przeszukiwać tylko elementy danych telemetrycznych zebranych z aplikacji sieci web za pomocą usługi Application Insights bezpośrednio w usłudze Application Insights lub z programu Visual Studio. To również on żądania do natywnie analizy operacyjnej i dane aplikacji ze sobą.   
+Wcześniej z usługą Azure Monitor, można było tylko analizować dane z bieżącego obszaru roboczego i jego ograniczoną możliwość wysyłania zapytań w wielu obszarach roboczych zdefiniowanych w subskrypcji.  Ponadto można przeszukiwać tylko elementy danych telemetrycznych zebranych z aplikacji sieci web za pomocą usługi Application Insights bezpośrednio w usłudze Application Insights lub z programu Visual Studio. To również on żądania do natywnie analizy operacyjnej i dane aplikacji ze sobą.
 
 Teraz można tworzyć zapytania nie tylko między wiele obszarów roboczych usługi Log Analytics, ale także dane z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Zapewnia widok całego systemu danych. Można wykonać tylko te typy zapytań w [usługi Log Analytics](portals.md).
 
 ## <a name="cross-resource-query-limits"></a>Limity zapytania obejmujące wiele zasobów 
 
 * Liczba zasobów usługi Application Insights i obszary robocze usługi Log Analytics, które można uwzględnić w ramach pojedynczego zapytania jest ograniczona do 100.
-* Zapytania obejmujące wiele zasobów nie jest obsługiwana w Projektancie widoku. Można tworzyć zapytania w usłudze Log Analytics i przypiąć go do pulpitu nawigacyjnego platformy Azure i [wizualizacja przeszukiwania dzienników](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search). 
-* Zapytania obejmujące wiele zasobów w alertów dzienników jest obsługiwana w nowym [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Domyślnie używa usługi Azure Monitor [interfejsu API starszych Log Analytics alertu](../platform/api-alerts.md) do tworzenia reguł alertów nowy dziennik z witryny Azure portal, jeśli nie możesz przejść z wersji [starszej wersji interfejsu API z alertów dziennika](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po przełączniku nowy interfejs API staje się domyślnie na nowe reguły alertów w witrynie Azure portal i umożliwia tworzenie dziennika alertów reguły zapytania obejmujące wiele zasobów. Można tworzyć zapytania obejmujące wiele zasobów dziennika reguł alertów bez wprowadzania przełącznik przy użyciu [szablon ARM scheduledQueryRules interfejsu API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) — ale tę regułę alertu jest łatwe w zarządzaniu jednak [scheduledQueryRules interfejsu API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) a nie z witryny Azure portal.
+* Zapytania obejmujące wiele zasobów nie jest obsługiwana w Projektancie widoku. Można tworzyć zapytania w usłudze Log Analytics i przypiąć go do pulpitu nawigacyjnego platformy Azure, aby [wizualizacji zapytań log](../learn/tutorial-logs-dashboards.md). 
+* Zapytania obejmujące wiele zasobów w alertów dzienników jest obsługiwana w nowym [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Domyślnie używa usługi Azure Monitor [interfejsu API starszych Log Analytics alertu](../platform/api-alerts.md) do tworzenia reguł alertów nowy dziennik z witryny Azure portal, jeśli nie możesz przejść z wersji [starszej wersji interfejsu API z alertów dziennika](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po przełączniku nowy interfejs API staje się domyślnie na nowe reguły alertów w witrynie Azure portal i umożliwia tworzenie dziennika alertów reguły zapytania obejmujące wiele zasobów. Można tworzyć zapytania obejmujące wiele zasobów dziennika reguł alertów bez wprowadzania przełącznik przy użyciu [szablonu usługi Azure Resource Manager dla scheduledQueryRules interfejsu API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) — ale tę regułę alertu jest łatwe w zarządzaniu jednak [scheduledQueryRules Interfejs API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , a nie z witryny Azure portal.
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Wykonywanie zapytań w obszarach roboczych usługi Log Analytics i z usługi Application Insights

@@ -9,12 +9,12 @@ ms.date: 04/18/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b3c2ed7f2914374ac94783511f2992ae5755967
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65907176"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302338"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Używanie sygnatur dostępu współdzielonego (SAS)
 
@@ -23,7 +23,10 @@ Sygnatury dostępu współdzielonego (SAS) umożliwia przyznawanie ograniczonego
 Przykłady dodatkowego kodu poza tymi przedstawionych w tym miejscu przy użyciu sygnatury dostępu Współdzielonego, zobacz [wprowadzenie do usługi Azure Blob Storage na platformie .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) i inne przykłady, które są dostępne w [przykłady kodu platformy Azure](https://azure.microsoft.com/documentation/samples/?service=storage) biblioteki. Możesz Pobierz przykładowe aplikacje i uruchamiaj je lub przeglądania kodu w serwisie GitHub.
 
 ## <a name="what-is-a-shared-access-signature"></a>Co to jest sygnatura dostępu współdzielonego?
+
 Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu. Za pomocą sygnatury dostępu Współdzielonego można przyznać klientom dostęp do zasobów w ramach konta magazynu bez udostępniania kluczy konta. Jest to najbardziej istotna kwestia związana z używaniem sygnatur dostępu współdzielonego w aplikacjach — są one bezpiecznym sposobem udostępniania zasobów magazynu bez narażania kluczy konta.
+
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -35,6 +38,7 @@ Sygnatury dostępu Współdzielonego zapewnia precyzyjną kontrolę nad typu dos
 * Protokół, nad którym usługi Azure Storage będzie akceptować sygnatury dostępu Współdzielonego. Ten parametr opcjonalny można użyć, aby ograniczyć dostęp do klientów przy użyciu protokołu HTTPS.
 
 ## <a name="when-should-you-use-a-shared-access-signature"></a>Kiedy należy używać sygnatury dostępu współdzielonego?
+
 Sygnatury dostępu Współdzielonego można użyć zapewnić dostęp do zasobów w ramach konta magazynu do każdego klienta, nie posiadającą klucze dostępu konta magazynu. Konto magazynu zawiera zarówno klucz dostępu podstawowego i pomocniczego, które udzielić dostępu administracyjnego do swojego konta i wszystkie zasoby w niej. Udostępnianie jednej z tych kluczy zostanie otwarty na możliwość użycia złośliwych lub wynikającego z niedbałości na koncie. Sygnatury dostępu współdzielonego zapewniają bezpieczne alternatywę umożliwiającą klientom odczytu, zapisu i usuwania danych w ramach konta magazynu zgodnie z uprawnieniami, które zostały jawnie przyznane uprawnienia, a także bez konieczności korzystania z klucza konta usługi.
 
 Typowy scenariusz, w których jest użyteczny sygnatury dostępu Współdzielonego jest usługa, gdzie użytkownicy odczytu i zapisu swoje dane do swojego konta magazynu. W scenariuszu, gdzie są przechowywane dane użytkownika na koncie magazynu istnieją dwa wzorce projektów:
@@ -56,12 +60,14 @@ Ponadto należy używać sygnatury dostępu Współdzielonego do autoryzowania d
 * Podczas kopiowania obiektu blob do pliku lub pliku do obiektu blob, należy użyć sygnatury dostępu Współdzielonego do autoryzacji dostępu do obiektu źródłowego, nawet jeśli obiekty źródłowy i docelowy znajdują się w obrębie tego samego konta magazynu.
 
 ## <a name="types-of-shared-access-signatures"></a>Rodzaje sygnatur dostępu współdzielonego
+
 Można utworzyć dwa rodzaje sygnatur dostępu współdzielonego:
 
 * **Sygnatura dostępu Współdzielonego usługi.** Sygnatura dostępu współdzielonego usługi deleguje dostęp do zasobu tylko w jednej z usług: obiektów blob, kolejek, tabel lub plików. Zobacz [konstruowanie sygnatury dostępu Współdzielonego usługi](https://msdn.microsoft.com/library/dn140255.aspx) i [przykłady sygnatury dostępu Współdzielonego usługi](https://msdn.microsoft.com/library/dn140256.aspx) Aby uzyskać szczegółowe informacje na temat tworzenia tokenu sygnatury dostępu Współdzielonego usługi.
 * **Sygnatura dostępu Współdzielonego konta.** Konto sygnatury dostępu Współdzielonego obiektów delegowanych dostęp do zasobów w co najmniej jednej usługi magazynu. Wszystkie operacje, które są dostępne za pośrednictwem sygnatury dostępu Współdzielonego usługi są również dostępne za pomocą sygnatury dostępu Współdzielonego konta. Ponadto za pomocą sygnatury dostępu Współdzielonego konta, możesz delegować dostęp do operacji, które są stosowane dla danej usługi, takie jak **pobierania/ustawiania właściwości usługi** i **uzyskać statystyki usługi**. Możesz również delegować dostęp do operacji odczytu, zapisu i usuwania dla kontenerów obiektów blob, tabel, kolejek i udziałów plików, co jest niedozwolone w wypadku sygnatury dostępu współdzielonego usługi. Zobacz [konstruowanie sygnatury dostępu Współdzielonego konta](https://msdn.microsoft.com/library/mt584140.aspx) Aby uzyskać szczegółowe informacje na temat tworzenia tokenu sygnatury dostępu Współdzielonego konta.
 
 ## <a name="how-a-shared-access-signature-works"></a>Jak działa sygnatury dostępu współdzielonego
+
 Sygnatury dostępu współdzielonego jest podpisem identyfikator URI, który wskazuje co najmniej jeden zasób magazynu i zawiera token, który zawiera specjalnego zestawu parametrów zapytania. Token wskazuje, jak zasoby można uzyskać dostęp przez klienta. Jeden z parametrów zapytania, podpis, jest zbudowany z parametrami sygnatury dostępu Współdzielonego i podpisany przy użyciu klucza konta. Podpis ten jest używany przez usługę Azure Storage do autoryzowania dostępu do zasobu magazynu.
 
 Oto przykład identyfikatora URI sygnatury dostępu Współdzielonego, przedstawiający identyfikator URI zasobu i tokenu sygnatury dostępu Współdzielonego:
@@ -73,9 +79,11 @@ Token sygnatury dostępu Współdzielonego to ciąg, możesz wygenerować na *kl
 Gdy klient poda identyfikator URI sygnatury dostępu Współdzielonego do usługi Azure Storage jako część żądania, usługa sprawdza parametry sygnatury dostępu Współdzielonego i podpisu, aby sprawdzić, czy jest on prawidłowy dla żądania uwierzytelniania. Jeśli usługa sprawdza, czy podpis jest prawidłowy, a następnie żądanie jest autoryzowane. W przeciwnym razie żądanie zostało odrzucone, kod błędu 403 (zabronione).
 
 ## <a name="shared-access-signature-parameters"></a>Parametry sygnatury dostępu współdzielonego
+
 Sygnatura dostępu Współdzielonego konta i tokeny sygnatur dostępu Współdzielonego usługi obejmują niektórych wspólnych parametrów i skorzystać z kilku parametrów, które różnią się.
 
 ### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>Parametry wspólne dla sygnatury dostępu Współdzielonego konta i tokeny sygnatur dostępu Współdzielonego usługi
+
 * **Wersja interfejsu API** opcjonalny parametr określający używaną wersję usługi magazynu do użycia w celu wykonania żądania.
 * **Wersja usługi** wymaganym parametrem, który określa wersję usługi magazynu do użycia w celu autoryzowania żądania.
 * **Czas rozpoczęcia.** Jest to czas, w którym sygnatury dostępu Współdzielonego będzie ważna. Czas rozpoczęcia sygnatury dostępu współdzielonego jest opcjonalny. W przypadku pominięcia czas rozpoczęcia sygnatury dostępu Współdzielonego, zacznie ona obowiązywać natychmiast. Czas rozpoczęcia muszą być wyrażone w formacie UTC (Coordinated Universal Time) przy użyciu specjalnych oznaczenie UTC ("Z"), na przykład `1994-11-05T13:15:30Z`.
@@ -86,6 +94,7 @@ Sygnatura dostępu Współdzielonego konta i tokeny sygnatur dostępu Współdzi
 * **Podpis.** Podpis jest tworzona z innych parametrów, określony jako część tokenu, a następnie szyfrowany. Podpis jest używany do autoryzowania dostępu do zasobów magazynu określony.
 
 ### <a name="parameters-for-a-service-sas-token"></a>Parametry dla tokenu sygnatury dostępu Współdzielonego usługi
+
 * **Zasób magazynu.** Zasoby magazynu, dla których można delegować dostępu za pomocą usługi sygnatury dostępu Współdzielonego obejmują:
   * Kontenery i obiekty BLOB
   * Udziałami plików i plikami
@@ -93,6 +102,7 @@ Sygnatura dostępu Współdzielonego konta i tokeny sygnatur dostępu Współdzi
   * Tabele i zakresy jednostki z tabeli.
 
 ### <a name="parameters-for-an-account-sas-token"></a>Parametry dla tokenu sygnatury dostępu Współdzielonego konta
+
 * **Usługi lub usług.** Sygnatura dostępu Współdzielonego konta może delegować dostęp do co najmniej jedną z usług magazynu. Na przykład można utworzyć sygnatury dostępu Współdzielonego konta służącą do delegowania dostępu do usługi obiektów Blob i plików. Lub można utworzyć sygnaturę dostępu Współdzielonego, że delegaty dostęp do wszystkich czterech usług (obiektu Blob, kolejki, tabela i plik).
 * **Typy zasobów magazynu.** Konto sygnatury dostępu Współdzielonego dotyczy co najmniej jedną klasę zasobów magazynu, a nie konkretnego zasobu. Można utworzyć sygnatury dostępu Współdzielonego, można delegować dostępu do konta:
   * Poziom usług interfejsów API, są one nazywane względem zasobu konta magazynu. Przykłady obejmują **pobierania/ustawiania właściwości usługi**, **uzyskać statystyki usługi**, i **listy kontenerów/kolejki/tabel/udziałów**.
@@ -139,6 +149,7 @@ https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015
 Biorąc pod uwagę, że uprawnienia są ograniczone do poziomu usługi, są dostępne operacje przy użyciu tej sygnatury dostępu Współdzielonego **pobrać właściwości usługi obiektów Blob** (odczyt) i **ustawiania właściwości usługi obiektów Blob** (zapis). Jednak z zasobem inny identyfikator URI tego samego tokenu sygnatury dostępu Współdzielonego można również delegować dostęp do **uzyskać statystyki usługi obiektów Blob** (odczyt).
 
 ## <a name="controlling-a-sas-with-a-stored-access-policy"></a>Kontrolowanie sygnatury dostępu Współdzielonego przy użyciu przechowywanych zasad dostępu
+
 Sygnatury dostępu współdzielonego można wykonać jedną z dwóch formach:
 
 * **Skojarzenia zabezpieczeń ad hoc:** Podczas tworzenia sygnatury dostępu Współdzielonego ad-hoc, czas rozpoczęcia, czas wygaśnięcia i uprawnienia dla sygnatury dostępu Współdzielonego są wszystkie określone w identyfikatorze URI sygnatury dostępu Współdzielonego (lub domniemanych, w przypadku, gdy czas rozpoczęcia jest pominięty). Ten typ sygnatury dostępu Współdzielonego można utworzyć sygnatury dostępu Współdzielonego konta lub sygnatury dostępu Współdzielonego usługi.
@@ -158,12 +169,15 @@ Różnica między dwoma formami jest ważna dla jednego kluczowy scenariusz: odw
 > Identyfikator URI sygnatury dostępu współdzielonego jest skojarzony z kluczem konta używane do tworzenia podpisu, a skojarzone przechowywane zasady dostępu (jeśli istnieje). Jeśli nie przechowywanych zasad dostępu jest określona, jedynym sposobem, aby można było odwołać sygnatury dostępu współdzielonego jest należy zmienić wartość klucza konta.
 
 ## <a name="authenticating-from-a-client-application-with-a-sas"></a>Uwierzytelniania na podstawie aplikacji klienckiej, za pomocą sygnatury dostępu Współdzielonego
+
 Klient, który jest w posiadaniu sygnatury dostępu Współdzielonego można używać sygnatury dostępu Współdzielonego do autoryzowania żądania względem konta magazynu, dla której nie posiadają kluczy konta. Sygnatury dostępu Współdzielonego mogą być zawarte w parametrach połączenia lub używane bezpośrednio z odpowiedniego konstruktora lub metody.
 
 ### <a name="using-a-sas-in-a-connection-string"></a>W parametrach połączenia przy użyciu sygnatury dostępu Współdzielonego
+
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>Przy użyciu sygnatury dostępu Współdzielonego w konstruktorze lub — metoda
+
 Kilka konstruktorów biblioteki klienta usługi Azure Storage i przeciążenia metody oferują parametrem sygnatury dostępu Współdzielonego, dzięki czemu można autoryzować żądania do usługi przy użyciu sygnatury dostępu Współdzielonego.
 
 Na przykład identyfikatora URI sygnatury dostępu Współdzielonego jest tu używany do utworzenia odwołanie do blokowego obiektu blob. Sygnatura dostępu Współdzielonego zapewnia tylko poświadczenia wymagane dla żądania. Odwołanie do obiektu blob bloku jest następnie używany dla operacji zapisu:
@@ -208,6 +222,7 @@ catch (StorageException e)
 ```
 
 ## <a name="best-practices-when-using-sas"></a>Najlepsze rozwiązania przy użyciu sygnatury dostępu Współdzielonego
+
 Korzystając z sygnatury dostępu współdzielonego w aplikacjach, musisz znać dwie potencjalne zagrożenia:
 
 * Przeciek sygnatury dostępu Współdzielonego może służyć każda osoba, która uzyskuje, w którym potencjalnie może naruszyć bezpieczeństwo konta magazynu.
@@ -227,6 +242,7 @@ Poniższe zalecenia dotyczące używania sygnatur dostępu współdzielonego mog
 10. **Usługa Storage Analytics umożliwia monitorowanie aplikacji.** Rejestrowanie i metryki służy do przestrzegania wszelkich wzrost niepowodzeń uwierzytelniania z powodu awarii w usłudze dostawcy sygnatury dostępu Współdzielonego lub nieumyślne usunięcie przechowywanych zasad dostępu. Zobacz [Blog zespołu usługi Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) Aby uzyskać dodatkowe informacje.
 
 ## <a name="sas-examples"></a>Przykłady sygnatury dostępu Współdzielonego
+
 Poniżej przedstawiono kilka przykładów oba rodzaje sygnatur dostępu współdzielonego, sygnatury dostępu Współdzielonego konta i usługi.
 
 Aby uruchomić te przykłady języka C#, należy odwoływać się do następujących pakietów NuGet w projekcie:
@@ -237,6 +253,7 @@ Aby uruchomić te przykłady języka C#, należy odwoływać się do następują
 Aby uzyskać więcej przykładów, które pokazują, jak tworzyć i testować sygnatury dostępu Współdzielonego, zobacz [przykłady kodu platformy Azure do przechowywania](https://azure.microsoft.com/documentation/samples/?service=storage).
 
 ### <a name="example-create-and-use-an-account-sas"></a>Przykład: Tworzenie i używanie sygnatury dostępu Współdzielonego konta
+
 Poniższy przykład kodu tworzy konto sygnatury dostępu Współdzielonego, który nadaje się do usług obiektów Blob i plików i daje klientowi uprawnień odczytu, zapisu i uprawnienia listy dostęp do interfejsów API z poziomu usługi. Sygnatura dostępu Współdzielonego konta ogranicza protokołu HTTPS, dlatego żądanie musi zostać wykonane przy użyciu protokołu HTTPS.
 
 ```csharp
@@ -304,6 +321,7 @@ static void UseAccountSAS(string sasToken)
 ```
 
 ### <a name="example-create-a-stored-access-policy"></a>Przykład: Utwórz przechowywanych zasad dostępu
+
 Poniższy kod tworzy przechowywanych zasad dostępu do kontenera. Aby określić ograniczenia dla sygnatury dostępu Współdzielonego usługi kontenera lub jego obiektów blob, można użyć zasad dostępu.
 
 ```csharp
@@ -330,6 +348,7 @@ private static async Task CreateSharedAccessPolicyAsync(CloudBlobContainer conta
 ```
 
 ### <a name="example-create-a-service-sas-on-a-container"></a>Przykład: Tworzenie sygnatury dostępu Współdzielonego usługi do kontenera
+
 Poniższy kod tworzy sygnatury dostępu Współdzielonego w kontenerze. Jeśli podano nazwę istniejącej zasady dostępu przechowywane tej zasady jest skojarzony z sygnatury dostępu Współdzielonego. Jeśli nie podano żadnych przechowywanych zasad dostępu, następnie kod tworzy ad-hoc sygnatury dostępu Współdzielonego dla kontenera.
 
 ```csharp
@@ -373,6 +392,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 ```
 
 ### <a name="example-create-a-service-sas-on-a-blob"></a>Przykład: Tworzenie sygnatury dostępu Współdzielonego usługi na obiekcie blob
+
 Poniższy kod tworzy sygnatury dostępu Współdzielonego na obiekcie blob. Jeśli podano nazwę istniejącej zasady dostępu przechowywane tej zasady jest skojarzony z sygnatury dostępu Współdzielonego. Jeśli nie podano żadnych przechowywanych zasad dostępu, następnie kod tworzy ad-hoc sygnatury dostępu Współdzielonego w obiekcie blob.
 
 ```csharp
@@ -419,9 +439,11 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 ```
 
 ## <a name="conclusion"></a>Podsumowanie
+
 Sygnatury dostępu współdzielonego są przydatne do prezentowania ograniczonych uprawnień do konta magazynu dla klientów, którzy nie powinni mieć klucz konta. W efekcie są to ważna część model zabezpieczeń dla każdej aplikacji za pomocą usługi Azure Storage. Jeśli stosujesz najlepsze rozwiązania wymienione w tym miejscu, można użyć sygnatury dostępu Współdzielonego, aby zapewnić większą elastyczność dostępu do zasobów w ramach konta magazynu bez uszczerbku dla zabezpieczeń aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
+
 * [Zarządzanie dostępem anonimowym odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md)
 * [Delegowanie dostępu za pomocą sygnatury dostępu współdzielonego](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Wprowadzenie do tabel i token SAS kolejki](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

@@ -16,12 +16,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73c1717249abac30847f96073ee6daf7d98112d7
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833263"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190335"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Edytowanie i zarządzanie nią istniejący pakiet dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
 
@@ -348,4 +348,5 @@ W przystawce Zarządzanie uprawnieniem usługi Azure AD będzie przetwarzać zmi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- [Dodawanie właściciela katalogu lub dostęp do Menedżera pakietów](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Żądanie procesu i powiadomień e-mail](entitlement-management-process.md)

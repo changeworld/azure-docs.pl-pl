@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66118504"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295057"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 
@@ -133,15 +133,15 @@ W poniższej tabeli przedstawiono, w której parametry mogą być używane w skr
   - [Wyłącz szyfrowanie dla uruchomionej maszyny Wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Wyłączenie szyfrowania jest dozwolona tylko na woluminach danych dla maszyn wirtualnych systemu Linux.  
 
-### <a name="encrypt-or-decrypt-vm-scale-sets"></a>Szyfrowania lub odszyfrowywania usługi VM scale sets
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Szyfrowania lub odszyfrowywania zestawów skalowania maszyn wirtualnych
 
 - [Włączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [Włączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Wdrażanie maszyny Wirtualnej zestawu skalowania systemu Linux maszyn wirtualnych z serwera przesiadkowego i włącza szyfrowanie na zestawu skalowania maszyn wirtualnych w systemie Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Wdrażanie maszyny wirtualnej zestawu skalowania maszyn wirtualnych systemu Linux przy użyciu serwera przesiadkowego i włącza szyfrowanie na zestawu skalowania maszyn wirtualnych w systemie Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [Wdrażanie maszyny Wirtualnej zestawu skalowania systemu Windows maszyn wirtualnych z serwera przesiadkowego i umożliwia szyfrowanie w usłudze Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Wdrażanie zestawu skalowania maszyn wirtualnych Windows maszyn wirtualnych z serwera przesiadkowego i umożliwia szyfrowanie w usłudze Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Wyłączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -206,7 +206,7 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Wymagania wstępne dotyczące szyfrowania dysku systemu operacyjnego
 
-* Maszyna wirtualna musi używać dystrybucji, które są zgodne z szyfrowania dysku systemu operacyjnego zgodnie z zaleceniami z [Azure dysku szyfrowania — często zadawane pytania](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) 
+* Maszyna wirtualna musi używać dystrybucji, które są zgodne z szyfrowania dysku systemu operacyjnego zgodnie z zaleceniami z [usługi Azure Disk Encryption obsługiwane systemy operacyjne: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * Maszyna wirtualna musi zostać utworzona z obrazu z witryny Marketplace usługi Azure Resource Manager.
 * Maszyna wirtualna platformy Azure z co najmniej 4 GB pamięci RAM (zalecany rozmiar to 7 GB).
 * (Dla systemu RHEL i CentOS) Wyłącz SELinux. Aby wyłączyć SELinux, zobacz "4.4.2. Wyłączanie SELinux"w [Przewodnik administratora i użytkownika SELinux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) na maszynie Wirtualnej.

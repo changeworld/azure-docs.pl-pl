@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a6797c7bd0c6bd8ce8d3f51b42cb4c2b1338fd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 1eb5600a9793963a722967e1bbe702cf3b2f670e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65950489"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147113"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -84,8 +84,8 @@ Nie. Zarządzanych tożsamości nie obsługują obecnie katalogu dla wielu scena
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jakich uprawnień RBAC platformy Azure są wymagane do tożsamość zarządzaną w zasobie? 
 
-- Tożsamość zarządzana przypisana przez system: Potrzebujesz uprawnienia do zapisu przez zasób. Na przykład: Microsoft.Compute/virtualMachines/write lub ta akcja znajduje się w zasobie określonego wbudowanych ról, takich jak [Współautor maszyny wirtualnej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- Tożsamość zarządzana przypisanych przez użytkownika: Potrzebujesz uprawnienia do zapisu przez zasób. Na przykład: Microsoft.Compute/virtualMachines/write. Oprócz [Operator tożsamości zarządzanych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) przypisania roli za pośrednictwem tożsamość zarządzaną. 
+- Tożsamość zarządzana przypisana przez system: Potrzebujesz uprawnienia do zapisu przez zasób. Exampl w przypadku maszyn wirtualnych należy Microsoft.Compute/virtualMachines/write. Ta akcja znajduje się w zasobie określonego wbudowanych ról, takich jak [Współautor maszyny wirtualnej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Tożsamość zarządzana przypisanych przez użytkownika: Potrzebujesz uprawnienia do zapisu przez zasób. Na przykład w przypadku maszyn wirtualnych należy Microsoft.Compute/virtualMachines/write. Oprócz [Operator tożsamości zarządzanych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) przypisania roli za pośrednictwem tożsamość zarządzaną.
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak ponownym zarządzanych tożsamości dla rozszerzenia zasobów platformy Azure?
 W systemie Windows i niektóre wersje systemu Linux Jeśli rozszerzenie zostanie zatrzymana, następujące polecenie cmdlet może służyć do ręcznie uruchomić ponownie:

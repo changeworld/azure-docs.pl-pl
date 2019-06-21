@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a5187ed299f77c11892c6e34c8dfd3f904c7e075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: b269c75be7fec55fb77afecc6d04b86266c74a6f
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067712"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147307"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z siecią wirtualną platformy Azure
 Ten dokument zawiera opis funkcji integracji sieci wirtualnej usługi Azure App Service i jak je skonfigurować za pomocą aplikacji w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure] [ VNETOverview] (Vnet) pozwala na umieszczenie wielu zasobów platformy Azure w sieci, lecz-internet.  
@@ -102,6 +102,10 @@ Gdy aplikacja jest zintegrowana z siecią wirtualną, będzie używać tego same
 Aby odłączyć aplikację z sieci wirtualnej, wybierz **rozłączenia**. To spowoduje ponowne uruchomienie aplikacji sieci web. 
 
 Nowej funkcji integracji sieci wirtualnej umożliwia użycie punktów końcowych usługi.  Punktów końcowych usługi za pomocą aplikacji, należy użyć nowej integracji sieci wirtualnej Aby nawiązać połączenie z wybranej sieci wirtualnej, a następnie skonfigurować punkty końcowe usługi w podsieci używanej do integracji. 
+
+#### <a name="web-app-for-containers"></a>Web App for Containers
+
+Jeśli używasz usługi App Service w systemie Linux przy użyciu wbudowanych obrazów regionalne funkcji integracji sieci wirtualnej działa bez dodatkowych zmian. Jeśli używasz Web App for Containers, musisz zmodyfikować obraz platformy docker, aby można było korzystać z integracji sieci wirtualnej. W obrazie platformy docker należy użyć zmiennej środowiskowej portu jako portu nasłuchiwania serwera głównego sieci web, zamiast numeru portu zapisane na stałe. Zmienna środowiskowa portu jest automatycznie ustawiona przez platformę usługi App Service w czasie uruchamiania kontenera.
 
 ### <a name="how-vnet-integration-works"></a>Jak działa Integracja z siecią wirtualną
 

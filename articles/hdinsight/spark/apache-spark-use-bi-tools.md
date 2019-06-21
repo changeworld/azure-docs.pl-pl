@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze Azure HDInsight '
-description: Używanie usługi Microsoft Power BI do wizualizacji danych platformy Apache Spark przechowywanych w klastrach usługi HDInsight
+description: Samouczek — usługa Microsoft Power BI do wizualizacji danych Apache Spark przechowywane klastry HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/16/2019
-ms.openlocfilehash: bf70abd2b3119a97af5ad1d4c56274f8e575fd3e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: d5296fe19cef9e8881d39bd9e59eb4c40d049959
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860969"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296184"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze HDInsight
 

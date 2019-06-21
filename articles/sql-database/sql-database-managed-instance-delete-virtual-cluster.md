@@ -1,6 +1,6 @@
 ---
-title: Usuwanie sieci wirtualnej, po usunięcie bazy danych SQL Azure wystąpienie zarządzane | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można usunąć sieci wirtualnej, po usunięcie bazy danych SQL Azure wystąpienie zarządzane.
+title: Usuwanie podsieci po usunięcie usługi Azure SQL Database wystąpienie zarządzane | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można usunąć sieci wirtualnej platformy Azure po usunięcie usługi Azure SQL Database wystąpienie zarządzane.
 services: sql-database
 ms.service: sql-database
 ms.subservice: management
@@ -12,39 +12,39 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 61f6c25031c4906e65c2f75a7679600741e8311a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec5d99e160e739f59e2bf2ea369fe83e9900a1f1
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791370"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295313"
 ---
-# <a name="delete-subnet-after-deleting-azure-sql-database-managed-instance"></a>Usuwanie podsieci po usunięcie bazy danych SQL Azure wystąpienie zarządzane
+# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Usuwanie podsieci po usunięcie usługi Azure SQL Database wystąpienie zarządzane
 
-Ten artykuł zawiera wskazówki na temat sposobu ręcznie usunąć podsieci po usunięcie ostatniej usługi Azure SQL Database managed wystąpienia znajdujących się w nim.
+Ten artykuł zawiera wskazówki dotyczące sposobu ręcznie usunąć podsieć po usunięcie ostatniej usługi Azure SQL Database managed wystąpienia znajdujących się w nim.
 
-[Klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) , obsługuje zawarte usunięto wystąpienie zarządzane, będą przechowywane przez 12 godzin przed usunięciem wystąpienia. Klaster wirtualny jest życiu zgodnie z projektem, aby umożliwić szybsze tworzenie wystąpień zarządzanych w tej samej podsieci. Utrzymywanie pusty klaster wirtualny jest bezpłatne. W tym okresie nie można usunąć podsieć skojarzona z klaster wirtualny.
+SQL Database przy użyciu [klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) zawierać usunięto wystąpienie zarządzane. Klaster wirtualny będzie się powtarzał przez 12 godzin po usunięciu wystąpienia, aby umożliwić szybkie tworzenie zarządzanych wystąpień w tej samej podsieci. Brak opłat za utrzymywanie pusty klaster wirtualny. W tym okresie nie można usunąć podsieć skojarzona z klaster wirtualny.
 
-Natychmiastowe wersja podsieci używane przez klaster wirtualny puste jest możliwy za pośrednictwem ręczne usuwanie klaster wirtualny. Usunięcie klastra wirtualnego można osiągnąć za pomocą witryny Azure portal lub klastry wirtualne interfejsu API.
+Jeśli nie chcesz czekać na 12 godzin, a chcesz natychmiast usunąć klaster wirtualny i jej podsieci, możesz to zrobić ręcznie. Usuń klaster wirtualny ręcznie przy użyciu witryny Azure portal lub klastry wirtualne interfejsu API.
 
 > [!NOTE]
 > Klaster wirtualny powinna zawierać żadnych wystąpień zarządzanych do usunięcia zakończy się powodzeniem.
 
-## <a name="delete-virtual-cluster-from-azure-portal"></a>Usuń klaster wirtualny z witryny Azure portal
+## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Usuń klaster wirtualny w witrynie Azure portal
 
-Aby usunąć klaster wirtualny za pomocą witryny Azure portal, wyszukiwanie zasobów klastra wirtualnego przy użyciu wbudowanych wyszukiwania.
+Aby usunąć klaster wirtualny za pomocą witryny Azure portal, wyszukiwanie zasobów klastra wirtualnego.
 
-![Wyszukaj klaster wirtualny.](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
+![Zrzut ekranu witryny Azure Portal, za pomocą pola wyszukiwania wyróżniony](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
 
-Po znalezieniu klaster wirtualny, który chcesz usunąć, wybierz ten zasób, a następnie wybierz opcję Usuń. Użytkownik jest monitowany o potwierdzenie usunięcia klaster wirtualny.
+Po zlokalizowaniu klaster wirtualny ma zostać usunięty, wybierz ten zasób, a wybierz **Usuń**. Monit o potwierdzenie usunięcia klaster wirtualny.
 
-![Usuń klaster wirtualny.](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
+![Zrzut ekranu witryny Azure Portal, wirtualne klastrów pulpitu nawigacyjnego, z podświetloną opcją Delete](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Potwierdzenie, że usunięto klaster wirtualny znajduje się w powiadomieniach portalu Azure. Skuteczne usunięcie klastra wirtualnego natychmiast zwalnia podsieci do dalszych ponownego wykorzystania.
+Obszar powiadomień portalu platformy Azure pokazuje potwierdzenie, że klaster wirtualny został usunięty. Skuteczne usunięcie klastra wirtualnego natychmiast zwalnia podsieci do ponownego wykorzystania.
 
-## <a name="delete-virtual-cluster-using-api"></a>Usuń klaster wirtualny za pomocą interfejsu API
+## <a name="delete-virtual-cluster-by-using-the-api"></a>Usuń klaster wirtualny za pomocą interfejsu API
 
-Aby usunąć wirtualny klastra przy użyciu interfejsu API parametry identyfikatora URI określonego w [klastrów wirtualnych delete, Metoda](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
+Aby usunąć klaster wirtualny za pomocą interfejsu API, użyj parametrów identyfikatora URI określonego w [klastrów wirtualnych delete, Metoda](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a66fa70f6f5615257554e98e40e605d6a7e981fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d415686e4d8a10043df59aa6bf58a5ed4be0149
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508977"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154033"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Jednostronicowych zalogować się przy użyciu niejawnego przepływu OAuth 2.0 w usłudze Azure Active Directory B2C
 
-Wiele nowoczesnych aplikacji ma aplikacja jednostronicowa fronton, który jest napisany głównie w języku JavaScript. Często przy użyciu struktury, takich jak AngularJS, Ember.js lub Durandal napisano aplikację. Aplikacje jednostronicowe i innych aplikacji JavaScript, które działają głównie w przeglądarce mają pewne dodatkowe problemy dotyczące uwierzytelniania:
+Wiele nowoczesnych aplikacji ma aplikacja jednostronicowa fronton, który jest napisany głównie w języku JavaScript. Często przy użyciu struktury, takich jak platformy React, Angular lub Vue.js napisano aplikację. Aplikacje jednostronicowe i innych aplikacji JavaScript, które działają głównie w przeglądarce mają pewne dodatkowe problemy dotyczące uwierzytelniania:
 
 - Właściwości zabezpieczeń tych aplikacji różnią się od tradycyjnych oparte na serwerze sieci web aplikacji.
 - Wiele serwerów autoryzacji i dostawców tożsamości nie obsługują współużytkowanie zasobów (między źródłami CORS) żądania udostępniania.
@@ -81,7 +81,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parametr | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_id | Yes | Identyfikator aplikacji [witryny Azure portal](https://portal.azure.com/) przypisane do aplikacji. |
+| client_id | Tak | Identyfikator aplikacji [witryny Azure portal](https://portal.azure.com/) przypisane do aplikacji. |
 | response_type | Yes | Musi zawierać `id_token` dla logowania OpenID Connect. To również obejmować opcję Typ odpowiedzi `token`. Jeśli używasz `token`, aplikacja może bezpośrednio odbierać token dostępu z punktu końcowego autoryzacji, bez konieczności szukania drugie żądanie do punktu końcowego autoryzacji.  Jeśli używasz `token` typ odpowiedzi `scope` parametr musi zawierać zakres, który wskazuje, którego zasobu należy wystawić token dla. |
 | redirect_uri | Nie | Przekierowania URI aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Jego musi dokładnie odpowiadać jeden przekierowania identyfikatory URI, który został zarejestrowany w portalu, z tą różnicą, że musi być zakodowane w adresie URL. |
 | response_mode | Nie | Określa metodę używaną do wysyłania wynikowy token wstecz do swojej aplikacji.  Niejawne przepływów, można użyć `fragment`. |

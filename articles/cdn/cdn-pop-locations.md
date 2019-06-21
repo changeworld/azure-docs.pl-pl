@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: 33682727b84713b515bb68d34aa5cf8b72ce44fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ac1eb484d5e301a9090ea5a11165ba321b0aaa
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65862475"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274968"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Usługa Azure CDN pokrycia, Metro 
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ W tym artykule wymieniono bieżącego Metro zawierający lokalizacji (POP) typu 
 | Afryka | Kapsztad, Republika Południowej Afryki<br />Johannesburg, Republika Południowej Afryki | Johannesburg, Republika Południowej Afryki | Republika Południowej Afryki |
 | Bliski Wschód | Dubaj, Zjednoczone Emiraty Arabskie | Muscat, Oman<br />Fujirah, Zjednoczone Emiraty Arabskie | Katar<br />Zjednoczone Emiraty Arabskie |
 | Indie | Chennai (Madras), Indie<br />Hyderabad, Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie | Bengaluru (Bangalur), Indie<br />Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie<br /> | Indie |
-| Azja | SRA Hongkong<br />Osaka, Japonia<br />Tokio, Japonia<br />Kuala Lumpur, Malaysia<br />Manila, Filipiny<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Tajpej, Tajwan<br />Bangkok, Tajlandia | SRA Hongkong<br />Batam, Indonesia<br />Jakarta, Indonesia<br />Osaka, Japonia<br />Tokio, Japonia<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Kaohsiung, Tajwan | SRA Hongkong<br />Indonezja<br />Izrael<br />Japonia<br />SRA Makau<br />Malezja<br />Filipiny<br />Singapur<br />Korea Południowa<br />Tajwan<br />Tajlandia<br />Turcja<br />Vietnam |
+| Azja | SRA Hongkong<br />Osaka, Japonia<br />Tokio, Japonia<br />Kuala Lumpur, Malaysia<br />Manila, Filipiny<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Tajpej, Tajwan<br />Bangkok, Tajlandia | SRA Hongkong<br />Batam, Indonesia<br />Jakarta, Indonesia<br />Osaka, Japonia<br />Tokio, Japonia<br />Singapur<br />Seul, Korea Południowa<br />Kaohsiung, Tajwan | SRA Hongkong<br />Indonezja<br />Izrael<br />Japonia<br />SRA Makau<br />Malezja<br />Filipiny<br />Singapur<br />Korea Południowa<br />Tajwan<br />Tajlandia<br />Turcja<br />Vietnam |
 | Australia i Nowa Zelandia | Brisbane, Australia<br />Melbourne, Australia<br />Perth, Australia<br />Sydney, Australia<br />Auckland, Nowej Zelandii | Melbourne, Australia<br />Sydney, Australia<br />Auckland, Nowej Zelandii | Australia<br />Nowa Zelandia |
 
 

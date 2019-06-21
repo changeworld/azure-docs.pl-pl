@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b21c5f8630598a4b7117d23ad7c8da46de07d2fa
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381149"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204499"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizacja programu Azure AD Connect: Informacje ogólne o funkcjach
 W programie Azure AD Connect funkcje są używane do manipulowania wartością atrybutu podczas synchronizacji.  
@@ -89,7 +89,7 @@ Funkcje z typami **mvbin**, **mvstr**, i **mvref** może działać wyłącznie w
 | [ReplaceChars](#replacechars) |[po prawej stronie](#right) |[Przytk](#rtrim) |[TRIM](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
-- - -
+---
 ### <a name="bitand"></a>BitAnd
 **Opis:**  
 BITAND — funkcja ustawia bity określony na podstawie wartości.
@@ -111,7 +111,7 @@ Innymi słowy we wszystkich przypadkach, z wyjątkiem sytuacji, gdy bity odpowie
 `BitAnd(&HF, &HF7)`  
 Zwraca wartość 7, ponieważ szesnastkowe "F" i "F7" obliczyć tej wartości.
 
-- - -
+---
 ### <a name="bitor"></a>BitOr
 **Opis:**  
 BITOR — funkcja ustawia bity określony na podstawie wartości.
@@ -124,7 +124,7 @@ BITOR — funkcja ustawia bity określony na podstawie wartości.
 **Uwagi:**  
 Ta funkcja konwertuje oba parametry reprezentacja binarna i ustawia bit 1, jeśli jeden lub oba odpowiednich bitów w flagę i maski to 1 i 0, gdy oba odpowiednich bitów są 0. Innymi słowy zwraca 1 we wszystkich przypadkach, z wyjątkiem sytuacji, w których bity odpowiedniej oba parametry na 0.
 
-- - -
+---
 ### <a name="cbool"></a>CBool
 **Opis:**  
 CBool-funkcja zwraca wartość logiczną, w oparciu o obliczane wyrażenie
@@ -140,7 +140,7 @@ Jeśli wyrażenie ma wartość różną od zera, a następnie CBool zwraca warto
 
 Zwraca wartość True, jeśli oba atrybuty mają taką samą wartość.
 
-- - -
+---
 ### <a name="cdate"></a>CDate
 **Opis:**  
 CDate-funkcja zwraca wartość daty/godziny UTC z ciągu. Daty i godziny nie jest typem atrybutu natywne w synchronizacji, ale jest używany przez niektóre funkcje.
@@ -161,7 +161,7 @@ Zwraca wartość typu DateTime na podstawie których pracownika czas rozpoczęci
 Zwraca wartość daty/godziny reprezentująca "2013-01-11: 00:00:00"
 
 
-- - -
+---
 ### <a name="certextensionoids"></a>CertExtensionOids
 **Opis:**  
 Zwraca wartości identyfikatora Oid rozszerzenia krytyczne obiektu certyfikatu.
@@ -170,7 +170,7 @@ Zwraca wartości identyfikatora Oid rozszerzenia krytyczne obiektu certyfikatu.
 `mvstr CertExtensionOids(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certformat"></a>CertFormat
 **Opis:**  
 Zwraca nazwę formatu certyfikatu X.509v3.
@@ -179,7 +179,7 @@ Zwraca nazwę formatu certyfikatu X.509v3.
 `str CertFormat(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certfriendlyname"></a>CertFriendlyName
 **Opis:**  
 Zwraca skojarzonego aliasu dla certyfikatu.
@@ -188,7 +188,7 @@ Zwraca skojarzonego aliasu dla certyfikatu.
 `str CertFriendlyName(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certhashstring"></a>CertHashString
 **Opis:**  
 Zwraca wartość skrótu SHA1 certyfikatu X.509v3 jako ciąg szesnastkowy.
@@ -197,7 +197,7 @@ Zwraca wartość skrótu SHA1 certyfikatu X.509v3 jako ciąg szesnastkowy.
 `str CertHashString(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certissuer"></a>CertIssuer
 **Opis:**  
 Zwraca nazwę urzędu certyfikacji, który wystawił certyfikat X.509v3.
@@ -206,7 +206,7 @@ Zwraca nazwę urzędu certyfikacji, który wystawił certyfikat X.509v3.
 `str CertIssuer(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certissuerdn"></a>CertIssuerDN
 **Opis:**  
 Zwraca nazwę wyróżniającą wystawcy certyfikatu.
@@ -215,7 +215,7 @@ Zwraca nazwę wyróżniającą wystawcy certyfikatu.
 `str CertIssuerDN(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certissueroid"></a>CertIssuerOid
 **Opis:**  
 Zwraca identyfikator Oid wystawcy certyfikatu.
@@ -224,7 +224,7 @@ Zwraca identyfikator Oid wystawcy certyfikatu.
 `str CertIssuerOid(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
 **Opis:**  
 Zwraca informacje algorytm klucza dla tego certyfikatu X.509v3 jako ciąg.
@@ -233,7 +233,7 @@ Zwraca informacje algorytm klucza dla tego certyfikatu X.509v3 jako ciąg.
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **Opis:**  
 Zwraca parametry algorytmu klucza dla certyfikatu X.509v3 jako ciąg szesnastkowy.
@@ -242,7 +242,7 @@ Zwraca parametry algorytmu klucza dla certyfikatu X.509v3 jako ciąg szesnastkow
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certnameinfo"></a>CertNameInfo
 **Opis:**  
 Zwraca podmiot i Wystawca nazwy z certyfikatu.
@@ -253,7 +253,7 @@ Zwraca podmiot i Wystawca nazwy z certyfikatu.
 *   X509NameType: Wartość X509NameType tematu.
 *   includesIssuerName: true, aby zawierał on nazwę wystawcy; w przeciwnym razie wartość false.
 
-- - -
+---
 ### <a name="certnotafter"></a>CertNotAfter
 **Opis:**  
 Zwraca datę w czasie lokalnym, po upływie którego certyfikat nie jest już prawidłowy.
@@ -262,7 +262,7 @@ Zwraca datę w czasie lokalnym, po upływie którego certyfikat nie jest już pr
 `dt CertNotAfter(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certnotbefore"></a>CertNotBefore
 **Opis:**  
 Zwraca datę w czasie lokalnym, na którym zaczyna obowiązywać certyfikat.
@@ -271,7 +271,7 @@ Zwraca datę w czasie lokalnym, na którym zaczyna obowiązywać certyfikat.
 `dt CertNotBefore(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
 **Opis:**  
 Zwraca identyfikator Oid klucza publicznego dla certyfikatu X.509v3.
@@ -280,7 +280,7 @@ Zwraca identyfikator Oid klucza publicznego dla certyfikatu X.509v3.
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
 **Opis:**  
 Zwraca identyfikator Oid parametrów klucza publicznego certyfikatu X.509v3.
@@ -289,7 +289,7 @@ Zwraca identyfikator Oid parametrów klucza publicznego certyfikatu X.509v3.
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certserialnumber"></a>CertSerialNumber
 **Opis:**  
 Zwraca numer seryjny certyfikatu X.509v3.
@@ -298,7 +298,7 @@ Zwraca numer seryjny certyfikatu X.509v3.
 `str CertSerialNumber(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
 **Opis:**  
 Zwraca identyfikator Oid algorytm używany do tworzenia podpisu certyfikatu.
@@ -307,7 +307,7 @@ Zwraca identyfikator Oid algorytm używany do tworzenia podpisu certyfikatu.
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certsubject"></a>CertSubject
 **Opis:**  
 Pobiera nazwa wyróżniająca podmiotu z certyfikatu.
@@ -316,7 +316,7 @@ Pobiera nazwa wyróżniająca podmiotu z certyfikatu.
 `str CertSubject(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
 **Opis:**  
 Zwraca nazwa wyróżniająca podmiotu z certyfikatu.
@@ -325,7 +325,7 @@ Zwraca nazwa wyróżniająca podmiotu z certyfikatu.
 `str CertSubjectNameDN(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
 **Opis:**  
 Zwraca identyfikator Oid nazwy podmiotu z certyfikatu.
@@ -334,7 +334,7 @@ Zwraca identyfikator Oid nazwy podmiotu z certyfikatu.
 `str CertSubjectNameOid(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certthumbprint"></a>CertThumbprint
 **Opis:**  
 Zwraca odcisk palca certyfikatu.
@@ -343,7 +343,7 @@ Zwraca odcisk palca certyfikatu.
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="certversion"></a>CertVersion
 **Opis:**  
 Zwraca wersja formatu X.509 certyfikatu.
@@ -352,7 +352,7 @@ Zwraca wersja formatu X.509 certyfikatu.
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
-- - -
+---
 ### <a name="cguid"></a>CGuid
 **Opis:**  
 Funkcja CGuid konwertuje ciąg reprezentujący identyfikator GUID, na jego reprezentację binarną.
@@ -362,7 +362,7 @@ Funkcja CGuid konwertuje ciąg reprezentujący identyfikator GUID, na jego repre
 
 * Ciąg sformatowany w tym wzorcu: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx lub {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
-- - -
+---
 ### <a name="contains"></a>zawiera
 **Opis:**  
 Funkcja zawiera umożliwia znalezienie ciągu wewnątrz atrybutu wielowartościowego
@@ -386,7 +386,7 @@ W przypadku atrybutów odwołania przeszukiwanego ciągu musi dokładnie odpowia
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
 Jeśli atrybut proxyAddresses ma podstawowego adresu e-mail (wskazywanym przez wielkie litery "SMTP:"), zwracany jest atrybutem proxyAddress, w przeciwnym razie zwraca błąd.
 
-- - -
+---
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **Opis:**  
 Funkcja ConvertFromBase64 konwertuje wartość określonego zakodowane w formacie base64 regularne ciągu.
@@ -404,7 +404,7 @@ Funkcja ConvertFromBase64 konwertuje wartość określonego zakodowane w formaci
 
 Oba przykłady zwrócą "*Witaj świecie!* "
 
-- - -
+---
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **Opis:**  
 Funkcja ConvertFromUTF8Hex konwertuje określoną wartość Hex UTF8 zakodowane na ciąg.
@@ -422,7 +422,7 @@ Ten format jest używany przez usługę Azure Active Directory jako nazwa Wyró�
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
 Zwraca "*Witaj świecie!* "
 
-- - -
+---
 ### <a name="converttobase64"></a>ConvertToBase64
 **Opis:**  
 Funkcja ConvertToBase64 konwertuje ciąg na ciąg base64 Unicode.  
@@ -435,7 +435,7 @@ Konwertuje wartość tablicy liczb całkowitych na jego reprezentację ciągu r�
 `ConvertToBase64("Hello world!")`  
 Zwraca wartość "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
-- - -
+---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **Opis:**  
 Funkcja ConvertToUTF8Hex konwertuje ciąg na wartość Hex UTF8 zakodowany.
@@ -450,7 +450,7 @@ Format danych wyjściowych z tej funkcji jest używany przez usługę Azure Acti
 `ConvertToUTF8Hex("Hello world!")`  
 Zwraca 48656C6C6F20776F726C6421
 
-- - -
+---
 ### <a name="count"></a>Count
 **Opis:**  
 Count — funkcja zwraca liczbę elementów w atrybutu wielowartościowego
@@ -458,7 +458,7 @@ Count — funkcja zwraca liczbę elementów w atrybutu wielowartościowego
 **Składnia:**  
 `num Count(mvstr attribute)`
 
-- - -
+---
 ### <a name="cnum"></a>CNum
 **Opis:**  
 Funkcja CNum przyjmuje ciąg i zwraca dane typu liczbowego.
@@ -466,7 +466,7 @@ Funkcja CNum przyjmuje ciąg i zwraca dane typu liczbowego.
 **Składnia:**  
 `num CNum(str value)`
 
-- - -
+---
 ### <a name="cref"></a>CRef
 **Opis:**  
 Konwertuje ciąg na atrybut odwołania
@@ -477,7 +477,7 @@ Konwertuje ciąg na atrybut odwołania
 **Przykład:**  
 `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
 
-- - -
+---
 ### <a name="cstr"></a>CStr
 **Opis:**  
 Konwertuje funkcję CStr typie danych ciągu.
@@ -493,7 +493,7 @@ Konwertuje funkcję CStr typie danych ciągu.
 `CStr([dn])`  
 Zwracanie "cn = Jan, dc = contoso, dc = com"
 
-- - -
+---
 ### <a name="dateadd"></a>DateAdd
 **Opis:**  
 Zwraca wartość typu Date zawierającą datę, do której dodano określony przedział czasu.
@@ -519,7 +519,7 @@ Zwraca wartość typu Date zawierającą datę, do której dodano określony prz
 `DateAdd("m", 3, CDate("2001-01-01"))`  
 Dodaje 3 miesiące i zwraca wartość typu DateTime reprezentujący "2001-04-01".
 
-- - -
+---
 ### <a name="datefromnum"></a>DateFromNum
 **Opis:**  
 Konwertuje funkcję DateFromNum formatu wartości daty AD typu DateTime.
@@ -532,7 +532,7 @@ Konwertuje funkcję DateFromNum formatu wartości daty AD typu DateTime.
 `DateFromNum(129699324000000000)`  
 Zwraca wartość typu DateTime reprezentujący 2012-01-01-23:00:00
 
-- - -
+---
 ### <a name="dncomponent"></a>DNComponent
 **Opis:**  
 Funkcja DNComponent zwraca wartość określonego składnika DN z lewej strony.
@@ -547,7 +547,7 @@ Funkcja DNComponent zwraca wartość określonego składnika DN z lewej strony.
 `DNComponent(CRef([dn]),1)`  
 Jeśli nazwa wyróżniająca jest "cn = Jan, ou =...," zwraca Jan
 
-- - -
+---
 ### <a name="dncomponentrev"></a>DNComponentRev
 **Opis:**  
 Funkcja DNComponentRev zwraca wartość określonego składnika DN, przechodząc z prawej strony (Zakończ).
@@ -566,7 +566,7 @@ Jeśli nazwa wyróżniająca jest "cn = Jan, jednostki organizacyjnej Atlanta, o
 `DNComponentRev(CRef([dn]),1,"DC")`  
 Oba zwracają USA.
 
-- - -
+---
 ### <a name="error"></a>Błąd
 **Opis:**  
 Funkcja błędu jest używana do zwrócenia błędu niestandardowego.
@@ -578,7 +578,7 @@ Funkcja błędu jest używana do zwrócenia błędu niestandardowego.
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Jeśli accountName atrybut nie jest obecny, sygnalizować błąd, na obiekcie.
 
-- - -
+---
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **Opis:**  
 Funkcja EscapeDNComponent przyjmuje jeden składnik nazwy domen i jego specjalne, dzięki czemu mogą być reprezentowane w protokole LDAP.
@@ -590,7 +590,7 @@ Funkcja EscapeDNComponent przyjmuje jeden składnik nazwy domen i jego specjalne
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
 Zapewnia, że obiekt mogą być tworzone w katalogu LDAP, nawet wtedy, gdy atrybut displayName zawiera znaki, które muszą być wyjściowym w protokole LDAP.
 
-- - -
+---
 ### <a name="formatdatetime"></a>FormatDateTime
 **Opis:**  
 Funkcja FormatDateTime jest używany do formatowania daty/godziny do ciągu w określonym formacie
@@ -612,7 +612,7 @@ Wyniki w "2007-12-25".
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
 Może spowodować "20140905081453.0Z"
 
-- - -
+---
 ### <a name="guid"></a>Guid
 **Opis:**  
 Funkcja Guid generuje nowy, losowy identyfikator GUID
@@ -620,7 +620,7 @@ Funkcja Guid generuje nowy, losowy identyfikator GUID
 **Składnia:**  
 `str Guid()`
 
-- - -
+---
 ### <a name="iif"></a>IIF
 **Opis:**  
 IIF — funkcja zwraca jeden zestaw możliwych wartości na podstawie określonego warunku.
@@ -636,7 +636,7 @@ IIF — funkcja zwraca jeden zestaw możliwych wartości na podstawie określone
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Jeśli użytkownik jest serii, zwraca alias użytkownika za pomocą "t-" na początku jego else zwraca alias użytkownika, ponieważ jest.
 
-- - -
+---
 ### <a name="instr"></a>InStr
 **Opis:**  
 Funkcja InStr znajduje pierwsze wystąpienie podciągu w ciągu
@@ -662,7 +662,7 @@ Evalues 5
 `InStr("repEated","e",3,vbBinaryCompare)`  
 Daje w wyniku 7
 
-- - -
+---
 ### <a name="instrrev"></a>InStrRev
 **Opis:**  
 Funkcja InStrRev znajduje ostatnie wystąpienie podciągu w ciągu
@@ -684,7 +684,7 @@ Zwraca pozycję, której podciąg został znaleziony, lub 0, jeśli nie można o
 `InStrRev("abbcdbbbef","bb")`  
 Zwraca 7
 
-- - -
+---
 ### <a name="isbitset"></a>IsBitSet
 **Opis:**  
 Funkcja IsBitSet sprawdza, czy jest to nieco została ustawiona, czy nie
@@ -698,7 +698,7 @@ Funkcja IsBitSet sprawdza, czy jest to nieco została ustawiona, czy nie
 `IsBitSet(&HF,4)`  
 Zwraca wartość True, ponieważ wartość szesnastkową "F" jest ustawiony bit "4"
 
-- - -
+---
 ### <a name="isdate"></a>IsDate
 **Opis:**  
 Jeśli wyrażenie może być ocenia jako typ Data/Godzina, a następnie funkcja IsDate ma wartość True.
@@ -709,7 +709,7 @@ Jeśli wyrażenie może być ocenia jako typ Data/Godzina, a następnie funkcja 
 **Uwagi:**  
 Używany do określenia, jeśli CDate() może odnieść sukces.
 
-- - -
+---
 ### <a name="iscert"></a>IsCert
 **Opis:**  
 Zwraca wartość PRAWDA, jeśli danych pierwotnych może być serializowany do obiektu certyfikatu .NET X509Certificate2.
@@ -717,7 +717,7 @@ Zwraca wartość PRAWDA, jeśli danych pierwotnych może być serializowany do o
 **Składnia:**  
 `bool CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
-- - -
+---
 ### <a name="isempty"></a>IsEmpty
 **Opis:**  
 Jeśli atrybut znajduje się w CS lub MV, ale jest pustym ciągiem, następnie funkcja IsEmpty ma wartość True.
@@ -725,7 +725,7 @@ Jeśli atrybut znajduje się w CS lub MV, ale jest pustym ciągiem, następnie f
 **Składnia:**  
 `bool IsEmpty(var Expression)`
 
-- - -
+---
 ### <a name="isguid"></a>IsGuid
 **Opis:**  
 Jeśli ciąg można przekonwertować na identyfikator GUID, funkcja IsGuid obliczone na wartość true.
@@ -742,7 +742,7 @@ Używany do określenia, jeśli CGuid() może odnieść sukces.
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
 Jeśli StrAttribute ma format identyfikatora GUID, zwraca reprezentację binarną, w przeciwnym razie zwraca wartość Null.
 
-- - -
+---
 ### <a name="isnull"></a>IsNull
 **Opis:**  
 Jeśli wyrażenie ma wartość Null, funkcja IsNull zwraca wartość true.
@@ -757,7 +757,7 @@ Dla atrybutu o wartości Null jest wyrażona braku atrybutu.
 `IsNull([displayName])`  
 Zwraca wartość PRAWDA, jeśli ten atrybut nie jest obecny w CS lub MV.
 
-- - -
+---
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **Opis:**  
 Jeśli wyrażenie ma wartość null lub pusty ciąg, funkcja IsNullOrEmpty zwraca wartość true.
@@ -773,7 +773,7 @@ Odwrotność ta funkcja nosi nazwę IsPresent.
 `IsNullOrEmpty([displayName])`  
 Zwraca wartość PRAWDA, jeśli ten atrybut nie istnieje lub jest pustym ciągiem w CS lub MV.
 
-- - -
+---
 ### <a name="isnumeric"></a>IsNumeric
 **Opis:**  
 Funkcja IsNumeric zwraca wartość logiczną wskazującą, czy wyrażenie może przyjąć jako liczba typu.
@@ -784,7 +784,7 @@ Funkcja IsNumeric zwraca wartość logiczną wskazującą, czy wyrażenie może 
 **Uwagi:**  
 Pozwala określić, czy CNum() mogą być pomyślnie przeanalizować wyrażenia.
 
-- - -
+---
 ### <a name="isstring"></a>IsString
 **Opis:**  
 Jeśli do typu ciąg, można obliczyć wyrażenia, następnie funkcja IsString ma wartość True.
@@ -795,7 +795,7 @@ Jeśli do typu ciąg, można obliczyć wyrażenia, następnie funkcja IsString m
 **Uwagi:**  
 Pozwala określić, czy CStr() mogą być pomyślnie przeanalizować wyrażenia.
 
-- - -
+---
 ### <a name="ispresent"></a>IsPresent
 **Opis:**  
 Jeśli wyrażenie na ciąg, który nie ma wartości Null i nie jest pusta, funkcja IsPresent zwraca wartość true.
@@ -809,7 +809,7 @@ Odwrotność ta funkcja nosi nazwę IsNullOrEmpty.
 **Przykład:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
-- - -
+---
 ### <a name="item"></a>Element
 **Opis:**  
 Funkcja Item zwraca jeden element z ciągu/atrybutów wielowartościowych.
@@ -829,7 +829,7 @@ Zgłasza błąd, jeśli indeks jest poza granicami.
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Zwraca adres podstawowy adres e-mail.
 
-- - -
+---
 ### <a name="itemornull"></a>ItemOrNull
 **Opis:**  
 Funkcja ItemOrNull zwraca jeden element z ciągu/atrybutów wielowartościowych.
@@ -845,7 +845,7 @@ Funkcja ItemOrNull przydaje się wraz z funkcji zawiera od czasu ostatniego funk
 
 Jeśli indeks jest poza granicami, funkcja zwraca wartość Null.
 
-- - -
+---
 ### <a name="join"></a>Dołączanie
 **Opis:**  
 Funkcja sprzężenia przyjmuje parametry wielowartościowe i zwraca ciąg jednowartościowych przy użyciu określonego separatora wstawiany między poszczególne elementy.
@@ -864,7 +864,7 @@ Występuje parzystość między funkcjami dołączania i podziału. Funkcja sprz
 `Join([proxyAddresses],",")`  
 Zwracanie: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com"
 
-- - -
+---
 ### <a name="lcase"></a>LCase
 **Opis:**  
 Funkcja LCase konwertuje wszystkie znaki w ciągu na małe litery.
@@ -876,7 +876,7 @@ Funkcja LCase konwertuje wszystkie znaki w ciągu na małe litery.
 `LCase("TeSt")`  
 Zwraca "test".
 
-- - -
+---
 ### <a name="left"></a>po lewej stronie
 **Opis:**  
 Po lewej stronie funkcja zwraca określoną liczbę znaków z lewej strony ciągu.
@@ -900,7 +900,7 @@ Jeśli ciąg zawiera mniej znaków niż liczba numChars określonych w, zostanie
 `Left("John Doe", 3)`  
 Zwraca wartość "Joh".
 
-- - -
+---
 ### <a name="len"></a>Len
 **Opis:**  
 Funkcja Len zwraca liczbę znaków w ciągu.
@@ -912,7 +912,7 @@ Funkcja Len zwraca liczbę znaków w ciągu.
 `Len("John Doe")`  
 Zwraca 8
 
-- - -
+---
 ### <a name="ltrim"></a>LTrim
 **Opis:**  
 Funkcja LTrim usuwa wiodące spacje z ciągu.
@@ -924,7 +924,7 @@ Funkcja LTrim usuwa wiodące spacje z ciągu.
 `LTrim(" Test ")`  
 Zwraca "Test"
 
-- - -
+---
 ### <a name="mid"></a>MID
 **Opis:**  
 Funkcja Mid zwraca określoną liczbę znaków od określonej pozycji w ciągu.
@@ -955,7 +955,7 @@ Zwraca wartość "czy hn".
 `Mid("John Doe", 6, 999)`  
 Zwraca wartość "Doe"
 
-- - -
+---
 ### <a name="now"></a>teraz
 **Opis:**  
 Teraz funkcja zwraca wartość typu DateTime, określając aktualnej daty i godziny, zgodnie z systemowej daty i godziny na komputerze.
@@ -963,7 +963,7 @@ Teraz funkcja zwraca wartość typu DateTime, określając aktualnej daty i godz
 **Składnia:**  
 `dt Now()`
 
-- - -
+---
 ### <a name="numfromdate"></a>NumFromDate
 **Opis:**  
 Funkcja NumFromDate zwraca datę w formacie daty usługi AD.
@@ -975,7 +975,7 @@ Funkcja NumFromDate zwraca datę w formacie daty usługi AD.
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
 Zwraca 129699324000000000
 
-- - -
+---
 ### <a name="padleft"></a>padLeft
 **Opis:**  
 PadLeft — funkcja po lewej stronie podkładki ciąg do określonej długości, przy użyciu znaku podana dopełnienia.
@@ -1000,7 +1000,7 @@ PadLeft — funkcja po lewej stronie podkładki ciąg do określonej długości,
 `PadLeft("User", 10, "0")`  
 Zwraca wartość "000000User".
 
-- - -
+---
 ### <a name="padright"></a>Padright —
 **Opis:**  
 Padright — funkcja po prawej stronie podkładki ciąg do określonej długości, przy użyciu znaku podana dopełnienia.
@@ -1025,7 +1025,7 @@ Padright — funkcja po prawej stronie podkładki ciąg do określonej długośc
 `PadRight("User", 10, "0")`  
 Zwraca wartość "User000000".
 
-- - -
+---
 ### <a name="pcase"></a>PCase
 **Opis:**  
 Funkcja PCase konwertuje pierwszego znaku w każdym słowie rozdzielany spacjami ciąg na wielkie litery, a wszystkie inne znaki są konwertowane na małe litery.
@@ -1044,7 +1044,7 @@ Zwraca wartość "Test".
 `PCase(LCase("TEST"))`  
 Zwraca "Test"
 
-- - -
+---
 ### <a name="randomnum"></a>RandomNum
 **Opis:**  
 Funkcja RandomNum Zwraca losową liczbę między określonym przedziale czasu.
@@ -1059,7 +1059,7 @@ Funkcja RandomNum Zwraca losową liczbę między określonym przedziale czasu.
 `Random(100,999)`  
 Może zwracać 734.
 
-- - -
+---
 ### <a name="removeduplicates"></a>Removeduplicates —
 **Opis:**  
 Removeduplicates — funkcja przyjmuje parametry wielowartościowe i upewnij się, że każda wartość jest unikatowa.
@@ -1071,7 +1071,7 @@ Removeduplicates — funkcja przyjmuje parametry wielowartościowe i upewnij si�
 `RemoveDuplicates([proxyAddresses])`  
 Zwraca atrybutem proxyAddress oczyszczony, w której zostały usunięte wszystkie zduplikowane wartości.
 
-- - -
+---
 ### <a name="replace"></a>Replace
 **Opis:**  
 Funkcji Replace zamienia wszystkie wystąpienia ciągu do innego ciągu.
@@ -1094,7 +1094,7 @@ Funkcja rozpoznaje następujących monikerów specjalne:
 `Replace([address],"\r\n",", ")`  
 Zamienia CRLF przecinek i spacja i może prowadzić do "Jeden Microsoft sposób, Redmond, WA, USA"
 
-- - -
+---
 ### <a name="replacechars"></a>ReplaceChars
 **Opis:**  
 Funkcja ReplaceChars zamienia wszystkie wystąpienia znaków znalezionych w ciągu ReplacePattern.
@@ -1127,7 +1127,7 @@ Zwraca Raksmorgas
 `ReplaceChars("O’Neil",%ReplaceString%)`  
 Zwraca "ONeil" jeden znacznik jest zdefiniowana ma zostać usunięty.
 
-- - -
+---
 ### <a name="right"></a>Prawe
 **Opis:**  
 Right — funkcja zwraca określoną liczbę znaków z prawej strony (Zakończ) w ciągu.
@@ -1153,7 +1153,7 @@ Jeśli ciąg zawiera mniej znaków niż liczba NumChars określonych w, zostanie
 `Right("John Doe", 3)`  
 Zwraca wartość "Doe".
 
-- - -
+---
 ### <a name="rtrim"></a>Przytk
 **Opis:**  
 Funkcja RTrim usuwa spacje końcowe z ciągu.
@@ -1165,7 +1165,7 @@ Funkcja RTrim usuwa spacje końcowe z ciągu.
 `RTrim(" Test ")`  
 Zwraca wartość "Test".
 
-- - -
+---
 ### <a name="select"></a>Wybierz
 **Opis:**  
 Wszystkie wartości w atrybutu wielowartościowego (lub danych wyjściowych wyrażenia) na podstawie funkcji określony proces.
@@ -1183,7 +1183,7 @@ Wszystkie wartości w atrybutu wielowartościowego (lub danych wyjściowych wyra
 `Select($item,[otherPhone],Replace($item,"-",""))`  
 Zwraca wszystkie wartości w faksów atrybutu wielowartościowego, po usunięciu łączniki (-).
 
-- - -
+---
 ### <a name="split"></a>Podziel
 **Opis:**  
 Funkcja Split ciąg znaków oddzielonych ogranicznik i sprawia, że parametry wielowartościowe.
@@ -1200,7 +1200,7 @@ Funkcja Split ciąg znaków oddzielonych ogranicznik i sprawia, że parametry wi
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
 Zwraca ciąg wielokrotne z 2 elementami jest przydatne w przypadku atrybutem proxyAddress.
 
-- - -
+---
 ### <a name="stringfromguid"></a>StringFromGuid
 **Opis:**  
 Funkcja StringFromGuid trwa binarne identyfikator GUID i konwertuje ją na ciąg
@@ -1208,7 +1208,7 @@ Funkcja StringFromGuid trwa binarne identyfikator GUID i konwertuje ją na ciąg
 **Składnia:**  
 `str StringFromGuid(bin GUID)`
 
-- - -
+---
 ### <a name="stringfromsid"></a>StringFromSid
 **Opis:**  
 Funkcja StringFromSid konwertuje tablicę bajtów zawierającą identyfikator zabezpieczeń na ciąg.
@@ -1216,7 +1216,7 @@ Funkcja StringFromSid konwertuje tablicę bajtów zawierającą identyfikator za
 **Składnia:**  
 `str StringFromSid(bin ObjectSID)`  
 
-- - -
+---
 ### <a name="switch"></a>Przełącznik
 **Opis:**  
 Funkcja przełącznik jest używana do zwracać pojedynczą wartość, w oparciu o ocenionych warunków.
@@ -1245,7 +1245,7 @@ Wartość może być również funkcję błędu, co zwróciłoby niestandardowy 
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
 Zwraca język używany w niektórych głównych miast, w przeciwnym razie zwraca błąd.
 
-- - -
+---
 ### <a name="trim"></a>TRIM
 **Opis:**  
 Funkcja przycinania usuwa wiodące i końcowe białe znaki z ciągu.
@@ -1260,7 +1260,7 @@ Zwraca wartość "Test".
 `Trim([proxyAddresses])`  
 Usuwa spacje dla każdej wartości w atrybucie proxyAddress początkowe i końcowe.
 
-- - -
+---
 ### <a name="ucase"></a>UCase
 **Opis:**  
 Funkcja UCase konwertuje wszystkie znaki w ciągu na wielkie litery.
@@ -1272,7 +1272,7 @@ Funkcja UCase konwertuje wszystkie znaki w ciągu na wielkie litery.
 `UCase("TeSt")`  
 Zwraca "TEST".
 
-- - -
+---
 ### <a name="where"></a>Lokalizacja
 
 **Opis:**  
@@ -1290,7 +1290,7 @@ Zwraca podzestaw elementów wartości z atrybutu wielowartościowego (lub danych
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
 Zwraca wartości certyfikatu w userCertificate atrybutu wielowartościowego, która nie wygasła.
 
-- - -
+---
 ### <a name="with"></a>Zawiera
 **Opis:**  
 Funkcja With udostępnia uproszczenie złożone wyrażenie, przy użyciu zmiennej do reprezentowania Podwyrażenie, który pojawia się jeden lub więcej razy w złożonych wyrażeń.
@@ -1308,7 +1308,7 @@ Jest funkcjonalnie równoważne:
 W atrybucie certyfikatu użytkownika, która zwraca tylko wartości niewygasłe certyfikatu.
 
 
-- - -
+---
 ### <a name="word"></a>Word
 **Opis:**  
 Funkcja programu Word zwraca wyrazu w ciągu, w oparciu o parametry opisujące ograniczników do używany wraz z numerem programu word do zwrócenia.

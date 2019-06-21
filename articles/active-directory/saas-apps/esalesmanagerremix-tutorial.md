@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f2a3bb666e40f1aafd921d70d93133ca9139b38
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65406948"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integracja usługi Azure Active Directory z Remix kierownikiem ds. sprzedaży E
@@ -103,14 +103,14 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i k
 
     a. W **adres URL logowania** wpisz adres URL w następującym formacie: *https://\<Server-na podstawie-URL > /\<domeny podrzędnej > / esales-pc*.
 
-    b. W **identyfikator** wpisz adres URL w następującym formacie: *https://\<Server-na podstawie-URL > /\<domeny podrzędnej > /*.
+    b. W **identyfikator** wpisz adres URL w następującym formacie: *https://\<Server-na podstawie-URL > /\<domeny podrzędnej > /* .
 
     c. Uwaga **identyfikator** wartości do późniejszego użycia w ramach tego samouczka.
     
     > [!NOTE] 
     > Podane wyżej wartości nie są rzeczywiste. Zaktualizuj je przy użyciu rzeczywistego adresu logowania i identyfikator. Aby uzyskać wartości, skontaktuj się z pomocą [zespołem pomocy technicznej klienta Remix E Sales Manager](mailto:esupport@softbrain.co.jp).
 
-1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **certyfikat (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
+1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikat (Base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
@@ -158,7 +158,7 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i k
     
     b. W **elementu współpracy** sekcji z listy rozwijanej wybierz **e-mail**.
 
-    c. W **elementu współpracy** pole, Wklej wartość oświadczenia, które wcześniej zostały skopiowane z witryny Azure portal (czyli **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. W **elementu współpracy** pole, Wklej wartość oświadczenia, które wcześniej zostały skopiowane z witryny Azure portal (czyli **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ).
 
     d. W **wystawcy (identyfikator jednostki)** pole, Wklej wartość identyfikatora, który został wcześniej skopiowany z **E Sales Manager Remix domena i adresy URL** części witryny Azure portal.
 

@@ -2,37 +2,27 @@
 title: Jak zablokować starsze uwierzytelnianie w usłudze Azure Active Directory (Azure AD) przy użyciu dostępu warunkowego | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zwiększyć poziom bezpieczeństwa przez blokowanie starsze uwierzytelnianie przy użyciu dostępu warunkowego usługi Azure AD.
 services: active-directory
-keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: conditional-access
+ms.topic: conceptual
+ms.date: 06/17/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: ''
-ms.subservice: conditional-access
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
-ms.service: active-directory
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 03/25/2019
-ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a638b501ea04db787ca366aa015850d94eb475ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2120466652db363206ec20c2303ad56670228c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112704"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164797"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: Blokuj starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego   
 
 Aby dać użytkownikom łatwy dostęp do aplikacji w chmurze, Azure Active Directory (Azure AD) obsługuje szerokiej gamy protokołów uwierzytelniania, w tym starsze uwierzytelnianie. Uwierzytelnianie wieloskładnikowe (MFA) nie obsługuje jednak starszych protokołów. Uwierzytelnianie wieloskładnikowe w wielu środowiskach jest typowym wymogiem na kradzież tożsamości adresu. 
 
-
 Czy środowisko jest gotowe do bloku starszych uwierzytelniania w celu zwiększenia ochrony Twojej dzierżawy, można osiągnąć ten cel przy użyciu dostępu warunkowego. W tym artykule opisano sposób konfigurowania zasad dostępu warunkowego, które zablokowanie starszych uwierzytelniania dla dzierżawy.
-
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,8 +30,6 @@ W tym artykule założono, że znasz:
 
 - [Podstawowe pojęcia](overview.md) dostępu warunkowego usługi Azure AD 
 - [Najlepsze praktyki](best-practices.md) na temat konfigurowania zasad dostępu warunkowego w witrynie Azure portal
-
-
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -57,12 +45,21 @@ Jak można zapobiec aplikacji korzystających z uwierzytelniania starszej wersji
 
 Po zakończeniu pierwszego czynnika, wymuszane są zasady dostępu warunkowego. W związku z tym dostęp warunkowy nie jest przeznaczony jako pierwszy defense wiersza dla scenariuszy, takich jak ataki (DoS) typu "odmowa usługi", ale mogą korzystać z sygnałów z tych zdarzeń (np. poziom ryzyka logowania, lokalizacja żądania, i tak dalej) w celu określenia dostępu do.
 
-
-
-
 ## <a name="implementation"></a>Wdrażanie
 
 W tej sekcji opisano sposób konfigurowania zasad dostępu warunkowego w celu uwierzytelniania starszych bloku. 
+
+### <a name="identify-legacy-authentication-use"></a>Identyfikowanie starszych uwierzytelniania użycia
+
+Zanim zablokujesz starsze uwierzytelnianie w katalogu, należy najpierw zrozumieć, jeśli użytkownicy mają aplikacje, które używają starszych uwierzytelniania i jak wpływa na ogólne katalogu. Dzienniki logowania usługi AD platformy Azure może służyć do zrozumienia, jeśli używasz starszej wersji uwierzytelniania.
+
+1. Przejdź do **witryny Azure portal** > **usługi Azure Active Directory** > **logowania**.
+1. Dodaj kolumnę aplikacji klienckiej, jeśli nie jest wyświetlany, klikając **kolumn** > **aplikację kliencką**.
+1. Filtruj według **aplikację kliencką** > **innych klientów** i kliknij przycisk **Zastosuj**.
+
+Filtrowanie będzie tylko nieudane próby show logowania wprowadzono protokoły uwierzytelniania w starszej wersji. Kliknięcie każdego poszczególnych prób logowania zostanie wyświetlona dodatkowe szczegóły. **Aplikację kliencką** pola pod **podstawowe informacje o** kartę poinformuje, użyty protokół uwierzytelniania starszej wersji.
+
+Te dzienniki będą wskazywać użytkowników, którzy są nadal w zależności od starszego uwierzytelniania i aplikacji, które używają starszych protokołów uwierzytelniania żądań. Dla użytkowników, którzy nie są wyświetlane w tych dziennikach i zostało potwierdzone nie korzystać z uwierzytelniania starszej wersji należy zaimplementować zasady dostępu warunkowego dla tych użytkowników tylko.
 
 ### <a name="block-legacy-authentication"></a>Blokowanie starszego uwierzytelniania 
 

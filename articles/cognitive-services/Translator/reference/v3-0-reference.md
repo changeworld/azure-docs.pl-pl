@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58ff566ebb83ed6163637aa3899a925ed06242a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387511"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269222"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -154,6 +154,7 @@ Kod błędu to łączenie liczb 6-cyfrowym, 3-cyfrowy kod stanu HTTP następuje 
 | 400075| Kombinacja pary i kategorii języka jest nieprawidłowa.|
 | 400077| Rozmiar maksymalny żądania został przekroczony. Widok [limity żądań](../request-limits.md).|
 | 400079| Nie ma żądanego translacji od i do języka systemu niestandardowych.|
+| 400080| Transliterację nie jest obsługiwana dla języka lub skryptu.|
 | 401000| Żądanie nie ma uprawnień, ponieważ poświadczenia są brakujący lub nieprawidłowy.|
 | 401015| "Są podane poświadczenia dla interfejsu API rozpoznawania mowy. To żądanie wymaga poświadczeń dla interfejsu API tłumaczenia tekstu. Użyj subskrypcji interfejsu API tłumaczenia tekstu."|
 | 403000| Operacja nie jest dozwolona.|

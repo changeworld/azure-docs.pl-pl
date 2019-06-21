@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: Python i interfejsów API REST — usługa Azure Search'
 description: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu języka Python, notesy Jupyter i interfejsu API REST usługi Azure Search.
-ms.date: 06/11/2019
+ms.date: 06/20/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c519cbd151ac3008593e3309930db4e9a9414e51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 227da2739216961dcd1f2fb8c643703a1b62e51a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056643"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302275"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu notesów programu Jupyter w języku Python
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "67056643"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Tworzenie notesu programu Jupyter, który tworzy, ładuje i zapytania indeksu usługi Azure Search przy użyciu języka Python i [interfejsów API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). W tym artykule opisano sposób tworzenia notesu krok po kroku, zaczynając od podstaw. Można również uruchomić Zakończono notesu. Aby pobrać kopię, przejdź do [repozytorium Azure-Search-python-samples](https://github.com/Azure-Samples/azure-search-python-samples).
+Tworzenie notesu programu Jupyter, który tworzy, ładuje i zapytania indeksu usługi Azure Search przy użyciu języka Python i [interfejsów API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). W tym artykule opisano sposób tworzenia notesu krok po kroku, zaczynając od podstaw. Można również uruchomić Zakończono notesu. Aby pobrać kopię, przejdź do[repozytorium azure-aearch-python-samples](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

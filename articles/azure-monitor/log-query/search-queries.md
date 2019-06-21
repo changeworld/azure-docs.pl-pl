@@ -13,20 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: b5860243b6b605288aaf8d6dffe2260bc031a592
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b118740f3a57e168c5dfb071c199bcf424bd5113
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65560841"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295554"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Zapytania wyszukiwania w dziennikach w usłudze Azure Monitor
-
-> [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 Usługa Azure Monitor dziennika zapytań można uruchomić w nazwie tabeli lub polecenie wyszukiwania. Ten samouczek obejmuje zapytań na podstawie wyszukiwania. Istnieją zalety łączenia poszczególnych metod.
 
 Zapytania w oparciu o tabelę początek zakresu zapytania i dlatego zwykle bardziej efektywne niż zapytania wyszukiwania. Zapytania wyszukiwania są mniej strukturalnych, co sprawia, że ich lepszym rozwiązaniem podczas wyszukiwania określonej wartości w kolumnach lub tabel. **Wyszukiwanie** może skanować wszystkie kolumny w danej tabeli lub wszystkie tabele dla określonej wartości. Ilość przetwarzanych danych może być ogromną, dlatego te zapytania może potrwać dłużej i może zwrócić bardzo dużych zestawów wyników.

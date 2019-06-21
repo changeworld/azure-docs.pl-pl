@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 29b74aeaaae0bcfd5f6ae4a3c38cc00176292899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0959be545f541da2f0efd5bd1e8cc209ab5a0996
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66386912"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275412"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Formaty i nazewnictwa wskazówki Konwencji dokumentów
 
@@ -37,7 +37,7 @@ Poniższa tabela zawiera wszystkie obsługiwane formaty plików, które można u
 
 ## <a name="dictionary-formats"></a>Słownik formatów
 
-Słowników niestandardowe w usłudze Translator obsługuje wszystkie formaty plików, które te są obsługiwane przez zestaw szkoleniowy. Jeśli używasz programu Excel słownika, upewnij się, że pierwszy wiersz / wiersz arkusz kalkulacyjny powinien być kodów języków.
+Słowników niestandardowe w usłudze Translator obsługuje wszystkie formaty plików, które są obsługiwane w przypadku szkolenia zestawów. Jeśli używasz słownika Excel pierwszy wiersz / wiersz arkusz kalkulacyjny powinien być kodów języków.
 
 ## <a name="zip-file-formats"></a>Formaty plików zip
 

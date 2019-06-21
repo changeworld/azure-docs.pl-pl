@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 21eec5ee2fef185a927f6a416732303765e02b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 468bcdb6aa688157196bb9cba8added623a857d3
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789319"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155306"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
@@ -55,7 +55,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 | Azure Batch |[Usługa Azure Batch rejestrowanie diagnostyczne](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Usługa Azure Database for MySQL — dzienniki diagnostyczne](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Usługa Azure Database for postgresql w warstwie dzienników diagnostycznych](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Cognitive Services | Schemat nie jest dostępna. |
+| Cognitive Services | [Rejestrowanie diagnostyczne dla usług Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Content Delivery Network | [Dzienniki diagnostyczne platformy Azure dla usługi CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Rejestrowanie usługi Azure Cosmos DB](../../cosmos-db/logging.md) |
 | Fabryka danych | [Monitorowanie fabryki danych przy użyciu usługi Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
@@ -209,4 +209,3 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 * [Stream dzienników diagnostycznych zasobów do **usługi Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Zmień ustawienia diagnostyczne zasobów przy użyciu interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Analizowanie dzienników z usługi Azure storage za pomocą usługi Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-

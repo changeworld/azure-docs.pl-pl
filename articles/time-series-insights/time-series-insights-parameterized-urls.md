@@ -6,23 +6,23 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfc04397b1d7e9f3256810cbe469067ae52c99bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: df60429a8b3d6fbdc504a7605d1502b4e084d386
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238977"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165301"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 
 Aby udostępnić widok niestandardowy w Eksplorator usługi Time Series Insights, można programowo utworzyć sparametryzowany adres URL widoku niestandardowego.
 
-Eksplorator usługi Time Series Insights obsługuje parametry zapytań URL możesz określić widoki w środowisku bezpośrednio z adresu URL. Na przykład przy użyciu tylko adresu URL możesz określić środowisko docelowe, predykat wyszukiwania i żądany przedział czasu. Gdy użytkownik kliknie dostosowany adres URL, interfejs udostępni link bezpośrednio do tego zasobu w portalu usługi Time Series Insights. Obowiązują zasady dostępu do danych.
+Eksplorator usługi Time Series Insights obsługuje parametry zapytań URL możesz określić widoki w środowisku bezpośrednio z adresu URL. Na przykład przy użyciu tylko adresu URL możesz określić środowisko docelowe, predykat wyszukiwania i żądany przedział czasu. Gdy użytkownik wybierze dostosowany adres URL, interfejs udostępni link bezpośrednio do tego zasobu w portalu usługi Time Series Insights. Obowiązują zasady dostępu do danych.
 
 > [!TIP]
 > * Wyświetl bezpłatne [pokaz usługi Time Series Insights](https://insights.timeseries.azure.com/samples).

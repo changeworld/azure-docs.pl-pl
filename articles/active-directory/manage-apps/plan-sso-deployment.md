@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8cebbd7c60715bc90412d9f53458edfee6c56d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5278d504c43688bf064b869982938db52b1b1bf
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108197"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164952"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planowanie wdrożenia pojedynczego logowania jednokrotnego
 
@@ -61,9 +61,9 @@ Istnieją dwa podstawowe sposoby, w których umożliwia użytkownikom logowanie 
 
 Używanie programu Azure AD na podstawie hasła logowania jednokrotnego wymaga wdrażania rozszerzenia przeglądarki, która bezpiecznie pobierze poświadczenia i wypełnianie formularzy logowania. Zdefiniowanie zasad, aby wdrożyć rozszerzenie na dużą skalę z [obsługiwanych przeglądarek](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Opcje obejmują:
 
-- [Zasady grupy dla programu Internet Explorer ](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [Program System Center Configuration Manager (SCCM) dla programu Internet Explorer ](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
-- [Użytkownik, oparte na pobieranie i konfiguracji dla programu Chrome, Firefox, Microsoft Edge lub programu Internet Explorer ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Zasady grupy dla programu Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
+- [Program System Center Configuration Manager (SCCM) dla programu Internet Explorer](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+- [Użytkownik, oparte na pobieranie i konfiguracji dla programu Chrome, Firefox, Microsoft Edge lub programu Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 Aby dowiedzieć się więcej, zobacz [sposób konfigurowania pojedynczego hasła logowania](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
 

@@ -1,22 +1,22 @@
 ---
-title: Automatyzowanie systemu operacyjnego i framework poprawek za pomocą usługi Azure Container rejestru zadania (ACR)
-description: Wprowadzenie do usługi ACR zadania, zestaw funkcji w usłudze Azure Container Registry, która zapewnia bezpieczny, automatyczne tworzenie obrazu kontenera i instalowanie poprawek w chmurze.
+title: Automatyzuj kompilowanie i stosowanie poprawek obrazy kontenera przy użyciu usługi Azure Container rejestru zadania (ACR)
+description: Wprowadzenie do usługi ACR zadania, zestaw funkcji w usłudze Azure Container Registry, zapewniająca kompilacji obrazu kontenera bezpieczne, automatyczne, zarządzania i instalowanie poprawek w chmurze.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: cc182743c3879ab2748f92022437bc23c26c371c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 5089650996693b81e548bba8d89c0de29a8afd93
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65977198"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147981"
 ---
-# <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatyzowanie systemu operacyjnego i framework poprawek za pomocą zadań usługi ACR
+# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji obrazów kontenera i konserwacji za pomocą zadań usługi ACR
 
-Kontenery zapewniają na nowym poziomie wirtualizacji, izolowanie zależności aplikacji i dla deweloperów z infrastrukturą i wymagań operacyjnych. Co jeszcze pozostało, jest jednak trzeba rozwiązać, jak ta Wirtualizacja aplikacji jest zastosowana poprawka.
+Kontenery zapewniają na nowym poziomie wirtualizacji, izolowanie zależności aplikacji i dla deweloperów z infrastrukturą i wymagań operacyjnych. Co jeszcze pozostało, jest jednak trzeba rozwiązać jak zarządzane i zastosować poprawki względem jakiegokolwiek z cyklem kontenera wirtualizacji tej aplikacji.
 
 ## <a name="what-is-acr-tasks"></a>Co to jest zadania rejestru Azure container Registry?
 
@@ -46,8 +46,7 @@ W poniższej tabeli przedstawiono kilka przykładów kontekstu obsługiwane loka
 | Lokalny system plików | Pliki w katalogu w lokalnym systemie plików. | `/home/user/projects/myapp` |
 | Gałąź główna w witrynie GitHub | Pliki znajdujące się w głównym (lub inne domyślne) gałęzi z repozytorium GitHub.  | `https://github.com/gituser/myapp-repo.git` |
 | Gałąź usługi GitHub | Konkretne Rozgałęzienie repozytorium GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| Żądania Ściągnięcia w serwisie GitHub | Żądania ściągnięcia w repozytorium GitHub. | `https://github.com/gituser/myapp-repo.git#pull/23/head` |
-| Podfolder usługi GitHub | Pliki w podfolderze w repozytorium GitHub. Przykład pokazuje kombinacji żądania Ściągnięcia oraz w podfolderze specyfikacji. | `https://github.com/gituser/myapp-repo.git#pull/24/head:myfolder` |
+| Podfolder usługi GitHub | Pliki w podfolderze w repozytorium GitHub. Przykład pokazuje kombinacji specyfikacji gałęzi i podfolderów. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | Zdalnego pliku tar | Pliki skompresowane archiwum na zdalnym serwerze sieci Web. | `http://remoteserver/myapp.tar.gz` |
 
 Rejestru Azure container Registry zadania został zaprojektowany jako cyklu życia kontenera pierwotnych. Na przykład można zintegrować ACR zadania do rozwiązania ciągłej integracji/ciągłego wdrażania. Wykonując [az login] [ az-login] z [nazwy głównej usługi][az-login-service-principal], następnie wydać rozwiązanie ciągłej integracji/ciągłego Dostarczania [az acr kompilacji] [ az-acr-build] polecenia, aby uruchamiał obrazu kompilacji.
@@ -65,7 +64,7 @@ Dowiedz się, jak wyzwolić kompilacje przy zatwierdzeniu kodu źródłowego w d
 
 ## <a name="automate-os-and-framework-patching"></a>Automatyzowanie systemu operacyjnego i stosowanie poprawek framework
 
-Możliwości zadania rejestru Azure container Registry, aby naprawdę zwiększenia pracy kompilacji kontenera pochodzi z jego możliwości, aby wykrywać aktualizację obrazu podstawowego. Wypchnięcie zaktualizowanego obrazu do rejestru ACR zadania automatycznie tworzyć żadnych obrazów aplikacji na jego podstawie.
+Możliwości zadania rejestru Azure container Registry, aby naprawdę zwiększenia pracy kompilacji kontenera pochodzi z jego możliwości, aby wykrywać aktualizację obrazu podstawowego. Zaktualizowany obraz podstawowy jest wypchnięte do rejestru obraz podstawowy jest aktualizowana w repozytorium publicznego, takie jak usługi Docker Hub, oraz zadania usługi ACR automatycznie tworzyć żadnych obrazów aplikacji na jego podstawie.
 
 Obrazy kontenerów można ogólnie podzielić na *podstawowy* obrazów i *aplikacji* obrazów. Twoje obrazy podstawowe zwykle obejmują systemu operacyjnego i struktur aplikacji, od których aplikacja jest wbudowana, wraz z innych dostosowań. Te obrazy podstawowe są zazwyczaj na podstawie publicznego obrazów nadrzędnego, na przykład: [Firma Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet], lub [środowiska Node.js ][base-node]. Kilka obrazów aplikacji może udostępniać typowe obrazu podstawowego.
 
@@ -76,7 +75,7 @@ Ponieważ zadania rejestru Azure container Registry umożliwia odnalezienie zale
 Więcej informacji na temat systemu operacyjnego i framework poprawki w to trzeci samouczek zadania ACR [Automatyzacja obrazu jest oparta na aktualizacji obrazów podstawowych zadań rejestru kontenera platformy Azure](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> Obraz podstawowy aktualizuje wyzwalacz kompilacji tylko wtedy, gdy zarówno obrazy podstawowych i aplikacji znajdują się w tej samej usłudze Azure container registry lub bazie znajduje się w publicznym repozytorium usługi Docker Hub.
+> Obecnie obrazu podstawowego aktualizuje wyzwalacz kompilacji tylko wtedy, gdy zarówno obrazy podstawowych i aplikacji znajdują się w tej samej usłudze Azure container registry lub bazie znajduje się w publicznym repozytorium usługi Docker Hub lub Microsoft Container Registry.
 
 ## <a name="multi-step-tasks"></a>Zadania wieloetapowe
 

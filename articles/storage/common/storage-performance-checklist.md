@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 83f202f087d51b7742a74cf5ee5db8bd5fee5385
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c5bbd19969349965ea20fa4cfc09e10119a9a86c
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073717"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295746"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna wydajności i skalowalności usługi Microsoft Azure Storage
 
@@ -109,7 +109,7 @@ Jeśli zbliża się limit kont magazynu, posiadane w połączeniu określonej su
 Jeśli aplikacja zbliża się do wartości docelowe skalowalności pojedynczego konta magazynu, należy rozważyć przyjęcie jedną z następujących metod:  
 
 * Ponowne rozpatrzenie obciążenia, które powoduje, że aplikacja podejście lub przekracza tę docelową skalowalność. Można zaprojektować, jest inaczej użycie mniejszej przepustowości lub pojemności lub mniejszej liczby transakcji?
-* Jeśli aplikacja może przekraczać jeden cele skalowalności, należy utworzyć wiele kont magazynu i partycji danych aplikacji na tych wielu kontach magazynu. Jeśli używasz tego wzorca, następnie należy projektowanie aplikacji tak, aby dodać więcej kont magazynu w przyszłości do równoważenia obciążenia. W czasie pisania Każda subskrypcja platformy Azure może mieć maksymalnie 100 kont magazynu.  Konta magazynu mają również bezpłatnie niż użycie pod względem — dane przechowywane, transakcje, wprowadzonych lub przesłanych danych.
+* Jeśli aplikacja może przekraczać jeden cele skalowalności, należy utworzyć wiele kont magazynu i partycji danych aplikacji na tych wielu kontach magazynu. Jeśli używasz tego wzorca, następnie należy projektowanie aplikacji tak, aby dodać więcej kont magazynu w przyszłości do równoważenia obciążenia. W czasie pisania Każda subskrypcja platformy Azure może mieć do 250 kont magazynu na region (jeśli jest wdrażane za pomocą modelu usługi Azure Resource Manager).  Konta magazynu mają również bezpłatnie niż użycie pod względem — dane przechowywane, transakcje, wprowadzonych lub przesłanych danych.
 * Jeśli aplikacja osiągnie cele przepustowości, należy wziąć pod uwagę kompresji danych w kliencie w celu zmniejszenia obciążenia przepustowości wymagane, aby wysyłać dane do usługi storage.  Chociaż może to oszczędzić przepustowość i zwiększyć wydajność sieci, może też mieć pewne negatywnego wpływu.  Należy ocenić wpływ na wydajność tej ze względu na wymagania dodatkowego przetwarzania do kompresowania i dekompresowania danych w kliencie. Ponadto przechowywane skompresowane dane mogą utrudnić do rozwiązywania problemów, ponieważ może to być trudniejsze do wyświetlania przechowywanych danych przy użyciu standardowych narzędzi.
 * Jeśli aplikacja osiągnie cele skalowalności, upewnij się, że używasz wykładniczego wycofywania ponownych prób (zobacz [ponownych prób](#subheading14)).  Zaleca się upewnić się, nigdy nie podejście cele skalowalności (przy użyciu jednej z metod powyżej), ale daje to pewność, że aplikacja nie będzie po prostu ponawiać szybko, co gorsza ograniczania.  
 

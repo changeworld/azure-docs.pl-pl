@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 56ba2dfebeb47f7e12a2693eae443e3c31e2a4dd
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 982c5dcc052f92afe381235db0bf066262fd82c6
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203102"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304285"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -20,7 +20,7 @@ Wprowadzamy pewne ważne zmiany do obsługi więcej szczegółową kontrolę dos
 
 ## <a name="what-is-changing"></a>Co ulega zmianie?
 
-Wcześniej, wpisów tajnych mogą być uzyskane za pośrednictwem interfejsu API HDInsight przez klaster użytkowników posiadających właściciela, współautora lub czytelnika [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), tak jakby były dostępne dla każdego z `*/read` uprawnienie nie jest wymagana.
+Wcześniej, wpisów tajnych mogą być uzyskane za pośrednictwem interfejsu API HDInsight przez klaster użytkowników posiadających właściciela, współautora lub czytelnika [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), tak jakby były dostępne dla każdego z `*/read` uprawnień.
 Idąc dalej, uzyskiwanie dostępu do tych kluczy tajnych będzie wymagać `Microsoft.HDInsight/clusters/configurations/*` uprawnienie, co oznacza, nie będzie można do nich przez użytkowników z roli Czytelnik. Klucze tajne są definiowane jako wartości, które mogłyby zostać użyte w celu uzyskania bardziej podwyższonego poziomu dostępu, niż rola użytkownika powinien zezwalać na. Obejmują one wartości, takich jak klaster bramy HTTP poświadczeń, klucze konta magazynu i poświadczenia bazy danych.
 
 Ponadto wprowadzamy nowe [Operator klastra HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) roli, który ma być możliwe do pobierania wpisów tajnych, bez konieczności udzielania uprawnień administracyjnych, współautora lub właściciela. Podsumowując:

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 05/29/2019
 ms.author: dalek
-ms.openlocfilehash: ebcb0922335a2bdc5423ec4e4bfce7c1cd71c46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 188911fa3fb872c8db1612406bf3d4e9b36d837b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357278"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303846"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użycia i kosztów dla usługi Application Insights
 
@@ -30,7 +30,7 @@ Jeśli masz pytania na temat cen usługi Application Insights, możesz zadać py
 
 ## <a name="pricing-model"></a>Model cen
 
-Cennik usługi [usługi Azure Application Insights] [ start] jest oparty na wolumenie danych pozyskanych. Każdy zasób usługi Application Insights jest rozliczane jako osobną usługą i przyczynia się do rachunek dla subskrypcji platformy Azure.
+Cennik usługi [usługi Azure Application Insights][start] jest oparty na wolumenie danych pozyskanych. Każdy zasób usługi Application Insights jest rozliczane jako osobną usługą i przyczynia się do rachunek dla subskrypcji platformy Azure.
 
 ### <a name="data-volume-details"></a>Szczegóły wolumin danych
 
@@ -38,11 +38,12 @@ Cennik usługi [usługi Azure Application Insights] [ start] jest oparty na wolu
 * Opłaty za objętość danych aplikacji są teraz zgłaszane na nowych liczników rozliczeń o nazwie **pozyskiwanie danych** od kwietnia 2018 r. Ten nowy licznik jest współużytkowany przez monitorowanie technologii, takich jak aplikacje Insights i Log Analytics i jest obecnie dostępna w obszarze nazwy usługi **usługi Log Analytics**. 
 * [Live Stream metryki](../../azure-monitor/app/live-stream.md) danych nie jest liczony cennik celów.
 
-Dla bieżącego cen w regionie i waluty, zobacz [cen usługi Application Insights][pricing].
+> [!NOTE]
+> Wszystkie ceny wyświetlane na zrzutach ekranu w tym artykule są na przykład tylko do celów. Dla bieżącego cenach w regionie i waluty, zobacz [cen usługi Application Insights][pricing].
 
 ### <a name="multi-step-web-tests"></a>Wieloetapowe testy sieci Web
 
-[Wieloetapowe testy sieci web](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) pociągnąć za sobą dodatkowych opłat. Wieloetapowe testy sieci web są testy sieci web, które wykonują sekwencję akcji.
+[Wieloetapowe testy sieci web](../../azure-monitor/app/availability-multistep.md) pociągnąć za sobą dodatkowych opłat. Wieloetapowe testy sieci web są testy sieci web, które wykonują sekwencję akcji.
 
 Nie ma osobnych opłat dla *testów ping* z jednej strony. Dane telemetryczne z testów ping i wieloetapowe testy są naliczane opłaty taki sam jak inne dane telemetryczne z Twojej aplikacji.
 
@@ -53,7 +54,7 @@ Usługa Application Insights ułatwia zrozumienie, jakie mogą opierać się na 
 ![Wybierz cennik](./media/pricing/pricing-001.png)
 
 A. Sprawdź ilość danych na miesiąc. Obejmuje to wszystkie dane, które otrzymał i przechowywane (po jednej [próbkowania](../../azure-monitor/app/sampling.md)) z serwera i aplikacje klienckie i testy dostępności.  
-B. Osobna opłata zostanie przeprowadzona dla [wieloetapowe testy sieci web](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests). (Nie obejmuje to testy dostępności proste, które są zawarte w Twoich rękach woluminów danych.)  
+B. Osobna opłata zostanie przeprowadzona dla [wieloetapowe testy sieci web](../../azure-monitor/app/availability-multistep.md). (Nie obejmuje to testy dostępności proste, które są zawarte w Twoich rękach woluminów danych.)  
 C. Umożliwia wyświetlanie trendów wolumin danych dla ostatniego miesiąca.  
 D. Włącz pozyskiwanie danych [próbkowania](../../azure-monitor/app/sampling.md).   
 E. Ustaw limit dziennej ilości danych.  
