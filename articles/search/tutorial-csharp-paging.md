@@ -1,5 +1,5 @@
 ---
-title: C#Samouczek dotyczący wyszukiwania spowoduje podział na strony — Usługa Azure Search
+title: C#samouczek dotyczący stronicowanie wyników wyszukiwania — usługa Azure Search
 description: Ten samouczek opiera się na projekcie "Utwórz swoją pierwszą aplikację — usługa Azure Search", z możliwością wybrania dwa rodzaje stronicowania. Pierwszy korzysta z szeregu przycisków numer strony, a także pierwszy, następnie poprzedniego i ostatniej strony przycisków. Drugi stronicowania używane nieskończonej przewijania, zobaczyć wyzwalane przez przeniesienie pionowy pasek przewijania, do jego dolną granicę.
 services: search
 ms.service: search
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 05/01/2019
-ms.openlocfilehash: 8820794382a377cdd3907327dc9c82cc6451e2d4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fc2f358921380803e89c7a8ed5c2ef0fc8e1e467
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166834"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304319"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-search"></a>C#Samouczek: Podział na strony — wyniki wyszukiwania, usługa Azure Search
 
@@ -47,7 +47,7 @@ Mieć Otwórz rozwiązanie strony wyszukiwania podstawowego.
 
 2. Najpierw należy dodać niektóre zmienne globalne. W przypadku platformy MVC zmienne globalne są deklarowane w ich własnych klas statycznych. **: ResultsPerPage** Ustawia liczbę wyników na stronę. **MaxPageRange** określa liczbę cyfr widoczną stronę w widoku. **PageRangeDelta** określa liczbę stron w lewo lub w prawo, zakres stron powinny przesunięte, po wybraniu numer skrajnej lewej lub prawej strony. Zazwyczaj jest to ostatni numer wokół połowę **MaxPageRange**. Dodaj następujący kod do przestrzeni nazw.
 
-```cs
+    ```cs
     public static class GlobalVariables
     {
         public static int ResultsPerPage
@@ -73,14 +73,14 @@ Mieć Otwórz rozwiązanie strony wyszukiwania podstawowego.
             }
         }
     }
-```
+    ```
 
->[!Tip]
->Jeśli używasz tego projektu na urządzeniu z mniejszych ekranu, takich jak laptop, rozważ zmianę **: ResultsPerPage** do 2.
+    >[!Tip]
+    >Jeśli używasz tego projektu na urządzeniu z mniejszych ekranu, takich jak laptop, rozważ zmianę **: ResultsPerPage** do 2.
 
 3. Dodaj właściwości stronicowania do **SearchData** klasy powiedzieć, po **Tekstprzeszukiwany** właściwości.
 
-```cs
+    ```cs
         // The current page being displayed.
         public int currentPage { get; set; }
 
@@ -95,15 +95,15 @@ Mieć Otwórz rozwiązanie strony wyszukiwania podstawowego.
 
         // Used when page numbers, or next or prev buttons, have been selected.
         public string paging { get; set; }
-```
+    ```
 
 ### <a name="add-a-table-of-paging-options-to-the-view"></a>Dodaj tabelę opcje stronicowania do widoku
 
 1. Otwórz plik index.cshtml i Dodaj następujący kod bezpośrednio przed tagiem zamykającym &lt;/body&gt; tagu. Ten nowy kod przedstawia tabelę opcje stronicowania: po pierwsze, poprzedniego, 1, 2, 3, 4, 5, następnie ostatnie.
 
-```cs
-@if (Model != null && Model.pageCount > 1)
-{
+    ```cs
+    @if (Model != null && Model.pageCount > 1)
+    {
     // If there is more than one page of results, show the paging buttons.
     <table>
         <tr>
@@ -177,16 +177,16 @@ Mieć Otwórz rozwiązanie strony wyszukiwania podstawowego.
             </td>
         </tr>
     </table>
-}
-```
+    }
+    ```
 
-Używamy tabeli HTML do starannego wyrównania elementów. Jednak wszystkie akcje pochodzi z @Html.ActionLink instrukcji, każda wywołująca kontroler z **nowe** modelu utworzonego za pomocą różnych wpisów, aby **stronicowania** właściwości, które dodaliśmy wcześniej.
+    Używamy tabeli HTML do starannego wyrównania elementów. Jednak wszystkie akcje pochodzi z @Html.ActionLink instrukcji, każda wywołująca kontroler z **nowe** modelu utworzonego za pomocą różnych wpisów, aby **stronicowania** właściwości, które dodaliśmy wcześniej.
 
-Opcje pierwszej i ostatniej strony nie wysyłaj ciągów, takich jak "first" i "last", ale zamiast tego wysłać poprawne numery stron.
+    Opcje pierwszej i ostatniej strony nie wysyłaj ciągów, takich jak "first" i "last", ale zamiast tego wysłać poprawne numery stron.
 
 2. Niektóre klasy stronicowania należy dodać do listy stylów HTML w pliku hotels.css. **PageSelected** klasy polega na określeniu strony, użytkownik jest aktualnie wyświetlany (włączając numer pogrubienie) na liście numery stron.
 
-```cs
+    ```html
         .pageButton {
             border: none;
             color: darkblue;
@@ -207,13 +207,13 @@ Opcje pierwszej i ostatniej strony nie wysyłaj ciągów, takich jak "first" i "
             font-weight: bold;
             width: 50px;
         }
-```
+    ```
 
 ### <a name="add-a-page-action-to-the-controller"></a>Dodaj akcję strony do kontrolera
 
 1. Otwórz plik HomeController.cs i Dodaj **strony** akcji. Ta akcja odnosi się do dowolnej wybrane opcje strony.
 
-```cs
+    ```cs
         public async Task<ActionResult> Page(SearchData model)
         {
             try
@@ -255,16 +255,16 @@ Opcje pierwszej i ostatniej strony nie wysyłaj ciągów, takich jak "first" i "
             }
             return View("Index", model);
         }
-```
+    ```
 
-**RunQueryAsync** metody będą teraz pokazywać błąd składniowy, ze względu na trzeci parametr, firma Microsoft rozpocznie się w nieco.
+    **RunQueryAsync** metody będą teraz pokazywać błąd składniowy, ze względu na trzeci parametr, firma Microsoft rozpocznie się w nieco.
 
-> [!Note]
-> **TempData** wywołania przechowywać wartości ( **obiektu**) w magazyny tymczasowe, mimo że ten magazyn będzie nadal występować po _tylko_ jedno wywołanie. Jeśli coś są przechowywane w danych tymczasowych, będą dostępne dla następnego wywołania metody akcji kontrolera, ale najbardziej zdecydowanie znikną przez wywołanie po tym! Ze względu na to krótki czas przechowujemy wyszukiwany tekst i właściwości stronicowania ponownie do niej magazynu tymczasowego każdego wywołania **strony**.
+    > [!Note]
+    > **TempData** wywołania przechowywać wartości ( **obiektu**) w magazyny tymczasowe, mimo że ten magazyn będzie nadal występować po _tylko_ jedno wywołanie. Jeśli coś są przechowywane w danych tymczasowych, będą dostępne dla następnego wywołania metody akcji kontrolera, ale najbardziej zdecydowanie znikną przez wywołanie po tym! Ze względu na to krótki czas przechowujemy wyszukiwany tekst i właściwości stronicowania ponownie do niej magazynu tymczasowego każdego wywołania **strony**.
 
 2. **Index(model)** potrzeb akcji aktualizacji do przechowywania zmiennych tymczasowych i dodać parametr skrajnie po lewej stronie, aby **RunQueryAsync** wywołania.
 
-```cs
+    ```cs
         public async Task<ActionResult> Index(SearchData model)
         {
             try
@@ -290,11 +290,11 @@ Opcje pierwszej i ostatniej strony nie wysyłaj ciągów, takich jak "first" i "
             }
             return View(model);
         }
-```
+    ```
 
 3. **RunQueryAsync** potrzeb metoda znacznie zaktualizowany. Używamy **Pomiń**, **górnej**, i **IncludeTotalResultCount** pola **obiektu SearchParameters** klasy, aby zażądać tylko jedna strona, przez które wyniki, zaczynając od **Pomiń** ustawienie. Musimy również obliczyć zmienne stronicowania dla naszych widoku. Zastąp całą metodę z następującym kodem.
 
-```cs
+    ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
         {
             InitSearch();
@@ -349,19 +349,19 @@ Opcje pierwszej i ostatniej strony nie wysyłaj ciągów, takich jak "first" i "
 
             return View("Index", model);
         }
-```
+    ```
 
 4. Na koniec musimy wprowadzić niewielką zmianę w widoku. Zmienna **resultsList.Results.Count** będą teraz zawierać liczbę wyników zwróconych w jedną stronę (3 w naszym przykładzie), liczba całkowita. Ponieważ ustawiliśmy **IncludeTotalResultCount** na wartość true, zmienna **resultsList.Count** teraz zawiera całkowitą liczbę wyników. Więc zlokalizować, gdy liczba wyników jest wyświetlany w widoku, a następnie zmień go na następujący kod.
 
-```cs
+    ```cs
             // Show the result count.
             <p class="sampleText">
                 @Html.DisplayFor(m => m.resultList.Count) Results
             </p>
-```
+    ```
 
-> [!Note]
-> Nastąpi trafienie wydajności, chociaż nie jest zwykle znacznie jedna, ustawiając **IncludeTotalResultCount** na wartość true, ponieważ ta musi zostać obliczona przez usługę Azure Search. Za pomocą złożonych zestawów danych występuje ostrzeżenie, że wartość zwracana jest _zbliżenia_. Dla danych hotelu będzie ona dokładne.
+    > [!Note]
+    > Nastąpi trafienie wydajności, chociaż nie jest zwykle znacznie jedna, ustawiając **IncludeTotalResultCount** na wartość true, ponieważ ta musi zostać obliczona przez usługę Azure Search. Za pomocą złożonych zestawów danych występuje ostrzeżenie, że wartość zwracana jest _zbliżenia_. Dla danych hotelu będzie ona dokładne.
 
 ### <a name="compile-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
@@ -397,16 +397,16 @@ Aby zaimplementować nieskończonej przewijania, Zacznijmy od projektu przed dod
 
 1. Najpierw dodaj **stronicowania** właściwości **SearchData** klasy (w pliku modelu SearchData.cs).
 
-```cs
+    ```cs
         // Record if the next page is requested.
         public string paging { get; set; }
-```
+    ```
 
-Ta zmienna jest ciąg, który zawiera "dalej", jeśli mają być wysyłane następnej strony wyników lub mieć wartości null dla pierwszej strony wyszukiwania.
+    Ta zmienna jest ciąg, który zawiera "dalej", jeśli mają być wysyłane następnej strony wyników lub mieć wartości null dla pierwszej strony wyszukiwania.
 
 2. W tym samym pliku, a w przestrzeni nazw należy dodać klasy zmiennej globalnej z jedną właściwością. W przypadku platformy MVC zmienne globalne są deklarowane w ich własnych klas statycznych. **: ResultsPerPage** Ustawia liczbę wyników na stronę. 
 
-```cs
+    ```cs
     public static class GlobalVariables
     {
         public static int ResultsPerPage
@@ -417,15 +417,15 @@ Ta zmienna jest ciąg, który zawiera "dalej", jeśli mają być wysyłane nast�
             }
         }
     }
-```
+    ```
 
 ### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Dodanie pionowy pasek przewijania widoku
 
 1. Zlokalizuj sekcję pliku index.cshtml, który służy do wyświetlania wyników (zaczyna się od  **@if (Model! = null)** ).
 
-1. Zastąp sekcję poniższym kodem. Nowy **&lt;div&gt;** sekcja jest wokół obszaru, który powinien być przewijany i dodaje zarówno **overflow-y** atrybut i wywołanie **onscroll**funkcję o nazwie "scrolled()" w następujący sposób.
+2. Zastąp sekcję poniższym kodem. Nowy **&lt;div&gt;** sekcja jest wokół obszaru, który powinien być przewijany i dodaje zarówno **overflow-y** atrybut i wywołanie **onscroll**funkcję o nazwie "scrolled()" w następujący sposób.
 
-```cs
+    ```cs
         @if (Model != null)
         {
             // Show the result count.
@@ -444,11 +444,11 @@ Ta zmienna jest ciąg, który zawiera "dalej", jeśli mają być wysyłane nast�
                 }
             </div>
         }
-```
+    ```
 
 3. Bezpośrednio pod pętli po &lt;/DIV&gt; tagów, należy dodać **przewijane** funkcji.
 
-```cs
+    ```javascript
         <script>
                 function scrolled() {
                     if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
@@ -464,9 +464,9 @@ Ta zmienna jest ciąg, który zawiera "dalej", jeśli mają być wysyłane nast�
                     }
                 }
         </script>
-```
+    ```
 
-**Jeśli** instrukcji w skrypcie powyższe testy, aby zobaczyć, jeśli użytkownik ma być przewijane w dolnej części paska przewijania pionowego. Jeśli mają wywołanie **Home** kontroler zostanie podjęta Akcja wywoływana **dalej**. Żadne inne informacje są wymagane przez administratora, to zostanie zwrócona następnej strony danych. Tych danych będzie sformatowany przy użyciu identycznych stylów HTML jako oryginalnej strony. Jeśli żadne wyniki nie zostaną zwrócone, nic nie jest dołączany i pozostaną czynności, jak są one.
+    **Jeśli** instrukcji w skrypcie powyższe testy, aby zobaczyć, jeśli użytkownik ma być przewijane w dolnej części paska przewijania pionowego. Jeśli mają wywołanie **Home** kontroler zostanie podjęta Akcja wywoływana **dalej**. Żadne inne informacje są wymagane przez administratora, to zostanie zwrócona następnej strony danych. Tych danych będzie sformatowany przy użyciu identycznych stylów HTML jako oryginalnej strony. Jeśli żadne wyniki nie zostaną zwrócone, nic nie jest dołączany i pozostaną czynności, jak są one.
 
 ### <a name="handle-the-next-action"></a>Dojście do następnej akcji
 
@@ -476,7 +476,7 @@ Tylko trzy czynności, które muszą być wysyłane do kontrolera: pierwsze uruc
 
 2. Zastąp **Index(model)** akcji z następującym kodem. Teraz obsługuje **stronicowania** pole ma wartość null lub wartość "dalej", a obsługi wywołań do usługi Azure Search.
 
-```cs
+    ```cs
         public async Task<ActionResult> Index(SearchData model)
         {
             try
@@ -534,13 +534,13 @@ Tylko trzy czynności, które muszą być wysyłane do kontrolera: pierwsze uruc
             }
             return View("Index", model);
         }
-```
+    ```
 
-Podobnie jak numerowane metody stronicowania, używamy **Pomiń** i **górnej** ustawienia wyszukiwania, aby zażądać tylko te dane, które są potrzebne jest zwracana.
+    Podobnie jak numerowane metody stronicowania, używamy **Pomiń** i **górnej** ustawienia wyszukiwania, aby zażądać tylko te dane, które są potrzebne jest zwracana.
 
 3. Dodaj **dalej** akcji do głównego kontrolera. Należy zauważyć, jak funkcja zwraca listę każdego hotelu, dodając dwa elementy do listy: Nazwa hotelu i opis hotelu. Ten format jest ustawiony na zgodny **przewijane** użycie funkcji zwracanych danych w widoku.
 
-```cs
+    ```cs
         public async Task<ActionResult> Next(SearchData model)
         {
             // Set the next page setting, and call the Index(model) action.
@@ -560,13 +560,13 @@ Podobnie jak numerowane metody stronicowania, używamy **Pomiń** i **górnej** 
             // Rather than return a view, return the list of data.
             return new JsonResult(nextHotels);
         }
-```
+    ```
 
 4. Jeśli otrzymujesz błąd składniowy **listy&lt;ciąg&gt;** , dodaj następującą **przy użyciu** dyrektywę nagłówek pliku kontrolera.
 
-```cs
-using System.Collections.Generic;
-```
+    ```cs
+    using System.Collections.Generic;
+    ```
 
 ### <a name="compile-and-run-your-project"></a>Kompilowanie i uruchamianie projektu
 
@@ -576,8 +576,8 @@ Teraz wybierz **Rozpocznij bez debugowania** (lub naciśnij klawisz F5).
 
     ![Nieskończona przewijanie za pośrednictwem wyników z "puli"](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
-> [!Tip]
-> Aby upewnić się, czy pasek przewijania jest wyświetlany na pierwszej stronie pierwszej strony wyników nieco przekraczać wysokość obszaru, w którym zostaną one wyświetlone w. W naszym przykładzie **.box1** wysokość 30 pikseli **.box2** o wysokości 100 pikseli _i_ dolny margines 24 pikseli. Dlatego każdego wpisu używa 154 pikseli. Trzy wpisy zajmuje się 3 x 154 = 462 pikseli. Aby upewnić się, że pionowy pasek przewijania jest wyświetlany, wysokość, do obszaru wyświetlania muszą być ustawione, jest mniejszy niż 462 pikseli, nawet 461 działa. Ten problem występuje tylko na pierwszej stronie po tym to się pojawiają się, że pasek przewijania. Wiersz, aby zaktualizować:  **&lt;identyfikatora DZIEL = "myDiv" style = "width: 800px; height: 450px; overflow-y: scroll;" onscroll="scrolled()"&gt;** .
+    > [!Tip]
+    > Aby upewnić się, czy pasek przewijania jest wyświetlany na pierwszej stronie pierwszej strony wyników nieco przekraczać wysokość obszaru, w którym zostaną one wyświetlone w. W naszym przykładzie **.box1** wysokość 30 pikseli **.box2** o wysokości 100 pikseli _i_ dolny margines 24 pikseli. Dlatego każdego wpisu używa 154 pikseli. Trzy wpisy zajmuje się 3 x 154 = 462 pikseli. Aby upewnić się, że pionowy pasek przewijania jest wyświetlany, wysokość, do obszaru wyświetlania muszą być ustawione, jest mniejszy niż 462 pikseli, nawet 461 działa. Ten problem występuje tylko na pierwszej stronie po tym to się pojawiają się, że pasek przewijania. Wiersz, aby zaktualizować:  **&lt;identyfikatora DZIEL = "myDiv" style = "width: 800px; height: 450px; overflow-y: scroll;" onscroll="scrolled()"&gt;** .
 
 2. Przewiń w dół do dolnej części wyników. Zwróć uwagę, jak wszystkie informacje są teraz na stronie jeden widok. Podczas przewijania, aż do góry bez powodowania żadnych wywołań serwera.
 

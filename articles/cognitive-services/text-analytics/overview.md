@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: 7d52585b51af09c430130141c3680b5630f7b95e
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: a4f1f75c85c99610ee75eb9fda51114b52bbfac3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417274"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304015"
 ---
 # <a name="what-is-text-analytics-api"></a>Co to jest interfejs API analizy tekstu?
 
@@ -89,7 +89,18 @@ Wszystkie punkty końcowe interfejsu API analizy tekstu akceptują dane w postac
 | Maksymalny rozmiar całego żądania | 1 MB |
 | Maksymalna liczba dokumentów w żądaniu | 1000 dokumentów |
 
-Ograniczanie liczby wywołań jest 100 żądań na drugim i 1000 żądań na minutę. Można przesyłać duże ilości dokumentów w jednym wywołaniu (maksymalnie 1000 dokumentów).
+Limit szybkości różnią się przy użyciu warstwy cenowej.
+
+| Warstwa          | Żądań na sekundę | Żądań na minutę |
+|---------------|---------------------|---------------------|
+| Wiele usług | 1000                | 1000                |
+| S0/F0         | 100                 | 300                 |
+| S1            | 200                 | 300                 |
+| S2            | 300                 | 300                 |
+| S3            | 500                 | 500                 |
+| S4            | 1000                | 1000                |
+
+Żądania są mierzone osobno dla każdej funkcji analizy tekstu. Na przykład można wysłać maksymalną liczbę żądań dla warstwy cenowej do każdej funkcji, w tym samym czasie.      
 
 ## <a name="unicode-encoding"></a>Kodowanie Unicode
 

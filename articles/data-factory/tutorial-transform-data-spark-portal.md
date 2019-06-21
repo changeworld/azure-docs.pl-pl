@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: de99d1a58cac12c80748b34ef4a1b07c9fb2a78e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34c8c49166ea13d67c1f3d51805671c63dbb352b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337199"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312572"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku utworzysz potok usługi Azure Data Factory za pomocą witryny Azure Portal. Ten potok przekształca dane przy użyciu działania Spark i połączonej usługi Azure HDInsight dostępnej na żądanie. 
@@ -147,7 +147,7 @@ W tej sekcji zredagujesz dwie połączone usługi:
    
    b. Upewnij się, że w polu **Typ** wybrano wartość **HDInsight na żądanie**.
    
-   d. W polu **Połączona usługa Azure Storage** wybierz wartość **AzureStorage1**. Ta połączona usługa została utworzona wcześniej. Jeśli użyto innej nazwy, podaj w tym miejscu prawidłową nazwę. 
+   c. Aby uzyskać **połączoną usługę Azure Storage**, wybierz opcję **AzureBlobStorage1**. Ta połączona usługa została utworzona wcześniej. Jeśli użyto innej nazwy, podaj w tym miejscu prawidłową nazwę. 
    
    d. W polu **Typ klastra** wybierz wartość **spark**.
    
@@ -189,7 +189,7 @@ W tej sekcji zredagujesz dwie połączone usługi:
    ![Określanie połączonej usługi HDInsight](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Przejdź do karty **Skrypt/Jar** i wykonaj następujące czynności: 
 
-   a. W polu **Połączona usługa zadania** wybierz wartość **AzureStorage1**.
+   a. Aby uzyskać **połączona usługa zadania**, wybierz opcję **AzureBlobStorage1**.
    
    b. Wybierz pozycję **Przeglądaj magazyn**.
 
@@ -206,7 +206,7 @@ W tej sekcji zredagujesz dwie połączone usługi:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Wyzwalanie uruchomienia potoku
-Wybierz pozycję **Wyzwól** na pasku narzędzi, a następnie wybierz pozycję **Wyzwól teraz**. 
+Wybierz **Dodaj wyzwalacz** na pasku narzędzi, a następnie wybierz pozycję **Wyzwól teraz**. 
 
 ![Przyciski „Wyzwól” i „Wyzwól teraz”](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -222,7 +222,7 @@ Wybierz pozycję **Wyzwól** na pasku narzędzi, a następnie wybierz pozycję *
 
    ![Stan uruchomienia potoku](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   Aby wrócić do widoku uruchomień potoków, możesz wybrać link **Potoki** u góry.
+   Można przełączać do widoku uruchomień potoków, za pomocą **wszystkie uruchomienia potoków** link u góry.
 
    ![Widok „Uruchomienia działania”](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 

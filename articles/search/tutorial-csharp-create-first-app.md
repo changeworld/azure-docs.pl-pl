@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 05/01/2019
-ms.openlocfilehash: 5ca01e8077eb0651dff57be4c7681995764f6992
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 71668b41125de323640dd668f733c1bd1982f583
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166897"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304498"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-search"></a>C#Samouczek: Tworzenie pierwszej aplikacji — Azure Search
 
@@ -65,6 +65,7 @@ Do tworzenia tego projektu, od początku, a więc wzmacnia składników usługi 
 ## <a name="set-up-a-development-environment"></a>Konfigurowanie środowiska deweloperskiego
 
 1. W programie Visual Studio 2017 lub później, wybierz opcję **nowy lub projekt docelowy** następnie **aplikacji sieci Web programu ASP.NET Core**. Nazwij projekt takich jak "FirstAzureSearchApp".
+
     ![Tworzenie projektu w chmurze](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
 
 2. Po kliknięciu **OK** dla tego typu projektu, użytkownik będzie miał drugi zestaw opcji, które są stosowane do tego projektu. Wybierz **(Model-View-Controller) aplikacji sieci Web**.
@@ -81,12 +82,12 @@ W tym przykładzie używamy hotelu publicznie dostępnych danych. Te dane są ko
 
 1. Otwórz plik appsettings.json w nowym projekcie i Zastąp domyślnych linii następująca Nazwa i klucz. Klucz interfejsu API, pokazywane w tym miejscu nie jest przykładem klucza, jest _dokładnie_ klucza, musisz uzyskać dostęp do danych w hotelu. Plik appsettings.json powinna teraz wyglądać następująco.
 
-```cs
-{
-  "SearchServiceName": "azs-playground",
-  "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
-}
-```
+    ```cs
+    {
+        "SearchServiceName": "azs-playground",
+        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+    }
+    ```
 
 2. Firma Microsoft nie odbywa się za pomocą tego pliku, ale wybranie właściwości dla tego pliku i zmień **Kopiuj do katalogu wyjściowego** ustawienie **Kopiuj Jeśli nowszy**.
 
@@ -100,147 +101,147 @@ Modele (C# klas) są używane do przekazywania danych między klienta (Widok), s
 
 2. Kliknij prawym przyciskiem myszy **modeli** i wybierz polecenie **Dodaj** następnie **nowy element**. W wyświetlonym oknie dialogowym wybierz **platformy ASP.NET Core** następnie pierwsza opcja **klasy**. Zmień nazwę pliku .cs Hotel.cs, a następnie kliknij przycisk **Dodaj**. Zastąp zawartość pliku Hotel.cs następującym kodem. Zwróć uwagę **adres** i **pokoju** elementów członkowskich klasy te pola są klas samych, więc musimy modeli dla nich zbyt.
 
-```cs
-using System;
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
-using Microsoft.Spatial;
-using Newtonsoft.Json;
+    ```cs
+    using System;
+    using Microsoft.Azure.Search;
+    using Microsoft.Azure.Search.Models;
+    using Microsoft.Spatial;
+    using Newtonsoft.Json;
 
-namespace FirstAzureSearchApp.Models
-{
-    public partial class Hotel
+    namespace FirstAzureSearchApp.Models
     {
-        [System.ComponentModel.DataAnnotations.Key]
-        [IsFilterable]
-        public string HotelId { get; set; }
+        public partial class Hotel
+        {
+            [System.ComponentModel.DataAnnotations.Key]
+            [IsFilterable]
+            public string HotelId { get; set; }
 
-        [IsSearchable, IsSortable]
-        public string HotelName { get; set; }
+            [IsSearchable, IsSortable]
+            public string HotelName { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnLucene)]
-        public string Description { get; set; }
+            [IsSearchable]
+            [Analyzer(AnalyzerName.AsString.EnLucene)]
+            public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("Description_fr")]
-        public string DescriptionFr { get; set; }
+            [IsSearchable]
+            [Analyzer(AnalyzerName.AsString.FrLucene)]
+            [JsonProperty("Description_fr")]
+            public string DescriptionFr { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string Category { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string Category { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
-        public string[] Tags { get; set; }
+            [IsSearchable, IsFilterable, IsFacetable]
+            public string[] Tags { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
-        public bool? ParkingIncluded { get; set; }
+            [IsFilterable, IsSortable, IsFacetable]
+            public bool? ParkingIncluded { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
-        public DateTimeOffset? LastRenovationDate { get; set; }
+            [IsFilterable, IsSortable, IsFacetable]
+            public DateTimeOffset? LastRenovationDate { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
-        public double? Rating { get; set; }
+            [IsFilterable, IsSortable, IsFacetable]
+            public double? Rating { get; set; }
 
-        public Address Address { get; set; }
+            public Address Address { get; set; }
 
-        [IsFilterable, IsSortable]
-        public GeographyPoint Location { get; set; }
+            [IsFilterable, IsSortable]
+            public GeographyPoint Location { get; set; }
 
-        public Room[] Rooms { get; set; }
+            public Room[] Rooms { get; set; }
+        }
     }
-}
-```
+    ```
 
 3. Postępuj zgodnie z tym samym procesie tworzenia modelu na potrzeby **adres** klasy, z wyjątkiem nazwy pliku Address.cs. Zastąp zawartość następujących czynności.
 
-```cs
-using Microsoft.Azure.Search;
+    ```cs
+    using Microsoft.Azure.Search;
 
-namespace FirstAzureSearchApp.Models
-{
-    public partial class Address
+    namespace FirstAzureSearchApp.Models
     {
-        [IsSearchable]
-        public string StreetAddress { get; set; }
+        public partial class Address
+        {
+            [IsSearchable]
+            public string StreetAddress { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string City { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string City { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string StateProvince { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string StateProvince { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string PostalCode { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string PostalCode { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string Country { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string Country { get; set; }
+        }
     }
-}
-```
+    ```
 
 4. I ponownie, postępuj zgodnie z tego samego procesu tworzenia **pokoju** klasy, plikowi Room.cs. Ponownie Zastąp zawartość następujących czynności.
 
-```cs
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
-using Newtonsoft.Json;
+    ```cs
+    using Microsoft.Azure.Search;
+    using Microsoft.Azure.Search.Models;
+    using Newtonsoft.Json;
 
-namespace FirstAzureSearchApp.Models
-{
-    public partial class Room
+    namespace FirstAzureSearchApp.Models
     {
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        public partial class Room
+        {
+            [IsSearchable]
+            [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
 
-        public string Description { get; set; }
+            public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrMicrosoft)]
-        [JsonProperty("Description_fr")]
-        public string DescriptionFr { get; set; }
+            [IsSearchable]
+            [Analyzer(AnalyzerName.AsString.FrMicrosoft)]
+            [JsonProperty("Description_fr")]
+            public string DescriptionFr { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
-        public string Type { get; set; }
+            [IsSearchable, IsFilterable, IsFacetable]
+            public string Type { get; set; }
 
-        [IsFilterable, IsFacetable]
-        public double? BaseRate { get; set; }
+            [IsFilterable, IsFacetable]
+            public double? BaseRate { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
-        public string BedOptions { get; set; }
+            [IsSearchable, IsFilterable, IsFacetable]
+            public string BedOptions { get; set; }
 
-        [IsFilterable, IsFacetable]
+            [IsFilterable, IsFacetable]
 
-        public int SleepsCount { get; set; }
+            public int SleepsCount { get; set; }
 
-        [IsFilterable, IsFacetable]
-        public bool? SmokingAllowed { get; set; }
+            [IsFilterable, IsFacetable]
+            public bool? SmokingAllowed { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
-        public string[] Tags { get; set; }
+            [IsSearchable, IsFilterable, IsFacetable]
+            public string[] Tags { get; set; }
+        }
     }
-}
-```
+    ```
 
 5. Zbiór **hotelu**, **adres**, i **pokoju** klas są określane na platformie Azure jako [ _typy złożone_ ](search-howto-complex-data-types.md), ważną funkcją usługi Azure Search. Typy złożone można mieć wiele poziomów w głąb klas i podklas i włączyć bardziej złożonych struktur danych może być reprezentowana niż przy użyciu _typów prostych_ (zawierający tylko do pierwotnych elementy członkowskie klasy). Potrzebujemy jeden model więcej, więc przejść przez proces tworzenia nowej klasy modelu ponownie, jednak tym razem wywołać klasy SearchData.cs i Zamień domyślny kod poniżej.
 
-```cs
-using Microsoft.Azure.Search.Models;
+    ```cs
+    using Microsoft.Azure.Search.Models;
 
-namespace FirstAzureSearchApp.Models
-{
-    public class SearchData
+    namespace FirstAzureSearchApp.Models
     {
-        // The text to search for.
-        public string searchText { get; set; }
+        public class SearchData
+        {
+            // The text to search for.
+            public string searchText { get; set; }
 
-        // The list of results.
-        public DocumentSearchResult<Hotel> resultList;
+            // The list of results.
+            public DocumentSearchResult<Hotel> resultList;
+        }
     }
-}
-```
+    ```
 
-Ta klasa zawiera dane wejściowe użytkownika (**Tekstprzeszukiwany**), a wyszukiwanie danych wyjściowych (**resultList**). Typ danych wyjściowych ma krytyczne znaczenie, **DocumentSearchResult&lt;hotelu&gt;** , jak tego typu dokładnie odpowiada wyników wyszukiwania i dlatego trzeba przekazać odwołanie za pośrednictwem widoku.
+    Ta klasa zawiera dane wejściowe użytkownika (**Tekstprzeszukiwany**), a wyszukiwanie danych wyjściowych (**resultList**). Typ danych wyjściowych ma krytyczne znaczenie, **DocumentSearchResult&lt;hotelu&gt;** , jak tego typu dokładnie odpowiada wyników wyszukiwania i dlatego trzeba przekazać odwołanie za pośrednictwem widoku.
 
 
 
@@ -254,30 +255,30 @@ Usuń zawartość Index.cshtml w całości, a następnie odbudować plik w poni�
 
 2. Pierwszy wiersz Index.cshtml powinny odwoływać się do modelu, firma Microsoft będzie używany do przekazywania danych między klientem (view) i serwera (kontroler), który jest **SearchData** modelu utworzyliśmy. Dodaj następujący wiersz do pliku Index.cshtml.
 
-```cs
-@model FirstAzureSearchApp.Models.SearchData
-```
+    ```cs
+    @model FirstAzureSearchApp.Models.SearchData
+    ```
 
 3. Jest standardową praktyką wprowadź tytuł dla widoku, więc powinno być następującymi wierszami:
 
-```cs
-@{
-    ViewData["Title"] = "Home Page";
-}
-```
+    ```cs
+    @{
+        ViewData["Title"] = "Home Page";
+    }
+    ```
 
 4. Następujące tytułu wprowadź odwołanie do arkusza stylów HTML, który utworzymy wkrótce.
 
-```cs
-<head>
-    <link rel="stylesheet" href="~/css/hotels.css" />
-</head>
-```
+    ```cs
+    <head>
+        <link rel="stylesheet" href="~/css/hotels.css" />
+    </head>
+    ```
 
 5. Teraz, aby rodzaje widoku. Kluczową kwestią do zapamiętania polega na tym, czy widoku musi do obsługi dwóch sytuacji. Po pierwsze jego musi obsługiwać wyświetlanie po pierwszym uruchomieniu aplikacji, a użytkownik nie wprowadził jeszcze dowolny tekst wyszukiwania. Po drugie jego musi obsługiwać wyświetlania wyników, oprócz polu tekstowym wyszukiwania do wielokrotnego użytku przez użytkownika. Aby obsługiwać te dwie sytuacje, musimy sprawdzić, czy model, pod warunkiem do widoku ma wartość null. Model o wartości null oznacza, że jesteśmy pierwszych dwóch sytuacji (początkowa działającej aplikacji). Dodaj następujący kod do pliku Index.cshtml i zapoznaj się z artykułem komentarze.
 
-```cs
-<body>
+    ```cs
+    <body>
     <h1 class="sampleTitle">
         <img src="~/images/azure-logo.png" width="80" />
         Hotels Search
@@ -305,85 +306,85 @@ Usuń zawartość Index.cshtml w całości, a następnie odbudować plik w poni�
             }
         }
     }
-</body>
-```
+    </body>
+    ```
 
 6. Na koniec należy dodać arkusza stylów. W programie Visual Studio w **pliku** menu wybierz opcję **nowy/plik** następnie **arkusza stylów** (przy użyciu **ogólne** wyróżniony). Zamień domyślny kod poniżej. Firma Microsoft będzie nie przechodzić do tego pliku w żadnym bardziej szczegółowo, style standardowego kodu HTML.
 
-```cs
-   textarea.box1 {
-    width: 648px;
-    height: 30px;
-    border: none;
-    background-color: azure;
-    font-size: 14pt;
-    color: blue;
-    padding-left: 5px;
-}
+    ```html
+    textarea.box1 {
+        width: 648px;
+        height: 30px;
+        border: none;
+        background-color: azure;
+        font-size: 14pt;
+        color: blue;
+        padding-left: 5px;
+    }
 
-textarea.box2 {
-    width: 648px;
-    height: 100px;
-    border: none;
-    background-color: azure;
-    font-size: 12pt;
-    padding-left: 5px;
-    margin-bottom: 24px;
-}
+    textarea.box2 {
+        width: 648px;
+        height: 100px;
+        border: none;
+        background-color: azure;
+        font-size: 12pt;
+        padding-left: 5px;
+        margin-bottom: 24px;
+    }
 
-.sampleTitle {
-    font: 32px/normal 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
-    margin: 20px 0;
-    font-size: 32px;
-    text-align: left;
-}
+    .sampleTitle {
+        font: 32px/normal 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
+        margin: 20px 0;
+        font-size: 32px;
+        text-align: left;
+    }
 
-.sampleText {
-    font: 16px/bold 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
-    margin: 20px 0;
-    font-size: 14px;
-    text-align: left;
-    height: 30px;
-}
+    .sampleText {
+        font: 16px/bold 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
+        margin: 20px 0;
+        font-size: 14px;
+        text-align: left;
+        height: 30px;
+    }
 
-.searchBoxForm {
-    width: 648px;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.16);
-    background-color: #fff;
-    display: inline-block;
-    border-collapse: collapse;
-    border-spacing: 0;
-    list-style: none;
-    color: #666;
-}
+    .searchBoxForm {
+        width: 648px;
+        box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.16);
+        background-color: #fff;
+        display: inline-block;
+        border-collapse: collapse;
+        border-spacing: 0;
+        list-style: none;
+        color: #666;
+    }
 
-.searchBox {
-    width: 568px;
-    font-size: 16px;
-    margin: 5px 0 1px 20px;
-    padding: 0 10px 0 0;
-    border: 0;
-    max-height: 30px;
-    outline: none;
-    box-sizing: content-box;
-    height: 35px;
-    vertical-align: top;
-}
+    .searchBox {
+        width: 568px;
+        font-size: 16px;
+        margin: 5px 0 1px 20px;
+        padding: 0 10px 0 0;
+        border: 0;
+        max-height: 30px;
+        outline: none;
+        box-sizing: content-box;
+        height: 35px;
+        vertical-align: top;
+    }
 
-.searchBoxSubmit {
-    background-color: #fff;
-    border-color: #fff;
-    background-image: url(/images/search.png);
-    background-repeat: no-repeat;
-    height: 20px;
-    width: 20px;
-    text-indent: -99em;
-    border-width: 0;
-    border-style: solid;
-    margin: 10px;
-    outline: 0;
-}
-```
+    .searchBoxSubmit {
+        background-color: #fff;
+        border-color: #fff;
+        background-image: url(/images/search.png);
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 20px;
+        text-indent: -99em;
+        border-width: 0;
+        border-style: solid;
+        margin: 10px;
+        outline: 0;
+    }
+    ```
 
 7. Zapisz plik arkusza stylów jako hotels.css, w folderze wwwroot/css, wraz z pliku site.css domyślne.
 
@@ -395,16 +396,16 @@ Potrzebujemy do zmodyfikowania zawartości jednego kontrolera (**Home kontrolera
 
 1. Otwórz plik HomeController.cs i Zastąp **przy użyciu** instrukcji następującym kodem.
 
-```cs
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using FirstAzureSearchApp.Models;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
-```
+    ```cs
+    using System;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using FirstAzureSearchApp.Models;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Azure.Search;
+    using Microsoft.Azure.Search.Models;
+    ```
 
 ### <a name="add-index-methods"></a>Dodaj metody indeksu
 
@@ -412,7 +413,7 @@ Potrzebujemy dwa **indeksu** metod, co wykonanie żadnych parametrów (na potrze
 
 1. Dodaj następującą metodę po domyślnie **indeks()** metody.
 
-```cs
+    ```cs
         [HttpPost]
         public async Task<ActionResult> Index(SearchData model)
         {
@@ -434,11 +435,11 @@ Potrzebujemy dwa **indeksu** metod, co wykonanie żadnych parametrów (na potrze
             }
             return View(model);
         }
-```
+    ```
 
-Zwróć uwagę **async** deklaracji metody, a **await** wywołanie **RunQueryAsync**. Te słowa kluczowe zajmie się wywołań naszych asynchronicznego i dlatego należy unikać blokowania wątków na serwerze.
+    Zwróć uwagę **async** deklaracji metody, a **await** wywołanie **RunQueryAsync**. Te słowa kluczowe zajmie się wywołań naszych asynchronicznego i dlatego należy unikać blokowania wątków na serwerze.
 
-**Catch** błąd modelu, który został utworzony dla nas domyślnie korzysta z bloku.
+    **Catch** błąd modelu, który został utworzony dla nas domyślnie korzysta z bloku.
 
 ### <a name="note-the-error-handling-and-other-default-views-and-methods"></a>Należy pamiętać, obsługa błędów i innych widokach domyślnych i metod
 
@@ -454,7 +455,7 @@ Wywołanie usługi Azure Search jest hermetyzowany w naszym **RunQueryAsync** me
 
 1. Najpierw dodaj statyczne zmienne konfiguracji usługi platformy Azure oraz wywołanie w celu zainicjowania je.
 
-```cs
+    ```cs
         private static SearchServiceClient _serviceClient;
         private static ISearchIndexClient _indexClient;
         private static IConfigurationBuilder _builder;
@@ -474,11 +475,11 @@ Wywołanie usługi Azure Search jest hermetyzowany w naszym **RunQueryAsync** me
             _serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(queryApiKey));
             _indexClient = _serviceClient.Indexes.GetClient("hotels");
         }
-```
+    ```
 
 2. Teraz Dodaj **RunQueryAsync** sama metoda.
 
-```cs
+    ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model)
         {
             InitSearch();
@@ -496,11 +497,11 @@ Wywołanie usługi Azure Search jest hermetyzowany w naszym **RunQueryAsync** me
             // Display the results.
             return View("Index", model);
         }
-```
+    ```
 
-W przypadku tej metody możemy najpierw upewnij się, nasze konfiguracji platformy Azure jest inicjowane, a następnie ustawić niektóre parametry wyszukiwania. Nazwy pól w **wybierz** parametr odpowiadać dokładnie nazwy właściwości w **hotelu** klasy. Istnieje możliwość Opuść **wybierz** parametru, w którym to przypadku zwracane są wszystkie właściwości. Jednak ustawienia nie **wybierz** parametrów jest nieefektywne, jeśli firma Microsoft jest zainteresowany wyłącznie podzbiór danych. Określając właściwości, które jesteśmy zainteresowani, zwracane są tylko te właściwości.
+    W przypadku tej metody możemy najpierw upewnij się, nasze konfiguracji platformy Azure jest inicjowane, a następnie ustawić niektóre parametry wyszukiwania. Nazwy pól w **wybierz** parametr odpowiadać dokładnie nazwy właściwości w **hotelu** klasy. Istnieje możliwość Opuść **wybierz** parametru, w którym to przypadku zwracane są wszystkie właściwości. Jednak ustawienia nie **wybierz** parametrów jest nieefektywne, jeśli firma Microsoft jest zainteresowany wyłącznie podzbiór danych. Określając właściwości, które jesteśmy zainteresowani, zwracane są tylko te właściwości.
 
-Asynchroniczne wywołanie wyszukiwania (**model.resultList = await _indexClient.Documents.SearchAsync&lt;hotelu&gt;(model.searchText, parametry);** ) jest tego samouczka, a aplikacja to wszystko na temat. **DocumentSearchResult** klasy jest ciekawe i dobrze (Jeśli aplikacja jest uruchomiona) jest w tym miejscu Ustaw punkt przerwania i użyć debugera, aby sprawdzić zawartość **model.resultList**. Należy uznać, że jest intuicyjny, udostępniając dane, które prosił i nie znacznie else.
+    Asynchroniczne wywołanie wyszukiwania (**model.resultList = await _indexClient.Documents.SearchAsync&lt;hotelu&gt;(model.searchText, parametry);** ) jest tego samouczka, a aplikacja to wszystko na temat. **DocumentSearchResult** klasy jest ciekawe i dobrze (Jeśli aplikacja jest uruchomiona) jest w tym miejscu Ustaw punkt przerwania i użyć debugera, aby sprawdzić zawartość **model.resultList**. Należy uznać, że jest intuicyjny, udostępniając dane, które prosił i nie znacznie else.
 
 Teraz do prawdziwych danych z chwili.
 
@@ -532,8 +533,8 @@ Należy sprawdzić, czy nasze funkcje obsługi błędów działają jak powinny,
 
      ![Wymuś błąd](./media/tutorial-csharp-create-first-app/azure-search-error.png)
 
-> [!Important]
-> Jest on uznawany za zagrożenie bezpieczeństwa do zwrócenia numery błąd wewnętrzny w stron błędów. Jeśli aplikacja jest przeznaczona do użytku ogólnego, należy wykonać niektóre sprawdzać bezpieczny i najważniejsze wskazówki co do zwrócenia, jeśli wystąpi błąd.
+    > [!Important]
+    > Jest on uznawany za zagrożenie bezpieczeństwa do zwrócenia numery błąd wewnętrzny w stron błędów. Jeśli aplikacja jest przeznaczona do użytku ogólnego, należy wykonać niektóre sprawdzać bezpieczny i najważniejsze wskazówki co do zwrócenia, jeśli wystąpi błąd.
 
 3. Usuń **zgłosić nowy Exception()** gdy jesteś zadowolony błąd obsługi działa zgodnie z oczekiwaniami.
 

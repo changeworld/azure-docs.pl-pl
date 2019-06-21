@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 06/05/2019
 ms.author: raymondl
-ms.openlocfilehash: b7683b6d5932872f8cef2f6db9a1ec7e5e4fa86d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c803c85a0900a09b18909e2c81d52915a12cff1a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069180"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304070"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Przykład: Sposób wyodrębniania kluczowych fraz przy użyciu analizy tekstu
 
@@ -84,7 +84,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 ## <a name="step-2-post-the-request"></a>Krok 2. Wysłanie żądania
 
-Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 100 żądań na minutę. Maksymalny rozmiar każdego żądania to 1 MB.
+Analiza jest wykonywana po odebraniu żądania. Zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie, aby uzyskać informacje na temat rozmiaru i liczby żądań można wysyłać na minutę i sekundę.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 

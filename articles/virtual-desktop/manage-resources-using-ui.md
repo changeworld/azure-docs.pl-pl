@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 4db9e6eaf2d7f7630d3d412d5519d97f8beca3ad
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 275fec5fb696a7e1352bbddccd288863e984b796
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272838"
+ms.locfileid: "67304550"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Samouczek: Wdrażanie narzędzia do zarządzania
 
@@ -66,12 +66,16 @@ Poniżej przedstawiono sposób konfigurowania narzędzia wprowadź parametry:
 
 Po GitHub usługi Azure Resource Manager kończy szablonu, można znaleźć grupy zasobów, zawierający dwie usługi aplikacji wraz z jednego planu usługi app service w witrynie Azure portal.
 
-Przed logowania i użyj narzędzia do zarządzania należy dostarczyć zgodę dla nowej aplikacji usługi Azure Active Directory, który jest skojarzony z narzędzia do zarządzania. Dostarczając zgody, dozwolone jest narzędzie do zarządzania do nawiązywania połączeń zarządzania pulpitu wirtualnego Windows w imieniu użytkownika, który jest zalogowany do narzędzia.
+Zanim Zaloguj się i użyć narzędzia do zarządzania, należy dostarczyć zgodę dla nowej aplikacji usługi Azure Active Directory, który jest skojarzony z narzędzia do zarządzania. Dostarczając zgody, dozwolone jest narzędzie do zarządzania do nawiązywania połączeń zarządzania pulpitu wirtualnego Windows w imieniu użytkownika, który jest zalogowany do narzędzia.
 
-Aby określić użytkownika, który umożliwia zalogować się do narzędzia, przejdź do usługi [strona Ustawienia użytkownika usługi Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) i zwróć uwagę na wartość **użytkownicy mogą zezwalać aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu**.
+![Zrzut ekranu przedstawiający uprawnienia udostępniane, gdy użytkownik wyraża zgodę na interfejsie użytkownika narzędzia do zarządzania.](media/management-ui-delegated-permissions.png)
 
-- Jeśli wartość jest równa **tak**, możesz zalogować się przy użyciu dowolnego konta użytkownika w usłudze Azure Active Directory i dostarczyć zgody tylko dla niego. Jednak jeśli zalogujesz się do narzędzia do zarządzania z innym użytkownikiem później, należy wykonać ten sam zgody ponownie.
-- Jeśli wartość jest równa **nie**, należy najpierw zaloguj się przy użyciu administratora globalnego usługi Azure Active Directory i podaj zgody administratora dla wszystkich użytkowników w katalogu. Nie będzie 
+Aby określić użytkownika, który służy do logowania się w narzędziu, przejdź do swojej [strona Ustawienia użytkownika usługi Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) i zanotuj wartość **użytkownicy mogą zezwalać aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu** .
+
+![Zrzut ekranu przedstawiający Jeśli użytkownicy mogą wyrazić zgody dla aplikacji po prostu ich użytkownika.](media/management-ui-user-consent-allowed.png)
+
+- Jeśli wartość jest równa **tak**, możesz zalogować się przy użyciu dowolnego konta użytkownika w usłudze Azure Active Directory i dostarczyć zgody tylko dla niego. Jednak jeśli rejestrujesz się narzędzia do zarządzania z innym użytkownikiem później, należy wykonać ten sam zgody ponownie.
+- Jeśli wartość jest równa **nie**, należy zalogować się jako Administrator globalny usługi Azure Active Directory i podać zgody administratora dla wszystkich użytkowników w katalogu. Inni użytkownicy nie będą występować monit o wyrażenie zgody.
 
 
 Po wybraniu użytkownika, który będzie używany do zgody, wykonaj te instrukcje dotyczące zgody na narzędzie:
@@ -79,6 +83,8 @@ Po wybraniu użytkownika, który będzie używany do zgody, wykonaj te instrukcj
 1. Przejdź do zasobów platformy Azure, wybierz zasób usługi Azure App Services przy użyciu podanej nazwy w szablonie (na przykład Apr3UX) i przejdź do adresu URL skojarzone z nim; na przykład <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Zaloguj się przy użyciu odpowiedniego konta użytkownika usługi Azure Active Directory.
 3. W przypadku uwierzytelniania za pomocą administratora globalnego, teraz możesz wybrać pole wyboru, aby **zgody w imieniu swojej organizacji**. Wybierz **Akceptuj** zgody.
+   
+   ![Zrzut ekranu przedstawiający stronę pełnej zgody, zostanie wyświetlony użytkownik lub administrator.](media/management-ui-consent-page.png)
 
 Spowoduje to teraz przejście do narzędzia do zarządzania.
 

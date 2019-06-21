@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 0c42e7f8b1fffb9cf998f4cee8d30405a8df74a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d4269a99a8e535692e4897630a7edd9b27347d41
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828719"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304031"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Przykład: Jak wykryć tonację przy użyciu analizy tekstu
 
@@ -90,7 +90,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
-Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 100 żądań na minutę. Maksymalny rozmiar każdego żądania to 1 MB.
+Analiza jest wykonywana po odebraniu żądania. Zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie, aby uzyskać informacje na temat rozmiaru i liczby żądań można wysyłać na minutę i sekundę.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 

@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 7074511d16d157d67a67a2c40383c9909a4942bd
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 77d95383c801038c256ccb2bf386ddf06048cf78
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296782"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311808"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Szybki start: Utwórz aplikację sieci web, która uruchamia Immersyjnych czytnika (C#)
 
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads)
-* Klucz subskrypcji dla Immersyjnych czytnika. Pobierz, wykonując instrukcje [w instrukcjach](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account).
+* Klucz subskrypcji dla Immersyjnych czytnika. Pobierz, wykonując instrukcje [w instrukcjach](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
 ## <a name="create-a-web-app-project"></a>Tworzenie projektu aplikacji sieci web
 
@@ -39,7 +39,7 @@ Utwórz nowy projekt w programie Visual Studio przy użyciu szablonu aplikacji s
 
 ## <a name="acquire-an-access-token"></a>Uzyskiwanie tokenu dostępu
 
-Potrzebujesz klucz subskrypcji oraz końcowy następnym kroku. Można uzyskać więcej informacji o https://azure.microsoft.com/try/cognitive-services/my-apis/.
+Potrzebujesz klucz subskrypcji oraz końcowy następnym kroku. Klucz subskrypcji można znaleźć na stronie klucze zasobu przeznaczonego czytnika w witrynie Azure portal. Punkt końcowy usługi można znaleźć na stronie Przegląd.
 
 Kliknij prawym przyciskiem myszy nad projektem w _Eksploratora rozwiązań_ i wybierz polecenie **zarządzania wpisami tajnymi użytkowników**. Spowoduje to otwarcie pliku o nazwie _secrets.json_. Zastąp zawartość tego pliku przy użyciu następujących, podając swoje klucz subskrypcji i punktu końcowego, gdzie jest to odpowiednie.
 
@@ -88,7 +88,7 @@ public class HomeController : Controller
         using (var client = new System.Net.Http.HttpClient())
         {
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
-            using (var response = await client.PostAsync($"{Endpoint}/issueToken", null))
+            using (var response = await client.PostAsync(Endpoint, null))
             {
                 return await response.Content.ReadAsStringAsync();
             }
@@ -110,7 +110,7 @@ Teraz dodamy kilka przykładowej zawartości do tej aplikacji sieci web. Otwórz
 <div class='immersive-reader-button' data-button-style='iconAndText' onclick='launchImmersiveReader()'></div>
 
 @section scripts {
-<script type='text/javascript' src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.1.0.0.js'></script>
+<script type='text/javascript' src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js'></script>
 <script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script type='text/javascript'>
     function getImmersiveReaderTokenAsync() {
@@ -135,7 +135,7 @@ Teraz dodamy kilka przykładowej zawartości do tej aplikacji sieci web. Otwórz
         };
 
         const token = await getImmersiveReaderTokenAsync();
-        ImmersiveReader.launchAsync(token, null, content, { uiZIndex: 1000000 });
+        ImmersiveReader.launchAsync(token, content, { uiZIndex: 1000000 });
     }
 </script>
 }

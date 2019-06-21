@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Uruchom Immersyjnych Reader (Node.js)'
+title: 'Samouczek: Uruchamianie czytnika immersyjnego (Node.js)'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację w języku Node.js, która uruchamia Immersyjnych czytnika.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: a6300d0233f222f26dc018136038c9fe96ecca84
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 98b46636be321bfe87c08687600894d0c8ab54db
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296738"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311707"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Samouczek: Uruchom Immersyjnych Reader (Node.js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Samouczek: Uruchamianie czytnika immersyjnego (Node.js)
 
 W [Przegląd](./overview.md), omówiono Immersyjnych Czytelnik jest i jak go implementuje sprawdzonych technik w celu zrozumienia odczytu language learners, czytniki pojawiających się i uczniom i studentom uczenia różnice. W tym samouczku omówiono sposób tworzenia aplikacji internetowej Node.js uruchamiającego Immersyjnych czytnika. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji dla Immersyjnych czytnika. Pobierz, wykonując instrukcje [w instrukcjach](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account).
+* Klucz subskrypcji dla Immersyjnych czytnika. Pobierz, wykonując instrukcje [w instrukcjach](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 * [Node.js](https://nodejs.org/) i [Yarn](https://yarnpkg.com)
 * Środowisko IDE, takie jak [programu Visual Studio Code](https://code.visualstudio.com/)
 
@@ -56,7 +56,7 @@ yarn add dotenv
 
 ## <a name="acquire-an-access-token"></a>Uzyskiwanie tokenu dostępu
 
-Następnie zapisz zaplecza interfejsu API w celu pobrania tokenu dostępu przy użyciu klucza subskrypcji. Potrzebujesz klucz subskrypcji oraz końcowy następnym kroku. Można uzyskać więcej informacji o https://azure.microsoft.com/try/cognitive-services/my-apis/.
+Następnie zapisz zaplecza interfejsu API w celu pobrania tokenu dostępu przy użyciu klucza subskrypcji. Potrzebujesz klucz subskrypcji oraz końcowy następnym kroku. Klucz subskrypcji można znaleźć na stronie klucze zasobu przeznaczonego czytnika w witrynie Azure portal. Punkt końcowy usługi można znaleźć na stronie Przegląd.
 
 Po utworzeniu usługi klucz subskrypcji i punkt końcowy, Utwórz nowy plik o nazwie _ENV_i wklej następujący kod, zastępując `{YOUR_SUBSCRIPTION_KEY}` i `{YOUR_ENDPOINT}` klucz subskrypcji i punktu końcowego, odpowiednio.
 
@@ -88,7 +88,7 @@ router.get('/token', function(req, res, next) {
         'Ocp-Apim-Subscription-Key': process.env.SUBSCRIPTION_KEY,
         'content-type': 'application/x-www-form-urlencoded'
     },
-    url: process.env.ENDPOINT + '/issueToken'
+    url: process.env.ENDPOINT
   },
   function(err, resp, token) {
     return res.send(token);
@@ -103,7 +103,7 @@ Ten punkt końcowy interfejsu API powinien zostać zabezpieczony za jakąś form
 1. Otwórz _views\layout.pug_i Dodaj następujący kod w obszarze `head` tag przed `body` tagu. Te `script` załadować tagów [Immersyjnych SDK czytnika](https://github.com/Microsoft/immersive-reader-sdk) i bibliotece jQuery.
 
     ```pug
-    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.1.0.0.js')
+    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
@@ -130,7 +130,7 @@ Ten punkt końcowy interfejsu API powinien zostać zabezpieczony za jakąś form
             };
 
             // Third, launch the Immersive Reader
-            ImmersiveReader.launchAsync(token, null, content);
+            ImmersiveReader.launchAsync(token, content);
           }});
         }
     ```
@@ -174,7 +174,7 @@ Domyślnie język interfejsu Immersyjnych czytnika odpowiada ustawień języka w
     const options = {
         uiLang: 'fr',
     }
-    ImmersiveReader.launchAsync(token, null, content, options);
+    ImmersiveReader.launchAsync(token, content, options);
     ```
 
 2. Przejdź do strony _http://localhost:3000_ . Po uruchomieniu Immersyjnych czytnika, interfejs będą wyświetlane w języku francuskim.
