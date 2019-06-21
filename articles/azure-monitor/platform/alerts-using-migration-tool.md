@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 00229cca1d7fb238b330ec98cd35d0bb59bc821a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c8aa00d069ae54584d8e828dab35c22048f1876
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015623"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295547"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Skorzystaj z narzędzia migracji dobrowolne migracji klasycznej reguły alertu
 
@@ -38,7 +38,7 @@ Proces migracji klasycznej reguły alertu jest konwertowany na nowe, równoważn
 
 - Format ładunku powiadomień i interfejsów API do tworzenia i zarządzania nimi nowe reguły alertu różnią się od tych reguł alertów klasycznych ponieważ obsługują one więcej funkcji. [Dowiedz się, jak przygotować się do migracji](alerts-prepare-migration.md).
 
-- Nie można migrować niektóre reguły alertów klasycznych za pomocą narzędzia. [Dowiedz się, jakie reguły nie mogą być migrowane i co należy zrobić z nimi](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated).
+- Nie można migrować niektóre reguły alertów klasycznych za pomocą narzędzia. [Dowiedz się, jakie reguły nie mogą być migrowane i co należy zrobić z nimi](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
 
     > [!NOTE]
     > Proces migracji nie będzie mieć wpływ na ocenę regułami alertów klasycznych. Będą one nadal uruchomić i wysyłania alertów, dopóki migrowaniu i nowe reguły alertu zaczęły obowiązywać.

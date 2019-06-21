@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: 4d7c1d9b59e802343f6d8fe258e8e4ac961bb2df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50804e1f6ab4f352239d3f405e5b41e4e0c58d14
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061011"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67292819"
 ---
-# <a name="standard-properties-in-azure-monitor-log-records"></a>Standardowe właściwości w usłudze Azure Monitor rekordów dziennika
-Dane z dzienników w usłudze Azure Monitor [przechowywane jako zbiór rekordów](../log-query/log-query-overview.md), każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
+# <a name="standard-properties-in-azure-monitor-logs"></a>Właściwości standardowe w dziennikach monitora platformy Azure
+Dane w usłudze Azure Monitor dziennikach [przechowywane jako zestaw rekordów w obszarze roboczym usługi Log Analytics lub aplikacji usługa Application Insights](../log-query/logs-structure.md), każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
 
 Niektóre z tych właściwości są nadal w trakcie zaimplementowana, może je wyświetlić, w niektórych typach danych, ale jeszcze nie w innych.
 
-## <a name="timegenerated"></a>TimeGenerated
-**TimeGenerated** właściwość zawiera Data i godzina utworzenia rekordu. Zapewnia wspólnej właściwości na potrzeby filtrowania lub podsumowywanie według czasu. Po wybraniu zakres czasu dla widoku lub pulpitu nawigacyjnego w witrynie Azure portal, używa TimeGenerated do filtrowania wyników.
+## <a name="timegenerated-and-timestamp"></a>TimeGenerated i sygnatura czasowa
+**TimeGenerated** (obszaru roboczego usługi Log Analytics) i **sygnatura czasowa** zawierają właściwości (aplikacja usługi Application Insights), Data i godzina utworzenia rekordu. Zapewnia wspólnej właściwości na potrzeby filtrowania lub podsumowywanie według czasu. Po wybraniu zakres czasu dla widoku lub pulpitu nawigacyjnego w witrynie Azure portal, używa TimeGenerated lub sygnatury czasowej do filtrowania wyników.
 
 ### <a name="examples"></a>Przykłady
 
@@ -39,16 +39,25 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Typ
-**Typu** właściwość przechowuje nazwę tabeli, z którego pobrano rekord może również być uważane za typu rekordu. Ta właściwość jest przydatna w zapytaniach, które łączą rekordy z wielu tabel, takich jak implementacje używające `search` operator rozróżnienie między rekordami różnych typów. **$table** mogą być używane zamiast **typu** w jednych miejscach.
+Następujące zapytanie zwraca liczbę wyjątków utworzone dla każdego dnia w poprzednim tygodniu.
+
+```Kusto
+exceptions
+| where timestamp between(startofweek(ago(7days))..endofweek(ago(7days))) 
+| summarize count() by bin(TimeGenerated, 1day) 
+| sort by timestamp asc 
+```
+
+## <a name="type-and-itemtype"></a>Typ i itemType
+**Typu** (obszaru roboczego usługi Log Analytics) i **itemType** (aplikacja usługi Application Insights) właściwości przytrzymaj nazwę tabeli, że rekord został pobrany z których może również być uważane za rekordu Typ. Ta właściwość jest przydatna w zapytaniach, które łączą rekordy z wielu tabel, takich jak implementacje używające `search` operator rozróżnienie między rekordami różnych typów. **$table** mogą być używane zamiast **typu** w jednych miejscach.
 
 ### <a name="examples"></a>Przykłady
 Następujące zapytanie zwraca liczbę rekordów według typu zebrane w ciągu ostatniej godziny.
 
 ```Kusto
 search * 
-| where TimeGenerated > ago(1h) 
-| summarize count() by Type 
+| where TimeGenerated > ago(1h)
+| summarize count() by Type
 ```
 
 ## <a name="resourceid"></a>\_ResourceId

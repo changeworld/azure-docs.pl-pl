@@ -5,15 +5,15 @@ services: application-insights
 author: mrbullwinkle
 ms.service: application-insights
 ms.topic: include
-ms.date: 06/21/2018
+ms.date: 06/20/2019
 ms.author: mbullwin
 ms.custom: include file
-ms.openlocfilehash: 31ff6ae66b13eb5e5abcde94e8d3df7f6e32f63c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 708421feca879ade26a1488541fa7fbf8a601358
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182990"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303824"
 ---
 Istnieją pewne ograniczenia liczby metryk i zdarzeń w każdej aplikacji, czyli na klucz instrumentacji. Ograniczenia zależą od wybranego [planu cenowego](https://azure.microsoft.com/pricing/details/application-insights/).
 
@@ -22,7 +22,7 @@ Istnieją pewne ograniczenia liczby metryk i zdarzeń w każdej aplikacji, czyli
 | Łączna ilość danych na dzień | 100 GB | Ilość danych możesz zmniejszyć, ustawiając limit. Jeśli potrzebujesz większej ilości danych, możesz zwiększyć limit, w portalu do 1000 GB. Większe niż 1000 GB pojemności, Wyślij wiadomość e-mail do AIDataCap@microsoft.com.
 | Ograniczanie przepływności | 32000 zdarzeń/s | Limit jest mierzony przez minutę.
 | Przechowywanie danych | 90 dni | Ten zasób jest przeznaczony na potrzeby [wyszukiwania](../articles/azure-monitor/app/diagnostic-search.md), [analizy](../articles/azure-monitor/app/analytics.md) i [Eksploratora metryk](../articles/azure-monitor/app/metrics-explorer.md).
-| Przechowywanie szczegółowych wyników [wieloetapowego testu dostępności](../articles/azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) | 90 dni | Ten zasób zapewnia szczegółowe wyniki każdego kroku.
+| Przechowywanie szczegółowych wyników [wieloetapowego testu dostępności](../articles/azure-monitor/app/availability-multistep.md) | 90 dni | Ten zasób zapewnia szczegółowe wyniki każdego kroku.
 | Maksymalny rozmiar zdarzenia | 64,000 |
 | Długość nazwy właściwości i metryki | 150 | Zobacz [wpisz schematów](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/).
 | Długość ciągu wartości właściwości | 8192 | Zobacz [wpisz schematów](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/).

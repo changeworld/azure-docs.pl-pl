@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 06/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: cfd68bbacf4cf8171efdba7878ec8c06055a4997
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: d153c876366c8c747e06bf50a0ea26bcdcea10eb
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191168"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303591"
 ---
 # <a name="what-is-azure-bastion-preview"></a>Co to jest Azure bastionu? (Wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Następujące funkcje są dostępne do wypróbowania w publicznej wersji zapozna
 * **Sesja zdalna za pośrednictwem protokołu SSL i zapory przechodzenia do protokołu RDP/SSH:** Azure bastionu używa klienta sieci web HTML5, na podstawie, który jest automatycznie przesyłany strumieniowo na urządzeniu lokalnym, aby pobrać sesję RDP/SSH za pośrednictwem protokołu SSL na porcie 443, dzięki któremu można bezpiecznie przechodzić przez zapory firmowej.
 * **Nie publicznego adresu IP na maszynie Wirtualnej platformy Azure wymagane:** Bastionu platformy Azure zostanie otwarte połączenia RDP/SSH z maszyną wirtualną platformy Azure przy użyciu prywatnego adresu IP na maszynie Wirtualnej. Nie potrzebujesz publicznego adresu IP na maszynie wirtualnej.
 * **Bez problemów z zarządzaniem sieciowych grup zabezpieczeń:** Bastionu platformy Azure jest w pełni zarządzanej platformy PaaS w ramach usługi platformy Azure, która jest wewnętrznie wzmocnione w celu zapewnienia bezpiecznego połączenia RDP/SSH. Nie trzeba zastosować sieciowe grupy zabezpieczeń w podsieci platformy Azure bastionu. Ponieważ bastionu Azure nawiązuje połączenie z maszynami wirtualnymi za pośrednictwem prywatnego adresu IP, możesz skonfigurować usługi sieciowe grupy zabezpieczeń, aby zezwolić na użycie protokołu RDP/SSH z bastionu Azure tylko. Spowoduje to usunięcie wysiłek związany z zarządzaniem sieciowych grup zabezpieczeń z każdym razem, gdy potrzebujesz do bezpiecznego łączenia maszyn wirtualnych.
-* **Ponownie ochronę portów skanowania:** Ponieważ nie ma potrzeby udostępnianie maszyn wirtualnych do publicznej sieci Internet, maszyny wirtualne są chronione przed skanowania przez nieautoryzowanych i złośliwych użytkowników znajdujących się poza siecią wirtualną.
+* **Ochrona przed skanowanie portów:** Ponieważ nie ma potrzeby udostępnianie maszyn wirtualnych do publicznej sieci Internet, maszyny wirtualne są chronione przed skanowania przez nieautoryzowanych i złośliwych użytkowników znajdujących się poza siecią wirtualną.
 * **Zabezpiecz się przed lukami w zabezpieczeniach zero day. Zaostrzanie poziomu zabezpieczeń w jednym miejscu:** Bastionu platformy Azure to usługa PaaS w pełni zarządzana platforma. Ponieważ znajduje się w sieci obwodowej Twojej sieci wirtualnej, nie trzeba martwić się o wzmacniania ochrony wszystkich maszyn wirtualnych w sieci wirtualnej. Platforma Azure chroni przed luki w zabezpieczeniach zero day utrzymując bastionu Azure ze wzmocnionymi zabezpieczeniami stale aktualizowane za Ciebie.
 
 ## <a name="faq"></a>Często zadawane pytania

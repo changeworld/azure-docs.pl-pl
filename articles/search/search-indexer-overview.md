@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 87e35573eea836fc8a88c7515409c070ec63aa3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6871c75f0af662762ffac6e7346d4999e55eb937
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024898"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303442"
 ---
 # <a name="indexers-in-azure-search"></a>Indeksatory w usłudze Azure Search
 
@@ -25,7 +25,7 @@ Indeksatory są oparte na typach źródeł danych lub platformach — obejmują 
 
 Dane można wprowadzać tylko za pomocą indeksatora lub kombinacji metod obejmujących użycie indeksatora w celu załadowania tylko niektórych pól w indeksie.
 
-Indeksatory można uruchamiać na żądanie lub według cyklicznego harmonogramu odświeżania danych uruchamianego co 15 minut. Częstsze aktualizacje wymagają modelu wypychania, który pozwala jednocześnie aktualizować dane w usłudze Azure Search i zewnętrznym źródle danych.
+Można uruchomić indeksatory na żądanie lub według cyklicznego odświeżania danych harmonogram uruchamiany tak często, jak co pięć minut. Częstsze aktualizacje wymagają modelu wypychania, który pozwala jednocześnie aktualizować dane w usłudze Azure Search i zewnętrznym źródle danych.
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Podejścia do tworzenia indeksatorów i zarządzania nimi
 

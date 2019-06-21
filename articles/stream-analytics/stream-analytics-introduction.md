@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 05/16/2019
-ms.openlocfilehash: f607c1e79262efdbec79677fa7f16863b7a9d160
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: f45247e652220bdf9f35a15e2059f5f6c06e96d5
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393984"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294820"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co to jest usługa Azure Stream Analytics?
 
@@ -67,7 +67,7 @@ Możliwości języka zapytań można rozszerzyć, definiując i wywołując doda
 
 Usługa Azure Stream Analytics to bezserwerowe w pełni zarządzane rozwiązanie typu „platforma jako usługa” (PaaS) platformy Azure. Nie trzeba aprowizować żadnego sprzętu ani zarządzać klastrami w celu uruchamiania zadań. Usługa Azure Stream Analytics w pełni zarządza każdym zadaniu konfigurowanie złożonych klastrów obliczeniowych w chmurze i zwracając szczególną uwagę wydajności dostrajania niezbędne do uruchomienia zadania. Integracja z usługą Azure Event Hubs i Azure IoT Hub umożliwia obsługę milionów zdarzeń na sekundę przychodzących z różnych źródeł, aby uwzględnić połączonych urządzeń, strumieni kliknięć, plików dziennika i zadania. Za pomocą funkcji partycjonowania centrów zdarzeń, możesz obliczenia można podzielić na etapy logiczne, z których każdy może zostać dalej podzielony w celu zwiększenia skalowalności.
 
-## <a name="run-in-the-cloud-on-in-the-intelligent-edge"></a>Działa w chmurze w ramach w inteligentnych węzłach brzegowych
+## <a name="run-in-the-cloud-or-on-the-intelligent-edge"></a>Uruchom w chmurze, jak i na inteligentnych urządzeniach brzegowych
 
 Usługa Azure Stream Analytics można uruchomić w chmurze w celu analizy na dużą skalę, lub uruchomić na brzegowych urządzeniach IoT niezwykle małych opóźnień analizy. Usługa Azure Stream Analytics używa tego samego języka zapytań w chmurze i urządzenia brzegowe, dzięki czemu deweloperzy mogą kompilować prawdziwie hybrydowej architektury przetwarzania strumienia.
 

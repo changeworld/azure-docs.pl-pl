@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 6/21/2019
 ms.author: victorh
-ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384676"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304594"
 ---
 # <a name="azure-firewall-faq"></a>Zaporę platformy Azure — często zadawane pytania
 
@@ -76,7 +76,6 @@ Usługa zapory usługi Azure uzupełniają funkcje grupy zabezpieczeń sieci. Ra
 
 Zapora usługi Azure jest to zarządzana usługa, za pomocą różnych warstw ochrony, w tym platformy ochrony przy użyciu interfejsu Sieciowego poziomie sieciowych grup zabezpieczeń (nie wyświetlane).  Poziom podsieci sieciowe grupy zabezpieczeń nie są wymagane w podsieci zapory usługi Azure i są wyłączone, aby zapewnić nie przerw w działaniu usługi.
 
-
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak skonfigurować zaporę usługi Azure za pomocą moje punkty końcowe usługi?
 
 Bezpieczny dostęp do usług PaaS zalecamy punktów końcowych usługi. Można włączyć punktów końcowych usługi w podsieci zapory usługi Azure i je wyłączyć w sieciach wirtualnych połączonych szprychy. W ten sposób, możesz korzystać z funkcji — usługi punktu końcowego zabezpieczeń i centralnego rejestrowania dla całego ruchu.
@@ -123,6 +122,10 @@ Tak, można użyć zapory usługi Azure, w centralnej sieci wirtualnej trasy i f
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Do przodu może zapory usługi Azure i filtrowanie ruchu sieciowego między podsieciami w tej samej sieci wirtualnej lub równorzędnej sieci wirtualnych?
 
 Tak. Konfigurowanie tras zdefiniowanych przez użytkownika, aby przekierować ruch pomiędzy podsieciami w tej samej sieci Wirtualnej wymaga jednak wymagają dodatkowej uwagi. Podczas korzystania z zakres adresów sieci Wirtualnej, ponieważ prefiks docelowy dla zdefiniowanej przez użytkownika jest wystarczająca, również są kierowane cały ruch z jednego komputera do innej maszyny w tej samej podsieci za pośrednictwem wystąpienia zapory usługi Azure. Aby tego uniknąć, objęte tras dla podsieci zdefiniowanej przez użytkownika z typem następnego przeskoku dla **sieci Wirtualnej**. Zarządzanie te trasy może być uciążliwe i podatne na błędy. Zalecaną metodą segmentacji sieci wewnętrznej jest używać sieciowych grup zabezpieczeń, które nie wymagają tras zdefiniowanych przez użytkownika.
+
+## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Czy zapory usługi Azure SNAT wychodzących między sieciami prywatnymi?
+
+Zaporę platformy Azure nie SNAT, jeśli docelowy adres IP jest prywatny zakres adresów IP na [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Jeśli Twoja organizacja korzysta z publicznego zakres adresów IP dla sieci prywatnych, SNATs zapory usługi Azure ruch na jeden prywatny adres IP zapory adresów w AzureFirewallSubnet.
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Jest wymuszone tunelowanie łańcucha do wirtualnego urządzenia sieciowego obsługiwane?
 

@@ -2,15 +2,14 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-origin.date: 11/03/2016
-ms.date: 04/04/2019
-ms.author: v-junlch
+ms.date: 11/03/2016
+ms.author: patricka
 ms.openlocfilehash: 4d5c8373f2a8f02ccfbe51cb970ab08744950e7e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128217"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203840"
 ---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
@@ -21,8 +20,8 @@ Aby zarejestrować swoją aplikację internetową, użyj ustawień określonych 
 | Ustawienie      | Wartość przykładowa  | Opis                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **Nazwa** | Aplikacja Contoso B2C | Wprowadź **Nazwę**, która będzie opisywać aplikację użytkownikom. | 
-| **Uwzględnij aplikację internetową/internetowy interfejs API** | Yes | Wybierz pozycję **Tak** dla aplikacji internetowej. |
-| **Zezwalaj na niejawny przepływ** | Yes | Wybierz pozycję **Tak**, jeśli Twoja aplikacja używa [logowania za pomocą uwierzytelniania OpenID Connect](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md) |
+| **Uwzględnij aplikację sieci web / interfejs API sieci web** | Tak | Wybierz pozycję **Tak** dla aplikacji internetowej. |
+| **Zezwalaj na niejawny przepływ** | Tak | Wybierz pozycję **Tak**, jeśli Twoja aplikacja używa [logowania za pomocą uwierzytelniania OpenID Connect](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md) |
 | **Adres URL odpowiedzi** | `https://localhost:44316` | Adresy URL odpowiedzi to punkty końcowe, w których usługa Azure AD B2C będzie zwracać wszystkie tokeny żądane przez Twoją aplikację. Wprowadź [odpowiedni](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-web-app-or-api-reply-url) **adres URL odpowiedzi**. W tym przykładzie Twoja aplikacja jest lokalna i nasłuchuje na porcie 44316. |
 
 Kliknij pozycję **Utwórz**, aby zarejestrować aplikację.
@@ -32,4 +31,3 @@ Nowo zarejestrowana aplikacja jest wyświetlana na liście aplikacji dla dzierż
 ![Właściwości aplikacji internetowej](./media/active-directory-b2c-register-web-app/b2c-web-app-properties.png)
 
 Zanotuj globalnie unikatowy **Identyfikator klienta aplikacji**. Użyjesz tego identyfikatora w kodzie Twojej aplikacji.
-
