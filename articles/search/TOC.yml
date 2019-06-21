@@ -45,10 +45,12 @@
       href: search-semi-structured-data.md
     - name: Wzbogacanie o sztuczną inteligencję (wyszukiwanie poznawcze)
       items:
-        - name: REST
-          href: cognitive-search-tutorial-blob.md
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md
+        - name: REST
+          href: cognitive-search-tutorial-blob.md
+        - name: Python
+          href: cognitive-search-tutorial-blob-python.md
 - name: Przykłady
   items:
     - name: Przykłady kodu platformy Azure

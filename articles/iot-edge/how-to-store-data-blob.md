@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b88bc8181cbfafa4ef81722d0eee12bae46ed79c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
-ms.translationtype: HT
+ms.openlocfilehash: f70ca550f1688551abb94bb30ba4f76eb3c36404
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293489"
+ms.locfileid: "67303963"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -24,6 +24,9 @@ Usługa Azure Blob Storage w usłudze IoT Edge zapewnia [blokowych obiektów blo
 Ten moduł jest dostarczany z **deviceToCloudUpload** i **deviceAutoDelete** funkcji.
 > [!NOTE]
 > Usługa Azure Blob Storage w usłudze IoT Edge jest w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Obejrzyj film dotyczący szybkie wprowadzenie
+> [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
 
 **deviceToCloudUpload** jest można skonfigurować funkcję, która pozwala na automatyczne przekazywanie danych z magazynu lokalnego obiektu blob na platformie Azure przy użyciu sporadyczne Obsługa połączenia internetowego. Umożliwia:
 
