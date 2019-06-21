@@ -1,26 +1,19 @@
 ---
 title: Rozwiąż typowe błędy wdrażania na platformie Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób rozwiązywania typowych problemów podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
-manager: timlt
-editor: tysonn
 keywords: Błąd wdrażania, wdrażania platformy azure, wdrażanie na platformie azure
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fea7f77b1f4bcace23ad9164354c4f42e868869f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128567"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206334"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 

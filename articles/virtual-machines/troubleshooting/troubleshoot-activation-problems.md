@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc058cb3f27545b9e4ad8ef1062ca4d2fa4c9fa8
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60921280"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155153"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów aktywacji maszyny wirtualnej Windows Azure
 
@@ -51,11 +51,9 @@ Ogólnie rzecz biorąc problemy dotyczące aktywacji maszyny Wirtualnej platform
 >
 >Jeśli używasz usługi ExpressRoute i masz opublikowanych trasy domyślnej, zobacz [maszyny Wirtualnej platformy Azure może się nie powieść aktywacji za pośrednictwem usługi ExpressRoute](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>Krok 1 Konfigurowanie odpowiedni klucz instalacji klienta usługi KMS (dla systemu Windows Server 2016 i Windows Server 2012 R2)
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Krok 1 Skonfiguruj odpowiedni klucz instalacji klienta usługi KMS
 
-Dla maszyny Wirtualnej, który jest tworzony na podstawie niestandardowego obrazu systemu Windows Server 2016 lub Windows Server 2012 R2 należy skonfigurować odpowiedni klucz instalacji klienta usługi KMS dla maszyny Wirtualnej.
-
-Ten krok nie ma zastosowania do Windows 2012 lub Windows 2008 R2. Używa ona funkcji automatyzacji Aktywacja maszyny wirtualnej (AVMA), która jest obsługiwana tylko przez system Windows Server 2016 i Windows Server 2012 R2.
+Dla maszyny Wirtualnej, który jest tworzony na podstawie niestandardowego obrazu należy skonfigurować odpowiedni klucz instalacji klienta usługi KMS dla maszyny Wirtualnej.
 
 1. Uruchom **slmgr.vbs/DLV** w wierszu polecenia z podwyższonym poziomem uprawnień. Sprawdź wartość opisu w danych wyjściowych, a następnie sprawdzić, czy został utworzony z sieci sprzedaży (RETAIL channel) lub z nośnika licencji zbiorczej (VOLUME_KMSCLIENT):
   

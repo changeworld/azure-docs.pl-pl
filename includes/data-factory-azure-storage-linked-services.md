@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146908"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183699"
 ---
 ### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
 **Połączonej usługi Azure Storage** umożliwia połączenie konta usługi Azure storage do usługi Azure data factory przy użyciu **klucz konta**, co umożliwia usługi data factory z globalnego dostępu do usługi Azure Storage. Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla połączonej usługi Azure Storage.

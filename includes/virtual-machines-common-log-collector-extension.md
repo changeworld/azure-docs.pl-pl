@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67120197"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183255"
 ---
 Diagnozowanie problemów z usługą w chmurze Microsoft Azure wymaga zbierania plików dziennika usługi na maszynach wirtualnych, w momencie wystąpienia problemów. Można użyć AzureLogCollector rozszerzenia na żądanie wykonaj jednorazowy zbieranie dzienników z przynajmniej jednej chmury usługi maszyny wirtualnej (z ról sieć web i ról procesów roboczych) i przenieść zebranych plików na konto magazynu platformy Azure — wszystko to bez konieczności zdalne logowanie do dowolnej maszyn wirtualnych.
 

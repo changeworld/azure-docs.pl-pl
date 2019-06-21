@@ -4,15 +4,15 @@ description: W tym artykule przedstawiono pojęć, takich jak procedur składowa
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965706"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165578"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika
 
@@ -75,7 +75,7 @@ Funkcje języka JavaScript są również podlegają [aprowizowana przepływnoś�
 
 ## <a name="triggers"></a>Wyzwalacze
 
-W tej sekcji opisano dwa typy wyzwalaczy:
+Usługa Azure Cosmos DB obsługuje dwa typy wyzwalaczy:
 
 ### <a name="pre-triggers"></a>Wstępne wyzwalaczy
 
@@ -84,6 +84,9 @@ Usługa Azure Cosmos DB udostępnia wyzwalacze, które może być wywoływany pr
 ### <a name="post-triggers"></a>Po wprowadzeniu wyzwalaczy
 
 Podobnie jak wstępnego wyzwalaczy, po wyzwalacze, również są powiązane z operacji na elemencie usługi Azure Cosmos DB i nie wymagają one wszelkie parametry wejściowe. Zakres ich działania *po* operacja została zakończona i mieć dostęp do komunikatu odpowiedzi, które są wysyłane do klienta. Aby uzyskać przykłady, zobacz [sposobu pisania wyzwalaczy](how-to-write-stored-procedures-triggers-udfs.md#triggers) artykułu.
+
+> [!NOTE]
+> Zarejestrowany wyzwalaczy nie uruchamiaj automatycznie po ich odpowiednie operacje (Tworzenie / usuwanie / Zastąp i aktualizacji) się zdarzyć. Muszą być jawnie wywołane podczas wykonywania tych operacji. Aby dowiedzieć się więcej, zobacz [sposób uruchamiania wyzwalaczy](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) artykułu.
 
 ## <a id="udfs"></a>Funkcje zdefiniowane przez użytkownika
 

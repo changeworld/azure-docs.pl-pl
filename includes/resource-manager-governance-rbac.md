@@ -2,26 +2,24 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: azure-resource-manager
-author: rockboyfor
-manager: digimobile
+author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-origin.date: 02/16/2018
-ms.date: 04/30/2018
-ms.author: v-yeche
+ms.date: 02/16/2018
+ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: f77a5d482c3f8632a3d86bd8e027fbb4418168c3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122910"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205325"
 ---
 Upewnij się, że użytkownicy w organizacji mają odpowiedni poziom dostępu do tych zasobów. Nie udzielaj użytkownikom nieograniczonego dostępu, ale upewnij się, że mogą oni wykonywać swoją pracę. Kontrola dostępu oparta na rolach (RBAC) umożliwia zarządzanie, którzy użytkownicy mają uprawnienia do wykonania określonych czynności w zakresie. Rola definiuje zestawem dozwolonych akcji. Przypisywanie roli do zakresu, a następnie określ użytkowników, którzy należą do tej roli dla zakresu.
 
 Podczas planowania strategii kontroli dostępu należy przyznać użytkownikom najniższe uprawnienie, które muszą mieć, aby wykonywać swoją pracę. Na poniższej ilustracji przedstawiono sugerowany wzorzec przypisywania funkcji RBAC.
 
-![Zakres](./media/resource-manager-governance-rbac/role-examples.png)
+![Scope](./media/resource-manager-governance-rbac/role-examples.png)
 
 Istnieją trzy role, które są stosowane do wszystkich zasobów - właściciela, współautora i czytelnika. Wszystkie konta przypisane do roli właściciel powinien być ściśle kontrolowane i rzadko używane. Użytkownicy, którzy muszą tylko obserwować stan rozwiązania może być przyznany Rola czytelnika.
 
@@ -30,4 +28,3 @@ Większość użytkowników są przyznawane [ról określonych zasobów](../arti
 ### <a name="who-can-assign-roles"></a>Kto może przypisywać role
 
 Aby móc tworzyć i usuwać przypisania roli, użytkownicy muszą mieć dostęp `Microsoft.Authorization/roleAssignments/*`. Ten dostęp jest udzielany za pośrednictwem ról Właściciel lub Administrator dostępu użytkowników.
-<!--ms.date: 04/30/2018-->

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: ea6d969ed6612f947e3c73c438738bd98ac2bb30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362275"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64700458"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Skrypt programu VMM do planu odzyskiwania
 
@@ -45,7 +45,7 @@ Można użyć skryptów programu PowerShell w planów odzyskiwania. Było dostę
   
   1. Otwórz Edytor rejestru, a następnie przejdź do **Recovery\Registration witryny HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure**.
 
-  1. Zmień wartość **ScriptLibraryPath** do  **\\\libserver2.contoso.com\share\\**. Podaj pełną nazwę FQDN. Podaj uprawnienia do lokalizacji udziału. Jest to węzeł główny udziału. Aby sprawdzić, czy węzeł główny w programie VMM, przejdź do węzła głównego w bibliotece. Ścieżka, która zostanie otwarta jest poziom główny ścieżki. Jest to ścieżka, którego należy użyć w zmiennej.
+  1. Zmień wartość **ScriptLibraryPath** do  **\\\libserver2.contoso.com\share\\** . Podaj pełną nazwę FQDN. Podaj uprawnienia do lokalizacji udziału. Jest to węzeł główny udziału. Aby sprawdzić, czy węzeł główny w programie VMM, przejdź do węzła głównego w bibliotece. Ścieżka, która zostanie otwarta jest poziom główny ścieżki. Jest to ścieżka, którego należy użyć w zmiennej.
 
   1. Testowanie skryptu przy użyciu konta użytkownika, który ma ten sam poziom uprawnień użytkownika, co konto usługi programu VMM. Za pomocą tych praw użytkownika sprawdza ten autonomicznej, przetestowane skrypty uruchamiania tak samo jak działają usługi planów odzyskiwania. Na serwerze programu VMM należy ustawić zasady wykonywania na obejście w następujący sposób:
 

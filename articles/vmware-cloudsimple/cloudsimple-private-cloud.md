@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dc07b4eea553e6cb3d9b522826e860ddbfbc1513
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3ab53466cae5bd39d85f8d846c8e59ad94f1f2d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577048"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165743"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Omówienie chmury prywatnej CloudSimple
 
@@ -63,7 +63,7 @@ Użytkownicy korzystają z stosu za pośrednictwem natywnych narzędzi VMware, t
 
 Możesz wdrożyć węzły dedykowane w lokalizacji platformy Azure. Można następnie zarządzać nimi przy użyciu platformy Azure i CloudSimple. Chmura prywatna składa się z co najmniej jeden klaster vSphere, a każdy klaster zawiera 3 – 16 węzłów.
 
-Aby utworzyć chmury prywatnej, używając kupić węzły:
+Można utworzyć chmurę prywatną, używając elastycznie węzłów:
 
 * Płatność za rzeczywiste użycie węzłów
 * Węzły zastrzeżone, dedykowanej

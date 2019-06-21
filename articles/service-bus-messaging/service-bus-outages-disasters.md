@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 24611e265788cf046aa0733bc423917aaf305427
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24fba1961c8fd95f1b9489716d690dd6eaa97b62
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589741"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274846"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Najlepsze rozwiązania dotyczące izolacji aplikacji w ramach usługi Service Bus wyłączeń i awarii
 
@@ -54,9 +54,9 @@ Jeśli aplikacja wymaga trwałych komunikacji nadawcy do odbiorcy, aplikacja mo�
 ### <a name="active-replication"></a>Aktywna replikacja
 Aktywna replikacja korzysta z jednostek w obu tych przestrzeni nazw dla każdej operacji. Każdy klient, który jest wysyłany komunikat wysyła dwie kopie tego samego komunikatu. Pierwsza kopia są wysyłane do podstawowej jednostki (na przykład **contosoPrimary.servicebus.windows.net/sales**), i drugą kopię wiadomości są wysyłane do dodatkowej jednostki (na przykład  **contosoSecondary.servicebus.windows.net/sales**).
 
-Klient odbiera komunikaty z kolejek o obu. Odbiorca przetwarza pierwsza kopia wiadomości, a druga kopia jest pominięty. Aby pominąć zduplikowanych komunikatów, nadawca musisz otagować każdy komunikat o unikatowym identyfikatorze. Obu kopiach wiadomości muszą być oznaczone tym samym identyfikatorze. Możesz użyć [BrokeredMessage.MessageId] [ BrokeredMessage.MessageId] lub [BrokeredMessage.Label] [ BrokeredMessage.Label] właściwości lub właściwość niestandardową do znakowania wiadomości. Odbiornik, musisz utrzymywać listę komunikatów, które już otrzymało.
+Klient odbiera komunikaty z kolejek o obu. Odbiorca przetwarza pierwsza kopia wiadomości, a druga kopia jest pominięty. Aby pominąć zduplikowanych komunikatów, nadawca musisz otagować każdy komunikat o unikatowym identyfikatorze. Obu kopiach wiadomości muszą być oznaczone tym samym identyfikatorze. Możesz użyć [BrokeredMessage.MessageId][BrokeredMessage.MessageId] lub [BrokeredMessage.Label][BrokeredMessage.Label] właściwości lub właściwość niestandardową do znakowania wiadomości. Odbiornik, musisz utrzymywać listę komunikatów, które już otrzymało.
 
-[Replikację geograficzną za pomocą usługi Service Bus w warstwie standardowa] [ Geo-replication with Service Bus Standard Tier] w przykładzie pokazano aktywna replikacja jednostek do obsługi komunikatów.
+[Replikację geograficzną za pomocą usługi Service Bus w warstwie standardowa][Geo-replication with Service Bus Standard Tier] w przykładzie pokazano aktywna replikacja jednostek do obsługi komunikatów.
 
 > [!NOTE]
 > Podejście aktywna replikacja podwaja się liczba operacji, w związku z tym takie podejście może prowadzić do wyższych kosztów.
@@ -75,10 +75,10 @@ Korzystając z pasywnego replikacji, w następujących scenariuszach komunikaty 
 * **Opóźnienie wiadomości lub utratą**: Załóżmy, że nadawca pomyślnie wysłane m1 komunikat do kolejki głównej, a kolejki staje się niedostępny przed odbiornika odbiera m1. Nadawca wysyła m2 wyświetlony komunikat do kolejki dodatkowej. Jeśli podstawowy kolejka jest tymczasowo niedostępny, odbiornik odbiera m1 po kolejce znowu dostępne. W razie awarii odbiornika nigdy nie może zostać wyświetlony m1.
 * **Duplikuj odbioru**: Załóżmy, że nadawca wysyła komunikat m do kolejki głównej. Usługa Service Bus pomyślnie przetwarza m, ale nie może wysłać odpowiedź. Po upłynie limit czasu operacji wysyłania, nadawca wysyła identyczną kopię m do kolejki dodatkowej. Jeśli odbiorca jest możliwość odbierania pierwszego kopiowania m, zanim kolejki głównej staje się niedostępny, odbiornik odbiera obu kopiach m, w tym samym czasie. Jeśli odbiornik nie jest możliwość odbierania pierwszego kopiowania m, zanim kolejki głównej staje się niedostępny, odbiornik początkowo odbiera drugą kopię m, ale odbiera drugą kopię m po udostępnieniu kolejki głównej.
 
-[Replikację geograficzną za pomocą usługi Service Bus w warstwie standardowa] [ Geo-replication with Service Bus Standard Tier] w przykładzie pokazano pasywnym replikacji jednostki obsługi komunikatów.
+[Replikację geograficzną za pomocą usługi Service Bus w warstwie standardowa][Geo-replication with Service Bus Standard Tier] w przykładzie pokazano pasywnym replikacji jednostki obsługi komunikatów.
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Punktem końcowym przekaźnika ochronę przed awariami centrum danych lub awarii
-Replikacja geograficzna punktem końcowym przekaźnika umożliwia to usługa, która uwidacznia punkt końcowy usługi relay, być dostępny w obecności awarii usługi Service Bus. Aby osiągnąć replikacji geograficznej, usługi należy utworzyć dwa punkty końcowe usługi relay w różnych obszarach nazw. Przestrzenie nazw musi znajdować się w różnych centrach danych i dwa punkty końcowe muszą mieć różne nazwy. Na przykład podstawowego punktu końcowego można z Tobą skontaktować w obszarze **contosoPrimary.servicebus.windows.net/myPrimaryService**, natomiast jego odpowiednika dodatkowej można z Tobą skontaktować w obszarze **contosoSecondary.servicebus.windows.net /mySecondaryService**.
+Replikacja geograficzna z [usługi Azure Relay](../service-bus-relay/relay-what-is-it.md) punktów końcowych pozwala to usługa, która uwidacznia punkt końcowy usługi relay, być dostępny w obecności awarii usługi Service Bus. Aby osiągnąć replikacji geograficznej, usługi należy utworzyć dwa punkty końcowe usługi relay w różnych obszarach nazw. Przestrzenie nazw musi znajdować się w różnych centrach danych i dwa punkty końcowe muszą mieć różne nazwy. Na przykład podstawowego punktu końcowego można z Tobą skontaktować w obszarze **contosoPrimary.servicebus.windows.net/myPrimaryService**, natomiast jego odpowiednika dodatkowej można z Tobą skontaktować w obszarze **contosoSecondary.servicebus.windows.net /mySecondaryService**.
 
 Usługa następnie nasłuchuje na obu punktów końcowych, a klient może wywołać usługę za pośrednictwem dowolnego punktu końcowego. Aplikacja kliencka losowo wybiera jeden z przekaźników jako podstawowego punktu końcowego i wysyła jego żądanie do aktywnego punktu końcowego. Jeśli operacja zakończy się niepowodzeniem z kodem błędu, ten błąd wskazuje, że punkt końcowy usługi relay jest dostępne. Aplikacja otworzy kanał do endpoint kopii zapasowej i wysyła żądanie. W tym momencie aktywny i tworzenia kopii zapasowych punktów końcowych przełączyć role: aplikacja kliencka uwzględnia stare aktywny punkt końcowy był nowy punkt końcowy z kopii zapasowej i starych kopii zapasowych punktu końcowego jako nowy, aktywny punkt końcowy. Jeśli niepowodzenie operacji zarówno wysyłać, uległy zmianie role dwie jednostki i zostanie zwrócony błąd.
 

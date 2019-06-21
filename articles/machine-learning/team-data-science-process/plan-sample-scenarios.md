@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 130ab6ee8e59b157d1fbdd8769f14814445dea18
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429755"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202757"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scenariusze zaawansowanej analizy w usłudze Azure Machine Learning
 W tym artykule przedstawiono różne źródła danych przykładowych i scenariusze docelowe, które są obsługiwane przez [Team Data Science naukowych](overview.md). Przetwarzania TDSP zapewnia to systematyczne podejście dla zespołów usługi umożliwiające wspólną pracę nad tworzeniem inteligentnych aplikacji. Scenariusze przedstawione w tym miejscu przedstawiono opcje dostępne w przepływie pracy przetwarzania danych, które są zależne od właściwości danych, lokalizacji źródłowych i docelowych repozytoriów na platformie Azure.
@@ -239,7 +239,7 @@ Aby replikować całą bazę danych programu SQL Server na maszynie Wirtualnej p
 1. Począwszy od zestawu danych przekazanych prosty przepływ eksperymentu usługi Azure Machine Learning.
 
 ## <a name="decisiontree"></a>Drzewo decyzyjne dotyczące wybór scenariusza
-- - -
+---
 Poniższy diagram przedstawia opisanych powyżej scenariuszy i Advanced Analytics Process and technologi wprowadzone prowadzące do poszczególnych scenariuszy dla pozycji. Należy zauważyć, że przetwarzanie danych, eksploracji, technicznego opracowywania funkcji i próbkowanie może potrwać umieścić w co najmniej jeden metoda/środowisko — w źródle, pośrednie, i/lub środowiskach docelowych — i może kontynuować interakcyjnie, zgodnie z potrzebami. Diagram tylko stanowi ilustrację niektóre możliwe przepływów i nie zapewnia pełnego wyliczenia.
 
 ![Przykładowe DS procesu wskazówki scenariusze][8]

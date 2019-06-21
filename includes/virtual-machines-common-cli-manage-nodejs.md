@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: a4c9ec133b3686a92cec7e7c8d4552c1302e3074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158525"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183246"
 ---
 Aby móc używać interfejsu wiersza polecenia platformy Azure oraz szablonów i poleceń usługi Resource Manager w celu wdrażania obciążeń i zasobów platformy Azure przy użyciu grup zasobów, potrzebne jest konto platformy Azure. Jeśli nie posiadasz konta, możesz skorzystać z [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 

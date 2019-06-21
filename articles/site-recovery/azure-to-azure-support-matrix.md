@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: raynew
-ms.openlocfilehash: a9021a44f61f516f144b77309d3ed597bd6f4b06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a6db30bfe6e4dc1eed04d11b53113c90210a5cf
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067125"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275218"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matryca obsługi replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
@@ -24,8 +24,8 @@ Ten artykuł zawiera podsumowanie obsługi i wymagań wstępnych podczas ustawia
 **Wdrożenie** |  **Pomoc techniczna**
 --- | ---
 **Azure Portal** | Obsługiwane.
-**Program PowerShell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
-**Interfejs API REST** | Obsługiwane.
+**PowerShell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
+**REST API** | Obsługiwane.
 **Interfejs wiersza polecenia** | Nie jest obecnie obsługiwany
 
 
@@ -135,7 +135,7 @@ Debian 8 | 9.22, 9.23, 9.24 | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bpo.4-am
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | 9.25 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.104-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.176-94.88-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.13-default |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | 9.25 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.104-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.176-94.88-default</br></br>Z dodatkiem SP3 4.4.138-4.7-azure do 4.4.176-4.25-azure</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.13-default</br>Z dodatkiem SP4 4.12.14-6.3-azure do 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | 9.24 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.104-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.176-94.88-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.13-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.23 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.22 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |

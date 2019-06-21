@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
-ms.openlocfilehash: 73c837897f4a104fabb4143d4b49fa3fbc258bb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 0042b0bd8c6ed9e9d253c44151dcf0588c742b48
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305028"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137840"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Zarządzaj tematami i publikowania zdarzeń za pomocą zdarzeń domeny
 
@@ -194,7 +194,7 @@ A następnie użyj ulubionych metodę wprowadzania metodę POST protokołu HTTP 
 
 ## <a name="search-lists-of-topics-or-subscriptions"></a>Wyszukaj listę tematów lub subskrypcji
 
-W celu wyszukiwania i zarządzanie dużą liczbą tematy lub subskrypcje, interfejsów API usługi Event Grid obsługuje listy dzielenia na strony.
+W celu wyszukiwania i zarządzanie dużą liczbą tematy lub subskrypcje, interfejsów API usługi Event Grid obsługuje listy i dzielenia na strony.
 
 ### <a name="using-cli"></a>Korzystanie z interfejsu wiersza polecenia (CLI)
 

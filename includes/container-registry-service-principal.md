@@ -9,11 +9,11 @@ ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 69951693f9d3bacb556453aba954620815884d43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152235"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183878"
 ---
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 

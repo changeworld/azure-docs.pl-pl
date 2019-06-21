@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/04/2019
-ms.openlocfilehash: 4bfbce7dd985f3ebf67fde671d83acf30623b641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/17/2019
+ms.openlocfilehash: 0dbcc99850d0a8b3b7306fac2bd8f89e6c941e4c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055396"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163655"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -211,13 +211,13 @@ Nawiązywanie Apache Ambari i stron sieci web za pośrednictwem sieci wirtualnej
 
 ## <a id="networktraffic"></a> Kontrolowanie ruchu sieciowego
 
-### <a name="controlling-inbound-traffic-to-hdinsight-clusters"></a>Kontrolowanie ruchu przychodzącego w klastrach HDInsight
+### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>Techniki do kontrolowania ruchu przychodzącego i wychodzącego w klastrach HDInsight
 
 Ruch sieciowy w sieciach wirtualnych platformy Azure mogą być kontrolowane za pomocą następujących metod:
 
 * **Sieciowe grupy zabezpieczeń** (NSG) umożliwiają filtrowanie ruchu przychodzącego i wychodzącego do sieci. Aby uzyskać więcej informacji, zobacz [filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](../virtual-network/security-overview.md) dokumentu.
 
-* **Sieciowych urządzeń wirtualnych** replikować z działaniem urządzeń, takich jak routery i zapory. Aby uzyskać więcej informacji, zobacz [urządzenia sieciowe](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
+* **Sieciowych urządzeń wirtualnych** (WUS) mogą być używane z tylko ruchu wychodzącego. Urządzenia WUS są replikowane z działaniem urządzeń, takich jak routery i zapory.  Aby uzyskać więcej informacji, zobacz [urządzenia sieciowe](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
 Jako usługa zarządzana HDInsight wymaga nieograniczony dostęp do kondycji HDInsight i usług zarządzania, zarówno dla ruchu przychodzącego i wychodzącego z sieci Wirtualnej. Przy użyciu sieciowych grup zabezpieczeń, należy się upewnić, że te usługi nadal może komunikować się z klastrem HDInsight.
 

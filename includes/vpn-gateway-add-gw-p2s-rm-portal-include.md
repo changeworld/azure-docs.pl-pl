@@ -9,11 +9,11 @@ ms.date: 10/24/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2d84a905cba503119f1b6e0f0a1a7cbbf91b3a1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157385"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183096"
 ---
 1. W portalu po lewej stronie kliknij pozycję **+ Utwórz zasób** i wpisz „Brama sieci wirtualnej” w polu wyszukiwania. Znajdź pozycję **Brama sieci wirtualnej** w wynikach wyszukiwania i kliknij tę pozycję. Na **bramy sieci wirtualnej** kliknij **Utwórz** w dolnej części strony. Spowoduje to otwarcie strony **Tworzenie bramy sieci wirtualnej**.
 2. Na stronie **Tworzenie bramy sieci wirtualnej** wypełnij wartości dla swojej bramy sieci wirtualnej.

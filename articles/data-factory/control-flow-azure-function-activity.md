@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727061"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144127"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktywności funkcji platformy Azure w usłudze Azure Data Factory
 
@@ -32,7 +32,7 @@ Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy 
 
 | **Property** | **Opis** | **Wymagane** |
 | --- | --- | --- |
-| type   | Właściwość type musi być równa: **AzureFunction** | tak |
+| — typ   | Właściwość type musi być równa: **AzureFunction** | tak |
 | adres url aplikacji funkcji | Adres URL dla aplikacji funkcji platformy Azure. Format jest `https://<accountname>.azurewebsites.net`. Ten adres URL jest wartością w **adresu URL** sekcji podczas przeglądania aplikacji funkcji w witrynie Azure portal  | tak |
 | klucz funkcji | Klucz dostępu dla funkcji platformy Azure. Kliknij pozycję **Zarządzaj** sekcji dla odpowiedniej funkcji, a następnie skopiuj albo **funkcyjne** lub **klucz hosta**. Dowiedz się więcej tutaj: [Usługa Azure Functions HTTP wyzwalaczy i powiązań](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | tak |
 |   |   |   |
@@ -64,6 +64,10 @@ Usługa Azure Functions limit czasu po 230 sekundy, niezależnie od tego `functi
 
 Dowiedz się więcej o funkcje trwałe w [w tym artykule](../azure-functions/durable/durable-functions-overview.md). Możesz skonfigurować działanie funkcji platformy Azure do wywołania funkcji trwałe, która zwróci odpowiedź z innego identyfikatora URI, takich jak [w tym przykładzie](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Ponieważ `statusQueryGetUri` zwraca HTTP 202 stan podczas funkcja działa, można sondować stan funkcji za pomocą działania w sieci Web. Po prostu skonfigurować działanie internetowe za pomocą `url` pola `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`. Po zakończeniu funkcji trwałych danych wyjściowych funkcji będą dane wyjściowe działania w sieci Web.
 
+
+## <a name="sample"></a>Sample
+
+Można znaleźć przykładowe usługi Data Factory, która używa funkcji platformy Azure można wyodrębnić zawartości pliku tar [tutaj](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

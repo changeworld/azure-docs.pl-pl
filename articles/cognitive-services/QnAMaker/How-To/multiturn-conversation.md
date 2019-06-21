@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7c7d7c480068b754413fd2309a2251d1e3855106
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e46c935d298f2fe7ebfa4bce471288c9ab8a606
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075186"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271950"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Użyj kontynuacji monit o utworzenie wielu włącza konwersacji
 
@@ -229,7 +229,7 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
@@ -254,7 +254,8 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o `Acco
                         "qna": null,
                         "displayText": "Create a Windows Account"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -268,14 +269,15 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Turn off the device"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -289,14 +291,21 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         }
     ]
 }
 ```
 
-`prompts` Tablicy zawiera tekst w `displayText` właściwości i `qnaId` wartości, więc odpowiedzi na te pytania można wyświetlić jako dalej opcji wyświetlanych w komunikacji usługi flow, następnie wyślij wybranej wartości, aby usługa QnA Maker w poniższych dokumentach. 
+`promptsToAdd` Tablicy zawiera tekst w `displayText` właściwości i `qnaId` wartości, więc odpowiedzi na te pytania można wyświetlić jako dalej opcji wyświetlanych w komunikacji usługi flow, następnie wyślij wybranej wartości, aby usługa QnA Maker w poniższych dokumentach. 
+
+<!--
+
+The `promptsToDelete` array provides the ...
+
+-->
 
 ## <a name="json-request-to-return-non-initial-answer-and-follow-up-prompts"></a>Żądania JSON do zwrócenia odpowiedzi bez początkowej i kolejnych monitów
 
@@ -336,7 +345,8 @@ Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w 
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         },
         {
@@ -350,14 +360,15 @@ Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w 
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 4,
                         "qna": null,
                         "displayText": "Ports and connectors"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -371,7 +382,8 @@ Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w 
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         }
     ]

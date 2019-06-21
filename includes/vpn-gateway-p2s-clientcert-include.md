@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157207"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183093"
 ---
 Każdy komputer kliencki, który połączysz z siecią wirtualną przy użyciu połączenia punkt-lokacja, musi mieć zainstalowany certyfikat klienta. Należy wygenerować go na podstawie certyfikatu głównego i zainstalować na każdym komputerze klienckim. Jeśli nie zainstalujesz prawidłowego certyfikatu klienta, uwierzytelnianie zakończy się niepowodzeniem, gdy klient spróbuje nawiązać połączenie z siecią wirtualną.
 

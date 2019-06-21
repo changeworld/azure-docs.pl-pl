@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151604"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183902"
 ---
 ## <a name="specifying-formats"></a>Określanie formatów
 Usługa Azure Data Factory obsługuje następujące typy formatów:

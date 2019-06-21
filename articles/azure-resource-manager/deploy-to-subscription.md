@@ -1,22 +1,17 @@
 ---
 title: Utwórz grupę zasobów i zasoby w subskrypcji — szablon usługi Azure Resource Manager
 description: W tym artykule opisano sposób tworzenia grupy zasobów w szablonie usługi Azure Resource Manager. Pokazano również, jak wdrażać zasoby w zakresie subskrypcji platformy Azure.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: bdba294e1ee776d90b93f715e930ec26765abb7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8414e94582ec4022915e4c353f33eec72f3dc98a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66129167"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205654"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grupy zasobów i zasoby na poziomie subskrypcji
 

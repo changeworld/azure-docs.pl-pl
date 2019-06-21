@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66131725"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183002"
 ---
 ## <a name="export-an-api-definition"></a>Eksportowanie definicji interfejsu API
 Masz definicji interfejsu OpenAPI dla funkcji, z [Tworzenie definicji interfejsu OpenAPI dla funkcji](../articles/azure-functions/functions-openapi-definition.md). Następnym krokiem w ramach tego procesu jest wyeksportować definicję interfejsu API usługi PowerApps i Microsoft Flow można używać go w niestandardowego interfejsu API.

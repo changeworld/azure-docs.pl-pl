@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: c8d5df0f83a7ae37b9f06a5e255e9809288b6d67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: bcbdd5fd8395cb0a47038595127e9b20118bdf1b
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917040"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147685"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna, za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
@@ -52,10 +52,10 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
 
 | Rola | Jedno- i puli baz danych | Wystąpienie bazy danych |
 | :----| :------------- | :--------------- |
-| **Publisher** | Nie | Tak | 
-| **Dystrybutor** | Nie | Tak|
+| **Publisher** | Nie | Yes | 
+| **Dystrybutor** | Nie | Yes|
 | **Ściągnij subskrybenta** | Nie | Yes|
-| **Wypychanie subskrybenta**| Yes | Yes|
+| **Wypychanie subskrybenta**| Yes | Tak|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
@@ -66,11 +66,10 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 
 | Replikacja | Jedno- i puli baz danych | Wystąpienie bazy danych|
 | :----| :------------- | :--------------- |
-| [**transakcyjne**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybenta) | Tak | 
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybenta) | Tak|
+| [**Standardowa transakcyjne**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybenta) | Tak | 
+| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybenta) | Yes|
 | [**Replikacja scalająca**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nie | Nie|
 | [**Sieć równorzędna**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nie | Nie|
-| **One-way** | Tak | Tak|
 | [**Dwukierunkowe**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Tak|
 | [**Aktualizowalne subskrypcje**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nie | Nie|
 | &nbsp; | &nbsp; | &nbsp; |

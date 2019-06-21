@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66141009"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183919"
 ---
 W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klienta do kontaktowania się z dostawcy tożsamości i zaplecza usług platformy Azure przy każdym uruchomieniu aplikacji. Ta metoda jest nieefektywne i może mieć problemy związane z użycia, jeśli wielu klientów próbuje uruchomić aplikacji jednocześnie. Lepszym rozwiązaniem jest pamięci podręcznej tokenu autoryzacji zwracane przez usługę Azure, a następnie spróbuj użyć to najpierw przed rozpoczęciem korzystania z opartą na dostawcy logowania.
 

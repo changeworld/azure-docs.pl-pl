@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: a61c2577f79f32f97fe2ef10a2ac67fdbbc1feda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 932d250d6685a1b905e4a03a0118d8c8f1f26418
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073773"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151241"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Usługa Azure Storage cele skalowalności i wydajności dla kont magazynu
 
@@ -45,6 +45,9 @@ Aby uzyskać więcej informacji na temat cele skalowalności i wydajności dla u
 
 > [!IMPORTANT]
 > Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont magazynu tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada na koncie magazynu.
+>
+> Udziały plików standardowych większy niż wynosi 5 TiB są w wersji zapoznawczej i mają pewne ograniczenia.
+> Lista ograniczeń i dołączyć do wersji zapoznawczej te większe rozmiary udziału plików, zobacz [standardowych plikowych udziałów](../files/storage-files-planning.md#standard-file-shares) przewodnik sekcji planowania usługi Azure Files.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

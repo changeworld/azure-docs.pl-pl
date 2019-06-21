@@ -9,11 +9,11 @@ ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: 2614c9290bf31813d59ee753a31622bccf0682b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114505"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183438"
 ---
 | Resource | Cel | Stały limit |
 |----------|--------------|------------|
@@ -24,11 +24,11 @@ ms.locfileid: "66114505"
 | Punkty końcowe serwera dla każdej grupy synchronizacji | 50 punkty końcowe serwera | Nie |
 | Punkty końcowe serwera na serwer | 30 punkty końcowe serwera | Tak |
 | Obiekty systemu (plików i katalogów) dla każdej grupy synchronizacji plików | 25 milionów obiektów | Nie |
-| Maksymalna liczba obiektów systemu plików (pliki i katalogi) w katalogu | 1 mln obiektów | Yes |
+| Maksymalna liczba obiektów systemu plików (pliki i katalogi) w katalogu | 1 mln obiektów | Tak |
 | Maksymalna (pliki i katalogi) zabezpieczeń deskryptora rozmiar obiektu | 64 KiB | Yes |
 | Rozmiar pliku | 100 GiB | Nie |
 | Minimalny rozmiar pliku do się warstwy | 64 KiB | Tak |
-| Synchronizacja jednoczesnych sesji | Agent w wersji 4 lub nowszy: Limit zależy od dostępnych zasobów systemowych. <BR> V3 agent: Dwie sesje ActiveSync na procesor lub maksymalnie osiem sesji ActiveSync na serwer. | Yes
+| Synchronizacja jednoczesnych sesji | Agent w wersji 4 lub nowszy: Limit zależy od dostępnych zasobów systemowych. <BR> V3 agent: Dwie sesje ActiveSync na procesor lub maksymalnie osiem sesji ActiveSync na serwer. | Tak
 
 > [!Note]  
 > Punkt końcowy usługi Azure File Sync skalować w górę do rozmiaru udziału plików platformy Azure. W przypadku osiągnięcia limitu rozmiaru udziału plików platformy Azure, synchronizacji nie będzie działać.

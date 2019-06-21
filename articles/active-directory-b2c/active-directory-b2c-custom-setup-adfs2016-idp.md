@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4510074619ff513b7284819d88fdb2532e4ce33a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c469b333c6896d33b440bfadf0ebbdbeece71a3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510429"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272136"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -101,6 +101,10 @@ W razie skonfigurowano zasady tak, aby usługa Azure AD B2C wie, jak komunikowa�
 1. Na **zasady niestandardowe** strony w swojej dzierżawie usługi Azure AD B2C, wybierz opcję **zasady przekazywania**.
 2. Włącz **Zastąp zasady Jeśli istnieje**, a następnie wyszukaj i wybierz pozycję *TrustFrameworkExtensions.xml* pliku.
 3. Kliknij pozycję **Przekaż**.
+
+> [!NOTE]
+> Program Visual Studio code rozszerzenia B2C używa "socialIdpUserId." Społecznościowych zasad jest również wymagane dla usług AD FS.
+>
 
 ## <a name="register-the-claims-provider"></a>Zarejestruj dostawcę oświadczeń
 

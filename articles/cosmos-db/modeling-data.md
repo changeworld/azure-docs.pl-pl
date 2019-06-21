@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 956f63dd92c82df0998cfaca76c7ecf5b10f053e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cf075c2909b35bb08ca4cb24aaa3b99597f34c6
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953856"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203525"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelowanie danych w usłudze Azure Cosmos DB
 
@@ -176,9 +176,9 @@ Stock *zaza* może być przedmiotem obrotu wiele setki razy w jednym dnia i tysi
 
 ## <a name="referencing-data"></a>Odwołanie do danych
 
-Trwa osadzanie danych działa dobrze w wielu sytuacjach, ale tak, to oczywiste, że istnieją scenariusze denormalizing danych spowoduje, że więcej problemów niż warto. Dlatego co możemy zrobić teraz?
+Trwa osadzanie danych działa dobrze w wielu sytuacjach, ale istnieją scenariusze denormalizing danych spowoduje, że więcej problemów niż warto. Dlatego co możemy zrobić teraz?
 
-Relacyjne bazy danych nie są jedynym miejscem, w którym można utworzyć relacji między jednostkami. W bazie danych dokumentów może mieć informacji w jednym dokumencie, który faktycznie odnosi się do danych w innych dokumentach. Teraz mogę am nie działaniem na rzecz nawet minutę wbudowujemy systemów, które mogłyby być lepiej dostosowane do relacyjnej bazy danych w usłudze Azure Cosmos DB lub dowolnej innej bazy danych dokumentów, że proste relacje są wystarczające i może być przydatny.
+Relacyjne bazy danych nie są jedynym miejscem, w którym można utworzyć relacji między jednostkami. W bazie danych dokumentów może mieć informacji w jednym dokumencie, który odnosi się do danych w innych dokumentach. Firma Microsoft nie zaleca się tworzenie systemów, które będzie jej lepszego dostosowania do relacyjnej bazy danych w usłudze Azure Cosmos DB lub dowolnej innej bazy danych dokumentów, ale także proste relacje są wystarczające i może być przydatny.
 
 Za pomocą pliku JSON poniżej wybraliśmy do użycia w przykładzie portfel akcji z wcześniej, ale tym razem nazywamy do podstawowego elementu w portfolio, zamiast go osadzić. Dzięki temu podstawowego elementu zmienia się często w ciągu dnia tylko dokument, który musi zostać zaktualizowany jest pojedynczego dokumentu podstawowego.
 

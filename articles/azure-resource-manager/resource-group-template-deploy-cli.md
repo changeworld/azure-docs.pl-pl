@@ -1,23 +1,17 @@
 ---
 title: Wdrażanie zasobów przy użyciu wiersza polecenia platformy Azure i szablonu | Dokumentacja firmy Microsoft
 description: Użyj usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure do wdrażania zasobów platformy Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 493b7932-8d1e-4499-912c-26098282ec95
 ms.service: azure-resource-manager
-ms.devlang: azurecli
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6cccae343e0a06af88c2e996c37910de72138c60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11d5b174dc21392df89def8e91847e8a0dd12562
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475040"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206539"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 

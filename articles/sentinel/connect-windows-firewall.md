@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9388e267c52ef53b59aacad844e964d3cfeb13d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 09e63612d6e0e70b1bb21c23b158f650d4c34080
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233820"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190603"
 ---
 # <a name="connect-windows-firewall"></a>Łączenie z zaporą systemu Windows
 
@@ -27,7 +27,7 @@ ms.locfileid: "65233820"
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Łącznik zapory Windows pozwala na łatwe łączenie dzienników zapory Windows, jeśli są one połączone z obszarem roboczym usługi Azure przez wartownika. To połączenie umożliwia wyświetlanie pulpitów nawigacyjnych, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń.  
+Łącznik zapory Windows pozwala na łatwe łączenie dzienników zapory Windows, jeśli są one połączone z obszarem roboczym usługi Azure przez wartownika. To połączenie umożliwia wyświetlanie pulpitów nawigacyjnych, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń. Rozwiązanie zbiera zdarzenia zapory Windows z komputerów Windows, na których zainstalowano agenta usługi Log Analytics. 
 
 
 > [!NOTE]
@@ -36,8 +36,19 @@ ms.locfileid: "65233820"
 ## <a name="enable-the-connector"></a>Włącz łącznik 
 
 1. W portalu Azure przez wartownika wybierz **łączników danych** a następnie kliknij polecenie **zapory Windows** kafelka. 
-1. Wybierz typy danych, które ma być przesyłana strumieniowo.
-1. Kliknij pozycję **Zainstaluj**.
+1.  W przypadku maszyn z systemem Windows na platformie Azure:
+    1. Kliknij przycisk **Instalowanie agenta na maszynie wirtualnej Windows Azure**.
+    1. W **maszyn wirtualnych** , wybierz komputer Windows ma być przesyłana strumieniowo do usługi Azure przez wartownika na liście. Upewnij się, że jest to maszyny Wirtualnej z systemem Windows.
+    1. W otwartym oknie dla tej maszyny Wirtualnej, kliknij przycisk **Connect**.  
+    1. Kliknij przycisk **Włącz** w **Windows zapory łącznika** okna. 
+
+2. Jeśli komputer Windows nie jest Maszyną wirtualną platformy Azure:
+    1. Kliknij przycisk **Instalowanie agenta na komputerach nienależących do platformy Azure**.
+    1. W **agent bezpośredni** okna, wybierz opcję **Pobierz Windows agent (64-bitowy)** lub **Pobierz Windows agent (32-bitowa)** .
+    1. Zainstaluj agenta na komputerze Windows. Kopiuj **identyfikator obszaru roboczego**, **klucza podstawowego**, i **klucz pomocniczy** i korzystania z nich po wyświetleniu monitu podczas instalacji.
+
+4. Wybierz typy danych, które ma być przesyłana strumieniowo.
+5. Kliknij przycisk **zainstalować rozwiązanie**.
 6. Aby użyć odpowiednich schematu w usłudze Log Analytics zapory Windows, wyszukaj **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Zweryfikuj łączność

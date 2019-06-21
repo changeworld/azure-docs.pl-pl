@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e727398e1b7bfa406166574ab40320c68dac5709
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: a8cc6cf834c54ca25c12a6d66675e4290fd66136
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66358531"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165812"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Często zadawane pytania dotyczące programu VMware Solution by CloudSimple
 
-Często zadawanych pytań i odpowiedzi na pytania dotyczące programu VMware Solution by CloudSimple, które pomagają zrozumieć, usługi i jak z niej korzystać.  Pytania i odpowiedzi są rozmieszczone w następujących kategoriach.
+Często zadawanych pytań i odpowiedzi na pytania dotyczące usługi Azure VMware Solution by CloudSimple, które pomagają zrozumieć, usługi i jak z niej korzystać. Pytania i odpowiedzi są rozmieszczone w następujących kategoriach:
 
-* CloudSimple Service
+* Usługa CloudSimple
 * Łączność
 * Networking
 * Bezpieczeństwo
@@ -27,16 +27,16 @@ Często zadawanych pytań i odpowiedzi na pytania dotyczące programu VMware Sol
 * Magazyn
 * VMware
 * Integracja z platformą Azure
-  
-## <a name="cloudsimple-service"></a>CloudSimple Service
+ 
+## <a name="cloudsimple-service"></a>Usługa CloudSimple
 
-**Co to jest VMware Solution by CloudSimple?**
+**Co to jest Azure VMware Solution by CloudSimple?**
 
-**VMware Solution by CloudSimple** przekształca i rozszerza obciążeń oprogramowania VMware do chmur prywatnych, dedykowanych na platformie Azure w ciągu kilku minut. My zajmujemy się inicjowanie obsługi administracyjnej, zarządzanie infrastrukturą i organizowanie obciążeń między lokalną i platformą Azure. Ponieważ Twoje aplikacje działają dokładnie tych samych lokalne i na platformie Azure możesz korzystać z elastyczności i usług, bez złożoności transformować swoje aplikacje w chmurze. CloudSimple zmniejsza całkowity koszt posiadania za pomocą modelu użycia chmury, który uwzględnia na żądanie aprowizacji, płatność jako — liczbę i optymalizacji wydajności.  Zobacz [co to jest rozwiązanie VMware na platformie Azure przez CloudSimple](cloudsimple-vmware-solutions-overview.md) do scenariuszy, korzyści i funkcje.
+Rozwiązanie programu VMware na platformie Azure przez CloudSimple przekształca i rozszerza obciążeń oprogramowania VMware do chmur prywatnych, dedykowanych na platformie Azure w ciągu kilku minut. Rozwiązanie obsługuje zarządza infrastrukturą i organizuje obciążeń między lokalną i platformą Azure. Ponieważ Twoje aplikacje działają dokładnie tych samych lokalne i na platformie Azure możesz korzystać z elastyczności i usług, bez złożoności transformować swoje aplikacje w chmurze. CloudSimple zmniejsza całkowity koszt posiadania za pomocą modelu użycia chmury, który uwzględnia na żądanie aprowizacji, płatność jako — liczbę i optymalizacji wydajności. Funkcje, korzyści i scenariuszy, zobacz [co to jest Azure VMware Solution by CloudSimple?](cloudsimple-vmware-solutions-overview.md).
 
 **Co to jest Chmura prywatna CloudSimple?**
 
-Możesz aprowizować prywatnym, dedykowanym chmury składający się z obliczenia o wysokiej wydajności, Magazyn i sieci środowiska wdrożone w infrastrukturze Azure firmy Microsoft (miejsca sprzętu i centrum danych) w lokalizacji platformy Azure.  Chmura prywatna zapewnia natywne platformę programu VMware "as-a-service". W warunkach VMware każdej chmury prywatnej zawiera dokładnie jedno wystąpienie programu vCenter Server. Serwer vCenter Server zarządza wieloma węzłami ESXi zawarte w co najmniej jeden klaster vSphere, wraz z odpowiedniego magazynu z wirtualną siecią SAN (vSAN). Usługa CloudSimple może zawierać wiele chmur prywatnych w subskrypcji platformy Azure.  Aby uzyskać więcej informacji na temat chmury prywatne, zobacz [omówienie chmury prywatnej](cloudsimple-private-cloud.md).
+Możesz aprowizować prywatnym, dedykowanym chmury, który składa się z wysokowydajnych obliczeń, magazynu i środowisko sieciowe, wdrożone w infrastrukturze Azure firmy Microsoft (miejsca sprzętu i centrum danych) w lokalizacji platformy Azure. Chmura prywatna zapewnia natywne platformie VMware jako usługa. W warunkach VMware każdej chmury prywatnej zawiera dokładnie jedno wystąpienie programu vCenter Server. Serwer vCenter Server zarządza wiele węzłów ESXi zawarte w co najmniej jeden klaster vSphere, wraz z odpowiedniego magazynu sieci vSAN. Usługa CloudSimple może zawierać wiele chmur prywatnych w subskrypcji platformy Azure. Aby uzyskać więcej informacji na temat chmury prywatne, zobacz [omówienie chmury prywatnej](cloudsimple-private-cloud.md).
 
 **Gdzie jest dostępna usługa CloudSimple?**
 
@@ -44,72 +44,72 @@ CloudSimple jest dostępna w regionach wschodnie stany USA i zachodnie stany USA
 
 **Jak włączyć subskrypcję dla CloudSimple?**
 
-Możesz skontaktować się ze swoim przedstawicielem firmy Microsoft w [ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com) włączenie subskrypcji usługi CloudSimple. Prześlij identyfikator swojej subskrypcji w taki sposób, w wiadomości e-mail, dla którego ma zostać włączona usługa CloudSimple.  
+Skontaktuj się z przedstawicielem firmy Microsoft w [ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com) włączenie subskrypcji usługi CloudSimple. Prześlij identyfikator swojej subskrypcji w taki sposób, w wiadomości e-mail, dla którego ma zostać włączona usługa CloudSimple. 
 
 **Jak uzyskać dostęp do portalu CloudSimple?**
 
-Możesz uzyskać dostęp do portalu CloudSimple z witryny Azure portal.  Zobacz [dostęp do rozwiązań VMware przez portal CloudSimple z witryny Azure portal](https://docs.azure.cloudsimple.com/access-cloudsimple-portal) artykuł, aby uzyskać szczegółowe informacje na temat uzyskiwania dostępu do portalu CloudSimple. 
+Możesz uzyskać dostęp do portalu CloudSimple w witrynie Azure portal. Aby uzyskać informacje o tym, jak uzyskać dostęp do portalu CloudSimple, zobacz [dostęp do rozwiązań VMware przez portal CloudSimple w witrynie Azure portal](https://docs.azure.cloudsimple.com/access-cloudsimple-portal).
 
 **Jak zwiększyć pojemność chmury prywatnej?**
 
-Kup węzłów z witryny Azure portal i rozwiń swoje chmurę prywatną na podstawie CloudSimple portal.  Chmury prywatnej można rozszerzyć przez dodanie dodatkowych węzłów do istniejącego klastra vSphere lub przez utworzenie nowego klastra vSphere.  Zobacz [rozwiń chmury prywatnej CloudSimple](https://docs.azure.cloudsimple.com/expand-private-cloud) artykułu w procedurze.
+Aprowizowanie węzłów w witrynie Azure portal i rozwiń chmury prywatnej z poziomu portalu CloudSimple. Chmury prywatnej można rozszerzyć, dodając węzły w istniejącym klastrze vSphere lub tworzenia nowego klastra vSphere. Aby uzyskać informacji na temat procedury, zobacz [rozwiń chmury prywatnej CloudSimple](https://docs.azure.cloudsimple.com/expand-private-cloud).
 
 **Co się dzieje Moja Chmura prywatna podczas konserwacji?**
 
-CloudSimple udostępnia okresowe powiadomienia o dni przed zaplanowaną konserwację.  Konserwacja odbywa się bez zakłóceń tak, aby zapewnić dostępność chmury prywatnej.  Konserwacji może być następujących typów:
+CloudSimple udostępnia powiadomienia cykliczne dni przed zaplanowaną konserwację. Konserwacja odbywa się bez tak, aby zapewnić dostępność chmury prywatnej. Konserwacji może być następujących typów:
 
-1. **Infrastruktura CloudSimple:**  Infrastruktura CloudSimple została zaprojektowana by zapewnić wysoką dostępność.  Podczas konserwacji łączność i dostępność chmury prywatnej jest zapewniana przez aktualizowanie nadmiarowych składników w czasie, bez żadnego wpływu.  Masz dostęp do serwera vCenter chmury prywatnej, wszystkie maszyny wirtualne, połączenia internetowego z chmury prywatnej i połączeń w środowisku lokalnym lub na platformie Azure.
-2. **CloudSimple Portal:** Podczas konserwacji niektóre funkcje, w portalu CloudSimple nie może być niedostępna lub wyłączone.  Powiadomienie o konserwacji będzie zawierać szczegółowe informacje o co można zrobić w portalu.
+- **Infrastruktura CloudSimple**: Infrastruktura CloudSimple została zaprojektowana by zapewnić wysoką dostępność. Podczas konserwacji łączność i dostępność chmury prywatnej jest zapewniana przez aktualizowanie nadmiarowych składników w czasie, bez żadnego wpływu. Masz dostęp do serwera vCenter chmury prywatnej, wszystkie maszyny wirtualne, połączenia internetowego z chmury prywatnej i połączeń w środowisku lokalnym lub na platformie Azure.
+- **CloudSimple portal**: Podczas konserwacji niektóre funkcje, w portalu CloudSimple nie mogą być niedostępne lub mogą być wyłączone. Powiadomienie o konserwacji zawiera informacje na temat co można zrobić w portalu.
 
 ## <a name="connectivity"></a>Łączność
 
-**Jakie są moje opcje łączności z siecią region CloudSimple?**
+**Jakie są moje opcje łączności sieci region CloudSimple?**
 
-CloudSimple udostępnia trzy różne opcje łączności na nawiązanie połączenia z siecią CloudSimple regionu.  Wszystkie trzy mogą być używane razem.
+CloudSimple udostępnia trzy różne opcje łączności na nawiązanie połączenia z siecią CloudSimple regionu. Wszystkie trzy opcje mogą być używane razem:
 
-1. Połączenia ExpressRoute z lokalnego centrum danych do CloudSimple region sieci — szybkie małe opóźnienia bezpiecznego połączenia prywatnego mostkowanie obwód usługi ExpressRoute w środowisku lokalnym przy użyciu obwodu usługi CloudSimple ExpressRoute przy użyciu zasięgu globalnym. Zobacz [nawiązywanie połączenia ze środowiska lokalnego przy użyciu usługi ExpressRoute CloudSimple](https://docs.azure.cloudsimple.com/on-premises-connection) artykuł dotyczący konfigurowania połączenia.
-2. Połączenia usługi ExpressRoute z siecią wirtualną platformy Azure z siecią region CloudSimple - o dużej szybkości, małe opóźnienia bezpiecznego połączenia prywatnego łączenie sieci wirtualnej na platformie Azure przy użyciu obwodu usługi CloudSimple ExpressRoute przy użyciu bramy sieci wirtualnej.  Zobacz [środowiska chmury prywatnej CloudSimple nawiązać połączenie z sieci wirtualnej platformy Azure przy użyciu usługi ExpressRoute](https://docs.azure.cloudsimple.com/azure-expressroute-connection) artykuł dotyczący konfigurowania połączenia.
-3. Połączenia sieci VPN lokacja-lokacja z lokalnego centrum danych z siecią region CloudSimple — zabezpieczanie wirtualnej sieci prywatnej z lokalnego urządzenia sieci VPN do chmury prywatnej CloudSimple regionu.  Zobacz [Konfigurowanie połączenia sieci VPN między siecią lokalną i chmurą prywatną CloudSimple] artykuł do konfigurowania połączeń sieci VPN.
+- Połączenia usługi Azure ExpressRoute z centrum danych lokalnych z siecią region CloudSimple: Szybkie o małych opóźnieniach bezpieczne połączenie prywatne pomost pomiędzy aplikacją obwód usługi ExpressRoute w środowisku lokalnym za pomocą obwód usługi CloudSimple ExpressRoute przy użyciu zasięgu globalnym. Aby skonfigurować połączenie, zobacz [nawiązywanie połączenia ze środowiska lokalnego CloudSimple przy użyciu usługi ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection).
+- Połączenie usługi ExpressRoute z siecią wirtualną platformy Azure do sieci CloudSimple regionu: O dużej szybkości i niskim opóźnieniu bezpieczne połączenie prywatne pomost pomiędzy aplikacją sieci wirtualnej na platformie Azure przy użyciu obwodu usługi CloudSimple ExpressRoute przy użyciu bramy sieci wirtualnej. Aby skonfigurować połączenie, zobacz [nawiązywanie CloudSimple środowiska chmury prywatnej sieci wirtualnej platformy Azure przy użyciu usługi ExpressRoute](https://docs.azure.cloudsimple.com/azure-expressroute-connection).
+- Lokacja lokacja połączenie sieci VPN z lokalnego centrum danych do sieci CloudSimple regionu: Bezpiecznej wirtualnej sieci prywatnej z lokalnego urządzenia sieci VPN do regionu CloudSimple chmury prywatnej. Aby skonfigurować połączenie, zobacz [Konfigurowanie połączenia sieci VPN między siecią lokalną i chmurą prywatną CloudSimple](https://docs.azure.cloudsimple.com/set-up-vpn).
 
 **Jak połączyć do chmury prywatnej**
 
-Możesz wyświetlić szczegółowe informacje o chmurze prywatnej, w portalu CloudSimple. Aby połączyć serwer vCenter, odpowiadający chmury prywatnej, upewnij się, że połączenie sieciowe jest ustanowionym przy użyciu lokacja-lokacja, punkt-lokacja lub ExpressRoute. Następnie uruchom portal CloudSimple w witrynie Azure portal, a następnie kliknij *Uruchom klienta vSphere* na stronie głównej lub na stronie szczegółów w chmur prywatnych.
+Możesz wyświetlić szczegółowe informacje o chmurze prywatnej, w portalu CloudSimple. Aby połączyć z programem vCenter, który odnosi się do chmury prywatnej, upewnij się, że nawiązano połączenie z siecią przy użyciu lokacja lokacja, punkt lokacja lub ExpressRoute. Następnie uruchom portal CloudSimple w witrynie Azure portal. Wybierz **Uruchom klienta vSphere** na stronie głównej lub na stronie szczegółów w chmurze prywatnej.
 
 **Jakie są zalety obwodu usługi ExpressRoute?**
 
-Obwód usługi ExpressRoute platformy Azure udostępnia bezpieczne połączenie o dużej szybkości małymi opóźnieniami.  CloudSimple zapewnia dedykowanego obwodu usługi ExpressRoute na region na klienta.  Ten obwód można ustanowić bezpiecznego połączenia z lokalnych i/lub subskrypcji platformy Azure.
+Obwód usługi ExpressRoute systemu Azure udostępnia bezpieczne połączenie o dużej szybkości i małych opóźnieniach. CloudSimple zapewnia dedykowanego obwodu usługi ExpressRoute na region na klienta. Ten obwód można ustanowić bezpiecznego połączenia z magazynami lokalnymi i subskrypcji platformy Azure.
 
-**Co to są koszty sieci, aby połączyć się z CloudSimple. Wszelkie opłaty za ruch wychodzący z CloudSimple na platformie Azure? W regionach?**
+**Co to są koszty sieci i nawiąż połączenie z CloudSimple? Czy istnieją wszystkie opłaty za ruch wychodzący do i z CloudSimple na platformie Azure? Czy istnieją wszystkie opłaty za ruch wychodzący w regionach?**
 
-Nie ma opłat za wszelkie wychodzący ruch sieciowy.  Usługa Azure ze standardowymi stawkami na cały ruch wychodzący z sieci wirtualnej lub z obwodem usługi ExpressRoute w środowisku lokalnym.
+Nie ma opłat za wychodzący ruch sieciowy. Usługa Azure ze standardowymi stawkami na cały ruch wychodzący z sieci wirtualnej lub z obwodem usługi ExpressRoute w środowisku lokalnym.
 
 ## <a name="networking"></a>Networking
 
-**Jakie funkcje sieciowe są dostępne dla mojego Chmura prywatna?**
+**Jakie funkcje sieciowe są dostępne dla mojego chmury prywatnej?**
 
-Można inicjować obsługę sieci VLAN (i ich podsieci), zapory tabel i przydzielać publiczne adresy IP i mapowania na maszynę wirtualną działającą w chmurze prywatnej.  Aby uzyskać więcej informacji, zobacz [Przegląd podsieci/sieci VLAN](cloudsimple-vlans-subnets.md), [Omówienie zapory tabel](cloudsimple-firewall-tables.md), i [publiczny adres IP adres Przegląd](cloudsimple-public-ip-address.md) artykułów.
+Możesz aprowizować sieci VLAN i podsieci oraz tabele zapory. Możesz przydzielać publiczne adresy IP i mapowania na maszynę wirtualną, która działa w chmurze prywatnej. Aby uzyskać więcej informacji, zobacz [omówienie sieci VLAN i podsieci](cloudsimple-vlans-subnets.md), [Omówienie tabel zapory](cloudsimple-firewall-tables.md), i [Przegląd adres publiczny adres IP](cloudsimple-public-ip-address.md).
 
-**Jak skonfigurować różne podsieci dla mojej aplikacji w mojej Chmura prywatna?**
+**Jak skonfigurować różne podsieci dla mojej aplikacji w mojej chmury prywatnej?**
 
-Z poziomu portalu CloudSimple, można utworzyć sieci VLAN w chmurze prywatnej.  Po utworzeniu sieci VLAN, możesz utworzyć grupę portu rozproszone na vCenter chmury prywatnej, korzystając z sieci VLAN i utworzyć maszyny wirtualne podłączone do grupy portów rozproszonych.  Można włączyć zapory tabeli dla podsieci/sieci VLAN i zdefiniować reguły zapory, aby zabezpieczyć ruch sieciowy.
+Z poziomu portalu CloudSimple, można utworzyć sieci VLAN w chmurze prywatnej. Po utworzeniu sieci VLAN, można utworzyć grupę portu rozproszone na vCenter chmury prywatnej za pomocą sieci VLAN i utworzyć maszyny wirtualne podłączone do grupy portów rozproszonych. Można włączyć tabeli zapory dla sieci VLAN i podsieci i zdefiniowania reguł zapory, aby zabezpieczyć ruch sieciowy.
 
-**Ustawienia zapory, które są dostępne dla chmur prywatnych?**
+**Jakie ustawienia zapory są dostępne dla mojego chmur prywatnych?**
 
-Można skonfigurować reguły dla ruchu wschód zachód i północ południe.  Reguły są definiowane w tabeli zapory.  Tabela zapory można dołączyć do VLAN(s) w chmurze prywatnej.  Zobacz [skonfigurować tabele zapory i reguł dla chmur prywatnych](https://docs.azure.cloudsimple.com/firewall) artykuł dotyczący procedury konfigurowania.
+Można skonfigurować reguły dla ruchu wschód zachód i północ południe. Reguły są definiowane w tabeli zapory. Tabela zapory można dołączyć do sieci VLAN w chmurze prywatnej. Procedura konfiguracji w temacie [Konfigurowanie zapory tabel i reguły dla chmur prywatnych](https://docs.azure.cloudsimple.com/firewall).
 
-**Można przypisać publiczne adresy IP dla maszyn wirtualnych w środowisku Moja Chmura prywatna?**
+**Można przypisać publiczne adresy IP dla maszyn wirtualnych w środowisku chmury prywatnej, Moje?**
 
-W portalu CloudSimple łatwo można przydzielić nowego publicznego adresu IP i skojarzyć ją z prywatnego adresu IP maszyny wirtualnej lub urządzenie.  Można również utworzyć nowe reguły zapory lub zastosować istniejące reguły zapory do zezwalania na ruch z określonych portów i/lub określonych zbiór adresów IP w portalu. Zobacz [przydzielić publiczne adresy IP w środowisku chmury prywatnej](https://docs.azure.cloudsimple.com/public-ips) dla procedury konfigurowania.
+W portalu CloudSimple łatwo można przydzielić nowego publicznego adresu IP i skojarzyć ją z prywatnego adresu IP maszyny wirtualnej lub urządzenie. Możesz również utworzyć nowe reguły zapory lub Zastosuj istniejące reguły zapory zezwalające na ruch do określonych portów i określone zestawy adresów IP w portalu. Procedura konfiguracji w temacie [przydzielić publiczne adresy IP w środowisku chmury prywatnej](https://docs.azure.cloudsimple.com/public-ips).
 
 ## <a name="security"></a>Bezpieczeństwo
 
 **Jakie są moje opcje zabezpieczeń na CloudSimple?**
 
-Chmura prywatna CloudSimple zapewnia następujące funkcje zabezpieczeń do zabezpieczania środowiska chmury prywatnej:
+CloudSimple Chmura prywatna zapewnia następujące funkcje zabezpieczeń do zabezpieczania środowiska chmury prywatnej:
 
-1. **Dane szyfrowanie rest**: Umożliwia ona szyfrowanie danych magazynowanych znajdujących się w sieci vSAN magazynu w chmurze prywatnej. sieć vsan, która obsługuje zewnętrzne klucza serwera zarządzania, który można wdrożyć w środowisku platformy Azure sieci wirtualnej lub w środowisku lokalnym.  Zobacz [skonfigurować szyfrowanie sieci vSAN dla chmury prywatnej CloudSimple](https://docs.azure.cloudsimple.com/vsan-encryption) Aby uzyskać więcej informacji.
-2. **Zabezpieczenia sieciowe**: Kontrola ruchu sieciowego od i do chmury prywatnej z sieci Internet, lokalnie i w podsieci prywatnej chmury przy użyciu reguł zapory.
-3. **Zabezpieczanie połączenia prywatnego**: Bezpieczne prywatne połączenie między siecią lokalną i subskrypcji platformy Azure.
+- **Dane szyfrowanie rest:** Umożliwia ona szyfrowanie danych magazynowanych, który znajduje się w sieci vSAN magazynu w chmurze prywatnej. sieć vsan, która obsługuje zewnętrzne klucza serwera zarządzania, który można wdrożyć w środowisku platformy Azure wirtualnych sieci lub w środowisku lokalnym. Aby uzyskać więcej informacji, zobacz [skonfigurować szyfrowanie sieci vSAN dla chmury prywatnej CloudSimple](https://docs.azure.cloudsimple.com/vsan-encryption).
+- **Zabezpieczenia sieciowe:** Kontrola ruchu sieciowego z i do chmury prywatnej przez Internet, lokalnie i w ramach podsieci chmury prywatnej za pomocą reguł zapory.
+- **Bezpieczne, prywatne połączenie:** Bezpieczne, prywatne połączenie między siecią lokalną i subskrypcji platformy Azure.
 
 ## <a name="compute"></a>Wystąpienia obliczeniowe
 
@@ -117,60 +117,60 @@ Chmura prywatna CloudSimple zapewnia następujące funkcje zabezpieczeń do zabe
 
 CloudSimple oferuje dwa typy hosta:
 
-* **Węzeł CS28:** CPU:2 x 2,2 GHz, łączna liczba rdzeni 28, 48 zasobników tablicy skrótów.  Pamięć RAM: 256 GB.  Storage: 1600 GB NVMe pamięci podręcznej, 5760 GB danych (samych pamięci Flash). Network: 2x25Gbe NIC
-* **Węzeł CS36:** Procesor CPU 2 x 2.3 GHz, 36 łączna liczba rdzeni, 72 zasobników tablicy skrótów.  Pamięć RAM: 512 GB.  Storage: 3200 GB NVMe 11,520 GB danych z pamięci podręcznej (samych pamięci Flash).  Network: 2x25Gbe NIC
+* **Węzeł CS28**: CPU:2 x 2,2 GHz, łączna liczba rdzeni 28, 48 zasobników tablicy skrótów. Pamięć RAM: 256 GB. Storage: Pamięci podręcznej NVMe 1600 GB, 5760 GB danych (samych pamięci Flash). Network: 2x25Gbe NIC.
+* **Węzeł CS36**: Procesor CPU 2 x 2.3 GHz, łączna liczba rdzeni 36, 72 zasobników tablicy skrótów. Pamięć RAM: 512 GB. Storage: Dane 11,520 GB pamięci podręcznej NVMe 3200 GB (samych pamięci Flash). Network: 2x25Gbe NIC.
 
-**Sposób obsługi błędów sprzętu**
+**Sposób obsługi awarii sprzętu**
 
-Cała infrastruktura CloudSimple jest stale monitorowane przez platformę CloudSimple i naszych zespołów operacyjnych usługi.  W przypadku wykrycia awarii sprzętu, nowy węzeł zostanie dodany do chmury prywatnej, a nie powiodło się węzeł zostanie usunięty, zapewniając wysoką dostępność chmury prywatnej.
+Cała infrastruktura CloudSimple stale jest monitorowana przez platformę CloudSimple i jej zespołom usługi. W przypadku wykrycia awarii sprzętu, nowy węzeł zostanie dodany do chmury prywatnej. Aby zapewnić wysoką dostępność chmury prywatnej usunięciem węzła nie powiodło się.
 
 ## <a name="storage"></a>Magazyn
 
-**Jakiego rodzaju magazynu jest obsługiwana w chmurze prywatnej?**
+**Jakiego rodzaju magazynu jest obsługiwana w prywatnej chmurze?**
 
-Oferuje CloudSimple **magazynu sieci vSAN firmy VMware z samych pamięci flash** z każdej chmury prywatnej.  Każdy vSphere jest tworzony z własną sieć vSAN magazynu danych.  Zobacz [składniki VMware chmury prywatnej — magazynu sieci vSAN](https://docs.azure.cloudsimple.com/vmware-components/#vsan-storage) artykuł, aby uzyskać więcej informacji.
+Oferuje CloudSimple **magazynu sieci vSAN firmy VMware z samych pamięci flash** z każdej chmury prywatnej. Każdy vSphere jest tworzony z własną sieć vSAN magazynu danych. Aby uzyskać więcej informacji, zobacz [składników VMware chmury prywatnej — magazynu sieci vSAN](https://docs.azure.cloudsimple.com/vmware-components/#vsan-storage).
 
 **Czy szyfrowanie danych obsługiwane?**
-Tak.  Możesz skonfigurować Magazyn sieci vSAN w chmurze prywatnej można użyć serwera zarządzania kluczami (KMS), który jest wdrożony lokalnie lub na platformie Azure do szyfrowania danych przechowywanych w sieci vSAN
+Tak. Możesz skonfigurować Magazyn sieci vSAN w chmurze prywatnej można użyć serwera zarządzania kluczami (KMS), który jest wdrożony lokalnie lub na platformie Azure do szyfrowania danych przechowywanych w sieci vSAN.
 
 **Sposób obsługi awarii dysków**
 
-Monitorowanie CloudSimple stale monitoruje wszystkie składniki sprzętowe w chmurze prywatnej.  Jeśli wykryciu jakiekolwiek niepowodzenie dysku lub dowolnym dysku jest identyfikowany jako niepowodzenie (oparte na Algorytm heurystyczny), nowy węzeł jest automatycznie dodawany do chmury prywatnej.  Węzeł nie powiodło się lub awarie dysku jest usuwany z chmury prywatnej.
+Monitorowanie CloudSimple stale monitoruje wszystkie składniki sprzętowe w chmurze prywatnej. Jeśli zostanie wykryta awaria dysku lub dysku jest identyfikowany jako przechodzenie w oparciu o Algorytm heurystyczny, nowy węzeł jest automatycznie dodawany do chmury prywatnej. Węzeł o dysku nie powiodło się lub awarie jest usuwany z chmury prywatnej.
 
 ## <a name="vmware"></a>VMware
 
-**Jak wykonać na dużą skalę przekazywania/migrować aplikacje i dane ze środowiska lokalnego?**
+**Jak wykonać przekazywanie dużej skali i migrację danych i aplikacji ze środowiska lokalnego?**
 
-CloudSimple zapewnia natywne rozwiązanie vSphere firmy VMware.  Każde narzędzie używane do migracji danych zbiorczego może służyć za pomocą chmury prywatnej CloudSimple.  Niektóre dostępne opcje to:
+CloudSimple zapewnia natywne rozwiązanie vSphere firmy VMware. Każde narzędzie używane do migracji danych zbiorczego może służyć za pomocą CloudSimple chmury prywatnej. Niektóre dostępne opcje to:
 
-1. HCX VMware do migracji zbiorcze danych.
-2. Migracja zimnych danych przy użyciu narzędzia Storage vMotion ze środowiska lokalnego do CloudSimple.
+- HCX VMware do migracji zbiorcze danych.
+- Migrację zimnych danych przy użyciu narzędzia Storage vMotion ze środowiska lokalnego do CloudSimple.
 
 **Czy można zainstalować narzędzi VMware?**
 
-CloudSimple zapewnia natywne rozwiązanie vSphere firmy VMware.  Każde narzędzie używane do zarządzania vSphere środowisko lokalne może służyć w CloudSimple.  CloudSimple obsługuje model Bring-Your-Own-License (BYOL) dotyczące instalowania narzędzi VMware.
+CloudSimple zapewnia natywne rozwiązanie vSphere firmy VMware. Dowolne narzędzie używane do zarządzania środowiskiem vSphere, mogą być używane w środowisku lokalnym na CloudSimple. Instalowanie narzędzi VMware CloudSimple obsługuje model bring-your-own-license (BYOL).
 
 **Jak są aktualizacji i uaktualnień zarządzane?**
 
-CloudSimple zarządza i aktualizuje wszystkie składniki infrastruktury chmury prywatnej w bezproblemowe bez zakłócania.  Wszelkie poprawki aktualizacji lub zabezpieczeń wydane przez dostawców VMware lub infrastruktury zostanie zaplanowana aktualizacja tak szybko, jak kwalifikuje się przez CloudSimple.
+CloudSimple zarządza i aktualizuje wszystkie składniki infrastruktury chmury prywatnej w sposób bez bezproblemowe. Wszelkie poprawki aktualizacji lub zabezpieczeń wydane przez dostawców VMware lub infrastruktury zaplanowano do aktualizacji tak szybko, jak kwalifikuje się przez CloudSimple.
 
-CloudSimple nie powoduje wykonania uaktualnienia lub aktualizacje aplikacji zainstalowanych na chmurę prywatną.
+CloudSimple nie wykonuje uaktualnienia lub aktualizacje aplikacji zainstalowanych na chmurę prywatną.
 
 ## <a name="azure-integration"></a>Integracja z platformą Azure
 
 **Jakie usługi platformy Azure są obsługiwane?**
 
-CloudSimple zapewnia połączenie Azure ExpressRoute subskrypcji na platformie Azure.  Wszystkie usługi działające w Twojej subskrypcji ma łączność sieciową do chmury prywatnej oraz może nawiązać połączenia z chmury prywatnej.  Przykłady:
+CloudSimple zapewnia połączenie Azure ExpressRoute subskrypcji na platformie Azure. Wszystkie usługi, które są uruchamiane w ramach subskrypcji mają łączność sieciową do chmury prywatnej oraz może nawiązać połączenia z chmury prywatnej. Przykłady:
 
-1. **Usługa Azure Active Directory** jako źródła tożsamości dla serwera vCenter CloudSimple
-2. **Usługa Azure storage** do przechowywania kopii zapasowych, obrazów i innych danych z chmury prywatnej
-3. **Aplikacje hybrydowe** — można tworzyć architekturę aplikacji, która obejmuje chmur prywatnych i publicznych.  Na przykład można utworzyć serwery sieci Web na platformie Azure, uzyskać dostęp do aplikacji i serwerów baz danych w chmurze prywatnej CloudSimple.
-4. **Usługa Azure monitor** i **Centrum zabezpieczeń Azure** — obciążenia działające w programie VMware można ich używać do rejestrowania, metryki wydajności i zarządzanie zabezpieczeniami.
+- **Azure Active Directory**: Usługa Azure Active Directory jako źródła tożsamości dla serwera vCenter CloudSimple.
+- **Azure Storage**: Użyj magazynu do przechowywania kopii zapasowych, obrazów i innych danych z chmury prywatnej.
+- **Aplikacje hybrydowe**: Można tworzyć architekturę aplikacji, która obejmuje chmur prywatnych i publicznych. Na przykład tworzenia serwerów sieci web na platformie Azure tego dostępu do aplikacji i serwery baz danych na chmurę prywatną CloudSimple.
+- **Usługa Azure Monitor** i **usługi Azure Security Center**: Obciążenia, które jest uruchamiane w oprogramowaniu firmy VMware można użyć Centrum zabezpieczeń i monitorowania rejestrowania, metryki wydajności i zarządzanie zabezpieczeniami.
 
 **Sposób mapowania moich dzierżaw VMware na platformę Azure?**
 
-CloudSimple oferuje unikatową funkcję Zarządzanie maszynami wirtualnymi VMware w chmurze prywatnej z witryny Azure portal.  Pula zasobów vCenter (skonfigurowane z ograniczeniami żądanego zasobu) mogą być mapowane do Twojej subskrypcji przez administratora globalnego.  
+CloudSimple oferuje unikatową funkcję Zarządzanie maszynami wirtualnymi VMware w chmurze prywatnej w witrynie Azure portal. Puli zasobów programu vCenter jest skonfigurowany z ograniczeń zasobów, które mają być mapowane do Twojej subskrypcji przez administratora globalnego. 
 
 **Jakie korzyści związanych z licencjonowaniem uzyskać za pomocą platformy Azure?**
 
-CloudSimple możesz skorzystać z korzyści użycia hybrydowego platformy Azure i zaoszczędzić do 90% licencje zachowywanie inwestycji w Licenses firmy Microsoft, zmniejszyć całkowity koszt posiadania w porównaniu do innych chmur. Ponadto Pobierz rozszerzone aktualizacje zabezpieczeń systemu Windows Server 2008 i Microsoft SQL Server 2008.  Niskich kosztów za pomocą Bring Your Own licencji (BYOL) do chmury na potrzeby typowych aplikacji, takich jak usługa Veeam firmy Zerto i inne.  
+CloudSimple możesz skorzystać z korzyści użycia hybrydowego platformy Azure i zaoszczędź nawet o 90 procent na licencje, aby zachować inwestycji w licencje firmy Microsoft i obniżyć całkowity koszt posiadania w porównaniu do innych chmur. Możesz również uzyskać rozszerzone aktualizacje zabezpieczeń systemu Windows Server 2008 i Microsoft SQL Server 2008. Niskich kosztów za pomocą BYOL do chmury na potrzeby typowych aplikacji, takich jak Veeam, Zerto i inne. 

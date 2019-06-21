@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161199"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183693"
 ---
 W zależności od systemu operacyjnego klienta procedury, aby zdalnie połączyć się z urządzeniem różnią się.
 

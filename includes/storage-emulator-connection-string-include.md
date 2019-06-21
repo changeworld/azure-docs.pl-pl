@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114669"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183435"
 ---
 Emulator magazynu obsługuje jednego stałego konta i klucz uwierzytelniania dobrze znanych na potrzeby uwierzytelniania klucza wspólnego. Tego konta i klucz są dozwolone do użytku z emulatora magazynu tylko poświadczenia klucza wspólnego. Oto one:
 

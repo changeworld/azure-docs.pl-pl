@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539288"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147543"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Rozwiązywanie typowych problemów indeksatora w usłudze Azure Search
 
@@ -35,14 +35,11 @@ Usługa Azure Storage udostępnia można skonfigurować zapory. Domyślnie Zapor
 
 Istnieje nie określony komunikat o błędzie, gdy Zapora jest włączona. Zazwyczaj błędy zapory wyglądać `The remote server returned an error: (403) Forbidden`.
 
-Możesz sprawdzić, czy Zapora jest włączona w [portal](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal). Jeśli Zapora jest włączona, masz dwie opcje poruszanie się tego problemu:
+Możesz sprawdzić, czy Zapora jest włączona w [portal](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal). Jedynym obejściem obsługiwanych jest Wyłącz zaporę, wybierając pozycję zezwolić na dostęp z ["Wszystkie sieci"](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal).
 
-1. Wyłącz zaporę, wybierając pozycję zezwolić na dostęp z ["Wszystkie sieci"](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)
-1. [Dodaj wyjątek](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) dla adresu IP usługi wyszukiwania. Aby znaleźć ten adres IP, użyj następującego polecenia:
+Jeśli indeksator nie ma dołączonych zestawu umiejętności, możesz _może_ próba [dodać wyjątek](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) dla adresów IP usługi wyszukiwania. Jednak ten scenariusz nie jest obsługiwane i nie jest gwarantowane do pracy.
 
-`nslookup <service name>.search.windows.net`
-
-Wyjątki nie pracują dla [wyszukiwania kognitywnego](cognitive-search-concept-intro.md). Jedynym obejściem jest, aby wyłączyć zaporę.
+Można znaleźć adres IP usługi wyszukiwania, wysyłając polecenie ping do nazwy FQDN (`<your-search-service-name>.search.windows.net`).
 
 ### <a name="cosmos-db"></a>Cosmos DB
 

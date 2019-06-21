@@ -1,25 +1,17 @@
 ---
 title: Ustaw kolejność wdrażania zasobów platformy Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak ustawić jeden zasób jako zależny od innego zasobu podczas wdrażania, aby upewnić się, że zasoby są wdrażane w odpowiedniej kolejności.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: ''
-ms.assetid: 34ebaf1e-480c-4b4d-9bf6-251bd3f8f2cf
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 91325b7884eae4c6f4c85c142b1e81cf2121c039
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32b2b41e47fe089da70d82e6049d0139795df88a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62103812"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204227"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Zdefiniuj kolejność wdrażania zasobów w szablonach usługi Resource Manager platformy Azure
 Dla danego zasobu może być inne zasoby, które muszą istnieć przed wdrożeniem tego zasobu. Na przykład programu SQL server musi istnieć przed podjęciem próby wdrożenia bazy danych SQL. Należy zdefiniować tę relację, oznaczając jeden zasób jako zależny od innego zasobu. Definiowanie zależności za pomocą **dependsOn** elementu, lub za pomocą **odwołania** funkcji. 

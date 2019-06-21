@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: c918abdc635e7a4a831e367e159354bb752e95e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 6285348aa8067f356635dfff9ecd4eb34c431f0b
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743107"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147690"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych, przy minimalnych przestojach
 
@@ -41,7 +41,7 @@ Usługa Azure SQL Database oferuje [modelu zakupu opartego na jednostkach DTU](s
 Możesz utworzyć pierwszą aplikację na małej, pojedynczej bazy danych na niskim poziomie kosztów miesięcznie w warstwie podstawowa, standardowa lub ogólnego przeznaczenia i następnie zmienić warstwę usługi ręcznie lub programowo w dowolnym momencie do warstwy usług Premium lub krytyczne dla działania firmy, aby spełnić ne zewnętrznego źródła danych rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
 > [!NOTE]
-> Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowaniu automatycznym mówimy, gdy usługa jest skalowana automatycznie na podstawie kryteriów, natomiast dynamiczna skalowalność uwzględnia skalowanie ręczne bez przestojów.
+> Dynamiczna skalowalność różni się od skalowania automatycznego. Automatyczne skalowanie jest, gdy usługa jest skalowana automatycznie w oparciu o kryteria, natomiast dynamiczna skalowalność umożliwia ręczne skalowanie przy minimalnych przestojach.
 
 Pojedyncza baza danych Azure SQL Database obsługuje ręczną dynamiczną skalowalność, ale nie skalowanie automatyczne. Aby zapewnić środowisko bardziej *zautomatyzowane*, rozważ użycie elastycznych pul baz danych, które umożliwiają bazom danych udostępnianie zasobów w puli w zależności od potrzeb.
 Istnieją jednak skrypty, które mogą pomóc zautomatyzować skalowalność dla pojedynczej bazy danych SQL Azure. Na przykład zobacz temat [Monitorowanie i skalowanie pojedynczej bazy danych SQL za pomocą programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82c180d869801cd9cd91a3e2a3659644f4e263d9
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657858"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273326"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Szablony interfejsu API w usłudze Azure API Management
 
@@ -44,7 +44,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości stron interfejsu AP
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="APIList"></a> Interfejs API — lista  
+## <a name="APIList"></a> Interfejs API — lista  
  **Interfejs API — lista** szablon umożliwia dostosowanie treść strony listy interfejsu API w portalu dla deweloperów.  
   
  ![Listy interfejsów API w portalu dla deweloperów](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "listy interfejsów API szablonów portalu dla deweloperów usługi APIM")  
@@ -112,7 +112,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości stron interfejsu AP
 }  
 ```  
   
-##  <a name="Product"></a> Operacja  
+## <a name="Product"></a> Operacja  
  **Operacji** szablon umożliwia dostosowanie strony operacji w portalu dla deweloperów.  
   
  ![Strona operacji Portal dla deweloperów](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "strony operacji szablonów portalu dla deweloperów usługi APIM")  
@@ -642,7 +642,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości stron interfejsu AP
 }  
 ```  
   
-##  <a name="CodeSamples"></a> Przykłady kodu  
+## <a name="CodeSamples"></a> Przykłady kodu  
  Poniższe szablony umożliwiają dostosowanie treści przykłady kodu poszczególnych, na stronie operacji.  
   
  ![Przykłady kodu szablonów portalu dla deweloperów](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "przykłady kodu szablonów portalu dla deweloperów usługi APIM")  
@@ -663,7 +663,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości stron interfejsu AP
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a> Curl  
+### <a name="Curl"></a> Curl  
  **DocumentationSamplesCurl** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -716,12 +716,12 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="CSharp"></a> C#  
+### <a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
-```xml  
+```csharp  
 using System;  
 using System.Net.Http.Headers;  
 using System.Text;  
@@ -895,12 +895,12 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="Stub"></a> Java  
+### <a name="Stub"></a> Java  
  **DocumentationSamplesJava** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
-```xml  
+```java  
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
@@ -991,12 +991,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="JavaScript"></a> JavaScript  
+### <a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
-```xml  
+```html  
 <!DOCTYPE html>  
 <html>  
 <head>  
@@ -1080,12 +1080,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a> Język Objective C  
+### <a name="ObjectiveC"></a> Język Objective C  
  **DocumentationSamplesObjc** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
-```xml  
+```objective-c  
 #import <Foundation/Foundation.h>  
   
 int main(int argc, const char * argv[])  
@@ -1192,12 +1192,12 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="PHP"></a> PHP  
+### <a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
-```xml  
+```php  
 <?php  
 // This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
@@ -1282,12 +1282,12 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="Python"></a> Python  
+### <a name="Python"></a> Python  
  **DocumentationSamplesPython** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
-```xml  
+```python  
 ########### Python 2.7 #############  
 import httplib, urllib, base64  
   
@@ -1400,12 +1400,12 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="Ruby"></a> Ruby  
+### <a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
-```xml  
+```ruby  
 require 'net/http'  
   
 uri = URI('{{scheme}}://{{host}}{{path}}')  

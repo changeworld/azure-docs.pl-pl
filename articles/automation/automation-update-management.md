@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b28d590390cd1a1ef1c6651e6943ac2a7fa0af29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: f4fd47ae4f1ebc50de916b537b165eba1c5efb11
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075499"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205019"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -39,7 +39,7 @@ Na poniższym diagramie przedstawiono koncepcyjny widok działania i przepływu 
 
 Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy.
 
-CVE po wersji może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z systemem Linux dla oceny.  W przypadku maszyn Windows zajmuje 12 – 15 godzin poprawki do wyświetlenia dla oceny po udostępnieniu.
+Po wydaniu pakietu może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z systemem Linux dla oceny. W przypadku maszyn Windows zajmuje 12 – 15 godzin poprawki do wyświetlenia dla oceny po udostępnieniu.
 
 Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agent przesyła dalej informacje zbiorcze, aby dzienniki usługi Azure Monitor. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie uruchamiane co 12 godzin.
 
@@ -186,7 +186,7 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 | --- | --- | --- |
 | Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
 | Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do dzienników usługi Azure Monitor nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do dzienników usługi Azure Monitor nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 

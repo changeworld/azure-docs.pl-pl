@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2019
+ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 00501ec72dff99f93fa04944c5ab733fce38ce21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f5f9b3595074c26c80c824052727e962b01162a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074006"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275043"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Zrozumienie definicje ról na potrzeby zasobów platformy Azure
 
@@ -52,7 +52,8 @@ Operacje są określane za pomocą ciągów, które mają następujący format:
 | ------------------- | ------------------- |
 | `*` | Symbol wieloznaczny udziela dostępu do wszystkich operacji, które pasuje do ciągu. |
 | `read` | Włącza odczytu (GET). |
-| `write` | Umożliwia pisanie operacji (PUT, POST i PATCH). |
+| `write` | Umożliwia pisanie operacje (PUT lub PATCH). |
+| `action` | Umożliwia wykonywanie niestandardowych operacji, takie jak ponowne uruchomienie maszyn wirtualnych (POST). |
 | `delete` | Umożliwia usuwanie operacji (Usuń). |
 
 Oto [Współautor](built-in-roles.md#contributor) definicji roli w formacie JSON. Symbol wieloznaczny (`*`) działanie `Actions` oznacza, że jednostka przypisani do tej roli mogą wykonywać wszystkie akcje lub innymi słowy, jego może zarządzać wszystkim. Obejmuje to akcje zdefiniowane w przyszłości, jak platforma Azure dodaje nowe typy zasobów. Operacje w obszarze `NotActions` są odejmowane od `Actions`. W przypadku właściwości [Współautor](built-in-roles.md#contributor) roli `NotActions` usuwa ta rola umożliwia zarządzanie dostępem do zasobów, a także przypisać dostęp do zasobów.
@@ -79,7 +80,7 @@ Oto [Współautor](built-in-roles.md#contributor) definicji roli w formacie JSON
 }
 ```
 
-## <a name="management-and-data-operations-preview"></a>Operacje zarządzania i dane (wersja zapoznawcza)
+## <a name="management-and-data-operations"></a>Operacje zarządzania i dane
 
 Kontrola dostępu oparta na rolach dla operacji zarządzania została określona w `Actions` i `NotActions` właściwości definicji roli. Poniżej przedstawiono kilka przykładów operacje zarządzania na platformie Azure:
 
@@ -89,7 +90,7 @@ Kontrola dostępu oparta na rolach dla operacji zarządzania została określona
 
 Dostęp do funkcji zarządzania nie jest dziedziczony z danymi. Ta separacja zapobiega ról z symbolami wieloznacznymi (`*`) z konieczności nieograniczony dostęp do danych. Na przykład, jeśli użytkownik ma [czytnika](built-in-roles.md#reader) roli w ramach subskrypcji, następnie mogą oni wyświetlać konta magazynu, ale domyślnie nie można wyświetlić danych bazowych.
 
-Wcześniej kontrola dostępu oparta na rolach nie był używany dla operacji na danych. Autoryzacja dla operacji na danych zróżnicowane dla dostawców zasobów. Modelu autoryzacji tych samych kontroli dostępu opartej na rolach używany do wykonywania operacji zarządzania została rozszerzona na operacje na danych (obecnie w wersji zapoznawczej).
+Wcześniej kontrola dostępu oparta na rolach nie był używany dla operacji na danych. Autoryzacja dla operacji na danych zróżnicowane dla dostawców zasobów. Modelu autoryzacji tych samych kontroli dostępu opartej na rolach używany do wykonywania operacji zarządzania została rozszerzona na operacje na danych.
 
 Aby obsługiwać operacje na danych, struktura definicji roli dodano nowe właściwości danych. Operacje na danych są określone w `DataActions` i `NotDataActions` właściwości. Dodanie właściwości tych danych, rozdzielenia danych i zarządzania jest zachowywana. Zapobiega to bieżące przypisania roli z symbolami wieloznacznymi (`*`) nagle uzyskanie dostępu do danych. Poniżej przedstawiono niektóre operacje na danych, które mogą być określone w `DataActions` i `NotDataActions`:
 
@@ -169,11 +170,7 @@ Aby przeglądać i pracować z operacji na danych, konieczne jest posiadanie pop
 
 Wyświetlanie i używanie operacji na danych w interfejsie API REST, należy ustawić **parametru api-version** parametru następującą wersję lub nowszej wersji:
 
-- 2018-01-01-preview
-
-Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzanie nimi zawartość, kolejek i obiektów Blob kontenerów za pomocą usługi Azure AD w wersji zapoznawczej środowiska. Aby wyświetlić i zarządzania zawartością kolejki lub obiektu Blob kliknij kontener **Eksplorowanie danych za pomocą usługi Azure AD w wersji zapoznawczej** na koncie magazynu — omówienie.
-
-![Zapoznaj się z kolejek i obiektów Blob kontenerów za pomocą usługi Azure AD (wersja zapoznawcza)](./media/role-definitions/rbac-dataactions-browsing.png)
+- 2018-07-01
 
 ## <a name="actions"></a>Akcje
 
@@ -195,7 +192,7 @@ Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzani
 > Jeśli użytkownik ma przypisaną rolę, bez operacji w `NotActions`i ma przypisany druga rola, która udziela dostępu do tej samej operacji, użytkownik może wykonać tej operacji. `NotActions` nie jest odmowy reguły — jest po prostu wygodny sposób utworzyć zestaw dozwolonych operacji podczas określonych operacji, które powinny zostać wykluczone.
 >
 
-## <a name="dataactions-preview"></a>elementy dataActions (wersja zapoznawcza)
+## <a name="dataactions"></a>DataActions
 
 `DataActions` Uprawnień określa operacje danych, dozwolone przez rolę do wykonania na danych w obrębie tego obiektu. Na przykład jeśli użytkownik ma dostęp do danych obiektów blob na koncie magazynu do odczytu, następnie będzie mogła ją odczytać obiekty BLOB w ramach tego konta magazynu. Poniżej przedstawiono kilka przykładów operacje na danych, które mogą być używane w `DataActions`.
 
@@ -206,7 +203,7 @@ Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzani
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Zwraca komunikat. |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Zwraca komunikat lub wynik zapisu i usuwania komunikatu. |
 
-## <a name="notdataactions-preview"></a>notDataActions (wersja zapoznawcza)
+## <a name="notdataactions"></a>NotDataActions
 
 `NotDataActions` Uprawnień określa operacje danych, które są wykluczone z dozwolonych `DataActions`. Dostęp udzielany przez rolę (czynne uprawnienia) jest obliczana przez odjęcie ilości `NotDataActions` operacje z `DataActions` operacji. Każdy dostawca zasobów udostępnia jego odpowiedniego zestawu interfejsów API, aby wykonać operacje na danych.
 
