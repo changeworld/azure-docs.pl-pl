@@ -20,14 +20,14 @@ Plany usługi Azure udostępnia funkcje Tworzenie definicji planu bardziej dynam
 
 Obsługiwane są następujące funkcje:
 
-- [Artefakty](#artifacts)
+- [artifacts](#artifacts)
 - [concat](#concat)
 - [parameters](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [Subskrypcja](#subscription)
+- [subscription](#subscription)
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>artifacts
 
 `artifacts(artifactName)`
 
@@ -109,7 +109,7 @@ Niektóre przykłady pobierania danych z _myTemplateArtifact_ próbki są:
 
 | Wyrażenie | Typ | Wartość |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Tablica | \["first", "sekundę"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "sekundę"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | "Mój wartość ciągu" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "Moja value", "anotherProperty": true} |
@@ -126,7 +126,7 @@ Niektóre przykłady pobierania danych z _myTemplateArtifact_ próbki są:
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| ciąg1 |Tak |string |Pierwsza wartość łączenia. |
+| string1 |Tak |string |Pierwsza wartość łączenia. |
 | dodatkowe argumenty |Nie |string |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -324,7 +324,7 @@ Następnie użyj `resourceGroups()` funkcji w kontekście dowolnego artefaktu pl
 }
 ```
 
-## <a name="subscription"></a>subskrypcja
+## <a name="subscription"></a>subscription
 
 `subscription()`
 
