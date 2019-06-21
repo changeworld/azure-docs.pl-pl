@@ -10,7 +10,7 @@
     - name: Szybki start
       expanded: true
       items:
-        - name: Inicjowanie i kupowana pojemność
+        - name: Inicjowanie i aprowizowanie pojemności
           href: quickstart-create-cloudsimple-service.md
         - name: Konfigurowanie środowiska chmury prywatnej
           href: quickstart-create-private-cloud.md
@@ -62,7 +62,7 @@
           href: access-cloudsimple-portal.md
         - name: Zarządzanie węzłami
           items:
-            - name: Kupowanie węzłów
+            - name: Aprowizowanie węzłów
               href: create-nodes.md
         - name: Zarządzanie zasobami chmury prywatnej
           items:

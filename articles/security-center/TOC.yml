@@ -45,7 +45,7 @@
       href: security-center-onboarding.md
     - name: Ochrona serwera za pomocą usługi Windows Defender ATP
       href: security-center-wdatp.md
-    - name: Zaawansowane zabezpieczenia danych w produktach IaaS
+    - name: Zaawansowane zabezpieczenia danych dla bazy danych SQL na maszynach wirtualnych platformy Azure (publiczna wersja zapoznawcza)
       href: security-center-iaas-advanced-data.md
     - name: Włączanie ochrony usługi App Service
       href: security-center-app-services.md
@@ -83,7 +83,7 @@
           href: security-center-virtual-machine-protection.md
         - name: Ochrona zasobów sieciowych
           href: security-center-network-recommendations.md
-        - name: Ochrona usług i danych SQL
+        - name: Ochrona usług magazynu i danych
           href: security-center-sql-service-recommendations.md
         - name: Ochrona tożsamości i dostępu
           href: security-center-identity-access.md

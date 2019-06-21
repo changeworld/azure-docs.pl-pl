@@ -17,44 +17,50 @@
       href: dns-getstarted-cli.md
 - name: Samouczki
   items:
-    - name: Hostowanie własnej domeny w usłudze Azure DNS
-      href: dns-delegate-domain-azure-dns.md
-    - name: Tworzenie niestandardowych rekordów DNS dla aplikacji internetowej
-      href: dns-web-sites-custom-domain.md
-    - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS
-      href: private-dns-portal.md
-    - name: Rekordy aliasów dla usługi Traffic Manager
-      href: tutorial-alias-tm.md
-    - name: Rekordy aliasów dla publicznych adresów IP
-      href: tutorial-alias-pip.md
-    - name: Rekordy aliasów dla rekordów strefy
-      href: tutorial-alias-rr.md
+    - name: Publiczna usługa DNS
+      items:
+        - name: Hostowanie własnej domeny w usłudze Azure DNS
+          href: dns-delegate-domain-azure-dns.md
+        - name: Tworzenie niestandardowych rekordów DNS dla aplikacji internetowej
+          href: dns-web-sites-custom-domain.md
+        - name: Rekordy aliasów dla usługi Traffic Manager
+          href: tutorial-alias-tm.md
+        - name: Rekordy aliasów dla publicznych adresów IP
+          href: tutorial-alias-pip.md
+        - name: Rekordy aliasów dla rekordów strefy
+          href: tutorial-alias-rr.md
+    - name: Prywatna strefa DNS
+      items:
+        - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS
+          href: private-dns-portal.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
 - name: Pojęcia
   items:
+    - name: Publiczna usługa DNS
+      items:
+        - name: Strefy i rekordy
+          href: dns-zones-records.md
+        - name: Rekordy aliasu
+          href: dns-alias.md
+        - name: Delegowanie za pomocą usługi Azure DNS
+          href: dns-domain-delegation.md
+        - name: Często zadawane pytania
+          href: dns-faq.md
+        - name: Alerty i metryki DNS
+          href: dns-alerts-metrics.md
+        - name: Wsteczna usługa DNS
+          href: dns-reverse-dns-overview.md
+        - name: Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager
+          href: ../networking/disaster-recovery-dns-traffic-manager.md
     - name: Prywatna strefa DNS
       items:
         - name: Często zadawane pytania dotyczące prywatnej strefy DNS
           href: dns-faq-private.md
         - name: Scenariusze prywatnej usługi DNS
           href: private-dns-scenarios.md
-    - name: Strefy i rekordy
-      href: dns-zones-records.md
-    - name: Rekordy aliasu
-      href: dns-alias.md
-    - name: Delegowanie za pomocą usługi Azure DNS
-      href: dns-domain-delegation.md
-    - name: Często zadawane pytania
-      href: dns-faq.md
-    - name: Alerty i metryki DNS
-      href: dns-alerts-metrics.md
-    - name: Wsteczna usługa DNS
-      href: dns-reverse-dns-overview.md
-    - name: Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager
-      href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Instrukcje
   items:
     - name: Prywatna strefa DNS
@@ -63,70 +69,84 @@
           href: private-dns-getstarted-cli.md
         - name: Tworzenie strefy prywatnej — PowerShell
           href: private-dns-getstarted-powershell.md
-    - name: Rekordy aliasów dla aplikacji internetowych z równoważeniem obciążenia
-      href: dns-alias-appservice.md
-    - name: Zarządzanie strefami DNS
+    - name: Publiczna usługa DNS
       items:
-        - name: Portal Azure
-          href: dns-operations-dnszones-portal.md
-        - name: Azure PowerShell
-          href: dns-operations-dnszones.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: dns-operations-dnszones-cli.md
-    - name: Zarządzanie rekordami DNS
-      items:
-        - name: Portal Azure
-          href: dns-operations-recordsets-portal.md
-        - name: Azure PowerShell
-          href: dns-operations-recordsets.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: dns-operations-recordsets-cli.md
-    - name: Zarządzanie odwrotnym systemem DNS
-      items:
-        - name: Hostowanie stref wyszukiwania wstecznego w usłudze Azure DNS
-          href: dns-reverse-dns-hosting.md
-        - name: Zarządzanie rekordami wstecznej usługi DNS na potrzeby usług Azure
-          href: dns-reverse-dns-for-azure-services.md
-    - name: Importowanie i eksportowanie pliku strefy systemu DNS
-      href: dns-import-export.md
-    - name: Delegowanie poddomeny
-      href: delegate-subdomain.md
-    - name: Delegowanie poddomeny przy użyciu programu PowerShell
-      href: delegate-subdomain-ps.md
-    - name: Integracja z innymi usługami platformy Azure
-      href: dns-for-azure-services.md
-    - name: Ochrona stref i rekordów DNS
-      href: dns-protect-zones-recordsets.md
-    - name: Automatyzowanie operacji usługi DNS przy użyciu zestawu .NET SDK
-      href: dns-sdk.md
-    - name: Domeny niestandardowe dla zasobów platformy Azure
-      href: dns-custom-domain.md
+        - name: Rekordy aliasów dla aplikacji internetowych z równoważeniem obciążenia
+          href: dns-alias-appservice.md
+        - name: Zarządzanie strefami DNS
+          items:
+            - name: Portal Azure
+              href: dns-operations-dnszones-portal.md
+            - name: Azure PowerShell
+              href: dns-operations-dnszones.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: dns-operations-dnszones-cli.md
+        - name: Zarządzanie rekordami DNS
+          items:
+            - name: Portal Azure
+              href: dns-operations-recordsets-portal.md
+            - name: Azure PowerShell
+              href: dns-operations-recordsets.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: dns-operations-recordsets-cli.md
+        - name: Zarządzanie odwrotnym systemem DNS
+          items:
+            - name: Hostowanie stref wyszukiwania wstecznego w usłudze Azure DNS
+              href: dns-reverse-dns-hosting.md
+            - name: Zarządzanie rekordami wstecznej usługi DNS na potrzeby usług Azure
+              href: dns-reverse-dns-for-azure-services.md
+        - name: Importowanie i eksportowanie pliku strefy systemu DNS
+          href: dns-import-export.md
+        - name: Delegowanie poddomeny
+          href: delegate-subdomain.md
+        - name: Delegowanie poddomeny przy użyciu programu PowerShell
+          href: delegate-subdomain-ps.md
+        - name: Integracja z innymi usługami platformy Azure
+          href: dns-for-azure-services.md
+        - name: Ochrona stref i rekordów DNS
+          href: dns-protect-zones-recordsets.md
+        - name: Automatyzowanie operacji usługi DNS przy użyciu zestawu .NET SDK
+          href: dns-sdk.md
+        - name: Domeny niestandardowe dla zasobów platformy Azure
+          href: dns-custom-domain.md
     - name: Rozwiązywanie problemów
       items:
         - name: Przewodnik rozwiązywania problemów
           href: dns-troubleshoot.md
 - name: Dokumentacja
   items:
-    - name: Przykłady kodu
-      href: 'https://azure.microsoft.com/resources/samples/?service=dns'
-    - name: Azure PowerShell
-      href: /powershell/module/az.dns
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: /cli/azure/network/dns
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.dns.models
-    - name: Java
-      href: /java/api/com.microsoft.azure.management.dns
-    - name: Node.js
-      href: 'https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/'
-    - name: Ruby
-      href: 'https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0'
-    - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html'
-    - name: REST
-      href: /rest/api/dns/
-    - name: Szablon usługi Resource Manager
-      href: /azure/templates/microsoft.network/dns-allversions
+    - name: Publiczna usługa DNS
+      items:
+        - name: Przykłady kodu
+          href: 'https://azure.microsoft.com/resources/samples/?service=dns'
+        - name: Azure PowerShell
+          href: /powershell/module/az.dns
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: /cli/azure/network/dns
+        - name: .NET
+          href: /dotnet/api/microsoft.azure.management.dns.models
+        - name: Java
+          href: /java/api/com.microsoft.azure.management.dns
+        - name: Node.js
+          href: 'https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/'
+        - name: Ruby
+          href: 'https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0'
+        - name: Python
+          href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html'
+        - name: REST
+          href: /rest/api/dns/
+        - name: Szablon usługi Resource Manager
+          href: /azure/templates/microsoft.network/dns-allversions
+    - name: Prywatna strefa DNS
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: /cli/azure/network/private-dns
+        - name: Azure PowerShell
+          href: /powershell/module/az.PrivateDns
+        - name: .NET
+          href: /dotnet/api/overview/azure/privatedns/management
+        - name: REST
+          href: /rest/api/dns/privatedns/privatezones
 - name: Powiązane
   items:
     - name: Application Gateway
@@ -157,3 +177,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Aktualizacje usług
       href: 'https://azure.microsoft.com/updates/?product=dns'
+    - name: Przewodnik migracji prywatnej strefy DNS
+      href: private-dns-migration-guide.md

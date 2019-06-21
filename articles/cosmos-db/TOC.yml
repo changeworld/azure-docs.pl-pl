@@ -624,10 +624,12 @@
         - name: Rejestrowanie aplikacji za pomocą usługi Logic Apps
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Monitorowanie
+    - name: Monitorowanie za pomocą metryk
       items:
-        - name: Monitorowanie za pomocą metryk
+        - name: Wyświetlanie metryk z konta usługi Cosmos DB
           href: use-metrics.md
+        - name: Wyświetlanie metryk z usługi Azure Monitor
+          href: cosmos-db-azure-monitor-metrics.md
         - name: Monitorowanie umów SLA
           href: monitor-accounts.md
     - name: Opracowywanie w środowisku lokalnym

@@ -1,0 +1,27 @@
+- name: Dokumentacja czytnika immersyjnego
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Co to jest czytnik immersyjny?
+      href: Overview.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: 'Przy użyciu języka C#'
+      href: Quickstart.md
+- name: Samouczki
+  items:
+    - name: Uruchamianie czytnika immersyjnego (Node.js)
+      href: tutorial.md
+- name: Dokumentacja
+  items:
+    - name: Dokumentacja zestawu SDK
+      href: reference.md
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: Obsługa języków
+      href: 'https://aka.ms/ltlangsupport'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'

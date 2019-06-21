@@ -28,20 +28,8 @@
       items:
         - name: .NET Core
           href: event-hubs-dotnet-standard-getstarted-send.md
-        - name: .NET Framework
-          href: event-hubs-dotnet-framework-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
-        - name: Python
-          href: event-hubs-python-get-started-send.md
-        - name: Node.js
-          href: event-hubs-node-get-started-send.md
-        - name: Przejdź
-          href: event-hubs-go-get-started-send.md
-        - name: C (tylko wysyłanie)
-          href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm (tylko odbieranie)
-          href: event-hubs-storm-getstarted-receive.md
     - name: Przechwytywanie zdarzeń
       items:
         - name: Włączanie usługi Event Hubs Capture za pomocą witryny Azure Portal
@@ -60,33 +48,21 @@
       href: event-hubs-tutorial-visualize-anomalies.md
     - name: Przechowywanie przechwyconych danych w usłudze SQL Data Warehouse
       href: store-captured-data-data-warehouse.md
+    - name: Przetwarzanie zdarzeń platformy Apache Kafka dla usługi Event Hubs za pomocą usługi Stream Analytics
+      href: event-hubs-kafka-stream-analytics.md
     - name: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
-    - name: Włączanie integracji sieci wirtualnych i zapór ogniowych w przestrzeni nazw usługi Event Hubs
-      href: event-hubs-tutorial-virtual-networks-firewalls.md
-    - name: Usługa Event Hubs dla platformy Apache Kafka
-      items:
-        - name: Dublowanie brokera platformy Kafka w centrum zdarzeń z obsługą platformy Apache Kafka
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Łączenie platformy Apache Spark z centrami zdarzeń z obsługą platformy Apache Kafka
-          href: event-hubs-kafka-spark-tutorial.md
-        - name: Łączenie platformy Apache Flink z centrami zdarzeń z obsługą platformy Apache Kafka
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: Integrowanie narzędzia Apache Kafka Connect z centrum zdarzeń z obsługą platformy Kafka (wersja zapoznawcza)
-          href: event-hubs-kafka-connect-tutorial.md
-        - name: Łączenie platformy Akka Streams z centrami zdarzeń z obsługą platformy Apache Kafka
-          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: Przykłady
   href: event-hubs-samples.md
 - name: Pojęcia
   items:
-    - name: Funkcje usługi Event Hubs
+    - name: Terminologia usługi Event Hubs
       href: event-hubs-features.md
-    - name: Omówienie hosta procesora zdarzeń
-      href: event-hubs-event-processor-host.md
-    - name: Przewodnik programowania
-      href: event-hubs-programming-guide.md
+    - name: Dostępność i spójność
+      href: event-hubs-availability-and-consistency.md
+    - name: Skalowalność
+      href: event-hubs-scalability.md
     - name: Bezpieczeństwo
       items:
         - name: Tożsamość zarządzana dla zasobów platformy Azure
@@ -99,54 +75,95 @@
           href: event-hubs-authentication-and-security-model-overview.md
         - name: Atrybuty zabezpieczeń
           href: event-hubs-security-attributes.md
-    - name: Dostępność i spójność
-      href: event-hubs-availability-and-consistency.md
     - name: Przewodnik dotyczący protokołu AMQP 1.0
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: Przewodniki z instrukcjami
   items:
-    - name: 'Wysyłanie, odbieranie i przechwytywanie zdarzeń przy użyciu języka Python'
-      href: event-hubs-python.md
-    - name: Konfigurowanie dzienników diagnostycznych
-      href: event-hubs-diagnostic-logs.md
-    - name: Usługa Event Hubs dla platformy Apache Kafka
+    - name: Programowanie
+      items:
+        - name: Pobieranie parametrów połączenia usługi Event Hubs
+          href: event-hubs-get-connection-string.md
+        - name: Zdarzenia wymiany między aplikacjami przy użyciu różnych protokołów
+          href: event-hubs-exchange-events-different-protocols.md
+        - name: Przewodnik programowania
+          href: event-hubs-programming-guide.md
+        - name: Odbieranie zdarzeń za pomocą hosta procesora zdarzeń
+          href: event-hubs-event-processor-host.md
+    - name: Używanie bibliotek klienckich
+      items:
+        - name: .NET Framework
+          items:
+            - name: Wysyłanie i odbieranie zdarzeń za pomocą programu .NET Framework
+              href: event-hubs-dotnet-framework-getstarted-send.md
+        - name: Java
+          items:
+            - name: Tworzenie aplikacji integratora strumienia platformy Spring Cloud
+              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+              maintainContext: true
+            - name: Używanie programu Spring Boot Starter dla platformy Apache Kafka
+              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+              maintainContext: true
+        - name: Python
+          items:
+            - name: Wysyłanie i odbieranie zdarzeń za pomocą języka Python
+              href: event-hubs-python-get-started-send.md
+            - name: 'Wysyłanie, odbieranie i przechwytywanie zdarzeń przy użyciu języka Python'
+              href: event-hubs-python.md
+        - name: Node.js
+          items:
+            - name: Wysyłanie i odbieranie zdarzeń za pomocą platformy Node.js
+              href: event-hubs-node-get-started-send.md
+        - name: Przejdź
+          items:
+            - name: Wysyłanie i odbieranie zdarzeń za pomocą języka Go
+              href: event-hubs-go-get-started-send.md
+        - name: C (tylko wysyłanie)
+          items:
+            - name: Wysyłanie zdarzeń za pomocą języka C
+              href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm (tylko odbieranie)
+          items:
+            - name: Odbieranie zdarzeń za pomocą systemu Apache Storm
+              href: event-hubs-storm-getstarted-receive.md
+    - name: Integracja z platformą Apache Kafka
       items:
         - name: Tworzenie centrów zdarzeń z obsługą platformy Apache Kafka
           href: event-hubs-create-kafka-enabled.md
-        - name: Przetwarzanie zdarzeń platformy Apache Kafka dla usługi Event Hubs za pomocą usługi Stream Analytics
-          href: event-hubs-kafka-stream-analytics.md
-    - name: Zarządzanie
+        - name: Dublowanie brokera platformy Kafka w centrum zdarzeń z obsługą platformy Apache Kafka
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Łączenie platformy Apache Spark z centrami zdarzeń z obsługą platformy Apache Kafka
+          href: event-hubs-kafka-spark-tutorial.md
+        - name: Łączenie platformy Apache Flink z centrami zdarzeń z obsługą platformy Apache Kafka
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Integrowanie narzędzia Apache Kafka Connect z centrum zdarzeń z obsługą platformy Kafka (wersja zapoznawcza)
+          href: event-hubs-kafka-connect-tutorial.md
+        - name: Łączenie platformy Akka Streams z centrami zdarzeń z obsługą platformy Apache Kafka
+          href: event-hubs-kafka-akka-streams-tutorial.md
+    - name: Zarządzanie i monitorowanie
       items:
         - name: Monitorowanie usługi Event Hubs przy użyciu funkcji monitorowania platformy Azure
           href: event-hubs-metrics-azure-monitor.md
+        - name: Konfigurowanie dzienników diagnostycznych
+          href: event-hubs-diagnostic-logs.md
+        - name: Strumieniowe przesyłanie danych usługi Azure Diagnostics przy użyciu usługi Event Hubs
+          href: event-hubs-streaming-azure-diags-data.md
+        - name: Automatyczne skalowanie jednostek przepływności
+          href: event-hubs-auto-inflate.md
         - name: Biblioteki zarządzania usługi Event Hubs
           href: event-hubs-management-libraries.md
-    - name: Pobieranie parametrów połączenia usługi Event Hubs
-      href: event-hubs-get-connection-string.md
-    - name: Tworzenie w środowisku Java
+    - name: Bezpieczeństwo
       items:
-        - name: Tworzenie aplikacji integratora strumienia platformy Spring Cloud
-          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-        - name: Używanie programu Spring Boot Starter dla platformy Apache Kafka
-          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+        - name: Używanie zapór
+          href: event-hubs-ip-filtering.md
+        - name: Korzystanie z punktów końcowych usługi dla sieci wirtualnej
+          href: event-hubs-service-endpoints.md
+        - name: Włączanie integracji sieci wirtualnych i zapór ogniowych w przestrzeni nazw usługi Event Hubs
+          href: event-hubs-tutorial-virtual-networks-firewalls.md
     - name: Rozwiązywanie problemów
       items:
         - name: Wyjątki
           href: event-hubs-messaging-exceptions.md
-    - name: Używanie zapór
-      href: event-hubs-ip-filtering.md
-    - name: Korzystanie z punktów końcowych usługi dla sieci wirtualnej
-      href: event-hubs-service-endpoints.md
-    - name: Automatyczne skalowanie jednostek przepływności
-      href: event-hubs-auto-inflate.md
-    - name: Strumieniowe przesyłanie danych usługi Azure Diagnostics przy użyciu usługi Event Hubs
-      href: event-hubs-streaming-azure-diags-data.md
-    - name: Zdarzenia wymiany między aplikacjami przy użyciu różnych protokołów
-      href: event-hubs-exchange-events-different-protocols.md
-    - name: Tworzenie aplikacji integratora strumienia platformy Spring Cloud
-      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub?view=azure-java-stable
-      maintainContext: true
 - name: Dokumentacja
   items:
     - name: Java

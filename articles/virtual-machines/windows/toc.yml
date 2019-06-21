@@ -118,8 +118,8 @@
           href: ephemeral-os-disks.md
     - name: Networking
       href: network-overview.md
-    - name: Automatyczne skalowanie aplikacji
-      href: autoscale.md
+    - name: Zestawy skalowania
+      href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Automatyzacja infrastruktury
       href: infrastructure-automation.md
     - name: Zabezpieczenia i zasady
