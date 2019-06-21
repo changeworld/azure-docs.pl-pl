@@ -109,7 +109,7 @@ Niektóre przykłady pobierania danych z _myTemplateArtifact_ próbki są:
 
 | Wyrażenie | Typ | Wartość |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "sekundę"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Tablica | \["first", "sekundę"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | "Mój wartość ciągu" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "Moja value", "anotherProperty": true} |

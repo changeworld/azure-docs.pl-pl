@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 881c829424124cca843beb7005306edd53be2673
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203985"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304181"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu
 
@@ -105,7 +105,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 ## <a name="step-2-post-the-request"></a>Krok 2. Wysłanie żądania
 
-Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 100 żądań na drugim i 1000 żądań na minutę. Maksymalny rozmiar każdego żądania to 1 MB.
+Analiza jest wykonywana po odebraniu żądania. Zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie, aby uzyskać informacje na temat rozmiaru i liczby żądań można wysyłać na minutę i sekundę.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e98979ac43945ebc9af82d5f89db01855429ca70
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831422"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304204"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
 
@@ -87,7 +87,7 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
   + [Rozpoznawanie jednostek](text-analytics-how-to-entity-linking.md)  
 
 
-6. Kliknij przycisk **wysyłania** można przesłać żądania. Możesz przesłać do 100 żądań na minutę. 
+6. Kliknij przycisk **wysyłania** można przesłać żądania. Zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie informacji na temat liczby żądań można wysyłać na minutę i sekundę.
 
    W narzędziu Postman odpowiedź zostanie wyświetlona w oknie dalej w dół, jako pojedynczy dokument JSON, za pomocą elementu dla każdego Identyfikatora dokumentu, podany w żądaniu.
 
