@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acafd6d8f37edd3e16561a4e588556bb771619f8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65916043"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206711"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Opis i dostosowywanie jednostek przesyłania strumieniowego
 
@@ -59,7 +59,7 @@ Elementy danych czasowych zapytania (zorientowane na czas) to podstawowy zestaw 
 
 Należy zauważyć, że zadanie z logiką złożonego zapytania można wysokiej % wykorzystania SU nawet wtedy, gdy nie jest stale odbierania zdarzeń wejściowych. Może to nastąpić po nagłym skokiem w zdarzeniach wejściowych i wyjściowych. Zadanie może w dalszym ciągu zachować stan pamięci, jeśli zapytanie jest złożone.
 
-% Wykorzystania SU nagle może porzucić 0 na krótko przed powracające do oczekiwanego poziomu. Dzieje się tak z powodu przejściowych błędów lub uaktualnień zainicjowane przez system.
+% Wykorzystania SU nagle może porzucić 0 na krótko przed powracające do oczekiwanego poziomu. Dzieje się tak z powodu przejściowych błędów lub uaktualnień zainicjowane przez system. Zwiększenie liczby jednostek przesyłania strumieniowego dla zadania nie może zmniejszyć SU % wykorzystania, jeśli zapytanie nie jest [pełni równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Logiki zapytania stanowych w elementach danych czasowych
 Jednym z unikatowych możliwości zadania usługi Azure Stream Analytics jest wykonanie stanowych przetwarzania, takich jak okresowymi danych czasowych sprzężeń i funkcji analitycznych danych czasowych. Każda z tych operatorów przechowuje informacje o stanie. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 

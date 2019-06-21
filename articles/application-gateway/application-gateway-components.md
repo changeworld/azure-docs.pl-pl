@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: f5dfa34760bcef23bf54d65b35e3ad8f48cc2ee5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831850"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273219"
 ---
 # <a name="application-gateway-components"></a>Składniki bramy aplikacji
 
@@ -26,7 +26,9 @@ Adres IP frontonu jest adres IP skojarzony z bramą aplikacji. Można skonfiguro
 
 ### <a name="static-versus-dynamic-public-ip-address"></a>Statycznej i dynamicznej publiczny adres IP
 
-Jednostka SKU w wersji 2 usługi Azure Application Gateway obsługuje zarówno statyczne wewnętrzne i statyczne publiczne adresy IP, mimo że jednostek SKU v1 obsługuje tylko statyczne wewnętrzne adresy IP. Wirtualny adres IP (VIP) można zmienić, gdy bramy aplikacji jest zatrzymana i uruchomiona.
+Jednostki SKU usługi Azure Application Gateway w wersji 2 można skonfigurować do obsługi zarówno statycznego adresu IP wewnętrznej i statyczny publiczny adres IP albo tylko statyczny publiczny adres IP. Nie można skonfigurować do obsługi tylko statyczne wewnętrzny adres IP.
+
+Jednostki SKU V1 można skonfigurować w celu obsługi statycznych wewnętrzny adres IP i dynamicznego publicznego adresu IP tylko statyczne wewnętrzny adres IP lub tylko dynamicznego publicznego adresu IP. Dynamiczny adres IP bramy Application Gateway nie zmienia się na uruchamianie bramy. Można go zmienić tylko wtedy, gdy zatrzymasz lub uruchomisz bramy. Nie powoduje zmiany na awarie systemu, aktualizacji i hosta platformy Azure aktualizacje itp. 
 
 Nazwa DNS skojarzone z usługą application gateway nie zmienia się z cyklem bramy. W rezultacie należy Użycie aliasów CNAME i wskaż adresu DNS bramy aplikacji.
 

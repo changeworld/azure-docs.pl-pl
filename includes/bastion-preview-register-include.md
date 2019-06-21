@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d05d425cc9bfb206207801f15a25e17d60dc0aaf
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
-ms.translationtype: HT
+ms.openlocfilehash: da4177fd54c0d8777f15175cea3a74a8b01c0954
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191748"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67305312"
 ---
 1. Upewnij się, że zalogowano się do konta platformy Azure i korzystania z subskrypcji, które chcesz dołączyć do tej wersji zapoznawczej. Skorzystaj z następującego przykładu, aby zarejestrować:
 
     ```azurepowershell-interactive
-    Register-AzureRmProviderFeature -FeatureName AllowBastionHost -ProviderNamespace Microsoft.Network
+    Register-AzProviderFeature -FeatureName AllowBastionHost -ProviderNamespace Microsoft.Network
     ```
 2.  Ponownie zarejestrować swoją subskrypcję z *Microsoft.Network* przestrzeń nazw dostawcy.
 
     ```azurepowershell-interactive
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ````
 3. Użyj następującego polecenia, aby sprawdzić, czy *AllowBastionHost* funkcji jest zarejestrowany w ramach subskrypcji:
 
     ```azurepowershell-interactive
-    Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network
+    Get-AzProviderFeature -ProviderNamespace Microsoft.Network
     ````
 
     Może upłynąć kilka minut, zanim rejestracji w celu ukończenia.

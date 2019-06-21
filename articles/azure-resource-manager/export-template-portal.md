@@ -4,20 +4,22 @@ description: Eksportowanie szablonu usługi Azure Resource Manager z zasobów w 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: ea9499da3dac67635a48704f439f6592c6ed467e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e482bf99013b9bec9dfbf64c4e8ad5a8a43ff540
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65515387"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296303"
 ---
 # <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>Eksportowanie pojedynczych i wielu zasobów do szablonu w witrynie Azure portal
 
 Aby ułatwić tworzenie szablonów usługi Azure Resource Manager, możesz wyeksportować szablon z istniejących zasobów. Wyeksportowany szablon ułatwia zrozumienie składni JSON i właściwości, które wdrażasz swoje zasoby. Aby zautomatyzować przyszłych wdrożeniach, rozpoczynać wyeksportowany szablon i zmodyfikuj go odpowiednio do danego scenariusza.
 
 Usługi Resource Manager pozwala wybrać jeden lub więcej zasobów do eksportowania do szablonu. Możesz skupić się na potrzebne w szablonie zasoby.
+
+W tym artykule pokazano, jak można wyeksportować szablony przy użyciu portalu. Można również użyć [wiersza polecenia platformy Azure](manage-resource-groups-cli.md#export-resource-groups-to-templates), [programu Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates), lub [interfejsu API REST](/rest/api/resources/resourcegroups/exporttemplate).
 
 ## <a name="choose-the-right-export-option"></a>Wybierz opcję prawo eksportu
 
@@ -114,7 +116,7 @@ Możesz wyeksportować szablon, który został użyty do wdrożenia istniejącyc
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby poznać usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](./resource-group-overview.md).
+- Dowiedz się, jak wyeksportować szablony przy użyciu [wiersza polecenia platformy Azure](manage-resource-groups-cli.md#export-resource-groups-to-templates), [programu Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates), lub [interfejsu API REST](/rest/api/resources/resourcegroups/exporttemplate).
 - Aby dowiedzieć się składni szablonu usługi Resource Manager, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](./resource-group-authoring-templates.md).
 - Aby dowiedzieć się, jak opracowywać szablony, zobacz [samouczki krok po kroku](/azure/azure-resource-manager/).
 - Aby wyświetlić schematy szablonów usługi Azure Resource Manager, zobacz [odwołanie do szablonu](/azure/templates/).

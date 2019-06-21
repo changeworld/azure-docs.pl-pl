@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fbe4fd5f85026cd62f1bd10e36561b312464054
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc1d52a1062d1848daaaeef7977f96cd270567c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64690574"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203466"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i usługi Azure Resource Manager
 
@@ -113,6 +113,15 @@ Ustaw kontekst magazynu w następujący sposób:
 5. Sprawdź, czy host funkcji Hyper-V jest zarejestrowana do lokacji w następujący sposób:
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
+
+Jeśli korzystasz z instalacją server core funkcji Hyper-V, Pobierz plik instalacyjny i wykonaj następujące czynności:
+1. Wyodrębnij pliki z AzureSiteRecoveryProvider.exe do katalogu lokalnego, uruchamiając następujące polecenie: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Uruchom ```.\setupdr.exe /i``` wyniki są rejestrowane w % Programdata%\ASRLogs\DRASetupWizard.log.
+
+3. Zarejestruj serwer, uruchamiając następujące polecenie:
+
+    ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
+
 
 ## <a name="step-6-create-a-replication-policy"></a>Krok 6: Tworzenie zasad replikacji
 

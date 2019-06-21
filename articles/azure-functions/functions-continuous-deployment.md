@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: d4d2f24a0a7b1f01627ed2cea4a5732ca0e001c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2dc5fab0966c2ead0276cd8b23ea764bd4f9ef59
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068392"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190474"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Ciągłe wdrażanie dla usługi Azure Functions
 
@@ -32,7 +32,7 @@ Jednostka wdrożenia dla usługi Azure functions jest aplikacja funkcji. Oznacza
 
 ## <a name="requirements-for-continuous-deployment"></a>Wymagania dotyczące ciągłego wdrażania
 
-Ciągłe wdrażanie zakończyło się sukcesem, strukturę katalogu musi być zgodny następującą strukturę folderów podstawowego, który oczekuje, że usługi Azure Functions:
+Do ciągłego wdrażania została wykonana pomyślnie strukturę katalogu muszą być zgodne z następującą strukturę folderów podstawowego, który oczekuje, że usługi Azure Functions:
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
@@ -44,13 +44,15 @@ Użyj tej procedury, aby skonfigurować ciągłe wdrażanie dla istniejącej apl
 
     ![Otwieranie Centrum wdrażania](./media/functions-continuous-deployment/platform-features.png)
 
-2. Na **Centrum wdrażania**, wybierz opcję **GitHub** dla **kontroli źródła** > **Autoryzuj**.
+2. W **Centrum wdrażania**, wybierz opcję **GitHub**, a następnie wybierz pozycję **Autoryzuj**. Lub, jeśli została już autoryzowana GitHub, wybierz opcję **Kontynuuj**. 
 
     ![Centrum wdrażania](./media/functions-continuous-deployment/github.png)
 
-3. Wybierz **autoryzować AzureAppService** > **nadal**.
+3. W usłudze GitHub, wybierz **autoryzować AzureAppService**. 
 
     ![Autoryzowanie](./media/functions-continuous-deployment/authorize.png)
+    
+    W witrynie Azure portal **Centrum wdrażania**, wybierz opcję **Kontynuuj**.
 
 4. Wybierz jedną z następujących dostawców kompilacji:
 

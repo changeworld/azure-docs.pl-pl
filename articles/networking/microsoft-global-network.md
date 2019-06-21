@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2019
+ms.date: 06/13/2019
 ms.author: ypitsch,kumud
-ms.openlocfilehash: 99650577b17874e61d1cede979d7ef2f4bfd491b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: ecce41878f7579862bba083f8cecf5db3cbde3e6
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247292"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144138"
 ---
 # <a name="microsoft-global-network"></a>Globalna sieć firmy Microsoft
 
@@ -33,8 +33,10 @@ Każdego dnia klientów na całym świecie Połącz i przekazać biliony żąda�
  
 Wybór [najlepsze możliwe wrażenia](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) jest łatwe, korzystając z chmury firmy Microsoft. Od momentu, gdy ruch klientów wchodzi Nasza globalna sieć za pośrednictwem naszego strategicznie rozmieszczonych węzłów brzegowych dane przechodzi przez zoptymalizowane trasy w pobliżu prędkość światła. Dzięki temu optymalne opóźnienia, aby uzyskać najlepszą wydajność. Te-węzłów brzegowych, wszystkie połączone ze sobą ponad 3500 unikatowy Internet partnerom (elementami równorzędnymi) za pomocą tysięcy połączeń w więcej niż 145 lokalizacjach, stanowią podstawę naszej strategii połączeń. 
  
-Czy połączenie z Londynu do Tokio lub Waszyngton do Los Angeles, wydajność sieci jest obliczana i wpływ na elementy, takie jak czas oczekiwania, zakłócenia, utraty pakietów i przepływności.  W firmie Microsoft firma Microsoft Preferuj użycia bezpośrednich połączeń w przeciwieństwie do przesyłania łącza, dzięki temu ruch odpowiedzi symetrycznego i pomaga zapewnić przeskoków, komunikacja równorzędna strony i ścieżki jako krótka i prosta, jak to możliwe. Takie podejście — wersja premium, często nazywane [routingu ziemniaczanej zimnego](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing), zapewnia klientom sieci ruch pozostaje w obrębie sieci firmy Microsoft, tak długo, jak to możliwe, przed przekazaniem go wyłączyć.  
- 
+Czy połączenie z Londynu do Tokio lub Waszyngton do Los Angeles, wydajność sieci jest obliczana i wpływ na elementy, takie jak czas oczekiwania, zakłócenia, utraty pakietów i przepływności.  W firmie Microsoft firma Microsoft Preferuj użycia bezpośrednich połączeń w przeciwieństwie do przesyłania łącza, dzięki temu ruch odpowiedzi symetrycznego i pomaga zapewnić przeskoków, komunikacja równorzędna strony i ścieżki jako krótka i prosta, jak to możliwe. 
+
+Na przykład jeśli użytkownik London próbuje uzyskać dostęp usługi w Tokio, wówczas ruch internetowy wejdzie w jeden z naszych krawędzie w Londynie, przechodzi przez WAN firmy Microsoft za pośrednictwem Francja, nasze ścieżki Saudyjska Trans między Europy i Indie, a następnie w Japonii, w którym jest hostowana usługa. Ruch odpowiedzi jest symetryczne. Jest to czasami określane jako [routingu ziemniaczanej zimnego](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) co oznacza, że ruch pozostaje w Microsoft sieci, tak długo, jak to możliwe, przed przekazaniem go wyłączyć.  
+  
 Tak, to znaczy wszystkie ruchu podczas korzystania z usług firmy Microsoft? Tak, cały ruch między danymi centrów w systemie Microsoft Azure lub między usługami firmy Microsoft, takie jak maszyny wirtualne, usługi Office 365, XBox, baz danych SQL, magazynu i sieci wirtualne są przesyłane w ramach globalnej sieci i nigdy nie za pośrednictwem publicznej sieci Internet, aby zapewnić optymalne wydajność i integralności.  
  
 Dużych inwestycji w fiber pojemności i stopień rozproszenia w ścieżkach lądowe i podmorskich metro, są niezwykle istotne w firmie Microsoft w celu zachowania stałego i wysokiego poziomu usług podczas technologicznymi extreme wzrostu w naszej chmurze i usług online. Ostatnio dodane do globalnej sieci są nasze [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) kabel, branży pierwszego otwarty wiersz systemu (OLS) za pośrednictwem subsea między Bilbao (Hiszpania) i Virginia Beach, Virginia, USA, podmorski, jak również [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1)między Nowym Jorku, USA i Dublin, Irlandia i [nowych granic Pacyfik (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) między Tokio, Japonia i Portland, Oregon, USA. 

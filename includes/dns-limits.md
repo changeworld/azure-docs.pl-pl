@@ -4,19 +4,26 @@ ms.service: billing
 ms.topic: include
 ms.date: 6/15/2019
 ms.author: victorh
-ms.openlocfilehash: ed0a73e6a47e08b974dc9900ead2da9b9a2690a8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 520a403fcfed3bb96278f4a82fcfeb41abb2ee42
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080022"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67277394"
 ---
 **Publiczne stref DNS**
 
 | Resource | Limit domyślny |
 | --- | --- |
-| Strefy na subskrypcję |100 <sup>1</sup> |
-| Zestawy rekordów dla strefy |5,000 <sup>1</sup> |
-| Rekordów na zestawu rekordów |20 |
+| Strefy DNS publiczne na subskrypcję |250 <sup>1</sup> |
+| Zestawy rekordów na publicznej strefie DNS |10,000 <sup>1</sup> |
+| Rekordów na zestaw rekordów w publicznej strefie DNS |20 |
+| Prywatnych stref DNS na subskrypcję |1000|
+| Zestawy rekordów na strefę prywatną DNS |25000|
+| Rekordy na rekordzie, ustaw dla prywatnych stref DNS |20|
+| Łączy sieci wirtualnych na strefę prywatną DNS |1000|
+| Włączone łączy sieci wirtualnych na prywatnych stref DNS z automatyczną rejestracją |100|
+| Liczba prywatnych stref DNS, które mogą uzyskać połączone sieci wirtualnej z włączoną automatyczną rejestrację |1|
+| Liczba prywatnych stref DNS, które mogą uzyskać połączone sieci wirtualnej |1000|
 
 <sup>1</sup>Jeśli trzeba zwiększyć te limity, skontaktuj się z działem pomocy technicznej systemu Azure.

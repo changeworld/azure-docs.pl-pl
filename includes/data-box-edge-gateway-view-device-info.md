@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161184"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183691"
 ---
 1. [Nawiązać połączenie z interfejsu programu PowerShell](#connect-to-the-powershell-interface).
 2. Użyj `Get-HcsApplianceInfo` Aby uzyskać informacje o urządzeniu.

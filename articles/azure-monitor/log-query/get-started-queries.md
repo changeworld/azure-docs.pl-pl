@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519017"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296087"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Wprowadzenie do zapytań dzienników w usłudze Azure Monitor
 
 
 > [!NOTE]
@@ -28,9 +28,9 @@ ms.locfileid: "65519017"
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym samouczku dowiesz się pisać zapytania dzienników usługi Azure Monitor. Jego nauczą Cię, jak do:
+W tym samouczku dowiesz się do pisania zapytań dzienników w usłudze Azure Monitor. Jego nauczą Cię, jak do:
 
-- Zrozumienie struktury zapytań
+- Zrozumienie struktury zapytania
 - Sortowanie wyników zapytania
 - Filtrowanie wyników zapytania
 - Określ zakres czasu
@@ -38,6 +38,8 @@ W tym samouczku dowiesz się pisać zapytania dzienników usługi Azure Monitor.
 - Definiowanie i korzystanie z polami niestandardowymi
 - Wyniki agregacji i grupy
 
+Aby uzyskać samouczek na temat korzystania z usługi Log Analytics w witrynie Azure portal, zobacz [Rozpoczynanie pracy z usługą Azure Monitor Log Analytics](get-started-portal.md).<br>
+Aby uzyskać szczegółowe informacje na temat zapytań dzienników w usłudze Azure Monitor, zobacz [Przegląd dziennika zapytań w usłudze Azure Monitor](log-query-overview.md).
 
 ## <a name="writing-a-new-query"></a>Zapisywanie nowego zapytania
 Zapytania można zacząć od jednej nazwy tabeli lub *wyszukiwania* polecenia. Należy rozpocząć z nazwą tabeli, ponieważ definiuje wyczyść zakres zapytania i zwiększa wydajność zapytań i znaczenie wyników.
@@ -71,8 +73,8 @@ search in (SecurityEvent) "Cryptographic"
 
 To zapytanie wyszukuje *SecurityEvent* tabeli rekordy, które zawierają frazę "Szyfrowania". Z tych rekordów 10 rekordów zostaną zwrócone i wyświetlone. Firma Microsoft pominięcia `in (SecurityEvent)` części i po prostu uruchomić `search "Cryptographic"`, wyszukiwanie zostanie umieszczona *wszystkie* tabel, które będzie trwać dłużej i mniej wydajne rozwiązanie.
 
-> [!NOTE]
-> Domyślnie, przedział czasu _ostatnich 24 godzinach_ jest ustawiona. Aby użyć innego zakresu, użyj selektor czasu (znajdującą się obok *Przejdź* przycisk) lub dodać jawne czasu filtru zakresu do zapytania.
+> [!WARNING]
+> Zapytania wyszukiwania są zazwyczaj wolniej niż na podstawie tabeli zapytania, ponieważ mają przetworzyć większej ilości danych. 
 
 ## <a name="sort-and-top"></a>Sortuj i z góry
 Gdy **zająć** jest przydatne uzyskać kilka rekordów, wyniki są zaznaczone i wyświetlane w losowej kolejności. Aby uzyskać uporządkowane widok, można wykonać następujące akcje **sortowania** przez preferowany kolumny:

@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dcdbbf0a2a71fa38b6eacd6a8d179cdad979937
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f00a530cb4e62ae83dea349c949e8f2ddc43c0c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059294"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203029"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -171,7 +171,7 @@ Automatyczne ML jest również dostępna w innych rozwiązaniach firmy Microsoft
 |Integracje|Opis|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Wybór modelu automatyczne i szkolenia w aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code za pomocą platformy ML.NET zautomatyzowane ML (wersja zapoznawcza).|
-|[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Skalowanie w poziomie uczenie Maszynowe szkolenia zadaniami automatycznymi na platformie Spark w klastrach HDInsight równolegle.|
+|[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Skalowanie w poziomie uczenie Maszynowe szkolenia zadaniami automatycznymi na platformie Spark w klastrach HDInsight równolegle.|
 |[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Wywoływanie modeli uczenia maszynowego bezpośrednio w usłudze Power BI (wersja zapoznawcza).|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Utwórz nową maszynę uczenia modeli danych w klastrach danych big data 2019 r programu SQL Server.|
 

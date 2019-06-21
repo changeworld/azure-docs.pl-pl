@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/17/2019
 ms.author: twhitney
-ms.openlocfilehash: cdcc1b985c570d1af4bbb33ac29a37e63b1dfa90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9887e923358b5658a365b5cfc88759eca2501e0
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752396"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303550"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>W wersji zapoznawczej — tworzenie kontenerów systemu Windows Server w klastrze usługi Azure Kubernetes Service (AKS) przy użyciu wiersza polecenia platformy Azure
 
@@ -22,7 +22,7 @@ Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
 ![Obraz przedstawiający Przechodzenie do aplikacji przykładowej platformy ASP.NET](media/windows-container/asp-net-sample-app.png)
 
-W tym artykule założono podstawową wiedzę na temat pojęciach usługi Kubernetes. Aby uzyskać więcej informacji, zobacz temat [Kubernetes core concepts for Azure Kubernetes Service (AKS)][kubernetes-concepts] (Kubernetes — podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)).
+W tym artykule założono podstawową wiedzę na temat pojęciach usługi Kubernetes. Aby uzyskać więcej informacji, zobacz [Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -42,7 +42,7 @@ Po utworzeniu klastra, który umożliwia uruchamianie kontenerów systemu Window
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia w wersji zapoznawczej usługi aks
     
-Polecenia interfejsu wiersza polecenia do tworzenia i obsługi wielu pul węzłów są dostępne w *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia. Zainstaluj *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az] [ az-extension-add] polecenia, jak pokazano w poniższym przykładzie:
+Polecenia interfejsu wiersza polecenia do tworzenia i obsługi wielu pul węzłów są dostępne w *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia. Zainstaluj *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az][az-extension-add] polecenia, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -53,7 +53,7 @@ az extension add --name aks-preview
 
 ### <a name="register-windows-preview-feature"></a>Zarejestruj funkcję Windows w wersji zapoznawczej
 
-Aby utworzyć klaster usługi AKS, które mogą używać wielu pul węzłów i uruchamianie kontenerów systemu Windows Server, należy najpierw włączyć *WindowsPreview* funkcji flagi w ramach Twojej subskrypcji. *WindowsPreview* funkcja używa także puli wielowęzłowych klastrów i maszyn wirtualnych zestawu skalowania w celu zarządzania wdrażaniem i konfiguracji węzłów rozwiązania Kubernetes. Zarejestruj *WindowsPreview* przy użyciu flagi funkcji [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+Aby utworzyć klaster usługi AKS, które mogą używać wielu pul węzłów i uruchamianie kontenerów systemu Windows Server, należy najpierw włączyć *WindowsPreview* funkcji flagi w ramach Twojej subskrypcji. *WindowsPreview* funkcja używa także puli wielowęzłowych klastrów i maszyn wirtualnych zestawu skalowania w celu zarządzania wdrażaniem i konfiguracji węzłów rozwiązania Kubernetes. Zarejestruj *WindowsPreview* przy użyciu flagi funkcji [az feature register][az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az feature register --name WindowsPreview --namespace Microsoft.ContainerService
@@ -62,13 +62,13 @@ az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 > [!NOTE]
 > Każdy klaster AKS możesz utworzyć po pomyślnym zarejestrowaniu *WindowsPreview* flagę funkcji, użyj tego środowiska klastra w wersji zapoznawczej. Aby kontynuować tworzenie klastrów regularnych, w pełni obsługiwane, nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji w środowisku produkcyjnym. Użyj oddzielnych testowym lub deweloperskim subskrypcji platformy Azure do testowania funkcji w wersji zapoznawczej.
 
-Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az] [ az-feature-list] polecenia:
+Trwa kilka minut, zanim rejestracji w celu ukończenia. Sprawdź stan rejestracji przy użyciu [lista funkcji az][az-feature-list] polecenia:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcę zasobów przy użyciu [az provider register] [ az-provider-register] polecenia:
+Gdy stan rejestracji to `Registered`, naciśnij klawisze Ctrl-C, aby zatrzymać monitorowanie stanu.  Następnie Odśwież rejestracji *Microsoft.ContainerService* dostawcę zasobów przy użyciu [az provider register][az-provider-register] polecenia:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -89,9 +89,13 @@ Chociaż ta funkcja jest dostępna w wersji zapoznawczej, następujące dodatkow
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi. Podczas tworzenia grupy zasobów użytkownik jest proszony o określenie lokalizacji. Ta lokalizacja jest, gdzie przechowywane są metadane grupy zasobów, jest również, gdy zasoby uruchamianie na platformie Azure, jeśli nie określisz innego regionu podczas tworzenia zasobu. Utwórz grupę zasobów przy użyciu polecenia [az group create][az-group-create].
+Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi. Podczas tworzenia grupy zasobów użytkownik jest proszony o określenie lokalizacji. Ta lokalizacja jest, gdzie przechowywane są metadane grupy zasobów, jest również, gdy zasoby uruchamianie na platformie Azure, jeśli nie określisz innego regionu podczas tworzenia zasobu. Utwórz grupę zasobów za pomocą [Tworzenie grupy az][az-group-create] polecenia.
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+
+> [!NOTE]
+> W tym artykule używa składni Bash dla poleceń w ramach tego samouczka.
+> Jeśli używasz usługi Azure Cloud Shell, upewnij się, że lista rozwijana w lewym górnym rogu okna usługi Cloud Shell jest ustawiona na **Bash**.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -113,12 +117,13 @@ Następujące przykładowe dane wyjściowe przedstawiają pomyślnie utworzoną 
 }
 ```
 
-## <a name="create-aks-cluster"></a>Tworzenie klastra AKS
-Aby można było uruchomić klaster AKS, która obsługuje pule węzłów dla kontenerów systemu Windows Server, klaster musi korzystać z zasad sieciowych, który używa [wtyczki Azure CNI] [ azure-cni-about] wtyczki sieci (zaawansowane). Aby uzyskać szczegółowe informacje, aby pomóc w planowaniu podsieci wymaganych zakresów i zagadnienia dotyczące sieci, zobacz [konfigurowaniu sieci wtyczki Azure CNI][use-advanced-networking]. Użyj [tworzenie az aks] [ az-aks-create] polecenie, aby utworzyć klaster usługi AKS, o nazwie *myAKSCluster*. To polecenie spowoduje utworzenie zasoby sieciowe, jeśli nie istnieją.
+## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
+
+Aby można było uruchomić klaster AKS, która obsługuje pule węzłów dla kontenerów systemu Windows Server, klaster musi korzystać z zasad sieciowych, który używa [wtyczki Azure CNI][azure-cni-about] (advanced) network plugin. For more detailed information to help plan out the required subnet ranges and network considerations, see [configure Azure CNI networking][use-advanced-networking]. Użyj [tworzenie az aks][az-aks create] polecenie, aby utworzyć klaster usługi AKS, o nazwie *myAKSCluster*. To polecenie spowoduje utworzenie zasoby sieciowe, jeśli nie istnieją.
   * Klaster jest skonfigurowany z jednym węzłem
   * *Systemu windows-admin-password* i *nazwa użytkownika administratora systemu windows* Parametry ustawione poświadczenia administratora dla wszelkich kontenerów systemu Windows Server w klastrze utworzono.
 
-Podaj własne bezpieczne *PASSWORD_WIN*.
+Podaj własne bezpieczne *PASSWORD_WIN* (należy pamiętać, że polecenia w tym artykule są wprowadzane do powłoki BASH):
 
 ```azurecli-interactive
 PASSWORD_WIN="P@ssw0rd1234"
@@ -135,6 +140,10 @@ az aks create \
     --enable-vmss \
     --network-plugin azure
 ```
+
+> [!Note]
+> Jeśli wystąpi błąd sprawdzania poprawności hasła, spróbuj, tworzenie grupy zasobów w innym regionie.
+> Spróbuj tworzenia klastra przy użyciu nowej grupy zasobów.
 
 Po kilku minutach polecenie zostanie wykonane i zwróci informacje o klastrze w formacie JSON.
 
@@ -156,19 +165,19 @@ Powyższe polecenie tworzy pulę węzłów o nazwie *npwin* i dodaje go do *myAK
 
 ## <a name="connect-to-the-cluster"></a>Łączenie z klastrem
 
-Aby zarządzać klastrem Kubernetes, należy użyć klienta wiersza polecenia usługi Kubernetes — narzędzia [kubectl][kubectl]. Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie `kubectl` jest już zainstalowane. Aby zainstalować narzędzie `kubectl` lokalnie, użyj polecenia [az aks install-cli][az-aks-install-cli]:
+Aby zarządzać klastrem Kubernetes, należy użyć [kubectl][kubectl], czyli klienta wiersza polecenia usługi Kubernetes. Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie `kubectl` jest już zainstalowane. Aby zainstalować `kubectl` lokalnie, użyj [az aks install-cli][az-aks-install-cli] polecenia:
 
 ```azurecli
 az aks install-cli
 ```
 
-Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia.
+Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i zastosowanie ich w konfiguracji interfejsu wiersza polecenia Kubernetes.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Aby zweryfikować połączenie z klastrem, użyj polecenia [kubectl get][kubectl-get] w celu zwrócenia listy węzłów klastra.
+Aby sprawdzić połączenie z klastrem, użyj polecenia [kubectl get][kubectl-get], aby powrócić do listy węzłów klastra.
 
 ```azurecli-interactive
 kubectl get nodes
@@ -184,9 +193,9 @@ aksnpwin987654                      Ready    agent   108s   v1.14.0
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Plik manifestu platformy Kubernetes definiuje żądany stan klastra, w tym informacje o obrazach kontenera do uruchomienia. W tym artykule manifest służy do tworzenia wszystkich obiektów potrzebnych do uruchamiania przykładowej aplikacji platformy ASP.NET w kontenerze systemu Windows Server. Obejmuje to manifest [wdrażanie Kubernetes] [ kubernetes-deployment] dla przykładowej aplikacji platformy ASP.NET i zewnętrznego [usługi Kubernetes] [ kubernetes-service] do Uzyskaj dostęp do aplikacji z Internetu.
+Plik manifestu platformy Kubernetes definiuje żądany stan klastra, w tym informacje o obrazach kontenera do uruchomienia. W tym artykule manifest służy do tworzenia wszystkich obiektów potrzebnych do uruchamiania przykładowej aplikacji platformy ASP.NET w kontenerze systemu Windows Server. Obejmuje to manifest [wdrażanie Kubernetes][kubernetes-deployment] for the ASP.NET sample application and an external [Kubernetes service][kubernetes-service] dostępu do aplikacji z Internetu.
 
-Przykładowa aplikacja ASP.NET jest dostarczana jako część [przykłady dla platformy .NET Framework] [ dotnet-samples] i jest uruchamiany w kontenerze systemu Windows Server. Wymaga usługi AKS, kontenery systemu Windows Server była oparta na obrazy *systemu Windows Server 2019* lub nowszej. Również muszą definiować plik manifestu rozwiązania Kubernetes [selektor węzła] [ node-selector] mówić klastra usługi AKS, aby uruchomić aplikację przykładową ASP.NET pod w węźle, który umożliwia uruchamianie kontenerów systemu Windows Server.
+Przykładowa aplikacja ASP.NET jest dostarczana jako część [przykłady dla platformy .NET Framework][dotnet-samples] i jest uruchamiany w kontenerze systemu Windows Server. Wymaga usługi AKS, kontenery systemu Windows Server była oparta na obrazy *systemu Windows Server 2019* lub nowszej. Również muszą definiować plik manifestu rozwiązania Kubernetes [selektor węzła][node-selector] mówić klastra usługi AKS, aby uruchomić aplikację przykładową ASP.NET pod w węźle, który umożliwia uruchamianie kontenerów systemu Windows Server.
 
 Utwórz plik o nazwie `sample.yaml` i skopiuj go do poniższej definicji YAML. Jeśli używasz usługi Azure Cloud Shell, ten plik można utworzyć przy użyciu programu `vi` lub `nano`, tak jak podczas pracy w systemie wirtualnym lub fizycznym:
 
@@ -236,7 +245,7 @@ spec:
     app: sample
 ```
 
-Wdróż aplikację przy użyciu polecenia [kubectl apply][kubectl-apply] i podaj nazwę manifestu YAML:
+Wdrażanie aplikacji przy użyciu [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę manifeście YAML:
 
 ```azurecli-interactive
 kubectl apply -f sample.yaml
@@ -278,23 +287,23 @@ Aby wyświetlić przykładową aplikację w akcji, otwórz przeglądarkę sieci 
 
 ## <a name="delete-cluster"></a>Usuwanie klastra
 
-Gdy klaster nie będzie już potrzebny, usuń grupę zasobów, usługę kontenera i wszystkie pokrewne zasoby za pomocą polecenia [az group delete][az-group-delete].
+Gdy klaster nie będzie już potrzebny, należy użyć [usunięcie grupy az][az-group-delete] polecenia, aby usunąć grupę zasobów, usługę kontenera i wszystkie pokrewne zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Po usunięciu klastra jednostka usługi Azure Active Directory używana przez klaster usługi AKS nie jest usuwana. Aby sprawdzić, jak usunąć jednostkę usługi, zobacz [AKS service principal considerations and deletion (Uwagi dotyczące jednostki usługi AKS i jej usuwanie)][sp-delete].
+> Po usunięciu klastra jednostka usługi Azure Active Directory używana przez klaster usługi AKS nie jest usuwana. Aby uzyskać instrukcje dotyczące sposobu usuwania nazwy głównej usługi, zobacz [uwagi podmiotu zabezpieczeń i usuwania usługi AKS][sp-delete].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule wdrożono klaster Kubernetes i przykładowej aplikacji ASP.NET w kontenerze systemu Windows Server w nim wdrożona. [Uzyskaj dostęp do internetowego pulpitu nawigacyjnego rozwiązania Kubernetes][kubernetes-dashboard] dla właśnie utworzonego klastra.
+W tym artykule wdrożono klaster Kubernetes i przykładowej aplikacji ASP.NET w kontenerze systemu Windows Server w nim wdrożona. [Dostęp do pulpitu nawigacyjnego sieci web rozwiązania Kubernetes][kubernetes-dashboard] klastra został utworzony.
 
 Aby dowiedzieć się więcej o usłudze AKS i poznać dokładnie proces od kompletnego kodu do wdrożenia, przejdź do samouczka dotyczącego klastra Kubernetes.
 
 > [!div class="nextstepaction"]
-> [Samouczek usługi AKS][aks-tutorial]
+> [Samouczek dotyczący usługi AKS][aks-tutorial]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

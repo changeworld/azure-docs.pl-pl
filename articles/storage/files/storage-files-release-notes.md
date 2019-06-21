@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 6/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 1c302ef5dfe6a7d287977c6954ea31fe51998a3d
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
-ms.translationtype: HT
+ms.openlocfilehash: d9bbc76fe60a5d363cd05b75df33f6fce00d7e9a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67292850"
+ms.locfileid: "67303399"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -56,7 +56,7 @@ Poniższe informacje o wersji dotyczą wersji 7.0.0.0 agenta usługi Azure File 
 - Ulepszone obsługi warstw niezawodności polecenia cmdlet odwołania w chmurze 
     - Chmury warstw odwołania polecenia cmdlet (Invoke-StorageSyncFileRecall) teraz obsługuje na plik liczba ponownych prób i opóźnienie, podobnie jak robocopy.
 - Obsługa protokołu TLS 1.2 tylko (protokół TLS 1.0 i 1.1 jest wyłączony)
-    - Obsługuje teraz usługa Azure File Sync tylko na serwerach, na których protokół TLS 1.0 i 1.1 wyłączone przy użyciu protokołu TLS 1.2. 
+    - Obsługuje teraz usługa Azure File Sync tylko na serwerach, na których protokół TLS 1.0 i 1.1 wyłączone przy użyciu protokołu TLS 1.2. Przed to ulepszenie rejestracji serwera zakończy się niepowodzeniem, jeśli wyłączono protokół TLS 1.0 i 1.1 na serwerze.
 - Różne wydajność i niezawodność ulepszenia synchronizacja i obsługa warstw w chmurze
     - Istnieje kilka ulepszeń niezawodności i wydajności w tej wersji. Niektóre z nich są stosowane ulepszyć obsługi warstw na bardziej efektywne w chmurze i usługi Azure File Sync jako cała praca w takiej sytuacji w przypadku przepustowości ustawiono harmonogramu.
 

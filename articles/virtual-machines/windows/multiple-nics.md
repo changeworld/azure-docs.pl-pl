@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: cc4fb07874015112791ef2eaf9c39b31b690006c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d6387fc0f2f7342eb7a1fda25fcf1272889d13f7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978667"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64698144"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Tworzenie i zarządzanie nimi maszynę wirtualną Windows, który ma wiele kart sieciowych
 Maszyny wirtualne (VM) na platformie Azure może mieć wiele wirtualnych kart sieciowych (NIC) dołączonych do nich. Typowym scenariuszem jest zapewnienie różnych podsieci frontonu i zaplecza łączności. Można skojarzyć wiele kart sieciowych na maszynie Wirtualnej z wieloma podsieciami, ale te podsieci wszystkie znajdować się w tej samej sieci wirtualnej (vNet). Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej, która ma wiele kart sieciowych dołączonych do niego. Poznasz również sposób dodawania lub usuwania karty sieciowe z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej.
@@ -28,7 +28,7 @@ Maszyny wirtualne (VM) na platformie Azure może mieć wiele wirtualnych kart si
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myVnet*, i *myVM*.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-vm-with-multiple-nics"></a>Tworzenie maszyny wirtualnej z wieloma kartami sieciowymi
 Najpierw utwórz grupę zasobów. Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *EastUs* lokalizacji:

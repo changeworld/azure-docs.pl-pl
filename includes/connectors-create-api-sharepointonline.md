@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 0cabc58d856c09accd9b1924fe63d6518b1cb9ef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130000"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205778"
 ---
 Aby można było nawiązać **usługi SharePoint Online**, należy podać swoją tożsamość (nazwa użytkownika i hasło, inteligentne poświadczeń karty itp.) do usługi SharePoint Online. Gdy uwierzytelnienie powiodło się, możesz przejść do korzystania z łącznika usługi SharePoint Online w aplikacji logiki. 
 

@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97b32fff931c1c0f5e19a269afec5094cae3d40e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 204e230f7ff0897d2ba97213ebc836aff9d0324b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111211"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204649"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenariusz: Aplikacja klasyczna wywołująca internetowe interfejsy API
 
@@ -53,7 +53,7 @@ Pisanie aplikacji pulpitu, a chcesz logowania użytkowników do aplikacji i wywo
 
   ![Aplikacji klasycznej](media/scenarios/desktop-app.svg)
 
-- Jeśli piszesz przenośne narzędzie wiersza polecenia — prawdopodobnie aplikacji .NET Core w systemie Linux lub Mac — nie można używać ani przeprowadzić uwierzytelnianie interakcyjne (zgodnie z platformy .NET Core nie zapewnia [przeglądarki sieci Web](https://aka.ms/msal-net-uses-web-browser)), ani zintegrowany Uwierzytelnianie Windows. Najlepszym rozwiązaniem w takiej sytuacji jest użycie przepływu kodu urządzenia. Ten przepływ jest również używany do aplikacji bez przeglądarki, takich jak aplikacje iOT
+- Jeśli piszesz przenośne narzędzie wiersza polecenia — prawdopodobnie aplikacji .NET Core w systemie Linux lub Mac — nie można używać interakcyjnego uwierzytelniania (zgodnie z platformy .NET Core nie zapewnia [przeglądarki sieci Web](https://aka.ms/msal-net-uses-web-browser)), lub zintegrowany Uwierzytelnianie Windows. Najlepszym rozwiązaniem w takiej sytuacji jest użycie przepływu kodu urządzenia. Ten przepływ jest również używany do aplikacji bez przeglądarki, takich jak aplikacje IoT
 
   ![Browserless aplikacji](media/scenarios/device-code-flow-app.svg)
 

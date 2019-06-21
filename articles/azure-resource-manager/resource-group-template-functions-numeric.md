@@ -1,25 +1,17 @@
 ---
 title: Usługa Azure Resource Manager funkcje szablonu - liczbowych | Dokumentacja firmy Microsoft
 description: Opisuje funkcje służące do pracy z międzynarodowymi numerami identyfikującymi w szablonie usługi Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f63ce16369fd1ff58d5368b43c3c730008e63d9a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128649"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206414"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Funkcje numeryczne dla szablonów usługi Azure Resource Manager
 
@@ -49,7 +41,7 @@ Zwraca sumę dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- | 
-|Operand1 |Tak |int |Pierwsza liczba do dodania. |
+|Operand1 |Yes |int |Pierwsza liczba do dodania. |
 |Operand2 |Tak |int |Druga liczba do dodania. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -166,8 +158,8 @@ Zwraca dzielenia dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Yes |int |Liczba jest dzielona. |
-| Operand2 |Yes |int |Numer który jest używany do dzielenia. Nie może wynosić 0. |
+| Operand1 |Tak |int |Liczba jest dzielona. |
+| Operand2 |Tak |int |Numer który jest używany do dzielenia. Nie może wynosić 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -395,7 +387,7 @@ Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb ca
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
+| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -459,7 +451,7 @@ Zwraca resztę z dzielenia liczby całkowitej, przy użyciu dwóch podanych licz
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Tak |int |Liczba jest dzielona. |
+| Operand1 |Yes |int |Liczba jest dzielona. |
 | Operand2 |Tak |int |Liczba, która jest używana do dzielenia, nie może wynosić 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -529,7 +521,7 @@ Zwraca iloczyn dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Tak |int |Pierwszy numer do pomnożenia. |
+| Operand1 |Yes |int |Pierwszy numer do pomnożenia. |
 | Operand2 |Yes |int |Druga liczba do pomnożenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -600,8 +592,8 @@ Zwraca odejmowania dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Yes |int |Numer który jest odejmowany od. |
-| Operand2 |Yes |int |Liczba, która jest odejmowana. |
+| Operand1 |Tak |int |Numer który jest odejmowany od. |
+| Operand2 |Tak |int |Liczba, która jest odejmowana. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Liczba całkowita reprezentująca odejmowania.

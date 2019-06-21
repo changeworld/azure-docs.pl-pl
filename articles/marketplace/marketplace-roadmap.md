@@ -6,24 +6,24 @@ author: qianw211
 manager: MaggiePucciEvans
 ms.service: marketplace
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 06/17/2019
 ms.author: BrianLevenson
-ms.openlocfilehash: 5e20d65160e66937668d9f504245a8c042d58fee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39a0ea2ec173c8e3a2f79fd19dfa35ce2806d442
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751651"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274883"
 ---
 # <a name="azure-marketplace-and-appsource-roadmap"></a>Harmonogram działania dla usług Azure Marketplace i AppSource
 
-Ten dokument zapewnia wgląd w przyszłość w portalu Azure Marketplace, usługi AppSource i powiązanych partnerów programów. Zawiera on opis niektórych istotnych funkcji, firma Microsoft popełnienie nierównej przedział czasu po może pojawić się je i będą odświeżane co miesiąc. Nie jest kompleksowy wykaz wszystkich nowych funkcji, ale jest zapewnienie widoczności naszymi kluczowymi inwestycjami. Te zestawy funkcji i przedziały są bieżące i może ulec zmianie.
+Ten dokument zapewnia wgląd w przyszłość firmy Microsoft komercyjnych witryny marketplace dla wydawców, sprzedawcy i klientów. Zawiera on opis niektórych istotnych funkcji, firma Microsoft popełnienie nierównej przedział czasu po może pojawić się je i będą odświeżane co miesiąc. Nie jest kompleksowy wykaz wszystkich nowych funkcji, ale jest zapewnienie widoczności naszymi kluczowymi inwestycjami. Te zestawy funkcji i przedziały czasu dostarczania są bieżące i może ulec zmianie.
 
 Chętnie poznamy Twoje propozycje! Dołącz do rozmowy [społeczności partnerów firmy Microsoft](https://www.microsoftpartnercommunity.com/) celu uzyskania najnowszych aktualizacji na nowe możliwości, programów i zdarzenia.
 
 
 ## <a name="roadmap"></a>Harmonogram działania
-![](./media/marketplace-publishers-guide/roadmap.png)
+![Przewodnik po portalu Marketplace czerwca](./media/marketplace-publishers-guide/roadmap-june19.png)
 
 
 ## <a name="recent-releases"></a>Najnowsze wersje
@@ -41,6 +41,14 @@ Gdy funkcja jest aktywna, zostaną usunięte z planu. Następujące funkcje, kt�
 * [Portal Marketplace w obszarach geograficznych i waluty](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
 * [Seller Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
 
+### <a name="for-may-2019"></a>Aby uzyskać maja 2019 r
+
+* [Blog Marketplace konferencji Microsoft Build](https://azure.microsoft.com/blog/announcing-new-marketplace-revenue-opportunities/)
+* [Portal Marketplace maja aktualizacje blogu](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
+* Centrum partnerskie: [Utwórz konto](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [Zarządzanie kontem](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [migracji z CPP](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
+* Centrum partnerskie: [Tworzenie oferty SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [stan publikowania](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
+) / [aktualizowanie istniejącej oferty](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [oferują analizy](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
+* [Uzyskaj pomoc techniczną dla portalu marketplace w Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f8b7f281ad5ed8424110696544ffdb49e50ce59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2ffd2949c2540265539a743cb41d8070d7ba2a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112437"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204632"
 ---
 # <a name="baseline-policy-require-mfa-for-admins"></a>Zasady punktu odniesienia: Wymaganie uwierzytelniania MFA dla administratorów
 
@@ -71,6 +71,9 @@ Aby włączyć te zasady i chronić administratorów:
 1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
 1. Dodaj wykluczenia użytkownika, klikając **użytkowników** > **wybierz wykluczonych użytkowników** i wybierając pozycję Użytkownicy, którzy muszą być wyłączone. Kliknij przycisk **wybierz** następnie **gotowe**.
 1. Kliknij przycisk **Zapisz**.
+
+> [!WARNING]
+> Wystąpił opcję **automatycznie Włącz zasady w przyszłości** podczas tej zasady były w wersji zapoznawczej. Firma Microsoft usunęła tę opcję, aby zminimalizować jej wpływ nagłe użytkownika. Jeśli ta opcja jest zaznaczona, gdy był on dostępny, **nie używaj zasad** jest automatycznie wybierane. Jeśli firma chce korzystać z tych zasad linii bazowej, zobacz powyższe kroki, aby ją włączyć.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

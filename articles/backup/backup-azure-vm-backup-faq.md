@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sogup
-ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fdf8e6c19711f6ce38d430a9dffab185cad961b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966322"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296168"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowej maszyn wirtualnych platformy Azure
 
@@ -89,6 +89,9 @@ Nie można pobrać migawek na dysku włączony (Waszyngton). Jednak usługa Azur
 Usługa Azure Backup nie można utworzyć kopii zapasowych dysków komputerów z obsługą WA, ale można wykluczyć z kopii zapasowej. Jednak kopii zapasowej nie zawiera spójność bazy danych, ponieważ na dysku włączony (Waszyngton) nie ma kopii zapasowej. Jeśli dysk systemu operacyjnego kopii zapasowych i kopii zapasowych dysków, które nie są włączone w stanie Waszyngton, można wykonywanie kopii zapasowych dysków przy użyciu tej konfiguracji.
 
 Prywatna wersja zapoznawcza do tworzenia kopii zapasowych oprogramowania SAP HANA jest uruchomiony przy użyciu RPO o wartości 15 minut. Jest wbudowana w sposób podobny do kopii zapasowej bazy danych SQL i korzysta z interfejsu backInt rozwiązań innych firm, certyfikowanych przez oprogramowanie SAP HANA. Jeśli chcesz, Wyślij wiadomość e-mail `AskAzureBackupTeam@microsoft.com` z tematem **Zarejestruj się w prywatnej wersji zapoznawczej do utworzenia kopii zapasowej danych SAP HANA na maszynach wirtualnych platformy Azure**.
+
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Co to jest maksymalne opóźnienie, których można oczekiwać od czasu rozpoczęcia tworzenia kopii zapasowych w zaplanowanym czasie tworzenia kopii zapasowej, ustawionych w zasadach tworzenia kopii zapasowej mojej maszyny Wirtualnej?
+Zaplanowane tworzenie kopii zapasowej zostanie wyzwolone w ciągu 2 godzin według harmonogramu wykonywania kopii zapasowej. Aby uzyskać przykład. Jeśli 100 maszyn wirtualnych ma czas rozpoczęcia tworzenia kopii zapasowych zaplanowanych o 2:00, następnie max 4:00 am wszystkich 100VMs mają zadania tworzenia kopii zapasowej w toku. Jeśli zaplanowane kopie zapasowe została wstrzymana z powodu awarii i wznowić ponowione kopii zapasowej można uruchomić poza tym oknem zaplanowanych 2 godz.
 
 
 ## <a name="restore"></a>Przywracanie
