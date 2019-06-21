@@ -6,14 +6,14 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 06/18/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 0307dc5c83782119f6c10279563b8b9f0a999d28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28577bfc755d80cd479a40b9e2b653af6ddec319
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236880"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204452"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -34,9 +34,9 @@ W tym artykule dowiesz się, jak:
 Przed tworzysz kopię zapasową bazy danych programu SQL Server, sprawdź następujące kryteria:
 
 1. Określ lub Utwórz [magazyn usługi Recovery Services](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) w tym samym regionie lub ustawień regionalnych jako maszyny Wirtualnej obsługującego wystąpienie programu SQL Server.
-2. Sprawdź [wymagane uprawnienia maszyny Wirtualnej](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) do tworzenia kopii zapasowych baz danych SQL.
-3. Sprawdź, czy maszyna wirtualna ma [połączenia sieciowego](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
-4. Upewnij się, że bazy danych programu SQL Server, wykonaj [bazy danych wskazówkami nazewnictwa usługi Azure Backup](#database-naming-guidelines-for-azure-backup).
+2. Sprawdź, czy maszyna wirtualna ma [połączenia sieciowego](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
+3. Upewnij się, że bazy danych programu SQL Server, wykonaj [bazy danych wskazówkami nazewnictwa usługi Azure Backup](#database-naming-guidelines-for-azure-backup).
+4. Specjalnie dla programu SQL 2008 i 2008 R2 [Dodaj klucz rejestru](#add-registry-key-to-enable-registration) umożliwiające rejestracji serwera. Ten krok można nie będzie wymagane, gdy funkcja jest ogólnie dostępna.
 5. Upewnij się, że masz inne rozwiązania tworzenia kopii zapasowej włączone dla bazy danych. Wyłącz wszystkie pozostałe kopie zapasowe programu SQL Server przed kopii zapasowej bazy danych.
 
 > [!NOTE]
@@ -79,16 +79,6 @@ Za pomocą tagów usługi sieciowej grupy zabezpieczeń | Łatwiejsza w zarządz
 Za pomocą tagów zapory platformy Azure w pełni kwalifikowaną nazwę domeny | Łatwiejsza w zarządzaniu jako nazwy FQDN wymagane są zarządzane automatycznie | Może być używany tylko z zapory usługi Azure
 Używanie serwera proxy HTTP | Zapewnia szczegółową kontrolę na serwerze proxy magazynu dozwolone adresy URL <br/><br/> Pojedynczy punkt internet dostępu do maszyn wirtualnych <br/><br/> Niepodlegająca zmiany adresów IP platformy Azure | Dodatkowe koszty, aby uruchomić Maszynę wirtualną z oprogramowaniem serwera proxy
 
-### <a name="set-vm-permissions"></a>Ustawianie uprawnień maszyny wirtualnej
-
-Podczas konfigurowania kopii zapasowej dla bazy danych programu SQL Server, usługi Azure Backup wykonuje następujące czynności:
-
-- Dodaje rozszerzenie AzureBackupWindowsWorkload.
-- Tworzy konto usługi NT SERVICE\AzureWLBackupPluginSvc można odnaleźć baz danych na maszynie wirtualnej. To konto jest używane dla kopii zapasowej i przywracania i wymaga uprawnień administratora systemu SQL.
-- Umożliwia odnalezienie baz danych, które są uruchomione na maszynie Wirtualnej, usługa Azure Backup używa konta NT AUTHORITY\SYSTEM. To konto musi być publiczny logowania SQL.
-
-Jeśli nie utworzono maszynę Wirtualną programu SQL Server w witrynie Azure Marketplace, możesz otrzymać błąd UserErrorSQLNoSysadminMembership. Aby uzyskać więcej informacji, zobacz sekcję uwag i ograniczeń funkcji znaleziony w [o kopię zapasową serwera SQL na maszynach wirtualnych Azure](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
-
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Wskazówki dotyczące nazewnictwa dla usługi Azure Backup bazy danych
 
 Należy unikać nazw bazy danych przy użyciu następujących elementów:
@@ -101,6 +91,22 @@ Należy unikać nazw bazy danych przy użyciu następujących elementów:
 
 Tworzenie aliasów jest dostępna dla nieobsługiwane znaki, ale zaleca się ich unikać. Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
+### <a name="add-registry-key-to-enable-registration"></a>Dodaj klucz rejestru, aby włączyć rejestrację
+
+1. Open Regedit
+2. Utwórz ścieżkę rejestru w katalogu: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook (należy utworzyć TestHook "Key" w obszarze WorkloadBackup, który z kolei musi zostać utworzona w ramach firmy Microsoft).
+3. W ścieżce rejestru katalogu, Utwórz nową "wartość ciągu" o nazwie ciąg **AzureBackupEnableWin2K8R2SP1** i wartości: **True**
+
+    ![RegEdit włączania rejestracji](media/backup-azure-sql-database/reg-edit-sqleos-bkp.png)
+
+Alternatywnie możesz zautomatyzować ten krok, uruchamiając plik reg za pomocą następującego polecenia:
+
+```csharp
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook]
+"AzureBackupEnableWin2K8R2SP1"="True"
+```
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -141,7 +147,7 @@ Jak wykryć bazy danych uruchomione na maszynie Wirtualnej:
     - Usługa Azure Backup tworzy konto usługi NT Service\AzureWLBackupPluginSvc na maszynie Wirtualnej.
       - Wszystkie operacje tworzenia kopii zapasowych i przywracania korzystają z konta usługi.
       - NT Service\AzureWLBackupPluginSvc musi mieć uprawnienia administratora systemu SQL. Wszystkie maszyny wirtualne SQL Server utworzone w portalu Marketplace są dostarczane z SqlIaaSExtension zainstalowane. Rozszerzenie AzureBackupWindowsWorkload używa SQLIaaSExtension, aby automatycznie uzyskać wymaganych uprawnień.
-    - Jeśli nie utworzono maszynę Wirtualną z portalu Marketplace, maszyna wirtualna nie będzie mieć SqlIaaSExtension zainstalowane, a operacja odnajdywania zakończy się niepowodzeniem z komunikatem o błędzie UserErrorSQLNoSysAdminMembership. Aby rozwiązać ten problem, wykonaj [instrukcje](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
+    - Jeśli nie utworzono maszynę Wirtualną z portalu Marketplace lub jeśli korzystasz z programu SQL 2008 i 2008 R2, maszyna wirtualna nie może mieć SqlIaaSExtension zainstalowane, a operacja odnajdywania zakończy się niepowodzeniem z komunikatem o błędzie UserErrorSQLNoSysAdminMembership. Aby rozwiązać ten problem, postępuj zgodnie z instrukcjami zawartymi w sekcji [maszyn wirtualnych zestawu uprawnień](backup-azure-sql-database.md#set-vm-permissions).
 
         ![Wybieranie maszyny wirtualnej i bazy danych](./media/backup-azure-sql-database/registration-errors.png)
 
