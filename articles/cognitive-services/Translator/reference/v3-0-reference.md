@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: f58ff566ebb83ed6163637aa3899a925ed06242a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4133cec401723ab103b0b3bfff62eee21b653e2b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269222"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331825"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -31,20 +31,20 @@ Interfejs API tekstu usługi Translator w wersji 3 zapewnia nowoczesnych opartyc
 
 ## <a name="base-urls"></a>Podstawowych adresach URL
 
-Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów danych. Obecnie znajdują się one w 6 [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions):
+Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów danych. Obecnie znajdują się one w 6 [lokalizacjach geograficznych platformy Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
 * **Rozwiązanie to przyniosło im:** Zachodnie stany USA 2 i środkowe stany USA zachodnie 
 * **Azja i Pacyfik:** Azja południowo-wschodnia i Korea Południowa
 * **Europa:** Europa Północna i Europa Zachodnia
 
-Żądania interfejs API tekstu usługi Microsoft Translator są w większości przypadków obsługiwane przez centrum danych, które znajduje się najbliżej skąd pochodzi żądanie. W razie awarii centrum danych może być przesłane żądanie, poza regionem.
+Żądania interfejs API tekstu usługi Microsoft Translator są w większości przypadków obsługiwane przez centrum danych, które znajduje się najbliżej skąd pochodzi żądanie. W razie awarii centrum danych żądanie może być kierowany poza lokalizacja geograficzna platformy Azure.
 
-Aby wymusić żądania, które mają być obsługiwane przez określone centrum danych, zmienić globalny punkt końcowy w żądaniu interfejsu API do żądanego punktu końcowego regionalne:
+Aby wymusić żądania obsługi od określonego regionu platformy Azure, należy zmienić globalny punkt końcowy w żądaniu interfejsu API do żądanego punktu końcowego regionalne:
 
-|Opis|Region|Podstawowy adres URL|
+|Opis|Lokalizacja geograficzna platformy Azure|Podstawowy adres URL|
 |:--|:--|:--|
-|Azure|Globalny|  api.cognitive.microsofttranslator.com|
-|Azure|Ameryka Północna|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Globalne (inne niż regionalne)|   api.cognitive.microsofttranslator.com|
+|Azure|Stany Zjednoczone|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Azja i Pacyfik|    api-apc.cognitive.microsofttranslator.com|
 
