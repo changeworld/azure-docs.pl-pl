@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: dc0871c0b16246fa178072e9d9f266d4c02ba1c4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 4750937ee7ef6230ed4635d739a102a501b19a30
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002987"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341812"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
@@ -28,11 +28,11 @@ Te funkcje tworzą usługi mowy platformy Azure. Użyj linków w tej tabeli, aby
 
 | Usługa | Cecha | Opis | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [Zamiany mowy na tekst](speech-to-text.md) | Zamiana mowy na tekst | Zamiany mowy na tekst transcribes strumieni audio na tekst w czasie rzeczywistym, które aplikacje, narzędzia lub urządzenia używają lub wyświetlić. Użyj mowy na tekst za pomocą [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) wyprowadzenia użytkownika intencji z uzyskanego mowy i ustawy o poleceń głosowych. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Zamiany mowy na tekst](speech-to-text.md) | Zamiany mowy na tekst | Zamiany mowy na tekst transcribes strumieni audio na tekst w czasie rzeczywistym, które aplikacje, narzędzia lub urządzenia używają lub wyświetlić. Użyj mowy na tekst za pomocą [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) wyprowadzenia użytkownika intencji z uzyskanego mowy i ustawy o poleceń głosowych. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Transkrypcja usługi Batch](batch-transcription.md) | Transkrypcja Batch umożliwia asynchroniczne przekształcania mowy na tekst z dużych ilości danych. To jest usługa oparty na protokole REST, która używa tego samego punktu końcowego jako dostosowywanie i zarządzanie modelami w usłudze. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
 | | [Transkrypcja konwersacji](conversation-transcription-service.md) | Umożliwia rozpoznawanie mowy w czasie rzeczywistym, identyfikacja osoby mówiącej i diarization. Jest to doskonała dla przepisywania spotkań w osoby z możliwością odróżnić głośników. | Tak | Nie |
 | | [Tworzenie niestandardowych modeli mowy](#customize-your-speech-experience) | Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
-| [Zamiana tekstu na mowę](text-to-speech.md) | Zamiana tekstu na mowę | Zamiana tekstu na mowę konwertuje tekst wejściowy przypominającej ludzką syntezatora mowy. Wybierając spośród standardowa głosów i głosów neuronowych (zobacz [języki](language-support.md)). | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Zamiana tekstu na mowę](text-to-speech.md) | Zamiana tekstu na mowę | Zamiana tekstu na mowę konwertuje tekst wejściowy syntezatora mowy przypominającej ludzką za pomocą [mowy syntezy Markup Language (SSML)](text-to-speech.md#speech-synthesis-markup-language-ssml). Wybierając spośród standardowa głosów i głosów neuronowych (zobacz [języki](language-support.md)). | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Tworzenie niestandardowych głosów](#customize-your-speech-experience) | Czcionki głosowe niestandardowego należy utworzyć unikatowe dla Twojej marki lub produktu. | Nie | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Tłumaczenie mowy](speech-translation.md) | Tłumaczenie mowy | Tłumaczenie mowy umożliwia w czasie rzeczywistym, wielu języków tłumaczenia mowy do aplikacji, narzędzi i urządzeń. Usługa do tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nie |
 | [Wirtualnych asystentów głosowych pierwszy](voice-first-virtual-assistants.md) | Wirtualnych asystentów głosowych pierwszy | Niestandardowe asystentów wirtualnego przy użyciu usług przetwarzania mowy platformy Azure zwiększenie możliwości dostępnych dla deweloperów do tworzenia naturalnych, przypominającej ludzką interfejsy konwersacyjne na potrzeby swoich aplikacji i środowisk. Kanał bezpośredniego wiersza mowy platformy Bot Framework rozszerza te możliwości, zapewniając punktem wejścia skoordynowane, zorganizowane do zgodnych bot, który umożliwia głosu w głosu się interakcji z małymi opóźnieniami i wysoką niezawodnością. | [Tak](voice-first-virtual-assistants.md) | Nie |
@@ -79,7 +79,7 @@ Przykładowy kod jest dostępny w witrynie GitHub dla każdej z usług przetwarz
 
 Usługi mowy platformy Azure działa dobrze z wbudowanych modeli, jednak warto dalsze dostosowywanie i dostrojenie środowiska dla danego produktu lub środowiska. Dostosowywanie opcje z zakresu od model akustyczny dostroić czcionki głosowe unikatowy dla Twojej marki. Po utworzeniu modelu niestandardowego służy za pomocą dowolnej z usług przetwarzania mowy platformy Azure.
 
-| Usługa rozpoznawania mowy | Model | Opis |
+| Usługa rozpoznawania mowy | Modelowanie | Opis |
 |----------------|-------|-------------|
 | Zamiana mowy na tekst | [Model akustyczny](how-to-customize-acoustic-models.md) | Utwórz niestandardowy model akustyczny dla aplikacji, narzędzi, lub urządzenia, które są używane w szczególności środowiskach, takich jak jadąca samochodem, lub w fabrykach, każdy z rejestrowania określonych warunków. Przykłady obejmują akcentowanych mowy, określonych szum lub przy użyciu określonych mikrofonu rejestrowania. |
 | | [Model językowy](how-to-customize-language-model.md) | Utwórz model języka niestandardowego usprawniających transkrypcji słownika specyficzne dla pola i gramatyki, takie jak terminologia medycznych lub żargon IT. |

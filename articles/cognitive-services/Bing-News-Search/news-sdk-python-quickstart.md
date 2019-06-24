@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e13c500359c185d36a2e89914a1c112ee2e82cbc
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 2f6185ca6c2ddd44be2c12a81cedf1adcc2e30cd
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206107"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339024"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla języka Python
 
@@ -72,7 +72,8 @@ Jeśli zostaną zwrócone jakieś wyniki wyszukiwania, wydrukuj pierwszą stron�
 ```python
 if news_result.value:
     first_news_result = news_result.value[0]
-    print("Total estimated matches value: {}".format(news_result.total_estimated_matches))
+    print("Total estimated matches value: {}".format(
+        news_result.total_estimated_matches))
     print("News result count: {}".format(len(news_result.value)))
     print("First news name: {}".format(first_news_result.name))
     print("First news url: {}".format(first_news_result.url))

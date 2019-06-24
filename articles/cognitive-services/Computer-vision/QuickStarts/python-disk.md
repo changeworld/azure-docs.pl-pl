@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9227685dc99a4fe84cdefa0953e51aff29df5c06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: feba14f3557ac5d09c0455b02a9df64872f632c1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401429"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342074"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: analizowanie obrazu lokalnego przy użyciu interfejsu API REST i języka Python podczas przetwarzania obrazów
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
 - Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatnej wersji próbnej klucza z [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub, postępuj zgodnie z instrukcjami w [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) subskrybować przetwarzania obrazów, i Uzyskaj klucz.
 - Musisz mieć zainstalowane następujące pakiety języka Python. Możesz użyć [pip](https://packaging.python.org/tutorials/installing-packages/) zainstalować pakiety języka Python.
-    - żądania
+    - Żądania
     - [matplotlib](https://matplotlib.org/)
     - [poszewki](https://python-pillow.org/)
 
@@ -53,7 +53,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 ```python
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
-#%matplotlib inline
+# %matplotlib inline
 import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
@@ -78,9 +78,9 @@ image_path = "C:/Documents/ImageToAnalyze.jpg"
 
 # Read the image into a byte array
 image_data = open(image_path, "rb").read()
-headers    = {'Ocp-Apim-Subscription-Key': subscription_key,
-              'Content-Type': 'application/octet-stream'}
-params     = {'visualFeatures': 'Categories,Description,Color'}
+headers = {'Ocp-Apim-Subscription-Key': subscription_key,
+           'Content-Type': 'application/octet-stream'}
+params = {'visualFeatures': 'Categories,Description,Color'}
 response = requests.post(
     analyze_url, headers=headers, params=params, data=image_data)
 response.raise_for_status()
