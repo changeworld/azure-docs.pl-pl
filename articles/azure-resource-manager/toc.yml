@@ -212,7 +212,7 @@
 - name: Dokumentacja
   items:
     - name: Dokumentacja dotycząca szablonów
-      href: subtoc/toc.yml
+      href: /azure/templates/
     - name: Funkcje szablonów
       items:
         - name: Wszystkie funkcje
