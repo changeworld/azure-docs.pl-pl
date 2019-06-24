@@ -80,7 +80,7 @@ Poniżej przedstawiono ogólną strukturę definicji danych wyjściowych dla:
 |-----------|----------|------|-------------|
 | <*key-name*> | Tak | String | Nazwa klucza dla produktu wyjściowego zwracają wartość |
 | <*key-type*> | Tak | int, float, string, securestring, bool, array, obiekt JSON | Typ dla wartości zwracanej w danych wyjściowych |
-| <*key-value*> | Tak | Taki sam jak <*key-type*> | Wartość zwracana w danych wyjściowych |
+| <*key-value*> | Tak | Taki sam jak <*typ klucza*> | Wartość zwracana w danych wyjściowych |
 |||||
 
 Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, Przejrzyj historię uruchamiania aplikacji logiki i szczegółowe informacje w witrynie Azure portal lub [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługa Power BI, dzięki czemu można tworzyć pulpity nawigacyjne.

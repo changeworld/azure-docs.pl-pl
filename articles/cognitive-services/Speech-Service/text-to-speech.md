@@ -8,20 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: a3469e4f7fe1c234a6df694d7bdd6d9e2c46407a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c5f7b0b739e9311e2527e63db7279d2075f0f1ff
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204888"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341279"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
 Zamiana tekstu na mowę, z usług przetwarzania mowy platformy Azure to usługa, która umożliwia aplikacji, narzędzia lub urządzenia do konwertowania tekstu do naturalnym przypominającej ludzką syntezatora mowy. Wybierać standardowych i neuronowych głosów lub utworzyć niestandardowe głosu unikatowe dla produktu lub marki. ponad 75 standardowa głosy są dostępne w ponad 45 języków i ustawień regionalnych i 5 neuronowych głosy są dostępne w 4 języków i ustawień regionalnych. Aby uzyskać pełną listę, zobacz [obsługiwane języki](language-support.md#text-to-speech).
 
 Technologia zamiany tekstu na mowę umożliwia twórcom zawartości korzystaj z użytkowników na różne sposoby. Zamiana tekstu na mowę można poprawić dostępność, udostępniając użytkownikom możliwość interakcji z zawartością komputerowi. Czy użytkownik ma wzroku niepełnosprawności uczenia, wymaga informacji o nawigacji podczas kierowania, zamiany tekstu na mowę można ulepszyć istniejące. Zamiana tekstu na mowę jest także cenne dodatek dla programu Boty głosu i asystentów wirtualnego.
+
+
+Dzięki wykorzystaniu mowy syntezy Markup Language (SSML), język znaczników oparty na formacie XML, deweloperzy korzystający z tekstu na mowę usługi można określić sposób wprowadzania tekstu jest konwertowana na syntezatora mowy. Za pomocą SSML można dostosować pomysłu, wymowa, wypowiedzi szybkości, woluminów i nie tylko. Aby uzyskać więcej informacji dotyczących, zobacz [SSML](#speech-synthesis-markup-language-ssml).
 
 ### <a name="standard-voices"></a>Standardowa głosów
 
@@ -67,7 +70,7 @@ Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Konwertuj tekst na mowę. | Yes | Yes |
+| Konwertuj tekst na mowę. | Tak | Tak |
 | Przekaż zestawów danych dostosowywania głosu. | Nie | Tak\* |
 | Tworzenie i zarządzanie modelami czcionek głosowych. | Nie | Tak\* |
 | Tworzenie i zarządzanie wdrożeniami czcionek głosowych. | Nie | Tak\* |
