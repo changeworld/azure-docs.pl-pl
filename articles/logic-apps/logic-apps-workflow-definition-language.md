@@ -79,8 +79,8 @@ Poniżej przedstawiono ogólną strukturę definicji danych wyjściowych dla:
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
 | <*key-name*> | Tak | String | Nazwa klucza dla produktu wyjściowego zwracają wartość |
-| <*key-type*> | Tak | int, float, string, securestring, bool, tablicę, obiekt JSON | Typ dla wartości zwracanej w danych wyjściowych |
-| <*key-value*> | Tak | Taki sam jak <*typ klucza*> | Wartość zwracana w danych wyjściowych |
+| <*key-type*> | Tak | int, float, string, securestring, bool, array, obiekt JSON | Typ dla wartości zwracanej w danych wyjściowych |
+| <*key-value*> | Tak | Taki sam jak <*key-type*> | Wartość zwracana w danych wyjściowych |
 |||||
 
 Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, Przejrzyj historię uruchamiania aplikacji logiki i szczegółowe informacje w witrynie Azure portal lub [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługa Power BI, dzięki czemu można tworzyć pulpity nawigacyjne.
@@ -110,9 +110,9 @@ Poniżej przedstawiono ogólną strukturę dla definicji parametru:
 
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
-| <*parameter-type*> | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: W przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
+| <*parameter-type*> | Yes | int, float, string, securestring, bool, array, obiekt JSON, secureobject <p><p>**Uwaga**: W przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
 | <*default-parameter-values*> | Yes | Takie same jak `type` | Domyślna wartość parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy |
-| <*array-with-permitted-parameter-values*> | Nie | Tablica | Tablica wartości akceptujące parametr |
+| <*array-with-permitted-parameter-values*> | Nie | Array | Tablica wartości akceptujące parametr |
 | `metadata` | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis dla aplikacji logiki lub przepływie lub danych czasu projektowania, używane przez program Visual Studio lub innych narzędzi |
 ||||
 
@@ -149,7 +149,7 @@ W `staticResults` atrybutu, definiowania akcji pozorny `outputs` i `status` akcj
 | <*output-attributes-and-values-returned*> | Yes | Różna | Wymagania dotyczące tych atrybutów różnią się zależnie od różnych warunków. Na przykład, gdy `status` jest `Succeeded`, `outputs` atrybut zawiera atrybuty i wartości zwracane jako makiety danych wyjściowych przez akcję. Jeśli `status` jest `Failed`, `outputs` atrybut zawiera `errors` atrybut, który jest tablicą z co najmniej jeden błąd `message` obiektów, które mają informacje o błędzie. |
 | <*header-values*> | Nie | JSON | Wszystkie wartości nagłówka zwrócony przez akcję |
 | <*status-code-returned*> | Tak | String | Kod stanu zwrócony przez akcję |
-| <*Stan akcji*> | Tak | String | Stan akcji, na przykład `Succeeded` lub `Failed` |
+| <*action-status*> | Tak | String | Stan akcji, na przykład `Succeeded` lub `Failed` |
 |||||
 
 Na przykład w tej definicji akcji HTTP `runtimeConfiguration.staticResult.name` atrybutu odwołania `HTTP0` wewnątrz `staticResults` atrybutu, gdzie są zdefiniowane makiety danych wyjściowych akcji. `runtimeConfiguration.staticResult.staticResultOptions` Atrybut określa, że ustawienie statyczny wynik jest `Enabled` akcji HTTP.
