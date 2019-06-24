@@ -47,7 +47,7 @@ Schemat dla większości elementów jest w następujący sposób:
 | toolTip | Nie | Tekst wyświetlany w etykietce narzędzia elementu. Podobnie jak `label`, niektóre elementy obsługi wielu ciągów Porada narzędzia. Linków w tekście mogą być osadzone przy użyciu składni języka Markdown.
 | constraints | Nie | Jedną lub więcej właściwości, które są używane do dostosowywania zachowania poprawności elementu. Obsługiwane właściwości ograniczenia zależą od typu elementu. Niektóre typy elementu nie obsługuje dostosowywania zachowania poprawności, a zatem mieć żadnej właściwości ograniczenia. |
 | options | Nie | Dodatkowe właściwości, które dostosować zachowanie elementu. Podobnie jak `constraints`, obsługiwanych właściwości zależą od typu elementu. |
-| Widoczne | Nie | Wskazuje, czy element jest wyświetlany. Jeśli `true`, element i elementy podrzędne stosowane są wyświetlane. Wartość domyślna to `true`. Użyj [funkcje logiczne](create-uidefinition-functions.md#logical-functions) dynamicznie kontrolować wartość tej właściwości.
+| visible | Nie | Wskazuje, czy element jest wyświetlany. Jeśli `true`, element i elementy podrzędne stosowane są wyświetlane. Wartość domyślna to `true`. Użyj [funkcje logiczne](create-uidefinition-functions.md#logical-functions) dynamicznie kontrolować wartość tej właściwości.
 
 ## <a name="elements"></a>Elementy
 
