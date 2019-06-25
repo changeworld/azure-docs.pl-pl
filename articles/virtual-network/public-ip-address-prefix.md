@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: fe163fc2370e884bed58bfffe5baffa5642b6d90
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799107"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147996"
 ---
 # <a name="public-ip-address-prefix"></a>Publiczny prefiks adresu IP
 
@@ -32,7 +32,7 @@ Utwórz publiczny prefiks adresu IP w regionie platformy Azure i subskrypcję, o
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>Dlaczego warto utworzyć publiczny prefiks adresu IP?
 
-Podczas tworzenia zasobów publicznych adresów IP platformy Azure przypisać dostępne publiczny adres IP z żadnym z zakresów używanych w regionie. Gdy platforma Azure przypisuje adres, wiesz, co to jest adres, ale dopóki platforma Azure przypisuje adres, nie wiadomo, jakiego adresu może zostać przypisana. Może to być problematyczne, na przykład możesz lub partnerów biznesowych Konfigurowanie reguł zapory zezwalających na określone adresy IP. Każdorazowo, gdy nowy publiczny adres IP można przypisać do tego zasobu, adres musi być dodany do reguły zapory. Podczas przypisywania adresów do zasobów z publicznych prefiksu adresu IP, reguły zapory nie trzeba można zaktualizować każdorazowo, gdy jeden z adresów, przypisać, ponieważ całego zakresu, może zostać dodany do reguły.
+Podczas tworzenia zasobów publicznych adresów IP, platforma Azure przypisuje dostępne publiczny adres IP z żadnym z zakresów, do użytku w tym regionie. Gdy platforma Azure przypisuje adres, wiesz, co to jest adres, ale dopóki platforma Azure przypisuje adres, nie wiadomo, jakiego adresu może zostać przypisana. Może to być problematyczne, na przykład możesz lub partnerów biznesowych Konfigurowanie reguł zapory zezwalających na określone adresy IP. Każdorazowo, gdy nowy publiczny adres IP można przypisać do tego zasobu, adres musi być dodany do reguły zapory. Podczas przypisywania adresów do zasobów z publicznych prefiksu adresu IP, reguły zapory nie trzeba można zaktualizować każdorazowo, gdy jeden z adresów, przypisać, ponieważ całego zakresu, może zostać dodany do reguły.
 
 ## <a name="benefits"></a>Korzyści
 

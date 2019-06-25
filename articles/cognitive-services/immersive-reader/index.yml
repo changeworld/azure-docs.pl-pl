@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja czytnika immersyjnego
+metadata:
+  title: 'Dokumentacja czytnika immersyjnego — przewodniki Szybki start, samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs'
+  description: 'Dowiedz się, jak używać czytnika immersyjnego w aplikacji.'
+  services: cognitive-services
+  author: metanMSFT
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/20/2019
+  ms.author: metanMSFT
+abstract:
+  description: 'Czytnik immersyjny to narzędzie implementujące sprawdzone techniki poprawiające rozumienie tekstu czytanego przez osoby doskonalące umiejętność czytania, uczące się języka i uczące się w odmienny sposób. Czytnik immersyjny można zastosować w aplikacji internetowej, korzystając z zestawu SDK czytnika immersyjnego.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/immersive-reader/overview
+            html: '<p>Dowiedz się więcej o czytniku immersyjnym i o tym, jak go zintegrować z aplikacjami</p>'
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co to jest czytnik immersyjny?
+          - href: /azure/cognitive-services/immersive-reader/reference
+            html: <p>Dowiedz się więcej o zestawie SDK języka JavaScript czytnika immersyjnego</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Używanie zestawu SDK czytnika immersyjnego
+  - title: 5-minutowe przewodniki Szybki start
+    items:
+      - type: paragraph
+        text: 'Rozpoczynanie pracy z czytnikiem immersyjnym:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            alt: 'Logo języka C#'
+            href: quickstart
+  - title: Samouczki krok po kroku
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć aplikacje przy użyciu czytnika immersyjnego:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial.md">Uruchamianie czytnika immersyjnego przy użyciu platformy Node.js</a>
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Zestawy SDK
+            html: <p><a href="reference.md">JavaScript</a></p>

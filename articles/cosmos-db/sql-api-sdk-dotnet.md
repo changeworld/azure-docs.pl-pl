@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 865fb2ebf0d02c40a8f7c9e9c818e26432e5734a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510718"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272353"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB zestawu .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -47,6 +47,12 @@ ms.locfileid: "65510718"
 * Nowy model obiektów za pomocą metod CosmosClient najwyższego poziomu i Podziel na odpowiednich klas CosmosDatabases, CosmosContainers i CosmosItems. 
 * Obsługa strumieni. 
 * Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany. 
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+
+* Zezwalaj na żądania zapisu powrót do innego regionu, jeśli oryginalny jeden zakończy się niepowodzeniem
+* Dodaj zasady ponawiania sesji dla żądania zapisu
+* Poprawki śledzenia zapytań, które spowodowały puste strony sytuacja wyścigu
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
@@ -375,6 +381,7 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 
 | Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.5.0](#2.5.0) |18 czerwca 2019 r. |--- |
 | [2.4.0](#2.4.0) |05 maja 2019 r. |--- |
 | [2.3.0](#2.3.0) |04 kwietnia 2019 r. |--- |
 | [2.2.3](#2.2.3) |11 lutego 2019 r. |--- |

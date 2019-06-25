@@ -17,12 +17,12 @@ ms.date: 06/04/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8e6873a1ef44e8919d08d24dbab88c63ebb45bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57c5b7a6044de0413c07538e5f1e6034e210d529
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110520"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155240"
 ---
 # <a name="what-is-a-device-identity"></a>Co to jest tożsamość urządzenia?
 
@@ -33,7 +33,7 @@ W świecie zdominowanym przez urządzenia przenośne i rozwiązania chmurowe us�
 
 Za pomocą urządzeń w usłudze Azure AD użytkownicy uzyskują dostęp do zasobów firmowych. Aby chronić Twoje zasoby firmowe, administrator IT, chcesz zarządzać tymi tożsamościami urządzeń. W ten sposób może zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy dotyczące zabezpieczeń i zgodności.
 
-Zarządzanie tożsamościami urządzeń jest również podstawą dla [dostępu warunkowego opartego na urządzeniu](../conditional-access/require-managed-devices.md). Przy użyciu dostępu warunkowego opartego na urządzeniach można zagwarantować, że dostęp do zasobów w środowisku jest możliwe tylko przy użyciu zarządzanych urządzeń.
+Zarządzanie tożsamościami urządzeń jest również podstawą dla [dostępu warunkowego opartego na urządzeniu](../conditional-access/require-managed-devices.md). Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.
 
 ## <a name="getting-devices-in-azure-ad"></a>Pobieranie urządzenia w usłudze Azure AD
 
@@ -44,7 +44,7 @@ Aby uzyskać urządzenie w usłudze Azure AD, masz dwie opcje:
 
 **Zarejestrowanie** urządzenia w usłudze Azure AD umożliwia zarządzanie tożsamością urządzenia. Po zarejestrowaniu urządzenia usługa rejestracji urządzeń w usłudze Azure AD zapewnia urządzeniu tożsamość, która jest używana do uwierzytelniania urządzenia podczas logowania użytkownika w usłudze Azure AD. Możesz użyć tożsamości, aby włączyć lub wyłączyć urządzenie.
 
-W przypadku połączenia z rozwiązaniem do zarządzania urządzeniami przenośnymi (MDM, mobile device management), takim jak usługa Microsoft Intune, atrybuty urządzenia w usłudze Azure AD są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Dzięki temu można utworzyć zasady dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności. Aby uzyskać więcej informacji na temat rejestrowania urządzeń w usłudze Microsoft Intune, zobacz artykuł [Co to jest rejestrowanie urządzenia?](https://docs.microsoft.com/intune/device-enrollment)
+W przypadku połączenia z rozwiązaniem do zarządzania urządzeniami przenośnymi (MDM, mobile device management), takim jak usługa Microsoft Intune, atrybuty urządzenia w usłudze Azure AD są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Umożliwia to tworzenie reguł dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności. Aby uzyskać więcej informacji na temat rejestrowania urządzeń w usłudze Microsoft Intune, zobacz artykuł [Co to jest rejestrowanie urządzenia?](https://docs.microsoft.com/intune/device-enrollment)
 
 **Dołączenie** urządzenia jest rozszerzeniem zarejestrowania urządzenia. Oznacza to zapewnienie wszystkich korzyści z rejestrowania urządzenia oraz zmianę stanu lokalnego urządzenia. Zmiana stanu lokalnego umożliwia użytkownikom logowanie do urządzenia przy użyciu konta służbowego w organizacji zamiast konta osobistego.
 
@@ -71,6 +71,7 @@ Celem urządzeń dołączonych do usługi Azure AD jest uproszczenie następują
 - Wdrożenia urządzeń należących do firmy w systemie Windows
 - Uzyskiwanie dostępu do aplikacji i zasobów organizacji z dowolnego urządzenia z systemem Windows
 - Oparte na chmurze zarządzanie urządzeniami należącymi do firmy
+- Użytkownikom na logowanie się do ich urządzeń przy użyciu ich w usłudze Azure AD lub zsynchronizowanych usługi Active Directory kont służbowych.
 
 ![Urządzenia zarejestrowane w usłudze Azure AD](./media/overview/02.png)
 
@@ -137,12 +138,10 @@ Ogólnie omówione typy urządzeń mają następujące zastosowania:
 - Urządzenia dołączone do usługi Azure AD:
    - Urządzenia, które są własnością organizacji
    - Urządzenia, które **nie** są dołączone do lokalnej usługi AD
-   - Ręczne rejestrowanie urządzeń w usłudze Azure AD
    - Zmiana stanu lokalnego urządzenia
 - Urządzenia dołączone hybrydowo do usługi Azure AD, jeśli te urządzenia są dołączone do lokalnej usługi AD:
    - Urządzenia, które są własnością organizacji
    - Urządzenia, które są dołączone do lokalnej usługi AD
-   - Automatyczne rejestrowanie urządzeń w usłudze Azure AD
    - Zmiana stanu lokalnego urządzenia
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
@@ -156,4 +155,4 @@ Ogólnie omówione typy urządzeń mają następujące zastosowania:
    - Usługa Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10, zobacz [sposób konfigurowania usługi Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10](../user-help/device-management-azuread-registered-devices-windows10-setup.md).
    - Urządzenia przyłączone do usługi Azure Active Directory, zobacz [sposobu planowania wdrożenia usługi Azure Active Directory join](azureadjoin-plan.md).
    - Urządzenia dołączone hybrydowo do usługi Azure AD — zobacz [Jak planować implementację z dołączaniem hybrydowym do usługi Azure Active Directory](hybrid-azuread-join-plan.md).
-- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [zasady dostępu warunkowego opartego na urządzeniach skonfiguruj usługę Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [zasady dostępu warunkowego opartego na urządzeniu Azure skonfiguruj usługę Active Directory](../conditional-access/require-managed-devices.md).

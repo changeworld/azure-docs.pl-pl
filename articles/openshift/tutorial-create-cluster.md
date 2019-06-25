@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/14/2019
-ms.openlocfilehash: 651236c25ed912ebd7399d351677a67e3826278c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 9094fa441ff5ffdd5f579fd072ffaa303961314d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306183"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304270"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Samouczek: Tworzenie klastra usługi Azure Red Hat OpenShift
 
@@ -106,6 +106,10 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Opcjonalnie: Łączenie sieci wirtualnej klastra z istniejącej sieci wirtualnej
 
 Jeśli nie potrzebujesz połączyć sieć wirtualną (VNET) klastra utworzone do istniejącej sieci Wirtualnej za pomocą komunikacji równorzędnej, Pomiń ten krok.
+
+Jeśli komunikacja równorzędna sieci poza domyślną subskrypcję, następnie w tej subskrypcji, należy również zarejestrować dostawcę Microsoft.ContainerService. Aby to zrobić, uruchom poniższe polecenie w danej subskrypcji. W przeciwnym razie jeśli są komunikacji równorzędnej sieci Wirtualnej znajduje się w tej samej subskrypcji, możesz pominąć krok rejestrowania. 
+
+`az provider register -n Microsoft.ContainerService --wait`
 
 Najpierw Pobierz identyfikator istniejącej sieci Wirtualnej. Identyfikator będzie mieć postać: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
 

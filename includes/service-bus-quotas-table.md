@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: c1c4a0384342db82ee9c1f6b9e806188d5949681
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171217"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67235401"
 ---
 W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne dla usługi Azure Service Bus messaging. Aby uzyskać informacje o cenach i inne limity przydziału dla usługi Service Bus, zobacz [cennika usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Nazwa limitu przydziału | Scope | Uwagi | Wartość |
 | --- | --- | --- | --- |
 | Maksymalna liczba Basic lub Standard przestrzeni nazw na subskrypcję platformy Azure |Przestrzeń nazw |Każde kolejne wywołanie dodatkowe przestrzenie nazw Basic lub Standard są odrzucane przez witryny Azure portal. |100|
-| Maksymalna liczba przestrzeni nazw Premium na subskrypcję platformy Azure |Przestrzeń nazw |Każde kolejne wywołanie dodatkowe przestrzenie nazw w warstwie Premium są odrzucane przez portal. |25 |
+| Maksymalna liczba przestrzeni nazw Premium na subskrypcję platformy Azure |Przestrzeń nazw |Każde kolejne wywołanie dodatkowe przestrzenie nazw w warstwie Premium są odrzucane przez portal. |50 |
 | Rozmiar kolejki lub tematu |Jednostka |Zdefiniowane podczas tworzenia kolejki lub tematu. <br/><br/> Kolejne komunikaty przychodzące są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |1, 2, 3, 4 GB lub 5 GB.<br /><br />Jednostki SKU Premium i standardowa jednostka SKU z [partycjonowanie](/azure/service-bus-messaging/service-bus-partitioning) włączone, maksymalny rozmiar kolejki lub tematu jest 80 GB. |
 | Liczba równoczesnych połączeń w przestrzeni nazw |Przestrzeń nazw |Kolejne żądania dla dodatkowych połączeń są odrzucane, a wyjątek jest odbierany przez kod wywołujący. Operacje REST nie wliczają się równoczesne połączenia TCP. |NetMessaging: 1,000.<br /><br />AMQP: 5,000. |
 | Liczba równoczesnych odbierania żądań w jednostce kolejki, tematu lub subskrypcji |Jednostka |Otrzymywać kolejne żądania są odrzucane, a wyjątek jest odbierany przez kod wywołujący. Ten limit przydziału dotyczy łączna liczba równoczesnych operacji odbioru we wszystkich subskrypcjach na temat. |5,000 |

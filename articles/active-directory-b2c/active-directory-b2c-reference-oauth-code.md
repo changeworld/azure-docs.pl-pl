@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7157682d7952529f9dfa98e8bc8707df9cfe944f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b3e94bfdb513016015320dfcdf7db30981466303
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509240"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272078"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Przepływ kodu autoryzacji OAuth 2.0 w usłudze Azure Active Directory B2C
 
@@ -116,7 +117,9 @@ error=access_denied
 | state |Zobacz pełny opis w powyższej tabeli. Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
 
 ## <a name="2-get-a-token"></a>2. Pobierz token
-Teraz, gdy nabyciu kod autoryzacji, można zrealizować `code` dla tokenu do zasobu zamierzony przez wysłanie żądania POST na `/token` punktu końcowego. W usłudze Azure AD B2C tylko zasób, jakiej może żądać token dla jest własnych aplikacji zaplecza interfejsu API sieci web. Konwencji, który jest używany do żądania tokenu służącego do siebie jest użyć własnego Identyfikatora klienta aplikacji jako zakres:
+Teraz, gdy nabyciu kod autoryzacji, można zrealizować `code` dla tokenu do zasobu zamierzony przez wysłanie żądania POST na `/token` punktu końcowego. W usłudze Azure AD B2C, możesz [żądać tokenów dostępu dla innego interfejsu API](active-directory-b2c-access-tokens.md#request-a-token) w zwykły sposób, określając ich zakresy w żądaniu.
+
+Możesz również zażądać token dostępu interfejsu API sieci Web zaplecza w aplikacji, zgodnie z Konwencją użycia identyfikator klienta aplikacji jako żądanym zakresie (co spowoduje, że token dostępu z tego Identyfikatora klienta jako "audience"):
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1

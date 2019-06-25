@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 64290aad2d9f98006a715b480be8cb96965abbaf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161701"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183239"
 ---
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -21,7 +21,7 @@ Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup*
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). 
 

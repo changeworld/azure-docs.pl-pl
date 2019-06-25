@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1c3996c3f40da496af0cd795d0873864667a1f19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160285"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183236"
 ---
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 1. Wybierz maszynę Wirtualną, o których chcesz ponownie wdrożyć, a następnie wybierz *ponownie wdrożyć* znajdujący się w *ustawienia* bloku. Konieczne może być przewiń w dół, zobacz **pomoc techniczna i rozwiązywanie problemów** sekcja, która zawiera przycisk "Wdróż ponownie", jak w poniższym przykładzie:

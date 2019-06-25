@@ -40,6 +40,8 @@
               href: connect-azure-atp.md
             - name: Łączenie z usługą Azure Security Center
               href: connect-azure-security-center.md
+            - name: Łączenie z serwerem nazw domen
+              href: connect-dns.md
             - name: Łączenie z zaporą aplikacji internetowej firmy Microsoft
               href: connect-microsoft-waf.md
             - name: Łączenie z zaporą systemu Windows

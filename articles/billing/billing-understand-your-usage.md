@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2eb9f8e19be2a7b6220bc34bf4ce0c72c4ac0b4f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683983"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275056"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Zrozumienie warunki w plików platformy Azure użycia i opłat
 
@@ -27,7 +27,7 @@ Wpisz następujące obejmuje tabeli opłaty, które są uwzględniane dla poszcz
 Typ konta | Użycie platformy Azure | Użycie witryny Marketplace | Zakupy | Zwroty
 --- | --- | --- | --- | ---
 Enterprise Agreement (EA) | Yes | Yes | Yes | Nie
-Umowa klienta firmy Microsoft | Tak | Yes | Yes | Tak
+Umowa klienta firmy Microsoft | Yes | Yes | Yes | Tak
 Płatność za rzeczywiste użycie (PAYG) | Tak | Nie | Nie | Nie
 
 Aby dowiedzieć się więcej na temat zamówienia witryny Marketplace (nazywane także usługami zewnętrznymi), zobacz [o opłatach za usługi platformy Azure zewnętrznej usługi](billing-understand-your-azure-marketplace-charges.md).
@@ -72,6 +72,7 @@ invoiceSection | MCA | Zobacz InvoiceSectionName.
 InvoiceSectionId | EA, MCA | Unikatowy identyfikator dla działu EA lub MCA faktury sekcji.
 InvoiceSectionName | EA, MCA | Nazwa umowy EA, dział lub MCA faktury sekcji.
 IsAzureCreditEligible | EA, MCA | Wskazuje, czy opłata jest uprawniona do zapłaty za pomocą środków platformy Azure (wartości: True, False).
+IsEstimated | Wszyscy | Wskazuje, czy w okresie rozliczeniowym jest zamknięty sfinalizowany. Dane dotyczące użycia, można zmienić w całym okresie rozliczeniowym, dopóki nie jest generowany faktury. Te rekordy są oznaczone jako "szacowany".
 Lokalizacja | EA, MCA | Lokalizację centrum danych, w którym jest uruchamiany zasób.
 MeterCategory | Wszyscy | Nazwa kategorii klasyfikacji dla licznika. Na przykład *usług w chmurze* i *sieć*.
 MeterId | Wszyscy | Unikatowy identyfikator dla licznika.

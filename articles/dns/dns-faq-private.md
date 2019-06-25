@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: c963cb1b6930b41a703b479e0213311d971e6606
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 480cf22491dbbfcb9fe1961b5c9a7aa6fe12a0cb
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082848"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274039"
 ---
 # <a name="azure-private-dns-faq"></a>Usługa Azure prywatne DNS — często zadawane pytania
 
@@ -88,6 +88,13 @@ Następujące limity mają zastosowanie, korzystając z prywatnej strefy DNS pla
 ## <a name="is-there-portal-support-for-private-zones"></a>Czy istnieje portalu pomocy technicznej w przypadku stref prywatnych?
 
 Tak i strefami prywatnymi, które zostały już utworzone za pomocą interfejsów API, PowerShell, interfejsu wiersza polecenia i zestawy SDK są widoczne w witrynie Azure portal.
+
+## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Dlaczego nie mojej istniejącej prywatnych stref DNS w widoczne nowe środowisko portalu?
+
+W ramach wersji Odśwież podgląd firma Microsoft dostarczane nowy model zasobu dla prywatnych stref DNS. Istniejące prywatnych stref DNS, należy można poddać migracji do nowego modelu zasobów, aby było wyświetlane w nowym środowisku portalu. Poniżej znajdują się instrukcje dotyczące sposobu przeprowadzenia migracji do nowego modelu zasobów.
+
+## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>Jak migrować mojej istniejącej prywatnych stref DNS do nowego modelu?
+Zdecydowanie zaleca się jak najszybciej Migruj do nowego modelu zasobów. Model starszej wersji zasobów będzie obsługiwany, jednak dalsze funkcje będzie nie być opracowane na podstawie tego modelu. W przyszłości zamierzamy ona wycofana na rzecz nowy model zasobu. Aby uzyskać wskazówki dotyczące sposobu przeprowadzenia migracji istniejącej prywatnej strefy DNS strefy do nowego modelu zasobów zobacz[Przewodnik po migracji w przypadku stref prywatnych w usłudze Azure DNS](private-dns-migration-guide.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -15,18 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 1f808161087dff614ef83aacc606501bce96d3eb
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836308"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155134"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Projektowanie i implementacja bazy danych Oracle na platformie Azure
 
 ## <a name="assumptions"></a>Założenia
 
 - Zamierzasz migrować bazy danych Oracle ze środowiska lokalnego do platformy Azure.
+- Masz [pakiet diagnostyki](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) dla baz danych Oracle, które chcesz migrować
 - Masz zrozumienie różnych metryk w raportach Oracle AWR.
 - Możesz wiedzę na temat punktu odniesienia wydajności aplikacji i wykorzystanie platformy.
 
@@ -72,11 +73,11 @@ Istnieją cztery potencjalne obszary, które można dostosować do zwiększenia 
 
 ### <a name="generate-an-awr-report"></a>Generowanie raportu AWR
 
-Jeśli korzystasz z istniejącej bazy danych Oracle i jest planowana migracja na platformę Azure, masz kilka opcji. Możesz uruchomić raport Oracle AWR, aby uzyskać metryki (operacje We/Wy, MB/s, GiBs i tak dalej). Następnie wybierz maszynę Wirtualną na podstawie metryk, które zostały zebrane. Lub możesz skontaktować się ze zespołowi infrastruktury można pobrać informacji o podobnych.
+Jeśli korzystasz z istniejącej bazy danych Oracle i jest planowana migracja na platformę Azure, masz kilka opcji. Jeśli masz [pakiet diagnostyki](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) dla wystąpień oprogramowania Oracle, można uruchomić raport Oracle AWR, aby uzyskać metryki (operacje We/Wy, MB/s, GiBs i tak dalej). Następnie wybierz maszynę Wirtualną na podstawie metryk, które zostały zebrane. Lub możesz skontaktować się ze zespołowi infrastruktury można pobrać informacji o podobnych.
 
 Istnieje możliwość uruchomienia raportu AWR podczas regularnego i szczytowe wzrosty obciążeń, dzięki czemu można porównać. Na podstawie tych raportów, można rozmiar maszyn wirtualnych na podstawie średniego obciążenia lub przy maksymalnym obciążeniu.
 
-Poniżej przedstawiono przykładowy sposób wygenerować raport AWR:
+Poniżej przedstawiono przykładowy sposób wygenerować raport AWR (Generuj raporty AWR przy użyciu Menedżera Oracle Enterprise, jeśli bieżąca instalacja ma jeden):
 
 ```bash
 $ sqlplus / as sysdba
@@ -143,6 +144,10 @@ Oparte na Twoje wymagania dotyczące przepustowości sieci, istnieją różne ty
 
 - Opóźnienie sieci wyższej jest porównywany z wdrożeniem w środowisku lokalnym. Zmniejszenie sieci round podróży może znacznie zwiększyć wydajność.
 - Aby zmniejszyć rund, skonsolidować aplikacji, które mają "duża liczba" aplikacji lub transakcji o wysokiej na tej samej maszyny wirtualnej.
+- Użyj maszyn wirtualnych za pomocą [Accelerated Networking](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) do zwiększenia wydajności sieci.
+- W przypadku niektórych distrubutions systemu Linux, należy rozważyć włączenie [obsługi TRIM/UNMAP](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
+- Zainstaluj [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) na oddzielnej maszynie wirtualnej.
+- Ogromna strony nie są włączone domyślnie w systemie linux. Należy rozważyć włączenie ogromna stron i ustaw `use_large_pages = ONLY ` dla bazy danych Oracle. Może to pomóc w zwiększeniu wydajności. Więcej informacji można znaleźć [tutaj](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Typy dysków i konfiguracji
 
@@ -183,6 +188,7 @@ Po utworzeniu jasny obraz wymagań dotyczących operacji We/Wy, możesz wybrać 
 - Użyj kompresji danych, aby zredukować operacji We/Wy (dla danych i indeksów).
 - Oddzielne dzienniki ponawiania, systemu i warunki i Cofnij usług terminalowych w osobne dyski z danymi.
 - Nie należy umieszczać żadnych plików aplikacji na domyślne dyski systemu operacyjnego (/ dev/sda). Te dyski nie są zoptymalizowane pod kątem szybkiego maszyny wirtualnej czas uruchamiania, dlatego nie może zapewniają dobrą wydajność aplikacji.
+- Podczas korzystania z maszyn wirtualnych serii M w magazynie Premium storage, włączyć [akceleratorem zapisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) na wykonaj ponownie dzienniki dysku.
 
 ### <a name="disk-cache-settings"></a>Ustawienia pamięci podręcznej dysku
 
@@ -190,7 +196,7 @@ Istnieją trzy opcje buforowania hosta:
 
 - *Tylko do odczytu*: Wszystkie żądania są buforowane dla przyszłych operacji odczytu. Wszystkie operacje zapisu są zachowywane bezpośrednio do usługi Azure Blob storage.
 
-- *Odczyt zapis*: Jest to algorytmów "odczytu z wyprzedzeniem". Odczyty i zapisy są buforowane dla przyszłych operacji odczytu. Non-write-through zapisy są zachowywane najpierw do lokalnej pamięci podręcznej. Dla programu SQL Server zapisy są zachowywane do usługi Azure Storage, ponieważ używa ona write-through. Umożliwia także najmniejszego opóźnienia dysku dla niewielkich obciążeń.
+- *ReadWrite*: Jest to algorytmów "odczytu z wyprzedzeniem". Odczyty i zapisy są buforowane dla przyszłych operacji odczytu. Non-write-through zapisy są zachowywane najpierw do lokalnej pamięci podręcznej. Umożliwia także najmniejszego opóźnienia dysku dla niewielkich obciążeń. Przy użyciu pamięci podręcznej odczytu i zapisu z aplikacji, która nie obsługuje przechowywanie wymaganych danych może prowadzić do utraty danych, jeśli wystąpiła awaria maszyny Wirtualnej.
 
 - *Brak* (wyłączone): Za pomocą tej opcji, można pominąć pamięci podręcznej. Wszystkie dane są przesyłane na dysku i utrwalone w usłudze Azure Storage. Ta metoda zapewnia najwyższej szybkości operacji We/Wy dla obciążeń intensywnie korzystających z operacji We/Wy. Należy również wziąć pod uwagę "Koszt transakcji".
 
@@ -206,12 +212,11 @@ Aby zmaksymalizować przepływność, zalecamy rozpoczęcie od **Brak** dla bufo
 
 Po zapisaniu ustawień dysku danych nie można zmienić ustawienie pamięci podręcznej hosta, chyba że Odinstaluj dysk na poziomie systemu operacyjnego i ponownie zainstaluj go tak, po dokonaniu zmiany.
 
-
 ## <a name="security"></a>Bezpieczeństwo
 
 Po skonfigurowaniu i skonfigurować środowisko platformy Azure, następnym krokiem jest, aby zabezpieczyć swoją sieć. Poniżej przedstawiono kilka zaleceń:
 
-- *Zasady sieciowej grupy zabezpieczeń*: Sieciowa grupa zabezpieczeń, można zdefiniować, podsieci lub karty sieciowej. Jest łatwiejsze w celu kontroli dostępu na poziomie podsieci, zarówno dla zabezpieczeń i wymuszanie routingu dla elementów, takich jak zapory aplikacji.
+- *Zasady sieciowej grupy zabezpieczeń*: Sieciowa grupa zabezpieczeń, można zdefiniować, podsieci lub karty sieciowej. Jest łatwiejsze w celu kontroli dostępu na poziomie podsieci, zabezpieczeń i wymuszanie routingu dla elementów, takich jak zapory aplikacji.
 
 - *Serwer Przesiadkowy*: Na potrzeby bardziej bezpiecznego dostępu administratorów nie należy bezpośrednio łączyć do aplikacji usługi lub bazy danych. Serwer przesiadkowy jest używany jako nośniki między komputerem administratora i zasobów platformy Azure.
 ![Zrzut ekranu przedstawiający stronę topologia serwera Przesiadkowego](./media/oracle-design/jumpbox.png)

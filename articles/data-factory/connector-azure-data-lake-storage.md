@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6425fdfe89ca2f4c47aaf0e5ffd1dac7767b5020
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 536d7a572eddc2cf75f6ce135c3cd4f4f2635416
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057936"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203300"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Data Lake Storage Gen2 przy użyciu usługi Azure Data Factory
 
@@ -60,6 +60,9 @@ Poniższe sekcje zawierają informacje na temat właściwości, które są używ
 - [Uwierzytelnianie jednostki usługi](#service-principal-authentication)
 - [Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](#managed-identity)
 
+>[!NOTE]
+>Ładowanie danych do usługi SQL Data Warehouse, jeśli źródło Data Lake Storage Gen2 jest skonfigurowana z punktu końcowego sieci wirtualnej za pomocą programu PolyBase, należy użyć uwierzytelniania tożsamości zarządzanej zgodnie z wymaganiami programu PolyBase. Zobacz [uwierzytelniania tożsamości zarządzanej](#managed-identity) sekcję więcej wymagania wstępne dotyczące konfiguracji.
+
 ### <a name="account-key-authentication"></a>Uwierzytelnianie za pomocą klucza konta
 
 Aby użyć uwierzytelniania klucza konta magazynu, obsługiwane są następujące właściwości:
@@ -67,7 +70,7 @@ Aby użyć uwierzytelniania klucza konta magazynu, obsługiwane są następując
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa **AzureBlobFS**. |Yes |
-| url | Punkt końcowy dla Data Lake Storage Gen2 o strukturze `https://<accountname>.dfs.core.windows.net`. | Tak |
+| url | Punkt końcowy dla Data Lake Storage Gen2 o strukturze `https://<accountname>.dfs.core.windows.net`. | Yes |
 | accountKey | Klucz konta Data Lake Storage Gen2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Środowisko uruchomieniowe integracji platformy Azure lub własnego środowiska integration runtime można użyć, jeśli magazyn danych znajduje się w sieci prywatnej. Jeśli ta właściwość nie jest określona, domyślne środowisko uruchomieniowe integracji platformy Azure jest używana. |Nie |
 
@@ -103,10 +106,10 @@ Aby użyć uwierzytelniania jednostki usługi, wykonaj następujące kroki.
     - Klucz aplikacji
     - Identyfikator dzierżawy
 
-2. Przyznaj odpowiednie uprawnienia jednostki usługi.
+2. Przyznaj odpowiednie uprawnienia jednostki usługi. Dowiedz się więcej na temat działania uprawnień w Data Lake Storage Gen2 z [listy kontroli dostępu do plików i katalogów](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)
 
-    - **Jako źródło**: W Eksploratorze usługi Azure Storage, co najmniej udzielać **odczytu i wykonania** uprawnienia do listy, a następnie skopiuj pliki w folderach i podfolderach. Ewentualnie możesz udzielić **odczytu** uprawnień do kopiowania pojedynczy plik. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **czytnik danych obiektu Blob magazynu** roli.
-    - **Jako obiekt sink**: W Eksploratorze usługi Storage, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **Współautor danych obiektu Blob magazynu** roli.
+    - **Jako źródło**: W Eksploratorze usługi Storage, co najmniej udzielić **Execute** uprawnień, począwszy od systemu plików źródłowych, wraz z **odczytu** uprawnień do plików do skopiowania. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **czytnik danych obiektu Blob magazynu** roli.
+    - **Jako obiekt sink**: W Eksploratorze usługi Storage, co najmniej udzielić **Execute** uprawnień, począwszy od systemu plików ujścia, wraz z **zapisu** uprawnień dla folderu ujścia. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **Współautor danych obiektu Blob magazynu** roli.
 
 >[!NOTE]
 >Do listy folderów uruchamianie z poziomu konta lub aby przetestować połączenie, należy ustawić uprawnienia jednostki usługi, zostanie im przyznany do **konta magazynu z uprawnieniami "Czytnik danych obiektu Blob magazynu" w IAM**. Jest to wartość true, gdy:
@@ -121,8 +124,8 @@ Te właściwości są obsługiwane w przypadku połączonej usługi:
 | type | Właściwość type musi być równa **AzureBlobFS**. |Yes |
 | url | Punkt końcowy dla Data Lake Storage Gen2 o strukturze `https://<accountname>.dfs.core.windows.net`. | Tak |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Yes |
-| servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako `SecureString` można bezpiecznie przechowywać w usłudze Data Factory. Można też [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure portal. | Yes |
+| servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako `SecureString` można bezpiecznie przechowywać w usłudze Data Factory. Można też [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure portal. | Tak |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Środowisko uruchomieniowe integracji platformy Azure lub własnego środowiska integration runtime można użyć, jeśli magazyn danych znajduje się w sieci prywatnej. Jeśli nie zostanie określony, używane jest domyślne środowisko uruchomieniowe integracji Azure. |Nie |
 
 **Przykład:**
@@ -157,10 +160,10 @@ Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azu
 
 1. [Pobrać informacje o tożsamości usługi Data Factory zarządzać](data-factory-service-identity.md#retrieve-managed-identity) przez skopiowanie wartości **identyfikator aplikacji tożsamości usługi** wygenerowane wraz z fabryką.
 
-2. Przyznaj uprawnienie odpowiednie tożsamość zarządzaną.
+2. Przyznaj uprawnienie odpowiednie tożsamość zarządzaną. Dowiedz się więcej na temat działania uprawnień w Data Lake Storage Gen2 z [listy kontroli dostępu do plików i katalogów](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
-    - **Jako źródło**: W Eksploratorze usługi Storage, co najmniej udzielić **odczytu i wykonania** uprawnienia do listy, a następnie skopiuj pliki w folderach i podfolderach. Ewentualnie możesz udzielić **odczytu** uprawnień do kopiowania pojedynczy plik. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **czytnik danych obiektu Blob magazynu** roli.
-    - **Jako obiekt sink**: W Eksploratorze usługi Storage, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **Współautor danych obiektu Blob magazynu** roli.
+    - **Jako źródło**: W Eksploratorze usługi Storage, co najmniej udzielić **Execute** uprawnień, począwszy od systemu plików źródłowych, wraz z **odczytu** uprawnień do plików do skopiowania. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **czytnik danych obiektu Blob magazynu** roli.
+    - **Jako obiekt sink**: W Eksploratorze usługi Storage, co najmniej udzielić **Execute** uprawnień, począwszy od systemu plików ujścia, wraz z **zapisu** uprawnień dla folderu ujścia. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **Współautor danych obiektu Blob magazynu** roli.
 
 >[!NOTE]
 >Do listy folderów uruchamianie z poziomu konta lub aby przetestować połączenie, musisz ustawić uprawnienie tożsamość zarządzaną, zostanie im przyznany do **konta magazynu z uprawnieniami "Czytnik danych obiektu Blob magazynu" w IAM**. Jest to wartość true, gdy:
@@ -169,7 +172,7 @@ Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azu
 >Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie konta, można pominąć połączenie testowe i ścieżka wejściowa ręcznie podczas tworzenia. Działanie kopiowania wciąż działa tak długo, jak tożsamość zarządzaną otrzymuje z odpowiednimi uprawnieniami na pliki do skopiowania.
 
 >[!IMPORTANT]
->Jeśli używasz programu PolyBase do ładowania danych z Data Lake Storage Gen2 SQL Data Warehouse, korzystając z uwierzytelniania tożsamości zarządzanej Data Lake Storage Gen2, upewnij się, możesz również wykonać kroki 1 i 2 w [Niniejsze wskazówki](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Postępuj zgodnie z instrukcjami, aby zarejestrować serwer bazy danych SQL w usłudze Azure Active Directory (Azure AD). Można także przypisać roli Współautor danych obiektu Blob Storage przy użyciu kontroli dostępu opartej na rolach do serwera usługi SQL Database. Reszta jest obsługiwane przez usługę Data Factory. Gen2 — usługi Data Lake magazynu jest skonfigurowany z punktu końcowego usługi Azure Virtual Network przy użyciu technologii PolyBase do ładowania danych z niego, należy użyć uwierzytelniania tożsamości zarządzanej.
+>Jeśli używasz programu PolyBase do ładowania danych z Data Lake Storage Gen2 SQL Data Warehouse, w przypadku używania uwierzytelniania tożsamości zarządzanej dla Data Lake Storage Gen2, upewnij się, możesz również wykonać kroki 1 i 2 w [Niniejsze wskazówki](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1) Zarejestruj SQL Serwer bazy danych w usłudze Azure Active Directory (Azure AD) i 2) Współautor danych obiektu Blob magazynu, aby przypisać rolę serwera usługi SQL Database; pozostałe są obsługiwane przez usługę Data Factory. Jeśli usługi Data Lake magazynu Gen2 jest skonfigurowany z punktem końcowym usługi Azure Virtual Network, aby przy użyciu technologii PolyBase do ładowania danych z, należy użyć uwierzytelniania tożsamości zarządzanej zgodnie z wymaganiami programu PolyBase.
 
 Te właściwości są obsługiwane w przypadku połączonej usługi:
 
@@ -210,7 +213,7 @@ Aby skopiować dane do i z Data Lake Storage Gen2 parquet lub format tekstu rozd
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Właściwość type w obszarze `location` w zestawie danych musi być równa **AzureBlobFSLocation**. | Yes      |
+| type       | Właściwość type w obszarze `location` w zestawie danych musi być równa **AzureBlobFSLocation**. | Tak      |
 | fileSystem | Nazwa systemu plików Data Lake Storage Gen2.                              | Nie       |
 | folderPath | Ścieżka do folderu w danym systemie plików. Jeśli chcesz użyć symbolu wieloznacznego do filtrowania folderów, pomiń to ustawienie i je określić w ustawieniach źródła działania. | Nie       |
 | fileName   | Nazwa pliku w danym systemie plików + folderPath. Jeśli chcesz użyć symbolu wieloznacznego do filtrowania plików, pomiń to ustawienie i je określić w ustawieniach źródła działania. | Nie       |

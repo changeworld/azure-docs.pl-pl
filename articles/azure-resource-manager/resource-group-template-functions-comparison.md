@@ -1,25 +1,17 @@
 ---
 title: Funkcje szablonu usługi Resource Manager platformy Azure — porównanie | Dokumentacja firmy Microsoft
 description: Opisuje funkcje, które można użyć w szablonie usługi Azure Resource Manager do porównywania wartości.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0eafadd4049baea58aa882b3421eaa6a684a3a38
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128692"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205495"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Funkcje porównania dla szablonów usługi Azure Resource Manager
 
@@ -42,8 +34,8 @@ Sprawdza, czy dwie wartości równe siebie nawzajem.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int, string, tablicy lub obiektu |Pierwsza wartość do sprawdzenia pod kątem równości. |
-| argument2 |Tak |int, string, tablicy lub obiektu |Druga wartość do sprawdzenia pod kątem równości. |
+| arg1 |Tak |int, string, array lub object |Pierwsza wartość do sprawdzenia pod kątem równości. |
+| argument2 |Tak |int, string, array lub object |Druga wartość do sprawdzenia pod kątem równości. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -274,8 +266,8 @@ Sprawdza, czy pierwsza wartość jest większa lub równa wartości drugiego.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int lub ciągu |Pierwsza wartość do porównania większe lub równe. |
-| argument2 |Tak |int lub ciągu |Druga wartość do porównania większe lub równe. |
+| arg1 |Tak |int lub ciągu |Pierwsza wartość do porównania większe lub równe. |
+| argument2 |Yes |int lub ciągu |Druga wartość do porównania większe lub równe. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -350,7 +342,7 @@ Sprawdza, czy pierwsza wartość jest mniejsza od drugiej wartości.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int lub ciągu |Pierwsza wartość do porównania mniej. |
+| arg1 |Yes |int lub ciągu |Pierwsza wartość do porównania mniej. |
 | argument2 |Tak |int lub ciągu |Druga wartość do porównania mniej. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -426,7 +418,7 @@ Sprawdza, czy pierwsza wartość jest mniejsza lub równa wartości drugiego.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int lub ciągu |Pierwsza wartość na mniej lub porównywania równości. |
+| arg1 |Yes |int lub ciągu |Pierwsza wartość na mniej lub porównywania równości. |
 | argument2 |Tak |int lub ciągu |Druga wartość dla mniej lub porównywania równości. |
 
 ### <a name="return-value"></a>Wartość zwracana

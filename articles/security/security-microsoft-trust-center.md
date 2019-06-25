@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
 ms.openlocfilehash: 289b9b0cb2532069c01fc9c687c844bd917355f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445689"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64706293"
 ---
 # <a name="microsoft-trust-center"></a>Centrum zaufania firmy Microsoft
 Informacje o zabezpieczeniach platformy Azure w witrynie Azure.com zapewnia informacje potrzebne do planowania, projektowania wdrażanie, konfigurowanie i bezpieczne zarządzanie rozwiązań w chmurze. Za pomocą Centrum firmy Microsoft Trust również mieć informacje, które muszą mieć pewność, że platforma Azure, na którym są uruchomione usługi jest bezpieczne.

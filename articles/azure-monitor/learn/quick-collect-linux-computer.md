@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 11/13/2018
+ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 15b7c052d0e4d51cb033607c156a55c581f722b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539592"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147286"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Konfigurowanie agenta usługi Log Analytics na komputerach z systemem Linux w środowisku hybrydowym
-Usługa [Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) umożliwia zbieranie danych bezpośrednio z fizycznych i wirtualnych komputerów z systemem Linux w centrum danych lub innym środowisku w chmurze do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji. W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Linux.  Aby uzyskać informacje dotyczące maszyn wirtualnych platformy Azure z systemem Linux, zobacz następujący temat [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](quick-collect-azurevm.md).  
+Usługa [Azure Log Analytics](../platform/agent-windows.md) umożliwia zbieranie danych bezpośrednio z fizycznych i wirtualnych komputerów z systemem Linux w centrum danych lub innym środowisku w chmurze do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji. W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Linux.  Aby uzyskać informacje dotyczące maszyn wirtualnych platformy Azure z systemem Linux, zobacz następujący temat [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](quick-collect-azurevm.md).  
 
-Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Linux](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) oraz [konfiguracji zapory sieciowej](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
+Zanim przejdziesz dalej, musisz najpierw przejrzeć agenta usługi Log Analytics [Przegląd](../platform/log-analytics-agent.md) artykuł, aby zrozumieć, jakie konfiguracje są obsługiwane, [obsługiwane systemy operacyjne Linux](../platform/log-analytics-agent.md#supported-linux-operating-systems) i [ Konfiguracja zapory sieciowej](../platform/log-analytics-agent.md#network-firewall-requirements). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -107,7 +107,7 @@ Na przykład: `https://user01:password@proxy01.contoso.com:30443`
 Usługa Log Analytics może zbierać zdarzenia z dzienników Syslog systemu Linux oraz z liczników wydajności określonych na potrzeby analizy i raportowania w dłuższym okresie po wykryciu określonego warunku.  Wykonaj następujące kroki, aby skonfigurować zbieranie zdarzeń z dziennika Syslog systemu Linux oraz na początek z kilku typowych liczników wydajności.  
 
 1. Wybierz dziennik **Syslog**.  
-2. Dziennik zdarzeń dodaje się przez wpisanie nazwy dziennika. Wpisz **Syslog**, a następnie kliknij znak plus **+**.  
+2. Dziennik zdarzeń dodaje się przez wpisanie nazwy dziennika. Wpisz **Syslog**, a następnie kliknij znak plus **+** .  
 3. W tabeli usuń zaznaczenie ważności **Informacja**, **Powiadomienie** i **Debugowanie**. 
 4. Kliknij przycisk **Zapisz** znajdujący się u góry strony, aby zapisać konfigurację.
 5. Wybierz pozycję **Dane wydajności systemu Linux**, aby włączyć zbieranie liczników wydajności na komputerze z systemem Linux. 

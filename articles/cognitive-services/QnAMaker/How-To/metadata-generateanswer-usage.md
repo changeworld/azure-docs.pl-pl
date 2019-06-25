@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/17/2019
 ms.author: tulasim
-ms.openlocfilehash: b18d47b4b09c6fa9c4d5f0ef87d7ebe73f151c60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1e7a29e4ca94405e2d6b2000309ef6e2c3a777c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693229"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164607"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedzi za pomocą interfejsu API GenerateAnswer i metadane
 
@@ -144,6 +144,40 @@ Odpowiedź oznaczająca Powodzenie zwraca stan 200 i odpowiedź w formacie JSON.
     ]
 }
 ```
+
+## <a name="use-qna-maker-with-a-bot-in-c"></a>Użyj usługi QnA Maker z botem wC#
+
+Platformy bot framework umożliwia dostęp do właściwości usługi QnA Maker:
+
+```csharp
+using Microsoft.Bot.Builder.AI.QnA;
+var metadata = new Microsoft.Bot.Builder.AI.QnA.Metadata();
+var qnaOptions = new QnAMakerOptions();
+
+qnaOptions.Top = Constants.DefaultTop;
+qnaOptions.ScoreThreshold = 0.3F;
+var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
+```
+
+Bot pomocy technicznej ma [przykład](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) przy użyciu tego kodu.
+
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Użyj usługi QnA Maker z botem w środowisku Node.js
+
+Platformy bot framework umożliwia dostęp do właściwości usługi QnA Maker:
+
+```javascript
+const { QnAMaker } = require('botbuilder-ai');
+this.qnaMaker = new QnAMaker(endpoint);
+
+// Default QnAMakerOptions
+var qnaMakerOptions = {
+    ScoreThreshold: 0.03,
+    Top: 3
+};
+var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
+```
+
+Bot pomocy technicznej ma [przykład](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) przy użyciu tego kodu.
 
 <a name="metadata-example"></a>
 

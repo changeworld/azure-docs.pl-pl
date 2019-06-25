@@ -14,14 +14,17 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce3b7a29f6f57b2bc309c719dbbab6c4574f0a46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f1618260f6bfa0491e919e8aab1841e61603e5b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306486"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273254"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Samouczek: Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM
+
+> [!NOTE]
+> Mimo że w tym samouczku użyto [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) przykłady ogólne kroki są takie same dla [interfejsu API REST](https://docs.microsoft.com/rest/api/media/liveevents), [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), lub inne obsługiwane [zestawów SDK](media-services-apis-overview.md#sdks) .
 
 Usługa Azure Media Services umożliwia dostarczanie strumieni zaszyfrowanych za pomocą licencji Microsoft PlayReady, Google Widevine i Apple FairPlay. Aby uzyskać szczegółowe informacje, zobacz [Content protection dzięki dynamicznemu szyfrowaniu](content-protection-overview.md).
 

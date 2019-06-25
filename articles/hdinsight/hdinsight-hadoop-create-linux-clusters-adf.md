@@ -1,18 +1,18 @@
 ---
 title: 'Samouczek: Tworzenie klastrów usługi Apache Hadoop na żądanie w usłudze Azure HDInsight przy użyciu usługi fabryka danych '
-description: Dowiedz się, jak tworzyć klastry Apache Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory.
+description: Samouczek — Dowiedz się, jak tworzyć klastry Apache Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 37c9a11b806ff49fce27120d03f67182037dc693
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64f016ac0fa572cb8cf8504902108cffae267cec
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726870"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293299"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie na żądanie klastry platformy Apache Hadoop w HDInsight przy użyciu usługi Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -252,7 +252,7 @@ W tej sekcji zredagujesz dwie połączone usługi w fabryce danych.
 
     | Właściwość | Wartość |
     | --- | --- |
-    | Name (Nazwa) | Wprowadź polecenie `HDinisghtLinkedService`.|
+    | Name (Nazwa) | Wprowadź polecenie `HDInsightLinkedService`.|
     | Typ | Wybierz **HDInsight na żądanie**. |
     | Połączona usługa Azure Storage | Wybierz pozycję `HDIStorageLinkedService`. |
     | Typ klastra | Wybierz **usługi hadoop** |

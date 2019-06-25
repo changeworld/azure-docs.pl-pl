@@ -2,18 +2,18 @@
 title: Często zadawane pytania dotyczące usługi Azure Backup
 description: 'Odpowiedzi na często zadawane pytania dotyczące: Funkcje usługi Azure Backup w tym usługi Recovery Services magazynów, co ona może tworzyć kopie zapasowe, jak to działa, szyfrowania i limitów. '
 services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.author: raynew
-ms.openlocfilehash: a0a2bc58603a81ba23ff3f1feb05f4d2350cfe72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: dacurwin
+ms.openlocfilehash: c4e79d166d92a88934e5c5330ca852da8900c6f3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688732"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275549"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.

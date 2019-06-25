@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82ab400c89cb57f3cf72cfb9196ea7c6402808fe
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154061"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203913"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 
@@ -534,7 +534,7 @@ Po wdrożeniu maszyny Wirtualnej na platformie Azure, wykonaj te same wskazówki
 Ponieważ różne wersje systemu operacyjnego lub DBMS mają różne wymagania dotyczące, obrazy, które możesz znaleźć w witrynie Azure Marketplace nie spełnia Twoich potrzeb. Zamiast tego można utworzyć maszynę Wirtualną przy użyciu własnego obrazu maszyny Wirtualnej systemu operacyjnego/DBMS, którą można wdrożyć ponownie później.
 Używasz różnych kroków do utworzenia obrazu prywatnego dla systemu Linux niż tworzenie jednego dla Windows.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Aby przygotować obraz Windows, który umożliwia wdrożenie wielu maszyn wirtualnych, ustawienia Windows (na przykład Windows SID lub nazwa hosta) być wyodrębnione lub uogólniony na maszynie Wirtualnej w środowisku lokalnym. Możesz użyć [sysprep](https://msdn.microsoft.com/library/hh825084.aspx) w tym celu.
@@ -545,7 +545,7 @@ Używasz różnych kroków do utworzenia obrazu prywatnego dla systemu Linux ni�
 >
 >
 
-- - -
+---
 Można przygotować i tworzenie niestandardowego obrazu, a następnie użyć go do utworzenia wielu nowych maszyn wirtualnych. Jest to opisane w [planowanie maszyn wirtualnych platformy Azure i wdrażanie środowiska SAP NetWeaver][planning-guide]. Konfigurowanie zawartości bazy danych za pomocą Menedżera inicjowania obsługi oprogramowania SAP do instalacji nowego systemu SAP (przywrócenie kopii zapasowej bazy danych z dysku, który jest dołączony do maszyny wirtualnej) lub bezpośrednio przywracanie kopii zapasowej bazy danych z usługi Azure storage, jeśli systemu DBMS obsługuje tę funkcję. Aby uzyskać więcej informacji, zobacz [wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla oprogramowania SAP NetWeaver][dbms-guide]. Jeszcze zainstalowany z systemem SAP na lokalnej maszynie Wirtualnej (szczególnie w przypadku systemów dwuwarstwowej), można dostosować ustawienia systemu SAP po wdrożeniu maszyny Wirtualnej platformy Azure, wykonując procedurę podaną zmienić System, obsługiwane przez oprogramowanie SAP oprogramowania inicjowania obsługi administracyjnej Menedżera (SAP Należy pamiętać, [1619720]). W przeciwnym razie można zainstalować oprogramowanie SAP, po wdrożeniu maszyny Wirtualnej platformy Azure.
 
 Poniższy schemat przedstawia SAP specyficzne sekwencji kroki wdrażania za pomocą niestandardowego obrazu maszyny Wirtualnej:
@@ -674,7 +674,7 @@ W tym scenariuszu jest Agent maszyny Wirtualnej **nie** automatycznie zainstalow
 
 Aby uzyskać więcej informacji na temat agenta maszyny Wirtualnej platformy Azure zobacz następujące zasoby.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > [Omówienie agenta maszyny wirtualnej na platformie Azure][virtual-machines-windows-agent-user-guide]
@@ -685,7 +685,7 @@ Aby uzyskać więcej informacji na temat agenta maszyny Wirtualnej platformy Azu
 >
 >
 
-- - -
+---
 
 Poniższy schemat przedstawia sekwencję czynności przenoszenia lokalnej maszyny Wirtualnej przy użyciu-uogólniony wirtualny dysk twardy platformy Azure:
 

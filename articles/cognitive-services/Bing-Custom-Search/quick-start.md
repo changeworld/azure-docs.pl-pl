@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: d7a0c29ad3386fcdf85292b6e2852842a971c076
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6949824f598194456837544526223b823dcfc3e5
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60948869"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273349"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing
 
@@ -46,7 +46,7 @@ Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
 
 5. Kliknij pozycję **Publikuj**, aby opublikować zmiany w środowisku produkcyjnym i zaktualizować punkty końcowe wystąpienia.
 
-6.  Kliknij kartę **Produkcja** w obszarze **Punkty końcowe** i skopiuj **identyfikator konfiguracji niestandardowej**. Ten identyfikator jest potrzebny do wywołania interfejsu API wyszukiwania niestandardowego. Dodaje się go do parametru zapytania `customconfig=` w wywołaniach.
+6.  Kliknij **produkcji** karcie **punktów końcowych**, a następnie skopiuj usługi **niestandardowy identyfikator konfiguracji**. Ten identyfikator jest potrzebny do wywołania interfejsu API wyszukiwania niestandardowego. Dodaje się go do parametru zapytania `customconfig=` w wywołaniach.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

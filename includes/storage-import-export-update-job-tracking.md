@@ -9,11 +9,11 @@ ms.date: 07/17/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115406"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183445"
 ---
 Po dostawy dyski, wróć do **Import/Export** strony w witrynie Azure portal. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: bd02a95f485f45c223fce4c24a72251481c2aa7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68d2f126ee32f61d13d170712bf58581101036e8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427899"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206071"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego korzystasz:"]
@@ -426,7 +426,7 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Konto uwierzytelniania za pomocą klucza uwierzytelniania tożsamości zarządzanej |
 
     >[!IMPORTANT]
-    >Skonfigurowanie usługi Azure Storage przy użyciu punktu końcowego usługi sieci wirtualnej muszą używać uwierzytelniania tożsamości zarządzanej. Zapoznaj się [wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
+    >Azure Storage jest skonfigurowany z punktu końcowego usługi sieci wirtualnej, należy użyć uwierzytelniania tożsamości zarządzanej - dotyczą [wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dowiedz się, wymagane konfiguracje w usłudze Data Factory z [obiektów Blob platformy Azure — uwierzytelnianie tożsamości zarządzanej](connector-azure-blob-storage.md#managed-identity) i [Gen2 magazynu Azure Data Lake — uwierzytelniania tożsamości zarządzanej](connector-azure-data-lake-storage.md#managed-identity) sekcji odpowiednio.
 
 2. **Formatu danych źródłowych** jest **Parquet**, **ORC**, lub **tekst rozdzielany**, w następujący sposób:
 
@@ -537,12 +537,12 @@ Jeśli źródło danych jest w tekście, format lub inne zgodne innych technolog
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-Rozwiązaniem jest zaznaczenie "**domyślny typ użycia**" opcji ujścia działania kopiowania (jako FAŁSZ) -> Ustawienia połączenia programu PolyBase. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+Rozwiązaniem jest zaznaczenie "**domyślny typ użycia**" opcji ujścia działania kopiowania (jako FAŁSZ) -> Ustawienia programu PolyBase. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )" jest Konfiguracja natywnych PolyBase, który określa sposób obsługi brakujących wartości w rozdzielanych plików tekstowych, jeśli funkcja PolyBase pobiera dane z pliku tekstowego. 
 
 **Inne**
 
-Więcej problemów knonw PolyBase można znaleźć [obciążenie Rozwiązywanie problemów z PolyBase magazynu danych SQL Azure](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase).
+Więcej technologii PolyBase problemów, zapoznaj się [obciążenie Rozwiązywanie problemów z PolyBase magazynu danych SQL Azure](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase).
 
 ### <a name="sql-data-warehouse-resource-class"></a>Klasa zasobów SQL Data Warehouse
 

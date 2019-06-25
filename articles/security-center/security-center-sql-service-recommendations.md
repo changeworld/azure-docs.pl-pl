@@ -1,10 +1,10 @@
 ---
-title: Ochrona usługi Azure SQL i danych w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+title: Ochrona usług platformy Azure dane i Magazyn w usłudze Azure Security Center | Dokumentacja firmy Microsoft
 description: Adresy tego dokumentu, zalecenia w usłudze Azure Security Center, które ułatwiają ochronę danych i usługi Azure SQL i pozostają zgodne z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
@@ -12,48 +12,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
+ms.date: 06/19/2019
 ms.author: monhaber
-ms.openlocfilehash: bbba5f380fddb4fdec43a7414e59778135c4e0ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ac0e4ebaafb8b0c9c79e885cecbefc5a65c1823
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428299"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275331"
 ---
-# <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrona usługi Azure SQL i danych w usłudze Azure Security Center
-Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek.  Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM), networking, SQL i dane i aplikacje.
+# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Ochrona usług platformy Azure dane i Magazyn w usłudze Azure Security Center
+W tym temacie dowiesz się, jak wyświetlać i zalecenia dotyczące implementowania zabezpieczeń dla danych i zasobów magazynowania. Usługa Azure Security Center znaleźć te zalecenia, podczas analizowania stan zabezpieczeń zasobów platformy Azure.
+
+## <a name="view-your-data-security-information"></a>Wyświetlanie informacji o zabezpieczeniach danych
+
+1. W **higieny zabezpieczeń zasobu** kliknij **danych i zasobów magazynowania**.
+
+   ![Zasoby danych i magazynu](./media/security-center-monitoring/click-data.png)
+
+    **Bezpieczeństwo danych** zostanie otwarta strona z zaleceniami dotyczącymi zasobów danych.
+
+     ![Zasoby danych](./media/security-center-monitoring/sql-overview.png)
+
+Na tej stronie możesz wykonywać następujące czynności:
+
+* Kliknij przycisk **Przegląd** karcie znajduje się lista wszystkich zaleceń zasobów danych można skorygować. 
+* Kliknij każdą kartę i Wyświetl zalecenia wg typu zasobu.
+
+    > [!NOTE]
+    > Aby uzyskać więcej informacji dotyczących szyfrowania magazynu, przeczytaj artykuł [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Włączanie szyfrowania dla konta usługi Azure Storage w usłudze Azure Security Center).
 
 
-### <a name="monitor-data-security"></a>Monitorowanie bezpieczeństwa danych
+## <a name="remediate-a-recommendation-on-a-data-resource"></a>Korygować zalecenia w zasobie danych
 
-Po kliknięciu pozycji **Bezpieczeństwo danych** w sekcji **Zapobieganie** zostanie otwarty blok **Zasoby danych** z zaleceniami dotyczącymi usług SQL i Storage. Przedstawia on także [zalecenia](security-center-sql-service-recommendations.md) dotyczące ogólnej kondycji bazy danych. Aby uzyskać więcej informacji dotyczących szyfrowania magazynu, przeczytaj artykuł [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Włączanie szyfrowania dla konta usługi Azure Storage w usłudze Azure Security Center).
+1. Za pomocą dowolnego z kart, zasobów kliknij zasób. Zostanie otwarta strona informacji, zaleceń, aby skorygować.
 
-![Zasoby danych](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
+    ![Informacje o zasobach](./media/security-center-monitoring/sql-recommendations.png)
 
-W obszarze **Zalecenia SQL** można kliknąć dowolne zalecenie i uzyskać więcej szczegółów na temat dalszych działań w celu rozwiązania problemu. Poniższy przykład pokazuje rozszerzenie zalecenia **Inspekcja bazy danych i wykrywanie zagrożeń w bazach danych SQL**.
+2. Kliknij przycisk rekomendacji. Zostanie otwarta strona zalecenia i wyświetla **czynności zaradczych** wykonania zalecenia.
 
-![Szczegółowe informacje o zaleceniach SQL](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
+   ![Instrukcje rozwiązania problemu](./media/security-center-monitoring/remediate1.png)
 
-Blok **Włączanie inspekcji i wykrywania zagrożeń dla baz danych SQL** zawiera następujące informacje:
+3. Kliknij przycisk **reakcję**. Zostanie wyświetlona strona Ustawienia zasobów.
 
-* Lista baz danych SQL
-* Serwer, na którym znajdują się bazy danych SQL
-* Informacje o tym, czy to ustawienie jest dziedziczone z serwera lub czy jest unikatowe w tej bazie danych
-* Bieżący stan
-* Ważność problemu
+    ![Włącz zalecenia](./media/security-center-monitoring/remediate2.png)
 
-Po kliknięciu bazy danych w celu zastosowania tego zalecenia zostanie otwarty blok **Inspekcja i wykrywanie zagrożeń**, jak pokazano na poniższym ekranie.
-
-![Inspekcja i wykrywanie zagrożeń](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
-
-Aby włączyć funkcję inspekcji, zaznacz pole wyboru **WŁĄCZONE** poniżej opcji **Inspekcja**.
+4. Postępuj zgodnie z **czynności zaradczych** i kliknij przycisk **Zapisz**.
 
 ## <a name="data-and-storage-recommendations"></a>Zalecenia dotyczące danych i magazynu
 
 |Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
 |----|----|----|----|
-|Konto magazynu|20|Bezpieczne przesyłanie danych do konta magazynu powinna być włączona.|Bezpieczny transfer to opcja, która wymusza na koncie magazynu w celu umożliwienia akceptowania żądań tylko z bezpiecznego połączenia (HTTPS). Korzystanie z protokołu HTTPS zapewnia uwierzytelnianie między serwerem i usługi oraz chroni przesyłane dane przed atakami warstwy sieci, takich jak ataki typu man-in--middle, ochronę i przejęcie kontroli sesji.|
+|Konto magazynu|20|Bezpieczne przesyłanie danych do konta magazynu powinna być włączona.|Bezpieczny transfer to opcja, która wymusza na koncie magazynu w celu umożliwienia akceptowania żądań tylko z bezpiecznego połączenia (HTTPS). HTTPS zapewnia uwierzytelnianie między serwerem i usługi oraz chroni przesyłane dane przed atakami warstwy sieci, takich jak ataki typu man-in--middle, ochronę i przejęcie kontroli sesji.|
 |Redis|20|Powinien być włączony tylko bezpiecznych połączeń z usługą Redis Cache|Włącz tylko połączenia za pośrednictwem protokołu SSL w celu pamięć podręczna systemu Azure dla usługi Redis. Użyj bezpiecznych połączeń zapewnia uwierzytelnianie między serwerem a usługą oraz chroni przesyłane dane przed atakami warstwy sieci, takich jak ataki typu man-in--middle, ochronę i przejęcie kontroli sesji.|
 |SQL|15|Transparent Data Encryption w bazach danych SQL powinno być włączone.|Włączanie technologii transparent data encryption do ochrony danych magazynowanych i spełnić wymagania dotyczące zgodności.|
 |SQL|15|Inspekcja programu SQL server, powinno być włączone|Włączanie inspekcji dla serwerów SQL platformy Azure. (Tylko w przypadku usługi azure SQL. Nie obejmuje SQL uruchomionych na maszynach wirtualnych).|
@@ -71,7 +81,7 @@ Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do in
 * [Ochrona aplikacji w usłudze Azure Security Center](security-center-application-recommendations.md)
 * [Ochrona sieci w usłudze Azure Security Center](security-center-network-recommendations.md)
 
-Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
+Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujące tematy:
 
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.

@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27d54d51a16f4ed94f24f9afa005c63b22778cf9
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473134"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190364"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Typowe scenariusze w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
 
@@ -124,4 +124,4 @@ Istnieje kilka sposobów, że możesz skonfigurować zarządzanie uprawnieniami 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: Utworzenie pierwszego pakietu dostępu](entitlement-management-access-package-first.md)
-- [Edytowanie istniejącego pakietu dostępu i zarządzanie nim](entitlement-management-access-package-edit.md)
+- [Deleguj zadania](entitlement-management-delegate.md)

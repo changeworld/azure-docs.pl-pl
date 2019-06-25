@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/13/2019
-ms.openlocfilehash: 15f64c7087ea4d24f271af67b251030a2196fa10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 89df33f453217585e8f0b8ff13d06ee223474fae
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070370"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272242"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Omówienie usługi Azure SQL Database managed wystąpienia limity zasobów
 
@@ -105,7 +105,7 @@ W poniższej tabeli przedstawiono domyślne limity regionalne dla obsługiwanych
 
 \* Podczas planowania wdrożenia należy wziąć pod uwagę że biznesowe krytyczne (BC) rdzeń wirtualny (z powodu dodane redundancy) wykorzystuje 4 x większą pojemność niż rdzeń wirtualny ogólnego przeznaczenia (GP). Tak więc, na obliczeniach, 1 GP rdzeń wirtualny = 1 rdzeń wirtualny jednostki i 1 BC rdzeń wirtualny = 4 jednostki (rdzeń wirtualny). Aby uprościć analizy użycia na wartości domyślne, podsumowanie jednostki (rdzeń wirtualny) we wszystkich podsieciach w regionie, gdzie zarządzanych wystąpień są wdrażane i porównać wyniki z granicami jednostki wystąpienia dla typu Twojej subskrypcji. **Maksymalna liczba jednostek — rdzeń wirtualny** obowiązuje limit dla każdej subskrypcji w regionie. Nie ma żadnego limitu dla poszczególnych podsieci, z tą różnicą, że suma wszystkich rdzeni wirtualnych wdrożonych w wielu podsieciach musi być mniejsza lub równa **maksymalna liczba jednostek — rdzeń wirtualny**.
 
-** Większe limity podsieci i rdzeniach wirtualnych są dostępne w następujących regionach: Australia Wschodnia, wschodnie stany USA, wschodnie stany USA 2, Europa Północna, południowo-środkowe stany USA, Azja południowo-wschodnia, południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2.
+\*\* Większe limity podsieci i rdzeniach wirtualnych są dostępne w następujących regionach: Australia Wschodnia, wschodnie stany USA, wschodnie stany USA 2, Europa Północna, południowo-środkowe stany USA, Azja południowo-wschodnia, południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Uzyskanie większego limitu przydziału dla SQL wystąpienia zarządzanego
 

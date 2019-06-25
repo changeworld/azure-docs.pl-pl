@@ -200,7 +200,7 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Dane wyjściowe | Tablica | Pobiera zadanie danych wyjściowych.|
+| outputs | Array | Pobiera zadanie danych wyjściowych.|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
@@ -456,9 +456,9 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | trackType | string | Typ ścieżki (Audio / wideo). |
 | trackName | string | Nazwa ścieżki. |
-| Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
+| bitrate | integer | Szybkość transmisji bitów toru. |
 | timestamp | string | Sygnatura czasowa fragmentu danych porzucony. |
-| Skala czasu | string | Skala czasu znacznika czasu. |
+| timescale | string | Skala czasu znacznika czasu. |
 | resultCode | string | Powód listy fragmentów danych. **FragmentDrop_OverlapTimestamp** lub **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -496,12 +496,12 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | trackType | string | Typ ścieżki (Audio / wideo). |
 | trackName | string | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
-| Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
+| bitrate | integer | Szybkość transmisji bitów toru. |
 | ingestUrl | string | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |
 | encoderIp | string  | Adres IP kodera. |
 | encoderPort | string | Port kodera, z której pochodzi ten strumień. |
 | timestamp | string | Pierwszy znacznik czasu fragmentu danych odebranych. |
-| Skala czasu | string | Skala czasu, w którym jest reprezentowana sygnatury czasowej. |
+| timescale | string | Skala czasu, w którym jest reprezentowana sygnatury czasowej. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -570,10 +570,10 @@ Obiekt danych ma następujące właściwości:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | firstTimestamp | string | Odebrano jeden z poziomów śledzi/jakości wideo typu sygnatura czasowa. |
-| FirstDuration | string | Czas trwania fragmentu danych za pomocą pierwszy znacznik czasu. |
+| firstDuration | string | Czas trwania fragmentu danych za pomocą pierwszy znacznik czasu. |
 | secondTimestamp | string  | Odebrano dla pewnego poziomu śledzenia/jakości wideo typu sygnatura czasowa. |
-| SecondDuration | string | Czas trwania fragmentu danych z sygnaturą czasową drugie. |
-| Skala czasu | string | Skala czasu sygnatury czasowe i czas trwania.|
+| secondDuration | string | Czas trwania fragmentu danych z sygnaturą czasową drugie. |
+| timescale | string | Skala czasu sygnatury czasowe i czas trwania.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -613,16 +613,16 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | trackType | string | Typ ścieżki (Audio / wideo). |
 | trackName | string | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
-| Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
-| IncomingBitrate | liczba całkowita | Obliczony transmisji bitów, oparte na fragmenty danych pochodzących z kodera. |
+| bitrate | integer | Szybkość transmisji bitów toru. |
+| incomingBitrate | integer | Obliczony transmisji bitów, oparte na fragmenty danych pochodzących z kodera. |
 | lastTimestamp | string | Sygnatura czasowa najnowsze odebrane dla ścieżki w ciągu ostatnich 20 sekund. |
-| Skala czasu | string | Skala czasu, w którym są wyrażane sygnatur czasowych. |
-| overlapCount | liczba całkowita | Liczba fragmentów danych miały nakładających się sygnatur czasowych w ciągu ostatnich 20 sekund. |
-| discontinuityCount | liczba całkowita | Liczba przerw zaobserwowane w ciągu ostatnich 20 sekund. |
-| nonIncreasingCount | liczba całkowita | Liczba fragmentów danych z sygnaturami czasowymi w przeszłości zostały odebrane w ciągu ostatnich 20 sekund. |
+| timescale | string | Skala czasu, w którym są wyrażane sygnatur czasowych. |
+| overlapCount | integer | Liczba fragmentów danych miały nakładających się sygnatur czasowych w ciągu ostatnich 20 sekund. |
+| discontinuityCount | integer | Liczba przerw zaobserwowane w ciągu ostatnich 20 sekund. |
+| nonIncreasingCount | integer | Liczba fragmentów danych z sygnaturami czasowymi w przeszłości zostały odebrane w ciągu ostatnich 20 sekund. |
 | unexpectedBitrate | bool | Jeśli szybkości transmisji z oczekiwanymi i rzeczywistymi różnią się przez więcej niż dozwolony limit w ciągu ostatnich 20 sekund. To wartość true, wtedy i tylko wtedy, gdy, incomingBitrate > = 2 * szybkości transmisji bitów lub incomingBitrate < = szybkości transmisji bitów/2 lub IncomingBitrate = 0. |
 | state | string | Stan zdarzenia na żywo. |
-| Dobrej kondycji | bool | Wskazuje, czy pozyskiwania jest w dobrej kondycji na podstawie liczby i flagi. Dobra kondycja ma wartość true Jeśli overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| healthy | bool | Wskazuje, czy pozyskiwania jest w dobrej kondycji na podstawie liczby i flagi. Dobra kondycja ma wartość true Jeśli overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -657,11 +657,11 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | trackType | string | Typ ścieżki (Audio / wideo). |
 | trackName | string | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
-| Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
-| PreviousTimestamp | string | Sygnatura czasowa poprzedniego fragmentu. |
+| bitrate | integer | Szybkość transmisji bitów toru. |
+| previousTimestamp | string | Sygnatura czasowa poprzedniego fragmentu. |
 | newTimestamp | string | Sygnatura czasowa bieżącego fragmentu. |
 | discontinuityGap | string | Przerwa między powyżej dwóch sygnatur czasowych. |
-| Skala czasu | string | Są reprezentowane w skali czasu, w której sygnatura czasowa i ciągłości przerwy. |
+| timescale | string | Są reprezentowane w skali czasu, w której sygnatura czasowa i ciągłości przerwy. |
 
 ### <a name="common-event-properties"></a>Wspólne właściwości zdarzenia
 
@@ -674,7 +674,7 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. Na przykład "Microsoft.Media.JobStateChange". |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| data | obiekt | Dane zdarzenia usługi Media Services. |
+| data | object | Dane zdarzenia usługi Media Services. |
 | dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 

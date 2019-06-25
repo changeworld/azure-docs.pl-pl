@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146788"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183485"
 ---
 1. W polu wyszukiwania wprowadź "outlook.com" jako filtr. W tym przykładzie wybierz następujący wyzwalacz: **Po nadejściu nowej wiadomości e-mail**
 

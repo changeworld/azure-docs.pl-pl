@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: da8d1000ebe2695dbc95d475027722962a3305d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9293dc8be4fb50a657093090b0e6d76de5b5d31
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65555878"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303516"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -80,7 +80,7 @@ Interfejs API w wersji 3 ma następujące luki funkcji w odniesieniu do interfej
 
 * [Koder w warstwie Premium](../previous/media-services-premium-workflow-encoder-formats.md) i starszego [media analytics procesorów](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 — wersja zapoznawcza, usługi Face Redactor itp.) nie są dostępne za pośrednictwem v3.<br/>Klienci, którzy chcą przeprowadzić migrację z 1 indeksatora multimediów lub 2 (wersja zapoznawcza) można użyć od razu AudioAnalyzer wstępnie ustawione w interfejsie API w wersji 3.  To nowe ustawienie wstępne zawiera więcej funkcji niż starsze 1 indeksatora multimediów lub 2. 
 * Wiele [zaawansowanych funkcji usługi Media Encoder Standard w wersji 2](../previous/media-services-advanced-encoding-with-mes.md) interfejsy API nie są obecnie dostępne w wersji 3, takich jak:
-    * Przycinanie (dla scenariuszy, na żądanie i na żywo)
+  
     * Łączenie zasobów
     * Nakładki
     * Przycinanie

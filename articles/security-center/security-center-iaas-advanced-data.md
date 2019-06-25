@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76e691df0a026802682b57ff78496f6b66d7ff79
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400161"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154826"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Zabezpieczenia zaawansowanych danych dla serwerów SQL iaas
-Zabezpieczeń zaawansowanych danych dla serwerów SQL w usłudze Azure Virtual Machines to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Obecnie zawiera funkcje, dzięki czemu są ujawniane łagodzenia potencjalne luki bazy danych i wykrywanie nietypowych działań wskazujących zagrożenie z bazą danych. 
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Zabezpieczenia zaawansowanych danych dla serwerów SQL w usłudze Azure Virtual Machines (publiczna wersja zapoznawcza)
+Zabezpieczeń zaawansowanych danych dla serwerów SQL w usłudze Azure Virtual Machines to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Obecnie (w publicznej wersji zapoznawczej) zawiera funkcje, dzięki czemu są ujawniane łagodzenia potencjalne luki bazy danych i wykrywanie nietypowych działań wskazujących zagrożenie z bazą danych. 
 
 Zabezpieczenia, tej oferty dla serwerów SQL maszyn wirtualnych platformy Azure są oparte na tych samych podstawowych technologii używanej do [pakietu zaawansowane bezpieczeństwo danych Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
@@ -36,7 +36,7 @@ Bezpieczeństwo danych zaawansowane zawiera zbiór zaawansowane funkcje zabezpie
 
 ## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Rozpoczynanie pracy z zabezpieczeniami zaawansowanymi danych SQL na maszynach wirtualnych platformy Azure
 
-Poniższe kroki ułatwiające rozpoczęcie pracy z zabezpieczeniami zaawansowanymi danych SQL na maszynach wirtualnych platformy Azure.
+Poniższe kroki ułatwiające rozpoczęcie pracy z zabezpieczeniami zaawansowanymi danych SQL w publicznej wersji zapoznawczej maszyn wirtualnych platformy Azure.
 
 ### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Skonfiguruj zaawansowane zabezpieczenia danych SQL na maszynach wirtualnych platformy Azure
 
@@ -145,7 +145,7 @@ Można wyświetlić Twoje wyniki oceny luk w zabezpieczeniach i raporty bezpośr
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Zaawansowana ochrona przed zagrożeniami, serwerami SQL dotyczących alertów maszyny wirtualne platformy Azure
 Alerty są generowane na podstawie nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać serwerami programu SQL Server. Zdarzenia te można uruchomić następujące alerty:
 
-### <a name="anomalous-access-pattern-alerts"></a>Dostęp z nietypowego wzorca alertów
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Alerty Wzorzec nietypowego dostępu (obsługiwane w publicznej wersji zapoznawczej)
 
 * **Dostęp z nietypowej lokalizacji:** Ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do programu SQL server, gdy ktoś zalogował się z serwerem SQL z nietypowej lokalizacji geograficznej. Potencjalne przyczyny:
      * Osoba atakująca lub byłego stosują złośliwego uzyskał dostęp do programu SQL Server.

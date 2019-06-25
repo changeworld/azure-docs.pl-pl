@@ -8,20 +8,20 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: af01ebdc72df096b45c4ca4e755b2ed3880bab65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255259"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296514"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>Rozpoczynanie pracy z usługą Azure Monitor Log Analytics
+# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Rozpoczynanie pracy z usługą Log Analytics w usłudze Azure Monitor
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym samouczku dowiesz się, jak używać usługi Azure Monitor Log Analytics w witrynie Azure portal do pisania zapytań dzienników usługi Azure Monitor. Jego nauczą Cię, jak do:
+W tym samouczku dowiesz się, jak używać usługi Log Analytics w witrynie Azure portal do pisania zapytań dzienników usługi Azure Monitor. Jego nauczą Cię, jak do:
 
-- Tworzenie prostych zapytań
+- Używanie programu Log Analytics do pisania prostego zapytania
 - Zrozumieć schemat danych
 - Filtrowanie, sortowanie i grupowanie wyników
 - Stosowanie zakresu czasu
@@ -29,13 +29,22 @@ W tym samouczku dowiesz się, jak używać usługi Azure Monitor Log Analytics w
 - Zapisywanie i ładowanie zapytań
 - Eksportowanie i udostępnianie zapytań
 
+Samouczek dotyczący Pisanie zapytań log, zobacz [wprowadzenie do zapytań dzienników w usłudze Azure Monitor](get-started-queries.md).<br>
+Aby uzyskać szczegółowe informacje na temat dziennika zapytań, zobacz [Przegląd dziennika zapytań w usłudze Azure Monitor](log-query-overview.md).
 
 ## <a name="meet-log-analytics"></a>Spełnia usługi Log Analytics
 Log Analytics jest w sieci web narzędzie służące do zapisu i wykonywania zapytań dzienników usługi Azure Monitor. Otwórz go, wybierając **dzienniki** w menu usługi Azure Monitor. Rozpoczynają się one od nowego pustego zapytania.
 
 ![Strona główna](media/get-started-portal/homepage.png)
 
+## <a name="firewall-requirements"></a>Wymagania dotyczące zapory
+Aby korzystać z usługi Log Analytics, przeglądarce wymaga dostępu do następujących adresów. Jeśli przeglądarka jest dostęp do witryny Azure portal za pośrednictwem zapory, należy włączyć dostęp do tych adresów.
 
+| Identyfikator URI | IP | Porty |
+|:---|:---|:---|
+| portal.loganalytics.io | Dynamiczne | 80,443 |
+| api.loganalytics.io | Dynamiczne | 80,443 |
+| docs.loganalytics.io | Dynamiczne | 80,443 |
 
 ## <a name="basic-queries"></a>Podstawowe zapytania
 Zapytania mogą służyć do terminy wyszukiwania, identyfikację trendów, analizować wzorce i wiele innych informacji na podstawie danych. Uruchom przy użyciu podstawowego zapytania:
@@ -44,9 +53,9 @@ Zapytania mogą służyć do terminy wyszukiwania, identyfikację trendów, anal
 Event | search "error"
 ```
 
-To zapytanie wyszukuje _zdarzeń_ tabeli rekordy, które zawierają termin "error", w dowolnej właściwości.
+To zapytanie wyszukuje _zdarzeń_ tabeli rekordy, które zawierają termin _błąd_ w dowolnej właściwości.
 
-Zapytania można zacząć od jednej nazwy tabeli lub **wyszukiwania** polecenia. Powyższy przykład zaczyna się od nazwy tabeli _zdarzeń_, która definiuje zakres kwerendy. Znaku kreski pionowej (|) oddziela polecenia, dzięki czemu dane wyjściowe pierwszy z nich służy jako dane wejściowe następującego polecenia. Możesz dodać dowolną liczbę poleceń do pojedynczego zapytania.
+Zapytania można zacząć od jednej nazwy tabeli lub [wyszukiwania](/kusto/query/searchoperator) polecenia. Powyższy przykład zaczyna się od nazwy tabeli _zdarzeń_, który pobiera wszystkie rekordy z tabeli zdarzeń. Znaku kreski pionowej (|) oddziela polecenia, dzięki czemu dane wyjściowe pierwszy z nich służy jako dane wejściowe następującego polecenia. Możesz dodać dowolną liczbę poleceń do pojedynczego zapytania.
 
 Innym sposobem pisania tego samego zapytania będą:
 
@@ -54,18 +63,18 @@ Innym sposobem pisania tego samego zapytania będą:
 search in (Event) "error"
 ```
 
-W tym przykładzie **wyszukiwania** obejmuje _zdarzeń_ tabeli, a wszystkie rekordy w tabeli wyszukiwany termin "error".
+W tym przykładzie **wyszukiwania** obejmuje _zdarzeń_ tabeli, a wszystkie rekordy w tabeli wyszukiwany termin _błąd_.
 
 ## <a name="running-a-query"></a>Uruchamianie zapytania
 Uruchom zapytanie, klikając pozycję **Uruchom** przycisku lub naciskając **Shift + Enter**. Należy wziąć pod uwagę następujące informacje, które określają kodu, która będzie uruchamiana i danych, który jest zwracany:
 
-- Podziały wierszy: Podział pojedynczego sprawia, że zapytanie bardziej zrozumiały. Podziały wierszy wielu podzielić ją na oddzielne zapytania.
+- Podziały wierszy: Podział pojedynczego sprawia, że zapytanie jest łatwiejsza do odczytania. Podziały wierszy wielu podzielić ją na oddzielne zapytania.
 - Kursor: Umieść kursor gdzieś w zapytaniu do jego wykonania. Bieżące zapytanie jest uważana za kod, aż zostanie znaleziony pusty wiersz.
 - Zakres - przedział czasu czasu _ostatnich 24 godzinach_ jest ustawieniem domyślnym. Do używania innego zakresu, użyj selektora czasu, lub Dodaj godzinę jawne filtru zakresu do zapytania.
 
 
 ## <a name="understand-the-schema"></a>Informacje o schemacie
-Schemat jest zbiór tabel wizualnie pogrupowane w logiczne kategorii. Kilka kategorii pochodzą z rozwiązania do monitorowania. _LogManagement_ kategoria zawiera wspólne dane, takie jak Windows i zdarzenia dziennika systemowego, dane dotyczące wydajności i pulsu klienta.
+Schemat jest zbiór tabel wizualnie pogrupowane w logiczne kategorii. Kilka kategorii pochodzą z rozwiązania do monitorowania. _LogManagement_ kategoria zawiera wspólne dane, takie jak Windows i zdarzenia dziennika systemowego, dane dotyczące wydajności i pulsu agenta.
 
 ![Schemat](media/get-started-portal/schema.png)
 
@@ -181,7 +190,7 @@ Ikona Eksplorator zapytań, znajduje się w prawym górnym rogu obszaru. Ta list
 Usługa log Analytics obsługuje kilka metod eksportowania:
 
 - Excel: Zapisz wyniki jako plik CSV.
-- Power BI: Eksportuj wyniki do power BI. Zobacz [dane dziennika importu usługi Azure Monitor do usługi Power BI](../../azure-monitor/platform/powerbi.md) Aby uzyskać szczegółowe informacje.
+- Power BI: Eksportuj wyniki do usługi Power BI. Zobacz [dane dziennika importu usługi Azure Monitor do usługi Power BI](../../azure-monitor/platform/powerbi.md) Aby uzyskać szczegółowe informacje.
 - Link udostępniania: Samo zapytanie może być udostępniane jako łącze, które następnie mogą być wysyłane i wykonywane przez innych użytkowników, które mają dostęp do tego samego obszaru roboczego.
 
 ## <a name="next-steps"></a>Kolejne kroki

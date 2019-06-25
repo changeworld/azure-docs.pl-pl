@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: fddf853b90297cb75ffbd7c74cf81dd368370aa1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5ab7cff28b63447a450e55b4e3e30688c1f0e026
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61346914"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341919"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST i języka Python podczas przetwarzania obrazów
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
 - Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatnej wersji próbnej klucza z [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub, postępuj zgodnie z instrukcjami w [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) subskrybować przetwarzania obrazów, i Uzyskaj klucz.
 - Musisz mieć zainstalowane następujące pakiety języka Python. Możesz użyć [pip](https://packaging.python.org/tutorials/installing-packages/) zainstalować pakiety języka Python.
-    - żądania
+    - Żądania
     - [matplotlib](https://matplotlib.org/)
     - [poszewki](https://python-pillow.org/)
 
@@ -53,7 +53,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 ```python
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
-#%matplotlib inline
+# %matplotlib inline
 import matplotlib.pyplot as plt
 import json
 from PIL import Image
@@ -78,10 +78,11 @@ analyze_url = vision_base_url + "analyze"
 image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/" + \
     "Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
 
-headers = {'Ocp-Apim-Subscription-Key': subscription_key }
-params  = {'visualFeatures': 'Categories,Description,Color'}
-data    = {'url': image_url}
-response = requests.post(analyze_url, headers=headers, params=params, json=data)
+headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+params = {'visualFeatures': 'Categories,Description,Color'}
+data = {'url': image_url}
+response = requests.post(analyze_url, headers=headers,
+                         params=params, json=data)
 response.raise_for_status()
 
 # The 'analysis' object contains various fields that describe the image. The most

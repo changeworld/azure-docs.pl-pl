@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 7cf6b4984f3941da3b2cd0e4eada5eb1d87f2b01
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6aad0502b5739906d1fa8fa896f8d0af8cc38e30
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054748"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205011"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway w wersji 2 
 
@@ -24,7 +24,7 @@ Nowe jednostki SKU w wersji 2 obejmuje następujące ulepszenia:
 - **Strefa nadmiarowości**: Usługa Application Gateway lub wdrażania zapory aplikacji sieci Web może obejmować wielu strefach dostępności konieczność aprowizowanie osobnych wystąpień bramy Application Gateway w każdej strefie przy użyciu usługi Traffic Manager. Możesz wybrać jedną strefę lub wieloma strefami wdrożonym wystąpień bramy Application Gateway, co czyni ją na bardziej odporne na awarie strefy. Pula zaplecza dla aplikacji można rozpowszechniać podobnie w różnych strefach dostępności.
 
   Nadmiarowości strefy jest dostępna tylko, której strefy platformy Azure są dostępne. W innych regionach wszystkie inne funkcje są obsługiwane. Aby uzyskać więcej informacji, zobacz [co to są strefy dostępności na platformie Azure?](../availability-zones/az-overview.md#services-support-by-region)
-- **Statyczny adres VIP**: Application gateway w wersji 2 jednostki SKU obsługuje statycznego adresu VIP wpisz wyłącznie. Daje to gwarancję, że adres VIP skojarzony z usługą application gateway nie zmienia się do zarządzania cyklem życia wdrożenia, nawet po ponownym uruchomieniu.
+- **Statyczny adres VIP**: Jednostka SKU v2 bramy aplikacji, które wyłącznie obsługuje typu statycznego adresu VIP. Daje to gwarancję, że adres VIP skojarzony z usługą application gateway nie zmienia się do zarządzania cyklem życia wdrożenia, nawet po ponownym uruchomieniu.  Nie ma statycznego adresu VIP w wersji 1, więc należy użyć adresu URL bramy aplikacji zamiast adresu IP dla domeny, nazwa routingu do usług aplikacji za pośrednictwem bramy aplikacji.
 - **Napisz ponownie nagłówek**: Usługa Application Gateway umożliwia dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP z jednostką SKU v2. Aby uzyskać więcej informacji, zobacz [ponownie zapisuje nagłówki protokołu HTTP z usługą Application Gateway](rewrite-http-headers.md)
 - **Integracji magazynu kluczy (wersja zapoznawcza)** : Brama aplikacji w wersji 2 obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla serwera certyfikatów, które są dołączone do odbiorników obsługujące protokół HTTPS. Aby uzyskać więcej informacji, zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md).
 - **Usługa Azure Kubernetes Service kontroler danych przychodzących w (wersja zapoznawcza)** : Usługa Application Gateway kontroler danych przychodzących w wersji 2 umożliwia usługi Azure Application Gateway ma być używany jako transferu danych przychodzących dla usługi Azure Kubernetes Service (AKS) nazywany klastrem AKS. Aby uzyskać więcej informacji, zobacz [stronę z dokumentacją dotyczącą](https://azure.github.io/application-gateway-kubernetes-ingress/).
@@ -42,7 +42,7 @@ Standard_v2 i WAF_v2 jednostki SKU jest dostępna w następujących regionach: P
 Z jednostką SKU v2 model rozliczania usług jest wymuszany przez użycie i nie jest już dołączony do wystąpienia liczby i rozmiarów. Cena jednostki SKU v2 ma dwa składniki:
 
 - **Stała cena** — jest to co godzinę (lub niepełna godzina) cenę aprowizowanie Standard_v2 lub WAF_v2 bramy.
-- **Cena jednostki pojemności** — jest to koszt na podstawie użycia, która jest rozliczana oprócz koszt stały. Opłata za jednostkę pojemności jest również obliczane co godzinę lub częściowe co godzinę. Istnieją trzy wymiary do jednostki pojemności — obliczeniowych jednostki, połączeń trwałych i przepływności. Jednostka to miara mocy procesora używane obliczeń. Czynniki wpływające na jednostek obliczeniowych są połączeń TLS na sekundę, ponowne zapisywanie adresów URL obliczeń i przetwarzanie reguł zapory aplikacji sieci Web. Trwałe połączenie jest miarą ustanowionych połączeń TCP do usługi application gateway w danym interwale rozliczeń. Przepływność jest średnia megabitów na sekundę przetwarzanych przez system w danym interwale rozliczeń.
+- **Cena jednostki pojemności** — jest to koszt na podstawie użycia, która jest rozliczana oprócz koszt stały. Opłata za jednostkę wydajności jest też obliczana godzinowo lub częściowo godzinowo. Jednostka wydajności ma trzy wymiary: jednostkę obliczeniową, połączenia trwałe i przepływność. Jednostka obliczeniowa jest miarą użycia wydajności procesora. Czynniki wpływające na jednostek obliczeniowych są połączeń TLS na sekundę, ponowne zapisywanie adresów URL obliczeń i przetwarzanie reguł zapory aplikacji sieci Web. Trwałe połączenie jest miarą ustanowionych połączeń TCP do usługi application gateway w danym interwale rozliczeń. Przepływność jest średnia megabitów na sekundę przetwarzanych przez system w danym interwale rozliczeń.
 
 Każda jednostka pojemności składa się z co najwyżej: 1 obliczeniowe o jednostkę lub połączeń trwałych 2500 lub 2.22 MB/s przepływności.
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12b75c2df7d11b0e90c5dccc3bc2aae4e0fb0c1e
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824639"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204484"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -40,7 +40,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 ## <a name="list-of-functions"></a>Lista funkcji
 [Dołącz](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Dołącz](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nie](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Zastąp](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Podziału](#split) &nbsp; &nbsp; &nbsp; &nbsp; [ StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [przełącznika](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
-- - -
+---
 ### <a name="append"></a>Append
 **Funkcja:**<br> Append(source, suffix)
 
@@ -53,7 +53,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
 | **suffix** |Wymagane |Ciąg |Ciąg, który chcesz dołączyć do końca wartość źródła. |
 
-- - -
+---
 ### <a name="formatdatetime"></a>FormatDateTime
 **Funkcja:**<br> FormatDateTime (źródło, inputFormat outputFormat)
 
@@ -67,7 +67,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 | **inputFormat** |Wymagane |Ciąg |Oczekiwany format wartość źródła. Aby uzyskać obsługiwanych formatów, zobacz [ https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **outputFormat** |Wymagane |Ciąg |Format wyjściowej daty. |
 
-- - -
+---
 ### <a name="join"></a>Join
 **Funkcja:**<br> Dołącz do (separator, źródło1 źródło2...)
 
@@ -82,7 +82,7 @@ Jeśli jedna z wartości źródłowej jest atrybutu wielowartościowego, każda 
 | **Separator** |Wymagane |Ciąg |Ciąg używany do oddzielania wartości źródła, gdy są one połączone w jeden ciąg. Może być "" Jeśli separator nie jest wymagana. |
 | **źródło1... źródłoN** |Wymagana zmienna — liczba razy |Ciąg |Ciąg wartości, które mają zostać połączone ze sobą. |
 
-- - -
+---
 ### <a name="mid"></a>MID
 **Funkcja:**<br> MID (źródło, początek, długość)
 
@@ -96,7 +96,7 @@ Jeśli jedna z wartości źródłowej jest atrybutu wielowartościowego, każda 
 | **start** |Wymagane |liczba całkowita |Indeks w **źródła** ciągu, gdzie ma się rozpocząć podciąg. Pierwszy znak w ciągu ma indeks 1, drugi znak ma indeksu 2 i tak dalej. |
 | **Długość** |Wymagane |liczba całkowita |Długość podciągu. Jeśli długość kończy się poza **źródła** ciągu, funkcja zwraca podciąg z **start** indeksu do końca **źródła** ciągu. |
 
-- - -
+---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
 **Funkcja:**<br> NormalizeDiacritics(source)
 
@@ -108,7 +108,7 @@ Jeśli jedna z wartości źródłowej jest atrybutu wielowartościowego, każda 
 | --- | --- | --- | --- |
 | **source** |Wymagane |String | Zazwyczaj imię lub ostatniego atrybutu name. |
 
-- - -
+---
 ### <a name="not"></a>nie
 **Funkcja:**<br> Not(Source)
 
@@ -120,7 +120,7 @@ Jeśli jedna z wartości źródłowej jest atrybutu wielowartościowego, każda 
 | --- | --- | --- | --- |
 | **source** |Wymagane |Wartości logicznych |Oczekiwano **źródła** wartości to "True" lub "False". |
 
-- - -
+---
 ### <a name="replace"></a>Replace
 **Funkcja:**<br> Zastąp (źródło oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, szablon)
 
@@ -153,7 +153,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **replacementAttributeName** |Optional (Opcjonalność) |Ciąg |Nazwa atrybutu używanego do wartość zastąpienia, gdy źródło nie ma wartości. |
 | **Szablon** |Optional (Opcjonalność) |Ciąg |Gdy **szablonu** wartość zostanie podana, firma Microsoft będzie szukał **oldValue** wewnątrz szablonu i zastąp go wartością źródłową. |
 
-- - -
+---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **Funkcja:**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2 uniqueValueRule3...)
 
@@ -171,7 +171,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **uniqueValueRule1... uniqueValueRuleN** |Co najmniej 2 są wymagane, nie górnej granicy |String | Lista reguł generowania unikatową wartość do oceny. |
 
 
-- - -
+---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funkcja:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -183,7 +183,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |Wymagane |Ciąg |**[appRoleAssignments]**  obiektu. |
 
-- - -
+---
 ### <a name="split"></a>Podziel
 **Funkcja:**<br> Podziel (źródło, ogranicznik)
 
@@ -196,7 +196,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **source** |Wymagane |Ciąg |**źródło** wartość do zaktualizowania. |
 | **delimiter** |Wymagane |String |Określa znak, który będzie używany do dzielenia ciągu (przykład: ",") |
 
-- - -
+---
 ### <a name="stripspaces"></a>StripSpaces
 **Funkcja:**<br> StripSpaces(source)
 
@@ -208,7 +208,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |**źródło** wartość do zaktualizowania. |
 
-- - -
+---
 ### <a name="switch"></a>Przełącznik
 **Funkcja:**<br> Przełącznik (źródło, defaultValue, klucz1, wartość1, klucz2, wartość2,...)
 
@@ -223,7 +223,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **Klucz** |Wymagane |Ciąg |**Klucz** do porównania **źródła** wartością. |
 | **value** |Wymagane |Ciąg |Wartość zastąpienia dla **źródła** pasujący do klucza. |
 
-- - -
+---
 ### <a name="tolower"></a>toLower
 **Funkcja:**<br> ToLower (źródło, kultury)
 
@@ -236,7 +236,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego |
 | **Kultury** |Optional (Opcjonalność) |String |Format nazwy kultury, oparte na RFC 4646 *languagecode2 — kraj/regioncode2*, gdzie *languagecode2* jest kod języka dwuliterowych i *kraju/regioncode2*znajduje się kod przeszczepiania dwuliterowych. Przykłady obejmują ja-JP japoński (Japonia) i en US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowych nie jest dostępna trzyliterowy kod pochodzi od ISO 639-2 jest używany.|
 
-- - -
+---
 ### <a name="toupper"></a>toUpper
 **Funkcja:**<br> ToUpper (źródło, kultury)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64870315"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275716"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Zarządzanie kosztami AWS i użycia na platformie Azure
 
@@ -129,6 +129,8 @@ Aby rozwiązać typowe problemy, użyj następujące informacje dotyczące rozwi
 
 ### <a name="no-permission-to-aws-linked-accounts"></a>Brak uprawnień do konta usługi AWS połączone
 
+**Kod błędu:** _Brak autoryzacji_
+
 Istnieją dwa sposoby uzyskania uprawnień do usług AWS, połączone konta koszty dostępu do:
 
 - Uzyskaj dostęp do grupy zarządzania, który zawiera konta usług AWS połączone.
@@ -136,7 +138,11 @@ Istnieją dwa sposoby uzyskania uprawnień do usług AWS, połączone konta kosz
 
 Domyślnie twórca łącznika usługi AWS jest właścicielem wszystkich obiektów utworzonych przez łącznik. Tym AWS skonsolidowany konta i AWS połączone konta.
 
+Aby można było zweryfikować ustawień łącznika konieczne będzie co najmniej roli Współautor, czytnik nie może sprawdzić ustawienia łącznika
+
 ### <a name="collection-failed-with-assumerole"></a>Zbieranie nie powiodło się z AssumeRole
+
+**Kod błędu:** _FailedToAssumeRole_
 
 Ten błąd oznacza, że Cost Management jest w stanie wywołać interfejs API AssumeRole AWS. Ten problem może się zdarzyć z powodu problemu z definicji roli. Sprawdź, czy są spełnione następujące warunki:
 
@@ -147,11 +153,23 @@ Ten błąd oznacza, że Cost Management jest w stanie wywołać interfejs API As
 
 ### <a name="collection-failed-with-access-denied"></a>Zbieranie nie powiodło się z odmowa dostępu
 
-Ten komunikat o błędzie oznacza, że Cost Management jest w stanie uzyskać dostęp do plików WALUTA, przechowywane w zasobniku Amazon S3. Upewnij się, że zasady JSON usługi AWS, dołączone do roli podobny przykład pokazany w dolnej części [tworzenie ról i zasad w usłudze AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) sekcji.
+- **Kod błędu:** _AccessDeniedReportDefinitions_ 
+- **Kod błędu:** _AccessDeniedListReports_ 
+- **Kod błędu:** _AccessDeniedDownloadReport_ 
 
-### <a name="connector-error-with-failedtofindreport"></a>Błąd łącznika z FailedToFindReport
+Ten błąd wiadomości oznacza, że Cost Management jest w stanie uzyskać dostęp do plików WALUTA, przechowywane w zasobniku Amazon S3. Upewnij się, że zasady JSON usługi AWS, dołączone do roli podobny przykład pokazany w dolnej części [tworzenie ról i zasad w usłudze AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) sekcji.
+
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Zbieranie nie powiodło się, ponieważ nie znaleziono kosztów i użycia raportu
+
+**Kod błędu:** _FailedToFindReport_
 
 Ten błąd oznacza, że Cost Management, nie można odnaleźć raportu kosztów i użycia, która została zdefiniowana w łączniku. Upewnij się, nie jest on usunięty i że zasad usług AWS JSON, dołączony do roli podobny przykład pokazany w dolnej części [tworzenie ról i zasad w usłudze AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) sekcji.
+
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Nie można utworzyć lub sprawdzić łącznika z powodu niezgodności definicje kosztów i użycia raportu
+
+**Kod błędu:** _ReportIsNotValid_
+
+Ten błąd, który odnosi się do definicji koszty usług AWS i raport użycia firma Microsoft wymagają specjalnych ustawień dla tego raportu, jak można znaleźć w wymaganiach w [utworzyć raport kosztów i użycia w usłudze AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

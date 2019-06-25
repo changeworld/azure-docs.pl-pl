@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 3e304df51133d53adad50e672249bde6c9960712
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: f2f798be85e9c3aeb8d4b54cba89d8be059427e0
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539707"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147325"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Omówienie diagnostyki w usłudze Azure App Service
 
@@ -103,12 +103,12 @@ Jak Proaktywne monitorowanie procesora CPU, proaktywne automatyczne naprawianie 
 
 ![Proaktywne automatyczne naprawianie](./media/app-service-diagnostics/proactive-auto-healing-10.png)
 
-## <a name="change-analysis"></a>Analiza zmian
+## <a name="change-analysis-only-for-windows-app"></a>Analiza zmian (tylko dla aplikacji Windows)
 
-W środowisku dynamicznym rozwoju czasami może być trudno jest śledzić wszystkie zmiany wprowadzone do aplikacji i umożliwić pinpoint tylko w przypadku zmiany, który spowodował nieprawidłowe zachowanie. Analiza zmiany może pomóc w zawężeniu na temat zmian wprowadzonych do aplikacji w celu ułatwienia rozwiązywania problemów środowisko. Analizy zmiany są osadzone w raporcie diagnostycznych, takich jak **wystąpiła awaria aplikacji** aby można było używać równocześnie z innymi metrykami.
+W środowisku dynamicznym rozwoju czasami może być trudne do śledzenie wszystkich zmian wprowadzonych do aplikacji i umożliwić samodzielnie pinpoint na zmianę powodującą zachowanie w złej kondycji. Analiza zmiany może pomóc w zawężeniu na temat zmian wprowadzonych do aplikacji w celu ułatwienia rozwiązywania problemów środowisko. Analiza zmiany znajduje się w **zmian w aplikacji** i również osadzona w raport diagnostyczny takich jak **wystąpiła awaria aplikacji** aby można było używać równocześnie z innymi metrykami.
+
+Analiza zmiany musi umożliwiać przed rozpoczęciem korzystania z funkcji. Aby uzyskać więcej informacji na analizie zmian, odwiedź stronę [Przedstawiamy nowe środowisko analizy zmiany w diagnostyce usługi App](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).
 
 ![Zmień stronę domyślną analizy](./media/app-service-diagnostics/change-analysis-default-page-11.png)
 
 ![Widoku różnic](./media/app-service-diagnostics/diff-view-12.png)
-
-Analiza zmiany musi umożliwiać przed rozpoczęciem korzystania z funkcji. Aby uzyskać więcej informacji na analizie zmian, odwiedź stronę [Przedstawiamy nowe środowisko analizy zmiany w diagnostyce usługi App](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).

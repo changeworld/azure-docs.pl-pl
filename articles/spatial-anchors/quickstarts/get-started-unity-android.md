@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 001042a5499b492db151853172e999cf7a3c5f88
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 642abfb99b40d67802b7194ad225ebcd2872a72b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687806"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135095"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji dla systemu Android Unity z Azure kotwic przestrzenne
 
@@ -43,9 +43,11 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Otwieranie przykładowego projektu w aparacie Unity
+## <a name="download-and-open-the-unity-sample-project"></a>Pobierz i Otwórz przykładowy projekt aparatu Unity
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+[!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
 [!INCLUDE [Android Unity Build Settings](../../../includes/spatial-anchors-unity-android-build-settings.md)]
 
@@ -55,18 +57,18 @@ W okienku **Project (Projekt)** przejdź do katalogu `Assets/AzureSpatialAnchors
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Zapisz scenę, wybierając pozycje **File (Plik)** -> **Save (Zapisz)**.
+Zapisz scenę, wybierając pozycje **File (Plik)**  -> **Save (Zapisz)** .
 
 ## <a name="export-the-android-studio-project"></a>Eksportowanie projektu programu Android Studio
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Upewnij się, że pole wyboru **Export Project (Eksportuj projekt)** nie jest zaznaczone. Kliknij pozycję **Build And Run (Skompiluj i uruchom)**. Zobaczysz pytanie o zapisanie pliku `.apk` — możesz wybrać dla niego dowolną nazwę.
+Upewnij się, że pole wyboru **Export Project (Eksportuj projekt)** nie jest zaznaczone. Kliknij pozycję **Build And Run (Skompiluj i uruchom)** . Zobaczysz pytanie o zapisanie pliku `.apk` — możesz wybrać dla niego dowolną nazwę.
 
 Postępuj zgodnie z instrukcjami w aplikacji, aby umieścić i przywołać kotwicę.
 
 > [!NOTE]
-> Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz puste miejsce, niebieski kolor lub inne tekstury), prawdopodobnie musisz ponownie zaimportować zasoby w aparacie Unity. Zatrzymaj aplikację. Z górnego menu aparatu Unity wybierz pozycje **Assets -> Reimport all (Zasoby -> Zaimportuj ponownie wszystko)**. Następnie ponownie uruchom aplikację.
+> Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz puste miejsce, niebieski kolor lub inne tekstury), prawdopodobnie musisz ponownie zaimportować zasoby w aparacie Unity. Zatrzymaj aplikację. Z górnego menu aparatu Unity wybierz pozycje **Assets -> Reimport all (Zasoby -> Zaimportuj ponownie wszystko)** . Następnie ponownie uruchom aplikację.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

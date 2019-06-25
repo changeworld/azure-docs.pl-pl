@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bb33e7d2bb80bcb19087dca6bc21bafc791af2a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597076"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303913"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -170,10 +170,19 @@ Windows Server Failover Clustering jest obsługiwany przez usługę Azure File S
 
 ### <a name="data-deduplication"></a>Funkcja deduplikacji danych
 **Wersja agenta 5.0.2.0**   
-Funkcja deduplikacji danych jest obsługiwana w woluminach z obsługi warstw włączone w systemie Windows Server 2016 i Windows Server 2019 w chmurze. Włączanie deduplikacji na woluminie z obsługi warstw włączone w chmurze pozwala bez inicjowania obsługi administracyjnej więcej miejsca w pamięci podręcznej więcej plików lokalnych.
+Funkcja deduplikacji danych jest obsługiwana w woluminach z obsługi warstw włączone w systemie Windows Server 2016 i Windows Server 2019 w chmurze. Włączanie deduplikacji na woluminie z obsługi warstw włączone w chmurze pozwala bez inicjowania obsługi administracyjnej więcej miejsca w pamięci podręcznej więcej plików lokalnych. Należy pamiętać, że oszczędności tych woluminów mają zastosowanie tylko w środowisku lokalnym; dane w usłudze Azure Files nie będzie można deduplikacją. 
 
 **Windows Server 2012 R2 lub starszych wersji agenta**  
 W przypadku woluminów, które nie mają obsługi warstw włączone w chmurze usługi Azure File Sync obsługuje deduplikacji danych systemu Windows Server z włączane na woluminie.
+
+**Uwagi**
+- Jeśli Deduplikacja danych jest zainstalowany przed zainstalowaniem agenta usługi Azure File Sync, ponowne uruchomienie jest wymagany do obsługi funkcji deduplikacji danych i obsługi warstw na tym samym woluminie w chmurze.
+- Po włączeniu deduplikacji danych na woluminie po chmurze warstw jest włączona, początkowe zadanie optymalizacji deduplikacji zoptymalizuje plików na woluminie, które nie są już warstwy i będą miały wpływ następujące w chmurze warstw:
+    - Zasady wolnego miejsca będzie warstwy zgodnie z wolnego miejsca na woluminie plików za pomocą mapy cieplnej.
+    - Data zasad pozwoli na pominięcie warstw plików, które mogły być inaczej kwalifikuje się do warstwy z powodu zadań optymalizacji deduplikacji, dostęp do plików.
+- Trwających zadań optymalizacji deduplikacji, obsługi warstw przy użyciu zasad Data w chmurze będzie pobrać opóźnione przez funkcję deduplikacji danych [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) ustawienie, jeśli plik nie jest już warstwowego. 
+    - Przykład: Jeśli ustawienie MinimumFileAgeDays wynosi 7 dni, a zasady Data obsługi warstw w chmurze wynosi 30 dni, Data zasad będzie warstw plików po siedem dni.
+    - Uwaga: Gdy plik jest warstwowa przez usługę Azure File Sync, zadanie optymalizacji deduplikacji pominie ten plik.
 
 ### <a name="distributed-file-system-dfs"></a>Rozproszony System plików (DFS)
 Usługa Azure File Sync obsługuje współdziałanie z przestrzeni nazw systemu plików DFS (DFS-N) i replikacja systemu plików DFS (DFS-R).
@@ -200,9 +209,12 @@ Na serwerze, na którym jest zainstalowany agent usługi Azure File Sync za pomo
 Jeśli chmura warstw jest włączona w punkcie końcowym serwera, pliki, które są rozmieszczone warstwowo są pominięty i nie są indeksowane przez Windows Search. Pliki warstwowe nie są poprawnie indeksowane.
 
 ### <a name="antivirus-solutions"></a>Programy antywirusowe
-Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego złośliwego kodu, antywirusowe może powodować odwołania pliki warstwowe. W wersjach 4.0 i powyżej agenta usługi Azure File Sync pliki warstwowe bezpiecznego zestaw FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atrybutów Windows. Firma Microsoft zaleca konsultacji z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie, aby pominąć odczytywanie plików za pomocą tego zestawu atrybutów (wiele zrobiła to automatycznie).
+Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego złośliwego kodu, antywirusowe może powodować odwołania pliki warstwowe. W wersjach 4.0 i powyżej agenta usługi Azure File Sync pliki warstwowe bezpiecznego zestaw FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atrybutów Windows. Firma Microsoft zaleca konsultacji z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie, aby pominąć odczytywanie plików za pomocą tego zestawu atrybutów (wiele zrobiła to automatycznie). 
 
 Rozwiązania firmy Microsoft wewnętrznych oprogramowania antywirusowego, usługa Windows Defender i System Center Endpoint Protection (SCEP), zarówno automatycznie pominięcia odczytu plików, które mają ustawiony ten atrybut. Firma Microsoft zostały one przetestowane i zidentyfikować niewielki problem w jednym: po dodaniu serwera do istniejącej grupy synchronizacji, pliki mniejsze niż 800 bajtów zostaną odwołane (pobieranego) na nowym serwerze. Pliki te pozostaną na nowym serwerze i nie będą umieszczane, ponieważ nie spełniają warstw wymagany rozmiar (> 64kb).
+
+> [!Note]  
+> Dostawców oprogramowania antywirusowego, można sprawdzić zgodności ich produktów i usługi Azure File Sync za pomocą [Azure pliku synchronizacji programu antywirusowego ze zgodnością zestawu testów] (https://www.microsoft.com/download/details.aspx?id=58322), który jest dostępny do pobrania z Microsoft Download Center.
 
 ### <a name="backup-solutions"></a>Rozwiązania tworzenia kopii zapasowych
 Takich jak rozwiązania antywirusowe rozwiązania tworzenia kopii zapasowych może spowodować wycofanie plików warstwowych. Zalecamy używanie rozwiązania tworzenia kopii zapasowych w chmurze do tworzenia kopii zapasowej udziału plików platformy Azure, a nie lokalnie instalowanym produktem kopii zapasowej.
@@ -256,18 +268,15 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
 | Zachodnie Zjednoczone Królestwo | Cardiff |
-| Administracja USA — Arizona (wersja zapoznawcza) | Arizona |
-| Administracja USA — Teksas (wersja zapoznawcza) | Teksas |
-| Administracja USA — Wirginia (wersja zapoznawcza) | Wirginia |
+| Administracja USA — Arizona | Arizona |
+| Administracja USA — Teksas | Teksas |
+| Administracja USA — Wirginia | Wirginia |
 | Europa Zachodnia | Holandia |
 | Środkowo-zachodnie stany USA | Wyoming |
 | Zachodnie stany USA | Kalifornia |
 | Zachodnie stany USA 2 | Waszyngton |
 
 Usługa Azure File Sync obsługuje synchronizowanie tylko z udziału plików platformy Azure, która znajduje się w tym samym regionie co usługa synchronizacji magazynu.
-
-> [!Note]  
-> Usługa Azure File Sync jest obecnie dostępna tylko w prywatnej wersji zapoznawczej na regiony dla instytucji rządowych. Zobacz nasze [informacje o wersji](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#agent-version-5020) instrukcje dotyczące rejestrowania w programie wersji zapoznawczej.
 
 ### <a name="azure-disaster-recovery"></a>Odzyskiwanie po awarii platformy Azure
 Aby chronić przed utratą w regionie platformy Azure, usługi Azure File Sync integruje się z [nadmiarowości magazynu geograficznie nadmiarowego](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) opcji (GRS). Magazyn GRS działa przy użyciu replikacji asynchronicznej bloku między magazynu i magazynu w regionie podstawowym, za pomocą którego można normalnie wchodzić w interakcje, w sparowanym regionie pomocniczym. W przypadku awarii, co powoduje, że region platformy Azure tymczasowo lub trwale w trybie offline firma Microsoft będzie magazynu trybu failover do regionu sparowanego. 
@@ -302,7 +311,7 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Zachodnie Zjednoczone Królestwo             | Południowe Zjednoczone Królestwo           |
 | Administracja USA — Arizona      | Administracja USA — Teksas       |
 | US Gov Iowa         | Administracja USA — Wirginia    |
-| US Gov Virgini      | Administracja USA — Teksas       |
+| Administracja USA — Wirginia      | Administracja USA — Teksas       |
 | Europa Zachodnia         | Europa Północna       |
 | Środkowo-zachodnie stany USA     | Zachodnie stany USA 2          |
 | Zachodnie stany USA             | Wschodnie stany USA            |

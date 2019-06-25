@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b996effbc03bd1f7c446965b0aa5fb6fa2d0175
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 91894f8fffc319b3dfd21d4c95d5a40cad351741
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024390"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273810"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Samouczek dotyczący architektury REST: Indeksowanie i wyszukiwanie częściowo ustrukturyzowanych danych (obiektów blob JSON) w usłudze Azure Search
 
@@ -127,7 +127,7 @@ Odpowiedź powinna wyglądać następująco:
 
 ## <a name="create-an-index"></a>Tworzenie indeksu
     
-Drugie wywołanie ma [interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-data-source), tworzenie indeksu usługi Azure Search, który przechowuje wszystkie dane z możliwością wyszukiwania. Indeks określa wszystkie parametry i ich atrybuty.
+Drugie wywołanie ma [interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-indexer), tworzenie indeksu usługi Azure Search, który przechowuje wszystkie dane z możliwością wyszukiwania. Indeks określa wszystkie parametry i ich atrybuty.
 
 Adres URL dla tego wywołania wygląda następująco: `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Zastąp element `[service name]` nazwą usługi wyszukiwania.
 

@@ -9,15 +9,15 @@ ms.date: 12/17/2018
 ms.author: dkshir
 ms.custom: include file
 ms.openlocfilehash: 0c89c8353d410ddd54e8a59f3838c914702b96ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153702"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183894"
 ---
 1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
 
-1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**. Wyszukaj pozycję **digital twins** i wybierz pozycję **Digital Twins (wersja zapoznawcza)**. Wybierz przycisk **Utwórz**, aby rozpocząć proces wdrażania.
+1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**. Wyszukaj pozycję **digital twins** i wybierz pozycję **Digital Twins (wersja zapoznawcza)** . Wybierz przycisk **Utwórz**, aby rozpocząć proces wdrażania.
 
    ![Opcje podczas tworzenia nowego wystąpienia usługi Digital Twins](./media/create-digital-twins-portal/create-digital-twins.png)
 

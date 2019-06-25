@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: c957a98cdb6c195f7ed9b41dabc66a32714f57e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7f68398cb473ca166d328ee15a92f3c848840f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142528"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273301"
 ---
 # <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Samouczek: Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy
+
+> [!NOTE]
+> Mimo że w tym samouczku użyto [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) przykłady ogólne kroki są takie same dla [interfejsu API REST](https://docs.microsoft.com/rest/api/media/liveevents), [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), lub inne obsługiwane [zestawów SDK](media-services-apis-overview.md#sdks) .
 
 Usługa Media Services umożliwia dostarczanie HTTP Live Streaming (HLS), MPEG-DASH i Smooth Streaming, zaszyfrowany przy użyciu AES przy użyciu kluczy szyfrowania 128-bitowego. Media Services udostępnia również usługa dostarczania kluczy, która dostarcza kluczy szyfrowania do autoryzowanych użytkowników. Chcąc usługi Media Services dynamicznie szyfrując Twój film wideo, możesz skojarzyć klucz szyfrowania z lokalizatora przesyłania strumieniowego, a także skonfigurować zasad klucza zawartości. Zleconą strumienia za pomocą odtwarzacza Media Services używa określonego klucza dynamiczne szyfrowanie zawartości przy użyciu algorytmu AES-128. Aby odszyfrować strumień, odtwarzacz żąda klucza z usługi dostarczania kluczy. Aby określić, czy użytkownik został autoryzowany do otrzymywania klucza, usługa ocenia zasady kluczy zawartości, które wybrano dla klucza.
 

@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc3c1a05c64edea260bd177dd7eaefc003db5310
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65507225"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296289"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Zarządzanie grupami zasobów usługi Azure Resource Manager przy użyciu witryny Azure portal
 
@@ -109,14 +106,6 @@ Znaczniki można dodawać do grup zasobów i zasobów w celu logicznego uporząd
 ## <a name="export-resource-groups-to-templates"></a>Eksportowanie grupy zasobów do szablonów
 
 Aby uzyskać informacji na temat eksportowania szablonów, zobacz [eksportowania pojedynczych i wielu zasobów do szablonu — Portal](export-template-portal.md).
-
-### <a name="fix-export-issues"></a>Rozwiązywanie problemów z eksportowaniem
-
-Nie wszystkie typy zasobów obsługują funkcję eksportowania szablonu. Wyświetlane są tylko eksportowanie problemy podczas eksportowania z grupy zasobów, a nie z historii wdrożenia. Jeśli ostatnie wdrożenie dokładnie reprezentuje bieżący stan grupy zasobów, należy wyeksportować szablon z historii wdrożenia — nie na podstawie grupy zasobów. Tylko wyeksportować z grupy zasobów, gdy wprowadzono zmiany w grupie zasobów, które nie są zdefiniowane w pojedynczym szablonie.
-
-Aby rozwiązać problemy eksportu, należy ręcznie dodać brakujące zasoby do szablonu. Komunikat o błędzie zawiera typy zasobów, których nie można eksportować. Znajdź ten typ zasobów w [dokumentacji szablonu](/azure/templates/). Aby na przykład ręcznie dodać bramę sieci wirtualnej, zobacz [Microsoft.Network/virtualNetworkGateways template reference](/azure/templates/microsoft.network/virtualnetworkgateways) (Dokumentacja szablonu Microsoft.Network/virtualNetworkGateways). Odwołanie do szablonu zapewnia JSON, aby dodać nowy zasób do szablonu.
-
-Po otrzymaniu w formacie JSON dla zasobu, musisz pobrać wartości zasobu. Widać wartości dla zasobu za pomocą operacji pobierania w interfejsie API REST dla typu zasobu. Na przykład, aby uzyskać wartości dla swojej bramy sieci wirtualnej, zobacz [bramy sieci wirtualnej — Pobierz](/rest/api/network-gateway/virtualnetworkgateways/get).
 
 ## <a name="manage-access-to-resource-groups"></a>Zarządzanie dostępem do grup zasobów
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91880e43382662b5d55f112455ee8f4c92ad01c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d206ea1afe43a91707a4bcd981a4158ff08fdc3a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66471604"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206162"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Przenieść własność subskrypcji platformy Azure do innego konta
 
@@ -116,7 +116,7 @@ Wszystkie zasoby, takie jak maszyny wirtualne, dyski i witryn sieci Web przesył
 
 ### <a id="no-button"></a> Dlaczego nie widać przycisku "Przeniesienia subskrypcji"?
 
-Niestety przenoszenie Samoobsługa subskrypcji nie jest niedostępna dla danej oferty. Wyświetl listę ofert obsługiwanych w [obsługiwane oferty](#supported-offers) dalszej części tego artykułu. Ponadto firma Microsoft nie blokują przeniesienia subskrypcji dla dowolnego krajów. Jednak kraj przenoszenia nie jest obsługiwana. Aby przenieść swoją subskrypcję krzyżowe kraju [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
+Niestety samoobsługowy transfer subskrypcji jest niedostępna dla danej oferty. Wyświetl listę ofert obsługiwanych w [obsługiwane oferty](#supported-offers) dalszej części tego artykułu. Ponadto firma Microsoft nie blokują przeniesienia subskrypcji dla dowolnego krajów. Zobacz [pełną listę krajów](https://azure.microsoft.com/pricing/faq/) których platforma Azure jest dostępne na rynku. Samoobsługowy transfer subskrypcji nie obsługuje jednak transferu między kraju. Aby przenieść swoją subskrypcję krzyżowe kraju [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
 
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Czy mogę przenieść własności konta w innym kraju?

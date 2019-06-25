@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: f17c364d258ef356a98180c9903603d92a6a9245
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7789970b47f0e55adee5bbe9da9f303aee6cdb25
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078523"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190123"
 ---
 # <a name="troubleshooting-package-execution-in-ssis-integration-runtime"></a>Rozwiązywanie problemów z wykonanie pakietu w środowiska SSIS integration runtime
 
@@ -103,6 +103,13 @@ Ten artykuł zawiera najbardziej typowych błędów, które może napotkać podc
 ### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Komunikat o błędzie: "Środowiska integration runtime nie może zostać uaktualniony i ostatecznie przestanie działać, ponieważ firma Microsoft nie może uzyskać dostępu w kontenerze obiektów Blob platformy Azure parametru instalacji niestandardowej."
 
 * Ten błąd występuje, gdy środowiska SSIS Integration Runtime nie może uzyskać dostępu skonfigurowanego dla ustawienia niestandardowego magazynu. Sprawdź, czy podany identyfikator Uri sygnatury dostępu Współdzielonego jest prawidłowa i nie wygasło.
+
+### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Komunikat o błędzie: "Dostawca Microsoft OLE DB usług Analysis Services. "Hresult: 0x80004005 opis: " Błąd modelu COM: Błąd modelu COM: mscorlib; Obiekt docelowy wywołania zgłosił wyjątek"
+
+* Potencjalną przyczyną & Zalecana akcja:
+  * Jednego z potencjalną przyczyną tej nazwy użytkownika/hasła z usługą MFA, włączone jest skonfigurowany do uwierzytelniania usług Azure Analysis Services, który nie jest obsługiwany w środowiska SSIS integration runtime na jeszcze. Spróbuj użyć jednostki usługi do uwierzytelniania usługi Azure Analysis Service:
+    1. Przygotowanie nazwy głównej usługi dla AAS [https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)
+    2. W Menedżerze połączeń, skonfiguruj "Przy użyciu określonej nazwy użytkownika i hasło": Ustaw "AppID" jako nazwy użytkownika i "clientSecret" jako hasło
 
 ### <a name="package-takes-unexpected-long-time-to-execute"></a>Pakiet ma nieoczekiwany długi czas wykonywania
 

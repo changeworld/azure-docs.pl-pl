@@ -7,16 +7,18 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9accdc19062cba7bb313afac3da056798c325a4c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65137857"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274419"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Praca z zestawami danych w dużej ilości zasobów platformy Azure
 
 Wykres zasobów platformy Azure jest przeznaczona dla pracę i pobieranie informacji na temat zasobów w środowisku platformy Azure. Wykres zasobów sprawia, że szybkie, pobieranie tych danych nawet wtedy, gdy podczas badania tysięcy rekordów. Wykres zasobów ma kilka opcji do pracy z tymi dużych zestawów danych.
+
+Aby uzyskać wskazówki na temat pracy z zapytaniami o wysokiej częstotliwości, zobacz [wskazówki dotyczące żądania ograniczone](./guidance-for-throttled-requests.md).
 
 ## <a name="data-set-result-size"></a>Rozmiar wyników zestawu danych
 
@@ -84,6 +86,6 @@ Aby uzyskać przykład, zobacz [następnej strony kwerendy](/rest/api/azureresou
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz język używany w [początkowego zapytania](../samples/starter.md)
-- Zobacz zaawansowane używa w [zaawansowanych zapytań](../samples/advanced.md)
-- Dowiedz się, jak [eksplorować zasoby](explore-resources.md)
+- Zobacz język używany w [początkowego zapytania](../samples/starter.md).
+- Zobacz zaawansowane używa w [zaawansowanych zapytań](../samples/advanced.md).
+- Dowiedz się, jak [zapoznaj się z zasobami](explore-resources.md).

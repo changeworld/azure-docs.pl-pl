@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 2d4164037f9b61b911ce5caf60d4813d94f31dd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157094"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183657"
 ---
 > [!div class="op_single_selector"]
 > * [Narzędzie AzCopy](../articles/lab-services/devtest-lab-upload-vhd-using-azcopy.md)
 > * [Microsoft Azure Storage Explorer](../articles/lab-services/devtest-lab-upload-vhd-using-storage-explorer.md)
-> * [Program PowerShell](../articles/lab-services/devtest-lab-upload-vhd-using-powershell.md)
+> * [PowerShell](../articles/lab-services/devtest-lab-upload-vhd-using-powershell.md)

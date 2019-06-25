@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65139264"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146304"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzania i konserwacji agenta usługi Log Analytics dla Windows i Linux
 
@@ -300,4 +300,6 @@ Wykonaj poniższe kroki, aby skonfigurować agenta usługi Log Analytics dla sys
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przegląd [Rozwiązywanie problemów z agentem systemu Linux](agent-linux-troubleshoot.md) Jeśli napotkasz problemy podczas instalowania lub zarządzania agenta.
+- Przegląd [Rozwiązywanie problemów z agentem systemu Linux](agent-linux-troubleshoot.md) Jeśli napotkasz problemy podczas instalowania lub zarządzania agenta systemu Linux.
+
+- Przegląd [Rozwiązywanie problemów z agentem Windows](agent-windows-troubleshoot.md) Jeśli napotkasz problemy podczas instalowania lub zarządzania agenta Windows.

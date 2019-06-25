@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4724789dd1a0893c5ef4ab112306c185f0e87da7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162078"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274386"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Graph zasobów
 
@@ -71,7 +71,7 @@ Wykres zasobów ogranicza zapytań na poziomie użytkownika. Odpowiedź usługi 
 - `x-ms-user-quota-remaining` (int): Pozostały limit przydziału zasobów dla użytkownika. Ta wartość jest mapowany na liczby zapytań.
 - `x-ms-user-quota-resets-after` (: mm: ss): Czas trwania, dopóki nie zostanie zresetowane przez użytkownika limit przydziału użycia
 
-Aby uzyskać więcej informacji, zobacz [żądania ograniczania przepustowości usługi Resource Manager](../../azure-resource-manager/resource-manager-request-limits.md).
+Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące żądania ograniczone](./concepts/guidance-for-throttled-requests.md).
 
 ## <a name="running-your-first-query"></a>Uruchamianie pierwszego zapytania
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 7e006b8bc05d00de3e5fba20985e30fd5e96c1df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4df3d6a55021cafa04bb6bcba643be41dc0e612
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708678"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273775"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie dostępu WinRM dla maszyn wirtualnych w usłudze Azure Resource Manager
 
@@ -93,7 +93,7 @@ Można uzyskać link do adresu URL w szablonie, używając poniższego kodu
 #### <a name="powershell"></a>PowerShell
 Możesz uzyskać ten adres URL przy użyciu poniższego polecenia programu PowerShell
 
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5. Odwołanie adresu URL certyfikatów z podpisem własnym podczas tworzenia maszyny Wirtualnej
 #### <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
@@ -138,7 +138,7 @@ Kod źródłowy dla tego szablonu można znaleźć na [GitHub](https://github.co
 #### <a name="powershell"></a>PowerShell
     $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
     $credential = Get-Credential
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
     $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
     $sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
     $CertificateStore = "My"

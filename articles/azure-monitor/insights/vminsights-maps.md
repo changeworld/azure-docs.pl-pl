@@ -1,6 +1,6 @@
 ---
 title: Jak wyświetlić zależności aplikacji z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Mapa jest funkcją monitora platformy Azure dla maszyn wirtualnych, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące sposobu używania go w różnych scenariuszach.
+description: Mapa jest funkcją usługi Azure Monitor dla maszyn wirtualnych. Automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje na temat korzystania z funkcji mapy w różnych scenariuszach.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,117 +13,131 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 792c2bd02b666cd656f1df368a7a60db44ccf8c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6273e9b6c7ed0c4685479976343497f01201b0b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522175"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206756"
 ---
-# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>W przypadku maszyn wirtualnych (wersja zapoznawcza) mapę, aby poznać składniki aplikacji za pomocą usługi Azure Monitor
-Wyświetlanie składniki odnalezionych aplikacji na maszynach wirtualnych Windows i Linux, działające na platformie Azure w środowisku można zaobserwować na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
+# <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Funkcja mapy usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) pozwala zrozumieć składników aplikacji
+W usłudze Azure Monitor dla maszyn wirtualnych możesz wyświetlić składniki odnalezionych aplikacji na Windows i Linux maszyn wirtualnych (VM działających na platformie Azure lub w danym środowisku). Możesz obserwować maszyn wirtualnych na dwa sposoby. Umożliwia wyświetlenie mapy bezpośrednio z poziomu maszyny Wirtualnej lub wyświetlić mapę z usługi Azure Monitor, aby wyświetlić składniki między grupami maszyn wirtualnych. Ten artykuł pomoże zrozumieć te dwie metody wyświetlania i jak za pomocą funkcji mapy. 
 
-Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw i jak za pomocą funkcji mapy. Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
+Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-## <a name="introduction-to-map-experience"></a>Wprowadzenie do środowiska mapy
-Przed zagłębieniem się w wyświetlania mapy dla pojedynczej maszyny wirtualnej lub grupy maszyn wirtualnych, ważne jest, że firma Microsoft zapewnia krótkie wprowadzenie do funkcji, aby zrozumieć sposób prezentowania informacji i reprezentują wizualizacji.  
+## <a name="introduction-to-the-map-experience"></a>Wprowadzenie do środowiska mapy
+Przed zagłębieniem się w środowisku mapy, należy zrozumieć, jak przedstawiono i wizualizuje informacji. Czy funkcja mapy wybierz się bezpośrednio z maszyny Wirtualnej lub usługi Azure Monitor, funkcja mapy przedstawia spójne środowisko. Jedyną różnicą jest to, że z usługi Azure Monitor jedną mapę pokazuje wszystkie elementy członkowskie aplikacji n warstwowych lub klastra.
 
-Czy funkcja mapy wybierz się bezpośrednio z maszyny Wirtualnej lub usługi Azure Monitor, przedstawia spójne środowisko.  Jedyną różnicą jest z usługi Azure Monitor możesz zobaczyć wszystkie elementy członkowskie wielowarstwową aplikację lub klastra, w jedną mapę.
+Funkcja mapy umożliwia wizualizowanie zależności maszyny Wirtualnej przez odnajdywanie uruchomione procesy, które mają: 
 
-Mapy wizualizuje zależności maszyn wirtualnych, odnajdując uruchomione procesy z aktywnymi połączeniami sieciowymi między serwerami, czas oczekiwania na połączenie przychodzące i wychodzące i porty w dowolnej architekturze połączenia TCP za pośrednictwem określonego przedziału czasu.  Rozwijanie maszyny Wirtualnej przedstawia szczegóły procesu i wyświetlane są tylko procesy, które komunikują się z maszyną Wirtualną. Wskazuje liczbę frontonu klienci, którzy łączą się z maszyną wirtualną z grupy klientów. Liczba serwerów zaplecza maszyna wirtualna łączy się z są wskazywane na serwerze grup portów. Rozwiń grupę portu serwera, aby wyświetlić szczegółową listę serwerów połączonych za pośrednictwem tego portu.  
+- Aktywnych połączeń sieciowych między serwerami.
+- Czas oczekiwania na połączenie przychodzące i wychodzące.
+- Portami w dowolnej architekturze połączenia TCP za pośrednictwem określonego przedziału czasu.  
+ 
+Rozwiń maszynę Wirtualną, aby wyświetlić szczegóły procesu i tylko procesy, które komunikują się z maszyną Wirtualną. Grupa klientów pokazuje liczbę frontonu klienci, którzy łączą się z maszyną wirtualną. Grupy port serwera pokazują liczbę serwerów zaplecza, z którymi łączy się z maszyną Wirtualną. Rozwiń grupę port serwera, aby wyświetlić szczegółową listę serwerów łączących się za pośrednictwem tego portu.  
 
-Po kliknięciu na maszynie wirtualnej **właściwości** podzielonego w okienku po prawej stronie, aby wyświetlić właściwości elementu zaznaczone, takie jak informacje o systemie zgłoszony przez system operacyjny, właściwości maszyny Wirtualnej platformy Azure i pierścieniowe Podsumowanie odnalezionych połączeń. 
+Po wybraniu maszyny Wirtualnej, **właściwości** w okienku po prawej stronie są wyświetlane właściwości maszyny Wirtualnej. Właściwości obejmują informacje o systemie zgłoszony przez system operacyjny, właściwości maszyny Wirtualnej platformy Azure i wykres pierścieniowy, który podsumowuje odnalezionych połączeń. 
 
-![Właściwości systemu komputera](./media/vminsights-maps/properties-pane-01.png)
+![Zawartość okienka właściwości](./media/vminsights-maps/properties-pane-01.png)
 
-Na stronie po prawej stronie okienka, kliknij **zdarzenia dziennika** ikonę, aby przełączać fokus okienka, aby wyświetlić listę tabel, które zbiera dane z maszyny Wirtualnej zostało wysłane do usługi Azure Monitor i jest dostępna dla zapytań.  Kliknięcie na jednym z typów rekordów na liście spowoduje otwarcie **dzienniki** strony, aby wyświetlić wyniki dla tego typu, ze wstępnie skonfigurowanym zapytaniem filtrowany na podstawie określonej maszyny wirtualnej.  
+Po prawej stronie okienka wybierz **zdarzenia dziennika** do wyświetlenia listy danych, które maszyny Wirtualnej zostało wysłane do usługi Azure Monitor. Te dane są dostępne dla zapytań.  Wybierz dowolny typ rekordu, aby otworzyć **dzienniki** strony, gdzie zobaczysz wyniki dla danego typu rekordu. Zobaczysz również wstępnie skonfigurowane zapytanie, które są filtrowane względem maszyny Wirtualnej.  
 
-![Lista wyszukiwania dzienników w okienku właściwości](./media/vminsights-maps/properties-pane-logs-01.png)
+![W okienku dziennika zdarzeń](./media/vminsights-maps/properties-pane-logs-01.png)
 
-Zamknij **dzienniki** i wrócić do **właściwości** okienka, a następnie wybierz **alerty** przeglądający alerty, które alerty zgłoszone dla maszyny Wirtualnej z kryteria kondycji. Mapa integruje się z alertami platformy Azure, aby wyświetlić wyzwolone alerty dla wybranego serwera w wybranym zakresie czasu. Serwer wyświetla ikony, jeśli istnieją bieżące alerty, a okienko maszyny alertów zawiera alerty. 
+Zamknij **dzienniki** strony, a następnie wróć do **właściwości** okienka. Tam, wybierz **alerty** przeglądający alerty kryteria kondycji maszyny Wirtualnej. Funkcja mapy integruje się z usługą Azure Alerts, aby wyświetlić alerty dla wybranego serwera w wybranym zakresie czasu. Serwer Wyświetla ikonę bieżące alerty i **alerty maszyny** okienku są wyświetlane alerty. 
 
-![Alerty komputera w okienku właściwości](./media/vminsights-maps/properties-pane-alerts-01.png)
+![W okienku alertów](./media/vminsights-maps/properties-pane-alerts-01.png)
 
-Aby włączyć funkcję Map do wyświetlenia powiązanych alertów, Utwórz regułę alertu, który jest uruchamiany dla określonego komputera. Aby utworzyć odpowiednie alerty:
-- Zawiera klauzulę do grupy według komputera (na przykład **komputera interwał 1 minutę**).
-- Wybierz alert w oparciu metryki pomiaru.
+Aby funkcja mapy wyświetlania powiązanych alertów, Utwórz regułę alertu, który ma zastosowanie do konkretnego komputera:
 
-Aby uzyskać więcej informacji o alertach platformy Azure i tworzenia reguł alertów, zobacz [Unified alertów w usłudze Azure Monitor](../../azure-monitor/platform/alerts-overview.md)
+- Zawiera klauzulę grupy alertów według komputera (na przykład **komputera interwał 1 minutę**).
+- Podstawa alert dla metryki.
 
-**Legendy** opcji w prawym górnym rogu w tym artykule opisano symboli i role na mapie.  Aby powiększyć bliższe spojrzenie na mapie, a następnie przenieść it wokół kontrolki powiększania u dołu po prawej stronie strony ustawia poziom powiększenia i rozmiaru strony do rozmiaru bieżącej strony.  
+Aby uzyskać więcej informacji o alertach platformy Azure i tworzenia reguł alertów, zobacz [Unified alertów w usłudze Azure Monitor](../../azure-monitor/platform/alerts-overview.md).
+
+W prawym górnym rogu **legendy** opcja opisuje symboli i role na mapie. Aby uzyskać bliższe spojrzenie na mapie i przenieść je wokół należy użyć kontrolki powiększania w prawym dolnym rogu. Można ustawić poziom powiększenia i dopasować mapę do rozmiaru strony.  
 
 ## <a name="connection-metrics"></a>Metryki połączeń
-**Połączeń** okienku są wyświetlane metryki standardowe łączności dla wybranego połączenia z maszyną Wirtualną za pośrednictwem portu TCP. Metryki obejmują czas odpowiedzi, żądań na minutę, przepływność ruchu sieciowego i łącza.  
+**Połączeń** okienko wyświetla standardowych metryk dla wybranego połączenia z maszyną Wirtualną za pośrednictwem portu TCP. Metryki obejmują czas odpowiedzi, żądań na minutę, przepływność ruchu sieciowego i łącza.  
 
-![Przykład w okienku wykresy łączności sieciowej](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
+![Wykresy łączności sieciowej w okienku połączenia](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
 
 ### <a name="failed-connections"></a>Połączenia zakończone niepowodzeniem
-Połączenia zakończone niepowodzeniem są wyświetlane na mapie dla procesów i komputerów z kreskowanym czerwoną linią wskazującym, czy system klienta nie może dotrzeć do procesu lub portu. Połączenia zakończone niepowodzeniem są zgłaszane z dowolnego systemu za pomocą agenta zależności, w przypadku tego systemu jest próba nawiązania połączenia nie powiodło się. Mapy mierzy ten proces, obserwując gniazda TCP, których nie można ustanowić połączenia. Ten błąd może wynikać z zapory, błędnej konfiguracji klienta, serwera lub usługi zdalnej jest niedostępny.
+Mapa zawiera połączenia zakończone niepowodzeniem dla procesów i komputerów. Czerwoną linię przerywaną, co oznacza, że system klienta nie powiodło się dotrzeć do procesu lub portu. Dla systemów, które używają agenta zależności agent raporty dotyczące prób nawiązania połączenia nie powiodło się. Funkcja mapy monitoruje proces obserwując gniazda TCP, których nie można ustanowić połączenia. Ten błąd może spowodować z zapory, błędnej konfiguracji klienta, serwera lub niedostępna usługi zdalnej.
 
-![Przykład połączenia nie powiodło się na mapie](./media/vminsights-maps/map-group-failed-connection-01.png)
+![Nie powiodło się połączenie na mapie](./media/vminsights-maps/map-group-failed-connection-01.png)
 
-Omówienie połączenia zakończone niepowodzeniem może pomóc w rozwiązywaniu problemów, weryfikacja migracji, analizy zabezpieczeń i zrozumienie ogólna Architektura usług. Połączenia zakończone niepowodzeniem są czasami nieszkodliwe, ale często wskazują bezpośrednio do problemu, takie jak środowisko pracy awaryjnej, nagle staje się niedostępny lub dwie warstwy aplikacji nie będzie w stanie komunikować się ze sobą po migracji do chmury.
+Opis połączenia zakończone niepowodzeniem mogą ułatwić rozwiązywanie problemów z, zweryfikuj migrację, analizowania zabezpieczeń i interpretację ogólna Architektura usług. Połączenia zakończone niepowodzeniem są czasami nieszkodliwe, ale często wskazują na problem. Połączenia może zakończyć się niepowodzeniem, na przykład, gdy środowisko pracy awaryjnej nagle stanie się niedostępny lub gdy dwie warstwy aplikacji nie może komunikować się ze sobą po migracji do chmury.
 
 ### <a name="client-groups"></a>Grup klientów
-Grup klientów na mapie reprezentują komputerów klienckich, które mają połączenie z maszyną zamapowanego. Pojedynczą grupę klienta reprezentuje klientów dla poszczególnych proces lub komputera.
+Na mapie grup klientów reprezentują komputerami klienckimi, które połączenie z maszyną zamapowany. Pojedynczej grupy klientów reprezentuje klientów dla poszczególnych proces lub komputera.
 
-![Przykład grup klienta na mapie](./media/vminsights-maps/map-group-client-groups-01.png)
+![Grupa klientów na mapie](./media/vminsights-maps/map-group-client-groups-01.png)
 
-Aby zobaczyć monitorowanych klientów i adresy IP należące do grupy klientów, wybierz grupę. Zawartość grupy są wymienione pod grupą.  
+Aby zobaczyć monitorowanych klientów i adresy IP należące do grupy klientów, wybierz grupę. Zawartość grupy są wyświetlone poniżej.  
 
-![Przykład listy adresów IP grupy klienta na mapie](./media/vminsights-maps/map-group-client-group-iplist-01.png)
+![Grupa klientów listę adresów IP na mapie](./media/vminsights-maps/map-group-client-group-iplist-01.png)
 
-Grupa zawiera klientów z monitorowanych i bez monitorowania, po wybraniu odpowiedniej sekcji wykresu pierścieniowego grupy do filtrowania klientów.
+Jeśli grupa zawiera monitorowanych i niemonitorowanych klientów, możesz wybrać do odpowiedniej sekcji wykresu pierścieniowego grupy do filtrowania klientów.
 
 ### <a name="server-port-groups"></a>Port serwera grup
-Port serwera grupy reprezentują porty serwera na serwerach, które mają połączenia przychodzące z maszyny zamapowany. Grupa zawiera port serwera i liczbę serwerów przy użyciu połączenia do tego portu. Wybierz grupę, aby wyświetlić poszczególne serwery i połączeń na liście. 
+Port serwera grupy reprezentują portów na serwerach, które mają połączenia przychodzące z maszyny zamapowany. Grupa zawiera port serwera i liczbę serwerów, które mają połączeń do tego portu. Wybierz grupę, aby wyświetlić poszczególne serwery i połączeń. 
 
-![Przykład grupy portów serwera, na mapie](./media/vminsights-maps/map-group-server-port-groups-01.png)  
+![Grupa port serwera, na mapie](./media/vminsights-maps/map-group-server-port-groups-01.png)  
 
-Grupa zawiera serwery monitorowanych i bez monitorowania, po wybraniu odpowiedniej sekcji wykresu pierścieniowego grupy do filtrowania serwery.
+Jeśli grupa zawiera monitorowanych i monitorowany serwerów, możesz wybrać odpowiednie części wykresu pierścieniowego grupy do filtrowania serwery.
 
-## <a name="view-map-directly-from-a-virtual-machine"></a>Wyświetlanie mapy bezpośrednio z maszyny wirtualnej 
+## <a name="view-a-map-from-a-vm"></a>Umożliwia wyświetlenie mapy z maszyny Wirtualnej 
 
-Aby uzyskać dostęp do usługi Azure Monitor dla maszyn wirtualnych bezpośrednio z maszyny wirtualnej, wykonaj następujące czynności.
+Dostęp do usługi Azure Monitor dla maszyn wirtualnych bezpośrednio z poziomu maszyny Wirtualnej:
 
 1. W witrynie Azure portal wybierz **maszyn wirtualnych**. 
-2. Z listy wybierz Maszynę wirtualną i **monitorowanie** wybierz sekcję **Insights (wersja zapoznawcza)** .  
+2. Z listy wybierz Maszynę wirtualną. W **monitorowanie** wybierz pozycję **Insights (wersja zapoznawcza)** .  
 3. Wybierz **mapy** kartę.
 
-Mapa wizualizuje zależności maszyn wirtualnych, które działa grupa procesów i procesy z aktywnymi połączeniami sieciowymi, za pośrednictwem określonego przedziału czasu.  Domyślnie mapy zawiera ostatnich 30 minut.  Za pomocą **TimeRange** selektor w lewym górnym rogu, możesz wyszukać zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany).  
+Mapa umożliwia wizualizowanie zależności maszyny Wirtualnej przez odnajdywanie uruchamianie grupy procesów i procesy z aktywnymi połączeniami sieciowymi za pośrednictwem określonego przedziału czasu.  
+
+Domyślnie mapy zawiera ostatnich 30 minut. Jeśli chcesz zobaczyć, jak wyglądał zależności w przeszłości, można wysyłać zapytania dotyczące zakresy czasu historycznych maksymalnie jedną godzinę. Aby uruchomić zapytanie, należy użyć **TimeRange** selektor w lewym górnym rogu. Zapytanie, może działać, na przykład podczas zdarzenia lub aby wyświetlić stan przed zmianą.  
 
 ![Bezpośredni Przegląd mapy maszyn wirtualnych](./media/vminsights-maps/map-direct-vm-01.png)
 
-## <a name="view-map-directly-from-a-virtual-machine-scale-set"></a>Wyświetlanie mapy bezpośrednio od skali maszyny wirtualnej ustawić
+## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Umożliwia wyświetlenie mapy z zestawu skalowania maszyn wirtualnych
 
-Aby uzyskać dostęp do usługi Azure Monitor dla maszyn wirtualnych bezpośrednio z zestawu skalowania maszyn wirtualnych, wykonaj następujące czynności.
+Dostęp do usługi Azure Monitor dla maszyn wirtualnych bezpośrednio z zestawu skalowania maszyn wirtualnych:
 
 1. W witrynie Azure portal wybierz **zestawy skalowania maszyn wirtualnych**.
-2. Z listy wybierz Maszynę wirtualną i **monitorowanie** wybierz sekcję **Insights (wersja zapoznawcza)** .  
+2. Z listy wybierz Maszynę wirtualną. Następnie w **monitorowanie** wybierz pozycję **Insights (wersja zapoznawcza)** .  
 3. Wybierz **mapy** kartę.
 
-Mapa wizualizuje wszystkich wystąpień w zestawie jako węzeł grupy wraz z zależnościami grupy skalowania. Rozwinięty węzeł zawiera listę wystąpień w zestawie skalowania, który można przewijać dziesięciokrotnie w danym momencie. Aby załadować mapy dla konkretnego wystąpienia, wybierz wystąpienia na mapie, a następnie kliknij przycisk z wielokropkiem, aby go jest odpowiednia i wybierz polecenie **Załaduj mapę serwera**. Spowoduje to załadowanie mapy dla tego wystąpienia, dzięki czemu możesz widzieć grupy procesów i procesy z aktywnymi połączeniami sieciowymi za pośrednictwem określonego przedziału czasu. Domyślnie mapy zawiera ostatnich 30 minut. Za pomocą **TimeRange** selektor może wyszukiwać zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany).  
+Mapa wizualizuje wszystkich wystąpień w zestawie jako węzeł grupy wraz z zależnościami grupy skalowania. Rozwinięty węzeł zawiera listę wystąpień w zestawie skalowania. Te wystąpienia 10 można przewijać w danym momencie. 
+
+Aby załadować mapy dla konkretnego wystąpienia, należy najpierw wybrać tego wystąpienia na mapie. Następnie wybierz pozycję **wielokropka** przycisku (...) po prawej stronie i wybierz polecenie **Załaduj mapę serwera**. Na mapie, który pojawia się Zobacz grupy procesów i procesy z aktywnymi połączeniami sieciowymi za pośrednictwem określonego przedziału czasu. 
+
+Domyślnie mapy zawiera ostatnich 30 minut. Jeśli chcesz zobaczyć, jak wyglądał zależności w przeszłości, można wysyłać zapytania dotyczące zakresy czasu historycznych maksymalnie jedną godzinę. Aby uruchomić zapytanie, należy użyć **TimeRange** selektora. Zapytanie, może działać, na przykład podczas zdarzenia lub aby wyświetlić stan przed zmianą.
 
 ![Bezpośredni Przegląd mapy maszyn wirtualnych](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->Można także przejść mapy dla konkretnego wystąpienia z widoku wystąpień dla zestawu skalowania maszyn wirtualnych. Przejdź do **wystąpień** w obszarze **ustawienia** sekcji, a następnie wybierz **Insights (wersja zapoznawcza)** .
+>Można także przejść do mapy dla konkretnego wystąpienia z **wystąpień** widoku dla zestawu skalowania maszyn wirtualnych. W **ustawienia** przejdź do sekcji **wystąpień** > **Insights (wersja zapoznawcza)** .
 
-## <a name="view-map-from-azure-monitor"></a>Wyświetlanie mapy z usługi Azure Monitor
-Z usługi Azure Monitor funkcja mapy zapewnia globalny widok Twoich maszyn wirtualnych i ich zależności.  Aby skorzystać z funkcji mapy, z usługi Azure Monitor, wykonaj następujące czynności. 
+## <a name="view-a-map-from-azure-monitor"></a>Umożliwia wyświetlenie mapy z usługi Azure Monitor
+W usłudze Azure Monitor funkcja mapy zapewnia globalny widok Twoich maszyn wirtualnych i ich zależności. Dostęp do funkcji mapy w usłudze Azure Monitor:
 
 1. W witrynie Azure portal wybierz **Monitor**. 
-2. Wybierz **maszyny wirtualne (wersja zapoznawcza)** w **Insights** sekcji.
+2. W **Insights** wybierz pozycję **maszyny wirtualne (wersja zapoznawcza)** .
 3. Wybierz **mapy** kartę.
 
-![Omówienie mapy wielu maszyn wirtualnych w usłudze Azure Monitor](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
+   ![Usługa Azure Monitor mapowanie przeglądów z wielu maszyn wirtualnych](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Z **obszaru roboczego** selektor w górnej części strony, jeśli masz więcej niż jednym obszarze roboczym usługi Log Analytics wybierz obszar roboczy, który jest włączone za pomocą rozwiązania i ma raportujących do niego maszyny wirtualne. **Grupy** selektor zwróci subskrypcji, grupy zasobów [grup komputerów](../../azure-monitor/platform/computer-groups.md)i zestawy skalowania maszyn wirtualnych komputerów powiązanych z wybranym obszarem roboczym. Wybór tylko dotyczy funkcji mapy i nie jest przenoszone wydajności lub mapy.
+Wybierz obszar roboczy za pomocą **obszaru roboczego** selektor w górnej części strony. Jeśli masz więcej niż jeden obszar roboczy usługi Log Analytics, wybierz obszar roboczy, który został włączony, za pomocą rozwiązania i ma maszynach wirtualnych wysyłających raporty do niego. 
 
-Domyślnie mapy zawiera ostatnich 30 minut. Za pomocą **TimeRange** selektor, możesz wyszukać zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany).   
+**Grupy** selektor zwraca subskrypcji, grupy zasobów [grup komputerów](../../azure-monitor/platform/computer-groups.md)i zestawy skalowania maszyn wirtualnych, komputerów, które są powiązane z wybranym obszarem roboczym. Wybór dotyczy tylko funkcji mapy i nie jest przenoszone do wydajności i kondycji.
+
+Domyślnie mapy zawiera ostatnich 30 minut. Jeśli chcesz zobaczyć, jak wyglądał zależności w przeszłości, można wysyłać zapytania dotyczące zakresy czasu historycznych maksymalnie jedną godzinę. Aby uruchomić zapytanie, należy użyć **TimeRange** selektora. Zapytanie, może działać, na przykład podczas zdarzenia lub aby wyświetlić stan przed zmianą.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się, jak korzystać z funkcji health, zobacz [Wyświetl kondycję maszyn wirtualnych platformy Azure](vminsights-health.md), lub do identyfikowania wąskich gardeł i ogólnego użycia za pomocą wydajność maszyn wirtualnych, zobacz [widok usługi Azure Monitor wydajności maszyn wirtualnych](vminsights-performance.md). 
+- Aby dowiedzieć się, jak korzystać z funkcji Health, zobacz [maszyny Wirtualnej platformy Azure w widoku kondycji](vminsights-health.md). 
+- Zidentyfikuj wąskie gardła, sprawdź wydajność oraz zrozumienie ogólnego użycia maszyn wirtualnych, zobacz [wyświetlić stan wydajności dla usługi Azure Monitor dla maszyn wirtualnych](vminsights-performance.md). 

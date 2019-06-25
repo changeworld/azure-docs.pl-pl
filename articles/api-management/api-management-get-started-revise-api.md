@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107231"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203588"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Bezpieczne wprowadzanie zmian niepowodujących niezgodności przy użyciu poprawek
 Gdy interfejs API jest gotowy i zaczyna być używany przez deweloperów, zazwyczaj musisz wprowadzać zmiany w tym interfejsie API i jednocześnie nie zakłócać pracy wywołującym interfejs API. Ponadto warto poinformować deweloperów o wprowadzanych zmianach. Możemy to zrobić w usłudze Azure API Management przy użyciu **poprawek**. Aby uzyskać więcej informacji, zobacz [Wersje i poprawki](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) oraz [Przechowywanie wersji interfejsu API w usłudze Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -50,7 +50,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 4. Wybierz opcję **+ Dodaj poprawkę**
 
     > [!TIP]
-    > Możesz też wybrać opcję **Dodaj poprawkę** w menu kontekstowym (**...**) interfejsu API.
+    > Możesz też wybrać opcję **Dodaj poprawkę** w menu kontekstowym ( **...** ) interfejsu API.
 
 5. Podaj opis nowej poprawki, aby łatwiej zapamiętać, do czego służy.
 6. Wybierz pozycję **Utwórz**
@@ -82,7 +82,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
     ![Menu poprawki na ekranie poprawek.](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
 
-2. Otwórz menu kontekstowe (**...**) dla poprawki **Poprawka 2**.
+2. Otwórz menu kontekstowe ( **...** ) dla poprawki **Poprawka 2**.
 3. Wybierz opcję **Ustaw jako bieżącą**.
 4. Zaznacz pole **Publikuj w publicznym dzienniku zmian tego interfejsu API**, jeśli chcesz publikować uwagi dotyczące tej zmiany. Podaj opis zmiany, który zobaczą deweloperzy, na przykład: **Testowanie poprawek. Dodano nową operację „test”.**
 5. **Poprawka 2** jest teraz bieżącą poprawką.

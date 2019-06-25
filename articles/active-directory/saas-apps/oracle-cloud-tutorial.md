@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a034e7dc06defd701b58ec283ee161f5557c075d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 456c984e577e3427ce8cd62d6f63987118f2c8ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095444"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164152"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Samouczek: Integracja programu Oracle chmurze infrastruktury konsoli za pomocą usługi Azure Active Directory
 
@@ -92,7 +92,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
       > [!NOTE]
       > Jeśli wartości **Identyfikator** i **Adres URL odpowiedzi** nie zostaną automatycznie wypełnione, wpisz te wartości ręcznie zgodnie z wymaganiami.
 
-      W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: ` https://console.<REGIONNAME>.oraclecloud.com/`
+      W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
       > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta konsoli infrastruktury chmury Oracle](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa4e37e3b360727feb998ef5e9ca9b776c4b0e53
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688650"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303943"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
 
@@ -33,6 +33,19 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
 
 Aby uzyskać więcej informacji, zobacz [wskazówek dotyczących migracji do przenoszenia z usługi Media Services v2 do v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="june-2019"></a>2019 czerwca
+
+### <a name="video-subclipping"></a>Używać wideo
+
+Możesz teraz trim lub klipu podrzędnego wideo podczas kodowania za pomocą [zadania](https://docs.microsoft.com/rest/api/media/jobs). 
+
+Ta funkcja działa ze wszystkimi [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms) utworzonego za pomocą [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ustawienia wstępne, lub [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) ustawienia wstępne. 
+
+Zobacz przykłady:
+
+* [Klipu podrzędnego wideo przy użyciu platformy .NET](subclip-video-dotnet-howto.md)
+* [Wideo z użyciem usług REST klipu podrzędnego](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>Maja 2019 r
 

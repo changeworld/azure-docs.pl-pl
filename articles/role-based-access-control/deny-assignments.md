@@ -15,12 +15,12 @@ ms.date: 06/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 432703b5acb4cd56dac9b25edf99165ca26b0aa0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118273"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165978"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Zrozumienie Odmów przydziały dla zasobów platformy Azure
 
@@ -34,7 +34,7 @@ Odmowa przypisania są tworzone i zarządzane przez platformę Azure, aby chroni
 
 ## <a name="compare-role-assignments-and-deny-assignments"></a>Porównaj przypisań ról i odmawiać go przypisania
 
-Odmowa przypisania wykonaj podobny wzorzec Odmów przypisania, ale również mają pewne różnice.
+Odmowa przypisania wykonaj podobny wzorzec jako przypisania roli, ale także mieć pewne różnice.
 
 | Możliwości | Przypisanie roli | Zezwalaj na przypisanie |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ Odmowa przypisania wykonaj podobny wzorzec Odmów przypisania, ale również maj
 > | `Permissions.NotDataActions` | Nie | Ciąg] | Tablica ciągów, które określają operacje na danych, aby wykluczyć z przypisania Odmów. |
 > | `Scope` | Nie | String | Ciąg, który określa zakres, który dotyczy przypisania Odmów. |
 > | `DoNotApplyToChildScopes` | Nie | Boolean | Określa, czy przypisanie odmowy mają zastosowanie do zakresy podrzędne. Wartość domyślna to false. |
-> | `Principals[i].Id` | Tak | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których zostanie zastosowana przypisania Odmów. Ustaw na pustym identyfikatorem GUID `00000000-0000-0000-0000-000000000000` do reprezentowania wszystkich podmiotów zabezpieczeń. |
+> | `Principals[i].Id` | Yes | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których zostanie zastosowana przypisania Odmów. Ustaw na pustym identyfikatorem GUID `00000000-0000-0000-0000-000000000000` do reprezentowania wszystkich podmiotów zabezpieczeń. |
 > | `Principals[i].Type` | Nie | Ciąg] | Tablica typów obiektów, reprezentowane przez jednostki [i] .id. Ustaw `SystemDefined` do reprezentowania wszystkich podmiotów zabezpieczeń. |
 > | `ExcludePrincipals[i].Id` | Nie | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których przypisanie Odmów nie ma zastosowania. |
 > | `ExcludePrincipals[i].Type` | Nie | Ciąg] | Tablica typów obiektów, reprezentowane przez .id ExcludePrincipals [i]. |

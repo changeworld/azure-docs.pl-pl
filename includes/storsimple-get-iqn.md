@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 7adee90365fa8112389348757e48f2ff8935bb56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66118222"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183281"
 ---
 #### <a name="to-get-the-iqn-of-a-windows-host"></a>Aby pobrać nazwę IQN hosta z systemem Windows
 1. Uruchom inicjator iSCSI firmy Microsoft na hoście z systemem Windows. Kliknij pozycje **Start** > **Narzędzia administracyjne** > **Inicjator iSCSI**.

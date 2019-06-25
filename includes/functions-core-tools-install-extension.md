@@ -9,11 +9,11 @@ ms.date: 09/25/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66131463"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67182997"
 ---
 Pakiety rozszerzeń wprowadzić wszystkie powiązania opublikowane przez zespół usługi Azure Functions, dostępne za pośrednictwem ustawienie w *host.json* pliku. Dla wdrożenia lokalnego, upewnij się, masz najnowszą wersję [podstawowych narzędzi usługi Azure Functions](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools).
 

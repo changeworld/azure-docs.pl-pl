@@ -6,14 +6,14 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 05/27/2019
+ms.date: 06/18/2019
 ms.author: anuragm
-ms.openlocfilehash: 8459bb451c4ff462ee816b986cafdbf776603917
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ed30a35f30d1b6b9fdcd43110ed93618a10dbc3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306967"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204188"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
@@ -25,8 +25,7 @@ Aby wyświetlić uwagę funkcji, zapoznaj się z artykułem [kopii zapasowych pr
 
 ## <a name="sql-server-permissions"></a>Uprawnienia programu SQL Server
 
-Można skonfigurować ochrony dla bazy danych programu SQL Server na maszynie wirtualnej **AzureBackupWindowsWorkload** rozszerzenia musi być zainstalowany na tej maszynie wirtualnej. Jeśli wystąpi błąd, **UserErrorSQLNoSysadminMembership**, oznacza to wystąpienie programu SQL nie ma wymaganych uprawnień do tworzenia kopii zapasowej. Aby naprawić ten błąd, wykonaj kroki opisane w [ustawić uprawnienia dla maszyn wirtualnych SQL spoza witryny marketplace](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
-
+Można skonfigurować ochrony dla bazy danych programu SQL Server na maszynie wirtualnej **AzureBackupWindowsWorkload** rozszerzenia musi być zainstalowany na tej maszynie wirtualnej. Jeśli wystąpi błąd, **UserErrorSQLNoSysadminMembership**, oznacza to wystąpienie programu SQL nie ma wymaganych uprawnień do tworzenia kopii zapasowej. Aby naprawić ten błąd, wykonaj kroki opisane w [ustawić uprawnienia dla maszyn wirtualnych SQL spoza witryny marketplace](backup-azure-sql-database.md#set-vm-permissions).
 
 ## <a name="backup-type-unsupported"></a>Nieobsługiwany typ kopii zapasowej
 

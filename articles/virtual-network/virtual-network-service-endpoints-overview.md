@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: e621eeeca7a4f325efcfb242c204b2f727e55fc4
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61032585"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147760"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi dla sieci wirtualnej
 
@@ -61,7 +61,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 - Funkcja jest dostępna tylko dla sieci wirtualnych wdrożonych za pomocą modelu wdrażania przy użyciu usługi Azure Resource Manager.
 - Punkty końcowe są włączone w podsieciach skonfigurowanych w sieciach wirtualnych platformy Azure. Punktów końcowych nie można używać dla ruchu ze środowiska lokalnego do usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie dostępu do usług platformy Azure ze środowiska lokalnego](#securing-azure-services-to-virtual-networks)
 - W przypadku usługi Azure SQL punkt końcowy usługi dotyczy tylko ruchu usługi platformy Azure w regionie sieci wirtualnej. W przypadku usługi Azure Storage na potrzeby obsługi ruchu w magazynach GRS i RA-GRS punkty końcowe są rozszerzane, aby uwzględniać sparowane regiony, w których wdrożono sieć wirtualną. Dowiedz się więcej na temat [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-- W przypadku usługi ADLS Gen 1 funkcja integracji z siecią wirtualną jest dostępna tylko dla sieci wirtualnych w tym samym regionie.
+- W przypadku usługi ADLS Gen 1 funkcja integracji z siecią wirtualną jest dostępna tylko dla sieci wirtualnych w tym samym regionie. Ponadto należy pamiętać, że integracja sieci wirtualnej dla usługi Azure Data Lake Storage Gen1 sprawia, że korzystanie z zabezpieczenia punktu końcowego usługi sieci wirtualnej między sieci wirtualnej i usługi Azure Active Directory (Azure AD), aby wygenerować dodatkowe zabezpieczenia oświadczenia w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu. Tag "Microsoft.AzureActiveDirectory" na liście usług obsługujących punkty końcowe usługi jest używana tylko w przypadku obsługi punktów końcowych usługi Azure Data Lake Store Gen 1. Azure Active Directory (Azure AD) nie obsługuje natywnie punktów końcowych usługi. Dowiedz się więcej o [usługi Azure Data Lake Store Gen 1 Integracja z siecią wirtualną](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Zabezpieczanie usług platformy Azure w sieciach wirtualnych
 
@@ -120,7 +120,7 @@ Po skonfigurowaniu punktów końcowych usługi do określonej usługi zweryfikuj
 
 ## <a name="provisioning"></a>Inicjowanie obsługi
 
-Punkty końcowe usługi można niezależnie konfigurować w sieciach wirtualnych — czynność tę może wykonać użytkownik z uprawnieniami do zapisu w sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure w sieci wirtualnej, użytkownik musi mieć uprawnienia do elementu *Microsoft.Network/JoinServicetoaSubnet* dla dodawanych podsieci. To uprawnienie jest domyślnie uwzględniane we wbudowanych rolach administratora usługi, domyślnie i może być modyfikowane przez tworzenie ról niestandardowych.
+Punkty końcowe usługi można niezależnie konfigurować w sieciach wirtualnych — czynność tę może wykonać użytkownik z uprawnieniami do zapisu w sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure z siecią wirtualną, użytkownik musi mieć uprawnienia do *Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action* dla dodawanych podsieci. To uprawnienie jest domyślnie uwzględniane we wbudowanych rolach administratora usługi, domyślnie i może być modyfikowane przez tworzenie ról niestandardowych.
 
 Dowiedz się więcej na temat [wbudowanych ról](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisywaniu określonych uprawnień do [ról niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

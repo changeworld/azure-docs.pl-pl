@@ -31,16 +31,26 @@
       href: search-get-started-python.md
 - name: Samouczki
   items:
+    - name: Tworzenie pierwszej aplikacji
+      items:
+        - name: 1 — Strona wyszukiwania podstawowego
+          href: tutorial-csharp-create-first-app.md
+        - name: 2 — Dodawanie stronicowania wyników
+          href: tutorial-csharp-paging.md
+        - name: 3 — Dodawanie pisania z wyprzedzeniem
+          href: tutorial-csharp-type-ahead-and-suggestions.md
     - name: Indeksowanie usługi Azure SQL Database
       href: search-indexer-tutorial.md
     - name: Indeksowanie obiektów blob JSON platformy Azure
       href: search-semi-structured-data.md
     - name: Wzbogacanie o sztuczną inteligencję (wyszukiwanie poznawcze)
       items:
-        - name: REST
-          href: cognitive-search-tutorial-blob.md
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md
+        - name: REST
+          href: cognitive-search-tutorial-blob.md
+        - name: Python
+          href: cognitive-search-tutorial-blob-python.md
 - name: Przykłady
   items:
     - name: Przykłady kodu platformy Azure

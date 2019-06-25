@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef3960e5c117a131b59a65196214c51e01bd3c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441641"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204573"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Dodawanie znakowania na stronie logowania w usłudze Azure Active Directory w organizacji
 Zapewnienie spójnego wyglądu i działania na stronach logowania w usłudze Azure Active Directory (Azure AD), należy użyć logo organizacji i niestandardowych schematów kolorów. Strony logowania są wyświetlane, gdy użytkownicy logują się do Twojej organizacji opartej na sieci web aplikacji, takich jak Office 365, która używa usługi Azure AD jako dostawcy tożsamości.
@@ -58,7 +58,7 @@ Niestandardowe znakowanie natychmiast pojawiać się w przypadku użytkowników,
 
         - **Logo baneru.** Wybierz wersję .png lub .jpg logo była wyświetlana na stronie logowania, po użytkownik wprowadza nazwę użytkownika i na **Moje aplikacje** strony portalu.
             
-            Obraz nie może być większa niż 36 pikseli lub większa niż 245 pikseli. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
+            Obraz nie może być większa niż 60 pikseli lub większa niż 280 pikseli. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
 
         - **Wskazówka dotycząca nazwy użytkownika.** Wpisz tekst wskazówki, która jest wyświetlana użytkownikom, gdy zapomną swoją nazwę użytkownika. Ten tekst musi być Unicode, bez łącza lub kodu i nie może przekraczać 64 znaków. Goście zalogować się do aplikacji, zaleca się nie zostaną dodane niej tę wskazówkę.
 

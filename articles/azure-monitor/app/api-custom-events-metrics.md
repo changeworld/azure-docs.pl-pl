@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5194b9e6f40dbcd5e48b33c12db4b3cd94f75de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478402"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154779"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -249,7 +249,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric jest przestarzała w zestawie SDK platformy .NET. Metryki powinny zawsze być wstępnie zagregowane w określonym czasie przed wysłaniem. Użyj jednego z przeciążeń GetMetric(..) można uzyskać dostęp do możliwości wstępnego agregowania SDK metryki obiektu. W przypadku wdrażania własnej logiki wstępnego agregowania można użyć metody (ITelemetry metricTelemetry) śledzenie wysyłać wynikowej wartości zagregowanych. Jeśli aplikacja wymaga wysyłania elementu osobne dane telemetryczne w każdym razem, gdy bez agregacji w czasie, prawdopodobnie masz przypadek użycia dla danych telemetrycznych zdarzeń; Zobacz TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry).
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric nie jest to preferowana metoda wysyłanie metryk. Metryki powinny zawsze być wstępnie zagregowane w określonym czasie przed wysłaniem. Użyj jednego z przeciążeń GetMetric(..) można uzyskać dostęp do możliwości wstępnego agregowania SDK metryki obiektu. W przypadku wdrażania własnej logiki wstępnego agregowania służy metoda TrackMetric() wysyłać wynikowej wartości zagregowanych. Jeśli aplikacja wymaga wysyłania elementu osobne dane telemetryczne w każdym razem, gdy bez agregacji w czasie, prawdopodobnie masz przypadek użycia dla danych telemetrycznych zdarzeń; Zobacz TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry).
 
 Usługa Application Insights może wykresu metryki, które nie są dołączone do określonych zdarzeń. Na przykład można monitorować długość kolejki w regularnych odstępach czasu. Za pomocą metryk poszczególnymi pomiarami są mniej odsetek niż odmiany i trendów i wykresy więc statystyczne są.
 

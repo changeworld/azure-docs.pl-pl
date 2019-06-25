@@ -9,11 +9,11 @@ ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158485"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183226"
 ---
 Niektórych obciążeń bazy danych, takich jak SQL Server lub Oracle wymagają dużą ilość pamięci, magazynu i przepustowości we/wy, ale nie liczba rdzeni wysokiej. Wiele różnych obciążeń bazy danych nie są intensywnie korzystających z procesora CPU. Platforma Azure oferuje określonych rozmiarów maszyn wirtualnych, których można ograniczyć liczbę procesorów wirtualnych vCPU maszyny Wirtualnej, aby zmniejszyć koszty licencjonowania oprogramowania, przy zachowaniu tej samej pamięci, magazynu i przepustowości we/wy.
 

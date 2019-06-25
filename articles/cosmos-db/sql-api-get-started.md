@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 60c7e6b32f60d6f42d706489c41dbeea4af0d15d
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596090"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342119"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Tworzenie aplikacji konsolowej .NET do zarządzania danymi na koncie usługi Azure Cosmos DB — interfejs API SQL
 
@@ -40,7 +40,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 > - Tworzenie dokumentów JSON
 > - Zapytanie do kolekcji
 > - Aktualizowanie dokumentów JSON
-> - Usuń dokument
+> - Usuwanie dokumentu
 > - Usuwanie bazy danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -68,7 +68,7 @@ Aby uruchomić pobrany kompletnego rozwiązania:
 1. W *App.config* pliku, zaktualizuj `EndpointUrl` i `PrimaryKey` wartości zgodnie z opisem w [Połącz z kontem usługi Azure Cosmos DB](#Connect) sekcji.
 1. Wybierz **debugowania** > **Rozpocznij bez debugowania** lub naciśnij **Ctrl**+**F5** Aby skompilować i uruchomić aplikację.
 
-## <a name="create-an-azure-cosmos-db-account"></a>Utwórz konto usługi Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
 
 Wykonaj te instrukcje, aby utworzyć konto usługi Azure Cosmos DB w witrynie Azure portal. Jeśli masz już konto usługi Azure Cosmos DB, przejdź do sekcji [konfigurowanie rozwiązania programu Visual Studio](#SetupVS). 
 
@@ -78,7 +78,7 @@ Wykonaj te instrukcje, aby utworzyć konto usługi Azure Cosmos DB w witrynie Az
 
 1. W programie Visual Studio 2017, wybierz **pliku** > **New** > **projektu**.
    
-1. W **nowy projekt** okno dialogowe, wybierz opcję **Visual C#**   >  **Aplikacja konsoli (.NET Framework)**, nazwij swój projekt *AzureCosmosDBApp* , a następnie wybierz pozycję **OK**.
+1. W **nowy projekt** okno dialogowe, wybierz opcję **Visual C#**   >  **Aplikacja konsoli (.NET Framework)** , nazwij swój projekt *AzureCosmosDBApp* , a następnie wybierz pozycję **OK**.
    
    ![Zrzut ekranu przedstawiający okno Nowy projekt](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
    
@@ -450,7 +450,7 @@ Na poniższym diagramie przedstawiono, jak składnia zapytania SQL usługi Azure
 
 ![Diagram pokazujący zakres i znaczenie zapytania używanego przez samouczek NoSQL do utworzenia aplikacji konsolowej C#](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
 
-[FROM](how-to-sql-query.md#FromClause) słów kluczowych w kwerendzie SQL jest opcjonalny, ponieważ zapytania usługi Azure Cosmos DB mają już zakres określony jako jedna kolekcja. Można wymienić `FROM Families f` z `FROM root r`, lub dowolnej innej wybranej nazwy zmiennej. Usługa Azure Cosmos DB ustali, że `Families`, `root`, lub nazwę zmiennej, możesz wybrać, który odwołuje się do bieżącej kolekcji.
+[FROM](sql-query-from.md) słów kluczowych w kwerendzie SQL jest opcjonalny, ponieważ zapytania usługi Azure Cosmos DB mają już zakres określony jako jedna kolekcja. Można wymienić `FROM Families f` z `FROM root r`, lub dowolnej innej wybranej nazwy zmiennej. Usługa Azure Cosmos DB ustali, że `Families`, `root`, lub nazwę zmiennej, możesz wybrać, który odwołuje się do bieżącej kolekcji.
 
 ## <a id="ReplaceDocument"></a>Aktualizowanie dokumentów JSON
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.date: 06/14/2019
+ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734649"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147927"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytu replik w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -122,6 +122,9 @@ Replika jest tworzona przy użyciu tej samej konfiguracji serwera jako wzorzec. 
 PostgreSQL wymaga wartości `max_connections` parametru odczytu repliki, być większa lub równa wartości wzorca; w przeciwnym repliki nie będą naliczane. W usłudze Azure Database for PostgreSQL `max_connections` wartość parametru opiera się na jednostkę SKU. Aby uzyskać więcej informacji, zobacz [limity w usłudze Azure Database for PostgreSQL](concepts-limits.md). 
 
 Jeśli spróbuj zaktualizować wartości serwera, ale nie jest zgodna z limitami, otrzymasz komunikat o błędzie.
+
+### <a name="maxpreparedtransactions"></a>max_prepared_transactions
+[PostgreSQL wymaga](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) wartość `max_prepared_transactions` parametru odczytu repliki, być większa lub równa wartości wzorca; w przeciwnym repliki nie będą naliczane. Jeśli chcesz zmienić `max_prepared_transactions` we wzorcu, najpierw zmień go na replikach.
 
 ### <a name="stopped-replicas"></a>Zatrzymano repliki
 Zatrzymanie replikacji między głównym serwerem i odczytu repliki, replikę powoduje ponowne uruchomienie do zastosowania zmiany. Zatrzymano replika staje się serwer autonomiczny, który akceptuje odczytów i zapisów. Serwer autonomiczny nie wprowadzać ponownie do repliki.

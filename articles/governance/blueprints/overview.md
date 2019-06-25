@@ -7,12 +7,12 @@ ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8b340eeaaae41815482f4dfed4168dfd8367aba9
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60876243"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143906"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure plany
 
@@ -109,7 +109,7 @@ Aby użytkownik mógł przypisywać strategie lub anulować ich przypisanie, jeg
 Wszystkie powyższe uprawnienia są uwzględnione w roli **Właściciel**. Rola **Współautor** ma uprawnienia do tworzenia i usuwania uprawnień planu, ale nie ma uprawnień do przypisywania planu. Jeśli te wbudowane role nie spełniają wymagań dotyczących zabezpieczeń, należy rozważyć utworzenie [roli niestandardowej](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Jednostka usługi Azure Blueprint wymaga roli **Właściciel** dla przypisanej subskrypcji, aby można było włączyć wdrażanie. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia.
+> Jeśli przy użyciu systemu przypisane tożsamości zarządzanej jednostki usługi dla planu usługi Azure wymaga **właściciela** roli przypisanej subskrypcji, aby można było włączyć wdrożenie. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia. Jeśli tożsamości zarządzanej przy użyciu przypisanych przez użytkownika, wymaga tylko użytkownik tworzący przypisanie planu **właściciela** uprawnienia.
 
 ## <a name="video-overview"></a>Omówienie wideo
 

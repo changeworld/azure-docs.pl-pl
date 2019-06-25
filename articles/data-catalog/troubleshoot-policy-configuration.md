@@ -1,23 +1,35 @@
 ---
-title: Jak skonfigurować zasady usługi Azure Active Directory dla usługi Azure Data Catalog
-description: Może wystąpić sytuacja, w przypadku, gdy należy zalogować się do portalu usługi Azure Data Catalog, ale gdy spróbujesz zalogować się do narzędzia rejestracji źródła danych, możesz napotkać komunikat o błędzie.
+title: Jak rozwiązywać problemy z usługi Azure Data Catalog
+description: W tym artykule opisano typowe zagadnienia dotyczące rozwiązywania problemów dla zasobów usługi Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
-ms.date: 04/06/2019
-ms.openlocfilehash: e69a7e3bd104d0fb82b248b6560d4fd082c88426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: troubleshooting
+ms.date: 06/13/2019
+ms.openlocfilehash: ed74e90e5e8ed55b75968f51cb50e6a1b4cdd75d
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116605"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203504"
 ---
-# <a name="azure-active-directory-policy-configuration"></a>Konfiguracja zasad usługi Azure Active Directory
+# <a name="troubleshooting-azure-data-catalog"></a>Rozwiązywanie problemów z usługi Azure Data Catalog
+
+W tym artykule opisano typowe zagadnienia dotyczące rozwiązywania problemów dla zasobów usługi Azure Data Catalog. 
+
+## <a name="functionality-limitations"></a>Ograniczenia dotyczące funkcji
+
+Korzystając z usługi Azure Data Catalog, wynosi następujące funkcje:
+
+- Konta typu **roli gości** nie są obsługiwane. Nie można dodać konta gościa jako użytkownicy usługi Azure Data Catalog, a użytkownicy-goście nie mogą korzystać z portalu na www.azuredatacatalog.com.
+
+- Tworzenie zasobów usługi Azure Data Catalog przy użyciu szablonów usługi Azure Resource Manager lub programu Azure PowerShell polecenia nie jest obsługiwane.
+
+- Nie można przenieść zasobu usługi Azure Data Catalog między dzierżawami usługi Azure.
+
+## <a name="azure-active-directory-policy-configuration"></a>Konfiguracja zasad usługi Azure Active Directory
 
 W niektórych sytuacjach po zalogowaniu się w portalu usługi Azure Data Catalog przy próbie logowania się za pomocą narzędzia do rejestracji źródła danych występuje komunikat o błędzie, który uniemożliwia logowanie. Ten błąd może wystąpić, gdy znajdują się w sieci firmowej lub gdy łączysz się z spoza sieci firmowej.
-
-## <a name="registration-tool"></a>Narzędzie do rejestracji
 
 Narzędzie rejestracji używa *uwierzytelniania formularzy* do weryfikowania logowania użytkowników w usłudze Azure Active Directory. Aby logowanie się powiodło, administrator usługi Azure Active Directory musi włączyć uwierzytelnianie formularzy za pomocą *globalnych zasad uwierzytelniania*.
 

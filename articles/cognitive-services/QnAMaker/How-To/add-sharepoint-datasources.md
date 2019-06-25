@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 06/20/2019
 ms.author: tulasim
-ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1b0e3dfb81a9934b393428a946cf1440367985c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954956"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311861"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Dodawanie bezpiecznego źródła danych programu Sharepoint do bazy wiedzy
 
@@ -35,6 +35,20 @@ Można dodać wszystkie obsługiwane usługi QnA Maker [typy plików](../Concept
     ![Pobierz adres URL pliku programu Sharepoint, wybierając z menu wielokropka pliku następnie kopiując adres URL.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. W portalu narzędzia QnA Maker na **ustawienia** stronie [Dodaj adres URL](edit-knowledge-base.md#add-datasource) w bazie wiedzy. 
+
+### <a name="images-with-sharepoint-files"></a>Obrazy z plików programu Sharepoint
+
+Jeśli pliki zawierają obrazy, te nie zostały wyodrębnione. Po wyodrębnieniu pliku do pary pytań i odpowiedzi, można dodać obraz, z poziomu portalu narzędzia QnA Maker.
+
+Dodaj obraz przy użyciu następującej składni języka markdown: 
+
+```markdown
+![Explanation or description of image](URL of public image)
+```
+
+Tekst w nawiasach kwadratowych `[]`, wyjaśnia obrazu. Adres URL w nawiasach, `()`, jest bezpośredni link do obrazu. 
+
+Podczas testowania pary pytań i odpowiedzi na panelu interaktywne testu w portalu narzędzia QnA Maker obraz jest wyświetlany zamiast teksty w języku markdown. To sprawdzenie poprawności obraz, który można pobrać publicznego z aplikacji klienckiej.
 
 ## <a name="permissions"></a>Uprawnienia
 

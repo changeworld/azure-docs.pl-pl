@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b7b90b63ffebc14498183fc179b9c8ae76a722
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237842"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272983"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska wersji zapoznawczej usługi Azure Time Series Insights
 
@@ -29,6 +29,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 * Wykonywanie podstawowej analizy danych.
 * Definiowanie hierarchii oraz typu modelu szeregów czasowych i kojarzenie ich z wystąpieniami.
 
+>[!TIP]
+> [Akceleratory rozwiązań IoT](https://www.azureiotsolutions.com/Accelerators) udostępniają korporacyjnej wstępnie skonfigurowanych rozwiązań, które umożliwia przyspieszenie rozwoju niestandardowych rozwiązań IoT.
+
 ## <a name="create-a-device-simulation"></a>Tworzenie symulacji urządzeń
 
 W tej sekcji utworzysz trzy symulowane urządzenia, które wysyłają dane do wystąpienia usługi Azure IoT Hub.
@@ -41,60 +44,20 @@ W tej sekcji utworzysz trzy symulowane urządzenia, które wysyłają dane do wy
 
 1. Na **rozwiązania tworzenia symulacji urządzenia** ustaw następujące parametry:
 
-    | Parametr | action |
+    | Parametr | Akcja |
     | --- | --- |
-    | **Nazwa rozwiązania** | Wprowadź unikatową wartość dla nowej grupy zasobów. Znajdujące się na liście zasoby platformy Azure są tworzone i przypisywane do grupy zasobów. |
-    | **Subskrypcja** | Wybierz subskrypcję, której użyto do utworzenia środowiska usługi Time Series Insights. |
-    | **Region** | Wybierz region, który został użyty do utworzenia środowiska usługi Time Series Insights. |
-    | **Wdróż opcjonalne zasoby platformy Azure** | Pozostaw **usługi IoT Hub** zaznaczone pole wyboru. Symulowane urządzenia, użyj usługi IoT Hub do nawiązywania połączeń i przesyłanie strumieniowe danych. |
+    | **Nazwa wdrożenia** | Wprowadź unikatową wartość dla nowej grupy zasobów. Znajdujące się na liście zasoby platformy Azure są tworzone i przypisywane do grupy zasobów. |
+    | **Subskrypcja platformy Azure** | Wybierz subskrypcję, której użyto do utworzenia środowiska usługi Time Series Insights. |
+    | **Lokalizacja platformy Azure** | Wybierz region, który został użyty do utworzenia środowiska usługi Time Series Insights. |
+    | **Opcje wdrażania** | Wybierz **Aprowizować nowe Centrum IoT Hub**. |
  
-    Wybierz **tworzenie rozwiązania**. Poczekaj 10–15 minut na wdrożenie rozwiązania.
+    Wybierz **tworzenie rozwiązania**. Może potrwać do 20 minut do zakończenia wdrażania rozwiązania.
 
     [![Utwórz stronę rozwiązania symulacji urządzenia](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-1. Na pulpicie nawigacyjnym akcelerator rozwiązań, wybierz **Uruchom**:
-
-    [![Uruchom rozwiązanie symulacji urządzenia](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
-
-1. Nastąpi przekierowanie do strony **Symulacja urządzeń Microsoft Azure IoT**. W prawym górnym rogu strony wybierz **nowe symulacji**.
-
-    [![Strona symulacji w usłudze Azure IoT](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
-
-1. W **Instalatora symulacji** okienko, ustaw następujące parametry:
-
-    | Parametr | action |
-    | --- | --- |
-    | **Nazwa** | Wprowadź unikatową nazwę symulatora. |
-    | **Opis** | Wprowadź definicję. |
-    | **Czas trwania symulacji** | Wybierz opcję **Uruchamianie bez ograniczeń**. |
-    | **Model urządzenia** | **Nazwa**: Wpisz **Chiller** (chłodnia). <br />**Ilość**: Wpisz **3**. |
-    | **Docelowa usługa IoT Hub** | Wybierz pozycję **Użyj dostarczonej wstępnie usługi IoT Hub**. |
-
-    [![Parametry można ustawić](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
-
-    Wybierz **Rozpocznij symulację**.
-
-    Na pulpicie nawigacyjnym symulacji urządzenia należy pamiętać, informacje wyświetlane dla **aktywnych urządzeń** i **komunikatów na sekundę**.
-
-    [![Pulpit nawigacyjny symulacji usługi Azure IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
-
-## <a name="list-device-simulation-properties"></a>Wyświetlanie właściwości symulacji urządzeń
-
-Przed przystąpieniem do tworzenia środowiska Azure Time Series Insights, należy nazwy Centrum IoT hub, subskrypcji i grupie zasobów.
-
-1. Przejdź do pulpitu nawigacyjnego rozwiązania akceleratora. Zaloguj się przy użyciu tego samego konta subskrypcji platformy Azure. Znajdź symulacji urządzenia, który został utworzony w poprzedniej sekcji.
-
-1. Wybierz swoje symulator urządzeń, a następnie wybierz **Uruchom**. W okienku urządzenia symulator rozwiązania akceleratora po prawej stronie zaznacz **portalu zarządzania systemu Azure** opcji.
-
-    [![Symulator list](media/v2-update-provision/device-six-listings.png)](media/v2-update-provision/device-six-listings.png#lightbox)
-
-1. Zanotuj nazwy IoT hub, subskrypcji i grupie zasobów.
-
-    [![Szczegóły pulpit nawigacyjny symulator urządzeń na platformie Azure portal](media/v2-update-provision/device-eight-portal.png)](media/v2-update-provision/device-eight-portal.png#lightbox)
-
 ## <a name="create-a-time-series-insights-preview-payg-environment"></a>Tworzenie środowiska wersji zapoznawczej usługi Time Series Insights dostępnej w modelu PAYG
 
-W tej sekcji opisano, jak utworzyć środowisko wersji zapoznawczej usługi Azure Time Series Insights przy użyciu witryny [Azure Portal](https://portal.azure.com/).
+W tej sekcji opisano sposób tworzenia środowiska Azure czas Series Insights w wersji zapoznawczej i podłącz go do usługi IoT hub, utworzone za pomocą akceleratora rozwiązań IoT [witryny Azure portal](https://portal.azure.com/).
 
 1. Zaloguj się do witryny Azure Portal przy użyciu konta subskrypcji.
 
@@ -104,12 +67,12 @@ W tej sekcji opisano, jak utworzyć środowisko wersji zapoznawczej usługi Azur
 
 1. W **środowisko tworzenia Time Series Insights** okienku na **podstawy** kartę, ustaw następujące parametry:
 
-    | Parametr | action |
+    | Parametr | Akcja |
     | --- | ---|
     | **Nazwa środowiska** | Wprowadź unikatową nazwę dla środowiska Azure czas Series Insights w wersji zapoznawczej. |
     | **Subskrypcja** | Wprowadź subskrypcję, w którym chcesz utworzyć środowisko Azure czas Series Insights w wersji zapoznawczej. Najlepiej jest używać tej samej subskrypcji, jak w pozostałych zasobów IoT, które są tworzone przez symulator urządzenia. |
     | **Grupa zasobów** | Wybierz istniejącą grupę zasobów lub Utwórz nową grupę zasobów dla zasobu środowiska Azure czas Series Insights w wersji zapoznawczej. Grupa zasobów jest kontenerem zasobów platformy Azure. Najlepszym rozwiązaniem jest, aby użyć tej samej grupie zasobów co inne zasoby IoT, które są tworzone przez symulator urządzenia. |
-    | **Lokalizacja** | Wybierz region centrum danych w środowisku Azure czas Series Insights w wersji zapoznawczej. Aby uniknąć kosztów dodano przepustowości i opóźnienia, najlepiej utworzyć środowiska Azure czas Series Insights w wersji zapoznawczej w tym samym regionie, co inne zasoby IoT. |
+    | **Location** | Wybierz region centrum danych w środowisku Azure czas Series Insights w wersji zapoznawczej. Aby uniknąć dodatkowych opóźnień, najlepiej utworzyć środowiska Azure czas Series Insights w wersji zapoznawczej w tym samym regionie, co inne zasoby IoT. |
     | **Warstwa** |  Wybierz **PAYG** (*płatność za rzeczywiste użycie*). Jest to jednostka SKU produktu Azure Time Series Insights w wersji zapoznawczej. |
     | **Identyfikator właściwości** | Wprowadź wartość, która jednoznacznie identyfikuje wystąpienie serii czasu. Wartość wprowadzoną w **identyfikator właściwości** pole jest niezmienny. Nie można zmienić go później. Na potrzeby tego samouczka wprowadź **iothub-— urządzenia — identyfikator połączenia**. Aby dowiedzieć się więcej o identyfikatorze serii czasu, zobacz [najlepsze rozwiązania dotyczące wybierania Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md). |
     | **Nazwa konta magazynu** | Wprowadź globalnie unikatową nazwę dla nowego konta magazynu do utworzenia. |
@@ -120,7 +83,7 @@ W tej sekcji opisano, jak utworzyć środowisko wersji zapoznawczej usługi Azur
 
 1. Na **źródła zdarzeń** kartę, ustaw następujące parametry:
 
-   | Parametr | action |
+   | Parametr | Akcja |
    | --- | --- |
    | **Utworzyć źródło zdarzeń?** | Wybierz **tak**.|
    | **Nazwa** | Wprowadź unikatową wartość dla nazwy źródła zdarzeń. |
@@ -129,7 +92,7 @@ W tej sekcji opisano, jak utworzyć środowisko wersji zapoznawczej usługi Azur
    | **Subskrypcja** | Wybierz subskrypcję, która została użyta dla symulator urządzenia. |
    | **Nazwa centrum IoT** | Wybierz nazwę Centrum IoT utworzonego symulator urządzenia. |
    | **Zasady dostępu do centrum IoT Hub** | Wybierz pozycję **iothubowner**. |
-   | **Grupa konsumentów centrum IoT** | Wybierz pozycję **Nowa**, wpisz unikatową nazwę, a następnie wybierz polecenie **Dodaj**. Grupy konsumentów musi mieć unikatową wartość w wersji zapoznawczej Azure czas serii szczegółowych informacji. |
+   | **Grupy konsumentów usługi IoT Hub** | Wybierz pozycję **Nowa**, wpisz unikatową nazwę, a następnie wybierz polecenie **Dodaj**. Grupy konsumentów musi mieć unikatową wartość w wersji zapoznawczej Azure czas serii szczegółowych informacji. |
    | **Właściwość znacznika czasu** | Ta wartość jest używana do identyfikowania **sygnatura czasowa** właściwości usługi w przychodzących danych telemetrycznych. W tym samouczku pozostaw to pole puste. Ten symulator używa sygnatury czasowej pochodzącej z usługi IoT Hub, domyślnej wartości dla usługi Time Series Insights. |
 
    Wybierz pozycję **Przegląd + utwórz**.
@@ -159,6 +122,34 @@ W tej sekcji opisano, jak utworzyć środowisko wersji zapoznawczej usługi Azur
       [![Poświadczenia listy](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
    Jeśli poświadczenia nie są wyświetlane, należy przyznać sobie uprawnień do dostępu do środowiska. Aby dowiedzieć się więcej o ustawianiu uprawnień, zobacz [Grant data access (Przyznawanie dostępu do danych)](./time-series-insights-data-access.md).
+
+## <a name="stream-data-into-your-environment"></a>Stream data do środowiska
+
+1. Przejdź z powrotem do [stronie akceleratorów rozwiązania Azure IoT](https://www.azureiotsolutions.com/Accelerators). Zlokalizuj swoje rozwiązanie na pulpicie nawigacyjnym akcelerator rozwiązań. Następnie wybierz **Uruchom**:
+
+    [![Uruchom rozwiązanie symulacji urządzenia](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+
+1. Nastąpi przekierowanie do strony **Symulacja urządzeń Microsoft Azure IoT**. W prawym górnym rogu strony wybierz **nowe symulacji**.
+
+    [![Strona symulacji w usłudze Azure IoT](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
+
+1. W **Instalatora symulacji** okienko, ustaw następujące parametry:
+
+    | Parametr | Akcja |
+    | --- | --- |
+    | **Nazwa** | Wprowadź unikatową nazwę symulatora. |
+    | **Opis** | Wprowadź definicję. |
+    | **Czas trwania symulacji** | Wybierz opcję **Uruchamianie bez ograniczeń**. |
+    | **Model urządzenia** | **Nazwa**: Wpisz **Chiller** (chłodnia). <br />**Ilość**: Wpisz **3**. |
+    | **Docelowa usługa IoT Hub** | Wybierz pozycję **Użyj dostarczonej wstępnie usługi IoT Hub**. |
+
+    [![Parametry można ustawić](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+
+    Wybierz **Rozpocznij symulację**.
+
+    Na pulpicie nawigacyjnym symulacji urządzenia należy pamiętać, informacje wyświetlane dla **aktywnych urządzeń** i **komunikatów na sekundę**.
+
+    [![Pulpit nawigacyjny symulacji usługi Azure IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data-in-your-environment"></a>Analizowanie danych w środowisku
 
@@ -202,14 +193,14 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. Następnie zdefiniuj trzech zmiennych typu: *wykorzystanie*, *temperatury*, i *wilgotności*. W **Dodaj typ** okienko, ustaw następujące parametry:
 
-    | Parametr | action |
+    | Parametr | Akcja |
     | --- | ---|
     | **Nazwa** | Wpisz **Chiller** (chłodnia). |
     | **Opis** | Wpisz **This is a type definition of Chiller** (To jest definicja typu dla chłodni). |
 
    * Aby zdefiniować *wykorzystanie*w obszarze **zmienne**, ustaw następujące parametry:
 
-     | Parametr | action |
+     | Parametr | Akcja |
      | --- | ---|
      | **Nazwa** | Wpisz **Avg Pressure** (Ciśnienie średnie). |
      | **Wartość** | Wybierz opcję **pressure (Double)** . Może upłynąć kilka minut **wartość** wypełniona automatycznie po uruchomieniu Azure czas Series Insights w wersji zapoznawczej, odbierania zdarzeń. |
@@ -221,7 +212,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
    * Zdefiniuj *temperatury*:
 
-     | Parametr | action |
+     | Parametr | Akcja |
      | --- | ---|
      | **Nazwa** | Wpisz **Avg Temperature** (Temperatura średnia). |
      | **Wartość** | Wybierz opcję **temperature (Double)** . Może upłynąć kilka minut **wartość** wypełniona automatycznie po uruchomieniu Azure czas Series Insights w wersji zapoznawczej, odbierania zdarzeń. |
@@ -253,7 +244,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. W **Edytuj hierarchię** okienko, ustaw następujące parametry:
 
-   | Parametr | action |
+   | Parametr | Akcja |
    | --- | ---|
    | **Nazwa** | Wpisz **Location Hierarchy** (Hierarchia lokalizacji). |
    | **Level 1** | Wpisz **Country** (Kraj). |
@@ -274,7 +265,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. W **edytowania wystąpień** okienko, ustaw następujące parametry:
 
-    | Parametr | action |
+    | Parametr | Akcja |
     | --- | --- |
     | **Typ** | Wybierz pozycję **Chiller** (Chłodnia). |
     | **Opis** | Wpisz **Instance for Chiller-01.1** (Wystąpienie dla urządzenia Chiller-01.1). |
@@ -291,7 +282,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
    * Dla chłodni Chiller 01.2:
 
-     | Parametr | action |
+     | Parametr | Akcja |
      | --- | --- |
      | **Typ** | Wybierz pozycję **Chiller** (Chłodnia). |
      | **Opis** | Wpisz **Instance for Chiller-01.2** (Wystąpienie dla urządzenia Chiller-01.2). |
@@ -302,7 +293,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
    * Dla chłodni Chiller 01.3:
 
-     | Parametr | action |
+     | Parametr | Akcja |
      | --- | --- |
      | **Typ** | Wybierz pozycję **Chiller** (Chłodnia). |
      | **Opis** | Wprowadź **wystąpienie 01.3 Chłodnica**. |

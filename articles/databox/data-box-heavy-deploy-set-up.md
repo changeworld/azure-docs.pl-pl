@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: f2f6b544b56977b3f1bfb6a4fb46a9f1e3bcc294
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: d4cdc9b6c31c62080fed5a8528577fef72c01c3f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427943"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271707"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>Samouczek: Podłączanie kabli i nawiązać połączenie z usługi Azure Data pole duże (wersja zapoznawcza)
 
@@ -79,7 +79,7 @@ Wykonaj poniższe kroki, aby Podłączanie kabli do urządzenia.
 Na jednym z węzłów urządzenie wykonaj następujące kroki do kabla dla sieci.
 
 1. Użyj kabla sieciowego CAT 6 RJ-45 (niebieskiego kabla na obrazie), aby podłączyć komputer hosta do portu zarządzania 1 GB/s.
-2. Użyj Twinax QSFP + miedzianego kabla (czarne kable na ilustracji) do łączenia się z co najmniej jeden interfejs sieciowy 40-GB/s (preferowane ponad 1 GB/s) dla danych. Jeśli za pomocą przełącznika 10 GB/s, za pomocą kabla miedzianego Twinax SFP + QSFP + SFP + karty (karta QSA) do łączenia z 40 GB/s sieci interfejs dla danych.
+2. Użyj kabla QSFP + (fiber lub Coopera) do łączenia się z co najmniej jeden interfejs sieciowy 40-GB/s (preferowane ponad 1 GB/s) dla danych. Jeśli używasz przełącznika 10 GB/s, za pomocą kabla SFP + QSFP + SFP + karty (karta QSA) do łączenia z 40 GB/s interfejsu sieciowego dla danych.
 
     ![Porty duże pole danych, rozpakowane](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 

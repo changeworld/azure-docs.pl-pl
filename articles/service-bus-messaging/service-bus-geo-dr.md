@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a2b92b7673ed852e203ca0926421be6ee8cf977d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058176"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190158"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Usługa Azure odzyskiwanie po awarii geograficznego usługi Service Bus
 
@@ -62,6 +62,17 @@ Proces instalacji przebiega następująco:
 2. Aprowizacja ***dodatkowej*** usługi Service Bus Premium Namespace w regionie *różni się od której zainicjowano podstawowej przestrzeni nazw*. Ułatwi to umożliwia izolację awarii między regionami w innym centrum danych.
 
 3. Utwórz parowania z zakresu od podstawowej przestrzeni nazw do pomocniczej przestrzeni nazw w celu uzyskania ***alias***.
+
+    >[!NOTE] 
+    > Jeśli masz [migracji przestrzeni nazw usługi Azure Service Bus Standard do usługi Azure Service Bus w warstwie Premium](service-bus-migrate-standard-premium.md), należy użyć istniejącego aliasu (czyli usługi Service Bus standardowych przestrzeni nazw parametrów połączenia) do utworzenia odzyskiwania po awarii Konfigurowanie za pomocą **PS/CLI** lub **interfejsu API REST**.
+    >
+    >
+    > Jest to spowodowane podczas migracji, Azure usługi Service Bus w wersji Standard przestrzeni nazw połączenia ciąg/Nazwa DNS sam staje się alias dla przestrzeni nazw usługi Azure Service Bus w warstwie Premium.
+    >
+    > Aplikację kliencką muszą korzystać z tego aliasu (czyli Azure usługi Service Bus w wersji Standard przestrzeń nazw ciągu połączenia), połączyć się z przestrzeni nazw Premium gdzie parowanie odzyskiwania po awarii została skonfigurowana.
+    >
+    > Jeśli używasz portalu można skonfigurować konfiguracji odzyskiwania po awarii, portalu będzie abstrakcyjna to zastrzeżenie: ze strony użytkownika.
+
 
 4. Użyj ***alias*** uzyskaną w kroku 3 do łączenia z Geo-DR aplikacjom klienckim włączone podstawowej przestrzeni nazw. Początkowo wskazuje alias do podstawowej przestrzeni nazw.
 

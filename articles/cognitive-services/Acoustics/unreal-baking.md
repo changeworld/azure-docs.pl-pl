@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b49a6b9e235414cd63eacdbad523bbda8646963
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433415"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304313"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Samouczek Unreal tworzenie Akustyka projektu
 W tym dokumencie opisano proces przesyłania tworzenie Akustyka przy użyciu rozszerzenia edytora unreal Engine.
@@ -208,7 +208,7 @@ Po zakończeniu tworzenie, sprawdź, czy punkty voxels i badania znajdują się 
 Istnieją cztery pliki danych utworzonych przez ten dodatek w różnych punktach. Tylko jeden z nich jest potrzebna w czasie wykonywania i znajduje się w folderze zawartości/Akustyka projektu, który jest automatycznie dodawany do ścieżki pakowania projektu. Pozostałe trzy znajdują się w folderze Akustyka dane i nie są w pakiecie.
 
 * **[Project]/Config/ProjectAcoustics.cfg**: Ten plik przechowuje dane, które możesz wprowadzić w polach w Interfejsie użytkownika Akustyka trybu. Nie można zmienić lokalizację i nazwę tego pliku. Istnieją inne wartości przechowywane w tym pliku, które wpływają na tworzenie, ale są dla użytkowników zaawansowanych i nie powinna być zmieniana.
-* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Ten plik jest jest tworzony podczas symulacji tworzenie i zawiera dane wyszukiwania używany przez środowisko uruchomieniowe do renderowania Akustyka swoje sceny. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
+* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Ten plik jest jest tworzony podczas symulacji tworzenie i zawiera dane wyszukiwania używany przez środowisko uruchomieniowe do renderowania Akustyka swoje sceny. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę. Aby zmienić nazwę tego pliku, po jego utworzeniu usuwanie UAsset projekt Unreal, Zmień nazwę pliku poza Unreal w Eksploratorze plików i następnie ponownie zaimportować ten plik do Unreal, aby wygenerować nowy UAsset. Zmiana nazwy UAsset przez siebie nie będzie działać.
 * **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Ten plik przechowuje geometrii Akustyka voxelized i właściwości materiału. Obliczane przy użyciu **Calculate** znajdujący się na **sondy** kartę. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
 * **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData\_config.xml**: Ten plik przechowuje obliczane przy użyciu parametrów **Calculate** znajdujący się na **sondy** kartę. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
 

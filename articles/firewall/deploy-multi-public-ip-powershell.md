@@ -1,0 +1,110 @@
+---
+title: Wdrażanie zapory platformy Azure przy użyciu wiele publicznych adresów IP przy użyciu programu Azure PowerShell
+description: W tym artykule dowiesz się, jak wdrożyć zapory usługi Azure za pomocą wiele publicznych adresów IP przy użyciu programu Azure PowerShell.
+services: firewall
+author: vhorne
+ms.service: firewall
+ms.topic: article
+ms.date: 06/15/2019
+ms.author: victorh
+ms.openlocfilehash: a7dd35212a573fc3e94dadea4365f150122e1b5a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67276745"
+---
+# <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Wdrażanie zapory platformy Azure przy użyciu wiele publicznych adresów IP przy użyciu programu Azure PowerShell
+
+> [!IMPORTANT]
+> Zaporę platformy Azure przy użyciu wiele publicznych adresów IP jest obecnie w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Możesz wdrożyć zapory platformy Azure za pomocą do 600 publicznych adresów IP.
+
+Ta funkcja umożliwia następujące scenariusze:
+
+- **DNAT** — wielu wystąpień standardowego portu można tłumaczyć na serwerach wewnętrznej bazy danych. Na przykład jeśli masz dwa publiczne adresy IP, może dokonywać translacji portu TCP 3389 (RDP) dla obu adresów IP.
+- **SNAT** — dodatkowe porty są dostępne dla połączeń SNAT wychodzących, zmniejszyć prawdopodobieństwo SNAT wyczerpanie portów. W tej chwili zapory usługi Azure losowo wybiera publiczny adres IP źródłowego na potrzeby połączenia. Jeśli masz wszystkie podrzędne filtrowania w sieci, należy zezwolić na wszystkie publiczne adresy IP skojarzone z zaporą.
+
+W poniższych przykładach programu Azure PowerShell pokazano, jak można dodawać, usuwać i konfigurować publiczne adresy IP dla zapory usługi Azure.
+
+> [!NOTE]
+> Jeśli dodasz lub usuniesz publicznego adresu IP do zapory uruchomione, istniejące połączenie przychodzące za pomocą reguł DNAT może nie działać na 40 – 120 sekund. Jest to ograniczenie w publicznej wersji zapoznawczej dla tej funkcji.
+
+## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Dodawanie publicznego adresu IP do istniejącej zapory
+
+W tym przykładzie, publiczny adres IP *azFwPublicIp1* jak dołączone do zapory.
+
+```azurepowershell
+$pip = New-AzPublicIpAddress `
+  -Name "azFwPublicIp1" `
+  -ResourceGroupName "rg" `
+  -Sku "Standard" `
+  -Location "centralus" `
+  -AllocationMethod Static
+
+$azFw = Get-AzFirewall `
+  -Name "AzureFirewall" `
+  -ResourceGroupName "rg"
+
+$azFw.AddPublicIpAddress($pip)
+
+$azFw | Set-AzFirewall
+```
+
+## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Usuwanie publicznego adresu IP z istniejącej zapory
+
+W tym przykładzie, publiczny adres IP *azFwPublicIp1* jako odłączona od zapory.
+
+```azurepowershell
+$pip = Get-AzPublicIpAddress `
+  -Name "azFwPublicIp1" `
+  -ResourceGroupName "rg"
+
+$azFw = Get-AzFirewall `
+  -Name "AzureFirewall" `
+  -ResourceGroupName "rg"
+
+$azFw.RemovePublicIpAddress($pip)
+
+$azFw | Set-AzFirewall
+```
+
+## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>Tworzenie zapory przy użyciu co najmniej dwóch publicznych adresów IP
+
+W tym przykładzie tworzy zaporę dołączony do sieci wirtualnej *sieci wirtualnej* za pomocą dwóch publicznych adresów IP.
+
+```azurepowershell
+$rgName = "resourceGroupName"
+
+$vnet = Get-AzVirtualNetwork `
+  -Name "vnet" `
+  -ResourceGroupName $rgName
+
+$pip1 = New-AzPublicIpAddress `
+  -Name "AzFwPublicIp1" `
+  -ResourceGroupName "rg" `
+  -Sku "Standard" `
+  -Location "centralus" `
+  -AllocationMethod Static
+
+$pip2 = New-AzPublicIpAddress `
+  -Name "AzFwPublicIp2" `
+  -ResourceGroupName "rg" `
+  -Sku "Standard" `
+  -Location "centralus" `
+  -AllocationMethod Static
+
+New-AzFirewall `
+  -Name "azFw" `
+  -ResourceGroupName $rgName `
+  -Location centralus `
+  -VirtualNetwork $vnet `
+  -PublicIpAddress @($pip1, $pip2)
+```
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

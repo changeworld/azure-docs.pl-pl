@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: c22230545ccbe1ef1b4bfa35a33f0302197463b1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1696a20094357d084ba54739767509b8d50c4ad5
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124523"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341291"
 ---
 # <a name="example-identify-faces-in-images"></a>Przykład: Identyfikowanie twarzy na obrazach
 
@@ -41,10 +41,10 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription key>
 ```
 
-Alternatywnie, określ klucz subskrypcji w nagłówku żądania HTTP **ocp-apim-subscription-key: &lt;Klucz subskrypcji&gt;**.
+Alternatywnie, określ klucz subskrypcji w nagłówku żądania HTTP **ocp-apim-subscription-key: &lt;Klucz subskrypcji&gt;** .
 Korzystając z biblioteki klienta, klucz subskrypcji jest przekazywane w konstruktorze klasy FaceServiceClient. Na przykład:
  
-```CSharp 
+```csharp 
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
  
@@ -63,7 +63,7 @@ Najpierw utwórz nowe grupie za pomocą [grupie — Tworzenie](https://westus.de
 
 Po zdefiniowaniu grupy, można zdefiniować osoby w niej za pomocą [osoba grupie - utworzyć](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) interfejsu API. Jego odpowiednikiem w bibliotece klienta jest metoda CreatePersonAsync. Twarzy można dodać do każdej osoby, po ich utworzeniu.
 
-```CSharp 
+```csharp 
 // Create an empty PersonGroup
 string personGroupId = "myfriends";
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, "My Friends");
@@ -84,7 +84,8 @@ Wykrywanie odbywa się przez wysłanie do interfejsu API [Face - Detect](https:/
 Dla każdej twarzy, która jest wykrywana wywołania [grupie osoby — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) Aby dodać ją do osoby poprawne.
 
 Poniższy kod pokazuje sposób wykrywania twarzy na obrazie i dodawania jej do osoby:
-```CSharp 
+
+```csharp 
 // Directory contains image files of Anna
 const string friend1ImageDir = @"D:\Pictures\MyFriends\Anna\";
  
@@ -105,13 +106,13 @@ Jeśli obraz zawiera więcej niż jeden twarzy, jest dodawana tylko największyc
 
 Musi być uczony grupie, przed wykonaniem za pomocą jego identyfikatora. Musi być retrained grupie, po dodaniu lub usunięciu każda osoba, lub Jeśli edytujesz zarejestrowanych twarzy osoby. Do szkolenia służy interfejs API [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249). Korzystając z biblioteki klienta jest wywołanie metody TrainPersonGroupAsync:
  
-```CSharp 
+```csharp 
 await faceServiceClient.TrainPersonGroupAsync(personGroupId);
 ```
  
 Szkolenie jest proces asynchroniczny. Nie może być zakończona nawet w przypadku, po powrocie z metody TrainPersonGroupAsync. Konieczne może wykonać zapytania o stan szkolenia. Użyj [grupie — pobieranie stanu w szkolenia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) metody interfejsu API lub GetPersonGroupTrainingStatusAsync biblioteki klienta. Poniższy kod przedstawia prostą logikę czekać na grupie szkolenia na zakończenie:
  
-```CSharp 
+```csharp 
 TrainingStatus trainingStatus = null;
 while(true)
 {
@@ -134,7 +135,7 @@ Testowanie rozpoznawania twarzy, muszą zostać wykryte za pomocą poprzedniej p
 
 Poniższy kod przedstawia proces identyfikacji:
 
-```CSharp 
+```csharp 
 string testImageFile = @"D:\Pictures\test_img1.jpg";
 
 using (Stream s = File.OpenRead(testImageFile))

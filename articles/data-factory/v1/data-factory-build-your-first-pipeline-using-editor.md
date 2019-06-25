@@ -25,10 +25,10 @@ ms.locfileid: "64573823"
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
-> * [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
-> * [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
+> * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
 > [!NOTE]

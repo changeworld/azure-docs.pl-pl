@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 764fca8d3cb4cd9c40d7880043637f89ef1a8578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755383"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302244"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Jak zaplanować indeksatorów usługi Azure Search
 Indeksator zwykle jest uruchamiane jeden raz, natychmiast, po jego utworzeniu. Można uruchomić go ponownie na żądanie przy użyciu portalu, interfejsu API REST lub zestawu .NET SDK. Można również skonfigurować indeksator okresowe uruchamianie zgodnie z harmonogramem.
@@ -43,6 +43,9 @@ Rozważmy przykład się to bardziej konkretne. Załóżmy, że możemy skonfigu
 * Pierwsze wykonanie indeksatora rozpoczyna się o lub około 1 czerwca 2019, 8:00 czasu UTC. Załóżmy, że to wykonywanie trwa 20 minut (lub w dowolnej chwili mniejsza niż 1 godzina).
 * Wykonanie drugiej rozpoczyna się o lub około 1 czerwca 2019 9:00:00 czasu UTC. Załóżmy, że to wykonanie zajmuje 70 minut — więcej niż jedna godzina —, a nie zakończy się aż do 10:10:00 czasu UTC.
 * Trzeci wykonywania jest zaplanowane na 10:00 czasu UTC, ale w tym czasie wykonywania jest nadal uruchomiona. To zaplanowane wykonanie następnie zostało pominięte. Kolejne wykonanie indeksatora nie zostaną uruchomione aż do 11:00 czasu UTC.
+
+> [!NOTE]
+> Jeśli indeksatora jest ustawiona na niektórych harmonogramu, ale wielokrotnie kończy się niepowodzeniem, w tym samym dokumentu wielokrotnie każdorazowo jego uruchomienia, rozpocznie się indeksatora uruchomione na dłuższe interwały interwału (maksymalnie do co najmniej raz na 24 godziny), dopóki nie jest pomyślnie sprawia, że aga postępu w programie.  Jeśli uważasz, że rozwiązaniu niezależnie od rodzaju problemu, który powodował indeksatora zostać zatrzymane w pewnym momencie, możesz wykonać na żądanie uruchomienia indeksatora, i jeśli pomyślnie sprawia to, że postęp, indeksator powróci do jego ustaw interwał harmonogramu ponownie.
 
 <a name="portal"></a>
 

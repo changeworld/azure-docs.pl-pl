@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: 0d52e84ba027f902cebf543ae019b5e4b53400b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5dfc00b1193117c22ba1c763bb0e75d9c4712222
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059686"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275744"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Usługa Azure alias DNS rekordów — omówienie
 
@@ -29,7 +29,7 @@ Zestaw rekordów aliasów jest obsługiwana dla następujących typów rekordów
 
 ## <a name="capabilities"></a>Możliwości
 
-- **Wskaż publicznego zasobu adresu IP z usługi DNS A/AAAA zestawu rekordów.** Można utworzyć zestawu rekordów A/AAAA i ułatwiają zestawie aliasu rekordu, aby wskazywał publiczny zasób adresu IP. Zestaw rekordów DNS jest automatycznie, jeśli publiczny adres IP zmieni się lub jest usunięte. Delegujące DNS unika się rekordy, które wskazują na niepoprawne adresy IP.
+- **Wskaż publicznego zasobu adresu IP z usługi DNS A/AAAA zestawu rekordów.** Można utworzyć zestawu rekordów A/AAAA i ułatwiają zestawie aliasu rekordu, aby wskazywał publiczny zasób adresu IP. Rekord DNS, zestaw zmian automatycznie jeśli publiczny adres IP zmieni się lub usunięta. Delegujące DNS unika się rekordy, które wskazują na niepoprawne adresy IP.
 
 - **Wskaż profil usługi Traffic Manager z zestawu rekordów DNS A/AAAA/CNAME.** Możesz utworzyć A/AAAA lub rekordu CNAME określić hasło i użyć rekordów aliasów, aby wskazywał profilu usługi Traffic Manager. Może to być szczególnie przydatne, gdy należy kierować ruchem w wierzchołku strefy, jak tradycyjnych rekordy CNAME nie są obsługiwane na wierzchołku strefy. Na przykład załóżmy, że profilu usługi Traffic Manager jest myprofile.trafficmanager.net i strefy DNS firmy to contoso.com. Można utworzyć aliasu rekordu zbiór typu A/AAAA dla domeny contoso.com (wierzchołku strefy) i wskaż myprofile.trafficmanager.net.
 - **Wskaż punktu końcowego usługi Azure Content Delivery Network (CDN)** . Jest to przydatne podczas tworzenia statycznych witryn internetowych przy użyciu usługi Azure storage i Azure CDN.

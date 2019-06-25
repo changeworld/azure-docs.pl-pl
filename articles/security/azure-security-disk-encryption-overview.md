@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b00a5262b1e144aa47cd7fd640906225ff4fecd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58c5c8321e505fe2c1c7d19c58fe0d031b75b3e4
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068789"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294861"
 ---
 # <a name="azure-disk-encryption-overview"></a>Omówienie usługi Azure Disk Encryption
 
@@ -45,7 +45,7 @@ Usługa Azure Disk Encryption obsługuje następujących scenariuszy:
 Obsługuje ona również następujące scenariusze dla maszyn wirtualnych, gdy są włączone w systemie Microsoft Azure:
 
 * Integracja z usługą Azure Key Vault.
-* [Maszyny wirtualne w warstwie standardowa](https://azure.microsoft.com/pricing/details/virtual-machines/). [Maszyny wirtualne systemu Linux](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) w tych warstwach, musi spełniać wymagania dotyczące minimalnej ilości pamięci, 7 GB. 
+* [Maszyny wirtualne w warstwie standardowa](https://azure.microsoft.com/pricing/details/virtual-machines/) spełniające [minimalna wymagana ilość pamięci](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes). 
 * Włączanie szyfrowania na Windows i maszyn wirtualnych systemu Linux, dysku zarządzanego i skalowania maszyn wirtualnych w zestawie z obsługiwanych obrazów w galerii systemu Azure.
 * Wyłączenie szyfrowania systemu operacyjnego i danych maszyn wirtualnych w zestawie dysków dla maszyn wirtualnych Windows, skalowania i maszyn wirtualnych dysku zarządzanego.
 * Wyłączenie szyfrowania dla dysków z danymi maszyn wirtualnych z systemem Linux i skalowania maszyn wirtualnych w zestawie i maszyn wirtualnych dysku zarządzanego.
@@ -56,7 +56,7 @@ Obsługuje ona również następujące scenariusze dla maszyn wirtualnych, gdy s
 * Włączanie szyfrowania na dyskach systemu operacyjnego maszyny Wirtualnej systemu Linux i danych.
 
    > [!NOTE]
-   > Szyfrowanie dysku systemu operacyjnego dla niektórych dystrybucjach systemu Linux nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące usługi Azure dysku szyfrowanie](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) artykułu.
+   > Szyfrowanie dysku systemu operacyjnego dla niektórych dystrybucjach systemu Linux nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [usługi Azure Disk Encryption obsługiwane systemy operacyjne: Linux](azure-security-disk-encryption-prerequisites.md#linux).
    
 * Włączanie szyfrowania na maszynach wirtualnych, które są skonfigurowane przy użyciu funkcji miejsca do magazynowania systemu Windows począwszy od wersji programu Windows Server 2016.
 * Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zarówno klucz szyfrowania klucza (KEK), jak i bez klucza KEK scenariuszy.
@@ -93,8 +93,6 @@ Usługa Azure Disk Encryption dla maszyn wirtualnych dla Windows i Linux obejmuj
 * [Polecenia cmdlet programu PowerShell dysku szyfrowanie](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
 * [Polecenia cmdlet szyfrowania dysku wiersza polecenia platformy Azure](/cli/azure/vm/encryption?view=azure-cli-latest).
 * [Szablony usługi Azure Resource Manager szyfrowania dysku](azure-security-disk-encryption-appendix.md#resource-manager-templates).
-
-Usługa Azure Disk Encryption jest obsługiwana na maszynach wirtualnych z systemem Windows lub systemu operacyjnego Linux. Aby uzyskać więcej informacji na temat obsługiwanych systemów operacyjnych, zobacz [— często zadawane pytania](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
 
 > [!NOTE]
 > Nie ma dodatkowych opłat do szyfrowania dysków maszyn wirtualnych za pomocą usługi Azure Disk Encryption. Standardowa [cenach usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) ma zastosowanie do magazynu kluczy, który służy do przechowywania kluczy szyfrowania. 

@@ -1,0 +1,43 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Azure Bastion
+metadata:
+  document_id: null
+  title: Bastion
+  meta.description: Learn how to use Azure Bastion
+  author: cherylmc
+  ms.service: Bastion
+  ms.topic: landing-page
+  ms.date: 06/13/2019
+  ms.author: cherylmc
+abstract:
+  description: 'Dowiedz się, jak nawiązać połączenie z maszyną wirtualną za pomocą usługi Azure Bastion. Skonfiguruj bezpieczne i bezproblemowe połączenie RDP/SSH z maszynami wirtualnymi bezpośrednio w witrynie Azure Portal za pośrednictwem protokołu SSL. Gdy łączysz się za pomocą usługi Azure Bastion, maszyny wirtualne nie muszą mieć publicznego adresu IP.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: 'https://go.microsoft.com/fwlink/?linkid=2095604'
+      width: 250
+    title: 'Praca z usługą Azure Bastion (1:03)'
+    href: 'https://go.microsoft.com/fwlink/?linkid=2095517'
+    width: 250
+sections:
+  - title: Tworzenie hosta Azure Bastion i zarządzanie nim (wersja zapoznawcza)
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak skonfigurować hosta usługi Azure Bastion, a następnie nawiązać połączenie z maszyną wirtualną.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/bastion/bastion-create-host-portal">Create and modify an Azure Bastion host (Tworzenie i modyfikowanie hosta Azure Bastion)</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Connect to a Windows virtual machine (Łączenie z maszyną wirtualną z systemem Windows)</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Connect to a Linux virtual machine (Łączenie z maszyną wirtualną z systemem Linux)</a>
+          - html: <a href="/azure/bastion/bastion-faq">Read the Azure Bastion FAQ (Często zadawane pytania dotyczące usługi Azure Bastion)</a>
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://msdn.microsoft.com/library/azure/mt586720">Dokumentacja interfejsu API REST</a></p>'

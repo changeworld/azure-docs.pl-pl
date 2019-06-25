@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec6177bb353602f20040f05215678e3a8a161ebc
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967956"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190833"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -44,7 +44,7 @@ W tym dokumencie opisano, jak utworzyć i skonfigurować samodzielnie hostowane 
 
     ```
 
-## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Konfigurowanie własnego środowiska IR na Maszynie wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager (automation)
+## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>Konfigurowanie własnego środowiska IR na Maszynie wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager 
 Instalacja Self-Hosted IR na maszynie wirtualnej platformy Azure można zautomatyzować za pomocą [tego szablonu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime). Ten szablon zawiera prosty sposób, aby w pełni funkcjonalne może być samodzielnie hostowane środowisko IR wewnątrz sieci wirtualnej platformy Azure za pomocą funkcji wysokiej dostępności i skalowalności (tak długo, jak ustawić jest liczba węzłów do 2 lub nowszego).
 
 ## <a name="command-flow-and-data-flow"></a>Polecenie przepływu i przepływu danych
@@ -86,6 +86,7 @@ Własne środowisko integration runtime można zainstalować, pobierając pakiet
 
 - Skonfigurować plan zasilania na komputerze hosta dla własnego środowiska integration runtime, aby komputer nie hibernacji. Jeśli komputer hosta przechodzi w stan hibernacji, własne środowisko integration runtime przejdzie do trybu offline.
 - Utwórz kopię zapasową poświadczeń skojarzonych z własnego środowiska integration runtime regularnie.
+- Własne środowisko IR automatyzację konfiguracji operacji, zapoznaj się [poniżej sekcji](#automation-support-for-self-hosted-ir-function).  
 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Zainstalowanie i zarejestrowanie własne środowisko IR w Centrum pobierania
 
@@ -109,6 +110,45 @@ Własne środowisko integration runtime można zainstalować, pobierając pakiet
     b. Opcjonalnie można zaznaczyć **klucz uwierzytelniania Show** Aby wyświetlić tekst klucza.
 
     c. Wybierz pozycję **Zarejestruj**.
+
+## <a name="automation-support-for-self-hosted-ir-function"></a>Obsługa automatyzacji dla może być samodzielnie hostowane środowisko IR — funkcja
+
+
+> [!NOTE]
+> Jeśli zamierzasz skonfigurować własne środowisko IR na maszynie wirtualnej platformy Azure i zautomatyzować instalację za pomocą szablonów usługi Azure Resource Manager, zapoznaj się [sekcji](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template).
+
+Można użyć wiersza polecenia do konfigurowania i zarządzania nimi istniejące Self-Hosted IR Może to służyć zwłaszcza do automatyzacji instalacji i rejestracji węzły samodzielnie hostowane środowisko IR (). 
+
+**Dmgcmd.exe** znajduje się w instalacji Self-Hosted zazwyczaj znajduje się: C:\Program Files\Microsoft integracji Runtime\3.0\Shared\ folder. Obsługuje różne parametry i może być wywoływany za pomocą wiersza polecenia za pomocą skryptów wsadowych do automatyzacji. 
+
+*Sposób użycia:* 
+
+```powershell
+dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
+```
+
+ *Szczegóły (parametry / właściwość):* 
+
+| Właściwość                                                    | Opis                                                  | Wymagane |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
+| RegisterNewNode "`<AuthenticationKey>`"                     | Rejestrowanie produktu Integration Runtime (Self-Hosted) węzła przy użyciu określonego klucza uwierzytelniania | Nie       |
+| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | Włącz dostęp zdalny w bieżącym węźle Konfigurowanie wysokiej dostępności klastra i/lub włączenie ustawienia poświadczeń bezpośrednio w odniesieniu do samodzielnie hostowanego środowiska IR (bez pośrednictwa usługi ADF) przy użyciu  **Nowe AzDataFactoryV2LinkedServiceEncryptedCredential** polecenia cmdlet z komputera zdalnego, w tej samej sieci. | Nie       |
+| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | Włącz dostęp zdalny do bieżącego węzła, gdy węzeł jest uruchomiona w kontenerze | Nie       |
+| DisableRemoteAccess                                         | Wyłącz dostęp zdalny do bieżącego węzła. Dostęp zdalny jest wymagany dla konfiguracji z wieloma węzłami. New -**AzDataFactoryV2LinkedServiceEncryptedCredential** polecenia cmdlet programu PowerShell nadal działa, nawet wtedy, gdy dostęp zdalny jest wyłączony tak długo, jak jest ono wykonywane na tym samym komputerze co węzeł Self-Hosted IR. | Nie       |
+| Klucz "`<AuthenticationKey>`"                                 | Zastąp / zaktualizować poprzedniego klucza uwierzytelniania. Należy zachować ostrożność, ponieważ może to spowodować Twoje poprzednie samodzielnie hostowany węzeł IR pracę w trybie offline, jeśli klucz jest nowe środowisko integration runtime. | Nie       |
+| GenerateBackupFile "`<filePath>`" "`<password>`"            | Generowanie pliku kopii zapasowej dla bieżącego węzła, plik kopii zapasowej zawiera węzeł poświadczenia magazynu klucza i danych | Nie       |
+| ImportBackupFile "`<filePath>`" "`<password>`"              | Przywrócić węzła z pliku kopii zapasowej                          | Nie       |
+| Ponowne uruchamianie                                                     | Uruchom ponownie usługę Integration Runtime (Self-Hosted) hosta   | Nie       |
+| Uruchamianie                                                       | Uruchom usługę Integration Runtime (Self-Hosted) hosta     | Nie       |
+| Stop                                                        | Zatrzymaj środowisko Integration Runtime (Self-Hosted) aktualizacji usługi        | Nie       |
+| StartUpgradeService                                         | Uruchom środowisko Integration Runtime (Self-Hosted) aktualizacji usługi       | Nie       |
+| StopUpgradeService                                          | Zatrzymaj środowisko Integration Runtime (Self-Hosted) aktualizacji usługi        | Nie       |
+| TurnOnAutoUpdate                                            | Włącz środowisko Integration Runtime (Self-Hosted) automatyczną aktualizację        | Nie       |
+| TurnOffAutoUpdate                                           | Wyłączanie produktu Integration Runtime (Self-Hosted) automatyczną aktualizację       | Nie       |
+| SwitchServiceAccount "<domain\user>" ["password"]           | Skonfiguruj usługę DIAHostService do uruchamiania jako nowe konto. Użyj pustego hasła ("") dla konta systemowego lub konta wirtualnego | Nie       |
+| Loglevel `<logLevel>`                                       | Ustaw poziom dziennika funkcji ETW (wyłączony, błąd, pełny lub wszystko). Zazwyczaj używane przez dział pomocy technicznej firmy Microsoft podczas debugowania. | Nie       |
+
+   
 
 
 ## <a name="high-availability-and-scalability"></a>Wysoka dostępność i skalowalność
@@ -341,7 +381,7 @@ Jeśli używasz zapory innych firm, możesz ręcznie otworzyć port 8060 (lub sk
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-``` 
+```
 
 Jeśli wybierzesz nie otworzyć port 8060 maszynie Self-Hosted integration runtime, użyj mechanizmów innej niż aplikacja Ustawianie poświadczeń, aby skonfigurować poświadczenia magazynu danych. Na przykład, można użyć **New AzDataFactoryV2LinkedServiceEncryptCredential** polecenia cmdlet programu PowerShell.
 

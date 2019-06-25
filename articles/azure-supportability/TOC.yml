@@ -11,6 +11,8 @@
       href: per-vm-quota-requests.md
     - name: Zwiększenie limitu całkowitej liczby regionalnych procesorów wirtualnych
       href: regional-quota-requests.md
+    - name: Zwiększanie limitu sieci
+      href: networking-quota-requests.md
 - name: Rozwiązywanie problemów z subskrypcją dotyczących regionu lub jednostki SKU
   href: sku-series-unavailable.md
 - name: Dokumentacja

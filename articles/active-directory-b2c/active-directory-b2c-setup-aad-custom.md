@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ade695f1930c11f2d2d7ab7e0430910bd6f8705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ae821dc9ae0d739526b91bad76bca544cad2fb0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508639"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203705"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Ustawienia logowania przy użyciu konta usługi Azure Active Directory za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C 
 
@@ -132,7 +132,7 @@ Aby uzyskać token z punktu końcowego usługi Azure AD, musisz zdefiniować pro
 5. Ustaw wartość **METADANYCH** do `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`, gdzie `your-AD-tenant-name` jest nazwa dzierżawy usługi Azure AD. Na przykład: `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
 6. Otwórz przeglądarkę i przejdź do **METADANYCH** adresu URL, który właśnie został zaktualizowany, poszukaj dla **wystawcy** obiektu, skopiuj i wklej tę wartość do wartości dla **ProviderName** w pliku XML.
 8. Ustaw **client_id** i **IdTokenAudience** do Identyfikatora aplikacji z rejestracji aplikacji.
-9. W obszarze **CryptograhicKeys**, zaktualizuj wartość **identyfikatorze StorageReferenceId** zdefiniowany klucz zasad. Na przykład `ContosoAppSecret`.
+9. W obszarze **CryptographicKeys**, zaktualizuj wartość **identyfikatorze StorageReferenceId** zdefiniowany klucz zasad. Na przykład `ContosoAppSecret`.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Przekaż plik rozszerzenia o weryfikację
 

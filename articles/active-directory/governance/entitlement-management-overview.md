@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/30/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbb4001e9496d31d9c2879721f8cf8e26b74ddf3
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474070"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204549"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie uprawnieniami w usłudze Azure AD? (Wersja zapoznawcza)
 
@@ -129,41 +129,6 @@ Aby lepiej zrozumieć, zarządzanie uprawnieniami i jego dokumentacji, należy p
 | Katalog zasobów | Katalog, który ma co najmniej jeden zasób do udostępniania. |
 | przypisani użytkownicy | Przypisanie pakietu dostęp do użytkownika lub grupy. |
 | Włącz | Proces udostępniania dla użytkowników zażądać dostępu do pakietu. |
-
-## <a name="roles-and-permissions"></a>Role i uprawnienia
-
-Zarządzanie uprawnieniami ma różne role, w oparciu o funkcję zadania.
-
-| Rola | Opis |
-| --- | --- |
-| [Administrator użytkowników](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) | Zarządzaj wszystkimi aspektami Zarządzanie uprawnieniami.<br/>Tworzenie użytkowników i grup. |
-| Twórca katalogu | Tworzenie i Zarządzanie katalogami. Zazwyczaj administrator IT lub właściciel zasobu. Osoba, która automatycznie tworzy wykaz staje się pierwszym właściciela katalogu wykazu. |
-| Właściciel katalogu | Edytowanie i zarządzanie nią istniejących wykazów. Zazwyczaj administrator IT lub właściciel zasobu. |
-| Dostęp do Menedżera pakietów | Edytowanie i zarządzanie nią wszystkie istniejące pakiety dostępu w katalogu. |
-| Osoby zatwierdzającej | Zatwierdź żądania, uzyskiwania dostępu do pakietów. |
-| Obiekt żądający | Żądanie dostępu do pakietów. |
-
-W poniższej tabeli wymieniono uprawnienia dla każdej z tych ról.
-
-| Zadanie | Administrator użytkownika | Twórca katalogu | Właściciel katalogu | Dostęp do Menedżera pakietów | Osoby zatwierdzającej |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| [Utwórz nowy pakiet dostępu w wykazie ogólne](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
-| [Utwórz nowy pakiet dostępu w wykazie](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
-| [Dodaj/Usuń role zasobów z pakietu dostępu](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Określ, kto może żądać dostępu do pakietu](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Bezpośrednio przypisać użytkownika do dostępu do pakietu](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Widok, kto ma przypisania dostępu do pakietu](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Wyświetlanie żądań pakietu dostępu](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Wyświetl błędy dostarczania żądania](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Anulowanie oczekującego żądania](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Ukryj pakietu dostępu](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Usuń pakiet dostępu](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zatwierdź żądanie dostępu](entitlement-management-request-approve.md) |  |  |  |  | :heavy_check_mark: |
-| [Tworzenie katalogu](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
-| [Dodawanie/Usuwanie zasobów z katalogu ogólne](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  |  |  |  |
-| [Dodawanie/Usuwanie zasobów z katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [Dodawanie właścicieli katalogu ani uzyskać dostępu do menedżerów pakietów](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [Edytowanie/usuwanie katalogu](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
 

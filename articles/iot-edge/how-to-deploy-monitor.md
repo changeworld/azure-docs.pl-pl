@@ -5,38 +5,36 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/19/2019
+ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 69ba0a882c0e52e7c0d063b8f77e7a0fe22526a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f012d3e228a2730423c0d5a6f2cea7a8f2f9eab4
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126368"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190426"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal
 
-[!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-edge-how-to-deploy-monitor-selector.md)]
+Tworzenie **automatycznego wdrażania usługi IoT Edge** w witrynie Azure portal do zarządzania bieżących wdrożeń dla wielu urządzeń na raz. Automatyczne wdrażanie dla usługi IoT Edge są częścią [urządzenia automatycznego zarządzania](/iot-hub/iot-hub-automatic-device-management.md) funkcji usługi IoT Hub. Wdrożenia są dynamiczne procesów, które pozwalają na wdrażanie wiele modułów na wielu urządzeniach, śledzenia stanu i kondycji modułów i wprowadzić zmiany, gdy jest to konieczne. 
 
-Usługa Azure IoT Edge pozwala na przenoszenie analytics na urządzeniach brzegowych i zapewnia interfejs chmurowy dzięki czemu możesz zarządzać i monitorować urządzenia brzegowe IoT bez konieczności uzyskiwania fizycznego dostępu każdej z nich. Możliwość zdalnego zarządzania urządzeniami jest coraz ważniejsze rozwiązania Internetu rzeczy są coraz większej i bardziej złożonej. Usługa Azure IoT Edge jest przeznaczony do obsługi do celów biznesowych, niezależnie od tego, ile urządzeń, możesz dodać.
-
-Możesz zarządzać poszczególnych urządzeń i wdrażać moduły do nich pojedynczo. Jednak jeśli chcesz wprowadzić zmiany do urządzeń na dużą skalę, możesz utworzyć **automatycznego wdrażania usługi IoT Edge**, który jest częścią automatyczne zarządzanie urządzeniami w usłudze IoT Hub. Wdrożenia są dynamiczne procesów, które umożliwiają jednocześnie wdrażać wielu modułów na wielu urządzeniach, śledzenia stanu i kondycji modułów i wprowadzić zmiany, gdy jest to konieczne. 
+Aby uzyskać więcej informacji, zobacz [automatycznego wdrożenia zrozumieć usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali](module-deployment-monitoring.md).
 
 ## <a name="identify-devices-using-tags"></a>Identyfikowanie urządzeń za pomocą tagów
 
-Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, które mają wpływ na. Usługa Azure IoT Edge identyfikuje urządzenia przy użyciu **tagi** w bliźniaczej reprezentacji urządzenia. Każde urządzenie może mieć wiele tagów i można je zdefiniować sposób, który ma sens dla Twojego rozwiązania. Na przykład jeśli zarządzasz campus budynki, możesz dodać następujące znaczniki na urządzeniu:
+Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, które mają wpływ na. Usługa Azure IoT Edge identyfikuje urządzenia przy użyciu **tagi** w bliźniaczej reprezentacji urządzenia. Każde urządzenie może mieć wiele tagów, które definiujesz w jakikolwiek sposób, który ma sens dla Twojego rozwiązania. Na przykład jeśli zarządzasz campus budynki, możesz dodać następujące znaczniki na urządzeniu:
 
 ```json
 "tags":{
-    "location":{
-        "building": "20",
-        "floor": "2"
-    },
-    "roomtype": "conference",
-    "environment": "prod"
+  "location":{
+    "building": "20",
+    "floor": "2"
+  },
+  "roomtype": "conference",
+  "environment": "prod"
 }
 ```
 
@@ -58,24 +56,21 @@ Istnieje pięć kroków, aby utworzyć wdrożenie. Poniższe sekcje przeprowadz�
 
 ### <a name="step-2-add-modules-optional"></a>Krok 2: Dodaj moduły (opcjonalnie)
 
-Istnieją dwa typy modułów, które można dodać do wdrożenia. Pierwszy jest modułem oparte na usługi platformy Azure, takich jak konto magazynu lub usługi Stream Analytics. Druga to moduł przy użyciu własnego kodu. Do wdrożenia, można dodać wiele modułów dowolnego typu. 
+Możesz dodać maksymalnie 20 modułów do wdrożenia. 
 
-Jeśli tworzysz wdrożenia bez modułów usuwa wszystkie bieżące moduły z urządzeń. 
-
->[!NOTE]
->Usługa Azure Functions nie obsługuje jeszcze wdrożenie zautomatyzowane usługi platformy Azure. Aby ręcznie dodać usługi do wdrożenia, należy użyć wdrażania niestandardowego modułu. 
+Jeśli tworzysz wdrożenia bez modułów usuwa wszystkie bieżące moduły z urządzeń docelowych. 
 
 Aby dodać moduł z usługi Azure Stream Analytics, wykonaj następujące kroki:
 
 1. W **moduły wdrożeń** części strony, kliknij przycisk **Dodaj**.
 1. Wybierz **modułu usługi Azure Stream Analytics**.
 1. Wybierz swoje **subskrypcji** z menu rozwijanego.
-1. Wybierz swoje **zadanie Edge** z menu rozwijanego.
+1. Wybierz IoT **zadanie Edge** z menu rozwijanego.
 1. Wybierz **Zapisz** można dodać modułu do wdrożenia. 
 
 Aby dodać niestandardowy kod jako moduł lub ręcznie Dodaj moduł usługi Azure, wykonaj następujące kroki:
 
-1. W **ustawienia usługi Container Registry** części strony, podaj nazwy i poświadczenia dla rejestrów dowolnego kontenera prywatnych, zawierających obrazy modułu dla tego wdrożenia. Agent usługi Edge będzie zgłaszać błąd 500, nie można znaleźć poświadczenia rejestru kontenera obrazu platformy Docker.
+1. W **ustawienia usługi Container Registry** części strony, podaj nazwy i poświadczenia dla rejestrów dowolnego kontenera prywatnych, zawierających obrazy modułu dla tego wdrożenia. Agent usługi IoT Edge będzie zgłaszać błąd 500, nie można znaleźć poświadczenia rejestru kontenera obrazu platformy Docker.
 1. W **moduły wdrożeń** części strony, kliknij przycisk **Dodaj**.
 1. Wybierz **moduł usługi IoT Edge**.
 1. Nadaj modułu **nazwa**.
@@ -84,13 +79,13 @@ Aby dodać niestandardowy kod jako moduł lub ręcznie Dodaj moduł usługi Azur
 1. Użyj menu rozwijanego, aby wybrać **zasady ponownego uruchamiania**. Wybierz spośród następujących opcji: 
    * **Zawsze** — moduł ponowne uruchomienie zawsze, jeśli kończy pracę z dowolnego powodu.
    * **Nigdy nie** — moduł nigdy nie uruchamia ponownie, jeśli kończy pracę z dowolnego powodu.
-   * **Nie powiodło się** — moduł spowoduje ponowne uruchomienie, jeśli awarii, ale nie Jeśli zamykania nie pozostawia żadnych śladów. 
+   * **w przypadku niepowodzenia** — moduł spowoduje ponowne uruchomienie, jeśli awarii, ale nie Jeśli zamykania nie pozostawia żadnych śladów. 
    * **Na nieprawidłowości** — moduł spowoduje ponowne uruchomienie, jeśli ulega awarii, lub zwraca komunikat o złej kondycji. To Ty każdego modułu, aby zaimplementować funkcję stan kondycji. 
 1. Użyj menu rozwijanego, aby wybrać **żądanego stanu** dla modułu. Wybierz spośród następujących opcji:
-   * **Uruchamianie** — jest to opcja domyślna. Moduł zostanie uruchomione natychmiast po wdrożeniu.
+   * **uruchamianie** — uruchomiona jest opcją domyślną. Moduł zostanie uruchomione natychmiast po wdrożeniu.
    * **Zatrzymano** — po wdrożeniu moduł może pozostawać bezczynny, dopóki nie jest wymagane do uruchomienia przez Ciebie lub innego modułu.
 1. Wybierz **żądane właściwości zestawu modułu bliźniaczej reprezentacji** Jeśli chcesz dodać do bliźniaczej reprezentacji modułu tagi lub inne właściwości.
-1. Wprowadź **zmienne środowiskowe** dla tego modułu. Zmienne środowiskowe zawierają informacje o dodatku do modułu, w ułatwienia procesu konfiguracji.
+1. Wprowadź **zmienne środowiskowe** dla tego modułu. Zmienne środowiskowe zawierają informacje o konfiguracji do modułu.
 1. Wybierz **Zapisz** można dodać modułu do wdrożenia. 
 
 Po utworzeniu wszystkich modułów dla wdrożenia skonfigurowane, wybierz **dalej** aby przejść do kroku 3.
@@ -109,20 +104,20 @@ Metryki zawierają podsumowanie liczby różnych stanów, które urządzenie mo�
 
 1. Wprowadź zapytanie dotyczące **kryteria metryki**. Zapytanie jest oparty na bliźniaczą reprezentację modułu Centrum IoT Edge [zgłaszanych właściwości](module-edgeagent-edgehub.md#edgehub-reported-properties). Metryka reprezentuje liczbę wierszy zwróconych przez zapytanie.
 
-Na przykład:
+   Na przykład:
 
-```sql
-SELECT deviceId FROM devices
-  WHERE properties.reported.lastDesiredStatus.code = 200
-```
+   ```sql
+   SELECT deviceId FROM devices
+     WHERE properties.reported.lastDesiredStatus.code = 200
+   ```
 
 ### <a name="step-5-target-devices"></a>Krok 5. Urządzenia docelowe
 
 Użyj właściwości tagi z urządzeniami pod kątem konkretnych urządzeń, które powinny otrzymać tego wdrożenia. 
 
-Ponieważ wielu wdrożeń będących częścią mogą odnosić się do tego samego urządzenia, należy nadać kontu każdego wdrożenia numer priorytetu. Jeśli nigdy nie są zgodne, usługa wins wdrożenia o najwyższym priorytecie (wyższe wartości wskazują wyższy priorytet). Jeśli dwa wdrożenia mają ten sam numer priorytet, ten, który został utworzony w większości ostatnio wins. 
+Ponieważ wielu wdrożeń będących częścią mogą odnosić się do tego samego urządzenia, należy nadać kontu każdego wdrożenia numer priorytetu. Jeśli nigdy nie są zgodne, usługa wins wdrożenia o najwyższym priorytecie (wyższe wartości wskazać wyższy priorytet). Jeśli dwa wdrożenia mają ten sam numer priorytet, ten, który został utworzony w większości ostatnio wins. 
 
-1. Wprowadź dodatnią liczbę całkowitą dla wdrożenia **priorytet**. W przypadku, gdy co najmniej dwa wdrożenia są przeznaczone dla tego samego urządzenia, będą stosowane wdrożenie o najwyższej wartości liczbowe dla priorytetu.
+1. Wprowadź dodatnią liczbę całkowitą dla wdrożenia **priorytet**.
 1. Wprowadź **warunek docelowy** do określenia urządzeń, które zostaną objęte tego wdrożenia. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.devicemodel='4000x'`. 
 1. Wybierz **dalej** można przenieść do ostatniego kroku.
 
@@ -134,7 +129,7 @@ Przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania**.
 
 Witryna Azure Marketplace to rynek online aplikacji i usług, którego można przeglądać przy użyciu szerokiej gamy aplikacji i rozwiązań, które są certyfikowane i optymalizowane pod kątem działania na platformie Azure, w tym [moduły usługi IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Portal Azure Marketplace można także uzyskać dostęp za pośrednictwem witryny Azure portal w obszarze **Utwórz zasób**.
 
-Moduł usługi IoT Edge można zainstalować z witryny Azure Marketplace lub witryny Azure portal:
+Aby wdrożyć moduł usługi IoT Edge z portalu Azure Marketplace lub w portalu Azure:
 
 1. Znajdź moduł i rozpocząć proces wdrażania.
 
@@ -168,8 +163,8 @@ Aby wyświetlić szczegóły wdrożenia i monitorowania urządzeń, w których j
    * **Warunek docelowy** -tag używane do definiowania urządzeń docelowych.
    * **Priorytet** — numer priorytetu, przypisanych do wdrożenia.
    * **Metryki systemu** - **docelowych** określa liczbę bliźniaczych reprezentacji urządzeń w usłudze IoT Hub, który odpowiada warunkowi określania wartości docelowej i **zastosowano** określa liczbę urządzeń, które mają Gdyby zawartości wdrożenia są stosowane do ich bliźniaczych reprezentacjach modułów usługi IoT Hub. 
-   * **Metryki urządzenia** — liczba urządzeń brzegowych we wdrożeniu raportowania sukcesów lub błędów środowiska uruchomieniowego klienta usługi IoT Edge.
-   * **Metryki niestandardowe** — liczba urządzeń brzegowych we wdrożeniu, zgłoszenie danych dla dowolnego metryk, która jest zdefiniowana dla tego wdrożenia.
+   * **Metryki urządzenia** — liczba urządzeń usługi IoT Edge we wdrożeniu raportowania sukcesów lub błędów środowiska uruchomieniowego klienta usługi IoT Edge.
+   * **Metryki niestandardowe** — liczba urządzeń usługi IoT Edge we wdrożeniu, zgłoszenie danych dla dowolnego metryk, która jest zdefiniowana dla tego wdrożenia.
    * **Godzina utworzenia** -sygnaturę czasową od utworzenia wdrożenia. Sygnatura czasowa jest używany na przerwanie ties, gdy dwa wdrożenia mają ten sam priorytet. 
 1. Wybierz wdrożenie, które chcesz monitorować.  
 1. Sprawdź szczegóły wdrożenia. Można użyć karty, aby poznać szczegóły wdrożenia.
@@ -217,4 +212,4 @@ Po usunięciu wdrożenia żadnych urządzeń przyjmują ich dalej wdrożenia naj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [Wdrażanie modułów na urządzenia brzegowe](module-deployment-monitoring.md).
+Dowiedz się więcej o [Wdrażanie modułów na urządzeniach usługi IoT Edge](module-deployment-monitoring.md).

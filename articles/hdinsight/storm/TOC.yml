@@ -4,6 +4,11 @@
   items:
     - name: Co to jest system Apache Storm w usłudze HDInsight?
       href: apache-storm-overview.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: Tworzenie topologii systemu Apache Storm w usłudze HDInsight
+      href: ./apache-storm-quickstart.md
 - name: Rozpoczęcie pracy
   items:
     - name: Tworzenie klastra Apache Storm

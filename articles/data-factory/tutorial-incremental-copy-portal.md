@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 1bc4bd9b95dc7e45b9b90fbe096ed71c5aa9bedf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a9d6ec651cd365995ce63a8dff6d60c8b23dec1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60571302"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312644"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem, który ładuje dane różnicowe z tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage. 
@@ -238,7 +238,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
 
         ![Drugie działanie wyszukiwania — nowy zestaw danych](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
 17. Przejdź do edytora potoku, klikając kartę potoku u góry lub klikając nazwę potoku w widoku drzewa po lewej stronie. W oknie dialogowym właściwości działania **Lookup** (Wyszukiwanie) upewnij się, że dla pola **Zestaw danych źródłowych** wybrano wartość **SourceDataset**. 
-18. Wybierz wartość **Zapytanie** w polu **Użyj zapytania**, a następnie wprowadź następujące zapytanie: wybierasz tylko maksymalną wartość **LastModifytime** z tabeli **data_source_table**. Bez tego zapytania zestaw danych pobiera wszystkie wiersze z tabeli określonej w definicji zestawu danych (data_source_table).
+18. Wybierz wartość **Zapytanie** w polu **Użyj zapytania**, a następnie wprowadź następujące zapytanie: wybierasz tylko maksymalną wartość **LastModifytime** z tabeli **data_source_table**. Upewnij się również sprawdzeniu **tylko wiersz Fist**.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table

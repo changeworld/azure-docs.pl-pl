@@ -69,8 +69,8 @@ Właściwość | Opis | Dozwolone wartości | Wymagane
 name | Nazwa działania warunku if. | String | Tak
 type | Musi być równa **IfCondition** | String | Yes
 expression | Wyrażenie musi zwrócić wartość true lub false | Wyrażenia z wyniku typu boolean | Tak
-ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Tablica | Tak
-ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Tablica | Tak
+ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Array | Tak
+ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Array | Tak
 
 ## <a name="example"></a>Przykład
 Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjściowego. Folder wyjściowy jest określana przez wartość parametru potoku: routeSelection. Jeśli wartość routeSelection jest spełniony, dane są kopiowane do outputPath1. Ponadto jeśli wartość routeSelection ma wartość false, dane są kopiowane do outputPath2. 

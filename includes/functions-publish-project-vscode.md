@@ -10,11 +10,11 @@ ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132218"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183028"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
@@ -43,9 +43,9 @@ W tym artykule założono, że tworzysz nową aplikację funkcji.
 
     Po naciśnięciu klawisza Enter następujących zasobów platformy Azure są tworzone w ramach subskrypcji:
 
-    * **[Grupa zasobów](../articles/azure-resource-manager/resource-group-overview.md)**: Zawiera wszystkie utworzone zasoby platformy Azure. Nazwa opiera się na nazwę swojej aplikacji funkcji.
-    * **[Konto magazynu](../articles/storage/common/storage-quickstart-create-account.md)**: Standardowe konto magazynu jest tworzone z unikatową nazwę, która opiera się na nazwę swojej aplikacji funkcji.
-    * **[Plan hostingu](../articles/azure-functions/functions-scale.md)**: Plan zużycie zostanie utworzona w regionie zachodnie stany USA do hostowania aplikacji funkcję niewymagającą użycia serwera.
+    * **[Grupa zasobów](../articles/azure-resource-manager/resource-group-overview.md)** : Zawiera wszystkie utworzone zasoby platformy Azure. Nazwa opiera się na nazwę swojej aplikacji funkcji.
+    * **[Konto magazynu](../articles/storage/common/storage-quickstart-create-account.md)** : Standardowe konto magazynu jest tworzone z unikatową nazwę, która opiera się na nazwę swojej aplikacji funkcji.
+    * **[Plan hostingu](../articles/azure-functions/functions-scale.md)** : Plan zużycie zostanie utworzona w regionie zachodnie stany USA do hostowania aplikacji funkcję niewymagającą użycia serwera.
     * **Aplikacja funkcji**: Projekt jest wdrażana i jest uruchamiany w tej nowej aplikacji funkcji.
 
     Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie wyświetlone powiadomienie. Wybierz **wyświetlanie danych wyjściowych** w tym zgłoszeniu do wyświetlania, tworzenia i wynikami wdrożenia, łącznie z zasobów platformy Azure, które zostały utworzone.

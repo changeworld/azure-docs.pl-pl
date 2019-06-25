@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36ca46d6df9c32f23d3051d1205c3c6b39e69f5a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64920262"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164716"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integracja połączenia konta usługi LinkedIn w usłudze Azure Active Directory
 
@@ -44,7 +44,7 @@ Można włączyć połączenia konta usługi LinkedIn dla użytkowników, aby ko
 1. W obszarze **połączenia konta usługi LinkedIn**, Zezwalaj użytkownikom na łączenie ich kont, aby uzyskiwać dostęp do swoich połączeń usługi LinkedIn w niektórych aplikacjach firmy Microsoft. Dane nie zostaną udostępnione, dopóki użytkownicy wyrazić zgodę na łączenie ich kont.
 
     * Wybierz **tak** włączyć usługę dla wszystkich użytkowników w Twojej organizacji
-    * Wybierz **wybrane** można włączyć tylko grupy wybranych użytkowników w Twojej organizacji
+    * Wybierz **wybraną grupę** włączyć usługę dla grupy wybranych użytkowników w Twojej organizacji
     * Wybierz **nie** Aby wycofać zgodę od wszystkich użytkowników w organizacji
 
     ![Integracja połączenia konta usługi LinkedIn w organizacji](./media/linkedin-integration/linkedin-integration.png)

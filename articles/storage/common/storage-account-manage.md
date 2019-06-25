@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 06/20/2019
 ms.author: tamram
-ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66bdc4bd1e17347419a6eccd7c9532db17b33001
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61484278"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303493"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Zarządzanie ustawieniami konta magazynu w witrynie Azure portal
 
@@ -20,16 +20,13 @@ Różne ustawienia dla konta magazynu są dostępne w [witryny Azure portal](htt
 
 ## <a name="access-control"></a>Kontrola dostępu
 
-Usługa Azure Storage obsługuje uwierzytelnianie przy użyciu usługi Azure Active Directory dla usługi Blob storage i Queue storage przy użyciu kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat uwierzytelniania za pomocą usługi Azure AD, zobacz [uwierzytelnienia dostępu do platformy Azure obiekty BLOB i kolejki, przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
+Usługa Azure Storage obsługuje autoryzacji w usłudze Azure Active Directory dla usługi Blob storage i Queue storage przy użyciu kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji o autoryzacji w usłudze Azure AD, zobacz [Autoryzuj dostęp do platformy Azure, obiekty BLOB i kolejki przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
 
 **Kontroli dostępu** ustawień w portalu Azure oferują prosty sposób Przypisz role RBAC do użytkowników, grup, nazw głównych usług i zarządzanych tożsamości. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [Zarządzaj praw dostępu do danych obiektów blob i kolejek przy użyciu RBAC](storage-auth-aad-rbac.md).
 
-> [!NOTE]
-> Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD udostępnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z innej metody autoryzacji. Gdy możesz kontynuować klucza wspólnego autoryzacji za pomocą aplikacji, za pomocą usługi Azure AD zmierzone konieczności przechowywania klucza dostępu do konta za pomocą kodu. Nadal m ożna również udzielić szczegółową kontrolę dostępu do zasobów na koncie magazynu przy użyciu sygnatury dostępu współdzielonego (SAS), ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokeny sygnatur dostępu Współdzielonego ani martwić się o odwołaniu ze złamanymi zabezpieczeniami sygnatury dostępu Współdzielonego. 
-
 ## <a name="tags"></a>`Tags`
 
-Usługa Azure Storage obsługuje tagi usługi Azure Resource Manager służący do organizowania zasobów platformy Azure dostosowanych taksonomii. Znaczniki można dodawać do swoich kont magazynu, dzięki czemu grupy w ramach Twojej subskrypcji w logiczny sposób. 
+Usługa Azure Storage obsługuje tagi usługi Azure Resource Manager służący do organizowania zasobów platformy Azure dostosowanych taksonomii. Znaczniki można dodawać do swoich kont magazynu, dzięki czemu grupy w ramach Twojej subskrypcji w logiczny sposób.
 
 W przypadku kont magazynu Nazwa tagu jest ograniczona do 128 znaków, a wartość tagu jest ograniczona do 256 znaków.
 
@@ -41,24 +38,18 @@ Podczas tworzenia konta magazynu platformy Azure generuje dwa klucze dostępu do
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-### <a name="view-and-copy-access-keys"></a>Wyświetlanie i kopiowanie kluczy dostępu
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
-Aby wyświetlić swoje poświadczenia konta magazynu:
+### <a name="view-account-keys-and-connection-string"></a>Wyświetl klucze konta i parametry połączenia
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Odszukaj konto magazynu.
-3. W sekcji **Ustawienia** omówienia kont magazynu wybierz pozycję **Klucze dostępu**. Zostaną wyświetlone klucze dostępu do Twojego konta, a także pełne parametry połączenia dla każdego klucza.
-4. Znajdź wartość **Klucz** w obszarze **key1** i kliknij przycisk **Kopiuj**, aby skopiować klucz konta.
-5. Alternatywnie można skopiować ciąg całego połączenia. Znajdź wartość **Parametry połączenia** w obszarze **key1**i kliknij przycisk **Kopiuj**, aby skopiować parametry połączenia.
-
-    ![Zrzut ekranu pokazujący sposób wyświetlić klucze dostępu w witrynie Azure portal](media/storage-manage-account/portal-connection-string.png)
+[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
 ### <a name="regenerate-access-keys"></a>Generowanie ponowne kluczy dostępu
 
 Firma Microsoft zaleca ponowne generowanie kluczy dostępu okresowo, aby zabezpieczyć swoje konto magazynu. Są przypisywane dwa klucze dostępu, tak, aby obrócić klucze. Obracania klucze pozwala mieć pewność, że aplikacja obsługuje dostęp do usługi Azure Storage w całym procesie. 
 
 > [!WARNING]
-> Trwa ponowne generowanie kluczy dostępu może mieć wpływ na wszystkie aplikacje lub usługi platformy Azure, które są zależne od klucza konta magazynu. Należy zaktualizować żadnych klientów, którzy używają klucza konta dostępu do konta magazynu, aby używać nowego klucza, w tym usługi media services, cloud, pulpitu i aplikacje mobilne i aplikacje interfejsu graficznego dla usługi Azure Storage, takie jak [platformy Azure Eksplorator usługi Storage](https://azure.microsoft.com/features/storage-explorer/). 
+> Trwa ponowne generowanie kluczy dostępu może mieć wpływ na wszystkie aplikacje lub usługi platformy Azure, które są zależne od klucza konta magazynu. Należy zaktualizować żadnych klientów, którzy używają klucza konta dostępu do konta magazynu, aby używać nowego klucza, w tym usługi media services, cloud, pulpitu i aplikacje mobilne i aplikacje interfejsu graficznego dla usługi Azure Storage, takie jak [platformy Azure Eksplorator usługi Storage](https://azure.microsoft.com/features/storage-explorer/).
 
 Postępuj zgodnie z tego procesu wymiany kluczy konta magazynu:
 
@@ -74,6 +65,7 @@ Po utworzeniu konta magazynu, można zmodyfikować jego konfigurację. Na przyk�
 Zmienianie konfiguracji konta magazynu może spowodować dodano kosztów. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/) strony.
 
 ## <a name="delete-a-storage-account"></a>Usuwanie konta magazynu
+
 Aby usunąć konto magazynu, z którego już nie korzystasz, przejdź do konta magazynu w witrynie [Azure Portal](https://portal.azure.com) i kliknij pozycję **Usuń**. Usunięcie konta magazynu powoduje usunięcie całego konta, w tym wszystkich danych na koncie.
 
 > [!WARNING]

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 357435b8a4ac396c1548c89206f269730e871f6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce4a57b8c266fe474fc2e6dd8f811fc7440e7ac6
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204496"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190435"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Połącz dane z usługi Azure Active Directory
 
@@ -34,6 +34,8 @@ Wartownik platformy Azure umożliwia zbieranie danych z [usługi Azure Active Di
 - Jeśli chcesz wyeksportować dane logowania z usługi Active Directory, musi mieć licencję usługi Azure AD P1 lub P2.
 
 - Użytkownik z globalnego administratora lub zabezpieczeń uprawnienia administratora dla dzierżawy ma być przesyłana strumieniowo dzienniki z.
+
+- Aby można było wyświetlić stan połączenia, musi mieć uprawnienia dostępu do dzienników diagnostycznych usługi Azure AD. 
 
 
 ## <a name="connect-to-azure-ad"></a>Łączenie z usługą Azure AD

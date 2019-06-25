@@ -1,22 +1,22 @@
 ---
-title: Usługa Azure niestandardowych reguł zapory aplikacji sieci Web (WAF)
-description: Ten artykuł zawiera omówienie zapory aplikacji sieci web (WAF) reguły niestandardowe w usłudze Azure Application Gateway.
+title: Usługa Azure reguły niestandardowe zapory aplikacji sieci Web (WAF) w wersji 2
+description: Ten artykuł zawiera omówienie niestandardowych reguł zapory aplikacji sieci Web (WAF) w wersji 2 w usłudze Azure Application Gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: d35e1dc96f65e51ab14c4962d1824334cbdb1616
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752032"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164661"
 ---
-# <a name="custom-rules-for-web-application-firewall"></a>Niestandardowych reguł zapory aplikacji sieci Web
+# <a name="custom-rules-for-web-application-firewall-v2"></a>Niestandardowe reguły zapory aplikacji sieci Web w wersji 2
 
-Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) jest powiązana z wstępnie skonfigurowane, zarządzane przez platformę reguł, który zapewnia ochronę z wielu różnych rodzajów ataków. Te ataki to site scripting, wstrzykiwanie kodu SQL i innych. Jeśli jesteś administratorem zapory aplikacji sieci Web, warto napisania własne reguły, aby rozszerzyć reguły core ustawiać reguły (CRS). Reguł można zablokować lub zezwolić na żądany ruchu w oparciu o kryteria dopasowywania.
+Azure Brama sieci Web aplikacji zapory aplikacji (WAF) w wersji 2 jest powiązana z wstępnie skonfigurowane, zarządzane przez platformę reguł, który zapewnia ochronę z wielu różnych rodzajów ataków. Te ataki to site scripting, wstrzykiwanie kodu SQL i innych. Jeśli jesteś administratorem zapory aplikacji sieci Web, warto napisania własne reguły, aby rozszerzyć reguły core ustawiać reguły (CRS). Reguł można zablokować lub zezwolić na żądany ruchu w oparciu o kryteria dopasowywania.
 
 Reguły niestandardowe umożliwiają tworzenie własnych reguł, które są obliczane dla każdego żądania, które przechodzą przez zaporę aplikacji sieci Web. Te reguły trzymaj wyższy priorytet niż pozostałe reguły zestawów reguł zarządzanego. Niestandardowe reguły zawierają nazwę reguły, priorytet reguły i szereg warunków dopasowania. Jeśli te warunki są spełnione, działania są podejmowane (w celu zezwalania lub blokowania).
 

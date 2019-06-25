@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f512911811535818f4ad857c5c3b956870f619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 0ae638f8cbef29c5d167a3ab59188169cbd934ef
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074548"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150226"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>Aplikacja sieci Web, logujący się użytkownicy — rejestrowanie aplikacji
 
@@ -48,14 +48,14 @@ Jeśli przejdziesz do tego linku, można utworzyć ładowania początkowego twor
 1. Jeśli dzierżawa usługi zapewnia konta dostępu do więcej niż jednej dzierżawy, wybierz swoje konto w prawym górnym rogu i ustaw sesję portalu do żądanej usługi Azure AD.
 1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi, a następnie wybierz **rejestracje aplikacji** > **nowej rejestracji**.
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
-   - Wybierz typy obsługiwanych kont, dla aplikacji (zobacz [typy obsługiwanych kont](./v2-supported-account-types.md))
-   - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `AspNetCore-WebApp`.
-   - W **adres URL odpowiedzi**, Dodaj adres URL odpowiedzi aplikacji, na przykład `https://localhost:44321/`i wybierz **zarejestrować**.
+   1. Wybierz typy obsługiwanych kont, dla aplikacji (zobacz [typy obsługiwanych kont](./v2-supported-account-types.md))
+   1. W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `AspNetCore-WebApp`.
+   1. W **identyfikator URI przekierowania**Dodaj typ aplikacji i miejsce docelowe URI, które będzie akceptować zwrócił odpowiedzi z tokenem po pomyślnym uwierzytelnieniu. Na przykład `https://localhost:44321/`.  Wybierz pozycję **Zarejestruj**.
 1. Wybierz menu **Uwierzytelnianie**, a następnie dodaj następujące informacje:
-- W polu **Adres URL odpowiedzi** dodaj wartość `https://localhost:44321/signin-oidc`, a następnie wybierz polecenie **Zarejestruj**.
-- W **Zaawansowane ustawienia** sekcji, ustaw **adres URL wylogowania** do `https://localhost:44321/signout-oidc`.
-- W obszarze **Niejawne przyznanie** zaznacz pole wyboru **Tokeny Identyfikatorów**.
-- Wybierz pozycję **Zapisz**.
+   1. W **adres URL odpowiedzi**, Dodaj `https://localhost:44321/signin-oidc`.
+   1. W sekcji **Ustawienia zaawansowane** ustaw pole **Adres URL wylogowywania** na wartość `https://localhost:44321/signout-oidc`.
+   1. W obszarze **Niejawne przyznanie** zaznacz pole wyboru **Tokeny Identyfikatorów**.
+   1. Wybierz pozycję **Zapisz**.
 
 ### <a name="register-an-app-using-powershell"></a>Rejestrowanie aplikacji przy użyciu programu PowerShell
 

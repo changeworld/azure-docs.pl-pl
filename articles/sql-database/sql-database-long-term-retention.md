@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 0f764ebbad53185f46c7166011e05493ed261d6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 6549892bfd04065bf83ab50fa5f5b439c35c4238
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696659"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190542"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store kopie zapasowe bazy danych SQL platformy Azure przez maksymalnie 10 lat
 
@@ -59,8 +59,8 @@ W = 12 tygodni (84 dni), M = rok (365 dni), Y = 10 lat (3650 dni), WeekOfYear = 
 
 Jeśli zmodyfikujesz powyższych zasad, a zestaw W = 0 (nie cotygodniowych kopii zapasowych), tempo kopii zapasowych spowoduje to zmianę pokazano w powyższej tabeli przez wyróżnione daty. Wielkość magazynu potrzebnych do zapewnienia te kopie zapasowe zredukuje odpowiednio. 
 
-> [!NOTE]
-> Chronometraż poszczególnych kopii zapasowych LTR jest kontrolowany przez usługę Azure SQL Database. Nie można ręcznie utworzyć kopię zapasową od lewej do prawej lub kontrolować termin tworzenia kopii zapasowej.
+> [!IMPORTANT]
+> Chronometraż poszczególnych kopii zapasowych LTR jest kontrolowany przez usługę Azure SQL Database. Nie można ręcznie utworzyć kopię zapasową od lewej do prawej lub kontrolować termin tworzenia kopii zapasowej. Po skonfigurowaniu zasad od lewej do prawej, może potrwać maksymalnie 7 dni przed pierwszym kopii zapasowych LTR pojawią się na liście dostępnych kopii zapasowych.  
 > 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Replikacja geograficzna i długoterminowego przechowywania kopii zapasowych

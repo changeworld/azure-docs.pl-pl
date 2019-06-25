@@ -7,18 +7,108 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 05/02/2019
+ms.date: 06/20/2019
 ms.topic: hub-page
-ms.openlocfilehash: 027d6c862deb9efeaa8d30dd6acbc814ac230c80
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 1e78c31c19bdbc8ea223c504a53f1df73caa5d44
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464486"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295388"
 ---
 <div id="main" class="v2">
 <h1>Dokumentacja usług Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.</p>
+
+
+<h2>Interfejsy API usług Cognitive Services</h2>
+<ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Interfejs API przetwarzania obrazów</h3>
+                        <p><a href="/azure/cognitive-services/computer-vision/">Przetwarzanie obrazów</a></p>
+                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/">Custom Vision Service</a></p>
+                        <p><a href="/azure/cognitive-services/face/">Interfejs API rozpoznawania twarzy</a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088514"><span>Rozpoznawanie formularzy&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088323"><span>Rozpoznawanie pisma odręcznego&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Interfejs API rozpoznawania mowy</h3>
+                        <p><a href="/azure/cognitive-services/speech-service">Usługi mowy</a></p>
+                        <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznawanie osoby mówiącej&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/speech/home"><span>Interfejs API rozpoznawania mowy Bing&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/translator-speech/"><span>Tłumaczenie mowy w usłudze Translator&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Interfejs API rozpoznawania języka</h3>
+                        <p><a href="/azure/cognitive-services/immersive-reader"><span>Czytnik immersyjny&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>                        <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
+                        <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
+                        <p><a href="/azure/cognitive-services/text-analytics/">Analiza tekstu</a></p>
+                        <p><a href="/azure/cognitive-services/translator/">Tłumaczenie tekstu w usłudze Translator</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Interfejs API wyszukiwania</h3>
+                        <p><a href="/azure/cognitive-services/bing-news-search/">Wyszukiwanie wiadomości Bing</a></p>
+                        <p><a href="/azure/cognitive-services/Bing-Video-Search/">Wyszukiwanie wideo Bing</a></p>
+                        <p><a href="/azure/cognitive-services/bing-web-search/">Wyszukiwanie w sieci Web Bing</a></p>
+                        <p><a href="/azure/cognitive-services/Bing-Autosuggest">Automatyczne sugerowanie Bing</a></p>
+                        <p><a href="/azure/cognitive-services/bing-custom-search">Wyszukiwanie niestandardowe Bing</a></p>
+                        <p><a href="/azure/cognitive-services/bing-entities-search/">Wyszukiwanie jednostek Bing</a></p>
+                        <p><a href="/azure/cognitive-services/bing-image-search">Wyszukiwanie obrazów Bing</a></p>
+                        <p><a href="/azure/cognitive-services/bing-visual-search">Wyszukiwanie wizualne Bing</a></p>
+                        <p><a href="/azure/cognitive-services/bing-spell-check/">Sprawdzanie pisowni Bing</a></p>
+                        <p><a href="/azure/cognitive-services/bing-local-business-search"><span>Wyszukiwanie firm lokalnych Bing&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Interfejs API podejmowania decyzji</h3>
+                        <p><a href="/azure/cognitive-services/anomaly-detector/"><span>Narzędzie do wykrywania anomalii&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088324"><span>Personalizacja&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+</div>
+
+<h2>Wprowadzenie</h2>
 <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
         <li>
             <a href="/azure/cognitive-services/welcome/">
@@ -286,89 +376,4 @@ ms.locfileid: "65464486"
     </li>
 </ul>
 
-<h2>Interfejsy API usług Cognitive Services</h2>
-<ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Interfejs API przetwarzania obrazów</h3>
-                        <p><a href="/azure/cognitive-services/computer-vision/">Przetwarzanie obrazów</a></p>
-                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/">Custom Vision Service</a></p>
-                        <p><a href="/azure/cognitive-services/face/">Interfejs API rozpoznawania twarzy</a></p>
-                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088514"><span>Rozpoznawanie formularzy&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
-                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088323"><span>Rozpoznawanie pisma odręcznego&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Interfejs API rozpoznawania mowy</h3>
-                        <p><a href="/azure/cognitive-services/speech-service">Usługi mowy</a></p>
-                        <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznawanie osoby mówiącej&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/speech/home"><span>Interfejs API rozpoznawania mowy Bing&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/translator-speech/"><span>Tłumaczenie mowy w usłudze Translator&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Interfejs API rozpoznawania języka</h3>
-                        <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
-                        <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
-                        <p><a href="/azure/cognitive-services/text-analytics/">Analiza tekstu</a></p>
-                        <p><a href="/azure/cognitive-services/translator/">Tłumaczenie tekstu w usłudze Translator</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Interfejs API wyszukiwania</h3>
-                        <p><a href="/azure/cognitive-services/bing-news-search/">Wyszukiwanie wiadomości Bing</a></p>
-                        <p><a href="/azure/cognitive-services/Bing-Video-Search/">Wyszukiwanie wideo Bing</a></p>
-                        <p><a href="/azure/cognitive-services/bing-web-search/">Wyszukiwanie w sieci Web Bing</a></p>
-                        <p><a href="/azure/cognitive-services/Bing-Autosuggest">Automatyczne sugerowanie Bing</a></p>
-                        <p><a href="/azure/cognitive-services/bing-custom-search">Wyszukiwanie niestandardowe Bing</a></p>
-                        <p><a href="/azure/cognitive-services/bing-entities-search/">Wyszukiwanie jednostek Bing</a></p>
-                        <p><a href="/azure/cognitive-services/bing-image-search">Wyszukiwanie obrazów Bing</a></p>
-                        <p><a href="/azure/cognitive-services/bing-visual-search">Wyszukiwanie wizualne Bing</a></p>
-                        <p><a href="/azure/cognitive-services/bing-spell-check/">Sprawdzanie pisowni Bing</a></p>
-                        <p><a href="/azure/cognitive-services/bing-local-business-search"><span>Wyszukiwanie firm lokalnych Bing&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Interfejs API podejmowania decyzji</h3>
-                        <p><a href="/azure/cognitive-services/anomaly-detector/"><span>Narzędzie do wykrywania anomalii&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
-                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088324"><span>Personalizacja&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
-</div>
+

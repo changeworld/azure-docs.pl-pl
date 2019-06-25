@@ -13,100 +13,75 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/03/2019
+ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fd0a4e77c36f8f9be220b4e56d76d17487b7017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: faa23f61e5a213c492a7fb51bfc5b108e5c77946
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087307"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310405"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą sposób prowadzenia
+# <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Samouczek: Integracja z usługą Azure Active Directory prowadzenia
 
-W tym samouczku dowiesz się, jak zintegrować sposób prowadzenia w usłudze Azure Active Directory (Azure AD).
-Integrowanie sposób możemy zrobić z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować sposób prowadzenia w usłudze Azure Active Directory (Azure AD). Po zintegrowaniu sposób możemy zrobić z usługą Azure AD, możesz wykonywać następujące czynności:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do prowadzenia sposób.
-* Aby umożliwić użytkownikom automatyczne logowanie do sposób prowadzenia (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolowanie w usłudze Azure AD, kto ma dostęp do prowadzenia sposób.
+* Umożliwianie użytkownikom można automatycznie zalogowany sposób prowadzenia za pomocą kont usługi Azure AD.
+* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą sposób prowadzenia, potrzebne są następujące elementy:
+Aby rozpocząć pracę, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Sposób możemy logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Sposób możemy logowanie jednokrotne (SSO) włączone subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym.
 
 * Sposób prowadzenia obsługuje **SP** jednokrotne logowanie inicjowane przez
-
 * Sposób prowadzenia obsługuje **Just In Time** aprowizacji użytkowników
 
 ## <a name="adding-way-we-do-from-the-gallery"></a>Dodawanie sposób prowadzenia z galerii
 
 Aby skonfigurować integrację z sposób prowadzenia w usłudze Azure AD, należy dodać sposób prowadzenia z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać sposób prowadzenia z galerii, wykonaj następujące czynności:**
-
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
-
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
-
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz **sposób prowadzenia**, wybierz opcję **sposób prowadzenia** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
-
-    ![Sposób prowadzenia na liście wyników](common/search-new-app.png)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
+1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz **nową aplikację**.
+1. W **Dodaj z galerii** sekcji, wpisz **sposób prowadzenia** w polu wyszukiwania.
+1. Wybierz **sposób prowadzenia** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą sposób prowadzenia w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w sposób prowadzenia musi zostać ustanowione.
+Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą sposób możemy zrobić za pomocą użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w sposób prowadzenia.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą sposób możemy zrobić, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i logowania jednokrotnego usługi Azure AD za pomocą sposób prowadzenia testów, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Skonfiguruj sposób możemy logowanie jednokrotne](#configure-way-we-do-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Skonfiguruj sposób możemy wykonać logowanie Jednokrotne](#configure-way-we-do-sso)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie sposób testowania użytkownika](#create-way-we-do-test-user)**  — aby odpowiednikiem Britta Simon w sposób czynność tę możemy wykonać jest połączony z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-sso)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą sposób prowadzenia, wykonaj następujące czynności:
+1. W [witryny Azure portal](https://portal.azure.com/)na **sposób prowadzenia** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
+1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
+1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **sposób prowadzenia** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
-
-    ![Sposób możemy zrobić domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+1. Na **podstawową konfigurację protokołu SAML** strony, wprowadź wartości dla następujących pól:
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<SUBDOMAIN>.waywedo.com/Authentication/ExternalSignIn`
 
@@ -115,33 +90,35 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą sposób pr
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej w sposób możemy zrobić klienta](mailto:support@waywedo.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (nieprzetworzony)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikatu (Raw)** i wybierz **Pobierz**do pobrania certyfikatu i zapisz go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificateraw.png)
+   ![Link pobierania certyfikatu](common/certificateraw.png)
 
-6. Na **skonfigurować sposób prowadzenia** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. Na **skonfigurować sposób prowadzenia** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="configure-way-we-do-sso"></a>Skonfiguruj sposób prowadzenia logowania jednokrotnego
 
-    b. Identyfikator usługi Azure AD
+1. Aby zautomatyzować konfigurację w sposób możemy zrobić, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
 
-    c. Adres URL wylogowywania
+    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
 
-### <a name="configure-way-we-do-single-sign-on"></a>Skonfiguruj sposób możemy logowanie jednokrotne
+1. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Instalatora sposób prowadzenia** bezpośredni sposób prowadzenia aplikacji. W tym miejscu podaj poświadczenia administratora do logowania się do prowadzenia sposób. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki od 3 do 6.
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w sposób prowadzenia jako Administrator zabezpieczeń.
+    ![Konfiguracja instalacji](common/setup-sso.png)
 
-2. Kliknij przycisk **ikona osoby** w prawym górnym rogu dowolnej stronie w sposób prowadzenia kliknięcie **konta** w menu rozwijanym.
+1. Jeśli chcesz ręcznie skonfigurować sposób możemy zrobić, Otwórz nowe okno przeglądarki sieci web i zaloguj się do witryny firmy sposób prowadzenia jako administrator i wykonaj następujące czynności:
 
-    ![Sposób prowadzenia konta](./media/waywedo-tutorial/tutorial_waywedo_account.png) 
+1. Kliknij przycisk **ikona osoby** w prawym górnym rogu dowolnej stronie w sposób prowadzenia kliknięcie **konta** w menu rozwijanym.
 
-3. Kliknij przycisk **ikonę menu** można otworzyć menu nawigacji wypychania i kliknij przycisk **Single Sign On**.
+    ![Sposób prowadzenia konta](./media/waywedo-tutorial/tutorial_waywedo_account.png)
+
+1. Kliknij przycisk **ikonę menu** można otworzyć menu nawigacji wypychania i kliknij przycisk **Single Sign On**.
 
     ![Sposób prowadzenia pojedynczego](./media/waywedo-tutorial/tutorial_waywedo_single.png)
 
-4. Na **ustawienia rejestracji jednokrotnej** strony, wykonaj następujące czynności:
+1. Na **ustawienia rejestracji jednokrotnej** strony, wykonaj następujące czynności:
 
     ![Sposób prowadzenia Zapisz](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
@@ -162,59 +139,39 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą sposób pr
     * Włączanie automatycznego aprowizowania — Jeśli ta opcja jest włączona, adres e-mail używany do logowania jednokrotnego będą automatycznie porównywane do listy użytkowników w sposób prowadzenia. Jeśli adres e-mail nie jest zgodny z aktywnego użytkownika w sposób prowadzenia, automatycznie dodaje nowe konto użytkownika osoby, logowania, żądanie wszystkie brakujące informacje.
 
       > [!NOTE]
-      > Użytkownicy dodani za pomocą logowania jednokrotnego są dodawane jako użytkownik ogólny i nie przypisano rolę w systemie. Administrator będzie mógł go w programie i modyfikowanie ich rola zabezpieczeń jako edytor lub administrator i można także przypisać organizacyjny jeden lub kilka ról. 
+      > Użytkownicy dodani za pomocą logowania jednokrotnego są dodawane jako użytkownik ogólny i nie przypisano rolę w systemie. Administrator będzie mógł go w programie i modyfikowanie ich rola zabezpieczeń jako edytor lub administrator i można także przypisać organizacyjny jeden lub kilka ról.
 
     g. Kliknij przycisk **Zapisz** można utrwalić ustawień.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. W **użytkownika** właściwości, wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do prowadzenia sposób.
+W tej sekcji można udostępnić B.Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do prowadzenia sposób.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **sposób prowadzenia**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście aplikacji wybierz **sposób prowadzenia**.
+1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **sposób prowadzenia**.
+1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Sposób prowadzenia łącze na liście aplikacji](common/all-applications.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ### <a name="create-way-we-do-test-user"></a>Tworzenie użytkownika testowego sposób prowadzenia
 
@@ -223,11 +180,9 @@ W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w sposób prowadze
 > [!Note]
 > Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej w sposób możemy zrobić klienta](mailto:support@waywedo.com).
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-sso"></a>Test SSO
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka sposób prowadzenia w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze sposób prowadzenia dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka sposób prowadzenia w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze sposób prowadzenia dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -236,4 +191,3 @@ Po kliknięciu kafelka sposób prowadzenia w panelu dostępu, powinien zostać a
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

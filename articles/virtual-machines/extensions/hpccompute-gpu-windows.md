@@ -37,9 +37,9 @@ To rozszerzenie obsługuje następujące OSs:
 
 | Dystrybucja | Version |
 |---|---|
-| Windows 10 (maksymalnie wersji 1803)| Podstawowe |
-| Windows Server 2016 | Podstawowe |
-| Windows Server 2012R2 | Podstawowe |
+| Windows 10 (maksymalnie wersji 1803)| Core |
+| Windows Server 2016 | Core |
+| Windows Server 2012R2 | Core |
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 

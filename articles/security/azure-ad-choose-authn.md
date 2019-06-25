@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: cc41581232b331368b44fc7190eadb94516824c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35fb529be28fc985460421c185872c7e35603341
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67119308"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274280"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
@@ -101,7 +101,7 @@ Szczegółowe informacje dotyczące decyzji pytania:
 * **Zagadnienia dotyczące**. Obecnie usługa synchronizacji skrótów haseł nie natychmiastowym wymuszeniu zmiany w Stanach konta lokalnego. W takiej sytuacji użytkownik ma dostęp do aplikacji w chmurze, aż stan konta użytkowników są synchronizowane z usługą Azure AD. Organizacje, być może chcesz ominąć to ograniczenie, uruchamiając nowe cykl synchronizacji po Administratorzy zbiorczej aktualizacji do Państwa konto użytkownika lokalnego. Przykładem jest wyłączenie konta.
 
 > [!NOTE]
-> Hasło wygasło i Stany zablokowanego konta nie są obecnie synchronizowane z usługą Azure AD z usługą Azure AD Connect. 
+> Hasło wygasło i Stany zablokowanego konta nie są obecnie synchronizowane z usługą Azure AD z usługą Azure AD Connect. Po zmianie hasła użytkownika i ustaw *użytkownik musi zmienić hasło przy następnym logowaniu* flagi, skrót hasła, nie zostaną zsynchronizowane z usługą Azure AD za pomocą usługi Azure AD Connect, dopóki użytkownik zmienić swoje hasło.
 
 Zapoznaj się [Implementowanie synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) dla procedury wdrażania.
 
@@ -176,9 +176,9 @@ Następujące diagramy przedstawiają składniki Architektura wysokiego poziomu 
 |Gdy odbywa się uwierzytelnianie?|W chmurze|W chmurze po wymianie weryfikacji bezpieczne hasło, za pomocą agenta uwierzytelniania w środowisku lokalnym|Lokalnie|
 |Jakie są wymagania dotyczące serwera lokalnego poza inicjowania obsługi administracyjnej systemu: Azure AD Connect?|Brak|Jeden serwer dla każdego dodatkowego uwierzytelniania agenta|Co najmniej dwóch serwerów usług AD FS<br><br>Co najmniej dwóch serwerów proxy aplikacji sieci Web w sieci obwodowej/sieci Obwodowej|
 |Jakie są wymagania dotyczące Internet w środowisku lokalnym i sieci poza inicjowania obsługi administracyjnej systemu?|Brak|[Ruch wychodzący do Internetu](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) z serwerów uruchomionych agentów uwierzytelniania|[Dostęp do Internetu przychodzący](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) na serwerach proxy aplikacji sieci Web w sieci obwodowej<br><br>Dostęp do sieci dla ruchu przychodzącego do serwerów usług AD FS z serwerów proxy aplikacji sieci Web w sieci obwodowej<br><br>Równoważenie obciążenia sieciowego|
-|Jest to wymaganie dotyczące certyfikatów SSL?|Nie|Nie|Yes|
+|Jest to wymaganie dotyczące certyfikatów SSL?|Nie|Nie|Tak|
 |Czy istnieje rozwiązanie do monitorowania kondycji?|Niewymagane|Stan agenta, dostarczone przez [Centrum administracyjne usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
-|Czy użytkownicy uzyskują logowanie jednokrotne do zasobów w chmurze z urządzeń przyłączonych do domeny w sieci firmowej?|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Yes|
+|Czy użytkownicy uzyskują logowanie jednokrotne do zasobów w chmurze z urządzeń przyłączonych do domeny w sieci firmowej?|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Tak|
 |Jakie typy logowania są obsługiwane?|UserPrincipalName i hasło<br><br>Zintegrowane uwierzytelnianie Windows za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName i hasło<br><br>Zintegrowane uwierzytelnianie Windows za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName i hasło<br><br>Element sAMAccountName + hasła<br><br>Zintegrowane uwierzytelnianie Windows<br><br>[Uwierzytelnianie certyfikatu i kart inteligentnych](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Czy Windows Hello dla firm obsługiwane?|[Model zaufania klucza](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Model zaufania klucza](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Wymaga poziomu funkcjonalności domeny 2016 systemu Windows Server*|[Model zaufania klucza](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model zaufania certyfikatu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Jakie są opcje uwierzytelniania wieloskładnikowego?|[Usługa Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Kontrolki niestandardowe przy użyciu dostępu warunkowego *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Usługa Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Kontrolki niestandardowe przy użyciu dostępu warunkowego *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Usługa Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Serwer usługi Azure MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[Usługa MFA innych firm](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Kontrolki niestandardowe przy użyciu dostępu warunkowego *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|

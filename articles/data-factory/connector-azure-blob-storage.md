@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ff20322f1d4f6024d4f41037ca18c327a0cc21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3be075b78d8388b7146a9a3180ca825fc6476108
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233185"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206031"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Blob storage za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -60,7 +60,10 @@ Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, 
 - [Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](#managed-identity)
 
 >[!NOTE]
->HDInsights, Azure Machine Learning i Azure SQL Data Warehouse PolyBase obciążenia obsługują tylko uwierzytelnianie klucza konta magazynu obiektów Blob platformy Azure.
+>Ładowanie danych do usługi SQL Data Warehouse, jeśli źródło lub przejściowy magazyn obiektów Blob jest skonfigurowany z punktem końcowym sieci wirtualnej za pomocą programu PolyBase, należy zastosować uwierzytelniania tożsamości zarządzanej zgodnie z wymaganiami programu PolyBase i środowiskiem Integration Runtime za pomocą wersji ppkt 3.18 lub nowszej. Zobacz [uwierzytelniania tożsamości zarządzanej](#managed-identity) sekcję więcej wymagania wstępne dotyczące konfiguracji.
+
+>[!NOTE]
+>Działania HDInsights i Azure Machine Learning obsługują tylko uwierzytelnianie klucza konta magazynu obiektów Blob platformy Azure.
 
 ### <a name="account-key-authentication"></a>Uwierzytelnianie za pomocą klucza konta
 
@@ -272,6 +275,9 @@ Zapoznaj się [uwierzytelniania dostępu do usługi Azure Storage przy użyciu u
 
     - **Jako źródło**, sterowanie dostępu (IAM), co najmniej udzielić **czytnik danych obiektu Blob magazynu** roli.
     - **Jako obiekt sink**, sterowanie dostępu (IAM), co najmniej udzielić **Współautor danych obiektu Blob magazynu** roli.
+
+>[!IMPORTANT]
+>Jeśli używasz programu PolyBase do ładowania danych z magazynu obiektów Blob (jako źródło lub jako przejściowe) usługa SQL Data Warehouse, podczas korzystania z tożsamości zarządzanej uwierzytelniania dla obiektu Blob, upewnij się, możesz również wykonać kroki 1 i 2 w [Niniejsze wskazówki](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1) Zarejestruj usługi SQL Database Serwer z usługą Azure Active Directory (Azure AD) i 2) Współautor danych obiektu Blob magazynu, aby przypisać rolę serwera usługi SQL Database; pozostałe są obsługiwane przez usługę Data Factory. Jeśli usługi Blob storage jest skonfigurowany z punktem końcowym usługi Azure Virtual Network, aby przy użyciu technologii PolyBase do ładowania danych z, należy użyć uwierzytelniania tożsamości zarządzanej zgodnie z wymaganiami programu PolyBase.
 
 Te właściwości są obsługiwane w przypadku obiektów Blob platformy Azure połączonej usługi storage:
 

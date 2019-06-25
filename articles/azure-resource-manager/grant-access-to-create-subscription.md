@@ -4,21 +4,16 @@ description: Dowiedz się, jak udzielić użytkownikowi lub jednostki usługi, m
 services: azure-resource-manager
 author: jureid
 manager: jureid
-editor: ''
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 81f3edcfcffad1b9b6d0ab4b49769601196049ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7ed7dffd27b51c1314c4293820dc33be4d7e8e0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238055"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206640"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udzielanie dostępu do utworzenia subskrypcji Azure Enterprise (wersja zapoznawcza)
 
@@ -69,7 +64,7 @@ Aby [tworzyć subskrypcje w ramach konta rejestracji](programmatically-create-su
 
     Użyj `principalName` właściwość do identyfikacji konta, na którym chcesz przyznać dostęp właściciela RBAC do. Kopiuj `name` tego konta. Na przykład, jeśli chcesz przyznać dostęp właściciela RBAC do SignUpEngineering@contoso.com konta rejestracji może spowodować skopiowanie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Jest to identyfikator obiektu konta rejestracji. Wklej tę wartość, gdzieś tak, aby służy w następnym kroku jako `enrollmentAccountObjectId`.
 
-    # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+    # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
     Użyj [Get AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) polecenia cmdlet, aby wyświetlić listę wszystkich kont rejestracji, masz dostęp. Wybierz **wypróbuj** otworzyć [usługi Azure Cloud Shell](https://shell.azure.com/). Wklej kod, kliknij prawym przyciskiem myszy powłokę systemu windows i wybierz **Wklej**.
 
@@ -163,7 +158,7 @@ Aby [tworzyć subskrypcje w ramach konta rejestracji](programmatically-create-su
     }
     ```
 
-    # <a name="powershelltabazure-powershell-2"></a>[Program PowerShell](#tab/azure-powershell-2)
+    # <a name="powershelltabazure-powershell-2"></a>[PowerShell](#tab/azure-powershell-2)
 
     Uruchom następujące polecenie [New AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) polecenia, zastępując ```<enrollmentAccountObjectId>``` z `ObjectId` zebranych w pierwszym kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Zastąp ```<userObjectId>``` zebrano Identyfikatora obiektu w drugim kroku.
 

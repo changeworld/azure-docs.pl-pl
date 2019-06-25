@@ -5,20 +5,75 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 50e1cb95249f0108430e978ae3ffe23b6edc778d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bfaf848b0b700c8d745acf8c6a63c898dc91140
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418386"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272868"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
 [Usługi Azure Site Recovery](site-recovery-overview.md) usługi są aktualizowane i ulepszony w sposób ciągły. Aby ułatwić Ci najnowsze informacje, w tym artykule dostarcza informacje o najnowszych wersji, nowe funkcje i nową zawartość. Ta strona jest aktualizowana w regularnych odstępach czasu.
 
 Jeśli masz sugestie dotyczące funkcji odzyskiwania lokacji, dlatego chcielibyśmy [czekamy na Twoją opinię](https://feedback.azure.com/forums/256299-site-recovery).
+
+
+## <a name="updates-june-2019"></a>Aktualizacje (czerwiec 2019 r.)
+
+### <a name="update-rollup-37"></a>Pakiet zbiorczy aktualizacji 37
+
+[Pakiet zbiorczy 37](https://support.microsoft.com/help/4508614/) udostępnia następujące aktualizacje.
+
+**Aktualizacja** | **Szczegóły**
+--- | ---
+**Dostawcy i agenci** | Aktualizacji agentów Site Recovery i dostawców (zgodnie z opisem w pakiecie zbiorczym)
+**Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym)
+
+
+### <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii programu VMware lub serwera fizycznego
+
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**Partycji GPT** | Z Update Rollup 37 lub nowszy (wersja usługi mobilności 9.25.5241.1), maksymalnie pięć GPT partycji są obsługiwane w interfejsie UEFI. Przed tą aktualizacją cztery były obsługiwane.
+
+
+
+## <a name="updates-may-2019"></a>Aktualizacje (maja 2019 r.)
+
+### <a name="update-rollup-36"></a>Pakiet zbiorczy aktualizacji 36
+
+[Pakiet zbiorczy 36](https://support.microsoft.com/help/4503156) udostępnia następujące aktualizacje.
+
+**Aktualizacja** | **Szczegóły**
+--- | ---
+**Dostawcy i agenci** | Aktualizacji agentów Site Recovery i dostawców (zgodnie z opisem w pakiecie zbiorczym)
+**Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym)
+
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM
+
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**Replikacja dodanych dysków.** | Włącz replikację dla dysków z danymi dodane do maszyny Wirtualnej platformy Azure, która jest już włączona dla odzyskiwania po awarii. [Dowiedz się więcej](azure-to-azure-enable-replication-added-disk.md).
+**Aktualizacje automatyczne** | Podczas konfigurowania automatycznych aktualizacji rozszerzenia usługi mobilności uruchomioną na włączony na potrzeby odzyskiwania po awarii maszyn wirtualnych platformy Azure, możesz teraz wybrać istniejące konto usługi automation do użycia zamiast przy użyciu domyślnego konta utworzone przez usługę Site Recovery. [Dowiedz się więcej](azure-to-azure-autoupdate.md).
+
+
+### <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii programu VMware lub serwera fizycznego
+
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**Przetwarzanie monitorowania serwera** | Do odzyskiwania po awarii lokalnych maszyn wirtualnych z programu VMware i serwerów fizycznych monitorowanie i rozwiązywanie proces serwera raportowania kondycji serwera ulepszone i alerty. [Dowiedz się więcej](vmware-physical-azure-monitor-process-server.md). 
+
+
+
 
 
 ## <a name="updates-march-2019"></a>Aktualizacje (marca 2019 r.)
@@ -32,8 +87,9 @@ Jeśli masz sugestie dotyczące funkcji odzyskiwania lokacji, dlatego chcieliby�
 **Dostawcy i agenci** | Aktualizacji agentów Site Recovery i dostawców (zgodnie z opisem w pakiecie zbiorczym)
 **Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym)
 
-#### <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii programu VMware lub serwera fizycznego
-Nowe funkcje dodane w aktualizacji.
+### <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii programu VMware lub serwera fizycznego
+
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
@@ -63,8 +119,8 @@ Nowe funkcje dodane w aktualizacji.
 **Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym).
 
 
-#### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM 
-Nowe funkcje dodane w aktualizacji.
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM 
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
@@ -73,8 +129,8 @@ Nowe funkcje dodane w aktualizacji.
 **Bezpośrednie miejsca do magazynowania magazynu** | Możesz skonfigurować odzyskiwanie po awarii dla aplikacji działających na maszynie Wirtualnej platformy Azure aplikacje przy użyciu [bezpośrednimi miejscami do magazynowania](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) wysokiej dostępności.  Za pomocą bezpośrednimi miejscami do magazynowania (S2D) wraz z Site Recovery zapewnia kompleksową ochronę obciążeń maszyny Wirtualnej platformy Azure. S2D umożliwia hostowanie w klastrze gościa na platformie Azure. Jest to szczególnie przydatne w przypadku, gdy maszyna wirtualna jest hostem aplikacja o krytycznym znaczeniu, takie jak warstwa SAP ASCS, program SQL Server lub serwer plików skalowalny w poziomie.
 
 
-#### <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii programu VMware lub serwera fizycznego
-Nowe funkcje dodane w aktualizacji.
+### <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii programu VMware lub serwera fizycznego
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
@@ -83,6 +139,7 @@ Nowe funkcje dodane w aktualizacji.
 
 
 ## <a name="updates-january-2019"></a>Aktualizacje (stycznia 2019 r.)
+
 
 ### <a name="accelerated-networking-azure-vms"></a>Wydajniejsze sieci (maszyn wirtualnych platformy Azure)
 
@@ -99,16 +156,19 @@ Przyspieszona sieć Włącz wirtualizację we/wy pojedynczego elementu główneg
 **Dostawcy i agenci** | Aktualizacji agentów Site Recovery i dostawców (zgodnie z opisem w pakiecie zbiorczym).
 **Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym).
 
-#### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM
 
-Nowe funkcje dodane w aktualizacji.
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
 **Pomoc techniczna Linux support** | Dodano obsługę dla stacji roboczej RedHat 6 7 dni w tygodniu i nowe wersje jądra systemu Ubuntu, Debian i SUSE.
 **Bezpośrednie miejsca do magazynowania magazynu** | Usługa Site Recovery obsługuje maszyny wirtualne platformy Azure przy użyciu bezpośrednimi miejscami do magazynowania (S2D).
 
-#### <a name="vmware-vmsphysical-servers-replication"></a>Replikacja serwerów fizycznych i maszyn wirtualnych VMware 
+### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>Odzyskiwanie po awarii serwerów fizycznych i maszyn wirtualnych VMware
+
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
+ 
 **Funkcja** | **Szczegóły**
 --- | ---
 **Pomoc techniczna Linux support** | Dodano obsługę systemu Redhat Enterprise Linux 7.6, RedHat stacji roboczej 6 7 dni w tygodniu, Oracle Linux 6.10/7.6 i nowe wersje jądra dla systemu Ubuntu, Debian i SUSE.
@@ -123,9 +183,8 @@ Nowe funkcje dodane w aktualizacji.
 **Dostawcy i agenci** | Aktualizacji agentów Site Recovery i dostawców (zgodnie z opisem w pakiecie zbiorczym).
 **Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym).
 
-#### <a name="vmware-vmsphysical-servers-replication"></a>Replikacja serwerów fizycznych i maszyn wirtualnych VMware 
-Nowe funkcje dodane w aktualizacji.
-
+### <a name="vmware-vmsphysical-servers-replication"></a>Replikacja serwerów fizycznych i maszyn wirtualnych VMware 
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 **Funkcja** | **Szczegóły**
 --- | ---
 **Pomoc techniczna Linux support** | Dodano obsługę Oracle Linux 6.8 i 6,9/7.0 i jądra UEK5.
@@ -135,8 +194,8 @@ Nowe funkcje dodane w aktualizacji.
 **Tryb failover** | Ulepszona czas pracy awaryjnej dla maszyn wirtualnych VMware, w którym storvsc i vsbus nie sterowników rozruchowych.
 **Obsługa interfejsu UEFI** | Typ rozruchu UEFI nie są obsługiwane maszyny wirtualne platformy Azure. Można teraz przeprowadzić migrację lokalnych serwerów fizycznych z interfejsem UEFI na platformie Azure z usługą Site Recovery. Usługa Site Recovery umożliwia migrowanie serwera, konwertując typ rozruchu systemu BIOS przed migracją. Usługa Site Recovery wcześniej obsługiwane tę konwersję dla maszyn wirtualnych tylko. Pomoc techniczna jest dostępna dla serwerów fizycznych z systemem Windows Server 2012 lub nowszej.
 
-#### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM
-Nowe funkcje dodane w aktualizacji.
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
@@ -176,8 +235,8 @@ Awaryjnego odzyskiwania z maszyn wirtualnych platformy Azure jest naliczana opł
 **Dostawcy i agenci** | Aktualizacji agentów Site Recovery i dostawców (zgodnie z opisem w pakiecie zbiorczym).
 **Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym).
 
-#### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM
-Nowe funkcje dodane w aktualizacji.
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii w usłudze Azure VM
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
@@ -208,8 +267,8 @@ Nowe funkcje dodane w aktualizacji.
 **Dostawcy i agenci** | Aktualizacji agentów Site Recovery i dostawców (zgodnie z opisem w pakiecie zbiorczym).
 **Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym).
 
-#### <a name="azure-vms-disaster-recovery"></a>Usługa Azure odzyskiwania po awarii maszyn wirtualnych 
-Nowe funkcje dodane w aktualizacji.
+### <a name="azure-vms-disaster-recovery"></a>Usługa Azure odzyskiwania po awarii maszyn wirtualnych 
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
@@ -217,8 +276,8 @@ Nowe funkcje dodane w aktualizacji.
 **Obsługa chmury za pomocą** | Obsługiwane odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w usłudze Germany cloud.
 **Odzyskiwanie po awarii między subskrypcjami** | Obsługa replikowania maszyn wirtualnych platformy Azure w jednym regionie do innego regionu, w ramach innej subskrypcji w ramach tej samej dzierżawie usługi Azure Active Directory. [Dowiedz się więcej](https://aka.ms/cross-sub-blog).
 
-#### <a name="vmware-vmphysical-server-disaster-recovery"></a>Odzyskiwanie po awarii maszyny Wirtualnej VMware lub serwera fizycznego 
-Nowe funkcje dodane w aktualizacji.
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Odzyskiwanie po awarii maszyny Wirtualnej VMware lub serwera fizycznego 
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
@@ -237,17 +296,17 @@ Nowe funkcje dodane w aktualizacji.
 **Dostawcy i agenci** | Aktualizacji agentów Site Recovery i dostawców (zgodnie z opisem w pakiecie zbiorczym).
 **Problem poprawki/ulepszeń** | Liczba poprawek i udoskonaleń (zgodnie z opisem w pakiecie zbiorczym).
 
-#### <a name="azure-vms-disaster-recovery"></a>Usługa Azure odzyskiwania po awarii maszyn wirtualnych 
+### <a name="azure-vms-disaster-recovery"></a>Usługa Azure odzyskiwania po awarii maszyn wirtualnych 
 
-Nowe funkcje dodane w aktualizacji.
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
 **Pomoc techniczna Linux support** | Obsługa dodawane w systemie Red Hat Enterprise Linux w wersji 7.5.
 
-#### <a name="vmware-vmphysical-server-disaster-recovery"></a>Odzyskiwanie po awarii maszyny Wirtualnej VMware lub serwera fizycznego 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Odzyskiwanie po awarii maszyny Wirtualnej VMware lub serwera fizycznego 
 
-Nowe funkcje dodane w aktualizacji.
+Funkcje dodane w tym miesiącu są podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---

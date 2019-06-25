@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d68c190b51b9bbb5faf21e8ea75b07d1a82005e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571401"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204529"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Zmienianie hasła do konta łącznika usługi Azure AD
 Konta łącznika usługi Azure AD powinien być usługę bezpłatnie. Jeśli potrzebujesz zresetować swoje poświadczenia, w tym temacie jest dla Ciebie. Na przykład jeśli przez pomyłkę administratora globalnego zresetować hasło konta, przy użyciu programu PowerShell.
@@ -39,12 +39,12 @@ To polecenie cmdlet resetuje hasło dla konta usługi i zaktualizować go zarów
 ## <a name="known-issues-these-steps-can-solve"></a>Znane problemy te kroki można rozwiązać.
 W tej sekcji znajduje się lista błędów zgłaszanych przez klientów, które zostały rozwiązane przez poświadczenia, resetowania konta łącznika usługi Azure AD.
 
-- - -
+---
 Zdarzenie 6900  
 Serwer napotkał nieoczekiwany błąd podczas przetwarzania powiadomienia o zmianie hasła:  
 AADSTS70002: Błąd sprawdzania poprawności poświadczeń. AADSTS50054: Podczas uwierzytelniania użyto starego hasła.
 
-- - -
+---
 Zdarzenie 659  
 Wystąpił błąd podczas pobierania konfiguracji synchronizacji zasad haseł. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
 AADSTS70002: Błąd sprawdzania poprawności poświadczeń. AADSTS50054: Podczas uwierzytelniania użyto starego hasła.

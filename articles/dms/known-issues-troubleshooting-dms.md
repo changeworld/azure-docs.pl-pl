@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/18/2019
+ms.openlocfilehash: 1d639a8b1d5c7a5dd2b7bac7c5e020be7c8b1c50
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002208"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190958"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Rozwiązywanie typowych problemów z usługi Azure Database Migration Service, jak i błędy
 
@@ -59,6 +59,16 @@ Otrzymujesz następujący błąd podczas zatrzymywania wystąpień usługi Azure
 | Przyczyna         | Rozwiązanie |
 | ------------- | ------------- |
 | Ten błąd wyświetlane, gdy wystąpienie usługi, którą próbujesz zatrzymać obejmuje działania, które nadal są uruchomione lub przedstawić w projektach migracji. <br><br><br><br><br><br> | Upewnij się, że nie ma żadnych działań, uruchomiony w wystąpieniu usługi Azure Database Migration Service, w przypadku próby zatrzymania. Można również usunąć działań lub projektów przed podjęciem próby zatrzymania usługi. Poniższe kroki ilustrują usuwanie projektów, aby wyczyścić wystąpienie usługi migracji, usuwając wszystkie uruchomione zadania:<br>1. Install-Module-nazwa AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4. Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
+
+## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Wystąpił błąd podczas próby uruchomienia usługi Azure Database Migration Service
+
+Pojawi się następujący błąd, podczas uruchamiania wystąpienia usługi Azure Database Migration Service:
+
+* **Błąd**: Usługi nie powiedzie się do ekranu startowego. Błąd: {"errorDetail": "nie można uruchomić, skontaktuj się z pomocą techniczną firmy Microsoft"}
+
+| Przyczyna         | Rozwiązanie |
+| ------------- | ------------- |
+| Ten błąd wyświetlane, gdy poprzednie wystąpienie wewnętrznie nie powiodło się. Ten błąd występuje rzadko, a zespół inżynierów jest świadomy. <br> | Usuń wystąpienie usługi, nie można uruchomić, a następnie Udostępnij nowy, aby go zastąpić. |
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Błąd podczas przywracania bazy danych, gdy wystąpienie zarządzane SQL Migrowanie do usługi Azure SQL DB
 

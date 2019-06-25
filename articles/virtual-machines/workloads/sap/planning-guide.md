@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ddcf1f38d3d92f9d9bdd12203ebf99f20600478
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e983a3f8e29108bd642fd23d5afcb564065d9fc1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409785"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203897"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 
@@ -524,7 +524,7 @@ Microsoft Azure Virtual Machines korzystanie z różnych typach pamięci masowej
 
 Maszyny wirtualne platformy Azure oferują dyski trwałe, po wdrożeniu maszyny Wirtualnej. W przypadku ponownego uruchomienia maszyny Wirtualnej zostaną wyczyszczone całą zawartość na tych dyskach. To dlatego, biorąc pod uwagę, że pliki danych i pliki dziennika/ponów baz danych powinien w żadnym wypadku nie znajdować się na tych dyskach nietrwałe. Mogą wystąpić wyjątki dotyczące niektórych baz danych, gdzie te dyski nieutrwaloną może być odpowiednie dla bazy danych tempdb i obszary tabel tymczasowych. Należy jednak unikać przy użyciu tych dysków dla maszyn wirtualnych z serii A, ponieważ te dyski nieutrwaloną jest ograniczona przepływność z tej rodziny maszyn wirtualnych. Aby uzyskać więcej informacji, przeczytaj artykuł [opis dysku tymczasowego na maszynach wirtualnych z Windows na platformie Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 > 
 > Dysku D:\ w Maszynie wirtualnej platformy Azure jest nieutrwaloną dysku, która jest wspierana przez niektóre dyski lokalne na węźle obliczeniowym platformy Azure. Ponieważ jest nieutrwaloną, oznacza to, że wszelkie zmiany wprowadzone do zawartości na dysku D:\, zostaną utracone, gdy maszyna wirtualna jest uruchamiany ponownie. Przez "wszelkie zmiany", takich jak pliki przechowywane, katalogi utworzone, zainstalowane, aplikacje itd.
@@ -535,7 +535,7 @@ Maszyny wirtualne platformy Azure oferują dyski trwałe, po wdrożeniu maszyny 
 > 
 > 
 
-- - -
+---
 
 Microsoft Azure Storage zapewnia magazynu trwałego i typowe poziomy ochrony i nadmiarowości na magazyn sieci SAN. Dyski oparte na usłudze Azure Storage to wirtualny dysk twardy (VHD) znajduje się w usłudze Azure Storage Services. System operacyjny — dysk lokalny (Windows C:\, Linux/dev/sda1) są przechowywane w usłudze Azure Storage i dodatkowych woluminów dyski/zainstalowanego na maszynie wirtualnej Pobierz tam przechowywane, zbyt.
 
@@ -835,7 +835,7 @@ Zamierzasz przenieść określonego systemu SAP ze środowiska lokalnego na plat
 
 Ze względu na wymagania określone poprawki wersji systemu operacyjnego lub DBMS podana obrazów w portalu Azure Marketplace może nie spełniać Twoich wymagań. W związku z tym może być konieczne Utwórz Maszynę wirtualną przy użyciu własnych maszyn wirtualnych systemu operacyjnego/DBMS obrazu prywatnego, który można wdrożyć w kilka razy później. Aby przygotować obrazu prywatnego pod kątem duplikatów, powinny być traktowane następujące elementy:
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Tutaj znajdziesz więcej informacji: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> Ustawienia Windows (na przykład Windows SID lub nazwa hosta) musi być wyodrębnione/uogólniony na lokalną maszynę Wirtualną za pomocą polecenia sysprep.
@@ -847,7 +847,7 @@ Ze względu na wymagania określone poprawki wersji systemu operacyjnego lub DBM
 >
 >
 
-- - -
+---
 Jeśli zainstalowano już SAP zawartość w swojej lokalnej maszyny Wirtualnej (szczególnie w przypadku systemów warstwy 2), możesz dostosować ustawienia systemu SAP po wdrożenie maszyny Wirtualnej platformy Azure za pośrednictwem wystąpienia nazwy procedury obsługiwane przez oprogramowanie SAP oprogramowania inicjowania obsługi administracyjnej Menedżera (SAP Należy pamiętać, [1619720]). Zobacz rozdziały [przygotowania do wdrożenia maszyny Wirtualnej przy użyciu obrazu właściwe dla klienta dla rozwiązania SAP] [ planning-guide-5.2.2] i [przekazywanie wirtualnego dysku twardego ze środowiska lokalnego na platformę Azure] [ planning-guide-5.3.2]tego dokumentu dla lokalnej procedury przygotowywania i przekazywania uogólnionej maszyny Wirtualnej na platformie Azure. Rozdział odczytu [Scenariusz 2: Wdrażanie maszyny Wirtualnej przy użyciu niestandardowego obrazu dla rozwiązania SAP] [ deployment-guide-3.3] w [przewodnik wdrażania] [ deployment-guide] szczegółowy opis kroków wdrażania obrazu na platformie Azure.
 
 #### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Wdrażanie maszyny Wirtualnej z portalu Azure Marketplace
@@ -870,7 +870,7 @@ Wymagania, przygotowując swoje własne dysku maszyny Wirtualnej platformy Azure
 * Dodaj inne konto lokalne z uprawnieniami administratora, które mogą być używane w pomocy technicznej firmy Microsoft lub które mogą być przypisane jako kontekst dla usług i aplikacji do uruchamiania w, dopóki nie wdrożono maszynę Wirtualną, a użytkownicy bardziej odpowiednie może być używana.
 * Dodaj innych kont lokalnych, jak te mogą być wymagane dla scenariusza wdrażania.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > W tym scenariuszu nie Generalizacja (sysprep) maszyny wirtualnej jest wymagany, aby przekazać i wdrożyć maszynę Wirtualną na platformie Azure.
@@ -884,7 +884,7 @@ Wymagania, przygotowując swoje własne dysku maszyny Wirtualnej platformy Azure
 >
 >
 
-- - -
+---
 #### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>Przygotowanie do wdrożenia maszyny Wirtualnej przy użyciu obrazu właściwe dla klienta dla rozwiązania SAP
 
 Pliki wirtualnego dysku twardego, które zawierają uogólnionego systemu operacyjnego są przechowywane w kontenerach na kontach magazynu Azure lub obrazy dysków zarządzanych. Można wdrożyć nową maszynę Wirtualną z takiego obrazu, odwołując się do obrazu wirtualnego dysku twardego lub dysku zarządzanego jako źródło w plikach szablonu wdrożenia zgodnie z opisem w rozdziale [Scenariusz 2: Wdrażanie maszyny Wirtualnej przy użyciu niestandardowego obrazu dla rozwiązania SAP] [ deployment-guide-3.3] z [przewodnik wdrażania][deployment-guide].
@@ -897,7 +897,7 @@ Wymagania podczas przygotowywania swój własny obraz maszyny Wirtualnej platfor
 * Dodaj innych kont lokalnych, jak te mogą być wymagane dla scenariusza wdrażania.
 * Jeśli obraz zawiera instalację oprogramowania SAP NetWeaver i zmianę nazwy hosta z oryginalną nazwę punkcie wdrażania platformy Azure jest prawdopodobne, zaleca się skopiuj najnowszymi wersjami programów SAP oprogramowania inicjowania obsługi administracyjnej Menedżera dysków DVD do szablonu. Spowoduje to włączenie pozwala łatwo zaadaptować zmienione nazwy hosta i/lub zmiany identyfikatora SID systemu SAP w ramach wdrożonym obrazie maszyny Wirtualnej, zaraz po uruchomieniu nowej kopii przy użyciu funkcji zmiany nazwy SAP, pod warunkiem.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Upewnij się, że dysku D:\ nie jest używany zestaw automatycznej instalacji z dysku dla dołączonych dysków, zgodnie z opisem w rozdziale [ustawienie automatycznej instalacji dla dołączone dyski] [ planning-guide-5.5.3] w tym dokumencie.
@@ -908,14 +908,14 @@ Wymagania podczas przygotowywania swój własny obraz maszyny Wirtualnej platfor
 >
 >
 
-- - -
+---
 * SAP graficznego interfejsu użytkownika (dla administracyjnych i konfiguracji celów) mogą być wstępnie zainstalowany w taki szablon.
 * Tak długo, jak to oprogramowanie może współpracować z Zmień nazwę maszyny wirtualnej można zainstalować inne oprogramowanie, które są niezbędne pomyślne uruchomienie maszyn wirtualnych w scenariuszach obejmujących wiele lokalizacji.
 
 Jeśli maszyna wirtualna jest gotowa wystarczająco ogólny i po pewnym czasie niezależnie od kont użytkowników/nie jest dostępna w tym scenariuszu wdrażania platformy docelowej, ostatnim krokiem przygotowania uogólniania taki obraz jest przeprowadzane.
 
 ##### <a name="generalizing-a-vm"></a>Uogólnianie maszyny Wirtualnej
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Ostatnim krokiem jest zalogować się do maszyny Wirtualnej przy użyciu konta administratora. Otwórz okno poleceń programu Windows jako *administratora*. Przejdź do %windir%\windows\system32\sysprep i wykonaj sysprep.exe.
@@ -928,7 +928,7 @@ Jeśli maszyna wirtualna jest gotowa wystarczająco ogólny i po pewnym czasie n
 >
 >
 
-- - -
+---
 ### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>Transferowanie maszyn wirtualnych i wirtualnych dyskach twardych między środowiska lokalnego do platformy Azure
 Ponieważ przekazywania obrazów maszyn wirtualnych i dysków na platformie Azure nie jest możliwe za pośrednictwem witryny Azure portal, należy użyć polecenia cmdlet programu Azure PowerShell lub interfejsu wiersza polecenia. Inną możliwością jest użycie narzędzia "Narzędzie AzCopy". Narzędzie można skopiować wirtualne dyski twarde między lokalną i platformą Azure (w obu kierunkach). Również może kopiować pliki VHD, między regionami platformy Azure. Zapoznaj się [tej dokumentacji] [ storage-use-azcopy] do pobrania i użycia narzędzia AzCopy.
 
@@ -1188,7 +1188,7 @@ W idealnym obsługi struktury Maszynę wirtualną i skojarzone dyski powinny by�
 ![Odwołanie do konfiguracji maszyny wirtualnej IaaS platformy Azure dla rozwiązania SAP][planning-guide-figure-1300]
 
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Za pomocą wielu klientów widzieliśmy konfiguracje, na przykład, SAP i DBMS pliki binarne nie zostały zainstalowane na dysku c:\, w którym zainstalowano system operacyjny. Istnieją różne powody, dla tego, ale gdy powrócimy do katalogu głównego, zwykle nadszedł czy dyski są małe i uaktualnień systemu operacyjnego wymagane dodatkowe miejsce na 10 – 15 lat temu. Oba te warunki są stosowane, zbyt często już w te dni. Już dziś można mapować dysku c:\ na maszynach wirtualnych lub dyski dużą woluminu. W celu uproszczenia wdrożenia w ich struktury, zalecane jest zgodny z następującym wzorem wdrażania systemów SAP NetWeaver na platformie Azure
@@ -1214,14 +1214,14 @@ sudo service waagent restart
 
 Zapoznaj się uwagę [1597355] więcej informacji na temat wymiany zalecany rozmiar pliku
 
-- - -
+---
 Liczbę dysków używanych dla systemu DBMS plików danych i typ magazynu platformy Azure, te dyski znajdują się w powinna zależeć z wymaganiami dotyczącymi operacji We/Wy i opóźnienia wymagane. Dokładne przydziały są opisane w [w tym artykule (Linux)] [ virtual-machines-sizes-linux] i [w tym artykule (Windows)][virtual-machines-sizes-windows].
 
 Środowisko SAP wdrożeń w ciągu ostatnich dwóch lat prowadzone nam pewne lekcje, które mogą być podsumowywane jako:
 
 * Ruch operacje We/Wy do plików danych różnych nie zawsze jest taki sam od istniejących systemów klientów może mieć inaczej o rozmiarze pliki danych reprezentujących ich baz danych SAP. W rezultacie jego okazała się lepiej korzystać z konfiguracji RAID na wiele dysków do umieszczenia plików danych, które jednostki LUN używać poza tymi. Wystąpiły sytuacjach, szczególnie w przypadku usługi Azure Standard Storage, gdzie szybkości operacji We/Wy osiągnięty przydział jednego dysku dla dziennika transakcji DBMS. W takich przypadkach zaleca się korzystanie z usługi Premium Storage, lub też agregowanie wielu magazynu w warstwie standardowa stripe dysków przy użyciu oprogramowania.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > * [Najlepsze rozwiązania dotyczące programu SQL Server w usłudze Azure Virtual Machines wydajności][virtual-machines-sql-server-performance-best-practices]
@@ -1234,7 +1234,7 @@ Liczbę dysków używanych dla systemu DBMS plików danych i typ magazynu platfo
 >
 >
 
-- - -
+---
 * Usługa Premium Storage jest wyświetlane znaczące lepszą wydajność, szczególnie w przypadku zapisów dziennika transakcji krytycznych. W przypadku scenariuszy SAP, które mają dostarczać produkcji, takich jak wydajność zaleca używania serię maszyn wirtualnych, które mogą korzystać z usługi Azure Premium Storage.
 
 Należy pamiętać, że dysk, który zawiera system operacyjny, a firma Microsoft zaleca plików binarnych, SAP i bazy danych (podstawowa maszyna wirtualna), nie jest już ograniczona do 127GB. Teraz może mieć maksymalnie 1TB w rozmiarze. Powinna to być za mało miejsca, aby zachować niezbędnego pliku, w tym, na przykład dzienniki zadania usługi batch SAP.
@@ -1255,7 +1255,7 @@ Następnie należy zdecydować, czy chcesz utworzyć nowy i pustego dysku lub te
 
 **WAŻNE**: Możesz **nie** do użycia buforowania hosta za pomocą usługi Azure Standard Storage. Preferencje pamięci podręcznej hosta należy pozostawić domyślne ustawienie NONE. Usługa Azure Premium Storage należy włączyć buforowanie odczytu Jeśli cechy operacji We/Wy jest przede wszystkim do odczytu, takie jak typowa ruch we/wy dla plików danych bazy danych. W przypadku pliku dziennika transakcji bazy danych zaleca się bez buforowania.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > [Jak dołączyć dysk danych w witrynie Azure portal][virtual-machines-linux-attach-disk-portal]
@@ -1268,7 +1268,7 @@ Następnie należy zdecydować, czy chcesz utworzyć nowy i pustego dysku lub te
 >
 >
 
-- - -
+---
 Jeśli nowy dysk jest pusty dysk, należy sformatować dysk, jak również. Formatowania, szczególnie w przypadku plików danych i dziennika systemu DBMS na tym samym zalecenia, jak w przypadku wdrożenia bez systemu operacyjnego systemu DBMS mają zastosowanie.
 
 Jak już wspomniano w rozdziale [koncepcji maszyny wirtualnej platformy Azure w usłudze Microsoft][planning-guide-3.2], konto usługi Azure Storage nie zapewnia nieograniczony zasoby pod względem liczby operacji We/Wy, operacje We/Wy i ilości danych. Zazwyczaj systemu DBMS na maszynach wirtualnych są najbardziej zagrożone to. Może być najlepiej użyć oddzielnego konta magazynu dla każdej maszyny Wirtualnej, jeśli masz kilka dużej liczby operacji We/Wy maszyn wirtualnych, aby wdrożyć, aby pozostać w ramach limitu woluminu konta usługi Azure Storage. W przeciwnym razie chcesz zobaczyć, jak mogą równoważyć procesy te maszyny wirtualne między różnymi kontami magazynu bez osiągnięciu limitu każdego pojedynczego konta magazynu. Szczegółowe informacje zostały omówione w [przewodnik wdrażania systemu DBMS][dbms-guide]. Należy również zachować te ograniczenia należy pamiętać o czyste aplikacji SAP maszyn wirtualnych z serwera lub innych maszyn wirtualnych, które ostatecznie mogą wymagać dodatkowych wirtualnych dysków twardych. Te ograniczenia nie są stosowane, jeśli używasz dysków zarządzanych. Jeśli planowane jest używanie usługi Premium Storage, zaleca się przy użyciu dysków zarządzanych.
@@ -1278,7 +1278,7 @@ Innego tematu, który jest odpowiedni dla kont magazynu jest to, czy wirtualne d
 Replikacja geograficzna platformy Azure działa lokalnie na poszczególnych wirtualnych dysków Twardych na maszynie wirtualnej i nie jest replikowany z systemem IOs w kolejności chronologicznej w wielu dysków VHD na maszynie wirtualnej. W związku z tym wirtualnego dysku twardego, który reprezentuje podstawowej maszyny Wirtualnej, jak również wszelkie dodatkowe wirtualnych dysków twardych dołączonych do maszyny Wirtualnej są replikowane od siebie niezależne. Oznacza to, że jest brak synchronizacji między zmianami w różnych wirtualnych dysków twardych. Fakt, że systemu IOs zostały zreplikowane niezależnie od kolejności, w którym są one zapisywane oznacza, że ten replikacja geograficzna nie jest wartość dla serwerów bazy danych, które mają swoje bazy danych, rozproszone na wielu dysków VHD. Oprócz DBMS również mogą istnieć inne aplikacje, których procesów zapisu lub wykonywać operacje na danych w różnych wirtualnych dysków twardych i gdzie ważne jest, aby zachować kolejność zmiany. Jeśli jest to wymagane, nie można włączyć replikacji geograficznej na platformie Azure. Zależne od tego, czy potrzebujesz lub mają replikacji geograficznej dla zestawu maszyn wirtualnych, ale nie do innego zestawu, umożliwia już klasyfikowanie maszyn wirtualnych i ich powiązane wirtualnych dysków twardych do różnych kont magazynu, które mają replikację geograficzną, włączone lub wyłączone.
 
 #### <a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Ustawienie automatycznej instalacji dla dołączonych dysków
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Dla maszyn wirtualnych, które są tworzone na podstawie własnych obrazów lub dyski, należy sprawdzić i ewentualnie Ustaw parametr automatycznej instalacji. Ustawienie tego parametru umożliwi maszyny Wirtualnej po ponownym uruchomieniu lub ponowne wdrożenie na platformie Azure, aby automatycznie ponownie zainstalować dyski dołączone zainstalowany.
@@ -1300,7 +1300,7 @@ Replikacja geograficzna platformy Azure działa lokalnie na poszczególnych wirt
 >
 >
 
-- - -
+---
 ### <a name="final-deployment"></a>Ostateczny wdrożenia
 
 Ostateczny wdrożenia i konkretne kroki, szczególnie w odniesieniu do wdrożenia SAP rozszerzone monitorowanie, można znaleźć [przewodnik wdrażania][deployment-guide].
@@ -1328,7 +1328,7 @@ Można znaleźć w tym artykule opisano szczegóły, aby w tym temacie: <https:/
 
 Może być konieczne skonfigurowanie zapory na maszynach wirtualnych, aby zezwolić na ruch przychodzący do systemu SAP.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Domyślnie Zapora Windows w ramach platformy Azure wdrożonej maszyny Wirtualnej jest włączona. Teraz musisz zezwolić na użycie portu SAP ma zostać otwarty, w przeciwnym razie SAP graficznego interfejsu użytkownika nie będzie można połączyć.
@@ -1352,7 +1352,7 @@ Może być konieczne skonfigurowanie zapory na maszynach wirtualnych, aby zezwol
 >
 >
 
-- - -
+---
 #### <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
 Graficzny interfejs użytkownika SAP nie natychmiast połączyć się z dowolnego z wystąpień SAP (port 32xx), które są uruchomione, ale najpierw łączy się za pośrednictwem portu otwarty do procesu serwera SAP komunikat (port 36xx). W przeszłości tego samego portu został użyty przez serwer wiadomości do komunikacji wewnętrznej w wystąpieniach aplikacji. Aby zapobiec przypadkowo podczas komunikowania się z serwerem wiadomości na platformie Azure serwerów aplikacji w środowisku lokalnym, można zmienić portów komunikacji wewnętrznej. Zdecydowanie zaleca się zmienić wewnętrznej komunikacji między serwerem komunikat SAP i jego wystąpienia aplikacji na inny numer portu w systemach, które zostały sklonowane z systemów lokalnych, takich jak klon opracowywania rozwiązań dla projektów testowych itp. Można to zrobić przy użyciu domyślnego parametru profilu:
@@ -1655,7 +1655,7 @@ Firma Microsoft dodała wiele więcej typów maszyn wirtualnych, które różni�
 
 Skonfigurowanie lokalnych drukarek sieciowych na podstawie protokołu TCP/IP w Maszynie wirtualnej platformy Azure ogólnie jest taki sam jak w sieci firmowej, przy założeniu, że masz tunelu sieci VPN lokacja-lokacja lub nawiązano połączenie usługi ExpressRoute.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > W tym celu:
@@ -1674,7 +1674,7 @@ Skonfigurowanie lokalnych drukarek sieciowych na podstawie protokołu TCP/IP w M
 >
 >
 
-- - -
+---
 ![Drukowanie w sieci][planning-guide-figure-2200]
 
 ##### <a name="host-based-printer-over-smb-shared-printer-in-cross-premises-scenario"></a>Drukarki oparte na hoście przy użyciu protokołu SMB (drukarki udostępnionej) w scenariuszu między środowiskami lokalnymi
@@ -1690,7 +1690,7 @@ Udziału drukarki jest identyfikowane przez unikatową nazwę w sieci:
 
 Instrukcje:
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Udostępnianie drukarki lokalnej.
@@ -1706,19 +1706,19 @@ Instrukcje:
 >
 >
 
-- - -
+---
 ##### <a name="usb-printer-printer-forwarding"></a>USB drukarki (drukarki przekazywania)
 
 Na platformie Azure możliwości usług pulpitu zdalnego do udzielania dostępu do swoich urządzeń drukarki lokalnej w sesji zdalnej nie jest dostępna.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Szczegółowe informacje na temat Drukowanie z Windows można znaleźć tutaj: <https://technet.microsoft.com/library/jj590748.aspx>.
 >
 >
 
-- - -
+---
 #### <a name="integration-of-sap-azure-systems-into-correction-and-transport-system-tms-in-cross-premises"></a>Integracja oprogramowania SAP systemy platformy Azure do korekcji i Transport systemu (TMS) między środowiskami lokalnymi
 
 Zmiana SAP i System transportu (TMS) musi być skonfigurowana do eksportowania i importowania transportu żądania we wszystkich systemach w orientacji poziomej. Przyjęto założenie, że wystąpienia rozwoju systemu SAP (DEV) znajdują się na platformie Azure, systemów produktywność (PRD) i zapewniania jakości (QA) są w środowisku lokalnym. Ponadto przyjęto założenie, że jest katalogiem transportu centralnego.

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/19/2019
 ms.author: bwren
-ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56dd1c29d5606da96bbc6d519b70caf580852446
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996521"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273065"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Dzienniki niestandardowe w usłudze Azure Monitor
 Źródło danych dzienników niestandardowych w usłudze Azure Monitor umożliwia zbieranie zdarzeń z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog. Po zebraniu możesz analizować dane na poszczególne pola w zapytaniach lub wyodrębniania danych podczas zbierania do poszczególnych pól.
@@ -35,11 +35,7 @@ Pliki dziennika mają być zbierane musi spełniać następujące kryteria.
 - Plik dziennika, należy użyć kodowanie ASCII lub UTF-8.  Innych formatach, takich jak UTF-16 nie są obsługiwane.
 
 >[!NOTE]
->Jeśli istnieją zduplikowane wpisy w pliku dziennika, usługi Azure Monitor będzie zbierać je.  Jednak wyniki zapytania będą niespójne gdzie wyników filtrowania Pokaż więcej zdarzeń niż liczba wyników.  Ważne jest, sprawdź poprawność dziennika, aby określić, jeśli aplikacja, która tworzy on jest przyczyną tego zachowania i rozwiązać problem, jeśli jest to możliwe, przed utworzeniem definicji kolekcji dzienników niestandardowych.  
->
-  
->[!NOTE]
-> Jeśli aplikacja tworzy nowy plik dziennika, każdego dnia lub gdy osiągnie pewien rozmiar, agenta usługi Log Analytics dla systemu Linux nie wykrywa ich aż po ponownym uruchomieniu. Jest to spowodowane agenta, tylko wylicza i rozpoczyna monitorowanie pod kątem wzorców z określonym dzienników w przypadku uruchamiania i w związku z tym należy zaplanować wokół niego, automatyzując ponownego uruchomienia agenta.  Za pomocą agenta usługi Log Analytics dla Windows nie ma tego ograniczenia.  
+> Jeśli istnieją zduplikowane wpisy w pliku dziennika, usługi Azure Monitor będzie zbierać je. Jednak wyniki zapytania będą niespójne gdzie wyników filtrowania Pokaż więcej zdarzeń niż liczba wyników. Ważne jest, sprawdź poprawność dziennika, aby określić, jeśli aplikacja, która tworzy on jest przyczyną tego zachowania i rozwiązać problem, jeśli jest to możliwe, przed utworzeniem definicji kolekcji dzienników niestandardowych.  
 >
 
 >[!NOTE]

@@ -1,22 +1,22 @@
 ---
 title: Metody uwierzytelniania — usługi Azure Active Directory
-description: Jakie metody uwierzytelniania są dostępne w usłudze Azure AD do uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ
+description: Metody uwierzytelniania dostępne w usłudze Azure AD dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 06/17/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1322c919906dc2d0dd23de538fa2c1992fbe5da0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119365"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164827"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -180,7 +180,9 @@ Gdy zostały rozwiązane wszystkie błędy, administrator następnie można uruc
 
 Użytkownicy mogą mieć połączenie maksymalnie pięć tokeny sprzętowe OATH lub aplikacji wystawcy uwierzytelnienia, takich jak aplikacja Microsoft Authenticator skonfigurowany do użycia w dowolnym momencie.
 
-## <a name="mobile-phone"></a>Telefon komórkowy
+## <a name="phone-options"></a>Opcje telefonu
+
+### <a name="mobile-phone"></a>Telefon komórkowy
 
 Dwie opcje są dostępne dla użytkowników przy użyciu telefonów komórkowych.
 
@@ -193,18 +195,18 @@ Aby działać poprawnie, numerów telefonów musi być w formacie *+ CountryCode
 >
 > Resetowanie hasła nie obsługuje wewnętrzne numery telefonów. Nawet w formacie 12345 4255551234 + 1 X rozszerzenia zostaną usunięte przed wykonaniem wywołania.
 
-### <a name="text-message"></a>Wiadomość SMS
+#### <a name="text-message"></a>Wiadomość SMS
 
 Wiadomość SMS są wysyłane pod numerem telefonu komórkowego z kodem weryfikacyjnym. Wprowadź kod weryfikacyjny w interfejsie logowania, aby kontynuować.
 
-### <a name="phone-call"></a>Połączenie telefoniczne
+#### <a name="phone-call"></a>Połączenie telefoniczne
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebranie połączenia i naciśnięcie przycisku # na klawiaturze telefonu w celu uwierzytelnienia
 
 > [!IMPORTANT]
 > Począwszy od marca 2019 opcji połączenia telefonicznego nie będą dostępne dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ użytkowników w dzierżawach bezpłatnej/wersji próbnej usługi Azure AD. Ta zmiana nie wpływa na wiadomości SMS. Połączenie telefoniczne będą nadal dostępne dla użytkowników w płatną dzierżaw usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżaw bezpłatnej/wersji próbnej usługi Azure AD.
 
-## <a name="office-phone"></a>Telefon biurowy
+### <a name="office-phone"></a>Telefon biurowy
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebrać połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia.
 
@@ -219,6 +221,25 @@ Atrybut telefonu pakietu office jest zarządzane przez administratora.
 > Musi istnieć odstęp między kod kraju i numer telefonu.
 >
 > Resetowanie hasła nie obsługuje wewnętrzne numery telefonów. Nawet w formacie 12345 4255551234 + 1 X rozszerzenia zostaną usunięte przed wykonaniem wywołania.
+
+### <a name="troubleshooting-phone-options"></a>Rozwiązywanie problemów z Opcje telefonu
+
+Typowe problemy związane z metody uwierzytelniania za pomocą numeru telefonu:
+
+* Identyfikator rozmówcy zablokowane na jednym urządzeniu
+   * Rozwiązywanie problemów z urządzeniem
+* Nieprawidłowy numer telefonu, numer kierunkowy kraju niepoprawny numer telefonu domowego i numer telefonu do pracy
+   * Rozwiązywanie problemów z obiektu użytkownika i skonfigurować metody uwierzytelniania. Upewnij się, że numery telefoniczne są rejestrowane.
+* Wprowadzono nieprawidłowy kod PIN
+   * Upewnij się, że użytkownik ma używany poprawny numer PIN zarejestrowany na serwerze Azure MFA.
+* Wywołanie przekazywane do poczty głosowej
+   * Upewnij się, użytkownik ma włączone telefonu i że usługa jest dostępna w ich obszarze lub użyć alternatywnej metody.
+* Użytkownik jest zablokowany
+   * Mieć Odblokuj użytkownika w witrynie Azure portal administratora.
+* Wiadomości SMS nie ma subskrypcji na urządzeniu
+   * Należy mieć użytkownika Zmień metody lub Aktywuj programu SMS na urządzeniu.
+* Dostawców wadliwe telecom (nie wprowadzono numeru telefonu wykryte, Brak problemów barwy DTMF, identyfikator wywołującego zablokowane na wielu urządzeniach lub zablokowane wiadomości SMS na wielu urządzeniach)
+   * Firma Microsoft używa wielu dostawców telecom kierować połączeń telefonicznych i wiadomości SMS dla uwierzytelniania. Jeśli widzisz żadnego z powyższych problemów jest próba użytkownika używana jest metoda co najmniej 5 razy w ciągu 5 minut i ma dostępnych informacji o tym użytkownika, podczas nawiązywania kontaktu z pomocą techniczną firmy Microsoft.
 
 ## <a name="app-passwords"></a>Hasła aplikacji
 

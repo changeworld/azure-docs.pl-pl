@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 06/12/2019
-ms.openlocfilehash: b740b49e2decabd5f104d1db5d38b48f2bc2111c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116200"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275470"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Usługa Azure SQL Database bez użycia serwera (wersja zapoznawcza)
 
@@ -253,6 +253,8 @@ Pula zasobów użytkownika jest wewnętrzny większość granic zarządzania zas
 
 ### <a name="metrics"></a>Metryki
 
+Metryki do monitorowania użycia zasobów w puli aplikacji pakietu i użytkowników bez użycia serwera bazy danych są wymienione w poniższej tabeli:
+
 |Jednostka|Metryka|Opis|Jednostki|
 |---|---|---|---|
 |Pakiet aplikacji|app_cpu_percent|Procent rdzeni wirtualnych używanych przez aplikację względem rdzeni maksymalny dozwolony dla aplikacji.|Wartość procentowa|
@@ -263,10 +265,6 @@ Pula zasobów użytkownika jest wewnętrzny większość granic zarządzania zas
 |Puli użytkownika|log_IO_percent|Procent dziennika MB/s używane przez obciążenie użytkownikami względem dzienników maksymalna w MB/s dozwolone dla obciążenia użytkownikami.|Wartość procentowa|
 |Puli użytkownika|workers_percent|Procent procesów roboczych używanych przez obciążenie użytkownikami względem pracowników maksymalny dozwolony dla obciążenia użytkownikami.|Wartość procentowa|
 |Puli użytkownika|sessions_percent|Procent sesji używane przez obciążenie użytkownikami względem sesji dozwolone w przypadku obciążenia użytkownika.|Wartość procentowa|
-____
-
-> [!NOTE]
-> Metryki w witrynie Azure portal są dostępne w okienku bazy danych dla pojedynczej bazy danych w ramach **monitorowanie**.
 
 ### <a name="pause-and-resume-status"></a>Wstrzymywanie i wznawianie stanu
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148197"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341857"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Utwórz nową aplikację usługi LUIS w portalu usługi LUIS
 Istnieje kilka sposobów, aby utworzyć aplikację usługi LUIS. Można utworzyć aplikację usługi LUIS w [LUIS](https://www.luis.ai) portalu lub za pomocą usługi LUIS tworzenia [interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -65,7 +65,7 @@ Można utworzyć nową aplikację za pomocą tworzenia interfejsów API na kilka
 
 Błędy możliwe są następujące: 
 
-* Aplikacja o tej nazwie już istnieje. Ponowne importowanie aplikacji, a następnie ustaw **opcjonalna nazwa** pod nową nazwą. 
+* Aplikacja o tej nazwie już istnieje. Aby rozwiązać ten problem, ponownie zaimportować aplikację i ustaw **opcjonalna nazwa** pod nową nazwą. 
 
 ## <a name="export-app-for-backup"></a>Eksportowanie aplikacji do tworzenia kopii zapasowych
 

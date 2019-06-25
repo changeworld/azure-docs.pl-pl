@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56360238db8632e74a95c057a7fe643b5cea3151
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234101"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206830"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Szybki start: Tworzenie aplikacji dla systemu iOS przy użyciu usługi Azure Spatial Anchors w języku Swift lub Objective-C
 
@@ -62,7 +62,7 @@ Przejdź do adresu `iOS/Objective-C/`.
 cd ./iOS/Objective-C/
 ```
 
-***
+---
 
 Uruchom polecenie `pod install --repo-update` w celu zainstalowania programu CocoaPods dla projektu.
 
@@ -80,7 +80,7 @@ open ./SampleSwift.xcworkspace
 open ./SampleObjC.xcworkspace
 ```
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>Konfigurowanie identyfikatora i klucza konta
 
@@ -102,7 +102,7 @@ Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem kon
 
 Znajdź pole `SpatialAnchorsAccountId` i zastąp wartość `Set me` identyfikatorem konta.
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Wdrażanie aplikacji na urządzeniu z systemem iOS
 
@@ -110,7 +110,7 @@ Podłącz urządzenie z systemem iOS do komputera Mac i ustaw **aktywny schemat*
 
 ![Wybieranie urządzenia](./media/get-started-ios/select-device.png)
 
-Wybierz pozycję **Build and then run the current scheme (Skompiluj i uruchom bieżący schemat)**.
+Wybierz pozycję **Build and then run the current scheme (Skompiluj i uruchom bieżący schemat)** .
 
 ![Wdrażanie i uruchamianie](./media/get-started-ios/deploy-run.png)
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b19c0fd8af2792a4ffb877e5c6a7fc6b3f94511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 975289f338e638ed0209d4f6cf2a163ced996e42
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836134"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202939"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 [1114181]: https://launchpad.support.sap.com/#/notes/1114181
@@ -150,7 +150,7 @@ Umieszczanie plików bazy danych i plików dziennika i ponów i typu Azure Stora
 Jak już wspomniano Jeśli zgodnie z wymaganiami potrzebna operacje We/Wy przekracza, co może zapewnić pojedynczego wirtualnego dysku twardego, równomierny podział liczby operacji We/Wy, które są wymagane dla plików bazy danych dla pewnej liczby wirtualnych dysków twardych. Najprostszym sposobem na rozdzielenie obciążenia operacji We/Wy na dyskach jest tworzenie stripe oprogramowania za pośrednictwem różnych dyskach. Następnie umieścić pliki danych z systemu SAP DBMS na jednostkach LUN używać poza stripe oprogramowania. Liczba dysków w stripe jest wymuszany przez żądania operacji We/Wy, potrzebom związanym z przepływnością dysku i woluminu zapotrzebowania.
 
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Zalecamy użycie funkcji miejsca do magazynowania systemu Windows do tworzenia zestawów rozłożonych w wielu dysków VHD z platformy Azure. Użyj co najmniej Windows Server 2012 R2 lub Windows Server 2016.
@@ -164,7 +164,7 @@ Jak już wspomniano Jeśli zgodnie z wymaganiami potrzebna operacje We/Wy przekr
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > Ponieważ usługi Azure Storage przechowuje trzy obrazy dysków VHD, nie ma sensu do skonfigurowania nadmiarowość, jeśli użytkownik stripe. Musisz skonfigurować rozkładanie operacji We/Wy są dystrybuowane za pośrednictwem różnych wirtualnych dysków twardych.
@@ -230,7 +230,7 @@ Maszyny wirtualne platformy Azure oferują nietrwałych dysków, po wdrożeniu m
 
 Aby uzyskać więcej informacji, zobacz [dysku tymczasowego na Windows maszyn wirtualnych na platformie Azure zrozumienie](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Dysk D w Maszynie wirtualnej platformy Azure jest nieutrwaloną dysku, która jest wspierana przez niektóre dyski lokalne na węźle obliczeniowym platformy Azure. Ponieważ jest nieutrwaloną wszelkie zmiany wprowadzone do zawartości na dysku D zostaną utracone w przypadku, gdy maszyna wirtualna jest uruchamiany ponownie. Zmiany obejmują pliki, które były przechowywane, katalogi, które zostały utworzone i aplikacje, które zostały zainstalowane.
@@ -241,7 +241,7 @@ Aby uzyskać więcej informacji, zobacz [dysku tymczasowego na Windows maszyn wi
 >
 >
 
-- - -
+---
 
 
 
@@ -339,7 +339,7 @@ Aby dodatkowo zmniejszyć opóźnienie sieciowe między maszynami wirtualnymi pl
 > Nie wszystkie typy maszyn wirtualnych obsługują przyspieszonej sieci. Poprzednim artykule wymieniono typy maszyn wirtualnych, które obsługują przyspieszonej sieci.
 >
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Aby dowiedzieć się, jak wdrożyć maszyny wirtualne z Accelerated Networking for Windows, zobacz [Utwórz maszynę wirtualną Windows dzięki przyspieszonej sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
@@ -350,7 +350,7 @@ Aby dodatkowo zmniejszyć opóźnienie sieciowe między maszynami wirtualnymi pl
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > W przypadku SUSE i Red Hat, Oracle Linux przyspieszonej sieci jest obsługiwana przy użyciu najnowsze wersje. Starsze wersje systemu SLES 12 z dodatkiem SP2 lub systemu RHEL 7.2 nie obsługują usługę Azure Accelerated Networking.

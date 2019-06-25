@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 05/29/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d9220cd2162b4c8cb77c1e7abd0372052f5454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5988f4723f1ef73cf0767ef8ac1b9adf3c1435d
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64541618"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190237"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Tworzenie i zarządzanie nimi wykazu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
 
@@ -60,9 +60,9 @@ Katalog jest kontenerem, zasoby i dostęp do pakietów. Tworzenie katalogu, gdy 
 
 ## <a name="add-resources-to-a-catalog"></a>Dodawanie zasobów do katalogu
 
-Aby dołączyć zasoby pakietu programu access, zasoby muszą istnieć w katalogu. Typy zasobów, które można dodać to grupy, aplikacje i witryny usługi SharePoint Online.
+Aby dołączyć zasoby pakietu programu access, zasoby muszą istnieć w katalogu. Typy zasobów, które można dodać to grupy, aplikacje i witryny usługi SharePoint Online. Grupy można utworzyć chmury grup usługi Office 365 lub utworzyć chmury platformy Azure grup zabezpieczeń usługi AD. Mogą to być aplikacje dla przedsiębiorstw usługi Azure AD, łącznie z aplikacjami SaaS i własne aplikacje Sfederowane z usługą Azure AD. Witryny można witryn usługi SharePoint Online lub kolekcji witryn usługi SharePoint Online.
 
-**Rola wymagań wstępnych:** Administrator użytkownika lub właściciela katalogu
+**Rola wymagań wstępnych:** Zobacz [wymagane role, aby dodać zasoby do wykazu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
 
@@ -74,9 +74,7 @@ Aby dołączyć zasoby pakietu programu access, zasoby muszą istnieć w katalog
 
 1. Kliknij typ zasobu: **Grupy**, **aplikacje**, lub **witryny programu SharePoint**.
 
-    Jeśli jesteś twórcą katalogu, możesz dodać wszelkie grupy usługi Office 365 lub grupy zabezpieczeń usługi Azure AD, których właścicielem do katalogu. Jeśli istnieje grupa, którą chcesz przypisać do użytkowników, ale nie jesteś właścicielem grupy, należy mieć administrator użytkowników, dodać tę grupę do katalogu.
-
-    Jeśli jesteś twórcą katalogu, możesz dodać wszelkie jesteś właścicielem, łącznie z aplikacjami SaaS i własne aplikacje Sfederowane z usługą Azure AD do katalogu aplikacji enterprise dla usługi Azure AD. W przypadku aplikacji, która ma zostać przypisana użytkownikowi, ale nie są jego własnością, musisz mieć administrator użytkowników, dodaj ją do katalogu. Gdy aplikacja jest częścią katalogu, możesz wybrać jedną z ról aplikacji w pakiecie dostępu.
+    Jeśli nie widzisz z zasobem, który chcesz dodać, lub nie można dodać zasobu, upewnij się, że masz wymagane roli w katalogu usługi Azure AD i uprawnień roli zarządzania. Konieczne może być ktoś z wymaganymi rolami Dodaj zasób do katalogu. Aby uzyskać więcej informacji, zobacz [wymagane role, aby dodać zasoby do wykazu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
 1. Wybierz co najmniej jeden zasób typu, który chcesz dodać do katalogu.
 
@@ -88,7 +86,7 @@ Aby dołączyć zasoby pakietu programu access, zasoby muszą istnieć w katalog
 
 Możesz usunąć zasoby z katalogu. Zasób tylko można usunąć z katalogu, jeśli nie jest on używany w żadnym z pakietów dostępu do wykazu.
 
-**Rola wymagań wstępnych:** Administrator użytkownika lub właściciela katalogu
+**Rola wymagań wstępnych:** Zobacz [wymagane role, aby dodać zasoby do wykazu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
 
@@ -99,22 +97,6 @@ Możesz usunąć zasoby z katalogu. Zasób tylko można usunąć z katalogu, je�
 1. Wybierz zasoby, które chcesz usunąć.
 
 1. Kliknij przycisk **Usuń** (lub kliknij przycisk wielokropka ( **...** ) a następnie kliknij przycisk **Usuń zasób**).
-
-## <a name="add-catalog-owners-or-access-package-managers"></a>Dodawanie właścicieli katalogu ani uzyskać dostępu do menedżerów pakietów
-
-Jeśli chcesz delegować zarządzanie w katalogu lub pakietów dostępu w katalogu, dodawanie właścicieli katalogu lub dostęp do menedżerów pakietów. Kto tworzy wykaz staje się pierwszym właściciela katalogu.
-
-**Rola wymagań wstępnych:** Administrator użytkownika lub właściciela katalogu
-
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
-
-1. W menu po lewej stronie kliknij **katalogi** , a następnie otwórz katalogu, którego chcesz dodać administratorów.
-
-1. W menu po lewej stronie kliknij **role i Administratorzy**.
-
-1. Kliknij przycisk **Dodawanie właścicieli** lub **dodać menedżerów pakietów dostępu** zaznacz składniki dla tych ról.
-
-1. Kliknij przycisk **wybierz** można dodać te składowe.
 
 ## <a name="edit-a-catalog"></a>Edytuj katalog
 
@@ -148,4 +130,5 @@ Można usunąć katalogu, ale tylko wtedy, gdy nie ma żadnych pakietów dostęp
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- [Dodaj twórcy katalogu](entitlement-management-delegate.md#add-a-catalog-creator)
 - [Tworzenie i zarządzanie nimi pakietu dostępu](entitlement-management-access-package-create.md)

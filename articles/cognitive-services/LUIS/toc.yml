@@ -85,12 +85,24 @@
           displayName: roles
         - name: Wyodrębnianie danych o formacie swobodnym
           href: luis-tutorial-pattern-any.md
-    - name: Używanie struktury botów V4
+    - name: Używanie z botem
       items:
         - name: 'Przy użyciu języka C#'
-          href: luis-csharp-tutorial-bf-v4.md
+          items:
+            - name: 1. Tworzenie podstawowego bota
+              href: luis-csharp-tutorial-bf-v4.md
+              displayName: 'bot framework, framework, sdk, abs'
+            - name: 2. Dodawanie telemetrii do usługi Application Insights
+              href: luis-tutorial-bot-csharp-appinsights.md
+              displayName: 'Application insight, kusto'
         - name: Przy użyciu środowiska Node.js
-          href: luis-nodejs-tutorial-bf-v4.md
+          items:
+            - name: 1. Tworzenie podstawowego bota
+              displayName: 'bot framework, framework, sdk, abs'
+              href: luis-nodejs-tutorial-bf-v4.md
+            - name: 2. Dodawanie telemetrii do usługi Application Insights
+              displayName: 'Application insight, kusto'
+              href: luis-tutorial-bot-nodejs-appinsights.md
 - name: Przykłady
   items:
     - name: Przykłady kodu
@@ -200,14 +212,6 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: Za pomocą usługi rozpoznawania mowy
           href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
-        - name: Bot w usłudze Application Insights
-          items:
-            - name: Node.js
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
-            - name: 'C#'
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-csharp-appinsights.md
     - name: Zwiększanie dokładności przewidywania
       items:
         - name: Korzystanie z pulpitu nawigacyjnego

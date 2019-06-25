@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e799e4ae745d2dc2dea91aa0094b5ffb79ae6f77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04c7663073a710fe39017b01edd0623a837d6354
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063889"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331800"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST przy użyciu języka Python
 
@@ -36,7 +36,7 @@ Po nadaniu prawa dostępu do używania rozpoznawania formularza otrzymasz Witaj 
 |--|--|
 | **Nazwa** | Opisowa nazwa zasobu bazy danych. Firma Microsoft zaleca używanie nazwę opisową, na przykład *MyNameFormRecognizer*. |
 | **Subskrypcja** | Wybierz subskrypcję platformy Azure, którym udzielono dostępu. |
-| **Lokalizacja** | Lokalizacja wystąpienia usługi cognitive Services. Różne lokalizacje może wprowadzić opóźnienie, ale nie mają wpływu na dostępność Twojego zasobu w czasie wykonywania. |
+| **Location** | Lokalizacja wystąpienia usługi cognitive Services. Różne lokalizacje może wprowadzić opóźnienie, ale nie mają wpływu na dostępność Twojego zasobu w czasie wykonywania. |
 | **Warstwa cenowa** | Koszt zasobu zależy od warstwy cenowej, który wybierzesz i użycie. Aby uzyskać więcej informacji, zobacz omówienie interfejsu API [cennik](https://azure.microsoft.com/pricing/details/cognitive-services/).
 | **Grupa zasobów** | [Grupy zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) który będzie zawierał zasobu. Można utworzyć nową grupę lub dodaj je do wcześniej istniejącej grupy. |
 
@@ -47,12 +47,13 @@ Po zakończeniu wdrażania zasobu rozpoznawania formularza Znajdź i wybierz go 
 
 ## <a name="train-a-form-recognizer-model"></a>Wytrenuj model rozpoznawania formularza
 
-Po pierwsze należy zestaw danych szkoleniowych w rozszerzeniu Azure Storage blob. Powinien mieć co najmniej pięć przykładowe rodzaje (PDF, dokumentów i/lub obrazów) tego samego typu/struktury jako główny danych wejściowych. Lub za pomocą pojedynczego pusty formularz dwie formy wypełnione. Nazwa pliku pusty formularz musi zawierać słowo "empty".
+Po pierwsze należy zestaw danych szkoleniowych w kontenerze obiektów blob usługi Azure Storage. Powinien mieć co najmniej pięć przykładowe rodzaje (PDF, dokumentów i/lub obrazów) tego samego typu/struktury jako główny danych wejściowych. Lub za pomocą pojedynczego pusty formularz dwie formy wypełnione. Nazwa pliku pusty formularz musi zawierać słowo "empty".
 
 Aby wytrenuj model rozpoznawania formularza za pomocą dokumentów w kontenerze obiektów blob platformy Azure, należy wywołać **szkolenie** interfejsu API, uruchamiając kod, który następuje po języka python. Przed uruchomieniem kodu, dokonaj następujących zmian:
 
 1. Zastąp `<Endpoint>` przy użyciu adresu URL punktu końcowego dla zasobu rozpoznawania formularza w regionie platformy Azure, gdzie uzyskać klucze subskrypcji.
-1. Zastąp `<SAS URL>` z kontenera magazynu obiektów Blob platformy Azure udostępnione adresu URL sygnatury (SAS) lokalizacji danych szkoleniowych dostępu.  
+1. Zastąp `<SAS URL>` udostępnionych kontenera magazynu obiektów blob Azure dostęp do adresu URL sygnatury (SAS). Aby pobrać to, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener, a wybierz **sygnatury dostępu współdzielonego Get**. Kliknij przycisk Dalej okno dialogowe, a następnie skopiuj wartość w **adresu URL** sekcji. Powinien on mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Zastąp `<file type>` z typem pliku. Obsługiwane typy: `application/pdf`, `image/jpeg`, `image/png`.
 1. Zastąp `<Subscription key>` z kluczem subskrypcji został skopiowany w poprzednim kroku.
     ```python
     ########### Python Form Recognizer Train #############
@@ -63,7 +64,7 @@ Aby wytrenuj model rozpoznawania formularza za pomocą dokumentów w kontenerze 
     source = r"<SAS URL>"
     headers = {
         # Request headers
-        'Content-Type': 'application/json',
+        'Content-Type': '<file type>',
         'Ocp-Apim-Subscription-Key': '<Subscription Key>',
     }
     url = base_url + "/train" 
@@ -129,7 +130,7 @@ Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wart
 1. Zastąp `<Endpoint>` przy użyciu punktu końcowego, który został uzyskany z kluczem subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
 1. Zastąp `<path to your form>` ze ścieżką pliku formularza (na przykład C:\temp\file.pdf).
 1. Zastąp `<modelID>` o identyfikatorze modelu odebrane w poprzedniej sekcji.
-1. Zastąp `<file type>` z typem pliku. Obsługiwane typy: pdf, image/jpeg, image/png.
+1. Zastąp `<file type>` z typem pliku. Obsługiwane typy: `application/pdf`, `image/jpeg`, `image/png`.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
     ```python
@@ -142,7 +143,7 @@ Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wart
     model_id = "<modelID>"
     headers = {
         # Request headers
-        'Content-Type': 'application/<file type>',
+        'Content-Type': '<file type>',
         'Ocp-Apim-Subscription-Key': '<subscription key>',
     }
 

@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/13/2019
-ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596945"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274178"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Dokumentacja dla typów akcji i wyzwalaczy w język definicji przepływów pracy dla usługi Azure Logic Apps
 
@@ -54,7 +54,7 @@ Wyzwalacze mają te elementy najwyższego poziomu, mimo że niektóre są opcjon
 |-------|------|-------------| 
 | <*trigger-name*> | String | Nazwa wyzwalacza | 
 | <*trigger-type*> | String | Typ wyzwalacza, takiego jak "Http" lub "ApiConnection" | 
-| <*dane wejściowe wyzwalacza*> | Obiekt JSON | Dane wejściowe, które określają zachowanie tego wyzwalacza | 
+| <*trigger-inputs*> | Obiekt JSON | Dane wejściowe, które określają zachowanie tego wyzwalacza | 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
 | <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
@@ -2624,7 +2624,7 @@ Jednak żądań ma limit czasu ograniczyć, tak długo trwające akcje zachowani
 
 ### <a name="run-in-high-throughput-mode"></a>Działania w trybie wysokiej przepływności
 
-Dla przebiegu aplikacji logiki pojedynczego, liczba akcji, które są wykonywane co 5 minut ma [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Aby podnieść ten limit, [maksymalna](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) możliwości, ustaw `operationOptions` właściwość `OptimizedForHighThroughput`. To ustawienie umieszcza aplikacji logiki z trybu "wysokiej przepływności". 
+Dla jednej definicji aplikacji logiki, liczba akcji, które są wykonywane co 5 minut ma [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Aby podnieść ten limit, [maksymalna](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) możliwości, ustaw `operationOptions` właściwość `OptimizedForHighThroughput`. To ustawienie umieszcza aplikacji logiki z trybu "wysokiej przepływności". 
 
 > [!NOTE]
 > Tryb wysokiej przepływności jest dostępna w wersji zapoznawczej. Obciążenia mogą również rozpowszechniać w więcej niż jednej aplikacji logiki zgodnie z potrzebami.
@@ -2699,7 +2699,7 @@ Aby uzyskać [uwierzytelniania opartego na certyfikatach](../active-directory/au
 
 | Właściwość | Wymagany | Value | Opis |
 |----------|----------|-------|-------------|
-| **type** | Tak | "ClientCertificate" | Typ uwierzytelniania do użycia dla certyfikatów klienta protokołu Secure Sockets Layer (SSL). Certyfikaty z podpisem własnym są obsługiwane, nie są obsługiwane certyfikaty z podpisem własnym dla protokołu SSL. |
+| **type** | Yes | "ClientCertificate" | Typ uwierzytelniania do użycia dla certyfikatów klienta protokołu Secure Sockets Layer (SSL). Certyfikaty z podpisem własnym są obsługiwane, nie są obsługiwane certyfikaty z podpisem własnym dla protokołu SSL. |
 | **pfx** | Tak | "@parameters(pfxParam) | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
 | **Hasło** | Tak | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
 ||||| 
@@ -2733,11 +2733,11 @@ Dla [uwierzytelniania OAuth usługi AD Azure](../active-directory/develop/authen
 
 | Właściwość | Wymagany | Value | Opis |
 |----------|----------|-------|-------------|
-| **type** | Tak | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth |
+| **type** | Yes | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth |
 | **Urząd** | Nie | <*URL-for-authority-token-issuer*> | Adres URL urząd certyfikacji który zawiera token uwierzytelniania |
-| **dzierżawy** | Yes | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
+| **dzierżawy** | Tak | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
 | **audience** | Tak | <*resource-to-authorize*> | Zasób, którego chcesz użyć do autoryzacji, na przykład `https://management.core.windows.net/` |
-| **clientId** | Tak | <*Identyfikator klienta*> | Identyfikator klienta aplikacji żądanie autoryzacji |
+| **clientId** | Yes | <*Identyfikator klienta*> | Identyfikator klienta aplikacji żądanie autoryzacji |
 | **credentialType** | Yes | "Certyfikat" lub "Wpis tajny" | Typ poświadczeń klienta używa dla żądania autoryzacji. Tej właściwości i wartości nie są wyświetlane w podstawowej definicji, ale określa wymagane parametry typu poświadczeń. |
 | **pfx** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(pfxParam) | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
 | **Hasło** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2c54f7192827376bb157915738ee781f45433267
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c4ab5fe4625bce1ed66258a5b9aab597dae17a1a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059219"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304000"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -249,6 +249,19 @@ inference_config = InferenceConfig(source_directory="C:/abc",
                                    runtime= "python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
+```
+
+### <a name="cli-example-of-inferenceconfig"></a>Przykład interfejsu wiersza polecenia InferenceConfig
+```JSON
+{
+   "entryScript": "x/y/score.py",
+   "runtime": "python",
+   "condaFile": "env/myenv.yml",
+   "sourceDirectory":"C:/abc",
+}
+```
+```azurecli-interactive
+az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```
 
 W tym przykładzie konfiguracji zawiera następujące elementy:

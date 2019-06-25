@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f71d9b4400041db50cb3e24940e922acde55edc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991689"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271746"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Czym jest Azure Data Box Heavy? (wersja zapoznawcza)
 
@@ -62,14 +62,14 @@ Duże pole dane urządzenie ma następujące funkcje w tej wersji.
 
 | Specyfikacje                                          | Opis              |
 |---------------------------------------------------------|--------------------------|
-| Waga                                                  | ~ 500 modułów równoważenia obciążenia.                |
+| Waga                                                  | ~ 500 modułów równoważenia obciążenia. <br>Urządzenie o blokowaniu koła dla transportu|
 | Wymiary                                              | Szerokość: 26 cala, wysokość: 28 cala długość: 48 cala |
 | Miejsce w stojaku                                              | Nie może być montowane w stojaku|
-| Wymagane przewody                                         | 4 X zaangażowaniu 120 V/10 A przewodów zasilania (NEMA 5 – 15) włączone <br> Urządzenie obsługuje maksymalnie 240 power V i ma C-13 power zbiorników <br> Użyj kable sieciowe są zgodne z [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
-|Zasilania                                                    | 4 wbudowanej dostaw jednostki (PSUs) udostępniane w węzłach urządzenia|
+| Wymagane przewody                                         | 4 zaangażowaniu 120 V / 10 A zasilania dołączony przewodów (NEMA 5 – 15) <br> Urządzenie obsługuje maksymalnie 240 power V i ma C-13 power zbiorników <br> Użyj kable sieciowe są zgodne z [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
+| Zasilania                                                    | 4 wbudowanej dostaw jednostki (PSUs) udostępniane w węzłach urządzenia <br> zasilacz 1200 typowe power rysowania|
 | Pojemność magazynu                                        | ~ 1-PB raw, 70 dyski 14 TB <br> 770 TB pojemności do wykorzystania|
-|Liczba węzłów                                          | 2 węzły niezależnych na urządzenie (500 TB każdy) |
-| Interfejsy sieciowe na węzeł                             | 4 interfejsów sieciowych w każdym węźle <br> MGMT, DATA3 <ul><li> 2 x 1 GbE interfejsów </li><li> MGMT do zarządzania, można skonfigurować, użytkownik służy do konfiguracji początkowej </li><li> Data3 jest interfejsem konfigurowanych przez użytkownika danych DHCP Dynamic Host Configuration Protocol () domyślnie</li><li>Interfejsy sieciowe 1 GbE mogą być również skonfigurowany jako interfejsy 10 GbE</li></ul>Dane1, interfejsy danych dane2 <ul><li>Interfejsy GbE 2 x 40 </li><li> DHCP domyślnie lub statyczna interfejsów można skonfigurować dane użytkownika</li>|
+| Liczba węzłów                                          | 2 węzły niezależnych na urządzenie (500 TB każdy) |
+| Interfejsy sieciowe na węzeł                             | 4 interfejsów sieciowych w każdym węźle <br><br> MGMT, DATA3 <ul><li> 2 x 1 GbE interfejsów </li><li> MGMT służy do zarządzania i konfiguracji początkowej, można skonfigurować użytkownika </li><li> Data3 jest konfigurowanych przez użytkownika i dynamiczne Host Configuration Protocol (DHCP) domyślnie</li><li>Interfejsy sieciowe 1 GbE mogą być również skonfigurowany jako interfejsy 10 GbE</li></ul>Dane1, interfejsy danych dane2 <ul><li>Interfejsy GbE 2 x 40 </li><li> Użytkownika można ich konfigurować dla protokołu DHCP (ustawienie domyślne) lub statycznym</li></ul>|
 
 
 ## <a name="components"></a>Składniki
@@ -99,7 +99,7 @@ Typowy przepływ obejmuje następujące kroki:
 
 W trakcie tego procesu otrzymasz powiadomienie za pośrednictwem poczty e-mail na wszystkie zmiany stanu.
 
-## <a name="region-availability"></a>Dostępność regionalna
+## <a name="region-availability"></a>Dostępność w danym regionie
 
 Duże pole danych mogą przesyłać dane oparte na region, w którym wdrożono usługę, kraj/region, z którym urządzenie jest dostarczane i docelowego konta magazynu platformy Azure, w którym transferu danych.
 
@@ -113,7 +113,7 @@ Duże pole danych mogą przesyłać dane oparte na region, w którym wdrożono u
 
 Aby uzyskać najbardziej aktualne informacje na temat dostępności region dla duże pole danych, przejdź do [produkty Azure według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
-## <a name="sign-up"></a>Zarejestruj się
+## <a name="sign-up"></a>Rejestrowanie
 
 Rozwiązanie Data Box Heavy jest dostępne w wersji zapoznawczej po wcześniejszym zarejestrowaniu się. Wykonaj poniższe kroki, aby zasubskrybować duże pole danych:
 

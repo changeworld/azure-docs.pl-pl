@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eb99cd94dca2a463c275dd5d4fab540b4fc55318
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 4cbca467b50dd0e43132b6d09dc0785c501fca0f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510441"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204675"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Zarządzanie danymi użytkownika w usłudze Azure Active Directory B2C
 
@@ -25,7 +26,7 @@ ms.locfileid: "66510441"
 
 ## <a name="delete-user-data"></a>Usuń dane użytkownika
 
-Dane użytkownika są przechowywane w katalogu usługi Azure AD B2C i dzienników inspekcji. Wszystkie dane inspekcji użytkownika są przechowywane przez 30 dni w usłudze Azure AD B2C. Jeśli chcesz usunąć dane użytkownika w ciągu tego 30-dniowego okresu, możesz użyć [usunąć użytkownika](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) operacji. Operacja usuwania jest wymagana dla wszystkich dzierżaw usługi Azure AD B2C lokalizację danych. 
+Dane użytkownika są przechowywane w katalogu usługi Azure AD B2C i dzienników inspekcji. Wszystkie dane inspekcji użytkownika są przechowywane przez 7 dni w usłudze Azure AD B2C. Jeśli chcesz usunąć dane użytkownika w tym okresie 7 dni, możesz użyć [usunąć użytkownika](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) operacji. Operacja usuwania jest wymagana dla wszystkich dzierżaw usługi Azure AD B2C lokalizację danych. 
 
 Każdy użytkownik w usłudze Azure AD B2C jest przypisany identyfikator obiektu. Identyfikator obiektu oferuje jednoznaczną identyfikator można ich używać do usuwania danych użytkownika w usłudze Azure AD B2C. W zależności od architektury, identyfikator obiektu może być identyfikator korelacji przydatne dla innych usług, takich jak finansowych, marketingu i bazy danych zarządzania relacji klientów. 
 

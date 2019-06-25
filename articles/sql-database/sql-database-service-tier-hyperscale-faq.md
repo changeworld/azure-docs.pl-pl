@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791425"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275592"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -79,7 +79,7 @@ Warstwy usługi Azure SQL Database na dużą skalę jest obecnie dostępna w reg
 
 Tak. Aby uzyskać więcej informacji i ograniczenia dotyczące liczby baz danych na dużą skalę, na każdym serwerze logicznym, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych na serwerze logicznym](sql-database-resource-limits-logical-server.md).
 
-### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Co to są Charakterystyka wydajności bazy danych na dużą skalę
+### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>Co to są charakterystyki wydajności bazy danych na dużą skalę
 
 Architektura bazy danych SQL na dużą skalę zapewnia wysoką wydajność i przepływność obsługując rozmiary dużych baz danych. 
 
@@ -94,7 +94,7 @@ Bazy danych SQL na dużą skalę oferuje szybką skalowalność, zależnie od po
 
   Za pomocą na dużą skalę możesz także uzyskać możliwość inicjowania obsługi co najmniej jeden węzeł dodatkowe zasoby obliczeniowe, które służą do obsługi żądań odczytu. Oznacza to, że tych dodatkowych węzłów obliczeniowych można używać jako tylko do odczytu węzły odciążania odczytu obciążenie z podstawowej obliczeń. Dodatkowo tylko do odczytu, te węzły również służyć jako stałej gotowości użytkownika w przypadku awarii za pośrednictwem z serwera podstawowego.
 
-  Inicjowanie obsługi administracyjnej każdego z tych dodatkowe zasoby obliczeniowe węzłów może odbywać się w stałym czasie i jest operacji w trybie online. Możesz nawiązać węzły te dodatkowe zasoby obliczeniowe tylko do odczytu, ustawiając `ApplicationIntent` argumentu w ciągu połączenia w celu `read_only`. Wszystkie połączenia oznaczone `read-only` są automatycznie kierowane do jednego z węzłów dodatkowe zasoby obliczeniowe tylko do odczytu.
+  Inicjowanie obsługi administracyjnej każdego z tych dodatkowe zasoby obliczeniowe węzłów może odbywać się w stałym czasie i jest operacji w trybie online. Możesz nawiązać węzły te dodatkowe zasoby obliczeniowe tylko do odczytu, ustawiając `ApplicationIntent` argumentu w ciągu połączenia w celu `readonly`. Wszystkie połączenia oznaczone `readonly` są automatycznie kierowane do jednego z węzłów dodatkowe zasoby obliczeniowe tylko do odczytu.
 
 ## <a name="deep-dive-questions"></a>Szczegółowe omówienie pytania
 
@@ -140,7 +140,7 @@ Nie.
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>Jak wiele replik skalę odczytywania, które są obsługiwane.
 
-Za pomocą jednej z replik skalę odczytywania (dwie repliki w sumie) domyślnie tworzone są bazy danych na dużą skalę. Możesz skalować liczbę replik tylko do odczytu między 0 a 4 przy użyciu [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)...
+Za pomocą jednej z replik skalę odczytywania (dwie repliki w sumie) domyślnie tworzone są bazy danych na dużą skalę. Możesz skalować liczbę replik tylko do odczytu między 0 a 4 przy użyciu [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update).
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>Wysoką dostępność mogę muszą aprowizację dodatkowych węzłów obliczeniowych
 
@@ -361,7 +361,7 @@ Domyślnie, możemy utworzyć 2 repliki baz danych na dużą skalę. Jeśli chce
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Jak nawiązać te węzły pomocnicza usługa obliczeniowa
 
-Możesz nawiązać węzły te dodatkowe zasoby obliczeniowe tylko do odczytu, ustawiając `ApplicationIntent` argumentu w ciągu połączenia w celu `read_only`. Wszystkie połączenia oznaczone `read-only` są automatycznie kierowane do jednego z węzłów dodatkowe zasoby obliczeniowe tylko do odczytu.  
+Możesz nawiązać węzły te dodatkowe zasoby obliczeniowe tylko do odczytu, ustawiając `ApplicationIntent` argumentu w ciągu połączenia w celu `readonly`. Wszystkie połączenia oznaczone `readonly` są automatycznie kierowane do jednego z węzłów dodatkowe zasoby obliczeniowe tylko do odczytu.  
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Można tworzyć dedykowanych punktu końcowego dla repliki skali odczytu
 

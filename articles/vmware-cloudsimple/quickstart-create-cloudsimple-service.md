@@ -1,6 +1,6 @@
 ---
 title: Rozwiązanie programu VMware na platformie Azure przez CloudSimple Przewodnik Szybki Start — Tworzenie usługi
-description: Dowiedz się, jak utworzyć usługę CloudSimple, kupić węzły i rezerwa węzły
+description: Dowiedz się, jak utworzyć usługę CloudSimple aprowizacji węzłów i rezerwa węzły
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b3b95db24f4b0f9a0cf8f5102dfeea5dc51e29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 5732ea726bdecc10d0757224870ee5d8be83a2b2
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577573"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164221"
 ---
 # <a name="quickstart---create-service"></a>Przewodnik Szybki Start — Tworzenie usługi
 
@@ -21,7 +21,7 @@ Aby rozpocząć pracę, należy utworzyć rozwiązanie VMware Azure przez CloudS
 
 ## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware Solution by CloudSimple — Omówienie usługi
 
-Usługa CloudSimple umożliwia korzystanie z platformy Azure VMware Solution by CloudSimple.  Tworzenie usługi pozwala kupić węzły rezerwa węzły oraz tworzenia chmur prywatnych.  Możesz dodać usługę CloudSimple w każdym regionie platformy Azure, w których usługa CloudSimple jest dostępna.  Usługa zawiera definicję sieci krawędź Azure VMware Solution by CloudSimple.  Ta sieć usługi edge jest używana dla usług, które obejmują sieć VPN, usługi ExpressRoute i łączność z Internetem do chmur prywatnych.
+Usługa CloudSimple umożliwia korzystanie z platformy Azure VMware Solution by CloudSimple.  Tworzenie usługi umożliwia węzłów należy zarezerwować węzłów i tworzenie chmur prywatnych.  Możesz dodać usługę CloudSimple w każdym regionie platformy Azure, w których usługa CloudSimple jest dostępna.  Usługa zawiera definicję sieci krawędź Azure VMware Solution by CloudSimple.  Ta sieć usługi edge jest używana dla usług, które obejmują sieć VPN, usługi ExpressRoute i łączność z Internetem do chmur prywatnych.
 
 Aby dodać usługę CloudSimple, należy utworzyć podsieć bramy. Podsieć bramy jest używany podczas tworzenia sieci krawędź i wymaga o rozmiarze/28 blok CIDR. Przestrzeń adresową podsieci bramy musi być unikatowa. Nie może nakładać się ze wszystkimi przestrzeniami adresów sieci lokalnej lub przestrzeni adresowej sieci wirtualnej platformy Azure.
 
@@ -47,9 +47,6 @@ Wykonaj poniższe kroki, aby umożliwić dostawcy zasobów usługi CloudSimple.
 
 ## <a name="create-the-service"></a>Tworzenie usługi
 
->[!NOTE]
-> Musi być włączona usługa CloudSimple w ramach Twojej subskrypcji. Jeśli Twoja subskrypcja nie włączone, otrzymasz błąd podczas próby utworzenia usługi.  Postępuj zgodnie z instrukcjami w [CloudSimple włączyć usługę](https://docs.azure.cloudsimple.com/enable-cloudsimple-service) artykuł, aby włączyć usługę.
-
 1. Wybierz pozycję **Wszystkie usługi**.
 2. Wyszukaj **usługi CloudSimple**.
 
@@ -71,7 +68,7 @@ Wykonaj poniższe kroki, aby umożliwić dostawcy zasobów usługi CloudSimple.
 
 Usługa zostanie utworzony i dodany do listy usług.
 
-## <a name="purchase-nodes"></a>Kupowanie węzłów
+## <a name="provision-nodes"></a>Aprowizacja węzłów
 
 Aby skonfigurować płatność — jako — możesz Przejdź pojemności w środowisku chmury prywatnej CloudSimple, należy najpierw aprowizować węzły w witrynie Azure portal.
 
@@ -85,7 +82,7 @@ Aby skonfigurować płatność — jako — możesz Przejdź pojemności w środ
 
     ![Dodaj węzły CloudSimple](media/create-cloudsimple-node-add.png)
 
-5. Wybierz subskrypcję, której chcesz zakupić CloudSimple węzłów.
+5. Wybierz subskrypcję, której chcesz aprowizować węzły CloudSimple.
 6. Wybierz grupę zasobów dla węzłów. Aby dodać nową grupę zasobów, kliknij **Utwórz nowy**.
 7. Wprowadź prefiks do identyfikowania węzłów.
 8. Wybierz lokalizację dla zasobów węzła.

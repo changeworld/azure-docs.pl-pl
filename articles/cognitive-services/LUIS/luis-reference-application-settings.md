@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: c19d328c3a5f4dd6dbe14ca94809e42c5655ea72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391146"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163634"
 ---
 # <a name="application-settings"></a>Ustawienia aplikacji
 
@@ -107,8 +107,8 @@ Obejmuje to podhodowli francuskim i Kanady.
 |Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ustawiony na wartość false|
 |--|--|
 |`ä`|`a`|
-|`ö `|`o`| 
-|`ü `|`u`| 
+|`ö`|`o`| 
+|`ü`|`u`| 
 
 #### <a name="italian-it-it-diacritics"></a>Włoski `it-it` znaki diakrytyczne
 
@@ -121,7 +121,7 @@ Obejmuje to podhodowli francuskim i Kanady.
 |`í`|`i`| 
 |`î`|`i`| 
 |`ò`|`o`| 
-|`ó `|`o`| 
+|`ó`|`o`| 
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -134,7 +134,7 @@ Dotyczy to również Meksykańskich kanadyjski i hiszpańskim.
 |`á`|`a`|
 |`é`|`e`|
 |`í`|`i`| 
-|`ó `|`o`| 
+|`ó`|`o`| 
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|

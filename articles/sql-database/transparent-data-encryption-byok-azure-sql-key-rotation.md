@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
 ms.date: 03/12/2019
-ms.openlocfilehash: 760b292e75b4cc64b85eaf51ffad0521b721dabf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3e982c0fc46ea72692d5fa7f27e14b88c6383df
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330860"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274257"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Obróć ochrony przezroczystego szyfrowania danych (TDE) przy użyciu programu PowerShell
 
@@ -71,36 +71,7 @@ Ręczna wymiana kluczy używa [AzKeyVaultKey Dodaj](/powershell/module/az.keyvau
    -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
-## <a name="option-2-manual-rotation"></a>Opcja 2: Ręczne obrotu
 
-Ta opcja używa [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/add-azkeyvaultkey), [AzSqlServerKeyVaultKey Dodaj](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), i [AzSqlServerTransparentDataEncryptionProtector zestaw](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) poleceń cmdlet, aby dodać całkowicie nowy klucz, który może być pod nową nazwą klucza lub nawet inny magazyn kluczy. 
-
->[!NOTE]
->Łączna długość nazwy magazynu kluczy i nazwę klucza nie może przekraczać 94 znaki.
->
-
-   ```powershell
-   # Add a new key to Key Vault
-   Add-AzKeyVaultKey `
-   -VaultName <KeyVaultName> `
-   -Name <KeyVaultKeyName> `
-   -Destination <HardwareOrSoftware>
-
-   # Add the new key from Key Vault to the server
-   Add-AzSqlServerKeyVaultKey `
-   -KeyId <KeyVaultKeyId> `
-   -ServerName <LogicalServerName> `
-   -ResourceGroup <SQLDatabaseResourceGroupName>   
-  
-   <# Set the key as the TDE protector for all resources 
-   under the server #>
-   Set-AzSqlServerTransparentDataEncryptionProtector `
-   -Type AzureKeyVault `
-   -KeyId <KeyVaultKeyId> `
-   -ServerName <LogicalServerName> `
-   -ResourceGroup <SQLDatabaseResourceGroupName>
-   ```
-  
 ## <a name="other-useful-powershell-cmdlets"></a>Inne przydatne poleceń cmdlet programu PowerShell
 
 - Aby przełączyć ochrony TDE z zarządzanych przez firmę Microsoft do trybu BYOK, użyj [AzSqlServerTransparentDataEncryptionProtector zestaw](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) polecenia cmdlet.

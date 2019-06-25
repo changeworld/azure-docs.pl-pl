@@ -2,17 +2,16 @@
 title: Strukturę szablonu usługi Azure Resource Manager i składnię | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, struktury i właściwości szablonów usługi Azure Resource Manager przy użyciu składni deklaratywnej JSON.
 author: tfitzmac
-ms.assetid: 19694cb4-d9ed-499a-a2cc-bcfc4922d7f5
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: e3b8b6b969568fc15558002c268cdc4a16c2fadd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab8e4f5f6506f80b62c112298f73f95bc7fedeaf
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431229"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204356"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 
@@ -45,7 +44,7 @@ W swojej najprostszej strukturze szablon zawiera następujące elementy:
 | [parameters](#parameters) |Nie |Wartości, które znajdują się po wykonaniu wdrożenia do dostosowywania wdrażania zasobów. |
 | [Zmienne](#variables) |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
 | [Funkcje](#functions) |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
-| [Zasoby](#resources) |Tak |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
+| [Zasoby](#resources) |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
 | [dane wyjściowe](#outputs) |Nie |Wartości, które są zwracane po wdrożeniu. |
 
 Każdy element ma właściwości, które można ustawić. W tym artykule opisano części szablonu bardziej szczegółowo.
@@ -130,7 +129,7 @@ Dostępne właściwości parametru są:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| parameterName |Yes |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
+| parameterName |Tak |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
 | type |Tak |Typ wartości parametru. Dozwolone typy i wartości są **ciąg**, **securestring**, **int**, **bool**, **obiektu**, **secureObject**, i **tablicy**. |
 | defaultValue |Nie |Wartość domyślna parametru, jeśli podano żadnej wartości dla parametru. |
 | allowedValues |Nie |Tablica dozwolonych wartości dla parametru upewnić się, że podano odpowiednie wartości. |
@@ -503,7 +502,7 @@ Możesz zdefiniować zasoby o następującej strukturze:
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | condition | Nie | Wartość logiczna wskazująca, czy zasób zostanie udostępniony podczas tego wdrożenia. Gdy `true`, zasób jest tworzony podczas wdrażania. Gdy `false`, zasób jest pomijana dla tego wdrożenia. Zobacz [warunek](#condition). |
-| apiVersion |Tak |Wersja interfejsu API REST na potrzeby tworzenia zasobu. Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). |
+| apiVersion |Yes |Wersja interfejsu API REST na potrzeby tworzenia zasobu. Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). |
 | type |Tak |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). Zasoby podrzędne format typu zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
 | name |Yes |Nazwa zasobu. Musi spełniać ograniczenia składnika identyfikatora URI zdefiniowane w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu, aby poza strony zweryfikować nazwę aby upewnić się, że nie jest próba podszywały się pod innego tożsamości. Zasoby podrzędne format nazwy zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
 | location |Różna |Obsługiwane lokalizacje geograficzne podane zasobu. Można wybrać jedną z dostępnych lokalizacji, ale zazwyczaj warto wybrać taki, który znajduje się w pobliżu użytkowników. Zazwyczaj także warto umieścić zasoby, które współdziałają ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisania roli) nie wymagają lokalizacji. |

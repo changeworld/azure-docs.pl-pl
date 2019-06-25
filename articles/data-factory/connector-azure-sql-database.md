@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/01/2019
+ms.date: 06/14/2019
 ms.author: jingwang
-ms.openlocfilehash: 6ae1094a6e47d19af97fbbb1ce988d0756f33731
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 90126a607065bdb10e2ff81ce6ab52809ecc3f36
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048556"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273747"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, których można użyć:"]
@@ -41,7 +41,8 @@ W szczególności ten łącznik usługi Azure SQL Database obsługuje te funkcje
 - Jako źródło pobierać dane przy użyciu zapytania SQL lub procedury składowanej.
 - Jako obiekt sink dołączyć dane do tabeli docelowej lub wywołania procedury składowanej za pomocą logiki niestandardowej podczas kopiowania.
 
-Usługa Azure SQL Database [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) nie jest obecnie obsługiwane. 
+>[!NOTE]
+>Usługa Azure SQL Database **[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current)** nie jest obsługiwany przez ten łącznik na teraz. Aby obejść, można użyć [ogólnego łącznika ODBC](connector-odbc.md) i sterownik SQL Server ODBC za pośrednictwem środowiskiem Integration Runtime. Postępuj zgodnie z [Niniejsze wskazówki](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current) ODBC driver połączenia i pobierania ciągu konfiguracji.
 
 > [!IMPORTANT]
 > W przypadku kopiowania danych za pomocą usługi Azure Data Factory Integration Runtime, skonfiguruj [zapory serwera Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby usług platformy Azure mają dostęp do serwera.

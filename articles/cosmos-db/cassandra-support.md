@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 46eea21e1eafce1696ed1cf77a1f334798f0bc17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60895083"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155664"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkcje bazy danych Apache Cassandra obsługiwane przez interfejs API Cassandra usługi Azure Cosmos DB 
 
@@ -44,7 +44,7 @@ Interfejs API Cassandra usługi Azure Cosmos DB obsługuje następujące typy da
 * ascii  
 * bigint  
 * blob  
-* wartość logiczna  
+* boolean  
 * counter  
 * date  
 * decimal  
@@ -74,6 +74,8 @@ Interfejs API Cassandra usługi Azure Cosmos DB obsługuje następujące typy da
 Interfejs API Cassandra usługi Azure Cosmos DB obsługuje następujące funkcje języka CQL:
 
 * Token  
+* Funkcje agregujące
+  * min, max, avg, count
 * Funkcje konwersji dużych obiektów binarnych 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -88,7 +90,8 @@ Interfejs API Cassandra usługi Azure Cosmos DB obsługuje następujące funkcje
   * toDate(timeuuid)  
   * toUnixTimestamp(timestamp)  
   * toTimestamp(date)  
-  * toUnixTimestamp(date)  
+  * toUnixTimestamp(date) 
+  
 
 
 ## <a name="cassandra-query-language-limits"></a>Ograniczenia języka Cassandra Query Language
@@ -154,11 +157,11 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Mapowanie spójności 
 
-Interfejs API Cassandra usługi Azure Cosmos DB zapewnia możliwość wyboru spójności operacji odczytu. Wszystkie operacje zapisu, niezależnie od spójności konta, są zawsze zapisywane z użyciem wydajności zapisu umowy ustalonym w umowach SLA.
+Interfejs API Cassandra usługi Azure Cosmos DB zapewnia możliwość wyboru spójności operacji odczytu.  Mapowanie spójności została szczegółowo opisana [tutaj [(https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
 
 ## <a name="permission-and-role-management"></a>Zarządzanie uprawnieniami i rolami
 
-Usługa Azure Cosmos DB obsługuje kontrolę dostępu opartą na rolach (RBAC) oraz hasła/klucze do odczytu-zapisu i tylko do odczytu, które można uzyskać w witrynie [Azure Portal](https://portal.azure.com). Usługa Azure Cosmos DB nie obsługuje jeszcze użytkowników i ról do aktywności planu danych. 
+Usługa Azure Cosmos DB obsługuje kontroli dostępu opartej na rolach (RBAC) dla inicjowania obsługi administracyjnej, rotacji kluczy i wyświetlanie metryk i odczytu / zapisu i tylko do odczytu haseł/kluczy, które można uzyskać za pośrednictwem [witryny Azure portal](https://portal.azure.com). Usługa Azure Cosmos DB nie obsługuje jeszcze użytkownikami i rolami dla działań CRUD. 
 
 ## <a name="planned-support"></a>Planowana pomoc techniczna 
 * Nazwa regionu w poleceniu dotyczącym tworzenia przestrzeni kluczy jest obecnie ignorowana. Dystrybucja danych jest implementowana na podstawowej platformie usługi Cosmos DB i ujawniana za pośrednictwem portalu lub programu PowerShell w ramach konta. 

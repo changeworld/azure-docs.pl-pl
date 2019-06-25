@@ -1,27 +1,27 @@
 ---
 title: Macierz obsługi na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Zawiera podsumowanie obsługiwanych systemów operacyjnych i składników do odzyskiwania po awarii maszyn wirtualnych VMware i serwera fizycznego na platformie Azure przy użyciu usługi Azure Site Recovery.
+description: Zawiera podsumowanie obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwera fizycznego na platformie Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8b1f3740018d9f6d9eacdae573054a6d9fa8542f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fd9f56c262ce3a7110aa71bf72d01fe875212c0
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073949"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275763"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
-Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
+Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware i serwerów fizycznych do platformy Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
 
-Aby rozpocząć korzystanie z usługi Azure Site Recovery przy użyciu najprostszy scenariusz wdrażania, odwiedź nasz [samouczki](tutorial-prepare-azure.md). Dowiedz się więcej na temat architektury usługi Azure Site Recovery [tutaj](vmware-azure-architecture.md).
+- [Dowiedz się więcej](vmware-azure-architecture.md) o architekturze odzyskiwania po awarii serwera fizycznego/VMware, maszyny Wirtualnej.
+- Postępuj zgodnie z naszym [samouczki](tutorial-prepare-azure.md) możesz wypróbować usługę odzyskiwania po awarii.
 
-## <a name="deployment-scenario"></a>Scenariusz wdrażania
+## <a name="deployment-scenarios"></a>Scenariusze wdrażania
 
 **Scenariusz** | **Szczegóły**
 --- | ---
@@ -32,29 +32,33 @@ Odzyskiwanie po awarii serwerów fizycznych | Replikacji lokalnych serwerów fiz
 
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-VMware | 6\.7 serwera vCenter 6.5, 6.0 lub 5.5 lub vSphere 6.7, 6.5, 6.0 lub 5.5 | Firma Microsoft zaleca użycie serwera vCenter.<br/><br/> Zaleca się, że hosty vSphere i vCenter Server znajdują się w tej samej sieci, co serwer przetwarzania. Domyślnie składniki serwera przetwarzania działa na serwerze konfiguracji, więc będzie to sieci, która umożliwia skonfigurowanie serwera konfiguracji, chyba że jest skonfigurowanie serwera dedykowanego procesu.
-Fizyczne | ND
+Program vCenter Server | 6\.7, 6.5, 6.0 lub 5.5 | Zalecamy użycie serwera vCenter w danym wdrożeniu odzyskiwania po awarii.
+hosty vSphere | 6\.7, 6.5, 6.0 lub 5.5 | Zaleca się, że hosty vSphere i vCenter Server znajdują się w tej samej sieci, co serwer przetwarzania. Domyślnie serwer przetwarzania jest uruchamiany na serwerze konfiguracji. [Dowiedz się więcej](vmware-physical-azure-config-process-server-overview.md).
+
 
 ## <a name="site-recovery-configuration-server"></a>Serwera konfiguracji usługi Site Recovery
 
-Serwer konfiguracji jest maszyna w środowisku lokalnym, na której działa składniki usługi Site Recovery, w tym serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy. Dla replikacji VMware należy skonfigurować serwer konfiguracji ze wszystkimi wymaganiami za pomocą szablonu pakietu OVF do utworzenia maszyny Wirtualnej VMware. W przypadku replikacji serwera fizycznego konfigurowania komputera serwera konfiguracji ręcznie.
+Serwer konfiguracji jest maszyna w środowisku lokalnym, na której działa składniki usługi Site Recovery, w tym serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy.
+
+- Dla maszyn wirtualnych VMware na serwerze konfiguracji jest ustawiony przez pobranie szablonu pakietu OVF do utworzenia maszyny Wirtualnej VMware.
+- Dla serwerów fizycznych należy skonfigurować komputera serwera konfiguracji ręcznie.
 
 **Składnik** | **Wymagania**
 --- |---
 Rdzenie procesora CPU | 8
 Pamięć RAM | 16 GB
 Liczba dysków | 3 dyskami<br/><br/> Dyski obejmują dysku systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania na potrzeby powrotu po awarii.
-Wolne miejsce na dysku | 600 GB miejsca na wymaganą dla pamięci podręcznej serwera przetwarzania.
-Wolne miejsce na dysku | 600 GB miejsca na wymaganą do przechowywania dysków.
+Wolne miejsce na dysku | 600 GB miejsca dla pamięci podręcznej serwera przetwarzania.
+Wolne miejsce na dysku | 600 GB miejsca na dysku przechowywania.
 System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 ze środowiskiem pulpitu |
 Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
-Interfejs PowerCLI | [Interfejs PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") nie jest wymagane dla serwera konfiguracji z wersjami z [: 9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery).
-Role systemu Windows Server | Nie włączaj: <br/> - Active Directory Domain Services <br/>- Internet Information Services <br/> - Hyper-V |
-Zasady grupy| Nie włączaj: <br/> -Zapobiegaj dostępowi do wiersza polecenia. <br/> -Uniemożliwić dostęp do narzędzi edycji rejestru. <br/> — Logika zaufania dla plików załączników. <br/> -Włącz wykonywanie skryptu. <br/> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+[Interfejs PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Nie wymagane przez wersję serwera konfiguracji [: 9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) lub nowszej. 
+Role systemu Windows Server | Don't enable Active Directory Domain Services; Internet Information Services (IIS) or Hyper-V. 
+Zasady grupy| -Zapobiegaj dostępowi do wiersza polecenia. <br/> -Uniemożliwić dostęp do narzędzi edycji rejestru. <br/> — Logika zaufania dla plików załączników. <br/> -Włącz wykonywanie skryptu. <br/> - [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Upewnij się, że:<br/><br/> -Nie masz istniejących domyślnej witryny sieci Web <br/> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br/> -Nie masz istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443<br/>
 Typ karty NIC | Innego VMXNET3 (jeśli jest wdrażane jako maszyny Wirtualnej VMware)
 Typ adresu IP | Static
-Porty | port 443 jest używany do organizowanie kanału sterowania)<br/>9443 umożliwiający transport danych
+Porty | 443 umożliwiający organizowanie kanału sterowania<br/>9443 dla danych transportu
 
 ## <a name="replicated-machines"></a>Replikowane maszyny
 
@@ -63,16 +67,21 @@ Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwan
 **Składnik** | **Szczegóły**
 --- | ---
 Ustawienia komputera | Maszyny, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#azure-vm-requirements).
-Obciążenie maszyny | Usługa Site Recovery obsługuje replikację z dowolnego obciążenia (np. usługi Active Directory, programu SQL server itp.,) uruchomione na obsługiwanej maszynie. [Dowiedz się więcej](https://aka.ms/asr_workload).
-System operacyjny Windows | 2019 r Server systemu Windows (z [9.22 wersji](service-updates-how-to.md#links-to-currently-supported-update-rollups)), 64-bitowe systemu Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 za pomocą w co najmniej z dodatkiem SP1. </br> Od [9.24 wersji](https://support.microsoft.com/en-in/help/4503156)64- bitowe systemu Windows 10, Windows 8.1 64-bitowym, 64-bitowego systemu Windows 8, 64-bitowych Windows 7 (Windows 7 RTM nie jest obsługiwany)</br>  [Windows Server 2008 z na co najmniej z dodatkiem SP2 — 32-bitowe i 64-bitowej](migrate-tutorial-windows-server-2008.md) (tylko migracji). </br></br> Windows 2016 Nano Server nie jest obsługiwane.
-Architektura systemu operacyjnego Linux | Obsługiwane jest tylko 64-bitowym systemie. 32-bitowy system nie jest obsługiwana.
-System operacyjny Linux | Red Hat Enterprise Linux: 5.2 i 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.6 <br/><br/>CentOS: 5.2 i 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.6 <br/><br/>Ubuntu 14.04 LTS server [(obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS [(obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3, z dodatkiem SP4 [(obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 z dodatkiem SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra w wersji 3, 4 i 5 (UEK3, UEK4, UEK5) <br/><br/></br>— Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.</br></br> - [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure. Usługa Site Recovery organizuje trybu failover, aby uruchomić serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux może ograniczyć obsługę tylko wersje dystrybucji, które jeszcze nie osiągnęły wycofanych z eksploatacji.<br/><br/> -W dystrybucjach systemu Linux obsługiwane są tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.<br/><br/> — Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.<br/><br/> — Serwerach z systemem Red Hat Enterprise Linux 5.2 5.11 lub CentOS 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
+Obciążenie maszyny | Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwanej maszynie replikacji. [Dowiedz się więcej](https://aka.ms/asr_workload).
+Windows | -Windows Server 2019 (obsługiwane przez [34 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4490016) (wersja 9.22 usługi mobilności) i nowszych wersjach.<br/> -Windows Server 2016 (64-bitowych Server Core, serwer ze środowiskiem pulpitu)<br/> -Windows Server 2012 R2, Windows Server 2012<br/> -Windows Server 2008 R2 z na co najmniej z dodatkiem SP1.<br/> -Windows Server 2008, 64- i 32-bitowe z co najmniej z dodatkiem SP2]. Obsługiwane na potrzeby migracji tylko. [Dowiedz się więcej](migrate-tutorial-windows-server-2008.md).<br/> — System Windows 10, Windows 8.1, Windows 8, Windows 7 64-bitowy (obsługiwane przez [36 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4503156) (wersja 9.22 usługi mobilności i nowszych wersjach). Windows 7 RTM nie jest obsługiwane. 
+Linux | Obsługiwane jest tylko 64-bitowym systemie. 32-bitowy system nie jest obsługiwane.<br/><br/> Usługa Site Recovery organizuje trybu failover, aby uruchomić serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux może ograniczyć obsługę tylko wersje dystrybucji, które jeszcze nie osiągnęły wycofanych z eksploatacji.<br/><br/> W dystrybucjach systemu Linux są obsługiwane tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.<br/><br/> Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.<br/><br/> [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure.
+Linux Red Hat Enterprise | 5.2 i 5.11</b><br/> 6.1, 6.10</b><br/> 7.0 lub 7.6<br/> <br/> Serwery z systemem Red Hat Enterprise Linux 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
+W systemie Linux: CentOS | 5.2 i 5.11</b><br/> 6.1, 6.10</b><br/> 7.0 lub 7.6<br/> <br/> Serwery z systemem CentOS 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
+Ubuntu | Ubuntu 14.04 LTS server [(Sprawdź obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS [(Sprawdź obsługiwane wersje jądra)](#ubuntu-kernel-versions)
+Debian | Debian 7/Debian 8 [(Sprawdź obsługiwane wersje jądra)](#debian-kernel-versions)
+SUSE Linux | SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3, z dodatkiem SP4 [(Sprawdź obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i ponownie włączyć po uaktualnieniu.
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6<br/><br/> System Red Hat zgodne jądra lub podzielenie Enterprise jądra w wersji 3, 4 i 5 (UEK3 UEK4, UEK5) 
 
 
 ### <a name="ubuntu-kernel-versions"></a>Wersje jądra systemu Ubuntu
 
 
-**Obsługiwana wersja** | **Wersja usługi Azure usługę mobilności usługi Site Recovery** | **Wersja jądra** |
+**Obsługiwana wersja** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
 14.04 LTS | [9.24][9.25 UR]  | 3.13.0-24-Generic do 3.13.0-169-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-146-generic,<br/>4.15.0-1023-Azure do 4.15.0-1042-azure |
 14.04 LTS | [9.24][9.24 UR] | 3.13.0-24-Generic do 3.13.0-167-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-143-generic,<br/>4.15.0-1023-Azure do 4.15.0-1040-azure |
@@ -87,19 +96,19 @@ System operacyjny Linux | Red Hat Enterprise Linux: 5.2 i 5.11<b>\*\*</b>, 6.1, 
 ### <a name="debian-kernel-versions"></a>Wersje jądra systemu debian
 
 
-**Obsługiwana wersja** | **Wersja usługi Azure usługę mobilności usługi Site Recovery** | **Wersja jądra** |
+**Obsługiwana wersja** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-Debian 7 | [9.21][9.21 UR], [9.22][9.22 UR],[9.23][9.23 UR], [9.24][9.24 UR]| 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | [9.21][9.21 UR], [9.22][9.22 UR],[9.23][9.23 Z PAKIETEM ZBIORCZYM AKTUALIZACJI], [9,24][9.24 UR]| 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
 Debian 8 | [9.25][9.25 UR] | 3.16.0-4-AMD64 do 3.16.0-8-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.8-amd64 |
-Debian 8 | [9.22][9.22 UR],[9.23][9.23 UR], [9.24][9.24 UR] | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.8-amd64 |
+Debian 8 | [9.22][9.22 UR],[9.23][9.23 UR], [9,24][9.24 Z PAKIETEM ZBIORCZYM AKTUALIZACJI] | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.8-amd64 |
 
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12. obsługiwane wersje jądra
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.25][9.25 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.104-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.176-94.88-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.13-default |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.25][9.25 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.104-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.176-94.88-default</br></br>Z dodatkiem SP3 4.4.138-4.7-azure do 4.4.176-4.25-azure</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.13-default</br>Z dodatkiem SP4 4.12.14-6.3-azure do 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.24][9.24 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.175-94.79-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.23][9.23 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.22][9.22 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
@@ -110,23 +119,23 @@ SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.22][9.22 UR] | Z dodatkiem SP
 **Składnik** | **Obsługiwane**
 --- | ---
 Systemy plików | ext3, ext4, XFS
-Menedżer woluminów | Przed [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. LVM jest obsługiwane. <br/> 2. / boot na woluminie LVM nie jest obsługiwane. <br/> 3. Wiele dysków systemu operacyjnego nie są obsługiwane.<br/><br/>Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) lub nowszy, / Boot na LVM jest obsługiwana. Wiele dysków systemu operacyjnego nie są obsługiwane.
+Menedżer woluminów | -LVM jest obsługiwane.<br/> - / rozruch na LVM jest obsługiwany z [31 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4478871/) (wersja 9,20 usługi mobilności) i nowszych wersjach. Nie jest ono obsługiwane we wcześniejszych wersjach usługi mobilności.<br/> -Wiele dysków systemu operacyjnego nie są obsługiwane.
 Urządzenia magazynujące Parawirtualne | Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 Blokuj wielu kolejek operacji We/Wy urządzenia | Nieobsługiwane.
 Serwery fizyczne z kontrolera magazynu HP CCISS | Nieobsługiwane.
-Konwencja nazewnictwa punktu instalacji/urządzenia | Nazwa urządzenia lub nazwę punktu instalacji powinny być unikatowe. Upewnij się, że żadna para urządzeń/punktów instalacji nie ma takich samych nazw, z uwzględnieniem wielkości liter. </br> Przykład: Nazewnictwo dwóch urządzeń z tej samej maszyny wirtualnej jako *urządzenia 1* i *urządzenia 1* jest niedozwolone.
-Katalogi | Przed [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. Następujące katalogi (jeśli skonfigurowany jako oddzielne partycje /-systemów plików) wszystkie muszą znajdować się na tym samym dysku systemu operacyjnego na serwerze źródłowym: / (root), / Boot/usr, /usr/local, /var, etc.</br>2. / boot powinny znajdować się na partycji dysku i nie LVM woluminu.<br/><br/> Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) lub nowszy, powyżej ograniczenia nie mają zastosowania. / Boot woluminie LVM na więcej niż jeden dysków nie jest obsługiwane.
-Katalog rozruchowy | Wiele dysków rozruchowych na maszynie wirtualnej nie jest obsługiwana. <br/><br/> Nie można chronić maszyny bez dysk rozruchowy
+Konwencja nazewnictwa punktu instalacji/urządzenia | Nazwa urządzenia lub nazwę punktu instalacji powinny być unikatowe.<br/> Upewnij się, że żadne dwa punkty urządzeń/instalacji uwzględniana wielkość liter nazwy. Na przykład nazewnictwa urządzeń dla tej samej maszyny Wirtualnej jako *urządzenia 1* i *urządzenia 1* nie jest obsługiwane.
+Katalogi | Jeśli uruchomiona wersja usługi mobilności wcześniejszej niż wersja 9,20 (wydany w [31 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4478871/)), te ograniczenia mają zastosowanie, a następnie:<br/><br/> — Te katalogi (jeśli jest to konfigurowanie jako oddzielne partycje/pliku systems) musi znajdować się na tym samym dysku systemu operacyjnego na serwerze źródłowym: / (root), / Boot/usr, /usr/local, /var, etc.</br> -W katalogu/Boot powinny znajdować się na partycji dysku i nie być woluminem LVM.<br/><br/> Z wersji 9,20 lub nowszym te ograniczenia nie mają zastosowania. 
+Katalog rozruchowy | -Wiele dysków rozruchowych są obsługiwane na maszynie Wirtualnej <br/> - / rozruch na woluminie LVM w więcej niż jeden dysk nie jest obsługiwany.<br/> -Nie można zreplikować maszynę bez dysku rozruchowego.
 Wymagania dotyczące wolnego miejsca| 2 GB na partycję/root <br/><br/> 250 MB do folderu instalacji
-XFSv5 | Funkcje XFSv5 w systemach plików XFS, takie jak metadane sumy kontrolnej, są obsługiwane z usługi mobilności wersji 9.10 wartości. Użyj narzędzia xfs_info, aby sprawdzić superblock XFS dla partycji. Jeśli `ftype` jest równa 1, a następnie są używane funkcje XFSv5.
-BTRFS |Od wersji 9.22 BTRFS jest obsługiwana, z wyjątkiem następujących scenariuszy</br>Po zmianie po włączeniu ochrony podrzędnych wolumin systemu plików BTRFS BTRFS nie jest obsługiwane. </br>Jeśli system plików BTRFS jest rozłożona na wiele dysków, BTRFS nie jest obsługiwane.</br>Jeśli system plików BTRFS obsługuje RAID, BTRFS nie jest obsługiwane.
+XFSv5 | Funkcje XFSv5 w systemach plików XFS, takie jak metadane sumy kontrolnej, są obsługiwane (wersja usługi mobilności 9.10 lub nowszy).<br/> Użyj narzędzia xfs_info, aby sprawdzić superblock XFS dla partycji. Jeśli `ftype` jest równa 1, a następnie są używane funkcje XFSv5.
+BTRFS | BTRFS jest obsługiwana przez [34 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4490016) (wersja 9.22 usługi mobilności) i nowszych wersjach. BTRFS nie jest obsługiwane, gdy:<br/><br/> Subvolume system plików BTRFS została zmieniona po włączeniu ochrony.</br> — System plików BTRFS jest rozłożona na wiele dysków.</br> — System plików BTRFS obsługuje RAID.
 
 ## <a name="vmdisk-management"></a>Zarządzanie maszyna wirtualna/dysk
 
 **Akcja** | **Szczegóły**
 --- | ---
 Zmiana rozmiaru dysku na zreplikowanej maszyny Wirtualnej | Obsługiwane.
-Dodaj dysk na replikowanej maszynie Wirtualnej | Wyłącz replikację dla maszyny Wirtualnej, Dodaj dysk, a następnie ponownie włączyć replikację. Dodawanie dysku na replikującej maszynie Wirtualnej nie jest obecnie obsługiwane.
+Dodaj dysk na replikowanej maszynie Wirtualnej | Nieobsługiwane.<br/> Wyłącz replikację dla maszyny Wirtualnej, a następnie dodać dysk i ponownie włączyć replikację.
 
 ## <a name="network"></a>Sieć
 
@@ -152,20 +161,20 @@ Usługa ExpressRoute systemu Azure | Yes
 ILB | Tak
 ELB | Yes
 Azure Traffic Manager | Tak
-Multi-NIC | Yes
-Zastrzeżony adres IP | Yes
+Multi-NIC | Tak
+Zastrzeżony adres IP | Tak
 IPv4 | Yes
-Zachowaj źródłowy adres IP | Yes
-Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> | Yes
-Accelerated Networking | Nie
+Zachowaj źródłowy adres IP | Tak
+Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Yes
+Wydajniejsze sieci | Nie
 
 ## <a name="storage"></a>Magazyn
 **Składnik** | **Obsługiwane**
 --- | ---
-Dysk dynamiczny | Operacja dysku systemowego musi być dyskiem podstawowym. <br/><br/>Dyski danych mogą być dyskami dynamicznymi
+Dysk dynamiczny | Dysk systemu operacyjnego musi być dyskiem podstawowym. <br/><br/>Dyski danych mogą być dyskami dynamicznymi
 Konfiguracja dysku platformy docker | Nie
 Host NFS | Tak dla oprogramowania VMware<br/><br/> Nie dla serwerów fizycznych
-Sieć SAN (iSCSI/FC) hosta | Tak
+Sieć SAN (iSCSI/FC) hosta | Yes
 Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
 Host wielościeżkowego (MPIO) | Tak, przetestowane za pomocą DSM firmy Microsoft, EMC PowerPath 5.7 z dodatkiem SP4 EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualnego hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
@@ -184,7 +193,8 @@ Gość/server - miejsca do magazynowania | Nie
 Gość/serwer Dodaj lub usuń gorąco dysku | Nie
 Gość/server - wykluczyć dysk | Tak
 Gość/serwera wielościeżkowego (MPIO) | Nie
-Rozruchu interfejsu EFI/UEFI gościa/serwera | Obsługiwane podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszego na platformie Azure.<br/><br/> Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/><br/> Serwer nie może mieć więcej niż cztery partycje na dysku systemu operacyjnego.<br/><br/> Wymagana wersja usługi mobilności 9.13 lub nowszej.<br/><br/> Obsługiwane jest tylko systemu plików NTFS.
+Gość/serwera partycji GPT | Pięć partycjami są obsługiwane z poziomu [37 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4508614/) (wersja 9,25 usługi mobilności) i nowszych wersjach. Wcześniej były cztery obsługiwane.
+Rozruchu interfejsu EFI/UEFI gościa/serwera | -Obsługiwana, gdy używasz wersja usługi mobilności 9.13 lub nowszej.<br/> -Obsługiwana podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszym na platformie Azure.<br/> — Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/> -NTFS tylko jest obsługiwane. <br/> — Rozmiar sektora dysku powinna być 512 bajtów na sektor fizycznych.
 
 ## <a name="replication-channels"></a>Kanały replikacji
 
@@ -194,22 +204,21 @@ Rozruchu interfejsu EFI/UEFI gościa/serwera | Obsługiwane podczas migracji mas
 |Rozmieszczanie w trybie offline        |   Nie      |
 | Azure Data Box | Nie
 
-
 ## <a name="azure-storage"></a>Azure Storage
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Magazyn lokalnie nadmiarowy | Yes
-Magazyn geograficznie nadmiarowy | Yes
+Magazyn lokalnie nadmiarowy | Tak
+Magazyn geograficznie nadmiarowy | Tak
 Magazyn geograficznie nadmiarowy z dostępem do odczytu | Tak
 Chłodny Magazyn | Nie
 Magazynu gorącego| Nie
 Obiekty BLOB typu Block | Nie
-Szyfrowanie danych magazynowanych (szyfrowanie usługi Storage)| Tak
-Premium Storage | Yes
+Szyfrowanie w spoczynku (SSE)| Tak
+Premium Storage | Tak
 Usługa import/export | Nie
-Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji) | Tak
-Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorące i chłodne warstwy) | Nie
+Usługa Azure zapór usługi Storage dla sieci wirtualnych | Tak.<br/> Skonfigurowane na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji).
+Kont magazynu ogólnego przeznaczenia w wersji 2 (gorące i chłodne warstwy) | Nie
 
 ## <a name="azure-compute"></a>Usługa Azure compute
 
@@ -217,12 +226,12 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorące i chłodne w
 --- | ---
 Zestawy dostępności | Tak
 Strefy dostępności | Nie
-HUB | Yes
+HUB | Tak
 Dyski zarządzane | Yes
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny Wirtualnej platformy Azure
 
-Lokalnych maszyn wirtualnych, które są replikowane do platformy Azure muszą spełniać wymagania maszyny Wirtualnej platformy Azure podsumowane w poniższej tabeli. Po uruchomieniu sprawdzania wymagań wstępnych Site Recovery zakończy się niepowodzeniem, jeśli niektóre wymagania nie są spełnione.
+Lokalne maszyny wirtualne replikowane na platformie Azure muszą spełniać wymagania maszyny Wirtualnej platformy Azure podsumowane w poniższej tabeli. Po uruchomieniu sprawdzania wymagań wstępnych w przypadku replikacji usługa Site Recovery wyboru zakończy się niepowodzeniem, jeśli niektóre wymagania nie są spełnione.
 
 **Składnik** | **Wymagania** | **Szczegóły**
 --- | --- | ---
@@ -238,11 +247,14 @@ Dysk FC | Nieobsługiwane. | Sprawdzenie nie powiedzie się, jeśli jest nieobs�
 BitLocker | Nieobsługiwane. | Przed włączeniem replikacji dla maszyny, należy wyłączyć funkcję BitLocker. |
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/><br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi zaczynać i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach maszyny w usłudze Site Recovery.
 
-## <a name="azure-site-recovery-churn-limits"></a>Usługa Azure Site Recovery postęp dokonany w granicach
+## <a name="churn-limits"></a>Postęp dokonany w granicach
 
-W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. Limity te są oparte na naszych testach, ale nie obejmują wszystkich możliwych kombinacji operacji we/wy aplikacji. Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji. Aby uzyskać najlepsze wyniki, zdecydowanie zaleca się [Uruchom narzędzie planista wdrażania](site-recovery-deployment-planner.md) i dokładne przetestowanie aplikacji przez wystawienie testowy tryb failover w celu uzyskania prawdziwych informacji o wydajności aplikacji.
+W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. 
+- Te limity są oparte na naszych testach, ale nie obejmują wszystkich możliwych aplikacji we/wy kombinacji.
+- Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji.
+- Aby uzyskać najlepsze wyniki, firma Microsoft zdecydowanie zaleca się uruchomienie [narzędzia planista wdrażania](site-recovery-deployment-planner.md)i dokładne przetestowanie aplikacji przy użyciu testy trybu failover w celu uzyskania prawdziwych informacji o wydajności dla twojej aplikacji.
 
-**Cel magazynu replikacji** | **Średni rozmiar źródłowych operacji we/wy na dysku** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
+**Lokalizacją docelową replikacji** | **Średni rozmiar źródłowych operacji we/wy na dysku** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
 ---|---|---|---
 Standard Storage | 8 KB | 2 MB/s | 168 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk
@@ -251,37 +263,41 @@ Dysk w warstwie Premium P10 lub P15 | 32 KB lub większy | 8 MB/s | 672 GB na dy
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |20 MB/s | 1684 GB na dysk
 
+
 **Źródłowy współczynnik zmian danych** | **Limit maksymalny**
 ---|---
 Średni współczynnik zmian danych na maszynę wirtualną| 25 MB/s
 Szczytowy współczynnik zmian danych na wszystkich dyskach na maszynie wirtualnej | 54 MB/s
 Maksymalny współczynnik zmian danych dziennie obsługiwany przez serwer przetwarzania | 2 TB
 
-Są to średnie wartości przy założeniu 30-procentowego nakładania się operacji we/wy. Usługa Site Recovery może obsługiwać większą przepływność na podstawie zakresu nakładania się na siebie, większego rozmiaru operacji zapisu i rzeczywistego zachowania związanego z obciążeniem operacji we/wy. Poprzednie liczby zakładają typowe zaległości wynoszące około pięć minut. Oznacza to, że przekazane dane są przetwarzane i punkt odzyskiwania jest tworzony w ciągu pięciu minut.
+- Są to średnie wartości przy założeniu 30-procentowego nakładania się operacji we/wy.
+- Usługa Site Recovery może obsługiwać większą przepływność na podstawie zakresu nakładania się na siebie, większego rozmiaru operacji zapisu i rzeczywistego zachowania związanego z obciążeniem operacji we/wy.
+- Te liczby zakładają typowe zaległości wynoszące około pięć minut. Oznacza to, że przekazane dane są przetwarzane i punkt odzyskiwania jest tworzony w ciągu pięciu minut.
 
 ## <a name="vault-tasks"></a>Zadania magazynu
 
 **Akcja** | **Obsługiwane**
 --- | ---
-Przenoszenie magazynu między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie
-Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie
+Przenoszenie magazynu między grupami zasobów | Nie
+Przenoszenie magazynu w obrębie i między subskrypcjami | Nie
+Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zasobów | Nie
+Przeniesienie magazynu, sieci, maszyn wirtualnych platformy Azure w ramach i w różnych subskrypcjach. | Nie
 
 
-## <a name="download-latest-azure-site-recovery-components"></a>Pobierz najnowsze składniki usługi Azure Site Recovery
+## <a name="obtain-latest-components"></a>Uzyskaj najnowsze składniki
 
-**Nazwa** | **Opis** | **Instrukcje jej pobrania najnowszej wersji**
+**Nazwa** | **Opis** | **Szczegóły**
 --- | --- | ---
-Serwer konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | Aby uzyskać więcej informacji, odwiedź nasze wskazówki na [nową instalację](vmware-azure-deploy-configuration-server.md) i [Uaktualnij istniejący składnik do najnowszej wersji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
-Serwer przetwarzania|Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.| Aby uzyskać więcej informacji, odwiedź nasze wskazówki na [nową instalację](vmware-azure-set-up-process-server-scale.md) i [Uaktualnij istniejący składnik do najnowszej wersji](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | Aby uzyskać więcej informacji, odwiedź nasze wskazówki na [nową instalację](vmware-azure-install-mobility-service.md) i [Uaktualnij istniejący składnik do najnowszej wersji](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal).
+Serwer konfiguracji | Zainstalowane w środowisku lokalnym.<br/> Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym lub maszyny fizyczne i platformą Azure. | - [Dowiedz się więcej o](vmware-physical-azure-config-process-server-overview.md) serwera konfiguracji.<br/> - [Dowiedz się więcej o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) uaktualnienie do najnowszej wersji.<br/> - [Dowiedz się więcej o](vmware-azure-deploy-configuration-server.md) Konfigurowanie serwera konfiguracji. 
+Serwer przetwarzania | Domyślnie instalowany na serwerze konfiguracji.<br/> Odbiera dane replikacji, optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania, a następnie wysyła je do platformy Azure.<br/> Wraz z rozwojem wdrożenia, można dodać dodatkowych serwerów przetwarzania do obsługi większych ilości ruchu związanego z replikacją. | - [Dowiedz się więcej o](vmware-physical-azure-config-process-server-overview.md) serwera przetwarzania.<br/> - [Dowiedz się więcej o](vmware-azure-manage-process-server.md#upgrade-a-process-server) uaktualnienie do najnowszej wersji.<br/> - [Dowiedz się więcej o](vmware-physical-large-deployment.md#set-up-a-process-server) Konfigurowanie serwerów przetwarzania skalowalnego w poziomie.
+Usługa mobilności | Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane.<br/> Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i platformą Azure.| - [Dowiedz się więcej o](vmware-physical-mobility-service-overview.md) usługi mobilności.<br/> - [Dowiedz się więcej o](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) uaktualnienie do najnowszej wersji.<br/> 
 
-Aby dowiedzieć się więcej na temat najnowszych funkcji, odwiedź stronę [najnowsze informacje o wersji](https://aka.ms/ASR_latest_release_notes).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się, jak](tutorial-prepare-azure.md) przygotować platformę Azure na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware.
 
-[9.25 UR]: https://support.microsoft.com/en-in/help/4503156
+[9.25 UR]: https://support.microsoft.com/en-in/help/4508614/update-rollup-37-for-azure-site-recovery
 [9.24 UR]: https://support.microsoft.com/en-in/help/4503156
 [9.23 UR]: https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery
 [9.22 UR]: https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery

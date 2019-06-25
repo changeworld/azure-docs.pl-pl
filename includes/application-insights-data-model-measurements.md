@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66131035"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67182989"
 ---
 Kolekcja niestandardowych miar. Użyj tej kolekcji do raportu o nazwie miary skojarzone z elementem telemetrii. Typowe przypadki użycia to:
 - Rozmiar ładunku Telemetrii zależności

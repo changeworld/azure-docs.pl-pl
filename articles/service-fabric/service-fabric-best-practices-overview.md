@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2019
+ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fdbd3f15b11e4c3975ca29627d5984382bcf049
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231372"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206801"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Najważniejsze wskazówki dotyczące platformy Azure aplikacji usługi Service Fabric i klastra
 
-Aby zarządzać aplikacjami usługi Azure Service Fabric i klastrami pomyślnie, pewne operacje, zdecydowanie zalecamy należy wykonać, aby zoptymalizować niezawodności w środowisku produkcyjnym; można wykonywać operacje zdefiniowane w tym dokumencie i wybierz jedną z naszych [klastra Azure przykłady usługi Service Fabric szablony](https://github.com/Azure-Samples/service-fabric-cluster-templates) rozpocząć projektowanie rozwiązania do produkcji lub zmodyfikować istniejący szablon, aby zawierały te praktyki.
+Ten artykuł zawiera linki do najlepsze rozwiązania dotyczące zarządzania aplikacjami usługi Azure Service Fabric i klastrami. Firma Microsoft zdecydowanie zaleca się korzystanie z nich, aby zoptymalizować niezawodności w środowisku produkcyjnym. Użyj jednej z [szablony klastra usługi Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates) można rozpocząć projektowanie rozwiązania do produkcji lub zaktualizować istniejący szablon, aby zawierały te praktyki.
 
-## <a name="security"></a>Bezpieczeństwo 
+## <a name="security"></a>Bezpieczeństwo
 
 * [Najlepsze rozwiązania dotyczące zabezpieczeń](service-fabric-best-practices-security.md)
 
@@ -52,11 +52,11 @@ Aby zarządzać aplikacjami usługi Azure Service Fabric i klastrami pomyślnie,
 
 ## <a name="checklist"></a>Lista kontrolna
 
-Po wykonaniu wszystkich powyższych sekcji, upewnij się, że zintegrowano wszystkie najlepsze rozwiązania na liście kontrolnej gotowości produkcyjnym:
-* [Lista kontrolna dotycząca usługi Azure Service Fabric produkcji gotowości](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+Po zaimplementowaniu rozwiązania sugerowane w poprzednich sekcjach, upewnij się, zintegrowano najlepsze rozwiązania na liście kontrolnej gotowości produkcyjnym:
+* [Lista kontrolna Azure Service Fabric produkcji gotowości](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Tworzenie klastra na maszynach wirtualnych lub komputerach z systemem Windows Server: [Tworzenie klastra usługi Service Fabric dla systemu Windows Server](service-fabric-cluster-creation-for-windows-server.md)
 * Tworzenie klastra na maszynach wirtualnych lub komputerach z systemem Linux: [Tworzenie klastra systemu Linux](service-fabric-cluster-creation-via-portal.md)
-* Rozwiązywanie problemów: [Przewodnik rozwiązywania problemów w usłudze Service Fabric](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* Rozwiązywanie problemów z usługi Service Fabric [Wskazówki dotyczące rozwiązywania problemów](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

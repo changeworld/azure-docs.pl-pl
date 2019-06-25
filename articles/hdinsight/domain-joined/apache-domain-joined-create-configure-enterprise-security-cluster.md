@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/09/2019
-ms.openlocfilehash: 5b5b83fe0028e43ca35bf883b29cb71bad6ca2c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7457c06f9f151cb310704a985c79572c7b770859
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66253700"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67166226"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Tworzenie i konfigurowanie klastrów pakiet Enterprise Security w usłudze Azure HDInsight
 
@@ -332,7 +332,7 @@ Ten krok wymaga następujących wymagań wstępnych:
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. Tworzenie relacji między siecią wirtualną, który jest hostem AADDS elementu równorzędnego (`HDIFabrikam-AADDSVNET`) i sieci wirtualnej, który będzie hostował ESP włączone klastra HDInsight (`HDIFabrikam-HDIVNet `). Użyj poniższego kodu programu powershell, aby nawiązać komunikację równorzędną między tymi dwiema sieciami wirtualnymi.
+1. Tworzenie relacji między siecią wirtualną, który jest hostem AADDS elementu równorzędnego (`HDIFabrikam-AADDSVNET`) i sieci wirtualnej, który będzie hostował ESP włączone klastra HDInsight (`HDIFabrikam-HDIVNet`). Użyj poniższego kodu programu powershell, aby nawiązać komunikację równorzędną między tymi dwiema sieciami wirtualnymi.
 
     ```powershell
     Add-AzVirtualNetworkPeering -Name 'HDIVNet-AADDSVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS')

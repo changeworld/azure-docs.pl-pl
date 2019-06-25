@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 05/06/2019
-ms.openlocfilehash: e999e4d96dcb5a1042806c0905ce331dc0a4dc0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 11b3e7724f34a7929d9851dbc8034829f020868b
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522853"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190708"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
@@ -42,7 +42,10 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 - **Grupy trybu failover (MGŁA)**
 
-  Grupy trybu failover jest grupą baz danych zarządzanych przez jeden serwer bazy danych SQL lub w ramach jednego wystąpienia zarządzanego, który przełączanie do trybu failover jako jednostka do innego regionu w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym. Podczas tworzenia wystąpienia zarządzanego, grupy trybu failover zawiera wszystkich baz danych użytkownika w wystąpieniu, a w związku z tym można skonfigurować tylko jedną grupę trybu failover w wystąpieniu.
+  Grupy trybu failover jest nazwaną grupą baz danych zarządzanych przez jeden serwer bazy danych SQL lub w ramach jednego wystąpienia zarządzanego, który przełączanie do trybu failover jako jednostka do innego regionu w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym. Podczas tworzenia wystąpienia zarządzanego, grupy trybu failover zawiera wszystkich baz danych użytkownika w wystąpieniu, a w związku z tym można skonfigurować tylko jedną grupę trybu failover w wystąpieniu.
+  
+  > [!IMPORTANT]
+  > Nazwa grupy trybu failover musi być globalnie unikatowa w obrębie `.database.windows.net` domeny.
 
 - **Serwery usługi SQL Database**
 

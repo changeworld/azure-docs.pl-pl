@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 4fbb731d9908e791a6fce2b087d9b734b98a25cb
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442141"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137726"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
-IoT Hub udostępnia zaawansowane podobnego do SQL języka można pobrać informacji dotyczących [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md) i [zadania](iot-hub-devguide-jobs.md), i [routing komunikatów](iot-hub-devguide-messages-d2c.md). Ten artykuł przedstawia:
+IoT Hub udostępnia zaawansowane podobnego do SQL języka można pobrać informacji dotyczących [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md), [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md), [zadania](iot-hub-devguide-jobs.md), i [routingkomunikatów](iot-hub-devguide-messages-d2c.md). Ten artykuł przedstawia:
 
 * Wprowadzenie do najważniejszych funkcji języka zapytań usługi IoT Hub, a
 * Szczegółowy opis języka. Aby uzyskać szczegółowe informacje dotyczące języka zapytania do rozsyłania wiadomości, zobacz [zapytania w routingu komunikatów](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
@@ -25,7 +25,7 @@ IoT Hub udostępnia zaawansowane podobnego do SQL języka można pobrać informa
 
 ## <a name="device-and-module-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji urządzeń i modułu
 
-[Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md) i bliźniaczych reprezentacjach modułów mogą zawierać dowolne obiekty JSON jako tagów i właściwości. Usługa IoT Hub umożliwia zapytań bliźniaczych reprezentacji urządzeń i bliźniaczych reprezentacjach modułów jako pojedynczy dokument JSON zawierający wszystkie informacje bliźniaczej reprezentacji.
+[Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md) i [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md) może zawierać dowolne obiekty JSON jako tagów i właściwości. Usługa IoT Hub umożliwia zapytań bliźniaczych reprezentacji urządzeń i bliźniaczych reprezentacjach modułów jako pojedynczy dokument JSON zawierający wszystkie informacje bliźniaczej reprezentacji.
 
 Załóżmy na przykład, że bliźniaczych reprezentacji urządzeń usługi IoT hub mają następującą strukturę (bliźniaczą reprezentację modułu mogą być podobne tylko przy użyciu dodatkowych moduleId):
 
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji modułu
 
-Zapytań o bliźniaczych reprezentacjach modułów jest podobne do zapytań o bliźniaczych reprezentacji urządzeń, ale przy użyciu innej kolekcji/przestrzeni nazw, czyli zamiast "z urządzenia" można tworzyć zapytania device.modules:
+Zapytań o bliźniaczych reprezentacjach modułów jest podobne do zapytań o bliźniaczych reprezentacji urządzeń, ale przy użyciu innej kolekcji/przestrzeni nazw; zamiast z **urządzeń**, zapytania z **devices.modules**:
 
 ```sql
 SELECT * FROM devices.modules
@@ -315,7 +315,7 @@ Obecnie zapytanie na **devices.jobs** nie obsługują:
 
 ## <a name="basics-of-an-iot-hub-query"></a>Podstawowe informacje dotyczące zapytań usługi IoT Hub
 
-Składa się każdego zapytania usługi IoT Hub, wybierz opcję i z klauzul, w której opcjonalne oraz klauzule GROUP BY. Każdego zapytania jest uruchamiane na kolekcji dokumentów JSON, na przykład bliźniaczych reprezentacji urządzeń. Klauzula FROM wskazuje kolekcji dokumentów, należy powtórzyć w (**urządzeń** lub **devices.jobs**). Następnie jest stosowany filtr w klauzuli WHERE. Za pomocą agregacji są pogrupowane wyniki tego kroku określone w klauzuli GROUP BY. Dla każdej grupy jest generowany wiersz jak określono w klauzuli SELECT.
+Składa się każdego zapytania usługi IoT Hub, wybierz opcję i z klauzul, w której opcjonalne oraz klauzule GROUP BY. Każdego zapytania jest uruchamiane na kolekcji dokumentów JSON, na przykład bliźniaczych reprezentacji urządzeń. Klauzula FROM wskazuje kolekcji dokumentów, należy powtórzyć w (**urządzeń**, **devices.modules**, lub **devices.jobs**). Następnie jest stosowany filtr w klauzuli WHERE. Za pomocą agregacji są pogrupowane wyniki tego kroku określone w klauzuli GROUP BY. Dla każdej grupy jest generowany wiersz jak określono w klauzuli SELECT.
 
 ```sql
 SELECT <select_list>
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM — klauzula
 
-**z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **Z urządzeń** do zapytań bliźniaczych reprezentacji urządzeń lub **z devices.jobs** do szczegółów poszczególnych urządzeń zadania kwerendy.
+**z < from_specification >** klauzuli może przyjmować tylko dla trzech wartości: **Z urządzeń** do zapytań bliźniaczych reprezentacji urządzeń **z devices.modules** do zapytań bliźniaczych reprezentacjach modułów, lub **z devices.jobs** do szczegółów poszczególnych urządzeń zadania kwerendy.
 
 
 ## <a name="where-clause"></a>Klauzula WHERE

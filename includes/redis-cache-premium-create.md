@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132985"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183043"
 ---
 Aby utworzyć cache w warstwie premium, zaloguj się do [witryny Azure portal](https://portal.azure.com) i kliknij przycisk **Utwórz zasób** > **baz danych** > **pamięć podręczna systemu Azure dla usługi Redis**.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f06ca04b0b6ea48ebb49952df71cb02946777fa
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145369"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67333385"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -26,8 +26,7 @@ Korzystając z `Ocp-Apim-Subscription-Key` nagłówka, tylko, musisz podać kluc
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Korzystając z `Authorization: Bearer` nagłówka jest wymagana, aby zgłosić wniosek o `issueToken` punktu końcowego. W tym żądaniu możesz wymienić klucz subskrypcji dla tokenu dostępu, który jest ważny przez 10 minut. W kolejnych sekcjach dowiesz się, jak uzyskać token, używają tokenu i token odświeżania.
-
+Korzystając z `Authorization: Bearer` nagłówka jest wymagana, aby zgłosić wniosek o `issueToken` punktu końcowego. W tym żądaniu możesz wymienić klucz subskrypcji dla tokenu dostępu, który jest ważny przez 10 minut. W kolejnych sekcjach dowiesz się, jak uzyskać token, a następnie używają tokenu.
 
 ### <a name="how-to-get-an-access-token"></a>Jak uzyskać token dostępu
 

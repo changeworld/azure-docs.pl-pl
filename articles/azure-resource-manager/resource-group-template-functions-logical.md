@@ -1,23 +1,17 @@
 ---
 title: Usługa Azure Resource Manager funkcje szablonu - logiczne | Dokumentacja firmy Microsoft
 description: Opisuje funkcje do używania szablonu usługi Azure Resource Manager w celu określenia wartości logiczne.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4684c38fe506ed912c6827f1e60b94b847024347
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cf6874512557bc44efe978708c78e3d98db4110b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405670"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205461"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów usługi Azure Resource Manager
 
@@ -29,7 +23,7 @@ Resource Manager udostępnia kilka funkcji składania porównania w szablonach.
 * [not](#not)
 * [lub](#or)
 
-## <a name="and"></a>oraz
+## <a name="and"></a>i
 
 `and(arg1, arg2, ...)`
 
@@ -39,9 +33,9 @@ Sprawdza, czy wszystkie wartości parametrów są spełnione.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy ma wartość true. |
-| argument2 |Tak |wartość logiczna |Druga wartość, aby sprawdzić, czy ma wartość true. |
-| dodatkowe argumenty |Nie |wartość logiczna |Dodatkowe argumenty, aby sprawdzić, czy są spełnione. |
+| arg1 |Tak |boolean |Pierwsza wartość, aby sprawdzić, czy ma wartość true. |
+| argument2 |Tak |boolean |Druga wartość, aby sprawdzić, czy ma wartość true. |
+| dodatkowe argumenty |Nie |boolean |Dodatkowe argumenty, aby sprawdzić, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -77,9 +71,9 @@ Dane wyjściowe z poprzedniego przykładu są:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Fałsz |
+| andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | Fałsz |
+| notExampleOutput | Bool | False |
 
 ## <a name="bool"></a>bool
 
@@ -131,9 +125,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
-| falseString | Bool | Fałsz |
+| falseString | Bool | False |
 | trueInt | Bool | True |
-| falseInt | Bool | Fałsz |
+| falseInt | Bool | False |
 
 ## <a name="if"></a>if
 
@@ -145,8 +139,8 @@ Zwraca wartość, na podstawie warunku jest wartość PRAWDA lub FAŁSZ.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| condition |Tak |wartość logiczna |Wartość, aby sprawdzić, czy jest wartość PRAWDA lub FAŁSZ. |
-| trueValue |Tak | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest prawdziwy. |
+| condition |Tak |boolean |Wartość, aby sprawdzić, czy jest wartość PRAWDA lub FAŁSZ. |
+| trueValue |Yes | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest prawdziwy. |
 | falseValue |Tak | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest fałszywy. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -196,7 +190,7 @@ Następujące [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -250,7 +244,7 @@ Konwertuje wartość przeciwną wartość logiczną.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |wartość logiczna |Wartość do przekonwertowania. |
+| arg1 |Yes |boolean |Wartość do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -286,9 +280,9 @@ Dane wyjściowe z poprzedniego przykładu są:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Fałsz |
+| andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | Fałsz |
+| notExampleOutput | Bool | False |
 
 Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) używa **nie** z [jest równa](resource-group-template-functions-comparison.md#equals).
 
@@ -322,9 +316,9 @@ Sprawdza, czy wszystkie wartości parametru to true.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy ma wartość true. |
-| argument2 |Tak |wartość logiczna |Druga wartość, aby sprawdzić, czy ma wartość true. |
-| dodatkowe argumenty |Nie |wartość logiczna |Dodatkowe argumenty, aby sprawdzić, czy są spełnione. |
+| arg1 |Tak |boolean |Pierwsza wartość, aby sprawdzić, czy ma wartość true. |
+| argument2 |Yes |boolean |Druga wartość, aby sprawdzić, czy ma wartość true. |
+| dodatkowe argumenty |Nie |boolean |Dodatkowe argumenty, aby sprawdzić, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -360,9 +354,9 @@ Dane wyjściowe z poprzedniego przykładu są:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Fałsz |
+| andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | Fałsz |
+| notExampleOutput | Bool | False |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

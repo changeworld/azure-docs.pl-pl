@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1828cdce66104424cc7845fea89127219e6b77a0
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137263"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311841"
 ---
 # <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
 
@@ -91,6 +91,7 @@ Aby skonfigurować transkrypcji, wykonaj następujące opcjonalne właściwości
 | `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. |
  | `AddWordLevelTimestamps` | Określa, jeśli sygnatury czasowe z poziomu programu word powinna być dodana do danych wyjściowych. Akceptowane wartości to `true` umożliwiająca sygnatury czasowe z poziomu programu word i `false` (wartość domyślna) można ją wyłączyć. |
  | `AddSentiment` | Określa, że wskaźniki nastrojów klientów powinny zostać dodane do wypowiedź. Akceptowane wartości to `true` umożliwiająca tonacji na wypowiedź i `false` (wartość domyślna) można ją wyłączyć. |
+ | `AddDiarization` | Określa, że ten alalysis diarization powinny być przeprowadzane na danych wejściowych, który powinien być mono kanał, zawierający dwie głosów. Akceptowane wartości to `true` umożliwiająca diarization i `false` (wartość domyślna) można ją wyłączyć. Wymaga to również `AddWordLevelTimestamps` należy ustawić na wartość true.|
 
 ### <a name="storage"></a>Magazyn
 
@@ -128,13 +129,8 @@ Odpowiadające im pliki audio będzie zawierać Prelegenci identyfikowana przez 
 
 Należy również zauważyć, że Diarization nie jest dostępna w Stereo nagrania. Ponadto JSON wszystkie dane wyjściowe będą zawierać tag osoby mówiącej. Jeżeli nie zastosowano diarization, widoczna będzie "osoby mówiącej: Wartość null "w kodzie JSON, dane wyjściowe.
 
-Poniżej przedstawiono obsługiwanych ustawień regionalnych.
-
-| Język | Ustawienia regionalne |
-|--------|-------|
-| Polski | en-US |
-| Chiński | zh-CN |
-| Deutsch | de-DE. |
+> [!NOTE]
+> Diarization jest dostępna we wszystkich regionach, jak i dla wszystkich ustawień regionalnych!
 
 ## <a name="sentiment"></a>Opinia
 

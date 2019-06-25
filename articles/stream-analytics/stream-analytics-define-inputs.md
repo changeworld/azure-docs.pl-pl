@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 1822bfe9f2d6d337db74ba94d43644b0b3567c71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455619"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296155"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako dane wejściowe do usługi Stream Analytics
 
@@ -38,7 +38,7 @@ Możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md), 
 
 Usługa Azure Event Hubs oferuje wysoce skalowalną publikowania/subskrybowania ingestors zdarzeń. Centrum zdarzeń można zbierać miliony zdarzeń na sekundę, tak że można przetwarzać oraz analizować duże ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Razem usługi Event Hubs i Stream Analytics zapewnia rozwiązania end-to-end Analityki w czasie rzeczywistym. Usługa Event Hubs umożliwia źródła danych zdarzeń na platformę Azure w czasie rzeczywistym, i zadania usługi Stream Analytics może przetwarzać zdarzenia w czasie rzeczywistym. Na przykład możesz wysłać kliknięć w sieci web, odczyty czujników lub online dziennika zdarzeń do usługi Event Hubs. Następnie można utworzyć zadania usługi Stream Analytics na potrzeby usługi Event Hubs jako strumieni danych wejściowych w czasie rzeczywistym filtrowania, agregowania i korelacji.
 
-`EventEnqueuedUtcTime` jest to sygnatura czasowa odebrania zdarzeń w Centrum zdarzeń i jest to domyślny sygnatura czasowa zdarzenia pochodzące z usługi Event Hubs do usługi Stream Analytics. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe.
+`EventEnqueuedUtcTime` jest to sygnatura czasowa odebrania zdarzeń w Centrum zdarzeń i jest to domyślny sygnatura czasowa zdarzenia pochodzące z usługi Event Hubs do usługi Stream Analytics. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) — słowo kluczowe.
 
 ### <a name="event-hubs-consumer-groups"></a>Grupy konsumentów centrów zdarzeń
 
@@ -86,7 +86,7 @@ FROM Input
 
 Usługa Azure IoT Hub to wysoko skalowalna publikowania/subskrybowania o dużych możliwościach skalowania zdarzeń zoptymalizowane pod kątem scenariuszy IoT.
 
-Domyślne sygnatura czasowa zdarzenia pochodzące z usługi IoT Hub w usłudze Stream Analytics jest sygnatura czasowa, która zdarzenie dostarczone w usłudze IoT Hub, który jest `EventEnqueuedUtcTime`. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe.
+Domyślne sygnatura czasowa zdarzenia pochodzące z usługi IoT Hub w usłudze Stream Analytics jest sygnatura czasowa, która zdarzenie dostarczone w usłudze IoT Hub, który jest `EventEnqueuedUtcTime`. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) — słowo kluczowe.
 
 ### <a name="iot-hub-consumer-groups"></a>Grupy konsumentów Centrum iot
 

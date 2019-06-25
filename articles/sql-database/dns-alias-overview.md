@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek, jrasnick
+ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: d15e629343e015af5f83e1d185c6a46fc48fa3c4
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160801"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275197"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias systemu DNS dla usługi Azure SQL Database
 
@@ -49,7 +49,7 @@ Później po nowy system przechodzi w środowisku produkcyjnym, można zaktualiz
 
 ### <a name="cross-region-support"></a>Obsługa między regionami
 
-Odzyskiwanie po awarii może być shift serwera usługi SQL Database do innego regionu geograficznego. System nie został używa aliasu DNS, trzeba znaleźć i zaktualizować parametry połączenia dla wszystkich klientów można uniknąć. Zamiast tego należy zaktualizować alias do odwoływania się do nowego serwera bazy danych SQL, który teraz udostępnia bazę danych.
+Odzyskiwanie po awarii może być shift serwera usługi SQL Database do innego regionu geograficznego. Dla systemu, który używał alias systemu DNS należy unikać trzeba znaleźć i zaktualizować parametry połączenia dla wszystkich klientów. Zamiast tego należy zaktualizować alias do odwoływania się do nowego serwera bazy danych SQL, który teraz udostępnia bazę danych.
 
 ## <a name="properties-of-a-dns-alias"></a>Właściwości alias systemu DNS
 
@@ -67,13 +67,6 @@ Następujące właściwości mają zastosowanie do każdego alias DNS serwera us
 Polecenia cmdlet programu PowerShell i interfejsów API REST są dostępne dla umożliwiają programowe zarządzanie aliasy DNS.
 
 ### <a name="rest-apis-for-managing-your-dns-aliases"></a>Interfejsów API REST zarządzania aliasy DNS
-
-<!-- TODO
-??2 "soon" in the following live sentence, is not the best situation.
-TODO update this subsection very soon after REST API docu goes live.
-Dev = Magda Bojarska
-Comment as of:  2018-01-26
--->
 
 W dokumentacji dotyczącej interfejsów API REST jest dostępny w następującej lokalizacji w sieci web:
 
@@ -111,7 +104,7 @@ Obecnie systemie DNS alias ma następujące ograniczenia:
 - *Opóźnienie do 2 minut:* Trwa maksymalnie 2 minuty, alias DNS należy zaktualizować lub usunąć.
   - Niezależnie od wszelkich krótkie opóźnienie alias natychmiast zatrzymuje odwołujące się połączeń klientów do starszej wersji serwera.
 - *Wyszukiwanie DNS:* Obecnie tylko autorytatywne sposób, aby sprawdzić, jakiego serwera DNS danego alias odwołuje się do, wykonując [wyszukiwania DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
-- *[Inspekcja tabeli nie jest obsługiwana.](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* Nie można użyć aliasu DNS na serwerze usługi Azure SQL Database, która ma *inspekcji tabel* włączona w bazie danych.
+- _Inspekcja tabeli nie jest obsługiwana:_ Nie można użyć aliasu DNS na serwerze usługi Azure SQL Database, która ma *inspekcji tabel* włączona w bazie danych.
   - Inspekcja tabel jest przestarzała.
   - Firma Microsoft zaleca, aby przenieść się do [inspekcji obiektów Blob](sql-database-auditing.md).
 

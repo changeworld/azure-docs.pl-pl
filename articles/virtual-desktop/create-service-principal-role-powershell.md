@@ -7,26 +7,26 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523315"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206660"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Samouczek: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Samouczek: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
 
-Jednostki usługi stanowią tożsamości, utworzone w usłudze Azure Active Directory do przypisywania ról i uprawnień do określonego celu. W Windows wirtualnego pulpitu (wersja zapoznawcza) można utworzyć usługę podmiotu zabezpieczeń, aby:
+Nazwy główne usług są tworzone w usłudze Azure Active Directory do przypisywania ról i uprawnień do określonego celu. W Windows wirtualnego pulpitu (wersja zapoznawcza) można utworzyć usługę podmiotu zabezpieczeń, aby:
 
-- Automatyzowanie zadań zarządzania w usłudze określonych Windows pulpitu wirtualnego
-- Użyj jako poświadczeń zamiast użytkowników wymagane uwierzytelnianie wieloskładnikowe, podczas uruchamiania dowolnego szablonu Windows wirtualnego pulpitu usługi Azure Resource Manager
+- Automatyzowanie zadań zarządzania w usłudze określonego wirtualnego pulpitu Windows.
+- Użyj jako poświadczeń zamiast użytkowników wymagane uwierzytelnianie wieloskładnikowe podczas uruchamiania dowolnego szablonu usługi Azure Resource Manager dla Windows pulpitu wirtualnego.
 
 W tym samouczku pokazano, jak:
 
 > [!div class="checklist"]
-> * Tworzenie nazwy głównej usługi w usłudze Azure Active Directory
-> * Utwórz przypisanie roli w Windows pulpitu wirtualnego
-> * Zaloguj się do Windows pulpitu wirtualnego przy użyciu jednostki usługi
+> * Tworzenie jednostki usługi w usłudze Azure Active Directory.
+> * Utwórz przypisanie roli w Windows pulpitu wirtualnego.
+> * Zaloguj się do Windows pulpitu wirtualnego przy użyciu nazwy głównej usługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -48,7 +48,7 @@ Zanim będzie można utworzyć jednostki usługi i przypisań ról, należy wyko
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Tworzenie nazwy głównej usługi w usłudze Azure Active Directory
 
-Po wymagania wstępne zostały spełnione, w sesji programu PowerShell, uruchom następujące polecenia cmdlet programu PowerShell, aby utworzyć usługę wielodostępną na jednostkę na platformie Azure.
+Po wymagania wstępne zostały spełnione, w sesji programu PowerShell, uruchom następujące polecenia cmdlet programu PowerShell do tworzenia wieloma dzierżawcami usługa podmiotu zabezpieczeń na platformie Azure.
 
 ```powershell
 Import-Module AzureAD
@@ -72,18 +72,18 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincip
 
 ## <a name="sign-in-with-the-service-principal"></a>Zaloguj się przy użyciu jednostki usługi
 
-Po utworzeniu przypisania roli dla usługi głównej powinny teraz upewnij się, że nazwa główna usługi zalogować się do Windows pulpitu wirtualnego, uruchamiając następujące polecenie cmdlet:
+Po utworzeniu przypisania roli dla usługi jednostki, upewnij się, że nazwa główna usługi zalogować się do Windows pulpitu wirtualnego, uruchamiając następujące polecenie cmdlet:
 
 ```powershell
 $creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
 ```
 
-Po zalogowaniu, upewnij się, że wszystko działa, w celu przetestowania kilka poleceń cmdlet programu PowerShell pulpitu wirtualnego Windows jednostki usługi.
+Po zalogowaniu, upewnij się, że wszystko działa, testując kilka poleceń cmdlet programu PowerShell pulpitu wirtualnego Windows jednostki usługi.
 
 ## <a name="view-your-credentials-in-powershell"></a>Wyświetl swoje poświadczenia w programie PowerShell
 
-Zakończyć sesję programu PowerShell, możesz wyświetlić swoje poświadczenia i zapisz je w przyszłości. Hasło jest szczególnie ważne, ponieważ nie można pobrać po zamknięciu tej sesji programu PowerShell.
+Zakończyć sesję programu PowerShell wyświetlić swoje poświadczenia, a następnie zapisz je w przyszłości. Hasło jest szczególnie ważne, ponieważ nie można pobrać po zamknięciu tej sesji programu PowerShell.
 
 Poniżej przedstawiono trzy poświadczeń, których należy zanotować i poleceń cmdlet, które należy uruchomić, aby je uzyskać:
 

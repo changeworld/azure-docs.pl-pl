@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509203"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271970"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Logowanie w sieci Web z OpenID Connect w usłudze Azure Active Directory B2C
 
@@ -77,11 +78,11 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id | Tak | Identyfikator aplikacji [witryny Azure portal](https://portal.azure.com/) przypisane do aplikacji. |
 | response_type | Yes | Musi zawierać identyfikator tokenu dla protokołu OpenID Connect. Jeśli aplikacja sieci web musi również tokenów do wywoływania interfejsu API sieci web, możesz użyć `code+id_token`. |
 | redirect_uri | Nie | `redirect_uri` Parametr aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Musi dokładnie odpowiadać jednej z `redirect_uri` parametry, które są zarejestrowane w witrynie Azure portal, z tą różnicą, że musi być zakodowane w adresie URL. |
-| scope | Tak | Rozdzielonej spacjami listy zakresów. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i pobieranie danych o użytkowniku w formie tokenów Identyfikatora. `offline_access` Zakres jest opcjonalny w przypadku aplikacji sieci web. Oznacza to, że Twoja aplikacja musi mieć *token odświeżania* rozszerzonej dostępu do zasobów. |
+| scope | Yes | Rozdzielonej spacjami listy zakresów. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i pobieranie danych o użytkowniku w formie tokenów Identyfikatora. `offline_access` Zakres jest opcjonalny w przypadku aplikacji sieci web. Oznacza to, że Twoja aplikacja musi mieć *token odświeżania* rozszerzonej dostępu do zasobów. |
 | response_mode | Nie | Metody, która jest używana do wysyłania wynikowy kod autoryzacji z powrotem do aplikacji. Może być albo `query`, `form_post`, lub `fragment`.  `form_post` Najlepiej zalecany jest tryb odpowiedzi. |
 | state | Nie | Wartość uwzględnione w żądaniu, która jest także zwracany w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, która ma. Zazwyczaj służy losowo generowany unikatową wartość dla zapobieganie atakom na fałszerstwo żądania międzywitrynowego. Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony, w której znajdowały się w. |
-| nonce | Tak | Wartość uwzględnione w żądaniu (generowany przez aplikację), który znajduje się w jego identyfikator tokenu jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowy unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
-| p | Yes | Przepływ użytkownika, który jest uruchamiany. To nazwa przepływu użytkownika, który jest tworzony w dzierżawie usługi Azure AD B2C. Nazwa przepływu użytkownika powinien zaczynać się `b2c\_1\_`. |
+| nonce | Yes | Wartość uwzględnione w żądaniu (generowany przez aplikację), który znajduje się w jego identyfikator tokenu jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowy unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
+| p | Tak | Przepływ użytkownika, który jest uruchamiany. To nazwa przepływu użytkownika, który jest tworzony w dzierżawie usługi Azure AD B2C. Nazwa przepływu użytkownika powinien zaczynać się `b2c\_1\_`. |
 | wiersz | Nie | Typ interakcji z użytkownikiem, który jest wymagany. To jedyna prawidłowa wartość w tej chwili `login`, która wymusza użytkownika o wprowadzenie poświadczeń dla tego żądania. |
 
 W tym momencie użytkownik jest monitowany ukończenia przepływu pracy. Użytkownik może być konieczne wprowadzanie nazwy użytkownika i hasła, zaloguj się przy użyciu tożsamości dla sieci społecznościowej lub zaloguj w katalogu. Może być dowolną liczbę kroków w zależności od tego, jak jest zdefiniowany przepływu użytkownika.
@@ -152,7 +153,9 @@ Po sprawdzeniu tokenu Identyfikacyjnego można rozpocząć sesji z użytkownikie
 
 Jeśli potrzebujesz aplikacji sieci web można uruchamiać tylko przepływy użytkownika, możesz pominąć kilka następnych sekcji. Poniższe sekcje mają zastosowanie tylko do sieci web, aplikacji, które muszą być uwierzytelnione wywołania internetowego interfejsu API i jednocześnie są chronione przez usługę Azure AD B2C.
 
-Można zrealizować kod autoryzacji, które zostało zakupione (przy użyciu `response_type=code+id_token`) dla tokenu do żądanego zasobu, wysyłając `POST` limit czasu żądania `/token` punktu końcowego. Obecnie tylko zasób, jakiej może żądać token dla jest własnych aplikacji zaplecza interfejsu API sieci web. Konwencja do żądania tokenu służącego do siebie jest użyć własnego Identyfikatora klienta aplikacji jako zakres:
+Można zrealizować kod autoryzacji, które zostało zakupione (przy użyciu `response_type=code+id_token`) dla tokenu do żądanego zasobu, wysyłając `POST` limit czasu żądania `/token` punktu końcowego. W usłudze Azure AD B2C, możesz [żądać tokenów dostępu dla innego interfejsu API](active-directory-b2c-access-tokens.md#request-a-token) w zwykły sposób, określając ich zakresy w żądaniu.
+
+Możesz również zażądać token dostępu interfejsu API sieci Web zaplecza w aplikacji, zgodnie z Konwencją użycia identyfikator klienta aplikacji jako żądanym zakresie (co spowoduje, że token dostępu z tego Identyfikatora klienta jako "audience"):
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -164,13 +167,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parametr | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| p | Tak | Przepływ użytkownika, który został użyty do uzyskania kodu autoryzacji. Nie można użyć przepływu innego użytkownika, w tym żądaniu. Ten parametr należy dodać do ciągu zapytania, a nie do treść wpisu. |
+| p | Yes | Przepływ użytkownika, który został użyty do uzyskania kodu autoryzacji. Nie można użyć przepływu innego użytkownika, w tym żądaniu. Ten parametr należy dodać do ciągu zapytania, a nie do treść wpisu. |
 | client_id | Yes | Identyfikator aplikacji [witryny Azure portal](https://portal.azure.com/) przypisane do aplikacji. |
 | grant_type | Yes | Typ przydział, który musi być `authorization_code` dla przepływ kodu autoryzacji. |
 | scope | Nie | Rozdzielonej spacjami listy zakresów. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i pobieranie danych o użytkowniku w formie id_token parametrów. Może służyć do uzyskania tokenów do własnych aplikacji zaplecza interfejsu API sieci web, który jest reprezentowany przez ten sam identyfikator aplikacji, co klient. `offline_access` Zakresu oznacza, że aplikacja musi token odświeżania, rozszerzone dostępu do zasobów. |
 | code | Yes | Kod autoryzacji, który uzyskanych na początku przepływu użytkownika. |
-| redirect_uri | Tak | `redirect_uri` Parametr aplikacji, na którym odebrano kod autoryzacji. |
-| client_secret | Yes | Klucz tajny aplikacji, który został wygenerowany w [witryny Azure portal](https://portal.azure.com/). Wpis tajny aplikacji jest ważny artefakt. Przechowuj je bezpiecznie na serwerze. Zmień ten klucz tajny klienta w regularnych odstępach czasu. |
+| redirect_uri | Yes | `redirect_uri` Parametr aplikacji, na którym odebrano kod autoryzacji. |
+| client_secret | Tak | Klucz tajny aplikacji, który został wygenerowany w [witryny Azure portal](https://portal.azure.com/). Wpis tajny aplikacji jest ważny artefakt. Przechowuj je bezpiecznie na serwerze. Zmień ten klucz tajny klienta w regularnych odstępach czasu. |
 
 Odpowiedź oznaczająca Powodzenie tokenu wygląda następująco:
 

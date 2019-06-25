@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ee9b70827c19236287f81f66f4b9c6e1004a54fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: e3cff54f49d40fb7da99dcafa9535349ccb70e09
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114490"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150469"
 ---
 W poniższej tabeli opisano domyślne limity dla platformy Azure, general-purpose v1, v2 i konta usługi Blob storage. *Ruch przychodzący* limit odnosi się do wszystkich danych z żądań, które są wysyłane do konta magazynu. *Ruch wychodzący* limit odnosi się do wszystkich danych z odpowiedzi, które są odbierane z konta magazynu.
 
@@ -32,15 +32,15 @@ W poniższej tabeli opisano domyślne limity dla platformy Azure, general-purpos
 <sup>1</sup>kont usługi azure Standard Storage obsługuje wyższe limity dla ruchu przychodzącego przez żądanie. Aby poprosić o zwiększenie limitów konta dla danych przychodzących, skontaktuj się z [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/faq/).
 
 <sup>2</sup> [replikacja usługi azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) są następujące opcje:
-* **RA-GRS**: Magazyn geograficznie nadmiarowy z dostępem do odczytu. Jeśli Magazyn RA-GRS jest włączona, ruch wychodzący związanych z lokalizacji dodatkowej są identyczne z tymi dla lokalizacji głównej.
-* **GRS**: Magazyn geograficznie nadmiarowy. 
-* **ZRS**: Magazyn strefowo nadmiarowy.
-* **LRS**: Magazyn lokalnie nadmiarowy. 
+- **RA-GRS**: Magazyn geograficznie nadmiarowy z dostępem do odczytu. Jeśli Magazyn RA-GRS jest włączona, ruch wychodzący związanych z lokalizacji dodatkowej są identyczne z tymi dla lokalizacji głównej.
+- **GRS**: Magazyn geograficznie nadmiarowy.
+- **ZRS**: Magazyn strefowo nadmiarowy.
+- **LRS**: Magazyn lokalnie nadmiarowy.
 
 > [!NOTE]
 > Zalecamy użycie konta magazynu ogólnego przeznaczenia w wersji 2 w przypadku większości scenariuszy. Ogólnego przeznaczenia w wersji 1 lub konta usługi Azure Blob storage można łatwo uaktualnić do konta ogólnego przeznaczenia w wersji 2, bez przestojów i bez potrzeby kopiowania danych.
 >
-> Aby uzyskać więcej informacji na temat kont usługi Azure Storage, zobacz [omówienia kont magazynu](../articles/storage/common/storage-account-overview.md). 
+> Aby uzyskać więcej informacji na temat kont usługi Azure Storage, zobacz [omówienia kont magazynu](../articles/storage/common/storage-account-overview.md).
 
 Wymagania aplikacji przekroczy cele skalowalności z jednego konta magazynu, możesz tworzyć aplikacji do użycia wielu kont magazynu. Następnie można podzielić obiekty danych na tych kontach magazynu. Aby uzyskać informacje dotyczące cennika woluminów, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 

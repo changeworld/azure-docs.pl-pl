@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1c0da1a768b894f543b9089643622c31d6a8758d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34a94a1b9c38070f5c9de22d9a9e4f24183a876c
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730145"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151004"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy
 
@@ -52,7 +52,7 @@ Przed przystąpieniem do wykonywania wszystkich kroków opisanych w tym artykule
 
 Adresy URL serwera proxy, wykonaj następujący format: **protokołu**://**proxy_host**:**proxy_port**.
 
-* **Protokołu** protokół HTTP lub HTTPS. Demona platformy Docker można użyć dowolnego z tych protokołów, w zależności od ustawień rejestru kontenerów, ale kontenery demona i środowisko uruchomieniowe usługi IoT Edge należy zawsze używać protokołu HTTPS.
+* **Protokołu** protokół HTTP lub HTTPS. Demona platformy Docker można użyć dowolnego z tych protokołów, w zależności od ustawień rejestru kontenerów, ale kontenery demona i środowisko uruchomieniowe usługi IoT Edge należy zawsze używać nawiązać połączenia z serwerem proxy HTTP.
 
 * **Proxy_host** nie jest adresem serwera proxy. Serwer proxy wymaga uwierzytelniania, można podać swoje poświadczenia w ramach hosta serwera proxy, w następującym formacie: **użytkownika**:**hasło**\@**proxy_host** .
 
@@ -250,7 +250,7 @@ Zmienne środowiskowe uwzględnione definicji modułu powinien wyglądać jak w 
     },
     "env": {
         "https_proxy": {
-            "value": "https://proxy.example.com:3128"
+            "value": "http://proxy.example.com:3128"
         }
     },
     "status": "running",

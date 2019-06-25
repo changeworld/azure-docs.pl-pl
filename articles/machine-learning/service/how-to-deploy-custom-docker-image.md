@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/05/2019
-ms.openlocfilehash: 02bc8835ddb163d81f389e13b21b88adca55cb2f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd0e8099be5422d561541aeb8911c9a1610befcb
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082627"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272767"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Wdrażanie modelu przy użyciu niestandardowego obrazu platformy Docker
 
@@ -43,6 +43,7 @@ Ten dokument jest podzielony na dwie sekcje:
 * Usługa Azure Machine Learning service grupy roboczej. Aby uzyskać więcej informacji, zobacz [Utwórz obszar roboczy](setup-create-workspace.md) artykułu.
 * Aplikację Azure Machine Learning zestawu SDK. Aby uzyskać więcej informacji, zobacz sekcję zestawu SDK języka Python [Utwórz obszar roboczy](setup-create-workspace.md#sdk) artykułu.
 * [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Rozszerzenie interfejsu wiersza polecenia dla usługi Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * [Usługi Azure Container Registry](/azure/container-registry) lub innych rejestru platformy Docker, który jest dostępny w Internecie.
 * Kroki opisane w tym dokumencie przyjęto założenie, że czytelnik zna tworzenia i używania __konfiguracji wnioskowania__ obiektu jako część wdrożenia modelu. Aby uzyskać więcej informacji, zobacz sekcję "Przygotowanie do wdrożenia" [miejsca wdrożenia i w jaki sposób](how-to-deploy-and-where.md#prepare-to-deploy).
 

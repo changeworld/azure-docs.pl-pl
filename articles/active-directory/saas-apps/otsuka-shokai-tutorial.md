@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb5e667151f0148468e9eda8189c0f249b402b56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095288"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274198"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Samouczek: Integracja Otsuka Shokai za pomocą usługi Azure Active Directory
 
@@ -29,7 +29,6 @@ W tym samouczku dowiesz się, jak zintegrować Otsuka Shokai w usłudze Azure Ac
 
 * Kontrolowanie w usłudze Azure AD, kto ma dostęp do Otsuka Shokai.
 * Umożliwianie użytkownikom można automatycznie zalogowany Otsuka Shokai za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
 
 Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
@@ -112,17 +111,15 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     g. Kliknij pozycję **Zapisz**.
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i zapisz go na swoje Notatnik .
-
-   ![Link pobierania certyfikatu](common/copy-metadataurl.png)
-
-1. Na **Konfigurowanie Otsuka Shokai** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
-
-   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
-
 ### <a name="configure-otsuka-shokai"></a>Konfigurowanie Otsuka Shokai
 
-Aby skonfigurować logowanie jednokrotne na **Otsuka Shokai** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Po połączeniu do strony Moje klienta z logowania jednokrotnego aplikacji, Kreator uruchamia ustawienia logowania jednokrotnego.
+
+2. Jeśli identyfikator Otsuka nie jest zarejestrowana, przejdź do Otsuka identyfikator nowej rejestracji.   Jeśli zarejestrowano identyfikator Otsuka, przejdź do ustawień połączenia.
+
+3. Przejść do końca i po wyświetleniu ekranu najważniejsze po zalogowaniu się do strony Moje klienta spełniono ustawień logowania jednokrotnego.
+
+4. Przy następnym podłączeniu do strony Moje klienta z logowania jednokrotnego aplikacji, po otwarciu ekranu wskazówki dotyczące najważniejszych ekran jest wyświetlany po zalogowaniu się do strony Moje klienta.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -156,7 +153,7 @@ W tej sekcji można udostępnić Simon B. do używania platformy Azure logowanie
 
 ### <a name="create-otsuka-shokai-test-user"></a>Tworzenie użytkownika testowego Otsuka Shokai
 
-W tej sekcji utworzysz użytkownika o nazwie B.Simon w Otsuka Shokai. Praca z [zespołem pomocy technicznej Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) Aby dodać użytkowników na platformie Otsuka Shokai. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+Przy pierwszym dostępie do Otsuka Shokai odbędzie się nowej rejestracji konta SaaS. Ponadto firma Microsoft będzie również skojarzyć konto usługi Azure AD i SaaS w momencie utworzenia nowej.
 
 ### <a name="test-sso"></a>Test SSO
 

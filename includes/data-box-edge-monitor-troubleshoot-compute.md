@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 7058d7f46373f8adaacbcbf90e5ea591a15f8f37
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67125617"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183689"
 ---
 Na urządzeniu krawędź pola danych, które ma rolę obliczeń skonfigurowane, podzbiór platformy docker do monitorowania lub Rozwiązywanie problemów z modułami dostępnych poleceń. Aby wyświetlić listę dostępnych poleceń [nawiązać połączenie z interfejsu programu PowerShell](#connect-to-the-powershell-interface) i użyj `dkrdbe` funkcji.
 

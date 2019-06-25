@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297091"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274001"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację do wystąpienia zarządzanego Azure SQL Database
 
@@ -45,7 +45,7 @@ Dostępne są dwie opcje łączenia sieci wirtualnych:
 Ta opcja komunikacji równorzędnej jest preferowane jeden, ponieważ komunikację równorzędną używa sieci szkieletowej firmy Microsoft w związku z punktu widzenia łączności, nie ma żadnej różnicy zauważalnego opóźnienia między maszynami wirtualnymi w wirtualnej sieci równorzędnej i w tej samej sieci wirtualnej. Komunikacja równorzędna sieci wirtualnych jest ograniczona do sieci, w tym samym regionie.  
 
 > [!IMPORTANT]
-> Scenariusz komunikacji równorzędnej sieci wirtualnej dla wystąpienia zarządzanego jest ograniczona do sieci, w tym samym regionie, ze względu na [ograniczenia globalne wirtualne sieci równorzędne](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
+> Scenariusz komunikacji równorzędnej sieci wirtualnej dla wystąpienia zarządzanego jest ograniczona do sieci, w tym samym regionie, ze względu na [ograniczenia globalne wirtualne sieci równorzędne](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zobacz też odpowiedniej sekcji [Azure wirtualnych sieci — często zadawane pytania](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) artykuł, aby uzyskać więcej informacji. 
 
 ## <a name="connect-an-on-premises-application"></a>Łączenie aplikacji w środowisku lokalnym
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 670319eb3fb79742d2946f5fc45ca8904e8c1dd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd8d4a4bd21e0f7a7f483e139beb1840b5c3cc7f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105955"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Braze
 
@@ -106,7 +106,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Braze, wykonaj nast
 
     ![Domena i adresy URL pojedynczego logowania jednokrotnego informacji braze](common/both-replyurl.png)
 
-    W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.braze.com/auth/saml/callback `
+    W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.braze.com/auth/saml/callback`
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 

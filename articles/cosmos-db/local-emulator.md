@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: deborahc
 ms.author: dech
-ms.date: 05/20/2019
-ms.openlocfilehash: 9e7342ebcbcf536b26e6cf7fb89e3cf58666d24f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/21/2019
+ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953960"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331775"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Na użytek emulatora usługi Azure Cosmos lokalne programowanie i testowanie
 
@@ -241,7 +241,7 @@ Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu 
 |[Bez argumentów] | Uruchamiania emulatora usługi Azure Cosmos przy użyciu ustawień domyślnych. |CosmosDB.Emulator.exe| |
 |[Help] |Wyświetla listę obsługiwanych argumentów wiersza polecenia.|CosmosDB.Emulator.exe /? | |
 | GetStatus |Pobiera stan emulatora usługi Azure Cosmos. Stan jest wskazywany przez kod zakończenia: 1 = uruchamiany, 2 = uruchomiony, 3 = zatrzymany. Kod zakończenia o wartości ujemnej informuje o wystąpieniu błędu. Inne dane wyjściowe nie są generowane. | CosmosDB.Emulator.exe /GetStatus| |
-| Zamknij| Zamyka emulatora usługi Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
+| Shutdown| Zamyka emulatora usługi Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | Określa ścieżkę przechowywania plików danych. Wartość domyślna to % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<ścieżka_do_danych\> | \<ścieżka_do_danych\>: dostępna ścieżka |
 |Port | Określa numer portu używanego przez emulatora. Wartość domyślna to 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: numer pojedynczego portu |
 | MongoPort | Określa numer portu używanego w celu zapewnienia zgodności z interfejsem API usługi MongoDB. Wartość domyślna to 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<port_mongo\>: numer pojedynczego portu|
@@ -413,6 +413,57 @@ Aby otworzyć Eksploratora danych, otwórz następujący adres URL w przeglądar
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+## W systemie Mac lub Linux<a id="mac"></a>
+
+Obecnie z emulatora usługi Cosmos można uruchamiać tylko na Windows. Użytkowników, dla których systemem Mac lub Linux można uruchomić emulatora na maszynie wirtualnej Windows obsługiwanych funkcji hypervisor, takich jak Parallels i VirtualBox. Poniżej przedstawiono kroki, aby włączyć tę opcję.
+
+Na maszynie wirtualnej Windows uruchom poniższe polecenie i zanotuj adres IPv4.
+
+```cmd
+ipconfig.exe
+```
+
+W aplikacji, zajdzie potrzeba zmiany adresu IPv4, zwracany przez identyfikator URI obiektu DocumentClient `ipconfig.exe`. Następnym krokiem jest w celu obejścia Weryfikacja urzędu certyfikacji przy konstruowaniu obiektu DocumentClient. W tym konieczne będzie zapewnienie HttpClientHandler konstruktora DocumentClient, który ma własne implementację ServerCertificateCustomValidationCallback.
+
+Poniżej znajduje się przykład jak powinien wyglądać kod.
+
+```csharp
+using System;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using System.Net.Http;
+
+namespace emulator
+{
+    class Program
+    {
+        static async void Main(string[] args)
+        {
+            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
+            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+
+            //Work around the CA validation
+            var httpHandler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+            };
+
+            //Pass http handler to document client
+            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+            {
+                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
+                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
+            }
+        }
+    }
+}
+```
+
+Na koniec w maszynie wirtualnej Windows, należy uruchomić z wiersza polecenia, korzystając z następujących opcji z emulatora usługi Cosmos.
+
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -450,7 +501,7 @@ Aby zebrać dane śledzenia debugowania, uruchom następujące polecenia w wiers
 ### <a id="uninstall"></a>Odinstalowywanie lokalnego emulatora
 
 1. Zamknij wszystkie otwarte wystąpienia lokalnego emulatora prawym przyciskiem myszy ikonę emulatora usługi Azure Cosmos na pasku zadań, a następnie klikając pozycję Zakończ. Zamykanie wszystkich wystąpień może potrwać około minuty.
-2. W polu wyszukiwania systemu Windows wpisz ciąg **Aplikacje i funkcje** i kliknij wynik **Aplikacje i funkcje (Ustawienia systemowe)**.
+2. W polu wyszukiwania systemu Windows wpisz ciąg **Aplikacje i funkcje** i kliknij wynik **Aplikacje i funkcje (Ustawienia systemowe)** .
 3. Przewiń listę aplikacji, wybierz pozycję **Emulator usługi Azure Cosmos DB**, kliknij przycisk **Odinstaluj**, potwierdź i ponownie kliknij przycisk **Odinstaluj**.
 4. Gdy aplikacja zostanie odinstalowana, przejdź do katalogu `%LOCALAPPDATA%\CosmosDBEmulator` i usuń folder.
 

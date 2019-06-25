@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62c3b35f80300a38213b089567c3f63a8a2ce8db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: ab80279fae9dacdf7462b6c9d8208e0a56ca0877
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235070"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164983"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Tworzenie zestawu danych referencyjnych dla środowiska usługi Time Series Insights przy użyciu witryny Azure portal
 
@@ -36,7 +36,7 @@ Dane referencyjne nie jest przyłączona wstecznie. W związku z tym tylko bież
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Znajdź istniejącego środowiska usługi Time Series Insights. Kliknij przycisk **wszystkie zasoby** w menu po lewej stronie witryny Azure portal. Wybierz środowisko usługi Time Series Insights.
+1. Znajdź istniejącego środowiska usługi Time Series Insights. Wybierz **wszystkie zasoby** w menu po lewej stronie witryny Azure portal. Wybierz środowisko usługi Time Series Insights.
 
 1. Wybierz **Przegląd** strony. Znajdź **URL Eksploratora usługi Time Series Insights** i otwórz link.  
 
@@ -76,7 +76,7 @@ Dane referencyjne nie jest przyłączona wstecznie. W związku z tym tylko bież
 
 1. Jeśli to konieczne, należy zmienić nazwy nagłówków kolumn. Nazwa kolumny klucza jest niezbędne do przyłączenia do odpowiedniej właściwości w źródle zdarzenia. Upewnij się, że nazwy kolumny klucza danych odwołania pasują dokładnie do nazwy zdarzenia przychodzące dane, w tym uwzględnianie wielkości liter. Nazwy kolumny niebędącej kluczem są używane rozszerzyć dane przychodzące z odpowiednimi wartościami danych odwołania.
 
-1. Kliknij przycisk **Dodaj wiersz** lub **Dodaj kolumnę** można dodać więcej wartości danych referencyjnych, zgodnie z potrzebami.
+1. Wybierz **Dodaj wiersz** lub **Dodaj kolumnę** można dodać więcej wartości danych referencyjnych, zgodnie z potrzebami.
 
 1. Wpisz wartość w **filtrować wiersze...**  pola, aby przejrzeć określonych wierszy, zgodnie z potrzebami. Filtr jest przydatne podczas przeglądania danych, ale nie została zastosowana podczas przekazywania danych.
 

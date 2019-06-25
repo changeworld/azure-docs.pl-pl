@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479545"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329382"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
  
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Funkcje języka JavaScript zdefiniowane przez użytkownika obejmują bezstanowe funkcje skalarne przeznaczone tylko do obliczeń, które nie wymagają łączności zewnętrznej. Wartość zwracana przez funkcję może być tylko wartością skalarną (pojedynczą). Po dodaniu funkcji języka JavaScript zdefiniowanej przez użytkownika do zadania możesz jej używać we wszystkich miejscach zapytania — tak jak wbudowanej funkcji skalarnej.
 
 Poniżej przedstawiono kilka scenariuszy, w których funkcje języka JavaScript zdefiniowane przez użytkownika mogą być przydatne:
-* Analizowanie ciągów zawierających funkcje do obsługi wyrażeń regularnych, na przykład **Regexp_Replace()** i **Regexp_Extract()**, oraz wykonywanie operacji na takich ciągach
+* Analizowanie ciągów zawierających funkcje do obsługi wyrażeń regularnych, na przykład **Regexp_Replace()** i **Regexp_Extract()** , oraz wykonywanie operacji na takich ciągach
 * Dekodowanie i kodowanie danych, na przykład konwersja danych binarnych na szesnastkowe
 * Wykonywanie obliczeń matematycznych za pomocą funkcji **matematycznych** języka JavaScript
 * Wykonywanie operacji na tablicach, takich jak sortowanie, łączenie, przeszukiwanie i wypełnianie
@@ -120,6 +120,8 @@ Object | Rekord
 Tablica | Tablica
 Null, Undefined | NULL
 Każdy inny typ (na przykład function lub error) | Nieobsługiwane (powoduje wystąpienie błędu w czasie wykonywania)
+
+Język JavaScript jest uwzględniana wielkość liter i wielkość liter w wyrazie pola obiektu w kodzie JavaScript musi odpowiadać wielkości liter pól w danych przychodzących. Należy pamiętać, że zadania o poziomie zgodności 1.0 spowoduje wykonanie konwersji pola instrukcję SQL SELECT, aby zawierać tylko litery. Równy podanemu poziomowi zgodności 1.1 lub nowszej pola z instrukcją SELECT ma tą samą wielkością liter, jak określono w zapytaniu SQL.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Błędy w czasie wykonywania kodu JavaScript są traktowane jako błędy krytyczne i uwidaczniane w dzienniku aktywności. Aby pobrać dziennik, w witrynie Azure Portal przejdź do zadania i wybierz pozycję **Dziennik aktywności**.

@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 081d65f60eab4e2412a5dd14c3a63a18598e3b8a
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751982"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146316"
 ---
-# <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Azure Log Analytics
+# <a name="collect-log-data-with-the-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Log Analytics
 
 Agenta usługi Azure Log Analytics, wcześniej nazywana zgodnie z Microsoft Monitoring Agent (MMA) lub usługi OMS Linux agent został opracowany do kompleksowego zarządzania na maszynach lokalnych komputerów monitorowanych przez [System Center Operations Manager ](https://docs.microsoft.com/system-center/scom/)i maszyn wirtualnych w chmurze. Agentów systemów Windows i Linux dołączanie do usługi Azure Monitor i przechowywać zebrane dane dzienników z różnych źródeł w obszaru roboczego usługi Log Analytics, a także wszystkie dzienniki unikatowy lub metryk zgodnie z definicją w rozwiązaniu do monitorowania. 
 
@@ -34,11 +34,11 @@ Przed analizowanie i przetwarzanie zebranych danych, należy najpierw zainstalow
 
 Agent dla systemu Linux i Windows komunikuje się za pośrednictwem portu TCP 443 wychodzących do usługi Azure Monitor, a jeśli komputer, który nawiązuje połączenie za pośrednictwem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, zapoznaj się z wymaganiami poniżej, aby zrozumieć konfigurację sieci Wymagane. Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, możesz skonfigurować [bramy usługi Log Analytics](gateway.md) , a następnie skonfigurować agenta Aby nawiązać połączenie za pośrednictwem bramy do dzienników usługi Azure Monitor. Agenta można odbierać informacje o konfiguracji i Wyślij dane zbierane w zależności od tego, jakie dane zasad zbierania i monitorowania rozwiązań jest włączona w obszarze roboczym. 
 
-Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym, może być wieloadresowych z usługą Azure Monitor, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager](../../azure-monitor/platform/om-agents.md). Komputerami z systemem Linux agent nie uwzględniają składnik usługi kondycji, ponieważ nie agenta Windows, a informacje są zbierane i przetwarzane przez serwer zarządzania w jej imieniu. Ponieważ komputery z systemem Linux są monitorowane w inny sposób z programem Operations Manager, nie mają one odbierać konfigurację lub zbieranie danych bezpośrednio i przekazywania przez grupę zarządzania, takich jak jest zarządzany przez agenta systemu Windows. W rezultacie w tym scenariuszu nie jest obsługiwana z komputerów z systemem Linux raportowania programu Operations Manager.  
+Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym, może być wieloadresowych z usługą Azure Monitor, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager](../../azure-monitor/platform/om-agents.md). Komputerami z systemem Linux agent nie uwzględniają składnik usługi kondycji, ponieważ nie agenta Windows, a informacje są zbierane i przetwarzane przez serwer zarządzania w jej imieniu. Ponieważ komputery z systemem Linux są monitorowane w inny sposób z programem Operations Manager, nie mają one odbierać konfigurację lub zbieranie danych bezpośrednio i przekazywania przez grupę zarządzania, takich jak jest zarządzany przez agenta systemu Windows. W rezultacie, w tym scenariuszu nie jest obsługiwana za pomocą komputerów z systemem Linux raportowania programu Operations Manager i należy skonfigurować komputer z systemem Linux do [raportu do grupy zarządzania programu Operations Manager](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) obszar roboczy usługi Log Analytics w dwóch kroki.
 
 Windows agent może raportować do czterech obszarów roboczych usługi Log Analytics, a agenta systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
 
-Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywania połączenia z usługi Azure Monitor, obsługuje również usługi Azure Automation do obsługi roli procesu roboczego hybrydowego elementu Runbook i innych usług, takich jak [Change Tracking](../../automation/change-tracking.md) i [rozwiązania Update Management](../../automation/automation-update-management.md). Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywania połączenia z usługi Azure Monitor, obsługuje również usługi Azure Automation do obsługi roli procesu roboczego hybrydowego elementu Runbook i innych usług, takich jak [Change Tracking](../../automation/change-tracking.md), [rozwiązania Update Management](../../automation/automation-update-management.md), i [usługi Azure Security Center](../../security-center/security-center-intro.md). Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
@@ -83,7 +83,7 @@ W poniższej tabeli wymieniono pakiety wymagane dla obsługiwanych dystrybucjach
 |Glibc |    Biblioteka C GNU | 2.5-12 
 |Openssl    | Biblioteki OpenSSL | 1.0.x lub 1.1.x |
 |Curl | Klient sieci web programu cURL | 7.15.5 |
-|Ctypes języka Python | | 
+|Python-ctypes | | 
 |PAM | Podłączane moduły uwierzytelniania | | 
 
 >[!NOTE]
@@ -97,9 +97,9 @@ Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych inform
 
 |Zasób agenta|Porty |Kierunek |Obejście inspekcji HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
-|*.oms.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
-|*.blob.core.windows.net |Port 443 |Wychodzące|Tak |  
+|*.ods.opinsights.azure.com |Port 443 |Wychodzące|Yes |  
+|*.oms.opinsights.azure.com |Port 443 |Wychodzące|Yes |  
+|*.blob.core.windows.net |Port 443 |Wychodzące|Yes |  
 |*.azure-automation.net |Port 443 |Wychodzące|Tak |  
 
 Uzyskać zapory wymagane dla platformy Azure Government, zobacz [zarządzania platformy Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 

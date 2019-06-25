@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
 ms.openlocfilehash: c06a338ec041c83588c3ee5126795b8c445ef469
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937984"
 ---
 # <a name="offer-listing-best-practices"></a>Najlepsze rozwiązania dotyczące ofert
@@ -38,7 +38,7 @@ Tabele, które w tej sekcji zawierają sugestie dotyczące tworzenia i atrakcyjn
 | Oferty logo (PNG format, 48&nbsp;&times;&nbsp;48): strona wyszukiwania | Projektowanie i zoptymalizować logo dla nośnika cyfrowego:<br>Przekaż logo w formacie PNG do strony wyszukiwania oferty. |
 | Oferty logo (PNG format, 216&nbsp;&times;&nbsp;216): strona szczegółów aplikacji | Projektowanie i zoptymalizować logo dla nośnika cyfrowego:<br>Przekaż logo w formacie PNG do szczegółów aplikacji, na stronie oferty listy. |
 | Dokumenty "Dowiedz się więcej" | Obejmują wsparcie sprzedaży i marketingu zasoby "Dowiedz się więcej", niektóre przykłady to: <ul> <li> oficjalne dokumenty </li> <li> Broszury, </li> <li> listy kontrolne, lub </li> <li> Prezentacje programu PowerPoint.</li> </ul>Zapisz wszystkie pliki w formacie PDF. Tutaj celem powinno być Poinformuj klientów, sprzedaży do nich. <br><br>Dodaj link do strony docelowej aplikacji, aby wszystkie dokumenty i Dodaj parametry adresu URL, aby ułatwić śledzenie odwiedzających i wersje próbne. |
-| Filmy wideo: Usługa AppSource, consulting services oraz rozwiązanie SaaS zapewnia tylko | Wideo najsilniejszych komunikują się wartość oferty w postaci narracji:<ul> <li> Upewnij się, klient nie Twoja firma, hero wątku. </li> <li> Film wideo należy adres głównych wyzwań i cele klientów docelowych. </li> <li> Zalecana długość: 60 – 90 sekund.</li> <li> Uwzględniaj słów kluczowych, używające nazwy plików wideo. </li> <li> Rozważ dodanie obejrzeć dodatkowe filmy wideo, takich jak uzyskać instrukcje, wprowadzenie lub opinie klientów. </li> </ul> |
+| Wideo: Usługa AppSource, consulting services oraz rozwiązanie SaaS zapewnia tylko | Wideo najsilniejszych komunikują się wartość oferty w postaci narracji:<ul> <li> Upewnij się, klient nie Twoja firma, hero wątku. </li> <li> Film wideo należy adres głównych wyzwań i cele klientów docelowych. </li> <li> Zalecana długość: 60 – 90 sekund.</li> <li> Uwzględniaj słów kluczowych, używające nazwy plików wideo. </li> <li> Rozważ dodanie obejrzeć dodatkowe filmy wideo, takich jak uzyskać instrukcje, wprowadzenie lub opinie klientów. </li> </ul> |
 | Zrzuty ekranu (1280&nbsp;&times;&nbsp;720) | Dodaj do pięciu zrzuty ekranu:<br>Uwzględniaj klucza słów kluczowych w nazwach plików. |
 
 ## <a name="link-to-your-offer-page-from-your-website"></a>Link do strony oferty z witryny sieci Web

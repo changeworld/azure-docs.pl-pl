@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 06/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5c45071406c420546a90a71751045fea926804f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 235fe1fbe7febc193826cf09202365ee4a788194
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66513521"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164760"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma tożsamości firmy Microsoft i przepływ kodu autoryzacji OAuth 2.0
 
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `client_id`   | Wymagane    | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji.  |
 | `response_type` | Wymagane    | Musi zawierać `code` dla przepływ kodu autoryzacji.       |
 | `redirect_uri`  | Wymagane | Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnych i mobilne, należy używać wartość domyślną `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
-| `scope`  | Wymagane    | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na. |
+| `scope`  | Wymagane    | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na.  Aby uzyskać `/authorize` gałęzi żądania, to obejmuje wiele zasobów, dzięki czemu aplikację, aby uzyskać zgodę wielu internetowych interfejsów API, który chcesz wybrać. |
 | `response_mode`   | Zalecane | Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Może to być jeden z następujących modyfikatorów dostępu:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` zawiera kod jako parametr ciągu zapytania identyfikatora URI przekierowania. W przypadku żądania tokenu Identyfikatora, przy użyciu niejawnego przepływu, nie można użyć `query` określonej [Specyfikacja OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli masz żądania tylko kod, możesz użyć `query`, `fragment`, lub `form_post`. `form_post` wykonuje WPIS zawierający kod, aby identyfikator URI przekierowania. Aby uzyskać więcej informacji, zobacz [protokołu OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | Zalecane | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widoku, które znajdowały się w wartości również zakodować informacje o stanie użytkownika w aplikacji. |
 | `prompt`  | Opcjonalne    | Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są `login`, `none`, i `consent`.<br/><br/>- `prompt=login` Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja logowania jednokrotnego.<br/>- `prompt=none` jest przeciwieństwem - zapewni, że użytkownik nie jest wyświetlone wszystkie interaktywne monity w inny sposób. Jeśli nie można ukończyć żądania dyskretnie za pomocą logowania jednokrotnego, zwróci Microsoft platformy tożsamości z punktu końcowego `interaction_required` błędu.<br/>- `prompt=consent` wywołuje okno dialogowe ze zgodą OAuth po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |
@@ -154,7 +154,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`   | Wymagane   | `{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | Wymagane  | Identyfikator aplikacji (klienta) [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) strony przypisany do aplikacji. |
 | `grant_type` | Wymagane   | Musi być `authorization_code` dla przepływ kodu autoryzacji.   |
-| `scope`      | Wymagane   | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w pierwszy gałęzi. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, Microsoft platformy tożsamości z punktu końcowego zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
+| `scope`      | Wymagane   | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w pierwszy gałęzi. Zakresy muszą pochodzić z pojedynczego zasobu, wraz z zakresów OIDC (`profile`, `openid`, `email`). Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
 | `code`          | Wymagane  | Authorization_code, uzyskanego w pierwszej gałęzi przepływu. |
 | `redirect_uri`  | Wymagane  | Taką samą wartość redirect_uri, który został użyty do uzyskania authorization_code. |
 | `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie można używać klucza tajnego aplikacji w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest to wymagane dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web.  Klucz tajny klienta musi być zakodowane w adresie URL przed wysłaniem.  |

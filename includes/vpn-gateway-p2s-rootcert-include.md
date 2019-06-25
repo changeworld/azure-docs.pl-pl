@@ -9,11 +9,11 @@ ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c8e7e5272f180c482ca7fdd44302f49eb888b25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157219"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183091"
 ---
 Użyj certyfikatu głównego wygenerowanego za pomocą rozwiązania przedsiębiorstwa (zalecane) albo wygeneruj certyfikat z podpisem własnym. Po utworzeniu certyfikatu głównego wyeksportuj dane certyfikatu publicznego (nie klucz prywatny) jako plik cer X.509 z kodowaniem Base64. Następnie przekaż dane certyfikatu publicznego na serwer platformy Azure.
 

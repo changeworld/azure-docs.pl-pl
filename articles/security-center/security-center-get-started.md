@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 37f85afbdd55d3f14638f0833f69bb1992770449
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4464796e655cefd28f858cb732ff3d5721a7aa47
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60908332"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206810"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Szybki start: Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej. Warstwa Bezpłatna zapewnia ograniczone bezpieczeństwo jedynie zasobów platformy Azure, natomiast warstwa Standardowa rozszerza te możliwości na środowisko lokalne i inne chmury. Usługa Security Center w warstwie Standardowa pomaga w wyszukiwaniu i naprawianiu luk w zabezpieczeniach, stosowaniu kontroli dostępu i aplikacji w celu blokowania złośliwych działań, wykrywaniu zagrożeń przy użyciu analizy oraz szybkim reagowaniu podczas ataku. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
@@ -74,10 +74,10 @@ Jeśli jest włączona automatyczna aprowizacja, usługa Security Center instalu
 Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
 
 1. W menu głównym usługi Security Center wybierz pozycję **Zasady zabezpieczeń**.
-2. W wierszu subskrypcji wybierz pozycję **Edytuj ustawienia>**.
+2. W wierszu subskrypcji wybierz pozycję **Edytuj ustawienia>** .
 3. Na karcie **Zbieranie danych** ustaw opcję **Automatyczna aprowizacja** na wartość **Wł**.
 4. Wybierz pozycję **Zapisz**.
-****
+---
   ![Włączanie automatycznej aprowizacji][6]
 
 Dzięki temu nowemu wglądowi w maszyny wirtualne platformy Azure usługa Security Center może udostępniać dodatkowe zalecenia dotyczące stanu aktualizacji systemu, konfiguracji zabezpieczeń systemu operacyjnego i ochrony punktów końcowych, a także generować dodatkowe alerty zabezpieczeń.
@@ -88,14 +88,14 @@ Dzięki temu nowemu wglądowi w maszyny wirtualne platformy Azure usługa Securi
 Inne przewodniki szybkiego startu i samouczki w tej kolekcji bazują na tym przewodniku. Jeśli zamierzasz kontynuować pracę z kolejnymi przewodnikami szybkiego startu i samouczkami, w dalszym ciągu korzystaj z warstwy standardowej i zachowaj włączoną automatyczną aprowizację. Jeśli nie zamierzasz kontynuować lub chcesz wrócić do warstwy bezpłatnej:
 
 1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. W wierszu subskrypcji, którą chcesz cofnąć do bezpłatnej, wybierz opcję **Edytuj ustawienia>**.
+2. W wierszu subskrypcji, którą chcesz cofnąć do bezpłatnej, wybierz opcję **Edytuj ustawienia>** .
 3. Wybierz pozycje **Warstwa cenowa** i **Bezpłatna**, aby zmienić subskrypcję z warstwy standardowej na warstwę bezpłatną.
 5. Wybierz pozycję **Zapisz**.
 
 Jeśli chcesz wyłączyć automatyczną aprowizację:
 
 1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. W wierszu subskrypcji, dla której chcesz wyłączyć automatyczną aprowizację, wybierz pozycję **Edytuj ustawienia>**.
+2. W wierszu subskrypcji, dla której chcesz wyłączyć automatyczną aprowizację, wybierz pozycję **Edytuj ustawienia>** .
 3. Na karcie **Zbieranie danych** ustaw opcję **Automatyczna aprowizacja** na wartość **Wył**.
 4. Wybierz pozycję **Zapisz**.
 

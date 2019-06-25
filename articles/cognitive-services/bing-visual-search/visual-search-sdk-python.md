@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 06/11/2018
-ms.author: v-gedod
-ms.openlocfilehash: eb115d1bfe033761c8dab82b693e4e694ff3bd2b
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.date: 06/18/2019
+ms.author: aahi
+ms.openlocfilehash: eb0befe3b6f131559a86c121251a4b6194abc49c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734631"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204016"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Szybki start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwania wizualnego Bing dla języka Python
 
@@ -24,7 +24,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Środowisko [Python](https://www.python.org/) 2.x lub 3.x
-* Zalecane jest użycie [środowiska wirtualnego](https://docs.python.org/3/tutorial/venv.html). Zainstaluj i zainicjuj środowisko wirtualne przy użyciu [modułu venv](https://pypi.python.org/pypi/virtualenv). Zainstaluj virtualenv dla środowiska Python w wersji 2.7.
+* Zalecane jest użycie [środowiska wirtualnego](https://docs.python.org/3/tutorial/venv.html). Zainstaluj i zainicjuj środowisko wirtualne przy użyciu [modułu venv](https://pypi.python.org/pypi/virtualenv).
 * Zestaw SDK wyszukiwania wizualnego Bing dla języka Python. Możesz go zainstalować za pomocą następujących poleceń:
     1. `cd mytestenv`
     2. `python -m pip install azure-cognitiveservices-search-visualsearch`

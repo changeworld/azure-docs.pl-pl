@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0de4d2b9ad0d009b9cd363d19a2de3f29d810d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696593"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303448"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Wskazówki dotyczące rozwiązywania problemów dla wyszukiwania kognitywnego
 
@@ -94,7 +94,10 @@ Analiza obrazu jest intensywnie wymaga w przypadkach, nawet prostych, więc gdy 
 
 Maksymalny czas wykonywania jest zależna od warstwy: kilka minut na bezpłatna warstwa indeksowania w warstwach płatnych 24-godzinnym. Jeśli przetwarzanie zakończy się niepowodzeniem do wykonania w okresie 24-godzinnym do przetworzenia na żądanie, przełącz się do harmonogramu, aby poczekać, aż indeksator przejmą przetwarzania tam, gdzie ją przerwaliśmy. 
 
-Zaplanowane indeksatorów indeksowanie wznawia zgodnie z harmonogramem w ostatnich znanych dokumentu dobre. Za pomocą harmonogramu cyklicznego, indeksator może działać jego sposób za pomocą zaległości obraz ciągu kilku godzin lub dni, dopóki wszystkie obrazy nie przetworzono są przetwarzane. Aby uzyskać więcej informacji na temat Składnia harmonogramu, zobacz [krok 3: Utwórz wiadomość indeksatora](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
+Zaplanowane indeksatorów indeksowanie wznawia zgodnie z harmonogramem w ostatnich znanych dokumentu dobre. Za pomocą harmonogramu cyklicznego, indeksator może działać jego sposób za pomocą zaległości obraz ciągu kilku godzin lub dni, dopóki wszystkie obrazy nie przetworzono są przetwarzane. Aby uzyskać więcej informacji na temat Składnia harmonogramu, zobacz [krok 3: Utwórz wiadomość indeksatora](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) lub zobacz [sposób tworzenia harmonogramu indeksatorów usługi Azure Search](search-howto-schedule-indexers.md).
+
+> [!NOTE]
+> Jeśli indeksatora jest ustawiona na niektórych harmonogramu, ale wielokrotnie kończy się niepowodzeniem, w tym samym dokumentu wielokrotnie każdorazowo jego uruchomienia, rozpocznie się indeksatora uruchomione na dłuższe interwały interwału (maksymalnie do co najmniej raz na 24 godziny), dopóki nie jest pomyślnie sprawia, że aga postępu w programie.  Jeśli uważasz, że rozwiązaniu niezależnie od rodzaju problemu, który powodował indeksatora zostać zatrzymane w pewnym momencie, możesz wykonać na żądanie uruchomienia indeksatora, i jeśli pomyślnie sprawia to, że postęp, indeksator powróci do jego ustaw interwał harmonogramu ponownie.
 
 Oparte na portalu indeksowania (zgodnie z opisem w przewodniku Szybki Start), wybierając indeksatora "uruchom raz" opcji limitów przetwarzania do 1 godziny (`"maxRunTime": "PT1H"`). Można rozszerzyć okna przetwarzania coś o nim więcej.
 

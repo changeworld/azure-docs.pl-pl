@@ -9,11 +9,11 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147910"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183216"
 ---
 *Trwa rozgrzewanie pamięci podręcznej*  
 Dysk z buforowania hosta tylko do odczytu są mógł przekazać wyższym operacje We/Wy niż limit na dysku. Aby uzyskać ten maksymalną wydajność odczytu z pamięci podręcznej hosta, najpierw należy musi przećwiczeniu podstawowych zadań pamięci podręcznej tego dysku. Daje to gwarancję, że odczytu z systemem IOs, że na woluminie CacheReads regulują narzędzi porównawczych faktycznie trafienia pamięci podręcznej, a nie dysków bezpośrednio. Wynik trafień w pamięci podręcznej w dodatkowe operacje We/Wy z jednym pamięci podręcznej włączone dysku.

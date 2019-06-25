@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: cd004e1eb6a40648c52dd3b5aee0ec38bff8f9b3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 73979ec3bd1d667453a186ea1f20bbeddc12db8f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304185"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273317"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Często zadawane pytania dotyczące usługi Azure Spatial Anchors
 
@@ -78,7 +78,7 @@ Usługa Azure Spatial Anchors jest zgodna z [postanowieniami umowy serwisowej pl
 Daty wprowadzania wersji ogólnie dostępnej zostaną ogłoszone wkrótce.
 
 **Pyt.: Czy istnieją jakiekolwiek limity ograniczania?**
- 
+
 **Odp.:** Tak, istnieją.  Nie oczekujemy, że zostaną osiągnięte podczas zwykłego tworzenia aplikacji i ich testowania. W przypadku wdrożeń produkcyjnych jesteśmy gotowi do obsługi wymagań naszych klientów związanych z wysoką skalowalnością. [Skontaktuj się z nami](mailto:azuremrs@microsoft.com) w celu omówienia tych zagadnień. W tej fazie wersji zapoznawczej nie została jeszcze opublikowana struktura warstw i cen, ale nastąpi to wkrótce.
 
 **Pyt.: W jakich regionach jest dostępna usługa Azure Spatial Anchors?**
@@ -125,3 +125,7 @@ Rozpocznij programowanie od zapoznania się z [dokumentacją](index.yml).
 **Pyt.: Czy ta usługa współpracuje z platformą Xamarin?**
 
 **Odp.:** Tak. Mimo że nie udostępniamy zestawu Xamarin SDK, oczekujemy, że deweloperzy mogą używać usługi Azure Spatial Anchors w ramach swoich aplikacji platformy Xamarin dzięki integracji z interfejsem API usługi Azure Spatial Anchors.
+
+**Pyt.: Jakie porty i protokoły czy kotwice przestrzenne Azure?**
+
+**Odp.:** Azure kotwic przestrzenne komunikuje się za pośrednictwem portu TCP 443, za pomocą protokołu zaszyfrowane. W przypadku uwierzytelniania używa [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), który komunikuje się przy użyciu protokołu HTTPS za pośrednictwem portu 443.

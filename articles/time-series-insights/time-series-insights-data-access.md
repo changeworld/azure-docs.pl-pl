@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53489ef9c1264fa31b06f4660e545e6efbd1f616
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 69180e17714b7d7004e63dce0de82a50e1f0b3af
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237031"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164622"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Przyznawanie dostępu do danych w środowisku
 
@@ -36,7 +36,7 @@ Wykonaj następujące kroki, aby zezwolić na dostęp do nazwy głównej użytko
 
     [![Data access jednego](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
-1. Wybierz **wybierz użytkownika**. Wyszukaj adres nazwy lub adresu e-mail użytkownika zlokalizować użytkownika, którego chcesz dodać. Kliknij przycisk **wybierz** aby potwierdzić wybór.
+1. Wybierz **wybierz użytkownika**. Wyszukaj adres nazwy lub adresu e-mail użytkownika zlokalizować użytkownika, którego chcesz dodać. Wybierz **wybierz** aby potwierdzić wybór.
 
     [![dane dostępu 2](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
 
@@ -76,7 +76,7 @@ Wykonaj następujące kroki, aby udzielić dostępu gościa do środowiska usłu
 
     [![Data access osiem](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
 
-1. Wybierz **wybierz użytkownika**. Wyszukaj adres e-mail użytkownika gościa, zaprosić do zlokalizowania użytkownika, którego chcesz dodać. Kliknij przycisk **wybierz** aby potwierdzić wybór.
+1. Wybierz **wybierz użytkownika**. Wyszukaj adres e-mail użytkownika gościa, zaprosić do zlokalizowania użytkownika, którego chcesz dodać. Następnie **wybierz** aby potwierdzić wybór.
 
     [![Data access dziewiątego](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 

@@ -43,6 +43,10 @@
       href: deploy-cli.md
     - name: Wdrażanie przy użyciu szablonu
       href: deploy-template.md
+    - name: Wdrażanie przy użyciu wielu publicznych adresów IP
+      href: deploy-multi-public-ip-powershell.md
+    - name: Wdrażanie przy użyciu stref dostępności
+      href: deploy-availability-zone-powershell.md
     - name: Integrowanie z modułem równoważenia obciążenia
       href: integrate-lb.md
 - name: Dokumentacja

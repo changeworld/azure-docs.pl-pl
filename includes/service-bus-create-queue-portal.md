@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d1cf75d8e678bc5bd3e3036930eea42526194df1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171310"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183472"
 ---
 ## <a name="create-a-queue-in-the-azure-portal"></a>Tworzenie kolejki w witrynie Azure Portal
 1. Na stronie **Przestrzeń nazw usługi Service Bus** wybierz pozycję **Kolejki** z menu nawigacji po lewej stronie.

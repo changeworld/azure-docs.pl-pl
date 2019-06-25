@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 588aa260f2ece543445bfd4da7ef4682dab8334c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170299"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183152"
 ---
 ## <a name="scenario"></a>Scenariusz
 Aby lepiej zilustrować tworzenie sieciowych grup zabezpieczeń, w tym dokumencie używa następujący scenariusz:

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 5/15/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 5ddcdeca41e2f21fa27db25f7e0721c7ef87e491
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 272c6d2de23b1e89caef3f9bee20a96c5c196cde
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65620278"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275181"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Limity rozmiaru żądanie zapory aplikacji sieci Web i listy wykluczeń
 
@@ -35,16 +35,16 @@ Zapora aplikacji sieci Web oferuje także można skonfigurować pokrętła, aby 
 
 Listy wykluczeń zapory aplikacji sieci Web pozwala na pominięcie niektórych atrybutów żądania oceny zapory aplikacji sieci Web. Typowym przykładem jest, że usługi Active Directory włożony tokenów, które są używane do uwierzytelniania lub pola hasła. Takie atrybuty są podatne na zawierać znaków specjalnych, co może powodować wyzwalanie wynik fałszywie dodatni z reguł zapory aplikacji sieci Web. Gdy atrybut zostanie dodany do listy wykluczeń zapory aplikacji sieci Web, nie jest uznawane za przez żadną regułę zapory aplikacji sieci Web skonfigurowanych i aktywne. Listy wykluczeń są globalne w zakresie.
 
-Następujące atrybuty mogą być dodawane do listy wykluczeń:
+Następujące atrybuty można dodać do listy wykluczeń. Wartość wybranego pola nie są obliczane względem reguły zapory aplikacji sieci Web. Wykluczenie Wyświetla listę kontroli Usuń wartość pola.
 
 * Nagłówki żądania
 * Pliki cookie żądania
-* Nazwa atrybutu żądania (argumenty)
+* Nazwa atrybutu żądania (argumenty) może być dodany jako element wykluczenia, takich jak:
 
-   * Wieloczęściowych danych formularza
-   * XML
-   * JSON
-   * Adres URL zapytania argumentów
+   * Nazwa pola formularza
+   * Jednostki XML
+   * Jednostki JSON
+   * Argumenty ciągu zapytania adresu URL
 
 Określ nagłówek żądania dokładnie, treści, pliku cookie lub dopasowanie atrybut ciągu zapytania.  Alternatywnie można opcjonalnie określić częściowego dopasowania. Wykluczenie jest zawsze włączona pole nagłówka, nigdy na jego wartość. Reguły wykluczania mają zakres globalny i mają zastosowanie do wszystkich stron i wszystkie reguły.
 

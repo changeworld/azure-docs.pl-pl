@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231424"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304181"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu
 
@@ -31,7 +31,7 @@ Text Analytics `entities` obsługuje punktu końcowego o nazwie rozpoznawanie je
 ### <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek znaku (NER)
 O nazwie rozpoznawanie jednostek (NER) to zdolność do identyfikacji różnych obiektów w tekście i kategoryzowanie je do wstępnie zdefiniowanych klas. Poniżej wymieniono obsługiwane klas jednostek.
 
-W analizy tekstu [w wersji 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne.
+W analizy tekstu [w wersji 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne dla kilku języków. Zobacz [języki](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) artykuł, aby uzyskać więcej informacji. 
 
 ### <a name="language-support"></a>Obsługa języków
 
@@ -105,7 +105,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 ## <a name="step-2-post-the-request"></a>Krok 2. Wysłanie żądania
 
-Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 100 żądań na drugim i 1000 żądań na minutę. Maksymalny rozmiar każdego żądania to 1 MB.
+Analiza jest wykonywana po odebraniu żądania. Zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie, aby uzyskać informacje na temat rozmiaru i liczby żądań można wysyłać na minutę i sekundę.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 

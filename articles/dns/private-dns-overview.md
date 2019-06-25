@@ -1,5 +1,5 @@
 ---
-title: Co to jest Azure prywatnej strefy DNS?
+title: Co to jest prywatna strefa DNS platformy Azure?
 description: Przegląd prywatnej strefy DNS, obsługującego usługę w systemie Microsoft Azure.
 services: dns
 author: vhorne
@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: a8548b4972d5853f09630ae3e9ded05ed6fee32b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 7012bbe98e41a3eb273b26e7e4ade705a6eaf8e1
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076381"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147580"
 ---
-# <a name="what-is-azure-private-dns"></a>Co to jest Azure prywatnej strefy DNS?
+# <a name="what-is-azure-private-dns"></a>Co to jest prywatna strefa DNS platformy Azure?
 
 > [!IMPORTANT]
 > Prywatnej usługi DNS platformy Azure jest obecnie w publicznej wersji zapoznawczej.
@@ -64,21 +64,11 @@ Usługa DNS platformy Azure zapewnia następujące możliwości:
 
 Usługa DNS platformy Azure ma następujące ograniczenia:
 
-* Sieć wirtualną tylko jeden rejestracji jest dozwoloną na strefę prywatną.
-* Maksymalnie 10 rozpoznawanie sieci wirtualne są dozwolone na strefę prywatną. Ten limit zostanie usunięta, gdy ta funkcja jest ogólnie dostępna.
-* Określonej sieci wirtualnej można połączyć tylko jedną strefę prywatnego jako sieć wirtualną rejestracji.
-* Określonej sieci wirtualnej można połączyć maksymalnie 10 stref prywatnych jako sieć wirtualną rozpoznawania. Ten limit zostanie usunięta, gdy ta funkcja jest ogólnie dostępna.
-* Jeśli określisz sieć wirtualną rejestracji, rekordy DNS dla maszyn wirtualnych z tej sieci wirtualnej, które są zarejestrowane do prywatnej strefy nie są widoczne i możliwe do pobierania z programu Azure Powershell i interfejsów API interfejsu wiersza polecenia platformy Azure. Rekordy maszyny Wirtualnej w rzeczywistości są zarejestrowane i zostanie rozwiązany pomyślnie.
-* Odwrotnego DNS działa tylko w przypadku prywatnej przestrzeni adresów IP w sieci wirtualnej rejestracji.
-* Odwrotne DNS dla prywatnego adresu IP, który nie jest zarejestrowany w prywatnej strefy (na przykład, prywatny adres IP dla maszyny wirtualnej w sieci wirtualnej, która zostanie połączona jako sieć wirtualną rozpoznawania prywatnej strefy) zwraca *internal.cloudapp.net* sufiks DNS. Jednak ten sufiks nie można rozpoznać.
-* Sieć wirtualna musi być całkowicie pusty po raz pierwszy możesz połączyć strefę prywatną jako sieć wirtualną rejestracji lub rozpoznawania. Jednak sieci wirtualnej następnie może być pusty dla przyszłych połączeń jako rejestracji lub rozpoznawania sieci wirtualnej, do innych stref prywatnych.
-* Obecnie warunkowego przesyłania dalej nie jest obsługiwane (na przykład w przypadku włączania rozpoznawania między sieciami Azure i lokalnego). Aby dowiedzieć się, jak jak klienci mogą weź pod uwagę, w tym scenariuszu za pośrednictwem innych mechanizmów, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+* Określonej sieci wirtualnej można połączyć tylko jedną strefę prywatnej tak, jakby automatycznej rejestracji rekordów DNS maszyny Wirtualnej jest włączona. Jednak wiele sieci wirtualnych można połączyć w jedną strefę DNS.
 * Odwrotnego DNS dotyczy tylko przestrzeń prywatnych adresów IP w sieci wirtualnej połączonej
 * Odwrotnym systemem DNS, aby uzyskać prywatny adres IP dla sieci wirtualnej połączonej zwraca "internal.cloudapp.net" jako domyślny sufiks dla maszyny wirtualnej. Dla sieci wirtualnych, które są połączone strefę prywatną z włączoną autorejestracją odwrotnego systemu DNS dla prywatny adres IP zwraca 2 nazw FQDN jednego z domyślną sufiks *internal.cloudapp.net* , a drugi z sufiksem stref prywatnych.
-* Warunkowego przesyłania dalej nie jest obsługiwane. Na przykład aby włączyć rozpoznawanie między platformą Azure i lokalnej sieci. Dowiedz się, jak włączyć ten scenariusz przy użyciu innych mechanizmów. Zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Warunkowego przesyłania dalej nie jest natywnie obsługiwane w tej chwili. Aby włączyć rozpoznawanie między platformą Azure i lokalnej sieci. Zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
-
-
 ## <a name="pricing"></a>Cennik
 
 Aby uzyskać informacje o cenach, zobacz [cennik usługi Azure DNS](https://azure.microsoft.com/pricing/details/dns/).

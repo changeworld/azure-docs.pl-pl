@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 03/01/2018
+ms.date: 06/18/2019
 ms.author: ghogen
-ms.openlocfilehash: 6f697c91851e7ddc95f84239987bb4378bafd094
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 85afae087b1b1e572759943142412743744ee806
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798639"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203420"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Samouczek: Nawiązywanie połączenia z interfejsem API wyszukiwania wiadomości Bing za pomocą usług połączonych w programie Visual Studio i języka C#
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono szczegółowe instrukcje dotyczące korzystania z i
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli jej nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
-- Visual Studio 2017 w wersji 15.7 lub nowszej, z zainstalowanym obciążeniem programowania dla sieci Web. [Pobierz go teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Dnia Visual Studio 2019 r, z zainstalowanym obciążeniem programowania dla sieci Web. [Pobierz go teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 3f93318dedb8a4667d32bcc97eb6a697ccebfcc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d4e49b4f7c1aa244b59ef17716c90369a0d3339
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122580"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273374"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — omówienie
 
@@ -42,10 +42,10 @@ Usługa Azure Monitor dla maszyn wirtualnych obsługuje obszar roboczy usługi L
 - Środkowo-zachodnie stany USA
 - Zachodnie stany USA 2<sup>1</sup>
 - Wschodnie stany USA
-- Canada Central<sup>1</sup>
-- UK South<sup>1</sup>
+- Kanada Środkowa
+- Południowe Zjednoczone Królestwo
 - Europa Zachodnia
-- Azja południowo-wschodnia<sup>1</sup>
+- Azja Południowo-Wschodnia
 
 <sup>1</sup> ten region nie obsługuje obecnie funkcję kondycji usługi Azure monitor maszyn wirtualnych.
 
@@ -90,6 +90,10 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux, które obsłu
 |Debian 8, 9.4 | X<sup>1</sup> | | X |
 
 <sup>1</sup> funkcja wydajności usługi Azure Monitor dla maszyn wirtualnych jest dostępna tylko z usługi Azure Monitor. Nie jest ona dostępna bezpośrednio z poziomu okienka po lewej stronie maszyny Wirtualnej platformy Azure.
+
+>[!NOTE]
+>Funkcja kondycji monitora platformy Azure dla maszyn wirtualnych nie obsługuje [wirtualizacji zagnieżdżonej](../../virtual-machines/windows/nested-virtualization.md) w Maszynie wirtualnej platformy Azure.
+>
 
 >[!NOTE]
 >W systemie operacyjnym Linux:

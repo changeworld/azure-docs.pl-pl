@@ -19,29 +19,19 @@
         - name: Przy użyciu środowiska Node.js
           href: stream-files-nodejs-quickstart.md
     - name: Kodowanie przekazanego pliku i strumieniowe przesyłanie wideo
-      items:
-        - name: Przy użyciu platformy .NET
-          displayName: 'encode, encoding, job, transform'
-          href: stream-files-tutorial-with-api.md
+      displayName: 'encode, encoding, job, transform'
+      href: stream-files-tutorial-with-api.md
     - name: Przesyłanie strumieniowe na żywo
-      items:
-        - name: Przy użyciu platformy .NET
-          href: stream-live-tutorial-with-api.md
-          displayName: 'Live Events, Live Outputs, ingest'
+      href: stream-live-tutorial-with-api.md
+      displayName: 'Live Events, Live Outputs, ingest'
     - name: Analizowanie filmu wideo
-      items:
-        - name: Przy użyciu platformy .NET
-          displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-          href: analyze-videos-tutorial-with-api.md
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
+      href: analyze-videos-tutorial-with-api.md
     - name: Dynamiczne szyfrowanie algorytmem AES-128
-      items:
-        - name: Przy użyciu platformy .NET
-          href: protect-with-aes128.md
+      href: protect-with-aes128.md
     - name: Dynamiczne szyfrowanie przy użyciu usługi DRM
-      items:
-        - name: Przy użyciu platformy .NET
-          displayName: 'PlayReady, Widevine, FairPlay'
-          href: protect-with-drm.md
+      displayName: 'PlayReady, Widevine, FairPlay'
+      href: protect-with-drm.md
 - name: Pojęcia
   items:
     - name: Omówienie

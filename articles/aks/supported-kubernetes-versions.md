@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 2d555908007f4e43a38b6d0eff909ef5050878ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: b7910ee6f58c582b824cec834d92a24c0e184bfb
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069676"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205270"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -52,9 +52,9 @@ Jest to nazywane "N-3"-(N (Najnowsza wersja) - 3 (wersje pomocnicze)).
 
 Na przykład, jeśli wprowadzono AKS *1.13.x* obecnie Pomoc techniczna jest dostępna dla następujących wersji:
 
-Nowa wersja pomocnicza listę wersji obsługiwane
------------------        ----------------------
-1.13.x                   1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
+Nowa wersja pomocnicza    |    Lista obsługiwanych wersji
+-----------------    |    ----------------------
+1.13.x               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
 
 Gdzie "x" i ".a" i "b" to wersje reprezentatywny poprawki.
 
@@ -84,11 +84,15 @@ Jeśli oryginalne rozwiązanie Kubernetes wydane 1.12.3 i 1.11.6 i zwalnia AKS p
 ----------------------
 1.12.*2*, 1.12.*3*, 1.11.*5*, 1.11.*6*
 
+> [!NOTE]
+> Klienci nie powinien przypiąć tworzenia klastra, ciągłą Integrację lub innych zadań automatycznych do określonej poprawki wersji. 
+
 ### <a name="communications"></a>Komunikacja
 
 * Dla nowych **pomocnicza** wersji rozwiązania Kubernetes
-  * Wszyscy użytkownicy są powiadamiane o nowej wersji i jakie wersja zostanie usunięta.
-  * Klienci korzystający z wersji **do usunięcia** Powiadomimy Cię, że **60 dni** uaktualnić do obsługiwanej wersji (np. wersja pomocnicza).
+  * Wszystkie użytkownicy są powiadamiani publicznie nową wersję i jakie wersja zostanie usunięta.
+  * Po wydaniu nowej wersji poprawki najstarsza wersja poprawki zostanie usunięty w tym samym czasie.
+  * Klienci mają **60 dni** od daty publicznych powiadomień uaktualnić do wersji obsługiwanej wersji pomocniczej.
 * Dla nowych **poprawki** wersji rozwiązania Kubernetes
   * Wszyscy użytkownicy są powiadamiani, zostały udostępnione nowej wersji poprawki i uaktualnienia do najnowszej wersji poprawki.
   * Użytkownicy mają **30 dni** uaktualnić do wersji nowsze, obsługiwanych poprawki. Użytkownicy mają **30 dni** uaktualnienia do wersji obsługiwana poprawka, zanim najstarsze zostanie usunięte.

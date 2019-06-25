@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: a8bfa7c5baa316b4019480bfc146b6cc61eff979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74552f2d4bea495c0278ef6ed4a408188752a7e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66141297"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274977"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny 
 
@@ -49,7 +49,7 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
    + **Menedżer sterowania usługami** (wartość domyślna to: `<apim-service-name>.scm.azure-api.net`).
 
      >[!NOTE]
-     > Możesz zaktualizować wszystkie punkty końcowe lub niektóre z nich. Często klienci zaktualizować **Proxy** (ten adres URL jest używany do wywoływania interfejsu API dostępne za pośrednictwem usługi API Management) i **Portal** (portalu dla deweloperów adres URL). **Zarządzanie** i **SCM** punkty końcowe są używane wewnętrznie przez klientów usługi APIM i dlatego rzadziej przypisanych niestandardowej nazwy domeny.
+     > Możesz zaktualizować wszystkie punkty końcowe lub niektóre z nich. Często klienci zaktualizować **Proxy** (ten adres URL jest używany do wywoływania interfejsu API dostępne za pośrednictwem usługi API Management) i **Portal** (portalu dla deweloperów adres URL). **Zarządzanie** i **SCM** punkty końcowe są używane wewnętrznie przez klientów usługi APIM i dlatego rzadziej przypisanych niestandardowej nazwy domeny. W większości przypadków można ustawić tylko jednego niestandardowej nazwy domeny dla danego punktu końcowego. Jednak **Premium** warstwa obsługuje ustawienie wielu nazw hostów dla **Proxy** punktu końcowego.  
 
 1. Wybierz punkt końcowy, który chcesz zaktualizować. 
 1. W oknie po prawej stronie kliknij **niestandardowe**.

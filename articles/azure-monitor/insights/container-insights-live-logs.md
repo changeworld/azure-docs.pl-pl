@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 71c6f1936f8cbc700a24d0ffb497947c8c8d3a50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075278"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274227"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Sposób wyświetlania dzienników i zdarzeń w czasie rzeczywistym (wersja zapoznawcza)
 Usługa Azure Monitor dla kontenerów zawiera funkcję, która jest obecnie dostępna w wersji zapoznawczej, która zawiera widok na żywo w sieci Web i zdarzenia dzienników kontenera usługi Azure Kubernetes Service (AKS) (stdout/stderr) bez konieczności uruchamiania poleceń kubectl. Gdy wybierzesz dowolną opcję, zostanie wyświetlone nowe okienko pod tabelą danych wydajności w **węzłów**, **kontrolerów**, i **kontenery** widoku. Pokazuje rejestrowanie na żywo i zdarzenia generowane przez aparat container ułatwiających dalsze rozwiązywanie problemów w czasie rzeczywistym.
@@ -77,6 +77,9 @@ AKS można skonfigurować do uwierzytelniania użytkowników usługi Azure Activ
 
 >[!NOTE]
 >Konfigurowanie uwierzytelniania za pomocą usługi Azure Active Directory dla logowania jednokrotnego można wykonywać tylko podczas początkowego wdrożenia nowego klastra AKS. Nie można skonfigurować logowania jednokrotnego na dla klastra usługi AKS już wdrożone.
+  
+>[!IMPORTANT]
+>W przypadku zmiany konfiguracji usługi Azure AD do uwierzytelniania użytkowników za pomocą zaktualizowanego identyfikatora URI należy wyczyścić pamięć podręczną w przeglądarce, aby upewnić się, token uwierzytelniania zaktualizowane zostaną pobrane i zastosowane.   
 
 ## <a name="view-live-logs-and-events"></a>Wyświetl dzienniki na żywo i zdarzenia
 

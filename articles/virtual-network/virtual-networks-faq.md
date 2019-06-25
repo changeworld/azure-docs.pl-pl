@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: f4facdf8fc530c35ba02620f451a00a8da36d982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: fcc26d0d42576e8d39407f2af5bafe6de24db19f
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497109"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154507"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -382,13 +382,17 @@ Punkty końcowe usługi Dodaj trasa systemowa, która pierwszeństwo trasy proto
 Aby uzyskać dostęp do usługi platformy Azure, sieciowe grupy zabezpieczeń muszą zezwalać na łączność wychodząca. Jeśli sieciowych grup zabezpieczeń nie są otwarte dla cały ruch wychodzący z Internetu, ruch punktu końcowego usługi powinien działać. Można również ograniczyć ruch wychodzący do usługi adresy IP tylko przy użyciu tagów usługi.  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Jakie uprawnienia należy skonfigurować punkty końcowe usługi?
-Punkty końcowe usługi można niezależnie konfigurować wykonać w ramach sieci wirtualnej przez użytkownika z dostępem do zapisu do sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure w sieci wirtualnej, użytkownik musi mieć uprawnienia do elementu **Microsoft.Network/JoinServicetoaSubnet** dla dodawanych podsieci. To uprawnienie jest domyślnie w roli administratora wbudowane usługi i mogą być modyfikowane przez tworzenie ról niestandardowych. Dowiedz się więcej o wbudowanych ról i przypisywaniu określonych uprawnień do [ról niestandardowych](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Punkty końcowe usługi można niezależnie konfigurować wykonać w ramach sieci wirtualnej przez użytkownika z dostępem do zapisu do sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure z siecią wirtualną, użytkownik musi mieć uprawnienie **Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action** dla dodawanych podsieci. To uprawnienie jest domyślnie w roli administratora wbudowane usługi i mogą być modyfikowane przez tworzenie ról niestandardowych. Dowiedz się więcej o wbudowanych ról i przypisywaniu określonych uprawnień do [ról niestandardowych](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Można filtrować ruchu w sieci wirtualnej do usług platformy Azure, dzięki czemu tylko zasoby określonych usług platformy azure, za pośrednictwem punktów końcowych usługi sieci wirtualnej? 
 
 Zasad punktów końcowych usługi sieci wirtualnej (VNet) umożliwiają filtrowanie ruchu w sieci wirtualnej do usług platformy Azure, dzięki czemu zasoby tylko do określonych usług platformy Azure za pośrednictwem punktów końcowych usługi. Punkt końcowy zasady zapewniają szczegółową kontrolę dostępu z ruchem w sieci wirtualnej do usług platformy Azure. Dowiedz się więcej na temat zasad punktów końcowych usługi [tutaj](virtual-network-service-endpoint-policies-overview.md).
- 
+
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) obsługuje punkty końcowe usługi sieci wirtualnej?
+
+Azure Active Directory (Azure AD) nie obsługuje natywnie punktów końcowych usługi. Pełna lista usług platformy Azure obsługujących punkty końcowe usługi sieci wirtualnej są widoczne [tutaj](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Należy zauważyć, że tag "Microsoft.AzureActiveDirectory" na liście usług obsługujących punkty końcowe usługi służy do obsługi punktów końcowych usługi Azure Data Lake Store Gen 1. Dla usługi ADLS Gen 1, integracja sieci wirtualnej dla usługi Azure Data Lake Storage Gen1 wykorzystuje zabezpieczenia punktu końcowego usługi sieci wirtualnej między siecią wirtualną i usługi Azure Active Directory (Azure AD) można wygenerować dodatkowe zabezpieczenia oświadczenia w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu. Dowiedz się więcej na temat [Azure Data Lake Store Gen 1 Integracja z siecią wirtualną] (.. /Data-Lake-Store/Data-Lake-Store-Network-Security.MD?TOC=%2fazure%2fvirtual-Network%2ftoc.JSON
+
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Czy istnieją jakiekolwiek ograniczenia na liczbę sieci wirtualnej punkty końcowe usługi można skonfigurować w mojej sieci wirtualnej?
 Nie ma żadnego limitu całkowitej liczby punktów końcowych usługi sieci wirtualnej w sieci wirtualnej. W przypadku zasobów usług platformy Azure (np. konta usługi Azure Storage) usługi mogą wymuszać limity liczby podsieci używanych do zabezpieczania zasobów. W poniższej tabeli przedstawiono pewne ograniczenia na przykład: 
 

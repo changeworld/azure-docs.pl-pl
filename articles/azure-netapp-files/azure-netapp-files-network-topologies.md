@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: bf2262d8a222cec6c5d0d7e53ded7b2994481656
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65826445"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205704"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
 
@@ -42,7 +42,7 @@ Poniższe funkcje są obecnie obsługiwane dla usługi Azure Files NetApp:
 
 Następujące ograniczenia sieciowe dotyczące usługi Azure Files NetApp:
 
-* Liczba maszyn wirtualnych, które można nawiązać połączenia z woluminów (z sieci wirtualnej lub w wirtualnych sieciach równorzędnych) nie może przekraczać 1000.
+* Liczba adresów IP używanych w sieci wirtualnej za pomocą usługi Azure Files NetApp (w tym wirtualne sieci równorzędne) nie może przekraczać 1000.
 * W każdej sieci wirtualnej Azure Virtual Network (VNet) można delegować tylko jedną podsieć do usługi Azure NetApp Files.
 
 
@@ -52,8 +52,8 @@ W poniższej tabeli opisano topologie sieci, obsługiwane przez usługi Azure Fi
 
 |    Topologie    |    jest obsługiwany    |     Obejście    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Łączność z woluminu w lokalnej sieci wirtualnej    |    Yes    |         |
-|    Łączność z woluminu w skomunikowanej równorzędnie sieci wirtualnej (tym samym regionie)    |    Tak    |         |
+|    Łączność z woluminu w lokalnej sieci wirtualnej    |    Tak    |         |
+|    Łączność z woluminu w skomunikowanej równorzędnie sieci wirtualnej (tym samym regionie)    |    Yes    |         |
 |    Łączność z woluminu w wirtualnych sieciach równorzędnych (Cross regionu lub globalnej komunikacji równorzędnej)    |    Nie    |    Brak    |
 |    Łączność z woluminem przez bramę usługi ExpressRoute    |    Yes    |         |
 |    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej przez bramę usługi ExpressRoute i wirtualną sieć równorzędną przy użyciu tranzyt przez bramę    |    Nie    |    Utwórz podsieć delegowanego w piastą (sieć wirtualną platformy Azure za pomocą bramy)    |
@@ -109,7 +109,7 @@ Na powyższym diagramie, mimo że 3 maszyny Wirtualnej mogą łączyć się wolu
 
 Na poniższym diagramie przedstawiono środowisko hybrydowe: 
 
-![Hybrydowe środowisko sieciowe](../media/azure-netapp-files/azure-netapp-files-networ-hybrid-environment.png)
+![Hybrydowe środowisko sieciowe](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
 W scenariuszu hybrydowym aplikacje z lokalnych centrów danych muszą mieć dostęp do zasobów na platformie Azure.  Jest to, czy chcesz rozszerzyć centrum danych na platformie Azure, którego chcesz użyć usługi natywnego platformy Azure lub na potrzeby odzyskiwania po awarii. Zobacz [bramy sieci VPN, opcje planowania](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) o tym, jak wiele zasobów lokalnych łączenie się z zasobami na platformie Azure za pośrednictwem sieci VPN lokacja lokacja lub ExpressRoute.
 
@@ -117,10 +117,10 @@ W topologii piasty i szprych hybrydowego piastą platformy Azure działa jako ce
 
 W zależności od konfiguracji. Możesz połączyć zasoby ze środowiska lokalnego do zasobów w Centrum i szprychy.
 
-W topologii przedstawionym powyżej sieci lokalnej jest podłączone do koncentratora sieci wirtualnej na platformie Azure, a istnieją 2-satelity sieci wirtualne skomunikowane równorzędnie za pomocą sieci wirtualnej serwera centralnego.  W tym scenariuszu Opcje łączności, obsługiwane w przypadku usługi Azure Files NetApp woluminy są następujące:
+W topologii przedstawionym powyżej sieci lokalnej jest podłączone do koncentratora sieci wirtualnej na platformie Azure, a istnieją 2 szprychy sieciami wirtualnymi w tym samym regionie jest połączona z sieci wirtualnej serwera centralnego.  W tym scenariuszu Opcje łączności, obsługiwane w przypadku usługi Azure Files NetApp woluminy są następujące:
 
-* W środowisku lokalnym zasoby maszyny Wirtualnej 1 i 2 maszyn wirtualnych mogą łączyć się na woluminie 1 w Centrum za pośrednictwem sieci VPN lokacja lokacja lub ExpressRoute. 
-* Zasobów lokalnych maszyn wirtualnych 1 i 2 maszyny Wirtualnej można nawiązać woluminu 2 lub 3 woluminu.
+* W środowisku lokalnym zasoby maszyny Wirtualnej 1 i 2 maszyn wirtualnych mogą łączyć się na woluminie 1 w Centrum za pośrednictwem sieci VPN lokacja lokacja lub Expressroute. 
+* W środowisku lokalnym zasoby maszyny Wirtualnej 1 i 2 maszyn wirtualnych mogą łączyć się na woluminie 2 lub 3 woluminu za pośrednictwem sieci VPN typu lokacja lokacja i regionalne wirtualne sieci równorzędne.
 * 3 maszyny Wirtualnej w piaście sieci wirtualnej można nawiązać woluminie 2 w szprysze 1 sieć wirtualną i 3 woluminu w szprysze sieci wirtualnej 2.
 * 4 maszyny Wirtualnej ze szprychy 1 sieci wirtualnej i 5 maszyn wirtualnych ze szprychy 2 w sieci wirtualnej mogą łączyć się na woluminie 1 w sieci wirtualnej serwera centralnego.
 

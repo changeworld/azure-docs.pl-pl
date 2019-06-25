@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 0b17a87fa02c382ae19cca6e4abcfff2ec475450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6d395d878d38ab48b95ca82d94d2a222428bae1
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252691"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274944"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Porównanie routingu komunikatów i Event Grid dla Centrum IoT Hub
 
@@ -64,7 +64,7 @@ Routing komunikatów usługi IoT Hub i integracji usługi IoT Hub przy użyciu u
 
    Routing komunikatów usługi IoT Hub obsługuje ograniczoną liczbę unikatowych punktów końcowych i typy punktów końcowych, ale możesz tworzyć łączniki do przekierowywania danych i zdarzeń dodatkowe punkty końcowe. Aby uzyskać pełną listę obsługiwanych punktów końcowych zobacz tabelę w poprzedniej sekcji. 
 
-   Integracja usługi IoT Hub przy użyciu usługi Event Grid obsługuje 500 punktów końcowych usługi IoT Hub oraz większe różne typy punktów końcowych. Naively integruje się z usługą Azure Functions, Logic Apps, kolejki magazynu i usługi Service Bus, a także współdziała z elementami webhook w celu rozszerzenia wysłanie danych poza ekosystem usługi platformy Azure i w aplikacjach innych firm.
+   Integracja usługi IoT Hub przy użyciu usługi Event Grid obsługuje 500 punktów końcowych usługi IoT Hub oraz większe różne typy punktów końcowych. Natywnie integruje się z usługą Azure Functions, Logic Apps, kolejki magazynu i usługi Service Bus, a także współdziała z elementami webhook w celu rozszerzenia wysłanie danych poza ekosystem usługi platformy Azure i w aplikacjach innych firm.
 
 * **Ważne jest, jeśli dane w kolejności?**
 

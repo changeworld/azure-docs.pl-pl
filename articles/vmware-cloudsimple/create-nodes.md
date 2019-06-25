@@ -1,5 +1,5 @@
 ---
-title: Zakup węzłów dla oprogramowania VMware Solution by CloudSimple - Azure
+title: Aprowizacja węzły VMware Solution by CloudSimple - Azure
 description: Dowiedz się, jak można dodać węzły do usługi VMWare przy użyciu wdrażania CloudSimple
 author: dikamath
 ms.author: dikamath
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9f5108207c4f8debc65b9d1fe625ae7033ca4e70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33de07663c91f12d4e10c4661b841cd2dbe5a162
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577183"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165253"
 ---
-# <a name="purchase-nodes-for-vmware-solution-by-cloudsimple---azure"></a>Zakup węzłów dla oprogramowania VMware Solution by CloudSimple - Azure
+# <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>Aprowizacja węzły VMware Solution by CloudSimple - Azure
 
 Węzły aprowizacji w witrynie Azure portal. Następnie możesz skonfigurować płatność — jako — możesz Przejdź pojemności w środowisku chmury prywatnej CloudSimple.
 
-## <a name="add-a-purchased-node-to-your-cloudsimple-private-cloud"></a>Dodaj węzeł zakupionych do chmury prywatnej CloudSimple
+## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>Dodaj węzeł aprowizowane do chmury prywatnej CloudSimple
 
 1. Wybierz pozycję **Wszystkie usługi**.
 2. Wyszukaj **węzłów CloudSimple**.
@@ -31,7 +31,7 @@ Węzły aprowizacji w witrynie Azure portal. Następnie możesz skonfigurować p
 
     ![Dodaj węzły CloudSimple](media/create-cloudsimple-node-add.png)
 
-5. Wybierz subskrypcję, której chcesz zakupić CloudSimple węzłów.
+5. Wybierz subskrypcję, której chcesz aprowizować węzły CloudSimple.
 6. Wybierz grupę zasobów dla węzłów. Aby dodać nową grupę zasobów, kliknij **Utwórz nowy**.
 7. Wprowadź prefiks do identyfikowania węzłów.
 8. Wybierz lokalizację dla zasobów węzła.

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb4cf119195b3be23dc8f2cb98bd019769583473
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123881"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341835"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Wersja zapoznawcza: Migrowanie do interfejsu API w wersji 3.x dla aplikacji usługi LUIS
 
@@ -54,11 +54,14 @@ Zmiany obiektu odpowiedzi V3 obejmują [ze wstępnie utworzonych jednostek](luis
 
 Interfejs API w wersji 3 ma parametry ciągu zapytania różne.
 
-|Nazwy parametrów|Typ|Version|Przeznaczenie|
-|--|--|--|--|
-|`query`|string|Tylko w wersji 3|**W wersji 2**, trwa wypowiedź do można przewidzieć `q` parametru. <br><br>**W wersji 3**, funkcji jest przekazywany w `query` parametru.|
-|`show-all-intents`|wartość logiczna|Tylko w wersji 3|Zwróć wszystkie intencji z odpowiedni wynik w **prediction.intents** obiektu. Intents są zwracane jako obiekty w obiekcie nadrzędnym `intents` obiektu. Dzięki temu dostęp programowy bez konieczności znaleźć zamiar w tablicy: `prediction.intents.give`. W wersji 2 te zostały zwrócone w tablicy. |
-|`verbose`|wartość logiczna|V2 I V3|**W wersji 2**, gdy jest ustawiona na wartość true, wszystkie przewidywane intencji zostały zwrócone. Wszystkie przewidywane intencji, należy użyć param V3 z `show-all-intents`.<br><br>**W wersji 3**, ten parametr tylko szczegółów jednostki metadanych jednostki przewidywania.  |
+|Nazwy parametrów|Typ|Version|Domyślne|Przeznaczenie|
+|--|--|--|--|--|
+|`log`|boolean|V2 I V3|false|Query Store w pliku dziennika.| 
+|`query`|string|Tylko w wersji 3|Brak wartości domyślnej — jest to wymagane w przypadku żądania GET|**W wersji 2**, trwa wypowiedź do można przewidzieć `q` parametru. <br><br>**W wersji 3**, funkcji jest przekazywany w `query` parametru.|
+|`show-all-intents`|boolean|Tylko w wersji 3|false|Zwróć wszystkie intencji z odpowiedni wynik w **prediction.intents** obiektu. Intents są zwracane jako obiekty w obiekcie nadrzędnym `intents` obiektu. Dzięki temu dostęp programowy bez konieczności znaleźć zamiar w tablicy: `prediction.intents.give`. W wersji 2 te zostały zwrócone w tablicy. |
+|`verbose`|boolean|V2 I V3|false|**W wersji 2**, gdy jest ustawiona na wartość true, wszystkie przewidywane intencji zostały zwrócone. Wszystkie przewidywane intencji, należy użyć param V3 z `show-all-intents`.<br><br>**W wersji 3**, ten parametr tylko szczegółów jednostki metadanych jednostki przewidywania.  |
+
+
 
 <!--
 |`multiple-segments`|boolean|V3 only|Break utterance into segments and predict each segment for intents and entities.|
@@ -71,12 +74,23 @@ Interfejs API w wersji 3 ma parametry ciągu zapytania różne.
 {
     "query":"your utterance here",
     "options":{
-        "timezoneOffset": "-8:00"
+        "datetimeReference": "2019-05-05T12:00:00",
+        "overridePredictions": true
     },
     "externalEntities":[],
     "dynamicLists":[]
 }
 ```
+
+|Właściwość|Typ|Version|Domyślne|Przeznaczenie|
+|--|--|--|--|--|
+|`dynamicLists`|tablica|Tylko w wersji 3|Nie jest wymagane.|[Listy dynamiczne](#dynamic-lists-passed-in-at-prediction-time) pozwalają rozszerzyć istniejącą jednostkę listy przeszkolony i opublikowanych już w aplikacji usługi LUIS.|
+|`externalEntities`|tablica|Tylko w wersji 3|Nie jest wymagane.|[Podmiotów zewnętrznych](#external-entities-passed-in-at-prediction-time) pozwalają aplikacją usługi LUIS na identyfikowanie i oznaczanie jednostek podczas wykonywania, który może służyć jako funkcje do istniejących jednostek. |
+|`options.datetimeReference`|string|Tylko w wersji 3|Brak wartości domyślnej|Używany do określenia [przesunięcie datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity).|
+|`options.overridePredictions`|boolean|Tylko w wersji 3|false|Określa, jeśli użytkownika [zewnętrznej jednostki (na taką samą nazwę jak istniejąca jednostka)](#override-existing-model-predictions) jest używany lub istniejącej jednostki w modelu służy do prognozowania. |
+|`query`|string|Tylko w wersji 3|Wymagany.|**W wersji 2**, trwa wypowiedź do można przewidzieć `q` parametru. <br><br>**W wersji 3**, funkcji jest przekazywany w `query` parametru.|
+
+
 
 ## <a name="response-changes"></a>Zmiany w odpowiedzi
 
@@ -275,6 +289,67 @@ W poprzednim wypowiedź, używa wypowiedź `him` jako odwołanie do `Hazem`. Tre
 
 Prognozowanie odpowiedzi zawiera tej jednostki zewnętrznych, za pomocą wszystkich innych przewidywane jednostek, ponieważ jest on zdefiniowany w żądaniu.  
 
+### <a name="override-existing-model-predictions"></a>Zastąp istniejące określane są przewidywania modelu
+
+`overridePredictions` Właściwość opcje Określa, że jeśli użytkownik prześle jednostki zewnętrznej, która nakłada się na dostęp do przewidywanych jednostki o takiej samej nazwie, LUIS wybiera jednostki przekazanej lub istnieje w modelu. 
+
+Rozważmy na przykład zapytanie `today I'm free`. Usługa LUIS wykrywa `today` jako datetimeV2 z następującą odpowiedź:
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+Jeśli użytkownik prześle zewnętrznej jednostki:
+
+```JSON
+{
+    "entityName": "datetimeV2",
+    "startIndex": 0,
+    "entityLength": 5,
+    "resolution": {
+        "date": "2019-06-21"
+    }
+}
+```
+
+Jeśli `overridePredictions` ustawiono `false`, LUIS, zwraca odpowiedź tak, jakby nie zostały wysłane zewnętrznej jednostki. 
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+Jeśli `overridePredictions` ustawiono `true`, LUIS, zwraca odpowiedź, w tym:
+
+```JSON
+"datetimeV2": [
+    {
+        "date": "2019-06-21"
+    }
+]
+```
+
+
+
 #### <a name="resolution"></a>Rozwiązanie
 
 _Opcjonalne_ `resolution` właściwość zwraca w odpowiedzi prognozowania, dzięki czemu możesz przekazać metadane skojarzone z zewnętrznej jednostki, a następnie otrzymasz go wycofać w odpowiedzi. 
@@ -287,6 +362,7 @@ Głównym celem jest rozszerzenie wstępnie utworzone jednostki, ale nie jest og
 * {"text": "value"}
 * 12345 
 * ["a", "b", "c"]
+
 
 
 ## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Listy dynamiczne przekazany w czasie prognoz

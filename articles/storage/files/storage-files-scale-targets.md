@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c765c3e29166358f3504949136a67d8d0db96be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5e2f7b52ca3cb8a4d472b353e844bdad3aa1b0c1
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078161"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150489"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Usługa Azure cele skalowalności i wydajności plików
 
@@ -45,7 +45,13 @@ Na przykład: Pojedynczy udział może osiągnąć 100 000 operacji We/Wy i maks
 Udziały plików w warstwie Premium są aprowizowane na koncie magazynu specjalne o nazwie **filestorage (wersja zapoznawcza)** . To konto ma cele skalowania nieco inne niż konto magazynu używane dla udziałów plików standardowych. Obiekty docelowe skalowania konta magazynu, można znaleźć w tabeli w [cele skalowanie konta usługi Azure storage](#azure-storage-account-scale-targets) sekcji.
 
 > [!IMPORTANT]
-> Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont magazynu tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada na koncie magazynu.
+> Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont FileStorage tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada FileStorage konta.
+
+### <a name="file-share-and-file-scale-targets"></a>Udziału plików i elementami docelowymi plików skalowania
+
+> [!NOTE]
+> Udziały plików standardowych większy niż wynosi 5 TiB są w wersji zapoznawczej i mają pewne ograniczenia.
+> Lista ograniczeń i dołączyć do wersji zapoznawczej te większe rozmiary udziału plików, zobacz [standardowych plikowych udziałów](storage-files-planning.md#standard-file-shares) części przewodnika planowania.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

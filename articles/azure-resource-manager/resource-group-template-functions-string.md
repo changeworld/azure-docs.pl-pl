@@ -1,23 +1,17 @@
 ---
 title: Funkcje szablonu usługi Azure Resource Manager — ciąg | Dokumentacja firmy Microsoft
 description: Opisuje funkcje, które można użyć w szablonie usługi Azure Resource Manager do pracy z ciągami.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 82b9403a3d5a5b6938f5b95bbfce888d1e70e451
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 979474ea6b5b61935742591f8fba87d200d618e4
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431214"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206338"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
 
@@ -67,7 +61,7 @@ Zwraca reprezentację base64 ciągu wejściowego.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| inputString |Tak |string |Wartość do zwrócenia reprezentacji base64. |
+| inputString |Yes |string |Wartość do zwrócenia reprezentacji base64. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -132,7 +126,7 @@ Konwertuje obiekt JSON reprezentacji base64.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |string |Reprezentacji base64, który można przekonwertować na obiekt JSON. |
+| base64Value |Tak |string |Reprezentacji base64, który można przekonwertować na obiekt JSON. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -349,7 +343,7 @@ Sprawdza, czy tablica zawiera wartość, obiekt zawiera klucz lub ciąg zawiera 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| container |Yes |Array, obiekt lub ciągu |Wartość, która zawiera wartość do znalezienia. |
+| container |Tak |Array, obiekt lub ciągu |Wartość, która zawiera wartość do znalezienia. |
 | itemToFind |Tak |ciąg lub int |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -540,7 +534,7 @@ Określa, czy tablica, obiekt lub ciąg jest pusty.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Tak |Array, obiekt lub ciągu |Wartość, aby sprawdzić, czy jest pusta. |
+| itemToTest |Yes |Array, obiekt lub ciągu |Wartość, aby sprawdzić, czy jest pusta. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -605,7 +599,7 @@ Określa, czy ciąg kończy się wartością. W porównaniu jest rozróżniana w
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |string |Wartość, która zawiera element, aby znaleźć. |
+| stringToSearch |Tak |string |Wartość, która zawiera element, aby znaleźć. |
 | stringToFind |Tak |string |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -780,7 +774,7 @@ Tworzy wartość w formacie Unikatowy identyfikator globalny na podstawie warto�
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Tak |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć identyfikator GUID. |
+| baseString |Yes |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć identyfikator GUID. |
 | dodatkowe parametry zgodnie z potrzebami |Nie |string |Możesz dodać dowolną liczbę ciągów, w razie potrzeby można utworzyć wartości, który określa poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
@@ -851,8 +845,8 @@ Zwraca pierwszą pozycję wartości w ciągu. W porównaniu jest rozróżniana w
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |string |Wartość, która zawiera element, aby znaleźć. |
-| stringToFind |Tak |string |Wartość do znalezienia. |
+| stringToSearch |Tak |string |Wartość, która zawiera element, aby znaleźć. |
+| stringToFind |Yes |string |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1181,7 +1175,7 @@ Zwraca ciąg wyrównany do prawej, dodając znaków z lewej strony aż do osiąg
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Yes |ciąg lub int |Wartość do wyrównanie do prawej. |
+| valueToPad |Tak |ciąg lub int |Wartość do wyrównanie do prawej. |
 | totalLength |Tak |int |Całkowita liczba znaków w zwracanym ciągu. |
 | paddingCharacter |Nie |pojedynczy znak |Znak do użytku dopełnienie po lewej stronie, aż do osiągnięcia całkowita długość. Wartość domyślna to miejsce. |
 
@@ -1232,8 +1226,8 @@ Zwraca nowy ciąg ze wszystkimi wystąpieniami jednego ciągu, zastąpiona przez
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalString |Tak |string |Wartość, która zawiera wszystkie wystąpienia jednego ciągu, zastąpiona przez innego ciągu. |
-| Staryciąg |Tak |string |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
-| newString |Tak |string |Ciąg, który można dodać zamiast usunięto ciąg. |
+| Staryciąg |Yes |string |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
+| newString |Yes |string |Ciąg, który można dodać zamiast usunięto ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1285,7 +1279,7 @@ Zwraca ciąg zawierający wszystkie znaki po określonej liczbie znaków lub tab
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalValue |Tak |tablicy lub ciągu |Tablica lub ciąg używany do pomijania. |
-| numberToSkip |Tak |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
+| numberToSkip |Yes |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1353,7 +1347,7 @@ Zwraca tablicę ciągów, zawierającą podciągi ciągu wejściowym są rozdzie
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | inputString |Tak |string |Ciągu do podzielenia. |
-| Ogranicznik |Yes |ciąg lub tablicę ciągów |Ogranicznik służące do dzielenia ciągu. |
+| Ogranicznik |Tak |ciąg lub tablicę ciągów |Ogranicznik służące do dzielenia ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1477,7 +1471,7 @@ Konwertuje określoną wartość na ciąg.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Tak | Dowolne |Wartość do przekonwertowania na ciąg. Można przekonwertować wartość dowolnego typu, w tym obiekty i tablice. |
+| valueToConvert |Yes | Dowolne |Wartość do przekonwertowania na ciąg. Można przekonwertować wartość dowolnego typu, w tym obiekty i tablice. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1609,8 +1603,8 @@ Zwraca ciąg zawierający określoną liczbę znaków od początku ciągu lub ta
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |tablicy lub ciągu |Tablicy lub ciągu, aby móc elementy z. |
-| numberToTake |Tak |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
+| originalValue |Tak |tablicy lub ciągu |Tablicy lub ciągu, aby móc elementy z. |
+| numberToTake |Yes |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1728,7 +1722,7 @@ Konwertuje określony ciąg na wielkie litery.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |string |Wartość do przekonwertowania na wielkie litery. |
+| stringToChange |Tak |string |Wartość do przekonwertowania na wielkie litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1825,7 +1819,7 @@ Tworzy ciąg deterministyczne wyznaczania wartości skrótu na podstawie wartoś
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć unikatowy ciąg. |
+| baseString |Tak |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć unikatowy ciąg. |
 | dodatkowe parametry zgodnie z potrzebami |Nie |string |Możesz dodać dowolną liczbę ciągów, w razie potrzeby można utworzyć wartości, który określa poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi

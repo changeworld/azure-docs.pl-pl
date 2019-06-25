@@ -9,11 +9,11 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119392"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67182964"
 ---
  Jeśli używasz usługi Azure Cloud Shell, możesz Zaloguj się do konta platformy Azure automatycznie po kliknięciu przycisku "Wypróbuj". Aby zalogować się lokalnie, otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i uruchom polecenie cmdlet, aby połączyć.
 

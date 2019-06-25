@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 06/24/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 84e8eedfb206e28f245128a4e30aba44e96277ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c5f7b0b739e9311e2527e63db7279d2075f0f1ff
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072417"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341279"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
@@ -24,15 +23,18 @@ Zamiana tekstu na mowę, z usług przetwarzania mowy platformy Azure to usługa,
 
 Technologia zamiany tekstu na mowę umożliwia twórcom zawartości korzystaj z użytkowników na różne sposoby. Zamiana tekstu na mowę można poprawić dostępność, udostępniając użytkownikom możliwość interakcji z zawartością komputerowi. Czy użytkownik ma wzroku niepełnosprawności uczenia, wymaga informacji o nawigacji podczas kierowania, zamiany tekstu na mowę można ulepszyć istniejące. Zamiana tekstu na mowę jest także cenne dodatek dla programu Boty głosu i asystentów wirtualnego.
 
+
+Dzięki wykorzystaniu mowy syntezy Markup Language (SSML), język znaczników oparty na formacie XML, deweloperzy korzystający z tekstu na mowę usługi można określić sposób wprowadzania tekstu jest konwertowana na syntezatora mowy. Za pomocą SSML można dostosować pomysłu, wymowa, wypowiedzi szybkości, woluminów i nie tylko. Aby uzyskać więcej informacji dotyczących, zobacz [SSML](#speech-synthesis-markup-language-ssml).
+
 ### <a name="standard-voices"></a>Standardowa głosów
 
-Standardowa głosy są tworzone przy użyciu technik statystycznych syntezy parametryczne i/lub syntezy łączenia. Tych głosów są wysoce zrozumiałej i dźwięk jest dość fizycznych. Łatwo można włączyć aplikacji, aby porozmawiać w ponad 45 językach z szeroką gamę opcji głosu. Głosy te zapewniają wysoką Wymowa dokładności, łącznie z obsługą skróty, rozszerzenia akronim, interpretacji daty/godziny i polyphones. Użyj standardowego głosu, aby poprawić dostępność aplikacji i usług, pozwalając użytkownikom na interakcję z zawartością komputerowi.
+Standardowa głosy są tworzone przy użyciu technik statystycznych syntezy parametryczne i/lub syntezy łączenia. Te głosy są wysoce zrozumiałej i dźwięku naturalnego. Łatwo można włączyć aplikacji, aby porozmawiać w ponad 45 językach z szeroką gamę opcji głosu. Głosy te zapewniają wysoką Wymowa dokładności, łącznie z obsługą skróty, rozszerzenia akronim, interpretacji daty/godziny i polyphones. Użyj standardowego głosu, aby poprawić dostępność aplikacji i usług, pozwalając użytkownikom na interakcję z zawartością komputerowi.
 
 ### <a name="neural-voices"></a>Głosy neuronowych
 
-Głosy neuronowych Użyj głębokich sieciach neuronowych przezwyciężenie limitów tradycyjnych systemów zamiany tekstu na mowę w pasujących do wzorców obciążenia i maksimów w mowy i Syntetyzujące jednostek mowy do głosowego komputera. Standardowa zamiany tekstu na mowę dzieli prosody w oddzielnych analizy językowej i kroki akustyczny prognoz, które podlegają niezależnie od modeli. Który może spowodować syntezy muffled, buzzy głosu. Nasze możliwości neuronowych wykonuje prosody prognoz i głosu syntezy równocześnie, które powoduje płynne i bardziej brzmiącą naturalnego głosu.
+Głosy neuronowych Użyj głębokich sieciach neuronowych przezwyciężenie limitów tradycyjnych systemów zamiany tekstu na mowę w pasujących do wzorców obciążenia i maksimów w mowy i Syntetyzujące jednostek mowy do głosowego komputera. Standardowa zamiany tekstu na mowę dzieli prosody w oddzielnych analizy językowej i kroki akustyczny prognoz, które podlegają niezależnie od modeli, które mogą skutkować syntezy muffled głosu. Nasze możliwości neuronowych wykonuje prosody prognoz i głosu syntezy równocześnie, które powoduje płynne i bardziej brzmiącą naturalnego głosu.
 
-Neuronowych głosów można wprowadzić bardziej naturalne interakcje z czatbotów i asystentów wirtualnego i angażujące konwertować teksty cyfrowych, takich jak książki elektroniczne audiobooks i poprawić funkcjonalność z systemów nawigacji w samochodzie. Przypominającej ludzką prosody naturalnych i wyczyść ustaleniu słów głosy neuronowych znaczące zmęczenie nasłuchiwania podczas interakcji z systemami sztucznej Inteligencji. 
+Neuronowych głosów można wprowadzić bardziej naturalne interakcje z czatbotów i asystentów wirtualnego i angażujące konwertować teksty cyfrowych, takich jak książki elektroniczne audiobooks i poprawić funkcjonalność z systemów nawigacji w samochodzie. Przypominającej ludzką prosody naturalnych i wyczyść ustaleniu słów głosy neuronowych znaczące zmęczenie nasłuchiwania podczas interakcji z systemami sztucznej Inteligencji.
 
 Głosy neuronowych obsługuje różne style, takie jak neutralne i uśmiecha. Na przykład głosu Jessa (en US) można było mówić cheerfully, który jest zoptymalizowany pod kątem dostępu do ciepłych, wszystkiego konwersacji. Można dopasować dane wyjściowe głosowych, takich jak tonu, wysokość i szybkości za pomocą [język znaczników synteza mowy](speech-synthesis-markup.md). Aby uzyskać pełną listę dostępnych głosów, zobacz [obsługiwane języki](language-support.md#text-to-speech).
 
@@ -42,13 +44,33 @@ Aby dowiedzieć się więcej o zaletach głosów neuronowej, zobacz [usługa now
 
 Dostosowywanie głosu umożliwia tworzenie mówiącą, jeden z rodzajem głosu dla Twojej marki. Aby utworzyć swoje niestandardowej czcionki głosowej, tworzenie nagrania studio i przekaż skojarzone skrypty jako dane szkoleniowe. Usługa tworzy następnie model unikatowy głosu dostosowana do Twojego nagrania. Można użyć tej niestandardowej czcionki głosowej syntetyzować mowy. Aby uzyskać więcej informacji, zobacz [głosów niestandardowych](how-to-customize-voice-font.md).
 
+## <a name="speech-synthesis-markup-language-ssml"></a>Język znaczników syntezy mowy (SSML)
+
+Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, które umożliwiają deweloperom określenie sposobu wprowadzania tekstu jest konwertowana na syntezatora mowy przy użyciu usługi zamiany tekstu na mowę. W porównaniu do zwykłego tekstu, SSML umożliwia deweloperom dostosować wysokość wymowa, wypowiedzi szybkości, woluminów i nie tylko zamiany tekstu na mowę danych wyjściowych. Normalne znaki interpunkcyjne, takie jak przytrzymanie po upływie lub za pomocą poprawne maksimów, gdy dowolne zdanie kończy się znakiem zapytania są realizowane automatycznie.
+
+Wszystkie tekstowe dane wejściowe wysyłane do zamiany tekstu na mowę usługi musi postacią SSML. Aby uzyskać więcej informacji, zobacz [język znaczników synteza mowy](speech-synthesis-markup.md).
+
+### <a name="pricing-note"></a>Cennik Uwaga
+
+Podczas korzystania z usługi zamiany tekstu na mowę, są rozliczane dla każdego znaku, który jest konwertowany na mowę, w tym znaki interpunkcyjne. Podczas samego dokumentu SSML nie jest płatne, elementy opcjonalne, które są używane do dostosowywania, jak tekst jest konwertowany na mowę, takich jak fonemów i wysokością, są liczone jako płatne znaków. Poniżej przedstawiono listę co to jest płatny:
+
+* Tekst jest przekazywany w usłudze zamiany tekstu na mowę w treści żądania SSML
+* Wszystkich znaczników w polu tekstowym w treści żądania w formacie SSML, z wyjątkiem `<speak>` i `<voice>` tagów
+* Litery, znaki interpunkcyjne, miejsca do magazynowania, karty, znaczników i wszystkie znaki odstępu
+* Każdy punkt kodowy zdefiniowane w formacie Unicode
+
+Aby uzyskać szczegółowe informacje, zobacz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+
+> [!IMPORTANT]
+> Każdy znak języka chińskiego, japońskiego i koreańskiego jest liczony jako dwa znaki na potrzeby rozliczeń.
+
 ## <a name="core-features"></a>Podstawowe funkcje
 
 Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Konwertuj tekst na mowę. | Tak | Yes |
+| Konwertuj tekst na mowę. | Tak | Tak |
 | Przekaż zestawów danych dostosowywania głosu. | Nie | Tak\* |
 | Tworzenie i zarządzanie modelami czcionek głosowych. | Nie | Tak\* |
 | Tworzenie i zarządzanie wdrożeniami czcionek głosowych. | Nie | Tak\* |

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 1048b4e2ac3a8523d5539ddc1a1bdaca3ec2d912
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 311015aff5ea7020043ad8e43fd987144cdcbf52
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074258"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206748"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database
 
@@ -56,7 +56,7 @@ Zmiana usługi warstwy lub obliczeniowe rozmiar pojedynczej bazy danych obejmuje
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Opóźnienie zmiany rozmiaru obliczeń warstwy lub ponowne skalowanie usługi
 
-Czas oczekiwania, aby zmienić warstwę usługi lub zmienić rozmiar obliczeń pojedynczą bazę danych lub elastycznej puli jest sparametryzowane w następujący sposób:
+Szacowany czas oczekiwania, aby zmienić warstwę usługi lub zmienić rozmiar obliczeń pojedynczą bazę danych lub elastycznej puli jest sparametryzowane w następujący sposób:
 
 |Warstwa usług|Podstawowe pojedynczej bazy danych</br>Standardowa (S0 — S1)|Elastyczna pula podstawowa</br>Standard (S2-S12) </br>W Hiperskali </br>Ogólne pojedynczą bazę danych przeznaczenia lub puli elastycznej|Premium lub krytyczne dla działania firmy pojedynczą bazę danych lub puli elastycznej|
 |:---|:---|:---|:---|

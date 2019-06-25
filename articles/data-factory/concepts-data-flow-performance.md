@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: d4acc620fb2a4c41615c745516e5ccfafd59d848
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057952"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190624"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapowanie wydajności przepływów danych i dostosowywania przewodnik
 
@@ -59,6 +59,12 @@ Klikając tę ikonę, zostanie wyświetlona plan wykonywania i profil wydajnośc
 * Ustawianie rozmiaru partii zleca usługi ADF, aby przechowywać dane w zestawach w pamięci, a nie wiersz po wierszu. Jest to ustawienie opcjonalne i może zostać wykorzystać zasoby w węzłach obliczeniowych, jeśli nie są one prawidłowo wielkości.
 * Ustawianie zapytania umożliwia filtrowanie wierszy po prawej stronie w miejscu źródłowym przed nawet przychodzących dla przepływu danych do przetwarzania, co ułatwia szybsze pozyskiwania danych początkowych.
 * Jeśli używasz zapytania, można dodać wskazówki zapytania opcjonalne dla Twojej bazy danych SQL Azure, czyli READ UNCOMMITTED
+
+### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Ustaw poziom izolacji ustawieniami przekształcania źródła dla zestawów danych SQL
+
+* Odczyt nieprzekazany zapewnia szybsze wyniki zapytania na przekształcenie źródła
+
+![Poziom izolacji](media/data-flow/isolationlevel.png "poziom izolacji")
 
 ### <a name="set-sink-batch-size"></a>Ustaw rozmiar partii ujścia
 

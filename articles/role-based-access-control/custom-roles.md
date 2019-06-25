@@ -15,12 +15,12 @@ ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d88462f705a89d02ab69700d0c15669deb44da98
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b628086a67f1d76357fda4f753350b6411b8f15
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058200"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273721"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Role niestandardowe dla zasobów platformy Azure
 
@@ -96,10 +96,10 @@ Rola niestandardowa ma następujące właściwości.
 | `Id` | Yes | String | Unikatowy identyfikator roli niestandardowej. Dla programu Azure PowerShell i wiersza polecenia platformy Azure ten identyfikator jest generowany automatycznie po utworzeniu nowej roli. |
 | `IsCustom` | Tak | String | Wskazuje, czy jest to rola niestandardowa. Ustaw `true` dla ról niestandardowych. |
 | `Description` | Tak | String | Opis roli niestandardowej. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków wynosi 1024. |
-| `Actions` | Yes | Ciąg] | Tablica ciągów określa operacje zarządzania, dozwolone przez rolę do wykonania. Aby uzyskać więcej informacji, zobacz [akcje](role-definitions.md#actions). |
+| `Actions` | Tak | Ciąg] | Tablica ciągów określa operacje zarządzania, dozwolone przez rolę do wykonania. Aby uzyskać więcej informacji, zobacz [akcje](role-definitions.md#actions). |
 | `NotActions` | Nie | Ciąg] | Tablica ciągów, który określa operacje zarządzania, które są wykluczone z dozwolonych `Actions`. Aby uzyskać więcej informacji, zobacz [NotActions](role-definitions.md#notactions). |
-| `DataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, dozwolone przez rolę do wykonania na danych w obrębie tego obiektu. Aby uzyskać więcej informacji, zobacz [elementy DataActions (wersja zapoznawcza)](role-definitions.md#dataactions-preview). |
-| `NotDataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, które są wykluczone z dozwolonych `DataActions`. Aby uzyskać więcej informacji, zobacz [NotDataActions (wersja zapoznawcza)](role-definitions.md#notdataactions-preview). |
+| `DataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, dozwolone przez rolę do wykonania na danych w obrębie tego obiektu. Aby uzyskać więcej informacji, zobacz [elementy DataActions](role-definitions.md#dataactions). |
+| `NotDataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, które są wykluczone z dozwolonych `DataActions`. Aby uzyskać więcej informacji, zobacz [NotDataActions](role-definitions.md#notdataactions). |
 | `AssignableScopes` | Yes | Ciąg] | Tablica ciągów określa zakresów, że rola niestandardowa jest dostępne do przypisania. Dla ról niestandardowych, obecnie nie można ustawić `AssignableScopes` na zakres głównego (`"/"`) lub zakres grupy zarządzania. Aby uzyskać więcej informacji, zobacz [AssignableScopes](role-definitions.md#assignablescopes) i [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment). |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Kto może tworzyć, usunąć, zaktualizować lub wyświetlić rolę niestandardową

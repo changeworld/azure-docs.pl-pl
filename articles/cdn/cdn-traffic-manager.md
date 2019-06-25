@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 956df17c821b86d95b1d87c3c8d8197bab7a95be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7de7fe1c677d54c0fa3e6d3ca4730ef1083bc81
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955269"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273276"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Konfigurowanie trybu failover między wieloma punktami końcowymi usługi CDN Azure przy użyciu usługi Azure Traffic Manager
 
@@ -81,7 +81,7 @@ Po skonfigurowaniu profilów usługi Traffic Manager i CDN, wykonaj następując
 
     Usługa Azure CDN używa *cdnverify* poddomeny, aby sprawdzić poprawność mapowania DNS, aby ukończyć ten proces rejestracji. Aby uzyskać więcej informacji, zobacz [tworzenie rekordu CNAME DNS](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Ten krok powoduje włączenie usługi Azure CDN, dzięki czemu mogą odpowiadać na żądania jego, rozpoznawał domeny niestandardowej.
     
- > [!NOTE]
+    > [!NOTE]
     > Aby włączyć protokół SSL na **Azure CDN from Akamai** profile, należy bezpośrednio rekordu cname domeny niestandardowej do punktu końcowego usługi. cdnverify do włączenia protokołu SSL nie jest jeszcze obsługiwana. 
     >
 

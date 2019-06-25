@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: c94167929782a2deca7bba19924bfe67dd46bf29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 7a657f175307e019155e37538021c5aecf5bb068
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388383"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67136895"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -53,7 +53,7 @@ Jeśli operacja adaptacyjną lub stała szybkość pobierania próbek, próbkowa
 
 Próbkowanie adaptacyjne jest dostępna dla zestawu SDK Application Insights dla platformy ASP.NET v 2.0.0-beta3 i nowszych 2.2.0-beta1 v Microsoft.ApplicationInsights.AspNetCore SDK lub nowszy i jest domyślnie włączona.
 
-Próbkowanie adaptacyjne wpływa na ilość danych telemetrycznych wysyłanych z aplikacji serwera sieci web z punktem końcowym usługi Application Insights. Wolumin jest automatycznie dostosowywany do zachowania w ramach określonego maksymalną szybkość ruchu i jest kontrolowana przez ustawienia `MaxTelemetryItemsPerSecond`. Jeśli aplikacja generuje małą ilością danych telemetrycznych, takich jak podczas debugowania lub z powodu o niskim użyciu elementy nie uzyskać próbkowane tak długo, jak wolumin jest poniżej `MaxTelemetryItemsPerSecond`. Jako wolumin rośnie telemetrię częstotliwość próbkowania jest ustawiony tak, aby osiągnąć woluminu docelowego.
+Próbkowanie adaptacyjne wpływa na ilość danych telemetrycznych wysyłanych z aplikacji serwera sieci web z punktem końcowym usługi Application Insights. Wolumin jest automatycznie dostosowywany do zachowania w ramach określonego maksymalną szybkość ruchu i jest kontrolowana przez ustawienia `MaxTelemetryItemsPerSecond`. Jeśli aplikacja generuje małą ilością danych telemetrycznych, takich jak podczas debugowania lub z powodu o niskim użyciu elementów nie można porzucić przez procesor próbkowania, tak długo, jak wolumin jest poniżej `MaxTelemetryItemsPerSecond`. Jako wolumin rośnie telemetrię częstotliwość próbkowania jest ustawiony tak, aby osiągnąć woluminu docelowego.
 
 Aby osiągnąć woluminu docelowego, niektóre wygenerowane dane telemetryczne zostaną odrzucone. Ale takie jak inne rodzaje próbkowania algorytm zachowuje elementy powiązane dane telemetryczne. Na przykład gdy masz sprawdzanie danych telemetrycznych w polu wyszukiwania, będziesz mieć możliwość odnaleźć żądania powiązaną z określonym wyjątkiem.
 

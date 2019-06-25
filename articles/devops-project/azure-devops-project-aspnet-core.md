@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 5fabe9ba03c9516f5df41645fc6ab1b7a0cb2050
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88fb243af7628b159a2255c2cdae2ab86f39ca1e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60556100"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275489"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla platformy .NET za pomocą usługi DevOps Projects
 
@@ -44,17 +44,13 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Wybieranie przykładowej aplikacji i usługi platformy Azure
 
-1. Wybierz przykładową aplikację platformy .NET. Przykłady platformy .NET umożliwiają wybór struktury ASP.NET typu open source lub międzyplatformowej struktury .NET Core.
+1. Wybierz przykładową aplikację **.NET**. Przykłady platformy .NET umożliwiają wybór struktury ASP.NET typu open source lub międzyplatformowej struktury .NET Core.
 
     ![Struktura .NET](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
 
-1. Wybierz strukturę aplikacji .NET Core.  
-    Ten przykład to aplikacja ASP.NET Core MVC.
+2. Ten przykład to aplikacja ASP.NET Core MVC. Wybierz **platformy .NET Core** strukturę aplikacji, następnie wybierz pozycję **dalej**.    
     
-2. Wybierz opcję **Dalej**.  
-    Domyślnym celem wdrożenia jest funkcja Web App on Windows.  Opcjonalnie możesz wybrać opcję Web App on Linux lub Web App for Containers.  Wybrana poprzednio struktura aplikacji decyduje o dostępnym w tym miejscu typie celu wdrożenia usługi platformy Azure.  
-    
-3. Pozostaw usługę domyślną, a następnie wybierz pozycję **Dalej**.
+3. Wybierz **aplikacji sieci Web Windows** jako cel wdrożenia, następnie wybierz pozycję **dalej**. Opcjonalnie można wybrać innych usług platformy Azure dla danego wdrożenia. Strukturę aplikacji, która została wybrana opcja wcześniej, decyduje o rodzaju cel wdrożenia usługi platformy Azure dostępne w tym miejscu.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure 
 

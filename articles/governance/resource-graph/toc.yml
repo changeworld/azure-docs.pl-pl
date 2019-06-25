@@ -33,6 +33,9 @@
     - name: Praca z dużymi zestawami danych
       displayName: 'page, first, skip, token'
       href: ./concepts/work-with-data.md
+    - name: Wskazówki dotyczące ograniczonych żądań
+      displayName: 'pagination, batching, throttling, parallel'
+      href: ./concepts/guidance-for-throttled-requests.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Uzyskiwanie zmian zasobów

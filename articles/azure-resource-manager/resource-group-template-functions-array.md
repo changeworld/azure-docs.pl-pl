@@ -1,25 +1,17 @@
 ---
 title: Funkcje szablonu usługi Resource Manager platformy Azure — tablice i obiekty | Dokumentacja firmy Microsoft
 description: Opisuje funkcje służące do pracy z tablicami i obiektami w szablonie usługi Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
-ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e093cb65137576a725a7d23676e5b2288bb778a0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128695"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206388"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Funkcje tablicy i obiektów dla szablonów usługi Azure Resource Manager
 
@@ -58,7 +50,7 @@ Konwertuje wartość na tablicę.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Tak |int, string, tablicy lub obiektu |Wartość do przekonwertowania na tablicę. |
+| convertToArray |Tak |int, string, array lub object |Wartość do przekonwertowania na tablicę. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -136,8 +128,8 @@ Zwraca pierwszą wartość inną niż null z parametrów. Puste ciągi, pusta ta
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int, string, tablicy lub obiektu |Pierwsza wartość do testowania wartości null. |
-| dodatkowe argumenty |Nie |int, string, tablicy lub obiektu |Dodatkowe wartości null. |
+| arg1 |Tak |int, string, array lub object |Pierwsza wartość do testowania wartości null. |
+| dodatkowe argumenty |Nie |int, string, array lub object |Dodatkowe wartości null. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -656,7 +648,7 @@ Zwraca pojedynczą tablicę lub obiekt o wspólnych elementach zawiera sekcja z 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |tablicy lub obiektu |Pierwsza wartość używanych na potrzeby znajdowania wspólne elementy. |
+| arg1 |Yes |tablicy lub obiektu |Pierwsza wartość używanych na potrzeby znajdowania wspólne elementy. |
 | argument2 |Yes |tablicy lub obiektu |Druga wartość używanych na potrzeby znajdowania wspólne elementy. |
 | dodatkowe argumenty |Nie |tablicy lub obiektu |Dodatkowe wartości używanych na potrzeby znajdowania wspólne elementy. |
 
@@ -808,7 +800,7 @@ Zwraca ostatni element tablicy lub ostatni znak w ciągu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub ciągu |Wartość można pobrać ostatniego elementu lub znak. |
+| arg1 |Tak |tablicy lub ciągu |Wartość można pobrać ostatniego elementu lub znak. |
 
 ### <a name="return-value"></a>Wartość zwracana
 

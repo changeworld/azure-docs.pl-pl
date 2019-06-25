@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5bc326bbc16ef93d484425f26b6f8226150c77c6
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 58daa53dba8f18c3f73253008fe687ba8b0d0839
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302417"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274077"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Samouczek: Wdrażanie aplikacji na klastra autonomicznego usługi Service Fabric
 
@@ -61,7 +61,7 @@ Po pobraniu aplikacji można ją wdrożyć w klastrze bezpośrednio z programu V
 
 4. Kliknij prawym przyciskiem myszy projekt aplikacji `Voting` w Eksploratorze rozwiązań i wybierz polecenie **Publikuj**.
 
-5. Wybierz listę rozwijaną **Punkt końcowy połączenia** i wprowadź publiczną nazwę DNS jednego z węzłów w klastrze.  Na przykład: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`
+5. Wybierz listę rozwijaną **Punkt końcowy połączenia** i wprowadź publiczną nazwę DNS jednego z węzłów w klastrze.  Na przykład `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Należy pamiętać, że na platformie Azure, w pełni kwalifikowaną nazwę domeny (FQDN) nie znajduje się automatycznie, ale może łatwo [można ustawić na stronie Omówienie maszyny Wirtualnej.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
 
 6. Otwórz preferowaną przeglądarkę i wpisz adres klastra (punkt końcowy połączenia; ta aplikacja jest wdrożona na porcie 8080 — na przykład ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

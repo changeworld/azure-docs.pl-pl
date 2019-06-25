@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: 776f79d7f32cf23943ecab4133e055993d30c7cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04b1d0eda85972517155f80488ad590fb56619ab
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075059"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190679"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen usługi Azure Logic Apps
 
@@ -53,7 +53,7 @@ Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [Azure Logic Apps �
 
 ## <a name="connectors"></a>Łączniki
 
-Łączników usługi Azure Logic Apps pomaga swojej logiki aplikacji dostęp do aplikacji, usług i systemy w chmurze lub lokalnie, zapewniając [wyzwalaczy](#triggers), [akcje](#actions), lub obu. Łączniki są klasyfikowane jako Standard lub Enterprise. Aby uzyskać przegląd informacji o tych łączników, zobacz [łączniki dla usługi Azure Logic Apps](../connectors/apis-list.md). Poniższe sekcje zawierają więcej informacji na temat sposobu wyzwala opłata i akcje działają.
+Łączników usługi Azure Logic Apps pomaga swojej logiki aplikacji dostęp do aplikacji, usług i systemy w chmurze lub lokalnie, zapewniając [wyzwalaczy](#triggers), [akcje](#actions), lub obu. Łączniki są klasyfikowane jako Standard lub Enterprise. Aby uzyskać przegląd informacji o tych łączników, zobacz [łączniki dla usługi Azure Logic Apps](../connectors/apis-list.md). Nie wstępnie utworzone łączniki są dostępne dla interfejsów API REST, który chcesz używać w aplikacjach logiki, można utworzyć [łączników niestandardowych](https://docs.microsoft.com/connectors/custom-connectors), które są po prostu otok wokół tych interfejsów API REST. Łączniki niestandardowe są rozliczane jako łączniki standardowe. Poniższe sekcje zawierają więcej informacji na temat sposobu wyzwala opłata i akcje działają.
 
 <a name="triggers"></a>
 

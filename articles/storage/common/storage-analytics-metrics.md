@@ -9,12 +9,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: f0dfed10190685c1d51822b8bec2b3c80cea7bb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fecced844b3580c83fd18d0c14c3a2083f7a4fc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153939"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165738"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metryki analizy usługi Azure Storage (wersja klasyczna)
 
@@ -90,18 +90,27 @@ Polecenia cmdlet, które kontrolują metryk usługi Storage, użyj następujący
 * **Usługa**: Zbiera metryki, takie jak ruch przychodzący i wychodzący, dostępności, opóźnienia i procent powodzenia, które są agregowane dla obiektów blob, kolejek, tabel i usług plików.
 * **ServiceAndApi**: Oprócz metryk usług gromadzi informacje o ten sam zestaw metryk dla każdej operacji magazynu w interfejsie API usługi Azure Storage.
 
-Na przykład następujące polecenie zmienia się na metryki minut dla usługi blob na koncie magazynu domyślnego przechowywania ustawionej pięć dni:  
+Na przykład następujące polecenie zmienia się na metryki minut dla usługi blob na koncie magazynu przechowywania ustawionej pięć dni: 
+
+> [!NOTE]
+> Tego polecenia przyjęto założenie, że zarejestrowano do subskrypcji platformy Azure przy użyciu `Connect-AzAccount` polecenia.
 
 ```  
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute   
--ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5  
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+
+Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
+
+* Zastąp `<resource-group-name>` wartość symbolu zastępczego z nazwą grupy zasobów.
+
+* Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
+
+
 
 Następujące polecenie pobiera bieżący godzinowe metryki poziomu i przechowywania dni na usługę blob service na koncie magazynu domyślnego:  
 
 ```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour   
--ServiceType Blob  
+Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
 Aby uzyskać informacje o sposobie konfigurowania poleceń cmdlet programu Azure PowerShell do pracy z subskrypcją platformy Azure i jak wybrać domyślne konto magazynu do użycia, zobacz: [Jak zainstalować i skonfigurować program Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  

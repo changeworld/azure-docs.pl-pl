@@ -9,16 +9,16 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156848"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183823"
 ---
 1. Przejdź do konsoli [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) i zaloguj się przy użyciu poświadczeń konta Google. 
 2. Wybierz opcję **Create Project** (Utwórz projekt) na pasku narzędzi. 
    
-    ![Utwórz nowy projekt](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
+    ![Tworzenie nowego projektu](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. Aby uzyskać **nazwę projektu**, wprowadź nazwę swojego projektu i kliknij przycisk **Utwórz**.
 4. Naciśnij przycisk **alerty** na pasku narzędzi i wybierz swój projekt z listy. Zostanie wyświetlony pulpit nawigacyjny projektu. Możesz także przejść bezpośrednio do pulpitu nawigacyjnego przy użyciu adresu URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

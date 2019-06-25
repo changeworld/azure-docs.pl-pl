@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9c29837e99d327112e6a9d648a5c56cc35e8555
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60958642"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296672"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Tworzenie i zarządzanie obiektami BLOB w usłudze Azure blob storage z usługą Azure Logic Apps
 
@@ -30,12 +30,21 @@ Załóżmy, że masz narzędzie, które zostanie zaktualizowany w witrynie sieci
 >
 > * Jeśli używasz już usługi API Management, można użyć tej usługi, w tym scenariuszu. Aby uzyskać więcej informacji, zobacz [Architektura integracji przedsiębiorstw proste](https://aka.ms/aisarch).
 
-Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">dokumentacja łączników usługi Azure Blob Storage</a>.
+Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby uzyskać informacje techniczne dotyczące łącznika, zobacz [dokumentacja łączników usługi Azure Blob Storage](/connectors/azureblobconnector/).
+
+## <a name="limits"></a>Limits
+
+* Domyślnie działania usługi Azure Blob Storage mogą odczytać lub zapisać pliki, które są *50 MB lub mniej*. Do obsługi plików większych niż 50 MB, ale do 1024 MB pamięci, operacje usługi Azure Blob Storage obsługują [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). **Pobierz zawartość obiektu blob** Akcja niejawnie używa segmentu.
+
+* Wyzwalacze w usłudze Azure Blob Storage nie jest obsługiwane segmentu. Podczas żądania zawartości pliku, wyzwalaczy wybierz tylko te pliki, które są 50 MB lub mniej. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru:
+
+  * Użyj wyzwalacza usługi Azure Blob Storage, zwracające właściwości pliku, taką jak **gdy obiekt blob jest dodawany lub modyfikowany (tylko właściwości)** .
+
+  * Postępuj zgodnie z wyzwalacza z usługi Azure Blob Storage **Pobierz zawartość obiektu blob** akcji, która odczytuje całego pliku i niejawnie wykorzystuje segmentu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * [Konta magazynu platformy Azure i kontener magazynu](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -47,13 +56,13 @@ Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https:
 
 W usłudze Azure Logic Apps, każda aplikacja logiki musi rozpoczynać się [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts), który jest aktywowany wystąpienia, gdy zajdzie określone zdarzenie lub po spełnieniu określonego warunku. Każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki i uruchamiania przepływu pracy Twojej aplikacji.
 
-Ten przykład przedstawia, jak można uruchomić przepływu pracy aplikacji logiki za pomocą **usługi Azure Blob Storage — gdy obiekt blob jest dodawany lub modyfikowany (tylko właściwości)** wyzwalacza, gdy właściwości obiektu blob zostanie dodane lub zaktualizowane w kontenerze magazynu. 
+Ten przykład przedstawia, jak można uruchomić przepływu pracy aplikacji logiki za pomocą **gdy obiekt blob jest dodawany lub modyfikowany (tylko właściwości)** wyzwalacza, gdy właściwości obiektu blob zostanie dodane lub zaktualizowane w kontenerze magazynu.
 
-1. W witrynie Azure portal lub programu Visual Studio należy utworzyć pustej aplikacji logiki, który zostanie otwarty projektant aplikacji logiki. W tym przykładzie użyto portalu Azure.
+1. W [witryny Azure portal](https://portal.azure.com) lub Visual Studio, tworzenie pustej aplikacji logiki, który zostanie otwarty projektant aplikacji logiki. W tym przykładzie użyto portalu Azure.
 
 2. W polu wyszukiwania wprowadź "obiektów blob platformy azure" jako filtr. Z listy wyzwalaczy wybierz wyzwalacz, który ma.
 
-   W tym przykładzie użyto tego wyzwalacza: **Usługa Azure Blob Storage — gdy obiekt blob jest dodawany lub modyfikowany (tylko właściwości)**
+   W tym przykładzie użyto tego wyzwalacza: **Gdy obiekt blob jest dodawany lub modyfikowany (tylko właściwości)**
 
    ![Wybierz wyzwalacz](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -79,22 +88,22 @@ Ten przykład przedstawia, jak można uruchomić przepływu pracy aplikacji logi
 
 W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-app-concepts) jest to krok w przepływie pracy, występującego wyzwalacza lub innej akcji. W tym przykładzie aplikacja logiki rozpoczyna się od [wyzwalacz cykliczny](../connectors/connectors-native-recurrence.md).
 
-1. W witrynie Azure portal lub programu Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki. W tym przykładzie użyto portalu Azure.
+1. W [witryny Azure portal](https://portal.azure.com) lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. W tym przykładzie użyto portalu Azure.
 
-2. W Projektancie aplikacji logiki w obszarze wyzwalacza lub akcji, wybierz **nowy krok** > **Dodaj akcję**.
+2. W Projektancie aplikacji logiki w obszarze wyzwalacza lub akcji, wybierz **nowy krok**.
 
    ![Dodawanie akcji](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   Aby dodać akcję między krokami istniejących, myszą strzałkę nawiązującego połączenie. 
-   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Aby dodać akcję między krokami istniejących, myszą strzałkę nawiązującego połączenie. Wybierz znak plus ( **+** ) pojawia się i wybierz **Dodaj akcję**.
 
 3. W polu wyszukiwania wprowadź "obiektów blob platformy azure" jako filtr. Z listy akcji wybierz akcję, którą chcesz.
 
-   W tym przykładzie użyto tej akcji: **Usługa Azure Blob Storage — Pobierz zawartość obiektu blob**
+   W tym przykładzie użyto tej akcji: **Pobierz zawartość obiektu blob**
 
-   ![Wybierz akcję](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
+   ![Wybierz akcję](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 
-4. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenie usługi Azure Blob Storage teraz](#create-connection). Lub, jeśli istnieje już połączenie, podaj informacje niezbędne do działania.
+4. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenie usługi Azure Blob Storage teraz](#create-connection).
+Lub, jeśli istnieje już połączenie, podaj informacje niezbędne do działania.
 
    W tym przykładzie wybierz żądany plik.
 
@@ -120,11 +129,6 @@ W tym przykładzie pobiera tylko zawartość obiektu blob. Aby wyświetlić jego
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
 Aby uzyskać szczegółowe informacje techniczne, takich jak wyzwalacze, akcje i ograniczeń, zgodnie z opisem w otwartych interfejsów API łącznika (dawniej Swagger) plików, zobacz [strona referencyjna łącznika](/connectors/azureblobconnector/).
-
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
-
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

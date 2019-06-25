@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a67cd2f82eb069555bda68e4cb04a6634e3b31d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209535"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164353"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Przewodnik Szybki Start — Konfigurowanie środowiska chmury prywatnej
 
@@ -33,7 +33,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 5. W portalu CloudSimple Podaj nazwę chmury prywatnej
 6. Wybierz **lokalizacji** chmury prywatnej
-7. Wybierz **typ węzła** zakupionych na platformie Azure.  Możesz wybrać [opcji CS28 lub CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Tę druga opcję zawiera maksymalną moc obliczeniową i pamięć.
+7. Wybierz **typ węzła** aprowizować na platformie Azure.  Możesz wybrać [opcji CS28 lub CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Tę druga opcję zawiera maksymalną moc obliczeniową i pamięć.
 8. Określ **liczby węzłów**.  Co najmniej trzy węzły są wymagane do utworzenia chmury prywatnej
 
     ![Tworzenie chmury prywatnej — informacje podstawowe](media/create-private-cloud-basic-info.png)

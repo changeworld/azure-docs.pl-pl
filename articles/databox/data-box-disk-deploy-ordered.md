@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 06/17/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1d25ea2ce6e365e0d04fab325f9c13bb37382758
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 5f8fd9b2ecb58b34476bf8ecca7aa08dfc446040
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603171"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273394"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Samouczek: zamawianie urządzenia Azure Data Box Disk
 
@@ -49,7 +49,12 @@ Przed rozpoczęciem upewnij się, że:
 
 ## <a name="order-data-box-disk"></a>Zamawianie usługi Data Box Disk
 
-Wykonaj poniższe czynności w witrynie [Azure Portal](https://aka.ms/azuredataboxfromdiskdocs), aby zamówić usługę Data Box Disk.
+Zaloguj się do:
+
+- Witryny Azure portal pod tym adresem URL: https://portal.azure.com zamówieniem dysku Data Box.
+- Lub, w portalu Azure dla instytucji rządowych pod tym adresem URL: https://portal.azure.us. Aby uzyskać więcej informacji, przejdź do [nawiązywanie połączenia z platformy Azure Government przy użyciu portalu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+
+Wykonaj następujące kroki w kolejności dysku Data Box.
 
 1. W lewym górnym rogu portalu kliknij pozycję **+ Utwórz zasób** i wyszukaj pozycję *Azure Data Box*. Kliknij pozycję **Azure Data Box**.
     

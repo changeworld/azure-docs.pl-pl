@@ -4,14 +4,14 @@ description: Dowiedz się, jak ustawić aprowizowanej przepływności baz danych
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: ce059e542ee7bfa67e899b4923e3410e13e4930e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61f8e93fd82f7da632e0ab7e16ad6fbf4ca25646
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067501"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165029"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -72,6 +72,9 @@ Możesz połączyć dwa modele. Przepływność inicjowania obsługi administrac
 
 * Można utworzyć bazy danych Azure Cosmos o nazwie *Z* z aprowizowanej przepływności równej *"K"* (RUS). 
 * Następnie należy utworzyć pięć kontenerów o nazwie *A*, *B*, *C*, *D*, i *E* w bazie danych. Podczas tworzenia kontenera B, upewnij się umożliwić **Aprowizowanie dedykowanej przepływności dla tego kontenera** opcji i skonfigurować jawnie *"P"* RUs aprowizowaną przepływność w tym kontenerze. Należy pamiętać, że możesz skonfigurować przepływność udostępnione i dedykowane tylko podczas tworzenia bazy danych i kontenera. 
+
+   ![Ustawianie przepływności na poziomie kontenera](./media/set-throughput/coll-level-throughput.png)
+
 * *"K"* jednostek żądania przepływności jest współużytkowany przez cztery kontenery *A*, *C*, *D*, i *E*. Dokładne zalecenia dotyczące ilości przepustowość dostępna dla *A*, *C*, *D*, lub *E* różni się. Nie istnieją żadne umowy SLA dla każdego kontenera poszczególnych przepływności.
 * Kontener o nazwie *B* jest gwarantowane, Pobierz *"P"* jednostek żądania przepływności przez cały czas. Jest wspierana przez umowy SLA.
 

@@ -6,18 +6,18 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6151af941b89198812f2a33a522b30ff0a8796a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 129476c833e596d40daa7081e23c0fd6d1b93b30
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242073"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165762"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i minimalizowanie ograniczania w celu zmniejszenia opóźnienia w usłudze Azure Time Series Insights
 
@@ -42,11 +42,11 @@ Możesz z największym prawdopodobieństwem mogą wystąpić opóźnienia i ogra
 
 Alerty mogą ułatwić zdiagnozować i rozwiązać problemy z opóźnienia spowodowane przez środowiska.
 
-1. W witrynie Azure portal kliknij pozycję **metryki**.
+1. W witrynie Azure portal wybierz **metryki**.
 
    [![Metryki](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
 
-1. Kliknij pozycję **Dodaj alert metryki**.  
+1. Wybierz pozycję **Dodaj alert dotyczący metryki**.  
 
    [![Dodaj alert metryki](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
 

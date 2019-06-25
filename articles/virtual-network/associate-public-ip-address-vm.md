@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
-ms.openlocfilehash: 69460a111e6fd879807b4025d6832b3ac515a9b4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1b201957a33acd609eed8a2373c8201bdefe9d7d
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "64691972"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Skojarz publiczny adres IP do maszyny wirtualnej
@@ -43,7 +43,7 @@ Możesz użyć [witryny Azure portal](#azure-portal), Azure [interfejsu wiersza 
    > [!NOTE]
    > Publiczne adresy IP są skojarzone z konfiguracjami adresów IP dla karty sieciowej. Na poprzedniej ilustracji interfejs sieciowy ma jedną konfigurację adresu IP. Jeśli interfejs sieciowy wielu konfiguracji adresu IP, zostaną one wyświetlone na liście, a następnie należy wybrać konfigurację adresu IP, którą chcesz skojarzyć publiczny adres IP.
 
-5. Wybierz **włączone**, a następnie wybierz **adresu IP (*Skonfiguruj wymagane ustawienia*)**. Wybieranie istniejącego publicznego adresu IP, który automatycznie zamyka **wybierz publiczny adres IP** pole. Jeśli nie masz żadnych dostępnych publiczne adresy IP na liście, należy ją utworzyć. Aby dowiedzieć się więcej, zobacz temat [tworzenie publicznego adresu IP](virtual-network-public-ip-address.md#create-a-public-ip-address). Wybierz **Zapisz**, jak pokazano na ilustracji poniżej, a następnie zamknij okno do konfiguracji adresu IP.
+5. Wybierz **włączone**, a następnie wybierz **adresu IP (*Skonfiguruj wymagane ustawienia*)** . Wybieranie istniejącego publicznego adresu IP, który automatycznie zamyka **wybierz publiczny adres IP** pole. Jeśli nie masz żadnych dostępnych publiczne adresy IP na liście, należy ją utworzyć. Aby dowiedzieć się więcej, zobacz temat [tworzenie publicznego adresu IP](virtual-network-public-ip-address.md#create-a-public-ip-address). Wybierz **Zapisz**, jak pokazano na ilustracji poniżej, a następnie zamknij okno do konfiguracji adresu IP.
 
    ![Włączanie publicznego adresu IP](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 

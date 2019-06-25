@@ -7,19 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/11/2019
+ms.openlocfilehash: db14f8240dea95eb073a0a653c2798f02fbb7c35
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479149"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67162585"
 ---
-# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning
+# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-functions"></a>Skalować zadania usługi Stream Analytics przy użyciu funkcji Azure Machine Learning Studio
 Jest bardzo proste zadanie usługi Stream Analytics i wykonaj przykładowe dane. Co możemy zrobić, jeśli zaistnieje taka potrzeba uruchomić to samo zadanie z większą ilość danych? Wymaga to nam dowiedzieć się, jak skonfigurować zadanie usługi Stream Analytics, dzięki czemu zostanie przeprowadzone skalowanie. W tym dokumencie skupimy się na specjalne aspektów skalowanie zadań usługi Stream Analytics przy użyciu funkcji usługi Machine Learning. Aby uzyskać informacje dotyczące skalowanie zadań usługi Stream Analytics ogólnie rzecz biorąc, zobacz artykuł [skalowanie zadań](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Co to jest funkcja usługi Azure Machine Learning w usłudze Stream Analytics?
-Funkcji usługi Machine Learning, w usłudze Stream Analytics mogą być używane jak regularnym wywołaniu funkcji w języku zapytań usługi Stream Analytics. Za sceną, wywołania funkcji są faktycznie żądania usługi sieci Web Azure Machine Learning. Usługi sieci web Machine Learning obsługuje "przetwarzanie wsadowe" wiele wierszy, o nazwie mini partii, w tej samej sieci web usługi wywołania interfejsu API, aby zwiększyć ogólną przepływność. Aby uzyskać więcej informacji, zobacz [usług sieci Web Azure Machine Learning](../machine-learning/studio/consume-web-services.md).
+Funkcji usługi Machine Learning, w usłudze Stream Analytics mogą być używane jak regularnym wywołaniu funkcji w języku zapytań usługi Stream Analytics. Za sceną, wywołania funkcji są faktycznie żądania usługi sieci Web Azure Machine Learning Studio. Usługi sieci web Machine Learning obsługuje "przetwarzanie wsadowe" wiele wierszy, o nazwie mini partii, w tej samej sieci web usługi wywołania interfejsu API, aby zwiększyć ogólną przepływność. Aby uzyskać więcej informacji, zobacz [usług sieci Web programu Azure Machine Learning Studio](../machine-learning/studio/consume-web-services.md). Obsługa usługi Azure Machine Learning Studio w usłudze Stream Analytics jest dostępna w wersji zapoznawczej.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurowanie zadania usługi Stream Analytics przy użyciu funkcji usługi Machine Learning
 Podczas konfigurowania funkcji usługi Machine Learning, zadania usługi Stream Analytics, istnieją dwa parametry należy wziąć pod uwagę, rozmiaru partii wywołania funkcji usługi Machine Learning i jednostek przesyłania strumieniowego (SUs) aprowizowaną dla zadania usługi Stream Analytics. Aby określić odpowiednie wartości dla SUs, najpierw należy podjąć decyzję między opóźnienia i przepływności, oznacza to, czas oczekiwania na zadanie usługi Stream Analytics i przepływności każdy jednostka SU. SUs zawsze mogą być dodawane do zadania w celu zwiększenia przepływności również podzielone na partycje zapytań usługi Stream Analytics, mimo że dodatkowe SUs zwiększyć koszt uruchamiania zadania.

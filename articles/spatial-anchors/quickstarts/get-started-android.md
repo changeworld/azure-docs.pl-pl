@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 03589745e6e9b40b937c49162e99035ce6c81423
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9046af82388f99cfdd82c8cb816d4cda1e5f8237
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800047"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206866"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji systemu Android przy użyciu usługi Azure Spatial Anchors
 
@@ -57,7 +57,7 @@ Wybierz opcję **Open an existing Android Studio project (Otwórz istniejący pr
 
 Wybierz opcję **Open an existing Android Studio project (Otwórz istniejący projekt Android Studio)** i wybierz projekt znajdujący się w katalogu `Android/NDK/`.
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>Konfigurowanie identyfikatora i klucza konta
 
@@ -65,7 +65,7 @@ Następnym krokiem jest, aby skonfigurować aplikację do używania Twojego iden
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Otwórz plik `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`.
+Otwórz plik `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
 Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 
@@ -79,7 +79,7 @@ Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem kon
 
 Znajdź pole `SpatialAnchorsAccountId` i zastąp wartość `Set me` identyfikatorem konta.
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Wdrażanie aplikacji na urządzeniu z systemem Android
 
@@ -89,7 +89,7 @@ Wybierz polecenie **Run (Uruchom)** na pasku narzędzi programu Android Studio.
 
 ![Wdrażanie i uruchamianie w programie Android Studio](./media/get-started-android/android-studio-deploy-run.png)
 
-Wybierz urządzenie z systemem Android w oknie dialogowym **Select Deployment Target (Wybierz miejsce docelowe wdrożenia)**, a następnie wybierz przycisk **OK**, aby uruchomić aplikację na urządzeniu z systemem Android.
+Wybierz urządzenie z systemem Android w oknie dialogowym **Select Deployment Target (Wybierz miejsce docelowe wdrożenia)** , a następnie wybierz przycisk **OK**, aby uruchomić aplikację na urządzeniu z systemem Android.
 
 Postępuj zgodnie z instrukcjami w aplikacji, aby umieścić i przywołać kotwicę.
 

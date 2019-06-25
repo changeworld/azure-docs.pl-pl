@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b08e1489cf337360e838a3b5d5531fa2d4c0073b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 752aca68d1a95734bcefbd0c92d4cfc1e6fade7c
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60694321"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303890"
 ---
 # <a name="my-first-powershell-runbook"></a>Mój pierwszy element Runbook programu PowerShell
 
@@ -34,6 +34,7 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Konto usługi Automation](automation-quickstart-create-account.md) do przechowywania elementu Runbook i uwierzytelniania w zasobach platformy Azure. To konto musi mieć uprawnienia do uruchamiania i zatrzymywania maszyny wirtualnej.
 * Maszyna wirtualna platformy Azure. Zatrzymaj i uruchom tę maszynę, aby nie powinien być to produkcyjna maszyna wirtualna.
+* Konieczne może być [Aktualizuj moduły platformy Azure](automation-update-azure-modules.md) poleceń cmdlet, możesz użyć.
 
 ## <a name="create-new-runbook"></a>Tworzenie nowego elementu runbook
 

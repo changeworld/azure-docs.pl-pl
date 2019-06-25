@@ -17,6 +17,15 @@ metadata:
 ms.custom: seodec18
 abstract:
   description: 'Usługa rozpoznawania formularzy na platformie Azure to usługa poznawcza używająca technologii uczenia maszynowego do identyfikowania i wyodrębniania par klucz-wartość i danych tabeli z dokumentów formularzy. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Uczenie nienadzorowane umożliwia modelowi poznać układ i relacje między polami oraz wpisy bez ręcznego dodawania etykiet danych lub intensywnego kodowania i konserwacji.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: ../media/index/form-recognizer-landing-page-video.png
+      width: 250
+    title: 'Automatyzacja procesów obsługiwana przez sztuczną inteligencję przy użyciu usługi Rozpoznawanie formularzy (2:15)'
+    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
+    width: 250
 sections:
   - items:
       - type: list

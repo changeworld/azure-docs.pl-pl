@@ -3,16 +3,15 @@ title: Konfigurowanie Przekształcenie źródła w funkcji mapowania przepływu 
 description: Dowiedz się, jak skonfigurować źródło przekształcenia w mapowanie przepływu danych.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 5b53819c1d30f6cd62c5941d4b44d70a4996daad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67117876"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190800"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcenie źródła dla mapowania przepływu danych 
 
@@ -124,6 +123,14 @@ Jeśli źródłem jest baza danych SQL lub SQL Data Warehouse, masz dodatkowe op
 
 * **Zapytanie**: Wprowadź kwerendę SQL dla źródła. To ustawienie przesłania wszelkie tabelę, która została wybrana w zestawie danych. Należy pamiętać, że **Order By** klauzule nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Umożliwia także funkcje tabel zdefiniowanych przez użytkownika. **Wybierz * z udfGetData()** jest UDF w języku SQL, która zwraca tabelę. To zapytanie powoduje wygenerowanie tabeli źródłowej, używanego w przepływie danych.
 * **Wielkość partii**: Wprowadź rozmiar partii, Podziel duże ilości danych do odczytu.
+* **Poziom izolacji**: Domyślne dla źródła SQL w usłudze ADF mapowanie przepływu danych jest Odczyt nieprzekazany. Poziom izolacji w tym miejscu można zmienić na jedną z następujących wartości:
+* Odczyt przekazany
+* Odczyt nieprzekazany
+* Odczyt powtarzalny
+* Możliwy do serializacji
+* Brak (Ignoruj poziom izolacji)
+
+![Poziom izolacji](media/data-flow/isolationlevel.png "poziom izolacji")
 
 > [!NOTE]
 > Operacje na plikach uruchamiane tylko wtedy, gdy przepływ danych jest uruchamiany z potoku uruchomienia (potoku debugowania lub wykonywania Uruchom), który używa działania wykonywania przepływu danych w potoku. Operacje na plikach *nie* uruchomić tryb debugowania przepływ danych.

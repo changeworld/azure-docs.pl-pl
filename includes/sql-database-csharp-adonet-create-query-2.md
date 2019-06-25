@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66167221"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183309"
 ---
 ## <a name="c-program-example"></a>Przykład programu w języku C#
 
@@ -37,7 +37,7 @@ Ten diagram relacji jednostek przedstawia relację między dwiema tabelami. Wart
 
 Program w języku C# jest logicznie jednym plikiem cs, ale fizycznie jest podzielony na kilka bloków kodu, aby poprawić czytelność. Aby skompilować i uruchomić program, wykonaj następujące czynności:
 
-1. Utwórz projekt w języku C# w programie Visual Studio. Typ projektu powinien mieć wartość *Konsola*, którą można znaleźć w obszarze **Szablony** > **Visual C#** > **Aplikacja klasyczna systemu Windows** > **Aplikacja konsoli (.NET Framework)**.
+1. Utwórz projekt w języku C# w programie Visual Studio. Typ projektu powinien mieć wartość *Konsola*, którą można znaleźć w obszarze **Szablony** > **Visual C#**  > **Aplikacja klasyczna systemu Windows** > **Aplikacja konsoli (.NET Framework)** .
 
 1. W pliku *Program.cs* zamień startowe wiersze kodu, wykonując następujące czynności:
 

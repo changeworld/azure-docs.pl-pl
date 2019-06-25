@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 412b554710c552bdfdf8bf94a59e822beed55b32
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925318"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206058"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Samouczek: Korzystanie z usługi kopiowania danych w celu skopiowania danych na urządzenie Azure Data Box (wersja zapoznawcza)
 
@@ -59,7 +59,7 @@ Aby skopiować dane za pomocą usługi kopiowania danych, należy utworzyć zada
     |-------------------------------|---------|
     |**Nazwa zadania**                       |Unikatową nazwę zadania składającą się z mniej niż 230 znaków. W nazwach zadań nie wolno używać następujących znaków: \<, \>, \|, \?, \*, \\, \:, \/ i \\\.         |
     |**Lokalizacja źródłowa**                |Podaj ścieżkę SMB do źródła danych w formacie: `\\<ServerIPAddress>\<ShareName>` lub `\\<ServerName>\<ShareName>`.        |
-    |**Nazwa użytkownika**                       |Nazwa użytkownika w formacie `\\<DomainName><UserName>` używana do uzyskiwania dostępu do źródła danych.        |
+    |**Nazwa użytkownika**                       |Nazwa użytkownika w formacie `\\<DomainName><UserName>` używana do uzyskiwania dostępu do źródła danych. Jeśli połączenie jest kontem lokalnego administratora, potrzebują uprawnień zabezpieczeń jawne. Kliknij prawym przyciskiem myszy folder, wybierz **właściwości** , a następnie wybierz **zabezpieczeń**. Należy to dodawać administratora lokalnego w **zabezpieczeń** kartę.       |
     |**Hasło**                       |Hasło używane do uzyskiwania dostępu do źródła danych.           |
     |**Docelowe konto magazynu**    |Z listy wybierz docelowe konto magazynu, do którego będą przekazywane dane.         |
     |**Typ docelowy**       |Z listy wybierz typ magazynu docelowego: **Blokowy obiekt blob**, **Stronicowy obiekt blob** lub usługa **Azure Files**.        |

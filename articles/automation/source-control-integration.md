@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce41ae73a0c55a2b5c27cbdce4d4c16853acf59e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574105"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273190"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
-Kontrola źródła pozwala na zachowanie elementów runbook w automatyzacji konta są aktualne za pomocą skryptów w repozytorium kontroli źródła GitHub i repozytoriów platformy Azure. Kontrola źródła pozwala łatwo współpracować z zespołem, śledzenie zmian i wrócić do wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęzi w kontroli źródła do kont usługi Automation rozwoju, testów lub produkcji. Ułatwia promowanie kod, który został przetestowany w środowisku projektowym konta usługi Automation w środowisku produkcyjnym. Integracja kontroli źródła z usługą automation obsługuje jeden kierunek synchronizacji z repozytorium kontroli źródła.
+Kontrola źródła umożliwia aktualnych elementów runbook na Twoim koncie usługi Automation za pomocą skryptów w repozytorium kontroli źródła GitHub i repozytoriów platformy Azure. Kontrola źródła pozwala łatwo współpracować z zespołem, śledzenie zmian i wrócić do wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęzi w kontroli źródła do kont usługi Automation rozwoju, testów lub produkcji. Ułatwia promowanie kod, który został przetestowany w środowisku projektowym konta usługi Automation w środowisku produkcyjnym. Integracja kontroli źródła z usługą automation obsługuje jeden kierunek synchronizacji z repozytorium kontroli źródła.
 
 Usługa Azure Automation obsługuje trzy typy kontroli źródła:
 

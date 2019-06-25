@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 02becd787fcc5f82efff7ef21feaf336fba3a26f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62d359494050b188869d51d1e3975c823b9c0a76
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967594"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204935"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -32,6 +32,10 @@ Klucz Instrumentacji usługi Application Insights, jeśli używasz usługi Appli
 |Klucz|Wartość przykładowa|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+
+## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
+
+W wersji 2.x środowisko uruchomieniowe usługi Functions, konfiguruje zachowanie aplikacji, w zależności od środowiska czasu wykonywania. Ta wartość jest [odczytu podczas inicjowania](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Możesz ustawić `AZURE_FUNCTIONS_ENVIRONMENT` dowolną wartość, ale [trzech wartości](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) są obsługiwane: [Programowanie](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [przemieszczania](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging), i [produkcji](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Gdy `AZURE_FUNCTIONS_ENVIRONMENT` nie jest ustawiony, jego wartość domyślna to `Production`. To ustawienie, należy użyć zamiast `ASPNETCORE_ENVIRONMENT` do ustawienia środowiska wykonawczego. 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -71,14 +75,6 @@ Rozdzielana przecinkami lista funkcje w wersji beta w celu włączenia. Funkcje 
 |Klucz|Wartość przykładowa|
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1, funkcja2|
-
-## <a name="azurewebjobsscriptroot"></a>AzureWebJobsScriptRoot
-
-Ścieżka do katalogu głównego gdzie *host.json* znajdują się foldery plików i funkcji. W aplikacji funkcji, wartość domyślna to `%HOME%\site\wwwroot`.
-
-|Klucz|Wartość przykładowa|
-|---|------------|
-|AzureWebJobsScriptRoot|%Home%\site\wwwroot|
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 

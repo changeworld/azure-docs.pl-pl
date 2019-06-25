@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: c79a4907e277c337509bd362653cfb100c4bd39c
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979512"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137439"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -114,7 +114,8 @@ Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji goś
 Usługa Azure Policy korzysta z dostawców zasobów gościa konfiguracji **complianceStatus** właściwości raportu zgodności w **zgodności** węzła. Aby uzyskać więcej informacji, zobacz [pobierania danych zgodności](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Dla każdej definicji konfiguracji gościa zarówno **DeployIfNotExists** i **inspekcji** definicje zasad, musi istnieć.
+> **DeployIfNotExists** zasady są wymagane dla **inspekcji** zasad w celu zwracania wyników.
+> Bez **DeployIfNotExists**, **inspekcji** zasad zawiera "0 0" zasobów, jak w przypadku stanu.
 
 Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane inicjatywę o nazwie *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* zawiera zasady 18. Sześć **DeployIfNotExists** i **inspekcji** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
 

@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158701"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183168"
 ---
 Jeśli napotkasz problemy podczas wykonywania jakichkolwiek operacji na galeriach obrazów udostępnionych, definicjach obrazów i wersjach obrazów, uruchom ponownie w trybie debugowania polecenie powodujące niepowodzenie. Tryb debugowania jest aktywowana przez przekazanie **— debugowania** przełączyć się z interfejsem wiersza polecenia i **-Debug** Przełącz przy użyciu programu PowerShell. Po zlokalizowaniu błąd, postępuj zgodnie z tym dokumentem, aby rozwiązać problemy z błędami.
 

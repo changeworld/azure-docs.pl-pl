@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166074"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183169"
 ---
 ## <a name="viewing-your-tags-in-the-usage-details"></a>Wyświetlanie tagów w szczegóły użycia
 Tagi umieszczone na mocy obliczeniowej, sieci i zasobów magazynu w modelu wdrażania usługi Resource Manager zostanie wypełniony w szczegółów użycia w [portalu rozliczeń](https://account.windowsazure.com/).

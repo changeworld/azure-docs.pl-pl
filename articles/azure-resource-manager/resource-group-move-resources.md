@@ -4,14 +4,14 @@ description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/13/2019
+ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cc2f3b1ee657706dba237c86552b1780bc9dd34
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083538"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295441"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -89,14 +89,14 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Machine Learning — Machine Learning Studio, usług sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale nie w ramach innej subskrypcji. Inne zasoby usługi Machine Learning można przenosić między subskrypcjami.
 * Usługa Managed Disks — Managed Disks w strefach dostępności nie można przenieść do innej subskrypcji
 * Media Services
-* Monitor — upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#monitor-limits)
+* Monitor — upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits)
 * Notification Hubs
 * Operational Insights
 * Operations Management
 * Pulpity nawigacyjne portalu
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
-* Usługi Recovery Services vault — Zarejestruj się w [Podgląd](#recovery-services-limitations).
+* Usługi Recovery Services vault — zobacz [ograniczenia](#recovery-services-limitations).
 * Oprogramowanie SAP HANA na platformie Azure
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
@@ -104,7 +104,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Service Fabric
 * Service Fabric Mesh
 * SignalR Service
-* Nie można przenieść magazyn — konta magazynu w różnych regionach, w tej samej operacji. Zamiast tego należy użyć oddzielnych operacji dla każdego regionu.
+* Magazyn
 * Magazyn (klasyczny) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Usługa synchronizacji magazynu
 * Stream Analytics — Stream Analytics, zadania nie można przenieść uruchamianego w stanie.

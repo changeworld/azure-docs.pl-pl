@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161152"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183690"
 ---
 Jeśli wystąpią problemy z dowolnego urządzenia, można utworzyć pakietu dla pomocy technicznej z dzienników systemu. Microsoft Support używa tego pakietu do rozwiązywania problemów. Wykonaj następujące kroki, aby utworzyć pakiet dla pomocy technicznej:
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
 ms.openlocfilehash: f42a97cdd74d360bc047ef561cbe626d526f9e4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136222"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183810"
 ---
 System nazw domen (DNS) jest używana do lokalizowania rzeczy w Internecie. Na przykład podczas wprowadzania adresu w przeglądarce lub kliknij łącze na stronie sieci web używa DNS, tłumaczenie domenę na adres IP. Adres IP jest swoistego, takie jak adres ulicy, ale nie jest bardzo ludzi przyjazna. Na przykład jest znacznie łatwiejsze do zapamiętania nazwę DNS, takich jak **contoso.com** niż do zapamiętania adresu IP, takich jak 192.168.1.88 lub 2001:0:4137:1f67:24a2:3888:9cce:fea3.
 

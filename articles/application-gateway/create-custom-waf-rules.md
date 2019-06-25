@@ -1,24 +1,24 @@
 ---
-title: Tworzenie i używanie niestandardowych reguł zapory aplikacji sieci Web (WAF) platformy Azure
-description: Ten artykuł zawiera informacje na temat tworzenia niestandardowych reguł zapory aplikacji sieci Web (WAF) w usłudze Azure Application Gateway.
+title: Tworzenie i używanie niestandardowych reguł w wersji 2 zapory aplikacji sieci Web (WAF) platformy Azure
+description: Ten artykuł zawiera informacje na temat tworzenia reguł niestandardowych v2 zapory aplikacji sieci Web (WAF) w usłudze Azure Application Gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: bb8c50664261814c7d994c9b879972b1e8b846e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86ddb0b608cd17814cbcbb902f0b2905fe61094a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66689034"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164670"
 ---
-# <a name="create-and-use-web-application-firewall-custom-rules"></a>Tworzenie i używanie niestandardowych reguł zapory aplikacji sieci Web
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Tworzenie i używanie niestandardowych reguł w wersji 2 zapory aplikacji sieci Web
 
-Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochronę aplikacji sieci web. Ta ochrona jest dostarczany przez Otwórz sieci Web aplikacji Security Project (OWASP) podstawowych reguł Ustaw (CRS). W niektórych przypadkach może być konieczne utworzenie własne reguły niestandardowe do konkretnych potrzeb. Aby uzyskać więcej informacji na temat niestandardowych reguł zapory aplikacji sieci Web, zobacz [Omówienie reguł zapory aplikacji sieci web niestandardowego](custom-waf-rules-overview.md).
+Azure Brama sieci Web aplikacji zapory aplikacji (WAF) w wersji 2 zapewnia ochronę aplikacji sieci web. Ta ochrona jest dostarczany przez Otwórz sieci Web aplikacji Security Project (OWASP) podstawowych reguł Ustaw (CRS). W niektórych przypadkach może być konieczne utworzenie własne reguły niestandardowe do konkretnych potrzeb. Aby uzyskać więcej informacji na temat niestandardowych reguł zapory aplikacji sieci Web, zobacz [Omówienie reguł zapory aplikacji sieci web niestandardowego](custom-waf-rules-overview.md).
 
-W tym artykule dowiesz się, Oto kilka przykładowych reguł niestandardowych, które można tworzyć i za pomocą zapory aplikacji internetowych. Informacje na temat wdrażania zapory aplikacji sieci Web przy użyciu reguły niestandardowej przy użyciu programu Azure PowerShell, zobacz [niestandardowe reguły Konfigurowanie zapory aplikacji sieci Web przy użyciu programu Azure PowerShell](configure-waf-custom-rules.md).
+W tym artykule dowiesz się, Oto kilka przykładowych reguł niestandardowych, które można tworzyć i za pomocą zapory aplikacji internetowych w wersji 2. Informacje na temat wdrażania zapory aplikacji sieci Web przy użyciu reguły niestandardowej przy użyciu programu Azure PowerShell, zobacz [niestandardowe reguły Konfigurowanie zapory aplikacji sieci Web przy użyciu programu Azure PowerShell](configure-waf-custom-rules.md).
 
 >[!NOTE]
 > Jeśli Twoja brama application gateway nie korzysta z warstwy zapory aplikacji sieci Web, opcja uaktualnienia bramy aplikacji do warstwy zapory aplikacji sieci Web pojawi się w okienku po prawej stronie.

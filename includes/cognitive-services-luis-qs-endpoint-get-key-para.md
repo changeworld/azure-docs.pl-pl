@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: ef8dae8219eaf1a85a5c112705517b992e25a50f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124055"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183542"
 ---
 Dostęp do punktu końcowego przewidywania jest zapewniany przy użyciu klucza punktu końcowego. Na potrzeby tego przewodnika Szybki start użyj bezpłatnego klucza początkowego skojarzonego z Twoim kontem usługi LUIS. 
  

@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 26a5876971749a1a63447ef813219dad8485781c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd1416befb74a7299136ea497eccc8a06b7f0f6a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160173"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164863"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>Limity przydziału węzła CloudSimple
 
-Cztery węzły jest dostępne do zakupu, a domyślna ilość, jeśli Twoja subskrypcja została włączona dla usługi CloudSimple.  Możesz kupić dowolne [typ węzła](cloudsimple-node.md) z witryny Azure portal.  Co najmniej trzy węzły tej samej jednostki SKU są wymagane do utworzenia chmury prywatnej.  Jeśli została zakupiona węzłów, może być wyświetlony błąd przy próbie zakupu dodatkowych węzłów.
+Cztery węzły jest domyślna ilość dostępnych do inicjowania obsługi, jeśli Twoja subskrypcja została włączona dla usługi CloudSimple.  Można udostępnić dowolne [typ węzła](cloudsimple-node.md) z witryny Azure portal.  Co najmniej trzy węzły tej samej jednostki SKU są wymagane do utworzenia chmury prywatnej.  Jeśli aprowizowaniu węzłów, zobaczysz błąd przy próbie aprowizować dodatkowe węzły.
 
 ## <a name="quota-increase"></a>Zwiększenia limitu przydziału
 
@@ -40,5 +40,5 @@ Możesz również skontaktować się ze swoim przedstawicielem firmy Microsoft w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Węzły zakupu](create-nodes.md)
+* [Aprowizacja węzłów](create-nodes.md)
 * [Omówienie węzłów CloudSimple](cloudsimple-node.md)

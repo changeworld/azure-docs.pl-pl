@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 98acc7f6dd5ec7cf3702bbcbe60e2739732512e2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068783"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294910"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -29,43 +29,6 @@ Azure GA szyfrowania dysku obsługuje szablony usługi Azure Resource Manager, p
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Ile kosztuje usługa Azure Disk Encryption
 
 Nie ma opłat do szyfrowania dysków maszyn wirtualnych za pomocą usługi Azure Disk Encryption, ale są naliczane opłaty związane z użyciem usługi Azure Key Vault. Aby uzyskać więcej informacji na temat kosztów usługi Azure Key Vault, zobacz [cenach usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) strony.
-
-
-## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Warstwy maszyny wirtualnej, który obsługuje usługi Azure Disk Encryption?
-
-Usługa Azure Disk Encryption jest dostępna na maszynach wirtualnych w warstwie standardowa, w tym [A, D, DS, E, G, GS i F](https://azure.microsoft.com/pricing/details/virtual-machines/) serię maszyn wirtualnych IaaS. Jest również dostępna dla maszyn wirtualnych dzięki usłudze premium storage. Nie jest dostępna na maszynach wirtualnych w warstwie podstawowa.
-
-## <a name="bkmk_LinuxOSSupport"></a> Jakie są dystrybucje systemu Linux obsługuje usługi Azure Disk Encryption?
-
-Usługa Azure Disk Encryption jest obsługiwana dla podzestawu [dystrybucje zatwierdzone na platformie Azure z systemem Linux](../virtual-machines/linux/endorsed-distros.md), który sam jest podzestawem wszystkich server możliwe są dystrybucje systemu Linux.
-
- ![Diagram Venna Linux server obsługujących usługi Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
-
-Dystrybucje systemu Linux server, które nie zalecane dla platformy Azure nie obsługują usługi Azure Disk Encryption i tych, które są zalecane, tylko poniższe dystrybucje i wersje obsługują usługi Azure Disk Encryption:
-
-| Dystrybucja systemu Linux | Wersja | Typ woluminu obsługiwany w przypadku szyfrowania|
-| --- | --- |--- |
-| Ubuntu | 18.04| Dysk systemu operacyjnego i danych |
-| Ubuntu | 16.04| Dysk systemu operacyjnego i danych |
-| Ubuntu | 14.04.5</br>[za pomocą platformy Azure dostosowanych jądra zaktualizowana w celu 4.15 lub nowszej](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Dysk systemu operacyjnego i danych |
-| RHEL | 7.6 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 7.5 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 7.4 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 7.3 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 7.2 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 6.8 | Dysk z danymi (zobacz uwaga poniżej) |
-| RHEL | 6.7 | Dysk z danymi (zobacz uwaga poniżej) |
-| CentOS | 7.5 | Dysk systemu operacyjnego i danych |
-| CentOS | 7.4 | Dysk systemu operacyjnego i danych |
-| CentOS | 7.3 | Dysk systemu operacyjnego i danych |
-| CentOS | 7.2n | Dysk systemu operacyjnego i danych |
-| CentOS | 6.8 | Dysk z danymi |
-| openSUSE | 42.3 | Dysk z danymi |
-| SLES | 12-SP4 | Dysk z danymi |
-| SLES | 12-SP3 | Dysk z danymi |
-
-> [!NOTE]
-> Nowa implementacja ADE jest obsługiwana dla systemu operacyjnego systemu RHEL i dyskiem danych o płatności RHEL7 obrazów. ADE nie jest obecnie obsługiwane dla obrazów systemu RHEL Bring-Your-właścicielem-subskrypcji (BYOS). Zobacz [usługi Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) Aby uzyskać więcej informacji.
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Jak rozpocząć, za pomocą usługi Azure Disk Encryption?
 

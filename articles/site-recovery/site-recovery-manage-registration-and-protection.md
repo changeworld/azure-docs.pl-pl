@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 400ffaa9e6fed14ceabf34283cd5fa7c7a0336b8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415478"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203396"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -151,6 +151,8 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
 > [!NOTE]
 > W obie opcje, które usługi mobilności nie zostanie odinstalowane z chronionych serwerów należy najpierw odinstalować go ręcznie. Jeśli planujesz chronić serwer ponownie, używając tego samego serwera konfiguracji, można pominąć, odinstalowanie usługi mobilności.
 
+> [!NOTE]
+> Jeśli jeszcze nie można przenieść maszynę Wirtualną i jest uruchomiona na platformie Azure, należy pamiętać, że wyłączenia ochrony nie usunąć / wpływają na nieudane przez maszynę Wirtualną.
 ## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Wyłącz ochronę maszyny wirtualnej platformy Azure (Azure – Azure)
 
 -  W **chronione elementy** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy maszyny > **Wyłącz replikację**.
@@ -167,8 +169,12 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
    - **Wyłącz replikację i Usuń (zalecane)** — ta opcja to usunięcie replikowanego elementu z usługi Azure Site Recovery i replikacji dla maszyny została zatrzymana. Konfiguracja replikacji na maszynie wirtualnej w środowisku lokalnym zostaną wyczyszczone i rozliczeń Site Recovery dla tego serwera chronionego została zatrzymana.
    - **Usuń** — tę opcję, powinien być używane tylko wtedy, gdy środowisko źródłowe został usunięty lub jest niedostępny (nie połączono). Spowoduje to usunięcie replikowanego elementu z usługi Azure Site Recovery (rozliczanie kończy się). Konfiguracja replikacji na maszynie wirtualnej w środowisku lokalnym **nie będzie** wyczyszczone. 
 
-     > [!NOTE]
+ > [!NOTE]
      > Jeśli została wybrana opcja **Usuń** opcję, następnie uruchom następujący zestaw skryptów, aby wyczyścić ustawienia replikacji w środowisku lokalnym serwerze funkcji Hyper-V.
+
+> [!NOTE]
+> Jeśli jeszcze nie można przenieść maszynę Wirtualną i jest uruchomiona na platformie Azure, należy pamiętać, że wyłączenia ochrony nie usunąć / wpływają na nieudane przez maszynę Wirtualną.
+
 1. W funkcji Hyper-V hosta serwera źródłowego, aby usunąć replikację dla maszyny wirtualnej. Zamień SQLVM1 nazwę maszyny wirtualnej, a następnie uruchom skrypt z administracyjne programu PowerShell
 
 ```powershell

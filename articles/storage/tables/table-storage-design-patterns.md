@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63a81e390c113d10378973f928ffb58d71e8628e
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101439"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295112"
 ---
 # <a name="table-design-patterns"></a>Wzorce projektowe tabel
 W tym artykule opisano niektóre wzorce, które są przeznaczone do użycia z rozwiązaniami usługi tabeli. Ponadto zobaczysz, jak praktycznie rozwiązać niektóre problemy i charakterystyczne kompromisowe omówione w innych artykułach projektowania magazynu tabeli. Poniższy diagram przedstawia relacje między różnych wzorców:  
@@ -574,7 +574,25 @@ if (retrieveResult.Result != null)
 Zwróć uwagę, jak w tym przykładzie oczekuje, że jednostka pobiera typu **EmployeeEntity**.  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>Trwa pobieranie wielu jednostek za pomocą LINQ
-Możesz pobrać wiele jednostek przy użyciu LINQ za pomocą biblioteki klienta usługi Storage i określając zapytanie o **gdzie** klauzuli. Aby uniknąć skanowanie tabeli, zawsze powinna zawierać **PartitionKey** wartości w klauzuli where klauzuli i jeśli to możliwe **RowKey** wartość, aby uniknąć skanowanie tabeli i partycji. Usługa table service obsługuje ograniczony zestaw operatory porównania (większa, większa niż lub równe mniej niż, mniejsze lub równe, równe i nie równa się), aby użyć w klauzuli where — klauzula. Poniższy fragment kodu języka C# znajduje wszystkich pracowników, którego ostatnie nazwa rozpoczyna się od ciągu "B" (przy założeniu, że **RowKey** przechowuje nazwisko) używanych w dziale sprzedaży (zakładając, że **PartitionKey** przechowuje Nazwa działu):  
+LINQ umożliwia pobieranie wielu jednostek z usługi tabel, podczas pracy z usługą Cosmos tabeli standardowa biblioteka usługi Microsoft Azure. 
+
+```cli
+dotnet add package Microsoft.Azure.Cosmos.Table
+```
+
+Aby wprowadzić poniższe przykłady pracy, musisz uwzględnić przestrzenie nazw:
+
+```csharp
+using System.Linq;
+using Microsoft.Azure.Cosmos.Table;
+using Microsoft.Azure.Cosmos.Table.Queryable;
+```
+
+EmployeeTable jest obiektem CloudTable, który implementuje CreateQuery<ITableEntity>metody (), która zwraca TableQuery<ITableEntity>. Obiekty tego typu wdrożenia element IQueryable i umożliwić przy użyciu składni notacji wyrażenia zapytań LINQ i kropka.
+
+Pobieranie wielu jednostek i można osiągnąć, określając zapytanie o **gdzie** klauzuli. Aby uniknąć skanowanie tabeli, zawsze powinna zawierać **PartitionKey** wartości w klauzuli where klauzuli i jeśli to możliwe **RowKey** wartość, aby uniknąć skanowanie tabeli i partycji. Usługa table service obsługuje ograniczony zestaw operatory porównania (większa, większa niż lub równe mniej niż, mniejsze lub równe, równe i nie równa się), aby użyć w klauzuli where — klauzula. 
+
+Poniższy fragment kodu języka C# znajduje wszystkich pracowników, którego ostatnie nazwa rozpoczyna się od ciągu "B" (przy założeniu, że **RowKey** przechowuje nazwisko) używanych w dziale sprzedaży (zakładając, że **PartitionKey** przechowuje Nazwa działu):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();

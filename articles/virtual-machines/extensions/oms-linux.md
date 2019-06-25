@@ -62,7 +62,7 @@ W poniższej tabeli wymieniono pakiety wymagane dla obsługiwanych dystrybucjach
 |Glibc |    Biblioteka C GNU | 2.5-12 
 |Openssl    | Biblioteki OpenSSL | 1.0.x lub 1.1.x |
 |Curl | Klient sieci web programu cURL | 7.15.5 |
-|Ctypes języka Python | | 
+|Python-ctypes | | 
 |PAM | Podłączane moduły uwierzytelniania | | 
 
 >[!NOTE]
@@ -135,11 +135,11 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Roz
 | Name (Nazwa) | Wartość / przykład |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
-| Wydawcy | Microsoft.EnterpriseCloud.Monitoring |
+| publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
-| Identyfikator obszaru roboczego (np.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
-| klucz workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+| workspaceId (np.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu

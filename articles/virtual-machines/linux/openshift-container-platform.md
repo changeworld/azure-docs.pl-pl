@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 664099322bef3ac85d980fbe5e43dcc49cba862b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65411562"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Wdrażanie rozwiązania OpenShift Container Platform na platformie Azure
@@ -66,7 +66,7 @@ Poniższy przykład pokazuje plik parametrów o nazwie azuredeploy.parameters.js
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -257,7 +257,7 @@ Różne wersje mogą mieć różnych parametrów, dlatego Sprawdź niezbędne pa
 | `infraVmSize` | Rozmiar Infra maszyny Wirtualnej. Wybierz jedną z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy.json |  | Standardowa_D4s_v3 |
 | `nodeVmSize` | Rozmiar węzła aplikacji maszyny Wirtualnej. Wybierz jedną z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy.json |  | Standardowa_D4s_v3 |
 | `cnsVmSize` | Rozmiar węzła magazynu natywnego (CNS) kontenera maszyny Wirtualnej. Wybierz jedną z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy.json |  | Standardowa_E4s_v3 |
-| `osImageType` | RHEL obrazu do użycia. defaultgallery: Na żądanie; Portal Marketplace: obraz innych firm | defaultgallery <br> marketplace | defaultgallery |
+| `osImageType` | RHEL obrazu do użycia. defaultgallery: Na żądanie; Portal Marketplace: obraz innych firm | defaultgallery <br> Marketplace | defaultgallery |
 | `marketplaceOsImage` | Jeśli `osImageType` jest witryna marketplace, a następnie wprowadź odpowiednie wartości dla "publisher", "oferują", "sku", wersja i oferty w portalu marketplace. Ten parametr jest typu obiektu |  |  |
 | `storageKind` | Typ magazynu do użycia  | Zarządzane<br> niezarządzane | Zarządzane |
 | `openshiftClusterPrefix` | Klaster prefiks używany do konfigurowania nazw hostów dla wszystkich węzłów.  Od 1 do 20 znaków |  | mycluster |
@@ -282,12 +282,12 @@ Różne wersje mogą mieć różnych parametrów, dlatego Sprawdź niezbędne pa
 | `keyVaultName` | Nazwa usługi Key Vault, został utworzony |  |  |
 | `enableAzure` | Włącz dostawca usług w chmurze platformy Azure | true <br> false | true |
 | `aadClientId` | Usługa Azure identyfikator klienta Active Directory tzw. Identyfikator aplikacji dla jednostki usługi |  |  |
-| `domainName` | Nazwa niestandardowej nazwy domeny do użycia (jeśli dotyczy). Wartość "none" w przeciwnym razie wdrażanie klastra pełnej prywatne |  | brak |
-| `masterClusterDnsType` | Typ domeny dla konsoli sieci web platformy OpenShift. "default" użyje Etykieta DNS serwera głównego infra publicznego adresu IP. "custom" pozwala na zdefiniowanie swoją własną nazwę | domyślny <br> niestandardowe | domyślny |
+| `domainName` | Nazwa niestandardowej nazwy domeny do użycia (jeśli dotyczy). Wartość "none" w przeciwnym razie wdrażanie klastra pełnej prywatne |  | Brak |
+| `masterClusterDnsType` | Typ domeny dla konsoli sieci web platformy OpenShift. "default" użyje Etykieta DNS serwera głównego infra publicznego adresu IP. "custom" pozwala na zdefiniowanie swoją własną nazwę | default <br> Niestandardowe | default |
 | `masterClusterDns` | Niestandardową nazwę DNS na potrzeby dostępu do konsoli sieci web platformy OpenShift, w przypadku wybrania "custom" dla `masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | Jeśli ustawiona na "nipio" `routingSubDomain` użyje nip.io.  Użyj "custom", jeśli masz własną domenę, którego chcesz użyć do routingu | nipio <br> niestandardowe | nipio |
+| `routingSubDomainType` | Jeśli ustawiona na "nipio" `routingSubDomain` użyje nip.io.  Użyj "custom", jeśli masz własną domenę, którego chcesz użyć do routingu | nipio <br> Niestandardowe | nipio |
 | `routingSubDomain` | Wieloznaczną nazwę DNS, którego chcesz użyć do routingu w przypadku wybrania "custom" dla `routingSubDomainType` |  | apps.contoso.com |
-| `virtualNetworkNewOrExisting` | Wybierz, czy chcesz użyć istniejącej sieci wirtualnej lub utworzyć nową sieć wirtualną | istniejące <br> nowy | nowy |
+| `virtualNetworkNewOrExisting` | Wybierz, czy chcesz użyć istniejącej sieci wirtualnej lub utworzyć nową sieć wirtualną | istniejące <br> nowe | nowe |
 | `virtualNetworkResourceGroupName` | Nazwa grupy zasobów dla nowej sieci wirtualnej w przypadku wybrania przycisku "new" dla `virtualNetworkNewOrExisting` |  | resourceGroup().name |
 | `virtualNetworkName` | Nazwa nowej sieci wirtualnej, aby utworzyć w przypadku wybrania przycisku "new" dla `virtualNetworkNewOrExisting` |  | openshiftvnet |
 | `addressPrefixes` | Prefiks adresu nową sieć wirtualną |  | 10.0.0.0/14 |
@@ -301,16 +301,16 @@ Różne wersje mogą mieć różnych parametrów, dlatego Sprawdź niezbędne pa
 | `existingInfraSubnetReference` | Pełna odwołanie do istniejącej podsieci dla infra węzłów. Nie wymagane w przypadku tworzenia nowej sieci wirtualnej / podsieci |  |  |
 | `existingCnsSubnetReference` | Pełną dokumentację na istniejącą podsieć CNS węzłów. Nie wymagane w przypadku tworzenia nowej sieci wirtualnej / podsieci |  |  |
 | `existingNodeSubnetReference` | Pełną dokumentację na istniejącą podsieć dla węzłów obliczeniowych. Nie wymagane w przypadku tworzenia nowej sieci wirtualnej / podsieci |  |  |
-| `masterClusterType` | Określ, czy klaster używa prywatnej lub publicznej węzłów głównych. Jeśli wybrano prywatne, węzły główne nie będą dostępne do Internetu za pośrednictwem publicznego adresu IP. Zamiast tego należy użyć prywatnym adresem IP określone w `masterPrivateClusterIp` | publiczny <br> prywatna | publiczny |
+| `masterClusterType` | Określ, czy klaster używa prywatnej lub publicznej węzłów głównych. Jeśli wybrano prywatne, węzły główne nie będą dostępne do Internetu za pośrednictwem publicznego adresu IP. Zamiast tego należy użyć prywatnym adresem IP określone w `masterPrivateClusterIp` | Publiczne <br> prywatna | Publiczne |
 | `masterPrivateClusterIp` | W przypadku prywatnych węzłów głównych następnie prywatny adres IP jest wymagane do użycia przez wewnętrzny moduł równoważenia obciążenia dla węzłów głównych. To statyczny adres IP musi być w bloku CIDR wzorca podsieci i nie jest jeszcze używana. W przypadku publicznych węzłów głównych tej wartości nie będą używane, ale nadal musi być określona |  | 10.1.0.200 |
-| `routerClusterType` | Określ, czy klaster używa opcji prywatny lub publiczny infra węzłów. Jeśli wybrano prywatne, infra węzłów nie będą dostępne do Internetu za pośrednictwem publicznego adresu IP. Zamiast tego należy użyć prywatnym adresem IP określone w `routerPrivateClusterIp` | publiczny <br> prywatna | publiczny |
+| `routerClusterType` | Określ, czy klaster używa opcji prywatny lub publiczny infra węzłów. Jeśli wybrano prywatne, infra węzłów nie będą dostępne do Internetu za pośrednictwem publicznego adresu IP. Zamiast tego należy użyć prywatnym adresem IP określone w `routerPrivateClusterIp` | Publiczne <br> prywatna | Publiczne |
 | `routerPrivateClusterIp` | Jeśli prywatne infra węzły są zaznaczone, a następnie prywatny adres IP musi być określona dla użyć wewnętrznego modułu równoważenia obciążenia dla infra węzłów. To statyczny adres IP musi być w bloku CIDR wzorca podsieci i nie jest jeszcze używana. Jeśli jest to publiczna infra węzły są zaznaczone, ta wartość nie będą używane, ale musi być określona |  | 10.2.0.200 |
-| `routingCertType` | Użyj niestandardowego certyfikatu dla domeny routingu lub certyfikatu z podpisem własnym domyślne — wykonaj instrukcje z sekcji **niestandardowych certyfikatów** sekcji | selfsigned <br> niestandardowe | selfsigned |
-| `masterCertType` | Użyj niestandardowego certyfikatu dla domeny głównej lub certyfikatu z podpisem własnym domyślne — wykonaj instrukcje z sekcji **niestandardowych certyfikatów** sekcji | selfsigned <br> niestandardowe | selfsigned |
+| `routingCertType` | Użyj niestandardowego certyfikatu dla domeny routingu lub certyfikatu z podpisem własnym domyślne — wykonaj instrukcje z sekcji **niestandardowych certyfikatów** sekcji | selfsigned <br> Niestandardowe | selfsigned |
+| `masterCertType` | Użyj niestandardowego certyfikatu dla domeny głównej lub certyfikatu z podpisem własnym domyślne — wykonaj instrukcje z sekcji **niestandardowych certyfikatów** sekcji | selfsigned <br> Niestandardowe | selfsigned |
 
 <br>
 
-### <a name="deploy-using-azure-cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
+### <a name="deploy-using-azure-cli"></a>Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
 
 > [!NOTE] 
 > Poniższe polecenie wymaga interfejsu wiersza polecenia Azure 2.0.8 lub nowszej. Możesz sprawdzić wersję interfejsu wiersza polecenia przy użyciu `az --version` polecenia. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).

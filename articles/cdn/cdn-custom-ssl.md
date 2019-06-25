@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e9cca4cd113115a1acf676b46cc65dc4ed7021fa
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 6a41df70340da626a849804155ca245d95b6da46
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144069"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190506"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
@@ -189,10 +189,10 @@ Automatyczna Walidacja przeważnie trwa kilka godzin. Jeśli nie widzisz swojej 
 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Domena niestandardowa nie została zamapowana do punktu końcowego usługi CDN
 
-Jeśli wpis rekordu CNAME dla punktu końcowego już nie istnieje lub zawiera domenę podrzędną cdnverify, postępuj zgodnie z dalszymi instrukcjami w tym kroku.
-
 >[!NOTE]
->Weryfikacja własności domeny niestandardowej za pomocą poczty e-mail jest obecnie niedostępna dla profilów **Azure CDN from Akamai**. Ta funkcja obecnie znajduje się na naszej liście prac. 
+>Weryfikacja własności domeny niestandardowej za pomocą poczty e-mail jest obecnie niedostępna dla profilów **Azure CDN from Akamai**. Jeśli używasz **Azure CDN from Akamai**, domenę niestandardową musi być zamapowany na punkt końcowy usługi w sieci cdn przy użyciu rekordu CNAME, jak wspomniano powyżej.  Ta funkcja obecnie znajduje się na naszej liście prac. 
+
+Jeśli wpis rekordu CNAME zawiera domenę podrzędną cdnverify, postępuj zgodnie z dalszymi instrukcjami w tym kroku.
 
 Po przesłaniu żądania, aby włączyć protokół HTTPS w domenie niestandardowej urząd certyfikacji DigiCert weryfikuje własność domeny, kontaktując się z jej rejestratorem zgodnie z domeny [WHOIS](http://whois.domaintools.com/) informacje o rejestratorze WHOIS. Kontakt jest nawiązywany za pośrednictwem adresu e-mail (domyślnie) lub numeru telefonu wymienionego w rejestracji WHOIS. Zanim protokół HTTPS zostanie uaktywniony w domenie niestandardowej, należy ukończyć walidację domeny. Domenę należy zatwierdzić w ciągu sześciu dni roboczych. Żądania, które nie zostały zatwierdzone w ciągu sześciu dni roboczych, zostaną automatycznie anulowane. 
 

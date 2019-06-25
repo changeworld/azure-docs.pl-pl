@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13eb1a8fcea2f74cda5921a51b8c2e8816be975f
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238010"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303711"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Dzienniki diagnostyczne usługi Azure Stream do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor
 
@@ -60,7 +60,7 @@ Obszar roboczy usługi Log Analytics nie musi znajdować się w tej samej subskr
 
 4. Kliknij pozycję **Zapisz**.
 
-Po kilku chwilach nowe ustawienie jest wyświetlane na liście ustawień dla tego zasobu, i jak tylko nowe dane zdarzenia są generowane dzienniki diagnostyczne są przesyłane strumieniowo do tego obszaru roboczego. Należy pamiętać, że może być maksymalnie 15 minut między podczas zdarzenia są emitowane i, gdy pojawia się w usłudze Log Analytics.
+Po kilku chwilach nowe ustawienie jest wyświetlane na liście ustawień dla tego zasobu, i jak tylko nowe dane zdarzenia są generowane dzienniki diagnostyczne są przesyłane strumieniowo do tego obszaru roboczego. Może to być między podczas zdarzenia są emitowane i, gdy pojawia się w usłudze Log Analytics do 15 minut.
 
 ### <a name="via-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell
 
@@ -99,37 +99,81 @@ Dodatkowe kategorie można dodawać do dzienników diagnostycznych, dodając sł
 
 W bloku dzienników w portalu usługi Azure Monitor jako część z rozwiązaniem zarządzanie dziennikiem pod tabelą AzureDiagnostics można badać dzienników diagnostycznych. Dostępne są także [kilka rozwiązań do monitorowania zasobów platformy Azure](../../azure-monitor/insights/solutions.md) można zainstalować na uzyskiwanie natychmiastowego wglądu w dane dziennika są wysyłane do usługi Azure Monitor.
 
+## <a name="azure-diagnostics-vs-resource-specific"></a>Azure Diagnostics a specyficznych dla zasobów  
+Po włączeniu docelowej usługi Log Analytics w konfiguracji usługi Diagnostyka Azure istnieją dwa odrębne sposoby, które dane będą widoczne w obszarze roboczym:  
+- **Diagnostyka Azure** — jest to metoda starszych używanych obecnie przez większość usług platformy Azure. W tym trybie wszystkie dane z dowolnego ustawienia diagnostyczne wskazywał danego obszaru roboczego będzie znajdą się w _AzureDiagnostics_ tabeli. 
+<br><br>Ponieważ wiele zasobów wysyłać dane do tej samej tabeli (_AzureDiagnostics_), schemat ta tabela jest bardzo zestaw schematów typami danych zbieranych. Na przykład jeśli utworzono ustawień diagnostycznych dla kolekcji następujących typów danych, wszystkie wysyłane do tego samego obszaru roboczego:
+    - Przeprowadź inspekcję dzienników 1 zasobu (o schemacie składający się z kolumn, A, B i C)  
+    - Dzienniki błędów 2 zasobów (o schemacie składający się z kolumn, D, E i f.)  
+    - Dzienniki przepływu danych 3 zasobów (o składający się z kolumn G, H i I schematu)  
+
+    Tabela AzureDiagnostics będzie wyglądać następująco, z pewnymi przykładowymi danymi:  
+
+    | ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
+    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+    | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+    | Microsoft.Resource2 | Przesłano | | | | q1 | w1 | e1 |
+    | Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+    | Microsoft.Resource2 | Przesłano | | | | q2 | w2 | e2 |
+    | Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+    | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+    | Przyciski ... |
+
+- **Specyficznych dla zasobów** — w tym trybie poszczególnych tabel w wybranym obszarze roboczym są tworzone dla każdej kategorii, które wybrano w konfiguracji ustawień diagnostyki. Ta metoda nowszej sprawia, że łatwiej odnaleźć dokładnie ma zostać odnaleziona za pośrednictwem wyraźnej separacji: tabelę dla każdej kategorii. Ponadto zapewnia korzyści w jego pomocy technicznej dla typów dynamicznych. Już widoczny ten tryb, wybierz pozycję typy zasobów platformy Azure, na przykład [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) lub [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) dzienniki. Ostatecznie oczekujemy, że każdego typu danych, aby przeprowadzić migrację do trybu specyficznych dla zasobów. 
+
+    W powyższym przykładzie spowodowałoby to w trzech tabelach tworzona: 
+    - Tabela _AuditLogs_ w następujący sposób:
+
+        | ResourceProvider | Category | A | B | C |
+        | -- | -- | -- | -- | -- |
+        | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+        | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+        | Przyciski ... |
+
+    - Tabela _przesłano_ w następujący sposób:  
+
+        | ResourceProvider | Category | D | E | F |
+        | -- | -- | -- | -- | -- | 
+        | Microsoft.Resource2 | Przesłano | q1 | w1 | e1 |
+        | Microsoft.Resource2 | Przesłano | q2 | w2 | e2 |
+        | Przyciski ... |
+
+    - Tabela _DataFlowLogs_ w następujący sposób:  
+
+        | ResourceProvider | Category | G | H | I |
+        | -- | -- | -- | -- | -- | 
+        | Microsoft.Resource3 | DataFlowLogs | j1 | k1 | l1|
+        | Microsoft.Resource3 | DataFlowLogs | j3 | k3 | l3|
+        | Przyciski ... |
+
+    Inne zalety korzystania z trybu specyficznych dla zasobów obejmują lepszą wydajność zarówno opóźnienia w pozyskiwaniu danych, jak i czas zapytania, lepsze możliwości odnajdywania schematów i ich struktury, możliwość udzielania uprawnień RBAC w określonej tabeli i nie tylko.
+
+### <a name="selecting-azure-diagnostic-vs-resource-specific-mode"></a>Wybranie diagnostycznych platformy Azure trybu vs specyficznych dla zasobów
+Dla zasobów najbardziej platformy Azure nie będziesz mieć możliwość wyboru czy ma być używany tryb diagnostycznych platformy Azure lub specyficznych dla zasobów dane będą automatycznie przekazywane za pośrednictwem metody, że zasób został wybrany do użycia. Można znaleźć w dokumentacji dostarczonej przez zasób zostało włączone, aby wysyłać dane do usługi Log Analytics, aby uzyskać szczegółowe informacje, na których są stosowane trybu. 
+
+Jak wspomniano w poprzedniej sekcji, ostatecznie to klient jest celem usługi Azure Monitor, aby wszystkie usługi w korzystanie z platformy Azure w trybie specyficznych dla zasobów. Aby ułatwić ten proces przejścia i upewnij się, że żadne dane utracone jako część jej niektórych usług platformy Azure podczas dołączania do usługi Log Analytics zapewnia wybór trybu:  
+   ![Wybór ustawień diagnostycznych w trybie](media/diagnostic-logs-stream-log-store/diagnostic-settings-mode-selector.png)
+
+Firma Microsoft **silnie** zaleca się, aby uniknąć potencjalnie trudne migracje występujących, dowolny nowo utworzony Użyj ustawień diagnostycznych zasobu skoncentrowane na tryb.  
+
+Dla istniejących ustawień diagnostycznych, po włączeniu przez określony zasób platformy Azure można wstecznie przełączyć się z diagnostyki Azure do trybu specyficznych dla zasobów. Wcześniej pozyskane dane będą nadal dostępne w _AzureDiagnostics_ tabeli do momentu jej wieku się zgodnie z konfiguracją ustawień przechowywania w obszarze roboczym, ale wszystkie nowe dane zostaną wysłane do dedykowanych tabeli. Oznacza to, że dla każdego zapytania, które ma obejmować dane stare i nowe (aż do starych danych pełni wieku), [Unii](https://docs.microsoft.com/azure/kusto/query/unionoperator) operatora zapytania muszą się łączyć dwóch zestawów danych.
+
+Przejrzyj nowe informacje o nowej Azure usług pomocniczych dzienniki w trybie specyficznych dla zasobów na [aktualizacje platformy Azure](https://azure.microsoft.com/updates/) blogu!
+
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Znane ograniczenia: kolumny limitu w AzureDiagnostics
-Ponieważ wiele zasobów wysyłać typy danych są wysyłane do tej samej tabeli (_AzureDiagnostics_), schemat ta tabela jest bardzo zestaw schematów typami danych zbieranych. Na przykład jeśli utworzono ustawień diagnostycznych dla kolekcji następujących typów danych, wszystkie wysyłane do tego samego obszaru roboczego:
-- Przeprowadź inspekcję dzienników 1 zasobu (o schemacie składający się z kolumn, A, B i C)  
-- Dzienniki błędów 2 zasobów (o schemacie składający się z kolumn, D, E i f.)  
-- Dzienniki przepływu danych 3 zasobów (o składający się z kolumn G, H i I schematu)  
- 
-Tabela AzureDiagnostics będzie wyglądać następująco, z pewnymi przykładowymi danymi:  
- 
-| ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
-| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
-| Microsoft.Resource2 | Przesłano | | | | q1 | w1 | e1 |
-| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
-| Microsoft.Resource2 | Przesłano | | | | q2 | w2 | e2 |
-| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
-| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
-| Przyciski ... |
- 
-Ma limitu jawne dowolnej podanej tabeli dziennika platformy Azure, nie ma więcej niż 500 kolumn. Po osiągnięciu wszystkie wiersze zawierające dane z dowolnej kolumny poza wyświetlanie 500 pierwszych zostanie porzucony w momencie pozyskiwania. Tabela AzureDiagnostics znajduje się w szczególności wrażliwych, to wpływ ten limit. Zwykle dzieje się tak, ponieważ szerokiej gamy źródeł danych są wysyłane do tego samego obszaru roboczego lub kilku źródeł bardzo pełne dane są wysyłane do tego samego obszaru roboczego. 
- 
+Ma limitu jawne dowolnej podanej tabeli dziennika platformy Azure, nie ma więcej niż 500 kolumn. Po osiągnięciu wszystkie wiersze zawierające dane z dowolnej kolumny poza wyświetlanie 500 pierwszych zostanie porzucony w momencie pozyskiwania. Tabela AzureDiagnostics znajduje się w szczególności wrażliwych, to wpływ ten limit. Zwykle dzieje się tak, ponieważ szerokiej gamy źródeł danych są wysyłane do tego samego obszaru roboczego lub kilku źródeł pełne dane są wysyłane do tego samego obszaru roboczego. 
+
 #### <a name="azure-data-factory"></a>Azure Data Factory  
-Usługa Azure Data Factory, ze względu na zestaw bardzo szczegółowych dzienników, jest zasobem, który jest znany szczególnie dotyczy to ograniczenie. W szczególności:  
+Usługa Azure Data Factory, ze względu na zestaw bardzo szczegółowych dzienników, jest zasobem, który jest znany szczególnie dotyczy to ograniczenie. Nastąpiła zwłaszcza w naszym, poszczególne ustawienia diagnostyczne skonfigurowana przed określonych zasobów tryb włączone lub jawnie wybierając do używania trybu specyficznych dla zasobów ze względu na zgodność wstecznego:  
 - *Parametry użytkownika zdefiniowane w odniesieniu do dowolnych działań w potoku*: będzie nową kolumnę utworzone dla każdego parametru unikatową nazwę użytkownika względem wszelkich działań. 
 - *Działanie wejściami i wyjściami*: te różnią się działanie do działania i generowanie dużej liczby kolumn z powodu ich pełne charakter. 
  
-Jako szersze propozycje rozwiązania poniżej, zalecane jest ich do dzienników usługi ADF własne obszar roboczy, aby zminimalizować prawdopodobieństwo te dzienniki wywierania wpływu na inne typy dzienników są zbierane w obszarach roboczych. Oczekujemy wkrótce odpowiednie dzienniki usługi Azure Data Factory.
+Jako szersze propozycje rozwiązania poniżej, zalecane jest Aby migrować swoje dzienniki, aby jak najszybciej korzystania z trybu specyficznych dla zasobów. Nie jest możliwe to zrobić bezpośrednio, zamiast tymczasowe czy do izolowania dzienniki usługi ADF w obszarach roboczych, aby zminimalizować prawdopodobieństwo te dzienniki wywierania wpływu na inne typy dzienników są zbierane w obszarach roboczych. 
  
 #### <a name="workarounds"></a>Rozwiązania
-Krótkoterminowe, dopóki nie zostało ponownie zdefiniowane limit 500 kolumny, zalecane jest oddzielenie typy pełnych danych do oddzielnych obszarów roboczych, aby zmniejszyć prawdopodobieństwo osiągnięcia limitu.
+Rozwiązaniem krótkoterminowym, dopóki wszystkie usługi systemu Azure są włączone w trybie specyficznych dla zasobów, dla wszystkich usług nie jeszcze obsługi trybu specyficznych dla zasobów, jest zalecane oddzielne typy pełne dane publikowane przez te usługi w oddzielnych obszarach roboczych zmniejszyć możliwość osiągnięcia limitu.  
  
-Dłuższy okres Diagnostyka Azure będziemy przenosić od schematu ujednolicone, sparse do poszczególnych tabel dla każdego typu danych; sparowane z obsługą typów dynamicznych, to znacznie poprawi użyteczność dane przesyłane do dzienników platformy Azure za pośrednictwem mechanizmu diagnostyki platformy Azure. Już widać to typy zasobów platformy Azure wybierz pozycję na przykład [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) lub [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) dzienniki. Przejrzyj najnowsze wiadomości dotyczące nowych typów zasobów na platformie Azure, obsługuje te wyselekcjonowane dzienniki na [aktualizacje platformy Azure](https://azure.microsoft.com/updates/) blogu!
+Dłuższy okres diagnostyki platformy Azure będzie na drodze do wszystkich usług platformy Azure, Obsługa trybu specyficznych dla zasobów. Zalecamy przejście do tego trybu tak szybko, jak to możliwe, aby zmniejszyć potencjał wpływa ten limit 500 kolumny.  
 
 
 ## <a name="next-steps"></a>Kolejne kroki

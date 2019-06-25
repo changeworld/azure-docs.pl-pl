@@ -12,12 +12,12 @@ ms.date: 05/15/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b3066a529183d7a8a13e4673d7879136aa0d7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2576a33e62b370bc2fd91c5d155e9f8d6e52c0f8
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824167"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190266"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 
@@ -95,7 +95,7 @@ Oparte na hasłach logowanie jednokrotne jest obsługiwana dla dowolnej aplikacj
 - Dla programu Chrome w Windows 7 lub nowszy, a system MacOS x lub nowszym
 - Firefox 26.0 lub nowszej dla systemu Windows XP SP2 lub nowszy i w systemie Mac OS X 10.6 lub nowszej
 
-Aby skonfigurować dla opartego na hasłach logowania jednokrotnego aplikacji w chmurze, zobacz [skonfigurować wniosek o hasło logowania jednokrotnego](application-sign-in-problem-password-sso-gallery.md#configure-the-application-for-password-single-sign-on).
+Aby skonfigurować dla opartego na hasłach logowania jednokrotnego aplikacji w chmurze, zobacz [skonfigurować wniosek o hasło logowania jednokrotnego](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso).
 
 Aby skonfigurować aplikację lokalną pod kątem logowania jednokrotnego za pośrednictwem serwera Proxy aplikacji, zobacz [hasło vaulting dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-password-vaulting.md)
 

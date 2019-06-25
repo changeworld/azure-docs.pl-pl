@@ -124,9 +124,10 @@
               href: resource-manager-powershell-sas-token.md
         - name: Wdrażanie w wielu grupach zasobów lub subskrypcjach
           href: resource-manager-cross-resource-group-deployment.md
-        - name: Ciągła integracja za pomocą usługi Azure DevOps
-          href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
-          maintainContext: true
+    - name: CI/CD
+      items:
+        - name: Projekt programu VS z potokami
+          href: vs-resource-groups-project-devops-pipelines.md
     - name: Eksportowanie szablonu
       href: export-template-portal.md
     - name: Zarządzanie
@@ -211,7 +212,7 @@
 - name: Dokumentacja
   items:
     - name: Dokumentacja dotycząca szablonów
-      href: subtoc/toc.yml
+      href: /azure/templates/
     - name: Funkcje szablonów
       items:
         - name: Wszystkie funkcje

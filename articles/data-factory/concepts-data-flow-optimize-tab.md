@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 372922fff600aaa12fddfeeb86ff4522eca3e602
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40023931b2a0b3788a583a5b5240e7916b187e34
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075099"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190640"
 ---
 # <a name="mapping-data-flow-transformation-optimize-tab"></a>Mapowanie danych przekształcania przepływ optymalizacji kartę
 
@@ -45,7 +45,7 @@ Zakres dynamiczny użyje Spark zakresów dynamicznych na podstawie kolumny lub w
 
 ### <a name="fixed-range"></a>Środek zakresu
 
-Należy utworzyć wyrażenie, które zapewnia szereg stałych wartości kolumny danych podzielonych na partycje. Należy dysponować dobrą znajomością danych przed użyciem tej opcji, aby uniknąć niesymetryczność partycji. Wartość, która wprowadź wyrażenie będzie służyć jako część funkcji partycji. Można ustawić liczbę partycji fizycznych.
+Należy utworzyć wyrażenie, które zapewnia szereg stałych wartości kolumny danych podzielonych na partycje. Należy dysponować dobrą znajomością danych przed użyciem tej opcji, aby uniknąć niesymetryczność partycji. Wartości, które można wprowadzić wyrażenie będzie służyć jako część funkcji partycji. Można ustawić liczbę partycji fizycznych.
 
 ### <a name="key"></a>Klucz
 

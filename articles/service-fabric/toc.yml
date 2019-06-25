@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5 — Usuwanie klastra
           href: service-fabric-tutorial-delete-cluster.md
-    - name: Tworzenie klastra autonomicznego na platformie AWS
+    - name: Tworzenie klastra autonomicznego
       items:
-        - name: 1 — Tworzenie infrastruktury na platformie AWS
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1 — Tworzenie infrastruktury
+          items:
+            - name: Za pomocą platformy AWS
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: Za pomocą platformy Azure
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2 — Konfigurowanie usługi Service Fabric
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3 — Wdrażanie aplikacji w klastrze
@@ -695,6 +699,8 @@
       items:
         - name: Diagnozowanie typowych scenariuszy
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: Diagnozowanie błędów pakietu kodu
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: Monitorowanie aplikacji
           items:
             - name: Dodawanie rejestrowania do aplikacji

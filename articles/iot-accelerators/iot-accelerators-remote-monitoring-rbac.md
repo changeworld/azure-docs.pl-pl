@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61443137"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203154"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurowanie kontroli dostępu opartej na rolach w akceleratora rozwiązania monitorowania zdalnego
 
@@ -30,14 +30,14 @@ Przy pierwszym wdrożeniu rozwiązania do zdalnego monitorowania, dostępne są 
 | Wyświetl rozwiązania         | Tak   | Yes       |
 | Alarmy aktualizacji         | Tak   | Nie        |
 | Usuń alarmów         | Tak   | Nie        |
-| Tworzenie urządzenia        | Tak   | Nie        |
+| Tworzenie urządzenia        | Yes   | Nie        |
 | Aktualizowanie urządzenia        | Tak   | Nie        |
-| Usuwanie urządzeń        | Tak   | Nie        |
+| Usuwanie urządzeń        | Yes   | Nie        |
 | Tworzenie grup urządzeń  | Yes   | Nie        |
-| Aktualizowanie grup urządzeń  | Tak   | Nie        |
-| Usuwanie grupy urządzeń  | Tak   | Nie        |
+| Aktualizowanie grup urządzeń  | Yes   | Nie        |
+| Usuwanie grupy urządzeń  | Yes   | Nie        |
 | Tworzenie reguł          | Yes   | Nie        |
-| Reguły aktualizacji          | Tak   | Nie        |
+| Reguły aktualizacji          | Yes   | Nie        |
 | Usuń reguły          | Tak   | Nie        |
 | Tworzenie zadań           | Tak   | Nie        |
 | Rozwiązanie Update SIM management | Tak   | Nie        |
@@ -91,11 +91,11 @@ Poniżej opisano sposób dodawania roli do aplikacji w usłudze Azure Active Dir
 
 1. Znajdź **rejestracji aplikacji** dla danego rozwiązania w witrynie Azure portal. Nazwa aplikacji jest nazwa rozwiązania do zdalnego monitorowania. Na poniższym zrzucie ekranu są nazwy wyświetlane rozwiązań i aplikacji **contoso rm4**.
 
-    ![Rejestracja aplikacji](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![Rejestracja aplikacji](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. Wybierz swoją aplikację, a następnie kliknij przycisk **manifestu**. Możesz zobaczyć dwa istniejące [role aplikacji](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) zdefiniowana dla aplikacji:
 
-    ![Wyświetl manifestu](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![Wyświetl manifestu](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. Edytuj manifest Aby dodać rolę o nazwie **ManageDevices** jak pokazano w poniższym fragmencie kodu. Potrzebujesz unikatowego ciągu, np. identyfikator GUID dla nowego identyfikatora roli. Możesz wygenerować nowy identyfikator GUID, takich jak przy użyciu usługi [Online GUID Generator](https://www.guidgenerator.com/):
 

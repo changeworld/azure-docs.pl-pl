@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e655b442ba9290d4b4525108521f2d1a0c766b48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9df5eb9fa4493f82c6efd4a8e30eee324e4eac2a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869828"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273834"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Wprowadzenie do usługi Azure Maps Android SDK
 
@@ -201,7 +201,7 @@ Program android Studio zajmie kilka sekund, aby skompilować aplikację. Po uko�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dodać elementy do mapy, zobacz:
+Dowiedz się, jak dodawać dane nakładki na mapie:
 
 > [!div class="nextstepaction"]
 > [Dodaj warstwę symbol do mapowania dla systemu Android](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
@@ -211,5 +211,3 @@ Aby dodać elementy do mapy, zobacz:
 
 > [!div class="nextstepaction"]
 > [Zmień style mapy w społeczności maps dla systemu Android](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
-
-

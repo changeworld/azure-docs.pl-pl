@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43793f1cc105bda7a50371f8fffd4ff787f6e300
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62098866"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204434"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie usługi Azure Backup Server
 > [!div class="op_single_selector"]
@@ -42,19 +42,18 @@ Usługa Azure Backup Server dziedziczy, większość funkcji tworzenia kopii zap
 Pierwszy krok w kierunku usługi Azure Backup Server i przeprowadzanie jest skonfigurowania serwera z systemem Windows. Serwer może być na platformie Azure lub lokalnie.
 
 ### <a name="using-a-server-in-azure"></a>Za pomocą serwera na platformie Azure
-Podczas wybierania serwera do uruchamiania usługi Azure Backup Server, zaleca się, że rozpoczynać image z galerie systemu Windows Server 2012 R2 Datacenter, Windows Server 2016 Datacenter lub Windows Server 2019 Datacenter. Artykuł [Utwórz pierwszą maszynę wirtualną Windows w witrynie Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), zawiera samouczek dla klientów zaczynających się od zalecanych maszyny wirtualnej na platformie Azure, nawet jeśli nie znasz platformy Azure przed. Zalecane minimalne wymagania dotyczące serwera maszyny wirtualnej (VM) powinny być następujące: A2 warstwie podstawowa przy użyciu dwóch rdzeni oraz 3,5 GB pamięci RAM.
+Podczas wybierania serwera do uruchamiania usługi Azure Backup Server, zaleca się, że rozpoczynać image z galerie systemu Windows Server 2012 R2 Datacenter, Windows Server 2016 Datacenter lub Windows Server 2019 Datacenter. Artykuł [Utwórz pierwszą maszynę wirtualną Windows w witrynie Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), zawiera samouczek dla klientów zaczynających się od zalecanych maszyny wirtualnej na platformie Azure, nawet jeśli nie znasz platformy Azure przed. Zalecane minimalne wymagania dotyczące serwera maszyny wirtualnej (VM) powinny być następujące: Maszyna wirtualna Standard_A4_v2 cztery rdzeni i 8 GB pamięci RAM.
 
 Ochrona obciążenia za pomocą usługi Azure Backup Server ma wiele niuanse. Artykuł [Instalowanie programu DPM jako maszynę wirtualną platformy Azure](https://technet.microsoft.com/library/jj852163.aspx), wyjaśniających te różnice. Przed wdrożeniem na maszynie, przeczytaj ten artykuł całkowicie.
 
 ### <a name="using-an-on-premises-server"></a>Przy użyciu serwera lokalnego
-Jeśli chcesz uruchomić serwer bazowy na platformie Azure, można uruchomić serwera na Maszynę wirtualną funkcji Hyper-V, maszyny Wirtualnej VMware lub hosta fizycznego. Zalecane minimalne wymagania dotyczące sprzętu serwera są dwa rdzenie i 4 GB pamięci RAM. W poniższej tabeli przedstawiono obsługiwane systemy operacyjne:
+Jeśli chcesz uruchomić serwer bazowy na platformie Azure, można uruchomić serwera na Maszynę wirtualną funkcji Hyper-V, maszyny Wirtualnej VMware lub hosta fizycznego. Zalecane minimalne wymagania dotyczące sprzętu serwera są dwa rdzenie i 8 GB pamięci RAM. W poniższej tabeli przedstawiono obsługiwane systemy operacyjne:
 
 | System operacyjny | Platforma | SKU |
 |:--- | --- |:--- |
 | Windows Server 2019 |64-bitowa |Wersje Standard i Datacenter, Essentials (serwera usługi Mab w wersji 3 i nowszych) |
 | Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowa |Wersje Standard i Datacenter, Essentials (serwera usługi Mab w wersji 2 i nowsze) |
 | Windows Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowa |Standard, Datacenter, Foundation |
-| Windows Server 2012 i najnowsze dodatki Service Pack |64-bitowa |Datacenter, Foundation, Standard |
 | Windows Storage Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowa |Standard, Workgroup |
 | Windows Storage Server 2012 i najnowsze dodatki Service Pack |64-bitowa |Standard, Workgroup |
 
@@ -142,7 +141,7 @@ Aby edytować ustawienia replikacji magazynu:
 Po pobraniu wszystkich plików, kliknij przycisk **MicrosoftAzureBackupInstaller.exe**. Spowoduje to uruchomienie **Kreatora instalacji programu Microsoft Azure Backup** wyodrębnić pliki konfiguracji do lokalizacji określonej przez użytkownika. Kontynuuj pracę kreatora, a następnie kliknij polecenie **wyodrębnić** przycisk, aby rozpocząć proces wyodrębniania.
 
 > [!WARNING]
-> Co najmniej 4GB wolnego miejsca na dysku jest wymagana do wyodrębnienia plików instalacyjnych.
+> Co najmniej 4 GB wolnego miejsca na dysku jest wymagana do wyodrębnienia plików instalacyjnych.
 >
 >
 
@@ -262,7 +261,7 @@ Poniżej przedstawiono kroki, jeśli musisz przenieść serwera usługi Mab na n
 9. Z bazy danych SQL należy przywrócić bazy danych DPMDB
 10. Z poziomu wiersza polecenia administratora na nowy serwer dysk cd, kopia zapasowa Microsoft Azure Zainstaluj lokalizacji i otworzyć folder bin
 
-    Przykład ścieżki: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\" 
+    Przykład ścieżki: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
 11. Do usługi Azure backup, wykonaj polecenie DPMSYNC-SYNC
 
@@ -285,7 +284,7 @@ Po sprawdzeniu stanu łączność platformy Azure i subskrypcji platformy Azure,
 | Utraty łączności > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie z utraty łączności
-Jeśli zapora lub serwer proxy, który uniemożliwia dostęp do platformy Azure, należy umieścić na liście dozwolonych następujące adresy domain w profilu serwera proxy i zapory:
+Jeśli zapora lub serwer proxy, który uniemożliwia dostęp do platformy Azure, musisz zezwolić na następujące adresy domain w profilu serwera proxy i zapory:
 
 * `http://www.msftncsi.com/ncsi.txt`
 * \*.Microsoft.com
@@ -307,7 +306,7 @@ Użyj poniższych procedur, aby uaktualnić serwera usługi MAB.
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>Uaktualnienie z serwera usługi Mab V2 do V3
 
 > [!NOTE]
-> 
+>
 > Serwera usługi Mab w wersji 2 nie jest wymagane w przypadku instalowania serwera usługi Mab w wersji 3. Możesz jednak uaktualnienie do serwera usługi Mab w wersji 3 tylko z serwera usługi Mab w wersji 2.
 
 Aby uaktualnić serwera usługi Mab, wykonaj następujące kroki:
@@ -317,15 +316,15 @@ Aby uaktualnić serwera usługi Mab, wykonaj następujące kroki:
 2. Uaktualnij serwer. Kroki są podobne do [instalacji](#install-and-upgrade-azure-backup-server). Jednak dla ustawienia programu SQL, otrzymasz opcję Uaktualnij wystąpienie programu SQL do SQL 2017 lub użyć wystąpienia programu SQL server 2017.
 
    > [!NOTE]
-   > 
+   >
    > Nie zamykaj wystąpienia programu SQL jest uaktualniany, kończenie odinstaluje wystąpienie funkcji raportowania programu SQL i dlatego próby ponownego uaktualnienia serwera usługi Mab zakończy się niepowodzeniem.
 
    Ważne zagadnienia, które należy zwrócić uwagę:
 
    > [!IMPORTANT]
-   > 
+   >
    >  W ramach uaktualnienia programu SQL 2017 możemy utworzyć kopię zapasową klucze szyfrowania programu SQL i odinstalowania usług raportowania. Po uaktualnieniu serwera SQL service(14.0.6827.4788) raportowania jest zainstalowana i klucze szyfrowania zostaną przywrócone.
-   > 
+   >
    > Podczas ręcznego konfigurowania SQL 2017, zobacz *konfiguracji usługi SSRS z programem SQL 2017* sekcji zgodnie z instrukcjami instalacji.
 
 3. Aktualizowanie agentów ochrony na serwerach chronionych.
@@ -333,7 +332,7 @@ Aby uaktualnić serwera usługi Mab, wykonaj następujące kroki:
 5. Możesz rozpocząć teraz ochrony danych. Jeśli uaktualniasz do Modern Backup Storage, przy jednoczesnej ochronie, również można woluminów, które chcesz przechowywać kopie zapasowe i sprawdź, czy w obszarze aprowizowane miejsce. [Dowiedz się więcej](backup-mabs-add-storage.md).
 
 > [!NOTE]
-> 
+>
 > Jeśli uaktualniasz z serwera usługi Mab V1 na V2, upewnij się, że system operacyjny Windows Server 2016 lub Windows Server 2012 R2. Aby skorzystać z nowych funkcji, takich jak System Center 2016 danych ochrony Menedżera Modern Backup Storage, należy zainstalować kopii zapasowej serwera w wersji 2 w systemie Windows Server 2016. Zanim uaktualnisz do lub zainstalować kopii zapasowej serwera w wersji 2, przeczytaj o [wymagania wstępne instalacji](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) odpowiednie dla serwera usługi MAB.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów

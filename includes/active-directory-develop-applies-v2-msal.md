@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 04/12/2019
 ms.author: celested
 ms.custom: include file
-ms.openlocfilehash: d4eec27286d704926cef6c7a85b24d357c05838c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8daf73f07a09ee91260981ef42482f966d7a84c6
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121894"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272689"
 ---
 |   |
 |---|
-| **Dotyczy:**<br><ul><li>Punkt końcowy platforma tożsamości firmy Microsoft<li>Biblioteka uwierzytelniania firmy Microsoft (MSAL) </ul><br>Biblioteki ogólnodostępnej (GA) Użyj punktu końcowego w wersji 1.0 usługi Azure AD i Azure AD Authentication Library (ADAL). Aby uzyskać więcej informacji, zobacz temat dotyczący [ wersji 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-overview). |
+| **Dotyczy:**<br><ul><li>Punkt końcowy platforma tożsamości firmy Microsoft<li>Biblioteka uwierzytelniania firmy Microsoft (MSAL) </ul><br>Biblioteki ogólnodostępnej (GA) Użyj punktu końcowego w wersji 1.0 usługi Azure Active Directory (Azure AD) i Azure AD Authentication Library (ADAL). Aby uzyskać więcej informacji, zobacz temat dotyczący [ wersji 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-overview). |
 |   |

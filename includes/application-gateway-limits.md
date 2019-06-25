@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 592e1973344b231693077f8286a41dfd67a8d188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 9a8d925e5d72500817028b913a80255a4339255c
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66689115"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67148448"
 ---
 | Resource | Domyślne/maksymalny limit | Uwaga |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ ms.locfileid: "66689115"
 | Ustawienia HTTP zaplecza |100<sup>1</sup> | |
 | Wystąpienia na bramę |32 | |
 | Certyfikaty SSL |100<sup>1</sup> |1 na odbiorniki HTTP |
-| Maksymalny rozmiar certyfikat protokołu SSL |W WERSJI 1 JEDNOSTKA SKU - 10 KB<br>W WERSJI 2 JEDNOSTKA SKU - 25 KB| |
+| Maksymalny rozmiar certyfikat protokołu SSL |W WERSJI 1 JEDNOSTKA SKU - 10 KB<br>W WERSJI 2 JEDNOSTKA SKU - 16 KB| |
 | Certyfikaty uwierzytelniania |100 | |
 | Zaufane certyfikaty główne |100 | |
 | Minimalny limit czasu żądania |1 sekunda | |

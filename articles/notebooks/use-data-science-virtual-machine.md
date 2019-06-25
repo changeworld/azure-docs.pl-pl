@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: ab3b742d50cc141420f9bffa1961a6e170b99d2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 9b762f1b3f1c17e15b051e72f5d2cf98bef446bf
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234348"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137751"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Użyj maszyn wirtualnych do nauki o danych platformy Azure
 
@@ -56,6 +56,17 @@ Aby zachować parzystości ścieżki do plików za pomocą **bezpłatne oblicze�
 ![Przycisk zamykania w notesach platformy Azure](media/shutdown.png)
 
 Gdy projekt zostanie uruchomiony na maszynie Wirtualnej, pliki są instalowane w katalogu głównym serwera Jupyter (katalog objętego JupyterHub), zastępując domyślne pliki notesy platformy Azure. Podczas zamykania maszyny Wirtualnej przy użyciu **zamykania** przycisku w notesie interfejsu użytkownika, notesów usługi Azure przywraca domyślne pliki.
+
+![Przycisk zamykania w notesach platformy Azure](media/shutdown.png)
+
+## <a name="create-new-dsvm-users"></a>Utwórz nowych użytkowników do nauki
+
+Jeśli wielu użytkowników współużytkuje nauki, można uniknąć, blokowanie wzajemnie poprzez tworzenie i używanie użytkownika maszyny wirtualnej DSVM, dla każdego użytkownika Notes:
+
+1. Na [witryny Azure Portal](https://portal.azure.com), przejdź do maszyny wirtualnej.
+1. W obszarze **pomoc techniczna i rozwiązywanie problemów z** na lewym marginesie, wybierz **Resetuj hasło**.
+1. Wprowadź nową nazwę użytkownika i hasło, a następnie wybierz pozycję **aktualizacji**. (Istniejącej nazwy użytkowników nie są zagrożone.)
+1. Powtórz poprzedni krok dla wszystkich dodatkowych użytkowników.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

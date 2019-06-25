@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 667ee6a49238c1ecaabec631cb72804b0c4b2323
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545065"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304255"
 ---
 # <a name="azure-service-fabric-support-options"></a>Opcje pomocy technicznej usługi Azure Service Fabric
 
@@ -43,7 +43,7 @@ Dowiedz się więcej o usługach:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Zgłosić problemy w środowisku produkcyjnym lub poprosić płatnej pomocy technicznej dla autonomicznych, które klastrów usługi Service Fabric
 
-Dla raportowania problemy w klastrze usługi Service Fabric wdrożone lokalnie lub w innych chmurach, otwórz bilet pomocy technicznej professional na [portalu pomocy technicznej firmy Microsoft](https://support.microsoft.com/oas/default.aspx?prid=16146).
+Dla raportowania problemy w klastrze usługi Service Fabric wdrożone lokalnie lub w innych chmurach, otwórz bilet pomocy technicznej professional na [portalu pomocy technicznej firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 Dowiedz się więcej o usługach:
 
@@ -60,11 +60,11 @@ Zgłosić problemy dotyczące sieci szkieletowej usługi platformy Azure na [rep
 
 ### <a name="stackoverflow-and-msdn-forums"></a>Fora StackOverflow i MSDN
 
-[Tag usługi Service Fabric w witrynie StackOverflow] [ stackoverflow] i [forum usługi Service Fabric w witrynie MSDN] [ msdn-forum] są używane do zadawania pytań o tym, jak najlepiej Platforma działa i jak można wykonać niektóre zadania z nim.
+[Tag usługi Service Fabric w witrynie StackOverflow][stackoverflow] and the [Service Fabric forum on MSDN][msdn-forum] najlepsze są używane do zadawania pytań dotyczących sposobu działania platformy i jak można wykonać niektóre zadania z nim.
 
 ### <a name="azure-feedback-forum"></a>Forum opinii platformy Azure
 
-[Forum opinii platformy Azure dla usługi Service Fabric] [ uservoice-forum] jest najlepszym miejscem, przesyłania, masz produktu, ponieważ omówimy najpopularniejszych żądań pomysły na funkcje big Data są częścią naszego medium do długoterminowego planowania. Firma Microsoft zachęca do rally obsługę Twoje sugestie społeczności.
+[Forum opinii platformy Azure dla usługi Service Fabric][uservoice-forum] jest najlepszym miejscem, przesyłania, masz produktu, ponieważ omówimy najpopularniejszych żądań pomysły na funkcje big Data są częścią naszego medium do długoterminowego planowania. Firma Microsoft zachęca do rally obsługę Twoje sugestie społeczności.
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Wersji dodatku Service Fabric w wersji zapoznawczej — obsługiwane do użytku produkcyjnego
 

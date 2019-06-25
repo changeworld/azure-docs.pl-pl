@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 427c4615fcbb036ffff56a8fc592f258fb98845e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0789ab981590ac1b7531c1f05d85d7ada3a9f56b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755113"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295268"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -2494,7 +2494,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie kontami magazynu. Nie zapewnia dostępu do danych na koncie magazynu. |
+> | **Opis** | Umożliwia zarządzanie kontami magazynu. Zapewnia dostęp do klucza konta, którego można uzyskać dostęp do danych za pomocą klucza wspólnego autoryzacji. |
 > | **Identyfikator** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Odczyt wszystkich autoryzacji |

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111541"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183459"
 ---
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
 2. W menu po lewej stronie wybierz pozycję **+ Utwórz zasób**. Następnie wybierz pozycję **Integracja** > **Relay**. Jeśli nie widzisz pozycji **Relay** na liście, wybierz pozycję **Zobacz wszystko** w prawym górnym rogu. 
