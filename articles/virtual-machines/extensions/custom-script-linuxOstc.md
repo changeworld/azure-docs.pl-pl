@@ -123,8 +123,8 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | string |
-| — typ | CustomScriptForLinux | string |
-| typeHandlerVersion | 1,5 | int |
+| type | CustomScriptForLinux | string |
+| typeHandlerVersion | 1.5 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (np.) | python MyPythonScript.py \<my-param1\> | string |
 | enableInternalDNSCheck | true | boolean |
