@@ -142,7 +142,7 @@ Warunku ponawiania, można użyć zmiennej o nazwie $RetryData zapewniający dos
 | Właściwość | Opis |
 |:--- |:--- |
 | NumberOfAttempts |Liczba przypadków, które zostało uruchomione. |
-| Dane wyjściowe |Dane wyjściowe z ostatniego uruchomienia działania. |
+| Output |Dane wyjściowe z ostatniego uruchomienia działania. |
 | TotalDuration |Upłynął limit czasu, który upłynął od czasu uruchomienia działania po raz pierwszy. |
 | StartedAt |Godzina w formacie UTC, najpierw uruchomienia działania. |
 
@@ -324,11 +324,11 @@ Każdy parametr wejściowy jest zdefiniowana za pomocą właściwości w poniżs
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Name (Nazwa) |Unikatowa nazwa parametru. To może zawierać tylko alfanumeryczne znaki numeryczne i nie może zawierać spacji. |
-| Opis |Opcjonalny opis dla parametru wejściowego. |
-| Typ |Oczekiwano wartości parametru typu danych. Azure portal udostępnia kontrolkę, która jest odpowiednie dla typu danych dla każdego parametru przy monitowaniu o dane wejściowe. |
-| Obowiązkowy |Określa, czy należy podać wartość dla parametru. Nie można uruchomić elementu runbook, jeśli nie zostanie określona wartość dla każdego obowiązkowy parametr, który nie ma wartości domyślnej. |
-| Wartość domyślna |Określa, jaka wartość jest używana dla parametru, jeśli nie zostało ono określone. Może to być wartość Null lub określoną wartość. |
+| Name |Unikatowa nazwa parametru. To może zawierać tylko alfanumeryczne znaki numeryczne i nie może zawierać spacji. |
+| Description |Opcjonalny opis dla parametru wejściowego. |
+| Type |Oczekiwano wartości parametru typu danych. Azure portal udostępnia kontrolkę, która jest odpowiednie dla typu danych dla każdego parametru przy monitowaniu o dane wejściowe. |
+| Mandatory |Określa, czy należy podać wartość dla parametru. Nie można uruchomić elementu runbook, jeśli nie zostanie określona wartość dla każdego obowiązkowy parametr, który nie ma wartości domyślnej. |
+| Default Value |Określa, jaka wartość jest używana dla parametru, jeśli nie zostało ono określone. Może to być wartość Null lub określoną wartość. |
 
 ### <a name="runbook-output"></a>Wynik uruchomienia elementu Runbook
 
