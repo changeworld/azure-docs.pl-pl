@@ -117,15 +117,15 @@ To ustawienie działa ze wszystkimi przeglądarkami. Jednak do zasad urządzenia
 | System operacyjny                     | Przeglądarki                                      |
 | :--                    | :--                                           |
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
-| Windows 8 / 8.1        | Program Internet Explorer, Chrome                     |
-| Windows 7              | Program Internet Explorer, Chrome                     |
-| iOS                    | Safari, przeglądarki Microsoft Edge Intune Managed Browser |
-| Android                | Chrome, Microsoft Edge Intune Managed Browser |
+| Windows 8 / 8.1        | Internet Explorer, Chrome                     |
+| Windows 7              | Internet Explorer, Chrome                     |
+| iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
+| Android                | Chrome, Microsoft Edge, Intune Managed Browser |
 | Windows Phone          | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |
-| Windows Server 2012 R2 | Program Internet Explorer, Chrome                     |
-| Windows Server 2008 R2 | Program Internet Explorer, Chrome                     |
+| Windows Server 2012 R2 | Internet Explorer, Chrome                     |
+| Windows Server 2008 R2 | Internet Explorer, Chrome                     |
 | macOS                  | Chrome, Safari                                |
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Dlaczego widzą monit w przeglądarce certyfikat
@@ -140,19 +140,19 @@ Aby automatycznie wdrożyć to rozszerzenie przeglądarki Chrome, utwórz nastę
 
 |    |    |
 | --- | --- |
-| Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name (Nazwa) | 1 |
-| Typ | REG_SZ (ciąg) |
-| Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
+| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Name | 1 |
+| Type | REG_SZ (ciąg) |
+| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 Dla programu Chrome obsługi w programie **7 i Windows 8.1**, utwórz następujący klucz rejestru:
 
 |    |    |
 | --- | --- |
-| Ścieżka | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name (Nazwa) | 1 |
-| Typ | REG_SZ (ciąg) |
-| Dane | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Name | 1 |
+| Type | REG_SZ (ciąg) |
+| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 Te przeglądarki obsługują uwierzytelnianie urządzeń, umożliwiając można zidentyfikowane i zweryfikować względem zasad. Sprawdzanie urządzenia kończy się niepowodzeniem, jeśli przeglądarka działa w trybie prywatnym.
 
