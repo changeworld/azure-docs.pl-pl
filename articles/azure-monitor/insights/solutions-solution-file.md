@@ -72,7 +72,7 @@ W poniższej tabeli opisano atrybuty parametru.
 |:--- |:--- |
 | type |Typ danych parametru. Kontrolka wejściowa wyświetlane użytkownikowi zależy od typu danych.<br><br>bool — menu rozwijane<br>ciąg — pole tekstowe<br>int — pole tekstowe<br>SecureString - pole hasła<br> |
 | category |Kategoria opcjonalny parametr.  Parametry w tej samej kategorii są grupowane razem. |
-| Kontrolki |Dodatkowe funkcje dla parametrów.<br><br>DATETIME — formant typu DataGodzina jest wyświetlany.<br>Identyfikator GUID — wartość identyfikatora Guid jest generowany automatycznie, a parametr nie jest wyświetlana. |
+| control |Dodatkowe funkcje dla parametrów.<br><br>DATETIME — formant typu DataGodzina jest wyświetlany.<br>Identyfikator GUID — wartość identyfikatora Guid jest generowany automatycznie, a parametr nie jest wyświetlana. |
 | description |Opcjonalny opis dla parametru.  Wyświetlane w dymku informacji obok parametru. |
 
 ### <a name="standard-parameters"></a>Standardowe parametry
@@ -226,7 +226,7 @@ W powyższym przykładzie jest rozwiązanie z elementu runbook, harmonogram i wi
 |:--- |:--- |
 | name |Nazwa rozwiązania. |
 | version |Wersja rozwiązania, zgodnie z ustaleniami autora. |
-| Produkt |Unikatowy ciąg do identyfikowania rozwiązania. |
+| product |Unikatowy ciąg do identyfikowania rozwiązania. |
 | publisher |Z wydawcą rozwiązania. |
 
 
