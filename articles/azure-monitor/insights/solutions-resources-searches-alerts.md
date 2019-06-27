@@ -79,7 +79,7 @@ Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższe
 | Właściwość | Opis |
 |:--- |:--- |
 | category | Kategoria dla zapisanego wyszukiwania.  Wszystkie zapisane wyszukiwania, w tym samym rozwiązaniu często współużytkują jednej kategorii, dzięki czemu są one zgrupowane razem w konsoli. |
-| Nazwa wyświetlana | Nazwa do wyświetlenia dla zapisanego wyszukiwania w portalu. |
+| displayName | Nazwa do wyświetlenia dla zapisanego wyszukiwania w portalu. |
 | query | Zapytanie do uruchomienia. |
 
 > [!NOTE]
@@ -176,10 +176,10 @@ Właściwości dla akcji alertu zasoby są opisane w poniższych tabelach.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| Typ | Tak | Typ akcji.  Jest to **Alert** dla akcje alertu. |
-| Name (Nazwa) | Tak | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguły alertu. |
-| Opis | Nie | Opcjonalny opis alertu. |
-| Severity | Tak | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
+| type | Tak | Typ akcji.  Jest to **Alert** dla akcje alertu. |
+| name | Tak | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguły alertu. |
+| description | Nie | Opcjonalny opis alertu. |
+| severity | Tak | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
 
 
 #### <a name="threshold"></a>Próg
