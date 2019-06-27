@@ -127,17 +127,17 @@ Poniższa tabela zawiera właściwości i opisy parametrów często używane pod
 
 | Parametr | Opis | Domyślne |
 | --- | --- | --- |
-| Name (Nazwa) |Nazwa pamięci podręcznej | |
-| Lokalizacja |Lokalizacja pamięci podręcznej | |
+| Name |Nazwa pamięci podręcznej | |
+| Location |Lokalizacja pamięci podręcznej | |
 | ResourceGroupName |Nazwa grupy zasobów, w której chcesz utworzyć pamięci podręcznej | |
-| Rozmiar |Rozmiar pamięci podręcznej. Prawidłowe wartości to: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1GB |
+| Size |Rozmiar pamięci podręcznej. Prawidłowe wartości to: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1GB |
 | ShardCount |Liczba fragmentów, aby utworzyć podczas tworzenia cache w warstwie premium przy włączonym klastrowaniu. Prawidłowe wartości to: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Określa jednostki SKU w pamięci podręcznej. Prawidłowe wartości to: Podstawowa, Standardowa i Premium |Standardowa (Standard) |
 | RedisConfiguration |Określa ustawienia konfiguracji pamięci podręcznej Redis. Aby uzyskać szczegółowe informacje na temat poszczególnych ustawień, zobacz następującą [właściwości RedisConfiguration](#redisconfiguration-properties) tabeli. | |
 | EnableNonSslPort |Wskazuje, czy port bez protokołu SSL jest włączony. |False |
 | MaxMemoryPolicy |Ten parametr jest przestarzały — zamiast tego użyj RedisConfiguration. | |
 | StaticIP |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podana, jeden jest wybierany automatycznie z podsieci. | |
-| Podsieć |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa nazwę podsieci, w której ma zostać wdrożony w pamięci podręcznej. | |
+| Subnet |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa nazwę podsieci, w której ma zostać wdrożony w pamięci podręcznej. | |
 | VirtualNetwork |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa identyfikator zasobu sieci Wirtualnej, w której ma zostać wdrożony w pamięci podręcznej. | |
 | KeyType |Określa, które klucz dostępu, można wygenerować ponownie podczas odnawiania klucze dostępu. Prawidłowe wartości to: Podstawowy i pomocniczy | |
 
