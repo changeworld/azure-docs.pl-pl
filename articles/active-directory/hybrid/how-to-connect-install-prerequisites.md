@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d17823c4ef4917f9f312b8f2f327e2b0395cfa3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2916c9aba7d404ff4ad380d249bd507fadf71ea
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109429"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310072"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -52,7 +52,7 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
 >Serwer programu Azure AD Connect zawiera dane krytyczne tożsamości i powinny być traktowane jako składnik warstwy 0, zgodnie z opisem w [model warstw administracyjnych usługi Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)
 
 * Program Azure AD Connect nie można zainstalować na Small Business Server, Windows Server Essentials przed 2019 r (system Windows Server Essentials 2019 jest obsługiwane). Serwer musi używać systemu Windows Server standard lub lepszej.
-* Program Azure AD Connect na kontrolerze domeny nie jest zalecane instalowanie ze względu na rozwiązania w zakresie zabezpieczeń i bardziej restrykcyjne ustawienia, które mogą uniemożliwić poprawne zainstalowanie przez program Azure AD Connect
+* Instalowanie usługi Azure AD Connect na kontrolerze domeny nie jest zalecane z powodu rozwiązania w zakresie zabezpieczeń i bardziej restrykcyjne ustawienia, które mogą uniemożliwić poprawne zainstalowanie przez program Azure AD Connect.
 * Na serwerze usługi Azure AD Connect musi być pełnym interfejsem GUI zainstalowane. Jest **nieobsługiwane** zainstalować w instalacji server core.
 >[!IMPORTANT]
 >Instalowanie usługi Azure AD Connect na small business server, podstawowe informacje dotyczące serwera lub instalacja server core nie jest obsługiwane.

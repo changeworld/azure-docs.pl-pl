@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: fc219d9e3e5b365f341b2997804586e67275c1b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/21/2019
+ms.openlocfilehash: 599bc440bed4781d081f41cbc64bfb944f423e94
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046516"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330729"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Szybki start: Kontrolowanie urządzenia podłączonego do centrum IoT (.NET)
 
@@ -98,12 +98,12 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 Potrzebne będą także _parametry połączenia usługi_ centrum IoT, aby umożliwić aplikacji zaplecza nawiązywanie połączenia z centrum i pobieranie komunikatów. Następujące polecenie pobiera parametry połączenia usługi dla centrum IoT:
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
 ```
 
 Zanotuj parametry połączenia usługi, które wyglądają następująco:
 
-   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
 Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Parametry połączenia usługi różnią się od parametrów połączenia urządzenia.  
 

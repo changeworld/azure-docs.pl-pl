@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93fc9a4e9e44bd7e8db3d49fe390ebe273c45ce9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239047"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269304"
 ---
 # <a name="access-data-from-your-datastores"></a>Dostęp do danych z usługi magazynów danych
 
@@ -59,7 +59,19 @@ ds = ws.get_default_datastore()
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>Zarejestruj własny magazyn danych z obszarem roboczym
 
-Jeśli masz istniejące usługi Azure Storage, należy zarejestrować go jako magazyn danych w obszarze roboczym usługi.   Wszystkie metody register znajdują się na [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) klasy i mieć register_azure_ formularza *. 
+Jeśli masz istniejące usługi Azure Storage, należy zarejestrować go jako magazyn danych w obszarze roboczym usługi. 
+
+<a name="store"></a>
+
+####  <a name="storage-guidance"></a>Wskazówki dotyczące magazynu
+
+Firma Microsoft zaleca blob storage i blob magazynów danych. Magazyn w warstwach standardowa i premium są dostępne dla obiektów blob. Mimo że droższe, zalecamy magazyn w warstwie premium z powodu szybciej przepływności, które mogą przyspieszyć szkolenia jest wykonywany, particlularly, gdy uczenie względem dużych zestawów danych. Zobacz [kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) dla konta magazynu, informacje o koszcie.
+
+>[!NOTE]
+> Usługa Azure Machine Learning obsługuje inne typy magazynów danych, które mogą być przydatne w przypadku określonych scenariuszy. Na przykład jeśli zachodzi potrzeba uczenia z danych przechowywanych w bazie danych, możesz użyć AzureSQLDatabaseDatastore lub AzurePostgreSqlDatastore. Zobacz [tej tabeli](#matrix) dla typów dostępny magazyn danych.
+
+#### <a name="register-your-datastore"></a>Rejestrowanie usługi magazynu danych
+Wszystkie metody register znajdują się na [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) klasy i mieć register_azure_ formularza *.
 
 W poniższych przykładach pokazano można zarejestrować kontenera obiektów Blob platformy Azure lub udziału plików platformy Azure jako magazynu danych.
 
@@ -178,6 +190,7 @@ ds.path('./bar').as_download()
 > [!NOTE]
 > Wszelkie `ds` lub `ds.path` obiektu jest rozpoznawana jako nazwę zmiennej środowiskowej formatu `"$AZUREML_DATAREFERENCE_XXXX"` których wartość reprezentuje ścieżkę instalacji/pobierania w usłudze obliczeniowej docelowego. Ścieżka magazynu danych w usłudze obliczeniowej docelowego nie może być taka sama jak ścieżka wykonywania skryptu szkolenia.
 
+<a name="matrix"></a>
 ### <a name="training-compute-and-datastore-matrix"></a>Szkolenie macierzy zasobów obliczeniowych i magazynu danych
 
 Następujące macierzy Wyświetla funkcje dostępu dostępnych danych dla celów obliczeń różnych szkolenia i scenariuszy magazynu danych. Dowiedz się więcej o [szkolenia celów obliczeń dla usługi Azure Machine Learning](how-to-set-up-training-targets.md#compute-targets-for-training).
@@ -194,7 +207,7 @@ Następujące macierzy Wyświetla funkcje dostępu dostępnych danych dla celów
 | Azure DataLake Analytics       |ND                                           |ND                                           |[Uczenie Maszynowe&nbsp;potoków](concept-ml-pipelines.md)             |ND                                                                         |
 
 > [!NOTE]
-> Mogą istnieć scenariusze, w których wysoce iteracyjną, duże ilości danych procesy są uruchamiane szybciej przy użyciu [`as_download()`] zamiast [`as_mount()`]; może to być weryfikowane doświadczalnie.
+> Mogą istnieć scenariusze, w których wysoce iteracyjną, duże ilości danych procesy są uruchamiane szybciej przy użyciu `as_download()` zamiast `as_mount()`; może to być weryfikowane doświadczalnie.
 
 ### <a name="examples"></a>Przykłady 
 

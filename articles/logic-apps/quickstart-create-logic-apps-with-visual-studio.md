@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: afa539bc3369e4f9d9ecf27340436e0be70a03ad
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a8857d62b3078d78bdd0a339ebadf766ddb2fb43
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190589"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295823"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Szybki start: Tworzenie zautomatyzowanych zadań, procesów i przepływów pracy z usługą Azure Logic Apps — Visual Studio
 
@@ -84,11 +84,11 @@ Aby rozpocząć, utwórz [projekt grupy zasobów platformy Azure](../azure-resou
 
    Jeśli używasz programu Visual Studio 2019 r, wykonaj następujące czynności:
 
-   1. W **Utwórz nowy projekt** wybierz opcję **grupy zasobów platformy Azure** projektu wizualizacji C# lub Visual Basic. Wybierz pozycję **Dalej**.
+   1. W **Utwórz nowy projekt** wybierz opcję **grupy zasobów platformy Azure** projektu wizualizacji C# lub Visual Basic. Wybierz **dalej**.
 
    1. Podaj nazwę grupy zasobów platformy Azure, którego chcesz użyć i innych informacji o projekcie. Wybierz pozycję **Utwórz**.
 
-1. Z listy szablonów wybierz **aplikacji logiki** szablonu. Wybierz pozycję **OK**.
+1. Z listy szablonów wybierz **aplikacji logiki** szablonu. Wybierz **OK**.
 
    ![Wybieranie szablonu aplikacji logiki](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
@@ -105,6 +105,9 @@ Jeśli masz grupę zasobów platformy Azure projektu, utworzyć aplikację logik
 
    ![Otwieranie pliku JSON aplikacji logiki za pomocą Projektanta aplikacji logiki](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
+   > [!TIP]
+   > Jeśli nie masz tego polecenia w programie Visual Studio 2019 r, sprawdź, czy najnowsze aktualizacje dla programu Visual Studio.
+
    Program Visual Studio wyświetli monit o podanie Twojej subskrypcji platformy Azure i grupę zasobów platformy Azure do tworzenia i wdrażania zasobów aplikacji logiki i połączeniami.
 
 1. Aby uzyskać **subskrypcji**, wybierz swoją subskrypcję platformy Azure. Dla **grupy zasobów**, wybierz opcję **Utwórz nowy** do tworzenia nowej grupy zasobów platformy Azure.
@@ -116,7 +119,7 @@ Jeśli masz grupę zasobów platformy Azure projektu, utworzyć aplikację logik
    | Lista profilów użytkowników | Contoso <br> jamalhartnett@contoso.com | Domyślnie konto używane do logowania |
    | **Subskrypcja** | Płatność zgodnie z rzeczywistym użyciem <br> (jamalhartnett@contoso.com) | Nazwa Twojej subskrypcji platformy Azure i skojarzone konto |
    | **Grupa zasobów** | MyLogicApp-RG <br> (Zachodnie stany USA) | Grupa zasobów platformy Azure i lokalizacja do przechowywania i wdrażania zasobów aplikacji logiki |
-   | **Lokalizacja** | MyLogicApp-RG2 <br> (Zachodnie stany USA) | Inna lokalizacja, jeśli nie chcesz używać lokalizacji grupy zasobów |
+   | **Location** | MyLogicApp-RG2 <br> (Zachodnie stany USA) | Inna lokalizacja, jeśli nie chcesz używać lokalizacji grupy zasobów |
    ||||
 
 1. Projektant aplikacji logiki zostanie otwarta strona, która przedstawia wprowadzenie wideo i najczęściej używanymi wyzwalaczami. Przewiń w dół poza wideo i wyzwalacze **szablony**i wybierz **pusta aplikacja logiki**.

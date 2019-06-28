@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/16/2019
 ms.author: juliako
-ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 0abc3eec380cccae2672d0e9aa4a3a4c7199362f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556223"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295657"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
@@ -31,7 +31,7 @@ Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klie
 - Składniki w usłudze Media Services pozwalają pozyskiwać, w wersji zapoznawczej, pakiet, rejestrowanie, szyfrowania i emisję wydarzenia na żywo dla klientów lub do sieci CDN w celu dalszej dystrybucji.
 
 Ten artykuł zawiera omówienie i wskazówki dotyczące transmisji strumieniowych na żywo za pomocą usługi Media Services i linki do innych odpowiednich artykułów.
-
+ 
 > [!NOTE]
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
@@ -49,27 +49,27 @@ Filtrowanie dynamiczne służy do kontrolowania liczby ścieżek, formatów, szy
 
 ## <a name="live-event-types"></a>Typy zdarzeń na żywo
 
-Wydarzenie na żywo może być jednym z dwóch typów: kodowanie przekazywania i na żywo. Aby uzyskać szczegółowe informacje o transmisji strumieniowej na żywo w wersji 3 usługa Media Services, zobacz [zdarzenia na żywo i na żywo dane wyjściowe](live-events-outputs-concept.md).
+[Wydarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Wydarzenie na żywo może być jednym z dwóch typów: kodowanie przekazywania i na żywo. Aby uzyskać szczegółowe informacje o transmisji strumieniowej na żywo w wersji 3 usługa Media Services, zobacz [zdarzenia na żywo i na żywo dane wyjściowe](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Przekazywanie
 
 ![Przekazywanie](./media/live-streaming/pass-through.svg)
 
-Kiedy używasz przekazywanego **wydarzenia na żywo**, oczekujesz, że Twój lokalny koder na żywo wygeneruje strumień wideo z wieloma szybkościami transmisji bitów i wyśle go jako kanał informacyjny do wydarzenia na żywo (przy użyciu protokołu RTMP lub pliku MP4 podzielonego na fragmenty). Wydarzenie na żywo przekazuje następnie przychodzące strumienie wideo bez dalszego przetwarzania. Takie przekazywanego wydarzenie na żywo jest zoptymalizowany do wydarzeń na żywo długotrwałych lub 24 x 365 liniowej transmisja strumieniowa na żywo. 
+Przy użyciu przekazywanego **wydarzenie na żywo**, opierają się na swoje lokalny koder na żywo do generowania wielu strumienia wideo o szybkości transmisji bitów i wysyłania, że jako udział Kanał informacyjny do wydarzenie na żywo (przy użyciu protokołu wejściowego protokołu RTMP lub pofragmentowany plik MP4). Wydarzenie na żywo, która jest następnie wykonujące za pośrednictwem przychodzących strumieni wideo do Pakowarki dynamicznej (punkt końcowy przesyłania strumieniowego) bez żadnych dalszego transkodowania. Takie przekazywanego wydarzenie na żywo jest zoptymalizowany do wydarzeń na żywo długotrwałych lub 24 x 365 liniowej transmisja strumieniowa na żywo. 
 
 ### <a name="live-encoding"></a>Kodowanie na żywo  
 
 ![Kodowanie na żywo](./media/live-streaming/live-encoding.svg)
 
-W przypadku korzystania z kodowania na żywo za pomocą usługi Media Services należy skonfigurować lokalny koder na żywo, aby wysłać klip wideo z jedną szybkością transmisji bitów jako kanał informacyjny do wydarzenia na żywo (przy użyciu protokołu RTMP lub pliku MP4 podzielonego na fragmenty). Wydarzenie na żywo koduje ten strumień z jedną szybkością transmisji bitów do [strumienia z wieloma szybkościami transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia go do dostarczenia do urządzeń odtwarzania za pomocą protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. 
+Korzystając z chmury kodowania za pomocą usługi Media Services, należy skonfigurować usługi na lokalny koder na żywo, aby wysłać pojedyncza szybkość transmisji bitów wideo jako udział kanału informacyjnego (maksymalnie 32Mbps agregacji) do wydarzenie na żywo (przy użyciu protokołu wejściowego protokołu RTMP lub pofragmentowany plik MP4). Transkoduje wydarzenie na żywo przychodzące o pojedynczej szybkości transmisji bitów, przesyłanie strumieniowe do [wielu strumieni wideo szybkości transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) o różnej rozdzielczości w celu dostarczania i udostępnia dostarczania do urządzenia odtwarzania za pomocą standardowych w branży protokołów np. MPEG-DASH, Apple HTTP Live Streaming (HLS) i Microsoft Smooth Streaming. 
 
 ## <a name="live-streaming-workflow"></a>Przepływ pracy transmisji strumieniowej na żywo
 
 Aby zrozumieć przepływ pracy transmisji strumieniowej na żywo w wersji 3 usługa Media Services, musisz pierwszy przegląd i zrozumieć następujące pojęcia: 
 
-- [Punkty końcowe interfejsu API przesyłania strumieniowego](streaming-endpoint-concept.md)
-- [Aktywne zdarzenia i dane wyjściowe na żywo interfejsu API](live-events-outputs-concept.md)
-- [Interfejs API Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md)
+- [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md)
+- [Wydarzenia i dane wyjściowe na żywo](live-events-outputs-concept.md)
+- [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Ogólne kroki
 
@@ -79,7 +79,7 @@ Aby zrozumieć przepływ pracy transmisji strumieniowej na żywo w wersji 3 usł
 4. Adres URL (wersja zapoznawcza) i weryfikować, czy rzeczywiście są odbierane dane wejściowe z kodera.
 5. Utwórz nową **zasobów** obiektu.
 6. Tworzenie **na żywo dane wyjściowe** i użyj nazwy zasobu, który został utworzony.<br/>**Na żywo dane wyjściowe** spowoduje zarchiwizowanie strumienia do **zasobów**.
-7. Tworzenie **lokalizatora przesyłania strumieniowego** dzięki wbudowanej **przesyłania strumieniowego zasad** typów.<br/>Jeśli zamierzasz szyfrowanie zawartości, zapoznaj się z [Omówienie ochrony zawartości](content-protection-overview.md).
+7. Tworzenie **lokalizatora przesyłania strumieniowego** z [wbudowanych typów zasad przesyłania strumieniowego](streaming-policy-concept.md)
 8. Wyświetlanie listy ścieżek na **lokalizatora przesyłania strumieniowego** odzyskać adresy URL, aby użyć (są to deterministyczne).
 9. Pobieranie nazwy hosta dla **punkt końcowy przesyłania strumieniowego** (źródło) chcesz przesyłać strumieniowo z.
 10. Adres URL w kroku 8 należy połączyć z nazwą hosta w kroku 9, aby uzyskać pełny adres URL.

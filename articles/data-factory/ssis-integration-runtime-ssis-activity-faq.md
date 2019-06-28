@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 7789970b47f0e55adee5bbe9da9f303aee6cdb25
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: a018a383de855a05b14aa6e1f1c465f8868f672d
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190123"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312163"
 ---
 # <a name="troubleshooting-package-execution-in-ssis-integration-runtime"></a>Rozwiązywanie problemów z wykonanie pakietu w środowiska SSIS integration runtime
 
@@ -110,6 +110,11 @@ Ten artykuł zawiera najbardziej typowych błędów, które może napotkać podc
   * Jednego z potencjalną przyczyną tej nazwy użytkownika/hasła z usługą MFA, włączone jest skonfigurowany do uwierzytelniania usług Azure Analysis Services, który nie jest obsługiwany w środowiska SSIS integration runtime na jeszcze. Spróbuj użyć jednostki usługi do uwierzytelniania usługi Azure Analysis Service:
     1. Przygotowanie nazwy głównej usługi dla AAS [https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)
     2. W Menedżerze połączeń, skonfiguruj "Przy użyciu określonej nazwy użytkownika i hasło": Ustaw "AppID" jako nazwy użytkownika i "clientSecret" jako hasło
+
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-managed-identity"></a>Komunikat o błędzie: "ADONET źródła nie powiodło się, można uzyskać połączenia {GUID} z następujący komunikat o błędzie: Logowanie użytkownika "NT\LOGOWANIE" powiodło się "podczas korzystania z tożsamości zarządzanej
+
+* Potencjalną przyczyną & Zalecana akcja:
+  * Upewnij się, że gdy parametr "ConnectUsingManagedIdentity" ma wartość PRAWDA, nie Konfiguruj metodę uwierzytelniania Menedżera połączeń jako "Hasło uwierzytelnianie usługi Active Directory". Możesz skonfigurować go jako "Uwierzytelnianie SQL" zamiast której będzie ignorowany, jeśli ma wartość "ConnectUsingManagedIdentity"
 
 ### <a name="package-takes-unexpected-long-time-to-execute"></a>Pakiet ma nieoczekiwany długi czas wykonywania
 

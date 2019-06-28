@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: raynew
-ms.openlocfilehash: 6a6db30bfe6e4dc1eed04d11b53113c90210a5cf
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2cf9aee498c649cdbf973652a60fb2d1f3feb371
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275218"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312144"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matryca obsługi replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
@@ -168,7 +168,7 @@ Rozszerzenia | Nieobsługiwane | Rozszerzenia nie są replikowane do trybu failo
 **Akcja** | **Szczegóły**
 -- | ---
 Zmiana rozmiaru dysku na zreplikowanej maszyny Wirtualnej | Obsługiwane
-Dodawanie dysku do zreplikowanej maszyny Wirtualnej | Nieobsługiwane.<br/><br/> Użytkownik musi można wyłączyć replikacji dla maszyny Wirtualnej, Dodaj dysk, a następnie włącz ponownie replikację.
+Dodawanie dysku do zreplikowanej maszyny Wirtualnej | Obsługiwane
 
 ## <a name="replicated-machines---storage"></a>Replikowane maszyny - storage
 

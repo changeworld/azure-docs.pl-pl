@@ -6,17 +6,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.openlocfilehash: b00eb12092838746f4bfe16f00eac55df9224b09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: ecc7077bf208adf1ac89adcce2f2e480ce34888e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65607231"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329594"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Błędy danych w usłudze Azure Stream Analytics
 
-Gdy występuje rozbieżność w danych, który jest przetwarzany przez zadania usługi Azure Stream Analytics, usługi Stream Analytics wysyła zdarzenie błędu dane do dzienników diagnostycznych. Stream Analytics zapisuje szczegółowe informacje i przykłady zdarzeń do jej dzienników diagnostycznych, po wystąpieniu błędów danych. Podsumowanie tych informacji znajduje się również za pośrednictwem portalu powiadomienia dla niektórych błędów.
+Dane błędów są błędów występujących podczas przetwarzania danych.  Te błędy w większości przypadków odbywały się w danych deserializacji, serializacji, operacji i zapisu.  Gdy wystąpi błąd danych, usługi Stream Analytics zapisuje szczegółowe informacje i przykłady zdarzeń do dzienników diagnostycznych.  W niektórych przypadkach również udostępniane jest podsumowanie tych informacji za pośrednictwem powiadomienia w portalu.
 
 W tym artykule opisano typy różnych błędów, przyczyny i dziennik diagnostyczny szczegóły błędów w danych wejściowych i wyjściowych.
 
@@ -45,6 +45,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Wybranego typu danych wejściowych kompresji nie pasują do danych.
 * Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ: Komunikaty, w których błędy deserializacji, w tym nieprawidłowy typ kompresji są usuwane z danych wejściowych.
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. Centrum zdarzeń, aby uzyskać identyfikator jest PartitionId, przesunięcie i numer sekwencyjny.
 
@@ -59,6 +60,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Nagłówek danych wejściowych jest nieprawidłowy. Na przykład woluminu CSV zawiera kolumny o takich samych nazwach.
 * Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ: Komunikaty, w których błędy deserializacji, w tym nieprawidłowy nagłówek są usuwane z danych wejściowych.
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. 
    * Rzeczywiste obciążenie do kilku kilobajtów.
@@ -74,6 +76,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Kolumny wejściowe zdefiniowane za pomocą polecenia CREATE TABLE lub za pośrednictwem TIMESTAMP BY nie istnieje.
 * Podany powiadomieniu portalu: Yes
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ: Zdarzenia z kolumnami Brak są usuwane z danych wejściowych.
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. 
    * Nazwy kolumn, które są nieobecne. 
@@ -92,8 +95,9 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="inputdeserializererrortypeconversionerror"></a>InputDeserializerError.TypeConversionError
 
 * Przyczyna: Nie można skonwertować danych wejściowych do typu określonego w instrukcji CREATE TABLE.
-* Podany powiadomieniu portalu: Yes
+* Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ: Zdarzenia z powodu błędu konwersji typu są usuwane z danych wejściowych.
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. 
    * Nazwa kolumny i oczekiwanego typu.
@@ -111,8 +115,9 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="inputdeserializererrorinvaliddata"></a>InputDeserializerError.InvalidData
 
 * Przyczyna: Dane wejściowe nie jest w odpowiednim formacie. Na przykład wartość wejściowa nie jest prawidłowym plikiem JSON.
-* Podany powiadomieniu portalu: Yes
+* Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ: Wszystkie zdarzenia w komunikacie po napotkał błąd nieprawidłowe dane są usuwane z danych wejściowych.
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. 
    * Rzeczywiste obciążenie do kilku kilobajtów.
@@ -132,6 +137,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Nie można przekonwertować wartości wyrażenia TIMESTAMP BY do daty/godziny.
 * Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ: Zdarzenia z nieprawidłową sygnaturą czasową w danych wejściowych są usuwane z danych wejściowych.
 * Szczegóły dziennika
    * Wprowadź identyfikator wiadomości. 
    * Komunikat o błędzie. 
@@ -146,8 +152,9 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="invalidinputtimestampkey"></a>InvalidInputTimeStampKey
 
 * Przyczyna: Wartość timestampColumn TIMESTAMP BY OVER ma wartość NULL.
-* Podany powiadomieniu portalu: Yes
+* Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ: Zdarzenia z nieprawidłowym znacznikiem czasu wprowadzania klucza są usuwane z danych wejściowych.
 * Szczegóły dziennika
    * Rzeczywiste obciążenie do kilku kilobajtów.
 
@@ -162,6 +169,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Różnica między czasem aplikacji i czas nadejścia jest większa niż okno tolerancji spóźnionego przybycia.
 * Podany powiadomieniu portalu: Nie
 * Poziom dzienniki diagnostyczne: Informacje
+* Wpływ:  Opóźnione zdarzenia wejściowe są obsługiwane zgodnie z "Obsługa innych zdarzeń" ustawienie w zdarzeniu kolejność sekcji konfiguracji zadania. Aby uzyskać więcej informacji, zobacz [czas obsługi zasad](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Szczegóły dziennika
    * Czas aplikacji i czasu odbioru. 
    * Rzeczywiste obciążenie do kilku kilobajtów.
@@ -177,6 +185,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Różnica między czasem aplikacji i czas nadejścia jest większa niż 5 minut.
 * Podany powiadomieniu portalu: Nie
 * Poziom dzienniki diagnostyczne: Informacje
+* Wpływ:  Wczesne zdarzenia wejściowe są obsługiwane zgodnie z "Obsługa innych zdarzeń" ustawienie w zdarzeniu kolejność sekcji konfiguracji zadania. Aby uzyskać więcej informacji, zobacz [czas obsługi zasad](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Szczegóły dziennika
    * Czas aplikacji i czasu odbioru. 
    * Rzeczywiste obciążenie do kilku kilobajtów.
@@ -192,6 +201,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Zdarzenie jest traktowane jako poza kolejnością według okno tolerancji poza kolejnością, zdefiniowane.
 * Podany powiadomieniu portalu: Nie
 * Poziom dzienniki diagnostyczne: Informacje
+* Wpływ:  Poza kolejnością, zdarzenia są obsługiwane zgodnie z "Obsługa innych zdarzeń" ustawienie w zdarzeniu porządkowanie sekcji konfiguracji zadania. Aby uzyskać więcej informacji, zobacz [czas obsługi zasad](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Szczegóły dziennika
    * Rzeczywiste obciążenie do kilku kilobajtów.
 
@@ -208,6 +218,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Kolumna wymagane dla danych wyjściowych nie istnieje. Na przykład istnieje kolumna zdefiniowana jako hierarchyinfoguid nie jest PartitionKey tabeli platformy Azure.
 * Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ:  Błędy z konwersji danych wszystkie dane wyjściowe z tym brak wymaganej kolumny są obsługiwane zgodnie z opisem w [zasad danych dane wyjściowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ustawienie.
 * Szczegóły dziennika
    * Nazwa kolumny i identyfikator rekordu lub częścią rekordu.
 
@@ -222,6 +233,7 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 * Przyczyna: Wartość kolumny nie są zgodne z danymi wyjściowymi. Na przykład nazwa kolumny nie jest kolumną prawidłowej tabeli platformy Azure.
 * Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ:  Błędy z konwersji danych wszystkie dane wyjściowe z tym Nieprawidłowa nazwa kolumny są obsługiwane zgodnie z opisem w [zasad danych dane wyjściowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ustawienie.
 * Szczegóły dziennika
    * Nazwa kolumny i identyfikator rekordu lub częścią rekordu.
 
@@ -234,8 +246,9 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataConversionError.TypeConversionError
 
 * Przyczyna: Nie można przekonwertować kolumnę na prawidłowy typ w danych wyjściowych. Na przykład wartość kolumny jest niezgodna z ograniczenia lub typu zdefiniowanego w tabeli SQL.
-* Podany powiadomieniu portalu: Yes
+* Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ:  Błędy z konwersji danych wszystkie dane wyjściowe z tym błąd konwersji typu są obsługiwane zgodnie z opisem w [zasad danych dane wyjściowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ustawienie.
 * Szczegóły dziennika
    * Nazwa kolumny.
    * Identyfikator rekordu lub częścią rekordu.
@@ -249,8 +262,9 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversionError.RecordExceededSizeLimit
 
 * Przyczyna: Wartość komunikatu jest większy niż rozmiar obsługiwanych danych wyjściowych. Na przykład rekord jest większy niż 1 MB dla danych wyjściowych Centrum zdarzeń.
-* Podany powiadomieniu portalu: Yes
+* Podany powiadomieniu portalu: Tak
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ:  Błędy z konwersji danych wszystkie dane wyjściowe z tym limit rozmiaru Przekroczono rekordu są obsługiwane zgodnie z opisem w [zasad danych dane wyjściowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ustawienie.
 * Szczegóły dziennika
    * Identyfikator rekordu lub częścią rekordu.
 
@@ -263,8 +277,9 @@ Zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu
 ### <a name="outputdataconversionerrorduplicatekey"></a>OutputDataConversionError.DuplicateKey
 
 * Przyczyna: Rekord zawiera już kolumnę z taką samą nazwę jak kolumna systemowa. Na przykład danych wyjściowych cosmos DB, za pomocą kolumny o nazwie identyfikator, gdy kolumna ID jest do innej kolumny.
-* Podany powiadomieniu portalu: Tak
+* Podany powiadomieniu portalu: Yes
 * Poziom dzienniki diagnostyczne: Ostrzeżenie
+* Wpływ:  Błędy z konwersji danych wszystkie dane wyjściowe z tym zduplikowanego klucza są obsługiwane zgodnie z opisem w [zasad danych dane wyjściowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ustawienie.
 * Szczegóły dziennika
    * Nazwa kolumny.
    * Identyfikator rekordu lub częścią rekordu.

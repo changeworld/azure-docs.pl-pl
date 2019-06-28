@@ -6,27 +6,27 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 5929ff439bc31e16643e5c57868cd6b68f9cd99c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761992"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329569"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Wzorców rozwiązań w usłudze Azure Stream Analytics
 
 Podobnie jak wielu innych usług na platformie Azure Stream Analytics najlepiej służy z innymi usługami do tworzenia większych rozwiązania end-to-end. W tym artykule omówiono prostych rozwiązań usługi Azure Stream Analytics i różnych wzorców architektury. Można tworzyć na tych wzorców w celu tworzenia bardziej złożonych rozwiązań. Wzorce opisane w tym artykule może służyć w wielu różnych scenariuszach. Przykłady wzorców specyficzne dla scenariusza są dostępne na [architektury rozwiązań platformy Azure](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics).
 
-## <a name="create-a-stream-analytics-job-with-a-real-time-dashboard"></a>Tworzenie zadania usługi Stream Analytics z pulpitem nawigacyjnym w czasie rzeczywistym
+## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Tworzenie zadania usługi Stream Analytics do środowiska w czasie rzeczywistym dashboarding zasilania
 
-Za pomocą usługi Azure Stream Analytics łatwość użycia możesz szybko uruchomić alerty i pulpity nawigacyjne w czasie rzeczywistym. Proste rozwiązanie pozyskuje zdarzenia z usługi Event Hubs lub usługi IoT Hub i [źródeł danych pulpitu nawigacyjnego usługi Power BI przy użyciu zestawu danych przesyłania strumieniowego](/power-bi/service-real-time-streaming). Aby uzyskać więcej informacji, zobacz szczegółowy samouczek [Analizuj dane połączeń telefonicznych za pomocą usługi Stream Analytics i Wizualizuj wyniki na pulpicie nawigacyjnym usługi Power BI](stream-analytics-manage-job.md).
+Usługa Azure Stream Analytics można szybko paru alerty i pulpity nawigacyjne w czasie rzeczywistym. Proste rozwiązanie pozyskuje zdarzenia z usługi Event Hubs lub usługi IoT Hub i [źródeł danych pulpitu nawigacyjnego usługi Power BI przy użyciu zestawu danych przesyłania strumieniowego](/power-bi/service-real-time-streaming). Aby uzyskać więcej informacji, zobacz szczegółowy samouczek [Analizuj dane połączeń telefonicznych za pomocą usługi Stream Analytics i Wizualizuj wyniki na pulpicie nawigacyjnym usługi Power BI](stream-analytics-manage-job.md).
 
 ![Pulpit nawigacyjny usługi Power BI ASA](media/stream-analytics-solution-patterns/pbidashboard.png)
 
 To rozwiązanie może być skompilowany w zaledwie kilka minut w witrynie Azure portal. Istnieje bez kodowania rozbudowane zaangażowane i języka SQL umożliwia wyrażanie logiki biznesowej.
 
-Ten pulpit nawigacyjny w czasie rzeczywistym rozwiązanie wzorzec oferuje najniższe opóźnienie ze źródła zdarzeń do pulpitu nawigacyjnego usługi Power BI w przeglądarce. Usługa Azure Stream Analytics jest tylko usługa dzięki tej możliwości wbudowanych.
+Ten wzorzec rozwiązanie oferuje najniższe opóźnienie ze źródła zdarzeń do pulpitu nawigacyjnego usługi Power BI w przeglądarce. Usługa Azure Stream Analytics jest tylko usługa dzięki tej możliwości wbudowanych.
 
 ## <a name="use-sql-for-dashboard"></a>Korzystanie z SQL do pulpitu nawigacyjnego
 
@@ -34,19 +34,19 @@ Pulpit nawigacyjny usługi Power BI zapewnia małe opóźnienia, ale nie można 
 
 ![Pulpit nawigacyjny ASA SQL](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-Przy użyciu programu SQL database zapewnia większą elastyczność kosztem większe opóźnienia. To rozwiązanie jest optymalna dla zadań wymagania dotyczące opóźnień większa niż 1 sekundy. Przy użyciu tej metody można zmaksymalizować narzędzie usługi Power BI w celu dalszego wycinka i wykorzystuj dane do raportów. Możesz także elastyczność przy użyciu innych rozwiązań pulpitu nawigacyjnego, takich jak Tableau.
+Przy użyciu języka SQL database zapewnia większą elastyczność, ale kosztem nieco większe opóźnienia. To rozwiązanie jest optymalna dla zadań wymagania dotyczące opóźnień większa niż 1 sekundy. Przy użyciu tej metody można zmaksymalizować możliwości usługi Power BI w celu dalszego wycinka i wykorzystuj dane dla raportów i wiele więcej opcji wizualizacji. Możesz także elastyczność przy użyciu innych rozwiązań pulpitu nawigacyjnego, takich jak Tableau.
 
-SQL nie jest do przechowywania danych o wysokiej przepływności, a maksymalna przepływność do usługi SQL database z usługi Azure Stream Analytics to 24 MB/s. Źródła zdarzeń w rozwiązaniu do wygenerowania danych wyższa stawka, należy użyć logiki przetwarzania w usłudze Stream Analytics można zmniejszyć częstotliwość danych wyjściowych do bazy danych SQL. Dopasowanie za pomocą sprzężeń danych czasowych wzorca za pomocą technik, takich jak filtrowanie, agregacji w trybie okna, a funkcje analityczne mogą być używane. Współczynnik danych wyjściowych do bazy danych SQL można dodatkowo zoptymalizować za pomocą metod opisanych w [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md).
+SQL nie jest do przechowywania danych o wysokiej przepływności. Maksymalna przepływność do usługi SQL database z usługi Azure Stream Analytics trwa około 24 MB/s. Źródła zdarzeń w rozwiązaniu do wygenerowania danych wyższa stawka, należy użyć logiki przetwarzania w usłudze Stream Analytics można zmniejszyć częstotliwość danych wyjściowych do bazy danych SQL. Dopasowanie za pomocą sprzężeń danych czasowych wzorca za pomocą technik, takich jak filtrowanie, agregacji w trybie okna, a funkcje analityczne mogą być używane. Współczynnik danych wyjściowych do bazy danych SQL można dodatkowo zoptymalizować za pomocą metod opisanych w [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md).
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Zawierały informacje w czasie rzeczywistym do aplikacji z obsługą komunikatów zdarzeń
 
 Drugi najbardziej popularnych korzystanie z usługi Stream Analytics jest do generowania alertów w czasie rzeczywistym. W tym wzorcu rozwiązania logikę biznesową w usłudze Stream Analytics może służyć do wykrywania [wzorców danych czasowych i przestrzennych](stream-analytics-geospatial-functions.md) lub [anomalie](stream-analytics-machine-learning-anomaly-detection.md), a następnie wygenerować alerty sygnałów. Jednak w przeciwieństwie do rozwiązań pulpitu nawigacyjnego, gdzie usługi Stream Analytics korzysta z usługi Power BI jako preferowany punkt końcowy, liczba ujść danych pośrednich można. Te obiekty sink obejmują usługi Event Hubs, Usługa Service Bus i Azure Functions. Jako Konstruktor aplikacji, musisz zdecydować, które ujście danych jest najlepsza dla danego scenariusza.
 
-Logika odbiorcy zdarzenia podrzędne muszą być zaimplementowane do generowania alertów w istniejący przepływ pracy firmy. Ponieważ można zaimplementować logikę niestandardową w usłudze Azure Functions, Functions to najszybszy sposób, można wykonać tej integracji. Samouczek dotyczący korzystania z funkcji platformy Azure, jak dane wyjściowe zadania usługi Stream Analytics można znaleźć w [uruchamiania usługi Azure Functions z zadań usługi Azure Stream Analytics](stream-analytics-with-azure-functions.md). Usługa Azure Functions obsługuje również różne typy powiadomień, łącznie z tekstem i wiadomości e-mail. Aplikacja logiki może również służyć do takiego integracji z usługą Event Hubs między usługi Stream Analytics i aplikacji logiki.
+Logika odbiorcy zdarzenia podrzędne muszą być zaimplementowane do generowania alertów w istniejący przepływ pracy firmy. Ponieważ w usłudze Azure Functions, można zaimplementować logikę niestandardową, usługi Azure Functions to najszybszy sposób, można wykonać tej integracji. Samouczek dotyczący korzystania z funkcji platformy Azure, jak dane wyjściowe zadania usługi Stream Analytics można znaleźć w [uruchamiania usługi Azure Functions z zadań usługi Azure Stream Analytics](stream-analytics-with-azure-functions.md). Usługa Azure Functions obsługuje również różne typy powiadomień, łącznie z tekstem i wiadomości e-mail. Aplikacja logiki może również służyć do takiego integracji z usługą Event Hubs między usługi Stream Analytics i aplikacji logiki.
 
 ![Zdarzenie ASA aplikację do obsługi wiadomości](media/stream-analytics-solution-patterns/eventmessagingapp.png)
 
-Usługa Event Hubs, z drugiej strony, oferuje najbardziej elastyczny punkt integracji. Wiele innych usług, takich jak Eksplorator danych platformy Azure i Time Series Insights — mogą wykorzystywać zdarzeń z centrów zdarzeń. Usługi mogą zostać połączone bezpośrednio do ujścia usługi Event Hubs z usługi Azure Stream Analytics, aby ukończyć rozwiązania. Usługa Event Hubs jest również najwyższy przepływność komunikatów brokera dostępne na platformie Azure w przypadku takich scenariuszy integracji.
+Usługa Event Hubs, z drugiej strony, oferuje najbardziej elastyczny punkt integracji. Wiele innych usług, takich jak Eksplorator danych usługi Azure Time Series Insights można zajmować zdarzeń z centrów zdarzeń. Usługi mogą zostać połączone bezpośrednio do ujścia usługi Event Hubs z usługi Azure Stream Analytics, aby ukończyć rozwiązania. Usługa Event Hubs jest również najwyższy przepływność komunikatów brokera dostępne na platformie Azure w przypadku takich scenariuszy integracji.
 
 ## <a name="dynamic-applications-and-websites"></a>Dynamicznych aplikacji i witryn sieci Web
 

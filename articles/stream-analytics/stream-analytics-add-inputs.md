@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: b5979f8523aad95152378a2e7fabbe9fd8571e09
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 87e260c97a748807929a0e7021e3efb2ae8f8e7b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154089"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329284"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Zrozumienie danych wejściowych usługi Azure Stream Analytics
 
@@ -37,7 +37,7 @@ Strumień danych jest niepowiązanego sekwencję zdarzeń, wraz z upływem czasu
 Aby uzyskać więcej informacji na temat wejścia danych przesyłanych strumieniowo, zobacz [Stream dane jako dane wejściowe do usługi Stream Analytics](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>Wejściowych danych referencyjnych
-Stream Analytics obsługuje również znane jako dane wejściowe *dane referencyjne*. Dane referencyjne jest całkowicie statycznych lub zmieniają się powoli. Zazwyczaj służy do wykonywania korelacji i wyszukiwania. Na przykład można sprzęgnąć danych w wejściowego strumienia danych z danymi w danych referencyjnych, na ile wykona sprzężenie SQL, aby wyszukać wartości statyczne. Usługa Azure Blob storage i Azure SQL Database są obecnie obsługiwane jako źródło danych wejściowych danych referencyjnych. Obiekty BLOB źródła danych referencyjnych mają limit wynosi 300 MB rozmiar, w zależności od złożoności zapytania i przydzielone jednostki przesyłania strumieniowego.
+Stream Analytics obsługuje również znane jako dane wejściowe *dane referencyjne*. Dane referencyjne jest całkowicie statycznych lub zmieniają się powoli. Zazwyczaj służy do wykonywania korelacji i wyszukiwania. Na przykład można sprzęgnąć danych w wejściowego strumienia danych z danymi w danych referencyjnych, na ile wykona sprzężenie SQL, aby wyszukać wartości statyczne. Usługa Azure Blob storage i Azure SQL Database są obecnie obsługiwane jako źródeł danych wejściowych danych referencyjnych. Obiekty BLOB źródła danych referencyjnych mają limit wynosi 300 MB rozmiar, w zależności od złożoności zapytania i przydzielone jednostki przesyłania strumieniowego (zobacz [ograniczenie rozmiaru](stream-analytics-use-reference-data.md#size-limitation) części danych dokumentacji, aby uzyskać więcej informacji).
 
 Aby uzyskać więcej informacji na temat wejścia danych referencyjnych, zobacz [Using danych referencyjnych dla wyszukiwania w usłudze Stream Analytics](stream-analytics-use-reference-data.md)
 

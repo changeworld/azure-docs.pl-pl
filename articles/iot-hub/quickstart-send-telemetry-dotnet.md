@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: f339d2e3e329ae40ca8bb8bf651d698c73482a7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/21/2019
+ms.openlocfilehash: 1433e71a5e4f9d4effe82d489145c364355100d4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049272"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330435"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie ich przy użyciu aplikacji zaplecza (C#)
 
@@ -81,7 +81,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
     Użyjesz tej wartości w dalszej części tego przewodnika Szybki start.
 
-3. Potrzebujesz również _punktu końcowego kompatybilnego z usługą Event Hubs_, _ścieżki kompatybilnej z usługą Event Hubs_ oraz _klucza podstawowego iothubowner_ z centrum IoT, aby zezwolić aplikacji zaplecza na nawiązywanie połączenia z centrum IoT i odbieranie wiadomości. Następujące polecenie pobiera te wartości dla Twojego centrum IoT:
+3. Należy również _punktem końcowym zgodnym z centrów zdarzeń_, _ścieżki zgodnych z usługą Event Hubs_, i _klucz podstawowy usługi_ z usługi IoT hub, aby umożliwić aplikacji zaplecza nawiązać połączenie z Centrum IoT i pobieranie wiadomości. Następujące polecenie pobiera te wartości dla Twojego centrum IoT:
 
    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
@@ -90,7 +90,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
     az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
 
-    az iot hub policy show --name iothubowner --query primaryKey --hub-name YourIoTHubName
+    az iot hub policy show --name service --query primaryKey --hub-name YourIoTHubName
     ```
 
     Zanotuj te trzy wartości, których użyjesz w dalszej części tego przewodnika Szybki start.
@@ -129,11 +129,11 @@ Aplikacja zaplecza łączy się z punktem końcowym **Zdarzenia** po stronie us�
 
 2. Otwórz plik **ReadDeviceToCloudMessages.cs** w wybranym edytorze. Zaktualizuj następujące zmienne i zapisz zmiany w pliku.
 
-    | Zmienna | Wartość |
+    | Zmienna | Value |
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | Zastąp wartość tej zmiennej punktem końcowym zgodnym z usługą Event Hubs zanotowanym wcześniej. |
     | `s_eventHubsCompatiblePath`     | Zastąp wartość tej zmiennej ścieżką zgodną z usługą Event Hubs zanotowaną wcześniej. |
-    | `s_iotHubSasKey`                | Zastąp wartość tej zmiennej kluczem podstawowym iothubowner zanotowanym wcześniej. |
+    | `s_iotHubSasKey`                | Zastąp wartość zmiennej wprowadzone Zanotuj wcześniej klucz podstawowy usługi. |
 
 3. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji zaplecza:
 

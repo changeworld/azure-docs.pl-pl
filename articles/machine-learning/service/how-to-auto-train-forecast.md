@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: c7f4b6d8aa614a460772fb7af11f9b83dc3fc979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 4a3ab9094080ab257a885bb7a745fc83948327c2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800814"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331681"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Auto — szkolenie modelu prognozowania szeregów czasowych
 
@@ -26,6 +26,14 @@ W tym artykule dowiesz się, jak do uczenia modelu regresji prognozowania szereg
 * Uruchom prognoz z danymi szeregów czasowych
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
+
+Automatyczne ML umożliwia łączenie techniki i podejścia i uzyskać zalecane, wysokiej jakości szereg czasowy prognozy. Automatyczne eksperymentu szeregów czasowych, jest traktowany jako problem wieloczynnikowa Regresja. Ostatnie wartości szeregów czasowych są "przestawiać" aby stać się dodatkowe wymiary regresor wraz z innymi zmienne predykcyjne. 
+
+Takie podejście, w odróżnieniu od klasycznego czas serii metod, ma zalet naturalnie dołączanie wielu zmiennych kontekstowych i ich związek ze sobą podczas szkolenia. W rzeczywistych aplikacjach prognozowania wiele czynników może mieć wpływ na prognozę. Na przykład gdy prognozowania sprzedaży, interakcje trendów historycznych, kursu i ceny wszystkich wspólnie dysku wyniki sprzedaży. Dodatkowe korzyści to, że wszystkie najnowsze innowacje w modele regresji, natychmiast zastosowane do prognozowania.
+
+Możesz [skonfigurować](#config) jak daleko w przyszłości prognozy powinny rozszerzać (Horyzont prognozy), a także spowolnienia i nie tylko. Automatyczne ML uzyskuje informacje o pojedynczej, ale często wewnętrznie rozgałęziony modelu dla wszystkich elementów w horyzonty zestaw danych i prognozowania. Większej ilości danych związku z tym jest dostępny do oszacowania parametry modelu i Generalizacja niewidzianych serii staje się możliwe. 
+
+Funkcje wyodrębnione z danych szkoleniowych odgrywają kluczową rolę. I automatyczne ML przeprowadza standardowe wstępne kroki przygotowawcze generuje dodatkowe funkcje szeregów czasowych sezonowych efektów przechwycić i zmaksymalizować predykcyjne dokładności. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -69,6 +77,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > Podczas uczenia modelu do prognozowania przyszłych wartości, upewnij się, wszystkie funkcje używane szkolenia i mogą być używane podczas wykonywania prognoz dla Twojego zamierzony horyzoncie. Na przykład podczas tworzenia prognozę, funkcji bieżąca cena akcji w tym może wysoce zwiększyć dokładność szkolenia. Jednak jeśli zamierzasz Prognozuj z długich horizon, nie może być możliwość dokładnego przewidywania przyszłego podstawowych wartości odpowiadające przyszłych punktów szeregów czasowych i dokładności modelu może to spowodować obniżenie.
 
+<a name="config"></a>
 ## <a name="configure-and-run-experiment"></a>Konfigurowanie i uruchamianie eksperymentu
 
 Do prognozowania zadania, uczenie maszynowe automatyczne wykorzystuje przetwarzania wstępnego i Szacowanie czynności, które są specyficzne dla danych szeregów czasowych. Zostaną wykonane następujące kroki przetwarzania wstępnego:
@@ -85,7 +94,7 @@ Do prognozowania zadania, uczenie maszynowe automatyczne wykorzystuje przetwarza
 |-------|-------|-------|
 |`time_column_name`|Służy do określania kolumn daty/godziny w danych wejściowych, używane do kompilowania szeregów czasowych i wnioskowanie jej częstotliwość.|✓|
 |`grain_column_names`|Nazwy, definiując grupy poszczególnych serii danych wejściowych. Jeśli nie zdefiniowano ziarna, zestaw danych zakłada się, że jeden szeregów czasowych.||
-|`max_horizon`|Maksymalną żądaną horizon prognozy w jednostkach częstotliwości szeregów czasowych.|✓|
+|`max_horizon`|Określa maksymalną żądaną horizon prognozy w jednostkach częstotliwości szeregów czasowych. Jednostki są oparte na przedział czasu danych szkoleniowych, np. co miesiąc, co tydzień, że warunkowy typu należy przewidzieć.|✓|
 |`target_lags`|*n* okresów opóźnienie do przodu dotyczą wartości przed szkoleń modelowych.||
 |`target_rolling_window_size`|*n* historical periods to use to generate forecasted values, <= training set size. W przypadku pominięcia *n* pełną szkolenia ustawiono rozmiaru.||
 

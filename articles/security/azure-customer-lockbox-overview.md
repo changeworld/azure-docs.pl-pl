@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 05/07/2019
-ms.openlocfilehash: 468e392cd2c45d79cbb24f8d737a6e83fbcd2725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0ee2dde5a941d069f5b745eafb35df780f657a47
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65079273"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312623"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Skrytki klienta na platformie Microsoft Azure
 
@@ -97,7 +97,7 @@ Poniższe usługi i scenariusze są obecnie ogólnie dostępne do skrytki klient
 ### <a name="remote-desktop-access-to-virtual-machines"></a>Dostępu do pulpitu zdalnego do maszyn wirtualnych
 
 Skrytki klienta jest obecnie włączona dla żądań dostępu do usług pulpitu zdalnego do maszyn wirtualnych. Obsługiwane są następujące obciążenia:
-- Platforma jako usługa (PaaS) — wersja 1
+- Platforma jako usługa (PaaS) — usługi Azure Cloud Services (role sieci web i roli proces roboczy)
 - Infrastruktura jako usługa (IaaS) — Windows i Linux (tylko w usłudze Azure Resource Manager)
 - Zestaw skalowania maszyn wirtualnych — Windows i Linux
 

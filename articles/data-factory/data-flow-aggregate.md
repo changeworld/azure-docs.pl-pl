@@ -1,35 +1,44 @@
 ---
-title: Mapowanie przekształcenie agregacji przepływu danych w usłudze Azure Data Factory
-description: Przekształcenie agregacji przepływu danych fabryki danych platformy Azure
+title: Agreguj transformacji w mapowanie przepływu danych — usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i agregowanie danych na dużą skalę w usłudze Azure Data Factory przy użyciu transformacji agregacji przepływu mapowanie danych.
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7b488b243c0520befb6b5470598f460b5a759fed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21135b26d4bc840b3fcb091e675e5e6bd24d8548
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467381"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312118"
 ---
-# <a name="azure-data-factory-mapping-data-flow-aggregate-transformation"></a>Mapowanie przekształcenie agregacji przepływu danych w usłudze Azure Data Factory
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>Przekształcenie agregacji w mapowanie przepływu danych 
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Przekształcenie agregacji jest, gdzie należy zdefiniować agregacji kolumny w strumienie danych. W Konstruktorze wyrażeń można definiowania różnych typów agregacji (czyli SUM, MIN, MAX, liczba itp.) i utworzyć nowe pole w danych wyjściowych obejmującą tych agregacji za pomocą pola opcjonalne grupowania.
-
-![Agreguj opcje przekształcania](media/data-flow/agg.png "agregacji 1")
+Przekształcenie agregacji jest, gdzie należy zdefiniować agregacji kolumny w strumienie danych. Konstruktor wyrażeń można zdefiniować różne typy agregacji, takich jak SUM, MIN, MAX i COUNT, które mogą być grupowane według istniejących lub obliczanych kolumn.
 
 ## <a name="group-by"></a>Grupuj według
-(Opcjonalnie) Wybierz klauzuli Group by dla Twojego agregacji, a następnie użyj nazwy istniejącej kolumny lub nową nazwę. Użyj "Dodaj kolumnę" Dodaj więcej klauzul group by, a następnie kliknij pole tekstowe obok nazwy kolumny, aby uruchomić Kreatora wyrażeń, które można wybrać tylko istniejącą kolumnę, kombinacja kolumny lub wyrażenia, które grupowanie.
+Wybierz istniejącą kolumnę lub Utwórz nową kolumnę obliczaną do użytku jako grupa by — klauzula usługi agregacji. Aby użyć istniejącej kolumny, wybierz odpowiednie kolumny z listy rozwijanej. Aby utworzyć nową kolumnę obliczaną, umieść kursor nad klauzuli, a następnie kliknij przycisk "Kolumna obliczana". Spowoduje to otwarcie [Konstruktor wyrażeń przepływu danych](concepts-data-flow-expression-builder.md). Po utworzeniu kolumny obliczanej, wprowadź nazwę kolumny danych wyjściowych poniżej pola "Nazwa jako". Jeśli chcesz dodać dodatkowe grupy przez klauzulę, umieść kursor nad istniejącej klauzuli i kliknij przycisk "+".
 
-## <a name="the-aggregate-column-tab"></a>Na karcie kolumnę agregacji 
-(Wymagane) Wybierz kartę kolumnę agregacji, aby zbudować wyrażenia agregacji. Możesz wybierz istniejącą kolumnę, aby zastąpić tę wartość za pomocą agregacji lub utworzyć nowe pole z nową nazwą do agregacji. Wyrażenie, które mają być używane podczas agregacji zostanie wprowadzony w polu po prawej stronie obok nazwy selektora kolumn. Kliknięcie tego pola tekstowego będzie otwierają kreatora wyrażeń.
+![Przekształcenie agregacji grupy za pomocą ustawień](media/data-flow/agg.png "grupy przekształcenie agregacji za pomocą ustawień")
 
-![Agreguj opcje przekształcania](media/data-flow/agg2.png "agregatora")
+> [!NOTE]
+> Group by — klauzula jest opcjonalny w przekształcenie agregacji.
 
-## <a name="data-preview-in-expression-builder"></a>Podgląd danych w Konstruktor wyrażeń
+## <a name="aggregate-column"></a>Agreguj kolumnę 
+Wybierz kartę "Agregacji", aby zbudować wyrażenia agregacji. Można albo wybierz istniejącą kolumnę i zastąpienie wartości agregacji lub utworzyć nowe pole pod nową nazwą. Wyrażenie agregacji został wprowadzony w pole po prawej stronie obok nazwy selektora kolumn. Aby edytować wyrażenie, kliknij pole tekstowe, aby otworzyć Kreatora wyrażeń. Aby dodać dodatkowe agregacji, umieść kursor nad istniejących wyrażenie, a następnie kliknij przycisk "+" Aby utworzyć nową kolumnę agregacji lub [wzorzec kolumny](concepts-data-flow-column-pattern.md).
 
-W trybie debugowania Konstruktor wyrażeń nie może utworzyć podglądów danych za pomocą funkcji agregujących. Aby wyświetlić podgląd danych dla przekształceń agregacji, należy zamknąć Konstruktor wyrażeń i wyświetlić profil danych przy użyciu projektanta przepływu danych.
+![Agreguj przekształcenie agregacji ustawienia](media/data-flow/agg2.png "ustawienia agregacji przekształcenie agregacji")
+
+> [!NOTE]
+> Każde wyrażenie agregacji musi zawierać co najmniej jedną funkcję agregacji.
+
+> [!NOTE]
+> W trybie debugowania Konstruktor wyrażeń nie może utworzyć podglądów danych za pomocą funkcji agregujących. Aby wyświetlić podgląd danych dla przekształceń agregacji, należy zamknąć Konstruktor wyrażeń i wyświetlanie danych za pomocą karty "Podgląd danych".
+
+## <a name="next-steps"></a>Kolejne kroki
+
+-Definiowanie okienkowych agregacji za pomocą [przekształcania okna](data-flow-window.md)

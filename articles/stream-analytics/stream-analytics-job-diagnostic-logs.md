@@ -7,17 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: a41c3f60d4b949f78c0755f97c9ef7e6302d78d8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515917"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329997"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych
 
 Od czasu do czasu zadania usługi Azure Stream Analytics nieoczekiwanie zatrzymuje przetwarzanie. Jest ważne można było rozwiązać tego rodzaju zdarzenia. Mogą one być spowodowane przez nieoczekiwany wynik zapytania, problemy z łącznością z urządzeniami lub nieoczekiwaną awarię usługi. Dzienniki diagnostyczne w usłudze Stream Analytics może pomóc w zidentyfikowaniu przyczyny problemów, gdy wystąpi i skrócić czas odzyskiwania.
+
+Zdecydowanie zaleca się Włączanie dzienników diagnostycznych dla wszystkich zadań w środowisku produkcyjnym.
 
 ## <a name="log-types"></a>Typy dziennika
 
@@ -62,7 +64,7 @@ Zdecydowanie zaleca się włączenie dzienników diagnostycznych i wysyła je do
 
     ![Nawigacja w bloku do dzienników diagnostycznych](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Tworzenie **nazwa** w **ustawień diagnostycznych** i zaznacz pole wyboru obok pozycji **wysyłanie do usługi Log Analytics**. Następnie Dodaj istniejącą lub Utwórz nową **obszar roboczy usługi Log analytics**. Zaznacz pola wyboru dla **wykonywania** i **tworzenie** w obszarze **dziennika**, i **AllMetrics** w obszarze **METRYKI** . Kliknij pozycję **Zapisz**.
+2.  Tworzenie **nazwa** w **ustawień diagnostycznych** i zaznacz pole wyboru obok pozycji **wysyłanie do usługi Log Analytics**. Następnie Dodaj istniejącą lub Utwórz nową **obszar roboczy usługi Log analytics**. Zaznacz pola wyboru dla **wykonywania** i **tworzenie** w obszarze **dziennika**, i **AllMetrics** w obszarze **METRYKI** . Kliknij pozycję **Zapisz**. Zalecane jest, aby uniknąć dodatkowych kosztów za pomocą obszaru roboczego usługi Log Analytics w tym samym regionie platformy Azure jako zadania usługi Stream Analytics.
 
     ![Ustawienia dzienników diagnostycznych](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -113,7 +115,7 @@ Dzienniki wykonywania ma informacje o zdarzeniach, które wystąpiły podczas wy
 
 ### <a name="data-errors"></a>Błędy danych
 
-Wszelkie błędy występujące podczas zadania przetwarzania danych jest w tej kategorii dzienników. Te dzienniki w większości przypadków są tworzone podczas odczytu, danych serializacji, operacji i zapisu. Dzienniki te nie zawierają błędy związane z łącznością. Błędy łączności są traktowane jako zdarzenia ogólne.
+Wszelkie błędy występujące podczas zadania przetwarzania danych jest w tej kategorii dzienników. Te dzienniki w większości przypadków są tworzone podczas odczytu, danych serializacji, operacji i zapisu. Dzienniki te nie zawierają błędy związane z łącznością. Błędy łączności są traktowane jako zdarzenia ogólne. Dowiedz się więcej o różnych różne przyczyny [błędy w danych wejściowych i wyjściowych](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
 Name (Nazwa) | Opis
 ------- | -------
@@ -149,4 +151,4 @@ Identyfikator korelacji | [Identyfikator GUID](https://en.wikipedia.org/wiki/Uni
 * [Rozpoczynanie pracy z usługą Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalowanie zadań usługi Stream Analytics](stream-analytics-scale-jobs.md)
 * [Dokumentacja języka zapytań usługi Analytics Stream](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Stream Analytics management dokumentacja interfejsu API REST](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Błędy danych usługi Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-errors)

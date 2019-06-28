@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: fdf98a0c0c40010bb55955b54dc7b04db8e199f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 88c0aea851bcf70206b5f68d7865c487441905f6
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493260"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329896"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 
@@ -21,7 +21,7 @@ Dostępne w chmurze i usługi Azure IoT Edge, Azure Stream Analytics oferuje wbu
 
 Modele uczenia maszynowego założono szeregów czasowych równomiernie próbkowane. Jeśli Szeregi czasowe nie jest jednolite, może wstawić etap agregacji za pomocą okna wirowania przed wywołaniem wykrywania anomalii.
 
-Operacje uczenia maszyny, które nie obsługują sezonowości trendów lub wielu variate korelacji.
+Operacje uczenia maszyny nie obsługują sezonowości trendów lub wielu variate korelacji w tej chwili.
 
 ## <a name="model-accuracy-and-performance"></a>Dokładność modelu i wydajności
 
@@ -29,9 +29,9 @@ Ogólnie rzecz biorąc dokładności modelu zwiększa większej ilości danych w
 
 Funkcje działają, ustanawiając niektórych zwykłym oparte na co ich zauważono pory. Elementy odstające są identyfikowane przez porównanie ustanowionych normalna, w ramach poziom ufności. Rozmiar okna powinna być oparta na zdarzeniach minimalne wymagane do nauczenia modelu do normalnego zachowania, tak aby w przypadku wystąpienia anomalii byłaby w stanie rozpoznać.
 
-Należy pamiętać, że model czas odpowiedzi zwiększa się wraz z rozmiar historii ponieważ wymaga porównać większej liczby zdarzeń w ciągu ostatnich. Zalecane jest obejmujący tylko niezbędne liczbę zdarzeń w celu zapewnienia lepszej wydajności.
+Model czas odpowiedzi zwiększa się z rozmiarem historii, ponieważ musi zostać porównane większa liczba przeszłych zdarzeń. Zalecane jest obejmujący tylko niezbędne liczbę zdarzeń w celu zapewnienia lepszej wydajności.
 
-Luki w szeregu czasowym może być to wynikiem modelu nie odbiera zdarzenia w określonych punktach w czasie. Ta sytuacja jest obsługiwany przez usługę Stream Analytics przy użyciu przypisywania. Rozmiar historii, a także czas trwania dla tego samego okna przewijania jest używane do obliczania średnia liczba zdarzeń powinny przybycie.
+Luki w szeregu czasowym może być to wynikiem modelu nie odbiera zdarzenia w określonych punktach w czasie. Ta sytuacja jest obsługiwane przez usługę Stream Analytics przy użyciu przypisywania logiki. Rozmiar historii, a także czas trwania dla tego samego okna przewijania jest używane do obliczania średnia liczba zdarzeń powinny przybycie.
 
 ## <a name="spike-and-dip"></a>Kolekcji i dip
 
@@ -40,7 +40,7 @@ Tymczasowe anomalie w strumieniu zdarzeń serie czasu są znane jako gwałtowne 
 
 ![Przykład kolekcji i dip anomalii](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-W tym samym metodzie przesuwanego okna, jeśli drugi kolekcji jest mniejszy niż pierwszy z nich, obliczanych wyników dla mniejszych kolekcji prawdopodobnie nie ma znaczenia wystarczająco dużo, w porównaniu do wyników dla pierwszej kolekcji w ramach poziom ufności określony. Możesz wypróbować, zmniejszając modelu ustawienie poziomu zaufania do przechwytywania takiego anomalii. Jednak w przypadku uruchomienia uzyskać zbyt wiele alertów, można użyć nowszej interwał ufności.
+W tym samym metodzie przesuwanego okna, jeśli drugi kolekcji jest mniejszy niż pierwszy z nich, obliczanych wyników dla mniejszych kolekcji prawdopodobnie nie ma znaczenia wystarczająco dużo, w porównaniu do wyników dla pierwszej kolekcji w ramach poziom ufności określony. Możesz wypróbować, zmniejszyć poziom ufności modelu do wykrywania anomalii takie. Jednak w przypadku uruchomienia uzyskać zbyt wiele alertów, można użyć nowszej interwał ufności.
 
 Poniższe przykładowe zapytanie zakłada jednolitą stawkę wejściowych jedno zdarzenie na sekundę w 2-minutowy przesuwającego się okna z historią 120 zdarzeń. Końcowe instrukcji SELECT wyodrębnia i wyświetla wynik i anomalii stanu z poziomu ufności 95%.
 

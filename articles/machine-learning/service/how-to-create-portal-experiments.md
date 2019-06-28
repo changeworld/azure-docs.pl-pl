@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 714283628e1b2ac445d36d0b07fe299b589a1cf0
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990151"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312817"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Tworzenie i eksplorowanie zautomatyzowanych usługi machine learning eksperymentów w witrynie Azure portal (wersja zapoznawcza)
 
@@ -96,16 +96,16 @@ Wybierz przycisk tworzenia eksperymentu, aby wypełnić następującą postać.
 
 1. Do prognozowania:
     1. Wybierz kolumnę, czas: Ta kolumna zawiera dane czasu do użycia.
-    1. Wybierz horizon prognozowania: Wskazuje, ile jednostek czasu (minuty/godziny/dni/tygodni/miesięcy/lat) modelu będzie można przewidzieć przyszłości. Dodatkowo model jest wymagany do prognozowania w przyszłości, mniej dokładne stanie się. [Dowiedz się więcej na temat Prognozowanie i prognozy horizon](https://docs.microsoft.com/azure/machine-learning/service/how-to-auto-train-forecast#configure-experiment).
+    1. Wybierz horizon prognozowania: Wskazuje, ile jednostek czasu (minuty/godziny/dni/tygodni/miesięcy/lat) modelu będzie można przewidzieć przyszłości. Dodatkowo model jest wymagany do prognozowania w przyszłości, mniej dokładne stanie się. [Dowiedz się więcej na temat Prognozowanie i prognozy horizon](how-to-auto-train-forecast.md).
 
 1. (Opcjonalnie) Ustawienia zaawansowane: dodatkowe ustawienia, można użyć do kontrolowania lepiej zadania szkolenia.
 
     Ustawienia zaawansowane|Opis
     ------|------
-    Podstawowe metryki| Metryka główne używane do oceniania modelu. [Dowiedz się więcej o metrykach modelu](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
+    Podstawowe metryki| Metryka główne używane do oceniania modelu. [Dowiedz się więcej o metrykach modelu](how-to-configure-auto-train.md#explore-model-metrics).
     Kryteria wyjścia| Gdy dowolne z poniższych kryteriów są spełnione, przed ukończeniem pełną kończy się zadania szkolenia. <br> *Szkolenie zadania czas (w minutach)* : Jak długo, aby zezwolić na uruchomienie zadania szkolenia.  <br> *Maksymalna liczba iteracji*: Maksymalna liczba potoków (iteracji) do testowania w ramach zadania szkolenia. Zadanie nie zostanie uruchomione więcej niż określoną liczbę iteracji. <br> *Metryki oceny próg*:  Minimalny wynik metryki dla wszystkich potoków. Daje to gwarancję, że jeśli Metryka zdefiniowanego celu, którą chcesz się połączyć, możesz nie poświęcić więcej czasu na zadania szkolenia, niż jest to konieczne.
     Przetwarzanie wstępne| Zaznacz, aby włączyć lub wyłączyć wstępnego przetwarzania wykonywane przez uczenie maszynowe automatycznych. Przetwarzanie wstępne obejmuje czyszczenia danych, przygotowywania i transformacji do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
-    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności do użycia w ramach zadania szkolenia. [Dowiedz się więcej o krzyżowego sprawdzania poprawności](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności do użycia w ramach zadania szkolenia. [Dowiedz się więcej o krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
     Współbieżność| Wybierz limity wielordzeniowych, którego chcesz używać podczas używania wielu rdzeni obliczeniowych.
     Algorytm zablokowane| Wybieranie algorytmów, które chcesz wykluczyć z zadania szkolenia.
 
@@ -180,7 +180,7 @@ Szkolenie zadań może wymagać trochę czasu dla każdego potoku na zakończeni
 
 ### <a name="view-training-run-details"></a>Szkolenie widok szczegółów uruchomienia
 
-Przechodzenie do wszystkich modeli danych wyjściowych, aby wyświetlić szczegóły przebiegu, takich jak wykresy metryk i dystrybucji wydajności szkolenia. [Dowiedz się więcej na temat wykresów](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts).
+Przechodzenie do wszystkich modeli danych wyjściowych, aby wyświetlić szczegóły przebiegu, takich jak wykresy metryk i dystrybucji wydajności szkolenia. [Dowiedz się więcej na temat wykresów](how-to-track-experiments.md#understanding-automated-ml-charts).
 
 ![Szczegóły iteracji](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -220,7 +220,7 @@ Automatyczne ML ułatwiają wdrażanie modelu bez konieczności pisania kodu:
 
 1. Wybierz **Przeglądaj** przycisk obok pola "Conda plik", można przekazać pliku środowiska (condaEnv.yml), który został wcześniej pobrany.
 
-    Można użyć własnych skrypt oceniania i plików conda, a także dodatkowe pliki do przekazania. [Dowiedz się więcej o skrypt oceniania](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script).
+    Można użyć własnych skrypt oceniania i plików conda, a także dodatkowe pliki do przekazania. [Dowiedz się więcej o skrypt oceniania](how-to-deploy-and-where.md#script).
 
       >[!Important]
       > Nazwy plików musi być w obszarze 32 znaków i musi rozpoczynać się i kończyć znaków alfanumerycznych. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne, między. Spacje są niedozwolone.
@@ -228,7 +228,7 @@ Automatyczne ML ułatwiają wdrażanie modelu bez konieczności pisania kodu:
     ![Tworzenie obrazu](media/how-to-create-portal-experiments/create-image.png)
 
 1. Wybierz przycisk "Utwórz", aby rozpocząć tworzenie obrazu. To potrwa kilka minut, po zakończeniu, zostanie wyświetlony komunikat na górnym pasku.
-1. Przejdź do karty "Obrazy", zaznacz pole wyboru obok obraz, który chcesz wdrożyć, a następnie wybierz pozycję "Utwórz wdrożenia". [Dowiedz się więcej na temat wdrożeń](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+1. Przejdź do karty "Obrazy", zaznacz pole wyboru obok obraz, który chcesz wdrożyć, a następnie wybierz pozycję "Utwórz wdrożenia". [Dowiedz się więcej na temat wdrożeń](how-to-deploy-and-where.md).
 
     Istnieją 2 opcje wdrażania.
      + Wystąpienia kontenerów platformy Azure (ACI) — jest używana więcej do testowania, cel, a nie operacyjnych wdrożenia na dużą skalę. Upewnij się, że Podaj wartości dla co najmniej jednym rdzeniu na _pojemność rezerwowa procesora CPU_i co najmniej jednego gigabajta (GB) dla _pojemność rezerwowa pamięci_

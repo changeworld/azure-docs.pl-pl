@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 797db8d0dd321676a3fa436a328a9981a3d3ca3b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60786377"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312043"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopiowanie danych z bazy danych DB2 przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -34,6 +34,7 @@ W szczególności ten łącznik DB2 obsługuje następujące platformy programu 
 
 * IBM DB2 w przypadku 11.1 z/OS
 * IBM DB2 w przypadku 10.1 z/OS
+* IBM DB2 for i 7.3
 * IBM DB2 for i 7.2
 * IBM DB2 for i 7.1
 * IBM DB2 LUW 11

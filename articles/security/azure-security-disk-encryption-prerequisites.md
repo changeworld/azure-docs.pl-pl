@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16a556264cda3ed4eb93e8fb738765ddcb379f69
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: ef40ce0987d44c968b120d7d4b142cc95d7eaf30
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068571"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294847"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption
 
@@ -26,28 +26,79 @@ Przed włączeniem usługi Azure Disk Encryption na maszynach wirtualnych IaaS p
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="bkmk_OSs"></a> Obsługiwane systemy operacyjne
-Usługa Azure Disk Encryption jest obsługiwana w następujących systemach operacyjnych:
+## <a name="supported-vm-sizes"></a>Obsługiwane rozmiary maszyn wirtualnych
+
+Usługa Azure Disk Encryption jest dostępna na maszynach wirtualnych, które spełniają te wymagania minimalnej ilości pamięci:
+
+| Maszyna wirtualna | Minimalna wymagana ilość pamięci |
+|--|--|
+| Maszyny wirtualne z systemem Windows | 2 GB |
+| Maszyny wirtualne systemu Linux, gdy tylko szyfrowanie woluminów danych| 2 GB |
+| Maszyny wirtualne systemu Linux podczas szyfrowania danych i woluminów systemu operacyjnego, a w przypadku, gdy użycie systemu plików root (/) jest 4GB lub mniej | 8 GB |
+| Maszyny wirtualne systemu Linux podczas szyfrowania danych i woluminów systemu operacyjnego i których użycie systemu plików root (/) jest większa niż 4GB | Użycie systemu plików w katalogu głównego * 2. Na przykład 16 GB użycie systemu plików w katalogu głównego wymaga co najmniej 32GB pamięci RAM |
+
+Po zakończeniu procesu szyfrowania dysku systemu operacyjnego maszyn wirtualnych systemu Linux maszyny Wirtualnej można skonfigurować do uruchamiania przy użyciu mniejszej ilości pamięci. 
+
+> [!NOTE]
+> Szyfrowanie dysków systemu operacyjnego Linux nie jest dostępna dla [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml).
+
+Usługa Azure Disk Encryption jest również dostępna dla maszyn wirtualnych dzięki usłudze premium storage. 
+
+## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
+
+### <a name="windows"></a>Windows
 
 - Wersje systemu Windows Server: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, systemu Windows Server 2016, systemu Windows Server 2012 R2 Server Core i systemu Windows Server 2016 Server core.
 Dla systemu Windows Server 2008 R2 musisz mieć zainstalowany przed włączeniem szyfrowania na platformie Azure program .NET Framework 4.5. Zainstaluj ją Windows Update z opcjonalną aktualizację programu Microsoft .NET Framework 4.5.2 systemów Windows Server 2008 R2 x64 64 (KB2901983).
 - Windows Server 2012 R2 Core i Windows Server 2016 Core są obsługiwane przez usługi Azure Disk Encryption, gdy składnik bdehdcfg jest zainstalowany na maszynie Wirtualnej.
 - Wersje klienta Windows: Klient systemu Windows 8 i klienta systemu Windows 10.
-- Usługa Azure Disk Encryption jest tylko obsługiwana w określonych w galerii platformy Azure są dystrybucje systemu Linux serwera i wersje. Aby uzyskać listę aktualnie obsługiwanych wersji, zobacz [często zadawane pytania dotyczące usługi Azure dysku szyfrowanie](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Zapoznaj się [dystrybucje systemu Linux zalecanych dla na platformie Azure](../virtual-machines/linux/endorsed-distros.md) listę obrazów, obsługiwane przez firmę Microsoft, a także do [dystrybucje systemu Linux co to jest obsługa usługi Azure Disk Encryption?](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) w [platformy Azure Szyfrowanie — często zadawane pytania na dysku](azure-security-disk-encryption-faq.md) listę aktualnie obsługiwane wersje, oparte na dystrybucje zalecane dla obrazu.
+
+### <a name="linux"></a>Linux 
+
+Usługa Azure Disk Encryption jest obsługiwana dla podzestawu [dystrybucje zatwierdzone na platformie Azure z systemem Linux](../virtual-machines/linux/endorsed-distros.md), który sam jest podzestawem wszystkich server możliwe są dystrybucje systemu Linux.
+
+![Diagram Venna Linux server obsługujących usługi Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+
+Dystrybucje systemu Linux server, które nie zalecane dla platformy Azure nie obsługują usługi Azure Disk Encryption i tych, które są zalecane, tylko poniższe dystrybucje i wersje obsługują usługi Azure Disk Encryption:
+
+| Dystrybucja systemu Linux | Wersja | Typ woluminu obsługiwany w przypadku szyfrowania|
+| --- | --- |--- |
+| Ubuntu | 18.04| Dysk systemu operacyjnego i danych |
+| Ubuntu | 16.04| Dysk systemu operacyjnego i danych |
+| Ubuntu | 14.04.5</br>[za pomocą platformy Azure dostosowanych jądra zaktualizowana w celu 4.15 lub nowszej](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Dysk systemu operacyjnego i danych |
+| RHEL | 7.6 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
+| RHEL | 7.5 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
+| RHEL | 7.4 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
+| RHEL | 7.3 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
+| RHEL | 7.2 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
+| RHEL | 6.8 | Dysk z danymi (zobacz uwaga poniżej) |
+| RHEL | 6.7 | Dysk z danymi (zobacz uwaga poniżej) |
+| CentOS | 7.6 | Dysk systemu operacyjnego i danych |
+| CentOS | 7.5 | Dysk systemu operacyjnego i danych |
+| CentOS | 7.4 | Dysk systemu operacyjnego i danych |
+| CentOS | 7.3 | Dysk systemu operacyjnego i danych |
+| CentOS | 7.2n | Dysk systemu operacyjnego i danych |
+| CentOS | 6.8 | Dysk z danymi |
+| openSUSE | 42.3 | Dysk z danymi |
+| SLES | 12-SP4 | Dysk z danymi |
+| SLES | 12-SP3 | Dysk z danymi |
+
+> [!NOTE]
+> Nowa implementacja ADE jest obsługiwana dla systemu operacyjnego systemu RHEL i dyskiem danych o płatności RHEL7 obrazów. ADE nie jest obecnie obsługiwane dla obrazów systemu RHEL Bring-Your-właścicielem-subskrypcji (BYOS). Zobacz [usługi Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) Aby uzyskać więcej informacji.
+
 - Usługa Azure Disk Encryption wymaga, że maszyny wirtualne i usługi key vault, na których znajdują się w tym samym regionie platformy Azure i subskrypcji. Konfigurowanie zasobów w oddzielnych regionach powoduje awarię w włączenie funkcji usługi Azure Disk Encryption.
 
-## <a name="bkmk_LinuxPrereq"></a> Dodatkowe wymagania wstępne dotyczące maszyn wirtualnych IaaS z systemem Linux 
+#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>Dodatkowe wymagania wstępne dotyczące maszyn wirtualnych IaaS z systemem Linux 
 
-- Usługa Azure Disk Encryption dla systemu Linux wymaga 7 GB pamięci RAM na maszynę Wirtualną, aby włączyć szyfrowanie dysku systemu operacyjnego na [obsługiwane obrazy](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Po zakończeniu procesu szyfrowania dysku systemu operacyjnego maszyny Wirtualnej można skonfigurować do uruchamiania przy użyciu mniejszej ilości pamięci.
 - Usługa Azure Disk Encryption wymaga dm-crypt i modułów vfat obecne w systemie. Usunięcie lub wyłączenie vfat z domyślnego obrazu uniemożliwi systemu w zakresie odczytywania klucza woluminu i uzyskiwanie klucza chcesz odblokować dysków na kolejnym rozruchu. Kroki zaostrzanie poziomu zabezpieczeń systemu, które usunąć moduł vfat z systemu nie są zgodne z usługi Azure Disk Encryption. 
 - Przed włączeniem szyfrowania, dysków danych do zaszyfrowania muszą właściwie się na liście/etc/fstab. Użyj nazwy urządzenia trwałego blok dla tego wpisu jako nazwy w formacie "/ dev/sdX" nie można polegać ma zostać skojarzony z tym samym dysku między ponownymi uruchomieniami, szczególnie w przypadku, po zastosowaniu szyfrowania urządzenia. Aby uzyskać więcej szczegółowych informacji dotyczących tego zachowania zobacz: [Rozwiązywanie problemów z zmiany nazwy urządzenia maszyny Wirtualnej systemu Linux](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - Upewnij się, że poprawnie skonfigurowano ustawienia/etc/fstab potrzeby instalowania. Aby skonfigurować te ustawienia, polecenie instalacji lub ponowne uruchomienie maszyny Wirtualnej i wyzwolić ponowne zainstalowanie w ten sposób. Sprawdź dane wyjściowe polecenia lsblk, aby zweryfikować, że dysk jest nadal zainstalowany, po zakończeniu tej operacji. 
   - Jeśli plik/etc/fstab nie poprawnie zainstalować dysku przed włączeniem szyfrowania, usługa Azure Disk Encryption nie będzie mogła poprawnie go zainstalować.
   - Proces szyfrowania dysków Azure zostanie przesunięty informacji dotyczących instalacji poza/etc/fstab i w jej własnym pliku konfiguracji w ramach procesu szyfrowania. Zostać zignorowany, aby zobaczyć, że kończy zapis brakuje/etc/fstab po szyfrowaniem dysków danych.
-  -  Po ponownym uruchomieniu potrwa czas procesu szyfrowania dysków Azure na instalowanie nowo zaszyfrowanych dysków. Nie będzie natychmiast dostępny po ponownym uruchomieniu. Proces wymaga czasu do uruchomienia, odblokowywania i następnie zainstalować zaszyfrowanych dysków przed jest dostępna na potrzeby dostępu do innych procesów. Ten proces może potrwać ponad minutę po ponownym uruchomieniu, w zależności od charakterystyki systemu.
+  - Przed rozpoczęciem szyfrowania, upewnij się zatrzymać wszystkie usługi i procesy, które można zapisywać do zainstalowanego dysku z danymi i wyłączyć je, tak aby ich nie uruchamiaj ponownie automatycznie po ponownym uruchomieniu. Te można otwierają pliki na te partycje, zapobiegając procedurę szyfrowania, aby ponownie ich zainstalować, powodując niepowodzenie szyfrowania. 
+  - Po ponownym uruchomieniu potrwa czas procesu szyfrowania dysków Azure na instalowanie nowo zaszyfrowanych dysków. Nie będzie natychmiast dostępny po ponownym uruchomieniu. Proces wymaga czasu do uruchomienia, odblokowywania i następnie zainstalować zaszyfrowanych dysków przed jest dostępna na potrzeby dostępu do innych procesów. Ten proces może potrwać ponad minutę po ponownym uruchomieniu, w zależności od charakterystyki systemu.
 
 Przykład polecenia, które mogą służyć do zamontowania dysków z danymi oraz tworzenie niezbędne/etc/fstab wpisów można znaleźć w [linii 244-248 tego pliku skryptu](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
-
 
 ## <a name="bkmk_GPO"></a> Sieci i zasad grupy
 

@@ -7,23 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb81c73f7946a10bae0470a55dcf1c0d55c2b847
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66159457"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330048"
 ---
-# <a name="clean-up-your-azure-stream-analytics-job"></a>Czyszczenie zadania usługi Azure Stream Analytics
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zatrzymać lub usunąć zadania usługi Azure Stream Analytics
 
-Zadania usługi Azure Stream Analytics można łatwo usunąć za pomocą witryny Azure portal, programu Azure PowerShell, zestawu Azure SDK dla platformy .net lub interfejsu API REST. Nie można odzyskać zadania usługi Stream Analytics, gdy został on usunięty.
+Zadania usługi Azure Stream Analytics można łatwo zatrzymać lub usunąć za pomocą witryny Azure portal, programu Azure PowerShell, zestawu Azure SDK dla platformy .net lub interfejsu API REST. Nie można odzyskać zadania usługi Stream Analytics, gdy został on usunięty.
 
 >[!NOTE] 
 >Po zatrzymaniu zadania usługi Stream Analytics, dane są utrwalane tylko w magazynie danych wejściowych i wyjściowych, takich jak Event Hubs lub usługi Azure SQL Database. Jeśli są wymagane, aby usunąć dane z platformy Azure, koniecznie wykonaj proces usuwania zasobów wejściowe i wyjściowe zadania usługi Stream Analytics.
 
 ## <a name="stop-a-job-in-azure-portal"></a>Zatrzymaj zadanie w witrynie Azure portal
+
+Po zatrzymaniu zadania zasoby są deprovisionned i zatrzymuje się przetwarzanie zdarzeń. Opłaty związane z tym zadanie również zostaną zatrzymane. Jednakże wszystkich konfiguracji są zachowywane i można ponownie uruchomić zadanie później 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
@@ -35,6 +37,9 @@ Zadania usługi Azure Stream Analytics można łatwo usunąć za pomocą witryny
 
 
 ## <a name="delete-a-job-in-azure-portal"></a>Usuwanie zadania w witrynie Azure portal
+
+>[!WARNING] 
+>Nie można odzyskać zadania usługi Stream Analytics, gdy został on usunięty.
 
 1. Zaloguj się do Portalu Azure. 
 

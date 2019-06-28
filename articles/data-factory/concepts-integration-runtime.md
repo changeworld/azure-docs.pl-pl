@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b0b637bdbab8f85c87d28473dda8f2e8f8a086e
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427141"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312058"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
@@ -74,7 +74,7 @@ Informacje na temat tworzenia i konfigurowania infrastruktury Azure IR można zn
 Infrastruktura IR (Self-hosted) oferuje następujące możliwości:
 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze i magazynem danych w sieci prywatnej.
-- Wysyłanie następujących działań przekształcania w odniesieniu do zasobów obliczeniowych w lokalnych lub w usłudze Azure Virtual Network: Działanie HDInsight Hive (Przełącz BYOC Your własnego klastra), działanie HDInsight Pig (BYOC), działanie HDInsight MapReduce (BYOC), działanie HDInsight Spark (BYOC), HDInsight działania przesyłania strumieniowego (BYOC), działanie Machine Learning Batch Execution, Machine Learning Aktualizowanie działań zasobów, działanie Stored Procedure, działanie U-SQL usługi Data Lake Analytics, niestandardowe działanie platformy .NET, działanie Lookup i działanie Get Metadata.
+- Wysyłanie następujących działań przekształcania w odniesieniu do zasobów obliczeniowych w lokalnych lub w usłudze Azure Virtual Network: Działanie HDInsight Hive (Przełącz BYOC Your własnego klastra), działanie HDInsight Pig (BYOC), działanie HDInsight MapReduce (BYOC), działanie HDInsight Spark (BYOC), HDInsight działania przesyłania strumieniowego (BYOC), działanie Machine Learning Batch Execution, Machine Learning Zaktualizuj działania zasobu, działanie Stored Procedure, działanie U-SQL usługi Data Lake Analytics, działanie niestandardowe (działa w usłudze Azure Batch), działanie Lookup i działanie Get Metadata.
 
 > [!NOTE] 
 > Infrastruktura Integration Runtime (Self-hosted) umożliwia obsługę magazynów danych wymagających własnych sterowników, takich jak SAP Hana, MySQL itp.  Więcej informacji można znaleźć w sekcji dotyczącej [obsługiwanych magazynów danych](copy-activity-overview.md#supported-data-stores-and-formats).

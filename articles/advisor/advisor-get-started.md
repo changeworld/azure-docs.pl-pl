@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f91e48a532a278c95d50775e135ac6379e8d8070
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60468304"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332056"
 ---
 # <a name="get-started-with-azure-advisor"></a>Wprowadzenie do usługi Azure Advisor
 
@@ -94,9 +94,9 @@ Może mieć grup zasobów lub subskrypcji, której nie chcesz otrzymywać zalece
 
 Ta procedura umożliwia skonfigurowanie średni reguły wykorzystanie procesora CPU dla zaleceń dotyczących maszyny wirtualnej o niskim użyciu.
 
-Klasyfikator monitoruje wykorzystanie maszyn wirtualnych przez 14 dni, a następnie identyfikuje niskiego wykorzystania maszyn wirtualnych. Maszyny wirtualne, których średnie wykorzystanie procesora CPU wynosi 5 procent lub mniej i użycie sieci to 7 MB lub mniej przez cztery lub więcej dni są traktowane jako niskie użycie maszyn wirtualnych.
+Klasyfikator monitoruje wykorzystanie maszyny wirtualnej przez 7 dni, a następnie identyfikuje niskiego wykorzystania maszyn wirtualnych. Wirtualne wykorzystanie niski, jeśli użycie Procesora wynosi 5% lub mniej, są traktowane jako maszyn i ich wykorzystania sieci jest mniejsza niż % 2, lub jeśli bieżące obciążenie może zostać uwzględniony w obrębie mniejszego rozmiaru maszyny wirtualnej.
 
-Jeśli chcesz mieć wyższe w identyfikacji maszyn wirtualnych o niskim użyciu, można dostosować średni reguły wykorzystanie procesora CPU na podstawie każdej subskrypcji.  Średnia reguły wykorzystanie procesora CPU można ustawić 5%, 10%, 15% lub 20%.
+Jeśli chcesz mieć wyższe w identyfikacji maszyn wirtualnych o niskim użyciu, można dostosować średni reguły wykorzystanie procesora CPU na podstawie każdej subskrypcji.  Można ustawić reguły wykorzystanie procesora CPU do 5%, 10%, 15% lub 20%.
 
 > [!NOTE]
 > Aby dostosować średni reguły wykorzystanie procesora CPU do identyfikowania maszyny wirtualne o niskim użyciu, musi być subskrypcji *właściciela*.  Jeśli nie masz wymaganych uprawnień do subskrypcji lub grupy zasobów, opcję, aby uwzględnić lub wykluczyć je zostanie wyłączona w interfejsie użytkownika. 

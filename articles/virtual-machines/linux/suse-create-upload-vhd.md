@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2b0c01ee4b1d1bc5ce83fc0afc309abfcf25f33e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6841caf94ec9712ff85e420e4378f8c9572e586b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419394"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202952"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu SLES lub openSUSE dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -99,7 +99,7 @@ Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE, publi
         # logout
 16. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 
-- - -
+---
 ## <a name="prepare-opensuse-131"></a>Przygotowanie openSUSE 13.1 +
 1. W środkowym okienku Menedżera funkcji Hyper-V wybierz maszynę wirtualną.
 2. Kliknij przycisk **Connect** aby otworzyć okno dla maszyny wirtualnej.

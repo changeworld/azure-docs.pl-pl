@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 198fedbbd1e97dcda15c9124109e50664f58f8e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 907816d4f44a953ae338f6ca505b8fb3e048234e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66139717"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329647"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Usługa Azure App Service aplikacja klonowania, przy użyciu programu PowerShell
 
@@ -28,7 +28,7 @@ ms.locfileid: "66139717"
 
 Wraz z wydaniem programu Microsoft Azure PowerShell w wersji 1.1.0 dodano nową opcję do `New-AzWebApp` umożliwiający klonowanie istniejącej aplikacji usługi App Service do aplikacji nowo utworzonej w innym regionie lub w tym samym regionie. Ta opcja umożliwia klientom wdrażanie liczby aplikacji w różnych regionach, szybkie i łatwe.
 
-Klonowanie aplikacji jest obecnie obsługiwana tylko w przypadku planów usługi app service — wersja premium warstwy. Nowa funkcja używa te same ograniczenia co funkcji Kopia zapasowa usługi aplikacji, zobacz [wykonywanie kopii zapasowych aplikacji w usłudze Azure App Service](manage-backup.md).
+Klonowanie aplikacji jest obsługiwany dla standardowa, Premium, Premium V2 i izolowany planów usługi app service. Nowa funkcja używa te same ograniczenia co funkcji Kopia zapasowa usługi aplikacji, zobacz [wykonywanie kopii zapasowych aplikacji w usłudze Azure App Service](manage-backup.md).
 
 ## <a name="cloning-an-existing-app"></a>Klonowanie istniejącej aplikacji
 Scenariusz: Istniejącej aplikacji w regionie południowo-środkowe stany USA, a chcesz sklonować zawartość w nowej aplikacji w regionie północno-środkowe stany USA. Można to osiągnąć przy użyciu polecenia cmdlet programu PowerShell w wersji usługi Azure Resource Manager w celu utworzenia nowej aplikacji z `-SourceWebApp` opcji.

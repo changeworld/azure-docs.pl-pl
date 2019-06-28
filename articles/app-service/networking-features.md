@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 362f0b32ea99d0b888ea9f1efa0cd4ea74eb2fa1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66498952"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338493"
 ---
 # <a name="app-service-networking-features"></a>Funkcje sieci usługi App Service
 
@@ -112,7 +112,7 @@ Punkty końcowe usługi umożliwia zablokowanie **dla ruchu przychodzącego** do
 ![punkty końcowe usługi](media/networking-features/service-endpoints.png)
 
 * Konfigurowanie bramy aplikacji za pomocą aplikacji do blokowania ruchu przychodzącego do aplikacji
-* Testricting dostęp do aplikacji do zasobów w sieci wirtualnej. Może to obejmować maszyny wirtualne, za pomocą środowisk ASE lub nawet inne aplikacje używające Integracja sieci wirtualnej 
+* Ograniczanie dostępu do aplikacji do zasobów w sieci wirtualnej. Może to obejmować maszyny wirtualne, za pomocą środowisk ASE lub nawet inne aplikacje używające Integracja sieci wirtualnej 
 
 ![punkty końcowe usługi z usługą application gateway](media/networking-features/service-endpoints-appgw.png)
 
@@ -136,7 +136,7 @@ Ta funkcja jest często używana do:
 
 Ponieważ ta funkcja umożliwia dostęp do zasobów lokalnych bez przerw zapory dla ruchu przychodzącego, to popularne z deweloperami. Inne wychodzące usługi App Service sieci funkcje są bardzo wirtualnych sieci na platformie Azure związane z. Połączenia hybrydowe nie ma zależności przesyłane za pośrednictwem sieci wirtualnej i może służyć do szerszego zakresu wymagań sieci. Należy zauważyć, że funkcji połączeń hybrydowych usługi App Service care lub nie wiedzieć, co robisz na jego podstawie. To znaczy, że służy do dostępu do bazy danych, usługi sieci web lub dowolnego gniazda TCP na mainframe. Funkcja tuneli zasadniczo pakiety TCP. 
 
-Podczas połączenia hybrydowe to popularne w rozwoju, również jest używana w wielu aplikacjach produkcyjnych także. To idealne narzędzie do uzyskiwania dostępu do usługi sieci web lub bazy danych, ale nie jest odpowiednie w sytuacjach, obejmujących dużą liczbę połączeń tworzona. 
+Podczas połączenia hybrydowe to popularne w rozwoju, również jest używana w wielu aplikacjach produkcyjnych także. To idealne narzędzie do uzyskiwania dostępu do usługi sieci web lub bazy danych, ale nie jest odpowiednie w sytuacjach, obejmujących tworzenie wielu połączeń. 
 
 ### <a name="gateway-required-vnet-integration"></a>Brama wymagane Integracja sieci wirtualnej 
 
@@ -150,7 +150,7 @@ Ta funkcja rozwiązuje problem podczas uzyskiwania dostępu do zasobów w innych
 * Uzyskiwanie dostępu do zasobów w środowisku lokalnym czy sieć VPN lokacja lokacja 
 * Uzyskiwanie dostępu do zasobów w wirtualnych sieciach równorzędnych 
 
-Gdy ta funkcja jest włączona, Twoja aplikacja będzie używać serwera DNS, który skonfigurowano docelowej sieci wirtualnej. Możesz dowiedzieć się więcej na temat tej funkcji w dokumentacji dotyczącej [integracji sieci wirtualnej z usługą App][vnetintegrationp2s]. 
+Gdy ta funkcja jest włączona, Twoja aplikacja będzie używać serwera DNS, który skonfigurowano docelowej sieci wirtualnej. Możesz dowiedzieć się więcej na temat tej funkcji w dokumentacji dotyczącej [integracji sieci wirtualnej usługi aplikacji][vnetintegrationp2s]. 
 
 ### <a name="vnet-integration"></a>Integracja z siecią wirtualną
 
@@ -162,7 +162,7 @@ Brama wymaganych funkcji integracji sieci wirtualnej jest bardzo przydatna, ale 
 
 ![Integracja z siecią wirtualną](media/networking-features/vnet-integration.png)
 
-Ta funkcja jest dostępna w wersji zapoznawczej i nie powinna być używana w przypadku obciążeń produkcyjnych. Aby dowiedzieć się więcej na temat tej funkcji, zapoznaj się z dokumentacją na [integracji sieci wirtualnej z usługą App][vnetintegration].
+Ta funkcja jest dostępna w wersji zapoznawczej i nie powinna być używana w przypadku obciążeń produkcyjnych. Aby dowiedzieć się więcej na temat tej funkcji, zapoznaj się z dokumentacją na [integracji sieci wirtualnej usługi aplikacji][vnetintegration].
 
 ## <a name="app-service-environment"></a>Środowisko usługi App Service 
 

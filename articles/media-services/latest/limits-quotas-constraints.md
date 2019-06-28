@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: juliako
-ms.openlocfilehash: 1aa15a42893d867ae18c267e163e8df94af50723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 709ed293dbb0550dc1bb43bf1e1e1cc50906cc31
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824453"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293440"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Limity przydziału i ograniczenia dotyczące usługi Azure Media Services v3
 
@@ -44,6 +44,7 @@ W tym artykule opisano przydziały i ograniczenia dotyczące usługi Azure Media
 | Przekształcenia na konto usługi Media Services | 100 (stałe)|
 | Unikatowe Lokalizatory przesyłania strumieniowego, w tym samym czasie skojarzony z elementem zawartości | 100<sup>(6)</sup> (stałe) |
 | Opcje zgodnie z zasadami klucza zawartości |30 | 
+| Licencje na miesiąc dla każdego typu DRM w usłudze Media Services klucz usługi dostarczania na konto|1 000 000|
 
 <sup>1</sup> maksymalny rozmiar obsługiwany dla pojedynczego obiektu blob jest obecnie maksymalnie 5 TB w usłudze Azure Blob Storage. Dodatkowe limity mają zastosowanie w usłudze Media Services, w oparciu o rozmiarów maszyn wirtualnych, które są używane przez usługę. Limit rozmiaru ma zastosowanie do plików, które można przekazać, a także plików, które wygenerowanie wyniku usługi Media Services przetwarzania (kodowanie lub analizowanie). Jeśli plik źródłowy jest większy niż 260 GB, zadanie prawdopodobnie zakończy się niepowodzeniem. 
 

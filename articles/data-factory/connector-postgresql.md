@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 8515b3f357d77ea4f3d98101f8dd058f13b69206
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0cad0895b63e8c201183284e9d754a482669c48d
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405757"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312020"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopiowanie danych z PostgreSQL za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -58,7 +58,7 @@ Typowe parametry połączenia jest `Server=<server>;Database=<database>;Port=<po
 
 | Właściwość | Opis | Opcje | Wymagane |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Metoda sterownik używa do szyfrowania danych przesyłanych między sterownik i serwera bazy danych. Na przykład `ValidateServerCertificate=<0/1/6>;`| 0 (bez szyfrowania) **(opcja domyślna)** / 1 (SSL) / 6 (RequestSSL) | Nie |
+| EncryptionMethod (EM)| Metoda sterownik używa do szyfrowania danych przesyłanych między sterownik i serwera bazy danych. Na przykład `EncryptionMethod=<0/1/6>;`| 0 (bez szyfrowania) **(opcja domyślna)** / 1 (SSL) / 6 (RequestSSL) | Nie |
 | ValidateServerCertificate (VSC) | Określa, czy sterownik sprawdza poprawność certyfikatu, który jest wysyłany przez serwer bazy danych, po włączeniu szyfrowania SSL (metoda szyfrowania = 1). Na przykład `ValidateServerCertificate=<0/1>;`| 0 (wyłączone) **(opcja domyślna)** / 1 (włączony) | Nie |
 
 **Przykład:**

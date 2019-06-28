@@ -7,15 +7,15 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: bwren
-ms.openlocfilehash: b395b7bccbf93b56e84d5e7b5a4ed7355eaca335
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 7605bf36c41c5b1276d29076173efd52409afaa9
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296332"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310337"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Omówienie zapytań dzienników w usłudze Azure Monitor
-Dziennik zapytania pomagają w pełni wykorzystać wartość danych zebranych w [dzienników monitora platformy Azure](../platform/data-platform-logs.md). Zaawansowany język zapytań pozwala dołączyć dane z wielu tabel, agregować dużych zestawów danych oraz przeprowadzanie złożonych operacji za pomocą minimalnej ilości kodu. Otrzymasz odpowiedzi na niemal każde pytanie, a następnie przeprowadzić analizę, tak długo, jak zostały zebrane dane pomocnicze i zrozumieć sposób tworzenia odpowiednie zapytanie.
+Dziennik zapytań pomagają w pełni wykorzystać wartość danych zebranych w [dzienników monitora platformy Azure](../platform/data-platform-logs.md). Zaawansowany język zapytań pozwala dołączyć dane z wielu tabel, agregować dużych zestawów danych oraz przeprowadzanie złożonych operacji za pomocą minimalnej ilości kodu. Otrzymasz odpowiedzi na niemal każde pytanie, a następnie przeprowadzić analizę, tak długo, jak zostały zebrane dane pomocnicze i zrozumieć sposób tworzenia odpowiednie zapytanie.
 
 Niektóre funkcje w usłudze Azure Monitor, takich jak [insights](../insights/insights-overview.md) i [rozwiązania](../insights/solutions-inventory.md) przetwarzanie danych dziennika bez narażania należy do podstawowych zapytań. W pełni korzystać z innych funkcji usługi Azure Monitor, należy zrozumieć sposób tworzenia zapytań i jak ich używać do interaktywnego analizowania danych w dziennikach monitora platformy Azure.
 

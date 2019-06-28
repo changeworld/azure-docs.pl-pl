@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0eaf48f57c3011222b71a63d703e1ccec7aca001
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cbb7f13214a86f528521fdeb1ffa1374ca813ef
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66692823"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331705"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 
@@ -54,11 +54,14 @@ Aby uzyskać więcej informacji na temat ONNX za pomocą usługi Azure Machine L
 Rejestracja modelu pozwala do przechowywania wersji modeli w chmurze platformy Azure, w obszarze roboczym. Rejestru model ułatwia organizowanie i śledzenie wytrenowane modele.
 
 > [!TIP]
-> Można również zarejestrować modeli skonfigurowanych pod kątem spoza usługi Azure Machine Learning.
+> Zarejestrowanego modelu to logiczny kontener dla jednego lub więcej plików, które tworzą model. Na przykład jeśli model, który jest przechowywany w wielu plikach, można zarejestrować je jako pojedynczego modelu w Twoim obszarze roboczym usługi Azure Machine Learning. Po rejestracji można, a następnie pobrać lub zarejestrowanego modelu wdrażania i otrzymywać wszystkie pliki, które zostały zarejestrowane.
  
 Zarejestrowane modele są identyfikowane przez nazwę i wersję. Zawsze należy zarejestrować model o takiej samej nazwie jak innego istniejącego rejestru zwiększa numer wersji. Możesz także podać dodatkowe metadane tagów podczas rejestracji, który może służyć podczas wyszukiwania dla modeli. Usługa Azure Machine Learning obsługuje każdy model, który może być załadowany, przy użyciu języka Python 3.5.2 lub nowszej.
 
-Nie można usunąć modeli, które są używane w aktywnym wdrożeniu.
+> [!TIP]
+> Można również zarejestrować modeli skonfigurowanych pod kątem spoza usługi Azure Machine Learning.
+
+Nie można usunąć zarejestrowanego modelu, który jest używany w aktywnym wdrożeniu.
 
 Aby uzyskać więcej informacji, zobacz sekcję modelu rejestru [wdrażanie modeli](how-to-deploy-and-where.md#registermodel).
 
