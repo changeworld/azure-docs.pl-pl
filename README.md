@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d6fa30fc781ffe2a9f387f7c9eb4c27eaacc77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344093"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338237"
 ---
 # <a name="microsoft-azure-documentation"></a>Dokumentacja platformy Microsoft Azure
 
@@ -34,10 +34,9 @@ Postępuj zgodnie z instrukcjami podanymi w opisie [instalowania narzędzi do tw
 
 ## <a name="license"></a>Licencja
 
-Zapoznaj się z plikami [LICENSE](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) i [ThirdPartyNotices](.github/ThirdPartyNotices.md), aby uzyskać wszystkie informacje na temat licencji.
+Zapoznaj się z plikami [LICENSE](LICENSE), [LICENSE-CODE](LICENSE-CODE) i [ThirdPartyNotices](ThirdPartyNotices.md), aby uzyskać wszystkie informacje na temat licencji.
 
 ## <a name="code-of-conduct"></a>Kodeks postępowania
 
 W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/).
 Aby uzyskać więcej informacji, zobacz [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) (Często zadawane pytania dotyczące kodeksu postępowania) lub wyślij wiadomość e-mail na adres [opencode@microsoft.com](mailto:opencode@microsoft.com) w przypadku jakichkolwiek dodatkowych pytań lub komentarzy.
-

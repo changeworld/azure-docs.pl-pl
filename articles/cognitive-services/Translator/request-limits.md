@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d04677362e0ba3ace59d55ede9bd6241f17130e9
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514652"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269227"
 ---
 # <a name="request-limits-for-translator-text"></a>Limity żądań dla tekstu w usłudze Translator
 
@@ -38,7 +38,7 @@ Następujące tabeli listy tablicy znaków i element limity dla każdej operacji
 
 ## <a name="character-limits-per-hour"></a>Limity znak na godzinę
 
-Limit znaków na godzinę jest oparty na warstwę subskrypcji tekstu usługi Translator. Limit godzinny powinny być wykorzystywane równomiernie w ciągu godziny. Jeśli dotrzeć do lub przekroczenie limitów lub wysłać zbyt duży, jaka część kwoty w krótkim czasie, prawdopodobnie otrzymasz poza limit przydziału odpowiedzi.
+Limit znaków na godzinę jest oparty na warstwę subskrypcji tekstu usługi Translator. Limit godzinny powinny być wykorzystywane równomiernie w ciągu godziny. Jeśli dotrzeć do lub przekroczenie limitów lub wysłać zbyt duży, jaka część kwoty w krótkim czasie, prawdopodobnie otrzymasz poza limit przydziału odpowiedzi. Nie ma ograniczeń na współbieżnych żądań.
 
 | Warstwa | Maksymalna liczba znaków |
 |------|-----------------|

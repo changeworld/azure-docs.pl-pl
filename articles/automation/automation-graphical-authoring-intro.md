@@ -44,7 +44,7 @@ Formanty w dolnej części kanwy umożliwia powiększać i pomniejszać.
 
 W kontrolce biblioteka jest wybierania [działania](#activities) do dodania do elementu runbook. Możesz je dodać do kanwy, w którym połączenia do innych działań. Zawiera cztery sekcje opisane w poniższej tabeli:
 
-| `Section` | Opis |
+| `Section` | Description |
 |:--- |:--- |
 | Polecenia cmdlet |Obejmuje wszystkie polecenia cmdlet, których można użyć w elemencie runbook. Polecenia cmdlet są uporządkowane według modułu. Dostępne są wszystkie moduły, które zostały zainstalowane na koncie usługi automation. |
 | Elementy Runbook |Zawiera elementy runbook na Twoim koncie usługi automation. Tych elementów runbook można dodać do kanwy, aby służyć jako podrzędne elementy runbook. Wyświetlane są tylko elementy runbook typu core jako elementu runbook, edytowany; Graficzny tylko opartego na programie PowerShell elementów runbook w elementach runbook są pokazane, gdy dla elementów runbook graficzny przepływ pracy programu PowerShell są wyświetlane tylko przepływu pracy — opartego na programie PowerShell elementów runbook. |
@@ -109,7 +109,7 @@ W poniższym przykładzie polecenie cmdlet Get-AzureRmVM ma trzy zestawów param
 
 Po określeniu wartości dla parametru, wybierasz źródła danych, aby określić, jak określona jest wartość. Źródła danych, które są dostępne dla określonego parametru jest zależna od prawidłowe wartości dla tego parametru. Na przykład wartość Null nie jest dostępną opcją parametru, która nie zezwala na wartości null.
 
-| Źródło danych | Opis |
+| Źródło danych | Description |
 |:--- |:--- |
 | Stała wartość |Wpisz wartość dla parametru. To jest dostępna tylko dla następujących typów danych: Int32, Int64, String, Boolean, DateTime, przełącz się. |
 | Wyjście działania |Dane wyjściowe z działania, które poprzedza bieżącego działania w przepływie pracy. Wszystkie prawidłowe działania są wymienione. Wybierz tylko działania Użyj jego danych wyjściowych dla wartości parametru. Jeśli obiekt z wieloma właściwościami wyjściem działania, można wpisać nazwę właściwości po wybraniu działania. |
@@ -139,7 +139,7 @@ Warunku ponawiania prób to wyrażenie programu PowerShell, które jest oceniane
 
 Warunku ponawiania, można użyć zmiennej o nazwie $RetryData zapewniający dostęp do informacji na temat działania liczbę ponownych prób. Ta zmienna ma właściwości w poniższej tabeli:
 
-| Właściwość | Opis |
+| Właściwość | Description |
 |:--- |:--- |
 | NumberOfAttempts |Liczba przypadków, które zostało uruchomione. |
 | Output |Dane wyjściowe z ostatniego uruchomienia działania. |
@@ -191,7 +191,7 @@ Utwórz łącze między dwoma działaniami, wybierając działanie źródłowego
 
 Wybierz link, aby skonfigurować jej właściwości w bloku konfiguracji. Obejmuje to typ łącza, który jest opisany w poniższej tabeli:
 
-| Typ łącza | Opis |
+| Typ łącza | Description |
 |:--- |:--- |
 | Potok |Działanie docelowe jest uruchamiane raz dla każdego obiektu danych wyjściowych działania źródłowego. Działanie docelowe nie jest uruchamiany, jeśli działania źródłowego nie powoduje żadnych danych wyjściowych. Dane wyjściowe działania źródłowego jest dostępna jako obiekt. |
 | Sekwencja |Działanie docelowe jest uruchamiane tylko jeden raz. Tablica obiektów otrzymuje z działania źródłowego. Dane wyjściowe działania źródłowego jest dostępna jako tablica obiektów. |
@@ -322,7 +322,7 @@ Spowoduje to otwarcie **danych wejściowych i wyjściowych** formant, który umo
 
 Każdy parametr wejściowy jest zdefiniowana za pomocą właściwości w poniższej tabeli:
 
-| Właściwość | Opis |
+| Właściwość | Description |
 |:--- |:--- |
 | Name |Unikatowa nazwa parametru. To może zawierać tylko alfanumeryczne znaki numeryczne i nie może zawierać spacji. |
 | Description |Opcjonalny opis dla parametru wejściowego. |

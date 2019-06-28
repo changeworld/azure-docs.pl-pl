@@ -614,7 +614,7 @@ Obiekt danych ma następujące właściwości:
 | trackType | string | Typ ścieżki (Audio / wideo). |
 | trackName | string | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
 | bitrate | integer | Szybkość transmisji bitów toru. |
-| incomingBitrate | integer | Obliczony transmisji bitów, oparte na fragmenty danych pochodzących z kodera. |
+| IncomingBitrate | integer | Obliczony transmisji bitów, oparte na fragmenty danych pochodzących z kodera. |
 | lastTimestamp | string | Sygnatura czasowa najnowsze odebrane dla ścieżki w ciągu ostatnich 20 sekund. |
 | timescale | string | Skala czasu, w którym są wyrażane sygnatur czasowych. |
 | overlapCount | integer | Liczba fragmentów danych miały nakładających się sygnatur czasowych w ciągu ostatnich 20 sekund. |

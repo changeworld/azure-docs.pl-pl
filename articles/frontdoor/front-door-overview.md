@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/29/2018
+ms.date: 04/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 2d4c93b7ef707f5b09bc2f5f93d56c50c1bb3458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 20cfcea4a8b58c1c01a7c710163b7320ff96d65c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736330"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330837"
 ---
 # <a name="what-is-azure-front-door-service"></a>Co to jest usługa Azure Front Door Service?
 Usługa Azure Front Door Service umożliwia definiowanie i monitorowanie globalnego routingu ruchu internetowego oraz zarządzanie nim przez optymalizowanie pod kątem uzyskiwania najlepszej wydajności i natychmiastowego przechodzenia w tryb failover w celu zapewnienia wysokiej dostępności. Dzięki usłudze Front Door można przekształcić globalne usługi dla konsumentów (wiele regionów) i aplikacji w niezawodne, spersonalizowane, nowoczesne, wysokowydajne aplikacje, interfejsy API i zawartość, które dotrą do odbiorców globalnych za pomocą platformy Azure.
@@ -60,6 +60,13 @@ Usługa Front Door obsługuje również protokół HTTPS w przypadku nazw domen 
 Usługa Azure Front Door umożliwia tworzenie reguł zapory aplikacji internetowej w celu kontrolowania dostępu, aby chronić obciążenia protokołów HTTP/HTTPS przed wykorzystywaniem w oparciu o adresy IP, kod kraju i parametry protokołu HTTP klientów. Ponadto usługa Front Door umożliwia również tworzenie reguł ograniczania szybkości, które pomagają zapobiegać ruchowi złośliwych botów. 
 
 Sama platforma Front Door jest chroniona przez usługę [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) w warstwie Podstawowa. W celu zastosowania dalszej ochrony przez atakami w warstwie sieci (protokół TCP/UDP) za pośrednictwem funkcji automatycznego dostrajania i ograniczania ryzyka można włączyć usługę Azure DDoS Protection w warstwie Standardowa w sieciach wirtualnych i zasobach zabezpieczeń. Usługa Front Door to zwrotny serwer proxy warstwy 7, który umożliwia tylko przechodzenie ruchu internetowego do zapleczy i domyślnie blokuje inne typy ruchu.
+
+## <a name="url-redirection"></a>Przekierowywanie adresu URL
+Za pomocą wypychania silne branży na obsłudze tylko bezpiecznej komunikacji aplikacje sieci web powinny automatycznie przekierować cały ruch HTTP do HTTPS. Gwarantuje to, że cała komunikacja między użytkownikami a aplikacji odbywa się za pośrednictwem ścieżką zaszyfrowane. 
+
+Tradycyjnie właścicieli aplikacji zostały omówione to wymaganie, tworząc dedykowana usługa, którego jedynym celem było Przekierowywanie żądań otrzymywanych od protokołu HTTP do HTTPS. Usługa Azure drzwiami frontowymi obsługuje możliwość przekierowywania ruchu z protokołu HTTP do HTTPS. Upraszcza to konfigurację aplikacji, optymalizuje wykorzystanie zasobów i umożliwia obsługę nowych scenariuszy przekierowania, w tym przekierowania globalnego i opartego na ścieżce. Przekierowywanie adresu URL usługi Azure Service drzwiami frontowymi jest ograniczony do protokołu HTTP do przekierowania protokołu HTTPS samodzielnie, ale także do przekierowania do innej nazwy hosta, przekierowywanie do innej ścieżki lub nawet przekierowywania do nowego ciągu zapytania w adresie URL.
+
+Aby uzyskać więcej informacji, zobacz [przekierowywanie ruchu](front-door-url-redirect.md) z usługą Azure Service wejściu.
 
 ## <a name="url-rewrite"></a>Regenerowanie adresów URL
 Usługa Front Door obsługuje [ponowne zapisywanie adresów URL](front-door-url-rewrite.md), pozwalając na konfigurowanie opcjonalnej niestandardowej ścieżki przekazywania dalej podczas konstruowania żądania do przekazania do zaplecza. Dodatkowo usługa Front Door umożliwia konfigurowanie nagłówka hosta do wysłania w przypadku przekazywania żądania dalej do zaplecza.
