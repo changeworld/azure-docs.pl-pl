@@ -72,24 +72,24 @@ Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wsz
 | Pole | Obowiązkowy | Ustalony zbiór wartości | Uwagi |
 |:--- |:--- |:--- |:--- |
 | status |Tak |Aktywna, rozwiązane |Stan alertu na podstawie warunków można ustawić. |
-| Kontekst |Tak | |Kontekst alertu. |
+| context |Tak | |Kontekst alertu. |
 | timestamp |Tak | |Czas wyzwolenia alertu. |
 | id |Tak | |Każda reguła alertu ma unikatowy identyfikator. |
 | name |Tak | |Nazwa alertu. |
 | description |Tak | |Opis alertu. |
 | conditionType |Tak |Metryki i zdarzenia |Obsługiwane są dwa typy alertów: metryk i zdarzeń. Alerty metryki są oparte na warunku metryki. Alerty zdarzeń są oparte na zdarzenie w dzienniku aktywności. Użyj tej wartości, aby sprawdzić, czy alert jest na podstawie metryki lub zdarzenia. |
 | condition |Tak | |Na podstawie określonych pól do sprawdzenia **conditionType** wartości. |
-| MetricName |Dla alertów dotyczących metryk | |Nazwa metryki, który definiuje reguły monitoruje. |
+| metricName |Dla alertów dotyczących metryk | |Nazwa metryki, który definiuje reguły monitoruje. |
 | metricUnit |Dla alertów dotyczących metryk |BytesPerSecond, Count, CountPerSecond, procent, w sekundach, w bajtach |Jednostka dozwolone w metrykę. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Dla alertów dotyczących metryk | |Wartość rzeczywista metryk, który spowodował wygenerowanie alertu. |
-| Próg |Dla alertów dotyczących metryk | |Wartość progowa, w którym aktywowano alert. |
+| threshold |Dla alertów dotyczących metryk | |Wartość progowa, w którym aktywowano alert. |
 | windowSize |Dla alertów dotyczących metryk | |Czas, który jest używany do monitorowania działania alertu, w oparciu o wartość progową. Wartość musi być od 5 minut do 1 dnia. Wartość musi być w formacie czasu trwania ISO 8601. |
 | timeAggregation |Dla alertów dotyczących metryk |Średnia, ostatnie, maksimum, Minimum, None, łączna liczba |Jak można łączyć dane, które są zbierane wraz z upływem czasu. Wartość domyślna to średnia. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
 | operator |Dla alertów dotyczących metryk | |Operator, który służy do porównywania bieżących danych metryki z wartością progową zestawu. |
 | subscriptionId |Tak | |Identyfikator subskrypcji platformy Azure. |
 | resourceGroupName |Tak | |Nazwa grupy zasobów dla odpowiedniego zasobu. |
 | resourceName |Tak | |Nazwa zasobu zasobu. |
-| Typ zasobu |Tak | |Typ zasobu zasobu. |
+| resourceType |Tak | |Typ zasobu zasobu. |
 | resourceId |Tak | |Identyfikator zasobu zasobu. |
 | resourceRegion |Tak | |Region lub lokalizacji zasobu. |
 | portalLink |Tak | |Bezpośredni link do strony Podsumowanie zasobu portalu. |
