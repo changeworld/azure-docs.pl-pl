@@ -1,5 +1,5 @@
 ---
-title: Bezpieczny dostęp do usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Bezpieczny dostęp do usługi Azure Logic Apps
 description: Dodawanie zabezpieczeń w usłudze Azure Logic Apps, w tym wyzwalaczy, danych wejściowych i danych wyjściowych, parametrów i innych usług
 services: logic-apps
 ms.service: logic-apps
@@ -7,15 +7,14 @@ ms.suite: integration
 author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
-ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65369e5747f17c0e420d5775f1c5704cac9ca21b
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995699"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341089"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Bezpieczny dostęp w usłudze Azure Logic Apps
 
@@ -156,9 +155,9 @@ Aby dodać więcej protokoły autoryzacji do aplikacji logiki, należy rozważy�
 
 Aby umożliwić tylko określonych użytkowników lub grup uruchamianie operacji na aplikację logiki, można ograniczyć dostęp do zadań, takich jak zarządzanie, edytowania i wyświetlania. Usługa Logic Apps obsługuje [based kontroli dostępu (RBAC)](../role-based-access-control/role-assignments-portal.md), które można dostosować lub przypisać role wbudowane do elementów członkowskich w ramach subskrypcji, na przykład:
 
-* [Współautor aplikacji logiki](../role-based-access-control/built-in-roles.md#logic-app-contributor): Użytkownicy mogą przeglądać, edytować i zaktualizuj swoją aplikację logiki. 
+* [Współautor aplikacji logiki](../role-based-access-control/built-in-roles.md#logic-app-contributor): Umożliwia zarządzanie aplikacjami logiki, ale nie można zmienić dostępu do nich.
 
-* [Operator aplikacji logiki](../role-based-access-control/built-in-roles.md#logic-app-operator): Użytkownicy mogą wyświetlić swoją aplikację logiki i historii uruchamiania i włączyć lub wyłączyć aplikację logiki. Tej roli nie można edytować ani zaktualizować aplikacji logiki.
+* [Operator aplikacji logiki](../role-based-access-control/built-in-roles.md#logic-app-operator): Pozwala na odczyt, włączanie i wyłączanie aplikacji logiki, ale nie można edytować ani aktualizować.
 
 Aby uniemożliwić innym użytkownikom zmienianie lub usuwanie aplikacji logiki, można użyć [blokady zasobu platformy Azure](../azure-resource-manager/resource-group-lock-resources.md). Ta funkcja pomaga uniemożliwić innym użytkownikom zmienianie lub usuwanie zasobów w środowisku produkcyjnym.
 

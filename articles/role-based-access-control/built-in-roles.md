@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 0789ab981590ac1b7531c1f05d85d7ada3a9f56b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 5a63053cc7fa1c1c86669ce2cea56b68f1a7b4b6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295268"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341504"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -98,8 +98,8 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Twórca laboratorium](#lab-creator) | Umożliwia tworzenie, zarządzanie i usuwania zarządzanych laboratoriów w ramach konta usługi Azure Lab. |
 | [Współautor usługi log Analytics](#log-analytics-contributor) | Współautor usługi log Analytics może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia do maszyn wirtualnych; Odczytywanie kluczy kont magazynu, aby można było skonfigurować zbieranie dzienników z usługi Azure Storage; Tworzenie i konfigurowanie kont usługi Automation; Dodawanie rozwiązań. i konfigurowanie diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
 | [Czytelnik usługi log Analytics](#log-analytics-reader) | Czytelnik usługi log Analytics można wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
-| [Współautor aplikacji logiki](#logic-app-contributor) | Umożliwia zarządzanie aplikacjami logiki, lecz nie dostęp do nich. |
-| [Operator aplikacji logiki](#logic-app-operator) | Umożliwia odczytywanie, włączanie i wyłączanie aplikacji logiki. |
+| [Współautor aplikacji logiki](#logic-app-contributor) | Umożliwia zarządzanie aplikacjami logiki, ale nie zmieniono dostęp do nich. |
+| [Operator aplikacji logiki](#logic-app-operator) | Umożliwia odczyt, włączone i wyłączanie aplikacji logiki, ale nie edytować lub je zaktualizować. |
 | [Rola Operator aplikacji zarządzanej](#managed-application-operator-role) | Umożliwia odczytywanie i wykonywać akcje na zasobach zarządzanej aplikacji |
 | [Czytnik zarządzanych aplikacji](#managed-applications-reader) | Umożliwia odczyt zasobów zarządzanych aplikacji i żądanie dostępu JIT. |
 | [Współautor tożsamości zarządzanych](#managed-identity-contributor) | Tworzenie, Odczyt, aktualizowanie i usuwanie tożsamości przypisanych przez użytkownika |
@@ -1620,7 +1620,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie aplikacjami logiki, lecz nie dostęp do nich. |
+> | **Opis** | Umożliwia zarządzanie aplikacjami logiki, ale nie zmieniono dostęp do nich. |
 > | **Identyfikator** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
@@ -1654,7 +1654,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia odczytywanie, włączanie i wyłączanie aplikacji logiki. |
+> | **Opis** | Umożliwia odczyt, włączone i wyłączanie aplikacji logiki, ale nie edytować lub je zaktualizować. |
 > | **Identyfikator** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |

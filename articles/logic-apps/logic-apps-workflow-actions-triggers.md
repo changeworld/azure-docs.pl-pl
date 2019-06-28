@@ -56,7 +56,7 @@ Wyzwalacze mają te elementy najwyższego poziomu, mimo że niektóre są opcjon
 | <*trigger-type*> | String | Typ wyzwalacza, takiego jak "Http" lub "ApiConnection" | 
 | <*trigger-inputs*> | Obiekt JSON | Dane wejściowe, które określają zachowanie tego wyzwalacza | 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*number-of-time-units*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -137,7 +137,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 | <*method-type*> | String | Metoda HTTP do komunikacji z zarządzany interfejs API: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" | 
 | <*Operacja interfejsu API*> | String | Operacja wywołania interfejsu API | 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*number-of-time-units*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -308,7 +308,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 | <*method-type*> | String | Metoda HTTP na potrzeby sondowania określony punkt końcowy: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" | 
 | <*endpoint-URL*> | String | HTTP lub HTTPS URL punktu końcowego, sondowanie <p>Maksymalny rozmiar ciągu: 2 KB | 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*number-of-time-units*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -497,7 +497,7 @@ Ten wyzwalacz jest uruchamiany na podstawie na harmonogramie cyklu określonego 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*number-of-time-units*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*

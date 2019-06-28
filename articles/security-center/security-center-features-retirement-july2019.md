@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d364da9506124a35c724209c68ff72db4243e80
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952140"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341573"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcje usługi Security Center (lipiec 2019 r.)
 
@@ -114,16 +114,18 @@ Zachęcamy do korzystania z funkcji mapy alerty utworzone w usłudze Security Ce
 
 ## Niestandardowe reguły alertów (wersja zapoznawcza)<a name="menu_customalerts"></a>
 
-Jesteśmy [wycofanie niestandardowe alerty środowisko](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) na 30 czerwca 2019 r, ponieważ Trwa wycofywanie jej podstawowej infrastruktury. W międzyczasie możesz edytować istniejące niestandardowe reguły alertów, ale nie ma możliwość dodawania nowych. Firma Microsoft zaleca, aby włączyć [Azure przez wartownika](https://azure.microsoft.com/services/azure-sentinel/) automatycznie migracji istniejących alertów i utworzyć nowe. Alternatywnie można utworzyć alerty za pomocą alertów dzienników usługi Azure Monitor.
+Jesteśmy [wycofanie niestandardowe alerty środowisko](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) na 30 czerwca 2019 r, ponieważ Trwa wycofywanie jej podstawowej infrastruktury. W międzyczasie możesz edytować istniejące niestandardowe reguły alertów, ale nie ma możliwość dodawania nowych. Po dacie wycofania wszelkie niestandardowe alerty zdefiniowane nie zostały zastosowane i alertów zabezpieczeń na podstawie tych reguł nie będą generowane.
+Firma Microsoft zaleca, aby włączyć [Azure przez wartownika](https://azure.microsoft.com/services/azure-sentinel/) i ponownie utwórz swoje niestandardowe alerty. Alternatywnie można utworzyć alerty za pomocą alertów dzienników usługi Azure Monitor.
 
-Aby zachować istniejące alerty i przeprowadzić ich migrację do platformy Azure przez wartownika:
+Aby zachować istniejące alerty i je utworzyć za pomocą platformy Azure przez wartownika:
 
-1. Otwórz przez wartownika platformy Azure, a następnie wybierz obszar roboczy, w którym przechowywane są Twoje niestandardowe alerty.
-1. Wybierz **Analytics** z menu, aby automatycznie migrować alerty.
+1. [Otwórz Azure przez wartownika](https://portal.azure.com/#create/Microsoft.ASI/preview) i wybierz obszar roboczy, w którym przechowywane są Twoje niestandardowe alerty
+1. Wybierz **Analytics** z menu
+1. Postępuj zgodnie z instrukcjami w następującym [samouczek](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) o tym, jak tworzyć niestandardowe alerty w Azure przez wartownika
+
+Jeśli nie jesteś zainteresowany przy użyciu platformy Azure przez wartownika, można utworzyć alerty za pomocą alertów dzienników usługi Azure Monitor. Aby uzyskać instrukcje, zobacz [tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) i [alerty dzienników w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ![Niestandardowe alerty][13]
-
-Jeśli użytkownik nie chce się na platformie Azure przez wartownika, firma Microsoft zachęca do tworzenie alertów za pomocą alertów dzienników usługi Azure Monitor. Aby uzyskać instrukcje, zobacz [tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) i [alerty dzienników w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 Aby uzyskać więcej informacji na temat wycofania niestandardowe alerty, zobacz [niestandardowe reguły alertów w usłudze Azure Security Center (wersja zapoznawcza)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab7165c3315e3a53f90900be8eaf1b9c614a2b07
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192618"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341127"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Niestandardowe reguły alertów w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument zawiera informacje pomocne podczas konfigurowania niestandardowych reguł alertów w usłudze Azure Security Center.
@@ -29,17 +29,15 @@ Ten dokument zawiera informacje pomocne podczas konfigurowania niestandardowych 
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Wycofanie alertu na niestandardowe reguły w usłudze Azure Security Center
 
-Środowisko niestandardowe alerty zostanie wycofana 30 czerwca 2019 r ze względu na wycofanie podstawowej infrastruktury, opiera się na. W przedziale czasu, aż do zakończenia obsługi użytkownicy będą mogli edytować istniejące niestandardowych reguł alertów, ale nie będzie można dodawać nowe.
+Środowisko niestandardowe alerty zostanie wycofana 30 czerwca 2019 r ze względu na wycofanie podstawowej infrastruktury, opiera się na. W przedziale czasu, aż do zakończenia obsługi użytkownicy będą mogli edytować istniejące niestandardowych reguł alertów, ale nie będzie można dodawać nowe. Po zakończeniu obsługi wszelkie niestandardowe alerty, definicja nie zostanie zastosowana i alerty zabezpieczeń, w oparciu o te reguły niestandardowe alerty nie będą generowane.
 Użytkownicy zalecana jest albo:
-- Włącz [Azure przez wartownika](https://azure.microsoft.com/services/azure-sentinel/) dołączanie jednym kliknięciem do automatycznie migrować istniejące alerty i tworzenie nowych
+- Włącz [Azure przez wartownika](https://azure.microsoft.com/services/azure-sentinel/) i używać wbudowanych [analytics](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) funkcji ponownego tworzenia własnych reguł alertów
 - Ponownie Utwórz alerty za pomocą alertów dzienników usługi Azure Monitor
                                      
-Aby zachować istniejące alerty i przeprowadzić ich migrację do platformy Azure przez wartownika, [uruchamianie platformy Azure przez wartownika](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako pierwszy krok wybierz obszar roboczy, w którym przechowywane są Twoje niestandardowe alerty, a następnie wybierz element menu "Analytics", aby automatycznie migrować alerty.
+Aby zachować istniejące alerty i przeprowadzić ich migrację do platformy Azure przez wartownika, [uruchamianie platformy Azure przez wartownika](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako pierwszy krok wybierz obszar roboczy, w którym przechowywane są Twoje niestandardowe alerty, a następnie wybierz element menu "Analytics", aby skonfigurować reguły niestandardowe alerty. Odwiedź stronę [dokumentacji](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) Aby uzyskać dodatkowe informacje.
 
 > [!NOTE]
-> Migracja niestandardowe alerty do platformy Azure przez wartownika jest przeprowadzenia jednorazowej migracji wszystkich alertów niestandardowych w wybranym obszarze roboczym. Po zakończeniu migracji niestandardowe alerty dla wybranego obszaru roboczego nie będą dostępne za pośrednictwem usługi Azure Security Center.
->
-> Niestandardowe alerty przy użyciu [wyszukiwania](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) lub [złożenia](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) instrukcji zapytania nie są obsługiwane w przez wartownika platformy Azure i nie zostaną zmigrowane. Edytuj te alerty, przed przeprowadzeniem migracji.
+> Niestandardowe alerty przy użyciu [wyszukiwania](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) lub [złożenia](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) instrukcji zapytania nie są obsługiwane w przez wartownika platformy Azure. Edytuj te alerty, przed przeprowadzeniem migracji.
 
 Aby ponownie utworzyć alerty za pomocą alertów dzienników usługi Azure Monitor, zobacz: [Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) instrukcje dotyczące sposobu tworzenia alertów dzienników. Aby uzyskać ogólne omówienie alertów dzienników w usłudze Azure Monitor, kliknij [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 

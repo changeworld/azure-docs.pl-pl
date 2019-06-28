@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30ebfec88182684f8e852808e978a51854389898
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073416"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341614"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji do dostępu do obiektów blob i kolejek
 
@@ -121,7 +121,7 @@ Następnie jawnie przypisać **Współautor danych obiektu Blob magazynu** roli 
 
 Gdy aplikacja uzyskuje dostęp do usługi Azure Storage, tak dalej w imieniu użytkownika, co oznacza, że zasoby obiektów blob lub kolejki są dostępne przy użyciu uprawnień użytkownika, który jest zalogowany. Aby wypróbować ten przykład kodu, musisz mieć aplikacji sieci web, który monituje użytkownika o zalogowanie się przy użyciu tożsamości usługi Azure AD. Możesz utworzyć własne lub za pomocą aplikacji przykładowej, obsługiwane przez firmę Microsoft.
 
-Ukończone przykładowej aplikacji sieci web, który uzyskuje token i używa jej do utworzenia obiektu blob w usłudze Azure Storage jest dostępna na [GitHub](http://aka.ms/aadstorage). Recenzowanie i uruchamianie przykładowych ukończone mogą być pomocne w zrozumieniu przykłady kodu. Instrukcje dotyczące sposobu uruchamiania przykładu ukończone, zobacz sekcję pod tytułem [widoku i uruchom przykładowy ukończone](#view-and-run-the-completed-sample).
+Ukończone przykładowej aplikacji sieci web, który uzyskuje token i używa jej do utworzenia obiektu blob w usłudze Azure Storage jest dostępna na [GitHub](https://aka.ms/aadstorage). Recenzowanie i uruchamianie przykładowych ukończone mogą być pomocne w zrozumieniu przykłady kodu. Instrukcje dotyczące sposobu uruchamiania przykładu ukończone, zobacz sekcję pod tytułem [widoku i uruchom przykładowy ukończone](#view-and-run-the-completed-sample).
 
 #### <a name="add-references-and-using-statements"></a>Dodaj odwołania i przy użyciu instrukcji  
 
@@ -235,7 +235,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>Wyświetlanie i uruchamianie aplikacji przykładowej ukończone
 
-Uruchom przykładową aplikację, najpierw sklonuj lub Pobierz go z [GitHub](http://aka.ms/aadstorage). Następnie należy zaktualizować aplikację, zgodnie z opisem w poniższych sekcjach.
+Uruchom przykładową aplikację, najpierw sklonuj lub Pobierz go z [GitHub](https://aka.ms/aadstorage). Następnie należy zaktualizować aplikację, zgodnie z opisem w poniższych sekcjach.
 
 ### <a name="provide-values-in-the-settings-file"></a>Podaj wartości w pliku ustawień
 

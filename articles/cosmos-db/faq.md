@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 47b1d9720a23c1dbfdee8c2e4cba95ff998a4cc0
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 89c04a55138d57fd2ff37a96f2bc92b12d1780d9
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137736"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341237"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -159,11 +159,11 @@ Można utworzyć przy użyciu jednego z użytkownikami i uprawnieniami [zestawam
 
 ### <a name="does-the-sql-api-support-sql"></a>Interfejs API SQL obsługuje SQL?
 
-Język zapytań SQL, które są obsługiwane przez konta interfejsu API SQL jest rozszerzonym podzbiorem funkcji zapytań, który jest obsługiwany przez program SQL Server. Język zapytań SQL usługi Azure Cosmos DB zapewnia rozbudowane operatorów relacyjnych i hierarchicznych oraz rozszerzalność funkcje oparte na języku JavaScript, zdefiniowane przez użytkownika (UDF). Gramatyka JSON umożliwia modelowanie dokumentów JSON jako drzewa z etykietami węzły, które są używane zarówno przez techniki automatycznego indeksowania usługi Azure Cosmos DB i dialekt zapytań SQL usługi Azure Cosmos DB. Aby dowiedzieć się, jak przy użyciu Gramatyka języka SQL, zobacz [zapytania SQL] [ query] artykułu.
+Język zapytań SQL, które są obsługiwane przez konta interfejsu API SQL jest rozszerzonym podzbiorem funkcji zapytań, który jest obsługiwany przez program SQL Server. Język zapytań SQL usługi Azure Cosmos DB zapewnia rozbudowane operatorów relacyjnych i hierarchicznych oraz rozszerzalność funkcje oparte na języku JavaScript, zdefiniowane przez użytkownika (UDF). Gramatyka JSON umożliwia modelowanie dokumentów JSON jako drzewa z etykietami węzły, które są używane zarówno przez techniki automatycznego indeksowania usługi Azure Cosmos DB i dialekt zapytań SQL usługi Azure Cosmos DB. Aby dowiedzieć się, jak przy użyciu Gramatyka języka SQL, zobacz [zapytania SQL][query] artykułu.
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Interfejs API SQL obsługuje funkcje agregacji SQL?
 
-Interfejs API SQL obsługuje agregację o małych opóźnieniach w dowolnej skali za pomocą funkcji agregujących `COUNT`, `MIN`, `MAX`, `AVG`, i `SUM` przy użyciu Gramatyka języka SQL. Aby uzyskać więcej informacji, zobacz [funkcje](how-to-sql-query.md#Aggregates).
+Interfejs API SQL obsługuje agregację o małych opóźnieniach w dowolnej skali za pomocą funkcji agregujących `COUNT`, `MIN`, `MAX`, `AVG`, i `SUM` przy użyciu Gramatyka języka SQL. Aby uzyskać więcej informacji, zobacz [funkcje](sql-query-aggregates.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak interfejs API SQL zapewnia współbieżność?
 

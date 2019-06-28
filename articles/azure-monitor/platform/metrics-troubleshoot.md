@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: cff1bbefc3c54f7f9c02c646bd9eef528fe28c73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939566"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341978"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Rozwiązywanie problemów z wykresów metryk
 
@@ -73,7 +73,7 @@ Kolekcja **systemu operacyjnego gościa** metryki wymaga konfigurowania rozszerz
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Komunikat "Błąd podczas pobierania danych" na pulpicie nawigacyjnym
 
-Ten problem jest typowa, gdy pulpit nawigacyjny został utworzony za pomocą metryk, który później przestarzały i usunięte z systemu Azure. Aby sprawdzić, czy jest wymagane, otwórz **metryki** kartę zasobów i wyboru dostępne metryki w selektorze metryki. Jeśli Metryka nie jest wyświetlany, metryki zostało usunięte z systemu Azure. Gdy metryka jest przestarzała, są lepiej nową metrykę, udostępniająca podobne perspektywą kondycja zasobu.
+Ten problem może się zdarzyć, gdy pulpit nawigacyjny został utworzony za pomocą metryk, który później przestarzały i usunięte z systemu Azure. Aby sprawdzić, czy jest wymagane, otwórz **metryki** kartę zasobów i wyboru dostępne metryki w selektorze metryki. Jeśli Metryka nie jest wyświetlany, metryki zostało usunięte z systemu Azure. Gdy metryka jest przestarzała, są lepiej nową metrykę, udostępniająca podobne perspektywą kondycja zasobu.
 
 **Rozwiązanie:** Zaktualizuj kafelka niepowodzenie pobrania alternatywnych metryk dla wykresu na pulpicie nawigacyjnym. Możesz [Przejrzyj listę rzeczy, dostępne metryki dla usług platformy Azure](metrics-supported.md).
 

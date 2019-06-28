@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4b6dd31d620603b765fd33494f399f97915af3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: be8048c05217fbdb2956e2a67be4eb3e17abed10
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784917"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341401"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Szybki start: Wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji platformy UWP
 
@@ -45,7 +45,7 @@ Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak ap
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
+> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
 > Aby zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
@@ -53,14 +53,14 @@ Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak ap
 > 1. Wybierz **nowej rejestracji**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `UWP-App-calling-MsGraph`.
->      - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)**.
+>      - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)** .
 >      - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 > 1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
 > 1. Rozwiń **pulpitu i urządzenia** sekcji.  (Jeśli **pulpitu i urządzenia** nie jest widoczny, kliknij najpierw na górnym banerze, aby wyświetlić podgląd proces uwierzytelniania)
 > 1. W obszarze **identyfikator URI przekierowania** zaznacz **Dodaj identyfikator URI**.  Type **urn:ietf:wg:oauth:2.0:oob**.
 > 1. Wybierz pozycję **Zapisz**.
 
-> [!div renderon="portal" class="sxs-lookup alert alert-info"]
+> [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurowanie aplikacji
 > Aby kod przykładowy z tego samouczka działał, należy dodać identyfikator URI przekierowania w formacie **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]

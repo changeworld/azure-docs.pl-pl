@@ -7,25 +7,25 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: 1b5d18a3dfd1181fd06b58fd58f496457e24b58e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50a2161be4ee70f7ae5c8baa3816eb9f9943a5d2
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956375"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67358018"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Użyj wewnętrznego modułu równoważenia obciążenia za pomocą usługi Azure Kubernetes Service (AKS)
 
 Aby ograniczyć dostęp do aplikacji w usłudze Azure Kubernetes Service (AKS), można tworzyć i używać wewnętrznego modułu równoważenia obciążenia. Wewnętrzny moduł równoważenia obciążenia sprawia, że usługa Kubernetes jest dostępny tylko dla aplikacji działających w tej samej sieci wirtualnej jako klaster Kubernetes. Ten artykuł pokazuje, jak tworzenie i używanie wewnętrznego modułu równoważenia obciążenia za pomocą usługi Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Równoważenie obciążenia Azure jest dostępna w dwóch jednostkach SKU - *podstawowe* i *standardowa*. Obecnie obsługuje AKS *podstawowe* jednostki SKU. Jeśli chcesz użyć *standardowa* jednostki SKU, możesz użyć nadrzędnego [aparatu aks][aks-engine]. Aby uzyskać więcej informacji, zobacz [porównania jednostki SKU modułu równoważenia obciążenia platformy Azure][azure-lb-comparison].
+> Równoważenie obciążenia Azure jest dostępna w dwóch jednostkach SKU - *podstawowe* i *standardowa*. Domyślnie *podstawowe* jednostki SKU jest używany, gdy manifestu usługi służy do tworzenia modułu równoważenia obciążenia w usłudze AKS. Aby uzyskać więcej informacji, zobacz [porównania jednostki SKU modułu równoważenia obciążenia platformy Azure][azure-lb-comparison].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
+W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 
 Jednostki usługi Klaster AKS wymaga zgody na zarządzanie zasobami sieciowymi, jeśli używasz istniejącej podsieci lub grupy zasobów. Ogólnie rzecz biorąc, Przypisz *Współautor sieci* roli do jednostki usługi dla delegowanego zasobów. Aby uzyskać więcej informacji na temat uprawnień, zobacz [AKS delegowanego dostępu do innych zasobów platformy Azure][aks-sp].
 
@@ -48,7 +48,7 @@ spec:
     app: internal-app
 ```
 
-Wdrażanie przy użyciu modułu równoważenia obciążenia wewnętrznego [kubectl zastosować] kubectl-Zastosuj] i określ nazwę manifeście YAML:
+Wdrażanie przy użyciu modułu równoważenia obciążenia wewnętrznego [zastosować kubectl][kubectl-apply] i określ nazwę manifeście YAML:
 
 ```console
 kubectl apply -f internal-lb.yaml
@@ -96,7 +96,7 @@ internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 
 ## <a name="use-private-networks"></a>Użyj sieci prywatnej
 
-Podczas tworzenia klastra usługi AKS, można określić ustawienia zaawansowane sieci. Takie podejście umożliwia wdrażanie klastra w istniejącej sieci wirtualnej platformy Azure i podsieci. Jest jeden scenariusz wdrażania klastra usługi AKS w taki sposób, w sieci prywatnej, która jest podłączony do sieci w środowisku lokalnym i uruchamiania usługi jest dostępna tylko wewnętrznie. Aby uzyskać więcej informacji, zobacz Konfigurowanie własnych podsieciach sieci wirtualnej za pomocą [wtyczki Kubenet] [ use-kubenet] lub [wtyczki Azure CNI][advanced-networking].
+Podczas tworzenia klastra usługi AKS, można określić ustawienia zaawansowane sieci. Takie podejście umożliwia wdrażanie klastra w istniejącej sieci wirtualnej platformy Azure i podsieci. Jest jeden scenariusz wdrażania klastra usługi AKS w taki sposób, w sieci prywatnej, która jest podłączony do sieci w środowisku lokalnym i uruchamiania usługi jest dostępna tylko wewnętrznie. Aby uzyskać więcej informacji, zobacz Konfigurowanie własnych podsieciach sieci wirtualnej za pomocą [wtyczki Kubenet][use-kubenet] or [Azure CNI][advanced-networking].
 
 Brak zmian do poprzednie kroki są wymagane do wdrożenia wewnętrznego modułu równoważenia obciążenia w klastrze usługi AKS, który korzysta z sieci prywatnej. Moduł równoważenia obciążenia jest tworzony w tej samej grupie zasobów klastra usługi AKS, ale nawiązanie połączenia z prywatną sieć wirtualną i podsieć, jak pokazano w poniższym przykładzie:
 
@@ -108,7 +108,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Może być konieczne przyznanie jednostka usługi dla klastra usługi AKS *Współautor sieci* roli do grupy zasobów, w których są wdrażane zasoby sieci wirtualnej platformy Azure. Wyświetl jednostki usługi przy użyciu [az aks show][az-aks-show], takich jak `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Aby utworzyć przypisanie roli, należy użyć [utworzenia przypisania roli az] [ az-role-assignment-create] polecenia.
+> Może być konieczne przyznanie jednostka usługi dla klastra usługi AKS *Współautor sieci* roli do grupy zasobów, w których są wdrażane zasoby sieci wirtualnej platformy Azure. Wyświetl jednostki usługi przy użyciu [az aks show][az-aks-show], takich jak `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Aby utworzyć przypisanie roli, należy użyć [utworzenia przypisania roli az][az-role-assignment-create] polecenia.
 
 ## <a name="specify-a-different-subnet"></a>Wybierz inną podsieć
 
@@ -141,6 +141,7 @@ Możesz także bezpośrednio usunąć usługa z dowolnym zasobem platformy Kuber
 Dowiedz się więcej na temat usługi Kubernetes na [Kubernetes usługi dokumentacji][kubernetes-services].
 
 <!-- LINKS - External -->
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [aks-engine]: https://github.com/Azure/aks-engine
 

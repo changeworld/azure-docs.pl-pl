@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: korzystanie z interfejsu API strumieni platformy Apache Kafka — Azure HDInsight '
-description: Informacje o sposobie korzystania z interfejsu API strumieni platformy Apache Kafka w usłudze HDInsight. Ten interfejs API umożliwia przetwarzanie strumieni między tematami na platformie Kafka.
+description: Samouczek — Dowiedz się, jak za pomocą usług API strumieni platformy Kafka Apache Kafka w HDInsight. Ten interfejs API umożliwia przetwarzanie strumieni między tematami na platformie Kafka.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/02/2019
-ms.openlocfilehash: 9425af0f39d14287b49fe06a81172281feb24e83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d76ac8cc1673f1df8981a543321d34aa57cd0896
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715970"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295480"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Samouczek: interfejs API strumieni platformy Kafka
 

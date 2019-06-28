@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/26/2019
-ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/18/2019
+ms.openlocfilehash: 826944fd3713f5cc3e99f20cb140055bfdb11a14
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387455"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341429"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i korzystanie z aktywnej replikacji geograficznej
 
@@ -100,9 +100,6 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
   Każdą bazę pomocniczą można oddzielnie uczestniczyć w puli elastycznej lub nie być w dowolnej elastycznej puli w ogóle. Wybór puli dla każdej dodatkowej bazy danych jest oddzielony i nie zależą od konfiguracji innych pomocniczej bazy danych (czy podstawowym lub pomocniczym). Każda pula elastyczna jest zawarty w jednym regionie, w związku z tym wiele dodatkowych baz danych w tej samej topologii nigdy nie mogą udostępniać puli elastycznej.
 
-- **Można konfigurować obliczeń rozmiaru pomocniczej bazy danych**
-
-  Podstawowych i pomocniczych baz danych muszą mieć taką samą warstwę usług. Również zdecydowanie zaleca się że tej dodatkowej bazy danych jest tworzony przy użyciu tych samych obliczeń rozmiaru (jednostki Dtu lub rdzeni wirtualnych) jako podstawowy. Pomocniczego z niższym rozmiaru obliczeń jest narażony na opóźnienie replikacji zwiększona, potencjalne niedostępności lokacji dodatkowej, a w konsekwencji na ryzyko utraty danych znacznej po przejściu w tryb failover. Dzięki temu usługa opublikowane cel punktu odzyskiwania = nie można zagwarantować 5 s. Inne ryzyko to, że po włączeniu trybu failover aplikacji będzie mieć wpływ na wydajność ze względu na brak moc obliczeniową nową podstawową, dopóki nie zostanie uaktualniony na większy rozmiar obliczeń. Czas uaktualniania zależy od rozmiaru bazy danych. Ponadto obecnie takie uaktualnienia wymaga podstawowych i pomocniczych baz danych są w trybie online i, w związku z tym, nie można ukończyć zminimalizowaniu wpływu awarii. Jeśli zdecydujesz się utworzyć pomocniczej z niższym rozmiaru obliczeń, wykres wartość procentową operacji We/Wy dziennika w witrynie Azure portal oferuje dobry sposób, aby oszacować rozmiar minimalny obliczeń pomocniczy, który jest wymagany do obsługi obciążenia replikacji. Na przykład, jeśli podstawowej bazy danych jest P6 (1000 jednostek DTU) i jego procent we/wy dziennika to 50% pomocnicza musi wynosić co najmniej P4 (500 jednostek DTU). Możesz również pobrać dane we/wy dziennika przy użyciu [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) bazy danych widoków.  Aby uzyskać więcej informacji na temat rozmiarów wystąpień obliczeniowych bazy danych SQL, zobacz [co to są warstwy usługi bazy danych SQL](sql-database-purchase-models.md).
 
 - **Kontrolowane przez użytkownika trybu failover i powrotu po awarii**
 
@@ -112,7 +109,19 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 Firma Microsoft zaleca używanie [IP reguły zapory na poziomie bazy danych](sql-database-firewall-configure.md) replikowanej geograficznie baz danych, dzięki czemu te reguły mogą być replikowane z bazą danych, aby upewnić się, wszystkie pomocnicze bazy danych ma te same reguły zapory IP jako podstawowy. To podejście eliminuje potrzebę stosowania klientów ręcznego konfigurowania i konserwacji reguły zapory na serwerach hostujących zarówno podstawowych i pomocniczych baz danych. Podobnie za pomocą [zawartych użytkowników bazy danych](sql-database-manage-logins.md) danych zapewnia podstawowych i pomocniczych baz danych zawsze mają taki sam dostęp do poświadczeń użytkownika, więc podczas pracy w trybie failover nie ma żadnych przerw w działaniu z powodu niezgodności z logowania i hasła. Z dodatkiem [usługi Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), klienci mogą zarządzać dostępem użytkowników do podstawowych i pomocniczych baz danych i całkowicie eliminując potrzebę zarządzania poświadczeniami w bazach danych.
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>Uaktualnianie lub zmiany na starszą wersję podstawową bazą danych
+## <a name="configuring-secondary-database"></a>Konfigurowanie dodatkowej bazy danych
+
+Podstawowych i pomocniczych baz danych muszą mieć taką samą warstwę usług. Również zdecydowanie zaleca się że tej dodatkowej bazy danych jest tworzony przy użyciu tych samych obliczeń rozmiaru (jednostki Dtu lub rdzeni wirtualnych) jako podstawowy. Jeśli podstawowa baza danych występuje obciążenie wysokie obciążenia podczas zapisu, pomocniczego z niższym rozmiaru obliczeń nie można na bieżąco z nim. Spowoduje to, że opóźnienie ponawiania na niedostępność pomocniczego, potencjalne i w związku z tym na ryzyko utraty danych znacznej po przejściu w tryb failover. Dzięki temu usługa opublikowane cel punktu odzyskiwania = nie można zagwarantować 5 s. On również może spowodować błędy lub wstrzymujących działanie innych obciążeń na serwerze podstawowym. 
+
+Niejednoznacznego określenia imbalanced dodatkowej konfiguracji jest, że po włączeniu trybu failover aplikacji będzie to spowodować obniżenie wydajności ze względu na moc obliczeniową niewystarczające nową podstawową. Będzie konieczne uaktualnienie do wyższej obliczeń do niezbędnego poziomu, nie będzie możliwe do momentu zminimalizowaniu wpływu awarii. 
+
+> [!NOTE]
+> Obecnie uaktualnianie podstawowej bazy danych nie jest możliwe, jeśli pomocnicza jest w trybie offline. 
+
+
+Jeśli zdecydujesz się utworzyć pomocniczej z niższym rozmiaru obliczeń, wykres wartość procentową operacji We/Wy dziennika w witrynie Azure portal oferuje dobry sposób, aby oszacować rozmiar minimalny obliczeń pomocniczy, który jest wymagany do obsługi obciążenia replikacji. Na przykład, jeśli podstawowej bazy danych jest P6 (1000 jednostek DTU) i jego procent we/wy dziennika to 50% pomocnicza musi wynosić co najmniej P4 (500 jednostek DTU). Możesz również pobrać dane we/wy dziennika przy użyciu [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) bazy danych widoków.  Aby uzyskać więcej informacji na temat rozmiarów wystąpień obliczeniowych bazy danych SQL, zobacz [co to są warstwy usługi bazy danych SQL](sql-database-purchase-models.md).
+
+## <a name="upgrading-or-downgrading-primary-database"></a>Uaktualnianie lub zmiany na starszą wersję podstawowej bazy danych
 
 Można uaktualnić lub obniżyć podstawowej bazy danych do rozmiaru obliczeniowej (w ramach tej samej warstwy usługi, nie między ogólnego przeznaczenia i krytyczne dla działania firmy) bez odłączania wszystkie pomocnicze bazy danych. Podczas uaktualniania, zalecamy najpierw uaktualnić pomocnicze bazy danych, a następnie uaktualnić podstawowy. Przed obniżeniem, odwracanie kolejności: najpierw obniżenia poziomu podstawowego, a następnie obniżyć wersję usługi dodatkowej. Po uaktualnieniu lub starszą wersję bazy danych do warstwy usług różnych tego zalecenia zostanie wymuszona.
 
@@ -134,7 +143,7 @@ Ze względu na duże opóźnienia sieci rozległej ciągłych kopii używa mecha
 
 ## <a name="monitoring-geo-replication-lag"></a>Monitorowanie opóźnienia replikacji geograficznej
 
-Aby monitorować opóźnieniem względem celu punktu odzyskiwania, użyj *replication_lag_sec* kolumny [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) w głównej bazie danych. Pokazuje opóźnienie w sekundach między transakcje zatwierdzone na serwerze podstawowym i utrzymywana na pomocniczym. Na przykład Jeśli wartość opóźnienia wynosi 1 s, oznacza to, jeśli podstawowy jest wpływ awaria w tej chwili i pracy awaryjnej jest intiated, 1 sekundę najnowszych transtions nie zostaną zapisane. 
+Aby monitorować opóźnieniem względem celu punktu odzyskiwania, użyj *replication_lag_sec* kolumny [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) w głównej bazie danych. Pokazuje opóźnienie w sekundach między transakcje zatwierdzone na serwerze podstawowym i utrzymywana na pomocniczym. Na przykład Jeśli wartość opóźnienia wynosi 1 s, oznacza to, jeśli podstawowy jest wpływ awaria w tej chwili i trybu failover jest inicjowane, 1 sekundę najnowszych przejścia nie zostaną zapisane. 
 
 Do mierzenia opóźnienie w odniesieniu do zmiany w podstawowej bazie danych, które zostały zastosowane na serwerze pomocniczym, czyli dostępne do odczytu z lokacji dodatkowej, porównaj *last_commit* czasu w pomocniczej bazie danych o tej samej wartości na serwerze podstawowym Baza danych.
 

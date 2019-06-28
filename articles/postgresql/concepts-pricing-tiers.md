@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 42f290109ca380464cb07ac9f684cdde25b8fdcd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a92017c462ef62cbfb1aa6c2613a502d1cc5ffc6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063764"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340738"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -67,7 +67,7 @@ Firma Microsoft coraz limity magazynu w warstwach naszego ogólnego przeznaczeni
 | Operacje wejścia/wyjścia | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy| 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy |
 
 > [!IMPORTANT]
-> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Japonia, część wschodnia, Korea środkowa, Australia Wschodnia.
+> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Japonia, część wschodnia, Korea środkowa, Australia Wschodnia.
 >
 >Obecnie nie obsługuje duże magazyny w wersji zapoznawczej:
 >

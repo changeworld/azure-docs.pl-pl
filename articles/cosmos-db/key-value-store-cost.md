@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a3b4886bc175311e9a0e61f3dfb99b1fe7e1a679
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236762"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310587"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Usługa Azure Cosmos DB jako wartości klucza magazynu — omówienie kosztów
 
 Usługa Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy danych do tworzenia aplikacji o wysokiej dostępności, na dużą skalę w prosty sposób. Domyślnie usługa Azure Cosmos DB automatycznie indeksuje wszystkie dane, które pozyskuje wydajnie. Umożliwia to szybkie i spójne [SQL](how-to-sql-query.md) (i [JavaScript](stored-procedures-triggers-udfs.md)) kwerendy dla każdego typu danych. 
 
-W tym artykule opisano koszt usługi Azure Cosmos DB proste zapisu oraz operacje odczytu, gdy jest ona używana jako magazyn klucz/wartość. Operacje obejmują operacje wstawiania, zastępuje, usuwa i wykonuje operację UPSERT dokumentów zapisu. Oprócz gwarantujące dostępność przez 99,99% umowa SLA dotycząca dostępności dla wszystkich kont w obrębie jednego regionu i wszystkich kont w wielu regionach za pomocą rozluźnionej spójności, a przez 99,999% dostępność do odczytu na wszystkich multiregionalne konta baz danych, gwarantowana oferty usługi Azure Cosmos DB < opóźnieniem 10 ms odczytuje i < 15 ms opóźnienia (indeksowanych) zapisuje odpowiednio na poziomie 99 percentyla. 
+W tym artykule opisano koszt usługi Azure Cosmos DB proste zapisu oraz operacje odczytu, gdy jest ona używana jako magazyn klucz/wartość. Operacje obejmują operacje wstawiania, zastępuje, usuwa i wykonuje operację UPSERT dokumentów zapisu. Oprócz gwarantujące dostępność przez 99,99% umowa SLA dotycząca dostępności dla wszystkich kont w obrębie jednego regionu i wszystkich kont w wielu regionach za pomocą rozluźnionej spójności, a przez 99,999% dostępność do odczytu na wszystkich multiregionalne konta baz danych, gwarantowana oferty usługi Azure Cosmos DB < opóźnieniem 10 ms odczytuje i dla (indeksowanych) zapisuje odpowiednio na poziomie 99 percentyla. 
 
 ## <a name="why-we-use-request-units-rus"></a>Dlaczego używamy jednostek żądań (ru)
 

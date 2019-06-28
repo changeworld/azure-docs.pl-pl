@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729923"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357038"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Rozwiązania do transferu danych okresowe
  
@@ -59,14 +59,14 @@ W poniższej tabeli podsumowano różnice w kluczowych funkcji.
 | Nakład pracy początkowej konfiguracji                          | Niski (< 30 min.)            | Średni (~ Połącz godz.) | Duży (~ dni)                                                 |
 | Format danych                                   | Obiekty BLOB platformy Azure, usługa Azure Files   | Obiekty BLOB platformy Azure, usługa Azure Files | [Obsługuje 70 łączników danych dla magazynów danych i formatów](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
 | Przetwarzanie wstępne danych                           | Nie                         | Tak, za pośrednictwem obliczeń brzegowych    | Yes                                                           |
-| Lokalna pamięć podręczna<br>(na potrzeby przechowywania danych lokalnych)    | Yes                        | Yes                      | Nie                                                            |
-| Transfer z innych chmur                    | Nie                         | Nie                       | Tak                                                           |
+| Lokalna pamięć podręczna<br>(na potrzeby przechowywania danych lokalnych)    | Tak                        | Yes                      | Nie                                                            |
+| Transfer z innych chmur                    | Nie                         | Nie                       | Yes                                                           |
 | Cennik                                       | [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Cennik](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Transferowanie danych za pomocą narzędzia AzCopy](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
-- [Więcej informacji na temat danych transferu za pomocą interfejsów API REST magazynu](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
+- [Więcej informacji na temat danych transferu za pomocą interfejsów API REST magazynu](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet).
 - Zrozumieć, jak:
     - [Transferowanie danych za pomocą bramy pola danych](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
     - [Przekształcanie danych za pomocą krawędź pola danych przed wysłaniem do usługi Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).

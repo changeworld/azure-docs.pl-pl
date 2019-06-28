@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
-ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 801516ae2cfad891098c16f8cd6e9a4c7f157a93
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61234975"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342011"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Model danych analizy dzienników dla danych usługi Azure Backup
 
@@ -50,7 +50,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące alertów powiązanych pól
 | OperationName |Text |Nazwa bieżącej operacji, na przykład Alert |
 | Category |Text |Kategoria danych diagnostycznych wypchnięte do usługi Azure Monitor dzienniki. Zawsze AzureBackupReport |
 | Resource |Text |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
-| ProtectedServerUniqueId_s |Text |Unikatowy identyfikator serwera chronionego, skojarzonych z tym alertem |
+| ProtectedContainerUniqueId_s |Text |Unikatowy identyfikator serwera chronionego, skojarzonych z tym alertem (ProtectedServerUniqueId_s była w wersji 1)|
 | VaultUniqueId_s |Text |Unikatowy identyfikator chronionego magazynu skojarzonego z alertem |
 | SourceSystem |Text |Źródłowy system aktualnych danych — Azure |
 | ResourceId |Text |Unikatowy identyfikator dla zasobu o tym, jakie dane są zbierane. Na przykład identyfikator zasobu magazynu usługi Recovery Services |
@@ -67,10 +67,12 @@ Ta tabela zawiera szczegółowe informacje o kopii zapasowej pól powiązanych e
 | --- | --- | --- |
 | EventName_s |Text |Nazwa zdarzenia. Zawsze AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Text |Unikatowy identyfikator elementu kopii zapasowej |
-| BackupItemId_s |Text |Identyfikator elementu kopii zapasowej |
+| BackupItemId_s |Text |Identyfikator elementu kopii zapasowej (jest to pole tylko dla schematu w wersji 1) |
 | BackupItemName_s |Text |Nazwa elementu kopii zapasowej |
 | BackupItemFriendlyName_s |Text |Przyjazna nazwa elementu kopii zapasowej |
 | BackupItemType_s |Text |Typ elementu kopii zapasowej, na przykład maszyna wirtualna FileFolder |
+| BackupItemProtectionState_s |Text |Stan ochrony w element kopii zapasowej |
+| BackupItemAppVersion_s |Text |Wersja aplikacji dla elementu kopii zapasowej |
 | ProtectionState_s |Text |Bieżący stan ochrony w element kopii zapasowej, na przykład chronione, ProtectionStopped |
 | ProtectionGroupName_s |Text | Nazwa grupy ochrony w element kopii zapasowej jest chroniony, SC programu DPM i serwera usługi Mab, jeśli ma to zastosowanie|
 | SecondaryBackupProtectionState_s |Text |Włączenie ochrony pomocniczej dla elementu kopii zapasowej|
@@ -103,8 +105,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia elementu kopii
 | Category |Text |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
 | OperationName |Text |To pole reprezentuje nazwę bieżącej operacji - BackupItemAssociation |
 | Resource |Text |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
-| PolicyUniqueId_g |Text |Unikatowy identyfikator zasad skojarzonych z elementu kopii zapasowej |
-| ProtectedServerUniqueId_s |Text |Unikatowy identyfikator serwera chronionego, skojarzony element kopii zapasowej |
+| ProtectedContainerUniqueId_s |Text |Unikatowy identyfikator serwera chronionego, skojarzony element kopii zapasowej (ProtectedServerUniqueId_s była w wersji 1) |
 | VaultUniqueId_s |Text |Unikatowy identyfikator magazynu zawierającego element kopii zapasowej |
 | SourceSystem |Text |Źródłowy system aktualnych danych — Azure |
 | ResourceId |Text |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services |
@@ -249,13 +250,14 @@ Ta tabela zawiera pola podstawowe informacje o kontenerach chronione. (Było Pro
 | ProtectedContainerOSType_s |Text |Typ systemu operacyjnego chronionych kontenera |
 | ProtectedContainerOSVersion_s |Text |Wersja systemu operacyjnego chronionych kontenera |
 | AgentVersion_s |Text |Numer wersji agenta kopii zapasowej lub agenta ochrony (w przypadku programu DPM SC i serwera usługi MAB) |
-| BackupManagementType_s |Text |Typ dostawcy do wykonywania kopii zapasowej na przykład IaaSVM FileFolder |
-| EntityState_s |Text |Bieżący stan obiektu chronionego serwera, na przykład, aktywne, usunięte |
+| BackupManagementType_s |Text |Typ dostawcy do wykonywania kopii zapasowej. Na przykład IaaSVM FileFolder |
+| EntityState_s |Text |Bieżący stan obiektu chronionego serwera. Na przykład aktywne, usunięte |
 | ProtectedContainerFriendlyName_s |Text |Przyjazna nazwa chronionego serwera |
 | ProtectedContainerName_s |Text |Nazwa chronionego kontenera |
-| ProtectedContainerWorkloadType_s |Text |Typ kontenera chronione kopii zapasowej na przykład IaaSVMContainer |
+| ProtectedContainerWorkloadType_s |Text |Typ kontenera chronione kopii zapasowej. Na przykład IaaSVMContainer |
 | ProtectedContainerLocation_s |Text |Czy chroniony kontenera jest znajdujących się lokalnie lub na platformie Azure |
 | ProtectedContainerType_s |Text |Czy chroniony kontenera jest na serwerze lub kontener |
+| ProtectedContainerProtectionState_s’  |Text |Stan ochrony chronionego kontenera |
 
 ### <a name="storage"></a>Magazyn
 
@@ -263,7 +265,7 @@ Ta tabela zawiera szczegółowe informacje o polach związane z magazynowaniem.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| CloudStorageInBytes_s |Liczba dziesiętna |Magazyn kopii zapasowych w chmurze używany przez kopie zapasowe, które są obliczane na podstawie najnowszej wartości |
+| CloudStorageInBytes_s |Liczba dziesiętna |Magazyn kopii zapasowych w chmurze używany przez kopie zapasowe, które są obliczane na podstawie najnowszej wartości (jest to pole tylko dla schematu w wersji 1)|
 | ProtectedInstances_s |Liczba dziesiętna |Liczba chronionych wystąpień służące do obliczania magazynu frontonu w rozliczeń, obliczonej na podstawie wartości najnowsze |
 | EventName_s |Text |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
 | SchemaVersion_s |Text |To pole wskazuje bieżącą wersję schematu, jest **V2** |
@@ -280,6 +282,10 @@ Ta tabela zawiera szczegółowe informacje o polach związane z magazynowaniem.
 | ResourceGroup |Text |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
 | ResourceProvider |Text |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
 | ResourceType |Text |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
+| StorageUniqueId_s |Text |Unikatowy identyfikator używany do identyfikowania jednostki magazynu |
+| StorageType_s |Text |Typ magazynu, na przykład chmura, woluminu, dysku |
+| StorageName_s |Text |Nazwa jednostki magazynu, na przykład E:\ |
+| StorageTotalSizeInGBs_s |Text |Łączny rozmiar magazynu w GB, używane przez jednostki magazynu|
 
 ### <a name="storageassociation"></a>StorageAssociation
 
@@ -342,7 +348,7 @@ Ta tabela określa workload(s), który wolumin jest skojarzona z.
 
 ### <a name="protectedinstance"></a>ProtectedInstance
 
-Ta tabela zawiera pola pokrewne podstawowe chronionych wystąpień.
+Ta tabela zawiera pola podstawowe związane z wystąpień chronionych.
 
 | Pole | Typ danych |Odpowiednie wersje | Opis |
 | --- | --- | --- | --- |

@@ -76,7 +76,7 @@ Obejmują [zapisane wyszukiwania](../../azure-monitor/log-query/log-query-overvi
 
 Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższej tabeli.
 
-| Właściwość | Opis |
+| Właściwość | description |
 |:--- |:--- |
 | category | Kategoria dla zapisanego wyszukiwania.  Wszystkie zapisane wyszukiwania, w tym samym rozwiązaniu często współużytkują jednej kategorii, dzięki czemu są one zgrupowane razem w konsoli. |
 | displayName | Nazwa do wyświetlenia dla zapisanego wyszukiwania w portalu. |
@@ -121,7 +121,7 @@ Zapisane wyszukiwanie może mieć co najmniej jeden harmonogram z każdym harmon
     }
 Właściwości harmonogramu zasoby są opisane w poniższej tabeli.
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | enabled       | Yes | Określa, czy alert jest włączony podczas jego tworzenia. |
 | interval      | Tak | Jak często zapytanie działa w ciągu kilku minut. |
@@ -174,18 +174,18 @@ Akcje alertu mają następującą strukturę. W tym wspólnych zmiennych i param
 
 Właściwości dla akcji alertu zasoby są opisane w poniższych tabelach.
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | type | Tak | Typ akcji.  Jest to **Alert** dla akcje alertu. |
 | name | Tak | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguły alertu. |
 | description | Nie | Opcjonalny opis alertu. |
-| severity | Tak | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
+| Severity | Tak | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
 
 
 #### <a name="threshold"></a>Próg
 Ta sekcja jest wymagana. Definiuje właściwości próg alertu.
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większa niż<br>lt = mniej niż** |
 | Wartość | Yes | Wartość do porównania wyników. |
@@ -196,7 +196,7 @@ Ta sekcja jest opcjonalna. Uwzględnij go dla alertu pomiaru metryki.
 > [!NOTE]
 > Alerty metryki miary są obecnie dostępne w publicznej wersji zapoznawczej.
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | TriggerCondition | Tak | Określa, czy próg całkowitą liczbę naruszeń lub kolejne naruszenia spośród następujących wartości:<br><br>**Łączna liczba<br>kolejnych** |
 | Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większa niż<br>lt = mniej niż** |
@@ -206,7 +206,7 @@ Ta sekcja jest opcjonalna. Uwzględnij go dla alertu pomiaru metryki.
 #### <a name="throttling"></a>Ograniczanie przepływności
 Ta sekcja jest opcjonalna. W tej sekcji należy uwzględnić, jeśli chcesz pominąć alertów z tej samej reguły dla niektórych ilość czasu, po utworzeniu alertu.
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | DurationInMinutes | Tak, jeżeli ograniczania elementu uwzględnione | Liczba minut do pomijania alertów po utworzeniu jednego z tych samych reguły alertu. |
 
@@ -215,7 +215,7 @@ Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechani
 
 Dla użytkownika, który został rozszerzony alerty na platformie Azure — harmonogram powinno zostać udostępnionych szczegółów grupy akcji przekazywane wraz z wartości progowej, aby można było utworzyć alert. Szczegóły wiadomości e-mail, adresy URL elementu Webhook, szczegóły elementu Runbook usługi Automation i innych działań, muszą być zdefiniowane w stronie grupy akcji przed tworzenia alertu; można utworzyć [grupy akcji z usługi Azure Monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyj [grupy akcji — szablon zasobu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | AzNsNotification | Tak | Identyfikator zasobu do grupy akcji platformy Azure do skojarzenia z alertem pobierania odpowiednie działania, po spełnieniu kryteriów alertu. |
 | CustomEmailSubject | Nie | Wiersz tematu niestandardowego wiadomości e-mail wysłanych na wszystkie adresy określone w grupie skojarzone z akcją. |
@@ -231,7 +231,7 @@ Każdy harmonogram ma jeden **alertu** akcji. Definiuje szczegóły alertu, i op
 ##### <a name="emailnotification"></a>EmailNotification
  Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby alert ma wysyłać wiadomości e-mail do co najmniej jednego adresata.
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | Recipients | Yes | Rozdzielana przecinkami lista adresów e-mail, aby wysłać powiadomienia, gdy jest tworzony alert, takie jak w poniższym przykładzie.<br><br>**["recipient1\@contoso.com", "recipient2\@contoso.com"]** |
 | Subject | Yes | Wiersz tematu wiadomości e-mail. |
@@ -240,7 +240,7 @@ Każdy harmonogram ma jeden **alertu** akcji. Definiuje szczegóły alertu, i op
 ##### <a name="remediation"></a>Korygowanie
 Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby element runbook można uruchomić w odpowiedzi na alert. 
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | RunbookName | Tak | Nazwa elementu runbook, aby rozpocząć. |
 | WebhookUri | Tak | Identyfikator URI elementu webhook dla elementu runbook. |
@@ -269,7 +269,7 @@ Jeśli alert będzie wywołanie elementu webhook, a następnie będzie musiała 
     }
 W poniższych tabelach opisano właściwości zasobów akcji elementu Webhook.
 
-| Nazwa elementu | Wymagane | Opis |
+| Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | type | Tak | Typ akcji. Jest to **elementu Webhook** przypadku akcji elementów webhook. |
 | name | Tak | Nazwa wyświetlana dla akcji. To nie jest wyświetlana w konsoli. |

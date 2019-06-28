@@ -7,19 +7,19 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 6/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 43dd8be998e0f8f3b5a2b783c6a01d5b5ef3da12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54ff94cad3034e3679e57e5596ca13f3430cbbb3
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506920"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340556"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Omówienie monitorowania zadań usługi Stream Analytics oraz monitorowanie zapytań
 
 ## <a name="introduction-the-monitor-page"></a>Wprowadzenie: Na stronie monitora
-Azure portal, zarówno powierzchni kluczowe metryki wydajności, który może służyć do monitorowania i rozwiązywania problemów wydajność zapytań i zadania. Aby wyświetlić te metryki, przejdź do zadania usługi Stream Analytics, interesujące Cię metryki i wyświetlić **monitorowanie** sekcji na stronie Przegląd.  
+Azure powierzchnie portalu kluczowe metryki wydajności, który może służyć do monitorowania i rozwiązywania problemów wydajność zapytań i zadania. Aby wyświetlić te metryki, przejdź do zadania usługi Stream Analytics, interesujące Cię metryki i wyświetlić **monitorowanie** sekcji na stronie Przegląd.  
 
 ![Link monitorowania zadania Stream Analytics](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
@@ -68,4 +68,3 @@ Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Ana
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

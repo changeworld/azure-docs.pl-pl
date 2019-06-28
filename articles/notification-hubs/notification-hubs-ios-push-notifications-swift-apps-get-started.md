@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: miparker
-ms.openlocfilehash: a4773ddd8114659118e89cfee57e73ddb39ff6b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c35044918876b2c7710e26f6b868bc1096c2f538
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116666"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340401"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Samouczek: Powiadomienia wypychane do aplikacji Swift iOS, korzystających z interfejsu API REST dla centrów powiadomień
 
@@ -87,12 +87,12 @@ W tej sekcji utworzysz aplikację dla systemu iOS, która połączy się z Centr
 
 1. Aktualizacja **devsettings.plist** do obejmują następujące pozycje konfiguracji przy użyciu wartości z Centrum powiadomień, aprowizowana przez Ciebie:
 
-   | Klucz                            | Typ                     | Wartość                     |
+   | Klucz                            | Type                     | Value                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | String                   | <hubKey>                  |
-   | notificationHubKeyName         | String                   | <hubKeyName>              |
-   | notificationHubName            | String                   | <hubName>                 |
-   | notificationHubNamespace       | String                   | <hubNamespace>            |
+   | notificationHubKey             | String                   | \<hubKey>                  |
+   | notificationHubKeyName         | String                   | \<hubKeyName>              |
+   | notificationHubName            | String                   | \<hubName>                 |
+   | notificationHubNamespace       | String                   | \<hubNamespace>            |
 
    Wymagane wartości można znaleźć, przechodząc do zasób Centrum powiadomień w witrynie Azure portal. W szczególności **notificationHubName** i **notificationHubNamespace** wartości znajdują się w prawym górnym rogu **Essentials** podsumowania w ramach **Przegląd** strony.
 
@@ -408,10 +408,10 @@ Wykonaj następujące kroki, aby wywołać **instalacje** interfejsu API:
 
 1. Skonfiguruj nagłówki żądania w następujący sposób:
 
-   | Klucz           | Wartość            |
+   | Klucz           | Value            |
    | ------------- | ---------------- |
    | Content-Type  | application/json |
-   | Autoryzacja | <sasToken>       |
+   | Autoryzacja | \<sasToken>       |
    | x-ms-version  | 2015-01          |
 
 1. Wybierz **kodu** przycisk, który pojawia się w prawym górnym rogu w obszarze **Zapisz** przycisku. Żądanie powinno wyglądać podobnie do poniższego przykładu:
@@ -656,10 +656,10 @@ Możesz wysłać powiadomienia za pośrednictwem [interfejsu API REST](/rest/api
 
 1. Skonfiguruj nagłówki żądania w następujący sposób:
 
-   | Klucz                            | Wartość                          |
+   | Klucz                            | Value                          |
    | ------------------------------ | ------------------------------ |
    | Content-Type                   | application/json;charset=utf-8 |
-   | Autoryzacja                  | <sasToken>                     |
+   | Autoryzacja                  | \<sasToken>                     |
    | ServiceBusNotification-Format  | Szablon                       |
    | `Tags`                           | "12345"                        |
 

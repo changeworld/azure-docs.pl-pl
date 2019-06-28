@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6d95e4a0a7aeedef2fc7e635d2e49ea68c3ba0ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b74238ee49fe0d96d218f1800a33a9d60badc6d5
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992046"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341710"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak używać kolejek usługi Service Bus za pomocą języka Python
 
@@ -45,13 +45,13 @@ W tym samouczku dowiesz się, jak tworzyć aplikacje języka Python do wysyłani
 from azure.servicebus import ServiceBusClient
 ```
 
-Poniższy kod tworzy **ServiceBusClient** obiektu. Zastąp `mynamespace`, `sharedaccesskeyname`, i `sharedaccesskey` z przestrzeni nazw, nazwę klucza (SAS) sygnatury dostępu współdzielonego i wartość.
+Poniższy kod tworzy **ServiceBusClient** obiektu. Zastąp `<CONNECTION STRING>` z Twojej usługi Service Bus. parametry połączenia.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
 ```
 
-Wartości dla nazwy klucza sygnatury dostępu Współdzielonego i wartość znajduje się w [witryny Azure portal] [ Azure portal] informacje o połączeniu, lub w programie Visual Studio **właściwości** okienko podczas wybierania usługi Przestrzeń nazw magistrali w Eksploratorze serwera (jak pokazano w poprzedniej sekcji).
+Wartości dla nazwy klucza sygnatury dostępu Współdzielonego i wartość znajduje się w [witryny Azure portal][Azure portal] informacje o połączeniu, lub w programie Visual Studio **właściwości** okienko po wybraniu przestrzeni nazw usługi Service Bus w Eksploratorze serwera (jak pokazano w poprzedniej sekcji).
 
 ```python
 sb_client.create_queue("taskqueue")

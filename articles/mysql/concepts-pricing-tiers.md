@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 20fb352e65a570063d9a0f55667db073f8a4ee27
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 726da603b5f583c85f4b7c4262c6e97f565a3678
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062414"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339925"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Usługa Azure Database for MySQL warstw cenowych
 
@@ -67,7 +67,7 @@ Firma Microsoft coraz limity magazynu w warstwach naszego ogólnego przeznaczeni
 | Operacje wejścia/wyjścia | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy| 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy |
 
 > [!IMPORTANT]
-> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Japonia, część wschodnia, Korea środkowa, Australia Wschodnia.
+> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Japonia, część wschodnia, Korea środkowa, Australia Wschodnia.
 >
 > Obecnie nie obsługuje duże magazyny w wersji zapoznawczej:
 >

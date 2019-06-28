@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8206bff765b59ddc5d6be2388145bf51e1000241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45e27b37ca7a1718674914fbe9203b7dc64475b1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256876"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342104"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB w zastosowaniach społecznościowych
 
@@ -96,7 +96,7 @@ Tworzenie źródła danych jest to kwestia tworzenie dokumentów, które mogą z
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Strumień "najnowsza" może mieć z wpisami, uporządkowane według daty utworzenia. Lub masz "najbardziej aktywnych" przesyłanie strumieniowe przy użyciu tych wpisów z polubienia więcej w ciągu ostatnich 24 godzin. Można nawet implementować niestandardowe strumienia dla każdego użytkownika, w oparciu o logikę, takich jak obserwatorów i zainteresowania. Nadal będzie lista wpisów. Jest kwestią dotyczącą tworzenia tych list, ale wydajność odczytu pozostaje swobodnego. Po nabyciu jedną z tych list wydać jedno zapytanie do usługi Cosmos DB przy użyciu [w operatorze](how-to-sql-query.md#WhereClause) można pobrać strony wpisów w danym momencie.
+Strumień "najnowsza" może mieć z wpisami, uporządkowane według daty utworzenia. Lub masz "najbardziej aktywnych" przesyłanie strumieniowe przy użyciu tych wpisów z polubienia więcej w ciągu ostatnich 24 godzin. Można nawet implementować niestandardowe strumienia dla każdego użytkownika, w oparciu o logikę, takich jak obserwatorów i zainteresowania. Nadal będzie lista wpisów. Jest kwestią dotyczącą tworzenia tych list, ale wydajność odczytu pozostaje swobodnego. Po nabyciu jedną z tych list wydać jedno zapytanie do usługi Cosmos DB przy użyciu [IN — słowo kluczowe](sql-query-keywords.md#in) można pobrać strony wpisów w danym momencie.
 
 Strumienie źródła danych mogą być zbudowane przy użyciu [usług aplikacji platformy Azure](https://azure.microsoft.com/services/app-service/) procesów w tle: [Zadania Webjob](../app-service/webjobs-create.md). Po utworzeniu wpisu przetwarzania w tle mogą być wyzwalane za pomocą [usługi Azure Storage](https://azure.microsoft.com/services/storage/) [kolejek](../storage/queues/storage-dotnet-how-to-use-queues.md) i wyzwalane za pomocą zadań Webjob [zestawu Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), wdrożenia Opublikuj propagacji wewnątrz strumieni w oparciu o logikę niestandardowego.
 

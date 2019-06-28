@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cda3f99a263e8eef13ee2e8d8e6453eda0f4cb6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922440"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341174"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch za pomocą usługi Active Directory
 
-Usługa Azure Batch obsługuje uwierzytelnianie przy użyciu [usługi Azure Active Directory] [ aad_about] (Azure AD). Usługa Azure AD jest katalog oparte na chmurze z wieloma dzierżawami firmy Microsoft i Usługa zarządzania tożsamościami. Azure sam używa usługi Azure AD do uwierzytelniania swoich klientów, Administratorzy usługi i użytkowników w organizacji.
+Usługa Azure Batch obsługuje uwierzytelnianie przy użyciu [usługi Azure Active Directory][aad_about] (Azure AD). Usługa Azure AD jest katalog oparte na chmurze z wieloma dzierżawami firmy Microsoft i Usługa zarządzania tożsamościami. Azure sam używa usługi Azure AD do uwierzytelniania swoich klientów, Administratorzy usługi i użytkowników w organizacji.
 
 Korzystając z uwierzytelniania usługi Azure AD z usługą Azure Batch, można uwierzytelniać się w jeden z dwóch sposobów:
 
@@ -64,7 +64,7 @@ Użyj **punkt końcowy zasobu usługi Azure Batch** do uzyskania tokenu na potrz
 
 ## <a name="register-your-application-with-a-tenant"></a>Zarejestruj swoją aplikację z dzierżawą
 
-Pierwszym krokiem przy użyciu usługi Azure AD do uwierzytelniania jest zarejestrowanie aplikacji w dzierżawie usługi Azure AD. Rejestrowanie aplikacji umożliwia wywoływanie Azure [Active Directory Authentication Library] [ aad_adal] (ADAL) w kodzie. Biblioteki ADAL zapewnia interfejs API do uwierzytelniania za pomocą usługi Azure AD z poziomu aplikacji. Rejestrowanie aplikacji jest wymagana czy planujesz używać zintegrowanego uwierzytelniania lub ta jednostka usługi.
+Pierwszym krokiem przy użyciu usługi Azure AD do uwierzytelniania jest zarejestrowanie aplikacji w dzierżawie usługi Azure AD. Rejestrowanie aplikacji umożliwia wywoływanie Azure [Active Directory Authentication Library][aad_adal] (ADAL) w kodzie. Biblioteki ADAL zapewnia interfejs API do uwierzytelniania za pomocą usługi Azure AD z poziomu aplikacji. Rejestrowanie aplikacji jest wymagana czy planujesz używać zintegrowanego uwierzytelniania lub ta jednostka usługi.
 
 Możesz zarejestrować swoją aplikację, należy podać informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator aplikacji (nazywane również *identyfikator klienta*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze aplikacji, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
@@ -324,31 +324,31 @@ from azure.common.credentials import ServicePrincipalCredentials
 Korzystając z nazwy głównej usługi, należy podać identyfikator dzierżawy. Aby pobrać identyfikator dzierżawy, wykonaj czynności opisane w temacie [uzyskanie Identyfikatora dzierżawy usługi Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
 
 ```python
-TENANT_ID = "<tenant-id>";
+TENANT_ID = "<tenant-id>"
 ```
 
 Odwołanie do punktu końcowego zasobu usługi Batch:  
 
 ```python
-RESOURCE = "https://batch.core.windows.net/";
+RESOURCE = "https://batch.core.windows.net/"
 ```
 
 Odwołać się do konta usługi Batch:
 
 ```python
-BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com"
 ```
 
 Określ identyfikator aplikacji (identyfikator klienta) na potrzeby aplikacji. Identyfikator aplikacji jest dostępna z rejestracji aplikacji w witrynie Azure portal:
 
 ```python
-CLIENT_ID = "<application-id>";
+CLIENT_ID = "<application-id>"
 ```
 
 Określ klucz tajny, który został skopiowany z witryny Azure portal:
 
 ```python
-SECRET = "<secret-key>";
+SECRET = "<secret-key>"
 ```
 
 Tworzenie **ServicePrincipalCredentials** obiektu:

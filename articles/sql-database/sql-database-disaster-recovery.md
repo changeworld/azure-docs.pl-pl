@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 00fa1128df03befda8b15be2d7f2c527f65f9973
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075816"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341077"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie bazy danych SQL Azure lub trybu failover do dodatkowej
 
@@ -34,7 +34,7 @@ Aby dowiedzieć się więcej na temat ciągłość działania — scenariusze i 
 > Jeśli używasz strefowo nadmiarowych baz danych Premium lub krytyczne dla działania firmy lub pul jest zautomatyzowany proces odzyskiwania, a pozostała część tego materiału nie ma zastosowania.
 
 > [!NOTE]
-> Podstawowych i pomocniczych baz danych muszą mieć taką samą warstwę usług. Zalecane jest również zdecydowanie, czy pomocniczej bazy danych został utworzony przy użyciu tych samych obliczeń rozmiaru (jednostki Dtu lub rdzeni wirtualnych) jako podstawowy. Aby uzyskać więcej informacji, zobacz [uaktualnianie, lub obniżenie jako podstawowej bazy danych](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database).
+> Podstawowych i pomocniczych baz danych muszą mieć taką samą warstwę usług. Zalecane jest również zdecydowanie, czy pomocniczej bazy danych został utworzony przy użyciu tych samych obliczeń rozmiaru (jednostki Dtu lub rdzeni wirtualnych) jako podstawowy. Aby uzyskać więcej informacji, zobacz [uaktualnianie, lub obniżenie jako podstawowej bazy danych](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
 
 > [!NOTE]
 > Użyj jednej lub kilku grup trybu failover można zarządzać trybem failover wielu baz danych.

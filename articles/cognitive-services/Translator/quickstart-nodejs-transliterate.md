@@ -3,19 +3,19 @@ title: 'Szybki start: Transliteracja tekstu, Node.js — interfejs API tłumacze
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak transliterować (konwertować) tekst z jednego skryptu na inny przy użyciu środowiska Node.js i interfejsu API REST tłumaczenia tekstu w usłudze Translator. W tym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: a76e2c386e9c82b70a7945b4670d60caf9856036
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 1d9d6f062a155ce2296967bbb408ea2c81838fd3
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515119"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357949"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do transliterowania tekstu z użyciem środowiska Node.js
 

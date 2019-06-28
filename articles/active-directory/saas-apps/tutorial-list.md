@@ -17,12 +17,12 @@ ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d26dffa005ac4bf8df0ecc0cee2c570960a38d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49a87346d76bbf1502a073f4bcb4d11eb659929d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239991"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67358152"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory
 
@@ -46,7 +46,7 @@ Aby znaleźć więcej samouczków, użyj spisu treści po lewej stronie.
 
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
 | :--- | :--- | :--- |
-| ![logo](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS) konsoli](amazon-web-service-tutorial.md)| [Usługi Amazon Web Services (AWS) Konsola — Inicjowanie obsługi administracyjnej roli](amazon-web-service-tutorial.md#configure-azure-ad-single-sign-on) |
+| ![logo](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS) konsoli](amazon-web-service-tutorial.md)| [Usługi Amazon Web Services (AWS) Konsola — Inicjowanie obsługi administracyjnej roli](amazon-web-service-tutorial.md#configure-azure-ad-sso) |
 | ![logo](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Usługa w chmurze firmę Alibaba (rola zasad logowania jednokrotnego)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![logo](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Usługa Google Cloud Platform](google-apps-tutorial.md)| [Usługa Google Cloud Platform — Inicjowanie obsługi użytkowników](google-apps-provisioning-tutorial.md) |
 | ![logo](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [SalesForce — Inicjowanie obsługi użytkowników](salesforce-provisioning-tutorial.md) |

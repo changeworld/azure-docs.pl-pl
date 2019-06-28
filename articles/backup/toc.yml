@@ -144,8 +144,6 @@
           items:
             - name: Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure
               href: backup-azure-manage-vms.md
-            - name: Monitorowanie alertów związanych z kopiami zapasowymi maszyny wirtualnej platformy Azure
-              href: backup-azure-monitor-vms.md
         - name: Przywracanie maszyn wirtualnych platformy Azure
           items:
             - name: Przywracanie maszyn wirtualnych platformy Azure w portalu

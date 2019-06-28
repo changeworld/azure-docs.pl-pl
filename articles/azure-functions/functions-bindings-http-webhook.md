@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: fb219316afa798dfda777c4d0d406d5b8cabf7f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9f43720ff36b6dfac51a1626413ff7c2e590cd0
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472368"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342257"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Usługa Azure Functions HTTP wyzwalaczy i powiązań
 
@@ -307,6 +307,7 @@ Poniżej przedstawiono kod języka Python:
 ```python
 import logging
 import azure.functions as func
+
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -792,7 +793,7 @@ Jeśli funkcja, która korzysta z wyzwalacza HTTP nie zakończyła się w ciągu
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="output"></a>Dane wyjściowe
+## <a name="output"></a>Output
 
 Użyj protokołu HTTP powiązania danych wyjściowych usługi na odpowiedź do nadawcy żądania HTTP. To powiązanie wymaga wyzwalacz HTTP i pozwala na dostosowanie odpowiedzi skojarzony z żądaniem wyzwalacza. Jeśli powiązanie danych wyjściowych HTTP nie zostanie podana, wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 Brak zawartości z pustą treść w funkcjach 2.x.
 

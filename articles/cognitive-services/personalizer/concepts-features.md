@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
+ms.topic: concept
+ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: ebe7f9307fcfa39d6cb133203a4c17243ad390c5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2353b8c735602aff0386f44cc29d2be5eb9f90c4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027138"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340885"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkcje są informacje o akcji i kontekstu
 
@@ -41,6 +41,12 @@ Personalizer nie określają, ograniczania i naprawić jakich funkcji możesz wy
 
 Personalizer obsługuje funkcje ciągu, typów liczbowych i logicznych.
 
+### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Wpływ wybranego typu funkcji usługi Machine Learning w Personalizer
+
+* **Ciągi**: Dla typów ciągów każdej kombinacji klucza i wartości tworzy nowe wagi w modelu uczenia maszynowego Personalizer. 
+* **Liczbowe**: Należy używać wartości liczbowe, gdy liczba proporcjonalnie wpływa na wynik personalizacji. To bardzo scenariusz zależnych. W uproszczony przykład np. gdy personalizowanie handlu detalicznego środowisko, NumberOfPetsOwned może być funkcją, która jest wartością liczbową, jak możesz zechcieć osobom Zwierzęta 2 lub 3 w celu wywierania wpływu na wynik personalizacji 1 pet występują dwa razy lub w trzy razy tyle. Funkcje, które są oparte na jednostkach liczbowych, ale których znaczenie nie jest liniowy — takie jak wiek, temperatury lub osoby Height - najlepiej są kodowane jako ciągi i jakości funkcji zazwyczaj można zwiększyć za pomocą zakresów. Na przykład może być kodowane wiek "Wiek": "0-5", "Wiek": "6-10" itp.
+* **Wartość logiczna** wysłane o wartości "false" działanie tak, jakby nie została wysłana na wszystkich wartości.
+
 Funkcje, które nie są obecne, należy pominąć z żądania. Unikanie wysyłania funkcji z wartością null, ponieważ będzie on przetworzony jako istniejące i o wartości "null" podczas uczenia modelu.
 
 ## <a name="categorize-features-with-namespaces"></a>Kategoryzowanie funkcji, korzystając z przestrzeni nazw
@@ -64,12 +70,15 @@ Możesz nazwać przestrzenie nazw funkcji zgodne z konwencjami własne tak dług
 
 W poniższym formacie JSON `user`, `state`, i `device` to funkcja w przestrzeni nazw.
 
+Obiekty JSON może zawierać zagnieżdżone obiekty JSON i prostych wartości. Tablicę można uwzględnić tylko wtedy, gdy elementy tablicy są liczbami. 
+
 ```JSON
 {
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug"
+                "name":"Doug",
+                "latlong": [47.6, -122.1]
             }
         },
         {
@@ -115,7 +124,7 @@ Na przykład sygnatury czasowej w dół, aby drugi jest funkcją bardzo rozrzedz
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Rozwiń zestawy funkcji ekstrapolację informacje
 
-Możesz także uzyskać większą liczbą funkcji planowanie nieeksplorowanych atrybutów, które mogą być uzyskane z informacji, którą już posiadasz. Na przykład w Personalizacja listy fikcyjne filmu, jest możliwe, weekend vs weekday miały zagwarantowaną inaczej od użytkowników? Czas można rozszerzyć w taki sposób, aby mieć atrybut "weekend" lub "dzień roboczy". Czy świąt narodowych kultury dysku uwagi niektórych typów filmu? Na przykład atrybut "Halloween" przydaje się w miejscach, w których jest to stosowne. Czy jest możliwe, weather zawierającym wartość rainy ma znaczący wpływ na wybór filmu dla wielu osób? Z czasem i miejscem usługi pogody może dostarczyć, że informacje oraz możesz dodać je jako funkcja dodatkowa. 
+Możesz także uzyskać większą liczbą funkcji planowanie nieeksplorowanych atrybutów, które mogą być uzyskane z informacji, którą już posiadasz. Na przykład w Personalizacja listy fikcyjne filmu, jest możliwe, weekend vs weekday elicits inaczej od użytkowników? Czas można rozszerzyć w taki sposób, aby mieć atrybut "weekend" lub "dzień roboczy". Czy świąt narodowych kultury dysku uwagi niektórych typów filmu? Na przykład atrybut "Halloween" przydaje się w miejscach, w których jest to stosowne. Czy jest możliwe, weather zawierającym wartość rainy ma znaczący wpływ na wybór filmu dla wielu osób? Z czasem i miejscem usługi pogody może dostarczyć, że informacje oraz możesz dodać je jako funkcja dodatkowa. 
 
 #### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>Rozwiń zestawy funkcji za pomocą sztucznej inteligencji i usług cognitive services
 
@@ -190,6 +199,8 @@ W niektórych przypadkach można tylko ustalić później w logice biznesowej, j
 
 Podczas wywoływania rangę, będzie wysyłać wielu akcji do wyboru:
 
+Obiekty JSON może zawierać zagnieżdżone obiekty JSON i prostych wartości. Tablicę można uwzględnić tylko wtedy, gdy elementy tablicy są liczbami. 
+
 ```json
 {
     "actions": [
@@ -198,7 +209,8 @@ Podczas wywoływania rangę, będzie wysyłać wielu akcji do wyboru:
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "medium"
+          "spiceLevel": "medium",
+          "grams": [400,800]
         },
         {
           "nutritionLevel": 5,
@@ -211,7 +223,8 @@ Podczas wywoływania rangę, będzie wysyłać wielu akcji do wyboru:
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [150, 300, 450]
         },
         {
           "nutritionalLevel": 2
@@ -223,7 +236,8 @@ Podczas wywoływania rangę, będzie wysyłać wielu akcji do wyboru:
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [300, 600, 900]
         },
         {
           "nutritionLevel": 5
@@ -238,7 +252,8 @@ Podczas wywoływania rangę, będzie wysyłać wielu akcji do wyboru:
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "low"
+          "spiceLevel": "low",
+          "grams": [300, 600]
         },
         {
           "nutritionLevel": 8
@@ -265,6 +280,8 @@ Aplikacja jest odpowiedzialna za ładowanie informacji o kontekście z odpowiedn
 
 Kontekst jest wyrażona jako obiekt JSON, który jest wysyłany do interfejsu API ranga:
 
+Obiekty JSON może zawierać zagnieżdżone obiekty JSON i prostych wartości. Tablicę można uwzględnić tylko wtedy, gdy elementy tablicy są liczbami. 
+
 ```JSON
 {
     "contextFeatures": [
@@ -282,7 +299,9 @@ Kontekst jest wyrażona jako obiekt JSON, który jest wysyłany do interfejsu AP
         {
             "device": {
                 "mobile":true,
-                "Windows":true
+                "Windows":true,
+                "screensize": [1680,1050]
+                }
             }
         }
     ]

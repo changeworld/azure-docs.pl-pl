@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6446919c80e7e3fd379e6e39eb51712f9736ea7e
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304356"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341214"
 ---
 # <a name="api-management-policy-expressions"></a>Wyrażenia zasad usługi API Management
 W tym artykule omówiono wyrażenia zasad składnia jest C# 7. Każde wyrażenie ma dostęp do niejawnie podana [kontekstu](api-management-policy-expressions.md#ContextVariables) zmienną i dozwolonych [podzbioru](api-management-policy-expressions.md#CLRTypes) dla typów programu .NET Framework.
@@ -74,7 +74,7 @@ Wyrażenia mogą być używane jako wartości atrybutów lub wartości tekstowe 
 ## <a name="CLRTypes"></a> Typów programu .NET framework, które mogą w wyrażeniach zasad
 Poniższa tabela zawiera listę typów programu .NET Framework i ich elementów członkowskich, które są dozwolone w wyrażeniach zasad.
 
-|Typ|Obsługiwane elementy członkowskie|
+|Type|Obsługiwane elementy członkowskie|
 |--------------|-----------------------|
 |Newtonsoft.Json.Formatting|Wszyscy|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject.|
@@ -94,19 +94,19 @@ Poniższa tabela zawiera listę typów programu .NET Framework i ich elementów 
 |System.Byte|Wszyscy|
 |System.Char|Wszyscy|
 |System.Collections.Generic.Dictionary<TKey, TValue>|Wszyscy|
-|System.Collections.Generic.HashSet<T>|Wszyscy|
-|System.Collections.Generic.ICollection<T>|Wszyscy|
+|System.Collections.Generic.HashSet\<T>|Wszyscy|
+|System.Collections.Generic.ICollection\<T>|Wszyscy|
 |System.Collections.Generic.IDictionary<TKey, TValue>|Wszyscy|
-|System.Collections.Generic.IEnumerable<T>|Wszyscy|
-|System.Collections.Generic.IEnumerator<T>|Wszyscy|
-|System.Collections.Generic.IList<T>|Wszyscy|
-|System.Collections.Generic.IReadOnlyCollection<T>|Wszyscy|
+|System.Collections.Generic.IEnumerable\<T>|Wszyscy|
+|System.Collections.Generic.IEnumerator\<T>|Wszyscy|
+|System.Collections.Generic.IList\<T>|Wszyscy|
+|System.Collections.Generic.IReadOnlyCollection\<T>|Wszyscy|
 |System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Wszyscy|
-|System.Collections.Generic.ISet<T>|Wszyscy|
+|System.Collections.Generic.ISet\<T>|Wszyscy|
 |System.Collections.Generic.KeyValuePair<TKey, TValue>|Wszyscy|
-|System.Collections.Generic.List<T>|Wszyscy|
-|System.Collections.Generic.Queue<T>|Wszyscy|
-|System.Collections.Generic.Stack<T>|Wszyscy|
+|System.Collections.Generic.List\<T>|Wszyscy|
+|System.Collections.Generic.Queue\<T>|Wszyscy|
+|System.Collections.Generic.Stack\<T>|Wszyscy|
 |System.Convert|Wszyscy|
 |System.DateTime|(Konstruktor), dodawanie, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, datę, dzień, DayOfWeek, Dzieńroku, DaysInMonth, godzinę, IsDaylightSavingTime, IsLeapYear, MaxValue, milisekund, minuty, MinValue, miesiąc, teraz , Analizy, po drugie, odejmowanie, znaczniki, TimeOfDay, dzisiaj, ToString UtcNow, rok|
 |System.DateTimeKind|UTC|

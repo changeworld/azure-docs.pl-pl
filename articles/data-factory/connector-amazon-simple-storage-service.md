@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: a04dc76a110b1d126d5d826761e2e0c09c6aac47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 088dfdbfbadfa43dc2bd161f56f0e2a6dbb94bb7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520237"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311999"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopiowanie danych z Amazon Simple Storage Service przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -111,6 +111,7 @@ Aby skopiować dane z usługi Amazon S3 w **Parquet lub format tekstu rozdzielan
 | bucketName | Nazwa zasobnika S3.                                          | Yes      |
 | folderPath | Ścieżka do folderu, w ramach danego pakietu. Jeśli chcesz używać symboli wieloznacznych, do folderu filtru, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
 | fileName   | Nazwa pliku w ramach danego zasobnika + folderPath. Jeśli chcesz użyć symboli wieloznacznych, aby odfiltrować pliki, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
+| version | Wersja obiektu S3, jeśli jest włączone w wersji S3. Jeśli nie zostanie określony, będzie można pobrać najnowszą wersję. |Nie |
 
 > [!NOTE]
 > **AmazonS3Object** typ zestawu danych w formacie Parquet/tekstu opisane w następnej sekcji nadal jest obsługiwany jako — jest dla działania kopiowania/wyszukiwania/GetMetadata dla zgodności z poprzednimi wersjami, ale nie działa w przypadku mapowania przepływu danych. Zaleca się użyć tego nowego modelu idąc dalej, a ADF tworzenia interfejsu użytkownika zostało przełączone do generowania te nowe typy.

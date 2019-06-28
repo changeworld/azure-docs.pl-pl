@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 35cbe04380e2113f986d1e7adf3f7fdf89cb9326
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a82afe6f5299609fd6dd57a54f04f49fad5d2268
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078874"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357643"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Dzienniki inspekcji w usłudze Azure Database for MySQL
 
@@ -45,7 +45,7 @@ Inne parametry, które można dostosować obejmują:
 
 Dzienniki inspekcji są zintegrowane z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki inspekcji na Twoim serwerze MySQL, może emitować je do dzienników usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych w witrynie Azure portal, zobacz [artykułu portalu dziennika inspekcji](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
-## <a name="schemas"></a>Schematy
+## <a name="diagnostic-logs-schemas"></a>Schematy dla dzienników diagnostycznych
 
 W poniższych sekcjach opisano, co to jest danymi wyjściowymi MySQL dzienniki inspekcji na podstawie typu zdarzenia. W zależności od danych wyjściowych metody, pola, znajdujące się i kolejność, w jakiej są wyświetlane mogą się różnić.
 

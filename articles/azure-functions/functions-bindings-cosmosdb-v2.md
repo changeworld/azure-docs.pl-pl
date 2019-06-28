@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 5762e934d7735dd9617cefc1f56105823d74312f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4274c695779d25034b4277ac5386b6beee242cca
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64511829"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342282"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB powiązania usługi Azure Functions 2.x
 
@@ -1243,6 +1243,7 @@ Poniżej przedstawiono kod języka Python:
 ```python
 import azure.functions as func
 
+
 def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
     if documents:
         document = documents[0]
@@ -1296,6 +1297,7 @@ Poniżej przedstawiono kod języka Python:
 ```python
 import logging
 import azure.functions as func
+
 
 def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     if not todoitems:
@@ -1354,6 +1356,7 @@ Poniżej przedstawiono kod języka Python:
 ```python
 import logging
 import azure.functions as func
+
 
 def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     if not todoitems:
@@ -1729,7 +1732,7 @@ W C# i F# funkcji, jeśli funkcja kończy działanie pomyślnie, wszelkie zmiany
 
 W funkcji języka JavaScript nie zostało zaktualizowane automatycznie po wyjściu z funkcji. Zamiast tego należy użyć `context.bindings.<documentName>In` i `context.bindings.<documentName>Out` Aby wprowadzić aktualizacje. Zobacz przykład JavaScript.
 
-## <a name="output"></a>Dane wyjściowe
+## <a name="output"></a>Output
 
 Dane wyjściowe usługi Azure Cosmos DB, powiązania pozwala zapisać nowy dokument z bazą danych Azure Cosmos DB przy użyciu interfejsu API SQL.
 

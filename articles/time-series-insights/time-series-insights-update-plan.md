@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 435e5f2163270672ac5f1f5695ca2fe9be22ee6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f89105abc21f5ef6cce53ea55622a808f947e86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388732"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357300"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure czas Series Insights w wersji zapoznawczej
 
@@ -88,5 +88,8 @@ Aby uzyskać więcej informacji, zobacz [kształt zdarzenia](./time-series-insig
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- Przegląd [usługi Azure Advisor](../advisor/advisor-overview.md) zaplanowanie dostępnych opcji konfiguracji odzyskiwania biznesowych.
+
 - Przeczytaj więcej na temat [magazynu i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md) w serii czasu Insights (wersja zapoznawcza).
+
 - Dowiedz się więcej o [modelowania danych](./time-series-insights-update-tsm.md) w serii czasu Insights (wersja zapoznawcza).

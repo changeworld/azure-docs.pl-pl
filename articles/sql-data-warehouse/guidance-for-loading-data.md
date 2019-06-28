@@ -11,12 +11,12 @@ ms.date: 05/31/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 1b5af710feb743a30ac4a2af94b6e7e8b6c56595
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3387f6df36e9f5d98606e33b60a7584ff591efd6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479895"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340121"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące ładowania danych do usługi Azure SQL Data Warehouse
 
@@ -102,7 +102,7 @@ Jeśli w ciągu dnia wykonujesz kilka tysięcy lub więcej wstawień, utwórz pa
 
 ## <a name="creating-statistics-after-the-load"></a>Tworzenie statystyk po załadowaniu
 
-Aby poprawić wydajność zapytań, należy utworzyć statystyki dla wszystkich kolumn wszystkich tabel po pierwszym załadowaniu danych, a następnie po każdej istotnej zmianie danych.  Można to zrobić ręcznie lub można włączyć [automatyczne tworzenie statustics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
+Aby poprawić wydajność zapytań, należy utworzyć statystyki dla wszystkich kolumn wszystkich tabel po pierwszym załadowaniu danych, a następnie po każdej istotnej zmianie danych.  Można to zrobić ręcznie lub można włączyć [automatyczne tworzenie statystyk](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
 
 Aby zapoznać się ze szczegółowym opisem statystyk, zobacz temat [Statystyki](sql-data-warehouse-tables-statistics.md). Poniższy przykład pokazuje, jak ręcznie utworzyć statystyk dotyczących pięciu kolumn tabeli Customer_Speed.
 

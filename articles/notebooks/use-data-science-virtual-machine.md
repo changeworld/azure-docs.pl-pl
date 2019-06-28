@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: 9b762f1b3f1c17e15b051e72f5d2cf98bef446bf
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 0ac50a5f52682c4315b8d08cf5632c4a6fa5242f
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137751"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357584"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Użyj maszyn wirtualnych do nauki o danych platformy Azure
 
@@ -51,9 +51,9 @@ Te wartości można uzyskać ze strony DSVM w witrynie Azure portal.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Dostęp do notesów usługi Azure plików z maszyny DSVM
 
-Aby zachować parzystości ścieżki do plików za pomocą **bezpłatne obliczeń** warstwy, będą mogli otwierać tylko jeden projekt naraz w nauki. Aby otworzyć nowy projekt, należy najpierw zamknąć otwartym projekcie.
+Dostęp do systemu plików jest obsługiwana dla maszyny wirtualnej DSVM wersji 19.06.15 lub nowszym. Aby sprawdzić wersję, najpierw połączyć się z maszyny wirtualnej DSVM za pośrednictwem protokołu SSH (adres IP jest dostępny w witrynie Azure portal). Następnie uruchom następujące polecenie, używając usługi `<ip_address>`: `curl -H Metadata:true "http://<ip_address>/metadata/instance?api-version=2018-10-01"`. Numer wersji jest wyświetlany w danych wyjściowych dla "wersja".
 
-![Przycisk zamykania w notesach platformy Azure](media/shutdown.png)
+Aby zachować parzystości ścieżki do plików za pomocą **bezpłatne obliczeń** warstwy, będą mogli otwierać tylko jeden projekt naraz w nauki. Aby otworzyć nowy projekt, należy najpierw zamknąć otwartym projekcie.
 
 Gdy projekt zostanie uruchomiony na maszynie Wirtualnej, pliki są instalowane w katalogu głównym serwera Jupyter (katalog objętego JupyterHub), zastępując domyślne pliki notesy platformy Azure. Podczas zamykania maszyny Wirtualnej przy użyciu **zamykania** przycisku w notesie interfejsu użytkownika, notesów usługi Azure przywraca domyślne pliki.
 

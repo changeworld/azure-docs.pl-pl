@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5884bb5dc389e6abfd4fa23d28dd71ecd16ff423
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183213"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67347117"
 ---
 Obrazy standardowych maszyn wirtualnych (VM) umożliwiają organizacjom migrację do chmury i zapewnia spójność we wdrożeniach. Obrazy obejmują zazwyczaj wstępnie zdefiniowanych ustawień zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Konfigurowanie potoku przetwarzania obrazów wymaga czasu, infrastruktury i konfiguracji, ale za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, po prostu podać prostej konfiguracji opisujące obrazu, Prześlij go do usługi i wbudowany obraz i rozproszone.
  
@@ -33,7 +33,7 @@ Dla wersji zapoznawczej te funkcje są obsługiwane:
 - Tworzenie obrazów w formacie VHD.
  
 
-## <a name="regions"></a>Regiony
+## <a name="regions"></a>Regions
 Usługa Konstruktora obrazów platformy Azure będzie dostępna w wersji zapoznawczej w tych regionach. Obrazy mogą być dystrybuowane spoza tych regionów.
 - Wschodnie stany USA
 - Wschodnie stany USA 2
@@ -65,9 +65,9 @@ Kreator obrazów platformy Azure jest w pełni zarządzana usługa platformy Azu
 ![Rysunek koncepcyjny przedstawiający procesu Kreatora obrazów platformy Azure](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Utwórz szablon obrazu w formacie JSON. Ten plik JSON zawiera informacje dotyczące źródła obrazu, dostosowania i dystrybucji. Istnieje wiele przykładów w [repozytorium GitHub konstruktora obraz Azure](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
-1. Prześlij go do usługi, spowoduje to utworzenie artefakt obrazu szablonu w grupie zasobów, które określisz. W tle Kreator obrazów pobierze obraz źródłowy lub obrazu ISO i skrypty, zgodnie z potrzebami. Są one przechowywane w oddzielnej grupie zasobów, jest automatycznie tworzony w ramach subskrypcji, w formacie: IT_<DestinationResourceGroup>_<TemplateName>. 
-1. Po utworzeniu szablonu obrazu może następnie utworzyć obraz. Kreator obrazów w tle używa szablon i pliki źródłowe do tworzenia maszyn wirtualnych, sieci i magazynu w IT_<DestinationResourceGroup>_<TemplateName> grupy zasobów.
-1. W ramach tworzenia obrazów, Kreator obrazów dystrybuuje obraz zgodnie z szablonem, następnie usuwa dodatkowe zasoby w IT_<DestinationResourceGroup>_<TemplateName> grupy zasobów, który został utworzony dla procesu.
+1. Prześlij go do usługi, spowoduje to utworzenie artefakt obrazu szablonu w grupie zasobów, które określisz. W tle Kreator obrazów pobierze obraz źródłowy lub obrazu ISO i skrypty, zgodnie z potrzebami. Są one przechowywane w oddzielnej grupie zasobów, jest automatycznie tworzony w ramach subskrypcji, w formacie: IT_\<DestinationResourceGroup>_\<TemplateName>. 
+1. Po utworzeniu szablonu obrazu może następnie utworzyć obraz. Kreator obrazów w tle używa szablon i pliki źródłowe do tworzenia maszyn wirtualnych, sieci i magazynu w IT_\<DestinationResourceGroup > _\<TemplateName > grupy zasobów.
+1. W ramach tworzenia obrazów, Kreator obrazów dystrybuuje obraz zgodnie z szablonem, następnie usuwa dodatkowe zasoby w IT_\<DestinationResourceGroup > _\<TemplateName > grupy zasobów, dla którego utworzono proces.
 
 
 ## <a name="permissions"></a>Uprawnienia
