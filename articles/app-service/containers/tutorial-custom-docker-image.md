@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8463ffcb9d9983ff435c01f75dd48f68bde31767
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 72602cb1fda88497172b1837eab98d5e9ce41776
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117589"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435447"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Samouczek: Tworzenie niestandardowego obrazu i uruchamianie w usłudze App Service z rejestru prywatnego
 
-[Usługa App Service](app-service-linux-intro.md) zapewnia wbudowane obrazy platformy Docker w systemie Linux z obsługą określonych wersji, takich jak środowisko PHP 7.0 i Node.js 4.5. Usługa App Service używa technologii kontenerów platformy Docker do hostowania obrazów niestandardowych i wbudowanych obrazów jako platforma jako usługa. W tym samouczku dowiesz się, jak utworzyć obraz niestandardowy i uruchom go w usłudze App Service. Ten wzorzec jest przydatny, gdy wbudowane obrazy nie uwzględniają wybranego przez Ciebie języka lub gdy aplikacja wymaga określonej konfiguracji, której wbudowane obrazy nie obejmują.
+[Usługa App Service](app-service-linux-intro.md) zapewnia wbudowane obrazy platformy Docker w systemie Linux z obsługą określonych wersji, takich jak PHP 7.3 i Node.js 10.14. Usługa App Service używa technologii kontenerów platformy Docker do hostowania obrazów niestandardowych i wbudowanych obrazów jako platforma jako usługa. W tym samouczku dowiesz się, jak utworzyć obraz niestandardowy i uruchom go w usłudze App Service. Ten wzorzec jest przydatny, gdy wbudowane obrazy nie uwzględniają wybranego przez Ciebie języka lub gdy aplikacja wymaga określonej konfiguracji, której wbudowane obrazy nie obejmują.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -211,7 +211,7 @@ Po utworzeniu aplikacji internetowej w interfejsie wiersza polecenia platformy A
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Skonfiguruj poświadczenia rejestru w aplikacji sieci web
 
-Dla usługi App Service do ściągania obrazu prywatnego potrzebuje ona danych informacji dotyczących obrazu i rejestru. W usłudze Cloud Shell udostępnione im [ `az webapp config container set` ](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) polecenia. Zastąp  *\<Nazwa aplikacji >*,  *\<azure kontenera registry-name >*,  _\<registry-username >_ i  _\<hasło >_.
+Dla usługi App Service do ściągania obrazu prywatnego potrzebuje ona danych informacji dotyczących obrazu i rejestru. W usłudze Cloud Shell udostępnione im [ `az webapp config container set` ](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) polecenia. Zastąp  *\<Nazwa aplikacji >* ,  *\<azure kontenera registry-name >* ,  _\<registry-username >_ i  _\<hasło >_ .
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>

@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Tworzenie, obciążenia i tworzenie zapytań względem indeksu w witrynie Azure portal — usługa Azure Search'
-description: Twórz i zapytania pierwszego indeksu w usłudze Azure Search przy użyciu wbudowanych przykładowych danych i Kreatora importu danych w witrynie Azure portal.
+title: 'Szybki start: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu witryny Azure portal — usługa Azure Search'
+description: Użyj Kreatora importu danych w witrynie Azure portal do tworzenia, ładowania i zapytania pierwszego indeksu w usłudze Azure Search.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e5baa0876dc976553e8e541cef6b481329500bf6
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 90857ec2fabb1b807d3e3001f99ea3897d7d628a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606447"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443864"
 ---
-# <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Szybki start: Korzystanie z wbudowanych narzędzi portalu do importowania, indeksowania i wykonywania zapytań w usłudze Azure Search
+# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure portal
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
 > * [Program PowerShell](search-howto-dotnet-sdk.md)
@@ -200,7 +200,7 @@ Filtry aspektów są uwzględniane w żądaniach wyszukiwania. Korzystając z pa
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcitytop2"></a>Przykład (aspektowe ze zmniejszeniem zakresu): `search=*&facet=city&$top=2`
 
-* Parametr **search=*** to puste wyszukiwanie. Puste wyszukiwania umożliwiają znalezienie wszystkiego. Jednym z powodów przesłania pustego zapytania może być potrzeba przeprowadzenia filtrowania lub utworzenia aspektów pełnego zestawu dokumentów. Na przykład może być potrzebne utworzenie aspektów struktury nawigacji składającej się ze wszystkich miast w indeksie.
+* Parametr **search=** * to puste wyszukiwanie. Puste wyszukiwania umożliwiają znalezienie wszystkiego. Jednym z powodów przesłania pustego zapytania może być potrzeba przeprowadzenia filtrowania lub utworzenia aspektów pełnego zestawu dokumentów. Na przykład może być potrzebne utworzenie aspektów struktury nawigacji składającej się ze wszystkich miast w indeksie.
 
 * Parametr **facet** zwraca strukturę nawigacji, którą można przekazać do kontrolki interfejsu użytkownika. Zwraca ona kategorie i liczbę elementów. W takim przypadku kategorie są oparte na określonej liczbie miast. Nie istnieje żadna agregacja w usłudze Azure Search, ale możesz przybliżyć się do agregacji za pomocą parametru `facet`, który podaje liczbę dokumentów w poszczególnych kategoriach.
 

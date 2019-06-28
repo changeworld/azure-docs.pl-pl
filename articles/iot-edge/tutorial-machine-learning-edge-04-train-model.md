@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: af91dc09f8ed68d7bd4f2378c13d99eb67c52e9e
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: acf0b1984eb3e68858be6ed68731612448e672f4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155643"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432706"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Samouczek: Trenowanie i wdrażanie modelu usługi Azure Machine Learning
 
@@ -56,7 +56,7 @@ Jako maszyny wirtualnej dla deweloperów, za pomocą notesów usługi Azure zape
 
 Kont notesu platformy Azure są niezależne od subskrypcji platformy Azure. Aby korzystanie z notesów usługi Azure, musisz utworzyć konto.
 
-1. Przejdź do [notesy platformy Azure](http://notebooks.azure.com).
+1. Przejdź do [notesy platformy Azure](https://notebooks.azure.com).
 
 2. Kliknij przycisk **Sign In** w górnej, prawej części strony.
 

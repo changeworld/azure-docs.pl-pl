@@ -3,19 +3,19 @@ title: 'Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym, Java — 
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak uzyskać alternatywne tłumaczenia terminu, oraz zapoznasz się z przykładami użycia alternatywnych tłumaczeń za pomocą języka Java i interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 027e895ffbeb3cc0ff5b3348c2d7a8b76b930cf3
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: d4c8f06b1689f3aaa5a88e39583a48cf990dd532
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514823"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445142"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Java
 
@@ -108,6 +108,8 @@ Dodaj następujące wiersze do klasy `AltTranslation`. Zauważysz, że razem z w
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es";
 ```
+
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Tworzenie klienta i budowanie żądania
 

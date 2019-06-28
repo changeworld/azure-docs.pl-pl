@@ -3,19 +3,19 @@ title: 'Szybki start: Konwertowanie skryptu tekstowego, C# — tłumaczenie teks
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak transliterować (konwertować) tekst z jednego skryptu na inny przy użyciu platformy .NET Core i interfejsu API REST tłumaczenia tekstu w usłudze Translator. W tym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
-ms.author: erhopf
-ms.openlocfilehash: 8e08372e591c9d600b42ae8e66baf7addf7806c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: f09f9081dd535762afd2e26e5e86476eb06f5133
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123370"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445252"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do transliterowania tekstu z użyciem języka C#
 
@@ -157,6 +157,8 @@ foreach (TransliterationResult o in deserializedOutput)
     Console.WriteLine("Transliterated to {0} script: {1}", o.Script, o.Text);
 }
 ```
+
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
 

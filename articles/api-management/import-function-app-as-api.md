@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2018
+ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: e5e8ffc18db902eeaa8484122e3844f35046191f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f9e5c531e387ba8d2c61c6d46b1e8935bc7d42cf
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243113"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67429044"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management
 
@@ -69,7 +69,7 @@ Aby utworzyć nowy interfejs API z poziomu aplikacji funkcji platformy Azure, wy
     ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
-    > Możesz zaimportować tylko te funkcje, które są oparte na wyzwalaczu HTTP i mają ustawienie poziomu autoryzacji *Anonimowe* lub *Funkcja*. W tej chwili aplikacji funkcji systemu Linux nie są obsługiwane.
+    > Możesz zaimportować tylko te funkcje, które są oparte na wyzwalaczu HTTP i mają ustawienie poziomu autoryzacji *Anonimowe* lub *Funkcja*.
 
 7. Przełącz się do widoku **Pełny** i przypisz **Produkt** do nowego interfejsu API. W razie potrzeby edytuj inne wstępnie wypełnione pola.
 

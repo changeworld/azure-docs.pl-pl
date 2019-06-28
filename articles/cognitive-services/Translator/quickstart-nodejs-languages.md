@@ -3,19 +3,19 @@ title: 'Szybki start: Uzyskiwanie listy obsługiwanych języków, Node.js — in
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 1341307ef3868e5398f8ee6583c8bec9759832f5
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: cb01269d21d3b036dfff84faef1903dc082dc6f1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515159"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445043"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>Szybki start: Uzyskiwanie listy obsługiwanych języków za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator przy użyciu środowiska Node.js
 
@@ -63,6 +63,8 @@ let options = {
     json: true,
 };
 ```
+
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="make-the-request-and-print-the-response"></a>Wysyłanie żądania i wyświetlanie odpowiedzi
 

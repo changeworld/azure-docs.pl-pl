@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f36b706213639c5bea383ec20ffc7f6d7ed01021
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: fd3b5766ec2bd8d1babf847598f1fbe5b6511ce7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155709"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432844"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Samouczek: Konfigurowanie środowiska na potrzeby usługi machine learning w usłudze IoT Edge
 
@@ -190,7 +190,7 @@ Skrypt trwa około dwóch minut do uruchomienia. Po wykonaniu tych czynności, s
 
 Podczas tworzenia Centrum IoT hub skrypt, który wystąpił w poprzedniej sekcji również utworzony niestandardowy punkt końcowy, a trasy. Usługi IoT Hub trasy składają się z wyrażenia zapytania i punktu końcowego. Jeśli komunikat jest zgodna z wyrażeniem, dane są przesyłane wzdłuż trasy do skojarzonego punktu końcowego. Punkty końcowe można usługi Event Hubs, kolejki usługi Service Bus i tematy. W tym przypadku punkt końcowy jest kontener obiektów Blob na koncie magazynu. Utwórzmy Przejrzyj trasy utworzone za pomocą naszego skryptu za pomocą witryny Azure portal.
 
-1. Otwórz [portal Azure](http://portal.azure.com).
+1. Otwórz [portal Azure](https://portal.azure.com).
 
 1. Wybierz wszystkie usługi z Nawigatora po lewej stronie, w polu wyszukiwania wpisz IoT, a następnie wybierz **usługi IoT Hub**.
 

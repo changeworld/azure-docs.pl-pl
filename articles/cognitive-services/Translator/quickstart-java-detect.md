@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: b3498cc8c73d74f06eea59c1a87047adf52ca6d4
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: bbab179d5c70274ea5c6ae4120384dd168247298
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357986"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445165"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu przy użyciu języka Java
 
@@ -108,6 +108,8 @@ Dodaj następujące wiersze do klasy `Detect`:
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0";
 ```
+
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Tworzenie klienta i budowanie żądania
 

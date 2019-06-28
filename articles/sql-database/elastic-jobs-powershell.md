@@ -12,18 +12,18 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 53e10636535c553ac5fa17b5f4aac1000cd138bc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476071"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445384"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Tworzenie agenta zadań elastycznych za pomocą programu PowerShell
 
 [Zadania elastyczne](sql-database-job-automation-overview.md#elastic-database-jobs) umożliwiają uruchamianie jednego lub większej liczby skryptów języka Transact-SQL (T-SQL) równolegle w wielu bazach danych.
 
-W ramach tego samouczka poznasz kroki wymagane do uruchomienia zapytania w wielu bazach danych:
+W tym samouczku dowiesz się kroki wymagane do uruchomienia zapytania w wielu bazach danych:
 
 > [!div class="checklist"]
 > * Tworzenie agenta zadań elastycznych
@@ -71,7 +71,7 @@ Get-Module Az.Sql
 
 Do utworzenia agenta zadań elastycznych wymagana jest baza danych (S0 lub wyższego poziomu) używana jako [baza danych zadań](sql-database-job-automation-overview.md#job-database). 
 
-*Poniższy skrypt tworzy nową grupę zasobów, serwer i bazę danych, która będzie używana jako baza danych zadań. Poniższy skrypt tworzy również drugi serwer z 2 pustymi bazami danych, względem których będą wykonywane zadania.*
+*Poniższy skrypt tworzy nową grupę zasobów, serwer i bazę danych, która będzie używana jako baza danych zadań. Poniższy skrypt tworzy również drugiego serwera z dwóch puste baz danych do wykonywania zadań przed.*
 
 Dla zadań elastycznych nie ma określonych wymagań dotyczących nazewnictwa, można więc zastosować dowolne, o ile są one zgodne z [wymaganiami platformy Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
@@ -285,6 +285,23 @@ $JobExecution | Get-AzSqlElasticJobStepExecution
 # Get the job target execution details
 $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
+
+### <a name="job-execution-states"></a>Stany wykonywania zadań
+
+Poniższa tabela zawiera listę stanów wykonywania zadania możliwe:
+
+|Stan|Opis|
+|:---|:---|
+|**Utworzone** | Wykonanie zadania właśnie została utworzona i nie jest jeszcze w toku.|
+|**InProgress** | Wykonanie zadania jest obecnie w toku.|
+|**WaitingForRetry** | Wykonanie zadania nie był w stanie ukończyć swojej akcji i oczekuje, aby ponowić próbę.|
+|**Powodzenie** | Pomyślnie ukończono wykonywanie zadania.|
+|**SucceededWithSkipped** | Wykonanie zadania zakończyło się pomyślnie, ale niektóre jego elementy podrzędne zostały pominięte.|
+|**Niepowodzenie** | Wykonanie zadania ma nie powiodło się i wyczerpania jego ponownych prób.|
+|**Przekroczono limit czasu** | Upłynął limit czasu wykonywania zadania.|
+|**Anulowano** | Wykonanie zadania zostało anulowane.|
+|**Pominięto** | Wykonanie zadania zostało pominięte, ponieważ inne uruchomienie tego samego kroku zadanie zostało już uruchomione na tej samej wartości docelowej.|
+|**WaitingForChildJobExecutions** | Wykonanie zadania czeka na jego wykonania podrzędnych zakończyć.|
 
 ## <a name="schedule-the-job-to-run-later"></a>Planowanie późniejszego uruchomienia zadania
 

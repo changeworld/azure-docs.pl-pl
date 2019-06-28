@@ -3,19 +3,19 @@ title: Co jest usługa QnA Maker?
 titleSuffix: Azure Cognitive Services
 description: Usługa QnA Maker to oparta na chmurze usługa interfejsu API, która stosuje niestandardową analizę uczenia maszynowego wobec pytań użytkownika zadawanych w języku naturalnym, aby zapewnić najlepszą odpowiedź.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 04/05/2019
-ms.author: tulasim
-ms.openlocfilehash: 963769315302ba4e7d1600253b617c7cb0f02bc5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: diberry
+ms.openlocfilehash: bfb6c5b7cc5a4bd1717fdd96f6d232cc269e702d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794259"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439590"
 ---
 # <a name="what-is-qna-maker"></a>Co jest usługa QnA Maker?
 
@@ -25,7 +25,7 @@ Usługa QnA Maker umożliwia tworzenie bazy wiedzy (KB) na podstawie Twojej czę
 
 Łatwy w obsłudze [portal internetowy](https://qnamaker.ai) umożliwia tworzenie, zarządzanie, szkolenie i publikowanie usługi bez jakiegokolwiek doświadczenia programistycznego. Po opublikowaniu usługi w punkcie końcowym aplikacja kliencka, np. czatbot, może zarządzać konwersacjami z użytkownikami, aby uzyskiwać pytania i na nie odpowiadać. 
 
-![Omówienie](../media/qnamaker-overview-learnabout/overview.png)
+![Przegląd](../media/qnamaker-overview-learnabout/overview.png)
 
 ## <a name="key-qna-maker-processes"></a>Kluczowe procesy usługi QnA Maker
 

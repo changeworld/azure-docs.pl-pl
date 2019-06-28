@@ -5,26 +5,27 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239686"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433936"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Samouczek: Wykonywanie klasyfikacji obrazów na urządzeniach brzegowych za pomocą usługi Custom Vision Service
 
-Usługa Azure IoT Edge może usprawnić Twoje rozwiązanie IoT przez przeniesienie obciążeń z chmury na urządzenia brzegowe. Ta funkcja jest bardzo przydatna w przypadku usług, które przetwarzają dużą ilość danych, takich jak modele przetwarzania obrazów. Usługa [Custom Vision](../cognitive-services/custom-vision-service/home.md) umożliwia tworzenie niestandardowych klasyfikatorów obrazów i wdrażanie ich na urządzeniach w postaci kontenerów. Te dwie usługi połączone razem pozwalają na uzyskiwanie szczegółowych informacji z obrazów lub strumieni wideo bez konieczności wcześniejszego przeniesienia wszystkich danych poza siedzibę firmy. Usługa Custom Vision udostępnia klasyfikator, który porównuje obraz z wyszkolonym modelem w celu wygenerowania szczegółowych informacji. 
+Usługa Azure IoT Edge może usprawnić Twoje rozwiązanie IoT przez przeniesienie obciążeń z chmury na urządzenia brzegowe. Ta funkcja jest bardzo przydatna w przypadku usług, które przetwarzają dużą ilość danych, takich jak modele przetwarzania obrazów. Usługa [Custom Vision](../cognitive-services/custom-vision-service/home.md) umożliwia tworzenie niestandardowych klasyfikatorów obrazów i wdrażanie ich na urządzeniach w postaci kontenerów. Te dwie usługi połączone razem pozwalają na uzyskiwanie szczegółowych informacji z obrazów lub strumieni wideo bez konieczności wcześniejszego przeniesienia wszystkich danych poza siedzibę firmy. Usługa Custom Vision udostępnia klasyfikator, który porównuje obraz z wyszkolonym modelem w celu wygenerowania szczegółowych informacji.
 
-Na przykład usługa Custom Vision na urządzeniu usługi IoT Edge może określić, czy ruch na autostradzie jest większy, czy mniejszy niż zwykle, albo czy w hali garażowej są dostępne miejsca parkingowe w jednym rzędzie. Te informacje można udostępnić innej usłudze w celu wykonania akcji. 
+Na przykład usługa Custom Vision na urządzeniu usługi IoT Edge może określić, czy ruch na autostradzie jest większy, czy mniejszy niż zwykle, albo czy w hali garażowej są dostępne miejsca parkingowe w jednym rzędzie. Te informacje można udostępnić innej usłudze w celu wykonania akcji.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
+>
 > * Tworzenie klasyfikatora obrazów za pomocą usługi Custom Vision.
 > * Tworzenie modułu usługi IoT Edge wysyłającego zapytania do serwera internetowego usługi Custom Vision na urządzeniu.
 > * Wysyłanie wyników klasyfikatora obrazów do usługi IoT Hub.
@@ -72,10 +73,11 @@ Po utworzeniu i wyszkoleniu klasyfikatora obrazów możesz wyeksportować go w p
    | ----- | ----- |
    | Name (Nazwa) | Podaj nazwę dla projektu, na przykład **EdgeTreeClassifier**. |
    | Opis | Opcjonalny opis projektu. |
-   | Grupa zasobów | Zaakceptuj domyślną wartość **Limited trial** (Ograniczona wersja próbna). |
+   | Grupa zasobów | Wybierz jedną z grup zasobów platformy Azure, która zawiera zasób usługi Custom Vision lub **tworzenia nowych** Jeśli nie został jeszcze dodany. |
    | Project Types (Typy projektów) | **Classification** (Klasyfikacja) |
-   | Classification Types (Typy klasyfikacji) | **Multiclass (single tag per image)** (Multiklasa (pojedynczy tag na obrazie)) | 
+   | Classification Types (Typy klasyfikacji) | **Multiclass (single tag per image)** (Multiklasa (pojedynczy tag na obrazie)) |
    | Domeny | **General (compact)** (Ogólne (kompaktowe)) |
+   | Eksportowanie funkcji | **Podstawowe platform (Tensorflow, CoreML, ONNX,...)** |
 
 5. Wybierz pozycję **Create project** (Utwórz projekt).
 
@@ -133,7 +135,7 @@ W tym miejscu kończy się tworzenie i szkolenie projektu usługi Custom Vision.
 
 Na maszynie deweloperskiej masz teraz pliki dla wersji kontenera Twojego klasyfikatora obrazów. W tej sekcji skonfigurujesz kontener klasyfikatora obrazów tak, aby był on uruchamiany jako moduł usługi IoT Edge. Utworzysz również drugi moduł, który zostanie wdrożony obok klasyfikatora obrazów. Drugi moduł publikuje żądania do klasyfikatora i wysyła wyniki jako komunikaty do usługi IoT Hub. 
 
-### <a name="create-a-new-solution"></a>Utwórz nowe rozwiązanie
+### <a name="create-a-new-solution"></a>Tworzenie nowego rozwiązania
 
 Rozwiązanie jest logicznym sposobem tworzenia i organizowania wielu modułów dla pojedynczego wdrożenia usługi IoT Edge. Zawiera ono kod dla jednego lub więcej modułów, a także manifest wdrożenia deklarujący sposób skonfigurowania ich na urządzeniu usługi IoT Edge. 
 

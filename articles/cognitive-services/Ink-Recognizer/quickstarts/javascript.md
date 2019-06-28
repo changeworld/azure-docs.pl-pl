@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 0dc672f0efc420ab73fd923191c2bd52fb571a4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1785faf718b940794aebc045a3491be45eea03f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056852"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435215"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Szybki start: Rozpoznaje cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego i JavaScript
 
@@ -154,19 +154,20 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
         xhttp.setRequestHeader("content-type", "application/json");
         xhttp.send(JSON.stringify(sampleJson));
         };
+        ```
 
-## Run the application and view the response
+## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację, a następnie zobacz odpowiedź
 
-This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
+Ta aplikacja może działać w przeglądarce sieci web. Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Możesz również znaleźć odpowiedź w formacie JSON na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
 
-## Next steps
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [REST API reference](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [Dokumentacja interfejsu API REST](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-To see how the Ink Recognition API works in a digital inking app, take a look at the following sample applications on GitHub:
-* [C# and Universal Windows Platform(UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C# and Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Javascript web-browser app](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Java and Android mobile app](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Swift and iOS mobile app](https://go.microsoft.com/fwlink/?linkid=2089805)
+Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w cyfrowych aplikacji pisma odręcznego, spójrz na następujące przykładowe aplikacje w usłudze GitHub:
+* [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Aplikacja mobilna języka Java i systemu Android](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Aplikacja mobilna języka Swift i systemu iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

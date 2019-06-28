@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uczenie modelu i wyodrębnić dane formularza za pomocą programu cURL - rozpoznawania formularza'
+title: 'Szybki start: Uczenie modelu i wyodrębnianie danych formularza przy użyciu programu cURL - rozpoznawania formularza'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpoznawania formularza za pomocą programu cURL do uczenia modelu i wyodrębnianie danych z formularzy.
 author: PatrickFarley
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 3f3b74452ff1f866b0285eee962ab3678b151a30
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 144cd0380cfe2a49d5827f9ecc34ed197f4ad1cd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331846"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441811"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki start: Uczenie modelu rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST za pomocą programu cURL
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby ukończyć ten przewodnik Szybki Start, musisz mieć:
 - Dostęp ograniczony dostęp do aparatu rozpoznawania formularza w wersji zapoznawczej. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) formularza.
 - [cURL](https://curl.haxx.se/windows/) zainstalowane.
-- Zestaw co najmniej pięć metod tego samego typu. Użyjesz tych danych do nauczenia modelu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż dane do głównego konta usługi Azure Blob Storage.
+- Zestaw co najmniej pięć metod tego samego typu. Użyjesz tych danych do nauczenia modelu. Możesz użyć [Przykładowy zestaw danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż dane do głównego konta usługi Azure Blob Storage.
 
 ## <a name="create-a-form-recognizer-resource"></a>Utwórz zasób rozpoznawania formularza
 

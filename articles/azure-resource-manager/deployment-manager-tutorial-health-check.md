@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4d6832346fb25ee09d97575c755cb2d85eb73cbe
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0e8a9fefdf92f568001cc3352fe83a85157acf9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206602"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442580"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
@@ -36,7 +36,7 @@ Ten samouczek obejmuje następujące zadania:
 > * Weryfikacja wdrożenia wdrożenia
 > * Oczyszczanie zasobów
 
-Dodatkowe zasoby:
+Zasoby dodatkowe:
 
 - [Odwołanie do interfejsu REST API usługi Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
 - [Próbka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
@@ -57,7 +57,7 @@ W środowisku produkcyjnym zazwyczaj używa się co najmniej jeden dostawców mo
 Następujące dwa pliki są używane do wdrażania funkcji platformy Azure. Nie trzeba pobierać te pliki do wykonywania kroków samouczka.
 
 * Szablon usługi Resource Manager znajduje się w [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Możesz wdrożyć ten szablon służy do tworzenia funkcji platformy Azure.
-* Plik zip kodu źródłowego funkcji platformy Azure, [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tego pliku zip o nazwie jest wywoływana przez szablon usługi Resource Manager.
+* Plik zip kodu źródłowego funkcji platformy Azure, [ https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tego pliku zip o nazwie jest wywoływana przez szablon usługi Resource Manager.
 
 Aby wdrożyć funkcję platformy Azure, wybierz **wypróbuj** aby otworzyć usługa Azure Cloud shell, a następnie wklej poniższy skrypt do okna powłoki.  Aby wkleić kod, kliknij prawym przyciskiem myszy w oknie shell, a następnie wybierz pozycję **Wklej**.
 

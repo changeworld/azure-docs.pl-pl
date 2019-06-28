@@ -3,19 +3,19 @@ title: 'Szybki start: tłumaczenie tekstu, Go — interfejs API tłumaczenia tek
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przetłumaczysz tekst z jednego języka na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go w mniej niż 10 minut.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: cf0a7598d7af583e3339c511556a121523d12a7a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: e23ff7c38d5f2410c3fd0569cd0fda0ba92cf607
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514884"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445189"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-go"></a>Szybki start: tłumaczenie ciągu za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator oraz języka Go
 
@@ -138,6 +138,8 @@ if err != nil {
     log.Fatal(err)
 }
 ```
+
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="handle-and-print-the-response"></a>Obsługa i wyświetlanie odpowiedzi
 

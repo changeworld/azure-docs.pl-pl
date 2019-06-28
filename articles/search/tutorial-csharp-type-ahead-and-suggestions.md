@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 05/01/2019
-ms.openlocfilehash: 48dde6ebe19f5a6c14008fd4e5e27a9fb0151928
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 01c0819fd0bf525739675ad756031cafc1a51673
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304076"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434653"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-search"></a>C#Samouczek: Dodaj automatycznego uzupełniania i sugestie — usługa Azure Search
 
@@ -69,11 +69,11 @@ Funkcja autouzupełniania, wywoływana w skrypcie powyżej nie jest coś, co mam
     ```cs
     <head>
         <meta charset="utf-8">
-        <title>Autocomplete demo</title>
-        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+        <title>Typeahead</title>
+        <link href="https://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css"
               rel="stylesheet">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <link rel="stylesheet" href="~/css/hotels.css" />
     </head>
@@ -461,9 +461,9 @@ Należy wziąć pod uwagę następujące wnioski z tego projektu:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-To jeden z problemów z automatycznego uzupełniania i sugestie, wymagają one wielokrotnego wywołania serwera (jeden na każdy naciśnięcie klawisza po wpisaniu minimalną liczbę znaków zostanie osiągnięty). Te próby wywołania skutkuje wolniej niż oczekiwano odpowiedzi, zmniejsza się środowisko użytkownika. Za pomocą aspektami stanowi alternatywę interesujące, aby uniknąć tych wywołań dopuszczalnych, które przyjrzymy się dalej.
+W następnym samouczku mamy przyjrzeć się innym sposobem poprawa komfortu pracy użytkowników, aby zawęzić kryteria wyszukiwania za pomocą jednego kliknięcia przy użyciu zestawów reguł.
 
 > [!div class="nextstepaction"]
-> [C#Samouczek: Zestawy reguł na użytek wydajność nawigacji i sieci — usługa Azure Search](tutorial-csharp-facets.md)
+> [C#Samouczek: Użyj aspektami ułatwiające Nawigacja — usługa Azure Search](tutorial-csharp-facets.md)
 
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 1180049b38681275904c3fd8b35ab8a9db7e3a74
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 2a314a7a12635319bb2f688a2aa12d78e9f360af
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357962"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444986"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do tłumaczenia ciągu z użyciem środowiska Node.js
 
@@ -91,9 +91,11 @@ let options = {
 };
 ```
 
-### <a name="authentication"></a>Authentication
+Najprostszym sposobem uwierzytelniania żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`. Ta metoda jest używana w tym przykładzie. Alternatywnie można wymienić klucz subskrypcji na token dostępu i przekazać go dalej jako nagłówek `Authorization` w celu zweryfikowania żądania. 
 
-Najprostszym sposobem uwierzytelniania żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`. Ta metoda jest używana w tym przykładzie. Alternatywnie można wymienić klucz subskrypcji na token dostępu i przekazać go dalej jako nagłówek `Authorization` w celu zweryfikowania żądania. Aby uzyskać więcej informacji, zobacz [Authentication](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) (Uwierzytelnianie).
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w nagłówki żądania. 
+
+Aby uzyskać więcej informacji, zobacz [Authentication](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) (Uwierzytelnianie).
 
 ## <a name="make-the-request-and-print-the-response"></a>Wysyłanie żądania i wyświetlanie odpowiedzi
 

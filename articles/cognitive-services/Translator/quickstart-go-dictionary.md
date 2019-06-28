@@ -3,19 +3,19 @@ title: 'Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym, Go — in
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 56e67389c59cda70ebcc7705e279b84fcf11cf9d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: bc92fb078c46c877f3b99389b1d14ad0f93e63b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514136"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445204"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Go
 
@@ -138,6 +138,8 @@ if err != nil {
     log.Fatal(err)
 }
 ```
+
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="handle-and-print-the-response"></a>Obsługa i wyświetlanie odpowiedzi
 

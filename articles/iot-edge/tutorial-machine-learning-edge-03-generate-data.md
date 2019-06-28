@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f3cf23f491aad1766f2d4087c440cc080dbe345e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a93b1128fe1ea0e03efc9060f2c3c4a93145f838
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057652"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432852"
 ---
-# <a name="tutorial-generate-simulated-device-data"></a>Samouczek: Generowanie danych symulowanego urządzenia
+# <a name="tutorial-generate-simulated-device-data"></a>Samouczek: Generowanie danych urządzenia symulowanego
 
 > [!NOTE]
 > Ten artykuł jest częścią serii, samouczek dotyczący przy użyciu usługi Azure Machine Learning w usłudze IoT Edge. Jeśli została wyświetlona bezpośrednio w tym artykule, firma Microsoft zachęca rozpoczynać się [najpierw artykuł](tutorial-machine-learning-edge-01-intro.md) z tej serii, aby uzyskać najlepsze wyniki.
@@ -153,7 +153,7 @@ Dane, które właśnie wysłaliśmy do Twojego Centrum IoT był kierowany do kon
 
 1. Kliknij na jeden z tych folderów, aby znaleźć pliki danych z oznaczeniem **00** i **01** odpowiadający partycji.
 
-1. Pliki są zapisywane [Avro](http://avro.apache.org/) formatowanie, ale dwukrotne kliknięcie jednego z tych plików spowoduje to otwarcie innej karcie przeglądarki i częściowo przedstawienia tych danych. Jeśli zamiast tego zostanie wyświetlony monit, aby otworzyć go w programie, można wybrać program VS Code i będą prawidłowo renderowane.
+1. Pliki są zapisywane [Avro](https://avro.apache.org/) formatowanie, ale dwukrotne kliknięcie jednego z tych plików spowoduje to otwarcie innej karcie przeglądarki i częściowo przedstawienia tych danych. Jeśli zamiast tego zostanie wyświetlony monit, aby otworzyć go w programie, można wybrać program VS Code i będą prawidłowo renderowane.
 
 1. Nie ma potrzeby próbował odczytać lub interpretowania danych w tej chwili; Zrobimy to w kolejnym artykule.
 

@@ -3,20 +3,20 @@ title: 'Samouczek: interfejs API tłumaczenia mowy w usłudze Translator dla ję
 titleSuffix: Azure Cognitive Services
 description: Użyj interfejsu API tłumaczenia mowy w usłudze Translator, aby przetłumaczyć tekst w czasie rzeczywistym.
 services: cognitive-services
-author: v-jerkin
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
-ms.author: v-jerkin
+ms.author: swmachan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 68457367987305b6926f8f885a226cfcedd23873
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a3853dd810182948e12b578c33b8cb91bef4b1cf
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860317"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445582"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Samouczek: Aplikacja z użyciem interfejsu API tłumaczenia mowy w usłudze Translator w języku C#
 

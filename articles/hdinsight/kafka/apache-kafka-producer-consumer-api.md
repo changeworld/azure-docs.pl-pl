@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: 3dead1bdedb75a1b6fafb947da9c88094f0c4de9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/24/2019
+ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724156"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446411"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
 
@@ -65,8 +65,7 @@ Należy zrozumieć następujące ważne kwestie dotyczące pliku `pom.xml`:
     </dependency>
     ```
 
-    > [!NOTE]  
-    > Wpis `${kafka.version}` jest zadeklarowany w sekcji `<properties>..</properties>` pliku `pom.xml` i jest skonfigurowany zgodnie z wersją platformy Kafka znajdującą się w klastrze usługi HDInsight.
+    Wpis `${kafka.version}` jest zadeklarowany w sekcji `<properties>..</properties>` pliku `pom.xml` i jest skonfigurowany zgodnie z wersją platformy Kafka znajdującą się w klastrze usługi HDInsight.
 
 * Wtyczki: wtyczki Maven zapewniają różne możliwości. W tym projekcie są używane następujące wtyczki:
 
@@ -220,10 +219,19 @@ Użycie przez klientów w tej samej grupie jest obsługiwane przez partycje tema
 
 Rekordy na platformie Kafka są przechowywane w kolejności, w której zostały odebrane na partycji. Aby dostarczać rekordy *na partycji* w określonej kolejności, utwórz grupę odbiorców, w której liczba wystąpień odbiorców jest zgodna z liczbą partycji. Aby dostarczać rekordy *w temacie* w określonej kolejności, utwórz grupę odbiorców z jednym wystąpieniem odbiorcy.
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Aby wyczyścić zasoby utworzone w tym samouczku, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego klastra usługi HDInsight i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
+
+Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
+
+1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję __Grupy zasobów__, aby wyświetlić listę grup zasobów.
+2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
+3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym dokumencie zawarto informacje o sposobie korzystania z interfejsu API producenta i odbiorcy platformy Apache Kafka w usłudze HDInsight. Dowiedz się więcej o pracy z platformą Kafka, korzystając z następujących zasobów:
 
-* [Analyze Apache Kafka logs](apache-kafka-log-analytics-operations-management.md) (Analizowanie dzienników platformy Apache Kafka)
-* [Replikowanie danych między klastrami Apache Kafka](apache-kafka-mirroring.md)
-* [Apache Kafka Streams API with HDInsight](apache-kafka-streams-api.md) (Interfejs API strumieni platformy Apache Kafka w usłudze HDInsight)
+> [!div class="nextstepaction"]
+> [Analyze Apache Kafka logs](apache-kafka-log-analytics-operations-management.md) (Analizowanie dzienników platformy Apache Kafka)

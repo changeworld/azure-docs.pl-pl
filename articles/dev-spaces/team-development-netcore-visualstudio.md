@@ -11,12 +11,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: c3a988a831ad1069e5988f9c67e92a85a7a44840
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 53c870ad135fe13eb3bf7556678cac29352911aa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765204"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442927"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
 
@@ -65,8 +65,8 @@ Najpierw musimy wdrożyć punkt odniesienia naszych usług. To wdrożenie będzi
 1. Kliknij prawym przyciskiem myszy projekt w **Eksploratorze rozwiązań** i wybierz pozycję **Właściwości**.
 1. Wybierz kartę **Debugowanie** po lewej stronie, aby wyświetlić ustawienia usługi Azure Dev Spaces.
 1. Wybierz pozycję **Zmień**, aby utworzyć przestrzeń, która będzie używana, gdy naciśniesz klawisz F5 lub klawisze Ctrl+F5 dla usługi.
-1. Na liście rozwijanej przestrzeni wybierz pozycję **\<Utwórz nową przestrzeń...\>**.
-1. Upewnij się, że dla przestrzeni nadrzędnej jest ustawiona wartość **\<brak\>**, a następnie wprowadź nazwę przestrzeni **dev**. Kliknij przycisk OK.
+1. Na liście rozwijanej przestrzeni wybierz pozycję **\<Utwórz nową przestrzeń...\>** .
+1. Upewnij się, że dla przestrzeni nadrzędnej jest ustawiona wartość **\<brak\>** , a następnie wprowadź nazwę przestrzeni **dev**. Kliknij przycisk OK.
 1. Naciśnij klawisze Ctrl+F5, aby uruchomić usługę _mywebapi_ bez w dołączonego debugera.
 1. Przełącz się na okno programu Visual Studio z projektem _webfrontend_, a następnie naciśnij klawisze Ctrl+F5, aby także go uruchomić.
 
@@ -90,7 +90,7 @@ Wykonaj następujące czynności, aby utworzyć nowe miejsce:
 2. Kliknij prawym przyciskiem myszy projekt w **Eksploratorze rozwiązań** i wybierz pozycję **Właściwości**.
 3. Wybierz kartę **Debugowanie** po lewej stronie, aby wyświetlić ustawienia usługi Azure Dev Spaces.
 4. W tym miejscu możesz zmienić lub utworzyć klaster i/lub miejsce, które będzie używane po naciśnięciu klawiszy F5 lub Ctrl+F5. *Upewnij się, że jest wybrane utworzone wcześniej miejsce usługi Azure Dev Spaces*.
-5. Na liście rozwijanej przestrzeni wybierz pozycję **\<Utwórz nową przestrzeń...\>**.
+5. Na liście rozwijanej przestrzeni wybierz pozycję **\<Utwórz nową przestrzeń...\>** .
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
@@ -124,9 +124,9 @@ Poniżej przedstawiono diagram, który pomoże Ci zrozumieć, jak działają ró
 Ta wbudowana funkcja usługi Azure Dev Spaces umożliwia kompleksowe testowanie kodu w udostępnionym środowisku bez konieczności ponownego tworzenia pełnych stosów usług przez wszystkich deweloperów w ich miejscach. Taki routing wymaga przekazywania nagłówków propagowania w kodzie aplikacji, jak pokazano w poprzednim kroku tego przewodnika.
 
 ### <a name="test-code-running-in-the-devscott-space"></a>Testowanie kodu uruchamianego w przestrzeni _dev/scott_
-Aby przetestować nową wersję aplikacji *mywebapi* w połączeniu z aplikacją *webfrontend*, otwórz w przeglądarce adres URL publicznego punktu dostępu dla aplikacji *webfrontend* (na przykład http://dev.webfrontend.123456abcdef.eus.azds.io)) i przejdź do strony Informacje. Powinien zostać wyświetlony pierwotny komunikat „Hello from webfrontend and Hello from mywebapi”.
+Aby przetestować nową wersję aplikacji *mywebapi* w połączeniu z aplikacją *webfrontend*, otwórz w przeglądarce adres URL publicznego punktu dostępu dla aplikacji *webfrontend* (na przykład http://dev.webfrontend.123456abcdef.eus.azds.io) ) i przejdź do strony Informacje. Powinien zostać wyświetlony pierwotny komunikat „Hello from webfrontend and Hello from mywebapi”.
 
-Teraz dodaj część „scott.s.” do adresu URL, aby wyglądał on mniej więcej tak: http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io i odśwież przeglądarkę. Powinien zostać osiągnięty punkt przerwania ustawiony w projekcie *mywebapi*. Naciśnij klawisz F5, aby kontynuować. W przeglądarce powinien zostać wyświetlony nowy komunikat „Hello from webfrontend and mywebapi now says something new”. Jest to spowodowane tym, że ścieżka do zaktualizowanego kodu w aplikacji *mywebapi* jest uruchamiana w przestrzeni _dev/scott_.
+Teraz dodaj część „scott.s.” część adresu URL, więc odczytywanych jest podobny do protokołu http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io i Odśwież zawartość przeglądarki. Powinien zostać osiągnięty punkt przerwania ustawiony w projekcie *mywebapi*. Naciśnij klawisz F5, aby kontynuować. W przeglądarce powinien zostać wyświetlony nowy komunikat „Hello from webfrontend and mywebapi now says something new”. Jest to spowodowane tym, że ścieżka do zaktualizowanego kodu w aplikacji *mywebapi* jest uruchamiana w przestrzeni _dev/scott_.
 
 Mamy nadzieję, że po utworzeniu przestrzeni _dev_, która zawsze zawiera najnowsze zmiany, i zakładając, że aplikacja jest zaprojektowana tak, aby wykorzystywać oparty na przestrzeniach routing usługi DevSpace, łatwo będzie zobaczyć, że usługa Dev Spaces może znacznie ułatwić testowanie nowych funkcji w kontekście większej aplikacji. Zamiast wdrażać _wszystkie_ usługi w przestrzeni prywatnej, możesz utworzyć przestrzeń prywatną, która wywodzi się z przestrzeni _dev_, i uruchamiać tylko te usługi, nad którymi tak naprawdę pracujesz. Infrastruktura routingu usługi Dev Space zajmie się resztą, wykorzystując tyle usług spoza przestrzeni prywatnej, ile uda jej się znaleźć, jednocześnie przyjmując domyślnie najnowszą wersję uruchomioną w przestrzeni _dev_. A co najlepsze, _wielu_ deweloperów może aktywnie programować różne usługi w tym samym czasie we własnych przestrzeniach, nie przeszkadzając sobie nawzajem.
 

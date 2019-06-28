@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/13/2019
-ms.openlocfilehash: fba9159fc4752a701c891fbe92a2e7e8023f0a54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 06/25/2019
+ms.openlocfilehash: b6ef08be346aebd220b7234253ce45c4615e38a9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165928"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445521"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: Korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
 
@@ -410,7 +410,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
       | --- | --- |
       | Subskrypcja | Twoja subskrypcja platformy Azure |
       | Grupa zasobów | Grupa zasobów zawierająca zasoby. |
-      | Lokalizacja | Region świadczenia usługi Azure, w którym są tworzone zasoby. |
+      | Location | Region świadczenia usługi Azure, w którym są tworzone zasoby. |
       | Nazwa klastra Kafka | Nazwa klastra Kafka. |
       | Nazwa klastra Storm | Nazwa klastra Storm. |
       | Nazwa użytkownika logowania klastra | Nazwa użytkownika będącego administratorem klastrów. |
@@ -629,15 +629,9 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
 3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
 
-> [!WARNING]  
-> Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć.
-> 
-> Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób użycia topologii systemu [Apache Storm](https://storm.apache.org/) do zapisywania i odczytywania danych na platformie [Apache Kafka](https://kafka.apache.org/) w usłudze HDInsight. Pokazano również, jak zapisać dane w magazynie zgodnym z systemem plików [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) używanym przez usługę HDInsight.
 
-Aby dowiedzieć się więcej o korzystaniu z platformy Kafka w usłudze HDInsight, zobacz dokument [Korzystanie z interfejsu API producenta i konsumenta platformy Apache Kafka](kafka/apache-kafka-producer-consumer-api.md).
-
-Aby uzyskać informacje dotyczące wdrażania i monitorowania topologii w usłudze HDInsight opartej na systemie Linux, zobacz dokument [Wdrażanie topologii systemu Apache Storm w usłudze HDInsight opartej na systemie Linux i zarządzanie nimi](storm/apache-storm-deploy-monitor-topology-linux.md)
+> [!div class="nextstepaction"]
+> [Za pomocą interfejsu API Apache Kafka producentów i konsumentów](kafka/apache-kafka-producer-consumer-api.md)

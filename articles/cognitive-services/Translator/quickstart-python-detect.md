@@ -3,19 +3,19 @@ title: 'Szybki start: wykrywanie języka tekstu, Python — interfejs API tłuma
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak zidentyfikować język dostarczonego tekstu przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 18531c1fa3a3394d68656fe1ad4a3f996d05b371
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.author: swmachan
+ms.openlocfilehash: 4bf24582bed7d80616d040f807c603567476f33c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340997"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444955"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem języka Python
 
@@ -91,6 +91,8 @@ headers = {
     'X-ClientTraceId': str(uuid.uuid4())
 }
 ```
+
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-request-to-detect-text-language"></a>Tworzenie żądania w celu wykrycia języka tekstu
 

@@ -3,20 +3,20 @@ title: Bot pytań i odpowiedzi — usługa Azure Bot Service — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Utwórz czatbot pytań i odpowiedzi na podstawie strony publikowania dla istniejącej bazy wiedzy. Ten bot używa v4 Bot Framework SDK. Nie trzeba pisać kodu do tworzenia bota, cały kod znajduje się za Ciebie.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 06/11/2019
-ms.author: tulasim
-ms.openlocfilehash: b3bae01d65685aa9ea7bfc95d1f1454741d37b5e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: tutorial
+ms.date: 06/24/2019
+ms.author: diberry
+ms.openlocfilehash: 1d475d988847bd4cc9e37b91a0c5d28678cb05f2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053221"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446650"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Samouczek: Utwórz Bota pytań i odpowiedzi z usługi Azure Bot Service w wersji 4
 
@@ -52,7 +52,7 @@ Utwórz bota jako aplikację kliencką na bazie wiedzy knowledge base.
     |Nazwa bota|`my-tutorial-kb-bot`|Jest to nazwa zasobu platformy Azure dla bota.|
     |Subskrypcja|Zobacz cel.|Wybierz tej samej subskrypcji co użyte do utworzenia zasobów usługi QnA Maker.|
     |Grupa zasobów|`my-tutorial-rg`|Grupa zasobów, używany dla wszystkich powiązanych bot zasobów platformy Azure.|
-    |Lokalizacja|`west us`|Lokalizacja zasobów platformy Azure bot.|
+    |Location|`west us`|Lokalizacja zasobów platformy Azure bot.|
     |Warstwa cenowa|`F0`|Warstwy bezpłatna usługa Azure bot service.|
     |Nazwa aplikacji|`my-tutorial-kb-bot-app`|Jest to aplikacji sieci web do obsługi tylko Twój bot. To nie powinna być taką samą nazwę aplikacji, ponieważ używa już usługi QnA Maker. Udostępnianie aplikacji sieci web usługi QnA Maker z innych zasobów nie jest obsługiwane.|
     |Zestaw SDK języka|C#|Jest to podstawowy język programowania używany przez zestaw SDK platformy bot framework. Dopuszczalne są [ C# ](https://github.com/Microsoft/botbuilder-dotnet) lub [Node.js](https://github.com/Microsoft/botbuilder-js).|
@@ -84,12 +84,6 @@ Utwórz bota jako aplikację kliencką na bazie wiedzy knowledge base.
 
     Aby uzyskać więcej informacji na temat Boty Azure zobacz [Użyj usługi QnA Maker odpowiedzi na pytania](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)
 
-## <a name="related-to-qna-maker-bots"></a>Powiązane z botami usługi QnA Maker
-
-* Bot pomocy usługi QnA Maker, używane w portalu narzędzia QnA Maker jest dostępna jako [przykładowe bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot).
-    ![Ikona bot pomocy usługi QnA Maker jest czerwony robota](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
-* [Boty opieki zdrowotnej](https://docs.microsoft.com/HealthBot/qna_model_howto) Użyj usługi QnA Maker jako jeden z jego [modeli językowych](https://docs.microsoft.com/HealthBot/qna_model_howto).
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Po ukończeniu tego samouczka bot, bot należy usunąć w witrynie Azure portal. 
@@ -103,6 +97,16 @@ Jeśli nie utworzono nową grupę zasobów, musisz znaleźć zasoby skojarzone z
 * Usługa Cognitive
 * Usługa App service
 * Opcjonalnie może również obejmować z usługi application insights i magazynu dla danych szczegółowych informacji w aplikacji
+
+
+## <a name="related-to-qna-maker-bots"></a>Powiązane z botami usługi QnA Maker
+
+* Bot pomocy usługi QnA Maker, używane w portalu narzędzia QnA Maker jest dostępna jako [przykładowe bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot).
+    ![Ikona bot pomocy usługi QnA Maker jest czerwony robota](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [Boty opieki zdrowotnej](https://docs.microsoft.com/HealthBot/qna_model_howto) Użyj usługi QnA Maker jako jeden z jego [modeli językowych](https://docs.microsoft.com/HealthBot/qna_model_howto).
+
+
+[!INCLUDE [Bot Information](../../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

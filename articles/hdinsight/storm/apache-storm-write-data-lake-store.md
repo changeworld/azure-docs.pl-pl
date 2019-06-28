@@ -1,69 +1,44 @@
 ---
-title: Apache Storm zapisu do usługi Storage/Data Lake Storage — Azure HDInsight
-description: Dowiedz się, jak używać platformy Apache Storm można zapisać do magazynu zgodnego z systemem HDFS dla HDInsight.
+title: Samouczek — użycia systemu Apache Storm można zapisać do usługi Storage/Data Lake Storage — Azure HDInsight
+description: Samouczek — Dowiedz się, jak używać platformy Apache Storm można zapisać do magazynu zgodnego z systemem HDFS dla usługi Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 02/27/2018
-ms.openlocfilehash: 4ba0c861674eb2308cf1f96c33d0792f3e1a0f94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: tutorial
+ms.date: 06/24/2019
+ms.openlocfilehash: 5c1376c7d1afe9c9702cfb43a146ac1cd17d6e58
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683678"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428345"
 ---
-# <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Zapisu Apache Hadoop HDFS z systemu Storm Apache na HDInsight
+# <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Samouczek: Zapis Apache Hadoop HDFS z systemu Apache Storm w usłudze Azure HDInsight
 
-Dowiedz się, jak używać [Apache Storm](https://storm.apache.org/) można zapisać danych do magazynu zgodnego z systemem HDFS, używane przez system Apache Storm w HDInsight. HDInsight można użyć usługi Azure Data Lake Storage i Azure Storage jako magazynu zgodnego systemem plików HDFS. System STORM udostępnia [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) składnik, który zapisuje dane do systemu plików HDFS. Ten dokument zawiera informacje na temat pisania do dowolnego typu magazynu z HdfsBolt. 
+Ten samouczek pokazuje, jak używać platformy Apache Storm można zapisać danych do magazynu zgodnego z systemem HDFS, używane przez system Apache Storm w HDInsight. HDInsight można użyć usługi Azure Data Lake Storage i Azure Storage jako magazynu zgodnego systemem plików HDFS. System STORM udostępnia [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) składnik, który zapisuje dane do systemu plików HDFS. Ten dokument zawiera informacje na temat pisania do dowolnego typu magazynu z HdfsBolt.
 
-> [!IMPORTANT]  
-> Przykładową topologię używane w tym dokumencie opiera się na składniki, które są dołączone do systemu Storm w HDInsight. Może wymagać modyfikacji do pracy z usługą Azure Data Lake Storage używany z innymi klastrów Apache Storm.
+Przykładową topologię używane w tym dokumencie opiera się na składniki, które są dołączone do systemu Storm w HDInsight. Może wymagać modyfikacji do pracy z usługą Azure Data Lake Storage używany z innymi klastrów Apache Storm.
 
-## <a name="get-the-code"></a>Uzyskiwanie kodu
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
-Projekt zawierający Ta topologia jest dostępna do pobrania z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
+> [!div class="checklist"]
+> * Konfigurowanie klastra za pomocą akcji skryptu
+> * Tworzenie i pakowanie topologii
+> * Wdrażanie i uruchamianie topologii
+> * Wyświetlanie danych wyjściowych
+> * Zatrzymywanie topologii
 
-Aby skompilować ten projekt, potrzebne jest następująca konfiguracja środowiska deweloperskiego:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zestaw [Java JDK 1.8](https://aka.ms/azure-jdks) lub nowszy. Usługa HDInsight w wersji 3.5 lub nowszej wymaga środowiska Java 8.
+* [Java Developer Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
 
-* [Maven 3.x](https://maven.apache.org/download.cgi)
+* [Narzędzia Apache Maven](https://maven.apache.org/download.cgi) prawidłowo [zainstalowane](https://maven.apache.org/install.html) zgodnie z Apache.  Maven to projekt system kompilacji dla projektów Java.
 
-Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji roboczej mogą zostać ustawione następujące zmienne środowiskowe. Należy jednak sprawdzić, czy te zmienne istnieją i czy zawierają poprawne wartości dla systemu.
+* Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* `JAVA_HOME` — powinna wskazywać katalog, w którym jest zainstalowany zestaw JDK.
-* `PATH` — powinna zawierać następujące ścieżki:
-  
-    * `JAVA_HOME` (lub równoważną ścieżkę).
-    * `JAVA_HOME\bin` (lub równoważną ścieżkę).
-    * Katalog, w którym zainstalowano narzędzie Maven.
-
-## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Jak używać HdfsBolt z HDInsight
-
-> [!IMPORTANT]  
-> Przed użyciem HdfsBolt z systemu Storm w HDInsight, należy najpierw użyć akcji skryptu można skopiować pliki jar wymagane do `extpath` dla usługi Storm. Aby uzyskać więcej informacji zobacz Konfigurowanie sekcji klastra.
-
-HdfsBolt wykorzystuje schemat pliku, zapewniające zrozumienie, jak można zapisać do systemu plików HDFS. Za pomocą HDInsight wykonaj jedną z następujących systemów:
-
-* `wasb://`: Używane z konta usługi Azure Storage.
-* `abfs://`: Używane, za pomocą usługi Azure Data Lake Storage Gen2.
-* `adl://`: Używane, za pomocą usługi Azure Data Lake Storage Gen1.
-
-Poniższa tabela zawiera przykłady użycia systemu plików w różnych scenariuszach:
-
-| Schemat | Uwagi |
-| ----- | ----- |
-| `wasb:///` | Domyślne konto magazynu jest kontener obiektów blob na koncie usługi Azure Storage |
-| `abfs:///` | Domyślne konto magazynu jest katalogiem na koncie usługi Azure Data Lake Storage Gen2 |
-| `adl:///` | Domyślne konto magazynu jest katalogiem w usługi Azure Data Lake Storage Gen1. Podczas tworzenia klastra należy określić katalog, w usługi Data Lake Storage, który jest elementem głównym systemu HDFS z klastra. Na przykład `/clusters/myclustername/` katalogu. |
-| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Konto inne niż domyślne, (dodatkowe) usługi Azure storage skojarzonym z klastrem. |
-| `abfs://CONTAINER@ACCOUNT.dfs.core.windows.net/` | Konto inne niż domyślne, (dodatkowe) usługi Azure storage skojarzonym z klastrem. |
-| `adl://STORENAME/` | Katalog główny usługi Data Lake Storage używane przez klaster. Ten schemat umożliwia dostęp do danych znajdujących się poza katalogiem, który zawiera klastra systemu plików. |
-
-Aby uzyskać więcej informacji, zobacz [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odwołania w serwisie Apache.org.
+* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) do obsługi klastrów magazynu podstawowego. Takie rozwiązanie byłoby `wasb://` dla usługi Azure Storage `abfs://` dla usługi Azure Data Lake Storage Gen2 lub `adl://` dla usługi Azure Data Lake Storage Gen1. Bezpieczny transfer jest włączona dla usługi Azure Storage lub Data Lake Storage Gen2, identyfikator URI będzie mieć `wasbs://` lub `abfss://`odpowiednio Zobacz też [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md).
 
 ### <a name="example-configuration"></a>Przykładowa konfiguracja
 
@@ -135,11 +110,14 @@ Aby uzyskać więcej informacji na strukturze strumienia, zobacz [ https://storm
 
 ## <a name="configure-the-cluster"></a>Konfigurowanie klastra
 
-Domyślnie system Storm w HDInsight nie ma składników, które HdfsBolt używa do komunikowania się za pomocą usługi Azure Storage lub magazynu usługi Data Lake w ścieżce systemu Storm w. Użyj następujących akcji skryptu, aby dodać te składniki mogą `extlib` katalogu dla usługi Storm w klastrze:
+Domyślnie system Storm w HDInsight nie ma składników, `HdfsBolt` komunikuje się z usługi Azure Storage lub magazynu usługi Data Lake w ścieżce systemu Storm w. Użyj następujących akcji skryptu, aby dodać te składniki mogą `extlib` katalogu dla usługi Storm w klastrze:
 
-* Identyfikator URI skryptu: `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`
-* Węzły do zastosowania do: Nimbus, nadzorca
-* Parametry: Brak
+| Właściwość | Wartość |
+|---|---|
+|Typ skryptu |— Niestandardowa|
+|Identyfikator URI skryptu powłoki systemowej |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
+|Typy węzłów |Nimbus, nadzorca|
+|Parametry |Brak|
 
 Aby uzyskać informacje przy użyciu tego skryptu z klastrem, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](./../hdinsight-hadoop-customize-cluster-linux.md) dokumentu.
 
@@ -148,47 +126,47 @@ Aby uzyskać informacje przy użyciu tego skryptu z klastrem, zobacz [HDInsight 
 1. Pobierz przykładowy projekt z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) do swojego środowiska projektowego.
 
 2. Z poziomu wiersza polecenia terminal lub skorupach sesji Zmień katalogi na katalog główny pobranego projektu. Aby skompilować i pakiet topologii, użyj następującego polecenia:
-   
-        mvn compile package
-   
+
+    ```cmd
+    mvn compile package
+    ```
+
     Po zakończeniu kompilacji i pakowanie jest nowy katalog o nazwie `target`, który zawiera plik o nazwie `StormToHdfs-1.0-SNAPSHOT.jar`. Ten plik zawiera skompilowanych topologii.
 
 ## <a name="deploy-and-run-the-topology"></a>Wdrażanie i uruchamianie topologii
 
-1. Użyj następującego polecenia, aby skopiować topologii do klastra HDInsight. Zastąp **użytkownika** z nazwą użytkownika protokołu SSH, które są używane podczas tworzenia klastra. Zamień ciąg **CLUSTERNAME** na nazwę klastra.
-   
-        scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
-   
-    Po wyświetleniu monitu wprowadź hasło użyte podczas tworzenia użytkownika SSH dla klastra. Jeśli klucz publiczny jest używany zamiast hasła, może być konieczne użycie `-i` parametru do określenia ścieżki do odpowiedniego klucza prywatnego.
-   
-   > [!NOTE]  
-   > Aby uzyskać więcej informacji na temat używania polecenia `scp` w usłudze HDInsight, zobacz [Korzystanie z protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Użyj następującego polecenia, aby skopiować topologii do klastra HDInsight. Zastąp `CLUSTERNAME` nazwą klastra.
 
-2. Po ukończeniu przekazywania, użyj następującego polecenia, aby połączyć się z klastrem HDInsight przy użyciu protokołu SSH. Zastąp **użytkownika** z nazwą użytkownika protokołu SSH, które są używane podczas tworzenia klastra. Zamień ciąg **CLUSTERNAME** na nazwę klastra.
-   
-        ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
-   
-    Po wyświetleniu monitu wprowadź hasło użyte podczas tworzenia użytkownika SSH dla klastra. Jeśli klucz publiczny jest używany zamiast hasła, może być konieczne użycie `-i` parametru do określenia ścieżki do odpowiedniego klucza prywatnego.
-   
-   Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    ```cmd
+    scp target\StormToHdfs-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
+    ```
 
-3. Po nawiązaniu połączenia użyj następującego polecenia, aby utworzyć plik o nazwie `dev.properties`:
+1. Po ukończeniu przekazywania, użyj następującego polecenia, aby połączyć się z klastrem HDInsight przy użyciu protokołu SSH. Zastąp `CLUSTERNAME` nazwą klastra.
 
-        nano dev.properties
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-4. Skorzystaj z poniższego tekstu jako zawartość `dev.properties` pliku:
+1. Po nawiązaniu połączenia użyj następującego polecenia, aby utworzyć plik o nazwie `dev.properties`:
 
-        hdfs.write.dir: /stormdata/
-        hdfs.url: wasb:///
+    ```bash
+    nano dev.properties
+    ```
 
-    > [!IMPORTANT]  
-    > W tym przykładzie przyjęto założenie, że klaster używa konta usługi Azure Storage jako magazynu domyślnego. Jeśli klaster używa usługi Azure Data Lake Storage Gen2, użyj `hdfs.url: abfs:///` zamiast tego. Jeśli klaster używa usługi Azure Data Lake Storage Gen1, użyj `hdfs.url: adl:///` zamiast tego.
-    
-    Aby zapisać plik, użyj __Ctrl + X__, następnie __Y__, a na koniec __Enter__. Wartości w tym pliku Ustaw adres URL magazynu jeziora danych i nazwę katalogu, który dane są zapisywane.
+1. Skorzystaj z poniższego tekstu jako zawartość `dev.properties` pliku. Na podstawie Popraw stosownie do potrzeb Twojej [schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme).
 
-3. Użyj następującego polecenia, aby rozpocząć topologii:
-   
-        storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
+    ```
+    hdfs.write.dir: /stormdata/
+    hdfs.url: wasbs:///
+    ```
+
+    Aby zapisać plik, użyj __Ctrl + X__, następnie __Y__, a na koniec __Enter__. Wartości w tym pliku Ustaw adres URL magazynu i nazwę katalogu, który dane są zapisywane.
+
+1. Użyj następującego polecenia, aby rozpocząć topologii:
+
+    ```bash
+    storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
+    ```
 
     To polecenie uruchamia topologii przy użyciu platformy strumienia, przesyłając do węzeł Nimbus klastra. Topologia jest definiowany przez `writetohdfs.yaml` plik dołączony plik jar. `dev.properties` Plik jest przekazywany jako filtr, a wartości zawarte w pliku są odczytywane przez topologię.
 
@@ -196,32 +174,44 @@ Aby uzyskać informacje przy użyciu tego skryptu z klastrem, zobacz [HDInsight 
 
 Aby wyświetlić dane, użyj następującego polecenia:
 
-    hdfs dfs -ls /stormdata/
+  ```bash
+  hdfs dfs -ls /stormdata/
+  ```
 
-Zostanie wyświetlona lista plików utworzonych przez tej topologii.
+Zostanie wyświetlona lista plików utworzonych przez tej topologii. Poniżej przedstawiono przykładowy dane zwrócone przez poprzednie polecenia:
 
-Poniżej przedstawiono przykładowy dane zwrócone przez poprzednie polecenia:
-
-    Found 30 items
-    -rw-r-----+  1 sshuser sshuser       488000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt
-    -rw-r-----+  1 sshuser sshuser       444000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-1-1488568404567.txt
-    -rw-r-----+  1 sshuser sshuser       502000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-10-1488568408678.txt
-    -rw-r-----+  1 sshuser sshuser       582000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-11-1488568411636.txt
-    -rw-r-----+  1 sshuser sshuser       464000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-12-1488568411884.txt
+```output
+Found 23 items
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-0-1561407909895.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-1-1561407915577.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-10-1561407943327.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-11-1561407946312.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-12-1561407949320.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-13-1561407952662.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-14-1561407955502.txt
+```
 
 ## <a name="stop-the-topology"></a>Zatrzymywanie topologii
 
 STORM topologie działają aż do zatrzymania lub klaster jest usuwany. Aby zatrzymać topologię, użyj następującego polecenia:
 
-    storm kill hdfswriter
+```bash
+storm kill hdfswriter
+```
 
-## <a name="delete-your-cluster"></a>Usuwanie klastra
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+Aby wyczyścić zasoby utworzone w tym samouczku, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego klastra usługi HDInsight i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
+
+Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
+
+1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję __Grupy zasobów__, aby wyświetlić listę grup zasobów.
+2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
+3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wiesz jak używać platformy Apache Storm można zapisać do usługi Azure Storage i Azure Data Lake Storage odnajdywania innych [przykłady Apache Storm HDInsight](apache-storm-example-topology.md).
+W tym samouczku przedstawiono sposób użycia systemu Apache Storm można zapisać danych do magazynu zgodnego z systemem HDFS, używane przez system Apache Storm w HDInsight.
 
-## <a name="see-also"></a>Zobacz także
-* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+> [!div class="nextstepaction"]
+> Odkryj inne [przykłady HDInsight Apache Storm](apache-storm-example-topology.md)

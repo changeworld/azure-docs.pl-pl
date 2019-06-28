@@ -7,24 +7,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: d76ac8cc1673f1df8981a543321d34aa57cd0896
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/25/2019
+ms.openlocfilehash: 0639ecaa0e4ae0581a6c88e1ea9a47de870a8355
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295480"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446390"
 ---
-# <a name="tutorial-apache-kafka-streams-api"></a>Samouczek: interfejs API strumieni platformy Kafka
+# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Samouczek: Użyj platformy Apache Kafka strumieni interfejsu API w usłudze Azure HDInsight
 
-Dowiedz się, jak utworzyć aplikację, która używa interfejsu API strumieni platformy Apache Kafka, i uruchomić ją na platformie Kafka w usłudze HDInsight. 
+Dowiedz się, jak utworzyć aplikację, która używa interfejsu API strumieni platformy Apache Kafka, i uruchomić ją na platformie Kafka w usłudze HDInsight.
 
 Aplikacja przedstawiona w tym samouczku zlicza przesyłane strumieniowo wyrazy. Odczytuje ona dane tekstowe z tematu platformy Kafka, wyodrębnia poszczególne wyrazy, a następnie zapisuje liczbę wyrazów w innym temacie platformy Kafka.
 
-> [!NOTE]  
-> Przetwarzanie strumienia platformy Kafka jest często wykonywane przy użyciu platformy Apache Spark lub systemu Apache Storm. Platforma Kafka w wersji 1.1.0 (HDInsight 3.5 i 3.6) wprowadzono interfejs API strumieni platformy Kafka. Ten interfejs API umożliwia przekształcanie strumieni danych między tematami wejściowymi i wyjściowymi. W niektórych przypadkach może to być alternatywą dla tworzenia rozwiązań przesyłania strumieniowego platformy Spark lub systemu Storm. 
->
-> Aby uzyskać więcej informacji o strumieniach platformy Kafka, zobacz dokumentację [Intro to Streams](https://kafka.apache.org/10/documentation/streams/) (Wprowadzenie do strumieni) w serwisie Apache.org.
+Przetwarzanie strumienia platformy Kafka jest często wykonywane przy użyciu platformy Apache Spark lub systemu Apache Storm. Platforma Kafka w wersji 1.1.0 (HDInsight 3.5 i 3.6) wprowadzono interfejs API strumieni platformy Kafka. Ten interfejs API umożliwia przekształcanie strumieni danych między tematami wejściowymi i wyjściowymi. W niektórych przypadkach może to być alternatywą dla tworzenia rozwiązań przesyłania strumieniowego platformy Spark lub systemu Storm.
+
+Aby uzyskać więcej informacji o strumieniach platformy Kafka, zobacz dokumentację [Intro to Streams](https://kafka.apache.org/10/documentation/streams/) (Wprowadzenie do strumieni) w serwisie Apache.org.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -68,8 +67,7 @@ Należy zrozumieć następujące ważne kwestie dotyczące pliku `pom.xml`:
     </dependency>
     ```
 
-    > [!NOTE]  
-    > Wpis `${kafka.version}` jest zadeklarowany w sekcji `<properties>..</properties>` pliku `pom.xml` i jest skonfigurowany zgodnie z wersją platformy Kafka znajdującą się w klastrze usługi HDInsight.
+    Wpis `${kafka.version}` jest zadeklarowany w sekcji `<properties>..</properties>` pliku `pom.xml` i jest skonfigurowany zgodnie z wersją platformy Kafka znajdującą się w klastrze usługi HDInsight.
 
 * Wtyczki: wtyczki Maven zapewniają różne możliwości. W tym projekcie są używane następujące wtyczki:
 
@@ -206,8 +204,7 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
    * `RekeyedIntermediateTopic`: w tym temacie zachodzi ponowne dzielenie danych, ponieważ liczba wyrazów jest aktualizowana za pomocą operatora `countByKey`.
    * `wordcount-example-Counts-changelog`: ten temat jest magazynem stanów używanym przez operację `countByKey`
 
-     > [!IMPORTANT]  
-     > Platformę Kafka w usłudze HDInsight można również skonfigurować w taki sposób, aby automatycznie tworzyła tematy. Aby uzyskać więcej informacji, zobacz dokument [Configure automatic topic creation](apache-kafka-auto-create-topics.md) (Konfigurowanie automatycznego tworzenia tematów).
+    Platformę Kafka w usłudze HDInsight można również skonfigurować w taki sposób, aby automatycznie tworzyła tematy. Aby uzyskać więcej informacji, zobacz dokument [Configure automatic topic creation](apache-kafka-auto-create-topics.md) (Konfigurowanie automatycznego tworzenia tematów).
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
@@ -217,8 +214,7 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    > [!NOTE]  
-    > Może zostać wyświetlone ostrzeżenie dotyczące mechanizmu Apache log4j. Możne je zignorować.
+    Może zostać wyświetlone ostrzeżenie dotyczące mechanizmu Apache log4j. Możne je zignorować.
 
 2. Aby wysyłać rekordy do tematu `test`, użyj następującego polecenia w celu uruchomienia aplikacji producenta:
 
@@ -232,8 +228,7 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer --from-beginning
     ```
 
-    > [!NOTE]  
-    > Dzięki użyciu parametrów `--property` odbiorca konsoli drukuje zarówno klucz (wyraz), jak i liczbę (wartość). Ten parametr konfiguruje również deserializatora do użycia podczas odczytu tych wartości z platformy Kafka.
+    Dzięki użyciu parametrów `--property` odbiorca konsoli drukuje zarówno klucz (wyraz), jak i liczbę (wartość). Ten parametr konfiguruje również deserializatora do użycia podczas odczytu tych wartości z platformy Kafka.
 
     Dane wyjściowe będą podobne do następującego tekstu:
    
@@ -250,8 +245,7 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
         jumped  13640
         jumped  13641
    
-    > [!NOTE]  
-    > Parametr `--from-beginning` konfiguruje odbiorcę, aby rozpoczął przetwarzanie od początku rekordów przechowywanych w temacie. Liczba wystąpień zwiększa się każdorazowo po napotkaniu wyrazu, dlatego temat zawiera wiele pozycji dla każdego wyrazu ze zwiększającą się liczbą wystąpień.
+    Parametr `--from-beginning` konfiguruje odbiorcę, aby rozpoczął przetwarzanie od początku rekordów przechowywanych w temacie. Liczba wystąpień zwiększa się każdorazowo po napotkaniu wyrazu, dlatego temat zawiera wiele pozycji dla każdego wyrazu ze zwiększającą się liczbą wystąpień.
 
 4. Użyj klawiszy __Ctrl + C__, aby zakończyć działanie producenta. Podobnie użyj klawiszy __Ctrl + C__, aby zakończyć działanie aplikacji i odbiorcy.
 
@@ -264,9 +258,19 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Aby wyczyścić zasoby utworzone w tym samouczku, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego klastra usługi HDInsight i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
+
+Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
+
+1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję __Grupy zasobów__, aby wyświetlić listę grup zasobów.
+2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
+3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym dokumencie zawarto informacje o sposobie korzystania z interfejsu API strumieni platformy Apache Kafka w usłudze HDInsight. Dowiedz się więcej o pracy z platformą Kafka, korzystając z następujących zasobów:
+W tym dokumencie zawarto informacje o sposobie korzystania z interfejsu API strumieni platformy Apache Kafka w usłudze HDInsight. Użyj następującego polecenia, aby dowiedzieć się więcej o pracy z platformą Kafka.
 
-* [Analyze Apache Kafka logs](apache-kafka-log-analytics-operations-management.md) (Analizowanie dzienników platformy Apache Kafka)
-* [Replikowanie danych między klastrami Apache Kafka](apache-kafka-mirroring.md)
+> [!div class="nextstepaction"]
+> [Analyze Apache Kafka logs](apache-kafka-log-analytics-operations-management.md) (Analizowanie dzienników platformy Apache Kafka)

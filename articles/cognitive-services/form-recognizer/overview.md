@@ -9,16 +9,16 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 8fb382227c71fce7ebe062057adf5edfb90a1a92
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 82ee2aa5627ac5fa4584f5af6b6b80cc2813c667
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601629"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441836"
 ---
 # <a name="what-is-form-recognizer"></a>Co to jest rozpoznawanie formularzy?
 
-Usługa rozpoznawania formularzy na platformie Azure to usługa poznawcza używająca technologii uczenia maszynowego do identyfikowania i wyodrębniania par klucz-wartość i danych tabeli z dokumentów formularzy. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Aby wywołać niestandardowy model rozpoznawania formularza, mniejsza złożoność i łatwo zintegrować go z przepływu pracy lub aplikacji przy użyciu prostego interfejsu API REST. Aby rozpocząć, wystarczy pięć dokumentów formularza lub pusty formularz z tego samego typu co Twoje materiały danych wejściowych. Możesz szybko uzyskać dokładne wyniki, które są dostosowane do określonej zawartości bez dużych ręcznej interwencji lub wiele różnych danych do analizy doświadczenia.
+Usługa rozpoznawania formularzy na platformie Azure to usługa poznawcza używająca technologii uczenia maszynowego do identyfikowania i wyodrębniania par klucz-wartość i danych tabeli z dokumentów formularzy. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Aby wywołać niestandardowy model rozpoznawania formularza, mniejsza złożoność i łatwo zintegrować go z przepływu pracy lub aplikacji przy użyciu prostego interfejsu API REST. Aby rozpocząć, wystarczy pięć dokumentów wypełniony formularz lub dwie formy wypełniane oraz pusty formularz z tego samego typu co Twoje materiały danych wejściowych. Możesz szybko uzyskać dokładne wyniki, które są dostosowane do określonej zawartości bez dużych ręcznej interwencji lub wiele różnych danych do analizy doświadczenia.
 
 ## <a name="request-access"></a>Żądaj dostępu
 Aparat rozpoznawania formularza jest dostępna w wersji zapoznawczej dostęp ograniczony. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) formularza. Formularz żądania informacji o Tobie, firmy i Scenariusz użytkownika, dla której użyjesz rozpoznawania formularza. Jeśli Twoje żądanie zostanie zatwierdzone przez zespół usługi Azure Cognitive Services, otrzymasz wiadomość e-mail z instrukcjami dotyczącymi uzyskiwania dostępu do usługi.
@@ -35,22 +35,7 @@ Aparat rozpoznawania formularza jest dostępna jako interfejs API REST. Tworzeni
 
 ## <a name="input-requirements"></a>Wymagania dotyczące danych wejściowych
 
-Aparat rozpoznawania formularza pracuje dokumentów wejściowych, które spełniają te wymagania:
-
-* Musi być w formacie JPG, PNG lub PDF (tekst lub skanowane). Osadzony tekst plików PDF są najlepsze, ponieważ istnieje możliwość wystąpienia błędu w tej lokalizacji i wyodrębniania znaków.
-* Rozmiar pliku musi być mniejszy niż 4 megabajty (MB).
-* W przypadku obrazów wymiarów musi mieć od 50 x 50 pikseli i 4200 x 4200 pikseli.
-* Jeśli zeskanowane dokumenty papieru, formularze powinna być wysokiej jakości skanowania.
-* Tekst musi używać alfabetu łacińskiego (angielskie znaki).
-* Dane muszą być drukowane (nie odręcznego).
-* Dane mogą zawierać klucze i wartości.
-* Klucze mogą być wyświetlane powyżej lub po lewej stronie wartości, ale nie niższej lub w prawo.
-
-Aparat rozpoznawania formularza nie obsługuje obecnie następujące typy danych wejściowych:
-
-* Złożone tabele (zagnieżdżonych tabel, scalone nagłówki lub komórek i tak dalej).
-* Przycisk pola wyboru lub opcji.
-* Dokumenty PDF jest dłuższa niż 50 stron.
+[!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="where-do-i-start"></a>Od czego zacząć?
 
@@ -68,8 +53,8 @@ Nauczanie i wyodrębniania danych ze strukturą z formularzy przy użyciu nastę
 
 | Interfejs API REST | Opis |
 |-----|-------------|
-| Szkol | Szkolenie nowy model do analizowania formularzy przy użyciu pięć formularze z tego samego typu lub pusty formularz.  |
-| Analyze  |Analizuj pojedynczy dokument przekazywany jako strumień do wyodrębnienia pary klucz wartość i tabele w formularzu za pomocą niestandardowego modelu.  |
+| Szkolenie | Szkolenie nowy model do analizowania formularzy za pomocą formularzy pięć tego samego typu. Lub jego trenowanie za pomocą pusty formularz i dwie formy wypełnione.  |
+| Analiza  |Analizuj pojedynczy dokument przekazywany jako strumień do wyodrębnienia pary klucz wartość i tabele w formularzu za pomocą niestandardowego modelu.  |
 
 Zapoznaj się z [dokument referencyjny dotyczący interfejsu API REST](https://aka.ms/form-recognizer/api). 
 

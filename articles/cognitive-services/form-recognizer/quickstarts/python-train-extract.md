@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uczenie modelu i wyodrębnić dane formularza za pomocą interfejsu API REST z językiem Python — aparat rozpoznawania formularza'
+title: 'Szybki start: Uczenie modelu i wyodrębnianie danych formularza z językiem Python — aparat rozpoznawania formularza przy użyciu interfejsu API REST'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpoznawania formularza za pomocą języka Python do uczenia modelu i wyodrębnianie danych z formularzy.
 author: PatrickFarley
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 04c7663073a710fe39017b01edd0623a837d6354
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: b01b42af99575f512ccc76b0a56e4d18106c319f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331800"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441797"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST przy użyciu języka Python
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby ukończyć ten przewodnik Szybki Start, musisz mieć:
 - Dostęp ograniczony dostęp do aparatu rozpoznawania formularza w wersji zapoznawczej. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) formularza.
 - [Python](https://www.python.org/downloads/) zainstalowany (Jeśli chcesz uruchamianie przykładu lokalnie).
-- Zestaw co najmniej pięć metod tego samego typu. Użyjesz tych danych do nauczenia modelu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż dane do głównego konta usługi Azure Blob Storage.
+- Zestaw co najmniej pięć metod tego samego typu. Użyjesz tych danych do nauczenia modelu. Możesz użyć [Przykładowy zestaw danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż dane do głównego konta usługi Azure Blob Storage.
 
 ## <a name="create-a-form-recognizer-resource"></a>Utwórz zasób rozpoznawania formularza
 
@@ -53,7 +53,6 @@ Aby wytrenuj model rozpoznawania formularza za pomocą dokumentów w kontenerze 
 
 1. Zastąp `<Endpoint>` przy użyciu adresu URL punktu końcowego dla zasobu rozpoznawania formularza w regionie platformy Azure, gdzie uzyskać klucze subskrypcji.
 1. Zastąp `<SAS URL>` udostępnionych kontenera magazynu obiektów blob Azure dostęp do adresu URL sygnatury (SAS). Aby pobrać to, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener, a wybierz **sygnatury dostępu współdzielonego Get**. Kliknij przycisk Dalej okno dialogowe, a następnie skopiuj wartość w **adresu URL** sekcji. Powinien on mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-1. Zastąp `<file type>` z typem pliku. Obsługiwane typy: `application/pdf`, `image/jpeg`, `image/png`.
 1. Zastąp `<Subscription key>` z kluczem subskrypcji został skopiowany w poprzednim kroku.
     ```python
     ########### Python Form Recognizer Train #############
@@ -64,7 +63,7 @@ Aby wytrenuj model rozpoznawania formularza za pomocą dokumentów w kontenerze 
     source = r"<SAS URL>"
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': '<Subscription Key>',
     }
     url = base_url + "/train" 

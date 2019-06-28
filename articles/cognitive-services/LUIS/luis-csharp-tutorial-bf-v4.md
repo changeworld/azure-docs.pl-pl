@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: f74becc24e5d04cefdd05066b8431946578cc35e
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 8a03d87441f26d3116aff8af33fd94da0ef9a909
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151137"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438424"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Samouczek: Użyj włączone z usługą interpretacji języka w robot aplikacji sieci WebC#
 
@@ -33,7 +33,7 @@ Użyj C# tworzenie czatbot zintegrowane z language understanding (LUIS). Bot jes
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Emulator bota](https://aka.ms/abs/build/emulatordownload)
-* [Program Visual Studio](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 
 ## <a name="create-a-web-app-bot-resource"></a>Utwórz zasób bot aplikacji sieci web
@@ -49,7 +49,7 @@ Użyj C# tworzenie czatbot zintegrowane z language understanding (LUIS). Bot jes
     |Nazwa bota|Nazwa zasobu|`luis-csharp-bot-` + `<your-name>`, na przykład `luis-csharp-bot-johnsmith`|
     |Subskrypcja|Subskrypcja miejsca utworzenia bota.|Subskrypcja podstawowa.
     |Grupa zasobów|Logiczna grupa zasobów platformy Azure|Utwórz nową grupę do przechowywania wszystkich zasobów używanych z tym botem, nazwij grupę `luis-csharp-bot-resource-group`.|
-    |Lokalizacja|Region platformy Azure — nie musi być taki sam jak region tworzenia lub publikowania usługi LUIS.|`westus`|
+    |Location|Region platformy Azure — nie musi być taki sam jak region tworzenia lub publikowania usługi LUIS.|`westus`|
     |Warstwa cenowa|Służy do określania limitów żądań usługi i rozliczeń.|`F0` to warstwa bezpłatna.
     |Nazwa aplikacji|Nazwa jest używana jako domena podrzędna, gdy bot jest wdrażany w chmurze (na przykład humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, na przykład `luis-csharp-bot-johnsmith`|
     |Szablon bota|Ustawienia struktury bota — zobacz następną tabelę|
@@ -358,14 +358,7 @@ Uruchom bota w programie Visual Studio. Zostanie otwarte okno przeglądarki z wi
 
     [![Odpowiedź bota podstawowego w emulatorze](./media/bfv4-csharp/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-csharp/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
-## <a name="learn-more-about-the-web-app-bot-and-framework"></a>Dowiedz się więcej o Bot aplikacji sieci Web i platforma
-
-Usługa Azure Bot używa zestawu SDK Bot Framework. Dowiedz się więcej na temat zestawu SDK i struktury Bot Framework:
-
-* Dokumentacja [usługi Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) w wersji 4
-* [Przykłady Bot Builder](https://github.com/Microsoft/botbuilder-samples)
-* [Bot Builder C# zestawu SDK](https://github.com/Microsoft/botbuilder-dotnet)
-* [Narzędzia Bot Builder](https://github.com/Microsoft/botbuilder-tools):
+[!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

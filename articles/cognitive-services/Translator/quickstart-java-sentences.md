@@ -3,19 +3,19 @@ title: 'Szybki start: Uzyskiwanie długości zdań, Java — interfejs API tłum
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak określać długość zdań przy użyciu języka Java i interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 748f8cfa1e105b5c6d7b9b3fc073eac9f38a63dd
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 252be03bfb0f24f0de5868d64d5add0e635cef34
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514850"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445107"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do określania długości zdań przy użyciu języka Java
 
@@ -108,6 +108,7 @@ Dodaj następujące wiersze do klasy `LengthSentence`. Zauważysz, że razem z w
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
 ```
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Tworzenie klienta i budowanie żądania
 

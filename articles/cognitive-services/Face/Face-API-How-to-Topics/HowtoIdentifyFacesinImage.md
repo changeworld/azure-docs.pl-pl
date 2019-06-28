@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 1696a20094357d084ba54739767509b8d50c4ad5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f02f6ebb83f7fbc274797e944d59a5f1e973075c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341291"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438488"
 ---
 # <a name="example-identify-faces-in-images"></a>Przykład: Identyfikowanie twarzy na obrazach
 
@@ -42,10 +42,12 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 ```
 
 Alternatywnie, określ klucz subskrypcji w nagłówku żądania HTTP **ocp-apim-subscription-key: &lt;Klucz subskrypcji&gt;** .
-Korzystając z biblioteki klienta, klucz subskrypcji jest przekazywane w konstruktorze klasy FaceServiceClient. Na przykład:
+Korzystając z biblioteki klienta, klucz subskrypcji jest przekazywane w konstruktorze klasy FaceClient. Na przykład:
  
 ```csharp 
-faceServiceClient = new FaceServiceClient("<Subscription Key>");
+private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials("<subscription key>"),
+            new System.Net.Http.DelegatingHandler[] { });
 ```
  
 Aby uzyskać klucz subskrypcji, przejdź do portalu Azure Marketplace w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [subskrypcje](https://azure.microsoft.com/try/cognitive-services/).
@@ -59,17 +61,17 @@ W tym kroku grupie o nazwie "MyFriends" zawiera Anna, rachunku i Clare. Dla każ
 ### <a name="step-21-define-people-for-the-persongroup"></a>Krok 2.1. Zdefiniuj osób na grupie
 Osoba jest podstawową jednostką mającą tożsamość. Dla osoby można zarejestrować jedną lub wiele twarzy. Grupie to zbiór osób. Każda osoba jest zdefiniowana w określonej grupie. Identyfikacja odbywa się przed grupie. Zadanie jest utworzenie grupie i następnie utworzyć osób, takich jak Anna rachunku i Clare.
 
-Najpierw utwórz nowe grupie za pomocą [grupie — Tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) interfejsu API. W bibliotece klienta API odpowiada mu metoda CreatePersonGroupAsync klasy FaceServiceClient. Identyfikator grupy, który jest określony, aby utworzyć grupę jest unikatowa dla każdej subskrypcji. Możesz również można uzyskać, zaktualizować lub usunąć grup osób przy użyciu innych interfejsów API w grupie. 
+Najpierw utwórz nowe grupie za pomocą [grupie — Tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) interfejsu API. Odpowiednie biblioteki klienta interfejsu API jest metodą CreatePersonGroupAsync dla klasy FaceClient. Identyfikator grupy, który jest określony, aby utworzyć grupę jest unikatowa dla każdej subskrypcji. Możesz również można uzyskać, zaktualizować lub usunąć grup osób przy użyciu innych interfejsów API w grupie. 
 
 Po zdefiniowaniu grupy, można zdefiniować osoby w niej za pomocą [osoba grupie - utworzyć](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) interfejsu API. Jego odpowiednikiem w bibliotece klienta jest metoda CreatePersonAsync. Twarzy można dodać do każdej osoby, po ich utworzeniu.
 
 ```csharp 
 // Create an empty PersonGroup
 string personGroupId = "myfriends";
-await faceServiceClient.CreatePersonGroupAsync(personGroupId, "My Friends");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Friends");
  
 // Define Anna
-CreatePersonResult friend1 = await faceServiceClient.CreatePersonAsync(
+CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
     // Id of the PersonGroup that the person belonged to
     personGroupId,    
     // Name of the person
@@ -79,7 +81,7 @@ CreatePersonResult friend1 = await faceServiceClient.CreatePersonAsync(
 // Define Bill and Clare in the same way
 ```
 ### <a name="step2-2"></a> Krok 2.2: Wykrywanie twarzy i zarejestruj je do osoby, poprawny
-Wykrywanie odbywa się przez wysłanie do interfejsu API [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) żądania HTTP „POST” zawierającego w treści plik obrazu. Korzystając z biblioteki klienta, wykrywanie twarzy odbywa się za pośrednictwem metody DetectAsync dla klasy FaceServiceClient.
+Wykrywanie odbywa się przez wysłanie do interfejsu API [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) żądania HTTP „POST” zawierającego w treści plik obrazu. Korzystając z biblioteki klienta, wykrywanie twarzy odbywa się za pośrednictwem metody DetectAsync dla klasy FaceClient.
 
 Dla każdej twarzy, która jest wykrywana wywołania [grupie osoby — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) Aby dodać ją do osoby poprawne.
 
@@ -94,7 +96,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
     using (Stream s = File.OpenRead(imagePath))
     {
         // Detect faces in the image and add to Anna
-        await faceServiceClient.AddPersonFaceAsync(
+        await faceClient.PersonGroupPerson.AddFaceFromStreamAsync(
             personGroupId, friend1.PersonId, s);
     }
 }
@@ -107,7 +109,7 @@ Jeśli obraz zawiera więcej niż jeden twarzy, jest dodawana tylko największyc
 Musi być uczony grupie, przed wykonaniem za pomocą jego identyfikatora. Musi być retrained grupie, po dodaniu lub usunięciu każda osoba, lub Jeśli edytujesz zarejestrowanych twarzy osoby. Do szkolenia służy interfejs API [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249). Korzystając z biblioteki klienta jest wywołanie metody TrainPersonGroupAsync:
  
 ```csharp 
-await faceServiceClient.TrainPersonGroupAsync(personGroupId);
+await faceClient.PersonGroup.TrainAsync(personGroupId);
 ```
  
 Szkolenie jest proces asynchroniczny. Nie może być zakończona nawet w przypadku, po powrocie z metody TrainPersonGroupAsync. Konieczne może wykonać zapytania o stan szkolenia. Użyj [grupie — pobieranie stanu w szkolenia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) metody interfejsu API lub GetPersonGroupTrainingStatusAsync biblioteki klienta. Poniższy kod przedstawia prostą logikę czekać na grupie szkolenia na zakończenie:
@@ -116,7 +118,7 @@ Szkolenie jest proces asynchroniczny. Nie może być zakończona nawet w przypad
 TrainingStatus trainingStatus = null;
 while(true)
 {
-    trainingStatus = await faceServiceClient.GetPersonGroupTrainingStatusAsync(personGroupId);
+    trainingStatus = await faceClient.PersonGroup.GetTrainingStatusAsync(personGroupId);
  
     if (trainingStatus.Status != Status.Running)
     {
@@ -140,10 +142,10 @@ string testImageFile = @"D:\Pictures\test_img1.jpg";
 
 using (Stream s = File.OpenRead(testImageFile))
 {
-    var faces = await faceServiceClient.DetectAsync(s);
+    var faces = await faceClient.Face.DetectAsync(s);
     var faceIds = faces.Select(face => face.FaceId).ToArray();
  
-    var results = await faceServiceClient.IdentifyAsync(personGroupId, faceIds);
+    var results = await faceClient.Face.IdentifyAsync(faceIds, personGroupId);
     foreach (var identifyResult in results)
     {
         Console.WriteLine("Result of face: {0}", identifyResult.FaceId);
@@ -155,7 +157,7 @@ using (Stream s = File.OpenRead(testImageFile))
         {
             // Get top 1 among all candidates returned
             var candidateId = identifyResult.Candidates[0].PersonId;
-            var person = await faceServiceClient.GetPersonAsync(personGroupId, candidateId);
+            var person = await faceClient.PersonGroupPerson.GetAsync(personGroupId, candidateId);
             Console.WriteLine("Identified as {0}", person.Name);
         }
     }

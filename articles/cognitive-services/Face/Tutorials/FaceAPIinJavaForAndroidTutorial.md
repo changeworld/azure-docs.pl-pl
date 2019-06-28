@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c7f2e86d6fe63d309c74d7304f1c19a714b6471
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a809a4de588a388c4be8ca6efa245450699eeb64
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815499"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441618"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Samouczek: Tworzenie aplikacji dla systemu Android wykrywającej i oznaczającej ramką twarze na obrazie
 
@@ -78,7 +78,7 @@ Oznacz jako komentarz wywołanie funkcji **detectAndFrame** w metodzie **onActiv
 
 ### <a name="add-the-gradle-dependency"></a>Dodawanie zależności narzędzia Gradle
 
-W okienku **Project** (Projekt) wybierz za pomocą rozwijanego selektora pozycję **Android**. Rozwiń pozycję **Gradle Scripts** (Skrypty Gradle), a następnie otwórz plik *build.gradle (Module: app)*. Dodaj zależność dla biblioteki klienta rozpoznawania twarzy, `com.microsoft.projectoxford:face:1.4.3`, jak pokazano na poniższym zrzucie ekranu, a następnie kliknij pozycję **Sync now** (Synchronizuj teraz).
+W okienku **Project** (Projekt) wybierz za pomocą rozwijanego selektora pozycję **Android**. Rozwiń pozycję **Gradle Scripts** (Skrypty Gradle), a następnie otwórz plik *build.gradle (Module: app)* . Dodaj zależność dla biblioteki klienta rozpoznawania twarzy, `com.microsoft.projectoxford:face:1.4.3`, jak pokazano na poniższym zrzucie ekranu, a następnie kliknij pozycję **Sync now** (Synchronizuj teraz).
 
 ![Zrzut ekranu z programu Android Studio przedstawiający plik build.gradle aplikacji](../Images/face-tut-java-gradle.png)
 
@@ -100,7 +100,7 @@ W okienku **Project** (Projekt) rozwiń pozycje **app** i **manifests**, a nast�
 
 ## <a name="upload-image-and-detect-faces"></a>Przekazywanie obrazu i wykrywanie twarzy
 
-Aplikacja będzie wykrywała twarze, wywołując metodę **FaceServiceClient.detect**, która opakowuje interfejs API REST [wykrywania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) i zwraca listę wystąpień obiektu **Face**.
+Aplikacja będzie wykrywanie twarzy, wywołując **faceClient.Face.DetectWithStreamAsync** metody, która otacza [Wykryj](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) interfejsu API REST i zwraca listę **twarzy** wystąpień.
 
 Każdy zwrócony element **Face** zawiera prostokąt wskazujący lokalizację twarzy wraz z serią opcjonalnych atrybutów twarzy. W tym przykładzie żądane są tylko prostokąty wskazujące lokalizację twarzy.
 

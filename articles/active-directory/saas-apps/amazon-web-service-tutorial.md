@@ -4,35 +4,34 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
+manager: mtillman
+ms.reviewer: celested
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/28/2019
+ms.date: 06/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df79d7a4bd983527ee6d84c7ffe8e5ef61d6197
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fe362eb90793c831fc48d6fdc5a871c12e1b560
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107113"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442758"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Samouczek: Integracja usługi Azure Active Directory z usługami Amazon Web Services (AWS)
+# <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Samouczek: Integracja usług Amazon Web Services (AWS) z usługi Azure Active Directory
 
-Z tego samouczka dowiesz się, jak zintegrować usługi Amazon Web Services (AWS) z usługą Azure Active Directory (Azure AD).
-Integracja usług Amazon Web Services (AWS) z usługą Azure AD daje następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować Amazon Web Services (AWS) w usłudze Azure Active Directory (Azure AD). Po zintegrowaniu usługi Amazon Web Services (AWS) z usługą Azure AD, możesz wykonywać następujące czynności:
 
-* Możliwość kontrolowania za pomocą usługi Azure AD kto ma dostęp do usług Amazon Web Services (AWS).
-* Możliwość skonfigurowania użytkowników pod kątem automatycznego logowania do usług Amazon Web Services (AWS) przy użyciu kont usługi Azure AD (logowanie jednokrotne).
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolowanie w usłudze Azure AD, kto ma dostęp do usługi Amazon Web Services (AWS).
+* Umożliwianie użytkownikom można automatycznie zalogowany do usługi Amazon Web Services (AWS) przy użyciu konta usługi Azure AD.
+* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ![Amazon Web Services (AWS)](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
@@ -46,7 +45,7 @@ Korzystając z tych wartości, usługa Azure AD usunie wartość **#** i wyśle 
 
 **Zalecamy użycie tego podejścia z następujących względów:**
 
-a. Każda aplikacja udostępnia unikatowy certyfikat X509, więc data wygaśnięcia certyfikatu każdego wystąpienia może być inna. Zarządzanie tym jest możliwe na poziomie poszczególnych kont usług AWS. Ogólnie przerzucanie certyfikatów będzie łatwe w tym przypadku.
+a. Każda aplikacja umożliwi X509 unikatowy certyfikat. Każde wystąpienie aplikacji AWS wystąpienia następnie może mieć inny certyfikat Data wygaśnięcia, która może być zarządzana poszczególne konta usługi AWS. Ogólna Przerzucanie certyfikatów będzie łatwiejsza, w tym przypadku.
 
 b. Istnieje możliwość włączenia aprowizowania użytkowników za pomocą aplikacji usług AWS w usłudze Azure AD. Nasza usługa pobierze wtedy wszystkie role z konta usług AWS. Nie trzeba ręcznie dodawać ani aktualizować ról usług AWS dla aplikacji.
 
@@ -57,99 +56,62 @@ c. Właściciela aplikacji można przypisać dla konkretnej aplikacji. Może on 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z usługami Amazon Web Services (AWS), są potrzebne następujące elementy:
+Aby rozpocząć pracę, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja usług Amazon Web Services (AWS) z włączonym logowaniem jednokrotnym
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
-
-> [!Note]
-> Aby zintegrować wiele kont usług AWS z jednym kontem platformy Azure na potrzeby logowania jednokrotnego, zobacz [ten](https://docs.microsoft.com/azure/active-directory/active-directory-saas-aws-multi-accounts-tutorial) artykuł.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Amazon Web Services (AWS) logowanie jednokrotne (SSO) włączone subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
-
-* Usługi Amazon Web Services (AWS) obsługują logowanie jednokrotne inicjowane przez **dostawcę usługi i dostawcę tożsamości**
+W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Amazon Web Services (AWS) obsługuje **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez.
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Dodawanie usług Amazon Web Services (AWS) z galerii
 
 Aby skonfigurować integrację usług Amazon Web Services (AWS) z usługą Azure AD, należy dodać usługi Amazon Web Services (AWS) z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać usługi Amazon Web Services (AWS) z galerii, wykonaj następujące kroki:**
-
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
-
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
-
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz **Amazon Web Services (AWS)** , wybierz pozycję **Amazon Web Services (AWS)** na panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
-
-     ![Usługi Amazon Web Services (AWS) na liście wyników](common/search-new-app.png)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
+1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz **nową aplikację**.
+1. W **Dodaj z galerii** sekcji, wpisz **Amazon Web Services (AWS)** w polu wyszukiwania.
+1. Wybierz **Amazon Web Services (AWS)** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z usługami Amazon Web Services (AWS), korzystając z danych testowego użytkownika **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem usług Amazon Web Services (AWS).
+Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą Amazon Web Services (AWS) przy użyciu użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Amazon Web Services (AWS).
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w usługach Amazon Web Services (AWS), należy wykonać następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą usługi Amazon Web Services (AWS), wykonaj poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w usługach Amazon Web Services (AWS)](#configure-amazon-web-services-aws-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego usług Amazon Web Services (AWS)](#create-amazon-web-services-aws-test-user)** — aby mieć w usługach Amazon Web Services (AWS) odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Konfigurowanie usług Amazon Web Services (AWS)](#configure-amazon-web-services-aws)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające B.Simon do użycia usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego Amazon Web Services (AWS)](#create-amazon-web-services-aws-test-user)**  mieć odpowiednikiem B.Simon w Amazon Web Services (AWS) połączoną usługę Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD w usługach Amazon Web Services (AWS), wykonaj następujące kroki:
+1. W [witryny Azure portal](https://portal.azure.com/)na **Amazon Web Services (AWS)** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
+1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
+1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji usług **Amazon Web Services (AWS)** wybierz pozycję **Logowanie jednokrotne**.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
 4. Na **podstawową konfigurację protokołu SAML** sekcji, aplikacja jest wstępnie skonfigurowana i wymaganych adresów URL już są wstępnie wypełniane przy użyciu platformy Azure. Użytkownik musi zapisać konfigurację, klikając **Zapisz** przycisku.
-
-    ![image](./media/amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_url.png)
 
 5. W przypadku konfigurowania wielu wystąpień podaj wartość identyfikatora. Dla drugiego i kolejnych wystąpień podaj wartość identyfikatora w następującym formacie. Użyj znaku **#** , aby określić unikatową główną nazwę usługi.
 
     `https://signin.aws.amazon.com/saml#2`
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego usług Amazon Web Services (AWS)](./media/amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_identifier.png)
-
-6. Aplikacja usług Amazon Web Services (AWS) oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+6. Aplikacja usługi Amazon Web Services (AWS) oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
 
     ![image](common/edit-attribute.png)
 
-7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
+7. Ponadto powyżej Amazon Web Services (AWS) aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
 
-    | Nazwa  | Atrybut źródłowy  | Przestrzeń nazw |
+    | Name (Nazwa)  | Atrybut źródłowy  | Przestrzeń nazw |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Rola            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -173,21 +135,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usługach Amazon Web
 
     g. Kliknij pozycję **Zapisz**.
 
-8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **XML metadanych Federacji** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+   ![Link pobierania certyfikatu](common/metadataxml.png)
 
-9. W sekcji **Konfigurowanie usług Amazon Web Services (AWS)** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+1. Na **Ustaw się Amazon Web Services (AWS)** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
-
-    b. Identyfikator usługi Azure AD
-
-    c. Adres URL wylogowywania
-
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usług Amazon Web Services (AWS)
+### <a name="configure-amazon-web-services-aws"></a>Konfigurowanie usług Amazon Web Services (AWS)
 
 1. W innym oknie przeglądarki zaloguj się do usług Amazon Web Services (AWS) jako administrator.
 
@@ -385,64 +341,41 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usługach Amazon Web
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. W **użytkownika** właściwości, wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do usług Amazon Web Services (AWS).
+W tej sekcji można udostępnić B.Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do usługi Amazon Web Services (AWS).
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, **Wszystkie aplikacje**, a następnie **Amazon Web Services (AWS)** .
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście aplikacji wybierz **Amazon Web Services (AWS)** .
+1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-2. Na liście aplikacji wpisz **Amazon Web Services (AWS)** i wybierz znalezioną pozycję.
+1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Link usług Amazon Web Services (AWS) na liście aplikacji](common/all-applications.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>Tworzenie użytkownika testowego usług Amazon Web Services (AWS)
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w usługach Amazon Web Services (AWS). Usługi Amazon Web Services (AWS) nie wymagają utworzenia użytkownika w swoim systemie logowania jednokrotnego, więc w tym miejscu nie trzeba wykonywać żadnych działań.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie B.Simon w Amazon Web Services (AWS). Usługi Amazon Web Services (AWS) nie wymagają utworzenia użytkownika w swoim systemie logowania jednokrotnego, więc w tym miejscu nie trzeba wykonywać żadnych działań.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-sso"></a>Test SSO
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka Amazon Web Services (AWS) na panelu dostępu powinno nastąpić automatyczne zalogowanie do usług Amazon Web Services (AWS), dla których skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka usługi Amazon Web Services (AWS) na panelu dostępu użytkownik powinien automatyczne logowanie do Amazon Web Services (AWS) dla której skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -452,7 +385,7 @@ Po kliknięciu kafelka Amazon Web Services (AWS) na panelu dostępu powinno nast
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: d99b10598b9f16da2cf202330f0b5bac9219699f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 428b42e62f44d182de109740359544135561e54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476836"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441492"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Samouczek: Przygotowanie do wdrożenia bramy pola danych platformy Azure
 
@@ -50,11 +50,10 @@ W tym miejscu opisano wymagania wstępne dotyczące konfiguracji zasobu usługi 
 
 Przed rozpoczęciem upewnij się, że:
 
-- Twoja subskrypcja Microsoft Azure powinna być obsługiwana dla zasobu bramy pola danych. Płatność za rzeczywiste użycie subskrypcje nie są obsługiwane.
+- Twoja subskrypcja Microsoft Azure powinna być obsługiwana dla zasobu bramy pola danych. Płatność za rzeczywiste użycie subskrypcje są również obsługiwane.
 - Masz właściciela lub współautora dostęp na poziomie grupy zasobów dla zasobów bramy okno usługi Edge i dane pole danych, usługi IoT Hub i Azure Storage.
 
     - Aby utworzyć brzeg urządzenia Data Box / zasobu bramy pola danych, powinni mieć uprawnienia współautora (lub wyższy) zakresu na poziomie grupy zasobów. Należy również upewnić, że `Microsoft.DataBoxEdge` dostawca jest zarejestrowany. Aby uzyskać informacje dotyczące rejestrowania, przejdź do [procedura Rejestruj dostawcę zasobów](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Aby utworzyć dowolny zasób usługi IoT Hub, upewnij się, że ten dostawca Microsoft.Devices jest zarejestrowany. Aby uzyskać informacje dotyczące rejestrowania, przejdź do [procedura Rejestruj dostawcę zasobów](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
     - Aby utworzyć zasób konta magazynu, ponownie potrzebny współautora lub nowszej dostępu zakresu na poziomie grupy zasobów. Usługa Azure Storage jest domyślnie zarejestrowanego dostawcy zasobów.
 - Masz administratora lub użytkownika, dostęp do interfejsu API usługi Azure Active Directory Graph. Aby uzyskać więcej informacji, zobacz [interfejsu API usługi Azure Active Directory Graph](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.

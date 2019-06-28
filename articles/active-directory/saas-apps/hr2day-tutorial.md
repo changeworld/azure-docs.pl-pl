@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 126bb05109e624fb1198ea16b07cd7836103f9e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100875"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HR2day przez Merces
 
@@ -112,7 +112,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z HR2day przez Merces
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Twoje HR2day przez aplikację Merces oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+5. Twoje HR2day przez aplikację Merces oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć **atrybutów użytkownika** okna dialogowego.
 
     ![image](common/edit-attribute.png)
 
@@ -218,7 +218,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-hr2day-by-merces-test-user"></a>Utwórz HR2day przez Merces użytkownika testowego
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w HR2day przez Merces. Praca z [zespołu pomocy technicznej HR2day przez Merces](mailto:servicedesk@merces.nl) Aby dodać użytkowników w HR2day przez platformę Merces. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w HR2day przez Merces. Praca z [zespołu pomocy technicznej HR2day przez Merces](mailto:servicedesk@merces.nl) Aby dodać użytkowników w HR2day przez platformę Merces. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 > [!NOTE]
 > Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl).

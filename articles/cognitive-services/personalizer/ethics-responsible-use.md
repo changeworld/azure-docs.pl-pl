@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: edjez
-ms.openlocfilehash: a5bdee7ec99367d004260bd77e3b0695a1877dd6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 783bfcd5ad9e114a5329892449f35f6ed8316948
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055519"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428428"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Wytyczne dotyczące implementacji odpowiada Personalizer
 
@@ -197,7 +197,7 @@ Microsoft stale jest umieszczenie nakład pracy w narzędzia i dokumenty, aby po
 * [Etyki i analiza danych](https://www.oreilly.com/library/view/ethics-and-data/9781492043898/) DJ Patil, Hilary Mason, Mike Loukides.
 * [Kod ACM etyki](https://www.acm.org/code-of-ethics)
 * [Information genetycznych Nondiscrimination Act - GINA](https://en.wikipedia.org/wiki/Genetic_Information_Nondiscrimination_Act)
-* [Zasady FATML Accountable algorytmów](http://www.fatml.org/resources/principles-for-accountable-algorithms)
+* [Zasady FATML Accountable algorytmów](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

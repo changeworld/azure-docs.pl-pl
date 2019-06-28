@@ -3,19 +3,19 @@ title: 'Samouczek: Tworzenie aplikacji Flask tłumaczenie, syntetyzowania i Anal
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację sieci web opartych na Flask, która używa usług Azure Cognitive Services tłumaczenie tekstu, analizowanie tonacji i syntetyzowania przetłumaczonego tekstu na mowę. Naszym głównym celem jest kodu w języku Python i Flask trasy, umożliwiające naszej aplikacji. Firma Microsoft nie będzie poświęcać dużo czasu na język JavaScript, który kontroluje aplikacji, ale zapewnia wszystkich plików do wglądu.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 4df2de7f0428ffe35712a29bfef645b6feb66813
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: cef747e82e7d039952bec73e822f28eab2adaa97
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515005"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434888"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Samouczek: Tworzenie aplikacji Flask za pomocą usług Azure Cognitive Services
 

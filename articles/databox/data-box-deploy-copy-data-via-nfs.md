@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 672bcc3d0cb15ef348d090ed6c5a38d6912465ef
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c74ed93383ea880900a5428a6f24b5b44a3ff135
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496306"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443148"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk przy użyciu systemu plików NFS
 
@@ -88,6 +88,12 @@ Po nawiązaniu połączenia z udziałami urządzenia Data Box następnym krokiem
 - Jeśli dane przekazywane przy użyciu urządzenia Data Box będą jednocześnie przekazywane przez inne aplikacje, poza urządzeniem Data Box, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 - Nie zaleca się jednoczesnego używania protokołu SMB i sieciowego systemu plików ani kopiowania tych samych danych do tego samego końcowego miejsca docelowego na platformie Azure. W takich przypadkach nie można określić ostatecznego wyniku.
 - **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Folder utworzony w ramach udziałów blokowych obiektów blob i stronicowych obiektów blob reprezentuje kontener, do którego dane są przekazywane w postaci obiektów blob. Plików nie można kopiować bezpośrednio do folderu *głównego* na koncie magazynu.
+- Jeśli wprowadzane uwzględniana wielkość liter nazwy katalogów i plików z udziału NFS do systemu plików NFS na urządzenie Data Box: 
+    - Wymagane są zachowywane w nazwie.
+    - Pliki jest rozróżniana wielkość liter.
+    
+    Na przykład, jeśli kopiowanie `SampleFile.txt` i `Samplefile.Txt`, przypadku zostaną zachowane w nazwie podczas kopiowania do urządzenia Data Box, ale drugiego pliku spowoduje zastąpienie pierwszy z nich, ponieważ są one traktowane jako ten sam plik.
+
 
 Jeśli korzystasz z komputera-hosta z systemem Linux, użyj narzędzia do kopiowania podobnego do narzędzia Robocopy. W systemie Linux są dostępne na przykład narzędzia [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) lub [Ultracopier](https://ultracopier.first-world.info/).  
 

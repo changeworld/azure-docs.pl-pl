@@ -3,19 +3,19 @@ title: 'Szybki start: Uzyskiwanie listy obsługiwanych języków, Java — inter
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: ba93082d0fc98d18499b5e3154e782d3ffce26ec
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 1c6db84acc2bca8e649f5f7acb1dcbdfd6d1269d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514800"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445122"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-java"></a>Szybki start: Uzyskiwanie listy obsługiwanych języków za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator przy użyciu języka Java
 
@@ -103,6 +103,8 @@ Dodaj następujące wiersze do klasy `GetLanguages`:
 ```java
 String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
 ```
+
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Tworzenie klienta i budowanie żądania
 
