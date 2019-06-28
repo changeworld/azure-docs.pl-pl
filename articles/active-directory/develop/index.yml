@@ -1,6 +1,13 @@
 ### YamlMime:Landing
 title: 'Platforma tożsamości firmy Microsoft (wcześniej: Azure Active Directory dla deweloperów)'
 summary: 'Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania interfejsów API firmy Microsoft, takich jak Microsoft Graph, lub interfejsów API opracowanych przez deweloperów. Jest to w pełni wyposażona platforma, która obejmuje usługę uwierzytelniania zgodną ze standardami OAuth 2.0 i OpenID Connect, biblioteki typu open source, rejestrację i konfigurację aplikacji, niezawodną dokumentację koncepcyjną i referencyjną, przykłady szybkiego startu, przykłady kodu, samouczki oraz przewodniki.'
+metadata:
+  ms.topic: landing-page
+  ms.date: 06/22/2019
+  author: CelesteDG
+  ms.service: active-directory
+  ms.subservice: develop
+  ms.workload: identity
 landingContent:
   - title: Informacje o platformie tożsamości firmy Microsoft
     linkLists:

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 05/20/2019
-ms.openlocfilehash: 1c81f5748d1e3edff4902eb462b9beea78acd8bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e56244f074e31672cf77bc74998096e215a4db7
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951657"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357345"
 ---
 # <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
@@ -32,7 +32,7 @@ SQL Database przy użyciu technologii SQL Server do utworzenia [pełnych kopii z
 Możesz użyć tych kopii zapasowych:
 
 - **Przywróć istniejącą bazę danych do punktu w czasie w przeszłości** w okresie przechowywania, przy użyciu witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. W pojedynczej bazy danych i pul elastycznych ta operacja spowoduje utworzenie nowej bazy danych, w tym samym serwerze co oryginalna baza danych. W wystąpieniu zarządzanym tę operację można utworzyć kopię bazy danych lub tego samego lub innego wystąpienia zarządzanego w ramach tej samej subskrypcji.
-  - **[Zmiana okresu przechowywania kopii zapasowej](#how-to-change-the-pitr-backup-retention-period)**  między do 35 dni, aby skonfigurować zasady tworzenia kopii zapasowej.
+  - **[Zmiana okresu przechowywania kopii zapasowej](#how-to-change-the-pitr-backup-retention-period)**  od 7 do 35 dni, aby skonfigurować zasady tworzenia kopii zapasowej.
   - **Zmień zasady przechowywania długoterminowego na 10 lat** na pojedynczej bazy danych i pul elastycznych za pomocą [witryny Azure portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) lub [programu Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups).
 - **Przywracanie usuniętej bazy danych do chwili, została ona usunięta** lub w dowolnym momencie w okresie przechowywania. Tylko można przywrócić usuniętą bazę danych w tym samym serwerze logicznym lub wystąpienia zarządzanego, w której utworzono oryginalnej bazy danych.
 - **Przywracanie bazy danych do innego regionu geograficznego**. Funkcja przywracania geograficznego umożliwia odzyskanie geograficzne po awarii, jeśli nie masz dostępu do serwera i bazy danych. Tworzy nową bazę danych w dowolnej istniejącego serwera, w dowolnym miejscu na świecie.

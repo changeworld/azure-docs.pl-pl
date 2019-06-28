@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/15/2019
+ms.date: 06/21/2019
 ms.author: victorh
-ms.openlocfilehash: a7dd35212a573fc3e94dadea4365f150122e1b5a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 9ec37197376c815c4fb9072164520a707b02be2b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276745"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312721"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Wdrażanie zapory platformy Azure przy użyciu wiele publicznych adresów IP przy użyciu programu Azure PowerShell
 
@@ -31,7 +31,7 @@ Ta funkcja umożliwia następujące scenariusze:
 W poniższych przykładach programu Azure PowerShell pokazano, jak można dodawać, usuwać i konfigurować publiczne adresy IP dla zapory usługi Azure.
 
 > [!NOTE]
-> Jeśli dodasz lub usuniesz publicznego adresu IP do zapory uruchomione, istniejące połączenie przychodzące za pomocą reguł DNAT może nie działać na 40 – 120 sekund. Jest to ograniczenie w publicznej wersji zapoznawczej dla tej funkcji.
+> W publicznej wersji zapoznawczej możesz dodać lub usunąć publiczny adres IP do zapory uruchomione, istniejące połączenie przychodzące za pomocą reguł DNAT mogą nie działać 40 – 120 sekund. Nie można usunąć publiczny adres IP przypisany do zapory, chyba, że Zapora jest cofnięty lub usunięty.
 
 ## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Dodawanie publicznego adresu IP do istniejącej zapory
 

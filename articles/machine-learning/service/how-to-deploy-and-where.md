@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c4ab5fe4625bce1ed66258a5b9aab597dae17a1a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b5a08b9b998f8d0b30091af016af564e836d4651
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304000"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331652"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -39,7 +39,9 @@ Aby uzyskać więcej informacji na temat pojęć, które są zaangażowane w prz
 
 ## <a id="registermodel"></a> Zarejestruj swój model
 
-Zarejestruj swoje modele uczenia maszynowego w obszarze roboczym usługi Azure Machine Learning. Model mogą pochodzić z usługi Azure Machine Learning lub mogą pochodzić z innej lokalizacji. W poniższych przykładach pokazano, jak zarejestrować modelu z pliku:
+Model zarejestrowany kontener logiczny dla jeden lub więcej plików, które tworzą model. Na przykład w przypadku modelu, który jest przechowywany w wielu plikach mogą je zarejestrować jako pojedynczego modelu w obszarze roboczym. Po rejestracji można, a następnie pobrać lub zarejestrowanego modelu wdrażania i otrzymywać wszystkie pliki, które zostały zarejestrowane.
+
+Modele uczenia maszynowego są rejestrowane w obszarze roboczym usługi Azure Machine Learning. Model mogą pochodzić z usługi Azure Machine Learning lub mogą pochodzić z innej lokalizacji. W poniższych przykładach pokazano, jak zarejestrować modelu z pliku:
 
 ### <a name="register-a-model-from-an-experiment-run"></a>Zarejestruj model z uruchamianie eksperymentu
 
@@ -48,11 +50,18 @@ Zarejestruj swoje modele uczenia maszynowego w obszarze roboczym usługi Azure M
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
+
+  > [!TIP]
+  > Aby dołączyć wiele plików rejestracji modelu, należy ustawić `model_path` do katalogu, który zawiera pliki.
+
 + **Przy użyciu interfejsu wiersza polecenia**
+
   ```azurecli-interactive
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
   ```
 
+  > [!TIP]
+  > Aby dołączyć wiele plików rejestracji modelu, należy ustawić `--asset-path` do katalogu, który zawiera pliki.
 
 + **Za pomocą programu VS Code**
 
@@ -77,10 +86,16 @@ Możesz zarejestrować model utworzone zewnętrznie, zapewniając **ścieżkę l
                          description = "MNIST image classification CNN from ONNX Model Zoo",)
   ```
 
+  > [!TIP]
+  > Aby dołączyć wiele plików rejestracji modelu, należy ustawić `model_path` do katalogu, który zawiera pliki.
+
 + **Przy użyciu interfejsu wiersza polecenia**
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
+
+  > [!TIP]
+  > Aby dołączyć wiele plików rejestracji modelu, należy ustawić `-p` do katalogu, który zawiera pliki.
 
 **Szacowany czas**: Około 10 sekund.
 
@@ -110,12 +125,14 @@ Skrypt zawiera dwie funkcje, które ładują i uruchomić model:
 * `run(input_data)`: Ta funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe, uruchom zazwyczaj korzystają w ramach serializacji i deserializacji JSON. Może również współdziałać z nieprzetworzone dane binarne. Można przekształcać dane przed wysłaniem do modelu lub przed zwróceniem do klienta.
 
 #### <a name="what-is-getmodelpath"></a>Co to jest get_model_path?
-Po zarejestrowaniu modelu, można podać nazwę modelu używanym do zarządzania modelem w rejestrze. Ta nazwa jest używana w get_model_path interfejsu API, która zwraca ścieżkę plików modelu w lokalnym systemie plików. Jeśli zarejestrujesz się, folder lub zbiór plików, ten interfejs API zwraca ścieżkę do katalogu, który zawiera pliki.
 
-Po zarejestrowaniu modelu, możesz nadać mu nazwę co odpowiada gdzie umieścić model lokalnie lub w trakcie wdrażania usługi.
+Po zarejestrowaniu modelu, można podać nazwę modelu używanym do zarządzania modelem w rejestrze. Możesz użyć tej nazwy z [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) pobrać ścieżki plików modelu w lokalnym systemie plików. Jeśli zarejestrujesz się, folder lub zbiór plików, ten interfejs API zwraca ścieżkę do katalogu zawierającego te pliki.
 
-Poniższym przykładzie zwraca ścieżkę do jednego pliku o nazwie "sklearn_mnist_model.pkl" (który został zarejestrowany o nazwie "sklearn_mnist")
-```
+Po zarejestrowaniu modelu, nadajesz mu nazwę, która odpowiada gdzie umieścić model lokalnie lub w trakcie wdrażania usługi.
+
+Poniższym przykładzie zwraca ścieżkę do jednego pliku o nazwie `sklearn_mnist_model.pkl` (który został zarejestrowany z nazwą `sklearn_mnist`):
+
+```python
 model_path = Model.get_model_path('sklearn_mnist')
 ``` 
 
@@ -293,7 +310,8 @@ Poniższe sekcje pokazują, jak utworzyć konfigurację wdrożenia, a następnie
 
 ### <a name="optional-profile-your-model"></a>Opcjonalnie: Profil modelu
 Przed wdrożeniem modelu w postaci usługi, możesz go do ustalenia optymalnej procesora CPU i wymagania dotyczące pamięci profilu.
-Można to zrobić za pomocą zestawu SDK lub interfejsu wiersza polecenia.
+
+Możesz wykonać profilu modelu przy użyciu zestawu SDK lub interfejsu wiersza polecenia.
 
 Aby uzyskać więcej informacji możesz zapoznać się z naszą dokumentację zestawu SDK: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
 
@@ -386,7 +404,7 @@ Jeśli masz już klaster AKS, dołączony, można wdrożyć do niego. Jeśli jes
 Dowiedz się więcej na temat wdrażania usługi AKS i skalowanie automatyczne w [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice) odwołania.
 
 #### Utwórz nowy klaster usługi AKS<a id="create-attach-aks"></a>
-**Szacowany czas:** Mniej więcej 5 minut.
+**Szacowany czas**: Około 20 minut.
 
 Tworzenie i dołączanie klaster AKS jest jeden raz przetwarzania dla obszaru roboczego. Można ponownie użyć klastra dla wielu wdrożeń. Jeśli usuniesz, klaster lub grupę zasobów, która ją zawiera, należy utworzyć nowy klaster przy następnym zajdzie potrzeba wdrożenia. Może mieć wielu klastrów usługi AKS, dołączone do obszaru roboczego.
 
@@ -425,10 +443,11 @@ Aby uzyskać więcej informacji na temat `cluster_purpose` parametrów, zobacz [
 
 > [!IMPORTANT]
 > Aby uzyskać [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), w przypadku wybrania wartości niestandardowe agent_count i vm_size, a następnie należy upewnić się, że agent_count pomnożona przez vm_size jest większa lub równa 12 procesorów wirtualnych. Na przykład jeśli używasz vm_size "Maszyna wirtualna Standard_D3_v2", która ma 4 procesory wirtualne, następnie należy wybrać agent_count 3 lub większą.
-
-**Szacowany czas**: Około 20 minut.
+>
+> Zestaw SDK usługi Azure Machine Learning nie zapewnia obsługi skalowanie klastra usługi AKS. Aby skalować węzły w klastrze, należy użyć interfejsu użytkownika dla klastra usługi AKS w witrynie Azure portal. Można zmienić tylko liczby węzłów, a nie rozmiar maszyny Wirtualnej klastra.
 
 #### <a name="attach-an-existing-aks-cluster"></a>Dołączanie istniejącego klastra AKS
+**Szacowany czas:** Mniej więcej 5 minut.
 
 Jeśli masz już klaster AKS w subskrypcji platformy Azure i jest wersja 1.12. ##, służy do wdrażania obrazu systemu.
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: dd2e68c820a8c9e503a3539fd50bf3fba68e3949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cfec65843012e781c8a8dd06cbc4d1225b0dd36
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257525"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338892"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 Customer Engagement wstępnie wymaganych składników
 
@@ -40,7 +40,7 @@ Usługi Dynamics 365 Customer Engagement aplikacji musi być zgodna z [wytyczne 
 
 Wymagania biznesowe obejmują następujące obowiązki umowne stosowane w UE i prawne proceduralne:
 
-* Musi być zarejestrowana we [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) lub zostać zarejestrowane wydawcy chmury w witrynie Marketplace. Jeśli nie są zarejestrowane, postępuj zgodnie z instrukcjami [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher).  (Trzeci krok zamiast tego użyć [formularz nominacji partnera usługi AppSource](https://appsource.microsoft.com/partners/signup)). 
+* Musi być zarejestrowana we [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) lub zostać zarejestrowane wydawcy chmury w witrynie Marketplace. Jeśli nie są zarejestrowane, postępuj zgodnie z instrukcjami [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher).  (Może również nawiązywać połączenie z [Dynamics 365 for Customer Engagement, zespół ds. dołączania](https://experience.dynamics.com/isvengage/)).
 
     >[!NOTE]
     >Zalogować się do portalu Cloud Partner, należy używać tego samego konta Microsoft Developer Center w rejestracji. Powinna mieć tylko jedno konto Microsoft, dla ofert portalu Azure Marketplace. To konto nie powinny być specyficzne dla poszczególnych usług lub oferty.

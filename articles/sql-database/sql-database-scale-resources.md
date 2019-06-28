@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6285348aa8067f356635dfff9ecd4eb34c431f0b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.date: 06/25/2019
+ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147690"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357130"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych, przy minimalnych przestojach
 
-Usługa Azure SQL Database umożliwia dynamiczne dodawanie większej ilości zasobów do bazy danych z minimalnym czasem przestojów.
+Usługa Azure SQL Database pozwala na dynamiczne dodawanie większej ilości zasobów do bazy danych przy minimalnym [przestój](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); jednak istnieje przełącznik w okresie gdzie krótki przedział czasu, który może być połączenie zostało utracone na bazie danych skorygowane, za pomocą logikę ponawiania próby.
 
 ## <a name="overview"></a>Przegląd
 

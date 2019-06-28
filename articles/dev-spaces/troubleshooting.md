@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 53571fdd7c5a93fef4df0832253542a5a6dfbec5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0379bbc7f26ea30f65c5eac73633ca0371aa283
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058540"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331306"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -414,3 +414,12 @@ Obecnie Azure Dev miejsca do magazynowania jest przeznaczony do uruchamiania na 
 
 ### <a name="try"></a>Spróbuj
 [Dodaj zmiany barwy](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) do klastra usługi AKS, aby upewnić się, systemu Linux zasobników nie są zaplanowane do uruchomienia w węźle Windows.
+
+## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Błąd "nie znaleziono untainted Linux węzłów w stanie gotowości w klastrze. Musi istnieć co najmniej jeden węzeł z systemem Linux untainted w stanie gotowości do wdrożenia zasobników w przestrzeni nazw "azds"."
+
+### <a name="reason"></a>Reason
+
+Azure Dev spacje nie można utworzyć poziomu kontrolera w klastrze AKS, ponieważ nie można odnaleźć węzła untainted w *gotowe* stanu, aby zaplanować zasobników na. Usługa Azure Dev spacje wymaga co najmniej jeden węzeł systemu Linux w *gotowe* stanie, który umożliwia planowanie zasobników bez określania tolerations.
+
+### <a name="try"></a>Spróbuj
+[Zaktualizuj konfigurację zmiany barwy](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) w klastrze usługi AKS, aby upewnić się, co najmniej jeden systemu Linux umożliwia planowanie zasobników bez określania tolerations węzła. Ponadto upewnij się, że co najmniej jeden węzeł systemu Linux, która umożliwia planowanie zasobników bez określania tolerations w *gotowe* stanu. Jeśli Twój węzeł zajmuje dużo czasu, aby dotrzeć do *gotowe* stanu, możesz spróbować ponownie uruchomić węzeł.

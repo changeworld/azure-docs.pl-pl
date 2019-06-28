@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521394"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310480"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions 2.x  
 
@@ -147,7 +147,7 @@ Lista funkcji, które uruchamia hosta zadania. Pusta tablica oznacza, że urucha
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Wskazuje wartość limitu czasu dla wszystkich funkcji. Bez użycia serwera planu zużycie prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut. W ramach planu usługi App Service nie ma limitu całkowitej, a wartość domyślna jest zależna od wersji środowiska uruchomieniowego. W wersji 2.x, wartością domyślną dla usługi App Service plan to 30 minut. W wersji 1.x, jest *null*, co oznacza brak limitu czasu.
+Wskazuje wartość limitu czasu dla wszystkich funkcji. Bez użycia serwera planu zużycie prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut. W przypadku dedykowanego planu usługi App Service nie ma limitu całkowitej, a wartość domyślna to 30 minut. Wartość `-1` wskazuje niepowiązane wykonywania.
 
 ```json
 {

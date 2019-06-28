@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 8df4f17c9afbf10c6507e505c6540c3f66a42309
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 51de1c4ac17360282877f05d52c3ea8fa2c6d712
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275631"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310769"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
 
@@ -114,7 +114,7 @@ Niniejsza procedura zawiera przykład pokazujący, jak usunąć dane kopii zapas
 1. W menu pulpitu nawigacyjnego magazynu kliknij **infrastruktura zapasowa**.
 2. Kliknij przycisk **serwery zarządzania kopiami zapasowymi** do wyświetlenia serwerów.
 
-    ![Wybierz swój magazyn, aby otworzyć jego pulpit nawigacyjny](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+    ![Wybierz magazyn, aby otworzyć jego pulpit nawigacyjny](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. Kliknij prawym przyciskiem myszy element > **Usuń**.
 4. Na **Usuń** menu, wpisz nazwę serwera, a następnie kliknij przycisk **Usuń**.
@@ -124,7 +124,7 @@ Niniejsza procedura zawiera przykład pokazujący, jak usunąć dane kopii zapas
 
 > [!NOTE]
 > Aby usunąć elementy w konsoli serwera zarządzania lub konsoli MARS na serwerze chronionym, Zatrzymaj ochronę i usuwanie kopii zapasowych. Jeśli pozostają elementów kopii zapasowych, następujący błąd pojawi się podczas próby usunięcia i Wyrejestruj serwer:
-> 
+>
 >![Usuwanie nie powiodło się](./media/backup-azure-delete-vault/deletion-failed.png)
 
 6. Aby sprawdzić, czy zadanie usuwania zakończone, sprawdź komunikaty platformy Azure ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/messages.png).
@@ -159,8 +159,8 @@ Niniejsza procedura zawiera przykład pokazujący, jak usunąć dane kopii zapas
 
 > [!NOTE]
 > Elementy kopii zapasowej skojarzony z serwerem Utwórz kopię zapasową serwera zarządzania lub agenta usługi Azure Backup muszą zostać usunięte przed usunięciem rejestracje tych serwerów. Aby usunąć elementy kopii zapasowej, przejdź do programu DPM SC, serwera usługi Mab lub konsoli zarządzania usług MARS na serwerze, jeśli ma to zastosowanie, a następnie wybierz odpowiednie opcje na zatrzymanie ochrony i usunięcie kopii zapasowych. Jeśli żadnych elementów kopii zapasowych są nadal skojarzone, zostanie wyświetlony następujący błąd:
-> 
-> 
+>
+>
 >![Usuwanie nie powiodło się](./media/backup-azure-delete-vault/deletion-failed.png)
 
 8. Aby sprawdzić, czy zadanie usuwania zakończone, sprawdź komunikaty platformy Azure ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/messages.png).

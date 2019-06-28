@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0f513462f1e09718dc18e9ce454b82e8978961f
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761967"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329609"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady dla typowych wzorców użycia usługi Stream Analytics zapytania
 
@@ -424,12 +424,12 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
 
 | Użytkownik | Cecha | Wydarzenie | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Uruchamianie |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
 
 **Dane wyjściowe**:  
 
-| Użytkownik | Cecha | Czas trwania |
+| Użytkownik | Cecha | Duration |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -437,7 +437,12 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
 
 ```SQL
     SELECT
-        [user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
+        [user],
+    feature,
+    DATEDIFF(
+        second,
+        LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'),
+        Time) as duration
     FROM input TIMESTAMP BY Time
     WHERE
         Event = 'end'
@@ -655,7 +660,7 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 **Dane wejściowe**:  
 
-| DeviceId | Time | Atrybut | Wartość |
+| DeviceId | Time | Atrybut | Value |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |Temperatura |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |Temperatura |50 |
@@ -695,6 +700,15 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
 **Explanation**: [COUNT (DISTINCT czasu)](/stream-analytics-query/count-azure-stream-analytics) zwraca liczbę unikatowych wartości w kolumnie czas w przedziale czasu. Dane wyjściowe tego kroku można następnie użyć do obliczenia średniej na urządzeniu przez odrzucenie duplikatów.
+
+## <a name="geofencing-and-geospatial-queries"></a>Geofencing i dane geograficzne zapytań
+Usługa Azure Stream Analytics zapewnia wbudowanych funkcji geoprzestrzennych, które mogą służyć do implementacji scenariuszy, takich jak zarządzanie flotą, zastąpienie, udostępnianie podłączone samochody i śledzenie zasobów. Dane geograficzne mogą być pozyskiwane w formatach GeoJSON lub WELL-KNOWN strumienia zdarzeń w ramach lub odwołują się do danych. Aby uzyskać więcej informacji, zobacz [Geofencing i dane geograficzne scenariuszy agregacji za pomocą usługi Azure Stream Analytics](geospatial-scenarios.md) artykułu.
+
+## <a name="language-extensibility-through-javascript-and-c"></a>Rozszerzalność języka przy użyciu języka JavaScript iC#
+Langugae zapytania w usłudze Azure Stream Ananlytics można rozszerzyć za pomocą funkcji niestandardowych napisanych w języku JavaScript lub C# języków. Aby uzyskać więcej informacji, zobacz artykuły foolowing:
+* [Funkcje usługi Azure Stream Analytics JavaScript zdefiniowane przez użytkownika](stream-analytics-javascript-user-defined-functions.md)
+* [Usługa Azure Stream Analytics JavaScript agregacje zdefiniowane przez użytkownika](stream-analytics-javascript-user-defined-aggregates.md)
+* [Programowanie .NET Standard funkcje zdefiniowane przez użytkownika dla zadań usługi Azure Stream Analytics Edge](stream-analytics-edge-csharp-udf-methods.md)
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 

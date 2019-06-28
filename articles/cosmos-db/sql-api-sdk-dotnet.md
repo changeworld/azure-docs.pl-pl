@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 865fb2ebf0d02c40a8f7c9e9c818e26432e5734a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d34da8928e06f04756e24f5cc3e4c430c2892f79
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272353"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341581"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB zestawu .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -48,10 +48,8 @@ ms.locfileid: "67272353"
 * Obsługa strumieni. 
 * Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany. 
 
-### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
-* Zezwalaj na żądania zapisu powrót do innego regionu, jeśli oryginalny jeden zakończy się niepowodzeniem
-* Dodaj zasady ponawiania sesji dla żądania zapisu
 * Poprawki śledzenia zapytań, które spowodowały puste strony sytuacja wyścigu
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
@@ -228,7 +226,7 @@ ms.locfileid: "67272353"
 * Rozwiązywanie problemu polegającego wielu partycji klauzuli order by zapytania kontynuacji została nie działa podczas sortowania na pola ciągu.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, Suma i średnia). Zobacz [Obsługa agregacji](how-to-sql-query.md#Aggregates).
+* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, Suma i średnia). Zobacz [Obsługa agregacji](sql-query-aggregates.md).
 * Obniżona minimalna przepływność na kolekcji podzielonych na partycje z 10,100 jednostek RU/s 2500 jednostek RU/s.
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
@@ -381,7 +379,7 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 
 | Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
-| [2.5.0](#2.5.0) |18 czerwca 2019 r. |--- |
+| [2.4.1](#2.4.1) |20 czerwca 2019 r. |--- |
 | [2.4.0](#2.4.0) |05 maja 2019 r. |--- |
 | [2.3.0](#2.3.0) |04 kwietnia 2019 r. |--- |
 | [2.2.3](#2.2.3) |11 lutego 2019 r. |--- |

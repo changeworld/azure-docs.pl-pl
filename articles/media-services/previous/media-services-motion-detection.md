@@ -95,12 +95,12 @@ W poniższej tabeli opisano elementy danych wyjściowych pliku JSON.
 | Element | Opis |
 | --- | --- |
 | Version |Odnosi się do wersji interfejsu API wideo. Bieżąca wersja to 2. |
-| Skala czasu |"Impulsów" na sekundę filmu wideo. |
+| Timescale |"Impulsów" na sekundę filmu wideo. |
 | Offset |Przesunięcie czasu dla sygnatury czasowe w "taktów." W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. W przyszłości scenariusze, które firma Microsoft obsługuje, ta wartość może ulec zmianie. |
 | Framerate |Liczba klatek na sekundę w wideo. |
 | Width, Height |Odnosi się do szerokości i wysokości wideo w pikselach. |
-| Uruchamianie |Sygnatura czasowa rozpoczęcia w "taktach". |
-| Czas trwania |Długość zdarzenia w "znaczników". |
+| Start |Sygnatura czasowa rozpoczęcia w "taktach". |
+| Duration |Długość zdarzenia w "znaczników". |
 | Interval |Interwał każdego wpisu w zdarzeniu w "taktach". |
 | Events |Każdy fragment zdarzeń zawiera ruchu wykryte w tym czas trwania. |
 | Type |W bieżącej wersji jest to zawsze "2" dla ogólnego ruchu. Dzięki temu etykiety interfejsów API Video elastyczność do kategoryzowania ruchu w przyszłych wersji. |

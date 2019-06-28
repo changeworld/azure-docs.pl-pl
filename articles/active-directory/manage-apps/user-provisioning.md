@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/02/2019
+ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a58d2b235757faf760539f514ea349e33e12b41
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963985"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310003"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 
@@ -190,46 +190,7 @@ Zadanie inicjowania obsługi administracyjnej zostaną usunięte z kwarantanny p
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Jak długo potrwa inicjowania obsługi użytkowników?
 
-Wydajność zależy od tego, czy zadanie inicjowania obsługi administracyjnej jest uruchomione początkowej synchronizacji lub synchronizacji przyrostowej.
-
-Aby uzyskać **początkowej synchronizacje**, czas zadania zależy od wielu czynników, w tym liczbę użytkowników i grup w zakresie udostępniania, a łączna liczba użytkowników i grup w systemie źródłowym. Wyczerpujący wykaz czynniki mające wpływ na wydajność synchronizacji początkowej są podsumowywane w dalszej części w tej sekcji.
-
-Aby uzyskać **synchronizacje przyrostowe**, czas zadania zależy od liczby zmian wykrytych w tym cyklu synchronizacji. W przypadku mniej niż 5000 użytkownika lub zmiany członkostwa w grupie, zakończyć zadanie w jednej synchronizacji przyrostowych cyklu. 
-
-Poniższa tabela podsumowuje godziny synchronizacji dla typowych scenariuszy inicjowania obsługi administracyjnej. W tych scenariuszach w systemie źródłowym jest usługa Azure AD i system docelowy jest aplikacją SaaS. Czas synchronizacji są uzyskiwane z analizy statystycznej zadania synchronizacji pod kątem aplikacji SaaS usługi ServiceNow, obszar roboczy, Salesforce i usługi G Suite.
-
-
-| Konfiguracja zakresu | Użytkownicy, grupy i elementy członkowskie w zakresie | Czas synchronizacji początkowej | Czas synchronizacji przyrostowej |
-| -------- | -------- | -------- | -------- |
-| Synchronizuj przypisanych użytkowników i tylko grupy |  < 1,000 |  < 30 minut | < 30 minut |
-| Synchronizuj przypisanych użytkowników i tylko grupy |  1000–10 000 | 142 - minut 708 | < 30 minut |
-| Synchronizuj przypisanych użytkowników i tylko grupy |   10,000 - 100,000 | 1,170 - 2,340 minut | < 30 minut |
-| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  < 1,000 | < 30 minut  | < 30 minut |
-| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  1000–10 000 | < 30 – 120 minut | < 30 minut |
-| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  10,000 - 100,000  | 713 - 1,425 minut | < 30 minut |
-| Synchronizuj wszystkich użytkowników w usłudze Azure AD|  < 1,000  | < 30 minut | < 30 minut |
-| Synchronizuj wszystkich użytkowników w usłudze Azure AD | 1000–10 000  | 43 - 86 minut | < 30 minut |
-
-
-Dla konfiguracji **synchronizacji przypisane tylko grupy użytkowników i**, następujące formuły można użyć do określenia przybliżony minimalne i maksymalne, oczekiwano **początkowej synchronizacji** razy:
-
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
-Podsumowanie czynniki wpływające na czas potrzebny do ukończenia **początkowej synchronizacji**:
-
-- Całkowita liczba użytkowników i grup w zakresie udostępniania.
-
-- Całkowita liczba użytkowników, grup i członków grupy obecne w systemie źródłowym (Azure AD).
-
-- Użytkownicy w zakresie udostępniania są dopasowywane do istniejących użytkowników w aplikacji docelowej, czy konieczne będzie utworzenie po raz pierwszy. Zadania synchronizacji, dla których wszyscy użytkownicy są tworzone po raz pierwszy to potrwać około *dwa razy dłużej* synchronizacji jako zadania, dla których wszyscy użytkownicy są dopasowywane do istniejących użytkowników.
-
-- Liczba błędów w [dzienniki inspekcji](check-status-user-account-provisioning.md). Wydajność jest niższa, jeśli ma wiele błędów i usługi aprowizacji włożono w stan kwarantanny.    
-
-- Żądanie, limitów szybkości i ograniczania przepustowości zaimplementowana przez system docelowy. Niektóre systemy docelowe zaimplementować żądania limitów szybkości i ograniczania przepustowości, które mogą wpłynąć na wydajność podczas operacji synchronizacji dużej. W tych warunkach aplikację, która odbiera zbyt wiele żądań zbyt szybko może spowolnić jej wskaźnika odpowiedzi lub zamknąć połączenie. Aby zwiększyć wydajność, łącznik wymaga dostosowania przez nie wysyła szybciej niż aplikacji mogły je przetwarzać żądań aplikacji. Inicjowania obsługi administracyjnej łączniki utworzone przez firmę Microsoft, należy to dostosowanie. 
-
-- Liczby i rozmiarów przypisanych grup. Trwa synchronizowanie przydzielonych grup trwa dłużej niż synchronizowaniem użytkowników. Liczba i rozmiary przypisanych grup obniżenie wydajności. Jeśli aplikacja ma [mapowania włączone do celów synchronizacji obiektu grupy](customize-application-attributes.md#editing-group-attribute-mappings)właściwości grupy, takie jak nazwy grup i członkostw są synchronizowane oprócz użytkowników. Te dodatkowe synchronizacje będzie trwać dłużej niż tylko synchronizacja obiektów użytkowników.
-
+Wydajność zależy od tego, czy zadanie inicjowania obsługi administracyjnej jest uruchomiona początkowej cyklu inicjowania obsługi administracyjnej lub przyrostowych cyklu. Szczegółowe informacje o aprowizacji jak długo trwa i jak monitorować stan inicjowania obsługi usługi, zobacz [Sprawdź stan aprowizacji użytkowników](application-provisioning-when-will-provisioning-finish-specific-user.md). 
 
 ## <a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Jak sprawdzić, jeśli użytkownicy są aprowizowane prawidłowo?
 
@@ -255,7 +216,7 @@ Aby uzyskać przykładowe wdrożenie krok po kroku planowanie Inicjowanie obsłu
 
 Tak, jest możliwe przy użyciu poświadczeń użytkownika usługi Azure AD inicjowania obsługi użytkowników usługi do aprowizacji B2B (lub gościa) w usłudze Azure AD z aplikacjami SaaS.
 
-Jednak dla użytkowników B2B do logowania do aplikacji SaaS przy użyciu usługi Azure AD, aplikacja SaaS musi mieć jej opartej na SAML pojedynczego logowania jednokrotnego skonfigurowano możliwość w określony sposób. Aby uzyskać więcej informacji na temat konfigurowania aplikacji SaaS umożliwiających logowanie użytkowników B2B, zobacz [aplikacje SaaS skonfigurować współpracę B2B dzięki]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Jednak dla użytkowników B2B do logowania do aplikacji SaaS przy użyciu usługi Azure AD, aplikacja SaaS musi mieć jej opartej na SAML pojedynczego logowania jednokrotnego skonfigurowano możliwość w określony sposób. Aby uzyskać więcej informacji na temat konfigurowania aplikacji SaaS w celu obsługi logowania użytkowników B2B, zobacz [aplikacje SaaS skonfigurować współpracę B2B dzięki]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Jest automatyczna aprowizacja użytkowników na działanie aplikacji SaaS z grupami dynamicznymi w usłudze Azure AD?
 

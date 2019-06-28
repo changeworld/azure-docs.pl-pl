@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 88fb243af7628b159a2255c2cdae2ab86f39ca1e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 387801f2ecb2f5fa1639005726218efb54d75dc8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275489"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331417"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla platformy .NET za pomocą usługi DevOps Projects
 
@@ -46,7 +46,7 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 1. Wybierz przykładową aplikację **.NET**. Przykłady platformy .NET umożliwiają wybór struktury ASP.NET typu open source lub międzyplatformowej struktury .NET Core.
 
-    ![Struktura .NET](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
+   ![Struktura .NET](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
 
 2. Ten przykład to aplikacja ASP.NET Core MVC. Wybierz **platformy .NET Core** strukturę aplikacji, następnie wybierz pozycję **dalej**.    
     
@@ -54,37 +54,35 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure 
 
-1. Utwórz bezpłatnie nową organizację usługi Azure DevOps lub wybierz istniejącą organizację.
+1. Wprowadź **Nazwa projektu**.
 
-    a. Wybierz nazwę projektu. 
+2. Utwórz bezpłatnie nową **Azure DevOps organizacji** lub wybierz istniejącą organizację z listy rozwijanej.
 
-    b. Wybierz lokalizację i subskrypcję platformy Azure, wybierz nazwę aplikacji, a następnie wybierz przycisk **Gotowe**.  
-    Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Aplikacja przykładowa zostanie skonfigurowana w repozytorium w organizacji usługi Azure DevOps, skompilowana i wdrożona na platformie Azure. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
-    
+3. Wybierz swoje **subskrypcji platformy Azure**, wprowadź nazwę swojej **aplikacji sieci Web** lub wykonać domyślne, a następnie wybierz **gotowe**. Po kilku minutach Przegląd wdrażania projektów DevOps jest wyświetlany w witrynie Azure portal. 
 
-2. Po prawej stronie pulpitu nawigacyjnego wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
+4. Wybierz **przejdź do zasobu** do wyświetlania pulpitu nawigacyjnego projekt DevOps. W prawym górnym rogu przypiąć **projektu** do pulpitu nawigacyjnego, aby uzyskać szybki dostęp. Przykładowa aplikacja jest skonfigurowana w repozytorium w swojej **Azure DevOps organizacji**. Kompilacja jest wykonywana, a aplikacja jest wdrażana na platformie Azure.
 
-    ![Widok pulpitu nawigacyjnego](_img/azure-devops-project-aspnet-core/dashboardnopreview.png) 
+5. Pulpit nawigacyjny zapewnia wgląd do repozytorium kodu, potoku ciągłej integracji/ciągłego wdrażania i aplikacji na platformie Azure. Po prawej stronie w obszarze zasobów platformy Azure wybierz **Przeglądaj** do wyświetlenia uruchomionej aplikacji.
+
+   ![Widok pulpitu nawigacyjnego](_img/azure-devops-project-aspnet-core/dashboardnopreview.png) 
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Zatwierdzanie zmian kodu i wykonywanie ciągłej integracji/ciągłego wdrażania
 
- Usługa DevOps Projects utworzyła repozytorium Git w usłudze Azure Repos lub GitHub. Aby wyświetlić repozytorium i wprowadzić zmiany w kodzie aplikacji, wykonaj poniższe kroki:
+Usługa DevOps Projects utworzyła repozytorium Git w usłudze Azure Repos lub GitHub. Aby wyświetlić repozytorium i wprowadzić zmiany w kodzie aplikacji, wykonaj poniższe kroki:
 
-1. Z lewej strony pulpitu nawigacyjnego usługi DevOps Projects wybierz link dla gałęzi **master**.  
-Ten link otwiera widok nowo utworzonego repozytorium Git.
+1. Z lewej strony pulpitu nawigacyjnego usługi DevOps Projects wybierz link dla gałęzi **master**. Ten link otwiera widok nowo utworzonego repozytorium Git.
 
-1. Aby wyświetlić adres URL klonowania repozytorium, wybierz pozycję **Klonuj** w prawym górnym rogu przeglądarki.  
-Możesz sklonować repozytorium Git w wybranym środowisku IDE.  W kolejnych kilku krokach użyjesz przeglądarki internetowej, aby dokonać zmian w kodzie i zatwierdzić je bezpośrednio w gałęzi master.
+2. W następnych kilku krokach można użyć przeglądarki sieci web w celu podejmowania i zatwierdź zmiany w kodzie bezpośrednio **wzorca** gałęzi. Można również sklonować repozytorium Git w Twoim ulubionym środowisku IDE, wybierając **klonowania** od góry prawej części strony repozytorium. 
 
-1. W lewej części przeglądarki przejdź do pliku **Views/Home/index.cshtml**.
+3. Po lewej stronie, przejść struktury plików aplikacji do **Application/aspnet-core-dotnet-core/Pages/Index.cshtml**.
 
-1. Wybierz pozycję **Edytuj** i wprowadź zmianę w nagłówku h2. Wpisz na przykład hasło **Zaczynamy pracę z usługą Azure DevOps Projects** lub wprowadź inną zmianę.
+4. Wybierz pozycję **Edytuj** i wprowadź zmianę w nagłówku h2. Wpisz na przykład hasło **Zaczynamy pracę z usługą Azure DevOps Projects** lub wprowadź inną zmianę.
 
-    ![Edytowanie kodu](_img/azure-devops-project-aspnet-core/codechange.png)
+      ![Edytowanie kodu](_img/azure-devops-project-aspnet-core/codechange.png)
 
-1. Wybierz pozycję **Zatwierdź**, a następnie zapisz zmiany.
+5. Wybierz **zatwierdzić**, pozostaw komentarz i wybierz **zatwierdzić** ponownie.
 
-1. W przeglądarce przejdź do pulpitu nawigacyjnego projektu usługi Azure DevOps.  W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany są automatycznie kompilowane i wdrażane za pośrednictwem potoku ciągłej integracji/ciągłego wdrażania.
+6. W przeglądarce przejdź do pulpitu nawigacyjnego projektu usługi Azure DevOps.  W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany są automatycznie kompilowane i wdrażane za pośrednictwem potoku ciągłej integracji/ciągłego wdrażania.
 
 ## <a name="examine-the-cicd-pipeline"></a>Badanie potoku ciągłej integracji/ciągłego wdrażania
 

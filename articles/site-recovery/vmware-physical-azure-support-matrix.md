@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8fd9f56c262ce3a7110aa71bf72d01fe875212c0
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3ff6a1a52048e805f9236349d4fc8d45a14b78ea
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275763"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341450"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -69,9 +69,9 @@ Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwan
 Ustawienia komputera | Maszyny, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#azure-vm-requirements).
 Obciążenie maszyny | Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwanej maszynie replikacji. [Dowiedz się więcej](https://aka.ms/asr_workload).
 Windows | -Windows Server 2019 (obsługiwane przez [34 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4490016) (wersja 9.22 usługi mobilności) i nowszych wersjach.<br/> -Windows Server 2016 (64-bitowych Server Core, serwer ze środowiskiem pulpitu)<br/> -Windows Server 2012 R2, Windows Server 2012<br/> -Windows Server 2008 R2 z na co najmniej z dodatkiem SP1.<br/> -Windows Server 2008, 64- i 32-bitowe z co najmniej z dodatkiem SP2]. Obsługiwane na potrzeby migracji tylko. [Dowiedz się więcej](migrate-tutorial-windows-server-2008.md).<br/> — System Windows 10, Windows 8.1, Windows 8, Windows 7 64-bitowy (obsługiwane przez [36 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4503156) (wersja 9.22 usługi mobilności i nowszych wersjach). Windows 7 RTM nie jest obsługiwane. 
-Linux | Obsługiwane jest tylko 64-bitowym systemie. 32-bitowy system nie jest obsługiwane.<br/><br/> Usługa Site Recovery organizuje trybu failover, aby uruchomić serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux może ograniczyć obsługę tylko wersje dystrybucji, które jeszcze nie osiągnęły wycofanych z eksploatacji.<br/><br/> W dystrybucjach systemu Linux są obsługiwane tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.<br/><br/> Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.<br/><br/> [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure.
-Linux Red Hat Enterprise | 5.2 i 5.11</b><br/> 6.1, 6.10</b><br/> 7.0 lub 7.6<br/> <br/> Serwery z systemem Red Hat Enterprise Linux 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
-W systemie Linux: CentOS | 5.2 i 5.11</b><br/> 6.1, 6.10</b><br/> 7.0 lub 7.6<br/> <br/> Serwery z systemem CentOS 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
+Linux | Obsługiwane jest tylko 64-bitowym systemie. 32-bitowy system nie jest obsługiwane.<br/><br/>Każdy serwer systemu Linux powinien mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane. Jest ona wymagana do uruchomienia serwera w systemie Azure po testu trybu failover i pracy awaryjnej. Jeśli brakuje składników usług LIS, upewnij się, aby zainstalować [składniki](https://www.microsoft.com/download/details.aspx?id=55106) przed włączeniem replikacji dla maszyn, które można uruchomić na platformie Azure. <br/><br/> Usługa Site Recovery organizuje trybu failover, aby uruchomić serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux może ograniczyć obsługę tylko wersje dystrybucji, które jeszcze nie osiągnęły wycofanych z eksploatacji.<br/><br/> W dystrybucjach systemu Linux są obsługiwane tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.<br/><br/> Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.<br/><br/> [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure.
+Linux Red Hat Enterprise | 5.2 i 5.11</b><br/> 6.1, 6.10</b><br/> 7.0 lub 7.6<br/> <br/> Nie masz serwerów z systemem Red Hat Enterprise Linux 5.2 5.11 & 6.1 6.10 [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) wstępnie zainstalowane. Upewnij się, aby zainstalować [składniki](https://www.microsoft.com/download/details.aspx?id=55106) przed włączeniem replikacji dla maszyn, które można uruchomić na platformie Azure.
+W systemie Linux: CentOS | 5.2 i 5.11</b><br/> 6.1, 6.10</b><br/> 7.0 lub 7.6<br/> <br/> Nie masz serwerów z systemem CentOS 5.2 5.11 & 6.1 6.10 [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) wstępnie zainstalowane. Upewnij się, aby zainstalować [składniki](https://www.microsoft.com/download/details.aspx?id=55106) przed włączeniem replikacji dla maszyn, które można uruchomić na platformie Azure.
 Ubuntu | Ubuntu 14.04 LTS server [(Sprawdź obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS [(Sprawdź obsługiwane wersje jądra)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(Sprawdź obsługiwane wersje jądra)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3, z dodatkiem SP4 [(Sprawdź obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i ponownie włączyć po uaktualnieniu.
@@ -157,15 +157,15 @@ Wiele kart sieciowych sieci gościa/serwera | Tak.
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Usługa ExpressRoute systemu Azure | Yes
+Usługa ExpressRoute systemu Azure | Tak
 ILB | Tak
 ELB | Yes
 Azure Traffic Manager | Tak
 Multi-NIC | Tak
 Zastrzeżony adres IP | Tak
-IPv4 | Yes
+IPv4 | Tak
 Zachowaj źródłowy adres IP | Tak
-Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Yes
+Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Tak
 Wydajniejsze sieci | Nie
 
 ## <a name="storage"></a>Magazyn
@@ -178,23 +178,23 @@ Sieć SAN (iSCSI/FC) hosta | Yes
 Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
 Host wielościeżkowego (MPIO) | Tak, przetestowane za pomocą DSM firmy Microsoft, EMC PowerPath 5.7 z dodatkiem SP4 EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualnego hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
-Gość/serwera VMDK | Yes
+Gość/serwera VMDK | Tak
 Dysku udostępnionego klastra gościa/serwera | Nie
 Gość/serwera zaszyfrowanego dysku | Nie
 Gość/serwer systemu plików NFS | Nie
 Gość/serwer iSCSI | Nie
 Guest/server SMB 3.0 | Nie
 Gość/serwera RDM | Tak<br/><br/> N/d dla serwerów fizycznych
-Gość/serwera dysku > 1 TB | Tak<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
+Gość/serwera dysku > 1 TB | Yes<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
 Gość/serwera na dysku o rozmiarze sektora fizycznego logicznych i 4 k 4K | Tak
-Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Tak
+Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Yes
 Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br/><br/>Zarządzanie woluminami logicznych (LVM)| Tak
 Gość/server - miejsca do magazynowania | Nie
 Gość/serwer Dodaj lub usuń gorąco dysku | Nie
 Gość/server - wykluczyć dysk | Tak
 Gość/serwera wielościeżkowego (MPIO) | Nie
 Gość/serwera partycji GPT | Pięć partycjami są obsługiwane z poziomu [37 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4508614/) (wersja 9,25 usługi mobilności) i nowszych wersjach. Wcześniej były cztery obsługiwane.
-Rozruchu interfejsu EFI/UEFI gościa/serwera | -Obsługiwana, gdy używasz wersja usługi mobilności 9.13 lub nowszej.<br/> -Obsługiwana podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszym na platformie Azure.<br/> — Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/> -NTFS tylko jest obsługiwane. <br/> — Rozmiar sektora dysku powinna być 512 bajtów na sektor fizycznych.
+Rozruchu interfejsu EFI/UEFI gościa/serwera | -Obsługiwana, gdy używasz wersja usługi mobilności 9.13 lub nowszej.<br/> -Obsługiwana podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszym na platformie Azure.<br/> — Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/> -Tylko NTFS jest obsługiwana i bezpieczny typ rozruchu UEFI nie jest obsługiwany. <br/> — Rozmiar sektora dysku powinna być 512 bajtów na sektor fizycznych.
 
 ## <a name="replication-channels"></a>Kanały replikacji
 
@@ -224,7 +224,7 @@ Kont magazynu ogólnego przeznaczenia w wersji 2 (gorące i chłodne warstwy) | 
 
 **Funkcja** | **Obsługiwane**
 --- | ---
-Zestawy dostępności | Tak
+Zestawy dostępności | Yes
 Strefy dostępności | Nie
 HUB | Tak
 Dyski zarządzane | Yes

@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2019
+ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 4f9f4ccb53f9530122f0a2463f8f45b596856282
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: d125328d903b419aa81c54ffecf1f549d4cb4fe2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149686"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330782"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Szybki start: Sterowanie urządzeniem połączonym z centrum IoT Hub (Android)
 
@@ -94,12 +94,12 @@ Potrzebne będą także _parametry połączenia usługi_, aby umożliwić aplika
 **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
 ```
 
 Zanotuj parametry połączenia usługi, które wyglądają następująco:
 
-`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
 Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Parametry połączenia usługi różnią się od parametrów połączenia urządzenia.
 
@@ -166,7 +166,7 @@ Aplikacja usługi zaplecza centrum IoT Hub zwykle działa w chmurze, gdzie możn
 2. W programie Android Studio otwórz plik *gradle.properties* przykładowego projektu i zaktualizuj wartości właściwości **ConnectionString** i **DeviceId** przy użyciu zanotowanych wcześniej parametrów połączenia oraz zarejestrowanego identyfikatora urządzenia z systemem Android.
 
     ```
-    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}
+    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 

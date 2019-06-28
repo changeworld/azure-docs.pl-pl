@@ -5,16 +5,16 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 06/19/2019
 ms.author: rogarana
-ms.openlocfilehash: 26251ebd3c83f6cd44203e1d3cc5f1b523a0d8d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80d871bdc17c3f93e113b08201d6c53f29bfeff0
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237786"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295612"
 ---
-# <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
+# <a name="enable-azure-active-directory-domain-service-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie usługi Azure Active Directory domeny za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 Aby uzyskać omówienie uwierzytelniania usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files, zobacz [uwierzytelniania Omówienie programu Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](storage-files-active-directory-overview.md).
@@ -143,15 +143,14 @@ Następujący szablon roli niestandardowej zapewnia uprawnienia do wprowadzania 
   "IsCustom": true,
   "Description": "Allows for read, write and delete access to Azure File Share over SMB",
   "Actions": [
-    "*"
-  ],
-  "NotActions": [
-    "Microsoft.Authorization/*/Delete",
-        "Microsoft.Authorization/*/Write",
-        "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Storage/storageAccounts/fileServices/*"
   ],
   "DataActions": [
-    "*"
+    "Microsoft.Storage/storageAccounts/fileServices/*"
+  ],
+  "NotDataActions": [
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action",
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"
@@ -169,10 +168,10 @@ Następujący szablon roli niestandardowej zapewnia uprawnienia odczytu na pozio
   "IsCustom": true,
   "Description": "Allows for read access to Azure File Share over SMB",
   "Actions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/*/read"
   ],
   "DataActions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/*/read"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"

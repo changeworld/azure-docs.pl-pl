@@ -4,18 +4,18 @@ description: Lista usług, które obsługują zarządzanych tożsamości do uwie
 services: active-directory
 author: MarkusVi
 ms.author: priyamo
-ms.date: 05/09/2019
+ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0809423472bde0240145d43f4c28d9594b517928
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c67f1dad55d5d8710a997394e247793943cd21
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518689"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293498"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -147,6 +147,17 @@ Można znaleźć na poniższej liście, można skonfigurować tożsamości zarz�
 - [Interfejs wiersza polecenia platformy Azure](~/articles/container-instances/container-instances-managed-identity.md)
 - [Szablon usługi Azure Resource Manager](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
+
+### <a name="azure-container-registry-tasks"></a>Usługa Azure Container Registry Tasks
+
+Typ tożsamości zarządzanych | Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government | Azure (Niemcy) | Azure w Chinach — 21Vianet |
+| --- | --- | --- | --- | --- |
+| Przypisanej w systemie | Dostępne | Niedostępne | Niedostępne | Niedostępne |
+| Przypisane przez użytkownika | Wersja zapoznawcza | Niedostępne | Niedostępne | Niedostępne |
+
+Zobacz poniżej, aby skonfigurować tożsamość zarządzaną zadań rejestru kontenera platformy Azure (w regionach gdzie są dostępne):
+
+- [Interfejs wiersza polecenia platformy Azure](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD
 

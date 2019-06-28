@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: bf2262d8a222cec6c5d0d7e53ded7b2994481656
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 207fb003eb1fdaafe4f43f7cd41dd4b7662eddf9
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205704"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331973"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
 
@@ -52,12 +52,12 @@ W poniższej tabeli opisano topologie sieci, obsługiwane przez usługi Azure Fi
 
 |    Topologie    |    jest obsługiwany    |     Obejście    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Łączność z woluminu w lokalnej sieci wirtualnej    |    Tak    |         |
+|    Łączność z woluminu w lokalnej sieci wirtualnej    |    Yes    |         |
 |    Łączność z woluminu w skomunikowanej równorzędnie sieci wirtualnej (tym samym regionie)    |    Yes    |         |
 |    Łączność z woluminu w wirtualnych sieciach równorzędnych (Cross regionu lub globalnej komunikacji równorzędnej)    |    Nie    |    Brak    |
-|    Łączność z woluminem przez bramę usługi ExpressRoute    |    Yes    |         |
+|    Łączność z woluminem przez bramę usługi ExpressRoute    |    Tak    |         |
 |    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej przez bramę usługi ExpressRoute i wirtualną sieć równorzędną przy użyciu tranzyt przez bramę    |    Nie    |    Utwórz podsieć delegowanego w piastą (sieć wirtualną platformy Azure za pomocą bramy)    |
-|    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej za pośrednictwem bramy sieci VPN    |    Tak    |         |
+|    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej za pośrednictwem bramy sieci VPN    |    Yes    |         |
 |    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej za pośrednictwem bramy sieci VPN i wirtualną sieć równorzędną przy użyciu tranzyt przez bramę    |    Tak    |         |
 
 
@@ -81,7 +81,7 @@ Jeśli sieć wirtualna a jest połączona z inną siecią wirtualną, nie można
 
 ### <a name="udrs-and-nsgs"></a>Tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń
 
-Sieciowe grupy zabezpieczeń (NSG) z miejsca docelowego następnego skoku nie może służyć jako delegowanego podsieci dla usługi Azure Files NetApp. Podobnie trasy zdefiniowane przez użytkownika (Udr) również nie są obsługiwane. 
+Trasy zdefiniowane przez użytkownika (Udr) i sieciowych grup zabezpieczeń (NSG) nie są obsługiwane w podsieciach delegowanej dla usługi Azure Files NetApp.
 
 Jako obejście można zastosować sieciowe grupy zabezpieczeń do innych podsieci, które zezwalają na ruch do i z podsieci usługi Azure Files NetApp delegowany albo zezwolić na.  
 

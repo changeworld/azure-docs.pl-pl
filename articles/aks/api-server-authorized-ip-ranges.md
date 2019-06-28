@@ -1,18 +1,18 @@
 ---
 title: Serwera interfejsu API autoryzowane zakresy adresów IP w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak do bezpiecznego klastra przy użyciu adresu IP zakresy adresów do uzyskiwania dostępu do serwera interfejsu API w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak zabezpieczyć klaster przy użyciu zakresu adresów IP, aby uzyskać dostęp do serwera interfejsu API w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ec48c8ed924293a5ffea903fe03a9830dcd1184
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475144"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329429"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — bezpieczny dostęp do serwera interfejsu API przy użyciu autoryzowane zakresy adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -30,34 +30,38 @@ Ten artykuł pokazuje, jak używać zakresów adresów IP serwera autoryzacji in
 
 Serwera interfejsu API używać tylko w przypadku nowych klastrów usługi AKS, które tworzysz zakresów adresów IP autoryzowanych. W tym artykule pokazano, jak utworzyć klaster usługi AKS przy użyciu wiersza polecenia platformy Azure.
 
-Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia w wersji zapoznawczej usługi aks
 
-Polecenia interfejsu wiersza polecenia, aby skonfigurować zakresy adresów IP serwera autoryzacji interfejsu API są dostępne w *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia. Zainstaluj *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az] [ az-extension-add] polecenia, jak pokazano w poniższym przykładzie:
+Aby skonfigurować zakresy adresów IP serwera autoryzacji interfejsu API, musisz mieć *podglądu usługi aks* interfejsu wiersza polecenia wersja rozszerzenia 0.4.1 lub nowszej. Zainstaluj *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] polecenia:
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> Jeśli wcześniej zainstalowano *podglądu usługi aks* rozszerzenia, zainstaluj dostępne aktualizacje, przy użyciu `az extension update --name aks-preview` polecenia.
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-feature-flag-for-your-subscription"></a>Zarejestruj flagę funkcji dla Twojej subskrypcji
 
-Używanie interfejsu API serwera autoryzowane zakresy adresów IP, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *APIServerSecurityPreview* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+Używanie interfejsu API serwera autoryzowane zakresy adresów IP, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *APIServerSecurityPreview* flagę funkcji, należy użyć [az feature register][az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+
+> [!CAUTION]
+> Po zarejestrowaniu funkcji w ramach subskrypcji, nie można obecnie wyrejestrować tę funkcję. Po włączeniu niektóre funkcje w wersji zapoznawczej, wartości domyślne mogą służyć dla wszystkich klastrów usługi AKS, które następnie są tworzone w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji w środowisku produkcyjnym. Aby przetestować funkcje w wersji zapoznawczej i zbieranie opinii, należy użyć oddzielnej subskrypcji.
 
 ```azurecli-interactive
 az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
 ```
 
-Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az] [ az-feature-list] polecenia:
+Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az][az-feature-list] polecenia:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/APIServerSecurityPreview')].{Name:name,State:properties.state}"
 ```
 
-Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcę zasobów przy użyciu [az provider register] [ az-provider-register] polecenia:
+Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcę zasobów przy użyciu [az provider register][az-provider-register] polecenia:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -81,7 +85,7 @@ Aby uzyskać więcej informacji na temat serwera interfejsu API i inne składnik
 
 Adres IP serwera, o których uprawnień interfejsu API zakresy działają tylko w przypadku nowych klastrów usługi AKS. Nie można włączyć autoryzowane zakresy adresów IP, ponieważ operacja tworzenia częścią klastra. Jeśli zostanie podjęta próba włączenia autoryzowane zakresy adresów IP w ramach klastra utworzyć procesu, węzły klastra są w stanie uzyskać dostępu do serwera interfejsu API podczas wdrażania, jak adres IP ruchu wychodzącego nie jest zdefiniowany w tym momencie.
 
-Najpierw Utwórz klaster przy użyciu [tworzenie az aks] [ az-aks-create] polecenia. W poniższym przykładzie tworzony jest klaster jednowęzłowy, o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*.
+Najpierw Utwórz klaster przy użyciu [tworzenie az aks][az-aks-create] polecenia. W poniższym przykładzie tworzony jest klaster jednowęzłowy, o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*.
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -105,7 +109,7 @@ Aby upewnić się, że węzłów w klastrze może niezawodnie komunikować się 
 > [!WARNING]
 > Korzystanie z zapory usługi Azure mogą być naliczane znacznych kosztów miesięcznego cyklu rozliczeniowego. Wymóg dotyczący używania zapory usługi Azure powinny być tylko niezbędne w tym okresie początkowego okresu zapoznawczego. Aby uzyskać więcej informacji i planowanie kosztów, zobacz [zapory usługi Azure, cennik][azure-firewall-costs].
 
-Najpierw pobierz *MC_* nazwy grupy zasobów klastra usługi AKS i sieci wirtualnej. Następnie utwórz podsieci przy użyciu [az podsieci sieci wirtualnej Utwórz] [ az-network-vnet-subnet-create] polecenia. Poniższy przykład tworzy podsieć o nazwie *AzureFirewallSubnet* zakres CIDR *10.200.0.0/16*:
+Najpierw pobierz *MC_* nazwy grupy zasobów klastra usługi AKS i sieci wirtualnej. Następnie utwórz podsieci przy użyciu [az podsieci sieci wirtualnej Utwórz][az-network-vnet-subnet-create] polecenia. Poniższy przykład tworzy podsieć o nazwie *AzureFirewallSubnet* zakres CIDR *10.200.0.0/16*:
 
 ```azurecli-interactive
 # Get the name of the MC_ cluster resource group
@@ -127,7 +131,7 @@ az network vnet subnet create \
     --address-prefixes 10.200.0.0/16
 ```
 
-Aby utworzyć zaporę na platformie Azure, instalowanie *zapory usługi azure* rozszerzenie interfejsu wiersza polecenia przy użyciu polecenia [Dodaj rozszerzenie az] [ az-extension-add] polecenia. Następnie utwórz zaporą za pomocą [tworzenie zapory sieciowej az] [ az-network-firewall-create] polecenia. Poniższy przykład tworzy zaporę platformy Azure o nazwie *myAzureFirewall*:
+Aby utworzyć zaporę na platformie Azure, instalowanie *zapory usługi azure* rozszerzenie interfejsu wiersza polecenia przy użyciu polecenia [Dodaj rozszerzenie az][az-extension-add] command. Then, create a firewall using the [az network firewall create][az-network-firewall-create] polecenia. Poniższy przykład tworzy zaporę platformy Azure o nazwie *myAzureFirewall*:
 
 ```azurecli-interactive
 # Install the CLI extension for Azure Firewall
@@ -139,7 +143,7 @@ az network firewall create \
     --name myAzureFirewall
 ```
 
-Zaporę platformy Azure jest przypisany publiczny adres IP, który ruch wychodzący przepływów za pomocą. Tworzenie przy użyciu publicznego adresu [tworzenie sieci az public-ip] [ az-network-public-ip-create] polecenia, a następnie utwórz konfigurację adresu IP przy użyciu zapory [zapory sieciowej az ip-config tworzenie] [ az-network-firewall-ip-config-create] stosująca publiczny adres IP:
+Zaporę platformy Azure jest przypisany publiczny adres IP, który ruch wychodzący przepływów za pomocą. Tworzenie przy użyciu publicznego adresu [tworzenie sieci az public-ip][az-network-public-ip-create] command, then create an IP configuration on the firewall using the [az network firewall ip-config create][az-network-firewall-ip-config-create] stosująca publiczny adres IP:
 
 ```azurecli-interactive
 # Create a public IP address for the firewall
@@ -158,7 +162,7 @@ az network firewall ip-config create \
     --public-ip-address myAzureFirewallPublicIP
 ```
 
-Teraz utworzyć regułę sieciowej zapory platformy Azure, która *Zezwalaj* wszystkich *TCP* ruchu przy użyciu [tworzenie az sieci reguła sieciowej] [ az-network-firewall-network-rule-create] polecenie. Poniższy przykład tworzy regułę sieciowej o nazwie *AllowTCPOutbound* ruchu przy użyciu dowolnego adresu źródłowego lub docelowego:
+Teraz utworzyć regułę sieciowej zapory platformy Azure, która *Zezwalaj* wszystkich *TCP* ruchu przy użyciu [tworzenie az sieci reguła sieciowej][az-network-firewall-network-rule-create] polecenia. Poniższy przykład tworzy regułę sieciowej o nazwie *AllowTCPOutbound* ruchu przy użyciu dowolnego adresu źródłowego lub docelowego:
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -192,7 +196,7 @@ FIREWALL_INTERNAL_IP=$(az network firewall show \
 K8S_ENDPOINT_IP=$(kubectl get endpoints -o=jsonpath='{.items[?(@.metadata.name == "kubernetes")].subsets[].addresses[].ip}')
 ```
 
-Na koniec utwórz trasę w istniejącej usłudze AKS sieci trasy tabeli przy użyciu [tworzenie az sieci route-table route] [ az-network-route-table-route-create] polecenia, która zezwala na ruch do użycia urządzenia zapory platformy Azure na potrzeby serwera interfejsu API Komunikacja.
+Na koniec utwórz trasę w istniejącej usłudze AKS sieci trasy tabeli przy użyciu [tworzenie az sieci route-table route][az-network-route-table-route-create] polecenia, która zezwala na ruch do użycia urządzenia zapory platformy Azure na potrzeby komunikacji z serwerem interfejsu API.
 
 ```azurecli-interactive
 az network route-table route create \
@@ -212,7 +216,7 @@ Zanotuj publiczny adres IP urządzenia zapory usługi Azure. Ten adres jest doda
 
 Aby włączyć zakresów adresów IP serwera autoryzacji interfejsu API, musisz podać listę autoryzowanych zakresów adresów IP. Podczas określania zakresu CIDR rozpoczynać od pierwszego adresu IP z zakresu. Na przykład *137.117.106.90/29* jest prawidłowym zakresem, ale upewnij się, że możesz określić pierwszy adres IP z zakresu, takie jak *137.117.106.88/29*.
 
-Użyj [aktualizacji az aks] [ az-aks-update] polecenia i określić *— interfejs api —-autoryzacji — — zakresy adresów ip serwerów* umożliwia. Te zakresy adresów IP są zwykle zakresami adresów używanymi przez sieci w środowisku lokalnym. Dodaj publiczny adres IP platformy Azure zapory uzyskanego w poprzednim kroku, takie jak *20.42.25.196/32*.
+Użyj [aktualizacji az aks][az-aks-update] polecenia i określić *— interfejs api —-autoryzacji — — zakresy adresów ip serwerów* umożliwia. Te zakresy adresów IP są zwykle zakresami adresów używanymi przez sieci w środowisku lokalnym. Dodaj publiczny adres IP platformy Azure zapory uzyskanego w poprzednim kroku, takie jak *20.42.25.196/32*.
 
 Poniższy przykład umożliwia zakresy adresów IP serwera autoryzacji interfejsu API w klastrze o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*. Zakresy adresów IP, aby autoryzować to *20.42.25.196/32* (Zapora usługi Azure publiczny adres IP), następnie *172.0.0.10/16* i *168.10.0.10/18*:
 
@@ -225,7 +229,7 @@ az aks update \
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Zaktualizuj lub wyłącz autoryzowane zakresy adresów IP
 
-Aby zaktualizować lub wyłączyć zakresów adresów IP autoryzowanych, należy ponownie użyć [aktualizacji az aks] [ az-aks-update] polecenia. Określ zaktualizowano zakres CIDR, które chcesz zezwolić lub określić, że pustego zakresu, aby wyłączyć serwera interfejsu API uprawnienia zakresów adresów IP, jak pokazano w poniższym przykładzie:
+Aby zaktualizować lub wyłączyć zakresów adresów IP autoryzowanych, należy ponownie użyć [aktualizacji az aks][az-aks-update] polecenia. Określ zaktualizowano zakres CIDR, które chcesz zezwolić lub określić, że pustego zakresu, aby wyłączyć serwera interfejsu API uprawnienia zakresów adresów IP, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az aks update \
@@ -238,7 +242,7 @@ az aks update \
 
 W tym artykule został włączony zakresów adresów IP serwera autoryzacji interfejsu API. To podejście jest jedną z części pakietu działanie z bezpiecznym klastrem AKS.
 
-Aby uzyskać więcej informacji, zobacz [pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze AKS] [ concepts-security] i [najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze AKS] [ operator-best-practices-cluster-security].
+Aby uzyskać więcej informacji, zobacz [pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze AKS][concepts-security] and [Best practices for cluster security and upgrades in AKS][operator-best-practices-cluster-security].
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
@@ -265,3 +269,5 @@ Aby uzyskać więcej informacji, zobacz [pojęcia dotyczące zabezpieczeń dla a
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-list]: /cli/azure/extension#az-extension-list
+[az-extension-update]: /cli/azure/extension#az-extension-update

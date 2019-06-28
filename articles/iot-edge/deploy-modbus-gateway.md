@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 06/20/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25be0629b2ef877d8757f515cb6ccd5942e58d5f
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248050"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312796"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Łączenie urządzeń Modbus TCP za pośrednictwem bramy urządzeń usługi IoT Edge
 
@@ -35,7 +35,7 @@ W tym artykule założono, że użytkownik korzysta z protokołu Modbus TCP. Aby
 
 Jeśli chcesz przetestować funkcje bramy Modbus, firma Microsoft przygotowała przykładowy moduł, którego możesz użyć. W portalu Azure Marketplace można uzyskać dostęp do modułu [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview), lub przy użyciu obrazu identyfikatora URI, **mcr.microsoft.com/azureiotedge/modbus:1.0**.
 
-Jeśli chcesz utworzyć własny moduł i dostosować go w środowisku jest typu open-source [moduł Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu w usłudze GitHub. Wykonaj instrukcje zawarte w tym projekcie, aby utworzyć własny obraz kontenera. Jeśli tworzysz własny obraz kontenera, zapoznaj się [programowanie C# modułów w programie Visual Studio](how-to-visual-studio-develop-csharp-module.md) lub [opracowanie modułów w programie Visual Studio Code](how-to-vs-code-develop-module.md). Te artykuły zawierają instrukcje dotyczące tworzenia nowych modułów i publikowania obrazów kontenera do rejestru.
+Jeśli chcesz utworzyć własny moduł i dostosować go w środowisku jest typu open-source [moduł Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu w usłudze GitHub. Wykonaj instrukcje zawarte w tym projekcie, aby utworzyć własny obraz kontenera. Aby utworzyć obraz kontenera, zapoznaj się [programowanie C# modułów w programie Visual Studio](how-to-visual-studio-develop-csharp-module.md) lub [opracowanie modułów w programie Visual Studio Code](how-to-vs-code-develop-module.md). Te artykuły zawierają instrukcje dotyczące tworzenia nowych modułów i publikowania obrazów kontenera do rejestru.
 
 ## <a name="try-the-solution"></a>Wypróbuj rozwiązanie
 
@@ -85,12 +85,13 @@ W tej sekcji przedstawiono wdrażanie moduł Modbus przykładowej firmy Microsof
 
 5. W kroku **Dodawanie modułów** wybierz opcję **Dalej**.
 
-7. W kroku **Określanie tras** skopiuj następujące dane JSON do pola tekstowego. Ta trasa wysyła wszystkie komunikaty zebrane przez moduł Modbus do centrum IoT Hub. W tej trasie "modbusOutput" jest punkt końcowy, który moduł Modbus używa do wydawania danych, a "upstream" jest specjalną lokalizacją docelową, która nakazuje Centrum IoT Edge hub wysyłanie komunikatów do Centrum IoT Hub.
+7. W kroku **Określanie tras** skopiuj następujące dane JSON do pola tekstowego. Ta trasa wysyła wszystkie komunikaty zebrane przez moduł Modbus do centrum IoT Hub. W tej trasie **modbusOutput** jest punktem końcowym tego Modbus używa modułu, aby dane wyjściowe i **$nadrzędne** jest specjalną lokalizacją docelową, która nakazuje Centrum IoT Edge hub wysyłanie komunikatów do Centrum IoT Hub.
+
    ```JSON
    {
-    "routes": {
-      "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-    }
+     "routes": {
+       "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
+     }
    }
    ```
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bba176a27cc70321915654e3e2e62320f22c16c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475224"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310139"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure App Service
 
@@ -147,7 +147,7 @@ Zobacz też wybranej nazwy hostów w **domen niestandardowych** strony w **niest
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> A **Secure Uwaga** etykiety oznacza domenę niestandardową, że jeszcze nie jest on powiązany z certyfikatu SSL, a każde żądanie HTTPS z przeglądarki do domeny niestandardowej otrzyma i błąd lub ostrzeżenie, w zależności od przeglądarki. Aby skonfigurować powiązania SSL, zobacz [Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service](web-sites-purchase-ssl-web-site.md).
+> A **nie zabezpieczyć** etykiety dla domeny niestandardowej oznacza, że jeszcze nie jest on powiązany z certyfikatu SSL, a każde żądanie HTTPS z przeglądarki do domeny niestandardowej, zostanie wyświetlony błąd lub ostrzeżenie, w zależności od przeglądarki. Aby skonfigurować powiązania SSL, zobacz [Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service](web-sites-purchase-ssl-web-site.md).
 >
 
 Aby przetestować nazwy hostów, przejdź do listy nazw hostów w przeglądarce. W przykładzie na poprzednim zrzucie ekranu, spróbuj przejść do _kontoso.net_ i _www\.kontoso.net_.

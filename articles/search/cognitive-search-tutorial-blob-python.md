@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: 75ff1f7a37522c295bff10fe22bbb995fea65d52
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
-ms.translationtype: HT
+ms.openlocfilehash: 50a252ff93f7e2cc6e5c6100c6bce850e9e96baf
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276041"
+ms.locfileid: "67295634"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Samouczek języka Python: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku
 
@@ -465,73 +465,7 @@ Wyniki powinny wyglądać podobnie do poniższego przykładu. Zrzut ekranu przed
 Powtórz tę procedurę dla pola dodatkowe: zawartość, languageCode, keyPhrases i organizacji, w tym ćwiczeniu. Istnieje możliwość zwrócenia wielu pól za pomocą elementu `$select` używającego listy wartości rozdzielonych przecinkami.
 
 W zależności od złożoności i długości ciągu zapytania można użyć metody GET lub POST. Aby uzyskać więcej informacji, zobacz [Odpytywanie przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-
-<a name="access-enriched-document"></a>
-
-## <a name="accessing-the-enriched-document"></a>Dostęp do wzbogaconego dokumentu
-
-Funkcja wyszukiwania poznawczego umożliwia wyświetlenie struktury wzbogaconego dokumentu. Wzbogacone dokumenty to tymczasowe struktury tworzone podczas wzbogacania, a następnie usuwane po zakończeniu procesu.
-
-Aby przechwycić migawkę wzbogaconego dokumentu utworzoną podczas indeksowania, dodaj pole o nazwie `enriched` do indeksu. Indeksator automatycznie zrzuca do tego pola ciąg będący reprezentacją wszystkich wzbogaceń dokumentu.
-
-Pole `enriched` będzie zawierać ciąg, który jest logiczną reprezentacją wzbogaconego dokumentu w pamięci w formacie JSON.  Wartość pola jest jednak prawidłowym dokumentem w formacie JSON. Cudzysłowy będą miały zmienione znaczenie, dlatego należy zastąpić `\"` z `"` Aby wyświetlić dokument jako w formacie JSON.  
-
-Pole `enriched` jest przeznaczone do debugowania i ma za zadanie ułatwić zrozumienie logicznego kształtu zawartości, względem której wyrażenia są oceniane. Może to być przydatne narzędzie do poznawania i debugowania zestawu umiejętności.
-
-Aby przechwytywać zawartość dokumentu wzbogacony, powtórz poprzednim ćwiczeniu, a obejmują `enriched` pola podczas tworzenia indeksu.
-
-> [!Tip]
-> Zanim można powtórzyć te kroki, należy usunąć źródła danych, indeks, indeksator i zestawu umiejętności, który został utworzony. Aby uzyskać więcej informacji, zobacz [resetowania i uruchom ponownie](#reset).
-
-```python
-# Create index with enriched field
-index_payload = {
-    "name": index_name,
-    "fields": [
-      {
-        "name": "id",
-        "type": "Edm.String",
-        "key": "true",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false",
-        "sortable": "true"
-      },
-      {
-        "name": "content",
-        "type": "Edm.String",
-        "sortable": "false",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "languageCode",
-        "type": "Edm.String",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "keyPhrases",
-        "type": "Collection(Edm.String)",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "organizations",
-        "type": "Collection(Edm.String)",
-        "searchable": "true",
-        "sortable": "false",
-        "filterable": "false",
-        "facetable": "false"
-      }
-   ]
-}
-```
-
-<a name="reset"></a>
+go <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
 

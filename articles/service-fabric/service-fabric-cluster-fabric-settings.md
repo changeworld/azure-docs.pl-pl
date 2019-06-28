@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
 ms.author: aljo
-ms.openlocfilehash: fed991193e8d4a1f8e4e2fcf75ef8e2bf0d0a8d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: a309b30fc9438ded280109691afd3bde0883dc3c
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074292"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144393"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra usługi Service Fabric, którą można dostosować. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych dostosować ustawienia, aktualizując *ClusterConfig.json* plików i przeprowadzania konfiguracji uaktualnienia w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -150,7 +150,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |PartitionPrefix|ciąg, domyślna to "--"|Static|Określa wartość ciągu prefiks partycji w zapytań DNS dotyczących usług podzielonym na partycje. Wartość: <ul><li>Powinny być zgodne ze standardem RFC, ponieważ będzie on część zapytania DNS.</li><li>Nie może zawierać pojedynczego znaku kropki ".", zgodnie z dot zakłócenie działania sufiks DNS.</li><li>Nie może być większa niż 5 znaków.</li><li>Nie może być ciągiem pustym.</li><li>Jeśli ustawienie PartitionPrefix zostanie zastąpiona, a następnie PartitionSuffix musi zostać zastąpiona i na odwrót.</li></ul>Aby uzyskać więcej informacji, zobacz [DNS usługa Service Fabric.](service-fabric-dnsservice.md).|
 |PartitionSuffix|ciąg, domyślna to ""|Static|Określa wartość partycji sufiks ciągu zapytania DNS dla usług podzielonym na partycje. Wartość: <ul><li>Powinny być zgodne ze standardem RFC, ponieważ będzie on część zapytania DNS.</li><li>Nie może zawierać pojedynczego znaku kropki ".", zgodnie z dot zakłócenie działania sufiks DNS.</li><li>Nie może być większa niż 5 znaków.</li><li>Jeśli ustawienie PartitionPrefix zostanie zastąpiona, a następnie PartitionSuffix musi zostać zastąpiona i na odwrót.</li></ul>Aby uzyskać więcej informacji, zobacz [DNS usługa Service Fabric.](service-fabric-dnsservice.md). |
 
-## <a name="eventstore"></a>Bazy danych EventStore
+## <a name="eventstoreservice"></a>EventStoreService
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |

@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: 4a4b2047cea186db681f4190073cfff94bf99b1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/21/2019
+ms.openlocfilehash: 5cf7153b5370bd5e1002963027295f79ecfeb6db
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005129"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330656"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Szybki start: Kontrolowanie urządzenia podłączonego do centrum IoT (Java)
 
@@ -108,12 +108,12 @@ Potrzebne będą także _parametry połączenia usługi_, aby umożliwić aplika
 **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
 ```
 
 Zanotuj parametry połączenia usługi, które wyglądają następująco:
 
-`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
 Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Parametry połączenia usługi różnią się od parametrów połączenia urządzenia.
 

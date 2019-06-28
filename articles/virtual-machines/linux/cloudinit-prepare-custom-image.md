@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: da539a5bebc1613115f89a7b47c513ce486b5e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a64fb40c905fbe98dc594ab3626666723d1628d0
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627938"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357268"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Przygotowywanie istniejącego obrazu maszyny Wirtualnej platformy Azure z systemem Linux do użycia z pakietu cloud-init
 Ten artykuł pokazuje, jak pobrać istniejącej maszyny wirtualnej platformy Azure i przygotować je do można ponownie wdrożonym i gotowe do użycia pakietu cloud-init. Obraz wynikowy może służyć do wdrażania nowej maszyny wirtualnej lub zestawy skalowania maszyn wirtualnych — które można następnie można dodatkowo dostosowywać przez pakiet cloud-init w czasie wdrażania.  Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji o tym, jak pakietu cloud-init działa natywnie na platformie Azure i obsługiwane dystrybucje systemu Linux, zobacz [Omówienie pakietu cloud-init](using-cloud-init.md)
@@ -65,19 +65,14 @@ sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-cp /lib/systemd/system/waagent.service /etc/systemd/system/waagent.service
-sed -i 's/After=network-online.target/WantedBy=cloud-init.service\\nAfter=network.service systemd-networkd-wait-online.service/g' /etc/systemd/system/waagent.service
-systemctl daemon-reload
 cloud-init clean
 ```
-Zezwalaj tylko usługi Azure jako źródła danych dla agenta systemu Linux dla platformy Azure, tworząc nowy plik `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` za pomocą dowolnego edytora z następującymi wierszami:
+
+Zezwalaj tylko usługi Azure jako źródła danych dla agenta systemu Linux dla platformy Azure, tworząc nowy plik `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` za pomocą dowolnego edytora o następujący wiersz:
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
-datasource:
-   Azure:
-     agent_command: [systemctl, start, waagent, --no-block]
 ```
 
 Jeśli Twojego istniejącego obrazu platformy Azure ma skonfigurowane pliku wymiany, i chcesz zmienić konfigurację pliku wymiany nowych obrazów przy użyciu pakietu cloud-init, którą chcesz usunąć istniejący plik wymiany.

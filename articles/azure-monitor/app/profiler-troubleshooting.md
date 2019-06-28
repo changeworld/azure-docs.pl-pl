@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731064"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341670"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów, włączanie i wyświetlanie Application Insights Profiler
 
@@ -69,7 +69,7 @@ Aby uzyskać Profiler zapewnić prawidłowe działanie:
 * Twoja aplikacja sieci web musi mieć włączone w usłudze Application Insights.
 * Twoja aplikacja sieci web musi mieć następujące ustawienia aplikacji:
 
-    |Ustawienia aplikacji    | Wartość    |
+    |Ustawienia aplikacji    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | klucz Instrumentacji zasobu usługi Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -88,7 +88,7 @@ Aby uzyskać Profiler zapewnić prawidłowe działanie:
 
       ![profiler-webjob-log]
 
-Jeśli nie można ustalić przyczyny Profiler nielubianych przez WAS, możesz pobrać dziennik i wysłać ją do naszego zespołu w celu uzyskania pomocy. 
+Jeśli nie można ustalić przyczyny Profiler nielubianych przez WAS, możesz pobrać dziennik i wysyłać je do naszego zespołu, aby uzyskać pomoc, serviceprofilerhelp@microsoft.com. 
     
 ### <a name="manual-installation"></a>Instalacja ręczna
 
@@ -101,7 +101,7 @@ Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji
 1. Ustaw **zawsze włączone** do **na**.
 1. Utwórz te ustawienia aplikacji:
 
-    |Ustawienia aplikacji    | Wartość    |
+    |Ustawienia aplikacji    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | klucz Instrumentacji zasobu usługi Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

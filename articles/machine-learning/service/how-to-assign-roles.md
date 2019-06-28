@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 02/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2410787c3307136f827ea7fc34df9a545a59cbf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e062fd73f2baeb4948430b13e0caa1f5c0b3f066
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850901"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341113"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Zarządzanie dostępem do obszaru roboczego usługi Azure Machine Learning
 
@@ -41,21 +41,21 @@ Aby uzyskać więcej informacji na temat konkretnych ról wbudowanych, zobacz [w
 
 Jeśli jesteś właścicielem obszaru roboczego, można dodać i usunąć role dla obszaru roboczego. Można także przypisać role do użytkowników. Aby dowiedzieć się, jak zarządzać dostępem, należy użyć następujących łączy:
 - [Interfejs użytkownika witryny Azure portal](/azure/role-based-access-control/role-assignments-portal)
-- [Program PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Interfejs wiersza polecenia platformy Azure](/azure/role-based-access-control/role-assignments-cli)
-- [Interfejs API REST](/azure/role-based-access-control/role-assignments-rest)
+- [REST API](/azure/role-based-access-control/role-assignments-rest)
 - [Szablony usługi Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
 
 Jeśli zainstalowano [interfejsu wiersza polecenia usługi Azure Machine Learning](reference-azure-machine-learning-cli.md), umożliwia także polecenia interfejsu wiersza polecenia do przypisywania ról do użytkowników.
 
 ```azurecli-interactive 
-az ml workspace share -n <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
+az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
 `user` Pole jest adres e-mail istniejącego użytkownika w wystąpieniu usługi Azure Active Directory lokalizacji obszaru roboczego subskrypcji nadrzędnej. Poniżej przedstawiono przykładowy sposób użycia tego polecenia:
 
 ```azurecli-interactive 
-az ml workspace share -n my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
 ## <a name="create-custom-role"></a>Tworzenie roli niestandardowej

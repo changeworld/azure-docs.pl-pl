@@ -2,29 +2,23 @@
 title: Jak zarządzać urządzeniami przy użyciu witryny Azure portal | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zarządzać urządzeniami przy użyciu witryny Azure portal.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f162e5e6eb29e4a658000826ccf25389086342
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4a0037d46db67460d507c6e92ab550f7d9c2fbe
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730436"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341409"
 ---
-# <a name="manage-device-identity-using-the-azure-portal"></a>Zarządzanie tożsamościami urządzeń przy użyciu witryny Azure portal
+# <a name="manage-device-identities-using-the-azure-portal"></a>Zarządzanie tożsamościami urządzeń przy użyciu witryny Azure portal
 
 Zarządzanie tożsamościami urządzeń w usłudze Azure Active Directory (Azure AD) można zagwarantować, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności.
 
@@ -65,19 +59,19 @@ Na stronie ustawień urządzenia można skonfigurować:
 
 - **Użytkownicy mogą dołączać urządzania do usługi Azure AD** — to ustawienie umożliwia wybranie użytkowników, którzy mogą zarejestrować swoje urządzenia jako [dołączać urządzenia w usłudze Azure AD](overview.md#azure-ad-joined-devices). Wartość domyślna to **wszystkich**.
 
->[!NOTE]
+> [!NOTE]
 > **Użytkownicy mogą dołączać urządzania do usługi Azure AD** ustawienie ma zastosowanie tylko do dołączania do usługi Azure AD w systemie Windows 10.
 
 - **Urządzenia przyłączone do dodatkowych administratorów lokalnych w usłudze Azure AD** — możesz wybrać użytkowników, którzy mają prawa administratora lokalnego na urządzeniu. Użytkowników dodanych w tym miejscu są dodawane do *Administratorzy urządzenia* roli w usłudze Azure AD. Administratorzy globalni w usłudze Azure AD i właścicielom urządzeń są domyślnie udzielone prawa administratora lokalnego. Ta opcja jest dostępna za pośrednictwem produktów, takich jak Azure AD Premium lub Enterprise Mobility Suite (EMS) możliwości w wersji premium.
-- **Użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD** — należy skonfigurować to ustawienie, aby zezwolić urządzeniom osobiste, iOS, Android i macOs systemu Windows 10 jako [zarejestrowany](overview.md#azure-ad-registered-devices) z usługą Azure AD. Jeśli wybierzesz **Brak**, urządzenia nie są dozwolone do rejestracji w usłudze Azure AD. Rejestracja w usłudze Microsoft Intune lub zarządzania urządzeniami przenośnymi (MDM) dla usługi Office 365 wymaga rejestracji. Jeśli skonfigurowano którąś z tych usług **wszystkich** jest zaznaczone i **NONE** nie jest dostępna.
-- **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** — możesz wybrać, czy użytkownicy muszą zapewnić drugi składnik uwierzytelniania w celu [sprzężenia](overview.md#azure-ad-joined-devices) swojego urządzenia do usługi Azure AD. Wartość domyślna to **nie**. Zaleca się wymaganie uwierzytelniania wieloskładnikowego podczas rejestrowania urządzenia. Przed włączeniem uwierzytelniania wieloskładnikowego dla tej usługi, musisz zapewnić, że skonfigurowano uwierzytelniania wieloskładnikowego dla użytkowników, które rejestrują swoje urządzenia. Aby uzyskać więcej informacji na temat usług innej usługi Azure Multi-Factor authentication, zobacz [wprowadzenie do usługi Azure Multi-Factor authentication](../authentication/concept-mfa-whichversion.md). 
+- **Użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD** — należy skonfigurować to ustawienie, aby zezwolić urządzeniom osobiste, iOS, Android i macOs systemu Windows 10 jako [zarejestrowany](overview.md#azure-ad-registered-devices) z usługą Azure AD. Jeśli wybierzesz **Brak**, urządzenia nie są dozwolone do rejestracji w usłudze Azure AD. Rejestracja w usłudze Microsoft Intune lub zarządzania urządzeniami przenośnymi (MDM) dla usługi Office 365 wymaga rejestracji. Jeśli skonfigurowano którąś z tych usług **wszystkich** jest zaznaczone i **NONE** nie jest dostępna. Po włączeniu tego ustawienia z usługi Intune, a następnie opcje, w tym miejscu będą wyszarzone.
+- **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** — możesz wybrać, czy użytkownicy muszą zapewnić drugi składnik uwierzytelniania w celu [sprzężenia](overview.md#azure-ad-joined-devices) swojego urządzenia do usługi Azure AD. Wartość domyślna to **nie**. Zaleca się wymaganie uwierzytelniania wieloskładnikowego podczas rejestrowania urządzenia. Przed włączeniem uwierzytelniania wieloskładnikowego dla tej usługi, upewnij się, że usługi Azure Multi-Factor Authentication jest skonfigurowany dla użytkowników, którzy rejestrowanie swoich urządzeń. Aby uzyskać więcej informacji, zobacz artykuł [wdrożenia usługi Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md). 
 
->[!NOTE]
+> [!NOTE]
 > **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** ustawienie nie ma zastosowania do urządzeń z hybrydowego przyłączony Azure AD.
 
 - **Maksymalna liczba urządzeń** — to ustawienie umożliwia wybranie maksymalną liczbę urządzeń, które użytkownik może mieć w usłudze Azure AD. Jeśli użytkownik osiągnie ten limit przydziału, są one być nie mógł dodać dodatkowych urządzeń dopóki jedna lub więcej istniejących urządzeń są usuwane. Przydział urządzenie jest liczone dla wszystkich urządzeń, które są dołączone do usługi Azure AD lub Azure AD zarejestrowane już dziś. Wartość domyślna to **20**.
 
->[!NOTE]
+> [!NOTE]
 > **Maksymalna liczba urządzeń** ustawienie nie ma zastosowania do urządzeń z hybrydowego przyłączony Azure AD.
 
 - **Użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach** — domyślnie to ustawienie ma wartość **NONE**. Wybranie określonych użytkowników lub grup lub wszystkie umożliwia użytkownika ustawień i danych aplikacji na synchronizacje przez urządzeń z systemem Windows 10. Dowiedz się więcej na temat działania synchronizacji w systemie Windows 10.

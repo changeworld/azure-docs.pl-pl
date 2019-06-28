@@ -8,17 +8,17 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: acafd6d8f37edd3e16561a4e588556bb771619f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 06/21/2019
+ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206711"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329336"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Opis i dostosowywanie jednostek przesyłania strumieniowego
 
-Przesyłanie strumieniowe jednostki (SUs) reprezentuje zasoby obliczeniowe, które są przydzielane do wykonania zadania. Im większa liczba jednostek przesyłania strumieniowego, tym większa ilość zasobów procesora i pamięci jest przydzielana do zadania. Pojemność pozwala skupić się na logice zapytania i streszczenia konieczność zarządzania sprzętowe do uruchomienia usługi Stream Analytics, zadania w odpowiednim czasie.
+Przesyłanie strumieniowe jednostki (SUs) reprezentuje zasoby obliczeniowe, które są przydzielane do wykonania zadania usługi Stream Analytics. Im większa liczba jednostek przesyłania strumieniowego, tym większa ilość zasobów procesora i pamięci jest przydzielana do zadania. Pojemność pozwala skupić się na logice zapytania i streszczenia konieczność zarządzania sprzętowe do uruchomienia usługi Stream Analytics, zadania w odpowiednim czasie.
 
 W celu uzyskania małych opóźnień przetwarzania strumieni całe przetwarzanie dla zadań usługi Azure Stream Analytics jest wykonywane w pamięci. Gdy używany jest za mało pamięci, zadanie przesyłania strumieniowego nie powiedzie się. W wyniku dla zadania produkcji, ważne jest monitorowanie użycia zasobów zadania przesyłania strumieniowego i upewnij się, Brak wystarczających zasobów przydzielonych do zachowania zadania uruchamiania 24/7.
 
@@ -85,7 +85,7 @@ Na przykład wysłanie następującego zapytania, liczba skojarzonych `clusterid
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Aby powodowane problemy spowodowane przez wysoką Kardynalność w poprzednim zapytaniu, możesz wysłać zdarzenia do Centrum zdarzeń, które podzielone między `clusterid`i skalowanie zapytań, umożliwiając systemowi przetwarzanie każdej partycji danych wejściowych osobno przy użyciu **PARTYCJI PRZEZ** jak pokazano w poniższym przykładzie:
+Aby rozwiązać problemy spowodowane przez wysoką Kardynalność w poprzednim zapytaniu, możesz wysłać zdarzenia do Centrum zdarzeń, które podzielone między `clusterid`i skalowanie zapytań, umożliwiając systemowi przetwarzanie każdej partycji danych wejściowych osobno przy użyciu **PARTYCJI PRZEZ** jak pokazano w poniższym przykładzie:
 
    ```sql
    SELECT count(*) 

@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 5/10/2019
-ms.openlocfilehash: 5d769e2198b714d611b3004e11ccc624d4c6acdf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.openlocfilehash: 964a2931267ad2f1e2842693eadf43f8f629a084
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546450"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357221"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Warstwy usług w modelu zakupu opartego na jednostkach DTU
 
-Warstwy usług w modelu zakupu opartego na jednostkach DTU są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych o stałą ilość miejsca do magazynowania, ustalony okres przechowywania kopii zapasowych i stałej cenie. Wszystkie warstwy usługi w modelu zakupu opartego na jednostkach DTU zapewniają elastyczność zmiany rozmiarów wystąpień obliczeniowych bez przestojów. Pojedyncze bazy danych i pul elastycznych są rozliczane godzinowo na podstawie warstwy usługi i obliczeń rozmiaru.
+Warstwy usług w modelu zakupu opartego na jednostkach DTU są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych o stałą ilość miejsca do magazynowania, ustalony okres przechowywania kopii zapasowych i stałej cenie. Wszystkie warstwy usługi w modelu zakupu opartego na jednostkach DTU zapewniają elastyczność zmiany rozmiarów wystąpień obliczeniowych, przy minimalnym [przestój](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); jednak istnieje przełącznik w okresie gdy połączenie zostało utracone na bazie danych przez krótki czas, który można zminimalizować przy użyciu logikę ponawiania próby. Pojedyncze bazy danych i pul elastycznych są rozliczane godzinowo na podstawie warstwy usługi i obliczeń rozmiaru.
 
 > [!IMPORTANT]
 > Wystąpienie zarządzane usługi SQL Database nie obsługuje model zakupu jednostek DTU. Aby uzyskać więcej informacji, zobacz [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).
@@ -165,9 +165,9 @@ Kluczowe metryki w uruchomionym teście są przepływności i czasu odpowiedzi.
 
 | Klasa usługi | Pomiar przepływności | Wymagania dotyczące czasu odpowiedzi |
 | --- | --- | --- |
-| Premium |Transakcje na sekundę |95\. percentyl na 0,5 sekund |
-| Standardowa (Standard) |Transakcje na minutę |90\. percentyla w wersji 1.0 w ciągu kilku sekund |
-| Podstawowa |Transakcje na godzinę |80\. percentylu, w sekundach 2.0 |
+| Premium |Transakcje na sekundę |95. percentyl na 0,5 sekund |
+| Standardowa (Standard) |Transakcje na minutę |90. percentyla w wersji 1.0 w ciągu kilku sekund |
+| Podstawowa |Transakcje na godzinę |80. percentylu, w sekundach 2.0 |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

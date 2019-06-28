@@ -8,16 +8,15 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 04/05/2019
-ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/22/2019
+ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720674"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330303"
 ---
-# <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Tworzenie i zarządzanie nimi umowy z partnerami handlowymi przy użyciu usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Tworzenie i zarządzanie nimi umowy z partnerami handlowymi w usłudze Azure Logic Apps
 
 A [partner handlowy](../logic-apps/logic-apps-enterprise-integration-partners.md) 
 *umowy* pozwala organizacji i przedsiębiorstw, definiując określone standardowym protokołem do użycia podczas wymiany bezproblemowo łączy ze sobą komunikaty Business-to-business (B2B). Umowy zawierają typowe korzyści, na przykład:
@@ -27,6 +26,8 @@ A [partner handlowy](../logic-apps/logic-apps-enterprise-integration-partners.md
 * To ułatwia tworzenie i zarządzanie nimi na użytek tworzenie rozwiązań integracji przedsiębiorstwa.
 
 W tym artykule przedstawiono sposób tworzenia AS2, EDIFACT lub X12 umowy, używanego podczas tworzenia rozwiązań integracji dla scenariuszy B2B przedsiębiorstwa przy użyciu [pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md) i [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md). Po utworzeniu umowę, możesz następnie użyć AS2, EDIFACT lub X12 łączników na potrzeby wymiany komunikatów B2B.
+
+Aby utworzyć umów wymiany komunikatów RosettaNet, zobacz [wiadomości programu Exchange RosettaNet](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -59,14 +60,14 @@ W głównym menu platformy Azure, wybierz **wszystkich usług**. W polu wyszukiw
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa** | Yes | <*agreement-name*> | Nazwa umowy |
-   | **Typ umowy** | Yes | **AS2**, **X12**, lub **EDIFACT** | Typ protokołu dla umowy. Podczas tworzenia pliku umowy zawartości w tym pliku musi być zgodna z typem umowy. | |  
+   | **Nazwa** | Tak | <*agreement-name*> | Nazwa umowy |
+   | **Typ umowy** | Tak | **AS2**, **X12**, lub **EDIFACT** | Typ protokołu dla umowy. Podczas tworzenia pliku umowy zawartości w tym pliku musi być zgodna z typem umowy. | |  
    | **Host Partner** | Tak | <*host-partner-name*> | Partner hosta reprezentuje organizację, która określa umowy |
    | **Tożsamość hosta** | Yes | <*host-partner-identifier*> | Identyfikator partnera hosta |
-   | **Partner gościa** | Yes | <*guest-partner-name*> | Partner gościa reprezentuje organizację, która jest prowadzących działalność we współpracy z partnerem hosta |
-   | **Tożsamość gościa** | Yes | <*guest-partner-identifier*> | Identyfikator partnera gościa |
-   | **Ustawienia odbierania** | Różna | Różna | Te właściwości określają sposób obsługi komunikaty przychodzące odebranych przez umowy. Aby uzyskać więcej informacji zobacz typ odpowiedniej umowy: <p>- [Ustawienia komunikatu AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Ustawienia komunikatu EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 komunikatu ustawienia](logic-apps-enterprise-integration-x12.md) |
-   | **Ustawienia wysyłania** | Różna | Różna | Te właściwości określają sposób obsługi wszystkich wiadomości wychodzących, wysłanych przez umowy. Aby uzyskać więcej informacji zobacz typ odpowiedniej umowy: <p>- [Ustawienia komunikatu AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Ustawienia komunikatu EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 komunikatu ustawienia](logic-apps-enterprise-integration-x12.md) |
+   | **Partner gościa** | Tak | <*guest-partner-name*> | Partner gościa reprezentuje organizację, która jest prowadzących działalność we współpracy z partnerem hosta |
+   | **Tożsamość gościa** | Tak | <*guest-partner-identifier*> | Identyfikator partnera gościa |
+   | **Ustawienia odbierania** | Różna | Różna | Te właściwości określają, jak partner hosta odbiera komunikaty przychodzące od partnera gościa w umowie. Aby uzyskać więcej informacji zobacz typ odpowiedniej umowy: <p>- [Ustawienia komunikatu AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Ustawienia komunikatu EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 komunikatu ustawienia](logic-apps-enterprise-integration-x12.md) |
+   | **Ustawienia wysyłania** | Różna | Różna | Te właściwości określają, jak partner hosta wysyła wszystkie komunikaty wychodzące do partnera gościa w umowie. Aby uzyskać więcej informacji zobacz typ odpowiedniej umowy: <p>- [Ustawienia komunikatu AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Ustawienia komunikatu EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 komunikatu ustawienia](logic-apps-enterprise-integration-x12.md) |
    |||||
 
 1. Po zakończeniu tworzenia umowy, na **Dodaj** wybierz **OK**i wrócić do swojego konta integracji.

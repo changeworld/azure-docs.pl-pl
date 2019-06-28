@@ -9,11 +9,11 @@ ms.date: 02/12/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 124f5c01b7718f729094de1c02391946ff50cef4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113765"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183307"
 ---
 Magazyn lokalnie nadmiarowy (LRS) zawiera co najmniej 99,999999999% (11 nines) trwałości obiektów w danym roku. Magazyn LRS zawiera trwałości tego obiektu dzięki replikacji danych w jednostce skalowania magazynu. Centrum danych, znajdującego się w regionie, w którym utworzono konto magazynu obsługuje jednostki skali magazynu. Żądania zapisu do konta magazynu LRS wróci pomyślnie tylko wtedy, gdy dane są zapisywane do wszystkich replik. Każda replika znajduje się w oddzielnych domenach błędów i uaktualnień w jednostce skalowania magazynu.
 

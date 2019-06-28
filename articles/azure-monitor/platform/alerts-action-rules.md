@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 212e6b042caec5f24a620dc491dc674417816df7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734921"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310378"
 ---
 # <a name="action-rules-preview"></a>Akcja reguły (wersja zapoznawcza)
 
@@ -30,6 +30,8 @@ Często istnieje wiele scenariuszy, w którym powinien być przydatny dla Pomiń
 
 Mimo że reguły alertów umożliwiają definiowanie grupy akcji, która uruchamia, gdy alert jest generowany, klienci często mają wspólnej grupy akcji w ich zakresie operacji. Na przykład zespół odpowiedzialny za grupy zasobów "ContosoRG" prawdopodobnie będą definiować tej samej grupy akcji dla wszystkich reguł alertów zdefiniowanych w "ContosoRG". Zasady działania pozwalają uprościć ten proces, umożliwiając definiowanie akcji na dużą skalę, dzięki czemu grupy akcji mogą być wyzwalane na dowolny alert, wygenerowany w skonfigurowanym zakresie. Wracając do poprzedniego przykładu, zespół może teraz zdefiniować jedną regułę akcji na ContosoRG, która wyzwoli tej samej grupy akcji dla wszystkich alertów generowanych w nim.
 
+> [!NOTE]
+> Akcja reguły aktualnie nie dotyczą alerty dotyczące kondycji usługi.
 
 ## <a name="configuring-an-action-rule"></a>Konfigurowanie reguły akcji
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 7c53d8fe0ee5bbfdbe180aa4d18d8c7b7fab29c2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808526"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295293"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą usługi Azure Monitor
 
@@ -29,7 +29,7 @@ ms.locfileid: "66808526"
 ## <a name="using-log-analytics-workspace"></a>Za pomocą obszaru roboczego usługi Log Analytics
 
 > [!NOTE]
-> Dane z usługi Azure kopie zapasowe maszyn wirtualnych, agenta MAB programu System Center DPM (SC-DPM) oraz kopii zapasowych SQL na maszynach wirtualnych Azure jest są kierowane do obszaru roboczego usługi Log Analytics, za pomocą ustawień diagnostycznych. Obsługa kopii zapasowych z udziału plików platformy Azure, Microsoft Azure Backup Server (MABS) będzie dostępna wkrótce.
+> Dane z kopii zapasowych maszyn wirtualnych platformy Azure, MAB Agent, programu System Center DPM (SC-DPM), kopii zapasowych SQL na maszynach wirtualnych platformy Azure i kopii zapasowych udziału plików platformy Azure jest są kierowane do obszaru roboczego usługi Log Analytics, za pomocą ustawień diagnostycznych. Wkrótce zostanie udostępniona obsługa dla Microsoft Azure Backup Server (MABS).
 
 Firma Microsoft korzysta z możliwości usług platformy Azure, dwóch - **ustawień diagnostycznych** (w celu wysyłania danych z wielu zasobów usługi Azure Resource Manager do innego zasobu) i **usługi Log Analytics** (LA — w celu wygenerowania niestandardowe alerty, w którym można zdefiniować innych kanałów powiadomień przy użyciu grup akcji) do monitorowania na dużą skalę. W poniższych sekcjach szczegółowo o tym, jak używać LA do monitorowania usługi Azure Backup na dużą skalę.
 
@@ -47,6 +47,9 @@ Możesz wybrać obszar roboczy LA z innej subskrypcji, jako element docelowy. *W
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Wdrażanie rozwiązania do obszaru roboczego usługi Log Analytics
 
 Gdy dane znajdują się w obszarze roboczym LA [wdrażanie szablonu usługi GitHub](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) na LA umożliwiają wizualizację danych. Upewnij się, że nadasz tej samej grupie zasobów, nazwę obszaru roboczego i lokalizacji obszaru roboczego, prawidłowo identyfikować obszaru roboczego, a następnie zainstalować ten szablon na nim.
+
+> [!NOTE]
+> Na portalu użytkowników, którzy nie mają alerty lub zadania wykonywania kopii zapasowej i przywracania w ich obszarze roboczym LA mogą pojawiać się błąd o kodzie "BadArgumentError". Użytkownikom można zignorować ten błąd i kontynuować korzystanie z rozwiązania. Po uruchomieniu danych odpowiedniego typu przepływać do obszaru roboczego wizualizacje będą odzwierciedlać takie same i użytkownicy nie będą widzieć ten błąd już.
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Wyświetl dane usługi Azure Backup przy użyciu Log Analytics (LA)
 

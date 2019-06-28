@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0623a7aff15184822ee8abde0b3c751f8a105b5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 335b5b87de0a625e357bdfaa7d5a4c0a7a9e4997
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463586"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339402"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Często zadawane pytania dotyczące maszyn wirtualnych systemu Linux
 W tym artykule opisano często zadawane pytania dotyczące maszyn wirtualnych systemu Linux utworzone na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager. Wersja Windows części tego tematu – zobacz [— często zadawane pytania dotyczące maszyn wirtualnych Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -74,6 +74,7 @@ Następujące nazwy użytkowników nie są dozwolone:
 | `john`          | `owner`   | `root`             | `server` |
 | `sql`           | `support` | `support_388945a0` | `sys`    |
 | `test2`         | `test3`   | `user4`            | `user5`  |
+| `video`         |
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Jakie są wymagania dotyczące hasła, podczas tworzenia maszyny Wirtualnej?
 

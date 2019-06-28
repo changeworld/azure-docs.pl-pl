@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22802950c68dc5a3cf0df8ee26ff38ccb937b551
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782806"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295517"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w usłudze Azure Monitor
 Magazyny usługi Azure Monitor możesz rejestrować dane w obszarze roboczym usługi Log Analytics, która jest kontener, który zawiera dane i informacje konfiguracyjne. W celu zarządzania dostępem do danych logowania, należy wykonać różne zadania administracyjne dotyczące obszarów roboczych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
@@ -278,7 +278,7 @@ Zobacz [Definiowanie kontroli dostępu na tabelę](#table-level-rbac) poniżej i
 ## <a name="table-level-rbac"></a>Na poziomie tabeli RBAC
 **Tabela poziom RBAC** umożliwia zapewniają bardziej szczegółową kontrolę do danych w obszarze roboczym usługi Log Analytics, oprócz innych uprawnień. Dzięki temu można zdefiniować konkretnych typów danych, które są dostępne tylko dla określonych użytkowników.
 
-Implementowanie kontroli dostępu tabeli za pomocą [Azure role niestandardowe](../../role-based-access-control/custom-roles.md) udzielić lub odmówić dostępu do określonych [tabel](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) w obszarze roboczym. Te role są stosowane do obszarów roboczych skoncentrowane na obszar roboczy lub skoncentrowane na zasób [tryby kontroli dostępu](#access-control-mode) niezależnie od użytkownika [tryb dostępu](#access-modes).
+Implementowanie kontroli dostępu tabeli za pomocą [Azure role niestandardowe](../../role-based-access-control/custom-roles.md) udzielić lub odmówić dostępu do określonych [tabel](../log-query/logs-structure.md) w obszarze roboczym. Te role są stosowane do obszarów roboczych skoncentrowane na obszar roboczy lub skoncentrowane na zasób [tryby kontroli dostępu](#access-control-mode) niezależnie od użytkownika [tryb dostępu](#access-modes).
 
 Tworzenie [roli niestandardowej](../../role-based-access-control/custom-roles.md) z następujących akcji, aby definiują dostęp użytkownika do kontroli dostępu w tabeli.
 

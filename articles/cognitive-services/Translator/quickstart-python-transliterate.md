@@ -3,19 +3,19 @@ title: 'Szybki start: transliteracja tekstu, Python — interfejs API tłumaczen
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak transliterować (konwertować) tekst z jednego skryptu na inny przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator. W tym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 89757ec48331f3e58978bd844294b932ddd3be42
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.author: swmachan
+ms.openlocfilehash: 7fba82049a13902421cb8017c608eaaeaf484011
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340903"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357919"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do transliterowania tekstu z użyciem języka Python
 

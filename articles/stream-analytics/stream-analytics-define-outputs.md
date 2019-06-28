@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: ba803c493fd85a7be7bc6c5922171678cc6e0df0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4e62ae47de95f95600faa3dc27f6867b065e117b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164449"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329977"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 
@@ -30,7 +30,7 @@ Obsługa typów niektóre dane wyjściowe [partycjonowanie](#partitioning). [Dan
 
 Stream Analytics obsługuje [usługi Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md). Usługi Azure Data Lake Storage jest całego przedsiębiorstwa, ogromne repozytorium do przechowywania obciążeń wynikających z analizy danych big data. Magazyn usługi Data Lake umożliwia przechowywanie danych o dowolnym rozmiarze, typie i szybkości pozyskiwania analizy operacyjnej i rozpoznawczej. Stream Analytics musi mieć możliwość dostępu do usługi Data Lake Storage.
 
-Usługa Azure Data Lake Storage dane wyjściowe usługi Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure — Chiny (21Vianet).
+Usługa Azure Data Lake Storage dane wyjściowe usługi Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure China 21Vianet.
 
 W poniższej tabeli wymieniono nazwy właściwości i ich opisy, aby skonfigurować dane wyjściowe usługi Data Lake Storage Gen 1.   
 
@@ -50,7 +50,7 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy, aby skonfigurow
 
 ## <a name="sql-database"></a>SQL Database
 
-Możesz użyć [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/) jako dane wyjściowe dla danych relacyjnych z natury lub aplikacje, które są zależne od zawartości jest hostowana w relacyjnej bazie danych. Zadania usługi Stream Analytics zapisu do istniejącej tabeli w bazie danych SQL. Schemat tabeli musi dokładnie odpowiadać, pola i ich typy w danych wyjściowych zadania. Można również określić [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) jako dane wyjściowe za pośrednictwem bazy danych SQL, dane wyjściowe opcji. Aby uzyskać informacje dotyczące sposobów na ulepszenie przepływność zapisu, zobacz [usługi Stream Analytics z usługą Azure SQL Database jako dane wyjściowe](stream-analytics-sql-output-perf.md) artykułu. 
+Możesz użyć [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/) jako dane wyjściowe dla danych relacyjnych z natury lub aplikacje, które są zależne od zawartości jest hostowana w relacyjnej bazie danych. Zadania usługi Stream Analytics zapisu do istniejącej tabeli w bazie danych SQL. Schemat tabeli musi dokładnie odpowiadać, pola i ich typy w danych wyjściowych zadania. Można również określić [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) jako dane wyjściowe za pośrednictwem bazy danych SQL, dane wyjściowe opcji. Aby uzyskać informacje dotyczące sposobów na ulepszenie przepływność zapisu, zobacz [usługi Stream Analytics z usługą Azure SQL Database jako dane wyjściowe](stream-analytics-sql-output-perf.md) artykułu.
 
 W poniższej tabeli wymieniono nazwy właściwości i ich opisy tworzenia wyjście bazy danych SQL.
 
@@ -63,10 +63,10 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy tworzenia wyjśc
 | Hasło | Hasło służące do połączenia z bazą danych. |
 | Tabela | Nazwa tabeli, w którym plik wyjściowy zostanie zapisany. Nazwa tabeli jest rozróżniana wielkość liter. Schemat tabeli musi być dokładnie dopasowany numer pola i ich typy, które generuje dane wyjściowe zadania. |
 |Dziedziczą schemat partycji| Opcja dziedziczenia schematu partycjonowania poprzedniego kroku zapytania umożliwiające topologia pełni równolegle z wielu składników zapisywania do tabeli. Aby uzyskać więcej informacji, zobacz [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md).|
-|Liczba partii dopasowania| Zalecany limit liczby rekordów wysyłane z każdego zbiorczego Wstaw transakcję.|
+|Maksymalna liczba partii| Zalecane górny limit liczby rekordów wysyłane z każdego zbiorczego Wstaw transakcję.|
 
 > [!NOTE]
-> Azure SQL Database oferty jest obsługiwana w przypadku zadań, danych wyjściowych usługi Stream Analytics, ale maszynie wirtualnej platformy Azure, programem SQL Server z bazą danych dołączone nie jest obsługiwane.
+> Azure SQL Database oferty jest obsługiwana w przypadku danych wyjściowych zadań usługi Stream Analytics, ale maszynie wirtualnej platformy Azure, programem SQL Server z bazą danych dołączona lub w wystąpieniu zarządzanym usługi Azure SQL nie jest jeszcze obsługiwane. To może ulec zmianie w przyszłych wersjach.
 
 ## <a name="blob-storage"></a>Blob Storage
 
@@ -108,7 +108,7 @@ Konieczne jest kilku parametrów, aby skonfigurować strumienie danych z usługi
 | Nazwa właściwości | Opis |
 | --- | --- |
 | Alias danych wyjściowych | Przyjazna nazwa używana w zapytaniach do kierowania wyników zapytania w tym Centrum zdarzeń. |
-| Przestrzeń nazw centrum zdarzeń |Kontener dla zestawu jednostek do obsługi komunikatów. Podczas tworzenia nowego Centrum zdarzeń, utworzono przestrzeń nazw Centrum zdarzeń. |
+| Przestrzeń nazw centrum zdarzeń | Kontener dla zestawu jednostek do obsługi komunikatów. Podczas tworzenia nowego Centrum zdarzeń, utworzono przestrzeń nazw Centrum zdarzeń. |
 | Nazwa centrum zdarzeń | Nazwa danych wyjściowych Centrum zdarzeń. |
 | Nazwa zasad Centrum zdarzeń | Zasady dostępu współdzielonego, który można utworzyć w tym Centrum zdarzeń **Konfiguruj** kartę. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. |
 | Klucz zasad Centrum zdarzeń | Klucz dostępu współdzielonego, który jest używany do uwierzytelniania dostępu do przestrzeni nazw Centrum zdarzeń. |
@@ -123,7 +123,7 @@ Konieczne jest kilku parametrów, aby skonfigurować strumienie danych z usługi
 
 Możesz użyć [usługi Power BI](https://powerbi.microsoft.com/) jako dane wyjściowe zadania usługi Stream Analytics, zapewnienie rozbudowanego środowiska wizualizacji wyników analiz. Ta funkcja służy do operacyjne pulpity nawigacyjne, generowania raportu i raportowanie oparte na metrykę.
 
-Wyjście usługi Power BI z usługą Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure — Chiny (21Vianet).
+Wyjście usługi Power BI z usługą Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure China 21Vianet.
 
 W poniższej tabeli wymieniono nazwy właściwości i ich opisy, aby skonfigurować dane wyjściowe usługi Power BI.
 
@@ -209,17 +209,17 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisów tworzenia kole
 
 Liczba partycji wynosi [na podstawie jednostki SKU magistrali usług i rozmiaru](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.
 
-## <a name="service-bus-topics"></a>Tematy usługi Service Bus
+## <a name="service-bus-topics"></a>Tematy dotyczące usługi Service Bus
 Kolejki usługi Service Bus umożliwiają komunikację jeden od nadawcy do odbiorcy. [Tematy usługi Service Bus](https://msdn.microsoft.com/library/azure/hh367516.aspx) zapewniają formę komunikacji jeden do wielu.
 
-W poniższej tabeli wymieniono nazwy właściwości i ich opisów dla tworzenie wyjścia tematu.
+W poniższej tabeli wymieniono nazwy właściwości i ich opisów dla tworzenie wyjścia tematu usługi Service Bus.
 
 | Nazwa właściwości | Opis |
 | --- | --- |
 | Alias danych wyjściowych |Przyjazna nazwa używana w zapytaniach do kierowania wyników zapytania do tego tematu usługi Service Bus. |
 | Przestrzeń nazw magistrali usług |Kontener dla zestawu jednostek do obsługi komunikatów. Podczas tworzenia nowego Centrum zdarzeń utworzonego również przestrzeni nazw usługi Service Bus. |
 | Nazwa tematu |Tematy to jednostki przypominające centra zdarzeń i kolejki obsługi komunikatów. Służą one do zbierania strumieni zdarzeń z urządzeń i usług. Po utworzeniu tematu również dało określonej nazwy. Komunikaty wysyłane do tematu są niedostępne, chyba że zostanie utworzona subskrypcja, upewnij się, więc ma co najmniej jedną subskrypcję w ramach tematu. |
-| Nazwa zasad tematu |Podczas tworzenia tematu można też utworzyć zasady dostępu współdzielonego, w tej dziedzinie **Konfiguruj** kartę. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. |
+| Nazwa zasad tematu |Podczas tworzenia tematu usługi Service Bus, można też utworzyć zasady dostępu współdzielonego, w tej dziedzinie **Konfiguruj** kartę. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. |
 | Klucz zasad tematu |Klucz dostępu współdzielonego, który jest używany do uwierzytelniania dostępu do przestrzeni nazw usługi Service Bus. |
 | Format serializacji zdarzeń |Format serializacji danych wyjściowych. JSON, CSV i format Avro są obsługiwane. |
 | Kodowanie |Jeśli używasz formatu CSV lub JSON, należy określić kodowania. UTF-8 to jedyny obsługiwany obecnie format kodowania. |
@@ -231,7 +231,7 @@ Liczba partycji wynosi [na podstawie jednostki SKU magistrali usług i rozmiaru]
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Usługa Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) to usługa globalnie rozproszonej bazy danych, która oferuje nieograniczone możliwości elastycznego skalowania na całym świecie, obsługą zaawansowanych zapytań i automatyczne indeksowanie w modele danych niezależnej od schematu. Aby dowiedzieć się więcej o opcjach kolekcji usługi Azure Cosmos DB dla usługi Stream Analytics, zobacz [usługi Stream Analytics z usługą Azure Cosmos DB jako dane wyjściowe](stream-analytics-documentdb-output.md) artykułu.
 
-Usługa Azure Cosmos DB dane wyjściowe z usługi Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure — Chiny (21Vianet).
+Usługa Azure Cosmos DB dane wyjściowe z usługi Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure China 21Vianet.
 
 > [!Note]
 > W tej chwili usługi Azure Stream Analytics obsługuje tylko połączenie do usługi Azure Cosmos DB przy użyciu interfejsu API SQL.
@@ -253,7 +253,7 @@ W poniższej tabeli opisano właściwości do utworzenia dane wyjściowe usługi
 ## <a name="azure-functions"></a>Azure Functions
 Usługa Azure Functions to bezserwerowa usługa obliczeniowa, która umożliwia uruchamianie kodu na żądanie bez konieczności jawnego przydzielania infrastruktury ani zarządzania tą infrastrukturą. Umożliwia Implementowanie kodu wyzwalanego przez zdarzenia zachodzące w usługach platformy Azure lub partnera. Ta możliwość odpowiadania na Wyzwalacze usługi Azure Functions sprawia, że stanowi naturalne wyjście dla usługi Azure Stream Analytics. Ten adapter danych wyjściowych umożliwia użytkownikom łączenie Stream Analytics z usługi Azure Functions i uruchamiać skrypty lub fragment kodu w odpowiedzi na różne zdarzenia.
 
-Azure wyjścia usługi Functions z usługi Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure — Chiny (21Vianet).
+Azure wyjścia usługi Functions z usługi Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure China 21Vianet.
 
 Usługa Azure Stream Analytics wywołuje usługi Azure Functions za pomocą wyzwalaczy protokołu HTTP. Adapter wyjścia usługi Functions na platformie Azure jest dostępna z poniższymi właściwościami można skonfigurować:
 
@@ -295,14 +295,14 @@ Poniższa tabela zawiera podsumowanie obsługi partycji i liczby modułów zapis
 | Typ wyjścia | Partycjonowanie pomocy technicznej | Klucz partycji  | Liczba modułów zapisywania danych wyjściowych |
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Tak | Użyj {date} i {time} tokenów w wzorzec prefiksu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
-| Azure SQL Database | Yes | Oparte na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). Aby dowiedzieć się więcej na temat osiągania lepszej przepływności wydajność zapisu podczas ładowania danych do usługi Azure SQL Database, zobacz [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md). |
+| Azure SQL Database | Tak, trzeba włączyć. | Oparte na klauzuli PARTITION BY w zapytaniu. | Po włączeniu opcji dziedziczą partycjonowanie następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). Aby dowiedzieć się więcej na temat osiągania lepszej przepływności wydajność zapisu podczas ładowania danych do usługi Azure SQL Database, zobacz [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md). |
 | Azure Blob Storage | Tak | Użyj {date} i {time} tokeny od pól zdarzeń we wzorcu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. Dane wyjściowe obiektu blob można podzielić na partycje atrybut pojedyncze zdarzenie niestandardowe {fieldname} lub {daty/godziny:\<specyfikator >}. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Tak | Yes | Różni się w zależności od wyrównania partycji.<br /> Liczba modułów zapisujących klucza partycji dla danych wyjściowych Centrum zdarzeń jest równie powiązana z nadrzędnego krok zapytania (poprzednia wersja), jest taka sama jak liczba partycji w danych wyjściowych Centrum zdarzeń. Każdy moduł zapisujący używa [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. <br /> Liczba modułów zapisujących klucza partycji dla danych wyjściowych Centrum zdarzeń nie jest wyrównana z nadrzędnego krok zapytania (poprzednia wersja), jest taka sama jak liczba partycji w tym w poprzednim kroku. Każdy moduł zapisujący używa [klasy SendBatchAsync](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) w **EventHubClient** do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
 | Power BI | Nie | Brak | Nie dotyczy. |
 | Azure Table Storage | Yes | Wszystkie kolumny wyjściowej.  | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |
-| Usługa Azure tematu usługi Service Bus | Yes | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w temacie dotyczącym danych wyjściowych.  |
-| Kolejki usługi Service Bus platformy Azure | Yes | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w kolejki wyjściowej. |
-| Azure Cosmos DB | Yes | Użyj tokenu {partition} w wzorzec nazw kolekcji. Wartość {partition} opiera się na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |
+| Usługa Azure tematu usługi Service Bus | Tak | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w temacie dotyczącym danych wyjściowych.  |
+| Kolejki usługi Service Bus platformy Azure | Tak | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w kolejki wyjściowej. |
+| Azure Cosmos DB | Tak | Użyj tokenu {partition} w wzorzec nazw kolekcji. Wartość {partition} opiera się na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |
 | Azure Functions | Nie | Brak | Nie dotyczy. |
 
 Jeśli karty danych wyjściowych nie jest podzielona na partycje, Brak danych w jednej partycji danych wejściowych spowoduje opóźnienie maksymalnie późnego przybycia ilość czasu. W takich przypadkach dane wyjściowe są scalane do jednego elementu zapisującego, co może spowodować wąskie gardła w potoku. Aby dowiedzieć się więcej na temat późnego przybycia zasad, zobacz [zagadnienia dotyczące kolejności zdarzeń usługi Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
@@ -315,14 +315,14 @@ W poniższej tabeli opisano niektóre zagadnienia dotyczące dzielenia na partie
 | Typ wyjścia | Maksymalny rozmiar wiadomości | Optymalizacja rozmiaru partii |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Zobacz [limity usługi Data Lake Storage](../azure-subscription-service-limits.md#data-lake-store-limits). | Użyj maksymalnie 4 MB operacji zapisu. |
-| Azure SQL Database | Wstaw 10 000 maksymalna liczba wierszy na pojedynczej zbiorczej.<br />Wstaw 100 wierszy minimalne pojedynczej zbiorczej. <br />Zobacz [Azure SQL ogranicza](../sql-database/sql-database-resource-limits.md). |  Każdej partii jest początkowo zbiorczo wstawić z maksymalny rozmiar partii. Można podzielić na pół (aż do rozmiaru partii minimalna) oparte na partiach na temat błędów powtarzający operację z bazy danych SQL. |
+| Azure SQL Database | Konfigurowalne przy użyciu maksymalna liczba partii. 10 000 maksymalne i 100 minimalne wierszy w pojedynczej zbiorczej Wstaw domyślnie.<br />Zobacz [Azure SQL ogranicza](../sql-database/sql-database-resource-limits.md). |  Każdej partii jest początkowo zbiorcze wstawiony z licznikiem maksymalnej usługi batch. Usługi Batch jest podzielony na dwie części (aż do liczba partii minimalna) oparte na błędy powtarzający operację z bazy danych SQL. |
 | Azure Blob Storage | Zobacz [limity usługi Azure Storage](../azure-subscription-service-limits.md#storage-limits). | Rozmiar bloku maksymalna obiektu blob to 4 MB.<br />Liczba bock maksymalna obiektów blob to 50 000. |
-| Azure Event Hubs  | 256 KB na komunikat. <br />Zobacz [limitów usługi Event Hubs](../event-hubs/event-hubs-quotas.md). |  Podczas partycjonowania wejścia/wyjścia nie jest wyrównana, każde zdarzenie zawiera indywidualnie w **EventData** i wysłane w partii maksymalnie maksymalny rozmiar komunikatu (1 MB dla jednostki SKU Premium). <br /><br />  Podczas partycjonowania wejścia/wyjścia jest wyrównany, wiele zdarzeń są pakowane w pojedynczej **EventData** wystąpienia maksymalnie maksymalny rozmiar komunikatu i wysyłane.  |
+| Azure Event Hubs  | 256 KB lub 1 MB na komunikat. <br />Zobacz [limitów usługi Event Hubs](../event-hubs/event-hubs-quotas.md). |  Podczas partycjonowania wejścia/wyjścia nie jest wyrównana, każde zdarzenie zawiera indywidualnie w `EventData` i wysłane w partii maksymalnie maksymalny rozmiar wiadomości. Dzieje się również Jeśli [właściwości niestandardowych metadanych](#custom-metadata-properties-for-output) są używane. <br /><br />  Podczas partycjonowania wejścia/wyjścia jest wyrównany, wiele zdarzeń są pakowane w pojedynczej `EventData` wystąpienia maksymalnie maksymalny rozmiar komunikatu i wysyłane. |
 | Power BI | Zobacz [limitów interfejsu API Rest usługi Power BI](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Zobacz [limity usługi Azure Storage](../azure-subscription-service-limits.md#storage-limits). | Wartość domyślna to 100 jednostek na jednej transakcji. Możesz skonfigurować tak, mniejszej wartości zgodnie z potrzebami. |
-| Kolejki usługi Service Bus platformy Azure   | 256 KB na komunikat.<br /> Zobacz [limitów usługi Service Bus](../service-bus-messaging/service-bus-quotas.md). | Przy użyciu pojedynczego zdarzenia na wiadomość. |
-| Usługa Azure tematu usługi Service Bus | 256 KB na komunikat.<br /> Zobacz [limitów usługi Service Bus](../service-bus-messaging/service-bus-quotas.md). | Przy użyciu pojedynczego zdarzenia na wiadomość. |
-| Azure Cosmos DB   | Zobacz [limity usługi Azure Cosmos DB](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Wielkość partii i zapisu, częstotliwość są ustawiane dynamicznie na podstawie odpowiedzi w usłudze Azure Cosmos DB. <br /> Nie ma ograniczeń wcześniej z usługi Stream Analytics. |
+| Kolejki usługi Service Bus platformy Azure   | 256 KB na komunikat w przypadku warstwy Standard 1MB dla warstwy Premium.<br /> Zobacz [limitów usługi Service Bus](../service-bus-messaging/service-bus-quotas.md). | Przy użyciu pojedynczego zdarzenia na wiadomość. |
+| Usługa Azure tematu usługi Service Bus | 256 KB na komunikat w przypadku warstwy Standard 1MB dla warstwy Premium.<br /> Zobacz [limitów usługi Service Bus](../service-bus-messaging/service-bus-quotas.md). | Przy użyciu pojedynczego zdarzenia na wiadomość. |
+| Azure Cosmos DB   | Zobacz [limity usługi Azure Cosmos DB](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Wielkość partii i zapisu, częstotliwość są ustawiane dynamicznie w zależności od odpowiedzi usługi Azure Cosmos DB. <br /> Nie ma ograniczeń wcześniej z usługi Stream Analytics. |
 | Azure Functions   | | Domyślny rozmiar wsadu wynosi 262 144 bajty (256 KB). <br /> Domyślna liczba zdarzeń na partię to 100. <br /> Rozmiar partii jest konfigurowalne i można zwiększyć lub zmniejszyć w usłudze Stream Analytics [opcje wyjściowe](#azure-functions).
 
 ## <a name="next-steps"></a>Kolejne kroki

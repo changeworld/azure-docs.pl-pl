@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f38f6aae11f7bf806b7bad76db8f739fb2823d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951310"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357079"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS
 
@@ -212,6 +212,33 @@ W poniższej tabeli przedstawiono przykład co może się zdarzyć, gdy aktualiz
 W tym przykładzie przyjęto założenie, że klient przełącza się do odczytu z regionu pomocniczego na T5. Stanie pomyślnie odczytywać **roli administrator** jednostki w tej chwili, ale jednostki zawiera wartość dla liczby administratorów, która nie jest spójna z liczbą **pracowników** jednostek, które są oznaczone jako administratorzy w dodatkowym regionie, w tym momencie. Twój klient po prostu można wyświetlić tę wartość, z ryzykiem jest niespójne informacje. Alternatywnie, klient mógłby próbować ustalenie, że **roli administrator** jest w stanie potencjalnie niespójne aktualizacje wystąpiło poza kolejnością, a następnie poinformowania użytkownika o tym fakcie.
 
 Aby rozpoznać, że zawiera on danych potencjalnie niespójne, klient może używać wartości *czas ostatniej synchronizacji* , można uzyskać w dowolnym momencie przez zapytanie do usługi storage. Oznacza to, podczas gdy dane w regionie pomocniczym został ostatnio spójne i usługa była stosowania wszystkich transakcji przed tego punktu w czasie. W powyższym przykładzie, po wstawia usługę **pracowników** jednostki w regionie pomocniczym czas ostatniej synchronizacji jest ustawiona na *T1*. Pozostaje w *T1* do momentu aktualizacji usługi **pracowników** jednostki w regionie pomocniczym, gdy ma wartość *T6*. Jeśli klient pobiera czas ostatniej synchronizacji, gdy odczytuje jednostki po *T5*, można porównać ją z sygnaturą czasową w jednostce. Jeśli sygnatury czasowej w jednostce jest późniejsza niż godzina ostatniej synchronizacji, następnie jednostka jest w stanie potencjalnie niespójne i może potrwać, niezależnie od rodzaju są odpowiednie działanie aplikacji. Za pomocą tego pola wymaga, że znasz ukończenia ostatniej aktualizacji do podstawowej.
+
+## <a name="getting-the-last-sync-time"></a>Wprowadzenie czas ostatniej synchronizacji
+
+Aby pobrać czas ostatniej synchronizacji w celu ustalenia, kiedy ostatnio zapisano dane do regionu pomocniczego, można użyć programu PowerShell lub wiersza polecenia platformy Azure.
+
+### <a name="powershell"></a>PowerShell
+
+Aby uzyskać czas ostatniej synchronizacji dla konta magazynu przy użyciu programu PowerShell, zapoznaj się z konta magazynu **GeoReplicationStats.LastSyncTime** właściwości. Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami:
+
+```powershell
+$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -Name <storage-account> `
+    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
+```
+
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
+Aby uzyskać czas ostatniej synchronizacji dla konta magazynu przy użyciu wiersza polecenia platformy Azure, zapoznaj się z konta magazynu **geoReplicationStats.lastSyncTime** właściwości. Użyj `--expand` parametru do zwrócenia wartości właściwości zagnieżdżony w **geoReplicationStats**. Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami:
+
+```azurecli
+$lastSyncTime=$(az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --expand geoReplicationStats \
+    --query geoReplicationStats.lastSyncTime \
+    --output tsv)
+```
 
 ## <a name="testing"></a>Testowanie
 

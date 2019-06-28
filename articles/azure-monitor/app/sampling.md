@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 7a657f175307e019155e37538021c5aecf5bb068
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 4da91150999864c64ead28b74242e85d23a51ead
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136895"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310449"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -313,7 +313,7 @@ W Eksploratorze metryk kursy, takie jak liczby żądań i wyjątków są pomnoż
                     <Add name = "SamplingPercentage" value = "50" />
                 </Processor>
             </BuiltInProcessors>
-        <TelemetryProcessors/>
+        </TelemetryProcessors>
     ```
 
 3. Możesz dołączyć lub wykluczyć określone rodzaje danych telemetrycznych z próbkowania przy użyciu następujących tagów, wewnątrz tagu procesora "FixedRateSamplingTelemetryProcessor"

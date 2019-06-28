@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df4f06528d0dd261dd92ab84b07bb705e23f7fd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113068"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293072"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Współpraca B2B usługi Active Directory Azure — często zadawane pytania
 
@@ -42,7 +42,7 @@ Tak. Użytkownicy-goście mogą resetować swoje metody uwierzytelniania wielosk
 Organizacji zapraszającej jest przeprowadzane uwierzytelnianie wieloskładnikowe. Organizacji zapraszającej musisz upewnić się, że organizacja charakteryzuje się wystarczającą liczbę licencji dla użytkowników B2B, którzy korzystają z uwierzytelniania Multi-Factor Authentication.
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>Co zrobić, jeśli w organizacji partnera, który jest już ma skonfigurować uwierzytelnianie wieloskładnikowe? Można możemy zaufania uwierzytelniania wieloskładnikowego i nie używać własną usługę uwierzytelnianie wieloskładnikowe?
-Ta funkcja jest planowana w przyszłej wersji, tak, po czym można wybrać określone partnerów do wykluczenia z usługi uwierzytelnianie wieloskładnikowe (zapraszający organizacji).
+Ta funkcja nie jest obecnie obsługiwana. Jeśli dostęp do zasobów organizacji wymaga uwierzytelniania wieloskładnikowego, organizacji partnera należy zarejestrować dla uwierzytelniania wieloskładnikowego w Twojej (zapraszanie) organizacji.
 
 ### <a name="how-can-i-use-delayed-invitations"></a>Jak używać opóźnione zaproszenia?
 Organizacja chcieć dodają użytkowników we współpracy B2B, udostępnić je do aplikacji, zgodnie z potrzebami, a następnie Wyślij zaproszenia. Zaproszenie współpracy B2B interfejs API umożliwia dostosowywanie przepływu pracy przy dołączaniu.

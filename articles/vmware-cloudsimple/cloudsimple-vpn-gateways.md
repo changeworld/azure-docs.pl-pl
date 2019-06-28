@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083399"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332051"
 ---
 # <a name="vpn-gateways-overview"></a>Przegląd bram sieci VPN
 
@@ -26,7 +26,7 @@ CloudSimple oferuje dwa typy bram sieci VPN:
 
 ## <a name="site-to-site-vpn-gateway"></a>Bramy sieci VPN typu lokacja lokacja
 
-Bramy sieci VPN typu lokacja lokacja służy do wysyłania zaszyfrowanego ruchu sieciowego między siecią region CloudSimple i lokalnym centrum danych. Umożliwia to połączenie umożliwia zdefiniowanie zakresu podsieci/CIDR, ruch sieciowy między siecią lokalną i siecią region CloudSimple.
+Bramy sieci VPN typu lokacja lokacja służy do wysyłania zaszyfrowanego ruchu sieciowego między siecią region CloudSimple i lokalnym centrum danych. Umożliwia to połączenie umożliwia zdefiniowanie zakresu podsieci/CIDR komunikację między siecią lokalną i siecią region CloudSimple.
 
 Brama VPN umożliwia korzystanie z usług ze środowiska lokalnego w chmurze prywatnej i usług w chmurze prywatnej, z siecią lokalną.  CloudSimple udostępnia serwer sieci VPN oparte na zasadach dla podczas nawiązywania połączenia z sieci lokalnej.
 
@@ -38,6 +38,9 @@ Przypadki użycia dla sieci VPN typu lokacja lokacja, obejmują:
 * Dostępność obciążeń w chmurze prywatnej z sieci lokalnej.
 
 ![Topologii połączeń sieci VPN typu lokacja-lokacja](media/cloudsimple-site-to-site-vpn-connection.png)
+
+> [!IMPORTANT]
+> Należy określić ograniczenie wartości TCP MSS, w bajtach 1078 lub niższą. Lub jeśli Twoje urządzenia sieci VPN nie obsługują MSS obcinanie, można również ustawić rozmiar jednostki MTU w interfejsie tunelu na bajty 1118 zamiast tego. 
 
 ### <a name="cryptographic-parameters"></a>Parametry kryptograficzne
 

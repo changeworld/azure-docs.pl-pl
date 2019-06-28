@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
-ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2445b37e8152d8f55dad6eff057d273851dc2209
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723605"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340693"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializacja elementu Reliable Collection obiektu w usłudze Azure Service Fabric
 Elementy Reliable Collections Replikuj i utrzymują się ich elementów, aby upewnić się, że są one trwałych maszyny błędów i awarii zasilania.
@@ -55,7 +55,7 @@ Elementy Reliable State Manager ma wbudowane serializatora dla następujących t
 
 Serializatory niestandardowe są często używane, co pozwoli zwiększyć wydajność, lub do szyfrowania danych przez sieć oraz na dysku. Wśród innych powodów serializatory niestandardowe są często bardziej efektywne niż ogólny serializator, ponieważ nie potrzebują do wykonywania serializacji informacje o typie. 
 
-[IReliableStateManager.TryAddStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) służy do rejestrowania niestandardowego serializatora dla danego typu T. Rejestracja powinno mieć miejsce w konstrukcji StatefulServiceBase, aby upewnić się, że przed rozpoczęciem odzyskiwania wszystkich elementów Reliable Collections mają dostęp do odpowiednich serializator na odczytywanie utrwalonych danych.
+[IReliableStateManager.TryAddStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) służy do rejestrowania niestandardowego serializatora dla danego typu T. Rejestracja powinno mieć miejsce w konstrukcji StatefulServiceBase, aby upewnić się, że przed rozpoczęciem odzyskiwania wszystkich elementów Reliable Collections mają dostęp do odpowiednich serializator na odczytywanie utrwalonych danych.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +73,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Jak zaimplementować niestandardowy serializator
 
-Należy zaimplementować niestandardowy serializator [IStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) interfejsu.
+Należy zaimplementować niestandardowy serializator [IStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) interfejsu.
 
 > [!NOTE]
-> IStateSerializer<T> obejmuje przeciążenia dla zapisu i odczytu, która przyjmuje dodatkowych T o nazwie wartości bazowej. Ten interfejs API jest różnicowej serializacji. Obecnie nie jest uwidaczniana funkcji różnicowej serializacji. Z tego powodu te dwa przeciążenia nie są wywoływane, dopóki serializacji różnicowa jest widoczne i włączone.
+> IStateSerializer\<T > obejmuje przeciążenia dla zapisu i odczytu, która przyjmuje dodatkowych T o nazwie wartości bazowej. Ten interfejs API jest różnicowej serializacji. Obecnie nie jest uwidaczniana funkcji różnicowej serializacji. Z tego powodu te dwa przeciążenia nie są wywoływane, dopóki serializacji różnicowa jest widoczne i włączone.
 
 Oto przykład niestandardowego typu, o nazwie OrderKey, który zawiera cztery właściwości
 

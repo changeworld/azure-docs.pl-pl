@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b033f463722ddb3a0b7beabdf659900e7d7188df
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736670"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330866"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Często zadawane pytania dotyczące usługi Azure Service drzwi
 
@@ -75,11 +75,11 @@ Usługa drzwiami frontowymi ma tę samą listę lokalizacji punktu obecności (p
 
 ### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>To usługa drzwiami frontowymi platformy Azure dedykowanej wdrożenia dla mojej aplikacji lub jest udostępniana wielu odbiorców?
 
-Usługa Azure Service drzwiami frontowymi to globalnie dystrybuowana usługa dla wielu dzierżawców. Tak infrastruktura drzwiami frontowymi jest udostępniony w swoim klientom. Jednakże, tworząc drzwiami frontowymi, należy zdefiniować określonej konfiguracji wymaganej dla aplikacji i 
+Usługa Azure Service drzwiami frontowymi to globalnie dystrybuowana usługa dla wielu dzierżawców. Tak infrastruktura drzwiami frontowymi jest udostępniony w swoim klientom. Jednak, tworząc profil drzwiami frontowymi, należy zdefiniować określonej konfiguracji wymaganej dla aplikacji i nie zmiany Twojej drzwiami frontowymi wpływu na inne konfiguracje wejściu.
 
 ### <a name="is-http-https-redirection-supported"></a>HTTP jest -> przekierowania protokołu HTTPS, obsługiwane?
 
-Drzwi nie obsługuje obecnie adresu URL przekierowania.
+Tak. W rzeczywistości usługa drzwiami frontowymi Azure obsługuje host, ścieżkę i zapytanie ciąg przekierowania, a także część adresu URL przekierowania. Dowiedz się więcej o [adresu URL przekierowania](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>Kolejność przetwarzania reguły routingu są?
 
@@ -141,6 +141,11 @@ Drzwiami frontowymi obsługuje protokół TLS w wersji 1.0, 1.1 i 1.2. TLS 1.3 n
 
 Aby włączyć protokół HTTPS umożliwiającej bezpieczne dostarczanie zawartości na domenę niestandardową na wejściu, można użyć certyfikatu, który jest zarządzany przez usługę Azure Service drzwiami frontowymi lub użyć własnego certyfikatu.
 Drzwiami frontowymi zarządzane przepisy opcja to standardowy certyfikat SSL za pośrednictwem firmy Digicert i przechowywane na wierzchu firmy drzwi Key Vault. Jeśli zdecydujesz się użyć własnego certyfikatu, a następnie można dodać certyfikatu z urzędu certyfikacji obsługiwana i może być standardowego protokołu SSL, rozszerzona Walidacja lub nawet certyfikatu wieloznacznego. Certyfikaty z podpisem własnym nie są obsługiwane. Dowiedz się, [jak włączyć protokół HTTPS dla domeny niestandardowej](https://aka.ms/FrontDoorCustomDomainHTTPS).
+
+### <a name="does-front-door-support-auto-rotation-of-certificates"></a>Drzwiami frontowymi obsługuje automatyczna rotacja certyfikatów?
+
+Dla własnego niestandardowego certyfikatu SSL automatycznego zamieniania nie jest obsługiwane. Podobnie jak jego zostało skonfigurowane dla danej domeny niestandardowej po raz pierwszy, będzie konieczne do punktu drzwiami frontowymi wersji odpowiedniego certyfikatu w usłudze Key Vault i upewnij się, że jednostka usługi dla drzwiami frontowymi nadal ma dostęp do usługi Key Vault. Ta operacja wprowadzania zaktualizowany certyfikat za wejściu jest całkowicie atomic i nie powoduje żadnego wpływu na produkcyjne, podana nazwa podmiotu lub sieci SAN na potrzeby certyfikatu nie ulega zmianie.
+</br>Opcja certyfikatu drzwiami frontowymi zarządzane certyfikaty są automatycznie obracane przy wejściu.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Jakie są bieżące mechanizmów szyfrowania obsługiwanych przez usługę Azure drzwiami frontowymi Service?
 

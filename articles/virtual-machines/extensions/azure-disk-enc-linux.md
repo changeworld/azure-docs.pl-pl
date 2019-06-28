@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 4b5b1f24fb22ff0922c362bd9911ad5c42236ee6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05d20e75cf8f0c84936ff4e5dfa42d60678f6ffc
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051720"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295348"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -34,7 +34,7 @@ Aby uzyskać pełną listę wymagań wstępnych, zobacz [wymagań wstępnych szy
 
 ### <a name="operating-system"></a>System operacyjny
 
-Usługa Azure Disk Encryption jest obecnie obsługiwane na wybierz opcję dystrybucji i wersji.  Zobacz [często zadawane pytania dotyczące usługi Azure dysku szyfrowanie](../../security/azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) listy dystrybucje systemu Linux, które są obsługiwane.
+Usługa Azure Disk Encryption jest obecnie obsługiwane na wybierz opcję dystrybucji i wersji.  Zobacz [usługi Azure Disk Encryption obsługiwane systemy operacyjne: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) listy dystrybucje systemu Linux, które są obsługiwane.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
@@ -142,7 +142,7 @@ Za pomocą `AADClientCertificate`:
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| — typ | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0.1, 1.1 | int |
 | (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identyfikator GUID | 
 | (0.1 schema) AADClientSecret | password | string |
