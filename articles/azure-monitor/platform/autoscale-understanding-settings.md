@@ -91,27 +91,27 @@ Aby zilustrować schematu ustawienie skalowania automatycznego, służy następu
 
 | `Section` | Nazwa elementu | Opis |
 | --- | --- | --- |
-| Ustawienie | ID | Identyfikator zasobu Ustawienia skalowania automatycznego Ustawienia automatycznego skalowania są zasobami usługi Azure Resource Manager. |
+| Ustawienie | id | Identyfikator zasobu Ustawienia skalowania automatycznego Ustawienia automatycznego skalowania są zasobami usługi Azure Resource Manager. |
 | Ustawienie | name | Nazwa ustawienia skalowania automatycznego. |
 | Ustawienie | location | Lokalizacja ustawienie skalowania automatycznego. Ta lokalizacja może być inna niż lokalizacja zasobu jest skalowany. |
 | properties | targetResourceUri | Identyfikator zasobu zasobu jest skalowany. Może mieć tylko jedno ustawienie automatycznego skalowania dla każdego zasobu. |
-| properties | Profile | Ustawienia automatycznego skalowania składa się z co najmniej jeden profil. Przy każdym uruchomieniu aparat skalowania automatycznego, wykonywany jest jeden profil. |
-| Profil | name | Nazwa profilu. Możesz wybrać dowolną nazwę, ułatwiające identyfikację profilu. |
-| Profil | Capacity.Maximum | Maksymalna pojemność dozwolone. Zapewnia automatyczne skalowanie podczas wykonywania tego profilu, Skaluj zasób powyżej tej liczby. |
-| Profil | Capacity.minimum | Pojemność minimalne dozwolone. Zapewnia automatyczne skalowanie podczas wykonywania tego profilu skalowania zasobu pod ten numer. |
-| Profil | Capacity.default | Jeśli występuje problem z odczytem metryki zasobu (w tym przypadku Procesora "vmss1"), a bieżąca pojemność jest niższa wartość domyślna, skalowania automatycznego skalowania do domyślnego. To jest zapewnienie dostępności zasobów. Jeśli bieżąca pojemność jest już wyższa niż pojemność domyślna, automatycznego skalowania nie jest skalowany w. |
-| Profil | rules | Automatyczne skalowanie jest skalowana automatycznie w miarę między maksymalne i minimalne możliwości, za pomocą reguł w profilu. Możesz mieć wiele reguł w profilu. Zwykle istnieją dwie reguły: jedną do określenia, kiedy do skalowania w poziomie, a druga do określenia, kiedy umożliwiającą skalowanie w pionie. |
-| Reguły | metricTrigger | Definiuje metryki warunku reguły. |
-| metricTrigger | MetricName | Nazwa metryki. |
-| metricTrigger |  metricResourceUri | Identyfikator zasobu dla zasobu, który emituje metryki. W większości przypadków jest taka sama jak zasób jest skalowany. W niektórych przypadkach może być inny. Na przykład można skalować zestaw skalowania maszyn wirtualnych na podstawie liczby komunikatów w kolejce magazynu. |
+| properties | profiles | Ustawienia automatycznego skalowania składa się z co najmniej jeden profil. Przy każdym uruchomieniu aparat skalowania automatycznego, wykonywany jest jeden profil. |
+| profile | name | Nazwa profilu. Możesz wybrać dowolną nazwę, ułatwiające identyfikację profilu. |
+| profile | capacity.Maximum | Maksymalna pojemność dozwolone. Zapewnia automatyczne skalowanie podczas wykonywania tego profilu, Skaluj zasób powyżej tej liczby. |
+| profile | capacity.minimum | Pojemność minimalne dozwolone. Zapewnia automatyczne skalowanie podczas wykonywania tego profilu skalowania zasobu pod ten numer. |
+| profile | capacity.default | Jeśli występuje problem z odczytem metryki zasobu (w tym przypadku Procesora "vmss1"), a bieżąca pojemność jest niższa wartość domyślna, skalowania automatycznego skalowania do domyślnego. To jest zapewnienie dostępności zasobów. Jeśli bieżąca pojemność jest już wyższa niż pojemność domyślna, automatycznego skalowania nie jest skalowany w. |
+| profile | rules | Automatyczne skalowanie jest skalowana automatycznie w miarę między maksymalne i minimalne możliwości, za pomocą reguł w profilu. Możesz mieć wiele reguł w profilu. Zwykle istnieją dwie reguły: jedną do określenia, kiedy do skalowania w poziomie, a druga do określenia, kiedy umożliwiającą skalowanie w pionie. |
+| rule | metricTrigger | Definiuje metryki warunku reguły. |
+| metricTrigger | metricName | Nazwa metryki. |
+| metricTrigger | metricResourceUri | Identyfikator zasobu dla zasobu, który emituje metryki. W większości przypadków jest taka sama jak zasób jest skalowany. W niektórych przypadkach może być inny. Na przykład można skalować zestaw skalowania maszyn wirtualnych na podstawie liczby komunikatów w kolejce magazynu. |
 | metricTrigger | timeGrain | Czas trwania próbkowania metryk. Na przykład **TimeGrain = "PT1M"** oznacza, że metryki powinna zostać zagregowana co 1 minutę przy użyciu metody agregacji określonej w elemencie statystyk. |
-| metricTrigger | Statystyka | Metoda agregacji w okresie ziarna czasu. Na przykład **Statystyka = "Average"** i **timeGrain = "PT1M"** oznacza, że metryki powinna zostać zagregowana co 1 minutę przy średniej. Ta właściwość decyduje o tym, jak są próbkowane tak metrykę. |
+| metricTrigger | statistic | Metoda agregacji w okresie ziarna czasu. Na przykład **Statystyka = "Average"** i **timeGrain = "PT1M"** oznacza, że metryki powinna zostać zagregowana co 1 minutę przy średniej. Ta właściwość decyduje o tym, jak są próbkowane tak metrykę. |
 | metricTrigger | timeWindow | Ilość czasu, aby wyszukać metryki. Na przykład **timeWindow = "PT10M"** oznacza, że za każdym razem, gdy działa automatyczne skalowanie, wysyła zapytanie metryki dla ostatnich 10 minut. Przedział czasu umożliwia metryki będą normalizowane i zapobiega reagowaniu na przejściowe skoki. |
 | metricTrigger | timeAggregation | Metoda agregacji używana do agregowania próbkowanych metryk. Na przykład **TimeAggregation = "Average"** powinien zagregowanie próbkowanych metryk przy średniej. W przypadku poprzedniego pobierania dziesięć próbek 1 minutę, a średni je. |
-| Reguły | scaleAction | Działanie podejmowane w momencie wyzwolenia metricTrigger reguły. |
+| rule | scaleAction | Działanie podejmowane w momencie wyzwolenia metricTrigger reguły. |
 | scaleAction | direction | "Zwiększ" do skalowania w poziomie lub "Zmniejsz" do skalowania do wewnątrz.|
 | scaleAction | value | Ile, aby zwiększyć lub zmniejszyć wydajność zasobu. |
-| scaleAction | ochładzania | Ilość czasu oczekiwania po zakończeniu operacji skalowania przed ponownym skalowaniem. Na przykład jeśli **ochładzania = "PT10M"** , automatycznego skalowania nie jest podejmowana próba skalowania ponownie dla innego 10 minut. Ochładzania jest umożliwienie metryk w celu stabilizacji po dodawania lub usuwania wystąpień. |
+| scaleAction | cooldown | Ilość czasu oczekiwania po zakończeniu operacji skalowania przed ponownym skalowaniem. Na przykład jeśli **ochładzania = "PT10M"** , automatycznego skalowania nie jest podejmowana próba skalowania ponownie dla innego 10 minut. Ochładzania jest umożliwienie metryk w celu stabilizacji po dodawania lub usuwania wystąpień. |
 
 ## <a name="autoscale-profiles"></a>Profile automatycznego skalowania
 
