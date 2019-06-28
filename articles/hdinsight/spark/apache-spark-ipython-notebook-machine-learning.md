@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: tworzenie aplikacji uczenia maszynowego platformy Apache Spark w usłudze Azure HDInsight'
-description: Instrukcje krok po kroku dotyczące tworzenia aplikacji uczenia maszynowego platformy Apache Spark w klastrach HDInsight Spark przy użyciu notesu Jupyter.
+description: Samouczek — instrukcje krok po kroku do tworzenia aplikacji usługi Apache Spark machine learning w HDInsight Spark klastrów za pomocą notesu Jupyter.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: ed6a8f83d2ef31513aeadbc6741dd77c30c30070
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
-ms.translationtype: MT
+ms.openlocfilehash: 1013d16295c0348593a207b1af5e0d0d399dd116
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252881"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295320"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Samouczek: tworzenie aplikacji uczenia maszynowego platformy Apache Spark w usłudze HDInsight 
 

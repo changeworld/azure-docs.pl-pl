@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 294b376665ba6b62f79f826520bc933543b38bda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0181eea2895dbc2b3db3367c850140e3fad21d4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059271"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331718"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -97,7 +97,10 @@ Modele są identyfikowane przez nazwę i wersję. Każdorazowo, należy zarejest
 
 Po zarejestrowaniu modelu, można zapewnić dodatkowe metadane tagów, a następnie użyć tagów, podczas wyszukiwania dla modeli.
 
-Nie można usunąć modeli, które są używane przez aktywne wdrożenie.
+> [!TIP]
+> Zarejestrowanego modelu to logiczny kontener dla jednego lub więcej plików, które tworzą model. Na przykład jeśli model, który jest przechowywany w wielu plikach, można zarejestrować je jako pojedynczego modelu w Twoim obszarze roboczym usługi Azure Machine Learning. Po rejestracji można, a następnie pobrać lub zarejestrowanego modelu wdrażania i otrzymywać wszystkie pliki, które zostały zarejestrowane.
+
+Nie można usunąć zarejestrowanego modelu, który jest używany przez aktywne wdrożenie.
 
 Na przykład zarejestrować model, zobacz [Wytrenuj model klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 

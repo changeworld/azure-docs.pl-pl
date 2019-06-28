@@ -9,17 +9,17 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: b298c87d802314bd865bd6f38c35e4361eb69f3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160510"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67183611"
 ---
 Magazyn jest ograniczony przez ilość miejsca na dysku lub stały limit na *maksymalną liczbę* indeksów, dokumentu lub inne zasoby ogólne osiągnięta jako pierwsza. Poniższej tabeli opisano limity przestrzeni dyskowej. Maksymalne limity indeksów, dokumentów i innych obiektów, zobacz [limity przez zasób](../articles/search/search-limits-quotas-capacity.md#index-limits).
 
 | Resource | Wolne | Podstawowe<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | PAMIĘCI PODRĘCZNEJ L2 |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Poziom umowy dotyczącej usług (SLA)<sup>3</sup>  |Nie |Yes |Yes |Yes |Yes |Yes |Yes |Yes |
+| Poziom umowy dotyczącej usług (SLA)<sup>3</sup>  |Nie |Yes |Yes |Yes |Yes |Yes |Yes |Tak |
 | Magazyn na partycję |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
 | Partycje na usługę |ND |1 |12 |12 |12 |3 |12 |12 |
 | Rozmiar partycji |ND |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |

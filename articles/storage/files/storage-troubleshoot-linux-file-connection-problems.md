@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9c08cd52bba6391660bc5f28e5db2dbec1126951
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16d1739e01061a90d673e4bd79bba7bfe7ec3a90
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118708"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295067"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
 
@@ -191,6 +191,40 @@ Do kopiowania plików przy użyciu poświadczeń użytkownika konta magazynu:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
+
+## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nie można nawiązać lub zainstalować udział plików platformy Azure
+
+### <a name="cause"></a>Przyczyna
+
+Typowe przyczyny tego problemu są:
+
+- Używasz niezgodny klient dystrybucji systemu Linux. Zaleca się, że używasz poniższe dystrybucje systemu Linux do łączenia z udziałem plików platformy Azure:
+
+    |   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje ze środowiska lokalnego i między regionami) |
+    | --- | :---: | :---: |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
+    | Debian | 8+ |   |
+    | openSUSE | 13.2+ | 42.3+ |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+
+- Narzędzia CIFS (cifs utils) nie są zainstalowane na komputerze klienckim.
+- Minimalna wersja protokołu SMB/CIFS, 2.1, nie jest zainstalowany na komputerze klienckim.
+- Szyfrowanie protokołu SMB 3.0 nie jest obsługiwane na komputerze klienckim. Szyfrowanie protokołu SMB 3.0 jest dostępny w Ubuntu 16.4 i nowsze wersje, wraz z systemem SUSE 12.3 i nowszych wersjach. Inne dystrybucje wymagają jądra 4.11 i nowszych wersjach.
+- Próbujesz połączyć się z kontem magazynu za pośrednictwem portu TCP 445, który nie jest obsługiwany.
+- Próbujesz nawiązać połączenie z udziałem plików platformy Azure z maszyny Wirtualnej platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
+- Jeśli [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu i usługi Azure Files zezwala tylko na połączenia, które używają protokołu SMB 3.0 za pomocą szyfrowania.
+
+### <a name="solution"></a>Rozwiązanie
+
+Aby rozwiązać ten problem, należy użyć [narzędzie do rozwiązywania problemów dla usługi Azure Files spowodowanych błędami instalowania w systemie Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). To narzędzie:
+
+* Pomocne podczas walidowania klienta uruchamiania środowiska.
+* Wykrywa konfiguracji niezgodny klienta, spowodowałoby błąd dostępu dla usługi Azure Files.
+* Zawiera wskazówki nad własnym rozwiązaniem problemu.
+* Służy do zbierania danych diagnostycznych śledzenia.
+
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": Błąd wejścia/wyjścia
 
