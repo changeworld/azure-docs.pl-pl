@@ -102,46 +102,46 @@ W poniższej tabeli przedstawiono różnice w schemacie między usługi Log Anal
 | ApplicationId | appId|
 | ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
-| AvailabilityCount | : ItemCount |
-| AvailabilityDuration | Czas trwania |
+| AvailabilityCount | itemCount |
+| AvailabilityDuration | duration |
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| Przeglądarka | client_browser |
-| Miejscowość | client_city |
+| Browser | client_browser |
+| City | client_city |
 | ClientIP | client_IP |
-| Computer (Komputer) | cloud_RoleInstance | 
-| Kraj | client_CountryOrRegion | 
-| CustomEventCount | : ItemCount | 
+| Computer | cloud_RoleInstance | 
+| Country | client_CountryOrRegion | 
+| CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
 | DeviceModel | client_Model | 
-| Typ urządzenia | client_Type | 
-| ExceptionCount | : ItemCount | 
+| DeviceType | client_Type | 
+| ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
-| Typ | type |
+| ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
-| System operacyjny | client_OS | 
-| PageViewCount | : ItemCount |
-| PageViewDuration | Czas trwania | 
+| OS | client_OS | 
+| PageViewCount | itemCount |
+| PageViewDuration | duration | 
 | PageViewName | name | 
 | ParentOperationID | operation_Id | 
-| RequestCount | : ItemCount | 
-| RequestDuration | Czas trwania | 
-| Identyfikator żądania | id | 
+| RequestCount | itemCount | 
+| RequestDuration | duration | 
+| RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | powodzenie | 
+| RequestSuccess | success | 
 | ResponseCode | resultCode | 
-| Rola | cloud_RoleName |
+| Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
-| Identyfikator sesji | session_Id | 
+| SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
-| Adres URL | _url |
+| URL | _url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>Kolejne kroki
