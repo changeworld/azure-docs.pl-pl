@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/13/2019
+ms.date: 06/25/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 0314c0e03402d53c7f79eed2efe11db953d184e6
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147504"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448208"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box Disk i weryfikowanie przekazania danych na platformę Azure
 
@@ -88,7 +88,7 @@ Jeśli zwraca urządzenie w Europie, wykonaj następujące kroki.
 
 ### <a name="pick-up-in-asia-pacific-region"></a>Podnieś w regionie Azja i Pacyfik
 
-Ten region zawiera instrukcje dotyczące pobrania w Japonii, Korei i Australii.
+Ten region zawiera instrukcje dotyczące pobrania w Japonii, Korea, Australia i Singapurze.
 
 #### <a name="pick-up-in-australia"></a>Podnieś w Australii
 
@@ -103,43 +103,64 @@ Centra danych platformy Azure w Australii mają wiadomość z powiadomieniem dod
 
 #### <a name="pick-up-in-japan"></a>Podnieś w Japonii
 
-1. Upewnij się, że zawierają zwracany connote z Chakubarai wpis w Japonii.
-2. Napisz firmie nazwy i adresu informacji na temat connote jako informacje o nadawcy.
-3. Numer wpis w Japonii żądanie odbioru 0800-0800-111 (Wybieranie bezpłatna). Wybierania 7-cyfrowy kod pocztowy dla adresu odbioru, a następnie prześlij je dalej do najbliższej biura post.
-    - Dostępne godziny żądanie odbioru zależą od odpowiednich urzędów post.
-    - Informuje, że przesyłka znajduje się Chakubarai wpis dla Japonii Yu-Pack.
-    - Użyj Chakubarai oznacza rzeczywistej, który został dołączony.
-4. Czy oznacza rzeczywistej Chakubarai wpis w Japonii nie uwzględnione w wiadomości e-mail *rozwiązania Quantium* na `Customerservice.JP@quantiumsolutions.com`. *Rozwiązania Quantium* zażąda Japonii Post na odebranie i poproś go, aby wyświetlić connote od pobrania.
-    - Wskazuje odwołanie numer Chakubarai oznacza rzeczywistej kolumny uwagi, pozwalających zapewnić wpis w Japonii.
-    - Wprowadź adres docelowy, jak pokazano poniżej:   
-        ```
-        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
-        Microsoft Service Center c/o Quantium Solutions Japan
-        TEL: 03-5755-0150
-        ```
+1. Napisz firmie nazwy i adresu informacji na temat Uwaga przesyłki jako informacje o nadawcy.
+2. Wyślij wiadomość e-mail rozwiązania Quantium przy użyciu następującego szablonu wiadomości e-mail.
 
-Jeśli oznacza rzeczywistej Chakubarai jest Brak, możesz poprosić o odbiór za pośrednictwem poczty e-mail. Następujący szablon wiadomości e-mail umożliwia żądanie pobrania.
+    - Jeśli Chakubarai wpis w Japonii przesyłki Uwaga nie została dołączona lub brakuje, należy pamiętać, że w tej wiadomości e-mail. Japonia rozwiązania Quantium zażąda Japonii wpis, aby przenieść Uwaga przesyłki od pobrania.
+    - Jeśli masz wiele zamówień, poczty e-mail, aby zapewnić odbiór poszczególnych.
 
-```
-To: Customerservice.JP@quantiumsolutions.com
-Subject: Pickup request for Azure Data Box Disk｜Job Name： 
-Body: 
-- Azure Data Box Disk job name：
-- Reference number:  
-- Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-```
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+        a. 08：00-13：00 
+        b. 13：00-15：00 
+        c. 15：00-17：00 
+        d. 17：00-19：00 
+    ```
+
+3. Otrzymywać wiadomość e-mail z potwierdzeniem Quantium rozwiązań po zostało zarezerwowane odbioru. Potwierdzenie adresu e-mail zawiera również informacje na temat Uwaga przesyłki Chakubarai.
+
+Jeśli to konieczne, możesz skontaktować się Obsługa rozwiązań Quantium (język japoński) na następujące informacje: 
+
+- Adres e-mail:Customerservice.JP@quantiumsolutions.com 
+- Telefon: 03-5755-0150 
 
 #### <a name="pick-up-in-korea"></a>Podnieś w Korei
 
-1. Upewnij się, że zawierają connote zwrotu.
-2. Aby żądanie pobrania:
-    1. Wywołaj *Quantium Solutions International* linia informacyjna na 070 8231 1418 podczas godzin pracy (10: 00 do 17: 00, od poniedziałku do piątku). Oferta *odbioru Microsoft* numer connote rozmieścić dla kolekcji.  
-    2. Jeśli linia informacyjna jest zajęty, Wyślij wiadomość e-mail `microsoft@rocketparcel.com`, temat wiadomości e-mail *Microsoft Pickup* numer connote jako odwołanie.
+1. Upewnij się, że zawierają notatki przesyłki zwracany.
+2. Aby żądanie pobrania, jeśli występuje Uwaga partii:
+    1. Wywołaj *Quantium Solutions International* linia informacyjna na 070 8231 1418 podczas godzin pracy (10: 00 do 17: 00, od poniedziałku do piątku). Oferta *odbioru Microsoft Azure* i numer żądania usługi, aby rozmieścić dla kolekcji.  
+    2. Linia informacyjna jest zajęty, adres e-mail `microsoft@rocketparcel.com`, temat wiadomości e-mail *Microsoft Azure odbioru* i numer żądania usługi jako odwołanie.
     3. Jeśli courier nie dotrze do kolekcji, należy wywołać *Quantium Solutions International* linia informacyjna mechanizmy alternatywne. 
+    4. Otrzymasz wiadomość e-mail z potwierdzeniem odbioru harmonogramu.
+3. Ten krok należy wykonać tylko wtedy, gdy Uwaga partii nie jest obecny. Aby żądanie pobrania:
+    1. Wywołaj *Quantium Solutions International* linia informacyjna na 070 8231 1418 podczas godzin pracy (10: 00 do 17: 00, od poniedziałku do piątku). Oferta *odbioru Microsoft Azure* i numer żądania usługi, aby rozmieścić dla kolekcji. Określ, należy nowej notatki przesyłki rozmieścić dla kolekcji. Podaj nadawcy (klienta), odbiorcy informacji (centrum danych platformy Azure) i numer odwołania (liczba żądań usługi). 
+    2. Linia informacyjna jest zajęty, adres e-mail `microsoft@rocketparcel.com`, temat wiadomości e-mail *Microsoft Azure odbioru* i numer żądania usługi jako odwołanie.
+    3. Jeśli courier nie dotrze do kolekcji, należy wywołać *Quantium Solutions International* linia informacyjna mechanizmy alternatywne. 
+    4. Użytkownik otrzyma ustnej potwierdzenie, jeśli żądanie jest wysyłane za pośrednictwem telefonu.
+
+### <a name="pick-up-in-singapore"></a>Podnieś w Singapurze
+
+1. Drukuj etykietę wysyłkową i Dołącz pole. Jeśli etykieta jest uszkodzony lub utracony:
+    - Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**.
+
+        ![Pobieranie etykiety wysyłkowej](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        To spowoduje pobranie zwrotnej etykiety wysyłkowej, podobnej do tej widocznej poniżej.
+
+        ![Przykładowa etykieta wysyłkowa](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Umieszcza etykiety na urządzeniu. Upewnij się, że etykieta jest widoczna.
+
+2. Aby żądanie pobrania:
+    - Wywołaj **SingPost** linia informacyjna na **6845 6485** podczas godzin pracy (9: 00 do 17: 00, od poniedziałku do piątku).  
+    - Oferta *odbioru Microsoft Azure* i usługa żądania numer (śledzenia na etykiety wysyłki zwrotnej) Aby rozmieścić dla kolekcji. 
+    - Zostanie wyświetlone potwierdzenie ustnej odbioru harmonogramu. 
+    - Jeśli courier nie dotrze do kolekcji, należy wywołać **SingPost** na **6845 6485** mechanizmy alternatywne. 
+3. Przekazać do courier. 
+
 
 ## <a name="verify-data-upload-to-azure"></a>Weryfikowanie przekazania danych na platformę Azure
 

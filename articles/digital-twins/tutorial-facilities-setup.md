@@ -6,18 +6,18 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 06/26/2019
 ms.author: dkshir
-ms.openlocfilehash: 096df62305af91ac85ce9ddbcff5b0160aaa4e8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f826c6652937caab8b140b489626eef97612baea
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60534643"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462202"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Samouczek: Wdrażanie usługi Azure Digital Twins i konfigurowanie wykresu przestrzennego
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: Wdróż Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza) i skonfiguruj przestrzenne programu graph
 
-Za pomocą usługi Azure Digital Twins możesz połączyć osoby, miejsca i urządzenia w spójny system przestrzenny. W tej serii samouczków przedstawiono sposób wykrywania zajętości pomieszczeń z optymalnymi warunkami temperatury i jakości powietrza za pomocą usługi Azure Digital Twins. 
+Usługa Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza) ze sobą osoby, miejsca i urządzenia w spójnym systemie przestrzennych. W tej serii samouczków przedstawiono sposób wykrywania zajętości pomieszczeń z optymalnymi warunkami temperatury i jakości powietrza za pomocą usługi Azure Digital Twins. 
 
 Samouczki przeprowadzą Cię przez proces tworzenia w aplikacji konsoli .NET scenariusza budynku biurowego. Budynek składa się z wielu pięter i pomieszczeń na każdym piętrze. W pomieszczeniach znajdują się urządzenia z podłączonymi czujnikami, które wykrywają ruch, temperaturę otoczenia i jakość powietrza. 
 
@@ -103,7 +103,7 @@ W folderze z wyodrębnionym przykładem otwórz plik **digital-twins-samples-csh
 1. W programie Visual Studio Code otwórz plik [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) w projekcie **occupancy-quickstart**. Zaktualizuj następujące wartości:
    * **ClientId**: wprowadź identyfikator aplikacji Twojej rejestracji aplikacji w usłudze Azure AD. Ten identyfikator został zanotowany w sekcji, w której były [określane uprawnienia aplikacji](#permissions).
    * **Dzierżawa**: wprowadź identyfikator katalogu swojej [dzierżawy usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Ten identyfikator także został zanotowany w sekcji, w której były [określane uprawnienia aplikacji](#permissions).
-   * **BaseUrl**: wprowadź adres URL Twojego wystąpienia usługi Digital Twins. Aby uzyskać ten adres URL, zamień symbole zastępcze w tym adresie URL na wartości odpowiadające Twojemu wystąpieniu: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Możesz również uzyskać ten adres URL, modyfikując adres URL interfejsu API zarządzania z [sekcji poświęconej wdrażaniu](#deploy). Zamień ciąg **swagger/** na **api/v1.0/**.
+   * **BaseUrl**: wprowadź adres URL Twojego wystąpienia usługi Digital Twins. Aby uzyskać ten adres URL, zamień symbole zastępcze w tym adresie URL na wartości odpowiadające Twojemu wystąpieniu: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Możesz również uzyskać ten adres URL, modyfikując adres URL interfejsu API zarządzania z [sekcji poświęconej wdrażaniu](#deploy). Zamień ciąg **swagger/** na **api/v1.0/** .
 
 1. Wyświetl listę funkcji usługi Digital Twins, które możesz eksplorować przy użyciu tego przykładu. Uruchom następujące polecenie:
 

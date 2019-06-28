@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 06/28/2019
+ms.openlocfilehash: 96bfb80602efe8e63f814fc9bf6cff3ae52e5983
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415703"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461533"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Samouczek: Migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS
 
@@ -24,6 +24,7 @@ Azure Database Migration Service można użyć do migracji baz danych z lokalneg
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
+>
 > * Migrowanie schematu próbki, przy użyciu narzędzia pg_dump.
 > * Tworzenie wystąpienia usługi Azure Database Migration Service.
 > * Tworzenie projektu migracji za pomocą usługi Azure Database Migration Service.
@@ -65,11 +66,11 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * Tworzenie z poziomu serwera [reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) dla usługi Azure Database for PostgreSQL umożliwić usłudze Azure Database Migration Service do uzyskania dostępu do docelowych baz danych. Podaj zakres podsieci sieci wirtualnej używane dla usługi Azure Database Migration Service.
 * Istnieją dwie metody wywoływania interfejsu wiersza polecenia:
 
-    * Wybierz przycisk Cloud Shell w menu w prawym górnym rogu witryny Azure Portal:
+  * Wybierz przycisk Cloud Shell w menu w prawym górnym rogu witryny Azure Portal:
 
        ![Przycisk Cloud Shell w witrynie Azure Portal](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
-    * Lokalnie zainstaluj i uruchom interfejs wiersza polecenia. Interfejs wiersza polecenia w wersji 2.0 to narzędzie wiersza polecenia do zarządzania zasobami platformy Azure.
+  * Lokalnie zainstaluj i uruchom interfejs wiersza polecenia. Interfejs wiersza polecenia w wersji 2.0 to narzędzie wiersza polecenia do zarządzania zasobami platformy Azure.
 
        Aby pobrać interfejs wiersza polecenia, postępuj zgodnie z instrukcjami podanymi w artykule [Install Azure CLI 2.0 (Instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Artykuł zawiera również listę platform, które obsługują interfejs wiersza polecenia w wersji 2.0.
 
@@ -77,9 +78,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Włącz replikację logiczną w pliku postgresql.config i ustaw następujące parametry:
 
-    * wal_level = **logical**
-    * max_replication_slots = [liczba gniazd], zalecane ustawienie to **5 gniazd**
-    * max_wal_senders = [liczba współbieżnych zadań] — parametr max_wal_senders ustawia liczbę współbieżnych zadań, które można uruchomić, przy czym zalecane ustawienie to **10 zadań**
+  * wal_level = **logical**
+  * max_replication_slots = [liczba gniazd], zalecane ustawienie to **5 gniazd**
+  * max_wal_senders = [liczba współbieżnych zadań] — parametr max_wal_senders ustawia liczbę współbieżnych zadań, które można uruchomić, przy czym zalecane ustawienie to **10 zadań**
 
 ## <a name="migrate-the-sample-schema"></a>Migrowanie przykładowego schematu
 
@@ -115,8 +116,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
     ```
 
 4. Jeśli w schemacie znajdują się klucze obce, ładowanie początkowe i ciągła synchronizacja migracji zakończą się niepowodzeniem. Uruchom następujący skrypt w narzędziu PgAdmin lub psql w celu wyodrębnienia skryptu docelowego klucza obcego i dodania skryptu klucza obcego w miejscu docelowym (usłudze Azure Database for PostgreSQL).
-
-    
+  
     ```
     SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
@@ -141,7 +141,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
           AND ccu.table_schema = tc.table_schema
     WHERE constraint_type = 'FOREIGN KEY') Queries
       GROUP BY Queries.tablename;
-     ```
+    ```
 
     Uruchom docelowy klucz obcy (znajduje się w drugiej kolumnie) w wyniku zapytania.
 
@@ -260,7 +260,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
 
     Na przykład następujące polecenie tworzy projekt przy użyciu tych parametrów:
 
-   * Lokalizacja: Zachodnio-środkowe stany USA
+   * Lokalizacja: Środkowo-zachodnie stany USA
    * Nazwa grupy zasobów: PostgresDemo
    * Nazwa usługi: PostgresCLI
    * Nazwa projektu: PGMigration

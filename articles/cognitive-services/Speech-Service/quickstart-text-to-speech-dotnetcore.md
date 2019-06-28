@@ -1,30 +1,27 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy, C# (.NET Core) — usługi mowy'
+title: 'Szybki start: Syntetyzowania mowy, C# (.NET Core) — usługi mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawanie mowy w C# w ramach platformy .NET Core w Windows lub macOS przy użyciu zestawu SDK rozpoznawania mowy
+description: Dowiedz się, jak syntetyzowania mowy w C# w ramach platformy .NET Core w Windows przy użyciu zestawu SDK rozpoznawania mowy
 services: cognitive-services
-author: wolfma61
+author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
-ms.author: wolfma
-ms.openlocfilehash: 873145cf9d418433ba241ce06d7d594fb3e6322b
+ms.date: 6/24/2019
+ms.author: yinhew
+ms.openlocfilehash: 7b4a018e38ca625e38dc1658a95d3ce0e677f711
 ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465736"
+ms.locfileid: "67467425"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: Rozpoznawanie mowy przy użyciu zestawu Speech SDK dla platformy .NET Core
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: Syntetyzowania mowy z zestawem SDK mowy dla platformy .NET Core
 
-Przewodniki Szybki Start są również dostępne dla [zamiany tekstu na mowę](quickstart-text-to-speech-dotnetcore.md) i [tłumaczenia mowy](quickstart-translate-speech-dotnetcore-windows.md).
+Przewodniki Szybki Start są również dostępne dla [rozpoznawania mowy](quickstart-csharp-dotnetcore-windows.md) i [tłumaczenia mowy](quickstart-translate-speech-dotnetcore-windows.md).
 
-Jeśli to konieczne, należy wybrać inny język programowania i/lub środowiska:<br/>
-[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
-
-W tym artykule opisano tworzenie C# konsoli aplikacji dla platformy .NET Core w Windows lub macOS przy użyciu usług Cognitive Services [zestaw SDK rozpoznawania mowy](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule utworzysz aplikację konsolową w języku C# dla platformy .NET Core w systemie Windows za pomocą zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Możesz syntetyzowania mowę na podstawie tekstu w czasie rzeczywistym do osoby mówiącej Twojego komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
 > [!NOTE]
 > .NET Core jest międzyplatformową platformą .NET typu open source, która wdraża specyfikację [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard).
@@ -47,7 +44,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 1. Otwórz plik `Program.cs` i zastąp cały jego kod poniższym kodem.
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnetcore/helloworld/Program.cs#code)]
+    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnetcore/helloworld/Program.cs#code)]
 
 1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
 
@@ -65,18 +62,18 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
     ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Uruchamianie aplikacji do debugowania")
 
-1. Zostanie wyświetlone okno konsoli z monitem o wypowiedzenie słów. Wypowiedz zwrot lub zdanie w języku angielskim. Mowa jest przesyłane do usług przetwarzania mowy i przetłumaczone na tekst, który pojawia się w tym samym oknie.
+1. Zostanie wyświetlone okno konsoli monit wpisz jakiś tekst. Wpisz kilka słów lub zdanie. Wpisany tekst jest przesyłane do usług przetwarzania mowy i przekształcony na mowę, na którym odtwarzany na głośników.
 
-    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "Dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania")
+    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym syntezy](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "dane wyjściowe konsoli po pomyślnym syntezy")
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dostępne w serwisie GitHub.
+Więcej przykładów, takie jak sposób syntetyzowania zamiana mowy na plik audio są dostępne w witrynie GitHub.
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
-- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
+- [Dostosowywanie czcionek głosowych](how-to-customize-voice-font.md)
+- [Próbki głosu rekord](record-custom-voice-samples.md)

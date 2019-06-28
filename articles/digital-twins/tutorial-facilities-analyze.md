@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 0c441974b40f35bcc39aec05e5ffe66b68e46c10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 897050513449c099ce75c248eef00a38aac98ad9
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60534815"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462290"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Samouczek: wizualizowanie i analizowanie zdarzeń z przestrzeni usługi Azure Digital Twins przy użyciu usługi Time Series Insights
 
@@ -52,7 +52,7 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
 1. Wprowadź **nazwę** dla przestrzeni nazw usługi Event Hubs. Wybierz **warstwę cenową** **Standardowa**, **subskrypcję**, **grupę zasobów** użytą dla wystąpienia usługi Azure Digital Twins oraz **lokalizację**. Wybierz pozycję **Utwórz**.
 
-1. We wdrożeniu przestrzeni nazw usługi Event Hubs wybierz przestrzeń nazw w obszarze **ZASÓB**.
+1. We wdrożeniu przestrzeni nazw usługi Event Hubs, wybierz **Przegląd** okienku zaznacz **przejdź do zasobu**.
 
     ![Przestrzeń nazw usługi Event Hubs po wdrożeniu](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
 
@@ -132,17 +132,19 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
 1. Wyszukaj i wybierz nowy zasób usługi **Time Series Insights**. Wybierz pozycję **Utwórz**.
 
-1. Wprowadź **nazwę** wystąpienia usługi Time Series Insights, a następnie wybierz swoją **subskrypcję**. Wybierz **grupę zasobów** używaną dla wystąpienia usługi Digital Twins i **lokalizację**. Wybierz pozycję **Utwórz**.
+1. Wprowadź **nazwę** wystąpienia usługi Time Series Insights, a następnie wybierz swoją **subskrypcję**. Wybierz **grupę zasobów** używaną dla wystąpienia usługi Digital Twins i **lokalizację**. Wybierz opcję **Dalej: Źródło zdarzenia** przycisk lub **źródła zdarzeń** kartę.
 
     ![Opcje tworzenia wystąpienia usługi Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)
 
-1. Po wdrożeniu wystąpienia otwórz środowisko usługi Time Series Insights, a następnie otwórz okienko **Źródła zdarzeń**. Wybierz przycisk **Dodaj** znajdujący się u góry, aby dodać grupę konsumentów.
-
-1. W okienku **Nowe źródło zdarzeń** wprowadź **nazwę** i upewnij się, że inne wartości są zaznaczone prawidłowo. Wybierz pozycję **ManageSend** jako **nazwę zasad centrum zdarzeń**, a następnie wybierz grupę konsumentów utworzoną w poprzedniej sekcji jako **grupę konsumentów centrum zdarzeń**. Wybierz pozycję **Utwórz**.
+1. W **źródła zdarzeń** wprowadź **nazwa**, wybierz opcję **Centrum zdarzeń** jako **typ źródła**i upewnij się, inne wartości są zaznaczone. poprawnie. Wybierz **ManageSend** dla **Nazwa zasad dostępu Centrum zdarzeń**, a następnie wybierz grupę odbiorców, który został utworzony w poprzedniej sekcji dotyczącej **grupę konsumentów Centrum zdarzeń**. Wybierz pozycję **Przegląd + utwórz**.
 
     ![Opcje tworzenia źródła zdarzeń](./media/tutorial-facilities-analyze/tsi-event-source.png)
 
-1. Otwórz okienko **Omówienie** środowiska usługi Time Series Insights, a następnie wybierz przycisk **Przejdź do środowiska** znajdujący się u góry strony. Jeśli otrzymasz ostrzeżenie dotyczące dostępu do danych, otwórz okienko **Zasady dostępu do danych** dla swojego wystąpienia usługi Time Series Insights, wybierz pozycję **Dodaj**, wybierz rolę **Współautor**, a następnie wybierz odpowiedniego użytkownika.
+1. W **przeglądanie + tworzenie** okienko, przejrzyj informacje, które podałeś i wybierz **Utwórz**.
+
+1. W okienku wdrażania wybierz zasób usługi Time Series Insights, który został utworzony. Spowoduje to otwarcie **Przegląd** okienko dla danego środowiska usługi Time Series Insights.
+
+1. Wybierz **przejdź do środowiska** znajdujący się u góry. Jeśli otrzymasz ostrzeżenie dotyczące dostępu do danych, otwórz okienko **Zasady dostępu do danych** dla swojego wystąpienia usługi Time Series Insights, wybierz pozycję **Dodaj**, wybierz rolę **Współautor**, a następnie wybierz odpowiedniego użytkownika.
 
 1. Wybranie przycisku **Przejdź do środowiska** powoduje otwarcie [eksploratora usługi Time Series Insights](../time-series-insights/time-series-insights-explorer.md). Jeśli nie zostaną wyświetlone żadne zdarzenia, zasymuluj zdarzenia urządzenia, przechodząc do projektu **device-connectivity** przykładu usługi Digital Twins i uruchamiając polecenie `dotnet run`.
 

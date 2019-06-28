@@ -3,19 +3,19 @@ title: 'Szybki start: Wykrywanie języka tekstu, C# — interfejs API tłumaczen
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak wykryć język dostarczonego tekstu przy użyciu platformy .NET Core i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
-ms.author: erhopf
-ms.openlocfilehash: 76e97a5241c1e39d02d8f33bf1894743d32e6244
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: eaf9fa86437d2c69a9a1a68fba797f69c1339dd1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123399"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448251"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem języka C#
 
@@ -178,6 +178,8 @@ foreach (DetectResult o in deserializedOutput)
 }
 ```
 
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
+
 ## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
 
 Ostatnim krokiem jest wywołanie instrukcji `DetectTextRequest()` w funkcji `Main`. Znajdź `static void Main(string[] args)` i Zastąp ten kod:
@@ -195,7 +197,6 @@ static async Task Main(string[] args)
     await DetectTextRequest(subscriptionKey, host, route, breakSentenceText);
 }
 ```
-
 ## <a name="run-the-sample-app"></a>Uruchamianie przykładowej aplikacji
 
 To wszystko. Teraz możesz uruchomić przykładową aplikację. Z wiersza polecenia (lub sesji terminalowej) przejdź do katalogu projektu, a następnie uruchom:

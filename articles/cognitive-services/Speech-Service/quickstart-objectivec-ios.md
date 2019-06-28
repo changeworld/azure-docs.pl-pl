@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 7d405c1e4ac5de7591f92b391071cfd66371c088
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: aca7a114fb6e00ab1bbf6ab24492056fca3059f4
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003143"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466626"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
 
@@ -67,7 +67,7 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 
 Przykładowa aplikacja będzie mieć bardzo prosty interfejs użytkownika: dwa przyciski umożliwiające rozpoczęcie rozpoznawania mowy na podstawie danych pochodzących z pliku lub z mikrofonu i etykietę tekstową na potrzeby wyświetlenia wyniku.
 Interfejs użytkownika jest skonfigurowany w części `Main.storyboard` projektu.
-Otwórz widok kodu XML scenorysu, klikając prawym przyciskiem myszy pozycję `Main.storyboard` drzewa projektu i wybierając polecenie **Open As...** >  **Source Code** (Otwórz jako... > Kod źródłowy).
+Otwórz widok kodu XML scenorysu, klikając prawym przyciskiem myszy pozycję `Main.storyboard` drzewa projektu i wybierając polecenie **Open As...**  >  **Source Code** (Otwórz jako... > Kod źródłowy).
 Zastąp wygenerowany automatycznie kod XML następującym kodem:
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/Base.lproj/Main.storyboard)]
@@ -90,9 +90,8 @@ Zastąp wygenerowany automatycznie kod XML następującym kodem:
 ## <a name="building-and-running-the-sample"></a>Kompilowanie i uruchamianie przykładu
 
 1. Uwidocznij dane wyjściowe debugowania (**View** > **Debug Area** > **Activate Console** — Widok > Obszar debugowania > Aktywuj konsolę).
-1. Wybierz symulatora systemu iOS lub urządzenie z systemem iOS połączone na maszynie deweloperskiej jako lokalizacja docelowa dla aplikacji z listy w **produktu** -> **docelowy** menu.
-1. Skompiluj i uruchom przykładowy kod w symulatorze systemu iOS, wybierając pozycję **Product** -> **Run** (Produkt > Uruchom) z menu lub klikając przycisk **Play** (Odtwórz).
-   Obecnie zestaw SDK usługi Mowa obsługuje tylko 64-bitowe platformy systemu iOS.
+1. Wybierz symulatora systemu iOS lub urządzenie z systemem iOS połączone na maszynie deweloperskiej jako lokalizacja docelowa dla aplikacji z listy w **produktu** > **docelowy** menu.
+1. Skompiluj i uruchom przykładowy kod w symulatorze systemu iOS, wybierając pozycję **Product** > **Run** (Produkt > Uruchom) z menu lub klikając przycisk **Play** (Odtwórz).
 1. Po kliknięciu przycisku „Recognize (File)” (Rozpoznaj — plik) w aplikacji zawartość pliku dźwiękowego „What's the weather like?” (Jaka jest pogoda?) powinna zostać wyświetlona w dolnej części ekranu.
 
    ![Symulowana aplikacja systemu iOS](media/sdk/qs-objectivec-simulated-app.png)

@@ -1,30 +1,28 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy, Unity — usługi mowy'
+title: 'Szybki start: Syntetyzowania mowy, Unity — usługi mowy'
 titleSuffix: Azure Cognitive Services
-description: Korzystając z tego przewodnika, możesz utworzyć aplikację zamiany mowy na tekst za pomocą środowiska Unity i zestawu Speech SDK for Unity (Beta). Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
+description: Użyj tego przewodnika, aby utworzyć aplikację zamiany tekstu na mowę przy użyciu aparatu Unity i zestaw SDK rozpoznawania mowy, for Unity (wersja Beta). Po zakończeniu możesz syntetyzowania mowę na podstawie tekstu w czasie rzeczywistym do osoby mówiącej na urządzeniu.
 services: cognitive-services
-author: wolfma61
+author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
-ms.author: wolfma
-ms.openlocfilehash: dd8e760e658715b89bf45718ac571ccaeb5ade96
+ms.date: 6/26/2019
+ms.author: yinhew
+ms.openlocfilehash: 5240ea45097ce3c0ae7ccbc15a7f99b2f5990832
 ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465566"
+ms.locfileid: "67467488"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Szybki start: Rozpoznawanie mowy przy użyciu zestawu Speech SDK for Unity (Beta)
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity-beta"></a>Szybki start: Syntetyzowania mowy z zestawem SDK mowy for Unity (wersja Beta)
 
-Przewodniki Szybki Start są również dostępne dla [zamiany tekstu na mowę](quickstart-text-to-speech-csharp-unity.md).
+Przewodniki Szybki Start są również dostępne dla [rozpoznawania mowy](quickstart-csharp-unity.md).
 
-[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
-
-Korzystając z tego przewodnika, możesz utworzyć aplikację zamiany mowy na tekst za pomocą środowiska [Unity](https://unity3d.com/) i zestawu Speech SDK for Unity (Beta).
-Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
+Użyj tego przewodnika do tworzenia aplikacji zamiany tekstu na mowę przy użyciu [Unity](https://unity3d.com/) i zestaw SDK rozpoznawania mowy for Unity (wersja Beta).
+Po zakończeniu możesz syntetyzowania mowę na podstawie tekstu w czasie rzeczywistym do osoby mówiącej na urządzeniu.
 Jeśli nie znasz środowiska Unity, zalecamy zapoznanie się z [podręcznikiem użytkownika środowiska Unity](https://docs.unity3d.com/Manual/UnityManual.html) przed rozpoczęciem tworzenia aplikacji.
 
 > [!NOTE]
@@ -39,7 +37,6 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
      * Do obsługi architektury ARM64 zainstalować [narzędzi kompilacji opcjonalne dla architektury ARM64 i Windows 10 SDK dla architektury ARM64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) 
 * Klucz subskrypcji dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
-* Dostęp do mikrofonu komputera.
 
 ## <a name="create-a-unity-project"></a>Tworzenie projektu środowiska Unity
 
@@ -63,21 +60,25 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
 ## <a name="add-ui"></a>Dodawanie interfejsu użytkownika
 
-Dodamy do sceny minimalny interfejs użytkownika składający się z przycisku wyzwalającego rozpoznawanie mowy i pole tekstowego wyświetlającego wynik.
+Dodamy minimalnego interfejsu użytkownika do naszych sceny składające się z pola wejściowego wprowadzania tekstu dla syntezy, przycisk umożliwiający synteza mowy wyzwalacza i pole tekstowe, aby wyświetlić wynik.
 
 * W [oknie Hierarchy (Hierarchia)](https://docs.unity3d.com/Manual/Hierarchy.html), domyślnie po lewej stronie, jest wyświetlona przykładowa scena utworzona przez środowisko Unity za pomocą nowego projektu.
-* Kliknij przycisk **Utwórz** znajdujący się u góry okna hierarchii, a następnie wybierz pozycję **interfejsu użytkownika** > **przycisk**.
-* Spowoduje to utworzenie trzech obiektów gry, które są widoczne w oknie Hierarchy (Hierarchia): obiektu **Button** zagnieżdżonego w obiekcie **Canvas** i obiektu **EventSystem**.
-* [Przejdź do widoku sceny](https://docs.unity3d.com/Manual/SceneViewNavigation.html) , dzięki czemu masz dobry widok obszaru roboczego i przycisku w [widoku sceny](https://docs.unity3d.com/Manual/UsingTheSceneView.html).
+* Kliknij przycisk **Utwórz** znajdujący się u góry okna hierarchii, a następnie wybierz pozycję **interfejsu użytkownika** > **pola danych wejściowych**.
+* Spowoduje to utworzenie trzech obiektów gry, które widać w oknie hierarchii: **pola danych wejściowych** obiektu zagnieżdżone w obrębie **kanwy** obiektu i **EventSystem** obiektu.
+* [Przejdź do widoku sceny](https://docs.unity3d.com/Manual/SceneViewNavigation.html) , dzięki czemu masz dobry widok obszaru roboczego i pola wejściowego w [widoku sceny](https://docs.unity3d.com/Manual/UsingTheSceneView.html).
+* Kliknij przycisk **pola danych wejściowych** obiektu w oknie hierarchii, aby wyświetlić jej ustawienia przy [oknie Inspektora](https://docs.unity3d.com/Manual/UsingTheInspector.html) (domyślnie po prawej stronie).
+* Ustaw **X punktu sprzedaży** i **Y punktu sprzedaży** właściwości **0**, więc pole wejściowe skupia się na środku kanwy.
+* Kliknij przycisk **Utwórz** znajdujący się u góry okna hierarchii ponownie, a następnie wybierz pozycję **interfejsu użytkownika** > **przycisk** to utworzenia przycisku.
 * Kliknij obiekt **Button** w oknie Hierarchy (Hierarchia), aby wyświetlić jego ustawienia w [oknie Inspector (Inspektor)](https://docs.unity3d.com/Manual/UsingTheInspector.html), domyślnie po prawej stronie.
-* Ustaw właściwości **Pos X** (Pozycja X) i **Pos Y** (Pozycja Y) na wartość **0**, aby wyśrodkować przycisk na kanwie.
+* Ustaw **X punktu sprzedaży** i **Y punktu sprzedaży** właściwości **0** i **-48**i ustaw **szerokość** i **Wysokość** właściwości **160** i **30** aby upewnić się, że przycisk i pole wejściowe nie pokrywają się.
 * Kliknij przycisk **Utwórz** znajdujący się u góry okna hierarchii ponownie, a następnie wybierz pozycję **interfejsu użytkownika** > **tekstu** utworzyć pole tekstowe.
 * Kliknij obiekt **Text** w oknie Hierarchy (Hierarchia), aby wyświetlić jego ustawienia w [oknie Inspector (Inspektor)](https://docs.unity3d.com/Manual/UsingTheInspector.html), domyślnie po prawej stronie.
-* Ustaw właściwości **Pos X** (Pozycja X) i **Pos Y** (Pozycja Y) na wartości **0** i **120**, a następnie ustaw właściwości **Width** (Szerokość) i **Height** (Wysokość) na wartości **240** i **120**, aby zapewnić, że pole tekstowe i przycisk nie nakładają się.
+* Ustaw **X punktu sprzedaży** i **Y punktu sprzedaży** właściwości **0** i **80**i ustaw **szerokość** i  **Wysokość** właściwości **320** i **80** aby upewnić się, że pole tekstowe i pole wejściowe nie pokrywają się.
+* Kliknij przycisk **Utwórz** znajdujący się u góry okna hierarchii ponownie, a następnie wybierz pozycję **Audio** > **źródła Audio** do utworzenia źródła audio.
 
 Gdy wszystko będzie gotowe, interfejs użytkownika powinien wyglądać podobnie jak na następującym zrzucie ekranu:
 
-[![Zrzut ekranu przedstawiający interfejs użytkownika szybkiego startu w edytorze środowiska Unity](media/sdk/qs-csharp-unity-02-ui-inline.png)](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
+[![Zrzut ekranu przedstawiający interfejs użytkownika szybkiego startu w edytorze środowiska Unity](media/sdk/qs-tts-csharp-unity-ui-inline.png)](media/sdk/qs-tts-csharp-unity-ui-expanded.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>Dodawanie przykładowego kodu
 
@@ -90,7 +91,7 @@ Gdy wszystko będzie gotowe, interfejs użytkownika powinien wyglądać podobnie
 
 1. Zastąp cały kod następującym:
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
 
 1. Znajdź i Zastąp ciąg `YourSubscriptionKey` z kluczem subskrypcji usług przetwarzania mowy.
 
@@ -102,23 +103,23 @@ Gdy wszystko będzie gotowe, interfejs użytkownika powinien wyglądać podobnie
 
    * Kliknij pozycję **Canvas** (Kanwa) obiektu w oknie Hierarchy (Hierarchia). Spowoduje to otwarcie ustawienie [oknie Inspektora](https://docs.unity3d.com/Manual/UsingTheInspector.html) (domyślnie po prawej stronie).
    * Kliknij przycisk **Add Component** (Dodaj składnik) w oknie Inspector (Inspektor), a następnie wyszukaj skrypt HelloWorld utworzony powyżej i dodaj go.
-   * Zwróć uwagę na to, że składnik Hello World ma dwie niezainicjowane właściwości: **Output Text** (Tekst wyjściowy) i **przycisk Start reco (Rozpocznij nagrywanie)** , które odpowiadają właściwościom publicznym klasy `HelloWorld`.
+   * Należy zauważyć, że składnik Witaj, świecie ma cztery niezainicjowanych właściwości, **widoczny będzie tekst wyjścia**, **pola danych wejściowych**, **mówić przycisk** i **źródła Audio**, zgodnych publicznymi właściwościami `HelloWorld` klasy.
      Aby powiązać je, kliknij selektor obiektów (małą ikonę okręgu po prawej stronie właściwości) i wybierz obiekty tekstowe i przycisku utworzone wcześniej.
 
      > [!NOTE]
-     > Przycisk ma także zagnieżdżony obiekt tekstu. Upewnij się, że nie został on przypadkowo wybrany dla tekstu wyjściowego, lub zmień nazwę jednego z obiektów tekstowych, używając pola Name (Nazwa) w oknie Inspector (Inspektor), aby uniknąć pomyłki.
+     > Pole wejściowe i przycisk również ma obiektu zagnieżdżonego tekstu. Upewnij się, że użytkownik nie może przypadkowo wybrać jako tekst wyjściowy (lub zmianę nazw obiektów tekstu, używając pole nazwy w oknie Inspektor, aby uniknąć nieporozumień tego).
 
 ## <a name="run-the-application-in-the-unity-editor"></a>Uruchamianie aplikacji w edytorze środowiska Unity
 
 * Naciśnij przycisk **Play** (Odtwórz) na pasku narzędzi edytora środowiska Unity (poniżej paska menu).
 
-* Po uruchomieniu aplikacji kliknij przycisk i powiedz frazę lub zdanie w języku angielskim do mikrofonu komputera. Mowa jest przesyłane do usług przetwarzania mowy i przetłumaczone na tekst, który jest wyświetlany w oknie.
+* Po uruchomieniu aplikacji, wprowadź jakiś tekst do pola wejściowego, a następnie kliknij przycisk. Tekst jest przesyłane do usług przetwarzania mowy i przekształcony na mowę, na którym odtwarzany na głośników.
 
-  [![Zrzut ekranu przedstawiający uruchamianie przewodnika szybkiego startu w oknie gry środowiska Unity](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
+  [![Zrzut ekranu przedstawiający uruchamianie przewodnika szybkiego startu w oknie gry środowiska Unity](media/sdk/qs-tts-csharp-unity-output-inline.png)](media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
 
 * Sprawdź komunikaty debugowania w [oknie konsoli](https://docs.unity3d.com/Manual/Console.html).
 
-* Po zakończeniu rozpoznawaniu mowy kliknij przycisk **Play** (Odtwórz) na pasku narzędzi edytora środowiska Unity, aby zatrzymać aplikację.
+* Gdy skończysz Syntetyzujące mowy, kliknij przycisk **Odtwórz** przycisk na pasku narzędzi edytora środowiska Unity, aby zatrzymać aplikację.
 
 ## <a name="additional-options-to-run-this-application"></a>Dodatkowe opcje uruchamiania aplikacji
 
@@ -132,5 +133,5 @@ Zobacz [repozytorium przykładów](https://aka.ms/csspeech/samples) w folderze q
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
-- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
+- [Dostosowywanie czcionek głosowych](how-to-customize-voice-font.md)
+- [Próbki głosu rekord](record-custom-voice-samples.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fc4db12f722d1330f0642e155c02a1936373e256
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 48733a8c2a554fc62c7731b6c0fb4ef5b8d45159
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65520489"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450190"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w niestandardowej domenie usługi Front Door
 
@@ -77,12 +77,11 @@ Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Przygotowywanie certyfikatu i konta usługi Azure Key Vault
  
 1. Usługa Azure Key Vault: musisz mieć konto usługi Azure Key Vault uruchomione w ramach tej samej subskrypcji co usługa Front Door, dla której chcesz włączyć niestandardowy protokół HTTPS. Utwórz konto usługi Azure Key Vault, jeśli go nie masz.
- 
-2. Certyfikaty usługi Azure Key Vault: jeśli masz już certyfikat, możesz przekazać go bezpośrednio na konto usługi Azure Key Vault lub utworzyć nowy certyfikat bezpośrednio za pomocą usługi Azure Key Vault za pośrednictwem jednego z partnerskich urzędów certyfikacji, z którymi zintegrowana jest usługa Azure Key Vault.
 
 > [!WARNING]
-> </br> — Usługa Azure Front Door Service obecnie obsługuje tylko konta usługi Key Vault w tej samej subskrypcji co konfiguracja usługi Front Door. Wybranie usługi Key Vault z innej subskrypcji niż usługa Front Door spowoduje błąd.
-> </br> — Usługa Azure Front Door Service obecnie obsługuje tylko certyfikaty przekazywane z plikiem PFX **bez** hasła.
+> Usługa drzwiami frontowymi aktualnie obsługuje tylko konta usługi Key Vault w tej samej subskrypcji co Konfiguracja wejściu. Wybranie usługi Key Vault z innej subskrypcji niż usługa Front Door spowoduje błąd.
+
+2. Certyfikaty usługi Azure Key Vault: jeśli masz już certyfikat, możesz przekazać go bezpośrednio na konto usługi Azure Key Vault lub utworzyć nowy certyfikat bezpośrednio za pomocą usługi Azure Key Vault za pośrednictwem jednego z partnerskich urzędów certyfikacji, z którymi zintegrowana jest usługa Azure Key Vault.
 
 #### <a name="register-azure-front-door-service"></a>Rejestrowanie usługi Azure Front Door Service
 
@@ -170,7 +169,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;nazwa-domeny.com&gt;  
 
-W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, dodaj admin@digicert.com do jego listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
+W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, Dodaj admin@digicert.com do jego listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
 
 Po kliknięciu linku zatwierdzania następuje przekierowanie do formularza zatwierdzania online. Postępuj zgodnie z instrukcjami w formularzu. Dostępne są dwie opcje weryfikacji:
 

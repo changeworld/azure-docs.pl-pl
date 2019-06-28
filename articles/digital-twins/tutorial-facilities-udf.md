@@ -6,18 +6,18 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 06/26/2019
 ms.author: dkshir
-ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 738e78ce06d98960c87414948e045cc4abe37d6b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533540"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462187"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Samouczek: aprowizowanie budynku i monitorowanie warunków pracy za pomocą usługi Azure Digital Twins
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Samouczek: Aprowizacja usługi kompilowanie i monitor pracy warunków przy użyciu usługi Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza)
 
-W tym samouczku przedstawiono, jak za pomocą usługi Azure Digital Twins monitorować przestrzenie pod kątem odpowiedniej temperatury i poziomu komfortu. Po [skonfigurowaniu przykładowego budynku](tutorial-facilities-setup.md) możesz zaaprowizować swój budynek i uruchamiać funkcje niestandardowe na danych z czujników, wykonując czynności opisane w tym samouczki.
+Ten samouczek pokazuje, jak monitorować Twojego miejsca do magazynowania dla żądanego temperatury i poziom komfortu za pomocą usługi Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza). Po [skonfigurowaniu przykładowego budynku](tutorial-facilities-setup.md) możesz zaaprowizować swój budynek i uruchamiać funkcje niestandardowe na danych z czujników, wykonując czynności opisane w tym samouczki.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -43,14 +43,14 @@ Możesz zdefiniować zestaw określonych warunków nazywanych elementami *matche
 
 W przykładowym projekcie **occupancy-quickstart** otwórz plik **src\actions\provisionSample.yaml** w programie Visual Studio Code. Zwróć uwagę na sekcję, która zaczyna się od typu **matchers**. Każdy wpis w ramach tego typu tworzy element matcher z określonym parametrem **Name** (nazwa). Element matcher będzie monitorował czujnik typu **dataTypeValue**. Zwróć uwagę, że jest on związany z przestrzenią o nazwie *Focus Room A1*, w której znajduje się węzeł **devices** zawierający kilka czujników. Aby aprowizować element matcher, który będzie śledzić jeden z tych czujników, należy upewnić się, że jego typ **dataTypeValue** jest zgodny z typem **dataType** czujnika. 
 
-Dodaj następujący element matcher poniżej istniejących elementów matcher. Upewnij się, że klucze są dopasowane, a spacje nie zostały zastąpione znakami tabulacji.
+Dodaj następujący element matcher poniżej istniejących elementów matcher. Upewnij się, że klucze są dopasowane, a spacje nie zostały zastąpione znakami tabulacji. Te wiersze znajdują się również w pliku *provisionSample.yaml* jako komentarze. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza.
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-Ten element matcher będzie śledził czujnik SAMPLE_SENSOR_TEMPERATURE, dodany w [pierwszym samouczku](tutorial-facilities-setup.md). Te wiersze znajdują się również w pliku *provisionSample.yaml* jako komentarze. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza.
+Ten element matcher będzie śledził czujnik SAMPLE_SENSOR_TEMPERATURE, dodany w [pierwszym samouczku](tutorial-facilities-setup.md). 
 
 <a id="udf"></a>
 

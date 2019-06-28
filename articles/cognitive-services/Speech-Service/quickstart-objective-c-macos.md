@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67f2531b24796de1e00505fdc757f3c2244c5054
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3eb65b5d41317a4cfc31917a4b08d931ba9c7aa6
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002352"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466606"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w języku Objective C w systemie macOS przy użyciu zestawu SDK rozpoznawania mowy
 
@@ -67,13 +67,7 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Instalowanie zestawu SDK jako CocoaPod
 
 1. Zainstaluj Menedżera zależności CocoaPod, zgodnie z opisem w jego [instrukcje dotyczące instalacji](https://guides.cocoapods.org/using/getting-started.html).
-1. Przejdź do katalogu aplikacji przykładowych (`helloworld`). Umieść plik tekstowy o nazwie `Podfile` i następującej zawartości w tym katalogu:
-    ```
-    target 'helloworld' do
-        platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.1'
-    end
-    ```
+1. Przejdź do katalogu aplikacji przykładowych (`helloworld`). Umieść plik tekstowy o nazwie `Podfile` i następującej zawartości w tym katalogu: [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
 1. Przejdź do `helloworld` katalogu w terminalu i uruchom polecenie `pod install`. Spowoduje to wygenerowanie `helloworld.xcworkspace` obszaru roboczego Xcode, zawierający przykładową aplikację i zestawu SDK mowy jako zależność. Ten obszar roboczy będzie używany w następujących.
 
 ## <a name="add-the-sample-code"></a>Dodawanie przykładowego kodu
@@ -87,7 +81,7 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 ## <a name="build-and-run-the-sample"></a>Kompilowanie i uruchamianie przykładu
 
 1. Uwidocznij dane wyjściowe debugowania (**View** > **Debug Area** > **Activate Console** — Widok > Obszar debugowania > Aktywuj konsolę).
-1. Kompilowanie i uruchamianie przykładowego kodu, wybierając **produktu** -> **Uruchom** z menu lub klikając **Odtwórz** przycisku.
+1. Kompilowanie i uruchamianie przykładowego kodu, wybierając **produktu** > **Uruchom** z menu lub klikając **Odtwórz** przycisku.
 1. Po kliknij przycisk i podać kilka słów, tekst, który ma być używany powinny być widoczne w dolnej części ekranu. Po uruchomieniu aplikacji po raz pierwszy monit należy przypisać aplikacji dostęp do mikrofonu na komputerze.
 
 ## <a name="next-steps"></a>Kolejne kroki

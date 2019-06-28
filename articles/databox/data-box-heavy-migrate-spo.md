@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 5628a1b3ea42c91f49f78699c37bb2b306275e9e
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1c432ee5851115e029b55722b6b238b4672e8345
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730847"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446719"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Użycie duże pole danych platformy Azure do migrowania zawartości udziału plików do usługi SharePoint Online
 
@@ -81,7 +81,7 @@ Aby uzyskać najlepszą wydajność i łączność firma Microsoft zaleca tworze
 
 1. Zaloguj się do witryny Azure portal, a następnie [Utwórz maszynę wirtualną](../virtual-machines/windows/quick-create-portal.md).
 2. [Instalowanie udziału plików platformy Azure na maszynie Wirtualnej](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
-3. [Pobierz narzędzie do migracji do programu SharePoint](http://spmtreleasescus.blob.core.windows.net/install/default.htm) i zainstaluj go na maszynie Wirtualnej platformy Azure.
+3. [Pobierz narzędzie do migracji do programu SharePoint](https://spmtreleasescus.blob.core.windows.net/install/default.htm) i zainstaluj go na maszynie Wirtualnej platformy Azure.
 4. Uruchom narzędzie do migracji programu SharePoint. Kliknij przycisk **Zaloguj** i wprowadź nazwę użytkownika usługi Office 365 i hasła.
 5. Po wyświetleniu monitu **gdzie są Twoje dane?** , wybierz opcję **udziału plików**. Wprowadź ścieżkę do udziału plików platformy Azure, w którym znajduje się dane.
 6. Postępuj zgodnie z pozostałymi instrukcjami jako normalny, łącznie z lokalizacji docelowej. Aby uzyskać więcej informacji, przejdź do [sposób użycia narzędzia migracji SharePoint](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).

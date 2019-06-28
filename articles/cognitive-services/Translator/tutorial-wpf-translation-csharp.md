@@ -3,19 +3,19 @@ title: 'Samouczek: Tworzenie aplikacji do tłumaczenia przy użyciu platformy WP
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację platformy Windows Presentation Foundation (WPF), która korzysta z interfejsu API usług Cognitive Services na potrzeby tłumaczenia tekstu, wykrywania języka i sprawdzania pisowni, przy użyciu klucza pojedynczej subskrypcji. W tym ćwiczeniu dowiesz się, jak korzystać z funkcji interfejsu API tłumaczenia tekstu w usłudze Translator i interfejsu API sprawdzania pisowni Bing.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 1945d1ae74cbcffbbc0864ea4470b4f199f1d95b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: swmachan
+ms.openlocfilehash: b300c40b4a9c832a0df87f7cfc6e6a9558d766f6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051606"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448227"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: Tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF
 

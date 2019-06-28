@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 06/25/2019
 ms.author: scottwhi
-ms.openlocfilehash: abcce52e126e01d25434a90260a220c9aa337f5b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: be3262daf7ea2a637133ad658efe07ba9426415b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382696"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449075"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Wysyłanie żądań do interfejsu API automatycznego sugerowania Bing.
 
@@ -95,11 +95,11 @@ W poniższym przykładzie przedstawiono żądanie, które zwraca sugerowane cią
 
 Jeśli jest to Twoje pierwsze wywoływanie dowolnego z interfejsów API Bing, nie dołączaj nagłówka identyfikatora klienta. Nagłówek identyfikatora klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia.
 
-Poniższy kod jest odpowiedzią na poprzednie żądanie. Odpowiedź zawiera grupę sugestii internetowych, która z kolei zawiera listę sugestii zapytania wyszukiwania. Każda sugestia obejmuje pola `displayText`, `query` oraz `url`.
+Następujące grupy sugestii sieci web jest odpowiedź na żądanie powyżej. Grupa zawiera listę podpowiedzi dla zapytania wyszukiwania, z każdym sugestii, w tym `displayText`, `query`, i `url` pola.
 
 Pole `displayText` zawiera sugerowane zapytanie, używane do wypełnienia listy rozwijanej w polu wyszukiwania. Należy wyświetlić wszystkie sugestie, które zawiera odpowiedź, w podanej kolejności.  
 
-Jeśli użytkownik wybierze zapytania z listy rozwijanej, można użyć go do wywołania z jednym z [interfejsy API wyszukiwania Bing](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) i wyświetlić wyniki, samodzielnie lub wysłać użytkownika do strony wyników Bing za pomocą zwracanego `url` pola. W poniższym przykładzie użyto API wyszukiwania w Internecie Bing.
+Jeśli użytkownik wybierze zapytania z listy rozwijanej, można użyć go do wywołania z jednym z [interfejsy API wyszukiwania Bing](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) i wyświetlić wyniki, samodzielnie lub wysłać użytkownika do strony wyników Bing za pomocą zwracanego `url` pola.
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
