@@ -114,7 +114,7 @@ Jeśli istnieje już profil dziennika, należy najpierw usunąć istniejący pro
     | Name |Yes |Nazwa profilu dziennika. |
     | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, w którym ma zostać zapisany w dzienniku aktywności. |
     | serviceBusRuleId |Nie |Identyfikator reguły usługi Service Bus dla przestrzeni nazw usługi Service Bus chcesz mieć centra zdarzeń utworzonych w. Jest to ciąg w formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Lokalizacja |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
+    | Location |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
     | RetentionInDays |Yes |Liczba dni, dla których zdarzenia ma być przechowywana na koncie magazynu, od 1 do 2147483647. Dzienniki na wartość zero są przechowywane w nieskończoność. |
     | Category |Nie |Rozdzielana przecinkami lista kategorie zdarzeń, które powinny być zbierane. Możliwe wartości to _zapisu_, _Usuń_, i _akcji_. |
 
@@ -236,7 +236,7 @@ W poniższej tabeli opisano elementy w tym pliku JSON.
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które mają identyfikator korelacji należą do tej samej akcji uber. |
 | identity |Obiekt blob JSON opisujące autoryzację i oświadczenia. |
 | authorization |Obiekt blob RBAC właściwości zdarzenia. Zazwyczaj zawiera właściwości "action", "roli" i "scope". |
-| poziom |Poziom zdarzenia. Jeden z następujących wartości: _Krytyczne_, _błąd_, _ostrzeżenie_, _informacyjny_, i _pełne_ |
+| level |Poziom zdarzenia. Jeden z następujących wartości: _Krytyczne_, _błąd_, _ostrzeżenie_, _informacyjny_, i _pełne_ |
 | location |Region, w którym wystąpił lokalizacji (lub globalnego). |
 | properties |Zestaw `<Key, Value>` pary (tj. Słownik), opisujący szczegóły zdarzenia. |
 
