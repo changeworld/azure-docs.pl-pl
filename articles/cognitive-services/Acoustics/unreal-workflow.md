@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433716"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477831"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Samouczek projektowania Unreal/Wwise Akustyka projektu
 W tym samouczku opisano konfigurację projektu i przepływu pracy dla projektu Akustyka Unreal i Wwise.
@@ -122,6 +122,11 @@ Do zarządzania dane akustyczne streaming sobie zamiast przesyłania strumieniow
 Rozmiar fragmentu musi już ustawiony, przed wywołaniem życie obciążenia kafelka. Na przykład można wykonywać, podobny do poniższego, aby załadować plik ACE, ustawić rozmiar kafelka i przesyłanie strumieniowe w regionie:
 
 ![Opcje zrzutu ekranu przesyłania strumieniowego instalacji w Unreal](media/streaming-setup.png)
+
+Funkcja planu danych Akustyka ładowania, które są używane w tym przykładzie ma następujące parametry:
+
+* **Element docelowy:** AcousticsSpace aktora.
+* **Tworzenie nowego:** Zasób danych Akustyka do załadowania. Pozostawienie pustego/ustawienie go na wartość null spowoduje zwolnienie bieżącego tworzenie bez ładowania nowej.
 
 ### <a name="optionally-query-for-surface-proximity"></a>Opcjonalnie zapytanie dla powierzchni odległości między elementami
 Jeśli chcesz zobaczyć, jak blisko powierzchnie znajdują się w określonym kierunku wokół odbiornik, możesz użyć funkcji zapytania odległości. Ta funkcja może być przydatne, zachęcanie kierunkowe odbić opóźnione lub inną logikę gier prowadzone przez powierzchni odległości między elementami. Zapytanie jest mniej kosztowne niż rzutowania ray, ponieważ wyniki są pobierane z tabeli odnośników Akustyka.

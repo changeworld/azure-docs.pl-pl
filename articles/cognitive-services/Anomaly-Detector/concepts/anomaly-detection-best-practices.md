@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad4a67d7737733e4c910d3495be29860769f27e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692193"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477806"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Najlepsze rozwiązania dotyczące korzystania z interfejsu API wykrywanie anomalii
 
@@ -51,7 +51,7 @@ Poniżej znajduje się ten sam zestaw danych przy użyciu wykrywania anomalii w 
 
 ## <a name="data-preparation"></a>Przygotowywanie danych
 
-Interfejs API usługi Wykrywanie anomalii akceptuje szeregów czasowych dane sformatowane do obiektu żądania JSON. Szeregi czasowe może być dowolnym dane liczbowe, zapisywane wraz z upływem czasu, w kolejności sekwencyjnej. Windows danych szeregów czasowych może wysyłać do punktu końcowego interfejsu API wykrywanie anomalii, aby zwiększyć wydajność interfejsu API. Minimalna liczba punktów danych, który można wysłać to 12, a wartość maksymalna to 8640 punktów. 
+Interfejs API usługi Wykrywanie anomalii akceptuje szeregów czasowych dane sformatowane do obiektu żądania JSON. Szeregi czasowe może być dowolnym dane liczbowe, zapisywane wraz z upływem czasu, w kolejności sekwencyjnej. Windows danych szeregów czasowych może wysyłać do punktu końcowego interfejsu API wykrywanie anomalii, aby zwiększyć wydajność interfejsu API. Minimalna liczba punktów danych, który można wysłać to 12, a wartość maksymalna to 8640 punktów. [Poziom szczegółowości](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) jest zdefiniowany jako szybkość, z jaką dane są próbkowane tak, w. 
 
 Punktów danych wysłanych do interfejsu API wykrywanie anomalii musi mieć prawidłową sygnaturę czasową uniwersalnego czasu koordynowanego (UTC), a wartość liczbową. 
 
@@ -68,6 +68,15 @@ Punktów danych wysłanych do interfejsu API wykrywanie anomalii musi mieć praw
         "value": 29615278
       },
     ]
+}
+```
+
+Jeśli dane są próbkowane tak, w odstępach czasu niestandardowej, możesz je określić, dodając `customInterval` atrybutów w żądaniu. Na przykład serii są próbkowane co 5 minut, można dodać następujące do żądania JSON:
+
+```json
+{
+    "granularity" : "minutely", 
+    "customInterval" : 5
 }
 ```
 
