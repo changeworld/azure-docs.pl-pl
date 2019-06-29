@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: d8330ff663a7adc2f1cae3ed6bdf1cec2fa972c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae075dbc922932a4eaffd9126560c159d33459d0
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808456"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466968"
 ---
 # <a name="ship-an-application"></a>Dostarczanie aplikacji
 
@@ -46,6 +46,9 @@ W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK
 
 >[!NOTE]
 > Począwszy od wersji 1.3.0 pliku `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dostarczane w poprzednich wersjach) nie jest już potrzebny. Funkcje jest teraz zintegrowana w programie core SDK.
+
+>[!NOTE]
+> W aplikacji Windows Forms (.NET Framework) C# projektu, upewnij się, bibliotek znajdują się w ustawieniach wdrażania projektu. Możesz to sprawdzić w obszarze `Properties -> Publish Section`. Kliknij przycisk `Application Files` przycisk i znaleźć odpowiedniej biblioteki z przewiń w dół listy. Upewnij się, że wartość jest równa `Included`. Program Visual Studio będzie zawierać plik, gdy projekt jest opublikowana lub wdrożone.
 
 ## <a name="linux"></a>Linux
 

@@ -2,19 +2,19 @@
 title: Co to jest słownikiem? — Niestandardowy w usłudze Translator
 titleSuffix: Azure Cognitive Services
 description: Słownik jest wyrównany dokumentu, który określa listę frazy lub zdania (i tłumaczenia), który ma być zawsze Microsoft Translator do tłumaczenia w taki sam sposób. Słowniki są czasami skrót glosariuszu lub określenie zasad.
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 4bf112974befd7063b3da8e2b1c1dcbb7ad55608
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c837399778723b0b084c26422b7bea762f0e7709
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385239"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447359"
 ---
 # <a name="what-is-a-dictionary"></a>Co to jest słownikiem?
 

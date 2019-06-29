@@ -3,19 +3,19 @@ title: Co to jest obszar roboczy i projektu? — Niestandardowy w usłudze Trans
 titleSuffix: Azure Cognitive Services
 description: Obszar roboczy jest obszar roboczy, do redagowania i tworzenia systemu tłumaczenia niestandardowych. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów. Projekt jest otoką elementu modelu, dokumentów i testów. Każdy projekt automatycznie zawiera wszystkich dokumentów, które zostały załadowane do obszaru roboczego, które mają pary odpowiedni język.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 312688ddccd6a65745b919e4c396a95f40a58d3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c35f3911b591a0d9adccdc48dbdc17f8afb5ea00
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66382334"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447341"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co to jest obszar roboczy niestandardowe w usłudze Translator?
 

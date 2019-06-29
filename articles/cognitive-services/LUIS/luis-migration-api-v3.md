@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: fb4cf119195b3be23dc8f2cb98bd019769583473
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341835"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442519"
 ---
-# <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Wersja zapoznawcza: Migrowanie do interfejsu API w wersji 3.x dla aplikacji usługi LUIS
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Wersja zapoznawcza: Migrowanie do interfejsu API w wersji 3.x dla aplikacji usługi LUIS
 
 Zmieniły się interfejsów API endpoint prognoz zapytania. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do endpoint w wersji 3 interfejsów API. 
 
@@ -43,6 +43,27 @@ Następujące funkcje usługi LUIS są **nieobsługiwane** w interfejsie API w w
 * Sprawdzanie pisowni Bing w wersji 7
 
 [Dokumentację referencyjną](https://aka.ms/luis-api-v3) jest dostępna dla V3.
+
+## <a name="endpoint-url-changes-by-slot-name"></a>Zmiany adresu URL punktu końcowego o nazwie miejsca
+
+Format wywołanie punktu końcowego HTTP V3 uległ zmianie.
+
+|— METODA|Adres URL|
+|--|--|
+|GET|https://<b>{regionu REGION}</b>.api.cognitive.microsoft.com/luis/<b>3.0 w wersji zapoznawczej</b>/apps/<b>{identyfikator-aplikacji}</b>/slots/<b>{miejsce-NAME}</b>/ prognozowania? Zapytanie =<b>{QUERY}</b>|
+|POST|https://<b>{regionu REGION}</b>.api.cognitive.microsoft.com/luis/<b>3.0 w wersji zapoznawczej</b>/apps/<b>{identyfikator-aplikacji}</b>/slots/<b>{miejsce-NAME}</b>/ prognozowania|
+|||
+
+## <a name="endpoint-url-changes-by-version-id"></a>Zmiany adresu URL punktu końcowego, identyfikator wersji
+
+Jeśli chcesz wykonywać zapytania za wersję, musisz najpierw [publikowania za pomocą interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) z `"directVersionPublish":true`. Wyślij zapytanie do endpoint odwołuje się do Identyfikatora wersji, zamiast nazwy miejsca.
+
+
+|— METODA|Adres URL|
+|--|--|
+|GET|https://<b>{regionu REGION}</b>.api.cognitive.microsoft.com/luis/<b>3.0 w wersji zapoznawczej</b>/apps/<b>{identyfikator aplikacji}</b>/versions/<b>{identyfikator wersji}</b>/ przewidywanie? kwerendy =<b>{QUERY}</b>|
+|POST|https://<b>{regionu REGION}</b>.api.cognitive.microsoft.com/luis/<b>3.0 w wersji zapoznawczej</b>/apps/<b>{identyfikator aplikacji}</b>/versions/<b>{identyfikator wersji}</b>/ przewiduj|
+|||
 
 ## <a name="prebuilt-entities-with-new-json"></a>Wstępnie utworzone jednostki z nowego formatu JSON.
 

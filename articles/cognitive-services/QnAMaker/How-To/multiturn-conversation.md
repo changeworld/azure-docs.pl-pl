@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 1e46c935d298f2fe7ebfa4bce471288c9ab8a606
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: a126456159776254408df8325f97fcee967835e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271950"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442716"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Użyj kontynuacji monit o utworzenie wielu włącza konwersacji
 
@@ -229,33 +229,14 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Use the sign-in screen"
-                    },
-                    {
-                        "displayOrder": 1,
-                        "qnaId": 17,
-                        "qna": null,
-                        "displayText": "Use Windows Hello to sign in"
-                    },
-                    {
-                        "displayOrder": 2,
-                        "qnaId": 18,
-                        "qna": null,
-                        "displayText": "Sign out"
-                    },
-                    {
-                        "displayOrder": 0,
-                        "qnaId": 79,
-                        "qna": null,
-                        "displayText": "Create a Windows Account"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -269,15 +250,14 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Turn off the device"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -291,15 +271,14 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         }
     ]
 }
 ```
 
-`promptsToAdd` Tablicy zawiera tekst w `displayText` właściwości i `qnaId` wartości, więc odpowiedzi na te pytania można wyświetlić jako dalej opcji wyświetlanych w komunikacji usługi flow, następnie wyślij wybranej wartości, aby usługa QnA Maker w poniższych dokumentach. 
+`prompts` Tablicy zawiera tekst w `displayText` właściwości i `qnaId` wartości, więc odpowiedzi na te pytania można wyświetlić jako dalej opcji wyświetlanych w komunikacji usługi flow, następnie wyślij wybranego `qnaId` powrót do usługi QnA Maker w poniższych dokumentach . 
 
 <!--
 
@@ -345,8 +324,7 @@ Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w 
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         },
         {
@@ -360,15 +338,14 @@ Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w 
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 4,
                         "qna": null,
                         "displayText": "Ports and connectors"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -382,8 +359,7 @@ Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w 
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         }
     ]
@@ -407,6 +383,16 @@ Dodano monity w Twojej bazie wiedzy knowledge base i badać przepływ w okienko 
 FIX - Need to go to parent, then answer column, then edit answer. 
 
 -->
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tworzenie bazy wiedzy knowledge base wielu Włącz monitowania za pomocą interfejsu API tworzenia
+
+Włącz wielu monitowania za pomocą może utworzyć przypadek wiedzy [interfejsu API usługi QnA Maker tworzenia](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Dodajesz monity w `context` właściwości `prompts` tablicy. 
+
+
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Dodawanie lub usuwanie wielu Włącz monity z interfejsem API aktualizacji
+
+Można dodawać lub usuwać monity Włącz wielu przy użyciu [interfejs API usługi QnA Maker Update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Dodajesz monity w `context` właściwości `promptsToAdd` tablicy i `promptsToDelete` tablicy. 
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

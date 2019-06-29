@@ -8,17 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f22b0fcac6099482addfcf56a20e0e828866326e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 09296585ab0ab61f39c18cae6c533c0bbd91926a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606351"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449247"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="speech-sdk-160-2019-june-release"></a>Zestaw SDK 1.6.0 mowy: Wersji czerwcowej 2019 r
+**Przykłady**
+*   Szybki start — przykłady do zamiany tekstu na mowę na platformy uniwersalnej systemu Windows i Unity
+*   Przykład szybki start SWIFT w systemie iOS
+*   Przykłady Unity mowy & rozpoznawanie intencji oraz tłumaczenia
+*   Przykłady zaktualizowane — szybki start dla DialogServiceConnector
+
+**Ulepszenia / zmiany**
+* Okno dialogowe przestrzeń nazw:
+    * SpeechBotConnector została zmieniona na DialogServiceConnector
+    * BotConfig została zmieniona na DialogServiceConfig
+    * Ponownie BotConfig::FromChannelSecret(), które zostały mapowany na DialogServiceConfig::FromBotSecret()
+    * Wszystkich istniejących klientów bezpośrednich mowy wiersza w dalszym ciągu być obsługiwane po zmiany nazwy
+* Aktualizowanie adaptera TTS REST do obsługi serwera proxy, trwałe połączenie
+* Poprawa komunikat o błędzie, gdy nieprawidłowy region jest przekazywany
+
+**Poprawki błędów**
+*   Poprawka TTS: gdzie przyszłość SpeakTextAsync zwracane bez oczekiwania, dopóki nie zakończy się dźwięk renderowania
+*   Poprawka dla kierowania ciągów w C# można włączyć obsługę pełną obsługą języka
+*   Poprawka dla platformy .NET core app problem można załadować biblioteki core przy użyciu platformy docelowej net461 w przykładach
+*   Poprawka sporadyczne problemy, aby wdrożyć natywnych bibliotek do folderu wyjściowego w przykładach
+*   Poprawka dla gniazda sieci web niezawodnie zamknięcia
+*   Poprawka ewentualnej awarii podczas otwierania połączenia bardzo dużym obciążeniem w systemie Linux
+
 
 ## <a name="speech-sdk-151"></a>Zestaw SDK 1.5.1 mowy
 

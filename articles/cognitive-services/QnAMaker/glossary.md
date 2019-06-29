@@ -3,20 +3,20 @@ title: Słownik — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Usługa QnA Maker ma wiele nowych warunków z usługi machine learning i języka naturalnego warunki przetwarzania, a także specyficzne dla usługi. Ta lista może pomóc w zapoznaniu się z tymi warunkami.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/21/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: bb3b262f3bde0599cb6dea009d0fbbeafb1c529a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6b7e4ca2acc1416e19fc8b70f57aed82afa4e1e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61430685"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446545"
 ---
 # <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>Słownik usługi QnA Maker wiedzy i usługi
 

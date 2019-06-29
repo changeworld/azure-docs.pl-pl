@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 47a573fd4ed4d058b9f9a265c8774f0856371b94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 537a03710d28be607630cf252d2f187843991048
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390095"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438718"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web  
 
@@ -428,10 +428,6 @@ Jeśli Bing okaże się, że użytkownik może mieć przeznaczone do Wyszukaj co
     }]
 }, ...
 ```
-
-Poniżej przedstawiono, jak korzysta z sugestii sprawdzania pisowni Bing.
-
-![Przykład sugestii sprawdzania pisowni Bing](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
 ## <a name="response-headers"></a>Nagłówki odpowiedzi
 

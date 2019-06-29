@@ -9,17 +9,17 @@ ms.subservice: form-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 45303f1f75e80a66c3cb85154d458a970c214370
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: f38752928832b7dee6a7e55f1d25374a64391bbe
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295488"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441895"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalowanie i uruchamianie kontenerów aparatu rozpoznawania formularza
 Azure rozpoznawania formularza ma zastosowanie technologii uczenia maszynowego, aby zidentyfikować i prowadzenie formularzy pary klucz wartość i tabel. Jej kojarzy wartości i wpisy tabeli z pary klucz wartość, a następnie wysyła dane ze strukturą, który zawiera relacje w oryginalnym pliku. 
 
-Aby ograniczyć złożoność i łatwe integrowanie niestandardowy model rozpoznawania formularza proces automatyzacji przepływu pracy lub innych aplikacji, możesz wywołać model przy użyciu prostego interfejsu API REST. Tylko pięć dokumentów (lub pusty formularz) są potrzebne, więc można uzyskać wyniki, szybko, dokładnie i być dostosowane do określonej zawartości. Niezbędne jest nie mocno ręcznej interwencji lub wiele różnych danych do analizy wiedzę. I nie wymaga danych etykietowania lub adnotacji danych.
+Aby ograniczyć złożoność i łatwe integrowanie niestandardowy model rozpoznawania formularza proces automatyzacji przepływu pracy lub innych aplikacji, możesz wywołać model przy użyciu prostego interfejsu API REST. Tylko pięć formularzy dokumentów (lub jeden pusty formularz i dwie formy wypełniane) są potrzebne, więc można uzyskać wyniki, szybko, dokładnie i być dostosowane do określonej zawartości. Niezbędne jest nie mocno ręcznej interwencji lub wiele różnych danych do analizy wiedzę. I nie wymaga danych etykietowania lub adnotacji danych.
 
 |Funkcja|Funkcje|
 |-|-|

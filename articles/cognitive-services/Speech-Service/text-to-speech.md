@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c5f7b0b739e9311e2527e63db7279d2075f0f1ff
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: da7259585ad66ac9b58131ce834d82e7b3d4bcf2
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341279"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466959"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
@@ -24,7 +24,7 @@ Zamiana tekstu na mowę, z usług przetwarzania mowy platformy Azure to usługa,
 Technologia zamiany tekstu na mowę umożliwia twórcom zawartości korzystaj z użytkowników na różne sposoby. Zamiana tekstu na mowę można poprawić dostępność, udostępniając użytkownikom możliwość interakcji z zawartością komputerowi. Czy użytkownik ma wzroku niepełnosprawności uczenia, wymaga informacji o nawigacji podczas kierowania, zamiany tekstu na mowę można ulepszyć istniejące. Zamiana tekstu na mowę jest także cenne dodatek dla programu Boty głosu i asystentów wirtualnego.
 
 
-Dzięki wykorzystaniu mowy syntezy Markup Language (SSML), język znaczników oparty na formacie XML, deweloperzy korzystający z tekstu na mowę usługi można określić sposób wprowadzania tekstu jest konwertowana na syntezatora mowy. Za pomocą SSML można dostosować pomysłu, wymowa, wypowiedzi szybkości, woluminów i nie tylko. Aby uzyskać więcej informacji dotyczących, zobacz [SSML](#speech-synthesis-markup-language-ssml).
+Dzięki wykorzystaniu mowy syntezy Markup Language (SSML), język znaczników oparty na formacie XML, deweloperzy korzystający z tekstu na mowę usługi można określić sposób wprowadzania tekstu jest konwertowana na syntezatora mowy. Za pomocą SSML można dostosować pomysłu, wymowa, wypowiedzi szybkości, woluminów i nie tylko. Aby uzyskać więcej informacji, zobacz [SSML](#speech-synthesis-markup-language-ssml).
 
 ### <a name="standard-voices"></a>Standardowa głosów
 
@@ -70,7 +70,7 @@ Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Konwertuj tekst na mowę. | Tak | Tak |
+| Konwertuj tekst na mowę. | Yes | Yes |
 | Przekaż zestawów danych dostosowywania głosu. | Nie | Tak\* |
 | Tworzenie i zarządzanie modelami czcionek głosowych. | Nie | Tak\* |
 | Tworzenie i zarządzanie wdrożeniami czcionek głosowych. | Nie | Tak\* |
@@ -87,7 +87,10 @@ Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamian
 
 | Przewodnik Szybki Start (SDK) | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
+| [C#, .NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, Aparatu unity](quickstart-text-to-speech-csharp-unity.md) | Windows i Android | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref) |
 | [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Przeglądaj](https://aka.ms/csspeech/cppref) |
 

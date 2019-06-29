@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 518f1048224a97943756c5b51b83cd509f82e11e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1ad618e9eb70fd75f433030584c0f6538532928f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072496"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466989"
 ---
 # <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
@@ -73,6 +73,20 @@ Dostępne regiony dla **rozpoznawanie intencji** za pośrednictwem zestawu SDK m
  Ameryka Południowa | Brazylia Południowa | `brazilsouth`
 
 To jest podzbiorem publikowania regiony obsługiwane przez [Language Understanding Intelligent service (LUIS)](/azure/cognitive-services/luis/luis-reference-regions).
+
+### <a name="voice-first-virtual-assistants"></a>Wirtualnych asystentów głosowych pierwszy
+
+[Zestaw SDK rozpoznawania mowy](speech-sdk.md) obsługuje **głosu pierwszego wirtualnego Asystenta** możliwości w tych regionach:
+
+Region | Parametr zestaw SDK rozpoznawania mowy
+-------|---------------------
+Zachodnie stany USA | `westus`
+Zachodnie stany USA 2 | `westus2`
+Wschodnie stany USA | `eastus`
+Wschodnie stany USA 2 | `eastus2`
+Europa Zachodnia | `westeurope`
+Europa Północna | `northeurope`
+Azja Południowo-Wschodnia | `southeastasia`
 
 ## <a name="rest-apis"></a>Interfejsy API REST
 

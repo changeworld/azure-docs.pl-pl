@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 06cc5509598cb6227a64e2cf375a5686c89312eb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6de5711ca977612f01943f6aaf2c9d7061116090
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163678"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435931"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań usług Azure Cognitive Services
 
@@ -28,7 +28,7 @@ Każde żądanie do usługi Azure Cognitive Service musi zawierać nagłówek uw
 
 Zanim dokonasz, żądania, potrzebujesz konta platformy Azure i subskrypcja usługi Azure Cognitive Services. Jeśli masz już konto, przejdź dalej, a następnie przejdź do następnej sekcji. Jeśli nie masz konta, mamy wskazówki ułatwiające konfigurowanie w ciągu kilku minut: [Tworzenie konta usług Cognitive Services dla platformy Azure](cognitive-services-apis-create-account.md).
 
-Możesz uzyskać klucz subskrypcji z [witryny Azure portal](cognitive-services-apis-create-account.md#access-your-resource) po utworzeniu konta lub aktywowania [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/my-apis).
+Możesz uzyskać klucz subskrypcji z [witryny Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-subscription) po utworzeniu konta lub aktywowania [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/my-apis).
 
 ## <a name="authentication-headers"></a>Nagłówki uwierzytelniania
 

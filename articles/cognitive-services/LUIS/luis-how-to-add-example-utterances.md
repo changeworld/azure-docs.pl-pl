@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 8c7476a82df75d8ba653a2a8e6c0f9f557b53c42
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: dd8ed146c507d8d39ba99c6573321ee80bc891c9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341870"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442573"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Dodawanie jednostki do przykładu wypowiedzi 
 
 Przykład wypowiedzi są przykładami tekst pytania użytkownika lub poleceń. Do nauki Language Understanding (LUIS), musisz dodać [wypowiedzi przykład](luis-concept-utterance.md) do [intencji](luis-concept-intent.md).
 
-Zazwyczaj dodajesz wypowiedź przykład do intencji najpierw, a następnie tworzyć jednostki i etykiety wypowiedzi na stronie opcji. Jeśli czy raczej najpierw utworzyć jednostki, zobacz [Dodaj jednostki](luis-how-to-add-entities.md).
+Zazwyczaj wypowiedź przykład możesz dodać do pierwszego elementu intent, a następnie tworzyć jednostki i etykiety wypowiedzi na **intencji** strony. Jeśli czy raczej najpierw utworzyć jednostki, zobacz [Dodaj jednostki](luis-how-to-add-entities.md).
 
 ## <a name="marking-entities-in-example-utterances"></a>Oznaczanie jednostek w przykładzie wypowiedzi
 
@@ -32,7 +32,7 @@ Niektórych typów jednostek, takich jak wstępnie utworzonych jednostek i obiek
 
 ## <a name="add-a-simple-entity"></a>Dodaj jednostkę prosty
 
-Poniższa procedura służy do tworzenia i tag jednostki niestandardowej w ramach następujących wypowiedź na stronie opcji:
+W poniższej procedurze utworzysz i tagiem jednostki niestandardowej w ramach następujących wypowiedź na **intencji** strony:
 
 ```text
 Are there any SQL server jobs?
@@ -65,9 +65,9 @@ Wykaz działu firmy mogą mieć znormalizowane wartości: `Accounting` i `Human 
 
     Można dodawać więcej elementów listy lub więcej elementów synonimy etykietowania innych wypowiedzi lub edytowania jednostek z **jednostek** w nawigacji po lewej stronie. [Edytowanie](luis-how-to-add-entities.md#add-list-entities) jednostek oferuje opcje wprowadzania dodatkowych elementów z odpowiadającego synonimy lub importowania listy. 
 
-## <a name="add-composite-entity"></a>Dodawanie jednostki złożonej
+## <a name="add-a-composite-entity"></a>Dodaj jednostkę złożone
 
-Złożone jednostki są tworzone na podstawie istniejących **jednostek** do obiektu nadrzędnego. 
+Złożone jednostki są tworzone na podstawie istniejących **jednostek** w celu utworzenia obiektu nadrzędnego. 
 
 Zakładając, że wypowiedź `Does John Smith work in Seattle?`, złożonego wypowiedź może zwrócić informacje o jednostce o nazwie pracowników `John Smith`i lokalizację `Seattle` w jednostce złożone. Jednostki podrzędne musi już istnieć w aplikacji i oznaczane w wypowiedź przykład przed utworzeniem jednostki złożonego.
 
@@ -131,15 +131,15 @@ Na przykład wypowiedzi można wykonać akcje, jako wybraną grupę lub jako poj
 
 ### <a name="remove-entity-labels-from-utterances"></a>Usuń jednostki etykiety wypowiedzi
 
-Usuń z etykiety maszyny do opanowania jednostki, z wypowiedź na stronie opcji. Jeśli jednostka nie jest maszyny do opanowania, nie można usunąć z wypowiedź. Jeśli musisz usunąć jednostka przedstawiono maszyny z wypowiedź musisz usunąć jednostkę z całej aplikacji. 
+Usuń z etykiety maszyny do opanowania jednostki, z wypowiedź na stronie intencji. Jeśli jednostka nie jest maszyny do opanowania, nie można usunąć z wypowiedź. Jeśli musisz usunąć jednostka przedstawiono maszyny z wypowiedź musisz usunąć jednostkę z całej aplikacji. 
 
 Aby usunąć etykietę maszyny do opanowania jednostki wypowiedź, wybrać jednostkę wypowiedź. Następnie wybierz pozycję **Usuń etykietę** w wyświetlonym polu listy rozwijanej jednostki.
 
-### <a name="add-prebuilt-entity-label"></a>Dodaj etykietę wstępnie utworzone jednostki
+### <a name="add-a-prebuilt-entity-label"></a>Dodaj etykietę wstępnie utworzone jednostki
 
 Po dodaniu ze wstępnie utworzonych jednostek z aplikacją usługi LUIS, nie trzeba wypowiedzi tagu z tymi jednostkami. Aby dowiedzieć się więcej na temat wstępnie utworzonych jednostek i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
-### <a name="add-regular-expression-entity-label"></a>Dodaj etykietę jednostki wyrażeń regularnych
+### <a name="add-a-regular-expression-entity-label"></a>Dodaj etykietę jednostki wyrażeń regularnych
 
 Jeśli dodasz jednostek wyrażenia regularnego z aplikacją usługi LUIS, nie trzeba wypowiedzi tagu z tymi jednostkami. Aby dowiedzieć się więcej na temat jednostek wyrażenia regularnego i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
@@ -149,7 +149,7 @@ Jeśli dodasz jednostek wyrażenia regularnego z aplikacją usługi LUIS, nie tr
 Zobacz [Dodaj wzorca od istniejących wypowiedź przeznaczenie lub jednostki strony](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
 
-### <a name="add-patternany-entity"></a>Dodaj jednostkę pattern.any
+### <a name="add-a-patternany-entity"></a>Dodaj jednostkę pattern.any
 
 Jeśli dodasz jednostek pattern.any z aplikacją usługi LUIS nie etykiety wypowiedzi z tymi jednostkami. Tylko są prawidłowe we wzorcach. Aby dowiedzieć się więcej na temat jednostek pattern.any i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities).
 
@@ -159,4 +159,4 @@ Po Dodawanie, edytowanie lub usuwanie wypowiedzi, [szkolenie](luis-how-to-train.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po etykietowanie wypowiedzi w Twoje intencje, możesz teraz utworzyć [złożonego jednostki](luis-how-to-add-entities.md).
+Po etykietowania wypowiedzi w swojej **intencji**, można teraz tworzyć [złożonego jednostki](luis-how-to-add-entities.md).

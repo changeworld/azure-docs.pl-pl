@@ -2,19 +2,19 @@
 title: Jak wyszukiwanie, edytowanie i usuwanie projektu — niestandardowe w usłudze Translator
 titleSuffix: Azure Cognitive Services
 description: Niestandardowe w usłudze Translator udostępnia różne sposoby zarządzania projektami w wydajny sposób. Możesz tworzyć wiele projektów, wyszukiwanie na podstawie kryteriów, Edytuj swoje projekty. Usunięcie projektu jest również możliwe w niestandardowych w usłudze Translator.
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 0e3397151d2f88e0e55b9526b3c41de19c019a6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a19feb76b5f5e65f891dc9f4e9dbfbd642d15b6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66382543"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447938"
 ---
 # <a name="search-edit-and-delete-projects"></a>Wyszukiwanie, edytowanie i usuwanie projektów
 

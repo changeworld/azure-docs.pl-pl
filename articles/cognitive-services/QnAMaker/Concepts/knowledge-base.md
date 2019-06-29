@@ -3,20 +3,20 @@ title: Baza wiedzy — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Usługa QnA Maker wiedzy składa się z zestaw par pytanie/odpowiedź (pytań i odpowiedzi) i opcjonalne metadane skojarzone z każdej pary pytań i odpowiedzi.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
-ms.author: tulasim
+ms.date: 06/25/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9562a1686c4de4f4e2ef57a7d91bbf18dce63ef
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61379363"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447600"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co to jest usługa QnA Maker wiedzy?
 
@@ -37,6 +37,28 @@ Pojedynczy QnA, reprezentowany przez identyfikator numeryczny pytań i odpowiedz
 Po sformatowanej zawartości jest pozyskiwania w bazie wiedzy, narzędzie QnA Maker próbuje przekonwertować zawartości markdown. Odczyt [to](https://aka.ms/qnamaker-docs-markdown-support) blog, aby zrozumieć języku znaczników markdown formatuje zrozumiały dla większości klientów rozmowy.
 
 Pola metadanych składają się z pary klucz wartość oddzielone dwukropkiem **(produkt: strzępiarka)** . Klucz i wartość musi być tylko tekst. Klucza metadanych nie może zawierać spacji. Metadane obsługuje tylko jedną wartość na klucz.
+
+## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Jak usługa QnA Maker przetwarza zapytania użytkownika, aby wybrać najlepszą odpowiedź
+
+Uczony i [opublikowane](/quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker wiedzy odbierze zapytanie użytkownika, z robota lub innych aplikacji klienckiej w [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api). Na poniższym diagramie przedstawiono proces po otrzymaniu kwerendy użytkownika.
+
+![Proces klasyfikacji dla zapytania użytkownika](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+
+W poniższej tabeli objaśniono proces:
+
+|Krok|Przeznaczenie|
+|--|--|
+|1|Aplikacja kliencka wysyła zapytanie użytkownika, aby [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api).|
+|2|Usługa Qna Maker przetwarzania wstępnego zapytanie użytkownika o wykrywanie języka, spellers i moduły dzielenia wyrazów.|
+|3|Tego przetwarzania wstępnego jest pobierana do zmiany zapytania użytkownika w celu uzyskania najlepszych wyników wyszukiwania.|
+|4|Ta zmienionego zapytanie jest wysyłane do indeksu wyszukiwania platformy Azure, odbieranie `top` liczba wyników. Jeśli nie ma poprawną odpowiedź tych wyników, należy zwiększyć wartość `top` nieco. Zazwyczaj wartość 10 `top` działa w 90% firm z zapytania.|
+|5|Usługa QnA Maker ma zastosowanie zaawansowanych cechowania w celu określenia poprawności pobrano wyniki usługi Azure Search dla zapytania użytkownika. |
+|6|Uczony model oceniania używa wynik funkcji, w kroku 5, pozycji wyniki wyszukiwania platformy Azure.|
+|7|Nowe wyniki są zwracane do aplikacji klienckiej w kolejności rangi.|
+|||
+
+Funkcje używane obejmują, ale nie są ograniczone do poziomu word semantykę, termin poziomu ważności w głównej części i głębokiego nauczony modeli semantycznych na ustalenie podobieństwa i istotność między dwa ciągi tekstowe.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

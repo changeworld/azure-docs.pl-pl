@@ -2,19 +2,19 @@
 title: Szczegóły dokumentu — niestandardowe w usłudze Translator
 titleSuffix: Azure Cognitive Services
 description: Na stronie listy dokumentów zawiera 10 pierwszych dokumentu w obszarze roboczym. Dla każdego z dokumentów wyświetla nazwę, parowania, typu, języka, sygnaturę czasową przekazywania i adres e-mail użytkownika, który przekazywane dokumentu.
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 0995d65dc9723922a691ff31a422dfa55b35c82c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 267d60c2e9941c66ab128f68bd7aaf1cc54fedd9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384075"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442504"
 ---
 # <a name="view-document-details"></a>Wyświetlanie szczegółów dokumentu
 

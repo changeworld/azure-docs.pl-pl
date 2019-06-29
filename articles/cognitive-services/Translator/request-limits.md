@@ -3,19 +3,19 @@ title: Limity — interfejs API tekstu usługi Translator żądań
 titleSuffix: Azure Cognitive Services
 description: W tym artykule wymieniono limity żądań do interfejsu API tłumaczenia tekstu. Opłaty są naliczane na podstawie liczby znaków, nie żądania częstotliwość limit 5000 znaków na żądanie. Limity znaków są subskrypcji, za pomocą F0 ograniczona do 2 miliony znaków na godzinę.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: d04677362e0ba3ace59d55ede9bd6241f17130e9
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.author: swmachan
+ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269227"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435028"
 ---
 # <a name="request-limits-for-translator-text"></a>Limity żądań dla tekstu w usłudze Translator
 
@@ -38,7 +38,11 @@ Następujące tabeli listy tablicy znaków i element limity dla każdej operacji
 
 ## <a name="character-limits-per-hour"></a>Limity znak na godzinę
 
-Limit znaków na godzinę jest oparty na warstwę subskrypcji tekstu usługi Translator. Limit godzinny powinny być wykorzystywane równomiernie w ciągu godziny. Jeśli dotrzeć do lub przekroczenie limitów lub wysłać zbyt duży, jaka część kwoty w krótkim czasie, prawdopodobnie otrzymasz poza limit przydziału odpowiedzi. Nie ma ograniczeń na współbieżnych żądań.
+Limit znaków na godzinę jest oparty na warstwę subskrypcji tekstu usługi Translator. 
+
+Limit godzinny powinny być wykorzystywane równomiernie w ciągu godziny. Na przykład na granicy F0 warstwy 2 miliony znaków na godzinę znaków powinny być używane szybciej niż około 33,300 znaków na minutę przesuwającego się okna (2 miliony znaków podzielona przez 60 minut).
+
+Jeśli dotrzeć do lub przekroczenie limitów lub wysłać zbyt duży, jaka część kwoty w krótkim czasie, prawdopodobnie otrzymasz poza limit przydziału odpowiedzi. Nie ma ograniczeń na współbieżnych żądań.
 
 | Warstwa | Maksymalna liczba znaków |
 |------|-----------------|
