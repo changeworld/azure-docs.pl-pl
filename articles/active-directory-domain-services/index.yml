@@ -5,8 +5,8 @@ metadata:
   title: Dokumentacja usługi Azure AD Domain Services
   description: 'Dowiedz się, jak usługi Active Directory Domain Services umożliwiają przyłączanie maszyn wirtualnych platformy Azure do domeny bez stosowania kontrolerów domen. W samouczkach i innych dokumentach pokazano, jak zarządzać maszynami wirtualnymi za pomocą zasad grupy.'
   keywords: 'Azure AD, Azure, przyłączanie do domeny, zasady grupy, LDAP, Kerberos, kontroler domeny, migracja typu „lift and shift”'
-  author: MikeStephens-MS
-  ms.author: mstephen
+  author: iainfoulds
+  ms.author: iainfou
   manager: daveba
   ms.date: 05/22/2019
   ms.topic: landing-page

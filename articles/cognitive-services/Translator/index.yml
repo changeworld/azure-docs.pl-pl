@@ -5,14 +5,14 @@ metadata:
   title: 'Dokumentacja tłumaczenia tekstu w usłudze Translator — przewodniki Szybki start, samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs'
   description: 'Dowiedz się, jak tłumaczyć tekst w wielu językach za pomocą tłumaczenia tekstu w usłudze Translator.'
   services: cognitive-services
-  author: v-pawal
+  author: swmachan
   manager: Chris.Wendt
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 06/04/2019
-  ms.author: v-jansko
+  ms.author: swmachan
 abstract:
   description: 'Tłumaczenie tekstu w usłudze Translator to chmurowa usługa tłumaczenia maszynowego umożliwiająca tłumaczenie tekstu niemal w czasie rzeczywistym za pomocą prostego wywołania interfejsu API REST. Interfejs API korzysta z nowoczesnej technologii neuronowego tłumaczenia maszynowego oraz udostępnia technologię statystycznego tłumaczenia maszynowego. Custom Translator to rozszerzenie interfejsu API tłumaczenia tekstu w usłudze Translator, które pozwala na tworzenie neuronowych systemów tłumaczenia. Dostosowany system tłumaczenia umożliwia tłumaczenie tekstu za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator lub usług <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft Speech Services</a>. Lista obsługiwanych języków (dla neuronowego i statystycznego tłumaczenia maszynowego) jest dostępna na stronie <a href="languages.md">Obsługiwane języki</a>.'
 sections:

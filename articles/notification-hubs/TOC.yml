@@ -50,10 +50,6 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: Wypychanie powiadomień zlokalizowanych do urządzeń z systemem iOS
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Kindle
-      items:
-        - name: Wypychanie powiadomień przy użyciu usługi Amazon Device Messaging
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
     - name: Windows Phone
       items:
         - name: Wypychanie powiadomień do aplikacji
@@ -129,8 +125,6 @@
           href: configure-windows-push-notification-service.md
         - name: Konfigurowanie usługi powiadomień push firmy Microsoft
           href: configure-microsoft-push-notification-service.md
-        - name: Konfigurowanie komunikatów urządzeń z systemem Android
-          href: configure-android-device-messaging.md
         - name: Konfigurowanie usługi Baidu Cloud Push
           href: configure-baidu-cloud-push.md
     - name: Rejestrowanie za pomocą zaplecza aplikacji

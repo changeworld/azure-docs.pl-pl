@@ -94,7 +94,7 @@
             - name: Program R Server w usłudze HDInsight
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: Wprowadzenie do korzystania z oprogramowania R Server w usłudze HDInsight
-              href: /azure/hdinsight/r-server/r-server-get-started?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
         - name: Obszar roboczy usługi Azure Machine Learning
           href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: Analizowanie potrzeb biznesowych

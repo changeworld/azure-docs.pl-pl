@@ -14,8 +14,6 @@
   items:
     - name: Planowanie klastrów ESP
       href: apache-domain-joined-architecture.md
-    - name: Tworzenie klastrów ESP i synchronizowanie ich ze środowiskiem lokalnym
-      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
     - name: Konfigurowanie klastrów ESP za pomocą usługi Azure AD DS
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Synchronizowanie użytkowników usługi Azure AD z klastrem usługi HDInsight
@@ -30,26 +28,30 @@
       href: ../spark/apache-spark-eclipse-tool-plugin.md
     - name: Używanie technologii Apache Oozie w klastrach ESP
       href: hdinsight-use-oozie-domain-joined-clusters.md
-- name: Zabezpieczanie danych
-  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-- name: Dostęp do sieci
+    - name: Zabezpieczanie danych
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+    - name: Dostęp do sieci
+      items:
+        - name: Usługa HDInsight w sieci wirtualnej platformy Azure
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: Łączenie usługi HDInsight z siecią lokalną
+          href: ../connect-on-premises-network.md
+        - name: Tworzenie klastra Apache HBase w sieci wirtualnej platformy Azure
+          href: ../hbase/apache-hbase-provision-vnet.md
+        - name: Replikacja klastra Apache HBase w sieci wirtualnej platformy Azure
+          href: ../hbase/apache-hbase-replication.md
+    - name: Monitorowanie przy użyciu dzienników usługi Azure Monitor
+      items:
+        - name: Korzystanie z dzienników usługi Azure Monitor
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+        - name: Używanie zapytań z dziennikami usługi Azure Monitor
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+        - name: Monitorowanie wydajności klastra
+          href: ../hdinsight-key-scenarios-to-monitor.md
+- name: Instrukcje
   items:
-    - name: Usługa HDInsight w sieci wirtualnej platformy Azure
-      href: ../hdinsight-extend-hadoop-virtual-network.md
-    - name: Łączenie usługi HDInsight z siecią lokalną
-      href: ../connect-on-premises-network.md
-    - name: Tworzenie klastra Apache HBase w sieci wirtualnej platformy Azure
-      href: ../hbase/apache-hbase-provision-vnet.md
-    - name: Replikacja klastra Apache HBase w sieci wirtualnej platformy Azure
-      href: ../hbase/apache-hbase-replication.md
-- name: Monitorowanie przy użyciu dzienników usługi Azure Monitor
-  items:
-    - name: Korzystanie z dzienników usługi Azure Monitor
-      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - name: Używanie zapytań z dziennikami usługi Azure Monitor
-      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-    - name: Monitorowanie wydajności klastra
-      href: ../hdinsight-key-scenarios-to-monitor.md
+    - name: Tworzenie klastrów ESP i synchronizowanie ich ze środowiskiem lokalnym
+      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
 - name: Dokumentacja
   items:
     - name: Przykłady kodu

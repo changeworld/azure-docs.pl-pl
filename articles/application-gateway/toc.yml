@@ -96,6 +96,7 @@
         - name: Interfejs wiersza polecenia platformy Azure
           href: tutorial-manage-web-traffic-cli.md
         - name: Szablon
+          displayName: 'ARM, Resource Manager, template'
           href: create-vmss-template.md
     - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
       items:
@@ -241,6 +242,8 @@
       href: /rest/api/applicationgateway
     - name: Azure Resource Manager
       href: ../azure-resource-manager/resource-group-overview.md
+    - name: Szablon usługi Resource Manager
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
 - name: Zasoby
   items:
     - name: Tworzenie szablonów

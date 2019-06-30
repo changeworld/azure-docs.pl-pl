@@ -30,10 +30,6 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: Tworzenie aplikacji platformy Apache Spark w programie IntelliJ
       href: apache-spark-create-standalone-application.md
-    - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu VS Code
-      href: ../hdinsight-for-vscode.md
-    - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
-      href: ../hdinsight-cluster-availability.md
 - name: Przykłady
   items:
     - name: Przykłady dla platformy .NET
@@ -52,6 +48,8 @@
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
+      href: ../hdinsight-cluster-availability.md
 - name: Instrukcje
   items:
     - name: Korzystanie z magazynu klastra
@@ -158,8 +156,6 @@
               href: ../hdinsight-hadoop-customize-cluster-linux.md
             - name: Opracowywanie akcji skryptu
               href: ../hdinsight-hadoop-script-actions-linux.md
-            - name: Instalowanie i używanie środowiska Presto
-              href: ../hdinsight-hadoop-install-presto.md
             - name: Dodawanie bibliotek technologii Apache Hive
               href: ../hdinsight-hadoop-add-hive-libraries.md
             - name: Korzystanie z systemu Apache Giraph

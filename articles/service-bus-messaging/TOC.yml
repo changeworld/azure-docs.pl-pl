@@ -19,6 +19,8 @@
               href: service-bus-quickstart-powershell.md
             - name: Interfejs wiersza polecenia platformy Azure
               href: service-bus-quickstart-cli.md
+            - name: Szablon usługi Azure Resource Manager
+              href: service-bus-resource-manager-namespace-queue.md
         - name: Wysyłanie i odbieranie komunikatów
           items:
             - name: .NET
@@ -40,7 +42,11 @@
     - name: Tematy i subskrypcje usługi Service Bus
       items:
         - name: Tworzenie tematów i subskrypcji
-          href: service-bus-quickstart-topics-subscriptions-portal.md
+          items:
+            - name: Portal Azure
+              href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Szablon usługi Azure Resource Manager
+              href: service-bus-resource-manager-namespace-topic.md
         - name: Publikowanie i subskrybowanie komunikatów
           items:
             - name: .NET
@@ -187,10 +193,6 @@
           items:
             - name: Tworzenie przestrzeni nazw
               href: service-bus-resource-manager-namespace.md
-            - name: Tworzenie przestrzeni nazw i kolejki
-              href: service-bus-resource-manager-namespace-queue.md
-            - name: Tworzenie przestrzeni nazw z tematem i subskrypcją
-              href: service-bus-resource-manager-namespace-topic.md
             - name: Tworzenie reguły autoryzacji dla przestrzeni nazw i kolejki
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Tworzenie przestrzeni nazw z tematem, subskrypcją i regułą'
