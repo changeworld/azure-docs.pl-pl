@@ -62,11 +62,11 @@ Korzystając z interfejsu API REST lub Menedżera zasobów szablonu, obejmują e
 
 | Pole | Obowiązkowe? | Opis |
 | --- | --- | --- |
-| Operacja |tak |Wartość musi być "Skalowanie" |
+| operation |tak |Wartość musi być "Skalowanie" |
 | sendToSubscriptionAdministrator |tak |musi mieć wartość "true" lub "false" |
 | sendToSubscriptionCoAdministrators |tak |musi mieć wartość "true" lub "false" |
 | customEmails |tak |wartość może być null [] lub tablicę ciągów, wiadomości e-mail |
-| Elementy Webhook |tak |wartość może być zerowy lub nieprawidłowy identyfikator Uri |
+| webhooks |tak |wartość może być zerowy lub nieprawidłowy identyfikator Uri |
 | serviceUri |tak |Nieprawidłowy identyfikator Uri protokołu https |
 | properties |tak |Wartość musi być pusta {} lub może zawierać pary klucz wartość |
 
@@ -106,19 +106,19 @@ Po wygenerowaniu powiadomienia skalowania automatycznego, następujące metadane
 | Pole | Obowiązkowe? | Opis |
 | --- | --- | --- |
 | status |tak |Stan, który wskazuje, że zostało wygenerowane akcji skalowania automatycznego |
-| Operacja |tak |Zwiększanie wystąpień będzie "Limit skalowania" i dla spadek wystąpień będzie "W skali" |
-| Kontekst |tak |Kontekst akcji skalowania automatycznego |
+| operation |tak |Zwiększanie wystąpień będzie "Limit skalowania" i dla spadek wystąpień będzie "W skali" |
+| context |tak |Kontekst akcji skalowania automatycznego |
 | timestamp |tak |Sygnaturę czasową, gdy akcja skalowania automatycznego została wyzwolona |
 | id |Tak |Identyfikator Menedżera zasobów Ustawienia skalowania automatycznego |
 | name |Yes |Nazwa ustawienia automatycznego skalowania |
-| Szczegółowe informacje |Yes |Opis akcji, która miała usługi skalowania automatycznego i zmianę liczby wystąpień |
+| details informacje |Yes |Opis akcji, która miała usługi skalowania automatycznego i zmianę liczby wystąpień |
 | subscriptionId |Tak |Identyfikator zasobu docelowego, który wykonywane jest skalowanie subskrypcji |
 | resourceGroupName |Yes |Nazwa grupy zasobów zasobu docelowego, który wykonywane jest skalowanie |
 | resourceName |Tak |Nazwa zasobu docelowego, który wykonywane jest skalowanie |
-| Typ zasobu |Yes |Trzy obsługiwane wartości: "microsoft.classiccompute/domainnames/slots/roles" - role usługi w chmurze, "microsoft.compute/virtualmachinescalesets" — Virtual Machine Scale Sets i "Microsoft.Web/serverfarms" - aplikacji sieci Web |
+| resourceType |Yes |Trzy obsługiwane wartości: "microsoft.classiccompute/domainnames/slots/roles" - role usługi w chmurze, "microsoft.compute/virtualmachinescalesets" — Virtual Machine Scale Sets i "Microsoft.Web/serverfarms" - aplikacji sieci Web |
 | resourceId |Tak |Identyfikator zasobu docelowego, który wykonywane jest skalowanie usługi Resource Manager |
 | portalLink |Yes |Link do portalu Azure na stronie Podsumowanie zasób docelowy |
 | oldCapacity |Tak |Bieżąca (stare) liczba wystąpień podczas automatycznego skalowania trwało akcji skalowania |
 | newCapacity |Tak |Skalowanie automatyczne skalowanie zasobów do nowej liczba wystąpień |
-| Właściwości |Nie |Opcjonalny. Zestaw < klucz, wartość > pary (na przykład, Dictionary < String, String >). Pole właściwości jest opcjonalne. W przypadku niestandardowego interfejsu użytkownika lub przepływu pracy aplikacji logiki można wprowadzić klucze i wartości, które można przekazać za pomocą ładunku. Alternatywny sposób, aby przekazywać niestandardowe właściwości wychodzące wywołanie elementu webhook jest użycie elementu webhook identyfikator URI sam (jako parametry zapytania) |
+| properties |Nie |Opcjonalny. Zestaw < klucz, wartość > pary (na przykład, Dictionary < String, String >). Pole właściwości jest opcjonalne. W przypadku niestandardowego interfejsu użytkownika lub przepływu pracy aplikacji logiki można wprowadzić klucze i wartości, które można przekazać za pomocą ładunku. Alternatywny sposób, aby przekazywać niestandardowe właściwości wychodzące wywołanie elementu webhook jest użycie elementu webhook identyfikator URI sam (jako parametry zapytania) |
 
