@@ -22,6 +22,8 @@
       items:
         - name: Zarządzanie obciążeniami lokalnymi w chmurze
           href: cloud-governed-management-for-on-premises.md
+        - name: Cztery kroki pozwalające utworzyć silną tożsamość
+          href: four-steps.md
     - name: Programy Azure AD Connect i Connect Health
       items:
         - name: Co to są Azure AD Connect Health i Connect Health?
@@ -68,6 +70,8 @@
       items:
         - name: Co to jest program Azure AD Connect Sync?
           href: how-to-connect-sync-whatis.md
+        - name: Konto usługi Azure ADSync
+          href: concept-adsync-service-account.md
         - name: Funkcje programu Azure AD Connect Sync
           href: how-to-connect-syncservice-features.md
         - name: Co to jest menedżer usługi programu Azure AD Connect Sync?

@@ -31,8 +31,10 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: Przewodniki Szybki start
   items:
-    - name: Tworzenie konta
+    - name: Tworzenie konta przy użyciu witryny Azure Portal
       href: cognitive-services-apis-create-account.md
+    - name: Tworzenie konta przy użyciu interfejsu wiersza polecenia platformy Azure
+      href: cognitive-services-apis-create-account-cli.md
     - name: Authentication
       href: authentication.md
     - name: Rejestrowanie diagnostyczne

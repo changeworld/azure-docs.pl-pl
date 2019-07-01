@@ -1,0 +1,41 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja urządzenia Azure FXT Edge Filer
+metadata:
+  title: Dokumentacja urządzenia Azure FXT Edge Filer
+  description: Używanie urządzenia Azure FXT Edge Filer jako warstwy buforowania dla zadań obliczeń o wysokiej wydajności (HPC) wymagających pod względem odczytu
+  author: ekpgh
+  ms.service: fxt-edge-filer
+  ms.topic: landing-page
+  ms.date: 06/20/2019
+  ms.author: v-erkell
+abstract:
+  description: 'Hybrydowa pamięć podręczna magazynu urządzenia Azure FXT Edge Filer to sprzętowy i programowy system hybrydowy, który przyspiesza dostęp do danych opartych na plikach przepływów pracy obliczeń o wysokiej wydajności (HPC) wymagających pod względem odczytu. Klaster obejmujący co najmniej trzy urządzenia Azure FXT Edge Filer może zwiększyć wydajność magazynu lokalnych systemów NAS (NetApp lub Dell EMC Isilon), magazynu w chmurze lub kombinacji rozwiązań.'
+sections:
+  - title: Samouczki krok po kroku
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-install">Instalowanie urządzenia Azure FXT Edge Filer</a>
+          - html: <a href="fxt-network-power">Tworzenie połączeń sieciowych urządzenia Azure FXT Edge Filer</a>
+          - html: <a href="fxt-node-password">Ustawianie haseł głównych w węzłach sprzętu</a>
+          - html: <a href="fxt-cluster-create">Tworzenie hybrydowego klastra pamięci podręcznej magazynu</a>
+          - html: <a href="fxt-add-nodes">Dodawanie węzłów klastra</a>
+          - html: <a href="fxt-add-storage">Dodawanie magazynu zaplecza i konfigurowanie wirtualnej przestrzeni nazw</a>
+          - html: <a href="fxt-configure-network">Konfigurowanie ustawień sieci klastrów</a>
+  - title: Przewodniki z instrukcjami
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-mount-clients">Łączenie klientów z klastrem urządzenia Azure FXT Edge Filer</a>
+          - html: <a href="fxt-monitor">Monitorowanie urządzenia Azure FXT Edge Filer</a>
+          - html: <a href="fxt-power-off">Bezpieczne wyłączanie zasilania węzła sprzętu</a>
+  - title: Zasoby
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-specs">Specyfikacje sprzętowe</a>
+          - html: <a href="fxt-additional-doc">Dodatkowa dokumentacja</a>

@@ -58,6 +58,12 @@
       href: cross-network-connectivity.md
     - name: Wspólne atrybuty zabezpieczeń platformy Azure
       href: expressroute-security-attributes.md
+    - name: Projektowanie na potrzeby wysokiej dostępności
+      href: designing-for-high-availability-with-expressroute.md
+    - name: Projektowanie po kątem odzyskiwania po awarii
+      items:
+        - name: Prywatna komunikacja równorzędna
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie i modyfikowanie obwodu

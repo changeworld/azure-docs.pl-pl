@@ -55,34 +55,22 @@ sections:
         className: cardsM
         columns: 1
         items:
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>W ramach samouczka przekazywany jest lokalny plik wideo, plik ten jest kodowany, po czym zakodowana zawartość jest przesyłana strumieniowo.<p/>'
+          - html: '<p>W ramach samouczka przekazywany jest lokalny plik wideo, plik ten jest kodowany, po czym zakodowana zawartość jest przesyłana strumieniowo.<p/>'
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: Kodowanie przekazanego pliku i strumieniowe przesyłanie wideo
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>W samouczku wyjaśniono, jak przygotować konfigurację pod kątem wydarzeń na żywo. Następnie pokazano, jak za pomocą platformy .NET utworzyć wydarzenie na żywo typu przekazywanego.</p>'
+          - html: '<p>W samouczku wyjaśniono, jak przygotować konfigurację pod kątem wydarzeń na żywo. Następnie pokazano, jak utworzyć wydarzenie na żywo typu przekazywanego.</p>'
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: Emisja na żywo
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>W tym samouczku przedstawiono sposób analizowania wideo za pomocą interfejsu Azure Media Services API.</p>
+          - html: <p>W tym samouczku przedstawiono sposób analizowania wideo za pomocą interfejsu Azure Media Services API.</p>
             href: /azure/media-services/latest/analyze-videos-tutorial-with-api
             title: Analizowanie filmu wideo
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Dowiedz się, jak skonfigurować interfejsy Media Services API i używać ich do dynamicznego szyfrowania zawartości algorytmem AES-128.</p>'
+          - html: '<p>Dowiedz się, jak skonfigurować interfejsy Media Services API i używać ich do dynamicznego szyfrowania zawartości algorytmem AES-128.</p>'
             href: /azure/media-services/latest/protect-with-aes128
             title: Dynamiczne szyfrowanie algorytmem AES-128
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Dowiedz się, jak skonfigurować interfejsy Media Services API do dynamicznego szyfrowanie zawartości z użyciem wielu mechanizmów zarządzanie prawami cyfrowymi (PlayReady, Widevine i FairPlay).</p>'
+          - html: '<p>Dowiedz się, jak skonfigurować interfejsy Media Services API do dynamicznego szyfrowanie zawartości z użyciem wielu mechanizmów zarządzanie prawami cyfrowymi (PlayReady, Widevine i FairPlay).</p>'
             href: /azure/media-services/latest/protect-with-drm
             title: Dynamiczne szyfrowanie z użyciem wielu mechanizmów zarządzania prawami cyfrowymi
-          - image:
-              src: media/index/rest.svg
-            html: '<p>W samouczku pokazano, jak zakodować plik zdalny na podstawie adresu URL i przesłać strumieniowo wideo.</p>'
+          - html: '<p>W samouczku pokazano, jak zakodować plik zdalny na podstawie adresu URL i przesłać strumieniowo wideo.</p>'
             href: /azure/media-services/latest/stream-files-tutorial-with-rest
             title: Kodowanie pliku zdalnego i strumieniowe przesyłanie wideo
   - title: Przykłady

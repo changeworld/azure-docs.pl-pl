@@ -17,6 +17,8 @@
               href: quickstarts/python-train-extract.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Tworzenie zestawu danych szkoleniowych
+      href: build-training-data-set.md
     - name: Korzystanie z kontenerów
       items:
         - name: Instalowanie i uruchamianie kontenerów

@@ -58,6 +58,8 @@
       href: 'https://aka.ms/adpricing'
     - name: Dostępność regionalna
       href: 'https://aka.ms/adregion'
+    - name: Zawartość wygenerowana przez użytkowników
+      href: user-generated-content.md
     - name: Dołączanie do grupy doradców ds. Narzędzia do wykrywania anomalii w usłudze Microsoft Teams
       href: 'https://aka.ms/adadvisorsjoin'
     - name: Referencyjna architektura rozwiązania

@@ -43,6 +43,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: Instalowanie i uruchamianie kontenerów
+          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
+            html: <p>Utwórz zestaw danych zoptymalizowany pod kątem trenowania modelu niestandardowego.</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Tworzenie zestawu danych szkoleniowych
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph

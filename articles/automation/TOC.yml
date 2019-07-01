@@ -4,36 +4,37 @@
   items:
     - name: Co to jest usługa Automation?
       href: automation-intro.md
-- name: Przewodniki Szybki start
-  expanded: true
+- name: Konto usługi Automation
   items:
     - name: Tworzenie konta usługi Automation
       href: automation-quickstart-create-account.md
-    - name: Tworzenie elementu runbook
-      href: automation-quickstart-create-runbook.md
-    - name: Tworzenie konfiguracji DSC
-      href: automation-quickstart-dsc-configuration.md
-      displayName: 'DSC, state configuration, config, node configuration, node'
-- name: Samouczki
+    - name: Tworzenie autonomicznego konta usługi Automation
+      href: automation-create-standalone-account.md
+    - name: Zarządzanie kontem Uruchom jako usługi Automation
+      href: manage-runas-account.md
+      displayName: certificate renewal
+    - name: Konfigurowanie uwierzytelniania za pomocą usług AWS
+      href: automation-config-aws-account.md
+    - name: Zarządzanie kontrolą dostępu opartą na rolach
+      href: automation-role-based-access-control.md
+      displayName: RBAC
+    - name: Przenoszenie konta usługi Automation do innej subskrypcji
+      href: how-to/move-account.md
+- name: Automatyzacja procesów
   items:
-    - name: Śledzenie zaktualizowanych plików przy użyciu zadań obserwatora
-      href: automation-watchers-tutorial.md
-      displayName: 'hybrid runbook worker, hybrid worker, trigger'
-    - name: Zarządzanie aktualizacjami maszyny wirtualnej
-      href: automation-tutorial-update-management.md
-      displayName: 'alert, patch'
-    - name: Dołączanie aktualizacji i śledzenia zmian za pomocą elementu runbook
-      href: automation-onboard-solutions.md
-    - name: Identyfikowanie oprogramowania w środowisku
-      href: automation-tutorial-installed-software.md
-      displayName: inventory
-    - name: Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej
-      href: automation-tutorial-troubleshoot-changes.md
-      displayName: inventory
-- name: Przewodniki z instrukcjami
-  items:
-    - name: Uruchamianie/zatrzymywanie maszyn wirtualnych po godzinach pracy
-      href: automation-solution-vm-management.md
+    - name: Omówienie hybrydowego procesu roboczego elementu Runbook
+      href: automation-hybrid-runbook-worker.md
+    - name: Pojęcia
+      items:
+        - name: Typy elementów Runbook
+          href: automation-runbook-types.md
+          displayName: 'graphical, python, powershell, powershell workflow'
+        - name: Uczenie się przepływu pracy programu PowerShell
+          href: automation-powershell-workflow.md
+    - name: Przewodniki Szybki start
+      items:
+        - name: Tworzenie elementu runbook
+          href: automation-quickstart-create-runbook.md
     - name: Dołączanie
       items:
         - name: Dołączanie wielu maszyn wirtualnych z portalu
@@ -42,55 +43,14 @@
           href: automation-onboard-solutions-from-vm.md
         - name: Dołączanie z konta usługi Automation
           href: automation-onboard-solutions-from-automation-account.md
-        - name: Mapowania regionów
-          href: how-to/region-mappings.md
-    - name: Zarządzanie aktualizacjami
-      items:
-        - name: Omówienie rozwiązania Update Management
-          href: automation-update-management.md
-          displayName: 'dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion'
-        - name: Zarządzanie aktualizacjami dla wielu maszyn wirtualnych
-          href: manage-update-multi.md
-        - name: Skrypty wstępne i końcowe
-          href: pre-post-scripts.md
-        - name: Migracja wdrożeń aktualizacji pakietu OMS na platformę Azure
-          href: migrate-oms-update-deployments.md
-        - name: Integracja programu SCCM z rozwiązaniem Update Management
-          href: oms-solution-updatemgmt-sccmintegration.md
-          displayName: Configuration Manager
-    - name: Śledzenie zmian
-      items:
-        - name: Omówienie rozwiązania Change Tracking
-          href: change-tracking.md
-          displayName: 'wildcard, recursion, environment variables, registry'
-        - name: Wyświetlanie zawartości śledzonych plików
-          href: change-tracking-file-contents.md
-          displayName: 'change tracking, hash'
-    - name: Spis
-      items:
-        - name: Zarządzanie maszyną wirtualną za pomocą kolekcji spisu
-          href: automation-vm-inventory.md
-    - name: Uwierzytelnianie i zabezpieczenia
-      items:
-        - name: Tworzenie autonomicznego konta usługi Automation
-          href: automation-create-standalone-account.md
-        - name: Zarządzanie kontem Uruchom jako usługi Automation
-          href: manage-runas-account.md
-          displayName: certificate renewal
-        - name: Konfigurowanie uwierzytelniania za pomocą usług AWS
-          href: automation-config-aws-account.md
-        - name: Zarządzanie kontrolą dostępu opartą na rolach
-          href: automation-role-based-access-control.md
-          displayName: RBAC
-    - name: Elementy Runbook
+    - name: Przewodniki z instrukcjami
       items:
         - name: Zarządzanie elementami runbook
           href: manage-runbooks.md
-        - name: Typy elementów Runbook
-          href: automation-runbook-types.md
-          displayName: 'graphical, python, powershell, powershell workflow'
         - name: Tworzenie elementów Runbook
           items:
+            - name: Tworzenie i importowanie elementów Runbook
+              href: automation-creating-importing-runbook.md
             - name: Graficzne elementy runbook
               href: automation-first-runbook-graphical.md
             - name: Element runbook programu PowerShell
@@ -108,55 +68,180 @@
               displayName: powershell
             - name: Edytowanie graficznych elementów Runbook
               href: automation-graphical-authoring-intro.md
-        - name: Uruchamianie elementu Runbook
-          href: start-runbooks.md
-        - name: Uruchamianie elementu runbook z poziomu elementu webhook
-          href: automation-webhooks.md
-        - name: Parametry wejściowe elementu Runbook
-          href: runbook-input-parameters.md
-          displayName: 'input,json'
-        - name: Obsługa błędów w graficznych elementach runbook
-          href: automation-runbook-graphical-error-handling.md
-        - name: Wykonywanie elementu runbook
-          href: automation-runbook-execution.md
-          displayName: 'fair share, activity log, job'
-        - name: Zarządzanie danymi usługi Azure Automation
-          href: automation-managing-data.md
-          displayName: backup
-        - name: Uczenie się przepływu pracy programu PowerShell
-          href: automation-powershell-workflow.md
-        - name: Podrzędne elementy Runbook
-          href: automation-child-runbooks.md
-        - name: Wynik uruchomienia elementu Runbook
-          href: automation-runbook-output-and-messages.md
-          displayName: 'message streams, progress records, preference'
-        - name: Integracja kontroli źródła
-          href: source-control-integration.md
-          displayName: 'github, vsts, azure devops, personal access token'
-        - name: Integracja kontroli źródła — starsza wersja
-          href: source-control-integration-legacy.md
-          displayname: github
-    - name: Hybrydowy proces roboczy elementu Runbook
+        - name: Uruchamianie elementów runbook
+          items:
+            - name: Testowanie elementu Runbook
+              href: automation-testing-runbook.md
+            - name: Uruchamianie elementu Runbook
+              href: automation-starting-a-runbook.md
+            - name: Uruchamianie elementu runbook z poziomu elementu webhook
+              href: automation-webhooks.md
+            - name: Konfigurowanie parametrów wejściowych elementu runbook
+              href: automation-runbook-input-parameters.md
+            - name: Podrzędne elementy Runbook
+              href: automation-child-runbooks.md
+            - name: Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
+              href: automation-pass-json-string.md
+            - name: Uruchamianie/zatrzymywanie maszyn wirtualnych po godzinach pracy
+              href: automation-solution-vm-management.md
+        - name: Monitorowanie elementów runbook
+          items:
+            - name: Wynik uruchomienia elementu Runbook
+              href: automation-runbook-output-and-messages.md
+              displayName: 'message streams, progress records, preference'
+            - name: Śledzenie zadania elementu Runbook
+              href: automation-runbook-execution.md
+              displayName: 'fair share, activity log'
+            - name: Obsługa błędów w graficznych elementach runbook
+              href: automation-runbook-graphical-error-handling.md
+            - name: Integracja kontroli źródła
+              href: source-control-integration.md
+              displayName: 'github, vsts, azure devops, personal access token'
+            - name: Integracja kontroli źródła — starsza wersja
+              href: automation-source-control-integration-legacy.md
+              displayname: github
+            - name: Zarządzanie danymi usługi Azure Automation
+              href: automation-managing-data.md
+              displayName: backup
+        - name: Hybrydowy proces roboczy elementu Runbook
+          items:
+            - name: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows
+              href: automation-windows-hrw-install.md
+            - name: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Linux
+              href: automation-linux-hrw-install.md
+              displayName: signature validation
+            - name: Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
+              href: automation-hrw-run-runbooks.md
+              displayName: signed runbooks
+            - name: Śledzenie zaktualizowanych plików przy użyciu zadań obserwatora
+              href: automation-watchers-tutorial.md
+              displayName: 'hybrid runbook worker, hybrid worker, trigger'
+    - name: Rozwiązywanie problemów
       items:
-        - name: Omówienie hybrydowych procesów roboczych elementów Runbook
-          href: automation-hybrid-runbook-worker.md
-        - name: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows
-          href: automation-windows-hrw-install.md
-        - name: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Linux
-          href: automation-linux-hrw-install.md
-          displayName: signature validation
-        - name: Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
-          href: automation-hrw-run-runbooks.md
-          displayName: signed runbooks
-    - name: Konfiguracja stanu
+        - name: Rozwiązywanie problemów z hybrydowym procesem roboczym elementu runbook
+          href: troubleshoot/hybrid-runbook-worker.md
+          displayName: 'troubleshoot, HRW, hybrid worker'
+        - name: Rozwiązywanie problemów z elementami runbook
+          href: troubleshoot/runbooks.md
+          displayName: troubleshoot
+- name: Zarządzanie aktualizacjami
+  items:
+    - name: Omówienie rozwiązania Update Management
+      href: automation-update-management.md
+      displayName: 'dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion'
+    - name: Dołączanie
+      items:
+        - name: Dołączanie wielu maszyn wirtualnych z portalu
+          href: automation-onboard-solutions-from-browse.md
+        - name: Dołączanie z maszyny wirtualnej platformy Azure
+          href: automation-onboard-solutions-from-vm.md
+        - name: Dołączanie z konta usługi Automation
+          href: automation-onboard-solutions-from-automation-account.md
+    - name: Przewodniki z instrukcjami
+      items:
+        - name: Zarządzanie aktualizacjami dla wielu maszyn wirtualnych
+          href: manage-update-multi.md
+        - name: Skrypty wstępne i końcowe
+          href: pre-post-scripts.md
+        - name: Migracja wdrożeń aktualizacji pakietu OMS na platformę Azure
+          href: migrate-oms-update-deployments.md
+        - name: Integracja programu SCCM z rozwiązaniem Update Management
+          href: oms-solution-updatemgmt-sccmintegration.md
+          displayName: Configuration Manager
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Dołączanie
+          href: troubleshoot/onboarding.md
+          displayName: troubleshoot
+        - name: Rozwiązywanie problemów z usługą Update Management
+          href: troubleshoot/update-management.md
+          displayName: troubleshoot
+        - name: Rozwiązywanie problemów z agentem aktualizacji
+          items:
+            - name: Windows
+              href: troubleshoot/update-agent-issues.md
+              displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows'
+            - name: Linux
+              href: troubleshoot/update-agent-issues-linux.md
+              displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, linux'
+- name: Śledzenie zmian
+  items:
+    - name: Omówienie rozwiązania Change Tracking
+      href: change-tracking.md
+      displayName: 'wildcard, recursion, environment variables, registry'
+    - name: Dołączanie
+      items:
+        - name: Dołączanie wielu maszyn wirtualnych z portalu
+          href: automation-onboard-solutions-from-browse.md
+        - name: Dołączanie z maszyny wirtualnej platformy Azure
+          href: automation-onboard-solutions-from-vm.md
+        - name: Dołączanie z konta usługi Automation
+          href: automation-onboard-solutions-from-automation-account.md
+    - name: Przewodniki z instrukcjami
+      items:
+        - name: Dołączanie aktualizacji i śledzenia zmian za pomocą elementu runbook
+          href: automation-onboard-solutions.md
+        - name: Wyświetlanie zawartości śledzonych plików
+          href: change-tracking-file-contents.md
+          displayName: 'change tracking, hash'
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Dołączanie
+          href: troubleshoot/onboarding.md
+          displayName: troubleshoot
+        - name: Rozwiązywanie problemów z rozwiązaniami Change Tracking i Inventory
+          href: troubleshoot/change-tracking.md
+          displayName: troubleshoot
+- name: Spis
+  items:
+    - name: Dołączanie
+      items:
+        - name: Dołączanie wielu maszyn wirtualnych z portalu
+          href: automation-onboard-solutions-from-browse.md
+        - name: Dołączanie z maszyny wirtualnej platformy Azure
+          href: automation-onboard-solutions-from-vm.md
+        - name: Dołączanie z konta usługi Automation
+          href: automation-onboard-solutions-from-automation-account.md
+    - name: Przewodniki z instrukcjami
+      items:
+        - name: Zarządzanie maszyną wirtualną za pomocą kolekcji spisu
+          href: automation-vm-inventory.md
+          displayName: inventory
+        - name: Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej
+          href: automation-tutorial-troubleshoot-changes.md
+          displayName: inventory
+        - name: Zarządzanie maszyną wirtualną za pomocą kolekcji spisu
+          href: automation-vm-inventory.md
+          displayName: inventory
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Dołączanie
+          href: troubleshoot/onboarding.md
+          displayName: troubleshoot
+- name: Konfiguracja stanu (DSC)
+  items:
+    - name: Konfiguracja stanu — omówienie
+      href: automation-dsc-overview.md
       displayName: DSC
+    - name: Pojęcia
       items:
-        - name: Konfiguracja stanu — omówienie
-          href: automation-dsc-overview.md
-          displayName: DSC
+        - name: PowerShell DSC
+          href: /powershell/dsc/overview/overview
+    - name: Przewodniki Szybki start
+      items:
         - name: Wprowadzenie
           href: automation-dsc-getting-started.md
           displayName: DSC
+        - name: Tworzenie konfiguracji DSC
+          href: automation-quickstart-dsc-configuration.md
+          displayName: 'DSC, state configuration, config, node configuration, node'
+    - name: Dołączanie
+      items:
+        - name: Dołączanie maszyn w celu zarządzania
+          href: automation-dsc-onboarding.md
+          displayName: 'DSC, state configuration'
+    - name: Przewodniki z instrukcjami
+      items:
         - name: Konfigurowanie żądanego stanu serwerów i zarządzanie odejściem od tego stanu za pomocą konfiguracji stanu
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
@@ -174,86 +259,65 @@
         - name: Przekazywanie danych raportowania konfiguracji stanu do dzienników usługi Azure Monitor
           href: automation-dsc-diagnostics.md
           displayName: DSC
-    - name: Zarządzanie zasobami udostępnionymi
+    - name: Rozwiązywanie problemów
       items:
-        - name: Harmonogramy
-          href: shared-resources/schedules.md
-        - name: Moduły
-          href: shared-resources/modules.md
-        - name: Zarządzanie pakietami języka Python 2
-          href: python-packages.md
-        - name: Poświadczenia
-          href: shared-resources/credentials.md
-        - name: Połączenia
-          href: automation-connections.md
-        - name: Certyfikaty
-          href: shared-resources/certificates.md
-        - name: Zmienne
-          href: shared-resources/variables.md
-        - name: Aktualizowanie modułów programu Azure PowerShell
-          href: automation-update-azure-modules.md
-        - name: Moduły Az w elementach runbook
-          href: az-modules.md
-    - name: Scenariusze
-      items:
-        - name: Galeria elementów Runbook
-          href: automation-runbook-gallery.md
-        - name: Monitorowanie elementów runbook za pomocą alertów metryki
-          href: automation-alert-metric.md
-        - name: Uruchamianie elementu Runbook z alertów platformy Azure
-          href: automation-create-alert-triggered-runbook.md
-          displayName: 'Monitor, Azure Monitor'
-        - name: Tworzenie maszyny wirtualnej usługi Amazon Web Service
-          href: automation-scenario-aws-deployment.md
-        - name: Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
-          href: automation-deploy-template-runbook.md
-        - name: Integracja usługi Azure Automation z usługami Event Grid i Microsoft Teams
-          href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
-        - name: Przenoszenie konta usługi Automation do innej subskrypcji
-          href: how-to/move-account.md
-    - name: Monitorowanie
-      items:
-        - name: Przekazywanie danych zadania usługi Azure Automation do dzienników usługi Azure Monitor
-          href: automation-manage-send-joblogs-log-analytics.md
-    - name: Migrate (Migracja)
-      items:
-        - name: Migracja z programu Orchestrator
-          href: automation-orchestrator-migration.md
-          displayName: 'SCORCH, runbooks'
-- name: Rozwiązywanie problemów
+        - name: Dołączanie
+          href: troubleshoot/onboarding.md
+          displayName: troubleshoot
+        - name: Rozwiązywanie problemów z usługą State Configuration (DSC)
+          href: troubleshoot/desired-state-configuration.md
+          displayName: 'Desired State Configuration, troubleshoot'
+- name: Zarządzanie zasobami udostępnionymi
   items:
-    - name: Dołączanie
-      href: troubleshoot/onboarding.md
-      displayName: troubleshoot
-    - name: Elementy Runbook
-      href: troubleshoot/runbooks.md
-      displayName: troubleshoot
-    - name: Konfiguracja stanu (DSC)
-      href: troubleshoot/desired-state-configuration.md
-      displayName: 'Desired State Configuration, troubleshoot'
-    - name: Hybrydowy proces roboczy elementu Runbook
-      href: troubleshoot/hybrid-runbook-worker.md
-      displayName: 'troubleshoot, HRW, hybrid worker'
-    - name: Śledzenie zmian i spis
-      href: troubleshoot/change-tracking.md
-      displayName: troubleshoot
-    - name: Zarządzanie aktualizacjami
-      href: troubleshoot/update-management.md
-      displayName: troubleshoot
-    - name: Uruchamianie/zatrzymywanie maszyn wirtualnych
-      href: troubleshoot/start-stop-vm.md
-      displayName: 'start,stop'
-    - name: Udostępnione zasoby
+    - name: Certyfikaty
+      href: automation-certificates.md
+    - name: Połączenia
+      href: automation-connections.md
+    - name: Poświadczenia
+      href: automation-credentials.md
+    - name: Moduły integracji
+      href: automation-integration-modules.md
+    - name: Harmonogramy
+      href: automation-schedules.md
+    - name: Zmienne
+      href: automation-variables.md
+    - name: Aktualizowanie modułów programu Azure PowerShell
+      href: automation-update-azure-modules.md
+    - name: Zarządzanie pakietami języka Python 2
+      href: python-packages.md
+    - name: Rozwiązywanie problemów z zasobami udostępnionymi
       href: troubleshoot/shared-resources.md
       displayName: 'module, import'
-    - name: Rozwiązywanie problemów z agentem aktualizacji
-      items:
-        - name: Windows
-          href: troubleshoot/update-agent-issues.md
-          displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows'
-        - name: Linux
-          href: troubleshoot/update-agent-issues-linux.md
-          displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, linux'
+- name: Scenariusze dotyczące różnych składników
+  items:
+    - name: Galeria elementów Runbook
+      href: automation-runbook-gallery.md
+    - name: Monitorowanie elementów runbook za pomocą alertów metryki
+      href: automation-alert-metric.md
+    - name: Uruchamianie elementu Runbook z alertów platformy Azure
+      href: automation-create-alert-triggered-runbook.md
+      displayName: 'Monitor, Azure Monitor'
+    - name: Tworzenie maszyny wirtualnej usługi Amazon Web Service
+      href: automation-scenario-aws-deployment.md
+    - name: Integracja kontroli źródła z usługą GitHub Enterprise
+      href: automation-scenario-source-control-integration-with-github-ent.md
+      displayName: 'CI, runbooks'
+    - name: Integracja kontroli źródła z usługą Azure DevOps
+      href: automation-scenario-source-control-integration-with-VSTS.md
+      displayName: 'VSTS, CI, runbooks'
+    - name: Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
+      href: automation-deploy-template-runbook.md
+    - name: Integracja usługi Azure Automation z usługami Event Grid i Microsoft Teams
+      href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
+- name: Monitorowanie
+  items:
+    - name: Przekazywanie danych zadania usługi Azure Automation do usługi Log Analytics
+      href: automation-manage-send-joblogs-log-analytics.md
+- name: Migrate (Migracja)
+  items:
+    - name: Migracja z programu Orchestrator
+      href: automation-orchestrator-migration.md
+      displayName: 'SCORCH, runbooks'
 - name: Dokumentacja
   items:
     - name: Azure PowerShell
@@ -266,8 +330,6 @@
       href: /rest/api/automation
     - name: REST (klasyczny)
       href: 'https://msdn.microsoft.com/library/azure/mt163781'
-    - name: Szablon usługi Resource Manager
-      href: /azure/templates/microsoft.automation/allversions
 - name: Zasoby
   items:
     - name: Usługa Automation — film z wprowadzeniem
@@ -285,6 +347,6 @@
     - name: Aktualizacje usług
       href: 'https://azure.microsoft.com/updates/?product=automation'
     - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-automation'
+      href: 'http://stackoverflow.com/questions/tagged/azure-automation'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

@@ -548,8 +548,6 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Czyszczenie dzienników bazy danych SSISDB za pomocą zadań bazy danych Elastic Database
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
-        - name: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku Azure-SSIS IR
-          href: ssis-integration-runtime-ssis-activity-faq.md
     - name: Tworzenie wyzwalaczy
       items:
         - name: Tworzenie wyzwalacza opartego na zdarzeniach
@@ -572,6 +570,12 @@
           href: solution-template-delta-copy-with-control-table.md
         - name: Przekształcanie danych za pomocą usługi Databricks
           href: solution-template-databricks-notebook.md
+    - name: Przewodnik rozwiązywania problemów
+      items:
+        - name: Rozwiązywanie problemów z aktywnością
+          href: data-factory-troubleshoot-guide.md
+        - name: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku Azure-SSIS IR
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Dokumentacja
   items:
     - name: .NET

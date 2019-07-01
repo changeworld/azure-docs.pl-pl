@@ -137,6 +137,8 @@
           href: overview-opc-twin.md
         - name: Co to jest magazyn OPC
           href: overview-opc-vault.md
+        - name: Co to jest wydawca OPC
+          href: overview-opc-publisher.md
         - name: Co to jest połączona fabryka
           href: iot-accelerators-connected-factory-features.md
     - name: Przewodniki Szybki start
@@ -153,8 +155,6 @@
           items:
             - name: Korzystanie z pulpitu nawigacyjnego
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Korzystanie z wydawcy OPC
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: Konfigurowanie akceleratora rozwiązań
               href: iot-accelerators-connected-factory-configure.md
             - name: Dostosowywanie akceleratora rozwiązań
@@ -177,6 +177,12 @@
                   href: howto-opc-vault-deploy-existing-client-server-communication.md
             - name: Wdrażanie magazynu OPC od podstaw
               href: howto-opc-vault-deploy-scratch.md
+        - name: Wydawca OPC
+          items:
+            - name: Konfigurowanie wydawcy OPC
+              href: howto-opc-publisher-configure.md
+            - name: Uruchamianie wydawcy OPC
+              href: howto-opc-publisher-run.md
     - name: Zasoby
       items:
         - name: Repozytorium GitHub

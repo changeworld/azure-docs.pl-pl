@@ -19,6 +19,8 @@
 - name: Pojęcia
   expanded: false
   items:
+    - name: Wdrażanie dostępu warunkowego
+      href: howto-conditional-access-adoption-kit.md
     - name: Zasady ochrony punktu odniesienia
       href: concept-baseline-protection.md
     - name: Warunki

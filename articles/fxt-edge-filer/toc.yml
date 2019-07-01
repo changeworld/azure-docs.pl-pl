@@ -1,0 +1,36 @@
+- name: Dokumentacja urządzenia Azure FXT Edge Filer
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Co to jest urządzenie Azure FXT Edge Filer?
+      href: fxt-overview.md
+- name: Samouczki
+  items:
+    - name: 1 — instalowanie sprzętu
+      href: fxt-install.md
+    - name: 2 — podłączanie portów sieciowych i włączanie zasilania
+      href: fxt-network-power.md
+    - name: 3 — ustawianie haseł sprzętu
+      href: fxt-node-password.md
+    - name: 4 — tworzenie klastra
+      href: fxt-cluster-create.md
+    - name: 5 — dodawanie węzłów klastra
+      href: fxt-add-nodes.md
+    - name: 6 — dodawanie magazynu zaplecza i konfigurowanie wirtualnej przestrzeni nazw
+      href: fxt-add-storage.md
+    - name: 7 — konfigurowanie ustawień sieci klastrów
+      href: fxt-configure-network.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Instalowanie klientów
+      href: fxt-mount-clients.md
+    - name: Monitorowanie sprzętu Azure FXT Edge Filer
+      href: fxt-monitor.md
+    - name: Bezpieczne wyłączanie zasilania węzła sprzętu
+      href: fxt-power-off.md
+- name: Zasoby
+  items:
+    - name: Specyfikacje sprzętowe
+      href: fxt-specs.md
+    - name: Dodatkowa dokumentacja
+      href: fxt-additional-doc.md

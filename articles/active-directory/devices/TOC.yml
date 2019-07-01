@@ -18,43 +18,53 @@
     - name: Konfigurowanie dołączania do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10
       href: azuread-joined-devices-frx.md
 - name: Pojęcia
-  expanded: false
+  expanded: true
   items:
+    - name: Urządzenia zarejestrowane w usłudze Azure AD
+      href: concept-azure-ad-register.md
+    - name: Urządzenia dołączone do usługi Azure AD
+      href: concept-azure-ad-join.md
+    - name: Urządzenia dołączone hybrydowo do usługi Azure AD
+      href: concept-azure-ad-join-hybrid.md
     - name: Logowanie jednokrotne do zasobów lokalnych
       href: azuread-join-sso.md
     - name: Podstawowe tokeny odświeżania
       href: concept-primary-refresh-token.md
-    - name: Zarządzane stacje robocze platformy Azure
+    - name: Stacje robocze zarządzane przez platformę Azure
       href: concept-azure-managed-workstation.md
 - name: Przewodniki z instrukcjami
-  expanded: true
+  expanded: false
   items:
-    - name: Zarządzanie tożsamością urządzenia
-      href: device-management-azure-portal.md
-    - name: Zarządzanie nieodświeżonymi urządzeniami
-      href: manage-stale-devices.md
     - name: Planowanie implementacji dołączania do usługi Azure AD
       href: azureadjoin-plan.md
+    - name: Przypisywanie administratorów lokalnych do urządzeń dołączonych do usługi Azure AD
+      href: assign-local-admin.md
     - name: Planowanie implementacji dołączania do hybrydowej usługi Azure AD
       href: hybrid-azuread-join-plan.md
     - name: Kontrolowana walidacja przyłączenia do hybrydowej usługi Azure AD
       href: hybrid-azuread-join-control.md
-    - name: Przypisywanie administratorów lokalnych do urządzeń dołączonych do usługi Azure AD
-      href: assign-local-admin.md
+    - name: Zarządzanie tożsamością urządzenia
+      href: device-management-azure-portal.md
+    - name: Zarządzanie nieodświeżonymi urządzeniami
+      href: manage-stale-devices.md
     - name: Włączanie roamingu stanu dla przedsiębiorstw
       href: enterprise-state-roaming-enable.md
-    - name: Wdrażanie zarządzanych stacji roboczych platformy Azure
+    - name: Wdrażanie stacji roboczych zarządzanych przez platformę Azure
       href: howto-azure-managed-workstation.md
-    - name: Rozwiązywanie problemów z urządzeniami z bieżącym systemem Windows dołączonymi do hybrydowej usługi Azure AD
-      href: troubleshoot-hybrid-join-windows-current.md
-    - name: Rozwiązywanie problemów z urządzeniami ze starszym systemem Windows dołączonymi do hybrydowej usługi Azure AD
-      href: troubleshoot-hybrid-join-windows-legacy.md
-    - name: Rozwiązywanie problemów z roamingiem stanu dla przedsiębiorstw
-      href: enterprise-state-roaming-troubleshooting.md
+    - name: Rozwiązywanie problemów z tożsamościami urządzeń
+      items:
+        - name: Rozwiązywanie problemów z urządzeniami z bieżącym systemem Windows dołączonymi do hybrydowej usługi Azure AD
+          href: troubleshoot-hybrid-join-windows-current.md
+        - name: Rozwiązywanie problemów z urządzeniami ze starszym systemem Windows dołączonymi do hybrydowej usługi Azure AD
+          href: troubleshoot-hybrid-join-windows-legacy.md
+        - name: Rozwiązywanie problemów z roamingiem stanu dla przedsiębiorstw
+          href: enterprise-state-roaming-troubleshooting.md
     - name: Często zadawane pytania
-      href: faq.md
-    - name: Często zadawane pytania na temat włączania stanu dla przedsiębiorstw
-      href: enterprise-state-roaming-faqs.md
+      items:
+        - name: Często zadawane pytania
+          href: faq.md
+        - name: Często zadawane pytania na temat włączania stanu dla przedsiębiorstw
+          href: enterprise-state-roaming-faqs.md
 - name: Dokumentacja
   items:
     - name: Ustawienia obiektu zasad grupy roamingu stanu dla przedsiębiorstw

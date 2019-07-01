@@ -274,13 +274,13 @@
           items:
             - name: Omówienie
               href: image-builder-overview.md
-            - name: Korzystanie z interfejsu wiersza polecenia
+            - name: Interfejs wiersza polecenia platformy Azure
               href: image-builder.md
             - name: Dokumentacja dotycząca szablonów
               href: image-builder-json.md
-            - name: Używanie z galeriami
+            - name: Tworzenie dla galerii obrazów
               href: image-builder-gallery.md
-            - name: Aktualizowanie wersji obrazu
+            - name: Aktualizowanie istniejącego obrazu
               href: image-builder-gallery-update-image-version.md
             - name: Rozwiązywanie problemów
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'

@@ -29,10 +29,18 @@
       href: sample-projects.md
 - name: Pojęcia
   items:
-    - name: Dostawcy niestandardowi
+    - name: Dostawcy zasobów niestandardowych platformy Azure
       href: custom-providers-overview.md
+    - name: Wyświetlanie artefaktu definicji
+      href: concepts-view-definition.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Dostawcy zasobów niestandardowych
+      items:
+        - name: Dodawanie akcji niestandardowych do platformy Azure
+          href: custom-providers-action-endpoint-how-to.md
+        - name: Dodawanie zasobów niestandardowych do platformy Azure
+          href: custom-providers-resources-endpoint-how-to.md
     - name: Wydawcy
       items:
         - name: Tworzenie interfejsu portalu
@@ -57,6 +65,12 @@
           href: approve-just-in-time-access.md
 - name: Dokumentacja
   items:
+    - name: Dostawcy zasobów niestandardowych
+      items:
+        - name: Dokumentacja serwera proxy zasobu niestandardowego
+          href: custom-providers-proxy-resource-endpoint-reference.md
+        - name: Dokumentacja pamięci podręcznej zasobu niestandardowego
+          href: custom-providers-proxy-cache-resource-endpoint-reference.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/managedapp
     - name: PowerShell

@@ -260,6 +260,9 @@
     - name: Interpretacja efektów działania zasad
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Azure Policy dla platformy Kubernetes
+      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
+      href: ./concepts/rego-for-aks.md
     - name: Przeprowadzanie inspekcji maszyn wirtualnych przy użyciu konfiguracji gościa
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

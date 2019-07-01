@@ -26,6 +26,10 @@
       href: oracle-backup-recovery.md
     - name: Opcje odzyskiwania po awarii programu Oracle
       href: oracle-disaster-recovery.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Połączenie wzajemne platformy Azure i rozwiązania OCI — wersja zapoznawcza
+      href: configure-azure-oci-networking.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure
