@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 09296585ab0ab61f39c18cae6c533c0bbd91926a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449247"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490177"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Zestaw SDK 1.6.0 mowy: Wersji czerwcowej 2019 r
+
 **Przykłady**
 *   Szybki start — przykłady do zamiany tekstu na mowę na platformy uniwersalnej systemu Windows i Unity
 *   Przykład szybki start SWIFT w systemie iOS
@@ -35,6 +36,9 @@ ms.locfileid: "67449247"
     * Wszystkich istniejących klientów bezpośrednich mowy wiersza w dalszym ciągu być obsługiwane po zmiany nazwy
 * Aktualizowanie adaptera TTS REST do obsługi serwera proxy, trwałe połączenie
 * Poprawa komunikat o błędzie, gdy nieprawidłowy region jest przekazywany
+* C:/cel — kod SWIFT
+    * Poprawione raportowanie błędów: Metody, które mogą spowodować wystąpienie błędu obecnie są obecne w dwóch wersjach: Taki, który udostępnia `NSError` obiekt do obsługi błędów, a, który zgłasza wyjątek. Pierwsza są widoczne dla języka Swift. Ta zmiana wymaga dostosowania do istniejącego kodu Swift.
+    * Obsługa zdarzeń ulepszone
 
 **Poprawki błędów**
 *   Poprawka TTS: gdzie przyszłość SpeakTextAsync zwracane bez oczekiwania, dopóki nie zakończy się dźwięk renderowania
@@ -43,6 +47,8 @@ ms.locfileid: "67449247"
 *   Poprawka sporadyczne problemy, aby wdrożyć natywnych bibliotek do folderu wyjściowego w przykładach
 *   Poprawka dla gniazda sieci web niezawodnie zamknięcia
 *   Poprawka ewentualnej awarii podczas otwierania połączenia bardzo dużym obciążeniem w systemie Linux
+*   Naprawiono Brak metadanych w pakiecie framework dla systemu macOS
+*   Rozwiązywanie problemów z `pip install --user` na Windows
 
 
 ## <a name="speech-sdk-151"></a>Zestaw SDK 1.5.1 mowy

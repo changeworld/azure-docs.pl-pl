@@ -40,8 +40,6 @@
       href: ../hdinsight-sdk-python-samples.md
 - name: Pojęcia
   items:
-    - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu IntelliJ
-      href: apache-spark-intellij-tool-plugin.md
     - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu VS Code
       href: ../hdinsight-for-vscode.md
     - name: Składniki usługi Apache Hadoop w usłudze HDInsight

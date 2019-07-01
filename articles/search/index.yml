@@ -34,7 +34,7 @@ sections:
         items:
           - image:
               src: /azure/search/media/index/portal.svg
-            text: Azure Portal
+            text: Portal Azure
             href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
           - image:
               src: /azure/search/media/index/logo_Csharp.svg
@@ -43,7 +43,7 @@ sections:
           - image:
               src: /azure/search/media/index/rest.svg
             text: REST
-            href: 'https://docs.microsoft.com/azure/search/search-fiddler'
+            href: 'https://docs.microsoft.com/azure/search/search-get-started-postman'
   - title: Samouczki krok po kroku
     items:
       - type: paragraph

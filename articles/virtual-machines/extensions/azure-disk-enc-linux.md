@@ -152,7 +152,7 @@ Za pomocą `AADClientCertificate`:
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | (optional) KeyVaultURL | url | string |
-| Hasło | password | string | 
+| Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Systemu operacyjnego, danych, wszystkie | string |
 
