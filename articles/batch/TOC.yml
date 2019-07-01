@@ -27,6 +27,8 @@
       href: tutorial-rendering-batchexplorer-blender.md
     - name: Równoległa symulacja w środowisku R
       href: tutorial-r-doazureparallel.md
+    - name: Funkcja OCR w usługach Batch i Azure Functions
+      href: tutorial-batch-functions.md
 - name: Przykłady
   items:
     - name: Przykłady kodu

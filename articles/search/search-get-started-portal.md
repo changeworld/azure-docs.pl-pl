@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 90857ec2fabb1b807d3e3001f99ea3897d7d628a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4a1944c5c5f169274cf45bd3ebfb6df47942dd5a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443864"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485645"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure portal
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
 > * [Program PowerShell](search-howto-dotnet-sdk.md)
-> * [Postman](search-fiddler.md)
+> * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
 >*
 
@@ -34,7 +34,7 @@ Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowa
 > * Wyświetlaj istniejący indeks i opcje służące do modyfikowania go
 > * Zapoznaj się z wyszukiwaniem pełnotekstowym, filtrami, aspektami, wyszukiwaniem rozmytym i wyszukiwaniem geograficznym, korzystając z **Eksploratora wyszukiwania**
 
-Jeśli te narzędzia oferują zbyt ograniczone funkcje, możesz skorzystać z [wprowadzenia do programowania dla usługi Azure Search z użyciem kodu .NET](search-howto-dotnet-sdk.md) albo skorzystać z narzędzi [Postman lub Fiddler do wykonywania wywołań interfejsu API REST](search-fiddler.md).
+Jeśli te narzędzia oferują zbyt ograniczone funkcje, możesz skorzystać z [wprowadzenia do programowania dla usługi Azure Search z użyciem kodu .NET](search-howto-dotnet-sdk.md) albo skorzystać z narzędzi [Postman lub Fiddler do wykonywania wywołań interfejsu API REST](search-get-started-postman.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Możesz także obejrzeć 6-minutowy pokaz czynności wykonywanych w ramach tego samouczka, rozpoczynający się od około trzeciej minuty tego [klipu wideo z omówieniem usługi Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
 
@@ -274,4 +274,4 @@ Możesz lepiej poznać usługę Azure Search przy użyciu narzędzi programistyc
 
 * [Tworzenie indeksu przy użyciu zestawu .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [Tworzenie indeksu przy użyciu interfejsów API REST](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Tworzenie indeksu przy użyciu narzędzia Postman lub Fiddler i interfejsów API REST usługi Azure Search](search-fiddler.md)
+* [Tworzenie indeksu przy użyciu narzędzia Postman lub Fiddler i interfejsów API REST usługi Azure Search](search-get-started-postman.md)

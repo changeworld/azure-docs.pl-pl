@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 7aab7f75e6489fcaea1ecafee34823ad546a6b48
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7fc33f89797fe0e3cc3a9832c9dc084194cf6603
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244371"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485762"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Samouczek: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku
 
@@ -60,7 +60,7 @@ Aby korzystać z usługi Azure Search należy adres URL usługi i klucza dostęp
 
 1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-   ![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+   ![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-get-started-postman/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
 Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 

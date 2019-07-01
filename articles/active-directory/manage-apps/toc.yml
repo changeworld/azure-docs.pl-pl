@@ -45,24 +45,22 @@
           href: application-proxy-network-topology.md
         - name: Porównanie rozwiązań dostępu zdalnego
           href: application-proxy-migration.md
+    - name: Logowanie jednokrotne
+      items:
+        - name: Co to jest logowanie jednokrotne
+          href: what-is-single-sign-on.md
+        - name: Planowanie wdrożenia logowania jednokrotnego
+          href: plan-sso-deployment.md
+    - name: Logowanie jednokrotne jednym kliknięciem
+      items:
+        - name: Co to jest logowanie jednokrotne jednym kliknięciem
+          href: one-click-sso-tutorial.md
     - name: Aprowizacja użytkowników i grup
       items:
         - name: Automatyczna aprowizacja użytkowników
-          href: configure-automatic-user-provisioning-portal.md
-        - name: Aplikacje SaaS
           href: user-provisioning.md
-        - name: Aplikacje obsługujące standard SCIM
+        - name: Automatyczna aprowizacja w aplikacjach obsługujących standard SCIM
           href: use-scim-to-provision-users-and-groups.md
-        - name: Dostosowywanie aplikacji atrybutów
-          href: Customize-application-attributes.md
-        - name: Pisanie wyrażeń do mapowania atrybutów
-          href: functions-for-customizing-application-data.md
-        - name: Filtry określania zakresu
-          href: define-conditional-rules-for-provisioning-user-accounts.md
-        - name: Raportowanie na temat automatycznej aprowizacji użytkowników
-          href: check-status-user-account-provisioning.md
-        - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
-          href: application-provisioning-config-problem.md
     - name: Zabezpieczenia aplikacji
       items:
         - name: Opcje dostępu do aplikacji
@@ -75,18 +73,8 @@
           href: tenant-restrictions.md
         - name: Konfigurowanie szyfrowania tokenu języka SAML (wersja zapoznawcza)
           href: howto-saml-token-encryption.md
-    - name: Logowanie jednokrotne
-      items:
-        - name: Co to jest logowanie jednokrotne
-          href: what-is-single-sign-on.md
-        - name: Planowanie wdrożenia logowania jednokrotnego
-          href: plan-sso-deployment.md
     - name: Portale użytkowników końcowych
       href: end-user-experiences.md
-    - name: Logowanie jednokrotne jednym kliknięciem
-      items:
-        - name: Co to jest logowanie jednokrotne jednym kliknięciem
-          href: one-click-sso-tutorial.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Dodawanie aplikacji w chmurze
@@ -157,12 +145,20 @@
               href: application-proxy-configure-single-sign-on-on-premises-apps.md
     - name: Konfigurowanie aprowizacji użytkowników
       items:
-        - name: Jak długo trwa aprowizacja
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: Konfigurowanie aprowizacji użytkowników — aplikacja z galerii
+        - name: Aprowizacja użytkowników dla aplikacji z galerii
           href: application-provisioning-config-how-to.md
-        - name: Synchronizowanie atrybutu mapowania — aplikacja z galerii
-          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Konfigurowanie automatycznej aprowizacji użytkowników
+          href: configure-automatic-user-provisioning-portal.md
+        - name: Dostosowywanie aplikacji atrybutów
+          href: Customize-application-attributes.md
+        - name: Pisanie wyrażeń do mapowania atrybutów
+          href: functions-for-customizing-application-data.md
+        - name: Filtry określania zakresu
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Sprawdzanie stanu aprowizacji
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Raportowanie na temat automatycznej aprowizacji użytkowników
+          href: check-status-user-account-provisioning.md
     - name: Przypisywanie użytkowników i zarządzanie dostępem do aplikacji
       items:
         - name: Konfigurowanie zgody użytkownika
@@ -235,10 +231,12 @@
               href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
           items:
+            - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
+              href: application-provisioning-config-problem.md
+            - name: Synchronizowanie atrybutu mapowania — aplikacja z galerii
+              href: user-provisioning-sync-attributes-for-mapping.md
             - name: Długie godziny — aplikacja z galerii
               href: application-provisioning-when-will-provisioning-finish.md
-            - name: Problem podczas konfigurowania aprowizacji użytkowników — aplikacja z galerii
-              href: application-provisioning-config-problem.md
             - name: Problem podczas zapisywania poświadczeń administratora podczas konfigurowania aplikacji z galerii do aprowizacji użytkowników
               href: application-provisioning-config-problem-storage-limit.md
             - name: Użytkownicy nie są aprowizowani — aplikacja z galerii

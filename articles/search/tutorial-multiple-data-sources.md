@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: v-rodixo
 ms.custom: seodec2018
-ms.openlocfilehash: 4186c422836771de4f8a283616d77214b91bfc02
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 8ce3c66432f3d2d0cb973886498aa46e7820698c
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462702"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485269"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Samouczek: Połącz dane z wielu źródeł danych w jednym indeksie usługi Azure Search
 
@@ -28,7 +28,7 @@ W tym samouczku C#, zestawu SDK .NET dla usługi Azure Search i witryny Azure po
 > * Przekazywanie przykładowych danych i tworzenia źródeł danych
 > * Zidentyfikuj klucz dokumentu
 > * Definiowanie i tworzenie indeksu
-> * Indeks hotelu dane z bazy danych cosmos DB
+> * Indeks hotelu dane z usługi Azure Cosmos DB
 > * Scal dane pokoju w hotelu z magazynu obiektów blob
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -61,7 +61,7 @@ Do interakcji z usługi Azure Search, konieczne jest adres URL usługi i klucza 
 
 1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-get-started-postman/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
 Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania, na podstawie danego żądania między aplikacją wysyłającą żądanie i usługi, która je obsługuje.
 
@@ -134,7 +134,7 @@ Gdy indeksowanie danych z wielu źródeł danych, wszystkie wartości klucza źr
 
 Indeksatorów usługi Azure Search służy do zmiany nazwy, a nawet formatowania pól danych w trakcie indeksowania mapowań pól, tak, że źródło danych może zostać skierowany do pola prawidłowy indeks.
 
-Na przykład w naszych przykładowych danych bazy danych cosmos DB, identyfikator hotelu nosi nazwę **HotelId**. Ale w plikach obiektów blob JSON pokojów hotelu, nosi nazwę identyfikatora hotelu **identyfikator**. Program obsługuje to przez mapowanie **identyfikator** pola z obiektów blob do **HotelId** pola klucza w indeksie.
+Na przykład w nasze przykładowe dane usługi Azure Cosmos DB, identyfikator hotelu nosi nazwę **HotelId**. Ale w plikach obiektów blob JSON pokojów hotelu, nosi nazwę identyfikatora hotelu **identyfikator**. Program obsługuje to przez mapowanie **identyfikator** pola z obiektów blob do **HotelId** pola klucza w indeksie.
 
 > [!NOTE]
 > W większości przypadków klucze generowane automatycznie dokumentu, takich jak te utworzone domyślnie przez niektóre indeksatory nie należy wprowadzać klucze dokumentu dobre dla indeksów połączone. Ogólnie rzecz biorąc chcesz użyć zrozumiałe, unikatowych wartości klucza, który już istnieje w, lub można łatwo dodać do źródła danych.
@@ -146,8 +146,8 @@ Po danych i ustawień konfiguracji znajdują się w miejscu, próbki programu **
 Prosty C#/Aplikacja konsoli .NET wykonuje następujące zadania:
 * Tworzy indeks usługi Azure Search oparty na strukturze danych C# klasy hotelu, (który również odwołuje się do klas adres i miejsca).
 * Tworzy źródła danych usługi Azure Cosmos DB i działanie indeksatora, który mapuje dane usługi Azure Cosmos DB na pola indeksu.
-* Jest uruchamiany indeksator bazy danych cosmos DB można załadować danych hotelu.
-* Tworzy źródła danych usługi Azure Blob Storage i działanie indeksatora, który mapuje dane obiektu JSOn Blob na pola indeksu.
+* Jest uruchamiany indeksator usługi Azure Cosmos DB można załadować danych hotelu.
+* Tworzy źródła danych usługi Azure Blob Storage i działanie indeksatora, który mapuje dane obiektów blob JSON na pola indeksu.
 * Jest uruchamiany indeksator usługi Azure blob storage do ładowania danych pokoje.
 
  Przed uruchomieniem programu należy poświęcić chwilę na zapoznają się z kodem i definicjami indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:

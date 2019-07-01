@@ -4,19 +4,19 @@ description: Utwórz funkcję integrującą się z usługą Azure Logic Apps i u
 services: functions, logic-apps, cognitive-services
 keywords: workflow, cloud apps, cloud services, business processes, system integration, enterprise application integration, EAI
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 5e0ef8287b7ce257cd551a1ace043ccbed72b50b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61037134"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480027"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Tworzenie funkcji integrującej się z usługą Azure Logic Apps
 
@@ -58,7 +58,7 @@ Interfejsy API usług Cognitive Services są dostępne na platformie Azure jako 
     | Ustawienie      |  Sugerowana wartość   | Opis                                        |
     | --- | --- | --- |
     | **Nazwa** | MyCognitiveServicesAccnt | Wybierz unikatową nazwę konta. |
-    | **Lokalizacja** | Zachodnie stany USA | Użyj najbliższej lokalizacji. |
+    | **Location** | Zachodnie stany USA | Użyj najbliższej lokalizacji. |
     | **Warstwa cenowa** | F0 | Rozpocznij od najniższej warstwy. Gdy wyczerpią się wywołania, przeskaluj do wyższego poziomu.|
     | **Grupa zasobów** | myResourceGroup | Użyj tej samej grupy zasobów dla wszystkich usług w tym samouczku.|
 
@@ -145,7 +145,7 @@ Została utworzona funkcja kategoryzująca wyniki tonacji. Następnie należy ut
     | ----------------- | ------------ | ------------- |
     | **Nazwa** | TweetSentiment | Wybierz odpowiednią nazwę dla aplikacji. |
     | **Grupa zasobów** | myResourceGroup | Wybierz tę samą istniejącą grupę zasobów co wcześniej. |
-    | **Lokalizacja** | Wschodnie stany USA | Wybierz bliską lokalizację. |    
+    | **Location** | Wschodnie stany USA | Wybierz bliską lokalizację. |    
 
 4. Po wprowadzeniu odpowiednich wartości ustawień kliknij pozycję **Utwórz** w celu utworzenia aplikacji logiki. 
 
@@ -168,7 +168,7 @@ Najpierw utwórz połączenie z kontem w usłudze Twitter. Aplikacja logiki sond
     | Ustawienie      |  Sugerowana wartość   | Opis                                        |
     | ----------------- | ------------ | ------------- |
     | **Wyszukiwany tekst** | #Azure | Użyj hasztagu dostatecznie popularnego, aby wygenerować nowe tweety w wybranym interwale. Jeśli używasz warstwy bezpłatnej, a hasztag jest zbyt popularny, możesz szybko zużyć przydział transakcji w interfejsie API usług Cognitive Services. |
-    | **Interwał** | 15 | Czas między żądaniami usługi Twitter w jednostkach częstotliwości. |
+    | **Interval** | 15 | Czas między żądaniami usługi Twitter w jednostkach częstotliwości. |
     | **Częstotliwość** | Minuta | Jednostka częstotliwości używana do sondowania usługi Twitter.  |
 
 3.  Kliknij przycisk **Zapisz** w celu połączenia się z kontem usługi Twitter. 

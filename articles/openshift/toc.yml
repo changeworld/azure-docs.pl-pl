@@ -25,6 +25,8 @@
           href: howto-create-tenant.md
         - name: Tworzenie użytkownika i obiektu aplikacji usługi Azure AD
           href: howto-aad-app-configuration.md
+    - name: Wdrażanie autonomicznego rozwiązania Prometheus w klastrze platformy Azure Red Hat OpenShift
+      href: howto-deploy-prometheus.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia usługi Azure Red Hat OpenShift

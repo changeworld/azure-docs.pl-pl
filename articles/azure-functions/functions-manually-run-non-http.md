@@ -4,17 +4,17 @@ description: Uruchamianie usługi Azure Functions niewyzwalanej przez protokół
 services: functions
 keywords: ''
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 61bece83697a4907a7bf3c881003f4da9b0e8a84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cfebe5c783018cfab51f384cce578e43383c3905
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60407024"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479826"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ręczne uruchamianie funkcji niewyzwalanej przez protokół HTTP
 

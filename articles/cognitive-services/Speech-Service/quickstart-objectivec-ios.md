@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: aca7a114fb6e00ab1bbf6ab24492056fca3059f4
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 023bb95eb55c88c7da548af003132bb391fdb7ce
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466626"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484975"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
 
@@ -35,7 +35,7 @@ Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.5.1`.
+Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.6.0`.
 
 Cognitive Services mowy zestawu SDK dla systemu iOS jest obecnie dystrybuowane jako struktura cocoa dla.
 Można go pobrać ze [tutaj](https://aka.ms/csspeech/iosbinary). Pobierz plik do katalogu macierzystego.

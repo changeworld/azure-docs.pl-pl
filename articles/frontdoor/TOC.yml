@@ -46,6 +46,8 @@
       href: front-door-routing-methods.md
     - name: Regenerowanie adresów URL
       href: front-door-url-rewrite.md
+    - name: Przekierowywanie adresów URL
+      href: front-door-url-redirect.md
     - name: Zapora aplikacji internetowej
       items:
         - name: Omówienie
@@ -58,6 +60,14 @@
           href: waf-front-door-monitor.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Przekierowywanie ruchu
+      items:
+        - name: Konfigurowanie usługi Front Door w celu przekierowania protokołu HTTP do protokołu HTTPS
+          href: front-door-how-to-redirect-https.md
+    - name: Dołączanie domen niestandardowych
+      items:
+        - name: Dołączanie domeny katalogu głównego lub domeny wierzchołkowej
+          href: front-door-how-to-onboard-apex-domain.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów z routingiem

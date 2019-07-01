@@ -223,6 +223,14 @@
             - name: Przy użyciu architektury REST
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+        - name: Tworzenie podrzędnego klipu wideo
+          items:
+            - name: Przy użyciu platformy .NET
+              href: subclip-video-dotnet-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
+            - name: Przy użyciu architektury REST
+              href: subclip-video-rest-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
     - name: Używanie usługi Event Grid
       items:
         - name: Monitorowanie zdarzeń — portal

@@ -30,6 +30,8 @@
   items:
     - name: Skróty klawiaturowe
       href: azure-portal-keyboard-shortcuts.md
+    - name: Dodawanie adresów URL witryny Azure Portal do listy bezpiecznych adresów
+      href: azure-portal-safelist-urls.md
     - name: Struktura pulpitów nawigacyjnych platformy Azure
       href: azure-portal-dashboards-structure.md
 - name: Zasoby

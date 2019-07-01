@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 369373d19945ea5226e4b9d005cffd3b35064be9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12ab7fe6fbebf2a4506d55ba9e9e0c9864f7ec3d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067626"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485054"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Z tego artykułu dowiesz się, jak utworzyć aplikację języka Java dla systemu Android przy użyciu zestawu Speech SDK usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
-Aplikacja zależy od pakietu Maven zestaw SDK rozpoznawania mowy, wersja 1.5.1 i Android Studio 3.3.
+Aplikacja zależy od pakietu Maven zestaw SDK rozpoznawania mowy, wersji 1.6.0 i Android Studio 3.3.
 Zestaw Speech SDK jest obecnie zgodny z urządzeniami z systemem Android oraz 32 lub 64-bitowymi procesorami ARM i procesorami x86 lub x64 firmy Intel.
 
 > [!NOTE]

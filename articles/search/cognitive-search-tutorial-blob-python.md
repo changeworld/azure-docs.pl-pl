@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: 50a252ff93f7e2cc6e5c6100c6bce850e9e96baf
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 7f8ac2b7973ddd21f16f2914b01618b2b005cd13
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295634"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485788"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Samouczek języka Python: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku
 
@@ -60,7 +60,7 @@ Do interakcji z usługi Azure Search, konieczne będzie adres URL usługi i kluc
 
 1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-get-started-postman/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
 Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania, na podstawie danego żądania między aplikacją wysyłającą żądanie i usługi, która je obsługuje.
 

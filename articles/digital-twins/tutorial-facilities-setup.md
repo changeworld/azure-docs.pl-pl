@@ -2,18 +2,18 @@
 title: 'Samouczek: Wdrażanie usługi Azure Digital Twins | Microsoft Docs'
 description: Dowiedz się, jak wdrożyć wystąpienie usługi Azure Digital Twins i skonfigurować zasoby przestrzenne przy użyciu kroków opisanych w tym samouczku.
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.author: dkshir
-ms.openlocfilehash: f826c6652937caab8b140b489626eef97612baea
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.author: alinast
+ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462202"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484692"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: Wdróż Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza) i skonfiguruj przestrzenne programu graph
 

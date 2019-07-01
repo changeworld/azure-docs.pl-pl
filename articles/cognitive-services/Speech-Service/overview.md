@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 4750937ee7ef6230ed4635d739a102a501b19a30
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a9af96c1defab4cbb10d917b5faa7e0e3ab837f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341812"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485060"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
@@ -41,6 +41,8 @@ Te funkcje tworzą usługi mowy platformy Azure. Użyj linków w tej tabeli, aby
 
 Poznaj nowe funkcje usług mowy platformy Azure.
 
+* 2019 czerwca
+    * Wydana mowy SDK 1.6.0. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md).
 * Maja 2019 - dokumentacji jest teraz dostępna dla [transkrypcji konwersacji](conversation-transcription-service.md), [wywołać transkrypcji Centrum](call-center-transcription.md), i [wirtualnego asystentów głosowych pierwszy](voice-first-virtual-assistants.md).
 * Maja 2019 r
     * Wydana mowy SDK 1.5.1. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md).

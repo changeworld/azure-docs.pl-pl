@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c9413fb78bbb92618818ac4311ab1af8ad65576d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bb082fb83f8c2521b0deabced6f851e62b785e8f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025083"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485386"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Samouczek: Przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
@@ -58,7 +58,7 @@ Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla ka
 
 1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-get-started-postman/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
 Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
@@ -99,7 +99,7 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
 
    ![Strona bazy danych SQL Database](./media/search-indexer-tutorial/hotels-db.png)
 
-4. W okienku nawigacji kliknij **Edytor zapytań (wersja zapoznawcza)**.
+4. W okienku nawigacji kliknij **Edytor zapytań (wersja zapoznawcza)** .
 
 5. Kliknij pozycję **Zaloguj się**, a następnie wprowadź nazwę użytkownika i hasło administratora serwera.
 

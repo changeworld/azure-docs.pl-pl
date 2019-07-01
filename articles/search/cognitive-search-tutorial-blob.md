@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: fb45d2e36939a53d6242cf7cd5a0b9f1990780c3
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 292368687ea30b87f4a1fa851027f9bde38c9549
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299052"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485778"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Samouczek dotyczący architektury REST: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku
 
@@ -61,7 +61,7 @@ Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla ka
 
 1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-get-started-postman/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
 Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
@@ -89,7 +89,7 @@ Istnieją inne sposoby określania parametrów połączenia, takie jak podanie s
 
 ## <a name="set-up-postman"></a>Konfigurowanie narzędzia Postman
 
-Uruchom narzędzie Postman i skonfiguruj żądanie HTTP. Jeśli nie jesteś zaznajomiony z tego narzędzia, zobacz [Eksplorowanie usługi Azure Search interfejsów API REST przy użyciu narzędzia Postman](search-fiddler.md).
+Uruchom narzędzie Postman i skonfiguruj żądanie HTTP. Jeśli nie jesteś zaznajomiony z tego narzędzia, zobacz [Eksplorowanie usługi Azure Search interfejsów API REST przy użyciu narzędzia Postman](search-get-started-postman.md).
 
 Metody żądania, w tym samouczku używane są **WPIS**, **umieścić**, i **UZYSKAĆ**. Klucze nagłówka to "Content-type" wartość "application/json" i "api-key" Ustaw klucz administratora usługi Azure Search. Treść to miejsce, w którym umieszcza się właściwą zawartość wywołania. 
 
