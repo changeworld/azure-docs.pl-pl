@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2804a50cc1ef7bb257e1549afabdef466ce3c2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4819c283a136057ad7c3ffd755fd9e157d99a1bf
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112192"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509457"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrowanie zasad klasycznych, który wymaga uwierzytelniania wieloskładnikowego w witrynie Azure portal
 
@@ -76,42 +76,32 @@ Proces migracji składa się z następujących czynności:
 
    1. Jeśli masz wybranych w zasadach klasycznego wszystkich użytkowników, kliknij przycisk **wszyscy użytkownicy**. 
 
-   ![Dostęp warunkowy](./media/policy-migration/35.png)
+      ![Dostęp warunkowy](./media/policy-migration/35.png)
 
    1. Jeśli masz wybrane w klasycznym zasad grupy, kliknij przycisk **Wybieranie użytkowników i grup**, a następnie wybierz wymaganych użytkowników i grup.
 
-   ![Dostęp warunkowy](./media/policy-migration/36.png)
+      ![Dostęp warunkowy](./media/policy-migration/36.png)
 
    1. Jeśli masz wykluczone grupy, kliknij przycisk **wykluczyć** kartę, a następnie wybierz wymaganych użytkowników i grup. 
 
-   ![Dostęp warunkowy](./media/policy-migration/37.png)
+      ![Dostęp warunkowy](./media/policy-migration/37.png)
 
 1. Na **New** strony, aby otworzyć **aplikacje w chmurze** strony w **przypisania** kliknij **aplikacje w chmurze**.
-
 1. Na **aplikacje w chmurze** strony, wykonaj następujące czynności:
-
-   ![Dostęp warunkowy](./media/policy-migration/08.png)
-
    1. Kliknij przycisk **Wybierz aplikacje**.
-
    1. Kliknij pozycję **Wybierz**.
-
    1. Na **wybierz** stronie, wybierz swoją aplikację w chmurze, a następnie kliknij **wybierz**.
-
    1. Na **aplikacje w chmurze** kliknij **gotowe**.
-
 1. Jeśli masz **Wymagaj uwierzytelniania wieloskładnikowego** wybrane:
 
    ![Dostęp warunkowy](./media/policy-migration/26.png)
 
    1. W **kontrole dostępu** kliknij **Grant**.
 
-   ![Dostęp warunkowy](./media/policy-migration/27.png)
+      ![Dostęp warunkowy](./media/policy-migration/27.png)
 
    1. Na **Grant** kliknij **udzielić dostępu**, a następnie kliknij przycisk **Wymagaj uwierzytelniania wieloskładnikowego**.
-
    1. Kliknij pozycję **Wybierz**.
-
 1. Kliknij przycisk **na** Aby włączyć zasady.
 
    ![Dostęp warunkowy](./media/policy-migration/30.png)

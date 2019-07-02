@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 31185900ede0fae74a04f98eaecee7379fb1c4fe
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3903e14e8923f6d29f2a88c61aead0cfc605b5b5
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427813"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508679"
 ---
 # <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure-preview"></a>Samouczek: Zwróć Azure Data Box duże i sprawdź przekazywania danych na platformie Azure (wersja zapoznawcza)
 
@@ -43,11 +43,11 @@ Przed rozpoczęciem upewnij się, że spełniono następujące warunki:
 ## <a name="ship-data-box-heavy-back"></a>Dostarczanie danych pole mocno Wstecz
 
 1. Upewnij się, że urządzenia jest wyłączona, a wszystkie kable są usuwane. Buforu i bezpiecznie umieść przewodów zasilania 4 w zasobniku, której będziesz mieć dostęp z tyłu urządzenia.
-2. Jeśli urządzenie jest wysyłanie w Stanach Zjednoczonych lub Europy przewozowej jest FedEx.
+2. Urządzenie jest dostarczany Fracht LTL za pośrednictwem FedEx w Stanach Zjednoczonych i DHL w UE w sprawie
 
-    1. Zadzwoń pod numer lokalny dla operatora wysyłki można zaplanować odbiór.
-    2. Dotrzyj do [operacje na danych pole](mailto:DataBoxOps@microsoft.com) informuje o odbiór i Pobierz zwrotną etykietę wysyłkową.
-    3. Upewnij się, czy etykieta wysyłkowa jest wyświetlany na wyczyścić ekran z przodu urządzenia.
+    1. Dotrzyj do [operacje na danych pole](mailto:DataBoxOps@microsoft.com) informuje o odbiór i Pobierz zwrotną etykietę wysyłkową.
+    2. Zadzwoń pod numer lokalny dla operatora wysyłki można zaplanować odbiór.
+    3. Upewnij się, że etykieta wysyłkowa jest wyróżniane na zewnątrz wydania.
     4. Upewnij się, że stary etykiety wysyłki z poprzedniego wydania są usuwane z urządzenia.
 3. Gdy duże pole danych jest pobierane i skanowania przez operatora, raportowanie stanu zamówienia w portalu aktualizacje **pobierane**. Będzie też wyświetlany identyfikator śledzenia przesyłki.
 

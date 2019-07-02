@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432453"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502959"
 ---
 # <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 Akustyka projektu jest aparatem Akustyka wave 3D środowiska interaktywnego. Modeluje ona efektów wave, jak diffraction, portaling i pogłosu efekty w złożonych scen, bez konieczności ręcznego strefy znaczników. Zawiera także aparatu do tworzenia gier i integracji audio oprogramowania pośredniczącego. Filozofia Akustyka projektu jest podobna do statycznego oświetlenia: wprowadzić w trybie offline szczegółowe fizyki zapewnienie fizycznych linii bazowej, a za pomocą uproszczonego środowiska uruchomieniowego ekspresyjny projektowania formanty do zrealizowania określonych celów sztuki.
@@ -29,7 +29,7 @@ Innowacje klucza Akustyka projektu jest kilka symulacji akustyczny tradycyjnych 
 
 ![Animacje wyświetlane poziome wycinek 2D propagacji fali za pośrednictwem sceny](media/wave-simulation.gif)
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 [Integracja aparatu Unity Akustyka projektu](unity-integration.md) jest przeciągnij i upuść i uwzględnia wtyczki audio aparatu Unity. Rozszerzaj kontroli źródła audio Unity, dołączając Akustyka projektu C# formantów składników do każdego obiektu audio.
 
 [Projekt integracji Akustyka Unreal](unreal-integration.md) zawiera wtyczki edytora i gier, Unreal i wtyczki mixer Wwise. Niestandardowe składnika audio rozszerza dobrze znanych funkcjonalności Wwise w ramach Unreal za pomocą na żywo Akustyka projektu kontrolki. Projektowanie kontrolki również są widoczne w Wwise na wtyczkę mixer.
@@ -51,7 +51,7 @@ Obecnie można wdrożyć projektu Akustyka wtyczki środowiska uruchomieniowego 
   * Pliki binarne konsoli Xbox i pomocy technicznej skontaktuj się z nami za pośrednictwem rejestracji poniższy formularz
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
-* [Fora Akustyka projektu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)
+* [Projekt Akustyka dyskusji i wystawiać raportowania](https://github.com/microsoft/ProjectAcoustics/issues)
 * [Utwórz konto, aby otrzymywać aktualizacje na Akustyka projektu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>Kolejne kroki

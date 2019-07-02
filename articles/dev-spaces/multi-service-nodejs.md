@@ -3,18 +3,18 @@ title: Uruchamianie wielu usług zależnych przy użyciu środowiska Node.js i p
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-author: DrEsteban
-ms.author: stevenry
+author: zr-msft
+ms.author: zarhoads
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: d6c09b51a0b5200ed8b723042b7ee5629210c4d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
+ms.openlocfilehash: 136d48f1c420ac71896eaafa0daab476c7fba6fa
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800893"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503078"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Programowanie wielu usług za pomocą usługi Azure Dev Spaces
 
@@ -33,7 +33,7 @@ W Twoim folderze o nazwie `samples` powinien już znajdować się przykładowy k
 1. Otwórz aplikację `mywebapi` w *osobnym oknie programu VS Code*.
 1. Otwórz okno **Paleta poleceń** (za pomocą menu **Widok | Paleta poleceń**) i przy użyciu autouzupełniania wpisz i wybierz to polecenie: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. Nie należy mylić tego polecenia z poleceniem `azds prep`, które umożliwia skonfigurowanie projektu na potrzeby wdrożenia.
 1. Naciśnij klawisz F5 i zaczekaj na skompilowanie i wdrożenie usługi. Będziesz wiedzieć, jest gotowy kiedy *nasłuchuje na porcie 80* pojawi się komunikat w konsoli debugowania.
-1. Zanotuj adres URL punktu końcowego, który będzie wyglądał mniej więcej tak: `http://localhost:<portnumber>`. **Porada: Na pasku stanu programu VS Code będzie wyświetlany adres URL, który można kliknąć.** Może się wydawać, że kontener działa lokalnie, ale faktycznie jest on uruchamiany w środowisku deweloperskim na platformie Azure. Adres hosta lokalnego jest tworzony, ponieważ w aplikacji `mywebapi` nie zdefiniowano żadnych publicznych punktów końcowych i dostęp do niej można uzyskać wyłącznie z poziomu wystąpienia w środowisku Kubernetes. Dla Twojej wygody i ułatwienia interakcji z usługą prywatną z komputera lokalnego usługa Azure Dev Spaces tworzy tymczasowy tunel SSH do kontenera uruchomionego na platformie Azure.
+1. Zanotuj adres URL punktu końcowego, który będzie wyglądał mniej więcej tak: `http://localhost:<portnumber>`. **Porada: Na pasku stanu programu VS Code zostanie pomarańczowy i zostaną wyświetlone możesz klikać adresu URL.** Może się wydawać, że kontener działa lokalnie, ale faktycznie jest on uruchamiany w środowisku deweloperskim na platformie Azure. Adres hosta lokalnego jest tworzony, ponieważ w aplikacji `mywebapi` nie zdefiniowano żadnych publicznych punktów końcowych i dostęp do niej można uzyskać wyłącznie z poziomu wystąpienia w środowisku Kubernetes. Dla Twojej wygody i ułatwienia interakcji z usługą prywatną z komputera lokalnego usługa Azure Dev Spaces tworzy tymczasowy tunel SSH do kontenera uruchomionego na platformie Azure.
 1. Gdy aplikacja `mywebapi` jest gotowa, otwórz w przeglądarce adres hosta lokalnego. Powinna pojawić się odpowiedź z usługi `mywebapi` („Hello from mywebapi”).
 
 
@@ -66,37 +66,13 @@ W poprzednim przykładzie kodu nagłówek `azds-route-as` jest przekazywany z ż
 
 ### <a name="debug-across-multiple-services"></a>Debugowanie w wielu usługach
 1. W tym momencie aplikacja `mywebapi` powinna być nadal uruchomiona z dołączonym debugerem. Jeśli nie jest, naciśnij klawisz F5 w projekcie `mywebapi`.
-1. Ustaw punkt przerwania w domyślnej procedurze obsługi GET `/`.
+1. Ustaw punkt przerwania w domyślnej GET `/` obsługi [w wierszu 8 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8).
 1. W projekcie `webfrontend` ustaw punkt przerwania tuż przed wysłaniem żądania GET do aplikacji `http://mywebapi`.
 1. W projekcie `webfrontend` naciśnij klawisz F5.
 1. Otwórz aplikację internetową i wykonaj kod w obu usługach. W aplikacji internetowej powinien zostać wyświetlony połączony komunikat z dwóch usług: „Hello from webfrontend and Hello from mywebapi”.
 
-### <a name="automatic-tracing-for-http-messages"></a>Automatyczne śledzenie dla komunikatów HTTP
-Można zauważyć, że mimo iż usługa *webfrontend* nie zawiera żadnego specjalnego kodu w celu wyświetlania wywołania HTTP wykonywanego do usługi *mywebapi*, komunikaty śledzenia HTTP są widoczne w oknie danych wyjściowych:
-```
-// The request from your browser
-default.webfrontend.856bb3af715744c6810b.eus.azds.io --hyh-> webfrontend:
-   GET /api?_=1544485357627 HTTP/1.1
-
-// *webfrontend* reaching out to *mywebapi*
-webfrontend --1b1-> mywebapi:
-   GET / HTTP/1.1
-
-// Response from *mywebapi*
-webfrontend <-1b1-- mywebapi:
-   HTTP/1.1 200 OK
-   Hello from mywebapi
-
-// Response from *webfrontend* to your browser
-default.webfrontend.856bb3af715744c6810b.eus.azds.io <-hyh-- webfrontend:
-   HTTP/1.1 200 OK
-   Hello from webfrontend and Hello from mywebapi
-```
-To jest jedna z bezpłatnych korzyści zapewnianych przez instrumentację usługi Dev Spaces. Wstawiamy składniki, które śledzą żądania HTTP przechodzące przez system, aby ułatwić śledzenie złożonych usług wywołań wielu usług podczas programowania.
-
 ### <a name="well-done"></a>Gotowe!
 Teraz masz aplikację z wieloma kontenerami, z których każdy może być tworzony i wdrażany oddzielnie.
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: mmontwil
-ms.openlocfilehash: 0677eb4c65da242f8cfcb20754ec88ffb02c5929
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 517951be2bc99f7607facaed3c9b04260fc6d3d8
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393157"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503187"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu języka Java
 
@@ -137,18 +137,27 @@ Przeskanuj dane wyjściowe konsoli w poszukiwaniu informacji o publicznym adresi
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Otwórz ten adres URL w oknie przeglądarki — aplikacja internetowa powinna zostać załadowana. Podczas wykonywania kontenera dane wyjściowe `stdout` i `stderr` są przesyłane strumieniowo do okna terminalu.
+Identyfikowanie publiczny adres URL dla usługi w danych wyjściowych `up` polecenia. Kończy się `.azds.io`. W powyższym przykładzie jest publiczny adres URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+
+Aby wyświetlić aplikację sieci web, należy otworzyć publiczny adres URL w przeglądarce. Zauważ również, `stdout` i `stderr` danych wyjściowych jest przesyłany strumieniowo do *śledzenia azds* okno terminalu podczas interakcji z aplikacją sieci web. Widoczne będą także śledzenie informacji o żądań HTTP, ponieważ komputery przechodzą przez system. To ułatwia śledzenie złożonych z wielu usług wywołań podczas programowania. Instrumentacja dodane przez deweloperów miejsca do magazynowania zapewnia to żądanie śledzenia.
 
 > [!Note]
-> Przy pierwszym uruchomieniu przygotowanie publicznego serwera DNS może potrwać kilka minut. Jeśli publiczny adres URL nie został rozwiązany, możesz użyć alternatywnej `http://localhost:<portnumber>` adresu URL, który jest wyświetlany w danych wyjściowych konsoli. Jeśli używasz adresu URL hosta lokalnego, może się wydawać, że kontener działa lokalnie, ale faktycznie jest on uruchamiany w usłudze AKS. Dla Twojej wygody i ułatwienia interakcji z usługą z komputera lokalnego usługa Azure Dev Spaces tworzy tymczasowy tunel SSH do kontenera uruchomionego na platformie Azure. Później, gdy rekord DNS będzie gotowy, możesz wrócić i wypróbować publiczny adres URL.
-> ### <a name="update-a-content-file"></a>Aktualizowanie pliku zawartości
-> Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Kubernetes — pozwala też szybko i wielokrotnie wyświetlać efekt zmian wprowadzonych w kodzie w środowisku Kubernetes w chmurze.
+> Oprócz publicznego adresu URL, można użyć alternatywnej `http://localhost:<portnumber>` adresu URL, który jest wyświetlany w danych wyjściowych konsoli. Jeśli używasz adresu URL hosta lokalnego, może się wydawać, że kontener działa lokalnie, ale faktycznie jest on uruchamiany w usłudze AKS. Usługa Azure Dev do magazynowania korzysta z usługi Kubernetes *do przodu portu* funkcjonalność do mapowania portu localhost w kontenerze uruchomiona w usłudze AKS. To ułatwia interakcji z usługą z komputera lokalnego.
+
+### <a name="update-a-content-file"></a>Aktualizowanie pliku zawartości
+Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Kubernetes — pozwala też szybko i wielokrotnie wyświetlać efekt zmian wprowadzonych w kodzie w środowisku Kubernetes w chmurze.
 
 1. W oknie terminalu naciśnij klawisze `Ctrl+C`, aby zatrzymać polecenie `azds up`.
-1. Otwórz plik kodu o nazwie `src/main/java/com/ms/sample/webfrontend/Application.java` i zmodyfikuj komunikat powitalny: `return "Hello from webfrontend in Azure!";`
+1. Otwórz `src/main/java/com/ms/sample/webfrontend/Application.java`i edytowania wiadomości powitania na [wiersz 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
+
+    ```java
+    return "Hello from webfrontend in Azure!";
+    ```
+
 1. Zapisz plik.
 1. Uruchom polecenie `azds up` w oknie terminalu.
 
@@ -181,7 +190,7 @@ Spowoduje to dodanie konfiguracji debugowania dla usługi Azure Dev Spaces w obs
 ![](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> Jeśli na palecie poleceń nie widać żadnych poleceń usługi Azure Dev Spaces, upewnij się, że masz zainstalowane rozszerzenie VS Code dla usługi Azure Dev Spaces. Upewnij się, że obszar roboczy otwarty w programie VS Code odpowiada folderowi zawierającemu plik azds.yaml.
+> Jeśli na palecie poleceń nie widać żadnych poleceń usługi Azure Dev Spaces, upewnij się, że masz zainstalowane rozszerzenie VS Code dla usługi Azure Dev Spaces. Pamiętaj, że obszar roboczy został otwarty w programie VS Code jest folder, który zawiera `azds.yaml`.
 
 ### <a name="debug-the-container-in-kubernetes"></a>Debugowanie kontenera w środowisku Kubernetes
 Po naciśnięciu klawisza **F5** możesz debugować kod w środowisku Kubernetes.
@@ -189,7 +198,7 @@ Po naciśnięciu klawisza **F5** możesz debugować kod w środowisku Kubernetes
 Podobnie jak w przypadku polecenia `up` kod jest synchronizowany z obszarem deweloperskim, a kontener jest kompilowany i wdrażany w środowisku Kubernetes. Oczywiście tym razem debuger jest dołączany do zdalnego kontenera.
 
 > [!Tip]
-> Na pasku stanu programu VS Code będzie wyświetlany adres URL, który można kliknąć.
+> Na pasku stanu programu VS Code zmieni się na pomarańczowy, wskazujący, że jest dołączony debuger. Będą również wyświetlane możesz klikać adresu URL, który można użyć, aby otworzyć aplikację.
 
 ![](media/common/vscode-status-bar-url.png)
 
@@ -207,9 +216,9 @@ public String greeting()
 }
 ```
 
-Zapisz plik i w okienku **Debug actions** (Akcje debugowania) kliknij przycisk **Refresh** (Odśwież).
+Zapisz plik i w **okienko akcji debugowania**, kliknij przycisk **ponowne uruchomienie** przycisku.
 
-![](media/get-started-java/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 Zamiast ponownego kompilowania i wdrażania nowego obrazu kontenera przy każdej zmianie kodu, co często zajmuje dużo czasu, usługa Azure Dev Spaces przyrostowo ponownie kompiluje kod w istniejącym kontenerze, co przyspiesza działanie pętli edytowania/debugowania.
 

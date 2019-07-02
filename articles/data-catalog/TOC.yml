@@ -58,8 +58,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=data-catalog'
     - name: REST
       href: /rest/api/datacatalog/
-    - name: Szablon usługi Resource Manager
-      href: /azure/templates/microsoft.datacatalog/catalogs
     - name: Dokumentacja składni wyszukiwania
       href: /rest/api/datacatalog/data-catalog-search-syntax-reference
     - name: Pojęcia dla deweloperów

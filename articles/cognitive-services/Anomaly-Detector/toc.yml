@@ -8,7 +8,7 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Wykrywanie anomalii w danych
+    - name: Interfejs API REST
       items:
         - name: 'Przy użyciu języka C#'
           href: quickstarts/detect-data-anomalies-csharp.md
@@ -16,6 +16,12 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: Korzystanie z języka Python
           href: quickstarts/detect-data-anomalies-python.md
+    - name: SDK
+      items:
+        - name: 'Przy użyciu języka C#'
+          href: quickstarts/detect-data-anomalies-csharp-sdk.md
+        - name: Korzystanie z języka Python
+          href: quickstarts/detect-data-anomalies-python-sdk.md
 - name: Samouczki
   items:
     - name: Wizualizowanie anomalii jako zadań wsadowych za pomocą usługi Power BI
