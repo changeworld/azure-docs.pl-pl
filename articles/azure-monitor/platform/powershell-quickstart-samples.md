@@ -156,7 +156,7 @@ W poniższej tabeli opisano parametry i wartości używane do tworzenia alertu z
 | Lokalizacja tę regułę alertu |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| MetricName alertu, który jest tworzony |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
+| MetricName alertu, który jest tworzony |\PhysicalDisk (%) (_łącznie) \Disk zapisu na sekundę. Zobacz `Get-MetricDefinitions` polecenia cmdlet, o tym, jak pobrać dokładnej nazwy metryki |
 | operator |GreaterThan |
 | Wartość progowa (liczba/s w tym metryki) |1 |
 | Rozmiar_okna (w formacie: mm: ss) |00:05:00 |
