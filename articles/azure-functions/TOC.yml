@@ -45,6 +45,8 @@
           href: functions-add-output-binding-storage-queue-python.md
         - name: Magazyn — portal
           href: functions-integrate-storage-queue-output-binding.md
+        - name: Magazyn — Visual Studio Code
+          href: functions-add-output-binding-storage-queue-vs-code.md
 - name: Samouczki
   items:
     - name: Funkcje z aplikacjami logiki
@@ -136,6 +138,8 @@
           href: functions-test-a-function.md
         - name: Programowanie i debugowanie lokalnie
           href: functions-develop-local.md
+        - name: Programowanie w programie Visual Studio Code
+          href: functions-develop-vs-code.md
         - name: Opracowywanie zawartości w programie Visual Studio
           href: functions-develop-vs.md
         - name: Opracowywanie podstawowych narzędzi
@@ -282,13 +286,10 @@
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
-    - name: Dokumentacja pliku host.json
+    - name: Dokumentacja pliku host.json 2.x
       href: functions-host-json.md
-      items:
-        - name: Functions w wersji 2.x
-          href: functions-host-json.md
-        - name: Functions w wersji 1.x
-          href: functions-host-json-v1.md
+    - name: Dokumentacja pliku host.json 1.x
+      href: functions-host-json-v1.md
     - name: Często zadawane pytania dotyczące sieci
       href: functions-networking-faq.md
     - name: Dokumentacja interfejsu OpenAPI

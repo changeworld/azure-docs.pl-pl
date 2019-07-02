@@ -301,6 +301,8 @@
               href: app-objects-and-service-principals.md
             - name: Jak i dlaczego aplikacje są dodawane do usługi Azure AD
               href: active-directory-how-applications-are-added.md
+            - name: Identyfikator URI przekierowania lub adres URL odpowiedzi i ograniczenia
+              href: reply-url.md
             - name: Aplikacje z jedną i wieloma dzierżawami
               href: single-and-multi-tenant-apps.md
         - name: Uprawnienia i wyrażanie zgody

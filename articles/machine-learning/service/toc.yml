@@ -106,6 +106,8 @@
       href: concept-accelerate-with-fpgas.md
     - name: Rozwiązanie ONNX i środowisko uruchomieniowe ONNX
       href: concept-onnx.md
+    - name: Monitorowanie dryfu danych
+      href: concept-data-drift.md
     - name: Bezpieczeństwo
       items:
         - name: Przegląd zabezpieczeń przedsiębiorstwa
@@ -151,12 +153,6 @@
         - name: Eksplorowanie danych
           displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
           href: how-to-explore-prepare-data.md
-        - name: Obsługa wersji i zarządzanie definicjami danych
-          displayName: 'data, etl, dataset, data preparation, dataprep, version'
-          href: how-to-manage-dataset-definitions.md
-        - name: Tworzenie migawek danych
-          displayName: 'snapshots, profile, summary statistics, data copy'
-          href: how-to-create-dataset-snapshots.md
         - name: Pobieranie danych z magazynu danych
           displayName: blob get fileshare access storage
           href: how-to-access-data.md
@@ -178,12 +174,16 @@
           href: how-to-set-up-training-targets.md
         - name: Tworzenie estymatorów na potrzeby trenowania
           href: how-to-train-ml-models.md
+        - name: Korzystanie z biblioteki Scikit-learn
+          href: how-to-train-scikit-learn.md
         - name: Korzystanie z biblioteki TensorFlow
           href: how-to-train-tensorflow.md
         - name: Używanie biblioteki Keras
           href: how-to-train-keras.md
         - name: Korzystanie z biblioteki PyTorch
           href: how-to-train-pytorch.md
+        - name: Korzystanie z platformy Chainer
+          href: how-to-train-chainer.md
         - name: Dostrajanie hiperparametrów
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -211,6 +211,8 @@
         - name: Automatyczne trenowanie modelu prognozy
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: Wyświetlanie metryk dokładności
+          href: how-to-understand-accuracy-metrics.md
     - name: Wdrażanie i obsługa modeli
       items:
         - name: Gdzie i jak wdrażać modele
@@ -224,6 +226,9 @@
           href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
         - name: Niestandardowy obraz Docker
           href: how-to-deploy-custom-docker-image.md
+        - name: Wdrażanie istniejących modeli
+          displayName: publish existing model
+          href: how-to-deploy-existing-model.md
         - name: Rozwiązywanie problemów
           href: how-to-troubleshoot-deployment.md
     - name: Korzystaj z usług sieci Web
@@ -239,6 +244,8 @@
         - name: Zbieranie i ocenianie danych modelu
           displayName: track production
           href: how-to-enable-data-collection.md
+        - name: Wykrywanie dryfu danych
+          href: how-to-monitor-data-drift.md
         - name: Monitorowanie za pomocą usługi Application Insights
           href: how-to-enable-app-insights.md
     - name: Tworzenie przepływów danych wielokrotnego użytku

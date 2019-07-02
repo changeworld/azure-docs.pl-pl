@@ -24,6 +24,9 @@
       maintainContext: true
 - name: Instrukcje
   items:
+    - name: Migrowanie obciążeń technologii Hive do usługi HDInsight 4.0
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
     - name: Korzystanie z magazynu klastra
       items:
         - name: Korzystanie z usługi Azure Storage
@@ -100,6 +103,9 @@
           href: ./apache-hadoop-connect-hive-power-bi-directquery.md
         - name: Łączenie usługi Power BI z usługą Apache Hadoop
           href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
+          maintainContext: true
+        - name: Tworzenie zapytań w usłudze Hive za pomocą programu PowerShell i rozwiązania ODBC
+          href: apache-hive-query-odbc-driver-powershell.md
           maintainContext: true
         - name: Łączenie programu Excel z usługą Apache Hadoop
           href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
@@ -333,11 +339,6 @@
         - name: Monitorowanie wydajności klastra
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Instrukcje
-  items:
-    - name: Migrowanie obciążeń technologii Hive do usługi HDInsight 4.0
-      href: apache-hive-migrate-workloads.md
-      maintainContext: true
 - name: Dokumentacja
   items:
     - name: Przykłady kodu

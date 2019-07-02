@@ -19,6 +19,8 @@
     - name: Tworzenie aplikacji
       expanded: true
       items:
+        - name: Korzystanie z narzędzia Draft
+          href: kubernetes-draft.md
         - name: Korzystanie z języka Java (VS Code i interfejs wiersza polecenia)
           href: ../dev-spaces/quickstart-java.md
           maintainContext: true
@@ -153,6 +155,8 @@
               href: configure-azure-cni.md
         - name: Utwórz wewnętrzny moduł równoważenia obciążenia.
           href: internal-lb.md
+        - name: Korzystanie z usługi Load Balancer w warstwie Standardowa (wersja zapoznawcza)
+          href: load-balancer-standard.md
         - name: Używanie statycznego adresu IP
           href: static-ip.md
         - name: Ruch przychodzący
@@ -187,6 +191,8 @@
           href: use-pod-security-policies.md
         - name: Definiowanie zakresów autoryzowanych adresów IP dla serwera interfejsu API (wersja zapoznawcza)
           href: api-server-authorized-ip-ranges.md
+        - name: Kontrolowanie wdrożeń za pomocą usługi Azure Policy (wersja zapoznawcza)
+          href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
         - name: Aktualizowanie poświadczeń jednostki usługi klastra
           href: update-credentials.md
         - name: Ograniczanie i kontrolowanie ruchu wychodzącego klastra (wersja zapoznawcza)
@@ -280,8 +286,6 @@
                   maintainContext: true
         - name: Uruchamianie aplikacji za pomocą narzędzia Helm
           href: kubernetes-helm.md
-        - name: Tworzenie aplikacji za pomocą narzędzia Draft
-          href: kubernetes-draft.md
         - name: Korzystanie z serwera Open Service Broker for Azure
           href: integrate-azure.md
         - name: Korzystanie z interfejsu API usługi Cosmos DB dla bazy danych MongoDB z usługą OSBA

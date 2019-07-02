@@ -25,6 +25,8 @@
       href: billing-understand-your-invoice.md
     - name: Objaśnienie faktury — tylko umowa klienta firmy Microsoft
       href: billing-mca-understand-your-invoice.md
+    - name: Jak zapłacić rachunek — tylko umowa klienta firmy Microsoft
+      href: billing-how-to-pay-bill.md
     - name: Konta rozliczeniowe dla umowy klienta firmy Microsoft
       href: billing-mca-overview.md
 - name: Zarządzanie kosztami
@@ -79,7 +81,7 @@
               href: billing-understand-suse-reservation-charges.md
         - name: Nieuwzględnianie kosztów oprogramowania
           href: billing-reserved-instance-windows-software-costs.md
-        - name: Dane użycia w przypadku subskrypcji typu Płatność zgodnie z rzeczywistym użyciem
+        - name: Użycie poszczególnych subskrypcji
           href: billing-understand-reserved-instance-usage.md
         - name: Dane użycia w przypadku subskrypcji Enterprise
           href: billing-understand-reserved-instance-usage-ea.md

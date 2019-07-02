@@ -252,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: Oprogramowanie SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: Kopia zapasowa systemu SAP HANA na maszynach wirtualnych platformy Azure
+          href: backup-azure-sap-hana-database-troubleshoot.md
         - name: Stan systemu
           href: backup-azure-system-state-troubleshoot.md
     - name: Monitorowanie obciążeń usługi Azure Backup
