@@ -197,7 +197,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebDocumentationTemplatesCurlForBasicAuth|dla uwierzytelniania Basic Authorization Użyj:--użytkownika {username}: {password}|  
 |WebDocumentationTemplatesCurlValuesForPath|Określ wartości dla parametrów ścieżki (pokazanych jako {...}), klucz subskrypcji i wartości parametrów zapytania|  
 |WebDocumentationTemplatesDeveloperKey|Określ swój klucz subskrypcji|  
-|WebDocumentationTemplatesJavaApache|Ten przykład używa klienta Apache HTTP z projektu HTTP Components)http://hc.apache.org/httpcomponents-client-ga/)|  
+|WebDocumentationTemplatesJavaApache|Ten przykład używa klienta Apache HTTP z projektu HTTP Components) (http://hc.apache.org/httpcomponents-client-ga/)|  
 |WebDocumentationTemplatesOptionalParams|Określ wartości dla parametrów opcjonalnych, zgodnie z potrzebami|  
 |WebDocumentationTemplatesPhpPackage|Ten przykład używa pakietu HTTP_Request2. (Aby uzyskać więcej informacji: https://pear.php.net/package/HTTP_Request2)|  
 |WebDocumentationTemplatesPythonValuesForPath|Określ wartości dla parametrów ścieżki (pokazanych jako {...}) i treści żądania, jeśli to konieczne|  
