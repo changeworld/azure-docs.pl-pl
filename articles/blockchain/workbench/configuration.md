@@ -42,10 +42,10 @@ Aplikacji łańcucha bloków zawiera konfiguracji metadanych, przepływy pracy i
 | Pole | Opis | Wymagane |
 |-------|-------------|:--------:|
 | ApplicationName | Unikatowa nazwa aplikacji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **ApplicationName** dla klasy stosownej umowy.  | Tak |
-| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną aplikacji. | Yes |
-| Opis | Opis aplikacji. | Nie |
+| DisplayName | Przyjazną nazwę wyświetlaną aplikacji. | Yes |
+| Description | Opis aplikacji. | Nie |
 | ApplicationRoles | Kolekcja [ApplicationRoles](#application-roles). Role użytkowników, którzy mogą działać lub wziąć udział w aplikacji.  | Yes |
-| Przepływy pracy | Kolekcja [przepływy pracy](#workflows). Każdy przepływ pracy działa jako automatu stanów, aby sterować przepływem logiki biznesowej. | Tak |
+| Workflows | Kolekcja [przepływy pracy](#workflows). Każdy przepływ pracy działa jako automatu stanów, aby sterować przepływem logiki biznesowej. | Tak |
 
 Aby uzyskać przykład, zobacz [przykładowy plik konfiguracji](#configuration-file-example).
 
