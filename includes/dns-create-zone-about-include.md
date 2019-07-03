@@ -13,7 +13,7 @@ ms.locfileid: "67183892"
 ---
 Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS.
 
-Na przykład domena „contoso.com” może zawierać wiele rekordów DNS, takich jak „mail.contoso.com” (dla serwera poczty) i „www.contoso.com” (dla witryny sieci Web).
+Na przykład domena „contoso.com” może zawierać wiele rekordów DNS, takich jak „mail.contoso.com” (dla serwera poczty) i "www.contoso.com" (dla witryny sieci Web).
 
 Podczas tworzenia strefy DNS w usłudze Azure DNS należy uwzględnić następujące kwestie:
 

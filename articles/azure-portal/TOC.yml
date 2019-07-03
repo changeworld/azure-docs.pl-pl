@@ -8,8 +8,6 @@
       href: azure-portal-supported-browsers-devices.md
 - name: Pojęcia
   items:
-    - name: Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure
-      href: azure-portal-dashboards.md
     - name: Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli dostępu opartej na rolach
       href: azure-portal-dashboard-share-access.md
     - name: Programowe tworzenie pulpitów nawigacyjnych platformy Azure
@@ -20,6 +18,8 @@
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Dodawanie, usuwanie i sortowanie ulubionych'
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure
+      href: azure-portal-dashboards.md
     - name: Używanie kafelka niestandardowego z kodem Markdown
       href: azure-portal-markdown-tile.md
     - name: Eksportowanie i usuwanie ustawień użytkownika

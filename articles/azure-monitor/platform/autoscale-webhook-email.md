@@ -115,7 +115,7 @@ Po wygenerowaniu powiadomienia skalowania automatycznego, następujące metadane
 | subscriptionId |Tak |Identyfikator zasobu docelowego, który wykonywane jest skalowanie subskrypcji |
 | resourceGroupName |Yes |Nazwa grupy zasobów zasobu docelowego, który wykonywane jest skalowanie |
 | resourceName |Tak |Nazwa zasobu docelowego, który wykonywane jest skalowanie |
-| Typ zasobu |Yes |Trzy obsługiwane wartości: "microsoft.classiccompute/domainnames/slots/roles" - role usługi w chmurze, "microsoft.compute/virtualmachinescalesets" — Virtual Machine Scale Sets i "Microsoft.Web/serverfarms" - aplikacji sieci Web |
+| resourceType |Yes |Trzy obsługiwane wartości: "microsoft.classiccompute/domainnames/slots/roles" - role usługi w chmurze, "microsoft.compute/virtualmachinescalesets" — Virtual Machine Scale Sets i "Microsoft.Web/serverfarms" - aplikacji sieci Web |
 | resourceId |Tak |Identyfikator zasobu docelowego, który wykonywane jest skalowanie usługi Resource Manager |
 | portalLink |Yes |Link do portalu Azure na stronie Podsumowanie zasób docelowy |
 | oldCapacity |Tak |Bieżąca (stare) liczba wystąpień podczas automatycznego skalowania trwało akcji skalowania |

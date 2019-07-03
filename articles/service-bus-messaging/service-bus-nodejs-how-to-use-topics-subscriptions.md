@@ -16,7 +16,7 @@ ms.date: 04/15/2019
 ms.author: aschhab
 ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "65992090"
@@ -48,7 +48,7 @@ Aby uzyskać więcej informacji o tematach i subskrypcjach, zobacz [następne kr
     > Utworzysz **tematu** i **subskrypcji** do tematu przy użyciu **Node.js** w tym przewodniku Szybki Start. 
 
 ## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
-Tworzenie pustej aplikacji Node.js. Instrukcje dotyczące tworzenia aplikacji w technologii Node.js, zobacz [Tworzenie i wdrażanie aplikacji w technologii Node.js do witryny sieci Web platformy Azure], [Node.js usługi w chmurze] [ Node.js Cloud Service] przy użyciu Windows Program PowerShell lub witryny sieci Web za pomocą programu WebMatrix.
+Tworzenie pustej aplikacji Node.js. Instrukcje dotyczące tworzenia aplikacji w technologii Node.js, zobacz [Tworzenie i wdrażanie aplikacji w technologii Node.js do witryny sieci Web platformy Azure], [Node.js usługi w chmurze][Node.js Cloud Service] przy użyciu Windows Program PowerShell lub witryny sieci Web za pomocą programu WebMatrix.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurowanie aplikacji do użycia usługi Service Bus
 Aby korzystać z usługi Service Bus, Pobierz pakiet Node.js platformy Azure. Ten pakiet zawiera zbiór bibliotek, które komunikują się z usługami interfejsu REST usługi Service Bus.

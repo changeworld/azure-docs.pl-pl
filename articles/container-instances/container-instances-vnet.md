@@ -117,7 +117,7 @@ W następujących sekcjach opisano sposób wdrażania grup kontenerów z siecią
 
 Najpierw należy wdrożyć grupę kontenerów i określ parametry w celu nową sieć wirtualną i podsieć. Po określeniu tych parametrów, Azure tworzy sieć wirtualną i podsieć, deleguje podsieci do usługi Azure Container instances i również tworzy profil sieciowy. Po utworzeniu tych zasobów grupy kontenerów jest wdrażana do podsieci.
 
-Uruchom następujące polecenie [utworzyć kontener az] [ az-container-create] polecenia, który określa ustawienia dla nowej sieci wirtualnej i podsieci. Należy podać nazwę grupy zasobów, która została utworzona w regionie, [obsługuje](#preview-limitations) grup kontenerów w sieci wirtualnej. To polecenie wdraża publicznej Microsoft [aci-helloworld] [ aci-helloworld] kontenera uruchamiającego małych Node.js serwerem sieci Web obsługująca statyczną stronę sieci web. W następnej sekcji będzie wdrożyć drugiej grupy kontenerów na tej samej podsieci, a testowanie komunikacji między wystąpieniami dwóch kontenerów.
+Uruchom następujące polecenie [utworzyć kontener az] [ az-container-create] polecenia, który określa ustawienia dla nowej sieci wirtualnej i podsieci. Należy podać nazwę grupy zasobów, która została utworzona w regionie, [obsługuje](#preview-limitations) grup kontenerów w sieci wirtualnej. To polecenie wdraża publicznej Microsoft [aci-helloworld][aci-helloworld] kontenera uruchamiającego małych Node.js serwerem sieci Web obsługująca statyczną stronę sieci web. W następnej sekcji będzie wdrożyć drugiej grupy kontenerów na tej samej podsieci, a testowanie komunikacji między wystąpieniami dwóch kontenerów.
 
 ```azurecli
 az container create \

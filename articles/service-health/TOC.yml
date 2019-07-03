@@ -7,7 +7,7 @@
 - name: Przewodniki Szybki start
   items:
     - name: Konfigurowanie alertów dla zdarzeń usługi Service Health
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
 - name: Pojęcia
   items:
     - name: Strona stanu platformy Azure
@@ -19,9 +19,9 @@
 - name: Instrukcje
   items:
     - name: Konfigurowanie alertów dla zdarzeń usługi Service Health
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: alerts-activity-log-service-notifications.md
     - name: Wyświetlanie powiadomień dotyczących kondycji usługi za pomocą witryny Azure Portal
-      href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: service-notifications.md
     - name: Wysyłanie alertów do systemów zewnętrznych za pomocą elementu webhook
       href: service-health-alert-webhook-guide.md
     - name: Wysyłanie alertów do usługi ServiceNow

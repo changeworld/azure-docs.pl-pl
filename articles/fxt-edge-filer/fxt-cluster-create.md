@@ -4,14 +4,14 @@ description: Jak utworzyć klaster hybrydowy magazyn pamięci podręcznej za pom
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1bfe8f0efce0a844263fc65df0ad927114886769
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 94ec2b088940f4f1f683a4f88ae312879d909bc1
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450541"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543533"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Samouczek: Tworzenie klastra filtr Edge FXT platformy Azure
 
@@ -34,7 +34,10 @@ Ta procedura zajmuje od 15 45 minut, w zależności od ilości badań, które na
 
 Przed rozpoczęciem tego samouczka, należy spełnić następujące wymagania wstępne:
 
-* Zainstaluj co najmniej trzech systemów sprzętowych filtr Edge FXT platformy Azure w centrum danych 
+* Instalowanie systemów sprzętowych filtr Edge FXT platformy Azure w centrum danych 
+
+  Wystarczy tylko jeden węzeł, aby utworzyć klaster, ale musisz [Dodaj co najmniej dwa węzły więcej](fxt-add-nodes.md) przed rozpoczęciem konfigurowania klastra i przygotować go do użycia. 
+
 * Połącz odpowiednie przewodów zasilania i sieci w systemie  
 * Włącz co najmniej jeden węzeł filtr Edge FXT platformy Azure i [ustaw jego hasło główne](fxt-node-password.md)
 
@@ -114,7 +117,7 @@ Użyj polecenia `ifconfig` Aby wyświetlić adresy przypisane do tego systemu.
 
 Na przykład polecenie `ifconfig | grep -B5 inet` wyszukuje portów przy użyciu adresów internetowych oraz zapewnia pięć wierszy kontekstu do wyświetlenia identyfikatora portu.
 
-Zanotuj dowolnego adresu IP w raporcie ifconfig. Adresy na liście za pomocą nazwy portu, takich jak e0a lub e0b opcje są dobre. Nie należy używać dowolnych adresów IP wymienionych e7 * nazwą, ponieważ te nazwy są używane tylko w przypadku portów IPMI porty sieciowe nie regularne.  
+Zanotuj dowolnego adresu IP w raporcie ifconfig. Adresy na liście za pomocą nazwy portu, takich jak e0a lub e0b opcje są dobre. Nie należy używać dowolnych adresów IP wymienionych e7 * nazwą, ponieważ te nazwy są używane tylko dla portów usługi iDRAC/IPMI.  
 
 ## <a name="load-the-cluster-configuration-wizard"></a>Obciążenia Kreator konfiguracji klastra
 
@@ -213,7 +216,7 @@ Ustawienia w **zarządzania** sekcji służą do sieci, która zapewnia dostęp 
 
 * **Rozmiar jednostki MTU** — w razie potrzeby dostosuj maksymalna jednostka transmisji (MTU) dla klastra sieć zarządzania.
 
-* **Sieć zarządzania 1Gb użycia** — zaznacz to pole wyboru, jeśli chcesz przypisać sieci 1GbE dwa porty węzłów FXT z siecią zarządzania. Jeśli nie zaznaczysz to pole sieć zarządzania korzysta z najwyższy dostępny port szybkość. 
+* **Sieć zarządzania 1Gb użycia** — zaznacz to pole wyboru, jeśli chcesz przypisać sieci 1GbE dwa porty węzłów FXT z siecią zarządzania. (Musi mieć 25GbE/10 GbE portów dostępnych dla innego ruchu). Jeśli nie zaznaczysz to pole sieć zarządzania korzysta z najwyższy dostępny port szybkość. 
 
 ### <a name="configure-the-cluster-network"></a>Skonfigurowanie sieci klastrów 
 
@@ -281,7 +284,7 @@ Konfigurowanie nowego klastra za pomocą interfejsu sieci web Panelu sterowania.
 
 Zaloguj się do interfejsu sieci web przy użyciu nazwy użytkownika `admin` i hasło, które są ustawiane podczas tworzenia klastra.
 
-![przeglądarki sieci Web, wyświetlane pola logowania w Panelu sterowania](media/fxt-cluster-config/admin-login.png)
+![przeglądarki sieci Web, wyświetlane pola logowania w Panelu sterowania](media/fxt-cluster-create/admin-login.png)
 
 Panel sterowania otwiera się i pokazuje **pulpit nawigacyjny** strony. Po zakończeniu tworzenia klastra, wyświetlając wyczyścić wszystkie komunikaty ostrzegawcze.
 
@@ -289,7 +292,7 @@ Kliknij przycisk **ustawienia** kartę, aby skonfigurować klaster.
 
 Na **ustawienia** karcie lewym pasku bocznym pokazuje menu strony konfiguracji. Strony są zorganizowane według kategorii. Kliknij pozycję + lub - u góry nazwę kategorii, aby rozwinąć lub ukryć poszczególne strony.
 
-![Karta Ustawienia Panelu sterowania (w przeglądarce) z klastrem > strony główne ustawienia załadowany](media/fxt-cluster-config/settings-tab-populated.png)
+![Karta Ustawienia Panelu sterowania (w przeglądarce) z klastrem > strony główne ustawienia załadowany](media/fxt-cluster-create/settings-tab-populated.png)
 
 ## <a name="cluster-setup-steps"></a>Kroki instalacji klastra
 
@@ -315,7 +318,7 @@ Te kroki są wymagane w przypadku większości lub wszystkich klastrów.
 
   Odczyt [Konfigurowanie przestrzeni nazw](fxt-add-storage.md#configure-the-namespace) Aby uzyskać szczegółowe informacje. Ten krok obejmuje:
   * Tworzenie vservers
-  * Konfigurowanie żeby połączenia między magazynu widoku i zaplecze oparte na sieci klienta 
+  * Konfigurowanie żeby połączenia między widoku klienta w sieci i magazynu zaplecza 
   * Definiowanie których adres IP klienta adresy są obsługiwane przez każdego vserver
 
   > [!Note] 
@@ -370,7 +373,7 @@ Wykonaj następujące kroki, aby skonfigurować przekazywanie pomocy technicznej
 
 1. Przejdź do **klastra** > **pomocy technicznej** strony ustawień. Zaakceptuj zasady ochrony prywatności. 
 
-   ![Zrzut ekranu pokazujący Panel sterowania i wyskakujące okienko ze przycisk Potwierdź, aby zaakceptować zasady zachowania poufności informacji](media/fxt-cluster-config/fxt-privacy-policy.png)
+   ![Zrzut ekranu pokazujący Panel sterowania i wyskakujące okienko ze przycisk Potwierdź, aby zaakceptować zasady zachowania poufności informacji](media/fxt-cluster-create/fxt-privacy-policy.png)
 
 1. Kliknij przycisk trójkąta z lewej strony **informacje o kliencie** aby rozwinąć sekcję.
 1. Kliknij przycisk **Revalidate przekazywania informacji** przycisku.
@@ -378,13 +381,13 @@ Wykonaj następujące kroki, aby skonfigurować przekazywanie pomocy technicznej
 1. Zaznacz pola wyboru dla **monitorowania statystyk**, **przekazać ogólne informacje o**, i **przekazywanie informacji o awariach**.
 1. Kliknij przycisk **Submit** (Prześlij).  
 
-   ![Zrzut ekranu zawierającego klienta ukończone sekcji informacji o pomocy technicznej, strony ustawień](media/fxt-cluster-config/fxt-support-info.png)
+   ![Zrzut ekranu zawierającego klienta ukończone sekcji informacji o pomocy technicznej, strony ustawień](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Kliknij przycisk trójkąta z lewej strony **Secure aktywne pomocy technicznej (SPS)** aby rozwinąć sekcję.
 1. Pole wyboru dla **Włącz łącze dodatki Service Pack**.
 1. Kliknij przycisk **Submit** (Prześlij).
 
-   ![Zrzut ekranu, zawierający ukończone sekcję Secure aktywne pomocy technicznej na stronie Ustawienia pomocy technicznej](media/fxt-cluster-config/fxt-support-sps.png)
+   ![Zrzut ekranu, zawierający ukończone sekcję Secure aktywne pomocy technicznej na stronie Ustawienia pomocy technicznej](media/fxt-cluster-create/fxt-support-sps.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
