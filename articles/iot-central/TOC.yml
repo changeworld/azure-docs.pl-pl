@@ -62,7 +62,7 @@
         - name: Korzystanie ze zbiorów urządzeń
           href: howto-use-device-sets.md
         - name: Wersjonowanie szablonu urządzenia
-          href: howto-version-devicetemplate.md
+          href: howto-version-device-template.md
     - name: Monitorowanie i analizowanie
       items:
         - name: Tworzenie reguły telemetrii
@@ -105,6 +105,8 @@
           href: howto-prepare-images.md
         - name: Konfigurowanie pulpitu nawigacyjnego aplikacji
           href: howto-configure-homepage.md
+        - name: Korzystanie z kafelków pulpitu nawigacyjnego
+          href: howto-use-tiles.md
         - name: Dostosowywanie interfejsu użytkownika aplikacji
           href: howto-customize-ui.md
         - name: Używanie szablonów aplikacji

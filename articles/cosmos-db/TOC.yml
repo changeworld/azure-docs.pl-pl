@@ -460,10 +460,12 @@
               href: tutorial-query-graph.md
         - name: Przewodniki z instrukcjami
           items:
-            - name: Eksportowanie danych grafu
-              href: bulk-executor-graph-dotnet.md
+            - name: Modelowanie danych grafu
+              href: graph-modeling.md
             - name: Partycjonowanie danych grafu
               href: graph-partitioning.md
+            - name: Eksportowanie danych grafu
+              href: bulk-executor-graph-dotnet.md
             - name: Optymalizacja zapytań języka Gremlin
               href: graph-execution-profile.md
             - name: Magazynowanie danych rozwiązania Spring Data i zarządzanie nimi

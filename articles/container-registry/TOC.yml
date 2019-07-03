@@ -93,6 +93,8 @@
       items:
         - name: Omówienie zadań usługi ACR
           href: container-registry-tasks-overview.md
+        - name: Zaplanowane zadania
+          href: container-registry-tasks-scheduled.md
         - name: Zadania wieloetapowe
           href: container-registry-tasks-multi-step.md
         - name: Używanie z tożsamością zarządzaną
