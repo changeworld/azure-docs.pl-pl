@@ -221,8 +221,8 @@ Z listy węzłów transakcji, można uzyskać klucz publiczny. Skopiuj klucz pub
 
     | Wartość | Opis
     |-------|-------------
-    | \<klucz publiczny alfa węzła\> | Klucz publiczny alfa węzła
-    | \<Adres konta Ethereum\> | Adres konta Ethereum utworzone w węźle transakcji domyślne
+    | \<alpha node public key\> | Klucz publiczny alfa węzła
+    | \<Ethereum account address\> | Adres konta Ethereum utworzone w węźle transakcji domyślne
 
     W tym przykładzie wartość początkową **storeData** ma wartość 42.
 
@@ -392,8 +392,8 @@ Ponieważ firma Microsoft nie zadeklarował **beta** węzła klucz publiczny w *
 
     | Wartość | Opis
     |-------|-------------
-    | \<klucz publiczny alfa węzła\> | Klucz publiczny alfa węzła
-    | \<Adres konta Ethereum\> | Utworzone w węźle transakcji domyślny adres konta Ethereum.
+    | \<alpha node public key\> | Klucz publiczny alfa węzła
+    | \<Ethereum account address\> | Utworzone w węźle transakcji domyślny adres konta Ethereum.
 
     **privateFor** definiuje węzły, których transakcji jest dostępna. W tym przykładzie węzeł transakcji domyślne konto można rzutować prywatnej transakcji **alfa** węzła. Należy dodać klucze publiczne dla wszystkich uczestników transakcji prywatnych.
 
