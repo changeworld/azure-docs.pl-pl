@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 642fa87f8c838e10c4f18d8f4bdbab58d9501477
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 1990077e6466e08c1b6c463dafe9809b52df6d14
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502882"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537602"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki start: Uczenie modelu rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST za pomocą programu cURL
 
@@ -34,13 +34,13 @@ Aby ukończyć ten przewodnik Szybki Start, musisz mieć:
 
 ## <a name="train-a-form-recognizer-model"></a>Wytrenuj model rozpoznawania formularza
 
-Po pierwsze należy zestaw danych szkoleniowych w rozszerzeniu Azure Storage blob. Powinien mieć co najmniej pięć przykładowe rodzaje (PDF, dokumentów i/lub obrazów) tego samego typu/struktury jako główny danych wejściowych. Lub za pomocą pojedynczego pusty formularz dwie formy wypełnione. Nazwa pliku pusty formularz musi zawierać słowo "empty".
+Po pierwsze należy zestaw danych szkoleniowych w rozszerzeniu Azure Storage blob. Powinien mieć co najmniej pięć wypełniane Form (PDF, dokumentów i/lub obrazów) tego samego typu/struktury jako główny danych wejściowych. Lub za pomocą pojedynczego pusty formularz dwie formy wypełnione. Nazwa pliku pusty formularz musi zawierać słowo "empty". Zobacz [kompilacji szkoleniowy zestaw danych dla modelu niestandardowego](../build-training-data-set.md) porad i opcje dla zestawiania różnych danych szkoleniowych.
 
-Aby wytrenuj model rozpoznawania formularza za pomocą dokumentów w kontenerze obiektów blob platformy Azure, należy wywołać **szkolenie** interfejsu API, uruchamiając polecenie programu cURL, która jest zgodna. Przed uruchomieniem polecenia dokonaj następujących zmian:
+Aby wytrenuj model rozpoznawania formularza z dokumentami w kontenerze obiektów blob platformy Azure, należy wywołać **szkolenie** interfejsu API, uruchamiając następujące polecenie cURL. Przed uruchomieniem polecenia dokonaj następujących zmian:
 
 1. Zastąp `<Endpoint>` z punktem końcowym, uzyskany klucz subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
-1. Zastąp `<SAS URL>` udostępnionych kontenera magazynu obiektów blob Azure dostęp do adresu URL sygnatury (SAS). Aby pobrać to, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener, a wybierz **sygnatury dostępu współdzielonego Get**. Kliknij przycisk Dalej okno dialogowe, a następnie skopiuj wartość w **adresu URL** sekcji. Powinien on mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 1. Zastąp `<subscription key>` z kluczem subskrypcji został skopiowany w poprzednim kroku.
+1. Zastąp `<SAS URL>` udostępnionych kontenera magazynu obiektów blob Azure dostęp do adresu URL sygnatury (SAS). Aby pobrać to, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener, a wybierz **sygnatury dostępu współdzielonego Get**. Upewnij się, że **odczytu** i **listy** uprawnienia są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość w **adresu URL** sekcji. Powinien on mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"

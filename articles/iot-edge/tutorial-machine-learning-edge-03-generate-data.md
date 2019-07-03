@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a93b1128fe1ea0e03efc9060f2c3c4a93145f838
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 666172e3685b923ca0d0e5fa02878341fcd0a216
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432852"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543871"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Samouczek: Generowanie danych urządzenia symulowanego
 
@@ -121,9 +121,9 @@ Skoro mamy już projektów, kompilowanie, łączenie do Twojego Centrum IoT, dos
 
 1. Należy pamiętać, że urządzenia są dodawane do usługi IoT Hub i że urządzenia wyświetlane w kolorze zielonym aby wskazać, że dane są wysyłane za pośrednictwem tego urządzenia.
 
-1. Można wyświetlić komunikaty są wysyłane do Centrum, klikając prawym przyciskiem myszy na dowolnym urządzeniu i wybierając **Rozpocznij monitorowania komunikatu D2C**. Komunikaty pojawią się w okienku danych wyjściowych programu Visual Studio Code.
+1. Można wyświetlić komunikaty są wysyłane do Centrum, klikając prawym przyciskiem myszy na dowolnym urządzeniu i wybierając **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**. Komunikaty pojawią się w okienku danych wyjściowych programu Visual Studio Code.
 
-1. Zatrzymaj monitorowanie, klikając w **Azure IoT Hub Toolkit** dane wyjściowe w okienku, a następnie wybierz **Zatrzymaj monitorowanie komunikatu D2C**.
+1. Zatrzymaj monitorowanie, klikając w **Azure IoT Hub Toolkit** dane wyjściowe w okienku, a następnie wybierz **zatrzymać monitorowanie wbudowany zdarzeń punkt końcowy**.
 
 1. Zezwalaj aplikacji na zostało ukończone, która zajmuje kilka minut.
 

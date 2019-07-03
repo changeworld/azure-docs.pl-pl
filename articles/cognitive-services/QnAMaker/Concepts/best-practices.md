@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c796114d124c64ac1c373baacabe00c7dcd70aa7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd4f85822a5e6615e7ea6e31b4231c04c9d4e88c
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447628"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542850"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Najlepsze rozwiązania wiedzy usługi QnA Maker
 
@@ -97,7 +97,7 @@ Upewnij się, że wykonujesz optymalnie wykorzystać funkcje klasyfikacji, któr
 
 ### <a name="choosing-a-threshold"></a>Wybranie wartości progowej
 
-Wartość domyślna [współczynnik ufności](confidence-score.md#) który jest używany jako próg wynosi 50, jednak możesz je [zmienić próg](confidence-score.md#set-threshold) dla wiedzy na podstawie własnych potrzeb. Ponieważ każdy KB jest inny, możesz przetestować i wybierz wartość progową, która najlepiej dopasowane do wiedzy. 
+Wartość domyślna [współczynnik ufności](confidence-score.md) który jest używany jako próg wynosi 50, jednak możesz je [zmienić próg](confidence-score.md#set-threshold) dla wiedzy na podstawie własnych potrzeb. Ponieważ każdy KB jest inny, możesz przetestować i wybierz wartość progową, która najlepiej dopasowane do wiedzy. 
 
 ### <a name="choosing-ranker-type"></a>Wybieranie typu oceniania
 Domyślnie narzędzie QnA Maker przeszukuje pytań i odpowiedzi. Jeśli chcesz przeszukiwać tylko pytania do generowania odpowiedzi, użyj `RankerType=QuestionOnly` w treści żądania GenerateAnswer POST.

@@ -4,14 +4,14 @@ description: Jak okablowanie portów sieciowych i dołączyć zasilania dla sprz
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 444835a94559a352bfd749cfa1cb2cd8c3a39373
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae179e8ce2a2ba772a7fb14825660e0fff9e7410
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450310"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542937"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Samouczek: Tworzenie połączeń sieciowych i podaj zasilania do węzła filtr Edge FXT platformy Azure
 
@@ -43,7 +43,7 @@ Określ różne porty na odwrocie podkładki swoje filtr Edge FXT platformy Azur
 
 W tym artykule opisano również sposób [połączyć zasilacza](#connect-power-cables) dla węzła. 
 
-W tym artykule wyjaśniono również sposób łączenia z węzłem [portu szeregowego](#serial-port-only-when-necessary), ale portu szeregowego jest używany tylko do zaawansowanego rozwiązywania problemów. 
+W tym artykule wyjaśniono również sposób łączenia z węzłem [portu szeregowego](#serial-port-only-when-necessary), jeśli jest to niezbędne do wyspecjalizowanych procedur rozwiązywania problemów. 
 
 ### <a name="network-ports"></a>Porty sieciowe 
 
@@ -75,7 +75,7 @@ Typ połączeń do użycia w systemie zależy od środowiska centrum danych.
   * Bezpośrednie obsługą 25GbE typu SFP28 Podłącz kabel twinaxial
   * Bezpośrednie 10 GbE obsługą typu SFP28 Podłącz kabel twinaxial
 
-* Porty sieciowe 1GbE są używane dla klastra ruch związany z zarządzaniem. Sprawdź **korzystania z sieci zarządzania 1Gb** opcji podczas tworzenia klastra (opisanego w [skonfigurować sieć zarządzania](fxt-cluster-create.md#configure-the-management-network)). Podłączanie kabli portów za pomocą standardowych kategorii 5 lub kabla lepsze, zgodnie z opisem na liście obsługiwanych kable.
+* Porty sieciowe 1GbE są używane dla klastra ruch związany z zarządzaniem. Sprawdź **korzystania z sieci zarządzania 1Gb** opcji podczas tworzenia klastra, jeśli chcesz utworzyć sieć fizycznie oddzielona w przypadku konfiguracji klastra (opisanego w [skonfigurować sieć zarządzania](fxt-cluster-create.md#configure-the-management-network)). Podłączanie kabli portów za pomocą standardowych kategorii 5 lub kabla lepsze, zgodnie z opisem na liście obsługiwanych kable.
 
   Możesz pozostawić porty 1GbE uncabled, jeśli planujesz używać szybkich porty dla całego ruchu. Domyślnie porty sieciowe 1GbE nie są używane, jeśli wyższe port danych szybkość jest dostępna.  
 
@@ -115,12 +115,12 @@ Wykonaj te instrukcje, aby kierować kable za pośrednictwem CMA:
 1. Za pomocą CMA w położeniu usługi należy rozesłać pakietu kabel za pośrednictwem koszyków wewnętrznych i zewnętrznych (2).
 1. Użyj wstępnie zainstalowane taśm hook i pętli na końcu koszyków do zabezpieczenia kable (3).
 1. Typu Swing CMA w miejscu na pasku zadań (4).
-1. Przy użyciu kabla wskaźnika stanu preinstalowanych tyłu system i zabezpieczenia kabel routingu go CMA przez. Dołącz drugiej stronie kabel do rogu zewnętrznej koszyka CMA (5). 
+1. Zainstaluj kabel wskaźnika stanu tyłu system i zabezpieczenia kabel routingu go CMA przez. Dołącz drugiej stronie kabel do rogu zewnętrznej koszyka CMA (5). 
 
    > [!CAUTION]
    > Aby uniknąć potencjalnego uszkodzenia z wystające kable, należy zabezpieczyć wszelkie slack kabla wskaźnika stanu po routingu tego kabla za pośrednictwem CMA. 
 
-![Ilustracja CMA przy użyciu kabli zainstalowany](media/cma-cabling-scan-400.png)
+![Ilustracja CMA przy użyciu kabli zainstalowany](media/fxt-install/cma-cabling-400.png)
 
 > [!NOTE]
 >  Jeśli CMA nie został zainstalowany, użyj dwóch hook i pętli taśm podane w zestawie szyny kierować kable tyłu systemu.
@@ -129,7 +129,7 @@ Wykonaj te instrukcje, aby kierować kable za pośrednictwem CMA:
 >  2. Pakietu kable delikatnie, pobierając je wyczyść łączników systemu do lewej i prawej stronie.
 >  3. Wątek punktu zaczepienia i pętla taśm za pomocą tooled gniazda na zewnętrzne nawiasy CMA po każdej stronie systemu, aby zabezpieczyć pakiety kabel.
 > 
->     ![Kable kierowane bez CMA](media/fxt-route-cables-no-cma-400.png)
+>     ![Kable kierowane bez CMA](media/fxt-install/fxt-route-cables-no-cma-400.png)
 
 ## <a name="about-ip-address-requirements"></a>O wymaganiach dotyczących adresów IP
 

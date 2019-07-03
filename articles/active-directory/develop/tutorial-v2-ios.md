@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780da9359aaf645abc9b685fa9d90bbea9199759
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: b7d68f6f7079872b81b750ba71997117aaa27d33
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962167"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550577"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>Logowania użytkowników i wywoływania usługi Microsoft Graph w aplikacji systemu iOS
 
@@ -61,11 +61,11 @@ W tym samouczku spowoduje utworzenie nowego projektu. Jeśli chcesz zamiast tego
 3. Nadaj nazwę produktu, a następnie wybierz pozycję **dalej**.
 4. Wybierz folder, aby utworzyć aplikację, a następnie kliknij przycisk *Utwórz*.
 
-## <a name="register-your-application"></a>Zarejestruj swoją aplikację 
+## <a name="register-your-application"></a>Rejestrowanie aplikacji 
 
 Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch następnych sekcjach.
 
-### <a name="register-your-app"></a>Rejestrowanie aplikacji
+### <a name="register-your-app"></a>Zarejestruj swoją aplikację
 
 1. Przejdź do [witryny Azure portal](https://aka.ms/MobileAppReg) > Wybierz `New registration`. 
 2. Wprowadź **nazwa** aplikacji > `Register`. **Identyfikator URI przekierowania nie jest ustawiona na tym etapie**. 
@@ -97,7 +97,7 @@ Możesz użyć [Carthage](https://github.com/Carthage/Carthage) zainstalował `M
 github "AzureAD/microsoft-authentication-library-for-objc" "master"
 ```
 
-#### <a name="manually"></a>Ręcznie
+#### <a name="manually"></a>Ręczne
 
 Możesz również użyć narzędzia Git w module podrzędnym lub zapoznaj się z najnowszą wersją i używać jako platformę w aplikacji.
 
@@ -382,7 +382,7 @@ Po utworzeniu tokenu za pośrednictwem `self.accessToken`, aplikacja tej wartoś
 
 | Klucz nagłówka    | value                 |
 | ------------- | --------------------- |
-| Autoryzacja | Elementu nośnego < token dostępu > |
+| Authorization | Elementu nośnego \<token dostępu > |
 
 Dodaj następujące polecenie, aby `ViewController.swift`:
 

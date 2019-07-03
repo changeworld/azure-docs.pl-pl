@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 4/03/2019
+ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd5118b42f32a521df8e3acfffb68391d4021791
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579868"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541520"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Wysyłanie kwerend wyszukiwania do interfejsu API wyszukiwania wizualnego Bing
 
-W tym artykule opisano parametry i atrybuty liczby żądań wysyłanych do interfejsu API wyszukiwania wizualnego Bing, a także obiekt odpowiedzi.
+W tym artykule opisano parametry i atrybuty liczby żądań wysyłanych do interfejsu API wyszukiwania wizualnego Bing, a także obiekt odpowiedzi. 
 
 Możesz uzyskać szczegółowe informacje o pliku obrazu na trzy sposoby:
 
@@ -76,7 +76,7 @@ Poniżej przedstawiono parametry zapytania, które należy określić w żądani
 | Name (Nazwa) | Wartość | Typ | Wymagane |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Kod kraju, który reprezentuje, skąd pochodzą wyniki.<br /><br /> Jeśli ustawisz ten parametr, musisz także określić nagłówek [Accept-Language](#acceptlanguage). Usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście języków i łączy ten język z określonym kodem kraju, aby ustalić rynek, z którego mają być zwrócone wyniki. Jeśli lista języków nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie. Może też używać rynku zagregowanego lub domyślnego, zamiast podanego.<br /><br /> Tego parametru zapytania i parametru `Accept-Language` należy używać tylko wtedy, gdy jest określanych wiele języków. W przeciwnym razie należy użyć parametrów zapytania `mkt` i `setLang`.<br /><br /> Ten parametr i parametr zapytania [mkt](#mkt) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie. | String | Nie       |
-| <a name="mkt" />mkt   | Rynek, z którego pochodzą wyniki. <br /><br /> **UWAGA:** Na rynku, należy zawsze określić, jeśli jest znany. Określenie rynku pomaga usłudze Bing w kierowaniu żądania i zwracaniu odpowiedniej i optymalnej odpowiedzi.<br /><br /> Ten parametr i parametr zapytania [cc](#cc) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie. | String | Yes      |
+| <a name="mkt" />mkt   | Rynek, z którego pochodzą wyniki. <br /><br /> **UWAGA:** Na rynku, należy zawsze określić, jeśli jest znany. Określenie rynku pomaga usłudze Bing w kierowaniu żądania i zwracaniu odpowiedniej i optymalnej odpowiedzi.<br /><br /> Ten parametr i parametr zapytania [cc](#cc) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie. | String | Tak      |
 | <a name="safesearch" />safeSearch | Filtr zawartości dla dorosłych. Poniżej przedstawiono możliwe wartości filtru bez uwzględniania wielkości liter.<br /><ul><li>Off&mdash;zwracaj strony internetowe z tekstem i obrazami dla dorosłych.<br /><br/></li><li>Moderate&mdash;zwracaj strony internetowe z tekstem dla dorosłych, ale bez obrazów dla dorosłych.<br /><br/></li><li>Strict&mdash;nie zwracaj stron internetowych z tekstem i obrazami dla dorosłych.</li></ul><br /> Wartość domyślna to Moderate.<br /><br /> **UWAGA:** Jeśli żądanie pochodzi z rynku zasad treści dla dorosłych tego Bing wymaga `safeSearch` równa Strict, ignoruje Bing `safeSearch` wartość i używa Strict.<br/><br/>**UWAGA:** Jeśli używasz `site:` — operator zapytań, istnieje możliwość, że odpowiedzi może zawierać treści dla dorosłych niezależnie od tego, co będzie `safeSearch` ustawiono parametr zapytania. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych.  | String | Nie       |
 | <a name="setlang" />setLang  | Język ciągów interfejsu użytkownika. Określ język, przy użyciu ISO 639-1 dwuliterowych języka kodu. Na przykład kod języka dla języka angielskiego to EN. Wartość domyślna to EN (język angielski).<br /><br /> Mimo, że jest to opcjonalne, należy zawsze określić język. Na ogół dla parametru `setLang` ustawia się język określony przez parametr `mkt`, chyba że użytkownik chce, aby ciągi interfejsu użytkownika były wyświetlane w innym języku.<br /><br /> Ten parametr i nagłówek [Accept-Language](#acceptlanguage) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Ponadto wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język. | String | Nie   |
 
@@ -192,6 +192,9 @@ Content-Disposition: form-data; name="knowledgeRequest"
 ```
 
 ## <a name="bing-visual-search-responses"></a>Odpowiedzi wyszukiwania wizualnego Bing
+
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 Jeśli dla obrazu są dostępne szczegółowe informacje, odpowiedź obejmuje co najmniej jeden obiekt `tags` zawierający te szczegółowe informacje. `image` Pole zawiera token szczegółowe informacje dla obrazu wejściowego:
 

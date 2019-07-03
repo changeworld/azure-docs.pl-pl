@@ -4,20 +4,20 @@ description: Dowiedz się, jak utworzyć aplikację internetową jednej strony, 
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 2f25267b95e9ed5f7d5f6e6373fb9e3807927a7f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: e415c681ae5a35de6e8ff76e09cfef8cc8cc98f8
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735351"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544080"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights
 
-Ten samouczek przeprowadzi Cię przez proces tworzenia własnych aplikacji jednej strony sieci web (SPA) dostęp do danych usługi Azure Time Series Insights. 
+Ten samouczek przeprowadzi Cię przez proces tworzenia własnych aplikacji jednej strony sieci web (SPA) dostęp do danych usługi Azure Time Series Insights.
 
 Niniejszy samouczek zawiera informacje na temat następujących zagadnień:
 
@@ -50,55 +50,14 @@ Ten samouczek używa również dane ze środowiska usługi Time Series Insights 
 
 ## <a name="register-the-application-with-azure-ad"></a>Rejestrowanie aplikacji w usłudze Azure AD
 
-Przed utworzeniem aplikacji, należy zarejestrować go za pomocą usługi Azure AD. Rejestracji zawiera Konfiguracja tożsamości, dzięki czemu aplikacja może użyć obsługi uwierzytelniania OAuth dla logowania jednokrotnego. OAuth wymaga aplikacji jednostronicowych typu grant niejawna autoryzacja. Należy zaktualizować autoryzacji w manifeście aplikacji. Manifest aplikacji to reprezentacja JSON konfiguracji tożsamości aplikacji.
-
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu swojego konta subskrypcji platformy Azure.  
-1. Wybierz pozycję **Azure Active Directory** > **Rejestracje aplikacji** > **Rejestrowanie nowej aplikacji**.
-
-   [![Portal Azure — rejestrowanie aplikacji Begin usługi Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png#lightbox)
-
-1. W **Utwórz** okienku i wypełnij wymagane parametry.
-
-   Parametr|Opis
-   ---|---
-   **Nazwa** | Wprowadź nazwę opisową rejestracji.  
-   **Typ aplikacji** | Pozostaw **aplikacji/interfejs API sieci Web**.
-   **Adres URL logowania** | Wprowadź adres URL logowania (macierzysty) strony aplikacji. Ponieważ aplikacja będzie później hostowane w usłudze Azure App Service, musisz użyć adresu URL przy użyciu protokołu https:\//azurewebsites.net domeny. W tym przykładzie nazwa jest oparta na nazwie rejestracji.
-
-   Wybierz **Utwórz** do utworzenia nowej rejestracji aplikacji.
-
-   [![Witryna Azure portal — tworzenie opcji w okienku rejestracji aplikacji usługi Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png#lightbox)
-
-1. Zasób aplikacji zawiera inne aplikacje mogą używać interfejsów API REST. Interfejsy API są także zarejestrowane w usłudze Azure AD. Interfejsy API zapewniają szczegółowe, bezpiecznego dostępu do aplikacji klienta przez udostępnianie *zakresy*. Ponieważ Twoja aplikacja wywołuje interfejs API usługi Azure czas serii szczegółowe informacje, należy określić interfejsu API i zakresu. Dla interfejsu API i zakresu, w czasie wykonywania jest udzielane uprawnienie. Wybierz **ustawienia** > **wymagane uprawnienia** > **Dodaj**.
-
-   [![Portal Azure — w przypadku dodawania opcji dodawania uprawnień usługi Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png#lightbox)
-
-1. W **dostępu Dodaj interfejs API** okienku wybierz **1 Wybierz interfejs API** do określenia interfejsu API usługi Azure czas serii szczegółowych informacji. W **wybierz interfejs API** okienko, w polu wyszukiwania wprowadź **usługi azure time**. Następnie wybierz **Azure Time Series Insights** na liście wyników. Wybierz pozycję **Wybierz**.
-
-   [![Witryna Azure portal — opcji wyszukiwania, aby dodać uprawnienia usługi Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png#lightbox)
-
-1. Aby wybrać zakres dla interfejsu API w **dostępu Dodaj interfejs API** okienku wybierz **2 uprawnienia Select**. W **Włącz dostęp za pomocą** okienku wybierz **usługi dostępu do usługi Azure Time Series Insights** zakresu. Wybierz pozycję **Wybierz**. Następuje powrót do **dostępu Dodaj interfejs API** okienka. Wybierz pozycję **Done** (Gotowe).
-
-   [![Witryna Azure portal — Ustawianie zakresu dodawania uprawnień usługi Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png#lightbox)
-
-1. W **wymagane uprawnienia** okienko, interfejs API Azure czas serii Insights są teraz wyświetlane. Ponadto należy podać uprawnienia wstępne wyrażania zgody dla aplikacji, dostęp do interfejsu API i zakresu dla wszystkich użytkowników. Wybierz **udzielić uprawnień**, a następnie wybierz pozycję **tak**.
-
-   [![Witryna Azure portal — Grant option uprawnienia do dodawania usługi Azure AD wymagane uprawnienia](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png#lightbox)
-
-1. Jak wspomniano wcześniej, należy również zaktualizować manifest aplikacji. W poziomie menu w górnej części okienka ("nawigacji"), wybierz nazwę aplikacji, aby powrócić do **zarejestrowana aplikacja** okienka. Wybierz **manifestu**, zmień `oauth2AllowImplicitFlow` właściwości `true`, a następnie wybierz pozycję **Zapisz**.
-
-   [![Witryna Azure portal — manifest aktualizacji usługi Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png#lightbox)
-
-1. W obszarze nawigacji, wybierz nazwę aplikacji, aby powrócić do **zarejestrowana aplikacja** okienka. Skopiuj wartości pól **strony głównej** i **identyfikator aplikacji** dla aplikacji. W dalszej części tego samouczka możesz użyć tych właściwości.
-
-   [![Portal Azure — kopiowanie adres URL strony głównej i identyfikator aplikacji wartości dla swojej aplikacji](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png#lightbox)
+[!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
 ## <a name="build-and-publish-the-web-application"></a>Kompilowanie i publikowanie aplikacji internetowej
 
 1. Utwórz katalog do przechowywania plików projektu aplikacji. Następnie przejdź do każdego z następujących adresów URL. Kliknij prawym przyciskiem myszy **Raw** łącze w prawym górnym rogu strony, a następnie wybierz **Zapisz jako** do zapisania plików w katalogu projektu.
 
-   - [*index.html*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): HTML i JavaScript dla strony
-   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): Arkusz stylów CSS
+   - [*index.HTML*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): HTML i JavaScript dla strony
+   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): arkusz stylów CSS
 
    > [!NOTE]
    > W zależności od przeglądarki może być konieczne zmienić rozszerzeń plików HTML i CSS przed zapisaniem pliku.
@@ -142,7 +101,7 @@ Przed utworzeniem aplikacji, należy zarejestrować go za pomocą usługi Azure 
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Aby skonfigurować aplikację do używania Identyfikatora rejestracji aplikacji usługi Azure AD, zmień `clientID` i `postLogoutRedirectUri` wartości do użycia wartości **identyfikator aplikacji** i **strony głównej** skopiowany w kroku 9 [ Rejestrowanie aplikacji w usłudze Azure AD](#register-the-application-with-azure-ad).
+   1. Aby skonfigurować aplikację do używania Identyfikatora rejestracji aplikacji usługi Azure AD, zmień `clientID` wartość używaną **identyfikator aplikacji** skopiowane w **kroku 3** podczas możesz [zarejestrowanych aplikacji Używaj usługi Azure AD](#register-the-application-with-azure-ad). Jeśli utworzono **adres URL wylogowania** w usłudze Azure AD, należy ustawić tę wartość jako `postLogoutRedirectUri` wartość.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -182,9 +141,9 @@ Przed utworzeniem aplikacji, należy zarejestrować go za pomocą usługi Azure 
 
 Kod/warunek błędu | Opis
 ---------------------| -----------
-*AADSTS50011: brak adresów odpowiedzi zarejestrowanych dla aplikacji.* | Brak rejestracji w usłudze Azure AD **adres URL odpowiedzi** właściwości. Przejdź do **ustawienia** > **adresy URL odpowiedzi** za rejestrację aplikacji usługi Azure AD. Upewnij się, że **logowania jednokrotnego** adresu URL określonego w kroku 3 procedury [zarejestrować aplikację w usłudze Azure AD](#register-the-application-with-azure-ad) jest obecny.
-*AADSTS50011: Odpowiedź adres url określony w żądaniu jest niezgodna z adresów URL odpowiedzi skonfigurowane dla aplikacji: "\<Aplikacji identyfikator GUID >".* | `postLogoutRedirectUri` Określonego w kroku 6 [podczas tworzenia i publikowania aplikacji sieci web](#build-and-publish-the-web-application) musi odpowiadać wartości określone w obszarze **ustawienia** > **adresy URL odpowiedzi** w rejestrację aplikacji usługi Azure AD. Należy również zmienić wartość **docelowy adres URL** używać *https* na kroku 5 w [podczas tworzenia i publikowania aplikacji sieci web](#build-and-publish-the-web-application).
-Ładuje aplikację sieci web, ale ma stylu, tylko tekst strony logowania, na białym tle. | Sprawdź, czy ścieżki omówione w kroku 4 w [podczas tworzenia i publikowania aplikacji sieci web](#build-and-publish-the-web-application) są poprawne. Jeśli aplikacja internetowa nie może znaleźć plików CSS, styl strony będzie niepoprawny.
+*AADSTS50011: brak adresów odpowiedzi zarejestrowanych dla aplikacji.* | Brak rejestracji w usłudze Azure AD **adres URL odpowiedzi** właściwości. Przejdź do **ustawienia** > **adresy URL odpowiedzi** za rejestrację aplikacji usługi Azure AD. Upewnij się, że **identyfikator URI przekierowania** miał możliwość określenia w **kroku 2** po użytkownik [zarejestrowanych aplikacji do korzystania z usługi Azure AD](#register-the-application-with-azure-ad) znajduje się.
+*AADSTS50011: Odpowiedź adres url określony w żądaniu jest niezgodna z adresów URL odpowiedzi skonfigurowane dla aplikacji: "\<Aplikacji identyfikator GUID >".* | `postLogoutRedirectUri` Określonych w **kroku 6** w [podczas tworzenia i publikowania aplikacji sieci web](#build-and-publish-the-web-application) musi odpowiadać wartości określone w obszarze **ustawienia**  >  **Adresy URL odpowiedzi** w Twojej rejestracji aplikacji usługi Azure AD. Należy również zmienić wartość **docelowy adres URL** używać *https* na **kroku 5** w [podczas tworzenia i publikowania aplikacji sieci web](#build-and-publish-the-web-application).
+Ładuje aplikację sieci web, ale ma stylu, tylko tekst strony logowania, na białym tle. | Sprawdź, czy ścieżki omówione w **kroku 4** w [podczas tworzenia i publikowania aplikacji sieci web](#build-and-publish-the-web-application) są poprawne. Jeśli aplikacja internetowa nie może znaleźć plików CSS, styl strony będzie niepoprawny.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 6b7c3099415aed9529727a1de30cd832189db58d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 36ed354304cb1c88e48088f4b36c1ad0350af0dc
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450380"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543025"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Samouczek: Konfigurowanie ustawień sieciowych klastra 
 
@@ -23,7 +23,7 @@ Dowiesz się:
 
 > [!div class="checklist"]
 > * Ustawienia sieci, które może być konieczna aktualizacja po utworzeniu klastra
-> * Które przypadki użycia filtr Edge FXT wymagają serwera AD lub serwer DNS 
+> * Które przypadki użycia filtr Edge FXT Azure wymagają serwera AD lub serwer DNS 
 > * Jak skonfigurować działanie okrężne DNS (RRDNS), aby automatycznie równoważyć obciążenie klienta żądaniami klastrowi FXT
 
 Ilość czasu potrzebnego do wykonania tych kroków, zależy od tego, jak wiele zmian w konfiguracji są wymagane w systemie:
@@ -105,7 +105,7 @@ Aby uzyskać optymalną wydajność należy skonfigurować serwer DNS do obsług
 
 Vserver klastra jest wyświetlany po lewej stronie, a adresy IP są wyświetlane w Centrum i po prawej stronie. Skonfiguruj każdy punkt dostępu klienta, a rekordy i wskaźniki, jak pokazano.
 
-![Diagram DNS okrężnego klastra — następujące łącze szczegółowe tekst alternatywny obrazu](media/fxt-rrdns-diagram.png) 
+![Diagram DNS okrężnego klastra — następujące łącze szczegółowe tekst alternatywny obrazu](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
 [szczegółowy opis tekstowy](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
 
 Każdy klient dostępnego adresu IP musi mieć unikatową nazwę do użytku wewnętrznego przez klaster. (W tym diagramie adresów IP klienta są nazywane vs1 — klient - IP-* w celu uściślenia, ale w środowisku produkcyjnym należy prawdopodobnie używać coś bardziej zwięzły, takich jak klient *.)

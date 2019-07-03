@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 537a03710d28be607630cf252d2f187843991048
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5380713af17a751ab695fee90895b4f6b0d2369b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438718"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542810"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web  
 
@@ -39,6 +39,8 @@ Podczas wyszukiwania w Internecie Bing wysyłać żądania wyszukiwania, zwraca 
 ```
 
 Zazwyczaj wyszukiwania w Internecie Bing zwraca podzbiór odpowiedzi. Na przykład, jeśli został wyszukiwanego terminu *dinghies prowadzenia*, odpowiedź może zawierać `webPages`, `images`, i `rankingResponse`. Jeśli nie znasz [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) umożliwiające filtrowanie stron sieci Web, odpowiedź zawsze zawiera `webpages` i `rankingResponse` odpowiedzi.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ## <a name="webpages-answer"></a>Odpowiedzi stron sieci Web
 

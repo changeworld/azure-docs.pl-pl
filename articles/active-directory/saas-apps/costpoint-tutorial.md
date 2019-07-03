@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 06/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ebc5d1d7cac78066fa4e6028b1921211cb05bf5
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: f21c7896f0ed2afba3a302b4686289cf331ba510
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144641"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536837"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Samouczek: Integracja Costpoint za pomocą usługi Azure Active Directory
 
@@ -78,14 +78,18 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, aplikacja jest wstępnie skonfigurowana i wymaganych adresów URL już są wstępnie wypełniane przy użyciu platformy Azure. Użytkownik musi zapisać konfigurację, klikając **Zapisz** znajdujący się i wykonać następujące czynności:
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-    a. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<CostpointURI>`
 
-    b. W **tan przekaźnika** pole tekstowe, wpisz wartość przy użyciu następującego wzorca:`<SYSTEM VALUE>`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<CostpointURI>/LoginServlet.cps`
+
+    c. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
+
+    d. W **tan przekaźnika** pole tekstowe, wpisz wartość przy użyciu następującego wzorca:`<SYSTEM VALUE>`
 
     > [!NOTE]
-    > Wartość stanu przekazywania nie jest prawdziwe. Zaktualizuj tę wartość rzeczywistą wartością stanu przekaźnika. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Costpoint](https://www.deltek.com/about/contact-us) aby zyskać tę wartość.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i stan przekazywania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Costpoint](https://www.deltek.com/about/contact-us) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę usług**, wykonaj następujący krok:
 

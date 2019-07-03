@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: f169f969a1acf4cefc8cee27f74a99730491176a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389412"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542765"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Pobieranie obrazów z sieci web za pomocą interfejsu API wyszukiwania obrazów Bing
 
@@ -31,10 +31,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
+Użyj [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) parametru zapytania dla terminu wyszukiwania zakodowane w adresie url. Na przykład, jeśli zostanie wprowadzona *dinghies prowadzenia*ustaw `q` do `sailing+dinghies` lub `sailing%20dinghies`.
+
 > [!IMPORTANT]
 > * Wszystkie żądania muszą być wykonane z serwera, a nie od klienta.
 > * Jeśli po raz pierwszy wywołanie dowolnego z interfejsami API wyszukiwania Bing, nie dołączaj nagłówek identyfikator klienta. Tylko zawierać identyfikator klienta, jeśli został wcześniej wywołania interfejsu API Bing, który zwrócony identyfikator klienta dla kombinacji urządzenia i użytkownika.
-> * Obrazy muszą być wyświetlone w kolejności dostarczonej w odpowiedzi.
 
 ## <a name="get-images-from-a-specific-web-domain"></a>Pobieranie obrazów z domeny sieci web.
 
@@ -46,17 +47,6 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 
 > [!NOTE]
 > Odpowiedzi na zapytania przy użyciu `site:` operator może zawierać treści dla dorosłych niezależnie od wartości [bezpieczne wyszukiwanie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) ustawienie. Używaj tylko `site:` Jeśli masz świadomość zawartości w domenie.
-
-Poniższy przykład pokazuje, jak z witryny ContosoSailing.com pobrać małe obrazy, które usługa Bing odnalazła w zeszłym tygodniu.  
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&size=small&freshness=week&mkt=en-us HTTP/1.1  
-Ocp-Apim-Subscription-Key: 123456789ABCDE  
-X-MSEdge-ClientIP: 999.999.999.999  
-X-Search-Location: lat:47.60357;long:-122.3295;re:100  
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
-Host: api.cognitive.microsoft.com  
-```
 
 ## <a name="filter-images"></a>Filtruj obrazy
 
@@ -73,9 +63,6 @@ Host: api.cognitive.microsoft.com
 
 Aby uzyskać obrazy z określonej domeny, należy użyć operatora [site:](https://msdn.microsoft.com/library/ff795613.aspx) zapytania.
 
- > [!NOTE]
- > Odpowiedzi na zapytania przy użyciu `site:` operator może zawierać treści dla dorosłych niezależnie od wartości [bezpieczne wyszukiwanie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) ustawienie. Używaj tylko `site:` Jeśli masz świadomość zawartości w domenie.
-
 Poniższy przykład pokazuje, jak uzyskać małe obrazy z ContosoSailing.com, które Bing wykryte w ostatnim tygodniu.  
 
 ```http
@@ -90,6 +77,10 @@ Host: api.cognitive.microsoft.com
 ## <a name="bing-image-search-response-format"></a>Format odpowiedzi wyszukiwania obrazów Bing
 
 Zawiera komunikat odpowiedzi z usługi Bing [obrazów](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) odpowiedzi, który zawiera listę obrazów, które usług Cognitive Services uznane za istotne dla kwerendy. Każdy [obraz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) obiektu na liście zawiera następujące informacje dotyczące obrazu: adres URL, jego rozmiar, wymiary, jego format kodowania adresu URL miniaturę obrazu i wymiary miniaturę.
+
+> [!NOTE]
+> * Obrazy muszą być wyświetlone w kolejności dostarczonej w odpowiedzi.
+> * Ponieważ formatów adresów URL i parametry mogą ulec zmianie bez powiadomienia, należy użyć wszystkich adresów URL jako-to. Nie powinna przyjmować zależności na format adresu URL lub parametry, z wyjątkiem sytuacji, gdy podane.
 
 ```json
 {

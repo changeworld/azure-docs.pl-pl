@@ -39,7 +39,7 @@ Każdy zdefiniowany przepływ pracy określa:
 
 Aplikacji łańcucha bloków zawiera konfiguracji metadanych, przepływy pracy i ról użytkowników, którzy mogą działać lub wziąć udział w aplikacji.
 
-| Pole | Opis | Wymagane |
+| Pole | Description | Wymagane |
 |-------|-------------|:--------:|
 | ApplicationName | Unikatowa nazwa aplikacji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **ApplicationName** dla klasy stosownej umowy.  | Tak |
 | DisplayName | Przyjazną nazwę wyświetlaną aplikacji. | Yes |
@@ -49,15 +49,15 @@ Aplikacji łańcucha bloków zawiera konfiguracji metadanych, przepływy pracy i
 
 Aby uzyskać przykład, zobacz [przykładowy plik konfiguracji](#configuration-file-example).
 
-## <a name="workflows"></a>Przepływy pracy
+## <a name="workflows"></a>Workflows
 
 Logika biznesowa aplikacji może być modelowane jako automatu stanów, których podjęcie działania powoduje, że przepływ logikę biznesową, aby przenieść z jednego stanu do drugiego. Przepływ pracy jest kolekcją tych stanów i akcje. Każdy przepływ pracy składa się z co najmniej jeden kontraktów inteligentnych, które reprezentują logikę biznesową w plikach kodu. Kontrakt pliku wykonywalnego jest wystąpieniem przepływu pracy.
 
-| Pole | Opis | Wymagane | Maksymalna długość |
+| Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
 | Name (Nazwa) | Nazwa unikatowa przepływu pracy. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla klasy stosownej umowy. | Yes | 50 |
-| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną przepływu pracy. | Yes | 255 |
-| Opis | Opis przepływu pracy. | Nie | 255 |
+| DisplayName | Przyjazną nazwę wyświetlaną przepływu pracy. | Yes | 255 |
+| Description | Opis przepływu pracy. | Nie | 255 |
 | Inicjatory | Kolekcja [ApplicationRoles](#application-roles). Role, które są przypisane do użytkowników autoryzowanych do utworzenia kontraktów w przepływie pracy. | Tak | |
 | StartState | Nazwa stanu początkowego przepływu pracy. | Tak | |
 | Właściwości | Kolekcja [identyfikatory](#identifiers). Reprezentuje dane mogą być odczytywane poza łańcuchem i wizualizowany w użytkownika środowiska narzędzi. | Yes | |
@@ -71,7 +71,7 @@ Aby uzyskać przykład, zobacz [przykładowy plik konfiguracji](#configuration-f
 
 Obsługiwane typy danych.
 
-| Typ | Opis |
+| Typ | Description |
 |-------|-------------|
 | address  | Łańcuch bloków adresów typu, takie jak *umów* lub *użytkowników*. |
 | tablica    | Pojedynczą tablicę poziomu typu integer, bool, pieniędzy i czasu. Tablice mogą być statyczne lub dynamiczne. Użyj **ElementType** na określony typ danych elementów w tablicy. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-array). |
@@ -174,7 +174,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 Definiuje parametry wejściowe dla wystąpienia przepływu pracy.
 
-| Pole | Opis | Wymagane |
+| Pole | Description | Wymagane |
 |-------|-------------|:--------:|
 | Parametry | Kolekcja [identyfikatory](#identifiers) musi inicjować inteligentne kontraktu. | Yes |
 
@@ -207,11 +207,11 @@ Definiuje parametry wejściowe dla wystąpienia przepływu pracy.
 
 Definiuje funkcje, które mogą być wykonywane w przepływie pracy.
 
-| Pole | Opis | Wymagane | Maksymalna długość |
+| Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
 | Name (Nazwa) | Unikatowa nazwa funkcji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich funkcji. | Tak | 50 |
-| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną funkcji. | Yes | 255 |
-| Opis | Opis funkcji | Nie | 255 |
+| DisplayName | Przyjazną nazwę wyświetlaną funkcji. | Yes | 255 |
+| Description | Opis funkcji | Nie | 255 |
 | Parametry | Kolekcja [identyfikatory](#identifiers) odpowiadający parametrów funkcji. | Tak | |
 
 ### <a name="functions-example"></a>Przykład funkcji
@@ -255,11 +255,11 @@ Definiuje funkcje, które mogą być wykonywane w przepływie pracy.
 
 Kolekcja unikatowych stanów w przepływie pracy. Każdy stan przechwytuje krok w przepływie sterowania logiki biznesowej. 
 
-| Pole | Opis | Wymagane | Maksymalna długość |
+| Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
 | Name (Nazwa) | Unikatowa nazwa stanu. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dotyczy stanu. | Yes | 50 |
-| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną stanu. | Tak | 255 |
-| Opis | Opis stanu. | Nie | 255 |
+| DisplayName | Przyjazną nazwę wyświetlaną stanu. | Tak | 255 |
+| Description | Opis stanu. | Nie | 255 |
 | ProcentWykonania | Wartość całkowitą, wyświetlana w interfejsie użytkownika aplikacji Blockchain Workbench, aby wyświetlić postęp na przepływ sterowania logiki biznesowej. | Tak | |
 | Styl | Wskazówka Visual wskazująca, czy stan reprezentuje stan powodzenia lub niepowodzenia. Istnieją dwa prawidłowe wartości: `Success` lub `Failure`. | Yes | |
 | Przejścia | Kolekcja dostępnych [przejścia](#transitions) od bieżącego stanu do następnego zestawu stanów. | Nie | |
@@ -324,12 +324,12 @@ Kolekcja unikatowych stanów w przepływie pracy. Każdy stan przechwytuje krok 
 
 Dostępne akcje do następnego stanu. Co najmniej jedna rola użytkownika może wykonywać działania na każdy stan, gdy akcja może przejście stanu do innego stanu w przepływie pracy. 
 
-| Pole | Opis | Wymagane |
+| Pole | Description | Wymagane |
 |-------|-------------|:--------:|
 | AllowedRoles | Lista ról aplikacji dzienniki może inicjować przejścia. Wszyscy użytkownicy w określonej roli może być możliwe do wykonania akcji. | Nie |
 | AllowedInstanceRoles | Lista ról użytkownika, udział lub określone w umowie inteligentne mogą inicjować przejścia. Wystąpienia roli są zdefiniowane w **właściwości** w ramach przepływów pracy. AllowedInstanceRoles reprezentuje użytkownika z uczestnictwa w wystąpieniu inteligentne kontraktu. AllowedInstanceRoles zapewniają możliwość ograniczenia podjęcie działania do roli użytkownika w wystąpieniu kontraktu.  Na przykład może być tylko chcesz zezwolić użytkownika, który utworzył kontraktu (InstanceOwner), aby można było zakończyć zamiast wszystkich użytkowników w Typ roli (właściciela), jeśli określona rola w AllowedRoles. | Nie |
-| Nazwa wyświetlana | Przyjazną nazwę wyświetlaną przejścia. | Tak |
-| Opis | Opis przejścia. | Nie |
+| DisplayName | Przyjazną nazwę wyświetlaną przejścia. | Tak |
+| Description | Opis przejścia. | Nie |
 | Funkcja | Nazwa funkcji do inicjowania przejścia. | Tak |
 | NextStates | Kolekcja potencjalnych stanów dalej po pomyślnym przejściu. | Tak |
 
@@ -369,10 +369,10 @@ Dostępne akcje do następnego stanu. Co najmniej jedna rola użytkownika może 
 
 Role aplikacji zdefiniować zestaw ról, które można przypisać do użytkowników, którzy chcą działania lub wziąć udział w aplikacji. Role aplikacji może służyć do ograniczania akcje strumieniowo rozgrywki i uczestniczenia w ramach łańcucha bloków aplikacji i odpowiednie przepływy pracy. 
 
-| Pole | Opis | Wymagane | Maksymalna długość |
+| Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
 | Name (Nazwa) | Unikatowa nazwa roli aplikacji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich ról. Nazwy typów podstawowych są zastrzeżone. Nie można nadać nazwy roli aplikacji z taką samą nazwę jak [typu](#type)| Yes | 50 |
-| Opis | Opis roli aplikacji. | Nie | 255 |
+| Description | Opis roli aplikacji. | Nie | 255 |
 
 ### <a name="application-roles-example"></a>Przykład ról aplikacji
 
@@ -392,11 +392,11 @@ Role aplikacji zdefiniować zestaw ról, które można przypisać do użytkownik
 
 Identyfikatory reprezentują kolekcję informacje używane do opisywania właściwości przepływu pracy, Konstruktor i parametrów funkcji. 
 
-| Pole | Opis | Wymagane | Maksymalna długość |
+| Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
 | Name (Nazwa) | Unikatowa nazwa właściwości lub parametru. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich właściwości lub parametru. | Tak | 50 |
-| Nazwa wyświetlana | Przyjazna nazwa wyświetlana dla właściwości lub parametru. | Tak | 255 |
-| Opis | Opis właściwości lub parametru. | Nie | 255 |
+| DisplayName | Przyjazna nazwa wyświetlana dla właściwości lub parametru. | Tak | 255 |
+| Description | Opis właściwości lub parametru. | Nie | 255 |
 
 ### <a name="identifiers-example"></a>Przykład identyfikatorów
 

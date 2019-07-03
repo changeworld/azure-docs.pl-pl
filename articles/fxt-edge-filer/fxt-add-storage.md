@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a16e654ff92c450438ac91c590b42d22201d015
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4a69aa7838e08c83b47c5f0248e821edf86b3990
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450457"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543325"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Samouczek: Dodawanie magazynu zaplecza i konfigurowanie wirtualnej przestrzeni nazw 
 
@@ -59,7 +59,7 @@ Zdefiniować filtr core, klikając **Utwórz** znajdujący się na **filtr Core*
 
 ![Kliknięcie przycisku Utwórz powyżej listy core filtrach na stronie Zarządzanie filtrach Core](media/fxt-cluster-config/create-core-filer-button.png)
 
-**Dodaj nowy filtr Core** Kreator przeprowadzi Cię przez proces tworzenia filtr core prowadzący do wewnętrznej bazy danych magazynu. Przewodnik po konfiguracji klastra zawiera opisy krok po kroku procesu, który różni się dla systemu plików NFS/NAS magazynu i Magazyn w chmurze (linki znajdują się powyżej). 
+**Dodaj nowy filtr Core** Kreator przeprowadzi Cię przez proces tworzenia filtr core, który stanowi łącze do magazynu zaplecza. Przewodnik po konfiguracji klastra zawiera opisy krok po kroku procesu, który różni się dla systemu plików NFS/NAS magazynu i Magazyn w chmurze (linki znajdują się powyżej). 
 
 Podzadania obejmują:
 
@@ -77,7 +77,7 @@ Podzadania obejmują:
 
 * Dla magazynu w chmurze należy określić cloud service i poświadczenia dostępu, wśród innych parametrów. Aby uzyskać więcej informacji, przeczytaj [w chmurze usługa i protokół](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) w przewodniku po konfiguracji klastra.
 
-  ![Informacje o filtr core chmury w Kreatorze nowego filtr Core](media/fxt-cluster-config/new-core-filer-cloud3.png) <!-- xxx get an Azure version of this screenshot xxx -->
+  ![Informacje o filtr core chmury w Kreatorze nowego filtr Core](media/fxt-cluster-config/new-core-filer-cloud3.png) 
   
   Jeśli już dodano poświadczenia dostępu do chmury dla tego klastra, zostaną one wyświetlone na liście. Aktualizowanie i dodawanie poświadczenia w **klastra** > **poświadczenia chmury** strony ustawień. 
 
@@ -135,7 +135,7 @@ Użyj **VServer** > **Zarządzanie VServers** ustawienia strony, aby utworzyć n
 
 ### <a name="create-a-junction"></a>Utwórz połączenie
 
-A *Rozgałęzienie* mapuje ścieżka magazynu zaplecza do klienta widoczne przestrzeni nazw.
+A *Rozgałęzienie* mapuje ścieżki do magazynu zaplecza do klienta widoczne przestrzeni nazw.
 
 Można użyć tego systemu, aby uprościć ścieżki punktów instalacji klienta i pozwala bezproblemowo skalować wydajność, ponieważ jedną ścieżkę wirtualną może pomieścić usługi storage z poziomu wielu filtrach core.
 
@@ -161,4 +161,4 @@ Zapoznaj się z artykułami przewodnik konfiguracji klastra [kontrolowanie dost�
 Po dodaniu magazynu i konfigurowanie przestrzeni nazw ukierunkowane na klienta, należy zakończyć początkowej konfiguracji klastra: 
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie ustawień sieciowych klastra](fxt-configure-network.md)
+> [Konfigurowanie ustawień sieci klastrów](fxt-configure-network.md)

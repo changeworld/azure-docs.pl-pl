@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: dd74b82d4edad2b0176a3724176d924c2387f6fe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b48d8d74843947c3e40dc80234560b0147be6eea
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450324"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542967"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Samouczek: Zainstaluj klaster
 
@@ -61,11 +61,9 @@ Istnieją trzy elementy do polecenia instalacji:
 
 Ścieżka klastra jest kombinacją vserver *adresu IP* oraz ścieżkę do *przestrzeni nazw połączeń*. Połączenie przestrzeni nazw jest ścieżką wirtualną zdefiniowane kiedy użytkownik [dodano system magazynowania](fxt-add-storage.md#create-a-junction).
 
-Na przykład, jeśli użyto ``/avere/files`` jako ścieżki obszaru nazw, instalująca klientów *adres_IP*: / avere/pliki do ich punktu instalacji lokalnej. 
+Na przykład, jeśli użyto ``/fxt/files`` jako ścieżki obszaru nazw, instalująca klientów *adres_IP*: / fxt/pliki do ich punktu instalacji lokalnej. 
 
-<!-- to do: update screenshot to use fxt/files instead of avere/files -->
-
-!["Dodaj nowe połączenie" okno dialogowe z plikami/avere/w polu Ścieżka przestrzeni nazw](media/fxt-mount/fxt-create-junction-example.png)
+!["Dodaj nowe połączenie" okno dialogowe z plikami/avere/w polu Ścieżka przestrzeni nazw](media/fxt-mount/fxt-junction-example.png)
 
 Adres IP jest jeden z adresów IP ukierunkowane na klienta, które są zdefiniowane dla vserver. Można znaleźć w zakresie ukierunkowane na klienta adresów IP w dwóch miejscach w klastrze Panelu sterowania:
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: fff876de41e0069573b73779a16ebf06a3dd58c8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 86b23c5f69fd96fe5c5614d99483e1936895ad9e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295248"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537096"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -55,7 +55,7 @@ Ten kontener obsługuje minimalne i zalecane wartości ustawień:
 
 |Kontener| Minimalne | Zalecane | TPS<br>(Minimum, maksimum)|
 |-----------|---------|-------------|--|
-|LUIS|1 rdzeń, 2 GB pamięci|1 rdzeń, 4 GB pamięci RAM|20,40|
+|LUIS|1 rdzeń, 2 GB pamięci RAM|1 rdzeń, 4 GB pamięci RAM|20,40|
 
 * Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
 * TPS - transakcji na sekundę
@@ -175,16 +175,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | Tworzenia klucza konta usługi LUIS do opublikowanej aplikacji usługi LUIS.<br/>Możesz uzyskać klucz tworzenia pakietów administracyjnych z **ustawienia użytkownika** strony w portalu usługi LUIS. |
 |{AZURE_REGION} | Odpowiedni region platformy Azure:<br/><br/>```westus``` -Zachodnie stany USA<br/>```westeurope``` -Zachodnia Europa<br/>```australiaeast``` — Australia Wschodnia |
 
-Użyj następującego polecenia CURL do pobrania opublikowany pakiet, podstawiając własne wartości:
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/slot/{APPLICATION_ENVIRONMENT}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_{APPLICATION_ENVIRONMENT}.gz
-```
-
-Jeśli to się powiedzie, odpowiedź jest plik pakietu usługi LUIS. Zapisz plik w lokalizacji przechowywania określona dla danych wejściowych instalacji kontenera. 
+Pobierz pakiet opublikowane, można znaleźć w temacie [w tej dokumentacji interfejsu API][download-published-package]. Pomyślnie pobrano odpowiedzi czy plik pakietu usługi LUIS. Zapisz plik w lokalizacji przechowywania określona dla danych wejściowych instalacji kontenera. 
 
 ### <a name="export-trained-apps-package-from-api"></a>Eksportuj pakiet aplikacji uczony z interfejsu API
 
@@ -203,16 +194,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | Tworzenia klucza konta usługi LUIS do opublikowanej aplikacji usługi LUIS.<br/>Możesz uzyskać klucz tworzenia pakietów administracyjnych z **ustawienia użytkownika** strony w portalu usługi LUIS.  |
 |{AZURE_REGION} | Odpowiedni region platformy Azure:<br/><br/>```westus``` -Zachodnie stany USA<br/>```westeurope``` -Zachodnia Europa<br/>```australiaeast``` — Australia Wschodnia |
 
-Użyj następującego polecenia CURL, aby pobrać pakiet uczonego:
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/versions/{APPLICATION_VERSION}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_v{APPLICATION_VERSION}.gz
-```
-
-Jeśli to się powiedzie, odpowiedź jest plik pakietu usługi LUIS. Zapisz plik w lokalizacji przechowywania określona dla danych wejściowych instalacji kontenera. 
+Pobierz pakiet przeszkolonych, można znaleźć w temacie [w tej dokumentacji interfejsu API][download-trained-package]. Pomyślnie pobrano odpowiedzi czy plik pakietu usługi LUIS. Zapisz plik w lokalizacji przechowywania określona dla danych wejściowych instalacji kontenera. 
 
 ## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą `docker run`
 
@@ -237,11 +219,9 @@ Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
 
-* W tym przykładzie użyto katalogu poza `c:` dysku, aby uniknąć konfliktów uprawnień na Windows. Jeśli musisz użyć określonego katalogu jako katalog wejściowy może być konieczne przyznanie platformy docker usługi uprawnienia. 
+* W tym przykładzie użyto katalogu poza `C:` dysku, aby uniknąć konfliktów uprawnień na Windows. Jeśli musisz użyć określonego katalogu jako katalog wejściowy może być konieczne przyznanie platformy docker usługi uprawnienia. 
 * Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy docker.
 * Jeśli używasz innego systemu operacyjnego na użytek poprawne konsoli/terminal, składnia folderu instalacji i wstawić znak kontynuacji wiersza w systemie. W poniższych przykładach założono konsoli Windows za pomocą znak kontynuacji wiersza `^`. Ponieważ kontener jest system operacyjny Linux, instalacji docelowy używa składni folderu stylu dla systemu Linux.
-
-
 
 To polecenie:
 
@@ -324,7 +304,6 @@ Wybierz aplikację z portalu usługi LUIS, a następnie wybierz **importować dz
 
 Po przekazaniu dziennika [Przejrzyj punktu końcowego](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) wypowiedzi w portalu usługi LUIS.
 
-
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -362,14 +341,13 @@ Możesz użyć aplikacji usługi LUIS, jeśli jego **nie obejmuje** żadnego z n
 
 Konfiguracje nieobsługiwanych aplikacji|Szczegóły|
 |--|--|
-|Nieobsługiwana kontenera kultur| Holenderski (nl-NL)<br>Japoński (ja-JP)<br>Niemiecki jest obsługiwany tylko z [1.0.1 tokenizatora lub nowszym](luis-language-support.md#custom-tokenizer-versions).|
+|Nieobsługiwana kontenera kultur| Holenderski (nl-NL)<br>Japoński (ja-JP)<br>Niemiecki jest obsługiwany tylko z [1.0.2 tokenizatora](luis-language-support.md#custom-tokenizer-versions).|
 |Nieobsługiwane jednostki dla wszystkich języków|[KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) wstępnie utworzone jednostki dla wszystkich języków|
 |Nieobsługiwane jednostki dla kultury angielski (en US)|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) ze wstępnie utworzonych jednostek|
 |Zalewanie mowy|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
 |Analiza tonacji|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
 
-<!--blogs/samples/video coures -->
-
+<!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Podsumowanie
@@ -390,3 +368,7 @@ W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, 
 * Przegląd [skonfigurować kontenery](luis-container-configuration.md) ustawień konfiguracji
 * Zapoznaj się [Rozwiązywanie problemów](troubleshooting.md) Aby rozwiązać problemy związane z działaniem usługi LUIS.
 * Użycie [kontenerów usługi Cognitive Services](../cognitive-services-container-support.md)
+
+<!-- Links - external -->
+[download-published-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip
+[download-trained-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip

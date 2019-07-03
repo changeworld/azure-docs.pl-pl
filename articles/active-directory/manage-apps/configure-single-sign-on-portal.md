@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa18bc637ec31a1f83b5cab090e008715c5e0c2a
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0f6707c780931eac58e2a870c321385e63bd948a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825015"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550464"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Samouczek: Konfigurowanie logowania jednokrotnego opartego na języku SAML dla aplikacji w ramach usługi Azure Active Directory
 
@@ -75,10 +75,10 @@ Aby skonfigurować domenę i adresy URL, wykonaj następujące czynności:
     | Ustawienie konfiguracji | Zainicjowane przez dostawcę usługi | Zainicjowane przez dostawcę tożsamości | Opis |
     |:--|:--|:--|:--|
     | Identyfikator (identyfikator jednostki) | Wymagane w przypadku niektórych aplikacji | Wymagane w przypadku niektórych aplikacji | Jednoznacznie identyfikuje aplikację, dla której logowanie jednokrotne jest konfigurowane. Usługa Azure AD wysyła identyfikator do aplikacji jako parametr odbiorców tokenu SAML. Aplikacja powinna go zweryfikować. Ta wartość jest widoczna również jako identyfikator jednostki w dowolnych metadanych SAML udostępnianych przez aplikację.|
-    | Adres URL odpowiedzi | Opcjonalne | Wymagane | Określa miejsce, w którym aplikacja oczekuje otrzymać token języka SAML. Adres URL odpowiedzi jest również nazywany adresem URL usługi Assertion Consumer Service (ACS). |
+    | Adres URL odpowiedzi | Optional (Opcjonalność) | Wymagane | Określa miejsce, w którym aplikacja oczekuje otrzymać token języka SAML. Adres URL odpowiedzi jest również nazywany adresem URL usługi Assertion Consumer Service (ACS). |
     | Adres URL logowania | Wymagane | Nie podawaj | Gdy użytkownik otwiera ten adres URL, dostawca usługi przekierowuje go do usługi Azure AD w celu uwierzytelnienia i zalogowania. Usługa Azure AD używa adresu URL do uruchomienia aplikacji z usługi Office 365 lub panelu dostępu usługi Azure AD. Jeśli pole pozostanie puste, usługi Azure AD zależy od dostawcy tożsamości, aby rozpocząć logowania jednokrotnego, gdy użytkownik uruchamia aplikację.|
-    | Tan przekaźnika | Opcjonalne | Opcjonalne | Określa aplikacji, dokąd przekierować użytkownika po zakończeniu uwierzytelniania. Zazwyczaj wartość jest prawidłowym adresem URL dla aplikacji. Jednak niektóre aplikacje używają tego pola inaczej. Aby uzyskać więcej informacji, skontaktuj się z dostawcą aplikacji.
-    | Adres URL wylogowywania | Opcjonalne | Opcjonalne | Używany do wysyłania odpowiedzi wylogowania protokołu SAML do aplikacji.
+    | Stan przekaźnika | Optional (Opcjonalność) | Optional (Opcjonalność) | Określa aplikacji, dokąd przekierować użytkownika po zakończeniu uwierzytelniania. Zazwyczaj wartość jest prawidłowym adresem URL dla aplikacji. Jednak niektóre aplikacje używają tego pola inaczej. Aby uzyskać więcej informacji, skontaktuj się z dostawcą aplikacji.
+    | Adres URL wylogowywania | Optional (Opcjonalność) | Optional (Opcjonalność) | Używany do wysyłania odpowiedzi wylogowania protokołu SAML do aplikacji.
 
 
 2. Aby edytować podstawowe opcje konfiguracji SAML, wybierz **Edytuj** ikonę (ołówka) w prawym górnym rogu **podstawową konfigurację protokołu SAML** sekcji.
@@ -138,7 +138,7 @@ Aby przypisać użytkownika lub grupę do aplikacji, wykonaj następujące czynn
 
 To już prawie koniec.  W ostatnim kroku musisz skonfigurować aplikację do używania usługi Azure AD jako dostawcy tożsamości SAML. 
 
-1. Przewiń w dół do **Konfigurowanie <applicationName>**  sekcji. W tym samouczku jest wywoływana w tej sekcji **Konfigurowanie testów GitHub**. 
+1. Przewiń w dół do **Konfigurowanie \<applicationName >** sekcji. W tym samouczku jest wywoływana w tej sekcji **Konfigurowanie testów GitHub**. 
 2. Skopiuj wartości z każdego wiersza w tej sekcji. Następnie wklej każdej wartości na odpowiedni wiersz **podstawową konfigurację protokołu SAML** sekcji. Na przykład skopiuj **adres URL logowania** wartość z **Konfigurowanie testów GitHub** sekcji i wklej go w **na adres URL logowania** pole **podstawową konfigurację protokołu SAML**  sekcji i tak dalej.
 3. Podczas wszystkich wartości wklejony do odpowiednich pól, zaznacz **Zapisz**.
 
@@ -147,15 +147,15 @@ To już prawie koniec.  W ostatnim kroku musisz skonfigurować aplikację do uż
 Możesz przetestować ustawienia.  
 
 1. Otwórz ustawienia logowania jednokrotnego dla aplikacji. 
-2. Przewiń do **weryfikowanie logowania jednokrotnego przy użyciu <applicationName>**  sekcji. W tym samouczku jest wywoływana w tej sekcji **Konfigurowanie testów GitHub**.
+2. Przewiń do **weryfikowanie logowania jednokrotnego przy użyciu \<applicationName >** sekcji. W tym samouczku jest wywoływana w tej sekcji **Konfigurowanie testów GitHub**.
 3. Wybierz **testu**. Zostaną wyświetlone opcje testowania.
 4. Wybierz **Zaloguj się jako bieżący użytkownik**. Dzięki temu testowi możesz najpierw sprawdzić, czy logowanie jednokrotne działa w Twoim przypadku, czyli administratora.
 
 Jeśli wystąpi błąd, zostanie wyświetlony komunikat o błędzie. Wykonaj następujące czynności:
 
-1. Skopiuj szczegóły i wklej je w polu **Jak wygląda błąd?**.
+1. Skopiuj szczegóły i wklej je w polu **Jak wygląda błąd?** .
 
-    ![Uzyskaj wskazówki dotyczące rozwiązywania](media/configure-single-sign-on-portal/error-guidance.png)
+    ![Uzyskiwanie wskazówek dotyczących rozwiązywania](media/configure-single-sign-on-portal/error-guidance.png)
 
 2. Wybierz **zapoznaj się ze wskazówkami rozpoznawania**. Zostaną wyświetlone główna przyczyna i wskazówki dotyczące rozwiązywania.  W tym przykładzie użytkownik nie został przypisany do aplikacji.
 

@@ -98,7 +98,7 @@ Klienci *musi* obsługi przekierowania standardowych mechanizmów, określony pr
 
 Klienci *musi* użyć odpowiednich punktów końcowych usługi mowy. Punkt końcowy zależy od trybu rozpoznawania i język. W tabeli przedstawiono kilka przykładów.
 
-| Tryb | Ścieżka | Identyfikator URI usługi |
+| Tryb | Path | Identyfikator URI usługi |
 | -----|-----|-----|
 | Interaktywne | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | konwersacji | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
@@ -308,7 +308,7 @@ Klienci muszą potwierdzić koniec Włącz, wysyłając `telemetry` wiadomości 
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Text |
-| Ścieżka | `telemetry` |
+| Path | `telemetry` |
 | X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 | Content-Type | `application/json` |
 | Treść | Strukturę JSON, która zawiera informacje o kliencie o Włącz |
@@ -330,7 +330,7 @@ W tej sekcji opisano wiadomości, które pochodzą z usługi rozpoznawania mowy 
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Text |
-| Ścieżka | `speech.startDetected` |
+| Path | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
 | Treść | Struktura JSON, która zawiera informacje o warunkach, gdy wykryte początek mowy. *Przesunięcie* pola w tej strukturze określa przesunięcie (w jednostkach 100-nanosekundowych) czas wykrycia mowy w usłudze stream audio względem początku strumienia. |
 
@@ -355,7 +355,7 @@ Podczas rozpoznawania mowy usługa rozpoznawania mowy okresowo generuje hipotez�
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Text |
-| Ścieżka | `speech.hypothesis` |
+| Path | `speech.hypothesis` |
 | X-RequestId | Identyfikator UUID w formacie "nie-dash" |
 | Content-Type | application/json |
 | Treść | Hipoteza mowy strukturze JSON |
@@ -387,7 +387,7 @@ Gdy usługa rozpoznawania mowy Określa, że ma on wystarczających informacji d
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Text |
-| Ścieżka | `speech.phrase` |
+| Path | `speech.phrase` |
 | Content-Type | application/json |
 | Treść | Fraza mowy strukturze JSON |
 
@@ -415,7 +415,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Text |
-| Ścieżka | `speech.endDetected` |
+| Path | `speech.endDetected` |
 | Treść | Struktura JSON, która zawiera przesunięcie, gdy wykryto koniec mowy. Przesunięcie jest reprezentowany w jednostkach 100-nanosekundowych przesunięcie od początku dźwięk, który jest używany do rozpoznawania. |
 | Content-Type | application/json; charset=utf-8 |
 
@@ -440,7 +440,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Text |
-| Ścieżka | `turn.start` |
+| Path | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
 | Treść | Struktura JSON |
 
@@ -467,7 +467,7 @@ Treść `turn.start` komunikat jest strukturą JSON, która zawiera kontekst na 
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Text |
-| Ścieżka | `turn.end` |
+| Path | `turn.end` |
 | Treść | Brak |
 
 #### <a name="sample-message"></a>Przykładowy komunikat

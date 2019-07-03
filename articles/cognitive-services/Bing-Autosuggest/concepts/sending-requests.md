@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 06/25/2019
+ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: be3262daf7ea2a637133ad658efe07ba9426415b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe35901f7d084fd96cb4c164e957391bfe2346a9
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449075"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542623"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Wysyłanie żądań do interfejsu API automatycznego sugerowania Bing.
 
-Jeśli aplikacja wysyła zapytania do dowolnego z interfejsów API wyszukiwania Bing, możesz użyć interfejsu API automatycznego sugerowania Bing w celu ulepszenia środowiska wyszukiwania dla użytkowników. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania w polu wyszukiwania. Znaki wprowadzoną w polu wyszukiwania w aplikacji możesz wyświetlić sugestii na liście rozwijanej. Aby dowiedzieć się więcej na temat wysyłania żądań do tego interfejsu API, należy użyć w tym artykule.
+Jeśli aplikacja wysyła zapytania do dowolnego z interfejsów API wyszukiwania Bing, możesz użyć interfejsu API automatycznego sugerowania Bing w celu ulepszenia środowiska wyszukiwania dla użytkowników. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania w polu wyszukiwania. Znaki wprowadzoną w polu wyszukiwania w aplikacji możesz wyświetlić sugestii na liście rozwijanej. Aby dowiedzieć się więcej na temat wysyłania żądań do tego interfejsu API, należy użyć w tym artykule. 
 
 ## <a name="bing-autosuggest-api-endpoint"></a>Punkt końcowy interfejsu API automatycznego sugerowania Bing
 
@@ -44,7 +44,7 @@ Przykłady podstawowe żądań przy użyciu interfejsu API automatycznego sugero
 ## <a name="bing-autosuggest-api-requests"></a>Żądania interfejsu API automatycznego sugerowania Bing
 
 > [!NOTE]
-> Żądania interfejsu API automatycznego sugerowania Bing muszą używać protokołu HTTPS.
+> * Żądania interfejsu API automatycznego sugerowania Bing muszą używać protokołu HTTPS.
 
 Zalecamy, aby wszystkie żądania pochodziły z serwera. Dystrybucja klucza jako część aplikacji klienckiej udostępnia więcej możliwości złośliwego innych firm. Ponadto nawiązywania połączeń z serwerem zapewnia jeden punkt uaktualnienia dla przyszłych aktualizacji.
 
@@ -100,6 +100,8 @@ Następujące grupy sugestii sieci web jest odpowiedź na żądanie powyżej. Gr
 Pole `displayText` zawiera sugerowane zapytanie, używane do wypełnienia listy rozwijanej w polu wyszukiwania. Należy wyświetlić wszystkie sugestie, które zawiera odpowiedź, w podanej kolejności.  
 
 Jeśli użytkownik wybierze zapytania z listy rozwijanej, można użyć go do wywołania z jednym z [interfejsy API wyszukiwania Bing](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) i wyświetlić wyniki, samodzielnie lub wysłać użytkownika do strony wyników Bing za pomocą zwracanego `url` pola.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
