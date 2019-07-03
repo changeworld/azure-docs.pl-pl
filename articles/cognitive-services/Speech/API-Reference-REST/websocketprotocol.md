@@ -152,7 +152,7 @@ Następujące nagłówki są wymagane dla wszystkich komunikatów pochodzących 
 
 | nagłówek | Wartość |
 |----|----|
-| Ścieżka | Ścieżka podana w tym dokumencie |
+| Path | Ścieżka podana w tym dokumencie |
 | X-RequestId | Identyfikator UUID w formacie "nie-dash" |
 | X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 
@@ -181,7 +181,7 @@ Klienci *musi* wysyłania `speech.config` komunikatów bezpośrednio w przypadku
 
 | Nazwa nagłówka | Wartość |
 |----|----|
-| Ścieżka | `speech.config` |
+| Path | `speech.config` |
 | X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 | Content-Type | application/json; charset=utf-8 |
 
@@ -227,9 +227,9 @@ Elementem system.version `speech.config` wiadomość zawiera wersję mowy SDK op
 
 | Pole | Opis | Sposób użycia |
 |-|-|-|
-| Device.Manufacturer | Producent sprzętu urządzenia | Wymagane |
+| device.manufacturer | Producent sprzętu urządzenia | Wymagane |
 | device.model | Model urządzenia | Wymagane |
-| Device.Version | Wersja oprogramowania urządzenia, dostarczone przez producenta urządzenia. Ta wartość określa wersję urządzenia, które mogą być śledzone przez producenta. | Wymagane |
+| device.version | Wersja oprogramowania urządzenia, dostarczone przez producenta urządzenia. Ta wartość określa wersję urządzenia, które mogą być śledzone przez producenta. | Wymagane |
 
 ### <a name="message-audio"></a>Komunikat `audio`
 
@@ -252,7 +252,7 @@ Następujące nagłówki są wymagane w przypadku wszystkich `audio` wiadomości
 
 | nagłówek         |  Wartość     |
 | ------------- | ---------------- |
-| Ścieżka | `audio` |
+| Path | `audio` |
 | X-RequestId | Identyfikator UUID w formacie "nie-dash" |
 | X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 | Content-Type | Typ zawartości audio. Typ musi być albo *audio/x-wav* (PCM) lub *audio/silk* (SILK). |
