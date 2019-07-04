@@ -122,8 +122,6 @@
       href: visualizations.md
     - name: Integracje partnerów
       href: platform/partners.md
-    - name: Wycofywanie portalu pakietu OMS
-      href: platform/oms-portal-transition.md
     - name: Często zadawane pytania
       items:
         - name: Log Analytics
@@ -837,10 +835,12 @@
               items:
                 - name: Alert dotyczący zdarzenia dziennika aktywności
                   href: platform/alerts-activity-log.md
-                - name: Migrowanie zdarzeń zarządzania do alertów dziennika aktywności
-                  href: platform/migrate-management-alerts.md
-                - name: Alert dotyczący powiadomień o kondycji usługi
-                  href: platform/alerts-activity-log-service-notifications.md
+            - name: Powiadomienia o kondycji usługi w dzienniku aktywności
+              items:
+                - name: Wyświetlanie powiadomień o kondycji usługi
+                  href: ../service-health/service-notifications.md?toc=%2fazure%2fazure-monitor%2ftoc.json
+                - name: Konfigurowanie reguły alertu dotyczącego kondycji usługi
+                  href: ../service-health/alerts-activity-log-service-notifications.md?toc=%2fazure%2fazure-monitor%2ftoc.json
             - name: Korzystanie z grup akcji
               items:
                 - name: Tworzenie grupy akcji
@@ -885,12 +885,6 @@
                   href: platform/alerts-enable-template.md
                 - name: Alert metryki klasycznej wywołujący element webhook
                   href: platform/alerts-webhooks.md
-        - name: Powiadomienia o kondycji usługi w dzienniku aktywności
-          items:
-            - name: Wyświetlanie powiadomień
-              href: platform/service-notifications.md
-            - name: Konfigurowanie alertów dotyczących zdarzeń powiadomień
-              href: platform/alerts-activity-log-service-notifications.md
         - name: Automatyczne skalowanie
           items:
             - name: Przewodnik
@@ -1076,12 +1070,10 @@
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: Klasyczne alerty i monitorowanie
           href: platform/monitoring-classic-retirement.md
-        - name: Rozszerzanie alertów z usługi Log Analytics na platformę Azure
-          href: platform/alerts-extend.md
-        - name: Kopiowanie alertów z portalu OMS do witryny Azure Portal
-          href: platform/alerts-extend-tool.md
         - name: Zmiana preferencji dotyczącej interfejsu API alertu dziennika
           href: platform/alerts-log-api-switch.md
+        - name: Wycofywanie portalu pakietu OMS
+          href: platform/oms-portal-transition.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

@@ -124,6 +124,8 @@
         - name: Rozwiązywanie problemów z elementami runbook
           href: troubleshoot/runbooks.md
           displayName: troubleshoot
+        - name: Uruchamianie/zatrzymywanie maszyn wirtualnych
+          href: troubleshoot/start-stop-vm.md
 - name: Zarządzanie aktualizacjami
   items:
     - name: Omówienie rozwiązania Update Management
@@ -313,6 +315,8 @@
   items:
     - name: Przekazywanie danych zadania usługi Azure Automation do usługi Log Analytics
       href: automation-manage-send-joblogs-log-analytics.md
+    - name: Obsługiwane regiony dla mapowań obszaru roboczego usługi Log Analytics
+      href: how-to/region-mappings.md
 - name: Migrate (Migracja)
   items:
     - name: Migracja z programu Orchestrator

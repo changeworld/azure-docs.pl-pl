@@ -63,6 +63,10 @@
               href: google-federation.md
             - name: Uwierzytelnianie za pomocą jednorazowego kodu dostępu
               href: one-time-passcode.md
+            - name: Federacja bezpośrednia
+              href: direct-federation.md
+            - name: Przykład federacji bezpośredniej z usługami AD FS
+              href: direct-federation-adfs.md
             - name: Zezwalanie na zaproszenia lub blokowanie ich
               href: allow-deny-list.md
             - name: Dodawanie użytkowników B2B bez zaproszenia
