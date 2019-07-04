@@ -128,11 +128,11 @@ Najpierw upewnij się, że [modułu MSOnline V1 PowerShell](https://docs.microso
 
 Zidentyfikuj użytkowników, którzy zarejestrowali na potrzeby usługi MFA za pomocą programu PowerShell, który następuje po.
 
-```Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
+```Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
 
 Zidentyfikuj użytkowników, którzy nie zarejestrowano usługi MFA za pomocą programu PowerShell, która jest zgodna.
 
-```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
+```Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
 ## <a name="possible-results-in-activity-reports"></a>Możliwe wyniki w raportach działań
 
