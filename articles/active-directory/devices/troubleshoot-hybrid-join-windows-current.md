@@ -2,26 +2,21 @@
 title: Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia z systemem Windows 10 i Windows Server 2016 przyłączone do | Dokumentacja firmy Microsoft
 description: Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory przyłączone do urządzeń z systemem Windows 10 i Windows Server 2016.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/08/2017
+ms.topic: troubleshooting
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3671623312f0da00c8f6172a101529a5cd12be1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfb4b03fb57efecff587a91dfc2ad293be96d9ba
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110539"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481606"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia z systemem Windows 10 i Windows Server 2016 przyłączone do 
 
@@ -35,14 +30,10 @@ Dla innych klientów Windows zobacz [niższego poziomu urządzenia przyłączone
 W tym artykule założono, że masz [urządzenia przyłączone do hybrydowej skonfigurowanego w usłudze Azure Active Directory](hybrid-azuread-join-plan.md) na potrzeby następujących scenariuszy:
 
 - Dostęp warunkowy oparty na urządzeniu
-
 - [Mobilny dostęp firmowy do ustawień](../active-directory-windows-enterprise-state-roaming-overview.md)
-
 - [Windows Hello dla firm](../active-directory-azureadjoin-passport-deployment.md)
 
-
 Ten dokument zawiera wskazówki dotyczące rozwiązywania problemów dotyczące rozwiązywania potencjalnych problemów. 
-
 
 Dla systemu Windows 10 i Windows Server 2016, hybrydowe przyłączanie do usługi Azure Active Directory obsługuje systemu Windows 10 listopada 2015 r. Zaktualizuj i nowsze wersje. Zalecamy używanie Rocznicowej aktualizacji.
 
@@ -53,8 +44,6 @@ Dla systemu Windows 10 i Windows Server 2016, hybrydowe przyłączanie do usług
 1. Otwórz wiersz polecenia jako administrator
 
 2. Typ **dsregcmd parametru/status**
-
-
 
 ```
 +----------------------------------------------------------------------+
@@ -101,8 +90,6 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-
-
 ## <a name="step-2-evaluate-the-join-status"></a>Krok 2: Oceń stan dołączania 
 
 Przejrzyj poniższe pola i upewnij się, że mają one oczekiwane wartości:
@@ -114,22 +101,14 @@ To pole wskazuje, czy urządzenie jest połączone z usługą Azure AD. Jeśli w
 **Możliwe przyczyny:**
 
 - Nie można uwierzytelnić komputera w celu utworzenia sprzężenia.
-
 - W organizacji, która nie może być odnajdywane przez komputer znajduje się serwer proxy HTTP
-
 - Komputer nie może nawiązać połączenia usługi Azure AD do uwierzytelniania lub Azure usługi rejestracji urządzeń do rejestracji
-
 - Komputer może nie być w sieci wewnętrznej organizacji lub sieci VPN, za pomocą bezpośredniego linii wzroku do lokalnego kontrolera domeny usługi AD.
-
 - Jeśli komputer ma modułu TPM, może być w nieprawidłowym stanie.
-
 - Może być błędnej konfiguracji w usługach zanotowanej w dokumencie wcześniej, trzeba będzie ponownie zweryfikować prawo. Typowe przykłady:
-
-    - Serwerze federacyjnym nie ma włączonych punktów końcowych usługi WS-Trust
-
-    - Serwerze federacyjnym nie zezwala na przychodzący uwierzytelnienia z komputerów w sieci przy użyciu zintegrowanego uwierzytelniania Windows.
-
-    - Nie ma żadnego obiektu punktu połączenia usługi, który wskazuje nazwę zweryfikowanej domeny w usłudze Azure AD w lesie usługi AD, w którym komputer należy do
+   - Serwerze federacyjnym nie ma włączonych punktów końcowych usługi WS-Trust
+   - Serwerze federacyjnym nie zezwala na przychodzący uwierzytelnienia z komputerów w sieci przy użyciu zintegrowanego uwierzytelniania Windows.
+   - Nie ma żadnego obiektu punktu połączenia usługi, który wskazuje nazwę zweryfikowanej domeny w usłudze Azure AD w lesie usługi AD, w którym komputer należy do
 
 ---
 
@@ -150,9 +129,7 @@ To pole wskazuje, czy urządzenie jest zarejestrowane w usłudze Azure AD jako u
 Te pola wskazuje, czy użytkownik został pomyślnie uwierzytelniony do usługi Azure AD podczas logowania się do urządzenia. Jeśli wartości są **nie**, może to być termin:
 
 - Klucz magazynu zły (STK) w module TPM skojarzony z urządzeniem przy rejestracji (sprawdzanie KeySignTest uruchomionej z podwyższonym poziomem uprawnień).
-
 - Identyfikatora logowania alternatywnej
-
 - Nie można odnaleźć serwera HTTP Proxy
 
 ## <a name="next-steps"></a>Kolejne kroki

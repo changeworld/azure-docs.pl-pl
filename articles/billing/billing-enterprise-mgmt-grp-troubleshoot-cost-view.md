@@ -1,30 +1,28 @@
 ---
-title: Rozwiązywanie problemów z widokami kosztów platformy Azure w przedsiębiorstwach | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z widokami kosztów platformy Azure w przedsiębiorstwach
 description: Dowiedz się, jak rozwiązać wszelkie problemy, które może być za pomocą widoków koszt organizacji w witrynie Azure portal.
-author: rthorn17
-manager: adpick
-editor: ''
-ms.assetid: ''
+author: bandersmsft
+manager: amberb
 ms.service: billing
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2017
+ms.date: 07/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: d35996b16d615a198b9a6039386f6b295172f388
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 83f7f424b265582a3830c02973cbbb9962ddfbfb
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615756"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491275"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Rozwiązywanie problemów z widoki kosztów przedsiębiorstwa
 
 W ramach rejestracji enterprise istnieje kilka ustawień, które może spowodować, że użytkownicy nie zobaczyć koszty w ramach rejestracji.  Te ustawienia są zarządzane przez administratora rejestracji. Lub, jeśli rejestracja nie jest bezpośrednio przez firmę Microsoft, ustawienia będą zarządzane przez partnera.  Ten artykuł pomaga zrozumieć, co to są ustawienia oraz ich wpływ na rejestracji. Te ustawienia są niezależne od ról kontroli dostępu opartej na rolach platformy Azure.
 
-## <a name="enabling-access-to-costs"></a>Umożliwianie dostępu do kosztów
+## <a name="enable-access-to-costs"></a>Zapewnianie dostępu do kosztów
 
 Widzisz komunikat bez autoryzacji, lub *"widoki kosztów są wyłączone w Twojej rejestracji".* Jeśli szukasz informacji o koszcie?
 ![Zrzut ekranu pokazujący "Brak autoryzacji" w polu Koszt dla bieżącego dla subskrypcji.](media/billing-enterprise-mgmt-groups/unauthorized.png)
@@ -41,8 +39,11 @@ Może to być jeden z następujących powodów:
 
 ## <a name="asset-is-unavailable"></a>Zasób jest niedostępny
 
-Jeśli pojawi się komunikat o błędzie "ten zasób jest niedostępny" podczas próby uzyskania dostępu do subskrypcji lub grupę zarządzania, możesz nie ma odpowiednią rolę, aby wyświetlić ten element.  
+Jeśli otrzymasz komunikat o błędzie informujący **ten zasób jest niedostępny** podczas próby uzyskania dostępu do subskrypcji lub grupy zarządzania, nie masz odpowiednią rolę, aby wyświetlić ten element.  
 
 ![Zrzut ekranu pokazujący wiadomość "zasobu jest niedostępna".](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 Poproś Azure subskrypcji lub zarządzania grupy administratora dostępu. Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md).
+
+## <a name="next-steps"></a>Kolejne kroki
+- Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

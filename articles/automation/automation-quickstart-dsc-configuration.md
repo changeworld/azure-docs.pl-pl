@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a30f9c1a61044c0911a5afc27ad95fc758b4c83e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0be78b444c9af9c5c0a818d790982670d2b68ee8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738301"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477599"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurowanie maszyny wirtualnej systemu Linux za pomocą DSC
 
@@ -38,7 +38,7 @@ Istnieje wiele różnych metod dołączania maszyny i włączania konfiguracji �
 
 1. W okienku po lewej stronie witryny Azure Portal wybierz pozycję **Konta automatyzacji**. Jeśli nie widać jej w okienku po lewej stronie, kliknij pozycję **Wszystkie usługi** i wyszukaj ją w wynikowym widoku.
 1. Na liście wybierz konto automatyzacji.
-1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)**.
+1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)** .
 2. Kliknij pozycję **Dodaj**, aby otworzyć stronę wybierania maszyny wirtualnej.
 3. Znajdź maszynę wirtualną, dla której chcesz włączyć DSC. Aby znaleźć określoną maszynę wirtualną, możesz użyć opcji pola wyszukiwania i filtra.
 4. Kliknij maszynę wirtualną, a następnie wybierz pozycję **Połącz**
@@ -101,7 +101,7 @@ configuration LAMPServer {
 
 Aby zaimportować konfigurację:
 
-1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)**, a następnie kliknij kartę **Konfiguracje**.
+1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)** , a następnie kliknij kartę **Konfiguracje**.
 2. Kliknij pozycję **+ Dodaj**
 3. Wybierz *Plik konfiguracji* zapisany w poprzednim kroku
 4. Kliknij przycisk **OK**.
@@ -112,7 +112,7 @@ Konfiguracja DSC musi zostać skompilowana do konfiguracji węzła (dokument MOF
 
 Aby skompilować konfigurację:
 
-1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)**, a następnie kliknij kartę **Konfiguracje**.
+1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)** , a następnie kliknij kartę **Konfiguracje**.
 1. Wybierz konfigurację zaimportowaną w poprzednim kroku „LAMPServer”
 1. W opcjach menu kliknij pozycję **Kompiluj**, a następnie **Tak**
 1. W widoku konfiguracji zobaczysz w kolejce nowe *zadanie kompilacji*. Po pomyślnym zakończeniu zadania możesz przejść do następnego kroku. Jeśli są jakiekolwiek błędy, możesz kliknąć zadanie kompilacji, aby uzyskać więcej informacji.
@@ -131,7 +131,7 @@ Skompilowaną *konfigurację węzła* można przypisać do węzłów DSC. Przypi
 
 ## <a name="viewing-node-status"></a>Wyświetlanie stanu węzła
 
-Stan wszystkich węzłów zarządzanych można wyświetlić, wybierając pozycję **Konfiguracja stanu (DSC)**, a następnie kartę **Węzły** na koncie usługi Automation. Możesz filtrować wyświetlane dane według stanu, konfiguracji węzła lub nazwy wyszukiwania.
+Stan wszystkich węzłów zarządzanych można wyświetlić, wybierając pozycję **Konfiguracja stanu (DSC)** , a następnie kartę **Węzły** na koncie usługi Automation. Możesz filtrować wyświetlane dane według stanu, konfiguracji węzła lub nazwy wyszukiwania.
 
 ![Stan węzła DSC](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 

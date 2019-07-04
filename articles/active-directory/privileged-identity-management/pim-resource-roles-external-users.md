@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0afec1d6eded25a2d9b2389c950e2e21e06e0d54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07476c9f5db64a5d107a493022fa3548fe0dae4c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66307063"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476355"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Zapraszanie gości i przypisz role zasobów platformy Azure w usłudze PIM
 
@@ -47,7 +47,7 @@ Poniżej przedstawiono kilka przykładowych scenariuszy, gdy mogą zapraszać go
 
 Gdy używasz współpracy B2B, możesz Zaproś użytkownika zewnętrznego dla Twojej organizacji jako Gość. Gość pojawia się w Twojej organizacji, ale gościa nie ma żadnych poświadczeń skojarzonych z nim. Zawsze, gdy Gość musi zostać uwierzytelniony, muszą uwierzytelnić się w swojej organizacji macierzystej a nie w Twojej organizacji. Oznacza to, że jeśli gościa nie ma już dostęp do swoich organizacji macierzystej, również stracą dostęp do Twojej organizacji. Na przykład jeśli gościa swojej organizacji, automatycznie stracą dostęp do żadnych zasobów udostępnionych je w usłudze Azure AD bez konieczności podejmować żadnych działań. Aby uzyskać więcej informacji na temat B2B, zobacz [co to jest dostęp użytkowników-gości w usłudze Azure Active Directory B2B?](../b2b/what-is-b2b.md).
 
-![B2B i gościa](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![Diagram przedstawiający sposób pojawia się w katalogu użytkownika-gościa, ale jest uwierzytelniane w katalogu macierzystego](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
 ## <a name="check-guest-collaboration-settings"></a>Sprawdź ustawienia współpracy gościa
 
@@ -59,7 +59,7 @@ Aby upewnić się, że mogą zapraszać gości w Twojej organizacji, należy spr
 
 1. Kliknij przycisk **Zarządzaj ustawieniami współpracy zewnętrznej**.
 
-    ![Ustawienia zewnętrznej współpracy](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
+    ![Strona Ustawienia współpracy zewnętrznej przedstawiający ustawienia ograniczeń dotyczących uprawnień, zaproszenie i współpracy](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
 1. Upewnij się, że **Administratorzy i użytkownicy o roli zapraszającego gości mogą zapraszać** przełącznik ma wartość **tak**.
 
@@ -81,21 +81,21 @@ Korzystając z usługi PIM, możesz zapraszanie gościa i ustawiać ich jako upr
 
 1. W obszarze Zarządzanie, kliknij przycisk **role** Aby wyświetlić listę ról dla zasobów platformy Azure.
 
-    ![Role zasobów platformy Azure](./media/pim-resource-roles-external-users/resources-roles.png)
+    ![Role zasobów platformy Azure listy przedstawiający liczbę użytkowników, którzy są aktywne i kwalifikujących się](./media/pim-resource-roles-external-users/resources-roles.png)
 
 1. Kliknij rolę minimalne, użytkownik będzie musiał.
 
-    ![Wybrana rola](./media/pim-resource-roles-external-users/selected-role.png)
+    ![Wybrane strony roli wyświetlanie aktualnych członków tej roli](./media/pim-resource-roles-external-users/selected-role.png)
 
 1. Na stronie roli kliknij **Dodawanie elementu członkowskiego** otworzyć nowe okienko przypisania.
 
 1. Kliknij przycisk **zaznacz element lub grupę**.
 
-    ![Zaznacz element lub grupę](./media/pim-resource-roles-external-users/select-member-group.png)
+    ![Nowe przypisanie — Wybierz członka lub grupy w okienku wyświetlania listy użytkowników i grup, wraz z opcją zaproszenia](./media/pim-resource-roles-external-users/select-member-group.png)
 
 1. Aby zapraszanie gościa, kliknij przycisk **zaprosić**.
 
-    ![Zapraszanie gościa](./media/pim-resource-roles-external-users/invite-guest.png)
+    ![Zapraszanie gościa strony z polami, wprowadź adres e-mail i określ osobistą wiadomość](./media/pim-resource-roles-external-users/invite-guest.png)
 
 1. Po wybraniu gość kliknij **zaprosić**.
 
@@ -105,13 +105,13 @@ Korzystając z usługi PIM, możesz zapraszanie gościa i ustawiać ich jako upr
 
 1. W **ustawienia członkostwa** okienku, wybierz typ przypisania i czas trwania.
 
-    ![Ustawienia członkostwa](./media/pim-resource-roles-external-users/membership-settings.png)
+    ![Nowe przypisanie — strona Ustawienia członkostwa przy użyciu opcji, aby określić typ przypisania, Data rozpoczęcia i Data zakończenia](./media/pim-resource-roles-external-users/membership-settings.png)
 
 1. Aby dokończyć przypisanie, kliknij przycisk **gotowe** i następnie **Dodaj**.
 
     Przypisanie roli gościa pojawi się na liście ról.
 
-    ![Przypisanie roli dla gościa](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![Strona roli ofercie gościa jako uprawnionych](./media/pim-resource-roles-external-users/role-assignment.png)
 
 ## <a name="activate-role-as-a-guest"></a>Aktywacja roli jako Gość
 
@@ -119,13 +119,13 @@ Jako użytkownika zewnętrznego musisz najpierw zaakceptować zaproszenie do org
 
 1. Otwórz wiadomość e-mail z Twoje zaproszenie. Wiadomość e-mail będzie wyglądać podobnie do poniższego.
 
-    ![Wiadomość e-mail z zaproszeniem](./media/pim-resource-roles-external-users/email-invite.png)
+    ![Wiadomość e-mail z zaproszeniem nazwę katalogu, osobistą wiadomość i link Rozpocznij pracę](./media/pim-resource-roles-external-users/email-invite.png)
 
 1. Kliknij przycisk **wprowadzenie** łącze w wiadomości e-mail.
 
 1. Po przejrzeniu uprawnienia kliknij **Akceptuj**.
 
-    ![Przejrzyj uprawnienia](./media/pim-resource-roles-external-users/invite-accept.png)
+    ![Przejrzyj uprawnienia strony w przeglądarce z listą uprawnień, które organizacja chce, którymi możesz się zapoznać](./media/pim-resource-roles-external-users/invite-accept.png)
 
 1. Użytkownik może zostać poproszona o Zaakceptuj warunki użytkowania i określić, czy nie wylogowuj.
 
@@ -133,11 +133,11 @@ Jako użytkownika zewnętrznego musisz najpierw zaakceptować zaproszenie do org
 
 1. Aby aktywować swoją rolę, Otwórz wiadomość e-mail z Twojej uaktywnienie roli łącza. Wiadomość e-mail będzie wyglądać podobnie do poniższego.
 
-    ![Wiadomość e-mail z zaproszeniem](./media/pim-resource-roles-external-users/email-role-assignment.png)
+    ![Wiadomość e-mail z usługi PIM, wskazując uprawniona do roli z łącze Uaktywnij rolę](./media/pim-resource-roles-external-users/email-role-assignment.png)
 
 1. Kliknij przycisk **Aktywuj rolę** otworzyć kwalifikujące się role w usłudze PIM.
 
-    ![Moje role - kwalifikujących się](./media/pim-resource-roles-external-users/my-roles-eligible.png)
+    ![Strona Moje role w usłudze PIM role uprawnione](./media/pim-resource-roles-external-users/my-roles-eligible.png)
 
 1. W obszarze akcji, kliknij przycisk **Aktywuj** łącza.
 
@@ -145,7 +145,7 @@ Jako użytkownika zewnętrznego musisz najpierw zaakceptować zaproszenie do org
 
 1. Po określeniu ustawień dla roli, kliknij przycisk **Aktywuj** aktywowania roli.
 
-    ![Uaktywnij rolę](./media/pim-resource-roles-external-users/activate-role.png)
+    ![Uaktywnij zakres listy strony i opcji, aby określić godzinę rozpoczęcia, czas trwania i przyczyny](./media/pim-resource-roles-external-users/activate-role.png)
 
     Chyba że administrator musi zatwierdzić Twoje zgłoszenie, powinny mieć dostęp do określonych zasobów.
 
@@ -157,13 +157,13 @@ Podobnie jak użytkownika elementu członkowskiego możesz wyświetlić dziennik
 
 1. Kliknij przycisk **inspekcja zasobu** Aby wyświetlić działania dla tego zasobu. Poniżej przedstawiono przykład działania dotyczące grupy zasobów.
 
-    ![Inspekcja zasobu](./media/pim-resource-roles-external-users/audit-resource.png)
+    ![Zasoby platformy Azure — zasób inspekcji stronę, godzinę, obiekt żądający i akcji](./media/pim-resource-roles-external-users/audit-resource.png)
 
 1. Aby wyświetlić działania dla gości, kliknij **usługi Azure Active Directory** > **użytkowników** > Nazwa gościa.
 
 1. Kliknij przycisk **dzienniki inspekcji** na przeglądanie dzienników inspekcji dla organizacji. Jeśli to konieczne, możesz określić filtry.
 
-    ![Inspekcja organizacji](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![Inspekcja katalogu rejestruje listę daty, obiektu docelowego, które są inicjowane przez użytkownika i działania](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

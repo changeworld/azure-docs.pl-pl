@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 2583e7e218e765e0d7745978582e19a5a4fe17ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea048c6adbb4e00ae8543810f1dc571376038c62
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550205"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436256"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Tworzenie puli usługi Azure Batch w sieci wirtualnej
 
@@ -56,7 +56,7 @@ Trzeba wymagania w organizacji przekierowania (wymuszone) ruchu skierowanego do 
 
 Aby upewnić się, czy węzły obliczeniowe puli Azure Batch działają w sieci wirtualnej, która ma wymuszonego tunelowania, włączone, należy dodać następujące [trasy zdefiniowane przez użytkownika](../virtual-network/virtual-networks-udr-overview.md) dla tej podsieci:
 
-* Usługa Batch musi komunikować się z puli węzłów obliczeniowych do planowania zadań. Aby włączyć tę komunikację, należy dodać zdefiniowana przez użytkownika trasa dla każdego adresu IP używanego przez usługę Batch w regionie, w której istnieje konta usługi Batch. Aby uzyskać listę adresów IP usługi Batch, skontaktuj się z pomocą techniczną platformy Azure.
+* Usługa Batch musi komunikować się z puli węzłów obliczeniowych do planowania zadań. Aby włączyć tę komunikację, należy dodać zdefiniowana przez użytkownika trasa dla każdego adresu IP używanego przez usługę Batch w regionie, w której istnieje konta usługi Batch. Aby dowiedzieć się, jak można uzyskać listy adresów IP usługi Batch, zobacz [tagów w lokalnych usług](../virtual-network/security-overview.md#service-tags-in-on-premises)
 
 * Upewnij się, że ruch wychodzący do usługi Azure Storage (w szczególności adresy URL formularzy `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`, i `<account>.blob.core.windows.net`) nie jest zablokowany za pomocą swojego urządzenia w sieci lokalnej.
 

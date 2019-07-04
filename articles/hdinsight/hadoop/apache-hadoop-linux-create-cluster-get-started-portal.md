@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 321e555bbcc0e69dd1a96f746e46b9b5119f7d01
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e178326c4a165a9bebbef6b0162cc79c1f9a0727
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165400"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459510"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki start: Tworzenie klastra Apache Hadoop w usłudze Azure HDInsight przy użyciu witryny Azure portal
 
@@ -47,7 +47,7 @@ W tej sekcji utworzysz klaster usługi Hadoop w usłudze HDInsight przy użyciu 
     |Nazwa użytkownika protokołu SSH (Secure Shell) | Domyślna nazwa użytkownika to **sshuser**.  Możesz podać inną nazwę użytkownika protokołu SSH. |
     |Hasło logowania klastra na użytek SSH| Zaznacz to pole wyboru, aby używać tego samego hasła dla użytkownika protokołu SSH oraz użytkownika logowania do klastra.|
     |Grupa zasobów     | Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.  Grupa zasobów jest kontenerem składników platformy Azure.  W tym przypadku grupa zasobów zawiera klaster usługi HDInsight i zależne konto usługi Azure Storage. |
-    |Lokalizacja    | Wybierz lokalizację platformy Azure, w której chcesz utworzyć klaster.  Wybierz lokalizację znajdującą się blisko, aby zapewnić lepszą wydajność. |
+    |Location    | Wybierz lokalizację platformy Azure, w której chcesz utworzyć klaster.  Wybierz lokalizację znajdującą się blisko, aby zapewnić lepszą wydajność. |
 
     ![Wprowadzenie do usługi HDInsight w systemie Linux — podawanie podstawowych wartości klastra](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics.png "Podawanie podstawowych wartości w celu utworzenia klastra usługi HDInsight")
 
@@ -151,4 +151,4 @@ Po ukończeniu tego przewodnika Szybki Start możesz usunąć klaster. Dzięki u
 W tym przewodniku Szybki Start przedstawiono sposób tworzenia klastra HDInsight opartych na systemie Linux przy użyciu szablonu usługi Resource Manager oraz wykonywać podstawowe zapytania Hive. W następnym artykule dowiesz się, jak przeprowadzić operację wyodrębniania, transformacji i ładowania (ETL, extract, transform, and load) przy użyciu usługi Hadoop w usłudze HDInsight.
 
 > [!div class="nextstepaction"]
->[Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Apache Hive w usłudze HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
+>[Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu zapytań interaktywnych na HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

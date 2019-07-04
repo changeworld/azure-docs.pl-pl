@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Search w środowisku Node.js — Azure Search
-description: Zapoznaj się z procesem tworzenia aplikacji wyszukiwania w hostowanej usłudze wyszukiwania w chmurze na platformie Azure przy użyciu języka programowania Node.js.
+title: 'Szybki Start node.js: Tworzenie, obciążenia i zapytań indeksy przy użyciu usługi Azure Search REST API — usługi Azure Search'
+description: Wyjaśnia, jak utworzyć indeks, Załaduj dane i uruchamianie zapytań przy użyciu środowiska Node.js i interfejsów API REST usługi Azure Search.
 author: jj09
 manager: jlembicz
 services: search
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44b7f1f49d6764418dcc0e72cb667e17a2b920c6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289207"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450038"
 ---
-# <a name="get-started-with-azure-search-in-nodejs"></a>Wprowadzenie do usługi Azure Search w środowisku Node.js
+# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Szybki start: Tworzenie indeksu usługi Azure Search w środowisku Node.js
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -32,7 +32,7 @@ Do uruchomienia tego przykładu jest potrzebna usługa Azure Search, do której 
 ## <a name="about-the-data"></a>Informacje o danych
 Ta przykładowa aplikacja korzysta z danych agencji [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm) zawężonych do stanu Rhode Island w celu zmniejszenia rozmiaru zestawu danych. Użyjemy tych danych do utworzenia aplikacji wyszukiwania, która zwraca punkty orientacyjne, takie jak szpitale i szkoły, jak również formy geologiczne, takie jak strumienie, jeziora i szczyty.
 
-W tej aplikacji program **DataIndexer** tworzy i ładuje indeks, używając konstrukcji [indeksatora](https://msdn.microsoft.com/library/azure/dn798918.aspx), a zawężony zestaw danych z agencji USGS jest pobierany z publicznej usługi Azure SQL Database. Poświadczenia oraz informacje o połączeniu ze źródłem danych w trybie online są zawarte w kodzie programu. Nie jest konieczna żadna dodatkowa konfiguracja.
+W tej aplikacji **DataIndexer** program tworzy i ładuje indeks używając [indeksatora](https://msdn.microsoft.com/library/azure/dn798918.aspx) konstrukcji, zawężony zestaw danych agencji usgs jest Pobierany z usługi Azure SQL Database. Poświadczenia oraz informacje o połączeniu ze źródłem danych w trybie online są zawarte w kodzie programu. Nie jest konieczna żadna dodatkowa konfiguracja.
 
 > [!NOTE]
 > Zastosowaliśmy filtr dla tego zestawu danych, aby nie przekroczyć limitu 10 000 dokumentów obowiązującego w warstwie cenowej Bezpłatna. Jeśli korzystasz z warstwy cenowej Standardowa, ten limit nie ma zastosowania. Aby uzyskać szczegółowe informacje o pojemności dla każdej warstwy cenowej, zobacz [Search service limits](search-limits-quotas-capacity.md) (Limity usługi wyszukiwania).

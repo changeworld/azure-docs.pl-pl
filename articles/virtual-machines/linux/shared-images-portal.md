@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2019
+ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 1b760612d8d9a5ed0817ce662ed190f3477cd125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5518d019800d2d194369225a060b9b728e21520
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235850"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465447"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Utwórz galerię udostępnionego obrazu przy użyciu witryny Azure portal
 
@@ -53,6 +53,10 @@ Podczas pracy nad tym artykule, Zamień grupę zasobów i maszynę Wirtualną pr
 ## <a name="create-vms-from-an-image"></a>Tworzenie maszyn wirtualnych z obrazu
 
 Po zakończeniu wersję obrazu, można utworzyć jeden lub więcej nowych maszyn wirtualnych. 
+
+> [!IMPORTANT]
+> Nie można użyć portalu, aby wdrożyć Maszynę wirtualną z obrazu w innej dzierżawie usługi azure. Aby utworzyć Maszynę wirtualną z obrazu udostępniane między dzierżawami, należy użyć [wiersza polecenia platformy Azure](shared-images.md#create-a-vm) lub [Powershell](../windows/shared-images.md#create-vms-from-an-image).
+
 
 W tym przykładzie utworzono maszynę Wirtualną o nazwie *myVMfromImage*w *myResourceGroup* w *wschodnie stany USA* centrum danych.
 

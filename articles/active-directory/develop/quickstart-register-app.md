@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 156b26454aad6d6fd3230e19b47a938841331aec
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545707"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482571"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Szybki start: Rejestrowanie aplikacji w usłudze Microsoft platformy tożsamości
 
@@ -40,13 +40,13 @@ Ten przewodnik Szybki Start dowiesz się, jak dodać i rejestrowanie aplikacji z
    - **Nazwa** — podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji.
    - **Obsługiwane typy konta** — wybierz konta, które aplikacja ma obsługiwać.
 
-       | Obsługiwane typy kont | Opis |
+       | Obsługiwane typy konta | Opis |
        |-------------------------|-------------|
        | **Konta tylko w tym katalogu organizacyjnym** | Wybierz tę opcję, jeśli kompilujesz aplikację biznesową. Ta opcja nie jest dostępna, jeśli aplikacja nie jest rejestrowana w katalogu.<br><br>Ta opcja mapuje do usługi Azure AD tylko aplikację jednodostępną.<br><br>Jest to opcja domyślna, chyba że rejestrujesz aplikację poza katalogiem. W przypadkach, gdy aplikacja jest rejestrowana poza katalogiem, wartość domyślna to aplikacja wielodostępna usługi Azure AD i konta osobiste Microsoft. |
        | **Konta w dowolnym katalogu organizacyjnym** | Wybierz tę opcję, jeśli aplikacja jest przeznaczona dla wszystkich klientów biznesowych i edukacyjnych.<br><br>Ta opcja mapuje do usługi Azure AD tylko aplikację wielodostępną.<br><br>Jeśli aplikacja jest zarejestrowana w usłudze Azure AD jako jednodostępna, możesz ją zaktualizować do aplikacji wielodostępnej usługi Azure AD i z powrotem za pomocą bloku **Uwierzytelnianie**. |
        | **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft** | Wybierz tę opcję, aby przeznaczyć aplikację dla najszerszego możliwego grona klientów.<br><br>Ta opcja mapuje do usługi Azure AD aplikację wielodostępną i konta osobiste Microsoft.<br><br>Jeśli aplikacja jest zarejestrowana jako aplikacja wielodostępna usługi Azure AD z kontami osobistymi Microsoft, nie możesz zmienić tego w interfejsie użytkownika. Zamiast tego musisz użyć edytora manifestu aplikacji, aby zmienić obsługiwane typy konta. |
 
-   - **Identyfikator URI przekierowania (opcjonalny)** — wybierz typ tworzonej aplikacji, **Internet** lub **Klient publiczny (mobilny i klasyczny)**, a następnie podaj identyfikator URI przekierowania (lub adres URL odpowiedzi) dla aplikacji.
+   - **Identyfikator URI przekierowania (opcjonalny)** — wybierz typ tworzonej aplikacji, **Internet** lub **Klient publiczny (mobilny i klasyczny)** , a następnie podaj identyfikator URI przekierowania (lub adres URL odpowiedzi) dla aplikacji.
        - W przypadku aplikacji internetowej podaj podstawowy adres URL aplikacji. Na przykład ciąg `http://localhost:31544` może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą użyć tego adresu URL, aby zalogować się do aplikacji klienta internetowego.
        - W przypadku publicznych aplikacji klienckich podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Podaj wartość specyficzną dla Twojej aplikacji, np. `myapp://auth`.
 
@@ -54,11 +54,11 @@ Ten przewodnik Szybki Start dowiesz się, jak dodać i rejestrowanie aplikacji z
 
 1. Po zakończeniu wybierz pozycję **Rejestruj**.
 
-    [![Rejestrowanie nowej aplikacji w witrynie Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![Pokazuje ekran, aby zarejestrować nową aplikację w witrynie Azure portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Usługa Azure AD przypisze do aplikacji unikatowy identyfikator (klienta), po czym nastąpi przeniesienie do strony **Przegląd** aplikacji. Aby dodać kolejne możliwości do aplikacji, możesz wybrać inne opcje konfiguracji, w tym znakowanie, certyfikaty i wpisy tajne, uprawnienia interfejsu API i więcej.
 
-[![Strona Przegląd nowo zarejestrowanej aplikacji](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![Przykład strony Przegląd nowo zarejestrowana aplikacja](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

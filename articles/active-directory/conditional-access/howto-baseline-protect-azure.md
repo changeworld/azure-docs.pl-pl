@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24b54a3645fe97903219841dd148c0942dfcda76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112384"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560959"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Zasady punktu odniesienia: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)
 
@@ -31,8 +31,6 @@ Za pomocą usługi Azure Resource Manager do zarządzania usługami jest wysoce 
 **Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami** jest [bazowymi zasadami](concept-baseline-protection.md) mogą one wymagać uwierzytelniania Wieloskładnikowego dla każdego użytkownika, dostęp do witryny Azure portal, programu Azure PowerShell lub wiersza polecenia platformy Azure. Ta zasada ma zastosowanie do wszystkich użytkowników uzyskujących dostęp do usługi Azure Resource Manager, bez względu na to, gdy są one administrator.
 
 Po włączeniu tych zasad w dzierżawie wszystkich użytkowników logujących się do zasobów zarządzania platformy Azure zostaną zakwestionowane usługi Multi-Factor authentication. Jeśli użytkownik nie jest zarejestrowany do uwierzytelniania Wieloskładnikowego, użytkownik będą musieli zarejestrować się przy użyciu aplikacji Microsoft Authenticator, aby kontynuować.
-
-![Wymagać uwierzytelniania Wieloskładnikowego dla usługi Azure Resource Manager](./media/howto-baseline-protect-azure/baseline-policy-require-mfa-for-service-management.png)
 
 Do wykonania, interaktywne logowanie przy użyciu [programu Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps), użyj [Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) polecenia cmdlet.
 
@@ -54,17 +52,6 @@ Jeśli interfejs wiersza polecenia może otworzyć Twoją domyślną przeglądar
 
 Ponieważ **wymagają usługi MFA do zarządzania usługami** zasady mają zastosowanie do wszystkich użytkowników usługi Azure Resource Manager, kilka zagadnień, które należy podjąć, aby zapewnić bezproblemowe wdrożenie. Te zagadnienia obejmują identyfikowanie użytkowników i zasad usługi w usłudze Azure AD, która nie może lub nie należy wykonywać uwierzytelnianie wieloskładnikowe, a także aplikacji i używanych przez Twoją organizację klientów, które nie obsługują nowoczesnego uwierzytelniania.
 
-### <a name="user-exclusions"></a>Wykluczenia użytkownika
-
-Ta zasada linii bazowej zapewnia opcji, aby wykluczyć użytkowników. Przed włączeniem zasad dla swojej dzierżawy, zaleca się, z wyłączeniem następujących kont:
-
-* **Dostęp awaryjny** lub **break szkła** konta, aby uniknąć zablokowania konta obowiązujące w dzierżawie. W mało prawdopodobnym scenariuszu, który wszyscy administratorzy z zablokowanym dostępem do Twojej dzierżawy Twoje konto administracyjne dostępu awaryjnego może służyć do logowania się do dzierżawy podejmij kroki, aby odzyskać dostęp.
-   * Więcej informacji można znaleźć w artykule [zarządzania kont dostępu awaryjnego w usłudze Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Konta usług** i **usługi zasady**, takich jak konto Azure AD Connect Sync. Konta usług są nieinteraktywnych kont, które nie są powiązane z żadnym określonym użytkownikiem. One są zwykle używane przez usługi zaplecza i zezwolić na dostęp programistyczny do aplikacji. Konta usług powinny być wyłączone, ponieważ usługi MFA nie można wykonać programowo.
-   * Jeśli Twoja organizacja ma konta te używane w skryptach lub kod, należy wziąć pod uwagę zastępowała je za pomocą [zarządzanych tożsamości](../managed-identities-azure-resources/overview.md). Jako rozwiązanie tymczasowe możesz wykluczyć te określonych kont z bazowymi zasadami.
-* Użytkownicy, którzy nie ma lub nie będzie mógł używać smartfonie.
-   * Ta zasada wymaga od użytkowników rejestracji usługi MFA za pomocą aplikacji Microsoft Authenticator.
-
 ## <a name="enable-the-baseline-policy"></a>Włącz zasady linii bazowej
 
 Zasady **bazowymi zasadami: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)** ma wstępnie skonfigurowany i pojawi się u góry po przejściu do bloku dostępu warunkowego w witrynie Azure portal.
@@ -75,7 +62,6 @@ Aby włączyć te zasady i chronić administratorów:
 1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
 1. Na liście zasad wybierz **bazowymi zasadami: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)** .
 1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
-1. Dodaj wykluczenia użytkownika, klikając **użytkowników** > **wybierz wykluczonych użytkowników** i wybierając pozycję Użytkownicy, którzy muszą być wyłączone. Kliknij przycisk **wybierz** następnie **gotowe**.
 1. Kliknij przycisk **Zapisz**.
 
 ## <a name="next-steps"></a>Kolejne kroki

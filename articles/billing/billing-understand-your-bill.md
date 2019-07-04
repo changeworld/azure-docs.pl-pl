@@ -1,33 +1,29 @@
 ---
-title: Informacje o rachunku Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak czytać i zrozumieć swoje użycia oraz rachunek dotyczące subskrypcji platformy Azure
-services: ''
-documentationcenter: ''
-author: tonguyen10
+title: Informacje o rachunku Azure
+description: Dowiedz się, jak czytać i zrozumieć swoje użycia oraz rachunek dotyczące subskrypcji platformy Azure.
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 4303b79a7ee69d029504bf6ca2359f6e6070e5b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8b0d6febbffb80cb4e8bcbf62febb51d059282c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370194"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490307"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Opis zawartości rachunku Microsoft Azure
-Aby poznać rachunku dotyczącym platformy Azure, porównaj fakturze za pomocą szczegółowych codzienne pliku użycia i raportów rozwiązania cost management w witrynie Azure portal.
+Aby poznać rachunku dotyczącym platformy Azure, możesz porównać fakturze plikiem szczegółowe dziennego użycia i z raportów rozwiązania cost management w witrynie Azure portal.
 
 Ten artykuł nie dotyczy klientów platformy Azure z umową Enterprise Agreement (EA klienci). Jeśli jesteś klientem z umową EA, zobacz [opis zawartości rachunku dla klientów platformy Azure z umową Enterprise Agreement](billing-understand-your-bill-ea.md).
 
-Ten artykuł nie dotyczy klientów platformy Azure z umową klienta firmy Microsoft. Jeśli masz konto rozliczeniowe dla umowy klienta firmy Microsoft, zobacz [opłatach platformy Azure na fakturze umowy klienta Microsoft](billing-mca-understand-your-bill.md).
+Ten artykuł nie dotyczy klientów platformy Azure za pomocą [umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement). Jeśli masz umowy klienta firmy Microsoft, zobacz [opłatach platformy Azure na fakturze umowy klienta Microsoft](billing-mca-understand-your-bill.md).
 
 Aby uzyskać informacje dotyczące rozliczeń w programie Azure Cloud Solution Provider (CSP platformy Azure), w tym rozliczeń cyklu, ceny i użycia, zobacz [Przegląd rozliczeń Azure CSP](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
@@ -39,7 +35,7 @@ Twoja faktura, który chcesz uzyskać więcej informacji o jest opłaty, można 
 
 ### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Opcja 1: Porównaj użycie i koszty za pomocą pliku użycia
 
-Szczegóły użycia pliku CSV zawiera opłat, okres rozliczeniowy i dziennego użycia. Aby uzyskać plik, zobacz [pobrać faktury i dane dziennego użycia rozliczeniową za platformę Azure](billing-download-azure-invoice-daily-usage-date.md).
+Szczegóły użycia pliku CSV zawiera opłat, okres rozliczeniowy i dziennego użycia. Do pobrania lub wyświetlenia pliku, zobacz [pobrać faktury i dane dziennego użycia rozliczeniową za platformę Azure](billing-download-azure-invoice-daily-usage-date.md).
 
 Twoje opłaty za użycie są wyświetlane na poziomie miernika. Poniższe terminy oznaczają to samo zarówno faktury, jak i plik szczegółowym zestawieniem użycia. Na przykład okresu rozliczeniowego na fakturze jest taka sama, jak pokazano w pliku szczegółowym zestawieniem użycia okresu rozliczeniowego.
 
@@ -54,7 +50,7 @@ Twoje opłaty za użycie są wyświetlane na poziomie miernika. Poniższe termin
  |Dołączono |Uwzględniona ilość |
  |Płatne |Ilość nadwyżkowego użycia |
 
-**Opłaty za użycie** sekcji fakturze z wartością całkowitą w ramach każdego miernika, która została wykorzystana w trakcie okresu rozliczeniowego. Na przykład poniższy zrzut ekranu przedstawia opłata za użycie usługi Azure Scheduler.
+**Opłaty za użycie** sekcji fakturze Pokazuje łączną wartość w ramach każdego miernika, która została wykorzystana w trakcie okresu rozliczeniowego. Na przykład na poniższej ilustracji przedstawiono opłata za użycie usługi Azure Scheduler.
 
 ![Opłaty za użycie faktury](./media/billing-understand-your-bill/1.png)
 
@@ -62,7 +58,7 @@ Twoje opłaty za użycie są wyświetlane na poziomie miernika. Poniższe termin
 
 ![Opłaty za użycie pliku CSV](./media/billing-understand-your-bill/2.png)
 
-Aby wyświetlić rozbiciem na poszczególne dni dodatkowego, przejdź do **dzienne użycie** sekcji CSV. Filtruj *harmonogramu* w obszarze *kategoria licznika*. Widać, które dni użyto licznika i ile Zużyto. *Zasobów* i *grupy zasobów* informacji znajduje się również do porównania. *Zużyto* wartości należy dodać w do przedstawionego na fakturze.
+Aby wyświetlić rozbiciem na poszczególne dni opłaty, przejdź do **dzienne użycie** sekcja pliku CSV. Filtruj *harmonogramu* w obszarze *kategoria licznika*. Widać, które dni użyto licznika i ile Zużyto. *Zasobów* i *grupy zasobów* wyświetlane są również informacje dla porównania. *Zużyto* wartości należy dodać do i dopasowania, które zostaną uwzględnione na fakturze.
 
 ![Codzienne sekcji w woluminie CSV](./media/billing-understand-your-bill/3.png)
 
@@ -84,7 +80,7 @@ Witryna Azure portal może również pomóc, możesz sprawdzić opłat. Aby uzys
 
    ![Analiza kosztów widok w witrynie Azure portal](./media/billing-understand-your-bill/4.png)
 
-1. Wybierz ten wiersz, aby wyświetlić koszt rozbiciem na poszczególne dni.
+1. Zaznacz wiersz, który pokazuje opłat, aby wyświetlić koszt rozbiciem na poszczególne dni.
 
    ![Historia kosztu widok w witrynie Azure portal](./media/billing-understand-your-bill/5.png)
 
@@ -135,6 +131,9 @@ Aby sprawdzić stan płatności, [Utwórz bilet pomocy technicznej](https://port
   - [Całkowity koszt posiadania Kalkulator](https://aka.ms/azure-tco-calculator)
   - [Szczegółowe informacje o cenach informacji dla każdej usługi](https://azure.microsoft.com/pricing/)
 - [Przeglądanie użycia i kosztów regularnie w witrynie Azure portal](billing-getting-started.md#costs).
+
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
+[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 

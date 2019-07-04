@@ -4,7 +4,7 @@ description: Zrozumienie, jak użyć wyzwalaczy czasomierza w usłudze Azure Fun
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: db80155b39602ad5810c83e03913fb0f3ccb4281
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1a26950f355fd10d9dd502851886a8b8101d4a83
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342232"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508290"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -261,7 +261,7 @@ Usługa Azure Functions korzysta [NCronTab](https://github.com/atifaziz/NCrontab
 
 Każde pole może mieć jedną z następujących typów wartości:
 
-|Type  |Przykład  |Po wyzwoleniu  |
+|Typ  |Przykład  |Po wyzwoleniu  |
 |---------|---------|---------|
 |Określona wartość |<nobr>"0 5 * * * *"</nobr>|w hh:05:00, gdzie hh oznacza co godzinę (co godzinę)|
 |Wszystkie wartości (`*`)|<nobr>"0 * 5 * * *"</nobr>|w 5:mm: 00 każdego dnia, gdzie jest mm co minutę godziny (60 razy dziennie)|
@@ -269,12 +269,7 @@ Każde pole może mieć jedną z następujących typów wartości:
 |Zestaw wartości (`,` operatora)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05, hh:mm:08 i hh:mm:10, gdzie hh: mm to co minutę na godzinę (3 razy minuty)|
 |Wartość interwału (`/` operatora)|<nobr>"0 */5 * * * *"</nobr>|co hh:05:00 hh:10:00 hh:15:00 i tak dalej za pośrednictwem hh:55:00 gdzie hh oznacza co godzinę (12-krotnie godzina)|
 
-Aby określić, miesięcy i dni można użyć wartości liczbowych, nazwy lub skróty nazw:
-
-* Dni wartości numeryczne są 0 – 6, w którym 0 zaczyna się od niedzieli.
-* Nazwy są w języku angielskim. Przykład: `Monday`, `January`.
-* Nazwy jest rozróżniana wielkość liter.
-* Można stosować skrót nazwy. Trzy litery jest to zalecane — skrót.  Przykład: `Mon`, `Jan`. 
+[!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
 ### <a name="cron-examples"></a>Przykłady usługi CRON
 

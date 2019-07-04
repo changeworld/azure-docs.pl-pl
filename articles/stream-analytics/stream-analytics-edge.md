@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics na urządzeniach brzegowych IoT Edge
 description: Tworzenie zadań krawędzi w usłudze Azure Stream Analytics i wdrażać je na urządzeniach z systemem Azure IoT Edge.
-services: stream-analytics
+ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 4/2/2019
+ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b9d11b75e2677e22fa2e38c21a69f018a4bee8
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803977"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508341"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na urządzeniach brzegowych IoT Edge
  
@@ -111,7 +110,7 @@ Te kroki opisano w dokumentacji usługi IoT Edge [Windows](https://docs.microsof
 
 > [!Note]
 > W tym kroku ASA tworzy folder o nazwie "EdgeJobs" w kontenerze magazynu (jeśli go jeszcze nie istnieje). Dla każdego wdrożenia nowego podfolderu jest tworzony w folderze "EdgeJobs".
-> Aby wdrożyć zadanie na urządzeniach brzegowych, ASA tworzy sygnatury dostępu współdzielonego (SAS) dla pliku definicji zadania. Klucza sygnatury dostępu Współdzielonego jest bezpiecznie przesyłany do urządzenia usługi IoT Edge, za pomocą bliźniaczej reprezentacji urządzenia. Po upływie tego klucza jest trzech lat od dnia jego utworzenia.
+> Podczas wdrażania zadania na urządzeniach usługi IoT Edge, ASA tworzy sygnatury dostępu współdzielonego (SAS) dla pliku definicji zadania. Klucza sygnatury dostępu Współdzielonego jest bezpiecznie przesyłany do urządzenia usługi IoT Edge, za pomocą bliźniaczej reprezentacji urządzenia. Po upływie tego klucza jest trzech lat od dnia jego utworzenia. Po zaktualizowaniu zadania usługi IoT Edge sygnatury dostępu Współdzielonego ulegnie zmianie, ale nie zmieni się wersję obrazu. Po **aktualizacji**, postępuj zgodnie z przepływ pracy wdrażania i powiadomienie o aktualizacji jest rejestrowane na urządzeniu.
 
 
 Aby uzyskać więcej informacji na temat wdrożenia usługi IoT Edge, zobacz do [tę stronę](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -203,9 +202,31 @@ Istnieją dwa sposoby, aby zaktualizować dane referencyjne:
 * [Licencja Azure Stream Analytics w usłudze IoT Edge](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Uwagi dotyczące innych firm — dla usługi Azure Stream Analytics w usłudze IoT Edge](https://go.microsoft.com/fwlink/?linkid=862828).
 
+## <a name="azure-stream-analytics-module-image-information"></a>Azure Stream Analytics modułu obraz informacji 
+
+Informacje o wersji Data ostatniej aktualizacji 2019-06-27:
+
+- Obraz: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+   - Obraz podstawowy: microsoft/dotnet:2.1.6-runtime-alpine3.7
+   - Platforma:
+      - Architektura: amd64
+      - system operacyjny: linux
+  
+- Obraz: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+   - Obraz podstawowy: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+   - Platforma:
+      - Architektura: arm
+      - system operacyjny: linux
+  
+- Obraz: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+   - Obraz podstawowy: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+   - Platforma:
+      - Architektura: amd64
+      - system operacyjny: windows
+      
+      
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dalszą pomoc, spróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

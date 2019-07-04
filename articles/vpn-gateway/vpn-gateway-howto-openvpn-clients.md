@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: a3806a7f64f30e5073182f96f552b8584cf1ce0c
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: b8f1626da730178d2cd9c2f31c4f9876102b3d46
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147253"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477845"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurowanie klientów OpenVPN dla bramy sieci VPN platformy Azure
 
@@ -67,9 +67,9 @@ Sprawdź, że zostały wykonane kroki konfigurowania OpenVPN dla bramy sieci VPN
 4. W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Zobacz [wyeksportować klucz publiczny](vpn-gateway-certificates-point-to-site.md#cer) informacji o sposobie eksportowania certyfikatu można pobrać zakodowanego klucza publicznego.
 5. W sekcji klucza prywatnego wprowadź klucz prywatny certyfikatu klienta P2S w formacie base64. Zobacz [Eksportuj klucz prywatny](https://openvpn.net/community-resources/how-to/#pki) informacji o tym, jak można wyodrębnić klucza prywatnego.
 6. Nie zmieniaj innych pól. Użyj konfiguracji wprowadzonej w danych wejściowych klienta, aby nawiązać połączenie z siecią VPN.
-7. Kliknij dwukrotnie plik profilu, aby utworzyć profil w tunnelblik.
-8. Uruchom Tunnelblik z folderu aplikacji.
-9. Kliknij ikonę Tunnelblik na pasku zadań i połącz wyboru.
+7. Kliknij dwukrotnie plik profilu, aby utworzyć profil w Tunnelblick.
+8. Uruchom Tunnelblick z folderu aplikacji.
+9. Kliknij ikonę Tunnelblick na pasku zadań i połącz wyboru.
 
 > [!IMPORTANT]
 >Tylko system iOS 11.0 i nowszych i MacOS 10.13 i nowszej są obsługiwane przy użyciu protokołu OpenVPN.

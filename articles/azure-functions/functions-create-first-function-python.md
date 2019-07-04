@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: ea890a49fc7b6a153ece183b153f5bc2a49760b5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496565"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444578"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP w systemie Azure
 
@@ -32,9 +32,9 @@ Przed rozpoczęciem wykonywania tej procedury, musisz mieć następujące czynno
 
 + Zainstaluj język [Python 3.6](https://www.python.org/downloads/).
 
-+ Zainstaluj [podstawowych narzędzi usługi Azure Functions](./functions-run-local.md#v2) wersji 2.6.666 lub nowszej.
++ Zainstaluj [podstawowych narzędzi usługi Azure Functions](./functions-run-local.md#v2) wersji 2.6.1071 lub nowszej.
 
-+ Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) w wersji 2.x lub nowszej.
++ Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) wersji 2.x lub nowszej wersji.
 
 + Aktywna subskrypcja platformy Azure.
 
@@ -44,18 +44,18 @@ Przed rozpoczęciem wykonywania tej procedury, musisz mieć następujące czynno
 
 Aby lokalnie rozwijać i przetestować funkcje języka Python, możesz pracować w środowisku Python 3.6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.env`.
 
-### <a name="bash-or-a-terminal-window"></a>Powłoki bash lub oknie terminalu:
+### <a name="bash"></a>Bash:
 
 ```bash
-python3.6 -m venv .env
-source .env/bin/activate
+python3.6 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### <a name="powershell-or-a-windows-command-prompt"></a>Lub wiersza polecenia Windows PowerShell:
 
 ```powershell
-py -3.6 -m venv .env
-.env\scripts\activate
+py -3.6 -m venv .venv
+.venv\scripts\activate
 ```
 
 Pozostałe polecenia są uruchamiane w środowisku wirtualnym.
@@ -66,7 +66,7 @@ Projekt funkcji jest odpowiednikiem aplikacji funkcji na platformie Azure. Może
 
 W środowisku wirtualnym, uruchom następujące polecenia, wybierając **python** jako środowisko uruchomieniowe usługi procesu roboczego.
 
-```command
+```console
 func init MyFunctionProj
 ```
 
@@ -78,25 +78,17 @@ Folder o nazwie _MyFunctionProj_ zostanie utworzony, który zawiera trzy następ
 
 Przejdź do nowego folderu MyFunctionProj:
 
-```command
+```console
 cd MyFunctionProj
 ```
 
 Następnie należy zaktualizować pliku host.json, aby umożliwić rozszerzenie pakiety.  
 
-## <a name="reference-bindings"></a>Odwołanie do powiązania
-
-Pakiety rozszerzeń ułatwia dodawanie rozszerzeń powiązania w dół po drodze. Powoduje ono także usunięcie wymogu instalacji platformy .NET Core 2.x SDK. Pakiety rozszerzeń wymaga wersji 2.6.1071 podstawowe narzędzia lub nowszym. 
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
-Teraz można dodać funkcji do projektu.
-
 ## <a name="create-a-function"></a>Tworzenie funkcji
 
 Aby dodać funkcję do projektu, uruchom następujące polecenie:
 
-```command
+```console
 func new
 ```
 

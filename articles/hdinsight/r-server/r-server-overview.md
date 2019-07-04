@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 26dd7554cc713d85a9e03649bcb6d41139cbdf27
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: a5e4c7acd407cef1bb5fc43d7e40014a6b088a0a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137178"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448888"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co to są usługi ML w usłudze Azure HDInsight
 
@@ -27,7 +27,7 @@ Modele lub prognoz, wynikających z analizy można pobrać do użycia w środowi
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Rozpoczynanie pracy z usługami uczenia Maszynowego na HDInsight
 
-Aby utworzyć klaster usługi ML w usłudze Azure HDInsight, wybierz **usługi ML** typ klastra podczas tworzenia klastra usługi HDInsight przy użyciu witryny Azure portal. Typ klastra usługi ML obejmuje ML Server, na węzłami klastra i węzła krawędzi, która służy jako strefa docelowa dla analiza na podstawie usługi ML. Zobacz [rozpoczęcie korzystania z usługi uczenie Maszynowe na HDInsight](r-server-get-started.md) przewodnik dotyczący sposobu tworzenia klastra.
+Aby utworzyć klaster usługi ML w usłudze Azure HDInsight, wybierz **usługi ML** typ klastra podczas tworzenia klastra usługi HDInsight przy użyciu witryny Azure portal. Typ klastra usługi ML obejmuje ML Server, na węzłami klastra i węzła krawędzi, która służy jako strefa docelowa dla analiza na podstawie usługi ML. Zobacz [tworzenie technologii Apache Hadoop clusters, przy użyciu witryny Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) przewodnik dotyczący sposobu tworzenia klastra.
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>Dlaczego warto wybrać usługi ML w HDInsight?
 
@@ -68,13 +68,13 @@ Poniższe funkcje dostępne w usługi uczenie Maszynowe na HDInsight.
 
 Domyślny magazyn dla systemu plików HDFS klastrów HDInsight może być skojarzony z kontem usługi Azure Storage lub usługi Azure Data Lake Storage. To skojarzenie gwarantuje, że dowolne dane są przekazywane do klastra magazynu podczas analizy jest trwałe i dane są dostępne, nawet w przypadku, po usunięciu klastra. Istnieją różne narzędzia do obsługi transferu danych do opcji magazynu, który wybierzesz, w tym funkcji przekazywania oparte na portalu konta usługi storage i [AzCopy](../../storage/common/storage-use-azcopy.md) narzędzia.
 
-Istnieje możliwość włączenia dostępu do obiektu Blob dodatkowe i usługi Data lake przechowuje podczas procesu niezależnie od opcji magazynu podstawowego, używany do aprowizacji klastra. Zobacz [rozpoczęcie korzystania z usługi uczenie Maszynowe na HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started) informacji na temat dodawania dostęp do dodatkowych kont. Zobacz [opcji usługi Azure Storage dla usługi ML w HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) artykuł, aby dowiedzieć się więcej o korzystaniu z wieloma kontami magazynu.
+Istnieje możliwość włączenia dostępu do obiektu Blob dodatkowe i usługi Data lake przechowuje podczas procesu niezależnie od opcji magazynu podstawowego, używany do aprowizacji klastra.  Zobacz [opcji usługi Azure Storage dla usługi ML w HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) artykuł, aby dowiedzieć się więcej o korzystaniu z wieloma kontami magazynu.
 
 Można również użyć [usługi Azure Files](../../storage/files/storage-how-to-use-files-linux.md) jako opcji magazynu do użycia w węźle brzegowym. Usługa Azure Files umożliwia instalowanie udziału plików, który został utworzony w usłudze Azure Storage w systemie plików systemu Linux. Aby uzyskać więcej informacji o tych opcjach magazynu danych usługi ML w klastrze HDInsight, zobacz [opcji usługi Azure Storage dla usługi ML w HDInsight](r-server-storage.md).
 
 ## <a name="access-ml-services-edge-node"></a>Węzeł krawędzi usługi ML dostępu
 
-Możesz nawiązać Microsoft ML Server, w węźle krawędzi, za pomocą przeglądarki. Instalowany domyślnie podczas tworzenia klastra. Aby uzyskać więcej informacji, zobacz [uzyskać stared z usługami uczenia Maszynowego na HDInsight](r-server-get-started.md). Można również nawiązać węzłem brzegowym klastra z poziomu wiersza polecenia przy użyciu protokołu SSH/PuTTY uzyskać dostęp do konsoli R.
+Możesz nawiązać Microsoft ML Server, w węźle krawędzi, za pomocą przeglądarki. Instalowany domyślnie podczas tworzenia klastra.  Można również nawiązać węzłem brzegowym klastra z poziomu wiersza polecenia przy użyciu protokołu SSH/PuTTY uzyskać dostęp do konsoli R.
 
 ## <a name="develop-and-run-r-scripts"></a>Twórz i uruchamiaj skrypty języka R
 
@@ -142,6 +142,6 @@ Ceny, które są skojarzone z klastrem usługi HDInsight usługi ML mają strukt
 
 Aby dowiedzieć się więcej na temat korzystania z usług uczenia Maszynowego w klastrach HDInsight, zobacz następujące tematy:
 
-* [Rozpoczynanie pracy z klastrem usługi ML w HDInsight](r-server-get-started.md)
+* [Wykonywanie skryptu języka R w klastrze usługi ML w usłudze Azure HDInsight przy użyciu programu RStudio Server](machine-learning-services-quickstart-job-rstudio.md)
 * [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)
 * [Opcje magazynu dla klastra usługi ML na HDInsight](r-server-storage.md)

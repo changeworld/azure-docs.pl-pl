@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 23754a1184f89d1fb563b2d73109f3a10c48920c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7ba653795791f0e6a2c3d3c73ff574a3ed31f314
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65539315"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485235"
 ---
 # <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
 Azure Search jest opartym na chmurze rozwiązaniem typu „wyszukiwanie jako usługa”, które udostępnia deweloperom interfejsy API oraz narzędzia umożliwiające dodawanie zaawansowanych funkcji wyszukiwania do prywatnej, heterogenicznej zawartości w aplikacjach internetowych, mobilnych i firmowych. Wykonywanie zapytań odbywa się na podstawie indeksu zdefiniowanego przez użytkownika.
@@ -36,7 +36,7 @@ Funkcje są uwidaczniane za pośrednictwem prostego [interfejsu API REST](/rest/
 | Podstawowe&nbsp;wyszukiwania&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkcje |
 |-------------------|----------|
 |Wyszukiwanie tekstowe w dowolnej postaci | [**Wyszukiwanie pełnotekstowe** ](search-lucene-query-architecture.md) to główny przypadek użycia w przypadku większości aplikacji na podstawie wyszukiwania. Zapytania można formułować za pomocą obsługiwanej składni. <br/><br/>[**Prosta składnia zapytań**](query-simple-syntax.md) zawiera operatory logiczne, operatory wyszukiwania fraz, operatory sufiksów oraz operatory pierwszeństwa.<br/><br/>[**Składnia zapytań Lucene**](query-lucene-syntax.md) obejmuje wszystkie operacje prostej składni rozszerzone o wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie, promowanie terminów i wyrażenia regularne.|
-| Istotność | [**Proste ocenianie**](index-add-scoring-profiles.md) to kluczowa zaleta korzystania z usługi Azure Search. Profile oceniania służą do modelowania trafności jako funkcji wartości w samych dokumentach. Na przykład nowsze produkty lub produkty o obniżonej cenie mogą być wyświetlane na początku wyników wyszukiwania. Do tworzenia profilów oceniania można również używać tagów spersonalizowanej oceny opartych na preferencjach klientów, śledzonych i przechowywanych oddzielnie. |
+| Trafność | [**Proste ocenianie**](index-add-scoring-profiles.md) to kluczowa zaleta korzystania z usługi Azure Search. Profile oceniania służą do modelowania trafności jako funkcji wartości w samych dokumentach. Na przykład nowsze produkty lub produkty o obniżonej cenie mogą być wyświetlane na początku wyników wyszukiwania. Do tworzenia profilów oceniania można również używać tagów spersonalizowanej oceny opartych na preferencjach klientów, śledzonych i przechowywanych oddzielnie. |
 | Wyszukiwanie geograficzne | Usługa Azure Search umożliwia przetwarzanie, filtrowanie i wyświetlanie lokalizacji geograficznych. Pozwala ona użytkownikom eksplorować dane na podstawie zbliżenia wyniku wyszukiwania do lokalizacji fizycznej. Aby dowiedzieć się więcej, [obejrzyj ten film](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) lub [zapoznaj się z przykładem](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |
 | Filtry i zestawy reguł | [**Nawigacja aspektowa**](search-faceted-navigation.md) jest włączana za pomocą jednego parametru zapytania. Usługa Azure Search zwraca strukturę nawigacji aspektowej, której można użyć jako kodu dla listy kategorii podczas samodzielnego filtrowania (na przykład filtrowania elementów katalogu według ceny i zakresu lub marki). <br/><br/> [**Filtry**](query-odata-filter-orderby-syntax.md) umożliwiają integrowanie nawigacji aspektowej z interfejsem użytkownika aplikacji, rozbudowywanie zapytań oraz filtrowanie na podstawie kryteriów określonych przez użytkownika lub dewelopera. Do tworzenie filtrów służy składnia OData. |
 | Funkcje środowiska użytkownika | [**Autouzupełnianie** ](search-autocomplete-tutorial.md) można włączyć dla wpisywanie zapytań na pasku wyszukiwania. <br/><br/>[**Sugestie dotyczące wyszukiwania**](https://docs.microsoft.com/rest/api/searchservice/suggesters) działają również na podstawie tekstu częściowego wpisanego w pasku wyszukiwania, ale wyniki są faktycznymi dokumentami w indeksie, a nie terminami zapytania. <br/><br/>[**Synonimy**](search-synonyms.md) umożliwiają kojarzenie równoważnych terminów, co niejawnie rozszerza zakres zapytania — bez potrzeby podawania terminów alternatywnych przez użytkownika. <br/><br/>[**Wyróżnianie trafień**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) umożliwia zastosowanie formatowania tekstu do pasującego słowa kluczowego w wynikach wyszukiwania. Można wybrać pola, które zwracają wyróżnione fragmenty.<br/><br/>[**Sortowanie**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) jest dostępne dla wielu pól za pośrednictwem schematu indeksu. Można je przełączać w czasie wykonywania zapytania za pomocą pojedynczego parametru wyszukiwania.<br/><br/> [**Stronicowanie**](search-pagination-page-layout.md) i ograniczanie wyników wyszukiwania jest proste dzięki precyzyjnej kontroli nad wynikami wyszukiwania udostępnianej przez usługę Azure Search.  <br/><br/>|
@@ -57,7 +57,7 @@ Funkcje są uwidaczniane za pośrednictwem prostego [interfejsu API REST](/rest/
 |-------------------|----------|
 | Narzędzia służące do tworzenia prototypów i przeprowadzania inspekcji | Portal udostępnia [**kreatora importowania danych**](search-import-data-portal.md) umożliwiającego konfigurowanie indeksatorów, projektanta indeksów służącego do wdrożenia indeksu oraz [**eksploratora wyszukiwania**](search-explorer.md), który pozwala testować zapytania i dostosowywać profile oceniania. Można również otworzyć dowolny indeks, aby wyświetlić jego schemat. |
 | Monitorowanie i diagnostyka | [**Włącz funkcje monitorowania** ](search-monitor-usage.md) czegoś więcej metryk w skrócie które zawsze są widoczne w portalu. Metryki dotyczące liczby zapytań na sekundę, opóźnienia i ograniczania są przechwytywane i udostępniane na stronach portalu bez konieczności konfigurowania dodatkowych ustawień. <br/><br/>[**Analiza ruchu wyszukiwania** ](search-traffic-analytics.md) to kolejny alternatywny sposób monitorowania, w przypadku, gdy po stronie serwera i klienta, dane są zbierane i przeprowadzana w celu uzyskania szczegółowych informacji o jakie użytkownicy są wpisane w polu wyszukiwania. |
-| Szyfrowanie po stronie serwera | [**Zarządzany przez firmę Microsoft szyfrowanie w spoczynku** ](search-security-overview.md#encrypted-transmission-and-storage) jest wbudowana w warstwie wewnętrzny magazyn i jest nieodwracalny. Opcjonalnie można uzupełnić szyfrowania domyślne przy użyciu [ **klucze szyfrowania zarządzanego przez klienta (wersja zapoznawcza)**](search-security-manage-encryption-keys.md). Klucze, które umożliwiają tworzenie i zarządzanie nimi w usłudze Azure Key Vault są używane do szyfrowania indeksy i mapy synonimów, w usłudze Azure Search. |
+| Szyfrowanie po stronie serwera | [**Zarządzany przez firmę Microsoft szyfrowanie w spoczynku** ](search-security-overview.md#encrypted-transmission-and-storage) jest wbudowana w warstwie wewnętrzny magazyn i jest nieodwracalny. Opcjonalnie można uzupełnić szyfrowania domyślne przy użyciu [ **klucze szyfrowania zarządzanego przez klienta (wersja zapoznawcza)** ](search-security-manage-encryption-keys.md). Klucze, które umożliwiają tworzenie i zarządzanie nimi w usłudze Azure Key Vault są używane do szyfrowania indeksy i mapy synonimów, w usłudze Azure Search. |
 | Infrastruktura | **Platforma o wysokiej dostępności** zapewnia niezawodne działanie usługi wyszukiwania. W przypadku prawidłowego skalowania [usługa Azure Search gwarantuje dostępność na poziomie 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> Kompleksowe rozwiązanie Azure Search jest **w pełni zarządzane i skalowalne** — nie wymaga żadnych czynności w zakresie zarządzania infrastrukturą. Skalowanie w dwóch wymiarach pozwala dostosować usługę do swoich potrzeb, na przykład zwiększyć miejsce do magazynowania dokumentów czy zapewnić obsługę większych obciążeń zapytaniami.<br/><br/>|
 
 ## <a name="how-to-use-azure-search"></a>Jak używać usługi Azure Search
@@ -81,7 +81,7 @@ W modelu ściągania dane są pobierane z zewnętrznych źródeł danych. Jest o
 
 Model wypychania jest oparty na zestawie SDK lub interfejsach API REST i umożliwia wysyłanie zaktualizowanych dokumentów do indeksu. Dane możesz wypychać praktycznie z każdego zestawu danych w formacie JSON. Aby uzyskać wskazówki dotyczące ładowania danych, zobacz [Dodawanie, aktualizowanie lub usuwanie dokumentów](/rest/api/searchservice/addupdate-or-delete-documents) lub [Jak używać zestawu SDK dla platformy .NET](search-howto-dotnet-sdk.md).
 
-### <a name="step-4-search"></a>Krok 4: wyszukaj
+### <a name="step-4-search"></a>Krok 4: Wyszukiwanie
 Po wypełnieniu indeksu możesz [wysyłać zapytania wyszukiwania](/rest/api/searchservice/Search-Documents) do punktu końcowego usługi za pomocą prostych żądań HTTP, korzystających z interfejsu API REST lub zestawu SDK dla platformy .NET.
 
 ## <a name="how-it-compares"></a>Porównanie z innymi rozwiązaniami
@@ -134,7 +134,7 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 3. Rozpocznij pracę z kodem, korzystając z platformy .NET lub interfejsu API REST:
 
    + [Jak używać zestawu SDK dla platformy .NET](search-howto-dotnet-sdk.md) — przedstawia podstawowy przepływ pracy w kodzie zarządzanym.  
-   + [Wprowadzenie do interfejsu API REST](https://github.com/Azure-Samples/search-rest-api-getting-started) — zawiera te same kroki, wykonywane za pomocą interfejsu API REST. Podczas pracy z tym przewodnikiem Szybki start interfejsy API REST można również wywoływać przy użyciu narzędzia Postman lub Fiddler — zobacz: [Poznaj interfejs API REST usługi Azure Search](search-fiddler.md).
+   + [Wprowadzenie do interfejsu API REST](https://github.com/Azure-Samples/search-rest-api-getting-started) — zawiera te same kroki, wykonywane za pomocą interfejsu API REST. Podczas pracy z tym przewodnikiem Szybki start interfejsy API REST można również wywoływać przy użyciu narzędzia Postman lub Fiddler — zobacz: [Poznaj interfejs API REST usługi Azure Search](search-get-started-postman.md).
 
 ## <a name="watch-this-video"></a>Obejrzyj ten film wideo
 

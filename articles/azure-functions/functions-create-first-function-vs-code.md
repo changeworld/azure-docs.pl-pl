@@ -9,15 +9,15 @@ keywords: azure functions, funkcje, przetwarzanie zdarzeń, obliczenia, architek
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fcf9f1d6420dbbde359d386bc3b67a0866aca30d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61354555"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444621"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio Code
 
@@ -27,25 +27,26 @@ W tym artykule dowiesz się, jak użyć [Rozszerzenie usługi Azure Functions dl
 
 ![Kod usługi Azure Functions w projekcie programu Visual Studio](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-Obecnie rozszerzenie w pełni obsługuje funkcje języków C#, JavaScript i Java, a obsługa języka Python jest dostępna w wersji zapoznawczej. Kroki opisane w tym artykule mogą się różnić w zależności od wybranego języka dla projektu usługi Azure Functions. Rozszerzenie jest aktualnie dostępne w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz stronę [Rozszerzenie usługi Azure Functions dla programu Visual Studio Code].
+Rozszerzenie obsługuje obecnie C#, JavaScript i Java działa z obsługą języka Python, obecnie w wersji zapoznawczej. Kroki opisane w tym artykule oraz artykuł, który następuje po obsługuje tylko JavaScript i C# funkcji. Aby dowiedzieć się, jak tworzyć i publikować funkcje języka Python za pomocą programu Visual Studio Code, zobacz [wdrażania języka Python w usłudze Azure Functions](https://code.visualstudio.com/docs/python/tutorial-azure-functions). Aby dowiedzieć się, jak tworzyć i publikować funkcje programu PowerShell za pomocą programu Visual Studio Code, zobacz [tworzenie pierwszej funkcji programu PowerShell w systemie Azure](functions-create-first-function-powershell.md). 
+
+Rozszerzenie jest aktualnie dostępne w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz stronę [Rozszerzenie usługi Azure Functions dla programu Visual Studio Code].
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik Szybki start:
 
-* Zainstaluj [program Visual Studio Code](https://code.visualstudio.com/) na jednej z [obsługiwanych platform](https://code.visualstudio.com/docs/supporting/requirements#_platforms). Ten artykuł został opracowany i przetestowany na urządzeniu z systemem macOS (High Sierra).
+* Zainstaluj [program Visual Studio Code](https://code.visualstudio.com/) na jednej z [obsługiwanych platform](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
-* Zainstaluj wersję 2.x [pakietu Azure Functions Core Tools](functions-run-local.md#v2), który jest nadal w wersji zapoznawczej.
+* Instalowanie wersji 2.x [podstawowych narzędzi usługi Azure Functions](functions-run-local.md#v2).
 
 * Zainstaluj określone wymagania dla wybranego języka:
 
-    | Język | Wewnętrzny |
+    | Język | Wymaganie |
     | -------- | --------- |
-    | **C#** | [Rozszerzenie C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Narzędzia interfejsu wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Debuger dla języka Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
-
-    \* Również wymagane przez pakiet Core Tools.
+    | **C#** | [Rozszerzenie języka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
+ 
+    <sup>*</sup>Aktywne LTS i konserwacji LTS wersje (8.11.1 i 10.14.1 zalecane).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,47 +54,7 @@ Aby ukończyć ten przewodnik Szybki start:
 
 [!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
 
-## <a name="create-an-http-triggered-function"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP
-
-1. Z obszaru **Azure: Functions** wybierz ikonę tworzenia funkcji.
-
-    ![Tworzenie funkcji](./media/functions-create-first-function-vs-code/create-function.png)
-
-1. Wybierz folder z projektem aplikacji funkcji i wybierz szablon funkcji **wyzwalacza HTTP**.
-
-    ![Wybieranie szablonu wyzwalacza HTTP](./media/functions-create-first-function-vs-code/create-function-choose-template.png)
-
-1. Wpisz `HTTPTrigger` jako nazwę funkcji i naciśnij klawisz Enter, a następnie wybierz uwierzytelnianie **anonimowe**.
-
-    ![Wybieranie uwierzytelniania anonimowego](./media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
-
-    Funkcja zostanie utworzona w wybranym języku i przy użyciu szablonu funkcji wyzwalanej przez protokół HTTP.
-
-    ![Szablon funkcji wyzwalanej przez protokół HTTP w programie Visual Studio Code](./media/functions-create-first-function-vs-code/new-function-full.png)
-
-Do funkcji można dodać powiązania danych wejściowych i wyjściowych, modyfikując plik function.json. Aby uzyskać więcej informacji, zobacz [Pojęcia powiązań i wyzwalaczy usługi Azure Functions](functions-triggers-bindings.md).
-
-Po utworzeniu projektu funkcji i funkcji wyzwalanej przez protokół HTTP można je przetestować na komputerze lokalnym.
-
-## <a name="test-the-function-locally"></a>Lokalne testowanie funkcji
-
-Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projektu usługi Azure Functions na lokalnym komputerze deweloperskim. Monit o zainstalowanie tych narzędzi pojawia się przy pierwszym uruchomieniu funkcji w programie Visual Studio Code.  
-
-1. Aby przetestować funkcję, ustaw punkt przerwania w kodzie funkcji, a następnie naciśnij klawisz F5, aby uruchomić projekt aplikacji funkcji. Dane wyjściowe z pakietu Core Tools są wyświetlane na panelu **terminalu**.
-
-1. W panelu **terminalu** skopiuj punkt końcowy adresu URL funkcji wyzwalanej przez protokół HTTP.
-
-    ![Lokalne dane wyjściowe platformy Azure](./media/functions-create-first-function-vs-code/functions-vscode-f5.png)
-
-1. Wklej adres URL żądania HTTP w pasku adresu przeglądarki. Dołącz ciąg zapytania `?name=<yourname>` do tego adresu URL i wykonaj żądanie. Wykonywanie zostanie wstrzymane po osiągnięciu punktu przerwania.
-
-    ![Osiągnięcie przez funkcję punktu przerwania w programie Visual Studio Code](./media/functions-create-first-function-vs-code/function-debug-vscode-js.png)
-
-1. Jeśli będziesz kontynuować wykonywanie, poniżej przedstawiono odpowiedź w przeglądarce na żądanie GET:
-
-    ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
-
-1. Aby zatrzymać debugowanie, naciśnij klawisze Shift+F5.
+[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 
@@ -101,7 +62,7 @@ Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokal
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="test-your-function-in-azure"></a>Testowanie funkcji na platformie Azure
+## <a name="run-the-function-in-azure"></a>Uruchom funkcję na platformie Azure
 
 1. Skopiuj adres URL wyzwalacza HTTP z panelu **Dane wyjściowe**. Tak jak poprzednio dołącz ciąg zapytania `?name=<yourname>` na końcu tego adresu URL i wykonaj żądanie.
 
@@ -115,10 +76,10 @@ Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokal
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W programie Visual Studio Code utworzono aplikację funkcji z prostą funkcją wyzwalaną przez protokół HTTP. Możesz także dowiedzieć się więcej o [lokalnego testowania i debugowania z Terminal lub wiersz polecenia](functions-run-local.md) przy użyciu podstawowych narzędzi usługi Azure Functions.
+W programie Visual Studio Code utworzono aplikację funkcji z prostą funkcją wyzwalaną przez protokół HTTP. W następnym artykule rozwiń węzeł tę funkcję, dodając powiązanie danych wyjściowych. To powiązanie zapisuje ciągu z żądania HTTP do komunikatu w kolejce usługi Azure Queue Storage. Następny artykuł również pokazano, jak wyczyścić te nowe zasoby platformy Azure, usuwając grupę zasobów, który został utworzony.
 
 > [!div class="nextstepaction"]
-> [Włączanie integracji usługi Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Dodawanie powiązania kolejki usługi Azure Storage do funkcji](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Rozszerzenie usługi Azure Functions dla programu Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

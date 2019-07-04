@@ -5,18 +5,18 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8ce08c662e1615b62160e0c681a2fe8dbcb2be1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683427"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447042"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Rozpoczęcie analizowania aplikacji mobilnej za pomocą Centrum aplikacji i usługi Application Insights
 
@@ -68,18 +68,18 @@ Aby upewnić się, że zdarzenia niestandardowe są otrzymywane, przejdź do kar
 Gdy aplikacja wysyła zdarzenia niestandardowe i są one odbierane przez Centrum aplikacji, musisz utworzyć zasób usługi Application Insights typu Centrum aplikacji w witrynie Azure Portal:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Wybierz pozycję **Utwórz zasób** > **Narzędzia do zarządzania** > **Application Insights**.
+2. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 
-    ![Dodawanie zasobu usługi Application Insights](./media/mobile-center-quickstart/add-b.png)
+    > [!NOTE]
+    > Jeśli po raz pierwszy tworzenie zasobu usługi Application Insights możesz dowiedzieć się więcej, odwiedzając [Utwórz zasób usługi Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) dokumentu.
 
     Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
     | Ustawienia        |  Wartość           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Jakaś globalnie unikatowa wartość, na przykład „moja_aplikacja_iOS” | Nazwa identyfikująca monitorowaną aplikację |
-   | **Typ aplikacji** | Aplikacja Centrum aplikacji | Typ monitorowanej aplikacji |
-   | **Grupa zasobów**     | Nowa grupa zasobów lub istniejąca grupa zasobów z menu | Grupa zasobów, w której ma zostać utworzony nowy zasób usługi Application Insights |
-   | **Lokalizacja** | Lokalizacja z menu | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
+     | **Grupa zasobów**     | Nowa grupa zasobów lub istniejąca grupa zasobów z menu | Grupa zasobów, w której ma zostać utworzony nowy zasób usługi Application Insights |
+   | **Location** | Lokalizacja z menu | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
 3. Kliknij pozycję **Utwórz**.
 
@@ -89,9 +89,7 @@ Jeśli aplikacja obsługuje wiele platform (iOS, Android itp.), najlepiej utworz
 
 W przypadku nowego zasobu usługi Application Insights na **Przegląd** strony. Skopiuj klucz Instrumentacji z zasobu.
 
-   ![Przycisk Analiza w usłudze Application Insights](./media/mobile-center-quickstart/overview-01.png)
-
-W wystąpieniu Centrum aplikacji dla Twojej aplikacji:
+W [platformy App Center](https://appcenter.ms/) wystąpienia aplikacji:
 
 1. Na stronie **Ustawienia** kliknij pozycję **Eksportuj**.
 2. Wybierz pozycję **Nowy eksport**, wybierz pozycję **Application Insights**, a następnie kliknij pozycję **Dostosuj**.
@@ -108,13 +106,11 @@ Aby przy pierwszym połączeniu dostarczyć większą ilość danych, do usługi
 
 Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, filtrowanie i analizowanie danych telemetrycznych zdarzeń niestandardowych z aplikacji w sposób wykraczający poza możliwości narzędzi analitycznych dostępnych w Centrum aplikacji.
 
-1. **Wykonaj zapytanie względem danych telemetrycznych zdarzeń niestandardowych.** Na stronie **Przegląd** usługi Application Insights wybierz przycisk **Analiza**. 
+1. **Wykonaj zapytanie względem danych telemetrycznych zdarzeń niestandardowych.** Z usługi Application Insights **Przegląd** wybierz **dzienniki (analiza)** .
 
-   ![Przycisk Analiza w usłudze Application Insights](./media/mobile-center-quickstart/analytics-001.png)
-
-   Spowoduje to otwarcie portalu Analiza usługi Application Insights skojarzonego z zasobem usługi Application Insights. Portal Analiza pozwala na bezpośrednie wyszukiwanie danych przy użyciu języka zapytań Log Analytics, dzięki czemu możesz zadawać dowolnie złożone pytania dotyczące aplikacji i jej użytkowników.
+   Spowoduje to otwarcie portalu Application Insights Logs (analiza) skojarzony z zasobem usługi Application Insights. Portal dzienniki (analiza) pozwala na bezpośrednie wyszukiwanie danych przy użyciu języka zapytań usługi Log Analytics, dzięki czemu możesz zadawać dowolnie złożone pytania dotyczące aplikacji i jej użytkownikach.
    
-   Otwórz nową kartę w portalu Analiza, a następnie wklej poniższe zapytanie. W jego wyniku zostanie zwrócona liczba unikatowych użytkowników, którzy wysłali poszczególne zdarzenia niestandardowe z aplikacji w ciągu ostatnich 24 godzin, posortowana według tych różnych liczb.
+   Otwórz nową kartę w portalu dzienniki (analiza), a następnie wklej poniższe zapytanie. W jego wyniku zostanie zwrócona liczba unikatowych użytkowników, którzy wysłali poszczególne zdarzenia niestandardowe z aplikacji w ciągu ostatnich 24 godzin, posortowana według tych różnych liczb.
 
    ```AIQL
    customEvents
@@ -123,7 +119,7 @@ Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, fil
    | order by dcount_user_Id desc 
    ```
 
-   ![Portal Analiza](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![Portal dzienniki (analiza)](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Wybierz zapytanie, klikając w dowolnym miejscu zapytania w edytorze tekstów.
    2. Następnie kliknij pozycję **Przejdź**, aby wykonać zapytanie. 

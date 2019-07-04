@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8d5d1b3c3f505b66e07f7aa226cfa001af94af8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60588166"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449339"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Usługa Azure DDoS Protection: Najlepsze rozwiązania i architektury referencyjne
 
@@ -224,6 +224,8 @@ Standard ochrony przed atakami DDoS Azure identyfikuje i odpiera ataki DDoS, bez
 - Planowane jest wirusowe zdarzenia, które zwiększający w znacznym stopniu ruch w sieci.
 
 - Aktor ma zagrożone można uruchomić ataków DDoS dotyczących poszczególnych zasobów.
+
+- Jeśli potrzebujesz do listy dozwolonych adresów IP lub zakres adresów IP z usługi Azure DDoS Protection wersji Standard. Typowy scenariusz to do listy dozwolonych adresów IP, jeśli ruch jest przekierowywany z chmury zewnętrznej zapory aplikacji sieci Web na platformie Azure. 
 
 Ataki, które ma krytyczny wpływ na działalność, Utwórz ważność A [bilet pomocy technicznej](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

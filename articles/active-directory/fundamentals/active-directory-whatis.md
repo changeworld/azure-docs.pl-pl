@@ -2,24 +2,24 @@
 title: Co to jest usługa Azure Active Directory? — Usługa azure Active Directory | Dokumentacja firmy Microsoft
 description: Przegląd i informacje o pojęciach dotyczących usługi Azure Active Directory, w tym terminologii, jakie licencje są dostępne i listę funkcji skojarzone z łącza do dodatkowych informacji.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.date: 05/08/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4c0bbe4e4ef1cfbd4d9da92d6fcfac509f45ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fafa7bd95801be46025727b2261fc95bc539988
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110419"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440548"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
 
-Azure Active Directory (Azure AD) jest oparta na chmurze tożsamość i dostęp do usługi zarządzania, która pomaga pracownikom Zaloguj się i uzyskać dostęp do zasobów firmy Microsoft:
+Azure Active Directory (Azure AD) to usługa firmy Microsoft oparte na chmurze tożsamość i dostęp do zarządzania, która pomaga pracownikom firmy Zaloguj się i uzyskać dostęp do zasobów:
 
 - Zasoby zewnętrzne, takie jak usługa Microsoft Office 365, witryna Azure Portal i tysiące innych aplikacji SaaS.
 
@@ -48,7 +48,7 @@ Aby zwiększyć możliwości implementacji usługi Azure AD, możesz także doda
 >
 >Usługi Azure Active Directory Premium P1, Premium P2 — oraz Azure Active Directory — wersja Podstawowa nie są obecnie obsługiwane w Chinach. Aby uzyskać więcej informacji na temat cen usługi Azure AD, skontaktuj się z pomocą [Forum usługi Azure Active Directory](https://azure.microsoft.com/support/community/?product=active-directory).
 
-- **Azure Active Directory — wersja Bezpłatna.** Oferuje zarządzanie użytkownikami i grupami, synchronizację katalogów lokalnych, podstawowe raporty oraz logowanie jednokrotne na platformie Azure, w usłudze Office 365 i w wielu popularnych aplikacjach SaaS.
+- **Azure Active Directory — wersja Bezpłatna.** Umożliwia zarządzanie użytkownikami i grupami, synchronizacji katalogów w środowisku lokalnym, podstawowe raporty, zmiana haseł użytkowników w chmurze i logowanie jednokrotne na platformie Azure, Office 365 i wielu popularnych aplikacjach SaaS.
 
 - **Azure Active Directory — wersja Podstawowa.** Oprócz funkcji wersji Bezpłatna, wersja Podstawowa zapewnia też dostęp do aplikacji w chmurze, zarządzanie dostępem oparte na grupach, samoobsługowe resetowanie haseł dla aplikacji w chmurze oraz serwer proxy aplikacji usługi Azure AD, który umożliwia publikowanie aplikacji internetowych w środowisku lokalnym przy użyciu usługi Azure AD.
 
@@ -66,12 +66,14 @@ Aby lepiej poznać usługę Azure AD i jego dokumentacji firma Microsoft zalecam
 
 |Termin lub pojęcie|Opis|
 |---------------|-----------|
+|Tożsamość| Element, który może zostać uwierzytelniony. Tożsamość może być użytkownikiem, przy użyciu nazwy użytkownika i hasła. Tożsamości obejmują również aplikacje lub inne serwery, które mogą wymagać uwierzytelniania za pomocą kluczy tajnych lub certyfikatów.|
+|Konto| Tożsamość, która zawiera dane skojarzone z nią. Nie masz konta bez tożsamości.|
+|Konto Azure AD| Tożsamość utworzona za pośrednictwem usługi Azure AD lub innej usługi firmy Microsoft w chmurze, takiej jak Office 365. Tożsamości są przechowywane w usłudze Azure AD i dostępne dla subskrypcji usług w chmurze organizacji. To konto jest też czasami nazywane kontem służbowym.|
 |Subskrypcja platformy Azure| Używana do płacenia za usługi platformy Azure w chmurze. Możesz mieć wiele subskrypcji. Są one połączone z kartą kredytową.|
 |Dzierżawa platformy Azure| Dedykowane, zaufane wystąpienie usługi Azure AD, które jest automatycznie tworzone, gdy organizacja rejestruje się w subskrypcji usługi w chmurze firmy Microsoft, takiej jak Microsoft Azure, Microsoft Intune lub Office 365. Dzierżawa usługi Azure reprezentuje jedną organizację.|
 |Pojedyncza dzierżawa| Dzierżawy platformy Azure, które uzyskują dostęp do innych usług w dedykowanym środowisku, są uznawane za jedną dzierżawę.|
 |Wiele dzierżaw| Dzierżawy platformy Azure, które uzyskują dostęp do innych usług w środowisku współużytkowanym przez wiele organizacji, są uznawane za wiele dzierżaw.|
 |Katalog usługi Azure AD|Każda dzierżawa platformy Azure ma dedykowany, zaufany katalog usługi Azure AD. Katalog usługi Azure AD zawiera użytkowników, grupy i aplikacje dzierżawy oraz jest używany do obsługi funkcji zarządzania tożsamościami i dostępem dla zasobów dzierżawy.|
-|Konto Azure AD | Tożsamość utworzona za pośrednictwem usługi Azure AD lub innej usługi firmy Microsoft w chmurze, takiej jak Office 365. Tożsamości są przechowywane w usłudze Azure AD i dostępne dla subskrypcji usług w chmurze organizacji. To konto jest też czasami nazywane kontem służbowym.|
 |Domena niestandardowa|Każdy nowy katalog usługi Azure AD jest dostarczany z początkową nazwą domeny nazwa_domeny.onmicrosoft.com. Oprócz początkowej nazwy, do listy można dodać nazwy domen organizacji, włącznie z nazwami używanymi do prowadzenia działalności firmy i uzyskiwania dostępu do zasobów organizacji przez użytkowników. Dodanie niestandardowych nazw domen ułatwia tworzenie nazw użytkowników takich jak alain@contoso.com, które są znajome dla użytkowników.|
 |Administrator konta|Ta klasyczna rola administratora subskrypcji określa właściciela subskrypcji odpowiedzialnego za rozliczenia. Ta rola ma dostęp do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) i pozwala zarządzać wszystkimi subskrypcjami na koncie. Aby uzyskać więcej informacji, zobacz [ról administratora subskrypcji klasyczne, ról kontroli dostępu opartej na rolach platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Administrator usługi|Ta klasyczna rola administratora subskrypcji umożliwia zarządzanie wszystkimi zasobami platformy Azure, włącznie z dostępem. Ta rola ma takie same uprawnienia dostępu co użytkownik, któremu przypisano rolę właściciela w zakresie subskrypcji. Aby uzyskać więcej informacji, zobacz [Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|

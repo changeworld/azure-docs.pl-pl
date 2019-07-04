@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 06/27/2019
 ms.author: raynew
-ms.openlocfilehash: 3ff6a1a52048e805f9236349d4fc8d45a14b78ea
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5dc98048099264942552862498b5137b4954c200
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341450"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491640"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -162,7 +162,7 @@ ILB | Tak
 ELB | Yes
 Azure Traffic Manager | Tak
 Multi-NIC | Tak
-Zastrzeżony adres IP | Tak
+Zastrzeżony adres IP | Yes
 IPv4 | Tak
 Zachowaj źródłowy adres IP | Tak
 Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Tak
@@ -185,15 +185,15 @@ Gość/serwer systemu plików NFS | Nie
 Gość/serwer iSCSI | Nie
 Guest/server SMB 3.0 | Nie
 Gość/serwera RDM | Tak<br/><br/> N/d dla serwerów fizycznych
-Gość/serwera dysku > 1 TB | Yes<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
-Gość/serwera na dysku o rozmiarze sektora fizycznego logicznych i 4 k 4K | Tak
-Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Yes
+Gość/serwera dysku > 1 TB | Tak<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
+Gość/serwera na dysku o rozmiarze sektora fizycznego logicznych i 4 k 4K | Nie
+Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Nie
 Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br/><br/>Zarządzanie woluminami logicznych (LVM)| Tak
 Gość/server - miejsca do magazynowania | Nie
 Gość/serwer Dodaj lub usuń gorąco dysku | Nie
 Gość/server - wykluczyć dysk | Tak
 Gość/serwera wielościeżkowego (MPIO) | Nie
-Gość/serwera partycji GPT | Pięć partycjami są obsługiwane z poziomu [37 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4508614/) (wersja 9,25 usługi mobilności) i nowszych wersjach. Wcześniej były cztery obsługiwane.
+Gość/serwera partycji GPT | Pięć partycjami są obsługiwane z poziomu [37 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4508614/) (wersja 9,25 usługi mobilności) i nowszych wersjach. Poprzednia wersja obsługiwała cztery.
 Rozruchu interfejsu EFI/UEFI gościa/serwera | -Obsługiwana, gdy używasz wersja usługi mobilności 9.13 lub nowszej.<br/> -Obsługiwana podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszym na platformie Azure.<br/> — Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/> -Tylko NTFS jest obsługiwana i bezpieczny typ rozruchu UEFI nie jest obsługiwany. <br/> — Rozmiar sektora dysku powinna być 512 bajtów na sektor fizycznych.
 
 ## <a name="replication-channels"></a>Kanały replikacji
@@ -208,8 +208,8 @@ Rozruchu interfejsu EFI/UEFI gościa/serwera | -Obsługiwana, gdy używasz wersj
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Magazyn lokalnie nadmiarowy | Tak
-Magazyn geograficznie nadmiarowy | Tak
+Magazyn lokalnie nadmiarowy | Yes
+Magazyn geograficznie nadmiarowy | Yes
 Magazyn geograficznie nadmiarowy z dostępem do odczytu | Tak
 Chłodny Magazyn | Nie
 Magazynu gorącego| Nie
@@ -218,13 +218,13 @@ Szyfrowanie w spoczynku (SSE)| Tak
 Premium Storage | Tak
 Usługa import/export | Nie
 Usługa Azure zapór usługi Storage dla sieci wirtualnych | Tak.<br/> Skonfigurowane na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji).
-Kont magazynu ogólnego przeznaczenia w wersji 2 (gorące i chłodne warstwy) | Nie
+Kont magazynu ogólnego przeznaczenia w wersji 2 (gorące i chłodne warstwy) | Tak (transakcja koszty są znacznie wyższe w porównaniu do wersji 1 w wersji 2)
 
 ## <a name="azure-compute"></a>Usługa Azure compute
 
 **Funkcja** | **Obsługiwane**
 --- | ---
-Zestawy dostępności | Yes
+Zestawy dostępności | Tak
 Strefy dostępności | Nie
 HUB | Tak
 Dyski zarządzane | Yes

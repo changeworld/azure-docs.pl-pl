@@ -11,14 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 4ae22a5cd6ad044a86db88986daf9cc7c05c00a2
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342313"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443201"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-function"></a>Dodawanie powiązania kolejki usługi Azure Storage do funkcji
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Python
 
 Usługa Azure Functions umożliwia łączenie z usługami platformy Azure i innych zasobów do funkcji bez konieczności pisania kodu integracji. Te *powiązania*, które reprezentują dane wejściowe i dane wyjściowe są zadeklarowane w ramach definicji funkcji. Dane z powiązań podano funkcji jako parametrów. Wyzwalacz jest specjalny typ powiązania danych wejściowych. Gdy funkcja ma tylko jeden wyzwalacz, ona mają wielu danych wejściowych i wyjściowych powiązania. Aby dowiedzieć się więcej, zobacz [pojęcia powiązania i Wyzwalacze usługi Azure Functions](functions-triggers-bindings.md).
 
@@ -32,7 +32,7 @@ Przed rozpoczęciem, w tym artykule, wykonaj kroki [części 1 tego przewodnika 
 
 ## <a name="download-the-function-app-settings"></a>Pobieranie ustawień aplikacji funkcji
 
-W poprzednim artykule Szybki Start utworzono aplikację funkcji na platformie Azure wraz z kontem magazynu. Parametry połączenia dla tego konta są bezpiecznie przechowywane w ustawieniach aplikacji na platformie Azure. W tym artykule Zapisz komunikaty do kolejki na tym samym koncie magazynu. Aby połączyć się z kontem magazynu podczas uruchamiania funkcji lokalnie, możesz pobrać ustawień aplikacji do pliku local.settings.json. Uruchom następujące polecenie podstawowych narzędzi usługi Azure Functions, aby pobrać ustawienia do pliku local.settings.json, zastępując `<APP_NAME>` nazwę aplikacji funkcji z poprzednim artykule:
+W poprzednim artykule Szybki Start utworzono aplikację funkcji na platformie Azure oraz wymagane konta magazynu. Parametry połączenia dla tego konta są bezpiecznie przechowywane w ustawieniach aplikacji na platformie Azure. W tym artykule Zapisz komunikaty do kolejki na tym samym koncie magazynu. Aby połączyć się z kontem magazynu podczas uruchamiania funkcji lokalnie, możesz pobrać ustawień aplikacji do pliku local.settings.json. Uruchom następujące polecenie podstawowych narzędzi usługi Azure Functions, aby pobrać ustawienia do pliku local.settings.json, zastępując `<APP_NAME>` nazwę aplikacji funkcji z poprzednim artykule:
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
@@ -45,13 +45,19 @@ Może być konieczne Zaloguj się do konta platformy Azure.
 
 Wartość będzie potrzebna `AzureWebJobsStorage`, czyli parametry połączenia konta magazynu. To połączenie umożliwia Sprawdź, czy powiązania danych wyjściowych działa zgodnie z oczekiwaniami.
 
+## <a name="enable-extension-bundles"></a>Włącz rozszerzenie pakiety
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+Teraz można dodać powiązania, do projektu danych wyjściowych magazynu.
+
 ## <a name="add-an-output-binding"></a>Dodawanie powiązania danych wyjściowych
 
 W przypadku funkcji wymaga każdego typu powiązania `direction`, `type`oraz unikatową `name` zdefiniowanych w pliku function.json. W zależności od typu powiązania dodatkowe właściwości mogą być wymagane. [Konfiguracja danych wyjściowych kolejki](functions-bindings-storage-queue.md#output---configuration) opisuje pól wymaganych dla powiązania kolejki usługi Azure Storage.
 
 Aby utworzyć powiązanie, Dodaj obiekt konfiguracji powiązania aby `function.json` pliku. Edytuj plik function.json w folderze HttpTrigger, aby dodać obiekt do `bindings` tablica, która ma następujące właściwości:
 
-| Właściwość | Value | Opis |
+| Właściwość | Wartość | Opis |
 | -------- | ----- | ----------- |
 | **`name`** | `msg` | Nazwa identyfikująca parametr wiązania, do którego odwołuje się kod. |
 | **`type`** | `queue` | Powiązanie to powiązanie kolejki usługi Azure Storage. |
@@ -133,7 +139,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Ponieważ miał poprzednim artykule, należy włączyć rozszerzenie pakiety w host.json [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#packages---functions-2x) został pobrany i zainstalowany automatycznie podczas uruchamiania.
+> Ponieważ miał poprzednim artykule, należy włączyć rozszerzenie pakiety w host.json [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#packages---functions-2x) został pobrany i zainstalowany automatycznie podczas uruchamiania, oraz inne rozszerzenia powiązania firmy Microsoft.
 
 Skopiuj adres URL funkcji `HttpTrigger` z danych wyjściowych środowiska uruchomieniowego i wklej go w pasku adresu swojej przeglądarki. Dołącz ciąg zapytania `?name=<yourname>` do tego adresu URL i wykonaj żądanie. Powinieneś zobaczyć tę samą odpowiedź w przeglądarce, tak jak w poprzednim artykule.
 

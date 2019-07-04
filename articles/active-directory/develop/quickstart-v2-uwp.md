@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8048c05217fbdb2956e2a67be4eb3e17abed10
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
-ms.translationtype: MT
+ms.openlocfilehash: 7702fd220c2100b8e03ac0491e4b3365525a7de5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341401"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540742"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Szybki start: Wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji platformy UWP
 
@@ -82,6 +82,9 @@ Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak ap
     ```csharp
     private const string ClientId = "Enter_the_Application_Id_here";
     ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Ten przewodnik szybkiego startu obsługuje Enter_the_Supported_Account_Info_Here.    
 
 > [!div renderon="docs"]
 > Gdzie:

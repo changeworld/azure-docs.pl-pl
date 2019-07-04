@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 44f1953d01f827db1cbb65f9029c62569425745e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59995715ab42b4682befa7d1512b14427740dea2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077047"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446857"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Rozpoczynanie pracy z usługą Azure Queue Storage przy użyciu platformy .NET
 
@@ -23,7 +23,7 @@ ms.locfileid: "67077047"
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmury między składnikami aplikacji. W przypadku projektowania aplikacji pod kątem skalowania składniki aplikacji są często rozłączane, dzięki czemu mogą być skalowane niezależnie. Usługa Queue Storage zapewnia asynchroniczne przesyłanie komunikatów na potrzeby komunikacji między składnikami aplikacji niezależnie od tego, czy działają w chmurze, na komputerze, serwerze lokalnym czy urządzeniu przenośnym. Usługa Queue Storage obsługuje również zarządzanie asynchronicznymi zadaniami oraz przepływy pracy procesu kompilacji.
 
@@ -82,7 +82,7 @@ Aby uzyskać te pakiety, można użyć NuGet. Wykonaj następujące kroki:
 > [!NOTE]
 > Pakiety biblioteki klienta magazynu znajdują się również w [zestawu Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/). Jednak firma Microsoft zaleca również zainstalowanie biblioteki klienta magazynu z pakietów NuGet, aby upewnić się, że zawsze używały najnowszej wersji.
 >
-> Zależności ODataLib w bibliotek klienckich magazynu dla platformy .NET są rozwiązywane za pomocą pakietów ODataLib dostępnych w usłudze NuGet, nie z usługi danych WCF. Biblioteki ODataLib można pobrać bezpośrednio lub użyć odwołań w projekcie kodu za pośrednictwem pakietu NuGet. Określone pakiety ODataLib używane przez biblioteki klienta magazynu są [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/), i [przestrzenne](http://nuget.org/packages/System.Spatial/). Biblioteki te są używane przez klasy magazynu tabel Azure, są one wymaganymi zależnościami do programowania za pomocą biblioteki klienta magazynu.
+> Zależności ODataLib w bibliotek klienckich magazynu dla platformy .NET są rozwiązywane za pomocą pakietów ODataLib dostępnych w usłudze NuGet, nie z usługi danych WCF. Biblioteki ODataLib można pobrać bezpośrednio lub użyć odwołań w projekcie kodu za pośrednictwem pakietu NuGet. Określone pakiety ODataLib używane przez biblioteki klienta magazynu są [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/), i [przestrzenne](https://nuget.org/packages/System.Spatial/). Biblioteki te są używane przez klasy magazynu tabel Azure, są one wymaganymi zależnościami do programowania za pomocą biblioteki klienta magazynu.
 
 ### <a name="determine-your-target-environment"></a>Określanie środowiska docelowego
 

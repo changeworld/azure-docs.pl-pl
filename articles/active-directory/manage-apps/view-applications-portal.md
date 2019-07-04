@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 537916ef14a7cd2748ad453e2d0d91e3b5c936b1
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cccd5ddc2f268eda48bd9803596a1db1c5ee9395
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826047"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481171"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Wyświetlanie aplikacji dzierżawy usługi Azure Active Directory
 
@@ -39,7 +39,7 @@ Aplikacje dzierżawy usługi Azure AD można wyświetlić w sekcji **Aplikacje d
 
 Aby znaleźć swoje aplikacje dzierżawy, wykonaj następujące czynności:
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**. 
+1. W  **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**. 
 
 1. W **usługi Azure Active Directory** okienku wybierz **aplikacje dla przedsiębiorstw**. 
 
@@ -64,7 +64,6 @@ Wybierz opcje zgodnie z czego szukasz.
 1. W obszarze **Widoczność aplikacji** wybierz pozycję **Dowolne** lub **Ukryte**. **Ukryty** opcja umożliwia pokazanie aplikacje, które są w dzierżawie, ale nie są widoczne dla użytkowników.
 
 1. Po wybraniu wybrane opcje, wybierz **Zastosuj**.
- 
 
 ## <a name="search-for-a-tenant-application"></a>Wyszukiwanie aplikacji dzierżawy
 
@@ -74,19 +73,17 @@ Aby wyszukać określoną aplikację:
 
 1. Wprowadź nazwę aplikacji, którą chcesz znaleźć. Jeśli aplikacja została dodana do dzierżawy usługi Azure AD, zostanie wyświetlony w wynikach wyszukiwania. Ten przykład pokazuje, że GitHub nie został dodany do aplikacji dzierżawy.
 
-    ![Wyszukiwanie aplikacji](media/view-applications-portal/search-for-tenant-application.png)
+    ![Przykład pokazuje, że aplikacja nie została dodana do dzierżawy](media/view-applications-portal/search-for-tenant-application.png)
 
 1. Spróbuj wprowadzić kilka pierwszych liter nazwy aplikacji. W tym przykładzie pokazano wszystkie aplikacje, których nazwy zaczynają się od **Sales**.
 
-    ![Wyszukiwanie przy użyciu prefiksu](media/view-applications-portal/search-by-prefix.png)
+    ![Przykładowy raport uwzględnia wszystkie aplikacje, rozpoczynające się z działem sprzedaży](media/view-applications-portal/search-by-prefix.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki Start przedstawiono sposób wyświetlania aplikacji w dzierżawie usługi Azure AD. Pokazaliśmy ci, jak filtrować listę aplikacji według typu aplikacji, stanu i widoczności. Przedstawiono również sposób wyszukiwania określonej aplikacji.
 
-Teraz, gdy Ci się znaleźć aplikacji zostały znalezione dla można kontynuować [Dodawanie większej liczby aplikacji z dzierżawą](add-application-portal.md). Alternatywnie można wybrać aplikację, aby wyświetlić lub edytować właściwości i opcje konfiguracji. Możesz na przykład skonfigurować logowanie jednokrotne. 
+Teraz, gdy Ci się znaleźć aplikacji zostały znalezione dla można kontynuować [Dodawanie większej liczby aplikacji z dzierżawą](add-application-portal.md). Alternatywnie można wybrać aplikację, aby wyświetlić lub edytować właściwości i opcje konfiguracji. Możesz na przykład skonfigurować logowanie jednokrotne.
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie logowania jednokrotnego](configure-single-sign-on-portal.md)
-
-

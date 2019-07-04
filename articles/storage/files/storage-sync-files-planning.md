@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9bb33e7d2bb80bcb19087dca6bc21bafc791af2a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303913"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449868"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -183,6 +183,12 @@ W przypadku woluminów, które nie mają obsługi warstw włączone w chmurze us
 - Trwających zadań optymalizacji deduplikacji, obsługi warstw przy użyciu zasad Data w chmurze będzie pobrać opóźnione przez funkcję deduplikacji danych [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) ustawienie, jeśli plik nie jest już warstwowego. 
     - Przykład: Jeśli ustawienie MinimumFileAgeDays wynosi 7 dni, a zasady Data obsługi warstw w chmurze wynosi 30 dni, Data zasad będzie warstw plików po siedem dni.
     - Uwaga: Gdy plik jest warstwowa przez usługę Azure File Sync, zadanie optymalizacji deduplikacji pominie ten plik.
+- Jeśli na serwerze z systemem Windows Server 2012 R2 z zainstalowanym agentem usługi Azure File Sync jest uaktualniany do systemu Windows Server 2016 lub Windows Server 2019, poniższe kroki należy wykonać, aby obsługuje deduplikacji danych i obsługi warstw na tym samym woluminie w chmurze:  
+    - Odinstaluj agenta usługi Azure File Sync systemu Windows Server 2012 R2, a następnie uruchom ponownie serwer.
+    - Pobierz agenta usługi Azure File Sync z nową wersją systemu operacyjnego serwera (system Windows Server 2016 lub Windows Server 2019).
+    - Zainstaluj agenta usługi Azure File Sync, a następnie uruchom ponownie serwer.  
+    
+    Uwaga: Ustawienia konfiguracji usługi Azure File Sync na serwerze zostaną zachowane po odinstalowaniu i ponownym agenta.
 
 ### <a name="distributed-file-system-dfs"></a>Rozproszony System plików (DFS)
 Usługa Azure File Sync obsługuje współdziałanie z przestrzeni nazw systemu plików DFS (DFS-N) i replikacja systemu plików DFS (DFS-R).
@@ -255,7 +261,7 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
 | Azja Wschodnia | SRA Hongkong |
-| Wschodnie stany USA | Wirginia |
+| East US | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Korea Środkowa| Seul |
 | Korea Południowa| Pusan |
@@ -296,7 +302,7 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Indie Środkowe       | Indie Południowe        |
 | Środkowe stany USA          | Wschodnie stany USA 2          |
 | Azja Wschodnia           | Azja Południowo-Wschodnia     |
-| Wschodnie stany USA             | Zachodnie stany USA            |
+| East US             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
 | Japonia Wschodnia          | Japonia Zachodnia         |
 | Japonia Zachodnia          | Japonia Wschodnia         |
@@ -314,7 +320,7 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Administracja USA — Wirginia      | Administracja USA — Teksas       |
 | Europa Zachodnia         | Europa Północna       |
 | Środkowo-zachodnie stany USA     | Zachodnie stany USA 2          |
-| Zachodnie stany USA             | Wschodnie stany USA            |
+| Zachodnie stany USA             | East US            |
 | Zachodnie stany USA 2           | Środkowo-zachodnie stany USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync

@@ -1,10 +1,10 @@
 ---
 title: Tworzenie i udostępnianie pulpitów nawigacyjnych portalu platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule wyjaśniono, jak tworzyć i edytować pulpitów nawigacyjnych w witrynie Azure portal.
+description: W tym artykule opisano sposób tworzenia, dostosowywania, publikowanie i udostępnianie pulpitów nawigacyjnych w witrynie Azure portal.
 services: azure-portal
 documentationcenter: ''
 author: sewatson
-manager: doubeby
+manager: mtillman
 editor: tysonn
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
@@ -12,87 +12,165 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/06/2016
+ms.date: 07/01/2019
 ms.author: kfollis
-ms.openlocfilehash: 693e973fb988a57c15b4ea2fae47f16b4ff39011
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8dd1349ca9ab62484eb6693291e3b869ff079dc1
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552711"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537205"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych w witrynie Azure portal
-Można utworzyć wiele pulpitów nawigacyjnych i udostępnianie ich innym osobom, które mają dostęp do subskrypcji platformy Azure.  W tym artykule omówiono podstawowe informacje dotyczące tworzenia, edytowania, publikowanie i zarządzanie dostępem do pulpitów nawigacyjnych.
 
-## <a name="create-a-dashboard"></a>Tworzenie pulpitu nawigacyjnego
-Aby utworzyć pulpit nawigacyjny, wybierz przycisk **Nowy pulpit nawigacyjny** obok nazwy bieżącego pulpitu nawigacyjnego.  
+Pulpity nawigacyjne umożliwiają tworzenie widoku ukierunkowanie i zorganizowane w witrynie Azure portal zasobów w chmurze. Używaj pulpitów nawigacyjnych jako obszar roboczy, w którym można szybko uruchomić zadań związanych z typowymi operacjami i monitorowanie zasobów.  Twórz niestandardowe pulpity nawigacyjne w oparciu o projekty, zadania lub rolę użytkownika, na przykład.  Azure portal udostępnia domyślny pulpit nawigacyjny jako punktu wyjścia. Można edytować domyślny pulpit nawigacyjny, tworzyć i dostosowywać dodatkowe pulpity nawigacyjne i publikowanie i udostępnianie pulpitów nawigacyjnych, aby udostępnić je innym użytkownikom. W tym artykule opisano, jak utworzyć nowy pulpit nawigacyjny, dostosowywania interfejsu, publikowanie i udostępnianie pulpitów nawigacyjnych.
 
-![Tworzenie pulpitu nawigacyjnego](./media/azure-portal-dashboards/new-dashboard.png)
+## <a name="create-a-new-dashboard"></a>Tworzenie nowego pulpitu nawigacyjnego
 
-Ta akcja tworzy nowy, pusty, prywatny pulpit nawigacyjny i przenosi użytkownika do trybu dostosowania, w którym można nazwać pulpit nawigacyjny oraz dodać kafelki i zmienić ich ułożenie.  W tym trybie Galeria kafelków zwijany przejmuje menu nawigacji po lewej stronie.  Galeria kafelków pozwala wyszukiwać kafelków dla zasobów platformy Azure na różne sposoby: można przeglądać, [grupy zasobów](../azure-resource-manager/resource-group-overview.md#resource-groups), przez typ zasobu [tag](../azure-resource-manager/resource-group-using-tags.md), lub przez wyszukiwanie według nazwy zasobu.  
+W tym przykładzie utworzymy nowego, prywatnego pulpitu nawigacyjnego i przypiszemy nazwę. Wykonaj następujące kroki, aby rozpocząć pracę:
 
-![Dostosowywanie pulpitu nawigacyjnego](./media/azure-portal-dashboards/customize-dashboard.png)
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wybierz **pulpit nawigacyjny** z górnej sekcji lewym pasku bocznym. Widok domyślny może być już ustawione do pulpitu nawigacyjnego.
+1. Wybierz **+ nowy pulpit nawigacyjny**.
 
-Dodaj Kafelki, przeciągając i upuszczając je na powierzchnię pulpitu nawigacyjnego, wszędzie tam, gdzie chcesz.
+    ![Zrzut ekranu przedstawiający domyślny pulpit nawigacyjny](./media/azure-portal-dashboards/dashboard-new.png)
 
-Brak nową kategorię o nazwie **ogólne** dla kafelków, które nie są skojarzone z określonego zasobu.  W tym przykładzie przypięciu kafelka Markdown.  Ten Kafelek umożliwia dodawanie zawartości niestandardowe do pulpitu nawigacyjnego.  Kafelek obsługuje zwykły tekst [składnię języka znaczników Markdown](https://daringfireball.net/projects/markdown/syntax)oraz ograniczony zestaw elementów HTML.  (Pod kątem bezpieczeństwa, nie można wykonać czynności, takie jak wstrzyknięcia `<script>` tagów lub używać niektórych element Style CSS, która może kolidować z portalem.) 
+4. Ta akcja powoduje otwarcie **Galeria kafelków**, w którym należy wybrać kafelków i pustą siatką, gdzie będzie rozmieszczać Kafelki.
 
-![Dodawanie znaczników markdown](./media/azure-portal-dashboards/add-markdown.png)
+    ![Zrzut ekranu przedstawiający Galeria kafelków i pustej siatki](./media/azure-portal-dashboards/dashboard-name.png)
+
+5. Wybierz **Mój pulpit nawigacyjny** tekst na pulpicie nawigacyjnym etykiety, a następnie wprowadź nazwę, która pomoże Ci łatwo zidentyfikować niestandardowego pulpitu nawigacyjnego.
+1. Wybierz **Zakończono dostosowywanie** w nagłówku strony, aby zamknąć tryb edycji.
+
+Wyświetl pulpit nawigacyjny zawiera obecnie pustego pulpitu nawigacyjnego. Wybierz listę rozwijaną obok nazwy pulpitu nawigacyjnego, aby wyświetlić pulpity nawigacyjne dostępne dla Ciebie — na liście mogą znajdować się pulpity nawigacyjne, które utworzone i udostępnione innym użytkownikom.
 
 ## <a name="edit-a-dashboard"></a>Edytuj pulpit nawigacyjny
-Po utworzeniu pulpitu nawigacyjnego, możesz przypiąć Kafelki z galerii kafelków lub kafelka reprezentacja bloków. Teraz można przypiąć reprezentacja naszą grupę zasobów. Można albo numeru pin podczas przeglądania elementu, jak i w bloku grupy zasobów. Oba podejścia spowodować przypinanie kafelka reprezentacja grupy zasobów.
 
-![Przypnij do pulpitu nawigacyjnego](./media/azure-portal-dashboards/pin-to-dashboard.png)
+Teraz możemy edytować pulpit nawigacyjny, aby dodać, zmienianie rozmiaru i położenia Kafelki, które reprezentują zasoby platformy Azure.
 
-Po przypięciu elementu, jest wyświetlana na pulpicie nawigacyjnym.
+### <a name="add-tiles"></a>Dodaj Kafelki
 
-![Wyświetl pulpit nawigacyjny](./media/azure-portal-dashboards/view-dashboard.png)
+Aby dodać Kafelki do pulpitu nawigacyjnego, wykonaj następujące kroki:
+1. Wybierz ![ikona edycji](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Edytuj** w nagłówku strony.
 
-Skoro mamy kafelka Markdown i grupę zasobów przypięte do pulpitu nawigacyjnego, firma Microsoft Zmień rozmiar i zmienić Kafelki do odpowiedniego układu.
+    ![Zrzut ekranu przedstawiający pulpit nawigacyjny, wyróżnianie edycji](./media/azure-portal-dashboards/dashboard-edit.png)
 
-Przez umieszczenie nad nim kursora i wybranie w "menu..." lub kliknij prawym przyciskiem myszy na kafelku widać wszystkie polecenia kontekstowych dla danego kafelka. Domyślnie istnieją dwa elementy:
+2. Przeglądaj **Galeria kafelków** lub użyj pola wyszukiwania, aby znaleźć kafelka.
+1. Wybierz **Dodaj** do automatycznego dodawania kafelka do pulpitu nawigacyjnego z domyślnym rozmiarem i lokalizacją. Lub przeciągnij Kafelek do siatki i umieść go w miejscu.
 
-1. **Odepnij od pulpitu nawigacyjnego** — usuwa kafelka na pulpicie nawigacyjnym
-2. **Dostosowywanie** — wprowadza trybu dostosowania
+Wiele stron zasobów (znany także jako "bloków") obejmują ikonę pinezki na pasku poleceń. Wybranie ikony kafelka reprezentujący źródłowej strony jest przypięta do pulpitu nawigacyjnego, który jest obecnie aktywny. Ta metoda jest alternatywny sposób, aby dodać Kafelki do pulpitu nawigacyjnego.
 
-![Dostosowywanie kafelka](./media/azure-portal-dashboards/customize-tile.png)
+![Zrzut ekranu przedstawiający stronę paska poleceń z ikonę pinezki](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
-Wybierając dostosować, można zmienić rozmiar i kolejność kafelków. Aby zmienić rozmiar kafelka, wybierz nowy rozmiar z menu kontekstowego, jak pokazano na poniższej ilustracji.
+> [!TIP]
+> Jeśli pracujesz z więcej niż jednej z organizacji, należy dodać **tożsamości organizacji** kafelka do pulpitu nawigacyjnego wyraźnego wyświetlania której organizacji zasoby należą do.
+>
+>
+### <a name="resize-or-rearrange-tiles"></a>Zmień rozmiar oraz zmianę układu kafelków
+Aby zmienić rozmiar kafelka lub zmienić układ kafelków na pulpicie nawigacyjnym, wykonaj następujące kroki:
 
-![Zmiana rozmiaru kafelka](./media/azure-portal-dashboards/resize-tile.png)
+1. Wybierz ![ikona edycji](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Edytuj** w nagłówku strony.
+1. W prawym górnym rogu kafelka, wybierz z menu kontekstowego. Następnie wybierz rozmiar kafelka. Kafelki, które obsługiwać dowolne rozmiary także "uchwytu" w prawym dolnym rogu, umożliwiająca przeciągnij Kafelek do żądanego rozmiaru.
 
-Lub, jeśli Kafelek obsługuje dowolnej wielkości, Zmień rozmiar, można przeciągnąć prawym dolnym rogu.
+   ![Zrzut ekranu przedstawiający pulpit nawigacyjny z menu Rozmiar kafelka, otwórz](./media/azure-portal-dashboards/dashboard-tile-resize.png)
 
-![Zmiana rozmiaru kafelka](./media/azure-portal-dashboards/resize-corner.png)
+3. Wybierz Kafelek i przeciągnij go do nowej lokalizacji w siatce, aby zorganizować pulpitu nawigacyjnego.
 
-Po zmianie rozmiaru kafelków, wyświetlić pulpit nawigacyjny.
+### <a name="additional-tile-configuration"></a>Kafelek dodatkowych konfiguracji
 
-![— Kafelek widok](./media/azure-portal-dashboards/view-tile.png)
+Niektóre Kafelki może wymagać większej liczby czynności konfiguracyjnych pokazanie żądane informacje. Na przykład **wykres metryk** Kafelek ma być skonfigurowane tak, aby wyświetlić metryki z **usługi Azure Monitor**. Można również dostosować dane kafelka, aby zastąpić ustawienia czasu domyślnego pulpitu nawigacyjnego.
 
-Po zakończeniu dostosowywania pulpitu nawigacyjnego po prostu wybierz **Zakończono dostosowywanie** aby zakończyć działanie trybu dostosowania, lub kliknij prawym przyciskiem myszy i wybierz polecenie **Zakończono dostosowywanie** z menu kontekstowego.
+Dowolny Kafelek, który musi być skonfigurowane Wyświetla **Kafelek Konfigurowanie** Baner, aż dostosujesz kafelka. Wybierz ten transparent, a następnie wykonaj wymagane ustawienia.
 
-## <a name="publish-a-dashboard-and-manage-access-control"></a>Publikowanie pulpitu nawigacyjnego i zarządzanie kontrolą dostępu
-Podczas tworzenia pulpitu nawigacyjnego jest on domyślnie prywatny, co oznacza, że użytkownik jest jedyną osobą, która może go zobaczyć.  Aby uwidocznić go dla innych osób, użyj przycisku **Udostępnij**, który jest wyświetlany wraz z innymi poleceniami pulpitu nawigacyjnego.
+![Zrzut ekranu przedstawiający Kafelek, który wymaga konfiguracji](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
-![udostępnianie pulpitu nawigacyjnego](./media/azure-portal-dashboards/share-dashboard.png)
+> [!NOTE]
+> Fragment kodu markdown umożliwia wyświetlanie zawartości statycznej, niestandardowe na pulpicie nawigacyjnym. To podstawowe instrukcje, obraz, zestaw hiperłączy lub nawet informacje kontaktowe. Aby uzyskać więcej informacji o korzystaniu z kafelkiem markdown, zobacz [Użyj kafelka niestandardowymi elementami języka markdown](azure-portal-markdown-tile.md).
+>
+>
+### <a name="customize-tile-data"></a>Dostosuj dane kafelka
 
-Zostanie wyświetlona prośba o wybór subskrypcji i grupy zasobów, dla których zostanie opublikowany pulpit nawigacyjny. Bezproblemowo zintegrować pulpitów nawigacyjnych w ekosystemie, wprowadziliśmy udostępnionych pulpitów nawigacyjnych jako zasoby platformy Azure (tak, aby nie można udostępniać, wpisując adres e-mail).  Dostęp do informacji wyświetlanych przez większość kafelków w portalu są regulowane przez [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md). Z punktu widzenia kontroli dostępu do udostępnionych pulpitów nawigacyjnych nie różnią się od maszyny wirtualnej lub na koncie magazynu.  
+Dane na pulpicie nawigacyjnym automatycznie aktywnością w ciągu ostatnich 24 godzin. Aby wyświetlić inny okres dla właśnie tego kafelka, wykonaj następujące kroki:
 
-Załóżmy, że masz subskrypcję platformy Azure i członkowie zespołu są przypisane role **właściciela**, **Współautor**, lub **czytnika** subskrypcji.  Użytkownicy, którzy są właściciele lub współautorzy mogą się do listy, wyświetlanie, tworzenie, modyfikowanie lub usuwanie pulpity nawigacyjne w tej subskrypcji.  Użytkownicy, którzy są czytelnicy będą mogli listy i widok pulpitów nawigacyjnych, ale nie je modyfikować lub usuwać.  Użytkownicy z dostępem do czytnika mogą wprowadzać zmiany lokalne do udostępnionego pulpitu nawigacyjnego, ale nie będą mogli publikować te zmiany na serwerze.  Jednakże mogą robić więjsze prywatną kopię pulpitu nawigacyjnego na własny użytek.  Jak zawsze poszczególnych kafelków na pulpicie nawigacyjnym wymuszanie własnych reguł kontroli dostępu na podstawie zasobów, które są zgodne.  
+1. Wybierz ![ikonę filtru](./media/azure-portal-dashboards/dashboard-filter.png) ikonę filtru w lewym górnym rogu kafelka i wybierz **Dostosuj dane kafelka** z menu kontekstowego.
 
-Dla wygody środowisko publikowania w portalu skieruje Cię do wzorca, w którym umieszcza się pulpity nawigacyjne w grupie zasobów o nazwie **pulpity nawigacyjne**.  
+   ![Zrzut ekranu przedstawiający menu kontekstowe kafelka](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
-![Publikowanie pulpitu nawigacyjnego](./media/azure-portal-dashboards/publish-dashboard.png)
+2. Zaznacz pole wyboru, aby **Zastąp ustawienia czasu pulpitu nawigacyjnego na poziomie kafelka**.
 
-Możesz również opublikować pulpitu nawigacyjnego do określonej grupy zasobów.  Kontrola dostępu do tego pulpitu nawigacyjnego pasuje do kontroli dostępu dla grupy zasobów.  Użytkownicy, którzy mogą zarządzać zasobami w danej grupie zasobów również mieć dostęp do pulpitów nawigacyjnych.
+   ![Zrzut ekranu okna dialogowego, aby skonfigurować ustawienia czasu kafelka](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
-![Publikowanie pulpitu nawigacyjnego do grupy zasobów](./media/azure-portal-dashboards/publish-to-resource-group.png)
+3. Wybierz przedział czasu do wyświetlenia dla tego kafelka. Można wybrać z ostatnich 30 minut do ostatnich 30 dni lub zdefiniować niestandardowy zakres.
+1. Wybierz stopień szczegółowości czasu do wyświetlenia. Możesz wyświetlić dowolne miejsce w przyrostach minutowych jeden do jednego miesiąca.
+1. Wybierz przycisk **Zastosuj**.
 
-Po opublikowaniu pulpitu nawigacyjnego **dostępu + udostępniania** okienko sterowania spowoduje odświeżenie i wyświetlenie informacji o opublikowany pulpit nawigacyjny, w tym link do zarządzania dostępem użytkowników do pulpitu nawigacyjnego.  To łącze powoduje uruchomienie standardowego bloku kontroli dostępu opartej na rolach, używane do zarządzania dostępem dla dowolnych zasobów platformy Azure.  Możesz zawsze wrócić do tego widoku, wybierając **udziału**.
+## <a name="delete-a-tile"></a>Usuwanie kafelka
 
-![Zarządzanie kontrolą dostępu](./media/azure-portal-dashboards/manage-access.png)
+Aby usunąć Kafelek z pulpitu nawigacyjnego, wykonaj następujące kroki:
+
+* W prawym górnym rogu kafelka, wybierz menu kontekstowe, a następnie wybierz **Usuń z pulpitu nawigacyjnego**. Ewentualnie
+* Wybierz ![ikona edycji](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Edytuj** aby przejść do trybu dostosowania. Umieść kursor w prawym górnym rogu kafelka, a następnie wybierz ![ikona usuwania](./media/azure-portal-dashboards/dashboard-delete-icon.png) Usuń ikonę, aby usunąć Kafelek na pulpicie nawigacyjnym.
+
+   ![Zrzut ekranu przedstawiający sposób Kafelek z pulpitu nawigacyjnego](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+
+## <a name="clone-a-dashboard"></a>Klonowanie pulpitu nawigacyjnego
+
+Aby używać istniejącego pulpitu nawigacyjnego jako szablon dla nowego pulpitu nawigacyjnego, wykonaj następujące kroki:
+
+1. Upewnij się, że widok pulpitu nawigacyjnego jest wyświetlany pulpit nawigacyjny, który chcesz skopiować.
+1. W nagłówku strony wybierz ![ikona Klonuj](./media/azure-portal-dashboards/dashboard-clone.png) **klonowania**.
+1. Kopię pulpitu nawigacyjnego o nazwie "klon *swoją nazwę pulpitu nawigacyjnego*" zostanie otwarta w trybie edycji. Użyj powyższych kroków w tym artykule, zmiana nazwy i dostosowywać pulpit nawigacyjny.
+
+## <a name="publish-and-share-a-dashboard"></a>Publikowanie i udostępnianie pulpitu nawigacyjnego
+
+Podczas tworzenia pulpitu nawigacyjnego jest domyślnie prywatny, co oznacza, że jesteś jedyną osobą, która mogli je zobaczyć. Aby udostępnić pulpity nawigacyjne do innych osób, można udostępnisz je innym użytkownikom. Najpierw musisz opublikować pulpitu nawigacyjnego jako zasób platformy Azure. Publikowanie i udostępnianie niestandardowego pulpitu nawigacyjnego, wykonaj następujące kroki:
+
+1. Wybierz ![ikona udostępniania](./media/azure-portal-dashboards/dashboard-share-icon.png) **udostępnianie** w nagłówku strony. **Udostępniania i kontroli dostępu** zostanie wyświetlony formularz.
+1. Sprawdź, czy nazwa poprawne pulpitu nawigacyjnego jest widoczne.
+1. Wybierz **Nazwa subskrypcji**. Użytkownicy z dostępem do subskrypcji mogą używać udostępnionego pulpitu nawigacyjnego. Dostęp do zasobów, reprezentowane przez poszczególnych kafelków jest określany za pomocą kontroli dostępu opartej na rolach na platformie Azure.
+1. Zaznacz pole wyboru, aby opublikować ten pulpit nawigacyjny w grupie zasobów "pulpity nawigacyjne" dla wybranej subskrypcji. Lub, wyczyść pole wyboru, a następnie opublikować do istniejącej grupy zasobów zamiast tego.
+1. Wybierz lokalizację dla zasobów pulpitu nawigacyjnego. Zaleca się, że Znajdź pulpit nawigacyjny z innymi zasobami. Uwaga: Jeśli z istniejącej grupy zasobów, pulpit nawigacyjny znajduje się automatycznie z tą grupą zasobów.
+1. Wybierz **publikowania**.
+
+   ![Zrzut ekranu przedstawiający okno dialogowe publikowanie pulpitu nawigacyjnego](./media/azure-portal-dashboards/dashboard-publish.png)
+
+### <a name="set-access-control-on-a-shared-dashboard"></a>Ustawianie kontroli dostępu na udostępniony pulpit nawigacyjny
+
+Pulpit nawigacyjny zostanie opublikowany, aby zarządzać, kto ma dostęp do pulpitu nawigacyjnego, wykonując następujące czynności:
+
+1. W **udostępniania i kontroli dostępu** okienku wybierz **Zarządzanie użytkownikami**.
+
+   ![Zrzut ekranu przedstawiający udostępnianie pulpitu nawigacyjnego i dostęp kontrolować okna dialogowego](./media/azure-portal-dashboards/dashboard-share-access-control.png)
+
+2. **Kontroli dostępu** zostanie otwarta strona. Na tej stronie można przejrzeć poziom dostępu dla osób, lub Dodaj nowe przypisanie roli. Po dodaniu przypisania roli w tym miejscu chcesz udzielić uprawnień do pulpitu nawigacyjnego.
+
+> [!NOTE]
+> Kafelki są reprezentatywne widoki zasobów w Twojej organizacji. Dostęp do zasobów odbywa się za pośrednictwem przypisanie kontroli dostępu opartej na rolach i uprawnienia są dziedziczone z subskrypcji w dół do zasobu. Przyznawanie dostępu do pulpitu nawigacyjnego nie automatycznie przypisać uprawnienia do zasobów wyświetlane na pulpicie nawigacyjnym. Aby uzyskać więcej informacji na temat uprawnień do udostępnionych pulpitów nawigacyjnych i kontrola dostępu oparta na rolach do zasobów, zobacz [udostępnianie pulpitów nawigacyjnych przy użyciu kontroli dostępu opartej na rolach](azure-portal-dashboard-share-access.md).
+
+### <a name="open-a-shared-dashboard"></a>Otwórz udostępniony pulpit nawigacyjny
+
+Aby znaleźć i otworzyć udostępnionego pulpitu nawigacyjnego, wykonaj następujące kroki:
+
+1. Wybierz listę rozwijaną obok nazwy pulpitu nawigacyjnego.
+1. Wybierz jedną z wyświetlonej listy pulpitów nawigacyjnych lub **Przeglądaj wszystkie pulpity nawigacyjne** Jeśli pulpit nawigacyjny, który chcesz otworzyć nie ma na liście.
+
+   ![Zrzut ekranu przedstawiający menu wyboru pulpitu nawigacyjnego](./media/azure-portal-dashboards/dashboard-browse.png)
+
+3. W **typu** pól, zaznacz **udostępnione pulpity nawigacyjne**.
+1. Wybierz co najmniej jedną subskrypcję. Można również wprowadzić tekst do odfiltrowania pulpity nawigacyjne według nazwy.
+1. Wybierz pulpit nawigacyjny z listy udostępnionych pulpitów nawigacyjnych.
+
+## <a name="delete-a-dashboard"></a>Usuwanie pulpitu nawigacyjnego
+
+Aby trwale usunąć prywatnych lub udostępnionego pulpitu nawigacyjnego, wykonaj następujące kroki:
+
+1. Wybierz pulpit nawigacyjny, który chcesz usunąć z listy rozwijanej obok nazwy pulpitu nawigacyjnego.
+1. Wybierz ![ikona usuwania](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Usuń** w nagłówku strony.
+1. Prywatnego pulpitu nawigacyjnego, wybierz **OK** w oknie dialogowym potwierdzenia, aby usunąć pulpitu nawigacyjnego. Dla udostępnionego pulpitu nawigacyjnego, w oknie dialogowym potwierdzenia wybierz pole wyboru, aby upewnić się, że opublikowany pulpit nawigacyjny przestanie być widoczny dla innych. Następnie wybierz przycisk **OK**.
+
+   ![Zrzut ekranu przedstawiający potwierdzenie usunięcia](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby zarządzać zasobami, zobacz [zarządzanie zasobami platformy Azure przy użyciu witryny Azure portal](../azure-resource-manager/manage-resources-portal.md).
-* Aby wdrożyć zasoby, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
+* [Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli dostępu opartej na rolach](azure-portal-dashboard-share-access.md)
+* [Programowe tworzenie pulpitów nawigacyjnych platformy Azure](azure-portal-dashboards-create-programmatically.md)

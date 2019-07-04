@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Administrowanie zasadami grupy w
 description: Domen zarządzanych przez zasady grupy administrowania w usłudze Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: mstephen
-ms.openlocfilehash: db5fd06bc4d9a923279095ab187d867a6624480a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 3776ec6fd60ad888102cbc4992572516386fede2
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245852"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473100"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Administrowanie zasadami grupy w domenie zarządzanej usług domenowych Azure AD
 Usługa Azure Active Directory Domain Services zawiera wbudowane obiekty zasad grupy (GPO) dla kontenerów "Użytkownicy usługi AAD DC" i "Komputery usługi AAD DC". Można dostosować te wbudowane obiekty zasad grupy do skonfigurowania zasad grupy w domenie zarządzanej. Ponadto członkowie grupy "Administratorzy usługi AAD DC" mogą tworzyć własnych niestandardowych jednostkach organizacyjnych w domenie zarządzanej. Mogą także tworzyć niestandardowe obiekty zasad grupy i łączą je z tych niestandardowych jednostkach organizacyjnych. Użytkownicy, którzy należą do grupy "Administratorzy usługi AAD DC" otrzymują uprawnienia administracyjne zasad grupy w domenie zarządzanej.

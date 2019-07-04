@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: ef32fb9615d36d68da613c4cb1b443dfd928e807
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 266d6160562d5a97bde75597216338214f3d988d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137390"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441423"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Co to jest pakiet Enterprise Security w usłudze Azure HDInsight
 
@@ -49,7 +49,7 @@ Inspekcja wszystkich dostępu do zasobów klastra i danych, jest niezbędne do �
 
 Administrator można przeglądać i raportować wszystkie przypadki dostępu do danych i zasobów klastra usługi HDInsight. Administrator można przeglądać i raportować wszystkie zmiany wprowadzane do zasad kontroli dostępu, które są tworzone w struktury Apache Ranger obsługiwanych punktów końcowych. 
 
-Klaster HDInsight przy użyciu ESP używa znanego użytkownika Apache Ranger do wyszukiwania dzienników inspekcji. Na zapleczu, środowisko Ranger używa [Apache Solr](http://lucene.apache.org/solr/) do przechowywania i wyszukiwania dzienników.
+Klaster HDInsight przy użyciu ESP używa znanego użytkownika Apache Ranger do wyszukiwania dzienników inspekcji. Na zapleczu, środowisko Ranger używa [Apache Solr](https://lucene.apache.org/solr/) do przechowywania i wyszukiwania dzienników.
 
 ## <a name="encryption"></a>Szyfrowanie
 Ochrona danych jest ważne dla spotkania zabezpieczeń i zgodności wymagań organizacyjnych. Poza ograniczaniem dostępu do danych nieautoryzowanych pracowników, należy go zaszyfrować. 

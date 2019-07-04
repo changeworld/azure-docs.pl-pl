@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3523a050a021f3a98c144efe14d692704fba63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba684209b497792cd2f520f6b530168959e62d7f
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112213"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67506912"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Szybki start: Wymagane warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze
 
@@ -54,11 +54,8 @@ Ta sekcja zawiera kroki pozwalające utworzyć przykładowy warunków użytkowan
 **Aby utworzyć warunki użytkowania:**
 
 1. W programie Microsoft Word utwórz nowy dokument.
-
 1. Typ **Moje warunki użytkowania**, a następnie zapisz go na komputerze jako **mytou.pdf**.
-
 1. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com) jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
-
 1. W witrynie Azure portal, w lewym pasku nawigacyjnym kliknij **usługi Azure Active Directory**.
 
    ![Usługa Azure Active Directory](./media/require-tou/02.png)
@@ -80,17 +77,11 @@ Ta sekcja zawiera kroki pozwalające utworzyć przykładowy warunków użytkowan
    ![Warunki użytkowania](./media/require-tou/112.png)
 
    1. W **nazwa** polu tekstowym wpisz **Moje warunków użytkowania**.
-
    1. W **nazwę wyświetlaną** polu tekstowym wpisz **Moje warunków użytkowania**.
-
    1. Przekaż swoje warunki Użyj pliku PDF.
-
    1. Jako **języka**, wybierz opcję **angielski**.
-
    1. Jako **Wymagaj od użytkowników rozwinięcia warunków użytkowania**, wybierz opcję **na**.
-
    1. Jako **Wymuś za pomocą szablonów zasad dostępu warunkowego**, wybierz opcję **zasady niestandardowe**.
-
    1. Kliknij pozycję **Utwórz**.
 
 ## <a name="create-your-conditional-access-policy"></a>Utwórz zasady dostępu warunkowego
@@ -125,13 +116,9 @@ Ustaw w zasadach:
    ![Użytkownicy i grupy](./media/require-tou/24.png)
 
    1. Kliknij przycisk **Wybieranie użytkowników i grup**, a następnie wybierz pozycję **użytkowników i grup**.
-
    1. Kliknij pozycję **Wybierz**.
-
    1. Na **wybierz** wybierz **Isabella Simonsen**, a następnie kliknij przycisk **wybierz**.
-
    1. Na **użytkowników i grup** kliknij **gotowe**.
-
 1. Kliknij przycisk **aplikacje w chmurze**.
 
    ![Aplikacje w chmurze](./media/require-tou/08.png)
@@ -141,13 +128,9 @@ Ustaw w zasadach:
    ![Wybierz aplikacje w chmurze](./media/require-tou/26.png)
 
    1. Kliknij przycisk **Wybierz aplikacje**.
-
    1. Kliknij pozycję **Wybierz**.
-
    1. Na **wybierz** wybierz **Microsoft Azure Management**, a następnie kliknij przycisk **wybierz**.
-
    1. Na **aplikacje w chmurze** kliknij **gotowe**.
-
 1. W **kontrole dostępu** kliknij **Grant**.
 
    ![Kontrola dostępu](./media/require-tou/10.png)
@@ -157,11 +140,8 @@ Ustaw w zasadach:
    ![Przydział](./media/require-tou/111.png)
 
    1. Wybierz **udzielić dostępu**.
-
    1. Wybierz **Moje warunków użytkowania**.
-
    1. Kliknij pozycję **Wybierz**.
-
 1. W **Włącz zasady** kliknij **na**.
 
    ![Włączanie zasad](./media/require-tou/18.png)
@@ -172,7 +152,7 @@ Ustaw w zasadach:
 
 Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działa zgodnie z oczekiwaniami. Pierwszym krokiem należy używać dostępu warunkowego, zasady narzędzie analizy warunkowej w celu symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.  
 
-Można zainicjować co, jeśli narzędzie oceny zasad, ustaw:
+Aby zainicjować **co zrobić, jeśli** zestawu narzędzi do oceny zasad,:
 
 - **Isabella Simonsen** jako użytkownik
 - **Usługa Microsoft Azure Management** jako aplikacja w chmurze
@@ -199,15 +179,10 @@ Klikając **co zrobić, jeśli** tworzy raport symulacji, który pokazuje:
    ![Aplikacje w chmurze](./media/require-tou/16.png)
 
    1. Kliknij przycisk **aplikacje w chmurze**.
-
    1. Na **stronę aplikacji w chmurze**, kliknij przycisk **Wybierz aplikacje**.
-
    1. Kliknij pozycję **Wybierz**.
-
    1. Na **wybierz** wybierz **Microsoft Azure Management**, a następnie kliknij przycisk **wybierz**.
-
    1. Na stronie aplikacji w chmurze kliknij **gotowe**.
-
 1. Kliknij przycisk **co zrobić, jeśli**.
 
 ## <a name="test-your-conditional-access-policy"></a>Testowanie zasad dostępu warunkowego
@@ -223,7 +198,6 @@ Aby sprawdzić zasady, spróbuj zalogować się do swojej [witryny Azure portal]
 Gdy nie są już potrzebne, Usuń użytkownika testowego i zasady dostępu warunkowego:
 
 - Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
 - Aby usunąć zasady, wybierz zasady, a następnie kliknij przycisk **Usuń** na pasku narzędzi Szybki dostęp.
 
     ![Uwierzytelnianie wieloskładnikowe](./media/require-tou/33.png)

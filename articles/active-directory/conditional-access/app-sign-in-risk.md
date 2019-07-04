@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8de4e785bbe2496ca38b33512da1c85f9ff76f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bdbdd0253478200d39501444ae649b87b77e65a4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112773"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509048"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory dostępu warunkowego  
 
@@ -33,11 +33,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy:
 
 - **Dostęp do wersji Azure AD Premium P2** — gdy dostęp warunkowy jest funkcja Azure AD Premium P1, potrzebne wersji P2, ponieważ w ramach scenariusza opisywanego w tym przewodniku Szybki Start wymaga ochrony tożsamości.
-
 - **Ochrona tożsamości** — scenariusz, w tym przewodniku Szybki Start wymaga włączenia ochrony tożsamości. Jeśli nie wiesz, jak włączyć usługę Identity Protection, zobacz [włączania usługi Azure Active Directory Identity Protection](../identity-protection/enable.md).
-
-- **Przeglądarka tor** — [przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en) zaprojektowano w celu zachowania prywatności w trybie online. Identity Protection wykrywa logowania w przeglądarce sieci Tor jako **logowania z anonimowych adresów IP**, który ma poziom średniego ryzyka. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
-
+- **Przeglądarka tor** — [przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en) zaprojektowano w celu zachowania prywatności w trybie online. Identity Protection wykrywa logowania za pomocą przeglądarki Tor jako logowania z anonimowych adresów IP, które mają poziom średniego ryzyka. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
 - **Konto testowe o nazwie Alain Charon** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Testowanie logowania
@@ -67,7 +64,6 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
 **Aby skonfigurować zasady dostępu warunkowego:**
 
 1. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com) jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
-
 1. W witrynie Azure portal, w lewym pasku nawigacyjnym kliknij **usługi Azure Active Directory**.
 
    ![Usługa Azure Active Directory](./media/app-sign-in-risk/02.png)
@@ -93,13 +89,9 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
    ![Dostęp warunkowy](./media/app-sign-in-risk/107.png)
 
    1. Kliknij przycisk **Wybieranie użytkowników i grup**, a następnie wybierz pozycję **użytkowników i grup**.
-
    1. Kliknij pozycję **Wybierz**.
-
    1. Na **wybierz** wybierz **Alain Charon**, a następnie kliknij przycisk **wybierz**.
-
    1. Na **użytkowników i grup** kliknij **gotowe**.
-
 1. Kliknij przycisk **aplikacje w chmurze**.
 
    ![Aplikacje w chmurze](./media/app-sign-in-risk/08.png)
@@ -109,9 +101,7 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
    ![Dostęp warunkowy](./media/app-sign-in-risk/109.png)
 
    1. Kliknij przycisk **wszystkie aplikacje w chmurze**.
-
    1. Kliknij przycisk **Gotowe**.
-
 1. Kliknij przycisk **warunki**.
 
    ![Kontrola dostępu](./media/app-sign-in-risk/19.png)
@@ -121,15 +111,10 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
    ![Poziom ryzyka logowania](./media/app-sign-in-risk/21.png)
 
    1. Kliknij przycisk **ryzyka logowania**.
-
    1. Jako **Konfiguruj**, kliknij przycisk **tak**.
-
    1. Poziom ryzyka logowania wybrać **średni**.
-
    1. Kliknij pozycję **Wybierz**.
-
    1. Na **warunki** kliknij **gotowe**.
-
 1. W **kontrole dostępu** kliknij **Grant**.
 
    ![Kontrola dostępu](./media/app-sign-in-risk/10.png)
@@ -139,9 +124,7 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
    ![Dostęp warunkowy](./media/app-sign-in-risk/105.png)
 
    1. Wybierz **blokowana**.
-
    1. Kliknij pozycję **Wybierz**.
-
 1. W **Włącz zasady** kliknij **na**.
 
    ![Włączanie zasad](./media/app-sign-in-risk/18.png)
@@ -185,7 +168,6 @@ Aby sprawdzić zasady, spróbuj zalogować się do swojej [witryny Azure portal]
 Gdy nie są już potrzebne, Usuń użytkownika testowego, w przeglądarce sieci Tor i zasady dostępu warunkowego:
 
 - Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
 - Aby usunąć zasady, wybierz zasady, a następnie kliknij przycisk **Usuń** na pasku narzędzi Szybki dostęp.
 
    ![Uwierzytelnianie wieloskładnikowe](./media/app-sign-in-risk/33.png)

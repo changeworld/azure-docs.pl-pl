@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/07/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37d43dbdd8de66a10a94827e313679dc6ffd220d
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66126847"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490381"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobieranie kosztów rezerwacji umowy Enterprise Agreement i danych użycia
 
@@ -40,7 +40,7 @@ Dane są dzielone na dwa oddzielne zestawy danych: _Rzeczywisty koszt_ i _amorty
 
 Porównanie dwóch zestawów danych:
 
-| Dane | Zestaw danych w usłudze rzeczywisty koszt | Zestaw danych w usłudze amortyzowany koszt |
+| Data | Zestaw danych w usłudze rzeczywisty koszt | Zestaw danych w usłudze amortyzowany koszt |
 | --- | --- | --- |
 | Zakup rezerwacji | Dostępne w tym widoku.<br><br>  Aby uzyskać ten filtr danych na temat ChargeType = &quot;zakupu&quot;. <br><br> Zajrzyj do ReservationID lub ReservationName, aby dowiedzieć się które rezerwacji, Opłata dotyczy.  | Nie ma zastosowania do tego widoku. <br><br> Koszty zakupu nie są zawarte w amortyzowanym danych. |
 | effectivePrice | Ta wartość wynosi zero, użycia, który pobiera rabat związany z rezerwacją. | Wartość jest naliczana proporcjonalnie do liczby godzin kosztów rezerwacji do użycia, który ma rabat związany z rezerwacją. |

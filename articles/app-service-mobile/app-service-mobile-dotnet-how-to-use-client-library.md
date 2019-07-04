@@ -3,7 +3,7 @@ title: Praca z biblioteki klienta zarządzanego App Service Mobile Apps | Dokume
 description: Dowiedz się, jak używać biblioteki klienckiej platformy .NET dla usługi Azure App Service Mobile Apps za pomocą aplikacji Windows i Xamarin.
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
@@ -12,20 +12,25 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119307"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446356"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak używać zarządzanego klienta usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-## <a name="overview"></a>Omówienie
-Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą biblioteki klienta zarządzanego dla aplikacji usługi Azure Mobile usługi aplikacji dla Windows i aplikacje platformy Xamarin. Jeśli jesteś nowym użytkownikiem funkcji Mobile Apps, należy rozważyć najpierw przeczytanie [szybkiego startu usługi Azure Mobile Apps] [ 1] samouczka. W tym przewodniku skupimy się na zestawie SDK zarządzanego klienta. Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla aplikacji mobilnych, zajrzyj do dokumentacji [zestawem SDK .NET Server] [ 2] lub [zestaw Node.js Server SDK] [ 3].
+> [!NOTE]
+> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library) już dziś.
+>
+
+## <a name="overview"></a>Przegląd
+Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą biblioteki klienta zarządzanego dla aplikacji usługi Azure Mobile usługi aplikacji dla Windows i aplikacje platformy Xamarin. Jeśli jesteś nowym użytkownikiem funkcji Mobile Apps, należy rozważyć najpierw przeczytanie [szybkiego startu usługi Azure Mobile Apps][1] samouczka. W tym przewodniku skupimy się na zestawie SDK zarządzanego klienta. Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla aplikacji mobilnych, zajrzyj do dokumentacji [zestawem SDK .NET Server][2] or the
+[Node.js Server SDK][3].
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
 Dokumentacja referencyjna dla klienta usługi SDK znajduje się tutaj: [Dokumentacja usługi Azure klienta platformy .NET usług Mobile Apps][4].
@@ -60,9 +65,10 @@ public class TodoItem
 }
 ```
 
-[JsonPropertyAttribute] [ 6] służy do definiowania *PropertyName* mapowanie między polem klienta i pola w tabeli.
+[JsonPropertyAttribute][6] służy do definiowania *PropertyName* mapowanie między polem klienta i pola w tabeli.
 
-Informacje na temat tworzenia tabel w kodzie zaplecza funkcji Mobile Apps, zobacz [temat zestawu SDK serwera .NET] [ 7] lub [temat Node.js Server SDK][8]. Jeśli utworzono zaplecza aplikacji mobilnej w witrynie Azure portal przy użyciu opcji szybkiego startu umożliwia także **łatwych tabel** w [Azure Portal].
+Informacje na temat tworzenia tabel w kodzie zaplecza funkcji Mobile Apps, zobacz [temat zestawu SDK serwera .NET][7]
+or the [Node.js Server SDK topic][8]. Jeśli utworzono zaplecza aplikacji mobilnej w witrynie Azure portal przy użyciu opcji szybkiego startu umożliwia także **łatwych tabel** w [Azure Portal].
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Instrukcje: Zainstaluj pakiet zestawu SDK klienta zarządzanego
 Użyj jednej z następujących metod instalacji pakietu SDK zarządzanego klienta usługi Mobile Apps z [NuGet][9]:
@@ -80,10 +86,11 @@ using Microsoft.WindowsAzure.MobileServices;
 > Pamiętaj, że wszystkie pakiety dla pomocy technicznej, do których odwołuje się projekt systemu Android, muszą mieć tę samą wersję. Zestaw SDK ma `Xamarin.Android.Support.CustomTabs` zależność dla platformy systemu Android, więc jeśli projekt używa nowszej obsługi pakietów można konieczne zainstalowanie tego pakietu przy użyciu wymaganej wersji bezpośrednio w celu uniknięcia konfliktów.
 
 ### <a name="symbolsource"></a>Jak: Praca z symbole debugowania w programie Visual Studio
-Symbole dla przestrzeni nazw Microsoft.Azure.Mobile są dostępne na [SymbolSource][10].  Zapoznaj się [instrukcje SymbolSource] [ 11] zintegrować SymbolSource z programem Visual Studio.
+Symbole dla przestrzeni nazw Microsoft.Azure.Mobile są dostępne na [SymbolSource][10] .  Refer to the
+[SymbolSource instructions][11] zintegrować SymbolSource z programem Visual Studio.
 
 ## <a name="create-client"></a>Tworzenie klienta funkcji Mobile Apps
-Poniższy kod tworzy [MobileServiceClient] [ 12] obiekt, który umożliwia dostęp do zaplecza aplikacji mobilnej.
+Poniższy kod tworzy [MobileServiceClient][12] obiekt, który umożliwia dostęp do zaplecza aplikacji mobilnej.
 
 ```csharp
 var client = new MobileServiceClient("MOBILE_APP_URL");

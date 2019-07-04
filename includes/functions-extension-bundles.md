@@ -1,12 +1,19 @@
 ---
-ms.openlocfilehash: 0b0d2ead4a10d037b09c2a532eb21372ffd0cb82
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 05/27/2019
+ms.author: glenga
+ms.openlocfilehash: 8110d0a9d574c6691322df2162ca877b031cbc59
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183012"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442268"
 ---
-Aby odwoływać się do usługi Azure Functions 2.x domyślne powiązania, otwórz *host.json* zawartość pliku i aktualizacji, aby dopasować następujący kod.
+Najprostszym sposobem zainstalowania rozszerzeń powiązania jest umożliwienie [pakiety rozszerzeń](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Za pomocą pakietów włączone, zestaw wstępnie zdefiniowanych rozszerzeń pakiety są instalowane automatycznie.
+
+Aby włączyć rozszerzenie pakiety, otwórz *host.json* plików i zaktualizuj jego zawartość, aby dopasować następujący kod:
 
 ```json
 {

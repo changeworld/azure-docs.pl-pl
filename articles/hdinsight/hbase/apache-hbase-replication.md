@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38d3c61acee9dca18ab1f863d878e02f7437a600
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707974"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433715"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych Apache HBase w sieci wirtualnej platformy Azure
 
@@ -21,7 +21,7 @@ Dowiedz się, jak skonfigurować [bazy danych Apache HBase](https://hbase.apache
 
 Replikacja klastra używa metodologii wypychania źródła. Klaster bazy danych HBase może być źródła lub miejsca docelowego lub go wykonać obie te role jednocześnie. Replikacja jest asynchroniczne. Celem replikacji jest spójność ostateczną. Źródło odbiera zmianę do rodziny kolumn, po włączeniu replikacji, Edycja jest propagowany do wszystkich klastrów docelowych. Podczas replikacji danych z jednego klastra do innego klastra źródłowego i wszystkich klastrów, które już zostały wykorzystane danych są śledzone, aby zapobiec pętli replikacji.
 
-W tym samouczku konfigurowania replikacji źródłowego i docelowego. Dla innych topologiach klastra [podręczniku bazy danych Apache HBase](https://hbase.apache.org/book.html#_cluster_replication).
+Ten artykuł służy do konfigurowania replikacji źródłowego i docelowego. Dla innych topologiach klastra [podręczniku bazy danych Apache HBase](https://hbase.apache.org/book.html#_cluster_replication).
 
 Przypadki użycia replikacji bazy danych HBase w jednej sieci wirtualnej są następujące:
 
@@ -39,7 +39,7 @@ Przypadki użycia replikacji bazy danych HBase, dwie sieci wirtualne są następ
 Klastry można replikować przy użyciu [skryptu akcji](../hdinsight-hadoop-customize-cluster-linux.md) skryptów z [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem tego samouczka musisz dysponować subskrypcją platformy Azure. Zobacz [uzyskać bezpłatna wersja próbna platformy](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+Przed przystąpieniem do wykonywania w tym artykule, musi mieć subskrypcję platformy Azure. Zobacz [uzyskać bezpłatna wersja próbna platformy](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="set-up-the-environments"></a>Konfigurowanie środowiska
 
@@ -68,7 +68,7 @@ Część zakodowanych wartości w szablonie:
 
 | Właściwość | Wartość |
 |----------|-------|
-| Lokalizacja | Zachodnie stany USA |
+| Location | Zachodnie stany USA |
 | Nazwa sieci wirtualnej | &lt;ClusterNamePrevix>-vnet1 |
 | Prefiks przestrzeni adresowej | 10.1.0.0/16 |
 | Nazwa podsieci | Podsieć 1 |
@@ -85,7 +85,7 @@ Część zakodowanych wartości w szablonie:
 
 | Właściwość | Wartość |
 |----------|-------|
-| Lokalizacja | Wschodnie stany USA |
+| Location | East US |
 | Nazwa sieci wirtualnej | &lt;ClusterNamePrevix>-vnet2 |
 | Prefiks przestrzeni adresowej | 10.2.0.0/16 |
 | Nazwa podsieci | Podsieć 1 |
@@ -396,7 +396,7 @@ Aby wyłączyć replikację, użyj innego skryptu akcji skryptu [GitHub](https:/
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób konfigurowania replikacji bazy danych Apache HBase w sieci wirtualnej lub między dwiema sieciami wirtualnymi. Aby dowiedzieć się więcej na temat HDInsight i bazy danych Apache HBase, zobacz następujące artykuły:
+W tym artykule przedstawiono sposób konfigurowania replikacji bazy danych Apache HBase w sieci wirtualnej lub między dwiema sieciami wirtualnymi. Aby dowiedzieć się więcej na temat HDInsight i bazy danych Apache HBase, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą Apache HBase w HDInsight](./apache-hbase-tutorial-get-started-linux.md)
 * [Omówienie bazy danych Apache HDInsight HBase](./apache-hbase-overview.md)

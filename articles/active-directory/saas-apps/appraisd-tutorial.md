@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90a484224c35abd492db2409e6ec8e91c398d71a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106795"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561197"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Samouczek: Integracja Appraisd za pomocą usługi Azure Active Directory
 
@@ -89,7 +89,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
     > [!NOTE]
     > Uzyskasz rzeczywisty adres URL logowania i wartość stanu przekaźnika na stronie konfiguracji logowania jednokrotnego aplikacji Appraisd, co zostało wyjaśnione w dalszej części tego samouczka.
 
-1. Aplikacja Appraisd oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych w przypadku gdy **nameidentifier** jest zamapowana **user.userprincipalname**. Aplikacja Appraisd oczekuje **nameidentifier** mają być mapowane z **user.mail**, więc należy edytować mapowanie atrybutów, klikając **Edytuj**  ikonę i zmień mapowanie atrybutu.
+1. Aplikacja Appraisd oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. Aplikacja Appraisd oczekuje **nameidentifier** mają być mapowane z **user.mail**, więc należy edytować mapowanie atrybutów, klikając **Edytuj** ikonę i zmiany Mapowanie atrybutów.
 
     ![image](common/edit-attribute.png)
 

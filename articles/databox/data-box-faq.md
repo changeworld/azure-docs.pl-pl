@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/23/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 18c6175ede1e8459d3a9ca60f7890cc43d75e5ba
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236283"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561408"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -53,7 +53,7 @@ A. Urządzenie Data Box ma 100 TB niesformatowanej pojemności i 80 TB pojemnoś
 A.  Aby uzyskać informacje, w jakich krajach/regionach urządzenie Data Box jest dostępny, przejdź do [dostępność w poszczególnych regionach](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>PYTANIE: W jakich regionach mogę przechowywać dane, korzystając z usługi Data Box?
-A. Usługa Data Box jest obsługiwana we wszystkich regionach Stanów Zjednoczonych oraz w regionach Europa Zachodnia, Europa Północna, Francja i Zjednoczone Królestwo. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-overview.md#region-availability).
+A. Urządzenie Data Box jest obsługiwane dla wszystkich regionów w USA, Europa Zachodnia, Europa Północna, Francja, Zjednoczone Królestwo, Japonia, Australia i Kanadzie. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-overview.md#region-availability).
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>PYTANIE: Z kim należy się skontaktować, gdy pojawią się jakiekolwiek problemy z usługą Data Box?
 A. Jeśli napotkasz jakiekolwiek problemy z usługą Data Box, [skontaktuj się z działem pomocy technicznej firmy Microsoft](data-box-disk-contact-microsoft-support.md).
@@ -170,7 +170,7 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>PYTANIE: Czy mogę używać wielu kont magazynu z urządzeniem Data Box?
-A.  Tak. Z urządzeniem Data Box obsługiwanych jest maksymalnie 10 kont magazynu ogólnego przeznaczenia, klasycznych lub usługi Blob Storage. Obsługiwane są obiekty blob zarówno w warstwie Gorąca, jak i Chłodna. W wersji ogólnodostępnej są obsługiwane konta magazynu we wszystkich regionach Stanów Zjednoczonych oraz regionach Europa Zachodnia, Europa Północna, Francja i Zjednoczone Królestwo chmury publicznej platformy Azure.
+A.  Tak. Z urządzeniem Data Box obsługiwanych jest maksymalnie 10 kont magazynu ogólnego przeznaczenia, klasycznych lub usługi Blob Storage. Obsługiwane są obiekty blob zarówno w warstwie Gorąca, jak i Chłodna. 
 
 
 ## <a name="ship-device"></a>Dostawa urządzenia

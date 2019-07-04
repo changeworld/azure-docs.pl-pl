@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 0dc9d18ea4dae6ea0f45d1a91392eb1994e6e80e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331693"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441719"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Wprowadzenie do pojedynczych baz danych w usłudze Azure SQL Database
 
@@ -51,3 +51,4 @@ Informacje w tych przewodnikach Szybki start umożliwiają szybkie utworzenie lu
 - Więcej instrukcji zaawansowanych można znaleźć w temacie dotyczącym [sposobu używania pojedynczej bazy danych w usłudze Azure SQL Database](sql-database-howto-single-database.md).
 - Jest dostępnych więcej przykładowych skryptów dla programu [PowerShell](sql-database-powershell-samples.md) i [interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md).
 - Dowiedz się więcej o [interfejsie API zarządzania](sql-database-single-databases-manage.md) służącym do konfigurowania baz danych.
+- [Zidentyfikuj odpowiednie usługi Azure SQL bazy danych/zarządzane wystąpienia jednostki SKU dla lokalnej bazy danych](/sql/dma/dma-sku-recommend-sql-db/).

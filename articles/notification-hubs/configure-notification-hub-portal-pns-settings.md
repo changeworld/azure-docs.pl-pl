@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: ee627a168e6ca9bb758d994a3f75cc6185976971
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1037d8d4652f238f03d8e80b0c59a5f396ab5605
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203690"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445713"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Konfigurowanie powiadomień wypychanych w Centrum powiadomień, w witrynie Azure portal
 
-Usługa Azure Notification Hubs zapewnia, jest łatwa w użyciu i skalowania, który aparat wypychania. Usługa Notification Hubs umożliwia wysyłanie powiadomień na dowolną platformę (iOS, Android, Windows, Kindle, Baidu) i z dowolnego zaplecza (w chmurze lub lokalnie). Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
+Usługa Azure Notification Hubs zapewnia, jest łatwa w użyciu i skalowania, który aparat wypychania. Usługa Notification Hubs umożliwia wysyłanie powiadomień na dowolną platformę (iOS, Android, Windows, Baidu) i z dowolnego zaplecza (w chmurze lub lokalnie). Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
 W tym przewodniku Szybki Start użyjesz systemu (powiadomień platformy PNS) ustawienia powiadomień platformy w usłudze Notification Hubs do skonfigurowania powiadomień wypychanych na wielu platformach. Samouczek Szybki Start przedstawiono kroki do wykonania w witrynie Azure portal.
 
@@ -95,17 +95,6 @@ Aby ustawić się Microsoft Push Notification usługi (MPNS) dla Windows Phone:
 
 Aby uzyskać więcej informacji, zobacz [powiadomienia wypychane do aplikacji Windows Phone przy użyciu usługi Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
       
-## <a name="amazon-device-messaging"></a>Amazon Device Messaging
-
-Aby skonfigurować powiadomienia wypychane dla Amazon Device Messaging (ADM):
-
-1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Amazon (ADM)** menu po lewej stronie.
-2. Wprowadź wartości w polach **identyfikator klienta** i **klucz tajny klienta**.
-3. Wybierz pozycję **Zapisz**.
-    
-   ![Zrzut ekranu usługi ADM ustawienia w witrynie Azure portal](./media/notification-hubs-kindle-get-started/notification-hub-adm-settings.png)
-
-Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Notification Hubs dla aplikacji na urządzenie Kindle](notification-hubs-kindle-amazon-adm-push-notification.md).
 
 ## <a name="baidu-android-china"></a>Baidu (Android China)
 
@@ -131,5 +120,4 @@ Aby dowiedzieć się więcej o tym, jak wypychać powiadomienia do różnych pla
 - [Wysyłanie powiadomień wypychanych do urządzeń z systemem Android przy użyciu usługi Notification Hubs i Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
 - [Powiadomienia wypychane do aplikacji platformy uniwersalnej systemu Windows uruchomione na urządzeniu z systemem Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
 - [Powiadomienia wypychane do aplikacji Windows Phone 8 przy użyciu usługi MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
-- [Powiadomienia wypychane do aplikacji dla urządzeń Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)
 - [Powiadomienia wypychane przy użyciu usługi Notification Hubs i Baidu wypychane w chmurze](notification-hubs-baidu-china-android-notifications-get-started.md)

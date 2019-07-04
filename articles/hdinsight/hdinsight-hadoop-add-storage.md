@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6b9577bcf8b527abb0cb7b8720ed83ec8321655b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724469"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433516"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Dodawanie kolejnych kont magazynu do HDInsight
 
@@ -196,6 +196,9 @@ W przypadku zmiany klucza konta magazynu HDInsight już dostępne na koncie maga
 Uruchomione ponownie za pomocą akcji skryptu jest __nie__ zaktualizować klucza, ponieważ skrypt sprawdza, czy wpis dla konta magazynu już istnieje. Jeżeli wpis już istnieje, nie powoduje zmiany.
 
 Aby obejść ten problem, należy usunąć istniejący wpis dla konta magazynu. Wykonaj następujące kroki, aby usunąć istniejący wpis:
+
+> [!IMPORTANT]  
+> Wymiana klucza magazynu dla konta głównego magazynu dołączone do klastra nie jest obsługiwane.
 
 1. W przeglądarce sieci web Otwórz Interfejsu sieci Web Ambari klastra usługi HDInsight. Identyfikator URI jest `https://CLUSTERNAME.azurehdinsight.net`. Zastąp ciąg `CLUSTERNAME` nazwą klastra.
 

@@ -5,68 +5,34 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 05/21/2019
+ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: b36c041c24a07f89701e78aea4d08270342b8d22
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: db263c1c7f0a8b87b315c5aa6da31336229c9643
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978932"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502735"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Obsługa grafu Gremlin w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB obsługuje [Apache Tinkerpop](https://tinkerpop.apache.org) wykresu języka przechodzenia, znane jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 
 
-Usługa Azure Cosmos DB oferuje funkcje gotowe do użycia w firmie do baz danych grafu. Te funkcje obejmują globalną dystrybucję i niezależne skalowanie magazynu i przepływności, przewidywalnych milisekundowe opóźnienia, automatycznego indeksowania umowy SLA, także dostępność do odczytu dla konta bazy danych obejmujące co najmniej dwóch regionach platformy Azure. Ponieważ usługi Azure Cosmos DB obsługuje TinkerPop/Gremlin, możesz z łatwością migrować aplikacje napisane przy użyciu innej bazy danych grafów zgodne. Ponadto, ze względu na obsługę języka Gremlin usługa Azure Cosmos DB płynnie integruje się ze strukturami analizy z obsługą TinkerPop, np. [Apache Spark GraphX](https://spark.apache.org/graphx/). 
-
 W tym artykule oferujemy szybki przewodnik Gremlin i wyliczyć funkcji języka Gremlin, które są obsługiwane przez interfejs API Gremlin.
 
-## <a name="gremlin-by-example"></a>Język Gremlin w przykładach
-Przykładowy graf pomoże dowiedzieć się, jak można wyrazić zapytania w języku Gremlin. Na poniższej ilustracji przedstawiono w formie grafu aplikację biznesową, która zarządza danymi o użytkownikach, zainteresowaniach i urządzeniach.  
+## <a name="compatible-client-libraries"></a>Biblioteki klienckie zgodne
 
-![Przykładowa baza danych przedstawiająca osoby, urządzenia i zainteresowania](./media/gremlin-support/sample-graph.png) 
+W poniższej tabeli przedstawiono popularne sterowniki Gremlin, których można użyć do usługi Azure Cosmos DB:
 
-Ten graf obejmuje następujące typy wierzchołków (nazywanych w języku Gremlin „label”, czyli etykieta):
+| Do pobrania | source | Wprowadzenie | Obsługiwana wersja łącznika |
+| --- | --- | --- | --- |
+| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Tworzenie grafu przy użyciu platformy .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Tworzenie grafu przy użyciu środowiska Java](create-graph-java.md) | 3.2.0+ |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript w witrynie GitHub](https://github.com/jbmusso/gremlin-javascript) | [Tworzenie grafu przy użyciu platformy Node.js](create-graph-nodejs.md) | 3.3.4+ |
+| [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Tworzenie grafu przy użyciu środowiska Python](create-graph-python.md) | 3.2.7 |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP w witrynie GitHub](https://github.com/PommeVerte/gremlin-php) | [Tworzenie grafu przy użyciu środowiska PHP](create-graph-php.md) | 3.1.0 |
+| [Konsola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentacja dotycząca witryny TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Tworzenie grafu przy użyciu Konsoli Gremlin](create-graph-gremlin-console.md) | 3.2.0 + |
 
-- People (Osoby): graf przedstawia trzy osoby, Robina, Thomasa i Bena
-- Interests (Zainteresowania): ich zainteresowaniem w tym przykładzie jest piłka nożna (football)
-- Devices (Urządzenia): urządzenia używane przez osoby
-- Operating Systems (Systemy operacyjne): systemy operacyjne uruchomione na urządzeniach
-
-Przedstawiamy relacje między tymi jednostkami przy użyciu następujących typów krawędzi/etykiet:
-
-- Knows (Zna): na przykład „Thomas zna Robina”
-- Interested (Interesuje się): służy do przedstawienia zainteresowań osób znajdujących się na grafie, na przykład „Ben interesuje się piłką nożną (football)”
-- RunsOS (Ma system operacyjny): na laptopie jest uruchomiony system operacyjny Windows
-- Uses (Używa): służy do przedstawienia, którego urządzenia używa dana osoba. Na przykład Robin używa telefonu firmy Motorola o numerze seryjnym 77
-
-Możemy uruchomić pewne operacje zgodnie z tym grafem przy użyciu [Konsoli Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console). Można również wykonywać te operacje przy użyciu sterowników Gremlin na wybranej platformie (Java, Node.js, Python lub .NET).  Zanim zajmiemy się tym, co jest obsługiwane w usłudze Azure Cosmos DB, przyjrzymy się kilku przykładom, aby zapoznać się ze składnią.
-
-Najpierw zajmijmy się CRUD. Następująca instrukcja języka Gremlin wstawia do grafu wierzchołek „Thomas”:
-
-```java
-:> g.addV('person').property('id', 'thomas.1').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
-```
-
-Następnie poniższa instrukcja języka Gremlin wstawia krawędź „knows” między wierzchołkami „Thomas” i „Robin”.
-
-```java
-:> g.V('thomas.1').addE('knows').to(g.V('robin.1'))
-```
-
-Poniższe zapytanie zwraca wierzchołki „person” w porządku malejącym według ich imion:
-```java
-:> g.V().hasLabel('person').order().by('firstName', decr)
-```
-
-Wyjątkowość grafów docenia się, gdy trzeba odpowiedzieć na takie pytania jak: „Jakich systemów operacyjnych używają znajomi Thomasa?” Można uruchomić tego przechodzenie Gremlin, aby uzyskać te informacje z wykresu:
-
-```java
-:> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
-```
-Teraz sprawdźmy, co oferuje usługa Azure Cosmos DB deweloperom języka Gremlin.
-
-## <a name="gremlin-features"></a>Funkcje języka Gremlin
+## <a name="supported-graph-objects"></a>Obsługiwane obiekty programu Graph
 TinkerPop jest standardem, który obejmuje szeroki zakres technologii grafów. Dlatego ma standardową terminologię do opisywania, jakie funkcje są udostępniane przez dostawcę grafu. Usługa Azure Cosmos DB zapewnia trwałą, zapisywalną bazę danych grafów o dużej współbieżności, którą można podzielić na partycje w wielu serwerach lub klastrach. 
 
 W poniższej tabeli wymieniono funkcje struktury TinkerPop wdrażane przez usługę Azure Cosmos DB: 
@@ -128,7 +94,7 @@ Poniżej opisano właściwości używane w formacie GraphSON dla wierzchołków:
 | Właściwość | Opis | 
 | --- | --- | --- |
 | `id` | Identyfikator wierzchołka. Muszą być unikatowe (w połączeniu z wartością `_partition` jeśli ma to zastosowanie). Jeśli wartość nie zostanie podany, będą go automatycznie wprowadzane z identyfikatorem GUID | 
-| `label` | Etykieta wierzchołka. Służy do opisywania typu jednostki. |
+| `label` | Etykieta wierzchołka. Ta właściwość jest używana do opisywania typu jednostki. |
 | `type` | Służy do odróżnienia wierzchołków od dokumentów bez grafów |
 | `properties` | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z wierzchołkiem. Każda właściwość może mieć wiele wartości. |
 | `_partition` | Klucz partycji wierzchołka. Używany do [partycjonowanie grafu](graph-partitioning.md). |
@@ -184,12 +150,12 @@ Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę
 | `sample` | Służy do próbkowania wyników z przejścia | [krok sample](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | Służy do projektowania wyników z przejścia |  [krok select](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Używany do nieblokujących agregacji z przejścia | [krok store](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości do początku ciągu | [Predykaty TextP](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości z zakończeniem podany ciąg | [Predykaty TextP](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości przy użyciu zawartości ciągu | [Predykaty TextP](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, która nie zaczyna się od ciągu | [Predykaty TextP](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, które nie kończy się podanym ciągiem | [Predykaty TextP](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, która nie zawiera ciągu | [Predykaty TextP](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości do początku ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości z zakończeniem podany ciąg | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości przy użyciu zawartości ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, która nie zaczyna się od ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, które nie kończy się podanym ciągiem | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, która nie zawiera ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | Agreguje ścieżki z wierzchołka do drzewa | [krok tree](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | Odwija iterator w ramach kroku| [krok unfold](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | Scalanie wyników z wielu przejść| [krok union](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

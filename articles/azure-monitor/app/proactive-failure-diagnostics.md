@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46944603fdf45a2a7a14641086959bf61b3f773e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61299109"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465885"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Wykrywanie inteligentne — anomalie w zakresie błędów
 [Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) automatycznie powiadamia, w czasie zbliżonym do rzeczywistego Jeśli nietypowy wzrost liczba nieudanych żądań aplikacji sieci web. Wykrywa nietypowy wzrost żądań HTTP lub wywołania zależności, które ma być zgłaszane nie powiodło się. Dla żądań żądań zakończonych niepowodzeniem są zwykle te kody odpowiedź 400 lub nowszej. Ułatwiające klasyfikowanie i diagnozowanie problemu, analizy właściwości błędów i powiązane dane telemetryczne jest podawany jako powiadomienia. Dostępne są także łącza do portalu usługi Application Insights w celu przeprowadzenia dalszej diagnostyki. Funkcja musi mieć nie konfiguracji ani konfiguracji, ponieważ używa ona algorytmów uczenia maszynowego do przewidywania zwykły współczynnik błędów.
 
-Ta funkcja działa w przypadku platformy ASP.NET oraz Java aplikacji sieci web hostowanych w chmurze lub na własnych serwerach. Działa także dla dowolnej aplikacji, która generuje dane telemetryczne żądania lub zależność — na przykład w przypadku roli procesu roboczego, który wywołuje [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) lub [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
+Ta funkcja działa w przypadku dowolnej aplikacji sieci web, hostowane w chmurze lub na własnych serwerach generującej dane telemetryczne żądania lub zależność — na przykład w przypadku roli procesu roboczego, który wywołuje [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) lub [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
 
 Po skonfigurowaniu [usługi Application Insights w projekcie](../../azure-monitor/app/app-insights-overview.md), a podana aplikacja generuje określony minimalny telemetrii, Inteligentne wykrywanie anomalie trwa 24 godziny, aby dowiedzieć się więcej normalnego zachowania aplikacji, zanim zostanie włączone i wysyłanie alertów.
 
@@ -43,6 +43,26 @@ Zwróć uwagę, że informuje:
 * Wzorzec cech skojarzone z błędami. W tym przykładzie ma kod odpowiedzi określonego, Nazwa żądania (operacji) i wersji aplikacji. Które natychmiast informuje, gdzie rozpocząć wyszukiwanie w kodzie. Inne możliwości może być określonym systemem operacyjnym przeglądarkę lub klienta.
 * Wyjątek, danych dziennika śledzenia i błąd zależności (baz danych lub innymi składnikami zewnętrznymi), wydaje się skojarzona z błędami scharakteryzowany.
 * Łącza do odpowiednich wyszukiwania na telemetrii w usłudze Application Insights.
+
+## <a name="failure-anomalies-v2"></a>Anomalie błędów w wersji 2
+Udostępniono nową wersję anomalie reguły alertu. Nowa wersja jest uruchomiona na nową platformę alertów platformy Azure i wprowadzono szereg ulepszeń przez istniejącą wersję.
+
+### <a name="whats-new-in-this-version"></a>Co nowego w tej wersji?
+- Szybsze wykrywanie problemów
+- Bogatszy zestaw akcji, tworzona jest reguła alertu o skojarzoną [grupy akcji](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) o nazwie "Application Insights wykrywanie inteligentne", która zawiera akcje poczty e-mail i elementy webhook, można rozszerzyć, aby wyzwolić dodatkowe akcje po alertu uruchamiany.
+- Więcej ukierunkowane powiadomienia — powiadomień E-mail wysłanych przez tę regułę alertu są teraz wysyłane domyślnie użytkownikom skojarzone z rolami monitorowania Czytelnik i współautor monitorowania dla subskrypcji. Więcej informacji na ten jest dostępny [tutaj](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
+- Łatwiejsze konfiguracji za pomocą szablonów ARM — Zobacz przykład [tutaj](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config).
+- Obsługa wspólnego schematu alertu — powiadomień wysłanych przez tę regułę alertu wykonaj [wspólny schemat alertu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+- Ujednolicone szablon wiadomości e-mail — wiadomości E-mail, otrzymywania powiadomień z tej reguły alertu miał jednolity wygląd & czuć się przy użyciu innych typów alertów. Dzięki tej zmianie opcję, aby otrzymywać alerty anomalie w zakresie błędów z informacjami o szczegółowe dane diagnostyczne nie jest już dostępna.
+
+### <a name="how-do-i-get-the-new-version"></a>Jak uzyskać nową wersję?
+- Nowo utworzone zasoby usługi Application Insights są teraz udostępniony z nową wersją anomalie reguły alertu.
+- Istniejące usługi Application Insights zasobów przy użyciu klasycznej wersji anomalie w zakresie błędów alertów, reguły otrzyma nowej wersji po ich hostingu subskrypcji jest migrowana na nową platformę alertów, jako część [classic alerty procesu wycofywania ](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).
+
+> [!NOTE]
+> Nowa wersja reguły alertu anomalie pozostanie wolna. Ponadto akcje poczty e-mail i elementy webhook wyzwolone przez skojarzony "Wykrywanie inteligentne usługi Application Insights" grupy akcji jest także bezpłatna.
+> 
+> 
 
 ## <a name="benefits-of-smart-detection"></a>Zalety wykrywania inteligentnego
 Zwykłe [alertów dotyczących metryk](../../azure-monitor/app/alerts.md) informujące o tym, być może wystąpił problem. Jednak wykrywanie inteligentne uruchamia diagnostykę dla Ciebie wykonywanie partii analizy, w przeciwnym razie byłoby trzeba zrobić samodzielnie. Uzyskanie wyników starannego zapakowane, pomaga szybko głównego problemu.

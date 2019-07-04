@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 85eaa81a0cfd7ccfe8ad3ae818f89966280d279e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d81e5e69837f6074d94278f4e54f9178a656335
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730361"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433786"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Tworzenie klastrów Apache HBase w HDInsight w usłudze Azure Virtual Network
 Dowiedz się, jak tworzyć klastry usługi Azure HDInsight Apache HBase w [Azure Virtual Network][1].
@@ -25,7 +25,7 @@ Dzięki integracji sieci wirtualnej można wdrożyć klastry Apache HBase do tej
 * Możliwość przetwarzania informacji poufnych w bezpieczniejszy sposób bez narażania publiczny punkt końcowy.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
+Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Stacja robocza z programem Azure PowerShell**. Zobacz [instalacji i używania programu Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/).
@@ -63,7 +63,7 @@ W tej sekcji tworzysz klaster oparty na systemie Linux bazy danych Apache HBase 
    * **Wyrażam zgodę na warunki i postanowienia, o których wspomniano**: (Wybierz)
 3. Kliknij pozycję **Kup**. Utworzenie klastra trwa około 20 minut. Po utworzeniu klastra możesz kliknąć bloku klastra w portalu, aby go otworzyć.
 
-Po ukończeniu tego samouczka warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. Instrukcje usuwania klastra znajdują się [Zarządzanie Apache Hadoop clusters w HDInsight przy użyciu witryny Azure portal](../hdinsight-administer-use-portal-linux.md#delete-clusters).
+Po ukończeniu tego artykułu warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. Instrukcje usuwania klastra znajdują się [Zarządzanie Apache Hadoop clusters w HDInsight przy użyciu witryny Azure portal](../hdinsight-administer-use-portal-linux.md#delete-clusters).
 
 Aby rozpocząć pracę z nowego klastra HBase, można użyć procedurach dostępnych w [rozpoczęcie korzystania z bazy danych Apache HBase z użyciem usługi Apache Hadoop w HDInsight](./apache-hbase-tutorial-get-started-linux.md).
 
@@ -233,7 +233,7 @@ Aby użyć tych informacji w aplikacji w języku Java, możesz wykonać kroki op
 > Aby uzyskać więcej informacji na temat rozpoznawania nazw w systemie Azure sieci wirtualnych, takich jak używać własnego serwera DNS, zobacz [rozpoznawania nazw (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku przedstawiono sposób tworzenia klastra Apache HBase. Aby dowiedzieć się więcej, zobacz:
+W tym artykule przedstawiono sposób tworzenia klastra Apache HBase. Aby dowiedzieć się więcej, zobacz:
 
 * [Rozpoczynanie pracy z usługą HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Używanie pustych węzłów brzegowych w HDInsight](../hdinsight-apps-use-edge-node.md)

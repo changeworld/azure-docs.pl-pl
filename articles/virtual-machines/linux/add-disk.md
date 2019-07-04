@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304110"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465837"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Dodawanie dysku do maszyny wirtualnej z systemem Linux
 W tym artykule pokazano, jak dołączyć dysk trwały z maszyną wirtualną tak, aby zachować swoje dane — nawet wtedy, gdy maszyna wirtualna jest aprowizowany ponownie z powodu konserwacji lub zmienianie jej rozmiaru.
@@ -73,6 +73,9 @@ Dane wyjściowe są podobne do poniższego przykładu:
 [    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
+
+> [!NOTE]
+> Zalecane jest, możesz używać najnowszych wersji fdisk lub ulec, które są dostępne dla Twojej dystrybucji.
 
 W tym miejscu *sdc* to dysk, który chcemy. Określ partycję dysku za pomocą `parted`, jeśli rozmiar dysku wynosi 2 tebibajtów (TiB) lub większą, należy użyć partycji GPT, jeśli jest w obszarze 2TiB, wówczas można użyć partycji MBR lub GPT. Jeśli używasz partycji MBR, możesz użyć `fdisk`. Stał się podstawowym dysku na partycji 1, a następnie zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `fdisk` proces */dev/sdc*:
 

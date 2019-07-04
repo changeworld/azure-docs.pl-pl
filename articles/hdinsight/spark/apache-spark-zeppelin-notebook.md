@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 9fc18b11b24791c1e154d89d757408da4ab20539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 219cdeea228ae3e334213a0f0654f904592cb09e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709554"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448743"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Apache Zeppelin przy użyciu klastra Apache Spark w usłudze Azure HDInsight
 
@@ -141,7 +141,7 @@ W tym artykule pokazano, jak używać [spark csv](https://search.maven.org/#arti
 
 4. Jeśli chcesz dowiedzieć się, jak na wartość klucza podanymi powyżej, poniżej przedstawiono sposób.
    
-    a. Zlokalizuj pakiet w repozytorium narzędzia Maven. Na potrzeby tego samouczka użyliśmy [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Zlokalizuj pakiet w repozytorium narzędzia Maven. W tym artykule użyto [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
     b. Z repozytorium, Zbierz wartości **GroupId**, **ArtifactId**, i **wersji**.
    

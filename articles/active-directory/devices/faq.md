@@ -2,26 +2,21 @@
 title: Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Usługa Azure Active Directory Zarządzanie urządzeniami — często zadawane pytania.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/22/2019
+ms.topic: troubleshooting
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e29c58c0e9a31b2eb3e3d7e237a3db8173214faf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8802f9e5c84078725675d961ada7f8183c91c0ec
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110646"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481748"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -61,17 +56,15 @@ Jeśli chcesz ponownie zarejestrować, należy wykonać akcję ręczną na urzą
 
 Aby wyczyścić stanu dołączania do, z systemem Windows 10 i Windows Server 2016, które są przyłączone do domeny usługi Active Directory w środowisku lokalnym, wykonaj następujące czynności:
 
-1.  Otwórz wiersz polecenia jako administrator.
-
-2.  Wprowadź polecenie `dsregcmd.exe /debug /leave`.
-
-3.  Wyloguj się i zaloguj się w celu wyzwolenia zaplanowane zadanie, które rejestruje urządzenie ponownie przy użyciu usługi Azure AD. 
+1. Otwórz wiersz polecenia jako administrator.
+1. Wprowadź polecenie `dsregcmd.exe /debug /leave`.
+1. Wyloguj się i zaloguj się w celu wyzwolenia zaplanowane zadanie, które rejestruje urządzenie ponownie przy użyciu usługi Azure AD. 
 
 W wersjach systemu operacyjnego Windows niższego poziomu, które są przyłączone do domeny usługi Active Directory w środowisku lokalnym wykonaj następujące czynności:
 
-1.  Otwórz wiersz polecenia jako administrator.
-2.  Wprowadź polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
-3.  Wprowadź polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
+1. Otwórz wiersz polecenia jako administrator.
+1. Wprowadź polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
+1. Wprowadź polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
 
 ---
 
@@ -79,13 +72,10 @@ W wersjach systemu operacyjnego Windows niższego poziomu, które są przyłącz
 
 **Odp.:**
 
--   Dla systemu Windows 10 i Windows Server 2016 powtarzanych próbuje Odłącz i ponownie dołączyć w tym samym urządzeniu może spowodować zduplikowane wpisy. 
-
--   Każdy użytkownik Windows **dodać pracy konta firmowego lub szkolnego** tworzy nowy rekord urządzenia o takiej samej nazwie urządzenia.
-
--   Dla wersji systemu operacyjnego Windows niższego poziomu, które są przyłączone do domeny usługi Azure Directory w środowisku lokalnym automatycznej rejestracji tworzy nowy rekord urządzenia z taką samą nazwę urządzenia dla każdego użytkownika domeny, który loguje się do urządzenia. 
-
--   Komputerze dołączonym do usługi Azure AD, który wyczyszczone, ponowna instalacja i ponowne dołączenie o takiej samej nazwie jest wyświetlany jako innego rekordu o takiej samej nazwie urządzenia.
+- Dla systemu Windows 10 i Windows Server 2016 powtarzanych próbuje Odłącz i ponownie dołączyć w tym samym urządzeniu może spowodować zduplikowane wpisy. 
+- Każdy użytkownik Windows **dodać pracy konta firmowego lub szkolnego** tworzy nowy rekord urządzenia o takiej samej nazwie urządzenia.
+- Dla wersji systemu operacyjnego Windows niższego poziomu, które są przyłączone do domeny usługi Azure Directory w środowisku lokalnym automatycznej rejestracji tworzy nowy rekord urządzenia z taką samą nazwę urządzenia dla każdego użytkownika domeny, który loguje się do urządzenia. 
+- Komputerze dołączonym do usługi Azure AD, który wyczyszczone, ponowna instalacja i ponowne dołączenie o takiej samej nazwie jest wyświetlany jako innego rekordu o takiej samej nazwie urządzenia.
 
 ---
 
@@ -110,7 +100,6 @@ W wersjach systemu operacyjnego Windows niższego poziomu, które są przyłącz
 
 **Odp.:** 
 - Do hybrydowej usługi Azure AD dołączonym do urządzenia, upewnij się wyłączyć funkcję automatycznej rejestracji. Następnie zaplanowane zadanie nie ponownie zarejestrować urządzenie. Następnie otwórz wiersz polecenia jako administrator i wprowadź `dsregcmd.exe /debug /leave`. Lub uruchom to polecenie jako skrypt przez kilka urządzeń odłączyć zbiorczo.
-
 - Dla czystych usługi Azure AD dołączonym do urządzenia, upewnij się, masz konto administratora lokalnego w trybie offline lub utworzyć. Nie możesz zalogować się przy użyciu dowolnej poświadczeń użytkownika usługi Azure AD. Następnie przejdź do **ustawienia** > **kont** > **dostęp do zasobów służbowych**. Wybierz swoje konto i wybierz **rozłączenia**. Postępuj zgodnie z monitami i podaj poświadczenia administratora lokalnego po wyświetleniu monitu. Ponowne uruchomienie urządzenia, aby zakończyć proces odłączania.
 
 ---
@@ -125,7 +114,7 @@ Użytkownicy, którzy nie został wcześniej Zaloguj się w nie może uzyskać d
 
 ---
 
-### <a name="q-can-disabled-or-deleted-users-sign-in-to-azure-ad-joined-devices"></a>Pyt.: Można wyłączonych lub usuniętych użytkowników logowania się na urządzeniach przyłączonych do usługi Azure AD
+### <a name="q-can-a-disabled-or-deleted-user-sign-in-to-an-azure-ad-joined-devices"></a>Pyt.: Można wyłączone lub usunięte użytkownika logowania się na urządzeniach przyłączonych do usługi Azure AD
 
 **Odp.:** Tak, ale tylko przez ograniczony czas. Gdy użytkownik jest usunięte lub wyłączone w usłudze Azure AD, nie od razu wiadomo na urządzeniu Windows. Dlatego użytkowników, którzy wcześniej podpisany w można uzyskać dostęp do pulpitu z pamięci podręcznej nazwy użytkownika i hasła. 
 
@@ -166,7 +155,6 @@ Usunięte lub wyłączone użytkowników, którzy nie został wcześniej Zaloguj
 To zachowanie:
 
 - Jest dołączony mające zastosowanie do usługi Azure AD i urządzeń — zarejestrowanych w usłudze Azure AD, ale nie dla hybrydowych urządzeń do usługi Azure AD.
-
 - Nie ma zastosowania do żadnego innego użytkownika, który loguje się do tego urządzenia. Dlatego wszystkich innych użytkowników, którzy uzyskują dostęp tego urządzenia Uzyskaj wezwanie do uwierzytelnienia Multi-Factor Authentication. Następnie one dostęp do aplikacji, które wymagają uwierzytelniania wieloskładnikowego.
 
 ---
@@ -176,11 +164,8 @@ To zachowanie:
 **Odp.:** W tym scenariuszu typowe przyczyny są następujące:
 
 - Poświadczenia użytkownika nie są już prawidłowe.
-
 - Komputer nie może komunikować się z usługą Azure Active Directory. Sprawdź, czy wszystkie problemy z połączeniem sieciowym.
-
 - Logowania federacyjnego wymagają serwerze federacyjnym w celu obsługi punktów końcowych usługi WS-Trust, które są włączone i dostępne. 
-
 - Włączono uwierzytelnianie przekazywane. Dlatego tymczasowe hasło musi zostać zmienione podczas logowania.
 
 ---
@@ -205,10 +190,9 @@ To zachowanie:
 
 ### <a name="qwhy-do-i-see-multiple-expired-certificates-issued-by-ms-organization-p2p-access-on-our-windows-10-devices-how-can-i-delete-them"></a>Q:Why wielu wygasłe certyfikaty wydane przez MS-organizacji-P2P-dostęp na urządzeniach z naszego systemu Windows 10 są widoczne? Jak można je usunąć?
 
-**Odp.:** Wystąpił problem podczas identyfikowane w systemie Windows 10 w wersji 1709 i niższe, gdzie wygasłe certyfikaty MS-organizacji-P2P-dostęp, nadal istnieją w magazynie komputera z powodu problemów kryptograficznych. Użytkownikom można stoją w obliczu problemów z łącznością sieciową, jeśli używasz dowolnego klientów sieci VPN (np. Cisco AnyConnect), które nie może obsługiwać dużą liczbę wygasłe certyfikaty. Ten problem został rozwiązany w wersji 10 1803 systemu Windows, aby automatycznie usuwać takie wygasłe certyfikaty MS-organizacji-P2P — dostęp. Aby rozwiązać ten problem, należy zaktualizować urządzenia do systemu Windows 10 w wersji 1803. Jeśli nie można zaktualizować, możesz usunąć te certyfikaty, bez żadnych negatywnych skutków.  
+**Odp.:** Wystąpił problem podczas identyfikowane w systemie Windows 10 w wersji 1709 i niższe, gdzie wygasłe certyfikaty MS-organizacji-P2P-dostęp, nadal istnieją w magazynie komputera z powodu problemów kryptograficznych. Użytkownikom można stoją w obliczu problemów z łącznością sieciową, jeśli używasz wszystkich klientów sieci VPN (na przykład, Cisco AnyConnect), którzy nie może obsługiwać dużą liczbę wygasłe certyfikaty. Ten problem został rozwiązany w wersji 10 1803 systemu Windows, aby automatycznie usuwać takie wygasłe certyfikaty MS-organizacji-P2P — dostęp. Aby rozwiązać ten problem, należy zaktualizować urządzenia do systemu Windows 10 w wersji 1803. Jeśli nie można zaktualizować, możesz usunąć te certyfikaty, bez żadnych negatywnych skutków.  
 
 ---
-
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Przyłączanie do hybrydowej usługi Azure AD — często zadawane pytania
 
@@ -217,7 +201,6 @@ To zachowanie:
 **Odp.:** Aby uzyskać informacje dotyczące rozwiązywania problemów, zobacz następujące artykuły:
 
 - [Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia z systemem Windows 10 i Windows Server 2016 przyłączone do](troubleshoot-hybrid-join-windows-current.md)
-
 - [Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do](troubleshoot-hybrid-join-windows-legacy.md)
  
 ### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>Pyt.: Dlaczego są wyświetlane zduplikowane usługi Azure AD zarejestrowanej rekord dla mojego systemu Windows 10 hybrydowej usługi Azure AD urządzenia połączonego z listy urządzeń usługi Azure AD?
@@ -226,27 +209,25 @@ To zachowanie:
 
 Dołączenie do hybrydowej usługi Azure AD mają pierwszeństwo przed stan usługi Azure AD zarejestrowany. Dlatego Twoje urządzenie jest uznawane za hybrydowe do uwierzytelniania i oceny dostępu warunkowego usługi Azure AD. Możesz bezpiecznie usunąć rekord urządzenia zarejestrowane z usługi Azure AD z portalu usługi Azure AD. Dowiedz się, jak [unikać lub wyczyścić ten stan podwójną na komputerze z systemem Windows 10](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
 
-
 ---
 
 ### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>Pyt.: Dlaczego Moi użytkownicy mają problemy z urządzeniach z systemem Windows 10 hybrydowego przyłączony Azure AD po zmianie ich nazwy UPN?
 
-**Odp.:** Zmiany nazwy UPN nie są obecnie w pełni obsługiwane z urządzeniami dołączonymi do usługi Azure AD hybrydowych. Gdy użytkownicy mogą zalogować się do urządzenia i uzyskiwać dostęp do swoich aplikacji w środowisku lokalnym, uwierzytelniania za pomocą usługi Azure AD nie powiedzie się po zmianie nazwy UPN. W rezultacie użytkownicy mają logowania jednokrotnego i dostępu warunkowego problemy na swoich urządzeniach. W tej chwili należy odłączyć urządzenie z usługi Azure AD (Uruchom "dsregcmd /leave" z podniesionymi uprawnieniami) i ponownie Dołącz (wykonywane automatycznie) Aby rozwiązać ten problem. Obecnie pracujemy nad tego problemu. Jednak użytkownikom logowanie się przy użyciu Windows Hello dla firm nie stoją w obliczu ten problem. 
+**Odp.:** Zmiany nazwy UPN nie są obecnie w pełni obsługiwane z urządzeniami dołączonymi do usługi Azure AD hybrydowych. Gdy użytkownicy mogą zalogować się do urządzenia i uzyskiwać dostęp do swoich aplikacji w środowisku lokalnym, uwierzytelniania za pomocą usługi Azure AD nie powiedzie się po zmianie nazwy UPN. W rezultacie użytkownicy mają logowania jednokrotnego i dostępu warunkowego problemy na swoich urządzeniach. W tej chwili należy odłączyć urządzenie z usługi Azure AD (Uruchom "dsregcmd /leave" z podniesionymi uprawnieniami) i dołączyć go (wykonywane automatycznie) Aby rozwiązać ten problem. Obecnie pracujemy nad tego problemu. Jednak użytkownikom logowanie się przy użyciu Windows Hello dla firm nie stoją w obliczu ten problem. 
 
 ---
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>Pyt.: Czy urządzeń przyłączonych do usługi Azure AD hybrydowego systemu Windows 10 będą wymagały linii wzroku do kontrolera domeny, aby uzyskać dostęp do zasobów w chmurze?
 
-**Odp.:** Ogólnie nie, z wyjątkiem sytuacji, gdy zostanie zmienione hasło użytkownika. Plik systemu Windows 10 hybrydowych usługi Azure AD join jest zakończone, a użytkownik zalogował się w co najmniej raz, urządzenia nie wymaga linii wzroku do kontrolera domeny do dostępu do zasobów w chmurze. Systemu Windows 10 można nawiązać połączenia z logowania jednokrotnego aplikacji usługi Azure AD z dowolnego miejsca przy użyciu połączenia internetowego, z wyjątkiem sytuacji, gdy zostanie zmienione hasło. Użytkowników, którzy logują się przy użyciu Windows Hello dla firm w dalszym ciągu uzyskać pojedynczego logowania do aplikacji usługi Azure AD nawet w przypadku, po zmianie hasła, nawet jeśli nie mają linii wzroku do ich kontrolera domeny. 
+**Odp.:** Nie, z wyjątkiem sytuacji, gdy zostanie zmienione hasło użytkownika. Po zakończeniu sprzężenia Azure AD hybrydowego systemu Windows 10, a użytkownik zalogował się w co najmniej raz, urządzenie nie wymaga linii wzroku do kontrolera domeny, dostęp do zasobów w chmurze. Windows 10 można uzyskać logowanie jednokrotne do aplikacji usługi Azure AD z dowolnego miejsca przy użyciu połączenia internetowego, z wyjątkiem sytuacji, gdy zostanie zmienione hasło. Użytkownicy, którzy logują się przy użyciu Windows Hello dla firm w dalszym ciągu uzyskać pojedynczego logowania jednokrotnego do aplikacji usługi Azure AD nawet w przypadku, po zmianie hasła, nawet jeśli nie mają linii wzroku do ich kontrolera domeny. 
 
 ---
 
 ### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>Pyt.: Co się stanie, jeśli użytkownik nie zmieni hasła i spróbuje zalogować się do swojego systemu Windows 10 hybrydowej usługi Azure AD przyłączone urządzenie poza siecią firmową?
 
-**Odp.:** Jeśli hasło zostało zmienione poza siecią firmową (na przykład przy użyciu usługi Azure AD SSPR), następnie logowania użytkownika przy użyciu nowego hasła zakończy się niepowodzeniem. W przypadku urządzeń przyłączonych do usługi Azure AD hybrydowe w lokalnej usłudze Active Directory jest podstawowej urzędu. Urządzenie nie ma bezpośredni kontakt z kontrolerem domeny, to nie można zweryfikować nowe hasło. Tak, użytkownik musi nawiązać połączenie z kontrolerem domeny (za pośrednictwem sieci VPN lub w sieci firmowej) przed mogą logować się do urządzenia przy użyciu nowego hasła. W przeciwnym razie one można tylko Zaloguj się przy użyciu starego hasła ze względu na możliwość logowania pamięci podręcznej w Windows. Jednak stare hasło zostaje unieważniony przez usługę Azure AD podczas żądania tokenu z tego powodu uniemożliwia logowanie na i kończy się niepowodzeniem, wszystkie zasady dostępu warunkowego opartego na urządzeniach. Ten problem nie występuje, jeśli używasz Windows Hello dla firm. 
+**Odp.:** Jeśli hasło zostało zmienione poza siecią firmową (na przykład przy użyciu usługi Azure AD SSPR), następnie zaloguj się nowe hasło użytkownika zakończy się niepowodzeniem. W przypadku urządzeń przyłączonych do usługi Azure AD hybrydowe w lokalnej usłudze Active Directory jest podstawowej urzędu. Urządzenie nie ma bezpośredni kontakt z kontrolerem domeny, to nie można zweryfikować nowe hasło. Tak, użytkownik musi nawiązać połączenie z kontrolerem domeny (za pośrednictwem sieci VPN lub w sieci firmowej) przed mogą logować się do urządzenia przy użyciu nowego hasła. W przeciwnym razie tylko zalogować się przy użyciu starego hasła ze względu na pamięci podręcznej logowania funkcję w wersji Windows. Jednak stare hasło zostaje unieważniony przez usługę Azure AD podczas żądania tokenu i dlatego uniemożliwia logowanie jednokrotne i kończy się niepowodzeniem, wszystkie zasady dostępu warunkowego opartego na urządzeniach. Ten problem nie występuje, jeśli używasz Windows Hello dla firm. 
 
 ---
-
 
 ## <a name="azure-ad-register-faq"></a>Usługa Azure AD rejestru — często zadawane pytania
 
@@ -259,11 +240,15 @@ Dołączenie do hybrydowej usługi Azure AD mają pierwszeństwo przed stan usł
 **Odp.:** Wykonaj następujące kroki:
 
 1.  [Tworzenie zasad zgodności](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-2.  [Definiowanie zasad dostępu warunkowego dla urządzeń z systemem macOS](../active-directory-conditional-access-azure-portal.md) 
+1.  [Definiowanie zasad dostępu warunkowego dla urządzeń z systemem macOS](../active-directory-conditional-access-azure-portal.md) 
 
 **Uwagi:**
 
 - Użytkownicy, zawarte w Twoich potrzeb zasad dostępu warunkowego [obsługiwana wersja pakietu Office dla systemu macOS](../conditional-access/technical-reference.md#client-apps-condition) uzyskują dostęp do zasobów. 
-
 - Podczas pierwszej próby dostępu do usługi Użytkownicy są monitowani o zarejestrowanie urządzenia przy użyciu portalu firmy.
 
+## <a name="next-steps"></a>Kolejne kroki
+
+- Dowiedz się więcej o [urządzeń zarejestrowanych w usłudze Azure AD](concept-azure-ad-register.md)
+- Dowiedz się więcej o [urządzeń przyłączonych do usługi Azure AD](concept-azure-ad-join.md)
+- Dowiedz się więcej o [urządzeń przyłączonych do hybrydowej usługi Azure AD](concept-azure-ad-join-hybrid.md)

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 9df4be5534a1cbe6aa4ffb9c60bb180fd4587d32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 186086a94470faaf19fa8a3c07939b9856ae2ec9
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551030"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466814"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
@@ -78,7 +78,7 @@ Aby wyłączyć automatyczne aktualizacje za pomocą lokalnych zasad grupy:
 Można również uruchomić następujące polecenie w wierszu polecenia, aby wyłączyć automatyczne aktualizacje.
 
 ```batch
-reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
 ### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Określ układ Start 10 komputerów z systemem Windows (opcjonalnie)
@@ -152,7 +152,7 @@ Dla hosta sesji pulpitu wirtualnego Windows korzystających z systemu Windows 10
 Możesz również zmienić ustawienie z rejestru, uruchamiając następujące polecenie:
 
 ```batch
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy /v 01 /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
 ### <a name="include-additional-language-support"></a>Zapewnia obsługę dodatkowych języków
@@ -173,8 +173,7 @@ W tej sekcji omówiono aplikacji i konfiguracji systemu operacyjnego. Wszystkie 
 W przypadku opinii centrum zbierania danych telemetrycznych na wiele sesji systemu Windows 10 Enterprise uruchom następujące polecenie:
 
 ```batch
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 3
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
 Uruchom następujące polecenie, aby naprawić Watson awarii:
@@ -186,15 +185,13 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 Wprowadź następujące polecenia do edytora rejestru, aby naprawić 5 obsługę rozwiązywania k. Aby można było włączyć stosu side-by-side, należy uruchomić polecenia.
 
 ```batch
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
-"MaxMonitors"=dword:00000004
-"MaxXResolution"=dword:00001400
-"MaxYResolution"=dword:00000b40
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxXResolution /t REG_DWORD /d 5120 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxYResolution /t REG_DWORD /d 2880 /f
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs]
-"MaxMonitors"=dword:00000004
-"MaxXResolution"=dword:00001400
-"MaxYResolution"=dword:00000b40
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxMonitors /t REG_DWORD /d 4 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxXResolution /t REG_DWORD /d 5120 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxYResolution /t REG_DWORD /d 2880 /f
 ```
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>Przygotowywanie obrazu do przekazywania na platformie Azure

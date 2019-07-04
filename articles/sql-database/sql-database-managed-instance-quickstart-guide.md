@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 739afe52403633b1a37f57f0005a85972cc78a39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec0007e2d53a3fd3cae158375b696379d923b4b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61314742"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447768"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Wprowadzenie do wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -79,3 +79,4 @@ Artykuły w tych przewodnikach Szybki start umożliwiają szybkie skonfigurowani
 - Przejrzyj [ogólną listę obsługiwanych funkcji wystąpienia zarządzanego](sql-database-features.md) oraz [informacje szczegółowe i znane problemy](sql-database-managed-instance-transact-sql-information.md).
 - Dowiedz się więcej o [charakterystykach technicznych wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
 - Więcej instrukcji zaawansowanych można znaleźć w [dokumentacji używania wystąpienia zarządzanego w usłudze Azure SQL Database](sql-database-howto-managed-instance.md).
+- [Zidentyfikuj odpowiednie usługi Azure SQL bazy danych/zarządzane wystąpienia jednostki SKU dla lokalnej bazy danych](/sql/dma/dma-sku-recommend-sql-db/).

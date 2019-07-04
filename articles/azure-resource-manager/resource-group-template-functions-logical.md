@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6874512557bc44efe978708c78e3d98db4110b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 2487cf928685423e4b60bb2923fc7e348eaff0c3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205461"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447975"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów usługi Azure Resource Manager
 
@@ -140,7 +140,7 @@ Zwraca wartość, na podstawie warunku jest wartość PRAWDA lub FAŁSZ.
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | condition |Tak |boolean |Wartość, aby sprawdzić, czy jest wartość PRAWDA lub FAŁSZ. |
-| trueValue |Yes | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest prawdziwy. |
+| trueValue |Tak | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest prawdziwy. |
 | falseValue |Tak | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest fałszywy. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -190,7 +190,7 @@ Następujące [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {

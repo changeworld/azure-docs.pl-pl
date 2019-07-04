@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fffa6784702f239e0af0e9e88a4b9937d20b86ed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685392"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488625"
 ---
 # <a name="registration-management"></a>Zarządzanie rejestracją
 
@@ -90,6 +90,9 @@ Instalacja może zawierać następujące właściwości. Aby uzyskać pełną li
 > Domyślnie instalacji i rejestracji wygasa.
 
 Instalacji i rejestracji musi zawierać prawidłowe dojście systemu powiadomień platformy dla każdego urządzenia/kanału. Ponieważ dojść systemu powiadomień platformy można uzyskać tylko w aplikacji klienta, na urządzeniu, jest jednym ze wzorców, można zarejestrować bezpośrednio na tym urządzeniu, za pomocą aplikacji klienckiej. Z drugiej strony zagadnienia dotyczące zabezpieczeń i logikę biznesową, związane z tagami może wymagać zarządzać rejestracją urządzenia w aplikacji zaplecza.
+
+> [!NOTE]
+> Interfejs API instalacji nie obsługuje usługi Baidu (mimo że z interfejsu API rejestracji nie). 
 
 ### <a name="templates"></a>Szablony
 

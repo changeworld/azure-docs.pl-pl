@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/30/2019
 ms.author: juliako
-ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735069"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488688"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -32,6 +32,8 @@ Widżet **Cognitive Insights** (Szczegółowe informacje) zawiera wszystkie szcz
 |Name (Nazwa)|Definicja|Opis|
 |---|---|---|
 |widgets|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji do renderowania. <br/>Przykład: parametr `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` spowoduje wyrenderowanie tylko szczegółowych informacji interfejsu użytkownika na temat ludzi i marek<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Brak obsługi przez adres URL w przypadku parametru version=2<br/><br/>**Uwaga:** Elementy widget param adres URL nie jest obsługiwane w wersji 2. |
+|Ustawienia regionalne|Kod krótki języka|Określa język szczegółowych informacji. Wartość domyślna to `en`. Na przykład: `language=de`.|
+|tabulator|Wybranej karty domyślne|Określa kartę szczegółowych informacji, który jest renderowany domyślnie. `tab=timeline` Wyświetla szczegółowe informacje z wybraną kartą osi czasu.|
 
 ### <a name="player-widget"></a>Widżet Player
 
@@ -39,12 +41,12 @@ Widżet **Player** (Odtwarzacz) umożliwia przesyłanie strumieniowe wideo z ada
 
 |Name (Nazwa)|Definicja|Opis|
 |---|---|---|
-|t|Sekundy od początku|Sprawia, że odtwarzanie rozpoczyna się od podanego punktu w czasie.<br/>Przykład: t=60|
-|captions|Kod języka|Pobiera napisy w danym języku podczas ładowania widżetu w celu udostępnienia ich w menu napisów.<br/>Przykład: captions=en-US|
-|showCaptions|Wartość logiczna|Powoduje załadowanie już włączonych napisów.<br/>Przykład: showCaptions=true|
-|type||Aktywuje skórkę odtwarzacza audio (część wideo jest usuwana).<br/>Przykład: type=audio|
-|autoplay|Wartość logiczna|Wskazuje, czy należy rozpocząć odtwarzanie po załadowaniu pliku wideo (wartość domyślna to true).<br/>Przykład: autoplay=false|
-|language|Kod języka|Określa język widżetu Player (wartość domyślna to en-US)<br/>Przykład: language=de-DE|
+|t|Sekundy od początku|Sprawia, że odtwarzanie rozpoczyna się od podanego punktu w czasie.<br/>Przykład: `t=60`.|
+|captions|Kod języka|Pobiera napisy w danym języku podczas ładowania widżetu w celu udostępnienia ich w menu napisów.<br/>Przykład: `captions=en-US`.|
+|showCaptions|Wartość logiczna|Powoduje załadowanie już włączonych napisów.<br/>Przykład: `showCaptions=true`.|
+|type||Aktywuje skórkę odtwarzacza audio (część wideo jest usuwana).<br/>Przykład: `type=audio`.|
+|autoplay|Wartość logiczna|Wskazuje, czy należy rozpocząć odtwarzanie po załadowaniu pliku wideo (wartość domyślna to true).<br/>Przykład: `autoplay=false`.|
+|language|Kod języka|Określa język widżetu Player (wartość domyślna to en-US)<br/>Przykład: `language=de-DE`.|
 
 ## <a name="embedding-public-content"></a>Osadzanie zawartości publicznej
 

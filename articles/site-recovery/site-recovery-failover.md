@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.author: raynew
-ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1471188999182623a57db50d3205a859c160a2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399967"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491795"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>W tryb failover maszyn wirtualnych i serwerów fizycznych 
 
@@ -70,9 +70,9 @@ Maszyny wirtualne/serwery fizyczne chronione za pomocą Site Recovery również 
 
 > [!NOTE]
 > Podczas pracy w trybie failover maszyn wirtualnych funkcji Hyper-v z jednej lokacji lokalnej do innej lokacji lokalnej powrót do lokacji podstawowej w środowisku lokalnym masz uprzedniego **replikacji odwrotnej** maszyny wirtualnej z powrotem do lokacji głównej i następnie Wyzwól tryb failover. Jeśli podstawowa maszyna wirtualna jest niedostępna, przed uruchomieniem do **replikacji odwrotnej** niezbędnych do przywrócenia maszyny wirtualnej z kopii zapasowej.   
-> 
-> 
-> ## <a name="failover-job"></a>Zadanie trybu failover
+ 
+ 
+## <a name="failover-job"></a>Zadanie trybu failover
 
 ![Tryb failover](./media/site-recovery-failover/FailoverJob.png)
 
@@ -111,7 +111,7 @@ Można zautomatyzować niektóre działania podczas wykonywania przejścia w try
 ## <a name="post-failover-considerations"></a>Zagadnienia dotyczące trybu failover wpis
 Po pracy awaryjnej, należy wziąć pod uwagę następujące zalecenia:
 ### <a name="retaining-drive-letter-after-failover"></a>Przechowywanie literę dysku, po włączeniu trybu failover
-Aby zachować litery dysku na maszynach wirtualnych, po włączeniu trybu failover, można ustawić **zasad sieci SAN** dla maszyny wirtualnej, aby **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+Usługa Azure Site Recovery obsługuje przechowywanie litery dysku. [Dowiedz się więcej](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk) na jak jest wykonywane, gdy chcesz wykluczyć niektóre dyski.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
 

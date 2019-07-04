@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 042277899ff22066cfa890e64f5c6c0f2e0134f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080470"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428315"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurowanie akcelerator rozwiązania połączonej fabryki
 
@@ -29,7 +29,7 @@ Każda fabryka Contoso ma linii produkcyjnych, które składają się z trzech s
 * Test stacji
 * Pakowania
 
-Te serwery OPC UA ma węzły OPC UA i [wydawca OPC](https://github.com/Azure/iot-edge-opc-publisher) wysyła wartości te węzły do połączonej fabryki. Obejmuje to:
+Te serwery OPC UA ma węzły OPC UA i [wydawca OPC](overview-opc-publisher.md) wysyła wartości te węzły do połączonej fabryki. Obejmuje to:
 
 * Bieżący stan operacyjny takie jak bieżące zużycie energii.
 * Informacje o produkcji, takie jak liczba produktów utworzone.
@@ -267,7 +267,7 @@ Właściwości z tej kategorii definiują wygląd pulpit nawigacyjny połączone
 * Name (Nazwa)
 * Opis
 * Image
-* Lokalizacja
+* Location
 * Jednostki
 * Widoczne
 
@@ -307,7 +307,7 @@ W przypadku niektórych operacji, takich jak wizualizacja ostatnią wartość lu
 
   Określa wartość węzła serwera OPC UA. Plik musi mieć format właściwości określone w specyfikacji OPC UA. Odebrane wiadomości, ta właściwość jest wysyłany jako **NodeId**.
 
-Sprawdź [to](https://github.com/Azure/iot-edge-opc-publisher) strony GitHub, aby uzyskać więcej informacji na temat sposobu dane telemetryczne są pozyskiwane do połączonej fabryki, korzystanie z wydawcy OPC.
+Zobacz [co to jest wydawca OPC](overview-opc-publisher.md) więcej informacji na temat sposobu dane telemetryczne są pozyskiwane do połączonej fabryki.
 
 ## <a name="example-how-kpi1-is-calculated"></a>Przykład: Jak obliczana jest KPI1
 

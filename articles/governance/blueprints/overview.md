@@ -7,12 +7,12 @@ ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8b340eeaaae41815482f4dfed4168dfd8367aba9
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 5f403ee7d2bf4a0730ceaa9b5a95b3e7b11f3695
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143906"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428772"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure plany
 
@@ -109,7 +109,7 @@ Aby użytkownik mógł przypisywać strategie lub anulować ich przypisanie, jeg
 Wszystkie powyższe uprawnienia są uwzględnione w roli **Właściciel**. Rola **Współautor** ma uprawnienia do tworzenia i usuwania uprawnień planu, ale nie ma uprawnień do przypisywania planu. Jeśli te wbudowane role nie spełniają wymagań dotyczących zabezpieczeń, należy rozważyć utworzenie [roli niestandardowej](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Jeśli przy użyciu systemu przypisane tożsamości zarządzanej jednostki usługi dla planu usługi Azure wymaga **właściciela** roli przypisanej subskrypcji, aby można było włączyć wdrożenie. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia. Jeśli tożsamości zarządzanej przy użyciu przypisanych przez użytkownika, wymaga tylko użytkownik tworzący przypisanie planu **właściciela** uprawnienia.
+> Jeśli przy użyciu systemu przypisane tożsamości zarządzanej jednostki usługi dla planów usługi Azure wymaga **właściciela** roli przypisanej subskrypcji, aby można było włączyć wdrożenie. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia. Jeśli tożsamości zarządzanej przy użyciu przypisanych przez użytkownika, wymaga tylko użytkownik tworzący przypisanie planu **właściciela** uprawnienia.
 
 ## <a name="video-overview"></a>Omówienie wideo
 

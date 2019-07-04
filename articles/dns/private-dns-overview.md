@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 7012bbe98e41a3eb273b26e7e4ade705a6eaf8e1
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: aedace031eaedf2709993b5185979e8777821759
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147580"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444838"
 ---
 # <a name="what-is-azure-private-dns"></a>Co to jest prywatna strefa DNS platformy Azure?
 
@@ -59,6 +59,13 @@ Usługa DNS platformy Azure zapewnia następujące możliwości:
 * **Do przodu rozpoznawania nazw DNS jest obsługiwana dla sieci wirtualnych, które są połączone z prywatnej strefy**. Dla sieci wirtualnej między rozpoznawania nazw DNS jest niezależne jawne taki sposób, że wirtualne sieci równorzędne ze sobą. Można jednak nawiązać komunikację równorzędną między sieciami wirtualnymi w innych sytuacjach (na przykład ruch HTTP).
 
 * **Wyszukiwanie wsteczne DNS jest obsługiwana w ramach zakresu sieci wirtualnej**. Wyszukiwanie wsteczne DNS, aby uzyskać prywatny adres IP w sieci wirtualnej przypisany do prywatnej strefy zwraca nazwę FQDN, która zawiera nazwę hosta/rekordu i nazwę strefy, jako sufiks.
+
+## <a name="known-issues"></a>Znane problemy
+Znanych błędów i problemów w wersji zapoznawczej są następujące elementy:
+* Jeśli usuniesz połączone z prywatnej strefy DNS sieci wirtualnej, nie powoduje jego usunięcia łącza do prywatnej strefy DNS. Link kończy się niepowodzeniem, jeśli ponowne utworzenie sieci wirtualnej przy użyciu tej samej nazwie i grupie zasobów i spróbuj ponownie łącze do dowolnego prywatnej strefy DNS. Aby obejść ten problem, Utwórz sieć wirtualną w innej grupie zasobów lub o innej nazwie w tej samej grupie zasobów.
+* Jeśli sieć wirtualna zostanie przeniesiony do innej grupy zasobów lub subskrypcji, go nie aktualizuje łącza do prywatnej strefy DNS. Rozpoznawanie nazw dla przeniesionego sieci wirtualnej w dalszym ciągu działać, jednak zobaczysz starych identyfikatorów ARM sieci wirtualnej, podczas wyświetlania linki wirtualnej sieci prywatnej strefy DNS.
+* Obecnie połączone sieci wirtualne hostowane w Północne Zjednoczone Emiraty Arabskie, Zjednoczone Emiraty Arabskie centralnej, Zachodnia RPA, Republika Południowej Afryki Północna, Kanada Wschodnia, Francja Południowa może zakończyć się niepowodzeniem i może zostać wyświetlony sporadyczne problemy rozpoznawania DNS. 
+
 
 ## <a name="other-considerations"></a>Inne zagadnienia
 
