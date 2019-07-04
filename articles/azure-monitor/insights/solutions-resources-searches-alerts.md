@@ -179,7 +179,7 @@ Właściwości dla akcji alertu zasoby są opisane w poniższych tabelach.
 | type | Tak | Typ akcji.  Jest to **Alert** dla akcje alertu. |
 | name | Tak | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguły alertu. |
 | description | Nie | Opcjonalny opis alertu. |
-| Severity | Tak | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
+| severity | Tak | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
 
 
 #### <a name="threshold"></a>Próg
