@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254663"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446787"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor
 
@@ -93,6 +93,9 @@ Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, któr
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Uaktualnianie łącznika platformy Spark dla usługi Azure Cosmos DB do najnowszej wersji z programu Maven
 
 Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które są używane przez łącznik usługi Cosmos DB Spark stare wersje i zaleca się uaktualnienie do najnowszej wersji z narzędzia Maven najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej na temat łącznika usługi Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
+
+## <a name="enable-virtual-machine-replication"></a>Włącz replikację maszyn wirtualnych
+Maszyny wirtualne, które nie mają włączone do innego regionu replikacji nie są odporne na regionalnych przestojów. Replikowanie maszyn wirtualnych zmniejsza wszelkie niekorzystny wpływ na działalność w czasie awarii region platformy Azure. Klasyfikator wykryje maszyn wirtualnych, które nie mają replikacja włączona i zaleca się włączenie replikacji, dzięki czemu w przypadku awarii, można szybko uruchomieniu maszyn wirtualnych odległym regionie platformy Azure. [Dowiedz się więcej na temat replikacji maszyny wirtualnej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących wysokiej dostępności w programie Advisor
 

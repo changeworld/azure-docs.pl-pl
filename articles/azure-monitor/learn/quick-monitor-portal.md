@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 6d26cedb0dd836846d7e9f00539fe101c944f478
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595733"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442206"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET
 
@@ -33,7 +33,7 @@ Aby ukończyć ten przewodnik Szybki start:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-## <a name="enable-application-insights"></a>Włącz usługę Application Insights
+## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
 
 1. Otwórz projekt w programie Visual Studio 2019 r.
 2. Wybierz pozycję **Konfiguruj usługę Application Insights** z menu Projekt. Program Visual Studio doda zestaw SDK usługi Application Insights do aplikacji.
@@ -63,13 +63,13 @@ Możesz teraz otworzyć usługę Application Insights w witrynie Azure Portal i 
 
 1. Rozwiń **podłączone usługi** folder (ikona chmury i plug-in) w Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **usługi Application Insights** folder i kliknij przycisk **Otwórz Portal usługi Application Insights** .  Pojawią się wybrane informacje o aplikacji i różne opcje.
 
-    ![Mapa aplikacji](media/quick-monitor-portal/4overview.png)
+    ![Mapa aplikacji](media/quick-monitor-portal/04-overview.png)
 
 2. Kliknij pozycję **Mapa aplikacji**, aby uzyskać wizualny układ relacji zależności między składnikami aplikacji.  Każdy składnik przedstawia kluczowe wskaźniki wydajności, takie jak obciążenie, wydajność, błędy i alerty.
 
-    ![Mapa aplikacji](media/quick-monitor-portal/5appmap.png)
+    ![Mapa aplikacji](media/quick-monitor-portal/05-appmap.png)
 
-3. Kliknij pozycję **analizy aplikacji** ikonę ![mapy aplikacji](media/quick-monitor-portal/app-analytics-icon.png) **Wyświetl w obszarze analiza** na jeden ze składników aplikacji. Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights.  W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
+3. Kliknij pozycję **analizy aplikacji** ikonę ![mapy aplikacji](media/quick-monitor-portal/app-viewinlogs-icon.png) **widoku w dziennikach (analiza)** na jeden ze składników aplikacji. Spowoduje to otwarcie **dzienniki (analiza)** , która udostępnia zaawansowany język zapytań dla analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
     ![Analiza](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -102,7 +102,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 Aby dowiedzieć się więcej, odwiedź repozytorium GitHub [naszego zestawu SDK typu open-source dla języka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS).
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 * Zewnętrzne wideo krok po kroku dotyczące [Konfigurowanie usługi Application Insights za pomocą aplikacji platformy .NET od podstaw](https://www.youtube.com/watch?v=blnGAVgMAfA).
 

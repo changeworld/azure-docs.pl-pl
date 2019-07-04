@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6e49fc96a9664b9f37b7b02fc0183f94a05db263
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d086815373b84c0f2a70144a505108875fc04981
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078445"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443320"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>Zastępowanie domyślnych punktów końcowych w usłudze Application Insights
 
@@ -25,6 +25,9 @@ Aby wysyłać dane z usługi Application Insights, w niektórych regionach, nale
 ## <a name="sdk-code-changes"></a>Zmiany w kodzie zestawu SDK
 
 ### <a name="net-with-applicationinsightsconfig"></a>.NET za pomocą pliku applicationinsights.config
+
+> [!NOTE]
+> Plik applicationinsights.config automatycznie zostanie zastąpiony w dowolnym momencie odbywa się uaktualnianie zestawu SDK. Po wykonaniu uaktualnienia SDK należy ponownie wprowadzić wartości określonego punktu końcowego regionu.
 
 ```xml
 <ApplicationInsights>
@@ -123,8 +126,8 @@ appInsights.Configuration.start();
 Punktów końcowych, które można skonfigurować w taki sposób, przy użyciu zmiennych środowiskowych:
 
 ```
-Instrumentation Key: “APPINSIGHTS_INSTRUMENTATIONKEY”
-Profile Endpoint: “Profile_Query_Endpoint_address”
+Instrumentation Key: "APPINSIGHTS_INSTRUMENTATIONKEY"
+Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
@@ -132,22 +135,34 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 ```javascript
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-(
-    {
-    instrumentationKey:"INSTRUMENTATION_KEY",
-    endpointUrl: "TelemetryChannel_Endpoint_Address"
-  }
-);
-window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-</script>
+   var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){
+      function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t
+   }({
+      instrumentationKey:"INSTRUMENTATION_KEY"
+      endpointUrl: "TelemetryChannel_Endpoint_Address"
+   });
 
+   window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+</script>
 ```
 
 ## <a name="regions-that-require-endpoint-modification"></a>Regiony, które wymagają modyfikacji punktu końcowego
 
-Obecnie jest to jedyny region, który wymaga modyfikacji punktu końcowego [Azure dla instytucji rządowych](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
+Obecnie jest to jedyny region, który wymaga modyfikacji punktu końcowego [Azure dla instytucji rządowych](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) i [Azure (Chiny)](https://docs.microsoft.com/azure/china/resources-developer-guide).
 
-## <a name="next-step"></a>Następny krok
+|Region |  Nazwa punktu końcowego | Wartość |
+|-----------------|:------------|:-------------|
+| Azure (Chiny) | Kanał danych telemetrycznych | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure (Chiny) | QuickPulse (metryki na żywo) |`https://quickpulse.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure (Chiny) | Zapytanie profilu |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Azure Government | Kanał danych telemetrycznych |`https://dc.applicationinsights.us/v2/track` |
+| Azure Government | QuickPulse (metryki na żywo) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Government | Zapytanie profilu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+
+> [!NOTE]
+> Bez kodu agenta i rozszerzeń na podstawie monitorowania dla usługi Azure App Services jest **obecnie nieobsługiwane** w tych regionach. Tak szybko, jak ta funkcja stanie się dostępna w tym artykule zostanie zaktualizowany.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej na temat modyfikacji niestandardowych dla platformy Azure Government, zapoznaj się z szczegółowych wskazówek dotyczących [monitorowania platformy Azure i zarządzania](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
+- Aby dowiedzieć się więcej na temat chińskiej wersji platformy Azure, zapoznaj się z [Azure China podręcznik](https://docs.microsoft.com/azure/china/).

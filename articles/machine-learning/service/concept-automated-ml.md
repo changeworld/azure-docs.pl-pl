@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b9fe8ff710cbfe7fbb4a4d8bd351028bb50efcb0
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 137ef1ad78548053f3c5b8f30b7d83f2370f62da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331733"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442435"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -120,7 +120,7 @@ Automatyczne ML jest również dostępna w innych rozwiązaniach firmy Microsoft
 
 Zapoznaj się z przykładami i Dowiedz się, jak tworzyć modele przy użyciu zautomatyzowanych machine learning:
 
-+ Postępuj zgodnie z [samouczka: Automatycznie wytrenuj model klasyfikacji z usługą Azure automatyczne Machine Learning](tutorial-auto-train-models.md)
++ Postępuj zgodnie z [samouczka: Automatycznie uczenia modelu regresji przy użyciu uczenia maszynowego automatycznego platformy Azure](tutorial-auto-train-models.md)
 
 + Skonfiguruj ustawienia dla eksperymentu szkolenia automatyczne:
   + W interfejsie portalu Azure [wykonaj następujące kroki](how-to-create-portal-experiments.md).

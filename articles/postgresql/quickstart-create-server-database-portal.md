@@ -6,13 +6,13 @@ ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.openlocfilehash: af1918b24afafce076f6d1efa5fd00b6df1ac537
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 06/25/2019
+ms.openlocfilehash: 152e93fefecaeaab3502ad5d974ba923727f919b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073240"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443107"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Szybki start: Tworzenie serwera usługi Azure Database for PostgreSQL w witrynie Azure Portal
 
@@ -48,11 +48,11 @@ Aby utworzyć serwer usługi Azure Database for PostgreSQL, wykonaj następując
     Grupa zasobów|*myresourcegroup*| Nowa nazwa grupy zasobów lub istniejąca nazwa z subskrypcji.
     Nazwa serwera |*mydemoserver*|Unikatowa nazwę, która identyfikuje serwer usługi Azure Database for PostgreSQL. Nazwa domeny *postgres.database.azure.com* jest dołączana do podawanej nazwy serwera. Serwer może zawierać tylko małe litery, cyfry i znaki łącznika (-). Musi zawierać od 3 do 63 znaków.
     Źródło danych | *Brak* | Wybierz *Brak* Aby utworzyć nowy serwer od początku. (Opcję *Kopia zapasowa* należy wybrać w przypadku tworzenia serwera z geograficznej kopii zapasowej istniejącego serwera usługi Azure Database for PostgreSQL).
-    Nazwa użytkownika administratora |*myadmin*| Własne konto logowania do użycia podczas łączenia z serwerem. Nazwą logowania administratora nie może być **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nie może ona zaczynać się od **pg_**.
+    Nazwa użytkownika administratora |*myadmin*| Własne konto logowania do użycia podczas łączenia z serwerem. Nazwą logowania administratora nie może być **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nie może ona zaczynać się od **pg_** .
     Hasło |Twoje hasło| Nowe hasło do konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % itd.).
-    Lokalizacja|Region najbliżej Twoich użytkowników| Lokalizacja znajdująca się najbliżej użytkowników.
-    Wersja|Najnowsza wersja główna| Najnowsza wersja główna usługi PostgreSQL, chyba że masz inne określone wymagania.
-    Obliczenia i magazyn | **Ogólnego przeznaczenia**, **Generacja 5**, **2 rdzenie wirtualne**, **5 GB**, **7 dni**, **Geograficznie nadmiarowy** | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz **skonfiguruj poświadczenia serwera**. Następnie wybierz kartę **Ogólnego przeznaczenia**. *Velikost haldy 5*, *4 rdzenie wirtualne*, *100 GB*, i *7 dni* są wartościami domyślnymi dla **Generowanie obliczeń**,  **Rdzeń wirtualny**, **magazynu**, i **okres przechowywania kopii zapasowej**. Możesz pozostawić te suwaki pierwotnej formie lub dostosować je. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**. Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
+    Location|Region najbliżej Twoich użytkowników| Lokalizacja znajdująca się najbliżej użytkowników.
+    Version|Najnowsza wersja główna| Najnowsza wersja główna usługi PostgreSQL, chyba że masz inne określone wymagania.
+    Obliczeniowe i Magazyn | **Ogólnego przeznaczenia**, **Generacja 5**, **2 rdzenie wirtualne**, **5 GB**, **7 dni**, **Geograficznie nadmiarowy** | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz **skonfiguruj poświadczenia serwera**. Następnie wybierz kartę **Ogólnego przeznaczenia**. *Velikost haldy 5*, *4 rdzenie wirtualne*, *100 GB*, i *7 dni* są wartościami domyślnymi dla **Generowanie obliczeń**,  **Rdzeń wirtualny**, **magazynu**, i **okres przechowywania kopii zapasowej**. Możesz pozostawić te suwaki pierwotnej formie lub dostosować je. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**. Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
 
    > [!NOTE]
    > Jeśli niewielkie zasoby obliczeniowe i we/wy są wystarczające dla Twojego obciążenia, warto rozważyć użycie warstwy cenowej Podstawowa. Pamiętaj, że serwerów utworzonych w warstwie cenowej Podstawowa nie można później przeskalować do warstwy Ogólnego przeznaczenia lub Zoptymalizowana pod kątem pamięci. Przejdź na [stronę cennika](https://azure.microsoft.com/pricing/details/postgresql/), aby uzyskać więcej informacji.
@@ -103,57 +103,47 @@ Otwórz stronę **Przegląd** serwera. Zanotuj wartości **Nazwa serwera** i **N
 
 Istnieje wiele aplikacji, za pomocą których można nawiązać połączenie z serwerem usługi Azure Database for PostgreSQL. Jeśli na Twoim komputerze klienckim jest zainstalowany program PostgreSQL, możesz użyć lokalnego wystąpienia narzędzia [psql](https://www.postgresql.org/docs/current/static/app-psql.html), aby nawiązać połączenie z serwerem Azure PostgreSQL. Użyj teraz narzędzia wiersza polecenia psql, aby nawiązać połączenie z serwerem Azure PostgreSQL.
 
-1. W powłoce nawiąż połączenie z bazą danych na serwerze usługi Azure Database for PostgreSQL, wpisując polecenie psql w wierszu polecenia.
+1. Uruchom poniższe polecenie psql w celu nawiązania połączenia z serwerem usługi Azure Database for PostgreSQL
+   ```bash
+   psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
+   ```
 
-    Aby nawiązać połączenie z serwerem usługi Azure Database for PostgreSQL przy użyciu narzędzia [psql](https://www.postgresql.org/docs/current/static/app-psql.html), użyj następującego formatu:
-    ```bash
-    psql --host=<yourserver> --port=<port> --username=<server admin login> --dbname=<database name>
-    ```
+   Na przykład poniższe polecenie służy do nawiązywania połączenia z domyślną bazą danych o nazwie **postgres** na Twoim serwerze PostgreSQL **mydemoserver.postgres.database.azure.com** za pomocą poświadczeń dostępu. Gdy zostanie wyświetlony monit o podanie hasła, wprowadź wybrane hasło `<server_admin_password>`.
+  
+   ```bash
+   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
+   ```
 
-    Na przykład następujące polecenie powoduje połączenie z przykładowym serwerem:
+   > [!TIP]
+   > Jeśli wolisz Użyj ścieżki adresu URL, aby nawiązać połączenie z Postgres kodowanie adresu URL @ logowania dla nazwy użytkownika z `%40`. Na przykład będzie ciąg połączenia dla narzędzia psql 
+   > ```
+   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
+   > ```
 
-    ```bash
-    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
-    ```
+   Po nawiązaniu połączenia narzędzie psql wyświetli wiersz polecenia postgres, w którym można wpisywać polecenia sql. W początkowych danych wyjściowych połączenia może być wyświetlane ostrzeżenie, ponieważ używana wersja narzędzia psql może być inna niż wersja na serwerze usługi Azure Database for PostgreSQL. 
 
-    Parametr psql |Wartość|Opis
-    ---|---|---
-    --host | Nazwa serwera | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Pokazany przykładowy serwer to **mydemoserver.postgres.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny (**\*.postgres.database.azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
-    --port | 5432 | Port używany podczas łączenia z serwerem usługi Azure Database for PostgreSQL. 
-    --username | Nazwa logowania administratora serwera |Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Jeśli nie pamiętasz swojej nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format jest *username\@servername*.
-    --dbname | *postgres* | Domyślna, wygenerowana przez system nazwa bazy danych, która została utworzona dla pierwszego połączenia. Później możesz utworzyć własną bazę danych.
-
-    Po uruchomieniu polecenia psql przy użyciu własnych wartości parametrów zostanie wyświetlony monit o wprowadzenie hasła administratora serwera. Jest to hasło podane podczas tworzenia serwera. 
-
-    Parametr psql |Sugerowana wartość|Opis
-    ---|---|---
-    password | Hasło administratora | Wpisane znaki hasła nie są wyświetlane w wierszu polecenia powłoki Bash. Po wpisaniu wszystkich znaków naciśnij klawisz Enter w celu uwierzytelnienia i nawiązania połączenia.
-
-    Po nawiązaniu połączenia narzędzie psql wyświetli wiersz polecenia postgres, w którym można wpisywać polecenia sql. W początkowych danych wyjściowych połączenia może być wyświetlane ostrzeżenie, ponieważ używana wersja narzędzia psql może być inna niż wersja na serwerze usługi Azure Database for PostgreSQL. 
-    
-    Przykład danych wyjściowych narzędzia psql:
-    ```bash
-    psql (9.5.7, server 9.6.2)
-    WARNING: psql major version 9.5, server major version 9.6.
-        Some psql features might not work.
+   Przykład danych wyjściowych narzędzia psql:
+   ```bash
+   psql (9.5.7, server 9.6.2)
+   WARNING: psql major version 9.5, server major version 9.6.
+    Some psql features might not work.
     SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-SHA384, bits: 256, compression: off)
-    Type "help" for help.
-   
-    postgres=> 
-    ```
+   Type "help" for help.
 
-    > [!TIP]
-    > Jeśli konfiguracja zapory nie umożliwia dostępu do adresu IP klienta, wystąpi następujący błąd:
-    > 
-    > psql: Błąd krytyczny: Brak pliku pg_hba.conf dla hosta `<IP address>`, użytkownik "myadmin", baza danych "postgres", błąd krytyczny dla SSL: wymagane połączenie SSL. Określ opcje protokołu SSL i spróbuj ponownie.
-    > 
-    > Aby naprawić błąd, upewnij się, że konfiguracja serwera jest zgodna z krokami opisanymi w sekcji „Konfigurowanie reguły zapory na poziomie serwera” tego artykułu.
+   postgres=> 
+   ```
+
+   > [!TIP]
+   > Jeśli konfiguracja zapory nie umożliwia dostępu do adresu IP klienta, wystąpi następujący błąd:
+   > 
+   > psql: Błąd krytyczny: Brak pliku pg_hba.conf dla hosta `<IP address>`, użytkownik "myadmin", baza danych "postgres", błąd krytyczny dla SSL: wymagane połączenie SSL. Określ opcje protokołu SSL i spróbuj ponownie.
+   > 
+   > Upewnij się, że adres IP sieci klienta jest dozwolona w poprzednim kroku reguły zapory.
 
 2. Utwórz pustą bazę danych o nazwie „mypgsqldb”, wpisując następujące polecenie w wierszu polecenia:
     ```bash
     CREATE DATABASE mypgsqldb;
     ```
-    Wykonanie polecenia może potrwać kilka minut. 
 
 3. W wierszu polecenia wykonaj następujące polecenie, aby przełączyć połączenia na nowo utworzoną bazę danych **mypgsqldb**:
     ```bash
@@ -182,12 +172,12 @@ pgAdmin to narzędzie open source używane z bazą danych PostgreSQL. Aplikację
 
     Parametr narzędzia pgAdmin |Wartość|Opis
     ---|---|---
-    Nazwa lub adres hosta | Nazwa serwera | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Przykładowy serwer to **mydemoserver.postgres.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny (**\*.postgres.database.azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
+    Nazwa lub adres hosta | Nazwa serwera | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Przykładowy serwer to **mydemoserver.postgres.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny ( **\*.postgres.database.azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
     Port | 5432 | Port używany podczas łączenia z serwerem usługi Azure Database for PostgreSQL. 
     Baza danych konserwacji | *postgres* | Domyślna nazwa bazy danych wygenerowana przez system.
     Nazwa użytkownika | Nazwa logowania administratora serwera | Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format jest *username\@servername*.
     Hasło | Hasło administratora | Hasło wybrane podczas tworzenia serwera wcześniej w tym przewodniku Szybki start.
-    Rola | Pozostaw puste | Nie trzeba podawać nazwy roli w tym momencie. Pozostaw pole puste.
+    Role | Pozostaw puste | Nie trzeba podawać nazwy roli w tym momencie. Pozostaw pole puste.
     Tryb SSL | *Wymagane* | Tryb SSL możesz ustawić na karcie SSL narzędzia pgAdmin. Domyślnie wszystkie serwery usługi Azure Database for PostgreSQL są tworzone z włączonym wymuszaniem protokołu SSL. Aby wyłączyć wymuszanie protokołu SSL, zobacz [Wymuszanie protokołu SSL](./concepts-ssl-connection-security.md).
     
 5. Wybierz pozycję **Zapisz**.

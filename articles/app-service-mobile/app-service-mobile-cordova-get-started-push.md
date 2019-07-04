@@ -5,29 +5,33 @@ services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
 editor: ''
-author: conceptdev
+author: elamalani
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 40a7552ffd0bfcab173d2e35c52313a94ec3d0bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: e6755c3fb1fca342d94fdaa96c0dce614d762172
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62114361"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443551"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Dodawanie powiadomień wypychanych do aplikacji Apache Cordova
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>Omówienie
+> [!NOTE]
+> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-push) już dziś.
+>
 
-W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Szybki Start Apache Cordova] [ 5] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
+## <a name="overview"></a>Przegląd
+
+W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Szybki Start Apache Cordova][5] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
 
 Jeśli nie używasz pobrany projekt szybkiego startu serwera, należy pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [pracować z zestawu SDK serwera zaplecza .NET dla aplikacji mobilnych][1].
 
@@ -37,13 +41,13 @@ W tym samouczku przyjęto założenie, iż aplikacji Apache Cordova, który zost
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* Komputer z programem [Visual Studio Community 2015] [ 2] lub nowszej
+* Komputer z programem [Visual Studio Community 2015][2] lub nowszej
 * [Visual Studio Tools for Apache Cordova][4]
 * [Aktywne konto platformy Azure][3]
-* Ukończone [Szybki Start Apache Cordova] [ 5] projektu
-* (Android) A [konto Google] [ 6] z ze zweryfikowanym adresem e-mail
-* (iOS) [Członkostwa w programie dla deweloperów firmy Apple] [ 7] i urządzenia z systemem iOS (iOS Simulator nie obsługuje powiadomienia wypychane)
-* (Windows) A [konta dewelopera Microsoft Store] [ 8] i urządzenia z systemem Windows 10
+* Ukończone [Szybki Start Apache Cordova][5] projektu
+* (Android) A [konto Google][6] z ze zweryfikowanym adresem e-mail
+* (iOS) [Członkostwa w programie dla deweloperów firmy Apple][7] i urządzenia z systemem iOS (iOS Simulator nie obsługuje powiadomienia wypychane)
+* (Windows) A [konta dewelopera Microsoft Store][8] i urządzenia z systemem Windows 10
 
 ## <a name="configure-hub"></a>Konfigurowanie Centrum powiadomień
 
@@ -70,7 +74,7 @@ Jeśli projekt używa wersji Apache Cordova, która jest starsza niż wersja 6.1
 
 #### <a name="install-the-push-plugin"></a>Instalowanie wtyczki wypychania
 
-Aplikacji Apache Cordova nie obsługują natywnie możliwości urządzeń lub sieci.  Te możliwości są udostępniane przez wtyczek, które są publikowane, albo na [npm] [ 10] lub w witrynie GitHub. `phonegap-plugin-push` Wtyczka obsługuje powiadomienia wypychane w sieci.
+Aplikacji Apache Cordova nie obsługują natywnie możliwości urządzeń lub sieci.  Te możliwości są udostępniane przez wtyczek, które są publikowane, albo na [npm][10] lub w witrynie GitHub. `phonegap-plugin-push` Wtyczka obsługuje powiadomienia wypychane w sieci.
 
 Wtyczka wypychania można zainstalować w jednym z następujących sposobów:
 
@@ -242,7 +246,7 @@ Możesz teraz testowych powiadomień wypychanych, uruchamiając aplikację, a na
 
 * *Na urządzeniu fizycznym:* Dołączanie urządzenia z systemem Android na komputerze dewelopera za pomocą kabla USB.  Zamiast **Emulator systemu Google Android**, wybierz opcję **urządzenia**. Visual Studio służy do wdrażania aplikacji na urządzeniu i uruchamia aplikację. Następnie można interakcji z aplikacją na urządzeniu.
 
-  Udostępnianie ekranu aplikacje, takie jak [Mobizen] [ 20] mogą pomóc w rozwoju aplikacji dla systemu Android. Mobizen projektów dla systemu Android ekranu do przeglądarki sieci web na komputerze.
+  Udostępnianie ekranu aplikacje, takie jak [Mobizen][20] mogą pomóc w rozwoju aplikacji dla systemu Android. Mobizen projektów dla systemu Android ekranu do przeglądarki sieci web na komputerze.
 
 * *W emulatorze systemu Android:* Istnieją dodatkowe czynności konfiguracyjne, które są wymagane, jeśli korzystasz z emulatora.
 
@@ -266,7 +270,7 @@ Ta sekcja dotyczy uruchamiania projektu Cordova na urządzeniach z systemem iOS.
 
 #### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Zainstaluj i uruchom agenta kompilacji zdalnej dla systemu iOS w usłudze, Mac lub w chmurze
 
-Przed uruchomieniem aplikacji Cordova w systemie iOS przy użyciu programu Visual Studio, wykonaj kroki opisane w [przewodnik instalacyjne systemu iOS] [ 12] do zainstalowania i uruchomienia agenta kompilacji zdalnej.
+Przed uruchomieniem aplikacji Cordova w systemie iOS przy użyciu programu Visual Studio, wykonaj kroki opisane w [przewodnik instalacyjne systemu iOS][12] do zainstalowania i uruchomienia agenta kompilacji zdalnej.
 
 Upewnij się, że możesz utworzyć aplikację dla systemu iOS. Kroki opisane w przewodniku instalacji są wymagane do tworzenia aplikacji dla systemu iOS w programie Visual Studio. Jeśli nie masz komputera Mac, można tworzyć dla systemu iOS przy użyciu agenta kompilacji zdalnej usługi, takie jak MacInCloud. Aby uzyskać więcej informacji, zobacz [uruchamianie aplikacji systemu iOS w chmurze][21].
 
@@ -329,7 +333,7 @@ Aby użyć opcji Store w programie Visual Studio, wybierz Windows target z listy
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-[Obejrzyj film przedstawiający podobne kroki][13]
+[Obejrzyj wideo przedstawiające podobne kroki][13]
 
 #### <a name="configure-the-notification-hub-for-wns"></a>Konfigurowanie Centrum powiadomień w przypadku usługi WNS
 
@@ -379,14 +383,14 @@ Sprawdź, czy otrzyma powiadomienie po dodaniu elementu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przeczytaj o [usługi Notification Hubs] [ 17] Aby dowiedzieć się więcej na temat powiadomień wypychanych.
-* Jeśli jeszcze tego nie zrobiono, należy kontynuować samouczek przez [Dodawanie uwierzytelniania] [ 14] do swojej aplikacji Apache Cordova.
+* Przeczytaj o [usługi Notification Hubs][17] Aby dowiedzieć się więcej na temat powiadomień wypychanych.
+* Jeśli jeszcze tego nie zrobiono, należy kontynuować samouczek przez [Dodawanie uwierzytelniania][14] do swojej aplikacji Apache Cordova.
 
 Dowiedz się, jak korzystać z następujących zestawów SDK:
 
 * [Zestaw Apache Cordova SDK][15]
-* [ASP.NET Server SDK][1]
-* [Zestaw node.js Server SDK][16]
+* [Zestaw ASP.NET Server SDK][1]
+* [Zestaw Node.js Server SDK][16]
 
 <!-- Images -->
 [img1]: ./media/app-service-mobile-cordova-get-started-push/add-push-plugin.png

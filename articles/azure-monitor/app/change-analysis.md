@@ -10,23 +10,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 2a31131b662d01f9841a3f1c5b0a6c459a117e77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075361"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443371"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Użyj analizy zmiany aplikacji (wersja zapoznawcza) w usłudze Azure Monitor
 
-W przypadku wystąpienia problemu z aktywnej witryny lub awarii szybkie ustalenie głównej przyczyny problemu ma krytyczne znaczenie. Standardowe rozwiązania do monitorowania może informujące o problem. Może nawet wskazywać, które można załadować składnika. Jednak ten alert nie będzie zawsze od razu opisano przyczyny niepowodzenia. Dostęp do witryny przepracowanych pięć minut temu i teraz jest uszkodzony. Co zmieniło się w ciągu ostatnich pięciu minut? Jest to pytanie, analiza zmiany aplikacji jest przeznaczony do odpowiedzi w usłudze Azure Monitor. 
+W przypadku wystąpienia problemu z aktywnej witryny lub awarii szybkie ustalenie głównej przyczyny problemu ma krytyczne znaczenie. Standardowe rozwiązania do monitorowania może informujące o problem. Może nawet wskazywać, które można załadować składnika. Jednak ten alert nie będzie zawsze od razu opisano przyczyny niepowodzenia. Dostęp do witryny przepracowanych pięć minut temu i teraz jest uszkodzony. Co zmieniło się w ciągu ostatnich pięciu minut? Jest to pytanie, analiza zmiany aplikacji jest przeznaczony do odpowiedzi w usłudze Azure Monitor.
 
 Opierając się na możliwości [wykres zasobów Azure](https://docs.microsoft.com/azure/governance/resource-graph/overview), zmiana analizy zapewnia wgląd w zmiany aplikacji platformy Azure, aby zwiększyć observability i zmniejszyć MTTR (średniego czasu naprawy).
 
 > [!IMPORTANT]
 > Zmiana analizy jest obecnie w wersji zapoznawczej. Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług. Ta wersja nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane lub mogą mieć ograniczone możliwości. Aby uzyskać więcej informacji, zobacz [dodatkowe warunki użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Zmiana analizy wykrywa różnego rodzaju zmiany z warstwy infrastruktury do wdrożenia aplikacji. Jest dostawcę zasobów platformy Azure na poziomie subskrypcji, który sprawdza, czy zmiany zasobów w subskrypcji. Zmiany analizy zapewnia dane dotyczące różnych narzędzia diagnostyczne ułatwić użytkownikom zrozumienie, jakie zmiany mogą powodować problemy.
 
@@ -62,21 +62,18 @@ W usłudze Azure Monitor zmiany analizy aktualnie jest wbudowana w samoobsługi 
 
     ![Zrzut ekranu przedstawiający "Dostępność i wydajność" Opcje rozwiązywania problemów](./media/change-analysis/availability-and-performance.png)
 
-1. Wybierz **awarii aplikacji**.
+1. Wybierz **zmian aplikacji**. Nie, że ta funkcja jest również dostępna w **wystąpiła awaria aplikacji**.
 
-   ![Zrzut ekranu przedstawiający przycisk "Wystąpiła awaria aplikacji"](./media/change-analysis/application-crashes-tile.png)
+   ![Zrzut ekranu przedstawiający przycisk "Wystąpiła awaria aplikacji"](./media/change-analysis/application-changes.png)
 
 1. Aby włączyć analizę zmiany, wybierz **Włącz teraz**.
 
-   ![Zrzut ekranu z opcjami "Wystąpiła awaria aplikacji"](./media/change-analysis/application-crashes.png)
+   ![Zrzut ekranu z opcjami "Wystąpiła awaria aplikacji"](./media/change-analysis/enable-changeanalysis.png)
 
-1. Aby móc korzystać z pełnej funkcjonalności podczas analizy zmiany, należy włączyć funkcję **analizy zmiany**, **skanowania w poszukiwaniu zmian w kodzie**, i **zawsze na**. Następnie wybierz pozycję **Zapisz**.
+1. Włącz **analizy zmiany** i wybierz **Zapisz**.
 
     ![Zrzut ekranu przedstawiający interfejs użytkownika "Włącz analizę zmiany"](./media/change-analysis/change-analysis-on.png)
 
-    - Włącz **analizy zmiany** wykrywania zmian na poziomie zasobów. 
-    - Włącz **skanowania w poszukiwaniu zmian w kodzie** pliki wdrożenia są wyświetlane i zmiany w konfiguracji lokacji. 
-    - Włącz **zawsze na** w celu zoptymalizowania wydajności skanowanie zmian. Jednak należy pamiętać o tym, że to ustawienie może spowodować naliczenie dodatkowych opłat rozliczeń.
 
 1. Aby uzyskać dostęp do analizy zmiany, wybierz pozycję **diagnozowanie i rozwiązywanie problemów** > **dostępność i wydajność** > **wystąpiła awaria aplikacji**. Zostanie wyświetlony wykres, który zawiera podsumowanie typów zmian, wraz z upływem czasu, wraz z informacjami na temat tych zmian:
 
@@ -106,7 +103,7 @@ Jeśli Twoja subskrypcja obejmuje wiele aplikacji sieci web, może być nieefekt
         Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
         Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
         ```
-    
+
 1. Zarejestruj dostawcę zasobów analizy zmiany dla subskrypcji.
 
    - Przejdź do **subskrypcje**i wybierz subskrypcję, aby włączyć w usłudze zmiany. Następnie wybierz dostawców zasobów:
@@ -121,12 +118,12 @@ Jeśli Twoja subskrypcja obejmuje wiele aplikacji sieci web, może być nieefekt
 
         ```PowerShell
         Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-    
+
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
         ```
 
         Aby ustawić ukryte tagu dla aplikacji sieci web przy użyciu programu PowerShell, uruchom następujące polecenie:
-    
+
         ```powershell
         $webapp=Get-AzWebApp -Name <name_of_your_webapp>
         $tags = $webapp.Tags

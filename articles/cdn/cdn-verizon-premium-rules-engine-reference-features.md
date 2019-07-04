@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080767"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443490"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Usługa Azure CDN from funkcje aparatu reguł Premium firmy Verizon
 
@@ -456,7 +456,7 @@ Ze względu na sposób, w której pamięci podręcznej ustawienia są śledzone 
 - Adres IP klienta
 - Parametr plików cookie
 - Wyrażenie regularne parametru pliku cookie
-- Kraj
+- Country
 - Urządzenie
 - Microsoft Edge Cname
 - Odwołujące się domeny
@@ -588,7 +588,7 @@ Ze względu na sposób, w której pamięci podręcznej ustawienia są śledzone 
 - Adres IP klienta
 - Parametr plików cookie
 - Wyrażenie regularne parametru pliku cookie
-- Kraj
+- Country
 - Urządzenie
 - Krawędź Cname
 - Odwołujące się domeny
@@ -715,7 +715,7 @@ Ze względu na sposób, w której pamięci podręcznej ustawienia są śledzone 
 - Adres IP klienta
 - Parametr plików cookie
 - Wyrażenie regularne parametru pliku cookie
-- Kraj
+- Country
 - Urządzenie
 - Krawędź Cname
 - Odwołujące się domeny
@@ -799,7 +799,7 @@ Ze względu na sposób, w której pamięci podręcznej ustawienia są śledzone 
 - Adres IP klienta
 - Parametr plików cookie
 - Wyrażenie regularne parametru pliku cookie
-- Kraj
+- Country
 - Urządzenie
 - Krawędź Cname
 - Odwołujące się domeny
@@ -867,7 +867,7 @@ Ze względu na sposób, w której pamięci podręcznej ustawienia są śledzone 
 - Adres IP klienta
 - Parametr plików cookie
 - Wyrażenie regularne parametru pliku cookie
-- Kraj
+- Country
 - Urządzenie
 - Krawędź Cname
 - Odwołujące się domeny
@@ -1128,7 +1128,7 @@ Ta funkcja pozwala klientowi serwerze źródłowym, aby dowiedzieć się, adres 
 
 Upewnij się, że nazwa określonego nagłówka nie pasuje do żadnego z następujących nazw:
 
-- Nazwy nagłówków żądań standardowych. Lista nazw standardowy nagłówek znajdują się w [dokumencie RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+- Nazwy nagłówków żądań standardowych. Lista nazw standardowy nagłówek znajdują się w [dokumencie RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 - Nazwy nagłówków zarezerwowanych:
     - forwarded-for
     - host
