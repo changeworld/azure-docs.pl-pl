@@ -37,10 +37,12 @@
       items:
         - name: Scenariusze
           href: scenarios.md
-        - name: Wybieranie sieci wirtualnej
+        - name: Planowanie sieci wirtualnej
           href: network-considerations.md
     - name: Zarządzanie usługą Azure AD DS
       items:
+        - name: Włączanie zdarzeń inspekcji zabezpieczeń (wersja zapoznawcza)
+          href: security-audit-events.md
         - name: Sprawdzanie kondycji domeny zarządzanej
           href: check-health.md
         - name: Konfigurowanie synchronizacji o określonym zakresie z usługi Azure AD do domeny zarządzanej
