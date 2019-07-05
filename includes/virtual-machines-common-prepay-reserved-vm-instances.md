@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 07/01/2019
-ms.openlocfilehash: 9e0caa8b98133dad3af083e8910d0603bbd2563b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: HT
+ms.date: 07/03/2019
+ms.openlocfilehash: 31c6521ca77d9d85fc8388d7ebc5d25defc69bd0
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67489910"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568358"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure (RI)
 
@@ -66,20 +66,19 @@ Zarezerwowane wystąpienia maszyn wirtualnych są dostępne dla większości roz
 ## <a name="buy-a-reserved-vm-instance"></a>Kup wystąpienia zarezerwowane maszyn wirtualnych
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług** > **rezerwacje**.
-3. Wybierz **Dodaj** kupić nową rezerwację.
-4. Wprowadź wymagane pola. Uruchomionej maszyny Wirtualnej wystąpienia, które pasują do atrybutów, którą wybierzesz kwalifikują się uzyskać rabat związany z rezerwacją. Rzeczywista liczba wystąpień maszyn wirtualnych, które Rabat zależy od tego, zakresu i ilości wybranej.
+1. Wybierz **wszystkich usług** > **rezerwacje**.
+1. Wybierz **Dodaj** Kup nową rezerwację, a następnie kliknij przycisk **maszyny wirtualnej**.
+1. Wprowadź wymagane pola. Uruchomionej maszyny Wirtualnej wystąpienia, które pasują do atrybutów, którą wybierzesz kwalifikują się uzyskać rabat związany z rezerwacją. Rzeczywista liczba wystąpień maszyn wirtualnych, które Rabat zależy od tego, zakresu i ilości wybranej.
 
-    | Pole      | Opis|
-    |------------|--------------|
-    |Name (Nazwa)        |Nazwa tego zastrzeżenia.|
-    |Subskrypcja|Subskrypcja użytej do zapłacenia za rezerwację. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub poszczególnych subskrypcji przy użyciu stawki (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. Dla subskrypcji przy użyciu stawki opłaty są naliczane na metodę płatności karty kredytowej lub faktury w ramach subskrypcji.|    
-    |Scope       |Zakres rezerwacji może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>Subskrypcja pojedyncza — rabat związany z rezerwacją jest stosowane do maszyn wirtualnych w ramach tej subskrypcji. </li><li>W warstwie współdzielona — rabat związany z rezerwacją jest stosowane do maszyn wirtualnych działających w dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje w ramach rejestracji. W przypadku klientów z subskrypcjami, które mają stawki zakres udostępniony jest wszystkie subskrypcje z płatnością za rzeczywiste użycie współczynnikami utworzonego przez administratora konta.</li></ul>|
-    |Region    |Region platformy Azure, który pasuje do żadnego rezerwacji.|    
-    |Rozmiar maszyny wirtualnej     |Rozmiar wystąpienia maszyny Wirtualnej.|
-    |Optymalizacja pod kątem     |Elastyczność rozmiaru wystąpienia maszyny Wirtualnej ma zastosowanie rabatu związanego z rezerwacją do innych maszyn wirtualnych w tym samym [grupie rozmiarów maszyn wirtualnych](https://aka.ms/RIVMGroups). Priorytet pojemności priorytet pojemności centrum danych wdrożeń. Zapewnia to dodatkową pewność co do możliwości uruchomienia wystąpienia maszyny Wirtualnej, gdy ich potrzebujesz. Priorytet pojemności jest dostępna tylko w przypadku, gdy zakresem rezerwacji jest pojedyncza subskrypcja. |
-    |Termin        |Jeden rok lub trzy lata.|
-    |Liczba    |Liczba wystąpień, które zostały zakupione w ramach rezerwacji. Ilość jest liczby uruchomionych wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeń. Na przykład jeśli używasz 10 maszyna wirtualna Standard_D2 maszyn wirtualnych w regionie wschodnie stany USA, następnie należy określić ilość jako 10, aby zmaksymalizować korzyści dla wszystkich działających maszyn. |
+| Pole      | Opis|
+|------------|--------------|
+|Subskrypcja|Subskrypcja użytej do zapłacenia za rezerwację. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub poszczególnych subskrypcji przy użyciu stawki (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. Dla subskrypcji przy użyciu stawki opłaty są naliczane na metodę płatności karty kredytowej lub faktury w ramach subskrypcji.|    
+|Scope       |Zakres rezerwacji może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>**Pojedynczy zakres grupy zasobów** — ma zastosowanie rabatu związanego z rezerwacją do dopasowywania zasobów w wybranej grupie zasobów tylko.</li><li>**Pojedynczy zakres subskrypcji** — ma zastosowanie rabatu związanego z rezerwacją do dopasowywania zasobów w wybranej subskrypcji.</li><li>**Zakres udostępniony** — ma zastosowanie rabat związany z rezerwacją do dopasowywania zasobów w uprawnione subskrypcje, które znajdują się w kontekstu rozliczeń. W przypadku klientów z umową Enterprise Agreement kontekstu rozliczeń jest rejestracja. W przypadku poszczególnych subskrypcji przy użyciu stawki rozliczeń zakres jest wszystkie uprawnione subskrypcje utworzone przez administratora konta.</li></ul>|
+|Region    |Region platformy Azure, który pasuje do żadnego rezerwacji.|    
+|Rozmiar maszyny wirtualnej     |Rozmiar wystąpienia maszyny Wirtualnej.|
+|Optymalizacja pod kątem     |Elastyczność rozmiaru wystąpienia maszyny Wirtualnej jest domyślnie zaznaczone. Kliknij przycisk Zaawansowane ustawienia, aby zmienić wartość elastyczność rozmiar wystąpienia, aby zastosować rabat związany z rezerwacją do innych maszyn wirtualnych w tym samym [grupie rozmiarów maszyn wirtualnych](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). Priorytet pojemności priorytet pojemności centrum danych wdrożeń. Zapewnia to dodatkową pewność co do możliwości uruchomienia wystąpienia maszyny Wirtualnej, gdy ich potrzebujesz. Priorytet pojemności jest dostępna tylko w przypadku, gdy zakresem rezerwacji jest pojedyncza subskrypcja. |
+|Termin        |Jeden rok lub trzy lata.|
+|Liczba    |Liczba wystąpień, które zostały zakupione w ramach rezerwacji. Ilość jest liczby uruchomionych wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeń. Na przykład jeśli używasz 10 maszyna wirtualna Standard_D2 maszyn wirtualnych w regionie wschodnie stany USA, następnie należy określić ilość jako 10, aby zmaksymalizować korzyści dla wszystkich działających maszyn. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
