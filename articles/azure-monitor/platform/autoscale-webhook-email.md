@@ -62,7 +62,7 @@ Korzystając z interfejsu API REST lub Menedżera zasobów szablonu, obejmują e
 
 | Pole | Obowiązkowe? | Opis |
 | --- | --- | --- |
-| Operacja |tak |Wartość musi być "Skalowanie" |
+| operation |tak |Wartość musi być "Skalowanie" |
 | sendToSubscriptionAdministrator |tak |musi mieć wartość "true" lub "false" |
 | sendToSubscriptionCoAdministrators |tak |musi mieć wartość "true" lub "false" |
 | customEmails |tak |wartość może być null [] lub tablicę ciągów, wiadomości e-mail |
@@ -106,7 +106,7 @@ Po wygenerowaniu powiadomienia skalowania automatycznego, następujące metadane
 | Pole | Obowiązkowe? | Opis |
 | --- | --- | --- |
 | status |tak |Stan, który wskazuje, że zostało wygenerowane akcji skalowania automatycznego |
-| Operacja |tak |Zwiększanie wystąpień będzie "Limit skalowania" i dla spadek wystąpień będzie "W skali" |
+| operation |tak |Zwiększanie wystąpień będzie "Limit skalowania" i dla spadek wystąpień będzie "W skali" |
 | context |tak |Kontekst akcji skalowania automatycznego |
 | timestamp |tak |Sygnaturę czasową, gdy akcja skalowania automatycznego została wyzwolona |
 | id |Tak |Identyfikator Menedżera zasobów Ustawienia skalowania automatycznego |
