@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/16/2019
-ms.openlocfilehash: c09dd990bb377672cb34ebd73a5aa9e59bbc067f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/26/2019
+ms.openlocfilehash: b03f546b992bd9de6092dc0da8ef72aa69aa1da2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070395"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447786"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -59,11 +59,11 @@ Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższe
 | Wersja programu SQL Server / build | Aparat bazy danych programu SQL Server (Najnowsza wersja stabilna) |
 | Zarządzane automatycznych kopii zapasowych | Tak |
 | Wbudowane wystąpienia i bazy danych monitorowania i metryki | Tak |
-| Automatyczne stosowanie poprawek | Yes |
+| Automatyczne stosowanie poprawek | Tak |
 | Najnowsze funkcje aparatu bazy danych | Tak |
 | Liczba plików danych (wiersze) na bazę danych | Wiele |
 | Liczba plików dziennika (dziennik) na bazę danych | 1 |
-| Sieć wirtualna - wdrożenia usługi Azure Resource Manager | Yes |
+| Sieć wirtualna - wdrożenia usługi Azure Resource Manager | Tak |
 | Sieć wirtualna - klasycznego modelu wdrażania | Nie |
 | Portal pomocy technicznej | Tak|
 | Wbudowana integracja Service (SSIS) | Nie — SSIS jest częścią [PaaS fabryki danych platformy Azure](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
@@ -81,6 +81,9 @@ Model rdzenia wirtualnego można wybrać generacji sprzętu.
 - **5. generacji** procesorów logicznych są oparte na Intel E5-2673 v4 (broadwell z zegarem) 2.3 — GHz, szybkie dyski SSD NVMe, funkcji hyper Threading rdzeń logiczny, a obliczenia rozmiarów między rdzenie 4 i 80.
 
 Znajdź więcej informacji na temat różnic między generacji sprzętu w [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+
+> [!IMPORTANT]
+> Nowe bazy danych z 4. generacji nie są już obsługiwane w regionie AustraliaEast.
 
 ## <a name="managed-instance-service-tiers"></a>Zarządzane wystąpienie warstwy usług
 

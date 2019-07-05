@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/28/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: f6061710fb15d4183bd42a82c4bd269a69fc9be2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40ecdb3f83dba741d1430a912a3f17500a36da6e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964443"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484332"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Utworzyć i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute
 
@@ -55,9 +55,17 @@ Ta sekcja ułatwia tworzenie, pobieranie, aktualizacji i usuwania konfiguracji k
 
 ### <a name="to-create-microsoft-peering"></a>Aby utworzyć komunikację równorzędną Microsoft
 
-1. Skonfiguruj obwód usługi ExpressRoute. Zanim przejdziesz dalej, upewnij się, że obwód jest w całości obsługiwany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić dostawcą połączenia, aby umożliwić firmie Microsoft komunikacji równorzędnej. W takiej sytuacji nie należy wykonywać zgodnie z instrukcjami podanymi w kolejnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu, przejść do następnych kroków.
+1. Skonfiguruj obwód usługi ExpressRoute. Sprawdź **stan dostawcy** aby upewnić się, że obwód jest w pełni obsługiwany przez dostawcę połączenia zanim przejdziesz dalej.
 
-   ![Lista komunikacji równorzędnej firmy Microsoft](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić dostawcą połączenia, aby umożliwić firmie Microsoft komunikacji równorzędnej. W takiej sytuacji nie należy wykonywać zgodnie z instrukcjami podanymi w kolejnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu, wykonaj następujące kroki.
+
+   **Obwód - stan dostawcy: Nie zainicjowano obsługi administracyjnej**
+
+    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "Stan dostawcy: Nie zainicjowano obsługi administracyjnej")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+
+   **Obwód - stan dostawcy: Zainicjowano obsługę administracyjną**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Stan dostawcy = Aprowizowana")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 2. Skonfiguruj komunikację równorzędną Microsoft dla obwodu. Zanim przejdziesz dalej, upewnij się, że masz poniższe informacje.
 
    * Podsieć /30 dla połączenia podstawowego. Musi to być prawidłowy publiczny prefiks IPv4, którego jesteś właścicielem, zarejestrowany w RIR/IRR. Z tej podsieci spowoduje przypisanie pierwszego adresu IP niemożliwe do routera, jak firma Microsoft używa drugiego IP niemożliwe do jego routera.
@@ -70,42 +78,35 @@ Ta sekcja ułatwia tworzenie, pobieranie, aktualizacji i usuwania konfiguracji k
    * **Opcjonalnie —** Skrót MD5, jeśli zdecydujesz się go użyć.
 3. Możesz wybrać komunikację równorzędną, którą chcesz skonfigurować, jak pokazano w poniższym przykładzie. Zaznacz wiersz dotyczący komunikacji równorzędnej firmy Microsoft.
 
-   ![Wybierz wiersz dotyczący komunikacji równorzędnej firmy Microsoft](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
-4. Skonfiguruj komunikację równorzędną firmy Microsoft. Na poniższej ilustracji przedstawiono przykładową konfigurację:
+   [![Wybierz wiersz dotyczący komunikacji równorzędnej firmy Microsoft](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "wybierz wiersz dotyczący komunikacji równorzędnej firmy Microsoft")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
+4. Skonfiguruj komunikację równorzędną firmy Microsoft. **Zapisz** konfiguracji po określeniu wszystkich parametrów. Na poniższej ilustracji przedstawiono przykładową konfigurację:
 
-   ![Konfigurowanie komunikacji równorzędnej firmy Microsoft](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
-5. Po określeniu wszystkich parametrów zapisz konfigurację.
+   ![Konfigurowanie komunikacji równorzędnej firmy Microsoft](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
 
-   Jeśli Twój obwód pobiera do "konieczna weryfikacja" stanu (jak pokazano na ilustracji), należy otworzyć bilet pomocy technicznej, aby okazać dowód własności prefiksów zespołowi pomocy technicznej.
+   Jeśli Twój obwód pobiera do "konieczna weryfikacja" stanu, należy otworzyć bilet pomocy technicznej, aby okazać dowód własności prefiksów zespołowi pomocy technicznej. Można otworzyć bilet pomocy technicznej bezpośrednio z poziomu portalu, jak pokazano w poniższym przykładzie:
 
-   ![Zapisz konfigurację komunikacji równorzędnej firmy Microsoft](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
+   ![Sprawdzanie poprawności potrzeb — bilet pomocy technicznej](./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png)
 
-   Można otworzyć bilet pomocy technicznej bezpośrednio z poziomu portalu, jak pokazano w poniższym przykładzie:
+5. Po pomyślnym zaakceptowaniu konfiguracji, zobaczysz ekran podobny do poniższej ilustracji:
 
-   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
-
-
-1. Po pomyślnym zaakceptowaniu konfiguracji, zobaczysz ekran podobny do poniższej ilustracji:
-
-   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+   ![Stan komunikacji równorzędnej: Skonfigurowane](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "stan komunikacji równorzędnej: Skonfigurowane")]
 
 ### <a name="getmsft"></a>Aby wyświetlić szczegóły dotyczące komunikacji równorzędnej firmy Microsoft
 
-Można wyświetlić właściwości komunikacji równorzędnej, wybierając komunikacji równorzędnej firmy Microsoft.
+Można wyświetlić właściwości komunikacji równorzędnej, wybierając wiersz dotyczący komunikacji równorzędnej firmy Microsoft.
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
-
+[![Wyświetlanie właściwości komunikacji równorzędnej firmy Microsoft](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "wyświetlania właściwości")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
 ### <a name="updatemsft"></a>Aby zaktualizować konfigurację komunikacji równorzędnej firmy Microsoft
 
-Można wybrać wiersz dotyczący komunikacji równorzędnej i zmodyfikować jej właściwości.
+Można wybrać wiersz dotyczący komunikacji równorzędnej, który chcesz zmodyfikować, a następnie zmodyfikować jej właściwości i modyfikacje są zapisywane.
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+![Wybierz wiersz dotyczący komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
 ### <a name="deletemsft"></a>Aby usunąć komunikację równorzędną firmy Microsoft
 
-Możesz usunąć konfigurację komunikacji równorzędnej, wybierając ikonę usuwania, jak pokazano na poniższej ilustracji:
+Możesz usunąć konfigurację komunikacji równorzędnej, klikając ikonę usuwania, jak pokazano na poniższej ilustracji:
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft4.png)
+![Usuwanie komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
 
 ## <a name="private"></a>Prywatną komunikację równorzędną Azure
 
@@ -113,9 +114,18 @@ Ta sekcja ułatwia tworzenie, pobieranie, aktualizowanie i usuwanie prywatnej ko
 
 ### <a name="to-create-azure-private-peering"></a>Aby utworzyć prywatną komunikację równorzędną
 
-1. Skonfiguruj obwód usługi ExpressRoute. Zanim przejdziesz dalej, upewnij się, że obwód jest w całości obsługiwany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić dostawcą połączenia, aby umożliwić prywatną komunikację równorzędną Azure dla Ciebie. W takiej sytuacji nie należy wykonywać zgodnie z instrukcjami podanymi w kolejnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu, przejść do następnych kroków.
+1. Skonfiguruj obwód usługi ExpressRoute. Zanim przejdziesz dalej, upewnij się, że obwód jest w całości obsługiwany przez dostawcę połączenia. 
 
-   ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić dostawcą połączenia, aby umożliwić prywatną komunikację równorzędną Azure dla Ciebie. W takiej sytuacji nie należy wykonywać zgodnie z instrukcjami podanymi w kolejnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu, przejść do następnych kroków.
+
+   **Obwód - stan dostawcy: Nie zainicjowano obsługi administracyjnej**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "Stan dostawcy = nie zainicjowano obsługi administracyjnej")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+
+   **Obwód - stan dostawcy: Zainicjowano obsługę administracyjną**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "Stan dostawcy = aprowizacji")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+
 2. Skonfiguruj prywatną komunikację równorzędną Azure dla obwodu. Zanim przejdziesz do następnych kroków, upewnij się, czy masz następujące elementy:
 
    * Podsieć /30 dla połączenia podstawowego. Podsieci nie może być częścią żadnej przestrzeni adresowej zarezerwowanej dla sieci wirtualnych. Z tej podsieci spowoduje przypisanie pierwszego adresu IP niemożliwe do routera, jak firma Microsoft używa drugiego IP niemożliwe do jego routera.
@@ -123,27 +133,27 @@ Ta sekcja ułatwia tworzenie, pobieranie, aktualizowanie i usuwanie prywatnej ko
    * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Upewnij się, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora VLAN. Łączy podstawowe i pomocnicze należy używać tego samego identyfikatora sieci VLAN.
    * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS. Możesz użyć prywatnego numeru AS dla tej komunikacji równorzędnej z wyjątkiem numer AS od 65515 do 65520, włącznie.
    * **Opcjonalnie —** Skrót MD5, jeśli zdecydujesz się go użyć.
-3. Wybierz wiersz dotyczący komunikacji równorzędnej Azure prywatnych, jak pokazano w poniższym przykładzie:
+3. Wybierz Azure wiersz prywatnej komunikacji równorzędnej, jak pokazano w poniższym przykładzie:
 
-   ![prywatna](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
-4. Skonfiguruj prywatną komunikację równorzędną. Na poniższej ilustracji przedstawiono przykładową konfigurację:
+   [![Wybierz wiersz dotyczący prywatnej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "wybierz wiersz dotyczący prywatnej komunikacji równorzędnej")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
+4. Skonfiguruj prywatną komunikację równorzędną. **Zapisz** konfiguracji po określeniu wszystkich parametrów.
 
-   ![Skonfiguruj prywatną komunikację równorzędną](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
-5. Po określeniu wszystkich parametrów zapisz konfigurację. Po pomyślnym zaakceptowaniu konfiguracji, zostanie wyświetlony podobny do poniższego przykładu:
+   ![Skonfiguruj prywatną komunikację równorzędną](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
+5. Po pomyślnym zaakceptowaniu konfiguracji, zostanie wyświetlony podobny do poniższego przykładu:
 
-   ![Zapisz prywatnej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+   ![zapisano prywatnej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
 
 ### <a name="getprivate"></a>Aby wyświetlić Azure szczegóły dotyczące komunikacji równorzędnej prywatnej
 
 Możesz wyświetlić właściwości prywatnej komunikacji równorzędnej Azure, wybierając ją.
 
-![Wyświetl prywatnej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+[![Wyświetlanie właściwości komunikacji równorzędnej prywatnej](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "wyświetlić prywatnej komunikacji równorzędnej właściwości")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
 ### <a name="updateprivate"></a>Aby zaktualizować konfigurację komunikacji równorzędnej prywatnej Azure
 
-Można wybrać wiersz dotyczący komunikacji równorzędnej i zmodyfikować jej właściwości.
+Można wybrać wiersz dotyczący komunikacji równorzędnej i zmodyfikować jej właściwości. Po zaktualizowaniu, Zapisz zmiany.
 
-![Aktualizuj prywatnej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
+![Aktualizuj prywatnej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
 
 ### <a name="deleteprivate"></a>Aby usunąć prywatną komunikację równorzędną Azure
 
@@ -154,7 +164,7 @@ Możesz usunąć konfigurację komunikacji równorzędnej, wybierając ikonę us
 > 
 > 
 
-![Usuwanie prywatnej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
+![Usuwanie prywatnej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
 ## <a name="public"></a>Publicznej komunikacji równorzędnej Azure
 
@@ -164,45 +174,17 @@ Ta sekcja ułatwia tworzenie, pobieranie, aktualizowanie i usuwanie publicznej k
 > Publicznej komunikacji równorzędnej Azure jest przestarzała w przypadku obwodów. Aby uzyskać więcej informacji, zobacz [komunikacji równorzędnej usługi ExpressRoute](expressroute-circuit-peerings.md).
 >
 
-### <a name="to-create-azure-public-peering"></a>Aby utworzyć publiczną komunikację równorzędną Azure
-
-1. Skonfiguruj obwód usługi ExpressRoute. Zanim przejdziesz dalej, upewnij się, że obwód jest w całości obsługiwany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić dostawcą połączenia, aby umożliwić publicznej komunikacji równorzędnej Azure dla Ciebie. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu, nadal konfigurację za pomocą następnych kroków.
-
-   ![Lista publicznej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
-2. Skonfiguruj publiczną konfigurację równorzędną Azure dla obwodu. Zanim przejdziesz do następnych kroków, upewnij się, czy masz następujące elementy:
-
-   * Podsieć /30 dla połączenia podstawowego. Musi to być prawidłowy publiczny prefiks IPv4. Z tej podsieci spowoduje przypisanie pierwszego adresu IP niemożliwe do routera, jak firma Microsoft używa drugiego IP niemożliwe do jego routera. 
-   * Podsieć /30 dla połączenia dodatkowego. Musi to być prawidłowy publiczny prefiks IPv4. Z tej podsieci spowoduje przypisanie pierwszego adresu IP niemożliwe do routera, jak firma Microsoft używa drugiego IP niemożliwe do jego routera.
-   * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Upewnij się, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora VLAN. Łączy podstawowe i pomocnicze należy używać tego samego identyfikatora sieci VLAN.
-   * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS.
-   * **Opcjonalnie —** Skrót MD5, jeśli zdecydujesz się go użyć.
-3. Wybierz Azure publicznych wiersz dotyczący komunikacji równorzędnej, jak pokazano na poniższej ilustracji:
-
-   ![Wybierz wiersz dotyczący publicznej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
-4. Skonfiguruj publiczną komunikację równorzędną. Na poniższej ilustracji przedstawiono przykładową konfigurację:
-
-   ![Konfigurowanie publicznej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
-5. Po określeniu wszystkich parametrów zapisz konfigurację. Po pomyślnym zaakceptowaniu konfiguracji, zostanie wyświetlony podobny do poniższego przykładu:
-
-   ![Zapisywanie konfiguracji publicznej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
-
 ### <a name="getpublic"></a>Aby wyświetlić Azure szczegóły dotyczące komunikacji równorzędnej publicznej
 
-Możesz wyświetlić właściwości publicznej komunikacji równorzędnej Azure, wybierając ją.
-
-![właściwości publicznej komunikacji równorzędnej widoku](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
+Wyświetl właściwości publicznej komunikacji równorzędnej Azure, wybierając ją.
 
 ### <a name="updatepublic"></a>Aby zaktualizować konfigurację komunikacji równorzędnej publicznej Azure
 
-Można wybrać wiersz dotyczący komunikacji równorzędnej i zmodyfikować jej właściwości.
-
-![Wybierz wiersz dotyczący publicznej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
+Wybierz wiersz dotyczący komunikacji równorzędnej, a następnie zmodyfikować jej właściwości.
 
 ### <a name="deletepublic"></a>Aby usunąć publiczną komunikację równorzędną Azure
 
-Możesz usunąć konfigurację komunikacji równorzędnej, wybierając ikonę usuwania, jak pokazano w poniższym przykładzie:
-
-![Usuwanie publicznej komunikacji równorzędnej](./media/expressroute-howto-routing-portal-resource-manager/rpublic4.png)
+Usunąć konfigurację komunikacji równorzędnej, wybierając ikonę Usuń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

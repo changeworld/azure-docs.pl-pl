@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: 882f44683bbdc7f4eb49ff4912ca7a33187afbf8
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758668"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537889"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Zarządzaj klastra skalowalnego w poziomie do uwzględnienia zmiennym obciążeniem
 
@@ -76,10 +76,10 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Więcej szcze
 
 Operacja skalowania w poziomie, dla klastra Eksploratora danych usługi Azure został skonfigurowany. Dodaj inną regułę dla operacji skalowania na zewnątrz. Ta konfiguracja umożliwia skalowanie klastra dynamicznie na podstawie metryk, które określisz.
 
-Możesz również [Zarządzanie klastrem skalowanie w górę](manage-cluster-scale-up.md) dla odpowiedniego rozmiaru klastra.
-
 Jeśli potrzebujesz pomocy w przypadku problemów skalowanie klastra [Otwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure portal.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Monitorowanie wydajności, kondycji i użycia za pomocą metryk Eksplorator danych platformy Azure](using-metrics.md)
+* [Monitorowanie wydajności, kondycji i użycia za pomocą metryk Eksplorator danych platformy Azure](using-metrics.md)
+
+* [Zarządzanie klastrem skalowanie w górę](manage-cluster-scale-up.md) dla odpowiedniego rozmiaru klastra.

@@ -3,7 +3,7 @@ title: Często zadawane pytania — usługa Azure Active Directory Domain Servic
 description: Często zadawane pytania dotyczące usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: mstephen
-ms.openlocfilehash: 89930bcc4f49a406586c2770f65cc65f81387302
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 10131ad306a8a24cb5835e55a02f1b502b20bea4
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246107"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473369"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Często zadawane pytania
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory Domain Services. Wracaj aktualizacje.

@@ -14,18 +14,18 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6875ab8f184c67b02c91d1a8e312959f3ba9553b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288545"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476413"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról usługi Azure AD w usłudze PIM
 
 Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) generuje alerty w przypadku podejrzanej lub niebezpieczne działania w środowisku. Po wyzwoleniu alertu ona wyświetlona na pulpicie nawigacyjnym usługi PIM. Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub ról, które wyzwoliła alert.
 
-![Alerty zabezpieczeń PIM — zrzut ekranu](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Role usługi Azure AD — okienko alertów, wyświetlanie alertów i ważność](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Alerty zabezpieczeń
 
@@ -122,11 +122,11 @@ Można dostosować niektóre alerty zabezpieczeń w usłudze PIM chcesz pracowa�
 
 1. Kliknij przycisk **ustawienia** i następnie **alerty**.
 
-    ![Przejdź do ustawień alertów zabezpieczeń](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+    ![Wybrane ustawienia z alertami role usługi Azure AD —](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
 1. Kliknij nazwę alertu, aby skonfigurować ustawienia dla tego alertu.
 
-    ![Ustawienia alertów zabezpieczeń](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![Dla wybranego alertu, okienka ustawień alertów zabezpieczeń](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

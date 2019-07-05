@@ -8,20 +8,20 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6251df2317ceff9dded92f2d829bfab0503fdf1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f626ce2e009a18afcb4d04b7caa6850ea58c7483
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237590"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446815"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Aprowizowanie i zarządzanie nimi Azure czas Series Insights w wersji zapoznawczej
 
 W tym artykule opisano sposób tworzenia i zarządzanie środowiskiem Azure czas Series Insights w wersji zapoznawczej za pomocą [witryny Azure portal](https://portal.azure.com/).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Środowiska czasu Series Insights w wersji zapoznawczej platformy Azure są środowisk płatność za rzeczywiste użycie (PAYG).
 
@@ -45,7 +45,7 @@ W poniższych krokach opisano sposób tworzenia środowiska Azure czas Series In
 
 1. Wybierz **PAYG** przycisku w obszarze **jednostki SKU** menu. Podaj nazwę środowiska, a następnie wybierz grupę, do której subskrypcję i grupę zasobów do użycia. Następnie wybierz dla środowiska hostowane w obsługiwanej lokalizacji.
 
-   [![Utwórz wystąpienie usługi Azure Time Series Insights.](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+   [![Utwórz wystąpienie usługi Azure Time Series Insights.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 1. Wprowadź szeregów czasowych identyfikatora.
 
@@ -56,7 +56,7 @@ W poniższych krokach opisano sposób tworzenia środowiska Azure czas Series In
 
 1. Utwórz konto usługi Azure storage, wybierając nazwę konta magazynu i wyznaczanie wybór replikacji. Wykonując to automatycznie tworzy konto usługi Azure Storage ogólnego przeznaczenia w wersji 1. Zostanie utworzony w tym samym regionie, co środowisko Azure czas Series Insights w wersji zapoznawczej, która została wybrana wcześniej.
 
-    [![Utwórz konto magazynu platformy Azure dla swojego wystąpienia](media/v2-update-manage/manage_five.PNG)](media/v2-update-manage/manage_five.PNG#lightbox)
+    [![Utwórz konto magazynu platformy Azure dla swojego wystąpienia](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
 1. Opcjonalnie można dodać źródła zdarzenia.
 
@@ -67,11 +67,11 @@ W poniższych krokach opisano sposób tworzenia środowiska Azure czas Series In
      > [!TIP]
      > Czas umieszczonych w kolejce komunikatów może nie być najlepiej skonfigurowane ustawienie do użycia w partii zdarzeń lub danych historycznych, przekazywanie scenariuszy. Upewnij się, że zdecydować, czy użycie lub nie właściwość sygnatury czasowej w takich przypadkach.
 
-     [![Karta źródła zdarzeń](media/v2-update-manage/manage_two.PNG)](media/v2-update-manage/manage_two.PNG#lightbox)
+     [![Karta źródła zdarzeń](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
 1. Upewnij się, że środowisko został aprowizowany przy użyciu odpowiednich ustawień.
 
-    [![Przeglądanie + Tworzenie karty](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+    [![Przeglądanie + Tworzenie karty](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>Zarządzać środowiskiem
 
@@ -88,7 +88,7 @@ W poniższych krokach opisano sposób tworzenia środowiska Azure czas Series In
 
 * Witryny Azure portal **dane referencyjne** bloku zostały usunięte w wersji zapoznawczej Azure czas serii szczegółowe informacje, ponieważ dane referencyjne nie jest składnikiem PAYG środowisk.
 
-[![Środowisko usługi Time Series Insights w wersji zapoznawczej w witrynie Azure portal](media/v2-update-manage/manage_four.PNG)](media/v2-update-manage/manage_four.PNG#lightbox)
+[![Środowisko usługi Time Series Insights w wersji zapoznawczej w witrynie Azure portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

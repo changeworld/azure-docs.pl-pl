@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 982c5dcc052f92afe381235db0bf066262fd82c6
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 357be801914017aceb7e827a3b49960cf7c3e386
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304285"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565406"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -25,7 +25,7 @@ Idąc dalej, uzyskiwanie dostępu do tych kluczy tajnych będzie wymagać `Micro
 
 Ponadto wprowadzamy nowe [Operator klastra HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) roli, który ma być możliwe do pobierania wpisów tajnych, bez konieczności udzielania uprawnień administracyjnych, współautora lub właściciela. Podsumowując:
 
-| Rola                                  | Wcześniej                                                                                       | Idąc dalej       |
+| Role                                  | Wcześniej                                                                                       | Idąc dalej       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Czytelnik                                | -Dostęp do odczytu, włącznie z wpisy tajne                                                                   | -Dostęp do odczytu, **z wyłączeniem** wpisów tajnych |           |   |   |
 | Klaster HDInsight — Operator<br>(Nową rolę) | ND                                                                                              | — Dostęp odczytu/zapisu, w tym kluczy tajnych         |   |   |
@@ -121,10 +121,10 @@ Aktualizacja do [wersji 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Ma
 
 Aktualizacja do [wersji 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) lub nowszej zestawu HDInsight SDK dla języka Python. Modyfikacje minimalnej ilości kodu mogą być wymagane, jeśli używane są metody wpływ tych zmian:
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) będzie **już nie zwracać parametry poufnych** , np. klucze magazynu (lokacja) lub poświadczeń HTTP (bramy).
-    - Aby pobrać wszystkie konfiguracje, w tym liter parametrów, należy użyć [ `ConfigurationsOperations.list` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) przyszłości.  Należy pamiętać, że użytkownicy z rolą "Reader" nie będzie można użyć tej metody. To zapewnia precyzyjną kontrolę nad tym, którzy użytkownicy mają dostęp do poufnych informacji do klastra. 
-    - Aby pobrać tylko poświadczeń bramy protokołu HTTP, użyj [ `ConfigurationsOperations.get_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-resource-group-name--cluster-name--tags-none--custom-headers-none--raw-false----operation-config-) jest już przestarzały i został zastąpiony przez [ `ClusterOperations.update_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
+- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) będzie **już nie zwracać parametry poufnych** , np. klucze magazynu (lokacja) lub poświadczeń HTTP (bramy).
+    - Aby pobrać wszystkie konfiguracje, w tym liter parametrów, należy użyć [ `ConfigurationsOperations.list` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) przyszłości.  Należy pamiętać, że użytkownicy z rolą "Reader" nie będzie można użyć tej metody. To zapewnia precyzyjną kontrolę nad tym, którzy użytkownicy mają dostęp do poufnych informacji do klastra. 
+    - Aby pobrać tylko poświadczeń bramy protokołu HTTP, użyj [ `ClusterOperations.get_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
+- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) jest już przestarzały i został zastąpiony przez [ `ClusterOperations.update_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
 
 ### <a name="sdk-for-java"></a>Zestaw SDK dla języka Java
 

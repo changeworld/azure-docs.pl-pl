@@ -1,5 +1,5 @@
 ---
-title: Interfejs API REST oświadczeń wymiany - Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Interfejs API REST oświadczeń wymiany - Azure Active Directory B2C
 description: Wymiana oświadczeń interfejsu API REST należy dodać do zasad niestandardowych w Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc0cea765816bfac066b05aca65f668fbce0c8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508764"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439011"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie interfejsu API REST oświadczeń wymiany do zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Interakcja zawiera oświadczenia wymianę informacji między oświadczenia inter
 - Może być zaprojektowane jako kroku aranżacji.
 - Można wyzwolić akcję zewnętrznych. Na przykład zarejestrować zdarzenie w zewnętrznej bazie danych.
 - Może służyć do pobierania wartości, a następnie zapisać ją w bazie danych użytkownika.
-- Można zmienić przepływem wykonania. 
+- Można zmienić przepływem wykonania.
 
 Scenariusz, który jest reprezentowany w tym artykule zawiera następujące akcje:
 
@@ -45,9 +45,16 @@ Scenariusz, który jest reprezentowany w tym artykule zawiera następujące akcj
 
 W tej sekcji należy przygotować funkcji platformy Azure, aby otrzymać wartość `email`, a następnie zwracają wartość `city` mogą służyć za pomocą usługi Azure AD B2C jako oświadczenia.
 
-Zmień pliku run.csx dla funkcji platformy Azure, utworzony w celu użyj następującego kodu: 
+Zmień pliku run.csx dla funkcji platformy Azure, utworzony w celu użyj następującego kodu:
 
-```
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
+
 public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
   log.LogInformation("C# HTTP trigger function processed a request.");
@@ -77,9 +84,9 @@ public class ResponseContent
 
 ## <a name="configure-the-claims-exchange"></a>Skonfiguruj oświadczenia w programie exchange
 
-Profil techniczny zawiera konfigurację programu exchange oświadczenia. 
+Profil techniczny zawiera konfigurację programu exchange oświadczenia.
 
-Otwórz *TrustFrameworkExtensions.xml* pliku i dodaj następujące elementy XML wewnątrz **ClaimsProvider** elementu.
+Otwórz *TrustFrameworkExtensions.xml* pliku i Dodaj następujący kod **ClaimsProvider** — element XML wewnątrz **ClaimsProviders** elementu.
 
 ```XML
 <ClaimsProvider>
@@ -134,7 +141,7 @@ Dodawanie kroku do podróży użytkownika edycji profilu. Po użytkownik jest uw
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
   <ClaimsExchanges>
-    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
@@ -188,7 +195,7 @@ Końcowe XML dla podróży użytkownika powinien wyglądać następująco:
     <!-- Add a step 6 to the user journey before the JWT token is created-->
     <OrchestrationStep Order="6" Type="ClaimsExchange">
       <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
       </ClaimsExchanges>
     </OrchestrationStep>
     <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
@@ -204,13 +211,15 @@ Edytuj *ProfileEdit.xml* pliku i Dodaj `<OutputClaim ClaimTypeReferenceId="city"
 Po dodaniu nowego oświadczenia, profilu technicznego wygląda następująco:
 
 ```XML
-<DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="OpenIdConnect" />
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-      <OutputClaim ClaimTypeReferenceId="city" />
-    </OutputClaims>
-    <SubjectNamingInfo ClaimType="sub" />
+<TechnicalProfile Id="PolicyProfile">
+  <DisplayName>PolicyProfile</DisplayName>
+  <Protocol Name="OpenIdConnect" />
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+    <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+    <OutputClaim ClaimTypeReferenceId="city" />
+  </OutputClaims>
+  <SubjectNamingInfo ClaimType="sub" />
 </TechnicalProfile>
 ```
 

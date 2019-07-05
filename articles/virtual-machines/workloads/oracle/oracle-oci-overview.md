@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 8827feaf1d541edc7c0b54d8af951ddab79c5aaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a60e41d3195c0f7d88fd3ba14336d693d2f528e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808622"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446683"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Rozwiązania aplikacji Oracle, integracji Microsoft Azure i infrastruktury chmury Oracle (wersja zapoznawcza)
 
@@ -74,5 +74,7 @@ Tożsamość jest jednym z filarów core współpracy między firmami Microsoft 
 Obecnie ta integracja pozwala na zarządzanie w jednej centralnej lokalizacji, która jest usługi Azure Active Directory. Usługa Azure AD synchronizuje wszelkie zmiany w katalogu z odpowiadający mu katalog bazy danych Oracle i jest używany do logowania jednokrotnego do wielu chmur rozwiązaniach Oracle.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+Rozpoczynanie pracy z usługą [wielu chmur sieci](configure-azure-oci-networking.md) między platformą Azure i OCI. 
 
 Aby uzyskać więcej informacji i oficjalne dokumenty dotyczące OCI zobacz [w chmurze firmy Oracle](https://docs.cloud.oracle.com/iaas/Content/home.htm) dokumentacji.

@@ -8,22 +8,22 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: qianw211
-ms.openlocfilehash: e7867d5ea95cd3142a6f617a5554858b7a72cbc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a6a4c1366f23336072e00d1af59bbaa4bd5c7a4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937662"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442062"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Podręcznik publikowania dla różnych typów ofert
 
 Po [decyzję w sprawie opcji publikowania](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type), jesteś gotowy wybrać typ oferty, która będzie służyć do prezentowania oferty. 
 
-Oferta jest publikowania obiekt, który będzie tworzenie, publikowanie i zarządzanie nimi w [portalu Cloud Partner](https://cloudpartner.azure.com). *Typ oferty* definiuje strukturę oferty, który zawiera metadane, artefakty i innej zawartości, używany do wyświetlania zawartości oferty w portalu marketplace.
+ *Typ oferty* definiuje strukturę oferty, który zawiera metadane, artefakty i innej zawartości, używany do wyświetlania zawartości oferty w portalu marketplace.
 
 Zanim będzie można utworzyć oferty, musisz wybrać typ oferty. Typ oferty odpowiada typ rozwiązania, aplikacji lub oferty usługi, który chcesz opublikować, a także jego wyrównania do produktów i usług. 
 
-Typ jednej oferty można skonfigurować inaczej w portalu Cloud Partner, aby włączyć różne opcje publikowania, wywołania do akcji, inicjowanie obsługi administracyjnej ani ceny. Opcja publikowania i konfiguracji typu oferty również wyrównane do wymagania techniczne i oferty uprawnień. 
+Typ jednej oferty można skonfigurować inaczej umożliwia różne opcje publikowania, wywołania do akcji, inicjowanie obsługi administracyjnej ani ceny. Opcja publikowania i konfiguracji typu oferty również wyrównane do wymagania techniczne i oferty uprawnień. 
 
 Pamiętaj przejrzeć sklepie pamięci i stanowią wymagania kwalifikacyjne typu i wymagania techniczne publikowania przed utworzeniem oferty.
 
@@ -39,8 +39,8 @@ Typów ofert w usłudze Azure Marketplace są wymienione w poniższej tabeli.
 | [**Aplikacje SaaS**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Użyj typu oferty aplikacji SaaS, aby włączyć klienta kupować rozwiązania SaaS, pomoc do subskrypcji. |
 | [**Oferuje kontener**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Gdy Twoje rozwiązanie jest inicjowana jak dla usługi kontenera platformy Azure na podstawie Kubernetes obraz kontenera Docker, należy użyć kontenera typu oferty. |
 | [**Moduły usługi IoT firmy Microsoft Edge**](https://docs.microsoft.com/azure/marketplace/iot-edge-module) | Moduły platformy Azure IoT Edge to najmniejsza jednostki obliczeń zarządzane przez usługi IoT Edge i może zawierać usług firmy Microsoft (np. usługi Azure Stream Analytics), usługi innych firm 3 lub kodu specyficznego dla rozwiązania. |
-| [**Usługi doradcze**](https://docs.microsoft.com/azure/marketplace/consulting-services) | Usługi doradcze w witrynie Azure Marketplace ułatwiają łączenie klientów z usługami w celu obsługi i rozszerzać ich korzystanie z platformy Azure. |
-| [**Oferty usługi AppSource**](https://docs.microsoft.com/azure/marketplace/appsource-offer-publishing-guide) | AppSource storefront obejmuje oferty, które tworzyć lub rozszerzyć pewne Dynamics 365, Office 365, Power BI i Power Apps. |
+| [**Usługi doradcze**](https://docs.microsoft.com/azure/marketplace/consulting-services) | Usługi doradcze ułatwiają łączenie klientów z usługami w celu obsługi i rozszerzać ich użycie usług platformy Azure, Dynamics 365 lub pakietu Power.|
+
 
 Ponadto zobacz [ **wymagania usługi Azure AD** ](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad) przez opcje listowania i oferuje typy, aby uzyskać więcej informacji na temat wymagań rejestracji jednokrotnej.
 
@@ -48,4 +48,4 @@ Ponadto zobacz [ **wymagania usługi Azure AD** ](https://docs.microsoft.com/azu
 
 *   Należy przejrzeć wymagania kwalifikacyjne w opcje publikowania przez sekcję typ oferty w celu sfinalizowania wyborem i konfiguracją, oferty.
 *   Przejrzyj wzorców publikowania w sklepie przykłady w sposób swoje rozwiązanie mapowania typu oferty i konfiguracji.
-*   Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com) tworzenie i konfigurowanie swojej oferty.
+

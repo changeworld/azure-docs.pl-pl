@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: 9b4bdee19c883252e7de140ac7b19babd43d1df8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0383fd2ca348cd69f07ed61a7935e4fec7999b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755190"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538017"
 ---
 Seria H maszyn wirtualnych (VM) są przeznaczone do klasy kierownicze wydajność, skalowalność MPI i ekonomiczność dla różnych obciążeń HPC w rzeczywistych warunkach.
 
@@ -33,7 +33,7 @@ Magazyn w warstwie Premium: Obsługiwane
 
 Buforowanie Premium Storage: Obsługiwane
 
-| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
+| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (Gb/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Wszyscy | 700 | 4 | 1 |
 
@@ -48,7 +48,7 @@ Magazyn w warstwie Premium: Obsługiwane
 Buforowanie Premium Storage: Obsługiwane
 
 
-| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
+| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (Gb/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Wszyscy | 700 | 4 | 1 |
 
@@ -63,7 +63,7 @@ Magazyn w warstwie Premium:  Nieobsługiwane
 
 Buforowanie Premium Storage:  Nieobsługiwane
 
-| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
+| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (Gb/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_H8 | 8 | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
 | Standardowa_H16 | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  - | Intel 5.x, MS-MPI | 2000 | 64 | 4 |

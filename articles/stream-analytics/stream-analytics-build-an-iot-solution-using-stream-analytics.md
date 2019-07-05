@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201514"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443677"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Tworzenie rozwiązania IoT przy użyciu usługi Stream Analytics
 
@@ -138,7 +138,8 @@ Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz 
 10. Po kilku chwilach pojawi się powiadomienie, aby potwierdzić **wdrażanie zakończyło się pomyślnie**.
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Przejrzyj zasoby usługi Azure Stream Analytics TollApp
-1. Logowanie do witryny Azure Portal
+
+1. Logowanie się do witryny Azure Portal
 
 2. Znajdź grupę zasobów, który został określony w poprzedniej sekcji.
 
@@ -171,7 +172,7 @@ Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz 
    - **Rejestracja** dane wejściowe są połączenia magazynu obiektów Blob platformy Azure, do pliku statycznego registration.json, używany do wyszukiwania, zgodnie z potrzebami. Ten wejściowych danych referencyjnych jest używany w późniejszym różnice składni zapytania.
 
 4. Sprawdź dane wyjściowe TollApp przykładowego zadania.
-   - **Usługa cosmos DB** dane wyjściowe to Cosmos kolekcji bazy danych, które odbiera zdarzenia obiektu sink danych wyjściowych. Należy pamiętać, że te dane wyjściowe jest używany w w klauzuli zapytania przesyłania strumieniowego.
+   - **Usługa cosmos DB** danych wyjściowych jest kontenerem bazy danych Cosmos, który odbiera zdarzenia obiektu sink danych wyjściowych. Należy pamiętać, że te dane wyjściowe jest używany w w klauzuli zapytania przesyłania strumieniowego.
 
 ## <a name="start-the-tollapp-streaming-job"></a>Uruchamianie zadania przesyłania strumieniowego TollApp
 Wykonaj następujące kroki, aby uruchomić zadanie przesyłania strumieniowego:

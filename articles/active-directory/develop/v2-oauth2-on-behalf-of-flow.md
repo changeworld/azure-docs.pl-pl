@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdd91f8ee1228febe71244530a63fe992df56d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110858"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482167"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma tożsamości firmy Microsoft i przepływ OAuth 2.0 "w imieniu"
 
@@ -42,7 +42,7 @@ Przyjęto założenie, że użytkownik został uwierzytelniony w aplikacji za po
 
 Poniższe kroki stanowią przepływu OBO i zostały wyjaśnione przy pomocy poniższym diagramie.
 
-![W imieniu użytkownika — przepływ OAuth 2.0](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Pokazuje OAuth 2.0 w imieniu użytkownika z usługi flow](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. Aplikacja kliencka wysyła żądanie do interfejsu API, A za pomocą tokenu A (przy użyciu `aud` oświadczenia a interfejsu API).
 1. A interfejs API jest uwierzytelniany punktu końcowego wystawiania tokenu platforma tożsamości firmy Microsoft i żądania tokenu służącego do dostępu do interfejsu API B.

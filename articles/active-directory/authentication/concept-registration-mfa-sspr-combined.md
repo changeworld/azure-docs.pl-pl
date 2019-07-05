@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2d1a5a342bfe4527c15a0721a8f852a269bef67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113515"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537015"
 ---
 # <a name="combined-security-information-registration-preview"></a>Połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
@@ -47,13 +47,13 @@ Połączone rejestracji obsługuje następujące metody uwierzytelniania i akcje
 |   | Zarejestruj subskrypcję | Change | Usuwanie |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Tak (maksymalnie 5) | Nie | Yes |
-| Inną aplikację uwierzytelniania | Tak (maksymalnie 5) | Nie | Tak |
-| Token sprzętowy | Nie | Nie | Tak |
-| Numer telefonu | Tak | Yes | Yes |
+| Inną aplikację uwierzytelniania | Tak (maksymalnie 5) | Nie | Yes |
+| Token sprzętowy | Nie | Nie | Yes |
+| Numer telefonu | Yes | Yes | Yes |
 | Alternatywny numer telefonu | Yes | Yes | Tak |
 | Telefon biurowy | Nie | Nie | Nie |
-| Email | Tak | Yes | Tak |
-| Pytania zabezpieczające | Tak | Nie | Tak |
+| Email | Tak | Yes | Yes |
+| Pytania zabezpieczające | Yes | Nie | Tak |
 | Hasła aplikacji | Yes | Nie | Tak |
 
 > [!NOTE]
@@ -136,6 +136,8 @@ Użytkownik, który został wcześniej skonfigurowany co najmniej jedną metodę
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Zezwolenie na zarejestrowanie połączone w ramach dzierżawy](howto-registration-mfa-sspr-combined.md)
+
+[Użycie funkcji samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego i szczegółowe informacje, raportowanie](howto-authentication-methods-usage-insights.md)
 
 [Dostępne metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ](concept-authentication-methods.md)
 

@@ -12,12 +12,12 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: a67436f09d6e28db8d19679e446ac4cf98383709
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3d0aaee624bdba169f13313bb57a3ebe8075592
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65593804"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490067"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS Integration Runtime
 
@@ -146,17 +146,7 @@ Wystąpienie usługi Azure SQL Database Managed obsługuje tworzenie bazy danych
 
 ### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Konfigurowanie uwierzytelniania usługi Azure AD dla wystąpienia zarządzanego Azure SQL Database
 
-1.   W witrynie Azure portal wybierz **wszystkich usług** -> **serwerów SQL** nawigacji po lewej stronie.
-
-2.   Wybierz wystąpienie usługi zarządzane, należy skonfigurować przy użyciu uwierzytelniania usługi Azure AD.
-
-3.   W **ustawienia** części bloku wybierz **administratora usługi Active Directory**.
-
-4.   Na pasku poleceń Wybierz **Ustaw administratora**.
-
-5.   Wybierz konto użytkownika usługi Azure AD, można wprowadzić administrator serwera, a następnie wybierz pozycję **wybierz**.
-
-6.   Na pasku poleceń Wybierz **Zapisz**.
+Postępuj zgodnie z instrukcjami w [aprowizacji administrator usługi Azure Active Directory dla wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Dodawanie tożsamości zarządzanej dla usługi ADF jako użytkownik w wystąpieniu zarządzanym usługi Azure SQL Database
 
@@ -164,7 +154,7 @@ W tym następnego kroku należy [programu Microsoft SQL Server Management Studi
 
 1.  Należy uruchomić program SSMS.
 
-2.  Połączyć się z wystąpieniem zarządzanym przy użyciu konta administratora SQL/Active Directory.
+2.  Nawiązać połączenie z wystąpieniem zarządzanym przy użyciu konta programu SQL Server, który jest **sysadmin**. Jest to tymczasowe ograniczenie, które zostaną usunięte, gdy podmiotów serwera usługi Azure AD (logowania) dla wystąpienia zarządzanego Azure SQL Database stanie się po ogólnym udostępnieniu produktu Jeśli spróbujesz utworzyć identyfikator logowania przy użyciu konta administratora usługi Azure AD, zostanie wyświetlony następujący błąd: Msg 15247, poziom 16, stan 1 wiersz 1 użytkownik ma uprawnienia do wykonania tej akcji.
 
 3.  W **Eksplorator obiektów**, rozwiń węzeł **baz danych** -> **systemowych baz danych** folderu.
 

@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ddbb535d386fb90ccb2042e0908e66146e854f00
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603462"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551524"
 ---
 # <a name="what-is-azure-data-box"></a>Co to jest usługa Azure Data Box?
 
@@ -107,7 +107,7 @@ Typowy przepływ obejmuje następujące kroki:
 
 W trakcie tego procesu będziesz otrzymywać powiadomienia e-mail o wszystkich zmianach stanu. Aby uzyskać więcej informacji na temat szczegółowego przepływu, przejdź do tematu [Deploy Data Box in Azure portal (Wdrażanie usługi Data Box w witrynie Azure Portal)](data-box-deploy-ordered.md).
 
-## <a name="region-availability"></a>Dostępność regionalna
+## <a name="region-availability"></a>Dostępność w danym regionie
 
 Urządzenie Data Box można transferu danych według regionu, w którym wdrożono usługę, kraj/region, z którym urządzenie jest dostarczane i docelowego konta magazynu platformy Azure, w którym transferu danych. 
 
@@ -116,6 +116,9 @@ Urządzenie Data Box można transferu danych według regionu, w którym wdrożon
     - Unia Europejska — Europa Zachodnia i Europa Północna.
     - Zjednoczone Królestwo — Południowe Zjednoczone Królestwo i Zachodnie Zjednoczone Królestwo.
     - Francja — Francja Środkowa i Francja Południowa.
+    - Japonia, część — Japonia, część wschodnia i Japonia Zachodnia.
+    - Australia — Australia Wschodnia i Australia południowo-wschodnia.
+    - Kanada — Kanada Wschodnia i Kanada Środkowa.
 
 - **Docelowe konta magazynu** — konta magazynu do przechowywania danych są dostępne we wszystkich regionach świadczenia usługi Azure, w których ta usługa jest dostępna.  
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: 41cb37eb9d96752d4732731d2a36d9bc892cbaa5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c3743c62dcbdccc2a119cfec570df96c622390c7
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159811"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540329"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Szybki start: Tworzenie kolejki w usłudze Azure Storage przy użyciu platformy .NET
 
@@ -187,9 +187,9 @@ Console.WriteLine();
 
 Następnie przykładowy kod dodaje komunikat na końcu kolejki. 
 
-Wiadomość musi być w formacie, który można uwzględnić w żądaniu XML z kodowaniem UTF-8, a jego maksymalny rozmiar może wynosić maksymalnie 64 KB. Jeśli komunikat zawiera dane binarne, firma Microsoft zaleca kodowanie komunikatu przy użyciu schematu Base64.
+Wiadomość musi być w formacie, który można uwzględnić w żądaniu XML z kodowaniem UTF-8, a jego maksymalny rozmiar może wynosić maksymalnie 64 KB. Jeśli wiadomość zawiera dane binarne, zalecamy możesz kodowanie Base64 wiadomości.
 
-Domyślnie maksymalny czas wygaśnięcia komunikatu wynosi 7 dni. Czas wygaśnięcia komunikatu można ustawić na dowolną liczbę dodatnią lub na wartość -1, aby wskazać, że komunikat nie wygasa.
+Domyślnie maksymalny czas wygaśnięcia komunikatu wynosi 7 dni. Można określić dowolna liczba dodatnia dla komunikatu, time-to-live.
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -199,6 +199,12 @@ Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
 Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
 Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
 Console.WriteLine();
+```
+
+Aby dodać wiadomości, które nie wygaśnie, należy użyć `Timespan.FromSeconds(-1)` w wywołania do [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+
+```csharp
+await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
 ### <a name="peek-a-message-from-the-queue"></a>Wgląd do wiadomości z kolejki

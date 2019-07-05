@@ -3,7 +3,7 @@ title: Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Forms |
 description: Dowiedz się, jak wysyłać powiadomienia wypychane dla wielu platform do aplikacji platformy Xamarin.Forms przy użyciu usług platformy Azure.
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: d9b1ba9a-b3f2-4d12-affc-2ee34311538b
@@ -12,20 +12,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/12/2016
-ms.author: crdun
-ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: b7e2ff63211ec5891a48a585e4f69e18116cdeb3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62098730"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446582"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Forms
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>Omówienie
+> [!NOTE]
+> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-push) już dziś.
+>
+
+## <a name="overview"></a>Przegląd
 
 W tym samouczku, jak dodawać powiadomienia wypychane do wszystkich projektów, które powstały w wyniku [Xamarin.Forms — szybki start](app-service-mobile-xamarin-forms-get-started.md). Oznacza to, że powiadomienia wypychane są wysyłane do wszystkich klientów dla wielu platform, za każdym razem, gdy rekord zostanie wstawiona.
 

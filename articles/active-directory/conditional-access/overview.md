@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc03eeaa3c9b793c5ab20c8e4e2dd6d4473eecd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5ef72f1db329d04809a1069c1916d1ffcfffe65
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112250"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509386"
 ---
 # <a name="what-is-conditional-access"></a>Co to jest dostęp warunkowy?
 
 Zabezpieczenia są niezwykle ważne dla organizacji korzystających z chmury. Kluczowym aspektem zabezpieczeń w chmurze jest zarządzanie tożsamościami i dostępem do zasobów w chmurze. W świecie zdominowanym przez urządzenia mobilne i rozwiązania chmurowe użytkownicy mogą uzyskiwać dostęp do zasobów organizacji z dowolnego miejsca, za pomocą wielu różnych urządzeń i aplikacji. Dlatego nie wystarczy już tylko kontrolować tego, kto może uzyskać dostęp do zasobu. Aby zapewnić właściwą równowagę między bezpieczeństwem a produktywnością, należy w decyzjach dotyczących kontroli dostępu uwzględnić też to, w jaki sposób uzyskuje się dostęp do zasobu. Przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD) można rozwiązać tego wymagania. Dostęp warunkowy jest funkcją usługi Azure Active Directory. Przy użyciu dostępu warunkowego można zaimplementować decyzji dotyczących kontroli automatyczny dostęp do uzyskiwania dostępu do Twoich aplikacji w chmurze, które są oparte na warunkach.
 
-Po zakończeniu pierwszego czynnika, wymuszane są zasady dostępu warunkowego. W związku z tym dostęp warunkowy nie jest przeznaczony jako pierwszy defense wiersza dla scenariuszy, takich jak ataki (DoS) typu "odmowa usługi", ale mogą korzystać z sygnałów z tych zdarzeń (np. poziom ryzyka logowania, lokalizacja żądania, i tak dalej) w celu określenia dostępu do.  
+Po zakończeniu pierwszego czynnika, wymuszane są zasady dostępu warunkowego. W związku z tym dostęp warunkowy nie jest przeznaczony jako pierwszy defense wiersza dla scenariuszy, takich jak ataki (DoS) typu "odmowa usługi", ale mogą korzystać z sygnałów z tych zdarzeń (na przykład poziom ryzyka logowania, lokalizacja żądania, i tak dalej) w celu określenia dostępu do.  
 
 ![Formant](./media/overview/81.png)
 
@@ -40,11 +40,8 @@ Za pomocą zasad dostępu warunkowego, można zastosować formantów prawo dost�
 Poniżej przedstawiono niektóre typowe zagadnienia dostępu, które dostępu warunkowego mogą pomóc Ci:
 
 - **[Ryzyko logowania](conditions.md#sign-in-risk)** : usługa Azure AD Identity Protection wykrywa zagrożenia związane z logowaniem. Jak można ograniczyć dostęp w przypadku wykrycia ryzykownego logowania, wskazującego na złośliwego użytkownika? Co zrobić, aby uzyskać potwierdzenie, że logowanie pochodziło od uprawnionego użytkownika? Co, jeśli wątpliwości są na tyle poważne, że uzasadniają zablokowanie określonym użytkownikom dostępu do aplikacji?  
-
 - **[Lokalizacja sieciowa](location-condition.md)** : usługa Azure AD jest dostępna z każdego miejsca. Co zrobić w przypadku próby uzyskania dostępu z lokalizacji sieciowej poza kontrolą Twojego działu IT? Kombinacja nazwy użytkownika i hasła może wystarczyć do potwierdzenia tożsamości w przypadku prób dostępu z poziomu sieci firmowej. Co zrobić, jeśli potrzebujesz pewniejszego potwierdzenia tożsamości w przypadku prób dostępu z nieoczekiwanych lokalizacji, takich jak inne kraje czy regiony świata? Co, jeśli chcesz zablokować próby dostępu z określonych lokalizacji?  
-
 - **[Zarządzanie urządzeniami](conditions.md#device-platforms)** : w usłudze Azure AD użytkownicy mogą uzyskać dostęp do aplikacji w chmurze za pomocą wielu różnych urządzeń, w tym urządzeń mobilnych i prywatnych. Co zrobić, jeśli chcesz zezwolić tylko na próby dostępu z urządzeń zarządzanych przez Twój dział IT? Co, jeśli chcesz zablokować próby dostępu do aplikacji chmurowych w Twoim środowisku z określonych typów urządzeń?
-
 - **[Aplikacja kliencka](conditions.md#client-apps)** : obecnie można uzyskiwać dostęp do wielu aplikacji w chmurze za pomocą różnego typu aplikacji, na przykład aplikacji internetowych, mobilnych i klasycznych. Co zrobić w przypadku próby dostępu za pomocą typu aplikacji klienckiej, który powoduje znane problemy? Co, jeśli chcesz, aby określone typy aplikacji były używane tylko na urządzeniach zarządzanych przez Twój dział IT?
 
 Te pytania i odpowiedzi powiązanych reprezentują typowych scenariuszy dostępu dla dostępu warunkowego usługi Azure AD.
@@ -62,7 +59,6 @@ Zasady dostępu warunkowego jest definicja scenariusza dostępu przy użyciu nas
 Element **W takiej sytuacji:** w zasadach określa przyczynę uaktywnienia zasad. Taka przyczyna występuje w przypadku spełnienia określonej grupy warunków. W funkcji dostępu warunkowego usługi Azure AD przypisania dwa warunki odtwarzania specjalne uprawnienia:
 
 - **[Użytkownicy](conditions.md#users-and-groups)** : użytkownicy podejmujący próbę uzyskania dostępu ( **„kto”** ).
-
 - **[Aplikacje w chmurze](conditions.md#cloud-apps-and-actions)** : docelowe elementy, do których użytkownicy próbują uzyskać dostęp ( **„co”** ).
 
 Te dwa warunki są obowiązkowe w zasadach dostępu warunkowego. Oprócz dwóch warunków obowiązkowych można zastosować dodatkowe warunki określające sposób uzyskiwania dostępu. Typowe przykłady to użycie urządzenia mobilnego lub próba dostępu z lokalizacji poza siecią firmową. Aby uzyskać więcej informacji, zobacz [warunków w usłudze Azure Active Directory dostępu warunkowego](conditions.md).

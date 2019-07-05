@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/06/2019
+ms.date: 07/03/2019
 ms.author: Kumud
-ms.openlocfilehash: ec68038a5b0fe7edca095e0d9b190d5da09c8e82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08670c8aa6d5c9830ab84bc848bac38063bd41c0
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754712"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550920"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metryki i kondycji diagnostyki dla standardowego modułu równoważenia obciążenia
 
@@ -37,12 +37,12 @@ Różne konfiguracje standardowego modułu równoważenia obciążenia zapewnia 
 
 | Metryka | Typ zasobu | Opis | Zalecane agregacji |
 | --- | --- | --- | --- |
-| Dane ścieżki dostępność (dostępność adresu VIP)| Publiczny moduł równoważenia obciążenia | Stale Standard Load Balancer, która korzysta ze ścieżki danych z w obrębie regionu do frontonu modułu równoważenia obciążenia, aż do stosu SDN, który obsługuje Twoja maszyna wirtualna. Tak długo, jak utrzymać dobrej kondycji wystąpień, pomiar następuje taką samą ścieżkę ruchu ze zrównoważonym obciążeniem w danej aplikacji. Ścieżki danych, których używają Twoi klienci jest również sprawdzany. Miara jest niewidoczny dla aplikacji i nie kolidują z innymi operacjami.| Średnia |
-| Stan sondy kondycji (dostępność DIP) |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Standardowy moduł równoważenia obciążenia używa rozproszona usługa badania kondycji, która monitoruje kondycję swojej aplikacji punktu końcowego zgodnie z ustawieniami konfiguracji. Ta metryka zapewnia funkcję agregującą lub na punkt końcowy filtrowany widok każdego wystąpienia punktu końcowego puli modułu równoważenia obciążenia. Widać, jak moduł równoważenia obciążenia Wyświetla kondycję swojej aplikacji, jak wskazano w bieżącej konfiguracji sondy kondycji. |  Średnia |
-| SYN (Synchronizuj) pakietów |  Publiczny moduł równoważenia obciążenia | Load Balancer w warstwie standardowa zakończyć połączenia Transmission Control Protocol (TCP) lub nie korzystać z protokołu TCP lub UDP przepływów pakietów. Przepływów i ich uzgodnienia są zawsze między źródłem i wystąpienie maszyny Wirtualnej. Aby lepiej rozwiązywać scenariuszy protokołu TCP, można skorzystać z SYN liczniki pakietów, aby zrozumieć, jak wiele połączeń TCP prób. Metryka zgłasza liczbę pakietów TCP SYN, które zostały odebrane.| Średnia |
-| Połączeń SNAT |  Publiczny moduł równoważenia obciążenia |Load Balancer w warstwie standardowa zgłasza liczbę przepływy wychodzące, które są masqueraded frontonie adres publiczny adres IP. Porty tłumaczenia (SNAT) adres sieci źródłowe są wyczerpującymi się zasobami. Ta metryka może stanowić wskazówkę stopnia aplikacji powołuje się na SNAT dla ruchu wychodzącego przepływów. Liczniki dla udane i nieudane przepływy wychodzące SNAT są zgłaszane i może służyć do rozwiązywania oraz zrozumieć kondycję swoich przepływów ruchu wychodzącego.| Średnia |
-| Liczniki bajtów |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Load Balancer w warstwie standardowa raporty danych przetwarzanych na frontonie.| Średnia |
-| Liczniki pakietów |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Load Balancer w warstwie standardowa raporty pakietów przetwarzanych na frontonie.| Średnia |
+| Dane ścieżki dostępność (dostępność adresu VIP)| Publiczny moduł równoważenia obciążenia | Stale Standard Load Balancer, która korzysta ze ścieżki danych z w obrębie regionu do frontonu modułu równoważenia obciążenia, aż do stosu SDN, który obsługuje Twoja maszyna wirtualna. Tak długo, jak utrzymać dobrej kondycji wystąpień, pomiar następuje taką samą ścieżkę ruchu ze zrównoważonym obciążeniem w danej aplikacji. Ścieżki danych, których używają Twoi klienci jest również sprawdzany. Miara jest niewidoczny dla aplikacji i nie kolidują z innymi operacjami.| Average |
+| Stan sondy kondycji (dostępność DIP) |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Standardowy moduł równoważenia obciążenia używa rozproszona usługa badania kondycji, która monitoruje kondycję swojej aplikacji punktu końcowego zgodnie z ustawieniami konfiguracji. Ta metryka zapewnia funkcję agregującą lub na punkt końcowy filtrowany widok każdego wystąpienia punktu końcowego puli modułu równoważenia obciążenia. Widać, jak moduł równoważenia obciążenia Wyświetla kondycję swojej aplikacji, jak wskazano w bieżącej konfiguracji sondy kondycji. |  Average |
+| SYN (Synchronizuj) pakietów |  Publiczny moduł równoważenia obciążenia | Load Balancer w warstwie standardowa zakończyć połączenia Transmission Control Protocol (TCP) lub nie korzystać z protokołu TCP lub UDP przepływów pakietów. Przepływów i ich uzgodnienia są zawsze między źródłem i wystąpienie maszyny Wirtualnej. Aby lepiej rozwiązywać scenariuszy protokołu TCP, można skorzystać z SYN liczniki pakietów, aby zrozumieć, jak wiele połączeń TCP prób. Metryka zgłasza liczbę pakietów TCP SYN, które zostały odebrane.| Average |
+| Połączeń SNAT |  Publiczny moduł równoważenia obciążenia |Load Balancer w warstwie standardowa zgłasza liczbę przepływy wychodzące, które są masqueraded frontonie adres publiczny adres IP. Porty tłumaczenia (SNAT) adres sieci źródłowe są wyczerpującymi się zasobami. Ta metryka może stanowić wskazówkę stopnia aplikacji powołuje się na SNAT dla ruchu wychodzącego przepływów. Liczniki dla udane i nieudane przepływy wychodzące SNAT są zgłaszane i może służyć do rozwiązywania oraz zrozumieć kondycję swoich przepływów ruchu wychodzącego.| Average |
+| Liczniki bajtów |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Load Balancer w warstwie standardowa raporty danych przetwarzanych na frontonie.| Average |
+| Liczniki pakietów |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Load Balancer w warstwie standardowa raporty pakietów przetwarzanych na frontonie.| Average |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Wyświetlaj swoje metryki modułu równoważenia obciążenia w witrynie Azure portal
 
@@ -85,7 +85,7 @@ Aby uzyskać dostępność ścieżki danych dla zasobów usługi Load Balancer w
 Metryka jest generowany przez aktywne, wewnątrzpasmowe miary. Usługa badania w obrębie regionu pochodzi ruch do pomiaru. Usługa została aktywowana, natychmiast Utwórz wdrożenie z publicznych frontonu i kontynuuje, dopóki nie usuniesz frontonu. 
 
 >[!NOTE]
->Wewnętrznych frontonów nie są obsługiwane w tej chwili. 
+>Dane ścieżki dostępność (dostępność adresu VIP) nie jest dostępna dla wewnętrznych frontonów modułu równoważenia obciążenia. 
 
 Generowany jest okresowo pakiet dopasowanie wdrożenia frontonu i reguły. Przez region ze źródła do hosta, gdzie znajduje się maszyny Wirtualnej w puli zaplecza. Infrastruktura równoważenia obciążenia wykonuje obciążenia równoważenia i tłumaczenie operacji, jak w przypadku cały pozostały ruch. To sondowanie jest wewnątrzpasmowe na punkt końcowy z równoważeniem obciążenia. Po sondy nadejściu na hoście obliczeniowych, gdzie znajduje się dobrej kondycji maszyn wirtualnych w puli zaplecza, hosta compute generuje odpowiedzi do sondowania usługi. Maszyna wirtualna nie widzi tego ruchu.
 
@@ -208,6 +208,10 @@ W poniższej tabeli przedstawiono różne stany kondycji zasobów i ich opisy:
 | Dostępne | Zasób modułu równoważenia obciążenia standardowy publiczny jest w dobrej kondycji i dostępności. |
 | Niedostępny | Zasób modułu równoważenia obciążenia standardowy publiczny nie jest w dobrej kondycji. Diagnozowanie kondycji, wybierając **usługi Azure Monitor** > **metryki**.<br>(*Unavailable* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.) |
 | Nieznane | Kondycja zasobu dla zasobu modułu równoważenia obciążenia standardowy publiczny nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.)  |
+
+## <a name="limitations"></a>Ograniczenia 
+
+- Dane ścieżki dostępność (dostępność adresu VIP) nie jest dostępna dla wewnętrznych frontonów modułu równoważenia obciążenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

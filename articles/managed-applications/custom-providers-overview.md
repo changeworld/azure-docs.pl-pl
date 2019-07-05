@@ -1,91 +1,130 @@
 ---
-title: Przegląd dostawców niestandardowych usługi Azure (wersja zapoznawcza)
-description: Zawiera opis pojęć dotyczących tworzenia dostawcy zasobów niestandardowych za pomocą usługi Azure Resource Manager
-author: MSEvanhi
+title: Omówienie usługi Azure Resource niestandardowych dostawców
+description: Więcej informacji o dostawcy zasobów niestandardowych usługi Azure i jak rozszerzyć płaszczyzny interfejsu API usługi Azure, aby dopasować przepływów pracy.
+author: jjbfour
 ms.service: managed-applications
 ms.topic: conceptual
-ms.date: 05/01/2019
-ms.author: evanhi
-ms.openlocfilehash: bbfb10f612690af0f4fd3683e0f58986a21048d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.author: jobreen
+ms.openlocfilehash: f418cd6c5470740ce123448ddbbe54cb6e89dabe
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65159858"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67475963"
 ---
-# <a name="azure-custom-providers-preview-overview"></a>Omówienie niestandardowych dostawców w wersji zapoznawczej na platformie Azure
+# <a name="azure-custom-resource-providers-overview"></a>Przegląd dostawców zasobów niestandardowych platformy Azure
 
-Za pomocą dostawców niestandardowych usługi Azure można rozszerzyć platformy Azure, aby pracować z Twoją usługą. Możesz utworzyć własnego dostawcę zasobów, w tym typów niestandardowych zasobów i akcji. Niestandardowego dostawcy jest zintegrowana z usługą Azure Resource Manager. Funkcje Menedżera zasobów, takie jak wdrożeń szablonu i kontroli dostępu opartej na rolach, można użyć do wdrożenia i zabezpieczanie usługi.
+Dostawcy zasobów usługi Azure Custom to platforma rozszerzalność na platformie Azure. Umożliwia on zdefiniowany do tworzenia niestandardowych interfejsów API, który może służyć w celu wzbogacenia domyślne środowisko platformy Azure. W tej dokumentacji opisano:
 
-Ten artykuł zawiera omówienie niestandardowych dostawców i jego możliwości. Na poniższej ilustracji przedstawiono przepływ pracy dla zasobów i akcji zdefiniowanych w niestandardowego dostawcy.
+- Sposób tworzenia i wdrażania niestandardowego dostawcę zasobów platformy Azure.
+- Jak korzystać z usługi Azure Resource niestandardowi rozszerzenie istniejących przepływów pracy.
+- Gdzie można znaleźć, przewodniki i przykłady kodu, aby rozpocząć pracę.
 
 ![Omówienie niestandardowego dostawcy](./media/custom-providers-overview/overview.png)
 
 > [!IMPORTANT]
 > Niestandardowi dostawcy jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="define-your-custom-provider"></a>Definiowanie niestandardowego dostawcy
+## <a name="what-can-custom-resource-providers-do"></a>Co można zrobić dostawców zasobów niestandardowych
 
-Możesz rozpocząć, umożliwiając usługi Azure Resource Manager o niestandardowego dostawcy. Wdrażanie na platformie Azure zasobu niestandardowego dostawcy, który używa typ zasobu **Microsoft.CustomProviders/resourceProviders**. W tego zasobu można zdefiniować zasoby i akcje dla Twojej usługi.
+Poniżej przedstawiono kilka przykładów można osiągnąć przez z dostawcami zasobów niestandardowych usługi Azure:
 
-Na przykład, jeśli usługa wymaga typu zasobu o nazwie **użytkowników**, obejmują tego typu zasobu w definicji niestandardowego dostawcy. Dla każdego typu zasobu, musisz podać punktu końcowego, który udostępnia operacje REST (PUT, GET, DELETE) dla tego typu zasobu. Punkt końcowy może być hostowana na dowolnym środowisku i zawiera logikę jak usługa obsługuje operacje na typ zasobu.
+- Rozszerzenie interfejsu REST API usługi Resource Manager platformy Azure obejmujący usługi wewnętrznych i zewnętrznych.
+- Włącz niestandardowych scenariuszy na podstawie istniejących przepływów pracy platformy Azure.
+- Dostosowywanie formantu szablonów usługi Azure Resource Manager i efekt.
 
-Można również definiować niestandardowe akcje dla dostawcy zasobów. Działania reprezentują operacje POST. Za pomocą akcji dla operacji, takich jak początek, zatrzymywanie lub ponowne uruchomienie. Możesz podać punktu końcowego, który obsługuje żądanie.
+## <a name="what-is-a-custom-resource-provider"></a>Co to jest dostawca zasobów niestandardowych
 
-Poniższy przykład pokazuje jak zdefiniować dostawcy niestandardowego za pomocą action i typu zasobu.
+Dostawcy zasobów usługi platformy Azure niestandardowe są wykonywane przez tworzenie kontraktu między platformą Azure i punktu końcowego. Ten kontrakt definiuje listę nowych zasobów i akcji za pomocą nowego zasobu **Microsoft.CustomProviders/resourceProviders**. Dostawca zasobów niestandardowych następnie udostępni te nowe interfejsy API na platformie Azure. Usługa Azure niestandardowych dostawców zasobów składają się z trzech części: dostawca zasobów niestandardowych **punktów końcowych**i zasobów niestandardowych.
 
-```json
+## <a name="how-to-build-custom-resource-providers"></a>Jak tworzyć dostawców zasobów niestandardowych
+
+Dostawcy zasobów niestandardowych są listy umów między platformą Azure i punktów końcowych. Ten kontrakt opisano, jak Azure powinny wchodzić w interakcje z punktem końcowym. Działa dostawca zasobów, takich jak serwer proxy i przekaże żądania i odpowiedzi do i z określonym **punktu końcowego**. Dostawca zasobów można określić dwa typy kontraktów: [ **wartości resourcetype** ](./custom-providers-resources-endpoint-how-to.md) i [ **akcje**](./custom-providers-action-endpoint-how-to.md). Są one włączone za pomocą definicji punktów końcowych. Definicja punktu końcowego składa się z trzech pól: **nazwa**, **routingType**, i **punktu końcowego**.
+
+Przykładowy punkt końcowy:
+
+```JSON
 {
-  "apiVersion": "2018-09-01-preview",
-  "type": "Microsoft.CustomProviders/resourceProviders",
-  "name": "[parameters('funcName')]",
-  "location": "[parameters('location')]",
-  "properties": {
-    "actions": [
-      {
-        "name": "ping",
-        "routingType": "Proxy",
-        "endpoint": "[concat('https://', parameters('funcName'), '.azurewebsites.net/api/{requestPath}')]"
-      }
-    ],
-    "resourceTypes": [
-      {
-        "name": "users",
-        "routingType": "Proxy,Cache",
-        "endpoint": "[concat('https://', parameters('funcName'), '.azurewebsites.net/api/{requestPath}')]"
-      }
-    ]
-  }
-},
-```
-
-Aby uzyskać **routingType**, dopuszczalne wartości `Proxy` i `Cache`. Serwer proxy oznacza, że żądania dla tego typu zasobu lub działań są obsługiwane przez punkt końcowy. Ustawienie pamięci podręcznej jest obsługiwana tylko dla typów zasobów, a nie akcji. Aby określić pamięci podręcznej, należy także określić serwer proxy. Pamięć podręczna oznacza, że odpowiedzi z punktu końcowego są przechowywane w celu optymalizacji operacji odczytu. Przy użyciu ustawienia pamięci podręcznej ułatwia implementowania interfejsu API, który jest spójny i zgodne z innymi usługami usługi Resource Manager.
-
-## <a name="deploy-your-resource-types"></a>Wdrażanie typów zasobów
-
-Po zdefiniowaniu niestandardowego dostawcy, można wdrożyć swoje typy zasobów niestandardowych. Poniższy przykład ilustruje JSON uwzględnić w szablonie, aby wdrożyć ten typ zasobu dla niestandardowego dostawcy. W tym samym szablonie z innymi zasobami platformy Azure można wdrożyć tego typu zasobu.
-
-```json
-{
-    "apiVersion": "2018-09-01-preview",
-    "type": "Microsoft.CustomProviders/resourceProviders/users",
-    "name": "[concat(parameters('rpname'), '/santa')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "FullName": "Santa Claus",
-        "Location": "NorthPole"
-    }
+  "name": "{endpointDefinitionName}",
+  "routingType": "Proxy",
+  "endpoint": "https://{endpointURL}/"
 }
 ```
 
-## <a name="manage-access"></a>Zarządzanie dostępem
+Właściwość | Wymagane | Opis
+---|---|---
+name | *Tak* | Nazwa definicji punktu końcowego. Azure udostępni tę nazwę, za pośrednictwem jego interfejsu API w obszarze "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
+routingType | *Brak* | Określa typ kontraktu z **punktu końcowego**. Jeśli nie zostanie określony, zostaną domyślnie "Proxy".
+endpoint | *Tak* | Punkt końcowy, aby kierować żądania do. Obsłuży odpowiedzi, a także wszelkie efekty uboczne żądania.
 
-Korzystanie z systemu Azure [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) zarządzanie dostępem do Twojego dostawcę zasobów. Możesz przypisać [wbudowane role](../role-based-access-control/built-in-roles.md) takich jak właściciela, współautora lub czytelnika dla użytkowników. Alternatywnie można zdefiniować [ról niestandardowych](../role-based-access-control/custom-roles.md) specyficznych dla operacji dostawcy zasobów.
+### <a name="building-custom-resources"></a>Tworzenie zasobów niestandardowych
+
+**Wartości resourcetype** opisano nowe zasoby niestandardowe, które są dodawane do usługi Azure. Ujawnić te podstawowe metody RESTful CRUD. Zobacz [więcej informacji na temat tworzenia niestandardowych zasobów](./custom-providers-resources-endpoint-how-to.md)
+
+Przykładowy niestandardowego dostawcę zasobów za pomocą **wartości resourcetype**:
+
+```JSON
+{
+  "properties": {
+    "resourceTypes": [
+      {
+        "name": "myCustomResources",
+        "routingType": "Proxy",
+        "endpoint": "https://{endpointURL}/"
+      }
+    ]
+  },
+  "location": "eastus"
+}
+```
+
+Interfejsy API dodane do platformy Azure dla powyższego przykładu:
+
+HttpMethod | Przykładowy identyfikator URI | Opis
+---|---|---
+PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources / {customResourceName}? api-version = 2018-09-01-preview | Wywołanie interfejsu API REST platformy Azure w celu utworzenia nowego zasobu.
+DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources / {customResourceName}? api-version = 2018-09-01-preview | Wywołanie interfejsu API REST platformy Azure, można usunąć istniejącego zasobu.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources / {customResourceName}? api-version = 2018-09-01-preview | Wywołania interfejsu API REST platformy Azure, który można pobrać istniejącego zasobu.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources? api-version = 2018-09-01-preview | Wywołania interfejsu API REST platformy Azure, który można pobrać listy istniejących zasobów.
+
+### <a name="building-custom-actions"></a>Tworzenie akcji niestandardowych
+
+**Akcje** opisano nowe akcje, które są dodawane do platformy Azure. Te mogą być udostępniane na podstawie dostawcy zasobów lub zagnieżdżony w **resourceType**. Zobacz [więcej informacji na temat tworzenia niestandardowych akcji](./custom-providers-action-endpoint-how-to.md)
+
+Przykładowy niestandardowego dostawcę zasobów za pomocą **akcje**:
+
+```JSON
+{
+  "properties": {
+    "actions": [
+      {
+        "name": "myCustomAction",
+        "routingType": "Proxy",
+        "endpoint": "https://{endpointURL}/"
+      }
+    ]
+  },
+  "location": "eastus"
+}
+```
+
+Interfejsy API dodane do platformy Azure dla powyższego przykładu:
+
+HttpMethod | Przykładowy identyfikator URI | Opis
+---|---|---
+POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? api-version = 2018-09-01-preview | Wywołanie interfejsu API REST platformy Azure można aktywować akcji.
+
+## <a name="looking-for-help"></a>Szukasz pomocy
+
+Jeśli masz pytania dotyczące programowania dostawcy zasobów niestandardowych platformy Azure, Zadaj pytanie [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobne pytania mogą już zostały zadawane i odpowiedzi, więc wyboru przed publikowanie. Dodaj tag ```azure-custom-providers``` Aby uzyskać szybką odpowiedź!
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule omówiono niestandardowych dostawców. Przejdź do następnego artykułu, aby utworzyć niestandardowego dostawcę.
 
-> [!div class="nextstepaction"]
-> [Samouczek: Tworzenie niestandardowego dostawcy i wdrażanie zasobów niestandardowych](create-custom-provider.md)
+- [Samouczek: Tworzenie niestandardowego dostawcy zasobów platformy Azure i wdrażanie zasobów niestandardowych](./create-custom-provider.md)
+- [Instrukcje: Dodawanie akcji niestandardowych do interfejsu API REST platformy Azure](./custom-providers-action-endpoint-how-to.md)
+- [Instrukcje: Dodawanie zasobów niestandardowych do interfejsu API REST platformy Azure](./custom-providers-resources-endpoint-how-to.md)

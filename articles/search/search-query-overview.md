@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595985"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485185"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
 
@@ -29,7 +29,7 @@ W poniższej tabeli wymieniono interfejsów API i oparte na narzędziu podejści
 | Metodologia | Opis |
 |-------------|-------------|
 | [Eksplorator wyszukiwania (portal)](search-explorer.md) | Zawiera pasek wyszukiwania i opcje dla opcji indeksu i interfejsu api-version. Wyniki są zwracane jako dokumenty JSON. <br/>[Dowiedz się więcej.](search-get-started-portal.md#query-index) | 
-| [Postman lub Fiddler](search-fiddler.md) | Narzędzia do testowania sieci Web są doskonałym wyborem dla opracowywania wywołania REST. Interfejs API REST obsługuje każda operacja możliwe w usłudze Azure Search. W tym artykule Dowiedz się, jak skonfigurować nagłówek żądania HTTP i treści wysyłania żądań do usługi Azure Search.  |
+| [Postman lub Fiddler](search-get-started-postman.md) | Narzędzia do testowania sieci Web są doskonałym wyborem dla opracowywania wywołania REST. Interfejs API REST obsługuje każda operacja możliwe w usłudze Azure Search. W tym artykule Dowiedz się, jak skonfigurować nagłówek żądania HTTP i treści wysyłania żądań do usługi Azure Search.  |
 | [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, który może służyć do tworzenie zapytań względem indeksu usługi Azure Search.  <br/>[Dowiedz się więcej.](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Wyszukiwanie dokumentów (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET lub POST metod w indeksie, za pomocą parametrów zapytania, aby uzyskać dodatkowe dane wejściowe.  |
 

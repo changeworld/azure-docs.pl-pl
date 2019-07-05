@@ -4,21 +4,21 @@ description: Dowiedz się, jak skonfigurować Multi-Master w aplikacji w usłudz
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/02/2019
+ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 73b4ada713e264aaa2504fe4d4f504e07ae45181
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 646706eabf1b3a33c3143410f0e922a03e6a8ad6
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538080"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565903"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurowanie Multi-Master w aplikacjach korzystających z usługi Azure Cosmos DB
 
 Po utworzeniu konta usługi z wieloma regionami zapisu włączone należy dwie zmiany w aplikacji, aby ConnectionPolicy dla obiektu DocumentClient włączyć funkcje wielu wzorców i z obsługą wielu regionów, w usłudze Azure Cosmos DB. W ramach ConnectionPolicy Ustaw UseMultipleWriteLocations to true i przekazać nazwę regionu, w którym aplikacja jest wdrażana SetCurrentLocation. Spowoduje to wypełnienie właściwość PreferredLocations na podstawie zbliżenia geograficznej lokalizacji przekazanej. Jeśli do konta później zostanie dodany nowy region, aplikacja ma zostać zaktualizowane lub ponownego wdrażania, automatycznie wykryje bliżej region i zostanie automatycznie domu się ona wystąpi zdarzenie regionalne.
 
-> [!TIP]
-> Konta usługi cosmos nie utworzyć wstępnie skonfigurowane dla Multi-Master można migrować bez przestoju. Aby dowiedzieć się więcej, zobacz [skonfigurować zapisu wielu regionów](how-to-manage-database-account.md#configure-multiple-write-regions)
+> [!Note]
+> Wstępnie skonfigurowane przy użyciu zapisu w jednym regionie konta usługi cosmos można skonfigurować do (czyli wielu wzorców) wielu regionów zapisu bez przestoju. Aby dowiedzieć się więcej, zobacz [skonfigurować zapisu wielu regionów](how-to-manage-database-account.md#configure-multiple-write-regions)
 
 ## <a id="netv2">Zestaw .NET SDK w wersji 2</a>
 

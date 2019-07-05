@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f2574cc64e157ff0f8a6cb875a832db88cf13dd6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395874"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479813"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
 
@@ -62,7 +62,9 @@ Przed utworzeniem połączenia należy dodać rozwiązanie łącznik ITSM.
 
 3. W **obszaru roboczego pakietu OMS** wybierz obszar roboczy usługi Azure Log Analytics, którym chcesz zainstalować rozwiązanie.
    >[!NOTE]
-   >W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
+   > * W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
+   > * Łącznik ITSM można zainstalować tylko w obszarach roboczych usługi Log Analytics, w następujących regionach: Wschodnie stany USA, Europa Zachodnia, Azja południowo-wschodnia, Australia południowo-zachodnia środkowe stany USA, Japonia Wschodnia, południowe Zjednoczone Królestwo, Indie środkowe centralnej Kanady.
+
 4. W **ustawienia obszaru roboczego pakietu OMS** wybierz grupy zasobów, której chcesz utworzyć zasób rozwiązania.
 
    ![Obszar roboczy ITSMC](media/itsmc-overview/itsmc-solution-workspace.png)
@@ -199,7 +201,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Data zamknięcia
 - Data rozwiązania
 - Data ostatniej modyfikacji
-- Computer (Komputer)
+- Computer
 
 
 **Element roboczy:** **Żądania zmiany**
@@ -233,7 +235,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Data rozpoczęcia pracy
 - Data zakończenia pracy
 - Opis
-- Computer (Komputer)
+- Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Dane wyjściowe dla incydentu usługi ServiceNow
 
@@ -255,7 +257,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | CreatedDate_t|  Otwarte |
 | ClosedDate_t| Zamknięte|
 | ResolvedDate_t|Rozwiązane|
-| Computer (Komputer)  | Element konfiguracji |
+| Computer  | Element konfiguracji |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Żądanie zmiany w danych wyjściowych dla usługi ServiceNow
 
@@ -280,7 +282,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | WorkStartDate_t  | Rzeczywista data rozpoczęcia |
 | WorkEndDate_t | Rzeczywista data zakończenia|
 | Description_s | Opis |
-| Computer (Komputer)  | Element konfiguracji |
+| Computer  | Element konfiguracji |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>Rozwiązywanie problemów z połączeniami narzędzia ITSM

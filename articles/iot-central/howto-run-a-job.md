@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 03/18/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ec7033719316bb186408ea78f6dabac43c383491
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 903b4f1ea1484aec827c4b2d54c8dd8a9dd69d8f
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519360"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509522"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Twórz i uruchamiaj zadanie w aplikacji centralnej IoT platformy Azure
 
@@ -106,4 +106,4 @@ Skoro już wiesz, jak tworzyć zadania w aplikacji usługi Azure IoT Central, Ot
 
 - [Korzystanie ze zbiorów urządzeń](howto-use-device-sets.md)
 - [Zarządzanie urządzeniami](howto-manage-devices.md)
-- [Wersja szablonu urządzenia](howto-version-devicetemplate.md)
+- [Wersja szablonu urządzenia](howto-version-device-template.md)

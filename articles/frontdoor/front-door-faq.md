@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: b033f463722ddb3a0b7beabdf659900e7d7188df
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330866"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442897"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Często zadawane pytania dotyczące usługi Azure Service drzwi
 
@@ -79,25 +79,34 @@ Usługa Azure Service drzwiami frontowymi to globalnie dystrybuowana usługa dla
 
 ### <a name="is-http-https-redirection-supported"></a>HTTP jest -> przekierowania protokołu HTTPS, obsługiwane?
 
-Tak. W rzeczywistości usługa drzwiami frontowymi Azure obsługuje host, ścieżkę i zapytanie ciąg przekierowania, a także część adresu URL przekierowania. Dowiedz się więcej o [adresu URL przekierowania](front-door-url-redirect.md). 
+Tak. W rzeczywistości usługi drzwiami frontowymi platformy Azure obsługuje hosta, ścieżki i Przekierowanie ciągu zapytania, a także część adresu URL przekierowania. Dowiedz się więcej o [adresu URL przekierowania](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>Kolejność przetwarzania reguły routingu są?
 
 Trasy dla usługi drzwi wejściowe nie są uporządkowane i określoną trasę jest wybrane w oparciu o najlepsze dopasowanie. Dowiedz się więcej o [jak drzwiami frontowymi pasuje do żądania do reguły routingu](front-door-route-matching.md).
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-service"></a>Jak zablokować dostęp do mojej wewnętrznej bazy danych do tylko usługi Azure Service drzwi
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Jak zablokować dostęp do mojej wewnętrznej bazy danych do tylko Azure drzwi
 
-Można skonfigurować ACLing adresów IP dla zaplecza do akceptowania ruchu z usługi drzwiami frontowymi platformy Azure. Można ograniczyć do akceptowania połączeń przychodzących, tylko z obszaru adresów IP zaplecza usługi Azure Service drzwiami frontowymi aplikacji. Pracujemy nad do integracji z usługą [zakresów adresów IP platformy Azure i tagi usługi](https://www.microsoft.com/download/details.aspx?id=56519) jednak może teraz odwoływać się zakresy adresów IP, tak jak pokazano poniżej:
+Zablokować aplikację, aby akceptować ruch tylko z określonych drzwi wejściowe użytkownika, należy skonfigurować listy ACL adresów IP dla sieci wewnętrznej bazy danych, a następnie ograniczyć zestaw dopuszczalne wartości dla nagłówek "X-Forwarded-Host" wysyłane przez Azure drzwi wejściowe. Poniższe kroki szczegółowo się poniżej:
+
+- Skonfiguruj ACLing adresów IP dla zaplecza do akceptowania ruchu z przestrzenią adresów IP wewnętrznej bazy danych Azure drzwiami frontowymi i tylko usługi infrastruktury platformy Azure. Pracujemy nad do integracji z usługą [zakresów adresów IP platformy Azure i tagi usługi](https://www.microsoft.com/download/details.aspx?id=56519) jednak może teraz odwoływać się zakresy adresów IP, tak jak pokazano poniżej:
  
-- **IPv4** - `147.243.0.0/16`
-- **IPv6** - `2a01:111:2050::/44`
+    - Drzwiami frontowymi **IPv4** przestrzeni adresów IP zaplecza: `147.243.0.0/16`
+    - Drzwiami frontowymi **IPv6** przestrzeni adresów IP zaplecza: `2a01:111:2050::/44`
+    - Azure [podstawowej infrastruktury usług](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) za pośrednictwem zwirtualizowanych adresów IP hosta: `168.63.129.16` i `169.254.169.254`
 
-> [!WARNING]
-> Nasze przestrzeni adresów IP wewnętrznej bazy danych może zmienić później, jednak firma Microsoft zapewni, że przed tak się stanie, że firma Microsoft będzie zostały zintegrowane z usługą [zakresów adresów IP platformy Azure i tagami usługi](https://www.microsoft.com/download/details.aspx?id=56519). Zaleca się, że subskrybujesz [zakresów adresów IP platformy Azure i tagami usługi](https://www.microsoft.com/download/details.aspx?id=56519) dla zmiany lub aktualizacji. 
+    > [!WARNING]
+    > Przestrzeń adresów IP zaplecza drzwiami frontowymi może zmienić później, jednak firma Microsoft zapewni, że przed tak się stanie, że firma Microsoft będzie zostały zintegrowane z usługą [zakresów adresów IP platformy Azure i tagami usługi](https://www.microsoft.com/download/details.aspx?id=56519). Zaleca się, że subskrybujesz [zakresów adresów IP platformy Azure i tagami usługi](https://www.microsoft.com/download/details.aspx?id=56519) dla zmiany lub aktualizacji.
+
+-   Filtr na podstawie wartości dla przychodzącego nagłówka "**X-Forwarded-Host**" wysyłane przez wejściu. Tylko wartości dozwolonych dla nagłówka należy wszystkich hostów frontonu, zgodnie z definicją w pliku config wejściu. W rzeczywistości jeszcze dokładniej tylko nazwy hostów dla których chcesz do akceptowania ruchu z tego określonego wewnętrznej bazy danych programu należy do Ciebie.
+    - Przykład — teraz załóżmy, że pliku config drzwiami frontowymi ma następujące hosty frontonu _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B) _ (C), a _`notifications.contoso.com`_ (D). Załóżmy, że masz dwa zaplecza X i Y. 
+    - X wewnętrznej bazy danych powinna trwać tylko ruch z nazw hostów, A i B. zaplecza Y może potrwać ruchu z A, C i D.
+    - Dlatego na X wewnętrznej bazy danych Zaakceptuj, tylko ruch, który zawiera nagłówek "**X-Forwarded-Host**" ustawions _`contoso.azurefd.net`_ lub _`www.contoso.com`_ . Wszystko inne zaplecza X należy odrzucić ruchu sieciowego.
+    - Podobnie na Y wewnętrznej bazy danych Zaakceptuj, tylko ruch, który zawiera nagłówek "**X-Forwarded-Host**" ustawions _`contoso.azurefd.net`_ , _`api.contoso.com`_ lub  _`notifications.contoso.com`_ . Wszystko inne zaplecza Y należy odrzucić ruchu sieciowego.
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Adres IP emisji dowolnej zmienić w okresie istnienia Moje drzwiami frontowymi?
 
-Adresu IP frontonu emisji dowolnej usługi drzwi wejściowe powinny zazwyczaj nie zmienia się i mogą pozostawać statyczne okres istnienia wejściu. Istnieją jednak **nie gwarancje** dla tego samego. Pan nie przyjmują żadnych zależności bezpośrednich na adresie IP.  
+Adresu IP frontonu emisji dowolnej usługi drzwi wejściowe powinny zazwyczaj nie zmienia się i mogą pozostawać statyczne okres istnienia wejściu. Istnieją jednak **nie gwarancje** dla tego samego. Pan nie przyjmują żadnych zależności bezpośrednich na adresie IP.
 
 ### <a name="does-azure-front-door-service-support-static-or-dedicated-ips"></a>Azure Service drzwiami frontowymi obsługuje statyczne lub dedykowanych adresów IP?
 
@@ -142,10 +151,10 @@ Drzwiami frontowymi obsługuje protokół TLS w wersji 1.0, 1.1 i 1.2. TLS 1.3 n
 Aby włączyć protokół HTTPS umożliwiającej bezpieczne dostarczanie zawartości na domenę niestandardową na wejściu, można użyć certyfikatu, który jest zarządzany przez usługę Azure Service drzwiami frontowymi lub użyć własnego certyfikatu.
 Drzwiami frontowymi zarządzane przepisy opcja to standardowy certyfikat SSL za pośrednictwem firmy Digicert i przechowywane na wierzchu firmy drzwi Key Vault. Jeśli zdecydujesz się użyć własnego certyfikatu, a następnie można dodać certyfikatu z urzędu certyfikacji obsługiwana i może być standardowego protokołu SSL, rozszerzona Walidacja lub nawet certyfikatu wieloznacznego. Certyfikaty z podpisem własnym nie są obsługiwane. Dowiedz się, [jak włączyć protokół HTTPS dla domeny niestandardowej](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
-### <a name="does-front-door-support-auto-rotation-of-certificates"></a>Drzwiami frontowymi obsługuje automatyczna rotacja certyfikatów?
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Drzwiami frontowymi obsługuje autorotation certyfikatów?
 
-Dla własnego niestandardowego certyfikatu SSL automatycznego zamieniania nie jest obsługiwane. Podobnie jak jego zostało skonfigurowane dla danej domeny niestandardowej po raz pierwszy, będzie konieczne do punktu drzwiami frontowymi wersji odpowiedniego certyfikatu w usłudze Key Vault i upewnij się, że jednostka usługi dla drzwiami frontowymi nadal ma dostęp do usługi Key Vault. Ta operacja wprowadzania zaktualizowany certyfikat za wejściu jest całkowicie atomic i nie powoduje żadnego wpływu na produkcyjne, podana nazwa podmiotu lub sieci SAN na potrzeby certyfikatu nie ulega zmianie.
-</br>Opcja certyfikatu drzwiami frontowymi zarządzane certyfikaty są automatycznie obracane przy wejściu.
+Dla opcji certyfikat drzwiami frontowymi zarządzane certyfikaty są autorotated przy wejściu. Jeśli używasz certyfikatu z zarządzanego drzwiami frontowymi i widzimy, że data wygaśnięcia certyfikatu jest mniej niż 60 dni, plik bilet pomocy technicznej.
+</br>Dla własnego niestandardowego certyfikatu SSL autorotation nie jest obsługiwane. Podobnie jak w jej konfiguracji dla danej domeny niestandardowej po raz pierwszy, będzie konieczne do punktu drzwiami frontowymi wersji odpowiedniego certyfikatu w usłudze Key Vault i upewnij się, że jednostka usługi dla drzwiami frontowymi nadal ma dostęp do usługi Key Vault. Ta operacja wprowadzania zaktualizowany certyfikat za wejściu jest atomic i nie powoduje żadnego wpływu na produkcyjne, podana nazwa podmiotu lub sieci SAN na potrzeby certyfikatu nie ulega zmianie.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Jakie są bieżące mechanizmów szyfrowania obsługiwanych przez usługę Azure drzwiami frontowymi Service?
 
@@ -176,7 +185,7 @@ Tak, usługa drzwiami frontowymi Azure obsługuje odciążanie protokołu SSL i 
 
 ### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Można skonfigurować zasady protokołu SSL w celu kontrolowania wersji protokołu SSL?
 
-Nie, obecnie nie obsługuje drzwiami frontowymi w celu blokowania określonych wersji protokołu TLS ani nie można ustawić minimalne wersje protokołu TLS. 
+Nie, obecnie nie obsługuje drzwiami frontowymi w celu blokowania określonych wersji protokołu TLS ani nie można ustawić minimalną wersję protokołu TLS. 
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Można skonfigurować wejściu do obsługują tylko określonych mechanizmy szyfrowania?
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c3c97e786e2147f043a63b90b886e01eb5944cb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a051b0e853b60dfc1f5b6c3453d9ed8361f1748
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507672"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438814"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-
 
 Za pomocą funkcji dostosowywania interfejsu użytkownika strony, można dostosować wygląd i działanie żadnych zasad niestandardowych. Można także zapewnić spójność wizerunku marki i wrażeń wizualnych między aplikacją i usługą Azure AD B2C.
 
-Poniżej przedstawiono, jak to działa: Usługa Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/). Najpierw należy określić adres URL w zasadach niestandardowych z dostosowaną zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę klientowi.
+Oto jak to działa: Usługa Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/). Najpierw należy określić adres URL w zasadach niestandardowych z dostosowaną zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę klientowi.
 
 ## <a name="create-your-html5-content"></a>Utwórz swoje HTML5 zawartości
 
@@ -79,18 +79,19 @@ Aby hostować tę zawartość HTML w usłudze Blob storage, wykonaj następując
 
 Aby utworzyć publicznego kontenera w usłudze Blob storage, wykonaj następujące czynności:
 
-1. Kliknij przycisk **Przegląd** kartę.
-2. Kliknij przycisk **kontenera**.
-3. Aby uzyskać **nazwa**, typ **$root**.
-4. Ustaw **dostęp typu** do **Blob**.
-5. Kliknij przycisk **$root** można otworzyć nowego kontenera.
+1. W obszarze **usługi Blob service** w menu po lewej stronie wybierz **obiektów blob**.
+2. Kliknij przycisk **+ kontener**.
+3. Aby uzyskać **nazwa**, wprowadź *głównego*. Może to być nazwa wybrane, na przykład *wingtiptoys*, ale możemy użyć *głównego* w tym przykładzie dla uproszczenia.
+4. Aby uzyskać **poziom dostępu publicznego**, wybierz opcję **Blob**, następnie **OK**.
+5. Kliknij przycisk **głównego** można otworzyć nowego kontenera.
 6. Kliknij pozycję **Przekaż**.
 7. Kliknij ikonę folderu **wybierz plik**.
-8. Przejdź do **dostosować ui.html**, której wcześniej utworzoną w sekcji dotyczącej dostosowywania interfejsu użytkownika strony.
-9. Kliknij pozycję **Przekaż**.
-10. Wybierz obiekt blob Dostosuj ui.html, który został przekazany.
-11. Obok pozycji **adresu URL**, kliknij przycisk **kopiowania**.
-12. W przeglądarce Wklej skopiowany adres URL, a następnie przejdź do witryny. Jeśli witryna jest niedostępny, upewnij się, że typ dostępu do kontenera, jest ustawiony na **blob**.
+8. Przejdź do, a następnie wybierz pozycję **dostosować ui.html** utworzoną wcześniej w sekcji dotyczącej dostosowywania interfejsu użytkownika strony.
+9. Jeśli chcesz przekazać do podfolderu, rozwiń **zaawansowane** i wprowadź nazwę folderu, w **Przekaż do folderu**.
+10. Wybierz pozycję **Przekaż**.
+11. Wybierz **dostosować ui.html** obiektów blob, który został przekazany.
+12. Po prawej stronie **adresu URL** pola tekstowego, wybierz opcję **Kopiuj do Schowka** ikonę, aby skopiować adres URL do Schowka.
+13. W przeglądarce internetowej przejdź do adresu URL został skopiowany, aby sprawdzić, czy obiekt blob, który został przekazany jest dostępny. Jeśli jest niedostępny, na przykład, jeśli wystąpią `ResourceNotFound` błąd, upewnij się, że typ dostępu do kontenera jest równa **blob**.
 
 ## <a name="configure-cors"></a>Konfigurowanie mechanizmu CORS
 
@@ -159,6 +160,7 @@ Aby skonfigurować dostosowywania interfejsu użytkownika, należy skopiować **
 
 ## <a name="reference"></a>Tematy pomocy
 
+### <a name="sample-templates"></a>Przykładowe szablony
 Dostosowywanie interfejsu użytkownika w tym miejscu można znaleźć przykładowe szablony:
 
 ```
@@ -174,6 +176,16 @@ Folder sample_templates/wingtip zawiera następujące pliki HTML:
 | *selfasserted.html* | Użyj tego pliku jako szablon dla strony rejestracji konta w sieci społecznościowej, strona rejestracji dla kont lokalnych lub strony logowania konta lokalnego. |
 | *unified.html* | Użyj tego pliku jako szablon dla ujednoliconego strony rejestracji lub logowania. |
 | *updateprofile.html* | Użyj tego pliku jako szablon dla strony aktualizacji profilu. |
+
+Poniżej przedstawiono kroki dotyczące sposobu używania przykładu. 
+1. Sklonuj repozytorium na komputerze lokalnym. Wybierz szablon folderze sample_templates. Możesz użyć `wingtip` lub `contoso`.
+2. Przekazywanie wszystkich plików w obszarze `css`, `fonts`, i `images` folderów do magazynu obiektów Blob, zgodnie z opisem w poprzedniej sekcji. 
+3. Następnie otwórz każdy \*.html plik w folderze głównym albo `wingtip` lub `contoso` (zależnie od wybrania w pierwszym kroku) i Zamień wszystkie wystąpienia elementu "http://localhost" z adresami URL plików css, obrazów i czcionki przekazany w kroku 2.
+4. Zapisz \*.html pliki i przekazać je do magazynu obiektów Blob.
+5. Teraz zmodyfikuj plik rozszerzenia, jak już wspomniano w [zmodyfikować plik rozszerzenia](#modify-the-extensions-file).
+6. Jeśli widzisz Brak czcionki, obrazów lub css, sprawdź, czy odwołaniami w zasadach rozszerzeń i \*pliki HTML.
+
+### <a name="content-defintion-ids"></a>Definicja zawartości identyfikatorów
 
 W Modyfikuj sekcji niestandardowe zasady rejestracji lub logowania jest konfigurowany definicji zawartości dla `api.idpselections`. Pełny zestaw zawartości identyfikatorów definicji, które są rozpoznawane przez platformy środowiska tożsamości usługi Azure AD B2C i ich opisy znajdują się w poniższej tabeli:
 

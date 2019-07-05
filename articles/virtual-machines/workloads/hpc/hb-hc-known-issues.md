@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: ff65f3937069be87e922dad9287ba22380632329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a41155b90257f7eaec85c3adbd975a0a37e24d91
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66810040"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560420"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>Znane problemy z maszynami wirtualnymi z serii HB i HC
 
@@ -31,13 +31,13 @@ Tylko maszyny wirtualne z serii HB może narazić 228 GB pamięci RAM na potrzeb
 
 Usługa Azure Accelerated Networking w tej chwili nie jest włączona, ale będą w miarę postępów za pomocą korzystania z wersji zapoznawczej. Firma Microsoft powiadomi klientów, gdy ta funkcja jest obsługiwana.
 
+## <a name="qp0-access-restriction"></a>Ograniczenie dostępu qp0
+
+Aby uzyskać dostęp do niskiego poziomu sprzętu, który może spowodować powstanie luk w zabezpieczeniach, pary kolejek 0 nie jest dostępna dla maszyn wirtualnych gościa. Tylko powinno to mieć wpływ na działania zwykle skojarzone z administracyjnej karty Sieciowej ConnectX-5 i uruchamiania niektórych diagnostyki InfiniBand, jak ibdiagnet, ale nie aplikacje dla użytkowników końcowych samodzielnie.
+
 ## <a name="ud-transport"></a>UD transportu
 
-Po uruchomieniu serii HB nie obsługuje dynamicznie połączony Transport (DCT). Obsługa DCT będzie wdrażany wraz z upływem czasu. Niezawodne transportów połączenia (RC) i zawodnych datagramów (UD) są obsługiwane.
-
-## <a name="azure-batch"></a>Azure Batch
-
-Mimo że maszyny wirtualne z serii HB w wersji zapoznawczej, należy użyć konta usługi Batch w trybie subskrypcji użytkownika, nie w trybie usługi.
+Po uruchomieniu serii połączenia Hybrydowego i HB nie obsługują dynamicznie połączony Transport (DCT). Obsługa DCT będzie wdrażany wraz z upływem czasu. Niezawodne transportów połączenia (RC) i zawodnych datagramów (UD) są obsługiwane.
 
 ## <a name="gss-proxy"></a>Serwer Proxy GSS
 

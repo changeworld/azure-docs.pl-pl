@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: fbb2458e73330a09124c00cebe3eb7bcaba5408d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: ac57e873a6948e85e78849bd4e22db85491c4bfb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951501"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441537"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Wprowadzenie do tabel danych czasowych w bazie danych Azure SQL
 
@@ -195,6 +195,7 @@ Za pomocą tabelach danych czasowych z systemową obsługą tabeli historii moż
 * [Skrypt czyszczący niestandardowe](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać szczegółowe informacje w tabelach danych czasowych, zapoznaj się z [dokumentacji MSDN](https://msdn.microsoft.com/library/dn935015.aspx).
-Można znaleźć w witrynie Channel 9, aby usłyszeć [Historia sukcesu wdrożenia danych czasowych rzeczywiste](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) i obejrzyj [danych czasowych pokaz na żywo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
+
+- Aby uzyskać więcej informacji o tabelach danych czasowych, zobacz zapoznaj się z [tabele danych czasowych](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables).
+- Można znaleźć w witrynie Channel 9, aby usłyszeć [Historia sukcesu wdrożenia danych czasowych rzeczywiste](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) i obejrzyj [danych czasowych pokaz na żywo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
 

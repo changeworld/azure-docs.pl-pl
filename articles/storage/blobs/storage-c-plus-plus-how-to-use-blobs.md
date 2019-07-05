@@ -9,12 +9,12 @@ ms.date: 03/21/2018
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 519190b6aeb313f25eddd717bce1a72148c8c518
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32601fc15e6b6a25a1005b6d95499d4aae4fb0d2
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148448"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461186"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Jak używać magazynu obiektów Blob w języku C++
 
@@ -68,7 +68,7 @@ Aby uruchomić emulatora usługi Azure storage, zaznacz **Start** przycisk lub n
 
 W poniższych przykładach założono, że uzyskano parametry połączenia za pomocą jednej z tych dwóch metod.  
 
-## <a name="retrieve-your-connection-string"></a>Pobieranie parametrów połączenia
+## <a name="retrieve-your-storage-account"></a>Pobrać konta usługi storage
 Możesz użyć **cloud_storage_account** klasy do reprezentowania informacje o Twoim koncie magazynu. Aby pobrać informacje o koncie magazynu z parametrów połączenia usługi Storage, użyj metody **parse**.  
 
 ```cpp

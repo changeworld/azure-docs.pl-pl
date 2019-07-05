@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afb554307fd255d1863fc1508cef3703d4dc9f9e
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835183"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561160"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service przy użyciu wiersza polecenia platformy Azure
 
@@ -43,13 +43,13 @@ Uwierzytelnianie usługi Azure AD jest udostępniane na klastry usługi AKS przy
 Z wewnątrz klastra Kubernetes uwierzytelnianie przy użyciu elementu Webhook tokenów służy do Sprawdź tokeny uwierzytelniania. Uwierzytelnianie przy użyciu elementu Webhook tokenów jest konfigurowane i zarządzane w ramach klastra AKS. Aby uzyskać więcej informacji na temat uwierzytelniania tokenu elementu Webhook, zobacz [dokumentacji uwierzytelniania elementu webhook][kubernetes-webhook].
 
 > [!NOTE]
-> Podczas konfigurowania usługi Azure AD do uwierzytelniania usługi AKS, dwóch aplikacji usługi Azure AD są skonfigurowane. Musi być zakończona przez administratora dzierżawy usługi Azure.
+> Podczas konfigurowania usługi Azure AD do uwierzytelniania usługi AKS, są skonfigurowane dwie aplikacje usługi Azure AD. Musi być zakończona przez administratora dzierżawy usługi Azure.
 
 ## <a name="create-azure-ad-server-component"></a>Utwórz składnik serwera usługi Azure AD
 
 Aby zintegrować z usługą AKS, tworzenie i korzystanie z aplikacji usługi Azure AD, który działa jako punkt końcowy dla żądania tożsamości. Pierwszą aplikację usługi Azure AD, których potrzebujesz pobiera członkostwa w grupie usługi Azure AD dla użytkownika.
 
-Tworzenie serwera aplikacji składnika przy użyciu [az ad app Utwórz] [ az-ad-app-create] polecenia, a następnie Aktualizacja członkostwa w grupie oświadczenia, za pomocą [az ad app update] [ az-ad-app-update] polecenia. W poniższym przykładzie użyto *aksname* zmiennej zdefiniowanej w [przed rozpoczęciem](#before-you-begin) sekcji, a następnie tworzy zmienną
+Tworzenie serwera aplikacji składnika przy użyciu [az ad app Utwórz][az-ad-app-create] command, then update the group membership claims using the [az ad app update][az-ad-app-update] polecenia. W poniższym przykładzie użyto *aksname* zmiennej zdefiniowanej w [przed rozpoczęciem](#before-you-begin) sekcji, a następnie tworzy zmienną
 
 ```azurecli-interactive
 # Create the Azure AD application
@@ -62,7 +62,7 @@ serverApplicationId=$(az ad app create \
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 
-Teraz Utwórz jednostkę usługi dla aplikacji serwera za pomocą [tworzenie az ad sp] [ az-ad-sp-create] polecenia. Jednostka usługi jest używana do samodzielnego uwierzytelnienia na platformie Azure. Następnie Pobierz główną usługi wpisu tajnego za pomocą [resetowania az ad sp poświadczeń] [ az-ad-sp-credential-reset] poleceń i przypisz ją do zmiennej o nazwie *serverApplicationSecret* do użytku w jednym z następujące kroki:
+Teraz Utwórz jednostkę usługi dla aplikacji serwera za pomocą [tworzenie az ad sp][az-ad-sp-create] command. This service principal is used to authenticate itself within the Azure platform. Then, get the service principal secret using the [az ad sp credential reset][az-ad-sp-credential-reset] poleceń i przypisz ją do zmiennej o nazwie *serverApplicationSecret* do użytku w jednym z następujących czynności:
 
 ```azurecli-interactive
 # Create a service principal for the Azure AD application
@@ -80,7 +80,7 @@ Usługa Azure AD wymaga uprawnień do wykonania następujących czynności:
 * Czytaj dane katalogu
 * Zaloguj się i odczytuj profil użytkownika
 
-Tych uprawnień za pomocą [az ad app uprawnienia dodawania] [ az-ad-app-permission-add] polecenia:
+Tych uprawnień za pomocą [az ad app uprawnienia dodawania][az-ad-app-permission-add] polecenia:
 
 ```azurecli-interactive
 az ad app permission add \
@@ -89,7 +89,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-Na koniec udzielić uprawnień przypisana w poprzednim kroku dla aplikacji serwera przy użyciu [az ad app uprawnienia grant] [ az-ad-app-permission-grant] polecenia. Ta czynność zakończy się niepowodzeniem, jeśli bieżące konto nie jest administratorem dzierżawy. Musisz również dodać uprawnienia dla aplikacji usługi Azure AD do żądania informacji, które w przeciwnym razie mogą wymagać zgody administratora przy użyciu [az ad app uprawnień — zgoda administratora][az-ad-app-permission-admin-consent]:
+Na koniec udzielić uprawnień przypisana w poprzednim kroku dla aplikacji serwera przy użyciu [az ad app uprawnienia grant][az-ad-app-permission-grant] command. This step fails if the current account is not a tenant admin. You also need to add permissions for Azure AD application to request information that may otherwise require administrative consent using the [az ad app permission admin-consent][az-ad-app-permission-admin-consent]:
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -98,7 +98,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>Utwórz składnik klienta usługi Azure AD
 
-Druga aplikacja usługi Azure AD jest używany, gdy użytkownik zaloguje się do klastra usługi AKS przy użyciu interfejsu wiersza polecenia Kubernetes (`kubectl`). Ta aplikacja kliencka przyjmuje żądania uwierzytelniania od użytkownika i weryfikuje ich poświadczeń i uprawnień. Tworzenie aplikacji usługi Azure AD za pomocą składnika klienta [az ad app Utwórz] [ az-ad-app-create] polecenia:
+Druga aplikacja usługi Azure AD jest używany, gdy użytkownik zaloguje się do klastra usługi AKS przy użyciu interfejsu wiersza polecenia Kubernetes (`kubectl`). Ta aplikacja kliencka przyjmuje żądania uwierzytelniania od użytkownika i weryfikuje ich poświadczeń i uprawnień. Tworzenie aplikacji usługi Azure AD za pomocą składnika klienta [az ad app Utwórz][az-ad-app-create] polecenia:
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -108,19 +108,19 @@ clientApplicationId=$(az ad app create \
     --query appId -o tsv)
 ```
 
-Tworzenie jednostki usługi dla aplikacji klienckich przy użyciu [tworzenie az ad sp] [ az-ad-sp-create] polecenia:
+Tworzenie jednostki usługi dla aplikacji klienckich przy użyciu [tworzenie az ad sp][az-ad-sp-create] polecenia:
 
 ```azurecli-interactive
 az ad sp create --id $clientApplicationId
 ```
 
-Uzyskać identyfikator oAuth2 dla aplikacji serwera, aby umożliwić przepływ uwierzytelniania między składnikami dwóch aplikacji przy użyciu [az ad app show] [ az-ad-app-show] polecenia. Ten identyfikator oAuth2 jest używany w następnym kroku.
+Uzyskać identyfikator oAuth2 dla aplikacji serwera, aby umożliwić przepływ uwierzytelniania między składnikami dwóch aplikacji przy użyciu [az ad app show][az-ad-app-show] polecenia. Ten identyfikator oAuth2 jest używany w następnym kroku.
 
 ```azurecli-interactive
 oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Permissions[0].id" -o tsv)
 ```
 
-Dodaj uprawnienia do aplikacji klienckiej i składniki aplikacji serwera do komunikacji oAuth2 przy użyciu przepływu przy użyciu [az ad app uprawnienia dodawania] [ az-ad-app-permission-add] polecenia. Następnie przyznać uprawnienia do aplikacji klienckiej do komunikacji z serwerem aplikacji za pomocą [az ad app uprawnienia grant] [ az-ad-app-permission-grant] polecenia:
+Dodaj uprawnienia do aplikacji klienckiej i składniki aplikacji serwera do komunikacji oAuth2 przy użyciu przepływu przy użyciu [az ad app uprawnienia dodawania][az-ad-app-permission-add] command. Then, grant permissions for the client application to communication with the server application using the [az ad app permission grant][az-ad-app-permission-grant] polecenia:
 
 ```azurecli-interactive
 az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
@@ -129,7 +129,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>Wdrożenie klastra
 
-Za pomocą utworzone dwie aplikacje usługi Azure AD teraz utworzyć samego klastra AKS. Najpierw utwórz grupę zasobów za pomocą [Tworzenie grupy az] [ az-group-create] polecenia. Poniższy przykład obejmuje tworzenie grupy zasobów w *EastUS* regionu:
+Za pomocą utworzone dwie aplikacje usługi Azure AD teraz utworzyć samego klastra AKS. Najpierw utwórz grupę zasobów za pomocą [Tworzenie grupy az][az-group-create] polecenia. Poniższy przykład obejmuje tworzenie grupy zasobów w *EastUS* regionu:
 
 Utwórz grupę zasobów dla klastra:
 
@@ -137,7 +137,7 @@ Utwórz grupę zasobów dla klastra:
 az group create --name myResourceGroup --location EastUS
 ```
 
-Pobieranie Identyfikatora dzierżawy w swojej subskrypcji platformy Azure za pomocą [Pokaż konta az] [ az-account-show] polecenia. Następnie należy utworzyć przy użyciu klastra usługi AKS [tworzenie az aks] [ az-aks-create] polecenia. Polecenie, aby utworzyć klaster AKS zapewnia serwera i klienta identyfikatorów aplikacji, klucz tajny z nazwy głównej usługi serwera aplikacji i identyfikator dzierżawy:
+Pobieranie Identyfikatora dzierżawy w swojej subskrypcji platformy Azure za pomocą [Pokaż konta az][az-account-show] command. Then, create the AKS cluster using the [az aks create][az-aks-create] polecenia. Polecenie, aby utworzyć klaster AKS zapewnia serwera i klienta identyfikatorów aplikacji, klucz tajny z nazwy głównej usługi serwera aplikacji i identyfikator dzierżawy:
 
 ```azurecli-interactive
 tenantId=$(az account show --query tenantId -o tsv)
@@ -153,7 +153,7 @@ az aks create \
     --aad-tenant-id $tenantId
 ```
 
-Na koniec Uzyskaj klastra poświadczeń administratora przy użyciu [az aks get-credentials] [ az-aks-get-credentials] polecenia. W jednym z następujących czynności, Uzyskaj zwykłych *użytkownika* poświadczeń, aby zobaczyć uwierzytelniania usługi Azure AD klastra przepływu w akcji.
+Na koniec Uzyskaj klastra poświadczeń administratora przy użyciu [az aks get-credentials][az-aks-get-credentials] polecenia. W jednym z następujących czynności, Uzyskaj zwykłych *użytkownika* poświadczeń, aby zobaczyć uwierzytelniania usługi Azure AD klastra przepływu w akcji.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
@@ -163,7 +163,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 Konto usługi Azure Active Directory można było korzystać z klastrem usługi AKS, powiązanie roli lub powiązania roli klastra musi zostać utworzona. *Role* zdefiniować uprawnienia, aby przyznać użytkownikom, i *powiązania* zastosować je do odpowiednich użytkowników. Te przypisania można zastosować do danej przestrzeni nazw lub dla całego klastra. Aby uzyskać więcej informacji, zobacz [autoryzacji RBAC przy użyciu][rbac-authorization].
 
-Pobierz nazwę główną użytkownika (UPN) dla użytkownika aktualnie zalogowany przy użyciu [az ad podpisany w użytkowników show] [ az-ad-signed-in-user-show] polecenia. To konto użytkownika jest włączona dla integracji z usługą Azure AD w następnym kroku.
+Pobierz nazwę główną użytkownika (UPN) dla użytkownika aktualnie zalogowany przy użyciu [az ad podpisany w użytkowników show][az-ad-signed-in-user-show] polecenia. To konto użytkownika jest włączona dla integracji z usługą Azure AD w następnym kroku.
 
 ```azurecli-interactive
 az ad signed-in-user show --query userPrincipalName -o tsv
@@ -189,7 +189,7 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
-Tworzenie za pomocą ClusterRoleBinding [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
+Tworzenie za pomocą ClusterRoleBinding [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
 
 ```console
 kubectl apply -f basic-azure-ad-binding.yaml
@@ -203,7 +203,7 @@ Teraz możemy przetestować integracja uwierzytelniania usługi Azure AD dla kla
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
 ```
 
-Teraz za pomocą [kubectl get pods-] [ kubectl-get] polecenie, aby wyświetlić zasobników we wszystkich przestrzeni nazw:
+Teraz za pomocą [kubectl get pods-][kubectl-get] polecenie, aby wyświetlić zasobników we wszystkich przestrzeni nazw:
 
 ```console
 kubectl get pods --all-namespaces

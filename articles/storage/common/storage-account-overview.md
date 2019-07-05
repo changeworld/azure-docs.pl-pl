@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 157a421ce2cb4442597bfb0f75ae042a10a8ee03
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754991"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443744"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -68,7 +68,7 @@ W porównaniu z ogólnego przeznaczenia v2 i konta usługi blob storage, bloku k
 
 Blok konta usługi blob storage nie obsługują obecnie obsługą warstw pozwalająca na warstwę gorąca, chłodna lub archiwalna dostępu.
 
-### <a name="filestorage-preview-storage-accounts"></a>Konta magazynu FileStorage (wersja zapoznawcza)
+### <a name="filestorage-storage-accounts"></a>FileStorage kont magazynu
 
 Konto magazynu FileStorage to specjalne konto magazynu używane do przechowywania i tworzenia udziałów plików w warstwie premium. Kont magazynu FileStorage oferują unikatowe wydajności dedykowanej cechami, takimi jak operacje We/Wy przenoszenie obsługi dużego ruchu. Aby uzyskać więcej informacji na temat tych właściwości, zobacz [warstwy wydajności udziału pliku](../files/storage-files-planning.md#file-share-performance-tiers) sekcji plików Podręcznik planowania.
 
@@ -88,7 +88,7 @@ Kont magazynu ogólnego przeznaczenia można skonfigurować dla jednej z następ
 
 Blok konta usługi blob storage zapewnia warstwa wydajności premium do przechowywania blokowych obiektów blob i uzupełnialnych obiektów blob.
 
-Konta magazynu FileStorage (wersja zapoznawcza) umożliwiają warstwa wydajności premium, udziałów plików platformy Azure.
+Konta magazynu FileStorage Podaj warstwa wydajności premium dla udziałów plików platformy Azure.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Warstwy dostępu dla bloku danych obiektu blob
 

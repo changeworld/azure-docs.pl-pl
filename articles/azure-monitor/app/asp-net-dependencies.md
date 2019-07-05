@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 479b810c5a66917bde5754d32991fb489ea26c9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8ba5b19ad5d8f03203e9a028fbc5aec84e5ec06
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299289"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565366"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Zależność śledzenia w usłudze Azure Application Insights 
 
@@ -104,7 +104,7 @@ Aplikacji ASP.NET za pomocą Instrumentacji kodu bajtów, co wymaga Instrumentac
 | --- | --- |
 | Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [Otwórz blok usługi Application Insights](../../azure-monitor/app/azure-web-apps.md) i włączyć poleceń SQL w ramach platformy .NET |
 | Serwer IIS (maszyn wirtualnych platformy Azure, lokalnych i itd.) | [Zainstaluj Monitor stanu na serwerze, na którym uruchomiona jest aplikacja](../../azure-monitor/app/monitor-performance-live-website-now.md) i uruchom ponownie usługi IIS.
-| Azure Cloud Service |[Zadanie uruchamiania użyj](../../azure-monitor/app/cloudservices.md) do [Instalowanie Monitora stanu](monitor-performance-live-website-now.md#download) |
+| Azure Cloud Service | Dodaj [zadania uruchamiania, aby zainstalować StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Aplikacja powinna być dołączona do dotycząca usługi Application Insights SDK w czasie kompilacji przez zainstalowanie pakietów NuGet dla [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) lub [aplikacje platformy ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
 | IIS Express | Nieobsługiwane
 
 W powyższych przypadkach prawidłowy sposób sprawdzania poprawności silnika Instrumentacji jest poprawnie zainstalowany jest weryfikując, czy wersja zestawu SDK są zbierane `DependencyTelemetry` jest "rddp". "rdddsd" lub "rddf" wskazuje zależności są zbierane za pomocą wywołania zwrotne DiagnosticSource lub źródła zdarzeń i dlatego nie będzie można przechwycić pełne zapytanie SQL.
@@ -113,47 +113,25 @@ W powyższych przypadkach prawidłowy sposób sprawdzania poprawności silnika I
 
 * [Mapa aplikacji](app-map.md) wizualizuje zależności między aplikacji i składników sąsiednich.
 * [Diagnostyka transakcji](transaction-diagnostics.md) pokazuje unified, skorelowanych danych serwera.
-* [Blok przeglądarki](javascript.md#ajax-performance) przedstawia wywołania AJAX z przeglądarek użytkowników.
+* [Kartę przeglądarki](javascript.md#ajax-performance) przedstawia wywołania AJAX z przeglądarek użytkowników.
 * Klikaj elementy z żądań wolno lub nie powiodło się, aby sprawdzić, wywołania ich zależności.
-* [Analiza](#analytics) może służyć do zależności zapytania o dane.
+* [Analiza](#logs-analytics) może służyć do zależności zapytania o dane.
 
 ## <a name="diagnosis"></a> Diagnozowanie wolne żądania
 
-Każde zdarzenie żądania jest skojarzony z wywołania zależności, wyjątki i inne zdarzenia, które są śledzone podczas przetwarzania żądania przez aplikację. Dlatego jeśli niektóre żądania są nieprawidłowo w inny sposób, możesz dowiedzieć się czy jest to ze względu na powolne odpowiedzi od zależności.
-
-Przejdźmy teraz przez przykład.
+Każde zdarzenie żądania jest skojarzone z wywołania zależności, wyjątki i inne zdarzenia, które są śledzone podczas przetwarzania żądania przez aplikację. Dlatego jeśli niektóre żądania są nieprawidłowo w inny sposób, możesz dowiedzieć się czy jest to ze względu na powolne odpowiedzi od zależności.
 
 ### <a name="tracing-from-requests-to-dependencies"></a>Śledzenie za pomocą żądań do zależności
 
-Otwórz blok wydajność i spójrz na siatce żądań:
+Otwórz **wydajności** kartę i przejdź do **zależności** karty u góry strony, obok operacji.
 
-![Lista żądań ze średnimi lub liczby](./media/asp-net-dependencies/02-reqs.png)
+Kliknij pozycję **Nazwa zależności** w ramach ogólnej. Po wybraniu zależność Wykres rozkładu czasów trwania tej zależności pojawią się po prawej stronie.
 
-Co najważniejsze, trwa długo. Zobaczmy, jeśli firma Microsoft może Dowiedz się, gdzie jest zużywany.
+![Wydajność karty kliknij kartę zależności u góry następnie nazwa zależności na wykresie](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Kliknij ten wiersz, aby wyświetlić pojedynczego żądania zdarzenia:
+Kliknij niebieski **przykłady** przycisk w prawym dolnym rogu, a następnie na przykład, aby zobaczyć szczegóły transakcji end-to-end.
 
-![Lista wystąpień na żądanie](./media/asp-net-dependencies/03-instances.png)
-
-Kliknij dowolne wystąpienie długotrwałych sprawdź go dalej i przewiń w dół do wywołania zdalnej zależności związane z tym żądaniem:
-
-![Znajdź wywołania zależności zdalnych, identyfikowanie nietypowego czas trwania](./media/asp-net-dependencies/04-dependencies.png)
-
-Wygląda na to najbardziej obsługi czas, który tego żądania spędzono w wywołaniu do lokalnej usługi.
-
-Wybierz ten wiersz, aby uzyskać więcej informacji:
-
-![Klikaj elementy tej zdalnego zależności, aby zidentyfikować Przyczyna nadmiernego](./media/asp-net-dependencies/05-detail.png)
-
-Wygląda na tę zależność jest, gdzie jest problem. Firma Microsoft została przeprowadzana na ten problem, więc teraz możemy po prostu musisz dowiedzieć się, dlaczego to wywołanie jest trwa tak długo.
-
-### <a name="request-timeline"></a>Osi czasu żądania
-
-W przypadku różnych ma Brak wywołania zależności, który jest wyjątkowo długie. Jednak, przełączając się widok osi czasu, okaże się, gdy opóźnienie podczas naszego wewnętrznego przetwarzania:
-
-![Znajdź wywołania zależności zdalnych, identyfikowanie nietypowego czas trwania](./media/asp-net-dependencies/04-1.png)
-
-Prawdopodobnie duży odstęp po pierwszą zależnością wywołać, więc należy przyjrzymy się naszego kodu, aby zobaczyć, dlaczego jest.
+![Kliknij na przykład, aby zobaczyć szczegóły transakcji end-to-end](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>Profil witryny na żywo
 
@@ -161,35 +139,35 @@ Nie wiadomo, gdzie przejdzie czasu? [Profiler usługi Application Insights](../.
 
 ## <a name="failed-requests"></a>Żądania zakończone niepowodzeniem
 
-Żądania zakończone niepowodzeniem, może być również skojarzona z zakończonymi niepowodzeniem wywołaniami do zależności. Ponownie firma Microsoft może kliknij, aby śledzić problem.
+Żądania zakończone niepowodzeniem, może być również skojarzona z zakończonymi niepowodzeniem wywołaniami do zależności.
 
-![Kliknij wykres, żądań zakończonych niepowodzeniem](./media/asp-net-dependencies/06-fail.png)
+Firma Microsoft może przejść do **błędów** karcie po lewej stronie, a następnie kliknij polecenie **zależności** kartę u góry.
 
-Kliknij, aby wystąpienia żądań zakończonych niepowodzeniem i spójrz na jego powiązanych zdarzeń.
+![Kliknij wykres, żądań zakończonych niepowodzeniem](./media/asp-net-dependencies/4-fail.png)
 
-![Kliknij typ żądania, kliknij wystąpienie aby przejść do innego widoku tego samego wystąpienia, kliknij je, aby uzyskać szczegóły wyjątku.](./media/asp-net-dependencies/07-faildetail.png)
+W tym miejscu można wyświetlić liczbę zależność zakończona niepowodzeniem. Aby uzyskać więcej informacji na temat wystąpienia nie powiodło się, próby, klikając nazwę zależności w dolną tabelę. Możesz kliknąć niebieski **zależności** przycisk w prawym dolnym rogu, aby uzyskać szczegóły transakcji end-to-end.
 
-## <a name="analytics"></a>Analiza
+## <a name="logs-analytics"></a>Dzienniki (analiza)
 
 Możesz śledzić zależności w [język zapytania Kusto](/azure/kusto/query/). Oto kilka przykładów.
 
 * Znajdź wszystkie nieudane wywołania zależności:
 
-```
+``` Kusto
 
     dependencies | where success != "True" | take 10
 ```
 
 * Znajdź wywołania AJAX:
 
-```
+``` Kusto
 
     dependencies | where client_Type == "Browser" | take 10
 ```
 
 * Znajdź wywołania zależności związanych z żądaniami:
 
-```
+``` Kusto
 
     dependencies
     | where timestamp > ago(1d) and  client_Type != "Browser"
@@ -200,17 +178,13 @@ Możesz śledzić zależności w [język zapytania Kusto](/azure/kusto/query/). 
 
 * Znajdź wywołania AJAX skojarzone z wyświetleń stron:
 
-```
+``` Kusto 
 
     dependencies
     | where timestamp > ago(1d) and  client_Type == "Browser"
     | join (browserTimings | where timestamp > ago(1d))
       on operation_Id
 ```
-
-## <a name="video"></a>Połączenia wideo
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -220,7 +194,6 @@ Możesz śledzić zależności w [język zapytania Kusto](/azure/kusto/query/). 
 
 ## <a name="open-source-sdk"></a>Zestaw SDK typu open-source
 Podobnie jak każdy zestaw Application Insights SDK moduł zbierania zależności jest również typu open source. Odczyt i przyczynić się do kodu lub zgłosić problemy w czasie [oficjalne repozytorium GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

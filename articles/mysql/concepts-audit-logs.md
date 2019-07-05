@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: a82afe6f5299609fd6dd57a54f04f49fad5d2268
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.date: 06/26/2019
+ms.openlocfilehash: 86750cea5e7f0d4726f3e0e9a03795ef2a602d8b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357643"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443840"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Dzienniki inspekcji w usłudze Azure Database for MySQL
 
@@ -55,7 +55,7 @@ W poniższych sekcjach opisano, co to jest danymi wyjściowymi MySQL dzienniki i
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
+| `TimeGenerated [UTC]` | Sygnatura czasowa podczas rejestrowania w formacie UTC |
 | `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID dla subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
@@ -65,13 +65,14 @@ W poniższych sekcjach opisano, co to jest danymi wyjściowymi MySQL dzienniki i
 | `Resource` | Nazwa serwera |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `connection_log` |
-| `event_subclass` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (Ta funkcja jest dostępna tylko dla MySQL 5.7) |
-| `connection_id` | Identyfikator unikatowy połączenia wygenerowane przez MySQL |
-| `host` | Puste |
-| `ip` | Adres IP klienta łączenie z bazą danych MySQL |
-| `user` | Nazwa użytkownika wykonującego zapytanie |
-| `db` | Nazwa bazy danych połączone |
+| `LogicalServerName_s` | Nazwa serwera |
+| `event_class_s` | `connection_log` |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (Ta funkcja jest dostępna tylko dla MySQL 5.7) |
+| `connection_id_d` | Identyfikator unikatowy połączenia wygenerowane przez MySQL |
+| `host_s` | Puste |
+| `ip_s` | Adres IP klienta łączenie z bazą danych MySQL |
+| `user_s` | Nazwa użytkownika wykonującego zapytanie |
+| `db_s` | Nazwa bazy danych połączone |
 | `\_ResourceId` | Identyfikator URI zasobu |
 
 ### <a name="general"></a>Ogólne
@@ -82,7 +83,7 @@ Schemat poniżej dotyczy ogólne, DML_SELECT, DML_NONSELECT, DML, DDL, DCL i adm
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
+| `TimeGenerated [UTC]` | Sygnatura czasowa podczas rejestrowania w formacie UTC |
 | `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID dla subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
@@ -92,15 +93,16 @@ Schemat poniżej dotyczy ogólne, DML_SELECT, DML_NONSELECT, DML, DDL, DCL i adm
 | `Resource` | Nazwa serwera |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `general_log` |
-| `event_subclass` | `LOG`, `ERROR`, `RESULT` (Ta funkcja jest dostępna tylko dla MySQL 5.6) |
+| `LogicalServerName_s` | Nazwa serwera |
+| `event_class_s` | `general_log` |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (Ta funkcja jest dostępna tylko dla MySQL 5.6) |
 | `event_time` | Zapytanie start sekund w sygnatura czasowa systemu UNIX |
-| `error_code` | Kod błędu, jeśli zapytanie nie powiodło się. `0` oznacza, że błąd nie |
-| `thread_id` | Identyfikator wątku, który jest wykonywane zapytanie |
-| `host` | Puste |
-| `ip` | Adres IP klienta łączenie z bazą danych MySQL |
-| `user` | Nazwa użytkownika wykonującego zapytanie |
-| `sql_text` | Tekst pełnej kwerendy |
+| `error_code_d` | Kod błędu, jeśli zapytanie nie powiodło się. `0` oznacza, że błąd nie |
+| `thread_id_d` | Identyfikator wątku, który jest wykonywane zapytanie |
+| `host_s` | Puste |
+| `ip_s` | Adres IP klienta łączenie z bazą danych MySQL |
+| `user_s` | Nazwa użytkownika wykonującego zapytanie |
+| `sql_text_s` | Tekst pełnej kwerendy |
 | `\_ResourceId` | Identyfikator URI zasobu |
 
 ### <a name="table-access"></a>Dostępu do tabel
@@ -109,7 +111,7 @@ Schemat poniżej dotyczy ogólne, DML_SELECT, DML_NONSELECT, DML, DDL, DCL i adm
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
+| `TimeGenerated [UTC]` | Sygnatura czasowa podczas rejestrowania w formacie UTC |
 | `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID dla subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
@@ -119,12 +121,13 @@ Schemat poniżej dotyczy ogólne, DML_SELECT, DML_NONSELECT, DML, DDL, DCL i adm
 | `Resource` | Nazwa serwera |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `table_access_log` |
-| `event_subclass` | `READ`, `INSERT`, `UPDATE`, lub `DELETE` |
-| `connection_id` | Identyfikator unikatowy połączenia wygenerowane przez MySQL |
-| `db` | Nazwa bazy danych |
-| `table` | Nazwa tabeli dostępne |
-| `sql_text` | Tekst pełnej kwerendy |
+| `LogicalServerName_s` | Nazwa serwera |
+| `event_class_s` | `table_access_log` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, lub `DELETE` |
+| `connection_id_d` | Identyfikator unikatowy połączenia wygenerowane przez MySQL |
+| `db_s` | Nazwa bazy danych |
+| `table_s` | Nazwa tabeli dostępne |
+| `sql_text_s` | Tekst pełnej kwerendy |
 | `\_ResourceId` | Identyfikator URI zasobu |
 
 ## <a name="next-steps"></a>Kolejne kroki

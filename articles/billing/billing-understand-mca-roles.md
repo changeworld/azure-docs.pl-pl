@@ -1,24 +1,21 @@
 ---
 title: Omówienie rozliczeń role administracyjne dla umowy klienta firmy Microsoft — Azure
 description: Więcej informacji na temat rozliczeń ról na potrzeby rozliczeń kont na platformie Azure do umowy klienta firmy Microsoft.
-services: billing
-documentationcenter: ''
 author: amberbhargava
 manager: amberbhargava
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12e492fee95192d0af49ff7b6a5be3144398fef8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370971"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490442"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Zrozumienie umowy klienta Microsoft ról administracyjnych na platformie Azure
 
@@ -30,7 +27,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. Sp
 
 W poniższej tabeli opisano role rozliczeń służy do zarządzania konta rozliczeniowego, rozliczeń profile i faktury sekcje.
 
-|Rola|Opis|
+|Role|Opis|
 |---|---|
 |Właścicielem konta i rozliczenia|Zarządzanie wszystkim, aby uzyskać konto rozliczeniowe|
 |Współautor konta rozliczeń|Zarządzanie wszystkim, z wyjątkiem uprawnienia do konta rozliczeniowego|
@@ -46,7 +43,7 @@ W poniższej tabeli opisano role rozliczeń służy do zarządzania konta rozlic
 
 ## <a name="billing-account-roles-and-tasks"></a>Rozliczanie konta role i zadania
 
-Konto rozliczeniowe umożliwia zarządzają rozliczeniami dla Twojej organizacji. Konto rozliczeniowe umożliwia organizowanie kosztów, opłaty za monitorowanie i faktur i kontroli dostępu rozliczeń dla Twojej organizacji. Aby uzyskać więcej informacji, zobacz [zrozumieć konto rozliczeniowe](billing-mca-overview.md#understand-billing-account).
+Konto rozliczeniowe umożliwia zarządzają rozliczeniami dla Twojej organizacji. Konto rozliczeniowe umożliwia organizowanie kosztów, opłaty za monitorowanie i faktur i kontroli dostępu rozliczeń dla Twojej organizacji. Aby uzyskać więcej informacji, zobacz [zrozumieć konto rozliczeniowe](billing-mca-overview.md#your-billing-account).
 
 W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w kontekście konta rozliczeniowego.
 
@@ -92,7 +89,7 @@ W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w 
 
 ## <a name="billing-profile-roles-and-tasks"></a>Karta profilu role i zadania
 
-Profil rozliczeniowy pozwala zarządzać metodami płatności i faktur. Miesięcznej fakturze jest generowany dla subskrypcji platformy Azure i innych produktów zakupionych przy użyciu profilu rozliczeń. Możesz użyć metody płatności fakturę. Aby uzyskać więcej informacji, zobacz [zrozumieć profile rozliczeń](billing-mca-overview.md#understand-billing-profiles).
+Profil rozliczeniowy pozwala zarządzać metodami płatności i faktur. Miesięcznej fakturze jest generowany dla subskrypcji platformy Azure i innych produktów zakupionych przy użyciu profilu rozliczeń. Możesz użyć metody płatności fakturę. Aby uzyskać więcej informacji, zobacz [zrozumieć profile rozliczeń](billing-mca-overview.md#billing-profiles).
 
 W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w kontekście profil rozliczeniowy.
 
@@ -142,7 +139,7 @@ W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w 
 
 ## <a name="invoice-section-roles-and-tasks"></a>Faktury sekcji role i zadania
 
-Sekcja faktury umożliwia organizowanie kosztów na fakturze. Można utworzyć sekcję do organizowania koszty według działu, środowisko programistyczne, lub odpowiednio do potrzeb Twojej organizacji. Zezwól na uprawnienia do tworzenia subskrypcji platformy Azure, w sekcji. Opłaty za użycie i zakupów dla subskrypcji, a następnie show w sekcji faktury. Aby uzyskać więcej informacji, zobacz [sekcji faktury omówienie](billing-mca-overview.md#understand-invoice-sections).
+Sekcja faktury umożliwia organizowanie kosztów na fakturze. Można utworzyć sekcję do organizowania koszty według działu, środowisko programistyczne, lub odpowiednio do potrzeb Twojej organizacji. Zezwól na uprawnienia do tworzenia subskrypcji platformy Azure, w sekcji. Opłaty za użycie i zakupów dla subskrypcji, a następnie show w sekcji faktury. Aby uzyskać więcej informacji, zobacz [sekcji faktury omówienie](billing-mca-overview.md#invoice-sections).
 
 W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w kontekście sekcje faktury.
 
@@ -185,7 +182,7 @@ W poniższej tabeli przedstawiono, jakie rola konieczne wykonywanie zadań w ram
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj **Cost Management + rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
 

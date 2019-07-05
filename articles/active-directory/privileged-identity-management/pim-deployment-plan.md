@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7413fcf7992195753cba86a50b7d53a144b36023
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440639"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476438"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Wdrażanie usługi Azure AD Privileged Identity Management (PIM)
 
@@ -99,7 +99,7 @@ Poniższa sekcja pomoże Ci Określ wszystkie zainteresowane strony, które są 
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>Uczestnicy projektu: Role AD PIM dla systemu Azure
 
-| Name (Nazwa) | Rola | Akcja |
+| Name (Nazwa) | Role | Akcja |
 | --- | --- | --- |
 | Nazwę i adres e-mail | **Architekt systemów tożsamości lub administratora globalnego usługi Azure**<br/>Przedstawiciel zespołu zarządzającego tożsamości odpowiedzialnym za określające, jak ta zmiana jest powiązana z infrastrukturę zarządzania tożsamościami podstawowe w Twojej organizacji. | SO/R/I |
 | Nazwę i adres e-mail | **Właściciel usługi / wiersz Menedżera**<br/>Przedstawiciel od właścicieli IT usługi lub grupy usług. Są one klucza w podejmowaniu decyzji i ułatwia wdrażanie usługi PIM dla swojego zespołu. | SO/R/I |
@@ -109,7 +109,7 @@ Poniższa sekcja pomoże Ci Określ wszystkie zainteresowane strony, które są 
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>Uczestnicy projektu: Role zasobów usługi PIM dla systemu Azure
 
-| Name (Nazwa) | Rola | Akcja |
+| Name (Nazwa) | Role | Akcja |
 | --- | --- | --- |
 | Nazwę i adres e-mail | **Subskrypcja / właściciela zasobu**<br/>Przedstawiciel od właścicieli IT każdej subskrypcji lub zasobu, który chcesz wdrożyć usługi PIM dla | SO/R/I |
 | Nazwę i adres e-mail | **Właściciel zabezpieczeń**<br/>Przedstawiciel zespołu zabezpieczeń, który można wyrejestrować, planu spełnia wymagania dotyczące zabezpieczeń Twojej organizacji. | SO/R |
@@ -143,7 +143,7 @@ Wykonaj następujące kroki, aby wymusić zasadę najmniejszych uprawnień dla p
 
 1. Lista, która ma uprzywilejowane role w swojej organizacji. Możesz użyć [kreatora PIM](pim-security-wizard.md#run-the-wizard) można uzyskać dostęp do strony podobnie do poniższego.
 
-    ![Wykryj role uprzywilejowane](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Odnajdowanie ról uprzywilejowanych okienko kto ma uprzywilejowane role](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
 1. Dla wszystkich administratorów globalnych w Twojej organizacji Dowiedz się, dlaczego muszą roli. Oparte na odczytywania dokumentacja poprzednich, jeśli zadanie osoby mogą być wykonywane przez co najmniej jedną rolę administratora szczegółowe, należy usunąć je z rolą administratora globalnego i upewnić przydziałów odpowiednio w usłudze Azure Active Directory (jako odniesienia: Obecnie firma Microsoft ma tylko około 10 administratorów z roli administratora globalnego. Dowiedz się więcej o [jak firma Microsoft korzysta z usługi PIM](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
 
@@ -151,7 +151,7 @@ Wykonaj następujące kroki, aby wymusić zasadę najmniejszych uprawnień dla p
 
 Aby zautomatyzować kroki 3 i 4, możesz użyć funkcji przeglądu dostępu w usłudze PIM. Czynności opisane w [Rozpoczynanie przeglądu dostępu dla ról usługi Azure AD w usłudze PIM](pim-how-to-start-security-review.md), możesz skonfigurować przeglądu dostępu dla każdej roli usługi Azure AD, która ma co najmniej jednego członka.
 
-![Tworzenie przeglądu dostępu](./media/pim-deployment-plan/create-access-review.png)
+![Tworzenie ról usługi Azure AD w okienku przeglądu dostępu](./media/pim-deployment-plan/create-access-review.png)
 
 Należy ustawić recenzentów **członkowie (własny)** . Spowoduje to wysłanie wiadomość e-mail do wszystkich elementów członkowskich w roli można pobrać w celu sprawdzenia, czy potrzebują dostępu. Należy również włączyć **wymagana Przyczyna przy zatwierdzaniu** w zaawansowanych ustawieniach, dzięki czemu użytkownicy mogą podać Dlaczego muszą roli. Na podstawie tych informacji, można usunąć użytkowników z zbędne role i delegowanie bardziej szczegółowego ról administratora w przypadku administratorów globalnych.
 
@@ -240,7 +240,7 @@ Przed zaimplementowaniem rozwiązania PIM jest dobrym rozwiązaniem do ustawień
 
 #### <a name="pim-settings-for-azure-ad-roles"></a>Ustawień usługi PIM dla ról usługi Azure AD
 
-| Rola | Wymaganie usługi MFA | Powiadomienia | Bilet zdarzenia | Wymagaj zatwierdzenia | Osoby zatwierdzającej | Czas trwania aktywacji | Administratora trwałego |
+| Role | Wymaganie usługi MFA | Powiadomienia | Bilet zdarzenia | Wymagaj zatwierdzenia | Osoby zatwierdzającej | Czas trwania aktywacji | Administratora trwałego |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Administrator globalny | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Innych administratorów globalnych | 1 godzina | Kont dostępu awaryjnego |
 | Administrator programu Exchange | :heavy_check_mark: | :heavy_check_mark: | : x:. | : x:. | Brak | 2 Hour | Brak |
@@ -248,7 +248,7 @@ Przed zaimplementowaniem rozwiązania PIM jest dobrym rozwiązaniem do ustawień
 
 #### <a name="pim-settings-for-azure-resource-roles"></a>Ustawień usługi PIM dla ról zasobów platformy Azure
 
-| Rola | Wymaganie usługi MFA | Powiadomienia | Wymagaj zatwierdzenia | Osoby zatwierdzającej | Czas trwania aktywacji | Administrator usługi Active | Aktywne wygaśnięcia | Kwalifikujące się wygaśnięcia |
+| Role | Wymaganie usługi MFA | Powiadomienia | Wymagaj zatwierdzenia | Osoby zatwierdzającej | Czas trwania aktywacji | Administrator usługi Active | Aktywne wygaśnięcia | Kwalifikujące się wygaśnięcia |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Właściciel subskrypcji krytyczne | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Innych właścicieli subskrypcji | 1 godzina | Brak | Nie dotyczy | 3-miesięczna |
 | Administrator dostępu użytkowników z mniej ważnych subskrypcji | :heavy_check_mark: | :heavy_check_mark: | : x:. | Brak | 1 godzina | Brak | Nie dotyczy | 3-miesięczna |
@@ -258,7 +258,7 @@ Poniższa tabela zawiera opis ustawienia.
 
 | Ustawienie | Opis |
 | --- | --- |
-| Rola | Nazwa roli którą definiujesz ustawienia. |
+| Role | Nazwa roli którą definiujesz ustawienia. |
 | Wymaganie usługi MFA | Czy uprawniony użytkownik musi wykonać uwierzytelnianie wieloskładnikowe przed aktywowaniem roli.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wymuszanie uwierzytelniania Wieloskładnikowego dla wszystkich ról administratora, zwłaszcza, jeśli są użytkowników-gości. |
 | Powiadomienia | Jeśli ustawiona na wartość true, Administrator globalny, Administrator ról uprzywilejowanych, a Administrator zabezpieczeń w organizacji otrzyma wiadomość e-mail z powiadomieniem po uprawniony użytkownik aktywuje roli.<br/><br/>**Uwaga:** W niektórych organizacjach nie mają adres e-mail powiązany z ich konta administratora, aby otrzymywać te powiadomienia e-mail, należy go ustawić alternatywny adres e-mail, dzięki czemu administratorzy będą otrzymywać te wiadomości e-mail. |
 | Bilet zdarzenia | Czy uprawniony użytkownik musi zarejestrować numeru biletu zdarzenia podczas aktywacji ich ról. To ustawienie pozwala organizacji identyfikowanie poszczególnych aktywacji z użyciem wewnętrzny numer zdarzenia eliminowanie niechciane aktywacji.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wykorzystując liczb biletów zdarzeń, aby powiązać PIM przy użyciu Twój system wewnętrzny. Jest to szczególnie przydatne dla osób zatwierdzających potrzebujących kontekstu aktywacji. |
@@ -318,7 +318,7 @@ Teraz, gdy zidentyfikowano użytkowników testowych, umożliwia skonfigurowanie 
 
 Aby sprawdzić, czy wszystkie konfiguracje skonfigurowane pod kątem role działają poprawnie, należy użyć tego etapu. Skorzystaj z poniższej tabeli, aby udokumentować testów. Należy również użyć tego etapu do optymalizacji komunikacji z narażeni użytkownicy.
 
-| Rola | Oczekiwane zachowanie podczas aktywacji | Rzeczywiste wyniki |
+| Role | Oczekiwane zachowanie podczas aktywacji | Rzeczywiste wyniki |
 | --- | --- | --- |
 | Administrator globalny | (1) wymagane uwierzytelnianie MFA<br/>(2) wymagają zatwierdzenia<br/>(3), osoba zatwierdzająca otrzyma powiadomienie i zatwierdzić<br/>(4) roli wygasa po upływie wstępnie ustawiony czas |  |
 | Właściciel subskrypcji *X* | (1) wymagane uwierzytelnianie MFA<br/>(2) kwalifikującego się przypisania wygasa po upływie skonfigurowanego okresu. |  |

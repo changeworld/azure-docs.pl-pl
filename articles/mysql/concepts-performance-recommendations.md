@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 569ef6e9f91fdd728c5d230e2a6c46a7b01e5a62
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: af3c4482b1ce9e521d14a0e0c63de40625c25c73
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078822"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461795"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Zalecenia dotyczące wydajności w usłudze Azure Database for MySQL
 
 **Dotyczy:** Azure Database for MySQL 5.7
 
 > [!NOTE]
-> Zalecenia dotyczące wydajności jest w wersji zapoznawczej. Obsługa zalecenia dotyczące wydajności w witrynie Azure portal jest wdrażana i mogą jeszcze być niedostępne w Twoim regionie.
+> Zalecenia dotyczące wydajności jest w wersji zapoznawczej.
 
 Zalecenia dotyczące wydajności funkcji analizuje bazy danych w celu tworzenie niestandardowych sugestii w celu zwiększenia wydajności. Aby uzyskać zalecenia, analiza patrzy na różne cechy bazy danych, w tym schemacie. Włącz [Query Store](concepts-query-store.md) na serwerze, aby w pełni wykorzystać funkcję zalecenia dotyczące wydajności. Jeśli schemat wydajności jest WYŁĄCZONY, włączanie kwerenda Store umożliwia performance_schema i podzbiór dokumentów schematu wydajności wymaganych dla funkcji. Po zaimplementowaniu żadnych rekomendacji wydajności, należy przetestować wydajność, aby ocenić wpływ tych zmian.
 

@@ -5,15 +5,15 @@ author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/25/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 809c98c1e2e51ae51d7fe03f2165a5d9eecb05cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cad1b0ab484d172000bd62146a88a27bfab1e9f2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681818"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448770"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla reguł alertów dzienników
 Gdy [alertu dziennika jest tworzony na platformie Azure](alerts-log.md), masz możliwość [konfigurowanie przy użyciu grup akcji](action-groups.md) przeprowadzić co najmniej jednej akcji.  W tym artykule opisano akcji różnych elementów webhook, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
@@ -41,7 +41,7 @@ Elementy Webhook obejmują adres URL i ładunek zapisany w formacie JSON, które
 | Parametr | Zmienna | Opis |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |Nazwa reguły alertu. |
-| Severity |#severity |Ważność ustawić alert wyzwolenia dziennika. |
+| severity |#severity |Ważność ustawić alert wyzwolenia dziennika. |
 | AlertThresholdOperator |#thresholdoperator |Operator progu dla reguły alertu.  *Większa niż* lub *mniej niż*. |
 | AlertThresholdValue |#thresholdvalue |Wartość progowa dla reguły alertu. |
 | LinkToSearchResults |#linktosearchresults |Link do portalu analiza, które zwraca rekordy kwerendę, która utworzyła alert. |
@@ -51,9 +51,10 @@ Elementy Webhook obejmują adres URL i ładunek zapisany w formacie JSON, które
 | Godzina rozpoczęcia interwału wyszukiwania |#searchintervalstarttimeutc |Godzina rozpoczęcia dla zapytania w formacie UTC, format - mm/dd/rrrr gg: mm: ss AM/PM. 
 | SearchQuery |#searchquery |Zapytanie wyszukiwania w dzienniku używane przez reguły alertu. |
 | SearchResults |"IncludeSearchResults": true|Rekordów zwróconych przez zapytanie w postaci tabeli JSON, ograniczona do pierwszych 1000 rekordów; Jeśli "IncludeSearchResults": true zostanie dodany do niestandardowych definicji elementu webhook JSON jako właściwość najwyższego poziomu. |
+| Typ alertu| #alerttype | Typ reguł alertów dzienników skonfigurowane - [pomiar metryki](alerts-unified-log.md#metric-measurement-alert-rules) lub [liczbę wyników](alerts-unified-log.md#number-of-results-alert-rules).|
 | WorkspaceID |#workspaceid |Identyfikator obszaru roboczego usługi Log Analytics. |
 | Identyfikator aplikacji |#applicationid |Identyfikator usługi Application Insights aplikacji. |
-| Identyfikator subskrypcji |#subscriptionid |Identyfikator subskrypcji platformy Azure używane z usługą Application Insights. 
+| Identyfikator subskrypcji |#subscriptionid |Identyfikator subskrypcji platformy Azure używane. 
 
 > [!NOTE]
 > LinkToSearchResults przekazuje parametry, takie jak SearchQuery, StartTime interwał wyszukiwania i wyszukiwanie koniec interwału czasu w adresie URL do witryny Azure portal pod kątem wyświetlania w sekcji analizy. Witryna Azure portal udostępnia identyfikatora URI rozmiar wynoszący około 2000 znaków i zostanie *nie* Otwórz link podany w alertach, wartości parametrów przekroczy limit wymienionych. Użytkownicy mogą ręcznie wprowadź szczegóły, aby wyświetlić wyniki w portalu analiza, lub użyj [interfejsu API REST Application Insights Analytics](https://dev.applicationinsights.io/documentation/Using-the-API) lub [interfejsu API REST usługi Log Analytics](/rest/api/loganalytics/) programowo pobrać wyniki 
@@ -88,8 +89,18 @@ Poniżej przedstawiono przykładowy ładunek działań standardowych elementów 
 
 ```json
 {
-    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
+    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
+    "AlertRuleName":"AcmeRule",
+    "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+    "AlertThresholdOperator": "Greater Than",
+    "AlertThresholdValue": 0,
+    "ResultCount": 2,
+    "SearchIntervalInSeconds": 3600,
+    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "Description": "log alert rule",
+    "Severity": "Warning",
     "SearchResult":
         {
         "tables":[
@@ -107,15 +118,8 @@ Poniżej przedstawiono przykładowy ładunek działań standardowych elementów 
                     }
                 ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "Warning"
+    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+    "AlertType": "Metric measurement"
  }
  ```
 
@@ -131,7 +135,17 @@ Poniżej przedstawiono przykładowy ładunek standardowego elementu webhook *bez
     "schemaId":"Microsoft.Insights/LogAlert","data":
     { 
     "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
+    "AlertRuleName":"AcmeRule",
+    "SearchQuery":"requests | where resultCode == \"500\"",
+    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+    "AlertThresholdOperator": "Greater Than",
+    "AlertThresholdValue": 0,
+    "ResultCount": 2,
+    "SearchIntervalInSeconds": 3600,
+    "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "Description": null,
+    "Severity": "3",
     "SearchResult":
         {
         "tables":[
@@ -149,16 +163,8 @@ Poniżej przedstawiono przykładowy ładunek standardowego elementu webhook *bez
                     }
                 ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "3",
-    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
+    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
+    "AlertType": "Number of results"
     }
 }
 ```

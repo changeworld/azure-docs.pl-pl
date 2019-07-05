@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 8f6f94fa8602dcc2b8eed19262f595cb18c40b57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 547aed05746cb3f6c73c420169c727cc98c4ac4f
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65968306"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551734"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnienie do warstwy standardowa Security Center w celu uzyskania zwiększonych zabezpieczeń
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby obciążeń uruchamianych na platformie Azure, lokalnie i w innych chmurach. System ten zapewnia widoczność i kontrolę nad obciążeniach chmury hybrydowej, aktywne mechanizmów obronnych pozwalających ograniczyć narażenie na zagrożenia i wykrywanie inteligentne, które ułatwią Ci zmieniającego się szybko ewoluującymi cyberatakami.
@@ -28,7 +28,7 @@ Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniam
 Usługa Security Center jest oferowana w dwóch warstwach:
 
 - **Bezpłatna** warstwy jest automatycznie włączona na wszystkich subskrypcji platformy Azure i zawiera zasady zabezpieczeń, ciągła ocena zabezpieczeń i zalecenia dotyczące zabezpieczeń informacje z możliwością działania, aby pomóc w ochronie Twoich zasobów platformy Azure.
-- **Standardowa** warstwa rozszerza możliwości w warstwie bezpłatna obciążeń w prywatnych i innych chmur publicznych, zapewniając ujednolicone ochronę zarządzania i zagrożenia zabezpieczeń różnych obciążeń chmury hybrydowej. Warstwa standardowa obejmuje również zaawansowane zagrożenia możliwości wykrywania, która używa wbudowaną analizę behawioralną i uczenie maszynowe do identyfikowania ataków i zero day luki w zabezpieczeniach, kontroli dostępu i aplikacji, aby zmniejszyć narażenie na ataki sieciowe i złośliwym oprogramowaniem, a więcej. Warstwa standardowa można wypróbować bezpłatnie. Usługa Security Center (standardowa) obsługują Azure zasobów, w tym maszyny wirtualne, usługi VM scale sets, usługi App Service, serwerami programu SQL Server i konta magazynu. Jeśli masz usługi Azure Security Center w warstwie standardowa można zrezygnować z pomocy technicznej na podstawie typu zasobu. 
+- **Standardowa** warstwa rozszerza możliwości w warstwie bezpłatna obciążeń w prywatnych i innych chmur publicznych, zapewniając ujednolicone ochronę zarządzania i zagrożenia zabezpieczeń różnych obciążeń chmury hybrydowej. Warstwa standardowa obejmuje również zaawansowane zagrożenia możliwości wykrywania, która używa wbudowaną analizę behawioralną i uczenie maszynowe do identyfikowania ataków i zero day luki w zabezpieczeniach, kontroli dostępu i aplikacji, aby zmniejszyć narażenie na ataki sieciowe i złośliwym oprogramowaniem, a więcej. Warstwa standardowa można wypróbować bezpłatnie. Usługa Security Center (standardowa) obsługują Azure zasobów, w tym maszyny wirtualne, zestawy skalowania maszyn wirtualnych, usługi App Service, serwerami programu SQL Server i konta magazynu. Jeśli masz usługi Azure Security Center w warstwie standardowa można zrezygnować z pomocy technicznej na podstawie typu zasobu. 
 
 
 Aby uzyskać więcej informacji, zobacz Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
@@ -40,9 +40,9 @@ Cały subskrypcji platformy Azure można uaktualnić do warstwy standardowa, kt�
 
 Aby wyświetlić warstwy standardowa:
 
-1. Wybierz **zasady zabezpieczeń** na **usługi Security Center** menu głównego.
+1. Wybierz **ceny u & stawienia** na **usługi Security Center** menu głównego.
 2. Wybierz subskrypcję, której chcesz przejść na warstwę standardowa.
-3. Na **zasady zabezpieczeń** bloku wybierz **warstwa cenowa**.
+3. Wybierz **warstwa cenowa**.
 4. Wybierz **standardowa** do uaktualnienia.
 5. Kliknij pozycję **Zapisz**.
 

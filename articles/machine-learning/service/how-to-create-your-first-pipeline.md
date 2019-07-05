@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c87685673052d2cfbc961d3bb717c9cd274872af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 948594a43cec92aa62386b041ce8c96a0558995e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059243"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466912"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -58,7 +58,7 @@ Utwórz zasoby wymagane do uruchomienia potoku:
 ### <a name="set-up-a-datastore"></a>Skonfiguruj Magazyn danych
 Magazyn danych przechowuje dane dla potoku w celu uzyskania dostępu do. Każdy obszar roboczy ma domyślny magazyn danych. Możesz zarejestrować dodatkowe magazynów danych. 
 
-Po utworzeniu obszaru roboczego, [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [usługi Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) są dołączone do obszaru roboczego domyślnie. Usługa Azure Files jest domyślny magazyn danych dla obszaru roboczego, ale można również użyć magazynu obiektów Blob jako magazyn danych. Aby dowiedzieć się więcej, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Files, obiektów blob platformy Azure lub usługi Azure Disks](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
+Po utworzeniu obszaru roboczego, [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [usługi Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) są dołączone do obszaru roboczego domyślnie. Usługa Azure Blob Storage to magazyn danych domyślnego obszaru roboczego, ale można również użyć magazynu obiektów Blob jako magazyn danych. Aby dowiedzieć się więcej, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Files, obiektów blob platformy Azure lub usługi Azure Disks](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
 
 ```python
 # Default datastore (Azure file storage)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: b9293dc8be4fb50a657093090b0e6d76de5b5d31
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b85b06552dcd0fc419302882f05814adbd454f46
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303516"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542560"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -60,6 +60,7 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 * Dla zasoby utworzone w wersji 3, Media Services obsługuje tylko [szyfrowania magazynu po stronie serwera usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
     * Za pomocą interfejsów API w wersji 3 zasoby utworzone za pomocą interfejsów API w wersji 2, który miał [szyfrowania magazynu](../previous/media-services-rest-storage-encryption.md) (AES 256) udostępnianego przez usługi multimediów.
     * Nie można tworzyć nowe zasoby za pomocą starszej wersji AES 256 [szyfrowania magazynu](../previous/media-services-rest-storage-encryption.md) przy użyciu interfejsów API w wersji 3.
+* Właściwości elementu zawartości w wersji 3 różnią się od v2, zobacz [sposób mapowania właściwości](assets-concept.md#map-v3-asset-properties-to-v2).
 * Zestawy SDK w wersji 3 są teraz całkowicie niezależni od zestawu SDK usługi Storage, co daje większą kontrolę nad wersję zestawu SDK usługi Storage ma być używany i eliminuje problemy z wersjonowaniem. 
 * W interfejsach API w wersji 3 są wszystkie kodowania szybkości transmisji bitów w bitach na sekundę. Stanowi to odmianę v2, które ustawienia wstępne usługi Media Encoder Standard. Na przykład szybkości transmisji bitów w wersji 2 będzie można określić jako 128 (KB/s), ale w wersji 3 byłoby 128000 (bity/sekundę). 
 * AssetFiles jednostek, AccessPolicies i IngestManifests nie istnieją w wersji 3.

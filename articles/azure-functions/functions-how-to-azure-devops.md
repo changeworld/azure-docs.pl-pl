@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: ce57aae1119261c0545b59a037226fdc12ec115f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9806a982982971b1b3ac9c28454e17813b2ad2a5
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050661"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479882"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>Ciągłe dostarczanie za pomocą DevOps platformy Azure
 
@@ -158,6 +158,10 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionApp
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 #### <a name="linux-function-app"></a>Funkcja Linux aplikacji
@@ -171,6 +175,11 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionAppLinux
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #Note that deployment slots is not supported for Linux Dynamic SKU
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 ## <a name="template-based-pipeline"></a>Potok na podstawie szablonu
@@ -206,9 +215,11 @@ Podczas tworzenia nowego potoku wydania, wyszukaj szablon wydania usługi Azure 
 
 ![](media/functions-how-to-azure-devops/release-template.png)
 
+Wdrażanie do miejsca wdrożenia nie jest obsługiwane w szablonie wydania.
+
 ## <a name="creating-an-azure-pipeline-using-the-azure-cli"></a>Tworzenie potoku usługi Azure przy użyciu wiersza polecenia platformy Azure
 
-Za pomocą `az functionapp devops-pipeline create` [polecenia](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create), potoku usługi Azure zostaną utworzone do kompilowania i wydawania żadnych zmian w kodzie w repozytorium. Polecenie Wygeneruj nowy plik YAML, który definiuje potoku kompilacji i wydania, a następnie przekazać go do repozytorium.
+Za pomocą `az functionapp devops-pipeline create` [polecenia](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create), potoku usługi Azure zostaną utworzone do kompilowania i wydawania żadnych zmian w kodzie w repozytorium. Polecenie Wygeneruj nowy plik YAML, który definiuje potoku kompilacji i wydania, a następnie przekazać go do repozytorium. Wdrażanie do miejsca wdrożenia nie jest obsługiwane za pomocą polecenia wiersza polecenia platformy Azure.
 Wymagania wstępne dla tego polecenia są zależne od lokalizacji kodu:
 
 - Jeśli swój kod w usłudze GitHub:

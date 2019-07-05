@@ -1,43 +1,40 @@
 ---
-title: Zrozumienie fakturę umowy klienta firmy Microsoft | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak odczytywać i informacje o rachunku MCA
-services: ''
-documentationcenter: ''
-author: jureid
+title: Zrozumienie fakturę umowy klienta firmy Microsoft na platformie Azure
+description: Dowiedz się, jak odczytywać i informacje o rachunku umowy klienta firmy Microsoft na platformie Azure
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fed658d3f672d6116d7c2b0f3e2e9ad989dd67c6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604040"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490637"
 ---
-# <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Zrozumienie warunki na fakturze umowy klienta firmy Microsoft
+# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Faktury postanowienia w umowie klienta firmy Microsoft
 
-Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Ten artykuł dotyczy konta rozliczeniowego Azure do umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
 Twoja faktura zawiera podsumowanie opłat i instrukcje dotyczące płatności. Jest dostępna do pobrania w Portable Document Format (PDF) z [witryny Azure portal](https://portal.azure.com/) lub mogą być wysyłane za pośrednictwem poczty e-mail. Aby uzyskać więcej informacji, zobacz [widoku i pobierania usługi Microsoft Azure faktury](billing-download-azure-invoice.md).
 
-<!-- ## When am I billed?
+## <a name="billing-period"></a>Okres rozliczeniowy
 
-You are invoiced on a monthly basis. You can find out which day of the month you receive invoices by checking *invoice date* under billing profile properties in the [Azure portal](https://portal.azure.com/). Charges that occur between the end of the billing period and the invoice date are included in the next month's invoice, since they are in the next billing period. The billing period start and end dates for each invoice are listed in the invoice PDF above **Billing Summary**. -->
+Są fakturowane się co miesiąc. Możesz dowiedzieć się dzień miesiąca, otrzymasz faktur, sprawdzając *daty faktury* w ramach rozliczeń właściwości profilu w [witryny Azure portal](https://portal.azure.com/). Opłaty, które występują zakresu od zakończenia okresu rozliczeniowego do daty wskazanej na fakturze znajdują się na fakturze w następnym miesiącu, ponieważ są one w następnym okresie rozliczeniowym. Rozliczeń okresu daty rozpoczęcia i zakończenia dla każdej faktury są wymienione w faktur powyżej PDF **rozliczeń Podsumowanie**.
 
 ## <a name="invoice-terms-and-descriptions"></a>Warunki faktury wraz z opisami
 
-W poniższych sekcjach wymieniono ważne pojęcia, które widzisz na faktury i opisy dla każdego okresu.
+Następujące sekcje listy ważne terminy, możesz zobaczyć na fakturze i zawierają opisy dla każdego okresu.
 
 ### <a name="invoice-summary"></a>Podsumowanie faktury
 
-**Podsumowanie faktury** znajduje się na szczycie pierwszej strony i zawiera informacje o profilu rozliczeń i sposób płatności.
+**Podsumowanie faktury** znajduje się na początku pierwszej strony i zawiera informacje o profilu rozliczeń i sposób płatności.
 
 ![Sekcja Podsumowanie faktury](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
@@ -78,7 +75,6 @@ Szczegóły dotyczące pokazują kosztów dla każdej sekcji faktury, podzielone
 
 Łączna kwota należności dla każdej rodziny service jest obliczany przez odjęcie *kredytów systemu Azure* z *środki na korzystanie z/opłaty* i dodawanie *podatku*:
 
-<!-- `Total = Charges/Credits - Azure Credit + Tax` -->
 
 ![Szczegóły przez sekcję faktury](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
@@ -103,7 +99,7 @@ Jeśli masz usługi innych firm na rachunku, nazwę i adres każdego wydawcy zna
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 

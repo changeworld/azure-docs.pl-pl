@@ -3,7 +3,7 @@ title: Dodawanie uwierzytelniania w systemie iOS z usługą Azure Mobile Apps
 description: Dowiedz się, jak używać usługi Azure Mobile Apps, uwierzytelniać użytkowników aplikacji systemu iOS za pomocą różnych dostawców tożsamości, obejmującej usługi AAD, Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: crdun
-ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 88e278ced5cbddb132cdc2f760864df119762088
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128153"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449136"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Dodawanie uwierzytelniania do aplikacji systemu iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-users) już dziś.
+>
 
 W tym samouczku dodasz uwierzytelniania [Przewodnik Szybki start dla systemu iOS] projektu za pomocą dostawcy tożsamości obsługiwanych. Ten samouczek opiera się na [Przewodnik Szybki start dla systemu iOS] — samouczek, należy najpierw wykonać.
 
@@ -77,7 +81,7 @@ W programie Xcode, naciśnij klawisz **Uruchom** Aby uruchomić aplikację. Zgł
     }
     ```
 
-    Zmiana *google* do *microsoftaccount*, *twitter*, *facebook*, lub *windowsazureactivedirectory* Jeśli nie używasz Google jako dostawcy tożsamości. Jeśli korzystasz z usługi Facebook, musisz najpierw [domen Facebook dozwolonych] [ 1] w swojej aplikacji.
+    Zmiana *google* do *microsoftaccount*, *twitter*, *facebook*, lub *windowsazureactivedirectory* Jeśli nie używasz Google jako dostawcy tożsamości. Jeśli korzystasz z usługi Facebook, musisz najpierw [domen Facebook dozwolonych][1] w swojej aplikacji.
 
     Zastąp **urlScheme** unikatową nazwą aplikacji.  UrlScheme powinna być taka sama jak protokół schemat adresu URL, który określiłeś w **dozwolone zewnętrzne adresy URL przekierowania** pola w witrynie Azure portal. UrlScheme umożliwia przez wywołanie zwrotne uwierzytelniania przejdź z powrotem do aplikacji po zakończeniu żądania uwierzytelnienia.
 
@@ -163,7 +167,7 @@ W programie Xcode, naciśnij klawisz **Uruchom** Aby uruchomić aplikację. Zgł
     }
     ```
 
-    Zmiana *google* do *microsoftaccount*, *twitter*, *facebook*, lub *windowsazureactivedirectory* Jeśli nie używasz Google jako dostawcy tożsamości. Jeśli korzystasz z usługi Facebook, musisz najpierw [domen Facebook dozwolonych] [ 1] w swojej aplikacji.
+    Zmiana *google* do *microsoftaccount*, *twitter*, *facebook*, lub *windowsazureactivedirectory* Jeśli nie używasz Google jako dostawcy tożsamości. Jeśli korzystasz z usługi Facebook, musisz najpierw [domen Facebook dozwolonych][1] w swojej aplikacji.
 
     Zastąp **urlScheme** unikatową nazwą aplikacji.  UrlScheme powinna być taka sama jak protokół schemat adresu URL, który określiłeś w **dozwolone zewnętrzne adresy URL przekierowania** pola w witrynie Azure portal. UrlScheme umożliwia przez wywołanie zwrotne uwierzytelniania przejdź z powrotem do aplikacji po zakończeniu żądania uwierzytelnienia.
 

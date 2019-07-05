@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: f1e7428bc0665cdd3f981bb9c2e7b1f564598f40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7ae4c77f958bacabea50b7193817cd41ea54aa9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074252"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449781"
 ---
 # <a name="eventstore-overview"></a>Omówienie bazy danych EventStore
 
 >[!NOTE]
 >Począwszy od usługi Service Fabric w wersji 6.4. interfejsy API bazy danych EventStore są dostępne tylko w przypadku klastrów Windows działających na platformie Azure, tylko. Pracujemy nad przenoszenie tej funkcji do systemu Linux, a także naszych autonomicznych klastrów.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wprowadzona w wersji 6.2, usługa bazy danych EventStore jest opcji monitorowania w usłudze Service Fabric. Bazy danych EventStore zapewnia sposób, aby sprawdzić stan klastra lub obciążeń w danym punkcie w czasie.
 Bazy danych EventStore jest stanowej usługi Service Fabric, która utrzymuje zdarzenia z klastra. Zdarzenia są udostępniane za pośrednictwem narzędzia Service Fabric Explorer, REST i interfejsów API. Bazy danych EventStore zapytań klastra bezpośrednio po to, aby uzyskać dane diagnostyczne w dowolnej jednostce w klastrze i powinny być używane do pomocy:
@@ -80,7 +80,7 @@ Jeśli klastrem platformy Azure pobiera uaktualniony do wersji 6.5 lub nowszej, 
     "fabricSettings": [
       …
     ],
-    "eventStoreEnabled": false
+    "eventStoreServiceEnabled": false
   ```
 
 ### <a name="azure-cluster-version-64"></a>Wersja klastra Azure 6.4

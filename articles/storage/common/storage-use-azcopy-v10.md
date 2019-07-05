@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 722097f1a61a10cd45c0c330e998021cd1abf0c8
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 94aca33b2f12c1c39297221a856296dcca052b0f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147967"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565805"
 ---
 # <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
 
@@ -61,16 +61,21 @@ Użyj tej tabeli jako przewodnika:
 | Typ magazynu | Aktualnie obsługiwana metoda autoryzacji |
 |--|--|
 |**Blob Storage** | Azure AD & SAS |
-|**Magazyn obiektów blob (hierarchicznych przestrzeni nazw)** | Tylko usługi Azure AD |
+|**Magazyn obiektów blob (hierarchicznych przestrzeni nazw)** | Azure AD & SAS |
 |**Usługa File storage** | Tylko sygnatury dostępu Współdzielonego |
 
 ### <a name="option-1-use-azure-ad"></a>Opcja 1: Używaj usługi Azure AD
 
+Za pomocą usługi Azure AD, możesz podać poświadczenia jeden raz zamiast dołączyć tokenu sygnatury dostępu Współdzielonego do każdego polecenia.  
+
 Poziom autoryzacji, które należy zależy od tego, czy zamierzasz przekazać pliki lub po prostu pobrać je.
 
-Jeśli chcesz pobrać pliki, następnie sprawdź, czy [czytnik danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) przypisane do tożsamości.
+Jeśli chcesz pobrać pliki, następnie sprawdź, czy [czytnik danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) przypisane do tożsamości użytkownika lub nazwy głównej usługi. 
 
-Jeśli chcesz przekazać pliki, a następnie sprawdź, czy jeden z tych ról ma przypisane do tożsamości:
+> [!NOTE]
+> Tożsamości użytkowników i nazwy główne usług są każdy rodzaj *podmiotu zabezpieczeń*, dlatego użyjemy termin *podmiotu zabezpieczeń* w pozostałej części tego artykułu.
+
+Jeśli chcesz przekazać pliki, sprawdź, czy jeden z tych ról przypisany do Twojej podmiotu zabezpieczeń:
 
 - [Współautor danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 - [Właściciel danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
@@ -84,13 +89,16 @@ Te role można przypisać do tożsamości w jednym z tych zakresów:
 
 Aby dowiedzieć się, jak sprawdzić i przypisz role, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Nie musisz mieć jedną z tych ról, przypisane do tożsamości, jeśli swoją tożsamość zostanie dodany do listy kontroli dostępu (ACL) kontenera docelowego lub katalogu. Na liście ACL swoją tożsamość musi uprawnienie do zapisu w katalogu docelowym, a także uprawnienia do wykonywania w kontenerze i każdy katalog nadrzędny.
+> [!NOTE] 
+> Należy pamiętać, że przypisania ról RBAC może potrwać do pięciu minut na propagację.
+
+Nie musisz mieć jedną z tych ról przypisanych do użytkownika podmiotu zabezpieczeń, jeśli Twoja podmiot zabezpieczeń zostanie dodany do listy kontroli dostępu (ACL) kontenera docelowego lub katalogu. Na liście kontroli dostępu podmiot zabezpieczeń musi uprawnienie do zapisu w katalogu docelowym, a także uprawnienia do wykonywania w kontenerze i każdy katalog nadrzędny.
 
 Aby dowiedzieć się więcej, zobacz [kontrola dostępu w usługach Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-#### <a name="authenticate-your-identity"></a>Potwierdzenia Twojej tożsamości
+#### <a name="authenticate-a-user-identity"></a>Uwierzytelnianie tożsamości użytkownika
 
-Po zweryfikowaniu, że tożsamości ma autoryzację na odpowiednim poziomie, otwórz wiersz polecenia, wpisz następujące polecenie i naciśnij klawisz ENTER.
+Po upewnieniu się, że tożsamość użytkownika ma autoryzację na odpowiednim poziomie, otwórz wiersz polecenia, wpisz następujące polecenie i naciśnij klawisz ENTER.
 
 ```azcopy
 azcopy login
@@ -109,6 +117,72 @@ To polecenie zwraca kod uwierzytelniania i adres URL witryny sieci Web. Otwórz 
 ![Tworzenie kontenera](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Zostanie wyświetlone okno logowania. W tym oknie należy zalogować się do konta platformy Azure przy użyciu poświadczeń konta platformy Azure. Po pomyślnym zalogowaniu, możesz zamknąć okno przeglądarki i rozpocząć korzystanie z narzędzia AzCopy.
+
+<a id="service-principal" />
+
+#### <a name="authenticate-a-service-principal"></a>Uwierzytelnianie jednostki usługi
+
+Jest to doskonałe rozwiązanie, jeśli planowane jest korzystanie z narzędzia AzCopy wewnątrz skryptu, który jest uruchamiany bez interakcji z użytkownikiem. 
+
+Przed uruchomieniem tego skryptu masz zalogować się interaktywnie co najmniej jeden raz, aby narzędzia AzCopy można udostępnić poświadczeń jednostki usługi.  Te poświadczenia są przechowywane w zabezpieczonej i zaszyfrowanego pliku, tak, aby skrypt nie trzeba będzie podać te informacje poufne.
+
+Można zalogować się do konta, za pomocą klucz tajny klienta lub przy użyciu hasła certyfikatu, który jest skojarzony z rejestracji aplikacji jednostki usługi. 
+
+Aby dowiedzieć się więcej na temat tworzenia jednostki usługi, zobacz [jak: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Aby uzyskać więcej informacji na temat nazw głównych usług ogólnie rzecz biorąc, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+
+##### <a name="using-a-client-secret"></a>Za pomocą klucza tajnego klienta
+
+Rozpocznij od `AZCOPY_SPA_CLIENT_SECRET` zmiennej środowiskowej, aby klucz tajny klienta jednostki usługi w rejestracji aplikacji. 
+
+> [!NOTE]
+> Upewnij się, że ustawienia tej wartości w wierszu polecenia, a nie w środowisku zmiennych systemu operacyjnego. W ten sposób, wartość jest dostępna tylko dla bieżącej sesji.
+
+Ten przykład pokazuje, jak można to zrobić w programie PowerShell.
+
+```azcopy
+$env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
+```
+
+> [!NOTE]
+> Należy wziąć pod uwagę przy użyciu wiersza, jak pokazano w poniższym przykładzie. W ten sposób klucza tajnego klienta nie będzie wyświetlane w historii poleceń Twoje konsoli. 
+
+Następnie wpisz następujące polecenie i naciśnij klawisz ENTER.
+
+```azcopy
+azcopy login --service-principal --application-id <application-id>
+```
+
+Zastąp `<application-id>` symbol zastępczy identyfikator aplikacji nazwy głównej usługi w rejestracji aplikacji.
+
+##### <a name="using-a-certificate"></a>Za pomocą certyfikatu
+
+Jeśli wolisz używać własnych poświadczeń na potrzeby autoryzacji, Przekaż certyfikat do rejestracji aplikacji, a następnie użyć tego certyfikatu do logowania.
+
+Oprócz przekazywania certyfikatu do rejestracji aplikacji, należy również mieć kopię certyfikatu zapisane maszyna lub maszyna wirtualna, gdzie będzie uruchamiany narzędzia AzCopy. Ta kopia certyfikatu powinna mieć. Plik PFX lub. PEM formatowania i musi zawierać klucz prywatny. Klucz prywatny powinien być chroniony hasłem. Jeśli używasz Windows, a Twój certyfikat istnieje tylko w magazynie certyfikatów, upewnij się wyeksportować certyfikat do pliku PFX (w tym klucz prywatny). Aby uzyskać wskazówki, zobacz [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)
+
+Następnym etapem jest skonfigurowanie `AZCOPY_SPA_CERT_PASSWORD` zmiennej środowiskowej, aby hasło certyfikatu.
+
+> [!NOTE]
+> Upewnij się, że ustawienia tej wartości w wierszu polecenia, a nie w środowisku zmiennych systemu operacyjnego. W ten sposób, wartość jest dostępna tylko dla bieżącej sesji.
+
+Ten przykład pokazuje, jak można to zrobić w programie PowerShell.
+
+```azcopy
+$env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
+```
+
+Następnie wpisz następujące polecenie i naciśnij klawisz ENTER.
+
+```azcopy
+azcopy login --service-principal --certificate-path <path-to-certificate-file>
+```
+
+Zastąp `<path-to-certificate-file>` zastępczego względną lub w pełni kwalifikowana ścieżka do pliku certyfikatu. Narzędzie AzCopy zapisuje ścieżkę do tego certyfikatu, ale go nie Zapisz kopię certyfikatu, dlatego upewnij się zachować ten certyfikat w miejscu.
+
+> [!NOTE]
+> Należy wziąć pod uwagę przy użyciu wiersza, jak pokazano w poniższym przykładzie. Dzięki temu Twoje hasło nie będzie wyświetlane w historii poleceń Twoje konsoli. 
 
 ### <a name="option-2-use-a-sas-token"></a>Opcja 2: Użyj tokenu sygnatury dostępu Współdzielonego
 
@@ -134,7 +208,11 @@ Aby uzyskać przykładowe polecenia, zobacz dowolnego z poniższych artykułów.
 
 - [Transferowanie danych za pomocą narzędzia AzCopy i Amazon S3 przedziałów](storage-use-azcopy-s3.md)
 
+- [Transferowanie danych za pomocą narzędzia AzCopy i usługi Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
+
 ## <a name="use-azcopy-in-a-script"></a>Narzędzia AzCopy można użyć w skrypcie
+
+Przed uruchomieniem tego skryptu masz zalogować się interaktywnie co najmniej jeden raz, aby narzędzia AzCopy można udostępnić poświadczeń jednostki usługi.  Te poświadczenia są przechowywane w zabezpieczonej i zaszyfrowanego pliku, tak, aby skrypt nie trzeba będzie podać te informacje poufne. Aby uzyskać przykłady, zobacz [uwierzytelniania jednostki usługi](#service-principal) dalszej części tego artykułu.
 
 Wraz z upływem czasu, narzędzia AzCopy [link pobierania](#download-and-install-azcopy) wskaże nowe wersje narzędzia AzCopy. Jeśli skrypt pobiera narzędzia AzCopy, skrypt może przestać działać nowszą wersję programu AzCopy modyfikuje właściwości, które skryptu są zależne od pracy. 
 

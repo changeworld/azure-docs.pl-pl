@@ -5,16 +5,16 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 5884bb5dc389e6abfd4fa23d28dd71ecd16ff423
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67347117"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509889"
 ---
 Obrazy standardowych maszyn wirtualnych (VM) umożliwiają organizacjom migrację do chmury i zapewnia spójność we wdrożeniach. Obrazy obejmują zazwyczaj wstępnie zdefiniowanych ustawień zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Konfigurowanie potoku przetwarzania obrazów wymaga czasu, infrastruktury i konfiguracji, ale za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, po prostu podać prostej konfiguracji opisujące obrazu, Prześlij go do usługi i wbudowany obraz i rozproszone.
  
-Kreator obrazów maszyn wirtualnych platformy Azure (Kreatora obrazów platformy Azure) umożliwia rozpoczynać Windows lub obraz opartych na systemie Linux z portalu Azure Marketplace, istniejących obrazów niestandardowych lub Red Hat Enterprise Linux (RHEL) ISO i zacząć dodawać własne dostosowania. Ponieważ Kreator obrazów jest oparta na [HashiCorp Packer](https://packer.io/), można również zaimportować istniejące skrypty administracyjnej powłoki usługi Packer. Można również określić, gdzie chcesz obrazów hostowanych w współdzielona obraz w galerii platformy Azure (virtual-machines-common-shared-image-galleries.md) jako obrazu zarządzanego lub wirtualnego dysku twardego.
+Kreator obrazów maszyn wirtualnych platformy Azure (Kreatora obrazów platformy Azure) umożliwia rozpoczynać Windows lub obraz opartych na systemie Linux z portalu Azure Marketplace, istniejących obrazów niestandardowych lub Red Hat Enterprise Linux (RHEL) ISO i zacząć dodawać własne dostosowania. Ponieważ Kreator obrazów jest oparta na [HashiCorp Packer](https://packer.io/), można również zaimportować istniejące skrypty administracyjnej powłoki usługi Packer. Można również określić, gdzie chcesz obrazów hostowanych w [galerii obrazów systemu Azure Shared](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), jako obrazu zarządzanego lub wirtualnego dysku twardego.
 
 > [!IMPORTANT]
 > Kreator obrazów platformy Azure jest obecnie w publicznej wersji zapoznawczej.
@@ -35,7 +35,7 @@ Dla wersji zapoznawczej te funkcje są obsługiwane:
 
 ## <a name="regions"></a>Regions
 Usługa Konstruktora obrazów platformy Azure będzie dostępna w wersji zapoznawczej w tych regionach. Obrazy mogą być dystrybuowane spoza tych regionów.
-- Wschodnie stany USA
+- East US
 - Wschodnie stany USA 2
 - Środkowo-zachodnie stany USA
 - Zachodnie stany USA
@@ -50,6 +50,12 @@ AIB będzie obsługiwać portalu Azure Marketplace podstawowe obrazy systemu ope
 - Windows 2016
 - Windows 2019
 
+AIB będzie obsługiwać RHEL obrazu ISO firmy jako źródło dla:
+- RHEL 7.3
+- RHEL 7.4
+- RHEL W WERSJI 7.5
+
+RHEL 7.6 nie jest obsługiwana, ale poddawana testom.
 
 ## <a name="how-it-works"></a>Jak to działa
 

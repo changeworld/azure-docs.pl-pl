@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: twhitney
-ms.openlocfilehash: 4b72b6e33ad59ffceebf58aed7b315a4833b02f9
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 457a908a70fccd9f4209121d9b99e5e53905500b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203672"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444101"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżących ograniczeń dotyczących pule węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ W tym artykule przedstawiono kilka ograniczeń i pojęcia systemu operacyjnego d
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Ograniczenia dotyczące systemu Windows Server w usłudze Kubernetes
 
-Kontenery systemu Windows Server należy uruchomić na hoście kontenera z systemem Windows. Do uruchamiania kontenerów systemu Windows Server w usłudze AKS, możesz [utworzyć pulę węzłów z systemem Windows Server] [ windows-node-cli] jako systemu operacyjnego gościa. Obsługa puli węzeł serwera okna obejmuje pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie platformy Kubernetes. Te ograniczenia nie są specyficzne dla usługi AKS. Aby uzyskać więcej informacji na temat tego nadrzędnego pomocy technicznej dla systemu Windows Server w usłudze Kubernetes, zobacz [kontenery systemu Windows Server w ograniczenia Kubernetes](https://docs.microsoft.com/azure/aks/windows-node-limitations).
+Kontenery systemu Windows Server należy uruchomić na hoście kontenera z systemem Windows. Do uruchamiania kontenerów systemu Windows Server w usłudze AKS, możesz [utworzyć pulę węzłów z systemem Windows Server][windows-node-cli] jako systemu operacyjnego gościa. Obsługa puli węzeł serwera okna obejmuje pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie platformy Kubernetes. Te ograniczenia nie są specyficzne dla usługi AKS. Aby uzyskać więcej informacji na temat tego nadrzędnego pomocy technicznej dla systemu Windows Server w usłudze Kubernetes, zobacz [kontenery systemu Windows Server w ograniczenia Kubernetes](https://docs.microsoft.com/azure/aks/windows-node-limitations).
 
 AKS dotyczą następujące ograniczenia nadrzędnego dla kontenerów systemu Windows Server w usłudze Kubernetes:
 
@@ -45,7 +45,6 @@ AKS dotyczą następujące ograniczenia nadrzędnego dla kontenerów systemu Win
 Następujące dodatkowe ograniczenia do pomocy technicznej pulę węzłów systemu Windows Server w usłudze AKS:
 
 - Klaster AKS zawsze zawiera pulę węzłów systemu Linux jako pierwszy pulę węzłów. Nie można usunąć tej pierwszej puli węzeł opartych na systemie Linux, chyba że sam klaster AKS zostanie usunięty.
-- Obecnie usługa AKS obsługuje tylko podstawowego modułu równoważenia obciążenia, który dopuszcza tylko jedna pula zaplecza, domyślna pula węzłów systemu Linux. W wyniku zawsze będzie ruch wychodzący z zasobników Windows [translacji do usługi Azure managed publiczny adres IP][azure-outbound-traffic]. Ponieważ ten adres IP nie jest konfigurowalne, nie jest obecnie możliwe do listy dozwolonych adresów, ruch z zasobników Windows. 
 - Klastry usługi AKS, należy użyć modelu wtyczki Azure CNI (zaawansowane) w sieci.
     - Sieć z wtyczki Kubenet (basic) nie jest obsługiwane. Nie można utworzyć klaster AKS, która korzysta z wtyczki kubenet. Aby uzyskać więcej informacji na temat różnic w modelach sieci, zobacz [sieci pojęcia związane z aplikacjami w usłudze AKS][azure-network-models].
     - Model sieciowych wtyczki Azure CNI wymaga dodatkowego planowania i zagadnień dotyczących zarządzania adresami IP. Aby uzyskać więcej informacji na temat sposobu planowania i implementacji wtyczki Azure CNI, zobacz [wtyczki Azure CNI konfigurowania sieci w usłudze AKS][configure-azure-cni].
@@ -60,11 +59,11 @@ Następujące dodatkowe ograniczenia do pomocy technicznej pulę węzłów syste
 - Ruch przychodzący kontrolerów powinny zostać zaplanowane tylko w węzłach systemu Linux przy użyciu NodeSelector.
 - Azure Dev do magazynowania jest obecnie dostępny tylko w przypadku pul węzłów opartych na systemie Linux.
 - Grupy kont usług zarządzanych, czy pomoc techniczna (gMSA), gdy węzły systemu Windows Server nie są przyłączone do domeny usługi Active Directory nie jest obecnie dostępna w usłudze AKS.
-    - Open source, nadrzędne [aparatu aks] [ aks-engine] projektu obecnie oferuje gMSA pomocy technicznej, jeśli chcesz korzystać z tej funkcji.
+    - Open source, nadrzędne [aks aparatu][aks-engine] projektu obecnie oferuje gMSA pomocy technicznej, jeśli chcesz korzystać z tej funkcji.
 
 ## <a name="os-concepts-that-are-different"></a>Pojęcia dotyczące systemu operacyjnego, które różnią się
 
-Rozwiązanie Kubernetes jest w przeszłości skoncentrowane na systemie Linux. Wiele przykładów używanych w nadrzędnym [Kubernetes.io] [ kubernetes] witryny sieci Web są przeznaczone do użytku w węzłach systemu Linux. Po utworzeniu wdrożenia korzystające z kontenerów systemu Windows Server, następujące uwagi na poziomie systemu operacyjnego Zastosuj:
+Rozwiązanie Kubernetes jest w przeszłości skoncentrowane na systemie Linux. Wiele przykładów używanych w nadrzędnym [Kubernetes.io][kubernetes] witryny sieci Web są przeznaczone do użytku w węzłach systemu Linux. Po utworzeniu wdrożenia korzystające z kontenerów systemu Windows Server, następujące uwagi na poziomie systemu operacyjnego Zastosuj:
 
 - **Tożsamość** -Linux używa identyfikatora użytkownika (UID) i identyfikator grupy (GID), reprezentowana jako typy liczb całkowitych. Nazwy użytkowników i grup nie są kanonicznej — są one po prostu aliasem w */etc/grup* lub */etc/haseł* do UID + GID.
     - Windows Server używa większych binarne identyfikatora zabezpieczeń (SID) przechowywanego w bazie danych Menedżera dostępu Windows zabezpieczeń (SAM). Ta baza danych nie jest udostępniony, między hostem i kontenery lub między kontenerów.

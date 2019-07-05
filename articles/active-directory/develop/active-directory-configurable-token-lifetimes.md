@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1c68d9254b0da2e5296c83d8dd4c95091fde1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd9ff2360fce26b77ba0f5be4d5f70103504ec05
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111807"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67564444"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Można skonfigurować okresów istnienia tokenu w usłudze Azure Active Directory (wersja zapoznawcza)
 
 Można określić okres istnienia tokenu wystawionego przez usługę Azure Active Directory (Azure AD). Możesz ustawić okresów istnienia tokenu dla wszystkich aplikacji w Twojej organizacji, dla aplikacji wielodostępnych (dla wielu organizacji) lub dla określonej jednostki usługi w Twojej organizacji.
 
 > [!IMPORTANT]
-> Po czekamy na informacje od klientów w trakcie okresu zapoznawczego, możemy zastąpić funkcji można konfigurować okresów istnienia tokenu przy użyciu [możliwości zarządzania sesji uwierzytelniania](https://go.microsoft.com/fwlink/?linkid=2083106) w funkcji dostępu warunkowego usługi Azure AD. Ta funkcja zostaną wycofane 1 listopada 2019 r. Jeśli używasz zasad można skonfigurować okres istnienia tokenu, przełącz się do nowej funkcji dostępu warunkowego. 
+> Po czekamy na informacje od klientów w trakcie okresu zapoznawczego, wprowadziliśmy [możliwości zarządzania sesji uwierzytelniania](https://go.microsoft.com/fwlink/?linkid=2083106) w funkcji dostępu warunkowego usługi Azure AD. Ta nowa funkcja umożliwia konfigurowanie okresów istnienia tokenu odświeżania, ustawiając logowania w obszarze częstotliwość. Po 1 listopada 2019 nie będzie mógł skonfigurować tokenów odświeżania za pomocą zasad można skonfigurować okres istnienia tokenu, ale można nadal używać go do skonfigurowania tokenów dostępu.
 
 W usłudze Azure AD obiekt zasad reprezentuje zestaw reguł, które są wymuszane na poszczególne aplikacje lub wszystkie aplikacje w organizacji. Każdego typu zasad ma unikatowy struktury, zestaw właściwości, które są stosowane do obiektów, które są przypisane.
 

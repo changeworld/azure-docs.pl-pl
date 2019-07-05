@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: 76e691df0a026802682b57ff78496f6b66d7ff79
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: ed94b92a34e2989c9f2226c344ac4d34a279eeac
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154826"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551840"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Zabezpieczenia zaawansowanych danych dla serwerów SQL w usłudze Azure Virtual Machines (publiczna wersja zapoznawcza)
 Zabezpieczeń zaawansowanych danych dla serwerów SQL w usłudze Azure Virtual Machines to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Obecnie (w publicznej wersji zapoznawczej) zawiera funkcje, dzięki czemu są ujawniane łagodzenia potencjalne luki bazy danych i wykrywanie nietypowych działań wskazujących zagrożenie z bazą danych. 
@@ -27,7 +27,7 @@ Zabezpieczeń zaawansowanych danych dla serwerów SQL w usłudze Azure Virtual M
 Zabezpieczenia, tej oferty dla serwerów SQL maszyn wirtualnych platformy Azure są oparte na tych samych podstawowych technologii używanej do [pakietu zaawansowane bezpieczeństwo danych Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Bezpieczeństwo danych zaawansowane zawiera zbiór zaawansowane funkcje zabezpieczeń programu SQL, składające się z oceny luk w zabezpieczeniach i Zaawansowana ochrona przed zagrożeniami.
 
@@ -95,7 +95,7 @@ Można wyświetlać i zarządzać bieżące alerty zabezpieczeń.
 
 Możesz ustawić listę adresatów otrzymujących wiadomość e-mail z powiadomieniem, gdy zostaną wygenerowane alerty usługi ASC. Wiadomość e-mail zawiera bezpośredni link do alertu w usłudze Azure Security Center z wszystkich odpowiednich szczegółów. 
 
-1. Przejdź do **usługi Security Center** > **zasady zabezpieczeń** i w wierszu kliknij odpowiednie subskrypcji **Edytuj ustawienia >** .
+1. Przejdź do **usługi Security Center** > **ceny u & stawienia** i kliknij odpowiedni subskrypcji
 
     ![Ustawienia subskrypcji](./media/security-center-advanced-iaas-data/subscription-settings.png)
 

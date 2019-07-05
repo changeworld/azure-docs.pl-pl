@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
-ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28eb7c6a11f71fa87835bcfe78e635753965bac3
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969495"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561232"
 ---
 # <a name="limits-in-azure-cosmos-db"></a>Limity w usłudze Azure Cosmos DB
 
@@ -37,7 +37,6 @@ Po utworzeniu konta usługi Azure Cosmos w ramach Twojej subskrypcji, możesz za
 
 Kontener Cosmos (lub bazy danych z udostępnionej przepływności) musi mieć minimalną przepływność z 400 jednostek żądania. Wraz z rozwojem kontenera minimalna obsługiwana przepływność również zależy od następujących czynników:
 
-* Maksymalny rozmiar magazynu, które są używane w kontenerze jest mierzony w przyrostach 40 jednostek żądania na GB użytego miejsca do magazynowania. Na przykład jeśli kontener zawiera 100 GB danych, przepływność musi być co najmniej 4000 jednostek żądań
 * Maksymalna przepływność nigdy nie zainicjowano obsługi administracyjnej w kontenerze. Usługa obsługuje obniżenie przepływności kontenera do 10% aprowizowanego maksymalnej. Na przykład jeśli przepływność został zwiększony do 10000 (RUS), najniższe możliwe aprowizowanej przepływności będzie 1000 jednostek żądań
 * Całkowita liczba kontenerów, które nigdy nie utworzono w bazie danych udostępnionych przepływność jest mierzona w 100 jednostek żądań na kontener. Na przykład jeśli utworzono pięć kontenerów w bazie danych udostępnionej przepływności przepływność musi być co najmniej 500 (RUS)
 
@@ -48,7 +47,6 @@ Bieżące i minimalna przepływność kontenera lub bazy danych mogą być pobie
 | Minimalna jednostek żądań na kontener ([dedykowana przepływność aprowizowana tryb](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Minimalny (RUS) dla bazy danych ([trybie aprowizowanej przepływności udostępnionego](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Minimalna jednostek żądań na kontener w ramach udostępnionej przepływności bazy danych | 100 |
-| Minimalna RUs za GB użytego miejsca do magazynowania | 40 |
 
 Usługa cosmos DB obsługuje elastyczne skalowanie przepływności (ru) na kontener lub bazy danych za pośrednictwem zestawów SDK lub portalu. Każdy kontener można skalować synchronicznie i od razu w zakresie skalowania od 10 do 100 razy między minimalną i maksymalną. Jeśli wartość żądanej przepływności znajduje się poza zakresem, skalowanie jest wykonywane asynchronicznie. Skalowanie asynchronicznej może potrwać do godziny w zależności od żądanej przepływności i rozmiaru magazynu danych w kontenerze.  
 

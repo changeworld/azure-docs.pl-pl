@@ -8,16 +8,16 @@ ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu-msft
-ms.openlocfilehash: 6b4e145a693aabbf1a00d732e2fd602e7c887a03
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6284174089419cd201d094bcb1a8c7e865d2892
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956013"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484415"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Udostępnianie zawartości z usługi Azure Storage w usłudze App Service w systemie Linux
 
-Ten przewodnik pokazuje, jak udostępniać zawartość statyczną w usłudze App Service w systemie Linux przy użyciu [usługi Azure Storage](/azure/storage/common/storage-introduction). Korzyści to m.in. zabezpieczonej zawartości, zawartość przenośności, dostęp do wielu aplikacji i na wiele sposobów przesyłania. 
+Ten przewodnik pokazuje, jak udostępniać zawartość statyczną w usłudze App Service w systemie Linux przy użyciu [usługi Azure Storage](/azure/storage/common/storage-introduction). Korzyści to m.in. zabezpieczonej zawartości, zawartość przenośności, dostęp do wielu aplikacji i na wiele sposobów przesyłania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,6 +28,8 @@ Ten przewodnik pokazuje, jak udostępniać zawartość statyczną w usłudze App
 
 > [!NOTE]
 > Usługa Azure Storage jest magazynem innych niż domyślne i rozliczane oddzielnie, nie jest dołączony do aplikacji sieci web.
+>
+> Przynieś własny magazyn nie obsługuje konfiguracji zapory magazynu ze względu na ograniczenia infrastruktury.
 >
 
 Tworzenie platformy Azure [konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli).

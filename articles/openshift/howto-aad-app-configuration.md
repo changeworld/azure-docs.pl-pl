@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b79efa6ee1f4c052a0037a971fc36d8a9ae0ce58
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306474"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67458719"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integracja usługi Azure Active Directory dla usługi Azure Red Hat OpenShift
 
@@ -43,7 +43,7 @@ Utwórz nowego użytkownika administratora globalnego usługi Azure Active Direc
 Aby udzielić dostępu administracyjnego klastra, członkostwa w grupie zabezpieczeń usługi Azure AD są synchronizowane w OpenShift grupy "osa — klient admins". Jeśli nie zostanie określony, zostaną przyznane bez dostępu administratora klastra.
 
 1. Otwórz [grup usługi Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) bloku.
-2. Kliknij przycisk **+ Nowa grupa**
+2. Kliknij przycisk **+ Nowa grupa**.
 3. Podaj nazwę i opis grupy.
 4. Ustaw **typ grupy** do **zabezpieczeń**.
 5. Ustaw **Typ członkostwa** do **przypisane**.
@@ -54,7 +54,7 @@ Aby udzielić dostępu administracyjnego klastra, członkostwa w grupie zabezpie
 7. Na liście elementów członkowskich wybierz użytkownika usługi Azure AD, który został utworzony powyżej.
 8. W dolnej części portalu kliknij pozycję **wybierz** i następnie **Utwórz** Aby utworzyć grupę zabezpieczeń.
 
-    Zanotuj wartość Identyfikatora grupy
+    Zanotuj wartość Identyfikatora grupy.
 
 9. Po utworzeniu grupy będzie ją widział w listę wszystkich grup. Kliknij nową grupę.
 10. Na wyświetlonej stronie Skopiuj **obiektu o identyfikatorze**. Firma Microsoft będzie odnosił się do tej wartości jako `GROUPID` w [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) samouczka.
@@ -83,17 +83,34 @@ Wygeneruj klucz tajny klienta do uwierzytelniania aplikacji do usługi Azure Act
 4. Ustaw **Expires** do czasu trwania wolisz, na przykład **za 2 lata**.
 5. Kliknij przycisk **Dodaj** i wartości klucza będzie wyświetlany w **wpisów tajnych klienta** części strony.
 6. Skopiuj wartość klucza. Firma Microsoft będzie odnosił się do tej wartości jako `SECRET` w [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) samouczka.
- 
+
 ![Zrzut ekranu przedstawiający okienko certyfikaty i klucze tajne](./media/howto-create-tenant/create-key.png)
- 
-Aby uzyskać więcej informacji dotyczących obiektów w aplikacji Azure, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+
+Aby uzyskać więcej informacji o obiektach aplikacji platformy Azure, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
 
 Aby uzyskać szczegółowe informacje na temat tworzenia nowej aplikacji usługi Azure AD, zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure Active Directory w wersji 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
 
+## <a name="add-api-permissions"></a>Dodaj uprawnienia do interfejsu API
+
+1. W **Zarządzaj** kliknij sekcję **uprawnienia do interfejsu API**.
+2. Kliknij przycisk **Dodaj uprawnienia** i wybierz **usługi Azure Active Directory Graph** następnie **delegowane uprawnienia**
+3. Rozwiń **użytkownika** na liście poniżej i upewnij się, że **User.Read** jest włączona.
+4. Przewiń w górę, a następnie wybierz pozycję **uprawnienia aplikacji**.
+5. Rozwiń **katalogu** na poniższej liście i Włącz **Directory.ReadAll**
+6. Kliknij przycisk **Dodaj uprawnienia** aby zatwierdzić zmiany.
+7. Panel uprawnień interfejsu API powinien teraz pokazywać zarówno *User.Read* i *Directory.ReadAll*. Należy pamiętać, ostrzeżenie w **wymagana zgoda administratora** obok kolumny *Directory.ReadAll*.
+8. Jeśli jesteś *administratorem subskrypcji Azure*, kliknij przycisk **udzielić zgody administratora, aby uzyskać *Nazwa subskrypcji***  poniżej. Jeśli nie jesteś *administratorem subskrypcji Azure*, zażądania zgody administratora.
+![Zrzut ekranu przedstawiający panelu uprawnień interfejsu API. Dodano uprawnienia User.Read i Directory.ReadAll, zgody administratora wymagane dla Directory.ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
+
+> [!IMPORTANT]
+> Synchronizacja grupy Administratorzy klastra będzie działać tylko wtedy, gdy udzielono zgody. Pojawi się zielone koło z znacznik wyboru i komunikat "uprawnienia do *Nazwa subskrypcji*" w *wymagana zgoda administratora* kolumny.
+
+Aby uzyskać więcej informacji na temat zarządzania administratorów i innych ról, zobacz [Administratorzy subskrypcji platformy Azure Dodaj lub zmień](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+
 ## <a name="resources"></a>Zasoby
 
-* [Aplikacje i obiektów nazw głównych usług w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)  
-* [Szybki start: Rejestrowanie aplikacji z punktem końcowym usługi Azure Active Directory w wersji 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)  
+* [Aplikacje i obiektów nazw głównych usług w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [Szybki start: Rejestrowanie aplikacji z punktem końcowym usługi Azure Active Directory w wersji 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

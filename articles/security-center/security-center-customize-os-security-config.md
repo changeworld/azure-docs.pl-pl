@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573605"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551364"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center (wersja zapoznawcza)
 
@@ -56,13 +56,11 @@ Aby dostosować domyślna konfiguracja zabezpieczeń systemu operacyjnego w usł
 
 1.  Otwórz pulpit nawigacyjny usługi **Security Center**.
 
-2.  W okienku po lewej stronie wybierz **zasady zabezpieczeń**.      
+2.  W okienku po lewej stronie wybierz **ceny u & stawienia**.
 
     ![Lista zasad zabezpieczeń](media/security-center-customize-os-security-config/manual-provision.png)
 
-3.  W wierszu subskrypcji, który chcesz dostosować, kliknij przycisk **edytować ustawienia**.
-
-4. Wybierz **edytowanie konfiguracji zabezpieczeń**.  
+4. Wybierz subskrypcję, zastosowanie, a następnie wybierz pozycję **edytowanie konfiguracji zabezpieczeń**.  
 
     ![W oknie "Edytowanie konfiguracji zabezpieczeń"](media/security-center-customize-os-security-config/blade.png)
 

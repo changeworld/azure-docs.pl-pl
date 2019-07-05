@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c6da92ccd50707e676a1f5d583fe22ae8b3d8b73
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288416"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476315"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM
 
@@ -38,19 +38,19 @@ Wykonaj następujące kroki, aby otworzyć ustawienia dla ról zasobów platform
 
 1. Kliknij zasób, który chcesz zarządzać, takich jak subskrypcję lub grupę zarządzania.
 
-    ![Lista zasobów platformy Azure do zarządzania](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![Strona zasobów platformy Azure zawierająca listę zasobów, które mogą być zarządzane](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. Kliknij przycisk **ustawień roli**.
 
-    ![Ustawienia roli](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Strona Ustawienia roli role zasobów platformy Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. Kliknij rolę, którego ustawienia chcesz skonfigurować.
 
-    ![Szczegóły ustawienia roli](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Strona Szczegóły ustawienia roli kilka przypisanie i aktywacja ustawienia formatowania](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
 1. Kliknij przycisk **Edytuj** aby otworzyć okienko ustawienia roli.
 
-    ![Edytowanie ustawień ról](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Edytuj stronę ustawień roli przy użyciu opcji, aby zaktualizować ustawienia przypisanie i aktywacja](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     W okienku ustawienia roli dla każdej roli istnieje kilka ustawień, które można skonfigurować.
 
@@ -109,7 +109,7 @@ Jeśli ma być wymagane zatwierdzenie, aby aktywować rolę, wykonaj następują
 
 1. Kliknij przycisk **wybierz osoby zatwierdzające** otworzyć wybierz panel lub grupę.
 
-    ![Zaznacz element lub grupę](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Wybierz element członkowski w grupie okienko umożliwia wybranie osób zatwierdzających](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
 1. Wybierz co najmniej jeden element członkowski lub grupę, a następnie kliknij przycisk **wybierz**. Możesz dodać dowolną kombinację elementów członkowskich i grup. Należy wybrać co najmniej jedna osoba zatwierdzająca. Nie istnieją żadne osoby zatwierdzające domyślne.
 

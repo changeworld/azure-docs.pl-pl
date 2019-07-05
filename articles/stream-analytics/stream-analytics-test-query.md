@@ -9,18 +9,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0a76ecd12143e0bbaa9997bfc6d7295df9c4ec7
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1a9caf83c6f4cd4ed15290afc872043c11234552
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340878"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508702"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>Testowanie zapytania usługi Stream Analytics z przykładowymi danymi
 
 Za pomocą usługi Azure Stream Analytics, możesz przykładowe dane z danych wejściowych lub przekazywanie przykładowych danych do testowania zapytań w witrynie Azure portal, bez uruchamiania lub zatrzymywania zadania.
 
-## <a name="upload-sample-data-and-test-the-query"></a>Przekazywanie przykładowych danych i przetestować zapytanie
+## <a name="upload-or-sample-data-from-a-live-source-to-test-the-query"></a>Przekazywanie lub przykładowe dane ze źródła na żywo, aby przetestować zapytanie
 
 1. Zaloguj się do Portalu Azure. 
 
@@ -30,7 +30,7 @@ Za pomocą usługi Azure Stream Analytics, możesz przykładowe dane z danych we
 
 4. Aby przetestować zapytanie można można następnie albo przykładowe dane z danych wejściowych na żywo lub przekazywania z pliku. Dane muszą być zserializowane w formacie JSON, CSV lub AVRO. Przykładowe dane wejściowe musi być zakodowany w formacie UTF-8 i nie skompresowany. Tylko przecinek (,) ogranicznik jest obsługiwana dla testowanie danych wejściowych CSV, w portalu.
 
-    1. Przy użyciu danych wejściowych na żywo: kliknij prawym przyciskiem myszy na dowolnym dane wejściowe. Następnie wybierz pozycję **przykładowe dane z danych wejściowych**. Na następnym ekranie można ustawić czasu trwania próbki.
+    1. Przy użyciu danych wejściowych na żywo: kliknij prawym przyciskiem myszy na dowolnym dane wejściowe. Następnie wybierz pozycję **przykładowe dane z danych wejściowych**. Na następnym ekranie można ustawić czasu trwania próbki. Próbkowania zdarzeń od źródła na żywo pobierze maksymalnie 1000 zdarzeń lub 1 MB (osiągnięta jako pierwsza), dzięki czemu dane próbkowania mogą nie reprezentować wskazany interwał w pełnym wymiarze czasu.
 
     1. Przy użyciu plików: kliknij prawym przyciskiem myszy na dowolnym dane wejściowe. Następnie wybierz pozycję **Przekaż dane przykładowe z pliku**. 
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 461df93400380ac74fa87eebc81fa06f77d7bf76
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542875"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551653"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego
 
@@ -30,7 +30,9 @@ Aby utworzyć wiele kopii maszyny wirtualnej (VM) do użytku na platformie Azure
 
 Aby utworzyć kopię istniejącej maszyny Wirtualnej systemu Linux w kopii zapasowej lub debugowania lub przekazywanie wyspecjalizowanego wirtualnego dysku twardego systemu Linux z lokalnej maszyny Wirtualnej, zobacz [przekazywanie i tworzenie maszyny Wirtualnej z systemem Linux przy użyciu niestandardowego obrazu dysku](upload-vhd.md).  
 
-Można również użyć **Packer** umożliwia utworzenie konfiguracji niestandardowej. Aby uzyskać więcej informacji, zobacz [jak tworzenie obrazów maszyn wirtualnych z systemem Linux na platformie Azure za pomocą narzędzia Packer](build-image-with-packer.md).
+Możesz użyć **kreatora obrazów maszyn wirtualnych platformy Azure (publiczna wersja zapoznawcza)** usługi do tworzenia obrazu niestandardowego, nie musisz uczyć się obsługi narzędzi, lub Instalator tworzyć potoki, po prostu zapewnienie konfiguracji obrazu i Kreatora obrazów utworzy obraz. Aby uzyskać więcej informacji, zobacz [rozpoczęcie korzystania z Kreatora obrazów maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
+
+Dodatkowo użycie **Packer** umożliwia utworzenie konfiguracji niestandardowej. Aby uzyskać więcej informacji, zobacz [jak tworzenie obrazów maszyn wirtualnych z systemem Linux na platformie Azure za pomocą narzędzia Packer](build-image-with-packer.md).
 
 Przed utworzeniem obrazu będą potrzebne następujące elementy:
 

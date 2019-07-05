@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6d461725d0d4c86ee7aa5b450d42c01ca77ffb16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9433714c06dfad09270a6033f38a99471bcd517a
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107677"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513617"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak używać usługi Azure Monitor skoroszyty dla raportów usługi Azure Active Directory
 
@@ -57,7 +57,7 @@ Dostęp do skoroszytów:
 
 2. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory**.
 
-3. W **monitorowanie** zaznacz **Insights**. 
+3. W **monitorowanie** zaznacz **skoroszyty**. 
 
     ![Wybierz usługę Insights](./media/howto-use-azure-monitor-workbooks/41.png)
 
@@ -93,7 +93,7 @@ Każdy trendu można filtrować według następujących kategorii:
 
 Dla każdego trendu zapewnia następujące korzyści podział według następujących kategorii:
 
-- Lokalizacja
+- Location
 
     ![Logowania według lokalizacji](./media/howto-use-azure-monitor-workbooks/45.png)
 

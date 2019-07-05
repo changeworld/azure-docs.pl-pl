@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65237810"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481139"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Tworzenie kopii zapasowej bazy danych SAP HANA
 
@@ -22,15 +22,13 @@ ms.locfileid: "65237810"
 > [!NOTE]
 > Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Obecnie nie jest już gotowe do produkcji i nie ma gwarancji umowy SLA. 
 
-
 ## <a name="scenario-support"></a>Obsługa scenariuszy
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
 **Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia, Australia Wschodnia <br> Brazylia Południowa <br> Kanada Środkowa, Kanada Wschodnia <br> Azja południowo-wschodnia, Azja Wschodnia <br> Wschodnie stany USA, wschodnie stany USA 2, zachodnie środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Północna środkowe stany USA, środkowe stany USA, południowo-środkowe stany USA<br> Indie środkowe, Indie Południowe <br> Japonia, część wschodnia; Japonia, część zachodnia<br> Korea Środkowa, Korea Południowa <br> Europa Północna, Europa Zachodnia <br> Południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo
 **Obsługiwane systemy operacyjne maszyny Wirtualnej** | SLES 12 z dodatkiem SP2 lub z dodatkiem SP3.
-**Obsługiwane wersje platformy HANA** | SSDC na platformie HANA 1.x, MDC na platformie HANA 2.x < = SPS03
-
+**Obsługiwane wersje platformy HANA** | SDC na platformie HANA 1.x, MDC na platformie HANA 2.x < = SPS03
 
 ### <a name="current-limitations"></a>Bieżące ograniczenia
 
@@ -39,12 +37,9 @@ ms.locfileid: "65237810"
 - Możesz tylko tworzenie kopii zapasowej bazy danych w trybie skalowanie w górę.
 - Kopii zapasowych dzienników bazy danych co 15 minut. Kopie zapasowe dziennika tylko rozpoczyna się przepływ po ukończeniu pomyślne pełnej kopii zapasowej dla bazy danych.
 - Możesz korzystać z pełnych i różnicowych kopii zapasowych. Przyrostowa kopia zapasowa nie jest obecnie obsługiwane.
-- Nie można modyfikować zasad tworzenia kopii zapasowej, po zastosowaniu kopii zapasowych oprogramowania SAP HANA. Jeśli chcesz utworzyć kopię zapasową z różnymi ustawieniami, Utwórz nowe zasady lub przypisać inne zasady. 
-    - Aby utworzyć nowe zasady, w magazynie kliknij **zasady** > **zasady tworzenia kopii zapasowych** >  **+ Dodaj** > **platformy SAP HANA w Maszyna wirtualna platformy Azure**, a następnie określ ustawienia zasad.
-    - Aby przypisać inne zasady, we właściwościach maszyny Wirtualnej, w którym działa baza danych, kliknij przycisk bieżącą nazwę zasad. Następnie na **zasad tworzenia kopii zapasowej** strony można wybrać inne zasady służące do tworzenia kopii zapasowej.
-
-
-
+- Nie można modyfikować zasad tworzenia kopii zapasowej, po zastosowaniu kopii zapasowych oprogramowania SAP HANA. Jeśli chcesz utworzyć kopię zapasową z różnymi ustawieniami, Utwórz nowe zasady lub przypisać inne zasady.
+  - Aby utworzyć nowe zasady, w magazynie kliknij **zasady** > **zasady tworzenia kopii zapasowych** >  **+ Dodaj** > **platformy SAP HANA w Maszyna wirtualna platformy Azure**, a następnie określ ustawienia zasad.
+  - Aby przypisać inne zasady, we właściwościach maszyny Wirtualnej, w którym działa baza danych, kliknij przycisk bieżącą nazwę zasad. Następnie na **zasad tworzenia kopii zapasowej** strony można wybrać inne zasady służące do tworzenia kopii zapasowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -57,14 +52,16 @@ Upewnij się, że wykonasz następujące czynności, aby skonfigurować tworzeni
 
         ![Opcja instalacji pakietu](./media/backup-azure-sap-hana-database/hana-package.png)
 
-2.  Na maszynie Wirtualnej należy zainstalować i włączyć pakiety sterowników ODBC z oficjalnego SLES pakietu/nośnika przy użyciu zypper, w następujący sposób:
+2. Na maszynie Wirtualnej należy zainstalować i włączyć pakiety sterowników ODBC z oficjalnego SLES pakietu/nośnika przy użyciu zypper, w następujący sposób:
 
-    ``` 
+    ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
-4.  Zezwalaj na łączność z maszyny Wirtualnej z Internetem, dzięki czemu można dotrzeć do platformy Azure, zgodnie z opisem w poniższej procedurze.
 
+3. Zezwalać na łączność z maszyny Wirtualnej do Internetu, dzięki czemu można dotrzeć do platformy Azure, zgodnie z opisem w procedurze [poniżej](#set-up-network-connectivity).
+
+4. Uruchom skrypt wstępnej rejestracji na maszynie wirtualnej, w zainstalowanym HANA jako użytkownik root. Skrypt jest dostarczany w stanie [w portalu](#discover-the-databases) przepływu i jest wymagane do skonfigurowania [kliknij prawym przyciskiem myszy uprawnienia](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
 
 ### <a name="set-up-network-connectivity"></a>Skonfiguruj połączenie sieciowe
 
@@ -80,7 +77,7 @@ Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
 - W portalu, należy zarejestrować identyfikator subskrypcji do dostawcy usług Recovery Services przez [podanych w tym artykule](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal). 
 - W przypadku programu PowerShell Uruchom to polecenie cmdlet. Powinno to zająć jako "Zarejestrowane".
 
-    ```
+    ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
@@ -89,7 +86,6 @@ Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>Odnajdowanie baz danych
-
 
 1. W magazynie w **wprowadzenie**, kliknij przycisk **kopii zapasowej**. W **gdzie jest uruchomione Twoje obciążenie?** , wybierz opcję **danych SAP HANA na maszynie Wirtualnej platformy Azure**.
 2. Kliknij przycisk **Uruchom odnajdowanie**. Spowoduje to zainicjowanie odnajdywania niechronionych maszyn wirtualnych systemu Linux w regionie magazynu.
@@ -104,7 +100,7 @@ Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
 6. Usługa Azure Backup umożliwia odnalezienie wszystkich baz danych SAP HANA na maszynie Wirtualnej. Podczas odnajdowania usługi Azure Backup rejestruje maszyny Wirtualnej z magazynem i instaluje rozszerzenie na maszynie Wirtualnej. Agent nie jest zainstalowany w bazie danych.
 
     ![Odnajdowanie baz danych SAP HANA](./media/backup-azure-sap-hana-database/hana-discover.png)
-    
+
 ## <a name="configure-backup"></a>Konfigurowanie kopii zapasowych  
 
 Teraz Włącz kopię zapasową.
@@ -116,6 +112,7 @@ Teraz Włącz kopię zapasową.
 5. Śledź postęp konfiguracji kopii zapasowej w **powiadomienia** obszaru portalu.
 
 ### <a name="create-a-backup-policy"></a>Tworzenie zasad kopii zapasowych
+
 Zasady tworzenia kopii zapasowych definiuje, gdy kopie zapasowe są pobierane i jak długo są przechowywane.
 
 - Zasady są tworzone na poziomie magazynu.
@@ -189,6 +186,5 @@ Aby móc lokalnej kopii zapasowej (przy użyciu platformy HANA Studio) bazy dany
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+[Dowiedz się więcej o](backup-azure-sap-hana-database-troubleshoot.md) jak rozwiązywać problemy z typowymi błędami podczas używania kopii zapasowych oprogramowania SAP HANA na maszynach wirtualnych Azure.
 [Dowiedz się więcej o](backup-azure-arm-vms-prepare.md) tworzenia kopii zapasowych maszyn wirtualnych platformy Azure.
-
-

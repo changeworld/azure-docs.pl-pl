@@ -2,18 +2,18 @@
 title: Zarządzanie kopiami zapasowymi przy użyciu kontroli dostępu opartej na rolach na platformie Azure "
 description: Zarządzanie dostępem do operacji zarządzania kopiami zapasowymi w magazynie usługi Recovery Services za pomocą kontroli dostępu opartej na rolach.
 services: backup
-author: trinadhk
+author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: trinadhk
-ms.openlocfilehash: ed3797183e13a00d2c5381fa6449c111c3bc9ab9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.author: utraghuv
+ms.openlocfilehash: 3b4585422a36992241fb4839238b1f6aa46c659f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253725"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565653"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Kontrola dostępu oparta na rolach umożliwia zarządzanie punktami odzyskiwania usługi Azure Backup
 Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.
@@ -23,7 +23,7 @@ Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platform
 
 Usługa Azure Backup udostępnia trzy role wbudowane, umożliwiające kontrolowanie operacji zarządzania kopiami zapasowymi. Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
 
-* [Wykonaj kopię zapasową Współautor](../role-based-access-control/built-in-roles.md#backup-contributor) — ta rola ma wszystkie uprawnienia do tworzenia i obsługi kopii zapasowych z wyjątkiem tworzenia magazynu usługi Recovery Services i przyznawania dostępu innym osobom. Wyobraź sobie tej roli jako administratora zarządzania kopiami zapasowymi, która może zajmować się każdej operacji zarządzania kopiami zapasowymi.
+* [Wykonaj kopię zapasową Współautor](../role-based-access-control/built-in-roles.md#backup-contributor) — ta rola ma wszystkie uprawnienia do tworzenia i obsługi kopii zapasowych z wyjątkiem usuwania magazynu usługi Recovery Services i przyznawania dostępu innym osobom. Wyobraź sobie tej roli jako administratora zarządzania kopiami zapasowymi, która może zajmować się każdej operacji zarządzania kopiami zapasowymi.
 * [Wykonaj kopię zapasową Operator](../role-based-access-control/built-in-roles.md#backup-operator) — ta rola ma uprawnienia do wszystkiego, współautor, z wyjątkiem usuwania kopii zapasowych i zarządzanie zasadami tworzenia kopii zapasowych. Ta rola jest odpowiednikiem współautora, z wyjątkiem nie można wykonać operacji destrukcyjne, takie jak zatrzymywanie tworzenia kopii zapasowych usunąć dane i Usuń rejestrację zasobów lokalnych.
 * [Wykonaj kopię zapasową czytnika](../role-based-access-control/built-in-roles.md#backup-reader) — ta rola ma uprawnienia do wyświetlania wszystkich operacji zarządzania kopiami zapasowymi. Wyobraź sobie tej roli, do monitorowania osoby.
 
@@ -36,7 +36,7 @@ Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpo
 
 | Operacja zarządzania | Minimalna rola RBAC wymagane | Wymagany zakres |
 | --- | --- | --- |
-| Tworzenie magazynu usługi Recovery Services | Współautor | Grupa zasobów zawierająca magazynu |
+| Tworzenie magazynu usługi Recovery Services | Współautor kopii zapasowych | Grupa zasobów zawierająca magazynu |
 | Włącz wykonywanie kopii zapasowej maszyn wirtualnych platformy Azure | Operator kopii zapasowych | Grupa zasobów zawierająca magazynu |
 | | Współautor maszyny wirtualnej | Zasób maszyny Wirtualnej |
 | Na żądanie kopii zapasowej maszyny Wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
@@ -84,5 +84,5 @@ Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpo
 * Dowiedz się, jak zarządzanie dostępem przy użyciu:
   * [Program PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Interfejs wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)
-  * [Interfejs API REST](../role-based-access-control/role-assignments-rest.md)
+  * [REST API](../role-based-access-control/role-assignments-rest.md)
 * [Rozwiązywanie kontroli dostępu opartej na rolach](../role-based-access-control/troubleshooting.md): Pobierz sugestie dotyczące rozwiązywania typowych problemów.

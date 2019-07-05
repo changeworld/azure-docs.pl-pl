@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 06/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5a63053cc7fa1c1c86669ce2cea56b68f1a7b4b6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b92bc0a6c5d51ad26e069a363619edbdf0daa7c0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341504"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442871"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -54,11 +54,17 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Operator elementów Runbook usługi Automation](#automation-runbook-operator) | Odczyt właściwości elementu Runbook, aby móc tworzyć zadania elementu runbook. |
 | [Współautor Avere](#avere-contributor) | Można tworzyć i zarządzać Avere vFXT klastra. |
 | [Avere Operator](#avere-operator) | Używane przez klaster vFXT Avere Zarządzanie klastrem |
+| [Usługi Azure Event Hubs danych właściciela (wersja zapoznawcza)](#azure-event-hubs-data-owner-preview) | Zezwala na pełny dostęp do zasobów usługi Azure Event Hubs. |
+| [Usługi Azure Event Hubs danych odbiorcy (wersja zapoznawcza)](#azure-event-hubs-data-receiver-preview) | Umożliwia dostęp do zasobów usługi Azure Event Hubs. |
+| [Usługi Azure Event Hubs danych nadawcy (wersja zapoznawcza)](#azure-event-hubs-data-sender-preview) | Umożliwia wysyłanie dostęp do zasobów usługi Azure Event Hubs. |
 | [Rola administratora klastra Azure Kubernetes Service](#azure-kubernetes-service-cluster-admin-role) | Utwórz listę akcji poświadczenia administratora klastra. |
 | [Rola użytkownika klastra Azure Kubernetes Service](#azure-kubernetes-service-cluster-user-role) | Utwórz listę akcji poświadczeń użytkownika klastra. |
 | [Czytnik danych usługi Azure Maps (wersja zapoznawcza)](#azure-maps-data-reader-preview) | Przyznaje dostęp do odczytu mapy powiązane dane z konta usługi Azure maps. |
+| [Usługa Azure Service Bus danych właściciela (wersja zapoznawcza)](#azure-service-bus-data-owner-preview) | Zezwala na pełny dostęp do zasobów usługi Azure Service Bus. |
+| [Usługa Azure Service Bus danych odbiorcy (wersja zapoznawcza)](#azure-service-bus-data-receiver-preview) | Umożliwia dostęp do zasobów usługi Azure Service Bus. |
+| [Usługa Azure Service Bus danych nadawcy (wersja zapoznawcza)](#azure-service-bus-data-sender-preview) | Umożliwia wysyłanie dostęp do zasobów usługi Azure Service Bus. |
 | [Właściciel rejestracji w usłudze Azure Stack](#azure-stack-registration-owner) | Umożliwia zarządzanie rejestracjami w usłudze Azure Stack. |
-| [Współautor kopii zapasowych](#backup-contributor) | Umożliwia zarządzanie usługami kopii zapasowych, ale nie można tworzyć magazynów i przyznawania dostępu innym osobom |
+| [Współautor kopii zapasowych](#backup-contributor) | Umożliwia zarządzanie usługami kopii zapasowych, ale nie można utworzyć magazynów i przyznawania dostępu innym osobom |
 | [Operator kopii zapasowych](#backup-operator) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem usuwania kopii zapasowej, tworzenia magazynów i przyznawania dostępu innym osobom |
 | [Czytelnik kopii zapasowych](#backup-reader) | Może wyświetlać usługi kopii zapasowych, ale nie może wprowadzać zmian |
 | [Czytelnik rozliczenia](#billing-reader) | Umożliwia dostęp do odczytu do danych dotyczących rozliczeń |
@@ -88,7 +94,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Użytkownik usługi DevTest Labs](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
 | [Współautor strefy DNS](#dns-zone-contributor) | Umożliwia Zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie pozwala na kontrolowanie, kto ma do nich dostęp. |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Można zarządzać kontami usługi Azure Cosmos DB. Usługa Azure Cosmos DB jest znana wcześniej jako baza danych DocumentDB. |
-| [Event Hubs danych właściciela](#event-hubs-data-owner) | Umożliwia uzyskanie pełnego dostępu do zasobów usługi Azure Event Hubs | 
 | [Współautor EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Umożliwia zarządzanie operacjami subskrypcji zdarzeń EventGrid. |
 | [Czytnik EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Umożliwia odczyt EventGrid subskrypcji zdarzeń. |
 | [Klaster HDInsight — Operator](#hdinsight-cluster-operator) | Umożliwia odczytu i modyfikowania konfiguracji klastra HDInsight. |
@@ -119,7 +124,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Administrator zabezpieczeń](#security-admin) | W usłudze Security Center tylko: Można wyświetlić zasady zabezpieczeń, widoku stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlanie alertów i zaleceń, Odrzuć alerty i zalecenia |
 | [Menedżer zabezpieczeń (starsza wersja)](#security-manager-legacy) | To jest rola starszej wersji. Zamiast tego użyj Administrator zabezpieczeń |
 | [Czytelnik zabezpieczeń](#security-reader) | W usłudze Security Center tylko: Można wyświetlić, zaleceń i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie może wprowadzać zmian |
-| [Usługa Service Bus danych właściciela](#service-bus-data-owner) | Umożliwia pełny dostęp do zasobów usługi Azure Service Bus |
 | [Współautor usługi Site Recovery](#site-recovery-contributor) | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynów i przypisanie roli |
 | [Operator usługi Site Recovery](#site-recovery-operator) | Umożliwia trybu failover i powrotu po awarii, ale nie należy wykonywać innych operacji zarządzania usługą Site Recovery |
 | [Czytelnik usługi Site Recovery](#site-recovery-reader) | Pozwala wyświetlać stan usługi Site Recovery, ale nie wykonywania innych operacji zarządzania |
@@ -130,15 +134,15 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Współautor wystąpienie zarządzane SQL](#sql-managed-instance-contributor) | Umożliwia zarządzanie wystąpienia zarządzane SQL i wymaganych konfiguracji sieci, ale nie przyznawania dostępu innym osobom. |
 | [SQL Security Manager](#sql-security-manager) | Umożliwia zarządzanie zasadami zabezpieczeń serwerów SQL i baz danych, ale nie umożliwia uzyskiwania dostępu do nich. |
 | [Współautor serwera SQL Server](#sql-server-contributor) | Umożliwia zarządzanie serwerami programu SQL Server i baz danych, ale nie dostęp do, a nie ich zabezpieczeń — związane z zasadami. |
-| [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu, ale nie umożliwia uzyskiwania dostępu do nich. |
-| [Rola usługi Operator kluczy kont magazynu](#storage-account-key-operator-service-role) | Operatorzy kluczy kont magazynu mogą wyświetlać listę i ponowne generowanie kluczy dla kont magazynu |
-| [Współautor danych obiektu Blob magazynu](#storage-blob-data-contributor) | Zezwala na do odczytu, zapisu i usunąć dostęp do danych i kontenerów obiektów blob usługi Azure Storage |
-| [Właściciel danych obiektu Blob magazynu](#storage-blob-data-owner) | Zezwala na pełny dostęp do kontenerów obiektów blob usługi Azure Storage i danych, w tym przypisywanie kontroli dostępu POSIX. |
-| [Storage Blob Data Reader](#storage-blob-data-reader) | Umożliwia dostęp do odczytu do kontenerów obiektów blob usługi Azure Storage i danych |
-| [Storage Queue Data Contributor](#storage-queue-data-contributor) | Umożliwia odczytu, zapisu i usuwania dostępu do kolejek i komunikatów kolejek usługi Azure Storage |
-| [Procesor komunikat danych kolejki magazynu](#storage-queue-data-message-processor) | Pozwala uzyskać wgląd, otrzymywanie i usunąć dostęp do wiadomości w kolejce usługi Azure Storage |
-| [Nadawca wiadomości danych kolejki magazynu](#storage-queue-data-message-sender) | Umożliwia wysyłanie komunikatów do kolejki usługi Azure Storage |
-| [Storage Queue Data Reader](#storage-queue-data-reader) | Umożliwia dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
+| [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu. Nie zapewnia dostępu do danych na koncie magazynu. |
+| [Rola usługi Operator kluczy kont magazynu](#storage-account-key-operator-service-role) | Umożliwia wyświetlanie listy i ponowne generowanie kluczy dostępu do konta magazynu. |
+| [Współautor danych obiektu Blob magazynu](#storage-blob-data-contributor) | Odczyt, zapis i usuwanie obiektów blob oraz ich kontenerów usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Właściciel danych obiektu Blob magazynu](#storage-blob-data-owner) | Zapewnia pełny dostęp do kontenerów obiektów blob usługi Azure Storage i danych, w tym przypisywanie kontroli dostępu POSIX. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Storage Blob Data Reader](#storage-blob-data-reader) | Przeczytaj i wyświetlać listę kontenerów usługi Azure Storage i obiektów blob. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Storage Queue Data Contributor](#storage-queue-data-contributor) | Odczyt, zapis i usuwanie kolejek i komunikatów kolejek usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Procesor komunikat danych kolejki magazynu](#storage-queue-data-message-processor) | Wgląd, pobieranie i usuwanie komunikatu z kolejki usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Nadawca wiadomości danych kolejki magazynu](#storage-queue-data-message-sender) | Dodawanie komunikatów do kolejki usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Storage Queue Data Reader](#storage-queue-data-reader) | Przeczytaj i wyświetlać listę kolejek i komunikatów kolejek usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Współautor żądania pomocy technicznej](#support-request-contributor) | Umożliwia tworzenie i zarządzanie żądaniami obsługi |
 | [Współautor usługi Traffic Manager](#traffic-manager-contributor) | Umożliwia zarządzanie profilami usługi Traffic Manager, ale nie pozwala na kontrolowanie, kto ma do nich dostęp. |
 | [Administrator dostępu użytkowników](#user-access-administrator) | Umożliwia zarządzanie dostępem użytkowników do zasobów platformy Azure. |
@@ -548,6 +552,51 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
+## <a name="azure-event-hubs-data-owner-preview"></a>Usługi Azure Event Hubs danych właściciela (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na pełny dostęp do zasobów usługi Azure Event Hubs. |
+> | **Identyfikator** | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | **Akcje** |  |
+> | Microsoft.EventHub/* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.EventHub/* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="azure-event-hubs-data-receiver-preview"></a>Usługi Azure Event Hubs danych odbiorcy (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia dostęp do zasobów usługi Azure Event Hubs. |
+> | **Identyfikator** | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
+> | **Akcje** |  |
+> | Microsoft.EventHub/*/eventhubs/consumergroups/read |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.EventHub/*/receive/action |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="azure-event-hubs-data-sender-preview"></a>Usługi Azure Event Hubs danych nadawcy (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia wysyłanie dostęp do zasobów usługi Azure Event Hubs. |
+> | **Identyfikator** | 2b629674-e913-4c01-ae53-ef4638d8f975 |
+> | **Akcje** |  |
+> | Microsoft.EventHub/*/eventhubs/read |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.EventHub/*/send/action |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Rola administratora klastra Azure Kubernetes Service
 > [!div class="mx-tableFixed"]
 > | | |
@@ -593,6 +642,55 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
+## <a name="azure-service-bus-data-owner-preview"></a>Usługa Azure Service Bus danych właściciela (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na pełny dostęp do zasobów usługi Azure Service Bus. |
+> | **Identyfikator** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | **Akcje** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="azure-service-bus-data-receiver-preview"></a>Usługa Azure Service Bus danych odbiorcy (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia dostęp do zasobów usługi Azure Service Bus. |
+> | **Identyfikator** | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
+> | **Akcje** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.ServiceBus/*/receive/action |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="azure-service-bus-data-sender-preview"></a>Usługa Azure Service Bus danych nadawcy (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia wysyłanie dostęp do zasobów usługi Azure Service Bus. |
+> | **Identyfikator** | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
+> | **Akcje** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.ServiceBus/*/send/action |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
 ## <a name="azure-stack-registration-owner"></a>Właściciel rejestracji w usłudze Azure Stack
 > [!div class="mx-tableFixed"]
 > | | |
@@ -625,7 +723,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Odświeża listę kontenerów |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Tworzenie i zarządzanie nimi zadania tworzenia kopii zapasowej |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Eksportuj zadania |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Tworzenie i zarządzanie nimi metadane związane z zarządzaniem kopii zapasowej |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Tworzenie i zarządzanie nimi wyniki operacji zarządzania kopiami zapasowymi |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Tworzenie i zarządzanie zasadami tworzenia kopii zapasowych |
@@ -691,7 +788,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Odświeża listę kontenerów |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Tworzenie i zarządzanie nimi zadania tworzenia kopii zapasowej |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Eksportuj zadania |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Tworzenie i zarządzanie nimi wyniki operacji zarządzania kopiami zapasowymi |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Pobierz wyniki operacji zasad. |
@@ -758,7 +854,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Zwraca wynik operacji zadania. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Zwraca wszystkie obiekty zadań |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Eksportuj zadania |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Zwraca wynik operacji tworzenia kopii zapasowej magazynu usług Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Pobierz wyniki operacji zasad. |
@@ -1409,22 +1504,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="event-hubs-data-owner"></a>Event Hubs danych właściciela
-
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Opis** | Zezwala na pełny dostęp do zasobów usługi Azure Event Hubs. |
-> | **Identyfikator** | f526a384-b230-433a-b45c-95f59c4a2dec |
-> | **Akcje** |  |
-> | Microsoft.EventHubs/* | Umożliwia dostęp do pełnego zarządzania, do przestrzeni nazw usługi Event Hubs |
-> | **notActions** |  |
-> | *Brak* |  |
-> | **Elementy DataActions** |  |
-> | Microsoft.EventHubs/* | Zezwala na pełny dostęp do przestrzeni nazw usługi Event Hubs |
-> | **NotDataActions** |  |
-> | *Brak* |  |
-
 ## <a name="eventgrid-eventsubscription-contributor"></a>Współautor EventSubscription EventGrid
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1721,9 +1800,9 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Opis** | Tworzenie, Odczyt, aktualizowanie i usuwanie tożsamości przypisanych przez użytkownika |
 > | **Identyfikator** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **Akcje** |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/write |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/delete |  |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/read | Pobiera istniejące tożsamości przypisanych przez użytkownika |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/write | Tworzy nowy tożsamości przypisanych przez użytkownika lub aktualizuje do tagów skojarzonych z istniejących tożsamości przypisanych przez użytkownika |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/delete | Usuwa istniejące tożsamości przypisanych przez użytkownika |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera lub wyświetla listę grup zasobów. |
@@ -2073,22 +2152,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | *Brak* |  |
-> | **NotDataActions** |  |
-> | *Brak* |  |
-
-## <a name="service-bus-data-owner"></a>Usługa Service Bus danych właściciela
-
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Opis** | Zezwala na pełny dostęp do zasobów usługi Azure Service Bus. |
-> | **Identyfikator** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
-> | **Akcje** |  |
-> | Microsoft.ServiceBus/* | Umożliwia dostęp do pełnego zarządzania, do przestrzeni nazw usługi Service Bus |
-> | **notActions** |  |
-> | *Brak* |  |
-> | **Elementy DataActions** |  |
-> | Microsoft.ServiceBus/* | Zezwala na pełny dostęp do przestrzeni nazw usługi Service Bus |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 

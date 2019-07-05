@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b9562a1686c4de4f4e2ef57a7d91bbf18dce63ef
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7e40af9b2362ee52a1d00f29cdc112d3c2b9a842
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447600"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565848"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co to jest usługa QnA Maker wiedzy?
 
@@ -40,7 +40,7 @@ Pola metadanych składają się z pary klucz wartość oddzielone dwukropkiem **
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Jak usługa QnA Maker przetwarza zapytania użytkownika, aby wybrać najlepszą odpowiedź
 
-Uczony i [opublikowane](/quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker wiedzy odbierze zapytanie użytkownika, z robota lub innych aplikacji klienckiej w [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api). Na poniższym diagramie przedstawiono proces po otrzymaniu kwerendy użytkownika.
+Uczony i [opublikowane](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker wiedzy odbierze zapytanie użytkownika, z robota lub innych aplikacji klienckiej w [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Na poniższym diagramie przedstawiono proces po otrzymaniu kwerendy użytkownika.
 
 ![Proces klasyfikacji dla zapytania użytkownika](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
@@ -48,7 +48,7 @@ W poniższej tabeli objaśniono proces:
 
 |Krok|Przeznaczenie|
 |--|--|
-|1|Aplikacja kliencka wysyła zapytanie użytkownika, aby [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api).|
+|1|Aplikacja kliencka wysyła zapytanie użytkownika, aby [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
 |2|Usługa Qna Maker przetwarzania wstępnego zapytanie użytkownika o wykrywanie języka, spellers i moduły dzielenia wyrazów.|
 |3|Tego przetwarzania wstępnego jest pobierana do zmiany zapytania użytkownika w celu uzyskania najlepszych wyników wyszukiwania.|
 |4|Ta zmienionego zapytanie jest wysyłane do indeksu wyszukiwania platformy Azure, odbieranie `top` liczba wyników. Jeśli nie ma poprawną odpowiedź tych wyników, należy zwiększyć wartość `top` nieco. Zazwyczaj wartość 10 `top` działa w 90% firm z zapytania.|

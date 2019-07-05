@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: fea9e79986e45127ad4918ed62bd8bf8dc782133
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f95af348eb11abee5a46a89e08da5bf4eb873c42
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125809"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566143"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą narzędzia AzCopy i Blob storage
 
@@ -149,7 +149,7 @@ Bez kopiowania sam katalog zawierający za pomocą symbolu wieloznacznego (*), m
 Za pomocą narzędzia AzCopy do kopiowania obiektów blob na inne konta magazynu. Operacja kopiowania jest synchroniczna, dlatego gdy polecenie jest zwracane, oznacza to, że wszystkie pliki zostały skopiowane.
 
 > [!NOTE]
-> Obecnie ten scenariusz jest obsługiwany tylko dla kont, które nie mają hierarchicznej przestrzeni nazw.
+> Obecnie ten scenariusz jest obsługiwany tylko dla kont, które nie mają hierarchicznej przestrzeni nazw. 
 
 Korzysta z narzędzia AzCopy [umieścić blok z adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) interfejsu API, dzięki czemu dane są kopiowane bezpośrednio między serwerami magazynu. Przepustowość sieci na komputerze nie należy używać tych operacji kopiowania.
 
@@ -161,33 +161,36 @@ Ta sekcja zawiera następujące przykłady:
 > * Kopiowanie kontenerów do innego konta magazynu
 > * Skopiuj wszystkie kontenery, katalogi i pliki do innego konta magazynu
 
+> [!NOTE]
+> W bieżącej wersji, musisz dołączyć tokenu sygnatury dostępu Współdzielonego do poszczególnych źródłowy adres URL. Jeśli zostaną podane poświadczenia autoryzacji za pomocą usługi Azure Active Directory (AD), możesz pominąć tokenu sygnatury dostępu Współdzielonego tylko z docelowego adresu URL. 
+
 ### <a name="copy-a-blob-to-another-storage-account"></a>Skopiuj obiekt blob do innego konta magazynu
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>"` |
-| **Przykład** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt"` |
+| **Składnia** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>"` |
+| **Przykład** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt"` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>Kopiowanie katalogu do innego konta magazynu
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" --recursive` |
-| **Przykład** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
+| **Składnia** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" --recursive` |
+| **Przykład** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
 
 ### <a name="copy-a-containers-to-another-storage-account"></a>Kopiowanie kontenerów do innego konta magazynu
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>" --recursive` |
-| **Przykład** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer" "https://mydestinationaccount.blob.core.windows.net/mycontainer" --recursive` |
+| **Składnia** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>" --recursive` |
+| **Przykład** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer" --recursive` |
 
 ### <a name="copy-all-containers-directories-and-files-to-another-storage-account"></a>Skopiuj wszystkie kontenery, katalogi i pliki do innego konta magazynu
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/" "https://<destination-storage-account-name>.blob.core.windows.net/" --recursive"` |
-| **Przykład** | `azcopy cp "https://mysourceaccount.blob.core.windows.net" "https://mydestinationaccount.blob.core.windows.net" --recursive` |
+| **Składnia** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/" --recursive"` |
+| **Przykład** | `azcopy cp "https://mysourceaccount.blob.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net" --recursive` |
 
 ## <a name="synchronize-files"></a>Synchronizuj pliki
 

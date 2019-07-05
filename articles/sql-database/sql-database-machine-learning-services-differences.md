@@ -3,6 +3,7 @@ title: Podstawowe różnice dla SQL bazy danych usług Azure Machine Learning (w
 description: W tym temacie opisano podstawowe różnice między usługami Azure SQL Database Machine Learning (przy użyciu języka R) i SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
+ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 92785015a1ce122b8301b56fa62d122c8d95180c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee92b598625b1346cf87c661d1867cc1cb012b60
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725057"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67486004"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Podstawowe różnice między usługami Machine Learning w usłudze Azure SQL Database (wersja zapoznawcza) i programu SQL Server
 
@@ -43,12 +44,15 @@ Zarządzanie pakietami języka R i instalacji pracy różnic między bazą danyc
 - Pakiety nie można wykonać połączenia sieciowego ruchu wychodzącego. To ograniczenie jest podobny do [domyślne reguły zapory dla usługi Machine Learning](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) w programie SQL Server, ale nie można zmienić w usłudze SQL Database.
 - Nie jest obsługiwane dla pakietów, które są zależne od zewnętrznego środowiska uruchomieniowe (na przykład dla środowiska Java) lub muszą mieć dostęp do interfejsów API systemu operacyjnego w celu instalacji lub użycia.
 
+## <a name="writing-to-a-temporary-table"></a>Zapisywanie do tabeli tymczasowej
+
+Jeśli używasz RODBC w usłudze Azure SQL Database, a następnie nie może zapisać do tabeli tymczasowej, czy zostanie utworzony wewnątrz lub poza `sp_execute_external_script` sesji. Obejście polega na użyciu [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) i [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (Zastąp = FALSE obiektów blob i uzupełnialnych = "wiersze") można zapisać do globalnego tabeli tymczasowej utworzone przed `sp_execute_external_script` zapytania.
+
 ## <a name="resource-governance"></a>Nadzór nad zasobami
 
 Nie jest możliwe do ograniczania zasobów języka R za pośrednictwem [zarządcy zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) i pule zasobów zewnętrznych.
 
 Okresie publicznej wersji zapoznawczej zasoby języka R są ustawione na maksymalnie 20% zasobów bazy danych SQL i zależą od w warstwie usługi, które wybierzesz. Aby uzyskać więcej informacji, zobacz [usługi Azure SQL Database, zakup modeli](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
-
 ### <a name="insufficient-memory-error"></a>Błąd braku pamięci
 
 Jeśli jest dostępny dla języka R za mało pamięci, zostanie wyświetlony komunikat o błędzie. Typowe komunikaty o błędach są:

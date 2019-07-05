@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 3ea89e9f6a6bb8a4c377c70bbe1b5540d3b74d44
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: face3719f32ccb44e7479150e94417496141f90b
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341244"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509559"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Azure Data Factory, której używasz:"]
@@ -86,6 +86,7 @@ Minimalny DIUs umożliwiające działanie kopiowania wynosi dwa. Jeśli nie zost
 | Skopiuj scenariusza | Domyślne DIUs określany przez usługę |
 |:--- |:--- |
 | Kopiowanie danych między magazynami oparte na plikach | Od 4 do 32, w zależności od liczby i rozmiaru plików |
+| Kopiowanie danych do usługi Azure SQL Database lub Azure Cosmos DB |Od 4 do 16, w zależności od ujścia usługi Azure SQL Database i Cosmos DB w warstwie (liczba jednostek Dtu/RUs) |
 | Innych scenariuszach kopiowania | 4 |
 
 Aby zastąpić to ustawienie domyślne, należy określić wartość dla **dataIntegrationUnits** właściwości w następujący sposób. *Dozwolone wartości* dla **dataIntegrationUnits** właściwość jest maksymalnie 256. *Rzeczywista liczba DIUs* używany w czasie wykonywania operacji kopiowania jest równa lub mniejsza niż skonfigurowana wartość, w zależności od wzorca usługi danych. Aby uzyskać informacje na temat poziomu wydajności, może zostać wyświetlony po skonfigurowaniu większej liczby jednostek dla określonej kopii źródła i ujścia, zobacz [dotyczące wydajności](#performance-reference).
@@ -131,11 +132,11 @@ Dla każdego uruchomienia działania kopiowania usługi Azure Data Factory okre�
 | Skopiuj scenariusza | Domyślna liczba równoległych kopii określany przez usługę |
 | --- | --- |
 | Kopiowanie danych między magazynami oparte na plikach |Zależy od rozmiaru plików i liczba DIUs umożliwia kopiowanie danych między dwoma magazynami danych w chmurze lub w konfiguracji fizycznego komputera Self-Hosted integration runtime. |
-| Kopiowanie danych z dowolnego źródłowego magazynu danych do usługi Azure Table storage |4 |
+| Kopiowanie danych z dowolnego źródłowego magazynu do usługi Azure Table storage |4 |
 | Innych scenariuszach kopiowania |1 |
 
 > [!TIP]
-> Podczas kopiowania danych między magazynami oparte na plikach, domyślne zachowanie zwykle daje najlepsze przepływności. Domyślnym zachowaniem jest określana automatycznie.
+> Podczas kopiowania danych między magazynami oparte na plikach, domyślne zachowanie zwykle daje najlepsze przepływności. Domyślnym zachowaniem jest określana automatycznie na podstawie Twojej wzorca pliku źródłowego.
 
 Aby kontrolować obciążenia na maszynach, które hostują swoje dane są przechowywane lub można dostrajanie wydajności kopiowania, można zastąpić wartością domyślną i określić wartość dla **parallelCopies** właściwości. Wartość musi być liczba całkowita większa lub równa 1. W czasie wykonywania Aby uzyskać najlepszą wydajność, działanie kopiowania używa wartość, która jest mniejsza niż lub równa wartości, który został ustawiony.
 
@@ -162,9 +163,9 @@ Aby kontrolować obciążenia na maszynach, które hostują swoje dane są przec
 **Informacje, które należy zwrócić uwagę:**
 
 * Podczas kopiowania danych między magazynami oparte na plikach, **parallelCopies** określa równoległości na poziomie plików. Segmentu w pojedynczym pliku odbywa się poniżej, automatycznie i w sposób niewidoczny dla użytkownika. Ustalono, aby użyć najlepiej odpowiednich fragmentów rozmiar typu magazynu danego źródła danych do ładowania danych w sposób równoległy i prostopadły do **parallelCopies**. Rzeczywista liczba równoległych kopii usługi data movement service używa dla operacji kopiowania w czasie wykonywania jest nie więcej niż liczba plików, których masz. Jeśli zachowanie kopiowania to **mergeFile**, działanie kopiowania nie mogą korzystać z równoległości na poziomie plików.
-* Po określeniu wartości **parallelCopies** właściwość, należy wziąć pod uwagę wzrost obciążenia na źródła i ujścia magazynów danych. Również wziąć pod uwagę wzrost obciążenia do własnego środowiska integration runtime, jeśli działanie kopiowania ma odpowiednie uprawnienia, na przykład dla hybrydowych kopii. Dzieje się to zwiększenie obciążenia, zwłaszcza jeśli masz wiele działań lub równoczesnych uruchomień działań uruchamianych w odniesieniu do tego samego magazynu danych. Jeśli okaże się, czy w magazynie danych lub własnego środowiska integration runtime jest przeciążony przy obciążeniu, Zmniejsz **parallelCopies** wartości do zmniejszenia obciążenia.
-* Podczas kopiowania danych z magazynów, które nie są opartą na plikach do magazynów, które są oparte na plikach, usługi data movement service ignoruje **parallelCopies** właściwości. Nawet jeśli równoległości jest określona, nie zostanie zastosowane w tym przypadku.
+* Przy kopiowaniu danych z magazynów, które nie są opartą na plikach (z wyjątkiem bazy danych Oracle jako źródło z włączoną partycjonowanie danych) do magazynów, które są oparte na pliku usługi data movement service ignoruje **parallelCopies** właściwości. Nawet jeśli równoległości jest określona, nie zostanie zastosowane w tym przypadku.
 * **ParallelCopies** właściwość jest prostopadły do **dataIntegrationUnits**. Pierwsza jest liczony we wszystkich jednostkach integracji danych.
+* Po określeniu wartości **parallelCopies** właściwość, należy wziąć pod uwagę wzrost obciążenia na źródła i ujścia magazynów danych. Również wziąć pod uwagę wzrost obciążenia do własnego środowiska integration runtime, jeśli działanie kopiowania ma odpowiednie uprawnienia, na przykład dla hybrydowych kopii. Dzieje się to zwiększenie obciążenia, zwłaszcza jeśli masz wiele działań lub równoczesnych uruchomień działań uruchamianych w odniesieniu do tego samego magazynu danych. Jeśli okaże się, czy w magazynie danych lub własnego środowiska integration runtime jest przeciążony przy obciążeniu, Zmniejsz **parallelCopies** wartości do zmniejszenia obciążenia.
 
 ## <a name="staged-copy"></a>Kopiowania przejściowego
 
@@ -182,7 +183,7 @@ Po aktywowaniu funkcji przemieszczania najpierw jest skopiowanie danych z magazy
 
 Gdy aktywujesz przenoszenie danych za pomocą magazynu przejściowego można określić, czy chcesz przechowywać dane, które mają być kompresowane przed przeniesieniem danych ze źródła danych, do tymczasowego lub magazynie danych przemieszczania następnie dekompresowane przed przenieść dane z tymczasowych lub tymczasowej dat Magazyn na magazyn danych ujścia.
 
-Obecnie nie można skopiować danych między dwoma magazynami danych w środowisku lokalnym za pomocą magazynu przejściowego.
+Obecnie nie można skopiować dane między magazynami danych dwóch, które są połączone za pośrednictwem różnych IRs produktem, za pomocą ani bez kopiowania przejściowego. W przypadku takiego scenariusza można skonfigurować dwa działania jawnie łańcuchowych kopiowania do skopiowania ze źródła do wdrażania przejściowego, a następnie z tymczasowej do ujścia.
 
 ### <a name="configuration"></a>Konfigurowanie
 

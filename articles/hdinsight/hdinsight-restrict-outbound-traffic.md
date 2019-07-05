@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/30/2019
-ms.openlocfilehash: 542813e0f82a1a52142a2b82bea3fdb101fdec28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af5ddd50556b493cddf27d1ebb766d9bf6105107
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077174"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433430"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurowanie wychodzącego ruchu sieciowego w przypadku klastrów Azure HDInsight przy użyciu zapory (wersja zapoznawcza)
 
@@ -89,7 +89,7 @@ Tworzenie reguł sieci, aby poprawnie skonfigurować klastra usługi HDInsight.
 
    | **Nazwa** | **Protokół** | **Źródłowy adres** | **Tagi usługi** | **Port docelowy** | **Uwagi** |
    | --- | --- | --- | --- | --- | --- |
-   | Rule_7 | TCP | * | * | `1433,11000-11999,14000-14999` | Skonfiguruj regułę sieci w sekcji tagi usługi dla programu SQL, która umożliwi Ci do logowania i inspekcji ruchu SQL, chyba że skonfigurowano punktów końcowych usługi dla programu SQL Server w podsieci HDInsight, który będzie ominąć zaporę. |
+   | Rule_7 | TCP | * | SQL | `1433` | Skonfiguruj regułę sieci w sekcji tagi usługi dla programu SQL, która umożliwi Ci do logowania i inspekcji ruchu SQL, chyba że skonfigurowano punktów końcowych usługi dla programu SQL Server w podsieci HDInsight, który będzie ominąć zaporę. |
 
 1. Kliknij przycisk **Dodaj** wymagana do ukończenia tworzenia Twojej kolekcji reguł sieci.
 

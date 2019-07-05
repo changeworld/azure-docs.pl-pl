@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 88c0aea851bcf70206b5f68d7865c487441905f6
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 706311e2895f311c228b55db971eb88a859530f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329896"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441677"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 
@@ -23,7 +23,7 @@ Modele uczenia maszynowego założono szeregów czasowych równomiernie próbkow
 
 Operacje uczenia maszyny nie obsługują sezonowości trendów lub wielu variate korelacji w tej chwili.
 
-## <a name="model-accuracy-and-performance"></a>Dokładność modelu i wydajności
+## <a name="model-behavior"></a>Zachowania modelu
 
 Ogólnie rzecz biorąc dokładności modelu zwiększa większej ilości danych w ramach przesuwającego się okna. Dane w określonym oknie przewijania jest traktowany jako część jej normalny zakres wartości dla tego okresu. Model analizuje tylko migracji historii zdarzeń przesuwającego się okna do Sprawdź, czy bieżące zdarzenie jest nieprawidłowe. Przemieszcza się w ramach przesuwającego się okna, stare wartości jest wykluczony z szkoleń modelowych.
 
@@ -32,6 +32,8 @@ Funkcje działają, ustanawiając niektórych zwykłym oparte na co ich zauważo
 Model czas odpowiedzi zwiększa się z rozmiarem historii, ponieważ musi zostać porównane większa liczba przeszłych zdarzeń. Zalecane jest obejmujący tylko niezbędne liczbę zdarzeń w celu zapewnienia lepszej wydajności.
 
 Luki w szeregu czasowym może być to wynikiem modelu nie odbiera zdarzenia w określonych punktach w czasie. Ta sytuacja jest obsługiwane przez usługę Stream Analytics przy użyciu przypisywania logiki. Rozmiar historii, a także czas trwania dla tego samego okna przewijania jest używane do obliczania średnia liczba zdarzeń powinny przybycie.
+
+Generatora anomalii [tutaj](https://aka.ms/asaanomalygenerator) może służyć do kanału informacyjnego usługi Iot Hub przy użyciu danych za pomocą różnych anomalii wzorców. Zadania usługi ASA można skonfigurować za pomocą tych funkcji wykrywania anomalii do odczytu z tej usługi Iot Hub i wykrywania anomalii.
 
 ## <a name="spike-and-dip"></a>Kolekcji i dip
 
@@ -102,6 +104,50 @@ INTO output
 FROM AnomalyDetectionStep
 
 ```
+
+## <a name="performance-characteristics"></a>Charakterystyki wydajności
+
+Wydajność tych modeli zależy od rozmiaru historii, czas trwania okna, obciążenie zdarzeniami i tego, czy funkcja poziomu Partycjonowanie jest używany. W tej sekcji omówiono te konfiguracje i przykłady dotyczące umożliwienia stawek pozyskiwania 1K i 5K 10 tys. zdarzeń na sekundę.
+
+* **Rozmiar historii** -liniowo wykonywanie tych modeli **rozmiar historii**. Im dłużej rozmiar historii, tym dłużej modele wykonać, aby oceniać nowe zdarzenie. Jest to spowodowane modele Porównaj nowe zdarzenie z każdą z przeszłych zdarzeń w buforze historii.
+* **Czas trwania okna** — **czas trwania okna** powinny odzwierciedlać, jak długo trwa tyle zdarzenia są rejestrowane jako określony przez rozmiar historii. Bez wybranej liczby zdarzeń w oknie Azure Stream Analytics spowoduje naliczenie brakujące wartości. W związku z tym użycie procesora CPU jest funkcją wielkości historii.
+* **Obciążenie zdarzeniami** — większa **obciążenie zdarzeniami**, tym więcej pracy, jest wykonywane przez modele, które ma wpływ na użycie procesora CPU. Zadanie może być skalowana, dzięki czemu zaskakująco równoległymi, przy założeniu, że największy sens dla logikę biznesową w celu używania więcej partycji danych wejściowych.
+* **Funkcja poziomu partycjonowanie** - **partycjonowania na poziomie funkcji** odbywa się przy użyciu ```PARTITION BY``` w wywołaniu funkcji wykrywania anomalii. Tego rodzaju partycjonowanie dodaje obciążenie, ponieważ stan musi być zachowana dla wielu modeli, w tym samym czasie. Partycjonowania na poziomie funkcji jest używany w scenariuszach, takich jak partycjonowania na poziomie urządzenia.
+
+### <a name="relationship"></a>Relacja
+Rozmiar historii, czas trwania okna i łączna liczba zdarzeń obciążenia są powiązane w następujący sposób:
+
+windowDuration (w ms) = 1000 * historySize / (całkowita liczba danych wejściowych zdarzeń na s / opinia nabrała partycji)
+
+Podczas partycjonowania funkcji przez deviceId należy dodać "PARTYCJI przez deviceId", aby wywołanie funkcji wykrywania anomalii.
+
+### <a name="observations"></a>Uwagi
+Poniższa tabela zawiera uwagi przepływności dla pojedynczego węzła (6 SU) w przypadku niepartycjonowana:
+
+| Rozmiar historii (zdarzenia) | Czas trwania okna (ms) | Łączna liczba zdarzeń wejściowych na sekundę |
+| --------------------- | -------------------- | -------------------------- |
+| 60 | 55 | 2,200 |
+| 600 | 728 | 1,650 |
+| 6,000 | 10,910 | 1,100 |
+
+Poniższa tabela zawiera uwagi przepływności dla pojedynczego węzła (6 SU) w przypadku partycjonowanego:
+
+| Rozmiar historii (zdarzenia) | Czas trwania okna (ms) | Łączna liczba zdarzeń wejściowych na sekundę | Liczba urządzeń |
+| --------------------- | -------------------- | -------------------------- | ------------ |
+| 60 | 1,091 | 1,100 | 10 |
+| 600 | 10,910 | 1,100 | 10 |
+| 6,000 | 218,182 | <550 | 10 |
+| 60 | 21,819 | 550 | 100 |
+| 600 | 218,182 | 550 | 100 |
+| 6,000 | 2,181,819 | <550 | 100 |
+
+Przykładowy kod służący do uruchomionych konfiguracjach niepartycjonowana powyżej znajduje się w [repozytorium przesyłania strumieniowego w skali](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) z przykładów dla platformy Azure. Ten kod tworzy zadanie usługi stream analytics za pomocą nie funkcji poziomu partycjonowania, który korzysta z Centrum zdarzeń jako dane wejściowe i wyjściowe. Ładowanie danych wejściowych jest generowana z użyciem klientów testowych. Każde zdarzenie w danych wejściowych to dokument json 1KB. Zdarzenia symulowanie urządzenia IoT wysyłają dane JSON (dla urządzeń z maksymalnie 1 K). Rozmiar historii, czas trwania okna i łączna liczba zdarzeń obciążenia są zróżnicowane na 2 partycjach danych wejściowych.
+
+> [!Note]
+> Bardziej precyzyjne Kwota szacunkowa można dostosować w przykłady odpowiednio do scenariusza.
+
+### <a name="identifying-bottlenecks"></a>Identyfikowania wąskich gardeł
+Okienko metryki w ramach zadania usługi Azure Stream Analytics służy do identyfikowania wąskich gardeł w potoku. Przegląd **zdarzenia wejścia/wyjścia** przepływności i ["Opóźnienie znaku wodnego"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) lub **zaległe zdarzenia** aby zobaczyć, jeśli zadanie jest Nadążanie za szybkość danych wejściowych. Centrum zdarzeń miar, poszukaj **ograniczenia żądań** i odpowiednio dostosować próg jednostki. Metryki usługi Cosmos DB można znaleźć **maksymalna liczba użytych jednostek RU/s na zakres kluczy partycji** równomiernie są używane w ramach przepływności, aby zapewnić zakresów kluczy partycji. W przypadku bazy danych SQL Azure, monitorować **we/wy dziennika** i **Procesora**.
 
 ## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics przy użyciu usługi machine learning
 

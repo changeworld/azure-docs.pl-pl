@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6947a4f15797028274d49069d9e2787b143860d
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467626"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503229"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurowanie pulpit nawigacyjny aplikacji
 
@@ -41,6 +41,8 @@ Teraz gdy operator Wyświetla domyślny pulpit nawigacyjny aplikacji, zobacz tem
 ![Karta "Pulpit nawigacyjny" z wyświetlanych ustawień i właściwości dla kafelka](media/howto-configure-homepage/image4a.png)
 
 Możesz eksplorować inne typy kafelków w bibliotece Dowiedz się, jak dostosować domyślny pulpit nawigacyjny aplikacji.
+
+Aby dowiedzieć się więcej o sposobie używania fragmentacji w usłudze Azure IoT Central, zobacz [Użyj Kafelki pulpitu nawigacyjnego](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

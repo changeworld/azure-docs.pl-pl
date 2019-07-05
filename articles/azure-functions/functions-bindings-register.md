@@ -4,18 +4,18 @@ description: Dowiedz się zarejestrować rozszerzenie usługi Azure Functions po
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 53eb5fc9389d913ecacec3729a06e47a1c2bf56b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88ffd6ec24ed19dd3b1e57277884c8759cdac1f9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864543"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480336"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązania usługi Azure Functions
 
@@ -23,7 +23,7 @@ W usłudze Azure Functions w wersji 2.x, [powiązania](./functions-triggers-bind
 
 Należy wziąć pod uwagę następujące elementy związane z powiązań rozszerzenia:
 
-- Rozszerzeń powiązania nie są jawnie zarejestrowane w funkcji 1.x, chyba że [tworzenia C# biblioteki klas przy użyciu programu Visual Studio 2019](#local-csharp).
+- Rozszerzeń powiązania nie są jawnie zarejestrowane w funkcji 1.x, chyba że [tworzenia C# bibliotekę klasy przy użyciu programu Visual Studio](#local-csharp).
 
 - Wyzwalacze HTTP oraz czasomierzem są obsługiwane domyślnie i nie wymagają rozszerzenia.
 
@@ -32,16 +32,44 @@ Poniższa tabela wskazuje, kiedy i jak należy zarejestrować powiązania.
 | Środowisko deweloperskie |Rejestracja<br/> w przypadku funkcji 1.x  |Rejestracja<br/> w przypadku funkcji 2.x  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatyczne|Automatyczne|
-|Języki inne niż .NET lub lokalny rozwój podstawowych narzędzi usługi Azure|Automatyczne|[Podstawowe narzędzia usługi Azure Functions i pakietów rozszerzeń](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
+|Języki inne niż .NET lub lokalny rozwój podstawowych narzędzi usługi Azure|Automatyczne|[Podstawowe narzędzia usługi Azure Functions i pakietów rozszerzeń](#extension-bundles)|
 |C#Biblioteka klas przy użyciu programu Visual Studio 2019 r.|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2019)|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2019)|
 |Biblioteki klas C# za pomocą programu Visual Studio Code|ND|[Korzystanie z platformy .NET Core interfejsu wiersza polecenia](#c-class-library-with-visual-studio-code)|
 
-## <a name="local-development-with-azure-functions-core-tools-and-extension-bundles"></a>Lokalne Programowanie przy użyciu podstawowych narzędzi usługi Azure Functions i pakietów rozszerzeń
+## <a name="extension-bundles"></a>Pakiety rozszerzeń dla wdrożenia lokalnego
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+Pakiety rozszerzeń jest technologią rozwoju lokalnego środowisko uruchomieniowe 2.x wersji, które umożliwia dodanie zgodne zbiór funkcji do powiązania rozszerzenia do projektu aplikacji funkcji. Te pakiety rozszerzeń są włączone w pakiecie wdrożeniowym podczas wdrażania na platformie Azure. Pakiety sprawia, że wszystkie powiązania opublikowane przez firmę Microsoft jest dostępna za pośrednictwem ustawienia *host.json* pliku. Pakiety rozszerzeń zdefiniowanych w pakiecie są zgodne ze sobą, co pozwala uniknąć konfliktów między pakietami. Podczas tworzenia lokalnie, upewnij się, że używasz najnowszej wersji [podstawowych narzędzi usługi Azure Functions](functions-run-local.md#v2).
+
+Użyj pakietów rozszerzeń dla wszystkich wdrożenia lokalnego przy użyciu podstawowych narzędzi usługi Azure Functions lub Visual Studio Code.
+
+Jeśli nie używasz pakietów rozszerzeń, należy zainstalować platformy .NET Core SDK 2.x na komputerze lokalnym, przed zainstalowaniem jakichkolwiek rozszerzeń powiązania. Pakiety usuwa wymaganie rozwoju lokalnego. 
+
+Aby użyć pakietów rozszerzeń, należy zaktualizować *host.json* pliku, aby uwzględnić następujący wpis dotyczący `extensionBundle`:
+
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
+    }
+}
+```
+
+Następujące właściwości są dostępne w `extensionBundle`:
+
+| Właściwość | Opis |
+| -------- | ----------- |
+| **`id`** | Przestrzeń nazw pakietów rozszerzeń usługi Microsoft Azure Functions. |
+| **`version`** | Wersja pakietu do zainstalowania. Środowisko uruchomieniowe usługi Functions zawsze wybiera maksymalna wersja dopuszczalna definiowane przez zakres wersji lub przy określonym interwale. Wartość wersji powyżej zezwala na wszystkie wersje pakietu z 1.0.0 maksymalnie z wyjątkiem 2.0.0. Aby uzyskać więcej informacji, zobacz [notacji interwału do określania zakresów wersji](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). |
+
+Inkrementacja wersje pakietu jako pakiety w zmiany pakietu. Wersja główna zmiany wystąpić, gdy pakiety w pakiecie zwiększenia wersję główną zwykle pokrywa się ze zmianą w wersji głównej środowisko uruchomieniowe usługi Functions.  
+
+Bieżący zestaw zainstalowanych przez domyślny pakiet rozszerzeń są wyliczane w tym [pliku extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).
 
 <a name="local-csharp"></a>
-## <a name="c-class-library-with-visual-studio-2019"></a>C#Biblioteka klas przy użyciu programu Visual Studio 2019 r.
+
+## <a name="c-class-library-with-visual-studio-2019"></a>C\# biblioteki klas przy użyciu programu Visual Studio 2019 r.
 
 W **Visual Studio 2019**, możesz zainstalować pakiety z konsoli Menedżera pakietów przy użyciu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) polecenia, jak pokazano w poniższym przykładzie:
 
@@ -55,7 +83,10 @@ Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, takich 
 
 ## <a name="c-class-library-with-visual-studio-code"></a>Biblioteki klas C# za pomocą programu Visual Studio Code
 
-W **programu Visual Studio Code**, możesz zainstalować pakiety z wiersza polecenia przy użyciu [dotnet Dodaj pakiet](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) polecenia w .NET Core interfejsu wiersza polecenia, jak pokazano w poniższym przykładzie:
+> [!NOTE]
+> Firma Microsoft zaleca używanie [pakiety rozszerzeń](#extension-bundles) zapewnienie funkcji automatycznej instalacji zgodnego zestawu powiązania pakiety rozszerzeń.
+
+W **programu Visual Studio Code**, zainstalowanie pakietów dla C# projekt biblioteki klas z wiersza polecenia przy użyciu [dotnet Dodaj pakiet](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) polecenia w .NET Core interfejsu wiersza polecenia, jak pokazano w poniższym przykładzie:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <TARGET_VERSION>

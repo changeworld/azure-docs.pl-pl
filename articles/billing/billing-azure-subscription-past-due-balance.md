@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: 45b5d2c94a72cb23ef2b4a8db100623b0c58b0a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66023400"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491454"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Rozwiąż zaległe saldo dla Twojej subskrypcji platformy Azure
 
@@ -34,7 +34,7 @@ Jeśli jesteś [administratora konta](billing-subscription-transfer.md#whoisaa),
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Rozwiąż zaległe saldo w witrynie Azure portal
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator konta.
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj **Cost Management + rozliczenia**.
 1. Na stronie Przegląd zobaczysz listę subskrypcji. Stan swojej subskrypcji jest zaległa, kliknij przycisk **rozliczenia Saldo** łącza.
     ![Zrzut ekranu pokazujący rozliczenia saldo łącza](./media/billing-azure-subscription-past-due-balance/settle-balance-entry-point.png)
 1. Łączna liczba zaległe saldo odzwierciedla zaległe opłaty dla wszystkich usług firmy Microsoft przy użyciu metody płatności nie powiodło się.

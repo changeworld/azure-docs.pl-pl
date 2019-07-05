@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6f44005080bbd8583ae2e2fdad31ef2c823c7ca
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 61c3d37f365034984231c780199e181872c010c6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154521"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544132"
 ---
 # <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Uzyskiwanie dostępu do rozwiązań VMware przez portal CloudSimple z witryny Azure portal
 
@@ -21,7 +21,16 @@ Logowanie jednokrotne jest obsługiwana dla dostępu do portalu CloudSimple. Po 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Tylko użytkownicy z wbudowanej **właściciela** i **Współautor** role mogą uzyskiwać dostęp do portalu CloudSimple.  Role musi być skonfigurowany w ramach subskrypcji.  Aby uzyskać więcej informacji na temat sprawdzania swojej roli, zobacz [wyświetlania przypisań roli](https://docs.microsoft.com/azure/role-based-access-control/check-access) artykułu.
+Użytkownicy z wbudowanej **właściciela** i **Współautor** role mogą uzyskiwać dostęp do portalu CloudSimple.  Role musi być skonfigurowany w grupie zasobów, w którym wdrożono usługę CloudSimple.  Role można skonfigurować w taki sposób, w obiekcie usługi CloudSimple.  Aby uzyskać więcej informacji na temat sprawdzania swojej roli, zobacz [wyświetlania przypisań roli](https://docs.microsoft.com/azure/role-based-access-control/check-access) artykułu.
+
+Jeśli używasz niestandardowych ról roli powinny mieć następujące operacje w obszarze ```Actions```.  Aby uzyskać więcej informacji na temat ról niestandardowych, zobacz [niestandardowych ról dla zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  W przypadku każdej operacji stanowi część ```NotActions```, użytkownik nie może uzyskać dostępu CloudSimple portalu. 
+
+```
+Microsoft.VMwareCloudSimple/*
+Microsoft.VMwareCloudSimple/*/write
+Microsoft.VMwareCloudSimple/dedicatedCloudServices/*
+Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
+```
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 

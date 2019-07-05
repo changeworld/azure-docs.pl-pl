@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 4df65819256e6a81a07927d463d130fbfdf9317a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85e7b40778305395bb0f4a9403b4aeafc4607654
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255013"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565698"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -447,7 +447,7 @@ $restorejob
 >
 >
 
-Zapewnia dodatkowy parametr **TargetResourceGroupName** do określenia grupą zasobów, do którego zostanie przywrócona dysków zarządzanych. 
+Zapewnia dodatkowy parametr **TargetResourceGroupName** do określenia grupą zasobów, do którego zostanie przywrócona dysków zarządzanych.
 
 > [!NOTE]
 > Zdecydowanie zaleca się używać **TargetResourceGroupName** parametr przywracanie dysków zarządzanych, ponieważ powoduje to znaczne ulepszenia wydajności. Ponadto z programu Azure Powershell Az modułu 1.0 lub nowszy, ten parametr jest obowiązkowy w przypadku przywracania z dyskami zarządzanymi
@@ -483,6 +483,15 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob
 ```
 
 Po przywróceniu dyski, przejdź do następnej sekcji, aby utworzyć maszynę Wirtualną.
+
+## <a name="replace-disks-in-azure-vm"></a>Zastąp dysków w maszynie Wirtualnej platformy Azure
+
+Aby zastąpić dysków i informacje o konfiguracji, wykonaj następujące czynności:
+
+- Krok 1: [Przywróć dyski](backup-azure-vms-automation.md#restore-the-disks)
+- Krok 2: [Dołączanie dysku danych przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+- Krok 3: [Dołączanie dysku danych do maszyny Wirtualnej z Windows przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
+
 
 ## <a name="create-a-vm-from-restored-disks"></a>Tworzenie maszyny Wirtualnej z przywróconych dysków
 
@@ -718,6 +727,7 @@ W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny Wirtual
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Przywracanie plików z kopii zapasowej maszyny Wirtualnej platformy Azure
 

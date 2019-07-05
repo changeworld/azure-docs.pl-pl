@@ -2,26 +2,21 @@
 title: Usługa Azure Active Directory dostępu warunkowego często zadawane pytania | Dokumentacja firmy Microsoft
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące dostępu warunkowego w usłudze Azure Active Directory.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111daef3448533cd863d45197d45c87d8d21264b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad0494868c494b488a238a81e504c58552813907
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112398"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508972"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Często zadawane pytania usługi Azure Active Directory dostępu warunkowego
 
@@ -33,12 +28,9 @@ Aby uzyskać informacje o aplikacjach, które działają z zasadami dostępu war
 
 Zasady są wymuszane dla użytkowników współpracy, business-to-business (B2B). Jednak w niektórych przypadkach użytkownik może nie móc spełnia wymagania zasad. Na przykład organizacja użytkownika-gościa może nie obsługiwać uwierzytelnianie wieloskładnikowe. 
 
-
-
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Czy zasad usługi SharePoint Online dotyczy również do usługi OneDrive dla firm?
 
 Tak. Zasady usługi SharePoint Online ma zastosowanie również do usługi OneDrive dla firm.
-
 
 ## <a name="why-cant-i-set-a-policy-on-client-apps-like-word-or-outlook"></a>Dlaczego nie można ustawić zasady dla aplikacji klienckich, takich jak Word lub Outlook?
 
@@ -56,7 +48,6 @@ Aktualnie nie.
 
 Obecnie zasady dostępu warunkowego selektywnie są wymuszane dla użytkowników systemu iOS i android. Aplikacje na innych platformach domyślnie nie dotyczy zasad dostępu warunkowego dla systemu iOS i android. Administrator dzierżawy można wybrać opcję zastąpienia globalnych zasad, aby uniemożliwić dostęp do użytkowników na platformach, które nie są obsługiwane.
 
-
 ## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Jak działają zasady dostępu warunkowego dla Microsoft Teams
 
 Microsoft Teams zależy od intensywnie usługi Exchange Online i SharePoint Online dla podstawowych scenariuszy wydajności, takich jak spotkania, kalendarze i udostępnianie plików. Zasady dostępu warunkowego, które są ustawione dla tych aplikacji w chmurze dotyczy Microsoft Teams po użytkownik zalogował bezpośrednio do Microsoft Teams.
@@ -64,3 +55,7 @@ Microsoft Teams zależy od intensywnie usługi Exchange Online i SharePoint Onli
 Microsoft Teams także jest obsługiwany oddzielnie jako aplikacja w chmurze w ramach zasad usługi Azure Active Directory dostępu warunkowego. Zasady dostępu warunkowego, które są ustawione dla aplikacji w chmurze dotyczy Microsoft Teams, gdy użytkownik loguje się. Jednak bez prawidłowe zasady na inne aplikacje, takie jak Exchange Online i SharePoint Online użytkownicy mogą nadal mieć możliwość bezpośrednio dostęp do tych zasobów.
 
 Klienci stacjonarni Microsoft Teams dla Windows i komputerów Mac obsługuje nowoczesnego uwierzytelniania. Nowoczesne uwierzytelniane umożliwia logowanie oparte na Azure Active Directory Authentication Library (ADAL) dla aplikacji klienckich Microsoft Office na różnych platformach.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Aby skonfigurować zasady dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 

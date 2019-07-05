@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f426ee10017533c21021d618d613dc0931767988
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e2deda6bc9a5d13a631e9917f3020cfa68ee1e10
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149435"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536161"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Szybki start: Przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pomocą zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript
 
-W tym przewodniku Szybki start dowiesz się, jak za pomocą [zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript](https://github.com/Azure/azure-storage-js) w środowisku Node.js przekazywać, pobierać, wyświetlać i usuwać obiekty blob oraz zarządzać kontenerami.
+W tym przewodniku Szybki start dowiesz się, jak za pomocą [zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript](https://github.com/Azure/azure-sdk-for-js) w środowisku Node.js przekazywać, pobierać, wyświetlać i usuwać obiekty blob oraz zarządzać kontenerami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -99,7 +99,7 @@ Poświadczenia są odczytywane ze zmiennych środowiskowych na podstawie odpowie
 
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
+    require('dotenv').config();
 }
 ```
 
@@ -238,7 +238,7 @@ Do tworzenia kontenera służy metoda *create* klasy *ContainerURL*.
 await containerURL.create(aborter);
 console.log(`Container: "${containerName}" is created`);
 ```
-Ponieważ nazwa kontenera jest definiowana podczas wywoływania funkcji *ContainerURL.fromServiceURL (serviceURL, containerName)*, do utworzenia kontenera potrzebne jest jedynie wywołanie metody *create*.
+Ponieważ nazwa kontenera jest definiowana podczas wywoływania funkcji *ContainerURL.fromServiceURL (serviceURL, containerName)* , do utworzenia kontenera potrzebne jest jedynie wywołanie metody *create*.
 
 ### <a name="upload-text"></a>Przekazywanie tekstu
 Do przekazywania tekstu do obiektu blob służy metoda *upload*.

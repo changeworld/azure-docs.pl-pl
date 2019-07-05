@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 541ffe70ae5198e631568584a58d02ac283e89d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 601a6139b81e45fa5005b7510189eac594c29fb0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298253"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476000"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Na użytek rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
@@ -58,6 +58,15 @@ Aby sprawdzić, czy rozszerzenie zostało zainstalowane, użyj następującego p
 ```azurecli-interactive
 az ml -h
 ```
+
+## <a name="update-the-extension"></a>Zaktualizuj rozszerzenie
+
+Aby zaktualizować rozszerzenie interfejsu wiersza polecenia Machine Learning, użyj następującego polecenia:
+
+```azurecli-interactive
+az extension update -n azure-cli-ml
+```
+
 
 ## <a name="remove-the-extension"></a>Usuń rozszerzenie
 

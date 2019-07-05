@@ -5,21 +5,21 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b4edec43d01878bbc5899487f6ee1d2816eb135
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472115"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491835"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
 
 W tym artykule opisano szczegółowo sposobu ochrony aplikacji programu SharePoint przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Microsoft SharePoint to zaawansowany aplikacja, która może pomóc grupy lub działu organizowania, współpracy i udostępniania informacji. Program SharePoint może zapewnić portali sieci intranet, dokumentów i plików zarządzania, współpracy, sieci społecznościowych, sieci ekstranet, witryn sieci Web, wyszukiwaniu korporacyjnemu i analizy biznesowej. Ma również integracji systemów, procesów i możliwości automatyzacji przepływu pracy. Zazwyczaj organizacji należy wziąć pod uwagę ją jako aplikację warstwy 1 wrażliwe na czas przestoju i utraty danych.
 
@@ -62,10 +62,10 @@ Do tworzenia w tym artykule, maszyn wirtualnych VMware z systemem Windows Server
 
 **Scenariusz** | **Lokacja dodatkowa** | **Platforma Azure**
 --- | --- | ---
-**Funkcja Hyper-V** | Yes | Tak
-**VMware** | Yes | Tak
-**Serwer fizyczny** | Yes | Yes
-**Azure** | Nie dotyczy | Tak
+**Funkcja Hyper-V** | Tak | Yes
+**VMware** | Tak | Tak
+**Serwer fizyczny** | Tak | Yes
+**Azure** | Nie dotyczy | Yes
 
 ### <a name="sharepoint-versions"></a>Wersje programu SharePoint
 Obsługiwane są następujące wersje serwera programu SharePoint.
@@ -111,7 +111,7 @@ Dla lokacji, z Internetem [Tworzenie profilu usługi Traffic Manager typu "Prior
 
 | **Where** | **Element źródłowy** | **Docelowy**|
 | --- | --- | --- |
-| Publicznym systemie DNS | Publiczna usługa DNS dla witryny programu SharePoint <br/><br/> Przykład: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Publiczna usługa DNS | Publiczna usługa DNS dla witryny programu SharePoint <br/><br/> Przykład: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | DNS w środowisku lokalnym | sharepointonprem.contoso.com | Publiczny adres IP w farmie w środowisku lokalnym |
 
 
@@ -196,7 +196,7 @@ Postępuj zgodnie z [Niniejsze wskazówki](site-recovery-test-failover-to-azure.
 
 Wskazówki dotyczące przeprowadzasz test pracy awaryjnej dla usługi AD DNS, można znaleźć [testowanie trybu failover zagadnienia dotyczące usługi AD DNS i](site-recovery-active-directory.md#test-failover-considerations) dokumentu.
 
-Aby uzyskać wskazówki dotyczące przeprowadzasz test trybu failover dla SQL zawsze włączone grupy dostępności, zapoznaj się [podczas testowania trybu failover dla programu SQL Server Always On](site-recovery-sql.md#steps-to-do-a-test-failover) dokumentu.
+Aby uzyskać wskazówki dotyczące przeprowadzasz test trybu failover dla SQL zawsze włączone grupy dostępności, zapoznaj się [przeprowadzania odzyskiwania po awarii w aplikacji za pomocą usługi Azure Site Recovery i wykonywania testu trybu failover](site-recovery-sql.md#disaster-recovery-of-application) dokumentu.
 
 ## <a name="doing-a-failover"></a>Przełączeniem w tryb failover
 Postępuj zgodnie z [Niniejsze wskazówki](site-recovery-failover.md) dla przełączeniem w tryb failover.

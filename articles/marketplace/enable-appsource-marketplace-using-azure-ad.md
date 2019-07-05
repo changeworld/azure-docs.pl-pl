@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 981d9427dc8407c7300f01c941e39ba9723d53a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 950371fd92d255ed01dfa89d5c2fcbded686a971
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938082"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443081"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Włączanie możliwości publikowania ofert w witrynach AppSource i Marketplace z użyciem usługi Azure Active Directory
 
@@ -89,4 +89,4 @@ Używaj usługi Azure AD do działu pomocy technicznej jedną z następujących 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Upewnij się, że masz [zarejestrowany w witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
-- Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/) do utworzenia lub zakończyć oferty.
+- Zobacz [sposób tworzenia konta w Centrum partnerskim](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) Aby uzyskać więcej informacji na temat sposobu tworzenia lub zakończyć oferty.

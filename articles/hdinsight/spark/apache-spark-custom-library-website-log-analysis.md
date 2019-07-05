@@ -8,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: bef71f210e015dc10cd6f5c0c655d0d3beee3655
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5492f4865e464cf8bedaee6e9b0ab25532e21459
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728922"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448757"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analizowanie dzienników witryn sieci Web przy użyciu klastra Apache Spark w HDInsight przy użyciu niestandardową biblioteką języka Python
 
 Ten notes pokazuje, jak analizować dane dzienników z platformy Apache Spark w HDInsight przy użyciu niestandardową biblioteką. Niestandardową biblioteką używamy to biblioteka języka Python o nazwie **iislogparser.py**.
 
 > [!TIP]  
-> W tym samouczku jest również dostępny jako notesu programu Jupyter w klastrze Spark (Linux), który zostanie utworzony w HDInsight. Środowisko notesu umożliwia uruchamianie fragmenty kodu języka Python z samego notesu. Aby wykonać samouczek z poziomu Notes, utworzyć klaster platformy Spark, uruchamiania notesu programu Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), a następnie uruchomić Notes **analizowanie dzienników za pomocą platformy Spark za pomocą niestandardowych library.ipynb** w obszarze **PySpark**  folderu.
+> W tym artykule jest również dostępny jako notesu programu Jupyter w klastrze Spark (Linux), który zostanie utworzony w HDInsight. Środowisko notesu umożliwia uruchamianie fragmenty kodu języka Python z samego notesu. Aby wykonać artykułu z w ramach Notes, utworzyć klaster platformy Spark, uruchamiania notesu programu Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), a następnie uruchomić Notes **analizowanie dzienników za pomocą platformy Spark za pomocą niestandardowych library.ipynb** w obszarze **PySpark** folderu.
 >
 >
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo
-ms.openlocfilehash: 193a24aebff8f7de60752e53bbc1b18dd5c54f33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 779051135a994574cb2bed7bfc4879270ec1d8fa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482202"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443038"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>Usuń typ węzła usługi Service Fabric
 W tym artykule opisano sposób skalowanie klastra usługi Azure Service Fabric, usuwając istniejący typ węzła z klastra. Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem. Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure jest [konfigurowany jako zestaw skalowania oddzielnych](service-fabric-cluster-nodetypes.md). Każdy typ węzła może następnie być zarządzany oddzielnie. Po utworzeniu klastra usługi Service Fabric klaster można skalować w poziomie, usuwając typ węzła (zestaw skalowania maszyn wirtualnych) i wszystkich jego węzłów.  Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze.  Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
@@ -50,7 +50,7 @@ Podczas usuwania typ węzła, który jest brązowy, wszystkie węzły w typ węz
 
 ## <a name="recommended-node-type-removal-process"></a>Zalecane przez proces usuwania typu węzła
 
-Aby usunąć typ węzła, uruchom [AzServiceFabricNodeType Usuń](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) polecenia cmdlet.  Polecenie cmdlet pobiera trochę czasu.  Następnie uruchom [ServiceFabricNodeState Usuń](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) na każdym z węzłów, które mają być usuwane.
+Aby usunąć typ węzła, uruchom [AzServiceFabricNodeType Usuń](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) polecenia cmdlet.  Polecenie cmdlet pobiera trochę czasu.  Gdy wszystkie maszyny wirtualne zostaną usunięte (reprezentowana jako "W dół") sieci szkieletowej: / System/InfrastructureService / [nazwa elementu nodetype] pojawi się stan błędu.
 
 ```powershell
 $groupname = "mynodetype"
@@ -64,7 +64,14 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.a
           -X509Credential -ServerCertThumbprint <thumbprint> `
           -FindType FindByThumbprint -FindValue <thumbprint> `
           -StoreLocation CurrentUser -StoreName My
+```
 
+Następnie można zaktualizować zasobu klastra, aby usunąć typ węzła. Możesz użyć wdrażanie szablonu ARM, lub Edytuj zasób klastra za pośrednictwem [usługi Azure resource manager](https://resources.azure.com). Spowoduje to uruchomienie uaktualniania klastra, co spowoduje usunięcie sieci szkieletowej: / System/InfrastructureService / [nazwa elementu nodetype] usługi, który jest w stanie błędu.
+
+Będą również widzieć, że węzły są "Nie działa" w narzędziu Service Fabric Explorer. Uruchom [ServiceFabricNodeState Usuń](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) na każdym z węzłów, które mają być usuwane.
+
+
+```powershell
 $nodes = Get-ServiceFabricNode | Where-Object {$_.NodeType -eq $nodetype} | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending
 
 Foreach($node in $nodes)

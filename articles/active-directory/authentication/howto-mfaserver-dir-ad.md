@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82aa566c5bcd6347a6f62b2f693a7ad796347438
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eac6cff0f0f12daaf772549f547aafd670600d61
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056003"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536978"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integracja katalogu między serwerem Azure MFA i usługą Active Directory
 
@@ -31,6 +31,9 @@ Sekcja Integracja katalogu serwera usługi Azure MFA umożliwia przeprowadzenie 
 Domyślnie serwer usługi Azure Multi-Factor Authentication (MFA) jest skonfigurowany pod kątem importowania lub synchronizowania użytkowników z usługi Active Directory.  Karta Integracja katalogu pozwala zastąpić domyślne zachowanie i utworzyć powiązanie z innym katalogiem LDAP, katalogiem ADAM lub określonym kontrolerem domeny usługi Active Directory.  Umożliwia także korzystanie z uwierzytelniania LDAP w odniesieniu do serwera proxy protokołu LDAP lub do powiązania protokołu LDAP jako obiektu docelowego usługi RADIUS, uwierzytelniania wstępnego w ramach uwierzytelniania IIS lub uwierzytelniania podstawowego dla portalu użytkownika.  W poniższej tabeli opisano poszczególne ustawienia.
 
 ![Edycja konfiguracji LDAP na serwerze MFA](./media/howto-mfaserver-dir-ad/dirint.png)
+
+> [!NOTE]
+> Integracja katalogu nie musi pracować z katalogami, innego niż Active Directory Domain Services.
 
 | Cecha | Opis |
 | --- | --- |

@@ -1,26 +1,23 @@
 ---
-title: Wyświetlanie i pobieranie Azure użycia i opłat | Dokumentacja firmy Microsoft
+title: Wyświetlanie i pobieranie Azure użycia i opłat
 description: Opisuje sposób pobrania lub wyświetlenia Azure dziennego użycia i opłat.
 keywords: rozliczenia użycia, opłaty za użycie, użycie pobrać, Wyświetl informacje o użyciu, użycie faktury platformy azure, azure
-services: billing
-documentationcenter: ''
-author: genlin
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d2d7be562eaaa7dd21e63735f5697ffe5a62f8a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60919005"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491445"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Przeglądanie i pobieranie swoje użycie platformy Azure oraz opłaty
 
@@ -77,11 +74,11 @@ Jeśli masz umowy klienta firmy Microsoft, możesz pobrać Twoje użycie platfor
 ### <a name="download-usage-for-billed-charges"></a>Pobierz dane użycia opłaty rozliczane
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj *Cost Management + rozliczenia*.
 3. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
 4. Wybierz pozycję **Faktury**.
 5. W siatce faktury Znajdź wiersz faktury odpowiadający użycia, który chcesz pobrać.
-6. Kliknij wielokropek (`...`) na końcu wiersza.
+6. Kliknij przycisk wielokropka (`...`) na końcu wiersza.
 
     ![Zrzut ekranu pokazujący Wielokropek na końcu wiersza.](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
 
@@ -94,9 +91,9 @@ Jeśli masz umowy klienta firmy Microsoft, możesz pobrać Twoje użycie platfor
 Można również pobrać użycia data miesiąca dla bieżącego okresu rozliczeniowego. Te opłaty, które nie zostały jeszcze naliczane.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj *Cost Management + rozliczenia*.
 3. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
-4. W **Przegląd** bloku Znajdź łącza pobierania poniżej opłaty od początku miesiąca.
+4. W **Przegląd** obszaru, Znajdź łącza pobierania poniżej opłaty od początku miesiąca.
 5. Wybierz **użycia platformy Azure i opłaty za**.
 
     ![Zrzut ekranu przedstawiający pobieranie z przeglądu](./media/billing-download-azure-usage/open-usage.png)
@@ -104,7 +101,7 @@ Można również pobrać użycia data miesiąca dla bieżącego okresu rozliczen
 ## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Sprawdź swój dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 

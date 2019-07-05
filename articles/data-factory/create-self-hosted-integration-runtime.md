@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ec6177bb353602f20040f05215678e3a8a161ebc
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 2c90dcf1672a3d3505aaa19aec953ad97f5289bb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190833"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446217"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -74,7 +74,7 @@ Poniżej przedstawiono przepływ danych wysokiego poziomu dla podsumowania czynn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dostępne są wersje obsługiwany system operacyjny: Windows 7 z dodatkiem Service Pack 1, Windows 8.1, systemu Windows 10, Windows Server 2008 R2 z dodatkiem SP1, Windows Server 2012, Windows Server 2012 R2 i systemu Windows Server 2016. Instalacja z własnego środowiska integration runtime na kontrolerze domeny nie jest obsługiwana.
+- Dostępne są wersje obsługiwany system operacyjny: Windows 7 z dodatkiem SP1, Windows 8.1, Windows 10, systemu Windows Server 2008 R2 z dodatkiem SP1, systemu Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 i 2019 r Server systemu Windows. Instalacja z własnego środowiska integration runtime na kontrolerze domeny nie jest obsługiwana.
 - Program .NET framework 4.6.1 lub nowszej jest wymagana. Jeśli instalujesz własnego środowiska integration runtime na komputerze z Windows 7, zainstaluj program .NET Framework 4.6.1 lub nowszej. Zobacz [.NET Framework System Requirements](/dotnet/framework/get-started/system-requirements) Aby uzyskać szczegółowe informacje.
 - Zalecana konfiguracja maszyny Self-Hosted integration runtime jest co najmniej 2 GHz, cztery rdzenie, 8 GB pamięci RAM i 80GB dysku.
 - Jeśli komputer hosta przechodzi w stan hibernacji, własne środowisko integration runtime nie odpowiada na żądania danych. Na komputerze, należy skonfigurować plan zasilania odpowiednich, przed zainstalowaniem własnego środowiska integration runtime. Jeśli komputer jest skonfigurowany do hibernacji, instalacja Self-Hosted integration runtime wyświetli komunikat.

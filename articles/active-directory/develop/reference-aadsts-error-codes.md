@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ac2f4ac83240acf644fc1529c9c14f5e9631a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d6ed5c80d5c3241a9a328a2427ed8b920790635
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111299"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482485"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 
@@ -215,6 +215,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS90093 | GraphUserUnauthorized - Graph zwrócił niedozwolony kod błędu dla żądania. |
 | AADSTS90094 | AdminConsentRequired — wymagana jest zgoda administratora. |
 | AADSTS90100 | InvalidRequestParameter — parametr jest pusty lub nieprawidłowy. |
+| AADSTS901002 | AADSTS901002: Parametr żądania "resource" nie jest obsługiwany. |
 | AADSTS90101 | InvalidEmailAddress - dostarczonych danych nie jest prawidłowym adresem e-mail. Adres e-mail musi być w formacie `someone@example.com`. |
 | AADSTS90102 | InvalidUriParameter — wartość musi być prawidłowym bezwzględnym identyfikatorem URI. |
 | AADSTS90107 | InvalidXml - żądania jest nieprawidłowa. Upewnij się, że dane nie mają nieprawidłowe znaki.|

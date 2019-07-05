@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a92017c462ef62cbfb1aa6c2613a502d1cc5ffc6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5f60a2786a87f4bd9be1f4a9e2a7a222e097b2e1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340738"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448078"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -64,16 +64,16 @@ Firma Microsoft coraz limity magazynu w warstwach naszego ogólnego przeznaczeni
 | Typ magazynu | Azure Premium Storage | Azure Premium Storage |
 | Rozmiar magazynu | 32 GB do 16 TB| 32-16 TB |
 | Rozmiar przyrost magazynu | 1 GB | 1 GB |
-| Operacje wejścia/wyjścia | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy| 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy |
+| Operacje wejścia/wyjścia | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy |
 
 > [!IMPORTANT]
-> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Japonia, część wschodnia, Korea środkowa, Australia Wschodnia.
+> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, Europa Północna, Europa Zachodnia, południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo, Azja południowo-wschodnia, Azja Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Australia Wschodnia, Południowa Australia Wschodnia.
 >
->Obecnie nie obsługuje duże magazyny w wersji zapoznawczej:
+> Obecnie nie obsługuje duże magazyny w wersji zapoznawczej:
 >
 > * Połączenia przychodzące realizowane przez punkty końcowe usługi sieci wirtualnej
 > * Geograficznie nadmiarowych kopii zapasowych
-> * Obejmujące wiele regionów replikacji
+> * Repliki do odczytu
 
 ### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
 

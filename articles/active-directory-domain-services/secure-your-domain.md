@@ -3,7 +3,7 @@ title: Zabezpieczanie Twojej domeny zarządzanej usługi Azure Active Directory 
 description: Zabezpieczanie domeny zarządzanej
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: ab371553a96f3a8d393c8b773c4024d04fd171a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246737"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483274"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Zabezpieczanie Twojej domeny zarządzanej usług domenowych Azure AD
 Ten artykuł ułatwia zabezpieczanie Twojej domeny zarządzanej. Można wyłączyć opcję użycia mechanizmów szyfrowania słabe i wyłączyć synchronizację skrótów poświadczeń NTLM.
@@ -56,6 +56,11 @@ $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPa
 // Apply the settings to the managed domain.
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
+
+> [!IMPORTANT]
+> Użytkowników (i kont usług) nie można wykonać prostych powiązań LDAP, wyłączenie synchronizacji skrótów haseł NTLM w wystąpieniu usługi Azure AD Domain Services.  Aby uzyskać więcej informacji na temat wyłączenie synchronizacji skrótów haseł NTLM, przeczytaj [zabezpieczanie Twojej domeny zarządzanej usług domenowych Azure AD](secure-your-domain.md).
+>
+>
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Omówienie synchronizacji w usługach domenowych Azure AD](synchronization.md)

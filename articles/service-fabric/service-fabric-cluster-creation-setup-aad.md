@@ -3,7 +3,7 @@ title: Konfigurowanie usługi Azure Active Directory do uwierzytelniania klient�
 description: Dowiedz się, jak skonfigurować usługi Azure Active Directory (Azure AD) do uwierzytelniania klientów w przypadku klastrów usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
@@ -12,37 +12,37 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/15/2019
-ms.author: aljo
-ms.openlocfilehash: c02e38880fdf8e8f1a2229f009b343d6431af853
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 6/28/2019
+ms.author: atsenthi
+ms.openlocfilehash: 6c195357c4a037534307571a53589b2ae861d88b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125140"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67486019"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurowanie usługi Azure Active Directory do uwierzytelniania klientów
 
 W przypadku klastrów działających na platformie Azure Azure Active Directory (Azure AD) zaleca się zabezpieczenie dostępu do punktów końcowych zarządzania.  W tym artykule opisano sposób konfiguracji usługi Azure AD do uwierzytelniania klientów dla klastra usługi Service Fabric, które należy wykonać przed [tworzenia klastra](service-fabric-cluster-creation-via-arm.md).  Usługa Azure AD umożliwia organizacjom (znanym jako dzierżawy) zarządzanie dostępem użytkowników do aplikacji. Aplikacje są podzielone na tych z opartą na sieci web, interfejs użytkownika logowania i te w środowisku klienta natywnego. 
 
-Klaster usługi Service Fabric udostępnia kilka punktów wejścia do jego funkcje zarządzania, w tym, oparta na sieci web [narzędzia Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] i [programu Visual Studio] [ service-fabric-manage-application-in-visual-studio]. W związku z tym utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną.  Po utworzeniu aplikacji przypiszesz użytkowników do ról tylko do odczytu i administratora.
+Klaster usługi Service Fabric udostępnia kilka punktów wejścia do jego funkcje zarządzania, w tym, oparta na sieci web [narzędzia Service Fabric Explorer][service-fabric-visualizing-your-cluster] and [Visual Studio][service-fabric-manage-application-in-visual-studio]. W związku z tym utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną.  Po utworzeniu aplikacji przypiszesz użytkowników do ról tylko do odczytu i administratora.
 
 > [!NOTE]
 > Przed utworzeniem klastra musisz wykonać następujące kroki. Ponieważ skrypty oczekują określenia nazw klastra i punktów końcowych, wartości powinny być zaplanowane i inne od wartości już utworzonych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że dzierżawa została już utworzona. Jeśli nie masz, zapoznanie się z tematem [jak uzyskać dzierżawę usługi Azure Active Directory][active-directory-howto-tenant].
+W tym artykule przyjęto założenie, że dzierżawa została już utworzona. Jeśli tak nie jest, zacznij od zapoznania się z artykułem [Jak uzyskać dzierżawę usługi Azure Active Directory][active-directory-howto-tenant].
 
 Aby uprościć niektóre kroki konfigurowania usługi Azure AD za pomocą klastra usługi Service Fabric, utworzyliśmy zestaw skryptów programu Windows PowerShell.
 
-1. [Pobierz skrypty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) na komputer.
-2. Kliknij prawym przyciskiem myszy plik zip, wybierz **właściwości**, wybierz opcję **odblokowanie** pole wyboru, a następnie kliknij przycisk **Zastosuj**.
-3. Wyodrębnij plik ZIP.
+1. [Sklonuj repozytorium](https://github.com/Azure-Samples/service-fabric-aad-helpers) do komputera.
+2. [Upewnij się, że wszystkie wstępnie wymagane składniki](https://github.com/Azure-Samples/service-fabric-aad-helpers#getting-started) skryptów zainstalowane.
 
 ## <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Tworzenie aplikacji usługi Azure AD i przypisywanie ról do użytkowników
-Utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną. Po utworzeniu aplikacji reprezentujących klaster przypiszesz użytkowników do [ról obsługiwanych przez usługę Service Fabric](service-fabric-cluster-security-roles.md): tylko do odczytu i administratora.
 
-Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej.  Podaj także nazwy użytkowników i ich hasła.  Na przykład:
+Użyjemy skryptów, aby utworzyć dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jednej aplikacji sieci web i po jednej aplikacji natywnej. Po utworzeniu aplikacji do reprezentowania klastra, utworzysz użytkowników na potrzeby [role obsługiwane przez usługę Service Fabric](service-fabric-cluster-security-roles.md): tylko do odczytu i administratora.
+
+Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej.  Podaj także nazwy użytkowników i ich hasła. Na przykład:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -61,7 +61,7 @@ Wartość *WebApplicationReplyUrl* to domyślny punkt końcowy zwracany przez us
 
 https://&lt;domena_klastra&gt;:19080/Explorer
 
-Zostanie wyświetlony monit logowania na konto z uprawnieniami administratora dzierżawy usługi Azure AD. Po zalogowaniu skrypt utworzy aplikacje internetową i natywną mające reprezentować klaster usługi Service Fabric. Jeśli spojrzysz na aplikacje dzierżawcy w [witryny Azure portal][azure-portal], powinny zostać wyświetlone dwa nowe wpisy:
+Zostanie wyświetlony monit logowania na konto z uprawnieniami administratora dzierżawy usługi Azure AD. Po zalogowaniu skrypt utworzy aplikacje internetową i natywną mające reprezentować klaster usługi Service Fabric. Jeśli popatrzysz na aplikacje dzierżawy w witrynie [Azure Portal][azure-portal], powinny być widoczne dwie nowe pozycje:
 
    * *NazwaKlastra*\_Cluster
    * *NazwaKlastra*\_Client

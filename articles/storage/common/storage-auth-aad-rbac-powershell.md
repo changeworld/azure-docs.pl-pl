@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 06/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e850b915cd01b6bacd70d6df7752eeb83f7101d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf888b72cca806822ca7a37542e71a5be0c8d5c3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153860"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443721"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-powershell"></a>Udzielanie dostępu do danych platformy Azure obiektów blob i kolejek przy użyciu kontroli RBAC przy użyciu programu PowerShell
 
@@ -30,7 +30,7 @@ W tym artykule opisano, jak za pomocą programu Azure PowerShell listy wbudowane
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Określenie zakresu zasobów 
+## <a name="determine-resource-scope"></a>Określenie zakresu zasobów
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -54,9 +54,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-user"></a>Przypisz rolę RBAC do użytkownika
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>Przypisz rolę RBAC do podmiotu zabezpieczeń
 
-Aby przypisać rolę RBAC do użytkownika, należy użyć [New AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) polecenia. Format polecenia mogą się różnić w zależności od zakresu przypisania. Poniższe przykłady pokazują, jak przypisać rolę użytkownikowi w różnych zakresach.
+Aby przypisać rolę RBAC do podmiotu zabezpieczeń, należy użyć [New AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) polecenia. Format polecenia mogą się różnić w zależności od zakresu przypisania. W poniższych przykładach pokazano, jak przypisać rolę użytkownikowi w różnych zakresach, ale można użyć tego samego polecenia, można przypisać roli do podmiotu zabezpieczeń.
 
 ### <a name="container-scope"></a>Zakres kontenera
 

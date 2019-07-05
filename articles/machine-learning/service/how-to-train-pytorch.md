@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc80fcde8de3fb2d6dd6f59804f6019b76aa8727
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8def58eb003fcc817c21151416744cf391b5f38f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295592"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443927"
 ---
 # <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>Szkolenie i zarejestruj PyTorch modeli na skalę przy użyciu usługi Azure Machine Learning
 
-W tym artykule pokazano, jak szkolenie i zarejestrować model PyTorch przy użyciu usługi Azure Machine Learning. Opiera się na [transferu PyTorch firmy learning samouczek](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) opiera się Klasyfikator sieci neuronowej (DNN) dla obrazów Mrówki i odniesieniu.
+W tym artykule pokazano, jak szkolenie i zarejestrować model PyTorch przy użyciu usługi Azure Machine Learning. Opiera się na [transferu PyTorch firmy learning samouczek](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) opiera się Klasyfikator sieci neuronowej (DNN) dla obrazów kurcząt i indyki.
 
 [PyTorch](https://pytorch.org/) to platforma obliczeniowa typu open-source najczęściej używany do tworzenia głębokich sieciach neuronowych (DNN). Za pomocą usługi Azure Machine Learning można szybko skalować w poziomie zadania szkoleń o całkowicie otwartym kodzie źródłowym, przy użyciu zasobów obliczeniowych w elastycznej chmurze. Można także śledzić swoje przebiegów szkoleniowych, modele wersji wdrażanie modeli i wiele więcej.
 
@@ -75,19 +75,19 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>Tworzenie eksperymentu
 
-Tworzenie eksperymentów i folder do przechowywania skryptów szkolenia. W tym przykładzie należy utworzyć eksperyment, o nazwie "pytorch hymenoptera".
+Tworzenie eksperymentów i folder do przechowywania skryptów szkolenia. W tym przykładzie należy utworzyć eksperyment, o nazwie "pytorch ptaków".
 
 ```Python
-project_folder = './pytorch-hymenoptera'
+project_folder = './pytorch-birds'
 os.makedirs(project_folder, exist_ok=True)
 
-experiment_name = 'pytorch-hymenoptera'
+experiment_name = 'pytorch-birds'
 experiment = Experiment(ws, name=experiment_name)
 ```
 
 ### <a name="get-the-data"></a>Pobieranie danych
 
-Zestaw danych składa się z około 120 uczone obrazy każdego Mrówki i odniesieniu, przy użyciu 75 obrazów sprawdzania poprawności dla każdej klasy. Hymenoptera polega na kolejności owadami obejmuje Mrówki i odniesieniu. Pobieranie i wyodrębnianie zestawu danych jako część naszego skryptu szkolenia `pytorch_train.py`.
+Zestaw danych składa się z około 120 uczone obrazy każdego indyków i kurczaków, przy użyciu 100 obrazów sprawdzania poprawności dla każdej klasy. Firma Microsoft Pobierz i Wyodrębnij zestawu danych jako część naszego skryptu szkolenia `pytorch_train.py`. Obrazy są podzbiorem [zestawu danych w wersji 5 Otwórz obrazy](https://storage.googleapis.com/openimages/web/index.html).
 
 ### <a name="prepare-training-scripts"></a>Przygotowanie skryptów szkolenia
 

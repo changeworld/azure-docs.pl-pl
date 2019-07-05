@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 88de601caf984d2511229cd68190554086c3da38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e527d9c35ccc87f270755947cd969c7acee380b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779562"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449180"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -37,11 +37,11 @@ Punkt końcowy jest dostępny w dobrze znanego adresu IP bez obsługi routingu (
 
 Usługa jest dostępna w regionach platformy Azure jest ogólnie dostępna. Nie wszystkie wersji interfejsu API mogą być dostępne we wszystkich regionach platformy Azure.
 
-Regiony                                        | Dostępność?                                 | Obsługiwane wersje
+Regions                                        | Dostępność?                                 | Obsługiwane wersje
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
-[Chińska wersja platformy Azure](https://www.azure.cn/)                                                     | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Chińska wersja platformy Azure](https://azure.microsoft.com/global-infrastructure/china/)                  | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Publiczne zachodnie środkowe stany USA](https://azure.microsoft.com/regions/)                           | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01
 
@@ -62,7 +62,7 @@ Miarę dodawania nowszych wersji starsze wersje nadal może zostać oceniony zgo
 
 Jeśli wersja nie jest określony, zwracany jest błąd z listą najnowszych wersji.
 
-> [!NOTE] 
+> [!NOTE]
 > Odpowiedź jest ciąg JSON. Następujące przykładową odpowiedź jest drukowany pretty dla czytelności.
 
 **Żądanie**
@@ -205,7 +205,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
     "location": "centralus",
     "name": "negasonic",
     "offer": "lampstack",
@@ -283,7 +283,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
     "location": "centralus",
     "name": "negasonic",
     "offer": "lampstack",
@@ -340,7 +340,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 #### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>Następujące interfejsy API są dostępne za pośrednictwem punktu końcowego metadanych:
 
-Dane | Opis | Wprowadzona w wersji
+Data | Opis | Wprowadzona w wersji
 -----|-------------|-----------------------
 zaświadczenia | Zobacz [zaświadczenia danych](#attested-data) | 2018-10-01
 identity | Zarządzanych tożsamości dla zasobów platformy Azure. Zobacz [uzyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -353,7 +353,7 @@ scheduledevents | Zobacz [zaplanowane zdarzenia](scheduled-events.md) | 2017-08-
 > [!NOTE]
 > Za pośrednictwem punktu końcowego metadanych następujące kategorie są dostępne za pośrednictwem wystąpienia/obliczeniowe
 
-Dane | Opis | Wprowadzona w wersji
+Data | Opis | Wprowadzona w wersji
 -----|-------------|-----------------------
 azEnvironment | Gdy maszyna wirtualna jest uruchomiona w środowisku platformy Azure | 2018-10-01
 customData | Zobacz [danych niestandardowych](#custom-data) | 2019-02-01
@@ -383,7 +383,7 @@ strefa | [Strefa dostępności](../../availability-zones/az-overview.md) maszyny
 > [!NOTE]
 > Za pośrednictwem punktu końcowego metadanych następujące kategorie są dostępne za pośrednictwem wystąpienia/sieciowej
 
-Dane | Opis | Wprowadzona w wersji
+Data | Opis | Wprowadzona w wersji
 -----|-------------|-----------------------
 ipv4/privateIpAddress | Lokalny adres IPv4 maszyny wirtualnej | 2017-04-02
 ipv4/publicIpAddress | Publiczny adres IPv4 maszyny wirtualnej | 2017-04-02
@@ -537,8 +537,16 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 
 **Odpowiedź**
 ```bash
-AZUREPUBLICCLOUD
+AzurePublicCloud
 ```
+Chmura i wartości środowisko platformy Azure znajduje się poniżej.
+
+ Chmura   | Środowisko platformy Azure
+---------|-----------------
+[Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Chińska wersja platformy Azure](https://azure.microsoft.com/global-infrastructure/china/)                  | AzureChinaCloud
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>Trwa pobieranie tagów dla maszyny Wirtualnej
 
@@ -604,7 +612,7 @@ Verification successful
 }
 ```
 
-Dane | Opis
+Data | Opis
 -----|------------
 nonce | Użytkownik podał opcjonalny ciąg z żądaniem. W przypadku jednorazowego nie został podany w żądaniu, zwracana jest bieżącą sygnaturę czasową UTC
 Plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) dla maszyny Wirtualnej w niej jest obraz Azure Marketplace, zawiera nazwę, produktu i wydawcy
@@ -619,11 +627,11 @@ Po pobraniu podpisu powyżej, można sprawdzić, czy podpis pochodzi od firmy Mi
 > [!NOTE]
 > Certyfikat dla chmury publicznej i należących do suwerennej chmury może się różnić.
 
- Regiony | Certyfikat
+ Chmura | Certyfikat
 ---------|-----------------
 [Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Chińska wersja platformy Azure](https://www.azure.cn/)                                                           | metadata.azure.cn
+[Chińska wersja platformy Azure](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
 [Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash

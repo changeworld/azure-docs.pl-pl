@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 5fd9e593a9a5158b35d3c0e17436d54bc7c1bd03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d0f0747aa393475265be4aeb9ca05000fbd5b97b
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128392"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565755"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>Tworzenie usługi SignalR Service za pomocą usługi App Service
 
@@ -46,8 +46,8 @@ Każde polecenie w tabeli stanowi link do dokumentacji polecenia. W tym skrypcie
 | Polecenie | Uwagi |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | Tworzy zasób usługi Azure SignalR Service. |
-| [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | Wyświetla listę kluczy, które będą używane przez Twoją aplikację przy wypychaniu w czasie rzeczywistym aktualizacji zawartości za pomocą usługi SignalR. |
+| [az signalr create](/cli/azure/signalr#az-signalr-create) | Tworzy zasób usługi Azure SignalR Service. |
+| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | Wyświetla listę kluczy, które będą używane przez Twoją aplikację przy wypychaniu w czasie rzeczywistym aktualizacji zawartości za pomocą usługi SignalR. |
 | [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | Tworzy plan usługi Azure App Service do hostowania aplikacji internetowych. |
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | Tworzy aplikację internetową platformy Azure za pomocą planu hostingu usługi App Service. |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Dodaje nowe ustawienie aplikacji dla aplikacji internetowej. To ustawienie aplikacji umożliwia przechowywanie parametrów połączenia usługi SignalR. |

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c2f8ce0dfb866826de549946bc3ee1acc2b677f
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238626"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460262"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Przywracanie plików do Windows za pomocą modelu wdrażania usługi Azure Resource Manager
 
@@ -97,7 +97,7 @@ Kroki te obejmują następującą terminologią:
 * *Vault przykładowe* — magazyn usługi Recovery Services, w którym zarejestrowano maszyny źródłowej i docelowej maszyny. <br/>
 
 > [!NOTE]
-> Nie można przywrócić kopii zapasowych na komputerze docelowym z systemem wcześniejszej wersji systemu operacyjnego. Na przykład można przywrócić kopii zapasowej z komputera, Windows 7 na komputerze z systemem Windows 8 (lub nowszą). Nie można przywrócić kopii zapasowej z komputera z systemem Windows 8 na komputerze Windows 7.
+> Nie można przywrócić kopii zapasowych na komputerze docelowym z systemem wcześniejszej wersji systemu operacyjnego. Na przykład można przywrócić kopii zapasowej z komputera, Windows 7 na komputerze Windows 7 (lub nowszy). Nie można przywrócić kopii zapasowej z komputera z systemem Windows 8 na komputerze Windows 7.
 >
 >
 

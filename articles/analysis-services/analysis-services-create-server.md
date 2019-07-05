@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/01/2019
+ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e54c18eb405ffa36260e9980705784130bc0ca4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aae5b87e49b6d64e4c9ee854b65821d65969e66b
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61023763"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536801"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Szybki start: Tworzenie serwera — Portal
 
@@ -37,7 +37,7 @@ W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Anal
 
 2. W sekcji **Analysis Services** wypełnij wymagane pola, a następnie naciśnij przycisk **Utwórz**.
    
-   * **Nazwa serwera**: wpisz unikatową nazwę, która będzie używana do odwoływania się do serwera.
+   * **Nazwa serwera**: wpisz unikatową nazwę, która będzie używana do odwoływania się do serwera. Nazwa serwera musi zaczynać się małą literę i składać się z od 3 do 128 małe litery i cyfry. Białych znaków i znaki specjalne są niedozwolone.
    * **Subskrypcja**: wybierz subskrypcję, z którą będzie skojarzony ten serwer.
    * **Grupa zasobów**: utwórz nową grupę zasobów lub wybierz istniejącą. Grupy zasobów ułatwiają zarządzanie kolekcją zasobów platformy Azure. Aby dowiedzieć się więcej, zobacz [grupy zasobów](../azure-resource-manager/resource-group-overview.md).
    * **Lokalizacja**: lokalizacja centrum danych Azure, w którym będzie hostowany ten serwer. Wybierz lokalizację najbliższą względem Twojej największej bazy użytkowników.

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa6ddba1ee6c170fed5e2c96591fb8e8174047ab
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b32ff070a1ffa9f83132ecc1d3e43bae398f509d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165287"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460739"
 ---
 # <a name="azure-time-series-insights-preview"></a>Azure Time Series Insights (wersja zapoznawcza)
 
@@ -96,5 +96,5 @@ Dowiedz się więcej na temat przypadków użycia:
 > [Przypadki użycia usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-use-cases.md)
 
 <!-- Images -->
-[1]: media/v2-update-overview/overview_one.png
-[2]: media/v2-update-overview/overview_two.png
+[1]: media/v2-update-overview/overview-one.png
+[2]: media/v2-update-overview/overview-two.png

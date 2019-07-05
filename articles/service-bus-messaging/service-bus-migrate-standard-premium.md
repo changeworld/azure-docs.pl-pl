@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991414"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566079"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrowanie istniejących standardowych przestrzeni nazw usługi Azure Service Bus w warstwie premium
 Azure Service Bus oferowane wcześniej, przestrzenie nazw tylko w warstwie standardowa. Przestrzenie nazw są konfiguracje wielodostępnych, które są zoptymalizowane pod kątem niskiej przepustowości i środowisk deweloperskich. Warstwa premium oferuje dedykowanych zasobów na przestrzeń nazw przewidywalne opóźnienie i zwiększać przepustowość w stałej cenie. Warstwa premium jest zoptymalizowany pod kątem wysokiej przepływności i środowisk produkcyjnych, które wymagają funkcji przedsiębiorstwa.
@@ -117,6 +117,28 @@ Migracja za pomocą witryny Azure portal ma ten sam przepływ logiczny co migrac
 1. Przejrzyj zmiany na stronie podsumowania. Wybierz **kończenia migracji** Aby przełączyć przestrzenie nazw, a także do przeprowadzenia migracji.
     ![Przełącz przestrzeń nazw — menu przełącznika][] strona potwierdzenia jest wyświetlany, gdy migracja zostanie zakończona.
     ![Przestrzeń nazw przełącznika — Powodzenie][]
+
+## <a name="caveats"></a>Ostrzeżenia
+
+Niektóre z funkcji oferowanych przez Azure Service Bus w warstwie standardowa nie są obsługiwane przez warstwę usługi Azure Service Bus w warstwie Premium. Są to zgodnie z projektem, ponieważ w warstwie premium oferuje dedykowanych zasobów kątem przewidywalnej przepływności i opóźnień.
+
+Poniżej przedstawiono listę funkcji, które nie są obsługiwane przez — wersja Premium i ich ograniczenia- 
+
+### <a name="express-entities"></a>Jednostki ekspresowe
+
+   Jednostki ekspresowe, które nie zatwierdzić wszystkie dane komunikat do magazynu nie są obsługiwane w warstwie Premium. Dedykowane zasoby udostępniane zwiększenie znaczące przepustowości przy jednoczesnym zapewnieniu, że dane są utrwalane, ponieważ oczekuje się od każdej firmie systemu obsługi komunikatów.
+   
+   Podczas migracji dowolnej jednostki ekspresowe w standardowych przestrzeni nazw zostanie utworzony w przestrzeni nazw Premium jako jednostka-express.
+   
+   Korzystanie z szablonów usługi Azure Resource Manager (ARM) upewnij się, Usuń flagę "enableExpress" od konfiguracji wdrożenia, tak aby zautomatyzowanych przepływów pracy wykonane bez błędów.
+
+### <a name="partitioned-entities"></a>Partycjonowane jednostki
+
+   Partycjonowane jednostki były obsługiwane w warstwie standardowa, aby zapewnić lepszą dostępność w konfiguracji z wieloma dzierżawami. Z zapewnieniem dedykowanych zasobów dostępnych na przestrzeń nazw w warstwie Premium to nie jest już potrzebny.
+   
+   Podczas migracji wszystkie jednostki podzielonej na partycje w standardowej przestrzeni nazw jest tworzony na przestrzeń nazw Premium jako jednostki niepartycjonowana.
+   
+   Jeśli Twój szablon ARM ustawi "enablePartitioning" na "true" dla określonej kolejki lub tematu, następnie go zostaną zignorowane przez brokera.
 
 ## <a name="faqs"></a>Często zadawane pytania
 

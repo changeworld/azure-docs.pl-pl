@@ -2,48 +2,42 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: functions
-author: craigshoemaker
+author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 09/25/2018
-ms.author: cshoe
+ms.date: 05/25/2019
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d62da82b4a4dd35532dd8776a9111689db469201
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182997"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448359"
 ---
-Pakiety rozszerzeń wprowadzić wszystkie powiązania opublikowane przez zespół usługi Azure Functions, dostępne za pośrednictwem ustawienie w *host.json* pliku. Dla wdrożenia lokalnego, upewnij się, masz najnowszą wersję [podstawowych narzędzi usługi Azure Functions](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools).
+## <a name="register-extensions"></a>Rejestrowanie rozszerzeń
 
-Aby użyć pakietów rozszerzeń, należy zaktualizować *host.json* pliku, aby uwzględnić następujący wpis dotyczący `extensionBundle`:
+Z wyjątkiem HTTP oraz czasomierzem wyzwalacze, funkcje powiązania w wersji środowiska uruchomieniowego 2.x są implementowane jako pakiety rozszerzeń. W wersji 2.x środowisko uruchomieniowe usługi Azure Functions, należy jawnie zarejestrować rozszerzenia dla typów powiązania, używany w funkcji. Wyjątki od tej reguły są powiązania protokołu HTTP i wyzwalaczy czasomierza, które nie wymagają rozszerzeń.
 
-```json
-{
-    "version": "2.0",
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[1.*, 2.0.0)"
-    }
-}
+Można zainstalować rozszerzenia powiązania indywidualnie lub można dodać odwołanie do pakietu rozszerzenia pliku host.json projektu. Pakiety rozszerzeń usuwa prawdopodobieństwo wystąpienia problemów ze zgodnością pakietu, korzystając z wieloma typami powiązania. Jest to zalecane podejście do rejestrowania rozszerzeń powiązania. Pakiety rozszerzeń również eliminuje konieczność zainstalowania platformy .NET Core 2.x SDK. 
+
+### <a name="extension-bundles"></a>pakiety rozszerzeń
+
+[!INCLUDE [Register extensions](functions-extension-bundles.md)]
+
+Aby dowiedzieć się więcej, zobacz [rejestrowania usługi Azure Functions powiązania rozszerzenia](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Należy dodać rozszerzenie pakiety do host.json przed dodaniem powiązań do pliku w pliku functions.json.
+
+### <a name="register-individual-extensions"></a>Zarejestruj poszczególne rozszerzenia
+
+Jeśli musisz zainstalować rozszerzenia, które nie znajdują się w pakiecie, możesz ręcznie zarejestrować rozszerzenia poszczególnych pakietów dla określonego powiązania. 
+
+> [!NOTE]
+> Aby ręcznie zarejestrować rozszerzenia za pomocą `func extensions install`, konieczne jest posiadanie platformy .NET Core 2.x zainstalowany zestaw SDK.
+
+Po zaktualizowaniu usługi *function.json* pliku, aby uwzględnić wszystkie powiązania, które wymaga funkcji, uruchom następujące polecenie w folderze projektu.
+
+```bash
+func extensions install
 ```
 
-- `id` Właściwości odwołuje się do przestrzeni nazw pakietów rozszerzeń usługi Microsoft Azure Functions.
-- `version` Odwołuje się do wersji pakietu.
-
-Inkrementacja wersje pakietu jako pakiety w zmianach pakietu. Wersja główna zmiany się zdarzyć, tylko wtedy, gdy pakiety w pakiecie przenosi wersję główną. `version` Używa właściwości [notacji interwału do określania zakresów wersji](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). Środowisko uruchomieniowe usługi Functions zawsze wybiera maksymalna wersja dopuszczalna definiowane przez zakres wersji lub przy określonym interwale.
-
-Gdy odwołujesz się pakiety rozszerzeń w projekcie, wszystkie powiązania domyślne są dostępne dla funkcji. Powiązania, które są dostępne w [pakietu rozszerzenia](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) są:
-
-|Pakiet  |Version  |
-|---------|---------|
-|Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0|
-|Microsoft.Azure.WebJobs.Extensions.EventGrid|2.0.0|
-|Microsoft.Azure.WebJobs.Extensions.EventHubs|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SendGrid|3.0.0|
-|Microsoft.Azure.WebJobs.Extensions.ServiceBus|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SignalRService|1.0.0|
-|Microsoft.Azure.WebJobs.Extensions.Storage|3.0.4|
-|Microsoft.Azure.WebJobs.Extensions.Twilio|3.0.0|
+Polecenie odczytuje *function.json* plik, aby wyświetlić pakiety, których potrzebujesz, instaluje je i ponownie kompiluje projekt rozszerzenia. Dodanie nowych powiązań w bieżącej wersji, ale nie aktualizuje istniejące powiązania. Użyj `--force` opcję, aby zaktualizować istniejące powiązania do najnowszej wersji, podczas instalowania nowych.

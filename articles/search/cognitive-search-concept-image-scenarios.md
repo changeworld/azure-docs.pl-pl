@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023746"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448447"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzanie i wyodrębnianie informacji z obrazów w scenariuszach wyszukiwania kognitywnego
 
@@ -30,7 +30,7 @@ Ten artykuł obejmuje przetwarzania bardziej szczegółowo obrazów i znajdują 
 
 W ramach łamania dokumentów istnieje nowy zestaw parametrów konfiguracji indeksatora do obsługi plików obrazów lub obrazów osadzonych w plikach. Te parametry są używane do normalizacji obrazy do dalszego przetwarzania transmisji dla klientów. Normalizowanie obrazów sprawia, że jest ich bardziej jednolite. Duże obrazy zmieniany jest rozmiar do maksymalnej wysokości i szerokości, aby były w użyciu. W przypadku obrazów udostępniające metadane dotyczące orientacji obracanie obrazów jest uwzględniany pionowy ładowania. Korekty metadane są przechwytywane w typie złożonym utworzone dla każdego obrazu. 
 
-Nie można wyłączyć normalizacji obrazu. Umiejętności, które przechodzą przez obrazów oczekiwać, że obrazy znormalizowana.
+Nie można wyłączyć normalizacji obrazu. Umiejętności, które przechodzą przez obrazów oczekiwać, że obrazy znormalizowana. Włączenie normalizacji obrazu w indeksatorze, wymaga, że zestawu umiejętności jest dołączony do ten indeksator.
 
 | Parametr konfiguracji | Opis |
 |--------------------|-------------|

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3820a5d7becef275ed3408f01cc53ad8590ba60e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2966f90dcb381e439c00a6540ef9a01bd24f8743
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272404"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561190"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -28,13 +28,13 @@ ms.locfileid: "67272404"
 
 *Losowo występują utraty danych.*
 
-* Sprawdź, jeśli występują utratę danych na [kanału danych Telemetrycznych](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost)
+* Sprawdź, jeśli występują utratę danych na [kanału danych Telemetrycznych](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)
 
 * Sprawdź, czy wszelkich znanych problemach w kanale danych Telemetrycznych [repozytorium Github](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)
 
 *Występują utraty danych w aplikacji konsoli lub aplikacji sieci Web, gdy aplikacja jest zatrzymana.*
 
-* Zestaw SDK kanału przechowuje dane telemetryczne w buforze i wysyła je w partiach. Jeśli dana aplikacja jest zamykana, konieczne może być jawnie wywołać [Flush()](api-custom-events-metrics.md#flushing-data). Zachowanie `Flush()` jest zależny od rzeczywistego [kanału](telemetry-channels.md#built-in-telemetrychannels) używane.
+* Zestaw SDK kanału przechowuje dane telemetryczne w buforze i wysyła je w partiach. Jeśli dana aplikacja jest zamykana, konieczne może być jawnie wywołać [Flush()](api-custom-events-metrics.md#flushing-data). Zachowanie `Flush()` jest zależny od rzeczywistego [kanału](telemetry-channels.md#built-in-telemetry-channels) używane.
 
 ## <a name="no-data-from-my-server"></a>Żadne dane z serwera
 *Po zainstalowaniu aplikacji na serwerze sieci web, a nie widzisz żadnych danych telemetrycznych z niego. Poszło OK na moim komputerze deweloperskim.*
@@ -215,7 +215,9 @@ Wykonaj te instrukcje, aby przechwycić dzienniki rozwiązywania problemów dla 
 
 ### <a name="net-core"></a>.NET Core
 
-1. Zainstaluj [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) pakietu NuGet. Wersję, którą należy zainstalować musi odpowiadać bieżącej zainstalowanej wersji programu `Microsoft.ApplicationInsights`
+1. Zainstaluj [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) pakietu NuGet. Wersję, którą należy zainstalować musi odpowiadać bieżącej zainstalowanej wersji programu `Microsoft.ApplicationInsights`
+
+Najnowsza wersja Microsoft.ApplicationInsights.AspNetCore jest 2.7.1 i odwołuje się do wersji 2.10 Microsoft.ApplicationInsights. Dlatego należy 2.10.0 wersję Microsoft.AspNet.ApplicationInsights.HostingStartup do zainstalowania
 
 2. Modyfikowanie `ConfigureServices` method in Class metoda swoje `Startup.cs` klasy.:
 

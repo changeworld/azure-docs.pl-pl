@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: d844b171ff99dc97e5d1107bcb745f9e8d5b3e9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aa2c72a01f1887ea9680f8d5706b825a49039a1
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519823"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561283"
 ---
 # <a name="scenario-availability"></a>Dostępność scenariusza
 
@@ -25,7 +25,7 @@ Zestaw SDK usługi mowy funkcji wiele scenariuszy w szerokiej gamy języków i �
   - Wszystkie języki programowania/środowiska w przypadku, gdy istnieje łącze strzałki <img src="media/index/link.jpg" height="15" width="15"></img> w tabeli szybkiego startu [tutaj](https://aka.ms/csspeech).
 - **Zamiana tekstu na mowę (TTS)**
   - C++/ Windows i Linux
-  - C#/Windows
+  - C#/ Windows, platformy uniwersalnej systemu Windows & aparatu Unity
   - Interfejs API REST TTS może służyć w każdej innej sytuacji.
 - **Wake Word (Keyword Spotter/KWS)**
   - C++/ Windows i Linux

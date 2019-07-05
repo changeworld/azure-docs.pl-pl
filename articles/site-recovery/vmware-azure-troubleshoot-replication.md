@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: 3221b2bd18b8b0756f280d88fffc6016d0498b8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924823"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491672"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Rozwiązywanie problemów z replikacją dla maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -77,6 +77,13 @@ W powyższym zapewnienie, że istnieją nie łączności, przepustowości lub cz
         - Usługa VSS
         - Dostawcy usługi VSS programu usługi Azure Site Recovery
         - Usługę VDS
+
+- Jeśli korzystasz z obciążeń bazy danych SQL lub programu Exchange, sprawdź dzienniki tych składników zapisywania aplikacji w przypadku niepowodzenia. Częste błędy i ich rozwiązania są przechwytywane w następujących artykułach:
+    -  [Opcja automatycznego zamykania bazy danych programu SQL Server jest ustawiona na wartość TRUE](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2, zostanie zgłoszony błąd niepowtarzający](https://support.microsoft.com/help/4504103)
+    - [Znany problem w programie SQL Server 2016 oraz 2017 r.](https://support.microsoft.com/help/4493364)
+    - [Typowy problem w przypadku programu Exchange serwerów 2013 i 2016](https://support.microsoft.com/help/4037535)
+
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>Maszyny źródłowe z dużą ilością zmian [błąd 78188]
 

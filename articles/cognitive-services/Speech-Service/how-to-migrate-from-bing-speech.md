@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33907437ab330278bdf7b023f6a93bd96e78cbad
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653720"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561335"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migracja z rozpoznawania mowy Bing do usługi rozpoznawania mowy
 
@@ -69,7 +69,7 @@ Protokoły WebSockets usług mowy, są również zgodne ze stosowanymi przez roz
 
 Jeśli używasz biblioteki klienta mowy Bing dla określonego języka programowania, migracja do [zestaw SDK rozpoznawania mowy](speech-sdk.md) wymaga wprowadzenia zmian w aplikacji, ponieważ różni się interfejsu API. Zestaw SDK rozpoznawania mowy, może uczynić kod prostsze, zapewniając również dostęp do nowych funkcji.
 
-Obecnie zestaw SDK rozpoznawania mowy obsługuje C# (Windows 10, platformy uniwersalnej systemu Windows, platformy .NET Standard), Java (urządzenia z systemem Android i niestandardowych), Objective C (iOS), języka C++ (Windows i Linux) i języka JavaScript. Interfejsy API na wszystkich platformach są podobne, ułatwianie programowanie dla wielu platform.
+Obecnie usługa obsługuje zestaw SDK rozpoznawania mowy C# ([tutaj szczegóły](https://aka.ms/csspeech)), Java (urządzenia z systemem Android, jak i niestandardowe), Objective C (iOS), C++ (Windows i Linux) i JavaScript. Interfejsy API na wszystkich platformach są podobne, ułatwianie programowanie dla wielu platform.
 
 Globalny punkt końcowy nie ma możliwości usług przetwarzania mowy. Określ, jeśli aplikacja działa wydajnie po używa pojedynczego punktu końcowego regionalne dla wszystkich jego ruchu. W przeciwnym razie użyj geolokacji, aby określić najbardziej efektywny sposób punktu końcowego. Konieczne jest oddzielną subskrypcję usług mowy w każdym z regionów, którego używasz.
 

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 49e0db690818e67f96f5bcefa4f581b1db6da451
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea7b38f509fcdaa4e41ce17db3beca44b05a59b2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697330"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514475"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -37,16 +37,16 @@ Tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w
 
 | Możliwości | Warstwa Podstawowa | Warstwa bezpłatna/Standard |
 | ---------- | ---------- | ------------- |
-| [Dane telemetryczne urządzenia do chmury](iot-hub-devguide-messaging.md) | Tak | Yes |
-| [Tożsamość na urządzenie](iot-hub-devguide-identity-registry.md) | Tak | Tak |
-| [Routing komunikatów](iot-hub-devguide-messages-read-custom.md) i [integracji usługi Event Grid](iot-hub-event-grid.md) | Tak | Yes |
-| [Protokoły HTTP, AMQP i MQTT](iot-hub-devguide-protocols.md) | Tak | Yes |
-| [Usługa Device Provisioning](../iot-dps/about-iot-dps.md) | Tak | Tak |
+| [Dane telemetryczne urządzenia do chmury](iot-hub-devguide-messaging.md) | Yes | Tak |
+| [Tożsamość na urządzenie](iot-hub-devguide-identity-registry.md) | Yes | Tak |
+| [Routing komunikatów](iot-hub-devguide-messages-read-custom.md) i [integracji usługi Event Grid](iot-hub-event-grid.md) | Tak | Tak |
+| [Protokoły HTTP, AMQP i MQTT](iot-hub-devguide-protocols.md) | Tak | Tak |
+| [Usługa Device Provisioning](../iot-dps/about-iot-dps.md) | Tak | Yes |
 | [Monitorowanie i Diagnostyka](iot-hub-monitor-resource-health.md) | Tak | Tak |
-| [Komunikaty z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Yes |
-| [Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md), [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md), i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Tak |
-| [Strumienie urządzenia (wersja zapoznawcza)](iot-hub-device-streams-overview.md) |   | Tak |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Tak |
+| [Komunikaty z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Tak |
+| [Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md), [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md), i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
+| [Strumienie urządzenia (wersja zapoznawcza)](iot-hub-device-streams-overview.md) |   | Yes |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
 
 Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Zawiera wszystkie funkcje warstwy standardowa, ale ograniczone limity obsługi komunikatów. Nie można uaktualnić z warstwy bezpłatna, podstawowa lub standardowa.
 
@@ -62,38 +62,40 @@ Po utworzeniu Centrum IoT hub, możesz uaktualnić z warstwy podstawowa do warst
 
 Konfiguracja partycji zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa.
 
+> [!NOTE]
+> W warstwie bezpłatna nie obsługuje uaktualniania do podstawowa lub standardowa.
+
 ## <a name="iot-hub-rest-apis"></a>Interfejsy API REST usługi IoT Hub
 
 Różnica w obsługiwanych możliwości między warstwami podstawowa i standardowa usługi IoT Hub oznacza, że niektóre wywołania interfejsu API nie będą działać z hubs w warstwie podstawowa. W poniższej tabeli przedstawiono, które interfejsy API są dostępne:
 
 | Interfejs API | Warstwa Podstawowa | Warstwa bezpłatna/Standard |
 | --- | ---------- | ------------- |
-| [Usuwanie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Yes | Tak |
-| [Pobieranie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Tak | Yes |
-| Usuń moduł | Tak | Tak |
-| Uzyskiwanie modułu | Yes | Tak |
+| [Usuwanie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Tak | Tak |
+| [Pobieranie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Tak | Tak |
+| [Usuń moduł](https://docs.microsoft.com/rest/api/iothub/service/deletemodule) | Tak | Tak |
+| [Uzyskiwanie modułu](https://docs.microsoft.com/rest/api/iothub/service/getmodule) | Yes | Tak |
 | [Zebranie statystyk, rejestru](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | Yes | Tak |
-| [Zebranie statystyk, usługi](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Yes | Tak |
-| [Utwórz lub zaktualizuj urządzenie](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Tak | Tak |
-| Umieść moduł | Tak | Tak |
-| [Query IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Tak | Tak |
-| Moduły zapytania | Yes | Tak |
-| [Tworzenie przekazywania plików identyfikatora URI połączenia SAS](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Yes | Tak |
+| [Zebranie statystyk, usługi](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Tak | Tak |
+| [Utwórz lub zaktualizuj urządzenie](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Yes | Tak |
+| [Utwórz lub zaktualizuj moduł](https://docs.microsoft.com/rest/api/iothub/service/createorupdatemodule) | Yes | Yes |
+| [Query IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Tak | Yes |
+| [Tworzenie przekazywania plików identyfikatora URI połączenia SAS](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Tak | Tak |
 | [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Tak | Yes |
 | [Wyślij zdarzenia urządzenia](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Tak | Yes |
-| Wysyłanie zdarzeń modułu | Tak | Yes |
-| [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Tak | Yes |
-| [Operacja urządzenia zbiorczego](/rest/api/iot-dps/runbulkenrollmentgroupoperation/runbulkenrollmentgroupoperation) | Tak, z wyjątkiem możliwości usługi IoT Edge | Tak | 
-| [Wyczyść kolejkę poleceń](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Tak |
+| Wysyłanie zdarzeń modułu | Protokół AMQP i tylko MQTT | Protokół AMQP i tylko MQTT |
+| [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Tak | Tak |
+| [Operacja urządzenia zbiorczego](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Tak, z wyjątkiem możliwości usługi IoT Edge | Yes |
+| [Wyczyść kolejkę poleceń](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Yes |
 | [Pobierz bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Yes |
-| Pobierz bliźniaczej reprezentacji modułu |   | Yes |
-| [Wywoływanie metody urządzenia](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | Yes |
-| [Zaktualizować bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Tak | 
-| Aktualizacji bliźniaczej reprezentacji modułu |   | Tak | 
+| [Pobierz bliźniaczej reprezentacji modułu](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Yes |
+| [Wywoływanie metody urządzenia](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | Tak |
+| [Zaktualizować bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Tak |
+| [Aktualizacji bliźniaczej reprezentacji modułu](https://docs.microsoft.com/rest/api/iothub/service/updatemoduletwin) |   | Tak |
 | [Porzuć powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Tak |
-| [Kompletne urządzenie powiązane powiadomień](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Tak |
+| [Kompletne urządzenie powiązane powiadomień](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
 | [Anulowanie zadania](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | Tak |
-| [Tworzenie zadania](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | Yes |
+| [Tworzenie zadania](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | Tak |
 | [Pobierz zadanie](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | Tak |
 | [Zapytanie zadania](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | Tak |
 

@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 579d50a95ad0e478f401b7db012e7c743ce58491
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a434101a806a810218927cbf0bc24fa0d22c5628
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730466"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488648"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane przy użyciu usługi Azure Notification Hubs: Często zadawane pytania
 
@@ -69,7 +69,7 @@ Zestawy SDK serwera są dostępne dla platformy .NET, Java, Node.js, PHP i Pytho
 
 ### <a name="which-client-platforms-do-you-support"></a>Platformach klienckich, które są obsługiwane?
 
-Powiadomienia wypychane są obsługiwane w przypadku [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android — Chiny (przy użyciu usługi Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) i Android, i [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Aby uzyskać więcej informacji, przejdź do [Samouczki wprowadzenie centra powiadomień] strony.
+Powiadomienia wypychane są obsługiwane w przypadku [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [(Android China przy użyciu usługi Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) i Android, i [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Aby uzyskać więcej informacji, przejdź do [Samouczki wprowadzenie centra powiadomień] strony.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Są obsługiwane wiadomość SMS, wiadomości e-mail lub powiadomienia w sieci web?
 
@@ -85,7 +85,7 @@ Jeśli masz istniejącego zaplecza aplikacji mobilnej, i chcesz dodać możliwo�
 
 Zapoznaj się [Cennik usługi Notification Hubs] strony szczegółowe informacje na temat liczby obsługiwanych urządzeń.
 
-Jeśli potrzebujesz pomocy w przypadku urządzeń zarejestrowanych ponad 10 milionów [skontaktuj się z nami](https://azure.microsoft.com/overview/contact-us/) bezpośrednio i możemy Ci pomóc skalować swoje rozwiązanie.
+Jeśli potrzebujesz pomocy technicznej dla zarejestrowanych urządzeń z ponad 10 milionów należy tworzyć partycje urządzeń w wielu centrach.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Jak wiele powiadomień wypychanych można wysłać?
 

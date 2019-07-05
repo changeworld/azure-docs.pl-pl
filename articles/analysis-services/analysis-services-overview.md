@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 443d6ca86f8ac40bd2df186fd189a333cb7b7425
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: ac27f3b1ea777e7a88a44a16edf8867f97381297
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416022"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508996"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -41,7 +41,7 @@ Usługa Azure Analysis Services jest dostępna w warstwach **Deweloper**, **Pods
 
 Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programowaniem i testowaniem. Pojedynczy plan uwzględnia wszystkie funkcje warstwy Standardowa, ale ma ograniczenia dotyczące mocy obliczeniowej, jednostek QPU i rozmiaru pamięci. Skalowanie repliki zapytania *jest niedostępne* w tej warstwie. W tej warstwie nie jest oferowana umowa SLA.
 
-|Plan  |Jednostki QPU  |Pamięć (GB)  |
+|Planowanie  |Jednostki QPU  |Pamięć (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
@@ -50,16 +50,16 @@ Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programow
 
 Warstwa polecana w przypadku rozwiązań produkcyjnych z niewielkimi modelami tabelarycznymi, ograniczoną współbieżnością użytkowników i prostymi wymaganiami dotyczącymi odświeżania danych. Skalowanie repliki zapytania *jest niedostępne* w tej warstwie. Perspektywy, wiele partycji ani funkcje modelu tabelarycznego DirectQuery *nie są obsługiwane* w tej warstwie.  
 
-|Plan  |Jednostki QPU  |Pamięć (GB)  |
+|Planowanie  |Jednostki QPU  |Pamięć (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    20     |
 
-### <a name="standard-tier"></a>Warstwa Standardowa
+### <a name="standard-tier"></a>Warstwa standardowa
 
 Ta warstwa jest najlepszym rozwiązaniem w przypadku aplikacji produkcyjnych o kluczowym znaczeniu, które wymagają elastycznej współbieżności użytkowników i korzystają z szybko rozrastających się modeli danych. Obsługuje ona zaawansowane odświeżanie danych dla aktualizacji modelu danych przeprowadzanych prawie w czasie rzeczywistym i obsługuje wszystkie tabelaryczne funkcje modelowania.
 
-|Plan  |Jednostki QPU  |Pamięć (GB)  |
+|Planowanie  |Jednostki QPU  |Pamięć (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -76,17 +76,17 @@ Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie
 
 ### <a name="americas"></a>Ameryki
 
-|Obszar  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
+|Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Brazylia Południowa     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada Środkowa    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
-|Wschodnie stany USA     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
+|East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Wschodnie stany USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Wschodnie stany USA 2     |     S8, S9   |    1    |
-|Północno-środkowe stany USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Środkowo-północne stany USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Południowo-środkowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Zachodnio-środkowe stany USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|Środkowo-południowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Środkowo-zachodnie stany USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Zachodnie stany USA     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |Zachodnie stany USA     |    S8, S9   |    2  |
 |Zachodnie stany USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
@@ -94,16 +94,16 @@ Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie
 
 ### <a name="europe"></a>Europa
 
-|Obszar  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
+|Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Europa Północna     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
-|Zjednoczone Królestwo (południe)     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Południowe Zjednoczone Królestwo     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa Zachodnia     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Europa Zachodnia    |   S8, S9  |  1  |
 
 ### <a name="asia-pacific"></a>Azja i Pacyfik 
 
-|Obszar  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
+|Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Australia Wschodnia     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Australia Wschodnia     |    S8, S9    |    1     |

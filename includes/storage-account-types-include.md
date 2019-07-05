@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d96e69fb526cff633c78e9ac8a1679762014cd4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 14de5283197778464993b80b312a690662e066ab
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133193"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443753"
 ---
 Usługa Azure Storage oferuje kilka typów kont magazynu. Każdy typ obsługuje różne funkcje i ma swój własny model cen. Przed utworzeniem konta magazynu, aby określić typ konta, które sprawdza się najlepiej w aplikacjach, należy wziąć pod uwagę te różnice. Dostępne są następujące typy kont magazynu:
 
 - **Konta ogólnego przeznaczenia v2**: Typ konta magazynu podstawowego dla obiektów blob, plików, kolejek i tabel. Zalecane w przypadku większości scenariuszy za pomocą usługi Azure Storage.
 - **Konta ogólnego przeznaczenia w wersji 1**: Typ konta starszej wersji dla obiektów blob, plików, kolejek i tabel. Zamiast tego użyj kont ogólnego przeznaczenia w wersji 2, gdy jest to możliwe.
 - **Blokowanie kont usługi blob storage**: Konta magazynu tylko dla obiektów blob o charakterystyki wydajności premium. Zalecane w przypadku scenariuszy z transakcji o wysokiej szybkości, przy użyciu obiektów mniejsze lub wymagających magazynu spójnie niskie opóźnienia.
-- **Konta usługi storage (wersja zapoznawcza) FileStorage**: Konta magazynu tylko do plików o charakterystyki wydajności premium. Zalecane w przypadku przedsiębiorstw lub o wysokiej wydajności aplikacji w skali.
+- **Konta magazynu FileStorage**: Konta magazynu tylko do plików o charakterystyki wydajności premium. Zalecane w przypadku przedsiębiorstw lub o wysokiej wydajności aplikacji w skali.
 - **Konta usługi blob storage**: Konta magazynu tylko dla obiektów blob. Zamiast tego użyj kont ogólnego przeznaczenia w wersji 2, gdy jest to możliwe.
 
 W poniższej tabeli opisano typy kont magazynu i ich funkcji:
@@ -30,7 +30,7 @@ W poniższej tabeli opisano typy kont magazynu i ich funkcji:
 | Ogólnego przeznaczenia w wersji 2   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Gorąca, chłodna, archiwum<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Zaszyfrowane              |
 | Ogólnego przeznaczenia w wersji 1   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | ND                            | LRS, GRS, RA-GRS                  | Klasyczna usługa Resource Manager    | Zaszyfrowane              |
 | Usługi Block blob storage   | Obiekt blob (blokowe obiekty BLOB i uzupełnialnych obiektów blob tylko) | Premium                       | ND                            | LRS                               | Resource Manager             | Zaszyfrowane              |
-| FileStorage (wersja zapoznawcza)   | Dozwolone są tylko pliki | Premium                       | ND                            | LRS                               | Resource Manager             | Zaszyfrowane              |
+| FileStorage   | Dozwolone są tylko pliki | Premium                       | ND                            | LRS                               | Resource Manager             | Zaszyfrowane              |
 | Blob Storage         | Obiekt blob (blokowe obiekty BLOB i uzupełnialnych obiektów blob tylko) | Standardowa (Standard)                      | Gorąca, chłodna, archiwum<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Zaszyfrowane              |
 
 <div id="deployment-model"><sup>1</sup>zaleca się użycie modelu wdrażania usługi Azure Resource Manager. W niektórych lokalizacjach, nadal można utworzyć konta magazynu przy użyciu klasycznego modelu wdrażania, a istniejące konta klasycznego w dalszym ciągu obsługiwana. Aby uzyskać więcej informacji, zobacz <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">usługi Azure Resource Manager a klasycznym wdrożeniu: Modele wdrażania i stanu zasobów</a>.</div>

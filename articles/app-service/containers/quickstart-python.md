@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: cephalin
-ms.openlocfilehash: b704e9074c8ef88d8fefd97f466884af952c46f8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e74c32226815fe799529084da75dbc196771dc53
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919608"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514540"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Python w usłudze Azure App Service w systemie Linux
 
@@ -101,7 +101,7 @@ Unpacking objects: 100% (43/43), done.
 Checking connectivity... done.
 ```
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 Przejdź do katalogu, który zawiera przykładowy kod, i uruchom polecenie `az webapp up`.
 
@@ -170,7 +170,7 @@ return "Hello Azure!"
 
 Zapisz zmiany i zamknij edytor. Użyj polecenia `^S` w celu zapisania i polecenia `^Q` w celu zamknięcia programu.
 
-Ponowne wdrażanie aplikacji za pomocą [ `az webapp up` ](/cli/azure/ext/webapp/webapp?view=azure-cli-latest.md#ext-webapp-az-webapp-up) polecenia. Wstaw nazwę aplikacji `<app-name>`i określ lokalizację `<location-name>` (przy użyciu jednej z wartości podanych w [ `az account list-locations` ](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) polecenie).
+Ponowne wdrażanie aplikacji za pomocą [ `az webapp up` ](/cli/azure/webapp#az-webapp-up) polecenia. Wstaw nazwę aplikacji `<app-name>`i określ lokalizację `<location-name>` (przy użyciu jednej z wartości podanych w [ `az account list-locations` ](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) polecenie).
 
 ```bash
 az webapp up -n <app-name> -l <location-name>

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979545"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428756"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -72,6 +72,10 @@ Wszystkie przykłady usługi Azure Policy znajdują się na [przykładów usług
 
 ## <a name="mode"></a>Tryb
 
+**Tryb** jest skonfigurowane zależności, jeśli zasady jest przeznaczony dla właściwości usługi Azure Resource Manager lub właściwość dostawcy zasobów.
+
+### <a name="resource-manager-modes"></a>Tryby usługi Resource Manager
+
 **Tryb** określa typów zasobów, które zostanie obliczone dla zasad. Obsługiwane metody to:
 
 - `all`: oceny grupy zasobów i wszystkie typy zasobów
@@ -80,6 +84,13 @@ Wszystkie przykłady usługi Azure Policy znajdują się na [przykładów usług
 Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasad, została utworzona za pośrednictwem portalu użycia `all` trybu. Jeśli używasz programu PowerShell lub wiersza polecenia platformy Azure, możesz określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartości, jego wartość domyślna to `all` w programie Azure PowerShell i do `null` w interfejsie wiersza polecenia platformy Azure. A `null` tryb jest taki sam, jak przy użyciu `indexed` do zapewnienia obsługi zgodności.
 
 `indexed` należy używać podczas tworzenia zasad, które wymuszają tagów lub lokalizacji. Chociaż nie jest to wymagane, zapobiega zasoby, które nie obsługują tagów i lokalizacji wyświetlane jako niezgodne w wyniki sprawdzania zgodności. Wyjątek stanowi **grup zasobów**. Należy ustawić zasady, które wymuszają lokalizacji lub tagów w grupie zasobów **tryb** do `all` i docelowy specjalnie `Microsoft.Resources/subscriptions/resourceGroups` typu. Aby uzyskać przykład, zobacz [wymusić tagi z grupy zasobów](../samples/enforce-tag-rg.md). Aby uzyskać listę zasobów, które obsługują tagów, zobacz [obsługę dla zasobów platformy Azure tagów](../../../azure-resource-manager/tag-support.md).
+
+### <a name="resource-provider-modes"></a>Tryby dostawcy zasobów
+
+Tylko tryb dostawca zasobów obecnie obsługiwane jest `Microsoft.ContainerService.Data` zarządzania zasad kontrolera przyjęcia na [usługi Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Usługa Azure Policy dla rozwiązania Kubernetes](rego-for-aks.md) w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
 
 ## <a name="parameters"></a>Parametry
 
@@ -389,6 +400,7 @@ Usługa Azure Policy obsługuje następujące typy wpływu:
 - **AuditIfNotExists**: umożliwia inspekcję, jeśli zasób nie istnieje.
 - **DeployIfNotExists**: wdraża zasobu, jeśli jeszcze nie istnieje.
 - **Wyłączone**: nie szacuje zasoby pod kątem zgodności z regułą zasad
+- **EnforceRegoPolicy**: konfiguruje kontrolera przyjęć odpowiadające ilości Otwórz agenta zasad w usłudze Azure Kubernetes Service (wersja zapoznawcza)
 
 Aby uzyskać **Dołącz**, należy podać następujące informacje:
 

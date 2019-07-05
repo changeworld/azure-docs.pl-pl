@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 05/06/2019
-ms.openlocfilehash: 520dba611e6791fca990e21173424a914c3d8e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: e9d1ce3bcd3bf958be0a7837e8416300af03f5a2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693337"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449750"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Można wybrać jedną z warstwy usługi (rdzeń wirtualny), a następnie przeprowadzenie migracji z warstwy usługi jednostki DTU
 
@@ -28,6 +28,8 @@ Rdzeń wirtualny (rdzeń wirtualny) — model zakupu w oparciu o pozwala niezale
 
 4\. generacji sprzętu oferuje znacznie więcej pamięci na rdzeń wirtualny. 5\. generacji sprzętu pozwala jednak skalować zasoby obliczeniowe, które znacznie wyższa.
 
+> [!IMPORTANT]
+> Nowe bazy danych z 4. generacji nie są już obsługiwane w regionie AustraliaEast.
 > [!NOTE]
 > Aby uzyskać informacji na temat warstwy usług oparte na jednostkach DTU, zobacz [warstwy modelu zakupu opartego na jednostkach DTU usług](sql-database-service-tiers-dtu.md). Aby uzyskać informacje o różnicach między warstwy usług dla opartego na jednostkach DTU, jak i w modelu zakupu opartego na rdzeniach wirtualnych, zobacz [usługi Azure SQL Database, zakup modeli](sql-database-purchase-models.md).
 

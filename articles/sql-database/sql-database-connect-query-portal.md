@@ -8,17 +8,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: AyoOlubeko
-ms.author: ayolubek
+author: Ninarn
+ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/12/2019
-ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/28/2019
+ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409068"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508759"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Szybki start: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane
 
@@ -32,14 +32,14 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
   || Pojedyncza baza danych |
   |:--- |:--- |
-  | Przycisk Utwórz| [Portal](sql-database-single-database-get-started.md) | 
-  || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | 
-  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
-  | Konfigurowanie | [Reguła zapory IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| 
+  | Przycisk Utwórz| [Portal](sql-database-single-database-get-started.md) |
+  || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) |
+  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
+  | Konfigurowanie | [Reguła zapory IP na poziomie serwera](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]
-> Upewnij się, że opcja **Zezwalaj na dostęp do usług platformy Azure** w ustawieniach zapory serwera SQL jest ustawiona na **WŁ.**. Ta opcja zapewnia edytorowi zapytań SQL dostęp do Twoich baz danych i magazynów danych.
+> Edytor zapytań używa porty 443 i 1443 do komunikacji.  Upewnij się, że włączono wychodzący ruch protokołu HTTPS w tych portach. Należy również dodać adres IP ruchu wychodzącego do reguł zapory dozwolonych serwera dostępu do baz danych i magazyny danych.
 
 ## <a name="sign-in-the-azure-portal"></a>Logowanie w witrynie Azure Portal
 
@@ -49,13 +49,13 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Wybierz pozycję **Bazy danych SQL** z menu po lewej stronie, a następnie pozycję **mySampleDatabase**.
 
-2. W menu po lewej stronie wybierz pozycję **Edytor zapytań (wersja zapoznawcza)**. Zostanie wyświetlona strona **Logowanie**.
+2. W menu po lewej stronie wybierz pozycję **Edytor zapytań (wersja zapoznawcza)** . Zostanie wyświetlona strona **Logowanie**.
 
     ![znajdowanie edytora zapytań](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
 3. Z menu rozwijanego **Typ uwierzytelniania** wybierz pozycję **Uwierzytelnianie programu SQL Server** i wprowadź identyfikator użytkownika oraz hasło do konta administratora serwera, którego użyto do utworzenia bazy danych.
 
-    ![logowanie](./media/sql-database-connect-query-portal/login-menu.png) 
+    ![logowanie](./media/sql-database-connect-query-portal/login-menu.png)
 
 4. Kliknij przycisk **OK**.
 
@@ -78,8 +78,8 @@ Skonfigurowanie administratora usługi Active Directory (AD) umożliwia korzysta
 
 4. Na pasku narzędzi strony administratora usługi AD wybierz pozycję **Zapisz**.
 
-5. Przejdź do bazy danych **mySampleDatabase**, a następnie z menu po lewej stronie wybierz pozycję **Edytor zapytań (wersja zapoznawcza)**. Zostanie wyświetlona strona **Logowanie**. Jeśli jesteś administratorem usługi AD, po prawej stronie w obszarze **Logowanie jednokrotne usługi Active Directory** zostanie wyświetlony komunikat informujący, że użytkownik został zalogowany. 
-   
+5. Przejdź do bazy danych **mySampleDatabase**, a następnie z menu po lewej stronie wybierz pozycję **Edytor zapytań (wersja zapoznawcza)** . Zostanie wyświetlona strona **Logowanie**. Jeśli jesteś administratorem usługi AD, po prawej stronie w obszarze **Logowanie jednokrotne usługi Active Directory** zostanie wyświetlony komunikat informujący, że użytkownik został zalogowany.
+
 6. Kliknij przycisk **OK**.
 
 
@@ -160,7 +160,7 @@ Uruchom następującą instrukcję [DELETE](https://msdn.microsoft.com/library/m
 
 Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań.
 
-* Przy użyciu edytora zapytań nie można wykonywać zapytań dotyczących baz danych serwera SQL w sieci wirtualnej.
+* Edytor zapytań używa porty 443 i 1443 do komunikacji.  Upewnij się, że włączono wychodzący ruch protokołu HTTPS w tych portach. Należy również dodać adres IP ruchu wychodzącego do reguł zapory dozwolonych serwera dostępu do baz danych i magazyny danych.
 
 * Naciśnięcie klawisza F5 powoduje odświeżenie strony edytora i utratę tworzonego zapytania.
 

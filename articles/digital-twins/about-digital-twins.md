@@ -3,31 +3,30 @@ title: Omówienie usługi Azure Digital Twins | Microsoft Docs
 description: Dowiedz się więcej o usłudze Azure Digital Twins, rozwiązaniu IoT platformy Azure do analizy przestrzennej.
 author: julieseto
 ms.author: jseto
-ms.date: 12/14/2018
+ms.date: 05/31/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 41a6b040c04c3a212a7ee89897b29f5ec96048d7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0bbbb924cace93e44af84fd96926a2d7153dd5f8
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072190"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459022"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Omówienie usługi Azure Digital Twins
 
-Azure Digital Twins to usługa IoT platformy Azure, która umożliwia tworzenie kompleksowych modeli środowiska fizycznego. Umożliwia ona tworzenie grafów analizy przestrzennej do modelowania relacji i interakcji między osobami, obszarami i urządzeniami.
+Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza) jest usługą Azure IoT, która tworzy kompleksowy modele środowiska fizycznego. Umożliwia ona tworzenie grafów analizy przestrzennej do modelowania relacji i interakcji między osobami, obszarami i urządzeniami.
 
-Usługa Azure Digital Twins pozwala na wykonywanie zapytań o dane z obszaru fizycznego, zamiast z wielu różnorodnych czujników. Ta usługa pomaga w konstruowaniu środowisk wielokrotnego użytku o wysokim stopniu skalowalności, rozpoznających przestrzeń, które łączą dane przesyłane strumieniowo z cyfrowego i fizycznego świata. Twoje aplikacje są rozszerzone o te wyjątkowo dobrze dobrane funkcje kontekstowe. Usługi Azure Digital Twins można używać do realizacji następujących zadań:
+Usługa Azure Digital Twins pozwala na wykonywanie zapytań o dane z obszaru fizycznego, zamiast z wielu różnorodnych czujników. Ta usługa pomaga w konstruowaniu środowisk wielokrotnego użytku o wysokim stopniu skalowalności, rozpoznających przestrzeń, które łączą dane przesyłane strumieniowo z cyfrowego i fizycznego świata. Twoje aplikacje są rozszerzone o te wyjątkowo dobrze dobrane funkcje kontekstowe. 
+
+Twins cyfrowych platformy Azure ma zastosowanie do wszystkich typów środowisk, takich jak magazyny, oddziałów, szkoły, szpitale i banki. Można jej używać nawet w przypadku stadionów, fabryk, parkingów, parków, sieci inteligentnych i miast. Poniżej przedstawiono kilka scenariuszy, w którym Twins cyfrowych platformy Azure mogą być pomocne:
 
 - Przewidywanie potrzeb związanych z konserwacją w fabryce.
 - Analizowanie wymagań energetycznych w czasie rzeczywistym dla sieci elektrycznej.
 - Optymalizowanie użycia dostępnej przestrzeni w biurze.
-
-Usługa Azure Digital Twins ma zastosowanie do wszystkich typów środowisk. Na przykład do magazynów, biur, szkół, szpitali i banków. Można jej używać nawet w przypadku stadionów, fabryk, parkingów, parków, sieci inteligentnych i miast. Usługi Azure Digital Twins można używać w następujących scenariuszach:
-
 - Śledzenie dziennych temperatur w kilku województwach.
 - Monitorowanie złożonych ścieżek dronów.
 - Identyfikowanie pojazdów autonomicznych.
@@ -46,15 +45,15 @@ Usługa Azure Digital Twins oferuje następujące kluczowe możliwości.
 
 ### <a name="spatial-intelligence-graph"></a>Wykres analizy przestrzennej
 
-[*Graf analizy przestrzennej*](./concepts-objectmodel-spatialgraph.md) lub inaczej *graf przestrzenny* jest wirtualną reprezentacją środowiska fizycznego. Umożliwia on modelowanie relacji między osobami, miejscami i urządzeniami.
+[*Graf analizy przestrzennej*](./concepts-objectmodel-spatialgraph.md#graph) lub inaczej *graf przestrzenny* jest wirtualną reprezentacją środowiska fizycznego. Umożliwia on modelowanie relacji między osobami, miejscami i urządzeniami.
 
 Wyobraź sobie inteligentną aplikację narzędziową, która obejmuje kilka mierników użycia energii elektrycznej rozmieszczonych na pewnym obszarze. Firma zapewniająca inteligentne usługi komunalne musi precyzyjnie monitorować i przewidywać użycie energii elektrycznej oraz rozliczenia. Każde urządzenie i czujnik musi być modelowany za pomocą kontekstu dotyczącego lokalizacji i klienta, który będzie rozliczany. Graf analizy przestrzennej umożliwia modelowanie złożonych relacji tego rodzaju.
 
 ### <a name="digital-twin-object-models"></a>Cyfrowe modele obiektów bliźniaczych
 
-[Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Są one dostosowane do wymagań specyficznych dla danego obszaru, które przyspieszają i upraszczają tworzenie rozwiązań.
+[Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md#model) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Są one dostosowane do wymagań specyficznych dla danego obszaru, które przyspieszają i upraszczają tworzenie rozwiązań.
 
-Na przykład aplikacja dotycząca zajętości pomieszczeń może korzystać z wstępnie zdefiniowanych typów obszarów, takich jak kampus, budynek, piętro, pokój itd.
+Na przykład aplikacja zajmowania miejsca może użyć miejsca wstępnie zdefiniowanych typów, takich jak campus, budynek, piętro i miejsca.
 
 ### <a name="multiple-and-nested-tenants"></a>Wiele dzierżaw i dzierżawy zagnieżdżone
 

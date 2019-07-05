@@ -3,7 +3,7 @@ title: Dodawanie uwierzytelniania do aplikacji platformy uniwersalnej Windows (U
 description: 'Dowiedz się, jak uwierzytelniać użytkowników aplikacji platformy uniwersalnej Windows (UWP) przy użyciu wielu dostawców tożsamości, w tym za pomocą usługi Azure App Service Mobile Apps: Usługi AAD, Google, Facebook, Twitter i Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: panarasi
 editor: ''
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
-ms.author: panarasi
-ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9a3a6a8d063836094c1285a5ab4c17ee403fc347
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128002"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440236"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Dodawanie uwierzytelniania do aplikacji Windows
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
+> [!NOTE]
+> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-users) już dziś.
+>
+
+## <a name="overview"></a>Przegląd
 W tym temacie dowiesz się, jak dodać uwierzytelnianie oparte na chmurze do aplikacji mobilnej. W tym samouczku dodasz uwierzytelnianie do projektu quickstart uniwersalnej platformy Windows (UWP) dla aplikacji mobilnych za pomocą dostawcy tożsamości, która jest obsługiwana przez usługę Azure App Service. Po pomyślnym jest uwierzytelniony i autoryzowany przez zaplecze aplikacji mobilnej, jest wyświetlana wartość Identyfikatora użytkownika.
 
 Ten samouczek opiera się na szybki start Mobile Apps. Najpierw musisz zakończyć samouczka [Rozpoczynanie pracy z usługą Mobile Apps](app-service-mobile-windows-store-dotnet-get-started.md).

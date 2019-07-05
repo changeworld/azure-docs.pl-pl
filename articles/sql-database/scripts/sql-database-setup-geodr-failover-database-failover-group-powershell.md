@@ -1,6 +1,6 @@
 ---
-title: Przykład programu PowerShell — grupa trybu failover — pojedyncza baza danych Azure SQL Database | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell do konfigurowania grupy trybu failover aktywnej replikacji geograficznej dla pojedynczej bazy danych w usłudze Azure SQL Database i przełączania jej w tryb failover.
+title: Programu PowerShell przykład aktywna replikacja geograficzna — pojedynczej bazy danych Azure SQL Database | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt programu Azure PowerShell do konfigurowania aktywnej replikacji geograficznej dla pojedynczej bazy danych w usłudze Azure SQL Database i przełączania jej w tryb failover.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,14 +12,14 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a90753d075f7f4db9dbae95fde979d471db3247c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1733e117c2a5b0d58e37c3f5af451f949bd253f9
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729193"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561487"
 ---
-# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>Konfigurowanie grupy trybu failover aktywnej replikacji geograficznej dla pojedynczej bazy danych w usłudze Azure SQL Database przy użyciu programu PowerShell
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Konfigurowanie aktywnej replikacji geograficznej dla pojedynczej bazy danych w usłudze Azure SQL Database przy użyciu programu PowerShell
 
 Ten przykładowy skrypt programu PowerShell umożliwia skonfigurowanie grupy trybu failover aktywnej replikacji geograficznej dla pojedynczej bazy danych i przełączenie jej w tryb failover do repliki pomocniczej bazy danych.
 

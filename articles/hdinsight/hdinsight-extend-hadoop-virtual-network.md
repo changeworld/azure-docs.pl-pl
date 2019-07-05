@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0dbcc99850d0a8b3b7306fac2bd8f89e6c941e4c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163655"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543679"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -67,9 +67,7 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowe HDInsight do i
 
     Gdy dołączony, HDInsight, zainstalowane w sieci usługi Resource Manager mogą wchodzić w interakcje z zasobami w klasycznej sieci.
 
-2. Używasz wymuszone tunelowanie? Wymuszone tunelowanie ma ustawienia podsieci, która wymusza ruch wychodzący z Internetu na urządzeniu w celu przeprowadzenia inspekcji i rejestrowania. HDInsight nie obsługuje wymuszonym tunelowaniem. Usuń, wymuszonego tunelowania przed wdrożeniem HDInsight na istniejącą podsieć lub Utwórz nową podsieć z nie wymuszonego tunelowania dla HDInsight.
-
-3. Czy używasz sieciowych grup zabezpieczeń, trasy zdefiniowane przez użytkownika lub wirtualnych urządzeń sieciowych do ograniczania ruchu do lub z sieci wirtualnej?
+2. Czy używasz sieciowych grup zabezpieczeń, trasy zdefiniowane przez użytkownika lub wirtualnych urządzeń sieciowych do ograniczania ruchu do lub z sieci wirtualnej?
 
     Jako usługa zarządzana HDInsight wymaga nieograniczony dostęp do wielu adresów IP w centrum danych platformy Azure. Aby umożliwić komunikację z tych adresów IP, zaktualizuj istniejących grup zabezpieczeń sieci ani trasy zdefiniowane przez użytkownika.
     
@@ -108,7 +106,7 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowe HDInsight do i
 
         Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z trasami](../virtual-network/diagnose-network-routing-problem.md) dokumentu.
 
-4. Tworzenie klastra usługi HDInsight, a następnie wybierz sieć wirtualną platformy Azure podczas konfiguracji. Aby zrozumieć ten proces tworzenia klastra, wykonaj kroki w następujących dokumentach:
+3. Tworzenie klastra usługi HDInsight, a następnie wybierz sieć wirtualną platformy Azure podczas konfiguracji. Aby zrozumieć ten proces tworzenia klastra, wykonaj kroki w następujących dokumentach:
 
     * [Create HDInsight using the Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) (Tworzenie klastrów usługi HDInsight za pomocą usługi Azure Portal)
     * [Create HDInsight using Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) (Tworzenie klastrów usługi HDInsight przy użyciu programu Azure PowerShell)
@@ -247,14 +245,14 @@ Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu
 
 ## <a id="hdinsight-ip"></a> Wymaganych adresów IP
 
-> [!IMPORTANT]  
-> Zarządzania i kondycji usług platformy Azure musi być w stanie nawiązać połączenia z usługą HDInsight. Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika, należy zezwalać na ruch z adresów IP dla tych usług do osiągnięcia HDInsight.
->
+Użycie opcji sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do kontroli ruchu, muszą zezwalać na ruch z adresów IP dla usług kondycji i zarządzania platformy Azure, aby mogły komunikować się z klastrem usługi HDInsight. Niektóre adresy IP są od regionu, a niektóre z nich dotyczą wszystkich regionach platformy Azure. Może być konieczne także zezwolić na ruch z usługi Azure DNS, jeśli nie używasz niestandardowe DNS. Musisz również zezwolić na ruch między maszynami wirtualnymi w tej podsieci. Aby znaleźć adresy IP, które muszą być dozwolone, wykonaj następujące kroki:
+
+> [!Note]  
 > Jeśli nie używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do kontroli ruchu, możesz zignorować tę sekcję.
 
-Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kondycji i zarządzania platformy Azure do osiągnięcia klastry HDInsight na porcie 443. Musisz również zezwolić na ruch między maszynami wirtualnymi w tej podsieci. Aby znaleźć adresy IP, które muszą być dozwolone, wykonaj następujące kroki:
+1. Jeśli używasz usługi DNS platformy Azure, należy zezwolić na dostęp z __168.63.129.16__ przez port 53. Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i ról wystąpień](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu. Jeśli używasz niestandardowego DNS, Pomiń ten krok.
 
-1. Zawsze muszą zezwalać na ruch z następujących adresów IP:
+2. Zezwalaj na ruch z następujących adresów IP dla usług platformy Azure kondycji i zarządzania, które mają zastosowanie do wszystkich regionów platformy Azure:
 
     | Źródłowy adres IP | Miejsce docelowe  | Direction |
     | ---- | ----- | ----- |
@@ -263,12 +261,12 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
     | 168.61.48.131 | \*:443 | Przychodzący |
     | 138.91.141.162 | \*:443 | Przychodzący |
 
-2. W przypadku klastra usługi HDInsight w jednym z następujących regionów, muszą zezwalać na ruch z adresów IP dla regionu na liście:
+3. Zezwalaj na ruch z adresów IP wymienionych dla usług kondycji i zarządzania platformy Azure w określonym regionie, gdzie znajdują się Twoje zasoby:
 
     > [!IMPORTANT]  
     > Jeśli region platformy Azure, którego używasz, nie jest wymieniony, następnie używać tylko cztery adresy IP z kroku 1.
 
-    | Kraj | Region | Dozwolone adresy IP źródła | Dozwolone docelowego | Direction |
+    | Country | Region | Dozwolone adresy IP źródła | Dozwolone docelowego | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | Azja | Azja Wschodnia | 23.102.235.122</br>52.175.38.134 | \*:443 | Przychodzący |
     | &nbsp; | Azja Południowo-Wschodnia | 13.76.245.160</br>13.76.136.249 | \*:443 | Przychodzący |
@@ -296,15 +294,13 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
     | Zjednoczone Królestwo | Zachodnie Zjednoczone Królestwo | 51.141.13.110</br>51.141.7.20 | \*:443 | Przychodzący |
     | &nbsp; | Południowe Zjednoczone Królestwo | 51.140.47.39</br>51.140.52.16 | \*:443 | Przychodzący |
     | Stany Zjednoczone | Środkowe stany USA | 13.89.171.122</br>13.89.171.124 | \*:443 | Przychodzący |
-    | &nbsp; | Wschodnie stany USA | 13.82.225.233</br>40.71.175.99 | \*:443 | Przychodzący |
+    | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Przychodzący |
     | &nbsp; | Środkowo-północne stany USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Przychodzący |
     | &nbsp; | Środkowo-zachodnie stany USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Przychodzący |
     | &nbsp; | Zachodnie stany USA | 13.64.254.98</br>23.101.196.19 | \*:443 | Przychodzący |
     | &nbsp; | Zachodnie stany USA 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Przychodzący |
 
     Aby uzyskać informacji na temat adresów IP do użycia dla platformy Azure Government, zobacz [platformy Azure dla instytucji rządowych w rozwiązania inteligentne + analiza](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentu.
-
-3. Należy także zezwolić na dostęp z __168.63.129.16__. Ten adres jest Azure cyklicznego programu rozpoznawania nazw. Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i ról wystąpień](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
 Aby uzyskać więcej informacji, zobacz [kontrolowanie ruchu sieciowego](#networktraffic) sekcji.
 

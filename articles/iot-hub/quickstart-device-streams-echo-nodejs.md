@@ -1,21 +1,20 @@
 ---
 title: Przekazywać aplikacji urządzenia w środowisku Node.js za pomocą strumieni urządzenia usługi IoT Hub (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: W tym przewodniku Szybki start uruchomisz aplikację Node.js po stronie usługi, która komunikuje się z urządzeniem IoT za pomocą strumienia urządzenia.
-author: rezasherafat
-manager: briz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
-ms.author: rezas
-ms.openlocfilehash: d9d083569d648b2bd22438f295a640b4e8d03b77
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.author: robinsh
+ms.openlocfilehash: 74a9e5e6be326bf9cef3dc6d26594b80491deb3e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733247"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446064"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Szybki start: komunikacja z aplikacją urządzenia w środowisku Node.js za pomocą strumieni urządzeń usługi IoT Hub (wersja zapoznawcza)
 

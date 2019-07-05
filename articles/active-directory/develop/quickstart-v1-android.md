@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a05d8b9182451fc52dd1860dac1dcce57ba2c55
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121993"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482656"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -45,7 +45,7 @@ Aby rozpocząć pracę, konieczna jest dzierżawa usługi Azure AD, w której mo
 
 ## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Scenariusz: logowanie użytkowników i wywoływanie programu Microsoft Graph
 
-![Topologia](./media/quickstart-v1-android/active-directory-android-topology.png)
+![Pokazuje usługi Azure AD i topologii dla systemu Android](./media/quickstart-v1-android/active-directory-android-topology.png)
 
 Możesz używać tej aplikacji w przypadku wszystkich kont usługi Azure AD. Obsługiwane są zarówno scenariusze z jedną dzierżawą, jak i wieloma dzierżawami (odpowiednie informacje znajdują się w poszczególnych krokach). Pokazano tu, w jaki sposób można tworzyć aplikacje, które będą nawiązywały połączenie z użytkownikami firmowymi i uzyskiwały dostęp do danych platformy Azure oraz usługi O365 za pośrednictwem programu Microsoft Graph. Podczas przepływu autoryzacji użytkownicy końcowi będą musieli zalogować się i wyrazić zgodę na udzielenie uprawnień aplikacji, a w niektórych przypadkach to administrator będzie musiał wyrazić zgodę na aplikację. Większość logiki w tym przykładzie pokazuje, w jaki sposób autoryzować użytkownika końcowego i wykonać proste wywołanie do programu Microsoft Graph.
 

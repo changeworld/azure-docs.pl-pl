@@ -10,78 +10,58 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 06/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 876f24581badb20e01271f88cb9b51b470718721
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 899bcffaf3a54bd541d488f99c35ec6721d751ca
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164539"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543990"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja dla interfejsu API usługi Azure czas serii szczegółowych informacji
 
-W tym artykule opisano sposób konfigurowania uwierzytelniania i autoryzacji używany w niestandardowych aplikacji, która wywołuje interfejs API Azure czas serii szczegółowych informacji.
-
-> [!TIP]
-> Przeczytaj o [udzielanie dostępu do danych](./time-series-insights-data-access.md) do środowiska usługi Time Series Insights w usłudze Azure Active Directory.
+W tym dokumencie opisano, jak zarejestrować aplikację w usłudze Azure Active Directory przy użyciu nowego bloku Azure Active Directory. Aplikacje zarejestrowane w usłudze Azure Active Directory pozwalają użytkownikom na uwierzytelnianie i być autoryzowane do używania interfejsu API platformy Azure czas serii Insight skojarzony ze środowiskiem usługi Time Series Insights.
 
 ## <a name="service-principal"></a>Nazwa główna usługi
 
-Poniżej opisano sposób konfigurowania aplikacji dostęp do interfejsu API usługi Insights serii czasu dla aplikacji. Aplikację można następnie zapytania lub publikować dane referencyjne w środowisku usługi Time Series Insights przy użyciu poświadczeń aplikacji, a nie poświadczeń użytkownika.
+Poniżej opisano sposób konfigurowania aplikacji na dostęp do interfejsu API usługi Insights serii czasu imieniu aplikacji. Aplikacja może, a następnie wysyłać zapytania lub publikować dane referencyjne w środowisku usługi Time Series Insights przy użyciu poświadczeń własnej aplikacji, za pomocą usługi Azure Active Directory.
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="summary-and-best-practices"></a>Podsumowanie i najlepszych rozwiązań
 
-Jeśli masz aplikację, która musi czas dostępu Series Insights:
+Przepływu rejestracji aplikacji w usłudze Azure Active Directory obejmuje trzy główne kroki.
 
-1. Konfigurowanie aplikacji usługi Azure Active Directory.
-1. [Przypisz zasady dostępu do danych](./time-series-insights-data-access.md) w środowisku usługi Time Series Insights.
+1. [Rejestrowanie aplikacji](#azure-active-directory-app-registration) w usłudze Azure Active Directory.
+1. Autoryzuj aplikację, aby [dostęp do danych do środowiska usługi Time Series Insights](#granting-data-access).
+1. Użyj **identyfikator aplikacji** i **klucz tajny klienta** do pobrania tokenu z `https://api.timeseries.azure.com/` w swojej [aplikację kliencką](#client-app-initialization). Tokenu można następnie wywołać interfejs API usługi Insights serii czasu.
 
-Przy użyciu poświadczeń aplikacji, a nie poświadczeń użytkownika jest pożądane, ponieważ:
+Na **kroku 3**, oddzielając poświadczeń użytkownika i aplikacji umożliwia:
 
-* Możesz przypisywać uprawnienia do tożsamości aplikacji, które różnią się od własnych uprawnień. Zazwyczaj te uprawnienia są ograniczone do tylko co wymaga aplikacja. Na przykład można zezwolić aplikacji na odczytywanie tylko dane w konkretnym środowisku usługi Time Series Insights.
-* Nie trzeba zmienić poświadczenia aplikacji, w przypadku zmiany Twoje obowiązki.
-* Aby zautomatyzować uwierzytelniania, po uruchomieniu skryptu instalacji nienadzorowanej, można użyć certyfikatu lub klucza aplikacji.
+* Przypisywanie uprawnień do tożsamości aplikacji, które różnią się od własnych uprawnień. Zazwyczaj te uprawnienia są ograniczone do tylko co wymaga aplikacja. Na przykład można zezwolić aplikacji na odczytywanie danych tylko z określonym środowiskiem usługi Time Series Insights.
+* Izolowanie aplikacji zabezpieczenia od tworzenia użytkownika poświadczeń uwierzytelniania przy użyciu **klucz tajny klienta** lub certyfikatu zabezpieczeń. W rezultacie poświadczenia aplikacji nie są zależne od poświadczeń określonego użytkownika. Jeśli zmieni się rolę użytkownika, aplikacja nie wymaga nowych poświadczeń lub dalszej konfiguracji. Jeśli użytkownik zmieni swoje hasło, dostęp do aplikacji nie wymaga nowych poświadczeń ani kluczy.
+* Uruchamianie skryptu instalacji nienadzorowanej przy użyciu **klucz tajny klienta** lub certyfikatu zabezpieczeń, zamiast poświadczeń określonego użytkownika (konieczności istnieć).
+* Zabezpieczenie dostępu do interfejsu API Azure czas serii szczegółowe informacje, należy użyć certyfikatu zabezpieczeń, zamiast hasła.
 
-Poniższe sekcje pokazują, jak wykonać te kroki w witrynie Azure portal. Artykuł koncentruje się na aplikacji pojedynczej dzierżawy, w którym aplikacja jest przeznaczona do uruchamiania w tylko jednej z organizacji. Aplikacje z jedną dzierżawą jest zazwyczaj używana dla aplikacji line-of-business, które działają w Twojej organizacji.
+> [!IMPORTANT]
+> Postępuj zgodnie z zasadą **oddzielenie obaw** (opisanych w tym scenariuszu powyżej) podczas konfigurowania zasad zabezpieczeń usługi Azure Time Series Insights.
 
-## <a name="setup-summary"></a>Podsumowanie instalacji
-
-Przepływ konfiguracji składa się z trzech kroków:
-
-1. Tworzenie aplikacji w usłudze Azure Active Directory.
-1. Autoryzuj tę aplikację, aby uzyskiwać dostęp do środowiska usługi Time Series Insights.
-1. Użyj klucza i identyfikator aplikacji w celu pobrania tokenu z `https://api.timeseries.azure.com/`. Token następnie może służyć do wywołania interfejsu API usługi Insights serii czasu.
+> [!NOTE]
+> * Artykuł koncentruje się na aplikacji pojedynczej dzierżawy, w którym aplikacja jest przeznaczona do uruchamiania w tylko jednej z organizacji.
+> * Zazwyczaj użyjesz aplikacji pojedynczej dzierżawy aplikacji line-of-business, które działają w Twojej organizacji.
 
 ## <a name="detailed-setup"></a>Szczegółowe ustawienia
 
-1. W witrynie Azure portal wybierz **usługi Azure Active Directory** > **rejestracje aplikacji** > **rejestrowanie nowej aplikacji**.
+### <a name="azure-active-directory-app-registration"></a>Rejestracja aplikacji w usłudze Azure Active Directory
 
-   [![Rejestrowanie nowej aplikacji w usłudze Azure Active Directory](media/authentication-and-authorization/active-directory-new-application-registration.png)](media/authentication-and-authorization/active-directory-new-application-registration.png#lightbox)
+[!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-1. Nadaj aplikacji nazwę, wybierz typ jako **aplikacji sieci Web / interfejs API**, wybierz dowolny prawidłowy identyfikator URI dla **adres URL logowania**i wybierz **Utwórz**.
-
-   [![Tworzenie aplikacji w usłudze Azure Active Directory](media/authentication-and-authorization/active-directory-create-web-api-application.png)](media/authentication-and-authorization/active-directory-create-web-api-application.png#lightbox)
-
-1. Wybierz nowo utworzoną aplikację i skopiuj jej identyfikator aplikacji na swoim ulubionym edytorze tekstów.
-
-   [![Skopiuj identyfikator aplikacji](media/authentication-and-authorization/active-directory-copy-application-id.png)](media/authentication-and-authorization/active-directory-copy-application-id.png#lightbox)
-
-1. Wybierz **klucze**, wprowadź nazwę klucza, wybierz czas wygaśnięcia, a następnie wybierz **Zapisz**.
-
-   [![Wybierz klucze aplikacji](media/authentication-and-authorization/active-directory-application-keys.png)](media/authentication-and-authorization/active-directory-application-keys.png#lightbox)
-
-   [![Wprowadź nazwę klucza i wygaśnięcia i wybierz opcję Zapisz](media/authentication-and-authorization/active-directory-application-keys-save.png)](media/authentication-and-authorization/active-directory-application-keys-save.png#lightbox)
-
-1. Skopiuj klucz z ulubionego edytora tekstu.
-
-   [![Skopiuj klucz aplikacji](media/authentication-and-authorization/active-directory-copy-application-key.png)](media/authentication-and-authorization/active-directory-copy-application-key.png#lightbox)
+### <a name="granting-data-access"></a>Udzielanie dostępu do danych
 
 1. Środowiska usługi Time Series Insights wybierz **zasady dostępu do danych** i wybierz **Dodaj**.
 
    [![Dodaj nowe zasady dostępu do danych do środowiska usługi Time Series Insights](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
-1. W **Wybieranie: Użytkownicy** okno dialogowe, Wklej nazwę aplikacji, w kroku 2 lub identyfikator aplikacji z kroku 3.
+1. W **Wybieranie: Użytkownicy** okna dialogowego pole, Wklej albo **Nazwa aplikacji** lub **identyfikator aplikacji** z sekcji rejestracji aplikacji usługi Azure Active Directory.
 
    [![Znajdowanie aplikacji w oknie dialogowym Wybierz użytkownika](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
@@ -91,9 +71,14 @@ Przepływ konfiguracji składa się z trzech kroków:
 
 1. Zapisz zasady, wybierając **OK**.
 
-1. Można uzyskać tokenu dla aplikacji, należy użyć Identyfikatora aplikacji z kroku 3 i klucz aplikacji z kroku 5. Token może być następnie przekazywany w `Authorization` nagłówka, gdy aplikacja wywołuje interfejs API Insights serii czasu.
+   > [!TIP]
+   > Przeczytaj o [udzielanie dostępu do danych](./time-series-insights-data-access.md) do środowiska usługi Time Series Insights w usłudze Azure Active Directory.
 
-    Jeśli używasz C#, można użyć następującego kodu, można uzyskać tokenu dla aplikacji. Aby uzyskać pełny przykład, zobacz [wykonywanie zapytań o dane przy użyciu języka C#](time-series-insights-query-data-csharp.md).
+### <a name="client-app-initialization"></a>Inicjowanie aplikacji klienta
+
+1. Użyj **identyfikator aplikacji** i **klucz tajny klienta** (klucz aplikacji) w sekcji rejestracji aplikacji usługi Azure Active Directory można uzyskać tokenu w imieniu aplikacji.
+
+    W C#, poniższy kod może uzyskać tokenu w imieniu aplikacji. Aby uzyskać pełny przykład, zobacz [wykonywanie zapytań o dane przy użyciu języka C#](time-series-insights-query-data-csharp.md).
 
     ```csharp
     // Enter your Active Directory tenant domain name
@@ -114,10 +99,14 @@ Przepływ konfiguracji składa się z trzech kroków:
     string accessToken = token.AccessToken;
     ```
 
-Użyj **identyfikator aplikacji** i **klucza** w aplikacji do uwierzytelniania za pomocą usługi Azure Time Series Insights.
+1. Następnie można przekazać token `Authorization` nagłówka, gdy aplikacja wywołuje interfejs API Insights serii czasu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać przykładowy kod, który wywołuje interfejs API czas serii szczegółowych informacji, zobacz [wykonywanie zapytań o dane przy użyciu języka C#](time-series-insights-query-data-csharp.md).
+- Aby uzyskać przykładowy kod, który wywołuje interfejs API GA czas serii szczegółowych informacji, zobacz [kwerendy danych przy użyciu C# ](./time-series-insights-query-data-csharp.md).
+
+- Aby uzyskać przykłady kodu interfejsu API usługi Insights (wersja zapoznawcza) czas serii, zobacz [podglądu zapytania danych przy użyciu C# ](./time-series-insights-update-query-data-csharp.md).
+
 - Aby uzyskać informacje referencyjne interfejsu API, zobacz [dokumentację interfejsu API zapytań](/rest/api/time-series-insights/ga-query-api).
+
 - Dowiedz się, jak [utworzyć nazwę główną usługi](../active-directory/develop/howto-create-service-principal-portal.md).

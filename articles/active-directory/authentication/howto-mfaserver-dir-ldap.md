@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214462977c160685a943cb64c517da37d96d8e47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc67fb216451bd19fe8cfb327c101aa989228b01
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057352"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536903"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>Uwierzytelnianie LDAP i serwer Azure Multi-Factor Authentication
 
@@ -49,6 +49,9 @@ Powtórz te kroki, aby dodać kolejnych klientów LDAP.
 ### <a name="configure-the-ldap-directory-connection"></a>Konfigurowanie połączenia katalogu LDAP
 
 Gdy usługa Azure Multi-Factor Authentication jest skonfigurowana pod kątem odbierania uwierzytelnień LDAP, musi ona pełnić rolę serwera proxy przesyłającego te uwierzytelnienia do katalogu LDAP. W związku z tym na karcie Cel wyświetlana jest tylko jedna, wyszarzona opcja użycia obiektu docelowego LDAP.
+
+> [!NOTE]
+> Integracja katalogu nie musi pracować z katalogami, innego niż Active Directory Domain Services.
 
 1. Aby skonfigurować połączenie z katalogiem LDAP, kliknij ikonę **Integracja katalogu**.
 2. Na karcie Ustawienia wybierz przycisk radiowy **Użyj określonej konfiguracji LDAP**.

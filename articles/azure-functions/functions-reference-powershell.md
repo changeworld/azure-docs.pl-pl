@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: fa82725174645a0e5f1d957d8423c97547682542
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065479"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442180"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera usługi Azure PowerShell funkcji
 
@@ -58,7 +58,7 @@ PSFunctionApp
 
 W folderze głównym projektu jest wspólny [ `host.json` ](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma folder z pliku z kodem (ps1) i plik konfiguracji powiązania (`function.json`). Nazwa katalogu nadrzędnego pliku function.json jest zawsze nazwę funkcji.
 
-Niektóre powiązania wymagają obecności `extensions.csproj` pliku. Powiązanie rozszerzenia, wymagane w [wersji 2.x](functions-versions.md) funkcje środowiska uruchomieniowego, są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
+Niektóre powiązania wymagają obecności `extensions.csproj` pliku. Powiązanie rozszerzenia, wymagane w [wersji 2.x](functions-versions.md) funkcje środowiska uruchomieniowego, są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
 
 W aplikacjach funkcji programu PowerShell, mogą opcjonalnie mieć `profile.ps1` które są uruchamiane podczas uruchamiania aplikacji funkcji (znanych jako  *[zimnego](#cold-start)* . Aby uzyskać więcej informacji, zobacz [profil PowerShell](#powershell-profile).
 
@@ -304,7 +304,7 @@ Obiekt odpowiedzi, który jest przekazywany do skryptu jest typu `HttpRequestCon
 
 | Właściwość  | Opis                                                    | Typ                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Obiekt, który zawiera treść żądania. `Body` jest serializowany w najlepszy typ na podstawie danych. Na przykład jeśli dane JSON, jest przekazywany w tablicy skrótów. Jeśli danych jest ciągiem, jest przekazywany w postaci ciągu. | obiekt |
+| **`Body`**    | Obiekt, który zawiera treść żądania. `Body` jest serializowany w najlepszy typ na podstawie danych. Na przykład jeśli dane JSON, jest przekazywany w tablicy skrótów. Jeśli danych jest ciągiem, jest przekazywany w postaci ciągu. | object |
 | **`Headers`** | Słownik zawierający nagłówki żądania.                | Dictionary < string, string ><sup>*</sup> |
 | **`Method`** | Metoda HTTP żądania.                                | string                    |
 | **`Params`**  | Obiekt zawierający parametry routingu żądania. | Dictionary < string, string ><sup>*</sup> |
@@ -319,7 +319,7 @@ Obiekt odpowiedzi, który należy wysłać ponownie jest typu `HttpResponseConte
 
 | Właściwość      | Opis                                                 | Typ                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Obiekt, który zawiera treści odpowiedzi.           | obiekt                    |
+| **`Body`**  | Obiekt, który zawiera treści odpowiedzi.           | object                    |
 | **`ContentType`** | Krótkie dostępne ustawienia Typ zawartości odpowiedzi. | string                    |
 | **`Headers`** | Obiekt, który zawiera nagłówki odpowiedzi.               | Słownik lub tablicy skrótów   |
 | **`StatusCode`**  | Kod stanu HTTP odpowiedzi.                       | ciąg lub int             |

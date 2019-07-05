@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 55db909f240756200d758fe89aabb217fb380d16
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 4fd862c2442d2637d799a1f690d5f0a091c80562
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329812"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449191"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Wykorzystywanie przetwarzania równoległego zapytań w usłudze Azure Stream Analytics
 W tym artykule pokazano, jak korzystać z zalet przetwarzania równoległego w usłudze Azure Stream Analytics. Dowiesz się, jak skalować zadania usługi Stream Analytics, konfigurując partycji danych wejściowych, a następnie dostosowując definicję zapytania usługi analytics.
 Jako warunek wstępny, warto znać pojęcia opisane w zastrzeżona jednostka przesyłania strumieniowego [opis i dostosowywanie jednostek przesyłania strumieniowego](stream-analytics-streaming-unit-consumption.md).
 
 ## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Co to są elementy zadania usługi Stream Analytics?
-Definicja zadania usługi Stream Analytics zawiera dane wejściowe, zapytania i danych wyjściowych. Dane wejściowe są, w którym zadanie odczytuje strumień danych z. Zapytanie jest używana do przekształcania danych strumienia wejściowego, a dane wyjściowe to, gdzie zadanie wysyła wyniki zadania, aby.  
+Definicja zadania usługi Stream Analytics zawiera dane wejściowe, zapytania i danych wyjściowych. Dane wejściowe są, w którym zadanie odczytuje strumień danych z. Zapytanie jest używana do przekształcania danych strumienia wejściowego, a dane wyjściowe to, gdzie zadanie wysyła wyniki zadania, aby.
 
 Zadanie wymaga co najmniej jedno źródło danych wejściowych służącą do strumieniowego przesyłania danych. Źródło danych wejściowych strumienia danych mogą być przechowywane w Centrum zdarzeń platformy Azure lub w usłudze Azure blob storage. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md) i [rozpoczęcie korzystania z usługi Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md).
 
@@ -248,11 +248,65 @@ To zapytanie może być skalowane do 24 SUs.
 > 
 > 
 
+## <a name="achieving-higher-throughputs-at-scale"></a>Osiągnięcie wyższej przepustowości na dużą skalę
 
+[Zaskakująco równoległymi](#embarrassingly-parallel-jobs) zadanie jest konieczne, ale nie są wystarczające do umożliwienia większą przepływność na dużą skalę. Każdy system magazynu i jego odpowiednie dane wyjściowe usługi Stream Analytics zawiera odmiany na temat sposobu uzyskania przepływności najlepsze możliwe zapisu. Jak za pomocą dowolnego scenariusza na dużą skalę, istnieją niektóre wyzwania, które można rozwiązać za pomocą odpowiednie konfiguracje. W tej sekcji omówiono konfiguracje dla kilku typowych danych wyjściowych i przykłady dla zatwierdzeniu stawek pozyskiwania 1, 5K i 10 tys. zdarzeń na sekundę.
 
+Następujących obserwacjach za pomocą zadania usługi Stream Analytics query bezstanowe (przekazywanie), basic UDF języka JavaScript, który zapisuje je do Centrum zdarzeń, usługi Azure SQL DB lub Cosmos DB.
 
+#### <a name="event-hub"></a>Centrum zdarzeń
+
+|Częstotliwość wprowadzania (zdarzeń na sekundę) | Jednostki przesyłania strumieniowego | Zasoby danych wyjściowych  |
+|--------|---------|---------|
+| 1K     |    1    |  2 TU   |
+| 5K     |    6    |  6 TU   |
+| 10 000    |    12   |  10 TU  |
+
+[Centrum zdarzeń](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) rozwiązania liniowe skalowanie pod kątem przesyłania strumieniowego jednostki (SU) i przepływność, dzięki czemu najbardziej efektywny i wydajny sposób w do analizowania i przesyłanie strumieniowe danych z usługi Stream Analytics. Zadania mogą być skalowane do 192 polecenia SU, co około przekłada się na przetwarzanie maksymalnie 200 MB/s lub bilionów 19 zdarzeń dziennie.
+
+#### <a name="azure-sql"></a>Azure SQL
+|Częstotliwość wprowadzania (zdarzeń na sekundę) | Jednostki przesyłania strumieniowego | Zasoby danych wyjściowych  |
+|---------|------|-------|
+|    1K   |   3  |  S3   |
+|    5K   |   18 |  P4   |
+|    10 000  |   36 |  P6   |
+
+[Usługi Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) obsługuje pisanie równolegle, o nazwie dziedziczą partycjonowania, ale nie jest włączona domyślnie. Jednak włączenie dziedziczą partycjonowania, wraz z w pełni równoległe zapytania, może nie być wystarczające do osiągnięcia wyższej przepustowości. Produktywność zapisu SQL zależą od znacznie schematu konfiguracji i tabeli bazy danych SQL Azure. [Wydajności danych wyjściowych SQL](./stream-analytics-sql-output-perf.md) artykuł zawiera więcej szczegółów na temat parametrów, które można zmaksymalizować przepływność zapisu. Jak wspomniano w [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) artykułu, to rozwiązanie nie skalowane liniowo, jako w pełni równoległe potok poza 8 partycji i może być konieczne ponowne dzielenie na partycje przed danych wyjściowych SQL (zobacz [ DO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Jednostki SKU w warstwie Premium są wymagane do umożliwienia intensywne we/wy oraz obciążenie związane z kopii zapasowych dziennika wykonywane co kilka minut.
+
+#### <a name="cosmos-db"></a>Cosmos DB
+|Częstotliwość wprowadzania (zdarzeń na sekundę) | Jednostki przesyłania strumieniowego | Zasoby danych wyjściowych  |
+|-------|-------|---------|
+|  1K   |  3    | RU 20K  |
+|  5K   |  24   | RU 60K  |
+|  10 000  |  48   | 120 TYSIĘCY JEDNOSTEK RU |
+
+[Usługa cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) dane wyjściowe z usługi Stream Analytics została zaktualizowana do użycia integracji z funkcjami macierzystymi w obszarze [poziom zgodności 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Poziom zgodności 1.2 zapewnia znacznie większą przepływność i zmniejsza zużycie RU w porównaniu do 1.1, która jest domyślny poziom zgodności dla nowych zadań. Rozwiązanie korzysta z bazy danych cosmos DB kontenery, partycje na /deviceId i pozostałych rozwiązań jest skonfigurowane identycznie.
+
+Wszystkie [przesyłania strumieniowego na przykłady skalowania platformy azure](https://github.com/Azure-Samples/streaming-at-scale) użyć Centrum zdarzeń, który jest ładowany przez obciążenia, symulując klientów testowych jako dane wejściowe. Każde zdarzenie w danych wejściowych to dokument JSON 1KB, który tłumaczy łatwo stawek pozyskiwania skonfigurowanego do przepływności (1MB/s, 5MB/s i 10MB/s). Zdarzenia symulowanie urządzenia usługi IoT, wysyłanie następujące dane JSON (skrócona forma), dla urządzeń z maksymalnie 1 KB:
+
+```
+{
+    "eventId": "b81d241f-5187-40b0-ab2a-940faf9757c0",
+    "complexData": {
+        "moreData0": 51.3068118685458,
+        "moreData22": 45.34076957651598
+    },
+    "value": 49.02278128887753,
+    "deviceId": "contoso://device-id-1554",
+    "type": "CO2",
+    "createdAt": "2019-05-16T17:16:40.000003Z"
+}
+```
+
+> [!NOTE]
+> Konfiguracje obejmują może ulec zmianie ze względu na różne składniki, które są używane w ramach rozwiązania. Bardziej precyzyjne Kwota szacunkowa można dostosować w przykłady odpowiednio do scenariusza.
+
+### <a name="identifying-bottlenecks"></a>Identyfikowania wąskich gardeł
+
+Okienko metryki w ramach zadania usługi Azure Stream Analytics służy do identyfikowania wąskich gardeł w potoku. Przegląd **zdarzenia wejścia/wyjścia** przepływności i ["Opóźnienie znaku wodnego"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) lub **zaległe zdarzenia** aby zobaczyć, jeśli zadanie jest Nadążanie za szybkość danych wejściowych. Centrum zdarzeń miar, poszukaj **ograniczenia żądań** i odpowiednio dostosować próg jednostki. Metryki usługi Cosmos DB można znaleźć **maksymalna liczba użytych jednostek RU/s na zakres kluczy partycji** równomiernie są używane w ramach przepływności, aby zapewnić zakresów kluczy partycji. W przypadku bazy danych SQL Azure, monitorować **we/wy dziennika** i **Procesora**.
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
+
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki

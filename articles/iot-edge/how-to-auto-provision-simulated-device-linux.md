@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f75ad287b5f026dea7ba0152b009a60572929148
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 5ab85a8fb56789dbf3ecd6cf1cbc63e338615915
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329624"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439123"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Tworzenie i aprowizowanie urządzenia usługi IoT Edge z wirtualnego TPM na maszynie wirtualnej systemu Linux
 
@@ -107,7 +107,7 @@ Na maszynie wirtualnej kompilacji narzędzi zestawu SDK języka C, używanej do 
    sudo ./tpm_device_provision
    ```
    >[!TIP]
-   >W przypadku testowania przy użyciu symulatora modułu TPM, należy umieścić dodatkowy parametr `-Duse_tpm_simulator:BOOL=ON` ją włączyć. Pełne polecenie będzie `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON .. `.
+   >W przypadku testowania przy użyciu symulatora modułu TPM, należy umieścić dodatkowy parametr `-Duse_tpm_simulator:BOOL=ON` ją włączyć. Pełne polecenie będzie `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`.
 
 5. Skopiuj wartości pól **identyfikator rejestracji** i **klucz poręczenia**. Użyjesz tych wartości do tworzenia rejestracji indywidualnej dla urządzenia w usłudze DPS. 
 

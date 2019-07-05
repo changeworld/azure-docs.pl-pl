@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: f2d64e0a081ff483be84053c442f48e7d145ca50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9c7aa2be945e4fbaa65bdd2a145d576422c5539
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66396504"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491765"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Usługa Azure Site Recovery: często zadawane pytania (FAQ)
 Ten artykuł zawiera podsumowanie często zadawane pytania dotyczące usługi Azure Site Recovery.</br>
@@ -150,7 +150,7 @@ Usługa Azure Site Recovery replikuje dane do konta usługi Azure storage lub dy
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?
 
-W przypadku replikacji na platformie Azure ruch związany z replikacją osiągnie publicznych punktów końcowych usługi Azure Storage. Dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa.
+W przypadku replikacji na platformie Azure ruch związany z replikacją osiągnie publicznych punktów końcowych usługi Azure Storage. Dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (komunikacji równorzędnej firmy Microsoft lub istniejących publicznej komunikacji równorzędnej) i sieci VPN nie działa.
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Czy można używać Riverbed SteelHeads w przypadku replikacji?
 
@@ -159,12 +159,11 @@ Nasz partner Riverbed, zawiera szczegółowe wskazówki na temat pracy z usług�
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Replikacja maszyn wirtualnych na platformie Azure mogą używać usługi ExpressRoute?
 Tak, [można użyć usługi ExpressRoute](concepts-expressroute-with-site-recovery.md) replikowania lokalnych maszyn wirtualnych do platformy Azure.
 
-- Usługa Azure Site Recovery replikuje dane do usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery.
+- Usługa Azure Site Recovery replikuje dane do usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) albo użyć istniejącego [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) (uznane za przestarzałe w obwodów) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery.
 - Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji.
-- Po maszyny wirtualne mają zostały przełączone w tryb failover siecią wirtualną platformy Azure można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering) konfiguracji sieci wirtualnej platformy Azure.
 - Replikacja nie jest obsługiwana za pośrednictwem prywatnej komunikacji równorzędnej.
-- Jeśli w przypadku ochrony maszyn VMware i fizycznych komputerów, upewnij się, że serwer konfiguracji jest zgodny z [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) replikacji. 
-
+- W przypadku ochrony maszyn VMware lub fizycznych komputerów, upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) również są spełnione dla serwera konfiguracji. Łączność z określonych adresów URL jest wymagane przez serwer konfiguracji do organizowania replikacji usługi Site Recovery. Nie można użyć usługi ExpressRoute dla tego połączenia.
+- Po maszyny wirtualne mają zostały przełączone w tryb failover siecią wirtualną platformy Azure można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering) konfiguracji sieci wirtualnej platformy Azure.
 
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Jeśli przeprowadzam replikację do platformy Azure, jakiego rodzaju konta magazynu i dysku zarządzanego potrzebuję?

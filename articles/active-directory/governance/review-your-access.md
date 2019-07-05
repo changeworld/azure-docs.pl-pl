@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f12255bf14ca424a8a79107e7ca8e403552b62
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113184"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471744"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
@@ -40,7 +40,7 @@ Pierwszym krokiem do wykonania przeglądu dostępu jest znaleźć i otworzyć Pr
 
 1. Poszukaj wiadomości e-mail od firmy Microsoft, która prosi o przegląd dostępu wszystkich użytkowników. Poniżej przedstawiono przykładową wiadomość e-mail przejrzeć swój dostęp do grupy.
 
-    ![Przejrzyj dostęp do poczty e-mail](./media/review-your-access/access-review-email.png)
+    ![Przykładową wiadomością e-mail od firmy Microsoft, aby przejrzeć swój dostęp do grupy](./media/review-your-access/access-review-email.png)
 
 1. Kliknij przycisk **Przegląd dostępu wszystkich użytkowników** link umożliwiający otworzenie Przegląd dostępu.
 
@@ -48,7 +48,7 @@ Jeśli nie masz wiadomości e-mail można znaleźć, przeglądy dostępu w usłu
 
 1. Zaloguj się do portalu MyApps pod adresem [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
-    ![Portalu MyApps](./media/review-your-access/myapps-access-panel.png)
+    ![Portalu MyApps, wyświetlanie listy aplikacji, do których masz uprawnienia do](./media/review-your-access/myapps-access-panel.png)
 
 1. W prawym górnym rogu strony kliknij symbol użytkownika, który wyświetla Twoją nazwę i domyślną organizację. Jeśli na liście jest więcej niż jedna organizacja, wybierz tę, która zażądała przeglądu dostępu.
 
@@ -56,7 +56,7 @@ Jeśli nie masz wiadomości e-mail można znaleźć, przeglądy dostępu w usłu
 
     Jeśli kafelek nie jest widoczny, nie ma żadnych przeglądów dostępu do wykonania dla tej organizacji i w tej chwili jest wymagana żadna akcja.
 
-    ![Lista przeglądów dostępu](./media/review-your-access/access-reviews-list.png)
+    ![Lista przeglądów dostępu oczekujące dla aplikacji i grup](./media/review-your-access/access-reviews-list.png)
 
 1. Kliknij przycisk **Rozpocznij Przegląd** link dla przeglądu dostępu, którą chcesz wykonać.
 
@@ -68,13 +68,13 @@ Po otwarciu przeglądu dostępu, możesz zobaczyć dostępu.
 
     Jeśli żądanie ma przeprowadzić przegląd dostępu dla innych osób, strona będzie wyglądała różne. Aby uzyskać więcej informacji, zobacz [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md).
 
-    ![Przeprowadzenie przeglądu dostępu](./media/review-your-access/perform-access-review.png)
+    ![Przegląd otwartego dostępu z pytaniem, czy nadal potrzebujesz dostępu do grupy](./media/review-your-access/perform-access-review.png)
 
 1. Kliknij przycisk **tak** Aby zachować dostęp do usługi, lub kliknij przycisk **nie** o usunięcie Twojego dostępu.
 
 1. Jeśli klikniesz **tak**, może być konieczne określenie uzasadnienie w **Przyczyna** pole.
 
-    ![Przeprowadzenie przeglądu dostępu](./media/review-your-access/perform-access-review-submit.png)
+    ![Ukończono przeglądu dostępu z pytaniem, czy nadal potrzebujesz dostępu do grupy](./media/review-your-access/perform-access-review-submit.png)
 
 1. Kliknij przycisk **Submit** (Prześlij).
 

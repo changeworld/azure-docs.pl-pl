@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 5f8fd9b2ecb58b34476bf8ecca7aa08dfc446040
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 39d39b313cd2e65989989080d4cb0729b0be1e65
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273394"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561446"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Samouczek: zamawianie urządzenia Azure Data Box Disk
 
@@ -87,7 +87,7 @@ Wykonaj następujące kroki w kolejności dysku Data Box.
     |Docelowy region platformy Azure| Wybierz region swojego konta magazynu.<br> Obecnie są obsługiwane konta magazynu we wszystkich regionach USA, regionach Europa Zachodnia i Europa Północna, Kanadzie i Australii. |
     |Szacowany rozmiar danych w terabajtach (TB)| Wprowadź szacowany rozmiar w TB. <br>W zależności od rozmiaru danych firma Microsoft wysyła odpowiednią liczbę dysków SSD o pojemności 8 TB (7 TB pojemności do wykorzystania). <br>Maksymalna pojemność do wykorzystania na 5 dyskach to maksymalnie 35 TB. |
     |Klucz dostępu dla dysków| Jeśli zaznaczono opcję **Użyj niestandardowego klucza dostępu zamiast tego wygenerowanego przez platformę Azure**, podaj klucz dostępu dla dysków. <br> Podaj klucz alfanumeryczny zawierający od 12 do 32 znaków, w tym co najmniej jedną cyfrę i jeden znak specjalny. Dozwolone są następujące znaki specjalne: `@?_+`. <br> Tę opcję możesz pominąć i do odblokowywania dysków korzystać z klucza dostępu wygenerowanego przez platformę Azure.|
-    |Magazyn docelowy     | Wybierz z konta magazynu dysków zarządzanych i/lub. <br> Oparte na określonego regionu Azure, wybierz konto magazynu z listy filtrowanej istniejącego konta magazynu. Urządzenie Data Box można połączyć z maksymalnie 10 kontami magazynu. <br> Można również utworzyć nową **General-purpose v1**, **ogólnego przeznaczenia v2**, lub **konta magazynu obiektów Blob**. <br>Nie można używać kont magazynu, które mają skonfigurowane reguły. Konta magazynu muszą **zezwalać na dostęp ze wszystkich sieci** w sekcji zapór i sieci wirtualnych.|
+    |Magazyn docelowy     | Wybierz z konta magazynu dysków zarządzanych i/lub. <br> Oparte na określonego regionu Azure, wybierz konto magazynu z listy filtrowanej istniejącego konta magazynu. Dysku Data Box, może być połączony z kontem magazynu tylko 1. <br> Można również utworzyć nową **General-purpose v1**, **ogólnego przeznaczenia v2**, lub **konta magazynu obiektów Blob**. <br>Konta magazynu z sieciami wirtualnymi są obsługiwane. Aby usługa Data Box do pracy z kontami magazynu zabezpieczone, Włącz zaufanych usług w ramach ustawienia zapory sieci konta magazynu. Aby uzyskać więcej informacji, zobacz instrukcje [Dodaj urządzenia Azure Data Box jako zaufaną usługę](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
 
     Jeśli jako miejsce docelowe przechowywania, przy użyciu konta magazynu, zostanie wyświetlony poniższy zrzut ekranu:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b1280274122800147c442b73b360bc5141530a0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86d48360e37f26d19d15c62a8109c030d421c661
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050600"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551873"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM), zestawy skalowania maszyn wirtualnych, kontenerach IaaS i komputery spoza platformy Azure (z uwzględnieniem lokalnej) do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Agent Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -46,12 +46,12 @@ Gdy automatyczna aprowizacja jest włączona, usługa Security Center aprowizuje
 
 
 Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
-1. W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
-2. Kliknij przycisk **edytować ustawienia** w kolumnie ustawień odpowiedniej subskrypcji na liście.
+1. W menu głównym usługi Security Center wybierz **ceny u & stawienia**.
+2. Kliknij subskrypcję, zastosowanie
 
    ![Wybieranie subskrypcji][7]
 
-3. W obszarze **Zasady zabezpieczeń** wybierz pozycję **Zbieranie danych**.
+3. Wybierz **zbierania danych**.
 4. W obszarze **automatycznej aprowizacji**, wybierz opcję **na** Aby włączyć automatyczną aprowizację.
 5. Wybierz pozycję **Zapisz**.
 
@@ -131,11 +131,11 @@ Aby wybrać istniejący obszar roboczy usługi Log Analytics:
 
 5. Wybierz warstwę cenową dla żądanego obszaru roboczego, które mają zostać ustawione Microsoft Monitoring agent. <br>Aby użyć istniejącego obszaru roboczego, ustawienie warstwy cenowej dla obszaru roboczego. Jeśli nie jest już obecny spowoduje to zainstalowanie rozwiązania Centrum zabezpieczeń w obszarze roboczym.
 
-    a.  W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
+    a.  W menu głównym usługi Security Center wybierz **ceny u & stawienia**.
      
-    b.  Wybieranie żądanego obszaru roboczego, w którym trzeba połączyć agenta, klikając **edytować ustawienia** w kolumnie ustawień odpowiedniej subskrypcji na liście.
-        ![Wybierz obszar roboczy][8] c. Ustawienie warstwy cenowej.
-        ![Wybierz warstwę cenową][9] 
+    b.  Wybierz żądanego obszaru roboczego, w którym trzeba połączyć agenta.
+        ![Wybierz obszar roboczy][7] c. Ustawienie warstwy cenowej.
+        ![Wybierz warstwę cenową][9]
    
    >[!NOTE]
    >Jeśli obszar roboczy ma już **zabezpieczeń** lub **SecurityCenterFree** włączonego rozwiązania ceny zostaną ustawione automatycznie. 
@@ -165,8 +165,8 @@ Te zestawy są przeznaczone dla typowych scenariuszy. Upewnij się ocenić, któ
 
 Aby określić zdarzenia, które będą należeć do **typowe** i **minimalny** ustawia zdarzenie współpracowaliśmy z klientami i standardów branżowych, aby dowiedzieć się więcej na temat niefiltrowane częstotliwość każdego zdarzenia i ich użycia. Użyliśmy następujące wytyczne w ramach tego procesu:
 
-- **Minimalny** — upewnij się, że ten zestaw obejmuje tylko te zdarzenia, które mogą wskazywać na naruszenie pomyślne i ważne wydarzenia, które mają bardzo niskim poziomie. Na przykład ten zestaw zawiera udane i nieudane logowania użytkownika (zdarzenie 4624 identyfikatory 4625), ale nie zawiera on wylogowania, co jest ważne w przypadku inspekcji, ale nie ma istotnego znaczenia dla wykrywania i ma stosunkowo dużych ilościach. W większości ilość danych, ten zestaw jest zdarzenia logowania i procesu tworzenia zdarzeń (zdarzenie 4688 identyfikator).
-- **Typowe** — Podaj użytkownika pełnego dziennika inspekcji, w tym zestawie. Na przykład ten zestaw zawiera identyfikatory logowania użytkownika i wylogowywania użytkowników (zdarzenie ID 4634). Dołączamy inspekcji akcji, takich jak zmiany w grupie zabezpieczeń, operacji protokołu Kerberos kontrolera domeny kluczy i innych zdarzeń, które są zalecane przez organizacje z branży.
+- **Minimalny** — upewnij się, że ten zestaw obejmuje tylko te zdarzenia, które mogą wskazywać na naruszenie pomyślne i ważne wydarzenia, które mają bardzo niskim poziomie. Na przykład, ten zestaw zawiera udane i nieudane logowania użytkownika (zdarzenie 4624 identyfikatory 4625), ale nie zawiera znaku out, co jest ważne w przypadku inspekcji, ale nie ma istotnego znaczenia dla wykrywania i ma stosunkowo dużych ilościach. W większości ilość danych, ten zestaw jest zdarzenia logowania i procesu tworzenia zdarzeń (zdarzenie 4688 identyfikator).
+- **Typowe** — Podaj użytkownika pełnego dziennika inspekcji, w tym zestawie. Na przykład ten zestaw zawiera identyfikatory logowania użytkownika i szczegółowymi informacjami logowania użytkownika (zdarzenie ID 4634). Dołączamy inspekcji akcji, takich jak zmiany w grupie zabezpieczeń, operacji protokołu Kerberos kontrolera domeny kluczy i innych zdarzeń, które są zalecane przez organizacje z branży.
 
 Zdarzenia, które mają bardzo małą liczbą zostały uwzględnione w typowych Ustaw jako główny motywacja wybrać za pośrednictwem wszystkich zdarzeń jest redukować ilość danych, a nie odfiltrować określonych zdarzeń.
 
@@ -191,7 +191,7 @@ Tutaj znajduje się pełna lista zabezpieczeń i AppLocker identyfikatory zdarze
 >
 
 Aby wybrać zasady filtrowania:
-1. Na **zasady zabezpieczeń zbierania danych** bloku wybierz zasady filtrowania w obszarze **zdarzeń związanych z zabezpieczeniami**.
+1. Na **zbierania danych** zaznacz opcję filtrowanie zasad w obszarze **zdarzeń związanych z zabezpieczeniami**.
 2. Wybierz pozycję **Zapisz**.
 
    ![Wybierz zasady filtrowania][5]

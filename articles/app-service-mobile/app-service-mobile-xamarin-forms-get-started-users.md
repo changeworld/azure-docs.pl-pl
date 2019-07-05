@@ -3,7 +3,7 @@ title: Rozpoczynanie pracy z usługą uwierzytelniania dla aplikacji mobilnych w
 description: Dowiedz się, jak używać funkcji Mobile Apps, uwierzytelniać użytkowników aplikacji platformy Xamarin Forms przy użyciu różnych dostawców tożsamości, obejmującej usługi AAD, Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
-author: panarasi
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
@@ -12,23 +12,27 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: panarasi
-ms.openlocfilehash: 2945cefc18a378b31700104049f1a14a1f320136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019789"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446304"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Xamarin Forms
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## <a name="overview"></a>Omówienie
+> [!NOTE]
+> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) już dziś.
+>
+
+## <a name="overview"></a>Przegląd
 W tym temacie dowiesz się, jak uwierzytelniać użytkowników aplikacji usługi App Service Mobile z aplikacji klienckiej. W tym samouczku dodasz uwierzytelnianie do projektu quickstart narzędzia Xamarin Forms przy użyciu dostawcy tożsamości, która jest obsługiwana przez usługę App Service. Po są pomyślnie uwierzytelniony i autoryzowany przez aplikację Mobile, jest wyświetlana wartość Identyfikatora użytkownika i będzie można uzyskiwać dostęp do danych tabel z ograniczeniami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Najlepszych wyników za pomocą tego samouczka, zaleca się wykonanie [tworzenie aplikacji platformy Xamarin Forms] [ 1] samouczka. Po ukończeniu tego samouczka trzeba będzie projektu Xamarin Forms, który jest aplikację listy zadań dla wielu platform.
+Najlepszych wyników za pomocą tego samouczka, zaleca się wykonanie [tworzenie aplikacji platformy Xamarin Forms][1] samouczka. Po ukończeniu tego samouczka trzeba będzie projektu Xamarin Forms, który jest aplikację listy zadań dla wielu platform.
 
 Jeśli nie używasz projektu serwera pobranego — szybki start, należy dodać pakiet rozszerzenia uwierzytelnianie do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps][2].
 
@@ -53,7 +57,8 @@ Bezpieczne uwierzytelnianie wymaga, zdefiniuj nowy schemat adresu URL dla aplika
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>Dodawanie uwierzytelniania do biblioteki klas przenośnych
-Używa funkcji Mobile Apps [LoginAsync] [ 3] metody rozszerzenia [MobileServiceClient] [ 4] zalogowania użytkownika przy użyciu usługi App Service uwierzytelnianie. Ta próbka używa przepływu uwierzytelniania serwer zarządzany, który wyświetla interfejsie dostawcy logowania w aplikacji. Aby uzyskać więcej informacji, zobacz [serwer zarządzany uwierzytelniania][5]. Aby zapewnić lepsze środowisko użytkownika w swojej aplikacji w środowisku produkcyjnym, należy wziąć pod uwagę zamiast przy użyciu [zarządzanych przez klienta uwierzytelniania][6].
+Używa funkcji Mobile Apps [LoginAsync][3] extension method on the [MobileServiceClient][4] to sign in a user with App Service authentication. This sample
+uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication][5]. Aby zapewnić lepsze środowisko użytkownika w swojej aplikacji w środowisku produkcyjnym, należy wziąć pod uwagę zamiast przy użyciu [zarządzanych przez klienta uwierzytelniania][6].
 
 Aby uwierzytelniać się w projekcie Xamarin Forms, zdefiniuj **IAuthenticate** interfejsu in Portable Class Library dla aplikacji. Następnie dodaj **logowania** przycisku do interfejsu użytkownika zdefiniowane w Portable Class Library, którego kliknięcie pozwala uruchomić uwierzytelniania. Dane są ładowane z zaplecza aplikacji mobilnej po pomyślnym uwierzytelnieniu.
 

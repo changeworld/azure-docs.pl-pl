@@ -4,14 +4,14 @@ description: Wyświetla listę wszystkich przestrzeni nazw dostawcy zasobów us�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 04/25/2019
+ms.date: 06/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 54493efdc0bffcbb4654b65676554f6707716968
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f5ffbd9b1f2bde08023d1758792fab54c2885f7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235574"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442606"
 ---
 # <a name="resource-providers-for-azure-services"></a>Dostawcy zasobów usługi platformy Azure
 
@@ -33,7 +33,7 @@ W tym artykule przedstawiono sposób mapowania przestrzeni nazw dostawcy zasobó
 | Microsoft.Authorization | [Azure Resource Manager](index.yml) |
 | Microsoft.Automation | [Automatyzacja](../automation/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../active-directory-b2c/index.yml) |
-| Microsoft.AzureStack | [Azure Stack](/azure-stack/user/) |
+| Microsoft.AzureStack | rdzeń |
 | Microsoft.Batch | [Batch](../batch/index.yml) |
 | Microsoft.Billing | [Billing](/azure/billing/) |
 | Microsoft.BingMaps | [Mapy Bing](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
@@ -61,6 +61,7 @@ W tym artykule przedstawiono sposób mapowania przestrzeni nazw dostawcy zasobó
 | Microsoft.CostManagement | [Usługa Cost Management](/azure/cost-management/) |
 | Microsoft.CustomerInsights | Customer Insights |
 | Microsoft.CustomerLockbox | Skrytki klienta na platformie Microsoft Azure |
+| Microsoft.CustomProviders | [Usługa Azure dostawcy niestandardowi](../managed-applications/custom-providers-overview.md) |
 | Microsoft.DataBox | [Azure Data Box](/azure/databox-family/) |
 | Microsoft.DataBoxEdge | [Azure Data Box Edge](../databox-online/data-box-edge-overview.md) |
 | Microsoft.Databricks | [Azure Databricks](/azure/azure-databricks/) |
@@ -73,7 +74,7 @@ W tym artykule przedstawiono sposób mapowania przestrzeni nazw dostawcy zasobó
 | Microsoft.DBforMySQL | [Azure Database for MySQL](/azure/mysql/) |
 | Microsoft.DBforPostgreSQL | [Azure Database for PostgreSQL](/azure/postgresql/) |
 | Microsoft.DeploymentManager | [Azure Deployment Manager](deployment-manager-overview.md) |
-| Microsoft.Devices | [Usługa IoT Hub](/azure/iot-hub/) |
+| Microsoft.Devices | [Usługa IoT Hub](/azure/iot-hub/)<br />[Usługa IoT Hub Device Provisioning](/azure/iot-dps/) |
 | Microsoft.DevSpaces | [Azure Dev Spaces](/azure/dev-spaces/) |
 | Microsoft.DevTestLab | [Azure Lab Services](../lab-services/index.yml) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../cosmos-db/index.yml) |
@@ -115,7 +116,7 @@ W tym artykule przedstawiono sposób mapowania przestrzeni nazw dostawcy zasobó
 | Microsoft.Migrate | [Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft.MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
 | Microsoft.NetApp | [Azure NetApp Files](../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Virtual Network](../virtual-network/index.yml)<br />[Load Balancer](../load-balancer/index.yml)<br />[Application Gateway](../application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN Gateway](../vpn-gateway/index.yml)<br />[Traffic Manager](../traffic-manager/index.yml)<br />[Network Watcher](../network-watcher/index.yml)<br />[Zaporę platformy Azure](../firewall/index.yml)<br />[Usługa Azure drzwi](../frontdoor/index.yml) |
+| Microsoft.Network | [Virtual Network](../virtual-network/index.yml)<br />[Load Balancer](../load-balancer/index.yml)<br />[Application Gateway](../application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN Gateway](../vpn-gateway/index.yml)<br />[Traffic Manager](../traffic-manager/index.yml)<br />[Network Watcher](../network-watcher/index.yml)<br />[Zaporę platformy Azure](../firewall/index.yml)<br />[Usługa Azure drzwi](../frontdoor/index.yml)<br />[Azure Bastion](/azure/bastion/) |
 | Microsoft.NotificationHubs | [Notification Hubs](../notification-hubs/index.yml) |
 | Microsoft.OffAzure | [Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft.OperationalInsights | [Azure Monitor](../azure-monitor/index.yml) |
@@ -126,6 +127,7 @@ W tym artykule przedstawiono sposób mapowania przestrzeni nazw dostawcy zasobó
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft.RecoveryServices | [Site Recovery](../site-recovery/index.yml) |
 | Microsoft.Relay | [Azure Relay](../service-bus-relay/relay-what-is-it.md) |
+| Microsoft.ResourceGraph | [Wykres zasobów platformy Azure](/azure/governance/resource-graph/) |
 | Microsoft.ResourceHealth | rdzeń |
 | Microsoft.Resources | [Azure Resource Manager](index.yml) |
 | Microsoft.SaaS | rdzeń |
@@ -148,6 +150,7 @@ W tym artykule przedstawiono sposób mapowania przestrzeni nazw dostawcy zasobó
 | microsoft.support | rdzeń |
 | Microsoft.TimeSeriesInsights | [Time Series Insights](../time-series-insights/index.yml) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft.VMwareCloudSimple | [Rozwiązanie programu VMware na platformie Azure przez CloudSimple](/azure/vmware-cloudsimple/) |
 | Microsoft.Web | [App Service](../app-service/index.yml)<br />[Funkcje](../azure-functions/index.yml) |
 | Microsoft.WindowsDefenderATP | [Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection) |
 | Microsoft.WindowsIoT | [Usługi systemu Windows 10 IoT Core](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |

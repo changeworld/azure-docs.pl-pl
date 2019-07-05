@@ -6,12 +6,13 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 0fc4eb90d9bed3877b4618fd839d9e8bf1608718
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: fasttrack-edit
+ms.openlocfilehash: c328f0dc510c1b7d36b547e6560a292f98d72f6f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063739"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448038"
 ---
 # <a name="supported-postgresql-database-versions"></a>Obsługiwane wersje bazy danych PostgreSQL
 Cele firmy Microsoft do obsługi n-2 wersje aparatu PostgreSQL w usłudze Azure Database for PostgreSQL — pojedynczy serwer. Wersje byłoby bieżącej wersji głównej na platformie Azure (n) i dwóch starszych wersjach głównych (-2).
@@ -35,6 +36,9 @@ Zapoznaj się [dokumentacji PostgreSQL](https://www.postgresql.org/docs/9.5/stat
 
 ## <a name="managing-updates-and-upgrades"></a>Zarządzanie aktualizacji i uaktualnień
 Usługa Azure Database for postgresql w warstwie automatycznie zarządza poprawki wersji pomocniczej. Obecnie nie jest obsługiwane uaktualnienie wersji głównej. Na przykład uaktualnienie z PostgreSQL 9.5 do PostgreSQL 9.6 nie jest obsługiwane. Jeśli chcesz uaktualnić do następnej wersji głównej, należy utworzyć bazę danych [zrzucanie i przywracanie](./howto-migrate-using-dump-and-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
+
+> Należy pamiętać, że przed PostgreSQL w wersji 10, [zasad przechowywania wersji PostgreSQL](https://www.postgresql.org/support/versioning/) uważane za _wersji głównej_ uaktualnienie do wzrost pierwszy _lub_ drugi numer ( przykład 9.5 lub 9.6 została uznana za _głównych_ uaktualniania wersji).
+> Począwszy od wersji 10 tylko zmiana pierwsza liczba jest uważany za uaktualnienie wersji głównej (na przykład jest 10.0 i 10.1 _pomocnicza_ uaktualniania wersji i 10-11 jest _głównych_ uaktualniania wersji).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać informacje o obsłudze inne rozszerzenia PostgreSQL, zobacz [rozszerzenia PostgreSQL](concepts-extensions.md).

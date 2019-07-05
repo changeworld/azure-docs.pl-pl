@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: aec85b16ab0357b28a564f75509e147e5555137b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8a2eaf50a35b25463be3e323d4362b52e2339bf6
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205064"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550296"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Ruby systemu Linux dla usługi Azure App Service
 
@@ -65,7 +65,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Uzyskiwanie dostępu do zmiennych środowiskowych
 
-W usłudze App Service możesz [określić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodu aplikacji. Następnie uzyskiwaniu dostępu do nich przy użyciu standardu [ENV ['< ścieżka name >"]](https://ruby-doc.org/core-2.3.3/ENV.html) wzorca. Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
+W usłudze App Service możesz [określić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodu aplikacji. A następnie uzyskiwaniu dostępu do nich przy użyciu standardu [ENV ["\<ścieżka name >"]](https://ruby-doc.org/core-2.3.3/ENV.html) wzorca. Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']

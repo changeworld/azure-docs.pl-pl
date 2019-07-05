@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 58c50eac60f1a8a47aac9a88125bc3e0132ec3db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ba4763e8d4835911d33d21c0f5bb431851a649b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059161"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444718"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Planowanie wydajności i skalowania dla usługi Azure Service Fabric
 
@@ -78,6 +78,8 @@ Właściwości węzła i ograniczeniami dotyczącymi umieszczania zadeklarowany 
 2. Uruchom `Get-ServiceFabricNode` aby upewnić się, że węzeł zmienił się na wyłączone. Jeśli nie, zaczekaj, aż węzeł jest wyłączony. Może to potrwać kilka godzin w każdym węźle. Nie Kontynuuj, dopóki nie przeszła węzeł na wyłączone.
 3. Zmniejsz liczbę maszyn wirtualnych o jeden w tego typu węzła. Obecnie najwyższy wystąpienia maszyny Wirtualnej zostaną usunięte.
 4. Powtórz kroki od 1 do 3, zgodnie z potrzebami, ale nigdy nie skalowania w zależności od liczby wystąpień w typach węzła podstawowego mniejszą niż gwarantuje warstwy niezawodności. Zobacz [Planowanie pojemności klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) listę zalecanych wystąpień.
+5. Gdy wszystkie maszyny wirtualne zostaną usunięte (reprezentowana jako "W dół") sieci szkieletowej: / System/InfrastructureService / [nazwa węzła] pojawi się stan błędu. Następnie można zaktualizować zasobu klastra, aby usunąć typ węzła. Możesz użyć wdrażanie szablonu ARM, lub Edytuj zasób klastra za pośrednictwem [usługi Azure resource manager](https://resources.azure.com). Spowoduje to uruchomienie uaktualniania klastra, co spowoduje usunięcie sieci szkieletowej: / System/InfrastructureService / [typ węzła] usługi, który jest w stanie błędu.
+ 6. Po, opcjonalnie można usunąć zestawu skalowania maszyn wirtualnych, będą również widzieć węzłów jako "W dół" w narzędziu Service Fabric Explorer wyświetlić jednak. Ostatnim krokiem powinno być pora to oczyścić za pomocą `Remove-ServiceFabricNodeState` polecenia.
 
 ### <a name="example-scenario"></a>Przykładowy scenariusz
 Jest to obsługiwany scenariusz, kiedy do wykonywania operacji skalowania pionowy: użytkownik chce migrować sieci Web i aplikacji klastra usługi Service Fabric z dysków niezarządzanych do usługi managed disks bez przestojów aplikacji. 

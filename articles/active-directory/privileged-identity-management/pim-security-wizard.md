@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6f978612cbbf0c326c3e66f25a0fbf4b749cc73
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4fd850ac2116dc7f353eea87845501fff020bb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286971"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476234"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>Azure AD role zabezpieczeń kreatora w usłudze PIM
 
@@ -43,27 +43,27 @@ Drugiego kroku kreatora daje możliwość zmiany przypisania ról administratora
 
 1. Kliknij przycisk **ról usługi Azure AD** a następnie kliknij przycisk **kreatora**.
 
-    ![Role usługi Azure AD — kreator](./media/pim-security-wizard/wizard-start.png)
+    ![Role usługi Azure AD — strona kreatora przedstawiający 3 kroki, aby uruchomić Kreatora](./media/pim-security-wizard/wizard-start.png)
 
 1. Kliknij przycisk **1 odnajdowania ról uprzywilejowanych**.
 
 1. Przejrzyj listę ról uprzywilejowanych, aby zobaczyć, którzy użytkownicy są trwałe i kwalifikujące się.
 
-    ![Odnajdywanie użytkowników do ról uprzywilejowanych](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![Wykryj role uprzywilejowane — okienko trwałe i kwalifikujące się elementy członkowskie roli](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
 1. Kliknij przycisk **dalej** zaznacz składniki mają być uprawnieni.
 
-    ![Konwertuj elementy członkowskie na uprawnionych](./media/pim-security-wizard/convert-members-eligible.png)
+    ![Konwertuj elementy członkowskie na kwalifikujących się Strona z opcji, aby wybrać elementy członkowskie, które mają być kwalifikuje się role](./media/pim-security-wizard/convert-members-eligible.png)
 
 1. Po wybraniu elementów członkowskich, kliknij przycisk **dalej**.
 
-    ![Przeglądanie zmian](./media/pim-security-wizard/review-changes.png)
+    ![Wyświetlanie członków z przypisania trwałej roli, które zostaną przekonwertowane strony zmiany przeglądu](./media/pim-security-wizard/review-changes.png)
 
 1. Kliknij przycisk **OK** przekonwertować stałych przypisań uprawnionych.
 
     Po zakończeniu procesu konwersji, zostanie wyświetlone powiadomienie.
 
-    ![Powiadomienia](./media/pim-security-wizard/notification-completion.png)
+    ![Powiadomienie informujące o tym stan konwersji](./media/pim-security-wizard/notification-completion.png)
 
 Aby przekonwertować kwalifikujących się inne przypisania ról uprzywilejowanych, możesz Uruchom ponownie kreatora. Jeśli chcesz używać interfejsu PIM zamiast kreatora, zobacz [przypisać role usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md).
 

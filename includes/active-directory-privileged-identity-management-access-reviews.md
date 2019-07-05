@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 364d4a11772e6bb72e2e258503f3cce49dc61453
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183926"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476253"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Utwórz co najmniej jeden przeglądów dostępu
 
@@ -25,7 +25,7 @@ ms.locfileid: "67183926"
 
 1. Ustaw **Data rozpoczęcia**. Domyślnie przeglądu dostępu pojawia się raz, rozpoczyna się w tym samym czasie, w którym zostały utworzone, a kończy się ona w ciągu jednego miesiąca. Można zmienić początek, a końcową dostępu Przejrzyj rozpoczęcia w przyszłości i ostatnio jednak liczbę dni ma.
 
-    ![Tworzenie przeglądu dostępu — rozpoczęcia i zakończenia](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
+    ![Data, częstotliwość, czas trwania, zakończenia, liczba, Data rozpoczęcia i zakończenia](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
 1. Aby cyklu przeglądu dostępu, należy zmienić **częstotliwość** z **jeden raz** do **tygodniowy**, **miesięczne**,  **Co kwartał**, **rocznie**, lub **częściową annually**. Użyj **czas trwania** suwaka lub pola tekstowego, aby określić, ile dni będą każdej recenzji serii cyklicznych, Otwórz na dane wejściowe recenzentów. Na przykład maksymalny czas trwania, którego można ustawić comiesięcznego przeglądu jest 27 dni, należy unikać nakładania się recenzji.
 
@@ -33,22 +33,22 @@ ms.locfileid: "67183926"
 
 1. W **użytkowników** wybierz jedną lub więcej ról, które chcesz przejrzeć członkostwo.
 
-    ![Tworzenie przeglądu dostępu — użytkownicy](./media/active-directory-privileged-identity-management-access-reviews/users.png)
+    ![Zakresem użytkowników, aby zapoznać się z członkostwa w roli](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
     > Wybranie więcej niż jednej roli spowoduje utworzenie wielu przeglądów dostępu. Na przykład wybranie pięć ról utworzy pięciu przeglądach uprawnień dostępu.
 
     Jeśli tworzysz przeglądu dostępu ról usługi Azure AD, poniżej przedstawiono przykład listy członkostwa przeglądu.
 
-    ![Tworzenie przeglądu dostępu — Przegląd członkostwo w roli](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
+    ![Przegląd członkostwa w okienku role usługi Azure AD można wybrać](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
     Jeśli tworzysz przeglądu dostępu dla ról zasobów platformy Azure, poniżej przedstawiono przykład listy członkostwa przeglądu.
 
-    ![Tworzenie przeglądu dostępu — Przegląd członkostwo w roli](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
+    ![Przeglądanie członkostwa w okienku role zasobów platformy Azure można wybrać](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
 1. W **recenzentów** wybierz co najmniej jedną osobę, aby zapoznać się z wszystkich użytkowników. Lub możesz wybrać członkowie dokonać przeglądu własnego dostępu.
 
-    ![Tworzenie przeglądu dostępu — osób dokonujących przeglądu](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
+    ![Lista osób dokonujących przeglądu wybrani użytkownicy lub członkowie (własny)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **Wybranych użytkowników** — Użyj tej opcji, kiedy nie wiesz, który wymaga dostępu. Po wybraniu tej opcji można przypisać przeglądu właściciel zasobu lub kierownik grupy, aby zakończyć.
     - **Członkowie (własny)** — Użyj tej opcji, aby użytkownicy mogli przejrzeć swoje własne przypisań ról.
@@ -57,7 +57,7 @@ ms.locfileid: "67183926"
 
 1. Aby określić, co się dzieje po zakończeniu przeglądu, rozwiń **ustawienia działań po zakończeniu** sekcji.
 
-    ![Ustawienia działań po zakończeniu](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![Po zakończeniu zastosować ustawienia automatycznego i powinien przeglądu nie odpowiada](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
 1. Jeśli chcesz automatycznie Usuń dostęp dla użytkowników, które zostały odrzucone, ustaw **automatycznie Zastosuj wyniki do zasobu** do **Włącz**. Jeśli chcesz ręcznie zastosować wyników, po zakończeniu przeglądu, ustaw przełącznik **wyłączyć**.
 
@@ -72,7 +72,7 @@ ms.locfileid: "67183926"
 
 1. Aby określić dodatkowe ustawienia, rozwiń **Zaawansowane ustawienia** sekcji.
 
-    ![Ustawienia zaawansowane](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
+    ![Ustawienia zaawansowane dla Pokaż zalecenia, wymagana Przyczyna przy zatwierdzenia, powiadomienia pocztowe i przypomnienia](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
 
 1. Ustaw **Pokaż zalecenia** do **Włącz** pokazują stan systemu recenzentów zalecenia na podstawie informacji dotyczących dostępu użytkownika.
 

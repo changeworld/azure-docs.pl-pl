@@ -4,17 +4,17 @@ description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć urządz
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/19/2019
+ms.date: 07/02/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5c790d39ea471a599e8a6b46004b3e350834c318
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 58dc2f5d8862c0b51b36e028d52275b2c8e732be
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573961"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537550"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux
 
@@ -55,15 +55,14 @@ Zasoby w chmurze:
 
 Urządzenie usługi IoT Edge:
 
-* Urządzenie lub maszyna wirtualna z systemem Linux, która będzie działać jako urządzenie usługi IoT Edge. Należy użyć dostarczonych przez firmę Microsoft [usługi Azure IoT Edge w systemie Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) maszynę wirtualną, która preinstaluje wszystko, czego potrzebujesz do uruchamiania usługi IoT Edge na urządzeniu. Utwórz tę maszynę wirtualną za pomocą następującego polecenia:
+* Urządzenie lub maszyna wirtualna z systemem Linux, która będzie działać jako urządzenie usługi IoT Edge. Należy użyć dostarczonych przez firmę Microsoft [usługi Azure IoT Edge w systemie Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) maszynę wirtualną, która preinstaluje wszystko, czego potrzebujesz do uruchamiania usługi IoT Edge na urządzeniu. Utworzyć tej maszyny wirtualnej, używając następujących poleceń:
 
    ```azurecli-interactive
+   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
    Utworzenie i uruchomienie nowej maszyny wirtualnej może zająć kilka minut.
-
-   W tym momencie może zostać zwrócona informacja o błędzie `MarketplacePurchaseEligibilityFailed`. Jeśli tak się stanie, należy zaakceptować postanowienia, przechodząc do [usługi Azure IoT Edge w systemie Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) i klikając pozycję `Get It Now`. Przed ponowieniem próby wykonania polecenia zaloguj się tam i zaakceptuj postanowienia.
 
    Podczas tworzenia nowej maszyny wirtualnej zanotuj wartość elementu **publicIpAddress**. Jest ona widoczna w danych wyjściowych polecenia create. Tego publicznego adresu IP użyjesz później w tym przewodniku Szybki start do nawiązania połączenia z maszyną wirtualną.
 
@@ -135,7 +134,7 @@ W przypadku korzystania z usługi IoT Edge na komputerze lokalnym lub urządzeni
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Wyświetlanie stanu środowiska uruchomieniowego usługi IoT Edge
 
-Pozostałe polecenia w tym przewodniku Szybki start są wykonywane na samym urządzeniu usługi IoT Edge, dzięki czemu można zobaczyć, co dzieje się na urządzeniu. Jeśli używasz maszyny wirtualnej, połącz się z nią teraz, używając publicznego adresu IP z danych wyjściowych polecenia użytego do jej utworzenia. Publiczny adres IP możesz również znaleźć na stronie przeglądu swojej maszyny wirtualnej w witrynie Azure Portal. Użyj następującego polecenia, aby nawiązać połączenie z maszyną wirtualną. Zastąp ciąg **{azureuser}**, jeśli używasz innej nazwy użytkownika niż sugerowana w wymaganiach wstępnych. Zastąp ciąg **{publicIpAddress}** adresem swojej maszyny.
+Pozostałe polecenia w tym przewodniku Szybki start są wykonywane na samym urządzeniu usługi IoT Edge, dzięki czemu można zobaczyć, co dzieje się na urządzeniu. Jeśli używasz maszyny wirtualnej, połącz się z nią teraz, używając publicznego adresu IP z danych wyjściowych polecenia użytego do jej utworzenia. Publiczny adres IP możesz również znaleźć na stronie przeglądu swojej maszyny wirtualnej w witrynie Azure Portal. Użyj następującego polecenia, aby nawiązać połączenie z maszyną wirtualną. Zastąp ciąg **{azureuser}** , jeśli używasz innej nazwy użytkownika niż sugerowana w wymaganiach wstępnych. Zastąp ciąg **{publicIpAddress}** adresem swojej maszyny.
 
    ```azurecli-interactive
    ssh azureuser@{publicIpAddress}

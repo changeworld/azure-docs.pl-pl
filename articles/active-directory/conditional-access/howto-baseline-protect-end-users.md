@@ -11,20 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b72be0dbe35cf95eed404c7c1407c53f5f2ecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112350"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561017"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Zasady punktu odniesienia: Ochrona użytkowników końcowych (wersja zapoznawcza)
 
 Firma Microsoft zwykle myśleć, że konta administratora, są to jedyne konta, które wymagają ochrony z uwierzytelnianiem wieloskładnikowym (MFA). Administratorzy mają szeroki dostęp do poufnych informacji i wprowadzać zmiany do ustawień na poziomie subskrypcji. Jednakże nieupoważnione osoby zwykle użytkownikom końcowym docelowego. Po uzyskaniu dostępu, nieupoważnione osoby te mogą żądać dostępu do uprzywilejowanych informacje w imieniu oryginalnego właściciela konta lub pobrać cały katalog do wykonania ataku w całej organizacji. Jednej wspólnej metody w celu zwiększenia ochrony dla wszystkich użytkowników jest wymagane mocniejsze formularz weryfikacji konta, takie jak multi factor authentication (MFA).
 
 Do uzyskania odpowiedniej równowagi zabezpieczeń i użyteczności, użytkownicy nie powinien wyświetlony monit o każdym pojedynczego logowania. Żądania uwierzytelniania, które odzwierciedlają zachowanie zwykłego użytkownika, np. z tego samego urządzenia z tej samej lokalizacji ma niskie ryzyko naruszenia zabezpieczeń. Tylko operacje logowania, które zostaną uznane za ryzykowne i Wyświetl właściwości nieuprawnione powinien monit za pomocą usługi MFA wyzwania.
-
-![Wymagać uwierzytelniania Wieloskładnikowego dla użytkowników](./media/howto-baseline-protect-end-users/baseline-policy-end-user-protection.png)
 
 Ochrona użytkowników końcowych jest uwierzytelnianie wieloskładnikowe na podstawie ryzyka [bazowymi zasadami](concept-baseline-protection.md) , która chroni wszyscy użytkownicy w katalogu, w tym wszystkich ról administratora. Włączenie tych zasad wymaga od wszystkich użytkowników do rejestracji usługi MFA przy użyciu aplikacji uwierzytelniającej. Użytkownikom można zignorować wiersz rejestracji uwierzytelniania Wieloskładnikowego przez 14 dni, po upływie których będą blokowani logowanie do momentu rejestracji usługi MFA. Po zarejestrowaniu usługi MFA użytkownicy otrzymują monit dla usługi MFA tylko podczas prób ryzykowne logowania. Naruszenia bezpieczeństwa kont użytkowników są blokowane, aż do resetowania jego hasła i zwinięciu sekcji zdarzeń o podwyższonym ryzyku.
 
@@ -60,17 +58,6 @@ Protokoły uwierzytelniania starszej wersji (IMAP, SMTP, POP3, itp.) są używan
 > [!WARNING]
 > Przed włączeniem tej zasady, upewnij się, że użytkownicy nie są za pomocą protokołów uwierzytelniania starszej wersji. Zapoznaj się z artykułem [jak: Blokuj starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) Aby uzyskać więcej informacji.
 
-### <a name="user-exclusions"></a>Wykluczenia użytkownika
-
-Ta zasada linii bazowej zapewnia opcji, aby wykluczyć użytkowników. Przed włączeniem zasad dla swojej dzierżawy, zaleca się, z wyłączeniem następujących kont:
-
-* **Dostęp awaryjny** lub **break szkła** konta, aby uniknąć zablokowania konta obowiązujące w dzierżawie. W mało prawdopodobnym scenariuszu, który wszyscy administratorzy z zablokowanym dostępem do Twojej dzierżawy Twoje konto administracyjne dostępu awaryjnego może służyć do logowania się do dzierżawy podejmij kroki, aby odzyskać dostęp.
-   * Więcej informacji można znaleźć w artykule [zarządzania kont dostępu awaryjnego w usłudze Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Konta usług** i **usługi zasady**, takich jak konto Azure AD Connect Sync. Konta usług są nieinteraktywnych kont, które nie są powiązane z żadnym określonym użytkownikiem. One są zwykle używane przez usługi zaplecza i zezwolić na dostęp programistyczny do aplikacji. Konta usług powinny być wyłączone, ponieważ usługi MFA nie można wykonać programowo.
-   * Jeśli Twoja organizacja ma konta te używane w skryptach lub kod, należy wziąć pod uwagę zastępowała je za pomocą [zarządzanych tożsamości](../managed-identities-azure-resources/overview.md). Jako rozwiązanie tymczasowe możesz wykluczyć te określonych kont z bazowymi zasadami.
-* Użytkownicy, którzy nie ma lub nie będzie mógł używać smartfonie.
-   * Ta zasada wymaga od użytkowników rejestracji usługi MFA za pomocą aplikacji Microsoft Authenticator.
-
 ## <a name="enable-the-baseline-policy"></a>Włącz zasady linii bazowej
 
 Zasady **bazowymi zasadami: Ochrona użytkowników końcowych (wersja zapoznawcza)** ma wstępnie skonfigurowany i pojawi się u góry po przejściu do bloku dostępu warunkowego w witrynie Azure portal.
@@ -81,7 +68,6 @@ Aby włączyć te zasady i chronić użytkowników:
 1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
 1. Na liście zasad wybierz **bazowymi zasadami: Ochrona użytkowników końcowych (wersja zapoznawcza)** .
 1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
-1. Dodaj wykluczenia użytkownika, klikając **użytkowników** > **wybierz wykluczonych użytkowników** i wybierając pozycję Użytkownicy, którzy muszą być wyłączone. Kliknij przycisk **wybierz** następnie **gotowe**.
 1. Kliknij przycisk **Zapisz**.
 
 ## <a name="next-steps"></a>Kolejne kroki

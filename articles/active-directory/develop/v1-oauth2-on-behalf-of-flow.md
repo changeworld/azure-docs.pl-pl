@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc352c6867779fd8f4487acdb1d11c0fabe4b9f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fd5c8f406ea54c7fc8e81c674e41b30d7ad406
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110990"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482413"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service to service wywołania tej tożsamości użytkownika użycia delegowanego przepływu w imieniu z
 
@@ -38,7 +38,7 @@ Przepływ OAuth 2.0 "w imieniu" (OBO) umożliwia aplikacji, która wywołuje us�
 
 Po użytkownik został uwierzytelniony w aplikacji, która używa można uruchomić przepływu OBO [kod autoryzacji OAuth 2.0 udzielić przepływ](v1-protocols-oauth-code.md). W tym momencie aplikacji wysyła token dostępu (token A) w sieci web warstwy środkowej interfejsu API (interfejs API A) zawierający oświadczenia użytkownika i zgody na dostęp do interfejsu API A. Następnie element API sprawia, że uwierzytelnionego żądania podrzędnego sieci Web interfejsu API (interfejs API B).
 
-Te kroki tworzą przepływu w imieniu z: ![OAuth 2.0 w imieniu użytkownika z usługi Flow](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Te kroki tworzą przepływu w imieniu z: ![Przedstawiono kroki OAuth 2.0 w imieniu użytkownika z usługi flow](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Aplikacja kliencka wysyła żądanie do interfejsu API, A za pomocą tokenu A.
 1. A interfejs API jest uwierzytelniany punktu końcowego wystawiania tokenu usługi Azure AD i żądania tokenu służącego do dostępu do interfejsu API B.

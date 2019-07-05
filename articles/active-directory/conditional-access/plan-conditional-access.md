@@ -2,28 +2,25 @@
 title: Planowanie zasad dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: W tym artykule dowiesz się, jak zaplanować zasady dostępu warunkowego usługi Azure Active Directory.
 services: active-directory
-author: MicrosoftGuyJFlo
-manager: daveba
-tags: azuread
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.workload: identity
 ms.date: 01/25/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a64611d4e31767b4705f41e47234af7b0848c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56ddc2738305600c611cab1e09d654164f78b3d6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112222"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509433"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Instrukcje: Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory
 
-Planowanie wdrożenia dostępu warunkowego jest niezwykle upewnij się, że strategia wymagany dostęp do aplikacji i zasobów są dostępne w Twojej organizacji. Powinni spędzać większość czasu na etapie planowania wdrożenia i projektowanie różnych zasad, wymagają, aby udzielić lub zablokować dostęp dla użytkowników, zgodnie z warunkami, które wybierzesz. W tym dokumencie opisano kroki, które należy podjąć w celu zaimplementowania zasad dostępu warunkowego w bezpieczne i skuteczne. Przed rozpoczęciem upewnij się, należy zrozumieć jak [dostępu warunkowego](overview.md) działa i kiedy należy go używać.
-
+Planowanie wdrożenia dostępu warunkowego jest niezwykle upewnij się, że strategia wymagany dostęp do aplikacji i zasobów są dostępne w Twojej organizacji. Spędzają większość czasu na etapie planowania wdrożenia i projektowanie różnych zasad, wymagają, aby udzielić lub zablokować dostęp dla użytkowników, zgodnie z warunkami, które wybierzesz. W tym dokumencie opisano kroki, które należy podjąć w celu zaimplementowania zasad dostępu warunkowego w bezpieczne i skuteczne. Przed rozpoczęciem upewnij się, należy zrozumieć jak [dostępu warunkowego](overview.md) działa i kiedy należy go używać.
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
@@ -34,9 +31,6 @@ Jeśli wymagane są dodatkowe funkcje, również może być konieczne uzyskanie 
 Istnieją dwa typy zasad dostępu warunkowego: linii bazowej i standard. A [bazowymi zasadami](baseline-protection.md) jest wstępnie zdefiniowanych zasad dostępu warunkowego. Celem tych zasad jest upewnij się, że masz co najmniej poziom odniesienia z włączoną obsługą zabezpieczeń. Zasady linii bazowej. Zasady linii bazowej są dostępne we wszystkich wersjach programu Azure AD i zapewniają tylko opcje dostosowywania ograniczone. Jeśli scenariusz wymaga większej elastyczności, wyłączyć zasady w linii bazowej i implementowanie wymagań w przypadku standardowych zasad niestandardowych.
 
 W standardowych zasad dostępu warunkowego można dostosować wszystkie ustawienia, aby dostosować zasady aby Twoje wymagania biznesowe. Standardowe zasady wymaga licencji usługi Azure AD Premium P1.
-
-
-
 
 ## <a name="draft-policies"></a>Zasady narzędzia draft
 
@@ -62,16 +56,14 @@ Użyj następującego przykładowego szablonu, aby utworzyć zasady dostępu war
 Co najmniej **w takim przypadku** definiuje podmiotu zabezpieczeń (**kto**) który próbuje uzyskać dostęp aplikacji w chmurze (**co**). Jeśli to konieczne, możesz również uwzględnić **jak** odbywa się próba dostępu. W funkcji dostępu warunkowego, elementy definiują kto, co się stanie i jak są znane jako warunki. Aby uzyskać więcej informacji, zobacz [jakie są warunki w usłudze Azure Active Directory dostępu warunkowego?](conditions.md) 
 
 Za pomocą **to zrobić**, zdefiniuj odpowiedź zasad do warunku dostępu. W odpowiedzi można zablokować lub przyznać dostęp z dodatkowymi wymaganiami, na przykład uwierzytelnianie wieloskładnikowe (MFA). Aby uzyskać pełny przegląd zobacz [co to jest dostęp do formantów w usłudze Azure Active Directory dostępu warunkowego?](controls.md)  
- 
 
 Kombinacja warunków przy użyciu usługi kontroli dostępu reprezentuje zasady dostępu warunkowego.
 
 ![Przyczyna i odpowiedzi](./media/plan-conditional-access/51.png)
 
-
 Aby uzyskać więcej informacji, zobacz [co to są wymagane w celu zmiany celu zasad działają](best-practices.md#whats-required-to-make-a-policy-work).
 
-W tym momencie jest odpowiedni moment, aby decyzję w sprawie standard nazewnictwa dla zasad. Zasady nazewnictwa pomaga znaleźć zasady i zrozumienie ich przeznaczenie bez ich otwierania w portalu administracyjnego platformy Azure. Należy nadać nazwę zasady, aby wyświetlić:
+W tym momencie jest odpowiedni moment, aby decyzję w sprawie standard nazewnictwa dla zasad. Zasady nazewnictwa pomaga znaleźć zasady i zrozumienie ich przeznaczenie bez ich otwierania w portalu administracyjnego platformy Azure. Nazwij zasady do wyświetlenia:
 
 - Numer sekwencyjny
 - W aplikacji w chmurze, których on obowiązuje
@@ -83,47 +75,32 @@ W tym momencie jest odpowiedni moment, aby decyzję w sprawie standard nazewnict
 
 Gdy nazwę opisową ułatwia zapewnienie Omówienie wdrożenia dostępu warunkowego, numer sekwencji jest przydatne, jeśli muszą odwoływać się do zasad w konwersacji. Na przykład jeśli innymi administratora możesz skontaktować się telefonicznie, możesz poprosić ich, aby otworzyć przystawkę Zasady EM063 do rozwiązania problemu.
 
-
-
 Na przykład następująca Nazwa stwierdza, że zasady wymagają usługi MFA dla użytkowników zewnętrznych sieci za pomocą aplikacji Dynamics CRP marketing:
 
 `CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
-
 Oprócz aktywnego zasad, zaleca się również zasady Implementowanie wyłączone, które działają jako pomocniczą [kontroli dostępu odporne na błędy w scenariuszach awaryjnego/awaria](../authentication/concept-resilient-controls.md). Usługi standard nazewnictwa awaryjny zasad powinien zawierać kilka elementów: 
 
 - `ENABLE IN EMERGENCY` na początku, aby nazwa wyróżnić się wśród innych zasad.
-
 - Nazwa przerw w działaniu, które mają dotyczyć.
-
 - Szeregowania numer sekwencyjny mają ułatwić administratorowi znać, w jakiej kolejności zasad powinno być włączone. 
-
 
 Na przykład następująca nazwa wskazuje, że ta zasada jest pierwszej zasady z czterema, które należy włączyć w przypadku przerwy w działaniu usługi MFA:
 
 `EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
 
-
-
-
-
-
-
 ## <a name="plan-policies"></a>Planowanie zasad
 
 Podczas planowania rozwiązania zasad dostępu warunkowego należy ocenić, czy należy utworzyć zasady w celu osiągnięcia następujących rezultatów. 
-
 
 ### <a name="block-access"></a>Blokuj dostęp
 
 Opcja w celu zablokowania dostępu jest zaawansowane ponieważ go:
 
 - Trumps wszystkich przypisań dla użytkownika
-
 - Ma uprawnienia do blokowania w całej organizacji, zalogowanie się do swojej dzierżawy
  
 Jeśli chcesz zablokować dostęp dla wszystkich użytkowników w co najmniej powinno wykluczać jednego użytkownika (kont dostępu awaryjnego zazwyczaj) z zasad. Aby uzyskać więcej informacji, zobacz [Wybieranie użytkowników i grup](block-legacy-authentication.md#select-users-and-cloud-apps).  
-    
 
 ### <a name="require-mfa"></a>Wymaganie usługi MFA
 
@@ -134,7 +111,6 @@ Typowe przypadki użycia, aby wymagać uwierzytelniania Wieloskładnikowego są 
 - [Przez administratorów](howto-baseline-protect-administrators.md)
 - [Do określonych aplikacji](app-based-mfa.md) 
 - [Z lokalizacji sieciowej, nie ufasz](untrusted-networks.md).
-
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Odpowiadanie na mogą mieć złamane zabezpieczenia konta
 
@@ -149,7 +125,6 @@ Poziom ryzyka użytkownika jest dostępna tylko [zasad ryzyka dla użytkownika](
 
 Aby uzyskać więcej informacji, zobacz [co to jest Azure Active Directory Identity Protection?](../identity-protection/overview.md) 
 
-
 ### <a name="require-managed-devices"></a>Wymaganie urządzeń zarządzanych
 
 Rozprzestrzenianie obsługiwanych urządzeń, dostęp do zasobów chmury pozwala zwiększyć produktywność użytkowników. Na drugiej strony prawdopodobnie nie ma niektórych zasobów w danym środowisku, aby były dostępne dla urządzeń z poziomu ochrony nieznany. Dla zasobów, których dotyczy problem należy wymagać, czy użytkownicy mogą dostęp tylko do ich za pomocą urządzenia zarządzanego. Aby uzyskać więcej informacji, zobacz [sposób wymagać zarządzanych urządzeń w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](require-managed-devices.md). 
@@ -158,34 +133,24 @@ Rozprzestrzenianie obsługiwanych urządzeń, dostęp do zasobów chmury pozwala
 
 Jedną z pierwszych decyzji, które należy wykonać w przypadku przynoszą własne urządzenia (BYOD) scenariuszy, czy trzeba zarządzać całym urządzeniem, czy po prostu dane na nim. Pracownicy używają urządzeń przenośnych zarówno osobistych i służbowych. Upewnij się, że Twoi pracownicy mogą być produktywność, ma zapobiegać utracie danych. Przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD) można ograniczyć dostęp do aplikacji w chmurze do zatwierdzonych aplikacji klienckich, które może chronić dane firmowe. Aby uzyskać więcej informacji, zobacz [jak wymagać zatwierdzonych aplikacji klienckich w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](app-based-conditional-access.md).
 
-
 ### <a name="block-legacy-authentication"></a>Blokowanie starszego uwierzytelniania
 
 Usługa Azure AD obsługuje niektóre z najczęściej używanych protokołów uwierzytelniania i autoryzacji, w tym starsze uwierzytelnianie. Jak można zapobiec aplikacji korzystających z uwierzytelniania starszej wersji, uzyskiwanie dostępu do zasobów dzierżawy Zalecane jest po prostu je zablokować przy użyciu zasad dostępu warunkowego. Jeśli to konieczne, możesz zezwolić tylko niektórych użytkowników i określone lokalizacje sieciowe korzystać z aplikacji, które są oparte na starszych uwierzytelniania. Aby uzyskać więcej informacji, zobacz [jak zablokować starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego](block-legacy-authentication.md).
-
 
 ## <a name="test-your-policy"></a>Testowanie zasad
 
 Zanim zetknie zasad w środowisku produkcyjnym, należy przetestować jest sprawdzenie, czy zachowanie jest zgodne z oczekiwaniami.
 
 1. Utwórz użytkowników testowych
-
-2. Tworzenie planu testu
-
-3. Konfigurowanie zasad
-
-4. Oceń symulowane logowania
-
-5. Testowanie zasad
-
-6. Czyszczenie
-
-
+1. Tworzenie planu testu
+1. Konfigurowanie zasad
+1. Oceń symulowane logowania
+1. Testowanie zasad
+1. Czyszczenie
 
 ### <a name="create-test-users"></a>Utwórz użytkowników testowych
 
 Aby sprawdzić zasady, należy utworzyć zbiór użytkowników, która jest podobna do użytkowników w danym środowisku. Tworzenie użytkowników testowych pozwala sprawdzić, czy zasady działają zgodnie z oczekiwaniami, zanim mają wpływ na rzeczywistych użytkowników i zakłócać ich dostęp do aplikacji i zasobów. 
-
 
 Niektóre organizacje mają dzierżaw testu do tego celu. Jednak może być trudne do odtworzenia wszystkich warunków i aplikacji w dzierżawie testowej, aby w pełni przetestować wyniki zasad. 
 
@@ -203,19 +168,16 @@ Plan testu jest posiadanie porównanie oczekiwanych wyników i rzeczywiste wynik
 |[Zarządzanie urządzeniami](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autoryzowany użytkownik próbuje Zaloguj się za pomocą nieautoryzowanego urządzenia|Zablokowany dostęp| |
 |[Zmiana hasła dla ryzykownych użytkowników](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Autoryzowany użytkownik próbuje zalogować się przy użyciu przejęcie poświadczeń (o wysokim ryzyku Zaloguj się)|Użytkownik jest monitowany o zmianę hasła lub dostęp jest zablokowany, oparte na zasadach| |
 
-
 ### <a name="configure-the-policy"></a>Konfigurowanie zasad
 
 Zarządzanie zasadami dostępu warunkowego jest zadanie ręczne. W witrynie Azure portal można zarządzać zasady dostępu warunkowego w jednej centralnej lokalizacji - stronę dostępu warunkowego. Jeden punkt wejścia do strony dostęp warunkowy jest **zabezpieczeń** sekcji **usługi Active Directory** okienka nawigacji. 
 
 ![Dostęp warunkowy](media/plan-conditional-access/03.png)
 
-
 Jeśli chcesz dowiedzieć się więcej na temat sposobu tworzenia zasad dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md). Ten przewodnik Szybki Start pomaga:
 
 - Zapoznanie się z interfejsem użytkownika.
 - Uzyskaj pierwsze wrażenie działania dostępu warunkowego. 
-
 
 ### <a name="evaluate-a-simulated-sign-in"></a>Oceń symulowane logowania
 
@@ -224,48 +186,33 @@ Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wie
 >[!NOTE]
 > Uruchom symulowane daje wyobrażenie wpływu, jaki ma zasady dostępu warunkowego, nie zastępuje rzeczywiste przebiegu testu.
 
-
 ### <a name="test-your-policy"></a>Testowanie zasad
 
 Uruchamianie przypadków testowych zgodnie z planem testu. W tym kroku, możesz uruchomić za pomocą testu end-to-end poszczególnych zasad dla użytkowników testowych, aby upewnij się, że każda zasada działa poprawnie. Użyj scenariusze utworzone powyżej wykonanie każdego testu.
 
-Koniecznie upewnij się, że testujesz kryteria wykluczenia zasad. Na przykład może wyłączyć użytkownika bądź grupy z zasad, które wymagają usługi MFA. Jeśli wykluczonych użytkownicy są monitowani o uwierzytelnianie wieloskładnikowe, należy przetestować w związku z tym ponieważ kombinacji innych zasad może wymagać uwierzytelniania Wieloskładnikowego dla tych użytkowników.
-
+Koniecznie upewnij się, że testujesz kryteria wykluczenia zasad. Na przykład może wyłączyć użytkownika bądź grupy z zasad, które wymagają usługi MFA. Sprawdzić, czy wykluczonych użytkownicy są monitowani o MFA, ponieważ kombinacji innych zasad może wymagać uwierzytelniania Wieloskładnikowego dla tych użytkowników.
 
 ### <a name="cleanup"></a>Czyszczenie
 
 Procedura czyszczenia składa się z następujących czynności:
 
 1. Wyłączenie tych zasad.
-
-2. Usuń przypisanych użytkowników i grup.
-
-3. Usuń użytkowników testowych.  
-
-
-
+1. Usuń przypisanych użytkowników i grup.
+1. Usuń użytkowników testowych.  
 
 ## <a name="move-to-production"></a>Przenoszenie do środowiska produkcyjnego
 
-Jeśli nowe zasady są gotowe dla danego środowiska, wdrażać je w fazach::
+Gdy nowe zasady są gotowe do środowiska, należy wdrożyć je w fazach:
 
 - Zapewniają komunikację zmian wewnętrznych, użytkowników końcowych.
-
 - Uruchom wprowadzaj w małej grupie użytkowników, a następnie sprawdź, czy zasady zachowuje się zgodnie z oczekiwaniami.
-
 - Po rozwinięciu zasady w celu uwzględnienia większej liczby użytkowników, w dalszym ciągu wykluczenia wszystkich administratorów. Administratorzy z wyjątkiem gwarantuje, że nadal przez kogoś innego ma dostęp do zasad wymagających używania Jeśli wymagana jest zmiana.
-
 - Zastosuj zasady do wszystkich użytkowników tylko wtedy, gdy jest to wymagane.
 
 Najlepszym rozwiązaniem należy utworzyć co najmniej jedno konto użytkownika, który jest:
 
 - Dedykowane administrowanie zasadami
-
 - Wykluczone ze wszystkich zasad
-
- 
-
-
 
 ## <a name="rollback-steps"></a>Kroki wycofywania
 
@@ -273,16 +220,16 @@ W razie potrzeby można wycofać nowo wdrożonych zasad można wycofać należy 
 
 1. **Wyłącz zasady** — wyłączanie zasad zapewnia, że nie ma zastosowania, gdy użytkownik próbuje się zalogować. Zawsze możesz wrócić i włączyć zasady, jeśli chcesz z niego korzystać.
 
-    ![Wyłączanie zasad](media/plan-conditional-access/07.png)
+   ![Wyłączanie zasad](media/plan-conditional-access/07.png)
 
-2. **Wykluczanie użytkownika / grupy z zasad** — Jeśli użytkownik nie może uzyskać dostęp do aplikacji, możesz wykluczyć użytkowników z zasad
+1. **Wykluczanie użytkownika / grupy z zasad** — Jeśli użytkownik nie może uzyskać dostęp do aplikacji, możesz wykluczyć użytkowników z zasad
 
-    ![Użytkownicy Exluce](media/plan-conditional-access/08.png)
+   ![Użytkownicy Exluce](media/plan-conditional-access/08.png)
 
-    >[!NOTE]
-    > Ta opcja powinna należy używać oszczędnie, tylko w sytuacji, w którym użytkownik jest zaufany. Użytkownik powinien zostać ponownie dodane do zasad lub grupy tak szybko, jak to możliwe.
+   > [!NOTE]
+   > Ta opcja powinna należy używać oszczędnie, tylko w sytuacji, w którym użytkownik jest zaufany. Użytkownik powinien zostać ponownie dodane do zasad lub grupy tak szybko, jak to możliwe.
 
-3. **Usuń zasady** — Jeśli to ustawienie zasad nie jest już potrzebne, usuń go.
+1. **Usuń zasady** — Jeśli to ustawienie zasad nie jest już potrzebne, usuń go.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

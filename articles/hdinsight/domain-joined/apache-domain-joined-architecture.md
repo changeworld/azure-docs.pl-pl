@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 46eb90d2ec9902a9b5b7830063d0a6164ae948dd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.openlocfilehash: c227abce5adcefd16a41c5590e3ff490d138c424
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061128"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441450"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Użyj pakiet Enterprise Security w HDInsight
 
@@ -66,10 +66,14 @@ Jeśli federacyjnej jest używana i skróty haseł są poprawnie synchronizowane
 1. Zainstaluj wersję zapoznawczą [modułu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
 
    ```powershell
-   Install-Module AzureADPreview
+   Install-Module AzureAD
    ```
 
-2. Wprowadź `Connect-AzureAD` przy użyciu poświadczeń administratora globalnego (administratora dzierżawy).
+2. Połącz przy użyciu poświadczeń administratora globalnego (administratora dzierżawy).
+   
+   ```powershell
+   Connect-AzureAD
+   ```
 
 3. Sprawdź, jeśli została już utworzona nazwa główna usługi Microsoft Azure PowerShell.
 
