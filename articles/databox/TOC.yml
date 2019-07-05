@@ -143,6 +143,14 @@
               items:
                 - name: Za pośrednictwem protokołu SMB
                   href: data-box-heavy-deploy-copy-data.md
+                - name: Za pośrednictwem systemu plików NFS
+                  href: data-box-heavy-deploy-copy-data-via-nfs.md
+                - name: Za pośrednictwem interfejsu REST
+                  href: data-box-heavy-deploy-copy-data-via-rest.md
+                - name: Za pomocą usługi kopiowania danych
+                  href: data-box-heavy-deploy-copy-data-via-copy-service.md
+                - name: Na dyski zarządzane
+                  href: data-box-heavy-deploy-copy-data-from-vhds.md
             - name: '4 — zwracanie, przekazywanie, weryfikowanie'
               href: data-box-heavy-deploy-picked-up.md
         - name: Pojęcia
