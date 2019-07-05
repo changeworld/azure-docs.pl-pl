@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 54449d9ea14fef6b2373aa8e0ea3341417c2d3fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a19653f7ae3900fd7999f347ef4d3ef710be1430
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057986"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436337"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Włączanie tworzenia kopii zapasowej przy tworzeniu maszyny wirtualnej platformy Azure
 
@@ -54,7 +54,8 @@ Jeśli nie są już zalogowano do swojego konta, zaloguj się do [witryny Azure 
 
 
 > [!NOTE]
-> Usługa Azure Backup tworzy oddzielnej grupy zasobów (innej niż grupa zasobów maszyny Wirtualnej) do przechowywania migawek z formatem nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów, które będą przechowywane przez czas trwania w dniach, jak to określono w *Zachowaj natychmiastowe odzyskiwanie migawki* części zasad kopii zapasowej maszyny wirtualnej platformy Azure.  Stosowanie blokady do tej grupy zasobów może powodować błędy kopii zapasowych.
+> Usługa Azure Backup tworzy oddzielnej grupy zasobów (innej niż grupa zasobów maszyny Wirtualnej) do przechowywania migawek z formatem nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów, które będą przechowywane przez czas trwania w dniach, jak to określono w *Zachowaj natychmiastowe odzyskiwanie migawki* części zasad kopii zapasowej maszyny wirtualnej platformy Azure.  Stosowanie blokady do tej grupy zasobów może powodować błędy kopii zapasowych.<br>
+Ta grupa zasobów również powinny być wykluczone z jakieś ograniczenia dotyczące nazw/tag, zgodnie z zasadami ograniczeń mogłyby spowodować zablokowanie tworzenia kolekcji punktów zasobów w niej ponownie, powodując błędy kopii zapasowych.
 
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Rozpocznij tworzenie kopii zapasowej po utworzeniu maszyny Wirtualnej

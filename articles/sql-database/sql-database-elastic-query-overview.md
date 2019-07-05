@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/13/2019
-ms.openlocfilehash: 2ea1d116de2c435e873c653bbfa0571377c4f5ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.openlocfilehash: 5188862c50895c8e3f1bdecb4e08d39409bb5f9e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067071"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491669"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Omówienie zapytanie elastyczne w usłudze Azure SQL Database (wersja zapoznawcza)
 
@@ -143,6 +143,7 @@ Elastyczne zapytanie znajduje się na koszt baz danych Azure SQL Database. Nale�
 * Z wyjątkiem nvarchar(max) typy obiektów LOB (w tym typów przestrzennych) nie są obsługiwane w definicji tabeli zewnętrznej. Obejść ten problem możesz utworzyć widok w zdalnej bazy danych, który rzutuje typu LOB do nvarchar(max), definiowanie tabeli zewnętrznej za pośrednictwem widoku zamiast tabeli podstawowej, a następnie przerzuć go do oryginalnego typu LOB w zapytaniach.
 * Kolumnami typu danych nvarchar(max) w wyniku zestaw Wyłącz zaawansowane techniki używane w celu wykonania zapytania elastycznego dzielenia na partie i może mieć wpływ na wydajność zapytanie o rząd wielkości lub nawet w dwóch rzędów w canonical przypadki użycia, w przypadku, gdy duża ilość zagregowane dane są przesyłane w wyniku zapytania.
 * Statystyki kolumny za pośrednictwem tabel zewnętrznych nie są obecnie obsługiwane. Statystyki tabeli są obsługiwane, ale muszą zostać utworzone ręcznie.
+* Elastyczne zapytanie działa tylko z usługą Azure SQL Database. Nie można go używać do wykonywania zapytań na lokalnym serwerze SQL Server lub SQL Server na maszynie wirtualnej.
 
 ## <a name="feedback"></a>Opinia
 

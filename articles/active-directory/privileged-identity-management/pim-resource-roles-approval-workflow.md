@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9d2e8b4ae1a01cd299d910c4e88655885c7d00dc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288477"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476382"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM
 
@@ -38,15 +38,15 @@ Jako delegowany osoby zatwierdzającej otrzymasz wiadomość e-mail z powiadomie
 
 1. Kliknij przycisk **zatwierdzanie żądań**.
 
-    ![Zasoby platformy Azure — zatwierdzanie żądań](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Zatwierdzanie żądań - przedstawiający żądanie, aby sprawdzić stronę zasobów platformy Azure](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
     W **żądania aktywacji roli** sekcji zobaczysz listę żądań oczekujących na zatwierdzenie.
 
 ## <a name="approve-requests"></a>Zatwierdzanie żądań
 
-1. Znajdź i kliknij żądanie, które chcesz zatwierdzić. Zostanie wyświetlone okienko zatwierdzenia.
+1. Znajdź i kliknij żądanie, które chcesz zatwierdzić. Zatwierdź lub Odrzuć, zostanie wyświetlone okienko.
 
-    ![Zatwierdzanie żądań okienko](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Zatwierdzanie żądań — Zatwierdź lub Odrzuć okienka szczegółów i pole uzasadnienie](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. W **uzasadnienie** wpisz przyczynę.
 
@@ -54,13 +54,13 @@ Jako delegowany osoby zatwierdzającej otrzymasz wiadomość e-mail z powiadomie
 
     Pojawi się powiadomienie o zatwierdzenie.
 
-    ![Zatwierdzenie powiadomienia](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![Zatwierdź powiadomienie wskazujące, że żądanie zostało zatwierdzone](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
 ## <a name="deny-requests"></a>Odmów żądań
 
-1. Znajdź i kliknij żądanie, które chcesz odmówić. Zostanie wyświetlone okienko zatwierdzenia.
+1. Znajdź i kliknij żądanie, które chcesz odmówić. Zatwierdź lub Odrzuć, zostanie wyświetlone okienko.
 
-    ![Zatwierdzanie żądań okienko](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Zatwierdzanie żądań — Zatwierdź lub Odrzuć okienka szczegółów i pole uzasadnienie](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. W **uzasadnienie** wpisz przyczynę.
 

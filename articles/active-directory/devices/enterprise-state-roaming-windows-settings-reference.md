@@ -2,27 +2,21 @@
 title: Informacje dotyczące ustawień roamingu w systemie Windows 10 | Dokumentacja firmy Microsoft
 description: Pełna lista wszystkich ustawień, które będą korzystania z roamingu lub kopii zapasowej w systemie Windows 10.
 services: active-directory
-keywords: roaming stanu dla przedsiębiorstw, chmura systemu windows
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353263"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481806"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Informacje dotyczące ustawień roamingu w systemie Windows 10
 Oto Pełna lista wszystkich ustawień, które będą korzystania z roamingu lub kopii zapasowej w systemie Windows 10. 
@@ -34,7 +28,7 @@ Poniższej tabeli przedstawiono podsumowanie urządzeń i typy kont, które są 
 | --- | --- | --- |
 | Usługa Azure Active Directory: synchronizacja |Tak |Nie |
 | Usługi Azure Active Directory: przywracania kopii zapasowej |Nie |Nie |
-| Konto Microsoft: synchronizacja |Tak |Tak |
+| Konto Microsoft: synchronizacja |Tak |Yes |
 | Konto Microsoft: / przywracania kopii zapasowej |Nie |Tak |
 
 ## <a name="what-is-backup"></a>Co to jest tworzenia kopii zapasowej?
@@ -184,4 +178,3 @@ Minimalna obsługiwana wersja systemu operacyjnego Windows aktualizacją dla kre
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać przegląd, zobacz [Przegląd roaming stanu dla przedsiębiorstw](enterprise-state-roaming-overview.md).
-

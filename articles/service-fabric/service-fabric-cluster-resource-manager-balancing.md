@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ea95405f68938906ba010836753cd74ab0f775e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809380"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446754"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Równoważenie klastra usługi service fabric
 Menedżer zasobów klastra usługi Service Fabric obsługuje zmiany dynamicznego obciążenia reagowanie na dodawania lub usuwania węzłów lub usługi. Automatycznie koryguje naruszenia ograniczeń i aktywnie rebalances klastra. Ale jak często te akcje są wykonywane i ich wyzwalacze?
@@ -36,9 +36,9 @@ Pierwszy zestaw kontrolek wokół równoważenia to zbiór czasomierzy. Czasomie
 Każdy z tych różnych typów poprawek, które ułatwia Menedżer zasobów klastra jest kontrolowana przez inny czasomierz, które regulują jej częstotliwość. Gdy zostanie wyzwolony każdego czasomierza, zadanie jest zaplanowane. Domyślnie usługi Resource Manager:
 
 * skanuje stanu i stosuje aktualizacje (na przykład nagrywania, który węzeł jest wyłączony) co 1/10 sekundy
-* Ustawia znacznik wyboru umieszczenia 
+* Ustawia znacznik wyboru umieszczenia co sekundę
 * Ustawia znacznik wyboru ograniczenia co sekundę
-* Ustawia flagę równoważenia co pięć sekund.
+* Ustawia flagę równoważenia co pięć sekund
 
 Przykłady konfiguracji dotyczące tych czasomierze są poniżej:
 

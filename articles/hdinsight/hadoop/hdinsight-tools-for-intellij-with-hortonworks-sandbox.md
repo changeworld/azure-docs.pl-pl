@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6ae271fc464e2a5735ef95a428b3070066058ddc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5234835f5fbfd5617e6b0440ff38fa900051470a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696143"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450121"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks
 
@@ -24,7 +24,7 @@ Dowiedz się, jak narzędzia HDInsight Tools for IntelliJ umożliwia tworzenie a
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
+Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
 
 - Hortonworks Data Platform (HDP) 2.4 na Piaskownicą Hortonworks uruchomiony na komputerze lokalnym. Aby skonfigurować HDP, zobacz [wprowadzenie do ekosystemu Apache Hadoop z piaskownicy usługi Hadoop na maszynie wirtualnej](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
@@ -142,7 +142,7 @@ Aby przesłać projekt w emulatorze:
 2. Wykonaj następujące czynności:
 
     1. W **klastra Spark (tylko system Linux)** listy rozwijanej wybierz swoje lokalne Piaskownicą Hortonworks.
-    2. W **Nazwa klasy Main** wybierz lub wprowadź nazwę klasy głównego. W tym samouczku nazwa jest **GroupByTest**.
+    2. W **Nazwa klasy Main** wybierz lub wprowadź nazwę klasy głównego. W tym artykule jest nazwa **GroupByTest**.
 
 3. Wybierz **przesłać**. Dzienniki przesyłania zadań są wyświetlane w oknie narzędzia przesyłania platformy Spark.
 

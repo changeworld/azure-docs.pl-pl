@@ -9,37 +9,31 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f3d31fa25ea5781bc3af7297719b77723597e17
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183028"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444596"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
 Program Visual Studio Code umożliwia publikowanie projektu usługi Functions bezpośrednio na platformie Azure. W ramach tego procesu tworzysz aplikację funkcji i powiązane zasoby w subskrypcji platformy Azure. Aplikacja funkcji zapewnia kontekst wykonywania dla Twoich funkcji. Projekt jest pakowany i wdrażany do nowej aplikacji funkcji w ramach subskrypcji platformy Azure.
 
-W tym artykule założono, że tworzysz nową aplikację funkcji. 
+Domyślnie program Visual Studio tworzy wszystkich zasobów platformy Azure, musisz utworzyć aplikację funkcji. Nazwy tych zasobów są oparte na nazwę aplikacji funkcji, którą wybierzesz. Jeśli musisz mieć pełną kontrolę nad utworzonych zasobów, możesz zamiast tego [opublikować za pomocą zaawansowanych opcji](../articles/azure-functions/functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options).
+
+W tej sekcji założono, że utworzysz nową aplikację funkcji na platformie Azure.
 
 > [!IMPORTANT]
 > Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure.
 
-1. W **platformy Azure: Funkcje** obszaru, wybierz Wdróż na ikonie aplikacji funkcji.
-
-    ![Ustawienia aplikacji funkcji](./media/functions-publish-project-vscode/function-app-publish-project.png)
+1. W programie Visual Studio Code naciśnij klawisz F1, aby otworzyć paletę poleceń. W palecie poleceń, wyszukiwanie i wybieranie `Azure Functions: Deploy to function app...`.
 
 1. Jeśli nie wylogowuj, monit o **logowanie do platformy Azure**. Możesz również **Utwórz bezpłatne konto platformy Azure**. Po pomyślnym zalogowaniu się za pomocą przeglądarki wróć do programu Visual Studio Code. 
 
 1. Jeśli masz wiele subskrypcji, **Wybierz subskrypcję,** dla aplikacji funkcji kliknij **+ Utwórz nową aplikację funkcji na platformie Azure**.
 
 1. Wpisz unikatową w skali globalnej nazwę identyfikującą aplikację funkcji, a następnie naciśnij klawisz Enter. Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`.
-
-1. Wybierz pozycję **+ Utwórz nową grupę zasobów**, wpisz nazwę grupy zasobów, taką jak `myResourceGroup`, a następnie naciśnij klawisz Enter. Możesz również użyć istniejącej grupy zasobów.
-
-1. Wybierz pozycję **+ Utwórz nowe konto magazynu**, wpisz globalnie unikatową nazwę nowego konta magazynu używanego przez aplikację funkcji i naciśnij klawisz Enter. Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz także użyć istniejącego konta.
-
-1. Wybierz lokalizację w [regionie](https://azure.microsoft.com/regions/) znajdującym się w pobliżu lub blisko innych usług, do których Twoje funkcje uzyskują dostęp.
 
     Po naciśnięciu klawisza Enter następujących zasobów platformy Azure są tworzone w ramach subskrypcji:
 

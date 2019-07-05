@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7ffef5c3a7c8dd21654b6364013b1718bea1292
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417648"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482985"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoły platforma tożsamości firmy Microsoft
 
@@ -36,7 +36,7 @@ Punkt końcowy platforma tożsamości firmy Microsoft tożsamości as-a-service 
 
 W prawie wszystkie przepływy protokołu OAuth 2.0 i OpenID Connect istnieją cztery strony związane z programu exchange:
 
-![Role uwierzytelniania OAuth 2.0](./media/active-directory-v2-flows/protocols-roles.svg)
+![Diagram przedstawiający role OAuth 2.0](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * **Serwera autoryzacji** jest punktem końcowym platforma tożsamości firmy Microsoft i odpowiada za zagwarantowanie, tożsamość użytkownika, przyznawania i odbieranie prawa dostępu do zasobów i wydawania tokenów. Serwer autoryzacji, znany także jako dostawcy tożsamości — bezpieczną obsługę nic wspólnego z informacji o użytkowniku, ich dostęp i relacje zaufania między stronami w przepływie.
 * **Właściciel zasobu** jest zazwyczaj użytkownika końcowego. To strona, która jest właścicielem danych i zasilania, aby umożliwić firmom dostęp do tych danych lub zasobu.

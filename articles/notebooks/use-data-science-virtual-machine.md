@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: 0ac50a5f52682c4315b8d08cf5632c4a6fa5242f
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357584"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441201"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Użyj maszyn wirtualnych do nauki o danych platformy Azure
 
@@ -51,7 +51,7 @@ Te wartości można uzyskać ze strony DSVM w witrynie Azure portal.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Dostęp do notesów usługi Azure plików z maszyny DSVM
 
-Dostęp do systemu plików jest obsługiwana dla maszyny wirtualnej DSVM wersji 19.06.15 lub nowszym. Aby sprawdzić wersję, najpierw połączyć się z maszyny wirtualnej DSVM za pośrednictwem protokołu SSH (adres IP jest dostępny w witrynie Azure portal). Następnie uruchom następujące polecenie, używając usługi `<ip_address>`: `curl -H Metadata:true "http://<ip_address>/metadata/instance?api-version=2018-10-01"`. Numer wersji jest wyświetlany w danych wyjściowych dla "wersja".
+Dostęp do systemu plików jest obsługiwana dla maszyny wirtualnej DSVM wersji 19.06.15 lub nowszym. Aby sprawdzić wersję, najpierw nawiązać połączenie z maszyny wirtualnej DSVM za pośrednictwem protokołu SSH, a następnie uruchom następujące polecenie: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (należy użyć dokładny adres IP, pokazano poniżej). Numer wersji jest wyświetlany w danych wyjściowych dla "wersja".
 
 Aby zachować parzystości ścieżki do plików za pomocą **bezpłatne obliczeń** warstwy, będą mogli otwierać tylko jeden projekt naraz w nauki. Aby otworzyć nowy projekt, należy najpierw zamknąć otwartym projekcie.
 

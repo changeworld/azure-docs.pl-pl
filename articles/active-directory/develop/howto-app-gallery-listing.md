@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 005e5c92a16760d8eec5dc37526f4b1f2dbd751c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540546"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482953"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Instrukcje: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -117,21 +117,21 @@ Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji Azur
 
 Klienci mogą przesyłać żądania listę aplikacji, klikając **aplikacja żąda przez klientów** -> **Prześlij nowe żądanie**.
 
-![Kafelek żądanej aplikacji klienta](./media/howto-app-gallery-listing/customer-submit-request.png)
+![Pokazuje klient zażądał kafelka aplikacji](./media/howto-app-gallery-listing/customer-submit-request.png)
 
 Poniżej znajduje się przepływ klienta wymagane aplikacje —
 
-![Klient zażądał przepływu aplikacji](./media/howto-app-gallery-listing/customer-request.png)
+![Pokazuje klient zażądał przepływu aplikacji](./media/howto-app-gallery-listing/customer-request.png)
 
 ## <a name="timelines"></a>Osie czasu
 
 Oś czasu dla procesu wyświetlania listy protokołu SAML 2.0 i WS-Fed aplikacji w galerii jest 7 – 10 dni roboczych.
 
-   ![Oś czasu wyświetlania listy aplikacji saml w galerii](./media/howto-app-gallery-listing/timeline.png)
+   ![Oś czasu wyświetlania listy aplikacji SAML w galerii](./media/howto-app-gallery-listing/timeline.png)
 
 Oś czasu dla procesu o ofercie w galerii aplikacji OpenID Connect jest 2 – 5 dni roboczych.
 
-   ![Oś czasu wyświetlania listy aplikacji saml w galerii](./media/howto-app-gallery-listing/timeline2.png)
+   ![Oś czasu wyświetlania listy aplikacji SAML w galerii](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Eskalacji
 

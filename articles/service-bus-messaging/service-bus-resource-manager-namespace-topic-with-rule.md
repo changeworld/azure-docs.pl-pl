@@ -14,22 +14,22 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c6ad222110081cd8f8838208da407e0e1d50f75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "54851270"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444744"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus przy użyciu tematu, subskrypcji i reguły za pomocą szablonu usługi Azure Resource Manager
 
 W tym artykule przedstawiono sposób używania szablonu usługi Azure Resource Manager, który tworzy przestrzeń nazw usługi Service Bus przy użyciu tematu, subskrypcji i reguły (filtr). W niniejszym artykule wyjaśniono, jak określić, jakie zasoby są wdrożone i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Azure Resource Manager][Authoring Azure Resource Manager templates].
+Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [tworzenia usługi Azure Resource Manager][Authoring Azure Resource Manager templates].
 
 Aby uzyskać więcej informacji na temat praktyk i wzorców dla konwencje nazewnictwa zasobów platformy Azure, zobacz [zalecane konwencje nazewnictwa dla zasobów platformy Azure][Recommended naming conventions for Azure resources].
 
-Aby uzyskać kompletny szablon, zobacz [przestrzeń nazw magistrali usług przy użyciu tematu, subskrypcji i reguły] [ Service Bus namespace with topic, subscription, and rule] szablonu.
+Aby uzyskać kompletny szablon, zobacz [przestrzeń nazw magistrali usług przy użyciu tematu, subskrypcji i reguły][Service Bus namespace with topic, subscription, and rule] szablonu.
 
 > [!NOTE]
 > Następujące szablony usługi Azure Resource Manager są dostępne do pobrania i wdrożenia.
@@ -39,7 +39,7 @@ Aby uzyskać kompletny szablon, zobacz [przestrzeń nazw magistrali usług przy 
 > * [Tworzenie przestrzeni nazw usługi Service Bus](service-bus-resource-manager-namespace.md)
 > * [Tworzenie przestrzeni nazw usługi Service Bus z tematem i subskrypcją](service-bus-resource-manager-namespace-topic.md)
 > 
-> Aby sprawdzić najnowsze szablony, odwiedź stronę [szablony szybkiego startu platformy Azure] [ Azure Quickstart Templates] galerii i wyszukiwania dla usługi Service Bus.
+> Aby sprawdzić najnowsze szablony, odwiedź stronę [szablony szybkiego startu platformy Azure][Azure Quickstart Templates] galerii i wyszukiwania dla usługi Service Bus.
 > 
 > 
 
@@ -179,7 +179,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po utworzeniu i wdrożeniu zasobów przy użyciu usługi Azure Resource Manager, Dowiedz się, jak można nimi zarządzać, wyświetlając następujące artykuły:
+Zobacz następujący temat, który pokazuje, jak utworzyć filtr subskrypcji: [Tworzenie przestrzeni nazw usługi Service Bus przy użyciu tematu, subskrypcji i reguły za pomocą szablonu usługi Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)
+
+Dowiedz się, jak zarządzać tymi zasobami, wyświetlając następujące artykuły:
 
 * [Zarządzanie usługą Azure Service Bus](service-bus-management-libraries.md)
 * [Zarządzanie usługą Service Bus za pomocą programu PowerShell](service-bus-manage-with-ps.md)

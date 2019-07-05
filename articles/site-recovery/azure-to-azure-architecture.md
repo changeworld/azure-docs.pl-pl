@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f985260175e5f54a17799ef07b3a280f42b716e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399575"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491886"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii z platformy Azure do platformy Azure
 
@@ -31,7 +31,7 @@ Składniki biorące udział w odzyskiwanie po awarii dla maszyn wirtualnych plat
 **Maszyny wirtualne w regionie źródłowym** | Jeden więcej maszyn wirtualnych platformy Azure w [obsługiwany region źródła](azure-to-azure-support-matrix.md#region-support).<br/><br/> Maszyn wirtualnych może działać dowolny [obsługiwanym systemie operacyjnym](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 **Źródło magazynu maszyny Wirtualnej** | Maszyny wirtualne platformy Azure mogą być zarządzane lub mieć — managed disks rozprzestrzeniające się na kontach magazynu.<br/><br/>[Dowiedz się więcej o](azure-to-azure-support-matrix.md#replicated-machines---storage) obsługiwane usługi Azure storage.
 **Źródłowej sieci maszyny Wirtualnej** | Maszyny wirtualne mogą znajdować się w co najmniej jednej podsieci w sieci wirtualnej (VNet) w regionie źródłowym. [Dowiedz się więcej](azure-to-azure-support-matrix.md#replicated-machines---networking) o wymagania sieciowe.
-**Konto magazynu pamięci podręcznej** | Wymagane jest konto magazynu pamięci podręcznej w źródłowej sieci. Podczas replikacji zmian dotyczących maszyn wirtualnych są przechowywane w pamięci podręcznej przed wysłaniem do docelowego konta magazynu.<br/><br/> Używanie pamięci podręcznej zapewnia minimalny wpływ na aplikacje produkcyjne, które są uruchomione na maszynie Wirtualnej.<br/><br/> [Dowiedz się więcej](azure-to-azure-support-matrix.md#cache-storage) o wymaganiach dotyczących magazynu pamięci podręcznej. 
+**Konto magazynu pamięci podręcznej** | Wymagane jest konto magazynu pamięci podręcznej w źródłowej sieci. Podczas replikacji zmian dotyczących maszyn wirtualnych są przechowywane w pamięci podręcznej przed wysłaniem do docelowego konta magazynu.  Konta magazynu pamięci podręcznej musi być Standard.<br/><br/> Używanie pamięci podręcznej zapewnia minimalny wpływ na aplikacje produkcyjne, które są uruchomione na maszynie Wirtualnej.<br/><br/> [Dowiedz się więcej](azure-to-azure-support-matrix.md#cache-storage) o wymaganiach dotyczących magazynu pamięci podręcznej. 
 **Zasoby docelowe** | Zasoby docelowe są używane podczas replikacji, a po przejściu do trybu failover. Usługa Site Recovery można skonfigurować domyślne zasobu docelowego lub można utworzyć/je dostosować.<br/><br/> W regionie docelowym Sprawdź, czy jesteś w stanie tworzyć maszyny wirtualne i czy Twoja subskrypcja ma za mało zasobów do obsługi rozmiarów maszyn wirtualnych, które będą potrzebne w regionie docelowym. 
 
 ![Źródło i cel replikacji](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: a021ed2be3a94add7500a98d71a962bb580078e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a7c186f7c5fb46078eaa5729e79fdcc256ecc6d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729464"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460214"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -52,7 +52,7 @@ FunctionsProject
 
 W folderze głównym projektu jest wspólny [host.json](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma folder z pliku z kodem (js) i plik konfiguracji powiązania (function.json). Nazwa `function.json`w katalogu nadrzędnym jest zawsze nazwę funkcji.
 
-Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
+Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
 
 ## <a name="exporting-a-function"></a>Eksportowanie funkcji
 
@@ -136,7 +136,7 @@ Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: jed
    };
    ```
 
-### <a name="outputs"></a>Dane wyjściowe
+### <a name="outputs"></a>outputs
 Dane wyjściowe (vazby prvku `direction === "out"`) mogą być zapisywane przez funkcję na wiele sposobów. We wszystkich przypadkach `name` właściwości powiązania, zgodnie z definicją w *function.json* odpowiada nazwie elementu członkowskiego obiektu zapisywane w funkcji. 
 
 Dane można przypisać do powiązania danych wyjściowych, w jednym z następujących metod (nie połączyć te metody):
@@ -399,7 +399,7 @@ Podczas pracy z wyzwalaczami HTTP można uzyskiwanie dostępu do obiektów żąd
     ```
 + ** _[Tylko odpowiedzi]_  Przez wywołanie metody `context.res.send(body?: any)`.** Odpowiedź HTTP jest tworzony przy użyciu danych wejściowych `body` jako treść odpowiedzi. `context.done()` jest wywoływany niejawnie.
 
-+ ** _[Tylko odpowiedzi]_  Przez wywołanie metody `context.done()`.** Specjalny rodzaj powiązanie HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
++ ** _[Tylko odpowiedzi]_  Przez wywołanie metody `context.done()`.** Specjalny typ wiązania HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
 
     ```json
     {
@@ -421,7 +421,7 @@ W poniższej tabeli przedstawiono wersja Node.js używana przez środowisko uruc
 | Funkcje wersji | Środowisko node.js w wersji | 
 |---|---|
 | 1.x | 6.11.2 (zablokowane przez środowisko uruchomieniowe) |
-| 2.x  | _Aktywne LTS_ i parzystych _bieżącego_ wersje środowiska Node.js (8.11.1 i 10.14.1 zalecane). Ustaw wersję przy użyciu WEBSITE_NODE_DEFAULT_VERSION [ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings).|
+| 2.x  | _Aktywne LTS_ i _LTS konserwacji_ wersje środowiska Node.js (8.11.1 i 10.14.1 zalecane). Ustaw wersję przy użyciu WEBSITE_NODE_DEFAULT_VERSION [ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings).|
 
 Zobaczyć bieżącą wersję używanego środowiska uruchomieniowego, sprawdzając powyższe ustawienie aplikacji lub drukowanie `process.version` z żadnej funkcji.
 
@@ -576,7 +576,7 @@ Sposób, w jaki lokalnie tworzenia i wdrażania z projektu TypeScript zależy od
 
 [Usługi Azure Functions dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) rozszerzenie umożliwia tworzenie funkcji przy użyciu TypeScript. Podstawowe narzędzia jest to wymagane rozszerzenia usługi Azure Functions.
 
-Aby utworzyć aplikację funkcji TypeScript w programie Visual Studio Code, możesz po prostu wybierz `TypeScript` po utworzeniu aplikacji funkcji i prośba o wybranie języka.
+Aby utworzyć aplikację funkcji TypeScript w programie Visual Studio Code, wybierz `TypeScript` języka podczas tworzenia aplikacji funkcji.
 
 Po naciśnięciu klawisza **F5** Aby uruchomić aplikację lokalnie, transpilation jest gotowy, zanim host (func.exe) jest zainicjowany. 
 
@@ -584,7 +584,7 @@ Podczas wdrażania aplikacji funkcji na platformie Azure przy użyciu **Wdróż 
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Aby utworzyć TypeScript projektu aplikacji funkcji przy użyciu podstawowych narzędzi, należy określić opcję języka typescript, podczas tworzenia aplikacji funkcji. Można to zrobić w jednym z następujących sposobów:
+Aby utworzyć TypeScript projektu aplikacji funkcji przy użyciu podstawowych narzędzi, należy określić opcję języka TypeScript, podczas tworzenia aplikacji funkcji. Można to zrobić w jednym z następujących sposobów:
 
 - Uruchom `func init` polecenia select `node` jako stos języka, a następnie wybierz `typescript`.
 
@@ -614,6 +614,55 @@ Po rozpoczęciu tworzenia usługi Azure Functions w bez użycia serwera modelu h
 ### <a name="connection-limits"></a>Limity połączeń
 
 Korzystając z klienta specyficzne dla usługi w aplikacji usługi Azure Functions, nie należy tworzyć nowych klientów za pomocą każdego wywołania funkcji. Zamiast tego utworzyć pojedynczy statyczny klienta w zakresie globalnym. Aby uzyskać więcej informacji, zobacz [Zarządzanie połączeniami w usłudze Azure Functions](manage-connections.md).
+
+### <a name="use-async-and-await"></a>Użyj `async` i `await`
+
+Podczas pisania usługi Azure Functions w języku JavaScript, należy wpisać kod za pomocą `async` i `await` słów kluczowych. Pisanie kodu za pomocą `async` i `await` zamiast wywołania zwrotne lub `.then` i `.catch` z obietnic pozwala uniknąć dwóch typowych problemów:
+ - Zgłaszanie nieobsłużone wyjątki, [spowoduje awarię procesu Node.js](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), potencjalnie wpływających na wykonywanie innych funkcji.
+ - Nieoczekiwane zachowanie, takie jak brak dzienników z context.log, spowodowane przez wywołania asynchroniczne, które nie są prawidłowo oczekiwane.
+
+W przykładzie poniżej metody asynchronicznej `fs.readFile` wywoływaną za pomocą funkcji wywołania zwrotnego pierwszy błąd jako drugi parametr. Ten kod powoduje, że obie wymienione powyżej problemy. Wyjątek, który nie jest wyłapywany jawnie w niewłaściwym zakresie awarii całego procesu (problem z #1). Wywoływanie `context.done()` poza zakresem wywołania zwrotnego funkcji oznacza, że wywołania funkcji może zakończyć się przed odczytać pliku (wystawiać #2). W tym przykładzie wywołanie `context.done()` zapisów, poczynając od dziennik zbyt wczesny wyników brakujących `Data from file:`.
+
+```javascript
+// NOT RECOMMENDED PATTERN
+const fs = require('fs');
+
+module.exports = function (context) {
+    fs.readFile('./hello.txt', (err, data) => {
+        if (err) {
+            context.log.error('ERROR', err);
+            // BUG #1: This will result in an uncaught exception that crashes the entire process
+            throw err;
+        }
+        context.log(`Data from file: ${data}`);
+        // context.done() should be called here
+    });
+    // BUG #2: Data is not guaranteed to be read before the Azure Function's invocation ends
+    context.done();
+}
+```
+
+Za pomocą `async` i `await` słów kluczowych pomaga uniknąć oba te błędy. Należy użyć funkcji narzędzia Node.js [ `util.promisify` ](https://nodejs.org/api/util.html#util_util_promisify_original) przekształcić funkcji stylu wywołania zwrotnego pierwszy błąd w funkcji oczekujący.
+
+W poniższym przykładzie nieobsłużone wyjątki, zgłoszony podczas wykonywania funkcji wyłącznie zakończyć się niepowodzeniem poszczególne wywołania, który spowodował wyjątek. `await` — Słowo kluczowe oznacza, że następujące kroki `readFileAsync` wykonywać tylko po `readFile` zostało zakończone. Za pomocą `async` i `await`, również nie trzeba wywoływać `context.done()` wywołania zwrotnego.
+
+```javascript
+// Recommended pattern
+const fs = require('fs');
+const util = require('util');
+const readFileAsync = util.promisify(fs.readFile);
+
+module.exports = async function (context) {
+    try {
+        const data = await readFileAsync('./hello.txt');
+    } catch (err) {
+        context.log.error('ERROR', err);
+        // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation
+        throw err;
+    }
+    context.log(`Data from file: ${data}`);
+}
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

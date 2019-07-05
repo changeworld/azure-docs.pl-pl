@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: geg
-ms.openlocfilehash: 19b249a76a339ce870609fbcdceaf70bf79a6ea2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62e10f382882e70d488f9814cb00c2b86b8b9691
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65906507"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460230"
 ---
 # <a name="restore-azure-vms"></a>Przywracanie maszyn wirtualnych platformy Azure
 
@@ -185,7 +185,7 @@ Istnieje kilka kwestii, które należy pamiętać, po przywróceniu maszyny Wirt
 
 - Rozszerzenia podczas konfiguracji kopii zapasowej są zainstalowane, ale nie jest włączona. Jeśli widzisz problem, należy ponownie zainstalować rozszerzenia.
 - Jeśli kopia zapasowa maszyny Wirtualnej ma statyczny adres IP, przywrócona maszyna wirtualna ma dynamiczny adres IP, aby uniknąć konfliktu. Możesz [dodać statyczny adres IP do przywróconej maszyny Wirtualnej](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
-- Przywrócona maszyna wirtualna nie ma dostępności zestawu. Jeśli jednostki organizacyjnej, użyj opcji dysku przywracania, aby użytkownik może [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) podczas tworzenia maszyny Wirtualnej z dysku za pomocą podanego szablonu lub programu PowerShell.
+- Przywrócona maszyna wirtualna nie ma dostępności zestawu. Jeśli używasz opcji przywracania dysków, a następnie możesz [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) podczas tworzenia maszyny Wirtualnej z dysku za pomocą podanego szablonu lub programu PowerShell.
 - Jeśli używasz init oparte na chmurze dystrybucji systemu Linux, takie jak Ubuntu, ze względów bezpieczeństwa hasło zablokowaniu po przywróceniu. Należy użyć rozszerzenia VMAccess do przywróconej maszyny wirtualnej do [resetowania hasła](../virtual-machines/linux/reset-password.md). Firma Microsoft zaleca używanie kluczy SSH na tych dystrybucji, więc nie trzeba zresetować hasła po przywróceniu.
 
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d2be76072866da2b21718f60fd0c9a5923b15b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da111311de7b873be6453862ffcbd56fe546ea7f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545110"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482384"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Platforma tożsamości firmy Microsoft i poświadczeń hasła właściciela zasobów OAuth 2.0
 
@@ -39,7 +39,7 @@ Obsługuje platformy tożsamości firmy Microsoft [przyznania poświadczeń has�
 
 Na poniższym diagramie przedstawiono przepływ ROPC.
 
-![ROPC przepływu](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![Diagram przedstawiający przepływ poświadczeń hasła właściciela zasobu](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Żądanie autoryzacji
 
@@ -47,7 +47,7 @@ Przepływ ROPC jest pojedyncze żądanie&mdash;wysyła do klienta w identyfikacj
 
 > [!TIP]
 > Spróbuj wykonać tego żądania w narzędziu Postman!
-> [![Uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![Spróbuj uruchomić to żądanie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```

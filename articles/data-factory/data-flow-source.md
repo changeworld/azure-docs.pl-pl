@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190800"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490093"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcenie źródła dla mapowania przepływu danych 
 
@@ -146,6 +146,12 @@ Jeśli plik tekstowy nie ma zdefiniowanego schematu, wybierz opcję **Wykryj typ
 Można modyfikować typy danych kolumn w później — kolumny nie pochodzącej ze transformacji. Wybierz przekształcania umożliwia zmodyfikowanie nazw kolumn.
 
 ![Ustawienia domyślne formatów danych](media/data-flow/source2.png "domyślne formatów")
+
+### <a name="add-dynamic-content"></a>Dodaj zawartość dynamiczną
+
+Po kliknięciu wewnątrz pola na panelu Ustawienia, zobaczysz hyperlink "Dodawanie zawartości dynamicznej". Po kliknięciu przycisku poniżej spowoduje uruchomienie Kreatora wyrażeń. Jest to, gdzie można ustawić wartości dla ustawień dynamicznie przy użyciu wyrażeń, wartości literału statyczne lub parametrów.
+
+![Parametry](media/data-flow/params6.png "parametrów")
 
 ## <a name="next-steps"></a>Kolejne kroki
 

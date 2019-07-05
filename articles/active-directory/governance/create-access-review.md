@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c83a38b68fcc2e70b4e17bd62e11ac429dd32950
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734566"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471919"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
@@ -43,7 +43,7 @@ Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć li
 
 1. Kliknij przycisk **nowy przegląd dostępu** Aby utworzyć nowy przegląd dostępu.
 
-    ![Przegląd dostępu — formanty](./media/create-access-review/access-reviews.png)
+    ![Przeglądy dostępu w okienku Zarządzanie tożsamościami](./media/create-access-review/access-reviews.png)
 
 1. Nazwa przeglądu dostępu. Opcjonalnie można podać przeglądu opis. Nazwa i opis są wyświetlane dla recenzentów.
 
@@ -91,7 +91,7 @@ Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć li
 
 1. Aby określić, co się dzieje po zakończeniu przeglądu, rozwiń **ustawienia działań po zakończeniu** sekcji.
 
-    ![Ustawienia działań po zakończeniu](./media/create-access-review/upon-completion-settings.png)
+    ![Tworzenie przeglądu dostępu — ustawienia działań po zakończeniu](./media/create-access-review/upon-completion-settings.png)
 
 1. Jeśli chcesz automatycznie Usuń dostęp dla użytkowników, które zostały odrzucone, ustaw **automatycznie Zastosuj wyniki do zasobu** do **Włącz**. Jeśli chcesz ręcznie zastosować wyników, po zakończeniu przeglądu, ustaw przełącznik **wyłączyć**.
 
@@ -106,7 +106,7 @@ Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć li
 
 1. Aby określić dodatkowe ustawienia, rozwiń **Zaawansowane ustawienia** sekcji.
 
-    ![Ustawienia zaawansowane](./media/create-access-review/advanced-settings.png)
+    ![Tworzenie przeglądu dostępu — ustawienia zaawansowane](./media/create-access-review/advanced-settings.png)
 
 1. Ustaw **Pokaż zalecenia** do **Włącz** pokazują stan systemu recenzentów zalecenia na podstawie informacji dotyczących dostępu użytkownika.
 
@@ -122,7 +122,7 @@ Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć li
 
 Po określeniu ustawienia przeglądu dostępu, kliknij przycisk **Start**. Przegląd dostępu będą wyświetlane na liście ze wskaźnikiem jego stan.
 
-![Lista przeglądów dostępu](./media/create-access-review/access-reviews-list.png)
+![Lista przeglądów dostępu i ich stan](./media/create-access-review/access-reviews-list.png)
 
 Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce, po uruchomieniu przeglądu. Jeśli użytkownik chce nie ma wysyłać wiadomości e-mail z usługi Azure AD, pamiętaj poinformować osób dokonujących przeglądu, które przeglądu dostępu oczekuje na ich zakończenie. Można pokazać im instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md). W przypadku zapoznania się z nimi dla gości, aby dokonać przeglądu własnego dostępu, wyświetlić je instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacji](review-your-access.md).
 

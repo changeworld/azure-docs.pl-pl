@@ -1,5 +1,5 @@
 ---
-title: Zasoby w usłudze Media Services — Azure | Dokumentacja firmy Microsoft
+title: Zasoby w usłudze Azure Media Services | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera opis zasoby są i jak są one używane przez usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bd9774cf045d9ed7f16a637fcb2eb1378b48686
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551761"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565810"
 ---
 # <a name="assets"></a>Elementy zawartości
 
@@ -87,9 +87,22 @@ curl -X PUT \
 
 Aby uzyskać pełny przykład, zobacz [utworzyć dane wejściowe zadania z pliku lokalnego](job-input-from-local-file-how-to.md). W wersji 3 usługa Media Services, dane wejściowe zadania można również utworzyć z adresów URL protokołu HTTPS (zobacz [tworzenie dane wejściowe zadania na podstawie adresu URL HTTPS](job-input-from-http-how-to.md)).
 
-## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
+## <a name="map-v3-asset-properties-to-v2"></a>Mapowania właściwości zasobów w wersji 3 w wersji 2
 
-Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
+W poniższej tabeli przedstawiono sposób, w jaki [zasobów](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)jego właściwości w wersji 3 mapować do właściwości zasobu w wersji 2.
+
+|właściwości v3|właściwości v2|
+|---|---|
+|ID — (unikatowe) pełną ścieżkę usługi Azure Resource Manager, zobacz przykłady w [zasobów](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|Nazwa — (unikatowe) zobacz [konwencje nazewnictwa](media-services-apis-overview.md#naming-conventions) ||
+|alternateId|AlternateId|
+|assetId|ID — (unikatowe) wartości zaczyna się od `nb:cid:UUID:` prefiks.|
+|Utworzone|Utworzono|
+|description|Name (Nazwa)|
+|lastModified|Ostatnia modyfikacja|
+|storageAccountName|StorageAccountName|
+|storageEncryptionFormat| Opcje — opcje tworzenia|
+|type||
 
 ## <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
 
@@ -104,6 +117,10 @@ Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomo
 <sup>1</sup> a Media Services obsługuje obsługi zawartości, bez zabezpieczeń/bez jakiejkolwiek formy szyfrowania, to nie jest to zalecane.
 
 <sup>2</sup> Media Services v3, szyfrowanie magazynu (szyfrowanie AES-256) jest tylko obsługiwane dla zapewnienia zgodności gdy Twoje zasoby zostały utworzone za pomocą usługi Media Services v2. Co oznacza v3 współpracuje z istniejącym magazynie zaszyfrowane zasoby, ale nie pozwoli na tworzenie nowych.
+
+## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
+
+Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

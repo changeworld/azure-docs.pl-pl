@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 692e0ec575904ff0a70b8c73268d2df62e776bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b32665b09eb02c337a12ac3cfc2b474fa82711a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978787"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447242"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Czas wygaśnięcia (TTL) w usłudze Azure Cosmos DB 
 
@@ -45,6 +45,42 @@ Wartość czasu wygaśnięcia jest ustawiana w ciągu kilku sekund, a zostanie o
 * Jeśli czas wygaśnięcia w kontenerze jest ustawiony na wartość -1, element w tym kontenerze, który ma czas na żywo wartość n, wygasną po upływie n sekund, a pozostałe elementy nie wygasną. 
 
 Usuwanie elementów, w oparciu o czas wygaśnięcia jest bezpłatne. Nie ma żadnych dodatkowych kosztów (czyli nie dodatkowych jednostek żądań są używane) w momencie usunięcia elementu wyniku z upływem czasu wygaśnięcia.
+
+## <a name="examples"></a>Przykłady
+
+W tej sekcji przedstawiono kilka przykładów przy użyciu innego czasu wygaśnięcia wartości przypisane do kontenera i elementy:
+
+### <a name="example-1"></a>Przykład 1
+
+Czas wygaśnięcia w kontenerze jest ustawiona na wartość null (DefaultTimeToLive = null)
+
+|Czas wygaśnięcia elementu| Wynik|
+|---|---|
+|czas wygaśnięcia = null|    Czas wygaśnięcia jest wyłączona. Element nigdy nie wygasa (ustawienie domyślne).|
+|ttl = -1   |Czas wygaśnięcia jest wyłączona. Element nigdy nie wygasa.|
+|ttl = 2000 |Czas wygaśnięcia jest wyłączona. Element nigdy nie wygasa.|
+
+
+### <a name="example-2"></a>Przykład 2
+
+Czas wygaśnięcia w kontenerze jest ustawiona na wartość -1 (DefaultTimeToLive = -1)
+
+|Czas wygaśnięcia elementu| Wynik|
+|---|---|
+|czas wygaśnięcia = null |Czas wygaśnięcia jest włączona. Element nigdy nie wygasa (ustawienie domyślne).|
+|ttl = -1   |Czas wygaśnięcia jest włączona. Element nigdy nie wygasa.|
+|ttl = 2000 |Czas wygaśnięcia jest włączona. Element wygaśnie po 2000 sekundach.|
+
+
+### <a name="example-3"></a>Przykład 3
+
+Czas wygaśnięcia w kontenerze jest ustawiony na 1000 (DefaultTimeToLive = 1000)
+
+|Czas wygaśnięcia elementu| Wynik|
+|---|---|
+|czas wygaśnięcia = null|    Czas wygaśnięcia jest włączona. Element wygaśnie po 1 000 sekund (ustawienie domyślne).|
+|ttl = -1   |Czas wygaśnięcia jest włączona. Element nigdy nie wygasa.|
+|ttl = 2000 |Czas wygaśnięcia jest włączona. Element wygaśnie po 2000 sekundach.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824846"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476554"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Skonfiguruj sposób, w jaki użytkownicy końcowi wyrażenia zgody na aplikację w usłudze Azure Active Directory
 Dowiedz się, jak skonfigurować sposób, w jaki użytkownicy wyrazić zgodę na uprawnienia aplikacji. Aby uprościć środowisko użytkownika, możesz udzielania zgody administratora. Ten artykuł zawiera różne sposoby, które można skonfigurować zgody użytkownika. Te metody mają zastosowanie do wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD). 
@@ -38,9 +38,10 @@ Aby udzielić zgody administratora do aplikacji przedsiębiorstwa:
 2. Kliknij przycisk **wszystkich usług** w górnej części menu nawigacji po lewej stronie. **Rozszerzenia usługi Azure Active Directory** zostanie otwarty.
 3. W polu filtru wyszukiwania wpisz **"Azure Active Directory"** i wybierz **usługi Azure Active Directory** elementu.
 4. W menu nawigacyjnym kliknij **aplikacje dla przedsiębiorstw**.
-5. Kliknij przycisk **zgody administratora Grant**. Zostanie wyświetlony monit logować się do administrowanie aplikacji.
-6. Zaloguj się przy użyciu konta, które ma uprawnienia do udzielania zgody administratora dla aplikacji. 
-7. Wyrazić zgodę na uprawnienia dostępu do aplikacji.
+5. Wybierz aplikację, o ich zgodę.
+6. Wybierz **uprawnienia** a następnie kliknij przycisk **udzielić zgody administratora**. Zostanie wyświetlony monit logować się do administrowanie aplikacji.
+7. Zaloguj się przy użyciu konta, które ma uprawnienia do udzielania zgody administratora dla aplikacji. 
+8. Wyrazić zgodę na uprawnienia dostępu do aplikacji.
 
 Tej opcji tylko wtedy, gdy aplikacja jest: 
 
@@ -54,8 +55,8 @@ Aby udzielić zgody administratora, podczas rejestrowania aplikacji:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny.
 2. Przejdź do **rejestracje aplikacji** bloku.
 3. Wybierz aplikację, o ich zgodę.
-4. Wybierz **wymagane uprawnienia**.
-5. Kliknij przycisk **Udziel uprawnień** w górnej części bloku.
+4. Wybierz **uprawnienia do interfejsu API**.
+5. Kliknij przycisk **udzielić zgody administratora**.
 
 
 ## <a name="grant-admin-consent-through-a-url-request"></a>Udzielić zgody administratora, za pośrednictwem adresu URL żądania

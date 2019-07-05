@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0672f25b30bfb34a6ee99b0f4710d01cf0871300
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 6506a93914cfbc10f37980c4b916a93aa9aad75d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150326"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67564399"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -83,29 +83,24 @@ Udziały plików standardowe są wspierane przez dysków twardych (HDD). Udział
 Standardowa udziały plików do rozmiaru wynosi 5 TiB są dostępne jako oferty usług ogólnie dostępnych. Natomiast większe udziałów plików, które są większe niż wynosi 5 TiB, maksymalnie 100 TiB udziałów obecnie są dostępne jako to oferta w wersji zapoznawczej.
 
 > [!IMPORTANT]
-> - Należy utworzyć nowe konto magazynu ogólnego przeznaczenia (nie można rozszerzyć istniejące konta magazynu).
-> - Są dostępne tylko dzięki magazynowi LRS.
-> - Dostępne w trzech regionach: Zachodnie stany USA 2, Europa Zachodnia i Azja regionów.
-> - Magazyn LRS, GRS konto konwersji nie będzie możliwe na wszystkich nowych kont magazynu, które są tworzone po zaakceptowaniu subskrypcji do większych preview udziałów plików.
+> Zobacz [dołączanie do większych udziałów plików (warstwa standardowa)](#onboard-to-larger-file-shares-standard-tier) sekcji kroki, aby dołączyć, a także zakres i ograniczenia wersji zapoznawczej.
 
-Jeśli chcesz dołączyć do wersji zapoznawczej te większe rozmiary udziału plików, przesłać to [formularza](https://aka.ms/azurefilesatscalesurvey). 
+### <a name="premium-file-shares"></a>Udziały plików w warstwie Premium
 
-### <a name="premium-file-shares-preview"></a>Udziały plików w warstwie Premium (wersja zapoznawcza)
-
-Udziały plików w warstwie Premium (wersja zapoznawcza) są wspierane przez dyski półprzewodnikowe (SSD). Udziały plików w warstwie Premium zapewnia spójne, wysokiej wydajności i niskich opóźnieniach, w milisekundach oznaczona jedną cyfrą dla większości operacji We/Wy dla obciążeń intensywnie korzystających z operacji We/Wy. To sprawia, że ich odpowiednie dla różnych obciążeń, takich jak bazy danych, hostowanie witryn sieci web, środowisk deweloperskich itp. Udziały plików w warstwie Premium są dostępne tylko w elastycznie model rozliczeń. Udziały plików w warstwie Premium korzystają z modelu wdrożenia, niezależnie od udziałów plików standardowych.
+Udziały plików w warstwie Premium są wspierane przez dyski półprzewodnikowe (SSD). Udziały plików w warstwie Premium zapewnia spójne, wysokiej wydajności i niskich opóźnieniach, w milisekundach oznaczona jedną cyfrą dla większości operacji We/Wy dla obciążeń intensywnie korzystających z operacji We/Wy. To sprawia, że ich odpowiednie dla różnych obciążeń, takich jak bazy danych, hostowanie witryn sieci web i środowisk deweloperskich. Udziały plików w warstwie Premium są dostępne tylko w elastycznie model rozliczeń. Udziały plików w warstwie Premium korzystają z modelu wdrożenia, niezależnie od udziałów plików standardowych.
 
 Usługa Azure Backup jest dostępna dla udziałów plików w warstwie premium i usługi Azure Kubernetes Service obsługuje udziały plików w warstwie premium w wersji 1.13 lub nowszym.
 
 Jeśli chcesz dowiedzieć się, jak utworzyć udział plików — wersja premium, zobacz artykułem na temat: [Jak utworzyć konto magazynu plików Azure w warstwie premium](storage-how-to-create-premium-fileshare.md).
 
-Obecnie nie można bezpośrednio konwersji między standardowy udział plików i udział plików w warstwie premium. Jeśli chcesz przełączyć się do każdej warstwy, należy utworzyć nowy udział plików w danej warstwie i ręcznie skopiować dane z oryginalnego udziału do nowego udziału, który został utworzony. Można to zrobić przy użyciu dowolnego narzędzia kopiowania obsługiwane usługi pliki Azure, takich jak narzędzia AzCopy.
+Obecnie nie można bezpośrednio konwersji między standardowy udział plików i udział plików w warstwie premium. Jeśli chcesz przełączyć się do każdej warstwy, należy utworzyć nowy udział plików w danej warstwie i ręcznie skopiować dane z oryginalnego udziału do nowego udziału, który został utworzony. Można to zrobić przy użyciu dowolnego narzędzia kopiowania obsługiwane usługi pliki Azure, takich jak Robocopy lub narzędzia AzCopy.
 
 > [!IMPORTANT]
-> Udziały plików w warstwie Premium są nadal w wersji zapoznawczej są dostępne tylko dla magazynu LRS i są dostępne w większości regionów, które oferują kont magazynu. Aby dowiedzieć się, w przypadku udziałów plików w warstwie premium są obecnie dostępne w danym regionie, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) strony dla platformy Azure.
+> Udziały plików w warstwie Premium są dostępne tylko dla magazynu LRS i są dostępne w większości regionów, które oferują kont magazynu. Aby dowiedzieć się, w przypadku udziałów plików w warstwie premium są obecnie dostępne w danym regionie, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) strony dla platformy Azure.
 
 ### <a name="provisioned-shares"></a>Elastycznie udziałów
 
-Udziały plików w warstwie Premium (wersja zapoznawcza) są aprowizowane oparte na stały współczynnik operacji We/Wy/GiB/przepływności. Dla każdego GiB zainicjowano obsługę administracyjną udziału pojawi się w jednej operacji We/Wy i 0,1 przepływność MiB/s do maksymalnego limitu na jedną akcję. Minimalny dozwolony aprowizacji to 100 GiB z minimum operacji We/Wy/przepływności.
+Udziały plików w warstwie Premium są aprowizowane w oparciu stały współczynnik operacji We/Wy/GiB/przepływność. Dla każdego GiB zainicjowano obsługę administracyjną udziału pojawi się w jednej operacji We/Wy i 0,1 przepływność MiB/s do maksymalnego limitu na jedną akcję. Minimalny dozwolony aprowizacji to 100 GiB z minimum operacji We/Wy/przepływności.
 
 Na optymalne rozwiązanie wszystkie udziały serii można maksymalnie trzy operacje We/Wy za GiB aprowizowanego magazynu przez 60 minut lub dłużej w zależności od wielkości udziału. Nowe udziały Rozpocznij od środków pełną serii, w oparciu zaprowizowaną pojemnością.
 
@@ -137,6 +132,9 @@ W poniższej tabeli przedstawiono kilka przykładów tych formuł dla rozmiarów
 |51,200      | 51,200  | Do 100 000 | 3,132 | 2,088   |
 |102,400     | 100,000 | Do 100 000 | 6,204 | 4,136   |
 
+> [!NOTE]
+> Wydajność udziałów plików podlega limity sieci maszyny, dostępnej przepustowości sieci, rozmiarów we/wy, równoległości między wieloma innymi czynnikami. Aby osiągnąć maksymalną wydajność skalowania, rozłożenie obciążenia na wiele maszyn wirtualnych. Zapoznaj się [przewodnik rozwiązywania problemów z](storage-troubleshooting-files-performance.md) dla niektórych typowych problemów z wydajnością i rozwiązania problemu.
+
 ### <a name="bursting"></a>Przenoszenie obsługi dużego ruchu
 
 Udziały plików w warstwie Premium, możesz podwyższyć ich operacje We/Wy nawet o trzy. Przenoszenie obsługi dużego ruchu jest zautomatyzowanych i działa w oparciu o system środków. Przenoszenie obsługi dużego ruchu działa jako optymalne rozwiązanie i limit serii nie ma gwarancji, udziały plików możesz podwyższyć *do* limit.
@@ -160,7 +158,7 @@ Nowy plik udziałów rozpoczynać pełną ilość środków w zasobniku jego du�
 
 Udziały standardowych plików platformy Azure obsługuje trzy opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), Magazyn strefowo nadmiarowy (ZRS) i Magazyn geograficznie nadmiarowy (GRS).
 
-Usługa premium pliki systemu Azure udostępnia tylko obsługuje magazyn lokalnie nadmiarowy (LRS).
+Udziały plików platformy Azure w wersji premium obsługuje tylko magazyn lokalnie nadmiarowy (LRS).
 
 W poniższych sekcjach opisano różnice między Opcje nadmiarowości inną:
 
@@ -192,6 +190,48 @@ Podczas wybierania opcji replikacji, należy pamiętać o następujących punkt�
 * Magazyn strefowo nadmiarowy (ZRS) oferuje o wysokiej dostępności przy użyciu replikacji synchronicznej i może być lepszym rozwiązaniem w przypadku niektórych scenariuszy niż GRS. Aby uzyskać więcej informacji na temat magazynu ZRS, zobacz [ZRS](../common/storage-redundancy-zrs.md).
 * Replikacja asynchroniczna obejmuje opóźnieniem od czasu, które dane są zapisywane do regionu podstawowego, gdy są replikowane do regionu pomocniczego. W przypadku regionalnej awarii usługa zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego mogą zostać utracone, jeśli nie można odzyskać dane z regionu podstawowego.
 * W przypadku magazynu GRS replika nie jest dostępna dla odczytu lub zapisu, chyba że firma Microsoft zainicjuje tryb failover do regionu pomocniczego. W przypadku pracy w trybie failover będzie zapoznaniu się i do zapisu danych po pracy w trybie failover zostało ukończone. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące odzyskiwania po awarii](../common/storage-disaster-recovery-guidance.md).
+
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>Dołączanie do większych udziałami (warstwa standardowa)
+
+Ta sekcja dotyczy tylko do udziałów plików standardowych. Wszystkie udziały plików w warstwie premium są dostępne przy użyciu 100 TiB jako oferty usług ogólnie dostępnych.
+
+### <a name="restrictions"></a>Ograniczenia
+
+- Należy utworzyć nowe konto magazynu ogólnego przeznaczenia (nie można rozszerzyć istniejące konta magazynu).
+- Magazyn LRS, GRS konto konwersji nie będzie możliwe na wszystkich nowych kont magazynu, które są tworzone po zaakceptowaniu subskrypcji do większych preview udziałów plików.
+
+### <a name="regional-availability"></a>Dostępność regionalna
+
+Udziały plików standardowa są dostępne we wszystkich regionach maksymalnie 5 TiB. W niektórych regionach jest dostępna w 100 TiB limit, te regiony są wymienione w poniższej tabeli:
+
+|Region  |Obsługiwane nadmiarowości  |Obsługuje istniejące konta magazynu  |
+|---------|---------|---------|
+|Azja południowo-wschodnia     |LRS|Nie         |
+|Europa Zachodnia     |LRS|Nie         |
+|Zachodnie stany USA 2     |LRS, ZRS|Nie         |
+
+
+### <a name="steps-to-onboard"></a>Kroki, aby dołączyć
+
+Aby zarejestrować swoją subskrypcję do większych preview udziałów plików, uruchom następujące polecenia środowiska PowerShell:
+
+```powershell
+Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+```
+Twoja subskrypcja została automatycznie zatwierdzona, gdy zarówno polecenia są uruchamiane.
+
+Aby zweryfikować swój status rejestracji, można uruchomić następujące polecenie:
+
+```powershell
+Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+```
+
+Może upłynąć do 15 minut w przypadku Twojego statusu zaktualizować **zarejestrowany**. Gdy Twój status to **zarejestrowany**, powinno być możliwe jest użycie funkcji.
+
+### <a name="use-larger-file-shares"></a>Korzystać z większych udziałów plików
+
+Aby rozpocząć korzystanie z większych udziałów plików, należy utworzyć nowe konto magazynu ogólnego przeznaczenia w wersji 2 i nowego udziału plików.
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu ilości danych
 

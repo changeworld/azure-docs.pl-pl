@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b93f26080229e980b680c157f59db4edf33e7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bccaa28d34ebff47c7de73a4d9b3d8296ae9fef
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545479"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476120"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Sposobu wypełniania określonych pól dla aplikacji niestandardowej
 
@@ -42,23 +42,37 @@ Ten artykuł zawiera krótki opis dostępnych pól w formularzu rejestracji apli
 | Pole            | Opis                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
 | Name (Nazwa)             | Nazwa aplikacji. Powinien mieć co najmniej cztery znaki.                |
-| Typ aplikacji | **Sieci Web aplikacji/internetowy interfejs API**: Aplikację reprezentującą aplikację sieci web, internetowy interfejs API lub oba 
-| |**Natywne**: Aplikację, którą można zainstalować na urządzeniu lub komputerze użytkownika           |
-| Adres URL logowania      | Adres URL, w którym użytkownicy mogą logować się do korzystania z aplikacji                                  |
+| Obsługiwane typy konta| Wybierz pozycję konta, które chcesz aplikacji do obsługi: kont w tym katalogu organizacji tylko kont w dowolnym katalogu organizacji i kont w dowolnym katalogu organizacji i osobistych kont Microsoft.  |
+| (Opcjonalnie) identyfikator URI przekierowania | Wybierz typ aplikacji, którą tworzysz **Web** lub **klientem publicznym (mobilnych i klasycznych)** , a następnie wprowadź identyfikator URI przekierowania (lub adres URL odpowiedzi) dla aplikacji. W przypadku aplikacji internetowej podaj podstawowy adres URL aplikacji. Na przykład ciąg http://localhost:31544 może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą użyć tego adresu URL, aby zalogować się do aplikacji klienta internetowego. W przypadku publicznych aplikacji klienckich podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną do aplikacji, takich jak myapp://auth. Aby zobaczyć konkretne przykłady dotyczące aplikacji internetowych lub natywnych, zapoznaj się z [przewodnikami Szybki start](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts).|
 
-Po wypełnieniu pól powyżej, aplikacja jest zarejestrowana w witrynie Azure portal, a następnie nastąpi przekierowanie do strony aplikacji. **Ustawienia** przycisk w okienku aplikacji zostanie otwarty na stronie ustawień, które ma więcej pól, którą można dostosować aplikację. W poniższej tabeli opisano wszystkie pola na stronie ustawień. należy pamiętać, że byłaby widoczna tylko podzbiór tych pól, w zależności od tego, czy utworzona aplikacja sieci web lub aplikacji natywnej.
+Po wypełnieniu pól powyżej, aplikacja jest zarejestrowana w witrynie Azure portal, a następnie nastąpi przekierowanie do strony Przegląd aplikacji. Ze strony ustawień w okienku po lewej stronie w obszarze **Zarządzaj** mają więcej pól, którą można dostosować aplikację. W poniższych tabelach opisano wszystkie pola. Byłaby widoczna tylko podzbiór tych pól, w zależności od tego, utworzyć aplikację sieci web lub klientem publicznym.
 
-| Pole           | Opis                                                                                                                                                                                                                                                                                                     |
+### <a name="overview"></a>Omówienie
+| Pole           | Opis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Identyfikator aplikacji  | Podczas rejestrowania aplikacji usługi Azure AD przypisze aplikacji, identyfikator aplikacji. Identyfikator może być używana do unikatowej identyfikacji aplikacji w żądaniach uwierzytelniania usługi Azure AD, a także uzyskać dostęp do zasobów aplikacji, np. interfejsu API programu Graph.                                                          |
-| Identyfikator URI Identyfikatora aplikacji      | Powinno to być unikatowy identyfikator URI, zwykle w formie **https://&lt;dzierżawy\_nazwa&gt;/&lt;aplikacji\_nazwa&gt;.** Jest on używany podczas przepływu Udziel autoryzacji, jako unikatowy identyfikator, aby określić zasób, który powinien być wystawiony token na. Staje się również w tokenie dostępu wystawione oświadczenie "roszczenia". |
-| Przekaż nowe logo | Możesz użyć tego, aby przekazać logo aplikacji. Logo musi być w formacie BMP, jpg lub PNG, a rozmiar pliku powinien być mniejszy niż 100KB. Wymiary obrazu należy 215 x 215 pikseli i wymiary obrazu środkowego 94 x 94 piksele.                                                       |
-| Adres URL strony głównej   | Jest to adres URL logowania wskazanej podczas rejestracji aplikacji.                                                                                                                                                                                                                                              |
-| Adres URL wylogowywania      | Ten adres URL wylogowania wylogowania jednokrotnego. Usługa Azure AD wysyła żądanie wylogowania do tego adresu URL po użytkownik usunie zaznaczenie ich sesji z usługą Azure AD przy użyciu zarejestrowanej aplikacji.                                                                                                                                       |
-| Wielodostępnych  | Ten przełącznik określa, czy aplikacja może być używana przez wielu dzierżawców. Zazwyczaj oznacza to, że zewnętrznych organizacje mogą używać aplikacji przez zarejestrowanie go w ramach ich dzierżawy i udzielanie dostępu do danych organizacji.                                                                   |
-| Adresy URL odpowiedzi      | Odpowiedź adresy URL są punkty końcowe gdzie zwraca wszelkie tokeny żądań aplikacji w usłudze Azure AD.                                                                                                                                                                                                          |
-| Identyfikatory URI przekierowania   | Dla natywnych aplikacji jest to, gdzie użytkownik jest wysyłane po pomyślnej autoryzacji. Usługa Azure AD czy identyfikator URI przekierowania aplikacji dostarcza żądania OAuth 2.0 pasuje do jednego z zarejestrowanych wartości w portalu.                                                            |
-| Klucze            | Klucze można utworzyć w celu programowego dostępu do interfejsów API sieci web zabezpieczony przez usługę Azure AD bez żadnej interakcji użytkownika. Z \* \*klucze\* \* strony, wprowadź opis klucza i datę wygaśnięcia i Zapisz w celu wygenerowania klucza. Upewnij się go zapisać gdzieś bezpieczne, ponieważ nie można będzie później uzyskać dostęp do.             |
+| Identyfikator URI Identyfikatora aplikacji      | Powinno to być unikatowy identyfikator URI, zwykle w formie **https://&lt;dzierżawy\_nazwa&gt;/&lt;aplikacji\_nazwa&gt;.** Jest on używany podczas przepływu Udziel autoryzacji, jako unikatowy identyfikator, aby określić token powinien być wystawiane dla zasobu. Staje się również w tokenie dostępu wystawione oświadczenie "roszczenia". |
+
+### <a name="branding"></a>Znakowanie
+
+| Pole           | Opis        |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Przekaż nowe logo | Możesz użyć tego, aby przekazać logo aplikacji. Logo musi być w formacie BMP, jpg lub PNG, a rozmiar pliku powinien być mniejszy niż 100 KB. Wymiary obrazu należy 215 x 215 pikseli i wymiary obrazu środkowego 94 x 94 piksele.|
+| Adres URL strony głównej   | Jest to adres URL logowania wskazanej podczas rejestracji aplikacji.|
+
+### <a name="authentication"></a>Authentication
+
+| Pole           | Opis        |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Adres URL wylogowywania      | To jest adres URL wylogowania jednokrotnego wylogowania. Usługa Azure AD wysyła żądanie wylogowania do tego adresu URL po użytkownik usunie zaznaczenie ich sesji z usługą Azure AD przy użyciu zarejestrowanej aplikacji.|
+| Obsługiwane typy konta  | Ten przełącznik określa, czy aplikacja może być używana przez wielu dzierżawców. Zazwyczaj oznacza to, że zewnętrznych organizacje mogą używać aplikacji przez zarejestrowanie go w ramach ich dzierżawy i udzielanie dostępu do danych organizacji.|
+| Adresy URL przekierowania      | Przekieruj lub odpowiedź adresy URL są punkty końcowe gdzie zwraca wszelkie tokeny żądań aplikacji w usłudze Azure AD. Dla natywnych aplikacji jest to, gdzie użytkownik jest wysyłane po pomyślnej autoryzacji. Usługi Azure AD umożliwia sprawdzenie, czy aplikacji dostarcza żądania OAuth 2.0 identyfikatora URI przekierowania pasuje do jednego z zarejestrowanych wartości w portalu.|
+
+### <a name="certificates-and-secrets"></a>Certyfikaty i klucze tajne
+
+| Pole           | Opis        |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Wpisy tajne klienta            | Klucze tajne i klucze do programowego dostępu do interfejsów API sieci web zabezpieczony przez usługę Azure AD bez żadnej interakcji użytkownika, można utworzyć klienta. Z **nowy wpis tajny klienta** strony, wprowadź opis klucza i datę wygaśnięcia i Zapisz w celu wygenerowania klucza. Upewnij się go zapisać gdzieś bezpieczne, ponieważ nie można będzie później uzyskać dostęp do.             |
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Managing Applications with Azure Active Directory (Zarządzanie aplikacjami za pomocą usługi Azure Active Directory)](../manage-apps/what-is-application-management.md)

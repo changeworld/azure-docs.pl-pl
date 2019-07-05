@@ -3,7 +3,7 @@ title: Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) w usługach domenowyc
 description: Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
-ms.author: ergreenl
-ms.openlocfilehash: e961b6c4b97103668c591e319a81d20f533b4acb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 1cb9ff70b41b63f4a3e3d45d744037195fdf28a7
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246377"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473772"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 W tym artykule pokazano, jak włączyć bezpieczny Lightweight Directory dostępu protokołu (LDAPS) dla domeny zarządzanej usług domenowych Azure AD. Protokół Secure LDAP jest także znana jako "LDAP Lightweight Directory Access Protocol () za pośrednictwem Secure Sockets Layer (SSL) / zabezpieczeń TLS (Transport Layer)".

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 49da6ad20b29193f0430a66658f1bf80625704b3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 12001aef970d3b465a7f5c8e0c7af072b8f4ec80
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274124"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428458"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Szybki start: Tworzenie i monitorowanie topologii Apache Storm w usłudze Azure HDInsight
 
@@ -108,4 +108,4 @@ Aby usunąć klaster, zobacz [usunąć klaster usługi HDInsight przy użyciu pr
 W tym przewodniku Szybki Start użyto przykładu z Apache [projektu storm starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projekt do tworzenia i monitorowania topologii Apache Storm do istniejącego klastra Apache Storm. Przejdź do następnego artykułu, aby nauczyć się podstaw zarządzania i monitorowania topologii Apache Storm.
 
 > [!div class="nextstepaction"]
->[Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie ](./apache-storm-deploy-monitor-topology-linux.md)
+>[Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie](./apache-storm-deploy-monitor-topology-linux.md)

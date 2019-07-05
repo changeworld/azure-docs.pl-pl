@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 83ca0c11ab0065929d939b7345cbd15869740bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b56a31a58937ddbea08ff22c3d1c0c71942f47f1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024355"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445395"
 ---
 # <a name="data-import-overview---azure-search"></a>Importowanie danych przegląd — usługa Azure Search
 
@@ -36,7 +36,7 @@ Możesz załadować jeden lub wiele dokumentów do indeksu przy użyciu następu
 
 Obecnie nie istnieje wsparcie narzędziowe wypychania danych za pośrednictwem portalu.
 
-Aby zapoznać się z wprowadzeniem do każdej z metodologii, zobacz [Szybki Start: Tworzenie indeksu usługi Azure Search przy użyciu programu PowerShell i interfejsu API REST](search-create-index-rest-api.md) lub [Szybki Start: Tworzenie indeksu usługi Azure Search w C# ](search-import-data-dotnet.md).
+Aby zapoznać się z wprowadzeniem do każdej z metodologii, zobacz [Szybki Start: Tworzenie indeksu usługi Azure Search przy użyciu programu PowerShell](search-create-index-rest-api.md) lub [ C# Szybki Start: Tworzenie indeksu usługi Azure Search przy użyciu zestawu .NET SDK](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -44,9 +44,9 @@ Aby zapoznać się z wprowadzeniem do każdej z metodologii, zobacz [Szybki Star
 
 Typ akcji indeksowania na podstawie poszczególnych dokumentów, można kontrolować określenie, czy dokument powinny zostać przekazane w pełni, scalone z istniejącą zawartością dokumentu lub usunięte.
 
-W interfejsie API REST wysyłania żądań HTTP POST zawierających treść żądań JSON do adresu URL punktu końcowego indeksu usługi Azure Search. Poszczególne obiekty JSON w tablicy "wartość" zawiera klucz dokumentu i określa akcję indeksowania Dodawanie, aktualizowanie i lub usuwa zawartość dokumentu. Dla przykładu kodu zobacz [ładowanie dokumentów](search-create-index-rest-api.md#load-documents).
+W interfejsie API REST wysyłania żądań HTTP POST zawierających treść żądań JSON do adresu URL punktu końcowego indeksu usługi Azure Search. Poszczególne obiekty JSON w tablicy "wartość" zawiera klucz dokumentu i określa, czy akcję indeksowania dodaje, aktualizuje lub usuwa zawartość dokumentu. Dla przykładu kodu zobacz [ładowanie dokumentów](search-get-started-dotnet.md#load-documents).
 
-Zestaw .NET SDK spakować dane do `IndexBatch` obiektu. `IndexBatch` Hermetyzuje kolekcję `IndexAction` obiektów, z których każdy zawiera dokument i właściwości, które informują usługę Azure Search, jaką akcję wykonać na tym dokumencie. Dla przykładu kodu zobacz [konstruowania IndexBatch](search-import-data-dotnet.md#construct-indexbatch).
+Zestaw .NET SDK spakować dane do `IndexBatch` obiektu. `IndexBatch` Hermetyzuje kolekcję `IndexAction` obiektów, z których każdy zawiera dokument i właściwości, które informują usługę Azure Search, jaką akcję wykonać na tym dokumencie. Dla przykładu kodu zobacz [ C# Szybki Start](search-get-started-dotnet.md).
 
 
 | @search.action | Opis | Wymagane pola dla każdego dokumentu | Uwagi |

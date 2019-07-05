@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 2952c446e2d66505ebaec42eb82e37be02035483
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d7e4253d37d5b50fc8c3de1c8c31636e59b2b9c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62111496"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444785"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus i kolejki za pomocą szablonu usługi Azure Resource Manager
 
@@ -27,7 +27,7 @@ W tym artykule przedstawiono sposób używania szablonu usługi Azure Resource M
 
 Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [tworzenia usługi Azure Resource Manager][Authoring Azure Resource Manager templates].
 
-Aby uzyskać kompletny szablon, zobacz [szablon przestrzeni nazw i kolejki usługi Service Bus] [ Service Bus namespace and queue template] w witrynie GitHub.
+Aby uzyskać kompletny szablon, zobacz [szablon przestrzeni nazw i kolejki usługi Service Bus][Service Bus namespace and queue template] w witrynie GitHub.
 
 > [!NOTE]
 > Następujące szablony usługi Azure Resource Manager są dostępne do pobrania i wdrożenia.
@@ -37,7 +37,7 @@ Aby uzyskać kompletny szablon, zobacz [szablon przestrzeni nazw i kolejki usłu
 > * [Tworzenie przestrzeni nazw usługi Service Bus](service-bus-resource-manager-namespace.md)
 > * [Tworzenie przestrzeni nazw usługi Service Bus przy użyciu tematu, subskrypcji i reguły](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Aby sprawdzić najnowsze szablony, odwiedź stronę [szablony szybkiego startu platformy Azure] [ Azure Quickstart Templates] galerii i wyszukaj **usługi Service Bus**.
+> Aby sprawdzić najnowsze szablony, odwiedź stronę [szablony szybkiego startu platformy Azure][Azure Quickstart Templates] galerii i wyszukaj **usługi Service Bus**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -137,7 +137,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po utworzeniu i wdrożeniu zasobów przy użyciu usługi Azure Resource Manager, Dowiedz się, jak można nimi zarządzać, wyświetlając następujące artykuły:
+Zobacz następujący temat, który pokazuje, jak utworzyć regułę autoryzacji dla przestrzeni nazw/kolejki: [Utwórz regułę autoryzacji usługi Service Bus dla przestrzeni nazw i kolejki przy użyciu szablonu usługi Azure Resource Manager](service-bus-resource-manager-namespace-auth-rule.md)
+
+Dowiedz się, jak zarządzać tymi zasobami, wyświetlając następujące artykuły:
 
 * [Zarządzanie usługą Service Bus za pomocą programu PowerShell](service-bus-manage-with-ps.md)
 * [Zarządzanie zasobami usługi Service Bus za pomocą Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

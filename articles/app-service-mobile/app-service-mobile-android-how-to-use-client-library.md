@@ -3,7 +3,7 @@ title: Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Andro
 description: Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android
 services: app-service\mobile
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
@@ -11,16 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 03/07/2019
-ms.author: crdun
-ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 6a6db136926a7f9d631c717f5cab6c025d97fb48
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859396"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443540"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android
+
+> [!NOTE]
+> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library) już dziś.
+>
 
 Ten przewodnik pokazuje, jak kliencką dla systemu Android SDK dla aplikacji mobilnych umożliwiają implementowanie typowych scenariuszy, takich jak:
 
@@ -29,11 +33,11 @@ Ten przewodnik pokazuje, jak kliencką dla systemu Android SDK dla aplikacji mob
 * Obsługa błędów.
 * Dostosowywanie klienta.
 
-Ten przewodnik koncentruje się na zestaw SDK systemu Android po stronie klienta.  Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla aplikacji mobilnych, zobacz [pracy z zapleczem platformy .NET SDK] [ 10] lub [jak do użycia zaplecza Node.js SDK][11].
+Ten przewodnik koncentruje się na zestaw SDK systemu Android po stronie klienta.  Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla aplikacji mobilnych, zobacz [pracy z zapleczem platformy .NET SDK][10] or [How to use the Node.js backend SDK][11].
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
 
-Możesz znaleźć [dokumentacja interfejsu API Javadocs] [ 12] dla biblioteki klienckiej systemu Android w witrynie GitHub.
+Możesz znaleźć [dokumentacja interfejsu API Javadocs][12] dla biblioteki klienckiej systemu Android w witrynie GitHub.
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
 
@@ -45,7 +49,7 @@ Wykonaj [Mobile Apps — Szybki Start](app-service-mobile-android-get-started.md
 
 Jeśli zdecydujesz się na ukończenie tego samouczka Szybki Start, wykonaj następujące zadania:
 
-* [Tworzenie zaplecza aplikacji mobilnej] [ 13] za pomocą aplikacji dla systemu Android.
+* [Tworzenie zaplecza aplikacji mobilnej][13] za pomocą aplikacji dla systemu Android.
 * W programie Android Studio [pliki kompilacji aktualizacji Gradle](#gradle-build).
 * [Włącz uprawnień internetowych](#enable-internet).
 
@@ -197,17 +201,17 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Aby dowiedzieć się, jak utworzyć dodatkowe tabele w kodzie zaplecza funkcji Mobile Apps, zobacz [jak: Zdefiniuj kontrolera tabeli] [ 15] (zaplecze .NET) lub [Definiowanie tabel przy użyciu schematu dynamicznego] [ 16] (zaplecze środowiska Node.js).
+Aby dowiedzieć się, jak utworzyć dodatkowe tabele w kodzie zaplecza funkcji Mobile Apps, zobacz [jak: Zdefiniuj kontrolera tabeli][15] (.NET backend) or [Define Tables using a Dynamic Schema][16] (zaplecze środowiska Node.js).
 
 Tabeli wewnętrznej bazy danych usługi Azure Mobile Apps definiuje pięć specjalne pola, cztery z nich są dostępne dla klientów:
 
-* `String id`: Globalnie unikatowy identyfikator rekordu.  Najlepszym rozwiązaniem jest wprowadzić identyfikator reprezentację ciągu [UUID] [ 17] obiektu.
+* `String id`: Globalnie unikatowy identyfikator rekordu.  Najlepszym rozwiązaniem jest wprowadzić identyfikator reprezentację ciągu [UUID][17] obiektu.
 * `DateTimeOffset updatedAt`: Data/godzina ostatniej aktualizacji.  Pole updatedAt jest ustawiana przez serwer i nigdy nie powinna być ustawiona przez kod klienta.
 * `DateTimeOffset createdAt`: Data/godzina utworzenia obiektu.  Pole createdAt jest ustawiana przez serwer i nigdy nie powinna być ustawiona przez kod klienta.
 * `byte[] version`: Zwykle reprezentowany jako ciąg znaków, wersja jest również ustawiona przez serwer.
 * `boolean deleted`: Wskazuje, że rekord została usunięta, ale nie przeczyszczono jeszcze.  Nie używaj `deleted` jako właściwość w klasie.
 
-Pole `id` jest wymagane.  `updatedAt` Pola i `version` pola są używane do synchronizacji w trybie offline (dla przyrostowych synchronizacji i konflikt rozpoznawania odpowiednio).  `createdAt` Pole jest polem Odwołanie i nie jest używany przez klienta.  Nazwy są "w locie" nazw właściwości i nie są zmieniane.  Jednak można utworzyć mapowanie między obiektu oraz nazwy "w locie", przy użyciu [gson] [ 3] biblioteki.  Na przykład:
+Pole `id` jest wymagane.  `updatedAt` Pola i `version` pola są używane do synchronizacji w trybie offline (dla przyrostowych synchronizacji i konflikt rozpoznawania odpowiednio).  `createdAt` Pole jest polem Odwołanie i nie jest używany przez klienta.  Nazwy są "w locie" nazw właściwości i nie są zmieniane.  Jednak można utworzyć mapowanie między obiektu oraz nazwy "w locie", przy użyciu [gson][3] biblioteki.  Na przykład:
 
 ```java
 package com.example.zumoappname;
@@ -267,7 +271,7 @@ public class ToDoItem
 
 ### <a name="create-a-table-reference"></a>Tworzenie odwołania do tabeli
 
-Aby uzyskać dostęp do tabeli, należy najpierw utworzyć [MobileServiceTable] [ 8] obiektu przez wywołanie metody **getTable** metody [MobileServiceClient] [9].  Ta metoda ma dwa przeciążenia:
+Aby uzyskać dostęp do tabeli, należy najpierw utworzyć [MobileServiceTable][8] obiektu przez wywołanie metody **getTable** metody [MobileServiceClient][9].  Ta metoda ma dwa przeciążenia:
 
 ```java
 public class MobileServiceClient {
@@ -310,7 +314,7 @@ List<MyDataTable> results = mDataTable
     .get()              // Converts the async into a sync result
 ```
 
-Powyższy przykład zwraca wszystkie wyniki (maksymalnie maksymalny rozmiar strony ustawiony przez serwer).  `.execute()` Metoda wykonuje zapytanie do wewnętrznej bazy danych.  Zapytanie jest konwertowany na [OData v3] [ 19] zapytania przed ich przesłaniem do zaplecza usługi Mobile Apps.  Po otrzymaniu zaplecze funkcji Mobile Apps konwertuje zapytania do instrukcji SQL przed wykonaniem go na wystąpienie usług SQL Azure.  Ponieważ aktywności sieciowej dopiero po pewnym czasie `.execute()` metoda zwraca [ `ListenableFuture<E>` ] [ 18].
+Powyższy przykład zwraca wszystkie wyniki (maksymalnie maksymalny rozmiar strony ustawiony przez serwer).  `.execute()` Metoda wykonuje zapytanie do wewnętrznej bazy danych.  Zapytanie jest konwertowany na [OData v3][19] zapytania przed ich przesłaniem do zaplecza usługi Mobile Apps.  Po otrzymaniu zaplecze funkcji Mobile Apps konwertuje zapytania do instrukcji SQL przed wykonaniem go na wystąpienie usług SQL Azure.  Ponieważ aktywności sieciowej dopiero po pewnym czasie `.execute()` metoda zwraca [ `ListenableFuture<E>` ][18].
 
 ### <a name="filtering"></a>Filtruj dane zwrotne
 
@@ -697,7 +701,7 @@ mJsonToDoTable = mClient.getTable("ToDoItem");
 Po utworzeniu wystąpienia **MobileServiceJsonTable**, praktycznie ma tego samego interfejsu API dostępne jako typizowany model programowania. W niektórych przypadkach metody przyjmują parametru bez typu, a nie typizowany parametr.
 
 ### <a name="json_insert"></a>Wstaw do tabeli bez typu
-Poniższy kod przedstawia sposób wykonywania instrukcji insert. Pierwszym krokiem jest utworzenie [JsonObject][1], który jest częścią [gson] [ 3] biblioteki.
+Poniższy kod przedstawia sposób wykonywania instrukcji insert. Pierwszym krokiem jest utworzenie [JsonObject][1] , which is part of the [gson][3] biblioteki.
 
 ```java
 JsonObject jsonItem = new JsonObject();
@@ -1003,7 +1007,7 @@ Uzyskaj identyfikator zalogowanego użytkownika z **MobileServiceUser** przy uż
 
 ### <a name="caching"></a>Tokeny uwierzytelniania pamięci podręcznej
 
-Buforowanie tokenów uwierzytelniania należy do przechowywania nazwy użytkownika i token uwierzytelniania lokalnie na urządzeniu. Przy następnym uruchomieniu aplikacji, sprawdź pamięci podręcznej, a jeśli te wartości są obecne, możesz pominąć dziennika w ramach procedury i przywrócenia z magazynu trwałego klienta przy użyciu tych danych. Jednak te dane są poufne i powinny być przechowywane, szyfrowane pod kątem bezpieczeństwa, w przypadku, gdy telefon zostanie skradzione.  Możesz zobaczyć pełny przykład jak do pamięci podręcznej tokenów uwierzytelniania w [pamięci podręcznej w sekcji tokeny uwierzytelniania][7].
+Buforowanie tokenów uwierzytelniania należy do przechowywania nazwy użytkownika i token uwierzytelniania lokalnie na urządzeniu. Przy następnym uruchomieniu aplikacji, sprawdź pamięci podręcznej, a jeśli te wartości są obecne, możesz pominąć dziennika w ramach procedury i przywrócenia z magazynu trwałego klienta przy użyciu tych danych. Jednak te dane są poufne i powinny być przechowywane, szyfrowane pod kątem bezpieczeństwa, w przypadku, gdy telefon zostanie skradzione.  Możesz zobaczyć pełny przykład jak do pamięci podręcznej tokenów uwierzytelniania w [sekcja tokeny uwierzytelniania w pamięci podręcznej][7].
 
 Podczas próby użycia tokenu wygasłe, pojawia się *401 Brak autoryzacji* odpowiedzi. Może obsługiwać błędy uwierzytelniania przy użyciu filtrów.  Filtry Przechwytywanie żądań z zapleczem usługi App Service. Kod filtru sprawdza odpowiedzi na 401, wyzwala procesu logowania, a następnie wznawia żądania, który wygenerował 401.
 
@@ -1081,7 +1085,7 @@ Zastąp `onSuccess()` metody za pomocą dowolnie kod mają być używane podczas
 
 Active Directory Authentication Library (ADAL) służy do logowania się użytkowników do aplikacji za pomocą usługi Azure Active Directory. Za pomocą identyfikatora logowania przepływ klienta jest często używane zamiast `loginAsync()` metody, ponieważ zapewnia bardziej natywnego działania środowiska użytkownika i umożliwia dodatkowych dostosowań.
 
-1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze AAD, wykonując [sposób konfigurowania usługi App Service dla nazwy logowania usługi Active Directory] [ 22] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej.
+1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze AAD, wykonując [sposób konfigurowania usługi App Service dla nazwy logowania usługi Active Directory][22] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej.
 2. Zainstaluj biblioteki ADAL, modyfikując z plikiem build.gradle, aby uwzględnić następujące definicje:
 
     ```gradle
@@ -1276,7 +1280,7 @@ private class CustomHeaderFilter implements ServiceFilter {
 
 ### <a name="conversions"></a>Skonfiguruj automatyczne serializacji
 
-Można określić strategię konwersji, która ma zastosowanie do wszystkich kolumn przy użyciu [gson] [ 3] interfejsu API. Biblioteka kliencka systemu Android używa [gson] [ 3] w tle do wykonywania serializacji obiektów Java do formatu JSON, dane przed wysłaniem danych do usługi Azure App Service.  Poniższy kod używa **setFieldNamingStrategy()** metodę, aby ustawić strategii. W tym przykładzie spowoduje usunięcie początkowy znak ("m"), a następnie małą następny znak, dla każdej nazwy pola. Na przykład go czy przekształcając "mId" "id."  Wdrożenie strategii konwersji, aby zmniejszyć zapotrzebowanie na `SerializedName()` adnotacji dla większości pól.
+Można określić strategię konwersji, która ma zastosowanie do wszystkich kolumn przy użyciu [gson][3] interfejsu API. Biblioteka kliencka systemu Android używa [gson][3] w tle do wykonywania serializacji obiektów Java do formatu JSON, dane przed wysłaniem danych do usługi Azure App Service.  Poniższy kod używa **setFieldNamingStrategy()** metodę, aby ustawić strategii. W tym przykładzie spowoduje usunięcie początkowy znak ("m"), a następnie małą następny znak, dla każdej nazwy pola. Na przykład go czy przekształcając "mId" "id."  Wdrożenie strategii konwersji, aby zmniejszyć zapotrzebowanie na `SerializedName()` adnotacji dla większości pól.
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {

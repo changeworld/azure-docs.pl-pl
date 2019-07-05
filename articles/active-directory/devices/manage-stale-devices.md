@@ -1,28 +1,22 @@
 ---
 title: Jak zarządzać nieaktywnymi urządzeniami w usłudze Azure AD | Microsoft Docs
-description: Z powodu zgubienia, kradzieży lub uszkodzenia urządzenia albo ponownej instalacji systemu operacyjnego w Twoim środowisku pojawiają się nieaktywne urządzenia. Dowiedz się, jak usunąć nieaktywne urządzenia z bazy danych urządzeń zarejestrowanych w usłudze Azure Active Directory (Azure AD).
+description: Dowiedz się, jak usunąć stare urządzenia ze swojej bazy danych zarejestrowanych w usłudze Azure Active Directory.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
-ms.date: 01/30/2019
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c61c62555b3712983d7eb5c1478ed193730ed9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b64fd7efb00dabd1e1758ec631e6992d68bff2ab
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110585"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481648"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
 
@@ -36,15 +30,10 @@ W tym artykule dowiesz się, jak skutecznie zarządzać nieaktywnymi urządzenia
 Nieaktywnym nazywamy urządzenie, które zostało zarejestrowane za pomocą usługi Azure AD, ale nie było używane do uzyskiwania dostępu do aplikacji w chmurze w określonym przedziale czasu. Nieaktywne urządzenia wpływają na możliwość obsługi urządzeń i użytkowników oraz zarządzania nimi w ramach dzierżawy z następujących powodów: 
 
 - Zduplikowane urządzenia mogą utrudnić pracownikom działu pomocy technicznej zidentyfikowanie urządzenia, które jest aktualnie aktywne.
-
 - Zwiększona liczba urządzeń powoduje tworzenie zbędnych zapisów zwrotnych dla urządzeń, co wydłuża czas synchronizacji programu AAD Connect.
-
 - W celu zachowania porządku i spełnienia wymagań dotyczących zgodności warto mieć „czysty” stan urządzeń. 
 
-
 Istnienie nieaktywnych urządzeń w usłudze Azure AD może być niezgodne z ogólnymi zasadami cyklu życia urządzeń w Twojej organizacji.
-
-
 
 ## <a name="detect-stale-devices"></a>Wykrywanie nieaktywnych urządzeń
 
@@ -55,14 +44,10 @@ Ponieważ nieaktywne urządzenie jest zdefiniowane jako zarejestrowane urządzen
 Obliczanie znacznika czasu aktywności jest wyzwalane przez próbę uwierzytelnienia urządzenia. Usługa Azure AD oblicza znacznik czasu aktywności w następujących sytuacjach:
 
 - Zasady dostępu warunkowego, wymagających [urządzeń zarządzanych przy użyciu](../conditional-access/require-managed-devices.md) lub [zatwierdzonych aplikacji klienckich](../conditional-access/app-based-conditional-access.md) została wyzwolona.
-
 - Wykazywanie aktywności w sieci przez urządzenia z systemem Windows 10, które są dołączone do usługi Azure AD lub dołączone hybrydowo do usługi Azure AD. 
-
 - Zaewidencjonowanie w usłudze urządzeń zarządzanych przy użyciu usługi Intune.
 
-
 Jeśli różnica między istniejącą wartością znacznika czasu aktywności a bieżącą wartością wynosi więcej niż 14 dni, istniejąca wartość jest zastępowana przez nową wartość.
-    
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>Jak mogę uzyskać znacznik czasu aktywności?
 
@@ -72,12 +57,9 @@ Istnieją dwie możliwości uzyskania wartości znacznika czasu aktywności:
 
     ![Znacznik czasu aktywności](./media/manage-stale-devices/01.png)
 
-
 - Polecenie cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
 
     ![Znacznik czasu aktywności](./media/manage-stale-devices/02.png)
-
-
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>Planowanie oczyszczania nieaktywnych urządzeń
 
@@ -88,13 +70,10 @@ Aby skutecznie oczyścić nieaktywne urządzenia w swoim środowisku, zdefiniuj 
 Aby zaktualizować urządzenie w usłudze Azure AD, potrzebne jest konto, które ma przypisaną jedną z następujących ról:
 
 - Administrator globalny
-
 - Administrator urządzenia w chmurze (Nowa rola jest już dostępna!)
-
 - Administrator usługi Intune
 
 W zasadach oczyszczania wybierz konta, które mają przypisane wymagane role. 
-
 
 ### <a name="timeframe"></a>Przedział czasu
 
@@ -104,16 +83,13 @@ Zdefiniuj przedział czasu, który jest wskaźnikiem służącym do wykrywania n
 
 Nie zaleca się natychmiastowego usuwania urządzenia, które wydaje się być nieaktualne, ponieważ takiego usunięcia nie można cofnąć, gdy uznanie urządzenia za nieaktywne okaże się wynikiem fałszywie dodatnim. Najlepszym rozwiązaniem jest wyłączenie urządzenia na okres prolongaty przed jego usunięciem. W zasadach zdefiniuj przedział czasu wyłączenia urządzenia przed jego usunięciem.
 
-
 ### <a name="mdm-controlled-devices"></a>Urządzenia kontrolowane przez rozwiązanie MDM
 
 Jeśli urządzenie jest kontrolowane przez usługę Intune lub dowolne inne rozwiązanie do zarządzania urządzeniami mobilnymi (MDM), wycofaj to urządzenie z takiego rozwiązania przed jego wyłączeniem lub usunięciem.
 
-
 ### <a name="system-managed-devices"></a>Urządzenia zarządzane przez system
 
 Nie należy usuwać urządzeń zarządzanych przez system. Są to zazwyczaj urządzenia takie jak autopilot. Po usunięciu takich urządzeń nie można ich ponownie aprowizować. Nowe polecenie cmdlet `get-msoldevice` domyślnie wyklucza urządzenia zarządzane przez system. 
-
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Urządzenia dołączone hybrydowo do usługi Azure AD
 
@@ -122,55 +98,43 @@ W przypadku urządzeń dołączonych hybrydowo do usługi Azure AD powinny być 
 Oczyszczanie w usłudze Azure AD:
 
 - **Urządzenia z systemem Windows 10** — wyłącz lub usuń urządzenia z systemem Windows 10 w lokalnej usłudze AD i pozwól usłudze Azure AD Connect zsynchronizować zmieniony stan urządzenia z usługą Azure AD.
-
 - **System Windows 7 lub 8** — wyłącz lub usuń urządzenia z systemem Windows 7 lub 8 w usłudze Azure AD. Nie możesz używać programu Azure AD Connect do wyłączania ani usuwania urządzeń z systemem Windows 7 lub 8 w usłudze Azure AD.
-
-
 
 ### <a name="azure-ad-joined-devices"></a>Urządzenia dołączone do usługi Azure AD
 
 Urządzenia dołączone do usługi Azure AD wyłącza się lub usuwa w usłudze Azure AD.
 
-
 ### <a name="azure-ad-registered-devices"></a>Urządzenia zarejestrowane w usłudze Azure AD
 
 Urządzenia zarejestrowane w usłudze Azure AD wyłącza się lub usuwa w usłudze Azure AD.
-
-
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Oczyszczanie nieaktywnych urządzeń w witrynie Azure Portal  
 
 Nieaktywne urządzenia można oczyszczać w witrynie Azure Portal, ale bardziej wydajne jest wykonywanie tego za pomocą skryptu programu PowerShell. Użyj najnowszego modułu programu PowerShell w wersji 1, aby za pomocą filtru znacznika czasu odfiltrować urządzenia zarządzane przez system, takie jak autopilot. W tym przypadku użycie programu PowerShell w wersji 2 nie jest zalecane.
 
-
 Typowa procedura obejmuje następujące czynności:
 
 1. Nawiązywanie połączenia z usługą Azure Active Directory przy użyciu polecenia cmdlet [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
-
-2. Pobieranie listy urządzeń
-
-3. Wyłączanie urządzenia przy użyciu polecenia cmdlet [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
-
-4. Przed usunięciem urządzenia poczekaj, aż upłynie wybrana przez Ciebie liczba dni okresu prolongaty.
-
-5. Usuwanie urządzenia przy użyciu polecenia cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
+1. Pobieranie listy urządzeń
+1. Wyłączanie urządzenia przy użyciu polecenia cmdlet [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
+1. Przed usunięciem urządzenia poczekaj, aż upłynie wybrana przez Ciebie liczba dni okresu prolongaty.
+1. Usuwanie urządzenia przy użyciu polecenia cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
 
 ### <a name="get-the-list-of-devices"></a>Pobieranie listy urządzeń
 
 Aby uzyskać listę wszystkich urządzeń i zachować zwrócone dane w pliku CSV, użyj następującego polecenia:
 
-```powershell
+```PowerShell
 Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, Approxi
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-Jeśli masz dużą liczbę urządzeń w katalogu, użyj filtru znacznika czasu, aby zawęzić liczbę zwróconych urządzeń. Aby uzyskać wszystkie urządzenia ze znacznikiem czasu starszym niż określona data oraz zachować zwrócone dane w pliku CSV, użyj następującego polecenia: 
+Jeśli masz dużą liczbę urządzeń w katalogu, użyj filtru sygnatury czasowej, aby zawęzić liczba zwróconych urządzeń. Aby uzyskać wszystkie urządzenia ze znacznikiem czasu starszym niż określona data oraz zachować zwrócone dane w pliku CSV, użyj następującego polecenia: 
 
-```powershell
+```PowerShell
 $dt = [datetime]’2017/01/01’
 Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
-
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
@@ -191,16 +155,9 @@ Aby dowiedzieć się więcej na temat różnych typów, zobacz [omówienie zarz�
 Każde uwierzytelnianie z użyciem urządzenia w usłudze Azure AD jest odrzucane. Typowe przykłady:
 
 - **Urządzenie dołączone hybrydowo do usługi Azure AD** — użytkownicy mogą korzystać z urządzenia, aby zalogować się do swojej domeny lokalnej. Nie mogą jednak uzyskać dostępu do zasobów usługi Azure AD, takich jak usługa Office 365.
-
 - **Urządzenia dołączone do usługi Azure AD** — użytkownicy nie mogą używać urządzenia do logowania. 
-
 - **Urządzenia przenośne** — użytkownicy nie mogą uzyskać dostępu do zasobów usługi Azure AD, takich jak usługa Office 365. 
-
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać omówienie sposobu zarządzania urządzeniami w witrynie Azure Portal, zobacz [zarządzanie urządzeniami przy użyciu witryny Azure Portal](device-management-azure-portal.md)
-
-
-

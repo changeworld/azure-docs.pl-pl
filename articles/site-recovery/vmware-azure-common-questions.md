@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 59be8e0585f0bedcafc868ee42f5113509c9c4ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79118fb053c7064fa29730680feb0434f45f031a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417773"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491693"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Często zadawane pytania dotyczące programu VMware do platformy Azure replikacji
 
@@ -85,6 +85,10 @@ Aby uzyskać szczegółową prognozę kosztów, uruchom narzędzie planista wdra
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Czy istnieją różnice w koszcie między replikowanych do magazynu lub bezpośrednio do usługi managed disks?
 
 Dyski zarządzane są naliczane nieco inaczej na kontach magazynu. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/managed-disks/) o cenach dysku zarządzanego.
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>Czy istnieją różnice w koszcie podczas replikowania do konta magazynu ogólnego przeznaczenia v2?
+
+Zazwyczaj zobaczysz wzrost kosztów transakcji naliczane dla kont magazynu GPv2, ponieważ usługa Azure Site Recovery jest duże transakcje. [Dowiedz się więcej](../storage/common/storage-account-upgrade.md#pricing-and-billing) do oszacowania zmian.
 
 ## <a name="mobility-service"></a>Usługa mobilności
 
@@ -293,7 +297,7 @@ Aktualizacje w wersji 9,24 i nowszej są teraz wyświetlane [kondycję serwera p
 
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>Jak zaktualizować serwer przetwarzania do wersji 9.24 lub nowszym w przypadku informacji o kondycji dokładne?
 
-Począwszy od [wersji 9,24](service-updates-how-to.md#links-to-currently-supported-update-rollups), więcej alertów zostały dodane do wskazania kondycję serwera przetwarzania. [Aktualizacją składników usługi Site Recovery do wersji 9.24 lub nowszej] (service-updates-how-to.md#links-to-currently-supported-update-rollups) tak, aby wszystkie alerty są generowane.
+Począwszy od [wersji 9,24](service-updates-how-to.md#links-to-currently-supported-update-rollups), więcej alertów zostały dodane do wskazania kondycję serwera przetwarzania. [Aktualizacja składników usługi Site Recovery do wersji 9.24 lub nowszej](service-updates-how-to.md#links-to-currently-supported-update-rollups) tak, aby wszystkie alerty są generowane.
 
 ## <a name="failover-and-failback"></a>Praca w trybie failover i powrót po awarii
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7a547efb7af69c58f8e04615d24dd7c230f0c8b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505587"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444645"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Włączanie lub wyłączanie reguły zapory w systemie operacyjnym gościa maszyny Wirtualnej platformy Azure
 
@@ -99,7 +99,7 @@ Jeśli maszyna wirtualna jest w trybie online i jest dostępny w innej maszyny W
 
 1.  W przypadku maszyny Wirtualnej rozwiązywania problemów Uruchom Edytor rejestru (regedit.exe), a następnie wybierz **pliku** > **rejestru połączenia sieciowego**.
 
-2.  Otwórz *maszyna docelowa*\SYSTEM gałęzi, a następnie określ następujące wartości:
+2.  Otwórz *maszyna docelowa*\SYSTEM gałęzi, a następnie określ następujące wartości:
 
     * Aby włączyć regułę, otwórz następującą wartość rejestru:
     
@@ -123,26 +123,26 @@ Jeśli maszyna wirtualna jest w trybie online i jest dostępny w innej maszyny W
 
 Jeśli nie masz dostępu maszyny Wirtualnej przez każdą metodę, przy użyciu rozszerzenia niestandardowego skryptu zakończy się niepowodzeniem, a trzeba będzie pracować w trybie OFFLINE dzięki pracy bezpośrednio w ramach dysku systemowego.
 
-Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemowego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
+Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemowego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 
 1.  [Dołącz dysk systemu do odzyskiwania maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
 
-3.  Upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Należy pamiętać, że dysk litery jest przypisana do dysku systemowego dołączone.
+3.  Upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Należy pamiętać, że dysk litery jest przypisana do dysku systemowego dołączone.
 
 4.  Przed wprowadzeniem zmiany należy utworzyć kopię folderu \windows\system32\config w przypadku, gdy konieczne jest wycofanie zmian.
 
 5.  Na maszyny Wirtualnej rozwiązywania problemów Uruchom Edytor rejestru (regedit.exe).
 
-6.  Wyróżnij **HKEY_LOCAL_MACHINE** klucza, a następnie wybierz **pliku** > **Załaduj gałąź rejestru** z menu.
+6.  Wyróżnij **HKEY_LOCAL_MACHINE** klucza, a następnie wybierz **pliku** > **Załaduj gałąź rejestru** z menu.
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  Znajdź, a następnie otwórz plik \windows\system32\config\SYSTEM. 
 
     > [!Note]
-    > Zostanie wyświetlony monit o podanie nazwy. Wprowadź **BROKENSYSTEM**, a następnie rozwiń węzeł **HKEY_LOCAL_MACHINE**. Zostanie wyświetlona dodatkowy klucz o nazwie **BROKENSYSTEM**. Aby uzyskać procedury rozwiązywania problemów, firma Microsoft instalowania tych gałęzi problem jako **BROKENSYSTEM**.
+    > Zostanie wyświetlony monit o podanie nazwy. Wprowadź **BROKENSYSTEM**, a następnie rozwiń węzeł **HKEY_LOCAL_MACHINE**. Zostanie wyświetlona dodatkowy klucz o nazwie **BROKENSYSTEM**. Aby uzyskać procedury rozwiązywania problemów, firma Microsoft instalowania tych gałęzi problem jako **BROKENSYSTEM**.
 
 8.  Wprowadź następujące zmiany w gałęzi BROKENSYSTEM:
 
@@ -164,7 +164,7 @@ Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemowego, któ
         
         **v2.22 | Akcja = Zezwalaj | Aktywne = FALSE | Dir = In | Protokół = 6 | Profile = Domain | Profil prywatny = | Profil publiczny = | LPort = 3389 | App=%systemroot%\system32\svchost.exe| SVC = termservice | Nazwa =\@FirewallAPI.dll,-28775 | Desc =\@FirewallAPI.dll,-28756 | EmbedCtxt =\@FirewallAPI.dll,-28752 |**
 
-9.  Wyróżnij **BROKENSYSTEM**, a następnie wybierz pozycję **pliku** > **Zwolnij gałąź rejestru** z menu.
+9.  Wyróżnij **BROKENSYSTEM**, a następnie wybierz pozycję **pliku** > **Zwolnij gałąź rejestru** z menu.
 
 10. [Odłączanie dysku systemowego i ponowne utworzenie maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
 

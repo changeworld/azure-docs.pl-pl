@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 0c40d0985b0d6c967a55b1954a1cb54feeb15361
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0ae47a7898e380a25618a8d6ae6a1e0251fe466c
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149380"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514590"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Python
 
@@ -54,11 +54,13 @@ Ta aplikacja przykładowa tworzy plik testowy w folderze *Documents*. Aplikacja 
 
 Najpierw zainstaluj zależności, uruchamiając polecenie `pip install`:
 
+```python
     pip install azure-storage-blob
+```
 
 Następnie uruchom przykład. Zostaną wyświetlone komunikaty podobne do następujących danych wyjściowych:
   
-```
+```output
 Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
 
 Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt

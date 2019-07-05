@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 198e7d8d32e7142a266881e2f4ddbc3ed573c521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e78dd093c4bbf0cf1bdbd5280ffaa63286e585d4
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533903"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537137"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Szybki start: Konfigurowanie zapory serwera — Portal
 
@@ -33,7 +33,7 @@ Ten przewodnik Szybki start ułatwia konfigurowanie zapory na potrzeby serwera u
 1. Kliknij serwer, aby otworzyć stronę Omówienie. 
 2. Wybierz opcje **USTAWIENIA** > **Zapora** > **Włącz zaporę** i kliknij przycisk **Włączone**.
 3. Aby zezwolić na dostęp w trybie DirectQuery z poziomu usługi Power BI, w obszarze **Zezwalaj na dostęp z usługi Power BI** kliknij przycisk **Włączone**.  
-4. (Opcjonalnie) Podaj co najmniej jeden zakres adresów IP. Wprowadź nazwę oraz początkowy i końcowy adres IP dla każdego zakresu. 
+4. (Opcjonalnie) Podaj co najmniej jeden zakres adresów IP. Wprowadź nazwę oraz początkowy i końcowy adres IP dla każdego zakresu. Nazwa reguły zapory powinny być ograniczone do 128 znaków i może zawierać tylko wielkie litery, małe litery, cyfry, podkreślenie i łącznik. Białych znaków i inne znaki specjalne są niedozwolone.
 5. Kliknij pozycję **Zapisz**.
 
      ![Ustawienia zapory](./media/analysis-services-qs-firewall/aas-qs-firewall.png)

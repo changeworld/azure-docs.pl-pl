@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b3d749eb3e2bc767889831b4c1ff01833a3f39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544668"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483176"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Instrukcje: Korzystanie z interfejsu API Graph usługi Azure AD
 
@@ -65,7 +65,7 @@ Eksplorator usługi Azure AD Graph dla interfejsu API programu Graph usługi Azu
 
 Poniższy zrzut ekranu przedstawia dane wyjściowe zostanie wyświetlony, jeśli masz zamiar przejść do Eksploratora usługi Azure AD Graph, zaloguj się i wprowadź `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` do wyświetlenia wszystkich użytkowników w katalogu zalogowanego użytkownika:
 
-![Eksplorator interfejsu api programu graph w usłudze Azure AD](./media/active-directory-graph-api-quickstart/graph_explorer.png)
+![Przykładowe dane wyjściowe w Eksploratorze interfejsu API programu Graph w usłudze Azure AD](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
 **Ładowanie Eksploratora usługi Azure AD Graph**: Aby załadować narzędzie, przejdź do [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/). Kliknij przycisk **logowania** i zaloguj się przy użyciu poświadczeń konta usługi Azure AD, aby uruchomić Eksploratora usługi Azure AD Graph dla Twojej dzierżawy. Jeśli uruchamiasz własnej dzierżawy usługi Azure AD Graph Explorer użytkownik lub administrator musi wyrazić zgodę podczas logowania. Jeśli masz subskrypcję usługi Office 365, automatycznie masz dzierżawę usługi Azure AD. Poświadczenia, których używasz do logowania do usługi Office 365 są w rzeczywistości kont usługi Azure AD i użyć tych poświadczeń, za pomocą Eksploratora usługi Azure AD Graph.
 

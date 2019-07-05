@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 8eb297c555d2d7f95419b2a9aa11a26cf5c7230f
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 89d25c9c0a45b740bfb60a71f6d85bfbf4a4686a
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137471"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459864"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki start: Tworzenie klastra Apache Hadoop w usłudze Azure HDInsight przy użyciu szablonu usługi Resource Manager
 
@@ -81,4 +81,4 @@ Po ukończeniu tego przewodnika Szybki Start możesz usunąć klaster. Dzięki u
 W tym przewodniku Szybki Start przedstawiono sposób tworzenia klastra Apache Hadoop w HDInsight przy użyciu szablonu usługi Resource Manager. W następnym artykule dowiesz się, jak przeprowadzić operację wyodrębniania, transformacji i ładowania (ETL, extract, transform, and load) przy użyciu usługi Hadoop w usłudze HDInsight.
 
 > [!div class="nextstepaction"]
->[Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Apache Hive w usłudze HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
+>[Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu zapytań interaktywnych na HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

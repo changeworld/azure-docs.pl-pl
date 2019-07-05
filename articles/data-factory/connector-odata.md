@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a54892c1d6e05e27e349e519d41ebd937ff64c7
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400118"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509222"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopiowanie danych ze źródła danych OData przy użyciu usługi Azure Data Factory
 
@@ -233,7 +233,7 @@ Aby skopiować dane z OData, należy ustawić **źródła** typ w działaniu kop
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość źródła działania kopiowania musi być równa **RelationalSource**. | Yes |
-| query | Opcje zapytania OData do filtrowania danych. Przykład: `"?$select=Name,Description&$top=5"`.<br/><br/>**Uwaga**: Łącznik OData kopiuje dane z połączonych adresu URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Aby uzyskać więcej informacji, zobacz [części adresu URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
+| query | Opcje zapytania OData do filtrowania danych. Przykład: `"$select=Name,Description&$top=5"`.<br/><br/>**Uwaga**: Łącznik OData kopiuje dane z połączonych adresu URL: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Aby uzyskać więcej informacji, zobacz [części adresu URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
 
 **Przykład**
 
@@ -257,7 +257,7 @@ Aby skopiować dane z OData, należy ustawić **źródła** typ w działaniu kop
         "typeProperties": {
             "source": {
                 "type": "RelationalSource",
-                "query": "?$select=Name,Description&$top=5"
+                "query": "$select=Name,Description&$top=5"
             },
             "sink": {
                 "type": "<sink type>"

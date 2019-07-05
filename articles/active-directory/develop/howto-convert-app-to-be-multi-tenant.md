@@ -18,18 +18,18 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6a5ecd704aabb4994337cb7b7df9e84677348d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d53ed0c9a8ae63c2cb0ced635c6f0a8e8a3222fd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235280"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482741"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
 
 Jeśli oferujesz oprogramowanie jako usługa (SaaS) aplikacji dla wielu organizacji, można skonfigurować aplikację, aby akceptować logowania z dzierżawami usługi Azure Active Directory (Azure AD). Ta konfiguracja jest nazywana *wprowadzania Twojej aplikacji wielodostępnych*. Użytkownicy w dowolnej dzierżawy usługi Azure AD będą mogli logować się do aplikacji po wyrażanie zgody na korzystanie z tego konta z aplikacją.
 
-Jeśli masz istniejącą aplikację, która ma swój własny system konta lub obsługuje inne rodzaje logowania z innych dostawców rozwiązań w chmurze, dodanie usługi Azure AD Zaloguj się za pomocą dowolnej dzierżawy jest proste. Po prostu Zarejestruj swoją aplikację, Dodaj kod, zaloguj się przy użyciu protokołu OAuth2, OpenID Connect lub SAML oraz umieszczać [przycisku "Sign in with Microsoft"] [ AAD-App-Branding] w aplikacji.
+Jeśli masz istniejącą aplikację, która ma swój własny system konta lub obsługuje inne rodzaje logowania z innych dostawców rozwiązań w chmurze, dodanie usługi Azure AD Zaloguj się za pomocą dowolnej dzierżawy jest proste. Po prostu Zarejestruj swoją aplikację, Dodaj kod, zaloguj się przy użyciu protokołu OAuth2, OpenID Connect lub SAML oraz umieszczać [przycisku "Sign in with Microsoft"][AAD-App-Branding] w aplikacji.
 
 > [!NOTE]
 > W tym artykule przyjęto założenie, że znasz już Kompilowanie aplikacji pojedynczej dzierżawy usługi Azure AD. Jeśli nie masz, uruchomić przy użyciu jednego z przewodników Szybki Start na [strony głównej przewodnik dla deweloperów][AAD-Dev-Guide].
@@ -45,7 +45,7 @@ Spójrzmy na poszczególnych kroków w artykule. Możesz też przejść bezpośr
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizowanie rejestracji jako wielodostępnych
 
-Rejestracje interfejsu API i aplikacji sieci web w usłudze Azure AD są domyślnie pojedynczej dzierżawy. Aby włączyć rejestrację wielodostępne, wyszukując **obsługiwane typy kont** przełączyć się **uwierzytelniania** okienko rejestrację aplikacji w [witrynyAzureportal] [ AZURE-portal] i ustawieniem dla niego **kont w dowolnym katalogu organizacji**.
+Rejestracje interfejsu API i aplikacji sieci web w usłudze Azure AD są domyślnie pojedynczej dzierżawy. Aby włączyć rejestrację wielodostępne, wyszukując **obsługiwane typy kont** przełączyć się **uwierzytelniania** okienko rejestrację aplikacji w [witrynyAzureportal][AZURE-portal] i ustawieniem dla niego **kont w dowolnym katalogu organizacji**.
 
 Przed aplikacji wielodostępnych, usługa Azure AD wymaga identyfikator URI Identyfikatora aplikacji aplikacji mogą być globalnie unikatowa. Identyfikator URI identyfikatora aplikacji jest jednym ze sposobów, w jaki aplikacja jest identyfikowana w komunikatach protokołu. W przypadku aplikacji pojedynczej dzierżawy wystarczy, aby identyfikator URI identyfikatora aplikacji był unikatowy w obrębie tej dzierżawy. W przypadku aplikacji wielodostępnej ten identyfikator musi być globalnie unikatowy, dzięki czemu usługa Azure AD będzie mogła znaleźć aplikację we wszystkich dzierżawach. Globalna unikatowość jest wymuszana poprzez wymaganie, aby identyfikator URI identyfikatora aplikacji miał nazwę hosta, która jest zgodna ze zweryfikowaną domeną dzierżawy usługi Azure AD.
 
@@ -106,7 +106,7 @@ Dla użytkownika do logowania do aplikacji w usłudze Azure AD aplikacja musi by
 
 W przypadku aplikacji wielodostępnych wstępnej rejestracji aplikacji znajduje się w dzierżawie usługi Azure AD używany przez dewelopera. Po zalogowaniu się użytkownika z innej dzierżawy do aplikacji po raz pierwszy usługi Azure AD pyta, czy je do wyrażenia zgody na uprawnienia wymagane przez aplikację. Mogą wyrazić zgodę, a następnie reprezentację aplikacji o nazwie *nazwy głównej usługi* zostanie utworzony w dzierżawie użytkownika i logowania można kontynuować. Delegowanie również jest tworzony w katalogu, który rejestruje zgody użytkownika do aplikacji. Szczegółowe informacje na temat aplikacji w aplikacji i ServicePrincipal obiektów i jak powiązane są ze sobą, [obiekty aplikacji i obiektów nazw głównych usług][AAD-App-SP-Objects].
 
-![Zgoda na aplikacji dla jednowarstwowej][Consent-Single-Tier]
+![Ilustruje zgody aplikacji jednowarstwowej][Consent-Single-Tier]
 
 To środowisko zgody dotyczy uprawnień żądany przez aplikację. Platforma tożsamości firmy Microsoft obsługuje dwa rodzaje uprawnień, tylko do aplikacji i delegowanego.
 
@@ -119,11 +119,11 @@ Niektóre uprawnienia mogą wyrażono zgodę przez zwykłego użytkownika, a inn
 
 Uprawnienia dotyczące tylko aplikacji zawsze wymagają zgody administratora dzierżawy. Jeśli Twoja aplikacja żąda uprawnienia tylko do aplikacji, a użytkownik próbuje zalogować się do aplikacji, jest wyświetlany komunikat o błędzie, informujący o tym, że użytkownik nie jest w stanie do wyrażenia zgody.
 
-Niektóre uprawnienia delegowane również wymagają zgody administratora dzierżawy. Na przykład możliwość zapisania z powrotem do usługi Azure AD jako zalogowany użytkownik wymaga zgody administratora dzierżawy. Jak uprawnień dotyczących tylko aplikacji Jeśli zwykły użytkownik próbuje zalogować się do aplikacji, która żąda uprawnienia delegowanego, który wymaga zgody administratora aplikacji otrzymuje informację o błędzie. Czy uprawnienie wymaga zgody administratora jest określany przez dewelopera, opublikowane zasobu, która znajduje się w dokumentacji dla zasobu. W dokumentacji uprawnienia [interfejsu API usługi Azure AD Graph] [ AAD-Graph-Perm-Scopes] i [interfejsu API Microsoft Graph] [ MSFT-Graph-permission-scopes] wskazują, uprawnienia, które wymagają administratora wyrażenie zgody.
+Niektóre uprawnienia delegowane również wymagają zgody administratora dzierżawy. Na przykład możliwość zapisania z powrotem do usługi Azure AD jako zalogowany użytkownik wymaga zgody administratora dzierżawy. Jak uprawnień dotyczących tylko aplikacji Jeśli zwykły użytkownik próbuje zalogować się do aplikacji, która żąda uprawnienia delegowanego, który wymaga zgody administratora aplikacji otrzymuje informację o błędzie. Czy uprawnienie wymaga zgody administratora jest określany przez dewelopera, opublikowane zasobu, która znajduje się w dokumentacji dla zasobu. W dokumentacji uprawnienia [interfejsu API usługi Azure AD Graph][AAD-Graph-Perm-Scopes] and [Microsoft Graph API][MSFT-Graph-permission-scopes] wskazują, jakie uprawnienia wymagają zgody administratora.
 
 Jeśli aplikacja używa uprawnień, które wymagają zgody administratora, musisz mieć gest, takich jak przycisk lub łącze, gdzie administrator może zainicjować akcji. Żądania, Twoja aplikacja przesyła ta akcja jest zwykle OAuth2/OpenID Connect żądanie autoryzacji, która obejmuje również `prompt=admin_consent` parametr ciągu zapytania. Gdy administrator wyraził zgodę i nazwy głównej usługi jest tworzony w dzierżawie klienta, kolejne żądania logowania nie ma potrzeby `prompt=admin_consent` parametru. Ponieważ administrator podjęto decyzję, że żądane uprawnienia są dopuszczalne, żaden użytkownik w dzierżawie monit o zgodę od tego momentu.
 
-Administrator dzierżawy może wyłączyć możliwość wyrażania zgody na aplikacje przez zwykłych użytkowników. Jeśli ta funkcja jest wyłączona, zgoda administratora jest zawsze wymagana do używania aplikacji w dzierżawie. Aby przetestować aplikację, za zgodą użytkownika końcowego wyłączone, możesz znaleźć przełącznika konfiguracji w [witryny Azure portal] [ AZURE-portal] w **[ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** sekcji **aplikacje dla przedsiębiorstw**.
+Administrator dzierżawy może wyłączyć możliwość wyrażania zgody na aplikacje przez zwykłych użytkowników. Jeśli ta funkcja jest wyłączona, zgoda administratora jest zawsze wymagana do używania aplikacji w dzierżawie. Aby przetestować aplikację, za zgodą użytkownika końcowego wyłączone, możesz znaleźć przełącznika konfiguracji w [witryny Azure portal][AZURE-portal] w **[ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** sekcji **Aplikacje dla przedsiębiorstw**.
 
 `prompt=admin_consent` Parametru używać przez aplikacje, które zażądać uprawnień, które nie wymagają zgody administratora. Przykładem kiedy będzie to używana jest, jeśli aplikacja wymaga środowiska, w którym administrator dzierżawy "zarejestruje się w" jednym czasie, a żadne inne monit o zgodę od tego momentu.
 
@@ -144,7 +144,7 @@ Może to być problemem, jeśli Twojej aplikacji logicznych składa się z co na
 
 Jest to zaprezentowane w wielowarstwowej klient natywny, w przypadku wywoływania przykładowym internetowym interfejsie API [powiązana zawartość](#related-content) sekcji na końcu tego artykułu. Poniższy diagram zawiera omówienie wyrażania zgody dla aplikacji wielowarstwowych, zarejestrowany w jednej dzierżawie.
 
-![Zgoda na aplikację wielowarstwową znanych klienta][Consent-Multi-Tier-Known-Client]
+![Ilustruje zgody na aplikację wielowarstwową znanych klienta][Consent-Multi-Tier-Known-Client]
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>Wiele warstw w wielu dzierżaw
 
@@ -159,13 +159,13 @@ Jeśli jest to interfejs API utworzone przez organizację innych niż Microsoft,
 
 Poniższy diagram zawiera omówienie wyrażania zgody dla aplikacji wielowarstwowych, zarejestrowanych w różnych dzierżawach.
 
-![Zgoda na wieloosobowa aplikacji wielowarstwowej][Consent-Multi-Tier-Multi-Party]
+![Ilustruje zgodę na wieloosobowa aplikacji wielowarstwowej][Consent-Multi-Tier-Multi-Party]
 
 ### <a name="revoking-consent"></a>Trwa odwoływanie zgody
 
 Użytkownicy i Administratorzy można odwołać zgody na aplikację, w dowolnym momencie:
 
-* Użytkownicy odwołać dostęp do poszczególnych aplikacji, usuwając je z ich [aplikacje panelu dostępu] [ AAD-Access-Panel] listy.
+* Użytkownicy odwołać dostęp do poszczególnych aplikacji, usuwając je z ich [aplikacje panelu dostępu][AAD-Access-Panel] listy.
 * Administratorzy odwołać dostęp do aplikacji, usuwając je przy użyciu [aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) części [witryny Azure portal][AZURE-portal].
 
 Jeśli administrator wyraża zgodę na aplikacji dla wszystkich użytkowników w dzierżawie, użytkownicy nie mogą indywidualnie odwołać dostęp. Tylko administrator może odwołać dostęp i tylko dla całej aplikacji.
@@ -183,7 +183,7 @@ W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogowa�
 * [Przykłady aplikacji wielodostępnych][AAD-Samples-MT]
 * [Wytyczne dotyczące aplikacji oznaczania marką][AAD-App-Branding]
 * [Obiekty aplikacji i obiektów nazw głównych usług][AAD-App-SP-Objects]
-* [Integrowanie aplikacji z usługą Azure Active Directory][AAD-Integrating-Apps]
+* [Integrating applications with Azure Active Directory][AAD-Integrating-Apps] (Integrowanie aplikacji za pomocą usługi Azure Active Directory)
 * [Omówienie platformy wyrażania zgody][AAD-Consent-Overview]
 * [Zakresy uprawnień interfejsu API Microsoft Graph][MSFT-Graph-permission-scopes]
 * [Zakresy uprawnień w usłudze Azure AD Graph API][AAD-Graph-Perm-Scopes]

@@ -1,23 +1,21 @@
 ---
-title: Zarządzanie zastrzeżeniami platformy Azure | Dokumentacja firmy Microsoft
+title: Zarządzanie zastrzeżeniami platformy Azure
 description: Dowiedz się, jak zmienić zakres subskrypcji i zarządzanie dostępem dla platformy Azure rezerwacji.
 ms.service: billing
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89279387b3630ea654070eef671f131ec757d55f
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66127143"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491181"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
@@ -54,7 +52,7 @@ Aby zaktualizować zakresu rezerwacji:
 
 W przypadku zmiany z udostępnionego przez pojedynczy zakres, można wybrać tylko te subskrypcje, których jesteś właścicielem. Wybrać można tylko subskrypcje w ramach tego samego kontekstu rozliczeń, co rezerwacja.
 
-Zakres ma zastosowanie tylko do oferty płatności zgodnie z rzeczywistym użyciem MS-AZR-0003P lub MS-AZR-0023P, oferty Enterprise MS-AZR-0017P lub MS-AZR-0148P albo typów subskrypcji dostawcy rozwiązań w chmurze.
+Zakres dotyczy tylko poszczególne subskrypcje z płatnością za rzeczywiste użycie współczynnikami (oferty MS-AZR - 0003P lub MS-AZR - 0023P), oferty dla przedsiębiorstw MS-AZR - 0017P lub MS-AZR - 0148P lub typów subskrypcji dostawcy CSP.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Dodawanie lub zmienianie użytkowników, którzy mogą zarządzać rezerwacją
 

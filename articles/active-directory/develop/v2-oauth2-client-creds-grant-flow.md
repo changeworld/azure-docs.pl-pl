@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85a32244a9aff9319343fd7d3961941973aa9d9a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545094"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482251"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma tożsamości firmy Microsoft i przepływ poświadczeń klienta OAuth 2.0
 
@@ -42,7 +42,7 @@ W przypadku bardziej typowych *OAuth 3 z bokami*, aplikacja kliencka udzielono u
 
 Przepływ poświadczeń klienta w całej przypomina poniższy diagram. Opisano poszczególne kroki w dalszej części tego artykułu.
 
-![Przepływ poświadczeń klienta](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
+![Diagram przedstawiający przepływ poświadczeń klienta](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
 
 ## <a name="get-direct-authorization"></a>Pobierz bezpośrednich autoryzacji
 
@@ -92,7 +92,7 @@ Jeśli zalogujesz się użytkownika do aplikacji, można zidentyfikować organiz
 Gdy wszystko będzie gotowe zażądać uprawnień od administratora w organizacji, można przekierować użytkownika do platformą Microsoft identity *punktu końcowego zgody administratora*.
 
 > [!TIP]
-> Spróbuj wykonać tego żądania w narzędziu Postman! (Użyj Identyfikatora aplikacji w celu uzyskania najlepszych wyników — samouczek aplikacji nie będzie żądać przydatne uprawnień). [![Uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Spróbuj wykonać tego żądania w narzędziu Postman! (Użyj Identyfikatora aplikacji w celu uzyskania najlepszych wyników — samouczek aplikacji nie będzie żądać przydatne uprawnień). [![Spróbuj uruchomić to żądanie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -154,7 +154,7 @@ Po otrzymaniu pomyślnej odpowiedzi z punktu końcowego inicjowania obsługi adm
 Po nabyciu autoryzację na odpowiednim dla twojej aplikacji, należy kontynuować uzyskiwanie tokenów dostępu do interfejsów API. Do pobrania tokenu przy użyciu klienta poświadczeń, Wyślij żądanie POST `/token` punktu końcowego platformy tożsamości firmy Microsoft:
 
 > [!TIP]
-> Spróbuj wykonać tego żądania w narzędziu Postman! (Użyj Identyfikatora aplikacji w celu uzyskania najlepszych wyników — samouczek aplikacji nie będzie żądać przydatne uprawnień). [![Uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Spróbuj wykonać tego żądania w narzędziu Postman! (Użyj Identyfikatora aplikacji w celu uzyskania najlepszych wyników — samouczek aplikacji nie będzie żądać przydatne uprawnień). [![Spróbuj uruchomić to żądanie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: Żądanie tokenu dostępu za pomocą wspólny klucz tajny
 

@@ -1,6 +1,6 @@
 ---
 title: Omówienie dynamicznego tworzenia pakietów usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Temat zawiera omówienie funkcji dynamicznego tworzenia pakietów w usłudze Media Services.
+description: Artykuł zawiera omówienie dynamicznego tworzenia pakietów w usłudze Azure Media Services.
 author: Juliako
 manager: femila
 editor: ''
@@ -10,23 +10,23 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: ac08ddf4719b8d17519c5d487a6fb824efb3139a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4836ec4bb66bbf8ced921dd1095665d004f8a28b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068870"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542571"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
-Usługa content protection formatów różne technologie klienta (na przykład iOS i konsoli XBOX) i Microsoft Azure Media Services może służyć do dostarczania wiele nośnika źródłowego formatów plików, przesyłanie strumieniowe formatów multimediów. Ci klienci zrozumienie różnych protokołów, na przykład dla systemu iOS wymaga formatu HTTP Live Streaming (HLS) i konsolach Xbox wymagają Smooth Streaming. Jeśli masz zestaw z adaptacyjną szybkością transmisji bitów (bitów) w formacie MP4 (ISO Base nośników 14496-12) plików lub zestaw Smooth Streaming pliki adaptacyjną szybkością transmisji bitów, które mają służyć do klientów, którzy zrozumieć HLS, MPEG DASH lub Smooth Streaming, możesz korzystać z zalet  **Dynamiczne tworzenie pakietów**. Obsługiwane są SD/HD/UHD - 4K, opakowywanie jest niezależny od rozdzielczości wideo.
+Usługa content protection formatów różne technologie klienta (na przykład iOS i konsoli XBOX) i Microsoft Azure Media Services może służyć do dostarczania wiele nośnika źródłowego formatów plików, przesyłanie strumieniowe formatów multimediów. Ci klienci zrozumienie różnych protokołów, na przykład dla systemu iOS wymaga formatu HTTP Live Streaming (HLS) i konsolach Xbox wymagają Smooth Streaming. Jeśli masz zestaw z adaptacyjną szybkością transmisji bitów (bitów) w formacie MP4 (ISO Base nośników 14496-12) plików lub zestaw Smooth Streaming pliki adaptacyjną szybkością transmisji bitów, które mają służyć do klientów, którzy zrozumieć HLS, MPEG DASH lub Smooth Streaming, możesz korzystać z zalet  *dynamiczne tworzenie pakietów*. Obsługiwane są SD/HD/UHD - 4K, opakowywanie jest niezależny od rozdzielczości wideo.
 
 W usłudze Media Services [punkt końcowy przesyłania strumieniowego](streaming-endpoint-concept.md) reprezentuje dynamiczny (just-in-time) pakowania i pochodzenia usługę która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienta, przy użyciu jednego z typowych przesyłania strumieniowego Protokoły multimediów (HLS lub DASH). Funkcję dynamicznego tworzenia pakietów jest funkcją, która jest dostępna na wszystkich standardowych **punkty końcowe przesyłania strumieniowego** (standardowa / Premium). 
 
-Aby móc korzystać z **funkcję dynamicznego tworzenia pakietów**, musisz mieć **zasobów** z zestawu plików MP4 i przesyłania strumieniowego pliki konfiguracyjne wymagane przez funkcję dynamicznego tworzenia pakietów usługi Media. Jednym ze sposobów uzyskiwania plików jest kodowanie pliku mezzanine (źródłowego) za pomocą usługi Media Services. Aby udostępnić pliki wideo w zakodowanym elementem zawartości do klientów do odtwarzania, należy utworzyć **lokalizatora przesyłania strumieniowego** i tworzenie adresów URL przesyłania strumieniowego. Następnie w oparciu o formatu określonego w manifeście klienta przesyłania strumieniowego (HLS, DASH lub Smooth), strumień jest dostarczany za pomocą wybranego protokołu.
+Aby móc korzystać z dynamicznego tworzenia pakietów, musisz mieć **zasobów** z zestawu plików MP4 i przesyłania strumieniowego pliki konfiguracyjne wymagane przez funkcję dynamicznego tworzenia pakietów usługi Media Services. Jednym ze sposobów uzyskiwania plików jest kodowanie pliku mezzanine (źródłowego) za pomocą usługi Media Services. Aby udostępnić pliki wideo w zakodowanym elementem zawartości do klientów do odtwarzania, należy utworzyć **lokalizatora przesyłania strumieniowego** i tworzenie adresów URL przesyłania strumieniowego. Następnie w oparciu o formatu określonego w manifeście klienta przesyłania strumieniowego (HLS, DASH lub Smooth), strumień jest dostarczany za pomocą wybranego protokołu.
 
 Dzięki temu wystarczy przechowywać i opłacać pliki w jednym formacie magazynu, a usługa Media Services utworzy oraz udostępni właściwą odpowiedź na podstawie żądań klienta. 
 
@@ -35,106 +35,111 @@ W usłudze Media Services funkcję dynamicznego tworzenia pakietów jest używan
 > [!NOTE]
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
-## <a name="common-on-demand-workflow"></a>Typowy przepływ pracy na żądanie
+## <a name="on-demand-streaming-workflow"></a>Przepływ pracy transmisji strumieniowej na żądanie
 
-Poniżej przedstawiono typowe Media Services, przepływ pracy transmisji strumieniowej użycia funkcji dynamicznego tworzenia pakietów.
+Oto typowy przepływ pracy dla usługi Media Services przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów:
 
-1. Przekaż plik wejściowy (nazywane plik mezzanine). Na przykład w formacie MP4, MOV lub MXF (Aby uzyskać listę obsługiwanych formatów, zobacz [formaty obsługiwane przez Media Encoder Standard](media-encoder-standard-formats.md).
-2. Kodowanie pliku mezzanine do H.264 MP4 o adaptacyjnej szybkości transmisji bitów zestawów.
-3. Opublikuj element zawartości zawierający adaptacyjną szybkością transmisji bitów, zestawu plików MP4. Możesz opublikować, tworząc **lokalizatora przesyłania strumieniowego**.
-4. Tworzenie adresów URL, których platformą docelową w różnych formatach (HLS, Dash i Smooth Streaming). **Punkt końcowy przesyłania strumieniowego** będzie zajmie się obsługująca prawidłowy manifest oraz żądań dotyczących tych różnych formatach.
+1. Przekaż plik danych wejściowych lub źródła (o nazwie *mezzanine* pliku). Przykłady obejmują plik MP4, MOV lub MXF. 
+1. Kodowanie pliku mezzanine do H.264 MP4 o adaptacyjnej szybkości transmisji bitów zestawów. 
+1. Opublikuj element zawartości zawierający adaptacyjną szybkością transmisji bitów, zestawu plików MP4. Możesz opublikować, tworząc Lokalizator przesyłania strumieniowego.
+1. Tworzenie adresów URL, których platformą docelową w różnych formatach (HLS, MPEG-DASH i Smooth Streaming). Punkt końcowy przesyłania strumieniowego odpowiada obsługująca prawidłowy manifest i żądań dla różnych formatów.
 
-Na poniższym diagramie przedstawiono przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
+Ten diagram przedstawia przepływ pracy przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów:
 
-![Dynamiczne tworzenie pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Diagram przepływu pracy dla przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
-### <a name="encode-to-adaptive-bitrate-mp4s"></a>Wykonaj kodowanie do każdego pliku MP4 z adaptacyjną szybkością transmisji bitów
+## <a name="live-streaming-workflow"></a>Przepływ pracy transmisji strumieniowej na żywo
 
-Aby uzyskać informacje o [jak kodować wideo za pomocą usługi Media Services](encoding-concept.md), zobacz następujące przykłady:
+Wydarzenie na żywo może być jednym z dwóch typów: kodowanie przekazywania lub na żywo. 
 
-* [Kodowanie z adresu URL HTTPS, przy użyciu wbudowanych ustawień wstępnych](job-input-from-http-how-to.md)
-* [Kodowanie pliku lokalnego za pomocą wbudowanych ustawień wstępnych](job-input-from-local-file-how-to.md)
-* [Tworzenie niestandardowego ustawienia wstępnego pod kątem określonych wymagań scenariusza lub urządzenia](customize-encoder-presets-how-to.md)
+Oto typowy przepływ pracy przesyłania strumieniowego na żywo, funkcję dynamicznego tworzenia pakietów:
 
-Wykaz usługi Media Encoder Standard formaty i kodeki narzędzia, zobacz [formaty i kodery-dekodery](media-encoder-standard-formats.md)
+1. Tworzenie [zdarzenia na żywo](live-events-outputs-concept.md).
+1. Pobierz adres URL pozyskiwania i skonfiguruj swoje lokalny koder wysyłać wkład źródła danych przy użyciu adresu URL.
+1. Adres URL (wersja zapoznawcza) i weryfikować, czy odebrano danych wejściowych z kodera.
+1. Utwórz nowy zasób.
+1. Utwórz na żywo dane wyjściowe i użyj nazwy zasobu, który został utworzony.<br />Strumienia na żywo dane wyjściowe są archiwizowane do niego.
+1. Utwórz Lokalizator przesyłania strumieniowego za pomocą wbudowanych typów zasad przesyłania strumieniowego.<br />Jeśli zamierzasz szyfrowanie zawartości, zapoznaj się z [Omówienie ochrony zawartości](content-protection-overview.md).
+1. Lista ścieżek na Lokalizator przesyłania strumieniowego można pobrać adresy URL do użycia.
+1. Pobierz nazwę hosta punktu końcowego przesyłania strumieniowego, które mają być przesyłane strumieniowo z.
+1. Tworzenie adresów URL, których platformą docelową w różnych formatach (HLS, MPEG-DASH i Smooth Streaming). Punkt końcowy przesyłania strumieniowego odpowiada obsługująca prawidłowy manifest i żądań dla różnych formatów.
 
-## <a name="common-live-streaming-workflow"></a>Typowy przepływ pracy transmisji strumieniowej na żywo
+Ten diagram przedstawia przepływ pracy transmisji strumieniowych na żywo, funkcję dynamicznego tworzenia pakietów:
 
-Poniżej przedstawiono kroki, aby uzyskać przepływ pracy transmisji strumieniowej na żywo:
+![Diagram przepływu pracy do przekazywania kodowania za pomocą funkcji dynamicznego tworzenia pakietów](./media/live-streaming/pass-through.svg)
 
-1. Tworzenie [wydarzenie na żywo](live-events-outputs-concept.md).
-1. Uzyskaj adresy URL pozyskiwania i skonfiguruj swoje lokalny koder wysyłać wkład źródła danych przy użyciu adresu URL.
-1. Adres URL (wersja zapoznawcza) i weryfikować, czy rzeczywiście są odbierane dane wejściowe z kodera.
-1. Utwórz nową **zasobów**.
-1. Tworzenie **na żywo dane wyjściowe** i użyj nazwy zasobu, który został utworzony.<br/>**Na żywo dane wyjściowe** spowoduje zarchiwizowanie strumienia do **zasobów**.
-1. Tworzenie **lokalizatora przesyłania strumieniowego** dzięki wbudowanej **przesyłania strumieniowego zasad** typów.<br/>Jeśli zamierzasz szyfrowanie zawartości, zapoznaj się z [Omówienie ochrony zawartości](content-protection-overview.md).
-1. Wyświetlanie listy ścieżek na **lokalizatora przesyłania strumieniowego** odzyskać adresy URL do użycia.
-1. Pobieranie nazwy hosta dla **punkt końcowy przesyłania strumieniowego** chcesz przesyłać strumieniowo z.
-1. Tworzenie adresów URL, których platformą docelową w różnych formatach (HLS, Dash i Smooth Streaming). **Punkt końcowy przesyłania strumieniowego** będzie zajmie się obsługująca prawidłowy manifest oraz żądań dotyczących tych różnych formatach.
-
-Wydarzenie na żywo może być jednym z dwóch typów: kodowanie przekazywania i na żywo. Aby uzyskać szczegółowe informacje o transmisji strumieniowej na żywo w wersji 3 usługa Media Services, zobacz [na żywo, przesyłanie strumieniowe Przegląd](live-streaming-overview.md).
-
-Na poniższym diagramie przedstawiono, przesyłanie strumieniowe na żywo za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
-
-![Przekazywanie](./media/live-streaming/pass-through.svg)
+Aby dowiedzieć się, jak transmisja strumieniowa na żywo w wersji 3 usługa Media Services, zobacz [na żywo, przesyłanie strumieniowe Przegląd](live-streaming-overview.md).
 
 ## <a name="delivery-protocols"></a>Protokoły dostarczania
+
+Można użyć tych protokołów dostarczania zawartości w funkcji dynamicznego tworzenia pakietów usługi Media Services:
 
 |Protocol|Przykład|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="video-codecs-supported-by-dynamic-packaging"></a>Koderów-dekoderów wideo obsługiwanych przez funkcję dynamicznego tworzenia pakietów
+## <a name="encode-to-adaptive-bitrate-mp4s"></a>Wykonaj kodowanie do każdego pliku MP4 z adaptacyjną szybkością transmisji bitów
 
-Dynamiczne tworzenie pakietów obsługuje pliki w formacie MP4, które zawierają zakodowane przy użyciu [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (AVC MPEG-4 lub AVC1), [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (— HEVC, hev1 lub hvc1).
+Następujące artykuły pokazują przykłady [jak kodować wideo za pomocą usługi Media Services](encoding-concept.md):
 
-## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Kodery-dekodery audio obsługiwane przez funkcję dynamicznego tworzenia pakietów
+* [Kodowanie z adresu URL HTTPS przy użyciu wbudowanych ustawień wstępnych](job-input-from-http-how-to.md)
+* [Kodowanie pliku lokalnego za pomocą wbudowanych ustawień wstępnych](job-input-from-local-file-how-to.md)
+* [Tworzenie niestandardowego ustawienia wstępnego pod kątem określonych wymagań scenariusza lub urządzenia](customize-encoder-presets-how-to.md)
 
-### <a name="mp4-files-support"></a>Obsługuje pliki w formacie MP4
+Przejrzyj listę rzeczy, Media Encoder Standard [formaty i kodery-dekodery](media-encoder-standard-formats.md).
 
-Dynamiczne tworzenie pakietów obsługuje pliki w formacie MP4, które zawierają zakodowane za pomocą audio 
+## <a name="video-codecs"></a>Koderów-dekoderów wideo
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, HE-AAC v2)
-* [Dolby cyfrowych oraz](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)(rozszerzony AC-3 lub E AC3)
-* Dolby Atmos
-   
-   Przesyłanie strumieniowe zawartości Dolby Atmos jest obsługiwane pod kątem obsługi standardów, takich jak MPEG-DASH protokół wspólne przesyłanie strumieniowe formatu (CSF) lub wspólnej Media aplikacji formatu (CMAF) pofragmentowany plik MP4, a następnie za pośrednictwem protokołu HTTP Live Streaming (HLS) przy użyciu CMAF.
+Dynamiczne tworzenie pakietów obsługuje następujące koderów-dekoderów wideo:
+* Pliki w formacie MP4, które zawierają film wideo, który jest zaszyfrowana przy użyciu [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (AVC MPEG-4 lub AVC1) lub [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (— HEVC, hev1, lub hvc1).
 
-* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)
+## <a name="audio-codecs"></a>Kodery-dekodery audio
 
-    Kodery-dekodery typy Wdrożeń obsługiwane przez formaty pakowania kreska-CSF, DASH CMAF, HLS M2TS i HLS CMAF są:  
+Dynamiczne tworzenie pakietów obsługuje następujące protokoły audio:
+* Pliki w formacie MP4
+* Wiele ścieżki audio
+
+Dynamiczne tworzenie pakietów nie obsługuje plików, które zawierają [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) audio (AC3) (jest to starszy koder-dekoder).
+
+### <a name="mp4-files"></a>Pliki w formacie MP4
+
+Dynamiczne tworzenie pakietów obsługuje pliki w formacie MP4, które zawierają dźwięk, który jest zakodowany z następujących protokołów: 
+
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 lub v2 HE AAC)
+* [Dolby cyfrowych oraz](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (rozszerzony AC-3 lub E AC3)
+* Dolby Atmos<br />
+   Przesyłanie strumieniowe zawartości Dolby Atmos jest obsługiwane pod kątem obsługi standardów, takich jak protokół MPEG-DASH wspólne przesyłanie strumieniowe formatu (CSF) lub wspólnej Media aplikacji formatu (CMAF) pofragmentowany plik MP4, a następnie za pośrednictwem protokołu HTTP Live Streaming (HLS) przy użyciu CMAF.
+
+* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
+   Kodery-dekodery typy Wdrożeń obsługiwane przez formaty pakowania kreska-CSF, DASH CMAF, HLS M2TS i HLS CMAF są:  
 
     * Używanie usług DTS Otocz cyfrowych (dtsc)
     * DTS HD o wysokiej rozdzielczości i wzorzec DTS HD Audio (dtsh)
     * Używanie usług DTS Express (dtse)
     * DTS HD bezstratne (nie-rdzeniowe) (dtsl)
 
-### <a name="multi-audio-tracks"></a>Multi ścieżki audio
+### <a name="multiple-audio-tracks"></a>Wiele ścieżki audio
 
-Podczas przesyłania strumieniowego zasobów, które mają wiele ścieżki audio z wieloma koderów-dekoderów i języków, dynamicznego tworzenia pakietów obsługuje multi ścieżki audio HLS danych wyjściowych (w wersji 4 lub nowszy).
- 
-### <a name="not-supported"></a>Nieobsługiwane
-
-Dynamiczne tworzenie pakietów nie obsługuje plików, które zawierają [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) audio (AC3) (jest to starszy koder-dekoder).
+Dynamiczne tworzenie pakietów obsługuje multi ścieżki audio HLS danych wyjściowych (w wersji 4 lub nowszej) służącą do strumieniowego przesyłania zasoby, które mają wiele ścieżki audio z wieloma koderów-dekoderów i języków.
 
 ## <a name="dynamic-encryption"></a>Szyfrowanie dynamiczne
 
-**Szyfrowanie dynamiczne** umożliwia dynamiczne szyfrowanie zawartości na żywo lub na żądanie przy użyciu algorytmu AES-128, ani żadnego z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów. Aby uzyskać więcej informacji, zobacz [szyfrowania dynamicznego](content-protection-overview.md).
+Możesz użyć *szyfrowania dynamicznego* dynamiczne szyfrowanie zawartości na żywo lub na żądanie przy użyciu algorytmu AES-128, ani żadnego z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM licencje do autoryzowanych klientów. Aby uzyskać więcej informacji, zobacz [szyfrowania dynamicznego](content-protection-overview.md).
 
-## <a name="manifests"></a>Manifesty 
+## <a name="manifest-examples"></a>Przykłady manifestu 
  
-Usługa Media Services obsługuje HLS, MPEG DASH, Smooth Streaming protokołów. Jako część **funkcję dynamicznego tworzenia pakietów**, przesyłania strumieniowego manifesty na kliencie (listy odtwarzania wzorca HLS, DASH Media prezentacji opis (MPD) i Smooth Streaming) generowanych dynamicznie w oparciu o wybór formatu w adresie URL. Zobacz protokoły dostarczania w [w tej sekcji](#delivery-protocols). 
+W dynamicznego tworzenia pakietów usługi Media Services, przesyłania strumieniowego manifesty na kliencie dla protokołu HLS, MPEG-DASH i Smooth Streaming są generowane dynamicznie oparciu o wybór formatu w adresie URL. Aby uzyskać więcej informacji, zobacz [protokołów dostarczania](#delivery-protocols). 
 
-Plik manifestu obejmują przesyłanie strumieniowe metadane, takie jak: śledzenie typu (audio, wideo lub tekst), Śledź nazwę, godzina rozpoczęcia i zakończenia, szybkości transmisji bitów (właściwości), Śledź języków, okna prezentacji (przesuwającego się okna o określonej długości), kodera-dekodera wideo (FourCC). Informuje również gracza, aby pobrać następny fragment, podając informacje o następnej rozgrywane fragmenty wideo dostępne i ich lokalizacji. Fragmenty (lub segmentów) są rzeczywiste "fragmentów" zawartości wideo.
+Plik manifestu obejmują przesyłanie strumieniowe metadane, takie jak typu ścieżki (audio, wideo lub tekst), śledzenie, nazwa, rozpoczęcia i czas zakończenia, szybkości transmisji bitów (właściwości), Śledź języków, okna prezentacji (przesuwanego okna stały czas trwania) i kodera-dekodera wideo (FourCC). Informuje również gracza, aby pobrać następny fragment, podając informacje o następnej rozgrywane fragmentów wideo, które są dostępne i ich lokalizacji. Fragmenty (lub segmentów) są rzeczywiste "fragmentów" zawartości wideo.
 
-### <a name="hls-master-playlist"></a>Lista odtwarzania wzorzec HLS
+### <a name="hls"></a>HLS
 
-Oto przykład HLS pliku manifestu: 
+Oto przykład HLS plik manifestu, jest określana skrótem HLS odtwarzania wzorca: 
 
 ```
 #EXTM3U
@@ -159,9 +164,9 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-### <a name="dash-media-presentation-description-mpd"></a>Opis prezentacji Media DASH (MPD)
+### <a name="mpeg-dash"></a>MPEG-DASH
 
-Oto przykład manifestu DASH:
+Poniżej przedstawiono przykładowy plik manifestu MPEG-DASH, nazywany także MPEG-DASH Media prezentacji opis (MPD):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -194,7 +199,7 @@ Oto przykład manifestu DASH:
 ```
 ### <a name="smooth-streaming"></a>Smooth Streaming
 
-Oto przykład Smooth Streaming manifestu:
+Oto przykład Smooth Streaming pliku manifestu:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -218,13 +223,13 @@ Oto przykład Smooth Streaming manifestu:
 
 ## <a name="dynamic-manifest"></a>Dynamiczne manifestu
 
-Filtrowanie dynamiczne służy do kontrolowania liczby ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysłane do odtwarzaczy. Aby uzyskać więcej informacji, zobacz [wstępnie filtrowanie manifesty za pomocą funkcji dynamicznego pakowania](filters-dynamic-manifest-overview.md).
+Aby kontrolować liczbę ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysyłane do graczy, można użyć, filtrowanie dynamiczne z funkcji pakowania dynamicznego usługi Media Services. Aby uzyskać więcej informacji, zobacz [wstępnie filtrowanie manifesty za pomocą funkcji dynamicznego pakowania](filters-dynamic-manifest-overview.md).
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
+## <a name="more-information"></a>Więcej informacji
 
-Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
+Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przekazywanie, kodowanie, filmy wideo usługi stream](stream-files-tutorial-with-api.md)
+Dowiedz się, jak [przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo](stream-files-tutorial-with-api.md).
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: spelluru
-ms.openlocfilehash: d8892b2d00008c9d67f8bc28d1abb7d562dfd95c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ffc8ed3f84284ff69e9515cba0982790b823a37
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079888"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543764"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Najlepsze rozwiązania dotyczące rozproszonego współpracy rozwoju i zasoby usługi Azure DevTest Labs
 Programowanie zespołowe rozproszonych umożliwia różne zespoły lub inne osoby, rozwijania i utrzymywania podstawowy kod. Się powodzeniem, proces tworzenia aplikacji zależy od możliwości tworzenia, udostępniania i integrować informacje. Ta zasada tworzenia kluczy może służyć w usłudze Azure DevTest Labs. Istnieją różne typy zasobów w ramach laboratorium, które często są rozkładane między różnych labs w obrębie przedsiębiorstwa. Różnych typów zasobów koncentrują się na dwa obszary:
@@ -37,7 +37,7 @@ Możesz mieć za wspólne źródło obrazów niestandardowych, które są wdraż
 [Formuły](devtest-lab-manage-formulas.md) są specyficzne dla laboratorium i nie ma mechanizmu dystrybucji. Elementy członkowskie laboratorium do tworzenia formuł. 
 
 ## <a name="code-repository-based-resources"></a>Zasoby oparte na repozytorium kodu
-Istnieją dwie różne funkcje, które zależą od repozytoriów kodu, artefakty i środowisk. W tym artykule pokazano, funkcje i jak najbardziej efektywny sposób skonfigurować repozytoriów i przepływ pracy umożliwia możliwość dostosowania dostępne artefaktów i środowisk na poziomie organizacji lub zespołu.  Ten przepływ pracy jest oparty na standardzie [strategii rozgałęziania Kontrola kodu źródłowego](/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+Istnieją dwie różne funkcje, które zależą od repozytoriów kodu, artefakty i środowisk. W tym artykule pokazano, funkcje i jak najbardziej efektywny sposób skonfigurować repozytoriów i przepływ pracy umożliwia możliwość dostosowania dostępne artefaktów i środowisk na poziomie organizacji lub zespołu.  Ten przepływ pracy jest oparty na standardzie [strategii rozgałęziania Kontrola kodu źródłowego](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
 
 ### <a name="key-concepts"></a>Kluczowe pojęcia
 Źródła artefaktów informacje metadanych i skryptów. Informacje o źródle w środowiskach zawiera metadane i szablonów usługi Resource Manager za pomocą wszelkie pliki pomocnicze, takie jak skrypty programu PowerShell, DSC, skrypty, pliki Zip i tak dalej.  
@@ -49,7 +49,7 @@ Najbardziej typowe konfiguracji kontroli kodu źródłowego (SCC) jest konfiguro
 - Business jednostkę/dzielenia-zasobów
 - Zasoby specyficzne dla zespołu.
 
-Każda z tych poziomów połączyć się z innym repozytorium, gdzie gałąź główna musi być jakości produkcji. [Gałęzie](/devops/repos/git/git-branching-guidance?view=azure-devops) byłoby w każdym repozytorium do tworzenia tych określonych zasobów (artefaktów i szablonów). Ta struktura jest optymalnie wyrównana z usługi DevTest Labs, jak można łatwo połączyć wiele repozytoriów i wielu oddziałów, w tym samym czasie do laboratoriów w organizacji. Nazwa repozytorium są objęte interfejsu użytkownika (UI), aby uniknąć nieporozumień, gdy istnieją identyczne nazwy, opisu i wydawcy.
+Każda z tych poziomów połączyć się z innym repozytorium, gdzie gałąź główna musi być jakości produkcji. [Gałęzie](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) byłoby w każdym repozytorium do tworzenia tych określonych zasobów (artefaktów i szablonów). Ta struktura jest optymalnie wyrównana z usługi DevTest Labs, jak można łatwo połączyć wiele repozytoriów i wielu oddziałów, w tym samym czasie do laboratoriów w organizacji. Nazwa repozytorium są objęte interfejsu użytkownika (UI), aby uniknąć nieporozumień, gdy istnieją identyczne nazwy, opisu i wydawcy.
      
 Na poniższym diagramie przedstawiono dwa repozytoriów: repozytorium firmy, które jest konserwowane przez dział IT i repozytorium dzielenia utrzymywane przez zespół R & D.
 

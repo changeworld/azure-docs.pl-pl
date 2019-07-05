@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2019
+ms.date: 06/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 2d4e49b4f7c1aa244b59ef17716c90369a0d3339
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 6fb7e6b9611b28dab856209aaf03aa93c25d3968
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273374"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478046"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — omówienie
 
@@ -41,7 +41,7 @@ Usługa Azure Monitor dla maszyn wirtualnych obsługuje obszar roboczy usługi L
 
 - Środkowo-zachodnie stany USA
 - Zachodnie stany USA 2<sup>1</sup>
-- Wschodnie stany USA
+- East US
 - Kanada Środkowa
 - Południowe Zjednoczone Królestwo
 - Europa Zachodnia
@@ -86,7 +86,7 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux, które obsłu
 |Red Hat Enterprise Linux (RHEL) 6, 7| X | X| X |
 |Ubuntu 14.04, 16.04, 18.04 | X | X | X |
 |CentOS Linux 6, 7 | X | X | X |
-|SUSE Linux Enterprise Server (SLES) 11, 12 | X | X | X |
+|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
 |Debian 8, 9.4 | X<sup>1</sup> | | X |
 
 <sup>1</sup> funkcja wydajności usługi Azure Monitor dla maszyn wirtualnych jest dostępna tylko z usługi Azure Monitor. Nie jest ona dostępna bezpośrednio z poziomu okienka po lewej stronie maszyny Wirtualnej platformy Azure.
@@ -127,16 +127,10 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux, które obsłu
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
-| Ubuntu 18.04 | jądra 4.15. * |
+| Ubuntu 18.04 | kernel 4.15.\*<br>4.18* |
 | Systemu Ubuntu 16.04.3 | jądra 4.15. * |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
-
-#### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
-
-| Wersja systemu operacyjnego | Wersja jądra
-|:--|:--|
-|11 SP4 | 3.0.* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
@@ -144,6 +138,8 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux, które obsłu
 |:--|:--|
 |12 Z DODATKIEM SP2 | 4.4. * |
 |12 Z DODATKIEM SP3 | 4.4. * |
+|12 SP4 | 4.4. * |
+|12 SP4 | Dopasowane Azure jądra |
 
 ### <a name="the-microsoft-dependency-agent"></a>Program Microsoft Dependency agent
 
@@ -158,7 +154,7 @@ W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
 | Agenci dla systemu Windows | Tak | Wraz z [agenta usługi Log Analytics dla Windows](../../azure-monitor/platform/log-analytics-agent.md), agenci Windows muszą agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
-| Agenci dla systemu Linux | Yes | Wraz z [agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md), agenci dla systemu Linux muszą agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
+| Agenci dla systemu Linux | Tak | Wraz z [agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md), agenci dla systemu Linux muszą agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
 | Grupa zarządzania programu System Center Operations Manager | Nie | |
 
 Z tych lokalizacji, możesz pobrać agenta zależności:

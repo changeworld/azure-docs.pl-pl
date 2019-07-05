@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Dołącz maszyny Wirtualnej z sy
 description: Dołączanie maszyny wirtualnej systemu CentOS Linux w usłudze Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 23046dc356097a7b8cdbbc91c05a6419fc52d19f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: d34f6c9ea014759ec2ba310786cd524ff69094af
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246077"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473339"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Dołączanie maszyny wirtualnej systemu CentOS Linux do domeny zarządzanej
 W tym artykule pokazano, jak dołączyć maszyny wirtualnej systemu CentOS Linux na platformie Azure do domeny zarządzanej usług domenowych Azure AD.

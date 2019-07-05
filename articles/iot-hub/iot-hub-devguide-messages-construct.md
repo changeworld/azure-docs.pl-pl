@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2aafa195fa463a405e2132cd41fada8d6903961
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252799"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450078"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Tworzenie i odczytywanie komunikatów usługi IoT Hub
 
@@ -54,9 +54,9 @@ Poniższa lista zawiera zbiór właściwości systemu w komunikatach usługi IoT
 | message-id |Identyfikator użytkownika można ustawić dla komunikatu używanego dla wzorców "żądanie-odpowiedź". Format: Ciąg uwzględniający wielkość liter (maksymalnie 128 znaków) znaków alfanumerycznych ASCII 7-bitowego + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. | Tak |
 | numer sekwencyjny |Liczba (unikatowe na urządzeniu kolejkę) przypisany przez usługę IoT Hub do każdego komunikatu chmury do urządzenia. | Brak komunikatów C2D; tak, w przeciwnym razie. |
 | na |Lokalizacji docelowej, określone w [chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) wiadomości. | Brak komunikatów C2D; tak, w przeciwnym razie. |
-| czas w przypadku wygaśnięcia bezwzględne |Data i godzina wygaśnięcia komunikatu. | Yes |
-| iothub enqueuedtime |Data i godzina [chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) wiadomość została odebrana przez usługę IoT Hub. | Brak komunikatów C2D; tak, w przeciwnym razie. |
-| correlation-id |Właściwość ciągu w komunikacie odpowiedzi, który zwykle zawiera identyfikator komunikatu żądania we wzorcach "żądanie-odpowiedź". | Yes |
+| czas w przypadku wygaśnięcia bezwzględne |Data i godzina wygaśnięcia komunikatu. | Tak |
+| iothub enqueuedtime |Data i godzina [urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) wiadomość została odebrana przez usługę IoT Hub. | Brak komunikatów D2C; tak, w przeciwnym razie. |
+| correlation-id |Właściwość ciągu w komunikacie odpowiedzi, który zwykle zawiera identyfikator komunikatu żądania we wzorcach "żądanie-odpowiedź". | Tak |
 | user-id |Identyfikator używany do określenia pochodzenia wiadomości. Gdy komunikaty są generowane przez usługę IoT Hub, jest równa `{iot hub name}`. | Nie |
 | potwierdzenia iothub |Generator komunikat o opinię. Ta właściwość jest używana w komunikatów z chmury do urządzeń do usługi IoT Hub do generowania komunikatów zwrotnych w wyniku użycia komunikatu żądania przez urządzenie. Możliwe wartości: **Brak** (ustawienie domyślne): Brak komunikatu opinii jest generowany, **dodatnią**: Jeśli wiadomość została ukończona, wyświetlony komunikat opinii **ujemna**: odbierania komunikat opinii wygasł (lub została osiągnięta maksymalna liczba prób dostarczenia) bez kończone przez to urządzenie lub **pełne**: pozytywne i negatywne. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Tak |
 | iothub-connection-device-id |Identyfikator jest ustawiony przez usługę IoT Hub na komunikaty z urządzenia do chmury. Zawiera on **deviceId** urządzenia wysyłającego wiadomość. | Brak komunikatów D2C; tak, w przeciwnym razie. |

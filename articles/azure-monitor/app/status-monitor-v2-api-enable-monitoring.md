@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e87bfad11eee5b86d35e6b4f2846b094c467e0ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734169"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479644"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Enable-ApplicationInsightsMonitoring (v0.2.1 alfa)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Enable-ApplicationInsightsMonitoring (v0.3.1 alfa)
 
 W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -68,9 +68,9 @@ W tym przykładzie:
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
     @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
+      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+      @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 
 ```
 
@@ -88,7 +88,7 @@ Możesz utworzyć skrypt jednej instalacji dla kilku komputerów, ustawiając `M
 > Aplikacje zostanie dopasowany do reguły w kolejności, które zasady zostały udostępnione. Dlatego najpierw należy określić najbardziej specyficzne reguły, a ostatni najbardziej ogólne reguły.
 
 #### <a name="schema"></a>Schemat
-`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
+`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
 - **MachineFilter** jest wymaganym C# wyrażeń regularnych, komputera lub nazwa maszyny Wirtualnej.
     - ". *" będzie zgodne ze wszystkimi
@@ -108,13 +108,19 @@ Aparat Instrumentacji dodaje obciążenie i jest domyślnie wyłączona.
 ### <a name="-acceptlicense"></a>-AcceptLicense
 **Opcjonalnie.** Aby zaakceptować umowę licencyjną i zachowania poufności w przypadku instalacji nienadzorowanej, należy użyć tego przełącznika.
 
+### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
+W przypadku klastra serwerów sieci web, być może używasz [konfigurację udostępnioną](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+HttpModule nie wprowadzony w tej konfiguracji udostępnionej.
+Ten skrypt zakończy się niepowodzeniem z komunikatem o wymaganych kroków instalacji dodatkowych.
+Aby zignorować to sprawdzenie i kontynuuj instalowanie wymagań wstępnych, należy użyć tego przełącznika. Aby uzyskać więcej informacji, zobacz [znanych konfliktu z--konfiguracji udostępnionej usług iis —](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+
 ### <a name="-verbose"></a>-Verbose
 **Typowy parametr.** Aby wyświetlić szczegółowe dzienniki, należy użyć tego przełącznika.
 
 ### <a name="-whatif"></a>-WhatIf 
 **Typowy parametr.** Ten przełącznik umożliwia testowanie i Walidacja parametry wejściowe bez faktycznego włączania monitorowania.
 
-## <a name="output"></a>Dane wyjściowe
+## <a name="output"></a>Output
 
 
 #### <a name="example-output-from-a-successful-enablement"></a>Przykładowe dane wyjściowe z pomyślnej aktywacji

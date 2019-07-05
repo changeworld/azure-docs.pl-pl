@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/02/2019
 ms.author: raynew
-ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e395b10d9a99fdb454f3f02c7027e7acff64b434
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743176"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508187"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -164,7 +164,7 @@ Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/> Je�
 Typ magazynu | Standardowa HDD i SSD w warstwie standardowa, premium SSD. <br/><br/> SSD w warstwie standardowa jest obsługiwany, jeśli Twoich magazynów zostaną uaktualnione do najnowszej wersji kopii zapasowej maszyny Wirtualnej platformy Azure (nazywane natychmiastowe przywracanie). [Dowiedz się więcej](backup-instant-restore-capability.md).
 Dyski zarządzane | Obsługiwane.
 Zaszyfrowanych dysków | Obsługiwane.<br/><br/> Maszyny wirtualne platformy Azure, włączyć za pomocą usługi Azure Disk Encryption utworzeniem kopii zapasowej (z lub bez aplikację usługi Azure AD).<br/><br/> Nie można odzyskać zaszyfrowanych maszyn wirtualnych na poziomie plików/folderów. Odzyskaj całą maszynę Wirtualną.<br/><br/> Użytkownik może włączyć szyfrowanie na maszynach wirtualnych, które są już chronione przez usługę Azure Backup.
-Dysków z włączonym akceleratorem zapisu | Nieobsługiwane.<br/><br/> Jeśli używasz najnowszej wersji kopii zapasowej maszyny Wirtualnej platformy Azure (nazywane [natychmiastowe Przywracanie](backup-instant-restore-capability.md)), można wykluczyć dyski z akceleratorem zapisu włączone z kopii zapasowej.
+Dysków z włączonym akceleratorem zapisu | Nieobsługiwane.<br/><br/> Usługa Azure backup automatycznie wyklucza dysków z włączonym podczas tworzenia kopii zapasowej akceleratorem zapisu. Ponieważ nie są one kopię zapasową, nie będzie można przywrócić te dyski z punktów odzyskiwania maszyny wirtualnej.
 Wykonywanie kopii zapasowych deduplikowanych dysków | Nieobsługiwane.
 Dodaj dysk do chronionej maszyny Wirtualnej | Obsługiwane.
 Zmiana rozmiaru dysku na chronionej maszynie Wirtualnej | Obsługiwane.

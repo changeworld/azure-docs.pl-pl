@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: c232469886941a2db1ae57437c4b72d7565c123c
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: f9111dcb1f85b28a688282f792540128e7146a6b
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503448"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566190"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Szybki start: Wyodrębnianie danych potwierdzenia, przy użyciu interfejsu API REST rozpoznawania formularza za pomocą programu cURL
 
@@ -58,7 +58,7 @@ Po po wywołaniu **analizowanie otrzymania** wywołanie interfejsu API, **uzyska
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/operations/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X GET "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/operations/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>Sprawdzanie odpowiedzi

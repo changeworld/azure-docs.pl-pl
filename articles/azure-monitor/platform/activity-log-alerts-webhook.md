@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 63f59d59712d851f9bb7ace27335fe665a598f9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c91c1badaa4b1bc055859d700857cfd4d062babd
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66477921"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491510"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy Webhook dla alertów dziennika aktywności platformy Azure
 Jako część definicji grupy akcji można skonfigurować elementu webhook punktów końcowych, aby otrzymywać powiadomienia o alertach dziennika aktywności. Przy użyciu elementów webhook można kierować te powiadomienia do innych systemów w zakresie przetwarzania końcowego lub niestandardowej akcji. Ten artykuł pokazuje, jak wygląda ładunek HTTP POST do elementu webhook.
@@ -33,6 +33,7 @@ Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryz
 Ładunek JSON zawarte w operacji POST różnią się w zależności w polu data.context.activityLog.eventSource ładunku.
 
 ### <a name="common"></a>Wspólne
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -59,7 +60,9 @@ Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryz
     }
 }
 ```
+
 ### <a name="administrative"></a>Administracyjne
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -84,9 +87,96 @@ Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryz
         "properties": {}
     }
 }
-
 ```
+
+### <a name="security"></a>Bezpieczeństwo
+
+```json
+{
+    "schemaId":"Microsoft.Insights/activityLogs",
+    "data":{"status":"Activated",
+        "context":{
+            "activityLog":{
+                "channels":"Operation",
+                "correlationId":"2518408115673929999",
+                "description":"Failed SSH brute force attack. Failed brute force attacks were detected from the following attackers: [\"IP Address: 01.02.03.04\"].  Attackers were trying to access the host with the following user names: [\"root\"].",
+                "eventSource":"Security",
+                "eventTimestamp":"2017-06-25T19:00:32.607+00:00",
+                "eventDataId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "level":"Informational",
+                "operationName":"Microsoft.Security/locations/alerts/activate/action",
+                "operationId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "properties":{
+                    "attackers":"[\"IP Address: 01.02.03.04\"]",
+                    "numberOfFailedAuthenticationAttemptsToHost":"456",
+                    "accountsUsedOnFailedSignInToHostAttempts":"[\"root\"]",
+                    "wasSSHSessionInitiated":"No","endTimeUTC":"06/25/2017 19:59:39",
+                    "actionTaken":"Detected",
+                    "resourceType":"Virtual Machine",
+                    "severity":"Medium",
+                    "compromisedEntity":"LinuxVM1",
+                    "remediationSteps":"[In case this is an Azure virtual machine, add the source IP to NSG block list for 24 hours (see https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)]",
+                    "attackedResourceType":"Virtual Machine"
+                },
+                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/centralus/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "resourceGroupName":"contoso",
+                "resourceProviderName":"Microsoft.Security",
+                "status":"Active",
+                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+                "submissionTimestamp":"2017-06-25T20:23:04.9743772+00:00",
+                "resourceType":"MICROSOFT.SECURITY/LOCATIONS/ALERTS"
+            }
+        },
+        "properties":{}
+    }
+}
+```
+
+### <a name="recommendation"></a>Zalecenie
+
+```json
+{
+    "schemaId":"Microsoft.Insights/activityLogs",
+    "data":{
+        "status":"Activated",
+        "context":{
+            "activityLog":{
+                "channels":"Operation",
+                "claims":"{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\":\"Microsoft.Advisor\"}",
+                "caller":"Microsoft.Advisor",
+                "correlationId":"123b4c54-11bb-3d65-89f1-0678da7891bd",
+                "description":"A new recommendation is available.",
+                "eventSource":"Recommendation",
+                "eventTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+                "httpRequest":"{\"clientIpAddress\":\"0.0.0.0\"}",
+                "eventDataId":"1bf234ef-e45f-4567-8bba-fb9b0ee1dbcb",
+                "level":"Informational",
+                "operationName":"Microsoft.Advisor/recommendations/available/action",
+                "properties":{
+                    "recommendationSchemaVersion":"1.0",
+                    "recommendationCategory":"HighAvailability",
+                    "recommendationImpact":"Medium",
+                    "recommendationName":"Enable Soft Delete to protect your blob data",
+                    "recommendationResourceLink":"https://portal.azure.com/#blade/Microsoft_Azure_Expert/RecommendationListBlade/recommendationTypeId/12dbf883-5e4b-4f56-7da8-123b45c4b6e6",
+                    "recommendationType":"12dbf883-5e4b-4f56-7da8-123b45c4b6e6"
+                },
+                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/microsoft.storage/storageaccounts/contosoStore",
+                "resourceGroupName":"CONTOSO",
+                "resourceProviderName":"MICROSOFT.STORAGE",
+                "status":"Active",
+                "subStatus":"",
+                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+                "submissionTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+                "resourceType":"MICROSOFT.STORAGE/STORAGEACCOUNTS"
+            }
+        },
+        "properties":{}
+    }
+}
+```
+
 ### <a name="servicehealth"></a>ServiceHealth
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -128,7 +218,10 @@ Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryz
 }
 ```
 
+Określonego schematu szczegółowe informacje na temat alertów dzienników aktywności usługi kondycji powiadomień, [usługi powiadomień dotyczących kondycji](../../azure-monitor/platform/service-notifications.md). Dowiedz się również, jak [Konfigurowanie powiadomień webhook o kondycji usługi przy użyciu istniejących rozwiązań zarządzania problem](../../service-health/service-health-alert-webhook-guide.md).
+
 ### <a name="resourcehealth"></a>ResourceHealth
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -165,14 +258,10 @@ Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryz
 }
 ```
 
-Określonego schematu szczegółowe informacje na temat alertów dzienników aktywności usługi kondycji powiadomień, [usługi powiadomień dotyczących kondycji](../../azure-monitor/platform/service-notifications.md). Dowiedz się również, jak [Konfigurowanie powiadomień webhook o kondycji usługi przy użyciu istniejących rozwiązań zarządzania problem](../../service-health/service-health-alert-webhook-guide.md).
-
-Określonego schematu szczegółowe informacje na temat wszystkich innych alertów dziennika aktywności, [Przegląd dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md).
-
 | Nazwa elementu | Opis |
 | --- | --- |
 | status |Używane dla alertów dotyczących metryk. Zawsze wartość "aktywowano" w przypadku alertów dzienników aktywności. |
-| Kontekst |Kontekst zdarzenia. |
+| context |Kontekst zdarzenia. |
 | resourceProviderName |Dostawca zasobów zasób objęty wpływem. |
 | conditionType |Zawsze "zdarzenie". |
 | name |Nazwa reguły alertu. |
@@ -192,12 +281,14 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 | eventDataId |Unikatowy identyfikator zdarzenia. |
 | eventSource |Nazwa usługi platformy Azure lub infrastruktury, który wygenerował zdarzenie. |
 | httpRequest |Żądanie zawiera zazwyczaj clientRequestId clientIpAddress i metodę HTTP (na przykład umieścić). |
-| poziom |Jeden z następujących wartości: Krytyczny, błąd, ostrzeżenie i informacyjne. |
+| level |Jeden z następujących wartości: Krytyczny, błąd, ostrzeżenie i informacyjne. |
 | operationId |Zazwyczaj identyfikator GUID współużytkowane przez zdarzenia odpowiadający jednej operacji. |
 | operationName |Nazwa operacji. |
 | properties |Właściwości zdarzenia. |
 | status |ciąg. Stan operacji. Typowe wartości to uruchomiona, w toku, zakończone powodzeniem, nie powiodło się, aktywny i rozwiązany. |
 | subStatus |Zazwyczaj zawiera kod stanu HTTP odpowiedniego wywołania REST. Może to również obejmować inne ciągi, które opisują podstanu. Typowe wartości podstanu to OK (kod stanu HTTP: 200), utworzone (kod stanu HTTP: 201) zaakceptowane (kod stanu HTTP: 202), żadnej zawartości (kod stanu HTTP: 204), nieprawidłowe żądanie (kod stanu HTTP: 400), nie znaleziono (kod stanu HTTP: 404) konflikt (kod stanu HTTP: 409), wewnętrzny błąd serwera (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP: 504). |
+
+Określonego schematu szczegółowe informacje na temat wszystkich innych alertów dziennika aktywności, [Przegląd dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Dowiedz się więcej o dzienniku aktywności](../../azure-monitor/platform/activity-logs-overview.md).

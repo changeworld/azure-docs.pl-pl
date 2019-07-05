@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a1641c4f3ae4eaa175657db8ff4064fa2202aea6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c048ae8c0daba0e467a9243f4dd83f8d95921e10
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053010"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502652"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>Tworzenie i zarządzanie nimi osobistych pulpitów nawigacyjnych
 
@@ -38,6 +38,8 @@ Teraz po wyświetleniu pulpitu nawigacyjnego osobistych, zostanie wyświetlony n
 ![Karta "Pulpit nawigacyjny" z wyświetlanych ustawień i właściwości dla kafelka](media/howto-personalize-dashboard/personaldashboard.png)
 
 Możesz eksplorować inne typy kafelków w bibliotece Dowiedz się, jak dostosować swoje osobiste pulpity nawigacyjne.
+
+Aby dowiedzieć się więcej o sposobie używania fragmentacji w usłudze Azure IoT Central, zobacz [Użyj Kafelki pulpitu nawigacyjnego](howto-use-tiles.md).
 
 ## <a name="manage-dashboards"></a>Zarządzanie pulpitami nawigacyjnymi
 

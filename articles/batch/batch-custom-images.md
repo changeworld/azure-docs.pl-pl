@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80cba5e1b5e38e31dea2272cc4e33b4a95940e41
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706332"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565609"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Używanie niestandardowego obrazu, aby utworzyć pulę maszyn wirtualnych 
 
@@ -49,7 +49,7 @@ Na platformie Azure można przygotować obrazu zarządzanego z migawek systemu o
 
 ### <a name="prepare-a-vm"></a>Przygotowywanie maszyny Wirtualnej
 
-W przypadku tworzenia nowej maszyny Wirtualnej dla obrazu, należy użyć pierwszego obrazu portalu Azure Marketplace innych firm obsługiwane przy użyciu usługi Batch jako obrazu podstawowego dla obrazu zarządzanego. Tylko obrazy firmy Microsoft może służyć jako obrazu podstawowego. Aby uzyskać pełną listę obsługiwanych przez usługę Azure Batch odwołań do obrazu portalu Azure Marketplace, zobacz [jednostki SKU agenta węzła listy](/rest/api/batchservice/account/listnodeagentskus) operacji.
+W przypadku tworzenia nowej maszyny Wirtualnej dla obrazu, należy użyć pierwszego obrazu portalu Azure Marketplace innych firm obsługiwane przy użyciu usługi Batch jako obrazu podstawowego dla obrazu zarządzanego. Tylko obrazy firmy Microsoft może służyć jako obrazu podstawowego. Aby uzyskać pełną listę obsługiwanych przez usługę Azure Batch odwołań do obrazu portalu Azure Marketplace, zobacz [jednostki SKU agenta węzła listy](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) operacji.
 
 > [!NOTE]
 > Nie można użyć obrazu innych firm, który ma dodatkową licencję i warunki zakupu jako obrazu podstawowego. Aby uzyskać informacji na temat tych obrazów z witryny Marketplace, zobacz wskazówki dotyczące [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms

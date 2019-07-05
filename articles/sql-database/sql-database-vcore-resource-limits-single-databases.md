@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89aa3b4ecf0c07cfbb579cdc18fac6e822bc047
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118067"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536232"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na rdzeniach wirtualnych
 
@@ -34,6 +34,9 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 > Skalowanie, wskazówki i uwagi, zobacz [skalowanie pojedynczej bazy danych](sql-database-single-database-scale.md).
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Warstwy usług ogólnego przeznaczenia: Magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
+
+> [!IMPORTANT]
+> Nowe bazy danych z 4. generacji nie są już obsługiwane w regionie AustraliaEast.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generacja 4 (część 1)
 
@@ -65,7 +68,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Tak|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|1536|3072|3072|3072|4096|4096|
 |Maksymalny rozmiar dziennika (GB)|461|922|922|922|1229|1229|
@@ -88,7 +91,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|461|
@@ -139,7 +142,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Minimum maksimum rdzeni wirtualnych|0.5-1|0.5-2|0.5-4|
 |Min — maksymalny rozmiar pamięci (GB)|2.02-3|2.05-6|2.10-12|
 |Wstrzymaj automatycznie min. opóźnienie (godziny)|6|6|6|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|512|1024|1024|
 |Maksymalny rozmiar dziennika (GB)|12|24|48|
@@ -157,6 +160,9 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 
 ## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>Warstwy usług krytycznych firm zainicjowanych zasobów obliczeniowych w warstwie
 
+> [!IMPORTANT]
+> Nowe bazy danych z 4. generacji nie są już obsługiwane w regionie AustraliaEast.
+
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generacja 4 (część 1)
 
 |Obliczenia rozmiaru|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
@@ -164,7 +170,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |rdzenie wirtualne|1|2|3|4|5|6|
 |Pamięć (GB)|7|14|21|28|35|42|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|1|2|3|4|5|6|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|650|650|650|650|650|650|
@@ -177,7 +183,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Maksymalna liczba współbieżnych logowań|200|400|600|800|1000|1200|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|
-|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Tak|
+|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
@@ -188,7 +194,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|7|8|9.5|11|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|650|650|650|650|1024|1024|
@@ -202,7 +208,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Tak|Yes|Yes|Yes|Yes|Tak|
-|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Tak|
+|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generowania 5 (część 1)
@@ -225,7 +231,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Maksymalna liczba współbieżnych logowań|200|400|600|800|1000|1200|1400|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
+|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
@@ -249,8 +255,8 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Maksymalna liczba współbieżnych logowań|1600|1800|2000|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
+|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
+|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 ## <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
@@ -268,17 +274,21 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Maksymalny rozmiar dziennika (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |Rozmiar bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
-|Docelowy operacji We/Wy (64 KB)|Określone|Określone|Określone|Określone|Określone|Określone|Określone|Określone|
+|Docelowy operacji We/Wy (64 KB)| [Uwaga 1](#note-1) |[Uwaga 1](#note-1)|[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) | [Uwaga 1](#note-1) |
 |We/Wy, czas oczekiwania (w przybliżeniu)|Określone|Określone|Określone|Określone|Określone|Określone|Określone|Określone|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|2|2|2|2|2|2|2|2|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
-|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych |7|7|7|7|7|7|7|7|
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="note-1"></a>Uwaga 1
+
+W Hiperskali to architektura wielowarstwowa z buforowaniem na różnych poziomach. Skuteczne operacje We/Wy zależy od obciążenia.
+
+### <a name="next-steps"></a>Kolejne kroki
 
 - Limity zasobów jednostek DTU dla pojedynczej bazy danych, można zobaczyć [limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-single-databases.md)
 - Limity zasobów (rdzeń wirtualny) dla pul elastycznych, zobacz [limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na rdzeniach wirtualnych](sql-database-vcore-resource-limits-elastic-pools.md)

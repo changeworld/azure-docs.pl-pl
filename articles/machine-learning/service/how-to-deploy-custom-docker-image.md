@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/05/2019
-ms.openlocfilehash: bd0e8099be5422d561541aeb8911c9a1610befcb
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 29fdb200075a5b5843944a7a890cc2f8ad61f1ee
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272767"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543850"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Wdrażanie modelu przy użyciu niestandardowego obrazu platformy Docker
 
@@ -55,14 +55,14 @@ Informacje przedstawione w tej sekcji założono, że używasz usługi Azure Con
 
     Jeśli przy użyciu obrazów przechowywanych w __rejestru kontenerów do obszaru roboczego__, nie trzeba do uwierzytelniania w rejestrze. Uwierzytelnianie jest obsługiwane przez obszar roboczy.
 
-    > [!TIP]
-    > Rejestr kontenerów do obszaru roboczego jest tworzony po raz pierwszy uczenia lub wdrażania modelu korzystanie z obszaru roboczego. Jeśli został utworzony nowy obszar roboczy, ale nie skonfigurowanych pod kątem lub utworzono model, nie usługi Azure Container Registry będzie istnieć dla obszaru roboczego.
+    > [!WARNING]
+    > Rzegistry kontenera platformy Azure dla Twojego obszaru roboczego jest __tworzona przy pierwszym uczenia lub wdrażania modelu__ korzystanie z obszaru roboczego. Jeśli został utworzony nowy obszar roboczy, ale nie skonfigurowanych pod kątem lub utworzono model, nie usługi Azure Container Registry będzie istnieć dla obszaru roboczego.
 
     Aby uzyskać informacje dotyczące pobierania nazwę obszaru roboczego usługi Azure Container Registry, zobacz [nazwy rejestru kontenerów Get](#getname) dalszej części tego artykułu.
 
     Podczas używania obrazów przechowywanych w __autonomicznego kontenera rejestru__, musisz skonfigurować jednostki usługi, która ma co najmniej do odczytu dostępu. Możesz dostarczać identyfikator jednostki usługi (nazwa użytkownika) i hasło dla każdego, kto korzysta z obrazów z rejestru. Wyjątkiem jest, jeśli można utworzyć rejestr kontenerów dostępny publicznie.
 
-    Aby uzyskać informacje na temat tworzenia prywatnego rejestru kontenerów platformy Azure, zobacz [Tworzenie prywatnego rejestru kontenerów](/azure/container-registry/container-registery-get-started-azure-cli).
+    Aby uzyskać informacje na temat tworzenia prywatnego rejestru kontenerów platformy Azure, zobacz [Tworzenie prywatnego rejestru kontenerów](/azure/container-registry/container-registry-get-started-azure-cli).
 
     Aby uzyskać informacje na temat używania jednostek usług za pomocą usługi Azure Container Registry, zobacz [uwierzytelniania usługi Azure Container Registry za pomocą jednostki usługi](/azure/container-registry/container-registry-auth-service-principal).
 
@@ -80,8 +80,8 @@ Informacje przedstawione w tej sekcji założono, że używasz usługi Azure Con
 
 W tej sekcji Dowiedz się, jak uzyskać nazwę rejestru kontenerów platformy Azure dla Twojego obszaru roboczego usługi Azure Machine Learning.
 
-> [!TIP]
-> Rejestr kontenerów do obszaru roboczego jest tworzony po raz pierwszy uczenia lub wdrażania modelu korzystanie z obszaru roboczego. Jeśli został utworzony nowy obszar roboczy, ale nie skonfigurowanych pod kątem lub utworzono model, nie usługi Azure Container Registry będzie istnieć dla obszaru roboczego.
+> [!WARNING]
+> Azure Container Registry dla obszaru roboczego jest __tworzona przy pierwszym uczenia lub wdrażania modelu__ korzystanie z obszaru roboczego. Jeśli został utworzony nowy obszar roboczy, ale nie skonfigurowanych pod kątem lub utworzono model, nie usługi Azure Container Registry będzie istnieć dla obszaru roboczego.
 
 Jeśli została już skonfigurowanych pod kątem lub wdrożyć modeli za pomocą usługi Azure Machine Learning, rejestr kontenera zostało utworzone dla obszaru roboczego. Aby znaleźć nazwę tego rejestru kontenerów, użyj następujących kroków:
 
@@ -153,9 +153,9 @@ Kroki opisane w tym przewodniku sekcji Tworzenie niestandardowego obrazu platfor
     Run ID: cda was successful after 2m56s
     ```
 
-Aby uzyskać więcej informacji dotyczących tworzenia obrazów za pomocą usługi Azure Container Registry, zobacz [Skompiluj i uruchom obraz kontenera przy użyciu zadań rejestru kontenera platformy Azure](/docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli.md)
+Aby uzyskać więcej informacji dotyczących tworzenia obrazów za pomocą usługi Azure Container Registry, zobacz [Skompiluj i uruchom obraz kontenera przy użyciu zadań rejestru kontenera platformy Azure](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
 
-Aby uzyskać więcej informacji na temat przekazywania istniejących obrazów do usługi Azure Container Registry, zobacz [Wypchnij swój pierwszy obraz do prywatnego rejestru kontenerów platformy Docker](/azure/container-registry/container-registry-get-started-docker-cli.md).
+Aby uzyskać więcej informacji na temat przekazywania istniejących obrazów do usługi Azure Container Registry, zobacz [Wypchnij swój pierwszy obraz do prywatnego rejestru kontenerów platformy Docker](/azure/container-registry/container-registry-get-started-docker-cli).
 
 ## <a name="use-a-custom-image"></a>Korzystanie z obrazu niestandardowego
 

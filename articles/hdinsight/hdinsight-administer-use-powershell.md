@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: tylerfox
-ms.openlocfilehash: a7e129f43b957b271c77f451ab198a9068bb0797
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7c894bcb3183714a76578a6750c8e85493e3094
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719000"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508078"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu programu Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -150,10 +150,6 @@ Jest tę samą procedurę jak dostęp Grant/revoke HTTP. W przypadku klastra prz
 ## <a name="find-the-default-storage-account"></a>Znajdź domyślne konto magazynu
 Poniższy skrypt programu PowerShell pokazuje, jak domyślna nazwa konta magazynu i powiązane informacje:
 
-> [!IMPORTANT]  
-> Wartości `DefaultStorageAccount`, i `DefaultStorageContainer` nie są zwracane z [Get AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) podczas [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md) jest włączona na koncie magazynu.
-
-
 ```powershell
 #Connect-AzAccount
 $clusterName = "<HDInsight Cluster Name>"
@@ -197,10 +193,6 @@ Zobacz [uruchamianie przykładów technologii MapReduce zawarte w HDInsight](had
 **Aby przesłać zadania technologii Hive**
 
 Zobacz [uruchamianie Apache zapytań Hive przy użyciu programu PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
-
-**Aby przesłać zadania Apache Pig**
-
-Zobacz [zadania uruchamiania Apache Pig, przy użyciu programu PowerShell](hadoop/apache-hadoop-use-pig-powershell.md).
 
 **Do przesyłania zadań z wykorzystaniem narzędzia Apache Sqoop**
 

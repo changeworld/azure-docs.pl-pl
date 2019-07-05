@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0fb3551b14a2239f26c54f639b90400277fab25
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148927"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501932"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure storage
 
@@ -34,10 +34,10 @@ W poniższej tabeli przedstawiono kilka przykładowych adresy URL danych obiekt�
 
 | Typ zasobu | Domyślny adres URL | Adres URL domeny niestandardowej |
 | --- | --- | --- |
-| Konto magazynu | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
-| Obiekt blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| Nadrzędny kontener | http://mystorageaccount.blob.core.windows.net/myblob lub http://mystorageaccount.blob.core.windows.net/ $root/myblob| http://www.contoso.com/myblob lub http://www.contoso.com/ $root/myblob |
-| sieć Web |  http://mystorageaccount. [zone].web.core.windows.net/$web/[indexdoc] lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/[indexdoc] lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/ | http://www.contoso.com/ $web lub http://www.contoso.com/ lub http://www.contoso.com/ $web / [indexdoc] lub http://www.contoso.com/ [indexdoc] |
+| Konto magazynu | http:\//mystorageaccount.blob.core.windows.net | http:\//www.contoso.com |
+| Obiekt blob |http:\//mystorageaccount.blob.core.windows.net/mycontainer/myblob | http:\//www.contoso.com/mycontainer/myblob |
+| Nadrzędny kontener | http:\//mystorageaccount.blob.core.windows.net/myblob lub http:\//mystorageaccount.blob.core.windows.net/$root/myblob | http:\//www.contoso.com/myblob lub http:\/$ /www.contoso.com/ główny/myblob |
+| sieć Web |  http:\//mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web/[indexdoc] lub http:\//mystorageaccount. [ Zone].Web.Core.Windows.NET/[indexdoc] lub http:\//mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web lub http:\//mystorageaccount. [ Zone].Web.Core.Windows.NET/ | http:\//www.contoso.com/$ w sieci web lub http:\//www.contoso.com/ lub http:\//www.contoso.com/$ w sieci web / [indexdoc] lub http:\//www.contoso.com/ [indexdoc] |
 
 > [!NOTE]  
 > Jak pokazano w poniższych sekcjach, wszystkie przykłady dla punktu końcowego usługi blob dotyczą również punkt końcowy usługi sieci web.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
-ms.openlocfilehash: aa953440f03137f3359276bc9e06cb0c73f0ab4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add2c72535b5be0edcbc00c077dfe20a6deaa3e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61219299"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434178"
 ---
 # <a name="manage-azure-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure
 
@@ -103,25 +103,36 @@ Aby śledzić postęp zadania, na pulpicie nawigacyjnym magazynu, zaznacz **zada
 
 Istnieją dwa sposoby na zatrzymanie ochrony maszyn wirtualnych:
 
-- Zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowych i usunięcie wszystkich punktów odzyskiwania. W tym przypadku nie będzie mógł przywrócić maszynę Wirtualną.
-- Zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowych i Zachowaj punkty odzyskiwania. Mimo że będzie trzeba płacić za Zachowaj punkty odzyskiwania w magazynie, będzie można przywrócić maszynę Wirtualną, jeśli to konieczne. Aby uzyskać więcej informacji, zobacz [cennika usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+* **Zatrzymaj ochronę i Zachowaj dane kopii zapasowej**. Ta opcja spowoduje zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowej z ochronę maszyny Wirtualnej; Jednak usługa Azure Backup zostaną zachowane punktów odzyskiwania, które zostały utworzone kopie zapasowe.  Musisz zapłacić Zachowaj punkty odzyskiwania w magazynie (zobacz [cennika usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/) Aby uzyskać szczegółowe informacje). Będzie można przywrócić maszynę Wirtualną, jeśli to konieczne. Jeśli zdecydujesz wznowić ochronę maszyny Wirtualnej, a następnie można użyć *Wznów tworzenie kopii zapasowej* opcji.
+* **Zatrzymanie ochrony i usunięcie danych kopii zapasowej**. Ta opcja spowoduje zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowej z ochronę maszyny Wirtualnej i usunięcie wszystkich punktów odzyskiwania. Nie można przywrócić maszynę Wirtualną ani używać *Wznów tworzenie kopii zapasowej* opcji.
 
 >[!NOTE]
 >Jeśli usuniesz źródła danych bez konieczności zatrzymywania tworzenia kopii zapasowych nowych kopii zapasowych zakończy się niepowodzeniem. Wygaśnie stare punkty odzyskiwania zgodnie z zasadami, ale jeden z ostatniego punktu odzyskiwania zawsze zostaną zachowane, dopóki Zatrzymaj tworzenie kopii zapasowych i usunąć dane.
 >
 
-Aby zatrzymać ochronę dla maszyny Wirtualnej:
+### <a name="stop-protection-and-retain-backup-data"></a>Zatrzymaj ochronę i Zachowaj dane kopii zapasowej
+
+Zatrzymaj ochronę i przechowywanie danych maszyny Wirtualnej:
 
 1. Na [elementu w pulpicie nawigacyjnym magazynu](#view-vms-on-the-dashboard), wybierz opcję **Zatrzymaj kopię zapasową**.
-2. Wybierz, czy zachować, czy usuwanie danych kopii zapasowej i Potwierdź wybór, zgodnie z potrzebami. Jeśli chcesz, Dodaj komentarz. Jeśli nie masz pewności nazwy elementu, umieść kursor nad wykrzyknik, aby wyświetlić nazwę.
+2. Wybierz **Zachowaj dane kopii zapasowej**i potwierdzić wybór, zgodnie z potrzebami. Jeśli chcesz, Dodaj komentarz. Jeśli nie masz pewności nazwy elementu, umieść kursor nad wykrzyknik, aby wyświetlić nazwę.
 
-    ![Zatrzymaj ochronę](./media/backup-azure-manage-vms/retain-or-delete-option.png)
+    ![Zachowaj dane kopii zapasowej](./media/backup-azure-manage-vms/retain-backup-data.png)
 
-     Powiadomienia informuje o tym, że zadania tworzenia kopii zapasowej została zatrzymana.
+Powiadomienia informuje o tym, że zadania tworzenia kopii zapasowej została zatrzymana.
+
+### <a name="stop-protection-and-delete-backup-data"></a>Zatrzymanie ochrony i usunięcie danych kopii zapasowej
+
+Zatrzymaj ochronę, a następnie usunąć danych maszyny Wirtualnej:
+
+1. Na [elementu w pulpicie nawigacyjnym magazynu](#view-vms-on-the-dashboard), wybierz opcję **Zatrzymaj kopię zapasową**.
+2. Wybierz **Usuń dane kopii zapasowej**i potwierdzić wybór, zgodnie z potrzebami. Wprowadź nazwę elementu kopii zapasowej i w razie potrzeby dodać komentarz.
+
+    ![Usuwanie danych kopii zapasowej](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
 ## <a name="resume-protection-of-a-vm"></a>Wznawianie ochrony maszyny Wirtualnej
 
-Jeśli dane kopii zapasowych są przechowywane po zatrzymaniu maszyny Wirtualnej, później można wznowić ochronę. Jeśli usuniesz dane kopii zapasowej, nie można wznowić ochronę.
+Jeżeli wybrano [zatrzymanie ochrony i Zachowaj dane kopii zapasowej](#stop-protection-and-retain-backup-data) opcji podczas Zatrzymaj ochronę maszyny Wirtualnej, a następnie można użyć **Wznów tworzenie kopii zapasowej**. Ta opcja jest niedostępna w przypadku wybrania [zatrzymanie ochrony i usunięcie danych kopii zapasowej](#stop-protection-and-delete-backup-data) opcji lub [Usuń dane kopii zapasowej](#delete-backup-data).
 
 Aby wznowić ochronę dla maszyny Wirtualnej:
 
@@ -134,23 +145,25 @@ Aby wznowić ochronę dla maszyny Wirtualnej:
 
 ## <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej
 
-Można usunąć danych kopii zapasowej maszyny Wirtualnej podczas **Zatrzymaj kopię zapasową** zadania lub po zakończeniu zadania tworzenia kopii zapasowej. Przed usunięciem danych kopii zapasowej należy pamiętać o te informacje:
+Istnieją dwa sposoby Usuń dane kopii zapasowej maszyny Wirtualnej:
 
-- Może to być dobry pomysł, aby dni lub tygodni przed usunięciem punktów odzyskiwania.
-- W przeciwieństwie do procesu przywracania punktów odzyskiwania, gdy usuniesz dane kopii zapasowej, nie możesz wybrać punktów odzyskiwania do usunięcia. Jeśli usuniesz dane kopii zapasowej, należy usunąć wszystkie punkty odzyskiwania skojarzone.
+- Na pulpicie nawigacyjnym elementu magazynu, wybierz Zatrzymaj kopię zapasową, a następnie postępuj zgodnie z instrukcjami dotyczącymi [zatrzymanie ochrony i usunięcie danych kopii zapasowej](#stop-protection-and-delete-backup-data) opcji.
 
-Po Zatrzymaj lub Wyłącz zadanie tworzenia kopii zapasowej maszyny Wirtualnej, można usunąć danych kopii zapasowej:
+  ![Wybieranie pozycji Zatrzymaj tworzenie kopii zapasowej](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
+- Na pulpicie nawigacyjnym elementu magazynu wybierz pozycję Usuń dane kopii zapasowej. Ta opcja jest włączona, jeśli użytkownik wybierze [zatrzymanie ochrony i Zachowaj dane kopii zapasowej](#stop-protection-and-retain-backup-data) opcji podczas Zatrzymaj ochronę maszyny Wirtualnej
 
-1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-on-the-dashboard), wybierz opcję **Usuń dane kopii zapasowej**.
+  ![Wybieranie kopii zapasowej Delete](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-    ![Wybieranie kopii zapasowej Delete](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+  - Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-on-the-dashboard), wybierz opcję **Usuń dane kopii zapasowej**.
+  - Wpisz nazwę elementu kopii zapasowej, aby upewnić się, że chcesz usunąć punkty odzyskiwania.
 
-1. Wpisz nazwę elementu kopii zapasowej, aby upewnić się, że chcesz usunąć punkty odzyskiwania.
+    ![Usuwanie danych kopii zapasowej](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-    ![Upewnij się, że chcesz usunąć punkty odzyskiwania](./media/backup-azure-manage-vms/item-verification-box.png)
+  - Aby usunąć dane kopii zapasowej dla elementu, wybierz **Usuń**. Komunikat z powiadomieniem poinformuje Cię o tym, że dane kopii zapasowej został usunięty.
 
-1. Aby usunąć dane kopii zapasowej dla elementu, wybierz **Usuń**. Komunikat z powiadomieniem poinformuje Cię o tym, że dane kopii zapasowej został usunięty.
+  > [!NOTE]
+  > Jeśli usuniesz dane kopii zapasowej możesz usunąć wszystkie punkty odzyskiwania skojarzone. Nie można wybrać punktów odzyskiwania do usunięcia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się, jak [tworzenie kopii zapasowych maszyn wirtualnych platformy Azure z ustawień maszyny Wirtualnej](backup-azure-vms-first-look-arm.md).

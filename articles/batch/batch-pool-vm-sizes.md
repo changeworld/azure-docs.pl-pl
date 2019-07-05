@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 033e0865f23034b94e3133e0ba5890eca4e746ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1848891a0a37235c9769b3cee18262239e19df5a
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080891"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502667"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybierz rozmiar maszyny Wirtualnej dla węzłów obliczeniowych w puli usługi Azure Batch
 
@@ -51,8 +51,8 @@ Wszelkie promocyjne lub niewymienione rozmiarów maszyn wirtualnych w wersji zap
 | [Rozmiarów zoptymalizowanych pod kątem pamięci](../virtual-machines/linux/sizes-memory.md) | Brak | Niedostępne |
 | Seria Fsv2 | Wszystkie rozmiary | Dowolne |
 | Seria H | Wszystkie rozmiary | Dowolne |
-| Seria HB | Wszystkie rozmiary | Tryb subskrypcji użytkownika |
-| Seria HC | Wszystkie rozmiary | Tryb subskrypcji użytkownika |
+| Seria HB<sup>2</sup> | Wszystkie rozmiary | Dowolne |
+| Seria HC<sup>2</sup> | Wszystkie rozmiary | Dowolne |
 | Seria Ls | Wszystkie rozmiary | Dowolne |
 | Seria Lsv2 | Brak | Niedostępne |
 | Seria M | Maszyna wirtualna Standard_M64ms (o niskim priorytecie tylko), maszyna wirtualna Standard_M128s (o niskim priorytecie tylko) | Dowolne |  

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b434e5b0c4524af642eb1255597cd3e7674571c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7e8b0e17248dff3c53b96fd240a7566f09b22fae
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545818"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482698"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Szybki start: Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API
 
@@ -74,7 +74,7 @@ Aby dodać identyfikator URI przekierowania do aplikacji:
 1. Aby dodać niestandardowy identyfikator URI dla internetowej i publicznej aplikacji klienckiej, wykonaj następujące kroki:
 
    1. Znajdź sekcję **Identyfikator URI przekierowania**.
-   1. Wybierz typ tworzonej aplikacji: **Internetowa** lub **Klient publiczny (mobilny i klasyczny)**.
+   1. Wybierz typ tworzonej aplikacji: **Internetowa** lub **Klient publiczny (mobilny i klasyczny)** .
    1. Podaj identyfikator URI przekierowania dla aplikacji.
       * Dla aplikacji internetowych podaj podstawowy adres URL aplikacji. Na przykład ciąg `http://localhost:31544` może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą używać tego adresu URL, aby zalogować się do internetowej aplikacji klienckiej.
       * W przypadku aplikacji publicznych podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Określ wartość specyficzną dla Twojej aplikacji, na przykład https://MyFirstApp.
@@ -110,7 +110,7 @@ Aby dodać poświadczenia do aplikacji internetowej:
 
 ## <a name="add-permissions-to-access-web-apis"></a>Dodawanie uprawnień na potrzeby dostępu do internetowych interfejsów API
 
-[![Dodawanie uprawnień do interfejsu API](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
+[![Pokazuje ekran, w którym można dodać uprawnienia do interfejsu API](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
 
 Aby dodać uprawnienia na potrzeby uzyskiwania dostępu do interfejsów API zasobu z poziomu klienta:
 

@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289995"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476489"
 ---
 # <a name="start-using-pim"></a>Rozpoczynanie korzystania z usługi PIM
 
@@ -56,25 +56,25 @@ Aby rozpocząć korzystanie z usługi PIM w katalogu, należy włączyć usług�
 
 1. Na liście kliknij **wyrazić zgodę na usługę PIM**.
 
-    ![Zgoda na usługi PIM](./media/pim-getting-started/consent-pim.png)
+    ![Zgoda na usługi PIM, aby włączyć usługę PIM](./media/pim-getting-started/consent-pim.png)
 
 1. Kliknij przycisk **Zweryfikuj moją tożsamość** Aby zweryfikować swoją tożsamość za pomocą usługi Azure MFA. Użytkownik zostanie zapytany, aby wybrać konto.
 
-    ![Wybieranie konta](./media/pim-getting-started/pick-account.png)
+    ![Wybierz okno konta, aby zweryfikować swoją tożsamość](./media/pim-getting-started/pick-account.png)
 
 1. Jeżeli jest wymaganych więcej informacji o weryfikację, poprowadzą Cię przez proces. Aby uzyskać więcej informacji, zobacz [Uzyskaj pomoc dotyczącą weryfikacji dwuetapowej](https://go.microsoft.com/fwlink/p/?LinkId=708614).
 
-    ![Potrzeba więcej informacji](./media/pim-getting-started/more-information-required.png)
+    ![Okno wymaganych więcej informacji, jeśli Twoja organizacja potrzebuje więcej informacji](./media/pim-getting-started/more-information-required.png)
 
     Na przykład użytkownik może zostać poproszona o zapewniają Weryfikacja telefonu.
 
-    ![Dodatkowa weryfikacja zabezpieczeń](./media/pim-getting-started/additional-security-verification.png)
+    ![Strony dodatkowych zabezpieczeń weryfikacji pytaniem, jak się z Tobą skontaktować](./media/pim-getting-started/additional-security-verification.png)
 
 1. Po zakończeniu procesu weryfikacji kliknij **zgody** przycisku.
 
 1. W oknie komunikatu kliknij **tak** do wyrażenia zgody na usługę PIM.
 
-    ![Zgoda na komunikat usługi PIM](./media/pim-getting-started/consent-pim-message.png)
+    ![Zgoda na usługi PIM wiadomości do zakończenia procesu zgody](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>Zaloguj się w usłudze PIM dla ról usługi Azure AD
 
@@ -100,7 +100,7 @@ Po włączeniu usługi PIM dla katalogu należy zarejestrować się w usłudze P
 
 Po skonfigurowaniu usługi PIM można wykonywać zadania związane z zarządzaniem tożsamościami.
 
-![Zrzut ekranu przedstawiający zadania najwyższego poziomu dla aplikacji PIM](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Okna nawigacji przedstawiający PIM zadania i Zarządzaj opcjami](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | Zadania i zarządzanie nimi | Opis |
 | --- | --- |
@@ -125,11 +125,11 @@ Aby ułatwić Otwórz PIM, należy dodać Kafelek usługi PIM do pulpitu nawigac
 
 1. Sprawdź **Przypnij blok do pulpitu nawigacyjnego** Aby przypiąć blok szybkiego startu usługi PIM do pulpitu nawigacyjnego.
 
-    ![Przypnij blok do pulpitu nawigacyjnego](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Ikona pinezki do bloku usługi PIM Przypnij do pulpitu nawigacyjnego](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Na pulpicie nawigacyjnym platformy Azure zobaczysz Kafelek następująco:
 
-    ![Przewodnik Szybki Start usługi PIM kafelka](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Przewodnik Szybki Start usługi PIM Kafelek na pulpicie nawigacyjnym](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

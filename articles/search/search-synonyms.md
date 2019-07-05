@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99abcc70a81622e4efbe85722d457bd1846b6e15
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024311"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485215"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonimy w usłudze Azure Search
 
@@ -25,7 +25,7 @@ W usłudze Azure Search rozszerzenia synonim odbywa się w czasie wykonywania za
 
 ## <a name="create-synonyms"></a>Utwórz synonimy
 
-Brak obsługi portalu do tworzenia synonimy, ale można użyć interfejsu API REST lub zestawu .NET SDK. Aby rozpocząć pracę z użyciem usług REST, firma Microsoft zaleca [przy użyciu narzędzia Postman](search-fiddler.md) i sformułowania żądań za pomocą tego interfejsu API: [Tworzenie map synonimów](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Aby uzyskać C# deweloperów, możesz rozpocząć pracę z [dodać synonimy, wyszukiwanie platformy Azure przy użyciu C# ](search-synonyms-tutorial-sdk.md).
+Brak obsługi portalu do tworzenia synonimy, ale można użyć interfejsu API REST lub zestawu .NET SDK. Aby rozpocząć pracę z użyciem usług REST, firma Microsoft zaleca [przy użyciu narzędzia Postman](search-get-started-postman.md) i sformułowania żądań za pomocą tego interfejsu API: [Tworzenie map synonimów](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Aby uzyskać C# deweloperów, możesz rozpocząć pracę z [dodać synonimy, wyszukiwanie platformy Azure przy użyciu C# ](search-synonyms-tutorial-sdk.md).
 
 Opcjonalnie Jeśli używasz [kluczy zarządzanych przez klienta](search-security-manage-encryption-keys.md) na stronie usługi szyfrowanie w spoczynku, można zastosować Ochrona zawartości mapy synonimów.
 

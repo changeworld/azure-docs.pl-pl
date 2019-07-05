@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 8c4fd3d49b4df3b3d18802e49d51aa54c0b58333
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574192"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566154"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane
 
@@ -28,7 +28,7 @@ Nie trzeba przypisać rezerwacji do konkretnych wystąpień bazy danych SQL (poj
 
 Możesz kupić pojemność usługi Azure SQL Database, zarezerwowane [witryny Azure portal](https://portal.azure.com). Aby kupić pojemność zastrzeżone bazy danych SQL:
 
-- Musisz być w roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.
+- Musisz być w roli właściciela dla co najmniej jeden Enterprise lub indywidualnej subskrypcji z płatnością za rzeczywiste użycie współczynnikami.
 - W przypadku subskrypcji Enterprise **Dodawanie wystąpień zarezerwowanych** musi być włączona w [portalu EA portal](https://ea.azure.com). Lub, jeśli to ustawienie jest wyłączone, musi być administratorem subskrypcji umowy EA.
 - Dla programu Cloud Solution Provider (CSP) tylko agentów administratora lub agentom sprzedaży można kupić pojemność bazy danych SQL zastrzeżone.
 
@@ -44,26 +44,25 @@ Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generac
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkich usług** > **rezerwacje**.
-3. Wybierz **Dodaj** a następnie w okienku wybierz typ produktu wybierz **bazy danych SQL** kupić nowe zastrzeżenie dla bazy danych SQL.
+3. Wybierz **Dodaj** a następnie w okienku zakupu rezerwacji wybierz **bazy danych SQL** kupić nowe zastrzeżenie dla bazy danych SQL.
 4. Wypełnij wymagane pola. Istniejące lub nowe pojedynczych baz danych, pul elastycznych lub zarządzanych wystąpień, które odpowiadają atrybuty, które możesz wybrać kwalifikują się uzyskać rabat w wysokości rezerwowanie pojemności. Rzeczywista liczba wystąpień bazy danych SQL, które Rabat zależy od tego, zakresu i ilość wybrana.
+    ![Zrzut ekranu, przed przesłaniem bazy danych SQL zastrzeżone zakupu pojemności](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
 
-   ![Zrzut ekranu, przed przesłaniem bazy danych SQL zastrzeżone zakupu pojemności](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
+W poniższej tabeli opisano pola wymagane.
 
-    | Pole      | Opis|
-    |:------------|:--------------|
-    |Name (Nazwa)        |Nazwa tego zastrzeżenia.|
-    |Subskrypcja|Subskrypcja użytej do zapłacenia za rezerwację pojemności bazy danych SQL zastrzeżone. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji wydajności bazy danych SQL zastrzeżone. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.|
-    |Scope       |Zakres rezerwacji pamięci rdzeń wirtualny może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <br/><br/>**Subskrypcja pojedyncza** — rabat związany z rezerwacją pamięci rdzeń wirtualny jest stosowany do wystąpienia bazy danych SQL w ramach tej subskrypcji. <br/><br/>**Udostępnione subskrypcji** — rabat związany z rezerwacją pamięci rdzeń wirtualny jest stosowany do wystąpień bazy danych SQL w ramach dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.|
-    |Region      |Region platformy Azure, który pasuje do żadnego z bazą danych SQL zastrzeżone rezerwacji wydajności.|
-    |Typ wdrożenia|Typ zasobu SQL, który chcesz kupić rezerwację dla.|
-    |Warstwa wydajności|Warstwy usług dla wystąpień baz danych SQL.
-    |Termin        |Jeden rok lub trzy lata.|
-    |Liczba    |Liczba wystąpień, które zostały zakupione w ramach bazy danych SQL zastrzeżone rezerwacji wydajności. Ilość jest liczby uruchomionych wystąpień bazy danych SQL, które mogą uzyskać rabat rozliczeń. Na przykład jeśli używasz 10 wystąpień bazy danych SQL w regionie wschodnie stany USA, następnie należy określić ilość jako 10, aby zmaksymalizować korzyści dla wszystkich działających maszyn. |
-    |||
+| Pole      | Opis|
+|------------|--------------|
+|Subskrypcja|Subskrypcja użytej do zapłacenia za rezerwację pojemności bazy danych SQL zastrzeżone. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji wydajności bazy danych SQL zastrzeżone. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub umowę poszczególnych z zgodnie z rzeczywistym użyciem (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. Dla poszczególnych subskrypcji zgodnie z rzeczywistym użyciem, cennik opłaty są naliczane na metodę płatności karty kredytowej lub faktury w ramach subskrypcji.|
+|Scope       |Zakres rezerwacji pamięci rdzeń wirtualny może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <br/><br/>**Udostępnione**, rabat związany z rezerwacją pamięci rdzeń wirtualny jest stosowany do wystąpień bazy danych SQL w ramach dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.<br/><br/>**Subskrypcja pojedyncza**, rabat związany z rezerwacją pamięci rdzeń wirtualny jest stosowany do wystąpienia bazy danych SQL w ramach tej subskrypcji. <br/><br/>**Pojedyncza grupa zasobów**, rabat związany z rezerwacją jest stosowany do wystąpienia bazy danych SQL w wybranej subskrypcji i wybranej grupy zasobów w ramach tej subskrypcji.|
+|Region      |Region platformy Azure, który pasuje do żadnego z bazą danych SQL zastrzeżone rezerwacji wydajności.|
+|Typ wdrożenia|Typ zasobu SQL, który chcesz kupić rezerwację dla.|
+|Warstwa wydajności|Warstwy usług dla wystąpień baz danych SQL.
+|Termin        |Jeden rok lub trzy lata.|
+|Liczba    |Liczba wystąpień, które zostały zakupione w ramach bazy danych SQL zastrzeżone rezerwacji wydajności. Ilość jest liczby uruchomionych wystąpień bazy danych SQL, które mogą uzyskać rabat rozliczeń. Na przykład jeśli używasz 10 wystąpień bazy danych SQL w regionie wschodnie stany USA, następnie należy określić ilość jako 10, aby zmaksymalizować korzyści dla wszystkich działających maszyn. |
 
-5. Przegląd koszt bazy danych SQL zastrzeżone rezerwacji pojemności **koszty** sekcji.
-6. Wybierz pozycję **Kup**.
-7. Wybierz **Wyświetl tę rezerwację** Aby wyświetlić stan zakupu.
+1. Przegląd koszt bazy danych SQL zastrzeżone rezerwacji pojemności **koszty** sekcji.
+1. Wybierz pozycję **Kup**.
+1. Wybierz **Wyświetl tę rezerwację** Aby wyświetlić stan zakupu.
 
 ## <a name="cancellations-and-exchanges"></a>Anulowanie i wymiany
 
@@ -76,6 +75,10 @@ Aby uzyskać więcej informacji na temat rezerwacji exchange lub refundacji zoba
 ## <a name="vcore-size-flexibility"></a>elastyczność rozmiaru (rdzeń wirtualny)
 
 elastyczność rozmiaru (rdzeń wirtualny) ułatwia skalowanie w górę lub w dół w ramach warstwy wydajności i region, bez utraty korzyści rezerwowanie pojemności. Wydajności bazy danych SQL zastrzeżone również zapewnia elastyczność tymczasowo przenieść gorąca bazy danych między pulami i pojedynczych baz danych w ramach normalnych operacji (w ramach tego samego regionu i wydajność warstwy) bez utraty rezerwowanie pojemności korzyści. Przechowując buforu bez zastosowanych w rezerwacji, umożliwiają wydajne zarządzanie wzrostów wydajności, nie przekraczając Twojego budżetu.
+
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -91,7 +94,3 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](../billing/billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [Rezerwacje platformy Azure w programie partnera Centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
-
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
-
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

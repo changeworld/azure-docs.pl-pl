@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: iainfou
-ms.openlocfilehash: e7f45a3a0e62b2b559002b71bd8816e050f062ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9231b3629c10043e72efad4231111e56fd54c626
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072647"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447162"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -37,8 +37,7 @@ W poniższej tabeli przedstawiono typy dostępnego magazynu i ich funkcji:
 | Przypadek użycia | Wtyczka woluminu | Odczyt/zapis raz | Wiele tylko do odczytu | Odczyt/zapis wielu | Obsługa kontenerów systemu Windows Server |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Konfiguracja udostępniona       | Azure Files   | Yes | Yes | Yes | Yes |
-| Dane ze strukturą aplikacji        | Azure Disks   | Yes | Nie  | Nie  | Yes |
-| Dane aplikacji, udziały tylko do odczytu | [Dysk (wersja zapoznawcza)][dysk] | Yes | Yes | Nie  | Nie |
+| Dane ze strukturą aplikacji        | Azure Disks   | Yes | Nie  | Nie  | Tak |
 | Dane bez określonej struktury, operacje systemu plików | [BlobFuse (wersja zapoznawcza)][blobfuse] | Yes | Yes | Yes | Nie |
 
 Dwa podstawowe typy magazynu określone woluminy w usłudze AKS są wspierane przez dyski platformy Azure lub usługi Azure Files. Aby zwiększyć bezpieczeństwo, oba typy magazynu, należy użyć szyfrowanie usługi Storage (SSE) Azure domyślnie, który szyfruje dane magazynowane. Obecnie nie można zaszyfrować dyski za pomocą usługi Azure Disk Encryption na poziomie węzłów AKS.
@@ -83,7 +82,7 @@ Oświadczenie trwały wolumin (PVC) umożliwia dynamiczne tworzenie magazynu zgo
 
 Pojęcia dotyczące dynamiczne tworzenie i korzysta z woluminów, można zobaczyć [trwałego oświadczeń woluminów][aks-concepts-storage-pvcs].
 
-Aby wyświetlić te woluminy w akcji, zobacz, jak dynamiczne tworzenie i używanie trwały wolumin z [Azure Disks] [ dynamic-disks] lub [usługi Azure Files][dynamic-files].
+Aby wyświetlić te woluminy w akcji, zobacz, jak dynamiczne tworzenie i używanie trwały wolumin z [Azure Disks][dynamic-disks] or [Azure Files][dynamic-files].
 
 W ramach definicji klasy magazynu, ustaw odpowiedni *reclaimPolicy*. Ten reclaimPolicy steruje zachowaniem bazowego zasobu usługi Azure storage, gdy Zasobnik zostanie usunięty i trwały wolumin przestaną być potrzebne. Bazowego zasobu magazynu można usunąć lub przechowywane do użytku z programem przyszłych zasobników. Można ustawić reclaimPolicy *zachować* lub *Usuń*. Zrozumienie wymagań aplikacji i zaimplementować regularnych kontroli magazynu, które są przechowywane, aby zminimalizować ilość miejsca w magazynie nie jest używany, która jest używana i rozliczane.
 
@@ -93,7 +92,7 @@ Aby uzyskać więcej informacji na temat opcji klasy magazynu, zobacz [magazynu 
 
 **Najważniejsze wskazówki** — wykonywanie kopii zapasowych danych przy użyciu odpowiedniego narzędzia dla danego typu magazynu, takich jak Velero lub usługi Azure Site Recovery. Sprawdź integralność i bezpieczeństwo tych kopii zapasowych.
 
-Gdy Twoje aplikacje przechowują i zużywać dane utrwalone na dyskach lub w plikach, należy wykonać, regularnie Twórz kopie zapasowe lub migawki danych. Dyski platformy Azure można użyć technologii wbudowanych migawek. Może być konieczne podłączania do aplikacji, aby opróżnić zapisuje na dysku przed wykonaniem operacji migawki. [Velero] [ velero] można utworzyć kopię zapasową woluminów stałych wraz z konfiguracjami oraz zasobów klastra dodatkowe. Jeśli z jakiegoś powodu [usunięcie stanu z poziomu aplikacji][remove-state], wykonaj kopię zapasową danych z woluminów trwałe i regularnie Testuj operacje przywracania, aby sprawdzić integralność danych i procesów wymaganych.
+Gdy Twoje aplikacje przechowują i zużywać dane utrwalone na dyskach lub w plikach, należy wykonać, regularnie Twórz kopie zapasowe lub migawki danych. Dyski platformy Azure można użyć technologii wbudowanych migawek. Może być konieczne podłączania do aplikacji, aby opróżnić zapisuje na dysku przed wykonaniem operacji migawki. [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state], wykonaj kopię zapasową danych z woluminów trwałe i regularnie Testuj operacje przywracania, aby sprawdzić integralność danych i procesów wymaganych.
 
 Omówienie ograniczeń różne podejścia do tworzenia kopii zapasowych danych i jeśli musisz przełączyć w stan spoczynku dane przed migawki. Kopie zapasowe danych nie zawsze pozwalają na przywrócenie środowiska aplikacji, wdrażania klastra. Aby uzyskać więcej informacji na temat tych scenariuszy, zobacz [najlepszych rozwiązań biznesowych ciągłość działalności biznesowej i odzyskiwanie po awarii w usłudze AKS][best-practices-multi-region].
 
@@ -103,7 +102,6 @@ Ten artykuł koncentruje się na magazyn najlepsze rozwiązania w usłudze AKS. 
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero
-[dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 
 <!-- LINKS - Internal -->

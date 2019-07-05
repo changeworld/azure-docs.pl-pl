@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e4de5bbc56f95c0e903b1dac4e8481373716f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0067bd6dc2f47c5460220295d486910d9195782d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143497"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476265"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>Tworzenie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM
 
@@ -44,7 +44,7 @@ W tym artykule opisano sposób tworzenia co najmniej jeden przeglądów dostępu
 
 1. W obszarze Zarządzanie, kliknij przycisk **przeglądów dostępu**.
 
-    ![Przeglądy dostępu do zasobów platformy Azure —](./media/pim-resource-roles-start-access-review/access-reviews.png)
+    ![Zasoby platformy Azure — lista przedstawiająca stan wszystkie przeglądy przeglądy dostępu](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
@@ -54,7 +54,7 @@ W tym artykule opisano sposób tworzenia co najmniej jeden przeglądów dostępu
 
 Po określeniu ustawienia przeglądu dostępu, kliknij przycisk **Start**. Przegląd dostępu będą wyświetlane na liście ze wskaźnikiem jego stan.
 
-![Lista przeglądów dostępu](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
+![Lista przedstawiająca stan przeglądu wprowadzenie przeglądy dostępu](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
 Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce, po uruchomieniu przeglądu. Jeśli użytkownik chce nie ma wysyłać wiadomości e-mail z usługi Azure AD, pamiętaj poinformować osób dokonujących przeglądu, które przeglądu dostępu oczekuje na ich zakończenie. Można pokazać im instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników do ról zasobów platformy Azure](pim-resource-roles-perform-access-review.md).
 
@@ -62,7 +62,7 @@ Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce
 
 Recenzenci Wypełnij przeglądów ich na postęp można śledzić **Przegląd** strony Przegląd dostępu. Nie prawa dostępu zostaną zmienione w katalogu, dopóki [zakończeniu przeglądu](pim-resource-roles-complete-access-review.md).
 
-![Przeglądy dostępu w toku](./media/pim-resource-roles-start-access-review/access-review-overview.png)
+![Przeglądy dostępu dotyczące dostępu — omówienie strona, wyświetlająca szczegóły przeglądu](./media/pim-resource-roles-start-access-review/access-review-overview.png)
 
 Jeśli jest to jednorazowa przeglądu, następnie po umieszczeniu okres przeglądu dostępu lub administrator zatrzymania przeglądu dostępu postępuj zgodnie z instrukcjami w [Kończenie przeglądu dostępu dla ról zasobów platformy Azure](pim-resource-roles-complete-access-review.md) aby zobaczyć i zastosować wyniki.  
 

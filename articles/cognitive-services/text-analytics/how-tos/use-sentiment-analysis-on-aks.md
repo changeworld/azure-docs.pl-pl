@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 4d5e1da01be531550915a38bed17dd8e57be907a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a419ed3b9c0d2c4db9c552642dc5c662786f6730
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454951"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561251"
 ---
 # <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-services-aks"></a>Wdrażanie kontenera analizę tonacji do usługi Azure Kubernetes (AKS)
 
@@ -69,7 +69,7 @@ Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamian
     code .
     ```
 
-1. W edytorze tekstów Utwórz nowy plik o nazwie _sentiment.yaml_ i Wklej poniższego kodu YAML:
+1. W edytorze tekstów Utwórz nowy plik o nazwie _sentiment.yaml_ i Wklej poniższego kodu YAML. Koniecznie Zastąp `billing/value` i `apikey/value` swoją własną.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -91,9 +91,9 @@ Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamian
             - name: EULA
               value: "accept"
             - name: billing
-              value: "https://westus2.api.cognitive.microsoft.com/"
+              value: # < Your endpoint >
             - name: apikey
-              value: "16c12e3419f54ba49a3222177cef781d"
+              value: # < Your API Key >
      
     --- 
     apiVersion: v1
@@ -115,7 +115,7 @@ Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamian
     kuberctl apply -f sentiment.yaml
     ```
 
-    Polecenie została zastosowana pomyślnie konfiguracji wdrożenia, komunikat podobny do następującego po danych wyjściowych:
+    Po poleceniu została pomyślnie zastosowana Konfiguracja wdrożenia komunikatu podobnego do następujących danych wyjściowych:
 
     ```
     deployment.apps "sentiment" created

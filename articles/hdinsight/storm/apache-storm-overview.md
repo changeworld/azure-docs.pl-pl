@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd377d731b9e916414c7d1a568c7267e73d6bf33
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 00c536120ed9507d5ecc6fe930429d12514945b3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137233"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483817"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co to jest Apache Storm w usłudze Azure HDInsight?
 
@@ -44,7 +44,7 @@ System Storm w usłudze HDInsight oferuje następujące funkcje:
 
 Lista firm, które używają systemu Apache Storm w rozwiązaniach analitycznych działających w czasie rzeczywistym, jest dostępna na stronie [Companies Using Apache Storm](https://storm.apache.org/documentation/Powered-By.html) (Firmy korzystające z systemu Apache Storm).
 
-Aby rozpocząć korzystanie z systemu Storm, zobacz [Rozpoczynanie pracy z usługą Apache Storm w HDInsight](apache-storm-tutorial-get-started-linux.md).
+Aby rozpocząć korzystanie z systemu Storm, zobacz [tworzenie i monitorowanie topologii Apache Storm w usłudze Azure HDInsight](apache-storm-quickstart.md).
 
 ## <a name="how-does-apache-storm-work"></a>Jak działa systemu Apache Storm
 
@@ -68,7 +68,7 @@ W domyślnej konfiguracji klastrów Apache Storm występuje tylko jeden węzeł 
 
 ## <a name="ease-of-creation"></a>Łatwość tworzenia
 
-Nowy klaster Storm można utworzyć w usłudze HDInsight w ciągu kilku minut. Aby uzyskać więcej informacji na temat tworzenia klastra Storm, zobacz [Wprowadzenie do usługi Storm w usłudze HDInsight](apache-storm-tutorial-get-started-linux.md).
+Nowy klaster Storm można utworzyć w usłudze HDInsight w ciągu kilku minut. Aby uzyskać więcej informacji na temat tworzenia klastra Storm, zobacz [tworzenie technologii Apache Hadoop clusters, przy użyciu witryny Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="ease-of-use"></a>Łatwość obsługi
 
@@ -176,5 +176,5 @@ Przykładową topologię pokazującą metodę konfigurowania logowania można zn
 
 Dowiedz się więcej na temat rozwiązań analitycznych w czasie rzeczywistym przy użyciu platformy Apache Storm w HDInsight:
 
-* [Rozpoczynanie pracy z usługą Apache Storm w HDInsight](apache-storm-tutorial-get-started-linux.md)
+* [Tworzenie i monitorowanie topologii Apache Storm w usłudze Azure HDInsight](apache-storm-quickstart.md)
 * [Przykładowe topologie dla systemu Apache Storm w usłudze HDInsight](apache-storm-example-topology.md)

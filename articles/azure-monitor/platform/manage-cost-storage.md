@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 3cad3722a9d0a52b1a0e66c760e948ceb3c1671c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7fa59f4086608a8bacabde21f0c02c108f1f5e8
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061040"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466725"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użycia i kosztów za pomocą usługi Azure Monitor dzienników
 
@@ -105,10 +105,12 @@ Poniżej opisano sposób konfigurowania dziennika jak długo dane są przechowyw
 3. W okienku, przesuń suwak, aby zwiększyć lub zmniejszyć liczbę dni, a następnie kliknij przycisk **OK**.  Jeśli użytkownik pracuje na *bezpłatne* warstwy, nie można zmodyfikować okres przechowywania danych i należy uaktualnić do warstwy płatnej w celu kontrolowania tego ustawienia.
 
     ![Zmiana ustawienia przechowywania danych w obszarze roboczym](media/manage-cost-storage/manage-cost-change-retention-01.png)
+    
+Okres przechowywania może być również [ustawione za pośrednictwem ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu `dataRetention` parametru. Ponadto, jeśli okres przechowywania danych jest ustawiona na 30 dni, możesz wyzwolić natychmiastowe usuwanie starszych danych przy użyciu `immediatePurgeDataOn30Days` parametr, który może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja jest dostępne tylko za pośrednictwem ARM. 
 
 ## <a name="legacy-pricing-tiers"></a>Starsza wersja warstw cenowych
 
-Subskrypcje, które zawiera obszar roboczy usługi Log Analytics lub zasób usługi Application Insights przed 2 kwietnia 2018 r., w lub są połączone z umową Enterprise Agreement, który uruchamiany przed 1 lutego 2019 roku będą w dalszym ciągu ma dostęp do starszych warstw cenowych: **Bezpłatne**, **autonomiczna (za GB)** i **na węzeł (OMS)** .  Obszary robocze w warstwie cenowej bezpłatna będą mieć dziennie pozyskiwanie informacji dane ograniczona do 500 MB (z wyjątkiem bezpieczeństwa typów danych zbieranych przez usługę Azure Security Center) i przechowywanie danych jest ograniczony do 7 dni. Warstwy cenowej bezpłatna jest przeznaczona tylko do celów oceny. Obszary robocze w autonomicznych lub warstwami cenowymi węzłów na mają przechowywania maksymalnie 2 lat w konfigurowanych przez użytkownika. 
+Subskrypcje, które zawiera obszar roboczy usługi Log Analytics lub zasób usługi Application Insights przed 2 kwietnia 2018 r., w lub są połączone z umową Enterprise Agreement, który uruchamiany przed 1 lutego 2019 roku będą w dalszym ciągu ma dostęp do starszych warstw cenowych: **Bezpłatne**, **autonomiczna (za GB)** i **na węzeł (OMS)** .  Obszary robocze w warstwie cenowej bezpłatna będą mieć dziennie pozyskiwanie informacji dane ograniczona do 500 MB (z wyjątkiem bezpieczeństwa typów danych zbieranych przez usługę Azure Security Center) i przechowywanie danych jest ograniczony do 7 dni. Warstwy cenowej bezpłatna jest przeznaczona tylko do celów oceny. Obszary robocze w autonomicznych lub warstwami cenowymi węzłów na mają przechowywania maksymalnie 2 lat w konfigurowanych przez użytkownika. Obszary robocze utworzone przed kwietnia 2016 r. również mieć dostęp oryginalny **standardowa** i **Premium** warstw cenowych. Dostępne są szczegółowe informacje o cenach ograniczenia warstwy [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 > [!NOTE]
 > Aby używać uprawnień wynikających z zakupu pakietu OMS E1 zestawu, pakiet E2 OMS lub dodatku pakietu OMS dla programu System Center, wybierz usługi Log Analytics *na węzeł* warstwy cenowej.
@@ -126,11 +128,7 @@ Jeśli obszar roboczy usługi Log Analytics ma dostęp do starszych warstw cenow
 3. W obszarze **warstwa cenowa**, wybierz warstwę cenową, a następnie kliknij przycisk **wybierz**.  
     ![Wybrany plan taryfowy](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-Jeśli chcesz przenieść obszar roboczy do bieżąca warstwa cenowa, należy zmienić swoją subskrypcję monitorowania [modelu cen w usłudze Azure Monitor](usage-estimated-costs.md#moving-to-the-new-pricing-model) która spowoduje zmianę warstwy cenowej wszystkich obszarów roboczych w tej subskrypcji.
-
-> [!NOTE]
-> Dowiedz się więcej na temat ustawiania warstwy cenowej podczas [przy użyciu szablonu usługi Azure Resource Manager](template-workspace-configuration.md#create-a-log-analytics-workspace) do utworzenia obszaru roboczego i upewnij się, że niezależnie od tego, czy powiedzie wdrożenia szablonu usługi Azure Resource Manager Subskrypcja jest w starszej wersji lub nowy model cen. 
-
+Możesz również [ustawienie warstwy cenowej za pośrednictwem ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu `ServiceTier` parametru. 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Rozwiązywanie problemów związanych z usługi Log Analytics nie jest już jest zbieranie danych
 

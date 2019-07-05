@@ -3,16 +3,16 @@ title: Konfiguracja urządzenia najlepsze rozwiązania dotyczące usługi Azure 
 description: Poznaj najlepsze rozwiązania dotyczące konfigurowania urządzeń IoT na dużą skalę
 author: chrisgre
 ms.author: chrisgre
-ms.date: 06/24/2018
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: c97395981ea3af90c7b0c590cb049fccc7392304
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33e77d63b958df292ee9b4ac8ded41f3693cb6bc
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734834"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485811"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Najlepsze rozwiązania dotyczące konfiguracji urządzenia w ramach rozwiązania IoT
 
@@ -64,9 +64,11 @@ Poniżej przedstawiono najlepsze rozwiązania dla deweloperów IoT, którzy twor
 
 * **Organizowanie urządzeń za pomocą tagów bliźniaczych reprezentacji urządzeń:** Rozwiązanie powinno umożliwić operatora do definiowania pierścieni jakości lub inne zestawy urządzeń, w oparciu o różne strategie wdrażania, takie jak canary. Urządzenie organizacji można zaimplementować w ramach rozwiązania przy użyciu tagów bliźniaczych reprezentacji urządzeń i [zapytania](iot-hub-devguide-query-language.md). Organizacja urządzenia jest niezbędne w celu umożliwienia dla szczegółowymi informacjami dotyczącymi konfiguracji procesu, bezpieczne i dokładnie.
 
-* **Implementowanie [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md):** Konfiguracje urządzeń automatycznego wdrażania i konfiguracji monitora zmieni się na potrzeby dużych zestawów urządzeń IoT za pomocą bliźniaczych reprezentacji urządzeń. Konfiguracji automatycznego urządzeń docelowych zestawy bliźniacze reprezentacje urządzeń za pośrednictwem **warunek docelowy** która jest zapytaniem na urządzeniu tagów bliźniaczych reprezentacji lub zgłoszonych właściwości. **Dopasowywanie zawartości** ustawiono żądane właściwości ustawione w ciągu docelowym bliźniaczych reprezentacji urządzeń. Adresuj zawartość należy wyrównać ze strukturą bliźniaczej reprezentacji urządzenia, zdefiniowanych przez producenta sprzętu IoT/integrator.
+* **Implementowanie [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md):** Konfiguracje urządzeń automatycznego wdrażania i konfiguracji monitora zmieni się na potrzeby dużych zestawów urządzeń IoT za pomocą bliźniaczych reprezentacji urządzeń.
 
-   **Metryki** są zapytań dotyczących bliźniaczej reprezentacji urządzenia zgłaszanych właściwości, a także należy wyrównać ze strukturą bliźniaczej reprezentacji urządzenia, zdefiniowanych przez producenta sprzętu IoT/integrator. Konfiguracje urządzenia automatycznego mają również korzyści z usługi IoT Hub, wykonywanie operacji bliźniaczej reprezentacji urządzenia z szybkością, który nigdy nie przekroczy [limity ograniczania przepływności](iot-hub-devguide-quotas-throttling.md) odczytów bliźniaczej reprezentacji urządzenia i aktualizacji.
+   Konfiguracji automatycznego urządzeń docelowych zestawy bliźniacze reprezentacje urządzeń za pośrednictwem **warunek docelowy** która jest zapytaniem na urządzeniu tagów bliźniaczych reprezentacji lub zgłoszonych właściwości. **Dopasowywanie zawartości** ustawiono żądane właściwości ustawione w ciągu docelowym bliźniaczych reprezentacji urządzeń. Adresuj zawartość należy wyrównać ze strukturą bliźniaczej reprezentacji urządzenia, zdefiniowanych przez producenta sprzętu IoT/integrator. **Metryki** zapytań dotyczących bliźniaczej reprezentacji urządzenia zgłaszanych właściwości i również należy wyrównać ze strukturą bliźniaczej reprezentacji urządzenia, zdefiniowanych przez producenta sprzętu IoT/integrator.
+
+   Konfiguracje urządzeń automatycznego uruchamiania po raz pierwszy wkrótce, po utworzeniu konfiguracji, a następnie co pięć minut. Mogą również korzystać z usługi IoT Hub, wykonywanie operacji bliźniaczej reprezentacji urządzenia z szybkością, który nigdy nie przekroczy [limity ograniczania przepływności](iot-hub-devguide-quotas-throttling.md) odczytów bliźniaczej reprezentacji urządzenia i aktualizacji.
 
 * **Użyj [usługi Device Provisioning](../iot-dps/how-to-manage-enrollments.md):** Deweloperzy rozwiązań należy używać usługi Device Provisioning przypisywanie tagów bliźniaczych reprezentacji urządzeń do nowych urządzeń, taki sposób, że zostaną one automatycznie skonfigurowane przez **konfiguracji urządzeń automatycznego** , są przeznaczone dla bliźniaczych elementów z tym tagiem. 
 

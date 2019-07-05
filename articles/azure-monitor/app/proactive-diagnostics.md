@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: edbd7000001ae6927078e2f1bb9e348cc78f9efa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ee2dea364253d871d5624242d15d8a81ab6f08f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61299672"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465895"
 ---
 # <a name="smart-detection-in-application-insights"></a>Wykrywanie inteligentne w usłudze Application Insights
- Wykrywanie inteligentne automatycznie ostrzega o potencjalnych problemów z wydajnością w aplikacji sieci web. Wykonuje aktywnego analizy telemetrii, że aplikacja wysyła do [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Jeśli istnieje nagły wzrost częstotliwości awarii lub nietypowe wzorce wydajności klienta lub serwera, zostanie wyświetlony alert. Ta funkcja wymaga żadna konfiguracja. Działa on tak, jeśli aplikacja wysyła taką ilość telemetrii.
+ Wykrywanie inteligentne automatycznie ostrzega o potencjalnych problemów z wydajnością i anomalie w aplikacji sieci web. Wykonuje aktywnego analizy telemetrii, że aplikacja wysyła do [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Jeśli istnieje nagły wzrost częstotliwości awarii lub nietypowe wzorce wydajności klienta lub serwera, zostanie wyświetlony alert. Ta funkcja wymaga żadna konfiguracja. Działa on tak, jeśli aplikacja wysyła taką ilość telemetrii.
 
-Alerty wykrywania inteligentnego dostęp zarówno z wiadomości e-mail, które otrzymujesz, jak i w bloku wykrywania inteligentnego.
+Można uzyskać dostęp do wykrywania wystawiony przez wykrywania inteligentnego, zarówno z wiadomości e-mail, które otrzymujesz, jak i w bloku wykrywania inteligentnego.
 
 ## <a name="review-your-smart-detections"></a>Zapoznaj się z rozwiązaniami do wykrywania inteligentnego
 Możesz odkryć wykrywania na dwa sposoby:
@@ -32,24 +32,24 @@ Możesz odkryć wykrywania na dwa sposoby:
     ![Alert e-mail](./media/proactive-diagnostics/03.png)
   
     Kliknij przycisk duże, aby otworzyć bardziej szczegółowo w portalu.
-* **Na kafelku wykrywania inteligentnego** w Twojej aplikacji — omówienie blok liczbę ostatnich alertów. Kliknij Kafelek, aby wyświetlić listę ostatnich alertów.
+* **W bloku wykrywania inteligentnego** w usłudze Application Insights. Wybierz **wykrywania inteligentnego** w obszarze **zbadaj** menu, aby wyświetlić listę zagrożeń wykrywanych przez ostatnie.
 
 ![Wyświetl ostatnie wykrywania](./media/proactive-diagnostics/04.png)
 
-Wybierz alert, aby wyświetlić jego szczegóły.
+Wybierz opcję wykrywania, aby wyświetlić jego szczegóły.
 
 ## <a name="what-problems-are-detected"></a>Jakie problemy są wykrywane?
-Istnieją trzy rodzaje wykrywania:
+Wykrywanie inteligentne wykrywa i powiadamia o różnych problemów, takich jak:
 
 * [Wykrywanie inteligentne — anomalie](../../azure-monitor/app/proactive-failure-diagnostics.md). Firma Microsoft korzysta z uczenia maszynowego można ustawić oczekiwana liczba nieudanych żądań dla aplikacji, korelacji z obciążeniem i innych czynników. Współczynnik błędów przekroczy oczekiwanego koperty, wysyłamy alertu.
 * [Inteligentne wykrywanie - anomalie wydajność](../../azure-monitor/app/proactive-performance-diagnostics.md). Otrzymuj powiadomienia, jeśli czas reakcji operacji lub zależności czasu trwania spowalnia w porównaniu do historycznych linii bazowych lub nazywamy nietypowego wzorca w czasie odpowiedzi lub czas ładowania strony.   
-* [Inteligentne wykrywanie — problemy z usługą w chmurze Azure](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Możesz otrzymywać alerty, jeśli aplikacja jest hostowana w usłudze Azure Cloud Services i wystąpienia roli wystąpiły błędy podczas uruchamiania, częste odtwarzanie lub awarie środowiska uruchomieniowego.
+* Ogólne spadku wydajności i zagadnienia, takie jak [śledzenia znacznemu obniżeniu](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [przeciek pamięci](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [nieprawidłowa wzrost ilości wyjątków](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) i [zabezpieczeń niezalecane wzorce dotyczące](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
 
 (Każde powiadomienie łącza pomocy prowadzą do odpowiednich artykułów.)
 
 ## <a name="smart-detection-email-notifications"></a>Powiadomienia e-mail w usłudze inteligentnego wykrywania
 
-Wszystkie reguły wykrywania inteligentnego, z wyjątkiem zasady oznaczone jako wersji zapoznawczej, są skonfigurowane domyślnie do wysyłania powiadomień e-mail, gdy zostaną odnalezione wykrywania.
+Wszystkie reguły wykrywania inteligentnego, z wyjątkiem zasady oznaczone jako _Podgląd_, są skonfigurowane domyślnie do wysyłania powiadomień e-mail, gdy zostaną odnalezione wykrywania.
 
 Konfigurowanie powiadomień e-mail o określonej reguły wykrywania inteligentnego może odbywać się przez otwarcie wykrywania inteligentnego **ustawienia** bloku i wybierając pozycję reguły, co spowoduje otwarcie **edycji reguły** bloku.
 

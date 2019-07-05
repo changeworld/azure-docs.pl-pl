@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5fbd64d2f001a0fbe91de2d954889816a1819479
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339447"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477878"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Utwórz host bastionu Azure (wersja zapoznawcza)
 
@@ -33,15 +33,11 @@ Publiczna wersja zapoznawcza jest ograniczone do następujących publicznych reg
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-Aby uczestniczyć w tej wersji zapoznawczej, musisz zarejestrować. Aby zarejestrować się w wersji zapoznawczej, wykonaj następujące kroki:
-
-[!INCLUDE [register](../../includes/bastion-preview-register-include.md)]
-
 ## <a name="createhost"></a>Utwórz host bastionu
 
 Ten rozdział pomaga utworzyć nowy zasób bastionu platformy Azure w witrynie Azure portal.
 
-1. Ze strony głównej w [ portal Azure — wersja zapoznawcza](https://aka.ms/BastionHost), kliknij przycisk **+ Utwórz zasób**. Upewnij się, że używasz podany link, aby uzyskać dostęp do portalu dla tej wersji zapoznawczej, a nie regularne witryny Azure portal.
+1. Na stronie głównej w [portal Azure — wersja zapoznawcza bastionu](https://aka.ms/BastionHost), kliknij przycisk **+ Utwórz zasób**. Upewnij się, że używasz podany link, aby uzyskać dostęp do portalu dla tej wersji zapoznawczej, a nie regularne witryny Azure portal.
 
 1. Na **nowy** stronie *Przeszukaj witrynę Marketplace* wpisz **bastionu**, następnie kliknij przycisk **Enter** Aby przejść do wyników wyszukiwania.
 
@@ -72,7 +68,7 @@ Ten rozdział pomaga utworzyć nowy zasób bastionu platformy Azure w witrynie A
 
 Jeśli tworzysz hostem bastionu w portalu przy użyciu istniejącej maszyny Wirtualnej, różne ustawienia zostaną automatycznie domyślnie odpowiadający Twojej maszyny wirtualnej i/lub sieci wirtualnej.
 
-1. W [portalu w wersji zapoznawczej](https://aka.ms/BastionHost), przejdź do maszyny wirtualnej, a następnie kliknij przycisk **Connect**.
+1. W [portal Azure — wersja zapoznawcza bastionu](https://aka.ms/BastionHost), przejdź do maszyny wirtualnej, a następnie kliknij przycisk **Connect**.
 
     ![VM Connect](./media/bastion-create-host-portal/vmsettings.png)
 

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 06/19/2019
-ms.openlocfilehash: d15e629343e015af5f83e1d185c6a46fc48fa3c4
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/26/2019
+ms.openlocfilehash: bb38f73308fb1eb67be310120cb589cb9412e737
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275197"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461822"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias systemu DNS dla usługi Azure SQL Database
 
@@ -30,6 +30,7 @@ Najczęstsze zastosowania dla aliasu DNS obejmują następujących przypadkach:
 - Utwórz, które są łatwe do zapamiętania nazwę serwera SQL Azure.
 - Podczas początkowego tworzenia aliasu mogą odwoływać się do testu bazy danych programu SQL server. Gdy aplikacja przechodzi na żywo, można zmodyfikować alias do odwoływania się do serwera produkcyjnego. Przejście od testów do środowiska produkcyjnego nie wymaga żadnych modyfikacji konfiguracji kilku klientów łączących się z serwerem bazy danych.
 - Załóżmy, że bazy danych tylko w aplikacji zostanie przeniesiony do innego serwera bazy danych SQL. W tym miejscu możesz zmodyfikować aliasu, bez konieczności modyfikowania konfiguracji kilku klientów.
+- Podczas regionalnej awarii możesz użyć przywracania geograficznego, aby odzyskać bazę danych w regionie i inny serwer. Można zmodyfikować Twojego istniejącego aliasu, aby wskazywały nowy serwer tak, aby ponownie istniejącej aplikacji klienta można połączyć się on z. 
 
 ## <a name="domain-name-system-dns-of-the-internet"></a>System nazw domen (DNS) w Internecie
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694223"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502679"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Połącz z Identyfikatorem partnera do kont systemu Azure
 
-Jako partner możesz śledzić swoje oddziaływanie w powiadomieniach promujących zaangażowanie klientów. Możesz połączyć Twój identyfikator partnera kont, które są używane do zarządzania zasobami klienta.
+Partnerzy firmy Microsoft zapewniają usług, które pomagają klientom osiągnąć biznesowych i zadania z produktami firmy Microsoft. Działań w imieniu klienta zarządzania, konfigurowania i obsługi usług platformy Azure, użytkowników z firm partnerskich wymaga dostępu do oprogramowania w środowisku klienta. Przy użyciu Linku administrator partnera, partnerzy można skojarzyć ich Partnerem firmy Microsoft w sieci przy użyciu poświadczeń używanych dla świadczenia usług.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -141,11 +141,11 @@ Tak. Identyfikator partnera połączonego można można zmienić, dodać ani usu
 
 **Identyfikator MPN, z którym należy użyć, jeśli Moja firma ma wiele?**
 
-Można użyć dowolnego prawidłowego Identyfikatora MPN, z wyjątkiem wirtualny organization(v-org) identyfikator MPN. Większość partnerów wybrać identyfikator MPN dla lokalizacji geograficznej, w którym opiera się klienta lub usługi są dostarczane.
+Konta lokalizacji partnera i skojarzonych identyfikatorach MPN, które powinny być używane do łączenia z identyfikatorem partnera.  Dowiedz się więcej o [konta partnera](https://docs.microsoft.com/partner-center/account-structure)
 
 **Gdzie można znaleźć ich przychód raportowanie dla połączonych Partnerem?**
 
-Możesz znaleźć ich przychód raportowanie na [Insights Mój pulpit nawigacyjny](https://partner.microsoft.com/membership/reports/myinsights). Należy wybrać łącze administrator partnera jako typ skojarzenia partnera.
+Raporty o chmurze wydajności produktu jest dostępny dla partnerów w Centrum partnerskim pod [Insights Mój pulpit nawigacyjny](https://partner.microsoft.com/membership/reports/myinsights). Należy wybrać łącze administrator partnera jako typ skojarzenia partnera.
 
 **Dlaczego nie widzę mojego klienta w raportach**
 

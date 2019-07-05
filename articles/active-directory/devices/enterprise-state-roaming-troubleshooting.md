@@ -2,29 +2,21 @@
 title: Rozwiązywanie problemów z ustawieniami Roaming stanu dla przedsiębiorstw w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Zawiera odpowiedzi na pytania administratorów IT może być o ustawieniach i synchronizowanie danych aplikacji.
 services: active-directory
-keywords: Enterprise stan ustawień mobilnego dostępu systemu windows w chmurze, często zadawane pytania dotyczące roaming stanu dla przedsiębiorstw
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: ''
-ms.subservice: devices
-ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
 ms.reviewer: tanning
-ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b74be0dda8e5c79987479393ad0d8ef5c3bdd16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cceae17b06e8b631dd530b0408008a8222bccbf
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110664"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481849"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Rozwiązywanie problemów z ustawieniami Roaming stanu dla przedsiębiorstw w usłudze Azure Active Directory
 
@@ -70,12 +62,11 @@ W tej sekcji przedstawiono sugestie dotyczące rozwiązywania problemów i diagn
 
 Roaming stanu dla przedsiębiorstw wymaga urządzenia do zarejestrowania w usłudze Azure AD. Chociaż nie odnoszą się do Roaming stanu dla przedsiębiorstw, postępując zgodnie z instrukcjami poniżej mogą pomóc potwierdzić, że klient dla systemu Windows 10 jest zarejestrowany i upewnij się, stan NGC odcisku palca, adres URL ustawień usługi Azure AD oraz inne informacje.
 
-1.  Otwórz wiersz polecenia podnoszenia. Aby to zrobić w Windows, Otwórz okno dialogowe Uruchamianie Uruchom (Win + R), a następnie wpisz "cmd" Aby otworzyć.
-2.  Po otwarciu w wierszu polecenia wpisz "*status dsregcmd.exe*".
-3.  Oczekiwane dane wyjściowe, aby uzyskać **AzureAdJoined** pola. wartość powinna być "YES" **WamDefaultSet** pola. wartość powinna być "YES" i **WamDefaultGUID** wartości pola powinny być identyfikatorem GUID za pomocą "(AzureAd)" na końcu.
+1. Otwórz wiersz polecenia podnoszenia. Aby to zrobić w Windows, Otwórz okno dialogowe Uruchamianie Uruchom (Win + R), a następnie wpisz "cmd" Aby otworzyć.
+1. Po otwarciu w wierszu polecenia wpisz "*status dsregcmd.exe*".
+1. Oczekiwane dane wyjściowe, aby uzyskać **AzureAdJoined** pola. wartość powinna być "YES" **WamDefaultSet** pola. wartość powinna być "YES" i **WamDefaultGUID** wartości pola powinny być identyfikatorem GUID za pomocą "(AzureAd)" na końcu.
 
 **Potencjalny problem**: **WamDefaultSet** i **AzureAdJoined** zarówno "NO" w wartości pola, urządzenie zostało zarejestrowane w usłudze Azure AD i przyłączone do domeny i nie synchronizuje urządzenia. Jeśli jest on wyświetlany, urządzenie może być konieczne poczekanie, aż zasady, które mają być stosowane lub uwierzytelniania dla tego urządzenia nie powiodła się podczas nawiązywania połączenia z usługą Azure AD. Użytkownik może być konieczne Poczekaj kilka godzin, zasad, które mają być stosowane. Pozostałe kroki rozwiązywania problemów może obejmować ponawianie próby rejestracji automatycznej przy wylogowaniu i z powrotem w lub uruchamianie zadań w harmonogramie zadań. W niektórych przypadkach uruchamianie "*dsregcmd.exe /leave*" w okno Wiersz polecenia z podwyższonym poziomem uprawnień, ponowne uruchamianie i podjęcie ponownej próby rejestracji może pomocy dotyczącej tego problemu.
-
 
 **Potencjalny problem**: Pole **SettingsUrl** jest pusta i nie synchronizuje urządzenia. Użytkownik może ostatnio zalogowali się do urządzenia przed Roaming stanu dla przedsiębiorstw została włączona w portalu Azure Active Directory. Uruchom ponownie urządzenie i mieć dane logowania użytkownika. Opcjonalnie, w portalu, spróbuj o administratora IT, przejdź do **usługi Azure Active Directory** > **urządzeń** > **Roaming stanu dla przedsiębiorstw** Wyłącz i ponownie włącz **użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach**. Po włączeniu ponownie, uruchom ponownie urządzenie i mieć dane logowania użytkownika. Jeśli to nie rozwiąże problemu, **SettingsUrl** może być pusty w przypadku certyfikatu zły urządzenia. W przypadku uruchamiania "*dsregcmd.exe /leave*" w okno Wiersz polecenia z podwyższonym poziomem uprawnień, ponowne uruchamianie i podjęcie ponownej próby rejestracji może pomocy dotyczącej tego problemu.
 

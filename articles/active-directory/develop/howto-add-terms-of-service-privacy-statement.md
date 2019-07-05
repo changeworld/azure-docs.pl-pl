@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 399f72c7819378ddc1566c2bdde94801b2c71687
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0a01b50573405964b09339d03e84c62dbdd8582
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235324"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482863"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Instrukcje: Konfigurowanie warunków użytkowania usługi i zasady zachowania poufności dla aplikacji
 
@@ -69,7 +69,7 @@ Wykonaj następujące kroki w witrynie Azure portal.
 4. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
 5. Zapisz zmiany.
 
-    ![Sekcja właściwości aplikacji z warunkami adresy URL poufności informacji usług i ochrony prywatności](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![Właściwości aplikacji zawiera warunki usług i ochrony prywatności adresów URL, instrukcja](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Za pomocą aplikacji obiektu JSON
 

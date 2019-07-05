@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dab2da2d54efe73b7b782800b190ea8aac2b5cd
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153277"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460684"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -119,7 +119,7 @@ Poświadczenia dla swoich lokalnych magazynów danych są zawsze zaszyfrowane i 
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Porty używane podczas szyfrowania połączoną usługę na własne środowisko integration runtime
-Domyślnie program PowerShell używa portu 8050 na komputerze przy użyciu własnego środowiska integration runtime na potrzeby bezpiecznej komunikacji. Jeśli to konieczne, można zmienić ten port.  
+Domyślnie program PowerShell używa portu 8060 na komputerze przy użyciu własnego środowiska integration runtime na potrzeby bezpiecznej komunikacji. Jeśli to konieczne, można zmienić ten port.  
 
 ![Port HTTPS dla bramy](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -197,7 +197,7 @@ Tak. Więcej szczegółów można znaleźć [tutaj](https://azure.microsoft.com/
 
 **Jakie są wymagania dotyczące portów dla własnego środowiska integration runtime do pracy?**
 
-Własne środowisko integration runtime sprawia, że połączeń opartych na protokole HTTP, dostęp do Internetu. Muszą być otwarte porty ruchu wychodzącego 443 do własnego środowiska integration runtime to połączenie. Otwórz port wejściowy 8050 tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło lub miejsce docelowe, należy otworzyć również port 1433. Aby uzyskać więcej informacji, zobacz [zapory, konfiguracje i listy dozwolonych adresów IP](#firewall-configurations-and-whitelisting-ip-address-of-gateway) sekcji. 
+Własne środowisko integration runtime sprawia, że połączeń opartych na protokole HTTP, dostęp do Internetu. Muszą być otwarte porty ruchu wychodzącego 443 do własnego środowiska integration runtime to połączenie. Otwórz port wejściowy 8060 tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło lub miejsce docelowe, należy otworzyć również port 1433. Aby uzyskać więcej informacji, zobacz [zapory, konfiguracje i listy dozwolonych adresów IP](#firewall-configurations-and-whitelisting-ip-address-of-gateway) sekcji. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

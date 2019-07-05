@@ -3,7 +3,7 @@ title: Zarządzanie DNS dla usług domenowych Azure AD | Dokumentacja firmy Micr
 description: Zarządzanie systemem DNS dla usługi Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.author: mstephen
-ms.openlocfilehash: 3c844b6ede63b2e036f05b5b7f6cb3803eb4b47c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 6753c26a99bb38e92613a6bad753e7dd101ba68e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245882"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473138"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Administrowanie systemem DNS w domenie zarządzanej usług domenowych Azure AD
 Usługa Azure Active Directory Domain Services zawiera serwer DNS (rozpoznawanie nazw domen), która umożliwia rozpoznawanie nazw DNS dla domeny zarządzanej. Od czasu do czasu może być konieczne skonfigurowanie DNS w domenie zarządzanej. Może być konieczne, Utwórz rekordy DNS dla maszyn, które nie są przyłączone do domeny, skonfigurować wirtualne adresy IP usługi równoważenia obciążenia lub skonfigurować zewnętrznego usług przesyłania dalej DNS. Z tego powodu użytkownicy, którzy należą do grupy "Administratorzy usługi AAD DC" otrzymują uprawnienia do administrowania DNS w domenie zarządzanej.

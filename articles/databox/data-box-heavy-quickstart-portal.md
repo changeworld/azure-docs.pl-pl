@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 930da7367b3f5d7e20617afedef007efea97c51a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66518582"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446731"
 ---
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Szybki start: Wdrażanie usługi Azure Data pole mocno przy użyciu witryny Azure portal
 
@@ -57,7 +57,7 @@ Przed rozpoczęciem upewnij się, że:
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="order"></a>Zamówienie
 
@@ -95,7 +95,7 @@ W tym kroku trwa około 10 – 15 minut.
 
 Ten krok zajmuje około 5–7 minut.
 
-1. Aby uzyskać hasło urządzenia, przejdź do pozycji **Ogólne > Szczegóły urządzenia** w witrynie [Azure Portal](http://portal.azure.com). Dla obu węzłów urządzenia używane to samo hasło.
+1. Aby uzyskać hasło urządzenia, przejdź do pozycji **Ogólne > Szczegóły urządzenia** w witrynie [Azure Portal](https://portal.azure.com). Dla obu węzłów urządzenia używane to samo hasło.
 2. Przypisz statyczny adres IP 192.168.100.5 i podsieć 255.255.255.0 do karty Ethernet na komputerze, którego używasz połączyć się z dużymi pola danych. Uzyskaj dostęp do lokalnego internetowego interfejsu użytkownika urządzenia pod adresem `https://192.168.100.10`. Nawiązywanie połączenia może potrwać do 5 minut po włączeniu urządzenia.
 3. Zaloguj się przy użyciu hasła uzyskanego z witryny Azure Portal. Zostanie wyświetlony komunikat o błędzie, informujący o problemie z certyfikatem zabezpieczeń witryny internetowej. Postępuj zgodnie z instrukcjami dotyczącymi używanej przeglądarki, aby przejść do odpowiedniej strony internetowej.
 4. Domyślnie ustawienia sieci dla interfejsów (z wyjątkiem MGMT) są skonfigurowane jako DHCP. W razie potrzeby można skonfigurować te interfejsy jako statyczny i podaj adres IP.

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 3/5/2019
+ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cafa4d5aecaa4c8f3863c3269ec02793340e3e6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "57570100"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509269"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Java (asynchroniczny) usługi Azure Cosmos DB zestawu SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -43,6 +43,16 @@ Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla in
 | **Minimalne obsługiwane środowisko uruchomieniowe**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+* TCP tryb teraz domyślnie
+* Metryki zapytania w działanie na wielu partycjach teraz zwraca wszystkie partycje
+* Globalne silnych teraz działa prawidłowo
+* Zapytania w trybie Failover nie został poprawnie ponownych prób dla wielu serwera głównego
+* Zależność nierówności dla poprawki zabezpieczeń
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* Poprawka obsługę wyznaczania wartości skrótu, wersja 2
 
 ### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
 * Poprawka dla wyciek zasobów na client#close() ([github #88](https://github.com/Azure/azure-cosmosdb-java/issues/88)).

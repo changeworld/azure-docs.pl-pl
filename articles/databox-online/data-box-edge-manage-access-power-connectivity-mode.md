@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8937f4c47f0fa84d4ec371e951cff8a2fdaa8481
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2426ecd9c480b0cc236295384ae04c60051f37ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476903"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442970"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Zarządzanie dostępem, power i tryb łączności na krawędzi sieci Azure Data Box
 
@@ -66,7 +66,7 @@ Podczas generowania klucza aktywacji urządzenia krawędź pola danych lub wykon
 -  Tworzenie udziału ze skojarzonego konta magazynu.
 -  Tworzenie użytkowników, którzy mogą uzyskiwać dostęp do udziałów na urządzeniu.
 
-Musisz mieć `User` dostępu w dzierżawie usługi Active Directory, ponieważ muszą mieć możliwość `Read all directory objects`. Nie może być użytkownikiem-gościem, ponieważ nie mają uprawnień do `Read all directory objects`. Jeśli jesteś gościa, a następnie operacje, takie jak generowanie klucza aktywacji tworzenia udziału na urządzeniu z systemem krawędź pola danych, tworzenia użytkownika wszystkie powiedzie się.
+Musisz mieć `User` dostępu w dzierżawie usługi Active Directory, ponieważ muszą mieć możliwość `Read all directory objects`. Nie może być użytkownikiem-gościem, ponieważ nie mają uprawnień do `Read all directory objects`. Jeśli jesteś gościa, a następnie operacje, takie jak Generowanie aktywacji klucza, tworzenia udziału na Twoje urządzenie brzegowe pole danych, tworzenia użytkownika, konfiguracji usługi Edge roli obliczeniowego, resetowanie hasła urządzenia wszystkie nie powiedzie.
 
 Aby uzyskać więcej informacji na temat jak zapewnić dostęp użytkowników do interfejsu API usługi Azure Active Directory Graph, zobacz [domyślne dostępu dla administratorów, użytkowników i użytkowników-gości](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 

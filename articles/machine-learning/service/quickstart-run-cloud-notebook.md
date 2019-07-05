@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: f47735a6e41ae14cb439e10803b82c0dbd3e64d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68f24d4d019af873a0ca45792a3cbcc3dd3c3c3f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67115032"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476039"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu
 
@@ -74,9 +74,12 @@ Po uruchomieniu maszyny Wirtualnej, użyj **maszyn wirtualnych z notesu** sekcji
 
 1. Na stronie internetowej notesu programu Jupyter najważniejsze nazwa_folderu jest swoją nazwę użytkownika.  Wybierz ten folder.
 
+    > [!TIP]
+    > Ten folder znajduje się na [kontenera magazynu](concept-workspace.md#resources) w obszarze roboczym, a nie w notesie samej maszyny Wirtualnej.  Możesz usunąć notesu maszyny Wirtualnej i nadal utrzymuje swoją pracę.  Podczas tworzenia nowego notesu maszyn wirtualnych później, będzie on ładować się tego samego folderu.
+
 1. Nazwa_folderu przykładów zawiera numer wersji, na przykład **1.0.33.1 przykłady**.  Wybierz folder przykładów.
 
-1. Wybierz **Szybki Start** notesu.
+1. Wybierz **Szybki Start** folderu.
 
 ## <a name="run-the-notebook"></a>Uruchamianie notesu
 
@@ -115,11 +118,11 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
 1. Kliknij przycisk **Link do witryny Azure portal** Aby wyświetlić informacje o przebiegu w obszarze roboczym.  Ten link powoduje otwarcie obszaru roboczego w witrynie Azure Portal.
 
-1. Wykresy zarejestrowanych wartości, które zobaczysz, zostały automatycznie utworzone w obszarze roboczym. Zawsze w przypadku zarejestrowania wielu wartości z tym samym parametrem nazwa wykres jest generowany automatycznie.
+1. Wykresy zarejestrowanych wartości, które zobaczysz, zostały automatycznie utworzone w obszarze roboczym. Zawsze w przypadku zarejestrowania wielu wartości z tym samym parametrem nazwa wykres jest generowany automatycznie. Oto przykład:
 
    ![Wyświetlanie historii](./media/quickstart-run-cloud-notebook/web-results.png)
 
-Kod obliczania przybliżonej liczby pi używa wartości losowych, dlatego wykresy będą przedstawiać różne wartości.  
+Ponieważ kod do pi przybliżony używa wartości losowych, Twoje wykresy mogą wyglądać inaczej.  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -154,7 +157,9 @@ W tym przewodniku Szybki Start możesz wykonać te zadania:
 * Uruchamianie notesu.
 * Wyświetl wartości błędów rejestrowane w obszarze roboczym.  W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt. 
 
-Na stronie sieci Web notesu programu Jupyter przeglądać inne notesów w folderze samples, aby dowiedzieć się więcej na temat usługi Azure Machine Learning.
+Na stronie sieci Web notesu Jupyter w **Szybki Start** folder, Otwórz i uruchom **02.deploy-web-service.ipynb** Notes, aby dowiedzieć się, jak wdrożyć usługę sieci web.
+
+Również w witrynie internetowej notesu programu Jupyter, przeglądać inne notesów w folderze samples, aby dowiedzieć się więcej na temat usługi Azure Machine Learning.
 
 Aby poznać szczegółowo środowisko przepływu pracy, wykonaj czynności opisane w samouczku dotyczącym trenowania i wdrażania modelu w usłudze Machine Learning:  
 

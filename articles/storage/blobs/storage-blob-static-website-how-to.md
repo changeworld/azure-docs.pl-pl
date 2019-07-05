@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 61477767c59dd521e3f46db4445238a5a1ea759e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ab24a99b22fae172b5308ba7477953f27ecfd44
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071437"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435951"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage
 
@@ -44,13 +44,7 @@ Aby umożliwić hostowania statycznej witryny internetowej przy użyciu [interfe
 
 1. Najpierw otwórz [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), lub jeśli [zainstalowane](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) wiersza polecenia platformy Azure lokalnie, otwórz aplikacji konsoli poleceń, takich jak Windows PowerShell.
 
-2. W oknie polecenia, która została otwarta należy zainstalować rozszerzenie wersji zapoznawczej magazynu.
-
-   ```azurecli-interactive
-   az extension add --name storage-preview
-   ```
-
-3. Jeśli Twoją tożsamość jest skojarzone z więcej niż jedną subskrypcję, wartość aktywnych subskrypcji do subskrypcji konto magazynu, który będzie hostował statycznej witryny internetowej.
+2. Jeśli Twoją tożsamość jest skojarzone z więcej niż jedną subskrypcję, wartość aktywnych subskrypcji do subskrypcji konto magazynu, który będzie hostował statycznej witryny internetowej.
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -58,7 +52,7 @@ Aby umożliwić hostowania statycznej witryny internetowej przy użyciu [interfe
 
    Zastąp `<subscription-id>` wartość symbolu zastępczego z Identyfikatorem subskrypcji.
 
-4. Włącz hostowania statycznej witryny internetowej.
+3. Włącz hostowania statycznej witryny internetowej.
 
    ```azurecli-interactive
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
@@ -70,7 +64,7 @@ Aby umożliwić hostowania statycznej witryny internetowej przy użyciu [interfe
 
    * Zastąp `<index-document-name>` zastępczego nazwa dokumentu indeksu. Ten dokument jest często "index.html".
 
-5. Przekazywanie obiektów *$web* kontenera z katalogu źródłowego.
+4. Przekazywanie obiektów *$web* kontenera z katalogu źródłowego.
 
    > [!NOTE]
    > Jeśli używasz usługi Azure Cloud Shell, upewnij się dodać `\` znak ucieczki przy odwoływaniu się do `$web` kontenera (na przykład: `\$web`). Jeśli używasz lokalnej instalacji interfejsu wiersza polecenia platformy Azure, nie być konieczne użycie znaku ucieczki.

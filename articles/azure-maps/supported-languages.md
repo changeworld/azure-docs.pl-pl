@@ -3,17 +3,17 @@ title: Obsługa lokalizacji w usługi Azure Maps | Dokumentacja firmy Microsoft
 description: Więcej informacji o językach obsługiwanych dla usług Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/25/2019
+ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: philmea
+ms.openlocfilehash: a9446301cc4bb46c989223ad020c7a8e8b353ad3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686786"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446184"
 ---
 # <a name="localization-support-in-azure-maps"></a>Obsługa lokalizacji w usługi Azure Maps
 
@@ -25,7 +25,7 @@ Usługi Azure Maps obsługuje różne języki i widoki oparte na kraj/region. Te
 Usługi Azure Maps zostały zlokalizowane w różnych językach dla usługi. W poniższej tabeli przedstawiono kody obsługiwanych języków, dla każdej usługi.  
   
 
-| ID         | Name (Nazwa)                   |  Maps | Wyszukiwanie | Routing | Zdarzenia ruchu | Kontrolki mapy Javascript | Strefa czasowa |
+| id         | Name (Nazwa)                   |  Maps | Wyszukiwanie | Routing | Zdarzenia ruchu | Kontrolki mapy Javascript | Strefa czasowa |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | Arabski                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -85,7 +85,51 @@ Usługi Azure Maps zostały zlokalizowane w różnych językach dla usługi. W p
 
 ## <a name="azure-maps-supported-views"></a>Usługi Azure Maps obsługiwane widoki
 
-Azure parametru widoku mapy (nazywane również "parametr regionu użytkownika") jest litera 2 ISO 3166 kod kraju, w które ukazują poprawne mapowań dla tego kraju/regionu, określając, który zestaw kwestie geopolityczne sporna obramowania i etykiety są wyświetlane na mapie.  Domyślnie widok parametr ma wartość **"Unified"** .  Kraje/regiony, które nie znajdują się na liście Widok jest domyślnie do widoku "Unified". Jest odpowiedzialny za określenie lokalizacji użytkowników, a następnie ustaw parametr widoku poprawnie dla tej lokalizacji. Należy użyć parametru widoku w usługi Azure Maps zgodne z obowiązującym prawem, łącznie z tymi jest udostępniana dotyczących mapowania kraju, w którym mapy, obrazy i inną zawartością danych i innych firm, która jest autoryzowany dostęp za pośrednictwem usługi Azure Maps.
+> [!Note]
+> Udostępniamy usługi Azure Maps w następujących krajach/regionach na 1 sierpnia 2019 r.:
+>  * Argentyna
+>  * Indie
+>  * Maroko
+>  * Pakistan
+>
+> Po 1 sierpnia 2019 **widoku** ustawienie parametru określi zawartości mapy zwrócony dla nowych krajach/regionach wymienionych powyżej. Firma Microsoft zachęca do upewnij się, że po skonfigurowaniu parametru widoku zgodnie z wymaganiami dla interfejsów API REST i zestawów SDK, które korzystają z usługi.
+>  
+>
+>  **Interfejsy API REST:**
+>  
+>  Upewnij się, że po skonfigurowaniu parametru widoku zgodnie z potrzebami. Wyświetl parametr określa, który zestaw kwestie geopolityczne sporne zawartości jest zwracana za pośrednictwem usługi Azure Maps. 
+>
+>  Usługi REST dotyczy usługi Azure Maps:
+>    
+>    * Pobierz Kafelek mapy
+>    * Pobierz obraz mapy 
+>    * Pobierz wyszukiwania rozmytego
+>    * Pobierz wyszukiwanie punktu orientacyjnego
+>    * Pobierz wyszukiwanie punktu orientacyjnego kategorii
+>    * Pobierz wyszukiwanie pobliskiej
+>    * Uzyskaj adres wyszukiwania
+>    * Uzyskaj adres wyszukiwania, struktura
+>    * Uzyskaj adres wyszukiwania wstecznego
+>    * Pobierz ulica między odwrotnego wyszukiwania adresu
+>    * Wyszukaj wpis wewnątrz geometrii
+>    * Wpis wyszukiwania adresów usługi Batch w wersji zapoznawczej
+>    * Opublikuj Batch odwrotnego wyszukiwania adresu — wersja zapoznawcza
+>    * Wyszukaj wpis wzdłuż trasy
+>    * Wpis wyszukiwania rozmytego Batch w wersji zapoznawczej
+>
+>    
+>  **Zestawy SDK:**
+>
+>  Upewnij się, że po skonfigurowaniu parametru widoku zgodnie z wymaganiami, a masz najnowszą wersję zestawu SDK sieci Web i zestawu SDK systemu Android. Wpływ na zestawy SDK:
+>
+>    * Zestaw SDK sieci Web usługi Azure Maps
+>    * Zestaw SDK systemu Android z usługi Azure Maps
+
+
+Usługi Azure Maps **widoku** parametru (nazywane również "parametr regionu użytkownika") jest literą dwóch jest ISO-3166 numer kierunkowy kraju pokazujące mapy poprawne dla tego kraju/regionu, określając, który zestaw kwestie geopolityczne sporna zawartości zwracany za pomocą usługi Azure Maps, w tym obramowania i etykiety wyświetlanych na mapie. 
+
+Domyślnie widok parametr ma wartość **ujednoliconej**, nawet jeśli jeszcze nie być określona w żądaniu. Jest odpowiedzialny za określenie lokalizacji użytkowników, a następnie ustaw parametr widoku poprawnie dla tej lokalizacji. Również mieć możliwość ustawienia "View = Auto", co spowoduje zwrócenie dane mapy na podstawie adresu IP żądania.  Należy użyć parametru widoku w usługi Azure Maps zgodne z obowiązującym prawem, łącznie z tymi jest udostępniana dotyczących mapowania kraju, w którym mapy, obrazy i inną zawartością danych i innych firm, która jest autoryzowany dostęp za pośrednictwem usługi Azure Maps.
+
 
 W poniższej tabeli przedstawiono obsługiwane widoki.
 
@@ -107,4 +151,5 @@ W poniższej tabeli przedstawiono obsługiwane widoki.
 | SA           | Arabia Saudyjska (arabski widok)            |   ✓   |        |     ✓          |
 | SY           | Syria (arabski widok)                   |   ✓   |        |     ✓          |
 | YE           | Jemen (arabski widok)                   |   ✓   |        |     ✓          |
+| Automatycznie         | Zwróć dane mapy na podstawie adresu IP żądania.|   ✓   |    ✓   |     ✓          |
 | Unifikacja      | Ujednolicony widok (inne)                  |   ✓   |   ✓     |     ✓          |

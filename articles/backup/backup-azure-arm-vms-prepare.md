@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
-ms.openlocfilehash: 06a7623fed0205d927fca9406469737faeda3a4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0835c3af52a16e7549698e35b3fded0f64c71dc4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076804"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447704"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
 
@@ -72,7 +72,9 @@ Ponadto istnieje kilka rzeczy, które może być konieczne w niektórych sytuacj
 ![Lista magazynów kopii zapasowych](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
 > [!NOTE]
-> Usługa Azure Backup tworzy oddzielnej grupy zasobów (innej niż grupa zasobów maszyny Wirtualnej) do przechowywania migawek z formatem nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów, które będą przechowywane przez czas trwania w dniach, jak to określono w *Zachowaj natychmiastowe odzyskiwanie migawki* części zasad kopii zapasowej maszyny wirtualnej platformy Azure.  Stosowanie blokady do tej grupy zasobów może powodować błędy kopii zapasowych.
+> Usługa Azure Backup tworzy oddzielnej grupy zasobów (innej niż grupa zasobów maszyny Wirtualnej) do przechowywania migawek z formatem nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów, które będą przechowywane przez czas trwania w dniach, jak to określono w *Zachowaj natychmiastowe odzyskiwanie migawki* części zasad kopii zapasowej maszyny wirtualnej platformy Azure.  Stosowanie blokady do tej grupy zasobów może powodować błędy kopii zapasowych.<br>
+Ta grupa zasobów również powinny być wykluczone z jakieś ograniczenia dotyczące nazw/tag, zgodnie z zasadami ograniczeń mogłyby spowodować zablokowanie tworzenia kolekcji punktów zasobów w niej ponownie, powodując błędy kopii zapasowych.
+
 
 ### <a name="modify-storage-replication"></a>Modyfikowanie replikacji magazynu
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 07/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f7bf3ce8c01e82fa69b3b041b573b4b31a719d2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356970"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514090"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -27,7 +27,13 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 
 Możesz skopiować dane z Dynamics 365 (Common Data Service) lub programu Dynamics CRM, do dowolnego obsługiwanego magazynu danych ujścia. Możesz także skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych Dynamics 365 (Common Data Service) lub programu Dynamics CRM. Aby uzyskać listę magazynów danych obsługiwanych jako źródła lub ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Ten łącznik Dynamics obsługuje następujące wersje systemu Dynamics i typy uwierzytelniania. (IFD jest mała w przypadku wdrożenia połączone z Internetem).
+Ten łącznik Dynamics obsługuje Dynamics w wersji 7.x 9.x zarówno w trybie online lub lokalnie. W szczególności
+
+- W wersji 7.x mapy do programu Dynamics CRM 2015
+- Wersja 8.x map, Dynamics CRM 2016 i wcześniejszą wersję programu Dynamics 365
+- Wersja 9.x mapuje do nowszej wersji programu Dynamics 365
+
+Zapoznaj się z poniższą tabelą na typy uwierzytelniania obsługiwane i konfiguracje dla odpowiednich Dynamics wersje produktów. (IFD jest mała w przypadku wdrożenia połączone z Internetem).
 
 | Wersje systemu Dynamics | Typy uwierzytelniania | Przykłady usługi połączonej |
 |:--- |:--- |:--- |
@@ -43,6 +49,8 @@ Dynamics 365 w szczególności następujące typy aplikacji są obsługiwane:
 - Dynamics 365 for Marketing
 
 Pozostałe typy aplikacji np. Finanse i operacje, Talent, itp., nie są obsługiwane przez ten łącznik.
+
+Ten łącznik Dynamics jest wbudowana w górnej części [narzędzi Dynamics XRM](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 >[!TIP]
 >Aby skopiować dane z **Dynamics 365 Finance and Operations**, możesz użyć [łącznika Dynamics AX](connector-dynamics-ax.md).
@@ -156,7 +164,7 @@ Aby skopiować dane z i do usługi Dynamics, należy ustawić właściwość typ
 > [!IMPORTANT]
 >- Podczas kopiowania danych z systemu Dynamics, w sekcji "strukturę" jest opcjonalne, ale zdecydowanie recommanded w zestawie danych Dynamics, aby upewnić się, wynik deterministyczne kopiowania. Definiuje typ danych kolumny danych Dynamics, który chcesz skopiować. Aby dowiedzieć się więcej, zobacz [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure-or-schema) i [mapowanie typu danych dla usługi Dynamics](#data-type-mapping-for-dynamics).
 >- Podczas importowania schematu w tworzeniu interfejsu użytkownika, ADF wnioskowanie schematu przez próbkowanie pierwszych wierszy z wyników kwerendy Dynamics zainicjować konstrukcji struktury, pominąć przypadków kolumn bez wartości. Takie samo zachowanie ma zastosowanie do skopiowania wykonania, jeśli brak definicji struktury jawnej. Możesz przejrzeć i dodać większą liczbę kolumn w Dynamics zestawu danych schematu/strukturę zgodnie z potrzebami, które będą honorowane w czasie wykonywania kopii.
->- Podczas kopiowania danych do usługi Dynamics, w sekcji "strukturę" jest opcjonalna w zestawie danych Dynamics. Kolumny do skopiowania do jest określany przez schemat danych źródłowych. Jeśli źródłem jest plik CSV, bez nagłówka w wejściowego zestawu danych, należy określić "strukturę" z typem danych kolumny. Mapują do pól w pliku CSV pojedynczo, w kolejności.
+>- Podczas kopiowania danych do usługi Dynamics, w sekcji "strukturę" jest opcjonalna w zestawie danych Dynamics. Kolumny do skopiowania do są określane przez schemat danych źródłowych. Jeśli źródłem jest plik CSV, bez nagłówka w wejściowego zestawu danych, należy określić "strukturę" z typem danych kolumny. Mapują do pól w pliku CSV pojedynczo, w kolejności.
 
 **Przykład:**
 
@@ -341,9 +349,8 @@ Skonfiguruj odpowiedni typ danych Data Factory w strukturze zestawu danych, na p
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
-
 > [!NOTE]
-> Typy danych Dynamics AttributeType.CalendarRules i AttributeType.PartyList nie są obsługiwane.
+> Typy danych Dynamics AttributeType.CalendarRules, AttributeType.MultiSelectPicklist i AttributeType.PartyList nie są obsługiwane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

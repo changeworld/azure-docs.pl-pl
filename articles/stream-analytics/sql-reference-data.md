@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics (wersja zapoznawcza)
+title: Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics
 description: W tym artykule opisano sposób użycia bazy danych SQL jako wejściowych danych referencyjnych dla zadania usługi Azure Stream Analytics, w witrynie Azure portal i w programie Visual Studio.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f0e62c27885e2f6d5097194e1b9d869e167c4a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae1954b99e268e8bc44c4ba29bbc79d7734fda6e
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304969"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461734"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics (wersja zapoznawcza)
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics
 
 Usługa Azure Stream Analytics obsługuje usługi Azure SQL Database jako źródło danych wejściowych danych referencyjnych. Bazy danych SQL można użyć jako danych referencyjnych dla zadania usługi Stream Analytics w witrynie Azure portal i w programie Visual Studio za pomocą narzędzi usługi Stream Analytics. W tym artykule przedstawiono, jak to zrobić w obu tych metod.
 

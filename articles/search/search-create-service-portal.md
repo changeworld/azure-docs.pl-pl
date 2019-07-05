@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 650dfa7284b41407e9b128a2096548d7acfc1567
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393790"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485616"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
 
@@ -94,7 +94,7 @@ Należy pamiętać o przypięciu usługi do pulpitu nawigacyjnego, aby mieć do 
 
 ## <a name="get-a-key-and-url-endpoint"></a>Pobieranie klucza i punktu końcowego adresu URL
 
-Poza pewnymi wyjątkami, używanie nowej usługi wymaga podania punktu końcowego adresu URL i klucza interfejsu API autoryzacji. Przewodniki Szybki start, samouczki, takie jak [Poznaj interfejs API REST usługi Azure Search (Postman)](search-fiddler.md) i [Jak używać usługi Azure Search z platformy .NET](search-howto-dotnet-sdk.md), przykłady i kod niestandardowy — wszystkie te zasoby wymagają punktu końcowego i klucza, aby można je było uruchomić w określonym zasobie.
+Poza pewnymi wyjątkami, używanie nowej usługi wymaga podania punktu końcowego adresu URL i klucza interfejsu API autoryzacji. Przewodniki Szybki start, samouczki, takie jak [Poznaj interfejs API REST usługi Azure Search (Postman)](search-get-started-postman.md) i [Jak używać usługi Azure Search z platformy .NET](search-howto-dotnet-sdk.md), przykłady i kod niestandardowy — wszystkie te zasoby wymagają punktu końcowego i klucza, aby można je było uruchomić w określonym zasobie.
 
 1. W prawej części strony przeglądu usługi zlokalizuj punkt końcowy adresu URL i skopiuj go.
 

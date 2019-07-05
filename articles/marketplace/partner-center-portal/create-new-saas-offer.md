@@ -6,13 +6,13 @@ manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f2787cd74525e7676befb133a6106ce83d9c2a20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072632"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514053"
 ---
 # <a name="create-a-new-saas-offer"></a>Tworzenie nowej oferty SaaS
 
@@ -42,7 +42,9 @@ Przykład: test oferty-1
 
 Wybierz pozycję **Utwórz**.  **Oferują Przegląd** strona jest tworzona dla tej oferty.  
 
-![Oferuje Omówienie Centrum partnerskiego](./media/commercial-marketplace-offer-overview.png)
+<!---
+![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
+-->
 
 ## <a name="offer-overview"></a>Przegląd oferty
 
@@ -260,11 +262,11 @@ Ręcznie dodaj adresy e-mail maksymalnie dziesięciu (10) lub dwadzieścia (20) 
 
 ## <a name="technical-configuration"></a>Pomoc konfiguracji
 
-**Konfiguracji technicznej** kartę definiuje szczegóły techniczne (Ścieżka adresu URL elementu webhook, identyfikator dzierżawy i identyfikator aplikacji) używany do łączenia z ofertą. To połączenie umożliwia nam aprowizować ofertę jako zasoby w subskrypcji platformy Azure przez klienta, jeśli zdecydują się je nabyć.
+**Konfiguracji technicznej** kartę definiuje szczegóły techniczne (Ścieżka adresu URL elementu webhook, identyfikator dzierżawy i identyfikator aplikacji) używany do łączenia z ofertą. To połączenie umożliwia nam aprowizować oferty dla klienta końcowego, jeśli zdecydują się je nabyć. Diagramy opisujące użycie pola zbierane są dostępne w dokumentacji dotyczącej [SaaS realizacji interfejsów API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
-- **Adres URL strony** (wymagane): Zdefiniuj lokacji adres URL, którego klienci będą kierowane do proponowany po nabycia oferty w portalu Marketplace. Ten adres URL będzie również punkt końcowy, który będzie otrzymywać połączenia interfejsy API w celu ułatwienia handlowych firmy Microsoft.
+- **Adres URL strony** (wymagane): Zdefiniuj adres URL witryny, które klienci nastąpi przejście po nabycia oferty w portalu Marketplace. Ten adres URL będzie punktu końcowego, który odbiera token, gdy klient jest kierowany do strony. Ten token można wymieniać aprowizacji szczegółowe instrukcje korzystania z rozwiązania w realizacji interfejsów API. Te szczegóły i inne, które są zbierane może służyć jako część klienta interakcyjne strony sieci web, wbudowane środowisko do ukończenia rejestracji i aktywacja zakup.
 
-- **Element webhook połączenia** (wymagane): Dla wszystkich zdarzeń asynchronicznych, które firma Microsoft musi wysłać użytkownikom w imieniu klienta (przykład: Subskrypcja platformy Azure stała się nieprawidłowa), wymagamy, musisz podać element webhook połączenia. Jeśli nie masz jeszcze system elementu webhook w miejscu, najprostsza konfiguracja ma mieć aplikacja logiki punktu końcowego HTTP, który będzie nasłuchiwać zdarzeń ogłaszany do niego i odpowiednio je obsłużyć (np. https:\//prod-1westus.logic.azure.com:443/work). Aby uzyskać więcej informacji, zobacz [wywołania wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP w usłudze logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Element webhook połączenia** (wymagane): Dla wszystkich zdarzeń asynchronicznych, które firma Microsoft musi wysłać użytkownikom w imieniu klienta (przykład: Subskrypcja SaaS stała się nieprawidłowa), wymagamy, musisz podać element webhook połączenia. Jeśli nie masz jeszcze system elementu webhook w miejscu, najprostsza konfiguracja ma mieć aplikacja logiki punktu końcowego HTTP, który będzie nasłuchiwać zdarzeń ogłaszany do niego i odpowiednio je obsłużyć (np. https:\//prod-1westus.logic.azure.com:443/work). Aby uzyskać więcej informacji, zobacz [wywołania wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP w usłudze logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Identyfikator dzierżawy usługi Azure AD** (wymagane): W witrynie Azure portal, możemy wymagać, aby użytkownik [Utwórz aplikację usługi Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , dzięki czemu możemy sprawdzić poprawność połączenia między naszych dwóch usług znajduje się za uwierzytelnianiu komunikacji. Aby znaleźć [identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id), przejdź do usługi Azure Active Directory i wybierz **właściwości**, poszukaj **identyfikator katalogu** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -438,7 +440,7 @@ W celu wdrożenia wersji testowej w Twoim imieniu, Utwórz i podaj osobnych, uni
 
 - **Identyfikator aplikacji w usłudze Azure AD** (wymagane): Wprowadź usługi Azure Active Directory (AD) [identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Aby znaleźć ten identyfikator, zaloguj się do [witryny Azure portal](https://portal.azure.com/), wybierz kartę usługi Active Directory w menu po lewej stronie, wybierz **rejestracje aplikacji**, poszukaj **identyfikator aplikacji** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Klucz aplikacji w usłudze Azure AD** (wymagane): Wprowadź usługi Azure Active Directory (AD) [klucz aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Aby znaleźć ten identyfikator, zaloguj się do [witryny Azure portal](https://portal.azure.com/), wybierz kartę usługi Active Directory w menu po lewej stronie, wybierz **rejestracje aplikacji** , a następnie wybierz **ustawienia**  >  **Klucze**.
+- **Klucz tajny usługi Azure AD aplikacji klienta** (wymagane): Wprowadź aplikację usługi Azure AD [klucz tajny klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Aby znaleźć tę wartość, zaloguj się do [witryny Azure portal](https://portal.azure.com/). Wybierz **usługi Azure Active Directory** kartę w menu po lewej stronie wybierz **rejestracje aplikacji**, następnie wybierz aplikację dysku testu. Następnie wybierz pozycję **certyfikaty i klucze tajne**, wybierz opcję **nowy wpis tajny klienta**, podaj opis, wybierz **nigdy** w obszarze **Expires**, następnie Wybierz **Dodaj**. Pamiętaj skopiować wartości. (Nie opuścić stronę przed można to zrobić, w przeciwnym razie nie będą mieć dostępu do wartości.)
 
 Pamiętaj, aby **Zapisz** przed przejściem do następnej sekcji!
 

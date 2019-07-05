@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: kumud
-ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734460"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491982"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 
@@ -186,7 +186,7 @@ Moduł równoważenia obciążenia jest celowo elastyczne w kontekście stref do
 
 Moduł równoważenia obciążenia pozwala w prosty sposób mieć pojedynczy adres IP jako frontend strefowo nadmiarowe. Strefowo nadmiarowe adres IP można bezpiecznie obsługiwać zasobem strefowym w każdej strefie i mogą przetrwać awarię strefy co najmniej jednego, tak długo, jak tylko jedną strefę pozostanie w dobrej kondycji w obrębie regionu. Z drugiej strony strefowych frontonu jest zmniejszenie usługi do pojedynczej strefy i udziałów LOS z odpowiedniej strefy.
 
-Nadmiarowości strefy nie sugeruje hitless ścieżki danych płaszczyzna kontroli;  jest wyraźnie płaszczyzny danych. Strefowo nadmiarowe przepływy mogą używać żadnych stref i przepływy klient użyje wszystkie strefy w dobrej kondycji w regionie. W przypadku awarii strefy nie są zagrożone widok przepływów ruchu sieciowego przy użyciu stref dobrej kondycji w danym momencie.  Widok przepływów ruchu sieciowego przy użyciu strefy w czasie awarii strefa może mieć wpływ, ale można odzyskać aplikacje i przepływy mogą nadal w pozostałych dobrej kondycji strefach w regionie od retransmisji lub reestablishment po Azure została połączona wokół błąd stref.
+Nadmiarowości strefy nie sugeruje hitless ścieżki danych płaszczyzna kontroli;  jest wyraźnie płaszczyzny danych. Strefowo nadmiarowe przepływy mogą używać żadnych stref i przepływy klient użyje wszystkie strefy w dobrej kondycji w regionie. W przypadku awarii strefy nie są zagrożone widok przepływów ruchu sieciowego przy użyciu stref dobrej kondycji w danym momencie.  Widok przepływów ruchu sieciowego przy użyciu strefy w czasie awarii strefa może mieć wpływ, ale aplikacje można odzyskać. Te przepływy mogą nadal w pozostałych dobrej kondycji strefach w regionie od retransmisji lub reestablishment, po Azure została połączona wokół błąd stref.
 
 ### <a name="xzonedesign"></a> Krzyżowe granice stref
 

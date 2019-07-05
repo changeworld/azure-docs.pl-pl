@@ -1,0 +1,34 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+author: ggailey777
+manager: jeconnoc
+ms.service: azure-functions
+ms.topic: include
+ms.date: 05/31/2019
+ms.author: glenga
+ms.custom: include file
+ms.openlocfilehash: 88a4fe8b9f0b477ed851a03742a9957c08b7cbf0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67455202"
+---
+## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
+
+Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projektu usługi Azure Functions na lokalnym komputerze deweloperskim.
+
+1. Aby przetestować funkcję, ustaw punkt przerwania w kodzie funkcji, a następnie naciśnij klawisz F5, aby uruchomić projekt aplikacji funkcji. Dane wyjściowe z pakietu Core Tools są wyświetlane na panelu **terminalu**.
+
+1. W panelu **terminalu** skopiuj punkt końcowy adresu URL funkcji wyzwalanej przez protokół HTTP. Ten adres URL zawiera klucz funkcji, który jest przekazywany do `code` parametr zapytania.
+
+    ![Lokalne dane wyjściowe platformy Azure](./media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
+
+1. Wklej adres URL żądania HTTP w pasku adresu przeglądarki. Dołącz ciąg zapytania `?name=<yourname>` do tego adresu URL i wykonaj żądanie. Wykonywanie zostanie wstrzymane po osiągnięciu punktu przerwania.
+
+1. Jeśli będziesz kontynuować wykonywanie, poniżej przedstawiono odpowiedź w przeglądarce na żądanie GET:
+
+    ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
+
+1. Aby zatrzymać debugowanie, naciśnij klawisze Shift+F5.

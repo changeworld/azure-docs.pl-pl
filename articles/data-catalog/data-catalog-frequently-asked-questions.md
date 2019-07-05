@@ -1,19 +1,17 @@
 ---
 title: Usługa Azure Data Catalog — często zadawane pytania
 description: Często zadawane pytania dotyczące usługi Azure Data Catalog, w tym możliwości zarządzania, adnotacji i odnajdowanie źródeł danych.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 6ab5c67129b16cde5ca74e72effdf56ec0a22711
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61004045"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508890"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Usługa Azure Data Catalog — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Catalog.
@@ -36,7 +34,7 @@ Data Catalog jest przeznaczona dla użytkowników Pomoc techniczna i nietechnicz
 Usługi wykaz danych jest obecnie dostępna w następujących centrach danych:
 
 * Zachodnie stany USA
-* Wschodnie stany USA
+* East US
 * Europa Zachodnia
 * Europa Północna
 * Australia Wschodnia
@@ -103,9 +101,6 @@ Zgłaszanie problemów, udostępnianie informacji i zadawaj pytania, przejdź do
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>Katalog działa z innym źródłem danych, które interesują mnie?
 Aktywnie pracujemy nad dodaniem większą liczbą źródeł danych do usługi Data Catalog. Jeśli chcesz zobaczyć określonego źródła danych obsługiwane, nim znać (lub dźwięku dział pomocy technicznej Twojej, jeśli już zostały zaproponowane), przechodząc do [wykazu danych na forum opinii platformy Azure](https://feedback.azure.com/forums/906052-data-catalog).
-
-## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Jak usługa Azure Data Catalog dotyczy wykaz danych w usłudze Power BI dla usługi Office 365?
-Usługa Azure Data Catalog można traktować jako unowocześnienia funkcji wykazu danych w usłudze Power BI. Począwszy od platformy spring 2017 usługi Azure Data Catalog umożliwia Włącz udostępnianie i odnajdywanie zapytań w programie Excel 2016 i dodatku Power Query dla programu Excel. Możliwości usługi Data Catalog w programie Excel są dostępne dla użytkowników z licencjami usługi Power BI Pro.
 
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>Jakie uprawnienia należy rejestrować zasoby z usługą Data Catalog?
 Aby uruchomić narzędzie rejestracji wykazu danych, musisz mieć uprawnienia, w źródle danych, która pozwala na odczyt metadane ze źródła. Aby dołączyć również w wersji zapoznawczej, musi mieć uprawnienia umożliwiające odczyt danych z obiektów jest zarejestrowany.

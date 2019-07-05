@@ -9,16 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2368d097cc0bfe82d0b869c3c8eb48760cc41616
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5f41263113568cf9f3771119135be8db37119181
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275111"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442940"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
 
-Usługi Azure Maps to zbiór usług geoprzestrzennych, wspierane przez zawierać najświeższe dane mapowania dostępne, zapewniając dokładne kontekstu geograficznego aplikacji sieci web i aplikacji mobilnych. Usługi Azure Maps składa się z interfejsów API REST w celu renderowania **mapy** w wielu stylów i obrazów satelitarnych **wyszukiwanie** adresy, miejsca i punktów orientacyjnych na świecie; **Routing** point-to-point, multipoint, multipoint optymalizacji, isochrone, pojazdów użytkowych, ruchu wpływ i macierz routing; wyświetlanie przepływu ruchu wiodące w branży i zdarzeń; **Mobilności** usługi żądania przesyłania publicznych, udostępnianie roweru, scooter udziału i samochodu udostępnianie informacji planowanie tras, wykorzystując alternatywne metody transportu i danych w czasie rzeczywistym; ustanowienie lokalizacji użytkownika przy użyciu **Geolokalizacja**; oraz konwertowanie lokalizacji **stref czasowych**, jak również pobieranie czasu, w lokalizacji. Dodatkowo usługi Azure Maps udostępnia usługi dla **Geofencing**, mapy **danych** magazyn — hostingu informacji o lokalizacji na platformie Azure; i **przestrzenne operacje** podanie lokalizacji analizy za pomocą analizy danych geoprzestrzennych. Usługi Azure Maps są dostępne bezpośrednio jako interfejsy API REST lub przy użyciu jednego z naszych niezawodnych zestawów **Web SDK** lub **Android SDK**. Te narzędzia umożliwiają deweloperom szybkie tworzenie i skalowanie rozwiązań integrujących informacje o lokalizacji z rozwiązaniami platformy Azure z poziomu chmury platformy Azure. Załóż bezpłatne [konto usługi Azure Maps](https://azure.microsoft.com/services/azure-maps/) już dzisiaj i rozpocznij tworzenie!
+Usługi Azure Maps to zbiór usług geoprzestrzennych, korzystających z aktualnymi danymi w celu zapewnienia dokładnego kontekstu geograficznego aplikacjom internetowym i mobilnym. Usługa Azure Maps udostępnia:
+
+* Interfejsy API REST dla map w wiele stylów i obrazów satelitarnych renderowania.
+* Wyszukuje adresy, miejsca i punktów orientacyjnych na całym świecie.
+* Routing typu punkt-punkt, multipoint, multipoint optymalizacji, isochrone, pojazdów użytkowych, ruchu wpływ i macierzy routing; Wyświetlanie przepływu ruchu i zdarzeń.
+* Usługi mobilności dla żądania przesyłania publicznych i alternatywne rodzaje transportu (np. udostępnianie roweru scooter udziału i udziału samochód) i planowanie tras w czasie rzeczywistym. 
+* Ustanowienie lokalizacji użytkownika przy użyciu geograficzną i konwertowanie lokalizacji do stref czasowych. 
+* Usługi geofencing i Mapa magazynu danych przy użyciu informacji o lokalizacji hostowanych na platformie Azure. 
+* Analizy lokalizacji za pomocą analizy danych geoprzestrzennych. 
+
+Oprócz interfejsów API REST usługi Azure Maps są dostępne za pośrednictwem zestawu SDK sieci Web lub zestawu SDK systemu Android. Te narzędzia ułatwiają deweloperom szybko opracowywać i skalowania rozwiązań integrujących informacje o lokalizacji w rozwiązaniach platformy Azure. 
+
+Możesz zarejestrować się bezpłatne [konta usługi Azure Maps](https://azure.microsoft.com/services/azure-maps/) i zacznij programować.
 
 W poniższym filmie wideo wyjaśniono dokładnie działanie usługi Azure Maps:
 
@@ -30,15 +42,15 @@ W poniższym filmie wideo wyjaśniono dokładnie działanie usługi Azure Maps:
 
 ### <a name="web-sdk"></a>Zestaw SDK sieci Web
 
-Zestaw SDK sieci Web mapy platformy Azure umożliwia dostosowanie interaktywne mapy za pomocą własnych zawartości i obrazów do wyświetlania w sieci web lub aplikacji dla urządzeń przenośnych. Kontrolka korzysta z technologii WebGL, co umożliwia renderowanie dużych zestawów danych z wysoką wydajnością. Programowanie przy użyciu zestawu SDK przy użyciu języka JavaScript lub TypeScript.
+Zestaw SDK sieci Web mapy platformy Azure umożliwia dostosowanie interaktywne mapy za pomocą własnych zawartości i obrazów do wyświetlania w sieci web lub aplikacji dla urządzeń przenośnych. Ten formant korzysta z WebGL, dzięki czemu można renderować dużych zestawów danych o wysokiej wydajności. Programowanie przy użyciu zestawu SDK przy użyciu języka JavaScript lub TypeScript.
 
-![Zestaw SDK sieci Web usługi Azure Maps](media/about-azure-maps/Introduction_WebMapControl.png)
+![Przykładowa mapa populacji zmiany](media/about-azure-maps/Introduction_WebMapControl.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
-Zestaw Azure SDK dla systemu Android mapy umożliwia tworzenie zaawansowanych mapowania mobilnych aplikacji. 
+Użyj usługi Azure Maps SDK dla systemu Android do tworzenia aplikacji mobilnych mapowania. 
 
-![Zestaw SDK systemu Android z usługi Azure Maps](media/about-azure-maps/AndroidSDK.png)
+![Przykłady mapy na urządzeniu przenośnym](media/about-azure-maps/AndroidSDK.png)
 
 ## <a name="services-in-azure-maps"></a>Usługi Azure Maps
 
@@ -46,46 +58,68 @@ Usługi Azure Maps składa się z następujących usług dziewięć zapewniając
 
 ### <a name="data-service"></a>Usługa danych
 
-Dane są imperatywne dla map, a w przybliżeniu danych klienta do usługi Azure Maps usługi spowoduje zmniejszenie opóźnień, zwiększającym produktywność i tworzenie nowych, zaawansowanych scenariuszy na światło się w swoich aplikacjach. Usługa danych umożliwia przekazywanie i do przechowywania danych geoprzestrzennych z przestrzennego operacji lub skład obrazu do zmniejszenia opóźnień, zwiększyć produktywność oraz obsługę nowych scenariuszy w aplikacjach. Aby uzyskać szczegółowe informacje w tej usłudze, odwiedź stronę [interfejsów API usługi danych](https://docs.microsoft.com/rest/api/maps/data) strony.
+Dane są technologii dla społeczności maps. Usługa danych, przekazywanie i przechowywanie danych geoprzestrzennych do użytku z przestrzennego operacji lub skład obrazu.  Przybliżeniu danych klienta do usługi Azure Maps spowoduje zmniejszenie opóźnień, zwiększyć produktywność i tworzenie nowych scenariuszy w aplikacjach. Aby uzyskać szczegółowe informacje w tej usłudze, zobacz [dokumentacji interfejsu API usługi danych](https://docs.microsoft.com/rest/api/maps/data).
 
 ### <a name="mobility-service"></a>Usługa mobilności
 
-Usługi mobilności mapy platformy Azure zapewnić analizy w czasie rzeczywistym lokalizacji w pobliżu usług przesyłania publicznego, w tym zatrzymuje, informacje dotyczące tras i szacunki czas podróży. Usługa umożliwia wyszukiwanie określonych typów obiektów, takich jak publiczny przesyłania zatrzymuje udostępnionego rowery/skutery/samochodów w całym danej lokalizacji, zwraca zbiór obiektu przesyłania przy użyciu szczegółów obiektu. Usługa umożliwia deweloperom także szczegóły wiersza przesyłania żądania obejmujące podstawowych informacji i dodatkowe informacje, takie jak Geometria linii, lista zostanie ono zatrzymane, zaplanowane i Przyjazdy przesyłania w czasie rzeczywistym i alerty usług. Użytkownicy mogą również żądać liczbę rowerów udostępnionego dostępne są pozostawiane w najbliższej dokowania, żądając dokowania informacji z stacje. Usługa mobilności ma również możliwość wyszukiwania pojazdów udziału dostępne samochód, zwraca szczegóły, takie jak przyszłych dostępności i bieżący poziom paliwa.
-Usługa mobilności Maps umożliwia planowania podróży w czasie rzeczywistym, zwracając najlepsze opcje możliwe trasy i zapewnienie różnych trybach podróży, w tym przesyłania ruchomym jazdę i publicznych dostępne w ramach Miasto (Miasto). Ponadto deweloperzy mogą przesyłania trasy podróży szczegóły żądania z dodatkowymi informacjami takich geometrii trasy i szczegółowe harmonogramy trasy podróży.
+Usługa Azure Maps mobilności umożliwia planowanie podróży w czasie rzeczywistym. Ono zwraca najlepsze opcje możliwe trasy i zapewnia różnych trybach podróży. Obszarów metro (Miasto) tych trybów mogą obejmować zalet jazdę i przesyłania publicznych. Deweloperzy mogą żądać przesyłania trasy podróży szczegóły, takie jak Geometria linii, listy zostanie ono zatrzymane, zaplanowane i przyjęcia w czasie rzeczywistym i alerty usług.
 
-Aby dowiedzieć się więcej o usłudze oraz informacje o różnych funkcjach, zobacz nasze [dokumentacji interfejsu API](https://docs.microsoft.com/rest/api/maps/mobility)
+Usługa umożliwia również wyszukiwanie określonych typów obiektów, takich jak udostępnione rowerów, skutery lub samochodów wokół lokalizacji. Użytkownicy mogą zażądać liczbę rowerów udostępnionego dostępne są pozostawiane w najbliższej dokowania. Mogą wyszukiwania dostępny udział samochodu pojazdów i szczegółowe informacje, takie jak przyszłych dostępności i bieżący poziom we wprowadzaniu.
+
+Aby dowiedzieć się więcej o usłudze, zobacz [dokumentacji interfejsu API mobilności](https://docs.microsoft.com/rest/api/maps/mobility).
 
 ### <a name="render-service"></a>Render Service
 
-Usługa Render Service umożliwia deweloperom tworzenie aplikacji internetowych i mobilnych związanych z mapowaniem. Usługa używa rastrowych obrazów graficznych o wysokiej jakości — dostępnych z 19 poziomami powiększenia — lub w pełni konfigurowalnych obrazów map w formacie wektorowym.
+Usługa Render service ułatwia deweloperom tworzenie aplikacji internetowych i mobilnych związanych z mapowaniem. Usługa używa rastrowych obrazów graficznych o wysokiej jakości — dostępnych z 19 poziomami powiększenia — lub w pełni konfigurowalnych obrazów map w formacie wektorowym.
 
-![Azure Maps Map.png](media/about-azure-maps/Introduction_Map.png)
+![Przykład mapy usługi renderowania](media/about-azure-maps/Introduction_Map.png)
 
-Usługa Render Service oferuje teraz interfejsy API w wersji zapoznawczej umożliwiające deweloperom pracę z obrazami satelitarnymi. Aby uzyskać więcej informacji, przeczytaj artykuł [Azure Maps Render APIs (Interfejsy API usługi Render w usłudze Azure Maps)](https://docs.microsoft.com/rest/api/maps/render).
+Usługa Render Service oferuje teraz interfejsy API w wersji zapoznawczej umożliwiające deweloperom pracę z obrazami satelitarnymi. Aby uzyskać więcej informacji, przeczytaj [dokumentację API renderowania](https://docs.microsoft.com/rest/api/maps/render).
 
 ### <a name="route-service"></a>Route Service
 
 Usługa Route Service zawiera niezawodne obliczenia geometryczne rzeczywistej infrastruktury oraz tras dla wielu środków transportu. Usługa pozwala deweloperom obliczać trasy dla wielu sposobów przemieszczania się, takich jak samochód osobowy, ciężarówka, rower czy wędrówka. Usługa może również brać pod uwagę dane wejściowe, takie jak warunki na drogach, ograniczenia co do masy pojazdu lub transport materiałów niebezpiecznych.
 
-![Azure Maps Route.png](media/about-azure-maps/Introduction_Route.png)
+![Przykład mapy z usługi Route service](media/about-azure-maps/Introduction_Route.png)
 
-Usługa Route Service oferuje teraz zaawansowane funkcje w wersji zapoznawczej, takie jak przetwarzanie wsadowe wielu żądań tras, macierzy czasu podróży i odległości między zestawem punktów początkowych i końcowych, a także odnajdowanie tras lub odległości, które można pokonać w określonym czasie lub z określoną ilością paliwa. Aby uzyskać szczegółowe informacje dotyczące możliwości wyznaczania trasy, przeczytaj [Azure Maps Route APIs (Interfejsy API usługi Route w usłudze Azure Maps)](https://docs.microsoft.com/rest/api/maps/route).
+Usługi Route service oferuje wersję zapoznawczą zaawansowane funkcje, takie jak: 
+
+* Przetwarzanie wsadowe wielu żądań trasy.
+* Macierze z podróży czasu i odległości między zestaw źródeł i miejsc docelowych.
+* Znajdowanie tras lub odległości, które użytkownicy mogą być przesyłane na podstawie czasu lub paliwo wymagań. 
+
+Aby uzyskać szczegółowe informacje dotyczące możliwości routingu, przeczytaj [dokumentacji interfejsu API usługi Route](https://docs.microsoft.com/rest/api/maps/route).
 
 ### <a name="search-service"></a>Search Service
 
-Usługa Search Service umożliwia deweloperom wyszukiwanie adresów, miejsc, firm według nazwy lub kategorii, a także innych informacji geograficznych. Usługa Search Service umożliwia też [odwracanie adresów geokodowania](https://en.wikipedia.org/wiki/Reverse_geocoding) i przechodzenie przez ulice na podstawie długości i szerokości geograficznej.
+Usługa wyszukiwania pomaga deweloperom wyszukiwanie adresów, miejsc, list biznesowych według nazwy lub kategorii i innych informacji geograficznych. Usługa Search service może [odwrotnego geocode](https://en.wikipedia.org/wiki/Reverse_geocoding) adresów i ulice w oparciu długości i szerokości geograficzne.
 
-![Azure Maps Search.png](media/about-azure-maps/Introduction_Search.png)
+![Przykład wyszukiwania na mapie](media/about-azure-maps/Introduction_Search.png)
 
-Usługa Search Service umożliwia również dostęp do zaawansowanych funkcji, takich jak wyszukiwanie wzdłuż trasy, wyszukiwanie w ramach większego obszaru, grupowanie żądań wyszukiwania oraz wyszukiwanie większego obszaru zamiast konkretnego punktu. Interfejsy API do wyszukiwania grupowego i wyszukiwania obszaru są obecnie dostępne w wersji zapoznawczej. Aby uzyskać szczegółowe informacje na temat możliwości wyszukiwania, przeczytaj artykuł [Azure Maps Search APIs (Interfejsy API usługi Search w usłudze Azure Maps)](https://docs.microsoft.com/rest/api/maps/search).
+Usługa Search udostępnia również zaawansowane funkcje, takie jak:
 
-### <a name="spatial-operations"></a>Operacje przestrzenne
+* Wyszukaj wzdłuż trasy.
+* Wyszukiwanie w obszarze szersze.
+* Batch grupę realizowania żądań wyszukiwania.
+* Wyszukaj większy obszar zamiast w punkcie lokalizacji. 
 
-Operacji na platformie Azure Maps przestrzenne spowoduje zająć informacji o lokalizacji i Analizuj je na bieżąco, aby ułatwić poinformowanie naszych klientów trwającą zdarzeń w czasie i spację, umożliwiając niemal w czasie rzeczywistym analiz i modelowania predykcyjnego zdarzeń. Usługa umożliwia klientom usługi Azure Maps natywnie w celu zwiększenia ich analizy lokalizacji za pomocą biblioteki typowych obliczeń matematycznych dane geograficzne, w tym usług, takich jak najbliższego punktu, najkrótszej odległości i bufory. Aby dowiedzieć się więcej o usłudze oraz informacje o różnych funkcjach, zobacz nasze [dokumentacji interfejsu API](https://docs.microsoft.com/rest/api/maps/spatial).
+Interfejsy API do wyszukiwania grupowego i wyszukiwania obszaru są obecnie dostępne w wersji zapoznawczej. Aby uzyskać szczegółowe informacje na temat możliwości wyszukiwania, przeczytaj [dokumentacji interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search).
+
+### <a name="spatial-operations-service"></a>Usługa Operations przestrzenne
+
+Usługa Azure Maps przestrzenne operacje przyjmuje informacji o lokalizacji i analizuje je na bieżąco, aby pomóc natychmiastowego informowania klientów trwającą zdarzeń w zakresie czasu i miejsca. Dzięki temu niemal w czasie rzeczywistym analiz i modelowania predykcyjnego zdarzeń. 
+
+Usługa umożliwia klientom zwiększyć ich analizy lokalizacji za pomocą biblioteki typowych obliczeń matematycznych dane geograficzne, w tym najbliższego punktu, najkrótszej odległości i buforów. Aby dowiedzieć się więcej o usłudze oraz informacje o różnych funkcjach, przeczytaj [dokumentacji przestrzenne operacje interfejsu API](https://docs.microsoft.com/rest/api/maps/spatial).
 
 ### <a name="time-zone-service"></a>Time Zone Service
 
-Usługa Time Zone Service umożliwia wysyłanie zapytań o bieżące, historyczne i przyszłe informacje o strefie czasowej przy użyciu par szerokość-długość geograficzna lub identyfikatora [IANA ID](https://www.iana.org/). Usługa Time Zone ponadto umożliwia konwertowanie identyfikatorów strefy czasowej systemu Microsoft Windows na strefy czasowe IANA, pobieranie przesunięcia strefy czasowej względem czasu UTC oraz pobieranie bieżącego czasu w odpowiedniej strefie czasowej. Typowa odpowiedź JSON na zapytanie wysyłane do usługi Time Zone Service wygląda jak w następującym przykładzie:
+Time Zone service umożliwia informacje o strefie czasowej bieżące, historyczne i przyszłe kwerendy za pomocą obu pary szerokości/długości geograficznej lub [IANA ID](https://www.iana.org/). Usługa Time Zone Ponadto umożliwia:
+
+* Konwertowanie identyfikatorów strefy czasowej Microsoft Windows na strefy czasowe IANA.
+* Pobieranie przesunięcia strefy czasowej na czas UTC.
+* Pobieranie bieżącego czasu w strefie czasowej. 
+
+Typowa odpowiedź JSON na zapytanie do Time Zone service wygląda jak w następującym przykładzie:
 
 ```JSON
 {
@@ -105,40 +139,40 @@ Usługa Time Zone Service umożliwia wysyłanie zapytań o bieżące, historyczn
 }
 ```
 
-Aby uzyskać szczegółowe informacje na temat tej usługi, odwiedź stronę [Azure Maps Timezone APIs (Interfejsy API usługi Timezone w usłudze Azure Maps)](https://docs.microsoft.com/rest/api/maps/timezone).
+Aby uzyskać szczegółowe informacje w tej usłudze, przeczytaj [dokumentacji interfejsu API w strefie czasowej](https://docs.microsoft.com/rest/api/maps/timezone).
 
 ### <a name="traffic-service"></a>Traffic Service
 
-Usługa Traffic Service to zbiór usług internetowych umożliwiających deweloperom tworzenie aplikacji internetowych i mobilnych wymagających informacji o ruchu. Usługa udostępnia dwa typy danych:
+Usługa Traffic service to zestaw usług sieci web, które deweloperzy mogą używać do tworzenia aplikacji internetowych i mobilnych wymagających informacji o ruchu. Usługa udostępnia dwa typy danych:
 
-* Traffic Flow — zarejestrowane prędkości i czasy podróży w czasie rzeczywistym dla wszystkich kluczowych dróg w sieci.
-* Zdarzenia ruchu - aktualny widok o drogach i zdarzenia dotyczące sieci dróg.
+* Przepływ ruchu: W czasie rzeczywistym obserwować prędkości i czasy podróży dla wszystkich kluczowych dróg w sieci.
+* Zdarzenia ruchu: Aktualny widok na drogach i zdarzenia dotyczące sieci dróg.
 
-![Ruch w usłudze Azure Maps](media/about-azure-maps/Introduction_Traffic.png)
+![Przykład mapy za pomocą informacji o ruchu](media/about-azure-maps/Introduction_Traffic.png)
 
-Odwiedź stronę [Azure Maps Traffic APIs (Interfejsy API usługi Traffic w usłudze Azure Maps)](https://docs.microsoft.com/rest/api/maps/traffic), aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu API ruchu](https://docs.microsoft.com/rest/api/maps/traffic).
 
-### <a name="ip-to-location"></a>IP to Location
+### <a name="ip-to-location-service"></a>Adres IP, aby usługa lokalizacji
 
-Usługa IP to Location umożliwia wyświetlenie podglądu dwuliterowego kodu kraju pobranego dla danego adresu IP. Ta usługa może ułatwić Ci dopasowanie i ulepszenie środowiska użytkownika przez dostarczanie dostosowanej zawartości w aplikacji na podstawie lokalizacji geograficznej.
+Użyj adresu IP do lokalizacji usługi, aby kod pobrany kraju dwuliterowych dla adresu IP w wersji zapoznawczej. Ta usługa może pomóc dostosować i poprawić funkcjonalność z perspektywy użytkownika, zapewniając niestandardowych aplikacji zawartości na podstawie lokalizacji geograficznej.
 
-Aby uzyskać informacje dotyczące interfejsów API REST dla usługi IP to Location, odwiedź stronę [interfejsów API geolokalizacji usługi Azure Maps](https://docs.microsoft.com/rest/api/maps/geolocation).
+Aby uzyskać szczegółowe informacje na temat interfejsów API REST dla adresu IP do lokalizacji usługi, przeczytaj [dokumentacji interfejsu API usługi Azure Maps Geolokalizacja](https://docs.microsoft.com/rest/api/maps/geolocation).
 
 ## <a name="programming-model"></a>Model programowania
 
-Usługę Azure Maps zaprojektowano pod kątem mobilności i obsługi aplikacji na wielu platformach. Korzysta ona z modelu programowania niezależnego od języka i obsługuje format danych wyjściowych JSON za pośrednictwem interfejsów [API REST](https://docs.microsoft.com/rest/api/maps/).
+Usługi Azure Maps zaprojektowano pod kątem mobilności i mogą pomóc Ci tworzyć aplikacje dla wielu platform. Używa modelu programowania, który jest niezależny od języka i obsługuje dane wyjściowe JSON za pośrednictwem [interfejsów API REST](https://docs.microsoft.com/rest/api/maps/).
 
 Ponadto usługa Azure Maps oferuje wygodną [kontrolkę mapy JavaScript](https://docs.microsoft.com/javascript/api/azure-maps-control) z prostym modelem programowania, która umożliwia szybkie i łatwe tworzenie aplikacji internetowych i mobilnych.
 
 ## <a name="usage"></a>Sposób użycia
 
-Aby uzyskać dostęp do usługi Azure Maps, wystarczy przejść do witryny [Azure Portal](https://portal.azure.com) i utworzyć konto usługi Azure Maps.
+Uzyskiwanie dostępu do usług Azure Maps jest kwestią zamierza [witryny Azure portal](https://portal.azure.com) i utworzenie konta usługi Azure Maps.
 
-Usługa Azure Maps korzysta ze schematu uwierzytelniania opartego na kluczach. Konto będzie zawierać dwa wstępnie wygenerowane klucze do użycia. Rozpocznij integrowanie tych możliwości obsługi lokalizacji w Twojej aplikacji przez użycie dowolnego z kluczy w żądaniu wysłanym do usługi Azure Maps.
+Usługa Azure Maps korzysta ze schematu uwierzytelniania opartego na kluczach. Twoje konto ma dwa klucze, które już wygenerowany dla Ciebie. Rozpocznij integrowanie tych możliwości obsługi lokalizacji w Twojej aplikacji przez użycie dowolnego z kluczy w żądaniu wysłanym do usługi Azure Maps.
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Interfejs API usługi Azure Maps jest obecnie dostępna we wszystkich krajach/regionach z wyjątkiem następujących regionów:
+Obecnie dostępne we wszystkich krajach/regionach z wyjątkiem tych są interfejsów API usługi Azure Maps:
 
 * Argentyna
 * Chiny
@@ -147,11 +181,11 @@ Interfejs API usługi Azure Maps jest obecnie dostępna we wszystkich krajach/re
 * Pakistan
 * Korea Południowa
 
-Upewnij się, że lokalizacja bieżącego adresu IP nie znajduje się w jeden z nieobsługiwanych krajów/regionów powyżej.
+Upewnij się, że lokalizacja bieżącego adresu IP nie znajduje się w jeden z nieobsługiwanych krajów/regionów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Wypróbowanie przykładowej aplikacji przedstawiającej usługi Azure Maps:
+Wypróbuj przykładową aplikację, w których usługi Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Szybki start: Tworzenie aplikacji sieci web](quick-demo-map-app.md)

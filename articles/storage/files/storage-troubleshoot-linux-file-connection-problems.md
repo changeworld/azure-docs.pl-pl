@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 16d1739e01061a90d673e4bd79bba7bfe7ec3a90
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295067"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449845"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
 
@@ -103,7 +103,7 @@ Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uc
     - Użyj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) wszelkie transferu między dwoma udziałami plików.
     - Cp przy użyciu równoległe można poprawić szybkość kopiowania, liczba wątków zależy od obciążenia i przypadek użycia. W tym przykładzie użyto sześć: `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
     - Narzędzia open source innych firm takich jak:
-        - [Równoległe GNU](http://www.gnu.org/software/parallel/).
+        - [Równoległe GNU](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) — Sortuje pliki i pakuje je w partycji.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -używa Fpart i narzędzia do kopiowania, uruchomić wiele wystąpień do migracji danych z src_dir do dst_url.
         - [Obsługa wielu](https://github.com/pkolano/mutil) -cp wielowątkowych i md5sum oparte na GNU coreutils.

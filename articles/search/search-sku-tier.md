@@ -7,31 +7,31 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 892a79f898e2448096ad4b252a18e0713bb32e52
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539287"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485307"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
-Podczas tworzenia usługi Azure Search [utworzony zasób](search-create-service-portal.md) cen warstwy lub jednostki SKU, który został rozwiązany przez okres istnienia usługi. Warstwy obejmują bezpłatna, podstawowa, standardowa i zoptymalizowane pod kątem magazynu. Standardowe i zoptymalizowane pod kątem magazynu są dostępne za pomocą kilku konfiguracji i pojemności.
+Podczas tworzenia usługi Azure Search [utworzony zasób](search-create-service-portal.md) cen warstwy (lub jednostki SKU), zostanie rozwiązany przez okres istnienia usługi. Warstwy obejmują bezpłatna, podstawowa, standardowa i zoptymalizowane pod kątem magazynu. Standardowe i zoptymalizowane pod kątem magazynu są dostępne za pomocą kilku konfiguracji i pojemności.
 
-Większość klientów uruchomić w ramach warstwy bezpłatna, dzięki czemu mogą oni korzystać z usługi. Następnie przeprowadzić uaktualnienie do jednej z warstw wyższe w przypadku wdrożeń deweloperskim i produkcyjnym. Za pomocą warstwy bezpłatnej, włącznie z tymi dla wyszukiwania kognitywnego dużej ilości zasobów, możesz wykonać wszystkie przewodników Szybki Start i samouczków.
+Większość klientów uruchomić w ramach warstwy bezpłatna, dzięki czemu mogą oni korzystać z usługi. Po wydaniu wersji ewaluacyjnej, jest często jest tworzony drugi usługi w jednym z wyższej warstwy dla programowania i produkcyjnych. Za pomocą warstwy bezpłatnej, włącznie z tymi dla wyszukiwania kognitywnego dużej ilości zasobów, możesz wykonać wszystkie przewodników Szybki Start i samouczków.
 
 > [!NOTE]
-> Microsoft obecnie udostępnia warstwy usług zoptymalizowane pod kątem magazynu w wersji zapoznawczej w obniżonej cenie do testowania i eksperymentowania, z celem zbierania opinii. Ostateczna cena usługi zostanie ogłoszony później podczas tych warstwach są ogólnie dostępne. Odradzamy korzystający z tych warstw w przypadku aplikacji produkcyjnych.
+> Począwszy od 1 lipca wszystkie warstwy są ogólnie dostępne, w tym warstwa zoptymalizowane pod kątem magazynu. Wszystkie ceny można znaleźć na [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/) strony.
 
 Warstwy odzwierciedlają właściwości sprzętu obsługującego usługi (zamiast funkcji) i są zróżnicowane według:
 
 + Liczba indeksów, które można utworzyć.
 + Rozmiar i prędkość partycji (składnik pamięci fizycznej).
 
-Mimo że wszystkie warstwy, w tym warstwy bezpłatnej, oferują zazwyczaj równoważności funkcji, większe obciążenia można dyktowanie potrzebę wyższej warstwy. Na przykład [sztucznej Inteligencji indeksowanie za pomocą usług Cognitive Services](cognitive-search-concept-intro.md) ma umiejętności długotrwałych tego limitu czasu w bezpłatnej usługi, chyba że zestaw danych jest niewielki.
+Mimo że wszystkie warstwy, w tym warstwy bezpłatnej, oferują zazwyczaj równoważności funkcji, większe obciążenia można dyktowanie potrzebę wyższej warstwy. Na przykład [wzbogacania sztucznej Inteligencji dzięki usługom Cognitive Services](cognitive-search-concept-intro.md) ma umiejętności długotrwałych tego limitu czasu w bezpłatnej usługi, chyba że zestaw danych jest niewielki.
 
 > [!NOTE] 
 > Wyjątkiem od równoważności funkcji jest [indeksatory](search-indexer-overview.md), które nie są dostępne na wysoka gęstość S3.
@@ -60,7 +60,11 @@ Poniższa tabela zawiera listę dostępnych warstw. Można znaleźć więcej inf
 
 ## <a name="how-billing-works"></a>Sposób działania rozliczeń
 
-Istnieją trzy sposoby ponosić kosztów w usłudze Azure Search i istnieją składniki, stałe i zmienne. W tej sekcji opisano trzy składniki rozliczeń: podstawowe usługi kosztów, opłaty za wyjście danych i sztucznej Inteligencji, wzbogacone indeksowanie.
+Istnieją trzy sposoby zwiększy ona kosztów w usłudze Azure Search. W tej sekcji opisano trzy składniki rozliczeń: 
+
++ koszt usługi podstawowej
++ opłaty za ruch wychodzący (lub przepustowości) danych
++ Wzbogacenia sztucznej Inteligencji
 
 ### <a name="core-service-costs-fixed-and-variable"></a>Koszty usługi podstawowej (stałe i zmienne)
 
@@ -98,9 +102,9 @@ Za pomocą [indeksatorów usługi Azure Search](search-indexer-overview.md) mog�
 
 Opłaty za dane wychodzące w przypadku usług w różnych regionach. Te opłaty nie są częścią rachunku Azure Search. Są one wymienione tu ponieważ używasz danych lub indeksatory wzbogacony sztucznej Inteligencji do pobierania danych z różnych regionów, zostanie wyświetlony kosztów zostaną uwzględnione w ogólną kwotę rachunku.
 
-### <a name="ai-enriched-indexing-with-cognitive-services"></a>AI-wzbogacone indeksowanie przy użyciu usług Cognitive Services
+### <a name="ai-enrichments-with-cognitive-services"></a>Wzbogacenia sztucznej Inteligencji dzięki usługom Cognitive Services
 
-Dla [sztucznej Inteligencji indeksowanie za pomocą usług Cognitive Services](cognitive-search-concept-intro.md), należy zaplanować dołączyć płatnych zasobów usług Azure Cognitive Services, w tym samym regionie, co usługi Azure Search w warstwie cenowej S0 przetwarzania zgodnie z rzeczywistym użyciem. Nie ma żadnych stałych kosztów, skojarzone z dołączania usług Cognitive Services. Płacisz tylko za przetwarzanie, których potrzebujesz.
+Dla [wzbogacania sztucznej Inteligencji dzięki usługom Cognitive Services](cognitive-search-concept-intro.md), należy zaplanować dołączyć płatnych zasobów usług Azure Cognitive Services, w tym samym regionie, co usługi Azure Search w warstwie cenowej S0 przetwarzania zgodnie z rzeczywistym użyciem. Nie ma żadnych stałych kosztów, skojarzone z dołączania usług Cognitive Services. Płacisz tylko za przetwarzanie, których potrzebujesz.
 
 Wyodrębniania obrazu podczas łamania dokumentów są opłaty za usługę Azure Search. Opłata jest naliczana według liczby obrazów wyodrębnione ze swoich dokumentów. Wyodrębnianie tekstu jest aktualnie wolne.
 

@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: e0379bbc7f26ea30f65c5eac73633ca0371aa283
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331306"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441743"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -423,3 +423,19 @@ Azure Dev spacje nie można utworzyć poziomu kontrolera w klastrze AKS, poniewa
 
 ### <a name="try"></a>Spróbuj
 [Zaktualizuj konfigurację zmiany barwy](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) w klastrze usługi AKS, aby upewnić się, co najmniej jeden systemu Linux umożliwia planowanie zasobników bez określania tolerations węzła. Ponadto upewnij się, że co najmniej jeden węzeł systemu Linux, która umożliwia planowanie zasobników bez określania tolerations w *gotowe* stanu. Jeśli Twój węzeł zajmuje dużo czasu, aby dotrzeć do *gotowe* stanu, możesz spróbować ponownie uruchomić węzeł.
+
+## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Błąd "Usługa Azure Dev miejsca do magazynowania nie jest poprawnie zainstalowany interfejs wiersza polecenia" podczas uruchamiania `az aks use-dev-spaces`
+
+### <a name="reason"></a>Reason
+Aktualizacja wiersza polecenia platformy Azure Dev miejsca do magazynowania, zmienić jego ścieżki instalacji. Jeśli używasz wersji wcześniejszej niż 2.0.63 Azure CLI może zostać wyświetlony ten błąd. Aby wyświetlić wersję interfejsu wiersza polecenia platformy Azure, użyj `az --version`.
+
+```bash
+$ az --version
+azure-cli                         2.0.60 *
+...
+```
+
+Pomimo komunikat o błędzie podczas uruchamiania `az aks use-dev-spaces` przy użyciu wersji interfejsu wiersza polecenia platformy Azure przed 2.0.63 Instalacja powiodła się. Będzie można kontynuować używanie `azds` bez żadnych problemów.
+
+### <a name="try"></a>Spróbuj
+Instalacja aktualizacji [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.63 lub nowszej. Ten problem rozwiąże komunikat o błędzie jest wyświetlany podczas uruchamiania `az aks use-dev-spaces`. Alternatywnie można nadal używać bieżącej wersji wiersza polecenia platformy Azure i wiersza polecenia platformy Azure Dev miejsca do magazynowania.

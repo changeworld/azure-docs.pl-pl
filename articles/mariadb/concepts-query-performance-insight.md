@@ -5,22 +5,34 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: be9d5c4745cb03d9d3eaa324b7191d82b9d4a14e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: 48ff1fdc08e0df463ec48fd1415c7b67d5beb744
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079420"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462101"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Query Performance Insight w usłudze Azure Database dla serwera MariaDB
 
 **Dotyczy:**  Azure Database dla serwera MariaDB 10.2
 
 > [!NOTE]
-> Query Performance Insight jest w wersji zapoznawczej. Obsługa Query Performance Insight w witrynie Azure portal jest wdrażana i mogą jeszcze być niedostępne w Twoim regionie.
+> Query Performance Insight jest w wersji zapoznawczej.
 
 Query Performance Insight ułatwia szybkie identyfikowanie najdłużej działających zapytań są, jak zmieniają się wraz z upływem czasu i czeka, które mają wpływ na ich.
+
+## <a name="common-scenarios"></a>Typowe scenariusze
+
+### <a name="long-running-queries"></a>Długotrwałe zapytania
+
+- Identyfikowanie najdłuższy uruchamianie zapytań w przeszłości X godzin
+- Identyfikowanie pierwszych N zapytań, które oczekują na zasoby
+ 
+### <a name="wait-statistics"></a>Statystyki oczekiwania
+
+- Omówienie charakteru oczekiwania dla zapytania
+- Zrozumienie trendów dla zasobów w tym czasie czeka i której istnieje rywalizacji o zasoby
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -36,11 +48,20 @@ W widoku [Szczegółowe informacje o wydajności zapytań](concepts-query-perfor
 
 Na stronie portalu usługi Azure Database dla serwera MariaDB, wybierz **Query Performance Insight** w obszarze **inteligentne wydajności** części paska menu.
 
-![Query Performance Insight długotrwałe zapytania](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+### <a name="long-running-queries"></a>Długotrwałe zapytania
 
  **Długotrwałych zapytań** karta przedstawia zapytania top 5, Średni czas trwania w oparciu o wykonanie, przedstawiona w oparciu o 15-minutowych interwałach. Możesz wyświetlić więcej zapytań, wybierając z **liczby zapytań** listy rozwijanej. Gdy to zrobisz, kolory wykresu dla określonego identyfikatora zapytania mogą ulec zmianie.
 
 Klikając i przeciągając na wykresie, możesz zawęzić go do konkretnego przedziału czasu. Alternatywnie użyj powiększenia in i out ikony, aby wyświetlić mniejszy lub większy okres odpowiednio.
+
+![Query Performance Insight długotrwałe zapytania](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+
+### <a name="wait-statistics"></a>Statystyki oczekiwania 
+
+> [!NOTE]
+> Statystyki oczekiwania są przeznaczony do rozwiązywania problemów z wydajnością zapytań. Zalecane jest włączone tylko na potrzeby rozwiązywania problemów.
+
+Statystyki oczekiwania zawiera widok zdarzeń oczekiwania, które występują podczas wykonywania określonej kwerendy. Dowiedz się więcej na temat typów zdarzeń oczekiwania w [dokumentację aparatu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
 
 Wybierz **statystyki oczekiwania** kartę, aby wyświetlić odpowiednie wizualizacje w tym czasie czeka na serwerze.
 

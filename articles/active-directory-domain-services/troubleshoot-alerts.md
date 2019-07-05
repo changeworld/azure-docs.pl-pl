@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Rozwiązywanie problemów z aler
 description: Rozwiązywanie problemów dotyczących alertów dla usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: ''
 editor: ''
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
-ms.author: mstephen
-ms.openlocfilehash: ed0ff8cde39f2660c2149e43399d937184620773
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 63f2e12b9b769e806f8bd052af5bc78aed6a1fe0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246707"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67472301"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services — Rozwiązywanie problemów z alertami
 Ten artykuł zawiera przewodniki dotyczące rozwiązywania problemów w ramach wszystkich alertów, które mogą występować w domenie zarządzanej.

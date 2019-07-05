@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1858b3e8d659d8810c54cab96566d03c24c92adf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 302e8edcf6cad16644a454fd9b56b42ffd1fab61
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111279"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482548"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Przykłady kodu usługi Azure Active Directory (punkt końcowy w wersji 1.0)
 
@@ -46,8 +46,8 @@ W tym przykładzie pokazano, jak napisać aplikację jednostronicowych zabezpiec
 
  Platforma | Wywołuje jej własnego interfejsu API | Wywołuje innego interfejsu API sieci Web
  -------- |  --------------------- | ------------------ 
-![JavaScript](media/sample-v2-code/logo_js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
-![Angular JS](media/sample-v2-code/logo_angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
+![Ta ilustracja przedstawia JavaScript logo](media/sample-v2-code/logo_js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+![Ta ilustracja przedstawia logo szablonów Angular JS](media/sample-v2-code/logo_angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
 ## <a name="web-applications"></a>Aplikacje sieci Web
 
@@ -57,11 +57,11 @@ Poniższe przykłady ilustrują, aplikacje sieci Web logowania użytkowników. N
 
  Platforma | Użytkownikom zalogowanie się tylko | Wywołania programu Microsoft Graph lub programu AAD Graph| Wywołuje innego ASP.NET lub ASP.NET Core 2.0 Web API
  -------- | ------------------- | --------------------- | -------------------------
-![ASP.NET](media/sample-v2-code/logo_NETcore.png)<p/>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) <p/>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![ASP.NET 4.5](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 4.5 | [webApp-openidconnect-dotnet](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp-v1) <p/> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) <p/> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)<p/> (AAD Graph) |
-![Python](media/sample-v2-code/logo_python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
-![Java](media/sample-v2-code/logo_java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
-![Php](media/sample-v2-code/logo_php.png) | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
+![Ta ilustracja przedstawia ASP.NET logo](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
+![Ta ilustracja przedstawia ASP.NET logo](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 4.5 | [webApp-openidconnect-dotnet](https://docs.microsoft.com/azure/active-directory/develo/pguidedsetups/active-directory-aspnetwebapp-v1) </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
+![Ta ilustracja przedstawia logo języka Python](media/sample-v2-code/logo_python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
+![Ten obraz zawiera dziennik języka Java](media/sample-v2-code/logo_java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
+![Ta ilustracja przedstawia PHP logo](media/sample-v2-code/logo_php.png) | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Aplikacje sieci Web, prezentacja kontroli dostępu opartej na rolach (autoryzacja)
 
@@ -69,36 +69,36 @@ Poniższe przykłady pokazują sposób implementacji kontroli dostępu opartej n
 
 Platforma | Sample |
  -------- | ------------------- |
-![ASP.NET 4.5](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) <p/>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Aplikacja sieci web platformy .NET 4.5 MVC używa usługi Azure AD **role** autoryzacji
+![Ta ilustracja przedstawia ASP.NET logo](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Aplikacja sieci web platformy .NET 4.5 MVC używa usługi Azure AD **role** autoryzacji
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Aplikacje komputerowe i mobilne publicznych klienta wywołanie programu Microsoft Graph lub interfejs API sieci Web
 
-Poniższe przykłady ilustrują aplikacje klientem publicznym (desktop/mobile aplikacje), które dostęp do programu Microsoft Graph i interfejsu API sieci Web, nazwę użytkownika. W zależności od urządzeń i platform aplikacji można logowania użytkowników na różne sposoby (przepływy/przyznaje): 
+Poniższe przykłady ilustrują aplikacje klientem publicznym (deskto/pmobile aplikacje), które dostęp do programu Microsoft Graph i interfejsu API sieci Web, nazwę użytkownika. W zależności od urządzeń i platform aplikacji można logowania użytkowników na różne sposoby (przepływy/przyznaje):
 
-- interaktywnie
-- dyskretnie (przy użyciu zintegrowanego Windows uwierzytelniania Windows lub nazwę użytkownika i hasło), 
-- a nawet przez delegowanie interaktywnego logowania na innym urządzeniu (przepływ kodu urządzenia używane na urządzeniach, które nie zawierają kontrolki sieci web).
+- Interaktywnie
+- Dyskretnie (przy użyciu zintegrowanego uwierzytelniania Windows na Windows lub nazwy użytkownika i hasła)
+- Przez delegowanie interaktywnego logowania na innym urządzeniu (przepływ kodu urządzenia używane na urządzeniach, które nie zawierają kontrolki sieci web)
 
 Aplikacja kliencka | Platforma | Przepływ/Grant | Wywołania programu Microsoft Graph | Wywołuje program ASP.NET lub ASP.NET Core 2.x internetowego interfejsu API
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Pulpitu (WPF)           | ![.NET/C#](media/sample-v2-code/logo_NET.png)  | Interaktywne | Część [multitarget-dotnet-native](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-Mobile (UWP)            | .![.NET/C#/UWP](media/sample-v2-code/logo_Windows.png)   | Interaktywne | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> W tym przykładzie użyto [WAM](https://docs.microsoft.com/windows/uwp/security/web-account-manager), a nie [ADAL.NET](https://aka.ms/adalnet)|  [polecenia DotNet ze sklepu windows](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (aplikacji platformy uniwersalnej systemu Windows przy użyciu ADAL.NET do wywoływania jednej dzierżawy interfejsu API sieci Web) </p> [DotNet-webapi wielodostępnej — — sklep windows](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (aplikacji platformy uniwersalnej systemu Windows przy użyciu ADAL.NET do wywołania z wieloma dzierżawami interfejsu API sieci Web)|
-Mobile (Android, iOS, UWP)   | ![.NET / C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktywne | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
-Mobile (Android)           | ![Android / Java](media/sample-v2-code/logo_Android.png) | Interaktywne |   [android](https://github.com/Azure-Samples/active-directory-android) |
-Mobile (iOS)           | ![dla systemu iOS / Objective C lub swift.](media/sample-v2-code/logo_iOS.png) | Interaktywne |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
-Pulpitu (Konsola)          | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Nazwa użytkownika / hasło </p>  Uwierzytelnianie zintegrowane Windows | | [polecenia DotNet-native bezobsługowego](https://github.com/azure-samples/active-directory-dotnet-native-headless)
-Pulpitu (Konsola)          | ![Konsola języka Java](media/sample-v2-code/logo_Java.png) | Nazwa użytkownika / hasło | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-Pulpitu (Konsola)           | ![.NET core / C#](media/sample-v2-code/logo_NETcore.png) | Przepływ kodu urządzenia | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+Pulpitu (WPF)           | ![Ta ilustracja przedstawia .NET /C# logo](media/sample-v2-code/logo_NET.png)  | Interaktywne | Część [multitarget-dotnet-native](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Mobile (UWP)            | .![Ta ilustracja przedstawia .NET /C#/UWP](media/sample-v2-code/logo_Windows.png)   | Interaktywne | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> W tym przykładzie użyto [WAM](https://docs.microsoft.com/windows/uw/psecurity/web-account-manager), a nie [ADAL.NET](https://aka.ms/adalnet)|  [polecenia DotNet ze sklepu windows](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (aplikacji platformy uniwersalnej systemu Windows przy użyciu ADAL.NET do wywoływania jednej dzierżawy interfejsu API sieci Web) </p> [DotNet-webapi wielodostępnej — — sklep windows](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (aplikacji platformy uniwersalnej systemu Windows przy użyciu ADAL.NET do wywołania z wieloma dzierżawami interfejsu API sieci Web)|
+Mobile (Android, iOS, UWP)   | ![Ta ilustracja przedstawia .NET /C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktywne | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
+Mobile (Android)           | ![Ta ilustracja przedstawia logo systemu Android](media/sample-v2-code/logo_Android.png) | Interaktywne |   [android](https://github.com/Azure-Samples/active-directory-android) |
+Mobile (iOS)           | ![Ta ilustracja przedstawia dla systemu iOS / Objective C lub Swift.](media/sample-v2-code/logo_iOS.png) | Interaktywne |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
+Pulpitu (Konsola)          | ![Ta ilustracja przedstawia .NET /C# logo](media/sample-v2-code/logo_NET.png) | Nazwa użytkownika / hasło </p>  Uwierzytelnianie zintegrowane Windows | | [polecenia DotNet-native bezobsługowego](https://github.com/azure-samples/active-directory-dotnet-native-headless)
+Pulpitu (Konsola)          | ![Ta ilustracja przedstawia logo języka Java](media/sample-v2-code/logo_Java.png) | Nazwa użytkownika / hasło | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
+Pulpitu (Konsola)           | ![Ta ilustracja przedstawia platformy .NET Core /C# logo](media/sample-v2-code/logo_NETcore.png) | Przepływ kodu urządzenia | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
-## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Demon aplikacji (dostęp do interfejsów API sieci Web przy użyciu tożsamości aplikacji)
+## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Demon aplikacji (dostęp do interfejsów API sieci web przy użyciu tożsamości aplikacji)
 
 Poniższe przykłady pokazują pulpitu lub aplikacji sieci web, do których dostęp internetowy interfejs API bez użytkownika (przy użyciu tożsamości aplikacji) lub Microsoft Graph.
 
 Aplikacja kliencka | Platforma | Przepływ/Grant | Wywołuje interfejs API platformy ASP.NET lub sieci Web platformy ASP.NET Core 2.0
 ------------------ | -------- | ---------- | -------------------- 
-Demon aplikacji (Konsola)          | ![.NET](media/sample-v2-code/logo_NETframework.png) | Poświadczenia klienta za pomocą klucza tajnego aplikacji lub certyfikat | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
-Demon aplikacji (Konsola)         | ![.NET](media/sample-v2-code/logo_NETcore.png) | Poświadczenia klienta przy użyciu certyfikatu| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
-Aplikacja sieci Web platformy ASP.NET  | ![.NET](media/sample-v2-code/logo_NETframework.png) | Poświadczenia klienta | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
+Demon aplikacji (Konsola)          | ![Ta ilustracja przedstawia logo platformy .NET](media/sample-v2-code/logo_NETframework.png) | Poświadczenia klienta za pomocą klucza tajnego aplikacji lub certyfikat | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
+Demon aplikacji (Konsola)         | ![Ta ilustracja przedstawia logo platformy .NET](media/sample-v2-code/logo_NETcore.png) | Poświadczenia klienta przy użyciu certyfikatu| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
+Aplikacja sieci Web platformy ASP.NET  | ![Ta ilustracja przedstawia logo platformy .NET](media/sample-v2-code/logo_NETframework.png) | Poświadczenia klienta | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
 ## <a name="web-apis"></a>Interfejsy API sieci Web
 
@@ -108,17 +108,17 @@ Poniższy przykład pokazuje, jak zapewnić ochronę środowiska node.js interfe
 
 W poprzednich sekcjach tego artykułu, możesz również znaleźć inne przykłady ilustrujące aplikacja kliencka **wywoływania** ASP.NET lub ASP.NET Core **interfejsu API sieci Web**. Te przykłady nie są ponownie wymienione w tej sekcji, ale możesz je znaleźć w ostatniej kolumnie tabeli powyżej lub poniżej
 
-Platforma | Sample
- -------- | -------------------
-![Php](media/sample-v2-code/logo_nodejs.png)  | [node-webapi](https://github.com/Azure-Samples/active-directory-node-webapi)
+| Platforma | Sample |
+|--------|-------------------|
+| ![Ta ilustracja przedstawia logo środowiska Node.js](media/sample-v2-code/logo_nodejs.png)  | [node-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
 
 ### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Wywołanie programu Microsoft Graph lub innego interfejsu API sieci Web interfejsu API sieci Web
 
 Poniższe przykłady pokazują, internetowy interfejs API, który wywołuje innego interfejsu API sieci web. Drugi przykład pokazuje sposób obsługi dostępu warunkowego.
 
- Platforma |  Wywołania programu Microsoft Graph | Wywołuje innego ASP.NET lub ASP.NET Core 2.0 Web API
- -------- |  --------------------- | -------------------------
-![ASP.NET 4.5](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 4.5 | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) <p/> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |[dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) <p/> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca)
+| Platforma |  Wywołania programu Microsoft Graph | Wywołuje innego ASP.NET lub ASP.NET Core 2.0 Web API |
+| -------- |  --------------------- | ------------------------- |
+| ![Ta ilustracja przedstawia ASP.NET logo](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 4.5 | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
 
 ## <a name="other-microsoft-graph-samples"></a>Inne przykłady z programu Microsoft Graph
 

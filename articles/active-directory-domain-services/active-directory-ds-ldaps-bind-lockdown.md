@@ -3,7 +3,7 @@ title: Powiązań z użyciem bezpiecznego protokołu LDAP (LDAPS) do domeny zarz
 description: Powiąż z domeny zarządzanej usług domenowych Azure AD przy użyciu bezpiecznego protokołu LDAP (LDAPS)
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: df0b3d27eec478280a33be831a2431eccdf05a74
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234856"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483388"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Powiąż z domeny zarządzanej usług domenowych Azure AD przy użyciu bezpiecznego protokołu LDAP (LDAPS)
 
@@ -35,6 +35,11 @@ Najpierw należy otworzyć przystawkę LDP i nawiązać połączenie z domeną z
 
 Następnie Powiąż do domeny zarządzanej. Kliknij przycisk **połączenia** i kliknij przycisk **powiązać...**  w menu. Podaj poświadczenia konta użytkownika należącego do grupy "Administratorzy usługi AAD DC".
 
+> [!IMPORTANT]
+> Użytkowników (i kont usług) nie można wykonać prostych powiązań LDAP, wyłączenie synchronizacji skrótów haseł NTLM w wystąpieniu usługi Azure AD Domain Services.  Aby uzyskać więcej informacji na temat wyłączenie synchronizacji skrótów haseł NTLM, przeczytaj [zabezpieczanie Twojej domeny zarządzanej usług domenowych Azure AD](secure-your-domain.md).
+>
+>
+
 Wybierz **widoku**, a następnie wybierz pozycję **drzewa** w menu. Bazowa nazwa Wyróżniająca pole jest puste, a następnie kliknij przycisk OK. Przejdź do kontenera, który ma być wyszukiwania, kliknij prawym przyciskiem myszy kontener, a następnie wybierz wyszukiwania.
 
 > [!TIP]
@@ -43,7 +48,7 @@ Wybierz **widoku**, a następnie wybierz pozycję **drzewa** w menu. Bazowa nazw
 >
 >
 
-Więcej informacji — [podstawy kwerendy LDAP](https://technet.microsoft.com/library/aa996205.aspx)
+Więcej informacji — [podstawy kwerendy LDAP](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 
 
 ## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Zadanie 6. Zablokować dostęp do Twojej domeny zarządzanej secure LDAP przez internet
@@ -66,7 +71,7 @@ Przykład sieciowej grupy zabezpieczeń w poniższej tabeli zablokuje dostęp pr
 ## <a name="related-content"></a>Powiązana zawartość
 * [Azure AD Domain Services — wprowadzenie — przewodnik](create-instance.md)
 * [Zarządzaj domeną usługi Azure AD Domain Services](manage-domain.md)
-* [Podstawy kwerendy LDAP](https://technet.microsoft.com/library/aa996205.aspx)
+* [Podstawy kwerendy LDAP](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 * [Zarządzanie zasadami grupy dla usług domenowych Azure AD](manage-group-policy.md)
 * [Sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md)
 * [Utwórz sieciową grupę zabezpieczeń](../virtual-network/tutorial-filter-network-traffic.md)
