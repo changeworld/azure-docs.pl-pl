@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 69ec3869f7bfd74b150db537a01e604cae87570f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074017"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441998"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Domyślnie serwer interfejsu API rozwiązania Kubernetes używa publicznego adre
 
 Węzłów AKS są maszyn wirtualnych platformy Azure, które umożliwia zarządzanie i obsługa. Uruchom zoptymalizowane dystrybucji Ubuntu przy użyciu kontener środowiska uruchomieniowego Moby węzłów systemu Linux. Węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) uruchamiany zoptymalizowanej 2019 r Server systemu Windows Zwolnij, a także korzystania ze środowiska uruchomieniowego Moby kontenera. Gdy klaster AKS zostanie utworzony lub skalowany w górę, węzły zostają automatycznie wdrożone najnowsze aktualizacje zabezpieczeń systemu operacyjnego i konfiguracjach.
 
-Platforma Azure automatycznie stosuje poprawki zabezpieczeń systemu operacyjnego do węzłów systemu Linux w nocy. Jeśli aktualizacja zabezpieczeń systemu operacyjnego Linux wymaga ponownego uruchomienia komputera hosta, że ponowne uruchomienie komputera nie jest wykonywana automatycznie. Użytkownik może ręcznie uruchomić węzłów systemu Linux lub typowym podejściem jest użycie [Kured][kured], demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet] [ aks-daemonsets] i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie odbywa się w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu](#cordon-and-drain) jako uaktualniania klastra.
+Platforma Azure automatycznie stosuje poprawki zabezpieczeń systemu operacyjnego do węzłów systemu Linux w nocy. Jeśli aktualizacja zabezpieczeń systemu operacyjnego Linux wymaga ponownego uruchomienia komputera hosta, że ponowne uruchomienie komputera nie jest wykonywana automatycznie. Użytkownik może ręcznie uruchomić węzłów systemu Linux lub typowym podejściem jest użycie [Kured][kured] , an open-source reboot daemon for Kubernetes. Kured runs as a [DaemonSet][aks-daemonsets] i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie odbywa się w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu](#cordon-and-drain) jako uaktualniania klastra.
 
 W przypadku węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) aktualizacja Windows automatycznie uruchamiania i Zastosuj najnowsze aktualizacje. Zgodnie z ustalonym harmonogramem w całym cyklu tworzenia wydań Windows Update i procesu sprawdzania poprawności należy wykonać uaktualnienie na pule węzłów systemu Windows Server, w klastrze AKS. Ten proces uaktualnienia tworzy węzły, które Uruchom najnowszego obrazu systemu Windows Server i poprawkami, a następnie usuwa starszą węzły. Aby uzyskać więcej informacji na temat tego procesu, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
 
@@ -73,7 +73,7 @@ Aby filtrować przepływu ruchu w sieciach wirtualnych, platforma Azure stosuje 
 
 Kubernetes *klucz tajny* służy do wstrzyknąć poufne dane do zasobników, takich jak dostęp do poświadczeń ani kluczy. Należy najpierw utworzyć wpis tajny przy użyciu interfejsu API rozwiązania Kubernetes. Podczas definiowania wdrożenia lub zasobników, można żądać określonego klucza tajnego. Klucze tajne są udostępniane tylko węzły, które mają zaplanowane zasobnik, który go wymaga i klucz tajny jest przechowywany w *tmpfs*robaków napisanych nie na dysku. Po usunięciu ostatniego zasobnik w węźle, który wymaga klucza tajnego klucza tajnego został usunięty z tmpfs węzła. Klucze tajne są przechowywane w ramach danego obszaru nazw i może zostać oceniony jedynie przez zasobników w tej samej przestrzeni nazw.
 
-Korzystanie z kluczy tajnych zmniejsza poufne informacje, które jest zdefiniowana w zasobniku lub YAML manifestu usługi. Zamiast tego możesz poprosić hasła przechowywane w serwera interfejsu API rozwiązania Kubernetes jako część manifeście YAML. To podejście zapewnia tylko dostęp pod określonym do klucza tajnego.
+Korzystanie z kluczy tajnych zmniejsza poufne informacje, które jest zdefiniowana w zasobniku lub YAML manifestu usługi. Zamiast tego możesz poprosić hasła przechowywane w serwera interfejsu API rozwiązania Kubernetes jako część manifeście YAML. To podejście zapewnia tylko dostęp pod określonym do klucza tajnego. Uwaga: nieprzetworzone pliki manifestu tajny zawiera poufne dane w formacie base64 (zobacz [oficjalnej dokumentacji][secret-risks] Aby uzyskać więcej informacji). W związku z tym ten plik powinien być traktowane jako poufne informacje i nigdy nie zostały zatwierdzone do kontroli źródła.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -92,6 +92,7 @@ Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zos
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+[secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

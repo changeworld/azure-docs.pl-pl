@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296514"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565592"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Rozpoczynanie pracy z usługą Log Analytics w usłudze Azure Monitor
 
@@ -55,7 +55,7 @@ Event | search "error"
 
 To zapytanie wyszukuje _zdarzeń_ tabeli rekordy, które zawierają termin _błąd_ w dowolnej właściwości.
 
-Zapytania można zacząć od jednej nazwy tabeli lub [wyszukiwania](/kusto/query/searchoperator) polecenia. Powyższy przykład zaczyna się od nazwy tabeli _zdarzeń_, który pobiera wszystkie rekordy z tabeli zdarzeń. Znaku kreski pionowej (|) oddziela polecenia, dzięki czemu dane wyjściowe pierwszy z nich służy jako dane wejściowe następującego polecenia. Możesz dodać dowolną liczbę poleceń do pojedynczego zapytania.
+Zapytania można zacząć od jednej nazwy tabeli lub [wyszukiwania](/azure/kusto/query/searchoperator) polecenia. Powyższy przykład zaczyna się od nazwy tabeli _zdarzeń_, który pobiera wszystkie rekordy z tabeli zdarzeń. Znaku kreski pionowej (|) oddziela polecenia, dzięki czemu dane wyjściowe pierwszy z nich służy jako dane wejściowe następującego polecenia. Możesz dodać dowolną liczbę poleceń do pojedynczego zapytania.
 
 Innym sposobem pisania tego samego zapytania będą:
 

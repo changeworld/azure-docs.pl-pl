@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/17/2019
-ms.openlocfilehash: 11abbb0494a9771676dcf2436b5e808346c16368
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 488a032e177897caf2897ba6335f4e7f64dc0e4d
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078562"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543842"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Ponowne generowanie kluczy dostępu do konta magazynu
 
@@ -72,7 +72,7 @@ Aby zaktualizować usługę Azure Machine Learning do używania nowego klucza, w
 > [!IMPORTANT]
 > Wykonaj wszystkie czynności, aktualizowania, zarówno obszaru roboczego przy użyciu interfejsu wiersza polecenia i magazynów danych przy użyciu języka Python. Aktualizowanie tylko jedna lub druga może powodować błędy, dopóki oba są aktualizowane.
 
-1. Wygeneruj ponownie klucz. Aby uzyskać informacji na temat ponownego generowania klucza dostępu, zobacz [Zarządzanie kontem magazynu](/azure/storage/common/storage-account-manage.md#access-keys) artykułu. Zapisz nowy klucz.
+1. Wygeneruj ponownie klucz. Aby uzyskać informacji na temat ponownego generowania klucza dostępu, zobacz [Zarządzanie kontem magazynu](/azure/storage/common/storage-account-manage#access-keys) artykułu. Zapisz nowy klucz.
 
 1. Aby zaktualizować obszar roboczy w celu używania nowego klucza, wykonaj następujące kroki:
 

@@ -2,27 +2,21 @@
 title: Jak zaplanować implementacji hybrydowej usługi Azure Active Directory join, w usłudze Azure Active Directory (Azure AD) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować urządzenia dołączone hybrydowo do usługi Azure Active Directory.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a1c349ae7cdd66c09db412331c344d6512ecd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c476c2b326045db37c54a358d68f4b5f8bbaed9a
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110591"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509597"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -83,7 +77,7 @@ Dołączenie do hybrydowej usługi Azure AD nie jest obecnie obsługiwane, jeśl
 
 Dołączenie do hybrydowej usługi Azure AD nie jest obecnie obsługiwane podczas korzystania z infrastruktury pulpitu wirtualnego (VDI).
 
-Hybrydowej usługi Azure AD nie jest obsługiwana dla modułów TPM zgodne ze standardem FIPS. Jeśli urządzenia były zgodne ze standardem FIPS modułów TPM, należy wyłączyć je przed kontynuowaniem dołączenie do hybrydowej usługi Azure AD. Firma Microsoft zapewnia wszystkie narzędzia wyłączanie trybu FIPS dla modułów TPM, ponieważ jest on zależny od producenta modułu TPM. Uzyskać pomoc, skontaktuj się z sprzęt OEM.
+Dołączenie do hybrydowej usługi Azure AD nie jest obsługiwana dla modułów TPM zgodne ze standardem FIPS. Jeśli urządzenia były zgodne ze standardem FIPS modułów TPM, należy wyłączyć je przed kontynuowaniem dołączenie do hybrydowej usługi Azure AD. Firma Microsoft zapewnia wszystkie narzędzia wyłączanie trybu FIPS dla modułów TPM, ponieważ jest on zależny od producenta modułu TPM. Uzyskać pomoc, skontaktuj się z sprzęt OEM.
 
 Dołączenie do hybrydowej usługi Azure AD nie jest obsługiwana dla systemu Windows Server działającego w roli kontrolera domeny (DC).
 
@@ -99,13 +93,11 @@ Przyłączone do domeny systemu Windows 10 urządzenia są już [usługi Azure A
 - Użytkownik może uniemożliwić urządzenia przyłączone do domeny usługi Azure AD zarejestrowany przez dodanie tego klucza rejestru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001.
 - Ta zmiana jest teraz dostępna w wersji systemu Windows 10 w wersji 1803 z KB4489894 stosowane. Jednak jeśli masz Windows Hello dla firm skonfigurowane, użytkownik będzie musiał ponownie setup Windows Hello dla firm po podwójnym stan czyszczenia.
 
-
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Przejrzyj kontrolowana Walidacja dołączenie do hybrydowej usługi Azure AD
 
 Gdy wszystkie wymagania wstępne zostały spełnione, urządzenia Windows są automatycznie rejestrowane jako urządzenia w Twojej dzierżawie usługi Azure AD. Stan tych tożsamości urządzeń w usłudze Azure AD jest określane jako dołączenie do hybrydowej usługi Azure AD. Więcej informacji na temat pojęć omówione w tym artykule znajdują się w artykułach [wprowadzenie do zarządzania tożsamościami urządzeń w usłudze Azure Active Directory](overview.md) i [planu usługi hybrydowe usługi Azure Active Directory join Implementacja](hybrid-azuread-join-plan.md).
 
 Organizacje mogą chcieć wykonać kontrolowana Walidacja dołączenie do hybrydowej usługi Azure AD przed jego włączeniem w całej organizacji wszystkie na raz. Zapoznaj się z artykułem [kontrolowana Walidacja dołączenie do hybrydowej usługi Azure AD](hybrid-azuread-join-control.md) zrozumieć sposób jego osiągnięcia.
-
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Wybierz danego scenariusza, w oparciu o infrastrukturę tożsamości
 
@@ -135,8 +127,6 @@ Oparta na scenariuszu, który dopasowuje swoją infrastrukturę tożsamości, zo
 
 - [Konfiguruj dołączenie do usługi Azure Active Directory hybrydowej w środowisku federacyjnym](hybrid-azuread-join-federated-domains.md)
 - [Konfiguruj dołączenie do usługi Azure Active Directory hybrydowej w środowisku zarządzanym](hybrid-azuread-join-managed-domains.md)
-
-
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Przegląd środowiska lokalnego AD UPN obsługę dołączenie do hybrydowej usługi Azure AD
 

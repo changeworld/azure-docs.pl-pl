@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 1ef8c8eec3865f2a6e363e7da1dbda9504b81c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f981452b06ec06f2be1b8fe0319cd49a678ccfe0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546440"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441582"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów sieci wirtualnej platformy Azure z usługi Azure Logic Apps za pomocą środowiska usług integracji (ISEs)
 
@@ -35,7 +35,7 @@ Twoja aplikacja logiki można teraz bezpośrednio uzyskiwać dostęp do systemó
 W tym omówieniu opisano więcej szczegółowych informacji o jak ISE zapewnia aplikacji logiki i integracji kont bezpośredni dostęp do sieci wirtualnej platformy Azure i porównuje różnice między ISE i globalną usługę Logic Apps.
 
 > [!NOTE]
-> Logic apps, wbudowane wyzwalaczy, wbudowanych akcji i łączników, działających w użytkowanie ISE planu cenowego różni się od planu cenowego na podstawie użycia. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](../logic-apps/logic-apps-pricing.md).
+> Logic apps, wbudowane wyzwalaczy, wbudowanych akcji i łączników, działających w użytkowanie ISE planu cenowego różni się od planu cenowego na podstawie użycia. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](../logic-apps/logic-apps-pricing.md). Twoje ISE również wzrosło limity na czas trwania testu, przechowywanie w magazynie, przepływności, żądania HTTP i limity czasu odpowiedzi, rozmiary wiadomości i żądań łącznika niestandardowego. Aby uzyskać więcej informacji, zobacz [limity i konfiguracja dla usługi Azure Logic Apps](logic-apps-limits-and-config.md).
 
 <a name="difference"></a>
 
@@ -61,14 +61,14 @@ Różnica między ISE i innych ISE łączników jest w lokalizacjach, w którym 
 
   ![Wybieranie łączników środowiska ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
+ISE udostępnia także podwyższone limity czas trwania testu, przechowywanie w magazynie, przepływności, żądania HTTP i limity czasu odpowiedzi, rozmiary wiadomości i żądań łącznika niestandardowego. Aby uzyskać więcej informacji, zobacz [limity i konfiguracja dla usługi Azure Logic Apps](logic-apps-limits-and-config.md).
+
 ### <a name="access-to-on-premises-data-sources"></a>Dostęp do lokalnych źródeł danych
 
 Dla systemów lokalnych, które są połączone z siecią wirtualną platformy Azure wstawić ISE do tej sieci, dzięki czemu aplikacje logiki można uzyskać dostęp do tych systemów przy użyciu dowolnego z tych elementów:
 
 * Wersja środowiska ISE łącznika dla tego systemu, na przykład SQL Server
-  
 * Akcja HTTP
-  
 * Łącznik niestandardowy
 
   * Jeśli masz łączników niestandardowych, które wymagają lokalnej bramy danych, a utworzone łączniki poza ISE, logic apps w środowisku ISE łączników można również używać tych.

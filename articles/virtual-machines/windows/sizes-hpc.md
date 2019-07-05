@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck;amverma
-ms.openlocfilehash: ad490084b34a8bf6e89c7feb14d5cd2e70a8138f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fc5b5a287a421f93d3184ded3e429c5cff8fa3c
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755319"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566290"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Rozmiary maszyn wirtualnych obliczeń o wysokiej wydajności
 
@@ -31,11 +31,10 @@ ms.locfileid: "66755319"
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 
-* **System operacyjny** — system Windows Server 2016, Windows Server 2012 R2, Windows Server 2012
+* **System operacyjny** — system Windows Server 2016 na wszystkie powyższe HPC serie maszyn wirtualnych. Windows Server 2012 R2, Windows Server 2012 są również obsługiwane na maszynach wirtualnych włączone bez do funkcji SR-IOV (dlatego bez HB i HC).
 
-* **MPI** — Microsoft MPI (MS-MPI) 2012 R2 lub nowszym, Intel MPI biblioteki 5.x
-
-  Na maszynach wirtualnych włączone bez do funkcji SR-IOV obsługiwane implementacje MPI, należy użyć interfejsu bezpośredniego sieci firmy Microsoft (ND) do komunikacji między wystąpieniami. Funkcja SR-IOV włączone rozmiarów maszyn wirtualnych (HB i serii HC) na platformie Azure umożliwia niemal dowolną wersję MPI, które ma być używany z Mellanox OFED. 
+* **MPI** — włączone rozmiarów maszyn wirtualnych na platformie Azure (HB, HC) Zezwalaj na prawie każdym flavor MPI, które ma być używany z Mellanox OFED SR-IOV.
+Na maszynach wirtualnych włączone bez do funkcji SR-IOV obsługiwane implementacje MPI, należy użyć interfejsu bezpośredniego sieci firmy Microsoft (ND) do komunikacji między wystąpieniami. Dzięki temu tylko Microsoft MPI (MS-MPI) 2012 R2 lub nowszym i są obsługiwane w wersji 5.x Intel MPI. Nowsze wersje (2017, 2018 r.) środowiska uruchomieniowego Intel MPI biblioteki może lub mogą nie być zgodne ze sterownikami RDMA na platformie Azure.
 
 * **Rozszerzenie maszyny Wirtualnej InfiniBandDriverWindows** — na maszynach wirtualnych z funkcją RDMA, Dodaj rozszerzenie InfiniBandDriverWindows, aby umożliwić InfiniBand. To rozszerzenie maszyny Wirtualnej Windows instaluje interfejsu Network Direct Windows sterowników (na maszynach wirtualnych z innych niż-funkcja SR-IOV) lub sterowniki Mellanox OFED (na maszynach wirtualnych z funkcji SR-IOV) dla łączności RDMA.
 W przypadku niektórych wdrożeń wystąpienia A8 i A9 rozszerzenia HpcVmDrivers jest automatycznie dodawany. Należy pamiętać, że jest on przestarzały z rozszerzenia maszyny Wirtualnej HpcVmDrivers; nie będzie można zaktualizować. Aby dodać rozszerzenie maszyny Wirtualnej do maszyny Wirtualnej, można użyć [programu Azure PowerShell](/powershell/azure/overview) polecenia cmdlet. 
@@ -53,7 +52,16 @@ W przypadku niektórych wdrożeń wystąpienia A8 i A9 rozszerzenia HpcVmDrivers
   "typeHandlerVersion": "1.0",
   } 
   ```
-  
+
+  Poniższe polecenie instaluje najnowsze rozszerzenia InfiniBandDriverWindows w wersji 1.0 na wszystkich maszynach wirtualnych z funkcją RDMA w istniejącej maszyny Wirtualnej zestawu skalowania o nazwie *myVMSS* wdrożone w grupie zasobów o nazwie *myResourceGroup*:
+
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+
   Aby uzyskać więcej informacji, zobacz [rozszerzeniach i funkcjach maszyn wirtualnych](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Możesz także pracować z rozszerzeniami dla maszyn wirtualnych wdrożonych w [klasycznego modelu wdrażania](classic/manage-extensions.md).
 
 * **Przestrzeń adresowa sieci RDMA** — sieci RDMA na platformie Azure rezerwuje 172.16.0.0/16 przestrzeni adresowej. Do uruchamiania aplikacji MPI w wystąpieniach wdrożonych w sieci wirtualnej platformy Azure, upewnij się, przestrzeń adresową sieci wirtualnej nie nakłada sieci RDMA.
@@ -66,6 +74,8 @@ System Azure oferuje kilka opcji tworzenia klastrów HPC maszyn wirtualnych Wind
 * **Maszyny wirtualne** — wdrażanie maszyn wirtualnych z funkcją RDMA HPC w ten sam zestaw dostępności (podczas użycie modelu wdrażania usługi Azure Resource Manager). Jeśli używasz klasycznego modelu wdrażania, należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
 
 * **Zestawy skalowania maszyn wirtualnych** — zestaw skalowania maszyn wirtualnych zestawu, upewnij się, ograniczenie wdrożenia do pojedynczej grupy umieszczania. Na przykład w szablonie usługi Resource Manager, należy ustawić `singlePlacementGroup` właściwość `true`. 
+
+* **MPI między maszynami wirtualnymi** — w przypadku komunikacji MPI w razie potrzeby między maszyny wirtualne (VM), upewnij się, że maszyny wirtualne są w tym samym zestawie dostępności lub maszynę wirtualną, takie same zestawu skalowania.
 
 * **Azure CycleCloud** — Tworzenie klastra HPC w [Azure CycleCloud](/azure/cyclecloud/) do uruchamiania zadań MPI w węzłach Windows.
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 4501a343b406f07b4775f3ad0e84d71825412a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2b44b89443b5e7e82d303e1447533546d27ec9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752726"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445742"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikacje SaaS oferują Podręcznik publikowania
 
@@ -34,7 +34,7 @@ Aplikacje SaaS są dostępne w obu sklepów platformy Azure w poniższej tabeli 
 | --- | --- | --- |  
 | **Kontakt z nami** | Tak | Nie |  
 | **PowerBI / Dynamics** | Tak | Tak (Integracja usługi Azure AD) |  
-| **Aplikacje SaaS**| Tak | Tak (Integracja usługi Azure AD) |     
+| **Aplikacje SaaS**| Yes | Tak (Integracja usługi Azure AD) |     
 
 ## <a name="saas-list"></a>Lista SaaS
 
@@ -94,7 +94,7 @@ Ponadto usługi Azure Active Directory zapewnia lokacji pod kątem aktualizacji 
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Wersje próbne przy użyciu usługi Azure Active Directory  
 
-Microsoft uwierzytelnia wszystkich użytkowników witryny Marketplace z usługą Azure AD, dlatego uwierzytelniony użytkownik kliknie za pośrednictwem oferty próbnej w witrynie Marketplace i jest przekierowywany do środowiska próbnego, możesz zaprowizować użytkownika bezpośrednio do korzystania z wersji próbnej bez konieczności Dodatkowe logowania krok. Token, który aplikacja otrzymuje z usługi Azure AD podczas uwierzytelniania zawiera informacje o użytkowniku cenne, która umożliwia tworzenie konta użytkownika w swojej aplikacji, dzięki któremu można zautomatyzować proces inicjowania obsługi administracyjnej oraz zwiększyć prawdopodobieństwo konwersji. Aby uzyskać więcej informacji o tokenie zobacz [tokenów przykładowe](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+Firma Microsoft uwierzytelnia wszystkich użytkowników witryny Marketplace z usługą Azure AD, dlatego gdy uwierzytelniony użytkownik kliknie za pośrednictwem oferty próbnej w witrynie Marketplace i jest przekierowywany do środowiska próbnego, możesz aprowizować użytkownika bezpośrednio do korzystania z wersji próbnej, bez konieczności Dodatkowe logowania krok. Token, który aplikacja otrzymuje z usługi Azure AD podczas uwierzytelniania zawiera informacje o użytkowniku cenne, która umożliwia tworzenie konta użytkownika w swojej aplikacji, dzięki któremu można zautomatyzować proces inicjowania obsługi administracyjnej oraz zwiększyć prawdopodobieństwo konwersji. Aby uzyskać więcej informacji o tokenie zobacz [tokenów przykładowe](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
 Aby włączyć uwierzytelnianie 1 kliknięcia do aplikacji lub wersji próbnej za pomocą usługi Azure AD zapewnia następujące funkcje:  
 * Usprawnia obsługę klientów z witryny Marketplace w wersji próbnej.  
@@ -104,7 +104,7 @@ Aby włączyć uwierzytelnianie 1 kliknięcia do aplikacji lub wersji próbnej z
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Certyfikowanie integracji usługi Azure AD w portalu Marketplace  
 
-Można certyfikować integracji usługi Azure AD w na kilka różnych sposobów, w zależności od tego, czy aplikacja jest pojedynczej dzierżawy lub wielodostępne i dopiero zaczynasz do usługi Azure AD federacyjnego pojedynczego logowania jednokrotnego (SSO), czy już jego obsługi.  
+Certyfikowanie integracji usługi Azure AD w na kilka różnych sposobów, w zależności od tego, czy aplikacja jest pojedynczej dzierżawy lub wielu dzierżawców i dopiero zaczynasz do usługi Azure AD federacyjnego pojedynczego logowania jednokrotnego (SSO), czy już pomocy technicznej.  
 
 **W przypadku aplikacji wielodostępnych:**  
 

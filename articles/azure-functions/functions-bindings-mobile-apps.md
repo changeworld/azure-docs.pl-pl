@@ -4,19 +4,19 @@ description: Dowiedz się, jak używać powiązań usługi Azure Mobile Apps w u
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 5fd220f15f363c1987f1576009519e4b2feae6b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 965ec88b39336e71d2779da4b7cd31b9c26e28be
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61438129"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480366"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Powiązania funkcji Mobile Apps dla usługi Azure Functions 
 
@@ -163,7 +163,7 @@ W przypadku funkcji JavaScript rekordu jest przekazywana do `context.bindings.<n
 
 W C# i F# funkcje, wszelkie zmiany wprowadzone w danych wejściowych rekordu (parametr wejściowy) są automatycznie wysyłane do tabeli, jeśli funkcja kończy się pomyślnie. Nie można zmodyfikować rekord w funkcji języka JavaScript.
 
-## <a name="output"></a>Dane wyjściowe
+## <a name="output"></a>Output
 
 Użyj funkcji Mobile Apps powiązania danych wyjściowych usługi zapisać nowy rekord tabeli funkcji Mobile Apps.  
 

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
-ms.date: 06/13/2019
-ms.openlocfilehash: 89df33f453217585e8f0b8ff13d06ee223474fae
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/26/2019
+ms.openlocfilehash: a0846a7d03cc2f63af6747c8b8514b563c1d4a5d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272242"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447797"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Omówienie usługi Azure SQL Database managed wystąpienia limity zasobów
 
@@ -42,6 +42,9 @@ Wystąpienie zarządzane usługi Azure SQL Database można wdrożyć w obu gener
 | Maksymalna liczba OLTP w pamięci pamięci | Limit wystąpienie: 3 GB na rdzeń wirtualny<br/>Limity bazy danych:<br/> -8-rdzeniowy: 8 GB na bazę danych<br/> — 16 rdzeni: 20 GB dla jednej bazy danych<br/> -24-core: 36 GB na bazę danych | Limit wystąpienie: 2,5 GB na rdzeń wirtualny<br/>Limity bazy danych:<br/> -8-rdzeniowy: 13 GB na bazę danych<br/> — 16 rdzeni: 32 GB na bazę danych |
 | Maksymalny rozmiar wystąpienia magazynu (ogólnego przeznaczenia) |  8 TB | 8 TB |
 | Maksymalna pojemność magazynu wystąpienia (krytyczne dla działania firmy) | 1 TB | 1 TB, 2 TB lub 4 TB w zależności od liczby rdzeni |
+
+> [!IMPORTANT]
+> Nowe bazy danych z 4. generacji nie są już obsługiwane w regionie AustraliaEast.
 
 ### <a name="service-tier-characteristics"></a>Właściwości warstwy usług
 

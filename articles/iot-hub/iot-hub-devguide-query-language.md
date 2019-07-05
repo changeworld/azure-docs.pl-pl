@@ -1,18 +1,18 @@
 ---
 title: Zrozumienie języka zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — opis usługi IoT Hub podobnego do SQL zapytania język używany do pobierania informacji o urządzeniu/modułu bliźniaczych reprezentacji i zadań z usługi IoT hub.
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: rezas
-ms.openlocfilehash: 4fbb731d9908e791a6fce2b087d9b734b98a25cb
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.author: robinsh
+ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137726"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450062"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
@@ -328,8 +328,8 @@ SELECT <select_list>
 
 **z < from_specification >** klauzuli może przyjmować tylko dla trzech wartości: **Z urządzeń** do zapytań bliźniaczych reprezentacji urządzeń **z devices.modules** do zapytań bliźniaczych reprezentacjach modułów, lub **z devices.jobs** do szczegółów poszczególnych urządzeń zadania kwerendy.
 
-
 ## <a name="where-clause"></a>Klauzula WHERE
+
 **Gdzie < filter_condition >** klauzula jest opcjonalne. Określa ona, że co najmniej jeden warunek, że za pomocą pliku JSON dokumenty w kolekcji FROM musi spełniać być dołączane jako część wyniku. Dowolny dokument JSON musi być określone warunki "true", mają zostać uwzględnione w wynikach.
 
 Dozwolone warunki są opisane w sekcji [wyrażeń i warunków](iot-hub-devguide-query-language.md#expressions-and-conditions).
@@ -366,6 +366,7 @@ SELECT [TOP <max number>] <projection list>
 Obecnie wybór klauzule różni się od **wybierz*** są obsługiwane tylko w agregacji zapytań dotyczących bliźniaczych reprezentacji urządzeń.
 
 ## <a name="group-by-clause"></a>Klauzula GROUP BY
+
 **GROUP BY < group_specification >** klauzula jest opcjonalny krok, który jest wykonywany po określony w klauzuli WHERE i przed projekcji określonej we właściwości w oknie Wybierz filtr. Grup dokumentów na podstawie wartości atrybutu. Te grupy są używane do generowania wartości zagregowane, jak to określono w klauzuli SELECT.
 
 Przykładem zapytania za pomocą GROUP BY jest:
@@ -393,9 +394,9 @@ Obecnie w klauzuli GROUP BY jest obsługiwana tylko podczas wykonywania zapytań
 > [!IMPORTANT]
 > Termin `group` aktualnie jest traktowane jako specjalne — słowo kluczowe w zapytaniach. W przypadku używasz `group` jako nazwę właściwości, należy wziąć pod uwagę ujęta w podwójne nawiasy, aby uniknąć błędów, np. `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
 >
->
 
 ## <a name="expressions-and-conditions"></a>Wyrażeń i warunków
+
 Na wysokim poziomie *wyrażenie*:
 
 * Daje w wyniku wystąpienia typu JSON (np. atrybut typu wartość logiczna, liczba, ciąg, tablicy lub obiektu).
@@ -443,6 +444,7 @@ Aby zrozumieć, co oznacza każdy symbol w składni wyrażenia, zapoznaj się z 
 | string_literaL |Literały ciągów są reprezentowane przez Sekwencja zero lub więcej znaków Unicode lub sekwencji unikowych ciągów znaków Unicode. Literały ciągów są ujęte w apostrofy lub podwójnych cudzysłowów. Dozwolone sekwencje ucieczki: `\'`, `\"`, `\\`, `\uXXXX` dla znaków Unicode, zdefiniowane przez 4 cyfr szesnastkowych. |
 
 ### <a name="operators"></a>Operatory
+
 Obsługiwane są następujące operatory:
 
 | Rodzina | Operatory |
@@ -452,6 +454,7 @@ Obsługiwane są następujące operatory:
 | Porównanie |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Funkcje
+
 Podczas wykonywania zapytań dotyczących bliźniaczych reprezentacji i zadań, które obsługuje tylko funkcja jest następująca:
 
 | Funkcja | Opis |

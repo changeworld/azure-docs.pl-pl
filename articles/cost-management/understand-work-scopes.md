@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991378"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490114"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -100,19 +100,19 @@ Subskrypcje platformy Azure są zagnieżdżone w ramach kont rejestracji. Karta 
 
 Rozliczenia, użytkownicy nie mają dostępu do grup zarządzania, ponieważ nie należą one jawnie przy użyciu określonego konta rozliczeniowego. Dostęp musi otrzymać jawnie do grup zarządzania. Koszty zbiorcze z wszystkich zagnieżdżonych subskrypcji grup zarządzania. Jednak tylko obejmują one zakupy na podstawie użycia. Nie obejmują one zakupów, takich jak zastrzeżenia i innych ofert z portalu Marketplace. Aby wyświetlić te koszty, użyj konta rozliczeniowego umowy EA.
 
-## <a name="individual-agreement-pay-as-you-go-scopes"></a>Zakresy poszczególnych umowy (płatność za rzeczywiste użycie)
+## <a name="individual-agreement-scopes"></a>Umowa poszczególnych zakresów
 
-Płatność za rzeczywiste użycie (PAYG) abonamentami oraz powiązanych typów, takie jak bezpłatnej/wersji próbnej i oferty tworzenia i testowania, nie mają jawnych rozliczeń zakres konta. Zamiast tego każda subskrypcja ma właściciel konta lub administrator konta, takie jak właściciel konta EA.
+Subskrypcje platformy Azure utworzone na podstawie poszczególnych ofert zgodnie z rzeczywistym użyciem i pokrewne typy, np. bezpłatnej wersji próbnej, takie jak i oferty tworzenia i testowania, nie mają jawnych rozliczeń zakres konta. Zamiast tego każda subskrypcja ma właściciel konta lub administrator konta, takie jak właściciel konta EA.
 
 - [**Konto rozliczeniowe** ](../billing/billing-view-all-accounts.md) — reprezentuje właściciela jednego konta, na co najmniej jedną subskrypcję platformy Azure. Obecnie nie obsługuje, udzielanie dostępu do wielu osób lub dostępu do widoków zagregowane kosztów.
 
     Typ zasobu: Nie dotyczy
 
-Administratorzy konta subskrypcji PAYG można przeglądać i zarządzać danych dotyczących rozliczeń, takie jak faktury i płatności, z [Centrum konta platformy Azure](https://account.azure.com/subscriptions). Jednak nie można wyświetlić danych rozwiązania cost lub zarządzać zasobami w witrynie Azure portal. Aby udzielić dostępu do administratora konta, należy użyć ról Cost Management wymienionych wcześniej.
+Administratorzy kont indywidualnej subskrypcji platformy Azure można przeglądać i zarządzać danych dotyczących rozliczeń, takie jak faktury i płatności, z [Centrum konta platformy Azure](https://account.azure.com/subscriptions). Jednak nie można wyświetlić danych rozwiązania cost lub zarządzać zasobami w witrynie Azure portal. Aby udzielić dostępu do administratora konta, należy użyć ról Cost Management wymienionych wcześniej.
 
-W przeciwieństwie do Umowy EA Administratorzy kont subskrypcji PAYG można zobaczyć faktur w witrynie Azure portal. Należy pamiętać, że koszty zarządzania Czytelnik i współautor zarządzania kosztami role nie zapewniają dostęp do faktury. Aby uzyskać więcej informacji, zobacz [jak udzielić dostępu do faktury PAYG](../billing/billing-manage-access.md#give-access-to-billing).
+W przeciwieństwie do Umowy EA Administratorzy kont indywidualnej subskrypcji platformy Azure można zobaczyć faktur w witrynie Azure portal. Należy pamiętać, że koszty zarządzania Czytelnik i współautor zarządzania kosztami role nie zapewniają dostęp do faktury. Aby uzyskać więcej informacji, zobacz [jak udzielić dostępu do faktury](../billing/billing-manage-access.md##give-read-only-access-to-billing).
 
-## <a name="customer-agreement-scopes"></a>Zakresy umowy klienta
+## <a name="microsoft-customer-agreement-scopes"></a>Zakresy umowy klienta firmy Microsoft
 
 Konta rozliczeniowego umowy klienta firmy Microsoft mają następujące zakresy:
 
@@ -148,7 +148,7 @@ Partnerzy programu cloud Solution Provider (CSP) nie są obecnie obsługiwane w 
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Przełączanie między zakresów Cost Management
 
-Wszystkie widoki zarządzania kosztami w witrynie Azure portal obejmują **zakres** skażone w lewym górnym widoku. Umożliwia szybką zmianę zakresu. Kliknij przycisk **zakres** skażone, aby otworzyć selektor zakresu. Pokazuje konta rozliczeniowego, głównej grupy zarządzania i wszystkich subskrypcji, które nie są zagnieżdżone w głównej grupy zarządzania. Aby wybrać zakres, kliknij tło, aby go zaznaczyć, a następnie kliknij przycisk **wybierz** u dołu. Do testowania odzyskiwania po awarii — w zagnieżdżonych zakresów, takich jak grupy zasobów w ramach subskrypcji, kliknij łącze nazwa zakresu. Aby wybrać zakresu nadrzędnego na dowolnym poziomie zagnieżdżony, kliknij przycisk **wybierz tę opcję, &lt;zakres&gt;**  u góry selektora zakresu.
+Wszystkie widoki zarządzania kosztami w witrynie Azure portal obejmują **zakres** skażone zaznaczenia w lewym górnym widoku. Umożliwia szybką zmianę zakresu. Kliknij przycisk **zakres** skażone, aby otworzyć selektor zakresu. Pokazuje konta rozliczeniowego, głównej grupy zarządzania i wszystkich subskrypcji, które nie są zagnieżdżone w głównej grupy zarządzania. Aby wybrać zakres, kliknij tło, aby go zaznaczyć, a następnie kliknij przycisk **wybierz** u dołu. Do testowania odzyskiwania po awarii — w zagnieżdżonych zakresów, takich jak grupy zasobów w ramach subskrypcji, kliknij łącze nazwa zakresu. Aby wybrać zakresu nadrzędnego na dowolnym poziomie zagnieżdżony, kliknij przycisk **wybierz tę opcję, &lt;zakres&gt;**  u góry selektora zakresu.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Zidentyfikuj identyfikator zasobu dla zakresu
 

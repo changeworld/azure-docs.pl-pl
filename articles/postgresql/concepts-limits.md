@@ -1,19 +1,20 @@
 ---
-title: Ograniczenia dotyczące usługi Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano ograniczenia dotyczące usługi Azure Database for PostgreSQL — pojedynczego serwera, takie jak liczba połączeń i opcje aparatu magazynu.
+title: Ograniczenia w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano limity w usłudze Azure Database for PostgreSQL — pojedynczego serwera, takie jak liczba połączeń i opcje aparatu magazynu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 3e1597def26c09378d3917ad2d49163ef17732f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4752112acf136d9ffb19a0b7383bc3aff5de5e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66732862"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448099"
 ---
-# <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Ograniczenia dotyczące usługi Azure Database for PostgreSQL — pojedynczy serwer
+# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Ograniczenia w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 W poniższych sekcjach opisano, pojemnością i limitami funkcjonalności w usłudze bazy danych. Jeśli chcesz dowiedzieć się więcej o warstwach zasobów (obliczeniowych, pamięci, magazynu), zobacz [warstw cenowych](concepts-pricing-tiers.md) artykułu.
 
 
@@ -34,7 +35,7 @@ Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następ
 |Pamięć| 4| 500|
 |Pamięć| 8| 960|
 |Pamięć| 16| 1900|
-|Pamięć| 32| 1900|
+|Pamięć| 32| 1987|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
 > Błąd krytyczny: Niestety, zbyt wielu klientów już
@@ -48,6 +49,9 @@ Azure system wymaga pięć połączeń do monitorowania usługi Azure Database f
 
 ### <a name="server-version-upgrades"></a>Uaktualnienia wersji serwera
 - Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane. Jeśli chcesz uaktualnić do następnej wersji głównej, [zrzucanie i przywracanie](./howto-migrate-using-dump-and-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
+
+> Należy pamiętać, że przed PostgreSQL w wersji 10, [zasad przechowywania wersji PostgreSQL](https://www.postgresql.org/support/versioning/) uważane za _wersji głównej_ uaktualnienie do wzrost pierwszy _lub_ drugi numer ( przykład 9.5 lub 9.6 została uznana za _głównych_ uaktualniania wersji).
+> Począwszy od wersji 10 tylko zmiana pierwsza liczba jest uważany za uaktualnienie wersji głównej (na przykład jest 10.0 i 10.1 _pomocnicza_ uaktualniania wersji i 10-11 jest _głównych_ uaktualniania wersji).
 
 ### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 - Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.

@@ -2,18 +2,18 @@
 title: Konfigurowanie replikacji dla maszyn wirtualnych z włączoną obsługą usługi Azure Disk Encryption w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób konfigurowania replikacji z obsługą usługi Azure Disk Encryption maszyn wirtualnych między regionami platformy Azure do innego za pomocą usługi Site Recovery.
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4943b730bb46ee00200d84faf95a7ccb069d3aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60791023"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449217"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych z obsługą usługi Azure Disk Encryption do innego regionu platformy Azure
 
@@ -22,7 +22,7 @@ W tym artykule opisano sposób replikowania maszyn wirtualnych z włączoną fun
 >[!NOTE]
 >Usługa Azure Site Recovery aktualnie obsługuje tylko maszyny wirtualne platformy Azure z systemem Windows OS, które są [włączonego szyfrowania w usłudze Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
 
-## <a name="required-user-permissions"></a>Uprawnienia użytkownika wymagane
+## <a id="required-user-permissions"></a> Uprawnienia użytkownika wymagane
 Usługa Site Recovery wymaga od użytkownika musi mieć uprawnienia do tworzenia magazynu kluczy w docelowym regionie i kopiowanie kluczy do regionu.
 
 Aby włączyć replikację włączone szyfrowanie dysków maszyn wirtualnych w witrynie Azure portal, użytkownik wymaga następujących uprawnień:
@@ -139,18 +139,25 @@ Możesz użyć [skrypt](#copy-disk-encryption-keys-to-the-dr-region-by-using-the
 
 ## <a id="trusted-root-certificates-error-code-151066"></a>Rozwiązywanie problemów uprawnień usługi key vault podczas replikacji maszyny Wirtualnej platformy Azure do platformy Azure
 
-**Przyczyny 1:** Być może wybrano w regionie docelowym już utworzony magazyn kluczy nie ma wymaganych uprawnień, zamiast co usługa Site Recovery, utwórz je. Upewnij się, że usługi key vault ma wymagane uprawnienia, zgodnie z wcześniejszym opisem.
+Usługa Azure Site Recovery wymaga uprawnień do co najmniej odczytu w regionie źródła Key vault i uprawnienia do zapisu w magazynie kluczy regionu docelowego do odczytu wpisu tajnego i skopiuj go do magazynu kluczy w regionie docelowym. 
+
+**Przyczyny 1:** Nie przyznano uprawnienia "GET" **źródłowy region Key vault** do odczytu klucze. </br>
+**Jak naprawić:** Niezależnie od tego, czy jesteś administratorem subskrypcji lub nie ważne jest, czy masz uprawnienie get w magazynie kluczy.
+
+1. Przejdź do źródła region Key vault, czyli w tym przykładzie "ContososourceKeyvault" > **zasady dostępu** 
+2. W obszarze **Wybierz podmiot zabezpieczeń** Dodaj swoją nazwę użytkownika, na przykład: "dradmin@contoso.com"
+3. W obszarze **uprawnienia klucza** wybierz polecenie Pobierz 
+4. W obszarze **uprawnienia klucza tajnego** wybierz polecenie Pobierz 
+5. Zapisać zasady dostępu
+
+**Przyczyny 2:** Nie masz wymaganych uprawnień na **docelowy region Key vault** do zapisu kluczy. </br>
 
 *Na przykład*: Próby replikacji maszyny Wirtualnej, który ma usługi key vault *ContososourceKeyvault* w regionie źródłowym.
 Masz wszystkie uprawnienia w magazynie kluczy regionu źródłowego. Jednak podczas ochrony, wybierz jest już utworzony magazyn kluczy ContosotargetKeyvault, która nie ma uprawnień. Występuje błąd.
 
-**Jak naprawić:** Przejdź do **Home** > **Keyvaults** > **ContososourceKeyvault** > **zasady dostępu** i dodaj odpowiednie uprawnienia.
+Uprawnienia wymagane na [docelowej Key vault](#required-user-permissions)
 
-**Przyczyny 2:** Być może wybrano w regionie docelowym już utworzony magazyn kluczy nie ma uprawnień zamiast co usługa Site Recovery, utwórz ją szyfrowania/odszyfrowywania. Upewnij się, że masz odszyfrowywania szyfrowania uprawnienia Jeśli również Szyfrujesz klucz w regionie źródłowym.</br>
-
-*Na przykład*: Próby replikacji maszyny Wirtualnej, która ma magazyn kluczy *ContososourceKeyvault* w regionie źródłowym. Masz niezbędnych uprawnień w magazynie kluczy regionu źródłowego. Jednak podczas ochrony, wybierz jest już utworzony magazyn kluczy ContosotargetKeyvault, która nie ma uprawnień do odszyfrowywania i szyfrowania. Występuje błąd.</br>
-
-**Jak naprawić:** Przejdź do **Home** > **Keyvaults** > **ContososourceKeyvault** > **zasady dostępu**. Dodawanie uprawnień w ramach **uprawnienia klucza** > **operacje kryptograficzne**.
+**Jak naprawić:** Przejdź do **Home** > **Keyvaults** > **ContosotargetKeyvault** > **zasady dostępu** i dodaj odpowiednie uprawnienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: c8a4b09a27325f31e548d1b345b2932c6ab6315c
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 376b7042a513dd50647dc8f88bf1de70f65bb21c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191891"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478401"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion-preview"></a>Łączenie z maszyną wirtualną Windows przy użyciu bastionu Azure (wersja zapoznawcza)
 
@@ -34,7 +34,7 @@ Aby można było utworzyć połączenie, wymagane są następujące role:
 
 ## <a name="rdp"></a>Nawiązywanie połączenia przy użyciu protokołu RDP
 
-1. W [witryny Azure portal](https://aka.ms/BastionHost) dla bastionu w wersji zapoznawczej, przejdź do maszyny wirtualnej, który chcesz się połączyć, a następnie kliknij **Connect**. Maszyna wirtualna powinna być maszynę wirtualną Windows, korzystając z połączeniem RDP.
+1. Użyj [ten link](https://aka.ms/BastionHost) o otwarcie strony portalu w wersji zapoznawczej dla usługi Azure bastionu. Przejdź do maszyny wirtualnej, którą chcesz nawiązać połączenie, a następnie kliknij przycisk **Connect**. Maszyna wirtualna powinna być maszynę wirtualną Windows, korzystając z połączeniem RDP.
 
     ![Połącz z maszyną Wirtualną](./media/bastion-connect-vm-rdp/connect.png)
 

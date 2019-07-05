@@ -1,5 +1,5 @@
 ---
-title: Zaznacz kontrakt strony — Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Zaznacz kontrakt strony — Azure Active Directory B2C
 description: Dowiedz się więcej na temat zaznacz kontrakt strony w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,21 +7,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7aab43695f0b11590d8bd2aa011073ba04d95250
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7098d805b0e3f1527587fc3411cd4c3b234b057
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512992"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540390"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Zaznacz kontrakt strony w usłudze Azure Active Directory B2C, za pomocą zasad niestandardowych
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-W zasadach usługi Azure Active Directory (Azure AD) B2C, można włączyć kodu po stronie klienta JavaScript, czy używasz przepływy użytkownika lub niestandardowych zasad. Aby włączyć język JavaScript dla aplikacji, należy dodać element do Twojej [zasad niestandardowych](active-directory-b2c-overview-custom.md), zaznacz kontrakt strony i użyj [z usługi b2clogin.com](b2clogin.md) w żądaniach. Umowa strony jest skojarzenie elementów, które oferuje usługa Azure AD B2C i zawartości, przez Ciebie. W tym artykule omówiono sposób zaznacz kontrakt strony w usłudze Azure AD B2C, konfigurując je w zasadach niestandardowych.
+W zasadach usługi Azure Active Directory (Azure AD) B2C można włączyć kodu po stronie klienta JavaScript, czy używasz przepływy użytkownika lub niestandardowych zasad. Aby włączyć język JavaScript dla aplikacji, należy dodać element do Twojej [zasad niestandardowych](active-directory-b2c-overview-custom.md), zaznacz kontrakt strony i użyj [z usługi b2clogin.com](b2clogin.md) w żądaniach.
+
+Umowa strony jest skojarzenie elementów, które oferuje usługa Azure AD B2C i zawartości, przez Ciebie.
+
+W tym artykule omówiono sposób zaznacz kontrakt strony w usłudze Azure AD B2C, konfigurując je w zasadach niestandardowych.
 
 > [!NOTE]
 > Jeśli chcesz włączyć język JavaScript, w przypadku przepływów użytkownika, zobacz [języków JavaScript i strony umowy wersji w usłudze Azure Active Directory B2C](user-flow-javascript-overview.md).
@@ -42,27 +46,54 @@ W przypadku zasad niestandardowych, konieczne może być [ContentDefinitions](co
 </ContentDefinition>
 ```
 
-Zaznacz kontrakt strony, możesz zmienić **identyfikator URI** wartości w swojej [ContentDefinitions](contentdefinitions.md) w zasadach. Przełączając się ze starego **identyfikator URI** wartości z nowymi wartościami miar, w przypadku zaznaczenia niemodyfikowalny pakiet. Zaletą używania tego pakietu jest wiadomo nie zmienić i spowodować nieoczekiwane zachowanie na stronie. 
+Zaznacz kontrakt strony, możesz zmienić **identyfikator URI** wartości w swojej [ContentDefinitions](contentdefinitions.md) w zasadach. Przełączając się ze starego **identyfikator URI** wartości z nowymi wartościami miar, w przypadku zaznaczenia niemodyfikowalny pakiet. Zaletą używania tego pakietu jest wiadomo nie zmienić i spowodować nieoczekiwane zachowanie na stronie.
 
-Aby skonfigurować stronę umowy, skorzystaj z poniższej tabeli, aby znaleźć **identyfikator URI** wartości. 
+Aby skonfigurować stronę umowy, skorzystaj z poniższej tabeli, aby znaleźć **identyfikator URI** wartości.
 
 | Stara wartość identyfikator URI | Nowa wartość identyfikator URI |
 | ----------------- | ----------------- |
-| Nazwa urn: com:microsoft:aad:b2c:elements:idpselection:1.0.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0 |
-| Nazwa urn: com:microsoft:aad:b2c:elements:unifiedssd:1.0.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0 | 
-| Nazwa urn: com:microsoft:aad:b2c:elements:claimsconsent:1.0.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0 |
-| Nazwa urn: com:microsoft:aad:b2c:elements:multifactor:1.0.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0 |
-| Nazwa urn: com:microsoft:aad:b2c:elements:multifactor:1.1.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0 |
-| Nazwa urn: com:microsoft:aad:b2c:elements:selfasserted:1.0.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0 |
-| Nazwa urn: com:microsoft:aad:b2c:elements:selfasserted:1.1.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0 | 
-| Nazwa urn: com:microsoft:aad:b2c:elements:unifiedssp:1.0.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0 |
-| Nazwa urn: com:microsoft:aad:b2c:elements:unifiedssp:1.1.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0 |
-| Nazwa urn: com:microsoft:aad:b2c:elements:globalexception:1.0.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0 |
-| Nazwa urn: com:microsoft:aad:b2c:elements:globalexception:1.1.0 | Nazwa urn: com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0 |
+| `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0` |
+
+## <a name="version-change-log"></a>Dziennik zmian w wersji
+
+Strony umowy pakiety są okresowo aktualizowane w celu zawierać poprawki i udoskonalenia w ich elementy strony. Następujący dziennik zmian określa zmian wprowadzonych w każdej wersji.
+
+### <a name="110"></a>1.1.0
+
+- Wyjątek strony (globalexception)
+  - Poprawki ułatwień dostępu
+  - Usunięte domyślną wiadomość, gdy brak połączenia z zasad
+  - Domyślne CSS usunięte
+- Strona uwierzytelniania Wieloskładnikowego (wieloskładnikowa)
+  - Przycisk "Potwierdź kod", usunięte
+  - Pole wejściowe dla trwa obecnie tylko kod wprowadzać znaki maksymalnie sześć (6)
+  - Strona automatycznie podejmie próbę sprawdzenia kodu, wprowadzony po wprowadzeniu 6-cyfrowy kod bez dowolnego przycisku konieczności można klikać
+  - Jeśli kod jest nieprawidłowy, następnie pole wejściowe są automatycznie usuwane
+  - Po trzech (3) prób niepoprawny kod B2C wysyła informację o błędzie do usługi
+  - Poprawki dotyczące ułatwień dostępu
+  - Domyślne CSS usunięte
+- Strona samodzielnie (selfasserted)
+  - Anuluj usunięto alert
+  - Klasa CSS dla elementów błąd
+  - Pokaż/Ukryj błąd logiki ulepszone
+  - Domyślne CSS usunięte
+- Ujednolicone dostawcy usług udostępnionych (unifiedssp)
+  - Dodano nie wylogowuj mnie kontroli (KMSI)
+
+### <a name="100"></a>1.0.0
+
+- Wersja początkowa
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Znajdź więcej informacji na temat w jaki sposób dostosować interfejs użytkownika aplikacji w [Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
-
-
-

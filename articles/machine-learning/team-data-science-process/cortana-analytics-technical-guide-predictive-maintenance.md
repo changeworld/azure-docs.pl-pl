@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feccaea0451ae36d841aae95ed0baf54f90c2700
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715662"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568259"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce
 
@@ -88,7 +88,7 @@ Usługa Azure Event Hub jest ogólny; dane mogą być przesyłane do koncentrato
 
 W tym dokumencie nie opisano sposobu pozyskiwania danych, ale można łatwo wysłać zdarzenia lub dane do Centrum zdarzeń platformy Azure przy użyciu interfejsów API Centrum zdarzeń.
 
-### <a name="azure-stream-analytics"></a>Usługa Azure Stream Analytics
+### <a name="azure-stream-analytics-1"></a>Azure Stream Analytics
 Usługa Azure Stream Analytics do dostarczania wyników analizy w czasie rzeczywistym prawie odczytywanie ze strumieni danych i wyprowadzanie danych do dowolnej liczby źródeł.
 
 Konserwacja zapobiegawcza lotnictwo i Kosmonautyka szablon rozwiązania zapytania usługi Azure Stream Analytics składa się z czterech zapytania podrzędne, każde zapytanie zużywania zdarzeń z usługi Azure Event Hub, z danych wyjściowych do czterech różnych lokalizacji. Te dane wyjściowe składają się z trzech zestawów danych usługi Power BI i jednej lokalizacji magazynu platformy Azure.

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6940be7f64aa9ae16258fa936d197e2715235ab
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024637"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485408"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dokumentów, a inne obiekty zależne od tego, czy możesz [aprowizowanie usługi Azure Search](search-create-service-portal.md) na **bezpłatna**, **podstawowe**,  **Standardowa**, lub **zoptymalizowane pod kątem magazynu** warstw cenowych.
@@ -29,7 +29,7 @@ Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dok
 + **Magazyn zoptymalizowany pod kątem** działa na dedykowanych maszynach przy użyciu więcej całkowita ilość miejsca, magazynu, przepustowości i ilości pamięci niż **standardowa**. Magazyn zoptymalizowany pod kątem jest oferowana w dwóch poziomach: P1 i P2
 
 > [!NOTE]
-> Warstwy usługi zoptymalizowane pod kątem magazynu są obecnie dostępne w wersji zapoznawczej w obniżonej cenie na potrzeby testowania i eksperymentowania w celu zbierania informacji zwrotnych. Ostateczna cena usługi zostanie ogłoszony później podczas tych warstwach są ogólnie dostępne. Odradzamy korzystający z tych warstw w przypadku aplikacji produkcyjnych.
+> Począwszy od 1 lipca wszystkie warstwy są ogólnie dostępne, w tym warstwa zoptymalizowane pod kątem magazynu. Wszystkie ceny można znaleźć na [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/) strony.
 
   S3 High Density (wysoka gęstość S3) jest zaprojektowany z myślą o konkretnych obciążeń: [wielodostępu](search-modeling-multitenant-saas-applications.md) i dużych ilości małych indeksów (miliona dokumentów na indeks, trzy tysiące indeksów na usługę). Ta warstwa nie zapewnia [funkcji indeksatora](search-indexer-overview.md). Na wysoka gęstość S3 pozyskiwania danych musi korzystać z podejścia push przy użyciu wywołań interfejsu API wypychania danych ze źródła do indeksu. 
 

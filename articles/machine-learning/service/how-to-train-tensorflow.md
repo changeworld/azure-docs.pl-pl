@@ -10,12 +10,12 @@ ms.author: minxia
 author: mx-iao
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1f587785b06f10bab42a425b0910d4f25fddf9f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a13afe56e007e2371b3193003ee95266b0750569
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165537"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543791"
 ---
 # <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Szkolenie i zarejestruj TensorFlow modeli na skalę przy użyciu usługi Azure Machine Learning
 
@@ -23,7 +23,7 @@ W tym artykule pokazano, jak szkolenie i zarejestrować model TensorFlow przy u�
 
 TensorFlow to platforma obliczeniowa typu open-source najczęściej używany do tworzenia głębokich sieciach neuronowych (DNN). Za pomocą usługi Azure Machine Learning można szybko skalować w poziomie zadania szkoleń o całkowicie otwartym kodzie źródłowym, przy użyciu zasobów obliczeniowych w elastycznej chmurze. Można także śledzić swoje przebiegów szkoleniowych, modele wersji wdrażanie modeli i wiele więcej.
 
-Czy tworzysz od podstaw modelu TensorFlow korzystamy istniejącego modelu w chmurze, usługi Azure Machine Learning mogą pomóc tworzyć modele gotowe do produkcji.
+Czy tworzysz modelu TensorFlow od podstaw lub korzystamy [istniejący model](how-to-deploy-existing-model.md) do chmury usługi Azure Machine Learning pomaga tworzyć modele gotowe do produkcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -290,7 +290,7 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przeszkolonych i zarejestrowane w usłudze Azure Machine Learning model TensorFlow. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu wdrażania modelu.
+W tym artykule przeszkolonych i zarejestrować TensorFlow model. Aby dowiedzieć się, jak wdrożyć model do klastra z włączonymi procesorami GPU, przejdź do naszego artykułu wdrożenia modelu procesora GPU.
 
-> [!div class="nextstepaction"]
-> [Jak i gdzie umożliwia wdrażanie modeli](how-to-deploy-and-where.md)
+[Jak wdrożyć do wnioskowania za pomocą procesorów GPU](how-to-deploy-inferencing-gpus.md)
+[jak monitorować przy użyciu narzędzia Tensorboard](how-to-monitor-tensorboard.md)

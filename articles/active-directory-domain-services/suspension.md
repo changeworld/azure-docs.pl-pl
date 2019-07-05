@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Zawieszone domeny | Dokumentacja
 description: Domena zarządzana zawieszenie i usunięcie
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: a4e43518ce70c040b8243034c52e4b215548a47c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: f50d16687632224a21d6ae294f4070485fb4eead
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246722"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67472505"
 ---
 # <a name="suspended-domains"></a>Wstrzymane domeny
 Jeśli Azure Active Directory Domain Services (Azure AD DS) jest w stanie zrealizować domeny zarządzanej przez długi czas, umieszcza je w domenie zarządzanej przechodzą w stan wstrzymania. W tym artykule opisano, dlaczego domeny zarządzane są wstrzymywane i jak skorygować wstrzymania domeny.

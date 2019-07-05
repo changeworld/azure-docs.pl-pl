@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2c5491bab9b45df11c2fe81aa933a1a34c49a41b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4e0af3b395ec640fd037a1e76365408c10613340
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205936"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477013"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Użyj szablonu usługi Azure Resource Manager utworzyć obszar roboczy usługi Azure Machine Learning
 
@@ -103,6 +103,19 @@ az group deployment create \
 ```
 
 Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md) i [wdrażanie prywatnego szablonu usługi Resource Manager przy użyciu tokenu sygnatury dostępu Współdzielonego i wiersza polecenia platformy Azure](../../azure-resource-manager/resource-manager-cli-sas-token.md).
+
+## <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Zasady dostępu w usłudze Azure Key Vault i szablonów usługi Azure Resource Manager
+
+Kiedy używać szablonu usługi Azure Resource Manager utworzyć obszar roboczy i skojarzonych zasobów (w tym usługi Azure Key Vault), a wiele razy. Na przykład przy użyciu szablonu wiele razy z tymi samymi parametrami w ramach ciągłej integracji i potoku wdrożenia.
+
+Większość operacji tworzenia zasobów za pomocą szablonów są idempotentne, ale usługi Key Vault Czyści zasady dostępu w każdym razem, gdy jest używany szablon. Czyszczenie zasad podziały dostępu dostępu do usługi Key Vault do istniejącego obszaru roboczego, który jest używany przez. Na przykład funkcje Stop/tworzenia maszyny Wirtualnej platformy Azure notesów może zakończyć się niepowodzeniem.  
+
+Aby uniknąć tego problemu, zaleca się jedną z następujących metod:
+
+*  Nie należy wdrażać szablonu więcej niż jeden raz dla tego samego parametrów. Przed lub usunąć istniejące zasoby przy użyciu szablonu, aby je ponownie utworzyć.
+  
+* Przejrzyj zasady dostępu magazynu kluczy, a następnie ustaw właściwość accessPolicies szablonu za pomocą tych zasad.
+* Sprawdź, czy zasobu usługi Key Vault już istnieje. Jeśli tak jest, nie twórz ponownie go za pomocą szablonu. Na przykład dodać parametr, który umożliwia wyłączenie tworzenia zasobu usługi Key Vault, jeśli już istnieje.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

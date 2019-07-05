@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571055"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432628"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Tworzenie Centrum IoT przy użyciu witryny Azure portal
 
@@ -50,13 +50,15 @@ Kliknij przycisk **Dodaj** otworzyć **Dodawanie zasad dostępu współdzieloneg
 
 ![Zrzut ekranu przedstawiający dodawanie zasad dostępu współdzielonego](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* **Odczyt rejestru** i **zapis w rejestrze** zasady przyznają uprawnienia dostępu odczytu i zapisu w rejestrze tożsamości. Wybranie opcji zapisu automatycznie wybiera wybranie opcji odczytu.
+* **Odczyt rejestru** i **zapis w rejestrze** zasady przyznają uprawnienia dostępu odczytu i zapisu w rejestrze tożsamości. Te uprawnienia są używane przez serwer zaplecza w chmurze usługi do zarządzania tożsamościami urządzeń. Wybranie opcji zapisu automatycznie wybiera wybranie opcji odczytu.
 
-* **Połączenie z usługą** zasad udziela uprawnień do dostępu do punktów końcowych usług, takich jak **otrzymywać urządzenia do chmury**. 
+* **Połączenie z usługą** zasad udziela uprawnień do dostępu do punktów końcowych usługi. To uprawnienie jest używane przez serwer zaplecza w chmurze usługi do wysyłania i odbierania komunikatów z urządzeń, jak również do aktualizacji i odczytu danych bliźniaczej reprezentacji modułu i bliźniaczej reprezentacji urządzenia.
 
-* **Połączenie urządzenia** zasad przyznaje uprawnienia do wysyłania i odbierania komunikatów za pomocą punktów końcowych po stronie urządzenia usługi IoT Hub.
+* **Połączenie urządzenia** zasad przyznaje uprawnienia do wysyłania i odbierania komunikatów za pomocą punktów końcowych po stronie urządzenia usługi IoT Hub. To uprawnienie jest używany przez urządzenia do wysyłania oraz odbierać komunikaty z Centrum IoT hub, aktualizacji i odczytu danych bliźniaczej reprezentacji modułu i bliźniaczej reprezentacji urządzenia i wykonywać operacje przekazywania plików.
 
 Kliknij przycisk **Utwórz** można dodać tę nowo utworzoną zasad do istniejącej listy.
+
+Aby uzyskać szczegółowe informacje dotyczące dostępu przyznane przez określonych uprawnień, zobacz [uprawnienia usługi IoT Hub](./iot-hub-devguide-security.md#iot-hub-permissions).
 
 ## <a name="message-routing-for-an-iot-hub"></a>Routing komunikatów usługi IoT hub
 

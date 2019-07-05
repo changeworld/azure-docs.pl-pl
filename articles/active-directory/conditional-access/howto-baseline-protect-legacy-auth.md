@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e55bf4a66dcd8c1c7cfbc881d6f93c3a12f5dc00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8e9ea8956d87e2ec47cc65495e81d8a0f0ad8cb
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112314"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560922"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Zasady punktu odniesienia: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
@@ -28,8 +28,6 @@ Aby dać użytkownikom łatwy dostęp do aplikacji w chmurze, Azure Active Direc
 Obecnie większość wszystkich uszczerbku prób logowania pochodzą z uwierzytelniania starszej wersji. Uwierzytelnianie starszych nie obsługuje uwierzytelnianie wieloskładnikowe (MFA). Nawet w przypadku zasad MFA włączone w Twoim katalogu, nieuprawnione można uwierzytelniać przy użyciu starszej wersji protokołu i Pomiń uwierzytelnianie wieloskładnikowe.
 
 Najlepszym sposobem, aby chronić swoje konto z żądań uwierzytelniania złośliwego przez starszych protokołów jest zablokować te próby wszystko ze sobą. Aby ułatwić zablokować wszystkie żądania logowania dokonanych przez starszych protokołów, utworzyliśmy zasady linii bazowej, które właśnie to robi.
-
-![Blokuj starsze uwierzytelnianie przy użyciu dostępu warunkowego](./media/howto-baseline-protect-legacy-auth/baseline-policy-block-legacy-authentication.png)
 
 **Blokuj starsze uwierzytelnianie** jest [bazowymi zasadami](concept-baseline-protection.md) , która blokuje wszystkie żądania uwierzytelniania starszych protokołów. Nowoczesnego uwierzytelniania musi być użyte do zalogowania się pomyślnie dla wszystkich użytkowników. Używany w połączeniu z innymi zasadami linii bazowej, wszystkie żądania pochodzące z starszych protokołów zostanie zablokowane, a wszyscy użytkownicy będą musieli usługi MFA w każdym przypadku, gdy wymagane. Ta zasada nie blokuje programu Exchange ActiveSync.
 
@@ -111,7 +109,6 @@ Aby włączyć te zasady i chronić swoją organizację:
 1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
 1. Na liście zasad wybierz **bazowymi zasadami: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)** .
 1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
-1. Dodaj wykluczenia użytkownika, klikając **użytkowników** > **wybierz wykluczonych użytkowników** i wybierając pozycję Użytkownicy, którzy muszą być wyłączone. Kliknij przycisk **wybierz** następnie **gotowe**.
 1. Kliknij przycisk **Zapisz**.
 
 ## <a name="next-steps"></a>Kolejne kroki

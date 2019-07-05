@@ -1,23 +1,21 @@
 ---
-title: Zapłać z góry za plany oprogramowania - Azure rezerwacje | Dokumentacja firmy Microsoft
+title: Zapłać z góry za plany oprogramowania - rezerwacje platformy Azure
 description: Dowiedz się, jak wpłacenia zaliczki dla plany oprogramowania zaoszczędzić pieniądze w porównaniu z tego względu koszt zgodnie z rzeczywistym użyciem.
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e9d07bf01536d7865bd79f667a937037d96837
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771247"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489879"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Opłacanie planów oprogramowania platformy Azure z góry
 
@@ -25,7 +23,7 @@ Gdy wpłacenia zaliczki użycia oprogramowania SUSE a RedHat na platformie Azure
 
 Możesz kupić plany oprogramowania SUSE i RedHat w witrynie Azure portal. Aby kupić plan:
 
-- Konieczne jest posiadanie roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.
+- Konieczne jest posiadanie roli właściciela dla co najmniej jeden Enterprise lub poszczególnych subskrypcji przy użyciu zgodnie z rzeczywistym użyciem.
 - W przypadku subskrypcji Enterprise **Dodawanie wystąpień zarezerwowanych** należy włączyć opcję [portalu EA portal](https://ea.azure.com/). Jeśli ustawienie jest wyłączone, musi być administratorem dla subskrypcji EA.
 - W przypadku programu Cloud Solution Provider (CSP) agentów administratora lub agentom sprzedaży mogą kupować plany oprogramowania.
 
@@ -35,12 +33,12 @@ Możesz kupić plany oprogramowania SUSE i RedHat w witrynie Azure portal. Aby k
 2. Kliknij przycisk **Dodaj** i następnie wybierz plan oprogramowania, który chcesz kupić.
 Wypełnij wymagane pola. Maszyny Wirtualnej z systemem SUSE Linux dowolnej maszyny Wirtualnej z systemem RedHat, odpowiadający atrybuty można zakupić pobiera rabat. Rzeczywista liczba wdrożeń, które zawierają Rabat zależy od tego, zakresu i ilość wybrana.
 3. Wybierz subskrypcję. Służy do zapłacenia za plan.
-Metoda płatności subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy Enterprise Agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P).
+Metoda płatności subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy Enterprise Agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub poszczególnych umowy z zgodnie z rzeczywistym użyciem (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P).
     - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
-    - W przypadku subskrypcji płatności opłaty są naliczane do metody płatności karty kredytowej lub faktury dla subskrypcji.
+    - Dla poszczególnych subskrypcji zgodnie z rzeczywistym użyciem, cennik opłaty są naliczane do metody płatności karty kredytowej lub faktury dla subskrypcji.
 4. Wybierz zakres. Zakres może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony).
     - Pojedynczej subskrypcji — rabat w wysokości plan jest stosowany do pasujących użycie w ramach subskrypcji.
-    - Czy rabat w wysokości plan w warstwie współdzielona — jest stosowany do pasujących wystąpień w dowolnej subskrypcji w kontekstu rozliczeń. Dla klientów korporacyjnych kontekstu rozliczeń jest rejestracji i zawiera wszystkie subskrypcje w rejestracji. W przypadku klientów płatność za rzeczywiste użycie kontekstu rozliczeń jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.
+    - Czy rabat w wysokości plan w warstwie współdzielona — jest stosowany do pasujących wystąpień w dowolnej subskrypcji w kontekstu rozliczeń. Dla klientów korporacyjnych kontekstu rozliczeń jest rejestracji i zawiera wszystkie subskrypcje w rejestracji. Dla poszczególnych planu cen klientom zgodnie z rzeczywistym użyciem kontekstu rozliczeń jest planem poszczególnych zgodnie z rzeczywistym użyciem cen subskrypcji utworzonych przez administratora konta.
 5. Wybierz produkt, aby wybrać rozmiar maszyny Wirtualnej i typ obrazu. Rabat dotyczy tylko wybrany rozmiar maszyny Wirtualnej.
 6. Wybierz termin jeden rok lub trzy lata.
 7. Wybierz ilość, czyli liczbę przedpłacone wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeń.

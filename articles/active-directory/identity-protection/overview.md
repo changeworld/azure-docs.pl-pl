@@ -17,16 +17,16 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a1154e6484ebc86743202239dcd94f0772c8011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 660793cdba61b5438283ea54a9f7349bdfbc98e1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67204516"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440507"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co to jest Azure Active Directory Identity Protection?
 
-Usługa Azure Active Directory Identity Protection umożliwia organizacjom skonfigurowanie automatycznych odpowiedzi na wykryte podejrzane działania związane z tożsamościami użytkowników.
+Usługa Azure Active Directory [tożsamości](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) Protection umożliwia organizacjom skonfigurowanie automatycznych odpowiedzi na wykryte podejrzane działania związane z tożsamościami użytkowników.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
@@ -69,7 +69,7 @@ Usługa Azure Active Directory Identity Protection jest większa niż monitorowa
 
 Aby zrównoważyć obciążenie działań z zakresu zarządzania całym implementacji Identity Protection, można przypisać kilku ról. Usługa Azure AD Identity Protection obsługuje 3 role katalogu:
 
-| Rola | Można zrobić | Nie można wykonać |
+| Role | Można zrobić | Nie można wykonać |
 | :-- | --- | --- |
 | Administrator globalny | Pełny dostęp do usługi Identity Protection dołączanie Identity Protection| |
 | Administrator zabezpieczeń | Pełny dostęp do usługi Identity Protection | Dołączanie Identity Protection, resetować hasła dla użytkownika |

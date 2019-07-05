@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/28/2019
 ms.author: sogup
-ms.openlocfilehash: 5fdf8e6c19711f6ce38d430a9dffab185cad961b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 0248e169f5d502cce8723f594f438b87ab088f3a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296168"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551608"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowej maszyn wirtualnych platformy Azure
 
@@ -46,10 +46,6 @@ Jeśli jesteś współautorem maszyny Wirtualnej, aby umożliwić kopii zapasowe
 Jeśli maszyn wirtualnych i magazynu usługi Recovery Services różnych grupach zasobów, upewnij się, że masz uprawnienia do zapisu w grupie zasobów dla magazynu usługi Recovery Services.  
 
 
-### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Jakie maszyny wirtualne platformy Azure można można tworzyć kopie zapasowe przy użyciu usługi Azure Backup?
-
-Przegląd [macierz obsługi](backup-support-matrix-iaas.md) ograniczenia i szczegóły pomocy technicznej.
-
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Zadanie tworzenia kopii zapasowej na żądanie używa ten sam harmonogram przechowywania co zaplanowane kopie zapasowe?
 Nie. Określ zakres przechowywania dla zadania tworzenia kopii zapasowej na żądanie. Domyślnie jest przechowywane przez 30 dni po wyzwoleniu z portalu.
 
@@ -73,17 +69,12 @@ Jeśli zablokujesz grupy zasobów utworzonej w usłudze Azure Backup, kopie zapa
 
 Użytkownik musi usunąć blokadę i wyczyścić kolekcję punktów przywracania z danej grupy zasobów, aby upewnić się powiedzie, wykonanie kolejnych kopii zapasowych [wykonaj następujące kroki](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) usunąć kolekcję punktów przywracania.
 
-### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Zasad tworzenia kopii zapasowej należy wziąć pod uwagę czasu letniego (DST)?
-Nie. Data i godzina na komputerze lokalnym jest lokalny przy użyciu bieżącego letniego stosowane. Czas zaplanowanego tworzenia kopii zapasowych mogą się różnić od lokalnego czasu z powodu czasu letniego.
-
-### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Liczba dysków z danymi można dołączyć do maszyny Wirtualnej z kopii zapasowej przez usługę Azure Backup?
-Usługa Azure Backup można utworzyć kopii maszyn wirtualnych z maksymalnie 16 dysków. Obsługa 16 dysków znajduje się w [natychmiastowe Przywracanie](backup-instant-restore-capability.md).
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Czy obsługę kopii zapasowych platformy Azure SSD zarządzanego dysku w warstwie standardowa?
 Usługa Azure Backup obsługuje [SSD w warstwie standardowa usługi managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Dyski zarządzane dyski SSD zapewniają nowy typ magazynu trwałego maszyn wirtualnych platformy Azure. Obsługa dysków SSD zarządzane znajduje się w [natychmiastowe Przywracanie](backup-instant-restore-capability.md).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Możemy utworzyć kopię zapasową maszyny Wirtualnej z dyskiem z obsługą WA akcelerator zapisu?
-Nie można pobrać migawek na dysku włączony (Waszyngton). Jednak usługa Azure Backup można wykluczyć dysk z obsługą WA z kopii zapasowej. Wykluczenie dysku dla maszyn wirtualnych z dyskami z obsługą WA jest obsługiwana tylko dla subskrypcji, uaktualnić do natychmiastowe przywracanie.
+Nie można pobrać migawek na dysku włączony (Waszyngton). Jednak usługa Azure Backup można wykluczyć dysk z obsługą WA z kopii zapasowej.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Mam Maszynę wirtualną z dyskami akcelerator zapisu (Waszyngton) i zainstalować oprogramowanie SAP HANA. Jak wykonać kopię zapasową?
 Usługa Azure Backup nie można utworzyć kopii zapasowych dysków komputerów z obsługą WA, ale można wykluczyć z kopii zapasowej. Jednak kopii zapasowej nie zawiera spójność bazy danych, ponieważ na dysku włączony (Waszyngton) nie ma kopii zapasowej. Jeśli dysk systemu operacyjnego kopii zapasowych i kopii zapasowych dysków, które nie są włączone w stanie Waszyngton, można wykonywanie kopii zapasowych dysków przy użyciu tej konfiguracji.
@@ -93,6 +84,8 @@ Prywatna wersja zapoznawcza do tworzenia kopii zapasowych oprogramowania SAP HAN
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Co to jest maksymalne opóźnienie, których można oczekiwać od czasu rozpoczęcia tworzenia kopii zapasowych w zaplanowanym czasie tworzenia kopii zapasowej, ustawionych w zasadach tworzenia kopii zapasowej mojej maszyny Wirtualnej?
 Zaplanowane tworzenie kopii zapasowej zostanie wyzwolone w ciągu 2 godzin według harmonogramu wykonywania kopii zapasowej. Aby uzyskać przykład. Jeśli 100 maszyn wirtualnych ma czas rozpoczęcia tworzenia kopii zapasowych zaplanowanych o 2:00, następnie max 4:00 am wszystkich 100VMs mają zadania tworzenia kopii zapasowej w toku. Jeśli zaplanowane kopie zapasowe została wstrzymana z powodu awarii i wznowić ponowione kopii zapasowej można uruchomić poza tym oknem zaplanowanych 2 godz.
 
+### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Co to jest zakres minimalne dozwolone przechowywanie codziennego punktu kopii zapasowej?
+Usługa Azure policy kopii zapasowej maszyny wirtualnej obsługuje szeroką gamę co najmniej 7 dni do 9999 dni. Wszelkie zmiany istniejących zasad tworzenia kopii zapasowej maszyny Wirtualnej z mniej niż 7 dni będzie wymagać aktualizacji, aby spełnić zakres co najmniej 7 dni.
 
 ## <a name="restore"></a>Przywracanie
 

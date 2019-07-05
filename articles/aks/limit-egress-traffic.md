@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a9ba20b60e8ef6cdb743546cd842e4ee24b3fd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752177"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441921"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — ruch wychodzący Limit dla węzłów klastra i kontrola dostępu do wymaganych portów i usług w usłudze Azure Kubernetes Service (AKS)
 
@@ -30,19 +30,22 @@ Ten artykuł szczegółowo opisuje jakie porty sieciowe i w pełni kwalifikowany
 
 Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.66 lub później zainstalowane i skonfigurowane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-Aby utworzyć klaster usługi AKS, które ogranicza ruch wychodzący, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Rejestracja funkcja umożliwia skonfigurowanie każdego klastra AKS, można utworzyć na podstawowy system obrazy kontenerów z MCR lub ACR. Aby zarejestrować *AKSLockingDownEgressPreview* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+Aby utworzyć klaster usługi AKS, które ogranicza ruch wychodzący, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Rejestracja funkcja umożliwia skonfigurowanie każdego klastra AKS, można utworzyć na podstawowy system obrazy kontenerów z MCR lub ACR. Aby zarejestrować *AKSLockingDownEgressPreview* flagę funkcji, należy użyć [az feature register][az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+
+> [!CAUTION]
+> Po zarejestrowaniu funkcji w ramach subskrypcji, nie można obecnie wyrejestrować tę funkcję. Po włączeniu niektóre funkcje w wersji zapoznawczej, wartości domyślne mogą służyć dla wszystkich klastrów usługi AKS, które następnie są tworzone w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji w środowisku produkcyjnym. Aby przetestować funkcje w wersji zapoznawczej i zbieranie opinii, należy użyć oddzielnej subskrypcji.
 
 ```azurecli-interactive
 az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService
 ```
 
-Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stanu rejestracji za pomocą [lista funkcji az] [ az-feature-list] polecenia:
+Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stanu rejestracji za pomocą [lista funkcji az][az-feature-list] polecenia:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSLockingDownEgressPreview')].{Name:name,State:properties.state}"
 ```
 
-Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcy zasobów za pomocą [az provider register] [ az-provider-register] polecenia:
+Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcy zasobów za pomocą [az provider register][az-provider-register] polecenia:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -54,7 +57,7 @@ Zarządzanie i cele operacyjne węzłów w klastrze AKS na potrzeby dostępu do 
 
 Aby zwiększyć bezpieczeństwo klastra usługi AKS, możesz ograniczyć ruch wychodzący. Klaster jest skonfigurowany do ściągania obrazów kontenera z MCR lub ACR podstawowego systemu. Blokować ruch wychodzący w ten sposób należy zdefiniować określone porty i nazw FQDN, aby umożliwić węzłów AKS do poprawnie komunikowania się z usługami zewnętrznymi wymagane. Bez tych autoryzowanych portów i FQDN węzłów AKS nie może komunikować się z serwerem interfejsu API lub zainstalować podstawowe składniki.
 
-Możesz użyć [zapory usługi Azure] [ azure-firewall] lub urządzenie zapory innych firm 3 do zabezpieczenia ruchu wychodzącego i zdefiniować te wymagane porty i adresy. AKS nie automatycznie tworzy te reguły. Następujące porty i adresy są dla odwołania i Utwórz odpowiednie zasady w zaporze sieciowej.
+Możesz użyć [zapory usługi Azure][azure-firewall] lub urządzenie zapory innych firm 3 do zabezpieczenia ruchu wychodzącego i zdefiniować te wymagane porty i adresy. AKS nie automatycznie tworzy te reguły. Następujące porty i adresy są dla odwołania i Utwórz odpowiednie zasady w zaporze sieciowej.
 
 W usłudze AKS istnieją dwa rodzaje portów i adresów:
 
@@ -62,7 +65,7 @@ W usłudze AKS istnieją dwa rodzaje portów i adresów:
 * [Opcjonalne zalecane adresy i porty w przypadku klastrów usługi AKS](#optional-recommended-addresses-and-ports-for-aks-clusters) nie są wymagane dla wszystkich scenariuszy, ale Integracja z innymi usługami, takie jak Azure Monitor nie będzie działać poprawnie. Przejrzyj listę portów opcjonalne i nazwy FQDN i autoryzowania usługi i składniki używane w klastrze AKS.
 
 > [!NOTE]
-> Ograniczanie ruchu wychodzącego działa tylko na nowych klastrów AKS utworzony po włączeniu rejestracji flagi funkcji. W przypadku istniejących klastrów [wykonaj operację uaktualniania klastra] [ aks-upgrade] przy użyciu `az aks upgrade` polecenia, aby ograniczyć ruch wychodzący.
+> Ograniczanie ruchu wychodzącego działa tylko na nowych klastrów AKS utworzony po włączeniu rejestracji flagi funkcji. W przypadku istniejących klastrów [wykonaj operację uaktualniania klastra][aks-upgrade] przy użyciu `az aks upgrade` polecenia, aby ograniczyć ruch wychodzący.
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>Wymagane porty i adresy dla klastrów usługi AKS
 

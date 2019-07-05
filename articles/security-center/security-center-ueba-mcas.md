@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af7896ec4afaeefda7261542bf593a89a7bb9ae8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332401"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551799"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure 
 
@@ -55,8 +55,8 @@ Usługa Security Center obsługuje alerty wykrywania anomalii w usłudze Cloud A
 
 Te alerty są domyślnie włączone, ale można je wyłączyć:
 
-1. W bloku usługi Security Center wybierz **zasady zabezpieczeń**. Kliknij subskrypcję, którą chcesz zmienić, **edytować ustawienia**.
-2.  Kliknij przycisk **wykrywanie zagrożeń**.
+1. W bloku usługi Security Center wybierz **ceny u & stawienia** i wybierz subskrypcję, zastosowanie.
+2. Kliknij przycisk **wykrywanie zagrożeń**.
 3. W obszarze **korzystanie z integracji**, usuń zaznaczenie pola wyboru **Zezwalaj Microsoft Cloud App Security na dostęp do moich danych**i kliknij przycisk **Zapisz**.
 
    ![Alert wykrycia zagrożeń](./media/security-center-ueba-mcas/security-center-mcas-optout.png)

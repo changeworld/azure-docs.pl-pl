@@ -1,24 +1,24 @@
 ---
-title: Wdrażanie usługi Azure container registry w sieci wirtualnej
+title: Ograniczanie dostępu do usługi Azure container registry z sieci wirtualnej
 description: Zezwalaj na dostęp do usługi Azure container registry, tylko z zasobami w sieci wirtualnej platformy Azure lub zakresy publicznych adresów IP.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: dc08fd5cc4abbf5d16f9d49874ec2c70cace165b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06e45127f940e01de5f3ceeefc354014a88014db
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067966"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514398"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Ograniczanie dostępu do usługi Azure container registry przy użyciu sieci wirtualnej platformy Azure lub reguły zapory
 
-[Usługa Azure Virtual Network](../virtual-network/virtual-networks-overview.md) zapewnia bezpieczny, prywatnych sieci na potrzeby subskrypcji platformy Azure i zasobów lokalnych. Wdrażając rejestr prywatny kontenerów platformy Azure w sieci wirtualnej platformy Azure, można zagwarantować, że tylko zasoby w sieci wirtualnej dostępu do rejestru. W przypadku scenariuszy obejmujących wiele lokalizacji można również skonfigurować reguły zapory zezwalające na dostęp do rejestru, tylko z określonych adresów IP.
+[Usługa Azure Virtual Network](../virtual-network/virtual-networks-overview.md) zapewnia bezpieczny, prywatnych sieci na potrzeby subskrypcji platformy Azure i zasobów lokalnych. Ograniczanie dostępu do rejestru prywatnego kontenerów platformy Azure z siecią wirtualną platformy Azure, gwarantuje, że tylko zasoby w sieci wirtualnej dostępu do rejestru. W przypadku scenariuszy obejmujących wiele lokalizacji można również skonfigurować reguły zapory zezwalające na dostęp do rejestru, tylko z określonych adresów IP.
 
-W tym artykule przedstawiono dwa scenariusze, aby utworzyć reguły dostępu do sieci, aby ograniczyć dostęp do usługi Azure container registry: z maszyny wirtualnej wdrożony w tej samej sieci lub publiczny adres IP maszyny Wirtualnej.
+W tym artykule przedstawiono dwa scenariusze, aby utworzyć reguły dostępu do sieci, aby ograniczyć dostęp do usługi Azure container registry: maszynie wirtualnej wdrożonej w sieci wirtualnej lub z publicznym adresem IP maszyny Wirtualnej.
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej, a niektóre [ograniczenia](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
@@ -30,7 +30,7 @@ W tym artykule przedstawiono dwa scenariusze, aby utworzyć reguły dostępu do 
 
 * Tylko [usługi Azure Kubernetes Service](../aks/intro-kubernetes.md) klastra lub na platformie Azure [maszyny wirtualnej](../virtual-machines/linux/overview.md) może służyć jako host do dostępu do rejestru kontenerów w sieci wirtualnej. *Inne usługi platformy Azure, w tym usługi Azure Container Instances nie są obecnie obsługiwane.*
 
-* [Zadania usługi ACR](container-registry-tasks-overview.md) operacje nie są obecnie obsługiwane w rejestrze kontenerów wdrożonych w sieci wirtualnej.
+* [Zadania usługi ACR](container-registry-tasks-overview.md) operacje nie są obecnie obsługiwane w rejestrze kontenerów, dostępne w sieci wirtualnej.
 
 * Każdy rejestr obsługuje maksymalnie 100 reguł sieci wirtualnej.
 
@@ -38,7 +38,7 @@ W tym artykule przedstawiono dwa scenariusze, aby utworzyć reguły dostępu do 
 
 * Korzystanie z systemu Azure interfejsu wiersza polecenia kroki opisane w tym artykule, wiersza polecenia platformy Azure w wersji 2.0.58 lub nowszy jest wymagany. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
-* Jeśli nie masz jeszcze rejestru kontenerów, utworzyć (jednostki SKU Premium wymagane) i wypchnąć obraz przykładowe, takie jak `hello-world` z usługi Docker Hub. Na przykład użyć [witryny Azure portal] [ quickstart-portal] lub [wiersza polecenia platformy Azure] [ quickstart-cli] tworzenia rejestru. 
+* Jeśli nie masz jeszcze rejestru kontenerów, utworzyć (jednostki SKU Premium wymagane) i wypchnąć obraz przykładowe, takie jak `hello-world` z usługi Docker Hub. Na przykład użyć [witryny Azure portal][quickstart-portal] or the [Azure CLI][quickstart-cli] tworzenia rejestru. 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>O regułach sieciowe dla rejestru kontenerów
 
@@ -58,7 +58,7 @@ Reguły sieciowych adresów IP, podaj internet dozwolonych zakresów adresów, t
 
 ## <a name="create-a-docker-enabled-virtual-machine"></a>Utwórz maszynę wirtualną z obsługą platformy Docker
 
-W tym artykule umożliwiają dostęp do usługi Azure container registry z obsługą platformy Docker maszyny Wirtualnej systemu Ubuntu. Aby użyć uwierzytelniania usługi Azure Active Directory do rejestru, należy także zainstalować [wiersza polecenia platformy Azure] [ azure-cli] na maszynie Wirtualnej. Jeśli masz już maszynę wirtualną platformy Azure, Pomiń ten krok tworzenia.
+W tym artykule umożliwiają dostęp do usługi Azure container registry z obsługą platformy Docker maszyny Wirtualnej systemu Ubuntu. Aby użyć uwierzytelniania usługi Azure Active Directory do rejestru, należy także zainstalować [wiersza polecenia platformy Azure][azure-cli] na maszynie Wirtualnej. Jeśli masz już maszynę wirtualną platformy Azure, Pomiń ten krok tworzenia.
 
 Może używać tej samej grupy zasobów dla maszyny wirtualnej i usługi container registry. Ten Instalator upraszcza Oczyszczanie na końcu, ale nie jest wymagane. Jeśli zdecydujesz się utworzyć oddzielnej grupy zasobów dla maszyny wirtualnej i sieci wirtualnej, uruchom [Tworzenie grupy az][az-group-create]. Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *westcentralus* lokalizacji:
 
@@ -121,7 +121,7 @@ W tej sekcji należy skonfigurować usługi container registry, aby zezwolić na
 
 #### <a name="add-a-service-endpoint-to-a-subnet"></a>Dodawanie punktu końcowego usługi do podsieci
 
-Podczas tworzenia maszyny Wirtualnej, platforma Azure domyślnie tworzy sieć wirtualną w tej samej grupie zasobów. Nazwa sieci wirtualnej opiera się na nazwę maszyny wirtualnej. Na przykład, jeśli nazwa maszyny wirtualnej *myDockerVM*, domyślna nazwa sieci wirtualnej to *myDockerVMVNET*, z podsiecią o nazwie *myDockerVMSubnet*. To sprawdzić w witrynie Azure portal lub za pomocą [az sieci vnet list] [ az-network-vnet-list] polecenia:
+Podczas tworzenia maszyny Wirtualnej, platforma Azure domyślnie tworzy sieć wirtualną w tej samej grupie zasobów. Nazwa sieci wirtualnej opiera się na nazwę maszyny wirtualnej. Na przykład, jeśli nazwa maszyny wirtualnej *myDockerVM*, domyślna nazwa sieci wirtualnej to *myDockerVMVNET*, z podsiecią o nazwie *myDockerVMSubnet*. To sprawdzić w witrynie Azure portal lub za pomocą [az sieci vnet list][az-network-vnet-list] polecenia:
 
 ```azurecli
 az network vnet list --resource-group myResourceGroup --query "[].{Name: name, Subnet: subnets[0].name}"
@@ -138,7 +138,7 @@ Dane wyjściowe:
 ]
 ```
 
-Użyj [aktualizacji podsieci sieci wirtualnej sieci az] [ az-network-vnet-subnet-update] polecenie, aby dodać **Microsoft.ContainerRegistry** punktu końcowego usługi do podsieci. Zastąp nazwy sieci wirtualnej i podsieci w następującym poleceniu:
+Użyj [aktualizacji podsieci sieci wirtualnej sieci az][az-network-vnet-subnet-update] polecenie, aby dodać **Microsoft.ContainerRegistry** punktu końcowego usługi do podsieci. Zastąp nazwy sieci wirtualnej i podsieci w następującym poleceniu:
 
 ```azurecli
 az network vnet subnet update \
@@ -148,7 +148,7 @@ az network vnet subnet update \
   --service-endpoints Microsoft.ContainerRegistry
 ```
 
-Użyj [Pokaż podsieci sieci wirtualnej sieci az] [ az-network-vnet-subnet-show] polecenie, aby pobrać identyfikator zasobu podsieci. Jest to potrzebne na późniejszym etapie, aby skonfigurować regułę dostępu do sieci.
+Użyj [Pokaż podsieci sieci wirtualnej sieci az][az-network-vnet-subnet-show] polecenie, aby pobrać identyfikator zasobu podsieci. Jest to potrzebne na późniejszym etapie, aby skonfigurować regułę dostępu do sieci.
 
 ```azurecli
 az network vnet subnet show \
@@ -167,7 +167,7 @@ Dane wyjściowe:
 
 #### <a name="change-default-network-access-to-registry"></a>Zmiana domyślnego dostępu sieciowego do rejestru
 
-Domyślnie rejestr Azure container registry zezwala na połączenia z hostów w sieci. Aby ograniczyć dostęp do wybranej sieci, należy zmienić domyślnej akcji, aby odmówić dostępu. Zastąp nazwą swojego rejestru w następującym [az acr update] [ az-acr-update] polecenia:
+Domyślnie rejestr Azure container registry zezwala na połączenia z hostów w sieci. Aby ograniczyć dostęp do wybranej sieci, należy zmienić domyślnej akcji, aby odmówić dostępu. Zastąp nazwą swojego rejestru w następującym [az acr update][az-acr-update] polecenia:
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
@@ -175,7 +175,7 @@ az acr update --name myContainerRegistry --default-action Deny
 
 #### <a name="add-network-rule-to-registry"></a>Dodawanie reguł sieci do rejestru
 
-Użyj [dodać reguły sieciowej az acr] [ az-acr-network-rule-add] polecenie, aby dodać regułę sieciowej do rejestru, które zezwalają na dostęp z podsieci maszyny Wirtualnej. Zastąp nazwę rejestru kontenerów i identyfikator zasobu podsieci w następującym poleceniu: 
+Użyj [dodać reguły sieciowej az acr][az-acr-network-rule-add] polecenie, aby dodać regułę sieciowej do rejestru, które zezwalają na dostęp z podsieci maszyny Wirtualnej. Zastąp nazwę rejestru kontenerów i identyfikator zasobu podsieci w następującym poleceniu: 
 
  ```azurecli
 az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
@@ -222,7 +222,7 @@ W tej sekcji należy skonfigurować usługi container registry, aby zezwolić na
 
 #### <a name="change-default-network-access-to-registry"></a>Zmiana domyślnego dostępu sieciowego do rejestru
 
-Jeśli jeszcze tego nie zrobiono, należy zaktualizować konfiguracji rejestru, aby odmówić dostępu domyślnie. Zastąp nazwą swojego rejestru w następującym [az acr update] [ az-acr-update] polecenia:
+Jeśli jeszcze tego nie zrobiono, należy zaktualizować konfiguracji rejestru, aby odmówić dostępu domyślnie. Zastąp nazwą swojego rejestru w następującym [az acr update][az-acr-update] polecenia:
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
@@ -230,7 +230,7 @@ az acr update --name myContainerRegistry --default-action Deny
 
 #### <a name="remove-network-rule-from-registry"></a>Usuń regułę sieci z rejestru
 
-Jeśli dodano wcześniej regułę sieciowej, aby zezwolić na dostęp z podsieci maszyny Wirtualnej, należy usunąć punktu końcowego usługi podsieci i zasad sieci. Zastąp nazwę rejestru kontenerów i identyfikator zasobu podsieci, pobrać w poprzednim kroku w [Usuń reguły sieciowej az acr] [ az-acr-network-rule-remove] polecenia: 
+Jeśli dodano wcześniej regułę sieciowej, aby zezwolić na dostęp z podsieci maszyny Wirtualnej, należy usunąć punktu końcowego usługi podsieci i zasad sieci. Zastąp nazwę rejestru kontenerów i identyfikator zasobu podsieci, pobrać w poprzednim kroku w [Usuń reguły sieciowej az acr][az-acr-network-rule-remove] polecenia: 
 
 ```azurecli
 # Remove service endpoint
@@ -248,7 +248,7 @@ az acr network-rule remove --name mycontainerregistry --subnet <subnet-resource-
 
 #### <a name="add-network-rule-to-registry"></a>Dodawanie reguł sieci do rejestru
 
-Użyj [dodać reguły sieciowej az acr] [ az-acr-network-rule-add] polecenie, aby dodać regułę sieciowej do rejestru, które zezwalają na dostęp z adresu IP maszyny Wirtualnej. Zastąp nazwę rejestru kontenerów i publiczny adres IP maszyny Wirtualnej w następującym poleceniu.
+Użyj [dodać reguły sieciowej az acr][az-acr-network-rule-add] polecenie, aby dodać regułę sieciowej do rejestru, które zezwalają na dostęp z adresu IP maszyny Wirtualnej. Zastąp nazwę rejestru kontenerów i publiczny adres IP maszyny Wirtualnej w następującym poleceniu.
 
 ```azurecli
 az acr network-rule add --name mycontainerregistry --ip-address <public-IP-address>
@@ -292,7 +292,7 @@ W dalszym ciągu [zweryfikować dostępu do rejestru](#verify-access-to-the-regi
 
 ## <a name="verify-access-to-the-registry"></a>Weryfikowanie dostępu do rejestru
 
-Po upływie kilku minut dla konfiguracji aktualizacji, upewnij się, że maszyny Wirtualnej można uzyskać dostęp rejestru kontenerów. Utwórz połączenie SSH z maszyną wirtualną, a następnie uruchom [az acr login] [ az-acr-login] polecenia do logowania do rejestru. 
+Po upływie kilku minut dla konfiguracji aktualizacji, upewnij się, że maszyny Wirtualnej można uzyskać dostęp rejestru kontenerów. Utwórz połączenie SSH z maszyną wirtualną, a następnie uruchom [az acr login][az-acr-login] polecenia do logowania do rejestru. 
 
 ```bash
 az acr login --name mycontainerregistry
@@ -320,13 +320,13 @@ Aby przywrócić rejestr, aby zezwolić na dostęp, domyślnie, Usuń wszystkie 
 
 #### <a name="remove-network-rules"></a>Usuwanie reguł sieci
 
-Aby wyświetlić listę reguł sieci skonfigurowane dla rejestru, uruchom następujące polecenie [az acr reguły sieciowej listy] [ az-acr-network-rule-list] polecenia:
+Aby wyświetlić listę reguł sieci skonfigurowane dla rejestru, uruchom następujące polecenie [az acr reguły sieciowej listy][az-acr-network-rule-list] polecenia:
 
 ```azurecli
 az acr network-rule list--name mycontainerregistry 
 ```
 
-Dla każdej reguły, która jest skonfigurowana, uruchom [Usuń reguły sieciowej az acr] [ az-acr-network-rule-remove] polecenie, aby go usunąć. Na przykład:
+Dla każdej reguły, która jest skonfigurowana, uruchom [Usuń reguły sieciowej az acr][az-acr-network-rule-remove] polecenie, aby go usunąć. Na przykład:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -345,7 +345,7 @@ az acr network-rule remove \
 
 #### <a name="allow-access"></a>Zezwalaj na dostęp
 
-Zastąp nazwą swojego rejestru w następującym [az acr update] [ az-acr-update] polecenia:
+Zastąp nazwą swojego rejestru w następującym [az acr update][az-acr-update] polecenia:
 ```azurecli
 az acr update --name myContainerRegistry --default-action Allow
 ```

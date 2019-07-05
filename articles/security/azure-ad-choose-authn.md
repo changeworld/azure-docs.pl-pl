@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 35fb529be28fc985460421c185872c7e35603341
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 26fca12060363f4ad05baaeceb6fb800a0d76216
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274280"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449267"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
@@ -81,7 +81,7 @@ Szczegółowe informacje dotyczące decyzji pytania:
    * Połączenia obejmujące wiele lokacji lokalnych rozwiązań uwierzytelniania.
 5. Usługa Azure AD Identity Protection wymaga synchronizacji skrótów haseł, niezależnie od tego, z jakiej metody logowania wybierzesz, aby zapewnić *użytkownicy z ujawnionymi poświadczeniami* raportu. Organizacje mogą tryb failover do synchronizacji skrótów haseł, jeśli ich podstawowej metody logowania nie powiedzie się i została skonfigurowana przed wystąpieniem zdarzenia awarii.
 
->[!NOTE]
+> [!NOTE]
 > Usługa Azure AD Identity Protection wymagają [usługi Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licencji.
 
 ## <a name="detailed-considerations"></a>Opis szczegółowych zagadnień
@@ -94,7 +94,10 @@ Szczegółowe informacje dotyczące decyzji pytania:
 
 * **Zaawansowane scenariusze**. Jeśli chce się organizacji jest możliwość użycia szczegółowych informacji z tożsamości za pomocą usługi Azure AD Identity Protection raporty w usłudze Azure AD Premium P2. Przykładem jest raport ujawnione poświadczenia. Ma Windows Hello dla firm [konkretne wymagania w sytuacji, gdy używasz synchronizacji skrótów haseł](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Usługi domenowe Azure AD](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) wymagają synchronizacji skrótów haseł aprowizacja użytkowników przy użyciu poświadczeń firmowych w domenie zarządzanej.
 
-    Organizacje, które wymagają uwierzytelniania wieloskładnikowego za pomocą synchronizacji skrótów haseł, należy użyć uwierzytelniania wieloskładnikowego w usłudze Azure AD. Organizacje, nie można używać innych firm lub lokalne metod uwierzytelniania wieloskładnikowego.
+    Organizacje, które wymagają uwierzytelniania wieloskładnikowego za pomocą synchronizacji skrótów haseł należy użyć uwierzytelniania wieloskładnikowego w usłudze Azure AD lub [kontrolek niestandardowych dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Organizacje, nie można użyć innych firm lub lokalne metod uwierzytelniania wieloskładnikowego, która opiera się na federacyjnych.
+
+> [!NOTE]
+> Dostęp warunkowy usługi Azure AD wymaga [usługi Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licencji.
 
 * **Ciągłość prowadzenia działalności biznesowej**. Synchronizacja skrótów haseł przy użyciu uwierzytelniania w chmurze jest wysoce dostępna jako usługa w chmurze, która skaluje się do wszystkich centrów danych firmy Microsoft. Aby upewnić się, że synchronizacja skrótów haseł nie są wyłączane przez dłuższy czas, należy wdrożyć drugi serwer usługi Azure AD Connect w trybie rezerwy dynamicznej konfiguracji przejściowym.
 
@@ -115,7 +118,7 @@ Zapoznaj się [Implementowanie synchronizacji skrótów haseł](https://docs.mic
 
 * **Zaawansowane scenariusze**. Uwierzytelnianie przekazywane wymusza w lokalnych zasadach konta podczas logowania. Na przykład odmowa dostępu, gdy konto użytkownika lokalnego, stan jest wyłączony, zablokowane, lub [hasło wygasło](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) lub znajduje się poza godzinami po użytkownik może się zalogować. 
 
-    Organizacje, które wymagają uwierzytelniania wieloskładnikowego przy użyciu uwierzytelniania przekazywanego, należy użyć usługi Azure Multi-Factor Authentication (MFA). Organizacje, nie można użyć innych firm lub lokalne metody uwierzytelniania wieloskładnikowego. Zaawansowane funkcje wymagają, że synchronizacja skrótów haseł jest wdrażany informację określającą, czy wybierzesz uwierzytelnianie przekazywane. Przykładem jest raport ujawnione poświadczenia Identity Protection.
+    Organizacje, które wymagają uwierzytelniania wieloskładnikowego przy użyciu uwierzytelniania przekazywanego, należy użyć usługi Azure Multi-Factor Authentication (MFA) lub [kontrolek niestandardowych dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Organizacje, nie można użyć innych firm lub lokalne metody uwierzytelniania wieloskładnikowego, która opiera się na federacyjnych. Zaawansowane funkcje wymagają, że synchronizacja skrótów haseł jest wdrażany informację określającą, czy wybierzesz uwierzytelnianie przekazywane. Przykładem jest raport ujawnione poświadczenia Identity Protection.
 
 * **Ciągłość prowadzenia działalności biznesowej**. Zaleca się wdrożenie dwóch agentów uwierzytelniania przekazywanego dodatkowych. Te dodatki w niniejszym dokumencie stanowią pierwszy agent na serwerze programu Azure AD Connect. To wdrożenie dodatkowych zapewnia wysoką dostępność żądania uwierzytelnienia. W przypadku trzech agentów wdrożonych jednego agenta może nadal się nie powieść podczas innego agenta jest wyłączona w celu przeprowadzenia konserwacji. 
 
@@ -136,7 +139,7 @@ Zapoznaj się [Implementowanie uwierzytelniania przekazywanego](https://docs.mic
 * **Zaawansowane scenariusze**. Rozwiązanie uwierzytelniania federacyjnego jest zazwyczaj wymagane, gdy klienci mają wymogu uwierzytelniania, który usługa Azure AD nie obsługuje natywnie. Zobacz szczegółowe informacje ułatwiające [opcję bezpośrednio logowania](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Należy wziąć pod uwagę następujące typowe wymagania:
 
   * Uwierzytelnianie, które wymaga kart inteligentnych lub certyfikatów.
-  * Lokalne serwery usługi MFA lub wieloskładnikowej dostawców.
+  * Lokalnych serwerów usługi MFA lub wieloskładnikowej dostawców wymagające dostawcy tożsamości federacyjnych.
   * Uwierzytelnianie przy użyciu rozwiązania do uwierzytelniania innych firm. Zobacz [listę zgodności federacyjnych usługi Azure AD](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
   * Na przykład sAMAccountName, na przykład domena\nazwa_użytkownika, zamiast nazwy głównej nazwy użytkownika (UPN), wymaga logowania user@domain.com.
 
@@ -176,7 +179,7 @@ Następujące diagramy przedstawiają składniki Architektura wysokiego poziomu 
 |Gdy odbywa się uwierzytelnianie?|W chmurze|W chmurze po wymianie weryfikacji bezpieczne hasło, za pomocą agenta uwierzytelniania w środowisku lokalnym|Lokalnie|
 |Jakie są wymagania dotyczące serwera lokalnego poza inicjowania obsługi administracyjnej systemu: Azure AD Connect?|Brak|Jeden serwer dla każdego dodatkowego uwierzytelniania agenta|Co najmniej dwóch serwerów usług AD FS<br><br>Co najmniej dwóch serwerów proxy aplikacji sieci Web w sieci obwodowej/sieci Obwodowej|
 |Jakie są wymagania dotyczące Internet w środowisku lokalnym i sieci poza inicjowania obsługi administracyjnej systemu?|Brak|[Ruch wychodzący do Internetu](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) z serwerów uruchomionych agentów uwierzytelniania|[Dostęp do Internetu przychodzący](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) na serwerach proxy aplikacji sieci Web w sieci obwodowej<br><br>Dostęp do sieci dla ruchu przychodzącego do serwerów usług AD FS z serwerów proxy aplikacji sieci Web w sieci obwodowej<br><br>Równoważenie obciążenia sieciowego|
-|Jest to wymaganie dotyczące certyfikatów SSL?|Nie|Nie|Tak|
+|Jest to wymaganie dotyczące certyfikatów SSL?|Nie|Nie|Yes|
 |Czy istnieje rozwiązanie do monitorowania kondycji?|Niewymagane|Stan agenta, dostarczone przez [Centrum administracyjne usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
 |Czy użytkownicy uzyskują logowanie jednokrotne do zasobów w chmurze z urządzeń przyłączonych do domeny w sieci firmowej?|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Tak|
 |Jakie typy logowania są obsługiwane?|UserPrincipalName i hasło<br><br>Zintegrowane uwierzytelnianie Windows za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName i hasło<br><br>Zintegrowane uwierzytelnianie Windows za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName i hasło<br><br>Element sAMAccountName + hasła<br><br>Zintegrowane uwierzytelnianie Windows<br><br>[Uwierzytelnianie certyfikatu i kart inteligentnych](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|

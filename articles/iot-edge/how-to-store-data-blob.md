@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f70ca550f1688551abb94bb30ba4f76eb3c36404
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: dabaa06e224c6498c0080c4546c04f40e3919bb6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303963"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448534"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -82,23 +82,24 @@ Umożliwia ustawianie deviceToCloudUploadProperties i deviceAutoDeleteProperties
 
 Nazwa tego ustawienia jest `deviceToCloudUploadProperties`
 
-| Pole | Możliwe wartości | Wyjaśnienie |
-| ----- | ----- | ---- |
-| uploadOn | true, false | Domyślnie jest ustawiona `false`, jeśli chcesz włączyć ją na wartość `true`|
-| uploadOrder | NewestFirst, OldestFirst | Można wybrać kolejność, w którym dane są kopiowane do platformy Azure. Domyślnie jest ustawiona `OldestFirst`. Kolejność jest określana przez godzinę ostatniej modyfikacji obiektu Blob |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` Parametry połączenia, które można określić konto usługi Azure Storage, do której chcesz danych jest przekazywany. Określ `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix`. Dodaj odpowiednie EndpointSuffix platformy Azure z którym dane zostaną przekazane, jego różni się w globalnej platformy Azure, Azure dla instytucji rządowych i Microsoft Azure Stack. |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Umożliwia określenie nazwy kontenera, który chcesz przekazać na platformę Azure. Moduł ten umożliwia określenie nazwy kontenera elementy źródłowe i docelowe. Jeśli nie określisz nazwy kontenera docelowego, automatycznie przypisze nazwę kontenera jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Można utworzyć parametry szablonu dla nazwy kontenera docelowego, zapoznaj się z kolumny możliwych wartości. <br>* %h -> nazwą Centrum IoT (3 – 50 znaków). <br>* %d -> Identyfikator urządzenia usługi Edge IoT (1-129 znaków). <br>* %m -> Nazwa modułu (od 1 do 64 znaków). <br>* %c -> Nazwa kontenera danych źródłowych (od 3 do 63 znaków). <br><br>Maksymalny rozmiar nazwa kontenera jest 63 znaków podczas automatycznego przypisywania nazwy kontenera docelowego jeśli rozmiar kontenera przekracza 63 znaków, który go będzie ograniczać każdej sekcji (IoTHubName IotEdgeDeviceID, ModuleName, SourceContainerName) do 15 znaki. |
-| deleteAfterUpload | true, false | Domyślnie jest ustawiona `false`. Jeśli jest równa `true`, usługa automatycznie usunie je po zakończeniu przekazywania do magazynu w chmurze |
+| Pole | Możliwe wartości | Wyjaśnienie | Zmienna środowiskowa |
+| ----- | ----- | ---- | ---- |
+| uploadOn | true, false | Domyślnie jest ustawiona `false`, jeśli chcesz włączyć ją na wartość `true`| `deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst, OldestFirst | Można wybrać kolejność, w którym dane są kopiowane do platformy Azure. Domyślnie jest ustawiona `OldestFirst`. Kolejność jest określana przez godzinę ostatniej modyfikacji obiektu Blob | `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` Parametry połączenia, które można określić konto usługi Azure Storage, do której chcesz danych jest przekazywany. Określ `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix`. Dodaj odpowiednie EndpointSuffix platformy Azure z którym dane zostaną przekazane, jego różni się w globalnej platformy Azure, Azure dla instytucji rządowych i Microsoft Azure Stack. | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Umożliwia określenie nazwy kontenera, który chcesz przekazać na platformę Azure. Moduł ten umożliwia określenie nazwy kontenera elementy źródłowe i docelowe. Jeśli nie określisz nazwy kontenera docelowego, automatycznie przypisze nazwę kontenera jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Można utworzyć parametry szablonu dla nazwy kontenera docelowego, zapoznaj się z kolumny możliwych wartości. <br>* %h -> nazwą Centrum IoT (3 – 50 znaków). <br>* %d -> Identyfikator urządzenia usługi Edge IoT (1-129 znaków). <br>* %m -> Nazwa modułu (od 1 do 64 znaków). <br>* %c -> Nazwa kontenera danych źródłowych (od 3 do 63 znaków). <br><br>Maksymalny rozmiar nazwa kontenera jest 63 znaków podczas automatycznego przypisywania nazwy kontenera docelowego jeśli rozmiar kontenera przekracza 63 znaków, który go będzie ograniczać każdej sekcji (IoTHubName IotEdgeDeviceID, ModuleName, SourceContainerName) do 15 znaki. | `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
+| deleteAfterUpload | true, false | Domyślnie jest ustawiona `false`. Jeśli jest równa `true`, usługa automatycznie usunie je po zakończeniu przekazywania do magazynu w chmurze | `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 Nazwa tego ustawienia jest `deviceAutoDeleteProperties`
 
-| Pole | Możliwe wartości | Wyjaśnienie |
-| ----- | ----- | ---- |
-| deleteOn | true, false | Domyślnie jest ustawiona `false`, jeśli chcesz włączyć ją na wartość `true`|
-| deleteAfterMinutes | `<minutes>` | Określa wartość godziny w ciągu kilku minut. Moduł automatycznie spowoduje usunięcie obiektów blob z magazynu lokalnego po wygaśnięciu tej wartości |
-| retainWhileUploading | true, false | Domyślnie jest ustawiona `true`, i zostaną zachowane obiektu blob, gdy jest przekazanie do magazynu w chmurze, jeśli deleteAfterMinutes wygaśnie. Możesz ustawić na `false` i spowoduje usunięcie danych, zaraz po wygaśnięciu deleteAfterMinutes. Uwaga: Dla tej właściwości do pracy uploadOn powinna być ustawiona na wartość true|
+| Pole | Możliwe wartości | Wyjaśnienie | Zmienna środowiskowa |
+| ----- | ----- | ---- | ---- |
+| deleteOn | true, false | Domyślnie jest ustawiona `false`, jeśli chcesz włączyć ją na wartość `true`| `deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | Określa wartość godziny w ciągu kilku minut. Moduł automatycznie spowoduje usunięcie obiektów blob z magazynu lokalnego po wygaśnięciu tej wartości | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | true, false | Domyślnie jest ustawiona `true`, i zostaną zachowane obiektu blob, gdy jest przekazanie do magazynu w chmurze, jeśli deleteAfterMinutes wygaśnie. Możesz ustawić na `false` i spowoduje usunięcie danych, zaraz po wygaśnięciu deleteAfterMinutes. Uwaga: Dla tej właściwości do pracy uploadOn powinna być ustawiona na wartość true| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
 
 ## <a name="configure-log-files"></a>Konfigurowanie plików dziennika
 

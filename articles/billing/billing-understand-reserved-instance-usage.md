@@ -1,27 +1,24 @@
 ---
-title: Poznawaj możliwości korzystania rezerwacje Azure rozliczana według bieżącego użycia subskrypcji | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak odczytać Twojego użycia, aby zrozumieć sposób stosowania Azure rezerwacji dla Twojej subskrypcji zgodnie z rzeczywistym użyciem.
-services: billing
-documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
-editor: ''
+title: Użycie rezerwacji platformy Azure dla poszczególnych subskrypcji przy użyciu stawki
+description: Dowiedz się, jak odczytać Twojego użycia, aby zrozumieć sposób stosowania Azure zastrzeżenie dla poszczególnych subskrypcji przy użyciu stawki.
+author: bandersmsft
+manager: yashr
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11f05c3de50f2f82173b6666d304887fbc2038cc
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370360"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490364"
 ---
-# <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Opis rezerwacji platformy Azure dla Twojej subskrypcji zgodnie z rzeczywistym użyciem
+# <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Opis rezerwacji platformy Azure dla poszczególnych subskrypcji przy użyciu stawki subskrypcji
 
 Użyj ReservationId z [strony rezerwacji](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) i pliku użycia z [portalu konta usługi Azure](https://account.azure.com) do oceny użycia rezerwacji.
 
@@ -62,7 +59,7 @@ Filtrowanie według **dodatkowe informacje** i wpisz swoje **identyfikator rezer
 4. **Identyfikator licznika** jest identyfikator miernika dla rezerwacji. Ten licznik kosztuje 0 USD. Ten identyfikator miernika pojawia się dla każdej maszyny Wirtualnej, która jest uprawniony do rabat związany z rezerwacją.
 5. Standardowa_ds1_v2 jest jeden procesor wirtualny maszyny Wirtualnej i maszyna wirtualna jest wdrażana bez korzyści użycia hybrydowego platformy Azure. Tak ten licznik obejmuje dodatkowych opłat w oprogramowania Windows. Licznik odpowiadający serii D 1-rdzeniowe maszyny Wirtualnej, możesz znaleźć [koszty oprogramowania Windows wystąpień maszyny Wirtualnej platformy Azure w rezerwy](billing-reserved-instance-windows-software-costs.md). Jeśli masz korzyść użycia hybrydowego platformy Azure, ta dodatkowa opłata nie została zastosowana.
 
-## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Użycie dla bazy danych SQL Database i Cosmos DB zastrzeżone rezerwacji wydajności
+## <a name="usage-for-sql-database--cosmos-db-reservations"></a>Użycie dla rezerwacji bazy danych SQL Database i Cosmos DB
 
 Poniższe sekcje użyć usługi Azure SQL Database jako przykład do opisania raport użycia. Te same czynności można użyć, można również pobrać użycia usługi Azure Cosmos DB.
 

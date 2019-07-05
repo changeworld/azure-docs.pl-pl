@@ -7,12 +7,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5ffbee1b4fdfc08b111e199e73baae19341b1022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85753e788284396262053aad8cf567ad5cd71fee
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65775680"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509283"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Obsługiwane źródła danych w usłudze Azure Data Catalog
 
@@ -152,7 +152,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td></td>
     </tr>
     <tr>
-      <td>Widok SQL Data Warehouse</td>
+      <td>Usługa Azure SQL Data Warehouse widoku</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -165,7 +165,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td>✓</td>
       <td>✓</td>
       <td>Program Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 i nowszych wersjach.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services kluczowy wskaźnik wydajności</td>
@@ -173,7 +173,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td>✓</td>
       <td>✓</td>
       <td>Program Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 i nowszych wersjach.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services measure</td>
@@ -181,7 +181,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td>✓</td>
       <td>✓</td>
       <td>Program Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 i nowszych wersjach.</td>
     </tr>
     <tr>
       <td>Tabela programu SQL Server Analysis Services</td>
@@ -189,15 +189,15 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td>✓</td>
       <td>✓</td>
       <td>Program Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 i nowszych wersjach.</td>
     </tr>
     <tr>
       <td>Raport usług SQL Server Reporting Services</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Przeglądarka</td>
-      <td>Tylko serwery w trybie macierzystym. Tryb programu SharePoint nie jest obsługiwany.</td>
+      <td>Browser</td>
+      <td>Tylko serwery w trybie macierzystym. Tryb programu SharePoint nie jest obsługiwany. SQL Server 2008 i nowszych wersjach tylko</td>
     </tr>
     <tr>
       <td>Tabela programu SQL Server</td>
@@ -205,7 +205,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td>✓</td>
       <td>✓</td>
       <td>Narzędzia danych programu SQL Server dla programu Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 i nowszych wersjach.</td>
     </tr>
     <tr>
       <td>Widok programu SQL Server</td>
@@ -213,7 +213,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td>✓</td>
       <td>✓</td>
       <td>Narzędzia danych programu SQL Server dla programu Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 i nowszych wersjach.</td>
     </tr>
     <tr>
       <td>Tabela programu Teradata</td>

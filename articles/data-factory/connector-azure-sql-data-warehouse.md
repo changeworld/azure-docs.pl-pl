@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 68d2f126ee32f61d13d170712bf58581101036e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 24ee419e5c6eb4b8c148c61c232d2ab7ab07c74b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206071"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449595"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego korzystasz:"]
@@ -472,7 +472,10 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
 
 Jeśli źródło danych nie spełnia kryteriów w poprzedniej sekcji, włączać dane kopiowanie za pośrednictwem tymczasowego przemieszczania wystąpienia magazynu obiektów Blob platformy Azure. Nie można go z usługi Azure Premium Storage. W tym przypadku usługi Azure Data Factory automatycznie uruchamia przekształcenia na danych, które spełniają wymagania dotyczące formatu danych PolyBase. Następnie używa programu PolyBase do ładowania danych do usługi SQL Data Warehouse. Na koniec go czyści dane tymczasowe z magazynu obiektów blob. Zobacz [kopiowania etapowego](copy-activity-performance.md#staged-copy) szczegółowe informacje na temat kopiowania danych za pośrednictwem przemieszczania wystąpienia magazynu obiektów Blob platformy Azure.
 
-Aby użyć tej funkcji, należy utworzyć [połączonej usługi Azure Storage](connector-azure-blob-storage.md#linked-service-properties) odwołujący się do konta usługi Azure storage za pomocą magazynu obiektów blob przejściowym. Następnie określ `enableStaging` i `stagingSettings` właściwości dla działania kopiowania, jak pokazano w poniższym kodzie:
+Aby użyć tej funkcji, należy utworzyć [połączonej usługi Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) odwołujący się do konta usługi Azure storage za pomocą magazynu obiektów blob przejściowym. Następnie określ `enableStaging` i `stagingSettings` właściwości dla działania kopiowania, jak pokazano w poniższym kodzie.
+
+>[!IMPORTANT]
+>Przemieszczania Azure Storage jest skonfigurowany z punktu końcowego usługi sieci wirtualnej, należy użyć uwierzytelniania tożsamości zarządzanej - dotyczą [wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dowiedz się, wymagane konfiguracje w usłudze Data Factory z [obiektów Blob platformy Azure — uwierzytelnianie tożsamości zarządzanej](connector-azure-blob-storage.md#managed-identity).
 
 ```json
 "activities":[

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: edc3c2ddcddaa8a51ae634a7abcd3a61aab530e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357246"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448019"
 ---
 # <a name="azure-api-management-faqs"></a>Często zadawane pytania usługi Azure API Management
 Odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dotyczące usługi Azure API Management.
@@ -65,7 +65,7 @@ Istnieje kilka opcji, aby zabezpieczyć połączenia między bramą usługi API 
 
 * Stosuj uwierzytelnianie podstawowe HTTP. Aby uzyskać więcej informacji, zobacz [importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 * Użyj wzajemnego uwierzytelniania protokołu SSL, zgodnie z opisem w [sposób zabezpieczania usług zaplecza przy użyciu klienta uwierzytelniania certyfikatów w usłudze Azure API Management](api-management-howto-mutual-certificates.md).
-* Użyj listy dozwolonych adresów IP w usłudze zaplecza. We wszystkich warstwach usługi API Management, adres IP bramy pozostanie niezmieniona, za pomocą kilku [zastrzeżenia](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Możesz ustawić Twojej listy dozwolonych, aby zezwolić na ten adres IP. Na pulpicie nawigacyjnym w witrynie Azure portal, można uzyskać adresu IP wystąpienia usługi API Management.
+* Użyj listy dozwolonych adresów IP w usłudze zaplecza. We wszystkich warstwach usługi API Management, z wyjątkiem warstwa zużycie, adres IP bramy pozostanie niezmieniona, za pomocą kilku [zastrzeżenia](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Możesz ustawić Twojej listy dozwolonych, aby zezwolić na ten adres IP. Na pulpicie nawigacyjnym w witrynie Azure portal, można uzyskać adresu IP wystąpienia usługi API Management.
 * Wystąpienie usługi API Management nawiązać połączenia z siecią wirtualną platformy Azure.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Jak skopiować Moje wystąpienia usługi API Management do nowego wystąpienia?

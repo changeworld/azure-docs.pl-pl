@@ -4,17 +4,17 @@ description: Ten artykuł zawiera wiele tematów do zarządzania środowiskiem u
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9de5909ddca5fd36f3fafcb79e2a4ad519402c9c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738485"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476583"
 ---
 # <a name="managing-azure-automation-data"></a>Zarządzanie danymi usługi Azure Automation
 Ten artykuł zawiera wiele tematów do zarządzania środowiskiem usługi Azure Automation.
@@ -26,7 +26,7 @@ Usługa Azure Automation automatycznie usuwa i trwale zadania starsze niż 90 dn
 
 W poniższej tabeli przedstawiono zasady przechowywania dla różnych zasobów.
 
-| Dane | Zasady |
+| Data | Zasady |
 |:--- |:--- |
 | Konta |Trwale usunięte po upływie 90 dni po usunięciu konta przez użytkownika. |
 | Elementy zawartości |Trwale usunięte po upływie 90 dni po usunięciu elementu zawartości przez użytkownika lub 90 dni od konta, który przechowuje, że zasób zostanie usunięty przez użytkownika. |

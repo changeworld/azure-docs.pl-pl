@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 203f704862c4cbcef58d7ef902380c1dbbf00076
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 5a98cb2356c25329e091514dd1d6181dfc2690be
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137073"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448653"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Umożliwia analizowanie danych w Data Lake Storage Gen1 klastra platformy HDInsight Spark
 
-W tym samouczku użyjesz [notesu programu Jupyter](https://jupyter.org/) dostępne przy użyciu klastrów HDInsight Spark do uruchomienia zadania, która odczytuje dane z konta usługi Data Lake Storage.
+W tym artykule używasz [notesu programu Jupyter](https://jupyter.org/) dostępne przy użyciu klastrów HDInsight Spark do uruchomienia zadania, która odczytuje dane z konta usługi Data Lake Storage.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

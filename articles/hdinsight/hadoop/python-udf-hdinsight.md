@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6f3140f412f9d36ca36cef440bd4e60f1a9197d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74c40264e8ed535d250e938487885a848ba6b47
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702219"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484195"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Funkcje (UDF) zdefiniowane przez użytkownika języka Python korzystanie z programu Apache Hive i Apache Pig w HDInsight
 
@@ -161,9 +161,6 @@ W poniższych poleceń Zastąp `sshuser` rzeczywiste nazwy użytkownika, jeśli 
     ```
 
 ### <a name="upload-file-powershell"></a>Przekaż plik (PowerShell)
-
-> [!IMPORTANT]  
-> Te skrypty programu PowerShell nie będą działać, jeśli [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md) jest włączona.  Użyj poleceń powłoki, albo wyłącz bezpieczny transfer.
 
 Program PowerShell mogą również zdalnie uruchamiać zapytania Hive. Upewnij się, katalog roboczy gdzie `hiveudf.py` znajduje się.  Poniższy skrypt programu PowerShell umożliwia uruchomienie zapytania programu Hive, który używa `hiveudf.py` skryptu:
 
@@ -433,9 +430,6 @@ W poniższych poleceń Zastąp `sshuser` rzeczywiste nazwy użytkownika, jeśli 
 
 
 ### <a name="upload-file-powershell"></a>Przekaż plik (PowerShell)
-
-> [!IMPORTANT]  
-> Te skrypty programu PowerShell nie będą działać, jeśli [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md) jest włączona.  Użyj poleceń powłoki, albo wyłącz bezpieczny transfer.
 
 Program PowerShell mogą również zdalnie uruchamiać zapytania Hive. Upewnij się, katalog roboczy gdzie `pigudf.py` znajduje się.  Poniższy skrypt programu PowerShell umożliwia uruchomienie zapytania programu Hive, który używa `pigudf.py` skryptu:
 

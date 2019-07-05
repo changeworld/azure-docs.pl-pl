@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: ee9b5b651f440bc7d179b1a06c7ddbd3f9137a0d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 41313c7d484df5568fbf729b683a0e9df5325abc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165900"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433737"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight
 
@@ -108,7 +108,7 @@ W tej sekcji użyjesz szablon usługi Resource Manager do utworzenia klastra HDI
    * **Hasło logowania klastra**: Wprowadź hasło użytkownika HTTP usługi Hadoop.
    * **Nazwa użytkownika SSH**: Wprowadź nazwę użytkownika SSH. Nazwa domyślna to **sshuser**.
    * **SSH hasła**: Wprowadź hasło użytkownika SSH.
-   * **Zainstaluj akcji skryptu**: Zachowaj wartość domyślną dla pośrednictwa w tym samouczku.
+   * **Zainstaluj akcji skryptu**: Zachowaj wartość domyślną dla pośrednictwa w tym artykule.
      
      Niektóre właściwości zostały zapisane na stałe w szablonie: Typ klastra, liczby węzłów procesu roboczego klastra, rozmiar węzła krawędzi i nazwa węzła krawędzi.
 4. Sprawdź **zgodę na warunki i postanowienia, o których wspomniano**, a następnie kliknij przycisk **zakupu** do utworzenia klastra z węzłem krawędzi.

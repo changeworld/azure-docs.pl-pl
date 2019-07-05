@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 2b6adcf4231aa44a4f28d277e963efa16de8af81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399344"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440415"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Opisy problemów i rozwiązywanie problemów z usługi Azure Active Directory aplikacji serwera Proxy mechanizmu CORS
 
-[Współużytkowanie zasobów między źródłami (cors)](http://www.w3.org/TR/cors/) czasami stanowi wyzwanie dla aplikacji i interfejsów API została opublikowania za pośrednictwem usługi Azure Active Directory serwera Proxy aplikacji. W tym artykule omówiono problemy CORS serwera Proxy aplikacji w usłudze Azure AD i ich rozwiązania.
+[Współużytkowanie zasobów między źródłami (cors)](https://www.w3.org/TR/cors/) czasami stanowi wyzwanie dla aplikacji i interfejsów API została opublikowania za pośrednictwem usługi Azure Active Directory serwera Proxy aplikacji. W tym artykule omówiono problemy CORS serwera Proxy aplikacji w usłudze Azure AD i ich rozwiązania.
 
 Poziom zabezpieczeń przeglądarki zwykle uniemożliwia strony sieci web dzięki czemu wysyłanie żądań AJAX do innej domeny. To ograniczenie jest nazywany *zasadami tego samego źródła*i zapobiega złośliwych witryn odczytywanie poufnych danych z innej lokacji. Jednak czasami możesz chcieć umożliwić innych witryn, wywołania interfejsu API sieci web. CORS to standard W3C, która umożliwia serwer może Poluzować zasady tego samego źródła i zezwolić na niektóre żądania między źródłami, jednocześnie odrzucając inne.
 

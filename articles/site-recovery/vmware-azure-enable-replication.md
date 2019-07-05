@@ -3,15 +3,15 @@ title: Włączanie replikacji maszyn wirtualnych programu VMware na potrzeby odz
 description: W tym artykule opisano sposób włączania maszyn wirtualnych VMware replikacji do platformy Azure na potrzeby odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 05/10/2019
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540756"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491734"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
@@ -37,11 +37,13 @@ Jeśli replikujesz maszyny wirtualne VMware pamiętać o tych informacji:
 ## <a name="enable-replication"></a>Włączanie replikacji
 
 Przed wykonaniem kroków opisanych w tej sekcji, należy zwrócić uwagę na następujące informacje:
-* Usługa Azure Site Recovery replikuje teraz bezpośrednio do usługi managed disks dla wszystkich nowych replikacji. Serwer przetwarzania zapisuje dzienników replikacji na konto magazynu pamięci podręcznej w regionie docelowym. Dzienniki te są używane do tworzenia punktów odzyskiwania w zarządzanych dyskach repliki.
+* Usługa Azure Site Recovery replikuje teraz bezpośrednio do usługi managed disks dla wszystkich nowych replikacji. Serwer przetwarzania zapisuje dzienników replikacji na konto magazynu pamięci podręcznej w regionie docelowym. Dzienniki te są używane do tworzenia punktów odzyskiwania w zarządzanych dyskach repliki, które mają asrseeddisk konwencji nazewnictwa.
+* Obsługa programu PowerShell do replikowania do usługi managed disks jest dostępna z [Az.RecoveryServices modułu w wersji 2.0.0 lub nowszy](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 
 * W momencie przejścia w tryb failover punktu odzyskiwania, który wybierzesz służy do utworzenia dysku zarządzanego w docelowym.
 * Nie ma wpływu na maszyny wirtualne, które zostały wcześniej skonfigurowane zostać zreplikowana na docelowe konta magazynu.
 * Replikacja do konta magazynu dla nowej maszyny wirtualnej jest dostępna tylko za pośrednictwem REST Representational State Transfer () interfejsu API i programu Powershell. Replikacja do konta magazynu, należy użyć interfejsu API REST platformy Azure w wersji 2016-08-10 lub 2018-01-10.
 
+Wykonaj poniższe kroki, aby włączyć replikację:
 1. Przejdź do **krok 2: Replikowanie aplikacji** > **źródła**. Po włączeniu replikacji po raz pierwszy, wybierz **+ Replikuj** w magazynie, aby włączyć replikację dla dodatkowych maszyn wirtualnych.
 2. W **źródła** strony > **źródła**, wybierz serwer konfiguracji.
 3. Aby uzyskać **typ maszyny**, wybierz opcję **maszyn wirtualnych** lub **maszyn fizycznych**.

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: ef97f17bf159511ce94f90cd00623e05489acb92
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0a7140f70db78c8511f3c4da00b2f9c11c368163
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274735"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477684"
 ---
 # <a name="mapping-data-flow-parameters"></a>Mapowanie parametrów do przepływu danych
 
@@ -37,6 +37,12 @@ Aby dodać parametry do przepływu danych, kliknij pustą część kanwy przepł
 Parametry może być wykorzystywany w dowolne wyrażenie przepływu danych. Parametry zaczynają się od $ i są niezmienne. Zawiera listę parametrów dostępnych w Konstruktorze wyrażeń na karcie "Parameters".
 
 ![Przepływ danych wyrażenie parametru](media/data-flow/parameter-expression.png "wyrażenie parametru przepływu danych")
+
+## <a name="use-parameters-in-your-data-flow"></a>Parametry przepływu danych
+
+* Wewnątrz wyrażenia transformacji, można użyć wartości parametrów. Lista parametrów, na karcie parametrów można znaleźć w Konstruktorze wyrażeń. ![Korzystanie z parametrów przepływ danych](media/data-flow/params9.png "parametry przepływu danych użycia")
+
+* Parametry są również używane do skonfigurować wartości dynamicznych dla źródła i ujścia ustawień przekształcania. Po kliknięciu wewnątrz pola można skonfigurować, zostanie wyświetlony link "Dodaj dynamiczne contect", są wyświetlane. Kliknięcie spowoduje przejście do Konstruktora wyrażeń, których można użyć parametrów można użyć wartości dynamicznych. ![Zawartość dynamiczna przepływ danych](media/data-flow/params6.png "zawartości dynamicznej przepływ danych")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Ustaw parametry mapowania przepływu danych z potoku
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4658de97bc8b8a175934286a5be3f074968ff7bd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024529"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485373"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Przykłady zapytań przy użyciu składni "prosta" wyszukiwania w usłudze Azure Search
 
@@ -27,7 +27,7 @@ Składnia zapytania alternatywne jest [pełne Lucene](https://docs.microsoft.com
 
 Poniższe przykłady korzystać z indeksu wyszukiwania Pokazowa składający się z dostępnych zadań na podstawie zestawu danych, dostarczone przez [miasta w Nowym Jorku OpenData](https://nycopendata.socrata.com/) inicjatywy. Te dane nie uważa się bieżących lub ukończone. Indeks znajduje się w piaskownicy usługi obsługiwane przez firmę Microsoft, co oznacza, że nie ma potrzeby subskrypcji platformy Azure lub usługi Azure Search, aby wypróbować te zapytania.
 
-Konieczne jest Postman lub równoważne narzędzie do wystawiania żądań HTTP na GET. Aby uzyskać więcej informacji, zobacz [Eksploruj za pomocą klientów REST](search-fiddler.md).
+Konieczne jest Postman lub równoważne narzędzie do wystawiania żądań HTTP na GET. Aby uzyskać więcej informacji, zobacz [Eksploruj za pomocą klientów REST](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>Ustaw nagłówek żądania
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: d34da8928e06f04756e24f5cc3e4c430c2892f79
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4f502984a09f81b5aaf0568c84b75832f8164151
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341581"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541047"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB zestawu .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -48,13 +48,18 @@ ms.locfileid: "67341581"
 * Obsługa strumieni. 
 * Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany. 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* Wersja System.Net.Http zestawu SDK jest dopasowana zdefiniowana w pakiecie NuGet.
+* Zezwalanie na żądania zapisu powrót do innego regionu, jeśli oryginalny jeden zakończy się niepowodzeniem.
+* Dodaj zasady ponawiania sesji dla żądania zapisu.
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * Poprawki śledzenia zapytań, które spowodowały puste strony sytuacja wyścigu
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* Wersja System.Net.Http zestawu SDK pasuje, co to jest zdefiniowany w pakiecie NuGet
 * Zwiększony rozmiar precyzja dziesiętna zapytań LINQ.
 * Dodano nowe klasy CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType i PartitionKeyDefinitionVersion
 * Dodano TimeToLivePropertyPath do elementu DocumentCollection
@@ -379,6 +384,7 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 
 | Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |02 lipca 2019 r. |--- |
 | [2.4.1](#2.4.1) |20 czerwca 2019 r. |--- |
 | [2.4.0](#2.4.0) |05 maja 2019 r. |--- |
 | [2.3.0](#2.3.0) |04 kwietnia 2019 r. |--- |

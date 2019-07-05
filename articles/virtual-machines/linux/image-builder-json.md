@@ -7,12 +7,12 @@ ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a577a2a2a3b21cb027ba699450631a627f4f7a39
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538294"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501875"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Wersja zapoznawcza: Tworzenie szablonu Kreatora obrazów platformy Azure 
 
@@ -51,11 +51,11 @@ Ten format jest używany podstawowy szablon:
     "apiVersion": "2019-05-01-preview",
 ```
 
-## <a name="location"></a>Lokalizacja
+## <a name="location"></a>Location
 
 Lokalizacja jest region, w której zostanie utworzony obraz niestandardowy. Kreator obrazów (wersja zapoznawcza) obsługiwane są następujące regiony:
 
-- Wschodnie stany USA
+- East US
 - Wschodnie stany USA 2
 - Środkowo-zachodnie stany USA
 - Zachodnie stany USA
@@ -331,6 +331,8 @@ Jest to obsługiwane przez katalogi Windows i Linux ścieżki, ale istnieją pew
  
  
 Jeśli wystąpi błąd próbują pobrać plik i umieść ją w określonym katalogu krok Dostosuj zakończy się niepowodzeniem i będzie on miał customization.log.
+
+>> Uwaga! Konfigurator pliku tylko nadaje się do pobierania plików małe, < 20MB. Dla większych pobierania plików użyć skryptu lub wbudowanego polecenia, kod użycia do pobierania plików, takich jak Linux `wget` lub `curl`, Windows, `Invoke-WebRequest`.
 
 Pliki w konfiguratora plików, które można pobrać z usługi Azure Storage przy użyciu [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 

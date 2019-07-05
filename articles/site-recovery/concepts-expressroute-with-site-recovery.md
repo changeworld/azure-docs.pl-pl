@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/18/2019
+ms.date: 6/27/2019
 ms.author: mayg
-ms.openlocfilehash: bf4cce8a224db81b8db7fae6a69b8b578bb3d47a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35fa26112a6026ab05bd59b38621de7ee802c715
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772321"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491896"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Usługa ExpressRoute systemu Azure za pomocą usługi Azure Site Recovery
 
@@ -25,20 +25,15 @@ W tym artykule opisano, jak używać usługi Azure ExpressRoute z usługi Azure 
 
 Obwód usługi ExpressRoute reprezentuje połączenie logiczne między lokalną infrastrukturą i usługami chmurowymi firmy Microsoft za pośrednictwem dostawcy łączności. Może zamówić łączność obejmującą wiele obwodów usługi ExpressRoute. Każdy obwód może znajdować się w tej samej lub różnych regionach i mogą być połączone z lokalnym za pośrednictwem połączenia różnych dostawców. Dowiedz się więcej o obwodów usługi ExpressRoute [tutaj](../expressroute/expressroute-circuit-peerings.md).
 
-## <a name="expressroute-routing-domains"></a>Domeny routingu usługi ExpressRoute
-
-Obwód usługi ExpressRoute ma wiele domen routingu skojarzone z nią:
--   [Prywatnej komunikacji równorzędnej Azure](../expressroute/expressroute-circuit-peerings.md#privatepeering) — usługi Azure compute usług, a mianowicie maszyn wirtualnych (IaaS) i usług w chmurze (PaaS), które zostały wdrożone w ramach sieci wirtualnej mogą być połączone za pośrednictwem prywatnej komunikacji równorzędnej domeny. Prywatnej komunikacji równorzędnej domeny jest uznawane za zaufane rozszerzenie sieci podstawowej w Microsoft Azure.
--   [Publicznej komunikacji równorzędnej Azure](../expressroute/expressroute-circuit-peerings.md#publicpeering) -usług, takich jak Azure Storage, bazy danych SQL i witryn sieci Web są oferowane na publicznych adresów IP. Prywatnie można połączyć do usług hostowanych na publicznych adresów IP, w tym VIP usługi w chmurze za pośrednictwem publicznej komunikacji równorzędnej domeny routingu. Publiczna komunikacja równorzędna jest przestarzała dla utworzenie nowych kont i Peering firmy Microsoft należy użyć dla usług PaaS platformy Azure.
--   [Komunikacja równorzędna firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) — łączność z usługami online firmy Microsoft (usługi Office 365, Dynamics 365 i PaaS platformy Azure) jest za pośrednictwem komunikacji równorzędnej firmy Microsoft. Komunikacja równorzędna firmy Microsoft jest zalecane domeny routingu, aby połączyć się z usługami PaaS platformy Azure.
-
-Dowiedz się więcej o i porównaj domeny routingu usługi ExpressRoute [tutaj](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+Obwód usługi ExpressRoute ma wiele domen routingu skojarzonych z nim. Dowiedz się więcej o i porównaj domeny routingu usługi ExpressRoute [tutaj](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
 ## <a name="on-premises-to-azure-replication-with-expressroute"></a>Środowiska lokalnego do platformy Azure replikacji przy użyciu usługi ExpressRoute
 
 Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii i migracji na platformę Azure dla lokalnych [maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-architecture.md), [maszyn wirtualnych VMware](vmware-azure-architecture.md), i [serwerów fizycznych](physical-azure-architecture.md). Dla całego środowiska lokalnego do platformy Azure scenariuszy dane replikacji są wysyłane do i przechowywane na koncie usługi Azure Storage. Podczas replikacji nie płać opłatami związanymi z maszyny wirtualnej. Po uruchomieniu trybu failover na platformie Azure Site Recovery automatycznie tworzy maszyny wirtualne IaaS platformy Azure.
 
-Usługa Site Recovery replikuje dane do konta usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery, możesz użyć [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) (uznane za przestarzałe w utworzenie nowych kont) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) spełnione są również do replikacji. Po maszyn wirtualnych lub serwerach pracy awaryjnej z siecią wirtualną platformy Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering). Replikacja nie jest obsługiwana za pośrednictwem prywatnej komunikacji równorzędnej.
+Usługa Site Recovery replikuje dane do konta usługi Azure Storage lub repliki z dysków zarządzanych dla elementu docelowego regionu platformy Azure za pośrednictwem publicznego punktu końcowego. Za pomocą usługi ExpressRoute dla ruchu replikacji usługa Site Recovery, możesz użyć [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) lub istniejącej [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) (uznane za przestarzałe w utworzenie nowych kont). Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Należy pamiętać, że replikacja nie jest obsługiwana za pośrednictwem prywatnej komunikacji równorzędnej.
+
+Upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) również są spełnione dla serwera konfiguracji. Łączność z określonych adresów URL jest wymagane przez serwer konfiguracji do organizowania replikacji usługi Site Recovery. Nie można użyć usługi ExpressRoute dla tego połączenia. 
 
 W przypadku używania serwera proxy w lokalnych i chcesz korzystać z usługi ExpressRoute dla ruchu związanego z replikacją, musisz skonfigurować listę obejścia serwera Proxy na serwerze konfiguracji i serwerów przetwarzania. Wykonaj poniższe kroki:
 
@@ -48,6 +43,8 @@ W przypadku używania serwera proxy w lokalnych i chcesz korzystać z usługi Ex
 - Na liście obejścia, Dodaj adres URL usługi Azure storage *. blob.core.windows.net
 
 Pozwoli to zagwarantować, że tylko ruch związany z replikacją przepływy za pośrednictwem usługi ExpressRoute podczas przejść komunikację za pośrednictwem serwera proxy.
+
+Po maszyn wirtualnych lub serwerach pracy awaryjnej z siecią wirtualną platformy Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
 Połączone scenariusz jest reprezentowane na poniższym diagramie: ![W lokalnym — z platformą Azure przy użyciu usługi ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 

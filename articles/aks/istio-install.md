@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 33d86ab8c88b45c7787620773f0df6e7fe888cf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7c234e181e10499e532436bfde05ed89bdc7d28
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850418"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465694"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Istio w usłudze Azure Kubernetes Service (AKS)
 
-[Istio] [ istio-github] jest siatki usługi typu open source, zapewniająca klucza zestaw funkcji w mikrousług w klastrze Kubernetes. Te funkcje obejmują zarządzanie ruchem, tożsamość usługi i zabezpieczeń, wymuszanie zasad i observability. Aby uzyskać więcej informacji na temat Istio można znaleźć w oficjalnej [co to jest Istio?] [ istio-docs-concepts] dokumentacji.
+[Istio][istio-github] is an open-source service mesh that provides a key set of functionality across the microservices in a Kubernetes cluster. These features include traffic management, service identity and security, policy enforcement, and observability. For more information about Istio, see the official [What is Istio?][istio-docs-concepts] dokumentacji.
 
 W tym artykule pokazano, jak zainstalować Istio. Istio `istioctl` binarnych klienta zostanie zainstalowana na komputerze klienckim i składniki Istio są zainstalowane w klastrze Kubernetes w usłudze AKS.
 
 > [!NOTE]
 > Te instrukcje odwoływać się do wersji Istio `1.1.3`.
 >
-> Istio `1.1.x` wersje zostały przetestowane przez zespół Istio względem wersji rozwiązania Kubernetes `1.11`, `1.12`, `1.13`. Możesz znaleźć dodatkowe wersje Istio na [GitHub - zwalnia Istio] [ istio-github-releases] i informacje o poszczególnych wersjach na [Istio — informacje o wersji] [ istio-release-notes].
+> Istio `1.1.x` wersje zostały przetestowane przez zespół Istio względem wersji rozwiązania Kubernetes `1.11`, `1.12`, `1.13`. Możesz znaleźć dodatkowe wersje Istio na [GitHub — wersje Istio][istio-github-releases] and information about each of the releases at [Istio - Release Notes][istio-release-notes].
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -40,7 +40,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 W krokach szczegółowo opisanych w tym artykule przyjęto założenie, że utworzono klaster usługi AKS (Kubernetes `1.11` i nowszych, przy użyciu RBAC włączone), a `kubectl` połączenia z klastrem. Jeśli potrzebujesz pomocy przy użyciu dowolnego z tych elementów, zobacz [szybkiego startu usługi AKS][aks-quickstart].
 
-Będziesz potrzebować [Helm] [ helm] wykonaj te instrukcje i zainstalować Istio. Zaleca się, że została zainstalowana wersja `2.12.2` lub później poprawnie zainstalowany i skonfigurowany w klastrze. Jeśli potrzebujesz pomocy przy instalowaniu narzędzia Helm, zobacz [wskazówki dotyczące instalacji narzędzia Helm AKS][helm-install]. Wszystkie zasobników Istio również musi być zaplanowane do uruchomienia w węzłach systemu Linux.
+Będziesz potrzebować [Helm][helm] wykonaj te instrukcje i zainstalować Istio. Zaleca się, że została zainstalowana wersja `2.12.2` lub później poprawnie zainstalowany i skonfigurowany w klastrze. Jeśli potrzebujesz pomocy przy instalowaniu narzędzia Helm, zobacz [wskazówki dotyczące instalacji narzędzia Helm AKS][helm-install]. Wszystkie zasobników Istio również musi być zaplanowane do uruchomienia w węzłach systemu Linux.
 
 W tym artykule oddziela wskazówki dotyczące instalacji Istio na kilka kroków dyskretnych. Efekt jest taki sam sposób, w strukturze jako oficjalna instalację Istio [wskazówki][istio-install-helm].
 
@@ -83,6 +83,8 @@ W programie PowerShell użyj `Invoke-WebRequest` Aby pobrać najnowszą wersję 
 $ISTIO_VERSION="1.1.3"
 
 # Windows
+# Use TLS 1.2
+[Net.ServicePointManager]::SecurityProtocol = "tls12"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-win.zip" -OutFile "istio-$ISTIO_VERSION.zip"
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
@@ -167,13 +169,13 @@ Teraz przejść do następnej sekcji, aby [zainstalować Słowniki CRD Istio w u
 > [!IMPORTANT]
 > Upewnij się, wykonaj kroki w tej sekcji z folderu najwyższego poziomu z wersji Istio pobrane i wyodrębnione.
 
-Używa Istio [definicji zasobów niestandardowych (Słowniki CRD)] [ kubernetes-crd] zarządzać jego konfigurację środowiska uruchomieniowego. Należy najpierw zainstalować Słowniki CRD Istio, ponieważ składniki Istio mają zależności na nich. Użyj narzędzia Helm i `istio-init` wykres, aby zainstalować Słowniki CRD Istio do `istio-system` przestrzeni nazw w klastrze AKS:
+Używa Istio [definicji zasobów niestandardowych (Słowniki CRD)][kubernetes-crd] zarządzać jego konfigurację środowiska uruchomieniowego. Należy najpierw zainstalować Słowniki CRD Istio, ponieważ składniki Istio mają zależności na nich. Użyj narzędzia Helm i `istio-init` wykres, aby zainstalować Słowniki CRD Istio do `istio-system` przestrzeni nazw w klastrze AKS:
 
 ```azurecli
 helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
 ```
 
-[Zadania] [ kubernetes-jobs] są wdrażane jako część `istio-init` narzędzia Helm do zainstalowania Słowniki CRD. Te zadania powinno zająć od 1 do 2 minut, w zależności od środowiska klastra. Aby sprawdzić, czy zadania zostały pomyślnie ukończone w następujący sposób:
+[Zadania][kubernetes-jobs] są wdrażane jako część `istio-init` narzędzia Helm do zainstalowania Słowniki CRD. Te zadania powinno zająć od 1 do 2 minut, w zależności od środowiska klastra. Aby sprawdzić, czy zadania zostały pomyślnie ukończone w następujący sposób:
 
 ```azurecli
 kubectl get jobs -n istio-system
@@ -208,7 +210,7 @@ Jeśli masz z tym punktem, następnie oznacza to, że został pomyślnie zainsta
 > [!IMPORTANT]
 > Upewnij się, wykonaj kroki w tej sekcji z folderu najwyższego poziomu z wersji Istio pobrane i wyodrębnione.
 
-Firma Microsoft będzie instalował [Grafana] [ grafana] i [Kiali] [ kiali] jako część naszego Istio instalacji. Grafana zapewnia analizy i pulpity nawigacyjne monitorowania i Kiali udostępnia pulpit nawigacyjny observability siatki usług. W naszym konfiguracji każdego z tych składników wymaga poświadczeń, które musi zostać podana jako [klucz tajny][kubernetes-secrets].
+Firma Microsoft będzie instalował [Grafana][grafana] and [Kiali][kiali] jako część naszego Istio instalacji. Grafana zapewnia analizy i pulpity nawigacyjne monitorowania i Kiali udostępnia pulpit nawigacyjny observability siatki usług. W naszym konfiguracji każdego z tych składników wymaga poświadczeń, które musi zostać podana jako [klucz tajny][wpisy tajne usługi kubernetes].
 
 Firma Microsoft może zainstalować składniki Istio, możemy utworzyć wpisy tajne, zarówno dla platformy Grafana i Kiali. Tworzenie tych kluczy tajnych za pomocą odpowiednich poleceń w danym środowisku.
 
@@ -344,7 +346,7 @@ W tym momencie wdrożono Istio do klastra usługi AKS. Aby upewnić się, że ma
 
 ## <a name="validate-the-istio-installation"></a>Zweryfikuj instalację Istio
 
-Najpierw upewnij się, czy oczekiwany usługi zostały utworzone. Użyj [kubectl get-svc] [ kubectl-get] polecenie, aby wyświetlić uruchomionych usług. Zapytanie `istio-system` przestrzeni nazw, w której Istio i dodatek składniki zostały zainstalowane przez `istio` narzędzia Helm:
+Najpierw upewnij się, czy oczekiwany usługi zostały utworzone. Użyj [kubectl get-svc][kubectl-get] polecenie, aby wyświetlić uruchomionych usług. Zapytanie `istio-system` przestrzeni nazw, w której Istio i dodatek składniki zostały zainstalowane przez `istio` narzędzia Helm:
 
 ```console
 kubectl get svc --namespace istio-system --output wide
@@ -379,7 +381,7 @@ tracing                  ClusterIP      10.0.165.210   <none>          80/TCP   
 zipkin                   ClusterIP      10.0.126.211   <none>          9411/TCP                                                                                                                                     118s      app=jaeger
 ```
 
-Następnie upewnij się, czy zostały utworzone wymagane zasobników. Użyj [kubectl get pods-] [ kubectl-get] poleceń i ponownie zapytanie `istio-system` przestrzeni nazw:
+Następnie upewnij się, czy zostały utworzone wymagane zasobników. Użyj [kubectl get pods-][kubectl-get] poleceń i ponownie zapytanie `istio-system` przestrzeni nazw:
 
 ```console
 kubectl get pods --namespace istio-system
@@ -409,11 +411,11 @@ kiali-5c4cdbb869-s28dv                   1/1       Running     0          6m26s
 prometheus-67599bf55b-pgxd8              1/1       Running     0          6m26s
 ```
 
-Powinny istnieć dwie `istio-init-crd-*` zasobników z `Completed` stanu. Te zasobniki zostały odpowiedzialny za działanie zadania, które tworzone Słowniki CRD we wcześniejszym kroku. Wszystkie inne zasobników powinien być wyświetlony stan `Running`. Jeśli zasobników nie mają tych stanów, poczekaj minutę lub dwie robią. Jeśli wszystkie zasobników zgłosić problem, użyj [kubectl opisują zasobnika] [ kubectl-describe] polecenie, aby przejrzeć swoje dane wyjściowe i stanu.
+Powinny istnieć dwie `istio-init-crd-*` zasobników z `Completed` stanu. Te zasobniki zostały odpowiedzialny za działanie zadania, które tworzone Słowniki CRD we wcześniejszym kroku. Wszystkie inne zasobników powinien być wyświetlony stan `Running`. Jeśli zasobników nie mają tych stanów, poczekaj minutę lub dwie robią. Jeśli wszystkie zasobników zgłosić problem, użyj [kubectl opisują zasobnika][kubectl-describe] polecenie, aby przejrzeć swoje dane wyjściowe i stanu.
 
 ## <a name="accessing-the-add-ons"></a>Uzyskiwanie dostępu do dodatków
 
-Liczba dodatków zostały zainstalowane Istio w naszej konfiguracji powyżej zapewniające dodatkowe funkcje. Interfejsy użytkownika dla dodatków nie są widoczne publicznie za pośrednictwem adresu ip zewnętrznej. Aby uzyskać dostęp do interfejsów użytkownika dodatku, należy użyć [kubectl portu na następny okres] [ kubectl-port-forward] polecenia. To polecenie tworzy bezpiecznego połączenia między komputerze klienckim i odpowiednie zasobnik w klastrze AKS.
+Liczba dodatków zostały zainstalowane Istio w naszej konfiguracji powyżej zapewniające dodatkowe funkcje. Interfejsy użytkownika dla dodatków nie są widoczne publicznie za pośrednictwem adresu ip zewnętrznej. Aby uzyskać dostęp do interfejsów użytkownika dodatku, należy użyć [kubectl portu na następny okres][kubectl-port-forward] polecenia. To polecenie tworzy bezpiecznego połączenia między komputerze klienckim i odpowiednie zasobnik w klastrze AKS.
 
 Dodano dodatkową warstwę zabezpieczeń dla narzędzia Grafana oraz Kiali określając poświadczeń we wcześniejszej części tego artykułu.
 

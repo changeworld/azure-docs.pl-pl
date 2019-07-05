@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978307"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448144"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Kontrola dostępu w usłudze Active Directory Role-Based (wersja zapoznawcza)
 
@@ -29,10 +29,10 @@ Aplikacja, która korzysta z usługi Azure AD RBAC nie trzeba obsługiwać zasad
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role i uprawnienia
 System Azure oferuje następujące wbudowane role kontroli RBAC Autoryzowanie dostępu do przestrzeni nazw usługi Event Hubs:
 
-[Event Hubs danych właściciela (wersja zapoznawcza)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) rola umożliwia dostęp do danych w przestrzeni nazw usługi Event Hubs i jej podmioty (kolejki, tematy, subskrypcje i filtrów)
+[Właściciel danych centra zdarzeń Azure (wersja zapoznawcza)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) rola umożliwia dostęp do danych w przestrzeni nazw usługi Event Hubs i jej podmioty (kolejki, tematy, subskrypcje i filtrów)
 
 >[!IMPORTANT]
-> Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **właściciela** lub **Współautor** roli. Jednak uprawnienia dostępu do danych **właściciela** i **Współautor** roli nie są już uznawane. Jeśli używasz **właściciela** lub **Współautor** roli, przełącz się do przy użyciu **Event Hubs danych właściciela** roli.
+> Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **właściciela** lub **Współautor** roli. Jednak uprawnienia dostępu do danych **właściciela** i **Współautor** roli nie są już uznawane. Jeśli używasz **właściciela** lub **Współautor** roli, przełącz się do przy użyciu **właściciel danych centra zdarzeń Azure (wersja zapoznawcza)** roli.
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Usługa Event Hubs przy użyciu konta użytkownika domeny usługi Azure AD

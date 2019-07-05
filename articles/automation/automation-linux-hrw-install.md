@@ -4,17 +4,17 @@ description: Ten artykuł zawiera informacje na temat instalowania usługi Azure
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc07aa9c1b2c540c33949a8c591bd98f91b04666
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94d34c8a9a3480032a79d100af883a85868d327e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738863"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478468"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Wdrażanie procesu roboczego elementu Runbook dla hybrydowych w systemie Linux
 
@@ -51,7 +51,7 @@ Dostępne są następujące minimalne wymagania dotyczące procesu roboczego ele
 |Glibc |Biblioteka C GNU| 2.5-12 |
 |Openssl| Biblioteki OpenSSL | 1.0 (protokół TLS 1.1 i TLS 1.2 są obsługiwane|
 |Curl | Klient sieci web programu cURL | 7.15.5|
-|Ctypes języka Python | |
+|Python-ctypes | |
 |PAM | Podłączane moduły uwierzytelniania|
 | **Opcjonalny pakiet** | **Opis** | **Minimalna wersja**|
 | Program PowerShell Core | Aby uruchomić elementy runbook programu PowerShell, zobacz PowerShell musi zostać zainstalowany, [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) dowiesz się, jak go zainstalować.  | 6.0.0 |

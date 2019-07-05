@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 21bf96866c14615009a17279ff2fdd04bf4116ad
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60369230"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490267"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Wyświetl rezerwacje platformy Azure w witrynie Azure portal
 
@@ -32,7 +32,7 @@ Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub zmień użytkowników,
 Aby wyświetlić rezerwacji jako właściciel lub czytnika,
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wyszukiwanie **rezerwacje**.
+2. Wyszukaj **rezerwacje**.
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-reservation-search.png)  
 3. Lista zawiera wszystkie rezerwacje, w których masz rolę właściciela lub czytelnika. Poszczególne zastrzeżenia pokazuje ostatnie procent użycia znane.  
     ![Przykład przedstawiający listę rezerwacji](./media/billing-view-reservation/view-reservations.png)
@@ -49,7 +49,7 @@ Jeśli musisz zmienić zakres rezerwacji podziału rezerwacji lub zmiany, kto mo
 Aby wyświetlić transakcje rezerwacji w witrynie Azure portal
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj **Cost Management + rozliczenia**.
 
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-cm-billing-search.png)
 

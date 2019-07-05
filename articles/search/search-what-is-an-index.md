@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a6a5b0e3957141b9ea17a378a7cbeff33a0124e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024429"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485198"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie podstawowego indeksu w usłudze Azure Search
 
@@ -36,7 +36,7 @@ Otrzymywanych projekt prawo indeksu zwykle odbywa się za pośrednictwem wiele i
   
    Po kliknięciu **Utwórz**, wszystkie struktury fizyczne obsługi indeksu są tworzone w usłudze wyszukiwania.
 
-3. Pobieranie przy użyciu schematu indeksu [uzyskać indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/get-index) i narzędzia, takiego jak testowanie sieci web [Postman](search-fiddler.md). Masz teraz reprezentacja JSON indeks, który został utworzony w portalu. 
+3. Pobieranie przy użyciu schematu indeksu [uzyskać indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/get-index) i narzędzia, takiego jak testowanie sieci web [Postman](search-get-started-postman.md). Masz teraz reprezentacja JSON indeks, który został utworzony w portalu. 
 
    Przejściu na podejście oparte na kodzie w tym momencie. Portal nie jest odpowiednie dla iteracji, ponieważ nie można edytować indeksu, który jest już utworzony. Jednak narzędzie Postman i REST, można użyć dla pozostałych zadań.
 
@@ -48,7 +48,7 @@ Otrzymywanych projekt prawo indeksu zwykle odbywa się za pośrednictwem wiele i
 
 Ponieważ struktury fizyczne są tworzone w usłudze [porzucenie i ponowne tworzenie indeksów](search-howto-reindex.md) zachodzi po każdym wprowadzeniu znaczących zmian do istniejącej definicji pola. Oznacza to, że podczas tworzenia aplikacji, należy zaplanować na częste ponowne kompilowanie. Warto rozważyć pracy przy użyciu podzestawu danych, aby wprowadzić odbudowuje go szybciej. 
 
-Kod, a nie podejście portalu, jest zalecane w przypadku iteracyjne projektowania. Jeśli użytkownik korzysta w portalu do definicji indeksu, trzeba będzie Wypełnij definicję indeksu na każdym ponownej kompilacji. Jako alternatywę, narzędzi, takich jak [interfejsu API REST i narzędzia Postman](search-fiddler.md) są przydatne do testowania weryfikacji koncepcji, w przypadku projektów programistycznych w wczesnych faz. Można dokonać zmiany przyrostowe definicji indeksu w treści żądania, a następnie wyślij żądanie do usługi Usługa umożliwiająca ponowne utworzenie indeksu za pomocą zaktualizowanego schematu.
+Kod, a nie podejście portalu, jest zalecane w przypadku iteracyjne projektowania. Jeśli użytkownik korzysta w portalu do definicji indeksu, trzeba będzie Wypełnij definicję indeksu na każdym ponownej kompilacji. Jako alternatywę, narzędzi, takich jak [interfejsu API REST i narzędzia Postman](search-get-started-postman.md) są przydatne do testowania weryfikacji koncepcji, w przypadku projektów programistycznych w wczesnych faz. Można dokonać zmiany przyrostowe definicji indeksu w treści żądania, a następnie wyślij żądanie do usługi Usługa umożliwiająca ponowne utworzenie indeksu za pomocą zaktualizowanego schematu.
 
 ## <a name="components-of-an-index"></a>Składniki indeksu
 
@@ -160,16 +160,22 @@ W trakcie definiowania schematu musisz określić nazwę, typ i atrybuty każdeg
 Dowiedz się więcej na temat [typów danych obsługiwanych przez usługę Azure Search w tym miejscu](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="index-attributes"></a>Atrybuty indeksu
+
+Dokładnie jedno pole w Twoim indeksie musi być wyznaczone jako **klucz** pola, które jednoznacznie identyfikuje każdy dokument.
+
+Inne atrybuty określają, jak pole jest używane w aplikacji. Na przykład **wyszukiwanie** atrybut jest przypisany do każdego pola, które powinny zostać uwzględnione w wyszukiwanie pełnotekstowe. 
+
+Interfejsy API, których używasz do tworzenia indeksu mają różne zachowania domyślne. Dla [interfejsów API REST](https://docs.microsoft.com/rest/api/searchservice/Create-Index), większość atrybutów są domyślnie włączone (na przykład **wyszukiwanie** i **pobieranie** mają wartość true w przypadku pól ciągów) i często wystarczy ustawić je, jeśli chcesz je wyłączyć. Dla zestawu .NET SDK przeciwieństwo ma wartość true. Dowolne właściwości, które nie zostanie jawnie ustawiona wartość domyślna to wyłączyć odpowiednie działanie wyszukiwania, chyba że jawnie włączyć.
+
 | Atrybut | Opis |
 | --- | --- |
-| *Klucz* |Ciąg udostępniający unikatowy identyfikator każdego dokumentu, który jest używany do wyszukiwania dokumentu. Każdy indeks musi mieć jeden klucz. Tylko jedno pole może być kluczem i musi ono mieć typ Edm.String. |
-| *Pobieranie* |Określa, czy pole może być zwracane w wynikach wyszukiwania. |
-| *Filtrowanie* |Umożliwia używanie pola w zapytaniach filtrów. |
-| *Sortowanie* |Umożliwia zapytaniom sortowanie wyników wyszukiwania za pomocą tego pola. |
-| *Tworzenie aspektów* |Umożliwia używanie pola w strukturze [nawigacji aspektowej](search-faceted-navigation.md) podczas samodzielnego filtrowania przez użytkownika. Zwykle jako aspekty najlepiej sprawdzają się pola zawierające powtarzające się wartości, które umożliwiają grupowanie wielu dokumentów (na przykład wiele dokumentów podlegających pod jedną markę lub kategorię usługi). |
-| *Wyszukiwanie* |Oznacza pole jako podlegające wyszukiwaniu pełnotekstowemu. |
+| `key` |Ciąg udostępniający unikatowy identyfikator każdego dokumentu, który jest używany do wyszukiwania dokumentu. Każdy indeks musi mieć jeden klucz. Tylko jedno pole może być kluczem i musi ono mieć typ Edm.String. |
+| `retrievable` |Określa, czy pole może być zwracane w wynikach wyszukiwania. |
+| `filterable` |Umożliwia używanie pola w zapytaniach filtrów. |
+| `Sortable` |Umożliwia zapytaniom sortowanie wyników wyszukiwania za pomocą tego pola. |
+| `facetable` |Umożliwia używanie pola w strukturze [nawigacji aspektowej](search-faceted-navigation.md) podczas samodzielnego filtrowania przez użytkownika. Zwykle jako aspekty najlepiej sprawdzają się pola zawierające powtarzające się wartości, które umożliwiają grupowanie wielu dokumentów (na przykład wiele dokumentów podlegających pod jedną markę lub kategorię usługi). |
+| `searchable` |Oznacza pole jako podlegające wyszukiwaniu pełnotekstowemu. |
 
-Dowiedz się więcej na temat [atrybutów indeksów usługi Azure Search w tym miejscu](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
 ## <a name="storage-implications"></a>Implikacje magazynu
 

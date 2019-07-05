@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ebb67ff295a934b4e125e298018c27a095adc590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 959d96a9bc1dd9f28e62d904248cd1f18d73c27d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153863"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67563929"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Udzielanie dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal
 
@@ -42,6 +42,11 @@ Po określeniu odpowiedni zakres przypisania roli, przejdź do tego zasobu w wit
 
 W poniższych sekcjach opisano każdy z tych kroków, które bardziej szczegółowo.
 
+> [!NOTE]
+> Jako właściciel konta usługi Azure Storage możesz nie są automatycznie przypisywane uprawnienia dostępu do danych. Należy jawnie przypisać sobie rolę RBAC dla usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konto magazynu, kontenera lub kolejki.
+> 
+> Nie można przypisać roli do kontenera lub kolejki zakresu, jeśli konto magazynu ma hierarchicznej przestrzeni nazw, włączone.
+
 ### <a name="assign-a-built-in-rbac-role"></a>Przypisanie wbudowanej roli RBAC
 
 Przed przypisaniem roli do podmiotu zabezpieczeń, należy wziąć pod uwagę zakres uprawnień, których udzielasz. Przegląd [określenie zakresu zasobów](#determine-resource-scope) sekcji, aby określić odpowiedni zakres.
@@ -65,11 +70,6 @@ Przedstawionych tu procedurach przypisuje rolę ograniczone do kontenera, ale mo
     ![Zrzut ekranu przedstawiający listę użytkowników przypisanych do roli](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
 Można wykonać podobne kroki, aby przypisać rolę ograniczone do konta magazynu, grupy zasobów lub subskrypcji.
-
-> [!NOTE]
-> Jako właściciel konta usługi Azure Storage możesz nie są automatycznie przypisywane uprawnienia dostępu do danych. Należy jawnie przypisać sobie rolę RBAC dla usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konto magazynu, kontenera lub kolejki.
-> 
-> Nie można przypisać roli do kontenera lub kolejki zakresu, jeśli konto magazynu ma hierarchicznej przestrzeni nazw, włączone.
 
 ### <a name="assign-the-reader-role-for-portal-access"></a>Przypisywanie roli Czytelnik do dostępu do portalu
 

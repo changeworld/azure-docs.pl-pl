@@ -16,12 +16,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47e9033b33c70a72a1685696f75a442e88eed033
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f83cb38567feb51ba7959ada7730d66ded677bf9
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289773"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476540"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Zatwierdź lub Odrzuć żądania dla ról usługi Azure AD w usłudze PIM
 
@@ -41,7 +41,7 @@ Jako delegowany osoby zatwierdzającej otrzymasz wiadomość e-mail z powiadomie
 
 1. Kliknij przycisk **zatwierdzanie żądań**.
 
-    ![Role usługi AD PIM Azure — role](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![Role usługi Azure AD — zatwierdzanie żądań](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     Zobaczysz listę żądań oczekujących na zatwierdzenie.
 
@@ -49,27 +49,27 @@ Jako delegowany osoby zatwierdzającej otrzymasz wiadomość e-mail z powiadomie
 
 1. Zaznacz żądania, aby zatwierdzić, a następnie kliknij przycisk **Zatwierdź** otworzyć Zatwierdź wybrane żądania okienka.
 
-    ![Lista żądań zatwierdzenia PIM](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+    ![Zatwierdź żądania listy z podświetloną opcją Zatwierdź](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
 1. W **Przyczyna zatwierdzenia** wpisz przyczynę.
 
-    ![PIM Zatwierdź wybrane żądania](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+    ![Zatwierdź wybrane żądania okienko z powodu Zatwierdź](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
 1. Kliknij przycisk **zatwierdzić**.
 
     Symbol stan zostanie zaktualizowany o zatwierdzenie.
 
-    ![PIM Zatwierdź wybrane żądania](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+    ![Zatwierdź wybrane żądania w okienku po kliknięciu przycisku Zatwierdź](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
 ## <a name="deny-requests"></a>Odmów żądań
 
 1. Zaznacz żądania, aby odmówić dostępu, a następnie kliknij przycisk **Odmów** otworzyć Odmów zaznaczone okienko żądań.
 
-    ![Lista żądań zatwierdzenia PIM](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+    ![Zatwierdzanie żądań listy z podświetloną opcją Odmów](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
 1. W **Przyczyna odrzucenia** wpisz przyczynę.
 
-    ![Odmów usługi PIM, wybrane żądania](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+    ![Okienko wybrane żądania z powodu Odmów Odmów](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
 1. Kliknij przycisk **Odmów**.
 

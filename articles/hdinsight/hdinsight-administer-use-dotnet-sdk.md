@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 06e3178e344ee46f67cfd8a6feaf08d56d3c86e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724136"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508109"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu zestawu .NET SDK
 
@@ -257,10 +257,6 @@ Zobacz [uruchamianie przykładów technologii MapReduce w HDInsight](hadoop/apac
 
 Zobacz [uruchamianie Apache zapytań Hive przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**Aby przesłać zadania Apache Pig**
-
-Zobacz [zadania uruchamiania Apache Pig, przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
-
 **Do przesyłania zadań z wykorzystaniem narzędzia Apache Sqoop**
 
 Zobacz [z HDInsight przy użyciu narzędzia Apache Sqoop](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
@@ -271,7 +267,7 @@ Zobacz [Użyj Apache Oozie z usługą Hadoop, aby zdefiniować i uruchomić prze
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Przekazywanie danych do usługi Azure Blob storage
 
-Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].
+Zobacz [przekazywanie danych do HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Zobacz też
 
@@ -279,8 +275,8 @@ Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].
 * [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md)
 * [Administrowanie HDInsight przy użyciu interfejsu wiersza polecenia][hdinsight-admin-cli]
 * [Tworzenie klastrów HDInsight][hdinsight-provision]
-* [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
-* [Wprowadzenie do usługi Azure HDInsight][hdinsight-get-started]
+* [Przekazywanie danych do HDInsight][hdinsight-upload-data]
+* [Rozpoczynanie pracy z usługą Azure HDInsight][hdinsight-get-started]
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/

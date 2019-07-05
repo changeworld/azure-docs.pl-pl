@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 5b74524a05317cf22160561a4a001e88f9215953
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8799fcb06235474bb33cdaf0406300065208024
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440089"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543819"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Narzędzia Azure IoT dla programu Visual Studio Code do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT Hub
 
@@ -62,11 +62,11 @@ Dowiesz się, jak używać usługi Azure IoT Tools for Visual Studio Code do mon
 
 Do monitorowania komunikatów wysyłanych z urządzenia do usługi IoT hub, wykonaj następujące kroki:
 
-1. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **Rozpocznij monitorowania komunikatu D2C**.
+1. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**.
 
 2. Monitorowane komunikaty będą wyświetlane w **dane wyjściowe** > **Azure IoT Hub Toolkit** widoku.
 
-3. Aby zatrzymać monitorowanie, kliknij prawym przyciskiem myszy **dane wyjściowe** wyświetlać i wybierać **Zatrzymaj monitorowanie komunikatu D2C**.
+3. Aby zatrzymać monitorowanie, kliknij prawym przyciskiem myszy **dane wyjściowe** wyświetlać i wybierać **zatrzymać monitorowanie wbudowany zdarzeń punkt końcowy**.
 
 ## <a name="send-cloud-to-device-messages"></a>Wysyłanie komunikatów z chmury do urządzeń
 

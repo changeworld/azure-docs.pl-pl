@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65989238"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550353"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w platformie tożsamości firmy Microsoft
 
@@ -186,7 +186,7 @@ Aby przypisać nowego użytkownika lub grupy do aplikacji:
 3. Wybierz **użytkowników i grup (\<numer > wybrany)** . **Użytkowników i grup** zostanie wyświetlona strona, wyświetlanie listy dostępnych użytkowników i grup.
 4. Typ lub przewijania, aby znaleźć użytkownika lub grupę, którą chcesz przypisać z listy.
 5. Wybierz użytkowników lub grupy, którą chcesz dodać, a następnie wybierz **wybierz** przycisku. **Użytkowników i grup** strony zniknie.
-6. W **dodać przypisania** wybierz opcję **przypisać**. **<application name> — Użytkownicy i grupy** innym użytkownikom wyświetlanych na liście zostanie wyświetlona strona.
+6. W **dodać przypisania** wybierz opcję **przypisać**. **\<Nazwa aplikacji >-Użytkownicy i grupy** innym użytkownikom wyświetlanych na liście zostanie wyświetlona strona.
 
    ![Użytkownicy aplikacji i grupy](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 

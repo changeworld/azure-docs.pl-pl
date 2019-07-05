@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/19/2019
-ms.openlocfilehash: efa4cc070f47174634c8dc67b37f10bc3d112d08
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/26/2019
+ms.openlocfilehash: 412ce3c5245f3f22bfb03740a0451670dc6a90a7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293202"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448105"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozszerzenia PostgreSQL w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 PostgreSQL zapewnia możliwość rozszerzania funkcji bazy danych za pomocą rozszerzeń. Rozszerzenia umożliwiają grupowanie wielu powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunięte z bazy danych za pomocą jednego polecenia. Po ładowany w bazie danych rozszerzenia może działać tak jak wbudowane funkcje. Aby uzyskać więcej informacji na temat rozszerzenia PostgreSQL, zobacz [pakowania powiązanych obiektów w rozszerzeniu](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -48,7 +48,7 @@ W poniższej tabeli wymieniono standardowego rozszerzenia PostgreSQL, które są
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Zarządza partycjonowane tabele, czasu lub identyfikatora. |
 > | [PG\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Udostępnia funkcje i operatory określania podobieństwa alfanumeryczne, w oparciu o dopasowanie trigram. |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Oferuje funkcje, które manipulują całe tabele, w tym krzyżowym. |
-> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje powszechnie unikatowe identyfikatory (UUID). |
+> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje powszechnie unikatowe identyfikatory (UUID). (Zobacz poniżej uwagi na to rozszerzenie). |
 > | [orafce](https://github.com/orafce/orafce) | Zawiera podzbiór funkcji i pakietów emulowane z komercyjnego baz danych. |
 
 ### <a name="full-text-search-extensions"></a>Wyszukiwanie pełnotekstowe rozszerzenia
@@ -118,6 +118,10 @@ Istnieje zależność między informacje o wykonaniu zapytania zawiera pg_stat_s
 dblink i postgres_fdw umożliwiają połączenie się z jednego serwera PostgreSQL do innego lub do innej bazy danych na tym samym serwerze. Serwer odbierający musi zezwalać na połączenia z serwerem wysyłania za pośrednictwem swojej zapory. Korzystając z tych rozszerzeń do połączenia między — Azure Database for postgresql — serwery, można to zrobić przez ustawienie "Zezwalaj na dostęp do usług platformy Azure" na wartość ON. Jest to również potrzebne, jeśli chcesz użyć rozszerzeń w pętli do tego samego serwera. Ustawienie "Zezwalaj na dostęp do usług platformy Azure", można znaleźć w witrynie Azure portal strona serwera Postgres, w obszarze zabezpieczeń połączenia. Włączenie opcji "Zezwalaj na dostęp do usług platformy Azure" na umieszczenie wszystkich adresów IP usługi Azure.
 
 Obecnie połączenia wychodzące z usługi Azure Database for PostgreSQL nie są obsługiwane, z wyjątkiem połączeń z innymi — Azure Database for postgresql w warstwie serwerów.
+
+## <a name="uuid"></a>uuid
+Jeśli planujesz użyć `uuid_generate_v4()` z rozszerzenia uuid ossp należy wziąć pod uwagę porównanie z `gen_random_uuid()` z poziomu rozszerzenia pgcrypto korzyści wydajności.
+
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB jest bazy danych szeregów czasowych, który jest spakowany jako rozszerzenie database for PostgreSQL. TimescaleDB udostępnia zorientowane na czas funkcje analityczne, optymalizacje i skaluje Postgres dla obciążeń szeregów czasowych.

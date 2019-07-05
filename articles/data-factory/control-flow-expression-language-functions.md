@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 4c51974498539a0305312d6501bcfa9ebc3b2e88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d48d9e89085e08ac4da9db15458e3a3aa8152bb5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573553"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541213"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Wyrażenia i funkcje w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -139,6 +139,9 @@ W poniższym przykładzie potok przyjmuje **inputPath** i **outputPath** paramet
     }
 }
 ```
+#### <a name="tutorial"></a>Samouczek
+To [samouczek](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) przeprowadzi Cię przez jak przekazać parametry między potoku i działania oraz między działaniami.
+
   
 ## <a name="functions"></a>Funkcje  
  Można wywołać funkcji w wyrażeniach. Poniższe sekcje zawierają informacje na temat funkcji, których można użyć w wyrażeniu.  
@@ -174,7 +177,7 @@ W poniższym przykładzie potok przyjmuje **inputPath** i **outputPath** paramet
 |pierwszy|Zwraca pierwszy element w tablicy lub ciągu przekazany. Na przykład, ta funkcja zwraca `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: Collection<br /><br /> **Opis**: Wymagany. Kolekcja, aby pobrać pierwszy obiekt.|  
 |ostatni|Zwraca ostatni element w tablicy lub ciągu przekazany. Na przykład, ta funkcja zwraca `3`:<br /><br /> `last('0123')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: Collection<br /><br /> **Opis**: Wymagany. Kolekcja, aby pobrać ostatni obiekt.|  
 |Wypełnij|Zwraca pierwszy **liczba** przekazanych elementów z tablicy lub ciągu, na przykład ta funkcja zwraca `[1, 2]`:  `take([1, 2, 3, 4], 2)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: Collection<br /><br /> **Opis**: Wymagany. Kolekcja do wykonania pierwszego **liczba** obiekty.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: Count<br /><br /> **Opis**: Wymagany. Liczba obiektów do usunięcia z **kolekcji**. Musi być dodatnią liczbą całkowitą.|  
-|Pomiń|Zwraca elementy w tablicy, zaczynając od indeksu **liczba**, na przykład ta funkcja zwraca `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: Collection<br /><br /> **Opis**: Wymagany. Kolekcja, aby pominąć pierwszy **liczba** obiekty.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: Count<br /><br /> **Opis**: Wymagany. Liczba obiektów do usunięcia z początku **kolekcji**. Musi być dodatnią liczbą całkowitą.|  
+|Pomiń|Zwraca elementy w tablicy, zaczynając od indeksu **liczba**, na przykład ta funkcja zwraca `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: Collection<br /><br /> **Opis**: Wymagany. Kolekcja, aby pominąć pierwszy **liczba** obiekty.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: Licznik<br /><br /> **Opis**: Wymagany. Liczba obiektów do usunięcia z początku **kolekcji**. Musi być dodatnią liczbą całkowitą.|  
   
 ## <a name="logical-functions"></a>Funkcje logiczne  
  Te funkcje są przydatne w warunkach, może służyć do oceny dowolnego typu logiki.  
@@ -196,11 +199,11 @@ W poniższym przykładzie potok przyjmuje **inputPath** i **outputPath** paramet
   
 -   string  
   
--   liczba całkowita  
+-   integer  
   
 -   float  
   
--   wartość logiczna  
+-   boolean  
   
 -   Tablice  
   

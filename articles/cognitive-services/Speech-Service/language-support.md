@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3596f230ace2d19df28d0b43af45c74aaa87836
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65020854"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561294"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Obsługa języka i regionu dla usług przetwarzania mowy
 
@@ -24,7 +24,7 @@ Różne języki są obsługiwane przez różne funkcje usług przetwarzania mowy
 
 ## <a name="speech-to-text"></a>Zamiany mowy na tekst
 
-Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki. Różne poziomy możliwości dostosowania są dostępne dla każdego języka.
+Rozpoznawanie mowy Microsoft SDK i interfejsu API REST obsługują następujące języki (ustawienia regionalne). Różne poziomy możliwości dostosowania są dostępne dla każdego języka.
 
   Kod | Język | [Akustyczna](how-to-customize-acoustic-models.md) | [Dostosowania języka](how-to-customize-language-model.md) | [Wymowa dostosowania](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------

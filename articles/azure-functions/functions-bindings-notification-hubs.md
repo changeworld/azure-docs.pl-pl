@@ -4,19 +4,19 @@ description: Dowiedz się, jak używać usługi Azure Notification Hub powiązan
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 79ea9455fec7d31f800b2b5d36df6a2a53f502c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ed9e8cc9d05aef81175acb3bc0efd953e1bf1c4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61438202"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480406"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Usługa Notification Hubs danych wyjściowych powiązania dla usługi Azure Functions
 

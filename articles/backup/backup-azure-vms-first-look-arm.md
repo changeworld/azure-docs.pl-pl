@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 906024ecb3e95c75c45efddafbbf76944c6aea29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80739fac8317014c74c6a86cef9aa23696cfb42e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058067"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442996"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Tworzenie kopii zapasowej maszyny Wirtualnej platformy Azure przy użyciu ustawień maszyny Wirtualnej
 
@@ -72,7 +72,8 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, usługi Azure
 
 
 > [!NOTE]
-> Usługa Azure Backup tworzy oddzielnej grupy zasobów (innej niż grupa zasobów maszyny Wirtualnej) do przechowywania migawek z formatem nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów będą przechowywane przez czas trwania w dniach, jak określono w sekcji "Zachowaj natychmiastowe odzyskiwanie migawki" zasady kopii zapasowej maszyny wirtualnej platformy Azure. Stosowanie blokady do tej grupy zasobów może powodować błędy kopii zapasowych.
+> Usługa Azure Backup tworzy oddzielnej grupy zasobów (innej niż grupa zasobów maszyny Wirtualnej) do przechowywania migawek z formatem nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów będą przechowywane przez czas trwania w dniach, jak określono w sekcji "Zachowaj natychmiastowe odzyskiwanie migawki" zasady kopii zapasowej maszyny wirtualnej platformy Azure. Stosowanie blokady do tej grupy zasobów może powodować błędy kopii zapasowych.<br>
+Ta grupa zasobów również powinny być wykluczone z jakieś ograniczenia dotyczące nazw/tag, zgodnie z zasadami ograniczeń mogłyby spowodować zablokowanie tworzenia kolekcji punktów zasobów w niej ponownie, powodując błędy kopii zapasowych.
 
 
 ## <a name="run-a-backup-immediately"></a>Natychmiast wykonać kopię zapasową

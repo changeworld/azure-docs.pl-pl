@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 06e61d30f0d4e598c48f190572b8b4343f351043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e4c0a6cd25587b33c06526b57e6acdbebb69c8b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762789"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445633"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów bazy danych SQL dla serwera Azure SQL Database
 
@@ -44,6 +44,9 @@ Ten artykuł zawiera omówienie limitów zasobów bazy danych SQL dla serwera ba
 > Jak liczba baz danych zbliża się limit dla bazy danych programu SQL server, mogą wystąpić następujące czynności:
 > - Zwiększenie opóźnienia w uruchamianiu zapytań bazy danych master.  Dotyczy to widoków dane statystyczne wykorzystania zasobów, takich jak sys.resource_stats.
 > - Zwiększenie opóźnienia w operacji zarządzania i renderowanie portalu punkty widzenia, obejmujące wyliczanie baz danych na serwerze.
+
+### <a name="storage-size"></a>Rozmiar magazynu
+- Pojedyncze bazy danych rources można znaleźć na stronie albo [limity zasobów na podstawie jednostek DTU](sql-database-dtu-resource-limits-single-databases.md) lub [limity zasobów opartych na rdzeniach wirtualnych](sql-database-vcore-resource-limits-single-databases.md) limitów rozmiaru magazynu na warstwy cenowej.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co się stanie po osiągnięciu limitów zasobów bazy danych
 

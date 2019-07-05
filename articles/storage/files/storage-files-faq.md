@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c32d9954b3c90a5f7e9c5475acdb141f7154cf76
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190063"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540357"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -73,10 +73,10 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 * <a id="tier-options"></a>
   **Jakie warstwy magazynowania są obsługiwane w usłudze Azure Files?**  
-    Obecnie usługa Azure Files obsługuje tylko warstwy magazynu w warstwie standardowa. Nie mamy osi czasu, aby udostępnić usługę premium storage i magazynu chłodnego pomocy technicznej w tej chwili. 
+    Usługa Azure Files obsługuje dwie warstwy magazynowania: premium i standardowa. Udziały plików standardowa są tworzone ogólnie rzecz biorąc konta magazynu (GPv1 lub konta GPv2) przeznaczenia i premium, udziały plików są tworzone w ramach kont magazynu FileStorage. Dowiedz się więcej o sposobie tworzenia [standardowych plikowych udziałów](storage-how-to-create-file-share.md) i [udziałów plików w warstwie premium](storage-how-to-create-premium-fileshare.md). 
     
     > [!NOTE]
-    > Nie można utworzyć udziały plików platformy Azure, z konta magazynu tylko dla obiektów blob lub kont usługi premium storage.
+    > Nie można utworzyć udziały plików platformy Azure z kont usługi Blob storage lub *premium* konta magazynu ogólnego przeznaczenia (GPv1 lub konta GPv2). Standardowa plików platformy Azure udostępnia musi utworzone w *standardowa* kont ogólnego przeznaczenia, udziałów plików platformy Azure tylko i premium, muszą być tworzone w FileStorage tylko konta magazynu. *Premium* konta magazynu ogólnego przeznaczenia (GPv1 i GPv2) są premium strony tylko dla obiektów blob. 
 
 * <a id="give-us-feedback"></a>
   **Czy na pewno chcesz zobaczyć określoną funkcję, dodany do usługi Azure Files. Możesz dodać go?**  
@@ -356,8 +356,8 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
     Aby uzyskać informacje na temat cele dotyczące skalowalności i wydajności dla usługi Azure Files, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Files](storage-files-scale-targets.md).
 
 * <a id="need-larger-share"></a>
-**Potrzebuję udział plików większych niż usługi pliki Azure oferuje obecnie. Można zwiększyć rozmiar Moje udziału plików platformy Azure?**  
-    Nie. Maksymalny rozmiar udziału plików platformy Azure wynosi 5 TiB. Obecnie jest to stały limit, które firma Microsoft nie można dostosować. Pracujemy nad rozwiązaniem, aby zwiększyć rozmiar udziału na 100 TiB, ale nie mamy osi czasu, aby udostępnić w tej chwili.
+**Jakie rozmiary są dostępne dla udziałów plików platformy Azure?**  
+    Rozmiar udziału plików platformy Azure (premium i standardowa) można skalować do 100 TiB. Rozmiary udziałów plików Premium maksymalnie 100 TiB są dostępne jako oferty usług ogólnie dostępnych. Rozmiary udziałów plików standardowych maksymalnie 5 TiB są dostępne jako wersji Ogólnodostępnej oferty, podczas gdy rozmiarze do 100 TiB są w wersji zapoznawczej. Zobacz [dołączanie do większych udziałów plików (warstwa standardowa)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) części przewodnika planowania instrukcje dołączania do pliku większych udziałów (wersja zapoznawcza) dla warstwy standard.
 
 * <a id="open-handles-quota"></a>
 **Ilu klientów mogą uzyskać dostęp do tego samego pliku jednocześnie?**    

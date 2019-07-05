@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 677a9d02493bf5fac1bfcbe8c40ce9efe2040be9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583869"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537703"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Wdrażanie wielu aplikacji wykonywalnych gości
 Ten artykuł pokazuje, jak pakowanie i wdrażanie wielu aplikacji wykonywalnych gości w usłudze Azure Service Fabric. Do tworzenia i wdrażania jednego pakietu usługi Service Fabric przeczytaj, jak do [wdrażanie pliku wykonywalnego gościa w usłudze Service Fabric](service-fabric-deploy-existing-app.md).
@@ -33,7 +33,7 @@ Aby utworzyć pakiet aplikacji, która zawiera wielu aplikacji wykonywalnych go�
 * [Przykład dwóch gościa pliki wykonywalne (C# i nodejs) podczas komunikowania się za pośrednictwem usługi nazewnictwa przy użyciu usługi REST](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>Ręcznie pakowanie wielu aplikacji wykonywalnych gościa
-Można też ręcznie spakować plik wykonywalny gościa. Ręczne pakowania, w tym artykule używa narzędzia tworzenia pakietów usługi Service Fabric, które znajduje się w temacie [ https://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
+Można też ręcznie spakować plik wykonywalny gościa. Aby uzyskać więcej informacji, zobacz [ręcznie pakowanie i wdrażanie istniejącego pliku wykonywalnego](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable).
 
 ### <a name="packaging-the-nodejs-application"></a>Pakowanie aplikacji Node.js
 W tym artykule założono, że Node.js nie jest zainstalowany na węzłach w klastrze usługi Service Fabric. W rezultacie musisz dodać Node.exe do katalogu głównego w węźle przed pakowania aplikacji. Struktura katalogów aplikacji Node.js (przy użyciu środowiska internetowego Express i aparatu Jade szablonu) powinien wyglądać podobnie do poniższego:
@@ -207,7 +207,6 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 Po pomyślnym opublikowaniu aplikacji w klastrze lokalnym, można uzyskać dostęp aplikacji Node.js przy użyciu portu, który możemy wprowadzony w manifeście usługi aplikacji Node.js — na przykład http:\//localhost:3000.
 
 W ramach tego samouczka wiesz jak łatwo spakować dwa istniejące aplikacje jako jedna aplikacja usługi Service Fabric. Masz również pokazaliśmy, jak je wdrożyć do usługi Service Fabric, dzięki czemu mogą korzystać z niektórych funkcji usługi Service Fabric, takich jak wysoka dostępność i kondycji, integracji systemów.
-
 
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Dodawanie więcej plików wykonywalnych gościa do istniejącej aplikacji w systemie Linux przy użyciu narzędzia Yeoman
 

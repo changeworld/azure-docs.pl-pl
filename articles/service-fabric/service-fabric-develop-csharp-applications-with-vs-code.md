@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393746"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537784"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Twórz C# aplikacji usługi Service Fabric za pomocą programu Visual Studio Code
 
@@ -77,6 +77,17 @@ Po skonstruowaniu aplikacji można wdrożyć w klastrze lokalnym.
 4. Po upewnieniu się, aplikacja jest uruchomiona, uruchom przeglądarkę i otwórz tę stronę: http:\//localhost:31002. Jest to frontonu w aplikacji sieci web. Odśwież stronę Aby wyświetlić bieżącą wartość licznika, ponieważ zwiększa.
 
    ![Licznik aplikacji usługi w przeglądarce](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Publikowanie aplikacji w klastrze usługi Azure Service Fabric
+Wraz z wdrożeniem aplikacji w klastrze lokalnym, możesz również opublikować aplikację do zdalnego klastra usługi Azure Service Fabric. 
+
+1. Upewnij się, czy został wcześniej utworzony swoją aplikację przy użyciu powyższych instrukcji. Zaktualizuj plik konfiguracji wygenerowanego `Cloud.json` ze szczegółami zdalny klaster, który chcesz opublikować.
+
+2. Z **paletę poleceń**, wybierz opcję **usługi Service Fabric: Publikowanie aplikacji polecenie**. Dane wyjściowe z procesu instalacji są wysyłane do zintegrowany terminal programu.
+
+   ![Publikowanie aplikacji polecenie w programie VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+
+3. Po zakończeniu wdrażania Uruchom przeglądarkę i Otwórz narzędzie Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Powinieneś zobaczyć, że aplikacja jest uruchomiona. To może trochę potrwać, więc o cierpliwość. 
 
 ## <a name="debug-the-application"></a>Debugowanie aplikacji
 Podczas debugowania aplikacji w programie VS Code, aplikacja musi działać w klastrze lokalnym. Następnie można dodać punkty przerwania w kodzie.

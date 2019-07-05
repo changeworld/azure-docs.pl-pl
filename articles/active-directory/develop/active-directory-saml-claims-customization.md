@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622525705979cd6a7a088c606ac167d28f8f6482
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 636086ce0d055ab8de1d1b95dbbf7e5d96c7d7ef
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951001"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483063"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -35,7 +35,7 @@ Domyślnie usługa Azure AD wystawia SAML token do aplikacji, która zawiera `Na
 
 Aby wyświetlić lub edytować oświadczeń wystawionych w tokenie SAML do aplikacji, Otwórz aplikację w witrynie Azure portal. Następnie otwórz **atrybutów użytkowników i oświadczeń** sekcji.
 
-![Sekcja atrybutów użytkowników i oświadczeń](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
+![Otwórz sekcję atrybutów użytkowników i oświadczeń w witrynie Azure portal](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
 Istnieją dwie możliwe przyczyny, dlaczego może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML:
 

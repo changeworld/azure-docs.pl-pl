@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966812"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551860"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Ochrona usługi App Service z usługą Azure Security Center
 Ten artykuł ułatwia monitorowanie oraz chronić Twoich aplikacji uruchomionych na podstawie usługi App Service przy użyciu usługi Azure Security Center.
@@ -47,9 +47,8 @@ Usługa Security Center natywnej integracji z usługą App Service, eliminując 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Włączanie monitorowania i ochrony usługi App Service
 
 1. Na platformie Azure wybierz opcję Usługa Security Center.
-2. Przejdź do **zasady zabezpieczeń** i wybierz subskrypcję.
-3. Na końcu wiersza subskrypcji, kliknij przycisk **edytować ustawienia**.
-4. W obszarze **warstwa cenowa**w **usługi App service** wiersz, Przełącz plan **włączone**.
+2. Przejdź do **ceny u & stawienia** i wybierz subskrypcję.
+3. W obszarze **warstwa cenowa**w **usługi App service** wiersz, Przełącz plan **włączone**.
 
 ![Przełącz usługi aplikacji](./media/security-center-app-services/app-services-toggle.png)
 

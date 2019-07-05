@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962877"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483002"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Dlaczego należy zaktualizować na platformie tożsamości firmy Microsoft (w wersji 2.0)?
 
@@ -46,7 +46,7 @@ Dla punktu końcowego platformy tożsamości firmy Microsoft Microsoft Authentic
 
 Aplikacji przy użyciu punktu końcowego usługi Azure AD w wersji 1.0 są wymagane, aby określić ich wymaganych uprawnień OAuth 2.0 z wyprzedzeniem, na przykład:
 
-![Uprawnienia rejestracji interfejsu użytkownika](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![Przykład przedstawiający interfejs użytkownika uprawnień rejestracji](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
 Uprawnienia ustawione bezpośrednio na rejestrowanie aplikacji są **statyczne**. Podczas statycznej uprawnienia aplikacji zdefiniowane w witrynie Azure portal zachować zgodność kodu nieuprzywilejowany i proste, przedstawia niektóre potencjalne problemy dla deweloperów:
 

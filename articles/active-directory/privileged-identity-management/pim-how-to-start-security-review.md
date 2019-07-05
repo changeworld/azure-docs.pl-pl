@@ -14,12 +14,12 @@ ms.date: 04/27/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a0680ddf2c9e654455933bf09699ab81e8ab65d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e69bebfaeb28709b43ea74b7d33289426371a2bf
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65141712"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476448"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>Tworzenie przeglądu dostępu ról usługi Azure AD w usłudze PIM
 
@@ -41,7 +41,7 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 
 1. W obszarze Zarządzanie, kliknij przycisk **przeglądów dostępu**.
 
-    ![Role usługi Azure AD — przeglądy dostępu dotyczące dostępu](./media/pim-how-to-start-security-review/access-reviews.png)
+    ![Role usługi Azure AD — lista przedstawiająca stan wszystkie przeglądy przeglądy dostępu](./media/pim-how-to-start-security-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
@@ -51,7 +51,7 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 
 Po określeniu ustawienia przeglądu dostępu, kliknij przycisk **Start**. Przegląd dostępu będą wyświetlane na liście ze wskaźnikiem jego stan.
 
-![Lista przeglądów dostępu](./media/pim-how-to-start-security-review/access-reviews-list.png)
+![Przeglądy dostępu w usłudze lista przedstawiająca stan uruchomiono przeglądów](./media/pim-how-to-start-security-review/access-reviews-list.png)
 
 Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce, po uruchomieniu przeglądu. Jeśli użytkownik chce nie ma wysyłać wiadomości e-mail z usługi Azure AD, pamiętaj poinformować osób dokonujących przeglądu, które przeglądu dostępu oczekuje na ich zakończenie. Można pokazać im instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników do ról usługi Azure AD](pim-how-to-perform-security-review.md).
 
@@ -59,7 +59,7 @@ Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce
 
 Recenzenci Wypełnij przeglądów ich na postęp można śledzić **Przegląd** strony Przegląd dostępu. Nie prawa dostępu zostaną zmienione w katalogu, dopóki [zakończeniu przeglądu](pim-how-to-complete-review.md).
 
-![Przeglądy dostępu w toku](./media/pim-how-to-start-security-review/access-review-overview.png)
+![Przeglądy dostępu dotyczące dostępu — omówienie strona, wyświetlająca szczegóły przeglądu](./media/pim-how-to-start-security-review/access-review-overview.png)
 
 Jeśli jest to jednorazowa przeglądu, następnie po umieszczeniu okres przeglądu dostępu lub administrator zatrzymania przeglądu dostępu postępuj zgodnie z instrukcjami w [Kończenie przeglądu dostępu ról usługi Azure AD](pim-how-to-complete-review.md) aby zobaczyć i zastosować wyniki.  
 

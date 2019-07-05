@@ -4,17 +4,17 @@ description: Opisuje sposób tworzenia i pobrać dane wyjściowe i błędów kom
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27dd9888d83e01ea522b2532fc1d65284f2fe8d1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61227015"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476919"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation
 Większość elementów runbook automatyzacji Azure obejmuje jakąś formę danych wyjściowych. Te dane wyjściowe mogą być komunikat o błędzie do użytkownika lub obiekt złożony czy zamierzasz korzystać z innego elementu runbook. Program Windows PowerShell udostępnia [wiele strumieni](/powershell/module/microsoft.powershell.core/about/about_redirection) do wysyłania danych wyjściowych w skrypcie lub przepływu pracy. Usługa Azure Automation działa z każdym z tych strumieni inaczej. Należy stosować najlepsze rozwiązania w zakresie używania każdego podczas tworzenia elementu runbook.

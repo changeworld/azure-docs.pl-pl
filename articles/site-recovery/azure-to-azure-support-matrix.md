@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/09/2019
+ms.date: 06/27/2019
 ms.author: raynew
-ms.openlocfilehash: 2cf9aee498c649cdbf973652a60fb2d1f3feb371
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 55275144746dbc1a3ead7c7c12a6901ab6f9269e
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312144"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514133"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matryca obsługi replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera podsumowanie obsługi i wymagań wstępnych podczas ustawia
 **Wdrożenie** |  **Pomoc techniczna**
 --- | ---
 **Azure Portal** | Obsługiwane.
-**PowerShell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
+**Program PowerShell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
 **REST API** | Obsługiwane.
 **Interfejs wiersza polecenia** | Nie jest obecnie obsługiwany
 
@@ -70,7 +70,7 @@ Ta tabela zawiera podsumowanie obsługi dla konta magazynu pamięci podręcznej,
 
 **Ustawienie** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
-Kont ogólnego przeznaczenia V2 storage (gorąca i chłodna warstwa) | Nieobsługiwane. | To ograniczenie istnieje dla magazynu pamięci podręcznej, ponieważ koszty transakcji dla wersji 2 są znacznie wyższe niż w wersji 1 konta magazynu.
+Kont ogólnego przeznaczenia V2 storage (gorąca i chłodna warstwa) | Obsługiwane | Użycie konta GPv2 nie jest zalecane, ponieważ koszty transakcji dla wersji 2 są znacznie wyższe niż w wersji 1 konta magazynu.
 Usługa Azure Storage zapory dla sieci wirtualnych  | Obsługiwane | Jeśli używasz konta magazynu pamięci podręcznej włączona jest Zapora lub docelowe konto magazynu, upewnij się, że ["Zezwalaj na zaufane usługi firmy Microsoft"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 
@@ -82,7 +82,7 @@ Usługa Site Recovery obsługuje replikację maszyn wirtualnych platformy Azure 
 
 **System operacyjny** | **Szczegóły**
 --- | ---
-Windows Server 2019 |
+Windows Server 2019 | Instalacja Server Core, serwer ze środowiskiem pulpitu
 Windows Server 2016  | Instalacja Server Core, serwer ze środowiskiem pulpitu
 Windows Server 2012 R2 |
 Windows Server 2012 |
@@ -151,7 +151,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.22 | Z dodatkiem SP1 3.12.49
 
 **Ustawienie** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
-Rozmiar | Dowolny rozmiar maszyny Wirtualnej platformy Azure, co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM | Sprawdź [rozmiarów maszyn wirtualnych platformy Azure](../virtual-machines/windows/sizes.md).
+Size | Dowolny rozmiar maszyny Wirtualnej platformy Azure, co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM | Sprawdź [rozmiarów maszyn wirtualnych platformy Azure](../virtual-machines/windows/sizes.md).
 Zestawy dostępności | Obsługiwane | Po włączeniu replikacji dla maszyny Wirtualnej platformy Azure z opcjami domyślnymi, zestaw dostępności jest tworzony automatycznie, zgodnie z ustawieniami regionu źródłowego. Te ustawienia można modyfikować.
 Strefy dostępności | Obsługiwane |
 Korzyści z używania hybrydowej (HUB) | Obsługiwane | Jeśli źródłowa maszyna wirtualna ma włączone, licencję Centrum testowania trybu failover lub przełączone w tryb failover maszyny Wirtualnej używa również licencji KONCENTRATORA.
@@ -208,7 +208,7 @@ RA-GRS | Obsługiwane |
 ZRS | Nieobsługiwane |
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
 Usługa Azure Storage zapory dla sieci wirtualnych  | Obsługiwane | Jeśli ograniczanie dostępu do sieci wirtualnej do konta magazynu, należy włączyć [dozwolonych zaufanych usług firmy Microsoft](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
-Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorąca i chłodna warstwa) | Nie | Wzrost kosztów transakcji znacznie w porównaniu do ogólnego przeznaczenia w wersji 1 konta magazynu
+Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorąca i chłodna warstwa) | Tak | Wzrost kosztów transakcji znacznie w porównaniu do ogólnego przeznaczenia w wersji 1 konta magazynu
 
 >[!IMPORTANT]
 > Aby uniknąć problemów z wydajnością, upewnij się, postępuj zgodnie z maszyny Wirtualnej cele skalowalności i wydajności dysku dla [Linux](../virtual-machines/linux/disk-scalability-targets.md) lub [Windows](../virtual-machines/windows/disk-scalability-targets.md) maszyn wirtualnych. Jeśli używasz ustawienia domyślne, Site Recovery tworzy wymagane dyski i kont magazynu, w oparciu o konfigurację źródła. Jeśli możesz dostosować i wybrać własne ustawienia, należy wykonać cele skalowalności i wydajności dysku, źródłowe maszyny wirtualne.
@@ -246,7 +246,7 @@ Wiele adresów IP | Nieobsługiwane | Po przełączeniu w tryb failover maszyny 
 Traffic Manager     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
 System DNS platformy Azure | Obsługiwane |
 Niestandardowe DNS  | Obsługiwane |
-Nieuwierzytelnione serwera proxy | Obsługiwane | [Dowiedz się więcej]. (site-recovery-azure-to-azure-networking-guidance.md)   
+Nieuwierzytelnione serwera proxy | Obsługiwane | [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)    
 Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna korzysta z uwierzytelnionego serwera proxy dla połączenia wychodzącego, nie może być replikowane za pomocą usługi Azure Site Recovery.    
 Połączenie lokacja lokacja sieci VPN do sieci lokalnej<br/><br/>(z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch Site Recovery nie jest kierowany do sieci lokalnej. [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)    
 Połączenie między sieciami Wirtualnymi | Obsługiwane | [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)  

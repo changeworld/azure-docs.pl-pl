@@ -6,22 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0c454c5f19ebefc7f91df62511448dbedb93dfc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc0681a8ea15f736a7b253d6bd7ba2f7928d2a32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257283"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439397"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Rozwiązywanie problemów związanych z usługi Azure Data Box i Azure Data Box duże
 
-W tym artykule zawiera szczegółowe informacje na temat rozwiązywania problemów, że może pojawić się podczas korzystania z Boxn danych platformy Azure lub Azure Data Box duże.
+W tym artykule zawiera szczegółowe informacje na temat rozwiązywania problemów, że może pojawić się podczas korzystania z usługi Azure Data Box lub Azure Data Box duże. Artykuł zawiera listę możliwych błędów, które występuje, gdy dane są kopiowane do urządzenia Data Box, lub gdy dane są przekazywane z urządzenia Data Box.
 
-## <a name="errors-during-data-copy"></a>Błędy podczas kopiowania danych
+## <a name="error-classes"></a>Klasy błędów
 
-Wszystkie błędy, które nie są widoczne podczas kopiowania danych podsumowano w poniższych sekcjach.
+Błędy w urządzenia Data Box i duże pole danych są podsumować w następujący sposób:
+
+| Błąd kategorii *        | Opis        | Zalecana akcja    |
+|----------------------------------------------|---------|--------------------------------------|
+| Nazwy kontenerów lub udziału | Nazwy kontenerów lub udział nie wykonuj zasady nazewnictwa platformy Azure.  |Pobierz listy błędów. <br> Zmień nazwę, kontenerów lub udziałów. [Dowiedz się więcej](#container-or-share-name-errors).  |
+| Kontener lub udział limit rozmiaru | Łączna ilość danych w kontenerach lub udziały przekracza limit platformy Azure.   |Pobierz listy błędów. <br> Zmniejsz ogólny dane w kontenerze lub udziału. [Dowiedz się więcej](#container-or-share-size-limit-errors).|
+| Limit rozmiaru pliku lub obiektu | Obiekt lub pliki w kontenerach lub udziały przekracza limit platformy Azure.|Pobierz listy błędów. <br> Zmniejsz rozmiar pliku w kontenerze lub udziału. [Dowiedz się więcej](#object-or-file-size-limit-errors). |    
+| Typ danych lub plików | Format danych lub typ pliku nie jest obsługiwana. |Pobierz listy błędów. <br> Dla stronicowych obiektów blob i dyski zarządzane upewnij się, że dane są 512 bajtów wyrównane i kopiowane do wstępnie utworzonych folderów. [Dowiedz się więcej](#data-or-file-type-errors). |
+| Niekrytyczne błędy obiektów blob lub pliku  | Nazwy obiektów blob lub plik nie wykonuj zasady nazewnictwa platformy Azure lub typ pliku nie jest obsługiwany. | Nie można skopiować tych obiektów blob lub plików lub może zmieniać nazwy. [Dowiedz się, jak naprawić te błędy](#non-critical-blob-or-file-errors). |
+
+\* Pierwszy kategorii błędów cztery są błędy krytyczne i muszą zostać usunięte, zanim przejdziesz do przygotowywania do wysłania.
+
+
+## <a name="container-or-share-name-errors"></a>Kontener lub udział błędy nazw
+
+Są to błędy związane z nazwy kontenera i udziału.
 
 ### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
@@ -78,17 +93,9 @@ Wszystkie błędy, które nie są widoczne podczas kopiowania danych podsumowano
 
     Aby uzyskać więcej informacji, zobacz Azure konwencje nazewnictwa dla [nazwy kontenera](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazwy udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
-### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
+## <a name="container-or-share-size-limit-errors"></a>Kontener lub udział błędy limit rozmiaru
 
-**Opis błędu:** Kontenera nieprawidłowej nazwy zostały określone dla dysków zarządzanych udziałów.
-
-**Sugerowane rozwiązanie:** W przypadku dysków zarządzanych w ramach każdego udziału tworzone są następujące foldery, które odnoszą się do kontenerów w ramach konta magazynu: Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa. Te foldery odpowiadać warstwa wydajności dysku zarządzanego.
-
-- Upewnij się, skopiuj dane obiektów blob strony (VHD) do jednego z tych istniejących folderów. Tylko dane z tych istniejących kontenerów zostanie przekazany na platformę Azure.
-- Inny folder, który jest tworzony na tym samym poziomie jak dysku Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa nie jest zgodny z warstwy wydajności prawidłowe i nie można używać.
-- Usuń pliki i foldery utworzone poza warstwy wydajności.
-
-Aby uzyskać więcej informacji, zobacz [kopiowania do usługi managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+Są to błędy związane z danymi, przekracza rozmiar dane są dozwolone w kontenerze lub w udziale.
 
 ### <a name="errorcontainerorsharecapacityexceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
@@ -97,6 +104,65 @@ Aby uzyskać więcej informacji, zobacz [kopiowania do usługi managed disks](da
 **Sugerowane rozwiązanie:** Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
 
 Określ foldery, które mają ten problem z dzienników błędów i upewnij się, że pliki w tym folderze znajdują się w sekcji 5 TB.
+
+
+## <a name="object-or-file-size-limit-errors"></a>Obiekt lub plik błędy limit rozmiaru
+
+Są to błędy związane z danymi przekracza maksymalny rozmiar obiektu lub plik, który jest dozwolony na platformie Azure. 
+
+### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
+
+**Opis błędu:** Rozmiar pliku przekracza maksymalny rozmiar pliku do przekazania.
+
+**Sugerowane rozwiązanie:** Obiekt blob lub rozmiary plików przekraczają maksymalny limit dozwolony dla przekazywania.
+
+- Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
+- Upewnij się, że rozmiarów obiektów blob i plików nie przekraczają limity rozmiaru obiektów platformy Azure.
+
+## <a name="data-or-file-type-errors"></a>Błędy typu danych lub plików
+
+Są to błędy związane z nieobsługiwany typ pliku lub typ danych znalezionych w kontenerze lub udziału. 
+
+### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
+
+**Opis błędu:** Obiekt blob lub plik jest nieprawidłowo wyrównany.
+
+**Sugerowane rozwiązanie:** Powiązana udziału blob strony na urządzenie Data Box lub duże pole danych tylko obsługuje pliki, które są 512 bajtów (np. VHD/VHDX). Wszelkie dane skopiowane do udziału blob strony zostanie przekazany na platformę Azure jako stronicowe obiekty BLOB.
+
+Usuń wszystkie dane bez do dysku VHD/VHDX z udziału blob strony. Można używać udziałów dla blokowych obiektów blob i plików platformy Azure dla danych typu ogólnego.
+
+Aby uzyskać więcej informacji, zobacz [Przegląd stronicowe obiekty BLOB](../storage/blobs/storage-blob-pageblob-overview.md).
+
+### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
+
+**Opis błędu:** Nieobsługiwany typ pliku jest obecny w udziale dysku zarządzanego. Dozwolone są tylko stałych dysków VHD.
+
+**Sugerowane rozwiązanie:**
+
+- Upewnij się, przekazać tylko stałych dysków VHD w celu utworzenia dysków zarządzanych.
+- Pliki VHDX lub **dynamiczne** i **różnicowych** wirtualne dyski twarde nie są obsługiwane.
+
+### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
+
+**Opis błędu:** Katalog nie jest dozwolona w jakiekolwiek istniejące foldery za dyski zarządzane. W tych folderów, dozwolone są tylko stałych dysków VHD.
+
+**Sugerowane rozwiązanie:** W przypadku dysków zarządzanych w ramach każdego udziału następujące trzy foldery są tworzone, które odnoszą się do kontenerów w ramach konta magazynu: Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa. Te foldery odpowiadać warstwa wydajności dysku zarządzanego.
+
+- Upewnij się, skopiuj dane obiektów blob strony (VHD) do jednego z tych istniejących folderów.
+- Folder lub katalog nie jest dozwolona w tych istniejących folderów. Usuń wszystkie foldery, które zostały utworzone wewnątrz istniejących folderów.
+
+Aby uzyskać więcej informacji, zobacz [kopiowania do usługi managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+
+### <a name="reparsepointerror"></a>REPARSE_POINT_ERROR
+
+**Opis błędu:** Łącza symbolicznego nie są dozwolone w systemie Linux. 
+
+**Sugerowane rozwiązanie:** Linki symboliczne są zazwyczaj łączy, potoki i inne takie pliki. Usuń łącza, lub Rozwiązywanie problemów z łączami i kopiowania danych.
+
+
+## <a name="non-critical-blob-or-file-errors"></a>Niekrytyczne błędy obiektów blob lub pliku
+
+Wszystkie błędy, które nie są widoczne podczas kopiowania danych podsumowano w poniższych sekcjach.
 
 ### <a name="errorbloborfilenamecharactercontrol"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
@@ -163,42 +229,16 @@ Aby uzyskać więcej informacji zobacz Azure konwencje nazewnictwa dla nazwy obi
 - Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
 - Upewnij się, że [blob nazwy](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazwy plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) są zgodne z konwencjami nazewnictwa platformy Azure.
 
-### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
-**Opis błędu:** Rozmiar pliku przekracza maksymalny rozmiar pliku do przekazania.
+### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
-**Sugerowane rozwiązanie:** Obiekt blob lub rozmiary plików przekraczają maksymalny limit dozwolony dla przekazywania.
+**Opis błędu:** Kontenera nieprawidłowej nazwy zostały określone dla dysków zarządzanych udziałów.
 
-- Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
-- Upewnij się, że rozmiarów obiektów blob i plików nie przekraczają limity rozmiaru obiektów platformy Azure.
+**Sugerowane rozwiązanie:** W przypadku dysków zarządzanych w ramach każdego udziału tworzone są następujące foldery, które odnoszą się do kontenerów w ramach konta magazynu: Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa. Te foldery odpowiadać warstwa wydajności dysku zarządzanego.
 
-### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
-
-**Opis błędu:** Obiekt blob lub plik jest nieprawidłowo wyrównany.
-
-**Sugerowane rozwiązanie:** Powiązana udziału blob strony na urządzenie Data Box lub duże pole danych tylko obsługuje pliki, które są 512 bajtów (np. VHD/VHDX). Wszelkie dane skopiowane do udziału blob strony zostanie przekazany na platformę Azure jako stronicowe obiekty BLOB.
-
-Usuń wszystkie dane bez do dysku VHD/VHDX z udziału blob strony. Można używać udziałów dla blokowych obiektów blob i plików platformy Azure dla danych typu ogólnego.
-
-Aby uzyskać więcej informacji, zobacz [Przegląd stronicowe obiekty BLOB](../storage/blobs/storage-blob-pageblob-overview.md).
-
-### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
-
-**Opis błędu:** Nieobsługiwany typ pliku jest obecny w udziale dysku zarządzanego. Dozwolone są tylko stałych dysków VHD.
-
-**Sugerowane rozwiązanie:**
-
-- Upewnij się, przekazać tylko stałych dysków VHD w celu utworzenia dysków zarządzanych.
-- Pliki VHDX lub **dynamiczne** i **różnicowych** wirtualne dyski twarde nie są obsługiwane.
-
-### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
-
-**Opis błędu:** Katalog nie jest dozwolona w jakiekolwiek istniejące foldery za dyski zarządzane. W tych folderów, dozwolone są tylko stałych dysków VHD.
-
-**Sugerowane rozwiązanie:** W przypadku dysków zarządzanych w ramach każdego udziału następujące trzy foldery są tworzone, które odnoszą się do kontenerów w ramach konta magazynu: Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa. Te foldery odpowiadać warstwa wydajności dysku zarządzanego.
-
-- Upewnij się, skopiuj dane obiektów blob strony (VHD) do jednego z tych istniejących folderów.
-- Folder lub katalog nie jest dozwolona w tych istniejących folderów. Usuń wszystkie foldery, które zostały utworzone wewnątrz istniejących folderów.
+- Upewnij się, skopiuj dane obiektów blob strony (VHD) do jednego z tych istniejących folderów. Tylko dane z tych istniejących kontenerów zostanie przekazany na platformę Azure.
+- Inny folder, który jest tworzony na tym samym poziomie jak dysku Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa nie jest zgodny z warstwy wydajności prawidłowe i nie można używać.
+- Usuń pliki i foldery utworzone poza warstwy wydajności.
 
 Aby uzyskać więcej informacji, zobacz [kopiowania do usługi managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afb7acda67eb5818ace8169dc4e98fb86bdbeaa7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431318"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442000"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -68,25 +68,57 @@ W usłudze AKS można wdrożyć klaster, który korzysta z jednego z następują
 
 *Wtyczki kubenet* sieci — opcja jest domyślnie skonfigurowany do tworzenia klastra AKS. Za pomocą *wtyczki kubenet*, węzły Uzyskaj adres IP z podsieci sieci wirtualnej platformy Azure. Zasobników otrzymują adres IP z logicznie różnymi przestrzeniami adresowymi w podsieci sieci wirtualnej platformy Azure z węzłów. Translator adresów sieciowych (NAT) jest następnie konfigurowana, tak aby zasobników może dotrzeć do zasobów w sieci wirtualnej platformy Azure. Źródłowy adres IP ruchu jest translatora adresów Sieciowych do podstawowego adresu IP węzła zajmie się.
 
-Węzły używają [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes. Można pozwolić, aby utworzyć i konfigurowanie sieci wirtualnych dla Ciebie lub wybrać wdrożenie klastra usługi AKS na istniejącą podsieć sieci wirtualnej platformy Azure. Ponownie tylko węzły otrzymują routingowi adresu IP i zasobników używać translatora adresów Sieciowych do komunikowania się z innymi zasobami poza klastrem usługi AKS. To podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeń sieci dla zasobników do użycia.
+Węzły używają [wtyczki kubenet][kubenet] wtyczka platformy Kubernetes. Można pozwolić, aby utworzyć i konfigurowanie sieci wirtualnych dla Ciebie lub wybrać wdrożenie klastra usługi AKS na istniejącą podsieć sieci wirtualnej platformy Azure. Ponownie tylko węzły otrzymują routingowi adresu IP i zasobników używać translatora adresów Sieciowych do komunikowania się z innymi zasobami poza klastrem usługi AKS. To podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeń sieci dla zasobników do użycia.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie sieci dla klastra usługi AKS wtyczki kubenet][aks-configure-kubenet-networking].
 
 ### <a name="azure-cni-advanced-networking"></a>Sieć Azure CNI (zaawansowane)
 
-Za pomocą wtyczki Azure CNI pod każdym pobiera adres IP z podsieci i są dostępne bezpośrednio. Te adresy IP musi być unikatowa w przestrzeń sieci i muszą być planowane z góry. Każdy węzeł ma parametr konfiguracji maksymalna liczba zasobników, które obsługuje. Równoważną liczbę adresów IP w każdym węźle następnie są zarezerwowane na początku dla tego węzła. Takie podejście wymaga więcej planowania i często prowadzi do wyczerpania adresu IP lub jest potrzebna ponowna kompilacja klastrów w większej podsieci, w miarę wzrostu wymagań aplikacji.
+Za pomocą wtyczki Azure CNI pod każdym pobiera adres IP z podsieci i są dostępne bezpośrednio. Te adresy IP musi być unikatowa w przestrzeń sieci i muszą być planowane z góry. Każdy węzeł ma parametr konfiguracji maksymalna liczba zasobników, które obsługuje. Równoważną liczbę adresów IP w każdym węźle następnie są zarezerwowane na początku dla tego węzła. Takie podejście wymaga planowania, ponieważ w przeciwnym razie może prowadzić do wyczerpania adresu IP lub jest potrzebna ponowna kompilacja klastrów w większej podsieci, w miarę wzrostu wymagań aplikacji.
 
-Węzły używają [wtyczki Azure Container Networking interfejsu (CNI)] [ cni-networking] wtyczka platformy Kubernetes.
+Węzły używają [wtyczki Azure Container Networking interfejsu (CNI)][cni-networking] wtyczka platformy Kubernetes.
 
 ![Diagram przedstawiający dwa węzły o mostki łączenia każdego do pojedynczej sieci wirtualnej platformy Azure][advanced-networking-diagram]
 
-Wtyczki Azure CNI udostępnia następujące funkcje w porównaniu z wtyczki kubenet sieci:
-
-- Każdy zasobnik w klastrze jest przypisany adres IP w sieci wirtualnej. Zasobników mogą bezpośrednio komunikować się z innymi zasobników w klastrze i innych węzłów w sieci wirtualnej.
-- Zasobników w podsieci, które mają włączone punkty końcowe usługi można bezpiecznie łączyć się z usługami platformy Azure, takich jak Azure Storage i bazą danych SQL.
-- Można utworzyć trasy zdefiniowane przez użytkownika (UDR) do kierowania ruchu z zasobników do wirtualnego urządzenia sieciowego.
-
 Aby uzyskać więcej informacji, zobacz [wtyczki Azure CNI skonfigurować dla klastra usługi AKS][aks-configure-advanced-networking].
+
+### <a name="compare-network-models"></a>Porównanie modeli sieci
+
+Wtyczki kubenet i wtyczki Azure CNI zapewniają łączność z siecią dla klastry usługi AKS. Istnieją zalety i wady każdej. Na wysokim poziomie obowiązują następujące zastrzeżenia:
+
+* **Wtyczki Kubenet**
+    * Oszczędza przestrzeń adresów IP.
+    * Używa modułu równoważenia obciążenia wewnętrznej lub zewnętrznej usługi Kubernetes, aby dotrzeć do zasobników z poza klastrem.
+    * Należy ręcznie zarządzać i zachować trasy zdefiniowane przez użytkownika (Udr).
+    * Maksymalnie 400 węzłów w klastrze.
+* **Wtyczki Azure CNI**
+    * Zasobników Uzyskaj pełną wirtualnej sieci i bezpośrednio osiągalna z poza klastrem.
+    * Wymaga więcej przestrzeni adresów IP.
+
+Oto zachowanie różnice między wtyczki kubenet i wtyczki Azure CNI:
+
+| Możliwości                                                                                   | Kubenet   | Azure CNI |
+|----------------------------------------------------------------------------------------------|-----------|-----------|
+| Wdrażanie klastra w istniejącej lub nowej sieci wirtualnej                                            | Obsługiwane — stosowane ręcznie tras zdefiniowanych przez użytkownika | Obsługiwane |
+| Zasobnik zasobnika łączności                                                                         | Obsługiwane | Obsługiwane |
+| Łączność maszyn wirtualnych na zasobnik; Maszyny Wirtualnej w tej samej sieci wirtualnej                                          | Działa, gdy inicjowane przez zasobników | Działa w obu kierunkach |
+| Łączność maszyn wirtualnych na zasobnik; Maszynę Wirtualną w równorzędnej sieci wirtualnej                                            | Działa, gdy inicjowane przez zasobników | Działa w obu kierunkach |
+| Dostęp lokalny przy użyciu sieci VPN lub usługi Express Route                                                | Działa, gdy inicjowane przez zasobników | Działa w obu kierunkach |
+| Dostęp do zasobów zabezpieczonych przez punkty końcowe usługi                                             | Obsługiwane | Obsługiwane |
+| Udostępnianie usługi Kubernetes przy użyciu kontrolera service, App Gateway lub ruch przychodzący modułu równoważenia obciążenia | Obsługiwane | Obsługiwane |
+| Domyślnie usługa Azure DNS i stref prywatnych                                                          | Obsługiwane | Obsługiwane |
+
+### <a name="support-scope-between-network-models"></a>Zakres pomocy technicznej między modelami sieci
+
+Niezależnie od używanego modelu sieci wtyczki kubenet i wtyczki Azure CNI można wdrożyć w jednej z następujących sposobów:
+
+* Platforma Azure umożliwia automatyczne tworzenie i konfigurowanie zasobów sieci wirtualnej, podczas tworzenia klastra usługi AKS.
+* Można ręcznie utworzyć i skonfigurować zasoby sieci wirtualnej i Dołącz do tych zasobów, podczas tworzenia klastra usługi AKS.
+
+Funkcje, takie jak punkty końcowe usługi lub tras zdefiniowanych przez użytkownika są obsługiwane zarówno z wtyczki kubenet i wtyczki Azure CNI [obsługuje zasady dla usługi AKS][support-policies] zdefiniować można wprowadzać zmiany. Na przykład:
+
+* Jeśli ręcznie utworzysz zasoby sieci wirtualnej dla klastra usługi AKS, są obsługiwane podczas konfigurowania własnych tras zdefiniowanych przez użytkownika lub punktów końcowych usługi.
+* Jeśli platforma Azure automatycznie utworzy zasoby sieci wirtualnej dla klastra usługi AKS, nie jest obsługiwana ręcznie zmienić tych zasobów zarządzanych w usłudze AKS, aby skonfigurować własne tras zdefiniowanych przez użytkownika lub punktów końcowych usługi.
 
 ## <a name="ingress-controllers"></a>Ruch przychodzący kontrolerów
 
@@ -116,7 +148,7 @@ Aby uzyskać więcej informacji, zobacz [bezpieczny ruch między zasobników za 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Rozpoczynanie pracy z usługą AKS, sieć, tworzenie i konfigurowanie klastra usługi AKS przy użyciu własnych zakresów adresów IP przy użyciu [wtyczki kubenet] [ aks-configure-kubenet-networking] lub [wtyczki Azure CNI] [ aks-configure-advanced-networking].
+Rozpoczynanie pracy z usługą AKS, sieć, tworzenie i konfigurowanie klastra usługi AKS przy użyciu własnych zakresów adresów IP przy użyciu [wtyczki kubenet][aks-configure-kubenet-networking] or [Azure CNI][aks-configure-advanced-networking].
 
 Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze AKS][operator-best-practices-network].
 
@@ -151,3 +183,4 @@ Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zos
 [aks-concepts-identity]: concepts-identity.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
+[support-policies]: support-policies.md

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b5a08b9b998f8d0b30091af016af564e836d4651
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331652"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514280"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -100,6 +100,8 @@ Możesz zarejestrować model utworzone zewnętrznie, zapewniając **ścieżkę l
 **Szacowany czas**: Około 10 sekund.
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [klasa modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+
+Aby uzyskać więcej informacji na temat pracy z modelami skonfigurowanych pod kątem poza usługi Azure Machine Learning, zobacz [wdrażanie istniejącego modelu](how-to-deploy-existing-model.md).
 
 <a name="target"></a>
 
@@ -259,16 +261,22 @@ Aby uzyskać więcej przykładowe skrypty zobacz następujące przykłady:
 
 ### <a name="2-define-your-inferenceconfig"></a>2. Zdefiniuj swoje InferenceConfig
 
-Konfiguracja wnioskowania opisuje sposób konfigurowania model do przewidywania przyszłych zdarzeń. Poniższy przykład przedstawia sposób tworzenia konfiguracji wnioskowania:
+Konfiguracja wnioskowania opisuje sposób konfigurowania model do przewidywania przyszłych zdarzeń. Poniższy przykład pokazuje, jak utworzyć konfigurację wnioskowania. Ta konfiguracja określa środowisko wykonawcze, skrypt wejścia i (opcjonalnie) plikiem środowiska conda:
 
 ```python
-inference_config = InferenceConfig(source_directory="C:/abc",
-                                   runtime= "python",
+inference_config = InferenceConfig(runtime= "python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
 ```
 
+Aby uzyskać więcej informacji, zobacz [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) klasy odniesienia.
+
+Aby uzyskać informacji na temat korzystania z niestandardowego obrazu platformy Docker przy użyciu konfiguracji wnioskowania, zobacz [sposób wdrażania modelu przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md).
+
 ### <a name="cli-example-of-inferenceconfig"></a>Przykład interfejsu wiersza polecenia InferenceConfig
+
+Poniższy dokument JSON jest wnioskowania przykładowej konfiguracji do użycia z usługą machine learning interfejs wiersza polecenia:
+
 ```JSON
 {
    "entryScript": "x/y/score.py",
@@ -277,6 +285,23 @@ inference_config = InferenceConfig(source_directory="C:/abc",
    "sourceDirectory":"C:/abc",
 }
 ```
+
+Następujące jednostki są prawidłowe w tym pliku:
+
+* __entryScript__: Ścieżka do pliku lokalnego, który zawiera kod, aby uruchomić dla obrazu.
+* __Środowisko uruchomieniowe__: Które środowisko uruchomieniowe na potrzeby obrazu. Bieżący obsługiwane środowiska uruchomieniowe są "spark-py" i "python".
+* __condaFile__ (opcjonalnie): Ścieżka do pliku lokalnego, zawierający definicja środowiska conda, aby użyć obrazu.
+* __extraDockerFileSteps__ (opcjonalnie): Ścieżka do pliku lokalnego, zawierający dodatkowe kroki platformy Docker, aby uruchomić podczas konfigurowania obrazu.
+* __sourceDirectory__ (opcjonalnie): Ścieżka do folderów, która zawiera wszystkie pliki do utworzenia obrazu.
+* __enableGpu__ (opcjonalnie): Umożliwia określenie, czy włączyć GPU obsługuje na obrazie. Obraz procesora GPU musi być używana w Microsoft Azure Services, takich jak usługi Azure Container Instances, obliczeniowego usługi Azure Machine Learning, Azure Virtual Machines i Azure Kubernetes Service. Wartość domyślna to False.
+* __baseImage__ (opcjonalnie): Obraz niestandardowy do użycia jako obraz podstawowy. Jeśli podano nie obraz podstawowy, obrazu podstawowego zostaną użyte podstawie wylogować się z podanych parametrów środowiska uruchomieniowego.
+* __baseImageRegistry__ (opcjonalnie): Rejestr obrazu, który zawiera obraz podstawowy.
+* __cudaVersion__ (opcjonalnie): Wersja architektury CUDA, aby zainstalować dla obrazów wymagających wsparciem procesora GPU. Obraz procesora GPU musi być używana w Microsoft Azure Services, takich jak usługi Azure Container Instances, obliczeniowego usługi Azure Machine Learning, Azure Virtual Machines i Azure Kubernetes Service. Obsługiwane wersje to 9.0, 9.1 i 10.0. Jeśli ustawiono wartość "enable_gpu", wartość domyślna to "9.1".
+
+Te jednostki są mapowane do parametrów [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) klasy.
+
+Te następujące polecenie pokazuje, jak wdrożyć model przy użyciu interfejsu wiersza polecenia:
+
 ```azurecli-interactive
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```
@@ -287,8 +312,6 @@ W tym przykładzie konfiguracji zawiera następujące elementy:
 * Czy ten model wymaga języka Python
 * [Skrypt wejścia](#script), które jest używane do obsługi żądań sieci web wysyłanych do wdrożonej usługi
 * Plik conda, opisujący pakiety Python niezbędne do wnioskowania
-
-Aby uzyskać informacje na temat funkcji InferenceConfig, zobacz [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) klasy odniesienia.
 
 Aby uzyskać informacji na temat korzystania z niestandardowego obrazu platformy Docker przy użyciu konfiguracji wnioskowania, zobacz [sposób wdrażania modelu przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md).
 
@@ -309,9 +332,7 @@ Poniższa tabela zawiera przykład tworzenia konfiguracji wdrażania dla każdeg
 Poniższe sekcje pokazują, jak utworzyć konfigurację wdrożenia, a następnie używania jej do wdrażania usługi sieci web.
 
 ### <a name="optional-profile-your-model"></a>Opcjonalnie: Profil modelu
-Przed wdrożeniem modelu w postaci usługi, możesz go do ustalenia optymalnej procesora CPU i wymagania dotyczące pamięci profilu.
-
-Możesz wykonać profilu modelu przy użyciu zestawu SDK lub interfejsu wiersza polecenia.
+Przed wdrożeniem modelu w postaci usługi, możesz go do ustalenia optymalnej procesora CPU i wymagania dotyczące pamięci profilu. Możesz wykonać profilu modelu przy użyciu zestawu SDK lub interfejsu wiersza polecenia.
 
 Aby uzyskać więcej informacji możesz zapoznać się z naszą dokumentację zestawu SDK: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
 
@@ -544,6 +565,34 @@ service.update(models = [new_model])
 print(service.state)
 print(service.get_logs())
 ```
+
+## <a name="continuous-model-deployment"></a>Wdrożenie modelu ciągłego 
+
+Umożliwia ciągłe wdrażanie modeli za pomocą rozszerzenia dla usługi Machine Learning [DevOps platformy Azure](https://azure.microsoft.com/services/devops/). Za pomocą rozszerzenia usługi Machine Learning dla metodyki DevOps platformy Azure, możesz wyzwolić potok wdrażania po zarejestrowaniu nowego modelu uczenia maszynowego w obszarze roboczym usługi Azure Machine Learning. 
+
+1. Należy zasubskrybować [potoki Azure](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops), co sprawia, że ciągłą integrację i dostarczanie aplikacji na dowolnej platformie/any w chmurze możliwe. Potoki usługi Azure [różni się od potokach uczenia Maszynowego](concept-ml-pipelines.md#compare). 
+
+1. [Utwórz projekt DevOps platformy Azure.](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+
+1. Zainstaluj [rozszerzenie potoki usługi Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList) 
+
+1. Użyj __obsługują połączenia__ skonfigurować jednostki połączenia usługi do swojego obszaru roboczego usługi Azure Machine Learning, aby dostęp do wszystkich artefaktów. Przejdź do obszaru Ustawienia projektu, kliknąć połączenia usługi i wybierz usługi Azure Resource Manager.
+
+    ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
+
+1. Zdefiniuj AzureMLWorkspace jako __określić zakres poziomu__ i wypełniając kolejne parametry.
+
+    ![view-azure-resource-manager](media/how-to-deploy-and-where/resource-manager-connection.png)
+
+1. Następnie, aby stale wdrożyć model uczenia maszynowego przy użyciu potoków usługi Azure, w obszarze potoków wybierz __wersji__. Dodawanie nowych artefaktu, wybierz artefakt modelu uczenia maszynowego Azure i połączenia z usługą, który został utworzony w poprzednim kroku. Wybierz model i wersję, aby wyzwolić wdrożenie. 
+
+    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+
+1. Włącz wyzwalacz modelu usługi artefaktu modelu. Dzięki włączeniu wyzwalacza, każdym razem, gdy określona wersja (tj.) Najnowsza wersja) tego modelu Zarejestruj się w obszarze roboczym, zostanie wywołany potok wydań DevOps platformy Azure. 
+
+    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
+
+Przykładowe projekty i przykłady, zapoznaj się z [repozytorium MLOps](https://github.com/Microsoft/MLOps)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Aby usunąć wdrożonej usługi sieci web, użyj `service.delete()`.

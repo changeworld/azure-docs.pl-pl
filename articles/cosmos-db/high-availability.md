@@ -4,15 +4,15 @@ description: W tym artykule opisano, jak usługa Azure Cosmos DB zapewnia wysok�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 06/28/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 23273084826775b47170753dff3e5cf5ed8ae45f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 928c943e21e7d00b87ac1e506b98d47107ac4348
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063565"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508553"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
@@ -70,6 +70,9 @@ Ta funkcja jest dostępna w następujących regionach platformy Azure:
 
 * Południowe Zjednoczone Królestwo
 * Azja Południowo-Wschodnia 
+* East US
+* Wschodnie stany USA 2 
+* Środkowe stany USA
 
 > [!NOTE] 
 > Włączanie strefy dostępności dla jednego regionu konta usługi Azure Cosmos spowoduje opłaty, które są równoważne dodanie dodatkowych regionów do konta. Aby uzyskać szczegółowe informacje o cenach, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/) i [koszt wielu regionów w usłudze Azure Cosmos DB](optimize-cost-regions.md) artykułów. 
@@ -89,7 +92,10 @@ Poniższa tabela zawiera podsumowanie możliwości wysokiej dostępności w ró�
 |Awaria regionalna — dostępność  |  Utrata dostępności       |  Utrata dostępności       |  Bez utraty dostępności  |
 |Przepływność    |  Jedn. X aprowizowana przepływność      |  Jedn. X aprowizowana przepływność       |  2 x aprowizowanej przepływności jednostek RU/s <br/><br/> Ten tryb konfiguracji wymaga dwukrotność przepływność w porównaniu do jednego regionu, ze strefami dostępności występują, ponieważ istnieją dwa regiony.   |
 
-Podczas dodawania regionów do nowego lub istniejącego konta usługi Azure Cosmos można włączyć nadmiarowości strefy. Obecnie tylko umożliwia nadmiarowości strefy za pomocą szablonów programu PowerShell lub usługi Azure Resource Manager. Aby włączyć nadmiarowości strefy na Twoim koncie usługi Azure Cosmos, należy ustawić `isZoneRedundant` flaga `true` dla określonej lokalizacji. Możesz ustawić tę flagę w ramach właściwości lokalizacji. Na przykład poniższy fragment kodu programu powershell umożliwia nadmiarowości strefy dla regionu "Azja południowo-wschodnia":
+> [!NOTE] 
+> Aby włączyć obsługę strefy dostępności, konto usługi Azure Cosmos DB musi mieć wielu — główny/wielu-region zapisu włączone. 
+
+Podczas dodawania regionów do nowego lub istniejącego konta usługi Azure Cosmos można włączyć nadmiarowości strefy. Obecnie można włączyć tylko nadmiarowości strefy za pomocą usługi Azure portal, szablonów programu PowerShell i usługi Azure Resource Manager. Aby włączyć nadmiarowości strefy na Twoim koncie usługi Azure Cosmos, należy ustawić `isZoneRedundant` flaga `true` dla określonej lokalizacji. Możesz ustawić tę flagę w ramach właściwości lokalizacji. Na przykład poniższy fragment kodu programu powershell umożliwia nadmiarowości strefy dla regionu "Azja południowo-wschodnia":
 
 ```powershell
 $locations = @( 
@@ -97,6 +103,10 @@ $locations = @(
     @{ "locationName"="East US"; "failoverPriority"=1 } 
 ) 
 ```
+
+Strefy dostępności można włączyć za pomocą witryny Azure portal podczas tworzenia konta usługi Azure Cosmos. Podczas tworzenia konta usługi, upewnij się umożliwić **nadmiarowość geograficzna**, **zapisuje multiregionalne**i wybierz region, w której strefy dostępności są obsługiwane: 
+
+![Włącz strefy dostępności przy użyciu witryny Azure portal](./media/high-availability/enable-availability-zones-using-portal.png) 
 
 ## <a name="building-highly-available-applications"></a>Tworzenie aplikacji o wysokiej dostępności
 
@@ -106,7 +116,7 @@ $locations = @(
 
 - Nawet w przypadku Twojego konta usługi Cosmos o wysokiej dostępności, aplikacja może nie być poprawnie zaprojektowana pozostaje o wysokiej dostępności. Aby przetestować end-to-end wysokiej dostępności aplikacji, okresowo wywoływać [ręcznej pracy awaryjnej przy użyciu wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#manual-failover), jako część testowania aplikacji lub odzyskiwania po awarii (DR) awarii.
 
-- W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO). Aby wyświetlić cel punktu odzyskiwania i cel czasu odzyskiwania dla usługi Azure Cosmos DB, zobacz [spójności poziomy i danych trwałości](consistency-levels-tradeoffs.md#rto)
+- W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, którego utrata może być tolerowana, jest określany jako cel punktu odzyskiwania (RPO, recovery point objective). Aby wyświetlić cel punktu odzyskiwania i cel czasu odzyskiwania dla usługi Azure Cosmos DB, zobacz [spójności poziomy i danych trwałości](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

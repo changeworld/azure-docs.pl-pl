@@ -5,45 +5,80 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: abf48f3edc090550647b6865e96afeabe3727cf5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 86c4bf328430bbc623d8e493eec5db520d50ef82
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190529"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485977"
 ---
 # <a name="monitor-azure-file-sync"></a>Monitorowanie usługi Azure File Sync
 
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
 
-W tym artykule opisano sposób monitorowania wdrożenia usługi Azure File Sync za pomocą witryny Azure portal i systemu Windows Server.
+W tym artykule opisano sposób monitorowania wdrożenia usługi Azure File Sync za pomocą usługi Azure Monitor, usługa synchronizacji magazynu i systemu Windows Server.
 
 Obecnie dostępne są następujące opcje monitorowania.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-monitor"></a>Azure Monitor
 
-W witrynie Azure portal można wyświetlić kondycji zarejestrowanego serwera, kondycja punktu końcowego serwera (kondycja sync) i metryki.
+Użyj [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) wyświetlaj metryki i Konfigurowanie alertów w celu synchronizacji, w chmurze warstw i łączność z serwerem.  
 
-### <a name="storage-sync-service"></a>Usługa synchronizacji magazynu
+### <a name="metrics"></a>Metryki
+
+Metryki dla usługi Azure File Sync są domyślnie włączone i są wysyłane do usługi Azure Monitor co 15 minut.
+
+Zaznacz, aby wyświetlić metryki usługi Azure File Sync w usłudze Azure Monitor **usługi synchronizacji magazynu** typu zasobu.
+
+Następujące metryki dla usługi Azure File Sync są dostępne w usłudze Azure Monitor:
+
+| Nazwa metryki | Opis |
+|-|-|
+| Bajty synchronizowane | Rozmiar danych transferowanych (przekazywania i pobierania).<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
+| Wycofanie obsługi warstw w chmurze | Rozmiar danych odwołać.<br><br>**Uwaga**: Ta metryka zostanie usunięte w przyszłości. Użyj metryki chmury do rozmiaru warstw odwołania do monitorowania rozmiar danych przypomnieć.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa serwera |
+| Warstw rozmiar odwołania w chmurze | Rozmiar danych odwołać.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa nazwy serwera, grupy synchronizacji |
+| Aplikacja w chmurze warstw rozmiar odwołania | Rozmiar danych przypomnieć przez aplikację.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Aplikacji nazwę, Server Name, nazwa grupy synchronizacji |
+| Warstw przepływności odwołania w chmurze | Rozmiar danych odwołania przepływności.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa nazwy serwera, grupy synchronizacji |
+| Nie synchronizuje pliki | Liczba plików, które kończą się niepowodzeniem do synchronizacji.<br><br>Jednostka: Count<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
+| Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania).<br><br>Jednostka: Count<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
+| Stan online Server | Liczba pulsów otrzymany z serwera.<br><br>Jednostka: Count<br>Typ agregacji: Maksimum<br>Wymiar dotyczy: Nazwa serwera |
+| Wynik sesji synchronizacji | Synchronizuj wynik sesji (1 = pomyślna synchronizacja sesji; 0 = sesję synchronizacji nie powiodło się)<br><br>Jednostka: Count<br>Typy agregacji: Maksimum<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
+
+### <a name="alerts"></a>Alerty
+
+Aby skonfigurować alerty w usłudze Azure Monitor, wybierz usługę synchronizacji magazynu, a następnie wybierz [metryki usługi Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) do użycia dla alertu.  
+
+W poniższej tabeli wymieniono niektóre przykładowe scenariusze monitorowania i metryki właściwe dla alertu:
+
+| Scenariusz | Metryki dla alertu |
+|-|-|
+| Kondycja punktu końcowego serwera w portalu = błąd | Wynik sesji synchronizacji |
+| Plików kończą się niepowodzeniem są synchronizowane z serwerem lub punkt końcowy w chmurze | Nie synchronizuje pliki |
+| Zarejestrowany serwer nie może komunikować się z usługą synchronizacji magazynu | Stan online Server |
+| Chmura warstw wycofaniu rozmiar przekroczył 500GiB w ciągu dnia  | Warstw rozmiar odwołania w chmurze |
+
+Aby dowiedzieć się więcej na temat konfigurowania alertów w usłudze Azure Monitor, zobacz [Przegląd alertów na platformie Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="storage-sync-service"></a>Usługa synchronizacji magazynu
 
 Aby wyświetlić kondycji zarejestrowanego serwera, kondycja punktu końcowego serwera i metryki, przejdź do usługi synchronizacji magazynu w witrynie Azure portal. Możesz wyświetlić kondycji zarejestrowanego serwera w **zarejestrowane serwery** bloku i serwera kondycji punktu końcowego w **synchronizacji grupy** bloku.
 
-Kondycji zarejestrowanego serwera:
+### <a name="registered-server-health"></a>Kondycji zarejestrowanego serwera
 
 - Jeśli **serwera zarejestrowane** stan **Online**, serwera pomyślnie komunikowania się z usługą.
 - Jeśli **serwera zarejestrowane** stan **pojawia się w trybie Offline**, sprawdź, czy Proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) na serwerze jest uruchomiony. Jeśli serwer znajduje się za zaporą lub serwera proxy, zobacz [w tym artykule](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) skonfigurować zapory i serwera proxy.
 
-Kondycja punktu końcowego serwera:
+### <a name="server-endpoint-health"></a>Kondycja punktu końcowego serwera
 
 - Kondycja punktu końcowego serwera w portalu jest oparty na Synchronizuj zdarzenia, które są rejestrowane w dzienniku zdarzeń Telemetrii na serwerze (identyfikator 9102 i: 9302; lista). Jeśli sesję synchronizacji kończy się niepowodzeniem ze względu na błąd przejściowy, takie jak błąd zostało anulowane, synchronizacji może nadal widoczna dobrej kondycji w witrynie portal tak długo, jak w bieżącej sesji synchronizacji jest postępy. Identyfikator zdarzenia: 9302; lista jest używana do określenia, jeśli pliki są stosowane. Aby uzyskać więcej informacji, zobacz [synchronizacji kondycji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) i [synchronizacji postępu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 - Jeśli w portalu jest wyświetlany błąd synchronizacji, ponieważ synchronizacja nie jest postępy, zobacz [dokumentacja dotycząca rozwiązywania problemów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) wskazówki.
 
-Metryki:
+### <a name="metric-charts"></a>Wykresy metryk
 
-- Następujące metryki są wyświetlane w portalu usługi synchronizacji magazynu:
+- Poniższe wykresy metryk jest wyświetlana w portalu usługi synchronizacji magazynu:
 
   | Nazwa metryki | Opis | Nazwa bloku |
   |-|-|-|
@@ -57,26 +92,6 @@ Metryki:
 
   > [!Note]  
   > Wykresy w portalu usługi synchronizacji magazynu ma okresie 24 godzin. Aby wyświetlić zakresów w innym czasie lub wymiarów, należy użyć usługi Azure Monitor.
-
-### <a name="azure-monitor"></a>Azure Monitor
-
-Użyj [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) synchronizacji monitora, obsługi warstw w chmurze i łączność z serwerem. Metryki dla usługi Azure File Sync są domyślnie włączone i są wysyłane do usługi Azure Monitor co 15 minut.
-
-Zaznacz, aby wyświetlić metryki usługi Azure File Sync w usłudze Azure Monitor **usługi synchronizacji magazynu** typu zasobu.
-
-Następujące metryki dla usługi Azure File Sync są dostępne w usłudze Azure Monitor:
-
-| Nazwa metryki | Opis |
-|-|-|
-| Bajty synchronizowane | Rozmiar danych transferowanych (przekazywania i pobierania).<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
-| Wycofanie obsługi warstw w chmurze | Rozmiar danych odwołać.<br><br>Uwaga: Ta metryka zostanie usunięte w przyszłości. Użyj metryki chmury do rozmiaru warstw odwołania do monitorowania rozmiar danych przypomnieć.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa serwera |
-| Warstw rozmiar odwołania w chmurze | Rozmiar danych odwołać.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa nazwy serwera, grupy synchronizacji |
-| Aplikacja w chmurze warstw rozmiar odwołania | Rozmiar danych przypomnieć przez aplikację.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Aplikacji nazwę, Server Name, nazwa grupy synchronizacji |
-| Warstw przepływności odwołania w chmurze | Rozmiar danych odwołania przepływności.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa nazwy serwera, grupy synchronizacji |
-| Nie synchronizuje pliki | Liczba plików, które kończą się niepowodzeniem do synchronizacji.<br><br>Jednostka: Count<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
-| Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania).<br><br>Jednostka: Licznik<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
-| Stan online Server | Liczba pulsów otrzymany z serwera.<br><br>Jednostka: Count<br>Typ agregacji: Maksimum<br>Wymiar dotyczy: Nazwa serwera |
-| Wynik sesji synchronizacji | Synchronizuj wynik sesji (1 = pomyślna synchronizacja sesji; 0 = sesję synchronizacji nie powiodło się)<br><br>Jednostka: Licznik<br>Typy agregacji: Maksimum<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 
 ## <a name="windows-server"></a>Windows Server
 

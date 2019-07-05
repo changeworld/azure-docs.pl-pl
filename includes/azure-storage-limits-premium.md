@@ -5,31 +5,23 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 03/23/2019
+ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e878ca23b9187fe3175ad0af1b4f27e59e1deef6
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183439"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509891"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Magazyn Premium wydajności block blob storage
 
 Wydajność blokowych obiektów blob konta magazynu premium storage jest zoptymalizowany dla aplikacji, które używają mniejszych, KB zakresu obiektów. To idealne rozwiązanie dla aplikacji, które wymagają transakcji o wysokiej szybkości lub spójnego magazynu o małych opóźnieniach. Magazyn obiektów blob bloku wydajności Premium została zaprojektowana do skalowania za pomocą aplikacji. Jeśli planujesz wdrożyć aplikacje wymagające setki tysięcy żądań na sekundę lub petabajtom pojemności magazynu, skontaktuj się z nami, przesyłając żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="premium-performance-filestorage-preview"></a>Wydajność warstwy Premium FileStorage (wersja zapoznawcza)
+### <a name="premium-performance-filestorage"></a>Wydajność warstwy Premium FileStorage
 
-Files w warstwie Premium należy użyć konta magazynu unikatowy o nazwie **FileStorage (wersja zapoznawcza)** . Ten typ konta jest przeznaczona dla obciążeń o wysokiej operacje We/Wy, wysokiej przepływności, zapewniając spójny o małych opóźnieniach. Magazyn plików w warstwie Premium można skalować z aprowizowanego rozmiaru udziału.
-
-|Obszar  |Cel  |
-|---------|---------|
-|Maksymalny rozmiar zainicjowano obsługę administracyjną     |100 TiB     |
-|Udziały   |Nieograniczona liczba  |
-|Operacje wejścia/wyjścia     |100,000    |
-|Ruch przychodzący|4,136 MiB/s     |
-|Ruch wychodzący|6,204 MiB/s |
+[!INCLUDE [azure-storage-limits-filestorage](azure-storage-limits-filestorage.md)]
 
  Dla pliku premium te same obiekty docelowe skalowania, zobacz [files w warstwie Premium skalowanie elementów docelowych](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) sekcji.
 

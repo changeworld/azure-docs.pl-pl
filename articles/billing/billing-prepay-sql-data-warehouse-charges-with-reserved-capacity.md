@@ -1,19 +1,19 @@
 ---
-title: Skorzystaj z możliwości przedpłaty na opłaty za magazyn danych SQL za pomocą platformy Azure rezerwowanie pojemności | Dokumentacja firmy Microsoft
+title: Skorzystaj z możliwości przedpłaty na opłaty za magazyn danych SQL za pomocą platformy Azure rezerwowanie pojemności
 description: Dowiedz się, jak można przedpłaty na opłaty za magazyn danych SQL za pomocą rezerwowanie pojemności, aby zaoszczędzić pieniądze.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 07/03/2019
 ms.author: banders
-ms.openlocfilehash: 3d56ee99f8056139a234477b6eed93d9fcbe2bbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cea2c8e6d476c3ea2799337ab2da1f9406731814
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371193"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565360"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Skorzystaj z możliwości przedpłaty na opłaty za magazyn danych SQL za pomocą rezerwowanie pojemności
 
@@ -43,14 +43,15 @@ Na przykład przyjęto założenie, że Twoje całkowite użycie usługi SQL Dat
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Kup pojemność magazynu danych SQL zastrzeżone
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Wybierz **wszystkich usług** > **rezerwacje**.
 3. Wybierz subskrypcję. Użyj listy subskrypcji, aby wybrać subskrypcję, która jest używana do zapłacenia za rezerwowanie pojemności. Formy płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwowanie pojemności. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P).
   - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
   - W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.
 4. Wybierz zakres. Użyj listy zakresów, aby wybrać zakres subskrypcji.
-  - Za pomocą **pojedynczego** opcja, rabat związany z rezerwacją jest stosowana w usłudze SQL Data Warehouse wdrożone w ramach wybranej subskrypcji.
-  - Za pomocą **Shared** opcji Rabat związany z rezerwacją jest stosowany do wystąpień działających w ramach dowolnej subskrypcji w ramach kontekstu rozliczeń.
+  - **Pojedynczy zakres grupy zasobów** — ma zastosowanie rabatu związanego z rezerwacją do dopasowywania zasobów w wybranej grupie zasobów tylko.
+  - **Pojedynczy zakres subskrypcji** — ma zastosowanie rabatu związanego z rezerwacją do dopasowywania zasobów w wybranej subskrypcji.
+  - **Zakres udostępniony** — ma zastosowanie rabat związany z rezerwacją do dopasowywania zasobów w uprawnione subskrypcje, które znajdują się w kontekstu rozliczeń. W przypadku klientów z umową Enterprise Agreement kontekstu rozliczeń jest rejestracja. W przypadku poszczególnych subskrypcji przy użyciu stawki rozliczeń zakres jest wszystkie uprawnione subskrypcje utworzone przez administratora konta.
     - Dla klientów korporacyjnych kontekstu rozliczeń jest rejestracji umowy EA.
     - Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.
 5. Wybierz region, aby wybrać region platformy Azure, który pasuje do żadnego rezerwowanie pojemności.

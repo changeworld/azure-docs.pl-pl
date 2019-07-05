@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdbbea2d32762d2d4030ec3a10826595dadd371c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696751"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449829"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.
@@ -23,7 +23,7 @@ Ten artykuł będzie zapewniają wgląd w określonych wymagań i opcji umożliw
 > [!Important]
 > Usługa Azure File Sync nie obsługuje jeszcze zapory i sieci wirtualne dla konta magazynu.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Usługa Azure File Sync działa jako usługa aranżacji między serwera z systemem Windows, udziału plików platformy Azure i kilka innych usług platformy Azure, na synchronizowanie danych, zgodnie z opisem w grupie synchronizacji. Dla usługi Azure File Sync działała prawidłowo należy skonfigurować serwery do komunikowania się z następujących usług platformy Azure:
 
 - Azure Storage
@@ -111,20 +111,31 @@ Ciągłość prowadzenia działalności biznesowej po awarii (BCDR) odzyskiwania
 
 | Chmura  | Region | Adres URL podstawowego punktu końcowego | Region sparowany | Adres URL odnajdywania |
 |--------|--------|----------------------|---------------|---------------|
-| Public |Australia Wschodnia | https://kailani-aue.one.microsoft.com | Australia Południowo-Wschodnia | https://kailani-aue.one.microsoft.com |
+| Public |Australia Wschodnia | https://kailani-aue.one.microsoft.com | Australia Południowo-Wschodnia | https://tm-kailani-aue.one.microsoft.com |
 | Public |Australia Południowo-Wschodnia | https://kailani-aus.one.microsoft.com | Australia Wschodnia | https://tm-kailani-aus.one.microsoft.com |
+| Public | Brazylia Południowa | https://brazilsouth01.afs.azure.net | Środkowo-południowe stany USA | https://tm-brazilsouth01.afs.azure.net |
 | Public | Kanada Środkowa | https://kailani-cac.one.microsoft.com | Kanada Wschodnia | https://tm-kailani-cac.one.microsoft.com |
 | Public | Kanada Wschodnia | https://kailani-cae.one.microsoft.com | Kanada Środkowa | https://tm-kailani.cae.one.microsoft.com |
+| Public | Indie Środkowe | https://kailani-cin.one.microsoft.com | Indie Południowe | https://tm-kailani-cin.one.microsoft.com |
 | Public | Środkowe stany USA | https://kailani-cus.one.microsoft.com | Wschodnie stany USA 2 | https://tm-kailani-cus.one.microsoft.com |
 | Public | Azja Wschodnia | https://kailani11.one.microsoft.com | Azja Południowo-Wschodnia | https://tm-kailani11.one.microsoft.com |
-| Public | Wschodnie stany USA | https://kailani1.one.microsoft.com | Zachodnie stany USA | https://tm-kailani1.one.microsoft.com |
+| Public | East US | https://kailani1.one.microsoft.com | Zachodnie stany USA | https://tm-kailani1.one.microsoft.com |
 | Public | Wschodnie stany USA 2 | https://kailani-ess.one.microsoft.com | Środkowe stany USA | https://tm-kailani-ess.one.microsoft.com |
+| Public | Japonia Wschodnia | https://japaneast01.afs.azure.net | Japonia Zachodnia | https://tm-japaneast01.afs.azure.net |
+| Public | Japonia Zachodnia | https://japanwest01.afs.azure.net | Japonia Wschodnia | https://tm-japanwest01.afs.azure.net |
+| Public | Korea Środkowa | https://koreacentral01.afs.azure.net/ | Korea Południowa | https://tm-koreacentral01.afs.azure.net/ |
+| Public | Korea Południowa | https://koreasouth01.afs.azure.net/ | Korea Środkowa | https://tm-koreasouth01.afs.azure.net/ |
+| Public | Środkowo-północne stany USA | https://northcentralus01.afs.azure.net | Środkowo-południowe stany USA | https://tm-northcentralus01.afs.azure.net |
 | Public | Europa Północna | https://kailani7.one.microsoft.com | Europa Zachodnia | https://tm-kailani7.one.microsoft.com |
+| Public | Środkowo-południowe stany USA | https://southcentralus01.afs.azure.net | Środkowo-północne stany USA | https://tm-southcentralus01.afs.azure.net |
+| Public | Indie Południowe | https://kailani-sin.one.microsoft.com | Indie Środkowe | https://tm-kailani-sin.one.microsoft.com |
 | Public | Azja Południowo-Wschodnia | https://kailani10.one.microsoft.com | Azja Wschodnia | https://tm-kailani10.one.microsoft.com |
 | Public | Południowe Zjednoczone Królestwo | https://kailani-uks.one.microsoft.com | Zachodnie Zjednoczone Królestwo | https://tm-kailani-uks.one.microsoft.com |
 | Public | Zachodnie Zjednoczone Królestwo | https://kailani-ukw.one.microsoft.com | Południowe Zjednoczone Królestwo | https://tm-kailani-ukw.one.microsoft.com |
+| Public | Środkowo-zachodnie stany USA | https://westcentralus01.afs.azure.net | Zachodnie stany USA 2 | https://tm-westcentralus01.afs.azure.net |
 | Public | Europa Zachodnia | https://kailani6.one.microsoft.com | Europa Północna | https://tm-kailani6.one.microsoft.com |
-| Public | Zachodnie stany USA | https://kailani.one.microsoft.com | Wschodnie stany USA | https://tm-kailani.one.microsoft.com |
+| Public | Zachodnie stany USA | https://kailani.one.microsoft.com | East US | https://tm-kailani.one.microsoft.com |
+| Public | Zachodnie stany USA 2 | https://westus201.afs.azure.net | Środkowo-zachodnie stany USA | https://tm-westus201.afs.azure.net |
 | Instytucje rządowe | Administracja USA — Arizona | https://usgovarizona01.afs.azure.us | Administracja USA — Teksas | https://tm-usgovarizona01.afs.azure.us |
 | Instytucje rządowe | Administracja USA — Teksas | https://usgovtexas01.afs.azure.us | Administracja USA — Arizona | https://tm-usgovtexas01.afs.azure.us |
 

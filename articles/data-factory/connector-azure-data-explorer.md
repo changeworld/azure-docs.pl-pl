@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 06/24/2019
 ms.author: orspodek
-ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394510"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449645"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
 
@@ -140,6 +140,7 @@ Aby skopiować dane z Eksploratora danych usługi Azure, należy ustawić **typu
 | type | **Typu** musi być równa właściwość źródła działania kopiowania: **AzureDataExplorerSource** | Yes |
 | query | Żądanie tylko do odczytu w [KQL format](/azure/kusto/query/). Zapytanie niestandardowe KQL jest używana jako odwołanie. | Yes |
 | queryTimeout | Czas oczekiwania przed żądaniem zapytania upłynie limit czasu. Wartość domyślna to 10 minut (00: 10:00); dozwolona maksymalna wartość to 1 godzina (01: 00:00). | Nie |
+| noTruncation | Wskazuje, czy obciąć zestaw wyników zwrócony. Domyślnie wynik został obcięty po 500 000 rekordów lub 64MB. Obcięcie zdecydowanie zaleca się do prawidłowego zachowania w zakresie działania. |Nie |
 
 >[!NOTE]
 >Usługa Azure źródło Eksploratora danych, domyślnie ma limit rozmiaru wynoszący 500 000 rekordów lub 64 MB. Aby pobrać wszystkie rekordy bez obcinania, można określić `set notruncation;` na początku zapytania. Zapoznaj się [zapytania limity](https://docs.microsoft.com/azure/kusto/concepts/querylimits) na więcej szczegółów.

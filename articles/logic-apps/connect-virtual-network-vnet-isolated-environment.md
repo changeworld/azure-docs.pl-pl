@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48257cc8e10deb1ec922806f62a6c435069f66f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65961454"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467093"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
@@ -64,7 +64,7 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 
 Gdy używasz środowisku usługi integracji (ISE) z siecią wirtualną powszechny problem konfiguracji ma co najmniej jeden port blokowania. Łączniki, których używasz do tworzenia połączenia między swoje ISE i docelowy system może być również własne wymagania dotyczące portów. Na przykład jeśli komunikować się z systemem FTP za pomocą łącznika usługi FTP, upewnij się, port, z którego korzystasz na dostępnej systemu FTP, takich jak port 21 do wysyłania poleceń.
 
-Do sterowania ruchem między podsieciami sieci wirtualnej, w którym wdrożyć ISE, można skonfigurować [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) przez [filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). Jednak Twoja ISE musi mieć określone porty otworzyć w sieci wirtualnej, która używa grup zabezpieczeń sieci. W ten sposób Twoja ISE pozostaje dostępna i mogły działać prawidłowo, tak aby nie utracić dostępu do Twojego środowiska ISE. W przeciwnym razie jeśli wszystkie wymagane porty są niedostępne, Twojego środowiska ISE przestanie działać.
+Do sterowania ruchem między podsieciami sieci wirtualnej, w którym wdrożyć swoje ISE, można opcjonalnie skonfigurować [sieciowe grupy zabezpieczeń (NSG)](../virtual-network/security-overview.md) w Twojej sieci wirtualnej przez [filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). Jeśli wybierzesz tę trasę, upewnij się, że Twoje środowiska ISE otwiera określone porty, zgodnie z opisem w poniższej tabeli, w sieci wirtualnej, która korzysta z sieciowych grup zabezpieczeń. Jeśli masz istniejące sieciowych grup zabezpieczeń lub zapory w sieci wirtualnej, upewnij się, że ich otworzyć te porty. W ten sposób Twoja ISE pozostaje dostępna i mogły działać prawidłowo, tak aby nie utracić dostępu do Twojego środowiska ISE. W przeciwnym razie jeśli wszystkie wymagane porty są niedostępne, Twojego środowiska ISE przestanie działać.
 
 Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobierz użycia tych portów. [Tagi usługi Resource Manager](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, które zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
 
@@ -116,11 +116,11 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
    |----------|----------|-------|-------------|
    | **Subskrypcja** | Tak | <*Azure-subscription-name*> | Subskrypcji platformy Azure do użycia w danym środowisku |
    | **Grupa zasobów** | Tak | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
-   | **Nazwa środowiska usługi integracji** | Tak | <*Nazwa środowiska*> | Nazwa do nadania środowiska |
-   | **Lokalizacja** | Yes | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
-   | **Dodatkowe możliwości obliczeniowe** | Yes | 0 do 10 | Liczba jednostek dodatkowego przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [pojemności Dodaj ISE](#add-capacity). |
-   | **Sieć wirtualna** | Yes | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. |
-   | **Podsieci** | Tak | <*subnet-resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet).  |
+   | **Nazwa środowiska usługi integracji** | Yes | <*Nazwa środowiska*> | Nazwa do nadania środowiska |
+   | **Location** | Tak | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
+   | **Dodatkowe możliwości obliczeniowe** | Tak | 0 do 10 | Liczba jednostek dodatkowego przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [pojemności Dodaj ISE](#add-capacity). |
+   | **Sieć wirtualna** | Tak | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. |
+   | **Podsieci** | Yes | <*subnet-resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet).  |
    |||||
 
    <a name="create-subnet"></a>

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: a953af3d9cd5a6748b79465a59b4a4284e58714c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4aeda5612b2b3e9e2073a65320b238266c8bb33a
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070125"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537856"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Warstwy usług w Hiperskali dla maksymalnie 100 TB
 
@@ -38,7 +38,7 @@ Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza war
 Warstwy usług na dużą skalę w usłudze Azure SQL Database zapewnia następujące dodatkowe funkcje:
 
 - Obsługa do 100 TB, rozmiar bazy danych
-- Niemal natychmiastowych kopii zapasowych, (na podstawie migawki plików przechowywanych w usłudze Azure Blob storage) bazy danych bez względu na rozmiar wpływu we/wy na obliczeń   
+- Niemal natychmiastowych kopii zapasowych, (na podstawie migawki plików przechowywanych w usłudze Azure Blob storage) bazy danych bez względu na rozmiar wpływu we/wy na zasoby obliczeniowe  
 - Szybkie przywracanie bazy danych (na podstawie migawki plików) w ciągu kilku minut, a nie godzin lub dni (nie rozmiar operacji na danych)
 - Ogólną wydajność ze względu na większą przepływność dziennika i krótszy czas zatwierdzenia transakcji, niezależnie od ilości danych
 - Szybkie skalowanie w poziomie — można udostępnić co najmniej jeden węzeł tylko do odczytu dla odciążania obciążenia odczytu i do użytku jako spełniają hot
@@ -69,7 +69,7 @@ Warstwy usługi w Hiperskali jest dostępna tylko w [modelu rdzenia wirtualnego]
 
 - **Magazyn**:
 
-  Nie trzeba określić rozmiar maksymalny danych, podczas konfigurowania bazy danych na dużą skalę. W warstwie Hiperskalowanie opłaty za magazyn w przypadku bazy danych są oparte na rzeczywistym użyciu. Magazyn jest przydzielany automatycznie między 10 GB i 100 TB, w przyrostach, które są dynamicznie ustawiane od 10GB do 40GB.  
+  Nie trzeba określić rozmiar maksymalny danych, podczas konfigurowania bazy danych na dużą skalę. W warstwie Hiperskalowanie opłaty za magazyn w przypadku bazy danych są oparte na rzeczywistym użyciu. Magazyn jest przydzielany automatycznie między 10 GB i 100 TB, w przyrostach, które są dynamicznie dostosowywana między 10 GB i 40 GB.  
 
 Aby uzyskać więcej informacji na temat cen na dużą skalę, zobacz [cennik usługi Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -161,7 +161,7 @@ Warstwa Azure SQL Database na dużą skalę jest obecnie dostępna w następują
 - Chiny Wschodnie 2
 - Chiny Północne 2
 - Azja Wschodnia
-- Wschodnie stany USA
+- East US
 - Wschodnie stany USA 2
 - Francja Środkowa
 - Japonia Wschodnia
@@ -225,7 +225,7 @@ Są to bieżące ograniczenia do warstwy usług na dużą skalę, począwszy od 
 
 | Problem | Opis |
 | :---- | :--------- |
-| W okienku Zarządzanie kopiami zapasowymi serwera logicznego nie pokazuje, że będą filtrowane baz danych na dużą skalę z programu SQL server  | W Hiperskali ma oddzielne metodę zarządzania kopiami zapasowymi i jako takie długotrwałego przechowywania danych i punktu w czasie tworzenia kopii zapasowej ustawień przechowywania nie stosuje się / są unieważniane. W związku z tym baz danych na dużą skalę, nie są wyświetlane w okienku Zarządzanie kopii zapasowej. |
+| W okienku Zarządzanie kopiami zapasowymi serwera logicznego nie pokazuje, że będą filtrowane baz danych na dużą skalę z programu SQL server  | W Hiperskali ma oddzielne metodę zarządzania kopiami zapasowymi i jako takie przechowywania długoterminowego i punktu w czasie tworzenia kopii zapasowej ustawień przechowywania nie stosuje się / są unieważniane. W związku z tym baz danych na dużą skalę, nie są wyświetlane w okienku Zarządzanie kopii zapasowej. |
 | Przywracanie do określonego momentu | Po migracji bazy danych w warstwie usługi w Hiperskali, przywracanie do punktu w czasie przed migracją nie jest obsługiwane.|
 | Przywracanie z innych niż - w Hiperskali DB Hypserscale i na odwrót | Nie można przywrócić bazę danych na dużą skalę w bazie danych — na dużą skalę, nie można przywrócić bazę danych — na dużą skalę w bazie danych na dużą skalę.|
 | Jeśli plik bazy danych zwiększa się podczas migracji ze względu na to aktywne obciążenie i przekracza 1 TB na granicy pliku, migracja nie powiedzie się | Środki zaradcze: <br> — Jeśli to możliwe, migracji bazy danych, po nie obciążenia aktualizacji.<br> -Ponów próbę migracji, zakończy się powodzeniem tak długo, jak granica 1 TB nie jest przekroczony podczas migracji.|

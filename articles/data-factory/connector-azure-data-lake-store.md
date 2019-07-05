@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: aedfa381f6520a5295467821097b38dd28dcd60c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: df88c3e2e07165182c917eaf30a5f37451fbd073
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057915"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509579"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Azure Data Factory, której używasz:"]
@@ -81,7 +81,7 @@ Aby użyć uwierzytelniania jednostki usługi, zarejestrować jednostki aplikacj
 >Do listy folderów, począwszy od katalogu głównego, należy ustawić uprawnienia jednostki usługi, zostanie im przyznany do **na poziomie głównym z uprawnieniami "Execute"** . Jest to wartość true, gdy:
 >- **Narzędzia do kopiowania danych** do potoku kopiowania autora.
 >- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia.
->Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie głównym, pominie ten test połączenia i wprowadź ścieżkę ręcznie podczas tworzenia. Działanie kopiowania działa tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami, plików do skopiowania.
+>Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie głównym podczas tworzenia, Pomiń testowania połączenia, a dane wejściowe ścieżkę paraent przyznanie uprawnienia wybrać przejść z poziomu określona ścieżka. Kopiuj działania działa tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami na pliki do skopiowania.
 
 Obsługiwane są następujące właściwości:
 
@@ -135,7 +135,7 @@ Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azu
 >Do listy folderów, począwszy od katalogu głównego, należy ustawić uprawnienia tożsamość zarządzaną, zostanie im przyznany do **na poziomie głównym z uprawnieniami "Execute"** . Jest to wartość true, gdy:
 >- **Narzędzia do kopiowania danych** do potoku kopiowania autora.
 >- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia.
->Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie głównym, pominie ten test połączenia i wprowadź ścieżkę ręcznie podczas tworzenia. Działanie kopiowania działa tak długo, jak tożsamość zarządzaną otrzymuje z odpowiednimi uprawnieniami na pliki do skopiowania.
+>Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie głównym podczas tworzenia, Pomiń testowania połączenia, a dane wejściowe kliknij można przejść z poziomu ścieżki nadrzędnej z przyznanie uprawnienia określona ścieżka. Kopiuj działania działa tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami na pliki do skopiowania.
 
 W usłudze Azure Data Factory nie trzeba określać żadnych właściwości, oprócz ogólnych informacji Data Lake Store w połączonej usługi.
 
@@ -172,7 +172,7 @@ Aby skopiować dane do i z usługi Azure Data Lake Store Gen1 parquet lub format
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
-| — typ       | Właściwość type w obszarze `location` w zestawie danych musi być równa **AzureDataLakeStoreLocation**. | Yes      |
+| type       | Właściwość type w obszarze `location` w zestawie danych musi być równa **AzureDataLakeStoreLocation**. | Tak      |
 | folderPath | Ścieżka do folderu. Jeśli chcesz użyć symbolu wieloznacznego do filtrowania folderów, pomiń to ustawienie i je określić w ustawieniach źródła działania. | Nie       |
 | fileName   | Nazwa pliku w ramach danego folderu folderPath. Jeśli chcesz użyć symbolu wieloznacznego do filtrowania plików, pomiń to ustawienie i je określić w ustawieniach źródła działania. | Nie       |
 
@@ -212,7 +212,7 @@ Aby skopiować dane do i z usługi Azure Data Lake Store Gen1 ORC, Avro, JSON lu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość typu elementu dataset musi być równa **AzureDataLakeStoreFile**. |Tak |
+| type | Właściwość typu elementu dataset musi być równa **AzureDataLakeStoreFile**. |Tak |
 | folderPath | Ścieżka do folderu w Data Lake Store. Jeśli nie zostanie określony, wskazuje katalog główny. <br/><br/>Filtr z symbolami wieloznacznymi jest obsługiwany. Dozwolone symbole wieloznaczne są `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak). Użyj `^` jako znak ucieczki, jeśli symbol wieloznaczny lub ten znak ucieczki wewnątrz nazwą rzeczywistego folderu. <br/><br/>Na przykład: wartość rootfolder/podfolder /. Zobacz więcej przykładów w [folderowi i plikowi Przykłady filtrów](#folder-and-file-filter-examples). |Nie |
 | fileName | Filtr nazwy lub symboli wieloznacznych plików w określonym "folderPath". Jeśli nie określisz wartości dla tej właściwości, zestaw danych wskazuje wszystkie pliki w folderze. <br/><br/>Dla filtru, są dozwolone symbole wieloznaczne `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak).<br/>— Przykład 1: `"fileName": "*.csv"`<br/>— Przykład 2: `"fileName": "???20180427.txt"`<br/>Użyj `^` jako znak ucieczki, jeśli Twoje rzeczywiste nazwy plików ma symbol wieloznaczny lub ten znak ucieczki wewnątrz.<br/><br/>Kiedy dla wyjściowego zestawu danych nie jest określona nazwa pliku i **preserveHierarchy** nie został określony w ujściu działania, działanie kopiowania automatycznie generuje nazwę pliku z następującym wzorcem: "*Danych. [identyfikator GUID uruchamiania działania]. [Identyfikator GUID Jeśli FlattenHierarchy]. [format skonfigurowanie]. [kompresji, jeśli skonfigurowano]* ", na przykład"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". W przypadku kopiowania z tabelaryczne źródła przy użyciu nazwy tabeli zamiast zapytania wzorzec nazwy to " *[Nazwa tabeli]. [ format]. [kompresji, jeśli skonfigurowano]* ", na przykład"MyTable.csv". |Nie |
 | modifiedDatetimeStart | Filtr plików, na podstawie atrybutu ostatniej modyfikacji. Pliki są zaznaczone, jeśli ich godzina ostatniej modyfikacji znajduje się w zakresie czasu między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Ogólną wydajność przenoszenia danych ma wpływ włączenie tego ustawienia plik filtru z bardzo duże ilości plików. <br/><br/> Właściwości może być wartością NULL, co oznacza, że żaden filtr atrybutu pliku jest stosowany do zestawu danych. Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest większa niż lub równa wartości daty/godziny są zaznaczone. Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza, że zaznaczone są pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty/godziny.| Nie |
@@ -327,7 +327,7 @@ Aby skopiować dane z usługi Azure Data Lake Store Gen1 ORC, Avro, JSON lub for
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | `type` Właściwość źródła działania kopiowania musi być równa **AzureDataLakeStoreSource**. |Yes |
+| — typ | `type` Właściwość źródła działania kopiowania musi być równa **AzureDataLakeStoreSource**. |Yes |
 | recursive | Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. Gdy `recursive` jest ustawiona na wartość PRAWDA, a obiekt sink jest magazynem opartych na plikach, pusty folder lub podfolder nie jest kopiowany lub utworzono obiekt sink. Dozwolone wartości to **true** (ustawienie domyślne) i **false**. | Nie |
 | maxConcurrentConnections | Liczba nawiązywanie połączeń z magazynem danych jednocześnie. Należy określić tylko wtedy, gdy chcesz ograniczyć liczby jednoczesnych połączeń z magazynem danych. | Nie |
 
@@ -422,7 +422,7 @@ Aby skopiować dane do usługi Azure Data Lake Store Gen1 ORC, Avro, JSON lub fo
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | `type` Właściwość ujścia działania kopiowania musi być równa **AzureDataLakeStoreSink**. |Yes |
+| type | `type` Właściwość ujścia działania kopiowania musi być równa **AzureDataLakeStoreSink**. |Tak |
 | copyBehavior | Definiuje zachowania dotyczącego kopiowania, gdy źródłem jest pliki z magazynu danych oparte na plikach.<br/><br/>Dozwolone wartości to:<br/><b>-PreserveHierarchy (ustawienie domyślne)</b>: Zachowuje hierarchii plików w folderze docelowym. Ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego, do folderu docelowego.<br/><b>-FlattenHierarchy</b>: Wszystkie pliki z folderu źródłowego znajdują się w pierwszy poziom folderu docelowego. Pliki docelowe mają nazwy wygenerowany automatycznie. <br/><b>-MergeFiles</b>: Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku jest określony, nazwa pliku scalonego jest określona nazwa. W przeciwnym razie nazwa pliku jest generowana automatycznie. | Nie |
 | maxConcurrentConnections | Liczba nawiązywanie połączeń z magazynem danych jednocześnie. Należy określić tylko wtedy, gdy chcesz ograniczyć liczby jednoczesnych połączeń z magazynem danych. | Nie |
 

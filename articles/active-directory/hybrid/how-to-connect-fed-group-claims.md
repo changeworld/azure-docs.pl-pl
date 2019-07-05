@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e00e41a34bb28a2569d5922926a8f6c4fbe4bd57
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138700"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481422"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurowanie oświadczenia grupy dla aplikacji przy użyciu usługi Azure Active Directory (publiczna wersja zapoznawcza)
 
@@ -137,7 +137,7 @@ Można również skonfigurować oświadczenia grupy w [opcjonalnych oświadczeń
 
 3. Ustaw oświadczenia opcjonalny konfiguracji nazwę grupy.
 
-   Jeśli chcesz do grup w tokenie zawierać lokalnych, w których atrybuty grupy usługi AD w sekcji opcjonalnych oświadczeń, określ, której typ tokenu opcjonalnego roszczenia powinny być stosowane do, nazwę opcjonalnego roszczenia, żądane i wszelkie dodatkowe właściwości żądanego.  Mogą być wyświetlane wiele typów tokenu:
+   Jeśli chcesz, aby grupy w tokenie zawierać lokalnych, w których atrybuty grupy usługi AD w sekcji opcjonalnych oświadczeń, określ, której typ tokenu opcjonalnego roszczenia powinny być stosowane do, nazwę opcjonalnego roszczenia, żądane i wszelkie dodatkowe właściwości żądanego.  Mogą być wyświetlane wiele typów tokenu:
 
    - idToken dla tokenu Identyfikacyjnego OIDC
    - accessToken dla tokenu dostępu OAuth/OIDC

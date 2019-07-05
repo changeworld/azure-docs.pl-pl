@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 49d1e171d4d4b2210a98c59332f4842e23a2f2b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275592"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537853"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -53,7 +53,7 @@ Usługi oparte na rdzeniach wirtualnych warstwy różnią się głównie na pods
 | **Typ magazynu** | Wszyscy |Magazyn zdalny — wersja Premium (na wystąpienie) | Produkcyjnej magazynu z lokalnego dysku SSD pamięci podręcznej (na wystąpienie) | Superszybkiego lokalny magazyn SSD (na wystąpienie) |
 | **Rozmiar magazynu** | Pojedynczą bazę danych / elastycznej puli | 5 GB – 4 TB | Do 100 TB | 5 GB – 4 TB |
 | | Wystąpienie zarządzane  | 32 GB – 8 TB | ND | 32 GB – 4 TB |
-| **Przepustowość operacji We/Wy** | Pojedynczy bazę danych ** | 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS | Jeszcze nieznane | 5000 operacji We/Wy z 200 000 maksymalna liczba IOPS|
+| **Przepustowość operacji We/Wy** | Pojedynczy bazę danych ** | 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS | W Hiperskali to architektura wielowarstwowa z buforowaniem na różnych poziomach. Skuteczne operacje We/Wy zależy od obciążenia. | 5000 operacji We/Wy z 200 000 maksymalna liczba IOPS|
 | | Wystąpienie zarządzane | Zależy od rozmiaru pliku | ND | Wystąpienie zarządzane: Zależy od rozmiaru pliku|
 |**Dostępność**|Wszyscy|1 repliki, brak skalę odczytywania, nie lokalnej pamięci podręcznej | Wiele replik maksymalnie 15 skalę odczytywania, częściowe lokalnej pamięci podręcznej | 3 repliki, 1 HA skalę odczytywania, strefowo nadmiarowe pełnej lokalnej pamięci podręcznej |
 |**Tworzenie kopii zapasowych**|Wszyscy|RA-GRS, 7 – 35 dni (domyślnie co 7 dni)| RA-GRS, 7 – 35 dni (7 dni domyślnie), stałym czasie w momencie odzyskiwania (Odzyskiwanie) | RA-GRS, 7 – 35 dni (domyślnie co 7 dni) |
@@ -92,7 +92,7 @@ Bazy danych SQL na dużą skalę oferuje szybką skalowalność, zależnie od po
   W Hiperskali możesz skalować w górę rozmiar głównej obliczeniowych pod względem zasobów, takich jak procesor CPU, pamięć i następnie Skaluj w dół w stałym czasie. Ponieważ Magazyn jest udostępniany, skalowanie w górę i skalowania w dół nie jest rozmiar operacji danych.  
 - **Skalowanie na wejściu/wyjściu**
 
-  Za pomocą na dużą skalę możesz także uzyskać możliwość inicjowania obsługi co najmniej jeden węzeł dodatkowe zasoby obliczeniowe, które służą do obsługi żądań odczytu. Oznacza to, że tych dodatkowych węzłów obliczeniowych można używać jako tylko do odczytu węzły odciążania odczytu obciążenie z podstawowej obliczeń. Dodatkowo tylko do odczytu, te węzły również służyć jako stałej gotowości użytkownika w przypadku awarii za pośrednictwem z serwera podstawowego.
+  Za pomocą na dużą skalę możesz także uzyskać możliwość inicjowania obsługi co najmniej jeden węzeł dodatkowe zasoby obliczeniowe, które służą do obsługi żądań odczytu. Oznacza to, że tych dodatkowych węzłów obliczeniowych można używać jako tylko do odczytu węzły odciążania odczytu obciążenie z podstawowej obliczeń. Dodatkowo tylko do odczytu, te węzły również służyć jako stałej gotowości przez zdarzenia na pracę awaryjną z serwera podstawowego.
 
   Inicjowanie obsługi administracyjnej każdego z tych dodatkowe zasoby obliczeniowe węzłów może odbywać się w stałym czasie i jest operacji w trybie online. Możesz nawiązać węzły te dodatkowe zasoby obliczeniowe tylko do odczytu, ustawiając `ApplicationIntent` argumentu w ciągu połączenia w celu `readonly`. Wszystkie połączenia oznaczone `readonly` są automatycznie kierowane do jednego z węzłów dodatkowe zasoby obliczeniowe tylko do odczytu.
 
@@ -120,7 +120,7 @@ Baza danych SQL na dużą skalę obsługuje wszystkich obciążeń programu SQL 
 
 ### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>Jak można wybrać jedną Azure SQL Data Warehouse i bazy danych SQL na dużą skalę
 
-Jeśli jesteś obecnie uruchamiania zapytań interaktywnych analiz przy użyciu programu SQL Server jako magazyn danych SQL Database na dużą skalę jest świetnym rozwiązaniem, ponieważ może obsługiwać magazyny danych stosunkowo mały (na przykład kilka TB aż zawierać dziesiątki TB) przy niskich kosztach i można migrować dane  Obciążenie magazynu na bazę danych SQL na dużą skalę bez zmian w kodzie języka T-SQL.
+Jeśli obecnie używasz zapytań interaktywnych analiz przy użyciu programu SQL Server jako magazyn danych, bazy danych SQL na dużą skalę jest świetnym rozwiązaniem, ponieważ może obsługiwać magazyny danych stosunkowo mały (na przykład kilka TB aż 10s TB) przy niskich kosztach i można migrować w swoje dane arehouse obciążenie bazy danych SQL na dużą skalę bez zmian w kodzie języka T-SQL.
 
 Jeśli jesteś prowadzą analizy danych na dużą skalę za pomocą złożonych kwerend i przy użyciu magazynu danych równoległych (PDW), Teradata lub innych wysoce równoległe procesora (MPP)) hurtowni danych, usługa SQL Data Warehouse może być najlepszym wyborem.
   
@@ -349,7 +349,7 @@ Użytkownik końcowy. Nie są wykonywane automatycznie.
 
 Tak. Tymczasowej bazy danych spowoduje automatyczne skalowanie w górę wraz ze wzrostem natężenia zasoby obliczeniowe.  
 
-### <a name="can-i-provision-multiple-primary-computes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Czy mogę uaktywnić wiele oblicza podstawowego, takich jak system wielu wzorców, gdzie wielu obliczeń głównej głowy może zapewnić wyższy poziom równoczesności
+### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Czy mogę uaktywnić wielu węzłach obliczeniowych podstawowego, takich jak system wielu wzorców, gdzie wielu obliczeń głównej głowy może zapewnić wyższy poziom równoczesności
 
 Nie. Tylko do węzła obliczeniowego głównej akceptuje żądania odczytu/zapisu. Węzły obliczeniowe dodatkowej akceptować tylko żądania tylko do odczytu.
 
@@ -369,7 +369,7 @@ Nie. Można połączyć tylko do repliki skalę odczytywania, określając `Appl
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>System robi równoważenia obciążenia inteligentne odczytu obciążenia
 
-Nie. Przeczytaj tylko obciążenie jest skierowana do losowych repliki skalę odczytywania.
+Nie. Obciążenie tylko do odczytu jest przekierowywany do losowych repliki skalę odczytywania.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>Można czy mogę skalować w górę/dół węzły pomocnicza usługa obliczeniowa, niezależnie od głównej zasoby obliczeniowe
 

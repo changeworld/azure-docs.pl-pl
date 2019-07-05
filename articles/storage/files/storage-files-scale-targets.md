@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5e2f7b52ca3cb8a4d472b353e844bdad3aa1b0c1
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 91ec65e17b77ccb3864fce45e30729ff420a48b6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150489"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542643"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Usługa Azure cele skalowalności i wydajności plików
 
@@ -34,15 +34,17 @@ Zasób nadrzędny dla udziału plików platformy Azure jest konto magazynu platf
 
 ## <a name="azure-files-scale-targets"></a>Usługa Azure celów skalowania plików
 
-### <a name="premium-scale-targets"></a>Obiekty docelowe skalowania — wersja Premium
+Istnieją trzy kategorie ograniczenia do uwzględnienia dla usługi Azure Files: kont magazynu, udziały i plików.
 
-Istnieją trzy kategorie ograniczenia do uwzględnienia w przypadku udziałów plików w warstwie premium: kont magazynu, udziały i plików.
+Na przykład: Przy użyciu udziałów plików w warstwie premium pojedynczy udział może osiągnąć 100 000 operacji We/Wy i pojedynczy plik można skalować do 5000 operacji We/Wy. Dlatego jeśli masz trzy pliki w jednym udziale, maksymalna liczba IOPS, możesz pobrać z tego udziału jest 15 000.
 
-Na przykład: Pojedynczy udział może osiągnąć 100 000 operacji We/Wy i maksymalnie 5000 operacji We/Wy można skalować w jednym pliku. Tak na przykład, jeśli masz trzy pliki w jednym udziale, maksymalna liczba IOPS, możesz pobrać z tego udziału jest 15 000.
+### <a name="standard-storage-account-limits"></a>Limity konta magazynu w warstwie standardowa
+
+Zobacz [cele skalowanie konta usługi Azure storage](#azure-storage-account-scale-targets) dotyczącej tych limitów.
 
 ### <a name="premium-filestorage-account-limits"></a>Limity konta FileStorage — wersja Premium
 
-Udziały plików w warstwie Premium są aprowizowane na koncie magazynu specjalne o nazwie **filestorage (wersja zapoznawcza)** . To konto ma cele skalowania nieco inne niż konto magazynu używane dla udziałów plików standardowych. Obiekty docelowe skalowania konta magazynu, można znaleźć w tabeli w [cele skalowanie konta usługi Azure storage](#azure-storage-account-scale-targets) sekcji.
+[!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
 > Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont FileStorage tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada FileStorage konta.

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 9979cb97ec578a59ba8263f2eb1fe53d41db862f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36c109e083873e9c4ec63ebe34f5c5c0cfb6eeb1
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399459"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491808"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcji Hyper-V odzyskiwania po awarii platformy Azure
 
@@ -26,6 +26,10 @@ Przegląd [cennika usługi Azure Site Recovery](https://azure.microsoft.com/pric
 
 ### <a name="how-do-i-pay-for-azure-vms"></a>Jak zapłacić za maszyny wirtualne platformy Azure?
 Podczas replikacji dane są replikowane do usługi Azure storage, a nie płacić za wszelkie zmiany maszyny Wirtualnej. Po uruchomieniu trybu failover na platformie Azure Site Recovery automatycznie tworzy maszyny wirtualne IaaS platformy Azure. Po tym są naliczane za zasoby obliczeniowe, które zostaną zużyte na platformie Azure.
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>Czy istnieją różnice w koszcie podczas replikowania do konta magazynu ogólnego przeznaczenia v2?
+
+Zazwyczaj zobaczysz wzrost kosztów transakcji naliczane dla kont magazynu GPv2, ponieważ usługa Azure Site Recovery jest duże transakcje. [Dowiedz się więcej](../storage/common/storage-account-upgrade.md#pricing-and-billing) do oszacowania zmian.
 
 ## <a name="azure"></a>Azure
 

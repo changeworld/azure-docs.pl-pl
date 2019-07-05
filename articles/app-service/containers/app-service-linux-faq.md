@@ -4,7 +4,7 @@ description: Usługa Azure App Service w systemie Linux — często zadawane pyt
 keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
 services: app-service
 documentationCenter: ''
-author: yili
+author: msangapu-msft
 manager: stefsch
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: yili
+ms.author: msangapu-msft
 ms.custom: seodec18
-ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d465a93a23b7f0098471e0074240dfcbe9658736
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65594283"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448434"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -119,10 +119,7 @@ Tak, podczas wdrażania usługi Git, Kudu powinna wykryć czy wdrażasz aplikacj
 
 **Korzystam z własnego kontenera niestandardowego. Chcę, aby platformy w celu instalowania udziału SMB do `/home/` katalogu.**
 
-Możesz to zrobić, ustawiając `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienia aplikacji *true*. Należy pamiętać, że to spowoduje ponowne uruchomienia kontenera podczas magazynu platformy przechodzi przez zmianę.
-
->[!NOTE]
->Jeśli `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienie jest nieokreślona lub *false*, `/home/` katalogu nie będą udostępniane w wystąpieniach skalowania i pliki, które są zapisywane istnieje nie zostaną utrwalone przez ponowne uruchomienie.
+Jeśli `WEBSITES_ENABLE_APP_SERVICE_STORAGE` jest ustawienie **nieokreślony** lub ustawić *true*, `/home/` katalogu **zostaną udostępnione** różnych wystąpień skali, a pliki zapisane **utrwali** na ponowne uruchomienie. Jawne ustawianie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` do *false* spowoduje wyłączenie instalacji.
 
 **Kontener niestandardowy zajmuje dużo czasu do uruchomienia, a platforma powoduje ponowne uruchomienie kontenera przed zakończeniem uruchamiania.**
 

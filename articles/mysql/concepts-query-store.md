@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 5cd88eeb2016a90a95f0e54a334eb3c88cb75744
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: a24bba0786201f4ea1d1be431107f7bfe26a2a8f
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078744"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461720"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorowanie — Azure Database dla wydajności programu MySQL przy użyciu Query Store
 
 **Dotyczy:**  Azure Database for MySQL 5.7
 
 > [!NOTE]
-> Query Store jest dostępna w wersji zapoznawczej. Obsługa Query Store w witrynie Azure portal jest wdrażana i mogą jeszcze być niedostępne w Twoim regionie.
+> Query Store jest dostępna w wersji zapoznawczej.
 
 Funkcja Query Store, w usłudze Azure Database for MySQL zapewnia sposób śledzenia wydajności zapytań, wraz z upływem czasu. Zapytanie Store upraszcza wydajności rozwiązywania problemów, ułatwiając szybkie znajdowanie zapytań najdłużej działających i najbardziej dużej ilości zasobów. Query Store automatycznie przechwytuje historię zapytań i statystyki środowiska uruchomieniowego i przechowuje je do przejrzenia. Tak, aby zobaczyć wzorców użycia baz danych, dzieli dane według czasu systemu windows. Dane dla wszystkich użytkowników, bazy danych i zapytania są przechowywane w **mysql** schematu bazy danych, w usłudze Azure Database for MySQL — wystąpienia.
 
@@ -29,10 +29,6 @@ Magazyn zapytań może służyć w wielu scenariuszach, w tym następujące:
 - Wykrywanie pogorszonej zapytań
 - Określenie, ile razy zapytanie zostało wykonane w danym przedziale czasowym
 - Porównywanie Średni czas wykonania zapytania na okna czasowe, aby zobaczyć dużych różnic
-- Identyfikowanie najdłuższy uruchamianie zapytań w przeszłości X godzin
-- Identyfikowanie pierwszych N zapytań, które oczekują na zasoby
-- Omówienie charakteru oczekiwania dla zapytania
-- Zrozumienie trendów dla zasobów w tym czasie czeka i której istnieje rywalizacji o zasoby
 
 ## <a name="enabling-query-store"></a>Włączanie kwerenda Store
 

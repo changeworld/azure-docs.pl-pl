@@ -11,19 +11,19 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80137c7f1ecebab4d2da0c4b7ba0ca9292dad22e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753060"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443964"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Eksploruj i przygotować dane za pomocą klasy zestawu danych (wersja zapoznawcza)
 
 Dowiedz się, jak eksplorować i przygotować dane za pomocą pakietu zestawów danych usługi Azure ml w [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) klasy (wersja zapoznawcza) umożliwia Eksplorowanie i przygotuj dane, udostępniając funkcje takie jak: próbkowania, statystyki podsumowujące i inteligentne przekształcenia. Kroki przekształcania są zapisywane w [definicji zestawu danych](how-to-manage-dataset-definitions.md) z możliwością obsługi wielu dużych plików z różnymi schematami w sposób o wysokim stopniu skalowalności.
 
 > [!Important]
-> Niektóre klasy zestawu danych (wersja zapoznawcza) być zależny od [przygotowania danych usługi Azure ml](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) pakietu (GA). Gdy funkcji transformacji może odbywać się bezpośrednio z GA'ed [funkcji Data Prep](how-to-transform-data.md), firma Microsoft zaleca otoki pakiet zestawu danych, które są opisane w tym artykule, jeśli tworzysz nowe rozwiązanie. Zestawy Azure Machine Learning danych (wersja zapoznawcza) umożliwiają nie tylko przekształcać dane, ale także [migawki danych](how-to-create-dataset-snapshots.md) i przechowywać [definicje wersji zestawów danych](how-to-manage-dataset-definitions.md). Zestawy danych jest następnej wersji zestawu SDK przygotowania bazy danych, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
+> Niektóre klasy zestawu danych (wersja zapoznawcza) być zależny od [przygotowania danych usługi Azure ml](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) pakietu (GA). Gdy funkcji transformacji może odbywać się bezpośrednio z GA'ed [funkcji Data Prep](how-to-transform-data.md), firma Microsoft zaleca otoki pakiet zestawu danych, które są opisane w tym artykule, jeśli tworzysz nowe rozwiązanie. Zestawy Azure Machine Learning danych (wersja zapoznawcza) umożliwiają nie tylko przekształcać dane, ale także [migawki danych](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py) i przechowywać [definicje wersji zestawów danych](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py). Zestawy danych jest następnej wersji zestawu SDK przygotowania bazy danych, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -63,7 +63,7 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
+||id|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|PRAKTYKI OSZUKAŃCZYM|Przyciski ...
 1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
@@ -80,7 +80,7 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
+||id|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
 1|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|Przyciski ...
@@ -103,7 +103,7 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
+||id|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
@@ -119,7 +119,7 @@ dataset.get_profile()
 
 ||Typ|Min.|Maks.|Liczba|Liczba brakujących|Liczba niebrakujących|Odsetek brakujących|Liczba błędów|Liczba pustych|Kwantyl 0,1%|Kwantyl 1%|Kwantyl 5%|Kwantyl 25%|Kwantyl 50%|Kwantyl 75%|Kwantyl 95%|Kwantyl 99%|Kwantyl 99,9%|Średnia|Odchylenie standardowe|Wariancja|Skośność|Kurtoza
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
+id|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Liczba przypadków|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Blokuj|FieldType.STRING|004XX APISZ KILBOURN|113XX APISZ PIESKÓW|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -140,7 +140,7 @@ Rok|FieldType.INTEGER|2016|2016|10.0|0.0|10.0|0.0|0.0|0.0|2016|2016|2016|2016|20
 Aktualizacja:|FieldType.DATE|2016-05-11 15:48:00+00:00|2016-05-27 15:45:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Szerokość geograficzna|FieldType.DECIMAL|41.6928|41.9032|10.0|7.0|3.0|0.7|0.0|0.0|41.6928|41.6928|41.6928|41.7057|41.7441|41.8634|41.9032|41.9032|41.9032|41.78|0.109695|0.012033|0.292478|-2.33333
 Długość geograficzna|FieldType.DECIMAL|-87.6764|-87.6043|10.0|7.0|3.0|0.7|0.0|0.0|-87.6764|-87.6764|-87.6764|-87.6734|-87.6645|-87.6194|-87.6043|-87.6043|-87.6043|-87.6484|0.0386264|0.001492|0.344429|-2.33333
-Lokalizacja|FieldType.STRING||(41.903206037, -87.676361925)|10.0|0.0|10.0|0.0|0.0|7.0||||||||||||||
+Location|FieldType.STRING||(41.903206037, -87.676361925)|10.0|0.0|10.0|0.0|0.0|7.0||||||||||||||
 
 ## <a name="impute-missing-values"></a>Naliczenie brakujące wartości
 
@@ -162,7 +162,7 @@ ds_def = ds_def.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
 ds_def.head(3)
 ```
 
-||ID|Aresztowania| Szerokość geograficzna|Długość geograficzna|
+||id|Aresztowania| Szerokość geograficzna|Długość geograficzna|
 -|---------|-----|---------|----------|
 |0|10498554|False|41.692834|-87.604319|
 |1|10516598|False| 41.744107 |-87.664494|
@@ -215,7 +215,7 @@ ds_def.head(3)
 
 Jak pokazano w poniższej tabeli danych wyjściowych, brak szerokość była kalkulacyjne z `MEAN` wartość `Arrest==False` grupy i Brak długości geograficznej został kalkulacyjne z-87.
 
-||ID|Aresztowania|Szerokość geograficzna|Długość geograficzna
+||id|Aresztowania|Szerokość geograficzna|Długość geograficzna
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
 1|10516598|False|41.744107|-87.664494
@@ -228,7 +228,7 @@ dataset = dataset.update_definition(ds_def, 'Impute Missing')
 dataset.head(3)
 ```
 
-||ID|Aresztowania|Szerokość geograficzna|Długość geograficzna
+||id|Aresztowania|Szerokość geograficzna|Długość geograficzna
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
 1|10516598|False|41.744107|-87.664494
@@ -258,7 +258,7 @@ ds_def.get_profile()
 
 ||Typ|Min.|Maks.|Liczba|Liczba brakujących|Liczba niebrakujących|Odsetek brakujących|Liczba błędów|Liczba pustych|Kwantyl 0,1%|Kwantyl 1%|Kwantyl 5%|Kwantyl 25%|Kwantyl 50%|Kwantyl 75%|Kwantyl 95%|Kwantyl 99%|Kwantyl 99,9%|Średnia|Odchylenie standardowe|Wariancja|Skośność|Kurtoza
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
+id|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Aresztowania|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Szerokość geograficzna|FieldType.DECIMAL|41.6928|41.9032|10.0|0.0|10.0|0.0|0.0|0.0|41.6928|41.7185|41.6928|41.78|41.78|41.78|41.9032|41.9032|41.9032|41.78|0.0517107|0.002674|0.837593|1,05
 Długość geograficzna|FieldType.INTEGER|-87|-87|10.0|0.0|10.0|0.0|3.0|0.0|-87|-87|-87|-87|-87|-87|-87|-87|-87|-87|0|0|NaN|NaN
@@ -288,7 +288,7 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID|Liczba przypadków|Date|Blokuj|Przyciski ...|
+||id|Liczba przypadków|Date|Blokuj|Przyciski ...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|Przyciski ...
 1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|Przyciski ...
@@ -310,7 +310,7 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 
 W poniższej tabeli należy zauważyć, że nową kolumnę Date_Time_Range zawiera rekordy w formacie określonym.
 
-||ID|Date|Date_Time_Range
+||id|Date|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10PM-12AM
 1|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
@@ -376,8 +376,6 @@ dataset = dataset.update_definition(ds_def, 'fuzzy grouping')
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-* [Zarządzać cyklem życia definicji zestawu danych](how-to-manage-dataset-definitions.md).
 
 * Zobacz uczenia maszynowego automatycznych [samouczek](tutorial-auto-train-models.md) przykład modelu regresji.
 

@@ -1,47 +1,42 @@
 ---
-title: Śledź salda środków platformy Azure do umowy klienta firmy Microsoft | Dokumentacja firmy Microsoft
-description: Dowiedz się sprawdzić saldo środków platformy Azure dla umowy klienta firmy Microsoft.
-services: ''
-documentationcenter: ''
-author: amberbhargava
+title: Śledzenie salda środków platformy Azure do umowy klienta firmy Microsoft
+description: Dowiedz się, jak sprawdzić saldo środków platformy Azure do umowy klienta firmy Microsoft.
+author: bandersmsft
 manager: amberb
-editor: banders
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
-ms.author: amberb
-ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.author: banders
+ms.openlocfilehash: 352737b3ea61a51a39e066d4211c8f4ceae74184
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372262"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490961"
 ---
-# <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Śledź salda środków platformy Azure do umowy klienta firmy Microsoft
+# <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Śledź salda środków Azure umowy klienta firmy Microsoft
 
-Możesz sprawdzić saldo środków platformy Azure dla umowy klienta firmy Microsoft w witrynie Azure portal. Środki na korzystanie z umożliwia płacić za produkty, które są objęte kredytu.
+Możesz sprawdzić saldo środków platformy Azure dla umowy klienta firmy Microsoft w witrynie Azure portal. Środki na korzystanie z umożliwia płacisz opłaty, które są objęte kredytu.
 
-Opłaty są naliczane, gdy używasz produktów, które nie są objęte środki na korzystanie z lub użycie przekracza saldo środków. Aby uzyskać więcej informacji, zobacz [produktów, które nie są objęte kredytów systemu Azure.](#products-that-arent-covered-by-azure-credits)
+Opłaty są naliczane, gdy używasz produktów, które nie są objęte środki na korzystanie z lub użycie przekracza saldo środków. Aby uzyskać więcej informacji, zobacz [produktów, które nie są objęte kredytów systemu Azure. () #products-that-aren't-covered-by-azure-credits).
 
 Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-credit-balance-in-the-azure-portal"></a>Sprawdź Saldo środków w witrynie Azure portal
+## <a name="check-your-credit-balance"></a>Sprawdź Saldo środków
 
 1. Zaloguj się w witrynie [Azure Portal]( https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj **Cost Management + rozliczenia**.
 
-   ![Zrzut ekranu pokazujący wyszukiwania w portalu, aby zarządzanie kosztami i rozliczenia](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Zrzut ekranu pokazujący wyszukiwania w portalu, aby zarządzanie kosztami i rozliczenia](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Przejdź do profilu rozliczeniowego. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego. Wybierz z konta rozliczeniowego **rozliczeń profile** i następnie profil rozliczeniowy.
+3.  Wybierz **kredytów systemu Azure** z po lewej stronie. W zależności od dostęp, może być konieczne wybierz konto rozliczeniowe lub profil rozliczeniowy, a następnie wybierz pozycję **kredytów systemu Azure**.
 
-4. Wybierz **kredytów systemu Azure**.
-
-5. Na stronie kredytów systemu Azure zawiera następujące informacje:
+4. Na stronie kredytów systemu Azure zawiera następujące informacje:
 
    ![Zrzut ekranu przedstawiający salda środków i transakcje dla profilu rozliczeń](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
@@ -57,16 +52,18 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
    ![Zrzut ekranu przedstawiający środki na korzystanie z listy profil rozliczeń](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | Termin                 | Definicja                           |
-   |----------------------|--------------------------------------------------------|
-   | source               | Źródło nabycia środków |
-   | Data rozpoczęcia           | Data, jeśli klient nabył środków |
-   | Data wygaśnięcia      | Data wygaśnięcia środków |
-   | Saldo              | Saldo od ostatniej faktury |
-   | Kwota      | Pierwotna ilość środków |
-   | Stan               | Bieżący stan środków. Stan może być aktywny, używa, wygasł lub wygaśnie |
+   | Termin | Definicja |
+   |---|---|
+   | Szacowany saldo | Ilość środków platformy Azure, posiadane po odjęciu środki nierozliczone opłaty kwalifikujących się salda bieżącego|
+   | Bieżące saldo | Kwota platformy Azure w wysokości posiadane zanim będzie można uznać za środki kwalifikujących się opłat. Jest ona obliczana przez dodanie nowego środków platformy Azure, który otrzymał salda środków w czasie ostatniej faktury|
+   | source | Źródło nabycia środków |
+   | Data rozpoczęcia | Data, jeśli klient nabył środków |
+   | Data wygaśnięcia | Data wygaśnięcia środków |
+   | Saldo | Saldo od ostatniej faktury |
+   | Kwota | Pierwotna ilość środków |
+   | Stan | Bieżący stan środków. Stan może być aktywny, używa, wygasł lub wygaśnie |
 
-## <a name="how-credits-are-used-in-microsoft-customer-agreement"></a>Jak kredyty są używane w umowie klienta firmy Microsoft
+## <a name="how-credits-are-used"></a>Jak kredyty są używane
 
 W konta rozliczeniowego dla umowy klienta firmy Microsoft umożliwia rozliczeń profile Zarządzaj metodami płatności i faktur. Miesięcznej fakturze jest generowany dla każdego profilu rozliczeń i użyć metody płatności fakturę.
 
@@ -78,7 +75,7 @@ Kredytów systemu Azure są jedną z metod płatności. Otrzymasz środki przez 
 
 - Canonical
 - Citrix XenApp Essentials
-- Citrix XenDesktop 
+- Citrix XenDesktop
 - Zarejestrowany użytkownik
 - Openlogic
 - Dostęp zdalny praw usługa XenApp Essentials zarejestrowany użytkownik
@@ -93,7 +90,7 @@ Kredytów systemu Azure są jedną z metod płatności. Otrzymasz środki przez 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
 Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
 

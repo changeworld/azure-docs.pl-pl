@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fa7612b9e4cd8a714e60879229bd0d39349494f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04f623a889a87c325b1f53e3b39656ca4b703961
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405940"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509236"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do oprogramowania Oracle przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -30,13 +30,16 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 
 Możesz skopiować dane z bazy danych Oracle do dowolnego obsługiwanego magazynu danych ujścia. Możesz także skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do bazy danych Oracle. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła lub ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-W szczególności ten łącznik Oracle obsługuje następujące wersje bazy danych Oracle. Obsługuje również uwierzytelnianie Basic lub identyfikator OID:
+W szczególności ten łącznik Oracle obsługuje:
 
-- R1 Oracle 12c (12.1)
-- Oracle 11g R1, R2 (11.1, 11.2)
-- Oracle 10g R1, R2 (10.1, 10.2)
-- Oracle 9i R1, R2 (9.0.1, 9.2)
-- Oracle 8i R3 (8.1.7)
+- Następujące wersje bazy danych Oracle:
+  - R1 Oracle 12c (12.1)
+  - Oracle 11g R1, R2 (11.1, 11.2)
+  - Oracle 10g R1, R2 (10.1, 10.2)
+  - Oracle 9i R1, R2 (9.0.1, 9.2)
+  - Oracle 8i R3 (8.1.7)
+- Kopiowanie danych przy użyciu **podstawowe** lub **OID** uwierzytelnienia.
+- Równoległe kopia ze źródła programu Oracle. Zobacz [równoległe kopiowanie danych z bazy danych Oracle](#parallel-copy-from-oracle) sekcja ze szczegółowymi informacjami.
 
 > [!Note]
 > Serwer proxy Oracle nie jest obsługiwana.
@@ -190,16 +193,24 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="oracle-as-a-source-type"></a>Oracle jako typ źródła
 
+> [!TIP]
+>
+> Dowiedz się więcej z [równoległe kopiowanie danych z bazy danych Oracle](#parallel-copy-from-oracle) sekcję dotyczącą sposobu ładowania danych z bazy danych Oracle, efektywnie są używane partycjonowanie danych.
+
 Aby skopiować dane z bazy danych Oracle, należy ustawić typ źródła w działaniu kopiowania, aby **OracleSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu źródła działania kopiowania musi być równa **OracleSource**. | Yes |
-| oracleReaderQuery | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`. | Nie |
+| oracleReaderQuery | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu ładowania podzielonym na partycje, musisz dołączyć odpowiednie parametry wbudowanej partycji w zapytaniu. Zobacz przykłady w [równoległe kopiowanie danych z bazy danych Oracle](#parallel-copy-from-oracle) sekcji. | Nie |
+| partitionOptions | Określa dane, partycjonowanie opcje używane do ładowania danych z bazy danych Oracle. <br>Zezwalaj na wartości to: **Brak** (ustawienie domyślne), **PhysicalPartitionsOfTable** i **DynamicRange**.<br>Po włączeniu opcji partycji (nie "None"), należy również skonfigurować **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** ustawienie dla działania kopiowania, np. jako 4, która określa stopień równoległego do współbieżnego ładowania danych z bazy danych Oracle Baza danych. | Nie |
+| partitionSettings | Określ grupę ustawień partycjonowanie danych. <br>Są stosowane, gdy opcja partycji nie jest `None`. | Nie |
+| partitionNames | Lista partycji fizycznych, które trzeba skopiować. <br>Są stosowane, gdy opcja partycji jest `PhysicalPartitionsOfTable`. Użycie zapytania można pobrać źródła danych, podłączyć `?AdfTabularPartitionName` w klauzuli WHERE. Zobacz przykład w [równoległe kopiowanie danych z bazy danych Oracle](#parallel-copy-from-oracle) sekcji. | Nie |
+| partitionColumnName | Określ nazwę kolumny źródłowej **typu Liczba całkowita** który będzie używany przez zakres partycjonowanie związanym z kopiowaniem równoległych. Jeśli nie zostanie określony, klucz podstawowy tabeli będzie automatycznie wykryte i jest używana jako kolumna partycji. <br>Są stosowane, gdy opcja partycji jest `DynamicRange`. Użycie zapytania można pobrać źródła danych, podłączyć `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w [równoległe kopiowanie danych z bazy danych Oracle](#parallel-copy-from-oracle) sekcji. | Nie |
+| partitionUpperBound | Maksymalna wartość kolumny partycji w celu skopiowania danych. <br>Są stosowane, gdy opcja partycji jest `DynamicRange`. Użycie zapytania można pobrać źródła danych, podłączyć `?AdfRangePartitionUpbound` w klauzuli WHERE. Zobacz przykład w [równoległe kopiowanie danych z bazy danych Oracle](#parallel-copy-from-oracle) sekcji. | Nie |
+| PartitionLowerBound | Minimalna wartość kolumny partycji w celu skopiowania danych. <br>Są stosowane, gdy opcja partycji jest `DynamicRange`. Użycie zapytania można pobrać źródła danych, podłączyć `?AdfRangePartitionLowbound` w klauzuli WHERE. Zobacz przykład w [równoległe kopiowanie danych z bazy danych Oracle](#parallel-copy-from-oracle) sekcji. | Nie |
 
-Jeśli nie określisz "oracleReaderQuery" kolumny zdefiniowane w sekcji "strukturę" zestawu danych są używane do konstruowania zapytania (`select column1, column2 from mytable`) do uruchamiania w bazie danych Oracle. Definicja zestawu danych nie ma "strukturę", wszystkie kolumny są wybierane z tabeli.
-
-**Przykład:**
+**Przykład: kopiowanie danych przy użyciu podstawowego zapytania bez partycji**
 
 ```json
 "activities":[
@@ -230,6 +241,8 @@ Jeśli nie określisz "oracleReaderQuery" kolumny zdefiniowane w sekcji "struktu
     }
 ]
 ```
+
+Zobacz więcej przykładów w [równoległe kopiowanie danych z bazy danych Oracle](#parallel-copy-from-oracle) sekcji.
 
 ### <a name="oracle-as-a-sink-type"></a>Oracle jako typ ujścia
 
@@ -271,6 +284,54 @@ Aby skopiować dane do bazy danych Oracle, należy ustawić typ ujścia w dział
         }
     }
 ]
+```
+
+## <a name="parallel-copy-from-oracle"></a>Równoległe kopiowanie danych z bazy danych Oracle
+
+Łącznik Oracle fabryki danych zawiera wbudowane danych partycji w celu skopiowania danych z bazy danych Oracle równolegle z wysoką wydajność. Można znaleźć opcje partycjonowania danych w działaniu kopiowania -> źródła Oracle:
+
+![Opcje partycji](./media/connector-oracle/connector-oracle-partition-options.png)
+
+Po włączeniu kopii podzielonym na partycje usługi data factory uruchamia zapytania równoległe względem źródła danych programu Oracle do ładowania danych przez partycje. Równoległe stopień jest skonfigurowana i kontrolowany za pośrednictwem **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** ustawienie dla działania kopiowania. Na przykład jeśli ustawisz `parallelCopies` cztery, jednocześnie generuje usługi data factory i uruchomienia cztery kwerend na podstawie określonej partycji opcji i ustawień, każdy fragment podczas pobierania danych z bazy danych programu Oracle.
+
+Sugerowane są umożliwiające równoległych kopii danych, partycjonowanie, szczególnie w przypadku, gdy ładowanie dużej ilości danych z bazy danych Oracle. Poniżej przedstawiono sugerowany konfiguracje w różnych scenariuszach:
+
+| Scenariusz                                                     | Sugerowane ustawienia                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Pełne ładowanie z dużych tabel z partycji fizycznych          | **Opcja partycji**: Fizyczne partycje tabeli. <br><br/>W czasie wykonywania data Factory automatycznie Wykryj partycje fizyczne i kopiowanie danych przez partycje. |
+| Pełne ładowanie z dużych tabeli bez partycje fizyczne za pomocą kolumna liczb całkowitych do partycjonowania danych | **Opcje partycji**: Partycja zakresu dynamicznego.<br>**Kolumna partycji**: Określ kolumny, używany do partycjonowania danych. Jeśli nie zostanie określony, podstawowej kolumny klucza jest używana. |
+| Ładowanie dużej ilości danych przy użyciu niestandardowych zapytań poniżej z partycji fizycznych | **Opcja partycji**: Fizyczne partycje tabeli.<br>**Zapytanie**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`.<br>**Nazwa partycji**: Określ nazwy partycji w celu skopiowania danych z. Jeśli nie zostanie określony, ADF automatycznie wykryje partycje fizyczne w tabeli, które określiłeś w zestawie danych Oracle.<br><br>W czasie wykonywania i Zastąp fabryki danych `?AdfTabularPartitionName` z nazwą rzeczywistego partycji i Wyślij do programu Oracle. |
+| Ładowanie dużej ilości danych przy użyciu zapytanie niestandardowe poniżej bez partycji fizycznych, podczas z kolumna liczb całkowitych do partycjonowania danych | **Opcje partycji**: Partycja zakresu dynamicznego.<br>**Zapytanie**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Kolumna partycji**: Określ kolumny, używany do partycjonowania danych. Można podzielić wobec kolumny z typem danych integer.<br>**Partycja górną granicę** i **partycji dolna granica**: Określ, jeśli chcesz filtrować wobec kolumny partycji w celu pobrania tylko dane między dolny i górny zakres.<br><br>W czasie wykonywania i Zastąp fabryki danych `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`, i `?AdfRangePartitionLowbound` o nazwie rzeczywiste kolumny i wartości zakresów dla każdej partycji i wysyłać do bazy danych Oracle. <br>Na przykład jeśli Twoje kolumny partycji "ID" ustawiony za pomocą dolnej granicy jako 1 a górną granicę jako 80, za pomocą zestawu równoległego kopii jako 4, usługi ADF pobierania danych przez 4 partycje o identyfikatorze między [1,20], [21, 40], [41, 60] i [61, 80]. |
+
+**Przykład: zapytanie o partycję fizyczną**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> PARTITION(\"?AdfTabularPartitionName\") WHERE <your_additional_where_clause>",
+    "partitionOption": "PhysicalPartitionsOfTable",
+    "partitionSettings": {
+        "partitionNames": [
+            "<partitionA_name>",
+            "<partitionB_name>"
+        ]
+    }
+}
+```
+
+**Przykład: zapytanie z dynamicznego zakresu partycji**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>",
+    "partitionOption": "DynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<partition_column_name>",
+        "partitionUpperBound": "<upper_value_of_partition_column>",
+        "partitionLowerBound": "<lower_value_of_partition_column>"
+    }
+}
 ```
 
 ## <a name="data-type-mapping-for-oracle"></a>Mapowanie na oprogramowanie Oracle, typ danych

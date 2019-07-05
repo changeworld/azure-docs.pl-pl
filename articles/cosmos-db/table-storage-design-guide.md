@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: af155b5adb2e4b45412a8b84818852ed1b1c5e72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966097"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447300"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel
 
@@ -255,7 +255,7 @@ Wiele projektów musi spełniać wymagania, aby włączyć wyszukiwanie jednoste
 Wyniki zapytania, zwracane przez usługę tabeli są sortowane w kolejności rosnącej na podstawie **PartitionKey** a następnie według **RowKey**.
 
 > [!NOTE]
-> Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure Cosmos DB nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Kluczy w tabeli usługi Azure Storage są wartości typu ciąg i aby zapewnić poprawne sortowanie wartości liczbowych, należy przekonwertować je na stałej długości i uzupełniania zer. Na przykład, jeśli wartość identyfikatora pracowników jest używany jako **RowKey** jest liczbą całkowitą, należy przekonwertować identyfikator pracownika **123** do **00000123**. 
 
@@ -723,7 +723,7 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 Pobieranie *n* ostatnio dodany do partycji przy użyciu jednostek **RowKey** wartość, która sortuje w odwrotnej daty i porządku czasowym.  
 
 > [!NOTE]
-> Wyniki zapytania, zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB nie są sortowane według klucza partycji i klucza wiersza. W związku z tym ten wzorzec jest odpowiednia dla usługi Azure Table Storage, a nie usługi Azure Cosmos DB. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice interfejsu API tabel w usłudze Azure Cosmos DB i Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Wyniki zapytania, zwracana przez interfejs API tabeli platformy Azure w usłudze Azure Cosmos DB nie są sortowane według klucza partycji i klucza wiersza. W związku z tym ten wzorzec jest odpowiednia dla usługi Azure Table Storage, a nie usługi Azure Cosmos DB. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice interfejsu API tabel w usłudze Azure Cosmos DB i Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontekst i problem
 Typowym wymogiem jest będzie można go pobrać ostatnio utworzone jednostki, na przykład dziesięć ostatnich wydatków oświadczenia złożone przez pracownika. Tabela zapytania pomocy technicznej **$top** operację, aby powrócić do pierwszego zapytania *n* jednostki z zestawu: istnieje żadna operacja równoważne zapytania do zwrócenia ostatnie n jednostki w zestawie.  

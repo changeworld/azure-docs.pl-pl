@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f5390162ce56a0e77ef41740d7e88f3546c5530
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979640"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444727"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Kontrola dostępu w usłudze Active Directory Role-Based (wersja zapoznawcza)
 
@@ -33,12 +33,12 @@ Aplikacja, która korzysta z usługi Azure AD RBAC nie trzeba obsługiwać zasad
 
 Platforma Azure udostępnia poniżej wbudowane role kontroli RBAC do autoryzowania dostępu do przestrzeni nazw usługi Service Bus:
 
-* [Właściciel aplikacji usługi Service Bus danych (wersja zapoznawcza)](../role-based-access-control/built-in-roles.md#service-bus-data-owner): Umożliwia dostęp do danych w przestrzeni nazw usługi Service Bus i jego jednostek (kolejki, tematy, subskrypcje i filtrów)
+* [Usługa Azure Service Bus danych właściciela (wersja zapoznawcza)](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner-preview): Umożliwia dostęp do danych w przestrzeni nazw usługi Service Bus i jego jednostek (kolejki, tematy, subskrypcje i filtrów)
 
 >[!IMPORTANT]
 > Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **"Owner"** lub **"Współautor"** roli.
 >
-> Jednak uprawnienia dostępu do danych **"Owner"** i **"Współautor"** roli będą już uznawane. Jeśli używano **"Owner"** lub **"Współautor"** roli, a następnie te muszą zostać dostosowane korzystanie z **""usługi Service Bus dane właściciela** roli.
+> Jednak uprawnienia dostępu do danych **"Owner"** i **"Współautor"** roli będą już uznawane. Jeśli używano **"Owner"** lub **"Współautor"** roli, a następnie te muszą zostać dostosowane korzystanie z **""Azure Service Bus dane właściciela (wersja zapoznawcza)** roli.
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>Usługa Service Bus za pomocą konta użytkownika domeny usługi Azure AD
 

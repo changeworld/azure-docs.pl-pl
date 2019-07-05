@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: adffb18272d10c579f8b28bef055813b1074a237
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02f772d02f5cc6f188d69b5e79debc0013cf1faa
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754746"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488504"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -123,9 +123,13 @@ Nie nastąpi utrata połączenia w przypadku awarii jednego z wielu połączeń.
 
 Wiele obwodów usługi ExpressRoute z różnych lokalizacji komunikacji równorzędnej może być połączona do tej samej sieci wirtualnej w celu zapewnienia wysokiej dostępności w przypadku niedostępny jednego obwodu. Następnie możesz [przypisać wagi wyższe](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) połączeniu lokalnemu preferować preferowanie określonego obwodu. Zdecydowanie zaleca się, że klienci skonfigurować co najmniej dwa obwody usługi ExpressRoute w celu uniknięcia pojedynczych punktów awarii. 
 
+Zobacz [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) do projektowania w celu zapewnienia wysokiej dostępności i [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) do projektowania na potrzeby odzyskiwania po awarii.  
+
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Jak mogę wdrożyć nadmiarowości w komunikacji równorzędnej firmy Microsoft?
 
 Zdecydowanie zaleca się, gdy klienci używają komunikacji równorzędnej dostępu usługi publiczne platformy Azure, takich jak Azure Storage lub Azure SQL, jak również klientów korzystających z komunikacji równorzędnej dla usługi Office 365 mogą zaimplementować wiele obwodów w różnych komunikacji równorzędnej firmy Microsoft do firmy Microsoft lokalizacje w celu uniknięcia pojedynczych punktów faiure. Klientów można anonsować ten sam prefiks dla obu obwodów i używać [dołączania ścieżki AS](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) lub anonsować różnych prefiksów do określenia ścieżki ze środowiska lokalnego.
+
+Zobacz [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) do projektowania w celu zapewnienia wysokiej dostępności.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Jak zapewnić wysoką dostępność w sieci wirtualnej, która jest połączona z usługą ExpressRoute?
 

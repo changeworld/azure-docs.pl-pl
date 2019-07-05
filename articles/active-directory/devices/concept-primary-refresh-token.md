@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6515f60fb67e52a7924afec2effd0c2001935e5d
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5e195a93209875b9eabfaa2ad00772281922443c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190257"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476115"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co to jest podstawowym tokenu odświeżania?
 
@@ -62,7 +62,7 @@ PRT jest wystawione podczas uwierzytelniania użytkownika na urządzeniu z syste
    * Dodawanie konta za pośrednictwem **Użyj tego konta wszędzie na tym urządzeniu** monitu po zalogowaniu się do aplikacji (na przykład Outlook)
    * Dodawanie konta z **ustawienia** > **kont** > **dostęp do zasobów służbowych** > **Connect**
 
-W tych scenariuszach wtyczki Azure AD WAM jest podstawowym urzędu dla PRT, ponieważ Windows logowania nie pojawia się przy użyciu tego konta usługi Azure AD.
+W przypadkach usługi Azure AD, zarejestrowane urządzenia wtyczki Azure AD WAM jest podstawowym urzędu dla PRT, ponieważ Windows logowania nie pojawia się przy użyciu tego konta usługi Azure AD.
 
 > [!NOTE]
 > potrzebujesz 3 dostawcy tożsamości innych firm do obsługi protokołu WS-Trust, aby umożliwić wystawiania PRT na urządzeniach z systemem Windows 10. Bez protokołu WS-Trust, PRT nie mogą być wystawiane na urządzeniach przyłączonych do użytkowników na Azure hybrydowe przyłączone do usługi AD lub Azure AD

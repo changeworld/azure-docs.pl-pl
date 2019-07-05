@@ -2,75 +2,60 @@
 title: Co to jest migracji zasad w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
 description: Dowiedz się, co musisz wiedzieć, by Migrowanie zasad klasycznych w witrynie Azure portal.
 services: active-directory
-keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 07/24/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25161a6317392274ccce8865f7cc0071f0ec89b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7464546a78e1b54cdea3bd6dd66656f5b189bc02
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112179"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67506806"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co to jest migracji zasad w usłudze Azure Active Directory dostępu warunkowego? 
-
 
 [Dostęp warunkowy](../active-directory-conditional-access-azure-portal.md) jest to funkcja usługi Azure Active directory (Azure AD), która umożliwia kontrolowanie sposobu autoryzowany dostęp użytkownikom aplikacje w chmurze. Gdy celem jest nadal takie same, wydanie nowej witryny Azure portal wprowadził znaczne ulepszenia do działania dostępu warunkowego.
 
 Należy rozważyć Migrowanie zasad, które nie zostały utworzone w witrynie Azure portal ponieważ:
 
 - Teraz można rozwiązać scenariusze, które nie może obsłużyć przed.
-
 - Można zmniejszyć liczbę zasad, którą trzeba zarządzać konsolidując je.   
-
 - Możesz zarządzać wszystkie zasady dostępu warunkowego w jednej centralnej lokalizacji.
-
 - Klasycznym portalu Azure zostaną wycofane.   
 
 W tym artykule opisano, co musisz wiedzieć, aby przeprowadzić migrację istniejących zasad dostępu warunkowego do nowej struktury.
  
 ## <a name="classic-policies"></a>Zasady klasyczne
 
-W [witryny Azure portal](https://portal.azure.com), [dostępu warunkowego — zasady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) strona jest punktem wejścia do dostępu warunkowego zasady. Jednak w danym środowisku, może również mieć zasady dostępu warunkowego, które nie zostały utworzone przy użyciu tej strony. Zasady te są znane jako *zasady klasyczne*. Zasady klasyczne zasady dostępu warunkowego, utworzonych przez siebie w:
+W [witryny Azure portal](https://portal.azure.com), [dostępu warunkowego — zasady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) strona jest punktem wejścia do zasad dostępu warunkowego. Jednak w danym środowisku, może również mieć zasady dostępu warunkowego, które nie zostały utworzone przy użyciu tej strony. Zasady te są znane jako *zasady klasyczne*. Zasady klasyczne zasady dostępu warunkowego, utworzonych przez siebie w:
 
 - Klasyczny portal Azure
 - Portalu klasycznego usługi Intune
 - Portal usługi Intune App Protection
 
-
 Na **dostępu warunkowego** stronie klasycznego zasad można skorzystać, klikając [ **zasady klasyczne (wersja zapoznawcza)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) w **Zarządzaj** sekcja. 
 
-
 ![Usługa Azure Active Directory](./media/policy-migration/71.png)
-
 
 **Zasady klasyczne** widok zawiera opcję, aby:
 
 - Filtrowanie klasycznych zasad.
  
-    ![Usługa Azure Active Directory](./media/policy-migration/72.png)
+   ![Usługa Azure Active Directory](./media/policy-migration/72.png)
 
 - Wyłącz zasady klasyczne.
 
-    ![Usługa Azure Active Directory](./media/policy-migration/73.png)
+   ![Usługa Azure Active Directory](./media/policy-migration/73.png)
    
 - Przejrzyj ustawienia zasad klasycznych (i wyłączyć).
 
-    ![Usługa Azure Active Directory](./media/policy-migration/74.png)
-
+   ![Usługa Azure Active Directory](./media/policy-migration/74.png)
 
 Wyłączenie zasad klasycznych już nie można przywrócić tego kroku. Dlatego można modyfikować członkostwa w grupie przy użyciu zasad klasycznych **szczegóły** widoku. 
 
@@ -78,21 +63,15 @@ Wyłączenie zasad klasycznych już nie można przywrócić tego kroku. Dlatego 
 
 Zmieniając wybranych grup lub wykluczanie określonych grup można sprawdzić wpływ wyłączenia zasad klasycznych dla kilku użytkowników testowych przed wyłączeniem zasad dla wszystkich jego użytkowników i grup. 
 
-
-
 ## <a name="azure-ad-conditional-access-policies"></a>Zasady dostępu warunkowego usługi AD Azure
 
-Przy użyciu dostępu warunkowego w witrynie Azure portal można zarządzać w jednej centralnej lokalizacji wszystkich zasad. Ponieważ implementacji znacznie zmian dostępu warunkowego, należy zapoznać się z podstawowych pojęć przed przeprowadzeniem migracji zasad klasycznych.
+Przy użyciu dostępu warunkowego w witrynie Azure portal można zarządzać w jednej centralnej lokalizacji wszystkich zasad. Ponieważ implementacji zmian dostępu warunkowego, należy się zapoznać z podstawowych pojęć przed przeprowadzeniem migracji zasad klasycznych.
 
 Zobacz:
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal.md) informacje na temat podstawowych pojęć i terminologii.
-
 - [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md) Aby uzyskać wskazówki dotyczące wdrażania dostępu warunkowego w Twojej organizacji.
-
 - [Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md) możliwość zapoznania się z interfejsem użytkownika w witrynie Azure portal.
-
-
  
 ## <a name="migration-considerations"></a>Zagadnienia dotyczące migracji
 
@@ -102,20 +81,12 @@ Zasady klasyczne w dalszym ciągu współpracują z nowych zasad, dopóki nie zo
 Istotne w kontekście konsolidacji zasad są następujące aspekty:
 
 - Gdy zasady klasyczne są powiązane z aplikacji w określonej chmurze, możesz wybrać dowolną liczbę aplikacji w chmurze na potrzeby nowych zasad.
-
 - Formanty zasad klasycznych i nowych zasad dla aplikacji w chmurze wymagają wszystkie kontrolki (*i*) do spełnienia. 
-
-
 - W nowych zasad możesz wykonywać następujące czynności:
- 
-    - Połącz wiele warunków, jeśli jest to wymagane przez danego scenariusza. 
+   - Połącz wiele warunków, jeśli jest to wymagane przez danego scenariusza. 
+   - Wybierz kilka udzielić wymagania, jak dostęp kontrolować, a także połączyć je z logicznych *lub* (wymaga jednej z wybranych kontrolek) lub wartość logiczna *i* (wymagane są wszystkie z wybranych kontrolek).
 
-    - Wybierz kilka udzielić wymagania, jak dostęp kontrolować, a także połączyć je z logicznych *lub* (wymaga jednej z wybranych kontrolek) lub wartość logiczna *i* (wymagane są wszystkie z wybranych kontrolek).
-
-        ![Usługa Azure Active Directory](./media/policy-migration/25.png)
-
-
-
+   ![Usługa Azure Active Directory](./media/policy-migration/25.png)
 
 ### <a name="office-365-exchange-online"></a>Usługi Office 365 Exchange online
 
@@ -133,7 +104,6 @@ Jeśli masz nowe zasady, które ma **programu Exchange Active Sync** jako aplika
 
 ![Usługa Azure Active Directory](./media/policy-migration/16.png)
  
-
 [Oparty na aplikacji](technical-reference.md#approved-client-app-requirement) zasady klasyczne dla Office 365 Exchange Online, które obejmują **programu Exchange Active Sync** jako warunku aplikacje klienckie Zezwalaj **obsługiwane** i **nieobsługiwany** [platform urządzeń](technical-reference.md#device-platform-condition). Mimo że nie można skonfigurować platform poszczególnych urządzeń w powiązanych nowe zasady, można ograniczyć techniczną, aby [obsługiwane platformy urządzeń](technical-reference.md#device-platform-condition) tylko. 
 
 ![Usługa Azure Active Directory](./media/policy-migration/65.png)
@@ -141,7 +111,6 @@ Jeśli masz nowe zasady, które ma **programu Exchange Active Sync** jako aplika
 Można skonsolidować wiele zasady klasyczne, które obejmują **programu Exchange Active Sync** jako warunku aplikacji klienta, jeśli mają one:
 
 - Tylko **programu Exchange Active Sync** jako warunku 
-
 - Kilka wymagań dotyczących przyznawania dostępu skonfigurowane
 
 Jeden typowy scenariusz polega na konsolidacji:
@@ -153,8 +122,6 @@ W takim przypadku można skonsolidować zasad klasycznych w jednym nowe zasady, 
 
 ![Usługa Azure Active Directory](./media/policy-migration/62.png)
 
-
-
 ### <a name="device-platforms"></a>Platformy urządzeń
 
 Zasady klasyczne z [opartego na aplikacji kontrolki](technical-reference.md#approved-client-app-requirement) mają wstępnie skonfigurowaną dla systemów iOS i Android jako [warunek platformy urządzenia](technical-reference.md#device-platform-condition). 
@@ -163,14 +130,7 @@ W nowych zasad, musisz wybrać [platform urządzeń](technical-reference.md#devi
 
 ![Usługa Azure Active Directory](./media/policy-migration/41.png)
 
-
-
- 
- 
-
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
-
 - Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 4f3fb624f5e6137c9edb0be97adc16d8c808ebd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f60a41c48b3e78b860dca0e93d399420900dbd46
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523070"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485436"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indeksować obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search
 W tym artykule dowiesz się, jak skonfigurować obiekt blob usługi Azure Search [indeksatora](search-indexer-overview.md) wyodrębniania zawartości ze strukturą z dokumenty JSON w usłudze Azure Blob storage i którą można przeszukiwać w usłudze Azure Search. Ten przepływ tworzy indeks usługi Azure Search i ładuje je za pomocą istniejący tekst wyodrębnione z obiektów blob JSON. 
@@ -118,7 +118,7 @@ Interfejs API REST umożliwia indeksowanie obiektów blob JSON, zgodnie z przep�
 
 Możesz przejrzeć [REST przykładowy kod](#rest-example) na końcu tej sekcji, która pokazuje, jak utworzyć wszystkie trzy obiekty. Ta sekcja zawiera również szczegółowe informacje o [analizy tryby JSON](#parsing-modes), [pojedynczy obiektów blob](#parsing-single-blobs), [tablice notacji JSON](#parsing-arrays), i [zagnieżdżonych tablic](#nested-json-arrays).
 
-Czy indeksowanie oparte na kodzie JSON, użyj [Postman](search-fiddler.md) i interfejsu API REST, aby utworzyć te obiekty:
+Czy indeksowanie oparte na kodzie JSON, użyj [Postman](search-get-started-postman.md) i interfejsu API REST, aby utworzyć te obiekty:
 
 + [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Źródło danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
@@ -136,7 +136,7 @@ Obiektów blob JSON w usłudze Azure Blob storage są zazwyczaj pojedynczego dok
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 — złożyć dane wejściowe dla żądania
 
-Dla każdego żądania należy podać nazwę usługi i klucz administratora dla usługi Azure Search (w nagłówku POST), a nazwa konta magazynu i klucz do magazynu obiektów blob. Możesz użyć [Postman](search-fiddler.md) do wysyłania żądań HTTP do usługi Azure Search.
+Dla każdego żądania należy podać nazwę usługi i klucz administratora dla usługi Azure Search (w nagłówku POST), a nazwa konta magazynu i klucz do magazynu obiektów blob. Możesz użyć [Postman](search-get-started-postman.md) do wysyłania żądań HTTP do usługi Azure Search.
 
 Skopiuj następujące cztery wartości do Notatnika, dzięki czemu można je wkleić do żądania:
 

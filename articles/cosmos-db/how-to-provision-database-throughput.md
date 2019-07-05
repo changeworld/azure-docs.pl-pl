@@ -4,14 +4,14 @@ description: Dowiedz się, jak aprowizować przepływność na poziomie bazy dan
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: d73dd5ffe8cc8ed00288209b628d7175b795b335
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: de39581f832c30c64a69797805df7e13ce47b439
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243769"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565859"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Aprowizowanie przepływności w bazie danych w usłudze Azure Cosmos DB
 
@@ -34,6 +34,25 @@ W tym artykule wyjaśniono, jak aprowizować przepływność mierzoną w bazie d
 
 ![Zrzut ekranu okna dialogowego Nowa baza danych](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
+## <a name="provision-throughput-using-powershell"></a>Aprowizowanie przepływności przy użyciu programu PowerShell
+
+```azurepowershell-interactive
+# Create a database and provision throughput of 400 RU/s
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "database1"
+$databaseResourceName = $accountName + "/sql/" + $databaseName
+
+$databaseProperties = @{
+    "resource"=@{ "id"=$databaseName };
+    "options"=@{ "Throughput"= 400 }
+}
+
+New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $databaseResourceName -PropertyObject $databaseProperties
+```
+
 ## <a name="provision-throughput-using-net-sdk"></a>Aprowizowanie przepływności przy użyciu zestawu .NET SDK
 
 > [!Note]
@@ -45,7 +64,7 @@ W tym artykule wyjaśniono, jak aprowizować przepływność mierzoną w bazie d
 //set the throughput for the database
 RequestOptions options = new RequestOptions
 {
-    OfferThroughput = 10000
+    OfferThroughput = 500
 };
 
 //create the database
@@ -57,8 +76,8 @@ await client.CreateDatabaseIfNotExistsAsync(
 ### <a id="dotnet-cassandra"></a>Interfejs API rozwiązania Cassandra
 
 ```csharp
-// Create a Cassandra keyspace and provision throughput of 10000 RU/s
-session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=10000);
+// Create a Cassandra keyspace and provision throughput of 400 RU/s
+session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400);
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

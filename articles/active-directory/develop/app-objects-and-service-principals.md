@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47626cbd8d5b8a5ddf7cc5c6ea42fb9453e5bfb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 822990ebc2eb5edbdbc6611a4f3729bc5cfadc55
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540683"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482894"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Aplikacja i obiektów nazw głównych usług w usłudze Azure Active Directory
 
@@ -52,7 +52,7 @@ Podczas rejestrowania aplikacji usługi Azure AD w [witryny Azure portal][AZURE-
 
 ### <a name="application-object"></a>Obiekt aplikacji
 
-Aplikację usługi Azure AD jest zdefiniowany przez jego jeden i tylko obiekt aplikacji, w której znajduje się w dzierżawie usługi Azure AD, w którym aplikacja została zarejestrowana, znane jako "głównej" dzierżawy aplikacji. Program Microsoft Graph [Jednostka aplikacji] [ MS-Graph-App-Entity] definiuje schemat dla właściwości obiektu aplikacji.
+Aplikację usługi Azure AD jest zdefiniowany przez jego jeden i tylko obiekt aplikacji, w której znajduje się w dzierżawie usługi Azure AD, w którym aplikacja została zarejestrowana, znane jako "głównej" dzierżawy aplikacji. Program Microsoft Graph [Jednostka aplikacji][MS-Graph-App-Entity] definiuje schemat dla właściwości obiektu aplikacji.
 
 ### <a name="service-principal-object"></a>obiektu jednostki usługi
 
@@ -60,7 +60,7 @@ Aby uzyskać dostęp do zasobów, które są zabezpieczone przez dzierżawę us�
 
 Podmiot zabezpieczeń definiuje zasady dostępu i uprawnień dla aplikacji/użytkownika w dzierżawie usługi Azure AD. Dzięki temu podstawowe funkcje, takie jak uwierzytelnianie aplikacji/użytkownika podczas logowania i autoryzacji podczas uzyskiwania dostępu do zasobów.
 
-Kiedy aplikacja otrzymuje uprawnień dostępu do zasobów w dzierżawie (rejestracji lub [zgody](developer-glossary.md#consent)), tworzony jest obiekt nazwy głównej usługi. Program Microsoft Graph [jednostki ServicePrincipal] [ MS-Graph-Sp-Entity] definiuje schemat dla właściwości obiektu jednostki usługi firmy.
+Kiedy aplikacja otrzymuje uprawnień dostępu do zasobów w dzierżawie (rejestracji lub [zgody](developer-glossary.md#consent)), tworzony jest obiekt nazwy głównej usługi. Program Microsoft Graph [jednostki ServicePrincipal][MS-Graph-Sp-Entity] definiuje schemat dla właściwości obiektu jednostki usługi firmy.
 
 ### <a name="application-and-service-principal-relationship"></a>Aplikacja i relacji jednostki usługi
 
@@ -83,7 +83,7 @@ Na poniższym diagramie przedstawiono relację między aplikacji obiektu aplikac
 - **Contoso** -dzierżawcy stosowaną w organizacji Contoso, czyli konsumenta **aplikacji działu KADR**
 - **Firma Fabrikam** -dzierżawy używane przez organizację Fabrikam korzysta również **aplikacji działu KADR**
 
-![Relacja między obiekt aplikacji i obiektu jednostki usługi](./media/app-objects-and-service-principals/application-objects-relationship.svg)
+![Relacja między obiektu aplikacji i obiektu jednostki usługi](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 W tym przykładowym scenariuszu:
 
@@ -96,8 +96,8 @@ W tym przykładowym scenariuszu:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Możesz użyć [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) do wykonywania zapytań, aplikacji i obiektów nazw głównych usług.
-- Dostęp aplikacji obiektu aplikacji przy użyciu interfejsu API Microsoft Graph, [witryny Azure portal] [ AZURE-Portal] edytorze manifestu aplikacji, lub [poleceń cmdlet programu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) , reprezentowany przez jej OData [Jednostka aplikacji][MS-Graph-App-Entity].
-- Dostęp do obiektu jednostki usługi aplikacji za pośrednictwem interfejsu API programu Microsoft Graph lub [poleceń cmdlet programu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), reprezentowany przez jej OData [jednostki ServicePrincipal] [ MS-Graph-Sp-Entity].
+- Dostęp aplikacji obiektu aplikacji przy użyciu interfejsu API Microsoft Graph, [witryny Azure portal][AZURE-Portal] edytorze manifestu aplikacji, lub [poleceń cmdlet programu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), reprezentowany przez jej OData[ Jednostka aplikacji][MS-Graph-App-Entity].
+- Dostęp do obiektu jednostki usługi aplikacji za pośrednictwem interfejsu API programu Microsoft Graph lub [poleceń cmdlet programu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), reprezentowany przez jej OData [jednostki ServicePrincipal][MS-Graph-Sp-Entity].
 
 <!--Image references-->
 

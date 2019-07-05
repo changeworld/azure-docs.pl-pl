@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: 572043598c71a400e154c5c2e9e6c2f1e9b4ab49
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 69548541d16db95f633400808f72aebaf59cff08
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191800"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477777"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion-preview"></a>Nawiązywanie połączenia przy użyciu protokołu SSH z maszyną wirtualną systemu Linux przy użyciu bastionu Azure (wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Aby można było utworzyć połączenie, wymagane są następujące role:
 ## <a name="username"></a>Połączenie: Przy użyciu nazwy użytkownika i hasła
 
 
-1. W [witryny Azure portal](https://aka.ms/BastionHost) dla bastionu w wersji zapoznawczej, przejdź do maszyny wirtualnej, który chcesz się połączyć, a następnie kliknij **Connect**. Maszyna wirtualna powinna być maszynę wirtualną z systemem Linux przy użyciu połączenia SSH.
+1.  Użyj [ten link](https://aka.ms/BastionHost) o otwarcie strony portalu w wersji zapoznawczej dla usługi Azure bastionu. Przejdź do maszyny wirtualnej, którą chcesz nawiązać połączenie, a następnie kliknij przycisk **Connect**. Maszyna wirtualna powinna być maszynę wirtualną z systemem Linux przy użyciu połączenia SSH.
 1. Po kliknięciu przycisku Połącz pojawia się pasek boczny zawiera trzy karty — RDP, SSH i bastionu. Jeśli bastionu została aprowizowana dla sieci wirtualnej, na karcie bastionu jest domyślnie aktywny. Jeśli bastionu nie został aprowizowany dla sieci wirtualnej, zobacz [skonfigurować bastionu](bastion-create-host-portal.md). Jeśli nie widzisz **bastionu** na liście, nie została jeszcze otwarta portalu w wersji zapoznawczej. Otwórz za pomocą portalu [ten link](https://aka.ms/BastionHost).
 
       ![Połącz z maszyną Wirtualną](./media/bastion-connect-vm-ssh/bastion.png)
@@ -52,7 +52,7 @@ Aby można było utworzyć połączenie, wymagane są następujące role:
 
 ## <a name="privatekey"></a>Połączenie: Ręcznie wprowadź klucz prywatny
 
-1. W [witryny Azure portal](https://aka.ms/BastionHost) dla bastionu w wersji zapoznawczej, przejdź do maszyny wirtualnej, który chcesz się połączyć, a następnie kliknij **Connect**. Maszyna wirtualna powinna być maszynę wirtualną z systemem Linux przy użyciu połączenia SSH.
+1.  Użyj [ten link](https://aka.ms/BastionHost) o otwarcie strony portalu w wersji zapoznawczej dla usługi Azure bastionu. Przejdź do maszyny wirtualnej, którą chcesz nawiązać połączenie, a następnie kliknij przycisk **Connect**. Maszyna wirtualna powinna być maszynę wirtualną z systemem Linux przy użyciu połączenia SSH.
 1. Po kliknięciu przycisku Połącz pojawia się pasek boczny zawiera trzy karty — RDP, SSH i bastionu. Jeśli bastionu została aprowizowana dla sieci wirtualnej, na karcie bastionu jest domyślnie aktywny. Jeśli bastionu nie został aprowizowany dla sieci wirtualnej, zobacz [skonfigurować bastionu](bastion-create-host-portal.md). Jeśli nie widzisz **bastionu** na liście, nie została jeszcze otwarta portalu w wersji zapoznawczej. Otwórz za pomocą portalu [ten link](https://aka.ms/BastionHost).
 
       ![Połącz z maszyną Wirtualną](./media/bastion-connect-vm-ssh/bastion.png)
@@ -63,7 +63,7 @@ Aby można było utworzyć połączenie, wymagane są następujące role:
 
 ## <a name="ssh"></a>Połączenie: Przy użyciu pliku klucza prywatnego
 
-1. W [witryny Azure portal](https://aka.ms/BastionHost) dla bastionu w wersji zapoznawczej, przejdź do maszyny wirtualnej, który chcesz się połączyć, a następnie kliknij **Connect**. Maszyna wirtualna powinna być maszynę wirtualną z systemem Linux przy użyciu połączenia SSH.
+1.  Użyj [ten link](https://aka.ms/BastionHost) o otwarcie strony portalu w wersji zapoznawczej dla usługi Azure bastionu. Przejdź do maszyny wirtualnej, którą chcesz nawiązać połączenie, a następnie kliknij przycisk **Connect**. Maszyna wirtualna powinna być maszynę wirtualną z systemem Linux przy użyciu połączenia SSH.
 
     ![Połącz z maszyną Wirtualną](./media/bastion-connect-vm-ssh/connect.png)
 

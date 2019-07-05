@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 683297e32c40f73c64dc40b18f279d92e2396e8d
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475817"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568272"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -426,7 +426,7 @@ Poniższe procedury składowanej znajdują się w [bazy danych zadania](sql-data
 
 
 
-### <a name="spaddjob"></a>sp_add_job
+### <a name="sp_add_job"></a>sp_add_job
 
 Dodaje nowe zadanie. 
   
@@ -492,7 +492,7 @@ Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedur
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
 
-### <a name="spupdatejob"></a>sp_update_job
+### <a name="sp_update_job"></a>sp_update_job
 
 Aktualizuje istniejące zadanie.
 
@@ -555,7 +555,7 @@ Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję u
 
 
 
-### <a name="spdeletejob"></a>sp_delete_job
+### <a name="sp_delete_job"></a>sp_delete_job
 
 Usuwa istniejące zadanie.
 
@@ -587,7 +587,7 @@ Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję u
 
 
 
-### <a name="spaddjobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a>sp_add_jobstep
 
 Do dodawania kroku do zadania.
 
@@ -713,7 +713,7 @@ Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję u
 
 
 
-### <a name="spupdatejobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a>sp_update_jobstep
 
 Aktualizuje krok zadania.
 
@@ -838,7 +838,7 @@ Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję u
 
 
 
-### <a name="spdeletejobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
 Usuwa krok zadania z zadania.
 
@@ -884,7 +884,7 @@ Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję u
 
 
 
-### <a name="spstartjob"></a>sp_start_job
+### <a name="sp_start_job"></a>sp_start_job
 
 Rozpoczyna się wykonywanie zadania.
 
@@ -915,7 +915,7 @@ Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedur
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
 
-### <a name="spstopjob"></a>sp_stop_job
+### <a name="sp_stop_job"></a>sp_stop_job
 
 Zatrzymuje wykonywanie zadania.
 
@@ -944,7 +944,7 @@ Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedur
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
 
 
-### <a name="spaddtargetgroup"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a>sp_add_target_group
 
 Dodaje grupy docelowej.
 
@@ -975,7 +975,7 @@ Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedur
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
 
-### <a name="spdeletetargetgroup"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a>sp_delete_target_group
 
 Usuwa grupy docelowej.
 
@@ -1003,7 +1003,7 @@ Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedur
 
 Aby uzyskać szczegółowe informacje o uprawnieniach tych ról zobacz sekcję uprawnienia, w tym dokumencie. Tylko członkowie sysadmin służy tę procedurę składowaną, aby edytować atrybuty, zadań, które są własnością innych użytkowników.
 
-### <a name="spaddtargetgroupmember"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
 Dodaje do grupy docelowej bazy danych lub grupy baz danych.
 
@@ -1092,7 +1092,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="spdeletetargetgroupmember"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
 Usuwa docelowy element członkowski grupy z grupy docelowej.
 
@@ -1143,7 +1143,7 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sppurgejobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
 Usuwa rekordy historii zadania.
 
@@ -1204,7 +1204,7 @@ Następujące widoki są dostępne w [bazy danych zadania](sql-database-job-auto
 |[target_group_members](#target_groups_members-view)     |   Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.      |
 
 
-### <a name="jobsexecutions-view"></a>Widok jobs_executions
+### <a name="jobs_executions-view"></a>Widok jobs_executions
 
 [zadania]. [jobs_executions]
 
@@ -1251,7 +1251,7 @@ Pokazuje wszystkie zadania.
 |**schedule_end_time**| datetime2(7)|   Data i godzina, których ostatniego wykonania ukończone zadania.|
 
 
-### <a name="jobversions-view"></a>Widok job_versions
+### <a name="job_versions-view"></a>Widok job_versions
 
 [zadania]. [job_versions]
 
@@ -1299,13 +1299,13 @@ Przedstawia wszystkie kroki opisane w bieżącej wersji każdego zadania.
 |**max_parallelism**|   int|    Maksymalna liczba baz danych w jednej puli elastycznej, który krok zadania jest uruchamiane w danym momencie. Wartość domyślna to NULL, co oznacza brak limitu. |
 
 
-### <a name="jobstepversions-view"></a>Widok jobstep_versions
+### <a name="jobstep_versions-view"></a>Widok jobstep_versions
 
 [zadania]. [jobstep_versions]
 
 Przedstawia wszystkie kroki opisane we wszystkich wersjach każdego zadania. Schemat jest taka sama jak [etapów zadania](#jobsteps-view).
 
-### <a name="targetgroups-view"></a>Widok target_groups
+### <a name="target_groups-view"></a>Widok target_groups
 
 [zadania]. [target_groups]
 
@@ -1316,7 +1316,7 @@ Wyświetla listę wszystkich grup docelowych.
 |**target_group_name**| nvarchar(128)   |Nazwa grupy docelowej kolekcji baz danych. 
 |**target_group_id**    |uniqueidentifier   |Unikatowy identyfikator grupy docelowej.
 
-### <a name="targetgroupsmembers-view"></a>Widok target_groups_members
+### <a name="target_groups_members-view"></a>target_groups_members view
 
 [jobs].[target_groups_members]
 

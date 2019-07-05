@@ -1,26 +1,23 @@
 ---
-title: Wyświetl i Pobierz fakturę usługi Microsoft Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób wyświetlania i Pobierz fakturę usługi Microsoft Azure
+title: Wyświetlanie i pobieranie faktury platformy Microsoft Azure
+description: W tym artykule opisano sposób wyświetlania i Pobierz fakturę usługi Microsoft Azure.
 keywords: faktury, pobierania faktur, faktury platformy azure, użycie platformy azure
-services: billing
-documentationcenter: ''
-author: genlin
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 052232f922abf16a2690dcbe64c1b59999aedeab
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617951"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491364"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
 
@@ -32,11 +29,11 @@ Jeśli masz [umowy klienta Microsoft](#check-your-access-to-a-microsoft-customer
 
 ## <a name="download-your-azure-invoices-pdf"></a>Pobieranie faktur platformy Azure (PDF)
 
-W przypadku większości subskrypcji możesz pobrać fakturę w witrynie Azure portal. Jeśli masz umowy klienta firmy Microsoft, zobacz pobierania faktur dla profil rozliczeniowy.
+W przypadku większości subskrypcji możesz pobrać fakturę w witrynie Azure portal. Jeśli masz umowy klienta firmy Microsoft, zobacz [pobierać faktury dla umowy klienta Microsoft](#download-invoices-for-a-microsoft-customer-agreement).
 
 ### <a name="download-invoices-for-an-individual-subscription"></a>Pobieranie faktur dla indywidualnej subskrypcji
 
-1. Wybierz swoją subskrypcję z [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal jako [użytkownikowi dostęp do faktury](billing-manage-access.md).
+1. Wybierz swoją subskrypcję na [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal jako [użytkownikowi dostęp do faktury](billing-manage-access.md).
 
 2. Wybierz pozycję **Faktury**.
 
@@ -52,14 +49,14 @@ Aby uzyskać więcej informacji na temat fakturze zobacz [opis zawartości rachu
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Pobieranie faktur dla umowy klienta firmy Microsoft
 
-Faktury są generowane dla każdego [rozliczeń profilu](billing-mca-overview.md#understand-billing-profiles) w umowie klienta firmy Microsoft. Musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub faktury Menedżera uprawnień umożliwiających pobieranie faktur w witrynie Azure portal.
+Faktury są generowane dla każdego [rozliczeń profilu](billing-mca-overview.md#billing-profiles) w umowie klienta firmy Microsoft. Musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub faktury Menedżera uprawnień umożliwiających pobieranie faktur w witrynie Azure portal.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj *Cost Management + rozliczenia*.
 1. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
 1. Wybierz pozycję **Faktury**.
 1. W siatce faktury Znajdź wiersz faktury, który chcesz pobrać.
-1. Kliknij wielokropek (`...`) na końcu wiersza.
+1. Kliknij przycisk wielokropka (`...`) na końcu wiersza.
     ![Zrzut ekranu pokazujący Wielokropek na końcu wiersza.](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
 1. Wybierz z menu kontekstowego pobierania **faktury**.
 
@@ -69,36 +66,36 @@ Jeśli nie widzisz faktury w ostatnim okresie rozliczeniowym, zobacz [Dlaczego n
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Pobierz fakturę w wiadomości e-mail (PDF)
 
-Można włączyć i skonfigurować dodatkowych adresatów otrzymujących subskrypcji platformy Azure faktury w wiadomości e-mail. Ta funkcja nie może być dostępna dla niektórych subskrypcji, takie jak oferty pomocy technicznej, umowy Enterprise Agreement lub Azure in Open. Jeśli masz umowę Microsoft Customer Zobacz Get profilu rozliczeń faktury w wiadomości e-mail.
+Można włączyć i skonfigurować dodatkowych adresatów otrzymujących subskrypcji platformy Azure faktury w wiadomości e-mail. Ta funkcja nie może być dostępna dla niektórych subskrypcji, takie jak oferty pomocy technicznej, umowy Enterprise Agreement lub Azure in Open. Jeśli masz umowę Microsoft Customer, zobacz następną sekcję, [Otrzymuj fakturach profilu rozliczeń w wiadomości e-mail](#get-your-subscriptions-invoices-in-email).
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>Pobieranie faktur swoją subskrypcję w wiadomości e-mail
 
-1. Wybierz swoją subskrypcję z [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Zgódź się dla każdej subskrypcji, których jesteś właścicielem. Kliknij przycisk **faktur** następnie **E-mail faktury**.
+1. Wybierz swoją subskrypcję na [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Zgódź się dla każdej subskrypcji, których jesteś właścicielem. Kliknij przycisk **faktur** następnie **E-mail faktury**.
 
     ![Zrzut ekranu pokazujący zgłoszenie zgody na uczestnictwo w usłudze flow](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
 
 2. Kliknij przycisk **Zgadzaj** i zaakceptuj warunki.
 
-    ![Zrzut ekranu pokazujący przepływ zgłoszenie zgody na uczestnictwo w kroku 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
- 
-3. Po po zaakceptowaniu umowy, możesz skonfigurować dodatkowych adresatów. Kiedy adresat jest usuwany, adres e-mail jest już przechowywana. Jeśli zmienisz zdanie, należy ponownie dodać je.
+    ![Zrzut ekranu pokazujący zgłoszenie zgody na uczestnictwo w usłudze flow w kroku 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
 
-    ![Zrzut ekranu pokazujący przepływ zgłoszenie zgody na uczestnictwo w kroku 3](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
+3. Jeśli zostały przez Ciebie zaakceptowane umowy, możesz skonfigurować dodatkowych adresatów. Kiedy adresat jest usuwany, adres e-mail jest już przechowywana. Jeśli zmienisz zdanie, należy ponownie dodać je.
+
+    ![Zrzut ekranu pokazujący zgłoszenie zgody na uczestnictwo w usłudze flow w kroku 3](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
 
 Jeśli nie otrzymasz wiadomość e-mail po wykonaniu kroków upewnij się, Twój adres e-mail jest poprawny w [preferencje dotyczące komunikacji w Twoim profilu](https://account.windowsazure.com/profile).
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Zrezygnować z pobierania faktur swoją subskrypcję w wiadomości e-mail
 
-Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty e-mail, wykonując kroki opisane powyżej i kliknięcie przycisku **zrezygnować z faktur pocztą e-mail**. Ta opcja usuwa wszystkie adresy e-mail ustawione w celu otrzymywania faktur pocztą e-mail. Można ponownie skonfigurować adresatów w przypadku zgody na uczestnictwo w.
+Aby zrezygnować z wprowadzenie fakturze za pośrednictwem poczty e-mail, wykonaj te czynności, a następnie kliknij przycisk **zrezygnować z faktur pocztą e-mail**. Ta opcja usuwa wszystkie adresy e-mail ustawione w celu otrzymywania faktur pocztą e-mail. Można ponownie skonfigurować adresatów w przypadku zgody na uczestnictwo w.
 
- ![Zrzut ekranu pokazujący przepływ rezygnacji z](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
+ ![Zrzut ekranu pokazujący opt się przepływu](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
 ### <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Pobieranie faktur umowy klienta firmy Microsoft w wiadomości e-mail
 
 Jeśli masz umowy klienta firmy Microsoft, możesz zrezygnować w można pobrać fakturę w wiadomości e-mail. Wszystkie rozliczeń profilu właściciele, współautorzy, czytelnicy i faktury menedżerów otrzyma fakturę za pośrednictwem poczty e-mail. Czytelnicy nie można zaktualizować preferencji faktury wiadomości e-mail.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj **Cost Management + rozliczenia**.
 1. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
 1. W obszarze **ustawienia**, wybierz opcję **właściwości**.
 1. W obszarze **Wyślij fakturę pocztą E-mail**, wybierz opcję **preferencji faktury e-mail aktualizacji**.
@@ -110,7 +107,7 @@ Jeśli masz umowy klienta firmy Microsoft, możesz zrezygnować w można pobrać
 
 ### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Zrezygnować z wprowadzenie fakturach umowy klienta firmy Microsoft w wiadomości e-mail
 
-Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty e-mail, wykonując kroki opisane powyżej i kliknięcie przycisku **zrezygnować**. Wszystkie właściciele, współautorzy, czytelnicy i faktury menedżerów zostanie wyłączony z zbyt faktury za pośrednictwem poczty e-mail,. Jeśli czytnik, nie można zmienić preferencji faktury wiadomości e-mail.
+Aby zrezygnować z wprowadzenie fakturze za pośrednictwem poczty e-mail, wykonaj te czynności, a następnie kliknij przycisk **zrezygnować**. Wszystkie właściciele, współautorzy, czytelnicy i faktury wyłączony zbyt faktury za pośrednictwem poczty e-mail, menedżerów. Jeśli czytnik nie można zmienić preferencji faktury wiadomości e-mail.
 
 ### <a name="noinvoice"></a> Dlaczego nie widzę faktury dla ostatniego okresu rozliczeniowego?
 
@@ -127,7 +124,7 @@ Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
 ## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Sprawdź swój dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 

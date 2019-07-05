@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure wydajności pliki przewodnik rozwiązywania problemów
-description: Znane problemy z wydajnością za pomocą udziałów plików platformy Azure — wersja premium (wersja zapoznawcza) i skojarzone obejścia.
+description: Znane problemy z wydajnością z udziałami plików platformy Azure i skojarzone rozwiązania problemu.
 services: storage
 author: gunjanj
 ms.service: storage
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c35501f3afbeed519fb5304229f25be1cbd5f9b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190057"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445667"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Rozwiązywanie problemów z wydajnością usługi Azure Files
 
-W tym artykule wymieniono niektóre typowe problemy związane z udziałami plików platformy Azure — wersja premium (wersja zapoznawcza). Zapewnia możliwe przyczyny i potencjalne rozwiązania po napotkaniu te problemy.
+W tym artykule wymieniono niektóre typowe problemy związane z udziałami plików platformy Azure. Zapewnia możliwe przyczyny i potencjalne rozwiązania po napotkaniu te problemy.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Ogólne problemy z wydajnością, duże opóźnienie i niska przepływność
 
 ### <a name="cause-1-share-experiencing-throttling"></a>Przyczyny 1: Udostępnianie obciążony ograniczania przepustowości
 
-Domyślny limit przydziału w udziale jest GiB 100, która zapewnia plan bazowy bezpieczeństwa 100 operacji We/Wy (z możliwości przejścia do 300 na godzinę). Aby uzyskać więcej informacji o aprowizacji i jej relacji z operacji We/Wy, zobacz [akcji aprowizacji](storage-files-planning.md#provisioned-shares) części przewodnika planowania.
+Domyślny limit przydziału w udziale — wersja premium jest GiB 100, która zapewnia plan bazowy bezpieczeństwa 100 operacji We/Wy (z możliwości przejścia do 300 na godzinę). Aby uzyskać więcej informacji o aprowizacji i jej relacji z operacji We/Wy, zobacz [akcji aprowizacji](storage-files-planning.md#provisioned-shares) części przewodnika planowania.
 
 Aby upewnić się, jeśli jest ograniczane swój udział w portalu można wykorzystać metryk usługi Azure.
 
@@ -39,7 +39,7 @@ Aby upewnić się, jeśli jest ograniczane swój udział w portalu można wykorz
 
 1. Wybierz **transakcji** jako metrykę.
 
-1. Dodaj filtr dla **ResponseType** i sprawdź, czy wszystkie żądania mają kod odpowiedzi **SuccessWithThrottling**.
+1. Dodaj filtr dla **ResponseType** i sprawdź, czy wszystkie żądania mają kod odpowiedzi **SuccessWithThrottling** (dla protokołu SMB) lub **ClientThrottlingError** (w przypadku pozostałych).
 
 ![Opcje metryki dla udziałów plików w warstwie premium](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -72,11 +72,11 @@ Jeśli używanej przez klienta aplikacji jest jednowątkowym, może to spowodowa
 
 ### <a name="cause"></a>Przyczyna
 
-Maszyny Wirtualnej klienta może znajdować się w regionie innym niż premium udziału plików.
+Maszyny Wirtualnej klienta może znajdować się w regionie innym niż udział plików.
 
 ### <a name="solution"></a>Rozwiązanie
 
-- Uruchom aplikację z maszyną Wirtualną, która znajduje się w tym samym regionie, co udziału plików — wersja premium.
+- Uruchom aplikację z maszyną Wirtualną, która znajduje się w tym samym regionie, co udziału plików.
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Nie można osiągnąć maksymalną przepływność obsługiwane przez sieć klienta
 
@@ -121,6 +121,10 @@ Głębokość we/wy jest większa niż jeden nie jest obsługiwana w systemie Ce
 
 - Uaktualnianie do CentOS 8 / RHEL 8.
 - Zmień na Ubuntu.
+
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Wolne kopiowania plików do i z usługi Azure Files w systemie Linux
+
+Jeśli występują niską kopiowanie do i z usługi Azure Files, zapoznaj się z [wolne kopiowania plików do i z usługi Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) przewodnik sekcji w systemie Linux, rozwiązywania problemów.
 
 ## <a name="jitterysaw-tooth-pattern-for-iops"></a>Niestabilny/saw-tooth wzorzec operacji We/Wy
 

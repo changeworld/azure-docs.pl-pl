@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b8f6a2d12e1a9920421e6491432b516520ae110b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71a8a0e268c1b264a0a1a7f955f310bfddc830d2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730194"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439938"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilowanie na żywo aplikacji usługi Azure App Service za pomocą usługi Application Insights
 
@@ -58,6 +58,14 @@ Poniżej przedstawiono ustawienia wymagane do włączenia profilera:
 
 Możesz ustawić te wartości przy użyciu [szablonów usługi Azure Resource Manager](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [programu Azure Powershell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
 
+### <a name="enabling-profiler-for-other-clouds-manually"></a>Ręczne włączenie Profiler dla innych chmur
+
+Jeśli chcesz włączyć narzędzie profiler dla innych chmur, możesz użyć poniższych ustawień aplikacji.
+
+|Ustawienia aplikacji    | Wartości dla instytucji rządowych USA| Chmura w Chinach |   
+|---------------|---------------------|-------------|
+|ApplicationInsightsProfilerEndpoint         | https://agent.serviceprofiler.azure.us    | https://profiler.applicationinsights.azure.cn |
+|ApplicationInsightsEndpoint | https://dc.applicationinsights.us | https://dc.applicationinsights.azure.cn |
 
 ## <a name="disable-profiler"></a>Wyłącz Profiler
 

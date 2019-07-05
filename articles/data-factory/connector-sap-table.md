@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/10/2018
+ms.date: 06/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 49f07b4aaadfd45e9743bde58dc715230e5bc983
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e54a69b6c2b48e50c089f8b6b7458cf91133dd85
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074062"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443299"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>Kopiowanie danych z tabeli SAP przy użyciu usługi Azure Data Factory
 
@@ -67,7 +67,7 @@ Następujące właściwości są obsługiwane w przypadku usługi SAP Business W
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **SapTable** | Yes |
+| type | Właściwość type musi być równa: **SapTable** | Tak |
 | server | Nazwa serwera, na którym znajduje się wystąpienie SAP.<br/>Zastosowanie, jeśli chcesz się połączyć **serwera aplikacji SAP**. | Nie |
 | systemNumber | Numer systemu systemu SAP.<br/>Zastosowanie, jeśli chcesz się połączyć **serwera aplikacji SAP**.<br/>Dozwolone wartości: liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Nie |
 | messageServer | Nazwa hosta serwera SAP wiadomości.<br/>Zastosowanie, jeśli chcesz się połączyć **SAP Message Server**. | Nie |
@@ -77,7 +77,7 @@ Następujące właściwości są obsługiwane w przypadku usługi SAP Business W
 | clientId | Identyfikator klienta klienta w systemie SAP.<br/>Dozwolone wartości: liczba dziesiętna trzy cyfry, reprezentowane jako ciąg. | Yes |
 | language | Język, który używa systemu SAP. | Nie (wartość domyślna to **EN**)|
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
-| password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | sncMode | Wskaźnik aktywacji SNC dostęp do serwera SAP, w którym znajduje się tabela.<br/>Zastosowanie, jeśli chcesz użyć SNC nawiązać połączenia z serwerem SAP.<br/>Dozwolone wartości to: **0** (wyłączony, domyślny) lub **1** (dalej). | Nie |
 | sncMyName | Nazwy SNC inicjatora dostęp do serwera SAP, w którym znajduje się tabela.<br/>Gdy stosowane `sncMode` znajduje się na. | Nie |
 | sncPartnerName | Komunikacja partnera SNC nazwa dostęp do serwera SAP, w którym znajduje się tabela.<br/>Gdy stosowane `sncMode` znajduje się na. | Nie |
@@ -175,7 +175,7 @@ Aby skopiować dane z i do Centrum Otwórz programu SAP BW, następujące właś
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa **SapTableResource**. | Yes |
+| — typ | Właściwość type musi być równa **SapTableResource**. | Yes |
 | tableName | Nazwa tabeli SAP, aby skopiować dane z. | Tak |
 
 **Przykład:**
@@ -206,16 +206,16 @@ Aby skopiować dane z tabeli SAP, następujące właściwości są obsługiwane.
 
 | Właściwość                         | Opis                                                  | Wymagane |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| type                             | Właściwość type musi być równa **SapTableSource**.       | Yes      |
+| type                             | Właściwość type musi być równa **SapTableSource**.         | Yes      |
 | Liczba wierszy                         | Liczba wierszy, które mają zostać pobrane.                              | Nie       |
 | rfcTableFields                   | Pola, aby skopiować z tabeli SAP. Na przykład `column0, column1`. | Nie       |
 | rfcTableOptions                  | Funkcje umożliwiające filtrowanie wierszy w tabeli SAP. Na przykład `COLUMN0 EQ 'SOMEVALUE'`. Zobacz więcej opis pod tą tabelą. | Nie       |
-| customRfcReadTableFunctionModule | Niestandardowe RFC funkcja moduł, który może służyć do odczytywania danych z tabeli SAP. | Nie       |
+| customRfcReadTableFunctionModule | Niestandardowe RFC funkcja moduł, który może służyć do odczytywania danych z tabeli SAP.<br>Można użyć niestandardowego modułu funkcji RFC do zdefiniowania, jak dane są pobierane z systemu SAP i powrót do usługi ADF. While, należy pamiętać, że niestandardowego modułu funkcji musi mieć podobny interfejs implementowany (import, export, tabel), podobnie jak/SAPDS/RFC_READ_TABLE2, który jest domyślnie używany przez usługę ADF. | Nie       |
 | partitionOption                  | Mechanizm partycji można odczytać z tabeli SAP. Obsługiwane opcje: <br/>- **Brak**<br/>- **PartitionOnInt** (normalne liczby całkowitej lub liczby całkowitej wartości zero Dopełnienie z lewej strony, takie jak 0000012345)<br/>- **PartitionOnCalendarYear** (4 cyfr w formacie "YYYY")<br/>- **PartitionOnCalendarMonth** (6 cyfr w formacie "YYYYMM")<br/>- **PartitionOnCalendarDate** (8 cyfr w formacie "RRRRMMDD") | Nie       |
-| partitionColumnName              | Nazwa kolumny w celu podzielenia danych. | Nie       |
+| partitionColumnName              | Nazwa kolumny w celu podzielenia danych.                | Nie       |
 | partitionUpperBound              | Maksymalna wartość kolumny określone w `partitionColumnName` który będzie używany do partycjonowania postępowania. | Nie       |
 | partitionLowerBound              | Minimalna wartość kolumny określone w `partitionColumnName` który będzie używany do partycjonowania postępowania. | Nie       |
-| maxPartitionsNumber              | Maksymalna liczba partycji, aby podzielić dane na. | Nie       |
+| maxPartitionsNumber              | Maksymalna liczba partycji, aby podzielić dane na.     | Nie       |
 
 >[!TIP]
 >- Jeśli tabela SAP ma dużej ilości danych, takich jak kilka miliardów wierszy, należy użyć `partitionOption` i `partitionSetting` można podzielić dane na małych partycji, w którym to przypadku dane są odczytywane przez partycje i każdej partycji danych są pobierane z serwera SAP za pośrednictwem jednego pojedynczego Wywołanie RFC.<br/>

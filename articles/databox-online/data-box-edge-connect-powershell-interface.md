@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717502"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448612"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Zarządzanie urządzeniem usługi Azure Data Box Edge za pośrednictwem programu Windows PowerShell
 
@@ -52,8 +52,9 @@ Można również przekazywać certyfikaty usługi IoT Edge w celu włączenia be
 Poniższy przykład przedstawia sposób użycia tego polecenia cmdlet, aby zainstalować certyfikaty z usługi IoT Edge:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
+Po uruchomieniu tego polecenia cmdlet, wyświetli się monit o podanie hasła do udziału sieciowego.
 
 Aby uzyskać więcej informacji na temat certyfikatów, przejdź do [certyfikaty usługi Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) lub [instalowanie certyfikatów na bramie](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
@@ -75,13 +76,12 @@ Skonfigurowanie ról obliczeniowych na urządzeniu z systemem dzienniki obliczen
     Poniższy przykład przedstawia sposób użycia tego polecenia cmdlet:
 
     ```powershell
-    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
+    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
     Poniżej przedstawiono opis parametry używane dla polecenia cmdlet:
     - `Path`: Podaj ścieżkę sieciową do udziału, w którym chcesz utworzyć pakiet dziennika obliczeń.
-    - `Credential`: Podaj nazwę użytkownika i hasło do udziału sieciowego.
-    - `RoleInstanceName`: Podaj ten ciąg `IotRole` dla tego parametru.
+    - `Credential`: Podaj nazwę użytkownika do udziału sieciowego. Po uruchomieniu tego polecenia cmdlet, należy podać hasło udziału.
     - `FullLogCollection`: Tego parametru gwarantuje, że pakiet dziennika będzie zawierać wszystkie dzienniki obliczeń. Domyślnie pakiet dziennik zawiera tylko podzbiór dzienników.
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorowanie i rozwiązywanie problemów z modułami obliczeń

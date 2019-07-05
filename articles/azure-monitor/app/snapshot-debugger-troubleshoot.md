@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ccf20fc78a9ec00d4dfe23a60e824e96d12945
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783985"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444552"
 ---
 # <a id="troubleshooting"></a> Rozwiązywanie problemów, przeglądania migawek lub włączenie Application Insights Snapshot Debugger
 Jeśli włączono rozszerzenie Application Insights Snapshot Debugger dla aplikacji, ale nie widzisz migawki dla wyjątków, można użyć w instrukcjach rozwiązywać problemy. Może istnieć wiele różnych przyczyn, dlaczego migawek nie są generowane. Możesz uruchomić sprawdzanie kondycji migawki, umożliwiają zidentyfikowanie pewnych typowych przyczyn.
@@ -38,6 +38,10 @@ Jeśli to nie rozwiąże problemu, zobacz Podręcznik następujące kroki rozwi�
 ## <a name="verify-the-instrumentation-key"></a>Sprawdź klucz Instrumentacji
 
 Upewnij się, że używasz klucza Instrumentacji poprawne w opublikowanej aplikacji. Zazwyczaj klucz Instrumentacji jest do odczytu z pliku ApplicationInsights.config. Sprawdź, czy wartość jest taka sama jak klucz Instrumentacji zasobu usługi Application Insights, które pojawi się w portalu.
+
+## <a name="preview-versions-of-net-core"></a>Wersje zapoznawcze platformy .NET Core
+Jeśli aplikacja korzysta z wersji zapoznawczej platformy .NET Core i włączono rozszerzenia Snapshot Debugger za pośrednictwem [okienko usługi Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) w portalu, następnie rozszerzenie Snapshot Debugger nie można uruchomić. Postępuj zgodnie z instrukcjami w artykule [Włączanie rozszerzenia Snapshot Debugger dla innych środowisk](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) najpierw obejmujący [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet wraz z aplikacją ***dodatkowo*** włączania za pośrednictwem [okienko usługi Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Uaktualnij do najnowszej wersji pakietu NuGet
 

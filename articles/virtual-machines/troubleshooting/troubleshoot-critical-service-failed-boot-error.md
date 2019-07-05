@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca3fe83d7072ba774c8124c5108652ab7223041d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593220"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449814"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows zawiera "Krytyczne usługi nie powiodło się" błękitny ekran podczas uruchamiania na Maszynie wirtualnej platformy Azure
 W tym artykule opisano błąd "Krytyczne usługi nie powiodło się", które mogą wystąpić podczas rozruchu Windows maszyn wirtualnych (VM) w systemie Microsoft Azure. Zawiera on kroki rozwiązywania problemów, aby ułatwić rozwiązywanie problemów. 
@@ -30,7 +30,7 @@ W tym artykule opisano błąd "Krytyczne usługi nie powiodło się", które mog
 
 Nie zaczyna się maszyny Wirtualnej z systemem Windows. Podczas ewidencjonowania zrzuty ekranu rozruchu [diagnostykę rozruchu](./boot-diagnostics.md), zobacz jeden z następujących komunikatów o błędach na niebieskim ekranie:
 
-- "Komputer PC wystąpił problem i musi ponownie uruchomić. Można uruchomić ponownie. Aby uzyskać więcej informacji na temat tego problemu i poprawek można znaleźć http://windows.com/stopcode. Jeśli chcesz wywołać działu pomocy technicznej, nadaj im te informacje: Zatrzymaj wykonywanie kodu: BŁĄD KRYTYCZNY USŁUGI" 
+- "Komputer PC wystąpił problem i musi ponownie uruchomić. Można uruchomić ponownie. Aby uzyskać więcej informacji na temat tego problemu i poprawek można znaleźć https://windows.com/stopcode. Jeśli chcesz wywołać działu pomocy technicznej, nadaj im te informacje: Zatrzymaj wykonywanie kodu: BŁĄD KRYTYCZNY USŁUGI" 
 - "Komputer PC wystąpił problem i musi ponownie uruchomić. Trwa zbieranie danych tylko niektóre informacje o błędzie, a następnie będzie możemy ponowne uruchomienie dla Ciebie. Jeśli chcesz dowiedzieć się więcej, możesz wyszukać w trybie online później ten błąd: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>Przyczyna

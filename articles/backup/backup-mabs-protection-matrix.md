@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 83cfd2b7ccdf8ec14e828baec1031e11b28c988c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21c832235eeb86dcea94e70f34abaf4ec3489c3c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427363"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509620"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Macierz ochrony usługi Azure Backup Server
 
@@ -79,8 +79,8 @@ W tym artykule wymieniono różne serwerów i obciążeń, które można chroni�
 |Host funkcji Hyper-V — agent ochrony DPM na serwerze hosta funkcji Hyper-V, klastrów lub maszyn wirtualnych|Windows Server 2012 — wersja Datacenter i Standard|Serwer fizyczny<br /><br />Maszyna wirtualna funkcji Hyper-V w środowisku lokalnym|Tak|Tak|Ochrona: Komputery funkcji Hyper-V, udostępnione woluminy klastra (CSV)<br /><br />Odzyskiwanie: Maszyna wirtualna, odzyskiwanie na poziomie elementu plików i folderów, woluminów, wirtualne dyski twarde|
 |Host funkcji Hyper-V — agent ochrony DPM na serwerze hosta funkcji Hyper-V, klastrów lub maszyn wirtualnych|Windows Server 2008 R2 z dodatkiem SP1 — Enterprise i Standard|Serwer fizyczny<br /><br />Maszyna wirtualna funkcji Hyper-V w środowisku lokalnym|Tak|Tak|Ochrona: Komputery funkcji Hyper-V, udostępnione woluminy klastra (CSV)<br /><br />Odzyskiwanie: Maszyna wirtualna, odzyskiwanie na poziomie elementu plików i folderów, woluminów, wirtualne dyski twarde|
 |Host funkcji Hyper-V — agent ochrony DPM na serwerze hosta funkcji Hyper-V, klastrów lub maszyn wirtualnych|Windows Server 2008 SP2|Serwer fizyczny<br /><br />Maszyna wirtualna funkcji Hyper-V w środowisku lokalnym|Nie|Nie|Ochrona: Komputery funkcji Hyper-V, udostępnione woluminy klastra (CSV)<br /><br />Odzyskiwanie: Maszyna wirtualna, odzyskiwanie na poziomie elementu plików i folderów, woluminów, wirtualne dyski twarde|
-|Maszyny wirtualne VMware|VMware vCenter/vSphere ESX/ESXi licencjonowane 5.5/6.0/6.5 wersji |Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Tak|Maszyny wirtualne VMware na udostępnione woluminy klastra (CSV), systemu plików NFS, a Magazyn sieci SAN<br /> Odzyskiwanie na poziomie elementu plików i folderów są dostępne tylko dla maszyn wirtualnych Windows, oprogramowania vApps VMware nie są obsługiwane.|
-|Maszyny wirtualne VMware|[Oprogramowania VMware vSphere 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Nie|Maszyny wirtualne VMware na udostępnione woluminy klastra (CSV), systemu plików NFS, a Magazyn sieci SAN<br /> Odzyskiwanie na poziomie elementu plików i folderów są dostępne tylko dla maszyn wirtualnych Windows, oprogramowania vApps VMware nie są obsługiwane.|
+|Maszyny wirtualne VMware|VMware vCenter/vSphere ESX/ESXi wersji z licencją 5.5/6.0/6.5 |Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Tak|Maszyny wirtualne VMware na udostępnione woluminy klastra (CSV), systemu plików NFS, a Magazyn sieci SAN<br /> Odzyskiwanie na poziomie elementu plików i folderów są dostępne tylko dla maszyn wirtualnych Windows, oprogramowania vApps VMware nie są obsługiwane.|
+|Maszyny wirtualne VMware|[Oprogramowania VMware vSphere licencjonowane 6.7 wersji](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Nie|Maszyny wirtualne VMware na udostępnione woluminy klastra (CSV), systemu plików NFS, a Magazyn sieci SAN<br /> Odzyskiwanie na poziomie elementu plików i folderów są dostępne tylko dla maszyn wirtualnych Windows, oprogramowania vApps VMware nie są obsługiwane.|
 |Linux|System Linux uruchomiony jako gość funkcji Hyper-V lub VMware|Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Tak|Funkcji Hyper-V musi działać w systemie Windows Server 2012 R2 lub Windows Server 2016. Ochrona: Całą maszynę wirtualną<br /><br />Odzyskiwanie: Całą maszynę wirtualną <br/><br/> Aby uzyskać pełną listę obsługiwanych dystrybucjach systemu Linux i wersji, zobacz artykuł [systemu Linux na dystrybucje zalecane dla platformy Azure](../virtual-machines/linux/endorsed-distros.md).|
 
 ## <a name="azure-expressroute-support"></a>Pomoc techniczna dla usługi ExpressRoute platformy Azure

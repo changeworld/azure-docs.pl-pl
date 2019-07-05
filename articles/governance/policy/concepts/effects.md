@@ -8,25 +8,26 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2bf19a2599d59b9ff2b3d189b26134f1528a878
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116203"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448568"
 ---
 # <a name="understand-azure-policy-effects"></a>Omówienie usługi Azure Policy efekty
 
 Każda definicja zasad w zasadach usługi Azure ma wpływ jednego. Powiadamiaj decyduje o tym, co się stanie, gdy reguła zasad jest oceniany w celu dopasowania. Efekty zachowywać się inaczej, jeśli są one dla nowego zasobu, zasób zaktualizowane lub istniejącego zasobu.
 
-Obecnie istnieją sześć efektów, które są obsługiwane w definicji zasad:
+Efekty te są obecnie obsługiwane w definicji zasad:
 
-- Append
-- Inspekcja
-- AuditIfNotExists
-- Zablokuj
-- DeployIfNotExists
-- Disabled (Wyłączony)
+- [Dołącz](#append)
+- [Inspekcja](#audit)
+- [AuditIfNotExists](#auditifnotexists)
+- [Odmów](#deny)
+- [DeployIfNotExists](#deployifnotexists)
+- [Disabled (Wyłączone)](#disabled)
+- [EnforceRegoPolicy](#enforceregopolicy) (wersja zapoznawcza)
 
 ## <a name="order-of-evaluation"></a>Kolejność obliczania
 
@@ -39,7 +40,9 @@ Obecnie istnieją sześć efektów, które są obsługiwane w definicji zasad:
 
 Po dostawcy zasobów zwróci kod powodzenia, **AuditIfNotExists** i **DeployIfNotExists** obliczenia w celu określenia, czy konieczne jest dodatkowe zgodności rejestrowania lub akcji.
 
-## <a name="disabled"></a>Disabled (Wyłączony)
+Obecnie nie ma żadnych kolejności dla **EnforceRegoPolicy** efekt.
+
+## <a name="disabled"></a>Wyłączone
 
 Efekt jest przydatna do testowania sytuacji lub gdy definicja zasad ma sparametryzowane efekt. Ta elastyczność sprawia, że można wyłączyć jednego przypisania zamiast wyłączać wszystkie przypisania tej zasady.
 
@@ -332,6 +335,58 @@ Przykład: Oblicza baz danych SQL Server w celu ustalenia, czy włączono transp
                     }
                 }
             }
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Efekt ten jest używany z definicji zasad *tryb* z `Microsoft.ContainerService.Data`. Jest używany do przekazywania zdefiniowane przy użyciu zasad kontroli przyjęcia [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) do [Otwórz agenta zasad](https://www.openpolicyagent.org/) (Nieprzez) na [usługi Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Usługa Azure Policy dla rozwiązania Kubernetes](rego-for-aks.md) w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
+
+### <a name="enforceregopolicy-evaluation"></a>Ocena EnforceRegoPolicy
+
+Kontroler dopuszczenie Otwórz agenta zasad ocenia wszelkie nowe żądanie w klastrze w czasie rzeczywistym.
+Co 5 minut, pełne skanowanie klastra zostanie ukończona, a wyniki zgłoszone do usługi Azure Policy.
+
+### <a name="enforceregopolicy-properties"></a>Właściwości EnforceRegoPolicy
+
+**Szczegóły** właściwość efektu EnforceRegoPolicy ma właściwości podrzędnych, które opisują reguły kontroli Rego czasowej.
+
+- **policyId** [wymagane]
+  - Unikatowa nazwa przekazany jako parametr do reguły kontroli Rego czasowej.
+- **zasady** [wymagane]
+  - Określa identyfikator URI reguły kontroli Rego czasowej.
+- **policyParameters** [opcjonalnie]
+  - Definiuje żadnych parametrów i wartości do przekazania do zasad rego.
+
+### <a name="enforceregopolicy-example"></a>Przykład EnforceRegoPolicy
+
+Przykład: Rego dopuszczenie kontroli reguły zezwalającej na tylko obrazy określonego kontenera w usłudze AKS.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "equals": "Microsoft.ContainerService/managedClusters"
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "EnforceRegoPolicy",
+    "details": {
+        "policyId": "ContainerAllowedImages",
+        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
+        "policyParameters": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
         }
     }
 }

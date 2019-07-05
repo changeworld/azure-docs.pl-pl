@@ -1,5 +1,5 @@
 ---
-title: Łączny koszt Ownership(TCO) przy użyciu usługi Azure Cosmos DB
+title: Całkowity koszt posiadania (TCO) przy użyciu usługi Azure Cosmos DB
 description: W tym artykule porównano całkowity koszt posiadania w usłudze Azure Cosmos DB z rozwiązania IaaS i lokalnych baz danych
 author: rimman
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e603435a49894a9b8faa2df9b49a8572b94eecb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 861aacb3e4c288ea7f55c5906534b728e9cd22b6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965589"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447207"
 ---
-# <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Łączny koszt Ownership(TCO) przy użyciu usługi Azure Cosmos DB
+# <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Całkowity koszt posiadania (TCO) przy użyciu usługi Azure Cosmos DB
 
-Usługa Azure Cosmos DB zaprojektowano ład szczegółowe wielodostępu i zasobów. Ten projekt umożliwia usłudze Azure Cosmos DB działa znacznie niższe koszty i pomagać użytkownikom, Zapisz. Obecnie usługi Azure Cosmos DB obsługuje ponad 280 obciążeń klientów na jednym komputerze z gęstość ciągłe zwiększanie i tysiące obciążeń klientów w ramach klastra. Jego równoważy replik obciążeń klientów na różnych komputerach w klastrze i w wielu klastrach w obrębie centrum danych, aby dowiedzieć się więcej, zobacz [usługi Azure Cosmos DB: Wypychanie granicy globalnie rozproszonych baz danych](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Ze względu na zarządzanie zasobami, wielodostępu i natywnej integracji z pozostałą częścią infrastruktury platformy Azure Azure Cosmos DB jest średnio 4 do 6 razy tańsze niż bazy danych MongoDB, Cassandra lub innych NoSQL OSS uruchomioną w usłudze IaaS i maksymalnie 10 razy tańsze niż bazy danych aparaty lokalnych. Zobacz dokument na [całkowity koszt posiadania (nie), usługi w chmurze baza danych NoSQL](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
+Usługa Azure Cosmos DB zaprojektowano ład szczegółowe wielodostępu i zasobów. Ten projekt umożliwia usłudze Azure Cosmos DB działa znacznie niższe koszty i pomagać użytkownikom, Zapisz. Obecnie usługi Azure Cosmos DB obsługuje ponad 280 obciążeń klientów na jednym komputerze z gęstość ciągłe zwiększanie i tysiące obciążeń klientów w ramach klastra. Jego równoważy replik obciążeń klientów na różnych komputerach w klastrze i w wielu klastrach w centrum danych. Aby dowiedzieć się więcej, zobacz [usługi Azure Cosmos DB: Wypychanie granicy globalnie rozproszonych baz danych](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Ze względu na zarządzanie zasobami, wielodostępu i natywnej integracji z pozostałą częścią infrastruktury platformy Azure Azure Cosmos DB jest średnio 4 do 6 razy tańsze niż bazy danych MongoDB, Cassandra lub innych NoSQL OSS uruchomioną w usłudze IaaS i maksymalnie 10 razy tańsze niż bazy danych aparaty lokalnych. Zobacz dokument na [całkowity koszt posiadania (nie), usługi w chmurze baza danych NoSQL](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
 Rozwiązania bazy danych typu NoSQL, takich jak Apache Cassandra, MongoDB, HBase, aparaty zostały zaprojektowane dla środowiska lokalnego. Gdy są one równoważne do szablonu usługi Resource Manager z bazą danych dzierżawy do monitorowania pomocy technicznej i zarządzania klastrami elastycznie oferowana jako usługa zarządzana. Architektury OSS NoSQL wymagają znaczne koszty operacyjne i wiedzę, może być trudne i kosztowna można znaleźć. Z drugiej strony usługi Azure Cosmos DB to usługa w pełni zarządzana usługa w chmurze, co pozwala deweloperom skupić się na innowacjach firmy, a nie na zarządzanie i obsługa infrastruktury bazy danych. 
 

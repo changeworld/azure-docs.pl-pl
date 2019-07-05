@@ -4,14 +4,14 @@ description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: eb99bec74ae5444320b7098616d4bf2d81b90697
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6cb2f49113a67a8dc6cea70ae58bd440f420a1d2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332033"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442791"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -49,6 +49,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * API Management
 * Aplikacje usługi App Service (aplikacje sieci web) — zobacz [ograniczenia usługi App Service](#app-service-limitations)
 * Certyfikaty usługi App Service — zobacz [ograniczenia certyfikatu usługi App Service](#app-service-certificate-limitations)
+* Domena usługi App Service
 * Automation — elementy Runbook muszą istnieć w tej samej grupie zasobów co konto usługi Automation.
 * Azure Active Directory B2C
 * Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).

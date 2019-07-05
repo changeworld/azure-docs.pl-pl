@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 6c0732b33608105009eda9bba2e4970e8e12e652
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd6259173792585a83effd42c75ff9a7a7d572e4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050584"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448384"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -68,6 +68,9 @@ Następujące kroki umożliwiają instalowanie podstawowych narzędzi na Windows
     ```bash
     npm install -g azure-functions-core-tools
     ```
+
+   Może upłynąć kilka minut, zanim npm pobrać i zainstalować pakiet narzędzi podstawowych.
+
 1. Jeśli nie planujesz używania [pakiety rozszerzeń], zainstaluj [platformy .NET Core SDK 2.x dla Windows](https://www.microsoft.com/net/download/windows).
 
 #### <a name="brew"></a>System MacOS przy użyciu Homebrew
@@ -82,6 +85,7 @@ Poniższe kroki umożliwiają instalowanie podstawowych narzędzi w systemie mac
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
+
 1. Jeśli nie planujesz używania [pakiety rozszerzeń], zainstaluj [platformy .NET Core SDK 2.x dla systemu macOS](https://www.microsoft.com/net/download/macos).
 
 
@@ -115,6 +119,7 @@ Następujące kroki użycia [APT](https://wiki.debian.org/Apt) do zainstalowania
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
+
 1. Jeśli nie planujesz używania [pakiety rozszerzeń], zainstaluj [platformy .NET Core SDK dla systemu Linux 2.x](https://www.microsoft.com/net/download/linux).
 
 ## <a name="create-a-local-functions-project"></a>Tworzenie lokalnego projektu usługi Functions
@@ -163,53 +168,16 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > Domyślnie w wersji 2.x podstawowe narzędzia tworzy funkcję projektów aplikacji dla środowiska uruchomieniowego .NET jako [klasy projektów języka C#](functions-dotnet-class-library.md) (.csproj). Te projekty C#, które mogą być używane z programu Visual Studio lub Visual Studio Code, są kompilowane podczas testowania i publikowania na platformie Azure. Jeśli chcesz zamiast tego do tworzenia i pracy z tym samym skrypt języka C# (csx) pliki utworzone w wersji 1.x i w portalu może zawierać `--csx` parametru podczas tworzenia i wdrażania funkcji.
 
-## <a name="register-extensions"></a>Rejestrowanie rozszerzeń
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
-W wersji 2.x środowisko uruchomieniowe usługi Azure Functions, należy jawnie zarejestrować rozszerzenia powiązanie (typ powiązania) używanych w aplikacji funkcji.
+[!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
-
-Aby uzyskać więcej informacji, zobacz [pojęcia powiązania i Wyzwalacze usługi Azure Functions](./functions-bindings-expressions-patterns.md).
-
-## <a name="local-settings-file"></a>Plik ustawień lokalnych
-
-Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączenia i ustawień dla podstawowych narzędzi usługi Azure Functions. Ustawienia w pliku local.settings.json są używane tylko przez funkcje narzędzia, podczas uruchamiania lokalnego. Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt zostanie opublikowany na platformie Azure. Użyj `--publish-local-settings` Przełącz [po opublikowaniu](#publish) się upewnić, że te ustawienia są dodawane do aplikacji funkcji na platformie Azure. Wartości w **ConnectionStrings** nigdy nie są publikowane. Plik ma następującą strukturę:
-
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "FUNCTIONS_WORKER_RUNTIME": "<language worker>",
-    "AzureWebJobsStorage": "<connection-string>",
-    "AzureWebJobsDashboard": "<connection-string>",
-    "MyBindingConnection": "<binding-connection-string>"
-  },
-  "Host": {
-    "LocalHttpPort": 7071,
-    "CORS": "*",
-    "CORSCredentials": false
-  },
-  "ConnectionStrings": {
-    "SQLConnectionString": "<sqlclient-connection-string>"
-  }
-}
-```
-
-| Ustawienie      | Opis                            |
-| ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Po ustawieniu `true`, wszystkie wartości są szyfrowane za pomocą klucza komputera lokalnego. Używane z `func settings` poleceń. Wartość domyślna to `false`. |
-| **`Values`** | Kolekcja ustawień aplikacji i parametry połączenia używane podczas uruchamiania lokalnego. Te wartości odpowiadają ustawienia aplikacji w aplikacji funkcji na platformie Azure, takich jak [ `AzureWebJobsStorage` ]. Wiele wyzwalaczy i powiązań ma właściwość, która odwołuje się do aplikacji ustawienie parametrów połączenia, takich jak `Connection` dla [wyzwalacz usługi Blob storage](functions-bindings-storage-blob.md#trigger---configuration). W przypadku takich właściwości potrzebne ustawienie aplikacji zdefiniowane w `Values` tablicy. <br/>[`AzureWebJobsStorage`] Wymagana aplikacja jest ustawienie wyzwalaczy innych niż HTTP. <br/>W wersji 2.x środowisko uruchomieniowe funkcji wymaga [ `FUNCTIONS_WORKER_RUNTIME` ] ustawienie, które jest generowany dla projektu, podstawowe narzędzia. <br/> Jeśli masz [emulatora usługi Azure storage](../storage/common/storage-use-emulator.md) zainstalowane lokalnie, możesz ustawić [ `AzureWebJobsStorage` ] do `UseDevelopmentStorage=true` i podstawowe narzędzia używa emulatora. Jest to przydatne podczas tworzenia aplikacji, ale należy przetestować za pomocą połączenia rzeczywisty magazyn, przed przystąpieniem do wdrożenia. |
-| **`Host`** | Ustawienia w tej sekcji dostosować proces hosta funkcji podczas uruchamiania lokalnego. |
-| **`LocalHttpPort`** | Ustawia domyślny port używany podczas uruchamiania lokalnego hosta funkcji (`func host start` i `func run`). `--port` Opcji wiersza polecenia mają pierwszeństwo przed tę wartość. |
-| **`CORS`** | Określa pochodzenia, które mogą uzyskać [współużytkowanie zasobów między źródłami (cors)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Źródła są dostarczane jako listę rozdzielaną przecinkami, bez spacji. Wartość symbolu wieloznacznego (\*) jest obsługiwany, co pozwala żądań z dowolnego źródła. |
-| **`CORSCredentials`** |  Ustaw wartość "true", aby umożliwić `withCredentials` żądań |
-| **`ConnectionStrings`** | Nie używaj tej kolekcji parametry połączenia używane przez usługi powiązania funkcji. Ta kolekcja jest używana tylko przez struktur, które zazwyczaj pobierają parametry połączenia z `ConnectionStrings` pliku sekcji konfiguracji, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Parametry połączenia, w tym obiekcie są dodawane do środowiska z typem dostawcy [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Elementy w tej kolekcji nie są publikowane na platformie Azure z innymi ustawieniami aplikacji. Należy jawnie dodać tych wartości, aby `Connection strings` zbiór ustawień aplikacji funkcji. Jeśli tworzysz [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) w kodzie funkcji należy przechowywać wartość parametrów połączenia w **ustawienia aplikacji** w portalu przy użyciu innych połączeń. |
+Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt zostanie opublikowany na platformie Azure. Użyj `--publish-local-settings` Przełącz [po opublikowaniu](#publish) się upewnić, że te ustawienia są dodawane do aplikacji funkcji na platformie Azure. Należy zauważyć, że wartości w **ConnectionStrings** nigdy nie są publikowane.
 
 Wartości ustawień aplikacji funkcji mogą być odczytywane w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji zobacz sekcję zmiennych środowiska te tematy referencyjne języka:
 
 * [C# precompiled](functions-dotnet-class-library.md#environment-variables)
 * [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
-* [F#Skrypt (.fsx)](functions-reference-fsharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -439,7 +407,7 @@ Poniższe opcje publikowania są stosowane dla wersji, wersji 1.x i 2.x:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Ustawienia publikowania w local.settings.json na platformie Azure, monitowanie o zastąpienie, jeżeli ustawienie już istnieje. Jeśli używasz emulatora magazynu, zmień ustawienie aplikacji, aby [połączenia rzeczywisty magazyn](#get-your-storage-connection-strings). |
+| **`--publish-local-settings -i`** |  Ustawienia publikowania w local.settings.json na platformie Azure, monitowanie o zastąpienie, jeżeli ustawienie już istnieje. Jeśli używasz emulatora magazynu, najpierw zmień ustawienia aplikacji [połączenia rzeczywisty magazyn](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Pomija monit o zastąpienie ustawień aplikacji podczas `--publish-local-settings -i` jest używany.|
 
 Następujące opcje publikowania są obsługiwane tylko w wersji 2.x:
@@ -495,6 +463,6 @@ Aby zgłosić żądanie usterki lub funkcji [Otwórz problem w usłudze GitHub](
 [Podstawowe narzędzia usługi Azure Functions]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
-["FUNCTIONS_WORKER_RUNTIME"]: functions-app-settings.md#functions_worker_runtime
+[`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
-[pakiety rozszerzeń]: functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles
+[pakiety rozszerzeń]: functions-bindings-register.md#extension-bundles

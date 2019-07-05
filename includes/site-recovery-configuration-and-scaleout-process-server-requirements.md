@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 371cbcc50b574f95e8d9ba4efe79058b2b25a8ba
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3b4992a16061bef782f012aa7887b248e3423234
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182938"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568355"
 ---
 **Wymagania dotyczące serwera konfiguracji/przetwarzania**
 
@@ -49,7 +49,7 @@ https:\//management.azure.com | Służy do operacji zarządzania replikacją i k
 time.nist.gov | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
 time.windows.com | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
 | <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | Konfigurowanie pakietu OVF musi mieć dostęp do tych adresów URL. Są one używane do kontrolowania dostępu i tożsamości zarządzania przez usługę Azure Active Directory
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Aby zakończyć pobieranie MySQL
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Aby zakończyć pobieranie MySQL. </br> W kilku regionach pliki do pobrania może być skierowana do adresu URL usługi CDN. Upewnij się, że adres URL usługi CDN również umieszczona na białej liście, jeśli jest to wymagane.
 |
 **OPROGRAMOWANIE DO ZAINSTALOWANIA** | 
 Program VMware vSphere PowerCLI | [Interfejs PowerCLI w wersji 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) powinien być zainstalowany, jeśli serwer konfiguracji jest uruchomiony na maszynie Wirtualnej VMware.

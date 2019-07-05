@@ -3,17 +3,17 @@ title: Połącz ogólnego klienta aplikacji Node.js usługi Azure IoT Central | 
 description: Jako deweloper urządzenia jak połączyć ogólny urządzenia środowiska Node.js do aplikacji usługi Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/05/2019
+ms.date: 06/14/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 90e4a061e38fdd3a13a640363069fae3a18e0b49
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888945"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444246"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 
@@ -62,12 +62,24 @@ Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzeni
 
 Dodaj następujące zdarzenie na **pomiarów** strony:
 
-| Nazwa wyświetlana | Nazwa pola  | Severity |
+| Nazwa wyświetlana | Nazwa pola  | severity |
 | ------------ | ----------- | -------- |
 | Przegrzaniu  | przegrzeje się    | Błąd    |
 
 > [!NOTE]
 > Typ danych miary zdarzeń jest ciągiem.
+
+### <a name="location-measurements"></a>Pomiary lokalizacji
+
+Dodaj następujące miary lokalizacji na **pomiarów** strony:
+
+| Nazwa wyświetlana | Nazwa pola  |
+| ------------ | ----------- |
+| Location     | location    |
+
+Pomiar lokalizacji, typu danych składa się z dwóch liczb zmiennoprzecinkowych liczb zmiennoprzecinkowych pod długości i szerokości geograficznej i opcjonalnie liczbę zmiennoprzecinkową o wysokość.
+
+Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenia, lokalizacji nie można wyświetlić w aplikacji.
 
 ### <a name="device-properties"></a>Właściwości urządzenia
 
@@ -144,12 +156,14 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     ```javascript
     var connectionString = '{your device connection string}';
     var targetTemperature = 0;
+    var locLong = -122.1215;
+    var locLat = 47.6740;
     var client = clientFromConnectionString(connectionString);
     ```
 
     Aktualizuj symbol zastępczy `{your device connection string}` z [parametry połączenia urządzenia](tutorial-add-device.md#generate-connection-string). W tym przykładzie należy zainicjować `targetTemperature` na zero, można użyć bieżącej odczytu z urządzenia lub wartość z bliźniaczej reprezentacji urządzenia.
 
-1. Aby wysłać dane telemetryczne, stanu i zdarzenie pomiarów do aplikacji usługi Azure IoT Central, dodaj następującą funkcję do pliku:
+1. Aby wysłać dane telemetryczne, stan, zdarzeń i pomiary lokalizacji do aplikacji usługi Azure IoT Central, dodaj następującą funkcję do pliku:
 
     ```javascript
     // Send device measurements.
@@ -158,12 +172,18 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
       var humidity = 70 + (Math.random() * 10);
       var pressure = 90 + (Math.random() * 5);
       var fanmode = 0;
+      var locationLong = locLong - (Math.random() / 100);
+      var locationLat = locLat - (Math.random() / 100);
       var data = JSON.stringify({
         temperature: temperature,
         humidity: humidity,
         pressure: pressure,
         fanmode: (temperature > 25) ? "1" : "0",
-        overheat: (temperature > 35) ? "ER123" : undefined });
+        overheat: (temperature > 35) ? "ER123" : undefined,
+        location: {
+            lon: locationLong,
+            lat: locationLat }
+        });
       var message = new Message(data);
       client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
@@ -320,6 +340,10 @@ Operator w aplikacji usługi Azure IoT Central rzeczywistego urządzenia możesz
 * Wyświetlanie danych telemetrycznych na **pomiarów** strony:
 
     ![Wyświetlanie danych telemetrycznych](media/howto-connect-nodejs/viewtelemetry.png)
+
+* Wyświetlanie lokalizacji na **pomiarów** strony:
+
+    ![Wyświetlanie lokalizacji pomiarów](media/howto-connect-nodejs/viewlocation.png)
 
 * Wyświetlanie wartości właściwości urządzenia, które są wysyłane z urządzenia **właściwości** strony. Właściwości urządzenia Kafelki aktualizacji, gdy urządzenia przenośnego:
 

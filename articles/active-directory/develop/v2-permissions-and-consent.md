@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544879"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482139"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgody w punkcie końcowym platforma tożsamości firmy Microsoft
 
@@ -89,7 +89,7 @@ Jeśli aplikacja wykonuje logowania za pomocą [OpenID Connect](active-directory
 
 `email` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji, aby do adres podstawowy adres e-mail użytkownika w postaci `email` oświadczenia. `email` Tylko wtedy, gdy jest to adres e-mail jest skojarzony z konta użytkownika, który nie jest zawsze oświadczenia znajduje się w tokenie. Jeśli użyto `email` zakresu, aplikacja powinna być przygotowana do obsługi przypadek, w którym `email` oświadczenia nie istnieje w tokenie.
 
-### <a name="profile"></a>Profil
+### <a name="profile"></a>profile
 
 `profile` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji do znacznej ilości informacji o użytkowniku. Informacje, które mogą uzyskać dostęp, który zawiera, ale nie ogranicza się do użytkownika imię, nazwisko, preferowany nazwy użytkownika i identyfikatora obiektu. Aby uzyskać pełną listę dostępnych w parametrze id_tokens oświadczeń profilu określonego użytkownika, zobacz [ `id_tokens` odwołania](id-tokens.md).
 
@@ -124,7 +124,7 @@ Gdy użytkownik wprowadzi swoje poświadczenia, punkt końcowy platforma tożsam
 > [!NOTE]
 > W tej chwili `offline_access` ("zachować dostęp do danych mają zapewniony dostęp do") i `user.read` ("zalogowania Cię i wczytania Twojego profilu) uprawnienia są automatycznie umieszczane w początkowej wyrażania zgody dla aplikacji.  Te uprawnienia są zazwyczaj wymagane dla aplikacji odpowiednie funkcje — `offline_access` zapewnia dostęp do aplikacji, można odświeżyć tokenów krytyczne dla natywnych i aplikacji sieci web podczas `user.read` daje dostęp do `sub` oświadczeń, umożliwiając klienta lub aplikacji, aby poprawnie zidentyfikować użytkownika, za pośrednictwem czasu i dostęp do informacji o użytkowniku podstawowe.  
 
-![Praca zgodę konta](./media/v2-permissions-and-consent/work_account_consent.png)
+![Zrzut ekranu pokazujący zgodę konta pracy](./media/v2-permissions-and-consent/work_account_consent.png)
 
 Po użytkownik akceptuje żądania o uprawnienia, zgody jest rejestrowany, a użytkownik nie musi ponownie zgody na kolejne logowania do aplikacji.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358144"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483318"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Usługa Azure Active Directory, inteligentnej blokady
 
@@ -41,7 +41,9 @@ Blokada Smart można zintegrować z hybrydowych wdrożeń, przy użyciu synchron
 Korzystając z [uwierzytelniania przekazywanego](../hybrid/how-to-connect-pta.md), należy upewnić się, że:
 
 * Wartość progowa blokady usługi Azure AD jest **mniej** niż próg blokady konta usługi Active Directory. Ustaw wartości, tak aby próg blokady konta usługi Active Directory to co najmniej dwa lub trzy razy dłużej niż wartość progowa blokady usługi Azure AD. 
-* Czas trwania blokady usługi Azure AD **w ciągu kilku sekund** jest **dłużej** niż Active Directory Zresetuj licznik blokady konta po okresie **minut**.
+* Czas trwania blokady usługi Azure AD musi być ustawiony na dłużej, niż Active Directory Zresetuj licznik blokady konta po okresie. Należy pamiętać, że Azure AD, czas trwania jest ustawiona w ciągu kilku sekund, podczas AD czas trwania jest ustawiany w minutach. 
+
+Na przykład jeśli chcesz, aby Twoje licznika usługi Azure AD mogą być wyższe niż AD, usługa Azure AD będzie 120 sekund (2 minuty) podczas usługi w warstwie Premium, AD jest ustawiony na 1 minuty (60 sekund).
 
 > [!IMPORTANT]
 > Aktualnie administrator nie można odblokować kont użytkowników w chmurze, jeśli zostały one zablokowane przez możliwość inteligentnej blokady. Administrator musi czekać na czas trwania blokady wygaśnie.

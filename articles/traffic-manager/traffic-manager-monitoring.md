@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: allensu
-ms.openlocfilehash: 7aee68ef41b696549aa1db4386d467b55cd2d981
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8df1c29bc5230e925d05be9fd356de050a9b0f06
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071074"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550362"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 
@@ -102,7 +102,7 @@ Punkt końcowy jest w złej kondycji, gdy zachodzi jedno z następujących zdarz
 - W przypadku monitorowania protokołu HTTP lub HTTPS:
     - Odpowiedź – 200 lub odpowiedzi, który nie obejmuje zakres stan określony w **oczekiwany stan kodu zakresów** ustawienie zostanie odebrana (w tym kod różnych 2xx lub przekierowania 301/302).
 - Jeśli protokół monitorowania jest TCP: 
-    - Odebrano odpowiedź niż potwierdzenia lub SYN potwierdzenia w odpowiedzi na żądanie SYNCHRONIZACJI wysyłane przez usługę Traffic Manager próby ustanowienia połączenia.
+    - Odebrano odpowiedź niż potwierdzenia lub SYN potwierdzenia w odpowiedzi na żądanie SYN wysyłane przez usługę Traffic Manager próby ustanowienia połączenia.
 - Przekroczono limit czasu. 
 - Wszystkie inne problem z połączeniem skutkuje punkt końcowy nie jest dostępny.
 

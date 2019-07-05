@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 6/27/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d9bbc76fe60a5d363cd05b75df33f6fce00d7e9a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 2399fcaa683e5807d2a5cd69d3dd3357d804fd28
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303399"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449970"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -26,7 +26,8 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 | Punkt kontrolny | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
 | W wersji 7 Release - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19 czerwca 2019 r. | [Pilotaż](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
-| 2019 czerwca aktualizacji zbiorczej — [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 czerwca 2019 r. | Obsługiwane (zalecana wersja) |
+| 2019 czerwca aktualizacji zbiorczej — [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27 czerwca 2019 r. | Obsługiwane (zalecana wersja) |
+| 2019 czerwca aktualizacji zbiorczej — [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 czerwca 2019 r. | Obsługiwane |
 | Maja 2019 aktualizacji zbiorczej — [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7 maja 2019 r. | Obsługiwane |
 | W wersji 6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 kwietnia 2019 r. | Obsługiwane |
 | 2019 kwietnia aktualizacji zbiorczej — [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 kwietnia 2019 r. | Obsługiwane |
@@ -113,6 +114,14 @@ Następujące elementy nie są synchronizowane, ale reszta systemu nadal normaln
 ### <a name="cloud-tiering"></a>Obsługa warstw w chmurze
 - Jeśli plik warstwowy jest kopiowany do innej lokalizacji za pomocą rozszerzenia Robocopy, wynikowy plik nie będzie obsługiwany w warstwie. Atrybut offline może być ustawiony, ponieważ rozszerzenie Robocopy niepoprawnie dołącza ten atrybut podczas operacji kopiowania.
 - Podczas kopiowania plików za pomocą narzędzia robocopy, użyj opcji/MIR, aby zachować sygnatury czasowe pliku. Pozwoli to zagwarantować, że starsze pliki są rozmieszczone warstwowo wcześniej niż ostatnio używanych plików.
+
+## <a name="agent-version-6300"></a>Wersja agenta 6.3.0.0
+Poniższe informacje o wersji dotyczą wersji 6.3.0.0 agenta usługi Azure File Sync wydanej 27 czerwca 2019 r. Te informacje są uzupełnieniem informacji o wersji 6.0.0.0 informacje o wersji.
+
+Lista problemów rozwiązanych w tej wersji:  
+- Uzyskiwanie dostępu do lub przeglądania lokalizacji punktu końcowego za pośrednictwem protokołu SMB jest powolne w systemie Windows Server 2012 R2 
+- Zwiększone użycie procesora CPU po zainstalowaniu agenta usługi Azure File Sync w wersji 6
+- Warstw ulepszenia danych telemetrycznych w chmurze
 
 ## <a name="agent-version-6200"></a>Wersja agenta 6.2.0.0
 Poniższe informacje o wersji dotyczą wersji 6.2.0.0 agenta usługi Azure File Sync wydanej 13 czerwca 2019 r. Te informacje są uzupełnieniem informacji o wersji 6.0.0.0 informacje o wersji.

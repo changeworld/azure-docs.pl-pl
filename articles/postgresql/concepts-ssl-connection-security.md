@@ -5,18 +5,18 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 56611267872ca79d7d2fe3a08c9b9f49a9b1840b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/27/2019
+ms.openlocfilehash: 686adfb2998eff10ef4b9f378163b164ba970c56
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067411"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461842"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurowanie łączności SSL w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-Usługa Azure Database for postgresql w warstwie preferuje łączenia aplikacji klienta do usługi PostgreSQL, przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
+Usługa Azure Database for postgresql w warstwie preferuje łączenia aplikacji klienta do usługi PostgreSQL, przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami "man-in--middle" przez szyfrowanie strumienia danych między serwerem a aplikacją.
 
-Domyślnie usługa bazy danych PostgreSQL skonfigurowano wymagają połączenia SSL. Opcjonalnie możesz wyłączyć wymaganie protokołu SSL w celu łączenia się z usługą bazy danych, jeśli Twoja aplikacja kliencka nie obsługuje łączności SSL. 
+Domyślnie usługa bazy danych PostgreSQL skonfigurowano wymagają połączenia SSL. Można wyłączyć wymaganie protokołu SSL, jeśli Twoja aplikacja kliencka nie obsługuje łączności SSL. 
 
 ## <a name="enforcing-ssl-connections"></a>Wymuszanie połączeń SSL
 Dla wszystkich baz danych dla serwerów MySQL dostarczanymi za pośrednictwem witryny Azure portal i interfejsu wiersza polecenia platformy Azure wymuszanie połączeń SSL jest domyślnie włączona. 
@@ -41,48 +41,23 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 ```
 
 ## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>Upewnij się, Twoja aplikacja lub framework obsługuje połączenia SSL
-Wiele typowych struktur aplikacji używających PostgreSQL dla swoich usług bazy danych, takich jak Drupal i Django, nie należy włączać SSL domyślnie podczas instalacji. Włączanie łączności SSL musi odbywać się po zakończeniu instalacji lub za pomocą poleceń interfejsu wiersza polecenia dotyczące tej aplikacji. Jeśli Twoim serwerze PostgreSQL jest wymuszanie połączeń SSL i skojarzonej aplikacji nie został prawidłowo skonfigurowany, aplikacja może zakończyć się niepowodzeniem nawiązać połączenia z serwerem bazy danych. Zapoznaj się z dokumentacją aplikacji, aby dowiedzieć się, jak włączyć połączenia SSL.
+Niektóre struktury aplikacji, korzystających z PostgreSQL dla swoich usług bazy danych nie należy włączać SSL domyślnie podczas instalacji. Jeśli Twoim serwerze PostgreSQL wymusza nawiązywanie połączeń SSL, ale aplikacja nie jest skonfigurowana do obsługi protokołu SSL, aplikacja może zakończyć się niepowodzeniem nawiązać połączenie z serwerem bazy danych. Zapoznaj się z dokumentacją aplikacji, aby dowiedzieć się, jak włączyć połączenia SSL.
 
 
 ## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>Aplikacje wymagające weryfikacji certyfikatu dla połączenia SSL
-W niektórych przypadkach aplikacje wymagają lokalnego pliku certyfikatu wygenerowana przez zaufany urząd certyfikacji (CA) pliku certyfikatu (.cer) nawiązać bezpiecznego połączenia. Zobacz poniższe kroki, aby uzyskać plik cer, dekodowanie certyfikatu i powiąż go z aplikacją.
+W niektórych przypadkach aplikacje wymagają lokalnego pliku certyfikatu wygenerowana przez zaufany urząd certyfikacji (CA) pliku certyfikatu (.cer) nawiązać bezpiecznego połączenia. Certyfikat do łączenia z usługą Azure Database dla serwera PostgreSQL znajduje się w https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem. Pobierz plik certyfikatu i zapisz go w lokalizacji preferowany. 
 
-### <a name="download-the-certificate-file-from-the-certificate-authority-ca"></a>Pobierz plik certyfikatu z urząd certyfikacji (CA) 
-Certyfikat umożliwia komunikację za pośrednictwem protokołu SSL za pomocą usługi Azure Database dla serwera PostgreSQL [tutaj](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt). Pobierz plik certyfikatu lokalnie.
+### <a name="connect-using-psql"></a>Połącz za pomocą narzędzia psql
+Poniższy przykład pokazuje, jak połączyć się z serwerem PostgreSQL przy użyciu wiersza polecenia psql. Użyj `sslmode=verify-full` ustawienie parametrów połączenia w celu wymuszenia weryfikacji certyfikatu SSL. Ścieżka do pliku lokalnego certyfikatu do przekazania `sslrootcert` parametru.
 
-### <a name="install-a-cert-decoder-on-your-machine"></a>Zainstaluj dekodera certyfikatu na komputerze 
-Możesz użyć [OpenSSL](https://github.com/openssl/openssl) zdekodować pliku certyfikatu, potrzebne dla aplikacji w taki sposób bezpiecznie połączyć się z serwerem bazy danych. Aby dowiedzieć się, jak zainstalować protokół OpenSSL, zobacz [instrukcje dotyczące instalacji OpenSSL](https://github.com/openssl/openssl/blob/master/INSTALL). 
-
-
-### <a name="decode-your-certificate-file"></a>Dekoduj plik certyfikatu
-Pobrany plik certyfikatu głównego urzędu certyfikacji jest w zaszyfrowanym formacie. Odszyfrować plik certyfikatu za pomocą biblioteki OpenSSL. Aby to zrobić, uruchom następujące polecenie OpenSSL:
-
+Poniżej przedstawiono przykład parametrów połączenia narzędzie psql:
 ```
-openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
+psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoserver.postgres.database.azure.com dbname=postgres user=myusern@mydemoserver"
 ```
 
-### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>Łączenia z bazą danych Azure database for PostgreSQL przy użyciu uwierzytelniania certyfikatów SSL
-Teraz, gdy zostały pomyślnie zdekodowany certyfikat, teraz można podłączyć do serwera bazy danych bezpiecznie za pośrednictwem protokołu SSL. Aby umożliwić weryfikację certyfikatu serwera, certyfikat musi być uporządkowana ~/.postgresql/root.crt pliku w katalogu macierzystym użytkownika. (W programie Microsoft Windows plik jest o nazwie % APPDATA%\postgresql\root.crt.). 
+> [!TIP]
+> Upewnij się, że wartość przekazywana do `sslrootcert` odpowiada ścieżkę pliku dla certyfikatu został zapisany.
 
-#### <a name="connect-using-psql"></a>Połącz za pomocą narzędzia psql
-Poniższy przykład pokazuje, jak można pomyślnie nawiązać połączenie z serwerem PostgreSQL, korzystając z wiersza polecenia psql. Użyj `root.crt` pliku utworzonego i `sslmode=verify-ca` lub `sslmode=verify-full` opcji.
-
-Przy użyciu interfejsu wiersza polecenia PostgreSQL, wykonaj następujące polecenie:
-```bash
-psql "sslmode=verify-ca sslrootcert=root.crt host=mydemoserver.postgres.database.azure.com dbname=postgres user=mylogin@mydemoserver"
-```
-W przypadku powodzenia pojawi się następujące dane wyjściowe:
-```bash
-Password for user mylogin@mydemoserver:
-psql (9.6.2)
-WARNING: Console code page (437) differs from Windows code page (1252)
-     8-bit characters might not work correctly. See psql reference
-     page "Notes for Windows users" for details.
-SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-SHA384, bits: 256, compression: off)
-Type "help" for help.
-
-postgres=>
-```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przejrzyj różne opcje łączności aplikacji, zgodnie z [biblioteki połączeń dla usługi Azure Database for postgresql w warstwie](concepts-connection-libraries.md).
+Przejrzyj różne opcje łączności aplikacji w [biblioteki połączeń dla usługi Azure Database for postgresql w warstwie](concepts-connection-libraries.md).

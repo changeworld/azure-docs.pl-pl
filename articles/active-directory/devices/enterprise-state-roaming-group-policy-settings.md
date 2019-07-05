@@ -1,28 +1,22 @@
 ---
 title: Ustawienia zarządzania urządzeniami Przenośnymi i zasady grupy | Dokumentacja firmy Microsoft
-description: Informacje na temat zasad grupy i urządzeń przenośnych ustawień zarządzania (urządzeniami przenośnymi MDM), które powinny być używane na urządzeniach należących do firmy. Te zasady są stosowane do całego urządzenia użytkownika.
+description: Informacje na temat zasad grupy i urządzeń przenośnych ustawień zarządzania (urządzeniami przenośnymi MDM), które powinny być używane na urządzeniach należących do firmy.
 services: active-directory
-keywords: Co to są grupy zasad i ustawień zarządzania urządzeniami Przenośnymi Roaming stanu dla przedsiębiorstw, Roaming stanu dla przedsiębiorstw, chmura systemu windows
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f1b23862edeabbf8e03d4589fa3f22a3fab9f72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3f2b1afa67ec36da4d4da57b296e696fd6c6910
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353163"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481943"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Ustawienia zasad grupy i zarządzania urządzeniami Przenośnymi
 Użyj tych zasad grupy i ustawienia zarządzania (urządzeniami przenośnymi MDM) dla urządzeń przenośnych tylko na urządzeniach należących do firmy, ponieważ te zasady są stosowane do całego urządzenia użytkownika. Stosowanie zasad zarządzania urządzeniami Przenośnymi, aby wyłączyć synchronizację ustawień do użytku osobistego, urządzenia należące do użytkownika zostanie negatywny wpływ na korzystanie z tego urządzenia. Ponadto innych kont użytkowników na urządzeniu będą również mieć wpływ na przez zasady.

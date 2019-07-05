@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4afe5c89a83f251ee354c955b6dc28b0bccc9e6c
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64570644"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561137"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Rozszerzenia serwera zasad sieciowych (NPS) dla platformy Azure umożliwia organizacjom w zabezpieczaniu uwierzytelniania klienta usługi Usługa użytkowników zdalnego uwierzytelniania (RADIUS) za pomocą opartej na chmurze [usługi Azure Multi-Factor Authentication (MFA)](howto-mfaserver-nps-rdg.md), zapewniającą weryfikacji dwuetapowej.
 
@@ -246,7 +246,7 @@ W tej sekcji skonfigurujesz serwer sieci VPN do użycia uwierzytelnianie usługi
 
     b. Dla **wspólny klucz tajny**, wybierz opcję **zmiany**, a następnie wprowadź udostępnionych tajny, który został utworzony i zarejestrowany wcześniej.
 
-    c. W **limitu czasu (w sekundach)** wybierz wartość z zakresu od **30** za pośrednictwem **60**.  
+    c. W **limitu czasu (w sekundach)** wprowadź wartość **30**.  
     Wartość limitu czasu jest niezbędne w celu umożliwienia wystarczająco dużo czasu na ukończenie drugiego składnika uwierzytelniania.
 
     ![Dodaj okno serwera usługi RADIUS, Konfigurowanie limitu czasu](./media/howto-mfa-nps-extension-vpn/image16.png)
@@ -304,7 +304,7 @@ Aby rozwiązać te problemy, doskonale nadaje się do uruchomienia jest zbadanie
 
 ## <a name="configure-multi-factor-authentication"></a>Konfigurowanie uwierzytelniania wieloskładnikowego
 
-Aby uzyskać pomoc w przypadku konfigurowania użytkowników do uwierzytelniania wieloskładnikowego, zobacz artykuły [jak, które wymuszają weryfikację dwuetapową dla użytkownika lub grupy](howto-mfa-userstates.md) i [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-first-time.md)
+Aby uzyskać pomoc w przypadku konfigurowania użytkowników do uwierzytelniania wieloskładnikowego, zobacz artykuły [Planowanie wdrożenia usługi Azure Multi-Factor Authentication oparte na chmurze](howto-mfa-getstarted.md#create-conditional-access-policy) i [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>Instalowanie i konfigurowanie rozszerzenia serwera NPS
 

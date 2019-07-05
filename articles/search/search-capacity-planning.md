@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5955b21ae405f15960974fcbc81b8383f3322509
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308760"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485713"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Skalowanie partycji i replik dla zapytań i indeksowania obciążeń w usłudze Azure Search
 Po zakończeniu [wybierz warstwę cenową](search-sku-tier.md) i [aprowizować usługę wyszukiwania](search-create-service-portal.md), następnym krokiem jest opcjonalnie zwiększyć liczbę repliki lub partycje używane przez usługę. Każda warstwa oferuje stałą liczbę jednostek rozliczeniowych. W tym artykule wyjaśniono, jak można przydzielić tych jednostek, aby osiągnąć optymalną konfigurację, która równoważy wymagań dotyczących wykonywania zapytania, indeksowania i magazynu.
@@ -47,6 +47,7 @@ Aby zwiększyć lub zmień przydział replik i partycji, zaleca się przy użyci
 Ogólnie rzecz biorąc Wyszukaj aplikacje muszą większa liczba replik niż partycje, szczególnie w przypadku, gdy operacje usług są obciążona kierunku obciążeń związanych z zapytaniami. W sekcji na [wysokiej dostępności](#HA) wyjaśnia, dlaczego.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wybierz usługę wyszukiwania.
+
 2. W **ustawienia**, otwórz **skalowania** stronę, aby zmodyfikować replik i partycji. 
 
    Poniższy zrzut ekranu przedstawia aprowizowana za pomocą jednego replik i partycji usług w warstwie standardowa. Formuły u dołu wskazuje, ile jednostek wyszukiwania są używane (1). Jeśli cena jednostkowa 100 USD (nie rzeczywistą cenę), miesięczny koszt tej usługi będzie średnio 100 USD.
@@ -108,6 +109,7 @@ Ponieważ jest stosunkowo szybkie skalowanie w górę, ogólnie zaleca się uruc
 Ogólne zalecenia dotyczące wysokiej dostępności są:
 
 * Dwie repliki w celu zapewnienia wysokiej dostępności obciążeń (zapytania) tylko do odczytu
+
 * Co najmniej trzech replik wysokiej dostępności obciążeń odczytu/zapisu (zapytań oraz indeksowania jako pojedyncze dokumenty są dodawane, aktualizowane lub usuwane)
 
 Umowy dotyczące poziomu usług (SLA) dla usługi Azure Search są stosowane w operacjach zapytań i aktualizacji indeksu, które składają się z Dodawanie, aktualizowanie lub usuwanie dokumentów.

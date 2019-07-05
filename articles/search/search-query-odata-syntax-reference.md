@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: cccfb749af07d1deeeda6e94de9c2cd5ce5396f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebe41ba61ac5136900328db9c35acb8551dcd5b2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079667"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428654"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-search"></a>Dokumentacja składni wyrażenia OData dla usługi Azure Search
 
-Usługa Azure Search używa [wyrażenia OData](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) jako parametry w interfejsie API. Najczęściej wyrażenia OData są używane `$orderby` i `$filter` parametrów. Wyrażenia te mogą być skomplikowane, zawierające wiele klauzul, funkcje i operatory. Jednak nawet proste wyrażenia OData, takich jak właściwości, których ścieżki są używane w wielu częściach interfejsu API REST usługi Azure Search. Na przykład ścieżka wyrażenia są używane do odwoływania się do pól podrzędnych pól złożonych wszędzie, gdzie w interfejsie API, np. gdy lista pól podrzędnych w [sugestora](index-add-suggesters.md), [oceniania funkcji](index-add-scoring-profiles.md), `$select` parametru , a nawet [fielded wyszukiwania zapytań Lucene](query-lucene-syntax.md).
+Usługa Azure Search używa [wyrażenia OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) jako parametry w interfejsie API. Najczęściej wyrażenia OData są używane `$orderby` i `$filter` parametrów. Wyrażenia te mogą być skomplikowane, zawierające wiele klauzul, funkcje i operatory. Jednak nawet proste wyrażenia OData, takich jak właściwości, których ścieżki są używane w wielu częściach interfejsu API REST usługi Azure Search. Na przykład ścieżka wyrażenia są używane do odwoływania się do pól podrzędnych pól złożonych wszędzie, gdzie w interfejsie API, np. gdy lista pól podrzędnych w [sugestora](index-add-suggesters.md), [oceniania funkcji](index-add-scoring-profiles.md), `$select` parametru , a nawet [fielded wyszukiwania zapytań Lucene](query-lucene-syntax.md).
 
 W tym artykule opisano te rodzaje wyrażeń OData przy użyciu gramatyka formalnych. Istnieje również [interaktywnym diagramem](#syntax-diagram) ułatwiające sięgającym gramatyki.
 

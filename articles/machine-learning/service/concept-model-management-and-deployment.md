@@ -7,49 +7,40 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: chris-lauren
-ms.author: clauren
-ms.date: 05/02/2019
+author: jpe316
+ms.author: jordane
+ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5cbb7f13214a86f528521fdeb1ffa1374ca813ef
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 11a4a17d7816d2302b6549cffb9517e10ad1258d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331705"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442343"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 
-Ten artykuł zawiera informacje na temat jak zarządzanie cyklem życia Twoich modeli za pomocą usługi Azure Machine Learning. Usługę Azure Machine Learning korzysta z metody Machine Learning operacji (MLOps), co zwiększa jakość i spójność Twojego rozwiązania do uczenia maszynowego. Usługa Machine Learning zapewnia następujące możliwości MLOps:
+Ten artykuł zawiera informacje na temat jak zarządzanie cyklem życia Twoich modeli za pomocą usługi Azure Machine Learning. Usługę Azure Machine Learning korzysta z metody Machine Learning operacji (MLOps), co zwiększa jakość i spójność Twojego rozwiązania do uczenia maszynowego. 
 
-* Integracja z potokiem, platformy Azure. Zdefiniuj ciągłej integracji i ciągłego wdrażania przepływów pracy na potrzeby Twoich modeli.
-* Rejestr modelu, który obsługuje wiele wersji wytrenowane modele.
-* Walidacja modelu. Zweryfikuj swoje przeszkolone modele i automatycznie wybrać optymalną konfigurację wdrażania ich w środowisku produkcyjnym.
-* Należy wdrożyć swoje modele jako usługi sieci web w chmurze, lokalnie lub na urządzeniach usługi IoT Edge.
-* Monitorowanie wydajności wdrożony model, dzięki czemu możesz zwiększać ulepszenia w następnej wersji modelu.
+Usługa Machine Learning zapewnia następujące możliwości MLOps:
+
+- **Wdrażanie projektów uczenia Maszynowego z dowolnego miejsca**
+- **Monitorowanie aplikacji uczenia Maszynowego dla operacyjnej i problemów związanych z uczenia Maszynowego** — porównywania wejść modelu między szkoleń i wnioskowania, eksplorowanie metryk konkretnego modelu i zapewniają monitorowanie i alerty w ramach swojej infrastruktury uczenia Maszynowego.
+- **Przechwytywanie danych wymagane do ustanowienia dziennik inspekcji typu end to end w cyklu życia uczenia Maszynowego**, w tym kto publikuje modele, dlaczego jest zmieniana i kiedy modele zostały wdrożone lub używane w środowisku produkcyjnym.
+- **Automatyzuj cykl życia uczenia Maszynowego typu end to end za pomocą usługi Azure Machine Learning i Azure DevOps** często aktualizacji modeli, testowanie nowych modeli i ciągłe wdrażanie nowych modeli uczenia Maszynowego, wraz z innymi aplikacjami i usług.
 
 Aby Dowiedz się więcej na pojęć dotyczących MLOps i jak odnoszą się do usługi Azure Machine Learning, obejrzyj poniższy film wideo.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
 
-## <a name="integration-with-azure-pipelines"></a>Integracja z potokiem, Azure
+## <a name="deploy-ml-projects-from-anywhere"></a>Wdrażanie projektów uczenia Maszynowego z dowolnego miejsca
 
-Potoki usługi Azure można użyć do utworzenia procesu ciągłej integracji, który przygotowuje modelu. W typowym scenariuszu po analitykiem danych sprawdza zmiany do repozytorium Git dla projektu, potok usługi Azure zostanie uruchomiony przebieg szkolenia. Wyniki przebiegu można następnie można przeprowadzić inspekcji, aby wyświetlić właściwości działania uczonego modelu. Można również utworzyć potok, który służy do wdrażania modelu w postaci usługi sieci web.
+### <a name="turn-your-training-process-into-a-reproducible-pipeline"></a>Włącz proces szkolenia potokiem do odtworzenia
+Użyj potokach uczenia Maszynowego z usługi Azure Machine Learning, aby łączyć wszystkie kroki związane z modelu procesu uczenia, od przygotowania danych do wyodrębniania funkcji do hiperparametrycznego dostrajania do modelu w wersji ewaluacyjnej.
 
-[Rozszerzenia usługi Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) sprawia, że łatwiej jest pracować z potokiem, platformy Azure. Potoki usługi Azure zapewnia następujące ulepszenia:
+Aby uzyskać więcej informacji, zobacz [potokach uczenia Maszynowego](concept-ml-pipelines.md).
 
-* Umożliwia wybór obszaru roboczego podczas definiowania połączenia z usługą.
-* Włącza wersji uruchamianie potoków przez wytrenowane modele utworzone w potoku szkolenia.
-
-Aby uzyskać więcej informacji na temat potoków Azure przy użyciu usługi Azure Machine Learning, zobacz [ciągłej integracji i wdrażania modeli uczenia Maszynowego przy użyciu potoków Azure](/azure/devops/pipelines/targets/azure-machine-learning) artykułu i [Azure Machine Learning Service MLOps](https://aka.ms/mlops) repozytorium.
-
-## <a name="convert-and-optimize-models"></a>Konwertowanie i optymalizowanie modeli
-
-Konwertowanie przez model [Otwórz Exchange sieci neuronowych](https://onnx.ai) (ONNX) może zwiększyć wydajność. Średnio konwertowanie ONNX może przynieść 2 x wzrost wydajności.
-
-Aby uzyskać więcej informacji na temat ONNX za pomocą usługi Azure Machine Learning, zobacz [Utwórz i przyspieszyć modeli uczenia Maszynowego](concept-onnx.md) artykułu.
-
-## <a name="register-models"></a>Zarejestruj modele
+### <a name="register-and-track-ml-models"></a>Rejestrowanie i śledzenie modeli uczenia Maszynowego
 
 Rejestracja modelu pozwala do przechowywania wersji modeli w chmurze platformy Azure, w obszarze roboczym. Rejestru model ułatwia organizowanie i śledzenie wytrenowane modele.
 
@@ -62,12 +53,9 @@ Zarejestrowane modele są identyfikowane przez nazwę i wersję. Zawsze należy 
 > Można również zarejestrować modeli skonfigurowanych pod kątem spoza usługi Azure Machine Learning.
 
 Nie można usunąć zarejestrowanego modelu, który jest używany w aktywnym wdrożeniu.
-
 Aby uzyskać więcej informacji, zobacz sekcję modelu rejestru [wdrażanie modeli](how-to-deploy-and-where.md#registermodel).
 
-Na przykład rejestrowania modelu są przechowywane w formacie pakietu pickle, zobacz [samouczka: Szkolenie modeli klasyfikacji obrazów](tutorial-deploy-models-with-aml.md).
-
-## <a name="package-and-debug-models"></a>Modele pakietu i debugowania
+### <a name="package-and-debug-models"></a>Modele pakietu i debugowania
 
 Przed wdrożeniem modelu w środowisku produkcyjnym należy go znajduje się w pakiecie obrazu platformy Docker. W większości przypadków tworzenia obrazów odbywa się automatycznie w tle podczas wdrażania. W przypadku zaawansowanych scenariuszy można ręcznie określić obrazu.
 
@@ -75,11 +63,17 @@ Jeśli napotkasz problemy z wdrożeniem, można wdrożyć na lokalne Środowisko
 
 Aby uzyskać więcej informacji, zobacz [wdrażanie modeli](how-to-deploy-and-where.md#registermodel) i [Rozwiązywanie problemów z wdrożeniami](how-to-troubleshoot-deployment.md).
 
-## <a name="validate-and-profile-models"></a>Sprawdzanie poprawności i profilowania modeli
+### <a name="validate-and-profile-models"></a>Sprawdzanie poprawności i profilowania modeli
 
 Usługa Azure Machine Learning umożliwia profilowanie Określ ustawienia Procesora i pamięci idealne do użycia podczas wdrażania modelu. Sprawdzanie poprawności modelu odbywa się w ramach tego procesu, korzystanie z danych, które podasz w procesie profilowania.
 
-## <a name="use-models"></a>Używanie modeli
+### <a name="convert-and-optimize-models"></a>Konwertowanie i optymalizowanie modeli
+
+Konwertowanie przez model [Otwórz Exchange sieci neuronowych](https://onnx.ai) (ONNX) może zwiększyć wydajność. Średnio konwertowanie ONNX może przynieść 2 x wzrost wydajności.
+
+Aby uzyskać więcej informacji na temat ONNX za pomocą usługi Azure Machine Learning, zobacz [Utwórz i przyspieszyć modeli uczenia Maszynowego](concept-onnx.md) artykułu.
+
+### <a name="use-models"></a>Używanie modeli
 
 Wytrenowane modele uczenia maszynowego można wdrożyć jako usługi sieci web w chmurze lub lokalnie w środowisku deweloperskim. Można także wdrożyć modele na urządzeniach z usługą Azure IoT Edge. Wdrożeń można użyć procesor CPU, procesor GPU lub tablic programowalny bramy (FPGA) do wnioskowania. Można również użyć modeli z usługi Power BI.
 
@@ -105,7 +99,7 @@ Po utworzeniu obrazu, dodawane są również składniki wymagane dla usługi Azu
 > [!NOTE]
 > Nie można modyfikować ani zmieniać serwera sieci web lub składniki usługi IoT Edge, które są używane w obrazie platformy Docker. Usługa Azure Machine Learning korzysta z konfiguracji serwera sieci web i składniki usługi IoT Edge, które są przetestowane i obsługiwane przez firmę Microsoft.
 
-### <a name="web-service"></a>Usługa sieci Web
+#### <a name="web-service"></a>Usługa sieci Web
 
 Można użyć modeli w **usług sieci web** celów obliczeń następującym kodem:
 
@@ -121,8 +115,7 @@ Aby wdrożyć model jako usługę sieci web, należy podać następujące elemen
 
 Aby uzyskać więcej informacji, zobacz [wdrażanie modeli](how-to-deploy-and-where.md).
 
-### <a name="iot-edge-devices"></a>Urządzenia usługi IoT Edge
-
+#### <a name="iot-edge-devices"></a>Urządzenia usługi IoT Edge
 
 Za pomocą modeli urządzeń IoT za pomocą **moduły usługi Azure IoT Edge**. Moduły usługi IoT Edge, które są wdrażane urządzenia sprzętowego, co umożliwia wnioskowania lub modelu oceniania na urządzeniu.
 
@@ -132,13 +125,35 @@ Aby uzyskać więcej informacji, zobacz [wdrażanie modeli](how-to-deploy-and-wh
 
 Microsoft Power BI obsługuje przy użyciu modeli uczenia maszynowego, analizy danych. Aby uzyskać więcej informacji, zobacz [integracji usługi Azure Machine Learning w usłudze Power BI (wersja zapoznawcza)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-## <a name="monitor-and-collect-data"></a>Monitorowanie i zbieranie danych
+
+## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>Monitorowanie aplikacji uczenia Maszynowego dla operacyjnej i problemów związanych z uczenia Maszynowego
 
 Monitorowanie umożliwia Ci zrozumieć, jakie dane są wysyłane do modelu i prognoz, które zwraca.
 
 Te informacje pomagają zrozumieć, jak jest używany model. Zebrane dane wejściowe mogą być też przydatne w przyszłych wersjach szkolenie modelu.
 
 Aby uzyskać więcej informacji, zobacz [jak włączyć zbieranie danych modelu](how-to-enable-data-collection.md).
+
+
+## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>Przechwytywanie dziennika inspekcji typu end to end cyklu życia uczenia Maszynowego
+
+Uczenie Maszynowe systemu Azure zapewnia możliwość śledzenia dziennika inspekcji typu end to end wszystkie Twoje zasoby uczenia Maszynowego. W szczególności:
+
+- Uczenie Maszynowe systemu Azure integruje się z usługi Git w celu śledzenia informacji, które repozytorium / gałąź / zatwierdzanie pochodzą z kodu ze.
+- Usługa Azure ML zestawów danych pomagają śledzić i wersji danych.
+- Historia przebiegów uczenie Maszynowe Azure zarządza kod, dane i moc obliczeniowa, używane do trenowania modelu.
+- Rejestr modelu uczenia Maszynowego Azure przechwytuje wszystkie metadane skojarzone z modelu (które eksperymentu skonfigurowanych pod kątem go, w którym jest wdrażany, jeśli jej wdrożenia są w dobrej kondycji).
+
+## <a name="automate-the-end-to-end-ml-lifecycle"></a>Automatyzuj cykl życia uczenia Maszynowego typu end to end 
+
+GitHub i potoków usługi Azure można użyć do utworzenia procesu ciągłej integracji, który przygotowuje modelu. W typowym scenariuszu po analitykiem danych sprawdza zmiany do repozytorium Git dla projektu, potok usługi Azure zostanie uruchomiony przebieg szkolenia. Wyniki przebiegu można następnie można przeprowadzić inspekcji, aby wyświetlić właściwości działania uczonego modelu. Można również utworzyć potok, który służy do wdrażania modelu w postaci usługi sieci web.
+
+[Rozszerzenia usługi Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) sprawia, że łatwiej jest pracować z potokiem, platformy Azure. Potoki usługi Azure zapewnia następujące ulepszenia:
+
+* Umożliwia wybór obszaru roboczego podczas definiowania połączenia z usługą.
+* Włącza wersji uruchamianie potoków przez wytrenowane modele utworzone w potoku szkolenia.
+
+Aby uzyskać więcej informacji na temat potoków Azure przy użyciu usługi Azure Machine Learning, zobacz [ciągłej integracji i wdrażania modeli uczenia Maszynowego przy użyciu potoków Azure](/azure/devops/pipelines/targets/azure-machine-learning) artykułu i [Azure Machine Learning Service MLOps](https://aka.ms/mlops) repozytorium.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

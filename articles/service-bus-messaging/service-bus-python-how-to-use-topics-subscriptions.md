@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd75ba9d407399703a382596019d5f370808b20a
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991998"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543663"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka Python
 
@@ -79,9 +79,9 @@ bus_service.create_topic('mytopic', topic_options)
 Subskrypcje do tematów, również są tworzone za pomocą **ServiceBusService** obiektu. Subskrypcje są nazywane i mogą zawierać opcjonalny filtr, który ogranicza zestaw komunikatów dostarczane do wirtualnej kolejki subskrypcji.
 
 > [!NOTE]
-> Subskrypcje są trwałe i będzie nadal istniał aż do ich lub temat, do którego mają subskrypcję, są usuwane.
+> Domyślnie subskrypcje są trwałe i będzie nadal istniał aż do ich lub temat, do którego mają subskrypcję, są usuwane.
 > 
-> 
+> Masz subskrypcje wykasowany, ustawiając [właściwość auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Tworzenie subskrypcji z filtrem domyślnym (MatchAll)
 
@@ -178,7 +178,7 @@ W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz
 
 ## <a name="delete-topics-and-subscriptions"></a>Usuwanie tematów i subskrypcji
 
-Tematy i subskrypcje są trwałe i musi zostać jawnie usunięte za pomocą [witryny Azure portal] [ Azure portal] lub programowo. Poniższy przykład pokazuje sposób usuwania tematu o nazwie `mytopic`:
+Tematy i subskrypcje są trwałe chyba że [właściwość auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) jest ustawiona. Można je usunąć za pomocą [witryny Azure portal][Azure portal] lub programowo. Poniższy przykład pokazuje sposób usuwania tematu o nazwie `mytopic`:
 
 ```python
 bus_service.delete_topic('mytopic')

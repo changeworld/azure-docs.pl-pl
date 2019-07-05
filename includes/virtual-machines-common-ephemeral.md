@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24c2bfa4aae94642d3ed66f2cfa6e31ba1e6b19a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391360"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67457465"
 ---
 Efemeryczne dyski systemu operacyjnego do tworzenia lokalnego magazynu maszyny wirtualnej (VM) i nie są zachowywane do zdalnej usługi Azure Storage. Efemeryczne dyski systemu operacyjnego działają dobrze w przypadku obciążeń bezstanowych, gdzie aplikacje są odporne na awariami pojedynczych maszyn wirtualnych, ale są bardziej zajmującym się ochroną czas, jaki zajmuje wdrożeń na dużą skalę lub czasu, aby odtworzyć poszczególnych wystąpień maszyn wirtualnych. Jest również odpowiedni w przypadku aplikacji wdrożonych za pomocą klasycznego modelu wdrażania, aby przejść do modelu wdrażania usługi Resource Manager. Dzięki efemerycznemu dyskowi systemu operacyjnego występują niższe opóźnienia odczytu/zapisu na dysku systemu operacyjnego, a odtwarzanie z obrazu maszyny wirtualnej jest szybsze. Ponadto dysk systemu operacyjnego tymczasowych jest bezpłatny, pociągnąć za sobą żadnych kosztów magazynu dla dysku systemu operacyjnego. 
  
@@ -35,7 +35,7 @@ Podstawowe różnice między trwałe i efemeryczne dyski systemu operacyjnego:
 | Obsługa regionu              | Wszystkie regiony                                                                                  | Wszystkie regiony                              |
 | Trwałość danych            | System operacyjny dysku danych zapisanych na dysku systemu operacyjnego są przechowywane w usłudze Azure Storage                                  | Dane zapisane na dysku systemu operacyjnego są przechowywane w lokalnym magazynie maszyny Wirtualnej i nie jest trwały do usługi Azure Storage. |
 | Zatrzymana z cofniętą alokacją stanu      | Zatrzymana z cofniętą alokacją i ponownego uruchomienia ze stanu zatrzymana z cofniętą alokacją maszyn wirtualnych i wystąpień zestawu skalowania | Maszyn wirtualnych i wystąpień zestawu skalowania nie może być zatrzymana z cofniętą alokacją                                  |
-| Wyspecjalizowane obsługę dysku systemu operacyjnego | Tak                                                                                          | Nie                                                                                 |
+| Wyspecjalizowane obsługę dysku systemu operacyjnego | Yes                                                                                          | Nie                                                                                 |
 | Zmiany rozmiaru dysku systemu operacyjnego              | Obsługiwana podczas tworzenia maszyny Wirtualnej i maszyna wirtualna jest zatrzymana z cofniętą alokacją                                | Obsługiwana podczas tworzenia maszyny Wirtualnej tylko                                                  |
 | Zmiana rozmiaru do nowego rozmiaru maszyny Wirtualnej   | Dane z dysku systemu operacyjnego są zachowywane.                                                                    | Usunięcie danych na dysku systemu operacyjnego, system operacyjny jest ponownie zainicjowana                                      |
 

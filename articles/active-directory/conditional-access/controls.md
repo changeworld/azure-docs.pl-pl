@@ -2,28 +2,21 @@
 title: Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
 description: Dowiedz się, jak kontrolę dostępu w usłudze Azure Active Directory dostępu warunkowego pracy.
 services: active-directory
-keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 06/15/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206b5fef3e4e686bd237fe0f45cfb91dccd4626f
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: a5fc672898a56d8b3e1486b1d8d84cf532fa2b6d
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136507"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509405"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego?
 
@@ -34,7 +27,6 @@ Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../a
 W kontekście dostępu warunkowego
 
 - "**w takim przypadku**" nosi nazwę **warunków**
-
 - "**To zrobić**" nosi nazwę **kontrole dostępu**
 
 Kombinacja instrukcja warunku, za pomocą formantów reprezentuje zasady dostępu warunkowego.
@@ -46,7 +38,6 @@ Każdy formant jest wymaganie, które muszą zostać spełnione przez osobę lub
 Istnieją dwa typy formantów:
 
 - **Kontrolki udzielania** — dostęp do bramy
-
 - **Kontrolki sesji** — w celu ograniczenia dostępu w ramach sesji
 
 W tym temacie wyjaśniono różne formanty, które są dostępne w funkcji dostępu warunkowego usługi Azure AD. 
@@ -65,7 +56,6 @@ Za pomocą Udziel kontroli możesz całkowicie blokowanie dostępu lub zezwolić
 Możesz użyć tego formantu, aby wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do aplikacji określonej chmury. Ten formant obsługuje następujących dostawców usługi Multi-Factor Authentication:
 
 - Azure Multi-Factor Authentication
-
 - Dostawcę usługi Multi-Factor authentication w środowisku lokalnym, łączyć się z usługi Active Directory Federation Services (AD FS).
 
 Przy użyciu usługi uwierzytelnianie wieloskładnikowe pomaga chronić zasoby przed dostępem nieautoryzowany użytkownik, który może mieć uzyskał dostęp do podstawowych poświadczeń prawidłowego użytkownika.
@@ -76,9 +66,11 @@ Można skonfigurować zasady dostępu warunkowego, które są oparte na urządze
 
 Urządzenie musi być zarejestrowany w usłudze Azure AD przed mogą zostać oznaczone jako zgodne. Aby zarejestrować urządzenie, masz trzy opcje: 
 
-- [Urządzeń zarejestrowanych w usłudze Azure AD](../devices/overview.md#azure-ad-registered-devices)
-- [Urządzenia przyłączone do usługi Azure AD](../devices/overview.md#azure-ad-joined-devices)  
-- [Urządzenia przyłączone do hybrydowej usługi Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- Urządzenia zarejestrowane w usłudze Azure AD
+- Urządzenia dołączone do usługi Azure AD  
+- Urządzenia dołączone hybrydowo do usługi Azure AD
+
+Te trzy opcje zostały omówione w artykule [co to jest tożsamość urządzenia?](../devices/overview.md)
 
 Aby uzyskać więcej informacji, zobacz [sposób wymagać zarządzanych urządzeń w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](require-managed-devices.md).
 
@@ -106,16 +98,11 @@ Urządzenie musi być zarejestrowana do usługi Azure AD, zanim aplikacja może 
 
 Aby uzyskać listę zasad obsługiwanych klientów chronionych, zobacz [wymaganie dotyczące zasad ochrony aplikacji](technical-reference.md#app-protection-policy-requirement).
 
-
 ### <a name="terms-of-use"></a>Warunki użytkowania
 
 Użytkownik może wymagać w dzierżawie, aby wyrazić zgodę na warunki użytkowania, zanim zostanie im przyznany dostęp do zasobu. Jako administrator można skonfigurować i dostosować warunki użytkowania, przekazywania dokumentów PDF. Jeśli użytkownik znajduje się w zakresie Ta kontrola dostępu do aplikacji, otrzymuje tylko jeśli uzgodniono warunki użytkowania.
 
-### <a name="custom-controls-preview"></a>Formanty niestandardowe (wersja zapoznawcza)
-
-Można dodać niestandardowe formanty dostępu warunkowego, które przekierować użytkowników do usługi zgodne w celu dalszego spełniają wymagania poza usługą Azure Active Directory. Dzięki temu można używać niektórych zewnętrznego uwierzytelniania wieloskładnikowego i dostawców weryfikacji do wymuszania wymagań dotyczących dostępu warunkowego. W celu spełnienia tego formantu, przeglądarki użytkownika jest przekierowywany do zewnętrznej usługi, wykonuje wszelkie wymagane uwierzytelnianie lub sprawdzania poprawności działania i jest następnie przekierowywane do usługi Azure Active Directory. Jeśli użytkownik został pomyślnie uwierzytelniony ani zweryfikowany, użytkownik będzie nadal w przepływ dostępu warunkowego. 
-
-## <a name="custom-controls"></a>Formanty niestandardowe
+## <a name="custom-controls-preview"></a>Formanty niestandardowe (wersja zapoznawcza)
 
 Kontrolki niestandardowe są możliwości wersji usługi Azure Active Directory Premium P1. Używając niestandardowych formantów, użytkownicy są przekierowywane do zgodnych usługi w celu dalszego spełniają wymagania poza usługą Azure Active Directory. W celu spełnienia tego formantu, przeglądarki użytkownika jest przekierowywany do zewnętrznej usługi, wykonuje wszelkie wymagane uwierzytelnianie lub sprawdzania poprawności działania i jest następnie przekierowywane do usługi Azure Active Directory. Usługa Azure Active Directory weryfikuje odpowiedzi i, jeśli użytkownik został pomyślnie uwierzytelniony ani zweryfikowany, użytkownik będzie kontynuowana w przepływ dostępu warunkowego.
 
@@ -157,10 +144,8 @@ Klikając **nowego formantu niestandardowego**, zostanie otwarty blok zawierają
 Aby usunąć formant niestandardowy, należy się najpierw upewnić, nie jest on używany w żadnych zasad dostępu warunkowego. Po zakończeniu:
 
 1. Przejdź do listy formantów niestandardowych
-
-2. Kliknij pozycję...  
-
-3. Wybierz pozycję **Usuń**.
+1. Kliknij pozycję...  
+1. Wybierz pozycję **Usuń**.
 
 ### <a name="editing-custom-controls"></a>Niestandardowe formanty do edycji
 
@@ -179,11 +164,9 @@ Możesz użyć tego formantu, aby wymagają usługi Azure AD do przekazania info
 Aby dowiedzieć się więcej, zobacz:
 
 - [Włączanie ograniczony dostęp z usługą SharePoint Online](https://aka.ms/spolimitedaccessdocs)
-
 - [Włączanie ograniczony dostęp z usługą Exchange Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
-
 - Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).

@@ -8,19 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: ea2399572177cc10006a5d9ee715190fff4a347b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0df9e4b41ff89dd295fe644900b78640a083e985
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66471443"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514568"
 ---
 # <a name="about-recovery-plans"></a>Informacje o planach odzyskiwania
 
 W tym artykule opisano planów odzyskiwania w [usługi Azure Site Recovery](site-recovery-overview.md).
 
-Plan odzyskiwania zbiera maszyn w grupach odzyskiwania. Plan można dostosować, dodając do niej zamówienia, instrukcje i zadania. Po zdefiniowaniu planu przejścia w tryb failover można uruchomić na nim.
-
+Plan odzyskiwania zbiera maszyn w grupach odzyskiwania. Plan można dostosować, dodając do niej zamówienia, instrukcje i zadania. Po zdefiniowaniu planu przejścia w tryb failover można uruchomić na nim.  Wiele planów odzyskiwania, w którym kolejne plany pozwoli na pominięcie wdrożenia/uruchomienia maszyny Jeśli została wcześniej wdrożona za pomocą innego planu odzyskiwania można odwoływać się do maszyny.
 
 
 ## <a name="why-use-a-recovery-plan"></a>Dlaczego warto używać planu odzyskiwania?

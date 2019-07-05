@@ -11,19 +11,19 @@ ms.author: marthalc
 author: marthalc
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: df2f0731aff6c90ef83b26041a9d383ce14974c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024245"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443975"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 
 W tym artykule możesz dowiedzieć się, jak można zbierać dane w modelu wejściowym z usługi Azure Machine Learning, który został wdrożony do klastra Kubernetes usługi Azure (AKS) do usługi Azure Blob storage. 
 
 Po włączeniu tych danych, które są zbierane pomoże Ci:
-* Monitorowanie danych drifts zgodnie z danymi produkcyjnymi wprowadza modelu
+* [Monitorowanie danych drifts](how-to-monitor-data-drift.md) zgodnie z danymi produkcyjnymi wprowadza modelu
 
 * Podejmowanie lepszych decyzji o tym, kiedy ponowne szkolenie lub optymalizowanie modelu
 

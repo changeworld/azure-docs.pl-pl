@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: 8f4e78f7e16f775a852b4c8172d1fa9fd70ec341
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417838"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491740"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jakie obciążenia można chronić za pomocą usługi Azure Site Recovery?
 
@@ -35,7 +35,7 @@ Usługa Site Recovery przyczynia się do ochrony i odzyskiwania na poziomie apli
 * Zapewnia replikację dla dowolnych obciążeń działających na obsługiwanej maszynie, niezależnie od aplikacji.
 * Niemal synchroniczna replikacja z celami punktu odzyskiwania wynoszącymi nawet 30 sekund, która spełnia wymagania większości aplikacji o krytycznym znaczeniu biznesowym.
 * Spójne migawki jednowarstwowych lub wielowarstwowych aplikacji.
-* Integracja z funkcją AlwaysOn programu SQL Server i współpraca z innymi technologiami replikacji na poziomie aplikacji, w tym replikacją AD, SQL AlwaysOn, grupami dostępności bazy danych (DAG, Database Availability Group) programu Exchange i Oracle Data Guard.
+* Integracja z funkcji AlwaysOn programu SQL Server i współpraca z innymi technologiami replikacji na poziomie aplikacji, łącznie z grupy dostępności bazy danych programu Exchange AD replikacji, funkcji SQL AlwaysOn (DAG).
 * Elastyczne plany odzyskiwania, które umożliwiają odzyskanie całego stosu aplikacji jednym kliknięciem oraz uwzględniają zewnętrzne skrypty i działania ręczne w planie.
 * Zaawansowane zarządzanie siecią w usłudze Site Recovery i na platformie Azure, które upraszcza wymagania sieciowe aplikacji. Obejmuje to rezerwowanie adresów IP, konfigurowanie równoważenia obciążeń oraz integrację z programem Azure Traffic Manager dla zapewnienia przełączania sieci o niskim limicie czasu odzyskiwania.
 * Bogata biblioteka automatyzacji, która zapewnia gotowe do zastosowania w środowisku produkcyjnym skrypty dopasowane do danych aplikacji, które można pobrać i zintegrować z planami odzyskiwania.

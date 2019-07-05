@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 07/0/2019
 ms.author: ramamill
-ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44588fedd53b363c43a369eeb1917ccaec58d948
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123918"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508766"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Konfigurowanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych na platformę Azure
 
@@ -24,7 +24,7 @@ W tym artykule opisano sposób konfigurowania środowiska lokalnego do uruchamia
 Tego artykułu przyjęto założenie, że masz już:
 - Magazyn usługi Recovery Services w [witryny Azure portal](https://portal.azure.com "witryny Azure portal").
 - Komputer fizyczny, na którym jest instalowany na serwerze konfiguracji.
-- Jeśli protokół TLS 1.0 zostały wyłączone na komputerze, na którym instalujesz serwer konfiguracji, upewnij się, włączenie protokołu TLs 1.2 i że .NET Framework w wersji 4.6 lub nowszy jest zainstalowany na maszynie (za pomocą silnej kryptografii wyłączone). [Dowiedz się więcej](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+- Jeśli protokół TLS 1.0 zostały wyłączone na komputerze, na którym instalujesz serwer konfiguracji, upewnij się, włączenie protokołu TLs 1.2 i że .NET Framework w wersji 4.6 lub nowszy jest zainstalowany na maszynie (za pomocą silnej kryptografii włączone). [Dowiedz się więcej](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Minimalne wymagania dotyczące serwera konfiguracji
 W poniższej tabeli wymieniono minimalnych wymagań sprzętowych, oprogramowania i wymagania dotyczące sieci dla serwera konfiguracji.

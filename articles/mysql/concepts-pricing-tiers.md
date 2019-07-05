@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 726da603b5f583c85f4b7c4262c6e97f565a3678
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 06/27/2019
+ms.openlocfilehash: aab3aaafd410c4f85eba7a246d0922128908bf93
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339925"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445428"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Usługa Azure Database for MySQL warstw cenowych
 
@@ -62,12 +62,12 @@ Firma Microsoft coraz limity magazynu w warstwach naszego ogólnego przeznaczeni
 |              | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:-------------|:--------------------|:---------------------|
 | Typ magazynu | Azure Premium Storage | Azure Premium Storage |
-| Rozmiar magazynu | 32 GB do 16 TB| 32-16 TB |
+| Rozmiar magazynu | 32 GB do 16 TB| 32 GB do 16 TB |
 | Rozmiar przyrost magazynu | 1 GB | 1 GB |
 | Operacje wejścia/wyjścia | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy| 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalnie 20 000 operacji We/Wy |
 
 > [!IMPORTANT]
-> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Japonia, część wschodnia, Korea środkowa, Australia Wschodnia.
+> Duże magazyny jest obecnie dostępna w publicznej wersji zapoznawczej w następujących regionach: Wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, Europa Północna, Europa Zachodnia, południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo, Azja południowo-wschodnia, Azja Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Australia Wschodnia, Południowa Australia Wschodnia.
 >
 > Obecnie nie obsługuje duże magazyny w wersji zapoznawczej:
 >

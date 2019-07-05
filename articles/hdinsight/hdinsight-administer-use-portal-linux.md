@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 44de565b8c94369c5751938b5df939f0af6e7f36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c745fceca5efa66b1b23661001d93ddb287fe37b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068915"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460630"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal
 
@@ -152,7 +152,7 @@ Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest uż
 Istnieje wiele sposobów, można programować procesu:
 
 * Użytkownik usługi Azure Data Factory. Zobacz [tworzenie na żądanie Apache Hadoop oparte na systemie Linux klastrów w HDInsight przy użyciu usługi Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) tworzenia HDInsight na żądanie połączonych usług.
-* Używanie programu Azure PowerShell.  Zobacz [analizowanie danych dotyczących opóźnień lotów](hdinsight-analyze-flight-delay-data-linux.md).
+* Używanie programu Azure PowerShell.  Zobacz [analizowanie danych dotyczących opóźnień lotów](./interactive-query/interactive-query-tutorial-analyze-flight-data.md).
 * Użyj wiersza polecenia platformy Azure. Zobacz [zarządzania usługi Azure HDInsight clusters, przy użyciu wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md).
 * Użyj zestawu .NET SDK HDInsight. Zobacz [zadania przesyłania Apache Hadoop](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

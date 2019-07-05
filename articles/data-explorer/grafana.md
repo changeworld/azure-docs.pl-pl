@@ -6,17 +6,23 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 135f8f1c9c352f9d2307a8bf9ad1bec892aac179
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 6/30/2019
+ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399914"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537791"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Wizualizuj dane z Eksploratora danych platformy Azure w narzędzia Grafana
 
 Grafana to platforma analityczna, która pozwala na zapytania i wizualizowanie danych, a następnie tworzyć i udostępniać pulpity nawigacyjne oparte na wizualizacji. Grafana zapewnia ono Eksploratora danych usługi Azure *wtyczki*, co umożliwia nawiązywanie połączenia i wizualizuj dane z Eksploratora danych usługi Azure. W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla platformy Grafana, a następnie wizualizować dane z klastra próbki.
+
+Korzystając z poniższego wideo, nauczysz się przy użyciu narzędzia Grafana firmy Eksploratora danych usługi Azure plugin, konfigurowanie Eksplorator danych platformy Azure jako źródło danych dla platformy Grafana, a następnie wizualizować dane. 
+
+> [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
+
+Alternatywnie możesz [Konfigurowanie źródła danych](#configure-the-data-source) i [wizualizowanie danych](#visualize-data) jak wyjaśniono w poniższym artykule.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -5,14 +5,14 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 06/25/2019
 ms.author: vinagara
-ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8183c7070b5d42e1c7a96fc0d64974658b2ec7d0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244960"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448923"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -24,16 +24,17 @@ Te alerty są dla zasobów platformy Azure, można utworzyć przy użyciu szablo
 > [!IMPORTANT]
 > Nie można utworzyć alerty dotyczące kondycji usługi powiadomień za pośrednictwem interfejsu tworzenia alertu dziennika aktywności. Aby dowiedzieć się więcej o tworzeniu i za pomocą powiadomień dotyczących kondycji usługi, zobacz [odbieranie alertów dziennika aktywności dla powiadomień dotyczących kondycji usług](alerts-activity-log-service-notifications.md).
 
+Podczas tworzenia reguł alertów, zapewnić następujące okoliczności:
+
+- Subskrypcja w zakresie nie jest różni się od subskrypcji, której tworzona jest alert.
+- Kryteria muszą być poziom/status/obiekt wywołujący / grupa zasobów / identyfikator zasobu / Typ zasobu / kategorii zdarzeń, na którym skonfigurowano alert.
+- Istnieje warunek "anyOf" lub warunki zagnieżdżone w konfiguracji alertu JSON (zasadniczo tylko jeden nieobsługiwanymi jest dozwolona w nie dalszych nieobsługiwanymi/anyOf).
+- Jeśli kategoria jest "administracyjne". Należy określić co najmniej jednego z poprzednich kryteriów w alertu. Nie można utworzyć alert, który aktywuje za każdym razem, gdy zdarzenie zostanie utworzone w dziennikach aktywności.
+
+
 ## <a name="azure-portal"></a>Azure Portal
 
-> [!NOTE]
-> 
->  Podczas tworzenia reguł alertów, zapewnić następujące okoliczności:
-> 
-> - Subskrypcja w zakresie nie jest różni się od subskrypcji, której tworzona jest alert.
-> - Kryteria muszą być poziom/status/obiekt wywołujący / grupa zasobów / identyfikator zasobu / Typ zasobu / kategorii zdarzeń, na którym skonfigurowano alert.
-> - Istnieje warunek "anyOf" lub warunki zagnieżdżone w konfiguracji alertu JSON (zasadniczo tylko jeden nieobsługiwanymi jest dozwolona w nie dalszych nieobsługiwanymi/anyOf).
-> - Jeśli kategoria jest "administracyjne". Należy określić co najmniej jednego z poprzednich kryteriów w alertu. Nie można utworzyć alert, który aktywuje za każdym razem, gdy zdarzenie zostanie utworzone w dziennikach aktywności.
+Za pomocą witryny Azure portal, użytkownik może utworzyć i modyfikowanie reguł alertów dzienników aktywności. I środowisko jest zintegrowana z dziennika aktywności platformy Azure — w celu zapewnienia bezproblemowego tworzenia alertu dla określonych zdarzeń zainteresowania.
 
 ### <a name="create-with-azure-portal"></a>Tworzenie za pomocą witryny Azure portal
 
@@ -220,11 +221,11 @@ gdy sampleActivityLogAlert.parameters.json zawiera wartości podanych dla parame
 
 Alerty dziennika aktywności są wyposażone w dedykowane dostępnych poleceń cmdlet programu PowerShell:
 
-- [Zestaw AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) : Tworzy nową lub aktualizowanie istniejącego alertu dziennika aktywności.
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) : Pobiera jeden lub więcej działań zasoby alertów dzienników.
-- [Włącz AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) : Umożliwia istniejącego alertu dziennika aktywności i ustawia jego tagów.
-- [Wyłącz AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) : Wyłącza istniejącego alertu dziennika aktywności i ustawia jego tagów.
-- [Usuń AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0) : Usuwa alertu dziennika aktywności.
+- [Zestaw AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert) : Tworzy nową lub aktualizowanie istniejącego alertu dziennika aktywności.
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert) : Pobiera jeden lub więcej działań zasoby alertów dzienników.
+- [Włącz AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert) : Umożliwia istniejącego alertu dziennika aktywności i ustawia jego tagów.
+- [Wyłącz AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert) : Wyłącza istniejącego alertu dziennika aktywności i ustawia jego tagów.
+- [Usuń AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert) : Usuwa alertu dziennika aktywności.
 
 ## <a name="cli"></a>Interfejs wiersza polecenia
 

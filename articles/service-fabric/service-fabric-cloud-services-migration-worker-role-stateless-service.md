@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e82abd6a7915123a94b4355e24cb94f13f9693c8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110013"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550381"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Przewodnik po konwersji w sieci Web i ról procesów roboczych do usługi bezstanowej usługi Service Fabric
 W tym artykule opisano sposób migracji z usług sieci Web i chmury ról procesów roboczych do usługi bezstanowej usługi Service Fabric. Jest to najprostsza ścieżka migracji z usług Cloud Services do usługi Service Fabric dla aplikacji, w których ogólna architektura ma około pozostają takie same.
@@ -32,7 +32,7 @@ Różnica polega na tym że projektu usługi w chmurze couples wdrożenie aplika
 ![Porównanie projekt usługi Service Fabric i Cloud Services][3]
 
 ## <a name="worker-role-to-stateless-service"></a>Rola procesu roboczego do usługi bezstanowej
-Koncepcyjnie rolę procesu roboczego reprezentuje obciążenia bezstanowego, co oznacza, każde wystąpienie obciążenie jest identyczny i żądania mogą zostać skierowane do dowolnego wystąpienia w dowolnym momencie. Każde wystąpienie jest nieoczekiwane zapamiętywać poprzednie żądanie. Stan, który przetwarza obciążenie jest zarządzane przez Magazyn stanów zewnętrznych, takich jak Azure Table Storage lub baza danych Documentdb Azure. W usłudze Service Fabric tego rodzaju obciążenia jest reprezentowany przez usługę bezstanową. Najprostszą metodą, jak w przypadku migracji roli proces roboczy w usłudze Service Fabric może odbywać się przez przekonwertowanie kod roli proces roboczy na usługę bezstanową.
+Koncepcyjnie rolę procesu roboczego reprezentuje obciążenia bezstanowego, co oznacza, każde wystąpienie obciążenie jest identyczny i żądania mogą zostać skierowane do dowolnego wystąpienia w dowolnym momencie. Każde wystąpienie jest nieoczekiwane zapamiętywać poprzednie żądanie. Stan, który przetwarza obciążenie jest zarządzane przez Magazyn stanów zewnętrznych, takich jak Azure Table Storage lub Azure Cosmos DB. W usłudze Service Fabric tego rodzaju obciążenia jest reprezentowany przez usługę bezstanową. Najprostszą metodą, jak w przypadku migracji roli proces roboczy w usłudze Service Fabric może odbywać się przez przekonwertowanie kod roli proces roboczy na usługę bezstanową.
 
 ![Rola procesu roboczego do usługi bezstanowej][4]
 

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 02ae9673f1dc402ee1500b466d7e259263ef3262
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494843"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537593"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Łączenie do Eksploratora danych platformy Azure z ODBC
 
@@ -20,7 +20,13 @@ Otwórz połączenie z bazą danych ([ODBC](/sql/odbc/reference/odbc-overview)) 
 
 W tle aplikacji wywołania funkcji w interfejsie ODBC, które są implementowane w modułach określonej bazy danych o nazwie *sterowniki*. Eksplorator danych usługi Azure obsługuje protokół komunikacyjny serwera SQL ([MS TDS](/azure/kusto/api/tds/)), dzięki czemu można użyć sterownika ODBC dla programu SQL Server.
 
-W tym artykule dowiesz się, jak używać sterownika SQL Server ODBC do połączenia się z Eksploratora danych platformy Azure z poziomu dowolnej aplikacji, która obsługuje ODBC.
+Przy użyciu poniższego wideo, nauczysz się tworzyć połączenia ODBC. 
+
+> [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
+
+Możesz też [Konfigurowanie źródła danych ODBC](#configure-the-odbc-data-source) jak wyjaśniono poniżej. 
+
+W artykule dowiesz się, jak używać sterownika SQL Server ODBC do połączenia się z Eksploratora danych platformy Azure z poziomu dowolnej aplikacji, która obsługuje ODBC. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

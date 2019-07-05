@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461565"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477859"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie regułami wykrywania inteligentnego usługi Application Insights przy użyciu szablonów usługi Azure Resource Manager
 
@@ -29,12 +29,14 @@ Ta metoda może służyć w przypadku wdrażania nowych zasobów usługi Applica
 
 Można skonfigurować następujące ustawienia dla reguły wykrywania inteligentnego:
 - Jeśli zasada jest włączona (wartość domyślna to **true**.)
-- Jeśli mają być wysyłane wiadomości e-mail do właścicieli subskrypcji, współautorzy i czytelnicy podczas wykrywania znajduje się (wartość domyślna to **true**.)
+- Jeśli wiadomości e-mail powinny być przesyłane do użytkowników skojarzonych z subskrypcją [Czytelnik monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) i [Współautor monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) role po znalezieniu wykrycie (wartość domyślna to **true**.)
 - Znajduje wszystkie dodatkowi adresaci wiadomości e-mail, które powinien otrzymywać powiadomienie, gdy wykrycie.
-- * Konfiguracja poczty e-mail jest niedostępna dla reguły wykrywania inteligentnego oznaczone jako _Podgląd_.
+    -  Konfiguracja poczty e-mail jest niedostępna dla reguły wykrywania inteligentnego oznaczone jako _Podgląd_.
 
 Aby zezwolić na konfigurowanie ustawień reguły za pomocą usługi Azure Resource Manager, konfiguracji reguły wykrywania inteligentnego jest teraz dostępny jako wewnętrzny zasobów w ramach zasobu usługi Application Insights, o nazwie **ProactiveDetectionConfigs**.
 Maksymalny elastyczności każdej reguły wykrywania inteligentnego można skonfigurować ustawienia powiadomień unikatowy.
+
+## 
 
 ## <a name="examples"></a>Przykłady
 
@@ -136,12 +138,46 @@ Upewnij się, zastąp nazwę zasobu usługi Application Insights i określ nazw�
 
 ```
 
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Anomalie w wersji 2 (inne niż wersja klasyczna) reguła alertu o niepowodzeniu
+
+Ten szablon usługi Azure Resource Manager pokazuje konfigurowanie reguły alertu anomalie w wersji 2 przy użyciu ważność 2. Nowa wersja anomalie reguły alertu jest częścią nowej platformy Azure, zgłaszania alertów platformy i zastępuje klasycznej wersji, która zostanie wycofana w ramach [classic alerty procesu wycofywania](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "microsoft.alertsmanagement/smartdetectoralertrules",
+            "apiVersion": "2019-03-01",
+            "name": "Failure Anomalies - my-app",
+            "properties": {
+                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "state": "Enabled",
+                  "severity": "2",
+                  "frequency": "PT1M",
+                  "detector": {
+                  "id": "FailureAnomaliesDetector"
+                  },
+                  "scope": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/microsoft.insights/components/my-app"],
+                  "actionGroups": {
+                        "groupIds": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/MyResourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup"]
+                  }
+            }
+        }
+    ]
+}
+```
+
+> [!NOTE]
+> Ten szablon usługi Azure Resource Manager jest unikatowy dla reguły alertu v2 anomalie i różni się od innych klasyczne reguły wykrywania inteligentnego opisanego w tym artykule.   
+
 ## <a name="smart-detection-rule-names"></a>Nazwy reguł wykrywania inteligentnego
 
 Poniżej znajduje się tabela nazwy reguł wykrywania inteligentnego, w jakiej występują w portalu wraz z ich nazwy wewnętrzne, które powinny być używane w szablonie usługi Azure Resource Manager.
 
 > [!NOTE]
-> Reguły wykrywania inteligentnego oznaczone jako wersji zapoznawczej nie obsługują powiadomienia e-mail. W związku z tym można ustawić tylko dla właściwości włączone dla tych reguł. 
+> Reguły wykrywania inteligentnego oznaczone jako _Podgląd_ nie obsługują powiadomienia e-mail. W związku z tym, można ustawić tylko _włączone_ właściwość dla tych zasad. 
 
 | Nazwa reguły portalu Azure | Nazwa wewnętrzna
 |:---|:---|
@@ -154,18 +190,7 @@ Poniżej znajduje się tabela nazwy reguł wykrywania inteligentnego, w jakiej w
 | Nietypowy wzrost liczby wyjątków (wersja zapoznawcza) | extension_exceptionchangeextension |
 | Potencjalny przeciek pamięci wykryto (wersja zapoznawcza) | extension_memoryleakextension |
 | Potencjalny problem z zabezpieczeniami wykryto (wersja zapoznawcza) | extension_securityextensionspackage |
-| Problem z wykorzystania zasobów wykryto (wersja zapoznawcza) | extension_resourceutilizationextensionspackage |
-
-## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
-
-W tej sekcji dotyczy alertów klasycznych inteligentne wykrywanie i tylko pomoże Ci zoptymalizować swoje powiadomień o alertach, aby upewnić się, że tylko przez adresatów żądaną otrzymywać powiadomienia. Aby dowiedzieć się więcej o różnicach między [alertów klasycznych](../platform/alerts-classic.overview.md) i nowego środowiska alertów odnoszą się do [artykuł z omówieniem alerty](../platform/alerts-overview.md). Obecnie wykrywanie inteligentne powiadamia tylko pomocy technicznej, które środowisko alertów klasycznych. Jedynym wyjątkiem jest [usługi Wykrywanie inteligentne alertów na platformie Azure w chmurze](./proactive-cloud-services.md). Do kontrolowania alert powiadomienia dla alertów wykrywania inteligentnego w chmurze Azure services użyj [grup akcji](../platform/action-groups.md).
-
-* Firma Microsoft zaleca użycie określonych adresatów powiadomień o alertach inteligentne wykrywanie klasycznego.
-
-* Alerty wykrywania inteligentnego **zbiorcze/grupę** pole wyboru opcji, jeśli włączona, wysyła do użytkowników z rolami właściciela, współautora lub czytelnika w ramach subskrypcji. W efekcie _wszystkich_ użytkowników z dostępem do subskrypcji zasobu usługi Application Insights znajdują się w zakresie i będą otrzymywać powiadomienia. 
-
-> [!NOTE]
-> Jeśli obecnie używasz **zbiorcze/grupę** pole wyboru opcji i go wyłączyć, nie można przywrócić zmianę.
+| Nietypowy wzrost liczby dzienna ilość danych (wersja zapoznawcza) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -3,7 +3,7 @@ title: Sposób użycia zestawu iOS SDK usługi Azure Mobile Apps
 description: Sposób użycia zestawu iOS SDK usługi Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 38d992e55a8e1f0a057a96f3e13c93c9dbd0c4a9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122459"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440389"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Sposób użycia biblioteki klienta usługi Azure Mobile Apps-iOS
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=/app-service-mobile-ios-how-to-use-client-library) już dziś.
+>
+
+## <a name="overview"></a>Omówienie
 Tego przewodnika dowiesz się, aby wykonać typowe scenariusze za pomocą najnowszej [usługi Azure Mobile Apps dla systemu iOS SDK][1]. Jeśli jesteś nowym użytkownikiem usługi Azure Mobile Apps, najpierw wykonaj [Azure mobilnych: aplikacje Szybki Start] Aby utworzyć zaplecze, utworzyć tabelę i pobrać projekt Xcode wstępnie skompilowanych dla systemu iOS. W tym przewodniku skupimy się na zestaw SDK systemu iOS po stronie klienta. Aby dowiedzieć się więcej na temat zestawu SDK po stronie serwera wewnętrznej bazy danych, zobacz HOWTOs zestawu SDK serwera.
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
@@ -435,7 +440,7 @@ Co najmniej `id` podczas wprowadzania usuwa, należy ustawić dla atrybutu.
 
 Za pomocą niestandardowego interfejsu API może narazić żadnych funkcji wewnętrznej bazy danych. Nie ma mapowania na operacji tabeli. Nie tylko możesz uzyskać większą kontrolę nad wiadomości, można nawet odczytu/ustawiania nagłówków i zmień format treści odpowiedzi. Aby dowiedzieć się, jak utworzyć niestandardowy interfejs API zaplecza, przeczytaj [niestandardowych interfejsów API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
-Aby wywołać niestandardowy interfejs API, należy wywołać `MSClient.invokeAPI`. Żądanie i odpowiedź zawartości są traktowane jako dane JSON. Aby korzystać z innych typów nośników [Użyj innego przeciążenia `invokeAPI` ] [ 5].  Aby `GET` żądania zamiast `POST` żądania parametru zestawu `HTTPMethod` do `"GET"` i parametru `body` do `nil` (ponieważ żądania GET nie ma treści wiadomości.) Jeśli niestandardowy interfejs API obsługuje inne zleceń HTTP, zmień `HTTPMethod` odpowiednio.
+Aby wywołać niestandardowy interfejs API, należy wywołać `MSClient.invokeAPI`. Żądanie i odpowiedź zawartości są traktowane jako dane JSON. Aby korzystać z innych typów nośników [Użyj innego przeciążenia `invokeAPI` ][5].  Aby `GET` żądania zamiast `POST` żądania parametru zestawu `HTTPMethod` do `"GET"` i parametru `body` do `nil` (ponieważ żądania GET nie ma treści wiadomości.) Jeśli niestandardowy interfejs API obsługuje inne zleceń HTTP, zmień `HTTPMethod` odpowiednio.
 
 **Objective-C**:
 
@@ -516,7 +521,7 @@ Wszystkie tagi są usuwane z żądania dotyczące zabezpieczeń.  Aby dodać tag
 
 Podczas wywoływania zaplecza aplikacji mobilnych w usłudze Azure App Service zawiera blok uzupełniania `NSError` parametru. Gdy wystąpi błąd, ten parametr jest inne niż zero. W kodzie należy sprawdzić tego parametru i obsługi błędów, zgodnie z potrzebami, jak pokazano w poprzednim fragmenty kodu.
 
-Plik [ `<WindowsAzureMobileServices/MSError.h>` ] [ 6] definiuje stałe `MSErrorResponseKey`, `MSErrorRequestKey`, i `MSErrorServerItemKey`. Aby wyświetlić więcej danych związane z błędem:
+Plik [ `<WindowsAzureMobileServices/MSError.h>` ][6] definiuje stałe `MSErrorResponseKey`, `MSErrorRequestKey`, i `MSErrorServerItemKey`. Aby wyświetlić więcej danych związane z błędem:
 
 **Objective-C**:
 
@@ -548,7 +553,7 @@ if (error.code == MSErrorPreconditionFailed) {
 
 Active Directory Authentication Library (ADAL) służy do logowania się użytkowników do aplikacji za pomocą usługi Azure Active Directory. Uwierzytelnianie przepływu klienta przy użyciu dostawcy tożsamości zestawu SDK zalecane jest stosowanie `loginWithProvider:completion:` metody.  Uwierzytelnianie przepływu klienta zapewnia bardziej natywnego działania środowiska użytkownika i umożliwia dodatkowych dostosowań.
 
-1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze AAD, wykonując [sposób konfigurowania usługi App Service dla nazwy logowania usługi Active Directory] [ 7] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej. Dla systemów iOS, zaleca się przekierowania URI ma postać `<app-scheme>://<bundle-id>`. Aby uzyskać więcej informacji, zobacz [Szybki Start z biblioteki ADAL dla systemu iOS][8].
+1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze AAD, wykonując [sposób konfigurowania usługi App Service dla nazwy logowania usługi Active Directory][7] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej. Dla systemów iOS, zaleca się przekierowania URI ma postać `<app-scheme>://<bundle-id>`. Aby uzyskać więcej informacji, zobacz [Szybki Start z biblioteki ADAL dla systemu iOS][8].
 2. Zainstaluj biblioteki ADAL przy użyciu Menedżera Cocoapods. Edytowanie pliku Podfile, aby uwzględnić następującą definicję zastępowanie **YOUR PROJECT** o nazwie projektu Xcode:
 
         source 'https://github.com/CocoaPods/Specs.git'
@@ -635,8 +640,8 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 
 Zestaw SDK usługi Facebook dla systemu iOS można użyć do logowania się użytkowników do aplikacji za pomocą usługi Facebook.  Przy użyciu uwierzytelniania przepływu klientów zalecane jest stosowanie `loginWithProvider:completion:` metody.  Uwierzytelnianie przepływu klienta zapewnia bardziej natywnego działania środowiska użytkownika i umożliwia dla dodatkowych dostosowań.
 
-1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze Facebook zgodnie z poniższymi [sposobu konfigurowania usługi App Service dla logowania do usługi Facebook] [ 9] samouczka.
-2. Zainstaluj zestaw SDK usługi Facebook dla systemu iOS, wykonując [Facebook SDK dla systemu iOS — wprowadzenie] [ 10] dokumentacji. Zamiast tworzenia aplikacji, możesz dodać do istniejącej rejestracji platformy iOS.
+1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze Facebook zgodnie z poniższymi [sposobu konfigurowania usługi App Service dla logowania do usługi Facebook][9] samouczka.
+2. Zainstaluj zestaw SDK usługi Facebook dla systemu iOS, wykonując [Facebook SDK dla systemu iOS — wprowadzenie][10] dokumentacji. Zamiast tworzenia aplikacji, możesz dodać do istniejącej rejestracji platformy iOS.
 3. Dokumentacja w serwisie Facebook zawiera jakiś kod języka Objective-C w delegacie aplikacji. Jeśli używasz **Swift**, można użyć następujących tłumaczeń dla AppDelegate.swift:
 
     ```swift

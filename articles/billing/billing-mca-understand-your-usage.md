@@ -1,40 +1,36 @@
 ---
-title: Opis warunków na użycie platformy Azure i opłaty za CSV dla umowy klienta firmy Microsoft | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak czytać i zrozumieć sekcje użycia platformy Azure i opłaty za CSV dla swojego profilu rozliczeń
-services: ''
-documentationcenter: ''
+title: Warunki plików użycia i opłat platformy Azure do umowy klienta firmy Microsoft
+description: Dowiedz się, jak czytać i zrozumieć sekcje użycia platformy Azure i opłaty za CSV dla swojego profilu rozliczeń.
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: jureid
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d11e31366ea5aa15cf7a790eaee800fa2ea6dabe
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371312"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490628"
 ---
-# <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>Opis warunków na użycie platformy Azure i opłaty za CSV dla umowy klienta firmy Microsoft
+# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Warunki plików użycia i opłat platformy Azure do umowy klienta firmy Microsoft
 
 Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
-Azure pliku CSV użycia i opłat zawiera opłaty za użycie poziomu codziennie i licznik dla bieżącego okresu rozliczeniowego.
+Azure użycia i opłat plik CSV zawiera opłaty za użycie dzienne i poziom licznika dla bieżącego okresu rozliczeniowego.
 
-Aby uzyskać plików platformy Azure użycia i opłat, zobacz [opłat za umowy klienta firmy Microsoft i Pobierz użycie platformy Azure i widoku](billing-download-azure-daily-usage.md).
-Jest ona dostępna w formacie wartości rozdzielanych przecinkami (CSV), który można otworzyć w aplikacji arkusza kalkulacyjnego.
+Aby uzyskać plików platformy Azure użycia i opłat, zobacz [opłat za umowy klienta firmy Microsoft i Pobierz użycie platformy Azure i widoku](billing-download-azure-daily-usage.md). Jest ona dostępna w formacie wartości rozdzielanych przecinkami (CSV), który można otworzyć w aplikacji arkusza kalkulacyjnego.
 
 Opłaty za zużycie to suma **miesięczne** opłaty za subskrypcję. Opłaty za użycie nie brać pod uwagę wszystkie środki na korzystanie z ani rabatów.
 
-## <a name="changes-in-the-enterprise-agreement-azure-usage-and-charges-csv"></a>Zmiany w użycia Enterprise Agreement platformy Azure i opłat CSV
+## <a name="changes-from-azure-ea-usage-and-charges"></a>Zmiany w porównaniu z umowy EA platformy Azure, użycia i opłat
 
-Jeśli jesteś klientem z umową EA, zauważysz, które warunki profil rozliczeniowy użycia platformy Azure pliku CSV są inne niż warunki w pliku CSV użycia EA Azure. Poniżej przedstawiono mapowanie EA warunki korzystania z rozliczeniami — warunki użytkowania profilu:
+Gdyby klientem z umową EA, zauważysz, że warunki Azure pliku CSV rozliczania użycia profilu różnią się od warunków w pliku CSV użycia umowy EA platformy Azure. Poniżej przedstawiono mapowanie EA warunki korzystania z rozliczeniami — warunki użytkowania profilu:
 
 | Użycie platformy Azure EA CSV | Microsoft Azure umowy klienta użycia i opłat CSV |
 | --- | --- |
@@ -42,14 +38,14 @@ Jeśli jesteś klientem z umową EA, zauważysz, które warunki profil rozliczen
 | Miesiąc| date |
 | Dzień | date |
 | Rok | date |
-| Product (Produkt) | Produkt |
+| Product (Produkt) | product |
 | MeterId | meterID |
-| MeterCategory | MeterCategory |
+| meterCategory | MeterCategory |
 | MeterSubCategory | meterSubCategory |
 | MeterRegion | meterRegion |
 | MeterName | meterName |
 | ConsumedQuantity | Ilość |
-| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ResourceRate | effectivePrice |
 | ExtendedCost | cost |
 | resourceLocation | resourceLocation |
 | ConsumedService | consumedService |
@@ -59,17 +55,15 @@ Jeśli jesteś klientem z umową EA, zauważysz, które warunki profil rozliczen
 | AdditionalInfo | AdditionalInfo |
 | `Tags` | tags |
 | StoreServiceIdentifier | ND |
-| Nazwa działu | invoiceSection | <!-- this was highlighted -->
+| Nazwa działu | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
 | ResourceGroup | resourceGroup |
-| ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
+| ChargesBilledSeparately | isAzureCreditEligible |
 
-<!-- TO DO: Marketplace CSV? -->
+## <a name="detailed-terms-and-descriptions"></a>Szczegółowy opis warunków wraz z opisami
 
-## <a name="detailed-terms-and-descriptions-in-your-azure-usage-and-charges-file"></a>Szczegółowy opis warunków i opisy w plików platformy Azure użycia i opłat
-
-W poniższej sekcji opisano ważne terminy objętego plików platformy Azure, użycia i opłat.
+Poniższe terminy są wyświetlane w plików platformy Azure, użycia i opłat.
 
 Termin | Opis
 --- | ---
@@ -98,7 +92,7 @@ meterSubCategory | Nazwa kategorii klasyfikacji podrzędnych miernika
 meterRegion | Nazwa regionu, w których mierniku usługi jest dostępny. Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych.
 oferty | Nazwa oferty zakupu
 productId | Unikatowy identyfikator produktu opłaty
-Produkt | Nazwa produktu, opłaty
+product | Nazwa produktu, opłaty
 Identyfikator subskrypcji | Unikatowy identyfikator subskrypcji opłaty
 subscriptionName | Nazwa subskrypcji opłaty
 reservationId | Unikatowy identyfikator wystąpienia zakupionej rezerwacji
@@ -108,7 +102,7 @@ publisherName | Wydawcy dla usług witryny Marketplace
 resourceGroupId | Unikatowy identyfikator dla grupy zasobów, skojarzone z zasobem
 resourceGroupName | Nazwa grupy zasobów, skojarzone z zasobem
 resourceId | Unikatowy identyfikator wystąpienia zasobu
-Typ zasobu | Typ wystąpienia zasobu
+resourceType | Typ wystąpienia zasobu
 resourceLocation | Określa lokalizację centrum danych, w którym jest uruchamiany zasób.
 location | Znormalizowana lokalizację zasobu, jeśli inny zasób lokalizacje są skonfigurowane dla tych samych regionach
 Ilość | Liczbę jednostek zakupionych lub wykorzystali
@@ -120,9 +114,9 @@ serviceInfo2 | Starszego pole, które zawiera opcjonalne metadane właściwe dla
 AdditionalInfo | Dodatkowe metadane specyficzne dla usługi.
 tags | Tagi, które można przypisać do zasobu
 
-### <a name="how-do-i-make-sure-that-the-charges-in-my-azure-usage-and-charges-file-are-correct"></a>Jak upewnić się, że opłaty w pliku platformy Azure użycia i opłat są poprawne?
+### <a name="make-sure-that-charges-are-correct"></a>Upewnij się, że opłaty są poprawne
 
-Jeśli w pliku szczegółowym zestawieniem użycia, które chcesz uzyskać więcej informacji znajduje się na znajduje się opłaty, zobacz [informacje o opłatach na fakturze profil rozliczeniowy](billing-mca-understand-your-bill.md)
+Jeśli chcesz upewnić się, że opłaty w szczegółowym zestawieniem użycia pliku są poprawne, możesz je sprawdzić. Zobacz [informacje o opłatach na fakturze profil rozliczeniowy](billing-mca-understand-your-bill.md)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

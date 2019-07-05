@@ -10,36 +10,44 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0181eea2895dbc2b3db3367c850140e3fad21d4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2196e375db582202997b838d05c902db95b3a3ad
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331718"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461465"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
 Więcej informacji na temat architektury, pojęcia i przepływ pracy dla usługi Azure Machine Learning. Główne składniki usługi i ogólny przepływ pracy przy użyciu usługi przedstawiono na poniższym diagramie:
 
-[![Architektura usługi Azure Machine Learning service i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+![Architektura usługi Azure Machine Learning service i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Przepływ pracy
 
-Ogólnie maszyny uczenie się przepływu pracy przebiega w następującej kolejności:
+Maszyny, uczenia modelu przepływu pracy jest ogólnie przebiega w następującej kolejności:
 
-1. Tworzenie usługi machine learning szkolenia skryptów w **Python** lub za pomocą interfejsu wizualnego.
-1. Tworzenie i konfigurowanie **obliczeniowego elementu docelowego**.
-1. **Przesyłanie skryptów usługi** docelową obliczeń skonfigurowany do uruchamiania w środowisku. Podczas szkolenia, skrypty można odczytać lub zapisać do **datastore**. I rekordy wykonywania są zapisywane jako **uruchamia** w **obszaru roboczego** i zgrupowane w obszarze **eksperymentów**.
-1. **Zapytanie eksperymentu** dla zarejestrowanych metryk z bieżącej i wcześniejszych przebiegów. Jeśli metryki nie wskazują żądanego wyniku, pętli, wróć do kroku 1 i powtarzanie czynności w skryptach.
-1. Po znalezieniu zadowalające Uruchom rejestrowanie utrwalonej modelu w **rejestru modelu**.
-1. Twórz oceniania skrypt, który używa modelu i **wdrożyć model** jako **usługi sieci web** na platformie Azure lub do **urządzenie usługi IoT Edge**.
+1. **Szkolenie**
+    + Tworzenie usługi machine learning szkolenia skryptów w **Python** lub za pomocą interfejsu wizualnego.
+    + Tworzenie i konfigurowanie **obliczeniowego elementu docelowego**.
+    + **Przesyłanie skryptów usługi** docelową obliczeń skonfigurowany do uruchamiania w środowisku. Podczas szkolenia, skrypty można odczytać lub zapisać do **datastore**. I rekordy wykonywania są zapisywane jako **uruchamia** w **obszaru roboczego** i zgrupowane w obszarze **eksperymentów**.
 
-Należy wykonać te czynności przy użyciu dowolnej z następujących czynności:
-+ [Usługi Azure Machine Learning zestawu SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-+ [Usługi Azure Machine Learning interfejs wiersza polecenia](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
-+ [Rozszerzenie usługi Azure Machine Learning programu VS Code](how-to-vscode-tools.md)
-+  [Interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning](ui-concept-visual-interface.md)
+1. **Pakiet** — po znalezieniu zadowalające Uruchom rejestrowanie utrwalonej modelu w **rejestru modelu**.
 
+1. **Sprawdź poprawność** - **zapytania eksperymentu** dla zarejestrowanych metryk z bieżącej i wcześniejszych przebiegów. Jeśli metryki nie wskazują żądanego wyniku, pętli, wróć do kroku 1 i powtarzanie czynności w skryptach.
+
+1. **Wdróż** — opracowywanie oceniania skrypt, który używa modelu i **wdrożyć model** jako **usługi sieci web** na platformie Azure lub do **urządzenie usługi IoT Edge**.
+
+1. **Monitor** -Monitor wykrywający sytuacje, **dryfu danych** między danymi zestawu danych i wnioskowania szkolenia wdrożony model. Gdy jest to konieczne, sprzężenia zwrotnego krok 1, aby ponowne szkolenie modelu przy użyciu nowych danych szkoleniowych.
+
+## <a name="tools-for-azure-machine-learning"></a>Narzędzia dla usługi Azure Machine Learning 
+
+Należy użyć tych narzędzi dla usługi Azure Machine Learning:
+
++  Interakcji z usługą w dowolnym środowisku Python za pomocą [Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
++ Automatyzowanie działań z uczenia maszynowego [Machine Learning wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
++ Pisanie kodu w programie Visual Studio Code za pomocą [rozszerzenia usługi Azure Machine Learning programu VS Code](how-to-vscode-tools.md) 
++ Użyj [interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning](ui-concept-visual-interface.md) wykonać kroki przepływu pracy bez konieczności pisania kodu.
 
 ## <a name="glossary-of-concepts"></a>Słownik pojęć
 

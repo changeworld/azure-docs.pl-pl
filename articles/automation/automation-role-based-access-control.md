@@ -5,17 +5,17 @@ keywords: automation rbac, kontrola dostępu oparta na rolach, azure rbac
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738836"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477734"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
@@ -232,6 +232,7 @@ Poniższe tabele pokazują minimalnych wymaganych uprawnień, służące do doł
 |Sprawdzanie stanu dołączania do - odczytu maszyny Wirtualnej      | Microsoft.Compute/virtualMachines/read         | Maszyna wirtualna         |
 |Sprawdź stan dołączania — odczytu konta      | Microsoft.Automation/automationAccounts/read  |  Konto usługi Automation   |
 | Dołączanie do obszaru roboczego wyboru dla maszyny Wirtualnej<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Subskrypcja         |
+| Zarejestruj dostawcę usługi Log Analytics |Microsoft.Insights/register/action | Subskrypcja|
 
 <sup>1</sup> to uprawnienie jest wymagane do dołączania za pomocą środowiska portalu maszyny Wirtualnej.
 
@@ -251,6 +252,7 @@ Poniższe tabele pokazują minimalnych wymaganych uprawnień, służące do doł
 |Utwórz/Edytuj zapisane wyszukiwanie     | Microsoft.OperationalInsights/workspaces/write        | Obszar roboczy        |
 |Tworzenie/Edytowanie konfiguracji zakresu     | Microsoft.OperationalInsights/workspaces/write        | Obszar roboczy        |
 |Rozwiązanie łączy do konfiguracji zakresu      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Rozwiązanie         |
+| Zarejestruj dostawcę usługi Log Analytics |Microsoft.Insights/register/action | Subskrypcja|
 |**Krok 2 — dołączanie wielu maszyn wirtualnych**     |         |         |
 |Blok VMOnboarding — tworzenie MMA rozszerzenia     | Microsoft.Compute/virtualMachines/write           | Maszyna wirtualna        |
 |Utwórz / Edytuj zapisane wyszukiwanie     | Microsoft.OperationalInsights/workspaces/write           | Obszar roboczy        |

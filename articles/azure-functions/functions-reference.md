@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 737da27fd8da292b6c1f8997d4bd300bbec8740e
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120742"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565528"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów usługi Azure Functions
 W usłudze Azure Functions określonych funkcji udostępniania kilka podstawowych pojęć technicznych i składniki, niezależnie od języka lub powiązania, którego używasz. Zanim przejdziesz do nauki szczegóły specyficzne dla danego języka lub powiązania, koniecznie zapoznaj się z tego omówienia, która ma zastosowanie do wszystkich z nich.
@@ -107,5 +107,5 @@ Więcej informacji zawierają następujące zasoby:
 * [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
 * [Kodowanie i testowanie usługi Azure Functions lokalnie](./functions-develop-local.md)
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
-* [Usługa Azure Functions dla deweloperów odwołanie w C#](functions-reference-csharp.md)
+* [Usługa Azure Functions dla deweloperów odwołanie w C#](functions-dotnet-class-library.md)
 * [Dokumentacja dla deweloperów w usłudze Azure Functions NodeJS](functions-reference-node.md)

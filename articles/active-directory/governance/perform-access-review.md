@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f73d3bf5e502a758dd46561059c15a2970d9b6
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113239"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471826"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników do grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
@@ -40,7 +40,7 @@ Pierwszym krokiem do wykonania przeglądu dostępu jest znaleźć i otworzyć Pr
 
 1. Poszukaj wiadomości e-mail od firmy Microsoft, która prosi o przegląd dostępu wszystkich użytkowników. Poniżej przedstawiono przykładową wiadomość e-mail na przeprowadzić przegląd dostępu dla grupy.
 
-    ![Przejrzyj dostęp do poczty e-mail](./media/perform-access-review/access-review-email.png)
+    ![Przykładową wiadomością e-mail od firmy Microsoft, aby Przegląd dostępu wszystkich użytkowników do grupy](./media/perform-access-review/access-review-email.png)
 
 1. Kliknij przycisk **rozpocząć Przegląd** link umożliwiający otworzenie Przegląd dostępu.
 
@@ -48,7 +48,7 @@ Jeśli nie masz wiadomości e-mail można znaleźć, przeglądy dostępu w usłu
 
 1. Zaloguj się do portalu MyApps pod adresem [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
-    ![Portalu MyApps](./media/perform-access-review/myapps-access-panel.png)
+    ![Portalu MyApps, wyświetlanie listy aplikacji, do których masz uprawnienia do](./media/perform-access-review/myapps-access-panel.png)
 
 1. W prawym górnym rogu strony kliknij symbol użytkownika, który wyświetla Twoją nazwę i domyślną organizację. Jeśli na liście jest więcej niż jedna organizacja, wybierz tę, która zażądała przeglądu dostępu.
 
@@ -56,7 +56,7 @@ Jeśli nie masz wiadomości e-mail można znaleźć, przeglądy dostępu w usłu
 
     Jeśli kafelek nie jest widoczny, nie ma żadnych przeglądów dostępu do wykonania dla tej organizacji i w tej chwili jest wymagana żadna akcja.
 
-    ![Lista przeglądów dostępu](./media/perform-access-review/access-reviews-list.png)
+    ![Lista przeglądów dostępu oczekujące dla aplikacji i grup](./media/perform-access-review/access-reviews-list.png)
 
 1. Kliknij przycisk **Rozpocznij Przegląd** link dla przeglądu dostępu, którą chcesz wykonać.
 
@@ -66,7 +66,7 @@ Po otwarciu przeglądu dostępu, zobaczysz nazwy użytkowników, którzy muszą 
 
 Jeśli żądanie ma przeglądu własnego dostępu, strona będzie wyglądała różne. Aby uzyskać więcej informacji, zobacz [Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacji](review-your-access.md).
 
-![Przeprowadzenie przeglądu dostępu](./media/perform-access-review/perform-access-review.png)
+![Przegląd otwartego dostępu listę użytkowników, którzy potrzebują do przeglądu](./media/perform-access-review/perform-access-review.png)
 
 Istnieją dwa sposoby, można zatwierdzić lub odmowa dostępu:
 
@@ -81,7 +81,7 @@ Istnieją dwa sposoby, można zatwierdzić lub odmowa dostępu:
 
 1. Kliknij przycisk **zatwierdzić** lub **Odmów**. Jeśli nie masz, możesz kliknąć **nie znasz**. To spowoduje użytkownika utrzymywania ich dostęp, ale zaznaczenia zostaną odzwierciedlone w dziennikach inspekcji.
 
-    ![Przeprowadzenie przeglądu dostępu](./media/perform-access-review/approve-deny.png)
+    ![Okno akcji, które obejmuje Zatwierdź, Odmów, a nie znasz opcji](./media/perform-access-review/approve-deny.png)
 
 1. Jeśli to konieczne, podaj przyczynę w **Przyczyna** pole.
 
@@ -102,11 +102,11 @@ Aby wprowadzić łatwiejsze i szybsze przeglądów dostępu dla Ciebie, oferujem
 
 1. Niebieski pasek u dołu strony, kliknij **Zaakceptuj zalecenia**.
 
-    ![Zaakceptuj zalecenia](./media/perform-access-review/accept-recommendations.png)
+    ![Przegląd otwartego dostępu do wyświetlania listy przedstawiający przycisk Zaakceptuj zalecenia](./media/perform-access-review/accept-recommendations.png)
 
     Zostanie wyświetlone podsumowanie zalecanych akcji.
 
-    ![Zaakceptuj zalecenia podsumowania](./media/perform-access-review/accept-recommendations-summary.png)
+    ![Okno, które jest wyświetlane podsumowanie zalecane akcje](./media/perform-access-review/accept-recommendations-summary.png)
 
 1. Kliknij przycisk **Ok** na przyjęcie zaleceń.
 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: aa4e37e3b360727feb998ef5e9ca9b776c4b0e53
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b3e772ebb05f79abb70e58e63a93c3336a413e38
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303943"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542548"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
 
@@ -84,7 +84,7 @@ Dodano aktualizacje, które obejmują udoskonalenia w zakresie wydajności usłu
 
 ## <a name="march-2019"></a>Marca 2019 r
 
-Dynamiczne pakowanie teraz obsługuje Dolby Atmos. Aby uzyskać więcej informacji, zobacz [kodery-dekodery Audio obsługiwane przez funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+Dynamiczne pakowanie teraz obsługuje Dolby Atmos. Aby uzyskać więcej informacji, zobacz [kodery-dekodery Audio obsługiwane przez funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md#audio-codecs).
 
 Teraz można określić listę filtrów zasobów lub konta, które będzie dotyczyć Twojego lokalizatora przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [skojarzyć filtrów z lokalizatora przesyłania strumieniowego](filters-concept.md#associating-filters-with-streaming-locator).
 

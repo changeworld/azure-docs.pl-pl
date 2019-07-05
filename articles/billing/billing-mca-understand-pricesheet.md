@@ -1,34 +1,30 @@
 ---
-title: Opis warunków w arkuszu cen dla umowy klienta firmy Microsoft — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak czytać i zrozumieć swoje użycia oraz rachunek dotyczące subskrypcji platformy Azure
-services: ''
-documentationcenter: ''
-author: jureid
+title: Opis warunków w arkuszu cen dla umowy klienta firmy Microsoft — Azure
+description: Dowiedz się, jak czytać i zrozumieć użycia i rachunek dla umowy klienta firmy Microsoft.
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4d83228fbec395d604e5ce3f988d2a6157f21eed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371363"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490664"
 ---
-# <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>Opis warunków w arkuszu cen dla umowy klienta firmy Microsoft
+# <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Warunki w arkuszu cen umowy klienta firmy Microsoft
 
-Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Ten artykuł dotyczy konta rozliczeniowego Azure do umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
 Jeśli profil rozliczeniowy właścicielem, współautorem, czytnika lub Menedżer faktur możesz pobrać arkusz cen w organizacji w witrynie Azure portal. Zobacz [wyświetlanie i pobieranie cenowych organizacji](billing-ea-pricing.md).
 
-## <a name="detailed-terms-and-descriptions-in-your-microsoft-customer-agreement-price-sheet"></a>Szczegółowy opis warunków i opisy w arkuszu cen umowy klienta firmy Microsoft
+## <a name="terms-and-descriptions-in-your-price-sheet"></a>Warunki i opisy w arkuszu cen
 
 W poniższej sekcji opisano ważne terminy wyświetlane w arkuszu cen umowy klienta firmy Microsoft.
 

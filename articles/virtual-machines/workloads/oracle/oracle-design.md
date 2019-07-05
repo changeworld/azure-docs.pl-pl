@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 1f808161087dff614ef83aacc606501bce96d3eb
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 039b1628571b786a4997c08f96cc9aa0f347c7f7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155134"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446696"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Projektowanie i implementacja bazy danych Oracle na platformie Azure
 
@@ -147,7 +147,7 @@ Oparte na Twoje wymagania dotyczące przepustowości sieci, istnieją różne ty
 - Użyj maszyn wirtualnych za pomocą [Accelerated Networking](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) do zwiększenia wydajności sieci.
 - W przypadku niektórych distrubutions systemu Linux, należy rozważyć włączenie [obsługi TRIM/UNMAP](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
 - Zainstaluj [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) na oddzielnej maszynie wirtualnej.
-- Ogromna strony nie są włączone domyślnie w systemie linux. Należy rozważyć włączenie ogromna stron i ustaw `use_large_pages = ONLY ` dla bazy danych Oracle. Może to pomóc w zwiększeniu wydajności. Więcej informacji można znaleźć [tutaj](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
+- Ogromna strony nie są włączone domyślnie w systemie linux. Należy rozważyć włączenie ogromna stron i ustaw `use_large_pages = ONLY` dla bazy danych Oracle. Może to pomóc w zwiększeniu wydajności. Więcej informacji można znaleźć [tutaj](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Typy dysków i konfiguracji
 

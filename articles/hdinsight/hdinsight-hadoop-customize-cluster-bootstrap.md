@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 7f9100686eaab8c4c75e3d862026b18b6c46ed09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50db9a588cd953bbd0e912ec942194a8deeffe4c
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203703"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484037"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów HDInsight za pomocą narzędzia Bootstrap
 
@@ -133,7 +133,7 @@ Usługa ładowania początkowego można użyć w szablonie usługi Resource Mana
 ![HDInsight Hadoop dostosowuje bootstrap szablonu usługi Azure Resource Manager klastra](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Zobacz także
-* [Tworzenie klastrów usługi Apache Hadoop w HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
+* [Tworzenie klastrów usługi Apache Hadoop w HDInsight][hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
 * [Tworzenie akcji skryptu skryptów dla HDInsight][hdinsight-write-script]
 * [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]
 * [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
@@ -149,9 +149,6 @@ Usługa ładowania początkowego można użyć w szablonie usługi Resource Mana
 ## <a name="appendix-powershell-sample"></a>Dodatek: Przykładowy skrypt programu PowerShell
 
 Ten skrypt programu PowerShell umożliwia utworzenie klastra usługi HDInsight i dostosowuje ustawienie gałęzi. Pamiętaj wprowadzić wartości `$nameToken`, `$httpPassword`, i `$sshPassword`.
-
-> [!IMPORTANT]  
-> Wartości `DefaultStorageAccount`, i `DefaultStorageContainer` nie są zwracane z [Get AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) podczas [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md) jest włączona na koncie magazynu.
 
 > [!WARNING]  
 > Rodzaj konta magazynu `BlobStorage` nie można używać w przypadku klastrów HDInsight.

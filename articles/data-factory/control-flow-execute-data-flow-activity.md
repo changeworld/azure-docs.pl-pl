@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e75c6290474d876ca22b5888d06b1fc0e4c8cd05
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077326"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471654"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Wykonywanie działań przepływu danych w usłudze Azure Data Factory
 Działanie przepływu danych wykonaj służy do uruchamiania przepływu danych ADF uruchomienia debugowania (piaskownicy) potoku i uruchomień potoków wyzwolone.
@@ -80,11 +80,17 @@ Jeśli używasz sparametryzowane zestawów danych, należy podać wartości para
 
 ![Parametry przepływu danych wykonaj](media/data-flow/params.png "parametrów")
 
-### <a name="debugging-parameterized-data-flows"></a>Debugowanie sparametryzowane przepływów danych
+## <a name="parameterized-data-flows"></a>Przepływy danych sparametryzowane
 
-Możesz debugować można tylko przepływy danych za pomocą sparametryzowanych zestawy danych z potoku debugowanie, uruchamianie przy użyciu działań przepływu danych wykonaj. Obecnie sesji debugowania interakcyjnego w przepływ danych ADF nie działają z sparametryzowane zestawów danych. Potok wykonań i uruchomień debugowania będzie działać z parametrami.
+Jeśli masz parametry wewnątrz przepływu danych ustawi dynamiczne wartości parametrów przepływu danych w sekcji Parametry działań wykonania przepływu danych. Język wyrażeń potoku usługi ADF (tylko dla typów parametrów ciągu) lub język wyrażeń przepływu danych służy do ustawiania wartości parametrów dynamicznych wyrażeń lub wartości literału statycznego.
 
-Dobrym rozwiązaniem jest tworzenie przepływu danych z zestawu danych statycznych, by były pełne metadane kolumny propagacji dostępne w czasie projektowania. Następnie zastąp statyczny zestaw danych dynamicznych sparametryzowane zestawu danych podczas operacjonalizacja potoku przepływu danych.
+![Wykonaj przykładowy parametr przepływu danych](media/data-flow/parameter-example.png "przykładzie parametr")
+
+### <a name="debugging-data-flows-with-parameters"></a>Debugowanie przepływów danych z parametrami
+
+W tej chwili bieżącego można debugować tylko przepływy danych przy użyciu parametrów przy użyciu potoku debugowanie, uruchamianie przy użyciu działań przepływu danych wykonaj. Sesji debugowania interakcyjnego w przepływ danych ADF będzie dostępna wkrótce. Potok wykonań i uruchomień debugowania, jednak będą działać z parametrami.
+
+Dobrym rozwiązaniem jest tworzenie przepływu danych z zawartości statycznej, aby mieć pełne metadane kolumny propagacji dostępne w czasie projektowania dla rozwiązywania problemów. Następnie zastąp statyczny zestaw danych dynamicznych sparametryzowane zestawu danych podczas operacjonalizacja potoku przepływu danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 

@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie aplikacjami logiki w programie Visual Studio — Azure Logic Apps
+title: Zarządzanie aplikacjami logiki za pomocą programu Visual Studio — Azure Logic Apps
 description: Zarządzanie aplikacjami logiki i innych zasobów platformy Azure za pomocą Eksploratora chmury w usłudze Visual Studio
 services: logic-apps
 ms.service: logic-apps
@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: ecf7f11074b447e9f093e4fd6677a3d09d213b1d
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 694ff490d7623b2dff26a61ccae8106a276b84af
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295831"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447900"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki w programie Visual Studio
 

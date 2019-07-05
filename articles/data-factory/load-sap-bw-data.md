@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c846ab3e81e7ab8a4948aa4ed96cfa75e8eb3f4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152414"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449696"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse za pomocą usługi Azure Data Factory
 
@@ -125,7 +125,7 @@ W witrynie Azure portal przejdź do usługi data factory. Wybierz **tworzenie i 
 
     ![Dane wyjściowe działania w widoku szczegółów](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="do-an-incremental-copy-from-sap-bw-open-hub"></a>Czy przyrostowa kopia z Centrum Otwórz programu SAP BW
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>Przyrostowe kopiowanie danych z Centrum Otwórz programu SAP BW
 
 > [!TIP]
 > Zobacz [przepływ wyodrębniania delta łącznika SAP BW Open Centrum](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) Aby dowiedzieć się, jak łącznik SAP BW Open Centrum w fabryce danych kopiuje dane przyrostowe z systemu SAP BW. Ten artykuł może także ułatwić zrozumienie konfiguracji łącznika podstawowe.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep;amverma
 ms.custom: include file
-ms.openlocfilehash: 5cbc19d5aade2bbcc8b8dca277352d1b17d1d35a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d9491bae1fcc6acb7ab631514aa4f6244f593d
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755187"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538031"
 ---
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 * **Subskrypcja platformy Azure** — Aby wdrożyć więcej niż kilka wystąpień obliczeniowych, należy wziąć pod uwagę subskrypcji zgodnie z rzeczywistym użyciem lub inne opcje zakupu. Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
@@ -34,6 +34,6 @@ Podzbiór wystąpień obliczeniowych (A8, A9, H16r, H16mr, HB i HC) są wyposaż
 Ten interfejs umożliwia obsługą dostępu RDMA wystąpień do komunikowania się za pośrednictwem sieci InfiniBand (IB), operacyjne stawek EDR HB, połączenia Hybrydowego, przepustowości fdr wraz ze stawkami za usługi H16r, H16mr i obsługą dostępu RDMA seria maszyn wirtualnych i QDR stawki za maszyny wirtualne A8 i A9. Te możliwości RDMA może zwiększyć skalowalność i wydajność niektórych aplikacji interfejsu przekazywania komunikatów (MPI). Aby uzyskać więcej informacji o szybkości Zobacz szczegółowe informacje w tabelach na tej stronie.
 
 > [!NOTE]
-> Na platformie Azure IP over IB jest obsługiwane tylko dla maszyn wirtualnych, o których (obecnie HB i HC) z włączoną funkcję SR-IOV. RDMA za pośrednictwem IB jest obsługiwana dla wszystkich wystąpień z funkcją RDMA.
+> Na platformie Azure IP over IB jest obsługiwane tylko dla maszyn wirtualnych (SR-IOV InfiniBand, obecnie HB i HC) z włączoną funkcję SR-IOV. RDMA za pośrednictwem IB jest obsługiwana dla wszystkich wystąpień z funkcją RDMA.
 >
 

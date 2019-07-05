@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f46a35d971c008b61d4899e30101ea562d3cefea
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242691"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483408"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Wybierz analizy w czasie rzeczywistym i przesyłania strumieniowego technologii przetwarzania na platformie Azure
 
@@ -44,7 +44,7 @@ Usługa Azure Stream Analytics ma bogate poza pole. Można od razu korzystać z 
 
 ### <a name="you-need-to-input-from-or-output-to-kafka"></a>Musisz danych wejściowych z lub dane wyjściowe do platformy Kafka
 
-Usługa Azure Stream Analytics nie ma danych wejściowych platformy Apache Kafka lub danych wyjściowych karty. Jeśli masz kierowanych do zdarzenia lub potrzebujesz do wysłania do platformy Kafka i nie ma konieczności uruchamiania klastra Kafka, można nadal wysyła zdarzenia do usługi Event Hubs przy użyciu interfejsu API platformy Kafka centra zdarzeń, bez konieczności zmieniania nadawcy zdarzeń za pomocą usługi Stream Analytics. Jeśli musisz uruchomić klaster platformy Kafka, możesz użyć platformy Spark przesyłanie strumieniowe ze strukturą, który jest w pełni obsługiwany w [usługi Azure Databricks](../azure-databricks/index.yml), lub Storm na [Azure HDInsight](../hdinsight/storm/apache-storm-tutorial-get-started-linux.md).
+Usługa Azure Stream Analytics nie ma danych wejściowych platformy Apache Kafka lub danych wyjściowych karty. Jeśli masz kierowanych do zdarzenia lub potrzebujesz do wysłania do platformy Kafka i nie ma konieczności uruchamiania klastra Kafka, można nadal wysyła zdarzenia do usługi Event Hubs przy użyciu interfejsu API platformy Kafka centra zdarzeń, bez konieczności zmieniania nadawcy zdarzeń za pomocą usługi Stream Analytics. Jeśli musisz uruchomić klaster platformy Kafka, możesz użyć platformy Spark przesyłanie strumieniowe ze strukturą, który jest w pełni obsługiwany w [usługi Azure Databricks](../azure-databricks/index.yml), lub Storm na [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md).
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>Chcesz napisać funkcje zdefiniowane przez użytkownika agregatów uda i deserializers niestandardowych w języku innym niż język JavaScript lubC#
 

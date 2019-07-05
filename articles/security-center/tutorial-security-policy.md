@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7f738350743b0b80bf39a322043c514081721def
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ff05421222ff0f4312d703366cfd443eee06450
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967856"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551721"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
@@ -32,7 +32,7 @@ Aby uzyskać instrukcje na temat sposobu ustawiania zasad przy użyciu programu 
 > Usługa Security Center pracy integracji z usługą Azure Policy. Dotychczasowi użytkownicy zostaną automatycznie przeniesieni do nowego inicjatywy wbudowanych w zasadach usługi Azure, zamiast poprzednich zasad zabezpieczeń w usłudze Security Center. Ta zmiana nie wpłynie na Twoje zasoby lub środowisko z wyjątkiem obecności nowej inicjatywy w zasadach usługi Azure.
 
 ## <a name="what-are-security-policies"></a>Czym są zasady zabezpieczeń?
-Zasady zabezpieczeń definiują pożądaną konfigurację Twoich obciążeń oraz pomagają zapewnić zgodność z wymaganiami dotyczącymi zabezpieczeń określonymi przez firmę lub przepisy. Usługa Azure Policy można zdefiniować zasady dla subskrypcji platformy Azure i dostosowuj je do danego typu obciążenia lub wrażliwości danych. Na przykład aplikacje wykorzystujące dane podlegające ochronie, takie jak dane osobowe, mogą wymagać wyższego poziomu zabezpieczeń niż innych obciążeń. Aby ustawić zasady dla subskrypcji lub grupy zarządzania, należy ustawić je w [usługi Azure Policy](../governance/policy/overview.md).
+Zasady zabezpieczeń definiują pożądaną konfigurację Twoich obciążeń oraz pomagają zapewnić zgodność z wymaganiami dotyczącymi zabezpieczeń określonymi przez firmę lub przepisy. Usługa Azure Policy można zdefiniować zasady dla subskrypcji platformy Azure i dostosowuj je do danego typu obciążenia lub wrażliwości danych. Na przykład aplikacje wykorzystujące dane podlegające ochronie, takie jak dane osobowe lub danych klienta, mogą wymagać wyższego poziomu zabezpieczeń niż innych obciążeń. Aby ustawić zasady dla subskrypcji lub grupy zarządzania, należy ustawić je w [usługi Azure Policy](../governance/policy/overview.md).
 
 Zasady zabezpieczeń dla dysku zalecenia dotyczące zabezpieczeń, który jest pobierany w usłudze Azure Security Center. Można monitorować zgodność z nimi ułatwiają znalezienie potencjalnych luk i uniknięcie zagrożeń. Aby uzyskać więcej informacji na temat sposobu określenia która opcja jest odpowiednia dla Ciebie, zobacz listę [zasad wbudowanych rozwiązań zabezpieczeń](security-center-policy-definitions.md).
 
@@ -73,13 +73,6 @@ Aby wyświetlić zasady zabezpieczeń w usłudze Security Center:
    > [!NOTE]
    > - Na pulpicie nawigacyjnym usługi Security Center mogą być wyświetlane większej liczby subskrypcji **pokrycie subskrypcji** niż liczba wyświetlanych w obszarze subskrypcji **Zarządzanie zasadami**. W obszarze Pokrycie subskrypcji jest wyświetlana liczba subskrypcji w warstwie Standardowa, Bezpłatna i subskrypcji „nie pokrytych”. "Nie pokrytą" subskrypcji nie zostały włączone w usłudze Security Center i nie są wyświetlane w obszarze **Zarządzanie zasadami**.
    >
-
-   Kolumny w tabeli wyświetlają następujące informacje:
-
-   - **Przypisanie inicjatywy zasad** — Centrum zabezpieczeń [wbudowane zasady](security-center-policy-definitions.md) i inicjatyw, które są przypisane do subskrypcji lub grupę zarządzania.
-   - **Pokrycie** — identyfikuje warstwę cenową bezpłatna lub standardowa, z systemem grupy zarządzania, subskrypcji lub obszaru roboczego.  Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
-   - **Ustawienia** — subskrypcje mają łącze **edytować ustawienia**. Wybieranie **edytować ustawienia** pozwala zaktualizować swoje [ustawienia Centrum zabezpieczeń](security-center-policies-overview.md) dla każdej subskrypcji lub grupę zarządzania.
-   - **Bezpieczne wynik** — [bezpiecznego wynik](security-center-secure-score.md) jest miarą jak bezpieczne stan zabezpieczeń obciążeń i pomaga określić priorytety zalecenia dotyczące poprawy jakości obsługi.
 
 2. Wybierz subskrypcję lub grupę zarządzania zasad, których chcesz wyświetlić.
 
@@ -132,11 +125,11 @@ W ramach natywnej integracji z usługą Azure Policy Azure Security Center pozwa
 
 Ważne pojęcia dotyczące usługi Azure Policy: 
 
-- A **definicji zasad** jest regułą 
+- A **definicji zasad** jest regułą 
 
--  **Inicjatywy** to kolekcja definicji zasad (zasad) 
+- **Inicjatywy** to kolekcja definicji zasad (zasad) 
 
--  **Przypisania** stosowania zasad lub inicjatywy do określonego zakresu (grupy zarządzania, subskrypcji, itp.) 
+- **Przypisania** stosowania zasad lub inicjatywy do określonego zakresu (grupy zarządzania, subskrypcji, itp.) 
 
 Usługa Security Center ma wbudowane inicjatywy, która obejmuje wszystkie jego zasadami zabezpieczeń. Aby ocenić zasady Centrum zabezpieczeń na zasoby platformy Azure, należy utworzyć przypisania na grupę zarządzania lub subskrypcji, którą chcesz ocenić.  
 

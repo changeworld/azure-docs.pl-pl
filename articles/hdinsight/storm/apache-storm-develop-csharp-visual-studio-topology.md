@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 14aa45808f44f7ca6fe34b70ef282a99f230bf0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d459f88cd252303384acb4a72d0af0cce6ee226
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687751"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428467"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Opracowywanie topologii języka C# dla Apache Storm przy użyciu narzędzi Data Lake tools for Visual Studio
 
@@ -559,7 +559,7 @@ W przypadku klastrów HDInsight opartych na systemie Linux upewnij się, że pro
 
 ### <a name="test-a-topology-locally"></a>Testowanie topologii lokalnie
 
-Chociaż jest łatwa do wdrożenia topologii do klastra, w niektórych przypadkach może być konieczne test topologii lokalnie. Wykonaj następujące kroki, aby uruchomić i przetestować przykładową topologię w tym samouczku lokalnie w środowisku programistycznym.
+Chociaż jest łatwa do wdrożenia topologii do klastra, w niektórych przypadkach może być konieczne test topologii lokalnie. Wykonaj następujące kroki, aby uruchomić i przetestować przykładową topologię w tym artykule lokalnie w środowisku programistycznym.
 
 > [!WARNING]  
 > Lokalne testowanie działa tylko w przypadku basic, C# — tylko topologii. Nie można użyć lokalnego testowania hybrydowe topologie lub topologie, wykorzystujące wiele strumieni.

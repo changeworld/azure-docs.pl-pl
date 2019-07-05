@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 19ae3322d26447cf7c7dd94d06f073ccf013738e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 336a9d9c76114920e92de2000152e500f7dce46f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60255080"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445316"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Łączenie programu Operations Manager do usługi Azure Monitor
 
@@ -40,7 +40,7 @@ Na poniższym diagramie przedstawiono połączenia między agentami a serwerami 
 
 Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, serwery zarządzania można skonfigurować do połączenia z bramą usługi Log Analytics w celu odbierania informacji o konfiguracji i wysyłania danych zebranych w zależności od rozwiązania włączone. Aby uzyskać więcej informacji oraz instrukcje dotyczące sposobu konfigurowania grupy zarządzania programu Operations Manager do komunikowania się za pośrednictwem bramy usługi Log Analytics do monitorowania platformy Azure, zobacz [łączenie komputerów z usługą Azure Monitor, przy użyciu bramy usługi Log Analytics](../../azure-monitor/platform/gateway.md).  
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem sprawdź następujące wymagania.
 
@@ -48,7 +48,19 @@ Przed rozpoczęciem sprawdź następujące wymagania.
 * Integracja programu System Center Operations Manager 2016 z chmury dla instytucji rządowych USA wymaga zaktualizowany pakiet zarządzania klasyfikatora się z pakietem zbiorczym aktualizacji 2 lub nowszym. System Center Operations Manager 2012 R2 wymaga zaktualizowany pakiet zarządzania klasyfikatora się z pakietem zbiorczym aktualizacji 3 lub nowszym.
 * Wszystkie agenty programu Operations Manager muszą spełniać minimalne wymagania dotyczące obsługi. Upewnij się, że agenci są przy minimalnej aktualizacji, w przeciwnym razie komunikacji agenta Windows może zakończyć się niepowodzeniem i generować błędy w dzienniku zdarzeń programu Operations Manager.
 * Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, przejrzyj [Omówienie obszaru roboczego usługi Log Analytics](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).   
-* Uwierzytelnianie na platformie Azure przy użyciu konta będącego członkiem [roli Współautor usługi Log Analytics](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).  
+* Uwierzytelnianie na platformie Azure przy użyciu konta będącego członkiem [roli Współautor usługi Log Analytics](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).
+
+* Obsługiwane regiony — tylko poniższych regionów platformy Azure są obsługiwane przez System Center Operations Manager, aby nawiązać połączenie z obszarem roboczym usługi Log Analytics:
+    - Środkowo-zachodnie stany USA
+    - Australia Południowo-Wschodnia
+    - Europa Zachodnia
+    - East US
+    - Azja Południowo-Wschodnia
+    - Japonia Wschodnia
+    - Południowe Zjednoczone Królestwo
+    - Indie Środkowe
+    - Kanada Środkowa
+    - Zachodnie stany USA 2
 
 >[!NOTE]
 >Ostatnie zmiany do interfejsów API usługi Azure uniemożliwi klientom możliwość pomyślnie konfigurowania integracji między ich grupy zarządzania i monitorowania platformy Azure po raz pierwszy. W przypadku klientów, którzy zintegrowano już program ich grupy zarządzania w usłudze nie są zagrożone o ile nie trzeba ponownie skonfigurować istniejące połączenie.  
@@ -67,9 +79,9 @@ Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych inform
 |Resource | Numer portu| Obejście inspekcji HTTP|  
 |---------|------|-----------------------|  
 |**Agent**|||  
-|\*.ods.opinsights.azure.com| 443 |Tak|  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
 |\*.oms.opinsights.azure.com| 443|Tak|  
-|\*.blob.core.windows.net| 443|Yes|  
+|\*.blob.core.windows.net| 443|Tak|  
 |\*.azure-automation.net| 443|Yes|  
 |**Serwer zarządzania**|||  
 |\*.service.opinsights.azure.com| 443||  
@@ -90,7 +102,7 @@ Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych inform
 
 ### <a name="tls-12-protocol"></a>Protokół TLS 1.2
 
-Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Azure Monitor, zdecydowanie zachęcamy do skonfigurowania grupy zarządzania i agent do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**. Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Azure Monitor, zdecydowanie zachęcamy do skonfigurowania grupy zarządzania i agent do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**. Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Łączenie programu Operations Manager do usługi Azure Monitor
 
@@ -105,7 +117,7 @@ Podczas początkowego rejestrowania grupy zarządzania programu Operations Manag
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-Po zakończeniu poniższe kroki, aby zintegrować z usługą Azure Monitor, możesz usunąć konfigurację, uruchamiając `netsh winhttp reset proxy` , a następnie użyj **skonfiguruj poświadczenia serwera proxy** opcję w konsoli operacje, aby określić serwer proxy lub dziennika Serwer bramy usługi Analytics. 
+Po zakończeniu poniższe kroki, aby zintegrować z usługą Azure Monitor, możesz usunąć konfigurację, uruchamiając `netsh winhttp reset proxy` , a następnie użyj **skonfiguruj poświadczenia serwera proxy** opcję w konsoli operacje, aby określić serwer proxy lub dziennika Serwer bramy usługi Analytics.
 
 1. W konsoli programu Operations Manager wybierz obszar roboczy **Administracja**.
 1. Rozwiń węzeł Operations Management Suite i kliknij pozycję **Połączenie**.
@@ -113,14 +125,14 @@ Po zakończeniu poniższe kroki, aby zintegrować z usługą Azure Monitor, moż
 1. Na **Kreator przechodzenia do pakietu Operations Management Suite: Uwierzytelnianie** strony, wprowadź adres e-mail lub numer telefonu i hasło konta administratora, który jest skojarzony z subskrypcją pakietu OMS, a następnie kliknij przycisk **Zaloguj**.
 
    >[!NOTE]
-   >Nazwa pakietu Operations Management Suite został wycofany. 
-   
+   >Nazwa pakietu Operations Management Suite został wycofany.
+
 1. Po pomyślnym uwierzytelnieniu na **Kreator przechodzenia do pakietu Operations Management Suite: Wybierz obszar roboczy** stronie zostanie wyświetlony monit wybierz Twojej dzierżawy platformy Azure, subskrypcja i obszar roboczy usługi Log Analytics. Jeśli masz więcej niż jeden obszar roboczy, wybierz z listy rozwijanej ten obszar roboczy, który ma zostać zarejestrowany w grupie zarządzania programu Operations Manager, a następnie kliknij przycisk **Dalej**.
-   
+
    > [!NOTE]
    > Program Operations Manager obsługuje jednocześnie tylko jeden obszar roboczy usługi Log Analytics. Połączenie i komputerów, które zostały zarejestrowane do usługi Azure Monitor z poprzednim obszarze roboczym zostaną usunięte z usługi Azure Monitor.
-   > 
-   > 
+   >
+   >
 1. Na **Kreator przechodzenia do pakietu Operations Management Suite: Podsumowanie** strony, Potwierdź ustawienia, a jeśli są poprawne, kliknij przycisk **Utwórz**.
 1. Na **Kreator przechodzenia do pakietu Operations Management Suite: Zakończ** kliknij **Zamknij**.
 
@@ -180,11 +192,11 @@ Aby kontynuować, następujące usługi istniejący proces kontroli zmian kontro
 1. Rozwiń węzeł usługi Log Analytics, a następnie wybierz pozycję **połączeń**.
 1. Wybierz link **Skonfiguruj ponownie konsolę Operation Management Suite** na środku panelu.
 1. Postępuj zgodnie z **Kreator przechodzenia do usługi Log Analytics** i wprowadź adres e-mail adres lub numer telefonu oraz hasło konta administratora, który jest skojarzony z nowym obszarem roboczym usługi Log Analytics.
-   
+
    > [!NOTE]
    > **Kreator przechodzenia do pakietu Operations Management Suite: Wybierz obszar roboczy** strona przedstawia istniejącego obszaru roboczego, który jest używany.
-   > 
-   > 
+   >
+   >
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>Weryfikowanie integracji programu Operations Manager z usługą Azure Monitor
 
@@ -194,9 +206,9 @@ Istnieje kilka różnych sposobów, możesz sprawdzić, że usługi Azure Monito
 
 1. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane.
 1. Na liście obszarów roboczych usługi Log Analytics wybierz odpowiedni obszar roboczy.  
-1. Wybierz kolejno pozycje **Ustawienia zaawansowane**, **Połączone źródła**, **System Center**. 
+1. Wybierz kolejno pozycje **Ustawienia zaawansowane**, **Połączone źródła**, **System Center**.
 1. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania z liczbą agentów i stanem z godziny ostatniego odebrania danych.
-   
+
    ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>Potwierdzanie integracji w konsoli zarządzania operacjami
@@ -205,7 +217,7 @@ Istnieje kilka różnych sposobów, możesz sprawdzić, że usługi Azure Monito
 1. Wybierz pozycję **Pakiety administracyjne** i w polu tekstowym **Wyszukaj:** wpisz **Advisor** lub **Intelligence**.
 1. W zależności od włączonych rozwiązań w wynikach wyszukiwania zobaczysz nazwę odpowiedniego pakietu administracyjnego.  Na przykład jeśli włączono rozwiązanie Alert Management, na liście zostanie wyświetlony pakiet administracyjny Microsoft System Center Advisor Alert Management.
 1. Z widoku **Monitorowanie** przejdź do widoku **Operations Management Suite\Stan kondycji**.  W okienku **Stan serwera zarządzania** wybierz serwer zarządzania i w okienku **Widok szczegółów** potwierdź, że wartość właściwości **Identyfikator URI usługi uwierzytelniania** jest zgodny z identyfikatorem obszaru roboczego usługi Log Analytics.
-   
+
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-azure-monitor"></a>Usuń integrację z usługą Azure Monitor
@@ -215,34 +227,34 @@ Jeśli integracja między grupą zarządzania programu Operations Manager i obsz
 Pakiety administracyjne dla rozwiązania zostało włączone, które integrują się z programem Operations Manager i pakiety administracyjne wymagane do obsługi integracji z usługą Azure Monitor nie może zostać łatwo usunięty z grupy zarządzania. Jest to spowodowane niektóre pakiety administracyjne usługi Azure Monitor zależnościami od innych powiązanych pakietów. Aby usunąć pakiety administracyjne, które są zależne od innych pakietów administracyjnych, pobierz skrypt [usuwający pakiet administracyjny z zależnościami](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z Centrum skryptów w witrynie TechNet.  
 
 1. Otwórz powłokę poleceń programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager.
-   
+
     > [!WARNING]
     > Przed przejściem do następnego kroku upewnij się, nie masz żadnych niestandardowych pakietów administracyjnych z ciągiem Advisor lub IntelligencePack w nazwie. W przeciwnym razie kolejne kroki spowodują ich usunięcie z grupy zarządzania.
-    > 
+    >
 
 1. W wierszu polecenia powłoki wpisz `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. Następnie wpisz `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. Aby usunąć wszystkie pozostałe pakiety administracyjne, które są zależne od innych pakietów administracyjnych programu System Center Advisor, użyj skryptu *RecursiveRemove.ps1* pobranego wcześniej z Centrum skryptów w witrynie TechNet.  
- 
+
     > [!NOTE]
     > Krok, aby usunąć pakiety zarządzania klasyfikatora przy użyciu programu PowerShell nie usunie automatycznie pakietów administracyjnych programu Microsoft System Center Advisor lub programu Microsoft System Center Advisor wewnętrznego.  Nie należy próbować usunąć je.  
     >  
 
 1. Otwórz konsolę zarządzania operacjami programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager.
 1. W obszarze **Administracja** wybierz węzeł **Pakiety administracyjne**, a następnie w polu tekstowym **Wyszukaj:** wpisz **Advisor** i upewnij się, że następujące pakiety administracyjne są nadal zaimportowane w Twojej grupie zarządzania:
-   
+
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
 
 1. W witrynie Azure portal kliknij pozycję **ustawienia** kafelka.
 1. Wybierz **połączonych źródeł**.
 1. W tabeli w sekcji System Center Operations Manager powinien zostać wyświetlony nazwę grupy zarządzania, który chcesz usunąć z obszaru roboczego. W kolumnie **Ostatnie dane** kliknij link **Usuń**.  
-   
+
     > [!NOTE]
     > Link **Usuń** nie będzie dostępny po 14 dniach, jeśli nie zostanie wykryta żadna aktywność w połączonej grupie zarządzania.  
-    > 
+    >
 
-1. Zostanie wyświetlone okno z prośbą o potwierdzenie operacji usunięcia.  Kliknij pozycję **Tak**, aby kontynuować. 
+1. Zostanie wyświetlone okno z prośbą o potwierdzenie operacji usunięcia.  Kliknij pozycję **Tak**, aby kontynuować.
 
 Aby usunąć dwa łączniki — jeden o nazwie Microsoft.SystemCenter.Advisor.DataConnector, a drugi o nazwie Advisor Connector, zapisz poniższy skrypt programu PowerShell na swoim komputerze i wykonaj go, korzystając z poniższych przykładów:
 
@@ -253,8 +265,8 @@ Aby usunąć dwa łączniki — jeden o nazwie Microsoft.SystemCenter.Advisor.Da
 
 > [!NOTE]
 > Z wyjątkiem serwera zarządzania komputer, na którym uruchomisz ten skrypt, powinien mieć zainstalowaną odpowiednią powłokę poleceń programu Operations Manager w zależności od wersji grupy zarządzania.
-> 
-> 
+>
+>
 
 ```powershell
     param(

@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596111"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444702"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -43,7 +43,7 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Chiny Północne |\* |\* |
 | Chiny Północne 2 |Dostępne |Gen2 tylko |
 | Azja Wschodnia |Dostępne |1 czerwca 2019 r. |
-| Wschodnie stany USA |Dostępne |1 czerwca 2019 r. |
+| East US |Dostępne |1 czerwca 2019 r. |
 | Wschodnie stany USA 2 |Dostępne |1 czerwca 2019 r. |
 | Francja Środkowa |\* |1 czerwca 2019 r. |
 | Niemcy Środkowe |\* |\* |
@@ -67,7 +67,7 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 
 ## <a name="automatic-upgrade-process"></a>Automatyczne uaktualnianie
 
-Oparte na powyższym wykresie dostępności, firma Microsoft będzie planować automatycznych uaktualnień dla wystąpień Gen1. Aby uniknąć przerw nieoczekiwany na dostępności w magazynie danych, automatyczne uaktualnienia zostanie zaplanowana w harmonogramie konserwacji. Możliwość tworzenia nowego wystąpienia Gen1 zostanie wyłączona w regionach, w trakcie automatycznego uaktualnienia do Gen2. Aby uzyskać więcej informacji dotyczących harmonogramów, zobacz [wyświetlić harmonogram konserwacji](viewing-maintenance-schedule.md)
+Oparte na powyższym wykresie dostępności, firma Microsoft będzie planować automatycznych uaktualnień dla wystąpień Gen1. Aby uniknąć przerw nieoczekiwany na dostępności w magazynie danych, automatyczne uaktualnienia zostanie zaplanowana w harmonogramie konserwacji. Możliwość tworzenia nowego wystąpienia Gen1 zostanie wyłączona w regionach, w trakcie automatycznego uaktualnienia do Gen2. Gen1 staną się przestarzałe po wykonaniu automatycznych uaktualnień. Aby uzyskać więcej informacji dotyczących harmonogramów, zobacz [wyświetlić harmonogram konserwacji](viewing-maintenance-schedule.md)
 
 Proces uaktualniania będzie obejmować krótki zrzutu w łączności (około 5 minut), jak możemy ponownie uruchomić Magazyn danych.  Po ponownym uruchomieniu usługi data warehouse będzie w pełni dostępne do użycia. Jednak mogą występować pogorszenie wydajności, podczas procesu uaktualniania w dalszym ciągu uaktualniania pliki danych w tle. Łączny czas spadek wydajności będą się różnić zależy od rozmiaru plików danych.
 

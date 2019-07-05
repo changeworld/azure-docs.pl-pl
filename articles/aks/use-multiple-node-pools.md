@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 679d91da774b3e4d2c53c70cdc0abfd4da9c6953
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48fdb251fa0302c2755281644a804c74ae80a63e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059636"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491539"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — tworzenie i zarządzanie nimi wiele pul węzłów klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -32,18 +32,22 @@ Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.61 lub później zai
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia w wersji zapoznawczej usługi aks
 
-Polecenia interfejsu wiersza polecenia do tworzenia i obsługi wielu pul węzłów są dostępne w *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia. Zainstaluj *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az] [ az-extension-add] polecenia, jak pokazano w poniższym przykładzie:
+Aby korzystać z wielu nodepools, musisz mieć *podglądu usługi aks* interfejsu wiersza polecenia wersja rozszerzenia 0.4.1 lub nowszej. Zainstaluj *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] polecenia::
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> Jeśli wcześniej zainstalowano *podglądu usługi aks* rozszerzenia, zainstaluj dostępne aktualizacje, przy użyciu `az extension update --name aks-preview` polecenia.
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>Zarejestruj dostawcę funkcji w wielu puli węzeł
 
-Aby utworzyć klaster usługi AKS, można użyć wielu pul węzłów, należy najpierw włączyć dwie flagi funkcji w ramach subskrypcji. Klastry w wielu węzłach puli Użyj zestawu skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych) do zarządzania wdrażaniem i konfiguracji węzłów rozwiązania Kubernetes. Zarejestruj *MultiAgentpoolPreview* i *VMSSPreview* przy użyciu flagi funkcji [az feature register] [ az-feature-register] polecenia, jak pokazano w Poniższy przykład:
+Aby utworzyć klaster usługi AKS, można użyć wielu pul węzłów, należy najpierw włączyć dwie flagi funkcji w ramach subskrypcji. Klastry w wielu węzłach puli Użyj zestawu skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych) do zarządzania wdrażaniem i konfiguracji węzłów rozwiązania Kubernetes. Zarejestruj *MultiAgentpoolPreview* i *VMSSPreview* przy użyciu flagi funkcji [az feature register][az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+
+> [!CAUTION]
+> Po zarejestrowaniu funkcji w ramach subskrypcji, nie można obecnie wyrejestrować tę funkcję. Po włączeniu niektóre funkcje w wersji zapoznawczej, wartości domyślne mogą służyć dla wszystkich klastrów usługi AKS, które następnie są tworzone w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji w środowisku produkcyjnym. Aby przetestować funkcje w wersji zapoznawczej i zbieranie opinii, należy użyć oddzielnej subskrypcji.
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
@@ -53,14 +57,14 @@ az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 > [!NOTE]
 > Każdy klaster AKS możesz utworzyć po pomyślnym zarejestrowaniu *MultiAgentpoolPreview* Użyj to środowisko klastra w wersji zapoznawczej. Aby kontynuować tworzenie klastrów regularnych, w pełni obsługiwane, nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji w środowisku produkcyjnym. Użyj oddzielnych testowym lub deweloperskim subskrypcji platformy Azure do testowania funkcji w wersji zapoznawczej.
 
-Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az] [ az-feature-list] polecenia:
+Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az][az-feature-list] polecenia:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
-Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcę zasobów przy użyciu [az provider register] [ az-provider-register] polecenia:
+Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcę zasobów przy użyciu [az provider register][az-provider-register] polecenia:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -74,16 +78,16 @@ Podczas tworzenia i zarządzania klastrami usługi AKS, które obsługują wiele
 * Nie można usunąć puli pierwszy węzeł.
 * Nie można używać dodatku routing aplikacji protokołu HTTP.
 * Nie można już pule węzłów Dodawanie/aktualizowanie/usuwanie, podobnie jak w przypadku większości operacji przy użyciu istniejącego szablonu usługi Resource Manager. Zamiast tego [korzystanie z oddzielnych szablonu usługi Resource Manager](#manage-node-pools-using-a-resource-manager-template) do wprowadzania zmian w pule węzłów w klastrze AKS.
-* Nie można użyć skalowanie klastra (obecnie dostępna w wersji zapoznawczej w usłudze AKS).
 
 Chociaż ta funkcja jest dostępna w wersji zapoznawczej, następujące dodatkowe ograniczenia:
 
 * Klaster AKS może mieć maksymalnie osiem pule węzłów.
 * Klaster AKS może mieć maksymalnie 400 węzłów w tych pulach osiem węzłów.
+* Wszystkie pule węzłów musi znajdować się w tej samej podsieci
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-Aby rozpocząć, Utwórz klaster AKS z pulą jeden węzeł. W poniższym przykładzie użyto [Tworzenie grupy az] [ az-group-create] polecenie, aby utworzyć grupę zasobów o nazwie *myResourceGroup* w *eastus* region. Klaster AKS, o nazwie *myAKSCluster* zostanie utworzony przy użyciu [tworzenie az aks] [ az-aks-create] polecenia. A *wersji rozwiązania kubernetes —* z *1.12.6* służy do pokazywania, jak zaktualizować puli węzeł następnego kroku. Można określić dowolną [obsługiwana wersja programu Kubernetes][supported-versions].
+Aby rozpocząć, Utwórz klaster AKS z pulą jeden węzeł. W poniższym przykładzie użyto [Tworzenie grupy az][az-group-create] polecenie, aby utworzyć grupę zasobów o nazwie *myResourceGroup* w *eastus* regionu. Klaster AKS, o nazwie *myAKSCluster* zostanie utworzony przy użyciu [tworzenie az aks][az-aks-create] polecenia. A *wersji rozwiązania kubernetes —* z *1.12.6* służy do pokazywania, jak zaktualizować puli węzeł następnego kroku. Można określić dowolną [obsługiwana wersja programu Kubernetes][supported-versions].
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -101,7 +105,7 @@ az aks create \
 
 Utworzenie klastra trwa kilka minut.
 
-Gdy klaster będzie gotowy, użyj [az aks get-credentials] [ az-aks-get-credentials] polecenie, aby uzyskać poświadczenia klastra do użytku z programem `kubectl`:
+Gdy klaster będzie gotowy, użyj [az aks get-credentials][az-aks-get-credentials] polecenie, aby uzyskać poświadczenia klastra do użytku z programem `kubectl`:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -109,7 +113,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="add-a-node-pool"></a>Dodaj pulę węzłów
 
-Klaster utworzony w poprzednim kroku ma puli jeden węzeł. Dodajmy, drugi węzeł puli przy użyciu [Dodaj pulę węzłów aks az] [ az-aks-nodepool-add] polecenia. Poniższy przykład tworzy pulę węzłów o nazwie *mynodepool* , które jest uruchamiane *3* węzłów:
+Klaster utworzony w poprzednim kroku ma puli jeden węzeł. Dodajmy, drugi węzeł puli przy użyciu [Dodaj pulę węzłów aks az][az-aks-nodepool-add] polecenia. Poniższy przykład tworzy pulę węzłów o nazwie *mynodepool* , które jest uruchamiane *3* węzłów:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -119,7 +123,7 @@ az aks nodepool add \
     --node-count 3
 ```
 
-Aby wyświetlić stan puli węzeł, należy użyć [az aks węzła puli lista] [ az-aks-nodepool-list] polecenia i podaj nazwę grupy i klaster zasobów:
+Aby wyświetlić stan puli węzeł, należy użyć [az aks węzła puli lista][az-aks-nodepool-list] polecenia i podaj nazwę grupy i klaster zasobów:
 
 ```azurecli-interactive
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster -o table
@@ -141,7 +145,7 @@ VirtualMachineScaleSets  1        110        nodepool1   1.12.6                 
 
 ## <a name="upgrade-a-node-pool"></a>Uaktualnij pulę węzłów
 
-Podczas tworzenia klastra usługi AKS w pierwszym kroku `--kubernetes-version` z *1.12.6* została określona. Uaktualnij teraz *mynodepool* usłudze Kubernetes *1.12.7*. Użyj [polecenia az aks węzła puli upgrade] [ az-aks-nodepool-upgrade] polecenie, aby uaktualnić pulę węzłów, jak pokazano w poniższym przykładzie:
+Podczas tworzenia klastra usługi AKS w pierwszym kroku `--kubernetes-version` z *1.12.6* została określona. Uaktualnij teraz *mynodepool* usłudze Kubernetes *1.12.7*. Użyj [polecenia az aks węzła puli upgrade][az-aks-nodepool-upgrade] polecenie, aby uaktualnić pulę węzłów, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -152,7 +156,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-Wyświetl stan puli węzeł ponownie, używając [az aks węzła puli lista] [ az-aks-nodepool-list] polecenia. Poniższy przykład pokazuje, że *mynodepool* znajduje się w *uaktualnianie* do stanu *1.12.7*:
+Wyświetl stan puli węzeł ponownie, używając [az aks węzła puli lista][az-aks-nodepool-list] polecenia. Poniższy przykład pokazuje, że *mynodepool* znajduje się w *uaktualnianie* do stanu *1.12.7*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
@@ -173,7 +177,7 @@ Jak aplikacja obciążenia do potrzeb, konieczne może być skalowanie liczby w�
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-Aby skalować liczbę węzłów w puli węzeł, należy użyć [az aks węzła puli skalowania] [ az-aks-nodepool-scale] polecenia. W poniższym przykładzie Skala liczby węzłów w *mynodepool* do *5*:
+Aby skalować liczbę węzłów w puli węzeł, należy użyć [az aks węzła puli skalowania][az-aks-nodepool-scale] polecenia. W poniższym przykładzie Skala liczby węzłów w *mynodepool* do *5*:
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -184,7 +188,7 @@ az aks nodepool scale \
     --no-wait
 ```
 
-Wyświetl stan puli węzeł ponownie, używając [az aks węzła puli lista] [ az-aks-nodepool-list] polecenia. Poniższy przykład pokazuje, że *mynodepool* znajduje się w *skalowanie* stanu wraz z liczbą nowych *5* węzłów:
+Wyświetl stan puli węzeł ponownie, używając [az aks węzła puli lista][az-aks-nodepool-list] polecenia. Poniższy przykład pokazuje, że *mynodepool* znajduje się w *skalowanie* stanu wraz z liczbą nowych *5* węzłów:
 
 ```console
 $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster -o table
@@ -199,7 +203,7 @@ Trwa kilka minut na zakończenie operacji skalowania.
 
 ## <a name="delete-a-node-pool"></a>Usuń pulę węzłów
 
-Jeśli nie potrzebujesz już pulę, można ją usunąć i usuwanie węzłów podrzędnych maszyny Wirtualnej. Aby usunąć pulę węzłów, użyj [usunąć pulę węzłów aks az] [ az-aks-nodepool-delete] polecenia i określ nazwę puli węzeł. Poniższy przykład usuwa *mynoodepool* utworzony w poprzednich krokach:
+Jeśli nie potrzebujesz już pulę, można ją usunąć i usuwanie węzłów podrzędnych maszyny Wirtualnej. Aby usunąć pulę węzłów, użyj [usunąć pulę węzłów aks az][az-aks-nodepool-delete] polecenia i określ nazwę puli węzeł. Poniższy przykład usuwa *mynoodepool* utworzony w poprzednich krokach:
 
 > [!CAUTION]
 > Istnieją opcje odzyskiwania nie utraty danych, które mogą wystąpić podczas usuwania puli węzeł. Jeśli nie można zaplanować zasobników w innych pulach węzła, te aplikacje są niedostępne. Upewnij się, że nie usuwaj puli węzeł, gdy aplikacje w użyciu braku kopie zapasowe danych i możliwość uruchamiania na innych pule węzłów w klastrze.
@@ -208,7 +212,7 @@ Jeśli nie potrzebujesz już pulę, można ją usunąć i usuwanie węzłów pod
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-Następujące przykładowe dane wyjściowe z [az aks węzła puli lista] [ az-aks-nodepool-list] polecenie pokazuje, że *mynodepool* znajduje się w *usuwanie* stanu:
+Następujące przykładowe dane wyjściowe z [az aks węzła puli lista][az-aks-nodepool-list] polecenie pokazuje, że *mynodepool* znajduje się w *usuwanie* stanu:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
@@ -227,7 +231,7 @@ W poprzednich przykładach, aby utworzyć pulę węzłów domyślny rozmiar masz
 
 W poniższym przykładzie, należy utworzyć pulę węzłów opartą na procesorze GPU, który używa *maszyna wirtualna Standard_NC6* rozmiar maszyny Wirtualnej. Te maszyny wirtualne są obsługiwane przez procesory GPU NVIDIA Tesla K80 karty. Aby uzyskać informacji na temat dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych systemu Linux na platformie Azure][vm-sizes].
 
-Tworzenie puli węzłów przy użyciu [Dodaj pulę węzłów aks az] [ az-aks-nodepool-add] ponownie polecenie. Tym razem, określ nazwę *gpunodepool*i użyj `--node-vm-size` parametru do określenia *maszyna wirtualna Standard_NC6* rozmiar:
+Tworzenie puli węzłów przy użyciu [Dodaj pulę węzłów aks az][az-aks-nodepool-add] ponownie polecenie. Tym razem, określ nazwę *gpunodepool*i użyj `--node-vm-size` parametru do określenia *maszyna wirtualna Standard_NC6* rozmiar:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -239,7 +243,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Następujące przykładowe dane wyjściowe z [az aks węzła puli lista] [ az-aks-nodepool-list] polecenie pokazuje, że *gpunodepool* jest *tworzenie* węzłów za pomocą określony *VmSize*:
+Następujące przykładowe dane wyjściowe z [az aks węzła puli lista][az-aks-nodepool-list] polecenie pokazuje, że *gpunodepool* jest *tworzenie* węzłów z określonym *VmSize*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
@@ -254,7 +258,7 @@ Zajmuje kilka minut *gpunodepool* ma zostać pomyślnie utworzony.
 
 ## <a name="schedule-pods-using-taints-and-tolerations"></a>Zaplanuj zasobników przy użyciu nasłonecznieniem i tolerations
 
-Masz teraz dwie pule węzłów w klastrze — domyślną pulę węzłów początkowo utworzona oraz pulę węzłów opartą na procesorze GPU. Użyj [kubectl get-węzły] [ kubectl-get] polecenie, aby wyświetlić węzły w klastrze. Następujące przykładowe dane wyjściowe zawiera jeden węzeł w każdej puli węzła:
+Masz teraz dwie pule węzłów w klastrze — domyślną pulę węzłów początkowo utworzona oraz pulę węzłów opartą na procesorze GPU. Użyj [kubectl get-węzły][kubectl-get] polecenie, aby wyświetlić węzły w klastrze. Następujące przykładowe dane wyjściowe zawiera jeden węzeł w każdej puli węzła:
 
 ```console
 $ kubectl get nodes
@@ -271,7 +275,7 @@ Harmonogram Kubernetes nasłonecznieniem i umożliwia tolerations ograniczyć, j
 
 Więcej informacji na temat sposobu użycia zaawansowanych funkcji rozwiązania Kubernetes, zaplanowane, zobacz [najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze AKS][taints-tolerations]
 
-W tym przykładzie dotyczą zmiany barwy przy użyciu opartej na procesorze GPU węzła [węzła zmiany barwy kubectl] [ kubectl-taint] polecenia. Określ nazwę węzła usługi opartej na procesorze GPU z danych wyjściowych poprzedniego `kubectl get nodes` polecenia. Zastosowano zmiany barwy jako *klucz: wartość* a następnie opcję planowania. W poniższym przykładzie użyto *jednostki sku = gpu* Sparuj i definiuje zasobników w przeciwnym razie ma *NoSchedule* możliwości:
+W tym przykładzie dotyczą zmiany barwy przy użyciu opartej na procesorze GPU węzła [węzła zmiany barwy kubectl][kubectl-taint] polecenia. Określ nazwę węzła usługi opartej na procesorze GPU z danych wyjściowych poprzedniego `kubectl get nodes` polecenia. Zastosowano zmiany barwy jako *klucz: wartość* a następnie opcję planowania. W poniższym przykładzie użyto *jednostki sku = gpu* Sparuj i definiuje zasobników w przeciwnym razie ma *NoSchedule* możliwości:
 
 ```console
 kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -310,7 +314,7 @@ Zaplanuj zasobnik przy użyciu `kubectl apply -f gpu-toleration.yaml` polecenia:
 kubectl apply -f gpu-toleration.yaml
 ```
 
-Zajmuje kilka sekund, aby zaplanować zasobnik i ściąganie obrazu serwera NGINX. Użyj [kubectl opisują zasobnika] [ kubectl-describe] polecenie, aby wyświetlić stan zasobników. Dane wyjściowe poniższego, skróconego przykładu *jednostki sku = gpu:NoSchedule* toleration jest stosowany. W sekcji zdarzenia harmonogram został przypisany zasobnika do *aks-gpunodepool-28993262-vmss000000* opartą na procesorze GPU węzła:
+Zajmuje kilka sekund, aby zaplanować zasobnik i ściąganie obrazu serwera NGINX. Użyj [kubectl opisują zasobnika][kubectl-describe] polecenie, aby wyświetlić stan zasobników. Dane wyjściowe poniższego, skróconego przykładu *jednostki sku = gpu:NoSchedule* toleration jest stosowany. W sekcji zdarzenia harmonogram został przypisany zasobnika do *aks-gpunodepool-28993262-vmss000000* opartą na procesorze GPU węzła:
 
 ```console
 $ kubectl describe pod mypod
@@ -410,7 +414,7 @@ Edytuj te wartości, jak należy zaktualizować, dodawanie lub usuwanie pule wę
 }
 ```
 
-Wdrażanie przy użyciu tego szablonu [Utwórz wdrożenie grupy az] [ az-group-deployment-create] polecenia, jak pokazano w poniższym przykładzie. Zostanie wyświetlony monit o istniejącej nazwy klastra AKS i lokalizacji:
+Wdrażanie przy użyciu tego szablonu [Utwórz wdrożenie grupy az][az-group-deployment-create] polecenia, jak pokazano w poniższym przykładzie. Zostanie wyświetlony monit o istniejącej nazwy klastra AKS i lokalizacji:
 
 ```azurecli-interactive
 az group deployment create \
@@ -424,13 +428,13 @@ Może upłynąć kilka minut, aby zaktualizować klastra usługi AKS w taki spos
 
 W tym artykule utworzono klaster AKS, która zawiera węzły opartą na procesorze GPU. Aby zmniejszyć koszt niepotrzebne, można usunąć *gpunodepool*, lub całego klastra AKS.
 
-Aby usunąć pulę węzłów opartą na procesorze GPU, użyj [Usuń az aks nodepool] [ az-aks-nodepool-delete] polecenia, jak pokazano w poniższym przykładzie:
+Aby usunąć pulę węzłów opartą na procesorze GPU, użyj [Usuń az aks nodepool][az-aks-nodepool-delete] polecenia, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
 ```
 
-Aby usunąć klaster, użyj [usunięcie grupy az] [ az-group-delete] polecenie, aby usunąć grupę zasobów usługi AKS:
+Aby usunąć klaster, użyj [usunięcie grupy az][az-group-delete] polecenie, aby usunąć grupę zasobów usługi AKS:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -473,3 +477,5 @@ Aby utworzyć pule węzłów kontenerów systemu Windows Server, zobacz [kontene
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

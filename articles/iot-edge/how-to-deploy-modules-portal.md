@@ -4,18 +4,18 @@ description: Użyj witryny Azure portal, aby wdrożyć moduły na urządzeniu us
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/19/2019
+ms.date: 06/25/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8337c8672eb886d79b38b2a38a74037f88604497
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595241"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448548"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Wdrożyć moduły usługi Azure IoT Edge w witrynie Azure portal
 
@@ -43,7 +43,7 @@ Witryna Azure portal ma kreatora, który przeprowadzi Cię przez tworzenie manif
 
 ### <a name="add-modules"></a>Dodaj moduły
 
-1. W **ustawień rejestru** części strony, podaj poświadczenia, które mają dostęp do wszelkich rejestry kontenerów prywatnych, zawierających obrazy modułu.
+1. W **ustawienia usługi Container Registry** części strony, podaj poświadczenia, które mają dostęp do wszelkich rejestry kontenerów prywatnych, zawierających obrazy modułu.
 
 1. W **moduły wdrożeń** części strony wybierz **Dodaj**.
 

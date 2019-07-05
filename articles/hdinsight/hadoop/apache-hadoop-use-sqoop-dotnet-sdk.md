@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: ac0890be0abccb316bffc4d9bdd6868a80173e18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bdf1318f93697cd7b479d404f44b7617ad875dc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710119"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450149"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Uruchamiać zadania Apache Sqoop przy użyciu zestawu SDK platformy .NET dla usługi Apache Hadoop w HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -25,12 +25,12 @@ Dowiedz się, jak uruchamiać zadania Apache Sqoop w HDInsight w celu importowan
 > Chociaż procedury opisane w tym artykule można używać z oboma klastra HDInsight z systemem Windows lub opartych na systemie Linux, działają tylko z klienta Windows. Aby wybrać inne metody, selektor karty w górnej części tego artykułu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem tego samouczka, konieczne jest posiadanie następujących elementów:
+Przed przystąpieniem do wykonywania w tym artykule, konieczne jest posiadanie następujących elementów:
 
 * Klaster platformy Apache Hadoop w HDInsight. Aby uzyskać więcej informacji, zobacz [utworzenia klastra i bazy danych SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>W klastrach HDInsight przy użyciu zestawu SDK platformy .NET przy użyciu narzędzia Sqoop
-Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, tak, aby łatwiej pracować z klastrami HDInsight za pomocą platformy .NET. W tej sekcji utworzysz aplikację konsoli C# do wyeksportowania tabeli hivesampletable do tabeli usługi Azure SQL Database, który został utworzony we wcześniejszej części tego samouczka.
+Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, tak, aby łatwiej pracować z klastrami HDInsight za pomocą platformy .NET. W tej sekcji utworzysz C# konsoli aplikacji, aby wyeksportować tabeli hivesampletable do tabeli usługi Azure SQL Database, który został utworzony we wcześniejszej części tego artykułu.
 
 ## <a name="submit-a-sqoop-job"></a>Prześlij zadanie narzędzia Sqoop
 

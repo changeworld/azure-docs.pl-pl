@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55b5207e4c05712b4d96d4272f9ae193cc4c1720
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839277"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508608"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: Azure Portal
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Jeśli potrzebujesz łączności z wszystkich usług, dużej liczby prefiksy są
 
 W przypadku skonfigurowania komunikacji równorzędnej firmy Microsoft na obwód usługi ExpressRoute, routery graniczne firmy Microsoft ustanowić pary sesji protokołu BGP z routerami granicznymi (należy do Ciebie lub dostawcą połączenia). Żadne trasy nie są ogłaszane w sieci. Aby włączyć ogłaszanie tras w sieci, należy skojarzyć filtr tras.
 
-Filtr tras umożliwia zidentyfikowanie usług, które mają być używane za pośrednictwem komunikacji równorzędnej firmy Microsoft w ramach obwodu usługi ExpressRoute. Jest to zasadniczo lista wszystkich wartości atrybutu Community protokołu BGP. Gdy zasób filtru tras jest zdefiniowany i dołączony do obwodu usługi ExpressRoute, wszystkie prefiksy zamapowane do wartości atrybutu Community protokołu BGP są ogłaszane w sieci.
+Filtr tras umożliwia zidentyfikowanie usług, które mają być używane za pośrednictwem komunikacji równorzędnej firmy Microsoft w ramach obwodu usługi ExpressRoute. Jest zasadniczo lista wszystkich protokołu BGP społeczności wartości, które chcesz zezwolić. Gdy zasób filtru tras jest zdefiniowany i dołączony do obwodu usługi ExpressRoute, wszystkie prefiksy zamapowane do wartości atrybutu Community protokołu BGP są ogłaszane w sieci.
 
 Aby móc Dołącz filtry tras z usługami Office 365 na nich musi mieć zezwolenie na korzystanie z usług Office 365 za pośrednictwem usługi ExpressRoute. Jeśli nie masz uprawnień do korzystania z usług Office 365 za pośrednictwem usługi ExpressRoute, Dołącz filtry tras operacja kończy się niepowodzeniem. Aby uzyskać więcej informacji na temat procesu autoryzacji, zobacz [usługi Azure ExpressRoute dla usługi Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Łączność z usługi Dynamics 365 nie wymaga dowolnego pozwoleniu.
 
@@ -79,7 +79,7 @@ Wartości społeczności BGP skojarzone z usługami za pośrednictwem komunikacj
 
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Tworzenie listy wartości, które chcesz użyć
 
-Tworzenie listy wartości społeczności BGP, którego chcesz użyć do filtru trasy. Na przykład wartość społeczności BGP dla usługi Dynamics 365 jest 12076:5040.
+Sporządź listę [wartości społeczności BGP](expressroute-routing.md#bgp) chcesz użyć do filtru trasy. 
 
 ## <a name="filter"></a>Krok 2. Tworzenie filtru tras i regułę filtru
 
@@ -108,7 +108,7 @@ Można wybrać usługi, który chcesz nawiązać połączenie z listy rozwijanej
 
 ## <a name="attach"></a>Krok 3. Dołącz filtru tras do obwodu usługi ExpressRoute
 
-Można dołączyć filtru tras do obwodu, wybierając przycisk "Dodaj obwód" i wybierając obwód usługi ExpressRoute z listy rozwijanej.
+Wybierając przycisk "Dodaj obwód" i wybierając obwód usługi ExpressRoute z listy rozwijanej, można dołączyć filtru tras do obwodu.
 
 ![Tworzenie filtru tras](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
@@ -150,4 +150,6 @@ Możesz usunąć filtru tras, wybierając przycisk Usuń.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
+* Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
+
+* Aby uzyskać informacji na temat przykłady konfiguracji routera, zobacz [przykłady konfiguracji routera, aby skonfigurować routingu oraz zarządzanie nim](expressroute-config-samples-routing.md). 

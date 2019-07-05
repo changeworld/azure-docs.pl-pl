@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: 61f8e93fd82f7da632e0ab7e16ad6fbf4ca25646
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: adf0891203321ca02c47494f1865ca78a833e301
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165029"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561392"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -98,7 +98,6 @@ Aprowizowana przepływność w kontenerze lub bazy danych można skalować w dow
 |---------|---------|---------|
 |Minimalny (RUS) |400 (po pierwsze cztery kontenery każdego kontenera dodatkowe wymaga co najmniej 100 jednostek ru na sekundę). |400|
 |Minimalna jednostek żądań na kontener|100|400|
-|Minimalny (RUS), które są wymagane do korzystania z 1 GB miejsca do magazynowania|40|40|
 |Maksymalna (RUS)|Bez ograniczeń w bazie danych.|Bez ograniczeń w kontenerze.|
 |Jednostki zarezerwowane przypisane lub będą dostępne do określonego kontenera|Nie gwarancji. Przypisane do danego kontenera (RUS) są zależne od właściwości. Właściwości mogą być wybór kontenery, które współużytkują przepływność z kluczami partycji, dystrybucji obciążenia i liczbę kontenerów. |Wszystkie jednostki zarezerwowane skonfigurowane w kontenerze są przeznaczone wyłącznie do kontenera.|
 |Maksymalny rozmiar magazynu dla kontenera|Bez ograniczeń.|Bez ograniczeń.|

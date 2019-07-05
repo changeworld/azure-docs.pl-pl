@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 536d7a572eddc2cf75f6ce135c3cd4f4f2635416
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9f60c6258da77c0aaa99d16e178f4b3531ce90d9
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203300"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509257"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Data Lake Storage Gen2 przy użyciu usługi Azure Data Factory
 
@@ -70,7 +70,7 @@ Aby użyć uwierzytelniania klucza konta magazynu, obsługiwane są następując
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa **AzureBlobFS**. |Yes |
-| url | Punkt końcowy dla Data Lake Storage Gen2 o strukturze `https://<accountname>.dfs.core.windows.net`. | Yes |
+| url | Punkt końcowy dla Data Lake Storage Gen2 o strukturze `https://<accountname>.dfs.core.windows.net`. | Tak |
 | accountKey | Klucz konta Data Lake Storage Gen2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Środowisko uruchomieniowe integracji platformy Azure lub własnego środowiska integration runtime można użyć, jeśli magazyn danych znajduje się w sieci prywatnej. Jeśli ta właściwość nie jest określona, domyślne środowisko uruchomieniowe integracji platformy Azure jest używana. |Nie |
 
@@ -115,7 +115,7 @@ Aby użyć uwierzytelniania jednostki usługi, wykonaj następujące kroki.
 >Do listy folderów uruchamianie z poziomu konta lub aby przetestować połączenie, należy ustawić uprawnienia jednostki usługi, zostanie im przyznany do **konta magazynu z uprawnieniami "Czytnik danych obiektu Blob magazynu" w IAM**. Jest to wartość true, gdy:
 >- **Narzędzia do kopiowania danych** do potoku kopiowania autora.
 >- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia. 
->Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie konta, można pominąć połączenie testowe i ścieżka wejściowa ręcznie podczas tworzenia. Działanie kopiowania wciąż działa tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami na pliki do skopiowania.
+>Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie konta podczas tworzenia, Pomiń testowania połączenia, a dane wejściowe kliknij można przejść z poziomu ścieżki nadrzędnej z przyznanie uprawnienia określona ścieżka. Kopiuj działania działa tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami na pliki do skopiowania.
 
 Te właściwości są obsługiwane w przypadku połączonej usługi:
 
@@ -169,7 +169,7 @@ Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azu
 >Do listy folderów uruchamianie z poziomu konta lub aby przetestować połączenie, musisz ustawić uprawnienie tożsamość zarządzaną, zostanie im przyznany do **konta magazynu z uprawnieniami "Czytnik danych obiektu Blob magazynu" w IAM**. Jest to wartość true, gdy:
 >- **Narzędzia do kopiowania danych** do potoku kopiowania autora.
 >- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia. 
->Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie konta, można pominąć połączenie testowe i ścieżka wejściowa ręcznie podczas tworzenia. Działanie kopiowania wciąż działa tak długo, jak tożsamość zarządzaną otrzymuje z odpowiednimi uprawnieniami na pliki do skopiowania.
+>Jeśli masz wątpliwości dotyczące udzielania uprawnień na poziomie konta podczas tworzenia, Pomiń testowania połączenia, a dane wejściowe kliknij można przejść z poziomu ścieżki nadrzędnej z przyznanie uprawnienia określona ścieżka. Kopiuj działania działa tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami na pliki do skopiowania.
 
 >[!IMPORTANT]
 >Jeśli używasz programu PolyBase do ładowania danych z Data Lake Storage Gen2 SQL Data Warehouse, w przypadku używania uwierzytelniania tożsamości zarządzanej dla Data Lake Storage Gen2, upewnij się, możesz również wykonać kroki 1 i 2 w [Niniejsze wskazówki](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1) Zarejestruj SQL Serwer bazy danych w usłudze Azure Active Directory (Azure AD) i 2) Współautor danych obiektu Blob magazynu, aby przypisać rolę serwera usługi SQL Database; pozostałe są obsługiwane przez usługę Data Factory. Jeśli usługi Data Lake magazynu Gen2 jest skonfigurowany z punktem końcowym usługi Azure Virtual Network, aby przy użyciu technologii PolyBase do ładowania danych z, należy użyć uwierzytelniania tożsamości zarządzanej zgodnie z wymaganiami programu PolyBase.

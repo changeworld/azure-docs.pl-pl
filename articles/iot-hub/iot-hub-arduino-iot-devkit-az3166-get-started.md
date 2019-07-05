@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/17/2019
+ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 2f86b74299b5d47a87ed0b8e89a992f0f91a84be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4017a3be5e03e1a9b85b4002b8069a1adc3a6b83
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924630"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551568"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -30,6 +30,8 @@ Możesz użyć [zestawu deweloperskiego IoT Mxchip](https://microsoft.github.io/
 * Jak przygotować środowisko projektowe i tworzenie aplikacji dla mxchip IoT DevKit.
 
 Nie masz jeszcze Mxchip? Spróbuj [symulator Mxchip](https://azure-samples.github.io/iot-devkit-web-simulator/) lub [zakupu Mxchip](https://aka.ms/iot-devkit-purchase).
+
+Możesz znaleźć kod źródłowy dla wszystkich samouczków Mxchip na [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) repozytorium.
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
@@ -132,6 +134,11 @@ Mxchip nawiązuje połączenie z punktem końcowym specyficznych dla urządzenia
     ![IP sieci Wi-Fi](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
     ![Wysyłanie danych](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
+
+1. Aby sprawdzić dane telemetryczne wysyłane do platformy Azure, uruchom następujące polecenie w usłudze Azure Cloud Shell:
+    ```bash
+    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    ```
 
 ## <a name="prepare-the-development-environment"></a>Przygotowywanie środowiska deweloperskiego
 
@@ -301,7 +308,7 @@ Możesz użyć [narzędzia IoT Azure](https://marketplace.visualstudio.com/items
 1. W programie VS Code kliknij `F1`wpisz i wybierz **usługi Azure IoT Hub: Ustaw parametry połączenia Centrum IoT Hub**. Skopiuj parametry połączenia do niego.
     ![Ustawianie parametrów połączenia usługi Azure IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. Rozwiń **AZURE IOT HUB DEVICES** w okienku po prawej stronie, kliknij prawym przyciskiem myszy nazwę urządzenia, został utworzony i wybierz **Rozpocznij monitorowania komunikatu D2C**.
+1. Rozwiń **AZURE IOT HUB DEVICES** w okienku po prawej stronie, kliknij prawym przyciskiem myszy nazwę urządzenia, został utworzony i wybierz **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**.
     ![Monitorowanie komunikatu D2C](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 
 1. W **dane wyjściowe** okienku widać komunikaty D2C przychodzące do usługi IoT Hub.

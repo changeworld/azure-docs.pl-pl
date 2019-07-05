@@ -1,25 +1,22 @@
 ---
-title: Opis zawartości rachunku platformy Azure w przedsiębiorstwach | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak czytać i zrozumieć użycia i rachunek dla umów Enterprise Agreement platformy Azure
-services: ''
-documentationcenter: ''
+title: Informacje o rachunku Azure enterprise
+description: Dowiedz się, jak czytać i zrozumieć użycia i rachunek dla umów Enterprise Agreement platformy Azure.
 author: adpick
 manager: dougeby
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571209"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490281"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Opis zawartości rachunku Enterprise Agreement platformy Azure
 
