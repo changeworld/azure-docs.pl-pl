@@ -4,7 +4,7 @@ description: Dowiedz się, jak używać wyzwalacz usługi Azure Queue storage i 
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.service: azure-functions
 ms.devlang: multiple
@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 72460136f5fa0dcfec78716fc02e0aaf9e860840
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9604ef276625d1fcc9164a9b75b94ebc22cb51e1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472302"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480153"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla kolejki platformy Azure
 
@@ -307,7 +307,7 @@ Wyzwalacz kolejki automatycznie zapobiega funkcji przetwarzanie komunikatu w kol
 
 [Host.json](functions-host-json.md#queues) plik zawiera ustawienia, które kontrolują zachowanie wyzwalacz kolejki. Zobacz [ustawienia host.json](#hostjson-settings) sekcji, aby uzyskać szczegółowe informacje dotyczące dostępnych ustawień.
 
-## <a name="output"></a>Dane wyjściowe
+## <a name="output"></a>Output
 
 Użyj danych wyjściowych z magazynu Azure Queue, powiązanie, aby pisać wiadomości do kolejki.
 

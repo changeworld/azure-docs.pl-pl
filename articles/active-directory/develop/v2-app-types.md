@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7055794860398ecc6296d0174a691e7fac4450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac3dbd3f2148c14780c380cc0c7f2fab2a41e165
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235249"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482407"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikacji dla platformy tożsamości firmy Microsoft
 
@@ -55,7 +55,7 @@ Wiele nowoczesnych aplikacji ma aplikacja jednostronicowa fronton, który jest n
 
 W tym przepływie aplikacja odbiera tokenów, bezpośrednio z platformą Microsoft identity punktu końcowego, bez żadnych wymiany serwera serwera autoryzacji. Wszystkie logiki uwierzytelniania i obsługi przyjmuje sesji należy umieścić w całości klienta JavaScript, bez dodatkowych Strona przekierowania.
 
-![Przepływ uwierzytelniania niejawne](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![Przedstawia przepływ uwierzytelniania niejawne](./media/v2-app-types/convergence-scenarios-implicit.svg)
 
 Się z tym scenariuszem w praktyce, wypróbuj jedną z próbek kodu aplikacji jednostronicowej w [platforma tożsamości usługi Microsoft wprowadzenie](v2-overview.md#getting-started) sekcji.
 
@@ -80,7 +80,7 @@ Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym platfor
 
 W aplikacji serwera sieci web przepływ logowania uwierzytelniania obejmuje następujące ogólne kroki:
 
-![Przepływ uwierzytelniania w aplikacji sieci Web](./media/v2-app-types/convergence-scenarios-webapp.svg)
+![Przedstawia przepływ uwierzytelniania aplikacji sieci web](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
 Aby zapewnić tożsamość użytkownika, sprawdzanie poprawności tokenu Identyfikacyjnego przy użyciu publicznego klucza podpisywania otrzymanego od firmy Microsoft platformy tożsamości z punktu końcowego. Plik cookie sesji jest ustawiony, który może służyć do identyfikowania użytkownika w odpowiedzi na żądania następną stronę.
 
@@ -106,7 +106,7 @@ Interfejs API sieci Web użytkownikom można przyznać uprawnienia do zgadzaj lu
 
 Interfejs API sieci Web może odbierać tokeny dostępu ze wszystkich typów aplikacji, w tym aplikacje serwera sieci web, pulpitu i aplikacji mobilnych, aplikacji jednej strony, demonów po stronie serwera i nawet w innych interfejsów API sieci Web. Ogólny przepływ dla internetowego interfejsu API wygląda następująco:
 
-![Przepływ uwierzytelniania interfejsu API sieci Web](./media/v2-app-types/convergence-scenarios-webapi.svg)
+![Przedstawia przepływ uwierzytelniania interfejsu API sieci web](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
 Aby dowiedzieć się, jak zabezpieczyć interfejs API sieci Web przy użyciu tokenów dostępu protokołu OAuth2, zapoznaj się z przykładów kodu interfejsu API sieci Web w [platforma tożsamości usługi Microsoft wprowadzenie](v2-overview.md#getting-started) sekcji.
 
@@ -118,7 +118,7 @@ Aplikacje zainstalowane przez urządzenia, np. w przypadku aplikacji mobilnych i
 
 W tym przepływie aplikacja odbiera kod autoryzacji z punktu końcowego platformy tożsamości firmy Microsoft, po użytkownik loguje się. Kod autoryzacji reprezentuje zezwolenie aplikacji na wywołanie usług zaplecza w imieniu użytkownika, który jest zalogowany. Aplikację można wymienić kod autoryzacji w tle dla tokenu dostępu OAuth 2.0 i token odświeżania. Aplikacja może wykorzystanie tokenu dostępu do interfejsów API sieci Web uwierzytelniania w żądaniach HTTP i pobieranie nowych tokenów dostępu po wygaśnięciu starszych tokenów dostępu przy użyciu tokenu odświeżania.
 
-![Przebieg uwierzytelniania w aplikacji natywnej](./media/v2-app-types/convergence-scenarios-native.svg)
+![Przedstawia przepływ uwierzytelniania w aplikacji natywnej](./media/v2-app-types/convergence-scenarios-native.svg)
 
 ## <a name="daemons-and-server-side-apps"></a>Demony i aplikacji po stronie serwera
 
@@ -126,6 +126,6 @@ Aplikacje, które mają procesy długotrwałe lub niewymagające interakcji z u�
 
 W tym przepływie aplikacja współpracuje bezpośrednio z `/token` punktu końcowego w celu uzyskania dostępu:
 
-![Przepływu uwierzytelnianie aplikacji demona](./media/v2-app-types/convergence-scenarios-daemon.svg)
+![Przedstawia przepływ uwierzytelnianie aplikacji demona](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Aby skompilować aplikację demona, zobacz [dokumentacji poświadczeń klienta](v2-oauth2-client-creds-grant-flow.md), lub spróbuj [.NET przykładową aplikację](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

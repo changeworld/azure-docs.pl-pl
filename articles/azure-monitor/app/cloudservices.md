@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: eb7cbb80be12498242363eb8141a468e08cba73a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478330"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443334"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługi w chmurze usługi Application Insights dla platformy Azure
-[Usługa Application Insights] [ start] można monitorować [aplikacje usługi Azure cloud](https://azure.microsoft.com/services/cloud-services/) dostępność, wydajność, błędy i użycia przez połączenie danych z zestawów SDK Application Insights z [Diagnostyki azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) danych z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
+[Usługa Application Insights][start] można monitorować [aplikacje usługi Azure cloud](https://azure.microsoft.com/services/cloud-services/) dla dostępności, wydajności, błędów i użycia przez połączenie danych z zestawów SDK Application Insights za pomocą [diagnostyki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)danych z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
 
 ![Pulpit nawigacyjny przeglądu](./media/cloudservices/overview-graphs.png)
 
@@ -80,7 +80,7 @@ Aby wysyłać dane telemetryczne do odpowiednich zasobów, możesz skonfigurowa�
 
 Jeśli zdecydujesz się utworzyć osobny zasób dla każdej roli, a być może, oddzielny zestaw dla każdej konfiguracji kompilacji, najłatwiej utworzyć je wszystkie w portalu usługi Application Insights. Jeśli tworzysz wiele zasobów, możesz to zrobić [zautomatyzować proces](../../azure-monitor/app/powershell.md).
 
-1. W [witryny Azure portal][portal], wybierz opcję **New** > **usług dla deweloperów**  >   **Usługa Application Insights**.  
+1. W [witryny Azure portal][portal], wybierz opcję **New** > **usług dla deweloperów** > **usługi Application Insights**.  
 
     ![Application Insights okienko](./media/cloudservices/01-new.png)
 
@@ -136,7 +136,38 @@ W programie Visual Studio skonfiguruj zestaw SDK usługi Application Insights dl
 1. Ustaw *plik ApplicationInsights.config* plik, aby zawsze był kopiowany do katalogu wyjściowego.  
     Wiadomości w *.config* pliku prosi o umieścić tam klucza instrumentacji. Jednak dla aplikacji w chmurze jest lepiej ustawić to z *.cscfg* pliku. Takie podejście zapewnia, że rola jest prawidłowo identyfikowana w portalu.
 
-#### <a name="run-and-publish-the-app"></a>Uruchom i opublikuj aplikację
+## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Konfigurowanie monitora stanu do zbierania pełnej kwerendy SQL (opcjonalne)
+
+Ten krok jest niezbędny tylko, jeśli zachodzi potrzeba przechwycenia pełnej kwerendy SQL w programie .NET Framework. 
+
+1. W `\*.csdef` pliku Dodaj [zadanie uruchamiania](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) dla każdej roli, które są podobne do 
+
+    ```xml
+    <Startup>
+      <Task commandLine="AppInsightsAgent\InstallAgent.bat" executionContext="elevated" taskType="simple">
+        <Environment>
+          <Variable name="ApplicationInsightsAgent.DownloadLink" value="http://go.microsoft.com/fwlink/?LinkID=522371" />
+          <Variable name="RoleEnvironment.IsEmulated">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+        </Environment>
+      </Task>
+    </Startup>
+    ```
+    
+2. Pobierz [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) i [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), umieść je w `AppInsightsAgent` folderu dla każdego projektu roli. Upewnij się skopiować je do katalogu wyjściowego przy użyciu właściwości pliku w programie Visual Studio lub skrypty kompilacji.
+
+3. W przypadku wszystkich ról proces roboczy Dodaj zmienne środowiskowe: 
+
+    ```xml
+      <Environment>
+        <Variable name="COR_ENABLE_PROFILING" value="1" />
+        <Variable name="COR_PROFILER" value="{324F817A-7420-4E6D-B3C1-143FBED6D855}" />
+        <Variable name="MicrosoftInstrumentationEngine_Host" value="{CA487940-57D2-10BF-11B2-A3AD5A13CBC0}" />
+      </Environment>
+    ```
+    
+## <a name="run-and-publish-the-app"></a>Uruchom i opublikuj aplikację
 
 1. Uruchom aplikację i zaloguj się do platformy Azure. 
 
@@ -146,10 +177,10 @@ W programie Visual Studio skonfiguruj zestaw SDK usługi Application Insights dl
 1. Dodawanie większej ilości danych telemetrycznych (zobacz w kolejnych sekcjach), a następnie opublikować aplikację, aby uzyskać na żywo dane diagnostyczne i użycia opinii. 
 
 Jeśli nie ma żadnych danych, wykonaj następujące czynności:
-1. Aby wyświetlić poszczególne zdarzenia, otwórz [wyszukiwania] [ diagnostic] kafelka.
+1. Aby wyświetlić poszczególne zdarzenia, otwórz [wyszukiwania][diagnostic] kafelka.
 1. Otwórz różne strony w aplikacji, tak, aby go wygenerować dane telemetryczne.
 1. Odczekaj kilka sekund, a następnie kliknij przycisk **Odśwież**.  
-    Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów][qna].
+    Aby uzyskać więcej informacji, zobacz temat [Rozwiązywanie problemów][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Wyświetlanie zdarzeń diagnostycznych platformy Azure
 Możesz znaleźć [diagnostyki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) informacji w usłudze Application Insights w następujących lokalizacjach:

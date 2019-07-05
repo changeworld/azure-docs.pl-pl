@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57dbbdd7614d09d52fef0f613c43d4ca1d08136
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61322604"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485864"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatyczne zarządzanie urządzeniami IoT na dużą skalę przy użyciu wiersza polecenia platformy Azure
 
@@ -29,7 +29,9 @@ Przebieg zarządzania urządzeniami automatyczne aktualizowanie zbiór bliźniac
 
 * **Dopasowywanie zawartości** definiuje żądane właściwości, które mają być dodane lub zaktualizowane w docelowym bliźniaczych reprezentacji urządzeń. Zawartość zawiera ścieżkę do sekcji żądane właściwości, które mają być zmienione.
 
-* **Metryki** zdefiniować podsumowanie liczby różnych stanów konfiguracji, takie jak **Powodzenie**, **w toku**, i **błąd**. Metryki niestandardowe są określane jako zapytania na urządzeniu zgłoszonych właściwości bliźniaka.  Metryki systemu są domyślnych metryk, które mierzą stan aktualizacji bliźniaczej reprezentacji, takie jak liczba bliźniacze reprezentacje urządzeń, które są stosowane i liczba reprezentacje urządzeń, które zostały pomyślnie zaktualizowane. 
+* **Metryki** zdefiniować podsumowanie liczby różnych stanów konfiguracji, takie jak **Powodzenie**, **w toku**, i **błąd**. Metryki niestandardowe są określane jako zapytania na urządzeniu zgłoszonych właściwości bliźniaka.  Metryki systemu są domyślnych metryk, które mierzą stan aktualizacji bliźniaczej reprezentacji, takie jak liczba bliźniacze reprezentacje urządzeń, które są stosowane i liczba reprezentacje urządzeń, które zostały pomyślnie zaktualizowane.
+
+Konfiguracje urządzeń automatycznego uruchamiania po raz pierwszy wkrótce, po utworzeniu konfiguracji, a następnie co pięć minut. Metryki zapytania uruchamiane przy każdym uruchomieniu konfiguracji urządzenia automatycznego.
 
 ## <a name="cli-prerequisites"></a>Wymagania wstępne dotyczące interfejsu wiersza polecenia
 
@@ -56,7 +58,7 @@ Przed przystąpieniem do tworzenia konfiguracji należy określić urządzeń, k
 
 ## <a name="define-the-target-content-and-metrics"></a>Zdefiniuj Adresuj zawartość i metryki
 
-Adresuj zawartość i metryk zapytań są zdefiniowane w bliźniaczej reprezentacji dokumentów JSON, które opisują urządzenia, żądanych właściwości do zestawu i zgłaszanych właściwości do mierzenia.  Aby utworzyć konfigurację urządzenia automatycznego przy użyciu wiersza polecenia platformy Azure, Zapisz Adresuj zawartość i metryki lokalnie jako pliki txt. Używasz ścieżki plików w dalszej części tego tematu, po uruchomieniu polecenia, aby zastosować konfigurację do Twojego urządzenia. 
+Adresuj zawartość i metryk zapytań są zdefiniowane w bliźniaczej reprezentacji dokumentów JSON, które opisują urządzenia, żądanych właściwości do zestawu i zgłaszanych właściwości do mierzenia.  Aby utworzyć konfigurację urządzenia automatycznego przy użyciu wiersza polecenia platformy Azure, Zapisz Adresuj zawartość i metryki lokalnie jako pliki txt. Używasz ścieżki plików w dalszej części tego tematu, po uruchomieniu polecenia, aby zastosować konfigurację do Twojego urządzenia.
 
 Oto przykład zawartości podstawowe docelowej:
 
