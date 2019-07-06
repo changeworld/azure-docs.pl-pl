@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: dd06330e82850cc44bc0f4d36ba7caf596ace939
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233819"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603513"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Samouczek: Moderuj wpisów w usłudze Facebook i poleceń przy użyciu usługi Azure Content Moderator
 
@@ -48,11 +48,11 @@ Zapoznaj się [spróbuj pakietu Content Moderator w sieci web](quick-start.md) s
 
 ## <a name="configure-image-moderation-workflow"></a>Konfigurowanie przepływu pracy Moderowanie obrazów
 
-Zapoznaj się [Definiuj, testy i przepływy pracy Użyj](review-tool-user-guide/workflows.md) przewodnika, aby utworzyć obraz niestandardowy przepływ pracy. Zezwalaj na automatyczne sprawdzanie obrazów w serwisie Facebook i niektórych do narzędzia do przeglądu usługi Content Moderator. Zwróć uwagę na przepływ pracy **nazwa**.
+Zapoznaj się [Definiuj, testy i przepływy pracy Użyj](review-tool-user-guide/workflows.md) przewodnika, aby utworzyć obraz niestandardowy przepływ pracy. Content Moderator będzie za pomocą tego przepływu pracy automatycznie Sprawdź obrazów w serwisie Facebook i wysyłać niektóre do narzędzia do przeglądu. Zwróć uwagę na przepływ pracy **nazwa**.
 
 ## <a name="configure-text-moderation-workflow"></a>Konfigurowanie przepływu pracy Moderowanie tekstu
 
-Ponownie, zapoznaj się [Definiuj, testy i przepływy pracy Użyj](review-tool-user-guide/workflows.md) przewodnik; teraz utworzyć przepływ pracy niestandardowego tekstu. Umożliwi to pakiet Content Moderator automatycznie sprawdzać zawartości tekstowej. Zwróć uwagę na przepływ pracy **nazwa**.
+Ponownie, zapoznaj się [Definiuj, testy i przepływy pracy Użyj](review-tool-user-guide/workflows.md) Przewodnik; ten czas, tworzenie niestandardowego tekstu przepływu pracy. Pakiet Content Moderator użyje tego przepływu pracy do automatyczne sprawdzenie dostępności zawartości tekstowej. Zwróć uwagę na przepływ pracy **nazwa**.
 
 ![Konfigurowanie przepływu pracy tekstu](images/text-workflow-configure.PNG)
 
@@ -77,7 +77,7 @@ Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wykonaj nast
     | cm:TextWorkflow | Nazwa przepływu pracy do uruchomienia na tekście |
     | cm:CallbackEndpoint | Adres URL dla aplikacji funkcji CMListener, która zostanie utworzona w dalszej części tego przewodnika |
     | fb:VerificationToken | Token wpisu tajnego, który tworzysz, używana do subskrybowania usługi Facebook, źródła danych zdarzeń |
-    | fb:PageAccessToken | Token dostępu do interfejsu API Graph serwisu Facebook nie wygasa i umożliwia funkcji ukrywanie i usuwanie wpisów w Twoim imieniu. Otrzymasz to na późniejszym etapie. |
+    | fb:PageAccessToken | Token dostępu do interfejsu API Graph serwisu Facebook nie wygasa i umożliwia funkcji ukrywanie i usuwanie wpisów w Twoim imieniu. Zostanie wyświetlony ten token na późniejszym etapie. |
 
     Kliknij przycisk **Zapisz** znajdujący się u góry strony.
 

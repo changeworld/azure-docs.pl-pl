@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815622"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603387"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i języka C#
 
@@ -77,7 +77,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>Odbieranie danych wejściowych obrazu
 
-Dodaj poniższy kod do metody **Main** w klasie **Program**. Powoduje on wyświetlenie monitu w konsoli z prośbą o wprowadzenie adresu URL obrazu. Następnie wywołuje inną metodę, **MakeAnalysisRequest**, aby przetworzyć obraz w tej lokalizacji.
+Dodaj poniższy kod do metody **Main** w klasie **Program**. Ten kod zapisuje monit konsoli pytaniem do użytkownika, wprowadź adres URL obrazu. Następnie wywołuje inną metodę, **MakeAnalysisRequest**, aby przetworzyć obraz w tej lokalizacji.
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +162,7 @@ Metody pomocnicze zostaną zdefiniowanie w poniższych krokach.
 
 ### <a name="process-the-input-image-data"></a>Przetwarzanie danych obrazu wejściowego
 
-Dodaj następującą metodę do klasy **Program**. Służy ona do konwersji obrazu pod określonym adresem URL do tablicy bajtów.
+Dodaj następującą metodę do klasy **Program**. Ta metoda konwertuje obraz na określony adres URL do tablicy typu byte.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +179,7 @@ Dodaj następującą metodę do klasy **Program**. Służy ona do konwersji obra
 
 ### <a name="parse-the-json-response"></a>Analizowanie odpowiedzi w formacie JSON
 
-Dodaj następującą metodę do klasy **Program**. Służy ona do formatowania danych wejściowych w formacie JSON, aby można je było łatwiej odczytać. Aplikacja zapisze te dane ciągu do konsoli. Następnie można zamknąć klas i przestrzeni nazw.
+Dodaj następującą metodę do klasy **Program**. Ta metoda formatów danych wejściowych, aby można było łatwiej odczytać JSON. Aplikacja zapisze te dane ciągu do konsoli. Następnie można zamknąć klas i przestrzeni nazw.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.

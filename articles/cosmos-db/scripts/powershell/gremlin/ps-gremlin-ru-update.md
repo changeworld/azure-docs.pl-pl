@@ -3,15 +3,15 @@ title: Skrypt programu Azure PowerShell — Azure Cosmos DB Update jednostek RU/
 description: Skrypt programu Azure PowerShell — Azure Cosmos DB Update jednostek RU/s dla interfejsu API języka Gremlin
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 30a7b4b9151496a753d31568411e436930ec0f55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70fc0f0357a091e990a2c11f39985d7b7e60cd6c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247472"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603910"
 ---
 # <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Aktualizacja jednostek RU/s dla bazy danych lub grafu usługi Azure Cosmos DB — interfejs API Gremlin
 

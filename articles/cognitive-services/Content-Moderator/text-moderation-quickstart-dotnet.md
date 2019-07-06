@@ -1,25 +1,25 @@
 ---
 title: 'Szybki start: analizowanie zawartości tekstowej w języku C# — Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Opis sposobu analizowania zawartości tekstowej pod kątem różnych rodzajów niepożądanego materiału przy użyciu zestawu SDK pakietu Content Moderator dla platformy .NET
+description: Jak analizować zawartość tekstu dla różnych materiałów Kodeksem przy użyciu zestawu SDK Moderator zawartości dla platformy .NET
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f848ea0d1c86b9c12d26c59b8f0e92d1e5d70094
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607093"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604060"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Szybki start: analizowanie zawartości tekstowej pod kątem niepożądanego materiału w języku C#
 
-Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak przeprowadzać filtrowanie oparte na terminach w zawartości tekstowej oraz jej klasyfikację w celu moderowania potencjalnie niepożądanego materiału.
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak wykonać termin filtrowania i klasyfikacji zawartości w celu potencjalnie groźnego materiału Moderowanie tekstu.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -57,11 +57,11 @@ Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta u
 
 ### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
-Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Spowoduje to określenie plików na potrzeby zawartości tekstu wejściowego i zawartości wyjściowego kodu JSON.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola określ pliki zawartości tekstu wejściowego, a dane wyjściowe JSON zawartości.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Musisz utworzyć plik wejściowy *TextFile.txt*, a następnie odpowiednio zaktualizować jego ścieżkę (ścieżki względne są względne wobec katalogu wykonywania). Otwórz plik _TextFile.txt_ i dodaj tekst moderowania. Ten przewodnik Szybki start używa następującego przykładowego tekstu:
+Musisz utworzyć *TextFile.txt* plik wejściowy i zaktualizuj jego ścieżki (ścieżki są względne wobec katalogu wykonywania). Otwórz plik _TextFile.txt_ i dodaj tekst moderowania. Ten przewodnik Szybki start używa następującego przykładowego tekstu:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.

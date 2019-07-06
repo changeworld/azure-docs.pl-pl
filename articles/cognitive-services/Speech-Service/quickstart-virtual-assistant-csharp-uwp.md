@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.custom: ''
-ms.openlocfilehash: 4044f8d48efae4e8423f780c85e0f3ccfde12461
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467056"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604973"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Szybki start: Utwórz Asystenta ustawień wirtualnego pierwszy głosu przy użyciu zestawu SDK mowy platformy uniwersalnej systemu Windows
 
@@ -81,7 +80,7 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
     </Page>
     ```
 
-1. Otwórz plik źródłowy związanym z kodem `MainPage.xaml.cs`. Znajdziesz go zgrupowane w obszarze `MainPage.xaml`. Zastąp zawartość z poniższym kodem. Oto, co opisano w tym przykładzie: 
+1. Otwórz plik źródłowy związanym z kodem `MainPage.xaml.cs`. Znajdziesz go zgrupowane w obszarze `MainPage.xaml`. Zastąp zawartość z poniższym kodem. Oto, co opisano w tym przykładzie:
 
     * Za pomocą instrukcji mowy i Speech.Dialog przestrzeni nazw
     * Proste wdrażanie, aby zapewnić dostęp do mikrofonu, podłączone do obsługi przycisku

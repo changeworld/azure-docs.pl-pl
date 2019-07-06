@@ -1,25 +1,25 @@
 ---
 title: 'Szybki start: analizowanie obrazów pod kątem niepożądanej zawartości w języku C# — Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Opis sposobu analizowania zawartości obrazu pod kątem różnych rodzajów niepożądanego materiału przy użyciu zestawu SDK pakietu Content Moderator dla platformy .NET
+description: Jak analizować zawartość obrazu dla różnych materiałów Kodeksem przy użyciu zestawu SDK Moderator zawartości dla platformy .NET
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/20/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d9a28dcd4af68cf9c00eb3d338c4bd83c8d89ecc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699073"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604118"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Szybki start: Analizuj obrazy niepożądanej zawartości wC#
 
-Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak wyszukiwać zawartość dla dorosłych lub erotyczną, tekst możliwy do wyodrębnienia i ludzkie twarze w celu moderowania potencjalnie niepożądanego materiału.
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak skanować pod kątem zawartości dla dorosłych lub erotycznej, możliwy do wyodrębnienia tekstu i ludzkich twarzy w celu Moderowanie potencjalnie groźnego materiału.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -60,7 +60,7 @@ Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta u
 
 ### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
-Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Spowoduje to określenie plików na potrzeby zawartości obrazów wejściowych i zawartości wyjściowego kodu JSON.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola określ pliki zawartości obrazu wejściowego, a dane wyjściowe JSON zawartości.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
 
@@ -86,13 +86,13 @@ Dodaj następującą metodę do klasy **Program**. Ta metoda ocenia pojedynczy o
 
 ### <a name="load-the-input-images"></a>Ładowanie obrazów wejściowych
 
-Dodaj następujący kod do metody **Main** w klasie **Program**. Spowoduje to utworzenie programu do pobierania danych oceny dla każdego adresu URL obrazu w pliku wejściowym. Te dane są następnie zapisywane w pojedynczym pliku wyjściowym.
+Dodaj następujący kod do metody **Main** w klasie **Program**. Ten kod konfiguruje program do pobierania danych oceny dla każdej adres URL obrazu w pliku wejściowym. Te dane są następnie zapisywane w pojedynczym pliku wyjściowym.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
 
 ## <a name="run-the-program"></a>Uruchamianie programu
 
-Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_. Przykładowe obrazy używane w tym przewodniku Szybki start powodują wygenerowanie następujących danych wyjściowych. Należy pamiętać, że każdy obraz ma inne sekcje `ImageModeration`, `FaceDetection` i `TextDetection`, co odpowiada trzem wywołaniom interfejsu API w ramach metody **EvaluateImage**.
+Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_. Przykładowe obrazy używane w tym przewodniku Szybki start powodują wygenerowanie następujących danych wyjściowych. Każdy obraz ma różne sekcje dla `ImageModeration`, `FaceDetection`, i `TextDetection`, odnoszą się do trzech wywołań interfejsu API w sieci **EvaluateImage** metody.
 
 ```json
 [{

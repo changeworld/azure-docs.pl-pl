@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b210af2a70a3ce858d8f53102a181c75373b4176
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474688"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606943"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: moderowanie wideo i transkrypcji
 
@@ -37,7 +37,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 - Zaloguj się w celu [narzędzie do przeglądu usługi Content Moderator](https://contentmoderator.cognitive.microsoft.com/) witrynę sieci web i utworzyć niestandardowe tagi. Zobacz [za pomocą tagów](Review-Tool-User-Guide/tags.md) Jeśli potrzebujesz pomocy dotyczącej tego kroku.
 
     ![Zrzut ekranu przedstawiający znaczniki niestandardowe Moderowanie filmów wideo](images/video-tutorial-custom-tags.png)
-- Uruchamianie przykładowej aplikacji, potrzebne jest konto platformy Azure, zasób usługi Azure Media Services, zasób usługi Azure Content Moderator i poświadczeń usługi Azure Active Directory. Aby uzyskać instrukcje dotyczące sposobu uzyskania tych, zobacz [interfejsu API moderowania wideo](video-moderation-api.md) przewodnik.
+- Uruchamianie przykładowej aplikacji, potrzebne jest konto platformy Azure, zasób usługi Azure Media Services, zasób usługi Azure Content Moderator i poświadczeń usługi Azure Active Directory. Aby uzyskać instrukcje dotyczące sposobu uzyskania tych zasobów, zobacz [interfejsu API moderowania wideo](video-moderation-api.md) przewodnik.
 - Pobierz [aplikację konsolową Przegląd wideo](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) z usługi GitHub.
 
 ## <a name="enter-credentials"></a>Wprowadź poświadczenia
@@ -225,7 +225,7 @@ Transkrypcja dźwięku z wideo jest generowana również wtedy, gdy została ust
 > [!NOTE]
 > Aplikacja konsolowa używa [interfejsu API usługi Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) do wygenerowania transkrypcji ze ścieżki audio przekazanego wideo. Wyniki są udostępniane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
 
-## <a name="create-a-the-human-in-the-loop-review"></a>Tworzenie przeglądu człowieka w pętli
+## <a name="create-a-human-review"></a>Tworzenie przeglądu przez ludzi
 
 Proces moderowania zwraca listę ramek kluczy z wideo oraz transkrypcję ścieżek audio. Następnym krokiem jest utworzenie przeglądu za pomocą narzędzia do generowania przeglądu w usłudze Content Moderator dla ludzi będących moderatorami. Po cofnięciu do metody `ProcessVideo()` w pliku `Program.cs` widoczne jest wywołanie metody `CreateVideoReviewInContentModerator()`. Ta metoda jest częścią klasy `videoReviewApi`, która znajduje się w pliku `VideoReviewAPI.cs` i została przedstawiona tutaj.
 

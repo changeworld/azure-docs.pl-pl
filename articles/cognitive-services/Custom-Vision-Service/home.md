@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 50935aca20af931eec63717921ef7a73267d2373
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a5dd16948724e3a79863450212702aa8aeb2347
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60996646"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605140"
 ---
 # <a name="what-is-azure-custom-vision"></a>Co to jest usługa Azure Custom Vision?
 
-Usługa Azure Custom Vision to usługa poznawcza umożliwiająca tworzenie, wdrażanie i ulepszanie własnych klasyfikatorów obrazów. Klasyfikator obrazów to usługa sztucznej Inteligencji, która stosuje etykiety (reprezentujące _klasy_) do obrazów zgodnie z ich cechami wizualnymi. W odróżnieniu od usługi [przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) usługa Custom Vision umożliwia określenie etykiet do stosowania.
+Azure Custom Vision jest usługi cognitive service, która umożliwia tworzenie, wdrażanie i poprawić swoje własne klasyfikatorów obrazów. Klasyfikator obrazów to usługa sztucznej Inteligencji, która stosuje etykiety (reprezentujące _klasy_) do obrazów zgodnie z ich cechami wizualnymi. W odróżnieniu od usługi [przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) usługa Custom Vision umożliwia określenie etykiet do stosowania.
 
 ## <a name="what-it-does"></a>Wyniki działania
 
@@ -31,9 +31,9 @@ Funkcje usługi Custom Vision można podzielić na dwie kategorie. **Klasyfikacj
 
 ### <a name="optimization"></a>Optymalizacja
 
-Usługa Custom Vision jest zoptymalizowana pod kątem szybkiego rozpoznawania znacznych różnic między obrazami. Umożliwia to rozpoczęcie prototypowania modelu przy użyciu małej ilości danych. 50 obrazów na etykietę to zazwyczaj dobry początek. Oznacza to jednak, że usługa nie jest najlepszym wyborem do wykrywania subtelnych różnic między obrazami (na przykład wykrywanie niewielkich rys lub wgnieceń w scenariuszach związanych z zapewnianiem jakości.
+Usługa Custom Vision jest zoptymalizowany do szybkiego rozpoznawania najważniejszych różnic między obrazów, aby można było zacząć tworzenie prototypów modelu z małą ilością danych. 50 obrazów na etykietę to zazwyczaj dobry początek. Jednak usługa nie jest optymalne wykrywania drobne różnice w obrazach (np. wykrywanie rysy drobne lub wgięć w scenariuszach zapewnienia jakości).
 
-Ponadto możesz wybrać spośród kilku różnych typów algorytmu usługi Custom Vision, które są zoptymalizowane pod kątem obrazów z określonymi materiałami &mdash;, na przykład elementami krajobrazu lub produktami sprzedaży detalicznej. Zobacz przewodnik [Tworzenie klasyfikatora](getting-started-build-a-classifier.md), aby uzyskać więcej informacji na ten temat.
+Ponadto możesz wybrać spośród kilku różnych typów algorytmu usługi Custom Vision, które są zoptymalizowane pod kątem obrazów z określonymi materiałami &mdash;, na przykład elementami krajobrazu lub produktami sprzedaży detalicznej. Aby uzyskać więcej informacji, zobacz [tworzenie klasyfikatora](getting-started-build-a-classifier.md) przewodnik.
 
 ## <a name="what-it-includes"></a>Co zawiera
 

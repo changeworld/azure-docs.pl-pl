@@ -3,15 +3,15 @@ title: Skrypt programu Azure PowerShell — Azure Cosmos DB Pobierz przepływno�
 description: Skrypt programu Azure PowerShell — Azure Cosmos DB Pobierz przepływność (RU/s) dla interfejsu API rozwiązania Cassandra
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: a4871f56aa3d479342ca1bd25e521d2760451d98
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 4aed55a0c3ae969cf9148e5bf8d6a70a3151f695
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566936"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603991"
 ---
 # <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Uzyskiwanie informacji o przepływności (RU/s) przestrzeń kluczy lub tabeli usługi Azure Cosmos DB — interfejs API rozwiązania Cassandra
 

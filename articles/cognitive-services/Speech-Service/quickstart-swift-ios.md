@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: feebca23e38596cff67e07f64e7acf1f7b6252e9
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 98c37d4a39235e5ed1a82df72886d196cbf19e49
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467432"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605040"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w języku Swift w systemie iOS przy użyciu zestawu SDK rozpoznawania mowy
 
@@ -86,4 +86,3 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)
-

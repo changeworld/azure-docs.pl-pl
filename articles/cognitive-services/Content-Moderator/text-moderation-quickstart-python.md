@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 20920a04c5b85c9eede7d7b249dd6e0548308240
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607145"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606993"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Szybki start: Analizowanie zawartości tekstowej pod kątem niepożądanego materiału za pomocą języka Python
 
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Zainstaluj zestaw SDK Content Moderator dla języka Python, otwierając wiersz polecenia i uruchamiając następujące polecenie:
 
-```
+```bash
 pip install azure-cognitiveservices-vision-contentmoderator
 ```
 
@@ -61,7 +61,7 @@ Dla uproszczenia będziemy analizować tekst bezpośrednio ze skryptu. Zdefiniuj
 
 ## <a name="query-the-moderator-service"></a>Wykonywanie zapytań względem usługi Moderator
 
-Utwórz wystąpienie interfejsu **ContentModeratorClient** przy użyciu klucza subskrypcji i adresu URL punktu końcowego. Następnie użyj jego wystąpienia elementu członkowskiego **TextModerationOperations**, aby wywołać interfejs API moderacji. Więcej informacji na temat wywoływania tego interfejsu zawiera dokumentacja metody **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)**.
+Utwórz wystąpienie interfejsu **ContentModeratorClient** przy użyciu klucza subskrypcji i adresu URL punktu końcowego. Następnie użyj jego wystąpienia elementu członkowskiego **TextModerationOperations**, aby wywołać interfejs API moderacji. Więcej informacji na temat wywoływania tego interfejsu zawiera dokumentacja metody **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** .
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
 

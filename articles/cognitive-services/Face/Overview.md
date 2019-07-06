@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c45fd508c14c368c6c9057b9fdeea8df9d8a52c3
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4be33f781dec93fd9fe1b1846322672266cd7350
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905687"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606909"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co to jest interfejs API rozpoznawania twarzy na platformie Azure?
 
@@ -59,11 +59,11 @@ Interfejs API grupowania dzieli zestaw nieznanych twarzy na kilka grup na podsta
 
 API identyfikacji służy do identyfikowania wykryte twarzy na bazie danych osób. Ta funkcja może być przydatne do automatycznego obraz znakowania w oprogramowanie do zarządzania zdjęć. Wcześniej utworzyć bazę danych i można go edytować wraz z upływem czasu.
 
-Na poniższej ilustracji przedstawiono przykład bazy danych o nazwie "myfriends." Każda grupa może zawierać obiekty innej osobie do 1 miliona. Dla każdego obiektu osoby może być zarejestrowanych maksymalnie 248 twarzy.
+Na poniższej ilustracji przedstawiono przykład bazy danych o nazwie `"myfriends"`. Każda grupa może zawierać obiekty innej osobie do 1 miliona. Dla każdego obiektu osoby może być zarejestrowanych maksymalnie 248 twarzy.
 
 ![Siatka zawierająca trzy kolumny dla różnych osób, każdy z trzema wierszami, obrazów twarzy](./Images/person.group.clare.jpg)
 
-Po bazy danych jest tworzony i skonfigurowanych pod kątem, można wykonać identyfikacji względem grupy za pomocą nowej twarzy wykryte. Jeśli twarz zostanie zidentyfikowana jako należąca do osoby w grupie, zostanie zwrócony obiekt osoby.
+Po utworzeniu i uczenie bazy danych można wykonywać identyfikacji względem grupy za pomocą nowej twarzy wykryte. Jeśli twarz zostanie zidentyfikowana jako należąca do osoby w grupie, zostanie zwrócony obiekt osoby.
 
 Aby uzyskać więcej informacji na temat identyfikacji osoby zobacz [rozpoznawania twarzy](concepts/face-recognition.md) przewodnik pojęcia lub [identyfikowania interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) dokumentację referencyjną.
 

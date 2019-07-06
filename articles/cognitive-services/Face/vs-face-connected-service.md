@@ -1,21 +1,21 @@
 ---
 title: 'Samouczek: Interfejs API rozpoznawania twarzy, C#'
 titleSuffix: Azure Cognitive Services
-description: Utwórz prostą aplikację dla systemu Windows, która używa interfejsu API rozpoznawania twarzy usług Cognitive Services do wykrywania rysów twarzy na obrazie.
+description: Tworzenie aplikacji Windows, która używa Cognitive Services Face API, aby wykryć funkcji twarzy na obrazie.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 07/03/2019
 ms.author: ghogen
-ms.openlocfilehash: 492161a9a47627db8a06686daf953e99ca652e02
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827660"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606817"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Łączenie z interfejsem API rozpoznawania twarzy usług Cognitive Services za pomocą usług połączonych w programie Visual Studio
 
@@ -147,7 +147,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
             });
         }
    ```
-    Kod w tym kroku tworzy żądanie HTTP z wywołaniem interfejsu API REST rozpoznawania twarzy za pomocą klucza dodanego podczas dodawania usługi połączonej.
+    Kod w tym kroku tworzy żądanie HTTP przy użyciu wywołania interfejsu API REST rozpoznawania twarzy, za pomocą klucza, którą dodałeś po dodaniu usługi połączonej.
 
 1. Dodaj funkcje pomocnicze GetImageAsByteArray i JsonPrettyPrint.
 

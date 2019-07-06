@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 70c496aef0ff2f34c917fd594767d464cab3e625
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815576"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603425"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka JavaScript
 
@@ -41,7 +41,7 @@ Utwórz nowy plik HTML o nazwie *detectFaces.html* i dodaj poniższy kod.
 </html>
 ```
 
-Następnie dodaj poniższy kod wewnątrz elementu `body` dokumentu. Spowoduje to utworzenie podstawowego interfejsu użytkownika z polem adresu URL, przyciskiem **analizowania twarzy**, okienkiem odpowiedzi i okienkiem wyświetlania obrazu.
+Następnie dodaj poniższy kod wewnątrz elementu `body` dokumentu. Ten kod konfiguruje podstawowy interfejs użytkownika z polem adresu URL **analizowania powierzchni** przycisk, okienko odpowiedzi i okienku wyświetlania obrazu.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>Pisanie skryptu języka JavaScript
 
-Dodaj następujący kod bezpośrednio nad elementem `h1` w dokumencie. Spowoduje to utworzenie kodu JavaScript, który wywołuje interfejs API rozpoznawania twarzy.
+Dodaj następujący kod bezpośrednio nad elementem `h1` w dokumencie. Ten kod konfiguruje kod JavaScript, która wywołuje interfejs API rozpoznawania twarzy.
 
 ```html
 <script type="text/javascript">
@@ -140,7 +140,7 @@ Otwórz plik *detectFaces.html* w przeglądarce. Po kliknięciu przycisk **anali
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-Następujący kod to przykład pomyślnej odpowiedzi w formacie JSON.
+Następujący tekst jest przykładem pomyślnej odpowiedzi JSON.
 
 ```json
 [

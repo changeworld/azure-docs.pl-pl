@@ -3,15 +3,15 @@ title: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB, tworzenia i
 description: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB, tworzenia interfejsu API rozwiązania Cassandra przestrzeni kluczy i tabeli
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: ab654699fb040b5e3f966b3514f97436c27ca6e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1427640519936bab907c7159b4e88e723bac57fd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247022"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602575"
 ---
 # <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>Tworzenie przestrzeni kluczy i tabeli dla usługi Azure Cosmos DB — interfejs API rozwiązania Cassandra
 

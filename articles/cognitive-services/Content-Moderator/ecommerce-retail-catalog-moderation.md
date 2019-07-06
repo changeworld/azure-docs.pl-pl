@@ -1,25 +1,25 @@
 ---
 title: 'Samouczek: moderowanie obrazów produktów na potrzeby handlu elektronicznego — Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Konfigurowanie aplikacji do analizowania i klasyfikowania obrazów produktów przy użyciu określonych etykiet (za pomocą interfejsu API przetwarzania obrazów i usługi Custom Vision na platformie Azure) oraz oznaczania niepożądanych obrazów do dalszego przeglądu (za pomocą usługi Azure Content Moderator).
+description: Konfigurowanie aplikacji do analizowania i klasyfikowania obrazów produktów w określonej etykiety (przy użyciu przetwarzania obrazów platformy Azure i Custom Vision). Tag niepożądanych obrazów do przejrzane (przy użyciu usługi Azure Content Moderator).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec17f9f0206ef639bd47d694880c064a012ea1cf
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699435"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604189"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Samouczek: moderowanie obrazów produktów na potrzeby handlu elektronicznego za pomocą usługi Azure Content Moderator
 
-Z tego samouczka dowiesz się, jak używać usług Azure Cognitive Services, w tym usługi Content Moderator, do efektywnego klasyfikowania i moderowania obrazów produktów w scenariuszu handlu elektronicznego. Za pomocą interfejsu API przetwarzania obrazów i usługi Custom Vision zastosujesz różne tagi (etykiety) do obrazów, a następnie utworzysz przegląd zespołowy, łączący technologię uczenia maszynowego usługi Content Moderator z pracą zespołową wykonywaną przez ludzi, aby uzyskać system inteligentnej moderacji.
+W tym samouczku dowiesz się, jak używać usług Azure Cognitive Services, usługi Content Moderator, w tym do klasyfikowania i obrazy produktów średni scenariusz handlu elektronicznego. Korzystając z przetwarzania obrazów i Custom Vision zastosować znaczniki (etykiety) do obrazów, a następnie będzie Utwórz przeglądu zespołu łączy technologie oparte na nauce maszyny Content Moderator z zespołami przeglądu przez ludzi, aby zapewnić systemu Moderowanie inteligentnego.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -47,35 +47,35 @@ Zapoznaj się [spróbuj pakietu Content Moderator w sieci web](quick-start.md) s
 
 ## <a name="create-custom-moderation-tags"></a>Tworzenie niestandardowych tagów moderacji
 
-Następnie należy utworzyć tagi niestandardowe w narzędziu do przeprowadzania przeglądu (jeśli potrzebujesz pomocy w tym procesie, zapoznaj się z artykułem [Tags — Tagi](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags)). W tym przypadku zostaną dodane następujące tagi: **celebrity** (osobistości), **USA**, **flag** (flaga), **toy** (zabawka) i **pen** (długopis). Pamiętaj, że nie wszystkie te tagi muszą odpowiadać kategoriom wykrywanym przez interfejs API przetwarzania obrazów (jak **celebrity**). Możesz dodawać też własne tagi niestandardowe, jeśli tylko później wyszkolisz klasyfikator usługi Custom Vision do ich wykrywania.
+Następnie należy utworzyć niestandardowe znaczniki w narzędzie do przeglądu (zobacz [tagi](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) artykułu, jeśli potrzebujesz pomocy z tym procesem). W tym przypadku zostaną dodane następujące tagi: **celebrity** (osobistości), **USA**, **flag** (flaga), **toy** (zabawka) i **pen** (długopis). Nie wszystkie tagi muszą być wykrywalny kategorii w wizualizacji komputerowej (takich jak **osobistości**); można dodać własne niestandardowe tagi, tak długo, jak uczyć klasyfikatory Custom Vision, wykrywać je później.
 
 ![Konfigurowanie tagów niestandardowych](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. W programie Visual Studio otwórz okno dialogowe Nowy projekt. Rozwiń węzeł **Zainstalowane** i węzeł **Visual C#**, a następnie wybierz pozycję **Aplikacja konsolowa (.NET Framework)**.
+1. W programie Visual Studio otwórz okno dialogowe Nowy projekt. Rozwiń węzeł **Zainstalowane** i węzeł **Visual C#** , a następnie wybierz pozycję **Aplikacja konsolowa (.NET Framework)** .
 1. Nadaj aplikacji nazwę **EcommerceModeration**, a następnie kliknij przycisk **OK**.
-1. Jeśli dodajesz projekt do istniejącego rozwiązania, wybierz ten projekt jako pojedynczy projekt startowy.
+1. Jeśli dodajesz ten projekt do istniejącego rozwiązania, wybierz ten projekt jako pojedynczy projekt startowy.
 
-W tym samouczku przedstawiono kod najważniejszy dla projektu, ale nie omówiono każdej linijki wymaganego kodu. Skopiuj całą zawartość pliku _Program.cs_ z przykładowego projektu ([Samples eCommerce Catalog Moderation](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) do pliku _Program.cs_ w swoim nowym projekcie. Następnie przejrzyj kolejne sekcje, aby poznać sposób działania tego projektu i dowiedzieć się, jak z niego korzystać.
+Ten samouczek przedstawia proces kod, który stanowi podstawę do projektu, ale go nie obejmują wszystkich wierszy kodu. Skopiuj całą zawartość pliku _Program.cs_ z przykładowego projektu ([Samples eCommerce Catalog Moderation](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) do pliku _Program.cs_ w swoim nowym projekcie. Następnie przejrzyj kolejne sekcje, aby poznać sposób działania tego projektu i dowiedzieć się, jak z niego korzystać.
 
 ## <a name="define-api-keys-and-endpoints"></a>Definiowanie kluczy i punktów końcowych interfejsu API
 
-Jak wspomniano powyżej, w tym samouczku używane są trzy usługi Cognitive Services, a zatem potrzebne są trzy odpowiadające im klucze i punkty końcowe interfejsu API. Zwróć uwagę na następujące pola w klasie **Program**:
+Ten samouczek używa trzech usług cognitive services; w związku z tym wymaga trzech odpowiadających im kluczy i punkty końcowe interfejsu API. Zwróć uwagę na następujące pola w klasie **Program**:
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-Należy zaktualizować pola `___Key`, używając wartości kluczy subskrypcji (klucz `CustomVisionKey` uzyskasz później). Konieczna może być również zmiana pól `___Uri` w taki sposób, aby zawierały poprawne identyfikatory regionu. W części `YOURTEAMID` pola `ReviewUri` wpisz identyfikator zespołu do przeprowadzania przeglądu, który utworzono wcześniej. Końcową część pola `CustomVisionUri` uzupełnisz później.
+Musisz zaktualizować `___Key` pola z wartościami klucze subskrypcji (otrzymasz `CustomVisionKey` później), i może być konieczna zmiana `___Uri` pól, dzięki czemu zawierają identyfikatory poprawny region. W części `YOURTEAMID` pola `ReviewUri` wpisz identyfikator zespołu do przeprowadzania przeglądu, który utworzono wcześniej. Będzie wypełniana w końcowej części `CustomVisionUri` pola później.
 
 ## <a name="primary-method-calls"></a>Główne wywołania metod
 
-Zwróć uwagę na następujący kod w metodzie **Main**, wykonujący pętlę na liście adresów URL obrazów. Ten kod analizuje każdy obraz przy użyciu wszystkich trzech usług, zapisuje zastosowane tagi w tablicy **ReviewTags**, a następnie tworzy przegląd dla moderatorów (wysyła obrazy do narzędzia do przeprowadzania przeglądu usługi Content Moderator). Te metody przedstawimy w kolejnych sekcjach. Zwróć uwagę, że jeśli chcesz, możesz tutaj określić, które obrazy będą wysyłane do przeglądu, używając tablicy **ReviewTags** w instrukcji warunkowej w celu sprawdzenia, jakie tagi zostały zastosowane.
+Zwróć uwagę na następujący kod w metodzie **Main**, wykonujący pętlę na liście adresów URL obrazów. Analizuje każdy obraz w trzech różnych usług, rejestruje zastosować znaczniki w **ReviewTags** tablicy, a następnie tworzy recenzję dla moderatorów ludzi, wysyłając obrazy do zawartości, przejrzyj narzędzia moderatora. Te metody przedstawimy w kolejnych sekcjach. Jeśli chcesz, możesz kontrolować obrazów, które są wysyłane do przeglądu, przy użyciu **ReviewTags** tablicy w instrukcji warunkowej, aby sprawdzić, jakie znaczniki zostały zastosowane.
 
 [!code-csharp[Main: evaluate each image and create review](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=53-70)]
 
 ## <a name="evaluateadultracy-method"></a>Metoda EvaluateAdultRacy
 
-Zwróć uwagę na metodę **EvaluateAdultRacy** w klasie **Program**. Parametrami tej metody są adres URL obrazu i tablica par wartości kluczy. Wywołuje ona interfejs API REST wyszukiwania obrazów usługi Content Moderator w celu pobrania wyników analizy tego obrazu pod kątem treści erotycznych i dla dorosłych. Jeśli wynik w dowolnej z tych kategorii przekracza 0,4 (w zakresie od 0 do 1), w tablicy **ReviewTags** zostaje ustawiona wartość **True** dla odpowiedniego parametru.
+Zwróć uwagę na metodę **EvaluateAdultRacy** w klasie **Program**. Parametrami tej metody są adres URL obrazu i tablica par wartości kluczy. Wywołuje ona interfejs API REST wyszukiwania obrazów usługi Content Moderator w celu pobrania wyników analizy tego obrazu pod kątem treści erotycznych i dla dorosłych. Jeśli wynik dla dowolnego jest większa niż Update 0.4 (zakres to od 0 do 1), ustawia odpowiednią wartość w **ReviewTags** tablicy do **True**.
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
@@ -87,17 +87,17 @@ Kolejna metoda przyjmuje adres URL obrazu i dane subskrypcji interfejsu API prze
 
 ## <a name="evaluatecustomvisiontags-method"></a>Metoda EvaluateCustomVisionTags
 
-Następnie zwróć uwagę na metodę **EvaluateCustomVisionTags**, która klasyfikuje poszczególne produkty &mdash; w tym przypadku flagi, zabawki i długopisy. Postępuj zgodnie z instrukcjami przedstawionymi w przewodniku [How to build a classifier (Tworzenie klasyfikatora)](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier), aby utworzyć własny niestandardowy klasyfikator obrazów w celu wykrywania flag, zabawek i długopisów (lub innych przedmiotów, zgodnie z wybranymi przez Ciebie tagami niestandardowymi) na obrazach. Możesz używać obrazów w **przykładowe obrazy** folderu [repozytorium GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) szybko trenować niektóre kategorie, w tym przykładzie.
+Następnie zwróć uwagę na metodę **EvaluateCustomVisionTags**, która klasyfikuje poszczególne produkty &mdash; w tym przypadku flagi, zabawki i długopisy. Postępuj zgodnie z instrukcjami w [sposób tworzenia klasyfikatora](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) Przewodnik tworzenia klasyfikatora niestandardowego obrazu i wykrywać flagi, zabawki i pióra (lub niezależnie od wybrania jako niestandardowe znaczniki) na obrazach. Możesz używać obrazów w **przykładowe obrazy** folderu [repozytorium GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) szybko trenować niektóre kategorie, w tym przykładzie.
 
 ![Strona internetowa usługi Custom Vision z obrazami szkoleniowymi przedstawiającymi długopisy, zabawki i flagi](images/tutorial-ecommerce-custom-vision.PNG)
 
-Po wyszkoleniu klasyfikatora należy uzyskać klucz predykcyjny i adres URL punktu końcowego przewidywania (zobacz [Pobieranie adresu URL i klucza predykcyjnego](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key), jeśli potrzebujesz pomocy), a następnie przypisać ich wartości odpowiednio do pól `CustomVisionKey` i `CustomVisionUri`. Te wartości są używane w tej metodzie do wysyłania zapytań do klasyfikatora. Jeśli klasyfikator znajdzie na obrazie zawartość odpowiadającą co najmniej jednemu z tych tagów niestandardowych, metoda ustawi wartość **True** dla odpowiednich parametrów w tablicy **ReviewTags**.
+Po już uczony klasyfikatora, należy uzyskać klucz prognoz i adres URL punktu końcowego prognozowania (zobacz [uzyskać adres URL i prognozowania klucz](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) Jeśli potrzebujesz pomocy, wraz z ich pobieraniem) i przypisz tych wartości, aby Twoje `CustomVisionKey` i `CustomVisionUri` pola, odpowiednio. Te wartości są używane w tej metodzie do wysyłania zapytań do klasyfikatora. Jeśli klasyfikator znajdzie na obrazie zawartość odpowiadającą co najmniej jednemu z tych tagów niestandardowych, metoda ustawi wartość **True** dla odpowiednich parametrów w tablicy **ReviewTags**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 
 ## <a name="create-reviews-for-review-tool"></a>Tworzenie przeglądów dla narzędzia do przeprowadzania przeglądu
 
-W poprzednich sekcjach omówiono metody używane do skanowania obrazów przychodzących pod kątem treści dla osób dorosłych i treści erotycznych (Content Moderator), celebrytów (przetwarzanie obrazów) i innych obiektów (Custom Vision). Teraz zwróć uwagę na metodę **CreateReview**, która przekazuje obrazy wraz ze wszystkimi zastosowanymi tagami (wprowadzonymi w parametrze _Metadata_) do narzędzia do przeprowadzania przeglądu usługi Content Moderator, aby udostępnić je do przeglądu przez człowieka. 
+W poprzednich sekcjach zostały przedstawione, jak aplikacji przeskanuje przychodzące obrazów (Content Moderator) wyszukania zawartości erotycznej i przeznaczonej dla osób dorosłych, osobistości (przetwarzania obrazów) i różnych innych obiektów (Custom Vision). Następnie możesz zapoznać się **CreateReview** metody, która przekazuje obrazy ze wszystkimi ich zastosować znaczniki (przekazana jako _metadanych_) aby narzędzie do przeglądu Content Moderator.
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 
@@ -107,17 +107,17 @@ Te obrazy będą widoczne na karcie Review (Przegląd) [narzędzia do przeprowad
 
 ## <a name="submit-a-list-of-test-images"></a>Przesyłanie listy obrazów testowych
 
-Jak widać w metodzie **Main**, program szuka katalogu „C:Test” z plikiem _Urls.txt_, zawierającym listę adresów URL obrazów. Utwórz taki katalog i plik lub zmień tę ścieżkę tak, aby wskazywała Twój plik tekstowy, a następnie wypełnij ten plik adresami URL obrazów, których chcesz użyć w teście.
+Jak widać w metodzie **Main**, program szuka katalogu „C:Test” z plikiem _Urls.txt_, zawierającym listę adresów URL obrazów. Utwórz ten plik i katalog, lub zmień ścieżkę, tak aby wskazywał plik tekstowy. Wypełnij ten plik przy użyciu adresów URL obrazów, które chcesz przetestować.
 
 [!code-csharp[Main: set up test directory, read lines](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=38-51)]
 
 ## <a name="run-the-program"></a>Uruchamianie programu
 
-Po wykonaniu wszystkich powyższych kroków program powinien przetworzyć wszystkie obrazy (wysyłając zapytania do wszystkich trzech usług w celu uzyskania odpowiednich tagów z każdej z nich), a następnie przekazać je wraz z informacjami o tagach do narzędzia do przeprowadzania przeglądu usługi Content Moderator.
+Po wykonaniu wszystkich powyższych kroków program powinien przetworzyć każdy obraz (zapytań wszystkie trzy usługi ich odpowiednie tagi) i następnie Przekaż obrazy przy użyciu informacji dotyczących tagu do narzędzia do przeglądu Content Moderator.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Podczas pracy z tym samouczkiem skonfigurowano program do analizowania obrazów produktów w celu oznaczenia ich tagami określającymi typ produktu i ułatwienia zespołowi przeprowadzającemu przegląd podejmowanie świadomych decyzji dotyczących moderacji treści. Teraz możesz dowiedzieć się więcej o szczegółach moderowania obrazów.
+W tym samouczku ustawiono program do analizowania obrazy produktów, oznaczyć je według typu produktu i zespół przeglądu do podejmowania świadomych decyzji dotyczących moderowanie zawartości. Teraz możesz dowiedzieć się więcej o szczegółach moderowania obrazów.
 
 > [!div class="nextstepaction"]
 > [Review moderated images (Przeprowadzanie przeglądu moderowanych obrazów)](./review-tool-user-guide/review-moderated-images.md)

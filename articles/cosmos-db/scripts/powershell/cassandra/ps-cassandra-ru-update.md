@@ -3,15 +3,15 @@ title: Skrypt programu Azure PowerShell — Azure Cosmos DB Update jednostek RU/
 description: Skrypt programu Azure PowerShell — Azure Cosmos DB Update jednostek RU/s dla interfejsu API rozwiązania Cassandra
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 05ff4379c0a5d5436525f25bd755a7fce46d8121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9df7884d56acf47d3bb7bdcf7679631713cf2725
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247922"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602522"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Aktualizacja jednostek RU/s dla przestrzeń kluczy lub tabeli usługi Azure Cosmos DB — interfejs API rozwiązania Cassandra
 

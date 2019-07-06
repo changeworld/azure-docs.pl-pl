@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815319"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603354"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Ruby
 
@@ -28,7 +28,7 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 
 ## <a name="write-the-script"></a>Pisanie skryptu
 
-Utwórz nowy plik o nazwie _faceDetection.rb_ i dodaj następujący kod. Spowoduje to wywołanie interfejsu API rozpoznawania twarzy dla danego adresu URL obrazu.
+Utwórz nowy plik o nazwie _faceDetection.rb_ i dodaj następujący kod. Ten kod wywołuje interfejs API rozpoznawania twarzy dla danego adresu URL danego obrazu.
 
 ```ruby
 require 'net/http'
@@ -64,7 +64,7 @@ puts response.body
 
 Należy zaktualizować wartość `request['Ocp-Apim-Subscription-Key']` przy użyciu klucza subskrypcji. Konieczna może być również zmiana ciągu `uri` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). 
 
-Możesz również zmienić pole `imageUri`, aby wskazywało na Twój obraz wejściowy. Możliwa jest również zmiana pola `returnFaceAttributes`, które określa atrybuty twarzy do pobrania.
+Możesz również zmienić pole `imageUri`, aby wskazywało na Twój obraz wejściowy. Istnieje również możliwość zmiany `returnFaceAttributes` pola, które określa, które twarzy atrybuty do pobrania.
 
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 
@@ -74,7 +74,7 @@ Uruchom skrypt języka Ruby przy użyciu następującego polecenia:
 ruby faceDetection.rb
 ```
 
-W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Następujący kod to przykład pomyślnej odpowiedzi w formacie JSON.
+W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Następujący tekst jest przykładem pomyślnej odpowiedzi JSON.
 
 ```json
 [

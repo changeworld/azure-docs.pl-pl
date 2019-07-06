@@ -3,15 +3,15 @@ title: Program Azure PowerShell script - Tworzenie kontenera indeksowania, wył�
 description: Skrypt programu Azure PowerShell przykładowy — Utwórz kontener indeksowania, wyłączona na koncie usługi Azure Cosmos
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4fc75eadd0f3ad87d313d10a9005997d46103666
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 7cec954bc85873d300a4abb96396025600e17201
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566819"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603861"
 ---
 # <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>Tworzenie kontenera indeksowania, wyłączona na koncie usługi Azure Cosmos przy użyciu programu PowerShell
 
