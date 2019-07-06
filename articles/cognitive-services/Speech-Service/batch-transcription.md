@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311841"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606741"
 ---
 # <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
 
@@ -56,7 +55,7 @@ Interfejs API transkrypcji usługi Batch obsługuje następujące formaty:
 | MP3 | MODUŁU PCM | 16-bitowych | stereo mono, kHz, 8 lub 16 |
 | OGG | DZIELE | 16-bitowych | stereo mono, kHz, 8 lub 16 |
 
-Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. To przykładowe żądanie zawiera właściwości filtrowania wulgaryzmów, znaki interpunkcyjne i sygnatury czasowe z poziomu programu word. 
+Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. To przykładowe żądanie zawiera właściwości filtrowania wulgaryzmów, znaki interpunkcyjne i sygnatury czasowe z poziomu programu word.
 
 ### <a name="configuration"></a>Konfigurowanie
 
@@ -97,7 +96,7 @@ Aby skonfigurować transkrypcji, wykonaj następujące opcjonalne właściwości
 
 Usługa Batch obsługuje transkrypcji [usługi Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) do odczytywania audio i transkrypcje zapisywania do magazynu.
 
-## <a name="webhooks"></a>Elementy webhook 
+## <a name="webhooks"></a>Elementy webhook
 
 Sondowania stanu transkrypcji nie może być większość wydajne lub zapewnia najlepsze środowisko użytkownika. Aby wykonać sondowanie dotyczące stanu, należy zarejestrować wywołania zwrotne, które powiadomi klienta po zakończeniu długotrwałych zadań transkrypcji.
 
@@ -123,7 +122,7 @@ Aby zażądać, że żądania transkrypcję audio są przetwarzane dla diarizati
 }
 ```
 
-Sygnatury czasowe z poziomu programu Word będzie również musiał zostać "włączona", jak wskazać parametrów w żądaniu powyżej. 
+Sygnatury czasowe z poziomu programu Word będzie również musiał zostać "włączona", jak wskazać parametrów w żądaniu powyżej.
 
 Odpowiadające im pliki audio będzie zawierać Prelegenci identyfikowana przez numer (obecnie obsługujemy tylko dwa głosy, więc prelegentów zostaną zidentyfikowane jako "osoby mówiącej 1" i "Osoby mówiącej 2") następuje dane wyjściowe transkrypcji.
 
@@ -134,7 +133,7 @@ Należy również zauważyć, że Diarization nie jest dostępna w Stereo nagran
 
 ## <a name="sentiment"></a>Opinia
 
-Wskaźniki nastrojów klientów jest nowa funkcja interfejsu API usługi Batch transkrypcji i ważną funkcję w domenie Centrum połączenia. Klienci mogą używać `AddSentiment` parametrów na ich żądania 
+Wskaźniki nastrojów klientów jest nowa funkcja interfejsu API usługi Batch transkrypcji i ważną funkcję w domenie Centrum połączenia. Klienci mogą używać `AddSentiment` parametrów na ich żądania
 
 1.  Uzyskuj szczegółowe informacje dotyczące zadowolenia klientów
 2.  Uzyskaj wgląd na wydajność agentów (zespół przyjmowanie wywołań)
@@ -187,7 +186,7 @@ Funkcja korzysta z modelu tonacji, która jest obecnie dostępna w wersji Beta.
 
 Pełne przykłady są dostępne w [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples) wewnątrz `samples/batch` podkatalogu.
 
-Trzeba dostosować przykładowego kodu, informacje o subskrypcji, usługa region sygnatury dostępu Współdzielonego identyfikator URI wskazujący na plik dźwiękowy transkrypcja i identyfikatory modelu, w przypadku, gdy chcesz użyć niestandardowego modelu akustycznego lub języka. 
+Trzeba dostosować przykładowego kodu, informacje o subskrypcji, usługa region sygnatury dostępu Współdzielonego identyfikator URI wskazujący na plik dźwiękowy transkrypcja i identyfikatory modelu, w przypadku, gdy chcesz użyć niestandardowego modelu akustycznego lub języka.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 

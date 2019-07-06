@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: fcb09720d188150736dbe7da0c925f5762ff6a10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: afe69d396c42023df8fcf5e4a6772771afc75c76
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072313"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606247"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest mowy na tekst?
 
 Mowy na tekst z usług przetwarzania mowy platformy Azure, znany także jako zamiany mowy na tekst, umożliwia w czasie rzeczywistym transkrypcji strumieni audio na tekst, którą może wykorzystać aplikacje, narzędzia lub urządzeń, wyświetlania i podejmij działanie jako dane wejściowe polecenia. Ta usługa jest obsługiwana w tej samej technologii rozpoznawania firmy Microsoft korzysta z produktów Cortana i pakietu Office, która bezproblemowo współdziała z przesunięcia i zamiany tekstu na mowę.  Aby uzyskać pełną listę dostępnych języków mowy na tekst, zobacz [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
-Domyślnie usługa mowy na tekst używa modelu językowego uniwersalnych. Ten model został uczony przy użyciu danych należącymi do firmy Microsoft i jest wdrażana w chmurze. Jest optymalna do konwersacji i dyktowanie scenariuszy. Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych. 
+Domyślnie usługa mowy na tekst używa modelu językowego uniwersalnych. Ten model został uczony przy użyciu danych należącymi do firmy Microsoft i jest wdrażana w chmurze. Jest optymalna do konwersacji i dyktowanie scenariuszy. Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych.
 
 Można łatwo przechwytywania dźwięku z mikrofonu, odczytywania ze strumienia lub dostępu do plików dźwiękowych z magazynu przy użyciu zestawu SDK rozpoznawania mowy i interfejsów API REST. Zestaw SDK rozpoznawania mowy obsługuje format WAV/PCM 16 bitów 16 kHz/8 kHz, dźwięk kanału pojedynczej do rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane przy użyciu [punktu końcowego REST mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub [transkrypcji, usługa batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
@@ -34,7 +33,7 @@ Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
 |----------|-----|------|
 | Transkrypcja wypowiedzi krótki (< 15 sekund). Obsługuje tylko wynik końcowy transkrypcji. | Tak | Yes |
 | Ciągłe transkrypcji długie wypowiedzi i przesyłania strumieniowego audio (> 15 sekund). Obsługuje wyniki tymczasowe i końcowe transkrypcji. | Tak | Nie |
-| Dziedziczyć intencji wyniki rozpoznawania [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Tak | Brak\* |
+| Dziedziczyć intencji wyniki rozpoznawania [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Yes | Brak\* |
 | Asynchronicznie partii transkrypcji audio plików. | Nie | Tak\** |
 | Tworzenie i zarządzanie modelami mowy. | Nie | Tak\** |
 | Tworzenie i zarządzanie wdrożeniami modelu niestandardowego. | Nie | Tak\** |

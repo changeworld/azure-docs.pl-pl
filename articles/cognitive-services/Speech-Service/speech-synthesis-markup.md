@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 488cbf1874e023cf3a665bc9f2087900b30b3d3d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8285a76f8cd07863874f9c8e8eebe96f1cb968dd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204926"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604818"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Język znaczników syntezy mowy (SSML)
 
@@ -181,7 +180,7 @@ Użyj `break` elementów, aby wstawić wstrzymuje (lub podziały) między wyraza
 | siła | Zawiera wartość względna czasu trwania wstrzymania, przy użyciu jednej z następujących wartości:<ul><li>Brak</li><li>x-weak</li><li>słabe</li><li>Średni (domyślnie)</li><li>Silne</li><li>x-strong</li></ul> | Optional (Opcjonalność) |
 | time | Określa bezwzględny czas trwania wstrzymania w ciągu kilku sekund i milisekund. Prawidłowe wartości należą do nich 2s do 500 | Optional (Opcjonalność) |
 
-| Siła | Opis |
+| siła | Opis |
 |----------|-------------|
 | Brak, czy podano żadnej wartości | 0 ms |
 | x-weak | 250 ms |
@@ -290,7 +289,7 @@ Ponieważ wartości atrybutów akcent mogą się różnić w różnych, rozpozna
 | ROZKŁAD | Rozkład nie jest obsługiwane w przypadku neuronowych głosów. Rozkład reprezentuje zmiany w wysokość mowy jako tablica obiektów docelowych w określonym czasie pozycjach w danych wyjściowych mowy. Każdego obiektu docelowego jest definiowany przez zestawy par parametru. Na przykład: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Pierwsza wartość w każdym zestawie parametrów określa lokalizację zmiany pomysłu, jako wartość procentowa czasu trwania tekstu. Druga wartość określa ilość, aby podnieść lub obniżyć pomysłu, za pomocą względnej wartości lub wartości wyliczenia gęstość (zobacz `pitch`). | Optional (Opcjonalność) |
 | Zakres  | Wartość, która przedstawia szereg wysokość tekstu. Może wyrazić `range` przy użyciu tej samej wartości bezwzględne, względne wartości lub wartości wyliczenia używane do opisywania `pitch`. | Optional (Opcjonalność) |
 | Kurs  | Wskazuje częstotliwość wypowiedzi tekstu. Może wyrazić `rate` jako:<ul><li>Wartość względna wyrażone jako liczba, która działa jako mnożnik domyślnych. Na przykład, wartość *1* skutkuje nie zmieni się częstotliwość. Wartość *.5* skutkuje halving stawki. Wartość *3* skutkuje tripling stawki.</li><li>Stała wartość:<ul><li>x-slow</li><li>Powolne</li><li>Średni</li><li>Szybka</li><li>x-fast</li><li>default</li></ul></li></ul> | Optional (Opcjonalność) |
-| Czas trwania  | Czas, który powinien upłynąć podczas mowy usługa syntezy (TTS) odczytuje tekst w ciągu kilku sekund i milisekund. Na przykład *2s* lub *1800ms*. | Optional (Opcjonalność) |
+| duration  | Czas, który powinien upłynąć podczas mowy usługa syntezy (TTS) odczytuje tekst w ciągu kilku sekund i milisekund. Na przykład *2s* lub *1800ms*. | Optional (Opcjonalność) |
 | wolumin  | Wskazuje poziom głośności wypowiedzi głosu. Mogą wyrazić woluminu jako:<ul><li>Wartość bezwzględna wyrażone jako liczba z zakresu od 0,0 do 100,0 z *najcichsze* do *najgłośniejszymi*. Na przykład, 75. Wartość domyślna to 100,0.</li><li>Wartość względna wyrażona jako liczba poprzedzony przez "+" lub "-", który określa ilość, aby zmienić wolumin. Na przykład 10 lub-5.5.</li><li>Stała wartość:<ul><li>dyskretnej</li><li>x-soft</li><li>nietrwałe</li><li>Średni</li><li>Zezwalaj</li><li>x-loud</li><li>default</li></ul></li></ul> | Optional (Opcjonalność) |
 
 ### <a name="change-speaking-rate"></a>Zmień częstotliwość wypowiedzi

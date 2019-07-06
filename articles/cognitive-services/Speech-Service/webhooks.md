@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072311"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606220"
 ---
 # <a name="webhooks-for-speech-services"></a>Elementy Webhook dla usług przetwarzania mowy
 
@@ -24,7 +23,7 @@ Elementy Webhook są podobne wywołania zwrotne HTTP, które umożliwiają aplik
 
 ## <a name="supported-operations"></a>Obsługiwane operacje
 
-Usługi mowy obsługują elementy webhook dla wszystkich operacji długotrwałej. Każdej z czynności wymienionych poniżej możesz wyzwolić wywołanie zwrotne HTTP, po jego ukończeniu. 
+Usługi mowy obsługują elementy webhook dla wszystkich operacji długotrwałej. Każdej z czynności wymienionych poniżej możesz wyzwolić wywołanie zwrotne HTTP, po jego ukończeniu.
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -37,7 +36,7 @@ Następnie utwórz element webhook.
 
 ## <a name="create-a-webhook"></a>Tworzenie elementu webhook
 
-Utwórz element webhook dla transkrypcji w trybie offline. Scenariusz: użytkownik ma plik długo działa audio, który chciałby transkrypcja asynchronicznie z interfejsem API usługi Batch transkrypcji. 
+Utwórz element webhook dla transkrypcji w trybie offline. Scenariusz: użytkownik ma plik długo działa audio, który chciałby transkrypcja asynchronicznie z interfejsem API usługi Batch transkrypcji.
 
 Elementy Webhook można utworzyć, wprowadzając żądania POST do https://\<region\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks.
 
@@ -65,7 +64,7 @@ Wszystkie żądania POST do interfejsu API usługi Batch transkrypcji wymagają 
 
 `Active` Właściwość jest używana do przełączania wywołań zwrotnych do adresu URL włączać i wyłączać bez konieczności usunięcie i ponowne utworzenie rejestracji elementu webhook. Jeśli potrzebujesz tylko wywołania zwrotnego raz po proces składa się z pełną, następnie usuń element webhook i przełącznik `Active` wartość false dla właściwości.
 
-Typ zdarzenia `TranscriptionCompletion` znajduje się w tablicy zdarzenia. Jej będzie wywołania zwrotnego do punktu końcowego podczas transkrypcji pobiera na stan końcowy (`Succeeded` lub `Failed`). W przypadku wywołań zwrotnych do zarejestrowanego adresu URL, żądanie będzie zawierać `X-MicrosoftSpeechServices-Event` nagłówka zawierające jeden z typów zarejestrowanych zdarzeń. Istnieje jedno żądanie wg typu zdarzenia zarejestrowane. 
+Typ zdarzenia `TranscriptionCompletion` znajduje się w tablicy zdarzenia. Jej będzie wywołania zwrotnego do punktu końcowego podczas transkrypcji pobiera na stan końcowy (`Succeeded` lub `Failed`). W przypadku wywołań zwrotnych do zarejestrowanego adresu URL, żądanie będzie zawierać `X-MicrosoftSpeechServices-Event` nagłówka zawierające jeden z typów zarejestrowanych zdarzeń. Istnieje jedno żądanie wg typu zdarzenia zarejestrowane.
 
 Istnieje jeden typ zdarzenia, który nie może subskrybować. Jest `Ping` typu zdarzenia. Żądania z tego typu są wysyłane do adresu URL po zakończeniu tworzenia elementu webhook, korzystając z polecenia ping adresu URL (patrz poniżej).  
 
@@ -94,7 +93,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
             var validated = contentHash.SequenceEqual(storedHash);
         }
     }
- 
+
     switch (eventTypeHeader)
     {
         case WebHookEventType.Ping:
@@ -106,7 +105,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
         default:
             break;
     }
- 
+
     return this.Ok();
 }
 
@@ -121,12 +120,12 @@ Aby wyświetlić jeden określonego elementu webhook: POBIERZ https://westus.cri
 
 Aby usunąć jednego określonego elementu webhook: USUŃ https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-> [!Note] 
+> [!Note]
 > W powyższym przykładzie region jest 'westus'. Powinny zostać zastąpione region, w której utworzono zasób usługi mowy w witrynie Azure portal.
 
 WPIS https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping treść: pusty
 
-Wysyła żądanie POST na adres URL zarejestrowane. Żądanie zawiera `X-MicrosoftSpeechServices-Event` nagłówka przy użyciu polecenia ping wartość. Jeśli element webhook został zarejestrowany za pomocą klucza tajnego, będzie ona zawierać `X-MicrosoftSpeechServices-Signature` nagłówek o skrót SHA256 ładunku z kluczem tajnym jako klucz HMAC. Wartość skrótu jest zakodowany w formacie Base64. 
+Wysyła żądanie POST na adres URL zarejestrowane. Żądanie zawiera `X-MicrosoftSpeechServices-Event` nagłówka przy użyciu polecenia ping wartość. Jeśli element webhook został zarejestrowany za pomocą klucza tajnego, będzie ona zawierać `X-MicrosoftSpeechServices-Signature` nagłówek o skrót SHA256 ładunku z kluczem tajnym jako klucz HMAC. Wartość skrótu jest zakodowany w formacie Base64.
 
 WPIS https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test treść: pusty
 

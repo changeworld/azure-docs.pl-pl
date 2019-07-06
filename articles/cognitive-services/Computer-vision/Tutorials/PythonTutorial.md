@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wykonywanie operacji na obrazach — Python'
+title: wykonywanie operacji na obrazach — Python
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak używać interfejsu API przetwarzania obrazów za pomocą języka Python przy użyciu notesów Jupyter. Wyniki wizualizuj przy użyciu popularnych bibliotek.
 services: cognitive-services
@@ -7,20 +7,20 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
-ms.date: 11/06/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: b5333557355aa816245b5086836eac980d90540a
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b18f41db772c1c214bdf48c9bb765b1ce7e6d2c2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341480"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604156"
 ---
-# <a name="tutorial-computer-vision-api-python"></a>Samouczek: interfejs API przetwarzania obrazów języka Python
+# <a name="computer-vision-api-jupyter-notebook"></a>Notes Jupyter interfejsu API przetwarzania komputera
 
-W tym samouczku pokazano, jak używać interfejsu API przetwarzania obrazów w języku Python oraz jak wizualizować wyniki za pomocą popularnych bibliotek. Do uruchomienia tego samouczka użyjesz programu Jupyter. Aby dowiedzieć się, jak zacząć korzystać z interakcyjnych notesów Jupyter, zapoznaj się z [dokumentacją programu Jupyter](https://jupyter.readthedocs.io/en/latest/index.html).
+Ten przewodnik pokazuje, jak używać interfejsu API przetwarzania obrazów w języku Python oraz sposób wizualizować wyniki za pomocą popularnych bibliotek. Do uruchomienia tego samouczka użyjesz programu Jupyter. Aby dowiedzieć się, jak zacząć korzystać z interakcyjnych notesów Jupyter, zapoznaj się z [dokumentacją programu Jupyter](https://jupyter.readthedocs.io/en/latest/index.html).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,7 +28,7 @@ W tym samouczku pokazano, jak używać interfejsu API przetwarzania obrazów w j
 - Narzędzie [pip](https://pip.pypa.io/en/stable/installing/)
 - Zainstalowana aplikacja [Jupyter Notebook](https://jupyter.org/install)
 
-## <a name="open-the-tutorial-notebook-in-jupyter"></a>Otwieranie notesu samouczka w programie Jupyter 
+## <a name="open-the-notebook-in-jupyter"></a>Otworzyć notes w programie Jupyter 
 
 1. Przejdź do repozytorium GitHub [Cognitive Vision Python](https://github.com/Microsoft/Cognitive-Vision-Python). 
 2. Kliknij zielony przycisk, aby sklonować lub pobrać repozytorium. 
@@ -37,7 +37,7 @@ W tym samouczku pokazano, jak używać interfejsu API przetwarzania obrazów w j
 1. Uruchom program Jupyter, uruchamiając polecenie `jupyter notebook` w wierszu polecenia.
 1. W oknie programu Jupyter kliknij pozycję _Computer Vision API Example.ipynb_, aby otworzyć notes samouczka.
 
-## <a name="run-the-tutorial"></a>Uruchamianie samouczka
+## <a name="run-the-notebook"></a>Uruchamianie notesu
 
 Aby użyć tego notesu, potrzebny będzie klucz subskrypcji dla interfejsu API przetwarzania obrazów. Odwiedź [stronę subskrypcji](https://azure.microsoft.com/try/cognitive-services/), aby się zarejestrować. Na stronie **Logowanie** zaloguj się przy użyciu swojego konta Microsoft. Następnie aktywuj subskrypcję i uzyskaj bezpłatne klucze. Po zakończeniu procesu rejestracji wklej klucz w sekcji `Variables` notesu (przedstawionej poniżej). Działają oba klucze, podstawowy i pomocniczy. Pamiętaj o ujęciu klucza w cudzysłów, tak aby stał się ciągiem.
 

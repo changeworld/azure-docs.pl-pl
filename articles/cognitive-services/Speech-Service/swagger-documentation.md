@@ -7,19 +7,19 @@ author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 04/12/2019
+ms.topic: reference
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6cf3ab6480900aa763598120e6ff7e308f5044e1
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: f6420ea8918816f7356e567ec48cb0f7456065e0
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743220"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604768"
 ---
 # <a name="swagger-documentation"></a>Dokumentacja platformy Swagger
 
-Usługi mowy oferują Specyfikacja Swagger do interakcji z kilku interfejsów API REST umożliwia importowanie danych, tworzenie modeli, testowanie dokładności modelu, tworzenie niestandardowych punktów końcowych, transkrypcje usługi batch w kolejce i zarządzania subskrypcjami. Większość operacji dostępne za pośrednictwem portalu usługi Custom Speech mogą być wprowadzane w sposób programowy za pomocą tych interfejsów API. 
+Usługi mowy oferują Specyfikacja Swagger do interakcji z kilku interfejsów API REST umożliwia importowanie danych, tworzenie modeli, testowanie dokładności modelu, tworzenie niestandardowych punktów końcowych, transkrypcje usługi batch w kolejce i zarządzania subskrypcjami. Większość operacji dostępne za pośrednictwem portalu usługi Custom Speech mogą być wprowadzane w sposób programowy za pomocą tych interfejsów API.
 
 > [!NOTE]
 > Operacje zamiany mowy na tekst i zamiany tekstu na mowę są obsługiwane dostępne jako interfejsy API REST, który z kolei są opisane w specyfikacji Swagger.

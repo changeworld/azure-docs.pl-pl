@@ -7,19 +7,19 @@ author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 2/20/2019
+ms.topic: conceptual
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 97a3f00bcb5b1a0fb3f499657044b9d83f5b08d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 16b8f81a09efc60f1214a2dc6ac60da9155e7794
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699005"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605113"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Wybieranie urządzenia wejściowego audio za pomocą zestawu SDK usługi Mowa
 
-1.3.0 wersję zestawu SDK mowy wprowadzono interfejs API, aby wybrać wejścia audio.
+1\.3.0 wersję zestawu SDK mowy wprowadzono interfejs API, aby wybrać wejścia audio.
 W tym artykule opisano, jak uzyskać identyfikatory urządzenia audio podłączone do systemu.
 Następnie można ich użyć w zestawie SDK usługi Mowa do skonfigurowania urządzenia audio za pomocą obiektu `AudioConfig`:
 

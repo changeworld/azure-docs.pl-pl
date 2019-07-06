@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Sprawdzanie obrazów pod kątem niestandardowych list w języku C# — usługa Content Moderator'
+title: Sprawdzanie obrazów pod kątem niestandardowych list w języku C# — usługa Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Sposób moderowania obrazów przy użyciu niestandardowych list obrazów za pomocą zestawu Content Moderator SDK dla języka C#.
 services: cognitive-services
@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49f87b7cf3d7f46a66c0992edf25968b1dbae073
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699124"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603413"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Szybki start: Moderowanie przy użyciu niestandardowych list obrazów w języku C#
+# <a name="moderate-with-custom-image-lists-in-c"></a>Moderowanie przy użyciu niestandardowych list obrazów w języku C#
 
 Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do następujących zastosowań:
 - Tworzenie niestandardowych list obrazów
@@ -32,7 +32,7 @@ Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć
 > [!NOTE]
 > Istnieje maksymalny limit wynoszący **5 list obrazów**, a poszczególne listy **nie mogą przekraczać 10 000 obrazów**.
 
-Aplikacja konsolowa dla tego przewodnika Szybki Start symuluje niektóre zadania, które można wykonywać za pomocą interfejsu API listy obrazów.
+Aplikacja konsoli, w tym przewodniku symuluje niektóre zadania, które można wykonywać na interfejs API listy obrazów.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -303,7 +303,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Tworzenie metody w celu dodania kolekcji obrazów do listy
 
-Dodaj następującą metodę do klasy **Program**. Ten przewodnik Szybki start nie pokazuje, jak zastosować tagi do obrazów na liście. 
+Dodaj następującą metodę do klasy **Program**. Ten przewodnik nie pokazują, jak zastosować znaczniki do obrazów na liście. 
 
 ```csharp
 /// <summary>

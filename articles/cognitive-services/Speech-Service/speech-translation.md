@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 84d212129c5225fd0efebfca5640cfc3d32e8a40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 20e47b6d3243bb0cccbc42ab0ab904b72922e98b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072407"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604780"
 ---
 # <a name="what-is-speech-translation"></a>Co to jest tłumaczenia mowy?
 
@@ -32,7 +31,7 @@ Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Tłumaczenie mowy na tekst za pomocą wyniki rozpoznawania. | Tak | Nie |
+| Tłumaczenie mowy na tekst za pomocą wyniki rozpoznawania. | Yes | Nie |
 | Tłumaczenie mowy do rozpoznawania mowy. | Tak | Nie |
 | Wyników pośrednich rozpoznawanie i tłumaczenia. | Tak | Nie |
 

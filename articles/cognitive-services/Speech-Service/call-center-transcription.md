@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 05/02/2019
+ms.topic: conceptual
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37d68a4d2b7658542ebcfdb5d22a10676a8e4d52
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064111"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603301"
 ---
 # <a name="speech-services-for-telephony-data"></a>Usług przetwarzania mowy danych telefonii
 
@@ -36,7 +36,7 @@ Omówmy niektóre technologii i oferty usług przetwarzania mowy platformy Azure
 
 Poza aspekt funkcjonalności usług przetwarzania mowy ich głównym celem — w przypadku zastosowania do Centrum telefonicznej — jest poprawy jakości obsługi klienta. Trzy domeny wyczyść istnieje w tym zakresie:
 
-* Po wywołaniu analizy partii oznacza to, przetwarzania nagrania wywołania 
+* Po wywołaniu analizy partii oznacza to, przetwarzania nagrania wywołania
 * Przetwarzanie analizy w czasie rzeczywistym sygnału dźwiękowego, aby wyodrębnić różne szczegółowe informacje, jak wywołania odbywa się (z opinii jest przypadek użycia wyraźną) i
 * Asystenci wirtualnego (robotom), prowadzenie dialog między klienta i bota w celu podjęcia próby rozwiązania problemu klienta bez udziału agent lub przy zastosowaniu sztucznej Inteligencji protokoły ułatwiają agenta.
 
@@ -44,9 +44,9 @@ Diagram typowej architektury realizacji scenariusza usługi batch jest przedstaw
 
 ## <a name="speech-analytics-technology-components"></a>Składniki technologii analizy mowy
 
-Czy domena jest wywołanie po lub w czasie rzeczywistym, platforma Azure oferuje zestaw zestaw dojrzałych i rozwijających się technologii, w celu poprawy jakości obsługi klienta. 
+Czy domena jest wywołanie po lub w czasie rzeczywistym, platforma Azure oferuje zestaw zestaw dojrzałych i rozwijających się technologii, w celu poprawy jakości obsługi klienta.
 
-### <a name="speech-to-text-stt"></a>Zamiana mowy na tekst (STT) 
+### <a name="speech-to-text-stt"></a>Zamiana mowy na tekst (STT)
 
 [Zamiany mowy na tekst](speech-to-text.md) będzie najczęściej używanych po funkcji w żadnym rozwiązaniu do Centrum połączenia. Ponieważ zależne wiele procesów podrzędnych analizy uzyskanego tekstu, współczynnik błędów programu word (WER) ma priorytetowe znaczenie. Jedną z kluczowych wyzwań w wywołaniu Centrum transkrypcji jest szumu, która jest powszechnie znane w Centrum telefonicznej (na przykład inni agenci wypowiedzi w tle), sformatowany różnych ustawień regionalnych języka i dialekty oraz niskiej jakości sygnału rzeczywistego telefonu. Raportowanie błędów systemu Windows są ściśle powiązane z stopnia akustyczne i językowe modele są uczone dla danego ustawienia regionalnego, dlatego możliwość dostosować model, który ma ustawienia regionalne jest ważne. Nasze najnowsze modeli 4.x wersji ujednoliconego są rozwiązaniem transkrypcji dokładności i opóźnienie. Uczone z użyciem dziesiątek tysięcy godzin dane akustyczne i miliardów leksykalne informacji ujednoliconej modele są najdokładniejszych modele na rynku także wywołania centrum danych.
 
@@ -60,9 +60,9 @@ nie jest niczym niezwykłym 35 procent z pomocy technicznej to tak zwany czas be
 Niektóre firmy eksperymentują z udostępnianiem przetłumaczone transkrypcje z języków obcych interwencji obsługi tak, aby menedżerów może zrozumieć środowisko swoich klientów na całym świecie. Nasze [tłumaczenia](translation.md) możliwości jest taki sam. Firma Microsoft może dokonywać translacji audio, audio lub audio na tekst z dużą liczbą ustawień regionalnych.
 
 ### <a name="text-to-speech"></a>Zamiana tekstu na mowę
-[Zamiana tekstu na mowę](text-to-speech.md) jest kolejnym obszarem istotne we wdrażaniu Boty, które wchodzić w interakcje z klientami. Typowe ścieżki polega na komunikuje się klient, głosu jest przetłumaczone na tekst, analizy tekstu na intencje, odpowiedź jest przekształcony oparty na celu rozpoznawanym i następnie zasób albo jest udostępniane klientom lub odpowiedzi głosowych syntetyzowany wygenerowany. Oczywiście to wszystko musi nastąpić szybko — dlatego opóźnienie jest ważnym elementem powodzenia tych systemów. 
+[Zamiana tekstu na mowę](text-to-speech.md) jest kolejnym obszarem istotne we wdrażaniu Boty, które wchodzić w interakcje z klientami. Typowe ścieżki polega na komunikuje się klient, głosu jest przetłumaczone na tekst, analizy tekstu na intencje, odpowiedź jest przekształcony oparty na celu rozpoznawanym i następnie zasób albo jest udostępniane klientom lub odpowiedzi głosowych syntetyzowany wygenerowany. Oczywiście to wszystko musi nastąpić szybko — dlatego opóźnienie jest ważnym elementem powodzenia tych systemów.
 
-Nasza end-to-end opóźnieniami jest bardzo niska, biorąc pod uwagę różne technologie związane, takie jak [mowy na tekst](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [platformy Bot Framework](https://dev.botframework.com/), [ Zamiana tekstu na mowę](text-to-speech.md). 
+Nasza end-to-end opóźnieniami jest bardzo niska, biorąc pod uwagę różne technologie związane, takie jak [mowy na tekst](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [platformy Bot Framework](https://dev.botframework.com/), [ Zamiana tekstu na mowę](text-to-speech.md).
 
 Nasz nowy głosy są nie do odróżnienia od głosów ludzi. Umożliwia się głosów Boty są naprawdę jego unikatowy osobowość.
 

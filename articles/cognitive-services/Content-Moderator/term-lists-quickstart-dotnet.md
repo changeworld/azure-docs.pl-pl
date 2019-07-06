@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ab11d8ef9fd481d2b3ea7029664a1ec2778cf4b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607654"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604087"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>Szybki start: Sprawdzanie tekstu względem listy terminów niestandardowych w języku C#
+# <a name="check-text-against-a-custom-term-list-in-c"></a>Sprawdzanie tekstu względem listy terminów niestandardowych w języku C#
 
 Domyślna globalna lista terminów w usługach Azure Content Moderator wystarcza w przypadku większości potrzeb moderowania zawartości. Jednak może być konieczne sprawdzanie terminów, które są specyficzne dla organizacji. Na przykład warto oznaczyć tagiem nazwy konkurencji w celu dalszego przeglądu. 
 
@@ -373,7 +373,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
+## <a name="compose-the-main-method"></a>Tworzenia metody Main
 
 Dodaj definicję metody **Main** do przestrzeni nazw **TermLists** w klasie **Program**. Na koniec zamknij klasę **Program** i przestrzeń nazw **TermLists**.
 
@@ -415,9 +415,9 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Uruchom aplikację, aby zobaczyć dane wyjściowe
 
-Dane wyjściowe będą umieszczone w następujących wierszach, ale dane mogą się różnić.
+Dane wyjściowe konsoli będą wyglądać następująco:
 
-```
+```console
 Creating term list.
 Term list created. ID: 252.
 Updating information for term list with ID 252.
