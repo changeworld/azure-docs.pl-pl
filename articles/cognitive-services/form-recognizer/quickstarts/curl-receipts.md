@@ -5,16 +5,16 @@ description: W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpozn
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: f9111dcb1f85b28a688282f792540128e7146a6b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 0178e53e6a7fde54b988e710a1cabbb7ded69b22
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566190"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592572"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Szybki start: Wyodrębnianie danych potwierdzenia, przy użyciu interfejsu API REST rozpoznawania formularza za pomocą programu cURL
 

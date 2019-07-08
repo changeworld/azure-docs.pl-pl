@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/10/2019
+ms.date: 07/03/2019
 ms.author: aljo
-ms.openlocfilehash: 4d7fb257c932d84d8ddcb6c69e5286373f9b6adf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19f5d99fe95e1290cc30dedc8b8172e234bd4642
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067220"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566061"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "67067220"
 > 
 > 
 
-Aby kompilować i uruchamiać [aplikacje usługi Azure Service Fabric][1] na maszynie deweloperskiej z systemem Windows, należy zainstalować środowisko uruchomieniowe, zestaw SDK oraz narzędzia usługi Service Fabric. Należy również [włączyć wykonywanie skryptów programu Windows PowerShell](#enable-powershell-script-execution) zawartych w zestawie SDK.
+Aby skompilować i uruchomić [aplikacje usługi Azure Service Fabric][1] na komputerze deweloperskim Windows, zainstaluj środowisko uruchomieniowe usługi Service Fabric, zestawu SDK oraz narzędzia. Należy również [włączyć wykonywanie skryptów programu Windows PowerShell](#enable-powershell-script-execution) zawartych w zestawie SDK.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 ### <a name="supported-operating-system-versions"></a>Obsługiwane wersje systemu operacyjnego
@@ -43,7 +43,7 @@ Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu op
 
 > [!NOTE]
 > Obsługa systemu Windows 7:
-> - System Windows 7 domyślnie zawiera program Windows PowerShell wyłącznie w wersji 2.0. Polecenia cmdlet programu PowerShell usługi Service Fabric wymagają programu PowerShell w wersji 3.0 lub nowszej. Możesz [pobrać program Windows PowerShell 5.0][powershell5-download] w Centrum pobierania Microsoft.
+> - System Windows 7 domyślnie zawiera program Windows PowerShell wyłącznie w wersji 2.0. Polecenia cmdlet programu PowerShell usługi Service Fabric wymagają programu PowerShell w wersji 3.0 lub nowszej. Możesz [pobrać program Windows PowerShell 5.0][powershell5-download] z Microsoft Download Center.
 > - Serwer proxy usługi Service Fabric nie jest dostępny w systemie Windows 7.
 >
 
@@ -57,21 +57,21 @@ Instalator platformy sieci Web (WebPI) jest zalecanym sposobem instalowania zest
 Narzędzia Service Fabric Tools są częścią pakietu roboczego Programowanie na platformie Azure w programie Visual Studio 2017. Włącz to obciążenie w ramach instalacji programu Visual Studio.
 Ponadto należy zainstalować zestaw SDK i środowisko uruchomieniowe usługi Microsoft Azure Service Fabric przy użyciu Instalatora platformy sieci Web.
 
-* [Instalowanie zestawu SDK usługi Microsoft Azure Service Fabric][core-sdk]
+* [Zainstaluj zestaw SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Używanie programu Visual Studio 2015 (wymaga programu Visual Studio 2015 Update 2 lub nowszego)
 W przypadku programu Visual Studio 2015 narzędzia usługi Service Fabric są instalowane razem z zestawem SDK i środowiskiem uruchomieniowym przy użyciu Instalatora platformy sieci Web:
 
-* [Instalowanie zestawu SDK i narzędzi usługi Microsoft Azure Service Fabric][full-bundle-vs2015]
+* [Instalowanie zestawu SDK platformy Microsoft Azure Service Fabric i narzędzia][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Instalowanie samego zestawu SDK
 Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
-* [Instalowanie zestawu SDK usługi Microsoft Azure Service Fabric][core-sdk]
+* [Zainstaluj zestaw SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 Bieżące wersje:
-* Service Fabric SDK i narzędzia 3.4.639
-* Środowisko uruchomieniowe usługi Service Fabric 6.5.639
-* Service Fabric Tools for Visual Studio 2015 2.4.11116.1
+* Service Fabric SDK i narzędzia 3.4.641
+* Środowisko uruchomieniowe usługi Service Fabric 6.5.641
+* Service Fabric Tools for Visual Studio 2015 2.5.20615.1
 * Visual Studio 2017 15.9 obejmuje narzędzia usługi Service Fabric dla programu Visual Studio 2.4.11024.1 
 
 Aby uzyskać listę obsługiwanych wersji, zobacz [wersji usługi Service Fabric](service-fabric-versions.md)

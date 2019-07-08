@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 47ae3eb41145a74c1726847943df9074a4a75dfe
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 96b9d90ce942b7755feae8298a408f46f20bf04d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273646"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461692"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
 Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo, w centrach zdarzeń w [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) lub [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) wybrane konto usługi, przy użyciu dodanych elastycznych określenie interwału czasu lub rozmiaru. Konfigurowanie Capture jest szybkie, istnieją żadnych dodatkowych kosztów administracyjnych, aby go uruchomić i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-scalability.md#throughput-units). Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
@@ -51,6 +51,8 @@ Należy pamiętać, że wartości daty są dopełniane zerami; przykład nazwy p
 ```
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
 ```
+
+W przypadku, gdy obiekt blob magazynu platformy Azure jest tymczasowo niedostępny, przechwytywania usługi Event Hubs będą przechowywać dane na okres przechowywania danych, które są skonfigurowane w Centrum zdarzeń i ponownie wypełnić dane po ponownie konta magazynu jest dostępny.
 
 ### <a name="scaling-to-throughput-units"></a>Skalowanie do wszystkich jednostek przepływności
 
@@ -135,6 +137,8 @@ Apache Avro ma pełne przewodniki wprowadzenie dla [Java][Java] and [Python][Pyt
 ## <a name="how-event-hubs-capture-is-charged"></a>Jak opłata przechwytywania usługi Event Hubs
 
 Funkcja przechwytywania usługi Event Hubs jest mierzone w podobny sposób do wszystkich jednostek przepływności: jako dodatkowy co godzinę. Opłata jest wprost proporcjonalna do liczby jednostek przepływności zakupionych dla przestrzeni nazw. Jednostki przepływności są zwiększyć i zmniejszyć, liczniki przechwytywania usługi Event Hubs zwiększyć i zmniejszyć do zapewnienia wydajności dopasowania. Liczniki wystąpić w połączeniu sekcją. Aby uzyskać szczegółowe informacje o cenach, zobacz [cen usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/). 
+
+Należy pamiętać, że przechwytywania nie zużywa przydziału transferu danych wychodzących, jak jest rozliczane oddzielnie. 
 
 ## <a name="integration-with-event-grid"></a>Integracja z usługą Event Grid 
 

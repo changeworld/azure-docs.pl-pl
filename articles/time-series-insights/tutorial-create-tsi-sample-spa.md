@@ -8,12 +8,12 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: e415c681ae5a35de6e8ff76e09cfef8cc8cc98f8
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 8ee4cd30d5742896df96ccfd714d85ebbab194f9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544080"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595697"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights
 
@@ -101,7 +101,7 @@ Ten samouczek używa również dane ze środowiska usługi Time Series Insights 
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Aby skonfigurować aplikację do używania Identyfikatora rejestracji aplikacji usługi Azure AD, zmień `clientID` wartość używaną **identyfikator aplikacji** skopiowane w **kroku 3** podczas możesz [zarejestrowanych aplikacji Używaj usługi Azure AD](#register-the-application-with-azure-ad). Jeśli utworzono **adres URL wylogowania** w usłudze Azure AD, należy ustawić tę wartość jako `postLogoutRedirectUri` wartość.
+   1. Aby skonfigurować aplikację do używania Identyfikatora rejestracji aplikacji usługi Azure AD, zmień `clientID` wartość używaną **identyfikator aplikacji** skopiowane w **krok 3** po użytkownik [zarejestrowanych aplikacji do korzystania z Usługa Azure AD](#register-the-application-with-azure-ad). Jeśli utworzono **adres URL wylogowania** w usłudze Azure AD, należy ustawić tę wartość jako `postLogoutRedirectUri` wartość.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 

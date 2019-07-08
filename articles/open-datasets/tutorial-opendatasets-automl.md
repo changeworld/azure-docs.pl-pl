@@ -4,18 +4,17 @@ titleSuffix: Azure Open Datasets
 description: Dowiedz się, jak korzystać z wygody Otwórz zestawy danych platformy Azure wraz z możliwości usługi Azure Machine Learning, aby utworzyć model regresji do prognozowania cen taryfy taksówek NYC.
 services: open-datasets
 ms.service: open-datasets
-ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: e753793b5da59d09a21991831046a43899c62ef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026823"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588967"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Samouczek: Budowanie modelu regresji przy użyciu uczenia maszynowego zautomatyzowane i otwórz zestawów danych
 
@@ -351,7 +350,7 @@ green_taxi_df.head(10)
       <td>1.0</td>
       <td>0,5</td>
       <td>0.3</td>
-      <td>1.5</td>
+      <td>1,5</td>
       <td>0.0</td>
       <td>NaN</td>
       <td>11.3</td>
@@ -650,7 +649,7 @@ green_taxi_df.head(10)
       <td>40.805729</td>
       <td>-73.939117</td>
       <td>Przyciski ...</td>
-      <td>1.5</td>
+      <td>1,5</td>
       <td>0.0</td>
       <td>NaN</td>
       <td>11.3</td>
@@ -879,7 +878,7 @@ holidays_df.head(5)
     </tr>
     <tr>
       <th>40689</th>
-      <td>Algieria</td>
+      <td>Algeria</td>
       <td>Nowy rok</td>
       <td>Brak</td>
       <td>DZ</td>
@@ -1543,7 +1542,7 @@ taxi_holidays_weather_df.describe()
       <td>132.000000</td>
     </tr>
     <tr>
-      <th>maks.</th>
+      <th>Maksymalna</th>
       <td>2.000000</td>
       <td>460.000000</td>
       <td>51.950000</td>
@@ -1723,7 +1722,7 @@ final_df.describe()
       <td>41.000000</td>
     </tr>
     <tr>
-      <th>maks.</th>
+      <th>Maksymalna</th>
       <td>2.000000</td>
       <td>6.000000</td>
       <td>51.950000</td>

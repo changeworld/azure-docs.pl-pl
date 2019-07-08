@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: a74dd1a932cac41081786f76938a5b35de62d878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7464ea481d4c95856b78a83a875f2cd24c00705b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689710"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503318"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -77,9 +77,9 @@ Przed rozpoczęciem instalacji, zobacz następujące uwagi SAP i dokumentacji:
 | Dokumentacja | 
 | --- |
 | [SAP Community Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Zawiera wszystkie wymagane informacje o SAP dla systemu Linux |
-| [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux] [ planning-guide] przewodnik |
-| [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux] [ deployment-guide] (w tym artykule) |
-| [Usługa Azure Virtual Machines wdrożenie bazy danych zarządzania system(DBMS) dla rozwiązania SAP w systemie Linux] [ dbms-guide] przewodnik |
+| [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux][planning-guide] przewodnik |
+| [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux][deployment-guide] (w tym artykule) |
+| [Usługa Azure Virtual Machines wdrożenie bazy danych zarządzania system(DBMS) dla rozwiązania SAP w systemie Linux][dbms-guide] przewodnik |
 | [Obciążeń SAP na Azure Lista kontrolna dotycząca planowania i wdrażania][azr-sap-plancheck] |
 | [SUSE Linux Enterprise Server dla SAP aplikacji 12 z dodatkiem SP3 najlepsze praktyki prowadnic][sles-for-sap-bp] |
 | [SUSE Linux Enterprise wysoką dostępność rozszerzenia 12 z dodatkiem SP3][sles-ha-guide] |
@@ -87,7 +87,7 @@ Przed rozpoczęciem instalacji, zobacz następujące uwagi SAP i dokumentacji:
 | [IBM Db2 HADR 11.1][db2-hadr-11.1] |
 | [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Aby osiągnąć wysoką dostępność, IBM Db2 LUW z HADR jest zainstalowany na co najmniej dwóch maszyn wirtualnych platformy Azure, które są wdrażane w [zestawu dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) lub wielu [strefy dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
 
 Następujące grafiki wyświetlić instalacji serwera bazy danych w dwóch maszyn wirtualnych platformy Azure. Zarówno serwer bazy danych maszyn wirtualnych platformy Azure ma swoje własne magazynie dołączonym i są gotowe do działania. W HADR jedno wystąpienie bazy danych w jednej z maszyn wirtualnych platformy Azure, ma rolę podstawowego wystąpienia. Wszyscy klienci są połączone z tym wystąpieniem podstawowego. Wszystkie zmiany w transakcji bazy danych są zachowywane lokalnie w dzienniku transakcji bazy danych Db2. Jak rekordy dziennika transakcji są zachowywane lokalnie, rekordy są przesyłane za pośrednictwem protokołu TCP/IP z wystąpieniem bazy danych na drugi serwer bazy danych, rezerwowy serwer lub wystąpienie w trybie gotowości. Rezerwowe wystąpienie aktualizuje lokalnej bazy danych przez stopniowe do przodu przeniesionych transakcji rekordów dziennika. W ten sposób rezerwowy serwer jest zsynchronizowany z serwerem podstawowym.
@@ -496,13 +496,12 @@ Jeśli przeprowadzono instalacji przed utworzoną konfigurację bazy danych Db2 
 
 Aby sprawdzić lub zaktualizować adres URL JDBC, należy użyć narzędzia konfiguracji J2EE. Narzędzie konfiguracji J2EE jest narzędzie graficzne, dlatego musisz mieć X zainstalowany serwer:
  
-1. Zaloguj się na głównym serwerze aplikacji wystąpienia J2EE i wykonać:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+1. Zaloguj się na głównym serwerze aplikacji wystąpienia J2EE i wykonać:   `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. W ramach po lewej stronie wybierz **store bezpieczeństwo**.
-1. W prawej ramce wybierz klucza jdbc/pulę / \ <SAPSID> /URL.
+1. W prawej ramce wybierz kluczajdbc/pulę/\<SAPSID > / adres url.
 1. Zmień nazwę hosta w adresie URL JDBC na nazwę hosta wirtualnego.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
-1. Wybierz **Dodaj**.
+     `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
+1. Wybierz pozycję **Dodaj**.
 1. Aby zapisać zmiany, wybierz ikonę dysku, w lewym górnym rogu.
 1. Zamknij narzędzie konfiguracji.
 1. Ponownie uruchom wystąpienie języka Java.

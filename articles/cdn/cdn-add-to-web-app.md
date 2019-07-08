@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462936"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594225"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Samouczek: dodawanie usługi Azure CDN do aplikacji internetowej usługi Azure App Service
 
@@ -76,7 +76,7 @@ Na stronie **Azure Content Delivery Network** określ ustawienia dla **nowego pu
 | ------- | --------------- | ----------- |
 | **Profil CDN** | myCDNProfile | Profil CDN jest kolekcją punktów końcowych usługi CDN znajdujących się w tej samej warstwie cenowej. |
 | **Warstwa cenowa** | Standard Akamai | [Warstwa cenowa](cdn-features.md) określa dostawcę i dostępne funkcje. W tym samouczku jest używana warstwa *Standard Akamai*. |
-| **Nazwa punktu końcowego usługi CDN** | Dowolna unikatowa nazwa w domenie azureedge.net | Dostęp do zbuforowanych zasobów można uzyskać w domenie *&lt;nazwapunktukoncowego&gt;*.azureedge.net.
+| **Nazwa punktu końcowego usługi CDN** | Dowolna unikatowa nazwa w domenie azureedge.net | Dostęp do zbuforowanych zasobów można uzyskać w domenie *&lt;nazwapunktukoncowego&gt;* .azureedge.net.
 
 Wybierz pozycję **Utwórz**, aby utworzyć profil CDN.
 

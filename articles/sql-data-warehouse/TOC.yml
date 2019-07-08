@@ -127,6 +127,14 @@
           href: sql-data-warehouse-overview-develop.md
         - name: Najlepsze praktyki
           href: sql-data-warehouse-best-practices-development.md
+        - name: Zmaterializowany widok
+          items:
+            - name: Tworzenie zmaterializowanego widoku przy użyciu instrukcji SELECT (Transact-SQL)
+              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
+            - name: Zmienianie zmaterializowanego widoku przy użyciu instrukcji SELECT (Transact-SQL)
+              href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Buforowanie zestawu wyników
+          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tabele
           items:
             - name: Omówienie

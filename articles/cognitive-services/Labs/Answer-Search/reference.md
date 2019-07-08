@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: 4384bf658024f89664c5202ba10d793d7ad734e0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721015"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592912"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odwołanie do projektu odpowiedzi wyszukiwania w wersji 7
 
@@ -55,7 +55,7 @@ Aby uzyskać informacji o dozwolone użycie i wyświetlania wyników, zobacz [u�
 > Niektóre nagłówki żądania, które mają znaczenie dla innych interfejsów API wyszukiwania nie mają wpływu na adres URL (wersja zapoznawcza)
 > - Pragma — obiekt wywołujący nie ma kontroli nad tego, czy adres URL w wersji zapoznawczej używa pamięci podręcznej
 > - Cache-Control — obiekt wywołujący nie ma kontroli nad tego, czy adres URL w wersji zapoznawczej używa pamięci podręcznej
-> - Agent użytkownika
+> - User-Agent
 > 
 > Ponadto niektóre parametry nie są obecnie istotnych dla adresu URL interfejsu API (wersja zapoznawcza), ale mogą być używane w przyszłości dla globalizacji ulepszone. 
  
@@ -201,7 +201,7 @@ Określa informacje o stronie sieci Web w wersji zapoznawczej.
 |name|Tytuł strony, niekoniecznie tytuł HTML|String|
 |url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|String|  
 |description|Krótki opis strony i zawartości|String|  
-|isFamilyFriendly|Najdokładniejszych dla elementów w indeksie sieci web; Odczyty w czasie rzeczywistym, czy to wykrywanie wyłącznie na podstawie adresu URL i nie zawartości strony|wartość logiczna|
+|isFamilyFriendly|Najdokładniejszych dla elementów w indeksie sieci web; Odczyty w czasie rzeczywistym, czy to wykrywanie wyłącznie na podstawie adresu URL i nie zawartości strony|boolean|
 |primaryImageOfPage/contentUrl|Adres URL, który jest reprezentatywny obraz do uwzględnienia w wersji zapoznawczej|String| 
   
   

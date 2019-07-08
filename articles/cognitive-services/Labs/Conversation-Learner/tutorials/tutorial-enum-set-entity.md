@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1393d0bd1c31a2c9c24652e260ef7f3182d91367
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e990ebe89f4446a0226aa0e0f73ffd900e5b021a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476496"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592955"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Kiedy należy używać Wyliczenia jednostek i USTAWIĆ jednostki akcji
 
@@ -65,7 +65,7 @@ Innymi słowy ich używać do żadnych monitów zakończenia Zamknij, takich jak
 > Obecnie nie mamy ograniczenie wartości maksymalnie 5 na jednostkę wyliczenia. Każda wartość korzysta z jednego gniazda na bieżący limit 64. Zobacz [cl wartości i granice](../cl-values-and-boundaries.md)
 
 Przykład: BOT: Twoje zamówienie jest poprawne?
-Użytkownik: Yes
+Użytkownik: Tak
 
 W przypadku możliwych wartości jednostki otwarty i nie zostało naprawione, należy użyć alternatywnej funkcji, takich jak [oczekiwaniami entity](05-expected-entity.md).
 

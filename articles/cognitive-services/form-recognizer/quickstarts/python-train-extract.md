@@ -5,16 +5,16 @@ description: W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpozn
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/24/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b9985bfa15cf300f82a0d24400ed1167a2d3f135
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 63b58e5e667d03d7808973b0783ed98ab4cb5447
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537575"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605874"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST przy użyciu języka Python
 
@@ -40,7 +40,7 @@ Aby wytrenuj model rozpoznawania formularza z dokumentami w kontenerze obiektów
 
 1. Zastąp `<Endpoint>` przy użyciu adresu URL punktu końcowego dla zasobu rozpoznawania formularza w regionie platformy Azure, gdzie uzyskać klucze subskrypcji.
 1. Zastąp `<Subscription key>` z kluczem subskrypcji został skopiowany w poprzednim kroku.
-1. Zastąp `<SAS URL>` udostępnionych kontenera magazynu obiektów blob Azure dostęp do adresu URL sygnatury (SAS). Aby pobrać to, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener, a wybierz **sygnatury dostępu współdzielonego Get**. Upewnij się, że **odczytu** i **listy** uprawnienia są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość w **adresu URL** sekcji. Powinien on mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Zastąp `<SAS URL>` udostępnionych kontenera magazynu obiektów blob Azure dostęp do adresu URL sygnatury (SAS). Aby pobrać adres URL sygnatury dostępu Współdzielonego, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontenera i wybierz **sygnatury dostępu współdzielonego Get**. Upewnij się, że **odczytu** i **listy** uprawnienia są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość w **adresu URL** sekcji. Powinien on mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
     ```python
     ########### Python Form Recognizer Train #############
