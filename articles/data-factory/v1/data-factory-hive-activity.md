@@ -82,7 +82,7 @@ Działanie HDInsight Hive w usłudze Data Factory [potoku](data-factory-create-p
 | outputs |Dane wyjściowe generowane przez działanie programu Hive |Yes |
 | linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
 | script |Określ wbudowany skrypt programu Hive |Nie |
-| script path |Store skryptu programu Hive w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| scriptPath |Store skryptu programu Hive w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
 | defines |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive przy użyciu "hiveconf" |Nie |
 
 ## <a name="example"></a>Przykład
