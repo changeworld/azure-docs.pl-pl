@@ -304,14 +304,14 @@ Sprawdź, czy certyfikat jest zainstalowany na komputerze\'magazynu osobistej s.
 
         | Właściwość | Wartość |
         |---|---|
-        | source | Dowolne |
-        | Zakresy portów źródłowych | * |
-        | Miejsce docelowe | Dowolne |
-        | Zakres portów docelowych | 636 |
-        | Protocol | Dowolne |
-        | Akcja | Zezwalaj |
-        | Priorytet | <Desired Number> |
-        | Name (Nazwa) | Port_LDAP_636 |
+        | Source | Any |
+        | Source port ranges | * |
+        | Destination | Any |
+        | Destination port range | 636 |
+        | Protocol | Any |
+        | Action | Allow |
+        | Priority | \<Desired Number> |
+        | Name | Port_LDAP_636 |
 
     ![reguły zabezpieczeń ruchu przychodzącego](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
