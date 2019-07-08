@@ -92,7 +92,7 @@ Działanie HDInsight Pig w usłudze Data Factory [potoku](data-factory-create-pi
 | outputs |Co najmniej jeden dane wyjściowe, generowane przez działanie technologii Pig |Yes |
 | linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
 | script |Określ wbudowany skrypt Pig |Nie |
-| script path |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| scriptPath |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
 | defines |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu języka Pig |Nie |
 
 ## <a name="example"></a>Przykład
