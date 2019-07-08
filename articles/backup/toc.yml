@@ -62,6 +62,8 @@
           href: backup-azure-files-faq.md
         - name: Często zadawane pytania — tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
           href: faq-backup-sql-server.md
+        - name: Często zadawane pytania — usługa Azure Backup Server i program DPM
+          href: backup-azure-dpm-azure-server-faq.md
     - name: Architektura kopii zapasowych
       href: backup-architecture.md
     - name: Kontrola dostępu oparta na rolach

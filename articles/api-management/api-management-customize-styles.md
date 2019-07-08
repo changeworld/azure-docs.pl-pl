@@ -57,7 +57,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     Na stronie zostaną wyświetlone wszystkie elementy, które można dostosować za pomocą **stylów**
 5. Wprowadź wartość „headings-color” w polu **Change variable values to customize developer portal appearance:** (Zmień wartości zmiennych w celu dostosowania wyglądu portalu dla deweloperów:).
 
-     **\@Kolor nagłówki** element jest wyświetlany na stronie. Ta zmienna steruje kolorem tekstu.
+    **\@Kolor nagłówki** element jest wyświetlany na stronie. Ta zmienna steruje kolorem tekstu.
 
     ![Dostosowywanie stylu](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     

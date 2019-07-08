@@ -35,6 +35,12 @@
       href: security-center-data-security.md
     - name: Używanie zaleceń w celu ulepszania zabezpieczeń
       href: security-center-using-recommendations.md
+    - name: Wykrywania zagrożeń
+      href: security-center-detection-capabilities.md
+    - name: Zarządzanie alertami zabezpieczeń
+      href: security-center-managing-and-responding-alerts.md
+    - name: Zdarzenia dotyczące zabezpieczeń
+      href: security-center-incident.md
     - name: Reagowanie na zdarzenia
       href: security-center-incident-response.md
 - name: Przewodniki z instrukcjami
@@ -97,19 +103,24 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptacyjne wzmocnienie zabezpieczeń sieci
           href: security-center-adaptive-network-hardening.md
-    - name: Wykrywania zagrożeń
-      href: security-center-detection-capabilities.md
+    - name: Alerty wykrywania zagrożeń
       items:
-        - name: Alerty zabezpieczeń
-          href: security-center-managing-and-responding-alerts.md
-        - name: Zdarzenia dotyczące zabezpieczeń
-          href: security-center-incident.md
-        - name: Informacje o alertach zabezpieczeń
-          href: security-center-alerts-type.md
-        - name: Walidacja alertu
+        - name: Omówienie alertów zabezpieczeń
+          href: security-center-alerts-overview.md
+        - name: Wykrywanie zagrożeń dla maszyn wirtualnych i serwerów
+          href: security-center-alerts-iaas.md
+        - name: Wykrywanie zagrożeń dla natywnych obliczeń w chmurze
+          href: security-center-alerts-compute.md
+        - name: Wykrywanie zagrożeń dla usług danych
+          href: security-center-alerts-data-services.md
+        - name: Wykrywanie zagrożeń dla warstwy usługi platformy Azure
+          href: security-center-alerts-service-layer.md
+        - name: Integracja z produktami zabezpieczeń platformy Azure
+          href: security-center-alerts-integration.md
+        - name: Korelacja alertów inteligentnych w chmurze (zdarzenia)
+          href: security-center-alerts-cloud-smart.md
+        - name: Walidacja alertów (plik testowy EICAR)
           href: security-center-alert-validation.md
-        - name: Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure
-          href: security-center-ueba-mcas.md
     - name: Archiwum
       items:
         - name: Zastosuj szyfrowanie dysków
@@ -168,6 +179,10 @@
           href: security-center-search.md
         - name: Planowanie i operacje
           href: security-center-planning-and-operations-guide.md
+        - name: Informacje o alertach zabezpieczeń
+          href: security-center-alerts-type.md
+        - name: Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure
+          href: security-center-ueba-mcas.md
 - name: Dokumentacja
   items:
     - name: Interfejsy API REST
