@@ -252,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-Komunikaty wysyłane do tematów usługi Service Bus są wystąpieniami [BrokeredMessage] [ BrokeredMessage] klasy. [BrokeredMessage] [ BrokeredMessage] obiekty mają zestaw właściwości standardowych i metody, a także właściwości, które mogą służyć do przechowywania niestandardowych właściwości specyficzne dla aplikacji. Poniższy przykład przedstawia sposób wysyłania pięciu testowych komunikatów do `mytopic` wcześniej utworzony temat. `setProperty` Metoda służy do dodawania właściwości niestandardowych (`MessageNumber`) do każdej wiadomości. `MessageNumber` Różni się w wartości właściwości dla każdej wiadomości (tej wartości można użyć, aby określić subskrypcje, które otrzymają, jak pokazano na [Utwórz subskrypcję](#create-a-subscription) sekcji):
+Komunikaty wysyłane do tematów usługi Service Bus są wystąpieniami [BrokeredMessage][BrokeredMessage] klasy. [BrokeredMessage][BrokeredMessage] obiekty mają zestaw właściwości standardowych i metody, a także właściwości, które mogą służyć do przechowywania niestandardowych właściwości specyficzne dla aplikacji. Poniższy przykład przedstawia sposób wysyłania pięciu testowych komunikatów do `mytopic` wcześniej utworzony temat. `setProperty` Metoda służy do dodawania właściwości niestandardowych (`MessageNumber`) do każdej wiadomości. `MessageNumber` Różni się w wartości właściwości dla każdej wiadomości (tej wartości można użyć, aby określić subskrypcje, które otrzymają, jak pokazano na [Utwórz subskrypcję](#create-a-subscription) sekcji):
 
 ```php
 for($i = 0; $i < 5; $i++){

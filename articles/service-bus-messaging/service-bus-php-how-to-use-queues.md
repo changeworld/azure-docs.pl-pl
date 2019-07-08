@@ -51,7 +51,7 @@ W tym przewodniku użyje funkcji usługi, które mogą być wywoływane w ramach
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurowanie aplikacji do użycia usługi Service Bus
 Aby korzystać z kolejki usługi Service Bus interfejsów API, wykonaj następujące czynności:
 
-1. Odwołanie do automatycznej ładowarki pliku przy użyciu [require_once] [ require_once] instrukcji.
+1. Odwołanie do automatycznej ładowarki pliku przy użyciu [require_once][require_once] instrukcji.
 2. Odwoływać się do dowolnej klasy, których można użyć.
 
 Poniższy przykład pokazuje, jak to plik automatycznej ładowarki i odwołania `ServicesBuilder` klasy.
@@ -169,7 +169,7 @@ Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [
 
 ## <a name="receive-messages-from-a-queue"></a>Odbieranie komunikatów z kolejki
 
-Najlepszym sposobem na odbieranie komunikatów z kolejki jest użycie `ServiceBusRestProxy->receiveQueueMessage` metody. Komunikaty mogą być odbierane w dwóch różnych trybach: [*ReceiveAndDelete* ](/dotnet/api/microsoft.servicebus.messaging.receivemode) i [ *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). Ustawienie domyślne to **PeekLock**.
+Najlepszym sposobem na odbieranie komunikatów z kolejki jest użycie `ServiceBusRestProxy->receiveQueueMessage` metody. Komunikaty mogą być odbierane w dwóch różnych trybach: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) i [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). Ustawienie domyślne to **PeekLock**.
 
 Korzystając z [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) trybie odbieranie jest operacją pojedynczego zrzutu; oznacza to, gdy Usługa Service Bus odbiera żądanie odczytu komunikatu w kolejce, jego oznacza komunikat jako wykorzystany i zwraca go do aplikacji. Tryb [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ usługi Service Bus będą oznaczyła komunikat jako wykorzystany, a następnie, gdy aplikacja ponownie uruchamia i ponownie rozpocznie korzystanie z komunikatów, pominie utracony komunikat, który został wykorzystany przed awarią.
 
@@ -227,7 +227,7 @@ W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz
 > Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, kiedy znasz już podstawy kolejek usługi Service Bus, zobacz [kolejki, tematy i subskrypcje] [ Queues, topics, and subscriptions] Aby uzyskać więcej informacji.
+Teraz, kiedy znasz już podstawy kolejek usługi Service Bus, zobacz [kolejki, tematy i subskrypcje][Queues, topics, and subscriptions] Aby uzyskać więcej informacji.
 
 Aby uzyskać więcej informacji, odwiedź również [Centrum deweloperów języka PHP](https://azure.microsoft.com/develop/php/).
 

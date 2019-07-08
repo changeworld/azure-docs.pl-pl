@@ -20,7 +20,7 @@ Po utworzeniu konta usługi z wieloma regionami zapisu włączone należy dwie z
 > [!Note]
 > Wstępnie skonfigurowane przy użyciu zapisu w jednym regionie konta usługi cosmos można skonfigurować do (czyli wielu wzorców) wielu regionów zapisu bez przestoju. Aby dowiedzieć się więcej, zobacz [skonfigurować zapisu wielu regionów](how-to-manage-database-account.md#configure-multiple-write-regions)
 
-## <a id="netv2">Zestaw .NET SDK w wersji 2</a>
+## <a id="netv2"></a>Zestaw .NET SDK w wersji 2
 
 Aby włączyć Multi-Master w aplikacji, ustaw `UseMultipleWriteLocations` do `true`. Ponadto należy ustawić `SetCurrentLocation` w regionie, w których aplikacja jest wdrażana i których usługi Azure Cosmos DB są replikowane:
 

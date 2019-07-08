@@ -31,8 +31,8 @@ Adaptera StorSimple dla programu SharePoint działa jako dostawca magazynu obiek
 > Adaptera StorSimple dla programu SharePoint obsługuje programu SharePoint Server 2010 zdalnego obiektu BLOB magazynu (SPZ). Nie obsługuje programu SharePoint Server 2010 zewnętrznych obiektów BLOB Storage (EBS).
 
 
-* Aby pobrać adaptera StorSimple dla programu SharePoint, przejdź do [adaptera StorSimple dla programu SharePoint] [ 1] w programie Microsoft Download Center.
-* Aby uzyskać informacje o planowaniu SPZ i SPZ ograniczenia, przejdź do [podjęciem decyzji o użyciu SPZ w programie SharePoint 2013] [ 2] lub [planowanie SPZ (SharePoint Server 2010)] [ 3].
+* Aby pobrać adaptera StorSimple dla programu SharePoint, przejdź do [adaptera StorSimple dla programu SharePoint][1] w programie Microsoft Download Center.
+* Aby uzyskać informacje o planowaniu SPZ i SPZ ograniczenia, przejdź do [podjęciem decyzji o użyciu SPZ w programie SharePoint 2013][2] lub [planowanie SPZ (SharePoint Server 2010)][3].
 
 Pozostała część tego omówienia krótko opisano rolę adaptera StorSimple dla programu SharePoint i SharePoint pojemność i wydajność ograniczeń, które należy wiedzieć, przed zainstalowaniem i skonfigurowaniem karty. Po przejrzeniu tych informacji, przejdź do [adaptera StorSimple dla instalacji programu SharePoint](#storsimple-adapter-for-sharepoint-installation) aby rozpocząć konfigurowanie karty.
 
