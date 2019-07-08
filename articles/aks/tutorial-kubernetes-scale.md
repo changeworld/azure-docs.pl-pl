@@ -2,18 +2,18 @@
 title: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — skalowanie aplikacji
 description: W tym samouczku dotyczącym usługi Azure Kubernetes Service (AKS) dowiesz się, jak skalować węzły i zasobniki w rozwiązaniu Kubernetes oraz implementować automatyczne skalowanie zasobników w poziomie.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 062e16c0d196cf91d6e0adde46ed973f1c0d1191
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304428"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614194"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Samouczek: Skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,13 +28,13 @@ W dodatkowych samouczkach aplikacja Azure Vote jest aktualizowana do nowej wersj
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W poprzednich samouczkach aplikacja była spakowana do obrazu kontenera. Ten obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi AKS. Aplikacja została następnie wdrożona w klastrze usługi AKS. Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, zacznij od części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
+W poprzednich samouczkach aplikacja była spakowana do obrazu kontenera. Ten obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi AKS. Aplikacja została następnie wdrożona w klastrze usługi AKS. Jeśli jeszcze nie wykonano tych kroków, a chcesz z niego skorzystać, skorzystaj z [samouczek 1 — Tworzenie obrazów kontenera][aks-tutorial-prepare-app].
 
 Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.53 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="manually-scale-pods"></a>Ręczne skalowanie zasobników
 
-W momencie wdrożenia frontonu aplikacji Azure Vote i wystąpienia pamięci podręcznej Redis w poprzednich samouczkach została utworzona pojedyncza replika. Aby wyświetlić liczbę i stan zasobników w klastrze, użyj polecenia [kubectl get][kubectl-get] w następujący sposób:
+W momencie wdrożenia frontonu aplikacji Azure Vote i wystąpienia pamięci podręcznej Redis w poprzednich samouczkach została utworzona pojedyncza replika. Aby wyświetlić liczbę i stan zasobników w klastrze, należy użyć [kubectl get-][kubectl-get] polecenia w następujący sposób:
 
 ```console
 kubectl get pods
@@ -48,13 +48,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Aby ręcznie zmienić liczbę zasobników w ramach wdrożenia aplikacji *azure-vote-front*, użyj polecenia [kubectl scale][kubectl-scale]. W poniższym przykładzie liczba zasobników frontonu jest zwiększana do *5*:
+Aby ręcznie zmień liczbę zasobników we *azure-vote-front* wdrożenia, użyj [kubectl scale][kubectl-scale] polecenia. W poniższym przykładzie liczba zasobników frontonu jest zwiększana do *5*:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Ponownie uruchom polecenie [kubectl get][kubectl-get], aby sprawdzić, czy rozwiązanie AKS tworzy dodatkowe zasobniki. Po upływie około minuty dodatkowe zasobniki będą dostępne w Twoim klastrze:
+Uruchom [kubectl get pods-][kubectl-get] ponownie w celu zweryfikowania, że AKS tworzy dodatkowe zasobniki. Po upływie około minuty dodatkowe zasobniki będą dostępne w Twoim klastrze:
 
 ```console
 $ kubectl get pods
@@ -70,13 +70,13 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatyczne skalowanie zasobników
 
-Rozwiązanie Kubernetes obsługuje [automatyczne skalowanie zasobników w poziomie][kubernetes-hpa], umożliwiające dostosowywanie liczby zasobników we wdrożeniu do użycia procesora lub innych wybranych metryk. [Serwer metryk][metrics-server] służy do zapewnienia wykorzystania zasobów w usłudze Kubernetes i jest automatycznie wdrożony w klastrach AKS w wersji 1.10 lub nowszej. Aby wyświetlić wersję klastra AKS, użyj polecenia [az aks show][az-aks-show], jak pokazano w poniższym przykładzie:
+Rozwiązanie Kubernetes obsługuje [automatyczne skalowanie zasobników w poziomie][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server] służy do zapewnienia wykorzystania zasobów w usłudze Kubernetes i jest automatycznie wdrożone w klastrach usługi AKS wersje 1,10 lub nowszy. Aby wyświetlić wersję klastra usługi AKS, użyj [az aks show][az-aks-show] polecenia, jak pokazano w poniższym przykładzie:
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-Jeśli klaster AKS jest w wersji wcześniejszej niż *1.10*, zainstaluj program Metrics Server. W przeciwnym razie pomiń ten krok. Aby go zainstalować, sklonuj repozytorium GitHub `metrics-server` i zainstaluj przykładowe definicje zasobów. Aby wyświetlić zawartość tych definicji YAML, zobacz [program Metrics Server dla platformy Kuberenetes w wersji 1.8 lub nowszej][metrics-server-github].
+Jeśli klaster AKS jest w wersji wcześniejszej niż *1.10*, zainstaluj program Metrics Server. W przeciwnym razie pomiń ten krok. Aby go zainstalować, sklonuj repozytorium GitHub `metrics-server` i zainstaluj przykładowe definicje zasobów. Aby wyświetlić zawartość te definicje YAML, zobacz [serwera metryki dla Kuberenetes 1.8 +][metrics-server-github].
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git
@@ -93,7 +93,7 @@ resources:
      cpu: 500m
 ```
 
-W poniższym przykładzie użyto polecenia [kubectl autoscale][kubectl-autoscale] w celu przeprowadzenia automatycznego skalowania liczby zasobników we wdrożeniu aplikacji *azure-vote-front*. Jeśli użycie procesora CPU przekroczy 50%, skalowanie automatyczne spowoduje zwiększenie liczby zasobników do maksymalnie *10* wystąpień. Dla wdrożenia zostaną następnie zdefiniowane przynajmniej *3* wystąpienia:
+W poniższym przykładzie użyto [kubectl autoscale][kubectl-autoscale] polecenia do automatycznego skalowania liczby zasobników we *azure-vote-front* wdrożenia. Jeśli użycie procesora CPU przekroczy 50%, skalowanie automatyczne spowoduje zwiększenie liczby zasobników do maksymalnie *10* wystąpień. Dla wdrożenia zostaną następnie zdefiniowane przynajmniej *3* wystąpienia:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -150,7 +150,7 @@ W tym samouczku użyto różnych funkcji skalowania w klastrze Kubernetes. W tym
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zaktualizować aplikację w rozwiązaniu Kubernetes.
 
 > [!div class="nextstepaction"]
-> [Aktualizowanie aplikacji w rozwiązaniu Kubernetes][aks-tutorial-update-app]
+> [Aktualizowanie aplikacji w usłudze Kubernetes][aks-tutorial-update-app]
 
 <!-- LINKS - external -->
 [kubectl-autoscale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale

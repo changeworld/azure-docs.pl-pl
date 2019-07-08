@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2018
-ms.author: aljo, dekapur
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 11d913264e5920b90ea08d2a29a3651ab101ee64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 011cac977e44f85b8b183d253e987ff1b38c9834
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61390517"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621916"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Samouczek: Monitorowanie kontenerów Windows w usłudze Service Fabric przy użyciu dzienników usługi Azure Monitor
 
@@ -86,7 +86,7 @@ Wprowadź następujące zmiany w szablonie *template.json*:
     "omsSolution": "ServiceFabric"
     ```
 
-3. Dodaj program Microsoft Monitoring Agent jako rozszerzenie maszyny wirtualnej. Znajdź zasób zestawów skalowania maszyn wirtualnych: *resources* > *"apiVersion": "[variables('vmssApiVersion')]"*. W obszarze *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* dodaj następujący opis w ramach rozszerzenia *ServiceFabricNode*: 
+3. Dodaj program Microsoft Monitoring Agent jako rozszerzenie maszyny wirtualnej. Znajdź zasób zestawów skalowania maszyn wirtualnych: *resources* >  *"apiVersion": "[variables('vmssApiVersion')]"* . W obszarze *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* dodaj następujący opis w ramach rozszerzenia *ServiceFabricNode*: 
     
     ```json
     {
@@ -212,7 +212,7 @@ W związku z tym, że agent pobiera dzienniki platformy Docker, domyślnie wyśw
 
 ![Pulpit nawigacyjny rozwiązania kontenera](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-Po kliknięciu jednego z tych paneli spowoduje przejście do zapytania Kusto, które generuje wyświetlaną wartość. Zmień zapytanie na *\**, aby zobaczyć wszystkie rodzaje zbieranych dzienników. W tym miejscu można wysyłać zapytania dotyczące wydajności kontenerów i dzienników lub filtrować je albo wyszukiwać zdarzenia platformy usługi Service Fabric. Poza tym agenci stale emitują puls z każdego widocznego węzła, aby upewnić się, że dane ze wszystkich maszyn są zbierane nawet w przypadku zmiany konfiguracji klastra.
+Po kliknięciu jednego z tych paneli spowoduje przejście do zapytania Kusto, które generuje wyświetlaną wartość. Zmień zapytanie na *\** , aby zobaczyć wszystkie rodzaje zbieranych dzienników. W tym miejscu można wysyłać zapytania dotyczące wydajności kontenerów i dzienników lub filtrować je albo wyszukiwać zdarzenia platformy usługi Service Fabric. Poza tym agenci stale emitują puls z każdego widocznego węzła, aby upewnić się, że dane ze wszystkich maszyn są zbierane nawet w przypadku zmiany konfiguracji klastra.
 
 ![Zapytanie dotyczące kontenera](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
@@ -222,7 +222,7 @@ Inną zaletą używania agenta usługi Log Analytics jest możliwość zmiany li
 
 Spowoduje to przejście do obszaru roboczego usługi Log Analytics, w którym można wyświetlać rozwiązania, tworzyć niestandardowe pulpity nawigacyjne, a także konfigurować agenta usługi Log Analytics. 
 * Kliknij opcję **Ustawienia zaawansowane** aby otworzyć menu Ustawienia zaawansowane.
-* Kliknij pozycję **Połączone źródła** > **Serwery z systemem Windows**, aby upewnić się, że *Połączono komputery z systemem Windows (5)*.
+* Kliknij pozycję **Połączone źródła** > **Serwery z systemem Windows**, aby upewnić się, że *Połączono komputery z systemem Windows (5)* .
 * Kliknij pozycję **Dane** > **Liczniki wydajności systemu Windows**, aby wyszukać i dodać nowe liczniki wydajności. W tym miejscu zostanie wyświetlona lista zaleceń z usługi Azure Monitor dzienników liczników wydajności, że można zbierać, a także opcję wyszukiwania innych liczników. Sprawdź, czy zbierane są liczniki **Processor(_Total)\%Processor Time** i **\Memory(*)\Available MBytes**.
 
 Po kilku minutach **odśwież** rozwiązanie do monitorowania kontenerów, aby wyświetlić dane przychodzące dotyczące *wydajności komputera*. Pomoże to zrozumieć, w jaki sposób zasoby są używane. Tych metryk można również używać na potrzeby podejmowania odpowiednich decyzji dotyczących skalowania klastra lub potwierdzania, że klaster równoważy obciążenie zgodnie z oczekiwaniami.

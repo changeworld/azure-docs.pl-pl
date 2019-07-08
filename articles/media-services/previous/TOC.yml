@@ -33,7 +33,7 @@
           href: media-services-powershell-create-and-configure-aad-app.md
     - name: Dostarczanie wideo na żądanie
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: media-services-portal-vod-get-started.md
         - name: Zestaw SDK .NET
           href: media-services-dotnet-get-started.md
@@ -43,7 +43,7 @@
           href: media-services-rest-get-started.md
     - name: Transmisja strumieniowa na żywo
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
@@ -51,6 +51,9 @@
   items:
     - name: Zarządzanie
       items:
+        - name: Konta
+          displayName: subscription
+          href: media-services-account-concept.md
         - name: Jednostki
           items:
             - name: .NET
@@ -60,7 +63,7 @@
         - name: Punkty końcowe przesyłania strumieniowego
           href: media-services-streaming-endpoints-overview.md
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-manage-streaming-endpoints.md
             - name: .NET
               href: media-services-dotnet-manage-streaming-endpoints.md
@@ -85,7 +88,7 @@
       items:
         - name: Przekazywanie plików do konta
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-upload-files.md
             - name: .NET
               href: media-services-dotnet-upload-files.md
@@ -112,7 +115,7 @@
               href: media-services-autogen-bitrate-ladder-with-mes.md
             - name: Kodowanie za pomocą usługi Media Encoder Standard
               items:
-                - name: Azure Portal
+                - name: Portal Azure
                   href: media-services-portal-encode.md
                 - name: .NET
                   href: media-services-dotnet-encode-with-media-encoder-standard.md
@@ -226,14 +229,14 @@
           items:
             - name: Zalecane kodery lokalne
               href: media-services-recommended-encoders.md
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-live-passthrough-get-started.md
             - name: .NET
               href: media-services-dotnet-live-encode-with-onpremises-encoders.md
         - name: Transmisja strumieniowa na żywo z użyciem kodera w chmurze
           href: media-services-manage-live-encoder-enabled-channels.md
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-creating-live-encoder-enabled-channel.md
             - name: .NET
               href: media-services-dotnet-creating-live-encoder-enabled-channel.md
@@ -262,7 +265,7 @@
           href: media-services-azure-media-clipper-localization.md
         - name: Przesyłanie zadań przycinania
           href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure Portal
+        - name: Portal Azure
           href: media-services-azure-media-clipper-portal.md
     - name: Ochrona zawartości
       href: media-services-content-protection-overview.md
@@ -305,7 +308,7 @@
               href: media-services-rest-configure-asset-delivery-policy.md
         - name: Konfigurowanie zasad autoryzacji klucza zawartości
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-configure-content-key-auth-policy.md
             - name: .NET
               href: media-services-dotnet-configure-content-key-auth-policy.md
@@ -358,13 +361,13 @@
         - name: Przetwarzanie multimediów
           href: media-services-scale-media-processing-overview.md
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-scale-media-processing.md
             - name: .NET
               href: media-services-dotnet-encoding-units.md
         - name: Punkty końcowe przesyłania strumieniowego
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-scale-streaming-endpoints.md
     - name: Dostarczanie zawartości
       href: media-services-deliver-content-overview.md
@@ -382,7 +385,7 @@
           href: ../../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json
         - name: Publikowanie zawartości
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-publish.md
             - name: .NET
               href: media-services-deliver-streaming-content.md
@@ -422,7 +425,7 @@
           items:
             - name: REST
               href: media-services-rest-check-job-progress.md
-            - name: Azure Portal
+            - name: Portal Azure
               href: media-services-portal-check-job-progress.md
             - name: .NET
               href: media-services-check-job-progress.md

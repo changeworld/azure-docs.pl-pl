@@ -2,18 +2,18 @@
 title: Samouczek dotyczący usługi Kubernetes na platformie Azure — tworzenie rejestru kontenerów
 description: W tym samouczku dotyczącym usługi Azure Kubernetes Service (AKS) utworzysz wystąpienie usługi Azure Container Registry i przekażesz przykładowy obraz kontenera aplikacji.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 1bd41dc464c251a2e7dab3087f3feffb15db785f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5089326af1d7f6e057667cd916f35de92bf517ef
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304407"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614245"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Samouczek: Wdrażanie usługi Azure Container Registry i korzystanie z niej
 
@@ -29,7 +29,7 @@ W dodatkowych samouczkach to wystąpienie usługi ACR zostanie zintegrowane z kl
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W [poprzednim samouczku ][aks-tutorial-prepare-app] utworzono obraz kontenera na potrzeby prostej aplikacji do głosowania platformy Azure. Jeśli obraz aplikacji do głosowania platformy Azure nie został utworzony, wróć do artykułu [Samouczek 1 — Tworzenie obrazów kontenerów][aks-tutorial-prepare-app].
+W [poprzednim samouczku][aks-tutorial-prepare-app] utworzono obraz kontenera na potrzeby prostej aplikacji do głosowania platformy Azure. Jeśli obraz aplikacji do głosowania platformy Azure nie został utworzony, wróć do artykułu [Samouczek 1 — tworzenie obrazów kontenerów][aks-tutorial-prepare-app].
 
 Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.53 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
@@ -43,7 +43,7 @@ Utwórz grupę zasobów za pomocą polecenia [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Utwórz wystąpienie usługi Azure Container Registry przy użyciu polecenia [az acr create][az-acr-create] i podaj własną nazwę rejestru. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. W dalszej części tego samouczka wartość `<acrName>` zostanie użyta jako symbol zastępczy nazwy rejestru kontenerów. Podaj własną, unikatową nazwę rejestru. *Podstawowa* jednostka SKU to zoptymalizowany pod kątem kosztów punkt wejścia do celów programistycznych zapewniający równowagę między przestrzenią dyskową i przepływnością.
+Tworzenie wystąpienia usługi Azure Container Registry przy użyciu [tworzenie az acr][az-acr-create] polecenia i podaj nazwę rejestru. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. W dalszej części tego samouczka wartość `<acrName>` zostanie użyta jako symbol zastępczy nazwy rejestru kontenerów. Podaj własną, unikatową nazwę rejestru. *Podstawowa* jednostka SKU to zoptymalizowany pod kątem kosztów punkt wejścia do celów programistycznych zapewniający równowagę między przestrzenią dyskową i przepływnością.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -51,7 +51,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## <a name="log-in-to-the-container-registry"></a>Logowanie do rejestru kontenerów
 
-Aby użyć wystąpienia usługi ACR, należy się najpierw zalogować. Użyj polecenia [az acr login][az-acr-login] i podaj unikatową nazwę nadaną rejestrowi kontenerów w poprzednim kroku.
+Aby użyć wystąpienia usługi ACR, należy się najpierw zalogować. Użyj [az acr login][az-acr-login] polecenia i Podaj unikatową nazwę nadaną kontenerowi w poprzednim kroku.
 
 ```azurecli
 az acr login --name <acrName>
@@ -61,7 +61,7 @@ Polecenie zwraca komunikat *Logowanie pomyślne* po ukończeniu.
 
 ## <a name="tag-a-container-image"></a>Tagowanie obrazu kontenera
 
-Aby wyświetlić listę bieżących obrazów lokalnych, użyj polecenia [docker images][docker-images]:
+Aby wyświetlić listę obrazów lokalnych bieżącej, użyj [obrazów platformy docker][docker-images] polecenia:
 
 ```
 $ docker images
@@ -74,7 +74,7 @@ tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ag
 
 Aby użyć obrazu kontenera *azure-vote-front* z usługą ACR, obraz musi być otagowany za pomocą adresu serwera logowania rejestru. Ten tag jest używany na potrzeby kierowania podczas wypychania obrazów kontenerów do rejestru obrazów.
 
-Aby uzyskać adres serwera logowania, użyj polecenia [az acr list][az-acr-list] i wykonaj zapytanie dotyczące wartości *loginServer* w następujący sposób:
+Aby uzyskać adres serwera logowania, należy użyć [az acr list][az-acr-list] polecenia i zapytania dla *loginServer* w następujący sposób:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -86,7 +86,7 @@ Następnie otaguj lokalny obraz *azure-vote-front* za pomocą adresu *acrloginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Aby sprawdzić, czy tagi zostały zastosowane, ponownie uruchom polecenie [docker images][docker-images]. Obraz jest tagowany za pomocą adresu wystąpienia usługi ACR i numeru wersji.
+Aby sprawdzić, tagi zostaną zastosowane, uruchom [obrazów platformy docker][docker-images] ponownie. Obraz jest tagowany za pomocą adresu wystąpienia usługi ACR i numeru wersji.
 
 ```
 $ docker images
@@ -100,7 +100,7 @@ tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313 
 
 ## <a name="push-images-to-registry"></a>Wypychanie obrazów do rejestru
 
-Po skompilowaniu i otagowaniu obrazu *azure-vote-front* możesz wypchnąć go do wystąpienia usługi ACR. Użyj polecenia [docker push][docker-push] i podaj własny adres *acrLoginServer* na potrzeby nazwy obrazu w następujący sposób:
+Po skompilowaniu i otagowaniu obrazu *azure-vote-front* możesz wypchnąć go do wystąpienia usługi ACR. Użyj [docker push][docker-push] i podać własne *acrLoginServer* adres nazwa obrazu w następujący sposób:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -110,7 +110,7 @@ Wypchnięcie obrazu do usługi ACR może potrwać kilka minut.
 
 ## <a name="list-images-in-registry"></a>Wyświetlanie listy obrazów w rejestrze
 
-Aby zwrócić listę obrazów, które zostały wypchnięte do wystąpienia usługi ACR, użyj polecenia [az acr repository list][az-acr-repository-list]. Podaj własną nazwę `<acrName>` w następujący sposób:
+Aby zwrócić listę obrazów, które zostały wypchnięte do swojego wystąpienia usługi ACR, użyj [az acr repozytorium listy][az-acr-repository-list] polecenia. Podaj własną nazwę `<acrName>` w następujący sposób:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -124,7 +124,7 @@ Result
 azure-vote-front
 ```
 
-Aby wyświetlić tagi dla określonego obrazu, użyj polecenia [az acr repository show-tags][az-acr-repository-show-tags] w następujący sposób:
+Aby wyświetlić tagi dla określonego obrazu, użyj [az acr repozytorium show-tags][az-acr-repository-show-tags] polecenia w następujący sposób:
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table

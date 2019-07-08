@@ -2,18 +2,18 @@
 title: Samouczek dotyczący usługi Kubernetes na platformie Azure — aktualizowanie aplikacji
 description: Z tego samouczka dotyczącego usługi Azure Kubernetes Service (AKS) dowiesz się, jak zaktualizować istniejące wdrożenie aplikacji do usługi AKS przy użyciu nowej wersji kodu aplikacji.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 05eac7e673ad01e9d3e0fb25f261444fd7bc4e6d
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475499"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614377"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Samouczek: aktualizowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ W tym samouczku (część szósta z siedmiu) aktualizowana jest przykładowa apl
 
 W poprzednich samouczkach aplikacja była spakowana do obrazu kontenera. Ten obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi AKS. Aplikacja została następnie wdrożona w klastrze usługi AKS.
 
-Sklonowano również repozytorium aplikacji, w tym kod źródłowy aplikacji i utworzony wcześniej plik narzędzia Docker Compose używany w tym samouczku. Sprawdź, czy został utworzony klon repozytorium oraz czy katalogi zostały zmienione na sklonowany katalog. Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, zacznij od części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
+Sklonowano również repozytorium aplikacji, w tym kod źródłowy aplikacji i utworzony wcześniej plik narzędzia Docker Compose używany w tym samouczku. Sprawdź, czy został utworzony klon repozytorium oraz czy katalogi zostały zmienione na sklonowany katalog. Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, skorzystaj z [samouczek 1 — Tworzenie obrazów kontenera][aks-tutorial-prepare-app].
 
 Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.53 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
@@ -57,7 +57,7 @@ Zapisz i zamknij plik. W programie `vi` użyj polecenia `:wq`.
 
 ## <a name="update-the-container-image"></a>Aktualizowanie obrazu kontenera
 
-Użyj narzędzia [docker-compose][docker-compose], aby ponownie utworzyć obraz frontonu i przetestować zaktualizowaną aplikację. Argument `--build` jest używany w celu poinstruowania narzędzia Docker Compose o konieczności ponownego utworzenia obrazu aplikacji:
+Aby ponownie utworzyć obraz frontonu i przetestować zaktualizowaną aplikację, należy użyć [narzędzia docker compose][docker-compose]. Argument `--build` jest używany w celu poinstruowania narzędzia Docker Compose o konieczności ponownego utworzenia obrazu aplikacji:
 
 ```console
 docker-compose up --build -d
@@ -85,10 +85,10 @@ Użyj polecenia [docker tag][docker-tag] w celu otagowania obrazu. Zastąp warto
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Następnie użyj polecenia [docker push][docker-push] w celu przekazania obrazu do rejestru. Zastąp wartość `<acrLoginServer>` nazwą serwera logowania usługi ACR.
+Teraz za pomocą [docker push][docker-push] do przekazania obrazu do rejestru. Zastąp wartość `<acrLoginServer>` nazwą serwera logowania usługi ACR.
 
 > [!NOTE]
-> Jeśli wystąpią problemy związane z wypychaniem do rejestru usługi ACR, upewnij się, że nadal zalogowano Cię. Uruchom [az acr login] [ az-acr-login] polecenia przy użyciu nazwy usługi Azure Container Registry, który został utworzony w [Utwórz rejestr Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) kroku. Na przykład `az acr login --name <azure container registry name>`.
+> Jeśli wystąpią problemy związane z wypychaniem do rejestru usługi ACR, upewnij się, że nadal zalogowano Cię. Uruchom [az acr login][az-acr-login] polecenia przy użyciu nazwy usługi Azure Container Registry, który został utworzony w [Utwórz rejestr Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) kroku. Na przykład `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -96,7 +96,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>Wdrażanie zaktualizowanej aplikacji
 
-Aby zapewnić maksymalny czas działania, należy uruchomić wiele wystąpień zasobnika aplikacji. Sprawdź liczbę uruchomionych wystąpień frontonu, używając polecenia [kubectl get pods][kubectl-get]:
+Aby zapewnić maksymalny czas działania, należy uruchomić wiele wystąpień zasobnika aplikacji. Sprawdź liczbę uruchomionych wystąpień frontonu [kubectl get pods-][kubectl-get] polecenia:
 
 ```
 $ kubectl get pods
@@ -163,7 +163,7 @@ W tym samouczku zaktualizowano aplikację i wydano tę aktualizację do klastra 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak uaktualnić klaster AKS do nowej wersji klastra Kubernetes.
 
 > [!div class="nextstepaction"]
-> [Upgrade Kubernetes (Uaktualnianie usługi Kubernetes)][aks-tutorial-upgrade]
+> [Upgrade Kubernetes][aks-tutorial-upgrade]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/

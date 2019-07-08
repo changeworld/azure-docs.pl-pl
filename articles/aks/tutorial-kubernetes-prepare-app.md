@@ -2,18 +2,18 @@
 title: Samouczek dotyczący usługi Kubernetes na platformie Azure — przygotowywanie aplikacji
 description: Z tego samouczka dotyczącego usługi Azure Kubernetes Service (AKS) dowiesz się, jak przygotować i skompilować aplikację z wieloma kontenerami przy użyciu narzędzia Docker Compose, którą można następnie wdrożyć w usłudze AKS.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8fdc36215841348cf62cd61245950be6573a1938
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 2b4ba646a037b2f5561dabf97dee14454c07c573
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304445"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614227"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: Przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ W dodatkowych samouczkach obraz kontenera zostanie przekazany do usługi Azure C
 
 Ten samouczek zakłada, że masz podstawową wiedzę na temat najważniejszych pojęć dotyczących platformy Docker, takich jak kontenery, obrazy kontenerów i polecenia `docker`. Aby uzyskać podstawowe informacje na temat kontenerów, zapoznaj się z tematem [Get started with Docker (Rozpoczynanie pracy z platformą Docker)][docker-get-started].
 
-Do ukończenia tego samouczka konieczne będzie lokalne środowisko programistyczne platformy Docker z działającymi kontenerami systemu Linux. Środowisko Docker zawiera pakiety, które umożliwiają konfigurowanie platformy Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows] lub [Linux][docker-for-linux].
+Do ukończenia tego samouczka konieczne będzie lokalne środowisko programistyczne platformy Docker z działającymi kontenerami systemu Linux. Środowisko docker zawiera pakiety, które konfigurują platformy Docker na [Mac][docker-for-mac], [Windows][docker-for-windows], lub [Linux][platformy docker dla systemu linux] systemu.
 
 Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych do ukończenia każdego kroku w tych samouczkach. Dlatego zalecamy używanie pełnego środowiska programistycznego usługi Docker.
 
@@ -58,7 +58,7 @@ W tym katalogu znajduje się kod źródłowy aplikacji, wstępnie utworzony plik
 
 ## <a name="create-container-images"></a>Tworzenie obrazów kontenerów
 
-Narzędzie [Docker Compose][docker-compose] umożliwia automatyzowanie tworzenia obrazów kontenerów i wdrażanie aplikacji z wieloma kontenerami.
+[Docker Compose][docker-compose] może służyć do automatyzacji tworzenia obrazów kontenerów i wdrażanie aplikacji wielokontenerowych.
 
 Użyj przykładowego pliku `docker-compose.yaml`, aby utworzyć obraz kontenera, pobrać obraz usługi Redis i uruchomić aplikację:
 
@@ -77,7 +77,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Uruchom polecenie [docker ps][docker-ps], aby wyświetlić uruchomione kontenery:
+Uruchom [docker ps][docker-ps] polecenie, aby wyświetlić uruchomione kontenery:
 
 ```
 $ docker ps
@@ -97,7 +97,7 @@ Aby wyświetlić działającą aplikację, wprowadź adres `http://localhost:808
 
 Teraz, po zweryfikowaniu funkcjonalności aplikacji, uruchomione kontenery można zatrzymać i usunąć. Nie należy usuwać obrazów kontenerów — w następnym samouczku obraz *azure-vote-front* zostanie przekazany do wystąpienia usługi Azure Container Registry.
 
-Zatrzymaj i usuń wystąpienia kontenerów i zasoby za pomocą polecenia [docker-compose down][docker-compose-down]:
+Zatrzymaj i usuń wystąpienia kontenera i zasobami za pomocą [narzędzia docker compose dół][docker-compose-down] polecenia:
 
 ```console
 docker-compose down

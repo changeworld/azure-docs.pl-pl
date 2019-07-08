@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: dd0c35d23541512e1ed021a57526ac50f7a68e26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43b24bec557d1cc879be9568bea451f1a8b0b310
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100142"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625320"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Insperity ExpensAble
 
@@ -108,7 +108,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Insperity E
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://server.expensable.com/esapp/Authenticate?companyId=<company ID>`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta ExpensAble Insperity](http://expensable.com/support/support-overview) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta ExpensAble Insperity](https://www.insperity.com/products/expense-management/support/express/) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -126,7 +126,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Insperity E
 
 ### <a name="configure-insperity-expensable-single-sign-on"></a>Konfigurowanie Insperity ExpensAble logowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne na **Insperity ExpensAble** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure w celu [Insperity ExpensAble zespołu pomocy technicznej](http://expensable.com/support/support-overview). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne na **Insperity ExpensAble** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure w celu [Insperity ExpensAble zespołu pomocy technicznej](https://www.insperity.com/products/expense-management/support/express/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -181,7 +181,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-insperity-expensable-test-user"></a>Tworzenie użytkownika testowego Insperity ExpensAble
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Insperity ExpensAble. Praca z [Insperity ExpensAble zespołem pomocy technicznej](http://expensable.com/support/support-overview) Aby dodać użytkowników do Insperity ExpensAble platformy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Insperity ExpensAble. Praca z [Insperity ExpensAble zespołem pomocy technicznej](https://www.insperity.com/products/expense-management/support/express/) Aby dodać użytkowników do Insperity ExpensAble platformy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

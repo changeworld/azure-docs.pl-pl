@@ -7,15 +7,15 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02d63897cffa2ceca46b992e7d07b917dd73bc72
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61436145"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621563"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Integracja Wwise i Unreal Akustyka projektu
 Niniejszy instruktaż zawiera kroki szczegółowe integracji pakietu wtyczki Akustyka projektu do istniejącego projektu gier Unreal i Wwise. 
@@ -125,7 +125,7 @@ Przykładowy projekt Wwise jest dołączony do pobierania próbek. Zaleca się, 
 
     ![Zrzut ekranu przedstawiający zalecane ustawienia Wwise susz mieszany](media/wwise-dry-mix-setup.png)
 
-* Następnie zmodyfikuj następujący struktury danych wyjściowych magistrali wprowadziły Aktor — Mixer, z magistralą Akustyka projektu ustawiony na magistrali danych wyjściowych, a Dry_Footsteps Ustaw jako magistrali aux zdefiniowanych przez użytkownika.
+* Następnie zmodyfikuj następujący struktury danych wyjściowych magistrali Wprowadziły aktor — mixer, z Magistralą Akustyka Projektu ustawiony na Magistrali danych Wyjściowych, a Dry_Footsteps ustaw jako magistrali aux zdefiniowanych przez użytkownika.
 
     ![Zrzut ekranu przedstawiający zalecane ustawienia magistrali Mixer Wwise aktora](media/actor-mixer-bus-settings.png)
 

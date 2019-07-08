@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 7bc1f2adf3d8c38845218681a55e3942aa809db5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 49195efa54c8e6eca9186a9e2fc33da84ff34413
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603202"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625383"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Uczenie modelu niestandardowego rozpoznawania mowy
 
@@ -25,12 +25,11 @@ Szkolenie mowy na tekst jest niezbędne w celu zwiększenia dokładności rozpoz
 
 Jeśli występują problemy rozpoznawania zawierający model, za pomocą oznaczone przez człowieka zapisów i powiązanych danych, aby uzyskać dodatkowe szkolenie może pomóc zwiększyć dokładność. Umożliwia określenie, w którym zestawie danych do użycia, aby rozwiązać problemy z tej tabeli:
 
-| Przypadek użycia | Typ danych | Ilość danych |
-|----------|-----------|---------------|
-| Prawidłowe nazwy są niepoprawnie rozpoznana. | Dowolny tekst związany z (zdania/wypowiedzi) | 10 MB do 500 MB |
-| Wyrazy są niepoprawnie rozpoznana ze względu na akcent | Dowolny tekst związany z (Wymowa) | Podaj misrecognized słów |
-| Popularne wyrazy są usuwane lub niepoprawnie rozpoznana | Transkrypcje audio i oznaczone przez człowieka | transkrypcja 10 do 1000 godzin |
-
+| Przypadek użycia | Typ danych |
+|----------|-----------|
+| Zwiększ dokładność rozpoznawania słownictwa specyficzne dla branży i gramatyki, takie jak terminologia medycznych lub żargon, IT | Dowolny tekst związany z (zdania/wypowiedzi) |
+| Zdefiniuj fonetycznego i wyświetlane formularz programu word lub termin, który ma Wymowa niestandardowe, takie jak nazwy produktów lub akronimów. | Dowolny tekst związany z (Wymowa) |
+| Zwiększ dokładność rozpoznawania na wypowiedzi style, akcentów lub określonych szum | Transkrypcje audio i oznaczone przez człowieka |
 > [!IMPORTANT]
 > Jeśli nie został jeszcze przekazany zestaw danych, zobacz [przygotowanie i przetestować danych](how-to-custom-speech-test-data.md). Ten dokument zawiera instrukcje dotyczące przekazywania danych i wytyczne dotyczące tworzenia wysokiej jakości zestawy danych.
 

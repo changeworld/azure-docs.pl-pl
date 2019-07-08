@@ -9,14 +9,14 @@ ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8d8fd03d9c3d912788e9893377bbab3efac86f8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a89d73b63680415aa8e516926b8e1d6c59ffbbad
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66383837"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626020"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrowanie odpowiedzi, które obejmuje odpowiedzi wyszukiwania  
 
@@ -44,14 +44,20 @@ Kiedy wykonujesz zapytanie o sieci web, Wyszukiwarka Bing zwróci wszystkie znal
     }
 }    
 ```
-Typy zawartości, otrzymasz (na przykład obrazy, wideo i wiadomości) można filtrować przy użyciu [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) parametr zapytania. Bing umożliwia znalezienie odpowiedniej zawartości odpowiedzi określony, zostaną zwrócone. Filtr odpowiedzi jest rozdzielana przecinkami lista odpowiedzi. 
 
-Aby wykluczyć określonych typów zawartości, takiej jak obrazy, z odpowiedzi, możesz dodać `-` znak na początku `responseFilter` wartość. Wykluczone typy można oddzielić przecinkami (`,`). Na przykład:
+## <a name="query-parameters"></a>Parametry zapytania
+
+Aby filtrować odpowiedzi zwrócony przez usługę Bing, należy użyć poniższych parametrów zapytania podczas wywoływania interfejsu API.  
+
+### <a name="responsefilter"></a>ResponseFilter
+
+Można filtrować typów pytań, które Bing dołącza do odpowiedzi (na przykład obrazy, wideo i wiadomości) przy użyciu [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) parametr zapytania, który jest rozdzielana przecinkami lista odpowiedzi. Odpowiedzi będą uwzględniane w odpowiedzi, jeśli Bing Znajdowanie odpowiedniej zawartości. 
+
+Aby wykluczyć określone odpowiedzi z odpowiedzi, taką jak obrazy, należy poprzedzić `-` znaków na typ odpowiedzi. Na przykład:
 
 ```
 &responseFilter=-images,-videos
 ```
-
 
 Poniżej pokazano sposób użycia `responseFilter` żądania obrazów, filmów wideo i wiadomości dinghies prowadzenia. Kodowanie ciągu zapytania przecinki zmienia na %2 C.  
 
@@ -94,7 +100,9 @@ Chociaż Bing nie zwrócił wyników wideo i wiadomości w poprzedniej odpowiedz
 
 Odradza się przy użyciu się `responseFilter` można pobrać wyniki z jednego interfejsu API. Jeśli chcesz, aby zawartość z jednego interfejsu API Bing, bezpośrednio wywołać tego interfejsu API. Na przykład, aby móc odbierać tylko obrazy, Wyślij żądanie do punktu końcowego interfejsu API wyszukiwania obrazów `https://api.cognitive.microsoft.com/bing/v7.0/images/search` lub jednego z innych [obrazów](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) punktów końcowych. Wywoływanie jednego interfejsu API są ważne nie tylko ze względu na wydajność, ale ponieważ interfejsy API specyficzne dla zawartości oferują bogatszy wyników. Na przykład można użyć filtrów, które nie są dostępne do interfejsu API wyszukiwania w sieci Web do filtrowania wyników.  
 
-Aby uzyskać wyniki wyszukiwania z określonej domeny, należy dołączyć `site:` — operator zapytań w ciągu zapytania.  
+### <a name="site"></a>Witryny
+
+Aby uzyskać wyniki wyszukiwania z określonej domeny, należy dołączyć `site:` parametr ciągu zapytania zapytania.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
@@ -103,9 +111,27 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > Zależnie od zapytania, jeśli używasz `site:` — operator zapytań, istnieje ryzyko, że odpowiedź może zawierać treści dla dorosłych niezależnie od wartości [bezpieczne wyszukiwanie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) ustawienie. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych.
 
+### <a name="freshness"></a>Aktualność
+
+Aby ograniczyć wyniki odpowiedzi sieci web do stron sieci Web, które Bing wykryte w określonym czasie, należy ustawić [świeżości](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) parametr do jednego z następujących wartości bez uwzględniania wielkości liter zapytania:
+
+* `Day` — Zwracany stron sieci web Bing odnalezione w ciągu ostatnich 24 godzinach
+* `Week` — Zwracany stron sieci Web Bing odnalezione w ciągu ostatnich 7 dni
+* `Month` — Zwraca stron sieci Web, która odnalezione w ciągu ostatnich 30 dni
+
+Można również ustawić ten parametr na niestandardowy zakres dat w formularzu `YYYY-MM-DD..YYYY-MM-DD`. 
+
+`https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
+
+Aby ograniczyć wyniki do jednego dnia, należy ustawić parametr świeżości do określonej daty:
+
+`https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-04`
+
+Wyniki mogą obejmować stron sieci Web, które wykraczają poza określonym przedziale czasu, jeśli liczba stron sieci Web, który Bing pasuje do kryteriów filtru jest mniejsza od liczby stron sieci Web, której szukasz (lub domyślny numer, który Wyszukiwarka Bing zwróci).
+
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Ograniczenie liczby odpowiedzi w odpowiedzi
 
-Bing zawiera odpowiedzi w odpowiedzi oparte na klasyfikacji. Na przykład po wykonaniu zapytania *pływających + dinghies*, Wyszukiwarka Bing zwróci `webpages`, `images`, `videos`, i `relatedSearches`.
+Bing może zwrócić wiele typów odpowiedzi w odpowiedzi JSON. Na przykład po wykonaniu zapytania *pływających + dinghies*, usługa Bing może zwrócić `webpages`, `images`, `videos`, i `relatedSearches`.
 
 ```json
 {

@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417294"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622374"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -144,7 +144,7 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>Typ</th>
       <th>Min.</th>
       <th>Maks.</th>
       <th>Count</th>
@@ -1127,6 +1127,8 @@ print(y_predict[:10])
 Utwórz wykres punktowy, aby wizualizować przewidywane wartości kosztów w porównaniu z rzeczywistymi wartościami kosztów. Poniższy kod używa funkcji `distance` na osi x i funkcji `cost` podróży na osi y. W celu porównania wariancji przewidywanego kosztu dla poszczególnych wartości odległości w podróży pierwsze 100 przewidywanych i rzeczywistych wartości kosztów tworzy się jako osobną serię. Sprawdzając wykres, zobaczysz, że relacja odległości i kosztu jest prawie liniowa, a wartości przewidywanych kosztów są w większości przypadków bardzo zbliżone do wartości rzeczywistych kosztów dla tej samej odległości w podróży.
 
 ```python
+%matplotlib inline
+
 import matplotlib.pyplot as plt
 
 fig = plt.figure(figsize=(14, 10))

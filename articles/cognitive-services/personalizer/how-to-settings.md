@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7b559dc9a5e5c5bb5dbf7a2dc1e40bf6a0df5ec9
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478578"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626250"
 ---
 # <a name="personalizer-settings"></a>Ustawienia personalizer
 
@@ -35,7 +35,7 @@ Utwórz zasób Personalizer dla każdej pętli opinii.
 1. Znajdź zasób Personalizer. 
 1. W **zarządzania zasobami** zaznacz **ustawienia**.
 
-    Przed opuszczeniem witryny Azure portal, skopiuj jeden z kluczy zasobu z **klucze** strony. Będzie on potrzebny do użycia [Personalizer SDK](https://go.microsoft.com/fwlink/?linkid=2092353).
+    Przed opuszczeniem witryny Azure portal, skopiuj jeden z kluczy zasobu z **klucze** strony. Będzie on potrzebny do użycia [Personalizer SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer).
 
 ### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>Konfigurowanie ustawień za wynagrodzeniem dla sprzężenia zwrotnego na podstawie przypadku użycia
 

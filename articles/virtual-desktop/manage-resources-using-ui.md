@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 275fec5fb696a7e1352bbddccd288863e984b796
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 9579db9836ef41706f2c6be09570fa7c1459e14f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304550"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620454"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Samouczek: Wdrażanie narzędzia do zarządzania
 
@@ -57,8 +57,8 @@ Wykonaj te instrukcje, aby wdrożyć szablon usługi Azure Resource Management:
 ### <a name="guidance-for-template-parameters"></a>Wskazówki dotyczące parametrów szablonu
 Poniżej przedstawiono sposób konfigurowania narzędzia wprowadź parametry:
 
-- To jest adres URL brokera usług pulpitu zdalnego:  <https://rdbroker.wvd.microsoft.com/>
-- Jest to adres URL zasobu:  <https://mrs-prod.ame.gbl/mrs-RDInfra-prod>
+- To jest adres URL brokera usług pulpitu zdalnego: https:\//rdbroker.wvd.microsoft.com/
+- To jest adres URL zasobu: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - Użyj swoich poświadczeń usługi AAD za pomocą usługi MFA, wyłączona, aby zalogować się do platformy Azure. Zobacz [co jest potrzebne uruchomić szablon usługi Azure Resource Manager](#what-you-need-to-run-the-azure-resource-manager-template).
 - Użyj unikatowej nazwy dla aplikacji, który ma zostać zarejestrowany w usłudze Azure Active Directory dla narzędzia do zarządzania; na przykład Apr3UX.
 

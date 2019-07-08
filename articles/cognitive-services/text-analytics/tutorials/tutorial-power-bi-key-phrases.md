@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 24767f73e3e1409f81262ad57f3fd5152a4ec319
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 705e637235eb81be29a2ea0d7d68ccd000ea0470
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828448"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626032"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Samouczek: Integracja usługi Power BI z usługą analizy tekstu w usłudze Cognitive Service
 
@@ -103,7 +103,7 @@ Możesz również rozważyć odfiltrowanie pustych wiadomości, używając filtr
 Teraz możesz przystąpić do tworzenia funkcji niestandardowej, która zintegruje usługę Power BI z funkcją analizy tekstu. Funkcja otrzymuje tekst do przetworzenia w formie parametru. Konwertuje ona dane na i z wymaganego dokumentu w formacie JSON, a następnie wysyła żądanie HTTP do interfejsu API fraz kluczowych. Następnie funkcja analizuje odpowiedź z interfejsu API i zwraca ciąg zawierający rozdzielaną przecinkami listę wyodrębnionych fraz kluczowych.
 
 > [!NOTE]
-> Funkcje niestandardowe programu Power BI Desktop pisze się w [języku formuł Power Query M](https://msdn.microsoft.com/library/mt211003.aspx), w skrócie „M”. M to funkcjonalny język programowania oparty na języku [F#](https://docs.microsoft.com/dotnet/fsharp/). Jednak nie trzeba być programistą, aby ukończyć ten samouczek. Wymagany kod znajduje się poniżej.
+> Funkcje niestandardowe programu Power BI Desktop pisze się w [języku formuł Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference), w skrócie „M”. M to funkcjonalny język programowania oparty na języku [F#](https://docs.microsoft.com/dotnet/fsharp/). Jednak nie trzeba być programistą, aby ukończyć ten samouczek. Wymagany kod znajduje się poniżej.
 
 W aplikacji Power BI Desktop upewnij się, że nadal jesteś w oknie edytora zapytań. W przeciwnym razie wybierz wstążkę **Narzędzia główne**, a następnie w grupie **Dane zewnętrzne** kliknij pozycję **Edytuj zapytania**.
 
@@ -144,7 +144,7 @@ W oknie Edytora zapytań aplikacji Power BI Desktop przejdź z powrotem do zapyt
 
 Zostanie wyświetlone okno dialogowe Wywołaj funkcję niestandardową. W polu **Nazwa nowej kolumny** wprowadź `keyphrases`. W polu **Zapytanie funkcji** wybierz utworzoną funkcję niestandardową `KeyPhrases`.
 
-W oknie dialogowym zostanie wyświetlone nowe pole **tekst (opcjonalnie)**. To pole jest pytaniem, której kolumny chcemy użyć, aby dostarczyć wartości dla parametru `text` interfejsu API fraz kluczowych. (Pamiętaj, że wartości parametrów `language` i `id` zostały już trwale zakodowane). Z menu rozwijanego wybierz pozycję `Merged` (kolumnę, która została utworzona [wcześniej](#PreparingData) przez scalenie pól tematu i treści wiadomości).
+W oknie dialogowym zostanie wyświetlone nowe pole **tekst (opcjonalnie)** . To pole jest pytaniem, której kolumny chcemy użyć, aby dostarczyć wartości dla parametru `text` interfejsu API fraz kluczowych. (Pamiętaj, że wartości parametrów `language` i `id` zostały już trwale zakodowane). Z menu rozwijanego wybierz pozycję `Merged` (kolumnę, która została utworzona [wcześniej](#PreparingData) przez scalenie pól tematu i treści wiadomości).
 
 ![[Wywoływanie funkcji niestandardowej]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -188,7 +188,7 @@ Teraz za pomocą tej kolumny wygenerujesz chmurę słów. Aby rozpocząć, klikn
 > [!NOTE]
 > Dlaczego lepiej wygenerować chmurę słów przy użyciu wyodrębnionych fraz kluczowych, a nie pełnego tekstu poszczególnych komentarzy? Frazy kluczowe dostarczają nam *ważnych* słów z komentarzy naszych klientów, a nie po prostu *najpopularniejszych* słów. Ponadto liczba słów w chmurze wynikowej nie jest zniekształcona przez częste użycie słowa w stosunkowo małej liczbie komentarzy.
 
-Jeśli nie masz jeszcze zainstalowanej wizualizacji niestandardowej Word Cloud, zainstaluj ją. W panelu Wizualizacje po prawej stronie obszaru roboczego kliknij przycisk z wielokropkiem (**...**) i wybierz pozycję **Zaimportuj ze sklepu**. Następnie wyszukaj słowo „cloud” i kliknij przycisk **Dodaj** obok wizualizacji Word Cloud. Usługa Power BI zainstaluje wizualizację Word Cloud i poinformuje Cię o jej pomyślnym zainstalowaniu.
+Jeśli nie masz jeszcze zainstalowanej wizualizacji niestandardowej Word Cloud, zainstaluj ją. W panelu Wizualizacje po prawej stronie obszaru roboczego kliknij przycisk z wielokropkiem ( **...** ) i wybierz pozycję **Zaimportuj ze sklepu**. Następnie wyszukaj słowo „cloud” i kliknij przycisk **Dodaj** obok wizualizacji Word Cloud. Usługa Power BI zainstaluje wizualizację Word Cloud i poinformuje Cię o jej pomyślnym zainstalowaniu.
 
 ![[dodawanie wizualizacji niestandardowej]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -294,7 +294,7 @@ Dowiedz się więcej na temat usługi analizy tekstu, języka formuł Power Quer
 > [Dokumentacja interfejsu API analizy tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Dokumentacja języka Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
+> [Dokumentacja języka Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Dokumentacja usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)
