@@ -1,5 +1,5 @@
 ---
-title: Jak wykrywać Dryft danych (wersja zapoznawcza) we wdrożeniach usługi AKS
+title: Wykrywać Dryft danych (wersja zapoznawcza) we wdrożeniach usługi AKS
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak wykrywać Dryft danych w usłudze Azure Kubernetes Service wdrożone modelami w usłudze Azure Machine Learning.
 services: machine-learning
@@ -10,21 +10,24 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 06/20/2019
-ms.openlocfilehash: e4deeab28fb643ff32624ba9dd16574e621f508c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c446c8236ca64948f0bb6a8354a83579cc6ff24c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332505"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443953"
 ---
-# <a name="how-to-detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service"></a>Jak wykrywać Dryft danych (wersja zapoznawcza) w modelach wdrożony w usłudze Azure Kubernetes Service
-W tym artykule opisano sposób monitorowania [dryfu danych](concept-data-drift.md) między danymi zestawu danych i wnioskowania szkolenia wdrożony model. 
+# <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service"></a>Wykrywać Dryft danych (wersja zapoznawcza) w modelach wdrożony w usłudze Azure Kubernetes Service
+W tym artykule dowiesz się, jak monitorować dryfu danych między dataset szkoleń i wnioskowania danych wdrożony model. 
 
-Przesunięcie danych jest jednym z głównych powodów gdzie spadku dokładności modelu wraz z upływem czasu. Zdarza się, gdy obsługiwany w środowisku produkcyjnym do modelu danych jest inny niż danych użytych do nauczenia modelu. Usługa Azure Machine Learning można monitorować dryfu danych przy użyciu danych detektora odejściem od tego stanu. W przypadku wykrycia dryfu usługa może wysłać alert użytkownikom.  
+## <a name="what-is-data-drift"></a>Co to jest kilka danych?
+
+Przesunięcie danych, nazywane także kilka koncepcji jest jedną z głównych powodów gdzie spadku dokładności modelu wraz z upływem czasu. Zdarza się, gdy obsługiwany w środowisku produkcyjnym do modelu danych jest inny niż danych użytych do nauczenia modelu. Usługa Azure Machine Learning można monitorować dryfu danych, a po odejściem od tego stanu zostanie wykryta, usługa może wysłać użytkownikom wiadomość e-mail z alertem.  
 
 > [!Note]
 > Ta usługa jest w (wersja zapoznawcza) i jest ograniczona w opcji konfiguracji. Zobacz nasze [dokumentacji interfejsu API](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) i [wersji](azure-machine-learning-release-notes.md) szczegółowe informacje i aktualizacje. 
 
+## <a name="what-can-i-monitor"></a>Co można monitorować?
 Za pomocą usługi Azure Machine Learning możesz monitorować dane wejściowe do modelu, który został wdrożony w usłudze AKS i porównaj te dane do zestawu danych szkoleniowych dla modelu. W regularnych odstępach czasu, to dane wnioskowania [migawki i profilowane](how-to-explore-prepare-data.md), następnie obliczonego w odniesieniu do zestawu danych linii bazowej do tworzenia analizy dryfu danych który: 
 
 + Mierzy wielkość dryfu danych, nazywane współczynnik odejściem od tego stanu.
@@ -60,7 +63,7 @@ Aby uzyskać szczegółowe informacje dotyczące sposobu te metryki są obliczan
     print(model_name, image_name, service_name, model)
     ```
 
-- Konfigurowanie [modułów zbierających dane modelu](how-to-enable-data-collection.md) do zbierania danych z modelu wdrożenia usługi AKS i upewnij się, dane są zbierane w `modeldata` kontenera obiektów blob.
+- [Włącz zbieranie danych modelu](how-to-enable-data-collection.md) do zbierania danych z modelu wdrożenia usługi AKS i upewnij się, dane są zbierane w `modeldata` kontenera obiektów blob.
 
 ## <a name="import-dependencies"></a>Importowanie zależności 
 Zaimportuj zależności używanych w tym przewodniku:
@@ -85,11 +88,11 @@ datadrift = DataDriftDetector.create(ws, model.name, model.version, services, fr
 print('Details of Datadrift Object:\n{}'.format(datadrift))
 ```
 
-Aby uzyskać więcej informacji, zobacz [DataDrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) odwołania.
+Aby uzyskać więcej informacji, zobacz `[DataDrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)` klasy dokumentację referencyjną.
 
 ## <a name="submit-a-datadriftdetector-run"></a>Prześlij Uruchom DataDriftDetector
 
-Za pomocą DataDriftDetector skonfigurowane, możesz przesłać [dryfu danych uruchom](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) w danym dniu dla modelu. 
+Za pomocą `DataDriftDetector` obiektu skonfigurowane, możesz przesłać [dryfu danych uruchom](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) w danym dniu dla modelu. 
 
 ```python
 # adhoc run today
@@ -107,7 +110,7 @@ dd_run = Run(experiment=exp, run_id=run)
 RunDetails(dd_run).show()
 ```
 
-## <a name="get-data-drift-analysis-results"></a>Pobierz wyniki analizy danych odejściem od tego stanu
+## <a name="visualize-drift-metrics"></a>Wizualizuj metryki odejściem od tego stanu
 
 W poniższym przykładzie Python pokazuje, jak do wykreślenia metryki dryfu odpowiednie dane. Zwracane metryki służy do tworzenia niestandardowych wizualizacji:
 
@@ -120,13 +123,13 @@ drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 drift_figures = datadrift.show(with_details=True)
 ```
 
-![Pokaż dryfu danych](media/how-to-monitor-data-drift/drift_show.png)
+![Zobacz dryfu danych wykryte przez usługi Azure Machine Learning](media/how-to-monitor-data-drift/drift_show.png)
 
 Aby uzyskać szczegółowe informacje dotyczące metryk, które są obliczane, zobacz [danych kilka koncepcji](concept-data-drift.md) artykułu.
 
-## <a name="schedule-data-drift-detection"></a>Wykrywanie dryfu danych harmonogramu 
+## <a name="schedule-data-drift-scans"></a>Harmonogram danych odejściem od tego stanu skanowania 
 
-Włączanie harmonogramu dryfu danych wykonuje DataDriftDetector, uruchom określoną częstotliwością. Jeśli współczynnik odejściem od tego stanu jest powyżej wartości progowej przez dany, zostanie wysłana wiadomość e-mail. 
+Po włączeniu wykrywanie dryfu danych DataDriftDetector jest uruchamiany z częstotliwością określony, według harmonogramu. Jeśli współczynnik odejściem od tego stanu jest powyżej wartości progowej przez dany, zostanie wysłana wiadomość e-mail. 
 
 ```python
 datadrift.enable_schedule()
@@ -143,9 +146,9 @@ Aby wyświetlić wyniki w Interfejsie użytkownika usługi Azure ML obszaru robo
 
 ![Przesunięcie danych o witrynie Azure portal](media/how-to-monitor-data-drift/drift_ui.png)
 
-## <a name="setting-up-alerts"></a>Konfigurowanie alertów 
+## <a name="receiving-drift-alerts"></a>Otrzymywanie alertów odejściem od tego stanu
 
-Przez ustawienie współczynnika dryfu próg alertów i podając adres e-mail [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) wiadomość e-mail jest wysyłana, gdy współczynnik odejściem od tego stanu jest powyżej wartości progowej. Wszystkie metryki dryfu dane są przechowywane w zasób insights aplikacji, które są skojarzone z obszarem roboczym usługi Azure Machine Learning można ustawić niestandardowe alerty lub akcji. Link w alercie e-mail można wykonać, aby zapytanie usługi app insights.
+Przez ustawienie współczynnika dryfu próg alertów i podając adres e-mail [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) alert e-mail są wysyłane automatycznie zawsze wtedy, gdy współczynnik dryfu przekracza wartość progową. Aby, można skonfigurować niestandardowe alerty i działania wszystkie metryki dryfu dane są przechowywane w zasób usługi Application Insights, która została utworzona wraz z obszaru roboczego usługi Azure Machine Learning. Skorzystaj z łącza w alercie e-mail, do zapytania usługi Application Insights.
 
 ![Alert E-mail dryfu danych](media/how-to-monitor-data-drift/drift_email.png)
 
