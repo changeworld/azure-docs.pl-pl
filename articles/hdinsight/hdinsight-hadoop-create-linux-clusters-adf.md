@@ -189,9 +189,9 @@ W tym artykule możesz skonfigurować działanie programu Hive, aby utworzyć kl
 
     |Właściwość  |Wartość  |
     |---------|---------|
-    |Name (Nazwa) | Wprowadź nazwę dla fabryki danych. Ta nazwa musi być unikatowa w skali globalnej.|
-    |Subskrypcja | Wybierz swoją subskrypcję platformy Azure. |
-    |Grupa zasobów | Wybierz **Użyj istniejącej** a następnie wybierz grupę zasobów, które zostały utworzone za pomocą skryptu programu PowerShell. |
+    |Name | Wprowadź nazwę dla fabryki danych. Ta nazwa musi być unikatowa w skali globalnej.|
+    |Subscription | Wybierz swoją subskrypcję platformy Azure. |
+    |Resource group | Wybierz **Użyj istniejącej** a następnie wybierz grupę zasobów, które zostały utworzone za pomocą skryptu programu PowerShell. |
     |Version | Pozostaw **V2**. |
     |Location | Lokalizacja jest automatycznie ustawiona do lokalizacji, w której określono podczas tworzenia grupy zasobów wcześniej. W tym samouczku lokalizacja jest ustawiana **wschodnie stany USA**. |
 
