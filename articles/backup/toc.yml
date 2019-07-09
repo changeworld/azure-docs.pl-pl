@@ -64,6 +64,8 @@
           href: faq-backup-sql-server.md
         - name: Często zadawane pytania — usługa Azure Backup Server i program DPM
           href: backup-azure-dpm-azure-server-faq.md
+        - name: Często zadawane pytania — alert monitora usługi Azure Backup
+          href: backup-azure-monitor-alert-faq.md
     - name: Architektura kopii zapasowych
       href: backup-architecture.md
     - name: Kontrola dostępu oparta na rolach

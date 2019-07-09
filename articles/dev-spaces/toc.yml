@@ -71,6 +71,8 @@
           href: how-to/upgrade-tools.md
         - name: Używanie ciągłej integracji/ciągłego wdrażania w ramach usługi Azure Dev Spaces
           href: how-to/setup-cicd.md
+        - name: Używanie wtyczki usługi Azure Dev Spaces dla serwera Jenkins
+          href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR) dla usługi Azure Dev Spaces
           href: how-to/dev-spaces-business-continuity.md
     - name: Rozwiązywanie problemów

@@ -36,11 +36,16 @@
   items:
     - name: Omówienie
       href: concepts-overview.md
-    - name: Przekazywanie do chmury i magazynowanie w niej
+    - name: Konta
       items:
-        - name: Magazyn
+        - name: Konto usługi Media Services
+          displayName: subscription
+          href: media-services-account-concept.md
+        - name: Konto magazynu
           href: storage-account-concept.md
           displayName: Storage side encryption
+    - name: Przekazywanie
+      items:
         - name: Elementy zawartości
           href: assets-concept.md
     - name: Kodowanie
