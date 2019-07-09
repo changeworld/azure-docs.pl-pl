@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: a4f1f75c85c99610ee75eb9fda51114b52bbfac3
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 89a1fa396ff8bc5b954e91e7b08e6d731a81559a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304015"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657647"
 ---
 # <a name="what-is-text-analytics-api"></a>Co to jest interfejs API analizy tekstu?
 
@@ -28,13 +28,13 @@ Interfejs API jest częścią usług [Azure Cognitive Services](https://docs.mic
 Analiza tekstu może mieć różne znaczenie, ale w usługach Cognitive Services, interfejs API analizy tekstu udostępnia cztery rodzaje analizy, zgodnie z poniższym opisem.
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
-Użyj [analizę tonacji](how-tos/text-analytics-how-to-sentiment-analysis.md) Aby dowiedzieć się, co klienci myślą o Twojej marki lub wybranego tematu, analizując nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. Ten interfejs API zwraca ocenę tonacji od 0 do 1 dla każdego dokumentu, przy czym 1 oznacza najbardziej pozytywną tonację.<br /> Modele analizy są wstępnie szkolone przy użyciu rozbudowanych technologii z zakresu treści tekstu oraz naturalnego języka firmy Microsoft. W przypadku [wybranych języków](text-analytics-supported-languages.md) interfejs API może przeanalizować i ocenić dowolny podany nieprzetworzony tekst, zwracając wyniki bezpośrednio do aplikacji wywołującej. Możesz użyć [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) interfejsu API lub [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) zestawu SDK.
+Użyj [analizę tonacji](how-tos/text-analytics-how-to-sentiment-analysis.md) Aby dowiedzieć się, co klienci myślą o Twojej marki lub wybranego tematu, analizując nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. Ten interfejs API zwraca ocenę tonacji od 0 do 1 dla każdego dokumentu, przy czym 1 oznacza najbardziej pozytywną tonację.<br /> Modele analizy są wstępnie szkolone przy użyciu rozbudowanych technologii z zakresu treści tekstu oraz naturalnego języka firmy Microsoft. W przypadku [wybranych języków](text-analytics-supported-languages.md) interfejs API może przeanalizować i ocenić dowolny podany nieprzetworzony tekst, zwracając wyniki bezpośrednio do aplikacji wywołującej. Możesz użyć [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) interfejsu API lub [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) zestawu SDK.
 
 ## <a name="key-phrase-extraction"></a>Wyodrębnianie kluczowych fraz
-Automatycznie [wyodrębnianie kluczowych fraz](how-tos/text-analytics-how-to-keyword-extraction.md) można szybko identyfikować jego główne punkty. Na przykład dla tekstu wejściowego „Jedzenie było pyszne, a serwowała je doskonała obsługa” interfejs API zwraca główne tematy wypowiedzi: „jedzenie” i „doskonała obsługa”. Możesz użyć [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) interfejsu API w tym miejscu lub [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) zestawu SDK.
+Automatycznie [wyodrębnianie kluczowych fraz](how-tos/text-analytics-how-to-keyword-extraction.md) można szybko identyfikować jego główne punkty. Na przykład dla tekstu wejściowego „Jedzenie było pyszne, a serwowała je doskonała obsługa” interfejs API zwraca główne tematy wypowiedzi: „jedzenie” i „doskonała obsługa”. Możesz użyć [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) interfejsu API w tym miejscu lub [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) zestawu SDK.
 
 ## <a name="language-detection"></a>Wykrywanie języka
-Możesz [wykryć język, który wprowadzany tekst jest zapisany w](how-tos/text-analytics-how-to-language-detection.md) i Raportowanie kodu jeden język dla każdego dokumentu na żądanie w szerokiej gamy języków, warianty, dialekty i w niektórych językach regionalne/kultury. Kod języka jest powiązany z oceną, co wskazuje siłę oceny. Możesz użyć [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) interfejsu API lub [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) zestawu SDK.
+Możesz [wykryć język, który wprowadzany tekst jest zapisany w](how-tos/text-analytics-how-to-language-detection.md) i Raportowanie kodu jeden język dla każdego dokumentu na żądanie w szerokiej gamy języków, warianty, dialekty i w niektórych językach regionalne/kultury. Kod języka jest powiązany z oceną, co wskazuje siłę oceny. Możesz użyć [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) interfejsu API lub [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) zestawu SDK.
 
 ## <a name="named-entity-recognition"></a>Rozpoznawanie jednostek nazwanych
 [Identyfikowanie i klasyfikowanie jednostek](how-tos/text-analytics-how-to-entity-linking.md) w tekście jako osobach, miejscach, organizacje, daty/godziny, ilości, wartości procentowych i waluty. Dobrze znane jednostki są również rozpoznawane i łączone z większą ilością informacji w Internecie. Możesz użyć [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) interfejsu API.

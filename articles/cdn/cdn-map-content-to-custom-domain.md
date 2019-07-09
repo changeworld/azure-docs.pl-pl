@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6db152659a05b05fbb59edbb17de0a84b00ce6d9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 81db1a7dc01b3d60ee6384f2026ed5ce692ff140
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593727"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666092"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Samouczek: Dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN
 W tym samouczku przedstawiono sposób dodawania domeny niestandardowej do punktu końcowego usługi Azure Content Delivery Network (CDN). W przypadku dostarczania zawartości przy użyciu punktu końcowego usługi CDN domena niestandardowa jest niezbędna, jeśli chcesz, aby nazwa Twojej domeny była widoczna w adresie URL usługi CDN. Widoczna nazwa domeny może być wygodna dla klientów i przydatna dla celów związanych ze znakowaniem. 
@@ -66,7 +66,7 @@ Aby utworzyć rekord CNAME z poziomu poddomeny cdnverify:
 
 3. Utwórz wpis rekordu CNAME dla domeny niestandardowej, a następnie wypełnij pola, tak jak pokazano w poniższej tabeli (nazwy pól mogą być inne):
 
-    | source                    | Typ  | Miejsce docelowe                     |
+    | Source                    | Typ  | Miejsce docelowe                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
@@ -145,7 +145,7 @@ Po zakończeniu rejestracji domeny niestandardowej sprawdź, czy odwołuje się 
  
 1. Upewnij się, że masz publiczną zawartość buforowaną w punkcie końcowym. Jeśli na przykład punkt końcowy usługi CDN został skojarzony z kontem magazynu, usługa Azure CDN będzie buforować zawartość w kontenerze publicznym. Aby przetestować domenę niestandardową, sprawdź, czy kontener został ustawiony tak, aby zezwalać na publiczny dostęp, i czy zawiera co najmniej jeden plik.
 
-2. W przeglądarce przejdź do adresu pliku przy użyciu domeny niestandardowej. Jeśli na przykład domena niestandardowa to cdn.contoso.com, adres URL buforowanego pliku powinien być podobny do następującego: http:\//cdn.contoso.com/my-public-container/my-file.jpg. Sprawdź, czy wynik jest to taki sam, kiedy bezpośrednio uzyskujesz dostęp do punktu końcowego usługi CDN, korzystając z adresu *&lt;nazwa hosta punktu końcowego&gt;* .azureedge.net.
+2. W przeglądarce przejdź do adresu pliku przy użyciu domeny niestandardowej. Na przykład, jeśli domena niestandardowa jest www.contoso.com, adres URL buforowanego pliku powinna być podobna do następującego adresu URL: http:\//www.contoso.com/my-public-container/my-file.jpg. Sprawdź, czy wynik jest to taki sam, kiedy bezpośrednio uzyskujesz dostęp do punktu końcowego usługi CDN, korzystając z adresu *&lt;nazwa hosta punktu końcowego&gt;* .azureedge.net.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Mapowanie trwałej domeny niestandardowej
@@ -160,7 +160,7 @@ Aby utworzyć rekord CNAME dla domeny niestandardowej:
 
 3. Utwórz wpis rekordu CNAME dla domeny niestandardowej, a następnie wypełnij pola, tak jak pokazano w poniższej tabeli (nazwy pól mogą być inne):
 
-    | source          | Typ  | Miejsce docelowe           |
+    | Source          | Typ  | Miejsce docelowe           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

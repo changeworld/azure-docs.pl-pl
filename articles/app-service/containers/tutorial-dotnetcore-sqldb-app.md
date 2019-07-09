@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c90d0d2596eb6b8650e2d9809b23bb0e184d97c0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 4837867188721b13b3f4cb64245ae85a1e32fe50
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117504"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656634"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji platformy ASP.NET Core i SQL Database w usłudze Azure App Service w systemie Linux
 
@@ -145,7 +145,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Tworzenie parametrów połączenia
 
-Zastąp poniższe parametry za pomocą  *\<nazwa serwera >*,  *\<db-username >*, i  *\<hasło bazy danych >* możesz wcześniej używane.
+Zastąp poniższe parametry za pomocą  *\<nazwa serwera >* ,  *\<db-username >* , i  *\<hasło bazy danych >* możesz wcześniej używane.
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -171,7 +171,7 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 ### <a name="configure-an-environment-variable"></a>Konfigurowanie zmiennej środowiskowej
 
-Aby ustawić parametry połączenia dla aplikacji platformy Azure, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. W poniższym poleceniu zastąp  *\<Nazwa aplikacji >*, także  *\<parametry połączenia >* parametru przy użyciu parametrów połączenia, została utworzona wcześniej.
+Aby ustawić parametry połączenia dla aplikacji platformy Azure, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. W poniższym poleceniu zastąp  *\<Nazwa aplikacji >* , także  *\<parametry połączenia >* parametru przy użyciu parametrów połączenia, została utworzona wcześniej.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -362,7 +362,7 @@ Nadal wyświetlane są wszystkie istniejące elementy do wykonania. Po ponownym 
 
 ## <a name="stream-diagnostic-logs"></a>Przesyłanie strumieniowe dzienników diagnostycznych
 
-Przykładowy projekt jest już zgodny ze wskazówkami dostępnymi w [opisie rejestrowania platformy ASP.NET Core na platformie Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure) z dwiema zmianami konfiguracji:
+Przykładowy projekt jest już zgodny ze wskazówkami dostępnymi w [opisie rejestrowania platformy ASP.NET Core na platformie Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) z dwiema zmianami konfiguracji:
 
 - Zawiera odwołanie do `Microsoft.Extensions.Logging.AzureAppServices` w pliku *DotNetCoreSqlDb.csproj*.
 - Wywołuje `loggerFactory.AddAzureWebAppDiagnostics()` w pliku *Startup.cs*.

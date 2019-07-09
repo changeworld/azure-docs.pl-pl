@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: fa7147dd1b5f22ead17a60042c1c35c4b770cd18
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 720352403fd5f5937669f9838f3974cb0d3f8797
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154918"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657807"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z Bota wC#
 
@@ -173,7 +173,7 @@ Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS. Moż
     ![Przejrzyj usługi LUIS właściwości niestandardowe przechowywane w usłudze Application Insights](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-csharp.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Zapytanie usługi Application Insights dla przeznaczenie, ocena i wypowiedź
-Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za pomocą [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) języka, jak eksportu do [usługi Power BI](https://powerbi.microsoft.com). 
+Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za pomocą [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) języka, jak eksportu do [usługi Power BI](https://powerbi.microsoft.com). 
 
 1. Wybierz **dziennika (analiza)** . Nowe okno zostanie otwarte okno zapytania u góry i oknem danych tabeli poniżej. Jeśli używano wcześniej bazy danych to rozwiązanie jest znana. Zapytanie reprezentuje poprzedniego filtrowane dane. **Tabeli CustomDimensions** kolumna ma bot i LUIS informacji.
 1. Aby wyciągnąć najważniejsze przeznaczenie, ocenę i wypowiedź, Dodaj następujące powyżej ostatni wiersz ( `|top...` wiersz) w oknie zapytania:

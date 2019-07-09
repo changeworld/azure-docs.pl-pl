@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 20e47b6d3243bb0cccbc42ab0ab904b72922e98b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 428dba9e8ff5ec072d5172fee357fd5319d04ad8
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604780"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657724"
 ---
 # <a name="what-is-speech-translation"></a>Co to jest tłumaczenia mowy?
 
@@ -31,9 +31,9 @@ Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Tłumaczenie mowy na tekst za pomocą wyniki rozpoznawania. | Yes | Nie |
+| Tłumaczenie mowy na tekst za pomocą wyniki rozpoznawania. | Tak | Nie |
 | Tłumaczenie mowy do rozpoznawania mowy. | Tak | Nie |
-| Wyników pośrednich rozpoznawanie i tłumaczenia. | Tak | Nie |
+| Wyników pośrednich rozpoznawanie i tłumaczenia. | Yes | Nie |
 
 ## <a name="get-started-with-speech-translation"></a>Rozpoczynanie pracy z usługą tłumaczenia mowy
 
@@ -55,10 +55,7 @@ Przykładowy kod dla zestawu SDK rozpoznawania mowy jest dostępny w witrynie Gi
 
 ## <a name="migration-guides"></a>Przewodniki dotyczące migracji
 
-> [!WARNING]
-> Mowy usługi Translator zostanie zamknięty 15 października 2019 r.
-
-Jeśli Twoje aplikacje, narzędzia lub produkty z mowy usługi Translator, utworzyliśmy przewodniki ułatwiające migrację do usług przetwarzania mowy.
+Jeśli używasz swojej aplikacji, narzędzia lub produktów [interfejsu API tłumaczenia mowy](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), utworzyliśmy przewodniki ułatwiające migrację do usług przetwarzania mowy.
 
 * [Migracja z API mowy usługi Translator do usług przetwarzania mowy](how-to-migrate-from-translator-speech-api.md)
 

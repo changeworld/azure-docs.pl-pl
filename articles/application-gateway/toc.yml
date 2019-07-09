@@ -220,6 +220,8 @@
           href: application-gateway-troubleshooting-502.md
         - name: Zapora aplikacji internetowej
           href: web-application-firewall-troubleshoot.md
+        - name: Kondycja zasobów
+          href: resource-health-overview.md
     - name: Migrowanie z wersji 1 do wersji 2
       href: migrate-v1-v2.md
 - name: Dokumentacja

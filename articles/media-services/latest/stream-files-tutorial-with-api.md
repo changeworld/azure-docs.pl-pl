@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 46a1add812d5721e36d8af030195c42542dc360c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5b359b81de694c47151c95254b80f847db828aed
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273244"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653933"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos"></a>Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe klipów wideo
 
@@ -86,7 +86,7 @@ W usłudze Media Services 3 do przekazywania plików służą interfejsy API us�
 Poniższa funkcja wykonuje następujące akcje:
 
 * Tworzenie **zasobu** 
-* Pobranie zapisywalnego [adresu URL sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do [kontenera zasobu w magazynie](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)
+* Pobranie zapisywalnego [adresu URL sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do [kontenera zasobu w magazynie](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)
 * Przekazanie pliku do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu współdzielonego
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -172,7 +172,7 @@ Zazwyczaj należy wyczyścić wszystko z wyjątkiem obiektów, których zamierza
 
 Ten przykład umożliwia wyświetlenie adresów URL, których można użyć do odtworzenia wideo za pomocą różnych protokołów:
 
-![Dane wyjściowe](./media/stream-files-tutorial-with-api/output.png)
+![Output](./media/stream-files-tutorial-with-api/output.png)
 
 ## <a name="test-the-streaming-url"></a>Testowanie adresu URL przesyłania strumieniowego
 

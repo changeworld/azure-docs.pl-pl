@@ -1,21 +1,21 @@
 ---
 title: 'Szybki start: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu witryny Azure portal — usługa Azure Search'
 description: Użyj Kreatora importu danych w witrynie Azure portal do tworzenia, ładowania i zapytania pierwszego indeksu w usłudze Azure Search.
-author: HeidiSteen
+author: lobrien
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 05/02/2019
-ms.author: heidist
+ms.date: 07/01/2019
+ms.author: laobri
 ms.custom: seodec2018
-ms.openlocfilehash: 4a1944c5c5f169274cf45bd3ebfb6df47942dd5a
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 98ca455fd92b0c9ed276082413734c6bc063f310
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485645"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671916"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure portal
 > [!div class="op_single_selector"]
@@ -23,7 +23,6 @@ ms.locfileid: "67485645"
 > * [Program PowerShell](search-howto-dotnet-sdk.md)
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
->*
 
 Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowane w witrynie Azure Portal. Kreatory i edytory nie oferują pełnej równoważności z interfejsami API .NET i REST, ale możesz szybko zacząć pracę bez korzystania z kodu, w ciągu kilku minut pisząc ciekawe zapytania odnoszące się do danych przykładowych.
 
@@ -48,7 +47,7 @@ Wielu klientów zaczyna od bezpłatnej usługi. Ta wersja jest ograniczona do tr
 
 W sekcjach na pulpicie nawigacyjnym usługi wyświetlana jest liczba posiadanych już indeksów, indeksatorów i źródeł danych. 
 
-![Listy indeksów, indeksatorów i źródeł danych](media/search-get-started-portal/tiles-indexers-datasources2.png)
+![Listy indeksów, indeksatorów i źródeł danych](media/search-get-started-portal/tiles-indexers-datasources.png)
 
 ## <a name="create-index"></a> Tworzenie indeksu i ładowanie danych
 
@@ -60,11 +59,11 @@ W tym samouczku zostanie użyty wbudowany przykładowy zestaw danych, który mo�
 
 1. Na pulpicie nawigacyjnym usługi Azure Search kliknij pozycję **Importuj dane** na pasku poleceń, aby utworzyć i wypełnić indeks wyszukiwania.
 
-   ![Polecenie importu danych](media/search-get-started-portal/import-data-cmd2.png)
+   ![Polecenie importu danych](media/search-get-started-portal/import-data-cmd.png)
 
-2. W kreatorze kliknij kolejno pozycje **Połącz z danymi** > **Przykłady** > **realestate-us-sample**. To źródło danych jest wbudowane. Podczas tworzenia własnego źródła danych należy określić nazwę, typ i informacje o połączeniu. Po utworzeniu staje się ono „istniejącym źródłem danych”, które może zostać ponownie użyte w innych operacjach importu.
+2. W kreatorze kliknij pozycję **Połącz z danymi** > **przykłady** > **przykład hotele**. To źródło danych jest wbudowane. Podczas tworzenia własnego źródła danych należy określić nazwę, typ i informacje o połączeniu. Po utworzeniu staje się ono „istniejącym źródłem danych”, które może zostać ponownie użyte w innych operacjach importu.
 
-   ![Wybieranie przykładowego zestawu danych](media/search-get-started-portal/import-datasource-sample2.png)
+   ![Wybieranie przykładowego zestawu danych](media/search-get-started-portal/import-datasource-sample.png)
 
 3. Przejdź do następnej strony.
 
@@ -87,7 +86,7 @@ Zazwyczaj tworzenie indeksu jest czynnością bazującą na kodzie, którą wyko
 
 Pola mają typy danych i atrybuty. Pola wyboru w górnej części są *atrybutami indeksu*, które kontrolują sposób używania pola.
 
-* **Pobieranie** oznacza, że pole jest wyświetlane na liście wyników wyszukiwania. Możesz oznaczyć poszczególne pola tak, aby nie były uwzględniane w wynikach wyszukiwania. W tym celu wystarczy usunąć zaznaczenie danego pola wyboru, na przykład wtedy, gdy pola są używane tylko w wyrażeniach filtrowania.
+* **Pobieranie** oznacza, że pole jest wyświetlane na liście wyników wyszukiwania. Możesz oznaczyć poszczególne pola jako uwzględniane dla wyników wyszukiwania, czyszcząc to pole wyboru, na przykład w przypadku pól używanych tylko w wyrażeniach filtru.
 * **Klucz** to unikatowy identyfikator dokumentu. Zawsze jest ciągiem znaków i jest wymagany.
 * Atrybuty **Możliwość filtrowania**, **Z możliwością sortowania** i **Możliwość tworzenia aspektów** określają, czy pola mogą być używane w strukturze nawigacji filtrowania, sortowania lub tworzenia aspektów.
 * **Wyszukiwanie** oznacza, że pole jest uwzględniane podczas wyszukiwania pełnotekstowego. Ciągi można przeszukiwać. Pól liczbowych i logicznych często nie można wyszukiwać.
@@ -98,9 +97,9 @@ Domyślnie kreator skanuje źródło danych w poszukiwaniu unikatowych identyfik
 
 1. Zaakceptuj wartości domyślne. 
 
-   Jeśli uruchomisz kreatora po raz drugi przy użyciu istniejącego źródła danych realestate, indeks nie zostanie skonfigurowany z atrybutami domyślnymi. Konieczne będzie ręczne wybranie atrybutów podczas przyszłych importów.
+   Jeśli uruchomisz kreatora po raz drugi przy użyciu istniejącego źródła danych hotele, indeks nie będzie można skonfigurować za pomocą atrybutów domyślnych. Konieczne będzie ręczne wybranie atrybutów podczas przyszłych importów. 
 
-   ![Wygenerowany indeks realestate](media/search-get-started-portal/realestateindex2.png)
+   ![Indeksu hotels wygenerowany](media/search-get-started-portal/hotelsindex.png)
 
 2. Przejdź do następnej strony.
 
@@ -114,7 +113,7 @@ Ten obiekt definiuje proces wykonywalny. Możesz go uruchamiać w ramach harmono
 
 Kliknij przycisk **Prześlij**, aby utworzyć i jednocześnie uruchomić indeksator.
 
-  ![Indeksator realestate](media/search-get-started-portal/realestate-indexer2.png)
+  ![hotele indeksatora](media/search-get-started-portal/hotels-indexer.png)
 
 ## <a name="monitor-progress"></a>Monitorowanie postępu
 
@@ -122,7 +121,7 @@ Kreator powinien przenieść Cię do listy Indeksatory, gdzie można monitorowa�
 
 Aktualizacja strony w portalu może wymagać kilku minut, ale na liście powinien być widoczny nowo utworzony indeksator w stanie wskazującym na trwające indeksowanie lub jego pomyślne zakończenie wraz z liczbą zindeksowanych dokumentów.
 
-   ![Komunikat o postępie indeksatora](media/search-get-started-portal/indexers-inprogress2.png)
+   ![Komunikat o postępie indeksatora](media/search-get-started-portal/indexers-inprogress.png)
 
 ## <a name="view-the-index"></a>Wyświetlanie indeksu
 
@@ -130,7 +129,7 @@ Strona główna usługi zawiera linki do zasobów utworzonych w usłudze Azure S
 
    ![Lista Indeksy na pulpicie nawigacyjnym usługi](media/search-get-started-portal/indexes-list.png)
 
-Na tej liście możesz kliknąć właśnie utworzony indeks *realestate-us-sample*, aby wyświetlić schemat indeksu i opcjonalnie dodać nowe pola. 
+Z tej listy, możesz kliknąć *przykład hotele* indeksu, który został właśnie utworzony, wyświetlić schemat indeksu. i opcjonalnie dodać nowe pola. 
 
 Karta **Pola** zawiera schemat indeksu. Przewiń listę w dół, aby wprowadzić nowe pole. W większości przypadków nie można zmienić istniejących pól. Istniejące pola mają fizyczną reprezentację w usłudze Azure Search i w związku z tym nie można ich modyfikować nawet za pomocą kodu. Aby całkowicie zmienić istniejące pole, utwórz nowy indeks, usuwając poprzednią wersję.
 
@@ -152,11 +151,11 @@ Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego za
 
 1. Kliknij pozycję **Eksplorator wyszukiwania** na pasku poleceń.
 
-   ![Polecenie Eksploratora wyszukiwania](media/search-get-started-portal/search-explorer-cmd2.png)
+   ![Polecenie Eksploratora wyszukiwania](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Na pasku poleceń kliknij pozycję **Zmień indeks**, aby przełączyć się na zestaw danych *realestate-us-sample*. Na pasku poleceń kliknij pozycję **Ustaw wersję interfejsu API**, aby wyświetlić dostępne interfejsy API REST. W przypadku poniższych zapytań Użyj ogólnie dostępnej wersji (2019-05-06).
+2. Z **indeksu** listy rozwijanej wybierz *przykład hotele*. Kliknij przycisk **wersji interfejsu API** listy rozwijanej, aby zobaczyć, który dostępnych interfejsów API REST. W przypadku poniższych zapytań Użyj ogólnie dostępnej wersji (2019-05-06).
 
-   ![Polecenia indeksu i interfejsu API](media/search-get-started-portal/search-explorer-changeindex-se2.png)
+   ![Polecenia indeksu i interfejsu API](media/search-get-started-portal/search-explorer-changeindex.png)
 
 3. Na pasku wyszukiwania wklej poniższe ciągi zapytań, a następnie kliknij pozycję **Wyszukaj**.
 
@@ -168,29 +167,29 @@ Można wprowadzać terminy i frazy (podobnie jak w wyszukiwaniu Bing lub Google)
 
 ### <a name="simple-query-with-top-n-results"></a>Proste zapytanie z pierwszymi N wynikami
 
-#### <a name="example-string-query-searchseattle"></a>Przykład (zapytanie w postaci ciągu znaków): `search=seattle`
+#### <a name="example-string-query-searchspa"></a>Przykład (zapytanie w postaci ciągu znaków): `search=spa`
 
-* Parametr **search** służy do wprowadzania pełnotekstowego wyszukiwania słów kluczowych — w tym przypadku zwrócone zostaną oferty w King County w stanie Waszyngton zawierające ciąg *Seattle* w dowolnym polu możliwym do przeszukania w dokumencie.
+* **Wyszukiwania** parametr jest używany do wprowadzania wyszukiwania słów kluczowych w celu wyszukiwania pełnotekstowego, w tym przypadku zwracając hotelu danych dla tych, które zawierają *spa* w dowolnym polu możliwym do przeszukania w dokumencie.
 
 * **Eksplorator wyszukiwania** zwraca wyniki w formacie JSON, które są szczegółowe i trudne do odczytania, jeśli dokumenty mają gęstą strukturę. Jest to zamierzone. Widoczność całego dokumentu jest ważna dla celów programowania, zwłaszcza podczas testów. Aby zwiększyć wygodę użytkowania, należy napisać kod [obsługujący wyniki wyszukiwania](search-pagination-page-layout.md) w celu wyróżnienia istotnych elementów.
 
-* Dokumenty składają się ze wszystkich pól oznaczonych jako możliwe do pobierania w indeksie. Aby wyświetlić atrybuty indeksu w portalu, kliknij pozycję *realestate-us-sample* na liście **Indeksy**.
+* Dokumenty składają się ze wszystkich pól oznaczonych jako możliwe do pobierania w indeksie. Aby wyświetlić atrybuty indeksu w portalu, kliknij *przykład hotele* w **indeksy** listy.
 
-#### <a name="example-parameterized-query-searchseattlecounttruetop100"></a>Przykład (zapytanie sparametryzowane): `search=seattle&$count=true&$top=100`
+#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Przykład (zapytanie sparametryzowane): `search=spa&$count=true&$top=10`
 
 * Symbol **&** służy do dołączania parametrów wyszukiwania, które mogą być podane w dowolnej kolejności.
 
-* Parametr **$count = true** powoduje zwrócenie łącznej liczby wszystkich zwróconych dokumentów. Ta wartość jest wyświetlana na początku listy wyników wyszukiwania. Możesz zweryfikować zapytania filtru, monitorując zmiany raportowane przez parametr **$count=true**. Zmniejszająca się liczba wskazuje, że filtr działa.
+* **$Count = true** parametr zwraca całkowitą liczbę wszystkich zwróconych dokumentów. Ta wartość jest wyświetlana na początku listy wyników wyszukiwania. Możesz zweryfikować zapytania filtru, monitorując zmiany raportowane przez parametr **$count=true**. Zmniejszająca się liczba wskazuje, że filtr działa.
 
-* Parametr **$top=100** powoduje zwrócenie 100 dokumentów o najwyższej randze spośród wszystkich dokumentów. Domyślnie usługa Azure Search zwraca 50 pierwszych najlepszych dopasowań. Tę liczbę możesz zwiększyć lub zmniejszyć za pomocą parametru **$top**.
+* **$Top = 10** zwraca najwyższej randze spośród wszystkich dokumentów 10. Domyślnie usługa Azure Search zwraca 50 pierwszych najlepszych dopasowań. Tę liczbę możesz zwiększyć lub zmniejszyć za pomocą parametru **$top**.
 
 ### <a name="filter-query"></a> Filtrowanie zapytania
 
 Żądania wyszukiwania zawierają filtry, jeśli zostanie dodany parametr **$filter**. 
 
-#### <a name="example-filtered-searchseattlefilterbeds-gt-3"></a>Przykład (filtrowane): `search=seattle&$filter=beds gt 3`
+#### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Przykład (filtrowane): `search=beach&$filter=Rating gt 4`
 
-* Parametr **$filter** zwraca wyniki spełniające podane kryteria. W tym przypadku są to oferty z liczbą sypialni większą niż 3.
+* Parametr **$filter** zwraca wyniki spełniające podane kryteria. W tym przypadku klasyfikacje większy niż 4.
 
 * Składnia filtru to konstrukcja OData. Aby uzyskać więcej informacji, zobacz [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (Składnia filtrowania OData).
 
@@ -198,45 +197,47 @@ Można wprowadzać terminy i frazy (podobnie jak w wyszukiwaniu Bing lub Google)
 
 Filtry aspektów są uwzględniane w żądaniach wyszukiwania. Korzystając z parametru facet, można zwrócić zagregowaną liczbę dokumentów, które są zgodne z podaną wartością aspektu.
 
-#### <a name="example-faceted-with-scope-reduction-searchfacetcitytop2"></a>Przykład (aspektowe ze zmniejszeniem zakresu): `search=*&facet=city&$top=2`
+#### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Przykład (aspektowe ze zmniejszeniem zakresu): `search=*&facet=Category&$top=2`
 
-* Parametr **search=** * to puste wyszukiwanie. Puste wyszukiwania umożliwiają znalezienie wszystkiego. Jednym z powodów przesłania pustego zapytania może być potrzeba przeprowadzenia filtrowania lub utworzenia aspektów pełnego zestawu dokumentów. Na przykład może być potrzebne utworzenie aspektów struktury nawigacji składającej się ze wszystkich miast w indeksie.
-
-* Parametr **facet** zwraca strukturę nawigacji, którą można przekazać do kontrolki interfejsu użytkownika. Zwraca ona kategorie i liczbę elementów. W takim przypadku kategorie są oparte na określonej liczbie miast. Nie istnieje żadna agregacja w usłudze Azure Search, ale możesz przybliżyć się do agregacji za pomocą parametru `facet`, który podaje liczbę dokumentów w poszczególnych kategoriach.
+* Parametr **search=** * to puste wyszukiwanie. Puste wyszukiwania umożliwiają znalezienie wszystkiego. Jednym z powodów przesłania pustego zapytania może być potrzeba przeprowadzenia filtrowania lub utworzenia aspektów pełnego zestawu dokumentów. Na przykład chcesz aspektów struktury nawigacji składającej się ze wszystkich hotele znajdujące się w indeksie.
+* Parametr **facet** zwraca strukturę nawigacji, którą można przekazać do kontrolki interfejsu użytkownika. Zwraca ona kategorie i liczbę elementów. W tym przypadku kategorie są oparte na pole wygodnie o nazwie *kategorii*. Nie istnieje żadna agregacja w usłudze Azure Search, ale możesz przybliżyć się do agregacji za pomocą parametru `facet`, który podaje liczbę dokumentów w poszczególnych kategoriach.
 
 * Parametr **$top=2** powoduje zwrócenie dwóch dokumentów, co pokazuje, że za pomocą parametru `top` możesz zmniejszyć lub zwiększyć liczbę wyników.
 
-#### <a name="example-facet-on-numeric-values-searchseattlefacetbeds"></a>Przykład (aspektowe z wartościami liczbowymi): `search=seattle&facet=beds`**
+#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Przykład (reguł na wartości liczbowe): `search=spa&facet=Rating`
 
-* To zapytanie to aspekt liczby sypialni w wyszukiwaniu tekstowym dla kategorii *Seattle*. Termin *beds* można określić jako aspekt, ponieważ w indeksie jest oznaczony jako pole z możliwością pobierania, filtrowania i tworzenia aspektów, a wartości, które zawiera (liczbowe od 1 do 5), są odpowiednie na potrzeby kategoryzowania ofert w grupach (oferty z 3 i 4 sypialniami).
+* To zapytanie to aspekt dla klasyfikacji w wyszukiwaniu tekstowym dla *spa*. Termin *ocena* można określić jako aspekt, ponieważ jest oznaczony jako pole z możliwością pobierania, filtrowania i tworzenia aspektów, indeksu i wartości które zawiera (liczbowe od 1 do 5), są odpowiednie na potrzeby kategoryzowania ofert w grupach.
 
 * Aspekty mogą być tworzone tylko na podstawie pól z możliwością filtrowania. W wynikach mogą być zwracane tylko pola z możliwością pobierania.
+
+* *Ocena* pole jest zmiennoprzecinkowej podwójnej precyzji i grupowanie będzie dokładne wartości. Aby uzyskać więcej informacji na temat grupowania według przedziału (na przykład "3 klasyfikacji w formie gwiazdek," "4 gwiazdek," itp.), zobacz [jak wdrożyć nawigację aspektową w usłudze Azure Search](https://docs.microsoft.com/en-us/azure/search/search-faceted-navigation#filter-based-on-a-range).
+
 
 ### <a name="highlight-query"></a> Wyróżnianie wyników wyszukiwania
 
 Wyróżnianie trafień oznacza dodawanie formatowania do tekstu zgodnego ze słowem kluczowym w przypadku znalezienia dopasowań w określonym polu. Jeśli termin wyszukiwania jest głęboko ukryty w opisie, możliwe jest dodanie wyróżnienia trafień w celu jego łatwiejszego zauważenia.
 
-#### <a name="example-highlighter-searchgranite-countertopshighlightdescription"></a>Przykład (wyróżnienie): `search=granite countertops&highlight=description`
+#### <a name="example-highlighter-searchbeachhighlightdescription"></a>Przykład (wyróżnienie): `search=beach&highlight=Description`
 
-* W tym przykładzie sformatowana fraza *granite countertops* jest lepiej widoczna w polu opisu.
+* W tym przykładzie sformatowana word *beach* jest w polu opisu.
 
-#### <a name="example-linguistic-analysis-searchmicehighlightdescription"></a>Przykład (analiza lingwistyczna): `search=mice&highlight=description`
+#### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Przykład (analiza lingwistyczna): `search=beaches&highlight=Description`
 
-* Wyszukiwanie pełnotekstowe umożliwia znalezienie wyrazów z podobną semantyką. W takim przypadku wyniki wyszukiwania zawierają wyróżniony tekst „mouse” (mysz) dla domów z plagą myszy zwracanych w rezultacie wyszukiwania słowa kluczowego „mice” (myszy). Różne rodzaje tego samego wyrazu mogą być wyświetlane w wynikach z powodu przeprowadzenia analizy lingwistycznej.
+* Wyszukiwanie pełnotekstowe rozpoznaje podstawowe różnice w formularzach programu word. W tym przypadku wyniki wyszukiwania zawierają wyróżniony tekst "beach" hoteli o słowo w swoich pola z możliwością wyszukiwania, w odpowiedzi wyszukiwania słowa kluczowego "plaże". Różne rodzaje tego samego wyrazu mogą być wyświetlane w wynikach z powodu przeprowadzenia analizy lingwistycznej. 
 
 * Usługa Azure Search obsługuje 56 analizatorów — zarówno oprogramowania Lucene, jak i firmy Microsoft. W usłudze Azure Search domyślnie używany jest standardowy analizator Lucene.
 
 ### <a name="fuzzy-search"></a> Testowanie wyszukiwania rozmytego
 
-Domyślnie, błędnie napisane terminów zapytania, takie jak *samamish* dla płaska Sammamish w obszarze Seattle, niepowodzeniem równiny samammish w typowym wyszukiwaniu. Poniższy przykład nie zwraca żadnych wyników.
+Domyślnie, błędnie napisane terminów zapytania, takie jak *seatle* dla "Seattle", Niepowodzenie równiny samammish w typowym wyszukiwaniu. Poniższy przykład nie zwraca żadnych wyników.
 
-#### <a name="example-misspelled-term-unhandled-searchsamamish"></a>Przykład (błąd pisowni, nieobsługiwany): `search=samamish`
+#### <a name="example-misspelled-term-unhandled-searchseatle"></a>Przykład (błąd pisowni, nieobsługiwany): `search=seatle`
 
 Aby obsłużyć błędy pisowni, można użyć wyszukiwania rozmytego. Wyszukiwanie rozmyte jest używane w przypadku korzystania z pełnej składni zapytań Lucene, co wymaga wykonania dwóch czynności: ustawienia parametru **queryType=full** w zapytaniu i dodania znaku **~** do wyszukiwanego ciągu.
 
-#### <a name="example-misspelled-term-handled-searchsamamishquerytypefull"></a>Przykład (błąd pisowni, obsługiwany): `search=samamish~&queryType=full`
+#### <a name="example-misspelled-term-handled-searchseatlequerytypefull"></a>Przykład (błąd pisowni, obsługiwany): `search=seatle~&queryType=full`
 
-Teraz zwracane są dokumenty zawierające dopasowany termin „Sammamish”.
+W tym przykładzie teraz zwraca dokumenty, które zawierają dopasowania na "Seattle".
 
 Gdy parametr **queryType** jest nieokreślony, używany jest domyślny prosty analizator zapytań. Prosty analizator zapytań jest szybszy, ale jeśli wymagane jest użycie wyszukiwania rozmytego, wyrażeń regularnych, wyszukiwania w sąsiedztwie lub innych zaawansowanych typów zapytań, konieczne będzie korzystanie z pełnej składni.
 
@@ -248,7 +249,7 @@ Aby uzyskać więcej informacji o scenariuszach zapytań dostępnych przy użyci
 
 Wyszukiwanie geoprzestrzenne jest obsługiwane za pośrednictwem [typu danych edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) względem pola zawierającego współrzędne. Wyszukiwanie geograficzne jest rodzajem filtru określonego w artykule [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (Składnia filtrowania OData).
 
-#### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-122121513-47673988-le-5"></a>Przykład (filtry współrzędnych geograficznych): `search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`
+#### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>Przykład (filtry współrzędnych geograficznych): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
 To zapytanie przykładowe służy do przefiltrowania wszystkich wyników danych pozycyjnych, które znajdują się w odległości mniejszej niż 5 km od danego punktu (określonego jako szerokość i długość geograficzna). Dodając parametr **$count**, możesz sprawdzić, ile wyników zostanie zwróconych, gdy zmienisz odległość lub współrzędne.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 26f7f3ab60347d9ec5f2a144410ad3de436f5b5c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: acafc2c42c2946632496b646d001c58d6b48c2a6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454896"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657711"
 ---
 # <a name="create-a-cognitive-services-account-using-the-azure-command-line-interfacecli"></a>Tworzenie konta usług Cognitive Services za pomocą Interface(CLI) wiersza polecenia platformy Azure
 
@@ -43,7 +43,7 @@ Subskrypcji do usług Cognitive Services są reprezentowane przez zasoby platfor
 
 ### <a name="choose-your-resource-group-location"></a>Wybierz lokalizację grupy zasobów
 
-Aby utworzyć zasób, należy jednej z dostępnych lokalizacji platformy Azure dla Twojej subskrypcji. Możesz pobrać listę dostępnych lokalizacji za pomocą [konta az list-locations](/cli/azure/account#az_account_list) polecenia. Większość usług Cognitive Services są dostępne w kilku lokalizacjach. Wybierz ten, który znajduje się najbliżej użytkownika lub lokalizacji, w których są dostępne dla usługi.
+Aby utworzyć zasób, należy jednej z dostępnych lokalizacji platformy Azure dla Twojej subskrypcji. Możesz pobrać listę dostępnych lokalizacji za pomocą [konta az list-locations](/cli/azure/account#az-account-list-locations) polecenia. Większość usług Cognitive Services są dostępne w kilku lokalizacjach. Wybierz ten, który znajduje się najbliżej użytkownika lub lokalizacji, w których są dostępne dla usługi.
 
 > [!IMPORTANT]
 > * Będzie on potrzebny podczas wywoływania usług Azure Cognitive Services należy pamiętać o Twojej lokalizacji platformy Azure.
@@ -55,7 +55,7 @@ az account list-locations \
     --out table
 ```
 
-Po utworzeniu usługi lokalizacji platformy azure, Utwórz nową grupę zasobów przy użyciu wiersza polecenia platformy Azure [Tworzenie grupy az](/cli/azure/group#az_group_create) polecenia.
+Po utworzeniu usługi lokalizacji platformy azure, Utwórz nową grupę zasobów przy użyciu wiersza polecenia platformy Azure [Tworzenie grupy az](/cli/azure/group#az-group-create) polecenia.
 
 W poniższym przykładzie Zastąp lokalizacji platformy azure `westus2` przy użyciu jednego z lokalizacji platformy Azure, która jest dostępna dla Twojej subskrypcji.
 

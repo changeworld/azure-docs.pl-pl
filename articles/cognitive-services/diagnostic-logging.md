@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e1a6a44d7ff9d5786388fc47245ef5c79cb9be82
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 3be912f053bf206999546678e1e407548af181bf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155732"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657683"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Włączanie rejestrowania diagnostycznego dla usług Azure Cognitive Services
 
@@ -28,14 +28,14 @@ Aby włączyć rejestrowanie diagnostyczne, konieczne będzie miejsce do przecho
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) — elastyczna dziennika analizy i wyszukiwania narzędzie, które umożliwia analizy nieprzetworzonych dzienników generowanych przez zasób platformy Azure.
 
 > [!NOTE]
-> Dodatkowe opcje konfiguracji są dostępne. Aby dowiedzieć się więcej, zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+> Dodatkowe opcje konfiguracji są dostępne. Aby dowiedzieć się więcej, zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 ## <a name="enable-diagnostic-log-collection"></a>Włączanie zbierania dzienników diagnostycznych  
 
 Zacznijmy od włączania diagnostyki rejestrowanie przy użyciu witryny Azure portal.
 
 > [!NOTE]
-> Aby włączyć tę funkcję za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure, należy użyć w instrukcjach podanych w [zbieranie i używanie dane dzienników z zasobów platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
+> Aby włączyć tę funkcję za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure, należy użyć w instrukcjach podanych w [zbieranie i używanie dane dzienników z zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings).
 
 1. Przejdź do witryny Azure portal. Następnie znajdź i wybierz zasób usług Cognitive Services. Na przykład subskrypcji do wyszukiwania w Internecie Bing.   
 2. Następnie z menu nawigacji po lewej stronie Znajdź **monitorowanie** i wybierz **ustawień diagnostycznych**. Ten ekran zawiera wszystkie wcześniej utworzone ustawienia diagnostyczne dla tego zasobu.

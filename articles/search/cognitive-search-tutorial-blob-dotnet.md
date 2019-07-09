@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 7fc33f89797fe0e3cc3a9832c9dc084194cf6603
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 2c77d509a0e66fd02bd949e481c5f0316fdd9afb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485762"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672003"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Samouczek: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku
 
@@ -697,4 +697,4 @@ Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usu
 Dostosuj lub rozszerz potok za pomocą umiejętności niestandardowych. Utworzenie umiejętności niestandardowej i dołączenie jej do zestawu umiejętności pozwala na dodanie samodzielnie napisanej analizy tekstu lub obrazu.
 
 > [!div class="nextstepaction"]
-> [Przykład: tworzenie umiejętności niestandardowej](cognitive-search-create-custom-skill-example.md)
+> [Przykład: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego](cognitive-search-create-custom-skill-example.md)

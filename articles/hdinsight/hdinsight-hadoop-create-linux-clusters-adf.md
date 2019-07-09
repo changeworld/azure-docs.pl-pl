@@ -230,7 +230,7 @@ W tej sekcji zredagujesz dwie połączone usługi w fabryce danych.
 
     |Właściwość |Wartość |
     |---|---|
-    |Name (Nazwa) |Wprowadź polecenie `HDIStorageLinkedService`.|
+    |Name |Wprowadź polecenie `HDIStorageLinkedService`.|
     |Subskrypcja platformy Azure |Wybierz subskrypcję z listy rozwijanej.|
     |Nazwa konta magazynu |Wybierz utworzone konto usługi Azure Storage jako część skryptu programu PowerShell.|
 
@@ -252,7 +252,7 @@ W tej sekcji zredagujesz dwie połączone usługi w fabryce danych.
 
     | Właściwość | Wartość |
     | --- | --- |
-    | Name (Nazwa) | Wprowadź polecenie `HDInsightLinkedService`.|
+    | Name | Wprowadź polecenie `HDInsightLinkedService`.|
     | Typ | Wybierz **HDInsight na żądanie**. |
     | Połączona usługa Azure Storage | Wybierz pozycję `HDIStorageLinkedService`. |
     | Typ klastra | Wybierz **usługi hadoop** |
@@ -260,7 +260,7 @@ W tej sekcji zredagujesz dwie połączone usługi w fabryce danych.
     | Identyfikator jednostki usługi | Podaj identyfikator aplikacji nazwy głównej usługi Azure Active Directory, utworzony jako część wymagań wstępnych. |
     | Klucz jednostki usługi | Podaj klucz uwierzytelniania jednostki usługi Azure Active Directory. |
     | Prefiks nazwy klastra | Podaj wartość, która będzie zaczynała się do wszystkich typów klastra, które są tworzone przez usługę data factory. |
-    |Subskrypcja |Wybierz subskrypcję z listy rozwijanej.|
+    |Subscription |Wybierz subskrypcję z listy rozwijanej.|
     | Wybieranie grupy zasobów | Wybierz utworzoną grupę zasobów jako część skryptu programu PowerShell, które było wcześniej używane.|
     |Wybierz region | Wybierz region z listy rozwijanej.|
     | Nazwa użytkownika SSH typu/klastra systemu operacyjnego | Wprowadź nazwę użytkownika SSH, często `sshuser`. |

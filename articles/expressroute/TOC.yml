@@ -74,6 +74,9 @@
           href: expressroute-howto-circuit-arm.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: howto-circuit-cli.md
+        - name: Szablon usługi Azure Resource Manager
+          displayName: 'ARM,resource manager template'
+          href: expressroute-howto-circuit-resource-manager-template.md
     - name: Tworzenie i modyfikowanie konfiguracji komunikacji równorzędnej
       items:
         - name: Azure Portal
@@ -191,6 +194,7 @@
     - name: REST (klasyczny)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
     - name: Szablon usługi Resource Manager
+      displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: Zasoby
   items:

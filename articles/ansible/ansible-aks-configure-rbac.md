@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: dbef7c2cb8de5a1b4bbb3073f694b8f77c9f441b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: cf2bd694e126acb61ea31e71ff3fd9d15a6db9ef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231287"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656566"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowania ról kontroli dostępu opartej na rolach w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania Ansible
 
@@ -39,7 +39,7 @@ AKS, może być skonfigurowana do używania [usługi Azure Active Directory (AD)
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>Konfigurowanie usługi Azure AD do uwierzytelniania w usłudze AKS
 
-Podczas konfigurowania usługi Azure AD do uwierzytelniania usługi AKS, są skonfigurowane dwie aplikacje usługi Azure AD. Musi być zakończona przez administratora dzierżawy usługi Azure. Aby uzyskać więcej informacji, zobacz [integracji usługi Azure Active Directory za pomocą usługi AKS](/azure/aks/aad-integration#create-server-application). 
+Podczas konfigurowania usługi Azure AD do uwierzytelniania usługi AKS, są skonfigurowane dwie aplikacje usługi Azure AD. Musi być zakończona przez administratora dzierżawy usługi Azure. Aby uzyskać więcej informacji, zobacz [integracji usługi Azure Active Directory za pomocą usługi AKS](/azure/aks/aad-integration#create-the-server-application). 
 
 Od administratora dzierżawy usługi Azure Pobierz następujące wartości:
 
