@@ -10,18 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: eddad0efae0a6de691cc55020c0e01742960cb18
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9408e1b30dc183784f427c61138a0a46e49bc36a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444892"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704377"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do określania długości zdań przy użyciu języka Python
 
 W tym przewodniku Szybki start dowiesz się, jak określać długość zdań (w znakach) przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 
 Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
+
+>[!TIP]
+> Jeśli chcesz od razu zobaczyć cały kod, kod źródłowy dla tego przykładu znajduje się na [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -95,7 +98,7 @@ headers = {
 }
 ```
 
-Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-determine-sentence-length"></a>Tworzenie żądania w celu określenia długości zdania
 
@@ -154,8 +157,10 @@ Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+Przyjrzyj się dokumentacja interfejsu API, aby dowiedzieć się wszystkiego, co można zrobić za pomocą interfejsu API tłumaczenia tekstu.
+
 > [!div class="nextstepaction"]
-> [Poznaj przykłady dla języka Python w usłudze GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
+> [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>Zobacz także
 

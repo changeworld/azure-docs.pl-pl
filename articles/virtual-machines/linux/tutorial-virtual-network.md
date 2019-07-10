@@ -4,7 +4,7 @@ description: Z tego samouczka dowiesz się, jak tworzyć sieci wirtualne platfor
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e90880aeaae17c80d6714f917f2ea849c953711f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ecafd2b1a98ab38d7149ebddecd16a695847eccc
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169314"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703498"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Samouczek: tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure na maszynach wirtualnych z systemem Linux
 
@@ -66,7 +66,7 @@ Przed utworzeniem sieci wirtualnej należy utworzyć grupę zasobów za pomocą 
 az group create --name myRGNetwork --location eastus
 ```
 
-### <a name="create-virtual-network"></a>Utwórz sieć wirtualną
+### <a name="create-virtual-network"></a>Tworzenie sieci wirtualnej
 
 Użyj polecenia [az network vnet create](/cli/azure/network/vnet), aby utworzyć sieć wirtualną. W tym przykładzie sieć nazywa się *mvVNet*, a jej prefiks adresu to *10.0.0.0/16*. Tworzona jest również podsieć o nazwie *myFrontendSubnet* z prefiksem *10.0.1.0/24*. W dalszej części tego samouczka maszyna wirtualna frontonu zostanie połączona z tą podsiecią. 
 

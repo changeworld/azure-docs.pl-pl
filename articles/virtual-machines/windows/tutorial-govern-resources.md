@@ -4,7 +4,7 @@ description: Z tego samouczka dowiesz się, jak za pomocą programu Azure PowerS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: tfitzmac
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 9be421e85d41586c18bee15cd748539e3910021b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74f8ad6935c0d6776dcad6f24e7e92318f7aba4a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66164633"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708110"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Samouczek: Informacje o zarządzaniu maszynami wirtualnymi z systemem Windows przy użyciu programu Azure PowerShell
 
@@ -47,7 +47,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 Grupa zasobów jest obecnie pusta.
 
-## <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
+## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
 Upewnij się, że użytkownicy w organizacji mają odpowiedni poziom dostępu do tych zasobów. Nie udzielaj użytkownikom nieograniczonego dostępu, ale upewnij się, że mogą oni wykonywać swoją pracę. Dzięki [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md) możesz zarządzać, którzy użytkownicy mają uprawnienia do wykonywania określonych akcji w danym zakresie.
 

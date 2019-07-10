@@ -4,7 +4,7 @@ description: Z tego samouczka dowiesz się, jak za pomocą rozszerzenia niestand
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 354625accb39344d07a22f2d3935cf4cf022d491
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 72489c6d0b03166fcb2a5f1ed39f7b8d5408ff24
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108175"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708161"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Samouczek — wdrażanie aplikacji na maszynie wirtualnej z systemem Windows na platformie Azure za pomocą rozszerzenia niestandardowego skryptu
 

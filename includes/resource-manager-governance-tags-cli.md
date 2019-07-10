@@ -9,11 +9,11 @@ ms.date: 02/20/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c1259584e91461865b0c7e7bbbd6aced1781827b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246242"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67708448"
 ---
 Aby dodać dwa tagi do grupy zasobów, użyj polecenia [az group update](/cli/azure/group):
 

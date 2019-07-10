@@ -10,18 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 689aa655967910c0114f50eac522df00c5659d1b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e12d6dfd51e297e19e3f47cd9ee32c1b4e8cfa36
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444912"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705441"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Szybki start: tłumaczenie ciągu za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator oraz języka Python
 
 W tym przewodniku Szybki start dowiesz się, jak przetłumaczyć ciąg tekstowy z języka angielskiego na włoski i niemiecki przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 
 Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
+
+>[!TIP]
+> Jeśli chcesz od razu zobaczyć cały kod, kod źródłowy dla tego przykładu znajduje się na [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -95,7 +98,7 @@ headers = {
 }
 ```
 
-Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
+Jeśli używasz subskrypcji do wielu usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w parametry żądania. [Dowiedz się więcej o uwierzytelnianiu przy użyciu wielu usług subskrypcji](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-translate-text"></a>Tworzenie żądania na potrzeby tłumaczenia tekstu
 
@@ -162,8 +165,10 @@ Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+Przyjrzyj się dokumentacja interfejsu API, aby dowiedzieć się wszystkiego, co można zrobić za pomocą interfejsu API tłumaczenia tekstu.
+
 > [!div class="nextstepaction"]
-> [Poznaj przykłady dla języka Python w usłudze GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
+> [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>Zobacz także
 

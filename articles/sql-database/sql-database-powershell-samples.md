@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 03bec71cca445d580605c1b0f4705e619933000a
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: cee93538706b8a886e2468e8ef9bf0d9b504e2c6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729130"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696174"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Przykłady programu Azure PowerShell dla usługi Azure SQL Database
 
@@ -40,10 +40,9 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 |**Konfigurowanie replikacji geograficznej i trybu failover**||
 | [Konfigurowanie pojedynczej bazy danych i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia skonfigurowanie aktywnej replikacji geograficznej dla jednej bazy danych Azure SQL Database i wprowadzenie jej w tryb failover do repliki pomocniczej. |
 | [Konfigurowanie bazy danych w puli i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia skonfigurowanie aktywnej replikacji geograficznej dla bazy danych Azure SQL Database w elastycznej puli SQL i wprowadzenie jej w tryb failover do repliki pomocniczej. |
-| [Konfigurowanie grupy trybu failover i wprowadzanie jej w tryb failover dla jednej bazy danych](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell umożliwia skonfigurowanie grupy trybu failover dla wystąpienia serwera usługi Azure SQL Database, dodanie bazy danych do grupy trybu failover oraz wprowadzenie jej w tryb failover na serwerze pomocniczym. |
 |**Skalowanie pojedynczej bazy danych i puli elastycznej**||
 | [Skalowanie pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell monitoruje metryki wydajności bazy danych Azure SQL Database, skaluje ją do większego rozmiaru obliczeniowego i tworzy regułę alertu dla jednej z metryk wydajności. |
-| [Skalowanie puli elastycznej](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell monitoruje metryki wydajności elastycznej puli Azure SQL Database, skaluje ją do większego rozmiaru obliczeniowego i tworzy regułę alertu dla jednej z metryk wydajności.  |
+| [Skalowanie puli elastycznej](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell monitoruje metryki wydajności elastycznej puli Azure SQL Database, skaluje ją do większego rozmiaru obliczeniowego i tworzy regułę alertu dla jednej z metryk wydajności. |
 | **Inspekcja i wykrywanie zagrożeń** |
 | [Konfigurowanie inspekcji i wykrywania zagrożeń](scripts/sql-database-auditing-and-threat-detection-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia skonfigurowanie inspekcji i wykrywania zagrożeń dla bazy danych Azure SQL Database. |
 | **Przywracanie, kopiowanie i importowanie bazy danych**||
@@ -67,6 +66,7 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 |**Tworzenie i konfigurowanie wystąpień zarządzanych**||
 | [Tworzenie wystąpienia zarządzanego i zarządzanie nim](scripts/sql-database-create-configure-managed-instance-powershell.md) | Ten skrypt programu PowerShell pokazuje, jak utworzyć wystąpienie zarządzane i zarządzać nim przy użyciu programu Azure PowerShell |
 | [Tworzenie wystąpienia zarządzanego za pomocą szablonu usługi Azure Resource Manager oraz zarządzanie nim](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell pokazuje, jak utworzyć wystąpienie zarządzane i zarządzać nim przy użyciu programu Azure PowerShell i szablonu usługi Azure Resource Manager.|
+| [Przywracanie bazy danych do wystąpienia zarządzanego w innym regionie geograficznym](scripts/sql-managed-instance-restore-geo-backup.md) | Ten skrypt programu PowerShell jest wykonywanie kopii zapasowej baz danych i przywróć ją do innego regionu. Jest to nazywane scenariusza odzyskiwania po awarii przywracania geograficznego. |
 | **Konfigurowanie funkcji Transparent Data Encryption (TDE)**||
 | [Zarządzanie funkcją Transparent Data Encryption w wystąpieniu zarządzanym przy użyciu własnego klucza z usługi Azure Key Vault](scripts/transparent-data-encryption-byok-sql-managed-instance-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell konfiguruje funkcję Transparent Data Encryption (TDE) w scenariuszu własnego klucza (BYOK, Bring Your Own Key) dla wystąpienia zarządzanego usługi Azure SQL przy użyciu klucza z usługi Azure Key Vault|
 |||

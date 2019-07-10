@@ -4,7 +4,7 @@ description: W tym samouczku przedstawiono funkcje usługi Azure Security Center
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4c54383df74d9cfd7941dc52d26856bc8da51457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb9df71859947f868b858cbed0d6f75b91956a94
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785867"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708119"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Samouczek: Monitorowanie maszyn wirtualnych z systemem Windows za pomocą usługi Azure Security Center
 
@@ -51,7 +51,7 @@ Zanim będzie możliwe uzyskanie wglądu w konfiguracje zabezpieczeń maszyn wir
 
 1. Na pulpicie nawigacyjnym usługi Security Center kliknij pozycję **Zasady zabezpieczeń**, a następnie wybierz swoją subskrypcję. 
 2. W polu **Zbieranie danych** w obszarze **Automatyczna aprowizacja** wybierz pozycję **Włączone**.
-3. W polu **Domyślna konfiguracja obszaru roboczego** pozostaw wartość **Używaj obszarów roboczych utworzonych przez usługę Security Center (domyślne)**.
+3. W polu **Domyślna konfiguracja obszaru roboczego** pozostaw wartość **Używaj obszarów roboczych utworzonych przez usługę Security Center (domyślne)** .
 4. W obszarze **Zdarzenia zabezpieczeń** zachowaj domyślną opcję **Typowe**.
 4. Kliknij przycisk **Zapisz** w górnej części strony. 
 

@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4b9f31425c5029cdeb991fbdcdb7ae4a5c749c9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432829"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704744"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Szybki Start Unreal/Wwise Akustyka projektu
 W tym przewodniku Szybki Start będziesz eksperymentować z Akustyka projektu kontrolki projektu przy użyciu podanych przykładowych zawartości dla aparatu Unreal Engine i Wwise.
@@ -50,7 +50,7 @@ Projekt Akustyka Unreal wtyczka wymaga dodatkowych zachowanie ujawnianie z wtycz
 
     ![Zrzut ekranu Eksploratora Windows okna przedstawiający skryptu do projektu Wwise poprawki](media/patch-wwise-script.png)
 
-* Jeśli masz zainstalowany zestaw SDK programu DirectX, należy przekształcić w komentarz wiersz zawierający DXSDK_DIR w `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* Jeśli nie masz programu DirectX SDK zainstalowany, w zależności od wersji Wwise używasz, może być konieczne w komentarz wiersz, który zawiera `DXSDK_DIR` w `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`:
 
     ![Zrzut ekranu przedstawiający edytor kodu, przedstawiający DXSDK oznaczone jako komentarz](media/directx-sdk-comment.png)
 
@@ -72,7 +72,7 @@ Jeśli **zamknięcia** mnożnik jest większa niż 1 (wartość domyślna to 1),
 Aby włączyć przekazywanie za pośrednictwem tablicy, Przenieś **transmisji (baza danych)** suwaka off najniższy poziom. 
 
 ### <a name="modify-wetness-for-a-source"></a>Modyfikowanie wetness źródła
-Aby zmienić, jak szybko wetness zmieniają się w odległości, użyj **Percepcyjna Warp odległość**. Akustyka projektu oblicza mokrą poziomów w całej przestrzeni z symulacji, które różnią się płynnie z odległości i podaj odległość Percepcyjna podpowiedzi. Zwiększenie warp odległość exaggerates ten efekt, zwiększając powiązane odległość mokrą poziomów. Zniekształcania wartości poniżej 1 należy na podstawie odległości reverberation, zmień bardziej subtelny. Ten efekt można również dostosować szczegółowo bardziej szczegółowej, dostosowując **Wetness (baza danych)**.
+Aby zmienić, jak szybko wetness zmieniają się w odległości, użyj **Percepcyjna Warp odległość**. Akustyka projektu oblicza mokrą poziomów w całej przestrzeni z symulacji, które różnią się płynnie z odległości i podaj odległość Percepcyjna podpowiedzi. Zwiększenie warp odległość exaggerates ten efekt, zwiększając powiązane odległość mokrą poziomów. Zniekształcania wartości poniżej 1 należy na podstawie odległości reverberation, zmień bardziej subtelny. Ten efekt można również dostosować szczegółowo bardziej szczegółowej, dostosowując **Wetness (baza danych)** .
 
 Wydłużenie czasu zanikający w całej przestrzeni przez dostosowanie **Skala czasu zanikania**. Należy wziąć pod uwagę w przypadku, gdy wynik symulacji jest czas zanikania 1,5 s. Ustawienie **Skala czasu zanikania** 2 spowoduje w czasie zanikania stosowane do źródła 3 s.
 

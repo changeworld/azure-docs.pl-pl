@@ -4,7 +4,7 @@ description: W tym samouczku dowiesz się, jak monitorować diagnostykę rozruch
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 921505e7f470d337d9e9e491c6db79930d487eb5
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 7aa0fd328e923df5882a2b6354dc61aac7ca4feb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754379"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695581"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Samouczek: Monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure
 
@@ -205,7 +205,7 @@ Zaplanuj nowe wdrożenie aktualizacji dla maszyny wirtualnej, klikając pozycję
 
 Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktualizacji**. **Nowe wdrożenie aktualizacji** zostanie otwarta strona. Wprowadź wartości dla właściwości opisane w poniższej tabeli, a następnie kliknij przycisk **Utwórz**:
 
-| Właściwość | Opis |
+| Właściwość | Description |
 | --- | --- |
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|

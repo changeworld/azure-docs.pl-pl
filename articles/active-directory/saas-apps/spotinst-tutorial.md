@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b3c9a0152144ac0d705c7d3f12c18cbc38398f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 817eecce6c2c1be273b47494e8ecc14180394796
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090145"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Spotinst
 
@@ -114,7 +114,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Spotinst, wykonaj n
 
     ![Spotinst domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://console.spotinst.com`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://console.spotinst.com/auth/saml`
 
     > [!NOTE]
     > Wartość stanu przekazywania nie jest prawdziwe. Wartość stanu przekazywania zostaną zaktualizowane o wartość tan przekaźnika rzeczywistą zostało wyjaśnione w dalszej części tego samouczka.

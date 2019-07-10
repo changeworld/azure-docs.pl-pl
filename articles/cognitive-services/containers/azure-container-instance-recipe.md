@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 45a03a0912681b4fc33ef8df88fa00fd5458f720
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 288894705e1108d6dd511b60cd2bc3bcee4c6d41
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445817"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704340"
 ---
-# <a name="deploy-and-run-container-on-azure-container-instance-aci"></a>Wdrażanie i uruchamianie kontenera w wystąpieniu kontenera platformy Azure (ACI)
+# <a name="deploy-and-run-container-on-azure-container-instance"></a>Wdrażanie i uruchamianie kontenera w wystąpieniu kontenera platformy Azure
 
-Następujące kroki, skalowanie aplikacji usług Azure Cognitive Services w chmurze dzięki platformie Azure [wystąpienia kontenera](https://docs.microsoft.com/azure/container-instances/) (ACI). To pozwala skoncentrować się na tworzeniu aplikacji, zamiast na zarządzaniu infrastrukturą.
+Następujące kroki, skalowanie aplikacji usług Azure Cognitive Services w chmurze dzięki platformie Azure [wystąpienia kontenera](https://docs.microsoft.com/azure/container-instances/). To pozwala skoncentrować się na tworzeniu aplikacji, zamiast na zarządzaniu infrastrukturą.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,7 +35,7 @@ To rozwiązanie działa z dowolnym kontenerze usług Cognitive Services. Zasób 
 
 Wszystkie zmienne w nawiasy kątowe `<>`, trzeba je zastąpić własnymi wartościami. Ta zastępowania zawiera nawiasy kątowe.
 
-[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances (ACI)](./includes/create-aci-resource.md)]
+[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
 ## <a name="use-the-container-instance"></a>Użyj wystąpienia kontenera
 

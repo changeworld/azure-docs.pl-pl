@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 77d95383c801038c256ccb2bf386ddf06048cf78
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: a4da8d23e78fde9b936bcf9258eec137bcdf9231
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311808"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704135"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Szybki start: Utwórz aplikację sieci web, która uruchamia Immersyjnych czytnika (C#)
 
 [Immersyjnych czytnika](https://www.onenote.com/learningtools) to włącznie zaprojektowane narzędzie, które implementuje sprawdzonych technik w celu zrozumienia odczytu.
 
-W tym przewodniku Szybki Start, tworzenie aplikacji sieci web od podstaw i zintegrować Immersyjnych czytnika przy użyciu Immersyjnych SDK czytnika. Pełny przykład pracy tego przewodnika Szybki Start jest dostępny [tutaj](https://github.com/Microsoft/immersive-reader-sdk/samples/quickstart-csharp).
+W tym przewodniku Szybki Start, tworzenie aplikacji sieci web od podstaw i zintegrować Immersyjnych czytnika przy użyciu Immersyjnych SDK czytnika. Pełny przykład pracy tego przewodnika Szybki Start jest dostępny [tutaj](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/quickstart-csharp).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -151,7 +151,7 @@ W przeglądarce powinien zostać wyświetlony:
 
 Po kliknięciu przycisku "Czytelnik Immersyjnych" zobaczysz Immersyjnych czytnik uruchomiona z zawartości na stronie.
 
-![Wszechstronne czytnika](./media/quickstart-immersive-reader.png)
+![Czytnik immersyjny](./media/quickstart-immersive-reader.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

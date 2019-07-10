@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 8a5a66c720c0a591fe9d6c9864286d80f68ba599
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d72b47d375b8e50cde43e263261551d3010ba013
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449349"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704714"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów rozpoznawanie tekstu
 
@@ -35,7 +35,6 @@ Przed rozpoczęciem korzystania z kontenerów rozpoznawanie tekstu, musi spełni
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
 |Azure `Cognitive Services` zasobów |Aby można było używać kontenera, musisz mieć:<br><br>A _usług Cognitive Services_ zasobów platformy Azure i skojarzone opłaty klucz rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach przeglądu i klucze zasobu i wymagane do uruchomienia kontenera. Musisz dodać `vision/v2.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI. <br><br>**{BILLING_KEY}** : klucz zasobu<br><br>**{BILLING_ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
-
 
 ## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
 

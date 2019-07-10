@@ -4,7 +4,7 @@ description: W tym samouczku przedstawiono funkcje usługi Azure Security Center
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 671b7de8852b0aac30e35b76d89eb4489a206f91
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739730"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708546"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: Monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
 
@@ -51,7 +51,7 @@ Zanim będzie możliwe uzyskanie wglądu w konfiguracje zabezpieczeń maszyn wir
 
 1. Na pulpicie nawigacyjnym usługi Security Center kliknij pozycję **Zasady zabezpieczeń**, a następnie wybierz swoją subskrypcję. 
 2. W polu **Zbieranie danych** w obszarze **Automatyczna aprowizacja** wybierz pozycję **Włączone**.
-3. W polu **Domyślna konfiguracja obszaru roboczego** pozostaw wartość **Używaj obszarów roboczych utworzonych przez usługę Security Center (domyślne)**.
+3. W polu **Domyślna konfiguracja obszaru roboczego** pozostaw wartość **Używaj obszarów roboczych utworzonych przez usługę Security Center (domyślne)** .
 4. W obszarze **Zdarzenia zabezpieczeń** zachowaj domyślną opcję **Typowe**.
 4. Kliknij przycisk **Zapisz** w górnej części strony. 
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5e27c6a1ab5fc9dff779c6e5d04689683d5c8e6d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 1ce4e9c47bf6f885417b6c06c6036d3cadcaef7b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274145"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706445"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Samouczek: Użyj flagi funkcji w aplikacji ASP.NET Core
 
@@ -103,7 +103,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
            .UseStartup<Startup>();
 ```
 
-Wartości z flag funkcji powinny ulegać zmianie. Domyślnie Menedżer funkcji odświeża wartości flag funkcji co 30 sekund. Poniższy kod pokazuje, jak zmienić interwał sondowania to 5 sekund w `options.UseFeatureFlags()` wywołania:
+Wartości z flag funkcji powinny ulegać zmianie. Domyślnie Menedżer funkcji odświeża wartości flag funkcji co 30 sekund. Poniższy kod pokazuje, jak zmienić interwał sondowania na 5 minut w `options.UseFeatureFlags()` wywołania:
 
 ```csharp
 config.AddAzureAppConfiguration(options => {

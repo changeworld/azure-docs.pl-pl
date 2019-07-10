@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 02d63897cffa2ceca46b992e7d07b917dd73bc72
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6207808efb9bee327afd2de21ffa59535acf4e55
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621563"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704791"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Integracja Wwise i Unreal Akustyka projektu
 Niniejszy instruktaż zawiera kroki szczegółowe integracji pakietu wtyczki Akustyka projektu do istniejącego projektu gier Unreal i Wwise. 
@@ -26,7 +26,7 @@ Wymagania dotyczące oprogramowania:
 * [Wtyczka Wwise dla Unreal](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Jeśli używasz bezpośredniego integracji zestawu Wwise SDK zamiast korzystać z wtyczek Wwise Unreal, zapoznaj się z projektu Akustyka Unreal wtyczki i dostosować Wwise interfejsu API.
 
-Jeśli chcesz Akustyka projektu za pomocą aparat audio w innych niż Wwise, skontaktuj się z nami na [forów Akustyka projektu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics). Wtyczki projektu Akustyka Unreal służy do wysyłania zapytań dotyczących danych Akustyka, a następnie wywołań interfejsu API usługi aparatu.
+Jeśli chcesz Akustyka projektu za pomocą aparat audio w innych niż Wwise, wybierz odpowiednie żądanie rozszerzenie na [forum dyskusyjne Akustyka projektu](https://github.com/microsoft/ProjectAcoustics/issues). Wtyczki projektu Akustyka Unreal służy do wysyłania zapytań dotyczących danych Akustyka, a następnie wywołań interfejsu API usługi aparatu.
 
 ## <a name="download-project-acoustics"></a>Pobierz Akustyka projektu
 Jeśli nie jest jeszcze pobrać [pakietu wtyczki projektu Akustyka Unreal & Wwise](https://www.microsoft.com/download/details.aspx?id=58090)). 
@@ -125,7 +125,7 @@ Przykładowy projekt Wwise jest dołączony do pobierania próbek. Zaleca się, 
 
     ![Zrzut ekranu przedstawiający zalecane ustawienia Wwise susz mieszany](media/wwise-dry-mix-setup.png)
 
-* Następnie zmodyfikuj następujący struktury danych wyjściowych magistrali Wprowadziły aktor — mixer, z Magistralą Akustyka Projektu ustawiony na Magistrali danych Wyjściowych, a Dry_Footsteps ustaw jako magistrali aux zdefiniowanych przez użytkownika.
+* Następnie zmodyfikuj następujący struktury danych wyjściowych magistrali wprowadziły Aktor — Mixer, z magistralą Akustyka projektu ustawiony na magistrali danych wyjściowych, a Dry_Footsteps Ustaw jako magistrali aux zdefiniowanych przez użytkownika.
 
     ![Zrzut ekranu przedstawiający zalecane ustawienia magistrali Mixer Wwise aktora](media/actor-mixer-bus-settings.png)
 
