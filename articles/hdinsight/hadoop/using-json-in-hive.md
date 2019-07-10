@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 904a6a2af4c92c374d5afe4148f50e853e5d1fb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ec766cea2135f7c00df032ad0df4ada033d6293
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479595"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461986"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Przetwarzanie i analizowanie dokumentów JSON za pomocą technologii Hive w usłudze Azure HDInsight
 
@@ -57,7 +57,7 @@ Dowiedz się, jak przetwarzać i analizować pliki JavaScript Object Notation (J
 
 Plik znajduje się w temacie `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Aby uzyskać więcej informacji na temat usługi Azure Blob storage za pomocą HDInsight, zobacz [zgodnego systemem plików HDFS użycia usługi Azure Blob storage przy użyciu technologii Apache Hadoop w HDInsight](../hdinsight-hadoop-use-blob-storage.md). Możesz skopiować plik do kontenera domyślnego klastra.
 
-W tym samouczku użyjesz konsoli Apache Hive. Aby uzyskać instrukcje na temat sposobu Otwórz konsolę Hive, zobacz [Użyj Apache Ambari programu Hive widoku przy użyciu technologii Apache Hadoop w HDInsight](apache-hadoop-use-hive-ambari-view.md).
+W tym artykule możesz użyć konsoli Apache Hive. Aby uzyskać instrukcje na temat sposobu Otwórz konsolę Hive, zobacz [Użyj Apache Ambari programu Hive widoku przy użyciu technologii Apache Hadoop w HDInsight](apache-hadoop-use-hive-ambari-view.md).
 
 ## <a name="flatten-json-documents"></a>Spłaszczanie dokumentów JSON
 Z metod opisanych w następnej sekcji wymagają, że dokument JSON składać się z pojedynczego wiersza. Tak musisz spłaszczać dokument JSON do ciągu. Jeśli dokument JSON już jest spłaszczany, możesz pominąć ten krok i przejdź bezpośrednio do następnej sekcji, analizowanie danych JSON. Spłaszczanie dokumentów JSON, uruchom następujący skrypt:
@@ -141,7 +141,7 @@ Dane wyjściowe tego skryptu w konsoli programu Hive:
 Json_tuple korzysta z systemu plików UDF [poprzecznego widoku](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) składni w gałęzi, która umożliwia json\_spójnej kolekcji, aby utworzyć wirtualne tabelę, stosując funkcję UDT do każdego wiersza oryginalnej tabeli. Złożone JSON Smb1sessionsetup stają się zbyt niewygodne z powodu użycia powtarzanych **WYŚWIETL bocznych**. Ponadto **JSON_TUPLE** nie może obsługiwać JSON Smb1sessionsetup zagnieżdżonych.
 
 ### <a name="use-a-custom-serde"></a>Użyj niestandardowego elementu SerDe
-Elementu SerDe jest najlepszym wyborem do analizowania zagnieżdżonych dokumentów JSON. Dzięki temu można zdefiniować schemat JSON, a następnie można użyć schematu do analizowania dokumentów. Aby uzyskać instrukcje, zobacz [jak niestandardowe SerDe JSON za pomocą programu Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
+Elementu SerDe jest najlepszym wyborem do analizowania zagnieżdżonych dokumentów JSON. Dzięki temu można zdefiniować schemat JSON, a następnie można użyć schematu do analizowania dokumentów. Aby uzyskać instrukcje, zobacz [jak niestandardowe SerDe JSON za pomocą programu Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
 ## <a name="summary"></a>Podsumowanie
 Podsumowując typ operatora JSON w gałęzi, które można wybrać zależy od danego scenariusza. Jeśli masz tylko jedno pole w celu wyszukania proste dokument JSON, można użyć get_json_object Hive funkcji zdefiniowanej przez użytkownika. Jeśli masz więcej niż jednego klucza do wyszukania, można użyć json_tuple. W przypadku zagnieżdżonych dokumentu należy używać elementu SerDe JSON.
@@ -151,5 +151,5 @@ Podsumowując typ operatora JSON w gałęzi, które można wybrać zależy od da
 Aby uzyskać pokrewne artykuły zobacz:
 
 * [Użyj Apache Hive i HiveQL z usługą Apache Hadoop w HDInsight do analizy przykładowego pliku Apache log4j](../hdinsight-use-hive.md)
-* [Analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Hive w HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
+* [Analizowanie danych dotyczących opóźnień lotów przy użyciu zapytania interakcyjnego w HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analizowanie danych serwisu Twitter przy użyciu technologii Hive w HDInsight](../hdinsight-analyze-twitter-data-linux.md)
