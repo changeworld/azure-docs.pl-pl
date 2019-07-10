@@ -35,6 +35,8 @@
         - name: Konfigurowanie kontenerów
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: Korzystanie z wystąpień kontenerów
+          href: deploy-form-recognizer-on-container-instances.md
 - name: Dokumentacja
   items:
     - name: Interfejs API rozpoznawania formularzy

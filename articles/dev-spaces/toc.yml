@@ -9,14 +9,18 @@
       items:
         - name: Programowanie zespołowe
           href: quickstart-team-development.md
-        - name: Java (VS Code i interfejs wiersza polecenia)
+        - name: Uruchamianie aplikacji
+          href: quickstart-cli.md
+        - name: Uruchamianie aplikacji za pomocą pliku Dockerfile
+          href: quickstart-cli-dockerfile.md
+        - name: Uruchamianie i debugowanie kodu Java za pomocą programu VS Code
           href: quickstart-java.md
-        - name: .NET Core (VS Code oraz interfejs wiersza polecenia)
+        - name: Uruchamianie i debugowanie platformy .NET Core za pomocą programu VS Code
           href: quickstart-netcore.md
-        - name: .NET Core (Visual Studio)
-          href: quickstart-netcore-visualstudio.md
-        - name: Node.js (VS Code oraz interfejs wiersza polecenia)
+        - name: Uruchamianie i debugowanie środowiska Node.js za pomocą programu VS Code
           href: quickstart-nodejs.md
+        - name: Uruchamianie i debugowanie platformy .NET Core za pomocą programu Visual Studio
+          href: quickstart-netcore-visualstudio.md
     - name: Samouczki
       items:
         - name: Java (VS Code i interfejs wiersza polecenia)
@@ -55,6 +59,8 @@
       items:
         - name: Jak działa usługa Dev Spaces
           href: how-dev-spaces-works.md
+        - name: Jak program VS Code współdziała z usługą Dev Spaces
+          href: how-vs-code-works-with-dev-spaces.md
     - name: Instrukcje
       items:
         - name: Tworzenie klastra Kubernetes za pomocą usługi Azure Cloud Shell

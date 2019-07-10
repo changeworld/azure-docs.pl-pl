@@ -49,6 +49,8 @@
       href: deploy-availability-zone-powershell.md
     - name: Integrowanie z modułem równoważenia obciążenia
       href: integrate-lb.md
+    - name: Reguły aplikacji dotyczące nazw FQDN programu SQL
+      href: sql-fqdn-filtering.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

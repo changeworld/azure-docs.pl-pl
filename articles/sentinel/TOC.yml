@@ -52,6 +52,8 @@
           items:
             - name: Łączenie z ogólnymi źródłami CEF
               href: connect-common-event-format.md
+            - name: Łączenie usługi AWS
+              href: connect-aws.md
             - name: Łączenie z rozwiązaniami Barracuda
               href: connect-barracuda.md
             - name: Łączenie z rozwiązaniami Check Point

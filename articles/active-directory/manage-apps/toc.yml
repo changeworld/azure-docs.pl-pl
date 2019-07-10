@@ -49,6 +49,14 @@
       items:
         - name: Co to jest logowanie jednokrotne
           href: what-is-single-sign-on.md
+        - name: Włączanie logowania jednokrotnego dla aplikacji wielodostępnej
+          href: isv-sso-content.md
+        - name: Tworzenie dzierżawy platformy Azure dla aplikacji wielodostępnej
+          href: isv-tenant-multi-tenant-app.md
+        - name: Wybieranie federacji wielodostępnej
+          href: isv-choose-multi-tenant-federation.md
+        - name: Tworzenie dokumentacji dla aplikacji wielodostępnej
+          href: isv-create-sso-documentation.md
         - name: Planowanie wdrożenia logowania jednokrotnego
           href: plan-sso-deployment.md
     - name: Logowanie jednokrotne jednym kliknięciem
@@ -73,6 +81,20 @@
           href: tenant-restrictions.md
         - name: Konfigurowanie szyfrowania tokenu języka SAML (wersja zapoznawcza)
           href: howto-saml-token-encryption.md
+    - name: Logowanie jednokrotne
+      items:
+        - name: Co to jest logowanie jednokrotne
+          href: what-is-single-sign-on.md
+        - name: Planowanie wdrożenia logowania jednokrotnego
+          href: plan-sso-deployment.md
+        - name: Włączanie logowania jednokrotnego w aplikacji wielodostępnej
+          href: isv-sso-content.md
+        - name: Wybieranie odpowiedniego protokołu federacji logowania jednokrotnego
+          href: isv-choose-multi-tenant-federation.md
+        - name: Tworzenie dzierżawy platformy Azure dla aplikacji wielodostępnej
+          href: isv-tenant-multi-tenant-app.md
+        - name: Tworzenie i publikowanie dokumentacji logowania jednokrotnego dla aplikacji
+          href: isv-create-sso-documentation.md
     - name: Portale użytkowników końcowych
       href: end-user-experiences.md
 - name: Przewodniki z instrukcjami

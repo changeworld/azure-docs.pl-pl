@@ -70,10 +70,10 @@
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: Konfigurowanie kontenerów
           href: text-analytics-resource-container-config.md
-        - name: Korzystanie z wystąpień kontenerów (ACI)
+        - name: Korzystanie z wystąpień kontenerów
           items:
             - name: Analiza tonacji
-              href: how-tos/use-sentiment-analysis-on-aci.md
+              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
         - name: Korzystanie z usługi Kubernetes Service (AKS)
           items:
             - name: Wykrywanie języka

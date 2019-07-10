@@ -97,7 +97,7 @@
           href: container-instances-monitor.md
         - name: Pobieranie dzienników i zdarzeń kontenerów
           href: container-instances-get-logs.md
-        - name: Rejestrowanie za pomocą usługi Azure Log Analytics
+        - name: Rejestrowanie z użyciem dzienników usługi Azure Monitor
           href: container-instances-log-analytics.md
     - name: Rozwiązywanie problemów
       items:
@@ -137,3 +137,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: Często zadawane pytania
+      href: container-instances-faq.md

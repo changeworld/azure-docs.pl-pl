@@ -209,6 +209,8 @@
           href: sql-database-managed-instance-index.yml
         - name: Funkcje wystąpienia zarządzanego
           href: sql-database-managed-instance.md
+        - name: Często zadawane pytania dotyczące wystąpień zarządzanych
+          href: sql-database-managed-instance-faq.md
         - name: Dokumentacja interfejsu API zarządzania
           href: sql-database-managed-instance-create-manage.md
         - name: Limity zasobów

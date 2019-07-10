@@ -62,6 +62,19 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
         - name: Informacje o kontenerach systemu Windows
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
+    - name: Azure Red Hat OpenShift
+      href: 'https://docs.microsoft.com/azure/openshift/'
+      items:
+        - name: Co to jest usługa Azure Red Hat Openshift?
+          href: ../openshift/intro-openshift.md
+        - name: Samouczek — tworzenie klastra usługi Azure Red Hat OpenShift i zarządzanie nim
+          items:
+            - name: 1. Tworzenie klastra usługi Azure Red Hat OpenShift
+              href: ../openshift/tutorial-create-cluster.md
+            - name: 2. Skalowanie klastra usługi Azure Red Hat OpenShift
+              href: ../openshift/tutorial-scale-cluster.md
+            - name: 3. Usuwanie klastra usługi Azure Red Hat OpenShift
+              href: ../openshift/tutorial-delete-cluster.md
     - name: Dokumentacja
       items:
         - name: Azure Container Instances (az container)

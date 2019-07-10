@@ -140,6 +140,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
         - name: Przejście do certyfikatu bramy publicznego urzędu certyfikacji dla połączenia punkt-lokacja
           href: vpn-gateway-point-to-site-gateway-public-ca.md
+        - name: Konfigurowanie tunelu zawsze włączonego urządzenia sieci VPN
+          href: vpn-gateway-howto-always-on-device-tunnel.md
     - name: Tworzenie strefowo nadmiarowej bramy sieci wirtualnej w strefach dostępności platformy Azure
       href: create-zone-redundant-vnet-gateway.md
     - name: Konfigurowanie zasad IPsec/IKE dla połączeń
