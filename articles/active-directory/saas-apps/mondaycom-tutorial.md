@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cdc605c059857c826056fece782bbb9a9c86a15
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 93c5e473c62dc6b38f0b2c2906560d6099842d49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275835"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718501"
 ---
 # <a name="tutorial-integrate-mondaycom-with-azure-active-directory"></a>Samouczek: Integracja monday.com za pomocą usługi Azure Active Directory
 
@@ -78,7 +78,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. W **podstawową konfigurację protokołu SAML** okienko, jeśli masz plik metadanych dostawcy usługi i chcesz skonfigurować w **inicjowane przez dostawcę tożsamości** tryb, wykonaj następujące czynności:
+1. W **podstawową konfigurację protokołu SAML** okienko, jeśli masz plik metadanych dostawcy usługi i chcesz skonfigurować w **inicjowane przez dostawcę tożsamości** tryb, wykonaj następujące czynności:
 
     1. Wybierz **przekazywania pliku metadanych**.
 
@@ -89,7 +89,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
        > [!Note]
        > Jeśli **identyfikator** i **adres URL odpowiedzi** wartości nie wypełniony automatycznie, a następnie wprowadź wartości ręcznie. **Identyfikator** i **adres URL odpowiedzi** są takie same, a wartość to w następującym wzorcem: `https://<your-domain>.monday.com/saml/saml_callback`
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<your-domain>.monday.com`
 
@@ -100,7 +100,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     ![Okienko atrybuty użytkownika](common/edit-attribute.png)
 
-6. Ponadto powyżej monday.com aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
+1. Ponadto powyżej monday.com aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
 
     | Name (Nazwa) | Atrybut źródłowy|
     | ---------------| --------------- |
@@ -109,10 +109,6 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
     | LastName | user.surname |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
-
-    ![image](./media/mondaycom-tutorial/attribute01.png)
-
-    ![image](common/new-attribute-details.png)
 
     b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
@@ -124,7 +120,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     f. Kliknij przycisk **OK**.
 
-    g. Kliknij pozycję **Zapisz**.
+    g. Kliknij polecenie **Zapisz**.
 
 1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikat (Base64)** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
 
@@ -136,17 +132,25 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
 ### <a name="configure-mondaycom"></a>Konfigurowanie monday.com
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w monday.com jako Administrator.
+1. Aby zautomatyzować konfigurację w ramach monday.com, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
 
-2. Przejdź do **profilu** w prawym górnym rogu strony i kliknij przycisk **administratora**.
+    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
 
-     ![Konfiguracja Monday.com](./media/mondaycom-tutorial/configuration01.png)
+1. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Instalatora monday.com** którego nastąpi bezpośrednie przekierowanie do aplikacji monday.com. W tym miejscu należy podać poświadczenia administratora do logowania się do monday.com. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki od 3 do 6.
 
-3. Wybierz **zabezpieczeń** i upewnij się, że kliknięcie **Otwórz** obok SAML.
+    ![Konfiguracja instalacji](common/setup-sso.png)
+
+1. Jeśli chcesz ręcznie skonfigurować monday.com, Otwórz nowe okno przeglądarki sieci web i zaloguj się do monday.com jako administrator i wykonaj następujące czynności:
+
+1. Przejdź do **profilu** w prawym górnym rogu strony i kliknij przycisk **administratora**.
+
+    ![Konfiguracja Monday.com](./media/mondaycom-tutorial/configuration01.png)
+
+1. Wybierz **zabezpieczeń** i upewnij się, że kliknięcie **Otwórz** obok SAML.
 
     ![Konfiguracja Monday.com](./media/mondaycom-tutorial/configuration02.png)
 
-4. Podaj szczegóły poniżej od dostawcy tożsamości.
+1. Podaj szczegóły poniżej od dostawcy tożsamości.
 
     ![Konfiguracja Monday.com](./media/mondaycom-tutorial/configuration03.png)
 
@@ -163,7 +167,7 @@ W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie 
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

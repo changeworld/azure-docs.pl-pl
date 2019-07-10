@@ -1,20 +1,21 @@
 ---
-title: Konfigurowanie containers — wykrywanie anomalii
+title: Jak skonfigurować kontener dla interfejsu API wykrywanie anomalii
 titleSuffix: Azure Cognitive Services
-description: Środowisko uruchomieniowe kontenera wykrywanie anomalii jest konfigurowana przy użyciu `docker run` argumenty polecenia. Ten kontener ma wymagane ustawienia, wraz z kilku ustawień opcjonalnych.
+description: Środowisko uruchomieniowe kontenera interfejsu API wykrywanie anomalii jest konfigurowana przy użyciu `docker run` argumenty polecenia. Ten kontener ma wymagane ustawienia, wraz z kilku ustawień opcjonalnych.
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 50f62fa20ea9b52db79160d9d2f3a6fa463079b7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: cb0a12df6696e76050d4c53bd75e07134b3dc27c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593101"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721717"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Skonfiguruj wykrywanie anomalii kontenerów
 
@@ -29,7 +30,7 @@ Ten kontener ma następujące ustawienia konfiguracji:
 |Yes|[ApiKey](#apikey-configuration-setting)|Używane do śledzenia informacji dotyczących rozliczeń.|
 |Nie|[ApplicationInsights](#applicationinsights-setting)|Umożliwia dodanie [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) obsługi telemetrii do kontenera.|
 |Yes|[Billing](#billing-configuration-setting)|Określa identyfikator URI punktu końcowego zasobu usługi na platformie Azure.|
-|Yes|[Eula](#eula-setting)| Wskazuje, że zaakceptowano licencję dla kontenera.|
+|Tak|[Eula](#eula-setting)| Wskazuje, że zaakceptowano licencję dla kontenera.|
 |Nie|[Fluentd](#fluentd-settings)|Zapisać dziennik i, opcjonalnie, metryki danych na serwerze Fluentd.|
 |Nie|[Serwer Proxy http](#http-proxy-credentials-settings)|Skonfiguruj serwer proxy HTTP dla żądania wychodzącego.|
 |Nie|[Logging](#logging-settings)|Udostępnia obsługę rejestrowania platformy ASP.NET Core dla kontenera. |
@@ -44,7 +45,7 @@ Ten kontener ma następujące ustawienia konfiguracji:
 
 To ustawienie można znaleźć w tym miejscu następujące:
 
-* Witryna Azure Portal: **Wykrywanie anomalii** zarządzanie zasobami w obszarze **kluczy**
+* Azure Portal: **Wykrywanie anomalii** zarządzanie zasobami w obszarze **kluczy**
 
 ## <a name="applicationinsights-setting"></a>Ustawienie dotycząca usługi Application Insights
 
@@ -56,7 +57,7 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 To ustawienie można znaleźć w tym miejscu następujące:
 
-* Witryna Azure Portal: **Wykrywanie anomalii** Przegląd, etykietą `Endpoint`
+* Azure Portal: **Wykrywanie anomalii** Przegląd, etykietą `Endpoint`
 
 |Wymagane| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
@@ -87,10 +88,10 @@ Kontenery wykrywanie anomalii, nie używaj danych wejściowych lub danych wyjśc
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto [komputerze-hoście](anomaly-detector-container-howto.md#the-host-computer)w lokalizacji instalacji może być niedostępna z powodu konfliktu między uprawnienia użyte dla konta usługi Docker i hosta instalacji uprawnienia do lokalizacji. 
 
-|Optional (Opcjonalność)| Name (Nazwa) | Typ danych | Opis |
+|Optional| Name (Nazwa) | Typ danych | Opis |
 |-------|------|-----------|-------------|
-|Niedozwolone| `Input` | String | Kontenery wykrywanie anomalii, nie należy używać tego.|
-|Optional (Opcjonalność)| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. W tym dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Niedozwolone| `Input` | Ciąg | Kontenery wykrywanie anomalii, nie należy używać tego.|
+|Optional| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. W tym dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia 
 

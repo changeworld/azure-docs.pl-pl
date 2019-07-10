@@ -1,20 +1,21 @@
 ---
 title: Odwołanie do zestawu SDK immersyjnych czytnika
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Dokumentacja dotycząca Immersyjnych czytnika zestawu SDK
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: c128608b3c4a8e1155c3ac962bcfd07f589fbf23
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 485e8626af4266492e02d4f9fbe4af486e10c082
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311779"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718393"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Odwołanie do zestawu SDK immersyjnych czytnika
 
@@ -36,8 +37,8 @@ launchAsync(token: string, resourceName: string, content: Content, options?: Opt
 
 | Name (Nazwa) | Typ | Opis |
 | ---- | ---- |------------ |
-| `token` | string | Token dostępu, uzyskanych z wywołania `issueToken` punktu końcowego. |
-| `resourceName` | string | Zastrzeżone. Musi być równa `null`. |
+| `token` | ciąg | Token dostępu, uzyskanych z wywołania `issueToken` punktu końcowego. |
+| `resourceName` | ciąg | Zastrzeżone. Musi być równa `null`. |
 | `content` | [Zawartość](#content) | Obiekt zawierający zawartość ma być wyświetlany w Immersyjnych czytnika. |
 | `options` | [Opcje](#options) | Opcje dotyczące konfigurowania pewnymi rodzajami zachowań tych Immersyjnych czytnika. Opcjonalny. |
 

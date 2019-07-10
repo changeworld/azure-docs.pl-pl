@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie kontenera — aparat rozpoznawania formularza
+title: Jak skonfigurować kontener dla rozpoznawania formularza
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak skonfigurować kontener rozpoznawania formularza, aby przeanalizować dane formularza i tabeli.
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e4b6a852ece3060ecf866d66d32f213355d99950
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7752b09dd1bf20d796b19d03e62426b098486c39
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592668"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718454"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurowanie aparatu rozpoznającego w postaci kontenerów
 
@@ -74,10 +74,10 @@ Kontener formularz rozpoznawania wymaga instalacji wejściowe i dane wyjściowe 
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto lokalizacja instalacji programu [komputerze-hoście](form-recognizer-container-howto.md#the-host-computer) nie mogą być niedostępne z powodu konfliktu między uprawnienia kontu usługi Docker i uprawnienia do lokalizacji instalacji hosta.
 
-|Optional (Opcjonalność)| Name (Nazwa) | Typ danych | Opis |
+|Optional| Name (Nazwa) | Typ danych | Opis |
 |-------|------|-----------|-------------|
 |Wymagane| `Input` | String | Miejsce docelowe instalacji danych wejściowych. Wartość domyślna to `/input`.    <br><br>Przykład:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Wymagane| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`.  <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Wymagane| `Output` | Ciąg | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`.  <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia
 
@@ -88,7 +88,7 @@ W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, j
 
 Zastąp {_argument_name_} w tabeli poniżej własnymi wartościami:
 
-| Symbol zastępczy | Wartość |
+| Symbol zastępczy | Value |
 |-------------|-------|
 |{BILLING_KEY} | Klucz, który jest używany do uruchamiania kontenera. Jest ona dostępna w witrynie Azure portal, strona klucze rozpoznawania formularza.  |
 |{BILLING_ENDPOINT_URI} | Rozliczeń wartość identyfikatora URI punktu końcowego jest dostępna w witrynie Azure portal, strona przeglądu rozpoznawania formularza.|
@@ -135,6 +135,6 @@ Logging:Console:LogLevel:Default=Information
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Przegląd [Zainstaluj i uruchom kontenery](form-recognizer-container-howto.md).

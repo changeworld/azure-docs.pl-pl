@@ -1,5 +1,6 @@
 ---
-title: 'Szybki start: Wykrywaj anomalie jako zadania wsadowego za pomocą interfejsu API REST wykrywanie anomalii i języka Python | Dokumentacja firmy Microsoft'
+title: 'Szybki start: Wykrywaj anomalie jako zadania wsadowego za pomocą interfejsu API REST wykrywanie anomalii i języka Python'
+titleSuffix: Azure Cognitive Services
 description: Wykrywanie nieprawidłowości w serii danych, jako partii albo na strumieniu danych za pomocą interfejsu API wykrywanie anomalii.
 services: cognitive-services
 author: aahill
@@ -9,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 0ab39a7bb86671efb6258e3171e3bf7847aa241f
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c69bc4db35a198d73f9b29ee3ed2fa6b6f71be49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341738"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721449"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Szybki start: Wykrywanie anomalii w danych szeregów czasowych przy użyciu interfejsu API REST wykrywanie anomalii i Python
 
@@ -151,7 +152,7 @@ Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Kliknij poniżs
 * [Przykładowa odpowiedź wykrywania usługi batch](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Przykład najnowszy punkt wykrywania odpowiedzi](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)

@@ -14,14 +14,14 @@ ms.openlocfilehash: ed64412ccf9d192506fafe546b1ccee7941aa43a
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711814"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717217"
 ---
 ### <a name="speech-umbrella-chart"></a>Mowy (wykres ogólny)
 
 Wartości na wykresie najwyższego poziomu "ogólny" Zastąp odpowiednie wartości podrzędnych wykresu. W związku z tym wszystkie wartości w środowisku lokalnym dostosowane powinny zostać dodane w tym miejscu.
 
-|Parametr|Opis|Domyślne|
+|Parametr|Opis|Domyślny|
 | -- | -- | -- | -- |
 | `speechToText.enabled` | Czy **mowy na tekst** usługa jest włączona. | `true` |
 | `speechToText.verification.enabled` | Czy `helm test` możliwość **mowy na tekst** usługa jest włączona. | `true` |

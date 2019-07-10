@@ -1,5 +1,5 @@
 ---
-title: Uczenia przez wzmacnianie - Personalizer
+title: Skalowalność i wydajność - Personalizer
 titleSuffix: Azure Cognitive Services
 description: 'Witryny sieci Web o wysokiej wydajności i o dużym natężeniu ruchu i aplikacje mają dwa główne czynniki do rozważenia przy użyciu Personalizer skalowalności i wydajności: opóźnienia i przepływności szkolenia.'
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 242cc1b96c08cd79dc3e2ef5efbbe96a934b8ad3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06c2e65c723e18acc515dd7effc61aae0564f411
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058441"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722422"
 ---
 # <a name="scalability-and-performance"></a>Skalowalność i wydajność
 
@@ -62,6 +62,6 @@ Na przykład jeśli Twoje średni ładunek ma funkcje 500, a każda z nich jest 
 
 Jeśli chcesz się połączyć te limity, skontaktuj się z naszym zespołem pomocy technicznej, uzyskać porady architektury.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie i konfigurowanie Personalizer](how-to-settings.md).

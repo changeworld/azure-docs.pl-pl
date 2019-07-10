@@ -1,5 +1,6 @@
 ---
 title: 'Szybki start: Cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego rozpoznaje iC#'
+titleSuffix: Azure Cognitive Services
 description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć, rozpoznawaniu pociągnięć odręcznych cyfrowych.
 services: cognitive-services
 author: aahill
@@ -9,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: d661d6eca6e4916946944c48cc2e5411aeaf8f14
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a1b4ab43a7d87ac1162a7f0a3556d6bc3bfbfab
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060994"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721243"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Szybki start: Cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego rozpoznaje iC#
 
@@ -161,7 +162,7 @@ public static JObject LoadJson(string fileLocation){
 Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Możesz również znaleźć odpowiedź w formacie JSON na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://go.microsoft.com/fwlink/?linkid=2089907)

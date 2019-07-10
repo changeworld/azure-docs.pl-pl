@@ -1,5 +1,6 @@
 ---
 title: 'Samouczek: Wykrywanie anomalii w strumieniu danych wykonywana przy użyciu usługi Azure Databricks'
+titleSuffix: Azure Cognitive Services
 description: Użycie interfejsu API wykrywanie anomalii i Azure Databricks do monitorowania anomalie w danych.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: 7009771f2b647bb582b3d8091edce99fe901a9f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d3f5d0e10fadd31fd8bde77339b872c1b90451f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080790"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721477"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Samouczek: Wykrywanie anomalii w strumieniu danych wykonywana przy użyciu usługi Azure Databricks
 
@@ -74,7 +75,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu [wit
     |**Nazwa obszaru roboczego**     | Podaj nazwę obszaru roboczego usługi Databricks.        |
     |**Subskrypcja**     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
     |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md). |
-    |**Lokalizacja**     | Wybierz **wschodnie stany USA 2** lub jednej z dostępnych regionów. Zobacz [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/) dla dostępność w poszczególnych regionach.        |
+    |**Location**     | Wybierz **wschodnie stany USA 2** lub jednej z dostępnych regionów. Zobacz [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/) dla dostępność w poszczególnych regionach.        |
     |**Warstwa cenowa**     |  Wybierz warstwę **Standardowa** lub **Premium**. NIE należy wybierać **wersji próbnej**. Aby uzyskać więcej informacji o tych warstwach, zobacz [stronę usługi Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     Wybierz pozycję **Utwórz**.
@@ -162,13 +163,13 @@ W tym samouczku użyjesz [Azure anomalii wykrywacz interfejsy API usług poznawc
 
 4. W oknie dialogowym **Tworzenie** podaj następujące wartości:
 
-    |Wartość |Opis  |
+    |Value |Opis  |
     |---------|---------|
     |Name (Nazwa)     | Nazwa zasobu wykrywanie anomalii.        |
-    |Subskrypcja     | Subskrypcja platformy Azure, zasób zostanie skojarzony.        |
-    |Lokalizacja     | Lokalizacja platformy Azure.        |
+    |Subscription     | Subskrypcja platformy Azure, zasób zostanie skojarzony.        |
+    |Location     | Lokalizacja platformy Azure.        |
     |Warstwa cenowa     | Warstwa cenowa usługi. Aby uzyskać więcej informacji na temat cen wykrywanie anomalii, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
-    |Grupa zasobów     | Określ, czy chcesz utworzyć nową grupę zasobów, czy wybrać istniejącą grupę.        |
+    |Resource group     | Określ, czy chcesz utworzyć nową grupę zasobów, czy wybrać istniejącą grupę.        |
 
 
      Wybierz pozycję **Utwórz**.
@@ -683,7 +684,7 @@ Po ukończeniu tego samouczka możesz zakończyć działanie klastra. Aby to zro
 
 Jeśli nie ręcznie zakończyć działanie klastra zostanie automatycznie zatrzymany, pod warunkiem wybrania **zakończenia po \_ \_ liczba minut braku aktywności** wyboru podczas tworzenia klastra. W takim przypadku nieaktywny klaster zostanie automatycznie zatrzymany po określonym czasie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono użycie usługi Azure Databricks w celu przesłania strumienia danych do usługi Azure Event Hubs oraz odczytania tego strumienia z usługi Event Hubs w czasie rzeczywistym. Przejdź do następnego samouczka, aby dowiedzieć się, jak wywołać interfejs API wykrywanie anomalii i wizualizację anomalii przy użyciu usługi Power BI desktop. 
 

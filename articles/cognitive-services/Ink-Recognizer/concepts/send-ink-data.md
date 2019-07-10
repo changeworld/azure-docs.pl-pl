@@ -1,6 +1,6 @@
 ---
-title: Wyślij dane pisma odręcznego do interfejsu API rozpoznawania pisma odręcznego
-titlesuffix: Azure Cognitive Services
+title: Wysyłanie danych pisma odręcznego do interfejsu API rozpoznawania pisma odręcznego
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się więcej o dla różnych aplikacji podczas wywoływania analizatora API pisma odręcznego
 services: cognitive-services
 author: erhopf
@@ -10,16 +10,16 @@ ms.subservice: ink-recognizer
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a212c7332d085c15baabef8650572162c47903d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 23431a6171f9ce4d2550ee62ac84679ce36126de
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027096"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721753"
 ---
-# <a name="send-ink-data-to-the-ink-recognizer-api"></a>Wyślij dane pisma odręcznego do interfejsu API rozpoznawania pisma odręcznego 
+# <a name="send-ink-data-to-the-ink-recognizer-api"></a>Wysyłanie danych pisma odręcznego do interfejsu API rozpoznawania pisma odręcznego 
 
-Cyfrowy pisma odręcznego odnosi się do technologii, która umożliwia cyfrowe reprezentujących dane wejściowe, takie jak pisma ręcznego i rysunki. Zazwyczaj jest to osiągane przy użyciu dyskretyzatora, która przechwytuje przemieszczania danych wejściowych urządzeń, takich jak pióro. Jak urządzenia nadal włączyć zaawansowane cyfrowego pisma odręcznego, sztucznej inteligencji i uczenia maszynowego umożliwia rozpoznawanie napisane kształty i tekst w dowolnym kontekście. Interfejs API rozpoznawania pisma odręcznego umożliwia wysyłanie pociągnięć odręcznych i uzyskać szczegółowe informacje na ich temat. 
+Cyfrowe pismo odręczne odnosi się do technologii, które umożliwiają tworzenie cyfrowych reprezentacji danych wejściowych, takich jak pismo ręczne i rysunki. Zazwyczaj jest to osiągane przy użyciu dyskretyzatora, która przechwytuje przemieszczania danych wejściowych urządzeń, takich jak pióro. Urządzenia udostępniają zaawansowane środowiska cyfrowego pisma odręcznego, dlatego sztuczna inteligencja i systemy uczenia maszynowego umożliwiają rozpoznawanie napisanych kształtów i tekstu w dowolnym kontekście. Interfejs API rozpoznawania pisma odręcznego umożliwia wysyłanie pociągnięć odręcznych i uzyskać szczegółowe informacje na ich temat. 
 
 ## <a name="the-ink-recognizer-api-vs-ocr-services"></a>A interfejs API rozpoznawania pisma odręcznego Usługi optyczne rozpoznawanie znaków
 
@@ -84,7 +84,7 @@ Z wyprzedzeniem o wyniki rozpoznawania zapewnia informacje o charakterystykę po
 
 [Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) oferuje narzędzia i technologie, które pozwalają cyfrowego pisma odręcznego na szereg różnych urządzeń. Platforma Windows Ink można połączyć z interfejsu API rozpoznawania pisma odręcznego do tworzenia aplikacji, które są wyświetlane i interpretować pociągnięć odręcznych cyfrowych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Co to jest interfejs API rozpoznawania pisma odręcznego?](../overview.md)
 * [Dokumentacja interfejsu API REST rozpoznawania pisma odręcznego](https://go.microsoft.com/fwlink/?linkid=2089907)

@@ -1,21 +1,21 @@
 ---
 title: Co to jest aparat rozpoznawania pisma odręcznego? -Interfejs API rozpoznawania pisma odręcznego
-titlesuffix: Azure Cognitive Services
-description: Aparat rozpoznawania pisma odręcznego integrowania aplikacji, witryn sieci Web, narzędzia i innych rozwiązań, aby zapewnić...
+titleSuffix: Azure Cognitive Services
+description: Aparat rozpoznawania pisma odręcznego Integrowanie aplikacji, witryn sieci Web, narzędzi i inne rozwiązania, aby zezwolić na dane pociągnięcia pisma odręcznego identyfikować i używane jako dane wejściowe.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
+ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 95121523c510e72894086740ad340bdfd33f3c32
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65027229"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721405"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Co to jest interfejs API rozpoznawania pisma odręcznego?
 
@@ -47,7 +47,7 @@ Po zarejestrowaniu się:
 1. Wyślij żądanie do interfejsu API rozpoznawania pisma odręcznego ze swoimi danymi.
 1. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wypróbuj Szybki Start w następujących językach, aby rozpocząć wykonywanie wywołań interfejsu API rozpoznawania pisma odręcznego.
 * [C#](quickstarts/csharp.md)

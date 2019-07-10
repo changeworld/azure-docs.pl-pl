@@ -13,8 +13,8 @@ ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711407"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717158"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Utwórz zasób usługi wystąpienia kontenera platformy Azure
 
@@ -22,7 +22,7 @@ ms.locfileid: "67711407"
 
 2. Na **podstawy** wprowadź następujące informacje:
 
-    |Ustawienie|Wartość|
+    |Ustawienie|Value|
     |--|--|
     |Subscription|Wybierz subskrypcję.|
     |Resource group|Wybierz grupę dostępnych zasobów lub Utwórz nową, takich jak `cognitive-services`.|
@@ -41,7 +41,7 @@ ms.locfileid: "67711407"
 
 4. Na **zaawansowane** wprowadź wymagane **zmienne środowiskowe** kontenera [rozliczeń ustawienia](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments) zasobu usługi ACI:
 
-    | Klucz | Wartość |
+    | Klucz | Value |
     |--|--|
     |`apikey`|Skopiowane ze **klucze** strony zasobu, analizy tekstu. Jest to 32 ciąg znaków alfanumerycznych, bez spacji lub kreski, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
     |`billing`|Skopiowane ze **Przegląd** strony zasobu, analizy tekstu. Przykład: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|

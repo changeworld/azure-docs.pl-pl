@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie ustawień
+title: Konfigurowanie ustawień - Personalizer
 titleSuffix: Azure Cognitive Services
 description: Konfiguracja usługi zawiera, jak usługa traktuje korzyści, jak często usługa analizuje, jak często model jest retrained i jak dużo danych jest przechowywany.
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 7b559dc9a5e5c5bb5dbf7a2dc1e40bf6a0df5ec9
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 6f5028f093a9fd8c17928c2167039599d4db897c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626250"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722336"
 ---
 # <a name="personalizer-settings"></a>Ustawienia personalizer
 
@@ -43,7 +43,7 @@ Skonfiguruj ustawienia usługi dla swojej sprzężenia zwrotnego użytkowania na
 
 ![Skonfiguruj ustawienia nagradzania dla sprzężenia zwrotnego](media/settings/configure-model-reward-settings.png)
 
-|Ustawienie|Przeznaczenie|
+|Ustawienie|Cel|
 |--|--|
 |Czas oczekiwania nagrody|Ustawia długość czasu, podczas których Personalizer będzie zbierać za wynagrodzeniem wartości rangi wywołania, już od momentu rangi wywołanie ma miejsce. Ta wartość jest ustawiana przez zadanie: "Jak długo ma Personalizer oczekiwać wywołania rewards?" Wszelkie nagradzania odebranych po tego okna będzie rejestrowane, ale nie są używane do uczenia.|
 |Domyślne nagrody|Odebranie Brak wywołania nagrody za Personalizer przedziale czas oczekiwania nagradzania powiązanych z rangę wywołać, Personalizer przypisze nagradzania domyślne. Domyślnie i w większości przypadków nagradzania domyślny wynosi zero.|

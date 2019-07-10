@@ -1,5 +1,5 @@
 ---
-title: Zainstaluj i uruchom kontenera — aparat rozpoznawania formularza
+title: Jak zainstalować i uruchomić kontenera dla rozpoznawania formularza
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak analizować dane formularzy i tabel za pomocą kontenera rozpoznawania formularzy.
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f88cfb1d74897abddeaea6aaec9d7f7b1960be6e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a251e97d671c4aad0aebb1d6c3349cdc09444308
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704204"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718471"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalowanie i uruchamianie kontenerów aparatu rozpoznawania formularza
 
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przed rozpoczęciem używania kontenerów aparatu rozpoznającego w formularzu, musi spełniać następujące wymagania wstępne:
 
-|Wymagane|Przeznaczenie|
+|Wymagane|Cel|
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> W Windows platformy Docker musi być skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestrów, repozytoriów, obrazów kontenerów i kontenery i wiedzę na temat basic `docker` poleceń.|
@@ -305,7 +305,7 @@ W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, 
 > [!IMPORTANT]
 >  Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klienta (na przykład obraz lub tekst, który jest analizowana) do firmy Microsoft.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Przegląd [skonfigurować kontenery](form-recognizer-container-configuration.md) ustawień konfiguracji.
 * Użycie [kontenerów usługi Cognitive Services](../cognitive-services-container-support.md).

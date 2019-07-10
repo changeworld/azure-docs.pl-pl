@@ -14,14 +14,14 @@ ms.openlocfilehash: e6c7dcd3015b0b8ab5b3c719ebd2397bc814b81a
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711495"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717213"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Zamiana tekstu na mowę (podrzędnych wykresu: wykresy/textToSpeech)
 
 Aby zastąpić wykresu "ogólny", Dodaj prefiks `textToSpeech.` na dowolnym parametr, aby utworzyć bardziej szczegółowe. Na przykład zostanie zastąpione odpowiadającego mu parametru np. `textToSpeech.numberOfConcurrentRequest` zastępuje `numberOfConcurrentRequest`.
 
-|Parametr|Opis|Domyślne|
+|Parametr|Opis|Domyślny|
 | -- | -- | -- |
 | `enabled` | Czy **zamiany tekstu na mowę** usługa jest włączona. | `false` |
 | `numberOfConcurrentRequest` | Liczba równoczesnych żądań dotyczących **zamiany tekstu na mowę** usługi. Ten wykres automatycznie oblicza zasobów Procesora i pamięci, w oparciu o tę wartość. | `2` |

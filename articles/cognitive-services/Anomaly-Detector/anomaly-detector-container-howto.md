@@ -1,20 +1,21 @@
 ---
-title: Instalowanie i uruchamianie kontenerów — wykrywanie anomalii
+title: Jak zainstalować i uruchamiać kontenery przy użyciu interfejsu API wykrywanie anomalii
 titleSuffix: Azure Cognitive Services
 description: Użyj zaawansowanych algorytmów API wykrywanie anomalii, aby identyfikować anomalie w danych szeregów czasowych.
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 254173df33bdc82b7de87328a715954c1a6993d7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f84f1bab048630d6dd45085b3d082004d10bb6a8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593126"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721706"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalowanie i uruchamianie kontenerów wykrywanie anomalii
 
@@ -33,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przed rozpoczęciem korzystania z kontenerów wykrywanie anomalii, musi spełniać następujące wymagania wstępne:
 
-|Wymagane|Przeznaczenie|
+|Wymagane|Cel|
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
@@ -97,7 +98,7 @@ Gdy kontener będzie na [komputerze-hoście](#the-host-computer), użyj następu
 
 Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenie, aby uruchomić dowolne trzy kontenery. Polecenie używa następujących parametrów:
 
-| Symbol zastępczy | Wartość |
+| Symbol zastępczy | Value |
 |-------------|-------|
 |{BILLING_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie klucze wykrywanie anomalii w witrynie Azure portal.  |
 |{BILLING_ENDPOINT_URI} | Rozliczeń wartość identyfikatora URI punktu końcowego jest dostępna na stronie Przegląd wykrywanie anomalii w witrynie Azure portal.|
@@ -194,7 +195,7 @@ W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, 
 > [!IMPORTANT]
 > Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. danych szeregów czasowych analizowany) do firmy Microsoft.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Przegląd [skonfigurować kontenery](anomaly-detector-container-configuration.md) ustawień konfiguracji
 * [Dowiedz się więcej o usłudze API wykrywanie anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

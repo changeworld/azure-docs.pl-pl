@@ -1,20 +1,21 @@
 ---
-title: 'Szybki start: Utwórz aplikację sieci web, która uruchamia Immersyjnych czytnika (C#)'
+title: 'Szybki start: Utwórz aplikację sieci web, która uruchamia Immersyjnych czytnik zC#'
 titlesuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki Start tworzenie aplikacji sieci web od podstaw i dodawać funkcje Immersyjnych czytnika.
+description: W tym przewodniku Szybki Start tworzenie aplikacji sieci web od podstaw i dodawać funkcje Immersyjnych czytnika interfejsu API.
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: a4da8d23e78fde9b936bcf9258eec137bcdf9231
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3b408de6b60e7e7704ee228b52c399e5b80e3a9e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704135"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718418"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Szybki start: Utwórz aplikację sieci web, która uruchamia Immersyjnych czytnika (C#)
 
@@ -153,7 +154,7 @@ Po kliknięciu przycisku "Czytelnik Immersyjnych" zobaczysz Immersyjnych czytnik
 
 ![Czytnik immersyjny](./media/quickstart-immersive-reader.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Widok [samouczek](./tutorial.md) aby zobaczyć, co jeszcze można zrobić z zestawem SDK Immersyjnych czytnika
 * Zapoznaj się z [Immersyjnych czytnika SDK](https://github.com/Microsoft/immersive-reader-sdk) i [Immersyjnych czytnika odwołanie do zestawu SDK](./reference.md)

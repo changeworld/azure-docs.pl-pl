@@ -242,6 +242,12 @@
           href: monitor-events-portal-how-to.md
         - name: Monitorowanie zdarzeń — interfejs wiersza polecenia
           href: job-state-events-cli-how-to.md
+    - name: Korzystanie z usługi Azure Monitor
+      items:
+        - name: Monitorowanie metryk
+          href: media-services-metrics-howto.md
+        - name: Monitorowanie dzienników diagnostycznych
+          href: media-services-diagnostic-logs-howto.md
     - name: Ochrona zawartości
       items:
         - name: Pobieranie zasad dotyczących klucza zawartości — .NET

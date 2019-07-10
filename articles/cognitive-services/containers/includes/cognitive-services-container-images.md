@@ -3,8 +3,8 @@ ms.openlocfilehash: 2c0a93e9e8a45285ee24562d8272175d62490d31
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711429"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717296"
 ---
 ### <a name="container-repositories-and-images"></a>Kontener repozytoriów i obrazów
 

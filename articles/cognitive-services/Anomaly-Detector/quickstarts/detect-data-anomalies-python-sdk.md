@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wykrywaj anomalie danych przy użyciu biblioteki wykrywanie anomalii i języka Python | Dokumentacja firmy Microsoft'
+title: 'Szybki start: Wykrywaj anomalie danych przy użyciu biblioteki wykrywanie anomalii i Python'
 titleSuffix: Azure Cognitive Services
 description: Wykrywanie nieprawidłowości w serii danych, jako partii albo na strumieniu danych za pomocą interfejsu API wykrywanie anomalii.
 services: cognitive-services
@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1d89ed8f40547142d41af9c587fc8fc000fa4dd9
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 9176ab84dd3f493604bd655e0498f5ad476776d0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503676"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721516"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>Szybki start: Biblioteka kliencka wykrywanie anomalii dla języka Python
 
@@ -132,7 +132,7 @@ Można również uruchomić następujące polecenia powłoki cloud, aby usunąć
 az group delete --name example-anomaly-detector-resource-group
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 >[Przesyłanie strumieniowe wykrywanie anomalii przy użyciu usługi Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)

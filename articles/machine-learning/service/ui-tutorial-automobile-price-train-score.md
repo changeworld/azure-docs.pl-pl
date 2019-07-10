@@ -9,114 +9,211 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: e37e99323c92adad0b9e897af8c276a8ac153371
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 21f5a2d93b708e93f124bd44177bb7852dfbd86a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515628"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720545"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Samouczek: Prognozowanie cen samochodów za pomocą interfejsu wizualnego
 
 W tym samouczku możesz Przyjrzyj się rozszerzone tworzenie rozwiązania do analizy predykcyjnej w interfejsie visual usługi Azure Machine Learning. Do końca tego samouczka będziesz mieć rozwiązania, który potrafi prognozować cenę dowolnej samochód, oparte na specyfikacji technicznej, który zostanie wysłany.
 
-W tym samouczku [jest kontynuowane od tego przewodnika Szybki Start](ui-quickstart-run-experiment.md) i **część jednej z dwóch części serii samouczków**. Jednakże nie masz do ukończenia tego przewodnika Szybki Start, przed rozpoczęciem.
-
-W części pierwszej serii samouczków dowiesz się, jak:
+W części pierwszej części samouczka dowiesz się, jak:
 
 > [!div class="checklist"]
-> * Importowanie i czyszczenie danych (te same kroki tego przewodnika Szybki Start)
+> * Importowanie i wyczyść dane
 > * Szkolenie modelu uczenia maszynowego
 > * Generowanie wyników i oceny modelu
 
-W [część druga](ui-tutorial-automobile-price-deploy.md) serii samouczków dowiesz się, jak wdrożyć model predykcyjny jako usługę sieci web platformy Azure.
-
-> [!NOTE]
-> Pełną wersję tego samouczka jest dostępna jako przykładowego eksperymentu.
-> Na stronie eksperymentów, przejdź do **Dodaj nowe** > **przykładowe 1 - regresji: Prediction(Basic) cen samochodów**
-
+W [część druga](ui-tutorial-automobile-price-deploy.md) tego samouczka dowiesz się, jak wdrożyć model predykcyjny jako usługę sieci web platformy Azure.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
+Pełną wersję tego samouczka jest dostępna jako przykładowego eksperymentu.
+
+Aby ją znaleźć, z **strony eksperymentów**, wybierz opcję **Dodaj nowe**, a następnie wybierz **przykładowe 1 - regresji: Samochodów Prediction(Basic) Cena** eksperymentować.
+
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do [następnej sekcji](#open-the-visual-interface-webpage). W przeciwnym razie utworzyć teraz.
+Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do [następnej sekcji](#open-the-visual-interface-webpage).
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="open-the-visual-interface-webpage"></a>Otwórz interfejs graficzny strony sieci Web
 
-1. Otwieranie obszaru roboczego w [witryny Azure portal](https://portal.azure.com/).  
+1. Otwieranie obszaru roboczego w [witryny Azure portal](https://portal.azure.com/).
 
-1. W obszarze roboczym, wybierz **interfejs graficzny**.  Następnie wybierz pozycję **interfejs graficzny uruchamiania**.  
+1. W obszarze roboczym, wybierz **interfejs graficzny**. Następnie wybierz pozycję **interfejs graficzny uruchamiania**. 
 
     ![Zrzut ekranu witryny Azure portal pokazujący sposób dostępu interfejs graficzny z obszaru roboczego usługi Machine Learning](./media/ui-tutorial-automobile-price-train-score/launch-ui.png)
 
-    Strony sieci Web interfejs otwiera nową stronę w przeglądarce.  
+## <a name="create-your-first-experiment"></a>Tworzenie pierwszego eksperymentu
 
-## <a name="import-and-clean-your-data"></a>Importowanie i czyszczenie danych
-
-Pierwszą rzeczą, jaką należy to czyste dane. Jeśli ukończono Przewodnik Szybki Start można ponownie użyć danych przygotowania eksperymentu w tym miejscu. Jeśli nie wykonano tego przewodnika Szybki Start, Pomiń następnej sekcji i [Rozpoczynanie od nowego eksperymentu](#start-from-a-new-experiment).
-
-### <a name="reuse-the-quickstart-experiment"></a>Ponowne użycie eksperymentu Szybki Start
-
-1. Otwórz eksperyment Szybki Start.
-
-1. Wybierz **Zapisz jako** w dolnej części okna.
-
-1. Nadaj nową nazwę w wyskakującym oknie dialogowym, który pojawia się.
-
-    ![Zrzut ekranu przedstawiający sposób zmiany nazwy eksperymentu do "Samouczek — Prognozowanie Automobile Price"](./media/ui-tutorial-automobile-price-train-score/save-a-copy.png)
-
-1. Eksperyment powinien wyglądać teraz mniej więcej tak:
-
-    ![Zrzut ekranu przedstawiający oczekiwany stan eksperymentu. Zestawu danych dotyczących samochodów i nawiązanie połączenia z modułu Select Columns, który nawiązuje połączenie z Clean Missing Data](./media/ui-tutorial-automobile-price-train-score/save-copy-result.png)
-
-Jeśli pomyślnie ponownie użyty eksperymentu Szybki Start, Pomiń następnej sekcji, aby rozpocząć [szkolenie modelu](#train-the-model).
-
-### <a name="start-from-a-new-experiment"></a>Rozpoczynanie od nowego eksperymentu
-
-Jeśli nie możesz ukończyć tego przewodnika Szybki Start, wykonaj następujące kroki, aby szybko utworzyć nowy eksperyment, który importuje i czyści samochodów zestawu danych.
+Narzędzie interfejs graficzny miejsce interaktywny, wizualny do tworzenia modeli do analizy predykcyjnej. Przeciągnij i upuść zestawy danych i analiza moduły analityczne na interaktywną kanwy i łączyć je ze sobą, aby utworzyć *eksperymentować*.
 
 1. Tworzenie nowego eksperymentu, wybierając **+ nowy** w dolnej części okna interfejsu wizualnego.
 
-1. Wybierz **eksperymentów** >  **Blank Experiment**.
+    ![Dodaj nowy eksperyment](./media/ui-tutorial-automobile-price-train-score/add-new.png)
+
+1. Wybierz **Blank Experiment**.
 
 1. Wybierz domyślną nazwę eksperymentu **"badawcze, mające utworzone na...** "w górnej części obszaru roboczego i zmień jego nazwę na bardziej opisową nazwę. Na przykład **Prognozowanie cen samochodów**. Nazwa nie musi być unikatowa.
 
-1. Z lewej strony obszaru roboczego eksperymentu znajduje się paleta zawierająca zestawy danych i moduły. Aby znaleźć modułów, użyj pola wyszukiwania w górnej części palety modułów. Typ **samochodów** w polu wyszukiwania, aby znaleźć zestaw danych z etykietą **danych dotyczących cen samochodów (Raw)** . Przeciągnij ten zestaw danych do obszaru roboczego eksperymentu.
+## <a name="add-data"></a>Dodawanie danych
 
-    ![Zrzut ekranu jak znaleźć zestaw danych cen samochodów](./media/ui-tutorial-automobile-price-train-score/automobile-dataset.png)
+Pierwszą rzeczą, jaką należy dla usługi machine learning są dane. Istnieje kilka przykładowych zestawów danych w tym interfejsie, którego można używać. Można również importować dane z istniejących źródeł. W tym samouczku Użyj przykładowego zestawu danych **danych dotyczących cen samochodów (Raw)** . 
 
-    Teraz, gdy masz dane, można dodać moduł, który usunie **kolumny znormalizowane straty** kolumny całkowicie. Następnie należy dodać inny moduł, który usunie wszystkie wiersze z brakującymi danymi.
+1. Z lewej strony obszaru roboczego eksperymentu znajduje się paleta zawierająca zestawy danych i moduły. Wybierz **zapisane zestawów danych** polecenie **przykłady** do wyświetlania dostępnych przykładowych zestawów danych.
 
-1. Typ **wybierz kolumny** w polu wyszukiwania, aby znaleźć **Select Columns in Dataset** modułu. Następnie przeciągnij go do obszaru roboczego eksperymentu. Ten moduł służy do wybierania, kolumny danych, które mają zostać dołączone lub wykluczone w modelu.
+1. Wybierz zestaw danych, **(nieprzetworzone) dane cen samochodów**i przeciągnij go na kanwie.
 
-1. Połącz port wyjściowy zestawu danych **Automobile price data (Raw)** (Nieprzetworzone dane z cenami samochodów) z portem wejściowym modułu Select Columns in Dataset (Wybieranie kolumn w zestawie danych).
+   ![Przeciągnij danych do kanwy](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
 
-    ![Animowany obraz gif przedstawiający sposób łączenie modułu Select Columns modułem Automobile Price Data](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+## <a name="select-columns"></a>Wybieranie kolumn
 
-1. Wybierz kolumny, wybierz w module zestawu danych, a następnie wybierz pozycję **uruchamianie selektora kolumn** w **właściwości** okienka.
+Wybierz kolumny, które dane chcesz pracować. Do konfigurowania modułu, aby wyświetlić wszystkie dostępne kolumny.
 
-   1. Po lewej stronie, wybierz **przy użyciu reguł**
+> [!TIP]
+> Jeśli znasz nazwę danych lub moduł, który ma umożliwia pasek wyszukiwania w górnej części palety szybkie znajdowanie. Pozostała część tego samouczka będzie używać tego skrótu.
 
-   1. Obok pozycji **rozpocząć z**, wybierz opcję **wszystkie kolumny**. Te reguły bezpośredniej **Select Columns in Dataset** przekazywane do wszystkich kolumn (z wyjątkiem tych wykluczonych).
 
-   1. Wybierz z listy rozwijane **wykluczyć** i **nazwy kolumn**, a następnie wpisz **kolumny znormalizowane straty** wewnątrz pola tekstowego.
+1. Typ **wybierz** w polu wyszukiwania, aby znaleźć **Select Columns in Dataset** modułu.
 
-   1. Wybierz przycisk OK, aby zamknąć selektora kolumn (w lewym dolnym rogu).
+1. Kliknij i przeciągnij **Select Columns in Dataset** na kanwę. Usuń moduł poniżej zestawu danych, który dodano wcześniej.
 
-     Zawartość okienka właściwości modułu **Select Columns in Dataset** (Wybieranie kolumn w zestawie danych) określa, że zostaną przetworzone wszystkie kolumny zestawu danych z wyjątkiem kolumny **normalized-losses** (znormalizowane straty).
+1. Łączenie zestawu danych na **Select Columns in Dataset**: kliknij port wyjściowy zestawu danych, przeciągnij portem wejściowym **Select Columns in Dataset**, następnie zwolnij przycisk myszy. Zestaw danych i moduł pozostaną połączone, nawet jeśli będziesz przenosić je w obrębie kanwy.
 
-1. Dodaj komentarz do **Select Columns in Dataset** modułu, kliknij dwukrotnie moduł i wprowadzając "Wyklucz znormalizowane straty". Może to ułatwić możesz zobaczyć na pierwszy rzut oka moduł działania w eksperymencie.
+    > [!TIP]
+    > Zestawy danych i moduły mają porty wejściowe i wyjściowe oznaczone małymi kołami — porty wejściowe znajdują się u góry, a wyjściowe u dołu. Utworzysz przepływ danych w eksperymencie, po nawiązaniu połączenia z portem wejściowym innego port wyjściowy jeden moduł.
+    >
 
-    ![Zrzut ekranu przedstawiający prawidłowej konfiguracji modułu wybierz kolumny](./media/ui-tutorial-automobile-price-train-score/select-columns.png)
+    ![Łączenie modułów](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
 
-1. Typ **czysty** w polu wyszukiwania, aby znaleźć **Clean Missing Data** modułu. Przeciągnij **Clean Missing Data** modułów na eksperyment kanwy i połącz go **Select Columns in Dataset** modułu.
+    Czerwony wykrzyknik wskazuje, że właściwości modułu nie zostały ustawione jeszcze.
 
-1. W okienku **Properties** (Właściwości) w obszarze **Cleaning mode** (Tryb czyszczenia) wybierz pozycję **Remove entire row** (Usuń cały wiersz). Te opcje bezpośredniego **Clean Missing Data** aby wyczyścić dane przez usunięcie wierszy, które nie mają żadnych wartości. Kliknij dwukrotnie moduł i wpisz komentarz „Usunięcie wierszy z brakującymi wartościami”.
+1. Wybierz **Select Columns in Dataset** modułu.
 
-![Zrzut ekranu przedstawiający prawidłowej konfiguracji modułu Clean Missing Data](./media/ui-tutorial-automobile-price-train-score/clean-missing-data.png)
+1. W **właściwości** w okienku po prawej stronie obszaru roboczego wybierz **Upravit sloupce**.
+
+    W **wybierz kolumny** okno dialogowe, wybierz **wszystkie kolumny** i obejmują **wszystkie funkcje**. Okno dialogowe powinno wyglądać następująco:
+
+     ![Selektor kolumn](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+
+1. W prawym dolnym rogu wybierz **OK** aby zamknąć selektora kolumn.
+
+## <a name="run-the-experiment"></a>Uruchamianie eksperymentu
+
+W dowolnym momencie kliknij port wyjściowy zestawu danych lub modułu, aby wyświetlić dane wygląda podobnie jak w tym momencie przepływu danych. Jeśli **Visualize** opcja jest wyłączona, należy najpierw uruchomić eksperyment.
+
+Eksperyment działa na cel obliczenia, czyli zasób obliczeniowy, który jest dołączony do swojego obszaru roboczego. Po utworzeniu obliczeniowego elementu docelowego, możesz użyć go ponownie dla przyszłych przebiegów.
+
+[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
+
+Po udostępnieniu obliczeniowego elementu docelowego jest uruchamiany eksperymentu. Po zakończeniu przebiegu na każdy moduł pojawi się zielony znacznik wyboru.
+
+
+## <a name="preview-the-data"></a>Wyświetl podgląd danych
+
+Teraz, gdy uruchomiono początkowej eksperymentu, możesz wizualizować dane, aby dowiedzieć się więcej na temat zestawu danych, które trzeba pracować z.
+
+1. Wybierz port wyjściowy w dolnej części **Select Columns in Dataset** polecenie **Visualize**.
+
+1. Polecenie różnych kolumn w oknie dane, aby wyświetlić informacje o tej kolumny.
+
+    W tym zestawie danych poszczególne wiersze reprezentują samochody, a zmienne skojarzone z samochodami są wyświetlane jako kolumny. Brak 205 wierszy i kolumn 26, w tym zestawie danych.
+
+     Każde kliknięcie kolumny danych, **statystyki** informacji i **wizualizacji** po lewej stronie jest wyświetlany obraz tej kolumny. Na przykład po kliknięciu **num z drzwi** zobaczysz w nim 2 unikatowe wartości i 2 brakujące wartości. Przewiń w dół, aby zobaczyć wartości: drzwi dwóch do czterech.
+
+     ![Wyświetl podgląd danych](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+
+1. Kliknij przycisk dotyczących poszczególnych kolumn, aby dowiedzieć się więcej o zestaw danych i zastanów się, czy te kolumny będą przydatne do prognozowania cen samochodów.
+
+## <a name="prepare-data"></a>Przygotowywanie danych
+
+Zestawy danych zwykle wymagają przetworzenia wstępnego przed rozpoczęciem analizy. Być może Zauważyłeś, niektóre brakujące wartości podczas wizualizacji zestawu danych. Te brakujące wartości muszą zostać wyczyszczone, aby umożliwić modelowi wykonanie poprawnej analizy danych. Należy usunąć wszystkie wiersze z brakującymi wartościami. Ponadto **kolumny znormalizowane straty** kolumna ma dużą część brakujące wartości, dzięki czemu będzie wyłączyć tę kolumnę z modelu całkowicie.
+
+> [!TIP]
+> Większość modułów wymaga wyczyszczenia brakujących wartości w danych wejściowych.
+
+### <a name="remove-column"></a>Usunięcie kolumny
+
+Najpierw należy usunąć **kolumny znormalizowane straty** kolumny całkowicie.
+
+1. Wybierz **Select Columns in Dataset** modułu.
+
+1. W **właściwości** w okienku po prawej stronie obszaru roboczego wybierz **Upravit sloupce**.
+
+    * Pozostaw **przy użyciu reguł** i **wszystkie kolumny** wybrane.
+
+    * Z list rozwijanych wybierz pozycje **Exclude** (Wyklucz) i **column names** (nazwy kolumn), a następnie kliknij wewnątrz pola tekstowego. Typ **kolumny znormalizowane straty**.
+
+    * W prawym dolnym rogu wybierz **OK** aby zamknąć selektora kolumn.
+
+    ![Wyklucz kolumny](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+        
+    Teraz zawartość okienka właściwości Select Columns in Dataset wskazuje, że zostaną przetworzone wszystkie kolumny z zestawu danych, z wyjątkiem **kolumny znormalizowane straty**.
+        
+    Zawartość okienka właściwości wskazuje, że **kolumny znormalizowane straty** wykluczenie kolumny.
+        
+    ![Okienko właściwości](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
+        
+    Aby dodać komentarz do modułu, kliknij dwukrotnie moduł i wpisz tekst. Pozwoli to od razu sprawdzić rolę modułu w eksperymencie. 
+
+1. Kliknij dwukrotnie **Select Columns in Dataset** moduł i wpisz komentarz "wykluczenie kolumny znormalizowane straty". 
+    
+    Po użytkownik wpisze komentarz, kliknij na zewnątrz modułu. Aby pokazać, że moduł zawiera komentarz pojawi się kształt strzałki w dół.
+
+1. Kliknij strzałkę w dół, aby wyświetlić komentarz.
+
+    Moduł zawiera obecnie strzałkę w górę, aby ukryć komentarz.
+        
+    ![Komentarze](./media/ui-tutorial-automobile-price-train-score/comments.png)
+
+### <a name="clean-missing-data"></a>Wyczyść brakujące dane
+
+Ucząc model trzeba zrobić coś o danych, które nie istnieje. W takim przypadku należy dodać moduł, który chcesz usunąć wszystkie pozostałe wiersze z brakującymi danymi.
+
+1. Typ **czysty** w polu wyszukiwania, aby znaleźć **Clean Missing Data** modułu.
+
+1. Przeciągnij **Clean Missing Data** modułów na eksperyment kanwy i połącz go **Select Columns in Dataset** modułu. 
+
+1. W okienku właściwości wybierz **Usuń cały wiersz** w obszarze **tryb czyszczenia**.
+
+    Te opcje bezpośredniego **Clean Missing Data** aby wyczyścić dane przez usunięcie wierszy, które nie mają żadnych wartości.
+
+1. Kliknij dwukrotnie moduł i wpisz komentarz „Usunięcie wierszy z brakującymi wartościami”.
+ 
+    ![Usuń wiersze](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
+
+    Eksperyment powinien teraz wyglądać mniej więcej tak:
+    
+    ![Wybierz kolumny](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
+
+## <a name="visualize-the-results"></a>Wizualizacja wyników
+
+Od wprowadzenia zmian do modułów w eksperymencie, stan został zmieniony na "Robocza w".  Do wizualizacji nowych danych czystego, należy najpierw uruchomić eksperyment ponownie.
+
+1. Wybierz **Uruchom** u dołu, aby uruchomić eksperyment.
+
+    Teraz możesz ponownie użyć docelowej obliczeń, utworzonego wcześniej.
+
+1. Wybierz **Uruchom** w oknie dialogowym.
+
+   ![Uruchamianie eksperymentu](./media/ui-tutorial-automobile-price-train-score/select-compute.png)
+
+1. Po zakończeniu przebiegu, kliknij prawym przyciskiem myszy **Clean Missing Data** modułu do wizualizacji nowych danych czyste.
+
+    ![Wizualizuj Wyczyść dane](./media/ui-tutorial-automobile-price-train-score/visualize-cleaned.png)
+
+1. Polecenie różnych kolumn w oknie operacji czyszczenia danych, aby zobaczyć, jak dane zostały zmienione.
+
+    ![Wizualizuj Wyczyść dane](media/ui-tutorial-automobile-price-train-score/visualize-result.png)
+
+    Istnieją teraz 193 wierszy i kolumn 25.
+
+    Po kliknięciu **num z drzwi** Zobacz środki, nieopłacone 2 unikatowe wartości, ale ma teraz 0 brakuje wartości. Klikaj elementy pozostałe kolumny, aby zobaczyć, że nie istnieją żadne brakujące wartości, które pozostanie w zestawie danych. 
 
 ## <a name="train-the-model"></a>Uczenie modelu
 
@@ -154,7 +251,8 @@ Korzystanie z Twoich danych, zarówno dla uczenia modelu i testowania, dzieląc 
 
     ![Zrzut ekranu przedstawiający prawidłowej konfiguracji modułu selektora kolumn. Za pomocą reguł > zawierają nazwy kolumn > "price"](./media/ui-tutorial-automobile-price-train-score/select-price.png)
 
-    Teraz eksperyment powinien wyglądać następująco.
+    Eksperyment powinien wyglądać następująco:
+
     ![Zrzut ekranu przedstawiający prawidłowej konfiguracji eksperymentu po dodaniu modułu Train Model.](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
 ### <a name="run-the-training-experiment"></a>Uruchomienie eksperymentu szkolenia
@@ -215,11 +313,11 @@ Eksperymenty, utworzone w interfejs graficzny można zarządzać z obszaru roboc
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W części pierwszej części tego samouczka można wykonać następujące czynności:
 
-* Ponowne użycie eksperymentu, utworzone w przewodniku Szybki Start
+* Utworzyć eksperyment
 * Przygotowywanie danych
 * Uczenie modelu
 * Generowanie wyników i oceny modelu

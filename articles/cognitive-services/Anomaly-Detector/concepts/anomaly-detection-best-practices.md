@@ -1,20 +1,21 @@
 ---
 title: Najlepsze rozwiązania dotyczące interfejsu API narzędzia do wykrywania anomalii
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się więcej o najlepszych rozwiązaniach podczas wykrywania anomalii przy użyciu interfejsu API wykrywanie anomalii.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 1ad4a67d7737733e4c910d3495be29860769f27e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477806"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721625"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Najlepsze rozwiązania dotyczące korzystania z interfejsu API wykrywanie anomalii
 
@@ -100,7 +101,7 @@ Aby uzyskać najlepsze wyniki, należy podać 4 `period`użytkownika, przez któ
 
 Jeśli dane przesyłania strumieniowego są próbkowane tak, w krótkich odstępach czasu (w sekundach lub minutach), wysyłając zalecana liczba punktów danych może przekroczyć API wykrywanie anomalii maksymalna liczba dozwolonych (8640 punkty danych). Jeśli dane pokazuje stabilny wzorcu sezonowym, należy wziąć pod uwagę wysyłania próbkę danych szeregów czasowych w większych odstępach czasu, takich jak godziny. Próbkowanie danych w ten sposób może również znacznie poprawić czas odpowiedzi interfejsu API. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Co to jest interfejs API usługi Wykrywanie anomalii?](../overview.md)
 * [Szybki start: Wykrywanie anomalii w danych szeregów czasowych za pomocą interfejsu API REST wykrywanie anomalii](../quickstarts/detect-data-anomalies-csharp.md)

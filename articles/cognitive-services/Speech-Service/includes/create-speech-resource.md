@@ -12,8 +12,8 @@ ms.openlocfilehash: 3c42bf2b2acc2472741bd603ea9d653a314ecc40
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711825"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717260"
 ---
 ## <a name="create-a-speech-resource"></a>Utwórz zasób mowy
 
@@ -32,7 +32,7 @@ ms.locfileid: "67711825"
 1. Kliknij przycisk **Utwórz** i poczekaj na zasób, który ma zostać utworzony. Po jego utworzeniu, przejdź do strony zasobu
 1. Zbierz skonfigurowane `endpoint` i klucz interfejsu API:
 
-    |Karta zasobów w portalu|Ustawienie|Wartość|
+    |Karta zasobów w portalu|Ustawienie|Value|
     |--|--|--|
     |**Omówienie**|Endpoint|Kopiowanie punktu końcowego. Będzie on podobny do `https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
     |**klucze**|Klucz interfejsu API|Skopiuj 1 dwa klucze. Jest to 32 ciąg znaków alfanumerycznych, bez spacji lub kreski, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

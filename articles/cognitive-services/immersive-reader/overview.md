@@ -1,26 +1,27 @@
 ---
-title: Czytnik Immersyjnych — informacje
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się więcej o Immersyjnych czytnika
+title: Co to jest wszechstronne API czytnika?
+titleSuffix: Azure Cognitive Services
+description: Więcej informacji na temat Immersyjnych czytnika interfejsu API.
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 38056f701b76f3fc2cf1f617a6977321445f78ff
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 4500b6213c549ab9977fe8f2d849ffa8089d04b9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296806"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718433"
 ---
-# <a name="what-is-immersive-reader"></a>Co to jest wszechstronne czytnika?
+# <a name="what-is-immersive-reader"></a>Co to jest czytnik immersyjny?
 
 [Immersyjnych czytnika](https://www.onenote.com/learningtools) to włącznie zaprojektowane narzędzie, które implementuje sprawdzone techniki w celu poprawy zrozumienia odczytu pojawiających się czytniki, language learners i osoby nauki różnic, takie jak dysleksja.
 
-Umożliwia wszechstronne czytnika w aplikacji sieci web przy użyciu Immersyjnych zestawu SDK czytnika.
+Czytnik immersyjny można zastosować w aplikacji internetowej, korzystając z zestawu SDK czytnika immersyjnego.
 
 ## <a name="what-does-immersive-reader-do"></a>Do czego służy Immersyjnych czytnika?
 
@@ -28,7 +29,7 @@ Wszechstronne czytnik jest przeznaczony do ułatwiają dostęp do odczytu dla ws
 
 * Przedstawia zawartość w widoku do czytania minimalny
 
-  ![Wszechstronne czytnika](./media/immersive-reader.png)
+  ![Czytnik immersyjny](./media/immersive-reader.png)
 
 * Wyświetlanie zdjęć z powszechnie używanych wyrazów
 
@@ -54,9 +55,9 @@ Wszechstronne czytnik jest przeznaczony do ułatwiają dostęp do odczytu dla ws
 
 Wszechstronne czytnik jest autonomiczną aplikacją sieci web, gdy wywoływany przy użyciu zestawu SDK języka JavaScript usługi czytnika wszechstronne, jest wyświetlany u góry istniejącą aplikację sieci web za pośrednictwem `iframe`. Po wywołaniu interfejsu API można uruchomić Immersyjnych czytnika, należy określić zawartość, którą chcesz pokazać w czytniku Immersyjnych. Nasz zestaw SDK obsługuje tworzenie i stylu `iframe` i komunikacji z usługą zaplecza Immersyjnych czytnika, która przetwarza zawartość dla części mowy, zamiana tekstu na mowę, tłumaczenia i tak dalej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Rozpoczynanie pracy z czytnika Immersyjnych:
+Rozpoczynanie pracy z czytnikiem immersyjnym:
 
 * Realizowanie [Szybki Start](./quickstart.md)
 * Zapoznaj się z [Immersyjnych czytnika zestawu SDK w witrynie GitHub](https://github.com/Microsoft/immersive-reader-sdk)
