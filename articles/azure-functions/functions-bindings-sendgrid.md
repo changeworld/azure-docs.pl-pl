@@ -259,9 +259,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction**|| Wymagana — musi być równa `out`.|
 |**name**|| Wymagana — nazwa zmiennej, używane w kodzie funkcji żądania lub treści żądania. Ta wartość jest ```$return``` gdy istnieje tylko jedna wartość zwracaną. |
 |**apiKey**|**ApiKey**| Nazwa ustawienia aplikacji zawierającego klucz interfejsu API. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsSendGridApiKey".|
-|**to**|**Do**| adres e-mail adresata. |
+|**to**|**To**| adres e-mail adresata. |
 |**from**|**From**| adres e-mail nadawcy. |
-|**subject**|**Temat**| temat wiadomości e-mail. |
+|**subject**|**Subject**| temat wiadomości e-mail. |
 |**text**|**Text**| Treść wiadomości e-mail. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
