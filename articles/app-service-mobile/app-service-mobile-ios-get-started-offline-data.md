@@ -165,11 +165,11 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 
 | Atrybut | Typ |
 | --- | --- |
-| id | Liczba całkowita 64 |
+| id | Integer 64 |
 | itemId | String |
-| properties | Dane binarne |
+| properties |Binary Data |
 | table | String |
-| tableKind | Liczba całkowita 16 |
+| tableKind | Integer 16 |
 
 
 **MS_TableOperationErrors**
@@ -179,9 +179,9 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 | Atrybut | Typ |
 | --- | --- |
 | id |String |
-| operationId |Liczba całkowita 64 |
-| properties |Dane binarne |
-| tableKind |Liczba całkowita 16 |
+| operationId |Integer 64 |
+| properties |Binary Data |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
@@ -191,7 +191,7 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 | --- | --- |
 | id |String |
 | key |String |
-| keyType |Liczba całkowita 64 |
+| keyType |Integer 64 |
 | table |String |
 | value |String |
 
