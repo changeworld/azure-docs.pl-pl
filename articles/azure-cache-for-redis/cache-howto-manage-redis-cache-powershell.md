@@ -155,7 +155,7 @@ Poniższa tabela zawiera właściwości i opisy parametrów często używane pod
 | set-max-intset-entries |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
 | zset-max-ziplist-entries |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
 | zset-max-ziplist-value |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
-| bazy danych |Umożliwia skonfigurowanie liczby baz danych. Tej właściwości można skonfigurować tylko podczas tworzenia pamięci podręcznej. |Standardowa i Premium |
+| databases |Umożliwia skonfigurowanie liczby baz danych. Tej właściwości można skonfigurować tylko podczas tworzenia pamięci podręcznej. |Standardowa i Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Aby utworzyć pamięć podręczna systemu Azure dla usługi Redis
 Nowej usługi Azure Cache dla wystąpień usługi Redis są tworzone przy użyciu [New AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) polecenia cmdlet.
